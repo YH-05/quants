@@ -230,7 +230,7 @@ Phase 3: シャットダウン・クリーンアップ
    - 見つからない場合はエラー
 3. **ディレクトリ作成**:
    ```
-   research/{research_id}/
+   analyst/research/{research_id}/
    ├── 00_meta/
    │   └── research-meta.json
    ├── 01_data_collection/
