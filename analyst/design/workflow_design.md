@@ -1844,7 +1844,7 @@ graph TD
 | ワーカーエージェント | `.claude/agents/ca-report-parser.md` 他5ファイル |
 | コマンド | `.claude/commands/ca-eval.md` |
 | スキル | `.claude/skills/ca-eval/SKILL.md` |
-| Dify比較表 | `analyst/claude_code/dify_comparison.md` |
+| Dify比較表 | `analyst/design/dify_comparison.md` |
 | Dify詳細設計書 | `analyst/memo/dify_workflow_design.md` |
 | Dogma | `analyst/Competitive_Advantage/analyst_YK/dogma.md` |
 | KB1ルール集 | `analyst/Competitive_Advantage/analyst_YK/kb1_rules/` (8ファイル) |

@@ -454,9 +454,9 @@ ls research/DR_theme_*/
 
 | 旧ファイル | 本プランでの扱い |
 |-----------|----------------|
-| `docs/AI_Invest_Team/plan.md` | **廃止**: ai_investment_team.md に統合済み |
+| `analyst/plan/2026-02-06_session1-initial-plan.md` | **旧 `docs/AI_Invest_Team/plan.md`**: analyst/ に統合 |
 | `docs/project/research-restructure/project.md` | **Phase 1 の詳細版として維持** |
 | `docs/project/ai-research-tracking/project.md` | **Phase 3 の詳細版として維持** |
-| `analyst/ai_investment_team.md` | **Phase 2 の詳細版として維持** |
+| `analyst/plan/2026-02-09_ai-investment-team-master.md` | **旧 `analyst/ai_investment_team.md`**: Phase 2 の詳細版 |
 
 本プランは3計画の**統合ロードマップ**であり、各計画の詳細な実装仕様は既存ドキュメントを参照する。

@@ -4,7 +4,7 @@
 **ステータス**: 計画中
 **タイプ**: workflow
 **GitHub Project**: [#49](https://github.com/users/YH-05/projects/49)
-**元設計書**: `analyst/claude_code/workflow_design.md`
+**元設計書**: `analyst/design/workflow_design.md`
 
 ## 背景と目的
 

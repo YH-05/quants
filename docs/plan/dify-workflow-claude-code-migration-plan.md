@@ -2,7 +2,7 @@
 
 ## Context
 
-`analyst/dify/` にDifyワークフロー（KY投資判断・競争優位性評価）が設計されている。これをClaude Codeで再現し、Difyの制約を超える機能拡張を行う。`analyst/claude_code/` フォルダを作成し、設計ドキュメントを配置する。
+`analyst/dify/` にDifyワークフロー（KY投資判断・競争優位性評価）が設計されている。これをClaude Codeで再現し、Difyの制約を超える機能拡張を行う。`analyst/design/` フォルダに設計ドキュメントを配置する。
 
 **Difyの制約 → Claude Codeでの解決:**
 - KB chunking/RAG → 全KBファイル（25個, ~62KB）を直接読み込み。検索漏れゼロ
@@ -15,12 +15,12 @@
 
 ## 成果物一覧
 
-### 1. `analyst/claude_code/` フォルダ（設計ドキュメント）
+### 1. `analyst/design/` フォルダ（設計ドキュメント）
 
 | ファイル | 内容 |
 |---------|------|
-| `analyst/claude_code/workflow_design.md` | ワークフロー詳細設計書（Dify設計書の Claude Code 版） |
-| `analyst/claude_code/dify_comparison.md` | Dify vs Claude Code の比較表・移行ガイド |
+| `analyst/design/workflow_design.md` | ワークフロー詳細設計書（Dify設計書の Claude Code 版） |
+| `analyst/design/dify_comparison.md` | Dify vs Claude Code の比較表・移行ガイド |
 
 ### 2. コマンド・スキル
 
@@ -153,9 +153,9 @@ T9: {T8: required}        # Phase 4
 
 ## 実装手順
 
-### Step 1: ドキュメント作成（`analyst/claude_code/`）
-1. `analyst/claude_code/workflow_design.md` — 詳細設計書
-2. `analyst/claude_code/dify_comparison.md` — Dify比較表
+### Step 1: ドキュメント作成（`analyst/design/`）
+1. `analyst/design/workflow_design.md` — 詳細設計書
+2. `analyst/design/dify_comparison.md` — Dify比較表
 
 ### Step 2: コマンド・スキル作成
 3. `.claude/commands/ca-eval.md`

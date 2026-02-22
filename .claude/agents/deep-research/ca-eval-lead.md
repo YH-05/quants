@@ -1069,8 +1069,8 @@ ca_eval_result:
 
 ## 参考資料
 
-- **設計書**: `analyst/claude_code/workflow_design.md`
-- **Dify比較表**: `analyst/claude_code/dify_comparison.md`
+- **設計書**: `analyst/design/workflow_design.md`
+- **Dify比較表**: `analyst/design/dify_comparison.md`
 - **Dify詳細設計書**: `analyst/memo/dify_workflow_design.md`
 - **スキル定義**: `.claude/skills/ca-eval/SKILL.md`
 - **Dogma**: `analyst/Competitive_Advantage/analyst_YK/dogma.md`
