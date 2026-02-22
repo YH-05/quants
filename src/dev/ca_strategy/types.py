@@ -177,7 +177,7 @@ class Transcript(BaseModel):
 
     metadata: TranscriptMetadata
     sections: list[TranscriptSection]
-    raw_source: str | None
+    raw_source: str | None = None
 
     @field_validator("sections")
     @classmethod
