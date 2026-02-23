@@ -20,6 +20,7 @@ Examples
 
 import asyncio
 import json
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -40,6 +41,75 @@ logger = get_logger(__name__)
 
 # デフォルトソース
 _DEFAULT_SOURCES = ["cnbc", "nasdaq"]
+
+
+def _collect_cnbc(
+    config: ScraperConfig,
+    cnbc_categories: list[str],
+) -> list[dict]:
+    """CNBC からニュースを収集して記事辞書リストを返す."""
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = cnbc.fetch_multiple_categories(
+        session,
+        categories=cnbc_categories,
+        delay=config.delay,
+        timeout=config.timeout,
+    )
+    if config.include_content and not df.empty:
+        contents = []
+        for _i, row in df.iterrows():
+            content_data = cnbc.fetch_article_content(
+                session, str(row["url"]), config.timeout
+            )
+            contents.append(content_data.get("content", "") if content_data else "")
+            time.sleep(config.delay)
+        df["content"] = contents
+    logger.info("CNBC collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_nasdaq(
+    config: ScraperConfig,
+    nasdaq_categories: list[str],
+    tickers: list[str] | None,
+) -> list[dict]:
+    """NASDAQ からニュースを収集して記事辞書リストを返す."""
+    df = nasdaq.collect_nasdaq_news(
+        categories=nasdaq_categories,
+        tickers=tickers,
+        config=config,
+    )
+    logger.info("NASDAQ collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_yfinance_ticker(
+    config: ScraperConfig,
+    tickers: list[str],
+) -> list[dict]:
+    """yfinance ticker からニュースを収集して記事辞書リストを返す."""
+    session_yf = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = yfinance.fetch_multiple_tickers(
+        session_yf, tickers, config=config, timeout=config.timeout
+    )
+    logger.info("yfinance ticker collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_yfinance_search(
+    config: ScraperConfig,
+    tickers: list[str],
+) -> list[dict]:
+    """yfinance search からニュースを収集して記事辞書リストを返す."""
+    session_yf_s = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = yfinance.fetch_multiple_searches(
+        session_yf_s,
+        tickers,
+        config=config,
+        timeout=config.timeout,
+    )
+    logger.info("yfinance search collection completed", article_count=len(df))
+    return df.to_dict("records")
 
 
 def collect_financial_news(
@@ -121,92 +191,27 @@ def collect_financial_news(
         tickers=tickers,
     )
 
-    # CNBC 収集
     if "cnbc" in sources:
         try:
-            from typing import Literal
-
-            impersonate: Literal["chrome", "chrome131", "safari", "firefox"] = (
-                config.impersonate  # type: ignore[assignment]
-            )
-            session = create_session(impersonate=impersonate, proxy=config.proxy)
-            df_cnbc = cnbc.fetch_multiple_categories(
-                session,
-                categories=cnbc_categories,
-                delay=config.delay,
-                timeout=config.timeout,
-            )
-            if config.include_content and not df_cnbc.empty:
-                import time
-
-                contents = []
-                for _i, row in df_cnbc.iterrows():
-                    content_data = cnbc.fetch_article_content(
-                        session, str(row["url"]), config.timeout
-                    )
-                    contents.append(
-                        content_data.get("content", "") if content_data else ""
-                    )
-                    time.sleep(config.delay)
-                df_cnbc["content"] = contents
-            logger.info("CNBC collection completed", article_count=len(df_cnbc))
-            all_articles.extend(df_cnbc.to_dict("records"))
+            all_articles.extend(_collect_cnbc(config, cnbc_categories))
         except Exception as e:
             logger.error("CNBC collection failed", error=str(e))
 
-    # NASDAQ 収集
     if "nasdaq" in sources:
         try:
-            df_nasdaq = nasdaq.collect_nasdaq_news(
-                categories=nasdaq_categories,
-                tickers=tickers,
-                config=config,
-            )
-            logger.info("NASDAQ collection completed", article_count=len(df_nasdaq))
-            all_articles.extend(df_nasdaq.to_dict("records"))
+            all_articles.extend(_collect_nasdaq(config, nasdaq_categories, tickers))
         except Exception as e:
             logger.error("NASDAQ collection failed", error=str(e))
 
-    # yfinance ticker 収集
     if "yfinance_ticker" in sources and tickers:
         try:
-            from typing import Literal as TypingLiteral
-
-            imp2: TypingLiteral["chrome", "chrome131", "safari", "firefox"] = (
-                config.impersonate  # type: ignore[assignment]
-            )
-            session_yf = create_session(impersonate=imp2, proxy=config.proxy)
-            df_yf_ticker = yfinance.fetch_multiple_tickers(
-                session_yf, tickers, config=config, timeout=config.timeout
-            )
-            logger.info(
-                "yfinance ticker collection completed",
-                article_count=len(df_yf_ticker),
-            )
-            all_articles.extend(df_yf_ticker.to_dict("records"))
+            all_articles.extend(_collect_yfinance_ticker(config, tickers))
         except Exception as e:
             logger.error("yfinance ticker collection failed", error=str(e))
 
-    # yfinance search 収集
     if "yfinance_search" in sources and tickers:
         try:
-            from typing import Literal as TypingLiteral2
-
-            imp3: TypingLiteral2["chrome", "chrome131", "safari", "firefox"] = (
-                config.impersonate  # type: ignore[assignment]
-            )
-            session_yf_s = create_session(impersonate=imp3, proxy=config.proxy)
-            df_yf_search = yfinance.fetch_multiple_searches(
-                session_yf_s,
-                tickers,
-                config=config,
-                timeout=config.timeout,
-            )
-            logger.info(
-                "yfinance search collection completed",
-                article_count=len(df_yf_search),
-            )
-            all_articles.extend(df_yf_search.to_dict("records"))
+            all_articles.extend(_collect_yfinance_search(config, tickers))
         except Exception as e:
             logger.error("yfinance search collection failed", error=str(e))
 

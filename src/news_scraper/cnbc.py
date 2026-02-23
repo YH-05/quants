@@ -10,6 +10,7 @@ import time
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlparse
 
 import feedparser
 import pandas as pd
@@ -282,6 +283,13 @@ def fetch_article_content(
     dict | None
         記事情報（取得失敗時は None）
     """
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        logger.warning(
+            "Rejected URL with invalid scheme", url=url, scheme=parsed.scheme
+        )
+        return None
+
     try:
         resp = session.get(url, timeout=timeout)
         resp.raise_for_status()
@@ -368,6 +376,13 @@ async def async_fetch_article_content(
     ...         print(result["title"])
     >>> asyncio.run(main())
     """
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        logger.warning(
+            "Rejected URL with invalid scheme (async)", url=url, scheme=parsed.scheme
+        )
+        return None
+
     try:
         resp = await session.get(url, timeout=timeout)
         resp.raise_for_status()
@@ -706,10 +721,7 @@ def collect_historical_news(
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
 
-    impersonate: Literal["chrome", "chrome131", "safari", "firefox"] = (
-        config.impersonate  # type: ignore[assignment]
-    )
-    session = create_session(impersonate=impersonate, proxy=config.proxy)
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
     all_articles = []
 
     # Playwright でブラウザを起動
@@ -861,7 +873,7 @@ async def async_collect_historical_news(
         # 本文取得（include_content=True の場合）
         if config.include_content and all_articles:
             session = create_async_session(
-                impersonate=config.impersonate,  # type: ignore[arg-type]
+                impersonate=config.impersonate,
                 proxy=config.proxy,
             )
 

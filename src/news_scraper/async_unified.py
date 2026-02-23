@@ -124,7 +124,7 @@ async def async_collect_financial_news(
     # CNBC 非同期収集
     if "cnbc" in sources:
         session_cnbc = create_async_session(
-            impersonate=config.impersonate,  # type: ignore[arg-type]
+            impersonate=config.impersonate,
             proxy=config.proxy,
         )
         gather_tasks.append(
@@ -138,10 +138,6 @@ async def async_collect_financial_news(
 
     # NASDAQ 非同期収集
     if "nasdaq" in sources:
-        session_nasdaq = create_async_session(
-            impersonate=config.impersonate,  # type: ignore[arg-type]
-            proxy=config.proxy,
-        )
         gather_tasks.append(
             asyncio.create_task(
                 nasdaq.async_collect_nasdaq_news(
@@ -159,12 +155,9 @@ async def async_collect_financial_news(
         from .session import create_session
 
         async def _async_collect_yfinance_ticker() -> pd.DataFrame:
-            from typing import Literal
-
-            imp: Literal["chrome", "chrome131", "safari", "firefox"] = (
-                config.impersonate  # type: ignore[assignment]
+            session_yf = create_session(
+                impersonate=config.impersonate, proxy=config.proxy
             )
-            session_yf = create_session(impersonate=imp, proxy=config.proxy)
             loop = asyncio.get_running_loop()
             return await loop.run_in_executor(
                 None,
@@ -182,12 +175,9 @@ async def async_collect_financial_news(
         from .session import create_session
 
         async def _async_collect_yfinance_search() -> pd.DataFrame:
-            from typing import Literal
-
-            imp: Literal["chrome", "chrome131", "safari", "firefox"] = (
-                config.impersonate  # type: ignore[assignment]
+            session_yf_s = create_session(
+                impersonate=config.impersonate, proxy=config.proxy
             )
-            session_yf_s = create_session(impersonate=imp, proxy=config.proxy)
             loop = asyncio.get_running_loop()
             return await loop.run_in_executor(
                 None,
@@ -241,7 +231,7 @@ async def async_collect_financial_news(
     if config.include_content:
         # CNBC と NASDAQ のセッションを使用
         session_content = create_async_session(
-            impersonate=config.impersonate,  # type: ignore[arg-type]
+            impersonate=config.impersonate,
             proxy=config.proxy,
         )
         content_limiter = RateLimiter(

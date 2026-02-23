@@ -2,6 +2,7 @@
 
 import random
 from dataclasses import dataclass, field
+from typing import Literal
 
 
 @dataclass
@@ -91,7 +92,7 @@ class ScraperConfig:
         リトライ回数
     """
 
-    impersonate: str = "chrome131"
+    impersonate: Literal["chrome", "chrome131", "safari", "firefox"] = "chrome131"
     proxy: str | None = None
     delay: float = 1.0
     jitter: float = 0.5

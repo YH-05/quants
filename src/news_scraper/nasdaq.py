@@ -5,11 +5,12 @@ curl-cffi（ブラウザ偽装）+ trafilatura（本文抽出）を使用。
 """
 
 import asyncio
-import json
+import re
 import time
 from datetime import datetime
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlparse
 
 import feedparser
 import pandas as pd
@@ -49,6 +50,11 @@ def fetch_rss_feed(
         記事情報のリスト
     """
     if category:
+        if category not in NASDAQ_CATEGORIES:
+            raise ValueError(
+                f"Invalid NASDAQ category: {category!r}. "
+                f"Valid categories: {sorted(NASDAQ_CATEGORIES)}"
+            )
         url = f"https://www.nasdaq.com/feed/rssoutbound?category={category}"
     else:
         url = "https://www.nasdaq.com/feed/rssoutbound"
@@ -300,6 +306,13 @@ def fetch_article_content(
     dict | None
         記事情報（取得失敗時は None）
     """
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        logger.warning(
+            "Rejected URL with invalid scheme", url=url, scheme=parsed.scheme
+        )
+        return None
+
     try:
         resp = session.get(url, timeout=timeout)
         resp.raise_for_status()
@@ -470,6 +483,12 @@ def fetch_stock_news_api(
     list[Article]
         記事情報のリスト
     """
+    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
+        )
+
     url = f"https://api.nasdaq.com/api/news/topic/articlebysymbol?q={ticker}|STOCKS&offset=0&limit={limit}"
 
     headers = {
@@ -547,6 +566,12 @@ async def async_fetch_stock_news_api(
     ...     print(len(articles))
     >>> asyncio.run(main())
     """
+    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
+        )
+
     url = f"https://api.nasdaq.com/api/news/topic/articlebysymbol?q={ticker.upper()}|STOCKS&offset=0&limit={limit}"
 
     headers = {
@@ -741,10 +766,7 @@ def collect_nasdaq_news(
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
 
-    impersonate: Literal["chrome", "chrome131", "safari", "firefox"] = (
-        config.impersonate  # type: ignore[assignment]
-    )
-    session = create_session(impersonate=impersonate, proxy=config.proxy)
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
     all_articles = []
 
     # カテゴリ別収集
@@ -841,7 +863,7 @@ async def async_collect_nasdaq_news(
         output_path.mkdir(parents=True, exist_ok=True)
 
     session = create_async_session(
-        impersonate=config.impersonate,  # type: ignore[arg-type]
+        impersonate=config.impersonate,
         proxy=config.proxy,
     )
 

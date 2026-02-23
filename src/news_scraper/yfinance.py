@@ -10,6 +10,7 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlparse
 
 import pandas as pd
 import trafilatura
@@ -264,6 +265,13 @@ def fetch_article_content(
     ...     print(result["content"][:100])
     """
     logger.debug("Fetching article content", url=url, timeout=timeout)
+
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https"):
+        logger.warning(
+            "Rejected URL with invalid scheme", url=url, scheme=parsed.scheme
+        )
+        return None
 
     try:
         resp = session.get(url, timeout=timeout)
@@ -530,10 +538,7 @@ def collect_yfinance_news(
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
 
-    impersonate: Literal["chrome", "chrome131", "safari", "firefox"] = (
-        config.impersonate  # type: ignore[assignment]
-    )
-    session = create_session(impersonate=impersonate, proxy=config.proxy)
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
     all_articles: list[dict] = []
 
     # ティッカー別収集

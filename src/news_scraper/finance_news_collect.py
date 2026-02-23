@@ -32,6 +32,7 @@ uv run python -m news_scraper.finance_news_collect --fast
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from typing import TYPE_CHECKING
 
@@ -44,6 +45,25 @@ from .types import CNBC_QUANT_CATEGORIES, NASDAQ_QUANT_CATEGORIES, ScraperConfig
 from .unified import collect_financial_news, collect_financial_news_fast
 
 logger = get_logger(__name__)
+
+
+def _mask_proxy(proxy: str | None) -> str | None:
+    """プロキシ URL の認証情報をマスクする.
+
+    Parameters
+    ----------
+    proxy : str | None
+        プロキシ URL（例: ``http://user:password@proxy.example.com:8080``）
+
+    Returns
+    -------
+    str | None
+        認証情報をマスクした URL（例: ``http://***:***@proxy.example.com:8080``）。
+        None または認証情報なしの場合はそのまま返す。
+    """
+    if proxy is None:
+        return None
+    return re.sub(r"://([^:@/]+:[^@/]+)@", r"://***:***@", proxy)
 
 
 def _configure_logging(verbosity: int) -> None:
@@ -236,7 +256,9 @@ def main(argv: list[str] | None = None) -> int:
     # ログ設定（logging.basicConfig の代わりに setup_logging を使用）
     _configure_logging(args.verbose)
 
-    logger.info("Starting finance news collect CLI", args=vars(args))
+    _args_log = vars(args).copy()
+    _args_log["proxy"] = _mask_proxy(_args_log.get("proxy"))
+    logger.info("Starting finance news collect CLI", args=_args_log)
 
     # ScraperConfig を構築
     config = ScraperConfig(
