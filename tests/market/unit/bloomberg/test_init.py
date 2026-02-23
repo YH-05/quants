@@ -8,6 +8,7 @@ Test TODO List:
 - [x] All public classes are exported
 - [x] All public functions are exported
 - [x] __all__ is properly defined
+- [x] ChunkConfig, EarningsInfo, IdentifierConversionResult are exported
 """
 
 
@@ -60,6 +61,18 @@ class TestPublicExports:
         assert NewsStory is not None
         assert FieldInfo is not None
 
+    def test_正常系_新規型定義がエクスポートされている(self) -> None:
+        """新規追加の型定義がトップレベルでエクスポートされていることを確認。"""
+        from market.bloomberg import (
+            ChunkConfig,
+            EarningsInfo,
+            IdentifierConversionResult,
+        )
+
+        assert ChunkConfig is not None
+        assert EarningsInfo is not None
+        assert IdentifierConversionResult is not None
+
     def test_正常系_エラークラスがエクスポートされている(self) -> None:
         """エラークラスがトップレベルでエクスポートされていることを確認。"""
         from market.bloomberg import (
@@ -104,6 +117,9 @@ class TestAllDefinition:
             "BloombergSessionError",
             "BloombergDataError",
             "BloombergValidationError",
+            "ChunkConfig",
+            "EarningsInfo",
+            "IdentifierConversionResult",
         ]
 
         for export in expected_exports:

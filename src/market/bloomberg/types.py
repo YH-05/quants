@@ -9,6 +9,9 @@ This module provides type definitions for Bloomberg data fetching including:
 - Data results (BloombergDataResult)
 - News data structures (NewsStory)
 - Field metadata (FieldInfo)
+- Chunked request configuration (ChunkConfig)
+- Earnings information (EarningsInfo)
+- Identifier conversion results (IdentifierConversionResult)
 
 Examples
 --------
@@ -22,11 +25,17 @@ Examples
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import date, datetime
 from enum import Enum
 from typing import Any
 
 import pandas as pd
+
+from market.bloomberg.constants import (
+    DEFAULT_CHUNK_SIZE,
+    DEFAULT_MAX_RETRIES,
+    DEFAULT_RETRY_DELAY,
+)
 
 
 class IDType(str, Enum):
@@ -264,12 +273,107 @@ class FieldInfo:
     data_type: str
 
 
+@dataclass
+class ChunkConfig:
+    """Configuration for chunked Bloomberg data requests.
+
+    Parameters
+    ----------
+    chunk_size : int
+        Number of securities per request chunk (default: DEFAULT_CHUNK_SIZE=50)
+    max_retries : int
+        Maximum number of retry attempts per chunk (default: DEFAULT_MAX_RETRIES=3)
+    retry_delay : float
+        Seconds to wait between retries (default: DEFAULT_RETRY_DELAY=2.0)
+
+    Examples
+    --------
+    >>> config = ChunkConfig()
+    >>> config.chunk_size
+    50
+    >>> config = ChunkConfig(chunk_size=100, max_retries=5, retry_delay=1.5)
+    >>> config.chunk_size
+    100
+    """
+
+    chunk_size: int = field(default=DEFAULT_CHUNK_SIZE)
+    max_retries: int = field(default=DEFAULT_MAX_RETRIES)
+    retry_delay: float = field(default=DEFAULT_RETRY_DELAY)
+
+
+@dataclass
+class EarningsInfo:
+    """Earnings announcement information for a security.
+
+    Parameters
+    ----------
+    security : str
+        Bloomberg security identifier (e.g., "AAPL US Equity")
+    expected_report_dt : date
+        Expected earnings report date
+    period : str
+        Reporting period description (e.g., "Q4 2024", "FY2024 Q2")
+
+    Examples
+    --------
+    >>> from datetime import date
+    >>> info = EarningsInfo(
+    ...     security="AAPL US Equity",
+    ...     expected_report_dt=date(2024, 10, 31),
+    ...     period="Q4 2024",
+    ... )
+    >>> info.security
+    'AAPL US Equity'
+    """
+
+    security: str
+    expected_report_dt: date
+    period: str
+
+
+@dataclass
+class IdentifierConversionResult:
+    """Result of converting a Bloomberg security identifier.
+
+    Parameters
+    ----------
+    original : str
+        The original Bloomberg security identifier (e.g., "AAPL US Equity")
+    converted : str
+        The converted identifier (e.g., ISIN "US0378331005")
+    date : date
+        The reference date for the conversion
+    status : str
+        Conversion status: "success" or "failed"
+
+    Examples
+    --------
+    >>> from datetime import date
+    >>> result = IdentifierConversionResult(
+    ...     original="AAPL US Equity",
+    ...     converted="US0378331005",
+    ...     date=date(2024, 1, 15),
+    ...     status="success",
+    ... )
+    >>> result.status
+    'success'
+    """
+
+    original: str
+    converted: str
+    date: date
+    status: str
+
+
 __all__ = [
     "BloombergDataResult",
     "BloombergFetchOptions",
+    "ChunkConfig",
     "DataSource",
+    "EarningsInfo",
     "FieldInfo",
     "IDType",
+    "IdentifierConversionResult",
     "NewsStory",
     "OverrideOption",
     "Periodicity",

@@ -6,6 +6,7 @@ This module provides constants for Bloomberg API integration:
 - Bloomberg service endpoints
 - Identifier type prefixes
 - Valid periodicities
+- Chunked request defaults (chunk_size, max_retries, retry_delay)
 
 Examples
 --------
@@ -88,10 +89,39 @@ VALID_PERIODICITIES: Final[list[str]] = [
 These values correspond to Bloomberg's accepted frequency parameters.
 """
 
+# =============================================================================
+# Chunked Request Defaults
+# =============================================================================
+
+DEFAULT_CHUNK_SIZE: Final[int] = 50
+"""Default number of securities per Bloomberg request chunk.
+
+Bloomberg API has limits on the number of securities per request.
+Chunking into groups of 50 avoids exceeding those limits while
+maintaining reasonable throughput.
+"""
+
+DEFAULT_MAX_RETRIES: Final[int] = 3
+"""Default maximum number of retry attempts for a failed chunk request.
+
+Transient Bloomberg API errors (e.g., timeouts, rate limits) are retried
+up to this many times before raising an exception.
+"""
+
+DEFAULT_RETRY_DELAY: Final[float] = 2.0
+"""Default delay in seconds between retry attempts.
+
+A short pause between retries reduces the chance of hitting Bloomberg
+rate limits on consecutive requests.
+"""
+
 __all__ = [
     "API_FIELDS_SERVICE",
+    "DEFAULT_CHUNK_SIZE",
     "DEFAULT_HOST",
+    "DEFAULT_MAX_RETRIES",
     "DEFAULT_PORT",
+    "DEFAULT_RETRY_DELAY",
     "ID_TYPE_PREFIXES",
     "NEWS_SERVICE",
     "REF_DATA_SERVICE",
