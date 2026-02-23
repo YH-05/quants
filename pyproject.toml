@@ -45,6 +45,10 @@ dependencies = [
     "tiktoken>=0.7.0",
     "pymupdf>=1.26.7",
     "cssselect>=1.4.0",
+    # news_scraper
+    "curl_cffi>=0.13.0",
+    "beautifulsoup4>=4.12.0",
+    "pyyaml>=6.0",
     "werkzeug>=3.1.6",
 ]
 [project.optional-dependencies]
@@ -103,13 +107,14 @@ rss-mcp = "rss.mcp.server:main"
 rss-cli = "rss.cli.main:cli"
 collect-finance-news = "automation.news_collector:main"
 notebooklm-mcp = "notebooklm.mcp.server:main"
+news-scraper = "news_scraper.finance_news_collect:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/analyze", "src/database", "src/edgar", "src/market", "src/rss", "src/factor", "src/strategy", "src/automation", "src/news", "src/utils_core", "src/notebooklm"]
+packages = ["src/analyze", "src/database", "src/edgar", "src/market", "src/rss", "src/factor", "src/strategy", "src/automation", "src/news", "src/utils_core", "src/notebooklm", "src/news_scraper"]
 
 [tool.ruff]
 line-length = 88
