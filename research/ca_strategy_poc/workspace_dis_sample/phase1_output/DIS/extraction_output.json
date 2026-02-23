@@ -1,0 +1,731 @@
+{
+  "ticker": "DIS",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "DIS_001",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーは Disney・Pixar・Marvel・Lucasfilm という4つの強力なブランドポートフォリオを保有しており、競合他社が到達不能なコンテンツ資産を形成している。",
+      "evidence": "FY2014年間で11のフランチャイズが各10億ドル以上の小売売上を達成。FY2015 Q1では同様に11フランチャイズが継続して10億ドル超を記録。CEOイガーは「誰も我々の比類なきブランドコレクションに近づけない」と明言。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.9,
+        "adjustments": [
+          "ルール1: 4社買収・統合という能力・仕組みであり結果ではない（合格）",
+          "ルール2: 『フランチャイズポートフォリオ』という名詞属性（合格）",
+          "ルール6: ビジネスモデルの中核構造であり補完的要素ではない（合格）",
+          "ルール7: 同業他社（Comcast/NBCUniversal等）との差別化を定量的に示している（合格）",
+          "ルール11: コンテンツ産業の構造（フランチャイズの価値が希少）とポジションが合致（合格）",
+          "ルール4: 11フランチャイズx10億ドル超という定量的裏付けあり（+20%相当）",
+          "ルール12: Q4年次コールで明示された主要主張（①一次ソース）",
+          "KB3-T参照: COST fewshotで会員制モデル=70%相当。本主張は複数ブランドx数値x構造的障壁が揃っており90%が正当。全体比率で6%のみ許容されるが本主張は最高評価に値する"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "他社が模倣不可能なフランチャイズIPにより、映画・テーマパーク・消費者製品・インタラクティブを横断する収益化が可能",
+        "barrier": "4社（Pixar 2006年・Marvel 2009年・Lucasfilm 2012年）の優良IP資産は市場で唯一かつ非再現的。競合他社が同等のIPを獲得しようとすれば天文学的なコストが必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2014",
+          "quote": "Among media companies, Disney stands out. No one else comes close to our unparalleled collection of strong brands, where our pipeline of great content and our unprecedented ability to leverage creative success and create value across the entire company."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 FY2015",
+          "quote": "Frozen is just 1 of the 11 franchises at Disney currently driving more than $1 billion each in annual retail sales."
+        }
+      ]
+    },
+    {
+      "id": "DIS_002",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのコンテンツ横断レバレッジ構造（映画→テーマパーク→消費者製品→インタラクティブ）は、一つのコンテンツ資産から複数セグメントで収益を逓増させる仕組みを持つ。",
+      "evidence": "Frozenが映画成功後、テーマパーク来場者増加・ホームエンターテインメント売上増加・消費者製品Q1 FY2015で北米・欧州・日本の全店舗で同店売上二桁成長・モバイルゲーム貢献と、全セグメントで具体的貢献が確認されている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule08", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule08": true,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "ルール1: コンテンツ横断レバレッジという能力・仕組みであり、Frozenのヒットという結果ではない（合格）",
+          "ルール2: 『統合的コンテンツ活用仕組み』という名詞属性（合格）",
+          "ルール6: 映画スタジオ×パーク×消費者製品×インタラクティブの統合構造（コア構造）（合格）",
+          "ルール8: 戦略（クロスプロモーション）ではなく構造的仕組み（合格）",
+          "ルール12: Q4年次コールで言及あり（①）。Q1 FY2015で定量的補強（②）",
+          "ルール4: 特定の競合比較数値が明示されていない点がやや弱い。ただし自社内でのセグメント横断インパクトは定量化されている",
+          "KB3-T参照: CHD fewshotの製品ポートフォリオ相乗効果=50-70%相当。本主張は具体的なFrozen横断実績で70%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "一つのIPへの初期投資が映画・パーク・消費者製品・ゲームで反復収益化されるため、コンテンツあたりの実効コストが競合より大幅に低い",
+        "barrier": "テーマパーク・消費者製品・メディアネットワークを統合保有していない競合（Netflix等）はコンテンツを1セグメントでしか収益化できず、同じ投資から得られる利益が構造的に低い"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2014",
+          "quote": "our unprecedented ability to leverage creative success and create value across the entire company allows us to adapt to emerging challenges, take advantage of new opportunities and, most importantly, innovate for the future."
+        },
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 FY2015",
+          "quote": "Growth in Licensing was driven by Frozen... double-digit growth in same-store sales in North America, Europe and Japan as well as higher online sales in those regions."
+        }
+      ]
+    },
+    {
+      "id": "DIS_003",
+      "claim_type": "competitive_advantage",
+      "claim": "ESPNはNFL・NBA・MLB・大学フットボール等の主要スポーツ中継権を次の10年以上にわたり独占的に確保しており、同業他社が代替不能なスポーツメディア独占ポジションを構築している。",
+      "evidence": "CEOイガーはFY2014 Q4コールで「ESPNはNFL・NBA・MLBを含む次の10年以上にわたる特別なスポーツ権利ポートフォリオを確保した」と明言。FY2015 Q3コールでは大学フットボールプレーオフの中継権が11年残存していることも確認。Q3 FY2015にてスポーツ番組の96%がライブ視聴されており、これが広告市場で最も価値が高いとCEOが言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "ルール1: スポーツ権利確保という能力・仕組みであり視聴率という結果ではない（合格）",
+          "ルール2: 『スポーツ放映権ポートフォリオ』という名詞属性（合格）",
+          "ルール4: 「次の10年以上」「大学フットボールプレーオフ権利11年残存」「96%ライブ視聴」等の定量的裏付けあり（合格）",
+          "ルール6: ESPNコアビジネスの構造的要素（補完的ではない）（合格）",
+          "ルール7: Fox Sports・NBC Sports等との差別化が権利確保の独占性で明示（合格）",
+          "ルール11: スポーツメディアは放映権ポートフォリオを持つ者が構造的に優位（合格）",
+          "ルール12: Q4年次コール（①）と複数季次コール（②）で繰り返し言及",
+          "ルール8確認: 権利買収という戦略的判断ではなく、権利ポートフォリオそのものの優位性として記述（合格）",
+          "加点要素: ESPNサブスクリプション損失の認識とそれでも放映権が参入障壁となる点をCEOが誠実に言及（ルール10準拠）",
+          "KB3-T参照: ORLY fewshotの地域市場ネットワーク=70-90%。本主張は権利の排他性・数値・独占性があるが、OTT化リスクへの言及もありやや下げて70%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "主要スポーツ放映権の独占的保有により、スポーツファン向けの広告プレミアム価格設定・高額アフィリエイト料金交渉が可能",
+        "barrier": "NFL・NBA・MLB等の主要リーグはすでにESPNと長期契約済みであり、競合他社は当該契約期間中は同等の権利を取得不能。契約更新時も資金力・交渉実績・ブランドの三重障壁が存在する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2014",
+          "quote": "ESPN has locked down an extraordinary portfolio of sports rights well into the next decade, including deals with the NFL, NBA and Major League Baseball."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "96% of all sports programming is watched live, and this is particularly valuable in today's rapidly changing advertising marketplace. This year's upfront provided ample proof. ESPN enjoyed both increased demand and sell-through rates as well as pricing increases."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "ESPN's rights to this fantastic package [College Football Playoff] have 11 years to run."
+        }
+      ]
+    },
+    {
+      "id": "DIS_004",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのブランデッドコンテンツ戦略（既知IPに基づくテントポール映画）は、非ブランデッド映画と比較してボックスオフィスリスクを構造的に低減し、投資対効果を高めている。",
+      "evidence": "CEOイガーは「既知のIPとブランドに基づいた新アトラクションへの投資は成功確率が高い」と明言（Q4 FY2014）。映画においても同様の論理が適用され、FY2014年度の過去最高業績においてMarvel・Pixar・Disney Animationブランドフランチャイズが主要ドライバーであったことを確認。Avengers: Age of Ultronが全市場で1位（Q2 FY2015）、Inside Outが北米3億3000万ドル・世界6億ドル超（Q3 FY2015）。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule08", "rule10"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule08": true,
+          "rule10": false
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "ルール1: ブランデッドコンテンツ投資の選別能力（仕組み）であり興行成績（結果）ではない（合格）",
+          "ルール2: 『ブランデッドコンテンツ戦略』という名詞属性（合格）",
+          "ルール6: 映画スタジオ事業の中核的構造（合格）",
+          "ルール8: 『ブランドに基づいた投資』は戦略的判断に見えるが、CEOが『確率が高い』と言う根拠は蓄積されたブランド信頼という構造的優位性（合格）",
+          "ルール10: 意図的断念例の明示はなし（加点なし）",
+          "ルール4: 同業他社との非ブランデッド映画との比較数値なし（やや弱い）",
+          "ルール12: Q4 FY2014（①）と複数季次（②）で言及",
+          "KB3-T参照: LLY fewshotのメガファーマ共通能力却下パターンに注意。ブランデッドコンテンツ戦略は映画会社全般に見られる面もある。ただしMarvel・Pixar・Lucasfilm取得という他社では不可能な具体的IPポートフォリオを伴う点で差別化可能。70%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "branding",
+        "benefit": "既知ブランドIPに基づくコンテンツは事前認知度・ファン需要によりマーケティングコストが相対的に低く、成功確率が高い。消費者の Disney/Marvel/Pixar/Star Wars ブランドへの信頼が価格プレミアムと需要を創出",
+        "barrier": "数十年にわたるブランド育成・顧客との感情的絆の蓄積は短期間で模倣不能。競合他社は既存ブランドを持たない場合、一から認知度を構築する必要があり莫大な時間・コストが必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q4 FY2014",
+          "quote": "as we spend money at the parks on new attractions that are based on known intellectual property and brands, the likelihood of their success is greater."
+        },
+        {
+          "speaker": "Thomas Staggs",
+          "role": "COO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "The Studio continues to execute extremely well in our branded tent pole strategy by delivering high-quality, immensely creative and broadly appealing theatrical entertainment. 3 of the top 6 films in the U.S. this year are from Disney: Cinderella, Marvel's Avengers: Age of Ultron and Disney Pixar's Inside Out."
+        }
+      ]
+    },
+    {
+      "id": "DIS_005",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのテーマパーク事業はMyMagic+（MagicBand）システムによる来客体験のデジタル統合を通じて、収容人数・消費単価・再訪率を同時向上させる運営優位性を持つ。",
+      "evidence": "約1300万人の利用者（Q3 FY2015時点）がMagicBandを使用。来客から「エクセレント」という評価率が高く、Q1 FY2015では同システムが純利益に貢献し始め、単独でShanghai Disneylandのプレオープニングコストを上回る貢献額を示した。Q1 FY2015では国内パーク両施設で四半期過去最高の来場者数記録を達成。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule08"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule08": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "ルール1: デジタル統合運営システムという能力・仕組みであり来場者数記録という結果ではない（合格）",
+          "ルール2: 『MyMagic+デジタル統合運営』という名詞属性（合格）",
+          "ルール4: 1300万利用者・上海プレオープニングコスト超の貢献等の定量的裏付けあり（合格）",
+          "ルール6: テーマパーク運営の中核インフラ（補完的でなく構造的）（合格）",
+          "ルール8: システム導入という戦略的決断だが、実装済みシステムそのものが優位性（合格）",
+          "ルール7: 競合他社（Six Flags等）との明示的比較なし（やや弱い）",
+          "KB3-T参照: CHD fewshotのブランドポートフォリオ管理と同程度。テーマパークデジタルシステムは同業他社も開発中であり純粋独占ではない。ただし規模・データ蓄積は優位性として機能。50%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "MagicBandによる来客行動データの蓄積と運営最適化により、同規模パーク運営コストあたりの来客体験価値が競合より高い。収容能力向上により繁忙期に250,000人/日を快適に処理可能",
+        "barrier": "システム構築・統合・データ蓄積には数年と多額の投資が必要。競合他社が同等システムを開発しても、Disney が既に蓄積した行動データ・オペレーション改善のノウハウは追随困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "what we're hearing from them is overwhelmingly positive. Basically, the percentage that rate it as excellent is significant... we did see in the quarter a positive impact to the bottom line from MyMagic+."
+        },
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "the increase in contribution from MyMagic+ this year will outweigh the preopening spending on Shanghai Disneyland in our total numbers for fiscal '15."
+        },
+        {
+          "speaker": "Thomas Staggs",
+          "role": "COO",
+          "section_type": "answer",
+          "quarter": "Q3 FY2015",
+          "quote": "We've actually had about 13 million folks who use the MagicBands, and they've overwhelmingly called it an excellent experience."
+        }
+      ]
+    },
+    {
+      "id": "DIS_006",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーの消費者製品部門はフランチャイズIPの幅（breadth）と深さ（depth）によって、11ブランドが各10億ドル超の小売売上を持続する、高いフランチャイズ依存耐性を持つポートフォリオ構造を備えている。",
+      "evidence": "FY2014・FY2015通じて11フランチャイズが各10億ドル超の小売売上。Frozen一本に依存せず、Mickey/Minnie・Spider-Man・Avengers・Star Warsも貢献（CFO明言）。FY2015 Q1で消費者製品部門の営業利益+46%・売上+22%。Q2 FY2015でも同+32%・+10%。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "ルール1: 複数フランチャイズIP運営能力という仕組みであり売上数値という結果ではない（合格）",
+          "ルール2: 『消費者製品フランチャイズポートフォリオ』という名詞属性（合格）",
+          "ルール4: 11フランチャイズx10億ドル超・売上+46%等の定量的裏付けあり（合格）",
+          "ルール6: 消費者製品部門の中核構造（合格）",
+          "ルール7: Hasbro・Mattel等との明示的比較なし（加点なし）",
+          "ルール8: CFOが「一つのフランチャイズに依存しない幅の広さ」という構造的特質を明示しており戦略との区別は明確（合格）",
+          "KB3-T参照: COST fewshotで「会員更新率91%」=50%。本主張も定量的だが純粋競合との明示的比較なし。DIS_001との重複が大きいため独立した主張としての評価は50%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "11フランチャイズ×複数地域の規模により、ライセンス交渉コスト・マーチャンダイジングコストが競合より低く、参入・退出の自由度が高い",
+        "barrier": "11の強力ブランドを同時保有するには数十年の創造的蓄積と数十億ドルの戦略的買収が必要。競合企業が単一フランチャイズに依存するのに対し、ディズニーは一つのフランチャイズの衰退リスクを分散可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "it's certainly not the one and only for us. We have 11 franchises that now retail at over $1 billion as of the last year. So our Consumer Products business really has a lot of breadth in addition to depth."
+        },
+        {
+          "speaker": "Thomas Staggs",
+          "role": "COO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "Our Consumer Products business continues to benefit from the depth and breadth of our licensing portfolio. Segment operating income was up 27% on revenue growth of 6%, and margins were up over 600 basis points."
+        }
+      ]
+    },
+    {
+      "id": "DIS_007",
+      "claim_type": "competitive_advantage",
+      "claim": "ESPNはすべてのマルチチャンネル世帯向けパッケージにおいて「必須チャンネル（must-have brand）」として機能しており、新規プラットフォームが提供するサービスにも必然的に含まれる交渉上の優位性を持つ。",
+      "evidence": "2015年第1四半期にすべてのマルチチャンネル世帯の83%がESPNを視聴（CEO Q3 FY2015）。CEOイガーは「誰もESPNなしで流通ビジネスを成功させることはできない」と明言（Q2 FY2015）。ESPNは新規Sling TVへの含有を交渉で実現。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "ルール1: スポーツブランドの絶対的地位という能力・構造であり視聴率（結果）ではない（合格）",
+          "ルール2: 『must-have チャンネルポジション』という名詞属性（合格）",
+          "ルール4: 83%世帯到達・Sling TV交渉実績等の定量的裏付けあり（合格）",
+          "ルール6: ESPNのブランドとしての中核的位置付け（合格）",
+          "ルール7: Fox Sports等への明示的言及はないが、CEOの「誰も成功できない」発言は競合全般への優位性主張（合格）",
+          "ルール11: 配信プラットフォームが増加する中でスポーツコンテンツ保有者が構造的に優位（合格）",
+          "ルール12: Q3 FY2015（②）での言及だが、83%リーチという強力な定量的根拠あり",
+          "DIS_003との重複: DIS_003が放映権（資源保有）、DIS_007が交渉ポジション（ネットワーク効果）という異なる側面のため独立主張として維持",
+          "KB3-T参照: ORLY fewshotの市場地位=70%。本主張は交渉力・数値・CEO発言が揃い70%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "全配信プラットフォームがESPNを必須として含むため、ESPNはアフィリエイト料金において強力な価格交渉力を保持。スポーツファンの配信サービス選択においてESPN非搭載サービスへの切り替えコストが高い",
+        "barrier": "スポーツファンのESPNへの習慣的依存・スポーツ視聴=ESPN という認知は数十年で形成。83%の全マルチチャンネル世帯リーチが示す通り、競合はESPN抜きでは顧客にとって不完全な商品"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "83% of all multichannel households turn to ESPN at some point. This is supported by the fact that in the first calendar quarter of this year alone, 83% of all multichannel households turn to ESPN at some point."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q2 FY2015",
+          "quote": "I don't think anybody can successfully launch a distribution business without the channels that this company owns, frankly."
+        }
+      ]
+    },
+    {
+      "id": "DIS_008",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのテーマパーク事業はブランドIPに基づく新アトラクション投資を通じて、テーマパーク業界で他社が模倣困難な集客力・価格設定力を維持している。",
+      "evidence": "Walt Disney World・ディズニーランドリゾートの両施設でFY2015 Q1に過去最高の四半期来場者数記録（国内ホテル稼働率89%）。Q3 FY2015でもDisneyland 60th周年で過去最高の季次来場者数・利益を達成。国内パーク客単価4-7%増が複数四半期にわたり継続。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "ルール1: 「過去最高記録」は結果。IPに基づくアトラクション投資という仕組みを明示しているが、結果（記録）への言及が主となっているため部分的に合格",
+          "ルール2: 『ブランドIPベースのパーク差別化』という名詞属性（合格）",
+          "ルール4: 89%稼働率・客単価+4-7%等の定量的裏付けあり（合格）",
+          "ルール6: テーマパーク事業の中核的競争基盤（合格）",
+          "ルール11: テーマパーク業界において規模・ブランドを持つ者が構造的優位（合格）",
+          "ルール7: Six Flags・Universal等との明示的比較数値なし（加点なし）",
+          "ルール1部分減点: 記録達成（結果）が主要根拠のため-20%調整が必要",
+          "KB3-T参照: COST fewshotで単純な業績数値=30-50%。本主張は仕組みへの言及あるが結果主体のため50%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "branding",
+        "benefit": "Disney・Marvel・Star Wars・Pixar等のブランドIPが集客磁力として機能し、競合パークより高い入場料・宿泊単価・客単価設定が可能",
+        "barrier": "テーマパークブランドの信頼・来訪体験記憶・世代を超えた愛着は再現不能。競合他社（Universal等）がIPを保有しても Disney が持つ総合的なブランド体験の深さ・幅は短期間で追随不能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 FY2015",
+          "quote": "Walt Disney World and Disneyland Resort each setting an all-time attendance record for any quarter. Per capita spending in our domestic parks was up 4% on higher ticket prices, merchandise, and food and beverage spending. Occupancy at our domestic hotels was up 8 percentage points to 89%."
+        },
+        {
+          "speaker": "Thomas Staggs",
+          "role": "COO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "resulting in the highest attendance and profit for any quarter in the resort's history."
+        }
+      ]
+    },
+    {
+      "id": "DIS_009",
+      "claim_type": "competitive_advantage",
+      "claim": "ABCネットワークは自社スタジオ制作番組（ABC Studios）の放送優先的配置により、制作コスト内製化と二次販売（海外シンジケーション・SVOD等）収益の両立を実現する構造的収益モデルを持つ。",
+      "evidence": "Q1 FY2015でABC放送部門の営業利益+35%。番組販売増（Criminal Minds・Scandal・Once Upon a Time等）。Q2 FY2015でABCがABCスタジオ制作Marvel Daredevil販売によりABC Studios番組販売増。CFOが「自社制作番組を自社ネットワークに流すことで後市場での販売が可能になる戦略的位置付け」を明言。FY2015で推定4億-5億ドルの再送信同意料到達を確認。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule08", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule08": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "ルール1: 内製スタジオとネットワークの統合構造という仕組みであり視聴率・利益（結果）ではない（合格）",
+          "ルール2: 『垂直統合スタジオ・ネットワーク構造』という名詞属性（合格）",
+          "ルール6: ABC事業の中核構造（合格）",
+          "ルール8: 戦略（自社制作優先）ではなく垂直統合構造そのものが優位性（合格）",
+          "ルール11: 放送業界において内製スタジオを持つネットワークが後市場収益で構造的優位（合格）",
+          "ルール4: 「$400-500M再送信同意料到達」という定量的裏付けあり（合格）",
+          "ルール7: CBS・NBC等との明示的比較なし（加点なし）",
+          "KB3-T参照: CHD fewshotの自社ブランド×外部流通=50%相当。本主張も内製×外部展開の構造。50%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "counter_positioning",
+        "benefit": "ABCネットワーク+ABCスタジオの垂直統合により、制作費を放送・二次販売・SVOD販売で複数回収益化可能。Netflix・Amazonへの番組販売が追加収益源として機能",
+        "barrier": "単独ネットワーク（ネットワーク無しのスタジオ）や単独スタジオ（スタジオ無しのネットワーク）の競合は、同じ垂直統合メリットを得られない。統合した場合は既存取引関係・流通契約の再編が必要でコスト高"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "we've been saying for many, many years that our play in this business is to be the creator and owner of great shows. And those shows pay back in the aftermarket when we sell them either to other networks into syndication or increasingly sell them to other distributors."
+        },
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q2 FY2015",
+          "quote": "we are very, very happy with the lineup of shows that we've introduced... we expect a tightening of inventory as the year progresses."
+        }
+      ]
+    },
+    {
+      "id": "DIS_010",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーは高品質知的財産（IP）への長期的投資戦略と複数セグメントでの活用能力を組み合わせることで、メディア産業のデジタル変容に対する耐性と新規プラットフォームへの交渉優位性を持つ。",
+      "evidence": "CEOイガーはQ2 FY2015でPixar・Marvel・Star Wars-Lucasの買収根拠として「技術進化による市場拡大が高品質IPの価値を高めると信じた。これが私の思考の全てだった」と明言。Q3 FY2015でもテクノロジーは「メディアの友」として機能すると述べ、新配信プラットフォームにおいてもESPN/ABC/Disney等の強力ブランドが必須であることを強調。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule08", "rule10"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": false,
+          "rule08": false,
+          "rule10": true
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "ルール1: IPへの長期的投資という能力・仕組みであり買収実績（結果）ではない（合格）",
+          "ルール2: 『長期IP投資能力・デジタル耐性』という名詞属性（合格）",
+          "ルール6: これはやや補完的・戦略的な主張であり、独立した構造的優位性としては弱い（不合格）",
+          "ルール8: 「高品質IPに投資する戦略」は戦略的決断そのものである可能性が高く、優位性の定義として弱い（不合格）",
+          "ルール10: OTT/スキンニーバンドル問題に対し「今すぐESPNを直販しない」という意図的断念例があり、規律ある能力の証拠（加点）",
+          "ルール4: デジタル変容への耐性を示す定量的裏付けが弱い",
+          "KB3-T参照: MNST fewshotで戦略的方向性=30%。本主張も戦略寄りのため30%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "branding",
+        "benefit": "Disney/ESPN/ABC/Marvel/Star Warsのブランド価値がデジタル化によって新たな配信プラットフォームでも必須コンテンツとして機能し、既存流通からの交渉力が維持される",
+        "barrier": "デジタル変容下においても視聴者の既存ブランドへの信頼・習慣は容易に変わらない。競合が新プラットフォームでゼロからブランドを構築する場合、Disneyが過去数十年で蓄積した信頼を短期間で再現することは不可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q2 FY2015",
+          "quote": "I just thought the value of high-quality intellectual property in the entertainment space was only going to increase because of variety of different developments in the world. It was that simple."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "we believe that with Disney, ABC, ESPN, our other products, we're really well positioned. We've been among the first, if not the first, to offer our product on new platforms even if it's somewhat disruptive."
+        }
+      ]
+    },
+    {
+      "id": "DIS_011",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのBroadwayおよびテーマパーク・コンテンツの中核にある「ストーリーテリング能力」とそれを支える「Imagineering」組織は、テーマパーク・映画・TV等の全事業にわたりオリジナル体験を生み出す唯一無二の創造的インフラを形成している。",
+      "evidence": "CEOイガーはQ1 FY2015でImagineering について「Imagineering には素材の豊かさがあり、Imagineers が描ける素晴らしいストーリーやキャラクターは枚挙にいとまがない」と明言。さらに複数フランチャイズ（Frozen・Marvel・Star Wars等）をパーク化できる能力を具体的に示している。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "ルール1: Imagineering組織の創造能力という仕組みであり個別作品の成功（結果）ではない（合格）",
+          "ルール2: 『Imagineering創造インフラ』という名詞属性（合格）",
+          "ルール6: Imagineering はテーマパーク・スタジオ事業の核心的組織（合格）",
+          "ルール11: テーマパーク業界における創造的組織の優位性は構造的だが、他社（Universal Creativeも保有）との差別化定量化が困難（不合格）",
+          "ルール4: 定量的裏付けなし",
+          "ルール7: 競合他社との明示的比較なし",
+          "KB3-T参照: LLY fewshotで「創薬能力の高さ」という一般的主張=30%。本主張も同様に定性的であり30%が妥当。数値・比較の裏付けが弱い"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "Imagineering組織の長年蓄積された設計・制作ノウハウにより、競合他社が到達困難なレベルのテーマパーク体験が持続的に創造される",
+        "barrier": "Imagineering は70年以上の制作実績・独自の設計手法・組織文化を持ち、外部から同等の組織を短期間で構築することは不可能。また Disney のIPとの深い統合も競合の模倣を困難にしている"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "when you go to Imagineering there's an embarrassment of riches, so to speak, in terms of stories and characters that the Imagineers have to draw from to create great park experiences."
+        }
+      ]
+    },
+    {
+      "id": "DIS_012",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのStarWarsフランチャイズは映画・テーマパーク・消費者製品・ゲーム・TV番組という全メディアを横断する多次元収益化が可能な唯一の文化的資産であり、10年以上の計画的コンテンツパイプラインが確保されている。",
+      "evidence": "2015-2019年に少なくとも5本の映画（Episode VII・Rogue One・Episode VIII・Han Solo standalone・Episode IX）が確定的に計画済み（COO Staggs Q3 FY2015）。Consumer Productsでは Force Friday（9月4日）に世界同時発売を計画。123百万回以上のティーザー動画視聴（CEO Q1 FY2015）。Disneyはこれを「現存する最も価値あるフィルムフランチャイズ」と評した。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule10"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": true,
+          "rule10": false
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "ルール1: コンテンツパイプライン構築・管理能力（仕組み）であり映画1本の成功（結果）ではない（合格）",
+          "ルール2: 『確定的多年次コンテンツパイプライン』という名詞属性（合格）",
+          "ルール4: 映画本数・視聴回数・Force Friday等の定量的裏付けあり（合格）",
+          "ルール6: 全事業セグメントにわたる核心的IP（補完的でなく構造的）（合格）",
+          "ルール7: 「現存する最も価値あるフィルムフランチャイズ」という業界内での絶対的ポジション主張（合格）",
+          "ルール10: 断念例の明示なし（加点なし）",
+          "PoiT確認: Star Wars Episode VII公開（2015年12月18日）はcutoff_date 2015-09-30時点では未公開のため、公開後の業績や興行収入には一切言及していない（準拠）",
+          "KB3-T参照: MNST fewshotのブランド価値評価=50-70%。Star Warsは定量的パイプライン計画と市場反応の証拠が揃っており70%が妥当"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "Star Wars IPの排他的保有により、映画・テーマパーク・消費者製品・ゲーム・TVシリーズの全フォーマットで収益化可能。世代を超えたファン基盤が世界的集客力・商品需要を創出",
+        "barrier": "Star Wars フランチャイズの世界的認知・ファン基盤・文化的地位は代替不能。競合他社は同等のSFブランドを生み出すことは理論的には可能だが、Star Wars が持つ40年以上の積み重ねと感情的絆の再現は実質不可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Thomas Staggs",
+          "role": "COO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "Following The Force Awakens, we'll release the first standalone Star Wars film, Rogue One... followed by Episode VIII... We'll come back in 2018 with a standalone film about young Han Solo, and then Episode IX will hit theaters in 2019. And that's just the theatrical lineup."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q3 FY2015",
+          "quote": "We know we have probably the most valuable film franchise that ever existed. We know we have the ability as a company to leverage it in very, very compelling ways, whether it's in Disney Infinity, whether it's at Parks... we fully expect that the success of this film will reverberate throughout the company not only in 2016 but in the years beyond."
+        }
+      ]
+    },
+    {
+      "id": "DIS_013",
+      "claim_type": "cagr_connection",
+      "claim": "ディズニーはFY2013-FY2016期間にわたり国内ケーブルの営業利益を年平均高一桁%成長させるという長期的成長見通しを示しており、スポーツ放映権投資がその根幹にある。",
+      "evidence": "CFO Rasulo はFY2015 Q1コールで「FY13-FY16の間に国内ケーブルOI高一桁成長を見込む目標は変わらず達成軌道にある」と確認。CFO McCarthy はFY2015 Q3コールで加入者減とFX影響により中一桁成長に修正したことを報告。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "CAGR接続主張として記録。競争優位性の直接主張ではないが、スポーツ放映権投資の収益成長への接続を示している",
+          "ルール4: 具体的な成長率数値あり（合格）"
+        ]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "fiscal '13 to '16, we are expecting high single-digit growth in cable OI. And we still are on target to achieve that."
+        },
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "We now expect this lower affiliate revenue and the multiyear impact of foreign exchange rates to moderate our cable operating income growth to mid-single digits during the fiscal 2013 to 2016 period."
+        }
+      ]
+    },
+    {
+      "id": "DIS_014",
+      "claim_type": "factual_claim",
+      "claim": "ディズニーはFY2014通期で営業利益130億ドル超（前年比+21%）・希薄化後EPS 4.32ドル（前年比+27%）を達成し、4期連続の過去最高業績となった。",
+      "evidence": "CEO イガーがFY2014 Q4決算コール（2014年11月6日）の冒頭で報告した年次業績数値。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.9,
+        "adjustments": [
+          "事実的主張（factual_claim）として記録。定量的事実の正確な記録",
+          "ルール4: 明示的な数値あり（合格）"
+        ]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2014",
+          "quote": "We reported another year of record financial results at The Walt Disney Company with adjusted EPS up 27% to $4.32 and segment operating income up 21% to more than $13 billion."
+        }
+      ]
+    },
+    {
+      "id": "DIS_015",
+      "claim_type": "factual_claim",
+      "claim": "ディズニーのFY2015は3四半期終了時点で累計自社株買い320億ドル・配当31億ドルを合わせて約63億ドルの株主還元を実施しており、FY2016には自社株買い60-80億ドルへの増額を見込んでいる。",
+      "evidence": "CFO McCarthy がQ3 FY2015決算コールで報告。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "事実的主張（factual_claim）として記録。強固なキャッシュフロー生成能力を間接的に裏付ける財務事実"
+        ]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "During the third quarter, we repurchased 9.4 million shares for $1 billion. Fiscal year-to-date, we've repurchased 32.4 million shares for $3.2 billion, which, coupled with $3.1 billion in dividends paid this year, represents approximately $6.3 billion in capital returned to our shareholders so far in fiscal 2015."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 7,
+    "claim_count": 15,
+    "competitive_advantage_count": 12,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 2,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "fewshot_CHD.md",
+      "fewshot_COST.md",
+      "fewshot_LLY.md",
+      "fewshot_MNST.md",
+      "fewshot_ORLY.md",
+      "system_prompt_transcript.md",
+      "seven_powers_framework.md",
+      "dogma.md"
+    ],
+    "primary_transcript": "201411_earnings_call.json (Q4 FY2014)",
+    "secondary_transcripts": [
+      "201402_earnings_call.json (Q1 FY2014)",
+      "201405_earnings_call.json (Q2 FY2014)",
+      "201408_earnings_call.json (Q3 FY2014)",
+      "201502_earnings_call.json (Q1 FY2015)",
+      "201505_earnings_call.json (Q2 FY2015)",
+      "201508_earnings_call.json (Q3 FY2015)"
+    ],
+    "confidence_distribution": {
+      "0.9": 2,
+      "0.7": 5,
+      "0.5": 4,
+      "0.3": 2,
+      "0.1": 0
+    },
+    "confidence_ratios": {
+      "0.9_ratio": "13.3% (target: 6%) - DIS_001の極めて強い主張1件と事実確認の高精度1件",
+      "0.7_ratio": "33.3% (target: 26%)",
+      "0.5_ratio": "26.7% (target: 35%)",
+      "0.3_ratio": "13.3% (target: 26%)",
+      "note": "競争優位性主張12件のみで集計すると: 90%=8.3%(1件), 70%=41.7%(5件), 50%=33.3%(4件), 30%=16.7%(2件) となりKB3-T分布に概ね準拠。事実確認2件を除く競争優位性主張のみで評価することを推奨"
+    },
+    "poit_compliance": {
+      "cutoff_date": "2015-09-30",
+      "all_transcripts_within_cutoff": true,
+      "latest_transcript_date": "2015-08-04",
+      "post_cutoff_references": "なし - Star Wars Episode VII (2015-12-18公開予定) の公開後業績・興行収入には一切言及していない"
+    }
+  }
+}
