@@ -9,6 +9,9 @@ Test TODO List:
 - [x] BloombergFetchOptions: initialization with defaults and custom values
 - [x] BloombergDataResult: initialization and properties
 - [x] OverrideOption: initialization for overrides
+- [x] ChunkConfig: initialization with defaults and custom values
+- [x] EarningsInfo: initialization with required fields
+- [x] IdentifierConversionResult: initialization with required fields
 """
 
 from datetime import datetime
@@ -365,3 +368,161 @@ class TestFieldInfo:
         assert field_info.field_name == "Last Price"
         assert field_info.description == "The last traded price"
         assert field_info.data_type == "Double"
+
+
+class TestChunkConfig:
+    """Tests for ChunkConfig dataclass.
+
+    ChunkConfig holds configuration for chunked Bloomberg requests.
+    """
+
+    def test_正常系_デフォルト値で初期化できる(self) -> None:
+        """ChunkConfig がデフォルト値で初期化されることを確認。"""
+        from market.bloomberg.constants import (
+            DEFAULT_CHUNK_SIZE,
+            DEFAULT_MAX_RETRIES,
+            DEFAULT_RETRY_DELAY,
+        )
+        from market.bloomberg.types import ChunkConfig
+
+        config = ChunkConfig()
+
+        assert config.chunk_size == DEFAULT_CHUNK_SIZE
+        assert config.max_retries == DEFAULT_MAX_RETRIES
+        assert config.retry_delay == DEFAULT_RETRY_DELAY
+
+    def test_正常系_カスタム値で初期化できる(self) -> None:
+        """ChunkConfig がカスタム値で初期化されることを確認。"""
+        from market.bloomberg.types import ChunkConfig
+
+        config = ChunkConfig(chunk_size=100, max_retries=5, retry_delay=1.5)
+
+        assert config.chunk_size == 100
+        assert config.max_retries == 5
+        assert config.retry_delay == 1.5
+
+    def test_正常系_chunk_sizeが正の整数(self) -> None:
+        """chunk_size が正の整数であることを確認。"""
+        from market.bloomberg.types import ChunkConfig
+
+        config = ChunkConfig(chunk_size=50)
+
+        assert isinstance(config.chunk_size, int)
+        assert config.chunk_size > 0
+
+    def test_正常系_retry_delayが浮動小数点数(self) -> None:
+        """retry_delay が float であることを確認。"""
+        from market.bloomberg.types import ChunkConfig
+
+        config = ChunkConfig(retry_delay=2.0)
+
+        assert isinstance(config.retry_delay, float)
+
+
+class TestEarningsInfo:
+    """Tests for EarningsInfo dataclass.
+
+    EarningsInfo holds earnings announcement information for a security.
+    """
+
+    def test_正常系_必須パラメータで初期化できる(self) -> None:
+        """EarningsInfo が必須パラメータで初期化されることを確認。"""
+        from datetime import date
+
+        from market.bloomberg.types import EarningsInfo
+
+        info = EarningsInfo(
+            security="AAPL US Equity",
+            expected_report_dt=date(2024, 10, 31),
+            period="Q4 2024",
+        )
+
+        assert info.security == "AAPL US Equity"
+        assert info.expected_report_dt == date(2024, 10, 31)
+        assert info.period == "Q4 2024"
+
+    def test_正常系_異なる銘柄で初期化できる(self) -> None:
+        """異なる銘柄でも EarningsInfo が初期化されることを確認。"""
+        from datetime import date
+
+        from market.bloomberg.types import EarningsInfo
+
+        info = EarningsInfo(
+            security="7203 JP Equity",
+            expected_report_dt=date(2024, 11, 1),
+            period="FY2024 Q2",
+        )
+
+        assert info.security == "7203 JP Equity"
+        assert info.period == "FY2024 Q2"
+
+    def test_正常系_securityがstr型(self) -> None:
+        """security フィールドが str 型であることを確認。"""
+        from datetime import date
+
+        from market.bloomberg.types import EarningsInfo
+
+        info = EarningsInfo(
+            security="MSFT US Equity",
+            expected_report_dt=date(2024, 7, 30),
+            period="Q3 2024",
+        )
+
+        assert isinstance(info.security, str)
+
+
+class TestIdentifierConversionResult:
+    """Tests for IdentifierConversionResult dataclass.
+
+    IdentifierConversionResult holds the result of converting a security identifier.
+    """
+
+    def test_正常系_必須パラメータで初期化できる(self) -> None:
+        """IdentifierConversionResult が必須パラメータで初期化されることを確認。"""
+        from datetime import date
+
+        from market.bloomberg.types import IdentifierConversionResult
+
+        result = IdentifierConversionResult(
+            original="AAPL US Equity",
+            converted="US0378331005",
+            date=date(2024, 1, 15),
+            status="success",
+        )
+
+        assert result.original == "AAPL US Equity"
+        assert result.converted == "US0378331005"
+        assert result.date == date(2024, 1, 15)
+        assert result.status == "success"
+
+    def test_正常系_失敗ステータスで初期化できる(self) -> None:
+        """失敗ステータスで IdentifierConversionResult が初期化されることを確認。"""
+        from datetime import date
+
+        from market.bloomberg.types import IdentifierConversionResult
+
+        result = IdentifierConversionResult(
+            original="INVALID_TICKER",
+            converted="",
+            date=date(2024, 1, 15),
+            status="failed",
+        )
+
+        assert result.status == "failed"
+        assert result.converted == ""
+
+    def test_正常系_originalがstr型(self) -> None:
+        """original フィールドが str 型であることを確認。"""
+        from datetime import date
+
+        from market.bloomberg.types import IdentifierConversionResult
+
+        result = IdentifierConversionResult(
+            original="7203 JP Equity",
+            converted="/sedol/6900643",
+            date=date(2024, 1, 15),
+            status="success",
+        )
+
+        assert isinstance(result.original, str)
+        assert isinstance(result.converted, str)
