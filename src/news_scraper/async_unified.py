@@ -165,7 +165,7 @@ async def async_collect_financial_news(
                 config.impersonate  # type: ignore[assignment]
             )
             session_yf = create_session(impersonate=imp, proxy=config.proxy)
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             return await loop.run_in_executor(
                 None,
                 lambda: yf_module.fetch_multiple_tickers(
@@ -188,7 +188,7 @@ async def async_collect_financial_news(
                 config.impersonate  # type: ignore[assignment]
             )
             session_yf_s = create_session(impersonate=imp, proxy=config.proxy)
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             return await loop.run_in_executor(
                 None,
                 lambda: yf_module2.fetch_multiple_searches(
