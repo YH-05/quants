@@ -7,6 +7,12 @@ Tests cover all acceptance criteria from Issue #3624:
 - prepare_scoring_input() builds phase 1 output + KB paths JSON
 - validate_scoring_output() restores Phase 1 info via original_claims ID lookup
 - All functions write to workspace_dir correctly
+
+Tests cover all acceptance criteria from Issue #3650:
+- consolidate_scored_claims() accepts optional output_path parameter
+- prepare_extraction_input() accepts optional output_dir parameter
+- prepare_universe_chunks() splits universe.json into chunk_{n:02d}.json files
+- build_phase2_checkpoint() aggregates phase2 scoring outputs into phase2_scored.json
 """
 
 from __future__ import annotations
@@ -18,10 +24,12 @@ from typing import TYPE_CHECKING, Any
 import pytest
 
 from dev.ca_strategy.agent_io import (
+    build_phase2_checkpoint,
     consolidate_scored_claims,
     prepare_extraction_input,
     prepare_scoring_batches,
     prepare_scoring_input,
+    prepare_universe_chunks,
     validate_extraction_output,
     validate_scoring_output,
 )
@@ -1266,3 +1274,543 @@ class TestConsolidateScoredClaims:
         # バッチ 1 はスキップ、バッチ 0 と 2 のみ統合される
         assert all_ids == ["AAPL-CA-000", "AAPL-CA-002"]
         assert data["metadata"]["scored_count"] == 2
+
+
+# ===========================================================================
+# Tests: consolidate_scored_claims (output_path parameter extension)
+# ===========================================================================
+
+
+class TestConsolidateScoredClaimsOutputPath:
+    """Tests for consolidate_scored_claims() output_path parameter (Issue #3650)."""
+
+    def _write_scored_batch(
+        self,
+        workspace_dir: Path,
+        ticker: str,
+        batch_num: int,
+        claim_ids: list[str],
+    ) -> Path:
+        """Write a scored_batch_N.json file to phase2_output/{ticker}/."""
+        phase2_dir = workspace_dir / "phase2_output" / ticker
+        phase2_dir.mkdir(parents=True, exist_ok=True)
+        batch_path = phase2_dir / f"scored_batch_{batch_num}.json"
+        data = _make_scored_batch_data(claim_ids)
+        batch_path.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        return batch_path
+
+    def test_正常系_output_pathがNoneのときデフォルトパスに書き出される(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """When output_path=None, result is written to workspace_dir/scoring_output.json."""
+        self._write_scored_batch(workspace_dir, "AAPL", 0, ["AAPL-CA-000"])
+
+        result_path = consolidate_scored_claims(
+            workspace_dir=workspace_dir,
+            ticker="AAPL",
+            output_path=None,
+        )
+
+        assert result_path == workspace_dir / "scoring_output.json"
+        assert result_path.exists()
+
+    def test_正常系_output_pathを指定すると指定先に書き出される(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """When output_path is given, file is written to that path."""
+        self._write_scored_batch(workspace_dir, "AAPL", 0, ["AAPL-CA-000"])
+
+        custom_path = tmp_path / "custom_output" / "my_scoring.json"
+        result_path = consolidate_scored_claims(
+            workspace_dir=workspace_dir,
+            ticker="AAPL",
+            output_path=custom_path,
+        )
+
+        assert result_path == custom_path
+        assert custom_path.exists()
+        data = json.loads(custom_path.read_text(encoding="utf-8"))
+        assert len(data["scored_claims"]) == 1
+
+    def test_正常系_引数なしで呼ぶと後方互換性を維持する(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """Calling without output_path keyword arg maintains backward compatibility."""
+        self._write_scored_batch(workspace_dir, "AAPL", 0, ["AAPL-CA-001"])
+
+        # Call without output_path (original signature)
+        result_path = consolidate_scored_claims(
+            workspace_dir=workspace_dir,
+            ticker="AAPL",
+        )
+
+        assert result_path == workspace_dir / "scoring_output.json"
+        assert result_path.exists()
+
+
+# ===========================================================================
+# Tests: prepare_extraction_input (output_dir parameter extension)
+# ===========================================================================
+
+
+class TestPrepareExtractionInputOutputDir:
+    """Tests for prepare_extraction_input() output_dir parameter (Issue #3650)."""
+
+    def test_正常系_output_dirがNoneのときworkspace_dirに書き出される(
+        self,
+        config_path: Path,
+        transcript_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """When output_dir=None, extraction_input.json is written to workspace_dir."""
+        result = prepare_extraction_input(
+            config_path=config_path,
+            transcript_dir=transcript_dir,
+            kb_base_dir=kb_base_dir,
+            ticker="AAPL",
+            workspace_dir=workspace_dir,
+            output_dir=None,
+        )
+
+        assert (workspace_dir / "extraction_input.json").exists()
+        assert result["workspace_dir"] == str(workspace_dir)
+
+    def test_正常系_output_dirを指定すると指定先に書き出される(
+        self,
+        config_path: Path,
+        transcript_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """When output_dir is given, extraction_input.json is written to that dir."""
+        custom_dir = tmp_path / "custom_extraction"
+
+        result = prepare_extraction_input(
+            config_path=config_path,
+            transcript_dir=transcript_dir,
+            kb_base_dir=kb_base_dir,
+            ticker="AAPL",
+            workspace_dir=workspace_dir,
+            output_dir=custom_dir,
+        )
+
+        assert (custom_dir / "extraction_input.json").exists()
+        # workspace_dir in payload reflects the output_dir
+        assert result["workspace_dir"] == str(custom_dir)
+
+    def test_正常系_引数なしで呼ぶと後方互換性を維持する(
+        self,
+        config_path: Path,
+        transcript_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """Calling without output_dir keyword arg maintains backward compatibility."""
+        result = prepare_extraction_input(
+            config_path=config_path,
+            transcript_dir=transcript_dir,
+            kb_base_dir=kb_base_dir,
+            ticker="AAPL",
+            workspace_dir=workspace_dir,
+        )
+
+        assert (workspace_dir / "extraction_input.json").exists()
+        assert isinstance(result, dict)
+
+
+# ===========================================================================
+# Tests: prepare_universe_chunks (new function)
+# ===========================================================================
+
+
+def _write_universe_json(path: Path, tickers: list[str]) -> None:
+    """Write a universe.json with given ticker symbols to path."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    data: dict[str, Any] = {
+        "_metadata": {
+            "description": "test universe",
+            "total_count": len(tickers),
+        },
+        "tickers": [{"ticker": t, "gics_sector": "Financials"} for t in tickers],
+    }
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+class TestPrepareUniverseChunks:
+    """Tests for prepare_universe_chunks() (Issue #3650)."""
+
+    def test_正常系_10銘柄を1チャンクに分割する(self, tmp_path: Path) -> None:
+        """10 tickers with chunk_size=10 should produce 1 chunk file."""
+        tickers = [f"TK{i:02d}" for i in range(10)]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=10,
+        )
+
+        assert len(chunk_paths) == 1
+        assert chunk_paths[0].name == "chunk_00.json"
+
+    def test_正常系_25銘柄をchunk_size10で3チャンクに分割する(
+        self, tmp_path: Path
+    ) -> None:
+        """25 tickers with chunk_size=10 should produce 3 chunk files."""
+        tickers = [f"TK{i:02d}" for i in range(25)]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=10,
+        )
+
+        assert len(chunk_paths) == 3
+        assert chunk_paths[0].name == "chunk_00.json"
+        assert chunk_paths[1].name == "chunk_01.json"
+        assert chunk_paths[2].name == "chunk_02.json"
+
+    def test_正常系_チャンクファイルがuniverse_pathと同じディレクトリに生成される(
+        self, tmp_path: Path
+    ) -> None:
+        """Chunk files are written to the same directory as universe_path."""
+        tickers = [f"TK{i:02d}" for i in range(5)]
+        universe_path = tmp_path / "config" / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=10,
+        )
+
+        for p in chunk_paths:
+            assert p.parent == universe_path.parent
+            assert p.exists()
+
+    def test_正常系_各チャンクにtickersフィールドが含まれる(
+        self, tmp_path: Path
+    ) -> None:
+        """Each chunk JSON should contain a 'tickers' list."""
+        tickers = ["AAPL", "MSFT", "GOOG"]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=2,
+        )
+
+        assert len(chunk_paths) == 2
+        chunk0_data = json.loads(chunk_paths[0].read_text(encoding="utf-8"))
+        assert "tickers" in chunk0_data
+        assert len(chunk0_data["tickers"]) == 2
+        chunk1_data = json.loads(chunk_paths[1].read_text(encoding="utf-8"))
+        assert len(chunk1_data["tickers"]) == 1
+
+    def test_正常系_全銘柄が損失なくチャンクに含まれる(self, tmp_path: Path) -> None:
+        """All tickers must appear across all chunks with no loss."""
+        tickers = [f"TK{i:02d}" for i in range(22)]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=10,
+        )
+
+        all_tickers_in_chunks: list[str] = []
+        for p in chunk_paths:
+            data = json.loads(p.read_text(encoding="utf-8"))
+            all_tickers_in_chunks.extend(t["ticker"] for t in data["tickers"])
+
+        assert sorted(all_tickers_in_chunks) == sorted(tickers)
+
+    def test_正常系_chunk_size1で銘柄ごとに1ファイル生成される(
+        self, tmp_path: Path
+    ) -> None:
+        """chunk_size=1 should produce one file per ticker."""
+        tickers = ["AAPL", "MSFT", "GOOG"]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=1,
+        )
+
+        assert len(chunk_paths) == 3
+
+    def test_正常系_デフォルトchunk_sizeは10(self, tmp_path: Path) -> None:
+        """Default chunk_size should be 10."""
+        tickers = [f"TK{i:02d}" for i in range(15)]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        chunk_paths = prepare_universe_chunks(universe_path=universe_path)
+
+        # 15 tickers with default chunk_size=10 -> 2 chunks
+        assert len(chunk_paths) == 2
+
+    def test_異常系_universe_pathが存在しない場合はValueError(
+        self, tmp_path: Path
+    ) -> None:
+        """prepare_universe_chunks() should raise ValueError when universe_path missing."""
+        with pytest.raises(ValueError, match="universe.json not found"):
+            prepare_universe_chunks(
+                universe_path=tmp_path / "nonexistent.json",
+                chunk_size=10,
+            )
+
+    def test_異常系_chunk_sizeが0以下の場合はValueError(self, tmp_path: Path) -> None:
+        """prepare_universe_chunks() should raise ValueError when chunk_size <= 0."""
+        tickers = ["AAPL"]
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, tickers)
+
+        with pytest.raises(ValueError, match="chunk_size must be a positive integer"):
+            prepare_universe_chunks(universe_path=universe_path, chunk_size=0)
+
+    def test_エッジケース_tickersが空のとき空リストを返す(self, tmp_path: Path) -> None:
+        """Empty tickers list in universe.json should return empty list."""
+        universe_path = tmp_path / "universe.json"
+        _write_universe_json(universe_path, [])
+
+        chunk_paths = prepare_universe_chunks(
+            universe_path=universe_path,
+            chunk_size=10,
+        )
+
+        assert chunk_paths == []
+
+
+# ===========================================================================
+# Tests: build_phase2_checkpoint (new function)
+# ===========================================================================
+
+
+def _write_scoring_output(
+    workspace_dir: Path,
+    ticker: str,
+    scored_claims: list[dict[str, Any]],
+) -> Path:
+    """Write phase2_output/{ticker}/scoring_output.json with scored claims."""
+    output_dir = workspace_dir / "phase2_output" / ticker
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "scoring_output.json"
+    data = {
+        "scored_claims": scored_claims,
+        "metadata": {
+            "scored_count": len(scored_claims),
+            "gatekeeper_applied": False,
+        },
+    }
+    output_path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    return output_path
+
+
+def _make_scored_claim_dict(
+    claim_id: str, *, final_confidence: float = 0.7
+) -> dict[str, Any]:
+    """Build a minimal scored claim dict for use in scoring_output.json."""
+    return {
+        "id": claim_id,
+        "claim_type": "competitive_advantage",
+        "claim": f"Claim text for {claim_id}",
+        "evidence": "Evidence for claim.",
+        "rule_evaluation": {
+            "applied_rules": ["rule_1_t"],
+            "results": {"rule_1_t": True},
+            "confidence": 0.7,
+            "adjustments": [],
+        },
+        "final_confidence": final_confidence,
+        "adjustments": [],
+        "gatekeeper": None,
+        "kb1_evaluations": [],
+        "kb2_patterns": [],
+        "overall_reasoning": "Good claim.",
+    }
+
+
+class TestBuildPhase2Checkpoint:
+    """Tests for build_phase2_checkpoint() (Issue #3650)."""
+
+    def test_正常系_複数銘柄のscoring_outputをcheckpointに集約する(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """build_phase2_checkpoint() should aggregate scoring outputs from multiple tickers."""
+        _write_scoring_output(
+            workspace_dir,
+            "AAPL",
+            [
+                _make_scored_claim_dict("AAPL-CA-001"),
+                _make_scored_claim_dict("AAPL-CA-002"),
+            ],
+        )
+        _write_scoring_output(
+            workspace_dir,
+            "MSFT",
+            [
+                _make_scored_claim_dict("MSFT-CA-001"),
+            ],
+        )
+
+        output_path = tmp_path / "phase2_scored.json"
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+        )
+
+        assert output_path.exists()
+        assert "AAPL" in result
+        assert "MSFT" in result
+        assert len(result["AAPL"]) == 2
+        assert len(result["MSFT"]) == 1
+
+    def test_正常系_出力はticker_to_scored_claims形式になる(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """Output must be {ticker: [ScoredClaim.model_dump()]} format."""
+        _write_scoring_output(
+            workspace_dir,
+            "AAPL",
+            [
+                _make_scored_claim_dict("AAPL-CA-001", final_confidence=0.8),
+            ],
+        )
+
+        output_path = tmp_path / "phase2_scored.json"
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+        )
+
+        assert "AAPL" in result
+        claims = result["AAPL"]
+        assert len(claims) == 1
+        claim = claims[0]
+        # Must be a dict (model_dump() output)
+        assert isinstance(claim, dict)
+        assert "id" in claim
+        assert "final_confidence" in claim
+        assert abs(claim["final_confidence"] - 0.8) < 1e-6
+
+    def test_正常系_jsonファイルがoutput_pathに書き出される(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """build_phase2_checkpoint() must write JSON to output_path."""
+        _write_scoring_output(
+            workspace_dir,
+            "AAPL",
+            [
+                _make_scored_claim_dict("AAPL-CA-001"),
+            ],
+        )
+
+        output_path = tmp_path / "checkpoint" / "phase2_scored.json"
+        build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+        )
+
+        assert output_path.exists()
+        stored = json.loads(output_path.read_text(encoding="utf-8"))
+        assert "AAPL" in stored
+        assert len(stored["AAPL"]) == 1
+
+    def test_正常系_skip_missing_Falseで存在しない銘柄はValueError(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """With skip_missing=False, missing scoring_output.json raises ValueError."""
+        # phase2_output/AAPL/ does not exist
+        output_path = tmp_path / "phase2_scored.json"
+
+        with pytest.raises(ValueError, match="No scoring_output.json found"):
+            build_phase2_checkpoint(
+                workspace_dir=workspace_dir,
+                output_path=output_path,
+                skip_missing=False,
+            )
+
+    def test_正常系_skip_missing_Trueで存在しない銘柄はスキップ(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """With skip_missing=True, missing scoring_output.json files are skipped."""
+        # One ticker has output, one dir exists but no scoring_output.json
+        _write_scoring_output(
+            workspace_dir,
+            "AAPL",
+            [
+                _make_scored_claim_dict("AAPL-CA-001"),
+            ],
+        )
+        # Create an empty dir for MSFT (no scoring_output.json)
+        (workspace_dir / "phase2_output" / "MSFT").mkdir(parents=True, exist_ok=True)
+
+        output_path = tmp_path / "phase2_scored.json"
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+            skip_missing=True,
+        )
+
+        assert "AAPL" in result
+        assert "MSFT" not in result
+
+    def test_エッジケース_phase2_outputが空ディレクトリのとき空dictを返す(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """When phase2_output dir is empty, result should be empty dict."""
+        # Create empty phase2_output dir
+        (workspace_dir / "phase2_output").mkdir(parents=True, exist_ok=True)
+
+        output_path = tmp_path / "phase2_scored.json"
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+            skip_missing=True,
+        )
+
+        assert result == {}
+        assert output_path.exists()
+
+    def test_エッジケース_scored_claimsが空のticker銘柄も含まれる(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """Tickers with empty scored_claims list should still appear in output."""
+        _write_scoring_output(workspace_dir, "AAPL", [])
+
+        output_path = tmp_path / "phase2_scored.json"
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+            skip_missing=True,
+        )
+
+        assert "AAPL" in result
+        assert result["AAPL"] == []
