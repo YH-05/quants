@@ -457,6 +457,7 @@ updated_at: 2026-02-18
 | `factor` | ファクター投資・分析パッケージ | バリュー/モメンタム/クオリティ/サイズ/マクロファクター |
 | `strategy` | 投資戦略パッケージ | リスク計算、ポートフォリオ管理、リバランス分析 |
 | `news` | ニュース処理パイプライン | ニュース収集、フィルタリング、GitHub投稿 |
+| `news_scraper` | 金融ニューススクレイパー | CNBC/NASDAQ/yfinance RSS・APIスクレイピング、curl_cffi、sync/async対応 |
 | `utils_core` | 共通ユーティリティ | ロギング設定 |
 | `dev/ca_strategy` | AI駆動の競争優位性ベース投資戦略パッケージ（PoC） | トランスクリプト解析、LLM主張抽出・スコアリング、セクター中立化、ポートフォリオ構築 |
 
@@ -473,6 +474,7 @@ updated_at: 2026-02-18
 - `factor` → `strategy`
 - `utils_core` → `dev/ca_strategy`
 - `factor` → `dev/ca_strategy`（SectorNeutralizer）
+- `news_scraper` (standalone、curl_cffi ベース)
 
 ### コマンド → スキル → エージェント
 
@@ -529,6 +531,7 @@ finance/
 │   ├── factor/                 # ファクター分析（バリュー、モメンタム等）
 │   ├── strategy/               # 投資戦略・リスク管理
 │   ├── news/                   # ニュース処理パイプライン
+│   ├── news_scraper/           # 金融ニューススクレイパー（CNBC/NASDAQ/yfinance）
 │   ├── utils_core/             # 共通ユーティリティ
 │   └── dev/
 │       └── ca_strategy/        # AI駆動の競争優位性ベース投資戦略（PoC）

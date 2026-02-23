@@ -1,0 +1,357 @@
+"""nasdaq.py の単体テスト.
+
+対象モジュール: src/news_scraper/nasdaq.py
+"""
+
+from __future__ import annotations
+
+from unittest.mock import AsyncMock, MagicMock, patch
+
+import pytest
+
+from news_scraper.types import Article, ScraperConfig
+
+
+class TestFetchRssFeed:
+    """fetch_rss_feed() のテスト."""
+
+    def test_正常系_categoryNoneで全体フィードURLを使用する(self) -> None:
+        """category=None のとき全体フィード URL でリクエストすることを確認。"""
+        from news_scraper.nasdaq import fetch_rss_feed
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "<rss/>"
+        mock_session.get.return_value = mock_response
+
+        mock_feed = MagicMock()
+        mock_feed.entries = []
+
+        with patch("news_scraper.nasdaq.feedparser.parse", return_value=mock_feed):
+            result = fetch_rss_feed(mock_session, category=None)
+
+        # 全体フィード URL を使用していることを確認
+        call_args = mock_session.get.call_args
+        assert "rssoutbound" in call_args[0][0]
+        assert "category=" not in call_args[0][0]
+        assert result == []
+
+    def test_正常系_カテゴリ指定でカテゴリURLを使用する(self) -> None:
+        """category='Markets' を指定したとき category パラメータ付き URL を使うことを確認。"""
+        from news_scraper.nasdaq import fetch_rss_feed
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "<rss/>"
+        mock_session.get.return_value = mock_response
+
+        mock_feed = MagicMock()
+        mock_feed.entries = []
+
+        with patch("news_scraper.nasdaq.feedparser.parse", return_value=mock_feed):
+            fetch_rss_feed(mock_session, category="Markets")
+
+        call_args = mock_session.get.call_args
+        assert "category=Markets" in call_args[0][0]
+
+    def test_正常系_有効な日付形式でISOフォーマットに変換される(self) -> None:
+        """RFC 2822 形式の published が ISO 8601 に変換されることを確認。"""
+        from news_scraper.nasdaq import fetch_rss_feed
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "<rss/>"
+        mock_session.get.return_value = mock_response
+
+        entry = MagicMock()
+        entry.get = lambda k, d="": {
+            "title": "Market Update",
+            "link": "https://nasdaq.com/article/1",
+            "published": "Mon, 23 Feb 2026 12:00:00 +0000",
+            "summary": "Summary here",
+        }.get(k, d)
+
+        mock_feed = MagicMock()
+        mock_feed.entries = [entry]
+
+        with patch("news_scraper.nasdaq.feedparser.parse", return_value=mock_feed):
+            result = fetch_rss_feed(mock_session, category="Markets")
+
+        assert len(result) == 1
+        assert "2026-02-23" in result[0].published
+
+    def test_正常系_日付パース失敗時は生文字列をフォールバックとして使用する(
+        self,
+    ) -> None:
+        """日付パースが失敗したとき published に生文字列をそのまま使うことを確認。"""
+        from news_scraper.nasdaq import fetch_rss_feed
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "<rss/>"
+        mock_session.get.return_value = mock_response
+
+        entry = MagicMock()
+        entry.get = lambda k, d="": {
+            "title": "Article",
+            "link": "https://nasdaq.com/article/2",
+            "published": "invalid-date-format",
+            "summary": "",
+        }.get(k, d)
+
+        mock_feed = MagicMock()
+        mock_feed.entries = [entry]
+
+        with patch("news_scraper.nasdaq.feedparser.parse", return_value=mock_feed):
+            result = fetch_rss_feed(mock_session, category="Markets")
+
+        assert len(result) == 1
+        assert result[0].published == "invalid-date-format"
+
+    def test_正常系_0件のフィードで空リストを返す(self) -> None:
+        """RSS フィードにエントリが 0 件のとき空リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_rss_feed
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "<rss/>"
+        mock_session.get.return_value = mock_response
+
+        mock_feed = MagicMock()
+        mock_feed.entries = []
+
+        with patch("news_scraper.nasdaq.feedparser.parse", return_value=mock_feed):
+            result = fetch_rss_feed(mock_session, category="Markets")
+
+        assert result == []
+
+    def test_正常系_categoryNoneのとき記事のcategoryがgeneralになる(self) -> None:
+        """category=None のとき Article.category が 'general' に設定されることを確認。"""
+        from news_scraper.nasdaq import fetch_rss_feed
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = "<rss/>"
+        mock_session.get.return_value = mock_response
+
+        entry = MagicMock()
+        entry.get = lambda k, d="": {
+            "title": "General News",
+            "link": "https://nasdaq.com/3",
+            "published": "",
+            "summary": "",
+        }.get(k, d)
+
+        mock_feed = MagicMock()
+        mock_feed.entries = [entry]
+
+        with patch("news_scraper.nasdaq.feedparser.parse", return_value=mock_feed):
+            result = fetch_rss_feed(mock_session, category=None)
+
+        assert result[0].category == "general"
+
+
+class TestFetchArticleContent:
+    """fetch_article_content() のテスト."""
+
+    def test_正常系_trafilaturaで本文取得成功(self) -> None:
+        """trafilatura が本文を返すとき記事情報 dict を返すことを確認。"""
+        from news_scraper.nasdaq import fetch_article_content
+
+        html = (
+            "<html><body><h1>NASDAQ Article</h1>"
+            "<time datetime='2026-01-20T08:00:00+00:00'>Jan 20</time>"
+            "<p>Article body content.</p></body></html>"
+        )
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = html
+        mock_session.get.return_value = mock_response
+
+        with patch(
+            "news_scraper.nasdaq.trafilatura.extract",
+            return_value="Article body content.",
+        ):
+            result = fetch_article_content(
+                mock_session, "https://nasdaq.com/articles/test"
+            )
+
+        assert result is not None
+        assert result["url"] == "https://nasdaq.com/articles/test"
+        assert result["content"] == "Article body content."
+
+    def test_正常系_trafilatura失敗後BeautifulSoupフォールバックで本文取得(
+        self,
+    ) -> None:
+        """trafilatura が None を返し、article 要素が存在するとき本文を返すことを確認。"""
+        from news_scraper.nasdaq import fetch_article_content
+
+        html = (
+            "<html><body>"
+            "<article><p>Fallback article text from BS4.</p></article>"
+            "</body></html>"
+        )
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = html
+        mock_session.get.return_value = mock_response
+
+        with patch("news_scraper.nasdaq.trafilatura.extract", return_value=None):
+            result = fetch_article_content(
+                mock_session, "https://nasdaq.com/articles/test"
+            )
+
+        assert result is not None
+        assert "Fallback article text from BS4." in result["content"]
+
+    def test_正常系_trafilaturaもBeautifulSoupも失敗でNoneを返す(self) -> None:
+        """trafilatura も BS4 フォールバックも失敗したとき None を返すことを確認。"""
+        from news_scraper.nasdaq import fetch_article_content
+
+        html = "<html><body><p>No structured content.</p></body></html>"
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = html
+        mock_session.get.return_value = mock_response
+
+        with patch("news_scraper.nasdaq.trafilatura.extract", return_value=None):
+            result = fetch_article_content(
+                mock_session, "https://nasdaq.com/articles/test"
+            )
+
+        assert result is None
+
+    def test_異常系_HTTPエラーでNoneを返す(self) -> None:
+        """HTTP リクエストが例外を送出したとき None を返すことを確認。"""
+        from news_scraper.nasdaq import fetch_article_content
+
+        mock_session = MagicMock()
+        mock_session.get.side_effect = Exception("Connection refused")
+
+        result = fetch_article_content(mock_session, "https://nasdaq.com/articles/fail")
+
+        assert result is None
+
+
+class TestFetchStockNewsApi:
+    """fetch_stock_news_api() のテスト."""
+
+    def test_正常系_API正常応答で記事リストを返す(self) -> None:
+        """NASDAQ API が記事リストを返すとき Article リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.json.return_value = {
+            "data": {
+                "rows": [
+                    {
+                        "title": "Apple Reports Strong Earnings",
+                        "url": "https://nasdaq.com/articles/apple-earnings",
+                        "created": "2026-02-23T10:00:00+00:00",
+                        "provider": "Reuters",
+                    }
+                ]
+            }
+        }
+        mock_session.get.return_value = mock_response
+
+        result = fetch_stock_news_api(mock_session, "AAPL")
+
+        assert len(result) == 1
+        assert isinstance(result[0], Article)
+        assert result[0].title == "Apple Reports Strong Earnings"
+        assert result[0].ticker == "AAPL"
+        assert result[0].source == "nasdaq"
+
+    def test_正常系_rowsが空のとき空リストを返す(self) -> None:
+        """API レスポンスの rows が空のとき空リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.json.return_value = {"data": {"rows": []}}
+        mock_session.get.return_value = mock_response
+
+        result = fetch_stock_news_api(mock_session, "AAPL")
+
+        assert result == []
+
+    def test_正常系_APIエラーで空リストを返す(self) -> None:
+        """HTTP リクエストが例外を送出したとき空リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api
+
+        mock_session = MagicMock()
+        mock_session.get.side_effect = Exception("API error")
+
+        result = fetch_stock_news_api(mock_session, "MSFT")
+
+        assert result == []
+
+    def test_正常系_tickerが大文字に正規化される(self) -> None:
+        """小文字ティッカーを渡したとき Article.ticker が大文字になることを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.json.return_value = {
+            "data": {
+                "rows": [
+                    {
+                        "title": "News",
+                        "url": "https://nasdaq.com/n",
+                        "created": "2026-01-01",
+                        "provider": "CNBC",
+                    }
+                ]
+            }
+        }
+        mock_session.get.return_value = mock_response
+
+        result = fetch_stock_news_api(mock_session, "aapl")
+
+        assert result[0].ticker == "AAPL"
+
+
+class TestAsyncFetchStockNewsApi:
+    """async_fetch_stock_news_api() のテスト."""
+
+    @pytest.mark.asyncio
+    async def test_正常系_API正常応答で記事リストを返す(self) -> None:
+        """NASDAQ API が記事リストを返すとき Article リストを返すことを確認。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api
+
+        mock_session = AsyncMock()
+        mock_response = MagicMock()  # json() は同期呼び出しのため MagicMock を使用
+        mock_response.raise_for_status = MagicMock()
+        mock_response.json.return_value = {
+            "data": {
+                "rows": [
+                    {
+                        "title": "MSFT AI Strategy",
+                        "url": "https://nasdaq.com/msft-ai",
+                        "created": "2026-02-23T09:00:00+00:00",
+                        "provider": "Bloomberg",
+                    }
+                ]
+            }
+        }
+        mock_session.get.return_value = mock_response
+
+        result = await async_fetch_stock_news_api(mock_session, "MSFT")
+
+        assert len(result) == 1
+        assert isinstance(result[0], Article)
+        assert result[0].ticker == "MSFT"
+
+    @pytest.mark.asyncio
+    async def test_正常系_APIエラーで空リストを返す(self) -> None:
+        """HTTP リクエストが例外を送出したとき空リストを返すことを確認。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api
+
+        mock_session = AsyncMock()
+        mock_session.get.side_effect = Exception("Async API error")
+
+        result = await async_fetch_stock_news_api(mock_session, "GOOG")
+
+        assert result == []
