@@ -1511,6 +1511,9 @@ class BloombergFetcher:
         ...     table_name="historical_prices",
         ... )
         """
+        DuckDBClient._validate_identifier(table_name)
+        DuckDBClient._validate_identifier(date_column)
+
         logger.debug(
             "Getting latest date from DuckDB database",
             db_path=db_path,

@@ -256,22 +256,21 @@ class TestGetEarningsDates:
     """Tests for BloombergFetcher.get_earnings_dates."""
 
     def test_正常系_EarningsInfoオブジェクトが返される(self) -> None:
-        """返り値がEarningsInfoのリストであること."""
+        """_process_reference_responseの結果からEarningsInfoリストが組み立てられること."""
         from market.bloomberg.fetcher import BloombergFetcher
         from market.bloomberg.types import EarningsInfo
 
         fetcher = BloombergFetcher()
         securities = ["AAPL US Equity"]
 
-        result_data = [
-            EarningsInfo(
-                security="AAPL US Equity",
-                expected_report_dt=date(2024, 10, 31),
-                period="",
-            )
-        ]
+        ref_df = pd.DataFrame({"EXPECTED_REPORT_DT": ["2024-10-31"]})
 
-        with patch.object(fetcher, "get_earnings_dates", return_value=result_data):
+        mock_session = MagicMock()
+        with (
+            patch.object(fetcher, "_create_session", return_value=mock_session),
+            patch.object(fetcher, "_open_service"),
+            patch.object(fetcher, "_process_reference_response", return_value=ref_df),
+        ):
             results = fetcher.get_earnings_dates(
                 securities=securities,
                 start_date="2024-10-01",
@@ -281,6 +280,7 @@ class TestGetEarningsDates:
         assert len(results) == 1
         assert isinstance(results[0], EarningsInfo)
         assert results[0].security == "AAPL US Equity"
+        assert results[0].expected_report_dt == date(2024, 10, 31)
 
     def test_エッジケース_空の証券リストで空結果(self) -> None:
         """証券リストが空なら空のリストを返す."""
@@ -314,7 +314,7 @@ class TestConvertIdentifiersWithDate:
     """Tests for BloombergFetcher.convert_identifiers_with_date."""
 
     def test_正常系_日付指定で識別子変換できる(self) -> None:
-        """日付付き識別子変換が成功し、IdentifierConversionResultを返す."""
+        """_process_id_conversionの結果からIdentifierConversionResultリストが組み立てられること."""
         from market.bloomberg.fetcher import BloombergFetcher
         from market.bloomberg.types import IdentifierConversionResult, IDType
 
@@ -322,17 +322,14 @@ class TestConvertIdentifiersWithDate:
         securities = ["AAPL US Equity"]
         ref_date = date(2024, 1, 15)
 
-        expected_results = [
-            IdentifierConversionResult(
-                original="AAPL US Equity",
-                converted="US0378331005",
-                date=ref_date,
-                status="success",
-            )
-        ]
+        # _process_id_conversion は {security: converted_id} の dict を返す
+        converted_map = {"AAPL US Equity": "US0378331005"}
 
-        with patch.object(
-            fetcher, "convert_identifiers_with_date", return_value=expected_results
+        mock_session = MagicMock()
+        with (
+            patch.object(fetcher, "_create_session", return_value=mock_session),
+            patch.object(fetcher, "_open_service"),
+            patch.object(fetcher, "_process_id_conversion", return_value=converted_map),
         ):
             results = fetcher.convert_identifiers_with_date(
                 securities=securities,
@@ -346,25 +343,23 @@ class TestConvertIdentifiersWithDate:
         assert results[0].original == "AAPL US Equity"
         assert results[0].converted == "US0378331005"
         assert results[0].status == "success"
+        assert results[0].date == ref_date
 
     def test_正常系_変換失敗銘柄はfailedステータス(self) -> None:
-        """変換できない識別子はstatus='failed'として返される."""
+        """_process_id_conversionで変換できない識別子はstatus='failed'として返される."""
         from market.bloomberg.fetcher import BloombergFetcher
         from market.bloomberg.types import IdentifierConversionResult, IDType
 
         fetcher = BloombergFetcher()
 
-        results_mock = [
-            IdentifierConversionResult(
-                original="INVALID US Equity",
-                converted="",
-                date=date(2024, 1, 15),
-                status="failed",
-            )
-        ]
+        # 変換できなかった場合は dict に含まれない
+        converted_map: dict[str, str] = {}
 
-        with patch.object(
-            fetcher, "convert_identifiers_with_date", return_value=results_mock
+        mock_session = MagicMock()
+        with (
+            patch.object(fetcher, "_create_session", return_value=mock_session),
+            patch.object(fetcher, "_open_service"),
+            patch.object(fetcher, "_process_id_conversion", return_value=converted_map),
         ):
             results = fetcher.convert_identifiers_with_date(
                 securities=["INVALID US Equity"],
@@ -373,7 +368,11 @@ class TestConvertIdentifiersWithDate:
                 date=date(2024, 1, 15),
             )
 
+        assert len(results) == 1
+        assert isinstance(results[0], IdentifierConversionResult)
         assert results[0].status == "failed"
+        assert results[0].original == "INVALID US Equity"
+        assert results[0].converted == ""
 
     def test_エッジケース_空リストで空結果(self) -> None:
         """空の証券リストは空のリストを返す."""

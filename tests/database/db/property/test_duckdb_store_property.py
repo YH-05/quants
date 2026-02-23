@@ -73,9 +73,8 @@ class TestStoreDfReplaceProperty:
         client.store_df(df1, "tbl", if_exists="replace")
         client.store_df(df2, "tbl", if_exists="replace")
         result = client.query_df("SELECT COUNT(*) as cnt FROM tbl")
-        # After replace the table has at most len(df1) + len(df2) rows
-        # (duplicates from df1 already stored are not re-added)
-        assert result["cnt"].iloc[0] >= 0  # always non-negative
+        # After replace the table must contain exactly df2's rows
+        assert result["cnt"].iloc[0] == len(df2)
 
 
 # ---------------------------------------------------------------------------
