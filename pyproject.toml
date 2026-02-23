@@ -227,7 +227,7 @@ testpaths = ["tests"]
 pythonpath = ["src"]  # Ensure src/ packages are importable in CI
 python_files = ["test_*.py", "*_test.py"]
 # finance_news_workflow/unit tests reference non-existent finance_news_collector module
-norecursedirs = ["tests/skills/finance_news_workflow/unit", "tests/market/unit/bloomberg", "tests/market/property/bloomberg"]
+norecursedirs = ["tests/skills/finance_news_workflow/unit"]
 addopts = [
     "-ra",
     "--strict-markers",

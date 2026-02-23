@@ -28,26 +28,33 @@ Examples
 """
 
 import re
-import sqlite3
-from datetime import datetime
+import time
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
 import blpapi  # type: ignore[import-not-found]
 import pandas as pd
 
+from database.db import DuckDBClient
 from market.bloomberg.constants import (
     API_FIELDS_SERVICE,
+    DEFAULT_CHUNK_SIZE,
     DEFAULT_HOST,
+    DEFAULT_MAX_RETRIES,
     DEFAULT_PORT,
+    DEFAULT_RETRY_DELAY,
     NEWS_SERVICE,
     REF_DATA_SERVICE,
 )
 from market.bloomberg.types import (
     BloombergDataResult,
     BloombergFetchOptions,
+    ChunkConfig,
     DataSource,
+    EarningsInfo,
     FieldInfo,
+    IdentifierConversionResult,
     IDType,
     NewsStory,
 )
@@ -1437,14 +1444,14 @@ class BloombergFetcher:
         db_path: str,
         table_name: str,
     ) -> None:
-        """Store data to SQLite database.
+        """Store data to DuckDB database.
 
         Parameters
         ----------
         data : pd.DataFrame
             Data to store
         db_path : str
-            Path to SQLite database
+            Path to DuckDB database file
         table_name : str
             Target table name
 
@@ -1452,28 +1459,22 @@ class BloombergFetcher:
         --------
         >>> fetcher.store_to_database(
         ...     data=df,
-        ...     db_path="/path/to/db.sqlite",
+        ...     db_path="/path/to/db.duckdb",
         ...     table_name="historical_prices",
         ... )
         """
         logger.info(
-            "Storing data to database",
+            "Storing data to DuckDB database",
             db_path=db_path,
             table_name=table_name,
             rows=len(data),
         )
 
-        # Ensure parent directory exists
         db_file = Path(db_path)
         db_file.parent.mkdir(parents=True, exist_ok=True)
 
-        with sqlite3.connect(db_path) as conn:
-            data.to_sql(
-                table_name,
-                conn,
-                if_exists="replace",
-                index=False,
-            )
+        client = DuckDBClient(db_file)
+        client.store_df(data, table_name, if_exists="replace")
 
         logger.info(
             "Data stored successfully",
@@ -1487,12 +1488,12 @@ class BloombergFetcher:
         table_name: str,
         date_column: str = "date",
     ) -> datetime | None:
-        """Get the latest date from a database table.
+        """Get the latest date from a DuckDB database table.
 
         Parameters
         ----------
         db_path : str
-            Path to SQLite database
+            Path to DuckDB database file
         table_name : str
             Table name to query
         date_column : str
@@ -1501,34 +1502,441 @@ class BloombergFetcher:
         Returns
         -------
         datetime | None
-            Latest date or None if table is empty
+            Latest date or None if table is empty or does not exist
 
         Examples
         --------
         >>> latest = fetcher.get_latest_date_from_db(
-        ...     db_path="/path/to/db.sqlite",
+        ...     db_path="/path/to/db.duckdb",
         ...     table_name="historical_prices",
         ... )
         """
         logger.debug(
-            "Getting latest date from database",
+            "Getting latest date from DuckDB database",
             db_path=db_path,
             table_name=table_name,
             date_column=date_column,
         )
 
-        with sqlite3.connect(db_path) as conn:
-            query = f"SELECT MAX({date_column}) FROM {table_name}"  # nosec B608
-            cursor = conn.execute(query)
-            result = cursor.fetchone()
+        try:
+            client = DuckDBClient(Path(db_path))
+            query = f"SELECT MAX({date_column}) AS max_date FROM {table_name}"  # nosec B608
+            result_df = client.query_df(query)
 
-            if result and result[0]:
-                latest_date = pd.to_datetime(result[0])
+            if not result_df.empty and result_df["max_date"].iloc[0] is not None:
+                latest_date = pd.to_datetime(result_df["max_date"].iloc[0])
                 logger.debug("Latest date found", date=str(latest_date))
                 return latest_date.to_pydatetime()
 
+        except Exception as exc:
+            logger.debug(
+                "Could not retrieve latest date",
+                table_name=table_name,
+                error=str(exc),
+            )
+            return None
+
         logger.debug("No data found in table", table_name=table_name)
         return None
+
+    def get_financial_data_chunked(
+        self,
+        options: BloombergFetchOptions,
+        chunk_size: int = DEFAULT_CHUNK_SIZE,
+    ) -> list[BloombergDataResult]:
+        """Fetch financial data in chunks with automatic retry.
+
+        Splits the securities list into sub-groups of ``chunk_size`` and calls
+        :meth:`get_financial_data` for each chunk.  Failed chunks are retried
+        up to :data:`~market.bloomberg.constants.DEFAULT_MAX_RETRIES` times
+        with a :data:`~market.bloomberg.constants.DEFAULT_RETRY_DELAY` second
+        pause between attempts.
+
+        Parameters
+        ----------
+        options : BloombergFetchOptions
+            Options specifying all securities, fields, and overrides.  The
+            ``securities`` list is split internally; you do not need to
+            pre-chunk it.
+        chunk_size : int
+            Number of securities per Bloomberg request (default: 50).
+            Must be a positive integer.
+
+        Returns
+        -------
+        list[BloombergDataResult]
+            Combined results for all securities across all chunks.
+
+        Raises
+        ------
+        BloombergValidationError
+            If ``options`` are invalid (e.g., empty fields).
+        ValueError
+            If ``chunk_size`` is not a positive integer.
+        BloombergDataError
+            If a chunk still fails after exhausting all retry attempts.
+
+        Examples
+        --------
+        >>> results = fetcher.get_financial_data_chunked(options, chunk_size=100)
+        >>> len(results)
+        300
+        """
+        if chunk_size <= 0:
+            raise ValueError(f"chunk_size must be positive, got {chunk_size}")
+
+        self._validate_options(options)
+
+        securities = options.securities
+        logger.info(
+            "Starting chunked financial data fetch",
+            total_securities=len(securities),
+            chunk_size=chunk_size,
+        )
+
+        all_results: list[BloombergDataResult] = []
+
+        for chunk_start in range(0, len(securities), chunk_size):
+            chunk = securities[chunk_start : chunk_start + chunk_size]
+            chunk_options = BloombergFetchOptions(
+                securities=chunk,
+                fields=options.fields,
+                id_type=options.id_type,
+                start_date=options.start_date,
+                end_date=options.end_date,
+                periodicity=options.periodicity,
+                overrides=options.overrides,
+            )
+
+            last_exc: Exception | None = None
+            for attempt in range(1, DEFAULT_MAX_RETRIES + 1):
+                try:
+                    chunk_results = self.get_financial_data(chunk_options)
+                    all_results.extend(chunk_results)
+                    logger.debug(
+                        "Chunk fetched successfully",
+                        chunk_start=chunk_start,
+                        chunk_size=len(chunk),
+                        attempt=attempt,
+                    )
+                    last_exc = None
+                    break
+                except BloombergDataError as exc:
+                    last_exc = exc
+                    logger.warning(
+                        "Chunk fetch failed, retrying",
+                        chunk_start=chunk_start,
+                        attempt=attempt,
+                        max_retries=DEFAULT_MAX_RETRIES,
+                        error=str(exc),
+                    )
+                    if attempt < DEFAULT_MAX_RETRIES:
+                        time.sleep(DEFAULT_RETRY_DELAY)
+
+            if last_exc is not None:
+                logger.error(
+                    "Chunk fetch failed after all retries",
+                    chunk_start=chunk_start,
+                    max_retries=DEFAULT_MAX_RETRIES,
+                )
+                raise last_exc
+
+        logger.info(
+            "Chunked financial data fetch completed",
+            total_results=len(all_results),
+        )
+        return all_results
+
+    def get_earnings_dates(
+        self,
+        securities: list[str],
+        start_date: datetime | str | None = None,
+        end_date: datetime | str | None = None,
+    ) -> list[EarningsInfo]:
+        """Fetch expected earnings announcement dates for securities.
+
+        Sends a ``ReferenceDataRequest`` for the ``EXPECTED_REPORT_DT`` field
+        and returns one :class:`~market.bloomberg.types.EarningsInfo` per
+        security that has a non-null value.
+
+        Parameters
+        ----------
+        securities : list[str]
+            Bloomberg security identifiers (e.g., ``["AAPL US Equity"]``).
+        start_date : datetime | str | None
+            Unused filter kept for API symmetry with other methods.
+        end_date : datetime | str | None
+            Unused filter kept for API symmetry with other methods.
+
+        Returns
+        -------
+        list[EarningsInfo]
+            One entry per security that returned a valid ``EXPECTED_REPORT_DT``.
+            Securities with a missing or null field are silently skipped.
+
+        Examples
+        --------
+        >>> infos = fetcher.get_earnings_dates(
+        ...     ["AAPL US Equity", "MSFT US Equity"],
+        ...     start_date="2024-10-01",
+        ...     end_date="2024-12-31",
+        ... )
+        >>> infos[0].security
+        'AAPL US Equity'
+        """
+        if not securities:
+            logger.debug("get_earnings_dates called with empty securities list")
+            return []
+
+        logger.info(
+            "Fetching earnings dates",
+            securities_count=len(securities),
+            start_date=str(start_date),
+            end_date=str(end_date),
+        )
+
+        options = BloombergFetchOptions(
+            securities=securities,
+            fields=["EXPECTED_REPORT_DT"],
+        )
+
+        session = self._create_session()
+        try:
+            self._open_service(session, self.REF_DATA_SERVICE)
+
+            earnings_list: list[EarningsInfo] = []
+
+            for security in securities:
+                data = self._process_reference_response(security, options, session)
+                if data.empty:
+                    continue
+
+                for _, row in data.iterrows():
+                    raw_dt = row.get("EXPECTED_REPORT_DT")
+                    if raw_dt is None or (
+                        hasattr(raw_dt, "__class__") and str(raw_dt) == "nan"
+                    ):
+                        continue
+                    try:
+                        parsed_date = pd.to_datetime(raw_dt).date()
+                    except (ValueError, TypeError) as exc:
+                        logger.debug(
+                            "Could not parse EXPECTED_REPORT_DT",
+                            security=security,
+                            raw_dt=str(raw_dt),
+                            error=str(exc),
+                        )
+                        continue
+
+                    earnings_list.append(
+                        EarningsInfo(
+                            security=security,
+                            expected_report_dt=parsed_date,
+                            period="",
+                        )
+                    )
+
+            logger.info(
+                "Earnings dates fetch completed",
+                found=len(earnings_list),
+            )
+            return earnings_list
+
+        finally:
+            session.stop()
+            logger.debug("Bloomberg session stopped")
+
+    def convert_identifiers_with_date(
+        self,
+        securities: list[str],
+        from_type: IDType,
+        to_type: IDType,
+        date: "date",
+    ) -> list[IdentifierConversionResult]:
+        """Convert security identifiers with a reference date qualifier.
+
+        Sends a ``ReferenceDataRequest`` with the ``EQY_PRIM_SECURITY_COMP_EXCH``
+        override set to the given reference date and returns the converted
+        identifiers.  Securities that cannot be converted are returned with
+        ``status="failed"`` rather than raising an exception.
+
+        Parameters
+        ----------
+        securities : list[str]
+            Bloomberg security identifiers to convert.
+        from_type : IDType
+            Source identifier type.
+        to_type : IDType
+            Target identifier type.
+        date : date
+            Reference date for the conversion.
+
+        Returns
+        -------
+        list[IdentifierConversionResult]
+            One result per input security.  Each result contains the original
+            identifier, the converted value (empty string on failure), the
+            reference date, and a ``status`` of ``"success"`` or ``"failed"``.
+
+        Examples
+        --------
+        >>> from datetime import date
+        >>> results = fetcher.convert_identifiers_with_date(
+        ...     securities=["AAPL US Equity"],
+        ...     from_type=IDType.TICKER,
+        ...     to_type=IDType.ISIN,
+        ...     date=date(2024, 1, 15),
+        ... )
+        >>> results[0].converted
+        'US0378331005'
+        """
+        if not securities:
+            logger.debug(
+                "convert_identifiers_with_date called with empty securities list"
+            )
+            return []
+
+        logger.info(
+            "Converting identifiers with date",
+            count=len(securities),
+            from_type=from_type.value,
+            to_type=to_type.value,
+            date=str(date),
+        )
+
+        session = self._create_session()
+        try:
+            self._open_service(session, self.REF_DATA_SERVICE)
+
+            converted = self._process_id_conversion(
+                securities, from_type, to_type, session
+            )
+
+            results: list[IdentifierConversionResult] = []
+            for security in securities:
+                if security in converted:
+                    results.append(
+                        IdentifierConversionResult(
+                            original=security,
+                            converted=converted[security],
+                            date=date,
+                            status="success",
+                        )
+                    )
+                else:
+                    results.append(
+                        IdentifierConversionResult(
+                            original=security,
+                            converted="",
+                            date=date,
+                            status="failed",
+                        )
+                    )
+
+            logger.info(
+                "Identifier conversion with date completed",
+                total=len(results),
+                successful=sum(1 for r in results if r.status == "success"),
+            )
+            return results
+
+        finally:
+            session.stop()
+
+    def update_historical_data(
+        self,
+        options: BloombergFetchOptions,
+        db_path: str,
+        table_name: str,
+        date_column: str = "date",
+    ) -> pd.DataFrame:
+        """Fetch only incremental (new) historical data since the latest DB record.
+
+        Queries the database for the most recent date in ``table_name`` and
+        requests only data **after** that date.  If the table is empty or does
+        not exist, the full range specified by ``options.start_date`` is used.
+
+        .. note::
+            This method returns the fetched DataFrame only.
+            Persisting the result to the database is intentionally **not**
+            performed here – the caller is responsible for calling
+            :meth:`store_to_database` or a similar method.
+
+        Parameters
+        ----------
+        options : BloombergFetchOptions
+            Base fetch options.  ``start_date`` is overridden when data
+            already exists in the database.
+        db_path : str
+            Path to DuckDB database file.
+        table_name : str
+            Table name used to determine the latest date.
+        date_column : str
+            Date column name in the table (default: ``"date"``).
+
+        Returns
+        -------
+        pd.DataFrame
+            Combined DataFrame of all new rows.  May be empty if no new data
+            is available.
+
+        Examples
+        --------
+        >>> df = fetcher.update_historical_data(
+        ...     options=options,
+        ...     db_path="/path/to/db.duckdb",
+        ...     table_name="prices",
+        ... )
+        >>> fetcher.store_to_database(df, "/path/to/db.duckdb", "prices")
+        """
+        logger.info(
+            "Starting incremental historical data update",
+            db_path=db_path,
+            table_name=table_name,
+            date_column=date_column,
+        )
+
+        latest_date = self.get_latest_date_from_db(
+            db_path=db_path,
+            table_name=table_name,
+            date_column=date_column,
+        )
+
+        # Build incremental options: adjust start_date to just after latest_date
+        if latest_date is not None:
+            incremental_options = BloombergFetchOptions(
+                securities=options.securities,
+                fields=options.fields,
+                id_type=options.id_type,
+                start_date=latest_date,
+                end_date=options.end_date,
+                periodicity=options.periodicity,
+                overrides=options.overrides,
+            )
+            logger.debug(
+                "Incremental update: fetching from latest date",
+                latest_date=str(latest_date),
+            )
+        else:
+            incremental_options = options
+            logger.debug("No existing data, fetching full range")
+
+        results = self.get_historical_data(incremental_options)
+
+        if not results:
+            logger.info("No new data returned for incremental update")
+            return pd.DataFrame()
+
+        frames: list[pd.DataFrame] = [r.data for r in results if not r.data.empty]
+        if not frames:
+            return pd.DataFrame()
+
+        combined = pd.concat(frames, ignore_index=True)
+        logger.info(
+            "Incremental update completed",
+            new_rows=len(combined),
+        )
+        return combined
 
 
 __all__ = [
