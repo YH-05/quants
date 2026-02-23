@@ -31,11 +31,13 @@ import re
 import sqlite3
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 import blpapi  # type: ignore[import-not-found]
 import pandas as pd
 
 from market.bloomberg.constants import (
+    API_FIELDS_SERVICE,
     DEFAULT_HOST,
     DEFAULT_PORT,
     NEWS_SERVICE,
@@ -51,6 +53,7 @@ from market.bloomberg.types import (
 )
 from market.errors import (
     BloombergConnectionError,
+    BloombergDataError,
     BloombergSessionError,
     BloombergValidationError,
     ErrorCode,
@@ -382,7 +385,7 @@ class BloombergFetcher:
             results: list[BloombergDataResult] = []
 
             for security in options.securities:
-                data = self._process_historical_response(security, options)
+                data = self._process_historical_response(security, options, session)
                 result = BloombergDataResult(
                     security=security,
                     data=data,
@@ -411,28 +414,147 @@ class BloombergFetcher:
         self,
         security: str,
         options: BloombergFetchOptions,
+        session: "blpapi.Session | None" = None,
     ) -> pd.DataFrame:
-        """Process historical data response.
+        """Process historical data response via BLPAPI HistoricalDataRequest.
 
-        This is a placeholder that should be replaced with actual
-        Bloomberg API response processing.
+        Sends a HistoricalDataRequest for the given security and processes the
+        event loop, traversing securityData → fieldData to build a DataFrame.
 
         Parameters
         ----------
         security : str
-            Security identifier
+            Security identifier (e.g., "AAPL US Equity")
         options : BloombergFetchOptions
-            Fetch options
+            Fetch options including fields, date range, periodicity, and overrides
+        session : blpapi.Session | None
+            Active Bloomberg session. When None, returns empty DataFrame (test
+            compatibility mode).
 
         Returns
         -------
         pd.DataFrame
-            Historical data
+            Historical data with date as index and fields as columns.
+
+        Raises
+        ------
+        BloombergDataError
+            If the Bloomberg response contains a security-level error.
         """
-        # AIDEV-NOTE: This method is typically mocked in tests
-        # Actual implementation would process blpapi response
         logger.debug("Processing historical response", security=security)
-        return pd.DataFrame()
+
+        if session is None:
+            return pd.DataFrame()
+
+        ref_data_service = session.getService(self.REF_DATA_SERVICE)
+        request = ref_data_service.createRequest("HistoricalDataRequest")
+        request.append("securities", security)  # type: ignore[attr-defined]
+
+        for field in options.fields:
+            request.append("fields", field)  # type: ignore[attr-defined]
+
+        start_fmt = self._format_date(options.start_date)
+        end_fmt = self._format_date(options.end_date)
+        if start_fmt:
+            request.set("startDate", start_fmt)  # type: ignore[attr-defined]
+        if end_fmt:
+            request.set("endDate", end_fmt)  # type: ignore[attr-defined]
+        request.set("periodicitySelection", options.periodicity.value)  # type: ignore[attr-defined]
+
+        for override in options.overrides:
+            overrides_element = request.getElement("overrides")  # type: ignore[attr-defined]
+            ov = overrides_element.appendElement()
+            ov.setElement("fieldId", override.field)  # type: ignore[attr-defined]
+            ov.setElement("value", override.value)  # type: ignore[attr-defined]
+
+        session.sendRequest(request)  # type: ignore[attr-defined]
+
+        data_rows: list[dict[str, Any]] = []
+
+        while True:
+            event = session.nextEvent(5000)  # type: ignore[attr-defined]
+            event_type = event.eventType()
+
+            if event_type in (
+                blpapi.Event.RESPONSE,
+                blpapi.Event.PARTIAL_RESPONSE,
+            ):
+                for msg in event:
+                    if msg.hasElement("responseError"):
+                        err_msg = (
+                            msg.getElement("responseError")
+                            .getElement("message")
+                            .getValue()
+                        )
+                        logger.error(
+                            "Historical response error",
+                            security=security,
+                            error=err_msg,
+                        )
+                        raise BloombergDataError(
+                            f"Bloomberg response error for {security}: {err_msg}",
+                            security=security,
+                            fields=options.fields,
+                        )
+
+                    if not msg.hasElement("securityData"):
+                        continue
+
+                    security_data = msg.getElement("securityData")
+
+                    if security_data.hasElement("securityError"):
+                        err_msg = (
+                            security_data.getElement("securityError")
+                            .getElement("message")
+                            .getValue()
+                        )
+                        logger.error(
+                            "Security error in historical response",
+                            security=security,
+                            error=err_msg,
+                        )
+                        raise BloombergDataError(
+                            f"Bloomberg security error for {security}: {err_msg}",
+                            security=security,
+                            fields=options.fields,
+                            code=ErrorCode.INVALID_SECURITY,
+                        )
+
+                    field_data_array = security_data.getElement("fieldData")
+
+                    for field_data in field_data_array.values():
+                        date_val = field_data.getElement("date").getValue()
+                        row: dict[str, Any] = {"date": pd.to_datetime(date_val)}
+
+                        for field in options.fields:
+                            if field_data.hasElement(field):
+                                row[field] = field_data.getElement(field).getValue()
+                            else:
+                                row[field] = None
+
+                        data_rows.append(row)
+
+                if event_type == blpapi.Event.RESPONSE:
+                    break
+
+            elif event_type == blpapi.Event.TIMEOUT:
+                logger.warning("Bloomberg request timed out", security=security)
+                break
+
+            elif event_type == blpapi.Event.SESSION_STATUS:
+                for msg in event:
+                    if msg.messageType() == blpapi.Name("SessionTerminated"):
+                        logger.error("Bloomberg session terminated unexpectedly")
+                        raise BloombergDataError(
+                            "Bloomberg session terminated during historical data fetch",
+                            security=security,
+                        )
+
+        if not data_rows:
+            logger.debug("No historical data returned", security=security)
+            return pd.DataFrame()
+
+        return pd.DataFrame(data_rows)
 
     def get_reference_data(
         self,
@@ -474,7 +596,7 @@ class BloombergFetcher:
             results: list[BloombergDataResult] = []
 
             for security in options.securities:
-                data = self._process_reference_response(security, options)
+                data = self._process_reference_response(security, options, session)
                 result = BloombergDataResult(
                     security=security,
                     data=data,
@@ -499,24 +621,119 @@ class BloombergFetcher:
         self,
         security: str,
         options: BloombergFetchOptions,
+        session: "blpapi.Session | None" = None,
     ) -> pd.DataFrame:
-        """Process reference data response.
+        """Process reference data response via BLPAPI ReferenceDataRequest.
+
+        Sends a ReferenceDataRequest for the given security and processes the
+        event loop, traversing securityData → fieldData to build a DataFrame.
 
         Parameters
         ----------
         security : str
-            Security identifier
+            Security identifier (e.g., "AAPL US Equity")
         options : BloombergFetchOptions
-            Fetch options
+            Fetch options including fields and overrides
+        session : blpapi.Session | None
+            Active Bloomberg session. When None, returns empty DataFrame (test
+            compatibility mode).
 
         Returns
         -------
         pd.DataFrame
-            Reference data
+            Reference data with one row per security and fields as columns.
+
+        Raises
+        ------
+        BloombergDataError
+            If the Bloomberg response contains a security-level error.
         """
-        # AIDEV-NOTE: This method is typically mocked in tests
         logger.debug("Processing reference response", security=security)
-        return pd.DataFrame()
+
+        if session is None:
+            return pd.DataFrame()
+
+        ref_data_service = session.getService(self.REF_DATA_SERVICE)
+        request = ref_data_service.createRequest("ReferenceDataRequest")
+        request.append("securities", security)  # type: ignore[attr-defined]
+
+        for field in options.fields:
+            request.append("fields", field)  # type: ignore[attr-defined]
+
+        for override in options.overrides:
+            overrides_element = request.getElement("overrides")  # type: ignore[attr-defined]
+            ov = overrides_element.appendElement()
+            ov.setElement("fieldId", override.field)  # type: ignore[attr-defined]
+            ov.setElement("value", override.value)  # type: ignore[attr-defined]
+
+        session.sendRequest(request)  # type: ignore[attr-defined]
+
+        data_rows: list[dict[str, Any]] = []
+
+        while True:
+            event = session.nextEvent(5000)  # type: ignore[attr-defined]
+            event_type = event.eventType()
+
+            if event_type in (
+                blpapi.Event.RESPONSE,
+                blpapi.Event.PARTIAL_RESPONSE,
+            ):
+                for msg in event:
+                    security_data_array = msg.getElement("securityData")
+
+                    for security_data in security_data_array.values():
+                        ticker = security_data.getElement("security").getValue()
+                        row: dict[str, Any] = {"security": ticker}
+
+                        if security_data.hasElement("securityError"):
+                            err_msg = (
+                                security_data.getElement("securityError")
+                                .getElement("message")
+                                .getValue()
+                            )
+                            logger.error(
+                                "Security error in reference response",
+                                security=ticker,
+                                error=err_msg,
+                            )
+                            raise BloombergDataError(
+                                f"Bloomberg security error for {ticker}: {err_msg}",
+                                security=ticker,
+                                fields=options.fields,
+                                code=ErrorCode.INVALID_SECURITY,
+                            )
+
+                        field_data = security_data.getElement("fieldData")
+
+                        for field in options.fields:
+                            if field_data.hasElement(field):
+                                row[field] = field_data.getElement(field).getValue()
+                            else:
+                                row[field] = None
+
+                        data_rows.append(row)
+
+                if event_type == blpapi.Event.RESPONSE:
+                    break
+
+            elif event_type == blpapi.Event.TIMEOUT:
+                logger.warning("Bloomberg request timed out", security=security)
+                break
+
+            elif event_type == blpapi.Event.SESSION_STATUS:
+                for msg in event:
+                    if msg.messageType() == blpapi.Name("SessionTerminated"):
+                        logger.error("Bloomberg session terminated unexpectedly")
+                        raise BloombergDataError(
+                            "Bloomberg session terminated during reference data fetch",
+                            security=security,
+                        )
+
+        if not data_rows:
+            logger.debug("No reference data returned", security=security)
+            return pd.DataFrame()
+
+        return pd.DataFrame(data_rows)
 
     def get_financial_data(
         self,
@@ -589,7 +806,9 @@ class BloombergFetcher:
         session = self._create_session()
         try:
             self._open_service(session, self.REF_DATA_SERVICE)
-            result = self._process_id_conversion(identifiers, from_type, to_type)
+            result = self._process_id_conversion(
+                identifiers, from_type, to_type, session
+            )
 
             logger.info(
                 "Identifier conversion completed",
@@ -606,31 +825,116 @@ class BloombergFetcher:
         identifiers: list[str],
         from_type: IDType,
         to_type: IDType,
+        session: "blpapi.Session | None" = None,
     ) -> dict[str, str]:
-        """Process identifier conversion response.
+        """Process identifier conversion response via BLPAPI ReferenceDataRequest.
+
+        Sends a ReferenceDataRequest using the source identifier type prefix and
+        requests PARSEKYABLE_DES to obtain the Bloomberg ticker. Maps each original
+        identifier to its converted form.
 
         Parameters
         ----------
         identifiers : list[str]
-            Identifiers to convert
+            Identifiers to convert (e.g., ISINs, SEDOLs)
         from_type : IDType
-            Source identifier type
+            Source identifier type (used to build Bloomberg security ID prefix)
         to_type : IDType
-            Target identifier type
+            Target identifier type (currently TICKER is the primary supported target)
+        session : blpapi.Session | None
+            Active Bloomberg session. When None, returns empty dict (test
+            compatibility mode).
 
         Returns
         -------
         dict[str, str]
-            Conversion mapping
+            Mapping of original identifier to converted Bloomberg ticker.
         """
-        # AIDEV-NOTE: This method is typically mocked in tests
         logger.debug(
             "Processing ID conversion",
             identifiers=identifiers,
             from_type=from_type.value,
             to_type=to_type.value,
         )
-        return {}
+
+        if session is None:
+            return {}
+
+        from market.bloomberg.constants import ID_TYPE_PREFIXES
+
+        prefix = ID_TYPE_PREFIXES.get(from_type.value, "")
+
+        ref_data_service = session.getService(self.REF_DATA_SERVICE)
+        request = ref_data_service.createRequest("ReferenceDataRequest")
+
+        id_mapping: dict[str, str] = {}
+        for identifier in identifiers:
+            if prefix:
+                security_id = f"{prefix}{identifier}"
+            else:
+                security_id = identifier
+            request.append("securities", security_id)  # type: ignore[attr-defined]
+            id_mapping[security_id] = identifier
+
+        request.append("fields", "PARSEKYABLE_DES")  # type: ignore[attr-defined]
+
+        session.sendRequest(request)  # type: ignore[attr-defined]
+
+        result: dict[str, str] = {}
+
+        while True:
+            event = session.nextEvent(5000)  # type: ignore[attr-defined]
+            event_type = event.eventType()
+
+            if event_type in (
+                blpapi.Event.RESPONSE,
+                blpapi.Event.PARTIAL_RESPONSE,
+            ):
+                for msg in event:
+                    security_data_array = msg.getElement("securityData")
+
+                    for security_data in security_data_array.values():
+                        security_id: str = security_data.getElement(
+                            "security"
+                        ).getValue()
+                        original_id: str = id_mapping.get(security_id) or security_id
+
+                        if security_data.hasElement("securityError"):
+                            err_msg = (
+                                security_data.getElement("securityError")
+                                .getElement("message")
+                                .getValue()
+                            )
+                            logger.warning(
+                                "Security error during ID conversion",
+                                identifier=original_id,
+                                error=err_msg,
+                            )
+                            continue
+
+                        field_data = security_data.getElement("fieldData")
+
+                        if field_data.hasElement("PARSEKYABLE_DES"):
+                            ticker_element = field_data.getElement("PARSEKYABLE_DES")
+                            if not ticker_element.isNull():
+                                result[original_id] = ticker_element.getValue()
+
+                if event_type == blpapi.Event.RESPONSE:
+                    break
+
+            elif event_type == blpapi.Event.TIMEOUT:
+                logger.warning("Bloomberg ID conversion request timed out")
+                break
+
+            elif event_type == blpapi.Event.SESSION_STATUS:
+                for msg in event:
+                    if msg.messageType() == blpapi.Name("SessionTerminated"):
+                        logger.error("Bloomberg session terminated unexpectedly")
+                        raise BloombergDataError(
+                            "Bloomberg session terminated during ID conversion",
+                        )
+
+        return result
 
     def get_historical_news_by_security(
         self,
@@ -672,7 +976,9 @@ class BloombergFetcher:
         session = self._create_session()
         try:
             self._open_service(session, self.NEWS_SERVICE)
-            stories = self._process_news_response(security, start_date, end_date)
+            stories = self._process_news_response(
+                security, start_date, end_date, session
+            )
 
             logger.info(
                 "News fetch completed",
@@ -690,26 +996,110 @@ class BloombergFetcher:
         security: str,
         start_date: datetime | str | None,
         end_date: datetime | str | None,
+        session: "blpapi.Session | None" = None,
     ) -> list[NewsStory]:
-        """Process news response.
+        """Process news response via BLPAPI NewsHeadlineRequest.
+
+        Sends a NewsHeadlineRequest for the given security with optional date
+        range filters and processes the event loop, extracting headline, storyId,
+        storyDateTime, and source from each newsHeadlines element.
 
         Parameters
         ----------
         security : str
-            Security identifier
+            Security identifier (e.g., "AAPL US Equity")
         start_date : datetime | str | None
-            Start date
+            Start date for news filtering
         end_date : datetime | str | None
-            End date
+            End date for news filtering
+        session : blpapi.Session | None
+            Active Bloomberg session. When None, returns empty list (test
+            compatibility mode).
 
         Returns
         -------
         list[NewsStory]
-            News stories
+            News stories sorted by datetime ascending.
+
+        Raises
+        ------
+        BloombergDataError
+            If the Bloomberg session terminates unexpectedly.
         """
-        # AIDEV-NOTE: This method is typically mocked in tests
         logger.debug("Processing news response", security=security)
-        return []
+
+        if session is None:
+            return []
+
+        news_service = session.getService(self.NEWS_SERVICE)
+        request = news_service.createRequest("NewsHeadlineRequest")
+
+        request.append("securities", security)  # type: ignore[attr-defined]
+
+        start_dt = self._parse_date(start_date)
+        end_dt = self._parse_date(end_date)
+
+        if start_dt is not None:
+            request.set("startDateTime", start_dt)  # type: ignore[attr-defined]
+        if end_dt is not None:
+            request.set("endDateTime", end_dt)  # type: ignore[attr-defined]
+
+        session.sendRequest(request)  # type: ignore[attr-defined]
+
+        stories: list[NewsStory] = []
+
+        while True:
+            event = session.nextEvent(5000)  # type: ignore[attr-defined]
+            event_type = event.eventType()
+
+            if event_type in (
+                blpapi.Event.RESPONSE,
+                blpapi.Event.PARTIAL_RESPONSE,
+            ):
+                for msg in event:
+                    if not msg.hasElement("newsHeadlines"):
+                        continue
+
+                    news_headlines = msg.getElement("newsHeadlines")
+
+                    for headline in news_headlines.values():
+                        story_dt = headline.getElementAsDatetime("storyDateTime")
+                        story_id = headline.getElementAsString("storyId")
+                        headline_text = headline.getElementAsString("headline")
+
+                        source: str | None = None
+                        if headline.hasElement("sources"):
+                            sources_elem = headline.getElement("sources")
+                            if sources_elem.numValues() > 0:
+                                source = sources_elem.getValueAsString(0)
+
+                        stories.append(
+                            NewsStory(
+                                story_id=story_id,
+                                headline=headline_text,
+                                datetime=pd.to_datetime(story_dt).to_pydatetime(),
+                                source=source,
+                            )
+                        )
+
+                if event_type == blpapi.Event.RESPONSE:
+                    break
+
+            elif event_type == blpapi.Event.TIMEOUT:
+                logger.warning("Bloomberg news request timed out", security=security)
+                break
+
+            elif event_type == blpapi.Event.SESSION_STATUS:
+                for msg in event:
+                    if msg.messageType() == blpapi.Name("SessionTerminated"):
+                        logger.error("Bloomberg session terminated unexpectedly")
+                        raise BloombergDataError(
+                            "Bloomberg session terminated during news fetch",
+                            security=security,
+                        )
+
+        stories.sort(key=lambda s: s.datetime)
+        return stories
 
     def get_news_story_content(self, story_id: str) -> str:
         """Fetch full content of a news story.
@@ -779,7 +1169,7 @@ class BloombergFetcher:
         session = self._create_session()
         try:
             self._open_service(session, self.REF_DATA_SERVICE)
-            members = self._process_index_members(index)
+            members = self._process_index_members(index, session)
 
             logger.info("Index members fetched", index=index, count=len(members))
 
@@ -788,22 +1178,128 @@ class BloombergFetcher:
         finally:
             session.stop()
 
-    def _process_index_members(self, index: str) -> list[str]:
-        """Process index members response.
+    def _process_index_members(
+        self,
+        index: str,
+        session: "blpapi.Session | None" = None,
+    ) -> list[str]:
+        """Process index members response via BLPAPI ReferenceDataRequest.
+
+        Sends a ReferenceDataRequest for the INDX_MEMBERS field and traverses
+        the bulk data array to collect all constituent Bloomberg tickers.
 
         Parameters
         ----------
         index : str
-            Index identifier
+            Index identifier (e.g., "SPX Index")
+        session : blpapi.Session | None
+            Active Bloomberg session. When None, returns empty list (test
+            compatibility mode).
 
         Returns
         -------
         list[str]
-            Index members
+            Bloomberg security identifiers of index constituents.
+
+        Raises
+        ------
+        BloombergDataError
+            If the Bloomberg response contains a security-level error or the
+            session terminates unexpectedly.
         """
-        # AIDEV-NOTE: This method is typically mocked in tests
         logger.debug("Processing index members", index=index)
-        return []
+
+        if session is None:
+            return []
+
+        ref_data_service = session.getService(self.REF_DATA_SERVICE)
+        request = ref_data_service.createRequest("ReferenceDataRequest")
+        request.append("securities", index)  # type: ignore[attr-defined]
+        request.append("fields", "INDX_MEMBERS")  # type: ignore[attr-defined]
+
+        session.sendRequest(request)  # type: ignore[attr-defined]
+
+        members: list[str] = []
+
+        while True:
+            event = session.nextEvent(5000)  # type: ignore[attr-defined]
+            event_type = event.eventType()
+
+            if event_type in (
+                blpapi.Event.RESPONSE,
+                blpapi.Event.PARTIAL_RESPONSE,
+            ):
+                for msg in event:
+                    if msg.hasElement("responseError"):
+                        err_msg = (
+                            msg.getElement("responseError")
+                            .getElement("message")
+                            .getValue()
+                        )
+                        logger.error(
+                            "Response error fetching index members",
+                            index=index,
+                            error=err_msg,
+                        )
+                        raise BloombergDataError(
+                            f"Bloomberg response error for index {index}: {err_msg}",
+                            security=index,
+                        )
+
+                    security_data_array = msg.getElement("securityData")
+
+                    for security_data in security_data_array.values():
+                        if security_data.hasElement("securityError"):
+                            err_msg = (
+                                security_data.getElement("securityError")
+                                .getElement("message")
+                                .getValue()
+                            )
+                            logger.error(
+                                "Security error fetching index members",
+                                index=index,
+                                error=err_msg,
+                            )
+                            raise BloombergDataError(
+                                f"Bloomberg security error for index {index}: {err_msg}",
+                                security=index,
+                                code=ErrorCode.INVALID_SECURITY,
+                            )
+
+                        field_data = security_data.getElement("fieldData")
+
+                        if not field_data.hasElement("INDX_MEMBERS"):
+                            continue
+
+                        members_element = field_data.getElement("INDX_MEMBERS")
+
+                        for i in range(members_element.numValues()):
+                            member_data = members_element.getValueAsElement(i)
+                            if member_data.hasElement(
+                                "Member Ticker and Exchange Code"
+                            ):
+                                ticker = member_data.getElementAsString(
+                                    "Member Ticker and Exchange Code"
+                                )
+                                members.append(ticker)
+
+                if event_type == blpapi.Event.RESPONSE:
+                    break
+
+            elif event_type == blpapi.Event.TIMEOUT:
+                logger.warning("Bloomberg index members request timed out", index=index)
+                break
+
+            elif event_type == blpapi.Event.SESSION_STATUS:
+                for msg in event:
+                    if msg.messageType() == blpapi.Name("SessionTerminated"):
+                        logger.error("Bloomberg session terminated unexpectedly")
+                        raise BloombergDataError(
+                            "Bloomberg session terminated during index members fetch",
+                            security=index,
+                        )
+
+        return members
 
     def get_field_info(self, field_id: str) -> FieldInfo:
         """Fetch Bloomberg field metadata.
@@ -828,8 +1324,8 @@ class BloombergFetcher:
 
         session = self._create_session()
         try:
-            self._open_service(session, self.REF_DATA_SERVICE)
-            info = self._process_field_info(field_id)
+            self._open_service(session, API_FIELDS_SERVICE)
+            info = self._process_field_info(field_id, session)
 
             logger.info("Field info fetched", field_id=field_id)
 
@@ -838,26 +1334,101 @@ class BloombergFetcher:
         finally:
             session.stop()
 
-    def _process_field_info(self, field_id: str) -> FieldInfo:
-        """Process field info response.
+    def _process_field_info(
+        self,
+        field_id: str,
+        session: "blpapi.Session | None" = None,
+    ) -> FieldInfo:
+        """Process field info response via BLPAPI FieldInfoRequest.
+
+        Sends a FieldInfoRequest to the //blp/apiflds service and extracts
+        the mnemonic, description, and datatype for the requested field.
 
         Parameters
         ----------
         field_id : str
-            Field identifier
+            Bloomberg field mnemonic (e.g., "PX_LAST")
+        session : blpapi.Session | None
+            Active Bloomberg session. When None, returns FieldInfo with empty
+            strings (test compatibility mode).
 
         Returns
         -------
         FieldInfo
-            Field information
+            Field metadata including field_id, field_name, description, and
+            data_type.
+
+        Raises
+        ------
+        BloombergDataError
+            If the Bloomberg session terminates unexpectedly.
         """
-        # AIDEV-NOTE: This method is typically mocked in tests
         logger.debug("Processing field info", field_id=field_id)
+
+        if session is None:
+            return FieldInfo(
+                field_id=field_id,
+                field_name="",
+                description="",
+                data_type="",
+            )
+
+        field_info_service = session.getService(API_FIELDS_SERVICE)
+        request = field_info_service.createRequest("FieldInfoRequest")
+        request.append("id", field_id)  # type: ignore[attr-defined]
+
+        session.sendRequest(request)  # type: ignore[attr-defined]
+
+        field_name = ""
+        description = ""
+        data_type = ""
+
+        while True:
+            event = session.nextEvent(5000)  # type: ignore[attr-defined]
+            event_type = event.eventType()
+
+            if event_type in (
+                blpapi.Event.RESPONSE,
+                blpapi.Event.PARTIAL_RESPONSE,
+            ):
+                for msg in event:
+                    if not msg.hasElement("fieldData"):
+                        continue
+
+                    field_data_array = msg.getElement("fieldData")
+
+                    for i in range(field_data_array.numValues()):
+                        field_data = field_data_array.getValueAsElement(i)
+
+                        if field_data.hasElement("mnemonic"):
+                            field_name = field_data.getElementAsString("mnemonic")
+                        if field_data.hasElement("description"):
+                            description = field_data.getElementAsString("description")
+                        if field_data.hasElement("datatype"):
+                            data_type = field_data.getElementAsString("datatype")
+
+                if event_type == blpapi.Event.RESPONSE:
+                    break
+
+            elif event_type == blpapi.Event.TIMEOUT:
+                logger.warning(
+                    "Bloomberg field info request timed out", field_id=field_id
+                )
+                break
+
+            elif event_type == blpapi.Event.SESSION_STATUS:
+                for msg in event:
+                    if msg.messageType() == blpapi.Name("SessionTerminated"):
+                        logger.error("Bloomberg session terminated unexpectedly")
+                        raise BloombergDataError(
+                            "Bloomberg session terminated during field info fetch",
+                        )
+
         return FieldInfo(
             field_id=field_id,
-            field_name="",
-            description="",
-            data_type="",
+            field_name=field_name,
+            description=description,
+            data_type=data_type,
         )
 
     def store_to_database(
