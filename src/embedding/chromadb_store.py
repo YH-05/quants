@@ -244,8 +244,8 @@ def store_articles(
         collection.add(
             ids=batch_ids,
             documents=batch_docs,
-            embeddings=batch_embs,
-            metadatas=batch_metas,
+            embeddings=batch_embs,  # type: ignore[arg-type]
+            metadatas=batch_metas,  # type: ignore[arg-type]
         )
 
         batch_size = len(batch_ids)
