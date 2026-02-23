@@ -8,8 +8,10 @@ Functions
 ---------
 - prepare_extraction_input: Build and persist Phase 1 agent input JSON
 - validate_extraction_output: Parse and validate Phase 1 agent output JSON
-- prepare_scoring_input: Build and persist Phase 2 agent input JSON
+- prepare_scoring_input: Build and persist Phase 2 agent input JSON (single batch)
+- prepare_scoring_batches: Split claim IDs into batches and write batch input JSONs
 - validate_scoring_output: Parse and validate Phase 2 agent output JSON
+- consolidate_scored_claims: Merge scored_batch_*.json files into scoring_output.json
 - run_phase3_to_5: Execute Phase 3-5 using existing Python code
 
 Notes
@@ -22,6 +24,7 @@ phases.
 from __future__ import annotations
 
 import json
+import re
 from typing import TYPE_CHECKING, Any
 
 from dev.ca_strategy.pit import CUTOFF_DATE
@@ -41,6 +44,8 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from dev.ca_strategy.types import Claim
+
+_TICKER_RE = re.compile(r"^[A-Z]{1,10}$")
 
 logger = get_logger(__name__)
 
@@ -91,6 +96,7 @@ def prepare_extraction_input(
         - ``workspace_dir``: workspace directory path (str)
         - ``cutoff_date``: PoiT cutoff date as ISO string
     """
+    _validate_ticker(ticker)
     logger.info(
         "Preparing extraction input",
         ticker=ticker,
@@ -113,9 +119,8 @@ def prepare_extraction_input(
         if filepath.exists():
             transcript_paths.append(str(filepath))
 
-    # KB paths
-    kb1_dir = kb_base_dir / "kb1_rules_transcript"
-    kb3_dir = kb_base_dir / "kb3_fewshot_transcript"
+    # KB paths (extraction only uses KB1 and KB3)
+    kb1_dir, _kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
 
     payload: dict[str, Any] = {
         "ticker": ticker,
@@ -246,6 +251,7 @@ def prepare_scoring_input(
         - ``kb3_dir``: path to KB3-T few-shot examples directory (str)
         - ``workspace_dir``: workspace directory path (str)
     """
+    _validate_ticker(ticker)
     logger.info(
         "Preparing scoring input",
         ticker=ticker,
@@ -253,9 +259,7 @@ def prepare_scoring_input(
     )
 
     phase1_output_dir = workspace_dir / "phase1_output" / ticker
-    kb1_dir = kb_base_dir / "kb1_rules_transcript"
-    kb2_dir = kb_base_dir / "kb2_patterns_transcript"
-    kb3_dir = kb_base_dir / "kb3_fewshot_transcript"
+    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
 
     payload: dict[str, Any] = {
         "ticker": ticker,
@@ -360,6 +364,279 @@ def validate_scoring_output(
     return scored
 
 
+def prepare_scoring_batches(
+    workspace_dir: Path,
+    kb_base_dir: Path,
+    ticker: str,
+    batch_size: int = 5,
+) -> list[dict[str, Any]]:
+    """Split extraction output claim IDs into batches and write input JSON files.
+
+    Reads ``workspace_dir/phase1_output/{ticker}/extraction_output.json`` to
+    obtain the list of claim IDs, then partitions them into groups of
+    *batch_size* and writes each group as
+    ``workspace_dir/batch_inputs/scoring_input_batch_{n}.json``.
+
+    This is the batch counterpart to :func:`prepare_scoring_input`, designed to
+    allow the ``transcript-claim-scorer`` agent to process claims in smaller
+    chunks and avoid the 32 K-token output limit.
+
+    Parameters
+    ----------
+    workspace_dir : Path
+        Working directory containing ``phase1_output/{ticker}/extraction_output.json``.
+    kb_base_dir : Path
+        Root directory for knowledge base files
+        (``kb1_rules_transcript/``, ``kb2_patterns_transcript/``,
+        ``kb3_fewshot_transcript/`` subdirs expected).
+    ticker : str
+        Ticker symbol to prepare batched scoring inputs for.
+    batch_size : int, optional
+        Number of claim IDs per batch.  Defaults to 5.
+
+    Returns
+    -------
+    list[dict[str, Any]]
+        One element per batch, each containing:
+        - ``input_path``: absolute path of the written batch input JSON (str)
+        - ``output_path``: expected path of the scoring agent output (str)
+        - ``target_claim_ids``: list of claim IDs for this batch
+        - ``batch_index``: 0-based index of this batch
+        - ``batch_total``: total number of batches
+
+    Raises
+    ------
+    ValueError
+        If ``extraction_output.json`` does not exist or cannot be read.
+        If ``batch_size`` is not a positive integer.
+    """
+    _validate_ticker(ticker)
+    if batch_size <= 0:
+        raise ValueError(f"batch_size must be a positive integer, got {batch_size}")
+
+    extraction_output_path = (
+        workspace_dir / "phase1_output" / ticker / "extraction_output.json"
+    )
+
+    if not extraction_output_path.exists():
+        msg = (
+            f"extraction_output.json not found for ticker {ticker!r}: "
+            f"{extraction_output_path}"
+        )
+        logger.error(
+            "extraction_output.json not found",
+            ticker=ticker,
+            path=str(extraction_output_path),
+        )
+        raise ValueError(msg)
+
+    try:
+        data = json.loads(extraction_output_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        msg = f"Failed to read extraction_output.json for ticker {ticker!r}: {exc}"
+        logger.error(
+            "Failed to read extraction_output.json",
+            ticker=ticker,
+            path=str(extraction_output_path),
+            error=str(exc),
+        )
+        raise ValueError(msg) from exc
+
+    raw_claims = data.get("claims", [])
+    claim_ids: list[str] = [
+        c["id"] for c in raw_claims if isinstance(c, dict) and "id" in c
+    ]
+
+    logger.info(
+        "Preparing scoring batches",
+        ticker=ticker,
+        total_claims=len(claim_ids),
+        batch_size=batch_size,
+    )
+
+    # Partition claim IDs into batches
+    id_batches: list[list[str]] = [
+        claim_ids[i : i + batch_size] for i in range(0, len(claim_ids), batch_size)
+    ]
+    if not id_batches:
+        id_batches = [[]]
+
+    batch_total = len(id_batches)
+    batch_input_dir = workspace_dir / "batch_inputs"
+    batch_input_dir.mkdir(parents=True, exist_ok=True)
+
+    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
+
+    phase2_output_dir = workspace_dir / "phase2_output" / ticker
+
+    results: list[dict[str, Any]] = []
+    for batch_index, ids in enumerate(id_batches):
+        input_path = batch_input_dir / f"scoring_input_batch_{batch_index}.json"
+        output_path = phase2_output_dir / f"scored_batch_{batch_index}.json"
+
+        payload: dict[str, Any] = {
+            "ticker": ticker,
+            "phase1_output_dir": str(workspace_dir / "phase1_output" / ticker),
+            "kb1_dir": str(kb1_dir),
+            "kb2_dir": str(kb2_dir),
+            "kb3_dir": str(kb3_dir),
+            "workspace_dir": str(workspace_dir),
+            "target_claim_ids": ids,
+            "output_path": str(output_path),
+            "batch_index": batch_index,
+            "batch_total": batch_total,
+        }
+
+        input_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+        results.append(
+            {
+                "input_path": str(input_path),
+                "output_path": str(output_path),
+                "target_claim_ids": ids,
+                "batch_index": batch_index,
+                "batch_total": batch_total,
+            }
+        )
+
+    logger.info(
+        "Scoring batches prepared",
+        ticker=ticker,
+        batch_count=batch_total,
+        batch_input_dir=str(batch_input_dir),
+    )
+
+    return results
+
+
+def consolidate_scored_claims(
+    workspace_dir: Path,
+    ticker: str,
+) -> Path:
+    """Merge all scored batch files into a single scoring_output.json.
+
+    Globs ``workspace_dir/phase2_output/{ticker}/scored_batch_*.json``, sorts
+    them by the numeric batch index extracted from the filename, concatenates
+    the ``scored_claims`` lists, and re-calculates the ``metadata`` fields
+    (``scored_count``, ``confidence_distribution``, ``gatekeeper_applied``).
+
+    The merged result is written to ``workspace_dir/scoring_output.json``
+    (overwriting any existing file).
+
+    Parameters
+    ----------
+    workspace_dir : Path
+        Working directory containing
+        ``phase2_output/{ticker}/scored_batch_*.json`` files.
+    ticker : str
+        Ticker symbol whose batch files should be consolidated.
+
+    Returns
+    -------
+    Path
+        Path to the written ``scoring_output.json`` file.
+
+    Raises
+    ------
+    ValueError
+        If no ``scored_batch_*.json`` files are found for *ticker*.
+    """
+    _validate_ticker(ticker)
+    phase2_dir = workspace_dir / "phase2_output" / ticker
+    batch_pattern = re.compile(r"scored_batch_(\d+)\.json$")
+
+    # Collect and sort batch files by numeric index
+    batch_files: list[tuple[int, Path]] = []
+    if phase2_dir.exists():
+        for f in phase2_dir.iterdir():
+            m = batch_pattern.match(f.name)
+            if m:
+                batch_files.append((int(m.group(1)), f))
+
+    if not batch_files:
+        msg = (
+            f"No scored_batch_*.json files found for ticker {ticker!r} in {phase2_dir}"
+        )
+        logger.error(
+            "No scored batch files found",
+            ticker=ticker,
+            phase2_dir=str(phase2_dir),
+        )
+        raise ValueError(msg)
+
+    batch_files.sort(key=lambda t: t[0])
+
+    logger.info(
+        "Consolidating scored claims",
+        ticker=ticker,
+        batch_count=len(batch_files),
+    )
+
+    # Merge scored_claims in order
+    all_scored_claims: list[dict[str, Any]] = []
+    any_gatekeeper_applied = False
+
+    for _, batch_path in batch_files:
+        try:
+            batch_data = json.loads(batch_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            logger.warning(
+                "Failed to read scored batch file, skipping",
+                path=str(batch_path),
+                error=str(exc),
+            )
+            continue
+
+        batch_claims = batch_data.get("scored_claims", [])
+        all_scored_claims.extend(batch_claims)
+
+        # Track gatekeeper_applied across batches
+        batch_meta = batch_data.get("metadata", {})
+        if batch_meta.get("gatekeeper_applied", False):
+            any_gatekeeper_applied = True
+
+    # Re-calculate metadata using the same normalization as the scoring path
+    confidence_distribution: dict[str, int] = {}
+    for sc in all_scored_claims:
+        raw_conf = sc.get("final_confidence", 0.0)
+        if isinstance(raw_conf, (int, float)):
+            normalized = _normalize_confidence(raw_conf)
+            bucket_low = int(normalized * 10) * 10
+            bucket_key = f"{bucket_low}-{min(bucket_low + 10, 100)}"
+            confidence_distribution[bucket_key] = (
+                confidence_distribution.get(bucket_key, 0) + 1
+            )
+
+    metadata: dict[str, Any] = {
+        "scored_count": len(all_scored_claims),
+        "confidence_distribution": confidence_distribution,
+        "gatekeeper_applied": any_gatekeeper_applied,
+    }
+
+    output_data: dict[str, Any] = {
+        "scored_claims": all_scored_claims,
+        "metadata": metadata,
+    }
+
+    output_path = workspace_dir / "scoring_output.json"
+    output_path.write_text(
+        json.dumps(output_data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+    logger.info(
+        "Scored claims consolidated",
+        ticker=ticker,
+        total_claims=len(all_scored_claims),
+        output_path=str(output_path),
+    )
+
+    return output_path
+
+
 def run_phase3_to_5(
     workspace_dir: Path,
     config_path: Path,
@@ -412,8 +689,51 @@ def run_phase3_to_5(
 # ---------------------------------------------------------------------------
 
 
+def _validate_ticker(ticker: str) -> None:
+    """Validate that ticker is a valid ticker symbol (1-10 uppercase ASCII letters).
+
+    Parameters
+    ----------
+    ticker : str
+        Ticker symbol to validate.
+
+    Raises
+    ------
+    ValueError
+        If ticker does not match the expected format.
+    """
+    if not _TICKER_RE.fullmatch(ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Expected 1-10 uppercase ASCII letters (e.g. 'AAPL', 'DIS')."
+        )
+
+
+def _build_kb_dirs(kb_base_dir: Path) -> tuple[Path, Path, Path]:
+    """Build KB directory paths from the base knowledge base directory.
+
+    Parameters
+    ----------
+    kb_base_dir : Path
+        Root directory containing knowledge base subdirectories.
+
+    Returns
+    -------
+    tuple[Path, Path, Path]
+        Tuple of (kb1_dir, kb2_dir, kb3_dir).
+    """
+    return (
+        kb_base_dir / "kb1_rules_transcript",
+        kb_base_dir / "kb2_patterns_transcript",
+        kb_base_dir / "kb3_fewshot_transcript",
+    )
+
+
 def _normalize_confidence(value: float | int) -> float:
     """Normalize confidence from percentage (0-100) to unit range (0.0-1.0).
+
+    Values greater than 1.0 are treated as percentages and divided by 100.
+    The result is clamped to [0.0, 1.0].
 
     Parameters
     ----------
@@ -423,11 +743,10 @@ def _normalize_confidence(value: float | int) -> float:
     Returns
     -------
     float
-        Confidence value in [0.0, 1.0].
+        Confidence value clamped to [0.0, 1.0].
     """
-    if isinstance(value, (int, float)) and value > 1.0:
-        return float(value) / 100.0
-    return float(value)
+    normalized = float(value) / 100.0 if float(value) > 1.0 else float(value)
+    return max(0.0, min(1.0, normalized))
 
 
 def _parse_raw_claim(raw: dict[str, Any], ticker: str) -> Claim | None:
@@ -468,11 +787,9 @@ def _parse_raw_claim(raw: dict[str, Any], ticker: str) -> Claim | None:
             )
             return None
 
-        # Normalize confidence
+        # Normalize confidence (clamping included in _normalize_confidence)
         raw_confidence = rule_eval_raw.get("confidence", 0.5)
         confidence = _normalize_confidence(raw_confidence)
-        # Clamp to [0.0, 1.0]
-        confidence = max(0.0, min(1.0, confidence))
 
         # Parse results (support dict and list-of-dict formats)
         results_raw = rule_eval_raw.get("results", {})
@@ -611,7 +928,6 @@ def _parse_raw_scored_claim(
             return None
 
         final_confidence = _normalize_confidence(raw_confidence)
-        final_confidence = max(0.0, min(1.0, final_confidence))
 
         # Parse confidence adjustments
         adjustments: list[ConfidenceAdjustment] = []
@@ -708,9 +1024,7 @@ def _parse_gatekeeper(raw: dict[str, Any]) -> GatekeeperResult | None:
 
     override = gk_raw.get("override_confidence")
     if isinstance(override, (int, float)):
-        if override > 1.0:
-            override = override / 100.0
-        override = max(0.0, min(1.0, float(override)))
+        override = _normalize_confidence(override)
     else:
         override = None
 
@@ -815,7 +1129,9 @@ def _default_rule_evaluation() -> RuleEvaluation:
 
 
 __all__ = [
+    "consolidate_scored_claims",
     "prepare_extraction_input",
+    "prepare_scoring_batches",
     "prepare_scoring_input",
     "run_phase3_to_5",
     "validate_extraction_output",

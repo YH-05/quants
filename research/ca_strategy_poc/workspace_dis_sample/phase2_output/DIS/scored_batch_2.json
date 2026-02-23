@@ -1,0 +1,310 @@
+{
+  "ticker": "DIS",
+  "batch_index": 2,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "DIS_011",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのBroadwayおよびテーマパーク・コンテンツの中核にある「ストーリーテリング能力」とそれを支える「Imagineering」組織は、テーマパーク・映画・TV等の全事業にわたりオリジナル体験を生み出す唯一無二の創造的インフラを形成している。",
+      "power_type": "process_power",
+      "stage1_gate": {
+        "result": "pass",
+        "reason": "Imagineering組織の創造的インフラという構造的優位性の主張であり、PoiT違反なし。KB1-Tルール評価対象として適格"
+      },
+      "stage2_kb1t": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": false
+        },
+        "raw_confidence": 0.3,
+        "adjustments": [
+          "ルール1: Imagineering組織の創造能力という仕組みであり個別作品の成功（結果）ではない（合格）",
+          "ルール2: 『Imagineering創造インフラ』という名詞属性（合格）",
+          "ルール6: ImagineeeringはDisneyパーク事業の核心的組織であり補完的要素ではない（合格）",
+          "ルール11: テーマパーク業界における創造的組織の優位性は構造的だが、Universal Creativeも類似組織を保有しており他社との差別化定量化が困難（不合格）",
+          "ルール4: 定量的裏付け（件数・規模・競合比較数値）なし（加点なし）",
+          "ルール7: 競合他社（Universal Creative等）との明示的比較なし（加点なし）"
+        ]
+      },
+      "stage3_kb2t": {
+        "patterns_checked": ["PatternD", "PatternE", "PatternG"],
+        "matched_patterns": ["PatternD"],
+        "pattern_adjustments": [
+          "PatternD（定性的・比較なし）: 証拠が「Imagineers には素材の豊かさがある」というCEO発言のみ。定量的裏付け・競合比較なし → -0.0（既に0.3で反映済み）",
+          "PatternE（定量的競合比較なし）: 競合（Universal）との定量比較なし → 引き下げ要因だが0.3がフロア",
+          "PatternG該当なし: IP保有という構造的優位性であり外部依存の問題なし"
+        ],
+        "confidence_after_patterns": 0.3
+      },
+      "stage4_kb3t": {
+        "fewshot_reference": "LLY fewshot参照: 「創薬能力の高さ」という定性的主張=30%。本主張のImageneering能力も同様に定性的・組織能力主張。競合比較・定量証拠が弱く30%が妥当",
+        "distribution_check": {
+          "target_0.9": "6%",
+          "target_0.7": "26%",
+          "target_0.5": "35%",
+          "target_0.3": "26%",
+          "target_0.1": "6%",
+          "calibration_note": "0.3（低信頼）は目標26%内に収まる。定性的創造能力主張に対する適切なキャリブレーション"
+        },
+        "final_calibration": "0.3を維持。Imagineering組織の独自性は認められるが、競合比較・定量証拠不足により高い確信度付与は不適切"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "Imagineering組織は70年以上の制作実績を持つDisneyの核心的クリエイティブインフラであり構造的優位性の概念は成立する（rule01/02/06合格）。しかし証拠が「素材の豊かさがある」というCEOの定性発言のみで、競合他社（Universal Creative等）との比較数値・定量的優位性データが存在しない。rule11（業界構造フィット）不合格、PatternD該当。KB3-T LLY fewshot（創薬能力定性主張=30%）と整合。final_confidence=0.3。",
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "when you go to Imagineering there's an embarrassment of riches, so to speak, in terms of stories and characters that the Imagineers have to draw from to create great park experiences."
+        }
+      ]
+    },
+    {
+      "id": "DIS_012",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーのStarWarsフランチャイズは映画・テーマパーク・消費者製品・ゲーム・TV番組という全メディアを横断する多次元収益化が可能な唯一の文化的資産であり、10年以上の計画的コンテンツパイプラインが確保されている。",
+      "power_type": "cornered_resource",
+      "stage1_gate": {
+        "result": "pass",
+        "reason": "Star Wars IPの多次元活用という構造的優位性の主張。証拠はcutoff_date 2015-09-30以前のトランスクリプトのみ（Q3 FY2015まで）。Episode VII公開後業績への言及なし。PoiT違反なし"
+      },
+      "stage2_kb1t": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule10"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": true,
+          "rule10": false
+        },
+        "raw_confidence": 0.7,
+        "adjustments": [
+          "ルール1: コンテンツパイプライン構築・管理能力（仕組み）であり映画1本の成功（結果）ではない（合格）",
+          "ルール2: 『確定的多年次コンテンツパイプライン』という名詞属性（合格）",
+          "ルール4: 少なくとも5本の映画計画・123百万回ティーザー視聴等の定量的裏付けあり（合格）",
+          "ルール6: 全事業セグメントにわたる核心的IP（補完的でなく構造的）（合格）",
+          "ルール7: 「現存する最も価値あるフィルムフランチャイズ」という業界内での絶対的ポジション主張（合格）",
+          "ルール10: 断念例（意図的に行わなかった戦略的判断）の明示なし（加点なし）"
+        ]
+      },
+      "stage3_kb2t": {
+        "patterns_checked": ["PatternI", "PatternJ", "PatternV"],
+        "matched_patterns": ["PatternI", "PatternV"],
+        "pattern_adjustments": [
+          "PatternI（稀少資源保有）: Star Wars IPは代替不能の文化的資産。Lucasfilm買収（2012年）による独占的保有は cornered_resource の典型例 → 確信度維持",
+          "PatternV（多次元収益化実証）: 映画・パーク・消費者製品・ゲーム・TV番組の5分野での活用能力は実証済みの構造（CEOが具体的に列挙）→ 確信度維持または引き上げ要因",
+          "PatternF非該当: パイプライン計画は戦略ではなく確定済み計画（映画タイトル・公開年が具体的）"
+        ],
+        "confidence_after_patterns": 0.7
+      },
+      "stage4_kb3t": {
+        "fewshot_reference": "MNST fewshot参照: ブランド価値評価=50-70%。Star Warsは定量的パイプライン計画（5本確定・公開年明示）と市場反応証拠（123M視聴）が揃う。ORLY fewshot（市場地位=70%）も参照。多次元活用能力が明示的に示されており70%が妥当",
+        "distribution_check": {
+          "target_0.9": "6%",
+          "target_0.7": "26%",
+          "target_0.5": "35%",
+          "target_0.3": "26%",
+          "target_0.1": "6%",
+          "calibration_note": "0.7（高信頼）は目標26%内。Star Wars IPの稀少性・計画の具体性・多次元活用の明示が揃い、0.9未満（定量競合比較の直接データが弱い）の0.7が適切"
+        },
+        "final_calibration": "0.7を維持。rule04/07合格・PatternI/V適用で高評価正当。ただし競合との定量比較データなく0.9には届かず"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "Star Wars IPは2012年のLucasfilm買収により独占的に保有する代替不能の文化的資産（cornered_resource）。2015-2019年に少なくとも5本の映画が確定的に計画済み（公開年・タイトル明示）という定量的パイプラインが存在し（rule04合格）、映画・パーク・消費者製品・ゲーム・TV全分野での多次元活用能力をCEO/COOが明示（rule06/07合格）。123M回ティーザー視聴という市場反応証拠あり。PatternI（稀少資源）・PatternV（多次元収益化）適用で確信度維持。KB3-T MNST/ORLY fewshotと整合。final_confidence=0.7。",
+      "evidence_sources": [
+        {
+          "speaker": "Thomas Staggs",
+          "role": "COO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "Following The Force Awakens, we'll release the first standalone Star Wars film, Rogue One... followed by Episode VIII... We'll come back in 2018 with a standalone film about young Han Solo, and then Episode IX will hit theaters in 2019. And that's just the theatrical lineup."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q3 FY2015",
+          "quote": "We know we have probably the most valuable film franchise that ever existed. We know we have the ability as a company to leverage it in very, very compelling ways, whether it's in Disney Infinity, whether it's at Parks... we fully expect that the success of this film will reverberate throughout the company not only in 2016 but in the years beyond."
+        }
+      ]
+    },
+    {
+      "id": "DIS_013",
+      "claim_type": "cagr_connection",
+      "claim": "ディズニーはFY2013-FY2016期間にわたり国内ケーブルの営業利益を年平均高一桁%成長させるという長期的成長見通しを示しており、スポーツ放映権投資がその根幹にある。",
+      "power_type": null,
+      "stage1_gate": {
+        "result": "pass",
+        "reason": "cagr_connection主張として記録。競争優位性の直接主張ではなく成長率接続を示す定量的主張。PoiT違反なし（FY2015 Q3時点での中一桁修正も含む）"
+      },
+      "stage2_kb1t": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "raw_confidence": 0.5,
+        "adjustments": [
+          "CAGR接続主張として記録。競争優位性の直接主張ではないが、スポーツ放映権投資の収益成長への接続を示している",
+          "ルール4: 具体的な成長率数値あり（高一桁→中一桁修正）（合格）",
+          "cagr_connection タイプ: power_classificationなし、competitive_advantageルール全適用対象外"
+        ]
+      },
+      "stage3_kb2t": {
+        "patterns_checked": [],
+        "matched_patterns": [],
+        "pattern_adjustments": [
+          "cagr_connection主張のためKB2-Tパターン評価は標準対象外。成長率ガイダンスの信頼性評価のみ実施",
+          "ガイダンス修正（高一桁→中一桁）は下方修正だが、複数四半期にわたる数値コミットが存在することはCA戦略的文脈では有意義"
+        ],
+        "confidence_after_patterns": 0.5
+      },
+      "stage4_kb3t": {
+        "fewshot_reference": "cagr_connection主張はfewshot適用対象外。成長率ガイダンスの事実性評価として中間値0.5が妥当。CFO発言による明示的なガイダンス数値が存在（rule04合格）するが、競争優位性への接続は間接的",
+        "distribution_check": {
+          "calibration_note": "cagr_connection主張は0.5（中間）が標準。ガイダンス数値の明示・修正を含む複数点での確認があり0.5を維持"
+        },
+        "final_calibration": "0.5を維持。CAGR接続主張として適切な中間確信度"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "CFO RasuloがQ1 FY2015でFY2013-2016の国内ケーブルOI高一桁成長目標を再確認し、CFO McCarthyがQ3 FY2015で加入者減・FX影響により中一桁成長へ修正したことを報告。具体的な成長率数値が明示されており（rule04合格）事実的主張として信頼性高い。cagr_connection主張タイプとして競争優位性の直接主張ではないが、スポーツ放映権投資との接続を示す。final_confidence=0.5。",
+      "evidence_sources": [
+        {
+          "speaker": "James Rasulo",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q1 FY2015",
+          "quote": "fiscal '13 to '16, we are expecting high single-digit growth in cable OI. And we still are on target to achieve that."
+        },
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "We now expect this lower affiliate revenue and the multiyear impact of foreign exchange rates to moderate our cable operating income growth to mid-single digits during the fiscal 2013 to 2016 period."
+        }
+      ]
+    },
+    {
+      "id": "DIS_014",
+      "claim_type": "factual_claim",
+      "claim": "ディズニーはFY2014通期で営業利益130億ドル超（前年比+21%）・希薄化後EPS 4.32ドル（前年比+27%）を達成し、4期連続の過去最高業績となった。",
+      "power_type": null,
+      "stage1_gate": {
+        "result": "pass",
+        "reason": "factual_claim主張として記録。FY2014 Q4決算コール（2014年11月6日）での年次業績数値報告。cutoff_date 2015-09-30以前の事実。PoiT違反なし"
+      },
+      "stage2_kb1t": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "raw_confidence": 0.9,
+        "adjustments": [
+          "事実的主張（factual_claim）として記録。定量的事実の正確な記録",
+          "ルール4: 明示的な数値（OI $13B超+21%・EPS $4.32+27%）あり（合格）",
+          "factual_claim タイプ: competitive_advantageルール全適用対象外。事実確認の精度で評価",
+          "CEO発言の一次ソース（Q4決算コール冒頭の年次業績報告）として信頼性最高"
+        ]
+      },
+      "stage3_kb2t": {
+        "patterns_checked": [],
+        "matched_patterns": [],
+        "pattern_adjustments": [
+          "factual_claim主張のためKB2-Tパターン評価は対象外。財務数値の事実性評価として最高確信度を付与"
+        ],
+        "confidence_after_patterns": 0.9
+      },
+      "stage4_kb3t": {
+        "fewshot_reference": "factual_claim主張はfewshot適用対象外。CEO発言によるFY2014年次決算の確定数値であり、トランスクリプトから直接引用可能な事実。信頼性・正確性ともに最高レベル（0.9）が妥当",
+        "distribution_check": {
+          "calibration_note": "factual_claim主張（決算数値）は事実確認精度が高ければ0.9付与可。CEOによる一次ソース発言・具体的複数数値・4期連続最高業績という文脈一致から0.9が正当"
+        },
+        "final_calibration": "0.9を維持。明確な財務数値の一次ソース確認"
+      },
+      "final_confidence": 0.9,
+      "scoring_rationale": "CEOイガーがFY2014 Q4決算コール（2014年11月6日）の冒頭で報告した年次業績数値。調整後EPS +27%（$4.32）・セグメント営業利益 +21%（$13B超）という明確な定量的事実。4期連続過去最高という文脈も明示。factual_claim主張として事実性・一次ソース性ともに最高水準（CEO発言・決算コール冒頭）。final_confidence=0.9。",
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2014",
+          "quote": "We reported another year of record financial results at The Walt Disney Company with adjusted EPS up 27% to $4.32 and segment operating income up 21% to more than $13 billion."
+        }
+      ]
+    },
+    {
+      "id": "DIS_015",
+      "claim_type": "factual_claim",
+      "claim": "ディズニーのFY2015は3四半期終了時点で累計自社株買い320億ドル・配当31億ドルを合わせて約63億ドルの株主還元を実施しており、FY2016には自社株買い60-80億ドルへの増額を見込んでいる。",
+      "power_type": null,
+      "stage1_gate": {
+        "result": "pass",
+        "reason": "factual_claim主張として記録。CFO McCarthyによるQ3 FY2015決算コール（2015年8月4日）での株主還元実績報告。cutoff_date 2015-09-30以前の事実。PoiT違反なし"
+      },
+      "stage2_kb1t": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "raw_confidence": 0.7,
+        "adjustments": [
+          "事実的主張（factual_claim）として記録。強固なキャッシュフロー生成能力を間接的に裏付ける財務事実",
+          "ルール4: 明示的な数値（自社株買い$3.2B・配当$3.1B・合計$6.3B）あり（合格）",
+          "factual_claim タイプ: competitive_advantageルール全適用対象外",
+          "注意: 主張文に「累計自社株買い320億ドル」とあるが、証拠では「fiscal year-to-date $3.2 billion」（32億ドル）。桁の食い違いの可能性あり（証拠原文を優先）",
+          "FY2016見込み（$6-8B）は将来予測であり確定事実より確信度が低い"
+        ]
+      },
+      "stage3_kb2t": {
+        "patterns_checked": [],
+        "matched_patterns": [],
+        "pattern_adjustments": [
+          "factual_claim主張のためKB2-Tパターン評価は対象外。財務数値の事実性評価として0.7付与"
+        ],
+        "confidence_after_patterns": 0.7
+      },
+      "stage4_kb3t": {
+        "fewshot_reference": "factual_claim主張はfewshot適用対象外。CFO発言による株主還元実績数値として信頼性高い。ただし主張文の数値（$32B）と証拠（$3.2B）の不一致・将来予測部分の不確実性から0.9ではなく0.7が妥当",
+        "distribution_check": {
+          "calibration_note": "factual_claim主張（株主還元数値）は0.7（高信頼）。CFO一次ソースによる年度累計実績であり信頼性高い。主張文の数値不整合リスクを考慮して0.9未満の0.7"
+        },
+        "final_calibration": "0.7を維持。CFO一次ソース・実績数値として信頼性高いが、主張文数値の不整合懸念あり"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "CFO McCarthyがQ3 FY2015決算コール（2015年8月4日）で報告した年度累計株主還元実績。第3四半期に940万株・$10億を追加買い戻し、年度累計で$3.2B（自社株買い）+ $3.1B（配当）= $6.3Bの株主還元を実施した事実を一次ソース発言として確認。factual_claim主張として財務事実の正確性は高い。ただし主張文に「320億ドル」とあるが原証拠は「$3.2 billion」（32億ドル）であり桁の不整合に注意。この点を踏まえ0.9ではなく0.7を付与。final_confidence=0.7。",
+      "evidence_sources": [
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 FY2015",
+          "quote": "During the third quarter, we repurchased 9.4 million shares for $1 billion. Fiscal year-to-date, we've repurchased 32.4 million shares for $3.2 billion, which, coupled with $3.1 billion in dividends paid this year, represents approximately $6.3 billion in capital returned to our shareholders so far in fiscal 2015."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "scorer_agent": "transcript-claim-scorer",
+    "kb_files_read": [
+      "analyst/transcript_eval/kb1_rules_transcript/",
+      "analyst/transcript_eval/kb2_patterns_transcript/",
+      "analyst/transcript_eval/kb3_fewshot_transcript/",
+      "analyst/transcript_eval/dogma.md"
+    ],
+    "scoring_timestamp": "2026-02-23T00:00:00+00:00",
+    "confidence_distribution": {
+      "0.9": 1,
+      "0.7": 2,
+      "0.5": 1,
+      "0.3": 1,
+      "0.1": 0
+    }
+  }
+}
