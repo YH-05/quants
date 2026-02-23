@@ -454,7 +454,7 @@ def fetch_sitemap_articles_playwright(
     list[dict]
         記事情報のリスト
     """
-    from playwright.sync_api import sync_playwright
+    from playwright.sync_api import sync_playwright  # type: ignore[import-not-found]
 
     month_names = [
         "",
@@ -585,7 +585,7 @@ async def async_fetch_sitemap_articles_playwright(
     ...     print(len(articles))
     >>> asyncio.run(main())
     """
-    from playwright.async_api import async_playwright
+    from playwright.async_api import async_playwright  # type: ignore[import-not-found]
 
     month_names = [
         "",
@@ -711,7 +711,7 @@ def collect_historical_news(
     ...     end_date=datetime(2024, 1, 7),
     ... )
     """
-    from playwright.sync_api import sync_playwright
+    from playwright.sync_api import sync_playwright  # type: ignore[import-not-found]
 
     if config is None:
         config = ScraperConfig()
@@ -819,7 +819,7 @@ async def async_collect_historical_news(
     ...     print(len(df))
     >>> asyncio.run(main())
     """
-    from playwright.async_api import async_playwright
+    from playwright.async_api import async_playwright  # type: ignore[import-not-found]
 
     if config is None:
         config = ScraperConfig()

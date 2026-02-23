@@ -1022,12 +1022,66 @@ class TestPrepareScoringBatches:
         kb_base_dir: Path,
     ) -> None:
         """prepare_scoring_batches() should raise ValueError when extraction_output.json is missing."""
-        with pytest.raises((ValueError, FileNotFoundError)):
+        with pytest.raises(ValueError):
             prepare_scoring_batches(
                 workspace_dir=workspace_dir,
                 kb_base_dir=kb_base_dir,
                 ticker="AAPL",
                 batch_size=5,
+            )
+
+    def test_エッジケース_claimsが空リストのとき空のtarget_claim_idsで1バッチ生成される(
+        self,
+        workspace_dir: Path,
+        kb_base_dir: Path,
+    ) -> None:
+        """When extraction_output.json has no claims, one batch with empty target_claim_ids is produced."""
+        self._write_extraction_output(workspace_dir, "AAPL", [])
+
+        batches = prepare_scoring_batches(
+            workspace_dir=workspace_dir,
+            kb_base_dir=kb_base_dir,
+            ticker="AAPL",
+            batch_size=5,
+        )
+
+        assert len(batches) == 1
+        assert batches[0]["target_claim_ids"] == []
+
+    def test_異常系_extraction_output_jsonが破損JSONの場合はValueError(
+        self,
+        workspace_dir: Path,
+        kb_base_dir: Path,
+    ) -> None:
+        """prepare_scoring_batches() should raise ValueError when extraction_output.json contains invalid JSON."""
+        phase1_dir = workspace_dir / "phase1_output" / "AAPL"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        (phase1_dir / "extraction_output.json").write_text(
+            "{ broken json", encoding="utf-8"
+        )
+
+        with pytest.raises(ValueError):
+            prepare_scoring_batches(
+                workspace_dir=workspace_dir,
+                kb_base_dir=kb_base_dir,
+                ticker="AAPL",
+                batch_size=5,
+            )
+
+    def test_異常系_batch_sizeが0以下の場合はValueError(
+        self,
+        workspace_dir: Path,
+        kb_base_dir: Path,
+    ) -> None:
+        """prepare_scoring_batches() should raise ValueError when batch_size <= 0."""
+        self._write_extraction_output(workspace_dir, "AAPL", ["AAPL-CA-001"])
+
+        with pytest.raises(ValueError, match="batch_size must be a positive integer"):
+            prepare_scoring_batches(
+                workspace_dir=workspace_dir,
+                kb_base_dir=kb_base_dir,
+                ticker="AAPL",
+                batch_size=0,
             )
 
 
@@ -1067,8 +1121,11 @@ def _make_scored_batch_data(
 
     confidence_distribution: dict[str, int] = {}
     for sc in scored_claims:
-        bucket = f"{int(sc['final_confidence'] * 10) * 10}-{int(sc['final_confidence'] * 10) * 10 + 10}"
-        confidence_distribution[bucket] = confidence_distribution.get(bucket, 0) + 1
+        bucket_low = int(sc["final_confidence"] * 10) * 10
+        bucket_key = f"{bucket_low}-{bucket_low + 10}"
+        confidence_distribution[bucket_key] = (
+            confidence_distribution.get(bucket_key, 0) + 1
+        )
 
     return {
         "scored_claims": scored_claims,
@@ -1182,5 +1239,30 @@ class TestConsolidateScoredClaims:
         workspace_dir: Path,
     ) -> None:
         """consolidate_scored_claims() should raise ValueError when no batch files found."""
-        with pytest.raises((ValueError, FileNotFoundError)):
+        with pytest.raises(ValueError):
             consolidate_scored_claims(workspace_dir=workspace_dir, ticker="AAPL")
+
+    def test_エッジケース_一部バッチが破損JSONのときスキップして残りを統合する(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """consolidate_scored_claims() should skip corrupted batch files and merge the rest."""
+        # 正常バッチ 0 と 2、破損バッチ 1
+        self._write_scored_batch(workspace_dir, "AAPL", 0, ["AAPL-CA-000"])
+        # 破損ファイルを直接書き込む
+        phase2_dir = workspace_dir / "phase2_output" / "AAPL"
+        phase2_dir.mkdir(parents=True, exist_ok=True)
+        (phase2_dir / "scored_batch_1.json").write_text(
+            "{ broken json", encoding="utf-8"
+        )
+        self._write_scored_batch(workspace_dir, "AAPL", 2, ["AAPL-CA-002"])
+
+        output_path = consolidate_scored_claims(
+            workspace_dir=workspace_dir, ticker="AAPL"
+        )
+
+        data = json.loads(output_path.read_text(encoding="utf-8"))
+        all_ids = [sc["id"] for sc in data["scored_claims"]]
+        # バッチ 1 はスキップ、バッチ 0 と 2 のみ統合される
+        assert all_ids == ["AAPL-CA-000", "AAPL-CA-002"]
+        assert data["metadata"]["scored_count"] == 2

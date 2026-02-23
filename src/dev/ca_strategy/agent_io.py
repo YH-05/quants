@@ -45,6 +45,8 @@ if TYPE_CHECKING:
 
     from dev.ca_strategy.types import Claim
 
+_TICKER_RE = re.compile(r"^[A-Z]{1,10}$")
+
 logger = get_logger(__name__)
 
 
@@ -94,6 +96,7 @@ def prepare_extraction_input(
         - ``workspace_dir``: workspace directory path (str)
         - ``cutoff_date``: PoiT cutoff date as ISO string
     """
+    _validate_ticker(ticker)
     logger.info(
         "Preparing extraction input",
         ticker=ticker,
@@ -116,9 +119,8 @@ def prepare_extraction_input(
         if filepath.exists():
             transcript_paths.append(str(filepath))
 
-    # KB paths
-    kb1_dir = kb_base_dir / "kb1_rules_transcript"
-    kb3_dir = kb_base_dir / "kb3_fewshot_transcript"
+    # KB paths (extraction only uses KB1 and KB3)
+    kb1_dir, _kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
 
     payload: dict[str, Any] = {
         "ticker": ticker,
@@ -249,6 +251,7 @@ def prepare_scoring_input(
         - ``kb3_dir``: path to KB3-T few-shot examples directory (str)
         - ``workspace_dir``: workspace directory path (str)
     """
+    _validate_ticker(ticker)
     logger.info(
         "Preparing scoring input",
         ticker=ticker,
@@ -256,9 +259,7 @@ def prepare_scoring_input(
     )
 
     phase1_output_dir = workspace_dir / "phase1_output" / ticker
-    kb1_dir = kb_base_dir / "kb1_rules_transcript"
-    kb2_dir = kb_base_dir / "kb2_patterns_transcript"
-    kb3_dir = kb_base_dir / "kb3_fewshot_transcript"
+    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
 
     payload: dict[str, Any] = {
         "ticker": ticker,
@@ -407,7 +408,12 @@ def prepare_scoring_batches(
     ------
     ValueError
         If ``extraction_output.json`` does not exist or cannot be read.
+        If ``batch_size`` is not a positive integer.
     """
+    _validate_ticker(ticker)
+    if batch_size <= 0:
+        raise ValueError(f"batch_size must be a positive integer, got {batch_size}")
+
     extraction_output_path = (
         workspace_dir / "phase1_output" / ticker / "extraction_output.json"
     )
@@ -459,10 +465,7 @@ def prepare_scoring_batches(
     batch_input_dir = workspace_dir / "batch_inputs"
     batch_input_dir.mkdir(parents=True, exist_ok=True)
 
-    # KB paths (same as prepare_scoring_input)
-    kb1_dir = kb_base_dir / "kb1_rules_transcript"
-    kb2_dir = kb_base_dir / "kb2_patterns_transcript"
-    kb3_dir = kb_base_dir / "kb3_fewshot_transcript"
+    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
 
     phase2_output_dir = workspace_dir / "phase2_output" / ticker
 
@@ -541,6 +544,7 @@ def consolidate_scored_claims(
     ValueError
         If no ``scored_batch_*.json`` files are found for *ticker*.
     """
+    _validate_ticker(ticker)
     phase2_dir = workspace_dir / "phase2_output" / ticker
     batch_pattern = re.compile(r"scored_batch_(\d+)\.json$")
 
@@ -594,14 +598,14 @@ def consolidate_scored_claims(
         if batch_meta.get("gatekeeper_applied", False):
             any_gatekeeper_applied = True
 
-    # Re-calculate metadata
+    # Re-calculate metadata using the same normalization as the scoring path
     confidence_distribution: dict[str, int] = {}
     for sc in all_scored_claims:
         raw_conf = sc.get("final_confidence", 0.0)
         if isinstance(raw_conf, (int, float)):
-            bucket_low = int(raw_conf * 10) * 10
-            bucket_high = bucket_low + 10
-            bucket_key = f"{bucket_low}-{bucket_high}"
+            normalized = _normalize_confidence(raw_conf)
+            bucket_low = int(normalized * 10) * 10
+            bucket_key = f"{bucket_low}-{min(bucket_low + 10, 100)}"
             confidence_distribution[bucket_key] = (
                 confidence_distribution.get(bucket_key, 0) + 1
             )
@@ -685,8 +689,51 @@ def run_phase3_to_5(
 # ---------------------------------------------------------------------------
 
 
+def _validate_ticker(ticker: str) -> None:
+    """Validate that ticker is a valid ticker symbol (1-10 uppercase ASCII letters).
+
+    Parameters
+    ----------
+    ticker : str
+        Ticker symbol to validate.
+
+    Raises
+    ------
+    ValueError
+        If ticker does not match the expected format.
+    """
+    if not _TICKER_RE.fullmatch(ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Expected 1-10 uppercase ASCII letters (e.g. 'AAPL', 'DIS')."
+        )
+
+
+def _build_kb_dirs(kb_base_dir: Path) -> tuple[Path, Path, Path]:
+    """Build KB directory paths from the base knowledge base directory.
+
+    Parameters
+    ----------
+    kb_base_dir : Path
+        Root directory containing knowledge base subdirectories.
+
+    Returns
+    -------
+    tuple[Path, Path, Path]
+        Tuple of (kb1_dir, kb2_dir, kb3_dir).
+    """
+    return (
+        kb_base_dir / "kb1_rules_transcript",
+        kb_base_dir / "kb2_patterns_transcript",
+        kb_base_dir / "kb3_fewshot_transcript",
+    )
+
+
 def _normalize_confidence(value: float | int) -> float:
     """Normalize confidence from percentage (0-100) to unit range (0.0-1.0).
+
+    Values greater than 1.0 are treated as percentages and divided by 100.
+    The result is clamped to [0.0, 1.0].
 
     Parameters
     ----------
@@ -696,11 +743,10 @@ def _normalize_confidence(value: float | int) -> float:
     Returns
     -------
     float
-        Confidence value in [0.0, 1.0].
+        Confidence value clamped to [0.0, 1.0].
     """
-    if isinstance(value, (int, float)) and value > 1.0:
-        return float(value) / 100.0
-    return float(value)
+    normalized = float(value) / 100.0 if float(value) > 1.0 else float(value)
+    return max(0.0, min(1.0, normalized))
 
 
 def _parse_raw_claim(raw: dict[str, Any], ticker: str) -> Claim | None:
@@ -741,11 +787,9 @@ def _parse_raw_claim(raw: dict[str, Any], ticker: str) -> Claim | None:
             )
             return None
 
-        # Normalize confidence
+        # Normalize confidence (clamping included in _normalize_confidence)
         raw_confidence = rule_eval_raw.get("confidence", 0.5)
         confidence = _normalize_confidence(raw_confidence)
-        # Clamp to [0.0, 1.0]
-        confidence = max(0.0, min(1.0, confidence))
 
         # Parse results (support dict and list-of-dict formats)
         results_raw = rule_eval_raw.get("results", {})
@@ -884,7 +928,6 @@ def _parse_raw_scored_claim(
             return None
 
         final_confidence = _normalize_confidence(raw_confidence)
-        final_confidence = max(0.0, min(1.0, final_confidence))
 
         # Parse confidence adjustments
         adjustments: list[ConfidenceAdjustment] = []
@@ -981,9 +1024,7 @@ def _parse_gatekeeper(raw: dict[str, Any]) -> GatekeeperResult | None:
 
     override = gk_raw.get("override_confidence")
     if isinstance(override, (int, float)):
-        if override > 1.0:
-            override = override / 100.0
-        override = max(0.0, min(1.0, float(override)))
+        override = _normalize_confidence(override)
     else:
         override = None
 
