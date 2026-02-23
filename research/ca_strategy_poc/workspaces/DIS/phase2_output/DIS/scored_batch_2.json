@@ -1,0 +1,630 @@
+{
+  "ticker": "DIS",
+  "scored_claims": [
+    {
+      "id": "DIS_011",
+      "claim_type": "competitive_advantage",
+      "claim": "ディズニーはケーブルTV配信事業者との長期契約において、加入者数減少時の収益保護条項と、将来の直接消費者配信への移行オプションを組み込むことで、配信エコシステムの変化に対するダウンサイドヘッジを構造化している。",
+      "evidence": "Q3 2015 でIger は「配信契約には、加入者数が一定水準を下回った場合にビジネス関係を修正できる条項が含まれている」と述べた。また「新たな契約ではOTT配信が魅力的な代替手段となった場合に直接消費者配信に移行できる十分な柔軟性を確保する」と説明。Q2 2015 でも「ディズニー・ESPN等のブランドは直接消費者配信が可能な状態にある」と言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule08", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule08": false,
+          "rule11": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule01: 契約条項による保護という具体的な仕組みが存在する",
+          "rule06: 契約上のダウンサイドヘッジは構造的",
+          "rule08: 「契約交渉でより良い条件を得る」という内容は戦略的な記述に留まり、実際の条件内容は非開示",
+          "rule11: 配信産業構造の変化に対する対応能力は重要だが、具体的な条件内容が開示されていないため検証困難",
+          "Iger が「具体的な条件内容は機密」と明言しており、主張の根拠が非常に薄い。dogma.md の「非開示情報への依存」に該当するリスクがある。confidence を 0.3 に設定"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "Igerが「具体的条件は機密」と明言しており、保護条項の数値・閾値等が一切開示されていない。実質的に定性的な主張のみで、測定可能な裏付けが皆無に近い。"
+        },
+        {
+          "source": "pattern_F_strategy_confusion",
+          "adjustment": -0.1,
+          "reasoning": "「将来OTTに移行するオプションを確保する」という記述は戦略的な方向性の説明であり、現時点での構造的優位性の証明にはなっていない。"
+        },
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "Fox、NBCUniversal等の他メディア企業も配信事業者と類似した交渉を行っている可能性があり、ディズニーが純粋競合より有利な条件を得ているかの差別化根拠が不明。"
+        },
+        {
+          "source": "kb3t_calibration",
+          "adjustment": 0.2,
+          "reasoning": "仮スコアは0.0（クランプ）だが、Igerが保護条項の「存在」自体は認めており、完全な証拠皆無ではない。COST#2（劇場的価値、0.1）より若干上、CHD#5（戦略混同、0.3）相当として0.3に設定。"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "契約条項による保護という仕組みの存在はIgerが明言しているため、結果ではなく仕組みへの言及は一応満たす。ただし条件内容が非開示のため具体的な能力の証明として極めて薄い。"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "「スイッチングコスト保護条項」「OTT移行オプション」という名詞属性での表現は可能だが、抽象度が高く実質的な内容の空洞化が懸念される。"
+        },
+        {
+          "rule_id": "rule04",
+          "result": false,
+          "reasoning": "保護条項の閾値・数値条件等が一切開示されていない。Igerが「具体的条件は機密」と明言しており、定量的裏付けが皆無に等しい。"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "契約上の保護条項は一時的な施策ではなく長期契約に組み込まれた構造的な仕組みである。ただし実際の効果は条件内容に依存するため評価が困難。"
+        },
+        {
+          "rule_id": "rule07",
+          "result": false,
+          "reasoning": "Fox Sports、NBCUniversal等も配信事業者との交渉において類似した保護条項交渉を行っている可能性があり、ディズニーが純粋競合よりも有利な条件を獲得している根拠が示されていない。"
+        },
+        {
+          "rule_id": "rule08",
+          "result": false,
+          "reasoning": "「将来OTTに移行するオプションを確保する」という発言は戦略的な方向性の説明であり、現時点での構造的優位性の証明とは区別される。優位性が実現するのは将来の移行後であり、現在の優位性としての主張は弱い。"
+        },
+        {
+          "rule_id": "rule10",
+          "result": false,
+          "reasoning": "ネガティブケース（断念例・失敗例）への言及なし。経営陣は保護条項の存在のみを述べており、特定の交渉で不利な条件を断った等の規律の証明はない。"
+        },
+        {
+          "rule_id": "rule11",
+          "result": false,
+          "reasoning": "配信産業の急変期（コードカッティング）という業界構造への認識はあるが、その構造の中でディズニーが他のコンテンツホルダーよりも有利なポジションを持つという「合致」の論理が弱い。条件が非開示のため検証不可能。"
+        },
+        {
+          "rule_id": "rule12",
+          "result": false,
+          "reasoning": "Q3 2015のQ&Aセクションでの発言（従・②相当）。Q4発言が投資仮説の根幹であるのに対し、Q3のQ&A発言からの情報であり、かつ従来の契約方針の補足説明に留まる。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "保護条項という仕組みを主張しており、結果を原因と取り違えるパターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "ディズニーのIPの「必携性」（DIS_002）に基づく交渉力は特有の要素もあり、完全な業界共通能力とは言えない。ただし他のメジャーコンテンツホルダーも類似交渉を行う可能性は否定できない。"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "「保護条項が存在する → ダウンサイドリスクが軽減される」の因果は1〜2ステップで飛躍は少ない。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Igerが「具体的条件は機密」と明言しており、保護条項の閾値・数値条件等が一切開示されていない。実質的に定性的な主張のみで測定可能な裏付けが皆無に近い。"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "財務指標等の事実誤認は確認されない。"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「将来OTTに移行するオプションを確保する」という記述は戦略的意図の表明であり、現時点での構造的優位性の証明ではない。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Fox、NBCUniversal等の純粋競合も配信事業者との交渉において類似した条件交渉を行っている可能性があり、ディズニー固有の優位性が不明確。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "条件の数値が一切開示されていないため、定量的差別化パターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR成長への直接的な因果接続が示されていない。"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "保護条項という仕組みへの言及はあるが、条件内容が非開示のため「能力」の実証として機能していない。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "市場構造（配信産業の変化）と企業ポジションの合致の論理が弱く、条件非開示のため構造的市場ポジションパターンに合致しない。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な競合との比較データがない。"
+        }
+      ],
+      "overall_reasoning": "DIS_011の主張は、配信契約に保護条項とOTT移行オプションが組み込まれているという点でメカニズム（仕組み）への言及はある。しかしIger自身が「具体的条件は機密」と明言しており、条件の閾値・数値等が一切開示されていないため、実質的に定性的な主張に留まる（pattern_D）。また「将来OTTに移行するオプションを確保する」という記述は戦略的方向性の説明であり、現時点での優位性の証明とは区別される（pattern_F、rule08違反）。さらに純粋競合（Fox、NBCUniversal等）も同様の交渉を行っている可能性が高く、差別化の根拠が不明（pattern_G、rule07違反）。KB2-T累積調整値は-0.3で、ベーススコア0.3から0.0（クランプして0.1）となるが、KB3-Tキャリブレーションにより保護条項の存在自体はIgerが認めている点を考慮し、CHD#5（戦略混同・0.3）相当として0.3に設定。",
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "配信事業者との長期契約における保護条項と移行オプションにより、エコシステム変化時のダウンサイドリスクを軽減しながら新興プラットフォームへの参加機会を保持できる",
+        "barrier": "ディズニーのIPの必携性（DIS_002参照）が交渉力の源泉であり、同等のコンテンツポートフォリオを持たない競合は同様の保護条項交渉が難しい"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q3 2015",
+          "quote": "Our distribution agreements do address the number of subs that are being delivered or that were being paid for. And there are facets of those agreements that enable us to amend the business relationship with a contractual relationship we have with these distributors should subs go below a certain number."
+        },
+        {
+          "speaker": "Robert Iger",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q3 2015",
+          "quote": "When we enter new deals, we will probably take an even longer-term view about what threats and what opportunities exist for us... we are given full opportunities to take advantage of changes in the marketplace that can strengthen our business like going direct to consumers should we conclude that, that becomes the more attractive alternative to us."
+        }
+      ]
+    },
+    {
+      "id": "DIS_012",
+      "claim_type": "cagr_connection",
+      "claim": "ディズニーはFY2013-FY2016の期間にわたり、国内ケーブルアフィリエイト収入をCAGRで高一桁台（high single-digit）で成長させる見通しを示していたが、ESPN加入者の小幅減少と為替の逆風により、ケーブル営業利益成長の見通しを中一桁台（mid-single-digit）に下方修正した。",
+      "evidence": "Q3 2015 でChristine McCarthyが「FY2016の為替影響は約5億ドルの営業利益悪化を見込む。ESPN加入者数の想定対比での下振れと為替の影響により、ケーブル営業利益のCAGRをhigh single-digitからmid-single-digitに修正する。収益ベースのhigh single-digit見通しは維持」と明示。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule12"],
+        "results": {
+          "rule04": true,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: CAGR見通しの下方修正という定量的かつ直接的な情報",
+          "rule12: 経営陣の直接発言（prepared remarks）でありトランスクリプトの主要証言として信頼性が高い"
+        ]
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "CFOによる具体的な数値開示（約5億ドルの営業利益悪化、CAGR修正の方向性と規模）があり、高い定量的裏付けが確認される。"
+        },
+        {
+          "source": "pattern_II_direct_cagr_mechanism",
+          "adjustment": 0.1,
+          "reasoning": "加入者減少+為替 → ケーブル営業利益CAGR修正という短い因果チェーン（1〜2ステップ）が開示データで検証可能であり、直接的なCAGR接続メカニズムに合致する。"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "CFOのprepared remarksにおいて、FY2016の為替影響約5億ドル、CAGR修正方向（high→mid single-digit）、収益ベースhigh single-digit維持という複数の定量情報が明示されており、定量的裏付けは最高水準。"
+        },
+        {
+          "rule_id": "rule12",
+          "result": true,
+          "reasoning": "Q3 2015 CFOのprepared remarks発言は従（②相当）だが、これは優位性の「新発見」ではなく既存ガイダンスの更新（下方修正）であるため、rule12の警戒対象である拡大解釈には該当しない。財務情報開示として信頼性は高い。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "cagr_connectionタイプの主張であり、CAGRの見通し修正という事実の開示であって「結果を原因と取り違える」パターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "ケーブルCAGRの修正はディズニー固有の財務情報であり、業界共通能力の誤帰属パターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "加入者減少＋為替逆風 → 営業利益CAGR修正は1〜2ステップの直接的因果であり、飛躍は見られない。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CFOによる具体的な数値開示（5億ドル、CAGR水準）があり、定性的のみには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CFOが「ケーブル営業利益CAGR修正（高→中一桁）」と「収益ベース高一桁維持」を明確に区別して説明しており、財務指標の混同は確認されない。"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR下方修正の開示は戦略の表明ではなく財務実績・見通しの開示であり、戦略と優位性の混同パターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimに準ずる財務情報開示であり、純粋競合との差別化評価が主目的ではない。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "CFOによる約5億ドルの具体的営業利益影響額とCAGR修正水準（high→mid single-digit）の明示があり、高い定量的裏付けが確認される。"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "加入者減少+為替 → ケーブル営業利益CAGR修正という短い因果チェーンが開示データで検証可能であり、直接的なCAGR接続メカニズムに完全に合致する。CFO公式発言のため信頼性も高い。"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "財務情報の開示であり、能力vs結果の評価軸が直接適用されない。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR見通しの修正は市場ポジションの評価ではなく財務情報の開示である。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合との比較はないが、cagr_connectionタイプとして適切に評価されている。"
+        }
+      ],
+      "overall_reasoning": "DIS_012はcagr_connectionタイプの主張として、CFO Christine McCarthyのprepared remarksにおける公式のCAGR下方修正開示を根拠としている。加入者減少+為替逆風 → ケーブル営業利益CAGR修正（high→mid single-digit）という因果チェーンは1〜2ステップで直接的かつ検証可能（pattern_II適合）。約5億ドルという具体的な影響額も開示されており、定量的裏付けは最高水準（pattern_I適合）。ベーススコア0.7から+0.2の累積調整で0.9となる。KB3-Tキャリブレーション上、0.9は極めて稀（全体の6%）だが、CFO公式発言によるCAGR接続の直接的・定量的開示は90%評価の基準（開示データで検証可能な直接的CAGRメカニズム）を満たしており、fewshot_COST国際展開CAGRのケース（90%★）に近い性格を持つ。final_confidence=0.9が適切。",
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2015",
+          "quote": "Due to the lower subscriber levels Bob discussed earlier, we now expect domestic cable affiliate revenue to fall a bit short of our previous expectation though still in the high single-digit range. We now expect this lower affiliate revenue and the multiyear impact of foreign exchange rates to moderate our cable operating income growth to mid-single digits during the fiscal 2013 to 2016 period."
+        }
+      ]
+    },
+    {
+      "id": "DIS_013",
+      "claim_type": "factual_claim",
+      "claim": "ディズニーは2015年度Q3（FY2015 Q3）において記録的な純利益とEPSを達成し、希薄化後EPSは前年比13%増の$1.45となった。",
+      "evidence": "Q3 2015のCFO Christine McCarthyによる決算報告（prepared remarks）に記載。全セグメントでの増益が牽引。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: CFOの決算発表における具体的な財務数値であり、定量的裏付けが明確"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "CFOのprepared remarksにおいてEPS $1.45（前年比+13%）という具体的な財務数値が明示されており、定量的裏付けは明確。CFO公式発言として信頼性も高い。"
+        },
+        {
+          "rule_id": "rule12",
+          "result": true,
+          "reasoning": "Q3 2015 CFOのprepared remarks発言（従・②相当）。ただしfactual_claimの財務数値開示は優位性の新発見ではなく事実の記録であるため、rule12の警戒対象である拡大解釈には該当しない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimとして財務実績を記録しており、結果を原因と取り違えるパターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimタイプであり業界共通能力の評価軸は適用外。"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "因果関係の主張ではなく事実の記録であるため、因果飛躍パターンは該当しない。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EPS $1.45（前年比+13%）という具体的な数値があるため、定性的のみには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CFOの公式決算発表数値（EPS $1.45、前年比+13%）は検証可能な財務記録。純利益とEPSの区別も適切（数値はEPS $1.45と特定されており混同なし）。"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "戦略の表明ではなく財務実績の報告であるため、戦略と優位性の混同パターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimであり純粋競合との差別化評価が主目的ではない。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "定量的な数値（EPS $1.45）はあるが、競合との比較データがなく定量的差別化パターンとしては不完全。"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGRへの直接的な接続は示されていない。"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "財務実績の報告であり、能力vs結果の評価軸は適用外。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "構造的市場ポジションではなく財務実績の開示。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な競合との比較はない。"
+        }
+      ],
+      "overall_reasoning": "DIS_013はfactual_claimとして、CFO Christine McCarthyのprepared remarksにおけるEPS $1.45（前年比+13%、記録的達成）という財務数値の開示を根拠としている。数値の正確性はCFO公式発言として高い信頼性を持ち、事実誤認も確認されない。ただしfactual_claimは「競争優位性の主張」ではなく「財務実績の記録」であり、競合との比較や差別化の証明を含まない。KB2-T調整なし（0.0）。KB3-Tキャリブレーションにより、CFOの公式財務数値開示として信頼性は高いが、競争優位性評価のフレームワークが直接適用されないfactual_claimとして、0.7が適切な水準（「まあ納得」と「おおむね納得」の間）。",
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2015",
+          "quote": "Third quarter earnings per share increased 13% to a record $1.45, driven by strength across our businesses."
+        }
+      ]
+    },
+    {
+      "id": "DIS_014",
+      "claim_type": "factual_claim",
+      "claim": "ディズニーはFY2015年度において、配当および自社株買いを通じて株主に合計約63億ドルを還元した（Q3時点）。また、FY2016の自社株買い規模を60億〜80億ドルに引き上げる計画を示した。",
+      "evidence": "Q3 2015 でChristine McCarthy が「FY2015年度累計で配当31億ドル・自社株買い32億ドル、合計約63億ドルを還元。FY2016の自社株買いは60億〜80億ドルに増額する見込み」と説明。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: CFOによる具体的な数値報告であり定量的裏付けが明確"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "kb3t_calibration_typo_note",
+          "adjustment": 0.0,
+          "reasoning": "引用文中に「$6 million and $8 billion」という表記があるが（正しくは$6 billion and $8 billion）、これはトランスクリプト記録上の軽微なタイポと判断。主張本文は「60億〜80億ドル」と正確に表現されており、財務内容の実質的な正確性は保たれている。評価への影響は0（調整なし）。"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "CFOのprepared remarksにおいて配当31億ドル・自社株買い32億ドル（合計63億ドル）、FY2016計画60億〜80億ドルという具体的数値が明示されており、定量的裏付けは明確。"
+        },
+        {
+          "rule_id": "rule12",
+          "result": true,
+          "reasoning": "Q3 2015 CFOのprepared remarks発言（従・②相当）。ただし資本還元政策の開示は優位性の新発見ではなく財務情報の記録であるため、rule12の警戒対象には該当しない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimとして財務政策を記録しており、結果を原因と取り違えるパターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimタイプであり業界共通能力の評価軸は適用外。"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "因果関係の主張ではなく財務政策の記録であるため、因果飛躍パターンは該当しない。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な金額（配当31億ドル・自社株買い32億ドル・合計63億ドル、FY2016計画60-80億ドル）が明示されており、定性的のみには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "引用文の「$6 million and $8 billion」は「$6 billion and $8 billion」の軽微なタイポと判断（文脈から64億ドルの還元実績に対してFY2016に$6 million程度に減額する計画は非現実的であり、増額計画の文脈で$6 billionが正しい）。主張本文は「60億〜80億ドル」と正確に表現されており、財務内容の実質的な正確性は保たれている。"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "戦略の表明ではなく財務政策・実績の報告であるため、戦略と優位性の混同パターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimであり純粋競合との差別化評価が主目的ではない。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "定量的な数値（63億ドル還元、60-80億ドル計画）はあるが、競合との比較データがなく定量的差別化パターンとしては不完全。"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGRへの直接的な接続は示されていない。資本還元は財務政策であり競争優位性へのCAGR接続とは性格が異なる。"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "財務政策の報告であり、能力vs結果の評価軸は適用外。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "構造的市場ポジションではなく財務政策の開示。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な競合との比較はない。"
+        }
+      ],
+      "overall_reasoning": "DIS_014はfactual_claimとして、CFO Christine McCarthyのprepared remarksにおける株主還元実績（配当31億ドル＋自社株買い32億ドル＝合計63億ドル）とFY2016計画（60億〜80億ドルの自社株買い）の開示を根拠としている。引用文に「$6 million and $8 billion」というタイポが存在するが（正しくは$6 billion and $8 billion）、主張本文が「60億〜80億ドル」と正確に表現しており、財務内容の実質的な正確性は保たれている（Rule9不発動）。KB2-T調整なし（0.0）。KB3-Tキャリブレーションにより、CFOの公式財務数値開示として信頼性は高いが、competitve_advantage評価とは異なるfactual_claimとして0.7が適切。",
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Christine McCarthy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2015",
+          "quote": "Fiscal year-to-date, we've repurchased 32.4 million shares for $3.2 billion, which, coupled with $3.1 billion in dividends paid this year, represents approximately $6.3 billion in capital returned to our shareholders so far in fiscal 2015. And given our outlook for next year, we currently expect to increase our level of share repurchase to between $6 million and $8 billion in fiscal 2016."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "ticker": "DIS",
+    "claim_count": 14,
+    "scored_count": 4,
+    "target_claim_ids": ["DIS_011", "DIS_012", "DIS_013", "DIS_014"],
+    "batch_index": 2,
+    "batch_total": 3,
+    "confidence_distribution": {
+      "0.9": 1,
+      "0.7": 2,
+      "0.5": 0,
+      "0.3": 1,
+      "0.1": 0
+    },
+    "gatekeeper_applied": {
+      "rule9_count": 0,
+      "rule3_count": 0
+    },
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "pattern_A_result_as_cause.md",
+      "pattern_B_industry_common.md",
+      "pattern_C_causal_leap.md",
+      "pattern_D_qualitative_only.md",
+      "pattern_E_factual_error.md",
+      "pattern_F_strategy_confusion.md",
+      "pattern_G_unclear_vs_pure_competitor.md",
+      "pattern_I_quantitative_differentiation.md",
+      "pattern_II_direct_cagr_mechanism.md",
+      "pattern_III_capability_over_result.md",
+      "pattern_IV_structural_market_position.md",
+      "pattern_V_specific_competitor_comparison.md",
+      "fewshot_CHD.md",
+      "fewshot_COST.md",
+      "fewshot_LLY.md",
+      "fewshot_MNST.md",
+      "fewshot_ORLY.md",
+      "dogma.md"
+    ]
+  }
+}

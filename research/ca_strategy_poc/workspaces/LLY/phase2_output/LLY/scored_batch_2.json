@@ -1,0 +1,498 @@
+{
+  "ticker": "LLY",
+  "scored_claims": [
+    {
+      "id": "LLY_011",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーの新興国事業（特に中国）は 2014 年を通じて 15〜21% の定速成長を達成しており、ローカル規制・市場適応能力を蓄積したポジションを構築している。",
+      "evidence": "Q1 2014 に中国 +21%、Q2 2014 に +15%（為替一定ベース）、Q3 2014 に「引き続き強い成長」と報告。Lechleiter が「中国および新興市場は長期的成長エンジン」と位置付けると言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule02": true,
+          "rule04": true,
+          "rule06": false,
+          "rule11": true
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule01: 高成長率自体は結果・実績であり、それを可能にする能力・仕組み（rule01 未達）が具体的に説明されていない",
+          "rule06: 新興市場への参入・展開は多くの大手製薬が行う補完的施策であり、構造的に差別化された仕組みが示されていない",
+          "rule04: 定量データは明確だが、競合比較（ノボノルディスク・サノフィの中国成長率）との対比がなく競争優位性の強度を評価しにくい"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3_industry_common",
+          "adjustment": 0.0,
+          "reasoning": "新興市場展開はノボノルディスク・サノフィ等の全大手製薬が共通して取り組む施策であり、ルール3（業界共通能力）ゲートキーパーを発動。Phase 1ベーススコア 0.3 をそのまま override_confidence として設定。後続の KB1-T・KB2-T・KB3-T 調整は適用しない。"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": false,
+          "reasoning": "「15〜21%の定速成長」は成長率という結果・実績の提示であり、その成長を可能にする能力・仕組み（例: ローカル規制対応プロセス、KOL構築の具体的方法論）の説明がトランスクリプト上で不十分。ゲートキーパー発動のため評価済み記録のみ。"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "「市場適応能力」「ローカル規制対応能力」は名詞で表現された属性として成立しうる。ただし実際のトランスクリプト発言は動詞的成長報告が主体。ゲートキーパー発動のため評価済み記録のみ。"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "中国 +21%（Q1）、+15%（Q2 定速）という具体的な成長率数値が開示されており定量的裏付けは存在する。ただし競合比較データが不在のため優位性の証明としては不十分。ゲートキーパー発動のため評価済み記録のみ。"
+        },
+        {
+          "rule_id": "rule06",
+          "result": false,
+          "reasoning": "新興市場展開は事業の補完的拡張施策であり、糖尿病・がん医薬品フランチャイズの核心的構造的優位性ではない。Phase 1 でも rule06=false と評価済み。ゲートキーパー発動のため評価済み記録のみ。"
+        },
+        {
+          "rule_id": "rule11",
+          "result": true,
+          "reasoning": "中国の急速に拡大する糖尿病患者市場という業界構造は LLY のポジションと合致しうる。しかし競合も同様に中国に注力しており、構造的合致の独自性は限定的。ゲートキーパー発動のため評価済み記録のみ。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「15〜21%の成長率」は結果の提示であり、背後の能力（市場適応力の具体的仕組み）の説明が不十分。パターンAに該当するが、ゲートキーパー発動により後続調整は適用しない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "新興市場（特に中国）への展開はノボノルディスク・サノフィ・ロシュ等すべての大手製薬が戦略の核心として取り組んでいる。ゲートキーパー（Rule 3）発動の主要根拠。後続調整適用外。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "一定の定量データ（成長率%）は存在するため、定性的のみパターンには完全には該当しない。ゲートキーパー発動により評価済み記録のみ。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "競合（ノボノルディスク・サノフィ）との中国成長率比較がなく、純粋競合に対する差別化が不明。ゲートキーパー発動により後続調整適用外。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "定量データは存在するが競合との差別化比較がなく、定量的差別化パターンの要件を満たさない。ゲートキーパー発動により評価済み記録のみ。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "中国糖尿病市場の構造（急速拡大）への言及はあるが、LLYの構造的ポジションが競合と明確に差別化されている論理が不在。ゲートキーパー発動により評価済み記録のみ。"
+        }
+      ],
+      "overall_reasoning": "LLY_011はゲートキーパーRule 3（業界共通能力）を発動。新興国事業の成長は大手製薬全般に共通する施策であり、Rule 1違反（成長率=結果）・Rule 6違反（補完的施策）・競合比較不在（Pattern G）が重なる。Phase 1ベーススコア 0.3 をfinal_confidenceとして維持する。fewshot_LLY の #6（グローバル医療機関ネットワーク: 30%）と同様の業界共通能力として扱う。KB3-T分布目標における「あまり納得しない（30%）」に該当。",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "中国での糖尿病・がん医薬品の既存商業体制を新製品に転用し、参入コストを低減",
+        "barrier": "中国薬事規制への対応実績・KOL（Key Opinion Leader）ネットワークの構築は後発参入者には時間を要するが、他の大手製薬も同様の投資を行っており排他性は相対的に低い"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "John Lechleiter",
+          "role": "Chairman and CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "China grew 21 percent in constant currency, reflecting our strong position in this important market which we see as a key long-term growth driver."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "Our emerging markets business grew approximately 14 percent in constant currency, with China up 15 percent, driven by the strength of our diabetes and oncology portfolios."
+        }
+      ]
+    },
+    {
+      "id": "LLY_012",
+      "claim_type": "factual_claim",
+      "claim": "リリーは 2014 年の三四半期を通じて、特許切れ製品（シンビタ、シアリス等）の売上減少にもかかわらず、EPS ガイダンスを維持ないし引き上げた。",
+      "evidence": "Q1 2014: 非 GAAP EPS ガイダンス $2.16〜2.26 を維持。Q2 2014: ガイダンス上端を引き上げ。Q3 2014: 通期 EPS ガイダンスを再確認。特許切れによる売上減少を費用削減で吸収したことが示された。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": false,
+          "reasoning": "EPS ガイダンス維持・引き上げは財務実績（結果）の事実報告であり、能力・仕組みの主張ではない。factual_claim の性質上、rule01 の適用は限定的であり、低評価は事実の性質によるものであって誤りではない。"
+        },
+        {
+          "rule_id": "rule02",
+          "result": false,
+          "reasoning": "「EPS ガイダンス $2.16〜2.26 を維持」は名詞的属性というより財務行動の記述。factual_claim として事実の正確性が主眼であるため、rule02 の不合格は評価には大きく影響しない。"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "非 GAAP EPS ガイダンスの具体的な数値範囲（$2.16〜2.26）が明示されており、複数四半期（Q1〜Q3）にわたる CFO の公式発言で一貫して確認できる。定量的裏付けは十分。"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "factual_claim では構造的/補完的の区分は主眼外。中立評価とする。"
+        },
+        {
+          "rule_id": "rule07",
+          "result": true,
+          "reasoning": "factual_claim では純粋競合との差別化比較は主眼外。EPS ガイダンス管理の事実確認が目的であるため中立評価とする。"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "factual_claim において戦略/優位性の区分は適用外。中立評価とする。"
+        },
+        {
+          "rule_id": "rule10",
+          "result": false,
+          "reasoning": "ネガティブケース（断念例）への言及はない。ただし factual_claim にはネガティブケースによる能力証明は要求されないため、スコアへの影響は限定的。"
+        },
+        {
+          "rule_id": "rule11",
+          "result": false,
+          "reasoning": "業界構造との合致の論理が示されていない。EPS 管理は製薬業界全般に共通する財務管理行動であり、構造的ポジションとの合致とは言い難い。"
+        },
+        {
+          "rule_id": "rule12",
+          "result": true,
+          "reasoning": "Q1〜Q3 の複数四半期にわたる CFO の Prepared Remarks での発言として確認されており、一貫した財務コミュニケーションとして評価できる。Q4 を含まないが factual_claim の性質上 Q4 優先ルールの影響は軽微。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim であり、競争優位性の主張ではないため、結果を原因と取り違えるパターンには該当しない。EPS 維持の事実を報告しているに過ぎない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EPS ガイダンス管理は製薬業界共通の財務活動だが、本主張は優位性の主張ではなく事実確認であるため、業界共通却下パターンの対象外。"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "単純な事実報告であり因果関係の飛躍はない。「特許切れ圧力下でも EPS ガイダンスを維持した」という直接的な事実記述のみ。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な数値（$2.16〜2.26）が明示されており、定性的のみのパターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "非 GAAP EPS の定義は一貫して使用されており、GAAP/非 GAAP の混同等の事実誤認は確認されない。"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim であり戦略/優位性の混同パターンの対象外。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim であり純粋競合との差別化は評価主眼ではない。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な数値（$2.16〜2.26）はあるが、競合との差別化を示す定量比較ではなく自社の事実報告のみ。factual_claim の性質上、高評価パターンの調整は適用しない。"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim において直接的 CAGR 接続パターンは主眼外。"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EPS 維持の背後にある費用削減能力は部分的に示唆されるが、factual_claim として事実確認が主眼であり能力評価パターンの調整は適用しない。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim であり構造的市場ポジションパターンの対象外。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合との EPS 比較は一切なく、パターン V の要件を満たさない。"
+        }
+      ],
+      "overall_reasoning": "LLY_012 は factual_claim であり、競争優位性の評価フレームワークよりも事実の正確性・定量的裏付けが主評価基準となる。非 GAAP EPS $2.16〜2.26 という具体的数値が CFO により Q1〜Q3 を通じて一貫して開示されており、rule04 を満たす。特許切れ圧力下でのガイダンス維持という事実は検証可能。ゲートキーパー不発動、KB2-T 調整 0.0。fewshot_LLY における factual_claim 性質の主張と比較し、定量的裏付けの強度から 0.7 が適切。KB3-T 分布目標における「おおむね納得（70%）」に相当する。",
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "We are maintaining our 2014 non-GAAP EPS guidance range of $2.16 to $2.26, reflecting confidence in our ability to manage through the patent cliff through expense discipline."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "We are raising the top end of our non-GAAP EPS guidance, reflecting strong performance in the quarter and continued confidence in our full-year outlook."
+        }
+      ]
+    },
+    {
+      "id": "LLY_013",
+      "claim_type": "factual_claim",
+      "claim": "2014 年の R&D 費用は通年で約 44〜48 億ドルの水準を維持し、売上高比 20% 超の高い研究開発集約度を示した。",
+      "evidence": "Q1 2014: R&D 費用 約 11 億ドル（年換算 44 億ドル）。Q2 2014: 「R&D 投資は維持」との言及。Q3 2014: 「R&D 費用はほぼ flat」との言及。2014 年通年で売上高 198 億ドル（特許切れ圧力下）に対し R&D 費は高水準維持。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "「R&D 費用 44〜48 億ドル水準の維持」は、特許切れ圧力下でも継続的な R&D 投資を組織的に維持するという一種の能力・コミットメントを部分的に示している。純粋な結果報告のみではなく、投資維持という意思決定プロセスの証拠として評価できる。ただし競合比較がないため能力の相対的優位性の証明としては不十分。"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "「R&D 集約度」「R&D 費用水準」は名詞的属性として表現されており、rule02 を満たす。"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "Q1 2014 の R&D 費用 約 11 億ドル（年換算 44 億ドル）という具体数値、複数四半期での維持確認、売上高比 20% 超（198 億ドル売上に対し 44 億ドル投資 ≈ 22.2%）という検証可能な定量的裏付けが存在する。数値の精度・一貫性ともに高い。"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "R&D 投資は製薬事業の中核的・構造的投資であり補完的施策ではない。事業の本質的な能力維持のための投資として構造的と評価する。"
+        },
+        {
+          "rule_id": "rule07",
+          "result": false,
+          "reasoning": "競合（ノボノルディスク・サノフィ等）との R&D 集約度比較データが一切なく、純粋競合との差別化が示されていない。ただし factual_claim として事実確認が主眼であるため評価への影響は限定的。"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "factual_claim において戦略/優位性の区分は適用外。中立評価とする。"
+        },
+        {
+          "rule_id": "rule10",
+          "result": false,
+          "reasoning": "ネガティブケース（例: R&D を削減した結果の失敗例）への言及はない。ただし factual_claim には要求されないため影響は軽微。"
+        },
+        {
+          "rule_id": "rule11",
+          "result": false,
+          "reasoning": "製薬業界では高 R&D 集約度は競争上必要であるが、業界構造（特許切れ型製薬の再生サイクル）との合致の論理が明示的に示されていない。なお LLY_001 の主張（イノベーション重視 R&D 戦略）では rule11=true と評価されており、本 factual_claim との関連性は高いが、本主張単独では論理の展開が不十分。"
+        },
+        {
+          "rule_id": "rule12",
+          "result": true,
+          "reasoning": "Q1〜Q3 の CFO（Derica Rice）による Prepared Remarks での一貫した言及として確認できる。複数四半期で数値の整合性がある。Q4 を含まないが factual_claim の性質上 Q4 優先ルールの影響は軽微。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim として R&D 費用水準の事実を報告しており、結果を競争優位性の原因として主張しているわけではない。パターン A には該当しない。"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "大手製薬は総じて高 R&D 集約度を持つが、本主張は競争優位性の主張ではなく事実確認であるためパターン B の対象外。ただし優位性評価に転用する場合は業界共通能力として減点対象となりうる点に注意。"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "単純な費用水準の事実報告であり因果関係の飛躍はない。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な数値（年換算 44 億ドル、売上比 22% 超）が複数存在しており定性的のみのパターンには該当しない。"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "Q1 の R&D 費用 約 11 億ドルを年換算 44 億ドルとする計算は正確（11*4=44）。売上高比 20% 超の計算も 44/198 ≈ 22.2% で正確。財務指標の定義混同（例: R&D費と SG&A の混同等）は確認されない。"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim であり戦略/優位性の混同パターンの対象外。"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim として競合との比較を主眼としておらず、パターン G の対象外。"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な R&D 費用数値（44〜48 億ドル）と売上比率（20%超）は存在するが、競合との差別化比較データが不在のため定量的差別化パターンの要件（競合比較あり）を満たさない。factual_claim の性質上、高評価調整は適用しない。"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim において直接的 CAGR 接続パターンは主眼外。"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "R&D 費用維持は一定の組織的コミットメントを示唆するが、factual_claim として事実確認が主眼であり能力評価パターンの調整は適用しない。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claim であり構造的市場ポジションパターンの対象外。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合との R&D 集約度比較は一切なく、パターン V の要件を満たさない。"
+        }
+      ],
+      "overall_reasoning": "LLY_013 は factual_claim であり、R&D 費用水準（44〜48 億ドル通年）と売上高比（20% 超）という検証可能な定量的事実の報告として評価する。Q1 の約 11 億ドル実績から年換算 44 億ドルという計算は正確であり、CFO が複数四半期で一貫して言及している点から信頼性が高い。ゲートキーパー不発動、KB2-T 調整 0.0。Phase 1 ベーススコア 0.7 を維持する。fewshot_LLY における定量的裏付けのある主張（#2 Novo 対比差別化: 70%）と比較し、競合比較データの不在により上限 0.7 が適切。KB3-T 分布目標における「おおむね納得（70%）」に相当する。",
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "R&D expenses were approximately $1.1 billion in the first quarter, reflecting our continued commitment to investing in our pipeline even as we manage through the patent cliff."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "R&D expenses remain roughly flat versus prior year as we continue to prioritize pipeline investment while reducing other operating expenses."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "ticker": "LLY",
+    "claim_count": 13,
+    "scored_count": 3,
+    "target_claim_ids": ["LLY_011", "LLY_012", "LLY_013"],
+    "batch_index": 2,
+    "batch_total": 3,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 2,
+      "0.5": 0,
+      "0.3": 1,
+      "0.1": 0
+    },
+    "gatekeeper_applied": {
+      "rule9_count": 0,
+      "rule3_count": 1
+    },
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "pattern_A_result_as_cause.md",
+      "pattern_B_industry_common.md",
+      "pattern_C_causal_leap.md",
+      "pattern_D_qualitative_only.md",
+      "pattern_E_factual_error.md",
+      "pattern_F_strategy_confusion.md",
+      "pattern_G_unclear_vs_pure_competitor.md",
+      "pattern_I_quantitative_differentiation.md",
+      "pattern_II_direct_cagr_mechanism.md",
+      "pattern_III_capability_over_result.md",
+      "pattern_IV_structural_market_position.md",
+      "pattern_V_specific_competitor_comparison.md",
+      "fewshot_CHD.md",
+      "fewshot_COST.md",
+      "fewshot_LLY.md",
+      "fewshot_MNST.md",
+      "fewshot_ORLY.md",
+      "dogma.md"
+    ]
+  }
+}

@@ -1,0 +1,963 @@
+{
+  "ticker": "LLY",
+  "scored_claims": [
+    {
+      "id": "LLY_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Alimta（ペメトレキセド）は非扁平上皮非小細胞肺癌（NSCLC）の一次治療および維持療法において市場リーダーポジションを維持しており、ビタミン投与法に関する特許（米国・ドイツで 2021〜2022 年まで有効）が競合からの市場侵食を阻む障壁となっている。",
+      "evidence": "Q2 2014 に米国連邦控訴裁判所がビタミン投与法特許を支持する判決を下したことが開示された（2021 年まで）。ドイツでも同様の特許支持判決（2022 年まで）を獲得。Conterno（後に Mahony）が「Alimta は非扁平上皮 NSCLC の一次治療・維持療法の市場リーダー」と言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: 特許有効期限（2021〜2022 年）という具体的な定量的裏付けが存在する",
+          "rule06: ビタミン投与法特許による市場防衛は補完的施策ではなく、Alimta フランチャイズの構造的保護機能"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "後発薬メーカー全般に対する防衛という構造であり、非扁平上皮NSCLC治療薬クラス内の純粋競合（他の先発品・後続バイオシミラー等）との直接比較データがない"
+        },
+        {
+          "source": "pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "特許保護という法的障壁が結果（市場リーダーポジション）よりも前面に示されており、能力・仕組みが中心となっている"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "ビタミン投与法特許という具体的な仕組みが裏付けとして明示されており、「市場リーダー維持」という結果的表現があるものの能力側面が前面に出ている"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "特許（cornered_resource）という名詞属性で表現されており、行動・戦略ではなく構造的な属性として認識できる"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "特許有効期限（米国2021年・ドイツ2022年）という具体的な時期が開示され、連邦控訴裁判所判決という検証可能な事実がある"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "ビタミン投与法特許による市場防衛はAlimtaフランチャイズの核心的・構造的保護機能であり補完的施策ではない"
+        },
+        {
+          "rule_id": "rule07",
+          "result": false,
+          "reasoning": "後発薬メーカー全般を対象とした特許防衛であり、非扁平上皮NSCLCクラス内の純粋競合先発品との直接比較データが示されていない"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "特許訴訟追求という行動（戦略）ではなく、既に取得済みの特許保護という構造的な力として評価できる"
+        },
+        {
+          "rule_id": "rule11",
+          "result": true,
+          "reasoning": "特許切れ圧力が常態化する製薬業界の業界構造において、ビタミン投与法特許による特許期間延長という企業ポジションは業界構造と合致する"
+        },
+        {
+          "rule_id": "rule12",
+          "result": true,
+          "reasoning": "Q2・Q3 2014（四半期コール=従）の発言だが、特許判決という構造的・年次レベルの根幹情報であり従相当の割引は最小限に留める"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "特許という能力・仕組みが主体で示されており、市場リーダーポジションという結果を原因と取り違えてはいない"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "ビタミン投与法という特定の方法特許の保有は業界共通能力ではなく、Alimta固有の障壁として機能している"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "特許保護→市場侵食防衛という因果チェーンは1ステップで飛躍がない"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "特許有効期限という具体的な年限数値（2021年・2022年）が明示されている"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "連邦控訴裁判所の判決・特許有効期限はトランスクリプトの開示情報と整合しており事実誤認はない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "特許保護は既存の構造的資産であり戦略（意思決定）との混同はない"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "後発薬メーカーに対する防衛は示されているが、非扁平上皮NSCLCクラス内の純粋競合先発品との差別化データが示されていない"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "特許有効期限という定量的数値はあるが、競合との市場シェア・収益等の定量比較データがない"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR接続は特許期間中の市場維持という間接的なメカニズムであり、直接的な因果接続としては弱い"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "特許保護という法的障壁（能力）が市場リーダーポジション（結果）よりも前面に示されており、能力が結果を裏付ける構造になっている"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "非扁平上皮NSCLCという特定ニッチ市場での位置付けはあるが、市場フラグメント性等の明示的な構造分析と企業ポジションの合致説明がない"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "後発薬メーカーへの言及はあるが、具体的な競合社名を挙げた差別化比較データが示されていない"
+        }
+      ],
+      "overall_reasoning": "Alimtaのビタミン投与法特許は米国2021年・ドイツ2022年まで有効であり、連邦控訴裁判所判決という客観的な法的障壁として明確に示されている。特許（cornered_resource）という名詞属性で表現され、rule01〜rule06・rule11の大部分を満たす。KB2-T評価では純粋競合との差別化データ不足（pattern_G: -0.1）と能力優位性の明示（pattern_III: +0.1）が相殺し、累積調整ゼロ。Phase 1の0.7から変化なし。KB3-T参照ではfewshot_LLYのLLY#2（70%・Novo対比での具体的技術差別化）より純粋競合比較は弱いが、特許という客観的障壁の具体性が0.7水準を支える。Q2・Q3（四半期コール）の割引は特許情報の構造的性質から最小限にとどめ、0.7を維持する。",
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "市場リーダーポジション維持と長期的な高価格帯維持が可能",
+        "barrier": "ビタミン投与法の方法特許（米国 2021 年・ドイツ 2022 年）が後発品参入を阻む法的障壁として機能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "The U.S. Federal Circuit Court upheld our vitamin regimen patent for Alimta through 2021, which we believe provides continued protection for this important product."
+        },
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "Alimta continues to be the market leader in non-squamous non-small cell lung cancer in the first-line and maintenance settings, and we are defending that position with our patent protections in the U.S. through 2021 and Germany through 2022."
+        }
+      ]
+    },
+    {
+      "id": "LLY_007",
+      "claim_type": "competitive_advantage",
+      "claim": "Elanco アニマルヘルス事業は 6 年連続で業界成長率を上回る成長を達成しており、その成長の 60% がイノベーション（新製品）に由来するという高い研究開発生産性を示している。",
+      "evidence": "Q1〜Q3 2014 の決算コールを通じて Terrence Martin（後に Jeff Simmons）が「Elanco は 6 年間にわたり業界を上回る成長を続けており、成長の 60% はイノベーションから」と繰り返し言及。2007 年以降 8 件の買収を完了し、製品ポートフォリオを拡充。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule04: 6 年間の業界超過成長・60% イノベーション由来という定量的裏付けが存在する",
+          "rule06: 成長の 60% がイノベーション由来という点は組織的研究開発能力の構造的証拠だが、アニマルヘルス競合（ゾエティス等）との直接比較データが不明確なため確信度を抑制"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_result_as_cause",
+          "adjustment": -0.1,
+          "reasoning": "「6年連続業界成長率超過」という成長実績（結果）が主体であり、それを可能にしたR&D能力の具体的なメカニズム（どのような研究開発プロセスか、何が競合と異なるか）の説明が不足している"
+        },
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "アニマルヘルス業界でもZoetis・Merck Animal Health等の競合各社がR&Dに注力しており、業界超過成長がLlanco固有のR&D優位性によるものかが示されていない"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "60%という数値はあるが、競合各社のイノベーション由来成長比率との比較が示されておらず相対的な差別化の強度が測定できない"
+        },
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "Zoetis・Merck Animal Health等の純粋競合との直接比較（成長率・R&D生産性指標）が示されていない"
+        },
+        {
+          "source": "pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "成長の60%がイノベーション由来という指標は、R&D生産性という能力側面を一定程度示しており、純粋な成長実績の引用に留まらない"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "「業界成長率を上回る」という結果的表現があるが、「成長の60%がイノベーション由来」というR&D生産性という能力側面も含まれている。ただしその能力の具体的メカニズムへの言及は乏しい"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "R&D生産性・イノベーション能力というprocess_powerとして分類可能な名詞属性で表現されている"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "6年間・60%という定量データが存在するが、競合との比較がなく相対的優位性の証拠として弱い"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "R&D主導の成長は補完的施策ではなく、Elancoの成長戦略の核心に位置する構造的プロセスと判断できる"
+        },
+        {
+          "rule_id": "rule07",
+          "result": false,
+          "reasoning": "「業界成長率を上回る」とは言及されているが、Zoetis・Merck Animal Health等の純粋競合名を挙げた直接比較データが存在しない"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "R&D生産性という能力であり、M&A推進・イノベーション投資という戦略を優位性と混同していない"
+        },
+        {
+          "rule_id": "rule10",
+          "result": false,
+          "reasoning": "買収断念例・R&D投資見送り例等のネガティブケースへの言及がない"
+        },
+        {
+          "rule_id": "rule11",
+          "result": false,
+          "reasoning": "アニマルヘルス市場の業界構造（フラグメント性・競争環境）との合致の説明がなく、自社の能力が市場構造の中でなぜ効くのかが示されていない"
+        },
+        {
+          "rule_id": "rule12",
+          "result": false,
+          "reasoning": "Q1・Q3 2014（四半期コール=従）の発言であり、年次コール（Q4）での体系的な説明と比べて確信度を抑制する必要がある"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "6年連続業界超過成長という成長実績（結果）が主体であり、その背後にある具体的なR&D能力・プロセス（なぜ業界を上回れるのか）の説明が不足している"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "アニマルヘルス業界でもZoetis等の競合がR&D主導の成長を追求しており、Elanco固有の差別化として認定するには競合比較データが必要"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "R&D生産性→業界超過成長の因果チェーンは1-2ステップで比較的直接的であり飛躍とは言えない"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "60%という数値はあるが、競合各社のイノベーション由来成長比率との比較が存在せず、相対的差別化強度の測定が困難"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "6年連続超過成長・60%イノベーション由来はトランスクリプトの発言と整合しており事実誤認はない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "R&D生産性という能力を評価しており、M&A戦略を優位性と混同していない"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「業界成長率を上回る」とあるが、Zoetis・Merck Animal Health等の純粋競合社名を挙げた定量比較が示されていない"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "60%・6年間という自社内の数値はあるが、競合との定量比較データが欠如しており定量的差別化パターンの要件を満たさない"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR接続は間接的であり、R&D生産性からCAGRパラメータへの直接接続メカニズムが示されていない"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "成長の60%がイノベーション由来という指標がR&D生産性という能力側面を一定程度示しており、純粋な成長実績の引用を超えた内容がある"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "アニマルヘルス市場の業界構造（フラグメント性等）の分析と自社ポジションの合致説明がない"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な競合社名（Zoetis・Merck Animal Health等）を挙げた差別化比較が行われていない"
+        }
+      ],
+      "overall_reasoning": "Elancoの6年連続業界超過成長・60%イノベーション由来という主張は定量的数値を含むが、その大部分が成長実績（結果）の引用であり、Zoetis等の純粋競合との直接比較が欠如している。KB2-Tでは結果依存（pattern_A: -0.1）・業界共通性（pattern_B: -0.1）・定量比較なし（pattern_D: -0.1）・競合比較なし（pattern_G: -0.1）の4つの却下パターンが適用され、能力側面の評価（pattern_III: +0.1）で一部相殺されても累積調整-0.3となる。仮スコア0.2をKB3-Tでキャリブレーションすると、fewshot_LLYのLLY#6（30%）と類似した業界共通性の問題があり0.3が適切。Q1・Q3（四半期コール=従）の割引も加味する。",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "動物用医薬品・ワクチン・栄養製品の研究開発において業界平均を上回るイノベーション生産性を実現",
+        "barrier": "6 年以上にわたる一貫した R&D 投資と M&A 統合の蓄積的プロセスは短期間での模倣が困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeff Simmons",
+          "role": "President, Elanco Animal Health",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Elanco has outpaced industry growth for six consecutive years, and approximately 60 percent of our growth has been driven by innovation, reflecting the strength of our R&D productivity."
+        },
+        {
+          "speaker": "Jeff Simmons",
+          "role": "President, Elanco Animal Health",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "We have completed eight acquisitions since 2007, which have expanded our portfolio and commercial capabilities, helping us sustain our industry-leading growth trajectory."
+        }
+      ]
+    },
+    {
+      "id": "LLY_008",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーは EU において EU バイオシミラー承認経路を通じた最初のインスリン グラルギン バイオシミラー（Abasria）を承認取得しており、インスリン市場における先行者優位を構築している。",
+      "evidence": "Q1 2014 の決算コールで Conterno が「Abasria は EU バイオシミラー経路を通じた最初のインスリン グラルギン承認であり、欧州市場での価格競争力を高める」と言及。BI との連携によるインスリン グラルギン（Basaglar として米国での申請中）は、先発品サノフィ・Lantus に対する市場シェア獲得機会として位置付けられている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule07: EU バイオシミラー経路における「最初のインスリン グラルギン」という先行者ポジションは具体的な競合差別化だが、フォロワーの参入障壁は規制上の認証であり時間とともに競合が追随可能",
+          "rule11: バイオシミラーインスリン市場は欧州の医療費抑制政策と親和性が高く業界構造と合致するが、価格競争になりやすいセグメントであり持続的優位性は相対的に低い"
+        ]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "サノフィ（Lantus先発品）との対比は示されているが、後続のバイオシミラール参入者（競合バイオシミラー各社）との比較データが存在しない"
+        },
+        {
+          "source": "pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "EUバイオシミラー経路の最初の承認取得という具体的な能力実績が示されており、先行者優位という構造的な能力として評価できる"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "EU初承認という先行者ポジション（一部結果的）があるが、バイオシミラー経路の活用という具体的な能力・仕組みが示されており能力側面が評価できる"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "先行者優位（counter_positioning）というバイオシミラー市場での構造的な名詞属性として表現されている"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "EUバイオシミラー経路初承認・米国NDA申請中という検証可能な事実的裏付けが存在する"
+        },
+        {
+          "rule_id": "rule07",
+          "result": true,
+          "reasoning": "サノフィ（Lantus）という具体的な先発品競合への言及があり、低価格提供による市場シェア獲得という差別化軸が示されている"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "バイオシミラー参入という戦略の背後に、EU初承認という構造的なポジション（既成事実）が存在しており、戦略と優位性の区別が概ね保たれている"
+        },
+        {
+          "rule_id": "rule11",
+          "result": true,
+          "reasoning": "欧州医療費抑制政策・バイオシミラー活性化という業界構造との合致が示されているが、価格競争激化という構造的マイナスも認識している"
+        },
+        {
+          "rule_id": "rule12",
+          "result": false,
+          "reasoning": "Q1 2014（四半期コール=従）の発言であり、年次コール（Q4）での体系的な説明と比べて確信度を一定程度抑制する"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EU初承認という事実は先行者ポジションという能力の証明として機能しており、単純な結果の引用ではない"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EU初のインスリングラルギンバイオシミラー承認は業界共通能力ではなく、Lillyが先行して達成した固有の実績"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "バイオシミラー承認→市場シェア獲得機会という因果は1-2ステップで飛躍がない"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EU初承認・米国申請中という事実的裏付けがあり、純粋に定性的な表現のみではない"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EUバイオシミラー経路での初承認という事実はトランスクリプトの発言と整合しており事実誤認はない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "バイオシミラー参入戦略（意思決定）の背後にEU初承認という構造的ポジション（既成事実）があり、概ね区別できている"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "サノフィとの比較は示されているが、後続のバイオシミラー参入者（LLY追随の競合バイオシミラー各社）との差別化データがなく先行者優位の持続性が不明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "EU初承認という先行優位の事実はあるが、市場シェア獲得率・価格差等の定量的な競合比較データが存在しない"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR接続は間接的であり、先行者優位からCAGRパラメータへの具体的な数値接続が示されていない"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "EUバイオシミラー経路での初承認という具体的な能力実績が示されており、先行者という構造的なポジション（能力）として評価できる"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "欧州医療費政策との親和性の言及はあるが、市場構造分析と企業ポジションの合致についての明確な説明が不足している"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "サノフィ（Lantus）への言及はあるが、EU初承認という先行者優位に関する定量的な差別化比較が示されていない"
+        }
+      ],
+      "overall_reasoning": "EU初のインスリングラルギンバイオシミラー承認という先行者ポジションは明確な差別化事実として評価できる。counter_positioningとして分類され、サノフィへの対抗という構造が示されている。KB2-Tでは純粋競合（後続バイオシミラー各社）との比較不足（pattern_G: -0.1）と能力実績の明示（pattern_III: +0.1）が相殺し累積ゼロ。仮スコアは0.5。KB3-T参照ではfewshot_LLYのLLY#5（50%・既承認GLP-1製品による市場ポジション確立）と類似した構造であり、先行者優位の持続性懸念（価格競争になりやすいバイオシミラー市場）という Phase 1の評価と整合する。0.5が適切。",
+      "power_classification": {
+        "power_type": "counter_positioning",
+        "benefit": "既存のインスリン製造インフラと商業インフラを活用し、サノフィ Lantus より低価格でインスリン グラルギンを提供することで市場シェアを獲得可能",
+        "barrier": "サノフィはバイオシミラー参入に対して自社 Lantus の価格を引き下げることで対抗できるが、それは自社収益の侵食を意味するため対抗動機が低下する（カウンターポジショニング構造）"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Abasria became the first insulin glargine approved through the EU biosimilar pathway, which we believe establishes an important precedent and competitive position for us in the European insulin market."
+        },
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2014",
+          "quote": "With Basaglar, we have the opportunity to compete in the large insulin glargine market using our established manufacturing infrastructure and commercial footprint, at a lower price point than the originator product."
+        }
+      ]
+    },
+    {
+      "id": "LLY_009",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーの糖尿病事業は世界規模の「非常に大きな商業フットプリント」を保有しており、この既存インフラを活用することで新製品（デュラグルチド、エンパグリフロジン等）の上市コストを最小化できる。",
+      "evidence": "Conterno が Q1〜Q3 2014 を通じて「we have a very significant footprint on a worldwide basis that we can leverage for new launches」と繰り返し言及。Humalog・Humulin の既存処方者基盤、医師との長期関係、患者支援プログラム基盤が新製品の商業展開の起点となることが説明された。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule01: 「フットプリント」という表現は名詞的属性（rule02 合格）だが、規模の具体的指標（担当者数・適応医師数・国数等）がトランスクリプト内で定量化されておらず裏付けが間接的（rule04 未達）",
+          "rule06: 既存商業インフラの新製品への転用は補完的施策ではなく、糖尿病事業の構造的スケール優位"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "世界規模の商業フットプリント保有はメガファーマ間の共通能力に近く、fewshot_LLYのLLY#6（グローバル医療機関ネットワーク・30%）と類似した業界共通性の問題がある"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "「very significant footprint」という定性的表現のみで、担当者数・対象医師数・カバー国数等の具体的な定量指標が全く開示されていない"
+        },
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "Novo Nordisk・サノフィ等の糖尿病大手との商業フットプリントの規模比較が示されておらず、相対的な差別化の証明がない"
+        },
+        {
+          "source": "pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "商業フットプリントという構造的資産（能力）が新製品上市コスト低減という具体的な優位性メカニズムとして示されており、成長実績の引用に留まらない"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "「フットプリント」という名詞属性で能力を表現しており、成長実績の引用ではない。ただし規模の具体的指標が欠如している"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "商業フットプリント（scale_economies）という名詞属性として表現されており、行動・戦略の動詞表現ではない"
+        },
+        {
+          "rule_id": "rule04",
+          "result": false,
+          "reasoning": "「very significant footprint」という定性的表現のみであり、担当者数・対象医師数・国数等の具体的な定量的指標が欠如している"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "既存商業インフラの新製品への転用は補完的施策ではなく、糖尿病事業の構造的スケール優位として機能する"
+        },
+        {
+          "rule_id": "rule07",
+          "result": false,
+          "reasoning": "Novo Nordisk・サノフィ等の糖尿病大手との商業フットプリントの比較が全く示されておらず、相対的優位性の証明がない"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "商業フットプリントの活用は戦略（何をするか）ではなく、既に存在する構造的資産（能力）として評価できる"
+        },
+        {
+          "rule_id": "rule11",
+          "result": false,
+          "reasoning": "糖尿病市場の業界構造（医師関係の粘着性等）との合致についての説明が部分的であり、「この市場でなぜこの能力が効くのか」の論理が不明確"
+        },
+        {
+          "rule_id": "rule12",
+          "result": false,
+          "reasoning": "Q1・Q3 2014（四半期コール=従）を通じた繰り返し言及であり、年次コール（Q4）での体系的な説明と比べて確信度を抑制する"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "商業フットプリントという能力を主体として示しており、成長実績（結果）を原因と取り違えてはいない"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "世界規模の商業フットプリント保有はNovo・サノフィ等のメガファーマ間の共通能力に近く、LLY#6（30%）と同様の業界共通性の問題がある"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "商業フットプリント→新製品上市コスト低減という因果は1-2ステップで飛躍がない"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「very significant footprint」という定性的表現のみで、担当者数・医師数・国数等の具体的な定量指標が全く開示されていない"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "商業フットプリントの言及はトランスクリプトの発言と整合しており事実誤認はない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "フットプリントの活用は戦略（意思決定）ではなく既存の構造的資産であり、戦略と優位性の区別が保たれている"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Novo・サノフィ等の糖尿病大手との商業フットプリント規模の比較が示されておらず、相対的な差別化の証明がない"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "担当者数・医師数等の定量指標が全く存在せず、定量的差別化パターンの要件を満たさない"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR接続は間接的であり、フットプリントからCAGRパラメータへの直接的な数値接続が示されていない"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "商業フットプリントという構造的資産（能力）が新製品上市コスト低減というメカニズムで示されており、能力が前面に出ている"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "糖尿病市場の業界構造（医師関係粘着性等）との合致についての明確な説明が不足している"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な競合社名を挙げた定量的な差別化比較が行われていない"
+        }
+      ],
+      "overall_reasoning": "糖尿病事業の世界規模商業フットプリントという主張は、fewshot_LLYのLLY#6（グローバル医療機関ネットワーク・30%）と構造が非常に類似している。KYはLLY#6に「グローバル大手医薬品であればほぼ同等に備わっているネットワーク」として30%を付与した。LLY_009の「世界規模の商業フットプリント」も同様の業界共通性の問題を抱える。KB2-Tでは業界共通性（pattern_B: -0.1）・定量指標欠如（pattern_D: -0.1）・純粋競合比較なし（pattern_G: -0.1）の3却下パターンが適用され、能力側面（pattern_III: +0.1）で一部相殺されて累積調整-0.2。仮スコア0.3。KB3-TキャリブレーションでもLLY#6との類似性から0.3が適切。",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "複数の糖尿病新製品を既存の商業インフラに乗せて展開することで、製品当たりの販売・マーケティングコストを分散",
+        "barrier": "数十年かけて構築した世界規模の糖尿病専門医・内科医との関係ネットワークは短期間では構築不可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "We have a very significant footprint on a worldwide basis that we can leverage for the launches of dulaglutide, empagliflozin, and our insulin glargine product."
+        },
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "q_and_a",
+          "quarter": "Q3 2014",
+          "quote": "Our existing commercial infrastructure in diabetes gives us a real advantage in launching new products because we already have established relationships with prescribers worldwide."
+        }
+      ]
+    },
+    {
+      "id": "LLY_010",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーのインスリン製造事業は大規模なバイオ製造能力と継続的な技術改善アジェンダを持ち、長期的な粗利率改善の基盤となっている。",
+      "evidence": "Rice（CFO）が「インスリンの技術的アジェンダにより、時間とともに数パーセントポイントの粗利率改善が見込める」と言及（Q1・Q2 2014）。インスリン製造能力は LLY・BI 双方の製品（グラルギン・リスプロ等）を支える共通基盤として機能。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule11: バイオ製造効率化はすべての大手インスリンメーカー（ノボノルディスク、サノフィ）が追求しており、リリー固有の構造的優位とは言い難い",
+          "rule04: 「数パーセントポイント」という範囲表現は定量的だが精度が低い",
+          "rule06: 製造技術改善は補完的ではなく継続的なプロセス改善だが、競合も同様に取り組んでいるため差別化要因としての強度は低い"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3_industry_common",
+          "adjustment": 0.0,
+          "reasoning": "インスリン製造効率化はNovo Nordisk・サノフィを含む全大手インスリンメーカーが追求する業界共通能力であり、ゲートキーパーrule3を適用して final_confidence を 0.3 以下に制限した。Phase 1の評価が既に 0.3 であるため実質的な変更なし"
+        }
+      ],
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01",
+          "result": true,
+          "reasoning": "技術的アジェンダという製造能力・仕組みを主張しており、単なる粗利率実績の引用ではない"
+        },
+        {
+          "rule_id": "rule02",
+          "result": true,
+          "reasoning": "製造能力・プロセスパワーという名詞属性として表現されている"
+        },
+        {
+          "rule_id": "rule04",
+          "result": true,
+          "reasoning": "「数パーセントポイント」という粗利率改善の方向性を示す数値があるが、範囲表現であり精度が低い"
+        },
+        {
+          "rule_id": "rule06",
+          "result": true,
+          "reasoning": "製造技術改善は継続的なプロセス改善として構造的に位置付けられているが、競合も同様に取り組んでいるため差別化強度は低い"
+        },
+        {
+          "rule_id": "rule07",
+          "result": false,
+          "reasoning": "Novo Nordisk・サノフィとの製造効率比較データが存在せず、相対的優位性の証明がない"
+        },
+        {
+          "rule_id": "rule08",
+          "result": true,
+          "reasoning": "技術的アジェンダという能力であり、製造効率化「戦略」と優位性の区別は概ね保たれている"
+        },
+        {
+          "rule_id": "rule11",
+          "result": false,
+          "reasoning": "インスリン製造効率化は全大手インスリンメーカーが追求する共通課題であり、業界構造の中でLlly固有の差別化要因として機能しているとは言えない"
+        },
+        {
+          "rule_id": "rule12",
+          "result": false,
+          "reasoning": "Q1・Q2 2014（四半期コール=従）の発言であり、年次コール（Q4）での体系的な説明と比べて確信度を抑制する"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "技術的アジェンダという能力を示しており、粗利率という結果を原因と取り違えていない（ゲートキーパー発動のため調整は参考記録のみ）"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "インスリン製造効率化はNovo・サノフィを含む全大手が追求する業界共通能力（ゲートキーパー発動のため調整は適用しない）"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "製造効率化→粗利率改善の因果は1ステップで飛躍がない（ゲートキーパー発動のため調整は適用しない）"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「数%程度」という精度の低い範囲表現のみであり、競合との比較データがない（ゲートキーパー発動のため調整は適用しない）"
+        },
+        {
+          "pattern_id": "pattern_E_factual_error",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CFO発言の粗利率改善見込みはトランスクリプトと整合しており事実誤認はない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "技術的アジェンダという能力であり、製造効率化戦略と優位性の区別は概ね保たれている"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Novo・サノフィとの製造効率比較データがなく純粋競合との差別化不明（ゲートキーパー発動のため調整は適用しない）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合との製造効率・粗利率の定量比較データが存在せず、定量的差別化パターンの要件を満たさない"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "粗利率改善という方向性はあるが、具体的な金額・率のCAGRパラメータへの直接接続が不十分"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "技術的アジェンダという能力が前面に出ているが（ゲートキーパー発動のため調整は適用しない）"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "インスリン製造市場の業界構造分析と企業ポジションの合致説明がない"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "具体的な競合社名を挙げた製造効率の比較が行われていない"
+        }
+      ],
+      "overall_reasoning": "インスリン製造技術改善アジェンダはprocess_powerとして分類されるが、Phase 1でも明示されているとおり「バイオ製造効率化はすべての大手インスリンメーカー（Novo Nordisk・サノフィ）が追求しており、Lilly固有の構造的優位とは言い難い」という業界共通能力の問題がある。ゲートキーパーrule3（業界共通能力）を適用し、final_confidenceを0.3以下に制限。Phase 1の評価（0.3）が既にゲートキーパー上限と一致しているため実質的な変更はなく0.3を維持する。Novo・サノフィとの製造効率比較データが示されない限り、この水準から上昇させる根拠がない。",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "インスリン製造コストの継続的削減による粗利率改善と競争的価格設定の余地",
+        "barrier": "バイオ製薬製造における蓄積的プロセス改善ノウハウは一定の障壁だが、競合大手も類似の製造能力を保有しており排他性は限定的"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Our insulin technical agenda is expected to improve our gross margins by several percentage points over time, as we continue to drive manufacturing efficiencies."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2014",
+          "quote": "The insulin manufacturing improvements are real, and they will benefit our margins as we progress through the technical agenda over the next few years."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "ticker": "LLY",
+    "claim_count": 13,
+    "scored_count": 5,
+    "target_claim_ids": ["LLY_006", "LLY_007", "LLY_008", "LLY_009", "LLY_010"],
+    "batch_index": 1,
+    "batch_total": 3,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 1,
+      "0.5": 1,
+      "0.3": 3,
+      "0.1": 0
+    },
+    "gatekeeper_applied": {
+      "rule9_count": 0,
+      "rule3_count": 1
+    },
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "pattern_A_result_as_cause.md",
+      "pattern_B_industry_common.md",
+      "pattern_C_causal_leap.md",
+      "pattern_D_qualitative_only.md",
+      "pattern_E_factual_error.md",
+      "pattern_F_strategy_confusion.md",
+      "pattern_G_unclear_vs_pure_competitor.md",
+      "pattern_I_quantitative_differentiation.md",
+      "pattern_II_direct_cagr_mechanism.md",
+      "pattern_III_capability_over_result.md",
+      "pattern_IV_structural_market_position.md",
+      "pattern_V_specific_competitor_comparison.md",
+      "fewshot_CHD.md",
+      "fewshot_COST.md",
+      "fewshot_LLY.md",
+      "fewshot_MNST.md",
+      "fewshot_ORLY.md",
+      "dogma.md"
+    ]
+  }
+}

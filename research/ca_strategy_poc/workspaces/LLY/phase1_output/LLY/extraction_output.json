@@ -1,0 +1,569 @@
+{
+  "ticker": "LLY",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "LLY_001",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーのイノベーション重視の R&D 戦略は、特許切れによる売上減少期においても継続的なパイプライン投資を可能にする構造的仕組みを持つ。",
+      "evidence": "2014 年を通じて約 44〜48 億ドルの R&D 投資を維持しつつ、SG&A を削減し、複数の後期パイプライン資産（デュラグルチド、アベマシクリブ、ラムシルマブ等）の承認・申請を実現した。Lechleiter CEO は「innovation-based strategy への確信はパイプラインの着実な進展によって強化される」と繰り返し言及した。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule08", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule08": false,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule08: 「イノベーション重視の戦略」という表現自体は戦略宣言に近い。ただし特許切れ下での継続 R&D 投資という具体的な仕組みが裏付けとして存在するため、戦略単体ではなく過程能力（Process Power）の候補として残留",
+          "rule06: パイプライン投資維持は補完的施策ではなく、企業モデルの中核をなす構造的プロセスと判断",
+          "rule11: 特許切れ型大手製薬の業界構造において、イノベーション再生サイクルの実績は稀有であり業界ポジションと合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "特許切れ期間中も高水準の R&D 投資を維持し、複数の新製品を同時期に上市できる再生サイクルを保有",
+        "barrier": "製薬 R&D の蓄積的な組織能力（創薬プラットフォーム、臨床開発ノウハウ、規制対応経験）は数年単位では複製困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "John Lechleiter",
+          "role": "Chairman and CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "The steady advance of our pipeline continues to strengthen our confidence in our innovation-based strategy."
+        },
+        {
+          "speaker": "John Lechleiter",
+          "role": "Chairman and CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "We continue to advance new medicines and our pipeline continues to strengthen our confidence in our innovation-based strategy."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "We continue to reduce our operating expenses while maintaining our R&D investment, which reflects the discipline of our cost-reduction efforts."
+        }
+      ]
+    },
+    {
+      "id": "LLY_002",
+      "claim_type": "competitive_advantage",
+      "claim": "デュラグルチド（Trulicity）は「週 1 回投与かつ使用準備不要」という特性を唯一備えた GLP-1 受容体作動薬であり、患者利便性において競合と明確に差別化されている。",
+      "evidence": "Q2・Q3 2014 の決算コールで複数の幹部が「dulaglutide は唯一の週 1 回・使用準備不要（ready-to-use）GLP-1 である」と繰り返し言及。単回用量ペン、針の取り付け・混合・計量が不要な設計。FDA へのNDA 提出が 2013 年末に完了し、承認審査中（2014 年 9 月承認）。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule07: 「週 1 回かつ ready-to-use」という組み合わせ特性はエクセナチド週 1 回製剤（Bydureon、要調製）やセマグルチド（未承認）等の純粋競合と明確に差別化可能",
+          "rule04: NDA 提出・審査ステータス、デバイス設計の具体的特性が定量的・事実的裏付けとなっている"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "競合 GLP-1 製剤に対し患者の利便性・アドヒアランス向上を可能にするデバイス設計特許とフォーミュレーション",
+        "barrier": "デバイス・製剤特許および FDA 承認取得済みという先行者優位。競合が同等のデバイス利便性を備えた週 1 回製剤を開発するには数年の規制プロセスが必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "Dulaglutide is the only GLP-1 receptor agonist that is both once-weekly and ready-to-use, with a single-dose pen that requires no mixing, measuring, or needle attachment."
+        },
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "q_and_a",
+          "quarter": "Q3 2014",
+          "quote": "We believe dulaglutide's profile—once-weekly, ready-to-use, with the autoinjector pen—is differentiated versus the competition in ways that matter to patients and physicians."
+        }
+      ]
+    },
+    {
+      "id": "LLY_003",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーの糖尿病フランチャイズは、ベーリンガーインゲルハイム（BI）との戦略的アライアンスにより、SGLT2 阻害剤（エンパグリフロジン）と DPP-4 阻害剤（トラジェンタ）という 2 つの潜在的ベストインクラス経口薬を同時期に展開できる構造を持つ。",
+      "evidence": "Conterno が「3 年間で 2 つのベストインクラス経口薬を展開できる diabtes alliance は類例がない」と言及。SGLT2+DPP-4 固定用量配合剤（Glyxambi）は「競合より大幅に先行」と説明。2014 年時点で Jardiance（エンパグリフロジン）は欧州承認済み、米国 NDA 申請中。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule07", "rule08", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule07": true,
+          "rule08": false,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule08: BI との提携自体は戦略的意思決定であり優位性の源泉ではない。ただしその結果として生じる製品ポートフォリオの同時展開能力は補完的でなく構造的（rule06 合格）",
+          "rule07: SGLT2+DPP-4 固定用量配合剤の先行性は具体的な競合差別化根拠として認められる",
+          "rule11: 2型糖尿病治療市場では経口薬と注射薬の複数クラス同時保有が市場シェア維持に直結する業界構造と合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "既存の糖尿病商業インフラ（営業力、医師への信頼関係、患者支援プログラム）を活用し、複数の新製品を追加コスト最小限で展開可能",
+        "barrier": "既存糖尿病フランチャイズとの相乗効果（Humalog・Basaglar との組み合わせ訴求）はゼロから構築できず、長年のインフラ投資の積み上げが必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Our alliance with Boehringer Ingelheim enables us to launch two potentially best-in-class oral agents within a three-year period, which we believe is a unique advantage in the diabetes space."
+        },
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2014",
+          "quote": "Our fixed-dose combination of the SGLT2 and DPP-4 inhibitors is significantly ahead of the competition in terms of development and regulatory filing."
+        }
+      ]
+    },
+    {
+      "id": "LLY_004",
+      "claim_type": "competitive_advantage",
+      "claim": "アベマシクリブ（CDK4/6 阻害剤）は単剤活性、連続投与スケジュール、低好中球減少症プロファイルという 3 点で競合（パルボシクリブ）と差別化された独自のポジションを持つ。",
+      "evidence": "Sullivan 及び Levi が「abemaciclib の単剤活性はクラス内で唯一確認されている」「連続投与スケジュールにより PK/PD 上の利点がある」「好中球減少症の発現率が競合より低い」と言及。Phase II 単剤投与試験で奏効が確認されており、乳癌・肺癌・大腸癌など複数固形がんで臨床試験を継続中（2014 年時点）。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07", "rule10", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule07": true,
+          "rule10": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: Phase II 臨床データによる単剤奏効の定量的裏付けが存在する",
+          "rule07: CDK4/6 阻害剤クラス内で唯一の単剤活性という純粋競合差別化が明確",
+          "rule10: 他の CDK4/6 阻害剤（パルボシクリブ）が単剤効果を示せていないというネガティブケースが差別化を強化"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "単剤活性・連続投与・低好中球減少の組み合わせプロファイルは複数の固形がんへの適応拡大可能性を開拓",
+        "barrier": "CDK4/6 阻害剤の分子設計・選択性プロファイルの差異に由来する特許保護。競合が同等の薬理プロファイルを実現するには別途の製剤開発が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Richard Gaynor",
+          "role": "SVP, Oncology Product Development",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2014",
+          "quote": "Abemaciclib shows single-agent activity which has not been seen with other CDK4/6 inhibitors, and this is a differentiated profile that we believe will be important clinically."
+        },
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "Abemaciclib's continuous dosing schedule and lower rates of neutropenia distinguish it from the competition, and we see potential across multiple tumor types given its single-agent activity."
+        }
+      ]
+    },
+    {
+      "id": "LLY_005",
+      "claim_type": "competitive_advantage",
+      "claim": "ラムシルマブ（Cyramza）は胃癌、肺癌、大腸癌という複数の固形がんにわたり OS 延長を示した Phase III エビデンスを保有し、オンコロジー領域でのマルチインディケーション商業展開基盤を構築している。",
+      "evidence": "2014 年を通じて胃癌（RAINBOW、REGARD）、肺癌（REVEL）の Phase III 試験が OS エンドポイントで陽性であることが相次いで公表された。胃癌後治療では米国初の承認取得（2014 年 4 月）。大腸癌試験（RAISE）も進行中。Mahony が「4 つのポジティブな Phase III 試験を保有する」と言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: 複数の Phase III OS 陽性データという強力な定量的裏付けが存在する",
+          "rule11: オンコロジー市場では複数適応症の同一抗体薬による展開はブランド認知・処方習慣形成において有利な業界構造と合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "4 つの Phase III OS 陽性試験を保有するという臨床エビデンスの蓄積は、規制当局・腫瘍医双方からの信頼を構築しマルチインディケーション展開を可能にする",
+        "barrier": "VEGFR-2 標的の抗体薬という特許保護に加え、複数固形がんにわたる大規模 Phase III プログラムの実施能力・コストは新規参入者に対して高い障壁となる"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "With four positive Phase III trials for ramucirumab showing overall survival benefit, we believe we have a strong foundation for building a significant oncology franchise."
+        },
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "Cyramza was approved in the U.S. for advanced gastric cancer after chemotherapy, making it the first approved treatment for this indication in the U.S., and we are building on this strong clinical foundation with multiple ongoing studies."
+        }
+      ]
+    },
+    {
+      "id": "LLY_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Alimta（ペメトレキセド）は非扁平上皮非小細胞肺癌（NSCLC）の一次治療および維持療法において市場リーダーポジションを維持しており、ビタミン投与法に関する特許（米国・ドイツで 2021〜2022 年まで有効）が競合からの市場侵食を阻む障壁となっている。",
+      "evidence": "Q2 2014 に米国連邦控訴裁判所がビタミン投与法特許を支持する判決を下したことが開示された（2021 年まで）。ドイツでも同様の特許支持判決（2022 年まで）を獲得。Conterno（後に Mahony）が「Alimta は非扁平上皮 NSCLC の一次治療・維持療法の市場リーダー」と言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: 特許有効期限（2021〜2022 年）という具体的な定量的裏付けが存在する",
+          "rule06: ビタミン投与法特許による市場防衛は補完的施策ではなく、Alimta フランチャイズの構造的保護機能"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "市場リーダーポジション維持と長期的な高価格帯維持が可能",
+        "barrier": "ビタミン投与法の方法特許（米国 2021 年・ドイツ 2022 年）が後発品参入を阻む法的障壁として機能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "The U.S. Federal Circuit Court upheld our vitamin regimen patent for Alimta through 2021, which we believe provides continued protection for this important product."
+        },
+        {
+          "speaker": "Sue Mahony",
+          "role": "President, Lilly Oncology",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "Alimta continues to be the market leader in non-squamous non-small cell lung cancer in the first-line and maintenance settings, and we are defending that position with our patent protections in the U.S. through 2021 and Germany through 2022."
+        }
+      ]
+    },
+    {
+      "id": "LLY_007",
+      "claim_type": "competitive_advantage",
+      "claim": "Elanco アニマルヘルス事業は 6 年連続で業界成長率を上回る成長を達成しており、その成長の 60% がイノベーション（新製品）に由来するという高い研究開発生産性を示している。",
+      "evidence": "Q1〜Q3 2014 の決算コールを通じて Terrence Martin（後に Jeff Simmons）が「Elanco は 6 年間にわたり業界を上回る成長を続けており、成長の 60% はイノベーションから」と繰り返し言及。2007 年以降 8 件の買収を完了し、製品ポートフォリオを拡充。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule04: 6 年間の業界超過成長・60% イノベーション由来という定量的裏付けが存在する",
+          "rule06: 成長の 60% がイノベーション由来という点は組織的研究開発能力の構造的証拠だが、アニマルヘルス競合（ゾエティス等）との直接比較データが不明確なため確信度を抑制"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "動物用医薬品・ワクチン・栄養製品の研究開発において業界平均を上回るイノベーション生産性を実現",
+        "barrier": "6 年以上にわたる一貫した R&D 投資と M&A 統合の蓄積的プロセスは短期間での模倣が困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeff Simmons",
+          "role": "President, Elanco Animal Health",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Elanco has outpaced industry growth for six consecutive years, and approximately 60 percent of our growth has been driven by innovation, reflecting the strength of our R&D productivity."
+        },
+        {
+          "speaker": "Jeff Simmons",
+          "role": "President, Elanco Animal Health",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "We have completed eight acquisitions since 2007, which have expanded our portfolio and commercial capabilities, helping us sustain our industry-leading growth trajectory."
+        }
+      ]
+    },
+    {
+      "id": "LLY_008",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーは EU において EU バイオシミラー承認経路を通じた最初のインスリン グラルギン バイオシミラー（Abasria）を承認取得しており、インスリン市場における先行者優位を構築している。",
+      "evidence": "Q1 2014 の決算コールで Conterno が「Abasria は EU バイオシミラー経路を通じた最初のインスリン グラルギン承認であり、欧州市場での価格競争力を高める」と言及。BI との連携によるインスリン グラルギン（Basaglar として米国での申請中）は、先発品サノフィ・Lantus に対する市場シェア獲得機会として位置付けられている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule07: EU バイオシミラー経路における「最初のインスリン グラルギン」という先行者ポジションは具体的な競合差別化だが、フォロワーの参入障壁は規制上の認証であり時間とともに競合が追随可能",
+          "rule11: バイオシミラーインスリン市場は欧州の医療費抑制政策と親和性が高く業界構造と合致するが、価格競争になりやすいセグメントであり持続的優位性は相対的に低い"
+        ]
+      },
+      "power_classification": {
+        "power_type": "counter_positioning",
+        "benefit": "既存のインスリン製造インフラと商業インフラを活用し、サノフィ Lantus より低価格でインスリン グラルギンを提供することで市場シェアを獲得可能",
+        "barrier": "サノフィはバイオシミラー参入に対して自社 Lantus の価格を引き下げることで対抗できるが、それは自社収益の侵食を意味するため対抗動機が低下する（カウンターポジショニング構造）"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Abasria became the first insulin glargine approved through the EU biosimilar pathway, which we believe establishes an important precedent and competitive position for us in the European insulin market."
+        },
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2014",
+          "quote": "With Basaglar, we have the opportunity to compete in the large insulin glargine market using our established manufacturing infrastructure and commercial footprint, at a lower price point than the originator product."
+        }
+      ]
+    },
+    {
+      "id": "LLY_009",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーの糖尿病事業は世界規模の「非常に大きな商業フットプリント」を保有しており、この既存インフラを活用することで新製品（デュラグルチド、エンパグリフロジン等）の上市コストを最小化できる。",
+      "evidence": "Conterno が Q1〜Q3 2014 を通じて「we have a very significant footprint on a worldwide basis that we can leverage for new launches」と繰り返し言及。Humalog・Humulin の既存処方者基盤、医師との長期関係、患者支援プログラム基盤が新製品の商業展開の起点となることが説明された。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule01: 「フットプリント」という表現は名詞的属性（rule02 合格）だが、規模の具体的指標（担当者数・適応医師数・国数等）がトランスクリプト内で定量化されておらず裏付けが間接的（rule04 未達）",
+          "rule06: 既存商業インフラの新製品への転用は補完的施策ではなく、糖尿病事業の構造的スケール優位"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "複数の糖尿病新製品を既存の商業インフラに乗せて展開することで、製品当たりの販売・マーケティングコストを分散",
+        "barrier": "数十年かけて構築した世界規模の糖尿病専門医・内科医との関係ネットワークは短期間では構築不可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "We have a very significant footprint on a worldwide basis that we can leverage for the launches of dulaglutide, empagliflozin, and our insulin glargine product."
+        },
+        {
+          "speaker": "Enrique Conterno",
+          "role": "President, Lilly Diabetes",
+          "section_type": "q_and_a",
+          "quarter": "Q3 2014",
+          "quote": "Our existing commercial infrastructure in diabetes gives us a real advantage in launching new products because we already have established relationships with prescribers worldwide."
+        }
+      ]
+    },
+    {
+      "id": "LLY_010",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーのインスリン製造事業は大規模なバイオ製造能力と継続的な技術改善アジェンダを持ち、長期的な粗利率改善の基盤となっている。",
+      "evidence": "Rice（CFO）が「インスリンの技術的アジェンダにより、時間とともに数パーセントポイントの粗利率改善が見込める」と言及（Q1・Q2 2014）。インスリン製造能力は LLY・BI 双方の製品（グラルギン・リスプロ等）を支える共通基盤として機能。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule11: バイオ製造効率化はすべての大手インスリンメーカー（ノボノルディスク、サノフィ）が追求しており、リリー固有の構造的優位とは言い難い",
+          "rule04: 「数パーセントポイント」という範囲表現は定量的だが精度が低い",
+          "rule06: 製造技術改善は補完的ではなく継続的なプロセス改善だが、競合も同様に取り組んでいるため差別化要因としての強度は低い"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "インスリン製造コストの継続的削減による粗利率改善と競争的価格設定の余地",
+        "barrier": "バイオ製薬製造における蓄積的プロセス改善ノウハウは一定の障壁だが、競合大手も類似の製造能力を保有しており排他性は限定的"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "Our insulin technical agenda is expected to improve our gross margins by several percentage points over time, as we continue to drive manufacturing efficiencies."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2014",
+          "quote": "The insulin manufacturing improvements are real, and they will benefit our margins as we progress through the technical agenda over the next few years."
+        }
+      ]
+    },
+    {
+      "id": "LLY_011",
+      "claim_type": "competitive_advantage",
+      "claim": "リリーの新興国事業（特に中国）は 2014 年を通じて 15〜21% の定速成長を達成しており、ローカル規制・市場適応能力を蓄積したポジションを構築している。",
+      "evidence": "Q1 2014 に中国 +21%、Q2 2014 に +15%（為替一定ベース）、Q3 2014 に「引き続き強い成長」と報告。Lechleiter が「中国および新興市場は長期的成長エンジン」と位置付けると言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule02": true,
+          "rule04": true,
+          "rule06": false,
+          "rule11": true
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule01: 高成長率自体は結果・実績であり、それを可能にする能力・仕組み（rule01 未達）が具体的に説明されていない",
+          "rule06: 新興市場への参入・展開は多くの大手製薬が行う補完的施策であり、構造的に差別化された仕組みが示されていない",
+          "rule04: 定量データは明確だが、競合比較（ノボノルディスク・サノフィの中国成長率）との対比がなく競争優位性の強度を評価しにくい"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "中国での糖尿病・がん医薬品の既存商業体制を新製品に転用し、参入コストを低減",
+        "barrier": "中国薬事規制への対応実績・KOL（Key Opinion Leader）ネットワークの構築は後発参入者には時間を要するが、他の大手製薬も同様の投資を行っており排他性は相対的に低い"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "John Lechleiter",
+          "role": "Chairman and CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "China grew 21 percent in constant currency, reflecting our strong position in this important market which we see as a key long-term growth driver."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "Our emerging markets business grew approximately 14 percent in constant currency, with China up 15 percent, driven by the strength of our diabetes and oncology portfolios."
+        }
+      ]
+    },
+    {
+      "id": "LLY_012",
+      "claim_type": "factual_claim",
+      "claim": "リリーは 2014 年の三四半期を通じて、特許切れ製品（シンビタ、シアリス等）の売上減少にもかかわらず、EPS ガイダンスを維持ないし引き上げた。",
+      "evidence": "Q1 2014: 非 GAAP EPS ガイダンス $2.16〜2.26 を維持。Q2 2014: ガイダンス上端を引き上げ。Q3 2014: 通期 EPS ガイダンスを再確認。特許切れによる売上減少を費用削減で吸収したことが示された。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "We are maintaining our 2014 non-GAAP EPS guidance range of $2.16 to $2.26, reflecting confidence in our ability to manage through the patent cliff through expense discipline."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2014",
+          "quote": "We are raising the top end of our non-GAAP EPS guidance, reflecting strong performance in the quarter and continued confidence in our full-year outlook."
+        }
+      ]
+    },
+    {
+      "id": "LLY_013",
+      "claim_type": "factual_claim",
+      "claim": "2014 年の R&D 費用は通年で約 44〜48 億ドルの水準を維持し、売上高比 20% 超の高い研究開発集約度を示した。",
+      "evidence": "Q1 2014: R&D 費用 約 11 億ドル（年換算 44 億ドル）。Q2 2014: 「R&D 投資は維持」との言及。Q3 2014: 「R&D 費用はほぼ flat」との言及。2014 年通年で売上高 198 億ドル（特許切れ圧力下）に対し R&D 費は高水準維持。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "R&D expenses were approximately $1.1 billion in the first quarter, reflecting our continued commitment to investing in our pipeline even as we manage through the patent cliff."
+        },
+        {
+          "speaker": "Derica Rice",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "R&D expenses remain roughly flat versus prior year as we continue to prioritize pipeline investment while reducing other operating expenses."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 4,
+    "claim_count": 13,
+    "competitive_advantage_count": 11,
+    "cagr_connection_count": 0,
+    "factual_claim_count": 2,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "fewshot_CHD.md",
+      "fewshot_COST.md",
+      "fewshot_LLY.md",
+      "fewshot_MNST.md",
+      "fewshot_ORLY.md",
+      "system_prompt_transcript.md",
+      "seven_powers_framework.md",
+      "dogma.md"
+    ]
+  }
+}
