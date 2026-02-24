@@ -181,7 +181,7 @@ class Orchestrator:
         """
         logger.info("Starting full pipeline execution")
 
-        claims, scored_claims, scores, ranked = self._run_phases_1_to_3()
+        _claims, scored_claims, scores, ranked = self._run_phases_1_to_3()
 
         # Phase 4: Portfolio Construction
         portfolio = self._execute_phase(
@@ -415,10 +415,41 @@ class Orchestrator:
         tuple[PortfolioResult, EvaluationResult]
             Portfolio and evaluation results for this threshold.
         """
+        # Phase 4b: Equal-weight portfolio construction
+        portfolio = self._run_phase4b_equal_weight(ranked_list, threshold)
+
+        # Phase 6: Evaluation
+        evaluation = self._run_phase6_evaluation(portfolio, scores, threshold)
+
+        # Phase 5 extended: Output generation with evaluation
+        self._run_phase5_extended(
+            portfolio, scored_claims, scores, evaluation, threshold
+        )
+
+        return portfolio, evaluation
+
+    def _run_phase4b_equal_weight(
+        self,
+        ranked_list: list[dict[str, Any]],
+        threshold: float,
+    ) -> PortfolioResult:
+        """Execute Phase 4b: equal-weight portfolio construction.
+
+        Parameters
+        ----------
+        ranked_list : list[dict[str, Any]]
+            Ranked stocks as list of dicts.
+        threshold : float
+            Score threshold.
+
+        Returns
+        -------
+        PortfolioResult
+            Equal-weight portfolio result.
+        """
         phase_label = f"phase4b_threshold_{threshold:.2f}"
         logger.info("Phase 4b started", threshold=threshold)
 
-        # Phase 4b: Equal-weight portfolio construction
         builder = PortfolioBuilder()
         portfolio = builder.build_equal_weight(
             ranked=ranked_list,  # type: ignore[arg-type]
@@ -433,40 +464,78 @@ class Orchestrator:
             holdings_count=len(portfolio.holdings),
         )
 
-        # Phase 6: Evaluation
+        return portfolio
+
+    def _calculate_phase6_returns(
+        self,
+        portfolio: PortfolioResult,
+    ) -> tuple[pd.Series, pd.Series]:
+        """Calculate portfolio and benchmark returns for Phase 6 evaluation.
+
+        When ``price_provider`` is set, uses ``PortfolioReturnCalculator``
+        to compute real portfolio and benchmark returns using daily close
+        prices.  When ``None`` (default), returns empty Series so that
+        ``StrategyEvaluator`` produces NaN performance metrics.
+
+        Parameters
+        ----------
+        portfolio : PortfolioResult
+            Portfolio from Phase 4 or 4b.
+
+        Returns
+        -------
+        tuple[pd.Series, pd.Series]
+            ``(portfolio_returns, benchmark_returns)``
+        """
+        if self._price_provider is None:
+            return pd.Series([], dtype=float), pd.Series([], dtype=float)
+
+        calculator = PortfolioReturnCalculator(
+            price_provider=self._price_provider,
+            corporate_actions=self._corporate_actions,
+        )
+        portfolio_weights = {h.ticker: h.weight for h in portfolio.holdings}
+        portfolio_returns = calculator.calculate_returns(
+            weights=portfolio_weights,
+            start=PORTFOLIO_DATE,
+            end=EVALUATION_END_DATE,
+        )
+        universe_tickers = [t.ticker for t in self._config.universe.tickers]
+        benchmark_returns = calculator.calculate_benchmark_returns(
+            tickers=universe_tickers,
+            start=PORTFOLIO_DATE,
+            end=EVALUATION_END_DATE,
+        )
+        return portfolio_returns, benchmark_returns
+
+    def _run_phase6_evaluation(
+        self,
+        portfolio: PortfolioResult,
+        scores: dict[str, StockScore],
+        threshold: float,
+    ) -> EvaluationResult:
+        """Execute Phase 6: strategy evaluation.
+
+        Parameters
+        ----------
+        portfolio : PortfolioResult
+            Portfolio from Phase 4b.
+        scores : dict[str, StockScore]
+            Aggregated stock scores.
+        threshold : float
+            Score threshold.
+
+        Returns
+        -------
+        EvaluationResult
+            Evaluation metrics.
+        """
         phase6_label = f"phase6_threshold_{threshold:.2f}"
         logger.info("Phase 6 started", threshold=threshold)
 
+        portfolio_returns, benchmark_returns = self._calculate_phase6_returns(portfolio)
+
         evaluator = StrategyEvaluator()
-
-        # AIDEV-NOTE: When price_provider is set, PortfolioReturnCalculator
-        # computes real portfolio and benchmark returns using daily close prices.
-        # When price_provider is None (default), empty Series are used and
-        # StrategyEvaluator returns NaN performance metrics.
-        portfolio_returns: pd.Series
-        benchmark_returns: pd.Series
-
-        if self._price_provider is not None:
-            calculator = PortfolioReturnCalculator(
-                price_provider=self._price_provider,
-                corporate_actions=self._corporate_actions,
-            )
-            portfolio_weights = {h.ticker: h.weight for h in portfolio.holdings}
-            portfolio_returns = calculator.calculate_returns(
-                weights=portfolio_weights,
-                start=PORTFOLIO_DATE,
-                end=EVALUATION_END_DATE,
-            )
-            universe_tickers = [t.ticker for t in self._config.universe.tickers]
-            benchmark_returns = calculator.calculate_benchmark_returns(
-                tickers=universe_tickers,
-                start=PORTFOLIO_DATE,
-                end=EVALUATION_END_DATE,
-            )
-        else:
-            portfolio_returns = pd.Series([], dtype=float)
-            benchmark_returns = pd.Series([], dtype=float)
-
         evaluation = evaluator.evaluate(
             portfolio=portfolio,
             scores=scores,
@@ -483,7 +552,31 @@ class Orchestrator:
             sharpe=evaluation.performance.sharpe_ratio,
         )
 
-        # Phase 5 extended: Output generation with evaluation
+        return evaluation
+
+    def _run_phase5_extended(
+        self,
+        portfolio: PortfolioResult,
+        scored_claims: dict[str, list[ScoredClaim]],
+        scores: dict[str, StockScore],
+        evaluation: EvaluationResult,
+        threshold: float,
+    ) -> None:
+        """Execute Phase 5 extended: output generation with evaluation.
+
+        Parameters
+        ----------
+        portfolio : PortfolioResult
+            Portfolio from Phase 4b.
+        scored_claims : dict[str, list[ScoredClaim]]
+            Scored claims from Phase 2.
+        scores : dict[str, StockScore]
+            Aggregated stock scores.
+        evaluation : EvaluationResult
+            Evaluation result from Phase 6.
+        threshold : float
+            Score threshold.
+        """
         output_dir = self._workspace_dir / "output" / f"threshold_{threshold:.2f}"
         generator = OutputGenerator()
         generator.generate_all(
@@ -502,8 +595,6 @@ class Orchestrator:
             threshold=threshold,
             output_dir=str(output_dir),
         )
-
-        return portfolio, evaluation
 
     # -----------------------------------------------------------------------
     # Execution log
@@ -838,13 +929,14 @@ class Orchestrator:
     def _load_corporate_actions(self) -> list[dict[str, Any]]:
         """Load corporate actions from ``corporate_actions.json`` in config_path.
 
-        Returns an empty list if the file does not exist, allowing
-        graceful fallback for configurations without corporate action data.
+        Returns an empty list if the file does not exist or contains
+        invalid data, allowing graceful fallback for configurations
+        without corporate action data.
 
         Returns
         -------
         list[dict[str, Any]]
-            List of corporate action records.
+            List of validated corporate action records.
         """
         ca_path = self._config_path / "corporate_actions.json"
         if not ca_path.exists():
@@ -854,14 +946,59 @@ class Orchestrator:
             )
             return []
 
-        data = json.loads(ca_path.read_text(encoding="utf-8"))
-        actions: list[dict[str, Any]] = data.get("corporate_actions", [])
+        try:
+            data = json.loads(ca_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as e:
+            logger.warning(
+                "Failed to parse corporate_actions.json, using empty list",
+                error=str(e),
+                path=str(ca_path),
+            )
+            return []
+
+        if not isinstance(data, dict) or "corporate_actions" not in data:
+            logger.warning(
+                "Invalid corporate_actions.json structure, "
+                "expected {'corporate_actions': [...]}, using empty list",
+                path=str(ca_path),
+            )
+            return []
+
+        actions_raw = data["corporate_actions"]
+        if not isinstance(actions_raw, list):
+            logger.warning(
+                "corporate_actions field is not a list, using empty list",
+                path=str(ca_path),
+            )
+            return []
+
+        # Validate each action has required fields
+        required_fields = {"ticker", "action_date", "action_type"}
+        valid_actions: list[dict[str, Any]] = []
+        for i, action in enumerate(actions_raw):
+            if not isinstance(action, dict):
+                logger.warning(
+                    "Skipping non-dict corporate action entry",
+                    index=i,
+                )
+                continue
+            missing = required_fields - set(action.keys())
+            if missing:
+                logger.warning(
+                    "Skipping corporate action with missing required fields",
+                    index=i,
+                    missing_fields=sorted(missing),
+                )
+                continue
+            valid_actions.append(action)
+
         logger.info(
             "Corporate actions loaded",
-            count=len(actions),
+            count=len(valid_actions),
+            skipped=len(actions_raw) - len(valid_actions),
             path=str(ca_path),
         )
-        return actions
+        return valid_actions
 
     # -----------------------------------------------------------------------
     # Checkpoint I/O

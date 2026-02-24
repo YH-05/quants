@@ -26,7 +26,7 @@ Examples
 from __future__ import annotations
 
 from datetime import date
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
@@ -47,7 +47,7 @@ class PortfolioReturnCalculator:
     ----------
     price_provider : PriceDataProvider
         Provider for fetching daily close prices.
-    corporate_actions : list[dict]
+    corporate_actions : list[dict[str, Any]]
         List of corporate action records, each containing at minimum:
         ``ticker``, ``action_date`` (ISO 8601 string), and ``action_type``
         (``"delisting"`` or ``"merger"``).
@@ -67,7 +67,7 @@ class PortfolioReturnCalculator:
     def __init__(
         self,
         price_provider: PriceDataProvider,
-        corporate_actions: list[dict],
+        corporate_actions: list[dict[str, Any]],
     ) -> None:
         self._price_provider = price_provider
         self._corporate_actions = self._parse_actions(corporate_actions)
@@ -118,29 +118,11 @@ class PortfolioReturnCalculator:
             end=end.isoformat(),
         )
 
-        # Fetch prices
-        price_data = self._price_provider.fetch(tickers, start, end)
-
-        if not price_data:
-            logger.warning("No price data returned from provider")
+        prepared = self._fetch_and_prepare_returns(tickers, start, end)
+        if prepared is None:
             return pd.Series([], dtype=float)
 
-        # Identify missing tickers and redistribute weights
-        available_tickers = set(price_data.keys())
-        missing_tickers = set(tickers) - available_tickers
-
-        if missing_tickers:
-            logger.warning(
-                "Data missing for tickers, excluding from calculation",
-                missing_tickers=sorted(missing_tickers),
-            )
-
-        # Build daily returns DataFrame from available tickers
-        returns_df = self._build_returns_df(price_data)
-
-        if returns_df.empty:
-            logger.warning("Returns DataFrame is empty after computing daily returns")
-            return pd.Series([], dtype=float)
+        returns_df, missing_tickers = prepared
 
         # Adjust initial weights for missing tickers
         current_weights = self._redistribute_weights(
@@ -198,27 +180,11 @@ class PortfolioReturnCalculator:
             end=end.isoformat(),
         )
 
-        # Fetch prices
-        price_data = self._price_provider.fetch(tickers, start, end)
-
-        if not price_data:
-            logger.warning("No price data returned for benchmark")
+        prepared = self._fetch_and_prepare_returns(tickers, start, end)
+        if prepared is None:
             return pd.Series([], dtype=float)
 
-        # Log missing tickers
-        available = set(price_data.keys())
-        missing = set(tickers) - available
-        if missing:
-            logger.warning(
-                "Benchmark: data missing for tickers",
-                missing_tickers=sorted(missing),
-            )
-
-        # Build daily returns
-        returns_df = self._build_returns_df(price_data)
-
-        if returns_df.empty:
-            return pd.Series([], dtype=float)
+        returns_df, _ = prepared
 
         # Equal weights for available tickers
         n = len(returns_df.columns)
@@ -241,15 +207,67 @@ class PortfolioReturnCalculator:
     # -----------------------------------------------------------------------
     # Internal helpers
     # -----------------------------------------------------------------------
-    def _parse_actions(
+    def _fetch_and_prepare_returns(
         self,
-        actions: list[dict],
-    ) -> dict[str, date]:
-        """Parse corporate actions into a ticker -> action_date mapping.
+        tickers: list[str],
+        start: date,
+        end: date,
+    ) -> tuple[pd.DataFrame, set[str]] | None:
+        """Fetch prices and build daily returns DataFrame.
+
+        Common pipeline shared by :meth:`calculate_returns` and
+        :meth:`calculate_benchmark_returns` to avoid code duplication.
 
         Parameters
         ----------
-        actions : list[dict]
+        tickers : list[str]
+            Ticker symbols to fetch.
+        start : date
+            Start date (inclusive).
+        end : date
+            End date (inclusive).
+
+        Returns
+        -------
+        tuple[pd.DataFrame, set[str]] | None
+            ``(returns_df, missing_tickers)`` if data is available,
+            ``None`` if no price data or empty returns.
+        """
+        price_data = self._price_provider.fetch(tickers, start, end)
+
+        if not price_data:
+            logger.warning("No price data returned from provider")
+            return None
+
+        available_tickers = set(price_data.keys())
+        missing_tickers = set(tickers) - available_tickers
+
+        if missing_tickers:
+            logger.warning(
+                "Data missing for tickers, excluding from calculation",
+                missing_tickers=sorted(missing_tickers),
+            )
+
+        returns_df = self._build_returns_df(price_data)
+
+        if returns_df.empty:
+            logger.warning("Returns DataFrame is empty after computing daily returns")
+            return None
+
+        return returns_df, missing_tickers
+
+    def _parse_actions(
+        self,
+        actions: list[dict[str, Any]],
+    ) -> dict[str, date]:
+        """Parse corporate actions into a ticker -> action_date mapping.
+
+        Invalid entries (missing fields, bad date format) are skipped
+        with a warning log rather than raising an exception.
+
+        Parameters
+        ----------
+        actions : list[dict[str, Any]]
             Raw corporate action records.
 
         Returns
@@ -258,9 +276,25 @@ class PortfolioReturnCalculator:
             Mapping of ticker to action date.
         """
         result: dict[str, date] = {}
-        for action in actions:
-            ticker = action["ticker"]
-            action_date = date.fromisoformat(action["action_date"])
+        for i, action in enumerate(actions):
+            try:
+                ticker = action["ticker"]
+                action_date = date.fromisoformat(action["action_date"])
+            except KeyError as e:
+                logger.warning(
+                    "Skipping corporate action with missing field",
+                    index=i,
+                    missing_field=str(e),
+                )
+                continue
+            except (ValueError, TypeError) as e:
+                logger.warning(
+                    "Skipping corporate action with invalid date",
+                    index=i,
+                    error=str(e),
+                )
+                continue
+
             result[ticker] = action_date
             logger.debug(
                 "Corporate action parsed",
@@ -337,11 +371,10 @@ class PortfolioReturnCalculator:
         # Scale remaining weights to sum to 1.0
         new_weights = {k: v / remaining_total for k, v in remaining.items()}
 
-        logger.debug(
+        logger.info(
             "Weights redistributed",
             removed_tickers=sorted(removed_tickers),
             new_weight_count=len(new_weights),
-            new_weight_sum=sum(new_weights.values()),
         )
 
         return new_weights
@@ -357,6 +390,10 @@ class PortfolioReturnCalculator:
         on that date. If so, the affected ticker's weight is set to 0
         and the freed weight is redistributed proportionally to remaining
         tickers.
+
+        Uses vectorized pandas operations for the daily return computation
+        (element-wise multiply + row sum) while iterating over dates only
+        for corporate action state tracking.
 
         Parameters
         ----------
@@ -379,10 +416,10 @@ class PortfolioReturnCalculator:
         if total > 0 and abs(total - 1.0) > 1e-10:
             current_weights = {k: v / total for k, v in current_weights.items()}
 
-        daily_returns: list[float] = []
-        dates_index = returns_df.index
+        # Build weight matrix row-by-row (corporate actions change weights)
+        weight_rows: list[dict[str, float]] = []
 
-        for idx_date in dates_index:
+        for idx_date in returns_df.index:
             # Check for corporate actions on this date
             trading_date = idx_date.date() if hasattr(idx_date, "date") else idx_date
             removed_on_date: set[str] = set()
@@ -396,20 +433,17 @@ class PortfolioReturnCalculator:
                     current_weights=current_weights,
                     removed_tickers=removed_on_date,
                 )
-                logger.debug(
+                logger.info(
                     "Corporate action applied on date",
                     date=str(trading_date),
                     removed_tickers=sorted(removed_on_date),
                 )
 
-            # Compute weighted return for this day
-            day_return = 0.0
-            for ticker, weight in current_weights.items():
-                if ticker in returns_df.columns:
-                    ticker_return = returns_df.loc[idx_date, ticker]
-                    if pd.notna(ticker_return):
-                        day_return += weight * ticker_return
+            weight_rows.append(dict(current_weights))
 
-            daily_returns.append(day_return)
+        # Vectorized computation: build weights DataFrame, align columns,
+        # element-wise multiply, and sum across tickers per day
+        weights_df = pd.DataFrame(weight_rows, index=returns_df.index)
+        weights_df = weights_df.reindex(columns=returns_df.columns, fill_value=0.0)
 
-        return pd.Series(daily_returns, index=dates_index, dtype=float)
+        return (returns_df.fillna(0.0) * weights_df).sum(axis=1)

@@ -369,6 +369,67 @@ class TestEdgeCases:
         for i in range(2, len(result)):
             assert result.iloc[i] == pytest.approx(0.0)
 
+    def test_エッジケース_同一日に複数コーポレートアクション発生(self) -> None:
+        """Multiple corporate actions on the same date should remove all
+        affected tickers simultaneously and redistribute weights once.
+        """
+        provider = _make_3ticker_provider()
+        # AAPL and GOOGL both delist on 2024-01-08
+        actions = [
+            {
+                "ticker": "AAPL",
+                "action_date": "2024-01-08",
+                "action_type": "delisting",
+                "company_name": "Apple",
+                "reason": "Test",
+            },
+            {
+                "ticker": "GOOGL",
+                "action_date": "2024-01-08",
+                "action_type": "merger",
+                "company_name": "Alphabet",
+                "reason": "Test",
+            },
+        ]
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=actions,
+        )
+        weights = {"AAPL": 0.5, "MSFT": 0.3, "GOOGL": 0.2}
+        result = calc.calculate_returns(weights=weights, start=_START, end=_END)
+
+        assert isinstance(result, pd.Series)
+        assert len(result) == 9
+
+        # After 2024-01-08 (day 5+), only MSFT remains with weight 1.0
+        # Day 5 (index 4): MSFT return = (210-208)/208
+        msft_ret_day5 = (210 - 208) / 208
+        assert result.iloc[4] == pytest.approx(msft_ret_day5, rel=1e-10)
+
+    def test_エッジケース_NaN含む価格データでの振る舞い(self) -> None:
+        """NaN values in price data should be treated as 0 return contribution."""
+        prices_with_nan = {
+            "AAPL": _make_price_series([100, 101, 102, 103, 104]),
+            "MSFT": pd.Series(
+                [200, float("nan"), 204, 206, 208],
+                index=pd.bdate_range(start=_START, periods=5, freq="B"),
+                dtype=float,
+            ),
+        }
+        provider = StubPriceDataProvider(prices_with_nan)
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        weights = {"AAPL": 0.5, "MSFT": 0.5}
+        result = calc.calculate_returns(weights=weights, start=_START, end=_END)
+
+        assert isinstance(result, pd.Series)
+        # Should produce returns without crashing
+        assert len(result) == 4
+        # All values should be finite (NaN returns are treated as 0)
+        assert all(np.isfinite(result))
+
 
 # =============================================================================
 # Benchmark returns tests
@@ -429,6 +490,62 @@ class TestCalculateBenchmarkReturns:
         assert isinstance(result, pd.Series)
         # 2 returns from 3 prices
         assert len(result) == 2
+
+
+# =============================================================================
+# Input validation tests
+# =============================================================================
+class TestParseActionsValidation:
+    """_parse_actions input validation tests."""
+
+    def test_異常系_tickerフィールド欠損でスキップされる(self) -> None:
+        """Action missing 'ticker' field should be skipped, not crash."""
+        actions = [
+            {"action_date": "2024-01-05", "action_type": "delisting"},
+        ]
+        calc = PortfolioReturnCalculator(
+            price_provider=EmptyPriceDataProvider(),
+            corporate_actions=actions,
+        )
+        assert len(calc._corporate_actions) == 0
+
+    def test_異常系_action_dateフィールド欠損でスキップされる(self) -> None:
+        """Action missing 'action_date' field should be skipped."""
+        actions = [
+            {"ticker": "AAPL", "action_type": "delisting"},
+        ]
+        calc = PortfolioReturnCalculator(
+            price_provider=EmptyPriceDataProvider(),
+            corporate_actions=actions,
+        )
+        assert len(calc._corporate_actions) == 0
+
+    def test_異常系_不正な日付フォーマットでスキップされる(self) -> None:
+        """Invalid date format should be skipped."""
+        actions = [
+            {"ticker": "AAPL", "action_date": "not-a-date", "action_type": "delisting"},
+        ]
+        calc = PortfolioReturnCalculator(
+            price_provider=EmptyPriceDataProvider(),
+            corporate_actions=actions,
+        )
+        assert len(calc._corporate_actions) == 0
+
+    def test_正常系_有効と無効が混在する場合は有効分のみ解析(self) -> None:
+        """Mix of valid and invalid actions: only valid ones are parsed."""
+        actions = [
+            {"ticker": "AAPL", "action_date": "2024-01-05", "action_type": "delisting"},
+            {"action_date": "2024-01-06", "action_type": "merger"},  # missing ticker
+            {"ticker": "MSFT", "action_date": "bad-date", "action_type": "delisting"},
+            {"ticker": "GOOGL", "action_date": "2024-01-08", "action_type": "merger"},
+        ]
+        calc = PortfolioReturnCalculator(
+            price_provider=EmptyPriceDataProvider(),
+            corporate_actions=actions,
+        )
+        assert len(calc._corporate_actions) == 2
+        assert "AAPL" in calc._corporate_actions
+        assert "GOOGL" in calc._corporate_actions
 
 
 # =============================================================================

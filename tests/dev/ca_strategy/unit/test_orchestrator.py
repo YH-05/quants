@@ -1040,6 +1040,66 @@ class TestOrchestratorCorporateActions:
         )
         assert orch._corporate_actions == []
 
+    def test_異常系_corporate_actions_jsonが不正JSONの場合に空リスト(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        (config_dir / "corporate_actions.json").write_text("not valid json{{{")
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert orch._corporate_actions == []
+
+    def test_異常系_corporate_actions_jsonにcorporate_actionsキーがない場合に空リスト(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        (config_dir / "corporate_actions.json").write_text(
+            json.dumps({"wrong_key": []})
+        )
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert orch._corporate_actions == []
+
+    def test_異常系_corporate_actionsに必須フィールド欠損のエントリがスキップされる(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        actions_data = {
+            "corporate_actions": [
+                {
+                    "ticker": "EMC",
+                    "action_date": "2016-09-07",
+                    "action_type": "delisting",
+                },
+                {
+                    "ticker": "ALTR",
+                    # missing action_date and action_type
+                },
+            ]
+        }
+        (config_dir / "corporate_actions.json").write_text(
+            json.dumps(actions_data, ensure_ascii=False, indent=2)
+        )
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert len(orch._corporate_actions) == 1
+        assert orch._corporate_actions[0]["ticker"] == "EMC"
+
 
 class TestPhase6WithPriceProvider:
     """Tests for Phase 6 evaluation with PortfolioReturnCalculator integration."""
@@ -1158,6 +1218,53 @@ class TestPhase6WithPriceProvider:
         assert len(actual_portfolio_returns) == 3
         assert actual_benchmark_returns is not None
         assert len(actual_benchmark_returns) == 3
+
+
+class TestCalculatePhase6Returns:
+    """Tests for _calculate_phase6_returns helper method."""
+
+    @patch.object(Orchestrator, "_run_phase3_neutralization")
+    @patch.object(Orchestrator, "_run_phase2_scoring")
+    @patch.object(Orchestrator, "_run_phase1_extraction")
+    def test_正常系_price_provider設定時にPriceDataProviderエラーが伝播する(
+        self,
+        mock_phase1: MagicMock,
+        mock_phase2: MagicMock,
+        mock_phase3: MagicMock,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """When PriceDataProvider raises an error, it should propagate."""
+        mock_phase1.return_value = _make_claims()
+        mock_phase2.return_value = _make_scored_claims()
+        mock_phase3.return_value = _make_ranked_df()
+
+        mock_provider = MagicMock(spec=PriceDataProvider)
+
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+            price_provider=mock_provider,
+        )
+
+        with (
+            patch("dev.ca_strategy.orchestrator.PortfolioBuilder") as mock_builder_cls,
+            patch(
+                "dev.ca_strategy.orchestrator.PortfolioReturnCalculator"
+            ) as mock_calc_cls,
+        ):
+            mock_builder = MagicMock()
+            mock_builder.build_equal_weight.return_value = _make_portfolio_result()
+            mock_builder_cls.return_value = mock_builder
+
+            mock_calc = MagicMock()
+            mock_calc.calculate_returns.side_effect = RuntimeError("Provider failed")
+            mock_calc_cls.return_value = mock_calc
+
+            with pytest.raises(RuntimeError, match="Provider failed"):
+                orch.run_equal_weight_pipeline(thresholds=[0.5])
 
 
 class TestPhase4bAsOfDate:
