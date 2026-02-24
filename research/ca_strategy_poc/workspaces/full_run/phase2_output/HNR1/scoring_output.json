@@ -1,0 +1,175 @@
+{
+  "ticker": "HNR1",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Hannover Re は規律ある引受方針（cycle management）により、ソフト市場においても Combined Ratio 94-96% 以下を維持し、保守的損失準備金ポリシーを一貫して適用する能力を有する。2014年はEBIT前年比+20%、ROE 14.7%を達成した。",
+      "evidence": "The discipline to concentrate on our margin requirement in more difficult times even if that means that in a soft market like currently, we forgo top line growth... we managed to increase the after-tax earnings of the group by more than 10%.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 60
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I + pattern_V",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Combined Ratio 94.4%、EBIT +20%、ROE 14.7%という定量証拠が強力。ソフト市場での規律維持という具体的競合比較も提示"
+        },
+        {
+          "source": "dogma rule_1",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "引受規律（cycle management）は能力・仕組みとして明確に評価可能。dogmaルール1適合"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "pass", "reasoning": "cycle managementという引受規律の仕組み・能力として明確に評価可能"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "strong", "reasoning": "Combined Ratio 94.4%、EBIT +20%、ROE 14.7%という強力な定量証拠"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "partial", "reasoning": "Bermuda系2社を除き4年累積#1という競合比較が提示されているが詳細不明"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "定量的裏付けのある差別化。Combined Ratio・ROE等の定量データが優位性を裏付ける"},
+        {"pattern": "pattern_V", "matched": true, "effect": "positive", "reason": "具体的競合比較（Bermuda系除き#1）が部分的に提示"}
+      ],
+      "overall_reasoning": "引受規律（cycle management）はProcess Powerとして妥当。定量裏付け（Combined Ratio 94.4%、EBIT +20%、ROE 14.7%）も強力。ソフト市場での規律維持という能力は再現困難。競合比較（Bermuda系除き#1）も部分的に提示。60%",
+      "power_classification": "Process Power（引受規律）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Hannover Re の引受規律（Combined Ratio 94-96%目標維持）が中長期的な継続的利益成長（10%超のEPS成長）を担保し、安定的な配当増加（普通+特別配当 EUR 4.25/株）を支える。",
+      "evidence": "We managed to increase the after-tax earnings of the group by more than 10%... we decided to increase the dividend via a special dividend of EUR 1.25 together with the ordinary dividend of EUR 3 to EUR 4.25.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence"],
+        "confidence": 50
+      },
+      "final_confidence": 0.55,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR",
+          "direction": "up",
+          "magnitude": 0.05,
+          "reason": "引受規律→利益成長→配当増加は2ステップの直接的因果。dogma高評価パターンに近い"
+        },
+        {
+          "source": "catastrophe risk",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "大規模自然災害発生時のCombined Ratio急上昇リスクを考慮"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "EPS10%超成長と配当EUR4.25の定量確認。CAGR接続として妥当"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CAGR接続は論理的（引受規律→利益成長→配当）。大規模自然災害リスクはあるが、cycle managementで管理可能。55%",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Hannover Re は Property & Casualty 再保険において北米で600超のクライアントを保有し、生命・健康再保険では新興国での成長機会を持つ。規模の経済と分散化されたグローバルポートフォリオが安定的な収益を実現する。",
+      "evidence": "In the U.S., where we have more than 600 clients. So writing larger shares with these clients and being involved in their new reinsurance purchasing.",
+      "rule_evaluation": {
+        "applied_rules": ["rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_B",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "グローバルなクライアント基盤は再保険業界大手（Munich Re、Swiss Re）に共通。差別化根拠が弱い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "Munich Re、Swiss Reとの比較なし。業界共通の能力"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "グローバルクライアント基盤は再保険大手に共通。固有の差別化根拠不十分"}
+      ],
+      "overall_reasoning": "グローバルクライアント基盤（600+）は事実だが再保険大手共通。Scale Economiesとして差別化困難。35%",
+      "power_classification": "Scale Economies（低評価）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Hannover Re の生命・健康再保険における Financial Solutions（Longevity）事業は、専門的な長寿リスク移転ノウハウと実績により高マージンを達成しており、参入障壁が高い専門分野において優位なポジションを確立している。",
+      "evidence": "Financial Solutions, impressive margins... The value of new business is for 3 or even 4 years in a row, now on a very high level over and above our threshold.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "MCEV evidence",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "MCEV新規ビジネス価値EUR 448M（3-4年連続記録）は定量的証拠"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Munich Re、Swiss Re等との明示的比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "pass", "reasoning": "長寿リスク移転ノウハウという能力として評価可能"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "MCEV EUR448M（3-4年連続）という定量証拠"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Longevity/Financial Solutionsの高マージン実績とMCEV記録は評価できる。専門分野での蓄積ノウハウはCornered Resourceとして妥当。競合比較なし。50%",
+      "power_classification": "Cornered Resource（長寿リスクノウハウ）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "Hannover Re FY2014 実績: EBIT前年比+20%、税後収益+10.1%、ROE 14.7%、株主資本+28.2%（EUR 1.7B増）、普通+特別配当 EUR 4.25/株。Combined Ratio（P&C）94.4%。Net investment income EUR 1.1B超。",
+      "evidence": "ROE is still at a quite acceptable level with 14.7%... combined ratio, 94.4%... net investment income... nearly EUR 1.1 billion.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Hannover Re の FY2014 生命・健康再保険 EBIT は前年比+75%成長（2013年の Australian DII引当の正常化）。MCEV 新規ビジネス価値は EUR 448M（3-4年連続で目標超過）。",
+      "evidence": "With the Life & Health business... the EBIT increased by 75%... The value of new business is for 3 or even 4 years in a row, now on a very high level... EUR 448 million.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認（ただし2013年のDII引当正常化による改善を含む）。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "HNR1",
+    "total_claims": 6,
+    "consolidated_from_batches": 2,
+    "consolidation_note": "Manual consolidation (bypassing _validate_ticker which rejects alphanumeric tickers)"
+  }
+}

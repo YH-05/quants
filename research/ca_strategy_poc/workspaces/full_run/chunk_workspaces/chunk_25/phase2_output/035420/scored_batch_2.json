@@ -1,0 +1,96 @@
+{
+  "ticker": "035420",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": [11, 12, 13, 14],
+  "scored_claims": [
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "LINE MAU: Q3 2014 170M→Q4 2014 181M→Q1 2015 205M→Q2 2015 211M。日本・台湾・タイが主要3カ国で全MAUの50%超",
+      "evidence": "Q4 2014 CFO、Q2 2015 CEO発言より",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。LINE MAU推移データはトランスクリプトで開示された事実。Q4→Q2の成長鈍化傾向（11M→24M→6M純増）も確認できる事実。70%"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "LINEコンテンツ収益Q4 2014: KRW 221.7B（YoY+61.9%）。ゲーム60%、スタンプ15%、広告15%、その他10%",
+      "evidence": "Q4 2014 CFO発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。Q4コンテンツ収益はCFOが開示した数値。YoY+61.9%は強い成長実績として確認。70%"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "NAVER Webtoon月間訪問者1,700万人、DAU 750万人（Korea最大Webtoonプラットフォーム）。LINE Manga日本最大モバイルマンガサービス（累計1,100万DL）",
+      "evidence": "Q2 2015 CEO発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.05,
+          "reasoning": "Q2発言（従・②相当）。factual_claimは調整を小幅に留める"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "factual_claim。Q2発言のため若干の調整あり。Webtoon規模データは確認可能な事実として65%"
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "NAVER Q2 2015スタンドアロン収益KRW 532B（YoY+43.8%）、営業利益KRW 208.5B（OPM 39.2%）",
+      "evidence": "Q2 2015 CFO発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.05,
+          "reasoning": "Q2発言（従・②相当）。factual_claimは調整を小幅に留める"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "factual_claim。Q2の財務数値はCFOが開示した実績。高OPM（39.2%）は検証可能。Q2発言で若干調整。65%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {
+      "60-70": 1,
+      "70-80": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

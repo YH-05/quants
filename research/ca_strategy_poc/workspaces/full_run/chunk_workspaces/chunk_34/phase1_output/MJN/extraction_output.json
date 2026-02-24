@@ -1,0 +1,385 @@
+{
+  "ticker": "MJN",
+  "company_name": "Mead Johnson Nutrition Company",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-29) [Primary], Q4 FY2013 Earnings Call (2014-01-31) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"],
+    "transcripts_used": [
+      "201401_earnings_call.json (Q4 2013)",
+      "201404_earnings_call.json (Q1 2014)",
+      "201407_earnings_call.json (Q2 2014)",
+      "201410_earnings_call.json (Q3 2014)",
+      "201501_earnings_call.json (Q4 2014)",
+      "201504_earnings_call.json (Q1 2015)",
+      "201507_earnings_call.json (Q2 2015)"
+    ],
+    "excluded_transcripts": []
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Mead Johnson の Enfa ブランド（Enfamil, Enfagrow 等）はアジア・ラテンアメリカ新興市場において105年の歴史と科学的根拠に基づく乳幼児栄養製品として認知されており、現地競合（中国ローカル企業）が安全性・信頼性で追いつけないブランド価値を持つ",
+      "descriptive_label": "Enfaブランドの科学的信頼性と新興市場での歴史的認知",
+      "seven_powers_category": "Branding",
+      "evidence_from_transcript": "Q4 FY2013 CEO Prepared Remarks: 'for roughly half of our 105-year history, we've operated in emerging markets... Mead Johnson has these abilities'; Q4 FY2014 Q&A (CEO): 'we are pretty confident based on what we've seen in other markets around the world [on Enfa relaunch performance]'; 'we are at the more conservative end of the spectrum when it comes to allowing retailers to buy inventory'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Jakobsen (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "「105年の歴史」は結果。ブランド信頼性の「仕組み」（イノベーションパイプライン、HCPエンゲージメント等）の具体的説明が欲しい"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「科学的信頼性ブランド」は名詞表現"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "中国ローカル競合の安全性問題（2008年メラミン事件以降）との比較でMJN等の外資ブランドは有利。ただし欧州・豪州ブランドも競合"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "ブランドプレミアム・市場シェアの定量的競合比較なし。「シェア gains in infant formula」という言及のみ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_qualitative_only",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "中国ローカル競合との相対的優位はある（安全性信頼性）",
+            "adjustment": 0
+          },
+          {
+            "reason": "欧州・豪州ブランド（imported）との差別化根拠が弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Enfaブランドの信頼性は実在するが、定量的裏付けと競合比較が不足。50%"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Enfaブランド信頼性 → アジア新興市場での需要取り込み → 定常的な9-11%constant dollar成長 → EPS CAGR 10%超",
+      "descriptive_label": "Enfaブランド→アジア新興市場需要→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "2-3ステップの因果。アジア70%以上の売上構成は裏付け。ただし中国市場の一時的変動が大きく、安定性に疑問"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "中国市場の構造的変化（Eコマース・地政学リスク）がCAGR達成を不確実にする",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "アジア新興市場へのブランド強度→成長経路は実績整合するが、中国リスクが不確実性。50%"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Mead Johnson のGross Margin 63%超という業界最高水準の収益性は、新興市場での価格プレミアム設定能力（高インフレ環境でも価格転嫁）と乳幼児栄養という高価値製品カテゴリの構造的特性から生まれる",
+      "descriptive_label": "63%超粗利率を支える価格プレミアム設定能力",
+      "seven_powers_category": "Branding / Cornered Resource",
+      "evidence_from_transcript": "Q4 FY2013 CEO: 'Gross margin improved by 160 basis points to 63.5% of sales as we realized stronger pricing and benefited from productivity gains'; Q4 FY2014 CFO: 'Volume contributed 4 percentage points to our growth rate, while higher pricing added 5 points. 200 basis points of growth came from pricing in the high-inflation environments of Argentina and Venezuela'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Jakobsen (CEO) / Peter Leemputte (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「63%粗利率」は結果。価格プレミアム「設定能力」の仕組み（ブランドへの投資、HCPネットワーク）の説明が必要"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "乳幼児栄養カテゴリは親が価格より品質を優先する特性あり。競合他社（アボット、ネスレ）との比較で優位性は部分的に認められる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "63.5%という具体的数値あり。ただし競合粗利率との直接比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "乳幼児栄養の高い安全性要求と規制環境は参入障壁として機能し、価格プレミアムを構造的に支持"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "63.5%という定量データあり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Abbott, Nestle）との直接比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "高粗利率は結果だが、乳幼児栄養の構造的特性（安全性重視・親の価格感応度低）で支持される。50%"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "価格プレミアム設定能力 → 高インフレ市場での価格転嫁 + 先進国市場での価格維持 → 粗利率63%超維持 → EPS成長率＝売上成長率以上（EPSレバレッジ）",
+      "descriptive_label": "価格プレミアム→粗利率維持→EPS成長レバレッジ",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：価格転嫁→粗利率維持→EPS成長。CEOが「grow earnings per share at or above the rate of revenue」と明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2013発言由来（COOが明示)"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "EPS≥売上成長という明示的なガイダンスがあり接続は強い",
+            "adjustment": 0
+          },
+          {
+            "reason": "FX・乳価変動がEPSレバレッジに打撃を与えうる",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "価格→EPS成長の直接的接続とCEOの明示ガイダンスあり。ただしFX・コモディティリスクが不確実性。50%"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Mead Johnson の地理的多様化（50カ国以上で事業）と各地域での長期事業経験（「半世紀以上の新興市場経験」）は、地域ごとの消費者・規制・チャネル適応力を生み、単一市場依存のリスクを分散する組織能力を形成する",
+      "descriptive_label": "50カ国以上の地理的多様化と新興市場経験による組織適応能力",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q4 FY2013 CEO: 'for roughly half of our 105-year history, we've operated in emerging markets. We now operate in over 50 countries, and our senior management is drawn from around the globe. Many of us, myself included, grew up in businesses with exposure to currency fluctuations and even political turmoil. I believe that this experience has helped us develop a flexible organization that's ready to respond quickly to changes in the external environment'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Jakobsen (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「柔軟な組織」「迅速な適応能力」は能力・仕組みの側面あり。シニアマネジメントの出自多様性が組織能力を支持"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「新興市場適応能力」「地理的多様化能力」は名詞表現"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "Nestle、Abbott Nutrition も50カ国以上で事業を展開。MJN固有の差別化として認定困難"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "「50カ国」「半世紀以上」という定量データあるが、競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_industry_common",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "大手乳幼児栄養メーカーは共通して多国展開。業界共通能力",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "地理的多様化は業界共通能力。Nestle/Abbottと比べた相対的優位が示されず。30%"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Mead Johnson のイノベーション力（A&P費用対売上16%の継続投資・新製品ラインアップの継続的拡充）は、乳幼児栄養の科学的進歩に基づく差別化を可能にし、コモディティ化を防ぐ製品優位性を維持する",
+      "descriptive_label": "高A&P投資によるイノベーション差別化能力",
+      "seven_powers_category": "Cornered Resource / Process Power",
+      "evidence_from_transcript": "Q4 FY2013 CEO: 'advertising and promotion expenditure for the quarter running at an all-time high of 16% of sales'; Q4 FY2014 CEO: 'our commitment to continuous innovation behind our core products and plans, the growth of our children's nutrition franchise'; 'we relaunched our Enfa franchise in many markets with new improved formulations and a fresh look'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Jakobsen (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "「高A&P投資」は行動（能力）だが、その投資によって生まれる優位性の仕組みの説明が浅い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "A&P 16%（過去最高水準）という数値あり。ただし競合のA&P比率との比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "A&P投資は補完的要素。製品の基礎的な科学的差別化（構造的要素）がより重要"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "flag",
+            "reasoning": "「イノベーション戦略」は戦略的意思決定。優位性として認定するには実際の製品差別化の証明が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_qualitative_only",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "A&P 16%という数値あるが競合比較なし。戦略混同の傾向",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "高A&P投資は戦略的意思決定であり、それ自体が優位性ではない。製品差別化の具体的証拠が薄い。30%"
+      }
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "イノベーション投資（A&P 16%維持）→ 製品ラインアップ刷新 → ボリューム4%成長+価格5%成長 → 定常的9%constant dollar成長維持",
+      "descriptive_label": "A&P投資→volume+price成長→9%constant dollar CAGR",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：A&P→ボリューム+価格成長→CAGR。CFOが「Volume 4pp+Pricing 5pp=9%成長」と定量的に開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "volume+pricing の定量的分解開示あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "FX headwindで reported 成長が常に圧縮されるリスク",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Volume+Price分解の定量的裏付けあり。ただしFXリスクとA&P→成長の前提が弱め。50%"
+      }
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "中国での2008年メラミン事件以降、外資乳幼児栄養ブランド（特にMead Johnson等）はローカル競合に対する信頼性優位を確立しており、高度化する中国中産階級の子育てに対する消費行動（より良いもの・信頼できるものへの支出惜しまず）と合致する",
+      "descriptive_label": "中国市場での外資ブランド信頼性優位（メラミン後遺症）",
+      "seven_powers_category": "Branding",
+      "evidence_from_transcript": "Q4 FY2014 Q&A: 'we are not currently participating as strongly as we would like in the highest growth channels, particularly the e-commerce channel, which is favoring heavily imported brands mostly out of Europe and Australia, New Zealand' (CEOが欧州・豪州ブランドの台頭を認識); FY2013: China, Hong Kong, Thailand, Vietnam が強い成長を主導",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Jakobsen (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "信頼性ブランドは「能力」よりも「状態」に近い。維持のための仕組み説明が薄い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "CEOが欧州・豪州インポートブランドに市場を奪われていることを認識しており、MJN固有の優位性として認定困難"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_partial",
+            "reasoning": "外資ブランドとしての信頼性は当面の構造的優位だが、Eコマース台頭により競争が変化"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_G_unclear_vs_pure_competitor",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "CEOが欧州・豪州インポートブランドへの市場流出を認識（MJN固有の優位性が揺らぐ）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "外資ブランド信頼性は存在するがMJN固有ではなく、EcomarケチャンネルでのMJN相対的劣位が認識されており確信度低。30%"
+      }
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "MJN FY2014：constant dollar売上成長9%（前年比）。Revenue $4.2B超。アジア・ラテンアメリカが売上70%超。A&P費用：Q4 2013に過去最高の売上16%。粗利率63.5%（FY2013）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "FY2014成長分解：Volume +4pp、Pricing +5pp（合計9% constant dollar）。高インフレ市場（アルゼンチン・ベネズエラ）の価格引き上げがEPS+200bpに寄与",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "factual_claim",
+      "claim": "FY2014：Enfa フランチャイズ全面刷新（新フォーミュレーション + 新デザイン）。アジア・ラテンアメリカへのリキッド製品ライン拡充。Singaporeでの新spray-drying設備開設。欧州・米国での生産能力拡張プロジェクト着工",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6, 7]
+    }
+  ]
+}

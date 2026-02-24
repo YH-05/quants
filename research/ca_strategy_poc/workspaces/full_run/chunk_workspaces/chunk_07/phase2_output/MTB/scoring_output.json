@@ -1,0 +1,137 @@
+{
+  "scored_claims": [
+    {
+      "id": "MTB-001",
+      "claim": "M&T Bankは長期的な既存顧客との関係深化を通じた貸出成長を優先し、新規顧客開拓ではなく「関係の深化」を成長ドライバーとする保守的な与信文化を維持している",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "長期顧客関係の主張。ただし具体的なスイッチングコストの説明がない"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「既存関係から貸出成長」という戦略・結果の説明。銀行顧客関係という能力は認識可能だが",
+        "rule04_quantitative": "具体的な顧客維持率、関係年数のデータなし",
+        "rule07_pure_competitor": "競合地銀（KeyBank、Huntington等）との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_F": "strategy_confusion: 「既存顧客関係を深化する」という戦略（意思決定）を優位性として提示",
+        "pattern_A": "「貸出成長」は結果であり、それを可能にする仕組み（スイッチングコストの源泉）の説明なし",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#3 (50%): 顧客関係の優位性だが比較なし。MTB-001は更に証拠が薄い→30%",
+        "final_reasoning": "「long-term existing relationships」という事実の提示のみ。顧客粘着性の構造的源泉（手数料収入の複雑さ、システム統合等）の説明なし"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "長期顧客関係を成長源泉として述べているが、これは戦略的意思決定の説明（KB1ルール8適合）であり、なぜM&TのRelationship Bankingが競合より優れているのか（具体的な顧客維持率、クロスセル比率等）の説明がない（KB2パターンF適合）。「not collecting lots of new customers」という発言は競争的でない市場環境での現状説明に近い。30%が妥当。"
+    },
+    {
+      "id": "MTB-002",
+      "claim": "M&Tはミッドアトランティック・ニューヨーク地域に特化した地域密着型の商業銀行として、地域経済・顧客企業に深く根ざした与信判断能力を持っている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "地域特化という差別化の主張。ただし具体的な能力の説明が薄い"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「地域密着型与信判断」という能力の主張だが、具体的な仕組みの説明なし",
+        "rule04_quantitative": "「credit quality, everything seems to be going very nicely」という定性評価のみ",
+        "rule07_pure_competitor": "同地域の競合（KeyBank、M&T Bankcorp等）との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_D": "qualitative_only: 地域密着という定性的差別化。与信能力の定量的証拠なし",
+        "pattern_B": "地域密着型商業銀行は多数存在。ミッドアトランティック地域でのM&T固有性の説明なし",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#6 (30%): 業界共通能力→30%。地域密着銀行は多数存在し、M&T固有の差別化が不明",
+        "final_reasoning": "「broad-based growth」という結果の提示のみ。地域知識・与信判断能力の具体的説明なし"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "地域密着型の与信判断能力は概念的には評価できるが、それを証明する具体的な証拠（不良債権比率の地域比較、与信承認プロセスの差別化説明等）がない（KB2パターンD適合）。「things going well on all fronts」という楽観的表現は状況の説明に過ぎず、競合との差別化を示さない（KB2パターンB適合）。30%が妥当。"
+    },
+    {
+      "id": "MTB-003",
+      "claim": "BSA/AML（銀行秘密法・マネーロンダリング防止）コンプライアンスインフラへの大規模投資が、将来のM&A（Hudson City Bancorp買収）完了後の統合基盤を強化し、競合が同等投資なしには実現できない規制対応能力を構築している",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "規制コンプライアンス投資という具体的な能力構築の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "BSA/AMLインフラ投資（能力構築）は評価可能だが、競争優位性としての「モート」になるかどうかは疑問",
+        "rule04_quantitative": "「ROTE to a shade below 14%」という収益影響あり。但しInfraの規模等の比較データなし",
+        "rule07_pure_competitor": "BSA/AMLコンプライアンスは全規制銀行が必要とする能力。競合との差別化とはなりにくい"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: 規制コンプライアンスは銀行業界全体の必要要件。「モート」としての機能は弱い",
+        "pattern_D": "「excellent progress」という定性的な自己評価",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#6 (30%): メガファーマ共通のネットワーク→30%。BSA/AMIも銀行業界共通の規制要件",
+        "final_reasoning": "「positions M&T well for change to banking environments」という将来への期待。現時点での競争優位性の実証なし"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "BSA/AMIコンプライアンスインフラへの投資は事実だが、これは全規制銀行が必要とする法的要件への対応であり（KB2パターンB適合）、競合他社との差別化とはなりにくい。Hudson City買収の完了は2015年9月のPoiT制約内でまだ不確定であり、将来への期待の記述が主。現時点での競争優位性の実証がない。30%が妥当。"
+    },
+    {
+      "id": "MTB-004",
+      "claim": "コア機関の健全性維持を最優先とする「保守的な与信規律」が、競合が基準を下げて競争激化する環境でも信用コストを歴史的低水準に保つリスク管理文化として機能している",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "「historical low levels」という定量言及あり。保守的与信規律という仕組みの説明"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「disciplined credit culture」（能力・文化）→「historical low charge-offs」（結果）という因果方向",
+        "rule04_quantitative": "「net charge-offs at historical low levels」という言及あり。ただし競合比較なし",
+        "rule10_negative_case": "「from time to time we let business walk away」というネガティブケース（断念例）の示唆"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 与信規律文化（能力）→低信用コスト（結果）",
+        "pattern_B": "保守的与信文化は多くの地域銀行が主張する。M&T固有の証拠不足",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "dogma.md 2.3ルール5: 競合との数値比較なしは評価が低め。「historical low」は比較基準なし",
+        "final_reasoning": "「historical」は自社内比較のみ。他行（PNC、KeyBank等）との与信コスト比較があれば評価上昇"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "「Net charge-offs at historical low levels」という定量的な言及があり（KB1ルール4部分適合）、保守的与信規律という文化・仕組みの説明も能力として評価できる（KB2パターンIII部分適合）。「competitive pressure was relatively intense」という環境認識も自社規律との対比として有効。ただし「historical low」は自社内の歴史比較であり、競合銀行との不良債権比率・信用コスト比較がない（KB1ルール7）。50%が妥当。"
+    },
+    {
+      "id": "MTB-005",
+      "claim": "LIBORベースの変動金利商業貸出（C&I）への高比率が、金利上昇局面で競合地銀より素早くNIM（純利息マージン）を改善できる資産感応度構造をもたらしている",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "金利感応度という構造的特性の主張。ただし外部要因（金利政策）依存の点に注意"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「LIBOR変動金利商業貸出比率が高い」は資産構成（結果としての構造）。意図的な戦略か偶然かも不明",
+        "rule04_quantitative": "「many of our loans, particularly C&I, are priced off of LIBOR」という定性的な比率の言及のみ",
+        "rule07_pure_competitor": "競合地銀との資産感応度・金利感応度の比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "result_as_cause: LIBOR感応度という構造は外部要因（金利）への感応度（結果的特性）であり、能力・仕組みではない",
+        "pattern_F": "strategy_confusion: C&I中心の資産構成は戦略的選択だが、競争優位性としての独自性の説明なし",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "外部要因（金利上昇局面）への感応度は環境依存型の優位性→30%が上限",
+        "final_reasoning": "金利上昇時の感応度は競合比較なし。金利が上昇しなければ優位性を発揮できない条件付き主張"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "LIBOR変動金利商業貸出への高比率は事実だが、これは資産構成の特性（結果的な構造）であり（KB2パターンA適合）、なぜM&TがC&I中心の貸出構成を維持できるのかの能力説明がない。また金利感応度は外部環境（金利が実際に上昇するかどうか）に依存する条件付き主張であり、競合地銀との感応度比較もない。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "30-40": 4,
+      "50-60": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

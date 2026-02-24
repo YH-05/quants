@@ -1,0 +1,109 @@
+{
+  "ticker": "SYMC",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "1億エンドポイントインストールベース → ATP製品アドオン販売 → Enterprise Security成長加速",
+      "evidence": "Q3 FY2015: インストールベース→ATP追加販売",
+      "final_confidence": 0.35,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "既存インストールベース→ATP追加販売は2ステップで直接的"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.05, "reasoning": "直接的CAGR接続"}
+      ],
+      "confidence_adjustments": [
+        {"source": "transcript_call_type_quarterly", "adjustment": -0.1, "reasoning": "Q3発言（②相当）"}
+      ],
+      "overall_reasoning": "Q3発言かつ次世代競合への顧客流出リスク。35%"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "SSL証明書市場での44%シェアによるTrust Services（PKI/SSL）リーダーシップ",
+      "evidence": "Q4 FY2015: 'world's largest SSL Certificate authentication provider with 44% market share'",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "44%シェアは結果"},
+        {"rule_id": "rule_11_t", "result": false, "reasoning": "Let's Encrypt等の無料証明書台頭リスク"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.15, "reasoning": "シェアは結果、コモディティ化リスク高"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_A", "adjustment": -0.15, "reasoning": "SSL市場のコモディティ化リスク"}
+      ],
+      "overall_reasoning": "44%シェアは定量的だが純粋に結果。Let's Encrypt等の破壊的競合リスクが高く将来性に疑問。あまり納得しない で30%"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "NetBackup Appliancesの市場リーダーシップ（Veritas）と47%市場シェア",
+      "evidence": "Q1 FY2016: 'IDC, Veritas claimed the #1 share of the open systems integrated backup appliance submarket for the first time at 47% share'",
+      "final_confidence": 0.25,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "47%シェアは結果"},
+        {"rule_id": "rule_12_t", "result": false, "reasoning": "Veritas分離予定でSYMCとして将来的に無効化"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.1, "reasoning": "シェアは結果"},
+        {"pattern_id": "pattern_E", "matched": true, "adjustment": -0.1, "reasoning": "Veritas分離（FY16）により優位性として機能しない"}
+      ],
+      "confidence_adjustments": [
+        {"source": "transcript_call_type_quarterly", "adjustment": -0.1, "reasoning": "Q1 quarterly"},
+        {"source": "veritas_divestiture", "adjustment": -0.1, "reasoning": "Veritas分離予定でSYMC優位性として不適切"}
+      ],
+      "overall_reasoning": "IDCデータ付き47%シェアだが結果かつVeritas分離予定。あまり納得しない で25%"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Cybersecurity Servicesにおける業界唯一のフルスタック提供能力（Monitoring/Incident Response/Threat Intelligence）",
+      "evidence": "Q3 FY2015: 'We are the only company in the world with the breadth of cybersecurity services'",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_3_t", "result": false, "reasoning": "「世界唯一」の根拠不十分。IBM Security、Mandiant等も類似サービス提供"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "定量的裏付けなし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_D", "matched": true, "adjustment": -0.1, "reasoning": "定性的主張のみ"},
+        {"pattern_id": "pattern_G", "matched": true, "adjustment": -0.1, "reasoning": "競合差別化不明確"}
+      ],
+      "confidence_adjustments": [
+        {"source": "transcript_call_type_quarterly", "adjustment": -0.1, "reasoning": "Q3 quarterly"},
+        {"source": "kb2_pattern_D", "adjustment": -0.1, "reasoning": "定性的主張のみ"}
+      ],
+      "overall_reasoning": "フルスタックは差別化になりうるが「世界唯一」という主張に定量的裏付けなく、競合急拡大中。Q3発言。あまり納得しない で30%"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "フルスタックサービス → $10B市場機会（30% CAGR）獲得 → Cybersecurity Services成長",
+      "evidence": "Q3 FY2015: $10B市場機会の提示",
+      "final_confidence": 0.25,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "TAM→CAGR直結でルール5-T違反。市場規模→シェア獲得の接続メカニズム不明"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C", "matched": true, "adjustment": -0.1, "reasoning": "TAM提示→CAGR接続はCausal Leap"}
+      ],
+      "confidence_adjustments": [
+        {"source": "transcript_call_type_quarterly", "adjustment": -0.1, "reasoning": "Q3発言"},
+        {"source": "kb2_pattern_C", "adjustment": -0.1, "reasoning": "Causal Leap"}
+      ],
+      "overall_reasoning": "TAM/市場成長率の提示のみで、Symantecのシェア獲得根拠不明。ルール5-T違反。あまり納得しない で25%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"20-30": 2, "30-40": 3},
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "ticker": "SGE",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "多世代にわたるSME顧客との信頼関係・粘着性（30年以上の継続顧客関係）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "30年の継続顧客は結果。それを可能にした顧客粘着の仕組み（スイッチングコスト・規制依存）が核心だが、能力の説明が限定的"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "定量的な顧客継続率・解約率の比較データなし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "長期顧客関係（結果）を優位性として提示するパターン"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.10,
+          "reasoning": "顧客継続は結果。能力説明が不足"
+        }
+      ],
+      "overall_reasoning": "長期顧客関係はSwitching Costsの存在を示唆するが、能力の説明（なぜ継続するか）が不十分。50%が妥当"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "2,000人以上のR&Dエンジニアリングチームによる製品開発規模の優位性",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "大手ソフトウェア企業は通常それ以上のR&D人員を抱える。SME特化ソフトウェア会社としての2,000人は業界内での相対的意味が不明確"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "競合比較なし。2,000人という絶対数のみで差別化を示せない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "大手IT企業共通の「R&D規模」を差別化として提示"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.10,
+          "reasoning": "業界共通のR&D規模主張。差別化不成立"
+        }
+      ],
+      "overall_reasoning": "2,000人のR&Dエンジニアは規模を示すが、競合比較なく相対的優位性が不明確。40%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "顧客基盤: 780,000 SME（うちクラウド移行率45%）、90カ国展開、23,000人従業員（うちR&D 2,000+人）。Pay Monthly解約率: 通常顧客比1/3",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO/CFOの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "R&Dエンジニア: 2,000人以上。FY2014: 有機成長率6%、リカーリング収益77%、営業利益率27%",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "定量的開示データ。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {
+      "40-50": 1,
+      "50-60": 1,
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

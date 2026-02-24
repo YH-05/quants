@@ -1,0 +1,44 @@
+{
+  "ticker": "WTB",
+  "batch_index": 2,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "直販比率80%の維持・向上→OTA手数料削減→利益率改善経路（利益CAGR + 1-2pp）",
+      "descriptive_label": "直販比率向上→マージン改善CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "2ステップだが定量的裏付け（OTA手数料率・マージン影響）が不開示。KB3 mid confidence 事例",
+      "final_confidence": 0.4,
+      "confidence_rationale": "経路は論理的だが、OTA手数料率が未開示でマージン貢献が定量化不可能。Phase1での-10%調整を維持してさらに若干下方修正。50%-10%=40%。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "ダイナミックプライシング高度化→高占有率期のARR成長→RevPAR改善→利益CAGR",
+      "descriptive_label": "DP高度化→ARR成長→RevPAR CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 40,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_C_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "3ステップ経路で「still manual」開示がある。KB2 pattern_C_t（因果の飛躍）に近い",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_C_t（因果の飛躍）に部分一致。DP「still manual」という開示が能力の限界を示し、経路の信頼性を低下させる。RevPAR改善は市場全体の回復の影響が大きく、DP貢献の分離が困難。40%→30%。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"20-30": 1, "30-40": 1},
+    "gatekeeper_applied": false
+  }
+}

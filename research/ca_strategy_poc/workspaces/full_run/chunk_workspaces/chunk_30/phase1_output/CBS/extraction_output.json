@@ -1,0 +1,365 @@
+{
+  "ticker": "CBS",
+  "company_name": "CBS Corporation",
+  "transcript_source": "Q4 2014 Earnings Call (2015-02-12) as primary",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015", "Q2_2015"]
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "米国#1テレビネットワーク地位に基づくコンテンツ再放送同意（Retransmission Consent）交渉力",
+      "descriptive_label": "#1ネットワーク地位による再放送交渉力",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Leslie Moonves): 'CBS has never been in a stronger position than we are right now as we progress towards $2 billion in retrans and reverse comp revenue. From Verizon to Time Warner Cable to Cox to DISH, to all of our affiliate deals, we have proven, time and time again, that distributors can't live without CBS... The power of our own content drives our success, both in negotiations and from an operating perspective as well.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「#1ネットワーク地位」は結果だが、その地位から生まれる「交渉力」は構造的優位性に近い能力。"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "「週200万視聴者差でトップ」「トップ20スクリプテッドの15本（他局全体合計の3倍）」という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "DISH事件（一時停波で交渉）での成功事例がある。NBC・ABC・FOX対比での数値差が具体的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "再放送同意市場は「プレミアムコンテンツ保有者が交渉優位」という市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "2020年までに$20億のretreans収益という具体的数値目標あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "#1ネットワークの交渉力は市場構造との合致がある。DISH交渉の成功事例（断交後に高水準で合意）があり、ネガティブケースも示されている。全ての新契約が前回より高値という実績は信頼性高い。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "プレミアムコンテンツのIP所有戦略（Showtime、CBS hitの100%所有化）によるマルチプラットフォーム二次収益化能力",
+      "descriptive_label": "100%IP所有によるマルチプラットフォーム収益化",
+      "seven_powers_category": "Cornered Resource",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Leslie Moonves): 'Each of these new developments that I just mentioned demonstrates the power of owning and creating the best premium content... we now own virtually our entire Showtime schedule... Because our library of current hits is so extensive, we have a lot of upside here. CSI is already a multibillion-dollar franchise, and new streaming deals will only add to that.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6, 9],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「コンテンツIP所有戦略」は能力・仕組み。「100%所有」という意識的な戦略選択が説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "「CSIはマルチビリオンドルフランチャイズ」「2014年国際SVOD収益が米国2大SVODより大」という定量示唆あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "コンテンツ所有は一度確立すれば長期的な収益基盤。スタジオ機能の内製化は構造的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "Showtimeほぼ全番組を所有するという具体的な移行実績",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "コンテンツ100%所有化という一貫した戦略方針が明確で、Showtime全プログラム所有という具体的な成果がある。CSI、NCISという具体的フランチャイズ名での証拠あり。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "CBS All Access（OTTストリーミングサービス）による自社コンテンツの直接消費者販売能力と若年層新規開拓",
+      "descriptive_label": "CBS All Access直接消費者収益化能力",
+      "seven_powers_category": "Switching Costs",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Leslie Moonves): 'our new streaming services, CBS All Access and CBSN, have both exceeded our expectations, representing additive ways for us to get paid for our existing content... The average age of All Access viewers is considerably younger than network television. And as I said, subscriptions are selling faster than we projected, including the biggest surge of sign-ups we've had yet surrounding the GRAMMYs'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「期待を上回る登録者増加」は結果。ただしOTTサービス構築という能力の側面もある"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "CBS All Accessはコアテレビビジネスの補完的収益源。構造的優位性というよりは補完的"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "OTTサービスは戦略的意思決定。ただし既存コンテンツライブラリを活用することで差別化"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_strategy_confusion",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "立ち上げ初期で規模感が不明（加入者数の開示なし）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "CBS All Accessは「既存コンテンツを直接収益化」という点でユニーク。ただしNetflix・Hulu等との差別化根拠が「#1ネットワークコンテンツ」のみで、他ネットワーク（ABC、NBC）も類似サービスを展開できる。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "放送スケジュール管理能力（確立された人気番組を使った新番組ローンチの成功率の高さ）",
+      "descriptive_label": "プログラムスケジュール管理・新番組育成能力",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Leslie Moonves): 'Because of that stability of our schedule, we're able to use established hits to launch new content franchises. We put Madam Secretary on between 60 Minutes and The Good Wife and hit a home run. We used the #1 series, NCIS, as the lead-in for the new NCIS: New Orleans, and it's become television's #1 new series and the most watched freshman drama or comedy in 10 years.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「確立したヒットを使って新番組を保護する」という具体的なスケジュール管理プロセスの説明あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "NCIS: New Orleansが「10年で最も視聴されたフレッシュマンドラマ・コメディ」という定量的実績あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "他の3大ネットワーク（NBC、ABC、FOX）も同様のスケジューリング戦術を使用。CBSの差別化は「#1地位」のみ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "複数の具体的成功事例（Madam Secretary、NCIS: New Orleans、Scorpion）が示されている",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "「確立ヒットで新番組を保護」という具体的なプロセスの説明あり、実績も複数示されている。ただし他局との差別化の根拠は「#1地位」のみ。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Showtime有料ケーブルの完全IP所有に基づくケーブルOIBDAマージン（46%）の高位維持能力",
+      "descriptive_label": "Showtime IP所有→高マージン維持",
+      "seven_powers_category": "Cornered Resource",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (COO Joseph Ianniello): 'Cable OIBDA of $247 million was up 24%, and our cable OIBDA margin expanded 8 points to 49%, a direct result of the growth of our high-margin syndication revenue. As I've said before, we look at our margins on a 12-month basis. So for the year, our cable OIBDA margin expanded more than 2 points to a very strong 46%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [14],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "46%OIBDAマージンは結果。IP所有→シンジケーション収益という因果メカニズムの説明がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "ケーブルOIBDAマージン46%、Q4は49%という定量データあり。シンジケーション収益がマージン改善の主因として特定"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ケーブルマージン46%という定量的証拠があり、IP所有→シンジケーション収益というメカニズムも説明されている。Q4発言。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 Q4：売上高3%増の$37億、EPS 8%増の$0.77（20四半期連続EPS成長）。通期EPS$2.96（6%増・過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "claim": "CBSはトップ20スクリプテッドシリーズの15本を保有（他局合計の3倍）。#1ネットワーク地位を2百万視聴者差で維持",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "claim": "アフィリエイト収益（retrans+reverse comp）：Q4 11%増。2020年に$20億目標。加入者の70%が3年以上の契約。全新契約が過去最高水準",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年の国際SVOD収益は米国2大SVODプロバイダー（Netflix、Amazon）合計より大。ケーブルOIBDAマージン通期46%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "NCIS: New Orleansは10年間で最も視聴されたフレッシュマンドラマ・コメディ。Elementary は7日間リプレイバックで視聴者が800万から1300万に拡大",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "#1ネットワーク交渉力 → すべての新retrans/reverse comp契約が過去最高水準 → 2020年に$20億retrans収益達成",
+      "descriptive_label": "#1交渉力→retrans$20億CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "#1地位→交渉優位→料率上昇は2ステップ。2020年$20億という数値目標と全新契約高値更新という実績"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "retrans収益の成長接続は最もダイレクトで検証可能。全新契約が高値更新という実績（ネガティブケースなし）と$20億目標は具体的。"
+      }
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "プレミアムIP100%所有 → 国内外SVODライセンス + アフィリエイト収益 → コンテンツライセンス・配信収益のCAGR",
+      "descriptive_label": "IP所有→マルチプラットフォームライセンス収益経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "IP所有→ライセンス収益は直接的。2014年の国際SVOD収益が米国2大プラットフォームより大きいという実績データあり"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "IP所有→ライセンス収益の因果は直接的で検証可能。2014年の実績データあり（国際SVOD>米国2大プラットフォーム）。"
+      }
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "CBS All Access → 若年層新規加入者獲得 → 加入者料（月次課金）+ 再交渉での追加価値 → 新規収益ストリーム",
+      "descriptive_label": "CBS All Access→サブスク収益経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "OTTサービス→サブスク収益は2ステップ。ただし「期待を上回っている」以上の定量データなし"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "立ち上げ期で規模が不明（加入者数開示なし）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "因果は単純だが、加入者数・収益規模の定量データがなく確信度は低め。初期段階のサービスであり、競合（Netflix等）に対する差別化が限定的。"
+      }
+    },
+    {
+      "claim_id": 14,
+      "claim_type": "cagr_connection",
+      "claim": "Showtime IP所有→シンジケーション収益拡大→ケーブルOIBDAマージン46%維持・拡大",
+      "descriptive_label": "Showtime IP所有→高マージン維持経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "IP所有→シンジケーション収益→マージン改善は2ステップ。CFOがこの因果を明示的に説明"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "COOが「high-margin syndication revenue」をマージン改善の直接的要因として明示。ケーブルOIBDAマージン46%という定量値あり。"
+      }
+    }
+  ]
+}

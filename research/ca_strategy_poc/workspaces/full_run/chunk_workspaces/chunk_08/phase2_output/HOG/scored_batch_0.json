@@ -1,0 +1,173 @@
+{
+  "ticker": "HOG",
+  "scored_claims": [
+    {
+      "id": "HOG_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Harley-Davidson の5年連続二桁 EPS 成長：2010年以降の戦略転換により5年連続で二桁 EPS 成長を達成。ブランド力と実行力の証明。",
+      "evidence": "Full year diluted EPS grew more than 18%, making this the fifth consecutive year of double-digit EPS increases. Revenue topped $6 billion for the first time since 2006.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule04"], "results": {"rule03": true, "rule04": true}, "confidence": 0.6, "adjustments": ["rule04: 5年連続という継続実績が強い証拠"]},
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "5年連続二桁成長は業界平均を大幅に超える実績"},
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.05, "reasoning": "EPS成長という結果をブランド優位の証明として使用する面がある"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "5年間の継続的二桁成長はブランド戦略の有効性を支持する強いエビデンス。米国モーターサイクル市場での独自のポジショニング（high-end cruiser）は Branding の核心。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Harley-Davidson ブランドの新規顧客獲得力：Street モデルにより初の HD ブランド購入者を獲得（大多数が新規）。3地域で過去最高販売記録。",
+      "evidence": "Majority of initial U.S. Street purchases have been new to the Harley-Davidson brand... Asia-Pacific, EMEA and Latin America regions posted their highest new retail motorcycle sales on record.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule07"], "results": {"rule03": true, "rule07": true}, "confidence": 0.6, "adjustments": []},
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "「大多数が新規」と3地域記録は定量的に確認可能"},
+        {"source": "pattern_V_specific_competitor_comparison", "adjustment": 0.0, "reasoning": "新規顧客獲得はブランド強化の客観的証拠"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule07", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "Street モデルによる新規顧客獲得（大多数）は HD ブランドの拡張性を実証。3地域同時記録更新は地理的多様化の証拠として強力。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Harley-Davidson のリーチ顧客拡大：3年連続でアウトリーチ顧客（若年・女性・マイノリティ）の販売がコア顧客比で2倍以上の成長。",
+      "evidence": "For the third straight year, sales of new Harley's to our outreach customers grew at more than twice the rate of sales to core customers.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule04"], "results": {"rule03": true, "rule04": true}, "confidence": 0.6, "adjustments": ["rule04: 3年連続継続実績"]},
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "3年連続2倍以上という継続的定量実績"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "絶対数が不明であり相対成長のみでは規模が不明"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "3年連続でアウトリーチ顧客が2倍以上成長は HD の人口動態対応の継続的成功を示す。長期的ブランド健全性の重要な指標。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Harley-Davidson のフレキシブル・サージ生産システム：需要変動に応じた柔軟な生産量調整（サージ生産）が2年目を迎え定着。製造コスト削減と市場対応柔軟性を両立。",
+      "evidence": "2014 marked our second year of flexible surge production. The financial impacts of surge and all the other improvements in manufacturing in recent years have been remarkable.",
+      "rule_evaluation": {"applied_rules": ["rule01", "rule07"], "results": {"rule01": true, "rule07": false}, "confidence": 0.5, "adjustments": ["rule07: 「remarkable」の定量化なし"]},
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "製造改善の効果が「remarkable」という定性表現のみ"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "フレキシブル生産は多くの製造業が追求する能力"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "サージ生産は製造柔軟性として評価できるが「2年目」かつ定量証拠なしでは Process Power として認定するには証拠が限定的。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Project LiveWire による電動バイク市場のブランド拡張：6,800回以上のデモライドで圧倒的ポジティブ反応。",
+      "evidence": "Project LiveWire, Harley-Davidson's first electric motorcycle. In 2014, we gave more than 6,800 demo rides in the U.S., with the vast majority saying it far exceeded their expectations.",
+      "rule_evaluation": {"applied_rules": ["rule06", "rule07"], "results": {"rule06": false, "rule07": true}, "confidence": 0.4, "adjustments": ["rule06: まだ商品化されていない計画段階"]},
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {"source": "pattern_F_future_dependent", "adjustment": -0.1, "reasoning": "商品化前のプロト段階"},
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "「far exceeded expectations」は定性的"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule06", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_F_future_dependent", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "デモライドへの好反応は参考になるが、商品化・価格設定・充電インフラ依存等の実市場での証明前の段階での評価は低確信度が妥当。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_006",
+      "claim_type": "cagr_connection",
+      "claim": "国際化深化→成長 CAGR：国際比率30%→36%（6年）と3地域記録更新は、米国依存から脱却しグローバル成長を取り込む CAGR 構造を示す。",
+      "evidence": "International sales grew more than 5% and accounted for more than 36% of total retail sales, up from 30% in 2008... three regions posted highest new retail sales on record.",
+      "rule_evaluation": {"applied_rules": ["rule05", "rule04"], "results": {"rule05": true, "rule04": true}, "confidence": 0.5, "adjustments": []},
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "30%→36%という6年間の着実な国際化進展"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "国際化は多くのブランドが実施している戦略"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "6年間での国際化深化は着実だが各地域の絶対規模が不明。3地域同時記録更新は CAGR 接続の根拠として中程度の説得力。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_007",
+      "claim_type": "cagr_connection",
+      "claim": "単一ブランド集中戦略→持続的 EPS CAGR：2009年以降の戦略的集中が5年連続二桁 EPS 成長を実現。この戦略枠組みの継続が将来 CAGR の根拠。",
+      "evidence": "Focus solely on the Harley-Davidson brand, to be customer-led in everything we do... Looking at what we've achieved since 2009, no doubt in my mind, it was the right strategy.",
+      "rule_evaluation": {"applied_rules": ["rule05", "rule04"], "results": {"rule05": true, "rule04": true}, "confidence": 0.5, "adjustments": []},
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "5年間の実績が戦略有効性を支持"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "米国市場の成長鈍化・Indian 等の競合強化が今後の CAGR 維持に挑戦"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "5年間の実績は説得力があるが米国コア顧客の高齢化・Indian Revival・海外市場での競合激化が今後のCAGR継続に不確実性をもたらす。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "HOG FY2014 実績: 希薄化 EPS +18%超（5年連続二桁成長）、売上$6B超（2006年以来初）",
+      "evidence": "Diluted EPS grew more than 18%, fifth consecutive year of double-digit EPS increases. Revenue topped $6 billion for first time since 2006.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-29)"]
+    },
+    {
+      "id": "HOG_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "HOG 販売実績: Q4 世界小売販売+2.8%。FY2014 国際販売+5%超（全体の36%以上）。",
+      "evidence": "Q4 worldwide retail sales were up 2.8%. 2014 international retail sales grew more than 5%, accounted for more than 36% of total retail.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "販売実績の事実確認。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CFO prepared remarks (2015-01-29)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "HOG",
+    "scored_count": 9,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.35": 2,
+      "0.45": 1,
+      "0.5": 3,
+      "0.6": 2,
+      "0.9": 1
+    }
+  }
+}

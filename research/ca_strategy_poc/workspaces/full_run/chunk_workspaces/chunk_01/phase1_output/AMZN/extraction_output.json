@@ -1,0 +1,281 @@
+{
+  "ticker": "AMZN",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00Z",
+  "claims": [
+    {
+      "id": "AMZN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Amazon Web Services（AWS）のクラウドインフラ先行優位：規模拡大による単位コスト低下と 81% 売上成長・21% 営業利益率",
+      "evidence": "CFO Brian Olsavsky (Q2 2015 prepared_remarks): 'Amazon Web Services segment revenue increased 81% to $1.82 billion. Amazon Web Services segment operating income increased 407% to $391 million, a 21.4% operating margin.' Q1 2015: 'AWS revenue grew 49% to $1.57 billion... operating income increased 8% to $265 million, a 16.9% operating margin.' Q4 2013: 'significant investments in technology infrastructure, including Amazon Web Services.' AWS usage growth outpaces revenue growth of 81% per Q2 2015.",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "AWS は大規模データセンター投資の先行者として、スケール拡大に伴う単位インフラコストの低下を享受。競合（Azure・GCP）より数年早く市場を構築したことで、顧客の switching costs（データ移行・API 依存）が蓄積。2015 年 Q2 時点で $1.82B/四半期売上、21.4% 営業利益率",
+        "barrier": "AWS は 2006 年の S3 ローンチから 9 年間のインフラ投資を積み重ね、11 の global region を構築。顧客の workload が AWS の独自 API（EC2・S3・Lambda 等）に依存するほど移行コストが高まる。Azure・GCP は 3-5 年遅れており、AWS のインフラ密度・可用性ゾーン数で差がある"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Brian Olsavsky",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "Amazon Web Services segment revenue increased 81% to $1.82 billion. Amazon Web Services segment operating income increased 407% to $391 million, a 21.4% operating margin."
+        },
+        {
+          "speaker": "Phil Hardin",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "Q2 2015",
+          "quote": "we continue to see really strong usage growth that's outpacing the revenue growth of 81%... We've got 11 regions at this point and have announced plans to launch a region in India in the future."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.8,
+        "adjustments": [
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "81% 売上成長、407% 営業利益成長、21.4% 営業利益率、TTM 売上 $7B+ という明確な定量データ。営業利益率が急速に改善しており Scale economies の発現を示す"
+          },
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "データセンター・API エコシステムという具体的なインフラ資産への言及。単なる売上実績ではなく global region 11 という構造的優位の説明"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "Microsoft Azure・Google Cloud は AWS より数年遅れて market leader に対抗。2015 時点では AWS が enterprise cloud 市場の過半を占有し switching costs が既に蓄積"
+          },
+          {
+            "rule": "rule06",
+            "direction": "positive",
+            "reason": "9 年間の先行投資による構造的規模優位であり、一時的なリードではない"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AMZN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Amazon Prime エコシステムによる顧客ロックイン：年会費 $79 で 19M+ 品目の 2 日配送・Prime Video・Prime Music を統合した会員経済圏",
+      "evidence": "CFO Tom Szkutak (Q4 2013 prepared_remarks): 'We've launched Prime in the U.S. 9 years ago with free, unlimited 2-day shipping on 1 million items at an annual membership price of $79. Today, Prime's selection has grown to over 19 million items... On a per-customer basis, Prime members are ordering more items across more categories with free 2-day shipping than ever before.' Q1 2015: 'We remain heads-down focused on driving a better customer experience through price selection and convenience... we're continuing to invest selectively as we build the Prime platform' including video, music, Prime Now.",
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "Prime 会員は年間購入頻度・購入金額が非会員を大幅に上回る（per-customer ordering dramatically up）。Prime Video・Music・Now 等のサービスが統合されることで解約コストが上昇し続ける。2014 年時点で globally tens of millions の会員、2015 年 Q1 時点でアクティブ顧客 260-278M",
+        "barrier": "Prime の価値は Fulfilled by Amazon（FBA）セラーが提供する 2 日配送が可能な商品数に比例。19M+ 品目は 9 年間の FBA セラー拡大で構築。Walmart・Target は同等の配送ネットワークを同価格で構築不可能。Video・Musicの追加が会員の解約コストをさらに高める"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Thomas Szkutak",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "Prime's selection has grown to over 19 million items. Even as fuel and transportation costs have increased, the $79 price has remained the same... On a per-customer basis, Prime members are ordering more items across more categories with free 2-day shipping than ever before."
+        },
+        {
+          "speaker": "Brian Olsavsky",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "Q1 2015",
+          "quote": "we're continuing to invest selectively as we build the Prime platform and invent on behalf of customers. So you'll see a lot of invention definitely to feed the Prime platform, which things like video content, Prime music, as we talked about Prime Now devices."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.75,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "「Prime プラットフォームへの投資」という仕組みへの言及。FBA ネットワーク・コンテンツ・デバイスの統合という構造的アプローチが説明されている"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "19M+ Prime 対象品目、tens of millions の会員、per-customer 注文数の劇的増加という具体的指標"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "Walmart・Target・Best Buy は同等の Prime ロックイン・配送ネットワークを $79/年で提供できない。Costco 会員制は類似だが商品選択・配送速度で非競合"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AMZN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "109 の世界規模フルフィルメントセンターネットワークと Prime Now（1-2 時間配送）の構築による物理的インフラ優位",
+      "evidence": "CFO Tom Szkutak (Q1 2015 prepared_remarks): 'we ended the year with 109 fulfillment centers around the world.' CFO Brian Olsavsky (Q1 2015 Q&A): 'our operations network that we've been building for the last 20 years helps make Prime Now a viable proposition for us and scale makes it possible... we have expanded to 7 cities with more on the way.' Q4 2013: 'capital expenditures were $3.44 billion...additional capacities to support our fulfillment operations.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "109 フルフィルメントセンターによる全米・国際カバレッジが同日・翌日配送の basis。20 年間の投資で構築した物理インフラは新規参入者が 3-5 年で模倣できない。Prime Now（1-2 時間）はこのインフラ密度があって初めて採算が取れる",
+        "barrier": "Walmart・Target は実店舗ネットワークを持つが、EC 向けフルフィルメントセンターの運営ノウハウ（ソート・ルーティング・在庫最適化）は20年の学習曲線に基づく。資本支出 $3-4B/年を継続投資することで競合の追いつきを困難にする"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Thomas Szkutak",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "Q1 2015",
+          "quote": "we ended the year with 109 fulfillment centers around the world, and we'll update you as we go."
+        },
+        {
+          "speaker": "Brian Olsavsky",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "Q1 2015",
+          "quote": "our operations network that we've been building for the last 20 years helps make Prime Now a viable proposition for us and scale makes it possible."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "「20 年間構築したオペレーションネットワーク」という具体的なインフラ資産と「scale makes it possible」という仕組みへの明示的な言及"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "109 フルフィルメントセンター、年間 CapEx $3-4B、Prime Now 7 都市展開という定量データ"
+          },
+          {
+            "rule": "rule06",
+            "direction": "positive",
+            "reason": "20 年間の継続投資による構造的なインフラ優位。一時的なリードではない"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AMZN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "サードパーティセラー（FBA）エコシステムの規模：販売単位の 45% をサードパーティが占めるネットワーク効果",
+      "evidence": "CFO Brian Olsavsky (Q2 2015 prepared_remarks): 'Worldwide seller units represented 45% of paid units, up from 41% in the comparable prior year period.' Q4 2013: 'Worldwide active seller accounts were more than 2 million. Seller units represented 39% of paid units.' The progression from 39% (Q4 2013) to 44% (Q1 2015) to 45% (Q2 2015) shows consistent increase in third-party seller penetration.",
+      "power_classification": {
+        "power_type": "network_economies",
+        "benefit": "2M+ のサードパーティセラーが出品することで品揃えが拡充し、それが Prime 会員の購入頻度を高め、さらに多くのセラーを引き付けるフライホイール効果。FBA（Fulfilled by Amazon）利用でセラーは Amazon の配送インフラを利用でき、商品が Prime 対象になることでセラーの売上が増加",
+        "barrier": "eBay は取引量では比肩するが FBA 相当の物流サービスを提供できず Prime ネットワーク効果がない。Walmart Marketplace は 2015 時点では AMZN の 1/10 未満の品揃え。セラーが Amazon から離脱すると即座に Prime 対象外になり売上が落ちるため離反コストが高い"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Brian Olsavsky",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "Worldwide seller units represented 45% of paid units, up from 41% in the comparable prior year period."
+        },
+        {
+          "speaker": "Thomas Szkutak",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "Worldwide active seller accounts were more than 2 million. Seller units represented 39% of paid units."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.65,
+        "adjustments": [
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "セラー比率が 39%（Q4 2013）→45%（Q2 2015）へ一貫して上昇という定量的トレンドデータ。2M+ のアクティブセラー数"
+          },
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "FBA というセラーが Amazon インフラを活用する仕組みへの言及が含意されている"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "eBay はセラーネットワークを持つが FBA・Prime 統合がない。Walmart Marketplace は規模が圧倒的に小さい"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AMZN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "インド市場での急速な拡大：25M+ ASINs で最大オンラインストアとなりポジティブサプライズによる投資倍増方針",
+      "evidence": "CFO Brian Olsavsky (Q2 2015 Q&A): 'India is that kind of surprise. So we're very happy, very encouraged early on with what we've seen, the ramping of the business, the level of invention going on for both customers and sellers. Over 25 million ASINs, which is the largest online store in India and continue to improve pricing and fast delivery. So we're super excited about India. We'll not get into specific investment levels right now, but we continue to ramp up our investment there.' Q2 2015: 'when we see a positive surprise, we double down on it.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "インドでの 25M+ ASIN（国内最大）という先行ポジションがセラー・買い手の双方を引き付け、先行者優位を構築。Flipkart・Snapdeal が先行していたが AMZN の FBA 品質・Prime 体験が差別化となり急速に追い上げ",
+        "barrier": "AMZN のグローバル物流ノウハウ・テクノロジーインフラを Flipkart 等インド新興企業がゼロから構築するには 10 年単位の投資が必要。インド政府の外資規制（FDI）は障壁として存在するが AMZN は Marketplace（出品プラットフォーム）として参入しており適合済み"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Brian Olsavsky",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "Q2 2015",
+          "quote": "India is that kind of surprise. So we're very happy, very encouraged early on with what we've seen, the ramping of the business, the level of invention going on for both customers and sellers. Over 25 million ASINs, which is the largest online store in India and continue to improve pricing and fast delivery."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": false,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.4,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "negative",
+            "reason": "25M ASINs という規模は結果の提示。インドで AMZN が競合より優れた能力・仕組みについての説明が乏しい"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "PoiT 時点ではインドでの主要競合（Flipkart・Snapdeal）が Softbank・Tiger Global 等の大規模資金で対抗。AMZN の優位性が確立しているとは言いにくい段階"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "25M ASINs（国内最大）という定量的な比較ポジション"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "transcript_count": 7,
+    "quarters_covered": ["Q4 2013", "Q1 2014", "Q2 2014", "Q3 2014", "Q4 2014", "Q1 2015", "Q2 2015"],
+    "primary_transcripts": ["201401_earnings_call.json", "201504_earnings_call.json", "201507_earnings_call.json"],
+    "secondary_transcripts": ["201404_earnings_call.json", "201407_earnings_call.json", "201410_earnings_call.json", "201501_earnings_call.json"]
+  }
+}

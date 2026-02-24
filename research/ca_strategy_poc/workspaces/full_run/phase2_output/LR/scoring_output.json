@@ -1,0 +1,153 @@
+{
+  "ticker": "LR",
+  "company_name": "Legrand SA",
+  "scoring_metadata": {
+    "primary_source": "FY2014 Full Year Results (2015-02-12, treated as Q4 annual equivalent)",
+    "cutoff_date": "2015-09-30",
+    "kb1_rules_applied": true,
+    "kb2_patterns_applied": true,
+    "kb3_fewshot_applied": true,
+    "dogma_applied": true,
+    "scorer_version": "chunk_agent_v1"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "LR-CA-001",
+      "original_claim_id": "LR-001",
+      "claim_type": "competitive_advantage",
+      "claim_text": "45カ国で#1または#2ポジション保有（全売上の2/3以上をリーダー・チャレンジャーポジションで実現）",
+      "seven_powers_category": "Scale Economies",
+      "kb2_pattern_applied": "pattern_IV_structural_market_position",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.60,
+      "final_confidence": 0.60,
+      "final_confidence_rationale": "Pattern IV（構造的市場ポジション）適用：45カ国でリーダー/チャレンジャーポジション、売上の2/3以上をカバーという定量的市場地位。6年間での継続的改善（新興国比率28%→38%）という動的証拠。米国が2015年に売上#1国になるという地理的成長トラック。「いかなる単一国も5%以上なし」という集中リスク管理の仕組み。ただしPattern B（業界共通）部分適用：電気配線デバイスは流通業者の切り替えが比較的容易であり、リーダーシップは継続的競争とイノベーションを要する。確信度60%維持。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CA-002",
+      "original_claim_id": "LR-002",
+      "claim_type": "competitive_advantage",
+      "claim_text": "製品プラットフォーム戦略（Valena・WS 120・Synergy等）による国別カスタマイズと内部機構標準化の両立能力",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_III_capability_over_result",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern III（能力重視）部分適用：プラットフォーム戦略の仕組み（共通内部機構×国別外装デザイン）は具体的に説明されている。間接/直接労働比率34→33（目標30）という定量的改善トラック。7 SBU組織化（2014年7月）という制度的コミットメント。しかしFY2014のマージン改善は+30bps（在庫影響除前）にとどまり、まだ成熟段階（-10%）。プログラムが現在進行形で結果が限定的。確信度40%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CA-003",
+      "original_claim_id": "LR-003",
+      "claim_type": "competitive_advantage",
+      "claim_text": "新ビジネスセグメント（データセンター・コネクテッドビルディング・アシステッドリビング）へのシステマティック移行能力（売上の26%→29%、オーガニック成長+2.5ポイント速い）",
+      "seven_powers_category": "Scale Economies",
+      "kb2_pattern_applied": "pattern_III_capability_over_result",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern III（能力重視）部分適用：新ビジネスセグメント比率26%→29%というポートフォリオシフト実績。新ビジネスのオーガニック成長が伝統事業比+2.5ポイントという定量的差別化。Lastar+Electrorack+Ortronicsの統合による拠点強化は能力構築の証拠。しかしPattern G（Pure Competitor不明確）：データセンターではABB・Schneider Electric・Siemensと直接競合し、勝因が不明確（-10%）。確信度40%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CA-004",
+      "original_claim_id": "LR-004",
+      "claim_type": "competitive_advantage",
+      "claim_text": "データセンター統合ポートフォリオ（Lastar・Electrorack・Ortronics）の単一管理によるスイッチングコスト創出",
+      "seven_powers_category": "Switching Costs",
+      "kb2_pattern_applied": "pattern_C_causal_leap",
+      "kb2_pattern_verdict": "caution",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.40,
+      "final_confidence": 0.30,
+      "final_confidence_rationale": "Pattern C（因果飛躍）部分適用：統合管理→クロスセル機会→スイッチングコストの論理は2ステップだが、「3年前から開始」という段階であり定量的なロックイン証拠なし（-10%）。データセンターのスイッチングコストは理論的には高いが、Legrandがそれを実現しているかどうかの市場占有率データなし。確信度30%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CA-005",
+      "original_claim_id": "LR-005",
+      "claim_type": "competitive_advantage",
+      "claim_text": "流通業者との価格設定能力（会社史上マイナス値上げなし、インフレ転嫁+α）によるオペレーションマージン~20%維持",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_I_quantitative_differentiation",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.60,
+      "final_confidence_rationale": "Pattern I（定量的差別化）適用：「会社史上マイナス年次値上げなし」という定量トラックレコードは特筆すべき差別化指標。調整オペレーションマージン19.8%がフランス-3.3%・イタリア-4.1%のオーガニック減収環境で安定している事実は流通関係管理能力の強力な証拠。修繕工事50%・新築50%という安定的な事業ミックスがこれを下支え。Pattern III（能力重視）も重複：仕組み（流通業者関係管理プロセス）が明示されている。元Phase1確信度50%から+10%上方修正（歴史的トラックレコードが特に説得力高い）。確信度60%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CAGR-001",
+      "original_claim_id": "LR-006",
+      "claim_type": "cagr_connection",
+      "claim_text": "45カ国リーダーポジション × M&Aロールアップ戦略 → EPS CAGR ~9%・TSR CAGR ~14%（IPO 2006年以来）",
+      "source_advantage_claim_id": "LR-CA-001",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.60,
+      "final_confidence": 0.70,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）適用：M&A+2.7%有機成長→EPS CAGR 9%・TSR CAGR 14%は2006年以降の実績データで実証済み（10年近いトラックレコード）。正規化FCF EUR 6億超（売上比13.5%、純利益転換率114%）という自己資金調達能力。S&P A-格付けによる外部信用認定。DPS +10% CAGR（投資家への還元実績）。元優位性60%から+10%上方修正（メカニズムが特に実証的：長期EPS CAGR数値あり）。確信度70%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CAGR-002",
+      "original_claim_id": "LR-007",
+      "claim_type": "cagr_connection",
+      "claim_text": "生産性プログラム（7 SBU再編・プラットフォーム標準化）→ 年間約30bpsマージン改善 → EPS成長が売上成長を上回る",
+      "source_advantage_claim_id": "LR-CA-002",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）部分適用：生産性プログラム→30bps年間マージン改善→EPS超過成長は2ステップ。間接/直接労働比率34→33→30のロードマップが明示的。FY2014の実績+30bps（在庫影響除前）は目標通り。しかし元の優位性が40%に低下しているため連動。30bpsの改善は控えめで、M&Aなしでは限定的CAGR貢献。確信度40%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "LR-CAGR-003",
+      "original_claim_id": "LR-008",
+      "claim_type": "cagr_connection",
+      "claim_text": "新興国比率28%→38%へのリバランス → 都市化・電気インフラ需要でボリューム成長 → 長期CAGR",
+      "source_advantage_claim_id": "LR-CA-001",
+      "kb2_pattern_applied": "pattern_C_causal_leap",
+      "kb2_pattern_verdict": "caution",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.40,
+      "final_confidence": 0.30,
+      "final_confidence_rationale": "Pattern C（因果飛躍）適用：新興国展開→都市化需要→CAGR成長のメカニズムは理論的に正しいが、FY2014 EMオーガニック成長+2.2%は米国/カナダと同水準であり、テーゼ通りの高成長が現時点で現れていない（-10%）。ロシアリスク（-1%準備金）・通貨ヘッドウィンドも要因。将来性があるが現在は未実現。確信度30%。",
+      "source_quality": "fy2014_annual",
+      "is_primary_source": true
+    }
+  ],
+  "stock_score_summary": {
+    "competitive_advantage_claims": {
+      "count": 5,
+      "avg_confidence": 0.46,
+      "max_confidence": 0.60,
+      "claims_above_50pct": 2,
+      "claims_above_70pct": 0
+    },
+    "cagr_connection_claims": {
+      "count": 3,
+      "avg_confidence": 0.467,
+      "max_confidence": 0.70,
+      "claims_above_50pct": 1,
+      "claims_above_70pct": 1
+    },
+    "overall_ca_score": 0.46,
+    "scoring_quality_note": "LR FY2014 primary source (transcript metadata shows Q1 2015 but content is FY2014 annual results). Top competitive advantages: 45-country market leadership (Scale Economies, 60%) and pricing discipline track record (Process Power, 60%). The M&A roll-up CAGR connection is uniquely well-evidenced with 9% EPS CAGR and 14% TSR since 2006 IPO—the strongest CAGR evidence in chunk_30 at 70% confidence. Data center/new business segment portfolio shift is directionally correct but early-stage. Overall CA quality: above average, anchored by durable market position and pricing discipline."
+  }
+}

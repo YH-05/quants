@@ -1,0 +1,375 @@
+{
+  "ticker": "HCA",
+  "company_name": "HCA Holdings, Inc.",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-03) [Primary], Q4 FY2013 Earnings Call (2014-02-04) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"],
+    "transcripts_used": [
+      "201402_earnings_call.json (Q4 2013)",
+      "201404_earnings_call.json (Q1 2014)",
+      "201407_earnings_call.json (Q2 2014)",
+      "201410_earnings_call.json (Q3 2014)",
+      "201502_earnings_call.json (Q4 2014)",
+      "201505_earnings_call.json (Q1 2015)",
+      "201508_earnings_call.json (Q2 2015)"
+    ],
+    "excluded_transcripts": ["201510_earnings_call.json (Q3 2015, event_date=2015-10-27, after cutoff)"]
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "HCAが保有するローカル市場における高密度の統合病院ネットワーク（救急・外来・専門科・行動医療・リハビリ等）は、患者を院内で囲い込む能力を持ち、競合が短期に複製できない地域規模の経済を形成する",
+      "descriptive_label": "ローカル統合医療ネットワークによる患者囲い込み能力",
+      "seven_powers_category": "Scale Economies / Switching Costs",
+      "evidence_from_transcript": "Q4 FY2014 COO Prepared Remarks (Samuel Hazen): 'Both service lines are very complementary to core service lines within HCA. For example, behavioral health is very complementary to our emergency services line. Rehab is very complementary to our orthopedics and neurosciences so we've been very aggressive over the past number of years in number one, creating capacity and capability within these 2 service lines. And then the second thing we've been able to do is internalize the patient if you will inside the HCA network and keep them in the system when they needed those particular service lines.' (Q2 2015 Q&A); All 14 domestic divisions showed growth in admissions, adjusted admissions, and ER visits (Q4 FY2014 COO Prepared Remarks)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Samuel Hazen (COO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "ネットワーク内での患者囲い込みという仕組みは能力的側面があるが、市場シェア成長（24%）や全14師団での成長は結果の側面も強い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "14師団に渡る統合ネットワーク構築には長年の資本投下が必要で、競合が短期複製困難な構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "純粋競合（THC, CYH等）との比較は提示されていないが、規模差（$36.9B revenue）は示唆される"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "米国病院市場はフラグメントされており、HCAの地域密度・統合ネットワークは市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言由来（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（THC/CYH）との数値比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "地域統合ネットワークは構造的優位性の側面があり業界構造との合致もある。しかし競合比較数値の欠如と、市場シェア成長が結果の強調に留まる点で確信度を制限"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "統合ネットワーク内での患者囲い込み → 行動医療・リハビリ等高マージン専門科への送客増 → adjusted EBITDA margin維持・改善 → 売上CAGR 3-5%の持続",
+      "descriptive_label": "統合ネットワーク→高マージン専門科→EBITDA成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "2-3ステップの因果：ネットワーク→専門科送客→EBITDA改善。CFOが調整済みEBITDA成長14.1%を開示しており検証可能性はある"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言由来。長期3-5%成長ガイダンスは複数Q4で一貫"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ネットワーク→専門科→EBITDA成長の経路は2-3ステップで適度。ただし中間の因果（送客増がEBITDA改善に直接貢献するか）の定量的根拠が薄い"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Parallon（HCA子会社）による病院向け収益サイクル・サプライチェーン管理の共有サービスセンター能力は、HCA内部での規模の経済を外部病院にも展開し、競合病院系列にはない業務効率優位をもたらす",
+      "descriptive_label": "Parallon共有サービスセンターによる収益サイクル管理能力",
+      "seven_powers_category": "Scale Economies / Process Power",
+      "evidence_from_transcript": "Q4 FY2013 Q&A (CEO Milton Johnson): 'Things at Parallon are moving very well and on track with our expectations. We've got The Outsource Group acquisition to complete the integration into Parallon... LifePoint implementation continues to move on schedule...'; CFO: 'We're still bullish on Parallon. We're seeing our opportunities in our pipeline continue to be out there and the team is really performing well.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Johnson (CEO) / William Rutherford (CFO)",
+      "section": "qa_session",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "収益サイクル管理能力（仕組み）を評価。外部病院への展開実績（LifePoint）は裏付け"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「共有サービスセンター能力」は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited_quantitative",
+            "reasoning": "LifePoint・CHP等具体的顧客名あり。ただし収益改善額や効率指標の定量比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "病院業界特有の複雑な請求業務を大規模に集中処理するプロセスは短期構築が困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "具体的な顧客名（LifePoint, CHP）の言及あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "効率改善の定量データが提示されていない",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4 2013の発言（Q4発言として採用可）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Parallon は HCA 固有の能力であり、業界では競合が容易には持てない規模の収益サイクル管理能力。しかし定量的差別化データなく確信度は中程度"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Parallon の外部顧客展開 → 管理手数料収入の新規ストリーム → HCA 全体売上成長に加算",
+      "descriptive_label": "Parallon外部展開→手数料収入→売上成長寄与",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "Parallon → 外部収益という経路は2ステップだが、具体的な売上寄与額・比率の開示なし。検証可能性が低い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2013の発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Parallon 収益貢献額の開示がなく検証不能",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "外部展開による売上増は理論上あるが、具体的な規模・寄与率が開示されず数値根拠不透明。CAGR接続として低信頼"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "HCA の ACA（医療保険改革法）対応における保険取引所への早期積極的ネットワーク参入戦略は、同業他社比でのリベート交渉力と新規患者フロー獲得を強化している",
+      "descriptive_label": "ACA取引所ネットワーク交渉・参入能力",
+      "seven_powers_category": "Scale Economies / Counter-Positioning",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'We have increased our health exchange contracts by 37% over 2014'; Q4 FY2014 (CFO Bill Rutherford): 'Health reform contributed about 4.5% of adjusted EBITDA growth for us in 2014...reform benefit to increase approximately 60% to 70% from 2014 levels and represent 2% to 3% of incremental EBITDA growth over 2014'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Johnson (CEO) / William Rutherford (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "取引所契約37%増加は結果の側面が強い。ネットワーク交渉「能力」よりもACAという外部要因への適応"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "大手病院系列（THC, CYH, HMA等）も同様の戦略を取りうる。HCA 固有の優位性として認定困難"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "ACA恩恵は構造的優位ではなく補完的要素。ACA政策変更リスクあり"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "flag",
+            "reasoning": "「取引所積極参加」は戦略的意思決定であり、それ自体が優位性とはいえない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_industry_common",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ACA恩恵は業界共通で特定競合との差別化根拠不十分",
+            "adjustment": -20
+          },
+          {
+            "reason": "4.5% EBITDA寄与という定量データあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ACA取引所参入はHCA固有の能力ではなく業界共通の施策。戦略と優位性の混同（ルール8）。確信度低"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "ACA取引所加入者増加→新規入院・ER受診の増加→adjusted EBITDA成長2-3%の追加寄与",
+      "descriptive_label": "ACA取引所→新規患者→EBITDA成長追加寄与",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：取引所患者増→入院・ER増→EBITDA増。CFOが2-3%の追加EBITDA寄与を明示。検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014の発言。数値の開示あり"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "ACA政策の持続性・規模拡大に不確実性あり",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的な因果メカニズムの開示あり（2-3% EBITDA追加）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "CAGR接続としては2ステップで直接的。CFOによる数値開示あり。ただし優位性側（ACA施策）が業界共通のためCAGR接続への信頼度も限定的"
+      }
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "HCA の大規模資本展開力（FY2014: $2.2B capex + $770M M&A + $1.75B自社株買い、計~$4.7B）は、フリーキャッシュフロー創出力と低コスト資金調達（大企業としての信用力）に裏打ちされており、地域市場でのネットワーク拡張速度を維持する構造的能力",
+      "descriptive_label": "大規模資本展開力によるネットワーク拡張能力",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'We generated $4.45 billion of cash flows from operating activities, up 20.9% over 2013. We deployed approximately $2.2 billion in capital spending in our existing markets in 2014, and we acquired 3 hospitals...for approximately $770 million...we repurchased 28.6 million shares of our stock for $1.75 billion'; COO: 'We are increasing our capital expenditures to around $2.4 billion [in 2015]'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Johnson (CEO) / Samuel Hazen (COO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "資本投下額は結果・実績。「なぜHCAが効率的に資本を展開できるか」という仕組みの説明が薄い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "大手病院チェーンは一般に大きな資本展開力を持つ。HCA固有の差別化として認定困難"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$4.45B FCF, $2.2B capexという具体数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_partial",
+            "reasoning": "規模の経済による信用力は構造的だが、大手一般に共通"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "資本展開額は結果。仕組みの説明が薄い（ルール1違反傾向）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "大規模資本展開は事実だが、それ自体を能力として評価するには仕組みの説明が不足。結果の優位性への誤帰属リスクあり"
+      }
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "持続的なcapex投下（$2.2-2.4B/年）→ER容量・専門科病床の拡張→入院・外来ボリューム成長→売上CAGR 3-5%の有機成長維持",
+      "descriptive_label": "capex→容量拡張→ボリューム成長→CAGR",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "3ステップだがcapex→容量→ボリュームは医療業界での直接的因果。長期CAGR3-5%ガイダンスと整合"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014での発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "capex→ボリューム成長の経路は医療業界で実証済み。3ステップは許容範囲内。長期CAGR目標との整合性あり"
+      }
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "HCA市場シェア（12ヵ月 2014年6月末時点）：全体で24%強、前年比+10bp。全14師団で入院・外来・ER成長。管理型メディケア比率：全メディケアの32.7%（2015 Q2）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Parallon の外部顧客：LifePoint Health、CHP（Community Health Providers）。Outsource Group の統合も実施（2014）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "factual_claim",
+      "claim": "FY2014でACA取引所契約37%増加。ACA改革がFY2014 adjusted EBITDA成長の4.5%相当に貢献。2015年はACA恩恵が2014年比60-70%増加し、EBITDA成長の2-3%追加寄与を見込む",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 売上$36.9B（+8% YoY）、adjusted EBITDA成長14.1%（Q4）、営業CF $4.45B（+20.9%）、capex $2.2B、M&A $770M（3病院取得）、自社株買い $1.75B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7, 8]
+    }
+  ]
+}

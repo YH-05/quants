@@ -1,0 +1,262 @@
+{
+  "ticker": "BT/A",
+  "transcript_source": "Q3 FY2014/15 Results (2015-01-30) [Primary]; Q4 FY2013/14 Results (2014-05) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015", "Q2 FY2015", "Q3 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "英国全土をカバーするOpenreachの固定回線・ファイバーネットワーク基盤（英国内唯一の全国ラストワンマイルインフラ所有者）",
+      "descriptive_label": "Openreach全国インフラ独占（Cornered Resource + Scale Economies）",
+      "evidence_from_transcript": "Q3 FY2015 Prepared Remarks (CEO Gavin Patterson): 'We've currently passed around 3 quarters of the U.K. premises with fiber delivering super-fast broadband speeds...working with the government to extend this reach to 95% of the U.K...the most extensive in Europe.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ネットワークインフラ所有・運用能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "全国ラストワンマイルインフラは規制当局が認定した自然独占的な構造的資産"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "他の競合（Sky、Virgin Media等）はOpenreachのネットワークを利用せざるを得ない。唯一のUK全国インフラ所有者"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "データ需要が30%/年で継続成長する市場構造とインフラ所有者のポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "規制リスク（Ofcomによる料金規制・アクセス強制）が優位性を制約する",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "物理的インフラ独占は構造的優位として認められるが、規制環境によって収益化が制限される点が減点要因"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Openreachインフラ独占 → ファイバー接続料収入成長（+36% YoY） → 連結売上下支え",
+      "descriptive_label": "Openreachファイバー成長→売上CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：インフラ独占→ファイバー収入増。ファイバー収入+36% YoYはSECデータ相当で確認可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次・四半期発表での反復的言及"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "直接的で検証可能なメカニズム。ファイバー成長の強い実績数値で裏付けあり"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "BT Sportによるスポーツコンテンツ（プレミアリーグ放映権）を活用した固定回線顧客ロックイン",
+      "descriptive_label": "スポーツコンテンツによる顧客囲い込み（Switching Costs + Branding）",
+      "evidence_from_transcript": "Q3 FY2015 Prepared Remarks (CEO): 'BT Consumer grew its top and bottom line for the fourth quarter running. This is how we said to measure the success of BT Sport, and it is clearly delivering...25,000 commercial premises have signed up, with 1 in 3 pubs showing it, and that's more than Sky...Premier League viewing up 17% year-on-year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "スポーツコンテンツ取得・バンドル化能力を評価。Consumer EBITDA成長は結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Consumer EBITDA +43% (Q3)、視聴率+17%、商業施設25,000件という具体的数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プレミアリーグ放映権は他の固定通信事業者が簡単に模倣できない（コスト・入札競争）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Sky Sportsとの競合で、BTが「Skyより多い」パブ件数は具体的な優位性の証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_V_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Ofcomによるマージンスクイーズ判定が規制リスクとなっている",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "スポーツコンテンツによる顧客獲得効果は定量的に示されているが、規制リスクと長期的な放映権コストが不確実性を高める"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "BT Sport顧客囲い込み → Consumer ARPUアップ・ライン解約率改善 → Consumer売上成長",
+      "descriptive_label": "BT Sport→ARPU向上→Consumer CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：スポーツバンドル→ARPU向上→Consumer売上増。Consumer revenue +7%・ARPU上昇で確認可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次・四半期発表での言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "データで裏付けられた直接的なメカニズム。規制リスクを考慮しても中程度の確信度"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルネットワークサービス（Global Services）における11年連続Gartner Magic Quadrant Leaderの認定",
+      "descriptive_label": "グローバルネットワークサービス技術認知（Branding + Cornered Resource）",
+      "evidence_from_transcript": "Q3 FY2015 Prepared Remarks (CEO): 'The 11th year running, we've been named by Gartner as a leader in their Global Network Service Provider Magic Quadrant, a recognition of the breadth and quality of services we offer our customers around the world.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "weak",
+            "reasoning": "Gartner Leaderは複数企業が同時に選定される。相対的優位の証拠としては弱い（dogma.md：「業界アンケート結果は参考程度」）"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "第三者認定は存在するが、純粋競合（AT&T、Orange等）との比較数値がない"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Global Services underlying revenue -7%で実績が伴っていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t + pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "実際の収益成長が伴わないブランド認知で、飛躍的解釈に近い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "11年間のLeader認定は実績だが、Global Servicesの売上下落が競争優位性の主張と矛盾しており確信度は低い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "英国内のIPネットワークへの移行投資（GBP1B超のコスト削減機会）と全IP化によるシステム簡素化能力",
+      "descriptive_label": "IPネットワーク移行・コスト変革能力（Process Power）",
+      "evidence_from_transcript": "Q3 FY2015 Prepared Remarks (CFO): 'we still see over GBP 1 billion of gross cost-reduction opportunities across the business' CEO: 'We already serve many thousands of customers and businesses using IP. Our goal is that by 2025, all our voice customers will be served using an IP to the premises solution'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "コスト変革実行能力という仕組みを評価するが、「コスト削減機会」は将来の結果であり現時点では潜在的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "GBP1B超の数値はあるが実現済みではなく機会として提示"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "IPネットワーク移行は戦略的意思決定に近く、優位性というより変革プログラム"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t (partial)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "実現済みではなく将来の機会としての主張",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "コスト変革の方向性は認められるが、競合も同様の移行を進めており差別化が弱い"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Q3 FY2015: Openreach fiber +36% YoY、Consumer revenue +7%、EBITDA全社+2%、FCF +GBP354M、英国全土の75%をファイバーカバー",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "BT Sport: 商業施設25,000件契約（パブの1/3）、Sky Sportsを上回る、Premier League視聴+17% YoY",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "GBP1B超のコスト削減機会、IPコア単一プラットフォームで3テラビット/秒の容量記録達成",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "ticker": "BA",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": ["BA-001", "BA-002", "BA-003", "BA-004", "BA-005"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "BA-001",
+      "claim_type": "competitive_advantage",
+      "claim": "GBP 40.5Bの受注残高（order backlog）によるマルチイヤー収益可視性と長期防衛プログラムフランチャイズ（F-35等）",
+      "descriptive_label": "大規模受注残高による長期収益可視性",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 長期防衛プログラムフランチャイズ（F-35等）という仕組み（Switching Costs・Cornered Resource）の説明",
+        "rule_4_t": "PASS - GBP 40.5Bという具体的定量値。F-35量産100機/年目標という将来計画",
+        "rule_6_t": "PASS - 防衛プログラムのSwitching Costsは構造的（一度採用されると10-20年継続）",
+        "rule_7_t": "PASS - F-35 EWシステムはBAEのプライムコントラクター独占。Lockheed Martinはプライム統合者だがBAEのサブシステム替えは実質不可能"
+      },
+      "kb2_t_pattern": "pattern_IV_t（構造的市場ポジション）。防衛調達の独占的ポジションという構造的優位",
+      "kb3_t_calibration": "ORLY#2（フラグメント市場×規模密度→90%）と類似した業界構造合致。防衛調達のSwitching Costsは自動車部品のORLY以上に高い。ただしQ4発言でも90%は稀で70%が適切",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（プログラムフランチャイズ能力）。Rule 4（定量的裏付け）: PASS（GBP 40.5B）。Rule 11（業界構造合致）: PASS（防衛調達のSwitching Costs）。Q4発言で評価上昇",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_IV_t（構造的市場ポジション）。dogma.md Rule 1・4・11の3重適合。GBP 40.5Bという大規模受注残高とF-35という独占的プログラム。Q4年次発言で70%確定"
+    },
+    {
+      "id": "BA-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Electronic Systemsの15%超EBITA マージンによる高収益性と電子・センサー技術における競争力（F-35 EW・APKWS等）",
+      "descriptive_label": "Electronic Systems高マージン事業と技術優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - F-35 EWシステム・APKWSという具体的技術（能力）の説明あり",
+        "rule_4_t": "PASS - 15%超EBITAマージン（業界平均8-12%を大幅超過）という定量値",
+        "rule_6_t": "PASS - EWシステム設計・製造能力は構造的（Process Power）",
+        "rule_7_t": "PASS - F-35 EWシステムはBAEが独占設計・製造。競合置換が実質不可能"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）、pattern_III_t（競合模倣困難）",
+      "kb3_t_calibration": "ARM-001（IP独占→70%）と類似した技術独占モデル。防衛分野のEWシステムはよりSwitching Costsが高く業界比較（15%超 vs 8-12%平均）が明確",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（技術開発・製造能力）。Rule 4（定量的裏付け）: PASS（15%超マージン・業界平均比較）。Q4発言で評価上昇",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_I_t・III_t（高評価パターン複合）。dogma.md Rule 1・4の両PASS。15%超マージンという業界平均比較が決め手。Q4年次発言で70%確定"
+    },
+    {
+      "id": "BA-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Applied Intelligence（サイバー・インテリジェンス）のオーガニック成長（10%）とバックログ37%増による民間・政府向け二刀流戦略",
+      "descriptive_label": "Applied Intelligenceサイバー事業の急成長とバックログ拡大",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 政府→民間へのCounter-Positioning（政府機密クリアランスを活用した民間参入）という仕組み",
+        "rule_4_t": "PASS - 有機成長10%・バックログ37%増という定量値",
+        "rule_6_t": "PASS - 政府信頼実績×民間拡大という構造的Counter-Positioning",
+        "rule_11_t": "PASS - サイバー脅威拡大という業界構造とBAEの政府×民間二刀流の合致"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。民間ITセキュリティ企業（Symantec等）が持たない政府クリアランス・信頼関係を持つ",
+      "kb3_t_calibration": "ARM-001（IPライセンス→70%）と類似した独自ポジション。サイバー分野の政府→民間転用はCounter-Positioningの典型例",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（政府→民間拡張能力）。Rule 4（定量的裏付け）: PASS（10%成長・37%バックログ増）。Q4発言で評価上昇",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_III_t（競合模倣困難）。dogma.md Rule 1・4の両PASS。Counter-Positioning（政府クリアランス活用の民間拡大）という独自の仕組み。Q4年次発言で70%確定"
+    },
+    {
+      "id": "BA-004",
+      "claim_type": "competitive_advantage",
+      "claim": "サウジアラビアとの長期戦略パートナーシップ（Typhoon・ホーク・維持管理契約）による中東防衛市場での独占的プレゼンス",
+      "descriptive_label": "サウジアラビア戦略パートナーシップと中東防衛優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 長期的戦略関係という独自の能力（外交・技術・維持管理の統合）",
+        "rule_4_t": "PASS - 「最大顧客」・TyphoonプライムコントラクターというQ4発言での説明",
+        "rule_7_t": "PASS - サウジ防衛調達はBAEに高度集中（Lockheed・Boeingとのシェア競合も限定的）"
+      },
+      "kb2_t_pattern": "pattern_IV_t（構造的市場ポジション）。サウジ防衛調達でのCornered Resource",
+      "kb3_t_calibration": "ORLY#1（AZO対比での差別化→70%）に類似した具体的競合比較。サウジアラビアとの関係は30年以上の歴史（Switching Costs極大）",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（長期パートナーシップ管理能力）。Rule 4（定量的裏付け）: 部分的（具体的売上金額なし）。Rule 11（業界構造）: PASS（防衛調達のSwitching Costs）。Q4発言",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T Rule 1・7 PASS、Rule 4 部分的。KB2-T pattern_IV_t（構造的）。dogma.md Rule 1・11 PASS。サウジとの30年+の歴史的関係はSwitching Costs最大クラス。Q4年次発言で70%"
+    },
+    {
+      "id": "BA-005",
+      "claim_type": "competitive_advantage",
+      "claim": "AMPV（装甲多目的車両）契約獲得とCombat Vehiclesでの米陸軍プライムコントラクターポジション（GBP 925M株主還元継続）",
+      "descriptive_label": "米陸軍装甲車両プライムコントラクター地位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PARTIAL - AMPV選定は能力認定だが、量産前の開発段階",
+        "rule_4_t": "PARTIAL - AMPV選定（独立第三者）は明確だがGBP 925M株主還元は財務アウトカム",
+        "rule_6_t": "PARTIAL - プライムコントラクター地位は将来的な構造的優位だが現時点では開発段階"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。米陸軍プライムは入札勝利により独占的地位",
+      "kb3_t_calibration": "BA-001の延長（BA-001が70%なのでAMPVは開発段階で50%が適切）",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（プライム選定は能力認定）。Rule 4（定量的裏付け）: 部分的。開発段階で量産契約前。Q4発言は評価",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1 部分的、Rule 4 部分的。KB2-T pattern_III_t（競合模倣困難）。dogma.md Rule 1 部分的。AMPV開発段階（量産前）で将来性主導。Q4発言は評価。50%"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "ticker": "REL",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "高いキャッシュ転換率（96%）+ ROIC改善 → 株主還元（GBP600mn買戻し・配当+12%増）→ EPS CAGR",
+      "descriptive_label": "FCF→株主還元→EPS CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "GBP600mn買戻し実績と2015年GBP500mn計画の定量的証拠。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。FCF GBP1.15bn→GBP600mn買戻し+配当12%増は直接的で定量的。2015年GBP500mn計画が継続性を示す。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "RELXグループ簡素化（Reed Elsevier PLC/NV統合・1:1株式均等化）→ ガバナンス改善 → 資本効率向上 → ROIC改善経路",
+      "descriptive_label": "持株会社簡素化→ガバナンス→資本効率→ROIC CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_C_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "コーポレート簡素化のROIC改善への定量的接続が不透明。KB3 low confidence",
+      "final_confidence": 0.2,
+      "confidence_rationale": "KB2 pattern_C_t（因果の飛躍）。ガバナンス簡素化→ROIC改善という接続は投資家フレンドリーだが、競争優位や直接的な収益成長との接続が弱い。Phase1の-20%調整で10%→最低評価を避けて20%。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"10-20": 1, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

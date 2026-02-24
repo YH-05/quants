@@ -1,0 +1,215 @@
+{
+  "ticker": "RTN",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-29) + Q3 FY2014",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2014", "Q2 FY2014", "Q3 FY2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Patriot/ミサイル防衛システムにおける技術的差別化と国際受注実績によるSwitching Costs",
+      "descriptive_label": "Patriotシステムの技術的優位と顧客粘着性",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Demand from our broad base of customers continues to drive growth in our international business...full year 2014 international bookings were up 27% over 2013 and were 35% of the total company bookings...Qatar for Patriot and an air defense operating center; Kuwait for Patriot fire units...Poland and South Korea Patriot opportunities'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "Patriot防空システムの技術的複雑性（電子戦、誘導制御、統合システム）はスイッチングコストを生む能力。国際受注増27%は結果だが能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "国際受注+27%、$24.1B全社受注、book-to-bill 1.05。数値あり。Patriot Qatar $2Bなど具体的案件規模"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Patriotシステムは長期契約（upgrade、maintenance、training）が伴い構造的なスイッチングコスト"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "地政学リスク高まる環境（ISIS台頭、ロシア問題）×国家安保優先度という業界構造とRaytheonのPortfolioが整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①相当）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Lockheed Martin, MBDA）との具体的差別化データは限定的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "防衛調達の性質上（長期契約、技術統合、メンテナンス依存）、Patriotシステムの受注が続く構造はスイッチングコストを証拠付ける。国際受注27%増と複数の主要国での進展は量的証拠。業界構造（地政学リスク増→防衛予算増）との整合性も高い"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "国際Patriot受注積み上がり（Qatar, South Korea, Poland）→ 2016+ 収益認識加速 → 売上CAGR回復",
+      "descriptive_label": "国際受注積み上げ→2016収益認識→売上CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "受注積み上がり→収益認識は直接的な2ステップ。CEOが'2016 will have ramped up on 2 major new Patriot programs, Qatar and the other'と明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Backlog $33.6Bと強固。Qatar Patriot $2B+他の国際案件が2015-2016に立ち上がる。長期防衛契約のP&L認識パターンは予測可能であり、CAGR接続の確信度は高い"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "電子戦（EW）・サイバーセキュリティにおける技術投資とGaN技術による市場先行優位",
+      "descriptive_label": "EW/サイバー/GaN技術による次世代防衛市場先行",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'The investments we've made in GaN and cyber are paying off in significant ways today...we also won Next Generation Jammer, Air and Missile Defense Radar and also FAB-T...our latest cyber-related acquisition was Blackbird technologies...cyber capabilities.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "GaN技術への10年間投資（能力）の成果として Next Generation Jammer 受注（結果）。能力→結果の接続が確認できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "技術投資の定量化（IRAD支出額、特許数）は不明。競合（L3, Harris, BAE Systems）との相対的GaN優位の定量比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "NGJ受注は競合に勝ったことを示すが、技術的差別化の内容が非公開（classified）"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_pass",
+            "reasoning": "GaN技術は実績として機能している（戦略ではなく既存能力）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "classified情報のため技術的差別化が検証困難: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "GaN技術のトラック記録（NGJ、AMDR受注）は能力の証拠として機能。ただし防衛技術は高度に非開示であり、外部からの独立的検証が困難。サイバー分野は成長初期"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "EW/cyber/directed energy技術投資→将来フランチャイズプログラム受注→2016-2018 収益成長",
+      "descriptive_label": "新技術投資→フランチャイズプログラム→中期成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "技術投資→R&Dプログラム受注→量産→収益の3+ステップ。長期間のタイムラグ。CEOが'lay the foundation for growth over the next few years'と説明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "中期成長への接続は論理的だが3ステップ以上でタイムラグが大きい。GaN/NGJのように具体的に顕在化している案件は高評価だが、directed energyや高速兵器は初期段階"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "多様なプラットフォーム（IDS/IIS/Missiles/SAS）の業務プロセス最適化によるマージン安定性（13-14%）",
+      "descriptive_label": "オペレーション・エクセレンスによる安定13%+マージン",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO): 'We delivered solid results in both the quarter and the full year. Fourth quarter operating margin was 14.1%... For the full year, operating margin was 13.9%... operating cash flow of over $825 million for the quarter and $2.1 billion for the year.' Q3 (CFO): 'Our focus on execution productivity and efficiency continues to be reflected in our financial results.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "14.1%マージンは結果の報告。プロセスパワーとして認定するには長期的なオペレーション改善の仕組みの説明が必要"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "Lockheed Martinもほぼ同水準のマージン。業界特性（コストプラス契約、予算管理）が大きく影響"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative_result",
+            "reasoning": "数値は安定的に開示されているが、これは結果の指標"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "防衛大手全般の特性として高マージン、RTN固有の能力の説明不足: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "安定した13-14%マージンは結果指標。防衛業界全体でコストプラス契約が多く、競合（LMT、NOC）も同様のマージン帯。RTN固有のProcess Powerの証拠としては弱い"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 受注$24.1B（+3.7%）、book-to-bill 1.05、期末バックログ$33.6B。売上$22.8B、OP マージン13.9%（調整後12.7%）、EPS $6.97（調整後$6.12）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 5]
+    }
+  ]
+}

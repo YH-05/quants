@@ -1,0 +1,212 @@
+{
+  "ticker": "HSIC",
+  "scored_claims": [
+    {
+      "id": "HSIC_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Henry Schein の $10B 規模達成と全事業グループでのシェア獲得：歯科・動物薬・医療・テクノロジーの4業種全てで同時シェア獲得できる規模と多角化が Scale Economies の源泉。",
+      "evidence": "In 2014, for the first time, Henry Schein exceeded the $10 billion sales mark on an annual basis. We closed our 2014 year with strong fourth quarter financial results that once again included market share gains in each of our business groups.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule04"],
+        "results": {"rule03": true, "rule04": true},
+        "confidence": 0.5,
+        "adjustments": ["rule03: $10B は具体的規模の証拠", "rule04: 継続的全業種シェア獲得"]
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "医療流通の規模優位は Patterson Companies 等の競合も同様に追求している"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "$10B 達成は医療流通において重要なマイルストーン。全4業種でのシェア獲得は多角化した競争力の証拠だが、Patterson・McKesson・Medline 等との比較がなく規模の相対的優位は不明確。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Henry Schein の付加価値サービス統合型歯科流通：単なる製品流通ではなく、ファイナンス・プラクティス移行支援・コンサルティングを統合した Value-Added Services が顧客の高い切替コストを創出。",
+      "evidence": "Our commitment to our Dental customers has always been to provide the widest possible selection of products, equipment and Value-Added Services to create customized solutions that meet our customers' needs... We believe we're the largest provider of Dental equipment in the world.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07"],
+        "results": {"rule01": true, "rule07": false},
+        "confidence": 0.6,
+        "adjustments": ["rule01: 能力（付加価値サービス統合）の説明あり", "rule07: 「世界最大」の外部検証なし"]
+      },
+      "final_confidence": 0.55,
+      "confidence_adjustments": [
+        {"source": "pattern_C_self_reported_only", "adjustment": -0.05, "reasoning": "「世界最大の歯科機器プロバイダー」は自己申告"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [],
+      "overall_reasoning": "ファイナンス・プラクティス移行支援・機器・製品の統合提供は歯科医院に深く組み込まれた Switching Costs を創出する。複数サービスラインの統合は解約コストを高め、顧客生涯価値を向上させる構造として評価できる。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Henry Schein の戦略的 M&A 実行力：キャッシュフローの45-50%を M&A に配分し、取得先経営陣を維持するコミットメントにより国際展開を加速。分散した医療流通市場での統合者として Scale Economies を拡大。",
+      "evidence": "Pipeline on acquisitions is as full as ever... Between 45% and 50% of our cash flow will go into acquisitions. We will continue with our formula of accretive acquisitions... Our track record is outstanding for keeping management where we make commitments upfront.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule07"],
+        "results": {"rule04": true, "rule07": false},
+        "confidence": 0.5,
+        "adjustments": ["rule04: 継続的な M&A 実行実績", "rule07: 「卓越した実績」の外部検証なし"]
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {"source": "pattern_C_self_reported_only", "adjustment": -0.05, "reasoning": "「卓越した M&A 実績」は自己申告であり第三者評価なし"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule04", "pass": true}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [],
+      "overall_reasoning": "45-50%のキャッシュフロー配分は高い水準であり M&A への強いコミットを示す。取得先経営陣維持のコミットメントは買収後統合リスクを低減する能力として評価できる。国際展開（Brazil・South Africa）の実績は具体的。ただし M&A 品質の外部評価がない。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_004",
+      "claim_type": "competitive_advantage",
+      "claim": "歯科 CAD/CAM 機器・材料システムの統合流通：ハードウェア・材料・サポートを一体提供するCAD/CAMシステムの4年間チーム運営が深い顧客統合を実現。専用機器は高い切替コストを生む。",
+      "evidence": "CAD/CAM... our global category for CAD/CAM, the hardware, the entry devices, the materials is doing well and is growing. We have a team in place for 4 years now... I believe we're gaining market share globally.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule07"],
+        "results": {"rule04": true, "rule07": false},
+        "confidence": 0.5,
+        "adjustments": ["rule04: 4年間の継続的チーム運営", "rule07: 市場シェアの定量的証拠なし"]
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "「シェア獲得」の定量的数値がなく定性的主張にとどまる"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule04", "pass": true}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "CAD/CAM はハードウェア・専用材料・ソフトウェア・サポートの組み合わせであり、いったん導入すると切り替えコストは高い。4年間の専門チームによる継続的な市場開拓は実績を示すが、シェア数値の不在が証拠の説得力を下げる。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Henry Schein のグローバル歯科・動物薬ネットワーク：歯科と動物薬の4大業種（Dental・Animal Health・Medical・Technology）のグローバルネットワークは、製造業者に対してグローバル流通契約交渉力を提供するネットワーク効果を生む。",
+      "evidence": "Our Animal Health business is solid... we've invested heavily from a management point of view in Europe, in Australia/New Zealand... We're continuing to do well in CAD/CAM in the U.S., in Canada, in other markets... our brand is doing well in the marketplace.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07"],
+        "results": {"rule01": false, "rule07": false},
+        "confidence": 0.4,
+        "adjustments": ["rule01: Network Economies の定義への適合が弱い", "rule07: 競合比較なし"]
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "グローバル流通ネットワークは多くの医療流通業者が保有する一般的特性"},
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "具体的なネットワーク効果の定量証拠がない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": false}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "グローバルネットワークの存在は認識できるが、Network Economies（各参加者の価値が増加）の定義に厳密に合致するかは疑問。むしろ Scale Economies として分類する方が適切。定量的なネットワーク効果の証拠なし。",
+      "power_classification": "Network Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_006",
+      "claim_type": "cagr_connection",
+      "claim": "規模拡大と全業種シェア獲得→EPS 10% CAGR：$10B 規模に到達し全業種でシェア獲得する体制が、2015年も10-12% EPS 成長ガイダンス（3年計画）を支える CAGR 構造。",
+      "evidence": "Adjusted EPS growth for the year of 10%... affirming guidance range for 2015 diluted EPS [10-12% growth]... internal sales growth in local currencies at a 7-year high [referring to Q3 2014].",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule04"],
+        "results": {"rule05": true, "rule04": true},
+        "confidence": 0.5,
+        "adjustments": ["rule05: CAGR ロジック（規模→シェア→EPS）の連鎖あり", "rule04: 3年計画の継続性"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "10-12% EPS 成長ガイダンスは具体的な数値目標"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "3年計画（2012-2014）達成後の新計画（2015-2017）移行は継続性への信頼性を提供。10-12% EPS 成長は医療流通として持続可能な水準。ユーロ安（15%下落）が为替ヘッドウィンドとして 2015年の達成を困難にしている点が課題。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_007",
+      "claim_type": "cagr_connection",
+      "claim": "プラクティス移行サービス→顧客生涯価値 CAGR：歯科医院の開業から売却まで全ライフサイクルを支援するサービス体系が、既存顧客の長期維持とクロスセル機会を通じて CAGR を支える構造。",
+      "evidence": "We now help put a practitioner into practice, and when the practitioner is ready to sell the practice, help the practitioner exit... adding to our practice transitions footprint... Professional practice transitions group of Henry Schein Financial Services.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule07"],
+        "results": {"rule05": true, "rule07": false},
+        "confidence": 0.5,
+        "adjustments": ["rule05: 顧客生涯価値 CAGR ロジックの接続あり", "rule07: 具体的な収益貢献規模が不明"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_F_future_dependent", "adjustment": -0.05, "reasoning": "収益貢献は今後の規模拡大次第で不確定な部分がある"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "歯科医院の全ライフサイクル（開業→拡大→売却）を支援するサービス体系は Switching Costs を大幅に高め、CAGR ロジックとして理論的に説得力がある。ADS Florida・Maddox 買収という具体的実行例あり。現時点での収益規模は小さいが、戦略的方向性として評価できる。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "HSIC FY2014 実績: 売上 $10B 超（初）、調整済 EPS +10%、Q4 売上 $2.7B (+7%)",
+      "evidence": "Net sales for the quarter ended December 27, 2014, were $2.7 billion, reflecting a 7.0% increase. Adjusted EPS growth for 2014 of 10%, sales exceeded $10 billion for the first time.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "決算発表での財務開示。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CFO prepared remarks (2015-02-11)"]
+    },
+    {
+      "id": "HSIC_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "HSIC FY2014 キャッシュフロー・利益率: 営業CF $593M（純利益超過$126M）、Q4営業利益率7.5% (+11bp)",
+      "evidence": "Cash flow was very strong at $593 million and exceeded net income by over $126 million. Operating margin for the quarter was 7.5%, expanded by 11 basis points.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "具体的な財務数値で決算開示レベルの信頼性。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CFO prepared remarks (2015-02-11)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "HSIC",
+    "scored_count": 9,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.35": 1,
+      "0.45": 3,
+      "0.5": 3,
+      "0.55": 1,
+      "0.9": 2
+    }
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "農村ライフスタイル向け小売における21連続四半期のコンプ成長（49州でのユニークな市場ポジション）",
+      "evidence": "Q4 2014: '21st consecutive quarter of positive comp store sales'、コンプ+5.3%",
+      "final_confidence": 0.6,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "21連続四半期という継続性データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "農村ライフスタイル特化という競合に複製困難な専門性"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "農村市場の参入困難性（大手ディスカウント/オンライン浸透困難）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "業界構造×企業ポジション：農村ライフスタイル特化"
+        },
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "コンプ成長は結果"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "業界構造合致"
+        },
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.05,
+          "reasoning": "コンプは結果"
+        }
+      ],
+      "overall_reasoning": "農村ライフスタイル特化という独自ポジションは業界構造的に有利。21連続四半期の定量実績。まあ納得〜おおむね納得の中間で60%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "農村ライフスタイル特化ポジション → 110-115店舗/年の出店加速 → 売上高CAGR",
+      "evidence": "Q4 2014: 110-115店舗/年出店計画",
+      "final_confidence": 0.6,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "特化ポジション→新市場開拓→出店加速は合理的接続"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "出店計画数値付きの直接的CAGR接続"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.1,
+          "reasoning": "出店計画数値あり"
+        }
+      ],
+      "overall_reasoning": "出店計画数値あり。まあ納得〜おおむね納得で60%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "季節商品・C.U.E.カテゴリの在庫管理能力",
+      "evidence": "Q4 2014: CEOが「core competency and strategic advantage」と明言",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Demand Planningシステム導入という具体的な仕組み"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性：在庫管理システム"
+        },
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "定量的裏付けが弱い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "仕組みあり"
+        },
+        {
+          "source": "quantitative_lacking",
+          "adjustment": -0.1,
+          "reasoning": "定量的裏付け弱い"
+        }
+      ],
+      "overall_reasoning": "在庫管理能力はCEOがcore competencyと明言。定量的裏付け弱い。まあ納得で50%"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "サプライチェーン投資（DC拡充・mixing center）による西部・Texas展開の効率化能力",
+      "evidence": "Q4 2014: Casa Grande DC（最大250店舗対応）、Texas 2 mixing centers計画",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "DCとmixing centerという具体的インフラ投資"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "大規模サプライチェーンインフラは競合が短期間で複製困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性：SCインフラ"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "具体的インフラ"
+        }
+      ],
+      "overall_reasoning": "DCインフラ投資は具体的で地域展開の裏付け。まあ納得で50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "DC/mixing centerインフラ → 250店舗規模の西部展開可能 → 売上規模拡大",
+      "evidence": "Q4 2014: Casa Grande DC '250 stores in Southwest region'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "DC→250店舗対応→展開加速は明確な接続"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "定量的規模付きの接続"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.05,
+          "reasoning": "定量的規模"
+        }
+      ],
+      "overall_reasoning": "接続は明確。定量的規模あり。まあ納得で50%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014コンプストア+5.3%（前年+3.5%）。21連続四半期正コンプ、27連続四半期正コントランズ",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "新規需要計画システムを複数部門に展開開始（2014 Q4）。Casa Grande、AZのDC建設開始",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Casa Grande DC：最大250店舗対応可能。Texas 2箇所のmixing centerを2015年開設計画",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "60-70": 2,
+      "50-60": 6
+    },
+    "gatekeeper_applied": false
+  }
+}

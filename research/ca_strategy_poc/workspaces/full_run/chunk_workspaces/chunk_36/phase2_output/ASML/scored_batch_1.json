@@ -1,0 +1,124 @@
+{
+  "ticker": "ASML",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "半導体製造ノードの技術的要求による構造的な買い替え需要（5年毎の世代交代サイクル）",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "半導体ノード移行は業界の構造的要求であり、ASMLの「能力」ではない。ただしASMLがその唯一の受益者という点で評価可能"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "半導体ノード移行というマクロ業界構造との合致はある。ただしASML自身の優位性（EUV）がより直接的な主張"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "業界の構造的需要（結果）をASMLの優位性として提示するリスク"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.10,
+          "reasoning": "業界構造→ASMLの優位性への単純な誤帰属リスク"
+        }
+      ],
+      "overall_reasoning": "半導体ノード移行による買い替え需要はASMLにとって有利だが、これはASMLの能力より業界構造の特性。ID1（EUV独占）と重複する側面もある。60%が妥当"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "中国半導体製造市場への参入・展開能力（中国メモリ・ロジック投資増大に対応）",
+      "final_confidence": 0.30,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "中国市場参入は戦略（Rule 8-T）。ASMLが中国に販売できることは能力よりも地政学・規制リスクの問題"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "中国市場展開は戦略的意思決定。優位性としての評価は困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "戦略（中国市場展開）を優位性と混同"
+        },
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "中国市場への販売は半導体装置各社共通の方向性（2015年時点）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_patterns_BF",
+          "adjustment": -0.10,
+          "reasoning": "戦略混同+業界共通の二重リスク"
+        }
+      ],
+      "overall_reasoning": "中国市場参入は2015年時点での成長機会だが、競争優位性ではなく戦略。地政学リスク（輸出規制の先行き）も介在。30%が妥当"
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "サービス収益: システム1台あたり年間$2.5M（機器販売価格の約7%）。インストールベース6,000+台で年間$150M+のサービス収益基盤",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Q4 annual callでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 3,
+    "confidence_distribution": {
+      "30-40": 1,
+      "60-70": 1,
+      "70-80": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

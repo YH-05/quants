@@ -1,0 +1,163 @@
+{
+  "scored_claims": [
+    {
+      "id": "XOM-001",
+      "claim": "ExxonMobilの上流・精製・化学が一体となった垂直統合ポートフォリオが、商品価格サイクルを通じて安定した収益を生み出す構造的優位性をもたらしている",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "垂直統合という構造的優位性の主張。業界大手（Shell、Chevron等）も同様の構造を持つ点に注意"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "垂直統合は能力・仕組みとして評価可能。「安定収益」は結果",
+        "rule11_industry_structure": "石油メジャーの垂直統合は業界構造として認識されるが、XOM固有ではない",
+        "rule07_pure_competitor": "Shell、BP、Chevronとの比較なし。メジャー間で同様の垂直統合構造"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: Shell、Chevron、BP等の大手統合石油会社も同様の垂直統合を持つ",
+        "pattern_IV": "structural_market_position: 垂直統合は構造的優位性として認識可能",
+        "adjustment": "-10% (業界共通パターン)"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#6 (30%): メガファーマ共通能力。XOM-001も統合石油メジャー共通の構造",
+        "final_reasoning": "XOM固有の点は精製footprint・化学の強さにあるが、垂直統合自体は差別化にならない→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "垂直統合ポートフォリオは石油メジャーとして実在する構造的優位性（KB2パターンIV部分適合）だが、Shell、Chevron、BPも同様の統合構造を持ち（KB2パターンB適合）、XOM固有の差別化とは言い難い。「U.S. refining footprintがadvantaged feedstocksに最適配置」という言及はXOM固有の強みの示唆だが、定量的な比較がない。業界共通構造の中でXOM固有の要素の説明が不十分。50%が妥当（完全否定はできないが差別化証拠不足）。"
+    },
+    {
+      "id": "XOM-002",
+      "claim": "資産管理（Asset Management）への継続的なフォーカスにより、過去10年で100万バレル/日超の精製能力を売却し、高価値資産へのポートフォリオシフトを実現している",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "過去10年で100万bbl/日超売却という具体的実績。能力としての資産管理"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "資産売却・ポートフォリオ高品質化は戦略的行動（戦略）に近い面もある",
+        "rule04_quantitative": "1M bbl/日、6,000マイルのパイプライン、200超の燃料ターミナル売却という具体数値",
+        "rule10_negative_case": "「ポートフォリオを売却した」というネガティブケース（断念例）としての証拠"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 資産管理能力（能力）→高品質ポートフォリオ（結果）",
+        "pattern_I": "quantitative_differentiation: 1M bbl/日という具体数値による差別化の示唆",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "CHD#1 (70%): 買収ターゲット選定能力（規律ある実行）→70%。XOM-002は売却側の規律だが類似パターン",
+        "final_reasoning": "規律ある資産売却（ポートフォリオ高品質化）は能力として認識可能。1M bbl/日という実績が定量的証拠。50-70%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "100万bbl/日超の精製能力売却という具体的な定量データ（KB1ルール4）があり、過去10年の規律あるポートフォリオ管理は能力として評価できる（KB2パターンIII部分適合）。ただしこの「売却能力」が他のメジャー（Shell、BP等）と比較して優れているかの証拠がなく、「高価値資産へのシフト」の定量的成果（ROCEの改善等）も示されていない。50%が妥当。"
+    },
+    {
+      "id": "XOM-003",
+      "claim": "シンガポールの最新スチームクラッカーが原油から軽質フィードまで「業界初」の超広域フィードストック処理能力を持ち、化学事業での原料コスト優位性を生み出している",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "'industry first'という具体的な技術的差別化の主張。スチームクラッカーの柔軟性"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「unprecedented range of feedstocks」という技術能力の説明。業界初という差別化",
+        "rule04_quantitative": "具体数値はないが「industry first」という明確な差別化ポジション",
+        "rule11_industry_structure": "フィードストック柔軟性は化学事業での構造的優位として業界での認知あり"
+      },
+      "kb2_evaluation": {
+        "pattern_I": "quantitative_differentiation: 「industry first」という明確な差別化。原油処理能力という独自性",
+        "pattern_III": "capability_over_result: フィードストック柔軟性（能力）→コスト優位（結果）",
+        "adjustment": "+10%〜+20% (業界初の技術)"
+      },
+      "kb3_calibration": {
+        "reference_case": "EOG-001 (70%): 技術革新による定量的差別化。XOM-003も'industry first'という技術的優位→70%相当",
+        "final_reasoning": "'industry first'という業界初の技術は競合との明確な差別化点。下油価環境でのフィードストック柔軟性という業界構造との合致"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "'industry first'というフィードストック処理範囲（原油から軽質フィードまで）は技術的な差別化として明確（KB2パターンI適合）。「unprecedented range」という表現も業界での際立ちを示す。低油価環境下でのフィードストック価格下落からの恩恵という業界構造との合致（KB1ルール11適合）。ただし具体的なコスト削減額・マージン改善の定量データがなく、基本は'業界初'という事実のみへの依拠。競合（BASF、Dow等）との比較もない。70%が妥当（明確な技術差別化あり）。"
+    },
+    {
+      "id": "XOM-004",
+      "claim": "グローバル調達組織が大規模プロジェクト実行中に市場の節約分を捕捉する能力を持ち、下降サイクルでも資本効率を維持しながら投資を継続できる",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "グローバル調達組織という能力の主張。'structural improvements'という言及あり"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「capability of global procurement organization」という能力説明は適切",
+        "rule04_quantitative": "「structural improvements」という表現あり。具体的なコスト削減額・率なし",
+        "rule11_industry_structure": "大型エネルギープロジェクトでの調達力は規模の経済の典型例"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 調達能力（能力）→資本効率（結果）",
+        "pattern_B": "大手統合石油会社（Shell、Chevron等）も同様の調達組織を持つ。規模でのXOM優位はあるが",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "規模の経済による調達優位はXOMの規模（最大級）を考えると認められるが、具体的データ不足→50%",
+        "final_reasoning": "'structural improvements'という表現が組織的能力を示唆するが定量証拠なし"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "「capability of our global procurement organization」という表現は能力を適切に説明している（KB1ルール1適合）。XOMはエクソンモービルとして世界最大級の資本支出規模を持ち、調達規模の優位は理論的に存在する（Scale Economies）。ただし実際のコスト削減額・競合との比較が示されていない（KB1ルール4不足）。Shell、Chevronも同様の大規模調達組織を持つ（KB2パターンB適合）。50%が妥当。"
+    },
+    {
+      "id": "XOM-005",
+      "claim": "92億バレルの多様な資源ベースと、LNG・非在来型・深海など複数資源タイプにおける高品質な投資機会が、資本配分の最適化を可能にしている",
+      "power_type": "cornered_resource",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "92億バレルという具体的な規模の主張。資源多様性の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "資源ベース（資産）は能力・仕組みではなく保有資源。「capital allocation optimization」は能力だが",
+        "rule04_quantitative": "92億バレルという具体数値あり。ただし競合との比較なし",
+        "rule07_pure_competitor": "Shell（同等規模の資源ベース）、BP、Chevronとの比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: 他の石油メジャーも同様に多様な資源ポートフォリオを保有",
+        "pattern_A": "「high-value investment opportunities」は自己評価・結果に近い",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#1 (50%): 複数薬剤ポートフォリオ（業界共通）。XOM-005も複数資源タイプの保有は石油メジャー共通",
+        "final_reasoning": "92億バレルは大きな数字だが、Shellやchevronも同等規模の資源ベースを持つ"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "92億バレルという資源ベースの規模は具体的だが、Shell（同様の資源規模）、Chevron、BPと比較した際の差別化が不明（KB2パターンB適合）。「diverse and deep resource base」という表現も統合石油メジャーに共通する表現。「high-value investment opportunities」は自己評価（KB2パターンA適合）。資本配分最適化は「できる」という主張だが、他社との比較でのROCE優位等の定量証拠がない（KB1ルール4不足）。30%が妥当。"
+    },
+    {
+      "id": "XOM-006",
+      "claim": "XTOへのボルトオン買収統合において、ExxonMobilの独自技術・資源開発ノウハウ・強固な財務力を活用して取得資産を高度化する能力を持っている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "買収統合能力の主張。ただし証拠は自己評価レベル"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「resource capability, expertise, proprietary technology, strong balance sheet」という能力列挙。ただし具体的な統合成果なし",
+        "rule04_quantitative": "「very beneficial」という定性評価のみ。具体的な生産量・コスト改善データなし",
+        "rule07_pure_competitor": "他の統合石油会社（Shell、Chevron）との買収統合能力比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_D": "qualitative_only: 「proprietary technology」「expertise」という定性的能力列挙のみ",
+        "pattern_B": "大型統合石油会社はいずれも買収統合能力を持つ",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#2 (10%): 「劇場的価値」の定性的差異。XOM-006も定性的能力列挙→30%に留める",
+        "final_reasoning": "自己申告の能力列挙。「very beneficial」という自己評価は証拠として弱い"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "'resource capability, expertise, proprietary technology, strong balance sheet'という能力の列挙は定性的かつ自己申告（KB2パターンD適合）。「very beneficial」という主観的評価のみで具体的な統合成果（生産性向上率、コスト削減額等）が示されていない（KB1ルール4不足）。XTOというシェール専門会社へのXOM技術・ノウハウの適用は理論的に意味があるが、証拠の質が低い。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "50-60": 3,
+      "70-80": 1,
+      "30-40": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "ticker": "RENT",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "電子的意思決定ツールへの転換能力（データ解析・アナリティクス統合能力）",
+      "evidence": "Q4 FY2014 CEO発言: 'we're now primarily focused on driving the transition from electronic reference to electronic decision tools by adding broader datasets, embedding more sophisticated analytics and leveraging more powerful technology.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_8_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "KB1-T rule_1_t",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "能力・仕組みとして説明されているが「転換を進めている」という動詞的表現が優位性（能力）と戦略（行動）を混在させている"
+        },
+        {
+          "source": "KB1-T rule_8_t",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "電子化移行（戦略）と能力（データ統合・アナリティクス）の境界線上。ルール8：戦略≠優位性の観点から減点"
+        },
+        {
+          "source": "KB2-T pattern_F",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Pattern F（戦略混同）リスクあり。しかし言及レベルは戦略語りに近く採用留保"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Wolters Kluwer、Thomson Reuters等の純粋競合との具体的比較なし。相対的差別化の根拠不十分"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_pass", "reasoning": "データセット拡充・アナリティクス統合は名詞的能力として識別可能だが動詞的戦略表現が混在"},
+        {"rule": "rule_8_t", "verdict": "borderline", "reasoning": "戦略（転換推進）と能力（統合力）の境界線上"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_F", "matched": true, "effect": "neutral", "reason": "戦略混同リスクあり。戦略語りが優位性評価に混入している可能性"}
+      ],
+      "overall_reasoning": "電子決定支援ツールへの転換能力は方向性として評価できるが、dogmaルール1（能力≠結果）とルール8（戦略≠優位性）の両面で留保が必要。CEOが「転換を進めている」という戦略的語りをしており、背後の組織的能力（データ統合アーキテクチャ、アナリティクス統合力）の具体的説明が不十分。Wolters Kluwer、LexisNexisとの明示的比較なし。Phase 1で50%と評価されたが、KB2-T Pattern Fとdogmaルール7（純粋競合差別化）の観点から40%に修正",
+      "power_classification": "Switching Costs / Cornered Resource（候補）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks", "Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "電子決定支援ツール転換 → 顧客スイッチングコスト上昇 → 更新率維持・価格プレミアム → 売上CAGR +1-2pp",
+      "evidence": "Q4 FY2014 CEO発言に基づくCAGR接続仮説。更新率・価格プレミアムとスイッチングコストの関係を論証",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR rule_5",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "因果は3段階以上だが各ステップは論理的。dogma CAGR高評価パターン「過去実績との整合性」には届かない"
+        },
+        {
+          "source": "dogma CAGR low pattern",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "更新率等の開示データ未確認。「数値の根拠が不透明」低評価パターンに部分的に該当"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "multi_step", "reasoning": "3段階以上の因果チェーンだが各ステップは論理的"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4発言由来（主・①相当）"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "スイッチングコスト→更新率→CAGR接続は論理的に成立するが、更新率の開示データが未確認でトランスクリプトからの直接的裏付けが弱い。+1-2ppという数値の根拠も不透明。優位性（#1）を40%と評価したため、CAGR接続の上限は45%",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Risk & Business Information（Lexis-Nexis Risk Solutions）のデータ・アナリティクス資産とその複数市場への展開能力",
+      "evidence": "Q4 FY2014 CEO発言: 'Risk & Business Information grew 6%...strong underlying revenue growth was driven by volume growth, new product rollouts and adjacency expansion...Insurance saw strong growth driven by demand in the core U.S. auto segment and good takeup of new products'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "KB1-T rule_1_t",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "6%成長という結果への言及が中心。データ資産・アナリティクス能力という能力への言及は間接的。KB2-T Pattern A（結果を原因と取り違え）のリスク"
+        },
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Pattern A（結果を原因と取り違え）に該当。成長実績（6%成長）を優位性として提示するパターン"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Verisk Analytics、TransUnion等の純粋競合との比較なし。すでに-10%調整済み"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_fail", "reasoning": "成長率（結果）の報告が中心。データ資産・アナリティクス能力という能力の具体的説明が不十分"},
+        {"rule": "rule_4_t", "verdict": "limited", "reasoning": "6%成長率はあるが競合比較なし"},
+        {"rule": "rule_6_t", "verdict": "structural", "reasoning": "独自データアセット（保険・fraud・政府向け）は構造的資産"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "成長実績（6%成長）を優位性として提示するPattern A（結果を原因と取り違え）"}
+      ],
+      "overall_reasoning": "Risk & BI事業のデータ資産は実質的な競争優位だが、トランスクリプトでは成長率（結果）の報告が中心で、能力（データ収集・統合・モデル化）の具体的説明が不十分。KB2-T Pattern A（結果→優位性の転倒）に該当。Verisk vs RELXの純粋競合比較なし。40%に修正",
+      "power_classification": "Cornered Resource（データ資産）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks", "Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Risk & BI データ資産 → 保険・政府・fraud領域での独自ソリューション → 継続的な隣接展開 → 6%+成長維持",
+      "evidence": "Risk事業のデータ資産から保険・政府・fraudドメインへの継続的製品展開。2013-2014の6%成長実績が裏付け",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 60
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR rule_5",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "データ資産→新製品展開→成長率は比較的直接的な因果。2ステップで dogma 高評価パターンに近い"
+        },
+        {
+          "source": "dogma base score",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "優位性（#3）が40%評価のため、CAGR接続の上限は50%。Phase 1の60%から修正"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "direct", "reasoning": "データ資産→新製品展開→成長率は2ステップで比較的明確"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4発言"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CAGR接続の論理は比較的明確（2ステップ）だが、優位性（#3）がPattern A評価で40%のため上限50%。開示データ（セグメント別成長率）での検証可能性はある",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "STM（科学・技術・医学）出版における世界最大規模の一次研究コンテンツ資産と購読更新率",
+      "evidence": "Q4 FY2014 CEO発言: 'Our STM business grew 2%...Primary research subscription revenue growth was around 0.5 percentage point higher than prior year. And we saw double-digit growth in subscription journal article submissions and in usage.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_B",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "Pattern B（業界共通能力）リスク。STM出版はSpringer、Wiley、RCS等も同様のコンテンツ資産を保有"
+        },
+        {
+          "source": "dogma rule_3",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "純粋競合（Springer, Wiley）との明示的比較なし。dogmaルール3（相対的優位性要求）を満たさない"
+        },
+        {
+          "source": "Q4 2年連続発言",
+          "direction": "up",
+          "magnitude": 0.05,
+          "reason": "2013・2014の2年連続Q4での一貫した発言。信頼性を補完"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Nature/Springer, Wiley等との差別化根拠が薄い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_pass", "reasoning": "コンテンツ資産（蓄積論文数）は能力・資産として評価可能"},
+        {"rule": "rule_7_t", "verdict": "weak", "reasoning": "Springer/Wiley等の純粋競合との明示的比較なし"},
+        {"rule": "rule_11_t", "verdict": "partial", "reasoning": "STM出版市場は高集中度・高リテンション構造だが発言では明示なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "STM出版でのコンテンツ資産保有は業界大手に共通。Elsevier固有の差別化が不明確"}
+      ],
+      "overall_reasoning": "STM出版のコンテンツ資産は実質的な参入障壁だが、経営陣発言は結果（成長・使用量増加）の報告が中心でSpringer/Wileyとの具体的差別化が示されていない。KB2-T Pattern B（業界共通能力）リスクもあり45%。2年連続Q4発言の一貫性は評価するが純粋競合比較の欠如が限界",
+      "power_classification": "Cornered Resource（コンテンツ資産）/ Switching Costs（購読継続）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks", "Q4_FY2013_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "RENT",
+    "claim_count": 13,
+    "scored_count": 5,
+    "target_claim_ids": [1, 2, 3, 4, 5],
+    "batch_index": 0,
+    "batch_total": 3,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 0,
+      "0.5": 2,
+      "0.4-0.45": 3,
+      "0.3": 0,
+      "0.1": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb1_rules_transcript/rule08_strategy_not_advantage.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_B_industry_common.md",
+      "kb2_patterns_transcript/pattern_F_strategy_confusion.md",
+      "kb2_patterns_transcript/pattern_I_quantitative_differentiation.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

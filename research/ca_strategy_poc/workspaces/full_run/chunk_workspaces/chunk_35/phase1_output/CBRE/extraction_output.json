@@ -1,0 +1,247 @@
+{
+  "ticker": "CBRE",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-04) [Primary] + Q3 FY2014 Earnings Call (2014-10-xx) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル統合アウトソーシングプラットフォーム（Global Corporate Services）：リーシングチームとのシナジーによる大企業顧客のワンストップ不動産サービス提供能力",
+      "descriptive_label": "GCS統合アウトソーシングプラットフォームによるクロスセル・顧客維持能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Bob Sulentic): 'material improvement in our operating platform, notably technology, research and specialized consulting services, allowing us to better serve our clients...Our Global Corporate Services business sustained its long-term track record of strong growth as the depth, capability and maturity of CBRE's integrated service offering continues to attract new clients.' Q&A: 'partly because of some changes we made to our platform that allows our Global Corporate Services business and our leasing teams to work more effectively together.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "統合アウトソーシングプラットフォームは名詞で表現されるサービス属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2014年GCS+Asset Services収益$3.7B（+51%、Norland除き+16%）、Q4新規契約107件（年間最多）、Q4単体63件"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "大企業顧客のアウトソーシング契約は複数年・更新型で構造的スイッチングコストを生む"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "企業の不動産コスト最適化ニーズの拡大という業界トレンドと、CBREの統合ソリューション提供能力の合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "107新規契約（年間最多）という定量的な成果データあり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（JLL、Colliers）との直接比較なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "GCSの統合アウトソーシングプラットフォームは大企業顧客のスイッチングコストを生む構造的優位性。107新規契約（年間最多）と安定した中期成長軌道（mid-teens成長見通し）で裏付けられている。不動産サービス市場での規模とサービス統合が差別化要因"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "GCS統合プラットフォーム×リーシングシナジー → 新規アウトソーシング契約獲得 → 継続的リカーリング収益（契約収益51%）→ 収益CAGR支持",
+      "descriptive_label": "統合プラットフォーム→アウトソーシング契約獲得→リカーリング収益→CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（統合プラットフォーム→新規契約獲得→リカーリング収益）。契約収益51%というデータで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的裏付け（契約収益51%・リーシング収益含め77%の安定的収益）と直接的な因果メカニズム。GCS mid-teens成長見通しも提示"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル規模と地理的カバレッジ：9地域にわたる統合サービス能力（Americas・EMEA・APAC）で多国籍企業の不動産管理を一括受託",
+      "descriptive_label": "グローバル統合不動産サービスのスケール・カバレッジ優位性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CFO Jim Groch): Americas Q4 revenue +20%（9期連続2桁成長）。EMEA +78%（Norland除き+23%）。APAC +14%。 CEO: 'Global revenue reached a record $9 billion, rising 26% for the year...Operating leverage achieved across all 3 regional services businesses'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "売上$9Bは結果だが、グローバルカバレッジ（能力）は顧客価値を生む構造的属性"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "グローバルカバレッジ・ネットワーク規模は名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$9B収益・全3地域での2桁成長・Americas 9四半期連続2桁成長という定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "JLL・Colliers等の競合も同様のグローバルカバレッジを保有",
+            "adjustment": -10
+          },
+          {
+            "reason": "規模の大きさ自体（$9B収益）は結果指標でもある",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "グローバルカバレッジはCBREの規模優位性だが、JLL等の競合も同様のカバレッジを保有。差別化はカバレッジ存在ではなく統合度（GCSとの連携深度）にある"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "グローバル規模→各地域での市場シェア向上→収益の地理的多様化→CAGR安定化",
+      "descriptive_label": "グローバルカバレッジ→各地域シェア獲得→収益多様化→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "規模→シェア獲得→収益多様化という3段階で間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "概ね直接的だが、グローバルカバレッジ自体が競争優位性の中心ではないため確度は中程度"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "戦略的なインフィルM&Aと統合能力：年間11件のインフィル買収を1年内に統合し、Norland（$869M収益）を成功裏に20%成長させた実績",
+      "descriptive_label": "インフィルM&A実行・統合能力（Norland統合成功事例）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Bob Sulentic): 'We successfully integrated Norland, a significant acquisition which closed a few days before the start of the year, and then grew its revenue by approximately 20% to $869 million...We also integrated 11 infill acquisitions, bringing more of the industry's highest-quality resources to our clients.' Q&A: CEOが規律ある買収（非合理的高価格案件を断る姿勢）を強調",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_10_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "M&A統合能力（プロセス・仕組み）として評価。Norland 20%成長という具体的結果が能力を裏付け"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "CEOが非合理的高値案件を断ったと言及しているが、具体的な断念案件の詳細なし"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "M&A自体は戦略だが、統合後成長（Norland +20%）という能力として評価"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Norland統合後20%成長という具体的成果データあり",
+            "adjustment": 0
+          },
+          {
+            "reason": "M&A統合能力は不動産サービス業界に一般的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Norlandを1年で統合し20%成長させた実績はM&A実行能力の証拠。ただし業界での一般性もあり相対的優位性の確認が必要"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "インフィルM&A→地域サービス強化→既存クライアントへのクロスセル→収益CAGR押し上げ",
+      "descriptive_label": "インフィルM&A→地域強化→クロスセル→CAGR経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3段階（M&A→地域強化→クロスセル→CAGR）で間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムは妥当だが間接的。過去のM&A実績（EPSへの貢献）は示されているが、将来のCAGR接続の定量的裏付けは限定的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "CBRE FY2014実績：グローバル収益$9B（+26% YoY、過去最高）、EBITDA $1.2B（過去最高）、調整EPS $1.68（+17%）。契約収益51%、契約+リーシング収益77%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "CBRE GCS Q4実績：新規アウトソーシング契約63件（Q4最高水準）、2014年通期107件（年間最多記録）。Americas 9四半期連続2桁成長（$5B規模セグメント）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "ticker": "NG/",
+  "scored_claims": [
+    {
+      "claim_id": "NG/-001",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "規制独占権（RIIO・PUC）は典型的なCornered Resource（規制資源）",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "規制独占契約（8年間固定のRIIO・米国PUC規制）という構造的な法的保護"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "送電・ガス輸送インフラの規制独占は最も構造的な優位性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "英国・米国の送電インフラ独占は典型的な構造的市場ポジション"
+        }
+      ],
+      "confidence_score": 0.9,
+      "confidence_rationale": "規制独占インフラは7 Powers の Cornered Resource の典型例。新規参入が原理的に不可能（英国では物理的に1つの送電網しか必要ない）。RIIO規制（8年間固定）と米国PUC規制という二大規制フレームワークの下で規制資産ベースが安定的に成長する。dogma.md ルール11（業界構造との合致）に最高度に適合。90%（かなり納得）",
+      "cagr_connection_score": 0.9,
+      "cagr_connection_rationale": "規制独占権→規制資産ベース成長（5%/年）→規制収益成長という直接的かつ開示データで検証可能なメカニズム。dogma.md ルール5（開示データによる検証可能性）に適合"
+    },
+    {
+      "claim_id": "NG/-002",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "RIIO規制フレームワーク内での超過報酬能力（ROE14% vs 許容10.2%）は具体的な数値裏付けのある能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "TotEx削減£190M・インセンティブ報酬+280bpという具体的な能力の発揮"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "規制フレームワーク内でのインセンティブ獲得能力は構造的"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "ROE14% vs 許容10.2%・TotEx £190M削減という定量的差別化"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "TotEx削減（結果）を可能にした能力を示している"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "ROE14% vs 規制許容10.2%という定量的な超過実績と、TotEx £190M削減（前年比+£120M改善）という具体的数値は、規制フレームワーク内でのアウトパフォーマンス能力の強力な裏付け。dogma.md ルール4（定量的裏付け）に高度に適合。ただしこれは規制独占権（NG/-001）の補完的要素でもある。70%（おおむね納得）",
+      "cagr_connection_score": 0.9,
+      "cagr_connection_rationale": "TotEx削減→インセンティブ報酬→ROE許容ベースを280bp超過という開示データで検証可能な直接メカニズム"
+    },
+    {
+      "claim_id": "NG/-003",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "£35億の年次投資→RAB5%成長という定量的に示された規模投資の優位性",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "£35億の設備投資能力は仕組みだが、規制会社では投資=収益の構造があるため特別な能力とは言いにくい"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "投資額（£35億）と RAB成長（5%）は結果の提示"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "規制インフラ会社にとって設備投資→RAB成長は業界共通のメカニズム"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "規制会社においては設備投資→RAB成長→収益成長という仕組みは制度的に保証されており、これはNG/に固有の優位性というよりは規制インフラ業界全般の仕組み（Pattern B）。ロンドンのトンネルプロジェクトへの言及は具体的だが、これはNG/-001の規制独占権の結果として生まれる投資機会。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "£35億投資→5%RAB成長→規制収益5%成長という開示データで検証可能な接続"
+    },
+    {
+      "claim_id": "NG/-004",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "英米二大ポートフォリオによる収益安定性と配当成長は一定の規模の経済",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "英米ポートフォリオ分散はリスク管理戦略であり優位性ではない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "地理的分散は補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "地理的分散（戦略）を規模の経済（優位性）として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "英米ポートフォリオ分散はリスク管理戦略であり競争優位性ではない（dogma.md ルール8）。EPS9%成長・配当42.87pはNG/-001の規制独占権の結果として生じる収益。独立した優位性の証拠としては弱い。30%（あまり納得しない）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "英米二重規制収益ポートフォリオ→安定的なCAGR成長という接続は概念的に理解できる"
+    },
+    {
+      "claim_id": "NG/-005",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "英国ESO（系統運用者）の認可という規制上の唯一のポジションは典型的な Cornered Resource",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "英国唯一の認可系統運用者という法的地位は希少リソース"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "系統運用機能は構造的な規制資源"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "英国唯一の系統運用者という参入障壁が極めて高いポジション"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "英国のEMR（電力市場改革）下での2,400MWのバランシング予備力調達という具体的な実績と、「唯一の認可系統管理事業者」という法的地位は明確な Cornered Resource。£70M消費者節約という実績も示される。ただし NG/-001 との重複があり、独立したクレームとしての差別化が限定的。70%（おおむね納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "系統運用者機能は主に収益の安定性に貢献するが、成長への直接接続は弱い"
+    },
+    {
+      "claim_id": "NG/-006",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "ブレーカー改修の新手法開発とTotExアウトパフォーマンスは具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「ブレーカー改修の全く新しい方法を開発」という具体的なイノベーション能力"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "継続的なコスト削減イノベーション能力は構造的"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "TotEx削減（結果）だけでなく、ブレーカー改修新手法という能力を説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "TotEx £190M削減・前年比+£120M改善という定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "ブレーカー改修の新手法（「コストを大幅削減する」）という具体的なイノベーション事例と、TotEx £190M削減の定量裏付けは高評価。規制会社では「技術革新による費用節減」が直接利益に転換する仕組み（RIIO インセンティブ）になっており、この能力がリターン向上に直結することが明確。70%（おおむね納得）",
+      "cagr_connection_score": 0.9,
+      "cagr_connection_rationale": "イノベーション→TotEx削減→インセンティブ報酬→ROE改善という開示データで検証可能な直接メカニズム（RIIOインセンティブ制度による）"
+    },
+    {
+      "claim_id": "NG/-007",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "88,000MWの発電事業者との長期接続契約は希少な長期資源コントロール",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "88,000MWの接続契約という長期パイプラインを保有する契約上の権利"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "発電容量の接続契約パイプラインは構造的な将来投資の基盤"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "88,000MWの接続契約による長期投資パイプラインは構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "88,000MWという具体的な定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "88,000MWの発電事業者との接続契約という具体的な数値と「2020年代に延びる長期投資パイプライン」という将来の成長基盤の説明は高評価。脱炭素化・電化トレンドによる送電容量拡張需要という業界構造との合致も認められる。dogma.md ルール11（業界構造との合致）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.9,
+      "cagr_connection_rationale": "88,000MW接続契約→2020年代の大規模設備投資→RAB成長加速→規制収益拡大という開示データで追跡可能なメカニズム"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "batch_count": 2
+  }
+}

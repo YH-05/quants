@@ -1,0 +1,469 @@
+{
+  "scored_claims": [
+    {
+      "id": "FFIV_001",
+      "claim_type": "competitive_advantage",
+      "claim": "F5 Networks の ADC 市場 8年連続 Magic Quadrant リーダー：独立機関（Gartner）による8年連続のリーダーポジション認定はアプリケーション配信コントローラー市場での技術的 Process Power の客観的証明。",
+      "evidence": "We are very proud to have been positioned as a leader in the Magic Quadrant for Application Delivery Controllers for 8 consecutive years.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule04",
+          "rule07"
+        ],
+        "results": {
+          "rule04": true,
+          "rule07": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule04: 8年連続という長期的継続実績",
+          "rule07: Gartner という独立機関による競合比較"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_V_specific_competitor_comparison",
+          "adjustment": 0.05,
+          "reasoning": "独立機関による競合との比較ランキングで客観的優位性を示す"
+        },
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.0,
+          "reasoning": "8年連続という定量的継続実績"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule04",
+          "pass": true
+        },
+        {
+          "rule": "rule07",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Gartner Magic Quadrant での8年連続リーダー認定は外部機関による客観的な技術優位性の証明として非常に強力。Citrix ADC・A10 Networks 等の競合との比較において継続的に最高評価を獲得していることは ADC 市場での Process Power の確固たる証拠。",
+      "power_classification": "Process Power",
+      "evidence_sources": [
+        "Q4 FY2014 CEO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_002",
+      "claim_type": "competitive_advantage",
+      "claim": "F5 のサービス収益高成長と繰延収益の拡大：繰延収益 $637M (+20%)・サービス収益+15% は長期サービス契約（サポート・保守）による高 Switching Costs 構造。ネットワーク機器の保守契約は実質的に変更困難。",
+      "evidence": "Services business delivered strong performance consistently throughout fiscal 2014 and continued to be a significant profit and revenue growth contributor... Deferred revenue increased 20% year-over-year to $636.7 million. Service revenue of $209.8 million increased... 15% year-over-year.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule04"
+        ],
+        "results": {
+          "rule03": true,
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule03: $637M (+20%)・+15%という定量的証拠",
+          "rule04: 継続的な成長トレンド"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "繰延収益+20%は将来の確定収益として強力な CAGR 証拠"
+        },
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "ネットワーク機器保守はCisco・Juniperも同様の構造を持つ"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        },
+        {
+          "rule": "rule04",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "繰延収益+20%（$637M）とサービス収益+15%の組み合わせは長期契約による高粘着性の定量的証拠として非常に説得力が高い。ネットワーク機器の保守・サポートは設定の複雑性・ベンダー固有管理ツールにより代替困難であり、Switching Costs は構造的に高い。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": [
+        "Q4 FY2014 CEO/CFO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_003",
+      "claim_type": "competitive_advantage",
+      "claim": "F5 のセキュリティソリューション市場シェア拡大：製品売上の36%がセキュリティ製品（+41% YoY）。WAF・APM・DDoS保護という複合的セキュリティポートフォリオが顧客のアプリケーション保護における Cornered Resource。",
+      "evidence": "Our security solutions are driving a significant number of sales wins, including many multimillion-dollar transactions. Approximately 36% of our total product sales last year included one or more security products, and this represents 41% growth over fiscal 2013.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule07"
+        ],
+        "results": {
+          "rule03": true,
+          "rule07": false
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: 36%/+41%という定量的証拠",
+          "rule07: 専業セキュリティ競合との比較なし"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "製品売上の36%構成比と41%成長は定量的に強力"
+        },
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "Palo Alto Networks・Imperva 等の専業セキュリティ競合との差別化が不明確"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "製品売上の36%がセキュリティ製品（+41%成長）は ADC に付随したセキュリティ機能の差別化として評価できる。ADC とセキュリティの統合提供はベンダー統合の文脈で顧客価値が高い。ただし Palo Alto 等の専業セキュリティベンダーとの機能比較なしでは Cornered Resource の証明として不完全。",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": [
+        "Q4 FY2014 CEO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Cisco ACE 代替機会での F5 リーダーシップ：Cisco の ADC 撤退（ACE 廃止）により既存 Cisco 顧客の半数以上がまだ F5 移行待ちという構造的成長機会。これは競合のデシジョンによって生まれた Cornered Resource。",
+      "evidence": "Our success in the Cisco ACE replacement opportunity, with another solid year of revenue from new customer ACE replacements... We believe that our total replacements to date account for significantly less than 50% of the ACE installed base, and we expect the opportunity to continue throughout 2015 and beyond.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule07"
+        ],
+        "results": {
+          "rule03": true,
+          "rule07": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule03: 50%未満という残存機会の定量的証拠",
+          "rule07: Cisco ACE という具体的な競合製品からの代替"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_V_specific_competitor_comparison",
+          "adjustment": 0.05,
+          "reasoning": "Cisco という具体的競合の撤退を利用した市場機会の定量化"
+        },
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "他の ADC ベンダーも同様の Cisco ACE 代替機会を狙っている"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        },
+        {
+          "rule": "rule07",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Cisco の ADC 市場撤退（ACE EoL）は F5 に構造的な Cornered Resource を創出している。既存 ACE 顧客の50%以上がまだ移行していないという残存機会は2015年以降も継続することが CEO 発言で確認されており、実証済みの成長ドライバー。他の ADC ベンダーとの競争があるがF5は最有力候補。",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": [
+        "Q4 FY2014 CEO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_005",
+      "claim_type": "competitive_advantage",
+      "claim": "75,000台超の3年以上稼働インストールベースとGBB戦略：既存顧客の機器リフレッシュ機会（40%が3年以上経過）とGood/Better/Best アップセル戦略が顧客当たり収益拡大の Process Power。",
+      "evidence": "Our installed base currently includes over 75,000 systems that have been installed for 3 years or more, approximately 40% of the installed base, which is clearly a good refresh opportunity. Both our software attach rate and our Virtual Edition sales have increased steadily throughout the year. Customer reaction to Good, Better, Best sales strategy has been fantastic.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule07"
+        ],
+        "results": {
+          "rule03": true,
+          "rule07": false
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: 75,000台・40%という定量的インストールベース",
+          "rule07: GBB 戦略の効果の定量的証拠なし"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "75,000台・40%という具体的なリフレッシュ機会規模"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "GBB 戦略への「fantastic」反応は定性的"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "75,000台超のインストールベースのうち40%が3年以上経過しているという定量的なリフレッシュ機会は既存顧客ベースの収益化ポテンシャルを具体的に示す。GBB 戦略はアップセルの体系として評価できる。ソフトウェアアタッチ率とVirtual Edition 増加は ARPU 向上の間接的証拠。",
+      "power_classification": "Process Power",
+      "evidence_sources": [
+        "Q4 FY2014 CEO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_006",
+      "claim_type": "competitive_advantage",
+      "claim": "F5 の仮想化・LTE向けソリューションへの転換：Virtual Edition +49%成長とDiameter/LTEの40プロジェクト稼働は、データセンター仮想化とモバイルネットワーク両市場でのProcess Power展開。",
+      "evidence": "Software-only virtualization solutions continue to gain traction, with annual revenue growth up more than 49% from fiscal 2013. We also made significant progress with our Traffix Diameter solutions for LTE rollouts. Our competitive win rate is very high and we now have approximately 40 projects currently in production.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule07"
+        ],
+        "results": {
+          "rule03": true,
+          "rule07": false
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: Virtual Edition +49%・40プロジェクト稼働という定量証拠",
+          "rule07: 「競合勝率高い」は自己申告"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "+49%成長は高い定量証拠"
+        },
+        {
+          "source": "pattern_C_self_reported_only",
+          "adjustment": -0.05,
+          "reasoning": "「競合勝率非常に高い」は外部検証なしの自己申告"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Virtual Edition +49%成長は仮想化市場での F5 の適応力を示す強い証拠。LTE 向け Diameter ソリューション40プロジェクト稼働は通信事業者市場への浸透を示す。ただし SDN・クラウドネイティブの長期的進展により既存ハードウェアビジネスへの影響が最大リスク。",
+      "power_classification": "Process Power",
+      "evidence_sources": [
+        "Q4 FY2014 CEO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_007",
+      "claim_type": "cagr_connection",
+      "claim": "サービス繰延収益拡大→安定的収益 CAGR：繰延収益 $637M（+20%）の継続的拡大がサービス収益ベースを毎年確実に押し上げ、FY2014 の17%収益成長と$549M CFO 達成を支える CAGR 構造。",
+      "evidence": "Revenue of $465.3 million was above our guided range... up 18% from the fourth quarter a year ago. Deferred revenue increased 20% year-over-year to $636.7 million. Service revenue... 15% year-over-year. Cash flow from operations totaled $549 million for all of fiscal 2014.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule05",
+          "rule03"
+        ],
+        "results": {
+          "rule05": true,
+          "rule03": true
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          "rule05: 繰延収益→将来サービス収益という直接的CAGR接続"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "$637M繰延収益と+20%成長は将来収益の定量的先行指標"
+        },
+        {
+          "source": "pattern_E_capex_as_moat",
+          "adjustment": -0.05,
+          "reasoning": "ハードウェア→ソフトウェア移行期のミックス変化が利益率への影響が不確定"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule05",
+          "pass": true
+        },
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "繰延収益は将来収益の先行指標として信頼性が最も高い指標の一つ。+20%の成長は将来のサービス収益 CAGR を直接的に示唆する。FY2014の18%収益成長と$549M CFO 達成は実証済みの CAGR 実現能力を示す。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": [
+        "Q4 FY2014 CFO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_008",
+      "claim_type": "cagr_connection",
+      "claim": "複合的成長ドライバー（セキュリティ+Cisco ACE代替+リフレッシュ）→収益 CAGR：セキュリティ拡大・ACE代替残存機会・機器リフレッシュ機会の3つの独立した成長エンジンが、予測可能な中期収益 CAGR を支える多層構造。",
+      "evidence": "Security solutions driving significant number of sales wins... 36% of product sales included security products [+41% growth]... Cisco ACE replacements [<50% yet to migrate]... 75,000 systems installed 3+ years for refresh.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule05",
+          "rule03"
+        ],
+        "results": {
+          "rule05": true,
+          "rule03": true
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          "rule05: 3つの独立した成長ドライバーが CAGR を多層的に支える"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "各成長ドライバーに定量的裏付けがあり（36%/+41%、<50%、75,000台）"
+        },
+        {
+          "source": "pattern_F_future_dependent",
+          "adjustment": -0.05,
+          "reasoning": "クラウド・SDN 移行によるオンプレミス ADC 需要への長期影響が最大不確実性"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule05",
+          "pass": true
+        },
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "3つの独立した成長ドライバー（セキュリティ、ACE 代替、機器リフレッシュ）が同時に機能しており、単一要因依存リスクが低い。各ドライバーに定量的裏付けがあることで CAGR 予測の信頼性は高い。クラウド移行の長期リスクは中期（2-3年）では限定的。",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": [
+        "Q4 FY2014 CEO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "FFIV Q4 FY2014 実績: 収益$465M (+18%、ガイダンス超過)、非GAAPマージン37.8%、FY2014 CFO $549M",
+      "evidence": "Revenue of $465.3 million was above guided range, up 18% from Q4 prior year. Non-GAAP EPS $1.57 exceeded guidance. Non-GAAP operating margin 37.8%. Cash flow from operations totaled $549 million for all of fiscal 2014.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03"
+        ],
+        "results": {
+          "rule03": true
+        },
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "決算発表での財務開示。",
+      "power_classification": null,
+      "evidence_sources": [
+        "Q4 FY2014 CFO prepared remarks (2014-10-29)"
+      ]
+    },
+    {
+      "id": "FFIV_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "FFIV FY2014 主要KPI: 繰延収益 $637M (+20%)、セキュリティ製品36%/+41%、Virtual Edition +49%",
+      "evidence": "Deferred revenue increased 20% year-over-year to $636.7 million. Security products represented 36% of total product sales, 41% growth over fiscal 2013. Software-only virtualization revenue up more than 49%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03"
+        ],
+        "results": {
+          "rule03": true
+        },
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "具体的な事業 KPI 開示で信頼性高い。",
+      "power_classification": null,
+      "evidence_sources": [
+        "Q4 FY2014 CFO/CEO prepared remarks (2014-10-29)"
+      ]
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "70-80": 3,
+      "60-70": 5,
+      "90-100": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

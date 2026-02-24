@@ -1,0 +1,87 @@
+{
+  "ticker": "SKAB",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2-3ステップ（グリーン差別化→投資家需要→CD売却益）。スウェーデン市場での国際投資家流入が部分的証拠として機能するが単独の貢献度分離が困難。",
+      "kb2_pattern": "pattern_C_causal_leap",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンC（因果の飛躍）の懸念あり。グリーンビル以外の要因（立地、市場環境）も大きく、グリーン差別化単独のCD利益への貢献度を分離できない。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価50%を維持。CAGR接続は一定程度あるが因果分離困難。グリーンビル自体の評価（30%）に対し接続クレームは若干高く50%が適切。パターンC懸念で上限。"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+      "kb1_verdict": "borderline",
+      "kb1_reasoning": "不採算地域からの撤退と選別的案件受注という経営能力として評価。ただし、プロジェクト選別は経営意思決定の範囲であり、競合が模倣困難な構造的優位とは言えない。建設業界大手は皆同様のプロジェクト選別を実施している。",
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "kb2_verdict": "reject",
+      "kb2_reasoning": "パターンF（戦略と優位性の混同）に該当。プロジェクト選別はSkanskaの戦略的意思決定（何をするか）であり、それを可能にする構造的な力（なぜできるか）の説明がない。KB2パターンFは強い却下シグナル。",
+      "dogma_check": "pass",
+      "final_confidence": 0.3,
+      "confidence_rationale": "Phase 1の評価（30%-10%調整）と一致。プロジェクト選別は戦略であり構造的優位性ではない（dogma rule8相当）。KB2パターンFの強い却下シグナルで30%上限。建設マージン改善は評価できる実績だが、優位性の根拠にはならない。"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2ステップ（建設マージン改善→利益拡大→EPS成長）。FY2014 EPS+18%の実績で短期的接続は確認できる。",
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンII（直接的CAGR接続）に部分的に合致。FY2014 EPS+18%は実証済みだが、建設業の利益率改善はサイクル要因も大きく持続的なCAGR接続としての信頼性が低い。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価50%を維持。FY2014実績（EPS+18%）で短期的接続は確認できるが、建設業のサイクル性から持続的CAGR接続への疑問が残る。50%が適切。"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule10_negative_case"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "事実クレーム。FY2013グループ売上+7%（現地通貨）、商業開発売却SEK58億（第2位記録）、建設受注SEK1,200億という定量的事実。",
+      "kb2_pattern": "none",
+      "kb2_verdict": "neutral",
+      "kb2_reasoning": "事実クレームのためKB2パターン適用対象外。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "経営陣の定量的発言として信頼性が高い。具体的売上・受注データで裏付けされている。"
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule10_negative_case"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "事実クレーム。FY2014 USA Civil 6.4%マージン、受注book-to-bill 154%、商業開発売却SEK100億（記録的水準）、利益SEK20億という定量的事実。",
+      "kb2_pattern": "none",
+      "kb2_verdict": "neutral",
+      "kb2_reasoning": "事実クレームのためKB2パターン適用対象外。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "具体的なマージンデータ・book-to-bill・売却実績で信頼性が高い。FY2014の記録的水準という事実は検証可能。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"0.3": 1, "0.5": 2, "0.7": 2},
+    "gatekeeper_applied": false
+  }
+}

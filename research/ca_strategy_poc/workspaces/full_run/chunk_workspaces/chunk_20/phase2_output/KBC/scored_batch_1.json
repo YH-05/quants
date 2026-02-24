@@ -1,0 +1,48 @@
+{
+  "ticker": "KBC",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "KBC Group の FY2014 純利益は EUR 1.8B（ROE 13%）。Basel III CET1 比率 14.3%。1株当たり配当 EUR 2（FY2014分）。信用コスト比率 42bps。",
+      "evidence": "EUR 1.8 billion net result... ROE of 13%... common equity... 14.3%... dividend payout of EUR 2 per share.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "KBC のノンライフ保険事業は FY2013 に combined ratio 94%（前年比1%改善）を達成し、FY2014 も 94%を維持した。資産運用残高（AUM）は FY2014 に年間+14%成長。",
+      "evidence": "combined ratio of 94%... Assets under management... increase of about EUR 2 billion of net entries.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "KBC",
+    "claim_count": 7,
+    "scored_count": 2,
+    "target_claim_ids": [6, 7],
+    "batch_index": 1,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 2
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": ["analyst/Competitive_Advantage/analyst_YK/dogma.md"]
+  }
+}

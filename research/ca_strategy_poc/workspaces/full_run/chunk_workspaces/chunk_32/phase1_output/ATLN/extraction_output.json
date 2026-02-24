@@ -1,0 +1,294 @@
+{
+  "ticker": "ATLN",
+  "transcript_source": "FY2014 Annual Results (2015-02-16)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015", "Q2_2015", "Q3_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Actelionの肺動脈性高血圧症（PAH）治療における専門性・ノウハウ（Tracleer→Opsumit→Uptravi→Veletriの連続ケア体制）",
+      "descriptive_label": "PAH専門治療フランチャイズの垂直統合（Switching Costs / Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual (CEO Jean-Paul Clozel): 'We launched the first-ever treatment for pulmonary arterial hypertension, Tracleer, in 2001. Since then, our expertise grew, and with that, our offering in pulmonary arterial hypertension.' / 'With our portfolio of products, we will have a continuity of treatment from Functional Class II to Functional Class IV.' / (COO Otto Schwarz): 'our vision is that every patient who starts a PAH therapy should be on Opsumit... we have Veletri, which is the anchor product at the late stage of the disease... Uptravi on top of Opsumit or on top of an Opsumit PDE5 combination'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "2001年から構築した専門治療フランチャイズという仕組み・能力として評価。単なる実績ではなく治療継続性（FC II→IV）という構造的ポジション"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "PAH市場での先発者優位は明確だが、Gilead（ambrisentan）・Bayer（riociguat）との具体的差別化は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "売上CHF1.956bn（+12% CER）、Opsumit CHF180mn（第1フル年）、Tracleer 48,000患者という定量根拠あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "strong",
+            "reasoning": "希少疾患（PAH）× 専門治療フランチャイズ × 患者スイッチングコスト（重篤疾患での切り替えリスク）という業界構造合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Gilead ambrisentan競合圧力（AMBITION試験結果）への言及あり（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Uptravi（selexipag）承認待ちで治療フランチャイズ完成前（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "希少疾患PAHにおける2001年からの専門治療構築（Tracleer→Opsumit→Uptravi→Veletri）は、患者スイッチングコスト・専門知識蓄積という複合的優位性。Gilead競合圧力とUptravi未承認を考慮して70%から調整後50%。ただし治療フランチャイズの業界構造合致（孤児疾患×専門医コミュニティ）は高評価。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Opsumit（macitentan）のSERAPHINアウトカムトライアルデータによる差別化（死亡・罹患率45%リスク低減）",
+      "descriptive_label": "アウトカムデータによる医学的差別化（Cornered Resource / Branding）",
+      "evidence_from_transcript": "FY2014 Annual (COO): 'commercial free marketing and launch strategies have now been validated in various markets, various geographies and various health care systems.' / 'SERAPHIN data, a very tangible extra growth of our ERA business in Germany and even the U.K. and to a lesser extent, in the U.S.' / (CEO): 'data on efficacy, effect of macitentan on different severity classes, affecting patients with right ventricular dysfunction...Opsumit has a very bright future ahead'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "アウトカム試験データ（SERAPHIN）という「コーナードリソース」。競合が再現困難な大規模RCTデータ"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "ERA市場での成長がSERAPHINデータ由来と具体的に言及。ドイツ・UKでの実際のビジネス成長への接続"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Opsumit CHF180mn（第1フル年）、6,300患者登録、formulary coverage 87%（Q4米国）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "フランス（ASMR 5/minor benefit）での差別化認定失敗が競合比較の弱さを示す（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "ドイツ価格25%減（EUR2,300/pack）はエビデンスが価格交渉で脆弱なことを示す（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "SERAPHIN RCTデータは参入障壁として機能するCornered Resourceだが、フランスでの差別化認定失敗とドイツ価格25%減は、エビデンスの差別化力が価格交渉段階では限定的であることを示す。50%が妥当。"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "selexipag（Uptravi）の経口プロスタサイクリン受容体作動薬としての革新性（39%罹患率/死亡率リスク低減）",
+      "descriptive_label": "経口投与可能なプロスタサイクリン経路の開拓（Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'Today, the number of patients treated by prostacyclin is very limited. Why? Although prostacyclins are very potent, the treatment with this product is a burden, particularly the intravenous treatment, which requires a catheter directly implanted into the heart...Therefore, selexipag, as a very active oral prostacyclin receptor agonist, can be a real game-changer.' / 'We observed a very impressive 39% reduction on the risk of a morbidity/mortality event in the GRIPHON trial.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "経口プロスタサイクリン受容体作動薬という新しいメカニズムの能力。IV投与の忌避という市場ニーズへの革新的対応"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "現行プロスタサイクリン（IV投与必須）との明確な差別化。'game-changer'という位置づけが具体的な比較"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "GRIPHON試験での39%罹患率/死亡率リスク低減という大規模RCTデータ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "PoiT時点（2015年9月）でまだ未承認（米国・EU申請中）（-20%）",
+            "adjustment": -20
+          },
+          {
+            "reason": "承認後の市場展開・価格・競合不確実（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "GRIPHON 39%リスク低減は強力な臨床エビデンスだが、PoiT（2015-09-30）時点での未承認状態（申請中）が実現前の主張として評価を下げる。承認確率・市場規模の不確実性を考慮して40%。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Actelionの強固なバランスシート（純現金CHF970mn）と資本配分規律（選択的M&A・株主還元）",
+      "descriptive_label": "財務的柔軟性と資本配分規律（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'We will remain extremely selective with acquisitions. We do not want to participate in the race to pay high premium, seen recently in the M&A market.' / (CFO): 'unrestricted net cash position at the end of 2014 was CHF 970 million' / 'Over the last 3 years, we have returned cash in the amount of over CHF 1.1 billion through share buybacks and dividends' / 'core earnings up 25% to reach CHF 743 million'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "バランスシートの強靭性は結果。選択的M&Aという判断基準・規律が能力として評価可能だが、具体的な判断プロセスは未説明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "純現金CHF970mn、コアEPS+33%、3年間CHF1.1bn還元という定量根拠"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "'do not want to participate in the race to pay high premium'というネガティブケース（高プレミアム買収の回避）が規律の証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "選択的M&Aの否定（ネガティブケース）は規律の証拠として評価できる。純現金CHF970mnは財務的余力を示す。ただし特定の選定基準の説明がなく、優位性の背後メカニズムが不明。50%。"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "Opsumit新規市場展開（18カ国→更なる拡大）+ Uptravi承認 → PAHフランチャイズ売上CAGR（core earnings低一桁%成長ガイダンス）",
+      "descriptive_label": "PAHフランチャイズ拡大→売上→CoreEarnings CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "新市場展開→患者増加→売上増は直接的だが、Tracleer/Ventavis generic侵食とのネット効果。2015年ガイダンスは'low single-digit'（控えめ）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次での言及"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Tracleer/Ventavis generic侵食とのネット効果でTopline成長が相殺される（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Uptravi承認が実現すれば成長加速ポテンシャル（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "成長メカニズムは明確だが、既存品ジェネリック侵食とのネットでガイダンスが'低一桁%'に留まる。Uptravi承認という不確実要因が上振れポテンシャル。50%。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "selexipag（Uptravi）承認→プロスタサイクリン市場の拡大（現状の低利用率からの急拡大）→売上CAGR加速",
+      "descriptive_label": "Uptravi承認→プロスタサイクリン市場拡大→CAGR加速経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "IV忌避患者（現状プロスタサイクリン未治療）→経口Uptravi→市場拡大は2ステップ。ただし承認前提"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "PoiT時点での未承認（申請中）が主要な不確実要因（-20%）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "プロスタサイクリン経路の利用率拡大（現状限定的）というロジックは市場構造に合致するが、承認前であることが実現可能性の不確実性を高める。30%。"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "純現金CHF970mn + コアEPS+33%成長 → 株主還元継続（配当増額+10mn株買戻し）+ 選択的M&A → 株主価値CAGR",
+      "descriptive_label": "財務力→株主還元→株主価値CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "現金創出→株主還元は1-2ステップ。CHF1.30/株配当増額と10mn株買戻し（3年計画）は検証可能な数値"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "コアEarnings CHF743mn、純現金CHF970mnを背景とした株主還元プランは定量的で検証可能。3年間CHF1.1bn還元実績が継続性を示す。70%。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "ATLN FY2014: 売上CHF1.956bn（+12% CER）、コアEarnings CHF743mn（+25% CER）、コアEPS CHF5.58（+33% CER）、純現金CHF970mn。Opsumit CHF180mn（第1フル年）、Tracleer CHF1.481bn（-1%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 4]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Opsumit: 18カ国展開、6,300患者登録（うち米国4,000）、formulary coverage 87%（Q4）。selexipag: GRIPHON 39%罹患率/死亡リスク低減、米国・EU申請完了（2014年末）。2015年ガイダンス: コアEarnings低一桁%成長（CER）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2, 3, 5]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Tracleer: 48,000患者（-3% YoY）、Ventavis: 17%vol.減。3年間累計株主還元CHF1.1bn（配当+買戻し）。配当CHF1.30/株提案、新規10mn株買戻しプログラム（3年間）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    }
+  ]
+}

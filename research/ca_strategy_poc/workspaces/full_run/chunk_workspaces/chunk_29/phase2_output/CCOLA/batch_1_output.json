@@ -1,0 +1,162 @@
+{
+  "ticker": "CCOLA",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "CCOLA-006",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "中央アジアでの高EBITDA（20%超）は定量的裏付けのある主張",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "20%EBITDAは結果であり、それを生む能力・仕組みの具体的説明が不足"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "高EBITDA（結果）を規模の経済（優位性）として提示している"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "20%超という数値は具体的"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "カザフスタン20%超EBITDAは数値裏付けあるが、これは結果（Pattern A）。なぜ高EBITDAを実現できるのか（規模・市場シェア・コスト構造）の説明が乏しい。カザフスタン市場シェア48%という数値はあるが、48%を維持する仕組みが優位性。高EBITDAだけでは低評価。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "中央アジアでの高利益率ポジション→利益成長への接続は理解できる"
+    },
+    {
+      "claim_id": "CCOLA-007",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "コカ・コーラ社との独占的パートナーシップによるグローバルリソースへのアクセスは希少リソースの観点から評価可能",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "コカ・コーラ社のグローバル製品イノベーション（コーク・ゼロ、フュースティー）へのアクセス権という仕組み"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "ボトリングパートナーシップはコアの構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "KO社との独占的パートナーシップという構造的ポジション"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "KO社とのパートナーシップによるグローバルイノベーションアクセスは認める。ただし世界中に多数のボトラーが存在し、これはCCIに固有ではなく全KOボトラーが持つ共通の仕組み（Pattern B）。CCIのフロンティア市場での独自地理的カバレッジと組み合わさってのみ差別化要因となる。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "KO社の新製品（コーク・ゼロ50%成長、フュースティー50%超成長）へのアクセスは売上成長への接続として一定の説得力がある"
+    },
+    {
+      "claim_id": "CCOLA-008",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "地理的分散は戦略であり、それ自体が規模の経済を生む仕組みとはやや異なる",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "地理的分散（国際比率49%）は結果であり、分散を可能にする能力の説明がない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "地理的分散はリスク分散の補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "国際比率の増加（結果）を優位性として提示"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "地理的多様化はポートフォリオ戦略であり優位性ではない"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "地理的分散はリスク管理戦略であり、競争優位性ではない（dogma.md ルール8）。国際売上比率49%は戦略の結果。複数市場での事業展開能力は認めるが、それが競合比で際立つ仕組みの説明がない。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "地理的分散によるリスク低減は長期的な安定成長に貢献しうる"
+    },
+    {
+      "claim_id": "CCOLA-009",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "パキスタンでのマージン改善（11%→15%）は定量的に示された実行能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "EBITDAマージン改善（11%→15%）は結果だが、買収後に改善させた能力のプロセスを示している"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "新興市場参入・改善プロセスは構造的能力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "買収後のマージン改善実績は能力を示す"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "11%→15%という定量的な改善データあり"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "パキスタンでの買収後マージン改善（11%→15%）は定量的裏付けがあり、能力の証拠として認める。ただしそれを可能にした具体的なプロセス（コスト削減施策、販売強化策など）の説明が乏しい。マージン改善は結果の側面もある。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "パキスタンでのマージン改善プロセスが他の新興市場（イラク、タジキスタン等）にも適用可能であれば、グループ全体のEBITDA成長への接続が期待できる"
+    },
+    {
+      "claim_id": "CCOLA-010",
+      "power_type": "Branding",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "価格設定方針（インフレ以下に抑制）はブランド擁護戦略だが、これが優位性の証拠かは疑問",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "価格を据え置く戦略的判断は能力ではなく意思決定"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "価格設定方針は補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "価格据え置き（戦略）をブランド保護（優位性）として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "トルコでの価格据え置き決定は短期的なブランド保護戦略であり、競争優位性の証拠ではない（dogma.md ルール8: 戦略≠優位性）。「消費者ベースを維持する」という動機は防衛的であり、ブランドPowerとしての積極的なプレミアム維持能力を示していない。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "長期的なカテゴリーリーダーシップ維持→安定したボリューム・収益への接続は理論的に成立するが、短期的な価格政策からの推論は飛躍"
+    }
+  ]
+}

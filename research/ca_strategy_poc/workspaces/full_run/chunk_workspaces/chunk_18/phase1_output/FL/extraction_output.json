@@ -1,0 +1,124 @@
+{
+  "ticker": "FL",
+  "company_name": "Foot Locker, Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201403_earnings_call.json", "quarter": "Q4 FY2013", "call_type": "primary"},
+    {"file": "201405_earnings_call.json", "quarter": "Q1 FY2014", "call_type": "secondary"},
+    {"file": "201408_earnings_call.json", "quarter": "Q2 FY2014", "call_type": "secondary"},
+    {"file": "201411_earnings_call.json", "quarter": "Q3 FY2014", "call_type": "secondary"},
+    {"file": "201503_earnings_call.json", "quarter": "Q4 FY2014", "call_type": "primary"},
+    {"file": "201505_earnings_call.json", "quarter": "Q1 FY2015", "call_type": "secondary"},
+    {"file": "201508_earnings_call.json", "quarter": "Q2 FY2015", "call_type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "FL-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Foot LockerはNike・Jordan・adidas等のプレミアムアスレチックフットウェアブランドとの排他的・優先的パートナーシップ（House of Hoops 165店、PUMA Lab、Jordan Flight 23等）を有し、これらブランドの希少商品を入手できる唯一の小売チャネルとして消費者のスイッチングコストを形成している。",
+      "evidence_quotes": [
+        "We are continuing to develop and roll out our vendor partnership spaces such as House of Hoops, of which we now have 165 in the U.S. and another 25 internationally. (Q2 FY2015 prepared remarks)",
+        "we now have 5 PUMA Labs. And at Footaction, we have 4 Jordan Flight 23 shops with another 1 slated to open on State Street in Chicago. (Q2 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201508_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - ブランドパートナーシップという能力・独占的配布チャネル",
+        "rule04_quantitative_evidence": "PASS - House of Hoops 165店+25店という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - ブランド限定商品の独占的販売権は構造的",
+        "rule07_pure_competitor_differentiation": "PASS - Dick's Sporting Goods等には同等のパートナーシップなし",
+        "rule08_strategy_not_advantage": "PASS - 実現済みの独占的配布関係",
+        "rule10_negative_case": "PASS - 9.6%コンプ成長・記録的利益で実証済み",
+        "rule11_industry_structure_fit": "PASS - アスレチックフットウェアはブランド・希少性が重要",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q2 FY2015）"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "Nike/Jordan等との独占的パートナーシップスペースは明確なSwitching Costs形成要因。消費者はHouse of Hoopsでしか入手できないラインナップのためFLに行く。Q2 FY2015の9.6%コンプ成長・$0.84 EPS（前年比+33%）がこれを裏付ける。"
+    },
+    {
+      "claim_id": "FL-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Foot Lockerブランドはグローバルなアスレチックフットウェアのカルチャー（バスケットボール、ランニング、ライフスタイル）と強く結びついており、特にJordan Retroなどの人気品が発売されると確実に来店客を集める。国際展開（欧州・アジア太平洋）でも全地域がダブルディジットのコンプ成長を達成している。",
+      "evidence_quotes": [
+        "Jordan continues to be a tremendously strong brand around the globe. Jordan Retros and Classics, in particular, performed well. (Q2 FY2015 prepared remarks)",
+        "our international divisions produced the strongest sales results, with all regions, Europe, Canada and Asia Pacific, posting double-digit comparable sales increases. (Q2 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201508_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - ブランドのカルチャー的地位という能力",
+        "rule04_quantitative_evidence": "PASS - 全地域ダブルディジット・9.6%コンプ成長という定量証拠",
+        "rule06_structural_vs_complementary": "CONDITIONAL - ブランドは構造的だがNike依存という脆弱性",
+        "rule07_pure_competitor_differentiation": "PASS - アスレチックカルチャーのハブとして競合と差別化",
+        "rule08_strategy_not_advantage": "PASS - 長年培われた市場地位",
+        "rule10_negative_case": "PASS - 継続的な成長実績",
+        "rule11_industry_structure_fit": "PASS - アスレチックフットウェアはブランドが購買決定の核心",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "アスレチックフットウェアのカルチャー的地位は実証済み。全地域ダブルディジット成長と記録的利益は競争力を示す。ただしNike/Jordan依存度が高く、ブランドパートナーの施策変更には脆弱。"
+    },
+    {
+      "claim_id": "FL-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Foot Lockerの在庫管理能力は卓越しており、Q2 FY2015で前年比-1.3%の在庫維持（売上+3.3%と対比）でInventory Turn目標3x達成目前を実現。「保守的に計画し積極的にチェイス」する在庫管理プロセスが低マークダウン率・高粗利率を維持している。",
+      "evidence_quotes": [
+        "we ended the quarter with inventory down 1.3% from a year ago compared to a sales increase of 3.3%. (Q2 FY2015 prepared remarks)",
+        "our inventory turn is tantalizingly close to our goal of 3x. (Q2 FY2015 prepared remarks)",
+        "We plan conservatively, but we chase aggressively. (Q2 FY2015 Q&A)"
+      ],
+      "primary_source": "201508_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 在庫管理プロセスという能力",
+        "rule04_quantitative_evidence": "PASS - 在庫-1.3% vs 売上+3.3%、Inventory Turn 3x近接という定量証拠",
+        "rule06_structural_vs_complementary": "WARN - 在庫管理は優れているが模倣可能",
+        "rule07_pure_competitor_differentiation": "PARTIAL - 競合との比較データなし",
+        "rule08_strategy_not_advantage": "CONDITIONAL - プロセスは能力だが構造的モートとしては弱い",
+        "rule10_negative_case": "PASS - 粗利率改善で実証済み",
+        "rule11_industry_structure_fit": "PASS - ファッション性の高いフットウェアでは在庫管理が重要",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.5,
+      "confidence_rationale": "在庫管理の卓越性は数値で実証されているが、これはProcess Powerとして認められるレベルの独自性があるかは不明確。継続的な取り組みではあるが競合も同様の努力をしている可能性が高い。"
+    },
+    {
+      "claim_id": "FL-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "アスレチックインスパイアドフットウェア・アパレルの「カジュアル化」トレンドが地域・年齢層を超えて拡大しており、Foot Lockerの長期的な顧客基盤拡大につながっている。同社は女性（SIX:02）・子供（KFL）・デジタル（直接顧客比率11.3%）といった複数のサブカテゴリでも成長している。",
+      "evidence_quotes": [
+        "we also believe that the casualization of our customer base is here to stay and that this trend will expand over time geographically and by age (Q2 FY2015 prepared remarks)",
+        "our direct-to-customer business again led our performance with an 18.8% sales increase... direct-to-customer sales increased to 11.3% of total sales (Q2 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201508_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "カジュアル化トレンドと女性・子供・デジタルでの成長は実績で裏付けられており、成長の多様化として評価できる。"
+    },
+    {
+      "claim_id": "FL-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q2 FY2015（2015年8月期）: コンプ+9.6%、売上+3.3%（FX影響$100M超）、粗利率32.6%（+60bps）、EPS $0.84（前年比+33%）、純利益$119M（記録）。YTD: 純利益$303M（記録的上半期）。",
+      "evidence_quotes": [
+        "Foot Locker generated a 9.6% comparable sales gain in the second quarter, and we were able to flow a very strong proportion of those sales to the bottom line, producing record net income of $119 million, a 29% increase over the second quarter last year. (Q2 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201508_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "決算数値として確認済みの事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "competitive_advantage_claims": 3,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Switching Costs", "Branding"],
+    "analyst_notes": "FLはNike/Jordan等とのブランドパートナーシップという独占的配布チャネルが最も強力な競争優位性。9.6%コンプ・33%EPS成長という2015年の業績は優れている。ただしNike依存度の高さと単一ブランドリスクが懸念材料。在庫管理も優れているが模倣可能。"
+  }
+}

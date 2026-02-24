@@ -1,0 +1,269 @@
+{
+  "ticker": "CVX",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-30) + Q1-Q3 2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Gorgon・Wheatstone等の大型LNG開発プロジェクトによる生産量成長能力",
+      "descriptive_label": "大型LNG開発プロジェクト（Gorgon/Wheatstone）完工能力",
+      "evidence_from_transcript": "Q4 FY2014 CEO/CFO Prepared Remarks: Capital expenditures $35.4B (full year). Major LNG projects (Gorgon, Wheatstone) under construction. 'We are suspending our share repurchase program for 2015' due to market conditions. Gorgon Phase 1 scheduled to begin production in 2015-2016. CVX's unique LNG project execution in Australia.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "LNGプロジェクト開発・実行能力（能力・仕組み）を評価。GorgonはIOC（国際石油企業）主導LNGで数少ない大型案件"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$35.4BのCapexがプロジェクト規模を示す。Gorgon Phase 1完工で最大15.6mtpa LNG生産能力"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Gorgon/Wheatstoneは30年以上のガス供給契約に裏付けられた構造的資産。競合が同規模プロジェクトを複製するには10年以上必要"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Shell、BP等の競合もLNG開発能力を持つ。CVX特有の優位性の説明が不足"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "アジア天然ガス需要（特に中国、日本、韓国）は長期的成長だが、原油価格下落環境でのLNG需要は複雑"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GorgonはCVXが約47.3%持分を持つ稀少な大型LNGプロジェクト。ただし油価急落環境での大型Capex継続は財務リスクを伴う。完工後の生産量成長は確実だが、LNG価格・アジア需要動向に依存"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Gorgon/Wheatstone完工 → 生産量成長（+20-25%） → 上流部門CAGR回復",
+      "descriptive_label": "LNG完工→生産量成長→上流収益CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。LNG完工→生産量増加→収益増加の接続。ただしLNG価格依存"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "生産量成長の接続は直接的だが、LNG・原油価格が外部変動要因。2015年での株主還元停止が示すように、油価下落環境での財務圧力が優位性評価を複雑にする"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "27年連続増配（27th consecutive year）による資本配分の規律と財務安定性",
+      "descriptive_label": "27年連続増配による財務規律と株主還元安定性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: '2014 marked the 27th consecutive year that we have increased our dividend payment.' Cash from operations $31.5B (full year), net debt $15B, debt ratio 15%.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "27年連続増配は「結果」。財務規律の「能力」説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "27年連続という定量データ。ただしCapex削減・株式買い戻し停止との矛盾"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "統合石油会社（IOC）の中ではExxonも同様の実績を持つ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "連続増配は結果であり競争優位性ではない。油価急落による株式買い戻し停止も行われており、財務安定性の持続性に疑問。ルール1-T違反"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "下流（精製・マーケティング）事業の国際マージン改善能力と原油価格変動への耐性",
+      "descriptive_label": "統合石油会社の下流ヘッジ能力（上下流統合による変動緩和）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'Downstream results increased by $1.1 billion, driven by stronger international refining and marketing margins, higher gains on asset sales and favorable timing effects.' Downstream partially offset upstream decline.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "上下流統合によるヘッジ能力（仕組み）として評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Downstream +$1.1B（Q4）という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "ExxonMobil、Shell等の競合IOCとの統合比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "上下流統合は価格変動ヘッジとして機能するが、CVX特有の優位性というよりはIOC業態の一般的特性。精製マージン改善は油価低下の反射利益であり、能力よりも市場環境の変化"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Capex規律（$35B→$30B以下計画）による油価低下環境での資本効率化能力",
+      "descriptive_label": "油価下落環境でのCapex削減・資本規律能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: '$35.4B for the full year [Capex].' Share repurchase suspended for 2015. In Q1-Q3 2015 calls: CEO announced Capex reduction guidance ($30B→$25B range) while maintaining dividend and prioritizing Gorgon/Wheatstone completion.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "油価低下環境でのCapex優先度付け能力（戦略的資本配分）は能力として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Capex削減計画の定量的開示あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "他のIOCとの資本効率比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_C_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Capex削減・優先度付けは油価下落環境での合理的対応だが、GorgonなどのLNGプロジェクト完工のためCapex削減余地は限定的。競合IOCも同様の対応をとっており、CVX固有の優位性は不明確"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "テキサスパーミアン・深海等の上流シェール/非在来型資産ポートフォリオの競争力",
+      "descriptive_label": "上流資産ポートフォリオ（パーミアン・深海）の競争力",
+      "evidence_from_transcript": "Q4 FY2014 Q&A: Multiple analyst questions about Permian Basin positioning and shale asset quality. CVX mentioned continued Permian activity despite oil price decline. Q1-Q3 2015: Permian represented as core growth asset with low breakeven.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "資産ポートフォリオの品質（コーナードリソース的）として評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "パーミアンの地質的資産は物理的制約により模倣困難（ただしExxon、Pioneer等も保有）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "ExxonMobil、Pioneer等との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "パーミアン資産はCVXが保有する希少な地質資産だが、ExxonMobilがより大規模な保有。油価下落環境での損益分岐点の優位性説明が不足"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "強固なバランスシート（Debt ratio 15%）と$13B現金保有による油価下落耐性",
+      "descriptive_label": "強固バランスシートによる油価変動耐性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'At year-end, our cash and cash equivalents totaled more than $13 billion, giving us a net debt position of about $15 billion.' 'our debt ratio at year-end was 15%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "バランスシート強度は結果。財務管理能力の具体的な説明なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Debt ratio 15%、$13B現金という定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "バランスシート強度は結果であり、競争優位性ではない。ExxonMobil等も同様の財務強度を持つ。ルール1-T違反"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: EPS $1.85 ($3.5B)、Upstream EPS $2.2B。2014年通年: EPS $10.14（$19.2B）、ROCE 11%、Capex $35.4B、OCF $31.5B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

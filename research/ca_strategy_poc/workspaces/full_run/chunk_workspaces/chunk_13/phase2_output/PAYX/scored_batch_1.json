@@ -1,0 +1,70 @@
+{
+  "ticker": "PAYX",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PAYX-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PAYX FY2015実績：売上$29.1億（+7%）、有機成長+8%、クライアント数590,000社、維持率82%（記録）、ペイロール収益+5%、HRアウトソーシング+14%。FY2016見通し：売上+5-7%",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "PAYX-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "高維持率82%（構造的スイッチングコスト）→ 既存顧客クロスセル（HR/福利厚生アップグレード）→ Revenue per Client拡大（$3,600→$4,600+ポテンシャル）→ 売上CAGR支援",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "維持率→クロスセル→ARPU成長は2ステップで直接的。Revenue per Clientの数値推移で検証可能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: 82%維持率→クロスセル→ARPU成長は2ステップの直接的メカニズム（dogma.md高評価パターン）。Revenue per Client $3,600→$4,600という開示データで検証可能（開示データによる検証可能性は+20%要因）。70%が妥当。"
+    },
+    {
+      "claim_id": "PAYX-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "401(k)/PEO事業の規模成長（+15%/+12%）→ HRアウトソーシング比率上昇 → 高ARPU構造 → 全社売上CAGR+7-9%",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "HRアウトソーシング+14%、PEO+15%という定量実績でCAGR接続が検証可能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: HRアウトソーシング+14%・PEO+15%という定量実績は直接的なCAGR接続証拠（dogma.md高評価パターン）。FY2016見通し+5-7%との整合性もあり。開示データで検証可能。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"70-80": 2},
+    "gatekeeper_applied": false
+  }
+}

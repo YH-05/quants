@@ -1,0 +1,162 @@
+{
+  "ticker": "CCOLA",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "CCOLA-001",
+      "power_type": "Branding",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "ブランドフランチャイズ権による参入障壁は能力・仕組みに分類可能。フランチャイズ契約という構造的メカニズムが存在する。",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「フランチャイズ権」「ブランドポートフォリオ」という名詞属性で表現されている"
+        },
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "コカ・コーラブランドはフランチャイズ権という仕組みに基づく。ただしブランド自体は KCI 自身の能力ではなく、コカ・コーラ社から賃借したもの。自社構築ブランドとは異なる"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "コカ・コーラのボトリング権は世界各地のボトラーが持つ共通構造。CCIが特に優位な点はフロンティア市場での独占契約"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "コカ・コーラブランドの圧倒的力は認める。ただしCCIはその保有者ではなくライセンシーであり、フランチャイズ権の継続更新リスクがある。またコカ・コーラボトラーは世界中に存在し、業界共通の構造とも言える。フロンティア市場での独占契約という観点では評価できるが、主張テキストがそれを十分に強調していない。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "ブランドフランチャイズ→トルコ・中東・中央アジアでの市場成長への接続は一定の説得力がある。ただし市場成長の実績が能力の証拠として使われている側面もあり、CAGR接続の直接メカニズム説明が不十分"
+    },
+    {
+      "claim_id": "CCOLA-002",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "フロンティア市場での独占的ボトリング権は希少リソースに該当。法的・構造的な参入障壁がある。",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "独占的ボトリング権という「契約上の権利」という仕組みは能力に該当する"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "フロンティア市場での独占権は構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "フロンティア市場での独占的ポジションは構造的市場ポジション"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "パキスタン（シェア31%→35%）、イラク（シェア22%→29%）という定量的裏付けがあり、フロンティア市場での独占的ボトリング権という希少リソースの存在は明確。ただし流通・実行能力の具体的説明は限定的。dogma.md ルール4（定量的裏付け）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "フロンティア市場での独占権→シェア拡大→ボリューム成長という接続は2ステップで明確。市場自体のパーキャピタ消費量も低く、成長余地も大きい"
+    },
+    {
+      "claim_id": "CCOLA-003",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "原材料調達のヘッジ・プレバイ能力は組織的なプロセス能力に該当する。",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "98%ヘッジという具体的な数値と「プレバイ」という手法の説明は能力の開示"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「調達能力」という名詞で表現"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "98%ヘッジという数値裏付けあり"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "原材料ヘッジは食品・飲料業界では広く行われる一般的な手法"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "原材料ヘッジは食品・飲料業界では広く採用される一般的な手法（Pattern B: 業界共通能力）。競合他社も同様のヘッジを行うため、CCIに固有の競争優位性とは言えない。98%ヘッジという数値は開示があるが、それが競合比で際立つものかどうかの証拠がない。30%（あまり納得しない）",
+      "cagr_connection_score": 0.3,
+      "cagr_connection_rationale": "コスト安定化→利益率改善の接続は理解できるが、業界共通の手法では超過利益の源泉にはなりにくい"
+    },
+    {
+      "claim_id": "CCOLA-004",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "製造能力拡張による規模の経済は適切なフレームワーク分類",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "「工場を開設する計画がある」は戦略・行動の表明であり、現時点での能力の証明ではない。将来の設備投資計画は優位性の存在を示す証拠として弱い"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "工場開設計画（戦略）を規模の経済（優位性）として提示している"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "設備投資計画は戦略的意思決定であり、それ自体が競争優位性ではない"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "パキスタンでのグリーンフィールド工場3か所開設計画は戦略の表明であり、優位性の証拠ではない（dogma.md ルール8: 戦略≠優位性）。現時点でのスケールメリットの実証がない。工場が稼働した後に評価すべき。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "工場稼働後は供給力→ボリューム成長への接続は自然だが、現時点では計画段階"
+    },
+    {
+      "claim_id": "CCOLA-005",
+      "power_type": "Switching Costs",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "即時消費パッケージへのシフトはスイッチングコストより Counter-Positioning または Branding に近い。スイッチングコストの証拠が弱い。",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "即時消費パッケージへのシフトは戦略的決定であり、消費者がCCIの製品から離れられない仕組みの説明がない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "パッケージシフトは補完的要素。コアの競争優位性ではない"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "ICパッケージシフトは戦略であり、スイッチングコストを生む仕組みの説明がない"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "ICシフト→トランザクション増加→収益改善の因果関係が証明されていない"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "パッケージシフトは収益性向上の戦略的施策だが、これが「スイッチングコスト」を生む仕組みの説明がない。CEOが「will help us to add new consumer base」と言っているのは結果の予測。消費者がCCIに特定される仕組みがなく、Switching Costs パワーとして不適切。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "即時消費向けパッケージは単価上昇→ARPUへの接続は理解できる。ただしスイッチングコストとしての接続は弱い"
+    }
+  ]
+}

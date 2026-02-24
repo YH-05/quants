@@ -1,0 +1,116 @@
+{
+  "ticker": "KNIN",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "kb3_fewshot_loaded": 5,
+    "dogma_loaded": true,
+    "scoring_date": "2026-02-24"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "KNIN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "海上・航空貨物における業界最高水準の「Conversion Rate」（粗利益のEBIT転換率）",
+      "descriptive_label": "業界最高水準のEBIT転換率（Conversion Rate）",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.4,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "warning",
+      "kb2_t_pattern": "pattern_A_t (結果を原因と取り違え)",
+      "scoring_reasoning": "Conversion Rate 30%超（海上）・27%（航空）という数値は具体的。しかしこれは結果（パターンA-T: ルール1-T違反）。背後の能力（ネットワーク密度・コスト構造）の説明が部分的。業界比較なし（ルール7-T弱）。40%。"
+    },
+    {
+      "claim_id": "KNIN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ソリューション販売（Solution Selling）能力：複雑な物流ニーズへの統合的対応力",
+      "descriptive_label": "複雑物流ニーズへのソリューション販売能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.4,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "weak",
+      "kb2_t_pattern": "pattern_D_t (定性的のみ)",
+      "scoring_reasoning": "ソリューション販売の概念は評価できるが定量的証拠が不足（パターンD-T）。航空貨物のEBIT改善が状況証拠として機能するが、ソリューション販売能力そのものの定量比較なし。40%。"
+    },
+    {
+      "claim_id": "KNIN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "価格競争への非参加戦略：採算性の低い案件を断る規律（選択的引受能力）",
+      "descriptive_label": "採算性管理の選択的引受規律",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Counter-Positioning",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_III_t (能力の優位性)",
+      "scoring_reasoning": "価格競争からの離脱という断念例の言及はルール10-T（ネガティブケース）として評価できる。ただし、この規律を維持できる構造的優位（何故KNINは案件を選べるか）の説明が不足。50%。"
+    },
+    {
+      "claim_id": "KNIN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "航空貨物での特殊セグメント（生鮮食品・e-commerceペリシャブル）での専門能力",
+      "descriptive_label": "生鮮食品・e-commerce航空貨物の専門能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Cornered Resource",
+      "confidence": 0.4,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "weak",
+      "kb2_t_pattern": "pattern_D_t (定性的のみ)",
+      "scoring_reasoning": "特殊セグメントへの集中は評価できるが定量的差別化と競合比較が不足（パターンD-T）。40%。"
+    },
+    {
+      "claim_id": "KNIN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "海上貨物での大口キャリアー・キャパシティ調達能力（規模の経済に基づくバーゲニングパワー）",
+      "descriptive_label": "海上貨物キャリアーとのバーゲニングパワー",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Scale Economies",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_IV_t (構造的市場ポジション)",
+      "scoring_reasoning": "規模に基づくキャパシティ調達は構造的優位（ルール6-T）。コンテナ船市場構造との合致も評価（ルール11-T）。ただし定量的競合比較なし。50%。"
+    },
+    {
+      "claim_id": "KNIN-C001",
+      "claim_type": "cagr_connection",
+      "claim": "高Conversion Rate → EBIT成長 → 収益CAGR上乗せ",
+      "descriptive_label": "Conversion Rate→EBIT成長",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.6,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "1ステップの直接接続。EBIT成長11.1%は開示データ。ただしConversion Rate維持の持続可能性が不明。60%。"
+    },
+    {
+      "claim_id": "KNIN-C002",
+      "claim_type": "cagr_connection",
+      "claim": "ソリューション販売能力 → 高マージン案件獲得 → 粗利益CAGR改善",
+      "descriptive_label": "ソリューション販売→高マージン→CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "3ステップの推論だが各ステップは合理的。航空EBIT改善との接続。50%。"
+    },
+    {
+      "claim_id": "KNIN-C003",
+      "claim_type": "cagr_connection",
+      "claim": "e-commerce・生鮮航空貨物成長トレンド → KNINの取り扱い量拡大 → 収益CAGR",
+      "descriptive_label": "e-commerce成長→航空貨物取扱量→収益CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "e-commerce成長との接続は合理的。KNINのシェア獲得能力の定量証拠が不足。50%。"
+    }
+  ],
+  "aggregate_score": {
+    "competitive_advantage_avg": 0.44,
+    "cagr_connection_avg": 0.533,
+    "overall_avg": 0.487,
+    "claim_count": 8,
+    "ca_claim_count": 5,
+    "cagr_claim_count": 3
+  }
+}

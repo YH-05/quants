@@ -1,0 +1,162 @@
+{
+  "ticker": "DUK",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "再生可能エネルギー + ACP + 規制ベース資産成長 → EPS 4-6% CAGR（2015-17年）",
+      "final_confidence": 0.30,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "EPS 4-6% CAGR目標はあるが、競争優位性→CAGR接続のメカニズムが不明確。規制環境下では優位性→EPS接続の因果が弱い"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来。CFOのガイダンス"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "因果飛躍パターン。規制ベース資産→EPS成長の因果が示されていない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_C",
+          "adjustment": -0.10,
+          "reasoning": "規制環境下での競争優位性→CAGR接続の因果が弱い"
+        }
+      ],
+      "overall_reasoning": "規制電力会社のEPS成長は規制当局の決定に依存するため、競争優位性とCAGR接続の因果が弱い。30%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "マルチ州規制対応能力（Indiana, South Carolina等の規制当局との関係管理・料金承認取得能力）",
+      "final_confidence": 0.20,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "規制当局との関係管理は規制電力会社共通の基本能力。差別化根拠がない"
+        },
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「料金承認取得」は結果。当局との関係管理は仕組みとして評価できるが、業界共通"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "規制電力会社共通の能力。差別化なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.10,
+          "reasoning": "業界共通能力。競争的差別化不成立"
+        }
+      ],
+      "overall_reasoning": "マルチ州規制対応は規制電力会社共通の基本能力。競争的優位性として評価不可。20%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "原子力稼働率: 93%（2014年実績）。フロリダ核融合廃止による$700M減損。2015-17年: 核融合関連支出なし",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFOの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "商業再生可能エネルギー: 2.8GW（風力1.5GW + 太陽光1.3GW）、国内第7位。2015-17年 CapEx $900M（再生可能エネルギー向け）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "定量的開示データ。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2015-17年計画: EPS成長4-6%/年目標、配当維持、料金引き上げ不要。Atlantic Coast Pipeline: 2018年完成予定、$4.7B投資",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO/CEOによるガイダンス開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張・ガイダンスとして信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "20-30": 1,
+      "30-40": 1,
+      "70-80": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

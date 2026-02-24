@@ -1,0 +1,117 @@
+{
+  "ticker": "MO",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "MO-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Marlboroブランドはプレミアムタバコカテゴリーの圧倒的リーダーとして3年連続市場シェア成長を達成。競合の値引きにもかかわらず32%のプライスギャップを維持し、価格弾力性が低い忠誠度の高い顧客基盤を有している",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.9,
+      "confidence_adjustments": [
+        {
+          "reason": "3年連続シェア成長 + 32%プライスギャップ維持（競合値引き中でも）+ 依存性という構造的優位の組み合わせ",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.9,
+      "scoring_rationale": "32%プライスギャップという定量的競合比較（KB2パターンI）、3年連続シェア成長（競合が値引きしても維持）という相対優位の実証（KB2パターンV）。依存性という構造的粘着性（dogma.mdブランド類型3：価値の維持・通貨代替機能）が合わさる。dogma.mdルール4・11に完全合致。90%。"
+    },
+    {
+      "claim_id": "MO-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "AltriaのCopenhagen（無煙タバコ）はカテゴリーリーダーシップを維持し、Skoalとの合計シェア51.3%（Q4）を達成。無煙タバコカテゴリーの調整後OCI利益率は63.4%（FY2014）",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "51%超のカテゴリーシェアと63%超の利益率は強力な定量的証拠",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "Copenhagen+Skoalで51%超のカテゴリーシェアと63.4%の利益率（KB2パターンI）は卓越したブランド優位性の証拠。スモークレスカテゴリーは依存性と切替コストの組み合わせで強固。dogma.mdルール4・11に合致。70%。"
+    },
+    {
+      "claim_id": "MO-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Altria（PM USA）のMarlboro・Copenhagen・Skoalを中心とするプレミアムタバコブランドは依存性と習慣性から高い消費者粘着性を持ち、トータルタバコプラットフォームによりカテゴリー間移動でもAltria内で完結させる切替コスト戦略",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "「トータルタバコプラットフォーム」はカテゴリー間切替をAltria内で完結させる構造的スイッチングコスト戦略",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "依存性という構造的粘着性（構造的要素）にトータルタバコプラットフォーム（切替コストの補完）を組み合わせた強力な Switching Costs（KB2パターンIII）。紙巻→無煙→e-vaporの全方向をカバーする設計は競合が模倣困難な包括的戦略。dogma.mdルール6（構造的vs補完的）に合致。70%。"
+    },
+    {
+      "claim_id": "MO-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Altria（Marlboro）は48年間で45回の配当引き上げ（2014年8.3%増）を達成。2014年TSR 34.5%でS&P500および食品飲料タバコ指数を大幅に上回った",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "48年での45回増配はブランドの長期現金創出能力の証拠だが、配当実績は優位性の結果であって原因ではない",
+          "delta": -0.2
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "48年での45回増配・TSR 34.5%という実績は印象的だが「結果を原因と取り違え」のリスクがある（KB2パターンA）。長期現金創出能力という「能力」として解釈できる面もあるが、MO-001との重複感あり。dogma.mdルール1（能力vs結果）の懸念から70%→50%に調整。"
+    },
+    {
+      "claim_id": "MO-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "AltriaのSmokeable Products（PM USA）は2014年にOCI利益率を1.9ポイント拡大（業界ボリュームが-3.5%減少する中）。主に価格引き上げと連邦タバコ割当てキューオット支払い終了により、業界衰退下でも利益成長を実現する構造的利益率改善",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "ボリューム減少下での利益率拡大（-3.5%業界ボリューム、+7%OCI）は価格支配力の強力な証拠",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "業界ボリューム-3.5%でもOCI+7%という逆相関は価格支配力の明確な定量証拠（KB2パターンI）。Marlboro約40%シェアによる寡占的価格決定力は業界構造と合致（dogma.mdルール11）。Reynolds等との価格規律も背景にある。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"50-60": 1, "70-80": 3, "90-100": 1},
+    "gatekeeper_applied": false
+  }
+}

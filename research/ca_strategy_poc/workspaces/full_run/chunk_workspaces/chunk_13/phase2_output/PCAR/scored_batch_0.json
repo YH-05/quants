@@ -1,0 +1,112 @@
+{
+  "ticker": "PCAR",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "PACCARエンジン（MX-13）の業界最高水準の燃費効率による製品差別化。トラック+エンジン垂直統合による顧客価値提供",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "エンジン内製という「能力・仕組み」は評価できるが、Cummins等競合との燃費差の定量データが不在",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "エンジン垂直統合はProcess Powerとして構造的差別化の芽がある。MX penetration 37%という数値は能力の証拠として部分的に機能するが、競合（Cummins、Detroit Diesel）との燃費差が定量化されていないため50%。dogma.mdルール4（定量裏付け）が不十分。"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "北米Class 8トラック市場における高シェアブランドポートフォリオ（Kenworth + Peterbilt + DAF）による市場支配力",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "高シェアは結果であり原因ではない。Daimler、Volvo等競合に対する相対的ブランド優位の具体的説明が不足",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "高い市場シェアは典型的な「結果を原因と取り違え」パターン（KB2パターンA）。Kenworth/Peterbilt/DAFのブランドポートフォリオは価値があるが、なぜシェアが高いかの能力説明なし。dogma.mdルール1違反。30%。"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "PACCAR Parts独自アフターマーケット高収益事業（2014年売上$3.1B記録、税前利益$497M記録）による安定した収益構造",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "アフターマーケット事業の高収益性は部品調達の構造的優位を示すが、競合との利益率比較データが不在",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "PACCAR Partsはプロプライエタリ部品供給という構造的なSwitching Costsを内包。$497M税前利益という定量値は方向性を支持。ただし競合（Daimler FleetBoard等）との利益率比較なく50%に留める。"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "PACCAR Financial Services低リスクファイナンス能力（過去10年で平均損失率0.1%以下）による顧客ロイヤルティ強化",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "業界比較なしのため競合との相対優位性が不明確",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "自社ファイナンス事業の低リスク運営は定量的証拠（損失率0.1%）があるが、業界平均や競合（Daimler Financial）との比較がなく相対優位が不明確（dogma.mdルール3）。50%が妥当。"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "76年連続純利益達成の財務規律・保守的経営能力による長期株主価値創造",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "76年連続純利益は実績・結果。財務規律の「仕組み」の説明が不足",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "76年連続純利益は印象的な実績だが典型的な「結果を原因と取り違え」（KB2パターンA）。財務規律を可能にする組織的仕組みの説明なし。dogma.mdルール1違反。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 2, "50-60": 3},
+    "gatekeeper_applied": false
+  }
+}

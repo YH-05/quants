@@ -1,0 +1,231 @@
+{
+  "ticker": "COLOB",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-10-30, Full Year 2013/14)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "消化管・泌尿器ケアにおけるグローバル市場リーダーシップを支える製品革新力（SenSura Mio・SpeediCath Compact・Biatain Siliconeの連続的新製品開発）",
+      "descriptive_label": "医療機器連続的製品革新・市場転換能力（Process Power × Cornered Resource）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Lars Rasmussen): 'we are in the middle of the largest product launch ever in the history of the company with our new SenSura Mio. We are also rolling out our new silicon product in the Wound Care and finally, we are approaching a full scale commercial launch of Compact Eve. We have opened up more new markets this year than ever before with markets like Turkey, Algeria and Taiwan and more will follow.' And: 'We retained our global market leader position with a 34% -- 35% to 40% share of a DKK 13 billion to DKK 14 billion market'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "SenSura Mio、SpeediCathという革新的製品を継続的に開発・市場投入する能力を評価。「史上最大規模の製品ライン」という表現が能力の規模を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "消化管ケア35-40%市場シェア（DKK 13-14B市場）、泌尿器ケア40%シェア（DKK 10-11B市場）という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "消化管・泌尿器ケアはニッチ市場で患者の生涯使用製品。製品イノベーション能力は30年以上の臨床知見と患者インサイトに基づく参入障壁"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "オストミー・失禁ケアは患者の生涯にわたる製品使用が特性。製品差別化（快適性・利便性）が市場シェアに直結する業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。市場シェア35-40%という明確な定量データと史上最大規模の製品ラインアップが客観的裏付け。ただし製品革新の持続性は仮定",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "消化管・泌尿器ケアにおける35-40%市場シェアを支える製品革新能力はProcess Power / Cornered Resourceの典型。オストミー製品の患者スイッチングコストが高く、新製品（SenSura Mio）への転換で市場シェアを深化させる能力は70%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "FY2013/14: 有機成長9%、EBIT margin 33%（特別項目前）、EPS成長17%（特別項目前）。消化管ケア35-40%グローバルシェア（市場DKK13-14B）、泌尿器ケア40%シェア（市場DKK10-11B）。SenSura Mio: 12市場ローンチ済み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "製品革新（SenSura Mio/SpeediCath Compact） + 新興市場展開 → 9%有機成長 + EBIT margin 34%（3-5年目標）",
+      "descriptive_label": "製品革新×新興市場→持続的高成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "SenSura Mio普及（12→19市場）→患者転換加速→継続成長。SpeediCath Compact（10%未満転換済み）→加速中の経路"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。FY14/15の9%有機成長・34%EBIT margin目標として具体化"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "製品転換の進行状況と新興市場投資（DKK200M/年）が定量的に示されており、成長経路の信頼性は高い。70%が妥当"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "患者の直接接点（DTC）チャネルによる患者ロイヤルティ・製品転換加速能力（医師・病院経由でなく患者に直接リーチ）",
+      "descriptive_label": "患者直接チャネル（DTC）による製品転換加速能力（Switching Costs）",
+      "evidence_from_transcript": "Q4 Q&A (CEO Lars Rasmussen on US catheter business): 'We have converted a bit more than 10% of our current business to the coated products. So we are still -- this is still early days...but it's driving a major part of our growth in that business segment in the U.S., but that is -- we believe that will be on an accelerating curve.' And on U.K. Charter Healthcare (Q1 FY15 transcript): 'direct-to-patient setup, it's a quite big setup with a very large call center...once you do that, you really need...to be very sharp on the processes that you're using'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [5],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "患者への直接アクセス能力（コールセンター・DTC）は継続的な患者ロイヤルティ構築の仕組みとして評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "SpeediCath Compact転換率10%超という定量データあり。ただし全体的なDTC規模のデータ限定的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "英国チャーターヘルスケア等DTC事業は規模の大きさと運営ノウハウが参入障壁。患者との長期関係が継続的な処方維持に貢献"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでのSpeediCath転換データ（10%超）がQ4での最も直接的な定量エビデンス",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "DTCチャネルは患者との直接関係を通じたSwitching Costsの強化に寄与。10%超の転換率は能力の存在を示すが、英国での運営問題（Q1 FY15で発覚）がリスク要因。60%が妥当"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "SpeediCath Compact転換率: 現時点で10%超（米国泌尿器カテーテル事業）。SenSura Mio: 12市場ローンチ済み、FY14/15でさらに5市場追加予定（英国含む）。新興市場投資: DKK200M/年（累計DKK1B since 2012）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4, 1]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルオペレーションの継続的な生産効率改善能力（ハンガリーNyírbátor拠点活用、グロスマージン1ppt/年改善）",
+      "descriptive_label": "グローバル製造効率改善能力（Scale Economies × Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO Anders Lonning-Skovgaard): 'For years, global operations has been a major contributor to the overall value creation through impressive efficiency gains in supply chain and production. Simultaneously, our innovation factors have improved ramp-up processes of new products in close cooperation with R&D...The ambition of the new plan is to focus on a continued efficiency improvement, risk reductions and launch accuracy of our new products. The plan covers a time span of 3 to 5 years and has 6 specific tracks.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "グローバルオペレーション効率改善の仕組み（6本の戦略トラック）が具体的に示されており、能力として評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "グロスマージン69%（+1ppt YoY）、EBIT margin改善0.5-1ppt/3-5年目標という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ハンガリーNyírbátor拠点への生産移転（低コスト）と新製品ラムプアップ効率化は長期的に構築されたオペレーション能力"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。グロスマージン継続改善実績と3-5年計画の具体化がある",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "グローバル製造効率改善能力は定量的実績（グロスマージン+1ppt）と長期計画の具体性で裏付けられている。医療機器ニッチ企業のProcess Powerとして60%が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "グロスマージン: 69%（+1ppt YoY）、EBIT margin 33%（目標34%、FY14/15）。CapEx: DKK533M（+21%、新製品キャパシティ拡張）。長期EBIT margin目標: 年0.5-1ppt改善（3-5年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（中国・ブラジル・中東）への体系的投資による高成長市場先行者優位（2012年以来DKK1B投資、新興市場24%成長）",
+      "descriptive_label": "新興市場先行者投資優位（Cornered Resource）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Lars Rasmussen): 'Finally, revenue in emerging markets grew organically by 24% in 2013/14. The growth rate is up significantly from last year's 14%. This is a consequence of successful implementation of a number of growth investments in the region. The growth came from across the region, but especially markets like China, Brazil and Greece delivered top performance.' And: 'invested almost DKK 200 million in sales enhancing initiatives, taking the total committed amount to about DKK 1 billion since 2012.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "新興市場への体系的投資は戦略的決定（Rule 8-T）の側面もあるが、投資実行・現地化能力（販売員育成・規制対応）という能力面がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "新興市場24%成長（前年14%から加速）、DKK1B投資という定量データあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "新興市場での医療機器市場は急速成長中。オストミー製品は生涯使用特性で先行者が患者基盤を確立できる市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量実績（24%成長）あり。ただし新興市場投資は戦略決定（Rule 8-T）リスクと地政学リスク（ロシア・ブラジル下落）が介在",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "新興市場24%成長は体系的投資の結果だが、ロシア50%下落など地政学リスクが高い。先行者優位としての持続性は50%が妥当"
+      }
+    }
+  ]
+}

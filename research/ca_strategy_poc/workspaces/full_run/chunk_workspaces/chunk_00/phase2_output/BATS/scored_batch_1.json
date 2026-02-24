@@ -1,0 +1,80 @@
+{
+  "ticker": "BATS",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["BATS-006", "BATS-007", "BATS-008", "BATS-009", "BATS-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "BATS-006",
+      "claim_type": "competitive_advantage",
+      "claim": "SAPベースのグローバル業務統合プラットフォームによる調達・サプライチェーン効率化（Group Functions再編）",
+      "descriptive_label": "SAPグローバルプラットフォームによるオペレーション効率化",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - SAP導入は戦略的意思決定・投資であり優位性の仕組みではない",
+        "rule_7_t": "FAIL - PM・JTIも同様のグローバルERPシステムを保有"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。大手多国籍企業のSAP導入は業界共通",
+      "kb3_t_calibration": "ADN-002（M&A統合=戦略→30%）と類似。SAPは優位性の仕組みではなく戦略的ツール",
+      "dogma_evaluation": "Dogma Rule 8（戦略≠優位性）: SAP導入は戦略的意思決定。Rule 3（相対的優位性）: 業界共通。30%が適切",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・7 FAIL（戦略と優位性の混同・業界共通）。KB2-T pattern_B_t（業界共通）。dogma.md Rule 3・8違反。SAPは戦略的ツールであり優位性の仕組みではない。Q1発言-10%。30%"
+    },
+    {
+      "id": "BATS-007",
+      "claim_type": "cagr_connection",
+      "claim": "GDB vol +1.9%（業界-3%アウトパフォーム） + CC EPS +10% → マージン拡大継続 → EPS CAGR接続",
+      "descriptive_label": "GDB優位+価格設定力→マージン拡大→EPS CAGR経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（GDB優位+価格設定力→マージン拡大→EPS成長）で検証可能",
+        "rule_12_t": "FAIL - Q1四半期発言から"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。CC EPS +10%・マージン+680bpsという実績値が裏付け",
+      "kb3_t_calibration": "DGE-007（Reserve brands優位+RtC→CAGR→40%）より直接的。COST顧客粘着力（会員→ARPU→売上→90%）に近い。実績値の裏付けが強力",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。CC EPS +10%・5年マージン+680bpsという実績値で検証可能。Q1発言-10%調整",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T Rule 5 PASS、Rule 12 FAIL（Q1発言）。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5（2ステップ因果）PASS。CC EPS +10%・5年+680bpsという強力な実績値。Q1発言-10%調整後も70%"
+    },
+    {
+      "id": "BATS-008",
+      "claim_type": "cagr_connection",
+      "claim": "次世代製品（Vype・THP等）市場成長 → 規制環境対応力 → 将来的売上CAGR維持",
+      "descriptive_label": "次世代製品→規制環境対応→CAGR維持経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PARTIAL - 2-3ステップの因果だが次世代製品の市場採用は外部変数依存",
+        "rule_12_t": "FAIL - Q1発言から"
+      },
+      "kb2_t_pattern": "pattern_C_t（因果関係の飛躍）。次世代製品の市場成長は外部変数",
+      "kb3_t_calibration": "CRDA-008（バイオサーファクタント→需要→成長→40%）と類似。外部変数（消費者トレンド・規制）依存",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: 部分的（外部変数依存）。Q1発言-10%調整。30%が適切",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 5 部分的、Rule 12 FAIL（Q1発言）。KB2-T pattern_C_t（因果飛躍）。外部変数（次世代製品採用率）依存と規制不確実性。Q1発言-10%。30%"
+    },
+    {
+      "id": "BATS-009",
+      "claim_type": "factual_claim",
+      "claim": "GDB vol +1.9%（vs業界-3%）、GDB市場シェア+50bps、コンスタントカレンシーEPS +10%、配当+12%増配",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014 CEO/CFO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。BATS-001（GDB優位）・BATS-003（価格設定力）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。BATS-001（70%）・BATS-003（70%）の最重要支持事実。業界比較データが特に価値高い。0.7"
+    },
+    {
+      "id": "BATS-010",
+      "claim_type": "factual_claim",
+      "claim": "5年間のマージン改善: 38.1%（+100bps Q1 2014）・5年間累計+680bps達成",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014 CFO発言による定量的開示。5年間時系列データ"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。BATS-002（マージン改善能力）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。BATS-002（70%）の支持事実。5年間+680bpsという長期トレンドデータが特に価値高い。0.7"
+    }
+  ]
+}

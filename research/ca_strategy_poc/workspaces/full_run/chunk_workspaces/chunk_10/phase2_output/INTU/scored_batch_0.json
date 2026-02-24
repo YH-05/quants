@@ -1,0 +1,107 @@
+{
+  "ticker": "INTU",
+  "batch_index": 0,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_8_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_III", "pattern_IV"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "INTU-001",
+      "claim_type": "competitive_advantage",
+      "claim": "QuickBooks Onlineのネットワーク効果によるエコシステム構築力",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: エコシステム構築能力は能力・仕組み。アタッチ率の倍増（12%→、31%→）はネットワーク効果の発現を示す具体的証拠",
+        "rule_4_t": "PASS: 425アプリ（4x成長）、アタッチ率データ（具体数値）、1.075Mサブスクライバー。定量的裏付け充分",
+        "rule_6_t": "PASS: プラットフォームエコシステムは事業モデルの核心的構造要素",
+        "rule_11_t": "PASS: クラウドSaaS会計市場でプラットフォーム型ネットワーク効果は業界構造との合致が高い"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "QBOは会計士認定制度＋サードパーティ連携＋ペイメント/ペイロールのアタッチ構造を持つプラットフォーム。競合（Xero、Wave）に対して規模の差が明確（1.075M vs 競合の小規模）。Pattern IVの構造的市場ポジションに該当"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4年次発言で体系的に説明されたネットワーク効果。アタッチ率の具体的な倍増データ（payments: 6%→12%, payroll: 20%→31%）はネットワーク効果の強化を示す最良の証拠。Xeroとの比較がないが、規模差（1.075M vs Xeroの数十万）と多機能プラットフォームの差別化は十分。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "INTU-002",
+      "claim_type": "competitive_advantage",
+      "claim": "TurboTaxの消費者税申告市場における圧倒的ブランド力とシェア優位性",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: シェア+1.5ptと2シーズン+4ptは結果の側面が強い。ただし'category champion'として市場全体を牽引する構造的ポジションはブランド力（dogma Section 4）として評価できる",
+        "rule_4_t": "PASS: シェアデータ（+1.5pt、+4pt累計）、Online 11%成長という具体的数値",
+        "rule_6_t": "PASS: TurboTaxは消費者税申告市場のカテゴリ定義者として構造的",
+        "rule_7_t": "PASS: H&R Block等の純粋競合を念頭に置いたシェア比較（市場全体でのシェア言及）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_I_quantitative_differentiation",
+        "assessment": "シェア+4pt（2シーズン）というデータは差別化の定量的証拠。'category champion'としてカテゴリ全体の成長（+5%）を牽引するブランドパワーはPattern Iに該当"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "TurboTaxのブランド力は消費者税申告カテゴリでのデファクト地位として認められる（dogma Section 4, 類型2）。シェア拡大データで裏付けられており70%評価を支持。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "INTU-003",
+      "claim_type": "competitive_advantage",
+      "claim": "QuickBooks Onlineのスイッチングコストと顧客ロックイン（デスクトップからの移行粘着性）",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: Year2-3でARPUが50%超増加という仕組みの説明。データ蓄積→スイッチングコスト上昇という能力の証拠",
+        "rule_4_t": "PASS: ARPU 50%超増加（Year2-3）という具体的数値。新規顧客75%がIntuit新規というデータも付加価値を示す",
+        "rule_6_t": "PASS: スイッチングコスト構造はSaaS事業の核心的優位性",
+        "rule_12_t": "PASS: Q4年次発言での体系的説明"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_I_quantitative_differentiation",
+        "assessment": "Year2-3でARPU 50%超増加という定量的証拠はスイッチングコストの発現を最も明確に示すデータ。Pattern Iに該当"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でのARPU成熟化データ（50%超増加）はスイッチングコスト構造の最強の証拠。会計データの蓄積という時間とともに価値が増す粘着性はSaaSで最も重要な競争優位性の一つ。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "INTU-004",
+      "claim_type": "competitive_advantage",
+      "claim": "クラウド移行期における「operating system behind small business success」ポジショニング能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: 非戦略資産売却（Demandforce、QuickBase、Quicken）による集中は戦略的決断であり能力の説明として部分的",
+        "rule_6_t": "PASS: エコシステム集中戦略は構造的要素としての側面あり",
+        "rule_8_t": "FAIL: 'operating system for SMB'は戦略目標の表現。優位性ではない（rule_8_t違反）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_F_strategy_confusion",
+        "assessment": "戦略目標（operating system for SMB）を競争優位性として提示するパターン。ただし非戦略資産の売却という具体的なネガティブケース（断念例）は能力の裏付けとして価値がある（dogma ルール10）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "戦略目標と競争優位性の混同が認められるが、非コア事業の売却という実行力は能力の一側面として評価できる。50%が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "INTU-005",
+      "claim_type": "competitive_advantage",
+      "claim": "「do the nation's taxes」における消費者税申告のデータ活用優位性",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: データ活用によるコンバージョン改善は能力の説明",
+        "rule_4_t": "FAIL: データ活用の具体的効果数値なし、競合比較なし",
+        "rule_6_t": "PASS: データ資産は事業の核心的要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_D_qualitative_only",
+        "assessment": "データ活用は概念として有効だが具体的なKPI（コンバージョン率、エラー低減率等）がなく定性的な主張に留まる"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "データ活用の概念は正しいが裏付けが不十分。IRSとの協力はCornered Resourceの要素だが差別化の説明なし。Phase 1評価50%を維持する"
+    }
+  ]
+}

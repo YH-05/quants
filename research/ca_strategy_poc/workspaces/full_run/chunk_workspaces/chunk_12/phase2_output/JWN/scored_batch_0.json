@@ -1,0 +1,280 @@
+{
+  "scored_claims": [
+    {
+      "id": "JWN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Nordstrom Service Brand Excellence — Best Private Bank award equivalent for luxury retail",
+      "evidence": "JWN Rack + Nordstrom.com integration. Service culture built over 113 years. Consistent net promoter scores above industry. Employee empowerment model for customer service.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "Nordstromのサービスブランドは113年の蓄積による構造的資産。模倣が困難"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "高級百貨店市場ではサービス品質がブランド差別化の主要因"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "定量的にはNPS等の数値は開示されていないが、113年の歴史と業界での評判が長期ブランド優位を支持"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "ブランド評価の定性的裏付けが強い"
+        }
+      ],
+      "overall_reasoning": "Nordstromのサービスブランドは百貨店業界で最も強力なブランドのひとつ。113年の蓄積、Zappos的なカスタマーサービス文化、従業員のエンパワーメントモデルは競合（Macy's、Saks Fifth Avenue）との明確な差別化要因。ただしNPS等の定量比較なく70%"
+    },
+    {
+      "id": "JWN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Dual Channel Architecture — Full-Line + Rack enabling distinct market segments without cannibalization",
+      "evidence": "Nordstrom full-line (aspirational luxury) and Nordstrom Rack (value-conscious) operating as distinct brands serving different segments. Rack growing double-digit annually. Over 180 Rack locations planned.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "デュアルチャネルは能力・仕組みとして提示。full-line/Rackの独立したポジショニングと共通インフラ活用"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Macy's（Macy's Backstage）や Saks（Saks OFF Fifth）との比較でNordstromは最もブランドの独立性を維持している"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_V",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "競合比較あり（Macy's Backstage、Saks OFF Fifthとの比較でNordstrom Rackは独立ブランドとして強い）。高評価パターンV（特定競合比較）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_V",
+          "adjustment": 0.05,
+          "reasoning": "競合比較による差別化の定性的証拠"
+        }
+      ],
+      "overall_reasoning": "Full-line+Rackのデュアルアーキテクチャは、単一価格帯での競合よりも広い顧客基盤を獲得できる構造的優位。Rack 180+拠点の拡大計画と二桁成長は定量的裏付け。競合との差別化（Rackブランドの独立性）は明確。70%"
+    },
+    {
+      "id": "JWN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Multichannel Integration Scale — Shared inventory, buy online pick up in store, cross-channel returns",
+      "evidence": "Nordstrom enabling online orders fulfilled from in-store inventory. Cross-channel returns driving foot traffic. E-commerce growing double-digit. Mobile app integration with physical stores.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "共有在庫・クロスチャネルフルフィルメントは能力・仕組みとして提示"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Macy's・Bloomingdale's等の競合も同様のオムニチャネル能力を構築中"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "オムニチャネル統合は百貨店業界共通の戦略的優先事項。Nordstromの先行優位はあるが業界共通化が進む"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界共通トレンドの一部として減点"
+        }
+      ],
+      "overall_reasoning": "オムニチャネル統合はNordstromが先行しているが、Macy's等の競合も急速に追随している。先行者優位は認めるが差別化の持続性が不確実。50%"
+    },
+    {
+      "id": "JWN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Nordstrom Loyalty Lock-in — Nordstrom Rewards with multi-tier engagement",
+      "evidence": "Nordstrom Note loyalty program. Top customers (Fashion Reward cardholders) generating disproportionate sales. Loyalty program driving repeat purchase behavior across channels.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "ロイヤルティプログラムの定量的効果（会員維持率、会員vs非会員支出比）の開示なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "百貨店ロイヤルティプログラムは業界標準。Macy's Star Rewards、Saks SKP等との差別化が不明"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界共通のロイヤルティ施策"
+        }
+      ],
+      "overall_reasoning": "ロイヤルティプログラムは購買行動の固定化に貢献するが、業界全体で同様のプログラムを展開しており差別化が限定的。定量的効果の開示もない。50%"
+    },
+    {
+      "id": "JWN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Cross-Channel Return Network Effect — Returns driving in-store traffic and incremental purchases",
+      "evidence": "Buy-online-return-in-store policy driving foot traffic. Cross-channel return convenience as competitive differentiator vs. pure-play e-commerce.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "クロスチャネルリターンは物理店舗×eコマースの統合による能力"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力ベースの主張（パターンIII）。ただし定量的効果（返品率、増分購買率）の開示なし"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "クロスチャネルリターンは顧客利便性を高めるが、定量的効果（返品利用者の増分購買額等）の開示がなく、競合との差別化も不明確。50%"
+    },
+    {
+      "id": "JWN-006",
+      "claim_type": "factual_claim",
+      "claim": "FY2014 net sales $13.1B (+8.0%), comparable sales +4.0%, diluted EPS $3.72 (+14%)",
+      "evidence": "FY2014 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "JWN-007",
+      "claim_type": "cagr_connection",
+      "claim": "Service brand + Dual channel → Comparable store sales growth → Revenue CAGR",
+      "evidence": "Comparable sales +4.0% FY2014. Nordstrom.com +33%. Rack comparable +3.5%.",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "サービスブランド→顧客忠誠→comparable sales成長の直接的メカニズム。+4%comparable sales成長で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "comparable sales +4%とNordstrom.com +33%という定量的裏付けで接続が明確。サービスブランド→顧客維持→comparable sales成長の因果は直接的。70%"
+    },
+    {
+      "id": "JWN-008",
+      "claim_type": "cagr_connection",
+      "claim": "Rack expansion → New customer acquisition → Long-term full-line upgrade path",
+      "evidence": "Rack growing double-digit. 180+ Rack locations planned. Rack as entry point for Nordstrom brand relationship.",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": false,
+          "reasoning": "Rack→full-lineへの顧客アップグレードのデータ（conversion率）がなく、接続メカニズムが仮定的"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Rack拡大は定量的に支持されるが、Rackから全線店舗への顧客移行は仮定的で検証データなし。50%"
+    },
+    {
+      "id": "JWN-009",
+      "claim_type": "cagr_connection",
+      "claim": "E-commerce growth → DTC margin improvement → ROIC expansion",
+      "evidence": "Nordstrom.com +33%. E-commerce growing as % of sales. DTC reducing wholesale dependency.",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": false,
+          "reasoning": "E-commerce成長がROIC改善に直接寄与するかは、フルフィルメントコスト・返品率によって異なり単純ではない"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "E-commerce成長は方向性として認めるが、マージン改善への接続はフルフィルメントコストと返品率によって複雑になる。50%"
+    },
+    {
+      "id": "JWN-010",
+      "claim_type": "factual_claim",
+      "claim": "Nordstrom.com +33%, Rack +45 new locations FY2014, total 282 Rack stores",
+      "evidence": "FY2014 channel expansion data",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的展開データ。競争優位性評価の対象外。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 0,
+      "40-50": 4,
+      "60-70": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

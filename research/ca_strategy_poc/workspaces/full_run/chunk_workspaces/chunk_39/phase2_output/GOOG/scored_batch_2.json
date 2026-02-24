@@ -1,0 +1,106 @@
+{
+  "ticker": "GOOG",
+  "batch_index": 2,
+  "scored_claims": [
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "YouTubeモバイル収益は前年比100%超成長（2014年Q4時点）、月間10億人訪問",
+      "descriptive_label": "",
+      "scoring_result": {
+        "verdict": "factual",
+        "note": "Factual claim - no confidence score assigned"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "Estimated Store Visits等の新測定ツールによる広告効果測定能力（オフライン→オンライン接続）",
+      "descriptive_label": "クロスチャネル広告効果測定能力",
+      "scoring_result": {
+        "phase2_confidence": 50,
+        "phase1_confidence": 70,
+        "adjustments_applied": [
+          {
+            "reason": "Q4発言（主・①相当）+ 顧客事例の定量データあり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Facebook Ads等）の同様の測定ツールとの差別化は不明",
+            "adjustment": -10
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_11_t"
+        ],
+        "kb2_t_pattern": "pattern_III_t",
+        "overall_reasoning": "Q4での体系的な説明。顧客事例の定量データ（PetSmart 10-18%）あり。O2O測定という市場ニーズとGoogleの位置情報規模の合致。ただし競合比較なし。60-70%が適切"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "クロスチャネル測定能力 → 広告主のROI可視化 → 広告予算増加 → 収益CAGR",
+      "descriptive_label": "測定能力→ROI可視化→予算増加",
+      "scoring_result": {
+        "phase2_confidence": 70,
+        "phase1_confidence": 70,
+        "adjustments_applied": [],
+        "kb1_t_rules_applied": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "kb2_t_pattern": "",
+        "overall_reasoning": "Q4での顧客事例（PetSmart, Famous Footwear）による定量的ROI証拠 + 広告予算への接続。70%が適切"
+      }
+    },
+    {
+      "id": 14,
+      "claim_type": "competitive_advantage",
+      "claim": "FXヘッジプログラムによる通貨リスク管理能力（国際収益の保護）",
+      "descriptive_label": "グローバル収益へのFXヘッジ能力",
+      "scoring_result": {
+        "phase2_confidence": 10,
+        "phase1_confidence": 20,
+        "adjustments_applied": [
+          {
+            "reason": "グローバル大手企業なら共通のFXヘッジ能力（パターンB-T）",
+            "adjustment": -30
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_3_t",
+          "rule_6_t"
+        ],
+        "kb2_t_pattern": "pattern_B_t",
+        "overall_reasoning": "FXヘッジは定量的($150M保護)だが、グローバル大手共通能力。競争優位としては成立しない。20%"
+      }
+    },
+    {
+      "id": 15,
+      "claim_type": "competitive_advantage",
+      "claim": "Googleのハイバー採用基準と文化維持能力（優秀な人材の囲い込み）",
+      "descriptive_label": "エリート採用・文化維持によるコーナードリソース",
+      "scoring_result": {
+        "phase2_confidence": 10,
+        "phase1_confidence": 30,
+        "adjustments_applied": [
+          {
+            "reason": "定量的裏付けなし、テクノロジー大手共通の'高い採用基準'主張",
+            "adjustment": -20
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t"
+        ],
+        "kb2_t_pattern": "pattern_D_t",
+        "overall_reasoning": "採用文化・高い基準はGoogleの重要な能力だが、トランスクリプトでは定性的な言及のみ。テクノロジー大手共通主張。30%"
+      }
+    }
+  ]
+}

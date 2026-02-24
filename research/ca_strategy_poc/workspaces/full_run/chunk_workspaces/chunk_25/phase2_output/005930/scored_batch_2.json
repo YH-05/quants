@@ -1,0 +1,49 @@
+{
+  "ticker": "005930",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": [11, 12],
+  "scored_claims": [
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Samsung Electronics 2014全年業績：売上KRW 206.2T、営業利益KRW 25.0T。Memory事業EBITDA率50%超。SSD売上$1B+/四半期達成（2014 H1以降）",
+      "evidence": "Q4 2014 CFO: 'FY2014 revenue KRW 206T, operating profit KRW 25T. Memory division maintained strong profitability. SSD revenue has exceeded $1 billion per quarter since first half of 2014.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。CFO開示の財務事実。SSD $1B/Q以上達成はV-NAND技術力の市場検証として重要。KRW 206T売上・KRW 25T営業利益は定量的に検証可能。70%"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Samsung Electronics 株主還元強化：KRW 11.3T特別買戻し（2015Q3発表）+ 3年間FCFの30-50%還元方針。2014年から配当2.5倍増",
+      "evidence": "Q3 2015 CEO: 'Board approved KRW 11.3T special share buyback program. Committing to return 30-50% of free cash flow over the next 3 years.' Q4 2014: 'Dividends increased by 2.5x compared to previous year.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。CEO/Board発表の数値事実。KRW 11.3T買戻しと30-50% FCF還元方針は定量的に検証可能。半導体事業の高キャッシュ創出能力の証左として参照可能。70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

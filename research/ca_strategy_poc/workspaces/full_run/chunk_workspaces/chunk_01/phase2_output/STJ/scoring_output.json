@@ -1,0 +1,375 @@
+{
+  "scored_claims": [
+    {
+      "id": "STJ-001",
+      "claim_type": "competitive_advantage",
+      "claim": "紹介ベース顧客獲得モデル（既存顧客からの紹介・紹介が新規ビジネスの90%）と95-96%の高資産保持率",
+      "evidence": "CEO David Bellamy (FY2013): '90% of business from existing clients and referrals.' FY2014: '97% of clients would recommend SJP, 50% already have.' Retention 96% in 2014. Net inflows grew 20% to GBP 5.1B.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "紹介ネットワーク・顧客コミュニティという仕組みへの言及。97% 推奨率は結果だが、それを生む顧客サービス・パートナーモデルという能力の説明が主体"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "97% 推奨率、90% 紹介ベース、96% 保持率、GBP 5.1B 20% 成長という多重定量証拠"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "22年かけて構築された顧客コミュニティは構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "CEO 自身が '22年間誰も模倣に成功していない' と明言。競合の模倣試みへの言及あり"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "97%推奨率・90%紹介率・96%保持率という高精度の定量的証拠群"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "紹介ネットワーク・顧客コミュニティという能力・仕組みへの具体的言及"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "CEO が '22年間競合模倣に成功例なし' と競合比較を提供"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "42万人クライアントネットワークが成長エンジンとして機能する業界構造合致"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "高精度定量証拠群"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "能力・仕組みの明確な記述"
+        },
+        {
+          "source": "KB2-T pattern_V_specific_competitor_comparison",
+          "adjustment": 0.05,
+          "reasoning": "22年間模倣失敗という競合比較"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "STJ-001 は KB1-T 全4ルール PASS、KB2-T パターン4つすべてポジティブ。97% 推奨率・90% 紹介率・96% 保持率という多重定量証拠。'22年間誰も模倣できていない' という CEO による競合差別化の明確な説明（dogma rule7 PASS）。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "STJ-002",
+      "claim_type": "competitive_advantage",
+      "claim": "パートナーシップモデル（独立した財務アドバイザー約2,000-2,100名）による対面アドバイス提供能力とパートナーの高い定着率（95%）",
+      "evidence": "CEO (FY2013): '2,000 partners, retain 95% year-on-year.' Partner productivity up 50% over 5 years. Academy program + Next-Generation program. FY2014: 2,132 partners, 9% growth. CFO: 'you can't just throw it together by a few acquisitions.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "Academy・Next-Generation program という採用・育成システムの説明。パートナー数は結果だが育成仕組みが主体"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "パートナーシップ育成・維持システムは事業モデルの中核構造"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "CEO が '22年間競合が試みているが成功例なし' と明言。獲得困難な文化・ビジョン・方向性の説明あり"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "Academy・Next-Generation という具体的育成システムの説明。パートナー数は能力の結果"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "'you can't just throw it together by a few acquisitions' という競合との明確な差別化説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "95% パートナー定着率・50% 生産性向上という定量的証拠"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "育成システムの具体的説明"
+        },
+        {
+          "source": "KB2-T pattern_V_specific_competitor_comparison",
+          "adjustment": 0.1,
+          "reasoning": "競合との明確な差別化説明"
+        },
+        {
+          "source": "dogma rule4 quantitative",
+          "adjustment": 0.05,
+          "reasoning": "95% 定着率・50% 生産性向上という定量的裏付け"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "パートナーシップ育成システムは独自モデルであり CEO が競合との差別化を明確に説明（rule07 PASS）。Academy・Next-Generation という具体的仕組みへの言及（rule01 PASS）。95% 定着率・50% 生産性向上という定量的証拠。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "STJ-003",
+      "claim_type": "competitive_advantage",
+      "claim": "ファンドマネージャーのキュレーションモデル（世界中の優良マネージャーを選択・監視・必要時交代）による一貫した投資パフォーマンス",
+      "evidence": "CEO (FY2013): 'Sourcing best fund managers...monitor...change if necessary.' 10-year rolling: 9/10 periods with 80%+ client funds outperforming peer group. Neil Woodford GBP 4.5B management transfer as capability proof.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "キュレーション・モニタリング・交代プロセスという能力の説明。パフォーマンスは結果だが仕組みが主体"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "10回中9回 80%+ がベンチマーク超過という定量的実績"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "Stamford Associates との長期協力関係と内部プロセスは構造的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "選択・監視・交代というプロセスの具体的説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "10回中9回 80%+ というロング・トラック・レコードの定量化"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "外部マネージャーキュレーションは業界に類似例あり（rule03 警告）"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "他のウェルスマネジメント会社のキュレーションモデルとの比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "プロセスの具体的説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "10年ローリング実績の定量化"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界類似例あり"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "純粋競合比較なし"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "キュレーション・プロセスの説明（rule01 PASS）と 10年ローリング実績の定量化（rule04 PASS）は強い。しかし外部マネージャーキュレーション自体は業界に類似例あり（rule03 警告）、純粋競合との比較が欠如（rule07 FAIL）。dogma 的に「おおむね納得」域 0.65。"
+    },
+    {
+      "id": "STJ-004",
+      "claim_type": "competitive_advantage",
+      "claim": "ペンション・ISA等の複数金融商品ラッパーにまたがるクライアントライフサイクル全体をカバーする統合型ウェルスマネジメント提案",
+      "evidence": "CEO (FY2013): 'proposition to provide clients with everything they need at any stage of their life.' FY2014: 70% feel more confident about financial future. 96% client satisfaction. Metro Bank secured lending partnership.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "顧客満足度・推奨率が中心。統合型提案を可能にする仕組みの具体的説明が限定的"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "ライフサイクル全体をカバーするという戦略的ポジションは構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "大手ウェルスマネジメント会社も類似サービスを提供"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "70% 満足度・96% 推奨率は結果。統合型提案の仕組みより顧客満足度結果の提示が優位"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "'any stage of their life' という広範な主張は定量的検証が難しい"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "ライフサイクル全体をカバーするという構造的ポジションへの言及"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.1,
+          "reasoning": "満足度は結果（dogma rule1 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "定量的検証困難"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "構造的ポジションへの言及"
+        }
+      ],
+      "final_confidence": 0.4,
+      "overall_reasoning": "統合型ウェルスマネジメントの説明はあるが、主に顧客満足度（結果）の提示に偏っており（rule01 FAIL）、純粋競合との差別化が不明確（rule07 FAIL）。dogma 的に「あまり納得しない」から「まあ納得」境界域 0.40。"
+    },
+    {
+      "id": "STJ-005",
+      "claim_type": "competitive_advantage",
+      "claim": "資産管理手数料の予測可能な経常収益モデルと7年後に本格的に立ち上がるキャッシュフロー構造",
+      "evidence": "CFO Andrew Croft (FY2013): '6年間キャッシュを生まないが7年目から本格化.' GBP 16.1B within first 6 years = potential GBP 123.9M additional post-tax. Annual management fee 77bps stable.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "7年後キャッシュフロー構造という事業モデルの仕組みの説明。未発現キャッシュという能力の具体的記述"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "GBP 16.1B 未発現・GBP 123.9M 潜在追加という非常に具体的な数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "6年間蓄積→7年目から本格化というキャッシュフロー構造は事業モデルの核心"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "GBP 16.1B → GBP 123.9M という直接的なキャッシュフロー接続メカニズム（dogma rule5 高評価パターン）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "未発現キャッシュの定量化が極めて具体的（GBP 123.9M という検証可能な数値）"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "この収益構造が競合と比較してどの程度優れているかの説明なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_II_direct_cagr_mechanism",
+          "adjustment": 0.1,
+          "reasoning": "直接的なキャッシュフロー接続メカニズム（dogma rule5 高評価）"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "GBP 123.9M という極めて具体的な定量化"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "競合比較なし（rule07 FAIL）"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "7年後キャッシュフロー構造は事業モデルの仕組み（rule01 PASS）として明確。GBP 123.9M という検証可能な定量化（rule04 PASS）と直接的な接続メカニズム（dogma rule5 高評価パターン II）。ただし競合との比較が欠如（rule07 FAIL）のため 0.70 には届かず 0.65。dogma 的に「おおむね納得」域。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "70-80": 2,
+      "60-70": 2,
+      "40-50": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

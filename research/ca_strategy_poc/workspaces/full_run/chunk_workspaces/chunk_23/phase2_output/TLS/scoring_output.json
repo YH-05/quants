@@ -1,0 +1,206 @@
+{
+  "ticker": "TLS",
+  "company_name": "Telstra Corporation Limited",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "オーストラリア最大の4Gモバイルネットワーク（競合比4倍の規模、人口94%カバレッジ）による差別化",
+      "descriptive_label": "モバイルネットワーク規模の優位性（Scale Economies + Cornered Resource）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "ネットワーク規模・カバレッジは能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "競合比4倍・94%カバレッジという定量データあり"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "純粋競合（Optus、Vodafone）との差別化言及あり"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "オーストラリアの地理的特性から物理インフラ規模が構造的参入障壁"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（競合比4倍、94%カバレッジ）"},
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（広大な国土での物理インフラ）×企業ポジション（最大手）"},
+        {"pattern_id": "pattern_B_t", "matched": false, "adjustment": 0.0, "reasoning": "通信インフラ規模は各社異なる水準で業界共通ではない"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "競合比4倍の4Gネットワーク規模という定量的裏付けあり。FY2015年次決算での発言で信頼性高。オーストラリアの地理的特性（面積700万km²超）から物理ネットワーク規模は構造的参入障壁。年次・主要発言として70%を維持。継続的CapEx要件は減点要因だが、scale economiesとしての基盤は確認"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "モバイルネットワーク優位 → 顧客獲得・ARPU向上 → モバイル売上CAGR",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "FY2015でモバイル売上+10.2%、ARPU+$2.94の実績が接続を裏付け"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次決算発言（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（ネットワーク→顧客→ARPU→売上）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "モバイル売上+10.2%・ARPU+$2.94という定量実績がCAGR接続を支持。2-3ステップの明快な因果チェーン"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "NAS（Network Application Services）の三年連続20%以上成長を支える統合的サービスデリバリー能力",
+      "descriptive_label": "マネージドサービス・クラウド統合デリバリー能力（Process Power）",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "「スケーラブルな標準化提供」は仕組みとして機能するが、成長実績は結果"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "NAS+23.2%、クラウド+33%という定量データあり"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "既存通信インフラ上のNASは一定の構造的要素"},
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "「NASへの注力」は戦略であり能力との境界が曖昧"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "能力の優位性として評価"},
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.1, "reasoning": "三年連続成長は結果であり原因（能力）の説明が限定的"},
+        {"pattern_id": "pattern_G_t", "matched": true, "adjustment": -0.1, "reasoning": "グローバルITサービス企業（IBM、Ericsson）との比較不明確"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_A_t", "adjustment": -0.1, "reasoning": "成長結果を能力と混同"},
+        {"source": "pattern_G_t", "adjustment": -0.1, "reasoning": "純粋競合との差別化不明確"}
+      ],
+      "overall_reasoning": "三年連続20%超成長は印象的だが、結果指標。スケーラブルなデリバリーモデルという仕組みの説明は限定的。グローバルITサービス企業との差別化説明が欠如。Phase 1評価の50%を維持"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "NASデリバリー能力 → NASシェア拡大 → 全社売上成長",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "NASは全社売上の9.3%のみで全体CAGRへの寄与は限定的"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次決算（主・①）"}
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "接続は論理的だが全社売上への寄与率が限定的"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "アジア太平洋地域の海底ケーブルネットワーク（Pacnet買収後、最大規模のプロバイダーの1つ）による国際接続優位",
+      "descriptive_label": "アジア太平洋海底ケーブル・接続インフラ（Cornered Resource）",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "海底ケーブルインフラは物理的資源として評価"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "113拠点・70都市・29データセンターという定量データあり"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "建設コスト・許認可希少性から構造的"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "NTT・KDDI等の競合との比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（希少な海底ケーブル）×企業ポジション"},
+        {"pattern_id": "pattern_G_t", "matched": true, "adjustment": -0.1, "reasoning": "Pacnet統合直後で実績限定的、競合比不明確"}
+      ],
+      "confidence_adjustments": [
+        {"source": "Pacnet買収直後", "adjustment": -0.1, "reasoning": "買収後統合フェーズで実績限定的"}
+      ],
+      "overall_reasoning": "海底ケーブルは希少な物理資源で構造的優位が認められる。ただし買収直後（2015年4月完了）で統合実績が限定的。競合との比較なし。50%維持"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "アジア海底ケーブル優位 → グローバルエンタープライズ顧客獲得 → 国際収益成長",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "2-3ステップ接続。国際収益の全社比率は低い"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "論理的接続は成立するが統合フェーズのため定量的裏付けが困難"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "顧客サービス品質向上プログラム（NPS改善、初回解決率84%、「You Have My Name」等）による顧客維持力",
+      "descriptive_label": "カスタマーサービス品質・顧客粘着性（Switching Costs）",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": true, "triggered": true, "override_confidence": 0.3},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "NPS向上・解決率は結果的指標"},
+        {"rule_id": "rule_3_t", "result": false, "reasoning": "顧客サービス改善は業界共通の取り組み"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "初回解決率84%（+11pp）、応答時間-32%の定量データあり"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "競合比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.2, "reasoning": "通信業界共通の顧客サービス改善"},
+        {"pattern_id": "pattern_D_t", "matched": true, "adjustment": -0.1, "reasoning": "定性的な顧客体験優位は測定困難"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_B_t", "adjustment": -0.2, "reasoning": "業界共通の取り組み"},
+        {"source": "pattern_D_t", "adjustment": -0.1, "reasoning": "定性的のみ"}
+      ],
+      "overall_reasoning": "顧客サービス改善は通信業界で各社が共通して行う取り組み。差別化優位性の証拠不足。ゲートキーパーがrule3（業界共通）を検出。30%"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "顧客サービス品質→顧客維持率向上→チャーン低下→安定的な売上基盤",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "3ステップ以上の間接的接続。定量的裏付けなし"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "因果飛躍（サービス品質→チャーン→売上）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "因果チェーンが長く定量的裏付けに欠ける。30%維持"
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "生産性改善プログラム（FY2015で$525M費用削減）による継続的コスト管理能力",
+      "descriptive_label": "継続的生産性改善プロセス（Process Power）",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": true, "triggered": true, "override_confidence": 0.3},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "$525M削減は結果。デジタル化・簡素化プロセスは仕組みだが競合差別化なし"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "$525M（FY2015）、$550M（FY2014）の定量データあり"},
+        {"rule_id": "rule_6_t", "result": false, "reasoning": "競合も同様の効率化を実施"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.2, "reasoning": "業界共通のコスト削減プログラム"},
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.1, "reasoning": "削減額（結果）を能力（原因）と混同"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_B_t", "adjustment": -0.2, "reasoning": "業界共通"},
+        {"source": "pattern_A_t", "adjustment": -0.1, "reasoning": "結果と原因の混同"}
+      ],
+      "overall_reasoning": "通信各社が同様の効率化を実施。Telstraに固有の優位性の証拠なし。ゲートキーパーがrule3（業界共通）を検出。30%"
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "生産性改善→費用コントロール→EBITDA成長",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "直接的な1-2ステップの因果接続。開示データで検証可能"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "因果メカニズムは直接的で検証可能。ただし売上成長ではなくコスト削減ドリブン。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "30-40": 4,
+      "50-60": 4,
+      "70-80": 2
+    },
+    "gatekeeper_applied": true
+  }
+}

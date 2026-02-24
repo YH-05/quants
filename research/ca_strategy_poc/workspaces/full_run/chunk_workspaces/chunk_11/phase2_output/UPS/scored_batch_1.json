@@ -1,0 +1,74 @@
+{
+  "ticker": "UPS",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "UPS-006",
+      "id": "UPS-006",
+      "power_type": "Process Power",
+      "confidence_raw": 0.5,
+      "final_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: long_term_accumulation - 60-year data accumulation is acknowledged but requires assessment of actual uniqueness."
+      ],
+      "kb2_patterns_matched": ["pattern_III_capability_over_result"],
+      "dogma_adjustments": [
+        "Rule 1: Correctly framed as a capability (prescriptive analytics built on 60-year data foundation) rather than a result.",
+        "Rule 4: The data history (60 years since 1954) and infrastructure specs (10 hyper-computing platforms, 27M instructions/second) are quantified.",
+        "Rule 3: Other large logistics operators (FedEx, DHL) also have decades of operational data. The relative differentiation vs pure competitors is unclear."
+      ],
+      "scoring_rationale": "Pattern III (capability over result) applies positively - George Smith's 1954 data vision and the subsequent 60-year accumulation is described as a capability development history, not a results claim. The shift from descriptive to prescriptive analytics is a genuine Process Power element. The uncertainty is whether FedEx, DHL, or Amazon logistics have achieved comparable analytics maturity. Score maintained at 0.5.",
+      "cagr_connection": "Moderate: better predictive analytics → better network optimization → cost efficiency on growing volume. The mechanism is credible but not directly quantified for CAGR impact.",
+      "cagr_confidence": 0.5
+    },
+    {
+      "claim_id": "UPS-007",
+      "id": "UPS-007",
+      "power_type": "Counter-Positioning",
+      "confidence_raw": 0.3,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: strategy_not_advantage - Dim weight pricing is a revenue management strategy, not a structural competitive advantage."
+      ],
+      "kb2_patterns_matched": ["pattern_F_strategy_confusion"],
+      "dogma_adjustments": [
+        "Rule 8: Strategy vs advantage confusion. Dim weight pricing is an industry-wide practice that FedEx also adopted simultaneously. This is a pricing strategy decision, not a structural moat.",
+        "Rule 3: FedEx made the same pricing change, eliminating any counter-positioning advantage."
+      ],
+      "scoring_rationale": "Pattern F (strategy confusion) applies directly. Dim weight pricing expansion is a revenue management pricing policy that was adopted by both UPS and FedEx simultaneously in response to the same market dynamic (bulky, lightweight e-commerce packages). There is no counter-positioning here: competitors face zero dilemma because they adopted the same change. Score maintained at 0.3.",
+      "cagr_connection": "Weak: revenue per package improvement through dim weight pricing is a one-time yield improvement already implemented, not an ongoing CAGR driver.",
+      "cagr_confidence": 0.3
+    },
+    {
+      "claim_id": "UPS-008",
+      "id": "UPS-008",
+      "power_type": "Scale Economies",
+      "confidence_raw": 0.3,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: forward_looking_macro - Projections on TPP/TTIP trade agreements and 'Renaissance in trade' are speculative."
+      ],
+      "kb2_patterns_matched": ["pattern_B_industry_common"],
+      "dogma_adjustments": [
+        "Rule 5: The CAGR connection here (global trade growth → UPS volume) benefits all global logistics companies equally. Pattern B (industry common benefit) applies.",
+        "Rule 4: Historical data (9.5% export daily volume gain Q4 2013, 5.5% Q2 2015) is quantified, but the growth is market-driven not company-specific."
+      ],
+      "scoring_rationale": "Pattern B (industry common) applies. International trade growth is a macroeconomic tailwind that benefits UPS, FedEx, DHL, Maersk, and all global logistics providers equally. There is no company-specific advantage claim here - just exposure to a growing market. The historical data is solid, but the forward-looking 'Renaissance in trade' language is speculative and dependent on trade policy outcomes. Score maintained at 0.3.",
+      "cagr_connection": "Weak: market-driven volume growth is a tailwind but not a company-specific CAGR driver. The macro sensitivity cuts both ways (trade wars reduce volume).",
+      "cagr_confidence": 0.3
+    }
+  ],
+  "metadata": {
+    "scored_count": 3,
+    "confidence_distribution": {
+      "0.5": 1,
+      "0.3": 2
+    },
+    "gatekeeper_applied": false,
+    "scoring_date": "2026-02-24"
+  }
+}

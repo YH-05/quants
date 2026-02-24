@@ -1,0 +1,225 @@
+{
+  "ticker": "PRU",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00Z",
+  "claims": [
+    {
+      "id": "PRU-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Life Planner ダイレクト販売モデルによる国際保険事業の優位性（日本・アジア）",
+      "evidence": "CEO John Strangfeld (Q4 2014 prepared_remarks): 'Life Planner net premiums policy charges and fees grew a little over 6% on a constant-currency basis in 2014, and we continue to grow our Life Planner count while maintaining high standards.' Gibraltar Life: 'Life Consultant productivity has returned to levels last seen prior to the Star/Edison acquisition.' Life Planner operations outside Japan growing in Korea, Brazil. Life Planner distribution is proprietary agent force model distinct from bank channel competitors.",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "高品質・高生産性の専属エージェントフォースによる顧客維持と純保険料成長（定数ドルベースで年率6-8%成長）",
+        "barrier": "Life Plannerモデルは数十年かけて構築された独自の採用・訓練・管理システム。最低生産性基準の適用により品質を維持しながら競合の銀行チャネルとは異なる顧客接点を形成"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "John Strangfeld",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Life Planner net premiums policy charges and fees grew a little over 6% on a constant-currency basis in 2014, and we continue to grow our Life Planner count while maintaining high standards."
+        },
+        {
+          "speaker": "John Strangfeld",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Gibraltar Life Consultant productivity has returned to levels last seen prior to the Star/Edison acquisition."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "Life Plannerという独自エージェントモデルの「仕組み」への言及あり。単なる成長実績ではなく訓練・管理プロセスへの言及が含まれる"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "日本の保険市場では日本生命・第一生命等も専属エージェント体制を持ち、純粋競合との差別化根拠が不明確"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PRU-002",
+      "claim_type": "competitive_advantage",
+      "claim": "年金リスク移転（Pension Risk Transfer）市場でのリーダーシップと実行能力",
+      "evidence": "CEO John Strangfeld (Q4 2014 prepared_remarks): 'Retirement had a record earnings year, with strong momentum in pension risk transfer. We originated over $37 billion in total buyout and longevity account values in 2014, including the landmark $27 billion British Telecom longevity transaction.' Q4 2013: 'the successful execution of... the large pension risk transfer deals we closed in late 2012, all contributed meaningfully to this year's earnings.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "大型PRT取引（GM、Verizon、BT等の巨大案件）を実行できる資本力・リスク引受能力。年間$37B+の新規保険料",
+        "barrier": "AA格相当の資本水準維持（RBC 400%+）と年金数理・運用能力の組み合わせ。大型案件への入札には多大な資本基盤と専門性が必要で競合が限定的"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "John Strangfeld",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Retirement had a record earnings year, with strong momentum in pension risk transfer. We originated over $37 billion in total buyout and longevity account values in 2014, including the landmark $27 billion British Telecom longevity transaction."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "$37BおよびBT案件$27Bという具体的な数値。記録的な収益年という定量的な裏付け"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "大型PRT市場に参入できる競合が限定的（MetLife、Legal & General等に絞られる）という構造的差別化が含意されている"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PRU-003",
+      "claim_type": "competitive_advantage",
+      "claim": "多様化された事業ポートフォリオによるサイクルを通じた安定的ROE維持能力",
+      "evidence": "CEO John Strangfeld (Q4 2013 prepared_remarks): 'Our goal is to sustain an ROE of 13% to 14% over a full cycle. And we believe achievability of that is made possible by the quality and mix of businesses, our approach to capital management and most importantly, the quality of our people.' Q4 2014: 'our diversified portfolio of high-quality businesses, our strategic positioning and the quality of our talent keeps us optimistic that we will maintain a top-tier return on equity.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "米国年金リスク移転・変額年金・資産管理・グループ保険・国際生命保険（日本・ブラジル・韓国等）の多様化によるリスク分散。サイクル全体で13-14%ROE達成実績",
+        "barrier": "複数の規制管轄・事業ラインを統合的に管理するオペレーション能力は小規模競合には困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "John Strangfeld",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "Our goal is to sustain an ROE of 13% to 14% over a full cycle. And we believe achievability of that is made possible by the quality and mix of businesses, our approach to capital management."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": false,
+          "rule06_structural_vs_complementary": false,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "negative",
+            "reason": "ROE13-14%維持は結果の提示。それを可能にする「能力・仕組み」の具体的説明が乏しい"
+          },
+          {
+            "rule": "rule03",
+            "direction": "negative",
+            "reason": "多様化されたポートフォリオは大手保険会社に共通の特徴。相対的優位性の根拠が不明確"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PRU-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Star・Edison・Hartford買収統合による規模拡大とコストシナジー実現能力",
+      "evidence": "CEO (Q4 2013): 'the successful execution of the Star and Edison acquisitions in Japan... the $250 million of annual cost saves that we had targeted has been substantially achieved on an annualized run rate basis.' Hartford acquisition: 'We are now benefiting from a unified distribution system, drawing on Hartford's strength in financial institutions and our solid positioning in the brokerage general agency channel.'",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "GibraltarでのStarとEdison統合で$250Mのコスト削減目標を実質達成。Hartfordのディストリビューションの統合により独立代理店チャネル強化",
+        "barrier": "大型保険会社の統合プレイブックと実績。複数の買収を成功裏に完了したオペレーション能力"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Mark Grier",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "the $250 million of annual cost saves that we had targeted has been substantially achieved on an annualized run rate basis. Current-quarter results for Gibraltar also benefited by $10 million in the comparison from foreign currency exchange rates."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.45,
+        "adjustments": [
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "$250Mのコスト削減目標達成という具体的数値での裏付けあり"
+          },
+          {
+            "rule": "rule12",
+            "direction": "negative",
+            "reason": "買収統合は一時的な優位性であり、持続的な競争優位性の源泉としては弱い。統合完了後の優位性は別途評価が必要"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PRU-005",
+      "claim_type": "competitive_advantage",
+      "claim": "資産管理事業での$900B+AUMと第三者機関運用への拡大",
+      "evidence": "CFO (Q4 2013): 'The segment's assets under management amounted to $870 billion at year end, up 5% from a year ago, reflecting about $24 billion of net positive institutional and retail flows.' Q4 2014: 'assets under management amounted to $934 billion at year end, including $450 billion managed for unaffiliated institutional and retail clients.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "$934BのAUMによる運用規模効果。第三者機関運用$450Bが示すブランドと運用実績",
+        "barrier": "長年にわたる運用実績の蓄積とAAA格相当の資本基盤。大規模年金・機関投資家からの信頼は一朝一夕では構築不可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Mark Grier",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "The segment's assets under management amounted to $934 billion at year end, including $450 billion managed for unaffiliated institutional and retail clients."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": false,
+          "rule04_quantitative_evidence": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.35,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "negative",
+            "reason": "AUM規模は結果の提示。それを維持・拡大する能力（運用哲学、リスク管理プロセス等）の具体的説明が乏しい"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "$934B AUMと$450B第三者AUMという具体的数値あり"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "transcript_count": 10,
+    "quarters_covered": ["Q4 2013 (Q4_annual)", "Q1 2014", "Q2 2014", "H1 2014", "Q3 2014", "Q4 2014 (Q4_annual)", "Q1 2015", "Q2 2015", "H1 2015", "Q3 2015"],
+    "primary_transcripts": ["201402_earnings_call.json", "201502_earnings_call.json"],
+    "secondary_transcripts": ["other quarterly calls"]
+  }
+}

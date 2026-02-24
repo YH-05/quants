@@ -1,0 +1,147 @@
+{
+  "ticker": "SWKS",
+  "company_name": "Skyworks Solutions, Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201401_earnings_call.json", "quarter": "Q1 FY2014", "call_type": "secondary"},
+    {"file": "201404_earnings_call.json", "quarter": "Q2 FY2014", "call_type": "secondary"},
+    {"file": "201407_earnings_call.json", "quarter": "Q3 FY2014", "call_type": "secondary"},
+    {"file": "201410_earnings_call.json", "quarter": "Q4 FY2014", "call_type": "primary"},
+    {"file": "201501_earnings_call.json", "quarter": "Q1 FY2015", "call_type": "secondary"},
+    {"file": "201504_earnings_call.json", "quarter": "Q2 FY2015", "call_type": "secondary"},
+    {"file": "201507_earnings_call.json", "quarter": "Q3 FY2015", "call_type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "SWKS-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "SkyworksはSkyOneおよびSkyLiTEを中心とした高統合RF・アナログシステムソリューションを提供し、スマートフォンのバンド増加（4G/LTE→5G方向）と上位層アーキテクチャ複雑化に対応する独自設計能力を持つ。顧客との早期アーキテクチャ選定への参加（2-3年先見据えた設計）が参入障壁を形成している。",
+      "evidence_quotes": [
+        "we're engaging very early in architectural selection. So we have very good visibility in terms of how the architectures are going. And so I guess I would say that our clearly stated goal has been, for a long time, is to gain content with each model. And as an incumbent, we've been very successful in maintaining and, in fact, growing our footprint. (Q1 FY2015 Q&A)",
+        "providing integrated RF and analog solutions, which enable our customers to navigate increasingly more complex design challenges (Q1 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 統合RF設計能力という能力レベルの主張",
+        "rule04_quantitative_evidence": "PARTIAL - 早期設計参加は定性的証拠",
+        "rule06_structural_vs_complementary": "PASS - カスタム統合ICは競合には模倣困難",
+        "rule07_pure_competitor_differentiation": "PASS - Qorvo（ RF Micro+TriQuint）との差別化が明確",
+        "rule08_strategy_not_advantage": "PASS - 既存顧客設計への組み込みという実現済み優位性",
+        "rule10_negative_case": "PASS - 継続的なコンテンツ成長で実証済み",
+        "rule11_industry_structure_fit": "PASS - アナログIC設計は参入障壁高い",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q1 FY2015）"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "SkyworksのRF統合ソリューション設計能力は業界トップクラス。スマートフォンのバンド複雑化という構造的追い風があり、早期設計参加によるスイッチングコストが実証されている。Q1 FY2015の59%成長・35%Operating Marginがこれを裏付ける。"
+    },
+    {
+      "claim_id": "SWKS-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Skyworksは主要スマートフォンOEM（Apple、Samsung等）の各世代プラットフォームに深く組み込まれており、設計変更（デザインサイクル）ごとにSkyworksのコンテンツが増加する傾向がある。この設計込みの地位（インカンバント・アドバンテージ）はスイッチングコストを形成している。",
+      "evidence_quotes": [
+        "as an incumbent, we've been very successful in maintaining and, in fact, growing our footprint. And that's aided, of course, by complexity that all of our customer need help in solving, particularly on the analog side (Q1 FY2015 Q&A)",
+        "these analog architectures are getting much more complex, and that's across our entire customer base...these provides a tailwind for us. We have consistently more addressable content with each successive design. (Q1 FY2015 Q&A)"
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - インカンバント設計地位という能力",
+        "rule04_quantitative_evidence": "PARTIAL - 「successively more content」は定性的",
+        "rule06_structural_vs_complementary": "PASS - 設計プロセスへの組み込みは構造的",
+        "rule07_pure_competitor_differentiation": "PASS - 同等の統合力を持つ競合は限定的",
+        "rule08_strategy_not_advantage": "PASS - 現在進行形の設計窓口確保",
+        "rule10_negative_case": "PASS - 複数四半期で継続的確認",
+        "rule11_industry_structure_fit": "PASS - 半導体のカスタムIC設計は高スイッチング",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q1 FY2015）"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "インカンバント設計地位によるスイッチングコストは半導体業界では確立された優位性形成パターン。毎世代でコンテンツ増加という実績が複数四半期で確認されている。"
+    },
+    {
+      "claim_id": "SWKS-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "SkyworksはGaAsウェハー製造（内製）+SOI（外注）のハイブリッド製造モデルにより、高成長を支える柔軟な製造能力を確保している。Q1 FY2015のCapEx $87M（うち$200M+/年のペース）の製造投資が高品質・大量生産能力を形成している。",
+      "evidence_quotes": [
+        "We've made provisions for that. We have the capacity. Our on-time delivery remains very high. So I think we're all set, but we've had to make a significant investment over the last several quarters. (Q1 FY2015 Q&A)",
+        "we spent over $200 million last year and we had $87 million in Q1... we outsource a significant percentage of our products, the SOI products for power management, we run fabless, so it's a nice balance (Q1 FY2015 Q&A)"
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - ハイブリッド製造能力という能力",
+        "rule04_quantitative_evidence": "PASS - $200M+/年CapEx、$87M/四半期という定量証拠",
+        "rule06_structural_vs_complementary": "CONDITIONAL - 製造設備投資は模倣可能だが資本集約的",
+        "rule07_pure_competitor_differentiation": "PARTIAL - Qorvoも同様の製造能力を持つ",
+        "rule08_strategy_not_advantage": "WARN - 製造投資は能力だが構造的モートとしては弱い",
+        "rule10_negative_case": "PASS - 59%成長を支えた製造能力として実証済み",
+        "rule11_industry_structure_fit": "PASS - RF製造は高度な資本集約型",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.5,
+      "confidence_rationale": "製造能力は高成長を支えているが、Scale EconomiesとしてのモートはQorvoも同様の投資をしているため、差別化要因としては中程度。ハイブリッドモデルの柔軟性は評価できる。"
+    },
+    {
+      "claim_id": "SWKS-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "SkyworksはIoT（Connected Home・ウェアラブル・自動車・医療）向けに広いアナログコンテンツを展開しており、モバイル季節性を相殺するBroad Markets事業（売上の21%、前年比+26%）が差別化要因となっている。これはRF純粋プレイヤーには模倣困難なアナログシステム総合力を表す。",
+      "evidence_quotes": [
+        "our broad markets product line which serve the Connected Home, networking, media, automotive and medical markets, grew at 26% year-over-year, significantly outpacing the broader semiconductor industry. (Q1 FY2015 prepared remarks)",
+        "By all measures, wireless connectivity is exploding as an enabling technology... Our overarching mission is to make it effortless for customers to embrace these forms of connectivity (Q1 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 広いアナログ設計能力という能力",
+        "rule04_quantitative_evidence": "PASS - 26%成長、21%の事業比率という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - IoT向けアナログはRF専業には困難",
+        "rule07_pure_competitor_differentiation": "PASS - Qorvoはモバイル集中、IoT多様化はSWKSの差別化",
+        "rule08_strategy_not_advantage": "CONDITIONAL - まだ成長途上だが実績が伴っている",
+        "rule10_negative_case": "PASS - 26%成長という実績",
+        "rule11_industry_structure_fit": "PASS - IoTは長期成長市場",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "Broad Markets（IoT）の高成長は実証されており、RF純粋プレイヤーとの差別化要因となっている。ただしまだ21%の事業比率であり、モバイル依存度が高いことに変わりはない。IoT多様化の進展次第でモートの強度が変わる。"
+    },
+    {
+      "claim_id": "SWKS-005",
+      "claim_type": "cagr_connection",
+      "claim_text": "4G LTE普及（特に中国・新興国）とバンド複雑化によるコンテンツ単価上昇（レシーバーモジュール等の新カテゴリ追加）が、スマートフォン単体台数成長を上回るSkyworksのアドレッサブル市場拡大をもたらしている。",
+      "evidence_quotes": [
+        "we're seeing a dramatic increase in analog complexity driven by higher performance requirements, and these market dynamics have created greater content opportunities (Q1 FY2015 prepared remarks)",
+        "this year, we're seeing an LTE number in China that was probably about 92 million or so. We think that number could go up 2x, maybe 3x over the next 12 months. (Q1 FY2015 Q&A)"
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "4G普及によるコンテンツ単価上昇はSWKSの実績（59%成長）で裏付けられており、中国LTE普及の2-3倍予測も市場データと整合する。"
+    },
+    {
+      "claim_id": "SWKS-006",
+      "claim_type": "factual_claim",
+      "claim_text": "Q1 FY2015（2014年12月期）: 売上$805.5M（前年比+59%）、Non-GAAP粗利率46.7%、営業利益率35%、EPS $1.26（前年比+88%）、CF from Operations $383M、期末現金$1B超（無借金）。Q2 FY2015ガイダンス: 売上$750M（前年比+56%）。",
+      "evidence_quotes": [
+        "Revenue for the first quarter was $805.5 million, ahead of our prior guidance of $770 million and up more than 59% versus the year-ago quarter. (Q1 FY2015 prepared remarks)",
+        "We generated $282 million of operating income, roughly twice that of the year-ago quarter, yielding a 35% operating margin. (Q1 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q1 FY2015）"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "決算数値として確認済みの事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Process Power", "Switching Costs", "Counter-Positioning"],
+    "analyst_notes": "SWKSはRF・アナログ統合ソリューションにおける設計力とインカンバント地位が主要な競争優位性。4G普及という強い追い風の中、59%成長・35%OPM・35%OPM という優れた財務実績が優位性を裏付ける。IoT Broad Marketsへの多様化が長期的なモートを強化する方向にある。"
+  }
+}

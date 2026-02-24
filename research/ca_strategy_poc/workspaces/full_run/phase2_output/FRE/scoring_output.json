@@ -1,0 +1,681 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "HELIOS病院統合・マージン改善システム（クリニック開発計画）",
+      "evidence": "Q4 FY2013 CEO発言: 'Fresenius Helios...eighth consecutive year of double-digit EBIT growth...EUR 337 million target, actual results EUR 387 million. The development plan works.' Q4 FY2014: 'achieved about 40% of our EUR 85 million annual synergy target in the first year already.'",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_6_t",
+          "rule_10_t",
+          "rule_11_t"
+        ],
+        "confidence": 70
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_IV",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Pattern I（定量的裏付けあり差別化）とPattern IV（業界構造的市場ポジション）の両方に該当。EUR337M目標→EUR387M実績という超達成、8年連続ダブルデジットという定量データが強力"
+        },
+        {
+          "source": "KB1-T rule_11_t",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "ドイツ急性期病院市場：42%の病院が赤字、フラグメント市場でのプライベートオペレーターという業界構造との明示的合致。dogmaルール11（業界構造合致＋30%）の条件に近い"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "純粋競合（Asklepios、Sana等）との直接比較はないが、業界構造の明示でカバー"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_1_t",
+          "verdict": "pass",
+          "reasoning": "クリニック開発計画（6年間マージン改善計画）は能力・仕組みとして明確に評価可能"
+        },
+        {
+          "rule": "rule_4_t",
+          "verdict": "strong",
+          "reasoning": "EUR337M目標→EUR387M実績（15%超達成）、8年連続ダブルデジットという強力な定量裏付け"
+        },
+        {
+          "rule": "rule_11_t",
+          "verdict": "strong",
+          "reasoning": "42%赤字病院、フラグメント市場という業界構造との合致が明示"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_I",
+          "matched": true,
+          "effect": "positive",
+          "reason": "定量的裏付けのある差別化。EUR337M目標超過・8年連続実績が高評価に寄与"
+        },
+        {
+          "pattern": "pattern_IV",
+          "matched": true,
+          "effect": "positive",
+          "reason": "市場構造的ポジション。ドイツ急性期市場のフラグメント構造×統合能力の合致"
+        }
+      ],
+      "overall_reasoning": "HELIOS統合能力はKB2-T Pattern IとIVの両方に該当する高評価ケース。EUR337M目標→EUR387M実績という超達成、8年連続ダブルデジットという定量裏付け、ドイツ急性期病院市場の42%赤字・フラグメント構造との合致という業界構造要件を満たす。dogmaルール11（業界構造合致）を適用。純粋競合比較はないが業界構造開示でカバー。70%維持",
+      "power_classification": "Process Power（統合・マージン改善システム）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "HELIOS統合能力 → Rhön買収統合シナジーEUR85M/年 → EBIT +15%以上 → 売上・EPS成長加速",
+      "evidence": "EUR85M年間シナジー目標のうち初年度40%達成。EBIT成長8年連続ダブルデジットの実績",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "confidence": 70
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR high pattern",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "統合能力→EUR85Mシナジー→EBIT成長は2ステップの直接的因果。開示数値（40%初年度達成）での検証可能性が高い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_5_t",
+          "verdict": "direct",
+          "reasoning": "統合能力→EUR85Mシナジー→EBIT成長は2ステップの直接的因果"
+        },
+        {
+          "rule": "rule_12_t",
+          "verdict": "primary",
+          "reasoning": "Q4での体系的説明"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CAGR接続は明確で開示数値あり。EUR85Mシナジーのうち40%初年度達成という実績データが裏付け。dogmaルール5（直接的メカニズム+検証可能性）を満たす。70%",
+      "power_classification": "Process Power",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Fresenius Kabi のジェネリック静脈内薬品（IV Drugs）製造・承認取得能力と新興市場展開力",
+      "evidence": "Q4 FY2013 CEO発言: 'Propofol and Diprivan market share of 88%, despite competition from 3 other generics...launch schedule foresees a bolus of launches in the 2015 through 2017 time frame, expect to exceed our 6 to 10 targets'",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_6_t",
+          "rule_7_t"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "KB1-T rule_1_t",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "年間6-10製品ローンチ目標という能力指標はある。Propofol 88%シェアは結果だが競合3社存在下での維持は能力の証左"
+        },
+        {
+          "source": "FDA quality issues",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "FDA品質問題（Grand Island, Kalyani, Maricao）による能力への懸念。Phase 1評価での-5調整を継続"
+        },
+        {
+          "source": "drug shortage dependency",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "IV薬品不足（drug shortage）の外部要因依存が大きく競争優位の独自性に疑問"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_1_t",
+          "verdict": "partial_pass",
+          "reasoning": "製造・承認取得能力（年6-10製品ローンチ目標）は能力指標として機能"
+        },
+        {
+          "rule": "rule_7_t",
+          "verdict": "partial",
+          "reasoning": "Propofol競合（3社ジェネリック）との88%維持は差別化の証左だが包括的比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_I",
+          "matched": true,
+          "effect": "positive",
+          "reason": "88%シェアという定量的数値。ただしFDA問題が優位性の持続性に疑問を呈する"
+        }
+      ],
+      "overall_reasoning": "IV Drugs製造能力はPropofol 88%シェアと年間ローンチ能力で評価できるが、FDA品質問題と薬品不足という外部要因が優位性の独自性を曇らせる。Hospira、Baxterとの直接比較なし。45%",
+      "power_classification": "Cornered Resource（FDA承認パイプライン）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Kabi IV Drugs製造能力 → 2015-2017 ローンチボーラス（年6-10製品超）→ North America有機成長回復 → Kabi EBIT 6-10%成長",
+      "evidence": "2015-2017ローンチ計画。North America有機成長回復見通し",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "external dependency",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "drug shortage正常化という外部条件依存が大きい。dogmaCAGR低評価パターン「増収前提のレバレッジ接続（基盤説明なし）」に部分的に該当"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_5_t",
+          "verdict": "conditional",
+          "reasoning": "ローンチ→成長は2ステップで論理的だがdrug shortage正常化という外部条件依存大"
+        },
+        {
+          "rule": "rule_12_t",
+          "verdict": "primary",
+          "reasoning": "Q4での中期見通し提示"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "ローンチ計画は具体的だが外部条件（FDA・薬品不足）依存が強い。条件付きの接続として45%",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "多事業セグメント（Kabi, HELIOS, FMC, Vamed）のバランスポートフォリオによるリスク分散と成長安定性",
+      "evidence": "Q4 FY2014 CEO発言: 'Beta of about 0.4, we nonetheless, achieved a total return that is more than double the DAX's average...the ultimate low-risk, high-return investment.'",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_2_t",
+          "rule_4_t",
+          "rule_6_t"
+        ],
+        "confidence": 30
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Pattern A（結果を原因と取り違え）の典型例。Beta 0.4やTSR 2倍は結果。ポートフォリオ管理能力の説明なし"
+        },
+        {
+          "source": "dogma rule_1",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "dogmaルール1（優位性は能力・仕組み）違反。「低Beta・高TSR」は結果であり、それを可能にする能力の説明がない"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_1_t",
+          "verdict": "fail",
+          "reasoning": "Beta 0.4やTSR 2倍は結果。多角化ポートフォリオ管理能力の説明なし"
+        },
+        {
+          "rule": "rule_6_t",
+          "verdict": "complementary",
+          "reasoning": "多角化自体は補完的要素。各事業の固有の競争優位が核心"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_A",
+          "matched": true,
+          "effect": "negative",
+          "reason": "財務指標（Beta, TSR）を競争優位性として提示するPattern A（結果を原因と取り違え）の典型例"
+        }
+      ],
+      "overall_reasoning": "多角化ポートフォリオの結果（低Beta・高TSR）を競争優位として提示するPattern A（結果を原因と取り違え）の典型ケース。dogmaルール1（優位性は能力・仕組み）の違反。ポートフォリオ管理能力（CHD#3相当）の具体的説明がない。30%",
+      "power_classification": "なし（結果の誤帰属）",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks",
+        "Q4_FY2013_prepared_remarks"
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "多角化ポートフォリオ → 事業間の景気感応度の違いによる収益安定 → 低コスト資本調達 → EPS持続成長",
+      "evidence": "多角化→収益安定→資本コスト低減→EPS成長という4段階の間接的因果チェーン",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR low pattern",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "4段階以上の間接的因果チェーン。dogmaルール5（CAGR接続は直接的メカニズム要求）の低評価パターンに該当"
+        },
+        {
+          "source": "base advantage score",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "優位性（#5）が30%評価のため、CAGR接続の上限は35%"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_5_t",
+          "verdict": "multi_step",
+          "reasoning": "多角化→安定→資本コスト→EPSは4段階以上の間接的因果チェーン"
+        },
+        {
+          "rule": "rule_12_t",
+          "verdict": "primary",
+          "reasoning": "Q4発言"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "優位性（#5）が30%評価のため上限35%。因果チェーンも4段階以上で間接的すぎる。35%",
+      "power_classification": "なし",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "小規模・中規模M&A規律（ヘルスケア分野特化、返戻率基準を持つ選定能力）",
+      "evidence": "Q4 FY2014 Q&A CEO発言: 'we're quite disciplined...when there's an elephant stampede, get out of the way, don't compete with the elephants so let's really stay focused on transactions that may be below the radar screen when it comes to auctions'",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_8_t",
+          "rule_10_t"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Pattern III（能力over結果）に部分的に該当。M&A規律の方向性は明確"
+        },
+        {
+          "source": "KB1-T rule_10_t Q&A bonus",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Q&Aでの率直な能力説明。準備発言より信頼性高い"
+        },
+        {
+          "source": "lack of specific examples",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "具体的なM&A断念事例なし。CHD#1（70%）と比較して断念例の開示なしで50%限界"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_1_t",
+          "verdict": "partial_pass",
+          "reasoning": "M&A規律の説明（小型重視、高バリュエーション回避）は仕組みとして機能"
+        },
+        {
+          "rule": "rule_8_t",
+          "verdict": "pass",
+          "reasoning": "elephant stampede回避という組織的判断規律を優位性として評価"
+        },
+        {
+          "rule": "rule_10_t",
+          "verdict": "partial",
+          "reasoning": "意図的な不参加の姿勢は示すが具体的断念事例なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_III",
+          "matched": true,
+          "effect": "positive",
+          "reason": "能力・仕組みとしてのM&A規律評価。戦略ではなく組織的判断規律として機能"
+        }
+      ],
+      "overall_reasoning": "M&A規律の方向性は明確だが具体的な断念例がなく50%。「elephant stampede回避」という組織原則は評価できるが、CHD#1の明示的断念事例と比べると証拠が薄い。Q&A発言の率直さはプラス評価",
+      "power_classification": "Process Power（M&A規律）",
+      "evidence_sources": [
+        "Q4_FY2014_qa_session"
+      ]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Fresenius Kabi の新興市場（特に中国・アジア）における医療栄養・IV製品の市場ポジション",
+      "evidence": "Q4 FY2013 CEO発言: 'China sales about EUR 500 million, almost 3/4 of that revenue came from our leading position in the medical nutrition market that we enjoy in China.' Q4 FY2014: '強い中国成長継続期待'",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t",
+          "rule_11_t"
+        ],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Pattern A（結果を原因と取り違え）。中国EUR500M売上という市場ポジション（結果）の報告が中心。能力（現地規制対応、流通ネットワーク）の説明薄い"
+        },
+        {
+          "source": "government price intervention risk",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "2013年中国政府価格引き下げリスクが優位性の持続性に疑問"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_1_t",
+          "verdict": "partial_fail",
+          "reasoning": "市場リーダーシップ（結果）の報告が中心。能力の説明が薄い"
+        },
+        {
+          "rule": "rule_7_t",
+          "verdict": "weak",
+          "reasoning": "中国現地競合（B.Braun, Baxter）との比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_A",
+          "matched": true,
+          "effect": "negative",
+          "reason": "市場ポジション（結果）を競争優位として提示。能力の説明なし"
+        }
+      ],
+      "overall_reasoning": "中国医療栄養リーダーシップは事実だが政府価格介入リスクと競合比較の不足。KB2-T Pattern A（結果→優位性の転倒）に該当。35%",
+      "power_classification": "Cornered Resource（市場ポジション、低評価）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場ポジション → 中国・アジアの医療支出増加 → ダブルデジット有機成長継続 → Kabi売上CAGR 5-8%貢献",
+      "evidence": "Kabi新興市場のダブルデジット有機成長継続期待",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "base advantage score",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "優位性（#8）が35%評価のため、CAGR接続上限は40%"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_5_t",
+          "verdict": "direct",
+          "reasoning": "新興市場ポジション→医療支出増加→成長は比較的直接的"
+        },
+        {
+          "rule": "rule_12_t",
+          "verdict": "primary",
+          "reasoning": "Q4での提示"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "接続の論理は明確だが優位性（#8）が35%評価のため上限40%",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "Fresenius Vamed のプロジェクト-サービス転換能力（収益安定化）",
+      "evidence": "Q4 FY2013 CEO発言: 'cautiously shifted its project and service business mix from roughly 70/30 to less than 60/40 over the past 5 years...service contracts bring more stability...typically multiyear' Q4 FY2014: 'revenue share of services increased by 3 percentage points to 46%'",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_2_t",
+          "rule_6_t"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "scale limitation",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Vamed全体の規模が小さくFresenius全体への影響が限定的"
+        },
+        {
+          "source": "geopolitical risk",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "地政学リスク（ロシア、ウクライナ）依存が高い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule_1_t",
+          "verdict": "pass",
+          "reasoning": "70/30→60/40→54/46への移行は能力（ミックス管理力）として評価可能"
+        },
+        {
+          "rule": "rule_2_t",
+          "verdict": "pass",
+          "reasoning": "サービス契約への転換能力という名詞属性として表現可能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_III",
+          "matched": true,
+          "effect": "positive",
+          "reason": "能力over結果。ミックス転換という組織的能力を評価"
+        }
+      ],
+      "overall_reasoning": "ミックス転換能力は評価できるが、Vamedの規模（全社売上の数%）と地政学リスクにより限定的。40%",
+      "power_classification": "Process Power（ミックス管理能力）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "HELIOS FY2013 EBIT成長 +21%（8年連続ダブルデジット）、クリニック開発計画EUR337M目標→EUR387M実績",
+      "evidence": "Q4 FY2013決算発表での事実確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。トランスクリプトから直接確認可能な数値データ。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2013_annual"
+      ]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Rhön統合：EUR85M年間シナジー目標のうち初年度40%達成、統合コストEUR60M（当初EUR80M想定より低コスト）",
+      "evidence": "Q4 FY2014決算発表での事実確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2014_annual"
+      ]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Fresenius KabiのPropofol US市場シェア88%（ジェネリック3社競合下）、2015-2017に6-10製品/年を超えるローンチ予定",
+      "evidence": "Q4 FY2013決算発表での事実確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 80
+      },
+      "final_confidence": 0.8,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2013_annual"
+      ]
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "Fresenius株：過去10年CAGR TSR がDAX平均を10pp超過、Beta 0.4（DAX内最低水準）",
+      "evidence": "Q4 FY2014決算発表での事実確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 80
+      },
+      "final_confidence": 0.8,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2014_annual"
+      ]
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "Kabi中国2013年売上EUR500M、うち約3/4が医療栄養（市場リーダーシップポジション）",
+      "evidence": "Q4 FY2013決算発表での事実確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 80
+      },
+      "final_confidence": 0.8,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2013_annual"
+      ]
+    },
+    {
+      "id": 16,
+      "claim_type": "factual_claim",
+      "claim": "Vamed プロジェクト:サービス比率を過去5年で70:30から54:46に転換（ダブルデジット成長しながら）",
+      "evidence": "Q4 FY2014決算発表での事実確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 80
+      },
+      "final_confidence": 0.8,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2014_annual"
+      ]
+    }
+  ],
+  "metadata": {
+    "scored_count": 16,
+    "confidence_distribution": {
+      "70-80": 2,
+      "40-50": 4,
+      "30-40": 3,
+      "50-60": 1,
+      "90-100": 2,
+      "80-90": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

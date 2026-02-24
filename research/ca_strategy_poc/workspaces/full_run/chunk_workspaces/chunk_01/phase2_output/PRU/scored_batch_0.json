@@ -1,0 +1,354 @@
+{
+  "ticker": "PRU",
+  "scored_claims": [
+    {
+      "id": "PRU-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Life Planner ダイレクト販売モデルによる国際保険事業の優位性（日本・アジア）",
+      "evidence": "CEO John Strangfeld (Q4 2014): Life Planner net premiums grew 6%+ constant-currency 2014, Life Consultant productivity at Gibraltar returned to pre-Star/Edison levels. Life Planner operations outside Japan growing in Korea, Brazil.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "Life Planner という採用・訓練・管理システムという仕組みへの言及あり。成長率は結果だが、仕組みの説明が含まれる"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "専属エージェントフォースは事業モデルの中核的構造"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "日本の保険市場では日本生命・第一生命等も専属エージェント体制を持ち、純粋競合との差別化根拠が不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "訓練・管理プロセスという能力側面への言及あり"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "日本の純粋競合（大手生命保険）との差別化根拠が欠如"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "銀行チャネル vs Life Planner という構造的ポジション差別化の示唆あり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合比較欠如（dogma rule7）"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "能力・仕組みの言及"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "銀行チャネル vs エージェントの構造的差別化"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "Life Planner モデルは独自のエージェント訓練システムだが、日本市場での純粋競合（日本生命等）も専属エージェント体制を持つため rule07 FAIL。能力の仕組みは示されているが差別化が不明確。dogma 的に「まあ納得」域 0.50。"
+    },
+    {
+      "id": "PRU-002",
+      "claim_type": "competitive_advantage",
+      "claim": "年金リスク移転（Pension Risk Transfer）市場でのリーダーシップと実行能力",
+      "evidence": "CEO John Strangfeld (Q4 2014): $37B total buyout/longevity in 2014, including $27B BT longevity transaction. Record earnings in Retirement segment.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "資本力・リスク引受能力・年金数理能力という能力への言及。$37B 実績は結果だが、これを可能にする資本基盤という仕組みの説明あり"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$37B 新規、$27B BT 案件という定量的数値。記録的収益年の言及"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "RBC400%+ 資本水準維持は構造的優位性"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "$37B という具体的数値と BT $27B という記録的案件の定量的証拠"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "大型 PRT 案件に参入できる競合が限定的（MetLife, L&G 程度）という構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "$37B 実績から能力の主張へ一部移行。仕組みの説明がやや弱い側面あり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "大型案件の定量的証拠"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "限定的競合という構造的ポジション"
+        },
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.05,
+          "reasoning": "実績から能力への論理接続がやや弱い"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "PRT 市場における資本力・数理能力の組み合わせは高い参入障壁を持ち、$37B/$27B BT 案件という定量的証拠が強い。純粋競合（MetLife, L&G）との比較は示唆されており rule07 は一定程度 PASS。dogma 的に「おおむね納得」域 0.65。"
+    },
+    {
+      "id": "PRU-003",
+      "claim_type": "competitive_advantage",
+      "claim": "多様化された事業ポートフォリオによるサイクルを通じた安定的ROE維持能力",
+      "evidence": "CEO (Q4 2013): ROE 13-14% over full cycle. Q4 2014: 'diversified portfolio...quality and mix of businesses...maintain top-tier return on equity.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.25
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "ROE13-14%は結果。それを可能にする仕組みの具体的説明が乏しい"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "多様化ポートフォリオは構造的だが、大手保険会社に共通"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "大手生命保険（MetLife, MassMutual等）も多様化ポートフォリオを持つ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "ROE目標値（結果）を優位性として提示。能力の説明なし（dogma rule1 違反）"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "多様化ポートフォリオは大手保険会社共通（dogma rule3）"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "'quality and mix of businesses' は定性的で評価困難"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通能力"
+        },
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "ROE は結果（dogma rule1 違反）"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通パターン"
+        }
+      ],
+      "final_confidence": 0.25,
+      "overall_reasoning": "ROE 13-14% は優位性の結果であり原因ではない（dogma rule1 FAIL）。多様化ポートフォリオは大手保険会社に共通（rule3 業界共通能力 FAIL）。dogma 的に「あまり納得しない」域 0.25。"
+    },
+    {
+      "id": "PRU-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Star・Edison・Hartford買収統合による規模拡大とコストシナジー実現能力",
+      "evidence": "CEO (Q4 2013): $250M annual cost save target substantially achieved. Hartford acquisition: unified distribution system combining Hartford's FI strength with PRU's BGA positioning.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "統合実行プレイブックという能力。$250M 達成は結果だが、その能力の存在を示す証拠"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$250M コスト削減目標の定量的裏付け"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "保険業界M&A統合は大手各社が実施。PRU固有の能力として差別化困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$250M コスト削減という定量的目標達成の証拠"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "M&A統合は戦略的意思決定（rule08）。持続的競争優位性の構造的説明として弱い"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "統合完了後の持続的優位性への接続が弱い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "$250M 定量的達成"
+        },
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.1,
+          "reasoning": "M&A統合は戦略（rule08）"
+        },
+        {
+          "source": "dogma rule12",
+          "adjustment": -0.05,
+          "reasoning": "一時的な統合シナジーは持続的競争優位性の説明として弱い"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "$250M のコスト削減は具体的だが M&A 統合能力は戦略（rule08 警告）に近く、持続的な競争優位性としての構造的説明が弱い。統合完了後の優位性は別途評価が必要。dogma 的に「あまり納得しない」から「まあ納得」境界域 0.40。"
+    },
+    {
+      "id": "PRU-005",
+      "claim_type": "competitive_advantage",
+      "claim": "資産管理事業での$900B+AUMと第三者機関運用への拡大",
+      "evidence": "CFO (Q4 2014): $934B AUM year-end including $450B managed for unaffiliated clients. Q4 2013: $870B AUM with $24B net positive flows.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "AUM 規模は結果の提示。維持・拡大を可能にする運用哲学・リスク管理プロセスの具体的説明が乏しい"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$934B AUM と $450B 第三者 AUM という具体的数値"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Vanguard, Fidelity, BlackRock 等の方が大規模。規模優位性の差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "AUM 規模（結果）を優位性として提示。なぜ第三者機関がPRUを選ぶかの能力説明なし（dogma rule1 FAIL）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$934B という具体的数値があり規模感は示されている"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "純粋競合資産運用会社との差別化なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "AUM は結果（dogma rule1 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "競合比較なし"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "定量的数値の存在"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "AUM 規模は優位性の結果（dogma rule1 FAIL）。$934B の規模は大きいが BlackRock 等に比して差別化根拠が弱い。運用能力の具体的説明が乏しい。dogma 的に「あまり納得しない」域 0.30。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "20-30": 2,
+      "40-50": 2,
+      "60-70": 1
+    }
+  }
+}

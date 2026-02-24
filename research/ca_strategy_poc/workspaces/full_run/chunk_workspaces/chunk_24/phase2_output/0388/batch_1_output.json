@@ -1,0 +1,102 @@
+{
+  "ticker": "0388",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_id": "0388_006",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXの多様化された収益構造（取引・清算・上場料・データ・投資収益）は、ADT変動への耐性を高めており、グローバル取引所の中で最も分散された収益基盤を持つ。",
+      "descriptive_label": "非取引収益45%の多角化収益構造によるADT変動耐性（Scale Economies）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "収益分散（非取引収益45%）は収益構造という能力・仕組みとして評価可能。ADT変動耐性は結果だが、多セグメント事業体の統合的運営は構造的能力"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "非取引収益が収入増加の45%という定量データあり。ただしグローバル取引所との収益分散比較データが不足"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "収益多角化は構造的要素（複数事業体の統合的設計）"},
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "収益多様化戦略と構造的能力の境界が曖昧"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.1, "reasoning": "大手グローバル取引所（NYSE/Nasdaq等）も同様の収益多角化を推進しており、差別化としての相対的優位が不明確"},
+        {"pattern_id": "pattern_G_t", "matched": true, "adjustment": -0.1, "reasoning": "純粋競合との収益分散比較データが提示されていない"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_B_t", "adjustment": -0.1, "reasoning": "多くの大手取引所が同様の収益多様化を追求しており相対的差別化不明"},
+        {"source": "pattern_G_t", "adjustment": -0.1, "reasoning": "純粋競合との直接比較データなし"}
+      ],
+      "overall_reasoning": "非取引収益45%という定量データは存在するが、グローバル大手取引所も同様の収益多角化を進めている（業界共通パターンB-T）。Q2 2015発言（従・②相当）のため-10%調整。Phase 1評価の0.5から-0.1（パターンB）-0.1（パターンG）調整後: 40%。純粋競合比較データがあれば50%に上がりうる。"
+    },
+    {
+      "id": 7,
+      "claim_id": "0388_007",
+      "claim_type": "cagr_connection",
+      "claim": "Shanghai-Hong Kong Connect → ADT拡大・収益多様化 → 売上CAGR支持",
+      "descriptive_label": "Stock Connect → ADT2倍・非取引収益増加の二重CAGR接続メカニズム",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "Connect→ADT増加（2倍・$125B）の因果チェーンは開示データで検証可能"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "Stock Connectという構造的要素がCAGRドライバーへ接続"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": false, "adjustment": 0.0, "reasoning": "ADT2倍という定量接続は存在するが、売上CAGRへの具体的な寄与率（%）が示されていない"},
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "Connect→ADT→収益多様化→CAGRという3ステップ接続。中国市場混乱リスク（2015年夏）が中間ステップの安定性を損なう"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_C_t", "adjustment": -0.1, "reasoning": "2015年夏の中国株式市場急落により接続活用の安定性に懸念あり"}
+      ],
+      "overall_reasoning": "H1 2015のADT前年比2倍（$125B）という検証可能データがあり、売上48%増との直接接続は短い因果チェーン。ただし中国市場混乱（2015年夏のConnect取引急減）が安定的なCAGR支持としての信頼性を下げる。2ステップ以内の接続は確認できるが、CAGRパラメータへの貢献率の数値が不足（パターンII-Tの完全条件未達）。最終確信度: 50%"
+    },
+    {
+      "id": 8,
+      "claim_id": "0388_008",
+      "claim_type": "factual_claim",
+      "claim": "FY2014のHKEXのEBITDAマージンは70%であり、H1 2015はさらに8%改善した。",
+      "descriptive_label": "FY2014 EBITDAマージン70%・H1 2015で8%改善という財務実績",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "CFO発言による具体的な財務数値（70%、+8%）であり事実主張として確認可能"}
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "factual_claimとして財務数値の正確性を評価。CFO Paul KennedyがQ4 2014年次決算・Q2 2015で明確に数値を開示しており事実として確認可能。70%という水準はグローバル取引所の中でも高水準であり、参照データとして有効。確信度: 70%"
+    },
+    {
+      "id": 9,
+      "claim_id": "0388_009",
+      "claim_type": "factual_claim",
+      "claim": "H1 2015のHKEX収入の増加分の95%が株主に還元され、H1 2015の純利益は前年同期比73%増加した（過去最高四半期）。",
+      "descriptive_label": "H1 2015純利益73%増・収入増加の95%株主還元という財務実績",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "CFO発言による明確な財務数値（73%増益・95%フロースルー）で検証可能"}
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "factual_claimとして財務数値の正確性を評価。CFO Paul KennedyがH1 2015（Q2 2015 Earnings Call）で明確に発言。95%フロースルーレシオはオペレーティングレバレッジの高さを示す検証可能データ。確信度: 70%"
+    }
+  ]
+}

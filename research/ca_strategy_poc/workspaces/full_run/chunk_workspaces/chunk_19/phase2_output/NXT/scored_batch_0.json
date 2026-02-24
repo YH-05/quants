@@ -1,0 +1,135 @@
+{
+  "ticker": "NXT",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "NEXT Directoryのオムニチャネル配送能力：深夜カットオフ（スト23:59/Home 23:00）、翌日配送ネットワーク、4百万顧客ベースによる配送効率",
+      "phase1_confidence": 65,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_7"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_7",
+          "note": "CEO「ゲームチェンジャー」発言。他UK小売が深夜カットオフを提供していない事実は相対優位の証拠",
+          "delta": 0
+        },
+        {
+          "rule": "dogma_external",
+          "note": "深夜注文の売上貢献（9%）はCEO自身が認める小さな数値。-5ppは妥当",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 60,
+      "seven_powers_type": "Process Power / Scale Economies",
+      "overall_assessment": "配送能力の差別化は認められるが実際の売上貢献は限定的。競合追随可能性もあり60%。"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Directory配送能力・LABELプラットフォーム → Directoryオンライン成長 → 連結売上CAGR下支え",
+      "phase1_confidence": 65,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_II_t"],
+      "dogma_rules_applied": ["rule_5"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_5",
+          "note": "Directory FY2015 +12.1%・H1 FY2016 +8.2%で直接検証可能。65%維持",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 65,
+      "seven_powers_type": "Process Power",
+      "overall_assessment": "実績データで直接検証済み。直接的2ステップ接続。65%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "NEXTブランドの服飾・雑貨コレクション開発能力と「Collection Right」",
+      "phase1_confidence": 40,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_B_t_partial"],
+      "dogma_rules_applied": ["rule_3"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_3",
+          "note": "M&S、Primarkも同様の商品開発能力。CEO自ら「FY2015は例外的」と認める。-10pp",
+          "delta": -10
+        }
+      ],
+      "calibrated_confidence": 30,
+      "seven_powers_type": "Process Power / Branding",
+      "overall_assessment": "コレクション能力は業界共通。持続性に疑問でCEO自身が認める例外的成功年。30%。"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "NEXTのリテール店舗ポートフォリオ変革：2008-2015の42%面積増・60%改装済み",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "42%面積増・平均残存6年・収益性+2%という定量データ。ただし面積増に対して既存店成長限定",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 55,
+      "seven_powers_type": "Process Power",
+      "overall_assessment": "店舗ポートフォリオ変革の実績は認められる。UK小売構造的逆風が不確実性。55%。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "LABELプラットフォーム：4百万顧客ベースと配送インフラを活用した非競合ブランド販売、15%マージン目標",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_V_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "LABEL +30%・マージン15%という実績データあり。ただしホールセール→コミッション移行で実態はやや弱い",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 55,
+      "seven_powers_type": "Network Economies / Counter-Positioning",
+      "overall_assessment": "4百万顧客基盤レバレッジは明確な優位性。LABEL成長実績があるが認識移行期の課題あり。55%。"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "LABELプラットフォーム拡大 → NEXT全体のDirectory売上成長加速",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_II_t"],
+      "dogma_rules_applied": ["rule_5"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_5",
+          "note": "実験データで顧客カニバリゼーション否定済み。LABEL+30%で直接的メカニズム。60%維持",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 60,
+      "seven_powers_type": "Network Economies",
+      "overall_assessment": "実験データとLABEL成長実績に基づく直接的接続。60%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "high_70_90": 0,
+      "medium_50_65": 5,
+      "low_10_40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

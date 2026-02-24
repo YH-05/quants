@@ -1,0 +1,373 @@
+{
+  "ticker": "VIAB",
+  "company_name": "Viacom Inc.",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-11-13) as primary; supplementary from Q1-Q3 FY2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_FY2015", "Q2_FY2015", "Q3_FY2015"],
+    "note": "Viacom's fiscal year ends September 30. Q4 FY2014 (event_date 2014-11-13) is the primary annual call."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ケーブルネットワーク（MTV、Nickelodeon、Comedy Central等）でのトップ30チャンネルに7本を持つブランドポートフォリオ力",
+      "descriptive_label": "プレミアムケーブルブランドポートフォリオ",
+      "seven_powers_category": "Branding",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Philippe Dauman): 'our popular family of brands, which include an industry-leading 7 out of the top 30 and 11 of the top 50 ad-supported cable networks in people 2-plus and an industry-leading 8 out of the top 30 and 11 of the top 50 in people 18-49.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6, 7],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「トップ30に7本」は結果・ランキング。ブランドを維持・管理する能力（コンテンツ制作力、マーケティング能力）が問われる"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「ブランドポートフォリオ」は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "weak",
+            "reasoning": "ディスカバリー、AMC Networks、Turner(CNN/TNT/TBS)も同様にトップ30複数を持つ。Viacom固有の「相対的優位性」は??"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "「トップ30に7本、トップ50に11本」という定量データあり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "Nielsen視聴率低下がすでに顕在化しており、ブランド力の持続性に疑問",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "トップ30に7本という数値はあるが、CEOも「ratings challenges」を認めており、ブランド価値が低下していることを自認。ケーブルネットワーク業界での差別化根拠が弱い。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Viacom Velocity（ブランデッドコンテンツ・インテグレーテッドマーケティング）によるNielsen非依存の広告マネタイズ能力",
+      "descriptive_label": "Viacom Velocity非Nielsen広告マネタイズ",
+      "seven_powers_category": "Counter-Positioning",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Philippe Dauman): 'We at Viacom have the solution to this problem: premium, safe, professionally produced video content in a reliable branded environment, animated by our unparalleled marketing capabilities... our Viacom Velocity Integrated Marketing and branded content unit continues to expand its capabilities... In fiscal 2014, 30% of our domestic ad sales were non-Nielsen dependent... our objective over the next 3 years is to drive an increase in the percentage of non-Nielsen-dependent domestic ad sales to 50%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「非Nielsen依存の広告マネタイズ能力」は能力・仕組み。Viacom Velocityというブランデッドコンテンツ手法の説明あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "「2014年に非Nielsen広告が国内30%」「3年で50%を目標」という定量目標あり。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Nielsen離れはデジタル化による構造的変化への対応。競合も同様の取り組みをしているが、Viacomが業界でリードしていると主張"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "Nielsen非依存化は業界全体のトレンドであり、Viacom固有の差別化かは不明",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "非Nielsen広告の拡大戦略は具体的だが、Nielsen評価低下に「対応」するための防衛的戦略であり、構造的優位性というよりリスクヘッジの性格が強い。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Nickelodeonによる子供・プレスクール向けブランドエコシステム（放送・アプリ・消費者製品の一体化）",
+      "descriptive_label": "Nickelodeonコンテンツエコシステム",
+      "seven_powers_category": "Switching Costs",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Philippe Dauman): 'Teenage Mutant Ninja Turtles remains the #1 boy's action property. In fact, the toy line captured 29% of the boy's action market in August following the successful release of the Paramount film. Nickelodeon is currently the #1-rated network with kids 2-11 and has a branded ecosystem that is delivering more original content across platforms, powering great consumer products.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「コンテンツエコシステム」は放送・アプリ・消費者製品の複合的な仕組み。TMNT玩具市場29%シェアは結果だが、エコシステムの構築能力が根底にある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "子供2-11の#1ネットワーク、TMNT玩具市場29%という定量データあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "子供向けコンテンツ市場でのブランド統合（放送→映画→玩具）は、Nickelodeonがナンバーワンの地位にある市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "TMNT玩具市場29%というシェアと#1TV地位の定量的組み合わせ",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Nickelodeonの子供向けエコシステムは具体的な定量データ（#1 TV、TMNT 29%市場シェア）を持つ。放送→映画→玩具の一貫したブランド展開は競合（Cartoon Network、Disney Jr.等）に対して明確な優位性を持つ。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "国際市場（アフリカ・インド・中南米）への早期展開とViacom 18（インド）を含む新興市場ネットワーク構築能力",
+      "descriptive_label": "新興市場ネットワーク展開能力",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Philippe Dauman): 'Viacom now delivers more television channels than any other international programmer on the continent [Africa]... In India, the world's second largest country with a population growing at a rate 50% higher than the U.S., our Viacom 18 joint venture, including our leading broadcast network, COLORS, continues to add new networks and to thrive and grow. Our international networks business will be a driver of significant growth for Viacom for many, many years to come.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「アフリカでチャンネル数最多」という現状は結果。新興市場展開能力の「仕組み」への言及が薄い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "アフリカで「チャンネル数最多」は差別化指標だが、競合（Turner、Fox International、Discovery）との比較は限定的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "インドの高成長人口（米国比+50%）という市場構造はあるが、Viacom18の競争優位性の源泉説明が薄い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_qualitative_only",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "国際展開は多数あるが、各市場での競争優位性の具体的な仕組み説明が不足。「成長ドライバー」という発言は期待だが根拠が弱い。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Paramount Picturesによる大型フランチャイズ（TMNT、Transformers等）の映画・TV連動コンテンツ制作能力",
+      "descriptive_label": "Paramountフランチャイズコンテンツ制作能力",
+      "seven_powers_category": "Cornered Resource",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Philippe Dauman): 'Paramount Pictures successfully launched a new tentpole franchise with Teenage Mutant Ninja Turtles in August, which has earned more than $465 million at the global box office... Paramount Television has been steadily growing and creating a diversified portfolio of projects and partners, working with distributors across network, cable, premium cable and digital platforms and collaborating with highly successful producers, directors and writers such as Jerry Bruckheimer, Martin Scorsese, Steven Spielberg and Robert Zemeckis.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "TMNT $465Mは結果。フランチャイズ制作能力（IP管理、タレント関係、制作実行力）は能力だが説明が薄い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "TMNT $465M興行収入という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "映画はMedia Networksの補完事業として位置付けられており、構造的優位性というよりは補完的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "映画ビジネスの業績は「まれ」（hit-driven）で持続的な優位性ではない",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "TMNTの成功は1つの映画ヒット。Paramount映画ビジネスは業績の変動が大きく、構造的優位性というよりはヒット作品への依存度が高い。スコセッシ等のスター監督との関係は資産だが、独占的ではない。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "factual_claim",
+      "claim": "FY2014通期：売上高$13.78B（前年比フラット）、調整後営業利益$4.13B（5%増・過去最高）、調整後EPS $5.40（15%増・過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "claim": "国内アフィリエイト収益：Q4に21%増、FY2014通期10%増。加入者の70%が3年以上の契約更新済み（最長8年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Nickelodeonは子供2-11の#1ネットワーク。TMNT玩具は2014年8月に男子アクション市場の29%シェア獲得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "TMNT映画は世界興行収入$4.65億超（中国で$5,000万含む）。Interstellarは全世界で$1.3億超でオープニング1位",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "ケーブルブランドポートフォリオ → アフィリエイト料率交渉力 → 高単桁から低二桁の年率成長（guidance: high single to low double-digit）",
+      "descriptive_label": "ブランドポートフォリオ→アフィリエイト成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ブランド価値→アフィリエイト交渉力→料率成長は2ステップ。CEOが「high single to low double-digit」という数値ガイダンスを提示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "アフィリエイト収益成長ガイダンスが具体的数値で示されている",
+            "adjustment": 0
+          },
+          {
+            "reason": "小規模配信業者2社が契約更新を拒否した事実は、ブランド力に疑問符",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "アフィリエイト料率のCAGR接続は最もダイレクトで検証可能。ガイダンス数値あり。ただし配信業者2社の拒否事例は下方リスク。"
+      }
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "非Nielsen広告（Viacom Velocity等） → 国内広告売上の30%→50%への移行 → 広告収益成長の安定化",
+      "descriptive_label": "非Nielsen広告→収益安定化経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "Viacom Velocity能力→非Nielsen広告割合増加→広告収益安定化は2-3ステップ。30%→50%という数値目標は具体的"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "目標は具体的（30%→50%）だが、3年という達成時間軸の確信度が低い。Nielsen視聴率低下への対応という防衛的性格が強く、積極的な成長ドライバーとは言いにくい。"
+      }
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "Nickelodeonエコシステム → 放送×映画×玩具の相乗効果 → 消費者製品収益 + 広告収益成長",
+      "descriptive_label": "Nickエコシステム→複合収益成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Nick放送→TMNTフランチャイズ→玩具市場29%シェアは検証可能なメカニズム。2ステップ因果"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Nickelodeonエコシステムの収益接続は最も具体的なデータ（TMNT 29%市場シェア）で支持されており、相対的に高い確信度。ただし特定IPへの依存リスクあり。"
+      }
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "国際ネットワーク（Viacom18・インド等） → 新興市場の高成長人口にリーチ → 国際売上の高成長（FY2014国際広告+33%）",
+      "descriptive_label": "国際展開→新興市場成長経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "国際ネットワーク×人口成長→広告・アフィリエイト成長は2ステップだが、FX・規制・競合リスクが大きい"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "FY2014国際広告+33%（Channel 5含む）という実績データはあるが、新興市場固有のリスク",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "国際成長の実績はあるが（+33%）、多くがChannel 5取得による一時的効果。新興市場の有機的成長の持続性は不確か。"
+      }
+    }
+  ]
+}

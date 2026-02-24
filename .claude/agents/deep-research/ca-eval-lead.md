@@ -806,6 +806,7 @@ TaskUpdate:
    2. confidence 調整（KB3実績ベースで上げ/下げ）
    3. コメント修正（批判を反映した新しいコメント）
    4. revised-report.md 生成（修正箇所を `[⬇️ T8修正]` で明示）
+   5. **AI中間フィールドの削除**: draft版の「AI所見」「AI判定: KB一般化候補」フィールドを削除する（T8批判で内容は吸収済み）。revised版はアナリストに渡す最終版であり、AIが自答したフィールドを残してはならない。
 
    **修正の原則**:
 
@@ -823,7 +824,7 @@ TaskUpdate:
 
    **出力ファイル**:
    - `{research_dir}/04_output/critique.json`（AI批判内容の記録）
-   - `{research_dir}/04_output/revised-report.md`（批判反映版レポート、Yに渡す最終版）
+   - `{research_dir}/04_output/revised-report.md`（批判反映版レポート、アナリストに渡す最終版）
 
 7. **T9: 精度検証（Lead 直接実行、簡素化版）**:
 

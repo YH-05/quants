@@ -1,0 +1,322 @@
+{
+  "scored_claims": [
+    {
+      "id": "MMM-001",
+      "claim_type": "competitive_advantage",
+      "claim": "技術革新に基づく価格設定力（Technology-Driven Pricing Power）",
+      "evidence": "Q4 2014 Prepared Remarks（CFO発言）: 'Selling prices continue to be supported by technology innovation, which is a key fundamental strength of the company and helps drive unique customer solutions and an increasing flow of new products.' (2015-01-27, Nicholas Gangestad)",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "技術革新を価格設定力という能力・仕組みとして提示している（結果でなく能力ベース）"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "定量的裏付けなし。競合比較データ（ASP差異、NPS比較等）がない"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Honeywell・Emerson・Danaherとの明示的な差別化比較がない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「技術革新が価格を支える」は業界共通の定性的言説。定量的裏付けに乏しい（パターンD: 定性的のみ）"
+        },
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "大手製造業の多くが「技術革新による価格設定力」を主張。相対的差別化が不明"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.1,
+          "reasoning": "定性的のみパターン適用"
+        }
+      ],
+      "overall_reasoning": "テクノロジー起点の価格設定能力は方向性として認める。しかし「selling prices are supported by technology innovation」という発言は定性的言説に留まり、競合（Honeywell、Emerson、Danaher）との比較データや、どの製品カテゴリでどの程度価格プレミアムを維持しているかの定量証拠がない。Phase 1評価50%を維持。"
+    },
+    {
+      "id": "MMM-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ポートフォリオ管理・再編能力（Portfolio Management Capability）",
+      "evidence": "Q4 2014 Prepared Remarks（CEO発言）: 'Since 2012, we have realigned our portfolio from 6 sectors to 5 business groups and from 40 businesses to 27. In 2014, we combined businesses within 3 of our business groups... All in, we invested $90 million in 2014 in portfolio actions to position us for greater future success.'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "ポートフォリオ管理能力は能力・仕組みとして提示。$90M投資という具体数値あり"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "ポートフォリオ再編は戦略的意思決定（ルール8=戦略≠優位性）。再編能力の背後にある仕組みの説明が不足"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略と優位性の混同パターン。再編決定（戦略）と再編実行能力（優位性候補）の区別が不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_F",
+          "adjustment": -0.1,
+          "reasoning": "戦略・優位性混同パターン適用"
+        }
+      ],
+      "overall_reasoning": "40事業→27事業への再編実績は事実だが、これが優位性か戦略かが曖昧。CHD#1（買収選定能力70%）との比較では、MMM-002は見送り規律・評価基準・統合プロセスの具体的開示がなく、再編の成果（コスト削減額、マージン改善幅）の開示も限定的。50%"
+    },
+    {
+      "id": "MMM-003",
+      "claim_type": "competitive_advantage",
+      "claim": "100,000件以上の特許資産とR&D投資による技術的壁（IP Moat）",
+      "evidence": "Q4 2014 Prepared Remarks（CEO発言）: '3M also earned more than 3,000 patents in 2014. In our history, we have now earned more than 100,000 patents globally.' R&D支出$1.8B、NVPI 32-33%",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "100,000件という定量的数値あり。年間3,000件取得、NVPI 32-33%という具体的指標"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Honeywell・Emerson・Danaher等の競合特許ポートフォリオとの比較がない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "特許「数」は結果の指標。特許の質（活用率・収益化率・侵害防御実績）が優位性の本体。結果→原因の転倒"
+        },
+        {
+          "pattern_id": "pattern_I",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合比較がないため、定量的差別化パターンIには当てはまらない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "特許数は結果指標として一部減点"
+        }
+      ],
+      "overall_reasoning": "100,000件という数値は印象的だが、これは累積的な結果指標。特許活用率、技術ライセンス収入、競合の侵害阻止実績という「能力」への接続が薄い。NVPI 32-33%は新製品の寄与度を示す独自指標で評価に値するが、競合比較なし。50%"
+    },
+    {
+      "id": "MMM-004",
+      "claim_type": "competitive_advantage",
+      "claim": "多角化事業ポートフォリオによる地理・セクター横断的な有機成長（Diversification-Driven Resilience）",
+      "evidence": "Q4 2014 Prepared Remarks（CEO発言）: 'For the sixth consecutive quarter, we posted organic growth everywhere, in all business groups and in all geographic areas'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「全地域・全事業での有機成長」は結果の列挙（ルール1違反）"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "多角化による成長安定は大手製造業に共通する言説（ルール3=業界共通能力）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "「6四半期連続成長」は結果の列挙。成長を可能にした能力の説明なし（却下パターンA）"
+        },
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "多角化による安定成長は大手製造業共通の言説（却下パターンB）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通能力ゲートキーパー発動"
+        }
+      ],
+      "overall_reasoning": "「全事業・全地域で有機成長」は結果の列挙であり優位性ではない（dogma ルール1）。加えて、Honeywell・Emerson・Danaher等の競合大手も同様の多角化成長を主張しており相対的差別化がない（ルール3）。30%"
+    },
+    {
+      "id": "MMM-005",
+      "claim_type": "competitive_advantage",
+      "claim": "ヘルスケア事業の強固な市場ポジションと高マージン構造（Healthcare High-Margin Position）",
+      "evidence": "Q4 2014: 'Health Care delivered another very good quarter, with sales of $1.4 billion and organic growth of over 6%... Operating income was $431 million, and margins remained strong at 31%.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "31%マージンは結果の数値。感染防止・HIS等での競合（J&J Medical、Medtronic）との差別化説明なし"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "J&J Medical、Medtronicとの具体的な競合比較がない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "高マージン（31%）を優位性として提示しているが、マージンは結果。何が31%マージンを可能にするかの説明がない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "結果→原因の転倒パターン"
+        }
+      ],
+      "overall_reasoning": "ヘルスケア事業の31%オペレーティングマージンは優れた実績だが、これは結果であり優位性ではない（dogma ルール1）。製品のスイッチングコスト、特許保護、医療機関との関係深度など優位性の本体の説明がない。純粋競合（J&J、Medtronic）との比較もなし。30%"
+    },
+    {
+      "id": "MMM-006",
+      "claim_type": "competitive_advantage",
+      "claim": "国内製造・地域自給自足モデルによる為替リスク軽減能力（Domestic Manufacturing Hedge）",
+      "evidence": "Q4 2014 Q&A（CEO発言）: '3M never left United States. We stayed here.' 地域製造による為替ヘッジ構造",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "地域自給製造モデルは能力・仕組みとして提示"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "構造的な製造戦略として長期的に構築されており、補完的ではなく構造的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力ベースの主張として方向性は認める（パターンIII: 能力>結果）"
+        },
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "地域自給率の具体的数値がなく（「1/3以上は米国」という断片のみ）定量的裏付け不足"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.1,
+          "reasoning": "定量的裏付け不足"
+        }
+      ],
+      "overall_reasoning": "「3M never left United States」という発言は地域製造基盤への長期コミットを示す。為替変動時の競合比較で優位になりうる構造的特性。しかし地域自給率の開示がなく（「1/3以上米国」という断片）、競合の地域製造比率との比較もない。50%"
+    },
+    {
+      "id": "MMM-007",
+      "claim_type": "competitive_advantage",
+      "claim": "設計・仕様取込型（Design & Spec-in）ビジネスモデルの競争優位",
+      "evidence": "Q4 2014 Q&A（CEO発言）: 'On design and spec-in businesses, where you provide technology innovation that is coming on platforms, that's a big advantage for us.'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Design & Spec-inは製品仕様組み込みによるスイッチングコスト構造。能力・仕組みとして提示"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "競合（Henkel、Avery Dennison等）との具体比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力ベースの主張として評価（パターンIII: 能力>結果）"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Design & Spec-inモデルは7 Powersのスイッチングコスト・プロセスパワーに近い概念で、製品プラットフォームへの仕様取込は一度採用されると切り替えコストが高くなる。方向性は認めるが、プラットフォーム採用率や顧客維持率の定量開示がなく、競合との比較もない。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 2,
+      "40-50": 5
+    },
+    "gatekeeper_applied": true
+  }
+}

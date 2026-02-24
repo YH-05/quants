@@ -1,0 +1,120 @@
+{
+  "ticker": "BHI",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "BHI_001",
+      "ticker": "BHI",
+      "claim_text": "Baker Hughesは年間160以上の新製品・サービスを市場投入する体系的なイノベーション能力を持ち、製品商業化後12ヶ月以内の売上が10億ドルを超える。これを可能にするのはGlobal Products and Services（GPS）部門の構造的な製品開発プロセスと、ナノテクノロジー・センサー・冶金学を含む基礎研究への継続投資である。",
+      "power_type": "Process Power",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: 製品開発プロセスという能力は適切。Rule04（定量的証拠）: 160製品/年・$1B売上は定量的だが競合（SLB・HAL）比較がない。KB2-T PatternD（定性的のみ）は回避。PatternI（定量的差別化）の条件を一部満たすが競合比較データなし。dogma §2.1: 純粋競合との差別化不明確（SLBも同等の規模のR&D投資）で +20%のトリガーなし。Rule07-T（純粋競合との差別化）未達。確信度: 0.5（方向性は認めるが競合比較不十分）",
+      "kb_rules_applied": ["Rule01", "Rule04", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BHI_002",
+      "ticker": "BHI",
+      "claim_text": "ProductionWaveはアーティフィシャルリフト技術・生産化学品・リモートモニタリングを統合した油井生産最適化ソリューションであり、北米で5,000インストールを達成し人工リフト製品ラインが最速成長事業となった。この成功を背景にLEAPという次世代製品の研究開発も加速している。",
+      "power_type": "Process Power",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: 5,000インストールは結果指標。統合ソリューションの能力自体は評価対象。Rule02（名詞属性）: 統合能力は名詞化可能。KB2-T PatternB（業界共通）: 統合ソリューションは競合も提供可能。PatternIII（能力優先）: 一定程度合致。純粋競合（SLB、HAL）との差別化言及なし。5,000インストールは定量的だが競合比較なし。dogma §1.2: 業界共通能力の可能性あり。確信度: 0.5（方向性は認めるが差別化の独自性不明確）",
+      "kb_rules_applied": ["Rule01", "Rule02", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BHI_003",
+      "ticker": "BHI",
+      "claim_text": "FASTrak技術は世界で唯一商業的に利用可能な、掘削中に同時に貯留層流体サンプリングと地層評価を行えるサービスである。掘削中の評価を可能にすることで探鉱コストと時間を大幅削減できるという技術的差別化がある。",
+      "power_type": "Cornered Resource",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: 「世界唯一の商業サービス」という明示的な競合比較。Rule04（定量的証拠）: 「世界唯一」は質的差別化で定量データなし（-10%）。KB2-T PatternV（特定競合比較）: 「world's only commercially available service」は最強の差別化文言。PatternIII（能力優先）: 技術能力が前面に出ている。dogma §2.2（評価上げ要因）: 特定競合との明示的比較で+10-20%。Cornered Resourceとしての希少性は高い。ただし商業化からの期間と模倣難易度の具体的な証拠がないため0.7止まり。確信度: 0.7",
+      "kb_rules_applied": ["Rule01", "Rule04", "Rule07"],
+      "kb2_patterns_matched": ["PatternV", "PatternIII"],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BHI_004",
+      "ticker": "BHI",
+      "claim_text": "Baker Hughesは過去5年間の国際市場インフラ投資（中部アフリカ、アンゴラ、ナイジェリア、ノルウェー、ブラジル等）を通じて、変動コスト型プロジェクト遂行能力を構築した。この能力は中央アフリカ・アンゴラで業界水準を上回るインクリメンタルマージンとして実証されている。",
+      "power_type": "Scale Economies",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule04（定量的証拠）: 「eye-popping incrementals」という言及のみで具体数値なし（-10%）。Rule07（純粋競合との差別化）: 競合名（SLB、HAL）との比較なし。KB2-T PatternD（定性的のみ）: 定量データが限定的。dogma §2.3（評価下げ要因）: 定量データ皆無に近い。能力としての蓄積は認めるが証拠不十分。確信度: 0.5",
+      "kb_rules_applied": ["Rule04", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BHI_005",
+      "ticker": "BHI",
+      "claim_text": "Baker Hughesはダウンサイクルにおいて技術開発投資を継続（削減しない）する戦略的判断をしており、これが競合に対して差別化を維持する競争武器であるとCEOが位置づけている。",
+      "power_type": "Process Power",
+      "confidence": 0.3,
+      "cagr_connection_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule08（戦略の混同）: 「技術投資継続」は戦略的意思決定であり優位性そのものではない。Rule01（能力 vs 結果）: 投資継続の意図は能力ではなく意思決定。KB2-T PatternF（戦略混同）: 典型的な戦略と優位性の混同パターン。dogma §1.2（却下基準3）: 「戦略の優位性への混同」に該当。確信度: 0.3（因果飛躍・構造的優位性として不成立）",
+      "kb_rules_applied": ["Rule01", "Rule08"],
+      "kb2_patterns_matched": ["PatternF"],
+      "adjustment": -20
+    },
+    {
+      "claim_id": "BHI_006",
+      "ticker": "BHI",
+      "claim_text": "Baker Hughesは生産側（アーティフィシャルリフト、化学品）のサービスがOpExベースで顧客のダウンサイクル防衛的なビジネスであり、CapExベースの圧力ポンピングと異なり顧客支出が落ちにくい。",
+      "power_type": "Switching Costs",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule06（構造的 vs 補完的）: OpEx vs CapExの区別は構造的要素として評価できる。Rule07（純粋競合との差別化）: BHIがOpEx比率で競合より高いという証拠なし。KB2-T PatternC（因果飛躍）: OpEx=ダウンサイクル防衛という一般論。PatternII（直接CAGRメカニズム）: 部分的に合致。dogma §2.2: 業界構造との合致の一部は認める。ただし競合比較データなし。確信度: 0.5",
+      "kb_rules_applied": ["Rule06", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BHI_007",
+      "ticker": "BHI",
+      "claim_text": "Baker Hughesはノースシーで業界史上最大規模のドリリングサービス契約を締結し、StatOilの補完サービス主要契約を追加獲得しており、北海完成サービス市場でのマーケットリーダーポジションを確立している。",
+      "power_type": "Scale Economies",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: 大型契約獲得は結果。「マーケットリーダー」も結果の表現。Rule07（純粋競合との差別化）: 具体的競合比較なし。KB2-T PatternA（結果を原因とする誤帰属）: 「リーダーポジション」は現状結果であり、それを生み出す能力の記述が必要。dogma §1.2（却下基準1）: 「高シェア・成長実績は結果であり原因ではない」。ただし「業界史上最大規模」という定量的比較は部分的にPatternIに合致。確信度: 0.5",
+      "kb_rules_applied": ["Rule01", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BHI_008",
+      "ticker": "BHI",
+      "claim_text": "Baker Hughesは中東/アジア太平洋セグメントで最速成長を実現しており、NOC主体市場でのダウンサイクル耐性が高い安定収益基盤となっている。",
+      "power_type": "Scale Economies",
+      "confidence": 0.3,
+      "cagr_connection_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: 24%成長・最速成長は結果指標。Rule07（純粋競合との差別化）: 「最速成長」セグメントというだけで競合比較なし。KB2-T PatternA（結果を原因とする誤帰属）: 「最速成長セグメント」は完全に結果指標。dogma §1.2（却下基準1）: 成長実績は優位性の結果であり原因ではない。NOC市場での地位は構造的だが、競合に対する差別化の説明が不十分。確信度: 0.3",
+      "kb_rules_applied": ["Rule01", "Rule07"],
+      "kb2_patterns_matched": ["PatternA"],
+      "adjustment": -20
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.7": 1,
+      "0.5": 5,
+      "0.3": 2
+    }
+  }
+}

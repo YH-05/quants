@@ -1,0 +1,92 @@
+{
+  "ticker": "CRDA",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": ["CRDA-001", "CRDA-002", "CRDA-003", "CRDA-004", "CRDA-005"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "CRDA-001",
+      "claim_type": "competitive_advantage",
+      "claim": "NPP（New and Protected Products）戦略による高付加価値製品への集中と差別化（NPP売上比率Q1 2015で23%・前年比+13%、ROS 25%以上）",
+      "descriptive_label": "NPP戦略による差別化製品ポートフォリオ管理能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - NPP戦略の意思決定・実行プロセス（Stage-gate型製品開発）という仕組みの説明あり",
+        "rule_4_t": "PASS - NPP比率23%・ROS 25%以上という定量的裏付け。Q1 2015での+13%成長",
+        "rule_6_t": "PASS - NPPによる高マージン構造は構造的優位",
+        "rule_11_t": "PASS - 特殊化学品市場の高付加価値化トレンドとNPP集中化の合致"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）、pattern_III_t（競合模倣困難な能力）",
+      "kb3_t_calibration": "LLY#2（Novo対比での経口GLP-1差別化→70%）に類似。Crodaの場合はROS 25%という業界上位マージンが差別化の定量的証拠。CHD#1（買収選定能力→70%）とも類似した「戦略実行の仕組み」評価",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（NPP管理プロセス）。Rule 4（定量的裏付け）: PASS（23%比率・ROS 25%）。Rule 11（業界構造合致）: PASS。H1/Q1発言から-10%調整",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_I_t・III_t（高評価パターン複合）。dogma.md Rule 1・4・11の3重適合。NPP比率23%・ROS 25%という明確な定量値。H1/Q1発言から-10%調整後も70%維持"
+    },
+    {
+      "id": "CRDA-002",
+      "claim_type": "competitive_advantage",
+      "claim": "バイオサーファクタント開発への戦略的投資（GBP 1.2億設備投資、2014年商業化開始）による次世代天然由来製品の先行優位",
+      "descriptive_label": "バイオサーファクタント先行投資による将来的先占優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - バイオサーファクタント技術開発・商業化への先行投資という能力の仕組み",
+        "rule_4_t": "PASS - GBP 1.2億という具体的投資額・2014年商業化という時系列",
+        "rule_6_t": "PARTIAL - 先行優位は将来的な構造的優位の可能性だが、現時点では商業化初期"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。バイオサーファクタント生産技術の複製には5-10年かかるとCEOが説明",
+      "kb3_t_calibration": "LLY#1（次世代薬剤パイプライン→70%）に近い。ただしCrodaのバイオサーファクタントはLLYより商業化の不確実性が高い。50%が適切",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（技術開発能力）。Rule 4（定量的裏付け）: PASS（GBP 1.2億）。ただし商業化初期で実証前。Q1発言。将来性主導",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1・4 PASS、Rule 6 部分的。KB2-T pattern_III_t（競合模倣困難）。dogma.md Rule 1・4 PASS。商業化初期で将来性主導。Q1発言-10%調整。50%"
+    },
+    {
+      "id": "CRDA-003",
+      "claim_type": "competitive_advantage",
+      "claim": "固定資産への過度な依存を避けるCapital-Light事業モデル（ROE改善・FCF GBP 250M）と高配当性向",
+      "descriptive_label": "Capital-Lightモデルと高FCF創出能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - FCF GBP 250M・ROE改善は財務アウトカム（結果）。Capital-Lightを可能にする仕組みの説明が不十分",
+        "rule_4_t": "PASS - GBP 250M FCFという定量値",
+        "rule_6_t": "PARTIAL - Capital-Lightモデルは構造的要素だが、特殊化学品での実現メカニズムが不明確"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）。FCF・ROEは財務アウトカム",
+      "kb3_t_calibration": "ADN-004（10年増配=財務規律結果→30%）と類似。Capital-Lightモデルの仕組み（設備共有、外注パートナー活用等）の具体的説明がない",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（FCFは結果）。Q1発言からの抽出も不利。ただしCapital-Lightという仕組みの方向性は評価できる",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1 FAIL（FCFは結果）。KB2-T pattern_A_t（結果を原因）。Capital-Lightモデルという方向性は評価するが仕組みの具体的説明不足。Q1発言-10%調整。50%"
+    },
+    {
+      "id": "CRDA-004",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル分散型R&Dモデル（英・米・シンガポール・インド）と顧客固有ソリューション開発能力（顧客トレーニングセンター）",
+      "descriptive_label": "グローバルR&Dネットワークと顧客共創能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 顧客固有ソリューション開発という能力の仕組みあり（顧客トレーニングセンター）",
+        "rule_4_t": "FAIL - R&Dモデルの定量的優位性（特許数・開発速度等）の開示なし",
+        "rule_7_t": "FAIL - Evonik・Clariant等純粋競合との比較なし"
+      },
+      "kb2_t_pattern": "pattern_D_t（定性的のみ）。グローバルR&Dモデルは業界共通",
+      "kb3_t_calibration": "COST#5（国際展開→20%）に類似。グローバルR&Dは大手特殊化学品企業共通。顧客トレーニングセンターはCHD#3類似（ポートフォリオ管理能力→50%）",
+      "dogma_evaluation": "Dogma Rule 3（相対的優位性）: 制約あり（業界共通）。Rule 4（定量的裏付け）: FAIL。顧客共創の定性的説明はあるが定量化困難",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1 PASS、Rule 4・7 FAIL。KB2-T pattern_D_t（定性的のみ）。dogma.md Rule 3・4制約。顧客トレーニングセンターという仕組みは評価するが定量的裏付けなし。Q1発言-10%調整。50%"
+    },
+    {
+      "id": "CRDA-005",
+      "claim_type": "competitive_advantage",
+      "claim": "FDA認証取得・規制対応能力による参入障壁（化粧品原料・医薬品有効成分の厳格な安全性要件）",
+      "descriptive_label": "FDA認証・規制対応による参入障壁",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - FDA認証プロセスは仕組みとして評価可能",
+        "rule_4_t": "FAIL - FDA認証数・取得期間等の定量的裏付けなし",
+        "rule_7_t": "FAIL - 競合他社（BASF・Evonik等）も同様のFDA認証を保有"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。FDA認証は特殊化学品・化粧品原料の大手全社が保有",
+      "kb3_t_calibration": "LLY#6（グローバル医療機関ネットワーク=業界共通→30%）と類似。FDA認証はCroda固有の優位ではなく業界参入の必要条件",
+      "dogma_evaluation": "Dogma Rule 3（相対的優位性）: 明確な違反。業界参入条件は競争優位性ではない。却下基準2（業界共通能力）に該当",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 7 FAIL（競合も保有）。KB2-T pattern_B_t（業界共通）。dogma.md却下基準2に該当。ただしFDA認証の獲得スピード・数という潜在的差別化はある。50%"
+    }
+  ]
+}

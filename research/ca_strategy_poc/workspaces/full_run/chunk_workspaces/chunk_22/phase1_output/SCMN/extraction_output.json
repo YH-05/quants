@@ -1,0 +1,171 @@
+{
+  "ticker": "SCMN",
+  "company_name": "Swisscom AG",
+  "extraction_date": "2024-01-01",
+  "cutoff_date": "2015-09-30",
+  "transcript_sources": [
+    "research/ca_strategy_poc/transcripts/SCMN/201402_earnings_call.json",
+    "research/ca_strategy_poc/transcripts/SCMN/201411_earnings_call.json"
+  ],
+  "claims": [
+    {
+      "claim_id": "SCMN-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "claim_text": "Swisscom holds #1 broadband infrastructure position in Europe by measured vs advertised speed (Akamai), with 83% FTTH/VDSL coverage and best LTE network in Europe (Gartner), creating a durable local access advantage that competitors cannot easily replicate.",
+      "evidence_quote": "We are absolutely leading the broadband infrastructure race in Europe with 83% of FTTH VDSL coverage... Akamai just published again their results, clearly showing that Swisscom is clearly leading when it comes to measured versus advertised speed... We have the best performing LTE network in Europe by Gartner.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.5,
+      "confidence_rationale": "Independent third-party validation (Akamai, Gartner) supports network leadership claim. However, telecom infrastructure advantages are capital-intensive and subject to regulatory access obligations. Switzerland's small geography limits scale advantage globally. Cornered resource interpretation requires that competitors cannot acquire equivalent through investment, which is questionable in regulated telecoms.",
+      "rule_flags": ["rule07_pure_competitor_differentiation", "rule06_structural_vs_complementary"]
+    },
+    {
+      "claim_id": "SCMN-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "claim_text": "Swisscom's CHF 1.7 billion annual Swiss network investment creates a scale-based barrier through ultra-broadband rollout that smaller competitors and cable operators cannot match, sustaining first-mover advantage in FTTS/FTTH deployment.",
+      "evidence_quote": "We invest only in Switzerland CHF 1.7 billion. We are certainly in a phase where we have to increase our CapEx or be on this high level... Without such investments, long term, I think, you get really, really in trouble.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.3,
+      "confidence_rationale": "High CapEx commitment is stated fact, but scale economies in telecom depend on subscriber density and regulatory environment. Swiss cable competitors also invest significantly. The claim that CHF 1.7B creates a durable barrier requires more evidence of cost per subscriber advantage. Rule08: high CapEx is strategy/investment commitment, not confirmed scale advantage.",
+      "rule_flags": ["rule08_strategy_not_advantage", "rule04_quantitative_evidence"]
+    },
+    {
+      "claim_id": "SCMN-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "claim_text": "Swisscom's bundling strategy centered on TV drives very low churn through multi-product lock-in, with 72% of TV products sold in bundles and 33% bundle revenue growth, making customer switching economically and practically difficult.",
+      "evidence_quote": "TV is still the major driver of bundling, it's 72%. 72% of the TV products, which are sold in Switzerland are in bundles and that's extremely important because it enables us to decreased the churn. We have very low churn figures in Switzerland because of our bundling strategy... bundle revenue is increasing [by] 33%.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.7,
+      "confidence_rationale": "TV-anchored bundling as a switching cost mechanism is well-evidenced: 72% bundle penetration in TV, low churn figures (stated but not quantified), 33% bundle revenue growth. This is a structural characteristic (multi-product integration) not merely a strategy. Q3 2014 data confirms continuation: CHF 92M bundle growth (+23%) with quadruple-play growing 20%. The bundle lock-in mechanism is credible and persistent across multiple quarters.",
+      "rule_flags": ["rule01_capability_not_result", "rule06_structural_vs_complementary"]
+    },
+    {
+      "claim_id": "SCMN-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "counter_positioning",
+      "claim_text": "Swisscom's Infinity flat-rate mobile plan forces competitors into a pricing disadvantage: incumbents cannot match unlimited data without cannibalizing higher-ARPU plans, while Swisscom benefits from ARPU growth within Infinity as customers upgrade.",
+      "evidence_quote": "We launched Infinity in 2012... we were not dependent on metered revenues... After having launched Infinity, we had at least 3 quarters of optimizing of the existing base... we have a very clear trend now here, which is... 3 consecutive quarters of blended ARPU growth within the Infinity population.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.5,
+      "confidence_rationale": "Infinity plan shows 3 consecutive quarters of ARPU growth, indicating the flat-rate model enables upselling within the plan. However, counter-positioning requires that mimicry would damage the imitator's economics - evidence that Swiss competitors (Sunrise, Salt) cannot copy this without severe margin damage is not explicit in the transcript. Rating: somewhat convinced that this is differentiated positioning, but counter-positioning label requires more evidence of competitor constraint.",
+      "rule_flags": ["rule07_pure_competitor_differentiation", "rule08_strategy_not_advantage"]
+    },
+    {
+      "claim_id": "SCMN-005",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "claim_text": "Swisscom's B2B ICT convergence position creates high switching costs through integrated IT+telecom outsourcing with a strong order book, serving enterprise clients (particularly banking) with end-to-end managed services that require deep integration.",
+      "evidence_quote": "We merged the IT department with the telecommunication department to really go for converging solution in the B2B market... We had a very strong order intake in 2013 in the B2B area. A lot of this business order intake is coming out of ICT outsourcing business and banking... if we are going in a cloud world, it's fundamental that you have an end-to-end management between network and cloud solution. And for this, Swisscom is in an excellent position.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.5,
+      "confidence_rationale": "B2B ICT convergence with strong order book is evidence of customer stickiness. Banking sector IT outsourcing is a high-switching-cost segment. However, the integration of IT+telecom is relatively recent (merger of departments) and the structural advantage needs more time to solidify. The claim is plausible but not yet proven at scale.",
+      "rule_flags": ["rule01_capability_not_result", "rule11_industry_structure_fit"]
+    },
+    {
+      "claim_id": "SCMN-006",
+      "claim_type": "competitive_advantage",
+      "power_type": "branding",
+      "claim_text": "Swisscom's Net Promoter Score advantage (B2B NPS 40, mass market NPS 32-33) significantly above competitors creates a brand-driven price premium that supports margins and reduces churn in Switzerland's price-competitive telecom market.",
+      "evidence_quote": "In the B2B area, we have a Net Promoter Score of 40. In the mass-market units, a Net Promoter score of 32, 33. So you see that we are really performing, and if you compare this with our customers, we have really a big advantage on the customer satisfaction level.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.3,
+      "confidence_rationale": "NPS figures are stated without competitive benchmarks (what are Sunrise/UPC NPS scores?). The claim that NPS supports price premium is logical but not directly evidenced. Brand-based moats in regulated telecoms are difficult to sustain when infrastructure quality converges. Rule04: quantitative evidence (NPS 40/32) is provided but competitor comparison is absent. Rating: skeptical of durable branding moat in telecom context.",
+      "rule_flags": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"]
+    },
+    {
+      "claim_id": "SCMN-007",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "claim_text": "Swisscom's All-IP migration program targeting 2018 TDM switch-off, developed through proprietary FTTS/Micro-CAN technology co-developed with vendors, creates a structural cost advantage of CHF 100M annual OpEx savings upon completion.",
+      "evidence_quote": "We commit to 2018 [All-IP migration]... we have started the transformation of our TDM customer base onto the new All-IP stacks... we have started the program last year... We will build our own completely new state-of-the-art cloud environment... OpEx saving in a full non-TDM world, which is 2018 plus of roughly CHF 100 million savings per annum.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.3,
+      "confidence_rationale": "The CHF 100M OpEx saving target is specific and management-committed, but it is a future projection (2018+), not yet realized. The All-IP program is underway but completion is multi-year. Process power requires that the proprietary process creates ongoing efficiency; here the benefit is a one-time platform migration. Rule08: this is largely strategic execution, not a proven sustained process advantage.",
+      "rule_flags": ["rule08_strategy_not_advantage", "rule04_quantitative_evidence"]
+    },
+    {
+      "claim_id": "SCMN-008",
+      "claim_type": "cagr_connection",
+      "claim_text": "Swisscom's TV-anchored bundling strategy is the primary CAGR driver: bundle revenue growing 33% (FY2013) and 23% (Q3 2014) is transforming the business from declining single-play to multi-product ARPU expansion, with 70% of the customer base still upsell-eligible.",
+      "evidence_quote": "Bundle revenue is increasing [by] 33%... only 30% of the customer of Swisscom have only one product from Swisscom. So that shows that we have a customer base of 70% where we can do upselling with bundling... the actual bundle penetration overall is 24%. So there is space to push bundles and to increase the ARPU on each customer.",
+      "source_transcript": "201402_earnings_call.json",
+      "fiscal_period": "Q1 2014 (FY2013 annual)",
+      "is_primary_source": true,
+      "confidence_score": 0.7,
+      "confidence_rationale": "Strong quantitative evidence: 33% bundle growth FY2013, 23% Q3 2014, 24% current penetration vs 70% upsell-eligible base. The mathematical headroom for continued bundle penetration growth is clearly substantial. This is the primary revenue growth mechanism for Swisscom in the medium term. Q3 2014 confirms the trend is continuing and accelerating (CHF 92M bundle growth in single quarter).",
+      "rule_flags": ["rule04_quantitative_evidence"]
+    },
+    {
+      "claim_id": "SCMN-009",
+      "claim_type": "factual_claim",
+      "claim_text": "Swisscom generated EBITDA of approximately CHF 4.54 billion in FY2014 guidance (confirmed post-Q3), with CapEx of CHF 2.4 billion and group revenue of CHF 11.5 billion.",
+      "evidence_quote": "Revenue remains unchanged at CHF 11.5 billion. EBITDA which we increased after Q2 to about CHF 4.54 billion can also be confirmed in CapEx for the full year 2014, remain unchanged at CHF 2.4 billion.",
+      "source_transcript": "201411_earnings_call.json",
+      "fiscal_period": "Q3 2014",
+      "is_primary_source": false,
+      "confidence_score": 0.9,
+      "confidence_rationale": "Management guidance confirmed after Q3 completion. High factual reliability.",
+      "rule_flags": []
+    },
+    {
+      "claim_id": "SCMN-010",
+      "claim_type": "factual_claim",
+      "claim_text": "Fastweb (Swisscom's Italian subsidiary) grew service revenue by 5% in EUR terms in Q3 2014, driven by Enterprise (+14M) and Wholesale (+7M) segments, with lower ULL fees supporting EBITDA improvement of CHF 42M.",
+      "evidence_quote": "Fastweb, revenue increase of CHF 18 million, and this is 5% on a year-on-year basis in euro. And the growth of the service revenue is coming mainly out of the Enterprise segment, where we have CHF 14 million increase and the Wholesale segment... The EBITDA of Fastweb increased by CHF 42 million.",
+      "source_transcript": "201411_earnings_call.json",
+      "fiscal_period": "Q3 2014",
+      "is_primary_source": false,
+      "confidence_score": 0.9,
+      "confidence_rationale": "Specific financial figures from quarterly report with high factual reliability.",
+      "rule_flags": []
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 10,
+    "by_type": {
+      "competitive_advantage": 7,
+      "cagr_connection": 1,
+      "factual_claim": 2
+    },
+    "by_power_type": {
+      "cornered_resource": 1,
+      "scale_economies": 1,
+      "switching_costs": 2,
+      "counter_positioning": 1,
+      "branding": 1,
+      "process_power": 1
+    },
+    "confidence_distribution": {
+      "0.9": 2,
+      "0.7": 2,
+      "0.5": 3,
+      "0.3": 3,
+      "0.1": 0
+    },
+    "primary_source_transcripts": ["201402_earnings_call.json"],
+    "secondary_source_transcripts": ["201411_earnings_call.json"],
+    "key_themes": [
+      "TV-anchored bundling as switching cost and growth driver",
+      "Swiss infrastructure leadership (Akamai #1 Europe, Gartner best LTE)",
+      "Infinity flat-rate mobile plan enabling ARPU expansion",
+      "B2B ICT convergence with banking sector strength",
+      "All-IP migration targeting CHF 100M annual OpEx savings"
+    ]
+  }
+}

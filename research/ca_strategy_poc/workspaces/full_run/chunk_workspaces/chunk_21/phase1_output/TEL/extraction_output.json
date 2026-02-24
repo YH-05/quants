@@ -1,0 +1,301 @@
+{
+  "ticker": "TEL",
+  "transcript_source": "Q1-Q4 2014 + Q1-Q4 2015 Earnings Calls (Telenor ASA)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2014", "Q2_2014", "Q3_2014", "Q4_2014", "Q1_2015", "Q2_2015", "Q3_2015", "Q4_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "新興アジア市場（バングラデシュ、パキスタン、インド、ミャンマー）での「インターネット・フォー・オール」ポジションによる加入者成長と収益機会獲得",
+      "descriptive_label": "新興アジア市場での初期インターネットポジション獲得力",
+      "evidence_from_transcript": "Q2 2014 (Jon Baksaas): 'We added 4 million new subscribers this quarter...driven by India, Bangladesh, and Pakistan...Internet-For-All strategy with the number of active internet users now currently standing at 22%...' Q2 2015 (Jon Baksaas): 'Internet For All...Most importantly of all, Internet For All, as we've expressed it, the impact for societies on establishing Internet connectivity is very strong, and of course, an important growth driver for Telenor Group going forward.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「Internet For All」は戦略ラベルに近いが、アジア新興国での先行的ネットワーク構築能力という仕組みを指している"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ネットワークインフラの先行構築（Myanmar等）は競合が短期では追随困難な構造的資産"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "アジア新興市場の人口増加・中間層拡大・スマートフォン普及という市場構造と完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2のみの言及で年次callではない（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Airtelや地場通信企業も同様の戦略を持つ（業界共通要素）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "アジア新興国での先行的インフラ構築はポジション優位性だが、同戦略は他大手も採用。Myanmarでは先行者優位が明確（mid-30%マーケットシェア）だが、他市場は競争激化。四半期callのみで確信度は低め。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "新興アジア市場での先行ネットワーク構築 → 加入者獲得 → データARPU成長 → 売上CAGR",
+      "descriptive_label": "新興市場先行者優位→データ収益化→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ネットワーク→加入者→データARPU→売上は3ステップ以上。各段階の定量的検証が必要"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2の発言から。年次での包括的説明なし。-10%調整"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1-Q3発言由来のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "因果チェーンが3ステップ以上で飛躍気味。ただしMyanmarのEBITDA 36%は数値的裏付けとして機能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "グループ横断的な運営効率化プログラム（NOK 50億の2012-2015コスト削減）による収益性維持",
+      "descriptive_label": "グループ規模コスト効率化プログラム",
+      "evidence_from_transcript": "Q2 2014 (Richard Aa): 'we are keeping OpEx flat in the core business. So it's a very good operational leverage. We are translating the growth in mobile core service revenues...There is a lot that's coming from data with the profitability. And we get the operational leverage due to our cost programs and not increasing our OpEx despite massive increase in number of customers, massive increase in number of sites and salary and inflation.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "コスト削減プログラムは戦略的施策であり、能力・仕組みの優位性とは言いにくい"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "NOK 50億コスト削減目標、OpEx flat維持という定量目標あり"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "効率化「プログラム」は戦略的施策。持続的な組織的能力（Process Power）かは疑問"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "戦略的施策と優位性の混同（ルール8-T）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "コスト効率化プログラムは施策であり構造的優位性とは言えない。ただし加入者数・サイト数増加の中でOpExを維持する能力は、ある程度のProcess Powerを示唆する。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "OpEx効率化 → EBITDA margin維持・改善 → フリーキャッシュフロー増加 → CAGR下支え",
+      "descriptive_label": "効率化→EBITDA margin→FCF",
+      "source_advantage": 3,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。NOK 50億削減→EBITDA 36%維持は開示データで検証可"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言。年次callで確認が必要"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "四半期callのみ（-10%調整）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "因果は明確。EBITDA margin 35-36%の安定維持は開示データで確認可能"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "ノルウェー市場でのモバイルデータマネタイズ能力：データ中心料金プランへの移行と4G普及による高いモバイルサービス収益成長（+6%）",
+      "descriptive_label": "ノルウェー市場でのデータマネタイズ能力（料金設計・ネットワーク投資）",
+      "evidence_from_transcript": "Q2 2014 (Jon Baksaas): 'The 5% underlying growth in mobile service revenues in Norway this quarter was a strong growth in data usage. The data traffic in our network has almost doubled from second quarter last year...smartphone penetration is now about 70%, and 1/3 of the handsets now supports 4G. We continue to improve our 4G coverage and are approaching 80% population coverage.' Q2 2015: 'More than 50% of our customers now have 4G-enabled phones. And the median data consumption increased by 125% compared to the second quarter last year. This resulted in a 6% growth in mobile service revenues.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "6%のモバイルサービス収益成長は結果。背後の能力は料金体系の最適化能力とネットワーク投資"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "データトラフィック2倍、4G カバレッジ90%、中央値データ使用量+125%という数値あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ノルウェーの高いスマートフォン普及率・データ需要の市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2のみの発言（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "競合Teliasonera/Ice等との比較定量データなし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "データ消費+125%という定量データは印象的。ただし国内競合（Teliasonera）との比較がなく、データマネタイズ能力の相対的優位性が不明確。四半期callでの発言。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "ノルウェーでのデータ料金最適化 → ARPU成長 → モバイルサービス収益 → グループCAGR",
+      "descriptive_label": "データARPU→モバイル収益→グループCAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。ARPU成長→収益成長は財務データで検証可"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言由来。-10%調整"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "四半期発言のため-10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ノルウェー市場は成熟市場のため高成長持続は不確実。ただし既存顧客のデータ移行によるARPU改善の因果は明確"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Q2 2014: Telenorグループは38百万のアクティブインターネットユーザー（総顧客176百万の22%）。ミャンマーで2015年Q2末に9.5百万加入者（55%がデータユーザー）、中旬に1000万を突破",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "2012-2015の3年間でNOK 50億のコスト削減プログラム。加入者数・サイト数増加・インフレにもかかわらずOpExをフラットに維持。EBITDA 35-36%を安定維持",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015時点でノルウェーのデータトラフィック中央値が前年同期比+125%増。4G人口カバレッジ90%（2015年末に95%目標）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [5]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルに多様化した地理ポートフォリオ（ノルウェー・スウェーデン・アジア新興国）による収益安定性と成長機会の分散",
+      "descriptive_label": "地理的多様化によるリスク分散と成長機会の並立",
+      "evidence_from_transcript": "Q2 2015 (Richard Aa): 'Also this quarter, we come in at 5.8%, which shows the diversification and the strength of our portfolio.' Q2 2014: 'Group organic revenue growth was 1.6% this quarter...mobile service revenue growth was 4%...remarkably stable for the last few years between 4% and 6%'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「多様化ポートフォリオ」はある状態だが、競合（Vodafone等）も同様の地理分散を持つ"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "名詞（地理ポートフォリオ）で表現"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "M&Aと長期投資で構築した市場ポジションは構造的資産"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "大手通信キャリアは地理分散を共通して持つ（業界共通能力）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "地理多様化は業界大手の共通戦略。Telenor固有の優位性として差別化するには競合比較が必要。4-6%の安定した MSR成長は数値として一定の裏付けになるが、独自性の説明が弱い。"
+      }
+    }
+  ]
+}

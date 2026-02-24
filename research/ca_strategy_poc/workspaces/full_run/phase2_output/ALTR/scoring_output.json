@@ -1,0 +1,280 @@
+{
+  "scored_claims": [
+    {
+      "id": "ALTR_001",
+      "claim": "FPGAアーキテクチャのイノベーション — HyperFlex（2x コアパフォーマンス）とIntel 14nm FinFET採用のStratix 10による高性能優位",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "アーキテクチャ設計能力（仕組み）を評価。HyperFlex という具体的な技術能力が明示されている。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "2x core performance、25% higher logic elements（5.5M LEs）という競合比較数値あり。業界初 14nm FinFET も技術的差別化の定量証拠。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Xilinx との直接比較を示唆するが具体的社名＋数値比較の明示なし。部分的合格。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "2x performance、25% higher density という定量的技術差別化は高評価パターン I に合致。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合名（Xilinx）の明示的比較がないため高評価パターン V は完全合致ではない。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "世界初 14nm FinFET FPGA、HyperFlex 2x performance という明確な技術差別化。Intel との独占的製造関係は Cornered Resource の核心。Q4 年次発言で信頼性高い。Xilinx との直接比較数値なし（-5%）を加味しても 70% が妥当。"
+    },
+    {
+      "id": "ALTR_002",
+      "claim": "OpenCL プログラミングツールによるFPGAアクセラレーター市場の拡大 — ソフトウェアエンジニアがFPGAをコプロセッサとして利用可能にする障壁除去",
+      "claim_type": "competitive_advantage",
+      "power_type": "counter_positioning",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "OpenCL プラットフォームという能力（仕組み）。'uniquely removed the biggest barrier' という競合差別化表現。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "$1B TAM 推計あり。採用企業数等の具体的数値なし。TAM は裏付けとして機能するが弱い。"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "OpenCL はツール（能力）であり市場展開戦略ではない。ルール 8 適合。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "プログラミングツールという能力を評価。高評価パターン III 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "FPGA 採用の最大障壁（HW 記述言語要求）を OpenCL（SW 言語）で除去するアプローチは市場拡大の直接的メカニズム。Counter-Positioning の要素が強い（ASIC/GPU は同等の柔軟性を同コストで提供困難）。$1B TAM 推計は根拠として機能。70%。"
+    },
+    {
+      "id": "ALTR_003",
+      "claim": "固定ASICからFPGAへのリプレース継続成長 — Moore's Lawに伴うASIC開発コスト上昇とFPGAコスト低下による代替加速",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.5
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "ASIC 代替トレンドは外部要因（市場力）であり Altera 固有の能力ではない。境界上の評価。"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "ASIC 開発コスト上昇という業界構造変化と FPGA 位置づけは合致。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Xilinx 等競合も同様に恩恵を受ける業界共通トレンド。却下パターン B 合致。ただし 50% に留める（却下ではない）。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "ASIC 代替は PLD 業界全体の追い風。Altera と Xilinx の両社が恩恵を受ける。純粋競合（Xilinx）との差別化が説明されていない。業界共通トレンドとして 50%。dogma.md ルール 3（相対的優位性）に基づく上限設定。"
+    },
+    {
+      "id": "ALTR_004",
+      "claim": "PLD市場シェアの継続的拡大 — 半導体業界・PLD業界を上回る成長率（2014年+12%でほぼ業界成長2倍）",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "市場シェア拡大・業界 2 倍成長は「結果」であり能力・仕組みではない。ルール 1 明確違反。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "シェア拡大（結果）を競争優位として提示する典型的な却下パターン A。-20% 調整。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb1_rule_1_t",
+          "adjustment": -0.2,
+          "reasoning": "結果を原因とする転倒（dogma.md 却下基準 1）。-20% 調整で 30%。"
+        }
+      ],
+      "overall_reasoning": "シェア拡大・業界 2 倍成長は結果の数値。背後の能力（技術差別化）は ALTR_001/002 で既に評価済み。dogma.md ルール 1 違反で 30%。"
+    },
+    {
+      "id": "ALTR_005",
+      "claim": "R&D投資の成熟化による営業レバレッジ — 大型R&D投資フェーズ完了後のOpEx成長抑制（2015年: +2.7%のみ）と利益成長加速",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "完成した製品ポートフォリオ（能力）と将来の営業レバレッジ（結果の見通し）の境界上。"
+        },
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "製品投資完了→OpEx 抑制→EPS 成長は 2-3 ステップで検証可能。直接的メカニズム。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "OpEx 成長 2.7% という具体的計画値と直接的な収益拡大メカニズム。高評価パターン II 部分合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "大型 R&D 投資の完了（MAX10、Arria10、Stratix10、OpenCL）は確認可能な事実。OpEx $760M（+2.7%）という具体的計画値あり。ただし収益化は需要側の成長に依存し、市場採用速度は不確実。50%。"
+    },
+    {
+      "id": "ALTR_006",
+      "claim": "MAX 10超低コストFPGAによる新市場開拓 — 設計キット販売数の社内記録更新による低価格市場でのリーチ拡大",
+      "claim_type": "competitive_advantage",
+      "power_type": "network_economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "製品アーキテクチャ（能力）vs 初期採用実績（結果）の境界上。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "'company record for design kits sold' は記録的実績の言及だが数値なし。競合比較なし。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "社内記録の言及あり（定性的だが具体的な言及）。完全な定性的主張ではない。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "MAX 10 設計キット記録は初期需要の証拠として機能。低エンドFPGA は競合も多く利益率も低い。設計者がAltera ツールを習得する Switching Costs の萌芽あり。新市場リーチという方向性は評価できるが差別化が弱い。50%。"
+    },
+    {
+      "id": "ALTR_007",
+      "claim": "通信インフラ（SDN/NFV）での$500M+の新機会パイプライン — Stratix 10による従来FPGAでは到達不可能だった通信帯域への対応",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "技術的到達範囲の拡大（仕組み）。'Previously beyond reach' という技術的障壁突破の表現は能力の証明。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$500M+ の特定機会パイプラインという具体的定量データ。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "性能制約の突破による新市場アクセスは構造的優位。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "$500M+ パイプラインの定量的開示は高評価パターン I に合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "通信インフラ市場での $500M+ の新機会は具体的定量データ。'Previously beyond reach' という表現は性能障壁の突破を示す明確な差別化。SDN/NFV 市場のフロントランナーポジション。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 1,
+      "40-50": 3,
+      "60-70": 3
+    },
+    "gatekeeper_applied": true
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "ticker": "BNP",
+  "company_name": "BNP Paribas SA",
+  "transcript_source": {
+    "primary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BNP/201402_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BNP/201502_earnings_call.json"
+    ],
+    "secondary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BNP/201404_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BNP/201407_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BNP/201410_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BNP/201507_earnings_call.json"
+    ]
+  },
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "extraction_date": "2026-02-24",
+    "transcript_count": 6,
+    "primary_transcript_count": 2,
+    "framework": "Hamilton Helmer 7 Powers",
+    "note": "BNP Paribas is a pan-European universal bank (Retail, CIB, Investment Solutions). 2013-2014 results heavily impacted by US sanctions penalty (USD 8.9B). Primary transcripts: FY2013 (201402) and FY2014 (201502) annual results."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "BNP Paribas は欧州全域に78カ国のネットワークを持ち、法人向けに220超のビジネスセンターを「One Bank for Corporates」ブランドで展開する欧州最大のユニバーサル銀行の一つである。キャッシュマネジメントでは欧州#1・世界#4の地位を持ち、シンジケートローンでも欧州#1のポジションを誇る。この地理的規模と製品幅の広さが、競合が容易に複製できない規模の経済を生み出している。",
+      "evidence_quotes": [
+        "our presence in 78 countries, with a unique network of almost 220 business centers grouped under One Bank for Corporates",
+        "cash management, where we confirm our leadership in Europe and where we rank #4 globally",
+        "we are #1 in Europe, with a top 10 position in the U.S. for bond origination"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "地理的スケールと製品範囲は具体的な数値で示されているが、銀行業界では規制が国・地域ごとに異なるため、スケール経済が単位コスト優位性として実現するメカニズムが不明確。キャッシュマネジメント欧州#1は具体的だが、これが他行から奪取できない優位性かどうかは疑問。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Network Economies",
+      "claim_text": "BNP Paribas の「One Bank for Corporates」モデルは、法人向けに欧州・アジア・米国の銀行ネットワークを統合し、単一の銀行関係（法人融資、キャッシュマネジメント、資本市場、証券サービス）を通じて包括的な金融サービスを提供する。2013年からの3年間でOBC経由で4,000件の新規アカウントを取得し、ネットワーク価値が参加企業数に比例して増大する構造を構築している。",
+      "evidence_quotes": [
+        "4,000 new accounts linked to our Domestic Markets clients since the launch of this network 3 years ago",
+        "Cash Management, Greenwich just published its results for last year. And we are confirmed, still stronger as #1 in Europe",
+        "providing them with our capabilities worldwide and especially in Europe; reinforce relationships with investors by, for example, distributing debt originated in Europe"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "OBCのアカウント獲得数は実績があるが、ネットワーク経済（ユーザー数増加で各ユーザーへの価値が増大）としての証拠は間接的。金融サービスにおけるネットワーク効果は社会的ネットワーク（META等）と比べて弱く、競合（Deutsche Bank、Citi）も類似のグローバルネットワークを持つ。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 2-T: Network Economies require value increasing with user count", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Switching Costs",
+      "claim_text": "BNP Paribas の Securities Services（欧州#1、世界#5）は機関投資家・保険会社・資産運用会社との長期関係を築き、資産保管（AUC）・清算・担保管理の高度な統合サービスを提供する。2014年にAUC+22%増、複数の大型「スーパーマンデート」獲得（欧州全域の保険会社等）により、顧客の切り替えが技術的・運営的に困難な状態を構築している。",
+      "evidence_quotes": [
+        "Securities Services is really booming with a lot of increase in market share and a lot of new mandates",
+        "We are putting the generally mandate for all of Europe. So it's very significant agreements with a very big insurance company",
+        "assets under custody by 22% for 2014. It's pretty big"
+      ],
+      "transcript_source": "201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "証券サービスにおける統合的なカストディアン・清算業務は高いスイッチングコストを持つことが業界通念として認識されているが、経営陣の発言からは具体的な切り替え困難性の証拠が薄い。大型マンデート獲得は事実だが、解約率データがない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 8-T: Switching Costs require meaningful friction for buyer to switch", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "claim_text": "BNP Paribas の「Simple & Efficient」コスト削減プログラムは、当初目標（EUR 20億/2016年）を大幅に上回り、EUR 28億→EUR 30億超へと目標を段階的に引き上げた。2014年時点で既に累計EUR 17.8億の削減を達成（目標EUR 16億を超過）。この継続的なコスト効率改善と事業成長の両立能力は、単純な模倣が困難な組織的プロセスを示す。",
+      "evidence_quotes": [
+        "recurring cost savings were just shy of EUR 1.8 billion, hence, exceeding our target of EUR 1.6 billion by year-end",
+        "the target for recurring cost savings has been increased by EUR 800 million to EUR 2.8 billion from 2016, with transformation cost now totaling EUR 2 billion",
+        "we are revise our target from EUR 2.8 billion to more than EUR 3 billion by 2016"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "コスト削減の実績は数値で裏付けられているが、大手銀行のコスト削減プログラムは業界全体で実施されており（Deutsche Bank、UBS等）、独自の模倣困難な能力としての証拠は限定的。規模の大きさから来る単純な効果とも解釈できる。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 5-T: Process Power requires difficult-to-replicate embedded activity chain", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Counter-Positioning",
+      "claim_text": "BNP Paribas は欧州の信用仲介から市場調達（ディスインターメディエーション）へのシフトを「脅威ではなくビジネスチャンス」として活用している。欧州社債市場でのユーロ建て債券発行#1の地位を活かし、企業の銀行融資から資本市場調達へのシフトを積極的に取り込む。既存の欧州地域銀行は この戦略変換をコスト・能力・規制的制約から容易に追随できない。",
+      "evidence_quotes": [
+        "we are #1 in Europe, with a top 10 position in the U.S. for bond origination",
+        "our critical size in market activities to accompany disintermediation from credit in Europe due to new regulation",
+        "we are still #1 for syndicate financing in Europe. So it's something that is repeated year-after-year almost"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "ディスインターメディエーションへの適応戦略は戦略的に興味深いが、Counter-Positioningの定義（既存プレーヤーが模倣すると自社ビジネスを毀損する構造）には該当しにくい。Goldman Sachs、JPMorganなどのグローバル投資銀行も同様の戦略を持っており、差別化要因が明確でない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 7-T: Counter-Positioning requires established players being unable to mimic without self-harm", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "BNP Paribas の Personal Finance（欧州消費者ローン#1）は、LaSer買収でグレートブリテン・デンマーク・ノルウェーに進出し、大型自動車メーカー（PSA、Toyota）・小売業者（Suning、Americanas）とのパートナーシップを拡大している。2014年の収益+10%（EUR 41億）、税引前利益+24%はこの規模効果の実現を示す。欧州内での規模優位性がリスク管理コストの分散にも貢献している。",
+      "evidence_quotes": [
+        "We're the #1 consumer credit specialist in Europe",
+        "the acquisition of the other half of LaSer, the 50% we didn't own. So LaSer is bringing 4,700 people in the Group and EUR 9.3 billion in outstandings",
+        "revenues going up quite a lot and the pretax income, plus 24%"
+      ],
+      "transcript_source": "201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "欧州消費者ローン#1のポジションと規模は具体的に裏付けられているが、このセグメントは各国規制が異なり、真のスケール経済の実現メカニズムが不明確。Cetelem（BNP）のブランドと流通ネットワークは差別化要因だが、競合（Santander Consumer、Credit Agricole）も大規模である。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Branding",
+      "claim_text": "BNP Paribas の「Hello bank!」デジタル銀行は、ドイツ・ベルギー・フランス・イタリアで2013年に開始し、2014年末に80万人超の顧客を獲得した（2017年目標140万人に向けて順調）。「PayLib」（フランス）、「Sixdots」（ベルギー）などの独自デジタル決済ブランドと組み合わせた消費者向けデジタルフランチャイズの構築は、既存銀行が追随しにくいブランド・顧客関係を形成している。",
+      "evidence_quotes": [
+        "Hello bank! where, as François told you, we have already exceeded 800,000 clients",
+        "The launch of new online payment solutions, including value-added services for consumers and professionals such as PayLib in France or Sixdots in Belgium",
+        "We begin with 0 mobile users at the beginning of 2010"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "Hello bank!の顧客獲得は順調だが、デジタルバンクのブランド価値（リピート購買・価格プレミアム）の証拠は弱い。ネオバンク（N26、Monzo等）との競合があり、BNPのデジタルブランドが持続的プレミアムを生み出すかどうかは不明。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 6-T: Branding requires sustained price premium with volume maintenance", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "claim_text": "BNP FY2013: 純利益EUR 48億（一時項目除き EUR 60億）、普通株Tier1比率10.3%（Basel III完全適用）、流動性準備金EUR 2,470億、配当EUR 1.5/株（40.8%支払い率）。FY2014: 純利益EUR 1.57億（米国制裁ペナルティEUR 66億を含む一時項目EUR 74億が重荷）、一時項目除きEUR 70億（+16.7%YoY）、費用収益率改善、リスクコスト57bp。2014-2016計画: 収益10%以上増、ROE 10%以上（2016年目標）、費用収益率3pp改善、EPS年平均2桁成長。",
+      "evidence_quotes": [
+        "the group still managed to generate EUR 4.8 billion of net income. And if we exclude exceptional items, the yearly result stands at EUR 6 billion",
+        "net result for the euro came out at EUR 157 million, but if we exclude all the exceptional, it reached EUR 7 billion",
+        "double-digit EPS growth on average over the first -- the period 2013 to 2016"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "財務数値は具体的で信頼性が高い。一時項目（米国制裁ペナルティ）を除いた基礎的な業績はFY2014に+16.7%と改善。ただし米国制裁ペナルティは経営の競争優位性ではなく外部要因であり、注意が必要。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 9-T: CAGR connection claims require explicit financial linkage"]
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "claim_text": "BNP Paribas は2014年に米国当局との包括的和解（制裁対象国を含む一部米ドル決済に関する審査）に合意し、EUR 66億（総額USD 89億）のペナルティを支払った。Simple & Efficient計画では2016年までにEUR 30億超の費用削減（変換費用EUR 20億を含む）を目標とし、2014年末時点でEUR 17.8億を達成済み（目標比+EUR 1.8億超過）。",
+      "evidence_quotes": [
+        "we agreed, amongst other things, to pay EUR 6.6 billion of penalties",
+        "recurring cost savings were just shy of EUR 1.8 billion, hence, exceeding our target of EUR 1.6 billion by year-end",
+        "we are revise our target from EUR 2.8 billion to more than EUR 3 billion by 2016"
+      ],
+      "transcript_source": "201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "これらの事実は公式発表と一致しており、信頼性が高い。米国制裁ペナルティはBNPの評判リスクと規制コンプライアンスの問題を示しており、競争優位性の分析においてリスク要因として重要。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 10-T: Factual claims must be clearly stated facts from transcripts"]
+    }
+  ]
+}

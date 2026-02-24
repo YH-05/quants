@@ -1,0 +1,348 @@
+{
+  "scored_claims": [
+    {
+      "id": "MON-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Germplasm Breeding Engine — 8 Bushel/Acre Corn Yield Advantage Over Competitors",
+      "evidence": "FY2014 final corn yield advantage: 8 bushels/acre over competitive best. 'Even in a year where overall yields were some of the strongest, we're still in that 7 to 10 bushel-an-acre advantage band.' 4+ years of back-to-back >4 bushel/acre advantage for Roundup Ready 2 Yield over first-generation products. Cotton: out-yielding competitive best by 6%.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "8 bushels/acre advantage over 'competitive best'（7-10 band）という多年度の定量データ。Roundup Ready 2 Yieldの4年連続>4 bu/acre優位も継続性を裏付ける"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "'competitive best'との直接比較が明示されており、DuPont Pioneer・Syngentaとの相対差別化が定量的に確認できる"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "競合最良品種との8 bu/acre差という定量的差別化。複数年維持は真の能力差を示す（高評価パターンI）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "多年度・定量的な競合比較差別化"
+        }
+      ],
+      "overall_reasoning": "8 bushels/acre（7-10 band）の年間収量優位は農業種子業界で最も信頼性の高い競争差別化指標。高スループットスクリーニング・遺伝子マーカー・フィールドテストDBの蓄積によるプロセスパワー。'最も収量が高い年でも7-10 bu/acre優位を維持'は環境依存でない構造的優位の証拠。DuPont Pioneer・Syngentaとの直接比較が明示。70%"
+    },
+    {
+      "id": "MON-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Proprietary Genetic Database + Climate Corporation — Unrivaled Scale of Field Testing Data",
+      "evidence": "Climate Corporation tools used on nearly 1 in 3 US corn and soybean acres (FY2014). 1 million yield plots planned for genetic database expansion. FieldScripts + Climate cross-synergy producing enhanced hyper-local prescriptions. Target: increase Climate active users by 50% in FY2015.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "米国トウモロコシ・大豆耕作面積の1/3でClimateツール使用という定量スケール。100万プロットの遺伝子データ拡張計画も定量的"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "精密農業業界は「より多くのエーカー→より良い処方→さらなる採用」というデータネットワーク効果業界。Monsantoのデータスケールが競合不可能な資産となる"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "精密農業のデータネットワーク効果業界構造と、Monsantoの1/3米国農地カバレッジ（+遺伝子DBの規模優位）の完全合致。高評価パターンIV（構造的市場ポジション）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "精密農業データネットワーク効果と企業ポジションの合致"
+        }
+      ],
+      "overall_reasoning": "Monsantoの遺伝子データベース（数十年分の全球フィールド試験データ）+ The Climate Corporationの超局地気象モデリングは複利的なデータモートを形成。米国農地1/3への採用規模は競合が短期で追いつけないCornered Resource。精密農業のデータネットワーク効果構造と完全合致。管理者が'unrivaled'と表現する先行優位を定量データが支持。70%"
+    },
+    {
+      "id": "MON-003",
+      "claim_type": "competitive_advantage",
+      "claim": "RNAi Corn Rootworm SmartStax PRO — Novel Mode of Action Unavailable to Competitors",
+      "evidence": "SmartStax PRO: first insect control product using RNAi-based modes of action inside the plant. Reached Phase 4 (pre-commercial testing). Regulatory submissions completed in US and several international markets. 'While the rest of the industry still focuses exclusively on Bt genes, we have a completely novel approach.'",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "RNAiベースの殺虫制御はBtタンパクとは根本的に異なる技術クラス。構造的技術革新であり補完的機能追加ではない"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "Bt耐性の進化（既に観察済み）に対し、RNAiは次世代の作用様式。業界全体がBt遺伝子のみに集中する中でのCounter-Positioning"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "'while the rest of the industry focuses exclusively on Bt genes'という明示的な競合比較（高評価パターンI）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "業界全体との技術差別化が明示的"
+        }
+      ],
+      "overall_reasoning": "RNAiは農薬・農業バイオテクノロジー業界で全く新しい作用様式カテゴリ。Phase 4（商業化前テスト）まで到達し、US・複数国への規制申請完了は開発段階の信頼性を高める。DuPont Pioneer・Syngentaが全てBt遺伝子に集中している中でのCounter-Positioningは典型的なHelmer的競争優位。ただし規制承認・商業化は2015年9月以降（PoiT制約内では承認前）。70%"
+    },
+    {
+      "id": "MON-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Annual Portfolio Upgrade Discipline — 5-10% Price/Mix Uplift Every Year for Over a Decade",
+      "evidence": "'Regardless of the environment, we've increased our average price in our portfolio every year in the last decade.' FY2015 guidance: mid-single-digit corn portfolio price/mix benefit. FY2014 results: corn margins increased despite several hundred million dollars of GP pressure.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "'10年以上毎年平均価格を引き上げてきた'という継続実績。コモディティ農業市場において10年超の年次価格上昇は極めて高い定量的証拠"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "DuPont Pioneer・Syngentaは同じコモディティ環境に直面しながら同等の年次価格一貫性を主張していない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "コモディティ向け業界での10年超の年次価格/ミックス改善という定量的継続記録。競合は同等を示せていない（高評価パターンI）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "コモディティ市場での10年超の年次価格規律"
+        }
+      ],
+      "overall_reasoning": "農業コモディティ市場において10年以上の年次価格/ミックス改善は構造的価格支配力（Process Power through annual product refresh）を示す最強の指標の一つ。'環境を問わず'という表現は循環的な市況に依存しない能力の証明。FY2014の穀物面積減少・通貨影響にもかかわらず穀物マージン改善は定量的裏付け。DuPont Pioneer等は同等の一貫性を主張できていない。70%"
+    },
+    {
+      "id": "MON-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Intacta RR2 PRO — Soybean Trait Monopoly in Latin America, 3M → 10-12M Acre Trajectory",
+      "evidence": "FY2014: 3 million acre Intacta launch. FY2015 target: 10-12 million acres. Total addressable market: ~100 million acres in Americas. Heavy insect pressure in 2014: competitors spraying 4-5 times, Intacta fields reduced 2-3 sprays. $60-100/acre economic value. Second-generation Intacta in Phase 4.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "3M→10-12M acreの採用軌跡、$60-100/acreの農家価値、100Mアドレス可能市場という多層の定量データ"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "チッピングポイント規模での種子採用後、シードチャネルのコミットメント・農家の信頼・年次収量データの蓄積によるロックイン構造"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "ラテンアメリカ大豆形質市場（除草剤耐性+殺虫）でIntactaが商業的に唯一のデュアルモード製品である市場構造と企業ポジションの合致。高評価パターンIV（構造的市場ポジション）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "市場構造（唯一のデュアルモード）と企業ポジションの完全合致"
+        }
+      ],
+      "overall_reasoning": "Intacta（除草剤耐性+殺虫）はラテンアメリカで商業利用可能な唯一のデュアルモード大豆形質。2014年の強い害虫圧力下での実証（競合4-5回散布 vs. Intacta 2-3回削減）は農家への定量的価値($60-100/acre)を実証。3M→10-12M acreの採用軌跡は急速な拡散の証拠。100Mアドレス可能市場での独占的ポジションはCornered Resourceの典型。70%"
+    },
+    {
+      "id": "MON-006",
+      "claim_type": "competitive_advantage",
+      "claim": "The Climate Corporation Precision Agriculture Platform — Software-Pace Upgrade Cycle",
+      "evidence": "Climate tools used on nearly 1 in 3 US corn/soybean acres (FY2014). Target: increase active Climate users by 50% in FY2015. $350M total platform investment planned for FY2015. WinField MOU (largest US agricultural retail distributor) to integrate IFS/Climate tools.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "1/3の米国農地採用は印象的だが、商業収益貢献はまだ小さい。プラットフォームの能力・仕組みとしては評価できる"
+        },
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": false,
+          "reasoning": "精密農業プラットフォームへの$350M投資は戦略的投資。データフィードバックループが構造的優位になりうるが商業的検証は初期段階"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "精密農業プラットフォームはDuPont Pioneer（Encirca）・Agrium等も開発中であり、商業化段階での差別化が不確実"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "精密農業プラットフォームは業界共通化が進む"
+        }
+      ],
+      "overall_reasoning": "Climate Corporationプラットフォームはユニークなポジショニングだが商業的検証は初期段階。MON-002の遺伝子DBと重複する部分があるため差別的評価。DuPont Pioneerも精密農業投資を加速しており競合が追いつく可能性。50%"
+    },
+    {
+      "id": "MON-007",
+      "claim_type": "competitive_advantage",
+      "claim": "Multichannel Distribution and Direct-to-Grower Channel Strategy",
+      "evidence": "Channel seed brand evolved to direct-to-grower model. WinField MOU (largest US agricultural retail distributor) for integrated precision ag platform. Multi-channel approach: full-service retail partners + regional brands + direct-to-grower brands.",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": false,
+          "reasoning": "マルチチャネル流通は販売戦略であり構造的競争優位ではない（ルール8）"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "DuPont Pioneer・Syngentaも複数チャネルで販売している"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "流通戦略の変更（direct-to-grower転換）は経営施策（パターンF: 戦略=優位性の混同）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通の流通戦略"
+        }
+      ],
+      "overall_reasoning": "マルチチャネル流通は農業種子業界での標準的な販売戦略。DuPont Pioneer・Syngentaも同様のアプローチを採用。販売人員の関係構築は顧客維持に貢献するが構造的競争優位ではない（ルール8）。30%"
+    },
+    {
+      "id": "MON-008",
+      "claim_type": "factual_claim",
+      "claim": "FY2014 ongoing EPS $5.23 (ahead of guidance), FCF $959M. 4th consecutive year of strong earnings growth.",
+      "evidence": "FY2014 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "MON-009",
+      "claim_type": "cagr_connection",
+      "claim": "5-Year Target: At Least Double EPS to ~$10+ by FY2019 (~14% CAGR)",
+      "evidence": "FY2019 EPS target: at least double FY2014's $5.23 (~$10+). FY2015 EPS guidance: $5.75-$6.00 (+10-15%). FCF target FY2015: $2.0-$2.2B. $10B share buyback program.",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "Intacta 10-12M acre拡大 + 年次価格/ミックス改善 + RNAi商業化 + Climateマネタイズの4経路がEPS倍増への接続メカニズムを具体的に示す"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "FY2019 EPS倍増目標（~14% CAGR）は複数の独立した成長エンジン（Seeds&Genomics、Latin America Intacta、Climate）によって支持。各エンジンが定量的裏付けを持ち、CAGRへの接続メカニズムが具体的。ただし目標値であり実現可能性に不確実性。70%"
+    },
+    {
+      "id": "MON-010",
+      "claim_type": "cagr_connection",
+      "claim": "Biologicals Platform: 4-6 Bushel/Acre Corn Yield Benefit from BioAg Alliance Microbials",
+      "evidence": "First-year testing: 4-6 bushel/acre corn yield benefit from key BioAg Alliance microbials. Performance 'compares with some of the most successful biotech traits.' Non-GMO pathway: expedited regulatory approvals.",
+      "final_confidence": 0.3,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": false,
+          "reasoning": "第1年目試験データのみ。異なる農業環境での変動性が特定されており、商業化・CAGR接続には複数年の検証が必要"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Biologicsの4-6 bu/acre第1年目結果は有望だが単年データ。農業環境条件での変動性（モデルの課題として認識済み）があり商業化への接続が不確実。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "70-80": 6,
+      "50-60": 1,
+      "30-40": 2
+    },
+    "gatekeeper_applied": true
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "ticker": "IP",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-28)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": "IP-001",
+      "claim_type": "competitive_advantage",
+      "claim": "北米工業用包装（Industrial Packaging）ビジネスの規模と統合システムによる低コスト製造・デリバリー優位性",
+      "descriptive_label": "北米段ボールシステムの規模の経済とネットワーク最適化",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'North American Industrial Packaging results were significant with the business achieving $2.7 billion in EBITDA and margins of 24%...It's not about volume growth as much as it is about enhanced flexibility across a very large system, which will enable us to serve the customer needs we have at a lower total delivered cost'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Sutton",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["IP-009"],
+      "cagr_connections": ["IP-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での数値裏付けあり（EBITDA $2.7B、マージン24%）。'lower total delivered cost'という機能（能力）の説明。北米段ボール市場での大規模一貫システムはScale Economiesの典型例"
+      }
+    },
+    {
+      "id": "IP-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Ilim JV（ロシア）のシベリア木材資源へのアクセスと中国向け輸出コスト優位性",
+      "descriptive_label": "Ilim JVのCornered Resource（シベリア木材×中国鉄道輸送）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO発言): 'The JV's pulp operations in Siberia are uniquely located with favorable access to the vast Russian wood basket, and importantly, with access to Mainland China by rail, straight south from where the mill sits. The JV will benefit from the recent significant devaluation in the ruble, which has positioned the softwood pulp operation as the lowest cost on the globe'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Carol Roberts",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での明確な説明。'uniquely located'、'vast Russian wood basket'、'lowest cost on the globe'（ルーブル安後）という具体的な優位性の説明。地理的な希少資源（立地）と中国市場へのアクセスはCornered Resourceの特性。競合が同等の立地を獲得困難"
+      }
+    },
+    {
+      "id": "IP-003",
+      "claim_type": "competitive_advantage",
+      "claim": "繊維系食品包装（fiber-based food packaging）トレンドへの対応能力",
+      "descriptive_label": "フォームから紙カップ・皿へのトレンド捕捉ポジション",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'There's a growing trend and demand for fiber-based food packaging that we see in the move from foam to paper cups, as an example, and the growing plate segment, just to name a few, and we're well positioned to benefit from these demand trends'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Sutton",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_8_t": false
+        },
+        "confidence": 0.3,
+        "adjustments": [],
+        "overall_reasoning": "Q4での言及だが、'well positioned'は自己申告で定量的裏付けなし。業界全体がフォームから紙へのトレンドを追っており相対的優位性が不明（rule_3違反リスク）"
+      }
+    },
+    {
+      "id": "IP-004",
+      "claim_type": "competitive_advantage",
+      "claim": "5年連続でコスト・オブ・キャピタルを上回るROICの維持能力",
+      "descriptive_label": "一貫したROIC超過（9.2%、5年連続）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'Return on invested capital was 9.2%, making this the fifth consecutive year that our returns have exceeded our cost of capital'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Sutton",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true
+        },
+        "confidence": 0.3,
+        "adjustments": [],
+        "overall_reasoning": "Q4での定量的数値（9.2%、5年連続）。しかしROICは結果であり、それを可能にする能力の説明が不十分（rule_1_t違反）。業界比較データなし"
+      }
+    },
+    {
+      "id": "IP-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Temple-Inland買収後の北米段ボールシステム最適化（Valliant機械再稼働・DOJ要件消化）による柔軟性向上",
+      "descriptive_label": "段ボールシステム最適化プロセス能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'We have a great opportunity to continue to optimize the North American Industrial Packaging system with the ramp-down of our DOJ-required purchases from our -- the mills that we divested as part of the Temple-Inland acquisition and the restart of the Valliant machines. Those 2 events allow us to optimize our system even further'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Sutton",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での説明。Temple-Inland統合後のシステム最適化は一時的なアドバンテージ（構造的より補完的）。DOJ要件消化後の柔軟性向上は実現中だが、競合との差別化データなし"
+      }
+    },
+    {
+      "id": "IP-006",
+      "claim_type": "competitive_advantage",
+      "claim": "フリーキャッシュフロー生成能力と資本配分規律（FCF変換率・株主還元75%以上）",
+      "descriptive_label": "業界最高水準のFCF生成・資本配分プロセス",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'We delivered record cash flow from operations of $3.4 billion, along with free cash flow of $2.1 billion...we returned $1.6 billion or more than 75% of our free cash flow to shareholders throughout 2014'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Sutton",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true
+        },
+        "confidence": 0.3,
+        "adjustments": [],
+        "overall_reasoning": "Q4での数値（FCF$2.1B、75%株主還元）。FCFは結果であり能力の説明ではない（rule_1_t違反）。資本配分規律は背後にある能力だが、具体的なプロセスの説明が不十分"
+      }
+    },
+    {
+      "id": "IP-007",
+      "claim_type": "cagr_connection",
+      "claim": "北米Industrial PackagingのEBITDA5%成長 → Ilim JV margin拡大 → 連結EBITDA5%成長 → EPS成長",
+      "descriptive_label": "NA包装+IlimのEBITDA成長→EPS成長経路",
+      "source_advantage": "IP-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での具体的な説明。Valliant機械再稼働・DOJ要件消化のタイムラインが明確で、5%EBITDA成長の根拠が具体的。2ステップの因果"
+      }
+    },
+    {
+      "id": "IP-008",
+      "claim_type": "cagr_connection",
+      "claim": "Ilimシベリア・ルーブル安→世界最低コストパルプ→中国向け輸出拡大→EBITDA改善",
+      "descriptive_label": "Ilim JVのコスト優位性→中国市場での利益拡大",
+      "source_advantage": "IP-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での説明。コスト構造（95%ルーブルコスト、65%ドル収入）の明示。2ステップの因果で検証可能。ただしルーブル安の持続性に不確実性あり"
+      }
+    },
+    {
+      "id": "IP-009",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年: FCF$2.1B（過去最高）、北米Industrial Packaging EBITDA $2.7B・マージン24%、ROIC 9.2%（5年連続COC超過）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["IP-001", "IP-004"]
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "ticker": "SNA",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-05) + Q1-Q3 2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "バンネットワーク（移動販売車）によるプロ整備士向け直接販売能力と顧客関係の優位性",
+      "descriptive_label": "バンネットワーク（3,300台超）による直販チャネルの競争優位",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Nick Pinchuk): 'The Tools Group and the Repair Systems & Information, or the RS&I, Group took advantage with volume growth by our van network and gains in OEM dealerships in independent repair shops confirming the progress.' Tools Group organic sales growth 8.9% for the quarter. 'automotive repair-related segments continue to be favorable, driven of course by expanding and aging car parts and year-after-year technology changes, all driving demand for our product.' In Q1-Q3 2015: continued emphasis on franchisee productivity and van network capabilities.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "バンネットワーク（能力・仕組み）を評価。整備士の「仕事場」への直接接触能力は模倣困難"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Tools Group organic +8.9% Q4、opco OPM 16.9% (+140bps)という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "バンネットワーク（整備士への直接訪問・与信供与）は競合（Matco、Mac等）が構築に長期間を要する構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合（Matco Tools、Mac Tools等）の言及なし。「van network」の優位性は業界構造から自明"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "プロ整備士ツール市場では直接顧客関係と与信供与が市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での言及あり。バンネットワークは整備士の職場への直接アクセスとフランチャイジーへの与信供与を組み合わせた独自の営業モデル。プロ整備士の工具需要は景気耐性が高く、技術進歩（電気系統、電子診断）が継続的な需要を創出。競合（Matco、Mac）との比較でSNAが規模・歴史・与信面で優位"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "バンネットワーク生産性向上 × 自動車整備市場成長 → Tools Group CAGR+8-10pp",
+      "descriptive_label": "バンネット生産性×自動車整備成長→収益CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。フランチャイジー生産性改善→Tools収益成長の接続は過去実績で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "自動車整備業（老朽化車両・技術革新）が継続的需要を創出する構造的サポートあり。Tools Group Q4 organic +8.9%という実績が裏付け"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Repair Systems & Information（RS&I）GroupにおけるOEMディーラーシップ向け診断ソリューションと情報データの差別化",
+      "descriptive_label": "OEMディーラー向け診断システム・情報データの差別化（スイッチングコスト）",
+      "evidence_from_transcript": "Q4 FY2014 CEO Prepared Remarks: 'RS&I Group took advantage with volume growth by our van network and gains in OEM dealerships in independent repair shops.' RS&I organic growth strong across quarters. Snap-on's RS&I provides proprietary repair information and diagnostic equipment that integrates with OEM systems.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "OEM統合診断データ・修理情報能力（能力・仕組み）を評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "OEMディーラーに統合された診断システムは高いスイッチングコスト。修理情報データベースは蓄積資産"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Bosch、Mitchell等との具体的比較なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "RS&I organic growthは継続的に高い水準だが、Q4の具体的数値言及が少ない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "診断システム・修理情報の統合はスイッチングコストを生む優位性として評価できるが、競合（Bosch Automotive、Mitchell1等）との具体的差別化の説明が不足"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "OEM技術複雑化 × 診断データ・修理情報需要増 → RS&I CAGR+10-12pp",
+      "descriptive_label": "車両複雑化→診断システム需要→RS&I収益成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。「year-after-year technology changes」が診断需要を押し上げる構造的接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "自動車技術の複雑化（電気系統、電子診断）は継続的な診断ツール・情報更新需要を創出する構造的トレンド"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Financial Services部門による整備士向け与信提供能力（バンネットワーク販売促進と収益多様化）",
+      "descriptive_label": "Financial Services（ワーキングクレジット）によるバンネット拡大能力",
+      "evidence_from_transcript": "Q4 FY2014 CEO Prepared Remarks: 'Financial service earnings of $42.2 million in the quarter were also up significantly. And the consolidated operating margin, including both Financial Services and opco, reached 20.4%.' Q1-Q3 2015: Financial Services consistently strong contributor, enabling franchisees to provide credit to technicians.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "与信提供能力（能力・仕組み）を評価。フランチャイジーへの低利融資+顧客への分割払いが販売促進"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Financial Services $42.2M（Q4）、consolidated OPM 20.4%という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "工具+ファイナンスの一体提供は競合（Stanley Black & Decker等）が模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合の与信能力との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "工具販売とファイナンスの一体提供モデルは高い粘着性と収益安定性を生む。Financial Services OPMは工具事業より高く、かつ工具事業の成長を促進する好循環。Q4 Q4 FY2014の$42.2Mは定量的証拠"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "クリティカルインダストリー（航空宇宙、防衛、石油ガス、原子力）向けの特殊ツール・ソリューション提供能力",
+      "descriptive_label": "クリティカルインダストリー向け特殊ツール（C&I Group）",
+      "evidence_from_transcript": "Q4 FY2014 CEO Prepared Remarks: 'we also had opportunities rooted in our expanding capabilities and product lineup for the critical industries and in growing physical strength in emerging markets, areas within the Commercial & Industrial, or C&I Group.' 'Higher volumes and favorable trends continued in our Industrial division, progress across a range of critical industries.' Military activity was stronger.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "クリティカルインダストリー向け特殊ツール設計・開発能力（仕組み）を評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "航空宇宙・防衛向け認定ツールは認証取得・仕様要件が高い参入障壁"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合（Proto、Bahco等）との具体的差別化なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "クリティカルインダストリーへの特殊ツール供給は参入障壁の高いニッチ市場。ただし軍事需要の不確実性（CEO自身が「unclear」と発言）があり、持続的な成長のCAGR接続は弱い。競合との差別化説明も不足"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Snap-onブランド力による整備士コミュニティでの高プレミアム維持能力",
+      "descriptive_label": "Snap-onブランドプレミアム（整備士コミュニティの信頼）",
+      "evidence_from_transcript": "Q4 FY2014 (implied from organic growth consistency and pricing power): opco OPM 16.9%, consistent organic growth in Tools Group across multiple quarters. The premium pricing of Snap-on tools (vs. non-premium competitors) is implied by the sustained high margins despite competitive pressure. In Q1-Q3 2015 calls, CEO consistently emphasized 'Snap-on value' and premium positioning.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "ブランドプレミアム維持は結果の側面が強い。ブランドを構築・維持する能力の説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "16.9% OPMという定量証拠あり（業界水準比）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合との直接比較なし。ただしプレミアムブランドとしての相対的地位は業界での認識"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ブランドプレミアムは整備士コミュニティで確立されているが、それを維持する「能力」の説明が少ない。高OPM（16.9%）がブランドプレミアムの間接証拠。ただしルール1-T部分違反（結果の提示）"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（アジア・欧州）でのC&I Group拡大による国際的多様化",
+      "descriptive_label": "新興市場C&I拡大による地域多様化",
+      "evidence_from_transcript": "Q4 FY2014 CEO Prepared Remarks: 'growing physical strength in emerging markets, areas within the Commercial & Industrial, or C&I Group, arenas that were challenged by a variety of headwinds, fluctuating currencies and macroeconomic turbulence in places like Eastern Europe, Japan, Indonesia and even the core of Western Europe. Despite those challenges, C&I results were quite positive.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「地域多様化」は戦略的意図。逆風下での「positive results」は能力の証拠でもある"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「グローバル展開戦略」と「グローバル展開能力（優位性）」の区別が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新興市場拡大は戦略的イニシアティブであり、競争優位性としての評価は困難。通貨変動・地政学リスクによる不確実性が高く、持続的優位性の証拠として弱い"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: 全社organic売上+9.8%、EPS $1.97 (+23.1%)、opco OPM 16.9% (+140bps)、Financial Services $42.2M、連結OPM 20.4% (+190bps)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 5]
+    }
+  ]
+}

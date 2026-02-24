@@ -1,0 +1,317 @@
+{
+  "scored_claims": [
+    {
+      "id": "NBL-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Integrated Development Plan (IDP) Structural Cost Advantage — DJ Basin $1M+ NPV per well",
+      "evidence": "IDP implementation delivers over $1 million NPV impact per well through reduced development and operating costs. 10-well pad averaged ~$4M per well (5% below guidance). SHL-17 Marcellus pad achieved 35% reduction in cost per lateral foot.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "+$1M NPV per well、5%below guidance、35%cost reduction per lateral footという定量データ"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "IDP方法論は構造的（単なるサービスコスト削減ではなく、プロセス最適化の蓄積）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "IDP methodology increasingly adopted across E&P sector — Pioneer、EOG等も類似アプローチを採用しており業界共通化が進んでいる"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界全体でIDP採用が進んでおり相対的差別化が限定的"
+        }
+      ],
+      "overall_reasoning": "IDP方法論は定量的裏付け（+$1M NPV/well）があり能力・仕組みとして評価できる。しかしEOG・Pioneer等の主要E&Pも類似のIDPアプローチを採用しており、NBL固有の差別化としての確実性が低い。Phase 1評価50%を維持。"
+    },
+    {
+      "id": "NBL-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Eastern Mediterranean Gas Resource Monopoly — Tamar supplying 70% of Israel electricity generation gas, Leviathan discovered",
+      "evidence": "Tamar: supplying up to 70% of fuel needed for electricity generation in Israel. LOIs for Egypt export (up to 250 MMcf/d). Tamar at record production exceeding 1 Bcf/d gross. Leviathan discovery enables regional exports.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "70% of Israel electricity generation gas supply、1 Bcf/d production、250 MMcf/d Egypt LOI — 全て定量的"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "東地中海ガス市場は地理的に新規参入不可能なCornered Resource。Tamar+Leviathan以外に同等規模のガス田が存在しない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "市場構造（東地中海の唯一の大規模ガス供給源）と企業ポジション（Tamar operatorship）の完全合致。高評価パターンIV（構造的市場ポジション）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "市場構造と企業ポジションの合致 — イスラエルにとってのガス安全保障という構造的重要性"
+        }
+      ],
+      "overall_reasoning": "TamarとLeviathan（Eastern Mediterranean basin）は地理的に唯一のガス資源であり、イスラエルの電力供給の70%を担うCornered Resource。規制リスク（Israeli antitrust）は実在するが、資源の地理的希少性は否定できない。Phase 1評価70%を支持。"
+    },
+    {
+      "id": "NBL-003",
+      "claim_type": "competitive_advantage",
+      "claim": "DJ Basin Infrastructure Network Effects and Scale — Wells Ranch CPF, crude pipeline, water handling",
+      "evidence": "First CPF in Wells Ranch IDP reached max 20,000 bbl/day; Phase II doubles capacity. Wattenberg oil trunk line reduces trucking costs. 90% of oil exported from basin or on long-term contracts.",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "第三者処理施設（DCP）と共同開発されており、インフラの恩恵が競合にも部分的に及ぶ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "地域インフラ共有は業界標準的アプローチ。DCP・第三者との共同開発は優位性の独占性を低下させる"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.2,
+          "reasoning": "業界共有インフラは排他的優位性にならない"
+        }
+      ],
+      "overall_reasoning": "DJ Basinインフラは規模優位を提供するが、DCP等の第三者と共同開発されており競合も恩恵を受ける。地理的に限定された規模優位にとどまる。30%"
+    },
+    {
+      "id": "NBL-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Extended-Reach Lateral Drilling Efficiency — DJ Basin process power",
+      "evidence": "IDP 10-well pad ~$4M/well (5% below guidance). Extended-reach lateral drilling delivers improved economics per well",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "コスト削減の定量データあり"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Extended-reach lateralは業界全体で採用が進む標準技術。EOG・Pioneer等も同等の技術力を有する"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界標準化が進む技術"
+        }
+      ],
+      "overall_reasoning": "掘削効率の定量的改善は評価できるが、業界全体で採用が進む技術であり差別化としては限定的。50%"
+    },
+    {
+      "id": "NBL-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Israel Gas Monopoly Switching Costs — Tamar as infrastructure backbone locking in buyer contracts",
+      "evidence": "Long-term contracts with Israel Electric Corporation and industrial customers. Regulatory lock-in through government gas supply agreements. Single viable source for Israel's electricity generation.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "エネルギーインフラへの長期契約は高スイッチングコストの典型。代替ガス源がない状況でのロックイン"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "資源独占×長期インフラ契約の構造的合致"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.05,
+          "reasoning": "市場構造とポジションの合致"
+        }
+      ],
+      "overall_reasoning": "Tamarの長期契約とイスラエルのガス供給インフラへの組み込みは高スイッチングコストを生む。規制リスクはあるが、物理的な代替ガス源の欠如が構造的優位を支持。70%"
+    },
+    {
+      "id": "NBL-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Multi-Basin Diversification as Operational Risk Mitigation",
+      "evidence": "Portfolio spans DJ Basin, Marcellus, West Africa, Israel — providing diversification across geological risk, commodity prices, and regulatory environments.",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule03_industry_common",
+          "result": false,
+          "reasoning": "E&P企業の多地域展開は業界標準（ルール3=業界共通能力）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "地域分散はE&P業界で広く行われており固有の優位性にならない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通能力ゲートキーパー発動"
+        }
+      ],
+      "overall_reasoning": "地域分散はリスク管理として評価できるが、大手E&Pにはほぼ普遍的に見られる特性であり固有の優位性ではない。30%"
+    },
+    {
+      "id": "NBL-007",
+      "claim_type": "factual_claim",
+      "claim": "FY2014 production volumes, capital allocation, CFFO results",
+      "evidence": "FY2014 financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NBL-008",
+      "claim_type": "factual_claim",
+      "claim": "West Africa offshore deepwater production volumes and reserves",
+      "evidence": "West Africa production data",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的生産データ。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NBL-009",
+      "claim_type": "cagr_connection",
+      "claim": "Tamar/Leviathan resource base → Israel/regional gas export revenue growth → long-term FCF",
+      "evidence": "Tamar LOIs for Egypt exports. Leviathan development timeline targeting 2017-2019 FID",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": false,
+          "reasoning": "Leviathan開発は2015年9月以降。イスラエル規制問題（antitrust）がLeviathan開発に影響を及ぼし接続の確実性が低い"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Tamarは既存であるが、Leviathan→輸出収益のチェーンは規制承認・開発決定が必要で短中期の接続が不確実。50%"
+    },
+    {
+      "id": "NBL-010",
+      "claim_type": "cagr_connection",
+      "claim": "IDP methodology → DJ Basin production growth → volume-driven CFFO growth",
+      "evidence": "IDP delivering +$1M NPV/well. DJ Basin production growth trajectory",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "IDP→コスト削減→NPV改善→FCFOは直接的メカニズム。$1M/wellの定量データで検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "IDP→DJ Basin生産→CFO成長の接続は直接的だが、油価下落環境での継続性が不確実（2014年後半以降）。50%"
+    },
+    {
+      "id": "NBL-011",
+      "claim_type": "cagr_connection",
+      "claim": "West Africa deepwater production → volume diversification → CFFO stability",
+      "evidence": "West Africa production contributing to portfolio diversification",
+      "final_confidence": 0.3,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": false,
+          "reasoning": "West Africa deepwaterは高コスト構造かつ政治リスクがあり、CFO安定化への接続が間接的"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "West Africa生産は分散効果を提供するが、高コスト・政治リスクにより安定的CFO貢献への接続が弱い。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 11,
+    "confidence_distribution": {
+      "50-60": 4,
+      "70-80": 2,
+      "30-40": 3
+    },
+    "gatekeeper_applied": true
+  }
+}

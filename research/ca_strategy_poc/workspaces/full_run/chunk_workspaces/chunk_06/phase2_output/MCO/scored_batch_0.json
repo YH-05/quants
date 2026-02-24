@@ -1,0 +1,77 @@
+{
+  "ticker": "MCO",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "MCO-001",
+      "claim_type": "competitive_advantage",
+      "claim": "MoodyのRD&A部門は顧客維持率96%を達成しており、クレジットリサーチ・データ・分析ツールへの顧客粘着性が極めて高い。",
+      "descriptive_label": "RD&A顧客維持率96%のスイッチングコスト",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Switching Costs",
+      "confidence_score": 0.7,
+      "scoring_rationale": "96%顧客維持率という定量的差別化データ（rule04 quantitative, pattern_I_quantitative_differentiation）。格付けデータ・分析ツールへの依存度（仕組み）として評価できる（rule01 pass）。クレジット分析の意思決定インフラとして組み込まれると切り替えコストが高い（Switching Costs: 構造的）。業界構造として規制環境がNRSRO参入を制限（rule11 structural pass）。Q4 FY2014の発言（rule12 primary）。ただしS&P・Fitch等との定量比較はなく（rule07 partial）、96%が業界平均比で優位かの説明なし。kb3 calibration（COST#1: 退職率9% vs 業界20%+の定量比較で70%。本クレームはS&Pとの比較なしのため若干劣るが、金融インフラとしての粘着性は高い）。70%が適切。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "顧客維持率96%→サブスクリプション売上の安定成長→MA/MIS CAGR直接支持（2ステップ接続, rule05 direct）。Q4発言由来（rule12 primary）。有機成長90%超という実績で部分検証済み。パターンII-T（直接的CAGR接続）。70%。"
+    },
+    {
+      "id": "MCO-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Moody's Analyticsは90%超の有機的売上成長を達成しており、買収ではなく製品・サービス自体の競争力によって顧客を獲得している。",
+      "descriptive_label": "MA有機成長90%超のプロダクト競争力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Switching Costs",
+      "confidence_score": 0.5,
+      "scoring_rationale": "有機成長90%超は結果の数値（rule01 concern, pattern_A_result_as_cause部分）。「製品競争力」が主張の核だが、競合（Bloomberg、S&P Capital IQ等）との比較なし（rule07 insufficient）。ただし有機成長90%という定量データは製品力の間接的証拠（rule04 quantitative）。Q4 FY2014の発言（rule12 primary）。kb3 few-shot（COST#3: 純粋競合差別化不完全→50%）相当。競合との定量比較があれば70%も可能だが現状50%。",
+      "kb1_flags": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "有機成長実績→製品力継続→MA売上CAGR接続（rule05 direct部分）。2014年実績+19%で検証済み。ただし「90%超有機成長」の持続性の根拠説明不足。60%。"
+    },
+    {
+      "id": "MCO-003",
+      "claim_type": "competitive_advantage",
+      "claim": "2013年初頭以降2,000件近くの新規格付け関係を構築しており、毎年モニタリング手数料収入を積み上げる収益モデルに転換している。",
+      "descriptive_label": "格付け関係2000件積み上げによる経常収益基盤",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "2,000件という定量的格付け関係数（rule04 quantitative）。モニタリング手数料という経常収益モデルへの転換（仕組み, rule01 pass）。格付け関係は蓄積資産として機能（rule06 structural）。ただしS&P・Fitchとの格付け関係数比較なし（rule07 insufficient）。格付け関係積み上げは業界構造として全社共通の事業拡大戦略でもある（pattern_B_industry_common部分）。kb3 few-shot（COST#3: 50%）と同水準。経常収益転換の仕組み自体は評価するが差別化説明が不十分で50%。",
+      "kb1_flags": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "格付け関係2000件→モニタリング手数料経常収益→MIS CAGR安定基盤（rule05 direct）。発行市況変動への耐性を高める構造。Q4発言（rule12 primary）。60%。"
+    },
+    {
+      "id": "MCO-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Moody's Investors ServiceはInstitutional Investor誌の米国固定収益投資家調査で最優秀クレジット格付け機関賞を4年連続受賞しており、市場からの信頼を継続的に得ている。",
+      "descriptive_label": "4年連続最優秀格付け機関賞によるブランド優位性",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.7,
+      "scoring_rationale": "4年連続受賞は独立的第三者（Institutional Investor誌）による定量的ブランド評価（rule04 quantitative, pattern_I_quantitative_differentiation）。格付け機関のブランドは信頼性資産であり、dogma.md「Branding評価4類型」の②長期ブランド蓄積に該当。発行体・投資家双方にとって格付け機関選択はブランド・信頼性が重要（rule11 industry structure pass）。S&P・Fitchに対する明確な優位性の定量証拠（rule07 pass partial）。Q4/Q2発言（rule12 primary）。kb3 few-shot（MNST: ブランド評価は結果の側面があるが、4年連続受賞は能力の持続的証拠として評価）。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "ブランド信頼性→発行体・投資家の格付け採用→MIS売上維持/拡大のCAGR接続（rule05 indirect部分、3ステップ）。ブランド→CAGR接続はやや間接的。60%。"
+    },
+    {
+      "id": "MCO-005",
+      "claim_type": "competitive_advantage",
+      "claim": "MIS部門は43%超の営業利益率を維持しており、格付け事業の固定費ビジネスモデルがスケールエコノミーとして機能している。",
+      "descriptive_label": "MIS部門43%超営業利益率のスケールエコノミー",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "43%超の営業利益率は結果の数値（rule01 concern, pattern_A_result_as_cause部分）。「固定費ビジネスモデル」という仕組みの主張は認められる（rule01 partial pass）。170bps改善という定量データあり（rule04 quantitative）。ただしS&P格付け部門との利益率比較なし（rule07 insufficient）。規制的参入障壁との組み合わせで構造的（rule11 pass）。43%は高水準だが、NRSROの寡占構造に由来する利益率であり、MCO固有の能力説明が限定的（pattern_B_industry_common相当部分）。kb3 few-shot（COST#3: 50%）相当。50%。",
+      "kb1_flags": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "固定費ビジネスモデル→売上増加時の利益率拡大→EPS CAGR支持（rule05 direct）。発行市況が好転すれば直接的にCAGRに連動。Q4発言（rule12 primary）。60%。"
+    }
+  ]
+}

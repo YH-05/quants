@@ -1,0 +1,195 @@
+{
+  "ticker": "RENT",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "STMコンテンツ資産 → 購読更新率高 → 安定した収益基盤 → 売上CAGR安定 +2%",
+      "evidence": "STM事業の2年連続Q4発言から。購読更新率の高さとコンテンツ資産の関係を論証",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 60
+      },
+      "final_confidence": 0.55,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR high pattern",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "コンテンツ→購読継続→収益安定は2ステップの直接的因果。dogma高評価パターンに近い"
+        },
+        {
+          "source": "dogma base adjustment",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "優位性（#5）が45%評価。CAGR接続は独立評価だが+2%という成長率の低さを考慮"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "direct", "reasoning": "コンテンツ→購読継続→収益安定は2ステップの直接的因果"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4での言及"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CAGR接続は明確で検証可能（購読更新率は通常開示）。ただし成長率が低く（+2%）、優位性の価値は限定的。dogmaルール5（CAGR接続は直接的メカニズム要求）を概ね満たす。55%",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "ポートフォリオ再構成能力（低成長・非中核資産の処分と高成長データ・アナリティクス資産の取得規律）",
+      "evidence": "Q4 FY2014 CEO発言: 'In 2014, we completed 27 acquisitions for a total consideration of GBP 385 million...we also continued to dispose of assets, closing 17 small transactions for a total consideration of GBP 74 million.' Q4 FY2013: 'When we see assets that we cannot transform...we will sell it.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_10_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Pattern III（能力over結果）に該当。処分基準の明確化は能力の証左として機能"
+        },
+        {
+          "source": "KB1-T rule_10_t",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "処分基準の明確化（転換不可・将来価値不明は売却）はネガティブケース基準として機能。ただし具体的な断念例の列挙なし"
+        },
+        {
+          "source": "dogma rule_10",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "2年連続Q4での一貫した発言。CHD#7の断念事例基準に近いが具体例なしで限定的"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "pass", "reasoning": "処分基準の明確化（転換不可・将来価値不明は売却）は能力・仕組みとして評価"},
+        {"rule": "rule_8_t", "verdict": "borderline", "reasoning": "戦略（ポートフォリオシフト）と能力（処分規律・買収基準）の境界線。ルール8の観点からは能力側と評価"},
+        {"rule": "rule_10_t", "verdict": "partial_pass", "reasoning": "処分の意思決定基準は提示されているが具体的な断念案件の言及なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_III", "matched": true, "effect": "positive", "reason": "能力・仕組みとしての評価が適切。処分基準という組織的規律を優位性として評価"}
+      ],
+      "overall_reasoning": "ポートフォリオ管理の基準を明示しており、CHD#1（買収能力70%）に近い評価が可能。ただし具体的断念例の言及がなく（CHD#7と比較して弱い）50%。2年連続Q4での一貫した発言は評価プラス",
+      "power_classification": "Process Power（組織的規律）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks", "Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "ポートフォリオ再構成能力 → 低成長資産の処分による収益品質向上 → EPS成長加速 → 株主価値創造",
+      "evidence": "2014年EPS成長10%実績。ポートフォリオ改善→収益品質→EPS成長の論理チェーン",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR low pattern",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "複数ステップの間接的因果。ポートフォリオ規律からのEPS成長への直接寄与分の分離が困難"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "multi_step", "reasoning": "ポートフォリオ改善→収益品質→EPS成長は論理的だが間接的"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4発言"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "因果は論理的だが複数ステップ。EPS成長実績（10%）は確認できるが、ポートフォリオ規律からの直接寄与分の分離が困難。45%",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Legal事業における新技術プラットフォーム（Lexis）への移行能力とワークフロー統合",
+      "evidence": "Q4 FY2014 CEO発言: 'Legal grew 1%...Around 1 percentage point of the 270 basis point margin improvement was achieved through organic process innovation and infrastructure decommissioning' Q4 FY2013: 'over 70% of our U.S. customers activated on the New Lexis platform by year-end.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "confidence": 40
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_G",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "Pattern G（比較対象不明）：WestLaw（Thomson Reuters）との差別化が示されていない。市場低成長（1%）が優位性の発揮余地を制限"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "主要純粋競合（WestLaw/Thomson Reuters）との差別化の言及なし"
+        },
+        {
+          "source": "market growth",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Legal市場自体が低成長（1%）で優位性の発揮余地が限定的"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_pass", "reasoning": "プラットフォーム移行の進捗（70%→全顧客）は能力の証左だが薄い"},
+        {"rule": "rule_7_t", "verdict": "weak", "reasoning": "WestLaw/Thomson Reutersとの差別化の言及なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_G", "matched": true, "effect": "negative", "reason": "純粋競合との比較なし。市場低成長下での優位性の差別化根拠が弱い"}
+      ],
+      "overall_reasoning": "Legal事業のプラットフォーム移行は能力として認められるが、WestLaw（Thomson Reuters）との具体的差別化が示されず、市場自体の低成長（1%）もあり評価は低い。KB2-T Pattern G（比較対象不明）に該当。30%",
+      "power_classification": "Switching Costs（低評価）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks", "Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Reed Elsevier全4事業エリアにおいて2013年・2014年ともに underlying revenue growth を達成（全事業成長）",
+      "evidence": "Q4 FY2013/2014 決算発表での全事業成長確認",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 80
+      },
+      "final_confidence": 0.8,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。2013・2014の全4事業成長はトランスクリプトから確認可能。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual", "Q4_FY2013_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "RENT",
+    "claim_count": 13,
+    "scored_count": 5,
+    "target_claim_ids": [6, 7, 8, 9, 10],
+    "batch_index": 1,
+    "batch_total": 3,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 0,
+      "0.5-0.55": 2,
+      "0.4-0.45": 2,
+      "0.3": 1,
+      "0.1": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb1_rules_transcript/rule08_strategy_not_advantage.md",
+      "kb1_rules_transcript/rule10_negative_case.md",
+      "kb2_patterns_transcript/pattern_G_unclear_vs_pure_competitor.md",
+      "kb2_patterns_transcript/pattern_III_capability_over_result.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

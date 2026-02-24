@@ -1,0 +1,35 @@
+{
+  "ticker": "CRDA",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["CRDA-011", "CRDA-012"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "CRDA-011",
+      "claim_type": "factual_claim",
+      "claim": "アジア売上 Q1 2015で+11%成長、2,000社超の新規顧客獲得（Q1 2015期）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2015 CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。CRDA-006（アジア拡大能力）の支持事実",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。CRDA-006（30%）の支持事実。アジア+11%は具体的だが業界トレンドとの識別が困難。0.5"
+    },
+    {
+      "id": "CRDA-012",
+      "claim_type": "factual_claim",
+      "claim": "Q1 2014配当：9.75ペンス（+7%増配）、10年間の継続増配実績",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014 CFO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。財務規律の証拠だが競争優位性への直接的貢献は限定的",
+      "final_confidence": 0.4,
+      "scoring_rationale": "事実主張として定量的裏付けあり。Capital-Light（CRDA-003）とNPP戦略の間接的支持事実。財務規律の証拠。0.4"
+    }
+  ]
+}

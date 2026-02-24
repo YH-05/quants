@@ -1,0 +1,367 @@
+{
+  "ticker": "RADL3",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Raia・Drogasil 2ブランドによるポートフォリオ運営能力（A/Bクラス向け双ブランド戦略）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "デュアルブランドを共有インフラで並列運営する能力（仕組み）を評価。「iconic brands」という状態ではなく、共有バックオフィスで2ブランド維持する能力が核心"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "ブラジルのドラッグストア競合（Grupo Pague Menos等）との定量比較なし。デュアルブランドが競合比で相対的に優位かどうかが不明確"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "統合済みバックオフィス・ロジスティクスを共有しながら2ブランドを維持する構造は競合が短期で模倣困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。デュアルブランド運営能力という仕組みが核心"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "competitor_comparison",
+          "adjustment": 0.0,
+          "reasoning": "競合との定量比較なし。Branding類型1（ポートフォリオ運営力）として評価するが比較不足"
+        }
+      ],
+      "overall_reasoning": "デュアルブランド運営はBranding類型1（ポートフォリオ運営力）として評価。dogma KY自身が「外見的評価が多い」と認識している分野。競合との比較不足で50%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "デュアルブランド + 新州進出 → 売上成長18-20% + SSS成長6-8% → 有機的EBITDA拡大",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "ブランド力→市場シェア拡大→SSS6.5%+新店出店→売上18.5%成長の因果。2014年実績で検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual発言由来。2015年130店舗出店計画として具体化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズム適合"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "brazil_macro_risk",
+          "adjustment": 0.0,
+          "reasoning": "ブラジルマクロリスク（通貨・インフレ）が介在するため若干抑制。Phase 1の60%を維持"
+        }
+      ],
+      "overall_reasoning": "明確な成長経路と定量実績（2014年18.5%成長）。ブラジルマクロリスクが介在するも、因果チェーンは明確。60%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "有機的出店による低コスト展開能力（M&Aより有機成長が圧倒的にROI優位）",
+      "final_confidence": 0.30,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "有機的出店戦略は戦略の選択（Rule 8-T）。出店プロセスの効率性（能力）との区別が必要"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "「much, much lower」という定性的表現のみ。具体的なROI比較データなし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "戦略と優位性の混同パターン適合"
+        },
+        {
+          "pattern_id": "pattern_D_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "定性的のみのパターン。定量データなし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_F",
+          "adjustment": -0.10,
+          "reasoning": "戦略混同リスク。Phase 1の40%から-10%で30%"
+        }
+      ],
+      "overall_reasoning": "有機的出店優位性は戦略（Rule 8-T）への抵触リスクが高く、定量データも不足。30%が妥当"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "カスタマーデータ活用能力（78%の顧客を識別・データ駆動カテゴリマネジメント）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "78%顧客識別という能力（仕組み）を評価。データ活用によるカテゴリマネジメントが具体的な能力"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "ブラジルのドラッグストア競合との識別率比較なし。78%が業界水準対比で優位かどうか不明"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。データ識別能力という仕組み"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "78%顧客識別率は定量的だが競合比較なし。ブラジルのリテールドラッグストアでの識別率業界水準が不明。50%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 1,091店舗、売上成長18.5%、SSS成長6.5%、EBITDA margin 6.6%（過去最高）、国内市場シェア9.9%（50bp増）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO De Zagottis Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "統合後のバックオフィス・ロジスティクス共有による規模の経済（Raia/Drogasil統合効果）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「統合が完了した」という結果の面が強い。統合後インフラ共有は能力として評価できるが、すでに完了した能力"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "EBITDA margin 6.6%（過去最高）が間接的証拠。直接的な統合コスト削減数値なし"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "2ブランド・共有バックオフィス構造は競合が短期で再構築困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "統合効果（結果）を優位性として提示するリスク"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.10,
+          "reasoning": "統合完了後の持続的優位性の不確かさ"
+        }
+      ],
+      "overall_reasoning": "統合後規模の経済は方向性として認められるが、統合固有の効果の定量分離が困難。EBITDA margin改善は結果として示されている。50%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "実店舗密度向上による顧客粘着性（近隣店舗増設が重複顧客の消費単価を増加させる）",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「粘着性の高まり」は結果に近い。高密度出店による顧客粘着強化の仕組みとして評価できるが、能力説明が限定的"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "「average tickets go up」という定性的説明のみ。具体的な客単価増加率なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合。地域密度が重要な業界構造"
+        },
+        {
+          "pattern_id": "pattern_D_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "定性的のみのパターン。定量データなし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.10,
+          "reasoning": "定量データ不足。業界構造合致はあるが能力証明が弱い"
+        }
+      ],
+      "overall_reasoning": "高密度出店による顧客粘着効果は業界構造合致（地域密度の重要性）があるが、定量的裏付け不足。40%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 131店舗新規出店（うち51店はQ4集中）、11店閉鎖。2015年計画: 130店舗出店。90契約済み（Q4 call時点）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "顧客識別率78%（来店顧客の78%をデータベースで特定）、2014年時点で23,000名の従業員、うち3,300名が薬剤師",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2011年合併後3年間: 店舗数41%増、売上62%増（年率17.2%）、EBITDA 86%増。2014年EBITDA margin 6.6%（過去最高）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "30-40": 1,
+      "40-50": 1,
+      "50-60": 2,
+      "60-70": 1,
+      "70-80": 5
+    },
+    "source": "manual_consolidation",
+    "note": "RADL3 ticker contains digits and cannot pass _validate_ticker(). Manual consolidation applied."
+  }
+}

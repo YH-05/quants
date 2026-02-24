@@ -1,0 +1,441 @@
+{
+  "ticker": "TJX",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-02-25) [Primary]; Q4 FY2014 Earnings Call (2014-02-26) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2014", "Q2 FY2014", "Q3 FY2014", "Q1 FY2015", "Q2 FY2015", "Q3 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "オフプライス・ビジネスモデルの柔軟性：買付けを市場の余剰在庫に対して機動的かつ近接タイミングで行う能力",
+      "descriptive_label": "オフプライス調達の機動的柔軟性（Process Power）",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO Carol Meyrowitz): 'We operate an amazingly flexible business model...We buy close in...Our goal is to be even leaner and faster, delivering less inventory to our stores more often.' Q&A (CFO Scott Goldenberg): 'our model does allow us to flex more because we buy so close in...we can take advantage of other opportunities...it kind of evens out over time'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks + qa_session",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "買付け柔軟性という能力・仕組みを評価。在庫回転等は結果として扱う"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「柔軟性」「オープン・トゥ・バイ管理能力」は名詞的属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "この買付け近接性はオフプライス業態の構造的設計であり、補完的な一時的行動ではない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "余剰在庫が常時存在するアパレル市場構造と、在庫機会を素早く捉えるTJXのポジション合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの体系的な説明（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（Ross Stores, Burlington）との定量的比較数値が欠如",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Q4での反復的・体系的な言及。業態の構造的設計として組み込まれている。ただし純粋競合対比の定量データが不足（欠如すると+20%ボーナスを得られない）"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "オフプライス柔軟性 → 機会買付け → 商品マージン維持・向上 → CAGR下支え（+1-2pp程度）",
+      "descriptive_label": "柔軟性→マージン→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：柔軟買付け→商品マージン維持。商品マージンはSECデータで確認可能（FY15: 28.5% gross margin, merchandise margins 'slightly up'）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。長年の実績との整合性あり（5年間の年複利EPS成長22%）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "直接的メカニズムが説明されており、財務データで部分的に検証可能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "16,000〜17,000以上のグローバルベンダーネットワークによる、ブランド品・トレンド商品の独自調達力",
+      "descriptive_label": "グローバル仕入先ネットワーク（Scale Economies + Cornered Resource）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'We do business with over 16,000 vendors. We are global. We have the advantage of European fashion, domestic fashion, brands all over the world, that is very different from what is typical.' Q4 FY2015 Prepared Remarks: 'Our merchants source from a vendor universe of over 17,000 vendors and more than 100 countries.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ベンダーネットワーク自体は仕組み・能力。売上・シェアは結果として扱う"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "17,000以上のベンダー・100ヵ国という数値はあるが、競合との比較数値なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Ross StoresやBurlington等の純粋競合との対比が欠如。「typical」との違いを述べるがデータなし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "規模がベンダー交渉力を生む構造はある程度合致するが、ベンダー数の絶対量が優位性を生むメカニズムが不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (partial) + pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合との定量比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ベンダー数の大規模化は事実だが、それが具体的にどう優位性を生むかのメカニズムが定性的にとどまる。業態共通の側面もある"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "TJX Europeの欧州20年以上の展開経験と欧州プラットフォーム（「容易には複製できない」）",
+      "descriptive_label": "欧州オフプライス先行者優位・組織的プラットフォーム（Process Power + Cornered Resource）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): '2014 marks our 20th year in the U.K., and that experience is not easily replicated. We remain the only major brick-and-mortar off-price retailer in Europe.' Q4 FY2015 Prepared Remarks: 'For over 2 decades, we have built a European platform, an organization that would be difficult to replicate.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "20年の組織的知識・プラットフォーム自体が能力。欧州での売上成長は結果"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "欧州に先行展開した構造的プラットフォームは競合が容易に追随できない"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "「唯一の主要brick-and-mortar off-price retailer in Europe」は競合不在を示す強い差別化証拠"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "weak",
+            "reasoning": "過去の欧州失敗事例（2008-09年）への言及があり、学習プロセスの証拠がある"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "「唯一の主要欧州オフプライス小売」という競合不在の明確な差別化",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "欧州での先行者優位と組織的プラットフォームは構造的に強い。定量的な欧州収益性改善データも裏付け（adjusted segment margin 8.1% in FY2015, a divisional record）"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "900〜1,000人超のグローバルバイヤー組織と、現地に密着した世界中の買付けオフィスネットワーク",
+      "descriptive_label": "プロフェッショナルバイヤー組織（Process Power + Cornered Resource）",
+      "evidence_from_transcript": "Q3 FY2015 Prepared Remarks (CEO): 'a world-class buying organization of more than 900 people and growing'. Q4 FY2015: 'Our buying organization now numbers more than 1,000 people positioned around the globe.' Q&A (Q4 FY2014, CEO): 'We're constantly opening new vendors and more excitement. And that includes some of the smaller guys that are very hard for typically a department store to find.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "バイヤー組織という能力・仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "1,000人という数値はあるが、競合との比較データなし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長期にわたって構築された組織知識は構造的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "人数の定量データあるが競合比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "バイヤー組織の規模・専門性は認められるが、Ross Stores等の競合も同様の体制を持つ可能性があり相対的優位の証拠が不十分"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Value/オフプライスのブランド認知と顧客ロイヤルティ（「value has been our mission since day 1」）",
+      "descriptive_label": "バリューミッションのブランドポジション（Branding）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'While many other retailers are now focusing on value, at TJX, value has been our mission since day 1...we will always be about true value, which for us is a combination of fashion, brand, quality and price.' Q4 FY2015 Q&A: 'our overall customer satisfaction scores improved once again in 2014 to a record high'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "Ross Stores・Burlington等も「value」ブランドを主張しており、相対的差別化の証拠が弱い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "顧客満足度スコアが過去最高という言及はあるが具体的な比較数値なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "純粋競合との価格プレミアムや選好率の比較データが欠如"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (partial)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "「value」ブランドは業界内で共通的主張であり相対的優位が弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "38年間のvalue小売としての歴史は事実だが、純粋競合との明確な差別化証拠に乏しく、ブランドPowerとしての確信度は限定的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2015 consolidated comp store sales +2%、FY2015 EPS +12%（6年連続2桁成長）、ROIC 23%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2015時点でグローバル17,000以上のベンダー、100ヵ国以上から調達、3,395店舗",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "TJX Europe: FY2015 adjusted segment margin 8.1%（部門記録）、英国展開20年以上、欧州で唯一の主要brick-and-mortar off-price小売",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "「宝探し体験（treasure hunt experience）」を生み出す常に変わる商品ラインナップによる店舗来店頻度の高さ",
+      "descriptive_label": "宝探し体験による来店頻度・顧客粘着性（Switching Costs / Branding）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'This is what helps create the treasure hunt experience of shopping in all our stores.' Q3 FY2015 Prepared Remarks (CEO): 'We offer customers a treasure hunt of constantly fresh and eclectic assortment of exciting brands and merchandise sourced around the globe, which we see as a major differentiator.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「宝探し体験」は仕組みとして説明されているが、来店頻度・客足増加は結果。仕組みの説明がやや抽象的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "来店頻度や顧客滞留時間等の定量的比較データがない"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "「常に変化する品揃え」という組織的プロセスは戦略ではなく能力に近い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t (partial)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "定性的な主張で定量的裏付けに乏しい",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "宝探し体験はオフプライス業態の中核概念だが、定量的差別化の証拠が薄く、確信度は中程度以下にとどまる"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "宝探し体験 → 来店頻度向上 → 既存店売上成長 → 売上CAGR下支え",
+      "descriptive_label": "宝探し→来店頻度→既存店成長経路",
+      "source_advantage": 10,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップの因果チェーン。各段階の定量的裏付けが弱い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "因果チェーンが3段階でやや間接的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "方向性は認められるが因果チェーンが間接的で各段階の検証が困難"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "グローバルベンダーネットワーク拡大 → 商品エクレクティック性向上 → 新顧客獲得・顧客層拡大 → 売上CAGR支援",
+      "descriptive_label": "ベンダー拡大→商品多様性→顧客拡大経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3段階以上のチェーン。数値根拠が不透明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "間接的で各段階の定量化が困難"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "欧州先行者優位 → 欧州店舗拡大加速（875→975店舗目標引上げ）→ 新市場収益 → 連結CAGR +2-3pp",
+      "descriptive_label": "欧州先行優位→欧州拡大→CAGR貢献経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：先行者優位→欧州新規出店。欧州部門収益性がSECデータで確認可能（segment margin記録更新）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での体系的説明"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "FX影響が大きく実際の利益貢献が不透明",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "比較的直接的なメカニズムだが、FXリスクが大きく連結への寄与が不確実"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "グローバルバイヤー組織 → 独自ブランド商品調達 → 商品マージン維持 → CAGR下支え",
+      "descriptive_label": "バイヤー組織→調達力→マージン→CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ以上。バイヤー組織→調達力→マージンの各ステップの定量的裏付けが必要"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "方向性は正しいが因果の各ステップの検証が困難"
+      }
+    }
+  ]
+}

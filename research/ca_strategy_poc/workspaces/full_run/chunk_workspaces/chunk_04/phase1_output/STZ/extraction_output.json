@@ -1,0 +1,132 @@
+{
+  "ticker": "STZ",
+  "company_name": "Constellation Brands, Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00",
+  "claims": [
+    {
+      "claim_id": "STZ-001",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding",
+      "source_transcript": "201404_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Corona Extra remains the number one imported beer brand in the U.S. and the number six overall beer brand in the U.S. with over 100 million case equivalents sold annually.",
+      "claim_summary": "コロナ・エクストラは米国輸入ビール第1位（年間1億ケース超）として強力なブランド認知を構築。「ライムと共に楽しむビーチビール」の文化的ポジションは競合輸入ブランドへの代替が困難。",
+      "confidence": 0.7,
+      "confidence_rationale": "輸入ビールNo.1という定量的事実、1億ケースという規模は明確な証拠。Modelo Especial +20%成長との組み合わせでブランドポートフォリオの強さを示す。ただし長期的なブランド維持能力の評価が課題。",
+      "kb1_rules_applied": ["rule04", "rule07"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation", "pattern_V_specific_competitor_comparison"],
+      "supporting_evidence": [
+        "#1 imported beer brand in U.S.",
+        "#6 overall beer brand in U.S.",
+        "100+ million case equivalents annually"
+      ]
+    },
+    {
+      "claim_id": "STZ-002",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding",
+      "source_transcript": "201404_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Modelo Especial continues to be the fastest growing major beer brand in the U.S. with depletions up approximately 20% in the quarter.",
+      "claim_summary": "モデロ・エスペシャルは米国主要ビールブランド中で最速成長（前年同期比+20%増）。ヒスパニック系移民増加というデモグラフィックトレンドに乗ったブランド成長は持続可能。",
+      "confidence": 0.7,
+      "confidence_rationale": "+20%成長は定量的・検証可能。「最速成長」という相対的優位性も具体的。ヒスパニック人口増加というマクロトレンドが中長期的なCAGRドライバーとなる。",
+      "kb1_rules_applied": ["rule04", "rule07"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "+20% depletion growth in Q4 FY2014",
+        "Fastest growing major beer brand in U.S.",
+        "Hispanic demographic tailwind"
+      ]
+    },
+    {
+      "claim_id": "STZ-003",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201404_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We expect our Nava brewery to increase capacity from 10 million hectoliters today to approximately 20 million hectoliters upon completion of the planned expansion...This expansion is expected to drive best-in-class margins over the next several years.",
+      "claim_summary": "Nava醸造所の10M→20M hL拡張計画は、固定コスト分散によるビール製造コスト低下を実現。グループ内製造でAB InBevのような外部サプライヤー依存を解消し、競合の米国大手独立輸入ビール会社対比コスト優位性を確立。",
+      "confidence": 0.6,
+      "confidence_rationale": "醸造所拡張による規模のメリットは明確なメカニズム。ただし「best-in-class margins」は将来予測であり現時点では未実現。competitor比較が具体的でない。",
+      "kb1_rules_applied": ["rule04", "rule06"],
+      "kb2_patterns_matched": ["pattern_II_direct_cagr_mechanism"],
+      "supporting_evidence": [
+        "10M to 20M hL capacity expansion",
+        "Best-in-class margins expected",
+        "Sole brewing rights for Modelo brands in U.S."
+      ]
+    },
+    {
+      "claim_id": "STZ-004",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201404_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "The acquisition of the Modelo beer business...gave us perpetual rights to import, market and sell Corona, Modelo and other brands in the U.S.",
+      "claim_summary": "コロナ・モデロブランドの米国永続的輸入・販売独占権は法的Cornered Resource。この独占契約はFTC審査通過済みで、競合他社（インポーターやAB InBev自身）がこれらブランドの米国市場展開を代替する手段がない。",
+      "confidence": 0.7,
+      "confidence_rationale": "永続的独占権は非常に強力なCornered Resource。法的保護により模倣不可能。FTC条件をクリアした契約の安定性も高い。",
+      "kb1_rules_applied": ["rule06", "rule04"],
+      "kb2_patterns_matched": ["pattern_IV_structural_market_position"],
+      "supporting_evidence": [
+        "Perpetual import/sell rights for Corona, Modelo in U.S.",
+        "FTC-reviewed acquisition structure",
+        "Nava brewery ownership"
+      ]
+    },
+    {
+      "claim_id": "STZ-005",
+      "claim_type": "cagr_connection",
+      "seven_powers_category": "Branding",
+      "source_transcript": "201404_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Our beer business accounted for approximately 85% of industry import dollar growth over the last year...Our beer business has grown at a CAGR of about 10% over the last 10 years.",
+      "claim_summary": "【CAGRリンク】コロナ・モデロブランドの強力なブランド力（Branding）が米国輸入ビール市場成長の85%を独占的に取り込み、10年間10% CAGRを実現するメカニズムの直接的証拠。ブランドが成長の根本原因。",
+      "confidence": 0.7,
+      "confidence_rationale": "業界成長の85%取り込みという定量的証拠は非常に説得力が高い。10年10% CAGRも明確。ブランドがCAGRの直接的ドライバーであることが証明されている。",
+      "kb1_rules_applied": ["rule04", "rule02"],
+      "kb2_patterns_matched": ["pattern_II_direct_cagr_mechanism", "pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "85% of import dollar growth",
+        "10% beer CAGR over 10 years",
+        "+20% Modelo Especial depletions"
+      ]
+    },
+    {
+      "claim_id": "STZ-006",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "source_transcript": "201404_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We have become the third largest beer company by revenue in the U.S., and our portfolio skews toward the fastest-growing premium import and craft segments.",
+      "claim_summary": "Constellationはプレミアムインポートとクラフトビールセグメントに特化した戦略により、AB InBevやMolsonCoorsの国内大衆ブランド重視戦略とは異なるポジショニングを確立。競合大手はプレミアム輸入にシフトすると自社既存ブランドを毀損する。",
+      "confidence": 0.5,
+      "confidence_rationale": "Counter-Positioningとしての論理は成立するが、競合（AB InBev等）がなぜ類似ポジションを取れないかの説明が弱い。実際にはAB InBevは輸入ビール市場でも競合する。",
+      "kb1_rules_applied": ["rule07", "rule08"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "#3 beer company by U.S. revenue",
+        "Premium import + craft focus",
+        "Fastest-growing segments"
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 6,
+    "by_seven_powers": {
+      "Branding": 2,
+      "Cornered Resource": 1,
+      "Scale Economies": 1,
+      "Counter-Positioning": 1
+    },
+    "by_claim_type": {
+      "competitive_advantage": 5,
+      "cagr_connection": 1
+    },
+    "primary_transcript": "201404_earnings_call.json",
+    "transcripts_used": ["201404_earnings_call.json"],
+    "notes": "STZのQ4はFY2014終了の4月（February fiscal year end）。BrandingとCornered Resourceの組み合わせが非常に強力。ヒスパニックデモグラフィックとプレミアム化トレンドが長期CAGRドライバー。"
+  }
+}

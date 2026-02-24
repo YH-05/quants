@@ -1,0 +1,207 @@
+{
+  "ticker": "BFAM",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "雇用主スポンサー型保育ビジネスモデルによるカウンターポジショニング（雇用主が費用負担する構造で一般消費者向け保育と異なる市場を形成）",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "雇用主スポンサー型モデルという構造的ビジネス設計（能力・仕組み）を評価。一般保育と異なる市場創造が能力の核心"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "雇用主が費用負担する構造は一般保育チェーン（KinderCare等）が短期で模倣困難。Counter-Positioningとして機能"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "大企業が従業員定着・生産性向上のため育児支援を強化する業界トレンドとBFAMのモデルが合致。Apple/QUALCOMM採用が裏付け"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合。雇用主向けニッチ市場での構造的優位"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "competitor_comparison",
+          "adjustment": 0.0,
+          "reasoning": "定量的競合比較なし。Counter-Positioningとしての構造的評価で±0"
+        }
+      ],
+      "overall_reasoning": "雇用主スポンサー型はCounter-Positioning + Switching Costsの組み合わせ。大企業顧客（Apple/QUALCOMM）の採用実績が裏付け。定量的競合比較の欠如が制約。60%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "雇用主スポンサー型 → 複数サービスクロスセル → 売上成長7-10% + EBITDA margin拡大100-125bp",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "雇用主スポンサー→複数サービス展開→売上7-10%成長の2-3ステップ。Back-Up Care +14%/Ed Advisory +22%の実績で検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来。2015年EBITDA $270-275M・EPS成長20%として具体化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズム適合。因果チェーン2ステップ、セグメント別成長率で検証可能"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "クロスセル成長経路が実績数値（Back-Up Care +14%、Ed Advisory +22%）で裏付けられる。dogmaルール5の因果チェーン基準を満たし60%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "成熟センターでの持続的登録者増加能力（4年連続で成熟センター登録率改善、75%稼働率）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "4年連続2%改善は結果。背後の能力（保育品質・スタッフ一貫性）の説明が不足。能力か結果かの境界ケース"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "75%稼働率・4年連続2%改善・目標78-80%という定量データあり"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "KinderCare等競合との稼働率比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "定量的差別化パターンとしては不完全（競合比較なし）"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "4年連続改善という実績（結果）を能力として提示している側面。-10%調整"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.10,
+          "reasoning": "結果を能力として提示するリスク。能力の説明が不足"
+        }
+      ],
+      "overall_reasoning": "成熟センター稼働率改善は定量的に示されているが、能力説明（なぜ改善できるか）が不十分でPattern-A（結果→能力誤帰属）のリスクあり。競合比較もなく50%が妥当"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "リース・コンソーシアム型センターによる都市圏への高マージン展開能力",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "都市圏高需要立地での複数スポンサー調整・運営ノウハウという能力を評価。単純な「都市圏立地」ではなく運営能力が核心"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "歴史的センター比40-50%高いマージンドル額という定量比較が説得力を持つ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "都市圏物件確保・複数スポンサー調整ノウハウは競合が短期で模倣困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "定量的差別化パターン適合。40-50%高マージンという定量比較"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "都市圏高マージンモデルは40-50%のマージンドル差という定量的裏付けと、複数スポンサー調整という構造的能力で評価。60%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "成熟センター稼働率: 75%（現在）、前年比+2%（2014年）、目標は78-80%（リーマンショック前水準）。3年かけて達成見込み",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Bolandの定量的開示データ。検証可能な数値"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い。CFOによる定量開示"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "50-60": 1,
+      "60-70": 3,
+      "70-80": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

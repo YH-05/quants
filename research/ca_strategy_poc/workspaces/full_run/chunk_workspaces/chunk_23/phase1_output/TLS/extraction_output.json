@@ -1,0 +1,408 @@
+{
+  "ticker": "TLS",
+  "company_name": "Telstra Corporation Limited",
+  "transcript_source": "FY2015 Full Year Results（2015-08-12）/ H1 FY2015（2015-02-11）/ H1 FY2014（2014-02-12）/ FY2014 August（2014-08-13）",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_FY2015", "H1_FY2014", "FY2014_Aug"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "オーストラリア最大の4Gモバイルネットワーク（競合比4倍の規模、人口94%カバレッジ）による差別化",
+      "descriptive_label": "モバイルネットワーク規模の優位性（Scale Economies + Cornered Resource）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Andrew Penn）: 'We will increase our mobile footprint coverage to more than 2.5 million square kilometers, which we estimate is more than double that of our nearest competitor.' / H1 FY2014 Prepared Remarks（CEO David Thodey）: 'that 4G network is now 4x, 4x larger than any other comparable network in Australia.' / FY2015: 'Our 4G coverage now reaches 94% of the Australian population.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ネットワーク規模・カバレッジは能力・仕組みとして評価可能。加入者獲得実績は結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "競合比4倍の4G規模、94%カバレッジ、250万平方キロメートルという定量的データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "純粋競合（Optus、Vodafone）との差別化は言及されているが、純粋競合名での詳細比較は限定的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "オーストラリア通信市場は大陸国で物理的ネットワーク規模が参入障壁。Telstraの規模は構造的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_IV_t（業界構造×企業ポジション）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言、標準評価",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "競合比4倍という定量的裏付けあり。オーストラリアは広大な国土で物理インフラの規模優位が構造的。ただしネットワーク投資は継続的CapExが必要で持続可能性に疑問が残る"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "モバイルネットワーク優位 → 顧客獲得・ARPU向上 → モバイル売上CAGR",
+      "descriptive_label": "ネットワーク優位→加入者成長→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ネットワーク品質→顧客選択→ARPUは2-3ステップ。FY2015でモバイル売上+10.2%、ARPU+$2.94が実証"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "モバイル売上+10.2%（FY2015）、ARPU+$2.94の実績が接続を裏付ける。開示データで検証可能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "NAS（Network Application Services）の三年連続20%以上成長を支える統合的サービスデリバリー能力",
+      "descriptive_label": "マネージドサービス・クラウド統合デリバリー能力（Process Power）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CFO Warwick Bray）: 'In NAS, we saw our third consecutive year of revenue growth in excess of 20%. NAS revenue was up 23.2% to $2.4 billion. We saw strong growth across all major NAS product categories... Managed networks services grew by 21.8%, cloud revenue grew 33%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "三年連続+20%成長は結果。ただし「スケーラブルな標準化提供」「グローバルデリバリーモデル」は仕組みの説明として機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "NAS売上+23.2%、クラウド+33%、マネージドネットワーク+21.8%と定量的裏付けあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "semi_structural",
+            "reasoning": "既存通信インフラ上でのNASは構造的要素。ただし競合も同様の戦略を取りうる"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "「NASへの注力」は戦略。ただし「標準化・スケール化デリバリーモデル」は能力的要素"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（Ericsson、IBM等グローバルITサービス企業）への差別化不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "三年連続+20%成長という定量的実績は印象的だが、これは結果。スケーラブルな標準化デリバリーモデルという仕組みの説明は限定的。グローバルITサービス企業との差別化が不明確"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "NASデリバリー能力 → NASシェア拡大 → 全社売上成長",
+      "descriptive_label": "NAS能力→売上成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "2ステップ接続だが、NASが全社売上に占める割合（$2.4B/$25.8B = 9.3%）を考えると寄与は限定的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "NASの高成長は続くが全社売上への寄与率（9%程度）から全体CAGRへのインパクトは限定的"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "アジア太平洋地域の海底ケーブルネットワーク（Pacnet買収後、最大規模のプロバイダーの1つ）による国際接続優位",
+      "descriptive_label": "アジア太平洋海底ケーブル・接続インフラ（Cornered Resource）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Andrew Penn）: 'Pacnet provides connectivity, managed services and data center services to carriers, multinational corporations and governments in Asia... 113 points of presence across 70 cities globally as well as 29 interconnected data centers in 16 cities across Asia Pacific. Pacnet has substantially increased our scale and scope of International connectivity assets and has doubled the number of customers that we have in the region.' / H1 FY2015 Prepared Remarks（CEO David Thodey）: 'we own and operate one of the most advanced and extensive undersea cable networks'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "海底ケーブルインフラは物理的な能力・資源として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "113拠点・70都市というデータあり。ただし競合との相対的位置づけが不明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "海底ケーブル建設コストと許認可の希少性から構造的要素"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "NTT、KDDI、AT&T等の競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×企業ポジション）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "Pacnet買収完了は2015年4月（PoiT制約内）だが統合実績が限定的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "海底ケーブルは希少な物理資源で構造的優位。しかし買収直後で統合実績が限定的。競合（NTT、KDDI）との差別化説明不足"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "アジア海底ケーブル優位 → グローバルエンタープライズ顧客獲得 → 国際収益成長",
+      "descriptive_label": "海底ケーブル→グローバル企業顧客→国際収益",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "2-3ステップの接続。ただし国際収益の全社比率は低く、CAGRへの寄与は限定的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "アジア市場の成長機会は実在するが、統合フェーズのため具体的な収益貢献の定量化は困難"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Telstraの4G/LTEネットワーク規模：人口94%カバレッジ、2.5百万平方キロメートル（競合比2倍以上）、4G開始当初は競合比4倍の規模",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "NAS売上：FY2015に$24億（前年比+23.2%）。FY2013以降3年連続+20%以上成長。クラウド+33%、マネージドネットワーク+21.8%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Pacnet（2015年4月買収完了）：70都市113拠点、アジア太平洋16都市29のデータセンター。アジア地域の顧客数を2倍に拡大",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "顧客サービス品質向上プログラム（NPS改善、初回解決率84%、「You Have My Name」等）による顧客維持力",
+      "descriptive_label": "カスタマーサービス品質・顧客粘着性（Switching Costs）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Andrew Penn）: 'our NPS score improved by 5 points during the year... our first call resolution rate... is now around 84%. And that's a steady improvement from 73% 3 years ago... we've seen a 32% improvement in contact center response times, and the average time that it's taking to resolve a complaint has improved by 54%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "NPS向上・解決率84%は結果的指標。「You Have My Name」等のプログラム設計は仕組みとして機能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "borderline",
+            "reasoning": "顧客サービス改善は多くの通信会社が行っていることで差別化効果が不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "初回解決率84%（3年前比+11pp）、応答時間-32%という定量データあり。ただし業界比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Optus・Vodafoneとのサービス品質比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t（定性的な顧客体験優位は測定困難）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "業界共通の顧客サービス改善で差別化効果が不明確（Pattern B-T）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "顧客サービス改善のデータはあるが、通信業界では各社が同様の取り組みを行っており差別化優位性は限定的。スイッチングコストとしての機能も不明確"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "顧客サービス品質→顧客維持率向上→チャーン低下→安定的な売上基盤",
+      "descriptive_label": "サービス品質→顧客維持→売上安定",
+      "source_advantage": 10,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ以上の因果チェーン。顧客サービス→NPS→顧客維持→売上はやや飛躍"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "顧客サービス改善とCAGRの定量的接続が不明確。チャーン率の開示はあるが（11.5%）競合比での比較なし"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "生産性改善プログラム（FY2015で$525M費用削減）による継続的コスト管理能力",
+      "descriptive_label": "継続的生産性改善プロセス（Process Power）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CFO Warwick Bray）: 'our productivity and simplification program for FY '14 delivered another $525 million of expense benefits, broadly in line with the prior year of $550 million.' / CEO Andrew Penn: 'Productivity is shown on the light blue bars under core and new business. The expense benefits were achieved across all our business units and in many cases were the result of digitization and simplification of our products and processes'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "$525M削減は結果。「デジタル化・簡素化プロセス」は仕組みとして機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$525M（FY2015）、$550M（FY2014）という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "semi_structural",
+            "reasoning": "生産性プログラムは組織的能力だが、競合も同様の取り組みを実施"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（業界共通の取り組み）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "通信業界で広く実施されているコスト削減プログラムで競合差別化が不明確",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "$525Mの実績は印象的だが、通信各社は同様の効率化を実施。Telstraの生産性プログラムが競合比で際立っていることの証拠なし"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "生産性改善→費用コントロール→EBITDA成長",
+      "descriptive_label": "生産性→コスト削減→EBITDA",
+      "source_advantage": 12,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "生産性削減→コスト削減→EBITDAは1-2ステップの直接的接続。開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムは直接的で検証可能。ただし売上成長ではなくコスト削減ドリブンの接続であり、成長ドライバーとしての評価は中程度"
+      }
+    }
+  ]
+}

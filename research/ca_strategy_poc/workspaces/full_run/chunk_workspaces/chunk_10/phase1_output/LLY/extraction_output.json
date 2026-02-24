@@ -1,0 +1,189 @@
+{
+  "ticker": "LLY",
+  "transcript_source": "Strategy Update & 2015 Guidance Call (2015-01-07) - Q1 2015 classified",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015 (Strategy Update)", "Q1 2015 (Q4 Results)", "Q2 2015", "Q3 2015"],
+    "note": "201501 file is a special Strategy Update and 2015 Guidance call (not Q4 earnings). Q4 2014 results are provided at the Q1 2015 call (201504). This transcript is treated as primary source for strategic claims."
+  },
+  "claims": [
+    {
+      "id": "LLY-001",
+      "claim_type": "competitive_advantage",
+      "claim": "糖尿病分野における最多NMEパイプライン（最大4つの新規糖尿病薬同時発売可能性）と業界唯一のフルインスリン+経口薬ポートフォリオ構築能力",
+      "descriptive_label": "糖尿病治療のフルポートフォリオ構築による業界最広カバレッジ（Cornered Resource的パイプライン）",
+      "evidence_from_transcript": "Strategy Update Prepared Remarks (CEO発言): 'In diabetes, today, we're #4, behind Novo Nordisk, Sanofi and Merck. But we have the opportunity over a couple of years to launch up to 4 NMEs that treat diabetes, which would be unprecedented. This will enable Lilly to offer a more complete range of medicines than any of our competitors, from oral drugs to insulins'. 'our novel basal insulin and our insulin glargine product fill a significant and longstanding void in our insulin portfolio'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Lechleiter",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["LLY-009"],
+      "cagr_connections": ["LLY-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "年次ガイダンスコールでの体系的な説明。最大4つのNME同時発売という定量的な計画あり（'unprecedented'という自社評価も含む）。フルポートフォリオ（GLP-1受容体作動薬Trulicity、SGLT2阻害薬Jardiance、基礎インスリン、fixed-dose combination）は競合が持ちえない幅の糖尿病治療選択肢。ただし「可能性」であり実現前の段階"
+      }
+    },
+    {
+      "id": "LLY-002",
+      "claim_type": "competitive_advantage",
+      "claim": "特許切れ期間（YZ）を通じた持続的R&D投資による強力なパイプライン構築能力（Phase III 7-9 assets維持）",
+      "descriptive_label": "特許切れ逆風下での持続的R&D投資による次期成長基盤構築能力",
+      "evidence_from_transcript": "Strategy Update Prepared Remarks (CEO発言): 'We took a very determined strategy...we decided to focus on 5 major therapeutic areas where we had capabilities...We got very agnostic about the sourcing of our research...We actually surpassed our pipeline goal with 12 NMEs in Phase III at year end 2011, peaking at 13 by early 2013'. CFO: 'We will maintain a sustainable flow of innovative medicines...maintaining 7 to 9 high-quality Phase III assets to support a more consistent flow of new product launches'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Lechleiter / Derica Rice",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの詳細な説明。YZ期間（特許切れ）に$34Bを維持しR&Dに投資し続けたという能力の実績あり。Phase III 7-9 assets維持という定量的な目標と、2009年来14製品発売という実績で裏付け。製薬R&Dの非線形性（多くの競合が特許切れ時にR&D削減）に対するコミットメントは差別化"
+      }
+    },
+    {
+      "id": "LLY-003",
+      "claim_type": "competitive_advantage",
+      "claim": "アルツハイマー病（solanezumab）研究における業界最高水準のポジショニングと科学的優位性",
+      "descriptive_label": "アルツハイマー治療における業界トップポジション（Cornered Resource：amyloid仮説に基づく先端臨床資産）",
+      "evidence_from_transcript": "Strategy Update Prepared Remarks (CEO発言): 'No company is better positioned today in the Alzheimer's space than Eli Lilly and Company. We're increasingly confident in our approach and in its scientific underpinnings'. 'In 2016, we expect readouts from our ongoing Phase III trials for evacetrapib in high-risk vascular disease and for solanezumab in Alzheimer's Disease'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Lechleiter",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの強い主張（'No company is better positioned'）。アルツハイマー市場は巨大な未充足需要を持つが、solanezumabはまだPhase III中（結果未確認）。rule_4_t（定量的裏付け）が弱く、rule_7_t（競合との具体的比較）も自己申告レベル。確信度は中程度"
+      }
+    },
+    {
+      "id": "LLY-004",
+      "claim_type": "competitive_advantage",
+      "claim": "総売上比50%目標の費用削減（2018年）とグロスマージン改善による収益レバレッジ能力",
+      "descriptive_label": "収益成長を上回るコスト削減による利益レバレッジ（オペレーティングレバレッジ）",
+      "evidence_from_transcript": "Strategy Update Prepared Remarks (CFO発言): 'We expect to reduce total operating expenses, or the sum of SG&A and R&D as a percent of revenue, to 50% or less by the end of 2018. This is 1 year earlier than we communicated at our Investment Community Meeting in October of 2013'. 'we aim to turn that revenue growth into even greater earnings growth by controlling costs and leveraging existing infrastructure'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Derica Rice",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの定量的目標（OpEx 50%以下、1年前倒し）。既存インフラ活用によるオペレーティングレバレッジは具体的な能力説明。ただしこれは計画であり実現前（2018年目標）。製薬業界での競合比較なし"
+      }
+    },
+    {
+      "id": "LLY-005",
+      "claim_type": "competitive_advantage",
+      "claim": "日本市場での倍増成長（double-digit）とグローバルTop20製薬企業ランクへの早期到達能力",
+      "descriptive_label": "日本・中国での規制有利性と高成長市場でのポジション構築能力",
+      "evidence_from_transcript": "Strategy Update Prepared Remarks (CEO発言): 'Lilly was among the fastest-growing pharma companies in Japan, where we doubled our volume...we've moved well into the top 20 companies in Japan with a very real prospect of moving up to our global rank by the early 2020s'. 'China is projected to become the #2 pharmaceutical market...Today, we continue to grow at a double-digit rate in China'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Lechleiter",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの具体的な数値（日本でvolume倍増、Top20ランク）。日本・中国での高成長実績あり。ただし「成長の結果」提示が主で、それを可能にした具体的な能力（規制戦略、製品承認プロセス等）の説明が不十分（rule_1_t不完全）"
+      }
+    },
+    {
+      "id": "LLY-006",
+      "claim_type": "competitive_advantage",
+      "claim": "ElancのNovartis Animal Health買収によるトップ3アニマルヘルス企業へのポジション確立と10年間での$1B→$2B成長能力",
+      "descriptive_label": "Elanco M&A実行力によるアニマルヘルス事業のトップ3ポジション獲得",
+      "evidence_from_transcript": "Strategy Update Prepared Remarks (CEO発言): 'In animal health, having closed the Novartis acquisition last week, we are now a top 3 company, up from #8 just 10 years ago. Our success in this period has been driven by a mix of internally driven growth and growth from acquisitions. We still maintain a strong internal animal health pipeline, and even after the Novartis acquisition, we will continue to look outside our walls for deals in areas such as companion animals and vaccines'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Lechleiter",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの数値（10年で#8→Top3）。M&Aと内部成長のコンビネーション能力の説明あり。ただしNovartis Animal Health買収直後で統合リスクが残り、EPS希薄化が見込まれる段階（CFOが2015年のdilutive効果を明示）"
+      }
+    },
+    {
+      "id": "LLY-007",
+      "claim_type": "cagr_connection",
+      "claim": "糖尿病パイプライン（Trulicity, Jardiance, 基礎インスリン）発売 → 糖尿病事業売上成長 → 2015-2018年のEPS成長加速",
+      "descriptive_label": "糖尿病新製品波→売上成長→EPS CAGR",
+      "source_advantage": "LLY-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの体系的な説明。2015年ベースビジネス中〜高単桁成長（FX調整前）、EPS $2.90-3.00（2015年）という検証可能な目標。3製品（Trulicity, Jardiance, 基礎インスリン）の発売軌跡は2015-2016年に集中しており、成長の具体的タイムライン"
+      }
+    },
+    {
+      "id": "LLY-008",
+      "claim_type": "cagr_connection",
+      "claim": "Phase III R&Dパイプライン（7-9 assets）→ 持続的新製品発売（ixekizumab/baricitinib等）→ 「バイオテック的アップサイド」2020年代以降",
+      "descriptive_label": "パイプライン深度→第2波発売→長期的バイオテック的成長アップサイド",
+      "source_advantage": "LLY-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "年次コールでの「第1波（糖尿病・腫瘍）→第2波（cardiovascular、Alzheimer's）」という2段階成長の説明。具体的な候補分子名（evacetrapib, solanezumab, abemaciclib）は開示されているが、Phase III段階であり成功確率の不確実性が高い（50%以下）"
+      }
+    },
+    {
+      "id": "LLY-009",
+      "claim_type": "factual_claim",
+      "claim": "YZ期間の実績: Elanco 2倍（revenue）、日本volume倍増、中国売上倍増、5000人削減・$1B コスト削減達成、Phase III 12 NMEs（2011年末）、2014年3製品発売（Trulicity, Jardiance, Cyramza）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["LLY-001", "LLY-002"]
+    }
+  ]
+}

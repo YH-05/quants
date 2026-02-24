@@ -1,0 +1,384 @@
+{
+  "scored_claims": [
+    {
+      "id": "AMZN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "AWS クラウドインフラの規模の経済（11グローバルリージョン、21.4%営業マージン、81%成長率）",
+      "evidence": "Q2 2015: AWS operating margin 21.4% ($464M/Q), 81% revenue growth ($1.82B/Q), 11 global regions. AWS segment disclosed separately for first time Q1 2015. Cost structure benefits from scale with price reductions passed to customers.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "11リージョンの物理インフラ規模という能力・仕組みの説明。マージン・成長率は結果だが規模の経済メカニズムが主体"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "21.4% マージン、$1.82B/Q、81% 成長、11 リージョンという強力な定量的証拠群"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "グローバルデータセンターインフラは構造的資産"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Azure・GCP との比較で AWS が 2015 時点で最大規模・最多機能・最低価格の三位一体を実現していた事実が市場知識として存在"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "21.4% マージン・81% 成長・$1.82B という強力な定量的差別化"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "11 グローバルリージョンというインフラ規模の構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "規模の経済・インフラ投資という能力の説明"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "規模拡大 → コスト削減 → 顧客への価格還元 → 利用拡大という直接的なメカニズム"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "強力な定量的証拠群"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.1,
+          "reasoning": "11 リージョンの構造的ポジション"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "能力の説明"
+        }
+      ],
+      "final_confidence": 0.85,
+      "overall_reasoning": "AWS は rule01-07 全て PASS。21.4% マージン・81% 成長・$1.82B という強力な定量的証拠群（rule04）。11 リージョンという構造的インフラ（rule06）。Azure・GCP に対する明確な先行優位（rule07）。規模拡大→価格削減→市場拡大という直接的メカニズム（dogma rule5 高評価）。dogma 的に「かなり納得」域に最も近い。ただし 90% は業界構造との合致が明確な場合に限定されるため 0.85 に留める。"
+    },
+    {
+      "id": "AMZN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Prime エコシステムのスイッチングコスト（数千万人会員、19M+対象品目、翌日配送習慣化）",
+      "evidence": "Q2 2015: Prime membership 'tens of millions', 19M+ Prime-eligible items. Prime free 2-day shipping habituation creates high switching cost. Prime members buy more, more frequently. FBA sellers 39%→45% of paid units.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "Prime 会員制度という仕組み・購買習慣化メカニズムの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "'tens of millions' 会員、19M+ 品目、39%→45% FBA という定量的証拠"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "Prime 会員制度は事業モデルの中核構造"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Walmart.com・eBay には同等の Prime 相当サービスがない（2015 時点）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "Prime 会員制度・FBA という能力・仕組みの具体的説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "tens of millions 会員・19M+ 品目・39%→45% FBA という定量的証拠"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "eコマース × 物流インフラ × 翌日配送ネットワークの構造的ポジション"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "仕組みの具体的説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "定量的証拠群"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "構造的ポジション"
+        }
+      ],
+      "final_confidence": 0.8,
+      "overall_reasoning": "Prime エコシステムは KB1-T 全4ルール PASS。tens of millions 会員・19M+ 品目・FBA 39%→45% という強力な定量的証拠。Walmart.com・eBay への明確な差別化（rule07 PASS）。購買習慣化メカニズムという直接的仕組みの説明（rule01 PASS）。dogma 的に「かなり納得」域に近い 0.80。"
+    },
+    {
+      "id": "AMZN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "109ヶ所フルフィルメントセンター・20年間構築の物流ネットワークによる規模の経済",
+      "evidence": "Q4 2013: 109 fulfillment centers globally. Amazon shipping costs growing but scale enables delivery at lower unit cost. 20+ years of logistics network investment. Same-day delivery in select markets.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "109 フルフィルメントセンターという物理的能力・仕組みの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "109 フルフィルメントセンターという具体的数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "20年間の物流インフラ投資は構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Walmart.com・eBay が同等の物流インフラを持たないことは 2015 時点で明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "109 フルフィルメントセンターという構造的物流ポジション（dogma rule11 業界構造合致）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "109 という具体的数値"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "物流ネットワーク投資という能力の説明"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.1,
+          "reasoning": "構造的物流ポジション"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "109 という定量化"
+        },
+        {
+          "source": "dogma rule11_industry_structure_fit",
+          "adjustment": 0.05,
+          "reasoning": "eコマース成長 × 物流インフラ規模の業界構造合致"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "109 フルフィルメントセンターは強力な構造的資産で KB1-T 全ルール PASS。競合に対する明確な物流差別化（rule07 PASS）。業界構造（eコマース成長）との合致（rule11）。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "AMZN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "FBAネットワーク効果（FBA出品者増加→品目数増加→Prime価値向上→Prime会員増加の正のループ）",
+      "evidence": "Q2 2015: FBA units 39%→45% of paid units. FBA sellers benefit from Prime eligibility. Virtuous cycle: more sellers → more selection → more Prime value → more members → more sellers.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "FBA によるネットワーク効果の仕組みの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "FBA 39%→45% という成長の定量化"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "ネットワーク効果は構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "eBay・Walmart には同等の FBA ネットワーク効果なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "FBA増加→品目→Prime価値→会員増加という直接的なネットワーク効果メカニズム（dogma rule5 高評価）"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "ネットワーク効果による構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "39%→45% という定量化"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_II_direct_cagr_mechanism",
+          "adjustment": 0.1,
+          "reasoning": "直接的なネットワーク効果メカニズム（dogma rule5）"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.1,
+          "reasoning": "ネットワーク効果による構造的ポジション"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "FBA 比率の定量化"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "FBA ネットワーク効果は KB1-T 全ルール PASS。39%→45% の定量的証拠。seller→selection→Prime→member の直接的メカニズム（dogma rule5 高評価パターン II）。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "AMZN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "インド市場への 25M ASIN 展開と最大オンラインストア確立によるファーストムーバー優位",
+      "evidence": "Q2 2015: India Amazon.in launched with 25M ASINs, largest online store in India. Amazon India first major marketplace to offer Prime. Significant investment in India logistics infrastructure.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "'最大オンラインストア' はポジションの結果。インド市場での優位性を生む仕組みの説明が弱い"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "25M ASIN という具体的数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "インド物流への投資は構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Flipkart・Snapdeal という地場競合が強く、インドでの持続的優位性は不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "'最大オンラインストア' は結果（dogma rule1 FAIL）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "25M ASIN という定量化"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Flipkart・Snapdeal との比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "最大ストアは結果（dogma rule1 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "Flipkart 等との比較なし"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "25M ASIN の定量化"
+        }
+      ],
+      "final_confidence": 0.35,
+      "overall_reasoning": "インド最大オンラインストアは結果の提示（rule01 FAIL）。Flipkart・Snapdeal への差別化が不明確（rule07 FAIL）。インド市場はまだ立ち上げ段階でありファーストムーバー優位の持続性が不確実。dogma 的に「あまり納得しない」域 0.35。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "80-90": 2,
+      "70-80": 2,
+      "30-40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

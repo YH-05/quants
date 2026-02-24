@@ -1,0 +1,79 @@
+{
+  "ticker": "IFF",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_6_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_II", "pattern_III"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 4
+  },
+  "scored_claims": [
+    {
+      "id": "IFF-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Aromor買収による特殊成分・天然素材のCornered Resource的ポジション",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: Aromor統合によりプロプライエタリなFlavorFit＋バイオテック連携という能力の説明あり",
+        "rule_4_t": "PASS: Fragrance Ingredients +18%成長という数値",
+        "rule_6_t": "PASS: 天然素材アクセスは事業の核心的要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "Aromor統合後の具体的能力（FlavorFit、カプセル化技術との組み合わせ）の説明あり。Pattern III部分適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "M&A後の統合能力の評価。Aromor統合が想定以上の成果を出しているという点は能力の証拠だが、競合との差別化データが不十分。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "IFF-007",
+      "claim_type": "cagr_connection",
+      "claim": "カプセル化技術・Consumer Fragrances成長 → 新興市場拡大 → 売上CAGR 4-6%",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: カプセル化技術→Consumer Fragrance成長→CAGR 4-6%は直接的因果。長期目標（4-6%ローカル通貨成長）という検証可能な数値",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "技術主導の成長→CAGR接続は2ステップで直接的。過去5年中4回の長期目標達成という実績で裏付け"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言由来の直接的CAGR接続。長期目標達成率（5年中4回）という実績で裏付けられている。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IFF-008",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場50%→3x成長率格差活用→ローカル通貨成長 4-6%持続",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: 先進市場3倍の成長率×50%比率という直接的な数値接続",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "新興市場成長率格差の数値（3x）は定量的に直接的なCAGR接続を示す"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Phase 1評価70%を維持する。新興市場の3x成長率と業界最高50%比率の組み合わせは直接的なCAGR接続"
+    },
+    {
+      "id": "IFF-009",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年ローカル通貨売上5%成長（長期目標内）、調整後EPS 14%増（$5.08、過去最高）、5年で4回長期目標達成",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。IFF-001とIFF-004の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+{
+  "scored_claims": [
+    {
+      "id": "GWW_001",
+      "claim_type": "competitive_advantage",
+      "claim": "W.W. Grainger の $10B 規模 MRO 流通基盤：年商 $10B 達成と持続的インフラ投資（$387M capex）による産業資材流通スケールメリット。",
+      "evidence": "Company sales increased 6% to $10 billion. $78 million on growth and infrastructure and $387 million in gross capital spending to create long-term competitive advantage.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule01"
+        ],
+        "results": {
+          "rule03": true,
+          "rule01": true
+        },
+        "confidence": 0.4,
+        "adjustments": [
+          "rule01: 規模そのものは能力だが Amazon Business 等の参入で浸食リスクあり"
+        ]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "MRO 流通での規模は必要条件だが Amazon Business が同規模の流通網を展開中"
+        },
+        {
+          "source": "pattern_E_capex_as_moat",
+          "adjustment": -0.05,
+          "reasoning": "資本支出は競合も実施可能"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_B_industry_common",
+          "flagged": true,
+          "adjustment": -0.05
+        }
+      ],
+      "overall_reasoning": "$10B の規模は MRO 流通において重要だが、デジタル競合（Amazon Business）の台頭により伝統的スケール優位が脅かされている。EPS成長が収益成長を大きく下回る（+3% vs. +6%）点も課題。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": [
+        "Q4 2014 IR podcast (2015-01-26)"
+      ]
+    },
+    {
+      "id": "GWW_002",
+      "claim_type": "competitive_advantage",
+      "claim": "シングルチャネルオンラインモデルの拡張：Zoro（米国）・MonotaRO（日本）・欧州での単一オンラインチャネル戦略は低コスト構造を実現し、従来型 MRO 流通業者への Counter-Positioning。",
+      "evidence": "Single-channel online model continued its strong growth... startup of the single-channel online model business in Europe. MonotaRO in Japan was strong. Zoro in the United States strong operating performance.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule07",
+          "rule01"
+        ],
+        "results": {
+          "rule07": true,
+          "rule01": true
+        },
+        "confidence": 0.5,
+        "adjustments": []
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.0,
+          "reasoning": "Zoro・MonotaRO の実績は一定の具体性を提供"
+        },
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "オンライン MRO は Amazon Business も同様に展開"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule07",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Zoro と MonotaRO は実際に成長している Counter-Positioning の具体例だが、Grainger 本体のオンライン移行との整合性が課題。",
+      "power_classification": "Counter-Positioning",
+      "evidence_sources": [
+        "Q4 2014 IR podcast (2015-01-26)"
+      ]
+    },
+    {
+      "id": "GWW_003",
+      "claim_type": "competitive_advantage",
+      "claim": "米国事業の高マージン構造：営業利益率 18.2%（+60bp）は産業 MRO 流通における高い付加価値と価格決定力の証拠。",
+      "evidence": "Continued strong performance in the United States, with operating margins expanding 60 basis points to 18.2%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule04"
+        ],
+        "results": {
+          "rule03": true,
+          "rule04": true
+        },
+        "confidence": 0.5,
+        "adjustments": []
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.0,
+          "reasoning": "18%超の営業利益率は MRO 流通として高水準"
+        },
+        {
+          "source": "pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "MSC Industrial 等の競合との比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        },
+        {
+          "rule": "rule04",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_G_unclear_vs_pure_competitor",
+          "flagged": true,
+          "adjustment": -0.05
+        }
+      ],
+      "overall_reasoning": "米国事業の 18.2% 営業利益率は一定の価格転嫁力の証拠だが、カナダ事業の悪化（-27%利益）とのコントラストが全社ベースの優位性を弱める。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": [
+        "Q4 2014 IR podcast segment analysis (2015-01-26)"
+      ]
+    },
+    {
+      "id": "GWW_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Grainger の価格転嫁能力：コスト上昇を価格増加で転嫁できる能力は MRO 資材調達の顧客依存性（Switching Costs）を示唆。",
+      "evidence": "Gross profit margins for the quarter increased 10 basis points as a result of price increases exceeding cost increases.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule07"
+        ],
+        "results": {
+          "rule01": false,
+          "rule07": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule01: 価格転嫁という結果を Switching Costs の証拠として使用",
+          "rule07: 顧客維持率や解約率データなし"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_result_as_cause",
+          "adjustment": -0.1,
+          "reasoning": "価格転嫁の成功という結果を Switching Costs の証拠として提示"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "具体的な Switching Costs の証拠（顧客維持率等）がない"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule01",
+          "pass": false
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_A_result_as_cause",
+          "flagged": true,
+          "adjustment": -0.1
+        }
+      ],
+      "overall_reasoning": "価格転嫁の成功は優位性の兆候だが Switching Costs の直接証拠とはならない。低マージン顧客の成長加速という記述も混在しており複雑。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": [
+        "Q4 2014 segment analysis (2015-01-26)"
+      ]
+    },
+    {
+      "id": "GWW_005",
+      "claim_type": "cagr_connection",
+      "claim": "シングルチャネルオンライン投資→長期 CAGR 接続：$78M インクリメンタル投資が長期的な収益 CAGR を支える。",
+      "evidence": "Single-channel online model continued its strong growth... $78 million on growth and infrastructure... creating long-term competitive advantage.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule05",
+          "rule06"
+        ],
+        "results": {
+          "rule05": true,
+          "rule06": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "rule06: カナダドル安によるガイダンス引下げが短期CAGR信頼性を低下"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_future_dependent",
+          "adjustment": -0.1,
+          "reasoning": "「長期競争優位の創出」という未来志向の主張"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "オンラインモデルの CAGR への具体的接続数値がない"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule05",
+          "pass": true
+        },
+        {
+          "rule": "rule06",
+          "pass": false
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_F_future_dependent",
+          "flagged": true,
+          "adjustment": -0.1
+        }
+      ],
+      "overall_reasoning": "オンライン投資は方向性として正しいが 2015 年ガイダンス引下げ（カナダ $-CA10%）が短期 CAGR 予測の信頼性を損なう。",
+      "power_classification": "Counter-Positioning",
+      "evidence_sources": [
+        "Q4 2014 IR podcast (2015-01-26)"
+      ]
+    },
+    {
+      "id": "GWW_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "GWW FY2014 実績: 売上 $10B (+6%)、純利益 $802M (+1%)、EPS $11.45 (+3%)、米国営業利益率 18.2%",
+      "evidence": "Company sales increased 6% to $10 billion. Net earnings increased 1% to $802 million. EPS $11.45 (+3%). US operating margin 18.2% (+60 bps).",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03"
+        ],
+        "results": {
+          "rule03": true
+        },
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。",
+      "power_classification": null,
+      "evidence_sources": [
+        "Q4 2014 IR podcast (2015-01-26)"
+      ]
+    },
+    {
+      "id": "GWW_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "GWW 2015年ガイダンス修正：カナダドル10%安化によりガイダンス引下げ（売上成長3-7%、EPS $12.60-$13.60）",
+      "evidence": "2015 guidance lowered: sales growth 3% to 7% and EPS $12.60 to $13.60. Canada 11% of total sales, 20% Oil and Gas.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03"
+        ],
+        "results": {
+          "rule03": true
+        },
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "ガイダンス修正の事実確認。",
+      "power_classification": null,
+      "evidence_sources": [
+        "Q4 2014 IR podcast (2015-01-26)"
+      ]
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "40-50": 1,
+      "50-60": 2,
+      "30-40": 2,
+      "90-100": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

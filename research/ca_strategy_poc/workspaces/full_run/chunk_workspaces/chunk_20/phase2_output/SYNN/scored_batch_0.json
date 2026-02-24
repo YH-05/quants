@@ -1,0 +1,188 @@
+{
+  "ticker": "SYNN",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Syngenta は SDHI 系殺菌剤 ELATUS（bixafen）において、ブラジルで $300M 超の初年度売上を達成し、ピーク売上見通しを大幅に上方修正した。複数の作物・地域にわたる独自分子の規制承認ポートフォリオが参入障壁を構成する。",
+      "evidence": "ELATUS was only launched mid-season and already achieved more than $300 million in sales, which was ahead of our initial expectations. We have, therefore, revised the peak sales estimate for this fungicide upwards to over $1 billion.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+        "confidence": 70
+      },
+      "final_confidence": 0.65,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "定量的裏付けのある差別化（$300M初年度売上、$1B上方修正）はPattern Iに該当"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "BASF Xemium等の競合SDHI分子との直接比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_pass", "reasoning": "独自分子の規制承認ポートフォリオは能力として評価可能。$300M初年度売上は結果だが規制承認資産という能力の証左"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "strong", "reasoning": "$300M初年度売上、$1B上方修正、ピーク売上という定量証拠が強力"},
+        {"rule": "rule11_industry_structure_fit", "verdict": "partial", "reasoning": "農薬業界における規制承認の参入障壁は業界構造に合致するが明示的な言及なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "定量的裏付けのある差別化。$300M初年度売上という具体的数値が優位性を裏付ける"}
+      ],
+      "overall_reasoning": "ELATUS（SDHI）の初年度$300M売上と$1Bへの上方修正は強力な定量的裏付け。独自分子の規制承認は再現困難な資産（Cornered Resource）として妥当。ただしBASF Xemium等との直接比較なし。化学農薬の差別化持続性に一定の不確実性。65%",
+      "power_classification": "Cornered Resource（独自分子・規制承認）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ELATUS ファンジサイド（$1B+ピーク売上）が Syngenta の中期収益成長を牽引する主要ドライバーとなり、農薬ポートフォリオの差別化に貢献する。",
+      "evidence": "We have, therefore, revised the peak sales estimate for this fungicide upwards to over $1 billion.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "future forecast risk",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "ピーク売上は将来予測。CAGR接続は妥当だが単一製品依存リスクあり"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "$1Bピーク売上は将来予測。現時点では$300M実績が裏付け"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "ELATUS→CAGR接続は論理的。優位性（#1）が65%評価で接続の上限50%。単一製品依存リスクを考慮。50%",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Syngenta は $1B のオペレーショナル・レバレッジ・プログラム（2018年目標）により EBITDA マージン 24-26% を目指す組織的コスト効率化能力を有する。2014年に $265M のセービングを確認し、プログラムは計画通りに進捗している。",
+      "evidence": "We are building a new operational capability through our Operational Leverage program. We are on track to deliver $265 million of savings this year.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T industry common",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "コスト効率化プログラムは農薬業界で一般的。dogmaルール2（業界共通能力）に近い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "pass", "reasoning": "$265M目標達成という能力の証左"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "競合他社も同様のコスト削減を実施。Syngenta固有の差別化説明不十分"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "コスト削減プログラムは業界共通。固有の組織能力の証左として弱い"}
+      ],
+      "overall_reasoning": "プログラム進捗は定量確認（$265M）。ただしコスト効率化は農薬業界でCornered Resource・Network Economiesに比べて持続的優位性を生みにくい。競合比較欠如。45%",
+      "power_classification": "Process Power（中程度評価）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "オペレーショナル・レバレッジ・プログラムによる $1B EBITDA 改善（2018年）が Syngenta の長期収益成長および自由キャッシュフロー創出に直結する。",
+      "evidence": "Targeting EBITDA margin of 24-26% by 2018. On track to deliver $265 million of savings.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence"],
+        "confidence": 40
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "future forecast",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "2018年目標は将来予測。現時点での進捗（$265M）は確認済みだが達成保証なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "$1B目標は将来予測。$265M達成が裏付け"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "2018年目標は将来予測。優位性（#3）が45%評価のため上限40%。40%",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Syngenta は作物保護と種子を統合したポートフォリオ（Integrated Crop Solutions）を持ち、5年連続で新興市場において二桁成長を達成した。地域ごとの作物・土壌・気候データに基づく営農ソリューション提供能力が競争優位を形成する。",
+      "evidence": "Our emerging markets delivered double-digit growth for the fifth consecutive year. Three out of four regions gained market share in 2014.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "5年連続二桁成長という実績（結果）の提示が中心。能力の説明が薄い。KB2-T Pattern A（結果を原因と取り違え）リスク"
+        },
+        {
+          "source": "dogma rule_3",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Monsanto、Bayer CropScience等の競合も同様の統合モデル保有。相対的差別化不明"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_fail", "reasoning": "5年連続二桁成長は結果の列挙が中心。統合ソリューション提供能力の具体的説明が薄い"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "作物保護+種子の統合は競合も保有。Syngenta固有の差別化根拠が弱い"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "5年連続成長という結果を優位性として提示"},
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "統合ポートフォリオは業界大手共通。固有性の根拠不十分"}
+      ],
+      "overall_reasoning": "5年連続二桁成長は事実として明確だが、結果の提示が中心で能力の説明が薄い。競合との差別化も不明確。40%",
+      "power_classification": "Scale Economies（中程度）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "SYNN",
+    "claim_count": 10,
+    "scored_count": 5,
+    "target_claim_ids": [1, 2, 3, 4, 5],
+    "batch_index": 0,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7-0.65": 1,
+      "0.5": 1,
+      "0.4-0.45": 3,
+      "0.3": 0,
+      "0.1": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb1_rules_transcript/rule04_quantitative_evidence.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_B_industry_common.md",
+      "kb2_patterns_transcript/pattern_I_quantitative_differentiation.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

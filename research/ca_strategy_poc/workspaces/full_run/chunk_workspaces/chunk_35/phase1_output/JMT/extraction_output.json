@@ -1,0 +1,278 @@
+{
+  "ticker": "JMT",
+  "transcript_source": "Full Year FY2015 Results (2015-06-04) [Primary] + H1 FY2015 Results (2014-11-20) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"],
+    "note": "JMTはApril-March会計年度（英国企業）。Full Year FY2015 = 2015年3月期（2015年6月発表）がQ4相当。H1 FY2015 = 2014年4-9月期（2014年11月発表）が第2Q相当。ECT（Emission Control Technologies）が主要成長部門"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ECT（Emission Control Technologies）の排出規制連動型製品差別化：Euro 6b/VI規制対応触媒システムで1台あたり付加価値が約20%増加し、規制強化ごとに製品単価が上昇する構造",
+      "descriptive_label": "排出規制連動型のECT触媒製品差別化（規制ごとに価値創造）",
+      "evidence_from_transcript": "Full Year FY2015 Prepared Remarks (CEO Robert MacLeod): 'Euro 6b legislation, which came into force...for new models in September last year; and for all models, will come into force in September this year. This gives us basically a NOx emission standard such that the NOx from the diesel is about the same as NOx from gasoline cars. And it's around about half of new models now are fitted with the Euro 6b system.' H1 FY2015: 'adds about 20% more value per diesel car' (Euro 6b transition). FY2015 Full Year: light duty sales +9% vs global car production +1%; ECT margin improved from 12.4% to 13.3%",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "排出規制対応触媒技術は名詞で表現される製品属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "1台あたり付加価値+20%（Euro 6b移行）、light duty sales +9% vs market +1%、ECT margin 12.4%→13.3%"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規制対応触媒の開発には長期のR&Dと量産実績が必要で、新規参入が困難な構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "欧州・アジアでの段階的排出規制強化という業界構造と、JMTのECT技術の合致が明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "規制連動の価値増加（+20%/台）という定量的メカニズムが明示されている",
+            "adjustment": 0
+          },
+          {
+            "reason": "市場成長を9:1で上回る成長率（sales +9% vs production +1%）が競争力を示す",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（BASF Catalysts、Umicore等）との直接比較なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "排出規制強化×ECT触媒技術の組み合わせは業界構造と企業能力の典型的な合致。1台あたり+20%付加価値という定量的な価値増加メカニズムが明示されており、規制が強化されるほど競争優位性が深まる構造。中国での展開（Euro IV→V→VI）も長期成長ドライバー"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "欧州Euro 6b/6c・中国Euro IV→VI段階的規制強化 → 1台あたりECT価値増加×生産台数増加 → ECT売上成長 → JMT CAGR支持",
+      "descriptive_label": "排出規制強化→1台あたり価値増加×台数成長→ECT売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（規制強化→付加価値増加×台数）。CEOが+20%/台という定量値を明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Full Year FY2015（Q4相当）発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的に最も明確なCAGR接続。Euro 6b（欧州）・Euro VI HDD（米国）・中国Euro IV展開（30%フィット率から拡大）という複数の規制ドライバーが継続的な成長を支持"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Manufacturing Excellenceプログラムによる継続的なECT製造コスト削減と生産性改善：材料配合の最適化・製造工程の簡素化による持続的な利益率向上（12.4%→13.3%）",
+      "descriptive_label": "ECT Manufacturing Excellenceプログラムによる持続的なコスト・生産性改善",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (CEO Robert MacLeod): 'Manufacturing Excellence program...Not one single thing has driven this, but it is fair to say it is John and his team are doing an excellent job...it's sustainable. We think that will be sustainable into the second half of this year and beyond.' Full Year FY2015: 'development of new materials, lower-cost materials; freeing up capacity through less-complex routes of manufacturing...some instances we used 2-layer passes to make a catalyst. And now we're able to do single layer.' Energy efficiency improvements: 25% energy reduction at Germiston plant, GBP 0.75M savings",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "利益率13.3%は結果だが、Manufacturing Excellenceという能力・プログラムへの具体的言及あり"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "Manufacturing Excellenceプログラムは名詞で表現されるプロセス能力"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "利益率12.4%→13.3%（+90bp）、エネルギー効率25%改善、GBP 0.75M節約という定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "CEOが「持続可能」と明示しているが、競合との比較がなく相対的優位性が不明",
+            "adjustment": -10
+          },
+          {
+            "reason": "具体的な工程改善（2層→1層製造）の言及あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Manufacturing Excellenceは具体的なプロセス能力だが、触媒業界全般で製造効率化は標準的なアプローチ。競合（BASF、Umicore）との比較がなく相対的優位性は不明"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Process Technologies（化学触媒ライセンス）における独占的技術ポジション：アンモニア合成・SNG・石油化学プラントの触媒ライセンス技術で長期的なプロジェクト受注能力",
+      "descriptive_label": "化学プロセス触媒ライセンス技術（PT部門）のコーナードリソース",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (CEO Robert MacLeod): 'We expect good growth in the long run for Process Technologies...Chemicals: SNG catalyst plant construction underway in China.' Full Year FY2015: 'hydrogen has done well supported by new plant builds particularly in Middle East. Oil and Gas side performed well across all sectors with sales up 11%.' 'We won 6 new licenses' (FY2015). 'We're working on new license income on new technology to replace the ones we've had before.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "化学プロセス触媒ライセンス技術は名詞で表現されるCornered Resource候補"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "数十年にわたる技術蓄積に基づく独自プロセス技術は模倣困難"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "中東・アジアでのインフラ整備需要という業界構造と、JMTの化学プロセス技術の部分的な合致。ただし中国での一時的な需要低迷が言及されている"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "PT部門はライセンス収益の「ランピー」な性質と現在の中国需要低迷が指摘されている",
+            "adjustment": -10
+          },
+          {
+            "reason": "独自ライセンス技術（アンモニア・SNG）は長年の蓄積",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "化学プロセスライセンスは本質的にCornered Resourceだが、中国需要の一時的低迷とライセンス収益の変動性（ランピー）が不確実性を生む。長期成長ドライバーは有効だが短中期的な逆風あり"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "化学プロセス触媒ライセンス技術 → 中東・アジアの新規プラント建設需要（水素・SNG）→ ライセンス収益回復（FY2016-17以降）→ CAGR支持",
+      "descriptive_label": "プロセス技術→新規プラント建設→ライセンス収益回復→CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3段階（技術→需要喚起→収益）で間接的。かつFY2016-17以降という中期ホライズン"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Full Year FY2015（Q4相当）発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CEOが「来年（FY2016）は低迷継続、FY2017以降に回復」と明示しており、PoiT（2015年9月）時点での確度は低い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "PGM（白金族金属）精製・リサイクル世界最大ポジション：使用済み自動車触媒の二次精製で最大規模の精製能力（競合比「by some way」）",
+      "descriptive_label": "PGM二次精製における世界最大ポジション（Cornered Resource）",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (CEO Robert MacLeod): 'We are the largest secondary refiner of pgm material in the world, by some way. And during the strikes in South Africa through the early part of this year, through having these refineries and being such a larger supplier of metal was a very important part of us being able to make sure that we didn't disappoint any of our customers at all because we got access to our own metal through the refineries.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "PGM精製インフラ・処理能力は名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "「世界最大（by some way）」という定性的な主張あり。具体的なシェア数値なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "CEO自ら「世界最大、by some way」と競合比較を示しているが、定量的な差が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "CEO自らの「世界最大」宣言は競合比較の証拠だが定量化なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "Anglo Platinum契約喪失とPGM価格低迷がPMP部門の逆風",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "PGM二次精製の世界最大ポジションはCornered Resource候補。南アフリカストライキ時の供給安定性（競合への差別化）が示されている。ただしAnglo契約喪失の影響でPMP部門全体は縮小中"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "JMT Full Year FY2015（2015年3月期）実績：underlying EPS +6%、配当+9%。ECT FY2015（定率）: 売上+12%、利益+21%、利益率12.4%→13.3%（+90bp）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "JMT ECT light duty: FY2015売上+9% vs グローバル乗用車生産+1%。Heavy duty: 全地域で+18%成長。中国でEuro IV トラック装着率30%（拡大中）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "JMT FY2015 Manufacturing Excellence実績：ECT利益率12.4%→13.3%（定率）。南アのGermiston工場でエネルギー効率25%改善、GBP 0.75M節約。ROIC 18.8%（目標20%対比）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    }
+  ]
+}

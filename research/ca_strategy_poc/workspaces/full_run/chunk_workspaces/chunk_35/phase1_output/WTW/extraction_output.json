@@ -1,0 +1,366 @@
+{
+  "ticker": "WTW",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-08-12) [Primary] + Q4 FY2015 Earnings Call (2015-08-11) [Primary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "OneExchangeはすべての従業員層（現役・退職者・パブリック）をカバーし、自己負担型・完全保険型の両方をサポートする唯一のプライベート交換プラットフォーム",
+      "descriptive_label": "フルカバレッジプライベート医療保険交換プラットフォームの独占性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO John Haley): 'OneExchange is the only private exchange in the market that covers all employee populations, provides self-funded and fully funded solutions with bespoke planned design with all transactional assets owned by the provider.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "プラットフォームの包括性（能力・仕組み）を主張しているが、「唯一」という主張は市場状況の確認が必要"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "名詞で表現される属性：フルカバレッジプラットフォーム、プラットフォームの独占性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プラットフォームの構造的包括性（現役+退職者+パブリック、自己負担+完全保険）は構造的要素"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "「唯一」の主張はあるが具体的な競合（Aon Hewitt等）との比較データがない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）で採用",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付けなし（比較数値・競合データなし）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な説明。プラットフォームの包括性は構造的優位性の候補だが、「唯一」という主張の裏付けが不十分。競合（Aon Hewitt、Mercer等）に対する明確な差別化データがない"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "プラットフォームの包括性 → クライアント獲得/維持 → Exchange Solutions売上成長（FY2015 1.2M covered lives目標）",
+      "descriptive_label": "プラットフォーム網羅性→クライアント獲得→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果（包括性→採択→lives増加）。FY2015 1.2M covered lives目標で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。投資仮説の根幹として採用"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムが2ステップで検証可能。ただし優位性の確信度が低いため接続の確度も中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "退職者向けOneExchangeにおける50%超の市場シェアと90以上のFortune 500企業への対応",
+      "descriptive_label": "退職者向けプライベート交換市場でのドミナントポジション",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO John Haley): 'we still got over 50% of the market this year, which was really quite an accomplishment given that we didn't get the one big case. So again, we feel pretty good about our value proposition there.' and 'we're now serving more than 90 Fortune 500 organizations.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "50%市場シェアは結果であり能力ではない。シェアを可能にする能力（プラットフォーム品質、クライアント関係）の説明が不足"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "市場シェア50%超は示されているが、純粋競合（Aon Hewitt、Mercer等）との能力比較は不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ルール1違反：市場シェアは結果であり能力ではない",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "50%市場シェアは印象的な結果だが、これは能力の証明ではなく結果の報告。シェアを可能にする構造的能力（プラットフォーム品質、ブローカーネットワーク等）への具体的説明がない"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "退職者市場ドミナントポジション → オフサイクル需要創出 → 年間定常収益増加",
+      "descriptive_label": "市場ポジション→オフサイクル→収益安定化経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ（市場ポジション→オフサイクル需要→収益平準化）で間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンが3段階で間接的。優位性の確信度も低いため接続確度は低い"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "専門的なHR・年金・リスクコンサルティングの知識資産と長期クライアント関係に基づくスイッチングコスト",
+      "descriptive_label": "HR/年金/リスクコンサルティング専門知識とクライアントロックイン",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO John Haley): 'Although I think the point about that, Tobey, was to say whoever has -- if somebody already has the work for a client, they have a bit of an advantage going in there.' Q4 FY2015 Prepared Remarks: 'record revenue growth, EBITDA margin and EPS results we've seen this year are a testament to our unwavering commitment to our clients'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "スイッチングコスト・クライアントロックインは名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "CEOが「既存クライアントへの優位性」を認識しているが、定量データ（継続率、チャーンレート等）がない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "専門的なコンサルティングのクライアント関係は構造的スイッチングコストを生む"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "競合（Mercer、Aon Hewitt等）との直接比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "定量データ（継続率、チャーンレート）なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "CEOが既存クライアント関係のアドバンテージを認識。コンサルティング業界でのスイッチングコストは構造的に存在するが、定量的裏付けが乏しい"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "クライアント関係の粘着性 → 高いクロスセル機会（コンサルティング→Exchange Solutions）→ 収益成長",
+      "descriptive_label": "クライアント関係→クロスセル→収益成長経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。既存クライアントへのExchange販売は実際に発生（90+ Fortune 500）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言から認識されたパターン"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "クロスセルメカニズムは2ステップで検証可能。ただし既存コンサル顧客→Exchange移行率の開示データなし"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "M&A戦略による能力補完（Extend Health、Liazon、Acclaris）：プライベート交換市場をカバーする一貫したM&Aプレイブック",
+      "descriptive_label": "戦略的M&Aによる能力拡張プレイブック",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO John Haley): 'We focused many of our acquisitions since the creation of Towers Watson with an eye towards this framework...We acquired Extend Health...Liazon...Acclaris to our portfolio...We've also successfully developed a culture of innovation with a structured approach to bringing great ideas to market.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "M&A実行力（能力）として評価可能だが、「framework」の説明が具体性に欠ける"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "M&A推進は戦略であり、それを可能にする能力（統合プロセス、バリュエーション規律）の説明が不十分"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "absent",
+            "reasoning": "断念例や失敗例への言及がなく、M&A能力の裏付けが一方的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ルール8違反：M&A戦略を優位性として混同",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "M&A実行の事実は示されているが、それを可能にする統合能力・選定プロセスの具体的説明がない。戦略（M&Aを行う）と優位性（M&Aを成功させる能力）の混同"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "OneExchangeは現役・退職者・パブリックの3プラットフォームで、FY2015終了時に120万を超えるcovered livesを達成見込み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Towers Watsonは退職者交換市場で50%超のシェアを保持し、90以上のFortune 500組織にサービス提供（FY2014時点）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルな多セグメント（Benefits、Risk and Financial Services、Talent and Rewards）の統合的HRコンサルティング能力による総合的クライアントサービス",
+      "descriptive_label": "グローバル統合HRコンサルティング能力",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO John Haley): 'TW: 2020... We've been building towards the strategy in a couple of ways: through acquisitions and by developing a culture of innovation...We've also successfully developed a culture of innovation with a structured approach to bringing great ideas to market. We've been able to deliver solutions such as bulk lump sum, the U.K. master trust and global health care brokerage by encouraging collaboration and rewarding innovation.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "統合的HRコンサルティング能力は名詞で表現可能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "大手HRコンサルティング会社（Mercer、Aon Hewitt、Willis等）も同様の多セグメント能力を有している"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "純粋競合との明確な差別化が示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "業界共通能力（大手HRコンサルは同等の統合サービス提供可能）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "大手HRコンサルティング会社の共通能力。Mercer、Aon Hewitt等も同様の統合サービスを提供しており相対的優位性の根拠が弱い"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "competitive_advantage",
+      "claim": "Risk Consulting and Software（RCS）の構造改革プロセス：EMEA Solvency II延期対応での迅速な人員・スキルセット再編能力",
+      "descriptive_label": "組織再編・コスト管理のプロセス能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO John Haley): 'Our goal in fiscal year '14 was to restructure the staffing levels and skill sets to align more effectively to what we believe was a fundamental change in market demand. Our objective was to stabilize revenues and return to historical profitability by the end of fiscal year 2014. We're very pleased with the results that RCS has delivered.' Q4 FY2015: 'the restructuring that we've done there has really positioned us for good growth and good profitability'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "組織再編能力（プロセスパワー）として評価可能。ただし一時的な対応か構造的能力か不明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "リストラ能力は補完的要素（コスト管理）であり、事業の核心的差別化ではない"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "Solvency II延期という外部環境変化への対応として、意図的な縮小（構造改革）の例示はある"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "補完的要素（コスト管理）に分類",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的裏付け不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "組織の適応能力は一定の価値があるが、競合と比較して際立つ優位性としての裏付けが不足。リストラ能力は業界共通の補完的能力"
+      }
+    }
+  ]
+}

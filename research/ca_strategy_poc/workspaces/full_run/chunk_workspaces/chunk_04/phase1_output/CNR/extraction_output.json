@@ -1,0 +1,119 @@
+{
+  "ticker": "CNR",
+  "company_name": "Canadian National Railway Company",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00",
+  "claims": [
+    {
+      "claim_id": "CNR-001",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We had a 60.7% operating ratio to finish the year...The operating ratio for the full year stood at 61.9%. That's 150 basis points better than 2013 and a new all-time record, beating our 2006 mark by 70 basis points.",
+      "claim_summary": "CNRは「国内唯一の海から海への鉄道網（Atlantic to Pacific）」という規模の優位性を活かし、業界記録水準の営業比率61.9%を達成。競合のCPRailより優れた東西ネットワーク接続性が低コスト構造を実現。",
+      "confidence": 0.7,
+      "confidence_rationale": "営業比率61.9%（新記録）という定量的証拠は強力。CNRが北米唯一の海から海への鉄道という構造的優位性は明確。CP Railとの具体的比較ではないがanalystからの質問でも他社より優位性が認識されている。",
+      "kb1_rules_applied": ["rule04", "rule07"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation", "pattern_IV_structural_market_position"],
+      "supporting_evidence": [
+        "61.9% operating ratio (all-time record)",
+        "60.7% Q4 operating ratio (-410bps vs prior year)",
+        "85% of traffic originates on CN network",
+        "$12.1B full year revenues (+15%)"
+      ]
+    },
+    {
+      "claim_id": "CNR-002",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "In order to grow faster than the economy, allow our customers to win in their markets, we need to continue to build on a foundation of operational excellence and deliver excellent service...Productivity improvements are key, and we found improvements by driving decision-making down to the frontline.",
+      "claim_summary": "CNRの現場権限委譲による意思決定（フロントライン主導）と持続的な生産性改善プロセスは、2014年の超悪天候下でも業界最高水準のサービス・生産性指標を維持。競合がQ4大雪で苦しむ中、CNRはGTM+12%でも指標を維持した。",
+      "confidence": 0.6,
+      "confidence_rationale": "極端悪天候下での生産性維持（GTMs+12%でもyard productivity+7%、train productivity+3%）は具体的な証拠。現場権限委譲というプロセスの独自性は主張されているが競合比較が間接的。",
+      "kb1_rules_applied": ["rule03", "rule04"],
+      "kb2_patterns_matched": ["pattern_III_capability_over_result"],
+      "supporting_evidence": [
+        "Yard productivity +7% with +11% carload growth",
+        "Train productivity +3%",
+        "Fuel efficiency gain 2.5% for the year",
+        "Recovered quickly from polar vortex winter"
+      ]
+    },
+    {
+      "claim_id": "CNR-003",
+      "claim_type": "cagr_connection",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We are focused to grow faster than the economy, targeting carload growth in the range of 3% to 4%...our agenda of supply chain, enabling and operational and service excellence is resonating with our customers.",
+      "claim_summary": "【CAGRリンク】CNRの北米唯一大陸横断鉄道網（規模優位）と現場主導の運用効率（プロセス能力）の組み合わせが、経済成長を上回る3-4%カーロード成長とインフレ+3-4%の価格設定を持続的に実現するメカニズム。",
+      "confidence": 0.6,
+      "confidence_rationale": "「経済成長を上回る」という目標は過去実績で裏付けられている。価格設定力（インフレ+3.2%）も現実的。ただしエネルギー市場減速という不確実性がある。",
+      "kb1_rules_applied": ["rule02", "rule04"],
+      "kb2_patterns_matched": ["pattern_II_direct_cagr_mechanism"],
+      "supporting_evidence": [
+        "3-4% carload growth guidance",
+        "Inflation + pricing (3.2% in 2014)",
+        "Double-digit EPS growth guidance 2015",
+        "15-year track record of outperforming economy"
+      ]
+    },
+    {
+      "claim_id": "CNR-004",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We are winning market share against all modes, whether it's pipeline, trucks, even shipping in some few instances...The rail versus truck-competitive landscape will continue to be dominated by the fact that there is a driver shortage.",
+      "claim_summary": "CNRの顧客向けサプライチェーン統合サービス（iAdvise・端末運営・船舶サービス含む）は、顧客がトラックや他輸送モードへの切り替えを困難にするスイッチングコストを構築。truck driver shortage がこの優位性を強化。",
+      "confidence": 0.5,
+      "confidence_rationale": "スイッチングコストとしての主張は間接的。iAdviseや統合サービスは言及されているが、競合鉄道（CP Rail）に対するスイッチングコストの証拠が不十分。",
+      "kb1_rules_applied": ["rule06", "rule01"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "iAdvise customer notification system",
+        "Autoport terminal operations",
+        "Vessel and dock revenue (supply chain integration)",
+        "Truck driver shortage tailwind"
+      ]
+    },
+    {
+      "claim_id": "CNR-005",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "The focus, in terms of capacity, resiliency, productivity, where the lion's share of our business is, it's Chicago North and Western Canada to Chicago, that corridor between Edmonton and Chicago.",
+      "claim_summary": "CNRはEdmonton-Chicago回廊（北米最重要エネルギー＆農産物輸送ルート）とPrince Rupert港（U.S.西海岸混雑時の代替アジア接続）という地理的Cornered Resourceを保有。競合は同等のルートを新たに構築不可能。",
+      "confidence": 0.6,
+      "confidence_rationale": "地理的優位性（Edmonton-Chicago、Prince Rupert）は実際に収益貢献している（原油+40%、穀物+14%成長）。しかし鉄道の路線独占は規制による面も大きく、純粋な競争優位性として評価するには注意が必要。",
+      "kb1_rules_applied": ["rule06", "rule04"],
+      "kb2_patterns_matched": ["pattern_IV_structural_market_position"],
+      "supporting_evidence": [
+        "Edmonton-Chicago corridor investment",
+        "Prince Rupert terminal (fluid when U.S. West Coast congested)",
+        "Crude oil revenue +40% in Q4",
+        "Record grain movement in 2014 (+13%)"
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "by_seven_powers": {
+      "Scale Economies": 1,
+      "Process Power": 1,
+      "Switching Costs": 1,
+      "Cornered Resource": 1
+    },
+    "by_claim_type": {
+      "competitive_advantage": 4,
+      "cagr_connection": 1
+    },
+    "primary_transcript": "201501_earnings_call.json",
+    "transcripts_used": ["201501_earnings_call.json"],
+    "notes": "CNRのQ4 FY2014。海から海への鉄道という規模優位と現場主導の運用効率の組み合わせが強み。エネルギー市場変動（原油安）と規制リスク（カナダ穀物政策）が短期的な不確実性。"
+  }
+}

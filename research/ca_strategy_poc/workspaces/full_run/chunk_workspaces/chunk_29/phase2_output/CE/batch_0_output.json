@@ -1,0 +1,177 @@
+{
+  "ticker": "CE",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "CE-001",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "自動車・電子部品向けアプリケーション開発能力は具体的な数値裏付けのある能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「三角化能力（日本顧客 + 世界中のTierサプライヤーへの素材導入）」という具体的なプロセス説明がある"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「アプリケーション開発能力」という名詞属性で表現"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「業界成長2-3倍」は結果だが、その背後にある三角化プロセスという能力を説明している"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "業界成長3.1%に対し自社ボリューム9%成長という定量比較あり"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "note": "「誰よりもうまくできる（we do that better than anybody else）」という競合比較発言"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "自動車業界成長3.1%に対し9%成長という定量的裏付けと「三角化能力（日本顧客 + グローバルTierサプライヤー）」という具体的なプロセス説明がある。dogma.md ルール4（定量的裏付け）とルール6（構造的要素）に適合。ただし「誰よりもうまくできる」は自己申告であり、第三者検証がない。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "アプリケーション開発能力→自動車・電子部品への新規素材採用→業界成長比超過成長というメカニズムは2ステップで明確"
+    },
+    {
+      "claim_id": "CE-002",
+      "power_type": "Counter-Positioning",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "既存の契約型ビジネスモデルからリアルタイムバリュープライシングへの転換は Counter-Positioning に近いモデル変革",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "リアルタイムプライシングへの転換は進行中の変革（まだ1/3しか完了していない）。現在の優位性ではなく将来の可能性"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "プライシングモデル転換は構造的変化だが、未完了の変革"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「スペシャルティ化学会社のように振る舞う」能力の転換を示している"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "契約変更→価格交渉力→収益改善の因果関係は一定の飛躍がある"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "リアルタイムバリュープライシングへの転換は能力の変革として認める。ただし「まだ1/3しか完了していない」は未完了状態であり、現在の競争優位性としては限定的。また既存大手化学会社が同様の転換を行えないかどうかの説明（Counter-Positioning の Barrier）が不十分。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "プライシング転換完了→酢酸チェーン全体の価格交渉力向上→マージン改善への接続は直接的"
+    },
+    {
+      "claim_id": "CE-003",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "130万トン・$700/ton以下の建設コストという米国最大・最効率メタノールプラントは定量的に示された規模の経済",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "プラント完成・稼働という事実と、$700/ton未満の建設コストという具体的な能力指標"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "垂直統合のコア設備投資は構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "130万トン・$700/ton以下という具体的な規模と建設コストデータ"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "米国最大・最効率・最低コストという構造的ポジション"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「米国最大・最効率・最低コスト」というメタノールプラントの完成は定量的に示されており（130万トン・$700/ton未満）、酢酸チェーン全体の垂直統合コスト優位性を強化する構造的投資。シェールガス低コスト原料との組み合わせで、競合が短期間で同等の施設を建設することは困難。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "メタノール生産コスト低下→酢酸チェーン全体のコスト削減→酢酸セグメントのマージン改善という直接的なメカニズム"
+    },
+    {
+      "claim_id": "CE-004",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "グローバル生産最適化モデルは具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「毎日市場を見て機会を探し、グローバルモデルで意思決定する」というプロセスの説明"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「グローバル生産最適化能力」という名詞属性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "毎日の市場観察・機会探索・意思決定プロセスの説明"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "酢酸チェーンの垂直統合 + グローバル最適化モデルは認める。ただし「我々のモデルは非常にうまく機能している」という定性的自己評価が主で、競合比での差別化の証拠が乏しい。プロセスの詳細説明も限定的。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "生産最適化→コスト削減・需給タイミング最適化→マージン改善の接続は理解できるが定量証拠不足"
+    },
+    {
+      "claim_id": "CE-005",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "2コア戦略によるポートフォリオ安定性はリスク管理の側面が強い",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "2コア戦略は戦略的ポートフォリオ構成であり、規模の経済を生む具体的なメカニズムの説明がない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "ポートフォリオ多様化は補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "2コア戦略（戦略）を規模の経済（優位性）として提示"
+        },
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "「記録的収益」（結果）を優位性の証拠として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "2コアポートフォリオによる収益安定性は戦略的設計であり、競争優位性ではない（dogma.md ルール8）。記録的収益は結果。収益安定性を生む仕組みとしての各コアの具体的な優位性の説明がなく、ポートフォリオ全体論として規模の経済を主張しているが根拠が弱い。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "2コアの相互補完による安定成長は理論的に成立するが、メカニズムの具体的説明不足"
+    }
+  ]
+}

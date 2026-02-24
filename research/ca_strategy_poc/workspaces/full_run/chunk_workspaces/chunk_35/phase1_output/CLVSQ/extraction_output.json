@@ -1,0 +1,268 @@
+{
+  "ticker": "CLVSQ",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-25) [Primary] + Q3 FY2014 Earnings Call (2014-11-06) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"],
+    "note": "CLVSQは前臨床/臨床段階バイオテック（収益ゼロ）。競争優位性はパイプライン差別化・臨床データ・知的財産に集中。KB1-T rule_11_t（業界構造合致）の評価が重要"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "rociletinib（CO-1686）のT790M+患者向けEGFR変異NSCLCにおける選択的野生型EGFR温存機能：皮膚毒性（発疹・口内炎）を回避する臨床的差別化プロファイル",
+      "descriptive_label": "rociletinib野生型EGFR温存による皮膚毒性フリーの差別化臨床プロファイル",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Patrick Mahaffy): 'rociletinib has a unique profile compared with other EGFR inhibitors...we do not see the cutaneous toxicity, which is the hallmark of wild-type EGFR inhibition, such as acneform rash, stomatitis and paronychia. All of these can significantly impact patient's quality of life.' Q3 FY2014: 'Rociletinib is the only EGFR-directed therapy that has been shown to spare wild-type EGFR in clinical studies.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "野生型EGFR温存機能は名詞で表現される薬剤の分子的属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "67% ORR（T790M陽性患者）、89% DCR、10.4ヶ月PFS（未成熟）、400人超の患者での安全性データ確認"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "作用機序レベルでのT790M選択性は模倣困難な構造的差別化（特許保護含む）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "CEO自ら「唯一の野生型EGFR温存EGFRtherapy」と競合（AZD9291等）との差別化を主張。ただし直接比較試験データはPoiT時点では未公開"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "「唯一」という主張はあるが競合との直接比較データが欠如（AZD9291がQ4時点で先行する可能性）",
+            "adjustment": -10
+          },
+          {
+            "reason": "400人超の患者データと一貫した安全プロファイルが示されている",
+            "adjustment": 0
+          },
+          {
+            "reason": "収益ゼロの臨床段階バイオテック、NDA提出は2015年中頃の計画（PoiT時点で未承認）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "rociletinibの野生型EGFR温存は作用機序レベルの差別化だが、PoiT（2015年9月）時点では未承認薬。競合AZD9291（AstraZeneca）が同時期に同一適応症を追求しており、差別化の相対的優位性は不明。バイオテックのパイプライン優位性は高リスク・高不確実性"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "rociletinib T790M差別化プロファイル → 2015年末NDA承認・商業化 → 第2世代EGFR阻害剤市場でのシェア獲得 → 売上高CAGR",
+      "descriptive_label": "臨床差別化→承認・商業化→CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "NDA提出（2015年中）→承認→市場参入という3ステップ、かつPoiT時点で実現前"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "承認前の臨床段階薬剤のCAGR接続は高度に仮定的。臨床失敗・承認遅延のリスクが大きく、確度は低い"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "rucaparibのBRCA変異/BRCAness卵巣癌患者向けPARP阻害剤：ARIEL2でのBRCAness分子選択スクリーニング体系（Foundation Medicine連携）による患者選択精度の差別化",
+      "descriptive_label": "rucaparibのBRCAness分子スクリーニング体系（ARIEL2 biomarker platform）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Patrick Mahaffy): 'No other PARP inhibitor has shown this level of activity in a robustly sized mutant BRCA ovarian cancer patient population...70% ORR, 80% disease control rate.' Q3: 'To our knowledge, we are the only company seeking to prospectively demonstrate a PARP inhibitor's activity in a molecularly selected ovarian cancer population beyond BRCA mutations...inclusion of BRCAness patients could include up to 50-60% of serious ovarian cancer patients'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "BRCAness分子スクリーニング体系（Foundation Medicine連携）は名詞で表現されるプロセス能力"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Foundation Medicineとの独自連携によるBRCAness定義・スクリーニングは他PARP阻害剤が短期で模倣困難"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "卵巣癌治療市場でのバイオマーカー選択型治療の台頭という業界構造と、CLVSQの精密医療アプローチの合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "70% ORRという高応答率データ（54患者、robust sized）あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "Phase 2段階（ARIEL3 Phase 3はPoiT時点で進行中）、承認前",
+            "adjustment": -10
+          },
+          {
+            "reason": "競合PARP阻害剤（AstraZeneca olaparib等）の状況との直接比較不足",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "rucaparibのBRCAness biomarker platformは精密医療アプローチでの差別化候補。70% ORRの定量データと独自分子スクリーニング体系（Foundation Medicine連携）が裏付け。ただし承認前の仮定的な優位性"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "BRCAness biomarker platform → 卵巣癌患者50-60%への適応範囲拡大 → 2016年rucaparib NDA → CAGR支持",
+      "descriptive_label": "BRCAness拡大→患者プール拡大→2016年承認→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ARIEL2 extension（300患者追加）→ NDA 2016年提出→承認→市場参入。4ステップで高度に仮定的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2016年NDA計画は開示されているが、臨床試験進行中でPoiT時点では商業化前。高リスク"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "4種類の相互補完的な腫瘍学プラットフォーム（rociletinib・rucaparib・lucitanib・将来コンボ）：複数作用機序・適応症へのパイプライン多様性",
+      "descriptive_label": "多様な腫瘍学パイプライン（4モダリティ）による事業リスク分散",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Patrick Mahaffy): 複数の主要プログラム（TIGER program, ARIEL program, lucitanib Phase 2, combination studies）の同時進行。'Servier funds lucitanib development, no R&D cost for Clovis'という提携モデル",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "複数パイプラインを持つ腫瘍学バイオテックは業界標準。特定企業の固有優位性ではない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "パイプライン多様性はリスク分散的な補完的要素"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "パイプライン多様性はバイオテックに共通の特性（業界共通能力）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "複数パイプラインはリスク分散だが、大手製薬会社（AstraZeneca、Roche等）もより大きなパイプラインを保有しており、CLVSQの競争優位性としては際立たない"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Breakthrough Therapy Designation（rociletinib）によるFDA優先審査：通常より迅速な承認プロセスへのアクセス",
+      "descriptive_label": "FDA Breakthrough Therapy Designation取得によるレギュラトリー優位性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'rociletinib was granted Breakthrough Therapy designation in May of last year.' Q&A: 'NDA and MAA submissions to take place midyear [2015]'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "BTD取得は名詞で表現されるレギュラトリー属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "BTDは競合との差別化ではなく、審査スピードという時間的優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "BTDは一時的な時間的優位性（承認後は消える）",
+            "adjustment": -10
+          },
+          {
+            "reason": "競合AZD9291もBTD取得済みの可能性（2015年時点での競合状況未考慮）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "BTDは重要なレギュラトリーマイルストーンだが、競争優位性としては一時的。また複数の競合が同様の指定を受けている可能性がある"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "CLVSQ Q4 FY2014財務実績：net loss $54.9M($1.62/share) Q4・$160M($4.72/share) FY全体。現金残高$482.7M（期末）。R&D費$50.1M Q4・$137.7M FY全体",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "rociletinib TIGER-X/TIGER-2臨床データ（ENA 2014）：T790M陽性患者ORR 67%（625mg/500mg BID）、DCR 89%、未成熟中央値PFS 10.4ヶ月。400人超治療済み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "rucaparib ARIEL2中間データ（2015年1月）：54名BRCA変異卵巣癌患者でORR 70%、DCR 80%。BRCAness signature（35-40%の高悪性度漿液性卵巣癌に該当）で患者プール50-60%へ拡大の可能性",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    }
+  ]
+}

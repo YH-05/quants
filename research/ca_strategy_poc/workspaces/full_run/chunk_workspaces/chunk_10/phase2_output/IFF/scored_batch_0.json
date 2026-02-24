@@ -1,0 +1,106 @@
+{
+  "ticker": "IFF",
+  "batch_index": 0,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_I", "pattern_IV"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "IFF-001",
+      "claim_type": "competitive_advantage",
+      "claim": "香料・フレーバーの独自カプセル化技術（encapsulation technology）によるFabric Care市場でのリーダーシップ",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: カプセル化技術という具体的なプロプライエタリ技術の説明あり。技術（能力）→Fabric Care成長という因果",
+        "rule_4_t": "PASS: 13四半期連続成長という定量実績。Q3での'unique encapsulation technology'への言及",
+        "rule_6_t": "PASS: 専有技術は事業の核心的差別化要素",
+        "rule_7_t": "PASS: 'unique'という表現はGivaudan、Firmenichとの相対的優位性を示唆（ただし競合名の明示なし）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_I_quantitative_differentiation",
+        "assessment": "カプセル化技術という具体的な技術資産＋13四半期連続成長という実績数値。Pattern I（定量的裏付けのある差別化）に部分的に該当。純粋競合との比較が明示されればより高評価"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でカプセル化技術という具体的な技術能力が説明され、Consumer Fragranceの13四半期連続成長の主要因として位置づけられている。香料産業でのプロプライエタリ技術はCornered Resourceの性質を持つ。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IFF-002",
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（売上の50%）における業界最大のプレゼンスと地理的多様性",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: 50%新興市場比率は結果の側面もあるが、'best in class within our industry'という競合比較で相対優位性を示す",
+        "rule_4_t": "PASS: 50%という具体的比率、先進市場の3倍成長率、'more than any of our competitors'という明確な業界内比較",
+        "rule_7_t": "PASS: '50% of our sales, more than any of our competitors'は具体的な競合比較",
+        "rule_11_t": "PASS: 新興市場成長は香料産業の構造的トレンドと合致"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "業界最高の新興市場比率（50%）という具体的な競合比較は構造的市場ポジションとして評価可能。Pattern IV適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で業界最高の新興市場比率（50%、競合より高い）という定量的競合比較が明示されている。新興市場3x成長はCAGR接続として直接的。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IFF-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Flavors部門のLatech America市場での技術駆動型新規獲得能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 'delivery systems'という技術能力への言及あり",
+        "rule_4_t": "PASS: 5四半期連続二桁成長（+13%）という数値",
+        "rule_6_t": "PASS: 技術主導の地域成長は構造的"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "ラテンアメリカでの二桁成長は結果として認識できる面も。'delivery systems'の具体的内容説明が不十分"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "成長実績はあるが能力の具体的説明が不十分。競合（Givaudan等）との比較なし。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "IFF-004",
+      "claim_type": "competitive_advantage",
+      "claim": "R&D投資（売上の8-9%）に支えられたイノベーションパイプラインの継続的構築能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 持続的R&D投資という仕組みの説明",
+        "rule_4_t": "PARTIAL: 8.2%という具体的比率あるが、業界平均比較なし（Givaudan、Firmenichとの比較不明）",
+        "rule_6_t": "PASS: R&D投資は事業の核心的要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_B_industry_common",
+        "assessment": "香料・フレーバー業界では競合も高いR&D投資を維持しており、相対的優位性が不明（Pattern B部分適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "R&D投資比率の開示はあるが競合比較なし。IFF-001（カプセル化技術）の成果として評価するのがより適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "IFF-005",
+      "claim_type": "competitive_advantage",
+      "claim": "消費者インサイトとコラボレーション能力による顧客との長期的パートナーシップ",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: 消費者インサイトのツール（'trend evaluation'等）の言及はあるが具体性不足",
+        "rule_4_t": "FAIL: 定量的裏付けなし（NPS、顧客維持率等なし）",
+        "rule_7_t": "FAIL: '競合から差別化されている'という自己申告のみ"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_B_industry_common",
+        "assessment": "消費者インサイト能力は香料業界の標準的な主張。Givaudan、Firmenichも同様の主張を行っている可能性が高い（Pattern B適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "dogma Section 1.2（業界共通能力の却下基準）に該当する可能性が高い。定量的裏付けなし。Phase 1評価30%を維持する"
+    }
+  ]
+}

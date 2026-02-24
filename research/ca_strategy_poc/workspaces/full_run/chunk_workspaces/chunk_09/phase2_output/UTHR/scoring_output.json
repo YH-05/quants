@@ -1,0 +1,269 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "PAH（肺動脈性肺高血圧症）における複数投与経路トレプロスチニル製品ポートフォリオ（皮下/静注Remodulin・吸入Tyvaso・経口Orenitram）",
+      "descriptive_label": "PAH複数投与経路プロスタサイクリン製品プラットフォーム",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "pass",
+          "reasoning": "トレプロスチニル分子を複数の投与経路（SC/IV/吸入/経口）で製剤化できる技術ポートフォリオは、明確な能力・仕組みとして評価できる。患者の多様な医療環境（専門施設/コミュニティ）への対応能力"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "pass"
+          },
+          "rule_4_t": {
+            "verdict": "partial",
+            "impact": "+0"
+          },
+          "rule_6_t": {
+            "verdict": "structural"
+          },
+          "rule_11_t": {
+            "verdict": "pass",
+            "impact": "+0",
+            "reasoning": "PAH市場の多様な患者設定×複数投与経路の合致"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_I_t": "partial - Orenitram 7か月でTyvaso比25%という定量的進捗",
+            "pattern_IV_t": "partial - PAH市場構造×製品ポートフォリオの合致"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#1（競合差別化70%）と同水準。Actelion等競合が複数投与経路プラットフォームを有していないことが差別化の根拠",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "複数投与経路プラットフォームはCornered Resource（トレプロスチニルIP）とProcess Power（製剤技術）の組み合わせによる構造的優位性。Orenitramの迅速な市場浸透（7か月で競合比25%）により実証。Phase 1の70%を維持",
+      "seven_powers_classification": "Cornered Resource（トレプロスチニルIP）+ Process Power（複数製剤技術）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "PAH患者の高い療法継続性（Remodulin平均26か月、Tyvaso平均20か月）と収益の耐久性",
+      "descriptive_label": "PAH療法の高い患者継続性による収益耐久性",
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "partial_pass",
+          "reasoning": "継続期間（26か月/20か月）は結果だが、PAH疾患の進行性・致死性という業界構造が高継続性の根本原因として明確に説明されている。これはSwitching Costsとして機能する"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "impact": "+0"
+          },
+          "rule_6_t": {
+            "verdict": "structural"
+          },
+          "rule_11_t": {
+            "verdict": "pass"
+          },
+          "rule_12_t": {
+            "verdict": "secondary",
+            "impact": "0",
+            "reasoning": "Q3発言だがQ4でも収益の安定性について言及あり"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_III_t": "match - Switching Costsとしての継続性",
+            "pattern_I_t": "match - Remodulin 26か月、Tyvaso 20か月という具体的継続性データ"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#1（顧客粘着性70%）と同水準。PAH疾患特性による継続性は市場構造×企業ポジションの合致",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "Remodulin 26か月・Tyvaso 20か月という継続性は、PAH疾患の致死性・進行性という市場構造に基づくSwitching Costsとして評価できる。定量データも十分。Q3発言だがQ4でも収益耐久性への言及あり。Phase 1の70%を維持",
+      "seven_powers_classification": "Switching Costs（疾患特性による治療継続の必然性）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Orenitramの経口プロスタサイクリン療法による未治療患者市場（30,000人中7,000人のみ治療）へのアクセス拡大能力",
+      "descriptive_label": "経口Orenitramによるコミュニティ市場での未充足PAH患者へのアクセス拡大",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "pass",
+          "reasoning": "経口投与の簡便性によりコミュニティ医師が処方可能になるという市場アクセス拡大能力は明確な能力として評価できる。30,000人中7,000人治療という市場構造が背景"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "pass"
+          },
+          "rule_4_t": {
+            "verdict": "pass"
+          },
+          "rule_11_t": {
+            "verdict": "pass",
+            "impact": "+0",
+            "reasoning": "77%未治療という巨大未充足市場×経口製剤の合致"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_IV_t": "match - PAH未治療市場×経口Orenitramの構造的合致",
+            "pattern_I_t": "match - 30,000患者中7,000治療、処方医500人+20%、コミュニティ52%という複数定量証拠"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#2（市場構造×規模優位90%）に近いが、Orenitramが未治療市場の取り込みに成功するかはまだ立証途中。ORLY#1（70%）相当",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "PAH未充足市場（77%未治療）×経口Orenitramの市場構造合致は明確。複数の定量証拠（処方医500人+20%、コミュニティ52%）で裏付け。Actelion Selexipagより忍容性が優れているとの示唆あり。Phase 1の70%を維持",
+      "seven_powers_classification": "Counter-Positioning（経口投与による従来の専門施設モデルへの対抗）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "GlaxoSmithKlineへのロイヤルティ失効（2014年10月）によるCOGS大幅削減",
+      "descriptive_label": "GSKロイヤルティ失効によるコスト構造改善",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "fail",
+          "reasoning": "ロイヤルティ失効は一過性のコスト削減イベントであり、能力ではない。持続的競争優位性の源泉として評価するには不十分"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail"
+          },
+          "rule_6_t": {
+            "verdict": "partial"
+          },
+          "rule_8_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial - 一過性コスト削減（結果）を優位性として提示"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#7（断念例による規律：50%）より弱い。一過性イベントであり30-40%が適切",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "COGS10%削減は財務的に重要だが一過性のイベント（ロイヤルティ期間終了）。能力・仕組みではなく結果。KB2-T pattern_A_t（一過性）に部分該当。Phase 1の40%を維持",
+      "seven_powers_classification": "なし（一過性コスト改善）",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "PAH複数投与経路ポートフォリオ → 患者の多様な治療ニーズ対応 → 総トレプロスチニル収益成長",
+      "descriptive_label": "複数投与経路ポートフォリオ→PAH総収益CAGR成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "複数製品ポートフォリオ→各製品売上→総収益成長の直接接続。Q4 2014での4四半期連続成長（10年の歴史で初）により実証",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "複数投与経路→収益成長の直接接続は4四半期連続成長で実証。開示データで検証可能。Phase 1の70%を維持"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "PAH療法の高継続性 → 累積患者ベースの増大 → 年間収益の安定成長",
+      "descriptive_label": "療法継続性→患者累積→収益耐久性",
+      "source_advantage": 3,
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "継続療法期間（26か月）×新規患者の加算→累積患者数増大→年間収益成長。累積効果（収益の実質的な年輪成長）は定量的に追跡可能",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70-90%水準）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "疾患特性由来の高継続性による累積患者数増大→収益成長の直接接続。定量追跡可能（平均継続期間×新規患者数）。Phase 1の70%を維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "Orenitramによる未治療患者（23,000人）へのアクセス拡大 → PAH市場浸透率向上 → 売上CAGR",
+      "descriptive_label": "Orenitram未治療患者獲得→市場浸透率向上→CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 60,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "23,000人未治療患者×経口製剤浸透→売上成長。処方医500人（+20%/Q）、コミュニティ52%という進捗データあり。ただし採用速度の不確実性",
+          "pattern_match": "dogma: 過去実績との整合性（70%）に近いが不確実性あり→60%"
+        }
+      },
+      "final_confidence": 60,
+      "confidence_rationale": "巨大な未充足ニーズ（77%未治療）とOrenitramの早期浸透実績（7か月でTyvaso比25%、処方医+20%/Q）でCAGR接続の合理的根拠。ただし浸透ペースの不確実性。Phase 1の60%を維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "GSKロイヤルティ失効 → COGS約10%削減 → 利益率改善 → EPS成長加速",
+      "descriptive_label": "GSKロイヤルティ失効→利益率改善→EPS成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "ロイヤルティ失効→COGS10%削減→利益率改善→EPSの直接接続。確定したイベント（2014年10月既に発生）であり2015年以降に定量的に反映される",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "COGS10%削減は確定した財務インパクトで直接的CAGR接続。ただしこれは一回限りのコスト改善であり、長期的なCAGR持続力は別途評価が必要。Phase 1の70%を維持"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "70-80": 6,
+      "40-50": 1,
+      "60-70": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

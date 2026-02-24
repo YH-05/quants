@@ -1,0 +1,298 @@
+{
+  "ticker": "CFR",
+  "company_name": "Compagnie Financiere Richemont SA",
+  "gics_sector": "Consumer Discretionary",
+  "country": "SWITZERLAND",
+  "transcript_source": "H1 FY2015 Earnings Call (2014-11-07) / H1 FY2016 Earnings Call (2015-11-06)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1 FY2015", "H1 FY2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "カルティエ・ヴァン クリーフ&アーペル等の歴史的ブランドヘリテージと高ジュエリー（High Jewellery）における独自のポジション：EUR 2.5M超の高額ジュエリー販売実績とブランドプライシングパワー",
+      "descriptive_label": "歴史的高ジュエリーブランドによるプライシングパワー",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (CFO Saage): 'The brands, the Maisons, did enjoy positive pricing power and channel mix.' / 'Paraty necklace from the new Cartier Royal High Jewellery Collection has been sold for close to EUR 2.5 million.' / 'Richemont benefits from a strong, robust balance sheet and a portfolio of prestigious Maisons, each with a strong brand equity and heritage.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「ブランドエクイティ」「ヘリテージ」は長年かけて構築されたプロセスパワー・ブランドパワーの能力・仕組み"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「ブランドエクイティ」「プライシングパワー」は名詞で表現可能な属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "EUR 2.5M超のジュエリー販売実績、グロスマージン64.5%という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "100年超の歴史的ブランドは構造的要素。短期での競合による模倣は不可能"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "超富裕層向け宝飾品市場ではブランドヘリテージが最重要の購買要因。市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力の優位性: ブランドヘリテージ), pattern_IV_t (業界構造×ポジション: ラグジュアリー市場)",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "H1決算発表（リシュモンは3月期決算のためH1=4-9月期。Q4_annual相当として扱う）",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（LVMH、Hermès）との具体的比較なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "カルティエを中心とするブランドポートフォリオのプライシングパワーは実証されている（EUR 2.5M超の単一販売、64.5%グロスマージン）。ラグジュアリー市場構造とブランドポジションの合致は高評価に値する。65%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ブランドプライシングパワー → 高ジュエリーカテゴリの継続的拡大（+10%成長） → 売上・利益CAGR維持",
+      "descriptive_label": "ブランドパワー→ジュエリー成長→CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。ブランド優位→ジュエリーカテゴリ成長（+10%）→CAGR。ジュエリーは高成長・高マージンセグメント"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "H1発表（年次相当）発言"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ジュエリー+10%成長はウォッチの低迷を補い、CAGRへの直接的寄与が確認できる"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "垂直統合型の製造能力：カルティエ、A.Lange & Söhne、ヴァシュロン・コンスタンタン等での自社ムーブメント製造（マニュファクチュール）と製造施設の継続的拡張",
+      "descriptive_label": "高級時計・ジュエリーの垂直統合型製造能力（マニュファクチュール）",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (Sophie Cagnard): 'Officine Panerai is benefiting from a brand new manufacturing site in Neuchâtel.' / 'references with in-house movements in the core collection, notably the Luminor 8 Days model with a P.500 in-house caliber.' / '28% of CapEx was dedicated to investments in manufacturing expansion and capabilities' / 'Cartier watch manufacturing capabilities, mostly around movement'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "IR",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "自社ムーブメント製造能力（マニュファクチュール）は時計業界における能力・仕組みの優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "CapExの28%を製造能力拡張に投資という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "マニュファクチュール能力は数十年の投資と職人育成が必要で競合が短期に模倣困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力の優位性: マニュファクチュール), pattern_I_t (定量: CapEx28%)",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "H1発表（年次相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "LVMHも同等のマニュファクチュール能力を持つ",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "垂直統合型製造能力は高級時計ブランドにとって真の競争優位性。CapExの28%が製造投資という継続的コミットメントがある。競合（LVMH傘下ブランド、スウォッチグループ）も同様の能力を持つが、Richemontのマニュファクチュール比率は高い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "自社ムーブメント製造能力 → より高い付加価値の自社ムーブメント製品の販売 → ASP向上 → 利益CAGR上乗せ",
+      "descriptive_label": "マニュファクチュール→ASP向上→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。自社ムーブメント→ASP向上→利益CAGR。PaneraiのP.500インハウスムーブメント等で実証"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "H1発表（年次相当）"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "マニュファクチュールとASPの関係は直接的。検証可能"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Net-a-Porterによるラグジュアリーeコマースでの先行者優位：ロンドン・NY当日配送サービスと「スタイルグル」ポジション",
+      "descriptive_label": "Net-a-Porter：ラグジュアリーeコマース先行者優位",
+      "evidence_from_transcript": "H1 FY2015 Q&A (CFO): 'Net-a-Porter still has its advantages in terms of being the style guru, in terms of being the same-day service in New York and London. So -- and the growth for Net-a-Porter continues to be extremely resilient across all 3 of the platforms.' / 'since we bought Net-a-Porter in 2010, we have experienced much more competition. That continues.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「スタイルグル」ポジション、当日配送サービス能力は能力・仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "2010年買収以来のブランド・顧客データ蓄積は競合が模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合（Farfetch、MATCHESFASHION等）との具体的比較なし。CFO自身が「competition has experienced much more」と認めている"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t (業界構造×ポジション: ラグジュアリーeコマース), pattern_G_t (競合が追い上げ中で差別化が縮小)",
+        "confidence": 45,
+        "confidence_adjustments": [
+          {
+            "reason": "H1発表の Q&A発言（従に近い）",
+            "adjustment": -5
+          },
+          {
+            "reason": "CFO自身が競合激化と利益率低下を認めており、優位性が弱まっている",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Net-a-Porterの先行者優位は2010年時点では明確だったが、2014年末時点では競合が増加し利益率が低下。当日配送等の差別化は一定の価値があるが、競争優位性として確立されているかは疑問。40%が適切"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Net-a-Porterのeコマース成長 → ラグジュアリー顧客の新規接触点 → グループ全体のデジタル売上寄与",
+      "descriptive_label": "Net-a-Porter→eコマース→CAGR貢献経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ以上。eコマース成長→デジタル顧客獲得→グループCAGR寄与。利益率低下の中でのCAGR接続は弱い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "H1発表（年次相当）Q&A"
+          }
+        ],
+        "confidence": 45,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Net-a-Porterのeコマース成長はグループ売上に寄与するが、利益率の低さとCAGR接続の間接性から50%以下が適切"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "ジュエリーカテゴリへの戦略的集中（売上の+10%成長、CapExの石材への重点投資）：時計依存からジュエリー中心へのポートフォリオシフトと高成長セグメント確保",
+      "descriptive_label": "ジュエリーカテゴリへのポートフォリオ集中管理能力",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (CFO): 'Jewelry as a product line continued to perform strongly, both at Cartier and Van Cleef & Arpels. It compensated for the negative performance of Cartier watches.' / 'In May, we had indicated our intention to invest in more stones to support our ambitious development of the jewelry category for Cartier, Van Cleef, Piaget' / 'The performance of jewelry at plus 10% in constant rates continues to be outstanding.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "ジュエリーへのポートフォリオシフトは戦略的行動（動詞）。優位性は「ジュエリー製品力・デザイン力」であり「ジュエリーに集中する」という意思決定は戦略"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "「ジュエリーカテゴリへの戦略的集中」は戦略的意思決定であり優位性ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t (戦略の混同: ポートフォリオシフトは戦略)",
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "H1発表（年次相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ジュエリーへの集中は戦略的方向性であり優位性ではない。ルール8-T違反。35%"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "H1 FY2015のジュエリー部門はコンスタントレートで+10%成長。グロスマージンは64.5%（前年比+60bp）。運営マージンは24.1%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "CapExのうち28%を製造能力拡張・設備投資に充当。Cartier、Vacheron、Piaget、Lange等で製造施設拡張中",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "カルティエのParty necklace（Royal High Jewellery Collection）はEUR 2.5M超で販売。ジュエリーカテゴリはコンスタントレートで+10%成長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 7]
+    }
+  ]
+}

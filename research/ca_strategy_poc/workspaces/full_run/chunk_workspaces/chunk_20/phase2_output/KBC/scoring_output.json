@@ -1,0 +1,241 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "KBC は銀行・保険の統合モデル（bancassurance）により、ベルギーと Czech Republic において顧客に銀行・投資・保険商品を一括提供し、競合他社との比較で高い顧客維持率と優位なマージン（NIM 260bps、cost/income 52-54%）を実現している。",
+      "evidence": "one of the core strengths of KBC, that they are able to sell to our customers alternatives for this deposit side... sale of asset management products and life products.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01_capability_not_result",
+          "rule07_pure_competitor_differentiation",
+          "rule11_industry_structure_fit"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "dogma rule_7",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "ING等との比較は不十分だが、KBCのベルギー・チェコ市場における統合モデルは実質的なスイッチングコストを生成"
+        },
+        {
+          "source": "KB1-T rule_11_t",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "集中した地域市場（ベルギー・チェコ）でのbancassurance統合は業界構造合致"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule01_capability_not_result",
+          "verdict": "partial_pass",
+          "reasoning": "クロスセル能力という仕組みとして評価可能。顧客に銀行・保険の一括提供は能力"
+        },
+        {
+          "rule": "rule07_pure_competitor_differentiation",
+          "verdict": "partial",
+          "reasoning": "ING等の競合との定量比較なし。ベルギー・チェコでの統合モデルは相対的差別化の可能性"
+        },
+        {
+          "rule": "rule11_industry_structure_fit",
+          "verdict": "partial",
+          "reasoning": "集中市場でのbancassurance統合は業界構造に合致するが明示的説明なし"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Bancassuranceモデルはスイッチングコストとして妥当。ベルギー・チェコのコアフランチャイズに集中した地域密度が競争優位を生む可能性。ただしING等との定量比較なし。50%",
+      "power_classification": "Switching Costs（Bancassurance）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "KBC のBancassurance統合モデルが、ベルギーとCzech Republic における手数料・コミッション収入の持続的成長（FY2013比+15%、FY2014比+12%）を牽引し、長期収益の安定化に貢献する。",
+      "evidence": "fee and commission income which was up 15%... fee and commission income compared to the fourth quarter of 2013, actually expresses much better the evolution, it's an increase with 12%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule04_quantitative_evidence"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule04_quantitative_evidence",
+          "verdict": "moderate",
+          "reasoning": "+15%/+12%成長の定量確認。Bancassuranceがドライバーとして妥当"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "手数料収入成長の定量確認あり。CAGR接続として妥当。50%",
+      "power_classification": "Switching Costs",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "KBC はベルギーとCzech Republic においてコスト効率化（cost/income 52-54%）を維持しながら事業規模を縮小（バランスシート42%削減・25社以上売却完了）し、コアフランチャイズの収益性を強化した。この選択と集中により資本配分の優位性を確立した。",
+      "evidence": "cost/income ratio of KBC stands at 52% for the full year of 2013, which is a very good result... common equity ratio Basel III fully loaded 14.3%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01_capability_not_result",
+          "rule07_pure_competitor_differentiation",
+          "rule11_industry_structure_fit"
+        ],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "cost/income 52%という結果が中心。コスト効率化能力の具体的説明が薄い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule01_capability_not_result",
+          "verdict": "partial_fail",
+          "reasoning": "コスト比率（結果）が中心。能力の説明が薄い"
+        },
+        {
+          "rule": "rule07_pure_competitor_differentiation",
+          "verdict": "weak",
+          "reasoning": "競合比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_A",
+          "matched": true,
+          "effect": "negative",
+          "reason": "コスト比率という財務指標の結果を優位性として提示"
+        }
+      ],
+      "overall_reasoning": "コスト効率は確認できるが、規模縮小後のScale Economies主張は矛盾する面あり。Pattern A（結果を原因と取り違え）に部分的に該当。35%",
+      "power_classification": "Process Power（低評価）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks"
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "KBC の Czech Republic フランチャイズは、銀行・保険の統合展開により同市場でトップポジションを確立し、FY2013に費用・収益ともに改善（信用コスト比率25bps）した。新興国市場参入障壁（規制、既存顧客基盤）により模倣困難。",
+      "evidence": "We are confident in our Czech franchise... continuing good growth in the Czech Republic, both on loans and deposits. Credit cost ratio for the full year 2013 is 25 basis points.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule07_pure_competitor_differentiation",
+          "rule11_industry_structure_fit"
+        ],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "dogma rule_3",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Societe Generale（Komercni banka）等の競合との比較なし。Cornered Resourceとしての唯一性の根拠が弱い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule07_pure_competitor_differentiation",
+          "verdict": "weak",
+          "reasoning": "チェコ市場にはKomercni banka等の競合存在。固有性の根拠不十分"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Czech Republicでの業績は良好だが、固有の競争優位としての証拠が弱い。35%",
+      "power_classification": "Cornered Resource（低評価）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks"
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "KBC Group の FY2013 調整後純利益は EUR 960M（前年比+60%）。Basel III 完全適用 CET1 比率 12.5%。Cost/income ratio 52%。",
+      "evidence": "adjusted result of EUR 960 million, which is 60% more than last year... common equity ratio... 12.5%... cost income ratio of KBC stands at 52%.",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2013_annual"
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "KBC Group の FY2014 純利益は EUR 1.8B（ROE 13%）。Basel III CET1 比率 14.3%。1株当たり配当 EUR 2（FY2014分）。信用コスト比率 42bps。",
+      "evidence": "EUR 1.8 billion net result... ROE of 13%... common equity... 14.3%... dividend payout of EUR 2 per share.",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2014_annual"
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "KBC のノンライフ保険事業は FY2013 に combined ratio 94%（前年比1%改善）を達成し、FY2014 も 94%を維持した。資産運用残高（AUM）は FY2014 に年間+14%成長。",
+      "evidence": "combined ratio of 94%... Assets under management... increase of about EUR 2 billion of net entries.",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2014_annual"
+      ]
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "50-60": 2,
+      "30-40": 2,
+      "90-100": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

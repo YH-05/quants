@@ -1,0 +1,410 @@
+{
+  "ticker": "CSL",
+  "company_name": "CSL Limited",
+  "transcript_source": "FY2015 Full Year Results（2015-08-12）/ H1 FY2015（2015-02-11）/ FY2014 August（2014-08-13）/ H1 FY2014（2014-02-12）",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_FY2015", "FY2014_Aug", "H1_FY2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "血漿分画製品（免疫グロブリン・アルブミン）の世界規模プラズマ収集ネットワーク（米国119センター含む128センター）による希少原材料の安定確保",
+      "descriptive_label": "プラズマ収集ネットワーク規模優位（Cornered Resource + Scale Economies）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Paul Perreault）: 'we opened 21 centers in the USA, plus 1 in Hungary, and that increases our fleet in the U.S. to 119 centers and 128 centers globally. I would say that there's no one in the industry that's been able to open that many centers in the course of a year. So we do it extremely efficiently.' / 'You have to collect the plasma in order to keep up with the demand and fill these plants'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "収集ネットワーク構築・運営能力は能力・仕組みとして評価。センター数は裏付けデータ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "米国119センター・グローバル128センター。年間21センター開設という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プラズマ収集は製品製造の前提で構造的。センター開設には規制許認可・立地確保・ドナー確保が必要で競合の短期模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "CEO: 'there's no one in the industry that's been able to open that many centers in the course of a year' - 業界内で際立つと明言"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "血漿分画市場は原材料希少性が参入障壁。プラズマ収集規模が市場構造上の優位に直結"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_IV_t（業界構造×企業ポジション）+ pattern_V_t（業界内での突出を明言）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言、標準評価",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "128センター・年間21新規開設という定量データ。CEO自身が業界内比較で際立つと明言。プラズマ収集は規制・ドナー確保で参入障壁が高く、構造的優位性として評価可能"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "プラズマ収集規模 → 製品供給能力 → 増加する免疫グロブリン・アルブミン需要への対応 → 売上成長",
+      "descriptive_label": "収集規模→供給→需要充足→売上成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "収集→製造→販売の直接的経路。需要は旺盛（Ig+8%、アルブミン+12%）で供給が制約要因"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "需要超過環境で供給能力がCAGRを規定する直接メカニズム。開示データで検証可能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "免疫グロブリン分野における特化製品Hizentra（20%高濃度、皮下投与、フレキシブル投与）の差別化と1万人以上の患者基盤",
+      "descriptive_label": "特化免疫グロブリン製品Hizentraの差別化（Branding + Switching Costs）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Paul Perreault）: 'the only differentiated subcutaneous product in terms of a 20% high-concentration product. And I have to say the flexible dosing option for home care convenience for patients has really been underpinning that demand. We have over 10,000 patients calculated on Hizentra.' / 'subcutaneous Ig, growing strongly. Hizentra continues to be a standout force across the globe'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "20%高濃度皮下投与製品は製品特性（能力）として評価"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "CEO: 'the only differentiated subcutaneous product' - 唯一の差別化製品と明言"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "患者数10,000人以上、フレキシブル投与承認という具体的データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "患者が皮下投与に移行すると再び静脈投与に戻るコスト（医師変更・手技変更）が発生。スイッチングコスト的要素"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_V_t（競合比での唯一性を明言）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "「唯一の差別化皮下投与製品」という明確な競合差別化。患者基盤10,000人のスイッチングコストと患者の利便性による高い製品粘着性"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Hizentra差別化 → 皮下投与採用拡大 → Ig売上成長",
+      "descriptive_label": "Hizentra→皮下投与拡大→Ig成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "差別化製品→患者採用→売上の2ステップ。患者数10,000人で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "患者数・成長率の開示で検証可能。欧州CIDP適応承認が追加ドライバー"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "継続的R&D投資（年間$4.63億）による次世代組換えタンパク質製品パイプライン（組換え凝固因子IX・VIII）",
+      "descriptive_label": "組換えタンパク質製品開発パイプライン（Cornered Resource）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Paul Perreault）: 'R&D investment continues, $463 million... our recombinant Factor IX fusion protein, which should be the first one -- the first cab off the ranks will be fantastic. This data really supports best-in-class efficacy for the recombinant Factor IXs... we now have the review underway in Europe.' / 'recombinant Factor VIII SingleChain, again, the dosing supports twice weekly dosing on that product. And our BLA was recently accepted by the FDA.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "R&Dパイプラインは能力・資源として評価。BLA受理という進捗指標がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$4.63億のR&D投資額、FDA BLA受理という具体的な進捗データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "組換えタンパク質製造技術は長年の蓄積が必要な構造的能力"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "na",
+            "reasoning": "断念例の言及なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "パイプライン製品は将来の売上で現時点での競争優位は限定的（PoiT 2015-09-30時点）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "強力なR&Dパイプラインだが、PoiT時点では製品承認前。組換え凝固因子への移行は市場全体のトレンドであり、CSLが先行するものの競合（Biogen、Novo Nordisk）も同様の製品を開発中"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "組換えタンパク質パイプライン → 凝固因子市場への参入・シェア獲得 → 売上成長",
+      "descriptive_label": "R&Dパイプライン→凝固因子市場→売上",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "承認後の売上貢献は直接的だが、承認時期・競合状況が不確実。FY2017以降の成長ドライバーと明言"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "パイプライン→承認→売上の経路は明確。FY2017以降の成長を牽引する主要ドライバーとしてCEO・CFOが一貫して言及"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "グローバルプラズマ収集センター数：米国119センター、グローバル128センター。FY2015に21センター新規開設（米国）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Hizentra患者数：10,000人以上。免疫グロブリン売上：FY2015に+5%（通常Ig+8%）。欧州CIDP適応承認取得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "R&D投資：FY2015に$4.63億。組換えFactor IX（BLA受理・FDA審査中）、組換えFactor VIII SingleChain（BLA受理）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "専門性の高い希少疾患製品（Berinert、Zemaira、Kcentra等）の多疾患ポートフォリオと患者診断DNA検査キットによる市場開拓",
+      "descriptive_label": "希少疾患専門製品ポートフォリオ（Cornered Resource）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Paul Perreault）: 'Zemaira, we have acquired a number of new patients on Zemaira, and it's really been driven by the proprietary DNA blood test kit that we have for diagnosis of Alpha-1 disease. We now have distributed over 9,000 of these proprietary DNA kits in the U.S.' / 'Kcentra, we've grown to over 2,000 hospitals now that are stocking Kcentra.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プロプライエタリDNA検査キット・希少疾患製品ポートフォリオは能力・資源として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "DNA検査キット9,000個配布、2,000病院でのKcentra採用という具体的データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プロプライエタリ診断キットによる患者発見から治療への経路は独自の構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "希少疾患領域での差別化は認められるが、競合（Grifols、Baxter）との具体的比較は限定的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "プロプライエタリ診断ツールによる患者発見から製品販売への垂直統合的な優位性。Kcentraの2,000病院採用という具体的な市場浸透実績"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "希少疾患製品ポートフォリオ + 診断ツール → 患者数拡大 → スペシャルティ製品売上成長",
+      "descriptive_label": "スペシャルティ製品→患者獲得→売上成長",
+      "source_advantage": 10,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "診断→患者発見→治療採用の直接経路。スペシャルティ製品+15%成長（FY2015）で検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "スペシャルティ製品+15%成長という実績が接続を裏付ける。診断キット→患者発見→製品採用の直接経路"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル生産インフラ（スイス・米国・オーストラリアの複数拠点）への持続的投資（FY2016 CapEx約$5億）による供給能力の拡充",
+      "descriptive_label": "グローバル生産インフラ投資能力（Scale Economies）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CFO Gordon Naylor）: 'We do see 3 big projects get underway: a big expansion of the basic fractionation operations in Kankakee; the recombinant facility in Lengnau, Switzerland that Paul mentioned is getting underway; as well as a new AlbuRx facility here in Australia at Broadmeadows. As a result, we do anticipate that CapEx will be around $500 million for the coming year.' / CEO: 'we broke ground on our recombinant coagulation plant in Lengnau, Switzerland. This is a very large $0.5 billion facility'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "生産能力拡充は戦略的投資。CapEx額は裏付けデータだが能力の証明としては間接的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "FY2016 CapEx$5億という具体的数値。スイスLebnauに$5億の組換え工場という個別プロジェクトデータ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "生産インフラ構築は長期投資で競合の短期模倣困難"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "「投資する」という戦略と「生産能力がある」という優位性の境界線上"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t（戦略との混同リスク）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Grifols、Baxter、Octapharma）も同様のCapEx投資を実施しており差別化に疑問",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "大規模生産インフラへの投資実績は印象的だが、競合他社も同様のインフラ投資を行っており独自の競争優位性とはなりにくい。需要に対応した供給能力の維持として評価"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "生産インフラ拡充 → 需要充足率向上 → 売上成長（特にアルブミン・Ig需要）",
+      "descriptive_label": "生産拡充→需要充足→売上",
+      "source_advantage": 12,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "生産→出荷→売上の直接経路。需要超過市場で供給が制約要因であることが明確"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "需要超過環境での生産拡充はCAGRに直接貢献。アルブミン+12%、Ig+8%という成長実績が裏付け"
+      }
+    }
+  ]
+}

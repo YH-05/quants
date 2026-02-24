@@ -1,0 +1,345 @@
+{
+  "ticker": "RHT",
+  "transcript_source": "Q3 FY2015 Earnings Call (2014-12-18) / Q1 FY2016 Earnings Call (2015-06-XX) / Q2 FY2016 Earnings Call (2015-09-XX)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015", "Q2 FY2015", "Q3 FY2015", "Q4 FY2015", "Q1 FY2016", "Q2 FY2016"],
+    "note": "Red Hatの会計年度はFebruary末エンド。201412=Q3 FY2015, 201503=Q4 FY2015(年次発表), 201506=Q1 FY2016, 201509=Q2 FY2016"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "エンタープライズLinux（RHEL）分野における事実上の標準プラットフォームとしての圧倒的市場地位",
+      "descriptive_label": "RHELのエンタープライズOS事実上の標準地位（Network Economies + Branding）",
+      "evidence_from_transcript": "Q3 FY2015 CEO発言: '11th straight quarter of mid- to high-teens growth in total revenue despite a 300 basis point FX headwind.' 'we again successfully renewed all 25 of our top 25 deals during the quarter. Moreover, those deals grew at approximately 120% of their previous annualized amounts.' CFO発言: 'Red Hat as the undisputed leader in open source.' 'subscription revenue for infrastructure-related offerings was $333 million, up 14% in constant currency.' 'The top 25 deal duration reached 24 months, the longest since 2009.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "James Whitehurst (CEO) / Charles Peters (CFO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「undisputed leader in open source」は定性的だが、上位25ディール全更新（25/25）・120%成長という仕組みの成果として説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "11四半期連続mid-to-high teens成長、25/25ディール更新、上位30ディール全$1M超（6四半期連続）、長期deferred revenue +24%という複数の定量的根拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "RHELのエンタープライズ標準地位は、コミュニティへの投資・認定エンジニアエコシステム・ISV認定が相互強化する構造的優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「undisputed leader」の表現あり。競合（Microsoft、Ubuntu）との定量的比較は限定的だが、11四半期連続成長という実績で間接的に示されている"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t（Network Economies + Branding）への高度合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "RHELのエンタープライズLinux市場における支配的地位は、11四半期連続mid-to-high teens成長・25/25ディール更新・最長deal duration（24か月）という複数の定量的証拠で裏付けられている。オープンソースコミュニティとの協働という構造的な差別化要因も説明されており、Branding + Network Economiesの観点から競争優位性の評価は高い"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "Q3 FY2015: 総収益$456M（定数為替ベース+18%、USD +15%）、上位25ディール全更新（120%に拡大）、上位30ディール全$1M超（うち$5M超12件、$10M超3件が四半期最高）。Deal duration 24か月（2009年以来最長）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "エンタープライズ顧客の高いSwitching Costsによる収益の予測可能性（上位25ディール100%更新・120%拡大）",
+      "descriptive_label": "エンタープライズLinuxの高いSwitching Costsによる収益可視性",
+      "evidence_from_transcript": "Q3 FY2015 CEO発言: 'we again successfully renewed all 25 of our top 25 deals during the quarter. Moreover, those deals grew at approximately 120% of their previous annualized amounts.' CFO発言: 'Total deferred revenue at quarter end was $1.3 billion, an increase of $177 million or 16% over the same quarter a year ago.' 'long-term deferred revenue grew 29% in constant currency or 24% in U.S. dollars... strategic commitment to Red Hat technologies has translated into the longest deal duration we've seen since 2009 at 24 months.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "James Whitehurst (CEO) / Charles Peters (CFO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Switching Costsの仕組みは明確に識別可能。エンタープライズのOS変更コスト（認定プログラム・アプリケーション互換性・運用プロセス）という構造的メカニズムが存在"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "25/25ディール更新（100%）・120%拡大、deferred $1.3B（+16%）、deal duration 24か月という複数の定量証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "エンタープライズOSの更改は認定・互換性・運用プロセス変更を伴うため、非常に高いSwitching Costs（数百〜数千万ドルの移行コスト）が存在する"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "エンタープライズIT市場では標準化・安定性が最重視されるため、RHELの100%更新率はSwitching Costsが機能していることを示す"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Switching Costs）への高度合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "100%の更新率・120%拡大というデータはSwitching Costsの存在を強く示す。長期deferred revenue $1.3B（+16%）・deal duration 24か月（最長）も収益の可視性を裏付ける。エンタープライズLinux環境の変更コスト（ISV認定・運用プロセス変更）という仕組みも説明されており、7 PowersのSwitching Costsフレームワークと明確に合致"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "deferred revenue $1.3B（+16% YoY）、長期deferred revenue +24% USD（+29% CC）、deal duration 24か月（2009年以来最長）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Application Development & Emerging Technologies（OpenStack/OpenShift/Middleware）の急成長による事業ポートフォリオ拡張",
+      "descriptive_label": "エマージング技術ポートフォリオ（OpenStack/OpenShift）の高成長拡張",
+      "evidence_from_transcript": "Q3 FY2015 CEO発言: 'Application development and emerging technology subscription revenue achieved 48% constant currency growth, the highest growth rate since we began to break out the measure.' 'Cross-selling was strong with 55% of the deals, including 1 or more components from our application development and emerging technologies offerings.' 'storage was a component of 20% of the top 30 deals.' CFO発言: 'subscription revenue for application development and emerging technologies offerings was $62 million. It was up 48% in constant currency... Application development and emerging technologies is now approximately 14% of total revenue.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "James Whitehurst (CEO) / Charles Peters (CFO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "OpenStack/OpenShift/Middlewareというエマージング製品の能力は具体的に示されているが、それが競合より優れている仕組みの説明は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "Emerging Tech 48% CC成長（最高記録）、売上比14%、55%のクロスセル包含という具体的な数値"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "オープンソースエコシステムを基盤としたエマージング製品群は構造的優位の可能性。ただしOpenStackは業界共通の取り組みでありRHT固有性の証明が必要"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「everyone is standardizing on Red Hat OpenStack」というアナリスト評価があるが、定量的競合比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（市場構造×企業ポジション）への合致",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Emerging Tech 48% CCgrowthとRHELとのクロスセル（55%）は既存顧客基盤の活用という優位性を示している。OpenStackが実質標準になりつつある市場構造とRHTの先行者地位の合致も示されている。ただし競合（VMware、Microsoft）との定量的比較が必要"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Application Development & Emerging Tech: 売上$62M（CC+48%、過去最高）、売上比14%。上位30ディールの55%がEmergingコンポーネントを含む",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "サブスクリプション型ビジネスモデルによる高い収益予測可能性とFCF成長（非GAAP operating margin 23%+）",
+      "descriptive_label": "サブスクリプション型ビジネスモデルによるFCF成長と高いマージン構造",
+      "evidence_from_transcript": "Q3 FY2015 CFO発言: 'Subscription gross margin was 93.9%, consistent with last quarter and Q3 last year.' 'operating cash flow was $133 million, and it was up 40% year-over-year.' 'free cash flow growth of 48%, the highest growth rate in both those measures in the past 3 years.' 'non-GAAP operating margin was 23.8%' 'We are also raising operating cash flow guidance by $30 million at the low end to a new full year range of $600 million to $610 million.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Charles Peters (CFO)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "サブスクリプションモデルは能力の記述（仕組み）として明確だが、それを実現する何かを説明するというよりはビジネスモデル自体の説明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "サブスクリプション粗利93.9%、OCF $133M（+40%）、FCF +48%（3年最高）、full year OCF $600-610Mという複数の定量的証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "サブスクリプションモデル＋Switching Costsの組み合わせは収益の構造的予測可能性を生み出す"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Process Power + Switching Costs）",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "サブスクリプション粗利93.9%・OCF +40%・FCF +48%（3年最高）というデータは高品質なビジネスモデルを示している。ただしサブスクリプションモデル自体は競合（VMware等）も採用しており、差別化要因はRHELのSwitching Costsとの組み合わせにある"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "オープンソースコミュニティ主導のイノベーションサイクルによる製品競争力維持能力",
+      "descriptive_label": "オープンソースコミュニティ連動によるイノベーション能力（Cornered Resource）",
+      "evidence_from_transcript": "Q3 FY2015 CFO発言（Jim代弁）: 'Red Hat continues to lead the evolution of the enterprise data center towards open hybrid cloud computing.' 'All major product lines have been refreshed this year.' 'the world is embracing open source software like never before. And with Red Hat as the undisputed leader in open source.' CEO発言: 'Our portfolio of open source infrastructure software and services has never been broader or more current.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "James Whitehurst (CEO) / Charles Peters (CFO)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "「undisputed leader in open source」「never been broader or more current」は定性的主張のみ。オープンソースコミュニティとのインタラクションの仕組みの説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "absent",
+            "reasoning": "オープンソースコミュニティへの貢献度・ダウンロード数等の定量的証拠なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "コミュニティ参加者の総力でイノベーションを進める能力は単独企業には複製困難な構造的優位の可能性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "「undisputed leader」は自己申告であり、競合との定量的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t（定性的のみで測定不能）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "定量的裏付けが皆無（ルール4-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "オープンソースコミュニティとの連動は概念的には強力なCornered Resourceだが、「undisputed leader」という自己申告に留まり定量的証拠がない。Linuxカーネル・KVM・OpenStackへのコントリビューション数等の具体的データがあれば評価が高まる"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "RHEL市場標準地位 → 企業のIT投資拡大に連動した自動的な規模拡大 → 総収益mid-to-high teens成長",
+      "descriptive_label": "RHEL標準地位→IT投資連動成長→収益CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "エンタープライズLinux標準地位→企業IT投資増加×Red Hat採用→収益成長の直接接続。11四半期連続mid-to-high teensが実証"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "11四半期連続成長は接続の信頼性を高める。為替ヘッドウインド（300bps）を吸収してもガイダンス超過という実績は優位性の強さを示している"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "エンタープライズ顧客のSwitching Costs → 上位ディールの100%更新+120%拡大 → deferred revenue成長 → 収益可視性向上",
+      "descriptive_label": "Switching Costs→ディール更新・拡大→deferred revenue→収益可視性",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Switching Costs→ディール更新100%→deferred revenue $1.3B+→収益安定成長の直接接続。定量的データで完全裏付け"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "25/25ディール更新・120%拡大・deal duration 24か月・deferred $1.3B（+16%）という直接接続の証拠が最も強力。この4ステップの接続は最も信頼度の高いCAGR根拠"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Emerging Technologies（OpenStack/OpenShift）の48%成長 → RHEL顧客基盤のアップセル拡大 → 長期CAGR加速",
+      "descriptive_label": "Emerging Tech高成長→RHEL顧客アップセル→CAGR加速",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "Emerging Tech 48%→RHEL顧客クロスセル（55%）→総収益CAGR加速の接続。ただしEmerging Techはまだ売上比14%であり、CAGR加速への定量的寄与は限定的"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Emerging Tech 48%成長とクロスセル55%は成長可能性を示しているが、売上比14%の現状からCAGR加速への寄与度はまだ限定的。ただし成長軌道は明確であり、将来的な接続としては合理的"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "サブスクリプションモデル → 粗利93.9%×規模拡大 → 営業レバレッジ → FCF成長",
+      "descriptive_label": "サブスクリプションモデル→粗利×規模→FCF成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "サブスクリプション粗利93.9%→規模拡大→operating leverage→FCF +48%（3年最高）の直接接続。定量的に完全裏付け"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "粗利93.9%・OCF +40%・FCF +48%という数値は接続を直接裏付ける。「highest growth rate in both those measures in the past 3 years」という言及は接続の強さを示す"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "オープンソースコミュニティリーダーシップ → 製品競争力の継続的維持 → RHEL市場標準地位の持続",
+      "descriptive_label": "オープンソースリーダーシップ→製品競争力→RHEL標準地位持続",
+      "source_advantage": 8,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "コミュニティリーダーシップ→製品競争力→市場地位の接続は概念的に合理的。ただし定量的証拠が弱い（優位性#8の問題を引き継ぐ）"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "コミュニティ連動イノベーションという概念は合理的だが、優位性#8の証拠が弱いため接続の確信度も限定的。「all major product lines refreshed this year」という事実は接続の実現を部分的に示している"
+      }
+    }
+  ]
+}

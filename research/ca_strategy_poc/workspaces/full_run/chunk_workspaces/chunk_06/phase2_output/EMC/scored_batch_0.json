@@ -1,0 +1,77 @@
+{
+  "ticker": "EMC",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "EMC-001",
+      "claim_type": "competitive_advantage",
+      "claim": "EMCのフェデレーション（EMC情報インフラ+VMware+Pivotal）は、デジタルアジェンダ構築・サイバーセキュリティ・ITコスト削減という顧客の最優先課題を一括対応できる唯一のプラットフォームであり、個別製品の寄せ集めでは実現不可能な独自のエコシステムを形成している。",
+      "descriptive_label": "EMCフェデレーション（EMC II+VMware+Pivotal）の統合ITプラットフォーム優位性",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": 0.5,
+      "scoring_rationale": "フェデレーション3社統合プラットフォーム（仕組み, rule01 pass）。「唯一の統合プロバイダー」という主張は定性的（pattern_D_qualitative_only部分）。IT変革コンサル需要が四半期比ほぼ2倍という定量的証拠は関連データとして評価（rule04 partial）。HP/IBM/Dellとの比較として、3事業の独立性を保ちながら統合する構造は固有（rule07 partial pass）。Q1 FY2015発言（rule12 secondary相当, -10%調整）。「Individually very successful, together unique」という外部評価なしの自己主張は割り引く。50%（Q1発言を考慮して50%維持）。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_D_qualitative_only",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "フェデレーション統合→顧客戦略パートナー化→長期契約→売上安定CAGR（rule05 indirect）。IT変革コンサル需要2倍で需要の実在を確認。60%。"
+    },
+    {
+      "id": "EMC-002",
+      "claim_type": "competitive_advantage",
+      "claim": "VMwareはvSphere単体以外のライセンス受注が定数通貨ベースで前年比30%超増加。ハイブリッドクラウド・SaaS受注が100%超増。End-User Computing（AirWatch含む）が50%増。仮想化エコシステムへの顧客依存度が深化している。",
+      "descriptive_label": "VMwareエコシステム深化（vSphere外+30%、HybridCloud+100%、AirWatch+50%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Network Economies",
+      "confidence_score": 0.7,
+      "scoring_rationale": "vSphere外製品+30%・ハイブリッドクラウド+100%・AirWatch+50%という複数製品ラインの定量的成長（rule04 quantitative, pattern_I_quantitative_differentiation）。VMware仮想化エコシステムへの顧客依存度深化（仕組み, rule01 pass）は切り替えコストを高める構造（rule11 structural pass）。Q1 FY2015発言（rule12 secondary相当）だが実績が伴う。Microsoft Hyper-V等の競合に対してマルチプロダクト採用の定量優位性（rule07 partial pass）。kb3 few-shot（COST#1相当：70%）に類似の定量的差別化。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "VMwareエコシステム→製品採用拡大→アップセル→VMware CAGR→EMC統合CAGR（rule05 direct）。複数成長製品の実績で検証済み。70%。"
+    },
+    {
+      "id": "EMC-003",
+      "claim_type": "competitive_advantage",
+      "claim": "XtremIOはオールフラッシュアレイ市場でトリプルデジット成長を達成し、2015年10億ドル超の受注見込み。受注の3分の1が新規顧客（既存EMCユーザー外）からであり、市場シェアを積極的に拡大中。ヘッドトゥヘッドの勝率は「例外的に高い」。",
+      "descriptive_label": "XtremIO トリプルデジット成長・$1B受注目標・新規顧客1/3獲得",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Switching Costs",
+      "confidence_score": 0.5,
+      "scoring_rationale": "トリプルデジット成長・$1B受注目標・新規顧客1/3取得という定量的実績（rule04 quantitative, pattern_I_quantitative_differentiation）。「ヘッドトゥヘッド勝率例外的に高い」は定性的表現（rule04 insufficient: 具体的な勝率% なし）。Pure Storage・NetApp等の競合との定量比較なし（rule07 insufficient）。Q1 FY2015発言（rule12 secondary相当, -10%調整）。オールフラッシュアレイへの移行は業界トレンド（pattern_B_industry_common部分）。新規顧客1/3という市場浸透の指標は評価できる。50%。",
+      "kb1_flags": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "XtremIO市場シェア拡大→$1B受注→EMC Emerging Storage成長→EMC CAGR（rule05 direct）。トリプルデジット成長の持続性は市場成熟による減速リスクあり。60%。"
+    },
+    {
+      "id": "EMC-004",
+      "claim_type": "competitive_advantage",
+      "claim": "EMCの新興ストレージ製品（Isilon・XtremIO・ScaleIO・ECS）は全体で14%成長、大型Atmosディール除外ベースで40%近い成長。伝統的ストレージからの投資移行（R&Dシフト）と組み合わせ、次世代製品での市場シェアが伝統的ストレージを大幅に上回る。",
+      "descriptive_label": "新興ストレージポートフォリオ（正規化+40%成長）の次世代シェア獲得",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "正規化ベース40%成長・2015年30%超成長見通しという定量的実績（rule04 quantitative）。伝統的→新興製品へのR&Dシフト（仕組み, rule01 pass）。ただし「2015年ガイダンス」という将来見込みの側面（rule01 concern部分）。NetApp・Hewlett Packard等との新興ストレージ市場シェア比較なし（rule07 insufficient）。Emerging Storage自体は業界全体がシフトしている（pattern_B_industry_common部分）。50%。",
+      "kb1_flags": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "新興ストレージ30%+成長→旧来製品を代替→EMCストレージ全体CAGR維持（rule05 direct）。旧来製品の減少を新興製品が補完するメカニズム。60%。"
+    },
+    {
+      "id": "EMC-005",
+      "claim_type": "competitive_advantage",
+      "claim": "EMCのIsilon（スケールアウトファイルシステム）は世界最大規模のWebスケール企業が次世代ファイルデータワークフロー統合先として選択。固有のスケールアウトファイルシステム技術とネイティブHadoopサポートにより、ビッグデータ分析市場でのリーダーシップを維持。",
+      "descriptive_label": "Isilon 世界最大Webスケール企業採用+スケールアウト技術リーダー",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.7,
+      "scoring_rationale": "世界最大Webスケール企業による採用選択（独立的第三者証拠, rule04 quantitative external, pattern_I_quantitative_differentiation）。ネイティブHadoopサポート+固有スケールアウト技術（仕組み, rule01 pass）。「Isilonが市場をリード」という業界認知（rule11 industry structure pass）。Q1 FY2015発言（rule12 secondary相当, -10%調整）。世界最大Webスケール企業という競合を排除した実証が強力な差別化証拠（rule07 partial pass）。kb3 few-shot（COST#1: 70%）に類似の外部採用実証。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "Isilonスケールアウト技術→大規模顧客採用→Isilon売上成長→EMC Emerging Storage CAGR（rule05 direct）。Webスケール企業のデータ量増加という確実なテールウィンド。60%。"
+    }
+  ]
+}

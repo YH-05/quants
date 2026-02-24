@@ -1,0 +1,285 @@
+{
+  "ticker": "PRU",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-05) + Q1-Q3 2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "年金リスク移転（PRT）市場での圧倒的な引受能力と実績（$37B+ 2014年）",
+      "descriptive_label": "年金リスク移転（PRT）市場での引受能力とスケール",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CFO/CEO): 'Retirement had a record earnings year, with strong momentum in pension risk transfer. We originated over $37 billion in total buyout and longevity account values in 2014, including the landmark $27 billion British Telecom longevity transaction.' Retirement business had record earnings in 2014.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「記録的実績」は結果。ただしBTロンゲビティ取引（$27B）のような大型案件引受能力は「能力」として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$37B PRT取引・$27BのBT取引という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "大規模PRT引受能力は資本規模・アクチュアリアル能力・投資ポートフォリオ管理の組み合わせによる参入障壁"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "MetLife、Zurich等との具体的比較なし。ただしBT取引のような$27B規模は業界で数社しか引受不可"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "DB年金の積み立て不足問題（DB to DC移行）が持続的なPRT市場成長を創出。PRUの規模は市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での説明。$27BのBT取引のような超大型PRT案件の引受能力は、MetLife以外には事実上不可能であり、規模の経済とアクチュアリアル能力の組み合わせが優位性。DB年金のPRT移転トレンドは持続的な需要を創出"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "DB年金積み立て不足×PRUのPRT引受能力 → Retirement部門CAGR+8-10pp",
+      "descriptive_label": "DB年金市場トレンド×PRT引受能力→退職部門収益CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。DB年金移転トレンド（外部構造）×PRUの引受能力が接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年$37Bの実績と記録的収益が接続を支持。DB年金の積み立て不足は長期的構造トレンドであり、PRTパイプラインは持続的"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Asset Management部門における第三者資産フロー創出と運用実績能力",
+      "descriptive_label": "Third-party Asset Management フロー創出能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'Asset Management reported $5.4 billion in positive unaffiliated third-party net flows in 2014. And assets under management grew 8% over year end 2013. While net flows in the second half of the year were less robust, solid underlying investment performance and business momentum keeps us optimistic that this will continue to be a good story going forward.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "$5.4Bのフローは結果。運用パフォーマンス能力の説明が少ない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$5.4B net flows、AUM +8%という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "BlackRock、Vanguard等との具体的差別化なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "フロー実績は示されているが、アセットマネジメント市場での差別化能力（スタイル、リターン、コスト）の説明が不足。「solid underlying investment performance」は定性的で検証不足。下半期のフロー鈍化も懸念材料"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "AUM増加 → 管理報酬増加 → Asset Management収益CAGR",
+      "descriptive_label": "AUM成長→収益CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップだが、フロー実績の持続性が不確実（下半期鈍化を認めている）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "接続メカニズムは直接的だが、下半期フロー鈍化の自認が確信度を下げる。運用パフォーマンス持続性の不確実性"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "国際保険（Life Planners）における保険販売員直接雇用モデルによるアジア市場での差別化",
+      "descriptive_label": "Life Planners直接雇用モデルによるアジア市場優位性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'Our International businesses continue to perform well. Life Planner net premiums policy charges and fees grew a little over 6% on a constant-currency basis.' In Q1-Q3 2015 calls: Japan and Gibraltar Life continue strong growth; emerging markets (Brazil, Taiwan, Korea) also contribute.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Life Planners直接雇用モデル（能力・仕組み）。日本では特殊な営業モデル（専属FP）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "直接雇用プロ営業員ネットワークは短期での模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "日本の競合（日本生命、東京海上等）との具体的差別化なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "アジア保険市場成長との整合性あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Life Planners直接雇用モデルはアジア市場での差別化として評価できるが、国内競合との明確な差別化証拠が不足。6%成長（定数通貨）は安定的だが突出した優位性を示すには不十分"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "アジア保険需要成長 × Life Planners拡大 → 国際部門CAGR+6-8pp",
+      "descriptive_label": "アジア保険需要×Life Planner拡大→国際収益CAGR経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ。アジア市場成長×Life Planner拡大の接続は合理的だが通貨リスクあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "アジア保険需要の構造的成長は確認できるが、円安・他通貨変動がUSD換算収益を抑制。定数通貨ベースでの成長は安定的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "グループ保険（団体生命・障害）の引受規律と請求管理プロセスの改善能力",
+      "descriptive_label": "グループ保険引受規律・請求管理改善能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'The Group Insurance business continues to benefit from repricing actions, better underwriting discipline and improved claim handling processes. And while we're not ready to declare victory yet, our underwriting trends are certainly moving in the right direction.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "引受規律・請求管理プロセス（能力・仕組み）を評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_fail",
+            "reasoning": "「trends moving in right direction」は定性的。「not ready to declare victory yet」という自己評価で改善途上と認める"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "引受改善は認められるが、CEO自身が「勝利宣言は時期尚早」と述べており、確立された優位性ではなく改善プロセス中。他保険会社との差別化定量証拠なし"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "個人生命保険の10四半期中9四半期での好調な死亡率実績（有利な承保経験）",
+      "descriptive_label": "個人生命保険の承保経験（死亡率）管理能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'We've also benefited from favorable mortality in 9 out of the last 10 quarters.' Individual Life sales improved sequentially.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "「favorable mortality」は結果（外部要因含む）であり、PRUの能力とは言い難い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "10四半期中9四半期という定量データだが、それ自体が能力の証拠にならない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "死亡率の好調は外部要因（人口統計・疾病率）の影響を受けており、PRUの能力とは言い難い。選別能力（承保基準）への言及がなければルール1-T違反"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年通年: 調整後EPS $9.84 (+10%)、ROE 13-14%目標超過達成、PRT $37B+（うちBT $27B）、AUM +8%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

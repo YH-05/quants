@@ -1,0 +1,148 @@
+{
+  "ticker": "PSN",
+  "scored_claims": [
+    {
+      "id": "PSN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "直接雇用と職人訓練プログラム（Combat to Construction）による安定的工数確保能力",
+      "evidence": "CEO Jeffrey Fairburn (FY2014): 'combat construction scheme, which is now well underway and looks to employ ex-forces individuals on site... directly employed by the business and trained for longevity.' 2014年に直接雇用人員を20%増加。",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.25
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "直接雇用・訓練パイプラインという能力・仕組みを記述"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "訓練プログラムは補完的施策。業界共通の人員不足課題への対応。構造的差別化要因ではない"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "純粋競合も同様の直接雇用・訓練プログラムを展開している可能性が高い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "職人不足は業界全体の課題であり、直接雇用・訓練は業界共通の対応策"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "定量的な優位性（例：直接雇用率 vs 競合比較、コスト差など）が示されていない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "採用プログラムは戦略的施策に近く、構造的優位性の説明ではない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通課題への対応"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通の施策"
+        },
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "定量的裏付けなし"
+        }
+      ],
+      "final_confidence": 0.25,
+      "overall_reasoning": "Combat to Construction プログラムは独自性があるが（元軍人採用という特徴）、構造的競争優位性として認定するには定量的裏付けが不足し、業界共通の人員確保施策の一形態。dogma 的に rule06 FAIL（補完的施策）、rule07 FAIL（純粋競合比較なし）。「あまり納得しない」下限域 0.25。"
+    },
+    {
+      "id": "PSN-007",
+      "claim_type": "competitive_advantage",
+      "claim": "手頃な価格帯（GBP200,000未満）への集中とHelp to Buyシェアによる販売ボリューム優位",
+      "evidence": "CEO (FY2014): '57% of private sales priced below GBP200,000'. CEO: '15% of all Help to Buy transactions'. Mortgage qualification rate 80%.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.20
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "低価格帯シェア（57%）は結果。それを可能にする固有の能力の説明が不十分"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "Help to Buy 政策への依存は政府施策に補完される優位性。政策変更により消滅するリスクがある"
+        },
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": true,
+          "reasoning": "低価格帯への集中戦略は戦略的意思決定。構造的優位性の説明ではない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "Help to Buy 15% シェアは結果。なぜ PSN が競合より多く獲得できているかの構造的説明なし"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "低価格帯集中は戦略（rule08）。優位性の構造的説明なし"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Help to Buy 政策依存 → 持続的優位性への接続は因果関係の飛躍"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "Help to Buy は業界全体の政策支援"
+        },
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "シェアは結果（dogma rule1 違反）"
+        },
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.1,
+          "reasoning": "戦略と優位性の混同（dogma rule8）"
+        }
+      ],
+      "final_confidence": 0.20,
+      "overall_reasoning": "Help to Buy への依存と低価格帯集中は戦略的選択（rule08）であり、構造的競争優位性の条件を満たさない。シェアは結果（rule01 FAIL）。政策変更によって消滅するリスクがある外部依存型。dogma 的に「あまり納得しない」下限〜却下境界 0.20。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "20-30": 2
+    }
+  }
+}

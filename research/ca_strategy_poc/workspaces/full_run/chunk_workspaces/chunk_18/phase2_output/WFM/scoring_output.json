@@ -1,0 +1,70 @@
+{
+  "ticker": "WFM",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "WFM-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Whole Foods Marketブランド・$990/GSF生産性",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_I (定量的差別化)",
+      "scoring_rationale": "KB1: rule01 - ブランド資産は能力として認められる。KB2: Pattern I - $990/GSFという業界最高水準の定量証拠。ただしKB1: rule10 - NYC不正表示問題でブランド毀損が発生（コンプ2.5%→0.4%）。ネガティブケースがブランド脆弱性を示す。dogma.md: 確信度は毀損リスクを反映して下げが適当。",
+      "final_confidence": 0.4,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true,
+      "notes": "NYCブランド毀損事件は短期的だが、競合オーガニック参入という構造的逆風と重なり評価を下げる。"
+    },
+    {
+      "claim_id": "WFM-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "422店舗・1,200店舗ポテンシャル",
+      "phase1_confidence": 0.3,
+      "kb2_pattern_applied": "pattern_A (結果を原因と取り違え), pattern_F (戦略の混同)",
+      "scoring_rationale": "KB1: rule08 - 1,200店舗計画は長期的な戦略目標。KB2: Pattern A - 店舗数（結果/規模）を優位性として提示。Pattern F - 成長計画は戦略であり現在の優位性ではない。",
+      "final_confidence": 0.2,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WFM-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "365 by Whole Foods Marketフォーマット",
+      "phase1_confidence": 0.3,
+      "kb2_pattern_applied": "pattern_F (戦略の混同)",
+      "scoring_rationale": "KB1: rule08 - 未開店の第2フォーマットは戦略的構想。KB2: Pattern F - 実績なしの新フォーマットを優位性として評価するのは時期尚早。5店舗確定は非常に初期段階。",
+      "final_confidence": 0.2,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WFM-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "健康食品トレンド・競合激化",
+      "phase1_confidence": 0.3,
+      "scoring_rationale": "KB2: Pattern C (因果の飛躍) - 健康食品トレンドがWFMの優位性に直結するかは競合激化で疑問。Kroger・Costcoのオーガニック参入でトレンドの恩恵が分散。",
+      "final_confidence": 0.2,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WFM-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q3 FY2015 決算数値",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 3,
+    "ca_weighted_confidence": 0.27,
+    "top_power_type": "Branding (毀損中)",
+    "overall_assessment": "WFMはブランド優位性が実在するが、NYC事件・競合激化で毀損中。2015年Q3時点では構造的優位性が弱まっている状態。確信度は全体的に低い。chunk_18内で低評価銘柄。"
+  }
+}

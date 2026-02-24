@@ -1,0 +1,86 @@
+{
+  "ticker": "KLAC",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_6_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_II", "pattern_III"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 3
+  },
+  "scored_claims": [
+    {
+      "id": "KLAC-006",
+      "claim_type": "competitive_advantage",
+      "claim": "60-70%のインクリメンタルグロスマージンによる差別化ビジネスモデルの収益性",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.4,
+      "kb1_critique": {
+        "rule_1_t": "PASS: '差別化ビジネスモデル'に支えられた60-70%インクリメンタルグロスマージンという能力の説明",
+        "rule_4_t": "PASS: 60-70%という具体的なインクリメンタルマージン数値、Q2 FY2015実績58.5%",
+        "rule_6_t": "PASS: 高マージン構造は事業の核心的要素",
+        "rule_12_t": "FAIL: Q2四半期発言（従・②相当）のため調整対象"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "差別化ビジネスモデル（プロセス制御専業×プロプライエタリ製品）→高インクリメンタルマージン（結果）。Phase 1ですでに-10%調整が適用されている"
+      },
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.1,
+          "reasoning": "Q2四半期発言（従・②相当）のため-10%調整。Phase 1時と同様の調整を確認・適用"
+        }
+      ],
+      "scoring_rationale": "Phase 1で-10%調整（rule_12_t: Q2四半期発言）を適用して0.5→0.4と評価されるべきところ、Phase 1では0.5として記録されている。Phase 2で正確に調整を反映し0.4とする。60-70%インクリメンタルマージンは差別化の証拠だが四半期発言のため割引"
+    },
+    {
+      "id": "KLAC-007",
+      "claim_type": "cagr_connection",
+      "claim": "3D/FinFET移行普及 → プロセス制御検査コンテンツ増加 → 半導体装置業界成長率（5-10%/年）を上回るKLAC受注成長",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: 3D/FinFET移行→検査コンテンツ増→業界成長超過という2ステップの直接的因果。WFE 5-10%成長予測という定量的業界数値",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "3D構造移行（技術的必然）→検査コンテンツ増加（直接的メカニズム）→受注成長（結果）は直接的なCAGR接続。FY2014ウェーハ検査過去最高受注という実績で裏付け"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でWFE 5-10%成長予測と、3D移行でのKLAC受注増の直接的接続が説明されている。FY2014の記録受注が能力を実証。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KLAC-008",
+      "claim_type": "cagr_connection",
+      "claim": "DRAM 20nm技術転換 + Foundry 16/14nm 3D ramp → FY2015業界成長+プロセス制御シェア拡大 → 売上成長",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: DRAM 20nm移行とFoundry 16/14nm rampという具体的なタイムラインを持つ直接的なCAGR接続。backlog $1.2Bという検証可能なデータ",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "メモリ・Foundryの同時技術移行という具体的なタイムライン（FY2015）とbacklog $1.2Bによる定量的裏付け。直接的CAGR接続"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でDRAM 20nmとFoundry 16/14nmの同時rampという具体的なタイムライン、backlog $1.2Bという定量的裏付けが示されている。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KLAC-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014でウェーハ検査製品の年間受注$1.5B超（過去最高）、総backlog $1.2B超（うちshipment backlog $977M）、gross margin継続的に56-58%",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。KLAC-001とKLAC-003の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

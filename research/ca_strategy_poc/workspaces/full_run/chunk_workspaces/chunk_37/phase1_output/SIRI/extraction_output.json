@@ -1,0 +1,341 @@
+{
+  "ticker": "SIRI",
+  "company_name": "Sirius XM Holdings Inc.",
+  "gics_sector": "Consumer Discretionary",
+  "country": "UNITED STATES",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-02-04) / Q4 FY2014 Earnings Call (2015-02-05)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "車載衛星ラジオの独占的全米インフラ：25MHzの全国スペクトラム免許と70M台超の衛星対応車両（2014年末）による参入不可能な物理的インフラ",
+      "descriptive_label": "25MHz全国スペクトラム+70M台車載インフラという希少資源",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Jim Meyer): 'Another underappreciated asset we have is the unique value of our network and spectrum. Today, they provide tremendous value to us for our core service. But in the future, we will have significantly more flexibility as we adopt wideband radios and increase ancillary uses of our nationwide system.' / 'At the end of 2014, this number was just a shade over 70 million enabled vehicles. We expect this to cross 100 million by the end of 2017.' / CFO David Frear: 'the recent Spectrum auctions underscore what we all know: Spectrum is valuable. With the R&D investments, Jim mentioned earlier, our 25 megahertz of nationwide Spectrum can be redeployed to generate even more growth in the future.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_9_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "25MHzの全国スペクトラム免許は物理的に複製不可能な希少資源（Cornered Resource）。車載インフラ70M台は長年の累積投資"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「全国衛星スペクトラム」「車載インフラ」は名詞で表現可能な属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "新規参入者が衛星インフラ（発射コスト数十億ドル）と全国スペクトラム（オークションで入手不可）を複製するコストは事実上無限大。7 Powersの「Cornered Resource」に該当"
+          },
+          {
+            "rule": "rule_9_t",
+            "verdict": "pass",
+            "reasoning": "Sirius+XMの合併（2008年）でスペクトラムを集約。この合併が政府当局に承認されたこと自体がモノポリー的優位性の証左"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t (希少資源独占: 25MHzスペクトラム), pattern_IV_t (業界構造×企業ポジション: 衛星ラジオは実質独占)",
+        "confidence": 80,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "25MHzスペクトラムは政府認可済み・複製不可の希少資源として極めて強力な優位性",
+            "adjustment": 5
+          },
+          {
+            "reason": "streaming（Spotify/Pandora）という代替競合の存在",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "25MHzの全国衛星スペクトラムと70M台の車載インフラは物理的に複製不可能な希少資源。7 Powersの「Cornered Resource」に完全合致。streaming代替は存在するが車載での優位性は当面揺るがない。80%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "衛星インフラ → 71%新車OEM搭載率 → 15M試験ファネル（2014年、+2M YoY） → 1.2-1.75M純新規加入者/年 → 売上・FCF CAGR",
+      "descriptive_label": "車載インフラ→OEM搭載→試験→加入→CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "3ステップ。車載インフラ→OEM搭載→試験ファネル→転換→加入収入。2013/2014の実績（1.66M→1.75M net adds）で検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2013・Q4 FY2014発言"
+          }
+        ],
+        "confidence": 75,
+        "confidence_adjustments": [],
+        "overall_reasoning": "OEM搭載率71%、15M試験ファネル、44%新車転換率という定量的経路は明確。車両保有台数の増加（70M→100M見込み）が追い風。FCF CAGR 25%超の実績で検証可能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "独占的エクスクルーシブコンテンツポートフォリオ：Howard Stern、NFL Radio、NBA Radio、PGA TOUR Radio等の排他的ライセンスによる「代替不可能な体験」",
+      "descriptive_label": "エクスクルーシブコンテンツによる差別化（スイッチングコスト創出）",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (CEO): 'SiriusXM continues to deliver great programming across sports, talk and our commercial-free lineup that simply can't be found elsewhere.' / 'our main competition has been and will remain free ad-supported entertainment.' Q4 FY2014 Prepared Remarks (CEO): 'Being the leader in curated, exclusive and compelling content is central to our company's mission... we solidified our leadership in women's programming by carrying The Ellen DeGeneres Show... In sports, we continue to improve our offering. We launched the channel in conjunction with Bleacher Report.' / 'Our content-driven service is something that the carmakers overwhelmingly support and more importantly, consumers increasingly demand.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「独占ライセンス取得能力」「コンテンツキュレーション能力」は能力として評価可能。Howard SternのSiriusXM独占契約は競合が複製不可"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "排他的コンテンツは一定のスイッチングコストを創出するが、Spotify/Pandoraへのスイッチングは比較的容易"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "25MHzスペクトラムという資産ベースを持つSiriusXMが独占コンテンツを獲得するのは構造的優位性の一側面。ただしコンテンツ自体はコスト増加要因"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "「simply can't be found elsewhere」という排他性の主張あり。ただし競合（Pandora、Spotify）との定量比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力優位性: 独占コンテンツ調達・キュレーション能力), pattern_I_t (定量的サポート: 44%新車転換率という間接指標)",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Howard Stern契約更新コストや独占スポーツコンテンツ費用の上昇が競争優位性のコストを押し上げる懸念",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "独占コンテンツポートフォリオはSiriusXMの中核的差別化要因だが、コンテンツコストの上昇とstreaming代替の存在が不確実性を高める。60%が適切"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "独占コンテンツ → 高い転換率（新車44%・中古車34%）→ 加入者維持（churn 1.9%） → ARPU上昇（+2%/年） → 売上・FCF CAGR",
+      "descriptive_label": "独占コンテンツ→転換・維持→ARPU→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "3ステップ。独占コンテンツ→高転換率/低churn→加入者成長→収益。2014年のchurn 1.9%（過去最良水準）という定量指標で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "コンテンツ→転換→churn→収益の因果は2-3ステップで直接的。churn 1.9%は業界最良水準で、独占コンテンツの維持効果を支持"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "衛星/IP統合型コネクテッドビークルプラットフォームの先行者優位：8 OEMブランドでの稼働実績と全世界OEMへの展開可能なアーキテクチャ（Agero CV事業買収後）",
+      "descriptive_label": "コネクテッドビークルサービスにおける先行者優位",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (CEO): 'We now have live connected vehicle service with 8 OEM brands with several others in the pipeline, making us the leading provider of these services to OEMs today.' / 'The CV business also gives us entrée to create a worldwide connected car platform, something of particular interest to our OEMs.' Q4 FY2014 Prepared Remarks (CEO): 'we are in the middle of that transition [to connected vehicles]... the joining of our IP and satellite technologies will let us offer more features to subscribers.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「8 OEMブランドでの稼働実績」は結果だが、その背後にある「OEM統合技術・サポート能力」は能力として評価可能"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_pass",
+            "reasoning": "8 OEMとの先行実績は競合他社に対するスイッチングコストを創出。ただしコネクテッドビークルはまだ初期段階"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "衛星+LTE統合プラットフォームは技術的参入障壁を有するが、テレマティクス専業他社との競争は激しい"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t (先行者優位: CV市場8 OEMリーダー), pattern_A_t (結果と能力の混同に部分的に該当)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "CV事業は2014年時点でまだ初期段階（$100M収益、breakeven程度）。先行者優位は仮説的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "コネクテッドビークルでの8 OEMリーダーポジションは評価できるが、事業規模がまだ小さく（$100M/年）、競争環境が流動的。40%が適切"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "CVプラットフォーム → $100M→$200M以上の収益成長（3年でdouble） → 衛星×IPの統合によるARPU向上 → FCF CAGR追加的上昇",
+      "descriptive_label": "CVビジネス成長→FCF CAGR上乗せ経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ以上。CVプラットフォーム→OEM採用拡大→収益→FCF。CVはまだ初期段階で実績データが限定的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2013/FY2014発言"
+          }
+        ],
+        "confidence": 35,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CVビジネスの「3年でdouble」という経営予測があるが、初期段階事業の予測は不確実性が高い。CAGR接続の強度は弱い"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "70%超の高い限界利益率と低い変動費モデル：SAC（加入者獲得コスト）の継続的削減（11.8%/売上比、2014年）による高FCF変換効率（EBITDA→FCF 80%近い変換）",
+      "descriptive_label": "衛星ラジオの高限界利益・低変動費ビジネスモデル",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CFO David Frear): 'Subscriber acquisition cost in 2014 as a percentage of revenue were just 11.8%, easily the best in the company's history, an improvement of nearly 300 basis points even as new car sales rose by 6%. Adjusted EBITDA margins of 35% were up more than 4 full percentage points from 2013... We continue to convert nearly 80% of adjusted EBITDA into free cash flow. Free cash flow grew 25% to $1,156,000,000.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「衛星ラジオの固定費集約型ビジネスモデル」は能力（構造）として評価可能。インフラ構築後の限界費用が極めて低い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "EBITDA率35%（+4pp）、FCF変換率80%、SAC 11.8%（-3pp）という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "衛星放送は固定費（衛星維持・スペクトラム・コンテンツ）が大半で、加入者増加の限界費用はほぼゼロ。Scale Economiesに該当"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量: 35%EBITDA率, 80%FCF変換, 11.8%SAC), pattern_IV_t (業界構造: 固定費集約型=Scale Economies)",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量データで明確に裏付けられた構造的コスト優位性",
+            "adjustment": 5
+          },
+          {
+            "reason": "コンテンツコスト（特にHoward Stern等）上昇のリスク",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "衛星ラジオの固定費集約型モデルはScale Economiesの典型例。35%のEBITDA率と80%のFCF変換率は定量的に強固。70%が適切"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "高限界利益モデル → 加入者成長に対するEBITDA弾性高（2014年: 売上+10%→EBITDA+26%） → FCF CAGR 25%超の持続 → 自社株買いによるFCF/share CAGR追加",
+      "descriptive_label": "高限界利益→EBITDA弾性→FCF/share CAGR経路",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。限界利益率70%→売上成長がEBITDA成長に増幅→FCF。2013: +12%売上→+27%EBITDA, 2014: +10%売上→+26%EBITDAで一貫して実証"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言"
+          }
+        ],
+        "confidence": 75,
+        "confidence_adjustments": [],
+        "overall_reasoning": "売上成長→EBITDA成長の弾性が2年連続で2.5倍超を記録しており、高限界利益モデルの効果は定量的に実証済み。75%が適切"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2013/2014 SiriusXM: 加入者25.5M/27.3M、売上$3.8B/$4.2B、EBITDA $1.17B/$1.47B（30.6%/35%率）、FCF $927M/$1.16B、SAC 14.7%/11.8%、新車搭載率71%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 7]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "2013年末CV（コネクテッドビークル）事業: 8 OEMブランドでライブ稼働、Agero CV買収完了、2014年$100M収益見込み、3年でdouble予想",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2014年末衛星対応車両70M台（5年以内に110M台予想）、使用済み車市場15,000ディーラー登録済み（+13,500 from 2013）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    }
+  ]
+}

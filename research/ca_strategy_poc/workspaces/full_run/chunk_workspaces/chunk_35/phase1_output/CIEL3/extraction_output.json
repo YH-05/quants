@@ -1,0 +1,266 @@
+{
+  "ticker": "CIEL3",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-01-29) [Primary] + Q4 FY2014 Earnings Call (2015-01-29) [Primary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ブラジルカード決済市場における圧倒的な規模（2014年Q4取引額BRL 144B、全国シェアで支配的ポジション）と大規模POS端末ネットワーク（ワイヤレス62.7%）",
+      "descriptive_label": "ブラジル決済アクワイアリング市場でのドミナントスケール・ネットワーク",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Rômulo De Mello Dias): '9.3% growth, reaching BRL 144 billion [financial capture volume]...active points of sales grew 13.5%...Wireless terminals reached 62.7% in Q4.' Q4 FY2013: competitors 'too small compared to [Cielo] and Santander'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "規模そのもの（BRL 144B）は結果だが、ネットワーク規模（POS端末の広がり）は構造的優位性として評価可能"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ネットワーク効果・規模の経済は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ブラジルのカード決済インフラは構造的に少数プレイヤーに集中しており、CIELOの規模は構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "ブラジル決済市場の寡占構造（CIELO+Santander系が圧倒的）と企業のドミナントポジションの合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "規模は結果でもあり、背後の能力（ネットワーク構築力）の説明が不足",
+            "adjustment": -10
+          },
+          {
+            "reason": "競合（Santander系Rede）との明確な定量的差別化データなし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ブラジル決済市場での寡占的地位は構造的に価値があるが、市場シェアの結果と競争優位性の能力の混在。CEOが「競合は小さすぎてCIELOとSantanderの比較にならない」と発言しており相対的ポジションは認識されている"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ブラジル決済市場成長（業界11-13%成長見込み）×CIELOネットワーク拡大 → 取引量増加 → 収益成長",
+      "descriptive_label": "市場成長×ネットワーク拡大→取引量→収益成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（市場成長×ネットワーク→取引量増加）。CEOが業界成長11-13%の見通しを提示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "市場成長は定量的に示されているが、CIELOが市場シェアを失っていることを自ら認めており（'expect Cielo to grow below industry level'）、接続の確度は中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Banco do BrasilとのJV（カードアクワイアリング）：BRL 11.6B評価のJV設立によるOurocard取引の内部化",
+      "descriptive_label": "Banco do Brasil JVによる収益多様化・リーチ拡大",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Rômulo De Mello Dias): 'the JV with Banco do Brasil, this is, with no doubt, Cielo's greatest strategic highlight for allowing revenue diversification in business related to electronic payments...The JV was valuated at BRL 11.6 billion. Cielo would be responsible for investing BRL 8.1 billion. Pro forma net income of the JV in the last 12 months was BRL 578 million.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "JVを通じたBanco do Brasilとの独占的パートナーシップは名詞で表現されるリソース"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "JV設立は戦略的行動だが、結果としてCornered Resource（BB系カード取引の独占的アクワイアリング権）を生む構造"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Banco do BrasilはブラジルNo.1銀行。このJVはCIELOに構造的な取引フロー優先アクセスをもたらす"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "JV設立は戦略・JVは能力の境界線上",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的データ（JV評価BRL 11.6B、net income BRL 578M）あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Banco do BrasilとのJVは長期的に安定した取引フローを確保するCornered Resource候補。ただしJV設立自体は戦略的意思決定であり、優位性は「Banco do Brasil系取引への独占的アクセス」という仕組みにある"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "BB JV（Ourocard取引インターチェンジ）→ 安定的新収益源（JV pro forma net income BRL 578M）→ CAGR押し上げ",
+      "descriptive_label": "BB JV→安定収益源→CAGR向上経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "JV pro forma net income BRL 578Mという開示データで検証可能。2ステップの因果"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的データで裏付けられており直接的なCAGR接続。ただしJV設立後の実際の収益は未確認（BRL 8.1Bの投資が必要）"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "取引1件あたりのコスト管理能力：BRL 0.76/取引（2014年通期）でガイダンス（BRL 0.75-0.78）内での着地",
+      "descriptive_label": "取引コスト効率管理能力",
+      "evidence_from_transcript": "Q4 FY2014 CFO Clovis Poggetti: 'Recalling that the soft guidance shared with the market was between BRL 0.75 and BRL 0.78 per transaction...For 2014, total cost plus expense per transaction reached BRL 0.76, 5.2% higher than 2013.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "コスト/取引は結果指標だが、コスト管理能力（プロセスパワー）の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "BRL 0.76/取引という具体的数値あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "absent",
+            "reasoning": "競合（Rede等）との取引コスト比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "競合との比較なし",
+            "adjustment": -10
+          },
+          {
+            "reason": "コスト上昇（+5.2%）が優位性の持続に疑問を生む",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "コスト管理のガイダンス達成は実行力を示すが、競合比較がなく相対的優位性が不明。取引コストが前年比5.2%上昇しており改善傾向でもない"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Cielo Mobileによる決済イノベーション：デビット・バウチャー・クレジット全対応の最初の市場参入者",
+      "descriptive_label": "モバイル決済プラットフォームのファーストムーバー",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (CEO): 'we have also announced the release of Cielo Mobile, the most complete and safest solution, becoming the first in the market to offer voucher and debit card payment options or with the Crediário product, in up to 48 installments'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「市場初のモバイルソリューション」は技術的能力の表現だが、先行優位性の持続性が不明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "モバイル決済は補完的サービス（主要事業はPOS端末による加盟店取引）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "「市場初」と主張しているが競合（Rede等）との具体的な機能比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "補完的要素（主要事業への付加サービス）",
+            "adjustment": -10
+          },
+          {
+            "reason": "技術的先行優位は短期的で模倣容易",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "「市場初」の主張はあるが、決済インフラではモバイル機能は競合も短期で追随可能。主要事業の構造的優位性への貢献が限定的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "CIEL3のQ4 FY2014取引金融量BRL 144B（前年比+9.3%）、取引件数16億件（+11.8%）、アクティブPOS前年比+13.5%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Banco do Brasil JV評価額BRL 11.6B、CIELO出資BRL 8.1B、JVプロフォーマ純利益BRL 578M（2013.10-2014.9）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    }
+  ]
+}

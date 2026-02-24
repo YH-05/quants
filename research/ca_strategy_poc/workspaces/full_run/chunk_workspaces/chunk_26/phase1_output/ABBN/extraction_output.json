@@ -1,0 +1,264 @@
+{
+  "ticker": "ABBN",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "ABBN_001",
+      "claim_type": "competitive_advantage",
+      "claim": "ABBは2008年以来毎年$1.2B規模のコスト削減を実行し続けており、5,000超のオペレーショナル・エクセレンス・プロジェクトとLean/Six Sigmaを活用したコスト削減がDNAとして定着している。",
+      "evidence": "Ulrich Spiesshofer (Q4 2013 prepared_remarks): 'A hallmark of ABB is execution. In 2013, we yet again took out $1.2 billion in terms of costs. We have more than 5,000 projects on operational excellence running now. We have applied Lean/Six Sigma not only on the manufacturing shop floor but also more and more in the processes on the overhead side. We have committed to take 3% to 5% equivalent of cost of sales out of our cost base every year. Since 2008, when the crisis started, we have done this.' コスト削減は1回限りのプログラムではなく継続的なDNAとして位置づけられている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": false,
+          "rule12": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule04: $1.2B/年、5,000+プロジェクトという定量的根拠あり", "rule06: コスト削減能力は補完的なオペレーショナル能力であり構造的競争優位とは言えない—SiemensやGEも同様のプログラムを持つ", "rule12: Q4年次決算（一次ソース）—調整なし"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "継続的なコスト削減により競合比でマージン優位を維持",
+        "barrier": "2008年以来6年間継続した実行力と5,000プロジェクトの管理体制の蓄積"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Ulrich Spiesshofer",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "A hallmark of ABB is execution. In 2013, we yet again took out $1.2 billion in terms of costs. We have more than 5,000 projects on operational excellence running now. We have committed to take 3% to 5% equivalent of cost of sales out of our cost base every year. Since 2008, when the crisis started, we have done this."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_002",
+      "claim_type": "competitive_advantage",
+      "claim": "ABBは世界中に$300Bの稼働中インストールベースを持ち、そのうち$200Bを顧客・住所・機器種別・GPS座標を含むデータベースとして管理し、年間サービス機会の25%を捕捉—これは競合が再現困難な独自資産である。",
+      "evidence": "Greg Scheu (Q4 2013 prepared_remarks): 'We've identified around the world $300 billion of actively running products, systems, software that's out there in the industry. We have about $200 billion of that $300 billion now cataloged to know where they sit by address, what type of equipment, GPS coordinates. Today, we think we're capturing a little better than 25% of the annual opportunity on that. We'd like to take that to a higher level, where we could capture about 40% of that installed base opportunity as an annual annuity that comes in.' 4〜5年かけて内部データベースを構築した。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule07": false,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule04: $300B/200Bインストールベース、25%捕捉率→40%目標という具体的定量根拠", "rule07: 競合（Siemens）との明示的比較はないが、自社固有の歴史的インストールベースデータベースは競合が複製不可能", "rule12: Q4年次決算（一次ソース）—調整なし"]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "$200Bのカタログ済みインストールベースがサービス年間売上の定期的アニュイティ源泉",
+        "barrier": "数十年の製品設置履歴を顧客ベースでカタログ化した独自データベース—競合は初日から複製不可能"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Greg Scheu",
+          "role": "Head of North America / Integration",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "We've identified around the world $300 billion of actively running products, systems, software that's out there in the industry. We have about $200 billion of that $300 billion now cataloged to know where they sit by address, what type of equipment, GPS coordinates. Today, we think we're capturing a little better than 25% of the annual opportunity on that."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_003",
+      "claim_type": "competitive_advantage",
+      "claim": "ABBは電力と自動化の双方を提供できる統合ソリューション能力を持ち、純粋な電力専業・自動化専業競合では対応できない複合受注（Vale鉄鉱石鉱山など）を獲得している。",
+      "evidence": "Ulrich Spiesshofer (Q3 2014 prepared_remarks): 'In Brazil with Vale to expand capacity and improve productivity in an existing iron ore mine through driverless truck systems. Our ability to deliver a combined Power and Automation solution, with substations, motors and other electrical and automation equipment, played a fundamental role in winning this order.' Q4 2013: 'ABB is around power and automation offering. Technology that helps with the electricity flowing in the entire electricity value chain, product and technology that helped with the automation of industrial clients.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07", "rule08", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule07": false,
+          "rule08": false,
+          "rule12": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: Siemensも電力+自動化の統合能力を持つため純粋な差別化とは言えない", "rule08: 統合能力は強みだが、戦略的志向性（ability）と実証済みの競争優位の境界が曖昧", "rule12: Vale受注事例はQ3 2014（二次ソース）—追加マイナス調整"]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "電力+自動化統合ソリューション受注による高い顧客離脱コスト",
+        "barrier": "電力・自動化双方に深い技術蓄積が必要—どちらか片方専業の競合には参入困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Ulrich Spiesshofer",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "Our ability to deliver a combined Power and Automation solution, with substations, motors and other electrical and automation equipment, played a fundamental role in winning this order."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_004",
+      "claim_type": "competitive_advantage",
+      "claim": "ABBは世界最大容量のHVDCサブシーケーブル（アイルランド・ウェールズ間）を建設済みであり、Statoilとの$100M・5年間の共同開発プログラムで次世代サブシー電力技術（顧客年間$500M CapEx削減効果）を開発中—HVDC技術のコーナードリソースを保有する。",
+      "evidence": "Ulrich Spiesshofer (Q4 2013 prepared_remarks): 'The connection between Ireland and Wales, which is the largest capacity HVDC connection that was ever built on the subsea side. Between Statoil and ourselves, we are investing about $100 million over the next 5 years to really get this technology up to the maturity level that we can really install it at scale. If that's operational, a company like Statoil can save up to $500 million of CapEx annually by replacing existing technology with new subsea technology.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule07": true,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule04: 世界最大容量という定量的差別化、$100M投資規模、$500M顧客CapEx削減効果", "rule07: 世界最大容量という業界初の実績—SiemensもHVDCを持つが最大容量記録はABB", "rule12: Q4年次決算（一次ソース）—調整なし"]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "HVDC技術リーダーシップによる大型インフラ受注の優位性",
+        "barrier": "世界最大容量HVDC建設実績とStatoilとの排他的共同開発関係"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Ulrich Spiesshofer",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "The connection between Ireland and Wales, which is the largest capacity HVDC connection that was ever built on the subsea side. Between Statoil and ourselves, we are investing about $100 million over the next 5 years. A company like Statoil can save up to $500 million of CapEx annually by replacing existing technology with new subsea technology."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_005",
+      "claim_type": "competitive_advantage",
+      "claim": "ABBはスウェーデンの高圧キャパシタ工場でレイアウト変更とERP統合を通じて収益生産性40%向上・リードタイム50%削減・在庫回転2倍を実現し、このオペレーションモデルを全社標準として展開中。",
+      "evidence": "Ulrich Spiesshofer (Q3 2014 prepared_remarks): 'At our high voltage capacity plant in Sweden, we have implemented significant operational improvements from changing the plant layouts to integrating engineering design and back office processes with ERP and sales tools. The results have been very impressive, a 40% increase in revenue productivity, a 50% reduction in lead time and a doubling of inventory turns. Our ambition is to implement this kind of process excellence as the standard across the whole company.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": false,
+          "rule12": false
+        },
+        "confidence": 0.3,
+        "adjustments": ["rule04: 40%/50%/2xという具体的な工場レベルの改善指標", "rule06: 個別工場の改善事例であり構造的競争優位ではなく補完的能力", "rule12: Q3 2014（二次ソース）—調整適用でさらに低下"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "生産効率向上によるリードタイム競争力とマージン改善",
+        "barrier": "工場改造とERPシステム統合の実績知識の蓄積"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Ulrich Spiesshofer",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "At our high voltage capacity plant in Sweden, we have implemented significant operational improvements. A 40% increase in revenue productivity, a 50% reduction in lead time and a doubling of inventory turns. Our ambition is to implement this kind of process excellence as the standard across the whole company."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_006",
+      "claim_type": "competitive_advantage",
+      "claim": "ABBは525kV HVDCケーブル（業界初、送電容量2倍）とYuMi協働ロボットという2つの革新的製品を開発し、HVDC電力インフラと産業自動化の新市場を開拓しようとしている。",
+      "evidence": "Ulrich Spiesshofer (Q3 2014 prepared_remarks): 'We announced a number of product innovations in the quarter, including that 525 kV HVDC cable that can double the power capacity of HVDC power transmission. Many of you saw our YuMi robot that we launched at our Capital Markets Day in London. We are confident that this technology will open large new markets in the future of industrial automation.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07", "rule08", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule07": false,
+          "rule08": false,
+          "rule12": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: 525kV HVDCは業界初の技術（容量2倍）という明確な技術的差別化", "rule08: 新製品ローンチ段階であり、商業的牽引力はまだ実証されていない", "rule12: Q3 2014（二次ソース）—調整適用"]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "HVDC・協働ロボットの新市場先行者優位",
+        "barrier": "525kVケーブル技術の開発・認証に要した工学的専門知識の蓄積"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Ulrich Spiesshofer",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "That 525 kV HVDC cable that can double the power capacity of HVDC power transmission. Many of you saw our YuMi robot that we launched at our Capital Markets Day. We are confident that this technology will open large new markets in the future of industrial automation."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_007",
+      "claim_type": "cagr_connection",
+      "claim": "ABBは$300Bインストールベースのサービス捕捉率を25%から40%へ高めることで、年間サービス売上の成長を通じグループ全体のCAGRを引き上げるメカニズムを持つ。",
+      "evidence": "Greg Scheu (Q4 2013 prepared_remarks): 'We've identified around the world $300 billion of actively running products. Today, we think we're capturing a little better than 25% of the annual opportunity on that. We'd like to take that to a higher level, where we could capture about 40% of that installed base opportunity as an annual annuity.' Ulrich Spiesshofer: 'The CAGR that you see here, the 5.3% is the CAGR from the start of the planning period until today, end of 2013. We expect 2015 to continue with the growth trajectory on the revenue side.' サービス成長がグループ成長の重要ドライバーとして位置づけられている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule06", "rule12"],
+        "results": {
+          "rule04": true,
+          "rule06": true,
+          "rule12": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule04: インストールベース$300B、捕捉率25%→40%という具体的なメカニズム", "インストールベース捕捉率向上→サービス売上成長→グループCAGR向上の2ステップメカニズムは直接的", "rule12: Q4年次決算（一次ソース）—調整なし"]
+      },
+      "power_classification": {
+        "power_type": null,
+        "benefit": "既存インストールベースのサービス化による安定的収益成長",
+        "barrier": null
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Greg Scheu",
+          "role": "Head of North America / Integration",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "We've identified around the world $300 billion of actively running products. Today, we think we're capturing a little better than 25% of the annual opportunity on that. We'd like to take that to a higher level, where we could capture about 40% of that installed base opportunity as an annual annuity that comes in."
+        }
+      ]
+    },
+    {
+      "id": "ABBN_008",
+      "claim_type": "factual_claim",
+      "claim": "ABB FY2013実績：売上$42B（過去最高）、フリーキャッシュフロー$2.6B、オペレーショナルEBITDA前年比+9%、純運転資本/売上比率15%、5期連続増配（CHF 0.70/株）。",
+      "evidence": "Eric Elzvik (Q4 2013 prepared_remarks): 'We reduced $2.6 billion free cash flow this year, in line with 2012. We came down to 15% net working capital percent of revenues. Operational EBITDA is up by 9%, ahead of revenue growth.' Ulrich Spiesshofer: 'We're at an all-time high in terms of revenue, close to $42 billion, in the group.' 'The board proposes to the AGM the fifth consecutive dividend increase. We are suggesting a dividend of CHF 0.70 a share.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule12"],
+        "results": {
+          "rule04": true,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule04: 複数の定量的財務指標が具体的に開示されている", "rule12: Q4年次決算（一次ソース）—調整なし", "事実確認型クレームとして高い確信度"]
+      },
+      "power_classification": {
+        "power_type": null,
+        "benefit": null,
+        "barrier": null
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Eric Elzvik",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "We reduced $2.6 billion free cash flow this year. We came down to 15% net working capital percent of revenues. Operational EBITDA is up by 9%, ahead of revenue growth."
+        },
+        {
+          "speaker": "Ulrich Spiesshofer",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "We're at an all-time high in terms of revenue, close to $42 billion. The board proposes to the AGM the fifth consecutive dividend increase. We are suggesting a dividend of CHF 0.70 a share."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "company_name": "ABB Ltd",
+    "primary_transcripts": ["201402_earnings_call.json (Q4 2013 Annual)"],
+    "secondary_transcripts": ["201410_earnings_call.json (Q3 2014)"],
+    "extraction_notes": "ABBはスイスの電力・自動化複合企業。主要な競争優位性はHVDCサブシー技術のリーダーシップと$300Bインストールベースのデータベース。Power Systemsの不採算プロジェクト問題が2013-2014年のリスク要因。"
+  }
+}

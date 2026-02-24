@@ -1,0 +1,274 @@
+{
+  "ticker": "AIR",
+  "transcript_source": "FY2014 Full Year Results (2015-02-27) [Primary]; H1 2015 Results (2015-07-30) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014 Full Year", "H1 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Airbus商業航空機の6,300機超のオーダーブック（10年超の生産カバレッジ）：A320family・A330・A350の強力な受注積み上げ",
+      "descriptive_label": "商業航空機オーダーブック積み上げ（Cornered Resource + Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Thomas Enders): 'commercial aircraft order book up 15% to more than 6,300 units now, representing, nominally, more than 10 years of deliveries...net book-to-bill in our commercial aircraft business above 2, with 1,456 net orders...we have taken the decision to ramp up production for our single-aisle families to 50 a month from 2017 onwards...A350 backlog is at 779 firm orders.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "機体設計・開発・製造能力という仕組みを評価。オーダーブックは結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "6,300機（+15% YoY）、Book-to-Bill 2超、A350バックログ779機という具体的で検証可能なデータ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "10年分のバックログは長期契約による極めて高いスイッチングコスト。製造認定の変更は航空会社にとって困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Boeingとの2社寡占市場。Airbus vs Boeing の直接比較でほぼ対等なシェア。民間航空機の実質的寡占市場"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t + pattern_IV_t",
+        "confidence": 80,
+        "confidence_adjustments": [],
+        "overall_reasoning": "10年超のオーダーバックログは競争優位の最も強力な証拠の一つ。Boeing との2社寡占で持続性も高い"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "オーダーバックログ積み上げ → A320ファミリー月産50機（2017年〜）→ 売上・EBIT CAGR加速",
+      "descriptive_label": "バックログ→生産ランプアップ→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：オーダーバックログ→生産ランプアップ確定→売上増加。2017年月産50機（現行46機）への増産決定は具体的なGuidance"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算での定量的ガイダンス"
+          }
+        ],
+        "confidence": 75,
+        "confidence_adjustments": [],
+        "overall_reasoning": "バックログ→生産増→売上増という直接的メカニズム。2015年以降の実績で部分検証可能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "A320neo/A350 XWBという次世代機の技術優位性：燃料効率・先進複合材・新世代エンジン統合能力",
+      "descriptive_label": "次世代機技術プラットフォーム（Process Power + Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Enders): '320neo first flights has also happened last year already, as scheduled, and we are certainly now ramping up the flight testing of the 320neo engine, the Pratt & Whitney engine, in 2015...We delivered the first 350 on time...Customer response to the 330neo confirmed that there is appetite in the market for efficient solutions, for low-risk solutions, for affordable solutions.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "機体設計・開発・認証取得能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "A350初納期通り、A320neo初飛行スケジュール通り、A380 2015年黒字化という具体的マイルストーン達成"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Boeing 737MAX・787との競合で、NEOとXWBは次世代機投資の集大成。開発費数十億ユーロは模倣コストが極めて高い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "A400M軍用輸送機でEUR551Mの追加費用計上。技術実行力に一部疑問符",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "民間機の技術競争力は確立されているが、A400M軍用機での費用超過が全体の技術実行力への懸念を若干高める"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "FX管理能力：$88Bヘッジブック（平均$1.33）・60%のドル自然ヘッジによる収益安定化",
+      "descriptive_label": "ドルFXヘッジ・自然ヘッジ構造（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual CFO Harald Wilhelm: 'The hedge book at the end of the year, as you can see, was $88 billion with an average of $1.33 exchange rate...we are fully protected for 2015 and '16 and largely for 2017...our U.S. dollar sourcing has been increasing to now cover close to 60% of our U.S. dollar revenues...The rule of thumb of $0.01 equals EUR 100 million EBIT impact is currently still valid.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "FX管理能力という仕組みを評価。競合のBoeingはドル本位なので非対称的優位性を持つ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$88Bヘッジブック・$1.33平均・60%自然ヘッジ・$0.01=$100M EBITインパクトという精緻な定量化"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "FXヘッジは競争優位というより財務リスク管理。ただし規模と精度は差別化要因"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t (partial)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "FXヘッジはリスク管理であり競争優位性のコアではない。構造的優位性として評価するには不十分",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "ヘッジ規模・精緻さは業界最高水準だが、競争優位性よりリスク管理として評価するのが適切"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "世界のサービス能力ネットワークと航空機部品・整備支援事業（MRO）における拡大余地",
+      "descriptive_label": "アフターマーケット・MROネットワーク（Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual CEO (Enders): 'The airline industry, I think, currently, is expected to be close to $20 billion of profit in 2014, and '15 looks even more promising. And I tell you what, I mean, airlines who are profitable are certainly better customers for us than airlines who are struggling and are loss-making...aircraft financing market continues to remain very healthy. The level of gross exposure in our portfolio is at an all-time low of $1.3 billion...This activity contributed around EUR 100 million to our free cash flow even in 2014 from sell down.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "このトランスクリプトではMRO事業への直接的な言及が少ない。航空機融資についての言及はある"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "weak",
+            "reasoning": "Boeing等も同様のアフターマーケット事業を展開。相対優位の証拠不十分"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "このトランスクリプトの中心はMROではなく機体製造・販売"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (partial)",
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "このトランスクリプトではMRO/アフターマーケットについての証拠が限定的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "MRO事業の競争優位性は実在するが、このトランスクリプトでの証拠が不十分で確信度は低い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Airbus Helicopters：官民両市場向け製品ポートフォリオ（EC175・H125等）と世界最大ヘリコプターメーカーとしての規模優位性",
+      "descriptive_label": "Airbus Helicopters製品ポートフォリオ（Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual CFO (Wilhelm): '402 net commercial helicopters were booked in 2014, including 8 EC175s and 32 Super Pumas...One new helicopter and 2 new variants have been introduced in the market next to the 175, Tom mentioned already before. As well, the 145 T2 and the 135 T3, which have been certified and delivered in 2014...The 175 is offering a high-availability rate for a new aircraft, and it's offering a competitive operational cost to fulfill customer expectations.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ヘリコプター設計・製造・認証能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "402機受注という数値あり。ただし収益性の詳細な比較データなし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Sikorsky（UTC）、Leonardo（旧AgustaWestland）との競合あり。世界最大ではあるが相対的優位の定量証拠限定"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "石油・ガス市場低迷がHelicoptersの北米需要に悪影響を与えており成長見通しが不透明",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "世界最大ヘリコプターメーカーとしての規模は認められるが、Oil&Gas低迷が短期的に影響。長期的には構造的優位あり"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 売上+5%（EUR60.7B）、EBIT（one-off前）+15%（EUR4.1B）、EPS +20%（one-off前）、EPS +61%（報告）、FCF EUR2B（M&A前EUR1.1B）、配当60%増（EUR1.20/株）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Airbusオーダーブック: 6,300機超（+15% YoY）、Book-to-Bill 2超（1,456純受注）、A350バックログ779機。A320ファミリー月産50機計画（2017年〜）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "次世代機進捗: A350初納機をQatarに按期交付（2014年末）、A320neo初飛行完了（2015年フライトテスト継続）、A380 2015年黒字化見込み（EUR triple-digit million改善）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "FX管理: ヘッジブック$88B（平均$1.33）、2015-16年完全保護・2017年大部分保護、ドル自然ヘッジ60%、$0.01変動=EUR100M EBIT影響",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Oncology Systems における世界最大級のインストールベース（>3,000台）と高粘着性サービス売上（40%）",
+      "evidence": "Q4 FY2014: 'Service was at 40% of the total Oncology, really a nice recurring linear revenue stream, and that business has been growing in the low double digits'",
+      "final_confidence": 0.6,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "インストールベースのservice機能（機器保守・ソフトウェア更新・治療計画サポート）が能力として機能"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "大型医療機器（3-4M USD/システム）のサービス契約は高いスイッチングコスト。放射線腫瘍医師の機器習熟も切り替えを困難にする"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "がん治療の精密化ニーズとBRICA市場のがん増加が長期需要を支える"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "業界構造×ポジション：oncology市場での世界最大インストールベース"
+        },
+        {
+          "pattern_id": "pattern_G",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Elekta、Accurayとの直接比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "スイッチングコスト構造と業界構造合致"
+        },
+        {
+          "source": "kb2_pattern_G",
+          "adjustment": -0.05,
+          "reasoning": "競合比較欠如"
+        }
+      ],
+      "overall_reasoning": "Service recurring revenueの高比率（40%）と定量的成長（低二桁）は評価できる。スイッチングコスト構造も合理的。まあ納得〜おおむね納得で60%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Oncologyインストールベース拡大（BRICA低二桁単位成長）→ 5年後のwarranty期間終了後service revenue急増",
+      "evidence": "Q4 FY2014: CFO 'bodes well after the warranty period as we get service contracts'",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "BRICA unit growth → warranty終了後service契約 → service revenue急増という直接的な接続。CFOが「bodes well after the warranty period as we get service contracts」と明言"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "直接的CAGR接続。CFOが明示的に言及した接続ロジック"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.1,
+          "reasoning": "CFO直接言及の接続"
+        }
+      ],
+      "overall_reasoning": "インストールベース→service契約の接続はCFOが直接言及。定量的でおおむね納得で70%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Oncology Systemsにおける返品率改善（Quality cost改善）と R&D8%投資による製品パイプライン",
+      "evidence": "Q4 FY2014: 'R&D came in up about 60 basis points from the year over period at 8% of revenues'",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "R&D 8%投資とquality改善は仕組みとして評価可能。Year of Investmentという戦略的投資の意図も言及"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "R&D 8%（+60bp）という定量データ。ただし投資対効果の証拠は限定的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性：R&D投資比率"
+        },
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "R&D投資比率のみで成果の定量証拠が未達"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "仕組みあり"
+        },
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.1,
+          "reasoning": "投資成果の定量証拠不足"
+        }
+      ],
+      "overall_reasoning": "R&D投資は継続的能力だが投資対効果の証拠が現時点では弱い。あまり納得〜まあ納得で40%"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "BRICA（BRICs + Africa）市場での低二桁単位成長により先行的インストールベース構築",
+      "evidence": "Q4 FY2014: 'A real bright spot for Oncology was our BRICA orders were up 25% year-over-year'",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "BRICA受注+25%、low double-digit unit growthという定量データ"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "新興国でのがん診断・治療インフラ整備は長期トレンド。First-moverはservice後収益での優位性"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "BRICA成長は結果。なぜVARが勝てているかの能力説明なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "成長実績は結果"
+        },
+        {
+          "source": "first_mover_logic",
+          "adjustment": 0.05,
+          "reasoning": "First-mover→service後収益の論理は合理的"
+        }
+      ],
+      "overall_reasoning": "BRICA成長は定量的だが結果に過ぎない。First-mover論理はあるが能力説明不足。あまり納得〜まあ納得で40%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: Oncology orders +5.1%（BRICA +25%）、service 40% of Oncology（低二桁成長）、EBIT margin 18.7%（法的費用前20%）",
+      "evidence": "Q4 FY2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "R&D 8% of revenues（+60bp）。バックログ$3.2B（+10%）、全セグメントバックログ増",
+      "evidence": "Q4 FY2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "BRICA受注+25%（FY2014）。unit growth low double-digits（BRICA牽引）",
+      "evidence": "Q4 FY2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "60-70": 1,
+      "70-80": 1,
+      "40-50": 2,
+      "50-60": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

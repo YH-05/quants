@@ -1,0 +1,288 @@
+{
+  "ticker": "SHW",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-29) + Q1-Q3 2015 Earnings Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Paint Stores Group（直販店舗網）による専業プロ向け直販チャネルの優位性",
+      "descriptive_label": "プロ向け直販店舗ネットワーク（4,003店舗）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Chris Connor): 'In December, our Paint Stores Group celebrated the opening of our 4,000th paint store... we exceeded our initial expectation of opening 80 to 90 new stores and finished the year with 95 net new locations and 4,003 total stores in the U.S., Canada and the Caribbean. We remain confident that our goal of 5,000 locations in North America is realistic.' (President John Morikis): 'comparable store sales increased 7.5% in the quarter and 8.8% in the year... Paint Stores Group profit increased 21.3% to $1.2 billion.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8, 9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "店舗ネットワーク構築能力（仕組み）を評価。比較店舗売上増は結果だが、能力の証拠としても機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "4,003店舗、comparable store sales +8.8%（年間）、Paint Stores Group margin 17.5%という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "直販店舗網は競合（PPG、RPM等）が短期で模倣困難な構造的優位。プロ顧客との直接関係"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "PPG（直販店舗なし）、Benjamin Moore（フランチャイズ）との明確な差別化。SHWは専業店舗を自社所有"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "プロ塗装業者市場でのサービス品質・迅速補充が重要な市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明あり。4,003店舗の直販網はペイント業界で類を見ない規模。プロ顧客への即日配送・技術サポート・調色サービスを一体提供する能力は競合が短期で模倣困難。市場成長率の約2倍のペイントストア成長が競合への優位性を示す"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Paint Stores Groupの店舗拡大（100-110店/年）× 同店売上+7-9% → 売上CAGR+8-10pp",
+      "descriptive_label": "店舗拡大×同店成長→売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。店舗拡大と同店売上成長は独立してCAGRを押し上げる直接的メカニズム。SEC開示の店舗数・売上データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2015年ガイダンス（高一桁%成長）が裏付け"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年実績（+9.3%）とガイダンス（高一桁%）の整合性あり。店舗拡大計画（100-110店/年、5,000店目標）とComex統合による利益改善が収益CAGR接続の根拠として十分"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "原材料調達規模と交渉力による原材料コスト優位性",
+      "descriptive_label": "大規模調達による原材料コスト交渉力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Chris Connor): 'Our raw material basket has many moving parts. But in total, we believe we're likely to see stable to declining input costs for this year... we would expect average year-over-year raw material cost inflation for the paint and coating industry to be down in the low single-digit range in 2015.' Gross margin improved to 46.4% (2014) from 45.3% (2013). 'consolidated gross margin above 46% for the first time ever.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "原材料コスト優位の「能力」（スケールと交渉力）は認められるが、発言は結果（GPM改善）の説明が主"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "GPM 46.4%（過去最高）という定量証拠。ただし競合GPMとの比較データは不足"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "調達規模は構造的優位性の要素だが、TiO2特定調達での優位性（TiO2 settlement）は補完的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "PPG、RPM等との調達コスト比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GPM改善は確認できるが、競合比較での調達コスト優位性の定量的証拠がない。塗料業界では大手各社が同様の調達規模を有する可能性があり、相対的優位性の証拠が弱い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "原材料コスト低下（原油・TiO2安定）× 売上増加 → GPM改善 → EPS CAGR+15-20pp",
+      "descriptive_label": "原材料コスト低下×売上成長→GPM改善→EPS成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。原材料コスト変動とGPMの関係は開示データで検証可能。2014年実績（EPS +20.9%）が裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2015年ガイダンスEPS $10.90-$11.10（+24-26%）は過去の原材料コスト動向と整合。ただし原材料コスト（原油・TiO2）は外部環境依存で確度に制約あり"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "マネジメントトレーニングプログラムによる人材供給パイプラインと店舗管理能力",
+      "descriptive_label": "大卒採用・管理職育成パイプライン能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Chris Connor): 'During the past year, we hired more than 1,400 new college graduates into our management training program to bolster our store staffing, improve our territory coverage and fill our store management pipeline. Although these investments tend to drive SG&A higher in the back half of the year, new stores and service employees pay for themselves over a very short period of time.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "採用・育成プログラム（能力・仕組み）を評価。店舗展開能力の基盤となる組織的プロセス"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "年間1,400人以上の大卒採用・育成プログラムは継続的な組織能力として構造的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "1,400人という数値あり。「pay for themselves over a very short period of time」の具体的ROIデータは不足"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合の採用規模・育成プログラムとの比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "店舗展開速度（95店/年）を支える人材パイプラインは能力として認められる。ただし競合との明確な差別化証拠なし。塗料業界での専門知識は模倣困難な側面があるが、それ自体の説明は不足"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Comex買収統合によるラテンアメリカ市場でのペイントストア拡大能力",
+      "descriptive_label": "M&A統合プレイブック（Comex買収統合）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Connor): 'We made great progress during the year on integration of the U.S. and Canadian Comex stores, the largest Paint Stores acquisition in our history. We stabilized sales volumes in these stores and significantly improved product assortment and product availability, all of which will result in a positive contribution to the Paint Stores Group operating profit in 2015.' 'working capital ratio dropped to 10.1% of sales from 10.5% last year. This improvement is further evidence of the progress our Paint Stores Group and global supply chain teams have made in integrating the Comex acquisition.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Comex統合能力（製品品揃え改善・在庫管理）という能力・仕組みを評価"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「M&A戦略」と「統合能力（優位性）」の境界が曖昧。ただし具体的な統合プロセス（製品品揃え・在庫管理）の説明あり"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "Comexが当初損失（-$32.3M on segment profit）を出したことは正直な開示。ただし断念例ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "M&A統合能力の説明は具体的だが、ルール8（戦略≠優位性）の懸念あり。ただし具体的な統合プロセス（製品品揃え・在庫管理・働き代変化）は能力的側面も持つ。競合の統合実績との比較なし"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "HGTV HOME by Sherwin-Williamsブランドによるホームセンター（Lowe's）チャネルでのブランドプレミアム",
+      "descriptive_label": "HGTV HOMEコラボによるブランド差別化・流通拡大",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Connor): 'In December, we announced our first-ever architectural paint program in Lowe's stores nationwide under the HGTV HOME by Sherwin-Williams brand. We're excited about this program, which will begin shipping in early spring, just in time for the start of the painting season.' Consumer Group segment profit decreased Q4 due to 'higher operating costs in advance of the HGTV HOME by Sherwin-Williams program rollout at Lowe's.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「HGTV HOMEプログラム」は戦略（新チャネル開拓）の側面が強い。ブランド資産そのものの能力説明が不足"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "HGTV（家改装テレビブランド）とのコラボはSherwin-Williamsブランドを補完する構造的要素"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Behr（Home Depot）、Dutch Boy等ホームセンター競合との差別化定量データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新ブランドプログラムは戦略的イニシアティブであり、競争優位性としての評価は困難。Consumer GroupのQ4利益減少（HGTV HOMEのコスト先行）が示すように、短期的なコスト負担を伴う投資フェーズ。Lowe's向け競合（Behr/PPG）との差別化証拠なし"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Paint Stores Group: 4,003店舗（2014年末）、comparable store sales +8.8%（通年）、セグメント利益$1.2B (+21.3%)、セグメント利益率17.5%（2014年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年通年売上$11.13B (+9.3%)、GPM 46.4%（過去最高）、EPS $8.78 (+20.9%)、営業キャッシュフロー$1B超（2年連続）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "2015年原材料コスト：石油価格下落・TiO2安定化により業界全体でLSD%低下を予測。2015年ガイダンスEPS $10.90-$11.10 (+24-26%)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    }
+  ]
+}

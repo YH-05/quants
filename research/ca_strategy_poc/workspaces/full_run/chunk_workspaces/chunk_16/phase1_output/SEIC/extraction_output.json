@@ -1,0 +1,409 @@
+{
+  "ticker": "SEIC",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-28) + Q1-Q3 2015 Earnings Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "SEI Wealth Platform（SWP）による差別化された富裕層管理ソリューションのスイッチングコスト",
+      "descriptive_label": "SWPプラットフォームのスイッチングコスト",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Alfred West): 'Our momentum accelerated... the SWP business model is aligned to our clients' success. As they grow, so will we.' Q2 2015 Q&A (CFO Dennis McGonigle): 'these sales cycles are very long... trying to get them to absorb not only a significant technological change that's going to take multiple years to implement but also to absorb a complete operational footprint change at the same time.' Trust 3000からSWPへの移行は複数年を要し、データ移行・システム統合・オペレーション変更を伴う高いスイッチングコストが存在することが確認される。",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プラットフォーム統合の深度（能力・仕組み）を評価。顧客維持率は結果ではなく、実装の複雑さが能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "Wells Fargoとの40年超の関係、30以上の署名クライアントという数値はあるが、直接的な競合比較データは不足"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Trust 3000からSWPへの移行コスト（複数年・複雑な実装）は構造的なスイッチングコスト"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "富裕層管理市場でのIT統合ソリューションは高いスイッチングコストが市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な説明あり。Trust 3000からSWPへの移行が複数年・複雑であることが複数の発言で確認される。Wells Fargoが40年以上の関係を継続していることは高いスイッチングコストの証拠。ただし競合（SS&C、Advent）との明確な定量比較は不足"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "SWPスイッチングコスト → 長期契約更新率維持 → 資産連動型フィー収益のCAGR+3-5pp",
+      "descriptive_label": "SWP粘着性→アセット成長→収益CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。アセットベースフィー構造が開示されており、AUA成長が収益成長に直接接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。投資仮説の根幹として採用"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Win-win pricing model（資産連動型）が開示されており、クライアントの資産成長がSEIC収益に直接反映される2ステップの接続。U.K. SWP AUAが18%成長（2014年）という定量的裏付けあり"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "機関投資家向けフィデューシャリー管理（OCIO）における差別化された実績と顧客粘着性",
+      "descriptive_label": "機関投資家OCIO能力と顧客維持力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Ed Loughlin, Institutional Segment): 'SEI has a proven track record of adding value for clients and competes favorably in the outsourcing space... new competitors have entered the outsourcing space, making each deal more competitive but, overall, generating more sales opportunities.' Q4 margins 50%, full year margins 51% (up 3%). Q2 2015: 'very high' client retention, 52% margins.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Segment Head (Ed Loughlin)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_7_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「proven track record」は結果。ただし20年超の運用経験、DB/DC両対応という能力の説明あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合の特定言及なし。「新競合参入」で競争激化と認めるが差別化根拠は定性的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "50-51%の安定した高マージン、$7.9B/年の新規署名という定量データあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "DCアウトソーシング市場の拡大トレンドとSEICのフィデューシャリー専門性は市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "「proven track record」= 結果の提示にルール1-T部分違反",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "50-51%の高マージンが定量的に確認できるが、純粋競合（Mercer、Russell、Aon Hewitt等）との明確な差別化説明が不足。競合参入を認めつつも「favorably compete」という定性的な主張に留まる"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "OCIO市場拡大（DC移行トレンド）× SEICの専門性 → 機関投資家部門のCAGR+5-8pp",
+      "descriptive_label": "DC市場成長×OCIO専門性→収益成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップの因果。市場拡大はアナリストが懸念するDC資産の縮小懸念（ベビーブーマー退職）と矛盾する可能性"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "アナリストがDC資産の将来縮小リスクを指摘しており、市場成長前提が不確実。ただしOCIOサービスの新設・拡大需要は実質的であり、DC→DB型管理移行トレンドは2015年時点で確認できる"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "ファンドアドミニストレーション市場における規模の経済と多様なソリューションポートフォリオ",
+      "descriptive_label": "Investment Manager向けプラットフォームの規模経済",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Steve Meyer, Investment Managers): 'We have strong solutions with breadth of coverage and depth of capability as well as a diversified portfolio of clients.' 'profit increase was a direct result of our new revenue growth, an increase in leverage in our operations.' Third-party AUM $355.9B with 19.2% profit growth vs 7.9% revenue growth in Q4 2014.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Segment Head (Steve Meyer)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "19.2% profit growth vs 7.9% revenue growthという営業レバレッジの定量証拠。$355.9B AUM"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "オペレーショナルレバレッジは規模拡大時に自然に生じる構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "SS&C、State Street等の競合との具体的な差別化説明なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "ファンドアドミ市場の規模経済は市場構造に合致するが、SEIC特有の優位性の説明が弱い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合との明確な差別化説明なし（ルール7-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "営業レバレッジの証拠は定量的に示されているが、純粋競合への差別化が不明確。「breadth of coverage and depth of capability」は定性的で測定不能な主張に近い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Investment Manager AUM増加 → 固定コスト分散 → 利益率改善 → CAGR接続",
+      "descriptive_label": "AUM成長→営業レバレッジ→利益率改善経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。Q4 2014実績（19.2% profit growth vs 7.9% revenue growth）で検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "過去実績でオペレーショナルレバレッジが数値的に確認できる。AUM成長とコスト管理を組み合わせた収益改善経路は直接的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "投資アドバイザー向けのトータルビジネスソリューション（テクノロジー+カストディ+アウトソーシング+投資）の統合提供能力",
+      "descriptive_label": "Adviser向け統合型ビジネスソリューション提供能力",
+      "evidence_from_transcript": "Q2 2015 Q&A (Wayne Withrow, Adviser segment): 'We don't look at it as... we provide a total business solution for the adviser, of which investments are just a component. We provide technology, custody, back-office outsourcing, investments all as part of a package. Our value proposition is all around the business solution for the adviser.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Segment Head (Wayne Withrow)",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "統合提供能力（能力・仕組み）を評価。結果（AUM成長）ではなく能力（パッケージング力）"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "「トータルビジネスソリューション」は戦略だが、それを実現する統合能力は優位性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "統合型パッケージは競合（LPL、Raymond James等）が短期で模倣しにくい構造的要素"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合（LPL Financial等）との具体的な差別化説明なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callからの発見（従・②相当）、確信度-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "競合との差別化説明なし（ルール7-T）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Q2発言由来のため主の仮説としての採用には注意が必要。統合型ソリューションの説明は能力として評価できるが、競合（LPL、Raymond James等）との明確な差別化が示されておらず、確信度は中程度"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Wells Fargo大型行との40年以上の長期関係・信頼に基づくプラットフォーム拡張能力",
+      "descriptive_label": "大型金融機関との長期信頼関係によるアップセル能力",
+      "evidence_from_transcript": "Q2 2015 Prepared Remarks (Joe Ujobai, Private Banking): 'SEI and Wells Fargo have an extensive history as partners that spans over 40 years. Wells Fargo was one of the earliest adopters of SEI's leading industry solution, Trust 3000, and has grown their wealth management business on Trust for over 4 decades.' Q2 Q&A: '我々が最初に行うのは現在クライアントのトラストブックをSEI Wealth Platformに移行し、より強固なコアインフラと追加サービスを提供すること。その後に新たなブックオブビジネスの獲得へ。'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Segment Head (Joe Ujobai)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_10_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "40年の関係は結果の側面が強い。ただし「エクステンシブ・ヒストリー」という長期信頼資産は能力的側面もある"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "長期顧客関係に基づくアップセルは構造的優位性の要素を持つ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "他のプラットフォームベンダーとの差別化が不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callからの発見（従・②相当）、確信度-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "長期関係は結果の側面が強い（ルール1-T部分違反）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Wells Fargoとの40年超の関係はSEICの信頼資産だが、それ自体は「結果」であり、なぜ競合でなくSEICが選ばれ続けるかの「能力」説明が不足。Q2四半期発言からの抽出でもある"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "U.K. SWP AUA（管理資産）が2014年通年で18%成長し$33.7Bに達した。30のSWP署名クライアントが存在し、バックログは5社約$4.5Mの定期収益",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "機関投資家セグメントのQ4 2014マージンは50%、通年マージンは51%（前年比3%増）。通年新規署名$7.9B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Investment Managersセグメント：サードパーティAUM $355.9B。Q4 2014利益成長19.2% vs 収益成長7.9%の営業レバレッジ確認",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "LSV Asset Managementにおけるバリュー投資クォンツ能力と安定した運用パフォーマンス",
+      "descriptive_label": "LSVクォンツバリュー投資能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Dennis McGonigle): 'LSV contributed approximately $35 million in income to SEI during the quarter.' Revenue $106M for quarter, performance fee 7% of revenue. LSV AUM grew $1.4B in Q4. Q2 2015: LSV income $38.3M, revenue $117M with >10% performance fees.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO (Dennis McGonigle)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「パフォーマンスフィー収益」は結果。クォンツモデルの能力自体の説明は少ない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "パフォーマンスフィー7-10%、$35-38M/QのLSVインカムという定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "他のバリュー投資クォンツファンドとの差別化説明なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "LSVの収益貢献は定量的に確認できるが、競合のバリューファンドとの差別化が説明されておらず、「能力」ではなく「結果」の提示に近い。39.3%の持分があることもあり、SEICの直接的な競争優位というよりは保有資産の価値"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "LSVパフォーマンス → パフォーマンスフィー → SEICの持分収益向上",
+      "descriptive_label": "LSV運用成果→パフォーマンスフィー→SEICインカム経路",
+      "source_advantage": 12,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2ステップだが、LSVのパフォーマンスは市場環境依存であり、競合バリューファンドとの差別化なしには持続性不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "接続メカニズムは直接的だが、LSVのアルファ生成能力の持続性が不明確。パフォーマンスフィーは収益変動要因として機能"
+      }
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "scored_claims": [
+    {
+      "id": "ADI_001",
+      "claim": "ADI は 50 年以上にわたり高性能精密アナログ・混合信号処理の技術的ノウハウを蓄積してきており、sub-1 ppm 品質レベルの製品を数千種類の顧客に提供できる。この深いシステムドメイン知識は新規参入者が短期間で模倣できない。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "50 年の技術蓄積・システムドメイン知識（仕組み）を評価。具体的な品質指標（sub-1 ppm）で能力を特定。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "sub-1 ppm 品質レベルという具体的な技術指標。過去 5 年 CAGR 14% という産業 Auto 成長実績あり。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "50 年の技術蓄積は構造的要素。産業オートメーションの長いライフサイクルと高い参入障壁をマネジメントが明示。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "技術的ノウハウ（能力）を評価。高評価パターン III 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "50 年の精密アナログ技術蓄積と sub-1 ppm 品質は Process Power の典型。産業用途のアナログ IC は設計フリーズ後の変更コストが非常に高く、長いライフサイクルで競合の模倣が困難。CEO の 'Superior innovation drives superior business results' というメッセージと一致。70%。"
+    },
+    {
+      "id": "ADI_002",
+      "claim": "ADI の産業顧客は、設計サイクルの初期から ADI と協業し長期的なシステム統合を行っており、製品ライフサイクルが長く（multi-year）、顧客の再設計コストが高いため切り替えコストが極めて高い。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「earlier and earlier」という顧客依存深化のメカニズム（仕組み）を評価。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "産業用途の長いライフサイクルと設計フリーズ後の変更困難性は構造的 Switching Costs。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "設計サイクル早期協業という能力を評価。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q2 2015 secondary source で -10% 調整が Phase 1 で適用済み。Phase 1 の 0.7 を維持。"
+        }
+      ],
+      "overall_reasoning": "産業用アナログ IC の設計フリーズ後の変更コストは非常に高い（設計・認証・テストの全工程やり直し）。CEO の「earlier and earlier in their innovation cycles」発言は顧客依存の深化を示す明確な証拠。Q2 secondary source だが内容の質は高い。70%。"
+    },
+    {
+      "id": "ADI_003",
+      "claim": "ADI の core business（Industrial, Comms Infra, Automotive）は過去 5 年間で CAGR 11% 成長し、売上高 $1B 超の Industrial 事業を持つ。65%-68% のグロスマージンモデルを維持しつつ、500 bps の営業レバレッジ余地が存在する。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "CAGR 11% は成長実績（結果）。Scale Economies のメカニズム（規模拡大によるコスト逓減）より Operational Leverage に近い。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "500 bps のレバレッジ余地・65-68% グロスマージンという具体的数値あり。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "CAGR 11% 成長（結果）を Scale Economies 証拠として使用する傾向あり。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "65-68% グロスマージンと 500 bps レバレッジ余地は定量的裏付けとして機能。ただし Scale Economies 本来のメカニズム（規模拡大によるコスト逓減）の説明が弱く、むしろ Operational Leverage の性質が強い。50%。"
+    },
+    {
+      "id": "ADI_004",
+      "claim": "Hittite Microwave の買収（2014 年）により、ADI は RF・マイクロ波信号処理のフルポートフォリオを獲得した。通信インフラ・航空宇宙・防衛市場での競合上の地位を強化。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "RF/マイクロ波分野での独自技術ポートフォリオ（能力）を評価。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "通信インフラ 45% 成長（うち Hittite 由来の inorganic 分）という数値あり。ただし Hittite 単独の定量的差別化は限定的。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "買収による Cornered Resource 獲得だが、純粋競合との差別化が明確に示されていない。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Hittite は RF/マイクロ波分野での独自技術を持ち、競合数が限られる。ただし買収完了後 1 年弱で統合・シナジー発揮の実績証拠は限定的。Hittite 単独収益（mid-$70M/四半期）の持続性も未検証。50%。"
+    },
+    {
+      "id": "ADI_005",
+      "claim": "ADI の産業オートメーション向けソフトウェア定義信号処理プラットフォームは、顧客の数百台の製造プラットフォームを数台に集約し（50% 以上のチャンネル密度向上）、再設定可能なアーキテクチャで維持コストを削減する。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "ソフトウェア定義プラットフォームという具体的な能力（仕組み）。50% チャンネル密度改善という定量指標で能力を特定。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "50% チャンネル密度改善・数百台→数台への集約という具体的な技術効果の定量データ。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "50% チャンネル密度改善という定量的技術差別化。高評価パターン I 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "産業 4.0 の文脈でソフトウェア定義プラットフォームは高評価。50% チャンネル密度改善という具体的定量効果があり、顧客の競争力に直接貢献する Process Power。harsh environment での高信頼性要求は参入障壁となる。70%。"
+    },
+    {
+      "id": "ADI_006",
+      "claim": "ADI の高性能アナログ・混合信号処理ブランドは、産業・通信インフラ・自動車分野での「最高精度」「最高信頼性」の設計における事実上の基準として確立されており、エンジニアコミュニティでの指名設計（design-in）において強い力を持つ。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「ブランドはこれまで以上に強い」はマネジメントの自己評価。外部からの検証が必要。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "ブランド力の定量的裏付け（市場シェア、design-in 勝率等）が開示されていない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "定性的なブランド主張。外部検証データなし。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q2 2015 secondary source のため -10% 調整。"
+        }
+      ],
+      "overall_reasoning": "50 年の技術歴史は Design-in における信頼構築の証拠として機能するが、dogma.md ブランド類型 2（デファクト的認知）としての強度証拠が限定的。自己評価（「ブランドはこれまで以上に強い」）は評価を上げる材料ではない。50%。"
+    },
+    {
+      "id": "ADI_007",
+      "claim": "ADI の自動車向け ADAS および電動化向けポートフォリオは、既存の精密アナログ技術基盤を複数の自動車用途（パワートレイン、インフォテインメント、安全）に横展開することでスケールメリットを発揮している。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "技術基盤の横展開は方向性だが、Scale Economies の具体的メカニズムの説明が弱い。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "Q2 自動車成長 13% 前年比 3% は modest。規制・需要の外部環境要因が主因。"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q2 2015 secondary source のため -10% 調整。"
+        }
+      ],
+      "overall_reasoning": "ADAS・電動化は長期的な成長ドライバーだが、PoiT 時点での自動車成長率（前年比 3%）は modest。技術の横展開は Scale Economies の一形態だが、具体的なコスト逓減メカニズムの説明なし。50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "40-50": 4,
+      "60-70": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

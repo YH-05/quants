@@ -1,0 +1,98 @@
+{
+  "ticker": "SAB",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": ["SAB-001", "SAB-002", "SAB-003", "SAB-004", "SAB-005"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "SAB-001",
+      "claim_type": "competitive_advantage",
+      "claim": "アフリカ市場における地域ブランドポートフォリオの支配的ポジション（Africa NPR +10%、vol +5%）と現地生産・流通ネットワークによる競合参入障壁",
+      "descriptive_label": "アフリカ地域ブランド+現地ネットワーク優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 現地生産・流通ネットワーク×地域ブランド蓄積（50年以上）という能力の仕組み説明あり",
+        "rule_4_t": "PASS - Africa NPR +10%・vol +5%・Castle Lite +20%超という定量値",
+        "rule_6_t": "PASS - 現地ブランド×生産ネットワーク×流通インフラの組み合わせは構造的優位",
+        "rule_11_t": "PASS - アフリカ中産階級拡大トレンドとSABの現地密着ネットワークの合致",
+        "rule_12_t": "H1発言から-0.1調整"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。50年以上の現地ブランド蓄積はHeineken・Carlsbergが短期模倣不可能",
+      "kb3_t_calibration": "ARM-001（IPネットワーク→70%）と類似した参入障壁。Castle Lite 20%超成長という定量的証拠が強力。H1発言-0.1調整後60%",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（現地生産・流通ネットワーク能力）。Rule 4（定量的裏付け）: PASS（NPR +10%・Castle Lite +20%）。Rule 11（業界構造）: PASS（アフリカ中産階級拡大×SAB現地密着）。H1発言から-0.1調整",
+      "final_confidence": 0.6,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_III_t（競合模倣困難）。dogma.md Rule 1・4・11の3重適合。Castle Lite 20%超成長とNPR +10%が定量的証拠。H1発言-0.1調整で70%→60%"
+    },
+    {
+      "id": "SAB-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ラテンアメリカ（特にコロンビア・ペルー）でのプレミアム化・価格設定力（NPR +7%、vol -4%でも価格/ミックスがカバー）",
+      "descriptive_label": "ラテンアメリカプレミアム化による価格設定力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 「net revenue management capability」という仕組みの明示あり",
+        "rule_4_t": "PASS - vol -4%でもNPR +7%という逆張り定量的証拠",
+        "rule_6_t": "PASS - コロンビア・ペルーでの構造的市場ポジション（現地ブランド×価格設定能力）",
+        "rule_12_t": "H1発言から-0.1調整"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）。vol減少下でのNPR成長という独自の逆張り証拠",
+      "kb3_t_calibration": "BATS-003（pricing power→70%）と類似した価格設定力の証拠。vol -4%でもNPR +7%というパターンは強力。H1発言-0.1調整後60%",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（NRM能力=能力）。Rule 4（定量的裏付け）: PASS（逆張り定量値）。Rule 7（競合比較）: 部分的（ABInBev比較なし）。H1発言-0.1調整",
+      "final_confidence": 0.6,
+      "scoring_rationale": "KB1-T Rule 1・4・6 PASS。KB2-T pattern_I_t（定量的差別化）。dogma.md Rule 1・4 PASS。vol減少下でのNPR成長は「NRM能力」の強力な証拠。H1発言-0.1調整で70%→60%"
+    },
+    {
+      "id": "SAB-003",
+      "claim_type": "competitive_advantage",
+      "claim": "USD 500M コスト効率化プログラム（FY2018完了目標）による構造的マージン改善能力",
+      "descriptive_label": "大規模コスト効率化プログラムによるProcess Power",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - USD 500M・70bps/年マージン改善という具体的なProcess Power計画",
+        "rule_4_t": "PASS - 定量的目標値あり",
+        "rule_6_t": "FAIL - コスト削減プログラムはABInBev・Heinekenも同様に推進",
+        "rule_7_t": "FAIL - 競合比較なし（業界全体でコスト削減を推進）",
+        "rule_12_t": "H1発言から-0.1調整"
+      },
+      "kb2_t_pattern": "pattern_G_t（競合との差別化が不明確）。大手ビール企業はいずれもコスト削減プログラムを実施",
+      "kb3_t_calibration": "ADN-002（コスト削減=戦略→30%）と類似。ただし定量的目標値（USD 500M・70bps）があるため若干評価高い",
+      "dogma_evaluation": "Dogma Rule 8（戦略≠優位性）: コスト削減プログラムは戦略的取り組みだが優位性の仕組みとは区別が必要。Rule 3（相対的優位性）: 部分的。40-50%の範囲",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 1・4 PASS、Rule 6・7 FAIL（業界共通）。KB2-T pattern_G_t（差別化不明確）。dogma.md Rule 8制約。業界共通のコスト削減だが定量的目標値（USD 500M）が評価要素。H1発言-0.1後40%"
+    },
+    {
+      "id": "SAB-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Castle Liteプレミアムブランドによるアフリカ全土でのアスピレーショナル消費者獲得（+20%超成長、複数国展開）",
+      "descriptive_label": "Castle Liteプレミアムブランドのアフリカ展開力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PARTIAL - 「premium experiences」との関連付けは言及されるが仕組みの詳細説明が不十分",
+        "rule_4_t": "PASS - 20%超成長・グローバルトップ20ブランドという定量値",
+        "rule_6_t": "PASS - アフリカにおける「アスピレーショナルブランド」としての独自ポジション",
+        "rule_7_t": "FAIL - Heineken・SABMiller競合との比較なし",
+        "rule_12_t": "H1発言から-0.1調整"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）。Castle Lite 20%超成長という具体的実績値",
+      "kb3_t_calibration": "SKY-001（独占的コンテンツ→70%）に類似したブランド独占性。ただし「仕組みの説明」が不十分なため若干低め。H1発言-0.1調整後50%",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: 部分的（20%成長は結果だが「premium experiences」という仕組みに言及）。Rule 4（定量的裏付け）: PASS。Rule 7（競合比較）: FAIL。H1発言-0.1調整",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 4・6 PASS、Rule 1部分的・Rule 7 FAIL。KB2-T pattern_I_t（定量的差別化）。dogma.md Rule 1部分的・Rule 7 FAIL。Castle Lite 20%超成長はBranding優位の強力な実績証拠。H1発言-0.1調整で60%→50%"
+    },
+    {
+      "id": "SAB-005",
+      "claim_type": "competitive_advantage",
+      "claim": "CR Snow（中国）での合弁パートナーシップによる中国ビール市場#1ポジションと地域ブランド浸透",
+      "descriptive_label": "CR Snow合弁による中国市場#1ポジション",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - Snow「世界最大売上ビールブランド」は結果（market share）であり仕組みではない",
+        "rule_4_t": "FAIL - 定量的シェアデータ（天候不順で-3%）は結果。中国当局/合弁構造の説明なし",
+        "rule_7_t": "FAIL - 競合（Tsingtao・Yanjing・Budweiser）との比較なし"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）。Snow世界最大はmarket shareの結果。CR Snowの合弁構造（49%持分）もSAB固有の優位性として説明不足",
+      "kb3_t_calibration": "ADN-003（グローバルプレゼンス=業界共通→30%）と類似。合弁構造は独自だが合弁パートナー（China Resources）依存度が高い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（世界最大ブランドは結果）。Rule 3（相対的優位性）: FAIL（競合比較なし）。Rule 8（戦略≠優位性）: 合弁は戦略的決定。30%が上限",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T全ルール FAIL（結果・競合比較なし）。KB2-T pattern_A_t（結果を原因）。dogma.md Rule 1・3・8違反。Snow世界最大は結果指標。CR Snowの合弁はSAB固有の優位性として説明不足。H1発言でも改善しない。30%"
+    }
+  ]
+}

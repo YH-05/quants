@@ -1,0 +1,27 @@
+{
+  "ticker": "ADN",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["ADN-011"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "ADN-011",
+      "claim_type": "competitive_advantage",
+      "claim": "98-99%が経常収益（パフォーマンスフィーに依存しない安定収益構造）",
+      "descriptive_label": "高経常収益比率による収益安定性",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 98-99%経常収益比率は収益構造の結果。その収益構造を維持する能力（長期顧客関係、解約困難性）の説明なし",
+        "rule_4_t": "PASS - 98-99%という明確な定量値あり。競合比較はないが具体的",
+        "rule_7_t": "FAIL - ロングオンリー資産運用会社全般がパフォーマンスフィー依存度が低い（Schroders、M&G等も同様）"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）、pattern_B_t（業界共通）",
+      "kb3_t_calibration": "MNST#1（高市場シェア=結果 → 50%）と類似。ADNの場合は収益構造の安定性という結果。ただし98-99%という特に高い数値は注目に値する",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: 経常収益比率は収益モデルのアウトカム。Rule 3（相対的優位性）: ロングオンリーAM全般の特性として業界共通。Q4発言は評価されるが能力説明の欠如",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・7の違反。KB2-T pattern_A_t（結果を原因）と pattern_B_t（業界共通）の複合該当。dogma.md Rule 1・3違反。98-99%という定量値は評価するが、それは結果指標。30%"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "ticker": "LKQ",
+  "company_name": "LKQ Corporation",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201401_earnings_call.json", "quarter": "Q4 2013", "call_type": "primary"},
+    {"file": "201404_earnings_call.json", "quarter": "Q1 2014", "call_type": "secondary"},
+    {"file": "201407_earnings_call.json", "quarter": "Q2 2014", "call_type": "secondary"},
+    {"file": "201410_earnings_call.json", "quarter": "Q3 2014", "call_type": "secondary"},
+    {"file": "201501_earnings_call.json", "quarter": "Q4 2014", "call_type": "primary"},
+    {"file": "201504_earnings_call.json", "quarter": "Q1 2015", "call_type": "secondary"},
+    {"file": "201507_earnings_call.json", "quarter": "Q2 2015", "call_type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "LKQ-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "LKQは断片化した車両部品流通業界（リサイクル部品・アフターマーケット・欧州ECP・Specialty）を継続的M&Aで統合し、北米・欧州での最高フルフィルメント率を実現するネットワークを構築。業界トップの車両部品スケールが保険会社・修理工場の依存度を高める。",
+      "evidence_quotes": [
+        "Each of our businesses operate in fragmented markets that are ripe for consolidation. By buying the #1 or #2 players in the market, with the right management teams, we can begin to build a network that offers tremendous synergies and scale by offering industry-leading fill rates. Simply stated, in the vehicle parts business, the distributor that has the part readily available and can get it to the customer on time wins the sale. (Q2 2015 prepared remarks)",
+        "the number of available certified parts. On a year-over-year basis, that number of SKUs increased 18%, which is critical to our insurance partners. (Q2 2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - フルフィルメント率という能力・SKU規模",
+        "rule04_quantitative_evidence": "PASS - SKU 18%増、北米オーガニック成長6.3%という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - ネットワーク規模・SKU密度は構造的優位性",
+        "rule07_pure_competitor_differentiation": "PASS - 断片化市場でのコンソリデーターとして明確な差別化",
+        "rule08_strategy_not_advantage": "PASS - 実現済みのネットワーク優位性",
+        "rule10_negative_case": "PASS - SKU拡大・オーガニック成長で実証済み",
+        "rule11_industry_structure_fit": "PASS - 在庫深度・即時配送は車両部品業界の決定要因",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q2 2015）"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "SKU規模・フルフィルメント率という競争優位性は車両部品業界で実証されている。保険会社17社との提携は参入障壁を形成。断片化市場のコンソリデーターとしての地位は持続的。"
+    },
+    {
+      "claim_id": "LKQ-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "claim_text": "LKQ欧州（ECP：Euro Car Parts）は194支店ネットワーク（UK）でのオーガニック成長11.6%を実現。支店密度の増加がサービスレベル向上→顧客増加→さらなる支店拡張という正のフィードバックを形成している。自動化倉庫Tamworth 2（T2）はこのネットワーク効果を強化する基盤投資。",
+      "evidence_quotes": [
+        "ECP's continued solid performance drove organic revenue growth of 11.6% in the quarter, and for branches opened more than 12 months, ECP's organic revenue growth was 7.1%. (Q2 2015 prepared remarks)",
+        "During Q2, ECP opened 2 additional branches, bringing our U.K. network to 194 branches. We anticipate opening 5 branches in Q3 and 3 additional in Q4. (Q2 2015 prepared remarks)",
+        "This is a large and exciting project with a strong return on capital profile that will provide us with a competitive advantage in the U.K. to further protect the business and provide a platform for continued growth. (Q2 2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - ネットワーク密度・支店数という能力",
+        "rule04_quantitative_evidence": "PASS - 194支店・11.6%オーガニック成長という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - 支店ネットワーク密度は再現困難な構造的資産",
+        "rule07_pure_competitor_differentiation": "PASS - UK市場での密度は競合に対して優位",
+        "rule08_strategy_not_advantage": "PASS - 既存194支店という実現済み優位性",
+        "rule10_negative_case": "PASS - 7.1%成長（既存12ヶ月超）で実証済み",
+        "rule11_industry_structure_fit": "PASS - 欧州車両部品は配送速度が決定要因",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q2 2015）"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "ECP欧州でのネットワーク密度は明確な競争優位性。194支店は競合には再現困難。T2投資（GBP75M）はさらなる差別化につながる。ただしT2は2018年稼働予定で短期的にはコスト増加要因。"
+    },
+    {
+      "claim_id": "LKQ-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "LKQのリサイクル部品・アフターマーケット部品事業は、保険会社に対して「新品OEM部品の代替として10-40%安い代替部品」を提供するモデルであり、ディーラーやOEM部品メーカーには模倣困難なコスト構造を持つ。18社の保険パートナーとの連携が需要の安定性を高めている。",
+      "evidence_quotes": [
+        "our U.K.-based insurance and industry relation teams have been working diligently with our 17 insurance partners in the U.K. to drive increased alternative collision part usage (Q2 2015 prepared remarks)",
+        "during the second quarter, we purchased nearly 75,000 vehicles for dismantling by our wholesale operations, which is a 5.6% increase compared to Q2 of 2014. (Q2 2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 調達・解体・流通という能力インフラ",
+        "rule04_quantitative_evidence": "PASS - 75,000台/四半期調達という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - OEMパーツメーカーには代替部品モデルは模倣困難",
+        "rule07_pure_competitor_differentiation": "PASS - リサイクル+アフターマーケット統合は独自モデル",
+        "rule08_strategy_not_advantage": "PASS - 実現済み事業モデル",
+        "rule10_negative_case": "PASS - 保険17社パートナーシップで実証済み",
+        "rule11_industry_structure_fit": "PASS - 保険費用削減は持続的需要ドライバー",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "保険会社との連携に基づく代替部品モデルは構造的優位性。OEMには模倣困難。ただしスクラップ価格変動（36%下落）が収益の波動要因となっており、コモディティリスクあり。"
+    },
+    {
+      "claim_id": "LKQ-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "走行距離増加（2015年の最高水準、前年比+3.4%）、燃料費低下（前年比-31%）、雇用改善（失業率5.4%）によって自動車保険事故件数・修理需要が構造的に拡大しており、LKQの北米車両部品事業のアドレッサブル市場が拡大している。",
+      "evidence_quotes": [
+        "the 12-month moving average for miles driven through May 2015 reached its highest level since 1990. (Q2 2015 prepared remarks)",
+        "the year-to-date average price of unleaded regular gas was $2.42 a gallon through May of 2015 compared to an average of $3.51 during the same period in 2014. (Q2 2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "走行距離増加・燃料費低下は短期的追い風として実証されており、北米オーガニック成長6.3%と整合する。"
+    },
+    {
+      "claim_id": "LKQ-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q2 2015: 売上$1.84B（+7.5%）、オーガニック成長7.5%（北米6.3%、欧州ECP 11.6%）、Segment EBITDA $233M（+10%、12.7%）、EPS $0.39（+15%）。スクラップ価格36%下落でEPS -$0.03、FXでEPS -$0.03の逆風あり。",
+      "evidence_quotes": [
+        "revenue reached a new quarterly high of $1.84 billion, an increase of 7.5% as compared to $1.71 billion in the second quarter of 2014. (Q2 2015 prepared remarks)",
+        "Segment EBITDA totaled $233 million for the quarter, reflecting a 10% increase from 2014 (Q2 2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "決算数値として確認済みの事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "competitive_advantage_claims": 3,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Scale Economies", "Network Economies", "Counter-Positioning"],
+    "analyst_notes": "LKQは断片化市場のコンソリデーターとしての Scale Economies と欧州でのネットワーク密度が主要な競争優位性。保険会社との代替部品エコシステムもCounter-Positioningとして機能。スクラップ価格変動というコモディティリスクがあるが、オーガニック成長は健全。"
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "ticker": "AMT",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-24)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ホリスティック・マスターリース契約（MLA）による収益可視性とチャーン最小化能力",
+      "descriptive_label": "長期ホリスティックMLA構造",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Taiclet): 'Among the most effective of these contracts are the holistic contract structures that we have with 3 of the national carriers in the United States, which has significantly improved our revenue growth visibility while minimizing churn. As a result of this contract structure and pro forma for our pending acquisitions, we will have nearly $34 billion of noncancelable revenue or about 8x our 2014 revenues on the books.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [3],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ホリスティック契約の構造（能力・仕組み）を評価。$34Bの受注残高は結果であるが、その仕組みを可能にするMLA設計能力が核心"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$34B noncancelable revenue / 8x 2014 revenueという定量的裏付けあり。チャーン率1.8%も数値化されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長期ホリスティック契約は独立タワー会社（AMT）特有の構造的優位。移動体通信会社は通常このような契約設計能力を持たない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "タワー業界では少数大手（AMT/Crown/SBA）と多数のキャリアという寡占×フラグメント構造において、長期MLA設計能力は業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）、定量的裏付けあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4での包括的説明。$34B受注残高という定量的裏付けと、ホリスティック契約という設計能力の説明が合致。純粋競合（Crown Castle, SBA）との比較は明示されていないが、タワー業界では契約設計能力が差別化要因として機能する"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ホリスティックMLA → 収益可視性向上 → 低チャーン → AFFO per share 安定成長 (+13-16% CAGR)",
+      "descriptive_label": "MLA→収益可視性→AFFO成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "MLA → チャーン1.8% → 有機的成長7-10% → AFFO成長13-16%の経路は2-3ステップ。$34B受注残高が開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。CEO/CFOが共に中期AFFO per share成長目標としてmid-teen%を明示"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムが明確で開示データによる検証可能。Q4での言及により信頼度高"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "noncancelable revenue約$34B（2014年売上の約8倍）、チャーン率予測1.8%（2015年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "タワー資産のリース・アップ転換能力（低稼働率タワーを高収益化する運営ノウハウ）",
+      "descriptive_label": "タワーリース・アップ転換ノウハウ（Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Taiclet): 'We believe that we\u2019re optimally positioned to replicate our long history of transforming low tenancy, underutilized tower portfolios into high cash flow, high-margin assets.' Q&A (Taiclet): 'our track record of converting nonperforming assets, that are essentially single use by mobile operators into performing assets by commercially leasing them, is pretty clear'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "リース・アップ転換という「能力・プロセス」を評価。実績数値（vintage別tenancy/margin）は能力の裏付けとして機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2005年以前取得資産: tenancy 2.7、NOI yield 25%超。2005-10年: tenancy 2.3、NOI yield 23%近く。定量的実績あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Crown Castle, SBAとの明示的比較はないが、Verizonが内部タワー事業を持たなかったことを比較材料として提示"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "通信キャリアがタワーを売却→専業タワー会社が運営する構造的トレンドと自社のリース・アップ能力が合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言、定量的vintage dataで裏付けあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4での体系的説明。vintage別NOI yieldという定量的裏付けで能力の実証あり。純粋競合（Crown/SBA）との直接比較がない点でわずかに減点"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "2005年以前取得資産: 平均tenancy 2.7、NOI yield 25%超; 2005-10年: tenancy 2.3、NOI yield 23%; 2011-13年: tenancy 1.5、NOI yield 8.5%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "リース・アップ能力 → 新規取得資産のNOI yield向上 → 有機的成長率7-10% → AFFO成長への貢献",
+      "descriptive_label": "リース・アップ→NOI yield→有機成長経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "リース・アップ → tenancy増加 → NOI yield向上 → 有機的成長の2-3ステップ。vintage dataで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。Verizon/TIM/Airtelポートフォリオの5年成長予測（9-10% CAGR）として具体化"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "明確な因果メカニズムとvintage dataによる検証可能性。Q4での包括的説明"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル規模によるキャリア多角化と国際有機成長の優位性（単一国モデルより安定した成長）",
+      "descriptive_label": "グローバル分散ポートフォリオによる成長安定化",
+      "evidence_from_transcript": "Q3 2014 Prepared Remarks (CEO Taiclet): 'when you have the differentiation we have across major positions with all 4 national carriers in the U.S., in addition to that, we have a tremendous diversity across regions, customers and technologies in our international segment. I think, again, we can be very confident that between the 6% to 8% domestic core organic growth and 200 to 300 basis points above that...you\u2019re going to get a more stable output from AMT in any given year than you\u2019re going to get from sort of a portfolio that\u2019s much more weighted to, say, one country'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "グローバル分散は「構造的ポジション」であるが、他の大手タワー会社（Crown Castle、SBA）も国際展開を持つ。ただしAMTの規模・地域数は突出"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "Crown CastleはU.S.専業、SBAも限定的国際展開。AMTの地域数（12カ国）は純粋競合対比で優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "純粋競合（Crown/SBA）との直接比較なし。ただし「単一国ポートフォリオより安定」という間接的比較"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "新興国の3G/4G移行という市場構造と国際展開の合致あり。ただし業界構造の詳細分析は限定的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterly callでの発言（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "国際分散ポートフォリオは方向性として認められるが、Q3四半期発言であること、純粋競合（Crown/SBA）との定量的比較が不明なこと、業界構造への言及が限定的なことでスコアを抑える"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "国内有機的成長率目標6-8%、国際は国内より200-300bps高い成長率。2014年実績: 国際有機成長13%（除pass-through）",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [7]
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "タワー資産評価・M&Aの規律ある選定能力（IRR基準・disciplined investment approach）",
+      "descriptive_label": "規律あるM&A選定・評価能力",
+      "evidence_from_transcript": "Q3 2014 Q&A (CEO Taiclet): 'we\u2019ve crafted, over the last 10-, 15-year period of time, a way to evaluate tower assets that we apply both in the U.S. and overseas, and that method of evaluation is very much in-depth...we sometimes win using this approach and we won with SpectraSite in 2005 and GTP just last year. For better or worse...there have been a number of portfolios that we did not meet the requested or competitive purchase price'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「タワー資産評価の方法論」という能力を評価。過去15年で構築した評価システムが具体的に言及されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited",
+            "reasoning": "IRR基準の具体的数値なし。勝敗の事例（SpectraSite/GTP: 勝; AT&T/T-Mobile: 負）は裏付けとして機能するが定量的比較不足"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "「bidを外した複数案件（AT&T, T-Mobile, Mobility, TowerCo等）」というネガティブケースが裏付けとして機能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterly callでの発言（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "規律あるM&A選定能力はKB1-T rule_10（ネガティブケース）で裏付けられる。ただしQ3発言であること、定量的IRR基準の非開示が減点要因。CHD#1（70%）のような詳細なプロセス開示より弱い"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "通信タワーの立地・構造上の希少性（95%が郊外・農村部に位置、小セルや代替技術で代替困難）",
+      "descriptive_label": "郊外・農村部タワー立地の構造的希少性（Cornered Resource）",
+      "evidence_from_transcript": "Q3 2014 Q&A (CEO Taiclet): '99.4% of our towers serve locations with less than 10,000 people per square mile, and 95% of our towers serve places with less than 5,000 people per square mile. Those types of areas...the tower is the correct solution if you do all the math.' Also Q4: Q&A on Verizon towers: 'the towers have, what I call, distinctive characteristics as far as height, as far as structural integrity...this is a very high capacity portfolio with...distinctively sizable ground space'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "立地は能力というよりコーナード・リソース（希少物理資産）。ただし立地選定能力という観点で能力として評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "95%が郊外・農村部（5,000人/平方マイル以下）という定量的位置づけ。小セルとの技術比較も定量的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "郊外・農村部における物理的タワーの代替不可性は構造的（小セル・WiFiは密集都市部向け）"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "郊外・農村部での移動体通信需要増大（4G/5G）という市場構造と、AMTの立地ポジションが完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterly callでの発言（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "郊外・農村部立地という物理的希少性はCornered Resourceとして評価。95%立地という定量データと業界構造合致あり。ただしQ3発言かつ他社タワー会社との差別化（Crown/SBAも同様の立地）が不明確で50%に留まる"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "AMTタワーの95%が5,000人/平方マイル以下の郊外・農村部に立地。小セル等の代替技術は高密度都市部に適合",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [10]
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "地上権取得・長期延長プログラムによるコスト固定化能力（土地費用2%削減を継続）",
+      "descriptive_label": "地上権取得・長期固定化による原価管理",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO Bartlett): 'our land acquisition program continues to benefit our margins with over 2% of our U.S. land expense base eliminated through prior years\u2019 land purchases...Pro forma for the Verizon transaction, we expect to have over 60% of the land under our domestic sites owned or under our control for 20 years or more.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "地上権取得・長期固定化という「プロセス能力」を評価。2%コスト削減は結果であるが、継続的なプログラムとして能力の証明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "土地費用ベースの2%削減、60%所有/20年超契約という定量目標あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "地上権の長期固定化はコスト構造の構造的改善。キャリアはこのような長期投資を行う動機がない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし純粋競合（Crown/SBA）との比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "地上権プログラムはProcess Powerとして評価。定量的数値はあるが、Crown Castle/SBAも同様のプログラムを実施しているため差別化根拠が弱い。50%が妥当"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "U.S.地上権: 60%以上を自社所有/20年超制御（Verizon取得後proforma）、毎年土地費用ベースの2%超を削減継続",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [12]
+    },
+    {
+      "id": 14,
+      "claim_type": "competitive_advantage",
+      "claim": "サイクルタイム削減によるテナント対応スピード優位性（コロケーション処理能力）",
+      "descriptive_label": "オペレーショナルエクセレンス：コロケーション処理速度",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Taiclet): 'Since 2010, for example, we reduced our average cycle time for collocations for customers with holistic MLAs by 50%...Our aim is to make the collocation and amendment process as efficient as possible by aligning our processes and procedures with those of our customers.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プロセス効率化という「能力」を評価。50%削減は結果であるが、プロセス整合化という仕組みが核心"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2010年比50%サイクルタイム削減という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Crown Castle/SBAとの比較なし。業界標準との比較データも不在"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし競合比較データ不在",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "2010年比50%のサイクルタイム削減は定量的裏付けとして評価。ただし純粋競合との比較なく、業界共通の改善なのか差別化なのかが不明。50%が妥当"
+      }
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "ticker": "TEL2",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "ハーシュ環境向け高度設計コネクタ・センサーの技術的差別化",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "自動車電動化×TEのエンジニアリング能力の業界構造合致"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "$60/車、4-6%content growth率という定量データが優位性を裏付け"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "weak",
+          "adjustment": -5,
+          "reasoning": "Amphenol・Molex等との具体的な技術比較データなし"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "ハーシュ環境向けコネクタ・センサーの技術的差別化は、自動車電動化×設計組み込みサイクル（2-3年）による構造的スイッチングコストと組み合わさり強力。$60/車という具体的コンテンツと4-6%/年成長予測が裏付け。Amphenolとの比較欠如で70%から微調整"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "自動車電動化→コンテンツ増加→売上成長経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "電動化→コンテンツ増加は定量化（4-6%/年）されており直接的"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "4-6%/年content成長という開示データで直接的に裏付けられた高信頼CAGR接続"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "TEOA製造改善プログラムによる収益性強化",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -10,
+          "reasoning": "Amphenol等との比較がなく相対的優位性が不明"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "TEOA（15.4%調整利益率達成）は具体的成果だが競合との比較なし。40%"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "センサー事業M&AによるTAM拡大（Measurement Specialties）",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_F_t",
+          "verdict": "strategy_confusion",
+          "adjustment": 0,
+          "reasoning": "M&A戦略と能力の境界線上。センサーポートフォリオという能力として評価"
+        }
+      ],
+      "final_score": 0.30,
+      "final_confidence_pct": 30,
+      "scoring_rationale": "M&A戦略と能力の混同リスク。設計採用サイクル2-3年でPoiT時点の貢献限定的"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "センサー統合→設計採用→売上成長経路",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [],
+      "final_score": 0.30,
+      "final_confidence_pct": 30,
+      "scoring_rationale": "設計採用サイクル2-3年でPoiT時点（2015年9月）の財務貢献が限定的"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "設計組み込みによるスイッチングコスト",
+      "seven_powers_category": "Switching Costs",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "設計サイクル2-3年（CEOが明示）はスイッチングコストの構造的証拠"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "weak_quantitative",
+          "adjustment": -5,
+          "reasoning": "顧客維持率・再採用率の開示なし"
+        }
+      ],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "設計組み込み（2-3年サイクル）は構造的スイッチングコストの証拠。業界構造との合致も明確。ただし顧客維持率データなし"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "スイッチングコスト→顧客維持→安定売上経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "因果メカニズムは直接的。スイッチングコストの強さが裏付け"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 7,
+    "competitive_advantage_claims": 5,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 3,
+    "weighted_avg_score": 0.46,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.65,
+      "descriptive_label": "ハーシュ環境向け高度設計コネクタ・センサーの技術的差別化"
+    },
+    "primary_seven_powers": ["Process Power", "Switching Costs"],
+    "investment_thesis_strength": "moderate",
+    "key_risks": [
+      "Amphenol等との具体的差別化データなし",
+      "為替ヘッドウィンド（アジア・欧州）",
+      "自動車生産サイクルリスク"
+    ]
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "scored_claims": [
+    {
+      "id": "EL-001",
+      "claim": "プレステージビューティー市場においてブランド・地域・チャネルを多様化した「複数の成長エンジン」ポートフォリオが、特定市場の逆風下でも成長を維持する構造的安定性をもたらしている",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "ポートフォリオ多様化の主張。ブランドポートフォリオ運営力として検討"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「balanced and diversified business」の構築は能力説明だが、結果（成長維持）を強調している",
+        "rule08_strategy": "多様化は戦略的意思決定に近い。「multiple engines of growth」という表現は戦略の説明",
+        "rule07_pure_competitor": "L'Oreal、Shiseido等のプレステージ美容ポートフォリオ企業との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: プレステージ美容の大手はいずれも複数ブランドポートフォリオを保有。EL固有ではない可能性",
+        "pattern_F": "strategy_confusion: 多様化戦略を優位性として提示",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "CHD#5 (30%): ポートフォリオシフトを優位性とするパターン。EL-001も多様化ポートフォリオを優位性として提示",
+        "final_reasoning": "多様化の'結果'としての安定性提示に近い。競合（L'Oreal）も同様の多様化を持つ"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "「ブランド・地域・チャネルの多様化」という表現は戦略の結果であり、構造的な競争優位性の説明ではない（KB1ルール8適合、KB2パターンF適合）。L'Oreal、Shiseido等のプレステージ美容大手も同様の多様化ポートフォリオを保有しており、業界共通パターン（KB2パターンB適合）に近い。「multiple engines of growth」という経営陣の表現は楽観的な自己評価に留まる。30%が妥当。"
+    },
+    {
+      "id": "EL-002",
+      "claim": "プレステージビューティー市場全体がマス市場より速く成長する構造的トレンドが継続しており、ELの主戦場であるプレステージ美容は業界のプレミアム価格帯への消費者シフトで恩恵を受けている",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": false,
+        "reason": "市場トレンドの説明であり、企業固有の競争優位性の主張ではない。ゲートキーパー基準不通過だが評価継続"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「プレステージ>マス成長」は市場環境（外部要因）であり、ELの能力・仕組みではない",
+        "rule03_relative_advantage": "市場トレンドはEL固有ではなく、同業他社（L'Oreal、Coty等）も同様に恩恵を受ける",
+        "adjustment": "-30%"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: 全プレステージ美容企業が同様のトレンドから恩恵を受ける",
+        "adjustment": "-10%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#6 (30%): 業界共通環境を固有優位として提示。市場トレンドの言及は30%が上限",
+        "final_reasoning": "市場環境の説明に過ぎず、EL固有の競争優位性の主張として不成立"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "「プレステージ美容がマス美容より速く成長する」は市場環境の説明であり、EL固有の競争優位性ではない（KB1ルール1: 能力・仕組みでなく市場環境）。L'Oreal、Shiseido、Inter Parfumsなど全てのプレステージ美容企業がこのトレンドの恩恵を受けている（KB2パターンB適合）。ELがこのトレンドから他社より多く恩恵を受ける理由の説明がない。30%が妥当。"
+    },
+    {
+      "id": "EL-003",
+      "claim": "La Mer、M.A.C.など高認知のブランドポートフォリオが、広告費に依存せず高い収益性を維持しながら成長している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "「低広告費で高成長」という差別化の主張。ブランド力（認知度・愛着度）の証拠として評価可能"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "低広告費での高成長は能力（ブランド力）の証拠として評価可能。dogma.mdのブランド類型2（知名度・認知度）に近い",
+        "rule04_quantitative": "「広告費依存なし」という定性的な比較のみ。広告費/売上比率の競合比較なし",
+        "rule10_negative_case": "「広告費に頼らなくても成長できる」というネガティブケース的な証拠"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: ブランド認知（能力）→低広告費での成長（結果）",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "dogma.md ブランド類型2: La Mer/M.A.C.のブランド認知度の質。SBUXに近い差別化ブランドか",
+        "final_reasoning": "低広告費高成長という事実は実在するが、競合比較データなし。50%相当"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "「広告費に依存しない高成長」という観察は、ブランドの内在的な吸引力（pull力）の証拠として評価可能（dogma.md ブランド類型2、KB2パターンIII適合）。La Merのプレステージ認知とM.A.C.のプロ・カルト的ブランドはEL固有の資産。ただし広告費対売上比率の競合比較（L'Oreal等との対比）がなく、定量的裏付けが弱い。50%が妥当。"
+    },
+    {
+      "id": "EL-004",
+      "claim": "トラベルリテール（免税チャネル）での強固な地位（価格差異とコンバージョン能力）がアジア富裕層消費者向けの独自収益源となっている",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "トラベルリテールでの地位という特定チャネルの優位性主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「価格差異」と「コンバージョン能力」は能力として認識可能だが、6%成長は結果",
+        "rule07_pure_competitor": "Chanel、LVMH傘下ブランド等との比較なし",
+        "rule04_quantitative": "6%成長（市場トラフィック比較）という数値があるが、チャネルシェアデータなし"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "「6%成長」という結果を優位性の証拠として提示する面あり",
+        "pattern_B": "多くのプレステージ美容ブランドがトラベルリテールに注力しており、業界共通パターン",
+        "adjustment": "-10%〜-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "チャネルでの規模優位はScale Economiesとして評価可能だが、EL固有の差別化が不明",
+        "final_reasoning": "「traffic比較で成長」という証拠は価値あるが、競合との相対比較なし"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "トラベルリテールでの地位は戦略的に重要なチャネルだが、「6%成長、やや市場トラフィック超過」という証拠は弱い（KB2パターンA適合）。LVMH傘下（Dior、Givenchy等）やL'Orealsもトラベルリテールに強く、EL固有の優位性の説明が不十分。「価格差異がある」という認識はあるが、なぜELの価格差異が競合より大きいのかの説明がない（KB2パターンB適合）。30%が妥当。"
+    },
+    {
+      "id": "EL-005",
+      "claim": "肌科学研究への継続的なR&D投資が、スキンケア製品の差別化された処方（ingredient）と革新パイプラインを支えており、競合が容易に模倣できない障壁を形成している",
+      "power_type": "cornered_resource",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "R&D投資による模倣障壁の主張。ただし具体的証拠は薄い"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "R&D投資・研究能力は能力として評価可能",
+        "rule04_quantitative": "「incremental investments」「R&D投資を数年増加」という記述のみ。具体的投資額・対売上比率・競合比較なし",
+        "rule07_pure_competitor": "L'Oreal（業界最大規模のR&D投資）との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "多くのプレステージ美容企業がR&D投資強化を主張。L'Orealはとりわけ研究投資で有名",
+        "pattern_D": "qualitative_only: R&D効果の定量評価なし（特許数、製品発売数等の比較なし）",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#2 (10%): 定性的で評価不能な差別化。EL-005も定性的なR&D優位の主張",
+        "final_reasoning": "R&D投資は実在するが、差別化の大きさ・競合との優位を示す証拠が乏しい"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "R&D投資の増加は事実として述べられているが、競合（L'Oreal等）との投資規模比較がなく（KB2パターンB適合）、特許取得数・新製品成功率等の定量的差別化指標も示されていない（KB2パターンD適合）。「模倣できない障壁」という主張は誇張であり具体的証拠に乏しい。CFOのコメントも「将来への期待」レベルに留まる。30%が妥当。"
+    },
+    {
+      "id": "EL-006",
+      "claim": "アジア（特に中国・韓国）でのスキンケア市場における高い市場シェアとブランド認知が、アジア旅行者消費者の主要購入先として機能している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "アジアスキンケアでの高シェアという主張。シェアの背後にあるブランド力を評価"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「高いシェア」は結果（KB2パターンA典型）。背後のブランド力・製品力の説明なし",
+        "rule04_quantitative": "'very, very high'という定性的表現のみ。具体的シェア数値なし",
+        "rule07_pure_competitor": "SK-II（P&G）、Lancôme（L'Oreal）等との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "result_as_cause: 高シェアという結果を競争優位として提示。「very, very high market share」はパターンA-T3（顧客基盤・シェアの提示）の典型",
+        "adjustment": "-30%"
+      },
+      "kb3_calibration": {
+        "reference_case": "MNST#1 (50%): 「シェアはあくまで結果」→50%に留まる。EL-006は数値も不明確→30%が妥当",
+        "final_reasoning": "「very very high」という強調は証拠の弱さを示す。SK-II（P&G）等との具体的比較なし"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "'Our market share in skincare in Asia is very, very high'という発言はパターンA-T3（シェアを優位性として提示）の典型（KB2パターンA適合）。具体的なシェア数値がなく（'very, very high'という曖昧表現）、なぜアジアでシェアが高いのか（製品処方の違い、サービス体制、チャネル整備等）の説明がない（KB1ルール1適合）。Shiseido、SK-II等との競合比較もなし。30%が妥当。"
+    },
+    {
+      "id": "EL-007",
+      "claim": "M.A.C.、GLAMGLOW、Smashboxなどのミレニアル向けブランドポートフォリオが、デジタル・ソーシャルメディアを活用した若年消費者獲得能力を提供している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "ミレニアル向けブランドという具体的なブランド資産の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「M.A.C.がmillennial market leader」という市場ポジションの主張。具体的ブランド名あり",
+        "rule02_noun_attribute": "「makeup categories with millennials」という領域でのブランド力という名詞的表現",
+        "rule04_quantitative": "「market leaders in many makeup categories」という定性的なリーダーシップ主張。数値なし"
+      },
+      "kb2_evaluation": {
+        "pattern_IV": "structural_market_position: 特定セグメント（ミレニアル）でのリーダーポジション",
+        "pattern_B": "多くの美容企業がミレニアル獲得を強調（業界共通テーマ）",
+        "adjustment": "+0 (ブランド固有性とのバランス)"
+      },
+      "kb3_calibration": {
+        "reference_case": "dogma.md ブランド類型2: M.A.C.のカルト的ブランド認知。NIKEの「デザイン・アーティスト」ブランドに近い側面あり",
+        "final_reasoning": "M.A.C.のミレニアル・メイクアップ市場でのカルト的地位は実在するが定量証拠なし→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "M.A.C.のメイクアップカテゴリでのミレニアル向けブランドとしての地位は業界で広く認知されており（dogma.md ブランド類型2に近い）、GLAMGLOW、Smashboxなどの新興ブランド買収によるポートフォリオ構築も能力として評価できる（dogma.md ブランド類型1: ポートフォリオ運営力）。ただし具体的な市場シェア数値がなく、Urban Decay（L'Oreal）、NYX（L'Oreal）等との比較もない。50%が妥当。"
+    },
+    {
+      "id": "EL-008",
+      "claim": "デジタルマーケティングへの移行（従来の30bpsがTVからデジタルにシフト）とオンライン販売チャネルの強化が、広告費効率を改善しながら消費者エンゲージメントを高めている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "デジタルマーケティング移行という具体的な施策の主張。ただし業界共通テーマ"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "デジタルシフトという行動（戦略）であり、能力の説明ではない",
+        "rule08_strategy": "マーケティングミックスのシフト（TVからデジタル）は戦略的意思決定",
+        "rule07_pure_competitor": "L'Oreal、Coty等との比較なし。美容業界全体でデジタルシフトが進行中"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: 全ての美容企業がデジタルマーケティング強化を主張",
+        "pattern_F": "strategy_confusion: デジタルシフトという意思決定を優位性として提示",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#5 (20%): 業界共通戦略を固有優位として提示。デジタルシフトは美容業界の標準的動き",
+        "final_reasoning": "30bpsという具体的なシフト比率はあるが、競合比較なく業界での先行度も不明"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "30 basis pointsのデジタルシフトという具体的な数値言及はあるが、デジタルマーケティングへの移行は2015年時点で美容業界全体に広がるトレンドであり（KB2パターンB適合）、EL固有の能力ではない。「strategic weapon」という経営陣の表現はあるが、競合と比較したデジタル能力の差別化（例: デジタル広告のROI比較、SNSエンゲージメント率）が示されない（KB2パターンD適合）。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "30-40": 6,
+      "50-60": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

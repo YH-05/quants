@@ -1,0 +1,70 @@
+{
+  "ticker": "PEP",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PEP-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PEP FY2014実績：有機収益成長4%（Q4:5%）、コア営業利益率30bp改善、フリーキャッシュフロー$83億、コアEPS $4.63（+9% CC）、株主還元$87億（+36%YoY）",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "PEP-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Branding",
+      "claim_text": "地域多様性（Americas/Europe/AMEA）× ブランドポートフォリオ → 新興国有機収益10%成長継続 → 全社ミッドシングル有機収益成長 → 長期CAGR",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "長期株主リターン実績は優位性の結果であり原因ではない。新興国成長は市場環境依存が大きい",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: 「$100→$42,000」という長期リターンはdogma.mdルール1違反（結果の提示）。新興国成長への依存は外部要因（市場環境）への依存が高く優位性起因のCAGR接続として弱い（dogma.md低評価パターン）。30%。"
+    },
+    {
+      "claim_id": "PEP-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "生産性プログラム（$5B/5年）× 規模の経済 → 年間$10億節約 → 30-50bp営業利益率改善 → ハイシングルCC EPS成長 → CAGR",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "10年配当CAGR 10%という実績と30-50bp目標は定量的で検証可能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 生産性→マージン改善→EPS成長は2ステップの直接的メカニズム（dogma.md高評価パターン部分合致）。10年配当CAGR 10%という過去実績との整合性あり。ただし$5B計画の実行確実性と競合環境変化で50%に留める。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"30-40": 1, "50-60": 1},
+    "gatekeeper_applied": false
+  }
+}

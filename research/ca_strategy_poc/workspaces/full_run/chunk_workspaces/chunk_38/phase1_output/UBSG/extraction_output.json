@@ -1,0 +1,342 @@
+{
+  "ticker": "UBSG",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-10) + Quarterly Calls 2014-2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "世界最大のウェルスマネジメント事業：グローバルで真に統合された唯一の大規模ウェルスマネジメントフランチャイズ",
+      "descriptive_label": "世界最大・唯一のグローバル統合ウェルスマネジメント（Scale Economies / Cornered Resource）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Sergio Ermotti): 'UBS is the world's largest wealth manager and the only large-scale player with a truly global wealth management franchise at the center of its strategy. Our scale, unique global footprint and our focus on high and ultra high net worth clients underpin our superior growth prospects.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「世界最大」という地位は結果。「グローバルに統合された唯一の大規模プレイヤー」という構造的特徴の説明あり"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "純粋競合（Credit Suisse, Morgan Stanley, Merrill Lynch）と比較しグローバル統合ウェルスマネジメントに特化した唯一の大規模プレイヤーという主張"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "競合との差別化は「グローバル統合」と「UHNW特化」だが、具体的な競合名と定量比較が限定的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "グローバルUHNW市場の成長トレンドとUBSのポジションは市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "「唯一の大規模グローバル統合WM」という主張は独自性があるが定量的裏付けが薄い",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "グローバル統合WM最大手という構造的ポジションは評価できる。ただし「唯一」という主張の定量的根拠が不明確"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "グローバルWMスケール → HNW/UHNW特化 → 純新規資金流入3-5%成長 → 投資資産ベース拡大 → 収益CAGR",
+      "descriptive_label": "WMスケール→HNW特化→NNM成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "NNM 3-5%成長ガイダンス→投資資産増加→フィー収入増加は2-3ステップで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での年次KPIガイダンス。2014年実績NNM growth 3.9%（ガイダンス3-5%内）"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "NNM成長ガイダンス3-5%は検証可能。2014年実績3.9%により信頼度高"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "UBS Wealth Management AmericasにおけるFA（ファイナンシャルアドバイザー）生産性の業界最高水準",
+      "descriptive_label": "WMA FА生産性業界首位（Cornered Resource / Process Power）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO Tom Naratil): 'Our FAs continue to be the most productive in the industry as, once again, we had a record-breaking quarter, with annualized revenue per adviser of $1.1 million and invested assets per FA increasing to a record $147 million.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「最も生産性が高い」は結果。FAを高生産性に維持する能力（トレーニング、ビジネスモデル設計）の説明が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$1.1M/FAという定量的指標と「業界最高」という相対的主張あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "「業界最高」と主張しているが具体的な競合名（Morgan Stanley、Merrill Lynch等）との数値比較がない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "「業界最高」主張だが競合との数値比較がなく検証困難",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "$1.1M/FAという指標は具体的。業界最高という主張は相対的だが具体的競合比較がなく確信度は中程度"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "FA生産性向上 → 高い顧客資産ペネトレーション → WMA投資資産・収益CAGR",
+      "descriptive_label": "FA生産性→資産ペネトレーション→WMA CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "FA生産性→顧客資産拡大→フィー収入増加は2ステップで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言。WMAの「全時間最高記録更新」という定量実績"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年WMAが複数の記録（投資資産、FA生産性、NNM）を更新しており直接的因果関係が検証可能"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "ピア最高のBasel III完全適用CET1比率（13.4%）による資本優位性と規制環境での耐性",
+      "descriptive_label": "ピア最高資本比率（Counter-Positioning）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'our fully applied Basel III CET1 ratio was 13.4%, still the best in our peer group despite sizable dividend accruals.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "CET1 13.4%は結果。その高い資本比率を維持する能力（リスク管理、RWA削減プログラム）の説明あり"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "ピア最高は相対的優位の主張。UBS独自の変革（IB縮小・WM特化）の結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "13.4%という定量的指標でピア最高と主張"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "「ピア最高」という主張だが具体的な競合比較数値がない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 45,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "高資本比率が競争優位性に直接接続するメカニズムが不明確。顧客信頼や規制コスト優位の説明が薄い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "高資本比率はUBSの変革戦略の結果。ただし、それが直接的な収益優位につながるメカニズムの説明が不足"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "高資本比率 → 規制コスト安定 → 株主還元（配当基準CHF 0.50/株、50%+ペイアウト）→ 株主価値CAGR",
+      "descriptive_label": "資本強度→規制安定→株主還元CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "高資本比率→規制要件充足→余剰資本→配当・還元は3-4ステップの間接的因果"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での配当方針の明示。CHF 0.50基準配当と50%+ペイアウト目標"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "配当政策は明確に開示されているが、資本比率から株主価値への接続は間接的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "WM事業のマンデート（discretionary portfolio management）浸透率拡大による高品質・経常収益の比率向上",
+      "descriptive_label": "マンデート浸透率向上による経常収益安定化（Switching Costs）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO): 'we continue to grow recurring income, which accounted for 78% of total income in the quarter. Net mandate sales were CHF 1.6 billion in the quarter, taking the total to CHF 26.7 billion for the year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "マンデート浸透率向上という仕組みの説明。経常収益78%という定量的結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "マンデート販売額CHF 26.7B（年間）、経常収益比78%という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "マンデート型サービスはスイッチングコストが高く、経常収益化により安定性向上"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "マンデート拡大は戦略ではなく既に実現している能力の結果"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合との比較（Credit Suisse等のマンデート比率との比較）がなく差別化が不明確",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "経常収益78%・マンデート年間CHF 26.7Bという定量実績は評価できる。ただし競合WM比較が不足"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "マンデート浸透率向上 → 高品質経常収益比率増加 → 収益変動性低下 → 安定的WM CAGR",
+      "descriptive_label": "マンデート浸透→経常収益比率→安定CAGR",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "マンデート→経常収益→収益安定は2ステップで検証可能。WM pretax profit目標10-15%成長（サイクル通じて）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での年次KPIガイダンス"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "経常収益78%という実績とWM 10-15%成長ガイダンスにより接続が検証可能"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年末: UBS Wealth Management 純新規資金流入（NNM）成長率3.9%（ガイダンス3-5%内）。アジア太平洋地域が最好調でCHF 26.8B NNM。WM経常収益78%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 7]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "WMA 2014年Q4: FA1人当たり年率換算収益$1.1M（過去最高）、FA1人当たり投資資産$147M（過去最高）。NNM $5.5B（7四半期で最高）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2014年末: Basel III 完全適用CET1比率13.4%（ピア最高）。CHF 0.50の通常配当基準（2013年比100%増）、50%以上のペイアウト比率目標",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "2016年ターゲット: 調整後有形純資産利益率15%超。WM/WMAの合算純利益目標：サイクル通じて年率10-15%成長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    }
+  ]
+}

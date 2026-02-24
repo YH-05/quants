@@ -1,0 +1,131 @@
+{
+  "ticker": "ROK",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Logix プラットフォームの統合制御・情報アーキテクチャによるスイッチングコスト",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_6_t", "rule_8_t"],
+        "rule_partials": ["rule_1_t", "rule_11_t"]
+      },
+      "kb2_t_pattern": "pattern_III_t",
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "Logixプラットフォームの統合制御（motor + process + information）はスイッチングコストを生む構造的能力として認定。ただし競合（Siemens Totally Integrated Automation, ABB）との定量的差別化データが示されておらず確信度は中程度。plant-wide optimizationという具体的能力の説明はあるがプロセスの深さが不十分"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Logixプラットフォーム浸透 → 既存顧客のアップセル・リプレース需要 → 売上CAGR安定成長",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_12_t"],
+        "rule_partials": ["rule_5_t"]
+      },
+      "kb2_t_pattern": null,
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "CAGR接続。Logix成長7%確認可能。インストールベース→リプレース需要の中間ステップは暗黙的だが合理的。確信度中程度"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "製造業OEM向けグローバル顧客関係とサービスネットワークによるSwitching Costs",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": [],
+        "rule_partials": ["rule_1_t", "rule_4_t", "rule_7_t"]
+      },
+      "kb2_t_pattern": "pattern_D_t",
+      "confidence": 40,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 40
+      },
+      "score": 0.40,
+      "rationale": "OEMマシンへのLogix組み込みはスイッチングコストを生むが、FANUC協業は「best-in-class solution」という自己評価のみ。切替コスト、チャーン率の定量データなし。KB2-T パターンD（定性的のみ）に該当"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "OEMマシン組み込みコンテンツ拡大 → グローバルOEM出荷台数 × 台あたりROK含有量 → 売上成長",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_12_t"],
+        "rule_partials": ["rule_5_t"]
+      },
+      "kb2_t_pattern": null,
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "CAGR接続。論理的構造は成立（OEM台数×台当たり含有量）。定量規模が不明確"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Architecture & Software セグメントの高利益率ポートフォリオによる規模の経済",
+      "gatekeeper_pass": false,
+      "kb1_t_assessment": {
+        "primary_rule_violation": "rule_1_t",
+        "rule_violations": ["rule_1_t"],
+        "rule_passes": [],
+        "rule_partials": ["rule_4_t", "rule_6_t"]
+      },
+      "kb2_t_pattern": "pattern_A_t",
+      "confidence": 30,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -20,
+        "competitor_comparison_adjustment": 0,
+        "final": 30
+      },
+      "score": 0.30,
+      "rationale": "29.5%マージンは結果の指標（KB2-T パターンA-T: 結果を原因と取り違え）。高マージンを生む能力（ソフトウェア開発効率、Logixのリカーリング収益構造）の説明が不足。KB1-T ルール1違反。ゲートキーパーは通過できないが低確信度として記録"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "high_0.7_plus": 0,
+      "medium_0.5_to_0.69": 3,
+      "low_below_0.5": 2
+    }
+  }
+}

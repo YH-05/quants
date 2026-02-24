@@ -1,0 +1,324 @@
+{
+  "ticker": "PSM",
+  "company_name": "ProSiebenSat.1 Media SE",
+  "gics_sector": "Consumer Discretionary",
+  "country": "GERMANY",
+  "transcript_source": "Q4 FY2013 Annual Conference (2014-02-27) / Q4 FY2014 Annual Conference (2015-02-26)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ドイツTV広告市場における圧倒的な視聴者シェアリーダーシップ：RTL（主要競合）を上回る商業視聴者シェア（44%）と継続的なプライムタイムリード、9年連続の広告シェア拡大",
+      "descriptive_label": "ドイツTV広告市場における視聴者・広告シェアのリーダーシップ",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Thomas Ebeling): 'we expanded our TV viewership leadership position despite sport events. We continued to see a strong TV advertising performance and continued pricing growth.' / 'we really -- we're clearly outperforming our key competitor, and we increased our ratings with a strong rebound after the sports events. And we have had, as you can see at the end, a significant lead over our key competitor.' / 'we have a continued strong, leading ad share in Germany with 44%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「44%の広告シェア」は結果。それを可能にする能力（番組調達力、チャンネルポートフォリオ、価格交渉力）の説明は別途あるが、シェア自体は結果"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「TV広告市場リーダーシップ」は名詞で表現可能な属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "44%の広告シェア、RTLを明確に上回るプライムタイム視聴率という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ドイツTV市場は2社寡占（PSMとRTL）であり、ナンバーワンポジションは構造的に安定している"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "RTL（主要競合）との直接比較あり。PSMがプライムタイムで「significant lead」と明示"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化: 44%広告シェア, RTL比較優位), pattern_IV_t (業界構造×企業ポジション合致: ドイツTV市場2社寡占でナンバーワン)",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "TV広告シェアは構造的優位だが、シェア自体は結果。維持するための「能力」の詳細説明が部分的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "44%という高いTV広告シェアとRTLに対する優位は定量的に裏付けられた。ドイツ2社寡占市場でのリーダー地位は構造的優位性を示す。能力の説明が部分的なため65%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "TV広告シェアリーダーシップ → 安定的な広告収入成長（2~3%/年、net pricing継続上昇） → Broadcasting EBITDA安定 → グループ収益CAGR下支え",
+      "descriptive_label": "TV広告シェア→安定広告収入→CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。TV広告シェア→広告収入→EBITDA。2013/2014実績（+3.2%、+2.6%広告収入成長）で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "TV広告はグループ収益の2/3を占め、2~3%成長が継続している。因果関係は直接的だが、Broadcasting自体の成長は低く（3%程度）、全体CAGR的な貢献は主にD&A依存"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "TV×デジタルのシナジー効果による多角的収益化能力：TV広告力・プレミアムコンテンツ・販売ハウス（SevenSales）を活用したデジタル広告市場での49%シェアリーダーシップ",
+      "descriptive_label": "TV×デジタルシナジーによる動画広告市場リーダーシップ",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CDO Christian Wegner): 'the foundation of this strong position is the -- are the large synergies with our TV operations on the 3 big topics, TV media, advertising power, our strong content and our sales house.' / 'We outperformed the market in InStream video advertising last year, growing by 23% and even increased our market-leading position, where we now have roughly 49% market share.' / 'We have 4 billion video views achieved in 2014.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CDO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「TVコンテンツの動画広告への転用能力」「TVセールスハウスとデジタル広告の統合販売能力」は具体的な仕組み（能力）として評価可能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "TV・デジタル・コンテンツのシナジーはPS+1固有の戦略だが、他の大手放送局も同様のモデルを試みている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "49%シェア、4B video views、+23%成長という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ドイツにおけるプレミアムTVコンテンツと放送インフラを持つ放送局はPS+1とRTLのみ。この参入障壁は構造的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量: 49%シェア, 4B views), pattern_III_t (能力優位性: TVシナジー活用)",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "YouTube/Googleがプレミアムコンテンツに進出しており、長期的な競争優位性への懸念あり",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "49%のInStream動画広告市場シェアは卓越しており、TV資産活用によるシナジーは他社との明確な差別化要因。65%が適切"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "TV×デジタルシナジー → D&Aセグメント+26.3%成長 → 全社収益CAGR（D&Aが50%の成長貢献）→ 2018年EUR935M目標達成経路",
+      "descriptive_label": "TV×デジタルシナジー→D&A成長→全社CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2~3ステップ。TVシナジー→デジタル広告シェア→D&A収益→全社CAGR。D&Aが全社成長の50%を占めており、経路は明確"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "D&Aがグループ成長の主要ドライバーであり、TV×デジタルシナジーの経路は定量的に検証可能。2014年のD&A 26.3%成長がEUR611MからEUR935Mへの経路を支持"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "maxdome（VoD）のドイツ市場リーダーシップ：Netflix進出後も加速した成長（92% SVoD加入者増）と40%の市場シェア、Unitymediaとのバンドル協定による配信インフラ優位性",
+      "descriptive_label": "maxdome VoDのドイツ市場リーダーシップ",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CDO): 'We had a very successful year. We almost doubled our SVoD subscriber base with the growth of 92%. And based on the year's CAGR panel, maxdome is still the number 1 SVoD service in Germany with a market share of roughly 40%.' / 'After Netflix entered the market, we were even able to increase, accelerate our growth in maxdome.' / Conrad Albert: 'We will see a significant or a positive increase in subscribers [from Unitymedia deal]... 7.1 million addressable household base'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CDO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「40%のVoD市場シェア」は結果。維持する能力（コンテンツライブラリ60,000タイトル、独占的U.S.スタジオ契約、配信インフラ）の説明はあるが、結果寄りの表現"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "40%市場シェア、92% YoY加入者成長、420K加入者（2014年末）という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "Unitymediaとの配信協定は構造的優位性。ただしNetflixなどグローバル競合との競争は激しい"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "「Netflix進出後に成長加速」はPositive指標だが、それが持続可能な競争優位性を示すかは不明。コンテンツ投資力ではNetflixが圧倒的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量: 40%シェア, 92%成長), pattern_A_t (結果を優位性と提示: 「シェア」は結果)",
+        "confidence": 45,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Netflixのドイツ進出によるコンテンツ投資競争でmaxdomeの地位は中長期的に脅威。PoiT 2015-09-30時点での優位性は実証されているが持続性に疑問",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "2015年時点では40%シェアでリーダーだが、Netflix進出・Amazonのコンテンツ強化が続く中での競争優位性の持続可能性に疑問。45%が適切"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Red Arrowコンテンツ制作の国際展開能力：英語圏市場での売上70%超、AmazonのBosch・Married at First Sight（20国以上で販売）等のグローバルIP創出能力",
+      "descriptive_label": "Red Arrowによるグローバルコンテンツ制作・IP所有能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'Red Arrow is a top 10 independent Content Production distribution company... 55% of revenues of Red Arrow are originating in the U.S. and more than 70% from Anglo-Saxon markets.' / 'Married at First Sight is a good example for our global reach, and it's our, so far, most successful global launch. We have sold this format into more than 20 territories.' / 'Bosch, our TV series, became Amazon Studios' first original drama series.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「グローバルIPの創出・販売能力」は能力として評価可能。ただし「top 10 independent producer」は業界順位（結果）であり、優位性の源泉（クリエイティブ才能の集積、フォーマット開発ノウハウ）の説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "20以上の国への販売、英語圏売上70%超、Content Production+63.4%成長という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "テレビ放送インフラと制作スタジオの統合は一定の参入障壁。ただし独立制作会社との競争は激しく、構造的優位性の強度は中程度"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力優位性: グローバルフォーマット販売能力), pattern_I_t (定量: 20国販売, 70%英語圏)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "コンテンツビジネスは個々の作品依存度が高く、再現可能な優位性かどうかの確認が難しい",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Red ArrowのグローバルIP創出は具体的な実績があるが、コンテンツビジネスの性質上、作品ヒット依存度が高い。50%が適切"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "Red ArrowのグローバルIP → Content Production+63.4%成長 → 高マージン（10-15%目標）のグローバルコンテンツビジネス → グループCAGR上乗せ",
+      "descriptive_label": "Red Arrow IP → コンテンツ成長 → CAGR経路",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ。IP創出→販売→収益化。M&A依存（Half Yard等）でオーガニック成長との区別が不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言"
+          }
+        ],
+        "confidence": 45,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Content Productionの+63.4%成長はM&A効果を含むため、オーガニック成長としての持続性評価が困難。CAGR経路としての確信度は45%"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "2014年ドイツTV広告市場：PSMは44%のシェア（Austrian含む）、RTLより高いプライムタイム視聴率。TV広告市場全体は+3%成長（2014年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年D&Aセグメント：売上EUR611M（+26.3%）、EBITDA EUR129M（+23%）、EBITDA率>20%。InStream動画広告49%市場シェア、4B video views",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "maxdome 2014年：SVoD加入者+92%成長（年末420K）、ドイツSVoD市場シェア約40%（No.1）、Unitymedia（7.1M世帯）とのバンドル協定を2015年3月に開始",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Red Arrow 2014年：外部売上+30%（FY2013）・+63.4%（FY2014）、英語圏売上70%超、Married at First Sight（20国）、Bosch（Amazon第1作）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

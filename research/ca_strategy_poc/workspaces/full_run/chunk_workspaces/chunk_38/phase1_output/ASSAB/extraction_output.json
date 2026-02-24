@@ -1,0 +1,261 @@
+{
+  "ticker": "ASSAB",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-05)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4_2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "20件/年のグローバルM&A統合能力：高コスト国施設→組立ユニット化転換と64施設閉鎖による製造フットプリント最適化オペレーティングシステム",
+      "descriptive_label": "スケーラブルなM&A統合・製造転換オペレーティングシステム（Process Power）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Johan Molin): 'We made 20 acquisitions last year, 10 in the last quarter... ASSA ABLOY is one of the first that you approach and ask whether we are interested to take a look... we are generally speaking, interested to consolidate this industry. We continue to convert our facilities in high-cost countries to assembly units. We are almost through there... we have closed 64 facilities year-to-date. The program that is still running is going to run this year and next year as well in part, and we have SEK 940 million provision for the remainder.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "M&A統合オペレーティングシステム（高コスト国→組立転換）という仕組み・能力の提示。「ASSA ABLOYに最初に声がかかる」という市場認知も能力の証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "M&A統合能力は数十年かけて構築したプロセスパワー。Amarrなど大型M&Aも含む実績が構造的優位性を示す"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "「M&Aで業界を統合する」は戦略。その背後にある「64施設閉鎖・高コスト転換プロセス・M&A後のマージン希薄化を最小化（dilution 0.3%のみ）する能力」が優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "20件/年のM&A実績、64施設閉鎖、EBIT希薄化0.3%のみ、SEK 940M provision など定量的裏付けあり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_proven_track_record",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual transcript（主・①相当）、調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "2014年買収Amarrによる一時的希薄化（0.2%）があり完全には消えていない",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "20件/年のM&A実績と製造フットプリント転換は実証された能力。EBIT希薄化を最小限に抑える統合力は業界でも際立った構造的優位性"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "M&A統合・製造転換能力 → 利益希薄化最小化（2014年dilution 0.3%のみ）→ EBIT 16-17%目標レンジ維持 → EPS CAGR（2014年+17%）",
+      "descriptive_label": "M&A統合能力→EBIT維持→EPS CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "統合能力→希薄化最小化→EBIT維持→EPS成長は3ステップ以内で追跡可能。EPS+17%は検証可能な開示数値"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 annual transcriptからの発言（主・①相当）"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "EPS成長との因果関係はM&A統合能力→EBIT維持という経路で合理的に説明可能。定量証拠も充実"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "32%の売上がここ3年以内の新製品由来：業界最高水準の新製品開発速度とデジタル化（モバイルキー・ホームオートメーション・HID Global Tech）への先行投資",
+      "descriptive_label": "高速新製品開発力と電子錠デジタル化先行優位（Process Power / Cornered Resource）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'Our new products are doing very well. We had 32% from new -- of our sales coming out on new products, a new record for the group.' / 'On the mobile keys side...we see many, many customers who have strong interest, especially hotel world...' / 'In the U.S. continued very strong drive for home automation'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「新製品売上32%」は能力の定量的アウトプット。モバイルキー（Starwood 150ホテル転換）など具体的事例も裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "32%という過去最高記録の定量指標。競合との比較は明示なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "デジタル錠・モバイルキー・ホームオートメーションへの先行投資は構造的な技術ポジション形成"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "競合他社（Dormakaba、Allegion等）との新製品比率比較が明示されていない",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "新製品売上32%は記録的水準であり過去実績の定量証拠がある。ただし競合との定量比較がない点で確信度上限あり"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Americas（EBIT 21%）・HID Global Tech（EBIT 20%）の高収益性：アメリカ市場での建築金物・電子錠フランチャイズにおける規模の経済とブランド優位",
+      "descriptive_label": "Americas・HID高収益フランチャイズ（Scale Economies / Branding）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'America, there we have -- everything is growing... Margins improved to 21%, up from 20.5% 1 year back on the back of 8% organic growth... HID or Global Tech... very strong profit, 20% up from 18.4% 1 year back with 5% organic.' / CFO Carolina Happe: '3% organic growth actually translated into a full 30 basis points improvement on the margin'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "Americas 21%・HID 20%という高EBIT率は能力のアウトプットだが、それを可能にする仕組み（ブランド力、スペック承認力）の説明が一部"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "EBIT 21%（Americas）と20%（HID）という具体的数値。オーガニック成長8%に対してレバレッジ0.7%という効率性も定量的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "AlegionやDormakaba等の直接競合とのEBIT率比較が明示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Americas 21%・HID 20%のEBIT率は高水準の定量的証拠があるが、競合との明示的比較がなく確信度中程度"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "Americas・HID高収益フランチャイズ → ドル高による換算益（2014年+5%通貨効果）→ キャッシュフロー（Q4 +37%）→ M&A再投資 → 売上CAGR",
+      "descriptive_label": "高収益フランチャイズ→CF→M&A→CAGR",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "高EBIT率→高CF→M&A資金→成長は3ステップ以内。Q4 CF +37%、EPS +25%という検証可能なデータで裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 annual transcriptからの発言（主・①相当）"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [
+          {
+            "reason": "SEK安→翻訳益は構造的優位性ではなく為替依存（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "キャッシュフローの高さは検証可能。ただし2014年の通貨効果（+5%）の剥落リスクがある"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "スウェーデン建築金物業界における「最初に声がかかる統合者」ポジション：M&A候補企業から優先的に相談を受ける業界認知と信頼資産",
+      "descriptive_label": "業界統合者としての優先交渉ポジション（Counter-Positioning）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Molin): 'Many companies feel uneasy right now, and we are a popular acquirer as a company. ASSA ABLOY is one of the first that you approach and ask whether we are interested to take a look, which I appreciate very much because we are, generally speaking, interested to consolidate this industry.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「最初に声がかかる」という市場認知は能力の一側面だが、それを維持する仕組みの説明が薄い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "業界内での信頼・実績によって構築された構造的ポジション"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "「業界統合を続ける」は戦略。優先交渉ポジションは優位性だが定量的裏付けが薄い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "定性的な自己評価のみで競合との定量的差異なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "優先交渉ポジションは競争優位性の一形態だが、CEO自身の発言のみに基づく定性評価であり確信度は低め"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "ASSA ABLOY FY2014: 売上 SEK 56.8B (+17%)、EBIT SEK 9.3B (+17%)、EBIT margin 16.9%（Q4）、EPS SEK 7.38 (+17%）。Q4 CF +37%。M&A 20件（年間）。新製品売上比率32%（過去最高）。製造施設64件閉鎖。債務/EBITDA 2.1x",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "ASSA ABLOYの過去3年以内の新製品が売上の32%を占める（過去最高）。Starwoodが150ホテルをモバイルキー対応に転換中。Government ID: Ireland、Saudi Arabia、Angola向け受注",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "部門別EBIT: Americas 21.0%（前年20.5%）、HID/Global Tech 20.0%（前年18.4%）、EMEA 17.5%（前年17.8%）、Entrance Systems 15.4%（前年16.2%）。Americas organic growth +8%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    }
+  ]
+}

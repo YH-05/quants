@@ -1,0 +1,253 @@
+{
+  "ticker": "DSV",
+  "transcript_source": "FY2014 Annual Results (2015-02-06)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": []
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "DSVの全事業部門（Air&Sea、Road、Solutions）での市場シェア拡大能力（市場比継続的outperformance）",
+      "descriptive_label": "市場outperformance・顧客獲得能力（Scale Economies / Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO Jens Andersen): 'In 2014, we have been able to gain market share on all business segments in '14. We are very happy about this, as you know. It is a fundamental strategy of DSV to grow faster than the market, and we are very pleased that, that has been possible for us in 2014.' / 'On Page #5, you will see the market share gains we have achieved in '13 and '14 in the 3 transport modes... We have shown a consistent outperformance of the markets.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "市場シェア拡大は「結果」。それを可能にする顧客獲得・サービス品質向上という「能力」の説明が必要"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "市場全体との比較（市場成長率1-2% vs DSV 5%以上）はある。ただし主要競合（Kuehne+Nagel、DB Schenker）との比較は明示なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Consignments 5%成長 vs 市場1-2%という定量比較あり。ただし全市場でのシェアデータは限定的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "市場outperformanceは結果であり、能力の説明として弱い。GP margin低下（-0.4%）という同時開示が、純粋な競争優位性の実現を疑わせる"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "DSVのOperational Excellence 2.0プログラムによるコスト構造改善能力",
+      "descriptive_label": "オペレーショナルエクセレンス・コスト効率化（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CFO Jens Lund): 'The OpEx 2.0 is finished. We still need to see the impact... part of it will have a GP impact. So it's approximately DKK 25 million of the earnings -- or the benefits that we expect in 2015 that will show up in the gross profit.' / (CEO) 'We also saw the first effects -- the first real effects of the Operational Excellence 2.0 program, which was very pleasing for us.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Operational Excellenceプログラムという仕組み・能力を評価。Road/Solutions部門のコスト削減プロセス"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "DKK25mn GP改善という定量的効果見込みあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "supplementary",
+            "reasoning": "OpEx 2.0は業界共通のコスト効率化取り組み。競合も実施可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "効果がまだ顕在化していない（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "DKK25mnの効果は定量的だが、業界共通の取り組みであり持続的Barrierが弱い。「まだ効果が必要」という開示もある"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "DSVの低資本集約的事業モデル（ネットワーキングキャリア）によるキャッシュ転換効率の高さ",
+      "descriptive_label": "アセットライト・ネットワーカーモデル（Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual (CFO): 'If you look at the total revenue, it's clear we have grown almost 6% in the quarter... Working capital, as long as we can keep it below 1%, we are pleased with that. That is an extremely low net working capital also if you compare to many of our colleagues.' / 'CapEx, we still expect to have a low CapEx going forward to under-invest our depreciations.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "低NWC・低CapEx業態はDSVの事業モデルの能力（資産を持たないネットワーカー）として評価"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "'extremely low net working capital also if you compare to many of our colleagues'という業界比較の明示"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "NWC 1%以下という定量基準。「同業比で極めて低い」という相対評価あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "フォワーダー（ネットワーカー）モデルのアセットライト性は業界構造に合致した優位性。ただし大手競合（Kuehne+Nagel等）も同様のモデルを採用しており、DSV固有のBarrierかは不明"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "DSVの継続的M&A・統合能力（失敗例を認識しつつ改善を継続：Ontime Logistics）",
+      "descriptive_label": "M&A統合能力（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'We also hope that we will be successful on the M&A front in 2015. We still have the appetite to grow our company through acquisitions.' / (On Ontime Logistics): 'It is a relatively small company we bought in Norway. The complexity is the fact that they are doing domestic distribution in Norway, which is difficult. We didn't have the scale we needed when we bought the company... we have very, very strict plans of how to get this back in business.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "M&A実行は戦略的意思決定。統合プロセスという能力として評価できるが、Ontime Logisticsの失敗が統合能力に疑問を呈する"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "Ontime失敗を率直に認め改善計画を開示（ネガティブケース）。ただしこれが能力の証拠というより問題提起"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Ontime Logistics失敗の率直な認識は誠実さを示すが、M&A統合能力の優位性の証拠としては弱い"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "市場outperformance（新規顧客獲得）→GP成長（DKK10.5-10.9bn）→EBIT成長CAGR（+3-11%）",
+      "descriptive_label": "市場成長+シェア拡大→GP→EBIT CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "顧客獲得→GP成長→EBIT成長は2-3ステップ。DKK10.5-10.9bn GuidanceはPoiT時点での検証可能な見通し"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4（年次）での言及"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "GP margin低下傾向が持続的成長に疑問を呈する（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "成長見通しは定量的だが、GP margin圧力継続とOperational Excellence効果の不確実性がある"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "OpEx 2.0効果（DKK25mn GP改善）→コスト効率化→EBIT margin向上CAGR",
+      "descriptive_label": "OpEx2.0→コスト効率→EBIT CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "OpEx効果→GP改善→EBIT改善は直接的。DKK25mnという定量数値あり"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的なシナジー数値あり。ただし組合交渉が難航しており効果発現の遅れあり"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "低CapEx・低NWCモデル→高FCF転換率→株主還元・M&Aへの資金創出CAGR",
+      "descriptive_label": "アセットライト→FCF→株主還元CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "低CapEx・低NWC→高FCF→株主還元という2-3ステップの明確な経路。DKK2bn FCF目標は検証可能"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "フォワーダーモデルの高キャッシュ転換性はDSVの資本配分の根幹。DKK2bn FCF目標と連動している"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "DSV FY2014: EBIT DKK2,624mn（guidance in line）。Road部門EBIT微減（Ontime失敗・Denmark影響）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Net Working Capital < 1%（業界比で極めて低い）。Leverage < 2x（1.9x）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2015 Guidance: GP DKK10.5-10.9bn、EBIT DKK2.7-2.9bn（+3-11%）、FCF DKK2bn",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

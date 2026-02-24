@@ -1,0 +1,117 @@
+{
+  "ticker": "SYMC",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Global Intelligence Network（GIN）による脅威インテリジェンスの規模的優位性",
+      "evidence": "Q4 FY2015 Prepared Remarks（CEO発言）: 'we operate the largest civilian cyber intelligence threat network in the world, updated at a rate of 200,000 threats per second.'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "200,000 threats/secondは規模の開示（結果）であり、GINの仕組みの説明が不十分"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "200,000 threats/second という定量開示あり"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "大規模インストールベースからのテレメトリ蓄積は構造的優位性"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV", "matched": true, "adjustment": 0.05, "reasoning": "業界構造×企業ポジションの合致（サイバー脅威テレメトリ規模）"},
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.1, "reasoning": "GIN規模は結果であり、仕組みへの言及不十分"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_IV", "adjustment": 0.05, "reasoning": "業界構造との合致"},
+        {"source": "kb2_pattern_A", "adjustment": -0.1, "reasoning": "規模は結果"},
+        {"source": "transcript_call_type", "adjustment": 0.0, "reasoning": "Q4 annual call（主）"}
+      ],
+      "overall_reasoning": "GINの規模（200,000脅威/秒）は定量的だが、なぜGINが競合には持てないのかの仕組みの説明が不十分。インストールベース規模は構造的優位性の要件を満たすが、次世代企業の台頭リスクあり。まあ納得レベルで確信度50%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "GINテレメトリ規模 → Unified Security Analytics差別化 → Enterprise Security成長率1-6%",
+      "evidence": "Q4 FY2015: GIN→Analytics差別化→FY16成長ガイダンス1-6%",
+      "final_confidence": 0.4,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "3段階以上の因果チェーンでルール5-T違反"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C", "matched": true, "adjustment": -0.1, "reasoning": "因果チェーン3段階以上でCausal Leapパターン"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_C", "adjustment": -0.1, "reasoning": "因果チェーン長すぎ"}
+      ],
+      "overall_reasoning": "因果チェーンが3段階以上。ガイダンス成長率との直接接続根拠が弱い。あまり納得〜まあ納得の中間で40%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "DLPにおける市場シェア約2倍のリーダーシップ（次位競合比2倍）",
+      "evidence": "Q4 FY2015: 'DLP offering experienced above-market growth of 14% in fiscal 15 and is the undisputed leader in the market with double the share of the next largest competitor'",
+      "final_confidence": 0.4,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "シェアは結果。なぜDLPでシェアを維持できるかの能力説明不足"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "次位比2倍、14%成長という定量データあり"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.1, "reasoning": "シェアは結果"},
+        {"pattern_id": "pattern_I", "matched": true, "adjustment": 0.05, "reasoning": "定量的差別化（次位比2倍）は高評価要因"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_A", "adjustment": -0.1, "reasoning": "シェアは結果"},
+        {"source": "kb2_pattern_I", "adjustment": 0.05, "reasoning": "定量的比較データあり"}
+      ],
+      "overall_reasoning": "DLPでの次位比2倍シェアは定量的だが結果に過ぎない。40%"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "DLPシェアリーダーシップ → クラウドDLP展開 → 14%以上の成長継続",
+      "evidence": "Q4 FY2015: DLPシェア→クラウド版展開（Office365/AWS）→既存顧客のアップグレード",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "DLPシェア→クラウド版展開は2-3ステップで合理的"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.05, "reasoning": "スイッチングコストに依拠した直接的CAGR接続"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_II", "adjustment": 0.05, "reasoning": "直接的CAGR接続"}
+      ],
+      "overall_reasoning": "スイッチングコストに依拠したクラウド拡張は比較的直接的。まあ納得で50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "企業向けエンドポイントセキュリティ（SEP）における1億以上のインストールベース",
+      "evidence": "Q3 FY2015: 'ATP Endpoint is not a SEP replacement but a complementary add-on product that makes customers' investment in over 100 million Symantec endpoints more valuable'",
+      "final_confidence": 0.35,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "1億インストールは結果"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "大規模インストールベースは新製品拡販プラットフォームとして構造的意味あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.1, "reasoning": "インストールベースは結果"},
+        {"pattern_id": "pattern_III", "matched": false, "adjustment": 0.0, "reasoning": "仕組みへの言及不十分"}
+      ],
+      "confidence_adjustments": [
+        {"source": "transcript_call_type_quarterly", "adjustment": -0.1, "reasoning": "Q3 quarterly（②相当）"},
+        {"source": "kb2_pattern_A", "adjustment": -0.1, "reasoning": "結果"}
+      ],
+      "overall_reasoning": "インストールベース規模は定量的だが結果。Q3発言かつ次世代EDR競合リスクあり。あまり納得しない〜まあ納得で35%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 2, "40-50": 2, "50-60": 1},
+    "gatekeeper_applied": false
+  }
+}

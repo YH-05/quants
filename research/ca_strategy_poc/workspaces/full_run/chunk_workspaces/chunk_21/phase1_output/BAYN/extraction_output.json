@@ -1,0 +1,270 @@
+{
+  "ticker": "BAYN",
+  "transcript_source": "Q4 2014 Annual Results (2015-02) + Q2 2015 Results (2015-07), Bayer Aktiengesellschaft",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4_2014_annual", "Q2_2015"],
+    "note": "201502 is Q4 2014 annual results (event date 2015-02-26), treated as Q4_annual (primary). 201507 is Q2 2015 results (event date 2015-07-29), treated as Q2_quarterly (secondary, -10% adjustment). Rule 12-T applied accordingly."
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "BayerのXarelto（リバーロキサバン）の競争優位性：2014年末に抗凝固薬市場で32%のグローバル値シェアを達成（2013年比+8ポイント）し、新規処方においては32%シェア（warfarin 46%、apixaban 18%）。2014年売上EUR 17億で1,000万人以上を治療。BRBアプリケーション（AF/DVT/PE）での適応拡大パイプラインをJohnson & Johnsonとの共同開発で推進",
+      "descriptive_label": "Xarelto抗凝固薬市場リーダーシップ：32%グローバルシェア・EUR17億売上",
+      "evidence_from_transcript": "Q4 2014 (Marijn Dekkers): 'Xarelto ended 2014 with EUR 1.7 billion in sales, firmly establishing Xarelto as the leading novel oral anticoagulant, achieving 32% global market share in the overall anticoagulant market in December...8 percentage points over the same period in 2013...treated more than 10 million patients.' Q4 2014 (Olivier Brandicourt): 'Xarelto for the oral anticoagulant market is about 15%...new RX, Xarelto is at 32%.' Q2 2015: 'Xarelto...sales increased by 43% in the quarter...33% sales market share in April.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「Xareltoの抗凝固薬市場支配力・ブランドポジション」（名詞）は32%シェア・EUR 17億売上・1,000万患者という具体的な数値で裏付けられた構造的優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass_quantitative",
+            "reasoning": "32%グローバル値シェア（+8pp YoY）、EUR 17億売上（FY2014）、+43%四半期成長（Q2 2015）、1,000万患者という複数の定量証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "医薬品規制（適応症別承認）・医師処方習慣の形成・保険適用・J&Jとの共同販売ネットワークが参入障壁を形成。warfarinからの切り替え加速（78%→60%）は構造的な市場移行を示す"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 80,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "32%グローバルシェア+43%成長+1,000万患者治療という強力な定量証拠（+15%）",
+            "adjustment": 15
+          },
+          {
+            "reason": "apixaban（Eliquis）との競争が新規処方で18%に達しており、競争圧力は実在する（-5%）",
+            "adjustment": -5
+          },
+          {
+            "reason": "特許期限リスク（長期的）は評価期間内（2015-09-30）では顕在化していない",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Xareltoは抗凝固薬市場でリーダーポジションを確立（32%グローバル値シェア）し、かつ成長を継続（+43% Q2 2015）。warfarinからの構造的切り替えトレンドは中長期的な需要拡大を支援。apixabanとの競争は新規処方で存在するが、総処方では明確なリード。製薬規制・ブランド・医師習慣による高いスイッチングコストが競争優位性を支える。確信度は高い。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Xareltoリーダーシップ → warfarinからの構造的切り替え加速（-18pp）+ 適応拡大 → 継続的売上成長 → Pharma部門EBITDA拡大 → グループCAGR",
+      "descriptive_label": "Xareltoリーダーシップ→warfarin切り替え加速→Pharma EBITDA→グループCAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "3ステップ。Xareltoシェア拡大→warfarin切り替え加速→Pharma収益増はFY2014実績（+14% EBITDA）と2015ガイダンス（売上EUR 40億目標）で確認済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 75,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Xareltoは2014年EUR 17億→2015年EUR 40億超（5製品合計）という成長軌道が具体的。warfarin 78%→60%という構造的切り替えトレンドはXarelto成長の長期ドライバー"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "BayerのCropScience事業における4年連続二桁成長と新製品パイプライン：2014年売上+11%（価格+2%、量+9%）で新製品が売上の23%成長（EUR 19億貢献）。Seeds事業のcotton/油糧種子+20%成長。果物・野菜向けCrop Protection（売上の25%）が農産物価格変動に耐性のある収益源として機能。CropScienceのEBITDA マージン25%維持",
+      "descriptive_label": "CropScience新製品パイプライン：4年連続二桁成長・新製品+23%・EBITDA 25%",
+      "evidence_from_transcript": "Q4 2014 (Marijn Dekkers): 'our CropScience business has, again, shown an exceptional performance, and sales there advanced 11% in 2014, driven by higher volumes, or up 9%, as well as strong pricing performance, with prices up 2%...Our new Crop Protection products nominally grew 23%...seeds business...delivered EUR 1.1 billion in sales, which is translating into nearly 20% growth...maintain a high EBITDA margin of close to 25%.' Q4 2014 (Liam Condon): 'about 1/4 of our portfolio sales are actually related to fruit and veg, which doesn't tend to be impacted by the soft -- softening of the market.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「CropScience新製品パイプライン・Seeds事業の種子ポジション」（名詞）は4年連続二桁成長という実績で裏付けられた構造的優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass_quantitative",
+            "reasoning": "+11%（2014年）、新製品+23%、Seeds+20%、EBITDA 25%という強力な定量証拠。4年平均二桁成長"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "農産物価格軟化という逆風下でもフルーツ・野菜（25%）が耐性。イノベーションによる農家の収量問題解決は汎用品価格競争に対する構造的耐性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "4年連続二桁成長という長期パターンは構造的優位性の強力な証拠（+10%）",
+            "adjustment": 10
+          },
+          {
+            "reason": "2015年はソフト市場（トウモロコシ・大豆価格軟化）で厳しい環境。CropScienceの2015年ガイダンスは低シングルディジット成長に大幅減速（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Seeds+フルーツ・野菜の組み合わせはSyngenta・Monsanto・DuPontとの比較で優位性の説明が必要（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "4年連続二桁成長とEBITDA 25%維持は CropScience の構造的強みを示す。フルーツ・野菜（25%）はコモディティ価格変動に耐性のある高付加価値セグメント。ただし2015年の大幅減速（低シングルディジット）は外部環境への脆弱性を示し、確信度を下げる要因。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "CropScience新製品パイプライン（毎年2新製品+Seeds多品種） → 農家の収量・抵抗性問題解決能力 → 価格プレミアム維持 → EBITDA 25%安定→グループCAGR",
+      "descriptive_label": "CropScience新製品→価格プレミアム→EBITDA 25%→グループCAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "3ステップ。新製品イノベーション→農家の収量問題解決→価格プレミアム維持はCropScience経営陣が明示的に語った因果"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "4年平均二桁成長の実績はパイプライン→成長の因果を支持。2015年のソフト市場でも「上市後3-5年の製品が収益貢献」という長期ライフサイクル構造は安定的な収益ドライバー"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "BayerのEylea（アフリベルセプト）眼科事業における市場支配力：2014年売上EUR 7.59億（目標EUR 7億超過）。スイス41%・ドイツ37%・英国35%・フランス35%の欧州主要国市場シェア。日本・オーストラリアで約50%シェアを防衛。DME（糖尿病性黄斑浮腫）適応拡大で欧州のさらなる浸透を目指す",
+      "descriptive_label": "Eylea眼科市場リーダーシップ：欧州主要国35-41%・日豪50%シェア",
+      "evidence_from_transcript": "Q4 2014 (Marijn Dekkers): 'Eylea also gained momentum in 2014, and with sales of EUR 759 million for the year, we clearly exceeded our target of EUR 700 million...in Japan and Australia, we could defend our close to 50% share of the market.' Q4 2014 (Olivier Brandicourt): 'Switzerland at 41%; Germany at 37%; U.K., 35%; and France at 35%.' Q2 2015 (Marijn Dekkers): 'Eylea, again, showed impressive growth up 49% versus the prior year, driven by the launch in new indication, for example, DME in several European countries and Japan...defended our market leadership in Australia and in Japan.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「Eylea眼科市場ポジション」（名詞）は日豪50%・欧州35-41%というシェアデータと目標超過実績で裏付けられた構造的優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass_quantitative",
+            "reasoning": "スイス41%・独37%・英35%・仏35%・日豪50%という複数市場の定量シェアデータ。EUR 7.59億（+49% Q2）という財務実績"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "眼科適応症別承認（AMD・DME）、眼科医との関係・学術エビデンスの蓄積、医療保険適用が構造的参入障壁を形成"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t",
+        "confidence": 75,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "複数国での35-50%シェアデータは競合（Lucentis/Ranibizumab）に対する定量的優位性の証拠（+10%）",
+            "adjustment": 10
+          },
+          {
+            "reason": "EyleaはRegeneron（米国権利保持）との共同開発品。Bayer単独の競争優位性とは言いにくい面がある（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Eylea は複数市場で35-50%の市場シェアを持ち、+49%成長継続という実績は明確な競争優位性の証拠。DME適応拡大で欧州でのシェア拡大余地がある。Regeneronとの共同開発は商業的強みであるとともに、特許・事業継続リスクの観点から考慮が必要。確信度は高い。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Eylea眼科市場リーダーシップ + DME適応拡大 → 欧州シェア35-41%から50%への拡大 → Pharma売上継続成長 → グループCAGR",
+      "descriptive_label": "Eylea適応拡大→欧州シェア拡大→Pharma成長→グループCAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。DME適応承認（欧州複数国・日本で実施）→シェア拡大→Pharma売上増は既に進行中の因果"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "DME適応拡大はEylea売上+49%（Q2）という実績で既に確認可能。日豪50%という前例がDME拡大後の欧州でも実現可能性を支持"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014実績: グループ売上EUR 420億（+7%有機）。Pharma+11%、CropScience+11%、Consumer Health+4%。調整EBITDA +5%（FX△EUR 4億）。Core EPS +7%。2014年新製品5品群合計EUR 29億（目標EUR 28億超過）。Xarelto EUR 17億（32%シェア）・Eylea EUR 7.59億・Stivarga EUR 2.24億+17%・Xofigo EUR 1.57億・Adempas EUR 0.89億。CropScience新製品+23%・Seeds+20%・EBITDA 25%。R&D費+10%増（EUR 40億超へ）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 5]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015実績: グループ売上EUR 121億（+4%有機、+18%名目）。5製品合計EUR 11億（Q2）、通年EUR 40億目標。Xarelto+43%・Eylea+49%・Stivarga+33%。調整EBITDA +33%（FX+EUR 2.6億）。Core EPS EUR 1.98（+34%）。グループ全年ガイダンス: 売上EUR 470億、EBITDA高いティーン%増、Core EPS高いティーン%増。CropScience Q2 -1%（ブラジル農薬-14%）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [1, 3, 5]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Eylea市場シェア: スイス41%、ドイツ37%、英国35%、フランス35%（Q4 2014時点）。日本・オーストラリア約50%。XareltoシェアL: グローバル値32%（2014年12月、前年比+8pp）。TRx（米国）15%、新規Rx 32%。2015年ガイダンス: CropScience EUR 100億、HealthCare EUR 230億。MaterialScience分離（Covestro）：51%フロート、30%以下で連結除外",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 5]
+    }
+  ]
+}

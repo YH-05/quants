@@ -1,0 +1,280 @@
+{
+  "ticker": "COST",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "COST-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Costco の米国・カナダにおける会員更新率は 91% に達し、2014年度Q4（2014-10-08）および2015年度Q4（2015-09-30）の両期で一貫して同水準を維持している。この高い更新率は、会員が年会費を払い続ける経済的インセンティブと習慣的購買行動を示す。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "2期連続PRIMARYで91%確認。構造的市場ポジション（KB2-IV）に該当。Sam's Club比較データなし点は懸念だが定量根拠は強固",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "91%という定量的更新率は構造的スイッチングコストの強力な証拠（KB2パターンIV）。2期連続PRIMARY確認。年会費制の習慣購買モデルが創出する経済的解約コストは競合が模倣困難。Sam's Club等との比較データがなく純粋差別性（rule07）に疑問が残るが70%が適切。"
+    },
+    {
+      "claim_id": "COST-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Kirkland Signature（KS）プライベートブランドは、ブランド品と同等以上の品質を低価格で提供することで会員の信頼を獲得し、ナショナルブランドに価格低下圧力をかける二重の競争優位性をもたらす。CEOは「KS製品がシェアを奪うとブランド品が価格を下げてくる」と明言した。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "KSがベンダー価格低下→会員ロイヤルティ向上というメカニズムを経営者が明示。能力>結果パターン（KB2-III）。KS売上比率の定量データ欠如は減点要因だが補える",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "KSのブランド力とそれが生み出すベンダー交渉力の好循環（KB2パターンIII：能力>結果）。CEOの直接的メカニズム説明（KS→ブランド品値下げ→会員ロイヤルティ）は優位性の連鎖を示す。独自のPBブランド構築には数十年を要し競合が短期模倣困難。70%。"
+    },
+    {
+      "claim_id": "COST-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Costco の商品在庫の 89% がトレードペイアブル（仕入債務）で賄われており、実質的にマイナスワーキングキャピタル構造を維持している。この構造は規模拡大に伴いさらに有利化し、小規模競合が模倣困難な資金効率を実現する。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "89%という定量値で規模依存型仕入力を確認（KB2-I）。Walmart等の類似指標との比較が欲しいが、会員制倉庫特有の在庫モデルは差別性あり",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "89%トレードペイアブル比率は定量的差別化（KB2パターンI）の典型例。2期連続でこの水準を維持することは仕入れ力の構造的強さを示す。ネガティブWCモデルは大規模小売共通の側面もあるが（rule07懸念）、会員制×限定SKUモデルによる高在庫回転率との組み合わせはCOST固有。70%。"
+    },
+    {
+      "claim_id": "COST-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Executive 会員（年会費 $110）は 2014年度Q4に約 1,500万人（週 2.8万人増）、2015年度Q4に 1,610万人に達しており、通常会員から Executive 会員へのアップグレードによる ARPU 拡大が継続している。Executive 会員の 2% リワードプログラムは購買集中化インセンティブとして機能する。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "Executive会員数増加は結果指標（パターンA）。2%リワードは補完的要因（rule06）。スイッチングコストの間接証拠としては有効だが優位性の直接証拠ではない",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "Executive会員増加は事業成長の結果指標（KB2パターンA）。2%リワードは購買集中化インセンティブだが競合でも類似プログラムがあり純粋差別性は低い（rule06）。アップグレード継続ペース（週2.8万人）はスイッチングコストの証拠として参考になるが、直接の構造的優位を示す能力の証拠としては弱い。40%。"
+    },
+    {
+      "claim_id": "COST-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Costco の e コマース事業（FY2014: 約 30億ドル、FY2015: 約 35億ドル）は、全社平均を上回る利益率を実現している。CFOは「e-commerce is definitely quite a bit more profitable than the rest of the company」と明言した。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_D_qualitative_only",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "「quite a bit more profitable」という定性表現のみで利益率の定量データなし（パターンD）。Amazon等との比較もなく業界構造適合性が不明（rule11）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "EC利益率優位の主張は定性のみ（KB2パターンD）。会員限定ECモデルは差別性があるが「quite a bit more profitable」という表現は検証困難。物流コスト・配送コストの具体的比較がなく、Process Power主張の根拠として不十分。30%。"
+    },
+    {
+      "claim_id": "COST-006",
+      "claim_id_int": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "Costco は薄利多売・会費収入モデルを採用しており、従来型小売業（百貨店・スーパー）が利益モデルを毀損せずに模倣できないポジションを確立している。管理職は「we're most sensitive to us（価格競争において自社が最も敏感）」と述べ、低価格維持を経営哲学として表明している。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "Counter-Positioningとしての論点は成立（フルプライス小売は模倣するとブランド・利益構造を毀損）。ただし定量エビデンス不足（rule01）。文化・哲学の証拠としては50%が上限",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "会費収入モデルは典型的Counter-Positioning（KB2パターンIII参考）。フルプライス競合がコピーすれば自社の利益構造（高マージン商品前提）を破壊するジレンマが存在。ただし「最も価格に敏感」という発言は文化的主張であり（rule01）定量化困難。Sam's Clubとの差別性が依然不明（rule07）。50%。"
+    },
+    {
+      "claim_id": "COST-007",
+      "claim_id_int": 7,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Costco は有機グラウンドビーフ等の有機食品カテゴリの規模を活用し、既存会員の 80% 以上が同商品の購入を Costco で初めて開始するなど、規模拡大に伴う品揃え拡充が追加需要を創出している。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "有機食品の規模活用は業界全体でのトレンドに近い（パターンB）。Walmart/Amazon Freshも同様の取り組みがあり、COST固有の差別化証拠が弱い（rule11）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "有機食品拡充による追加売上は業界共通トレンド（KB2パターンB）。Whole FoodsやWalmart等も有機食品規模拡大中であり、COST固有の優位性証拠としては弱い。「80%以上が初購入」というデータは興味深いが、これが構造的Scale Economicsを示すかは疑問。30%。"
+    },
+    {
+      "claim_id": "COST-008",
+      "claim_id_int": 8,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Costco は従業員の医療保険を大幅には削減せず、むしろ維持し続けることを経営方針として明言している。CFOは「we haven't and aren't going to make major changes like cutting a bunch of people out of it」と述べ、高コストの人事モデルを意図的に選択している。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_D_qualitative_only",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "従業員待遇維持の文化的コミットメントは定性的（パターンD）。従業員定着率データなし（rule04）。補完的要因（rule06）の可能性高い",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "従業員待遇維持はProcess Powerの文化的側面だが定量証拠なし（KB2パターンD）。医療保険維持のみでは定着率・生産性への影響は直接確認できない（rule04）。他の小売業（Costcoより低待遇）との比較で優位性を持つが、COST固有かつ持続的な能力の証拠としては補完的（rule06）。40%。"
+    },
+    {
+      "claim_id": "COST-009",
+      "claim_id_int": 9,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Costco の会員費収入（FY2014 Q4: 7.68億ドル、前年比 +7%）は安定的に拡大している。会員費収入の FX 調整後成長率は +8% であった。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "会員費収入は結果指標（パターンA）。Scale Economicsの証拠として会員数増加を示すが、独立した競争優位の直接証拠ではない",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "会員費収入増加は事業成長の結果（KB2パターンA：結果を原因と取り違え）。会員数×更新率の掛け合わせ結果であり、構造的優位性そのものではない。CAGRとの接続として参考にはなるが競争優位性の証拠としては弱い。30%。"
+    },
+    {
+      "claim_id": "COST-010",
+      "claim_id_int": 10,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Costco の Google Shopping Express パートナーシップは、会員限定 EC チャネルとして機能しており、Costco 会員でなければ同サービス経由で Costco 商品を購入できない。このモデルは既存会員の購買頻度向上と新規会員獲得を両立させる設計となっている。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "Google Expressパートナーシップは戦略的連携（パターンF：戦略混同）。Google側の政策変更で終了する可能性があり、持続的スイッチングコストとは言い難い（rule06）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Google Expressパートナーシップは戦略的提携（KB2パターンF）。会員限定チャネルの設計は評価できるが、提携継続は外部要因依存であり構造的スイッチングコストとは言えない（rule06、rule11）。「incremental sign-ups」は定量不明で証拠として弱い。30%。"
+    },
+    {
+      "claim_id": "COST-011",
+      "claim_id_int": 11,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Costco の FY2015 Q4 における会員更新率は 91%（米・加）・88%（全世界）を維持。総会員数は 44.6M 世帯に達し、Executive 会員は 16.1M に増加しており、会員構造がより高単価層にシフトしている。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "Q4 FY2015 PRIMARYで2期連続91%確認。44.6M会員という規模の定量確認（KB2-I）。COST-001との重複だが確認として機能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "2期連続（FY2014・FY2015）での91%更新率と44.6M会員数の定量確認（KB2パターンI）。会員基盤拡大とExecutive会員比率向上のデュアルトレンドはScale Economicsとスイッチングコストの両方を裏付ける。FY2015 Q4 PRIMARYからの確認で信頼性が高い。70%。"
+    },
+    {
+      "claim_id": "COST-012",
+      "claim_id_int": 12,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Costco の e コマースは FY2015 において約 35億ドルの売上高（全社比約 10%）を達成し、前年比 +20% で成長している。CFO は e コマースのオペレーティングマージンが全社平均を大幅に上回ることを確認した。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_D_qualitative_only",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "EC規模$3.5Bは確認できるが、利益率定量データなし（パターンD）。FY2015の新市場投資コストが重なり収益性評価困難",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "EC成長+20%は実績だが利益率の定性的表現のみ（KB2パターンD）。会員限定ECの差別性は認められるが、Amazon等との比較優位が示されていない。結果指標（売上高）から能力（プロセス優位性）への飛躍が不十分（rule01）。30%。"
+    },
+    {
+      "claim_id": "COST-013",
+      "claim_id_int": 13,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "Costco の会員費収入は FY2015 Q4 で 7.85億ドル（+2% YoY、FX 調整後 +6%）。この純粋な高マージン収入は EPS 成長（FY2014 Q4: $1.58 → FY2015 Q4: $1.73、+10%）の重要な構成要素であり、競争優位性の財務的表れとして機能している。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "CAGR接続として会員費→EPS成長の定量接続を示す。結果指標から優位性への飛躍（パターンA）だが、CAGR_connectionタイプとして適切",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "会員費収入とEPS成長の定量的接続（KB2パターンA：結果→原因だが、cagr_connectionクレームとして適切）。$785M会員費は高純利益率の安定収入であり、EPS成長の基盤として機能。会員制モデルの財務的優位性を示す間接証拠。50%。"
+    }
+  ]
+}

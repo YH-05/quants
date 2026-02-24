@@ -1,0 +1,116 @@
+{
+  "ticker": "CELG",
+  "company_name": "Celgene Corporation",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00",
+  "claims": [
+    {
+      "claim_id": "CELG-001",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "REVLIMID's position in the market has never been stronger. The product grew 16% year-over-year and now has an annual revenue base of just under $5 billion.",
+      "claim_summary": "REVLIMIDは多発性骨髄腫治療の標準療法として$5B/年のフランチャイズを確立。特許保護（2027年まで）と骨髄腫治療プロトコルへの組み込みにより競合新薬の市場参入コストが極めて高い。治療継続期間の延長が追加収益源となっている。",
+      "confidence": 0.7,
+      "confidence_rationale": "$5B規模・+16%成長の定量証拠は強力。多発性骨髄腫の標準治療として位置付けられており、新規診断MM（NDMM）適応拡大が次のCAGRドライバーとして明確。特許保護期間が長く確認できる。",
+      "kb1_rules_applied": ["rule04", "rule06"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation", "pattern_IV_structural_market_position"],
+      "supporting_evidence": [
+        "REVLIMID ~$5B annual revenues (+16%)",
+        "Quarterly run rate >$1.32B exiting 2014",
+        "NDMM approval pending in US/EU/Japan",
+        "Duration of therapy extension driving volume"
+      ]
+    },
+    {
+      "claim_id": "CELG-002",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Three of our products, ABRAXANE, POMALYST/IMNOVID and OTEZLA, combined for a full year net product sales of approximately $1.6 billion, reflecting a 67% year-over-year increase.",
+      "claim_summary": "Celgeneの第2・第3フランチャイズ（ABRAXANE膵臓癌/乳癌、POMALYST再発骨髄腫、OTEZLA乾癬性関節炎）がREVLIMIDに続く収益柱として成長。3製品合計$1.6B（+67%）は実質的な新しいCornered Resourceの形成を示す。",
+      "confidence": 0.6,
+      "confidence_rationale": "+67%という高成長は定量的証拠として強力。ただし3製品はまだ成熟しておらず、競合の模倣可能性についての評価が必要。OTEZLAは既に競合品（JAK阻害剤等）が開発中。",
+      "kb1_rules_applied": ["rule04", "rule06"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "ABRAXANE $850M (pancreatic cancer standard of care)",
+        "POMALYST/IMNOVID +123% globally",
+        "OTEZLA launch in psoriasis (highest initial Rx of any I&I launch)"
+      ]
+    },
+    {
+      "claim_id": "CELG-003",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Our integrated and distributed R&D model is productive and working well...investing wisely to advance our pipeline with leading technologies, and enhancing our internal programs and capabilities through collaborations with the best biotech partners in the industry.",
+      "claim_summary": "CelgeneのR&D統合・分散モデル（内部研究+外部コラボレーション：Agios, Acceleron, GED-0301等）は、大手製薬との差別化要素。タンパク質恒常性・エピジェネティクス・免疫腫瘍学センターオブエクセレンスが長期パイプラインを支える独自プロセス能力。",
+      "confidence": 0.6,
+      "confidence_rationale": "コラボレーションモデルの効果はAG-221（AML）、sotatercept（MDS）等の進捗で実証されている。ただし他の大手バイオファーマも同様のコラボモデルを採用しており、差別化の持続可能性が課題。",
+      "kb1_rules_applied": ["rule03", "rule06"],
+      "kb2_patterns_matched": ["pattern_III_capability_over_result"],
+      "supporting_evidence": [
+        "Agios (AG-221/enasidenib), Acceleron (sotatercept) partnerships",
+        "8 new phase I programs planned for 2015",
+        "Protein homeostasis, epigenetics, immuno-oncology centers"
+      ]
+    },
+    {
+      "claim_id": "CELG-004",
+      "claim_type": "cagr_connection",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We currently forecast over $20 billion in net product sales, reflecting an 18% compound annual growth rate...Our adjusted EPS target is to achieve over $12.50 per share, which represents a 23% compound annual growth rate from 2014 to 2020.",
+      "claim_summary": "【CAGRリンク】2020年目標$20B（CAGR+18%）、EPS $12.50+（CAGR+23%）は、REVLIMID NDMM適応拡大+POMALYST/IMNOVID+ABRAXANE+OTEZLA成長+パイプライン（最低17個の追加機会）が根拠。Cornered Resource（REVLIMID特許独占）が成長の可視性を高める。",
+      "confidence": 0.7,
+      "confidence_rationale": "2020年目標の$20Bのうち$17B（85%）が既存製品・既知ドライバーに基づいており、明確な根拠がある。+18% CAGRという高い目標は挑戦的だが、2014年の+19%成長実績で裏付けられている。",
+      "kb1_rules_applied": ["rule04", "rule02"],
+      "kb2_patterns_matched": ["pattern_II_direct_cagr_mechanism", "pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "$20B+ 2020 target (18% CAGR)",
+        "EPS $12.50+ 2020 target (23% CAGR)",
+        "15% of $20B from existing products/drivers",
+        "REVLIMID $5.6-5.7B guidance for 2015"
+      ]
+    },
+    {
+      "claim_id": "CELG-005",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We continue to drive a leveraged P&L as earnings growth outpaced revenue growth...Even with this strong P&L management, we made significant investments throughout the year. These investments led to an approximately $400 million increase in combined R&D and SG&A expense in 2014, which is a 13% year-over-year growth.",
+      "claim_summary": "Celgeneの収益成長（+24% EPS）が売上成長（+19%）を上回る営業レバレッジは、グローバルインフラ（商業・研究）への固定費分散による規模の経済を示す。$2.8B営業キャッシュフローが継続的なR&D投資とシェア買戻しを支える。",
+      "confidence": 0.6,
+      "confidence_rationale": "EPS+24% vs 売上+19%という明確な営業レバレッジの証拠。+$400M R&D投資も規模を活かした研究能力強化を示す。ただし製薬業界一般のレバレッジモデルとCelgene固有の優位性の区別が難しい。",
+      "kb1_rules_applied": ["rule04", "rule01"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "EPS +24% vs net sales +19%",
+        "Operating cash flow $2.8B (+26%)",
+        "220bps adjusted operating margin improvement",
+        "$2.9B share repurchases"
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "by_seven_powers": {
+      "Cornered Resource": 2,
+      "Process Power": 1,
+      "Scale Economies": 1
+    },
+    "by_claim_type": {
+      "competitive_advantage": 4,
+      "cagr_connection": 1
+    },
+    "primary_transcript": "201501_earnings_call.json",
+    "transcripts_used": ["201501_earnings_call.json"],
+    "notes": "CELGのQ4 FY2014（2015年1月発表）。REVLIMID特許独占がCornered Resourceとして支配的。2020年$20B目標という具体的な長期CAGRは強力な証拠。R&D統合分散モデルが長期パイプライン価値の源泉。"
+  }
+}

@@ -1,0 +1,358 @@
+{
+  "ticker": "LIN",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-28) + Q3 2014 (2014-10-29)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "産業ガス事業における継続的コスト削減・生産性改善プロセス（毎年コストスタックの5%超の生産性節減）",
+      "descriptive_label": "組織的生産性改善プロセス（Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CFO発言）: 'During 2014, our productivity initiatives again exceeded our targeted savings of at least 5% of our cost stack. These efforts are not an annual or quarterly event but something that all employees are working toward on a daily basis. Constant focus on generating productivity initiatives, executing them and replicating them globally typically within the areas of production, procurement and distribution offsets inflation in our cost structure.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「全従業員が日常的に取り組む」という組織的能力（仕組み）を評価。実績（5%超節減）は裏付けとして機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "コストスタックの5%以上という定量的ターゲットおよび達成の言及あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "コスト削減は全従業員が日常的に実施しており、構造的プロセスとして位置付けられる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Air Products, Air Liquide等）との差別化が明示されていない（ルール7-T未達）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な説明。生産性改善プロセスは産業ガス業界での構造的能力として認識。ただし純粋競合（Air Products等）との定量的比較がなく、業界共通の要素の可能性あり。EBITDA・OPMが業界最高水準（22.4%）という実績は裏付けとなるが、プロセス自体の差別化証明には不十分"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "生産性改善プロセス → コストインフレ相殺 → OPM維持・拡大 → EPS成長CAGR + 1-2pp",
+      "descriptive_label": "生産性→OPM→EPS成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果（生産性→OPM維持）。OPMは開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。投資仮説の根幹として採用"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "OPM維持への直接接続は明確。ただしEPS成長への接続は為替・マクロ要因が介在し、純粋な生産性効果の定量化が困難"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "長期顧客契約と分散したプロジェクトバックログによる安定的なキャッシュフロー創出能力",
+      "descriptive_label": "長期契約ベースのキャッシュフロー安定性（Switching Costs）",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CFO発言）: 'The resiliency of our business model and stability of cash flow generation enables us to consistently return capital to shareholders, especially in times of more moderate growth.' / Q4 Q&A: 'Our project backlog...remained steady at $1.9 billion and is comprised of 24 projects.' / backlog: 'about 1/3 in North America, 1/3 in Asia and the remainder in Europe and South America. These projects will serve customers in the chemical, metals, manufacturing, energy and electronics end markets.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10, 11],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "長期契約の仕組み（能力）を評価。キャッシュフロー安定性は結果だが、契約構造という仕組みを根拠として採用"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "大規模投資を要するオンサイト設備の長期契約は産業ガス業界の構造的特性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Air Products、Air LiquideもTake-or-pay契約を持つ。純粋競合との差別化が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "産業ガス業界では長期契約は業界共通の構造的特性（ルール3違反の可能性）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "産業ガス業界の構造的特性（大規模設備投資+長期契約）との合致は認められるが、同業のAir Products、Air Liquideとの差別化が不明確。$1.9 billion backlogは実績数値だが、業界内でどの程度の相対的優位性かは判断困難"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "安定的バックログ → 新規プロジェクト貢献 EPS + 2-4% → 安定的CAGR寄与",
+      "descriptive_label": "バックログ→EPS成長の直接接続",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。プロジェクト貢献EPS $0.20-$0.30/年（3-4%相当）は開示データ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CFOが $0.20-$0.30/年のEPS貢献を明示的に開示しており、定量的な接続が明確。バックログの遅延リスクはあるが、接続メカニズム自体は直接的"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "産業ガス事業における業界最高水準のOPM・EBITDAマージンを可能にするコスト構造と規律あるキャピタルアロケーション",
+      "descriptive_label": "業界最高水準OPM（Scale Economies + Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CFO発言）: 'we grew full year EBITDA and operating margins to new highs of 32.2% and 22.4%, respectively' / Q3 Prepared Remarks（CFO発言）: 'all of these factors result in Praxair still being the best-performing industrial gas company, and we expect to stay that way.' / Q4: 'We'll continue to manage the things that have enabled our industry-leading position, which include operational excellence and disciplined capital allocation.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "OPM 22.4%・EBITDA 32.2%は結果。「operational excellence and disciplined capital allocation」は能力の記述だが具体性不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "22.4% OPM、32.2% EBITDAという具体数値あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "'best-performing industrial gas company'という自己申告あり。Air Products・Air Liquideとの具体的比較数値は未提示"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "産業ガス市場の寡占構造・大規模設備投資が参入障壁という市場構造への言及は限定的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "「最高業績」という自己申告は結果の提示（ルール1-T 部分違反）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "業界最高水準OPMという実績数値は裏付けとして機能するが、その実現を可能にする能力（コスト構造・プロセス）の具体的説明が不足。競合との比較数値がなく、相対的優位性の評価が困難"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "業界最高水準OPM → 新規プロジェクトでも高リターン確保 → EPS成長持続",
+      "descriptive_label": "高OPM→高リターン→持続的EPS成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "OPM→リターン率→EPS成長は2-3ステップ。ROC 12.7%は開示データ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果の論理は成立するが、OPM水準がEPS成長率を保証するメカニズムとしては間接的。為替・マクロ環境の影響が大きく、純粋なOPMからの接続は限定的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "インフレ環境でも価格転嫁を維持できるプライシング力（全オペレーティングセグメントでプラス価格）",
+      "descriptive_label": "インフレ下での価格転嫁能力（Switching Costs）",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CFO発言）: 'Price attainment and cost control were achieved in all operating segments.' / Q4 Q&A（CFO発言）: 'The underlying pricing power, we still expect to see in the 1% to 2% that we've laid out for the year.' / 'Most, if not all, of our contracts in there are inflation indexed and so we should be able to recover that.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「インフレインデックス連動契約構造」という仕組み（能力）を評価。価格転嫁は結果だが、契約構造という仕組みが根拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "1-2%のプライシング目標は定量的だが、競合との比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "産業ガス業界ではTake-or-payおよびインフレ連動契約は業界共通。Air Products等の競合も同様の契約構造を持つ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "インフレ連動契約は産業ガス業界の標準的慣行（業界共通能力）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "インフレ連動契約は産業ガス業界では業界共通の標準的な契約構造であり、Praxair固有の競争優位性として評価困難。ルール3（相対的優位性）に抵触する可能性が高い"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "インフレ連動プライシング → 実質売上成長維持 → EPS成長 +1-2%",
+      "descriptive_label": "プライシング→実質売上成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。価格転嫁→売上成長の接続は直接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "プライシング力の優位性スコアは低いが、メカニズム自体（価格→売上）は明確。業界全般でこの接続は成立"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 EBITDA マージン 32.2%、OPM 22.4%（いずれも過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 5]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 末時点でのプロジェクトバックログ $1.9B（24 プロジェクト）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 営業キャッシュフロー $2.9B（売上の23%）、記録的フリーキャッシュフロー $1.2B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "アルゴン需要逼迫時に供給能力を最大化できる多様な供給源と生産能力拡張の柔軟性（北米アルゴン利用率90%超）",
+      "descriptive_label": "多様な供給源・生産柔軟性（Process Power）",
+      "evidence_from_transcript": "Q3 Q&A（CFO発言）: 'We've been able to take advantage of strong liquid argon demand due to operational excellence, diversity and supply sources and recent production capacity increases identified through productivity initiatives.' / Q4 Q&A: 'argon is quite tight. That's in excess of mid-90s right now. So that is the product that, obviously, if you can make it, you can sell it right now.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CFO",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "供給源の多様性と生産能力最適化という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "アルゴン利用率90%超という数値あり。競合との比較は未提示"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Air Products等の競合との差別化が明示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3四半期発言（従・②相当）",
+            "adjustment": -10
+          },
+          {
+            "reason": "純粋競合との差別化が不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q3発言。供給柔軟性は評価できるが、産業ガス大手では共通して多拠点・多供給源の体制を持つ。アルゴン固有の逼迫状況は一時的な市場状況であり、持続的競争優位性としての評価は限定的"
+      }
+    }
+  ]
+}

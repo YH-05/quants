@@ -1,0 +1,70 @@
+{
+  "ticker": "PFE",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PFE-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PFE FY2014実績：Q4調整後EPS $0.54、売上$131億。FY2015ガイダンス：報告売上$445-465億（LOE-$35億、為替-$28億）、調整後EPS $2.00-$2.10",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "PFE-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Cornered Resource",
+      "claim_text": "CDK 4/6・IO・バイオシミラーの3プラットフォーム → 2015-2018年15以上の承認 → 新製品売上$20億（2015年単年） → LOE穴埋め・CAGR回帰",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "2015年$20億追加収益という定量予測で検証可能。ただしパイプラインの商業化成功率は不確定",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: パイプライン→承認→売上成長という2ステップの直接的接続（dogma.md高評価パターン）。$20億という定量予測で検証可能性あり。ただしパイプラインの商業化成功率（業界平均30-40%）という不確実性で50%。"
+    },
+    {
+      "claim_id": "PFE-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "Pfizer新興市場（中国・ブラジル・インド等）でのEstablished Pharmaセグメント → ミッドからハイシングルディジット収益成長 → 全社CAGR支援",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "新興市場成長は外部市場要因への依存が高く、優位性起因のCAGR接続として弱い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: 新興市場成長への依存は外部要因（市場環境）への依存が高く優位性起因のCAGR接続として弱い（dogma.md低評価パターン）。現地競合・規制・通貨リスクが高く接続の確実性が低い。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"30-40": 1, "50-60": 1},
+    "gatekeeper_applied": false
+  }
+}

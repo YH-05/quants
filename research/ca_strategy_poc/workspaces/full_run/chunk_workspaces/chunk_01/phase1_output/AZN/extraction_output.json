@@ -1,0 +1,276 @@
+{
+  "ticker": "AZN",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00Z",
+  "claims": [
+    {
+      "id": "AZN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "イムノオンコロジーにおける PD-L1（4736）+ CTLA-4（tremelimumab）二重免疫療法の先行開発と組み合わせ試験 13 本の同時展開",
+      "evidence": "CMO Briggs Morrison (Q4 2014 prepared_remarks): 'we anticipate that over the course of this year, we could open between -- somewhere around 13, what I call, registration trials. They could be Phase II or Phase III registration trials... we think probably about half of those will be combination, using the 4736 treme combination.' Q4 2013: 'our innovative immunotherapeutics portfolio is attracting more and more attention.' PD-L1 + CTLA-4 combination trials in NSCLC, melanoma, mesothelioma, bladder cancer initiated 2014-2015.",
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "4736（anti-PD-L1）とtremelimumab（anti-CTLA-4）の両方を社内保有する唯一の製薬会社として、組み合わせ免疫療法のフルセットを展開可能。臨床データ量では後発（Merck MK-3475、BMS Opdivo）に遅れるが、combination の独自性で差別化。13本の registration trial により適応症をカバー",
+        "barrier": "PD-1/PD-L1 と CTLA-4 の両抗体を保有する競合はほぼいない（BMS は Opdivo+Yervoy を保有するが AZ より高い価格帯）。MedImmune（生物製剤）と IMED（小分子）の二重バイオテック構造が早期から late-stage への移行を加速"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Briggs Morrison",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "we anticipate that over the course of this year, we could open between -- somewhere around 13, what I call, registration trials. They could be Phase II or Phase III registration trials, so they're either ongoing or will open this year. In that constellation, we think probably about half of those will be combination, using the 4736 treme combination."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.55,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "「2社保有の抗体組み合わせ」という明確な仕組み・資産への言及。単なる「IO に投資している」ではなく具体的な临床試験計画と数値（13本）"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "PD-L1+CTLA-4 の両方を社内保有するのは実質 AZN と BMS のみ。Merck（Keytruda）は CTLA-4 を持たず組み合わせ免疫療法では AZN と BMS が優位"
+          },
+          {
+            "rule": "rule12",
+            "direction": "negative",
+            "reason": "PoiT 時点（2015）では試験結果がまだ出ていない段階。臨床成功に依存する将来的な優位性であり、現時点での確認済み競争優位とは言いにくい"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AZN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Symbicort を軸とした呼吸器フランチャイズの Emerging Markets 展開力、特に中国での市場シェア継続拡大（対市場成長率を 2 倍超）",
+      "evidence": "CEO Pascal Soriot (Q4 2014 prepared_remarks): 'If we look at the MAT IMS share in China, essentially we would double the market growth rate. So again we feel very confident about our business in China. We often get asked, are you too reliant on China?' Q4 2013: 'we achieved growth rate that we guided for. We guided for high-single-digit growth rate in Emerging Markets, and we delivered 8%... China growing at 19% versus 14% for the market defined by multinationals.' Symbicort outperforming competitors in China, growing 10% globally to $3.5B in 2013.",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "中国市場での 19-20%+ 成長（市場全体の 2 倍）による規模拡大効果。新興市場での呼吸器薬販売网ネットワーク・KOL 関係・政府調達ルートが確立されており、後発競合が構築するには数年単位の投資を要する",
+        "barrier": "AZN は China で #2 multinational の地位を確立済み。中国での医薬品販売は政府調達・地方政府との関係が重要で、GSK が贈賄問題で躓いた（2014）ことで相対的に AZN の地位が強化。IM での Pulmicort ブランドも Symbicort との相乗効果"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Pascal Soriot",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "we now growing by 19% in China for the whole year. And as the chart shows you, we outperformed the market, which is strengthening our position -- #2 position amongst multinational companies. So a 19% growth rate here versus 14% for the market defined by multinationals is really a very strong sign of our performance in China."
+        },
+        {
+          "speaker": "Luke Miels",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "If we look at the MAT IMS share in China, essentially we would double the market growth rate. So again we feel very confident about our business in China."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule03_industry_wide_trend", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": false,
+          "rule04_quantitative_evidence": true,
+          "rule03_industry_wide_trend": false,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.45,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "negative",
+            "reason": "19-20% 成長は結果の提示。それを可能にする販売網・政府関係・医師教育プログラムの仕組みの詳細説明が乏しい"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "19% 成長（vs 市場 14%）という定量的な比較データあり"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "GSK の中国贈賄問題（2014）により相対的に AZN の地位が強化。中国市場での #2 multinational 地位は競合に対して明確な優位"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AZN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "MedImmune + IMED 二重バイオテック組織モデルによる R&D 意思決定速度の構造的改善（Phase III pipeline 11 プログラムへ急拡大）",
+      "evidence": "CEO Pascal Soriot (Q4 2014 prepared_remarks): 'we came up with a model that has 2 biotech companies. One is called MedImmune which is really focusing on biologics and immunotherapy. And the other one is called AstraZeneca IMED, which is really focusing on small molecules. Those 2 biotechs have a clear role, which is to discover and early develop products.' Q4 2013: 'we're now at 11 molecules in Phase III or registration at the end of 2013, clearly exceeding what we had as our goal.'",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "大手製薬の中央集権型 R&D から 2 バイオテック分散型への組織変革により、意思決定速度が向上。Phase III pipeline が 2012 年の 6 プログラムから 2013 年末に 11 プログラムへ倍増。Discovery は biotech スピード・commercialization は大手の資本力を組み合わせ",
+        "barrier": "MedImmune（旧バイオテック、2007 年 $15.6B で買収）と IMED（旧 AZ 研究部門の再編）を独立バイオテックとして運営する組織モデルは、数年をかけて文化・インセンティブ体系を変革した成果。大手製薬の中央集権型組織への回帰コストが高く、競合が複製するには組織変革リスクを引き受ける必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Pascal Soriot",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "we came up with a model that has 2 biotech companies. One is called MedImmune which is really focusing on biologics and immunotherapy. And the other one is called AstraZeneca IMED, which is really focusing on small molecules... those 2 biotechs have a clear role, which is to discover and early develop products and bring them to a point in time when we can transition them to the late-stage organization."
+        },
+        {
+          "speaker": "Briggs Morrison",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "we're now at 11 molecules in Phase III or registration at the end of 2013, clearly exceeding what we had our goal was going to be."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.55,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "2 バイオテック構造という具体的な組織モデルへの言及。単なる「R&D に投資している」ではなく組織設計として説明されている"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "Phase III pipeline が 6→11 本（2012→2013）という定量的な成果"
+          },
+          {
+            "rule": "rule12",
+            "direction": "negative",
+            "reason": "組織変革による R&D 生産性向上は、まだ承認・売上という形の成果に転換されていない段階。PoiT 時点では進行中のターンアラウンドであり、持続性は未確認"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AZN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Brilinta（チカグレロル）の ACS 長期療法への適応拡大戦略（PEGASUS 試験による post-MI 適応獲得）",
+      "evidence": "CEO Pascal Soriot (Q4 2013 prepared_remarks): 'we need to remember the potential that will come from additional studies. In particular, the large 21,000-patients PEGASUS trial for post-MI is the first one that we realize in Q1 2015.' Q4 2014: 'really important results with PEGASUS and Brilinta.' European markets: 'discharge share...up across all markets... around 20% of patients make it to 12 months [in U.S.]. In Europe, that figure is higher, it's around 50%.' Brilinta 2013 full year revenues: $283M, growing with 2014 discharge share gains.",
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "Brilinta はブリガダ症候群患者での可逆的 P2Y12 阻害という薬理的優位（可逆性がクロピドグレルに対する差別化）。PEGASUS が positive となれば post-MI 長期療法（最大 3 年）の適応を獲得し、患者の長期継続処方が生まれる。医師の処方習慣の定着（switch costs）が競合参入を阻む",
+        "barrier": "競合の Effient（プラスグレル）は出血リスクが高い高齢者には不向きで Brilinta と正面競合しにくい。PEGASUS のデータが post-MI 適応を獲得すれば、当該患者群でのファーストライン地位が確立。クロピドグレルのジェネリック化後も Brilinta の薬理的優位性（reversibility）が維持"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Pascal Soriot",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "the large 21,000-patients PEGASUS trial for post-MI is the first one that we realize in Q1 2015, and then we have SOCRATES for stroke and EUCLID for PAD that will help us unlock more potential out of Brilinta."
+        },
+        {
+          "speaker": "Luke Miels",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "In Europe, that figure is higher, it's around 50% [making it to 12 months]. So our view is that this flow of evidence should further encourage the usage of this product for longer terms."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "PEGASUS という 2.1 万人規模の試験という具体的な仕組みへの言及。可逆性という薬理機構が説明されている"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "クロピドグレルの可逆性問題（手術前中断が不要）は Brilinta 固有の薬理的差別化。Effient は高出血リスクで棲み分け"
+          },
+          {
+            "rule": "rule12",
+            "direction": "negative",
+            "reason": "PoiT 時点（2015Q3）では PEGASUS データはまだ公開されておらず（ACC 2015 発表予定）。適応拡大の実現は future eventに依存"
+          }
+        ]
+      }
+    },
+    {
+      "id": "AZN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "SGLT2 阻害薬（Farxiga/dapagliflozin）の糖尿病以外への適応拡大（HF・CKD）という構造的ポートフォリオ展開",
+      "evidence": "CMO Briggs Morrison (Q4 2014 prepared_remarks): 'we started now a program for Farxiga in type 1 diabetes with the hypothesis that you would potentially be able to decrease insulin dosages, maybe minimize hypoglycemia.' CEO Pascal Soriot: 'Farxiga...strong growth, this class is extremely attractive. It has a number of attributes. If we look at switches, people are coming off insulin as well as moving up from metformin, so a very diverse group of patients.' saxa/dapa fixed-dose combination filed end of 2014. Very dominant outside U.S. vs BMS which lost collaboration.",
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "dapagliflozin は AZN の独占分子（BMS との共同開発契約を 2014 年に AZN が取得）。T2D の血糖降下に加え、体重減少・血圧低下・心血管保護という多面的な薬理効果が後の HF/CKD 適応拡大の基盤。Farxiga は SGLT2 クラスで EU 最初の承認（Jardiance より先行）",
+        "barrier": "BMS との共同開発を単独取得したことで利益の漏出なく全売上を享受可能。SGLT2 の後発品（Jardiance の EMPA-REG OUTCOME 試験結果は 2015 年 EASD 発表予定）が追いかける中、Farxiga は先行者優位と独占的マーケティングリソースを保有"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Pascal Soriot",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Farxiga, strong growth, this class is extremely attractive. It has a number of attributes. If we look at switches, people are coming off insulin as well as moving up from metformin, so a very diverse group of patients there."
+        },
+        {
+          "speaker": "Briggs Morrison",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "we started now a program for Farxiga in type 1 diabetes with the hypothesis that you would potentially be able to decrease insulin dosages, maybe minimize hypoglycemia, get some of the weight loss and the hypertensive effects that you get with Farxiga."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": false,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.45,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "T1D・HF への適応拡大プログラムという具体的な仕組みへの言及。単なる売上実績ではなく将来的な適応拡大計画"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "SGLT2 クラスは Lilly/BI の Jardiance、J&J の Invokana が市場に存在。AZN が唯一ではなく、Jardiance は後に心血管保護データで AZN を上回る可能性（EMPA-REG OUTCOME）"
+          },
+          {
+            "rule": "rule04",
+            "direction": "neutral",
+            "reason": "「strong growth」という定性的言及のみで具体的売上数値が乏しい"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "transcript_count": 7,
+    "quarters_covered": ["Q4 2013", "Q1 2014", "Q2 2014", "Q3 2014", "Q4 2014", "Q1 2015", "Q2 2015"],
+    "primary_transcripts": ["201402_earnings_call.json", "201502_earnings_call.json"],
+    "secondary_transcripts": ["201404_earnings_call.json", "201407_earnings_call.json", "201411_earnings_call.json", "201504_earnings_call.json", "201507_earnings_call.json"]
+  }
+}

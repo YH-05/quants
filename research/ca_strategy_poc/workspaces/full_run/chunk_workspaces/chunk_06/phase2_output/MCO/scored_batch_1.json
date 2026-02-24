@@ -1,0 +1,75 @@
+{
+  "ticker": "MCO",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "MCO-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Moody's Analyticsのエンタープライズリスクソリューション（ERS）は価格規律を強化し、プロジェクト収益性を厳格に管理することでマージン拡大に転換している。",
+      "descriptive_label": "ERS価格規律による収益性管理能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Counter-Positioning",
+      "confidence_score": 0.3,
+      "scoring_rationale": "価格規律強化は戦略的改善（rule08 concern, pattern_F_strategy_confusion）。「being much more disciplined about pricing」は仕組みの変更意図であり現時点での能力証拠として弱い（rule01 concern）。定量的なERS価格規律の効果データなし（rule04 insufficient）。競合（SAS、Algorithmics等）との比較なし（rule07 insufficient）。dogma.md「戦略的意図は能力評価に含まない」に従い30%。",
+      "kb1_flags": ["rule08_strategy_not_advantage", "rule01_capability_not_result"],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "価格規律→ERS収益性改善→MA CAGR貢献（rule05 indirect）。まだ実行中の改善（ターンアラウンド段階）。2-3ステップで因果チェーンが長い。40%。"
+    },
+    {
+      "id": "MCO-007",
+      "claim_type": "competitive_advantage",
+      "claim": "Moodyは中国・アジア市場での格付け関係拡大を進めており、アジア法人・金融機関の格付け需要増加に対して早期参入優位性を持つ。",
+      "descriptive_label": "アジア市場格付け需要拡大での早期参入優位",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": 0.3,
+      "scoring_rationale": "'Some upside opportunity'は将来の機会についての定性的表現（pattern_D_qualitative_only）。早期参入優位性（Cornered Resource）の説明はアジア格付け関係数データなし（rule04 insufficient）。S&PのアジアへのE等競合との比較なし（rule07 insufficient）。「Will benefit」「see opportunity」は期待の表明（rule01 concern, pattern_A_result_as_cause前段階）。kb3 few-shot（CHD#4: 成長加速は結果→30%）と同水準。将来の機会の言及は現在の競争優位性として評価困難。30%。",
+      "kb1_flags": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern": "pattern_D_qualitative_only",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "アジア格付け需要拡大→MCO格付け関係増加→MIS売上CAGR（rule05 indirect）。「good growth in new rating relationships」という部分的な定量証拠。ただし市場成熟度・競合状況が不明。40%。"
+    },
+    {
+      "id": "MCO-008",
+      "claim_type": "factual_claim",
+      "claim": "Moody's 2014年通年売上高は32億ドル（前年比12%増）、MIS部門23億ドル（同9%増）、MA部門11億ドル（同19%増）。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "MCO-009",
+      "claim_type": "factual_claim",
+      "claim": "Moody's Analytics 2015年Q2の有機的売上成長率は7%（2014年買収分WebEquity・Lewtan除外ベース）で、MA全体は12%増。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "MCO-010",
+      "claim_type": "cagr_connection",
+      "claim": "RD&A顧客維持率96%は、Moody's Analyticsのサブスクリプション型収益の安定成長（2014年有機成長90%超）を支える構造的基盤であり、長期的なEPS成長の可視性を高める。",
+      "descriptive_label": "RD&A顧客維持率96%→MA有機成長→EPS CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Switching Costs",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "顧客維持率96%→サブスクリプション解約率低→収益安定成長→EPS CAGR（rule05 direct）。有機成長90%超という実績で検証済み。スイッチングコスト構造により競合に奪われにくい（rule11 pass）。Q4発言（rule12 primary）。パターンII-T（直接的CAGR接続）に該当。70%。"
+    }
+  ]
+}

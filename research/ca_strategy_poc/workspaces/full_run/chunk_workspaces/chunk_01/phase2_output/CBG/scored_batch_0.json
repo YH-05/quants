@@ -1,0 +1,376 @@
+{
+  "ticker": "CBG",
+  "scored_claims": [
+    {
+      "id": "CBG-001",
+      "claim_type": "competitive_advantage",
+      "claim": "専門ニッチ市場向け分散型ローカルブランチネットワーク（約45-50拠点）による高マージン担保貸付モデル",
+      "evidence": "CEO Preben Prebensen (H1 2014): 'serve niche markets that require specialist expert knowledge...nearly 50 locations.' NIM 8.6-8.8%, bad debt 0.7-1%. 30-year track record through financial crisis without recapitalization.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "分散型ブランチネットワーク・500人専門営業部隊という能力・仕組みへの具体的言及。NIM は結果だが仕組みが主体"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "30年間の蓄積によるニッチ市場専門知識と拠点ネットワークは構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "大手銀行（Lloyds, Santander）が集中化モデルに移行済みという明確な差別化。CEO が競合との比較で優位性を説明"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "500人専門営業部隊・45-50拠点という能力・仕組みの具体的記述"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "大手銀行の集中化モデルとの対比が明確。CEO が競合との差別化を説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "NIM 8.6-8.8%（業界平均を大幅上回る）、bad debt 0.7%、30年実績という定量的証拠群"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "金融危機無増資達成という業界構造合致（dogma rule11）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "能力の具体的記述"
+        },
+        {
+          "source": "KB2-T pattern_V_specific_competitor_comparison",
+          "adjustment": 0.1,
+          "reasoning": "競合との差別化が明確"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "定量的証拠群"
+        },
+        {
+          "source": "dogma rule11_industry_structure_fit",
+          "adjustment": 0.05,
+          "reasoning": "大手銀行の集中化トレンド × CBG の地域分散モデルは業界構造との合致"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "CBG-001 は KB1-T 全3ルール PASS、KB2-T パターン4つすべてポジティブ。30年実績・NIM 8.6-8.8%・金融危機無増資という強力な定量的証拠群。大手銀行との差別化が CEO により明確に説明されている（rule07 PASS）。業界構造（大手集中化）との合致（rule11）。dogma 的に「おおむね納得」上位 0.75。"
+    },
+    {
+      "id": "CBG-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Winterflood市場造成事業における専有プロプライエタリーテクノロジーとAIM市場でのリーダーシップ",
+      "evidence": "CEO (H1 2014): '~20% of employees focused on IT and in-house development.' 128 trading days, only 1 loss day. 10-year stable cost model. 300 retail + 150 institutional customers.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "社内開発テクノロジー・20% IT 専従という能力の仕組みへの言及"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "10年変わらないコストモデルと社内開発は構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "他のマーケットメーカーとの具体的差別化根拠が限定的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "IT 専従比率という能力への言及"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "128日中1損失日という定量的リスク管理実績"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "他のマーケットメーカーとの比較なし"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "市場条件への高い感応性（景気循環リスク）があり、構造的優位性への接続が条件付き"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "IT 能力の言及"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "リスク管理実績の定量化"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合比較なし"
+        },
+        {
+          "source": "market cyclicality risk",
+          "adjustment": -0.05,
+          "reasoning": "マーケットメーキング収益の景気感応性が優位性の持続性に疑問を生む"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "Winterflood の IT 専従・128日1損失日は具体的だが、市場条件への高い感応性（景気循環）により持続的優位性の確実性が低い。純粋競合比較欠如（rule07 FAIL）。dogma 的に「まあ納得」域 0.50。"
+    },
+    {
+      "id": "CBG-003",
+      "claim_type": "competitive_advantage",
+      "claim": "フルサイクルを通じた強力な資本・流動性ポジション維持能力（金融危機無増資達成）",
+      "evidence": "CEO (H1 2014): 'came through financial crisis without needing to recapitalize or cut dividend.' CET1 13.7%, Leverage ratio 10.2%. 65% repeat customers.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "資本管理「哲学」と「原則」への明確な言及。'borrow long, lend short' という仕組みの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "CET1 13.7%, Leverage 10.2%, 65% リピート顧客率という定量的証拠"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "30年間の一貫した資本管理哲学は構造的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "'borrow long, lend short' という具体的な資本管理原則・能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "金融危機無増資という具体的事実。CET1 13.7% という業界上位の資本水準"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "30年間フルサイクルでの実績は業界構造との合致を示す（dogma rule11）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "具体的な資本管理原則の説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "金融危機無増資という検証可能な事実"
+        },
+        {
+          "source": "dogma rule10_negative_case",
+          "adjustment": 0.05,
+          "reasoning": "金融危機という negative case（競合が増資した局面での無増資）による裏付け（dogma rule10）"
+        }
+      ],
+      "final_confidence": 0.70,
+      "overall_reasoning": "金融危機無増資は dogma rule10（ネガティブケースによる裏付け）の典型例。資本管理の具体的原則（borrow long, lend short）への言及で rule01 PASS。CET1 13.7% という定量的証拠。dogma 的に「おおむね納得」域 0.70。"
+    },
+    {
+      "id": "CBG-004",
+      "claim_type": "competitive_advantage",
+      "claim": "資産運用部門の垂直統合モデル（アドバイス＋投資運用＋プラットフォーム）による高マージン顧客提案",
+      "evidence": "CEO (Q3 2014): 'vertically integrated model' founded on financial planning, advice, research, investment management, platform technology. Revenue margin improved 71bps (2011) → 89bps (2014).",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "AUM 成長率・リベニューマージンの提示が中心。垂直統合モデルの説明はあるが、なぜ競合が模倣できないかの仕組みが限定的"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "プラットフォーム → アドバイス → 運用の垂直統合は構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "St. James's Place, Schroders 等も統合モデルを展開"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "AUM 成長 54% は結果。垂直統合が可能にする仕組みの説明より結果の提示が優位"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "リベニューマージン 71→89bps という改善トレンド"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "St. James's Place 等との差別化根拠が不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.1,
+          "reasoning": "AUM 成長は結果"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合比較欠如"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "マージン改善トレンド"
+        }
+      ],
+      "final_confidence": 0.35,
+      "overall_reasoning": "垂直統合モデルの説明はあるが AUM 成長が結果の提示になっており（rule01 FAIL）、純粋競合（SJP 等）との差別化根拠が弱い（rule07 FAIL）。dogma 的に「あまり納得しない」域 0.35。"
+    },
+    {
+      "id": "CBG-005",
+      "claim_type": "competitive_advantage",
+      "claim": "厳格な信用引受規律による低バッドデット率維持能力（10年平均1.5%、現在0.7%）",
+      "evidence": "Jonathan Howell (Q3 2015): Bad debt ratio 1.0%→0.9%→0.7% trend. 10-year average 1.5%, cycle peak 2.6%. 'branch network, service and specialization protect us.' Loan book return 3.8%.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "分散型モデルでの各事業部門の貸倒れ責任という仕組みへの言及。ローカル情報優位という能力説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "バッドデット 0.7%（現在）、10年平均 1.5%、サイクルピーク 2.6% という詳細な定量データ"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "信用引受規律は CBG-001 のニッチ市場モデルと一体となった構造的能力"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "0.7%（現在）vs 10年平均 1.5% vs 業界比という多重定量比較"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "各事業部が自らの貸倒れに責任を持つ分散型インセンティブ構造という能力の説明"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "現在の低バッドデット率は業界全体の好況サイクルも反映しており、CBG 固有の能力かの判断が難しい"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "多重定量比較"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "インセンティブ構造という能力の説明"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "サイクル的好況の影響を排除できない"
+        }
+      ],
+      "final_confidence": 0.60,
+      "overall_reasoning": "0.7% vs 10年平均 1.5% という定量的証拠は強い。インセンティブ構造（各部門の貸倒れ責任）という能力の説明で rule01 PASS。CBG-001 との相互補強関係がある。ただし、現時点の低バッドデットは業界全体の好況を反映している可能性があり 0.60 に留める。dogma 的に「まあ納得」上位域。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "30-40": 2,
+      "50-60": 2,
+      "70-80": 1
+    }
+  }
+}

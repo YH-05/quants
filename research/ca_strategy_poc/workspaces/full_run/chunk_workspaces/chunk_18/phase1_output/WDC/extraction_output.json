@@ -1,0 +1,150 @@
+{
+  "ticker": "WDC",
+  "company_name": "Western Digital Corporation",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201401_earnings_call.json", "quarter": "Q2 FY2014", "call_type": "secondary"},
+    {"file": "201404_earnings_call.json", "quarter": "Q3 FY2014", "call_type": "secondary"},
+    {"file": "201407_earnings_call.json", "quarter": "Q4 FY2014", "call_type": "primary"},
+    {"file": "201410_earnings_call.json", "quarter": "Q1 FY2015", "call_type": "secondary"},
+    {"file": "201501_earnings_call.json", "quarter": "Q2 FY2015", "call_type": "secondary"},
+    {"file": "201504_earnings_call.json", "quarter": "Q3 FY2015", "call_type": "secondary"},
+    {"file": "201507_earnings_call.json", "quarter": "Q4 FY2015", "call_type": "primary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "WDC-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Western Digital の HelioSeal 密閉型ヘリウム HDD プラットフォームは、製造プロセス上の優位性（7プラッター高密度封入・消費電力23%削減）を有しており、1百万台超の出荷実績がある。競合他社が追随困難な累積技術・プロセス知識を具体的な製品優位性として実証している。",
+      "evidence_quotes": [
+        "We surpassed 1 million Helium hard drive deployments and are now ramping our new 8-terabyte PMR Helium sealed drives. (Q3 FY2015 prepared remarks)",
+        "We saw strong demand for our high-capacity Helium and 15K RPM 2.5-inch performance hard drives. (Q4 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201504_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - HelioSeal封入技術という能力レベルの主張",
+        "rule04_quantitative_evidence": "PASS - 100万台出荷、8TB製品という具体的数値",
+        "rule06_structural_vs_complementary": "PASS - 製造プロセス自体が競合追随困難な構造的優位性",
+        "rule07_pure_competitor_differentiation": "PASS - Seagateは同等ヘリウム技術に遅れ",
+        "rule08_strategy_not_advantage": "PASS - 実現済み技術能力であり戦略ではない",
+        "rule10_negative_case": "WARN - フラッシュへの長期移行リスクは存在",
+        "rule11_industry_structure_fit": "PASS - エンタープライズHDDでは製造技術が参入障壁",
+        "rule12_transcript_primary_secondary": "PRIMARY確認済み"
+      },
+      "confidence_score": 0.5,
+      "confidence_rationale": "HelioSeal技術はWD/HGSTの実証済み優位性だが、フラッシュへの業界移行という構造変化リスクが存在。1百万台の具体的実績は評価できるが、HDD全体の技術優位性持続には懐疑的要素あり。"
+    },
+    {
+      "claim_id": "WDC-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "HGST買収後のWD/HGSTデュアルブランド体制は、HDD業界の2大プレーヤーの一角として、MOFCOM規制下でも規模の経済から生じるコスト優位性（MOFCOM解除後のOpEx $400M/年+COGS削減）を潜在的に保有する。",
+      "evidence_quotes": [
+        "synergies in OpEx will be in the range of $400 million a year and that COGS synergies will be material and on top of that number. (Q4 FY2015 Q&A)",
+        "we expect that, from an operating expense perspective, that we would realize approximately $100 million of OpEx savings a quarter. (Q3 FY2015 Q&A)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 規模統合による潜在的コスト能力",
+        "rule04_quantitative_evidence": "PASS - $400M/年OpEx削減、COGS追加削減という定量目標",
+        "rule06_structural_vs_complementary": "CONDITIONAL - MOFCOM規制解除が前提条件",
+        "rule07_pure_competitor_differentiation": "PARTIAL - Seagateも同規模だが WD+HGST は独自",
+        "rule08_strategy_not_advantage": "WARN - MOFCOM解除後の計画であり現時点では未実現",
+        "rule10_negative_case": "WARN - MOFCOM規制リスクと実現時期不確実性",
+        "rule11_industry_structure_fit": "PASS - 成熟HDD業界では規模が重要",
+        "rule12_transcript_primary_secondary": "PRIMARY・SECONDARY両方確認"
+      },
+      "confidence_score": 0.3,
+      "confidence_rationale": "MOFCOM規制解除という外部条件に依存する潜在的優位性。現時点では実現しておらず、実現時期・確率も不明確。規制リスクを考慮すると確信度は低い。"
+    },
+    {
+      "claim_id": "WDC-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Enterprise SSD分野でWDは、SAS SSD製品の顧客受け入れにより前年比2倍超の$244Mへ成長させた。エンタープライズ顧客向けのSASとNVMe両対応製品ポートフォリオが競合との差別化要因となっている。",
+      "evidence_quotes": [
+        "Our Enterprise SSD revenue more than doubled year-over-year to $244 million, demonstrating the continued success and broadening customer acceptance of our leading SAS SSD products. (Q4 FY2015 prepared remarks)",
+        "We expanded our footprint in the enterprise SSD space with the initial ramp of our new Ultrastar PCIe and VME offering. It has been qualified with several leading customers. (Q4 FY2015 prepared remarks)",
+        "Enterprise SSD business was accretive for the quarter and grew revenues by 67% year-over-year to $224 million. (Q3 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "CONDITIONAL - 顧客認定済みという能力証拠はあるが成長率は結果",
+        "rule04_quantitative_evidence": "PASS - $244M、前年比2倍超という定量証拠",
+        "rule06_structural_vs_complementary": "WARN - SSD市場ではIntel/Samsung/Micronとの競争が激しい",
+        "rule07_pure_competitor_differentiation": "PARTIAL - SAS SSDでの顧客認定は差別化要因だが持続性不明",
+        "rule08_strategy_not_advantage": "WARN - 成長中の製品ラインだが構造的優位性か不明確",
+        "rule10_negative_case": "PASS - 実際の顧客認定と売上実績あり",
+        "rule11_industry_structure_fit": "PASS - エンタープライズSSDは参入難易度高い",
+        "rule12_transcript_primary_secondary": "PRIMARY確認済み"
+      },
+      "confidence_score": 0.4,
+      "confidence_rationale": "Enterprise SSD成長は実績として確認できるが、SSD市場はフラッシュ専業メーカー（Samsung、Micron）との競争が激しく構造的優位性の持続は不透明。HDD会社からの転換途上という側面もある。"
+    },
+    {
+      "claim_id": "WDC-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "WDはActive Archive Systemという新カテゴリ（市場規模$15B）を創設し、従来のテープ/クラウドストレージの代替となる高付加価値アーカイブストレージ製品を展開。Amplidata買収でソフトウェアスタックを強化した垂直統合戦略は、純HDD競合には模倣困難。",
+      "evidence_quotes": [
+        "We shipped our first Active Archive system, a new category of high-value-added archival storage product addressing a market of approximately $15 billion. (Q3 FY2015 prepared remarks)",
+        "We completed the acquisition of Amplidata, a key building block of our vertical innovation strategy for Active Archive systems. (Q3 FY2015 prepared remarks)",
+        "We continue to see positive market reaction to the value proposition of our new Active Archive system. (Q4 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201504_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 新製品カテゴリ創設という能力",
+        "rule04_quantitative_evidence": "PARTIAL - $15B市場規模は市場推定値であり自社実績ではない",
+        "rule06_structural_vs_complementary": "CONDITIONAL - 垂直統合はあるが競合からの反応は未確認",
+        "rule07_pure_competitor_differentiation": "PASS - 新カテゴリ創設は明確な差別化",
+        "rule08_strategy_not_advantage": "WARN - まだ初期段階であり戦略的ポジションニングの色合いが強い",
+        "rule10_negative_case": "WARN - 「ポジティブな市場反応」は漠然とした表現",
+        "rule11_industry_structure_fit": "PASS - 大容量低コストストレージは成長市場",
+        "rule12_transcript_primary_secondary": "SECONDARY→PRIMARY両方で言及"
+      },
+      "confidence_score": 0.3,
+      "confidence_rationale": "Active Archiveは有望な新市場だが出荷開始直後で売上規模が不明。$15B市場は潜在的規模に過ぎず、市場創造の成否は未確定。Counter-Positioningとしての評価は時期尚早。"
+    },
+    {
+      "claim_id": "WDC-005",
+      "claim_type": "cagr_connection",
+      "claim_text": "WDはデータ成長（クラウド・モビリティ主導）によるエクサバイト出荷増加トレンドを確認しており、非PC系（エンタープライズ・サーベイランス・クラウド）事業比率の拡大が中期的な収益性改善ドライバーとなる。",
+      "evidence_quotes": [
+        "Our view of persistent data growth remains intact, driven by mobility and the cloud. (Q4 FY2015 prepared remarks)",
+        "Revenue from our video surveillance hard drives continued its rapid growth as we expanded our lineup of these purpose-built solutions. (Q4 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "PRIMARY確認済み"
+      },
+      "confidence_score": 0.4,
+      "confidence_rationale": "データ成長は実際のドライバーだが、PCからHDDへの需要は構造的に減少中。非PC系シフトは方向性として正しいが、フラッシュへのさらなる移行がHDD全体の市場を縮小させるリスクがある。"
+    },
+    {
+      "claim_id": "WDC-006",
+      "claim_type": "factual_claim",
+      "claim_text": "Q4 FY2015（2015年6月期）: 売上$3.2B、Non-GAAP粗利率29.8%、EPS $1.51。期末現金$5.0B。Enterprise SSD $244M（前年比2倍超）。56エクサバイト出荷（前年比+2%）。",
+      "evidence_quotes": [
+        "We reported revenues of $3.2 billion, non-GAAP gross margins of 29.8% and diluted earnings per share of $1.51. (Q4 FY2015 prepared remarks)",
+        "Our Enterprise SSD revenue more than doubled year-over-year to $244 million. (Q4 FY2015 prepared remarks)",
+        "Our storage shipments for the June quarter were 56 exabytes, up 2% year-over-year. (Q4 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "PRIMARY確認済み"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "決算数値として確認済みの事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Process Power", "Scale Economies", "Counter-Positioning"],
+    "analyst_notes": "WDCはHDD業界の成熟期において、HelioSeal技術とEnterprise SSDへの転換を進めているが、構造的優位性の主張は総じて中程度以下。MOFCOM規制という外部制約が実力発揮を妨げており、規模優位性は潜在的。フラッシュへの業界移行という長期リスクが優位性の持続に懐疑的な評価を要求する。"
+  }
+}

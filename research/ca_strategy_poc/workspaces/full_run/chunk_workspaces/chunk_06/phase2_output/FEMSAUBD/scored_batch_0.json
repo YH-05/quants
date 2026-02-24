@@ -1,0 +1,77 @@
+{
+  "ticker": "FEMSAUBD",
+  "batch_index": 0,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXO コンビニエンスストアの出店機械（年1,000+店舗純増）とメキシコ全国展開能力",
+      "descriptive_label": "OXXO大量出店・全国展開能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "年1,132店純増・12,853店という定量的実績（rule04 quantitative）。構造的要素（rule06 structural）として評価できる。ただし年1,000+出店は結果の報告が中心で、それを可能にする仕組み（立地評価プロセス、物流ネットワーク構築力）の詳細説明が乏しい（rule01 concern）。メキシココンビニ市場での純粋競合（7-Eleven Mexico等）との比較なし（rule07 insufficient）。kb3 few-shot（COST#3: 倉庫型モデル50%, 純粋競合差別化不完全）と同水準。連続実績は能力を示唆する。",
+      "kb1_flags": ["rule01_capability_not_result"],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "出店数→売上加算の直接メカニズム（rule05 direct）。Q4 2014実績（収益+12%）で検証済み。パターンII-T（直接的CAGR接続）。70%。"
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOのサプライヤーとの協働による粗利率改善能力（グロスマージン管理）",
+      "descriptive_label": "サプライヤー協働による粗利管理能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "サプライヤー協働（仕組み）として評価できる（rule01 pass）。80bps粗利改善という定量データあり（rule04 quantitative）。ただし'effective collaboration'は定性的表現（rule07 insufficient、競合粗利比較なし）。12,853店の規模がバイイングパワーを生む構造は論理的だが説明が不十分。kb3 few-shot（COST: ベンダー交渉力70%相当の発想だが説明深度が低い）。50%が適切。",
+      "kb1_flags": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "規模拡大→交渉力向上→粗利改善→EBIT成長は3ステップで若干間接的（pattern_C_causal_leap部分）。80bpの持続性が不明。50%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの事業能力の隣接事業への横展開能力（ドラッグストア・ガソリンスタンド）",
+      "descriptive_label": "隣接事業横展開能力（ドラッグストア・ガソリンスタンド）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "横展開戦略（strategy）であり優位性（仕組み）の説明が不十分（rule08 concern, pattern_F_strategy_confusion）。'Above-industry service'は定性的（rule04 insufficient）。補完的要素（rule06 complementary）。20年のガソリンスタンド経験は能力の指標だが、定量的差別化説明なし。kb3 few-shot（CHD#5: 戦略ポートシフトは結果→30%）と同水準。",
+      "kb1_flags": ["rule08_strategy_not_advantage"],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "新規事業からの売上加算は直接的だが、ドラッグ605店・ガソリン227店は初期段階。2-3年後の本格化。50%。"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの金融サービス（Saldazoデビットカード）によるエコシステム構築",
+      "descriptive_label": "OXXO金融エコシステム（Saldazo）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Network Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "Saldazoデビットカードエコシステム（仕組み）として評価（rule01 pass）。140万枚・月10万枚・業界平均超過利用率という定量データ（rule04 quantitative）。業界平均超過の利用率は差別化のシグナル（rule07 partial, pattern_I_quantitative_differentiation）。ただし金融サービスは補完的要素（rule06 complementary）。コンビニ来店への具体的影響の定量データなし。140万枚はまだ初期規模（12,853店対比）。50%が適切。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "金融サービス→ロイヤルティ→来店頻度→売上の3段階以上の因果チェーン（pattern_C_causal_leap）。定量連携データ提示なし。50%。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Coca-Cola FEMSA（KOF）を通じたラテンアメリカ複数国での瓶詰事業運営能力",
+      "descriptive_label": "KOF多国間瓶詰事業運営能力（ラテンアメリカ）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "多国間展開は大手飲料会社に共通の特性（pattern_B_industry_common）。'well-advanced in integration'は結果の報告（rule01 concern）。戦略的方向性（rule08 concern）。他のコカコーラ瓶詰業者（ARCA Continental等）との差別化不明（rule07 insufficient）。kb3 few-shot（CHD#4: 成長加速は結果→30%）と同水準。30%が適切。",
+      "kb1_flags": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "kb2_pattern": "pattern_B_industry_common",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "KOF統合効率化→マージン改善→CAGR貢献は認められる。ただし為替・マクロリスク（ベネズエラ、ブラジル減速）が接続の不確実性を高める。50%→調整後40%だが50%で保持。"
+    }
+  ]
+}

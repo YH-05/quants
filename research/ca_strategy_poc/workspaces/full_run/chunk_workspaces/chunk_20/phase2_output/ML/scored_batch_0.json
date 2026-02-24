@@ -1,0 +1,202 @@
+{
+  "ticker": "ML",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Michelin は4年連続で ROCE（資本利益率）12%超を維持する能力を有し（FY2013: ~12%、FY2014: 11.1%）、自動車タイヤ業界における平均的な競合（Bridgestone、Continental等）を上回る資本効率を示した。EUR 722-750M の構造的フリーキャッシュフローを4年以上継続して生成している。",
+      "evidence": "We achieved our target of more than 12% return on capital employed... for the fourth consecutive year... And free cash flow, EUR 750 million, which was slightly above our structural free cash flow target.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 60
+      },
+      "final_confidence": 0.55,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "4年連続ROCE 12%超+FCF EUR750Mは強力な定量的裏付け。Pattern I（定量的差別化）に近い"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Bridgestone等との明示的ROCE比較なし。競合比較が欠如"
+        },
+        {
+          "source": "FY2014 slight miss",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "FY2014はROCE11.1%（12%目標を若干下回り）。FX逆風・減価償却増が原因だが能力の安定性に若干の疑問"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_pass", "reasoning": "ROCE維持能力という仕組みとして評価可能。結果（12%）と能力（維持するプロセス）が混在"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "strong", "reasoning": "4年連続ROCE 12%超、EUR750M FCFという強力な定量証拠"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "Bridgestone、Continentalとの明示的ROCE比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "4年連続の定量実績が差別化の裏付けとなる"}
+      ],
+      "overall_reasoning": "4年連続ROCE 12%超とFCF EUR750Mは強力な定量証拠。Process Powerとして組織的効率の蓄積を示す。競合との直接ROCE比較なし。FY2014の若干の下振れを考慮して55%",
+      "power_classification": "Process Power（資本効率規律）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Michelin の構造的フリーキャッシュフロー（EUR 700-750M）とROCE 11-12%の維持能力が、中長期的なEPS成長と配当増加の基盤となり、投資家リターンに直結する。",
+      "evidence": "Free cash flow, EUR 722 million structural free cash flow... We will propose a dividend of EUR 2.80 per share, an increase of 7.7%.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "FCF→配当成長は直接的因果。FY2014配当+7.7%の実績が裏付け"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "FCFと配当成長の連動は明確（+7.7%）。通貨逆風・原材料リスクあり"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "構造的FCFと配当成長の連動は明確。ただし通貨逆風（EUR/USD等）と原材料費変動リスクあり。50%",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Michelin は 17インチ以上のプレミアムタイヤセグメントにおいて市場をリードし、FY2014 の OE（新車装着）認証の 72% が 17インチ以上であった。Michelin ブランド売上の 42% がプレミアム（17インチ以上）であり、この比率は年々上昇している。EverGrip 技術（ウェット制動距離の大幅短縮）は特許に基づく競争優位を形成する。",
+      "evidence": "72% of our OE certifications were 17 inches and above... 42% of Michelin brand sales in this premium 17-inch-and-above segment... EverGrip, which demonstrates the capability of our R&D teams to create tires that really improve safety.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 60
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "72% OE認証、42%プレミアム売上という定量的裏付け。EverGrip特許技術はCornered Resource"
+        },
+        {
+          "source": "OEM relationship structure",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "自動車OEM認証の長期的排他的関係は業界構造に合致（rule11）"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Bridgestone、Continental、Pirelliとの定量比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_pass", "reasoning": "EverGrip技術・R&D能力は能力として評価可能。72% OE認証は結果だがその維持能力が重要"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "strong", "reasoning": "72% OE認証、42%プレミアム比率という定量証拠"},
+        {"rule": "rule11_industry_structure_fit", "verdict": "structural", "reasoning": "OEM認証の長期的排他的関係は自動車サプライヤー業界構造に合致"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "定量的裏付け（72% OE認証）のある差別化"}
+      ],
+      "overall_reasoning": "プレミアムタイヤのOE認証（72%）とEverGrip特許技術はCornered Resourceとして評価できる。OEM認証の長期的関係は業界構造に合致。競合との直接比較なし。60%",
+      "power_classification": "Cornered Resource（OE認証・EverGrip特許）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Michelin ブランドは、競争が激化するタイヤ市場においても市場シェアを維持した（FY2014）。米国・欧州・アジアにおけるプレミアムポジショニングにより、価格プレミアムを維持しながら OE 顧客（完成車メーカー）へのリーチを確保している。",
+      "evidence": "The Michelin brand has maintained its market share... Our brand and our product quality are key to serving the most demanding customers.",
+      "rule_evaluation": {
+        "applied_rules": ["rule07_pure_competitor_differentiation", "rule04_quantitative_evidence"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "市場シェア維持（結果）を優位性として提示。KB2-T Pattern A（結果を原因と取り違え）に該当。dogmaルール1違反"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "価格プレミアムの定量値なし。競合比較なし"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "limited", "reasoning": "市場シェア維持という定性的主張のみ"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "市場シェア維持（結果）を優位性として提示するPattern A（結果を原因と取り違え）"}
+      ],
+      "overall_reasoning": "市場シェア維持は結果。背後のブランド能力（dogmaブランド4類型：認知度・価値維持等）の具体的説明なし。価格プレミアムの定量値も未提示。40%",
+      "power_classification": "Branding（低評価）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Michelin は 2012-2016 年の競争力強化プログラム（Competitiveness Plan）を EUR 1.2B 目標（当初 EUR 900M）に上方修正し、FY2014 末時点で EUR 800M 超を既に達成した。このコスト構造改革能力が利益マージンの下支えをしている。",
+      "evidence": "We have decided to accelerate our competitiveness plan... from EUR 900 million to EUR 1.2 billion... EUR 800 million already achieved by the end of 2014.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_B",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "コスト削減プログラムは業界共通。固有の差別化根拠として弱い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "pass", "reasoning": "プログラムの進捗（EUR 800M達成）と上方修正は能力の証左"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "競合も同様のコスト削減プログラムを実施"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "コスト削減プログラムは業界共通。固有性の根拠不十分"}
+      ],
+      "overall_reasoning": "プログラム進捗（EUR800M達成）と上方修正は能力の証左。ただし競合も同様のコスト削減を実施。Process Powerとして中程度の評価。45%",
+      "power_classification": "Process Power（コスト改革）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "ML",
+    "claim_count": 9,
+    "scored_count": 5,
+    "target_claim_ids": [1, 2, 3, 4, 5],
+    "batch_index": 0,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.6": 2,
+      "0.5-0.55": 2,
+      "0.4-0.45": 2,
+      "0.3": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb1_rules_transcript/rule11_industry_structure_fit.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_B_industry_common.md",
+      "kb2_patterns_transcript/pattern_I_quantitative_differentiation.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

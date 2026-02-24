@@ -1,0 +1,56 @@
+{
+  "ticker": "2454",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_id": "2454_006",
+      "claim_type": "cagr_connection",
+      "claim": "大規模出荷量・中国市場支配的ポジション・R&D投資継続 → 高グロスマージン維持（45-49%） → 収益成長（2013年+37%、2014年+57%）支持",
+      "descriptive_label": "規模・ポジション→高GM維持→収益成長CAGR接続",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "「出荷規模→GM高水準→収益成長」という因果チェーンは2ステップで検証可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "2014年GM48.8%・収益+56.6%・純利益+68.8%という強力な定量証拠で収益成長を支持"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": false, "adjustment": 0.0, "reasoning": "CAGR成長ドライバー（出荷量×ASP×GM）の定量的分解は提示されていないが、2期連続の高成長で因果関係は合理的"},
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "2015年の収益減速（Q2 2015で-13% YoY、GM 45.9%→42.7%へ低下）により、CAGR継続性への疑念が生じる"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_C_t", "adjustment": -0.1, "reasoning": "2015年での競合激化による成長鈍化でCAGR継続性に疑念"}
+      ],
+      "overall_reasoning": "2013-2014年の2期連続高成長（+37%→+57%）・GM高水準（48.8%）は規模・ポジションとの因果関係を支持。しかし2015年に競合激化による収益成長鈍化（-13% YoY）・GM低下（42.7%）が発生しており、長期CAGRの持続性を疑問視させる（パターンC）。Q4 2014年次（主・①相当）。Phase 1評価の0.5から-0.1調整後: 40%→キャリブレーション後50%（過去実績は高水準のため）。"
+    },
+    {
+      "id": 7,
+      "claim_id": "2454_007",
+      "claim_type": "factual_claim",
+      "claim": "MediaTekの2014年財務実績：収益2,131億NTD（前年比+56.6%）、グロスマージン48.8%、営業利益472億NTD（前年比+87.1%）、純利益464億NTD（前年比+68.8%）、EPS 30.04 NTD。スマートフォン出荷350M+（LTE 30M+を含む）。",
+      "descriptive_label": "2014年年次財務確定値（収益2,131億NTD・GM48.8%・純利益464億NTD）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "Q4 2014年次（主・①相当）CFO準備発言による確定財務数値"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "2014年の財務実績は定量的差別化データとして他主張の評価を支える"},
+        {"pattern_id": "pattern_A_t", "matched": false, "adjustment": 0.0, "reasoning": "factual_claimは能力主張でなく財務事実の記録であるためPattern-Aは非適用"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Q4 2014年次（主・①相当）CFO準備発言による確定財務数値。収益2,131億NTD（+56.6%）・グロスマージン48.8%・純利益+68.8%は極めて強力な実績。factual_claimとして0.7を維持。"
+    }
+  ]
+}

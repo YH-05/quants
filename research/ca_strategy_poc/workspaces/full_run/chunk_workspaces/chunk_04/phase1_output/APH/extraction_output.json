@@ -1,0 +1,129 @@
+{
+  "ticker": "APH",
+  "company_name": "Amphenol Corporation",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00",
+  "claims": [
+    {
+      "claim_id": "APH-001",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Our entrepreneurial management model is a key competitive differentiator for us. Each business unit operates as a separate profit center and has the full resources of the company available to it, but retains its own customer relationships, manufacturing and development capabilities.",
+      "claim_summary": "アンフェノールの分権型起業家的経営モデル（各事業部が独立利益センターとして顧客・製造・開発能力を保有）は、大企業規模で中小企業の機動性を実現する独自のプロセス能力。競合大手（TE Connectivity等）の中央集権型に対する優位性。",
+      "confidence": 0.6,
+      "confidence_rationale": "経営モデルは具体的に説明されており、20.2%の記録的営業利益率という結果で裏付けられている。ただし競合他社との直接比較が明示されていない点でやや弱い。",
+      "kb1_rules_applied": ["rule03", "rule06"],
+      "kb2_patterns_matched": ["pattern_III_capability_over_result"],
+      "supporting_evidence": [
+        "20.2% operating margin (record)",
+        "Multiple business unit presidents mentioned in earnings call",
+        "Rapid integration of acquisitions (Goldstar, Casco, Advanced Sensors)"
+      ]
+    },
+    {
+      "claim_id": "APH-002",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Fourth quarter 2014 revenues were $1,427 million, representing a new record for the company...for the full year 2014, revenues were $5,346 million, an increase of 15% over the prior year.",
+      "claim_summary": "アンフェノールはコネクタ・センサー市場で$5.3Bの規模を活かし、R&D・グローバル製造・M&A統合の固定コストを分散。競合比較では業界最高水準の20%超の営業利益率を維持。",
+      "confidence": 0.5,
+      "confidence_rationale": "売上規模とマージンの相関は示されているが、競合（TE Connectivity、Molex等）との明示的な比較がない。規模の優位性の根拠として間接的。",
+      "kb1_rules_applied": ["rule04", "rule01"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "$5,346M full year revenues (+15%)",
+        "20.2% operating margin vs industry average ~15%"
+      ]
+    },
+    {
+      "claim_id": "APH-003",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "No single market represents more than about 17% of our revenues...our diversification gives us important competitive flexibility.",
+      "claim_summary": "エンドマーケット多様化（軍事11%、自動車15%、モバイル機器17%、産業用17%、IT/データコム16%等）により、単一市場依存の競合と異なるポジショニング。景気サイクルに対する耐性が高い。",
+      "confidence": 0.5,
+      "confidence_rationale": "多様化戦略は事実として記述されているが、これが競合に対するCounter-Positioningかどうかは判断が難しい。競合がこの戦略を模倣できない理由が不明確。",
+      "kb1_rules_applied": ["rule08", "rule06"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "8 distinct end markets, none >17%",
+        "Military, automotive, mobile, industrial, IT/datacom diversification"
+      ]
+    },
+    {
+      "claim_id": "APH-004",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We completed a number of acquisitions in 2014 including Goldstar, Casco, and Advanced Sensors...Our M&A program has been a critical element of our long-term growth strategy.",
+      "claim_summary": "アンフェノールの継続的M&A統合能力（年間複数件、センサー・コネクタ領域拡張）は、分権型経営モデルと組み合わせることで、競合が模倣困難な技術ポートフォリオ拡張プロセスを形成。",
+      "confidence": 0.5,
+      "confidence_rationale": "M&A統合の迅速性・効果は実績で示されているが、Process Powerとしての独自性の説明が不足。財務的規律（高い統合成功率）を示す具体的な指標がない。",
+      "kb1_rules_applied": ["rule03", "rule08"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "Multiple acquisitions in 2014 (Goldstar, Casco, Advanced Sensors)",
+        "Sensor + interconnect integration strategy"
+      ]
+    },
+    {
+      "claim_id": "APH-005",
+      "claim_type": "cagr_connection",
+      "seven_powers_category": "Process Power",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "For the full year 2014, revenues were $5,346 million, an increase of 15% over the prior year...For the first quarter 2015, our guidance is revenues in the range of $1,225 to $1,255 million.",
+      "claim_summary": "【CAGRリンク】起業家的経営モデルとM&A統合能力が有機成長+M&A成長を組み合わせた持続的なダブルディジット成長を実現するメカニズム。競合の模倣困難な組織能力がCAGRの源泉。",
+      "confidence": 0.6,
+      "confidence_rationale": "FY2014の+15%成長は有機成長（+8%）とM&A成長の組み合わせで説明可能。経営モデルとCAGRの因果関係は明確ではないが、過去の実績で裏付けられている。",
+      "kb1_rules_applied": ["rule02", "rule06"],
+      "kb2_patterns_matched": ["pattern_II_direct_cagr_mechanism"],
+      "supporting_evidence": [
+        "+15% full year 2014 revenue growth",
+        "+8% organic growth",
+        "Multiple acquisitions completed in 2014"
+      ]
+    },
+    {
+      "claim_id": "APH-006",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201501_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Our ability to offer a broad and diversified range of sensors, including temperature, pressure and other sensors, along with our interconnect products, is a differentiator that customers value.",
+      "claim_summary": "センサー（温度・圧力・その他）とコネクタの統合ポートフォリオは、純粋コネクタメーカー（Molex等）やセンサー専業（Sensata等）に対する差別化。自動車・産業向けで統合ソリューションのニーズが増大。",
+      "confidence": 0.5,
+      "confidence_rationale": "センサー＋コネクタの統合は差別化として言及されているが、顧客が実際に統合ソリューションに対してプレミアムを支払っているかどうかの証拠が不足。",
+      "kb1_rules_applied": ["rule06", "rule07"],
+      "kb2_patterns_matched": ["pattern_V_specific_competitor_comparison"],
+      "supporting_evidence": [
+        "Temperature, pressure, and other sensors",
+        "Advanced Sensors acquisition",
+        "Automotive and industrial end market focus"
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 6,
+    "by_seven_powers": {
+      "Process Power": 3,
+      "Scale Economies": 1,
+      "Counter-Positioning": 1,
+      "Cornered Resource": 1
+    },
+    "by_claim_type": {
+      "competitive_advantage": 5,
+      "cagr_connection": 1
+    },
+    "primary_transcript": "201501_earnings_call.json",
+    "transcripts_used": ["201501_earnings_call.json"],
+    "notes": "アンフェノールの最大の強みは起業家的経営モデル（Process Power）とM&A統合能力の組み合わせ。TE Connectivityとの直接比較がないため競合優位性の評価は間接的。"
+  }
+}

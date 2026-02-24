@@ -1,0 +1,270 @@
+{
+  "ticker": "CRDA",
+  "transcript_source": "Q1 2014 (2014-02-25); Q1 2015 (2015-02-24)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["Q1_2014", "Q1_2015"]
+  },
+  "claims": [
+    {
+      "id": "CRDA-001",
+      "claim_type": "competitive_advantage",
+      "claim": "NPP（新規・保護製品）戦略による特許・専有技術で保護されたポートフォリオ（売上23%・13%成長）と製品ポートフォリオの継続的更新メカニズム",
+      "descriptive_label": "NPP戦略による特許・専有製品ポートフォリオ",
+      "evidence_from_transcript": "Q1 2015 Prepared Remarks（CEO発言）: 'New and Protected Products, the area at the top, these are products that are protected by patents or proprietary technology. We're targeting to fast grow this category of products and achieved 13% year-on-year growth last year. NPP is now 23% of total group sales... the #1 KPI for Croda. We want more and more of the growth coming from patented products, clever products.' (2015-02-24, Steve Foots); Q1 2014: 'NPP sales were up 11%, and that boosted return on sales... both Consumer Care and Performance Technologies saw double-digit NPP growth in 2013.' (2014-02-25, Sean Christie)",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Steve Foots (CEO), Sean Christie (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["CRDA-009"],
+      "cagr_connections": ["CRDA-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "特許・専有技術による保護という仕組みが明確。特定製品が5年以内かつ特許保護付きという定義も明示。スペシャリティ化学業界の構造と合致"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "Q1発言から。Q4での年次総括発言だが英国企業のため半期報告が主。H1/Q4の構造的発言として扱う"
+          }
+        ],
+        "overall_reasoning": "Crodaの NPP（新規・保護製品）戦略は Cornered Resource（特許・専有技術）+ Process Power（イノベーション能力）の複合型優位性。売上23%・成長率13%という定量的裏付けあり。#1 KPI として管理されている点が能力（組織能力）を示す。特許20年の保護期間という制度的障壁も機能。ただしQ1発言であることから-0.1調整"
+      }
+    },
+    {
+      "id": "CRDA-002",
+      "claim_type": "competitive_advantage",
+      "claim": "GBP 1.2億のバイオサーファクタント製造投資（Croda史上最大のプロジェクト）による再生可能原料路線での競合不在の差別化（エチレンオキサイド自製化）",
+      "descriptive_label": "バイオサーファクタント大規模投資による競合不在差別化",
+      "evidence_from_transcript": "Q1 2015 Prepared Remarks（CEO発言）: 'our unique investment in biosurfactants, the single biggest project in Croda's history, the single most exciting project in our history, GBP 120 million over the next 3 years... no one of our competitors is in this space, and it's very difficult for them to get into this space. They're all based on petrochemical economics, for good reason... in one fell swoop, we are moving. We're taking a big position, and we're moving away from our competition.' (2015-02-24, Steve Foots)",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Steve Foots (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["CRDA-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_8_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "競合他社（Clariant、Solvay、Evonik）が石油化学経済に基づくため、再生可能路線への転換が困難という仕組みの説明が明確"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "Q1発言から。投資は2017年完成予定で、PoiT制約内では将来的な主張"
+          }
+        ],
+        "overall_reasoning": "GBP 120Mのバイオサーファクタント投資は Counter-Positioning の典型（競合他社が石油化学経済から転換できない構造的理由）。競合不在という明示的な発言は強い証拠。ただし2017年完成予定であり、cutoff date 2015-09-30時点では投資段階。将来的な優位性として50%が適切"
+      }
+    },
+    {
+      "id": "CRDA-003",
+      "claim_type": "competitive_advantage",
+      "claim": "資本軽量型ビジネスモデル（ROIC 23%超・return on sales 24.6%）とフリーキャッシュフロー創出能力（GBP 2.5億/年）",
+      "descriptive_label": "資本軽量モデルによる高ROIC・高キャッシュフロー創出",
+      "evidence_from_transcript": "Q1 2014 Prepared Remarks（CEO/CFO発言）: 'Free cash flow now nearly GBP 0.25 billion generation, up 38% this year. This is a capital-light model. We sell more and more of our products in test tube quantities rather than tanker loads... return on sales continues to grow... post-tax ROIC was maintained at 23.8%... record return on sales in Consumer Care and Performance Technologies, taking the overall return on sales to 24.6%.' (2014-02-25, Steve Foots / Sean Christie)",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Steve Foots (CEO), Sean Christie (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["CRDA-010"],
+      "cagr_connections": ["CRDA-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "ROIC 23.8%・ROS 24.6%という定量的裏付けあり。「テストチューブ単位で販売」という具体的仕組みの説明"
+          },
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "スペシャリティ化学業界全般の高ROIC傾向と区別するため。Croda固有の仕組みの説明はあるが競合比較なし"
+          }
+        ],
+        "overall_reasoning": "資本軽量モデルはProcess Power（独自の運営方法）の観点から評価できる。ROIC 23.8%はコスト・オブ・キャピタル（WACC）を大きく上回る。ただし「資本軽量」という主張は結果であり、仕組みの説明（テストチューブ単位での販売＝特注少量生産）は一定の能力説明として機能"
+      }
+    },
+    {
+      "id": "CRDA-004",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル分散型R&Dモデルと顧客密接アプローチ（Singapore・China・Brazil・South Africaにイノベーションラボ・顧客訓練センター開設）",
+      "descriptive_label": "グローバル分散型R&D・顧客密接型イノベーション能力",
+      "evidence_from_transcript": "Q1 2015 Prepared Remarks（CEO発言）: 'We're delivering in fast-growth markets. We spent a lot of time putting research and development facilities in Singapore, China, South Africa, Brazil; and more people in particularly in Asia and Latin America; and more factories... innovation is accelerating... our in-house regional procurement operating centers... 2,000 new customers in 2014 through our SAP system.' (2015-02-24, Steve Foots); Q1 2014: 'a decentralized model in Croda, and we continue to open and expand new operations in Brazil, China and Singapore. it's about unmet needs, getting close to our customers and understanding where the next generation of fast-growing niches are going to come from.' (2014-02-25, Steve Foots)",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Steve Foots (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["CRDA-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "R&Dのグローバル展開は業界共通の戦略。Croda固有の差別化要因としての説明は「顧客密接・分散型」という方向性のみで競合比較なし"
+          }
+        ],
+        "overall_reasoning": "分散型R&Dモデルと顧客密接アプローチは Process Power の要素として評価できる。2014年に2,000社超の新規顧客獲得という定量的実績あり。ただし競合他社との比較なく、構造的優位性の証拠として弱い。50%が適切"
+      }
+    },
+    {
+      "id": "CRDA-005",
+      "claim_type": "competitive_advantage",
+      "claim": "規制・品質認証による市場参入障壁（EXCiPACT認定・FDA承認・pharmaceutical gradeの品質基準）",
+      "descriptive_label": "規制・品質認証に基づく参入障壁",
+      "evidence_from_transcript": "Q1 2014 Prepared Remarks（CEO発言）: 'We've just been awarded the EXCiPACT status for one of our factories... That's a big differentiator in our industry as we move forward... EXCiPACT is a certification for large parts of the world, particularly Europe, which is recognizing the quality standards of Croda... it took Croda 10 years to get FDA approval... It's not just about meeting quality. It's making sure that the regulators can show that you can repeat that quality all the time.' (2014-02-25, Steve Foots / 2015-02-24, Steve Foots)",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Steve Foots (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["CRDA-011"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "薬事規制・FDA承認の取得に10年を要するという事実は参入障壁としての実質的な証拠"
+          }
+        ],
+        "overall_reasoning": "FDA承認取得に10年要したという事実はCorned Resource（規制上の認可）として評価できる。EXCiPACT認定も参入障壁。ただし他の特定競合との比較がなく、参入障壁が純粋競合に対してどの程度有効かは不明"
+      }
+    },
+    {
+      "id": "CRDA-006",
+      "claim_type": "competitive_advantage",
+      "claim": "アジア市場での強固な成長基盤（2014年アジア売上11%増・2,000社超の新規顧客）と専用販売・R&Dリソース配備",
+      "descriptive_label": "アジア市場での急速な顧客獲得・関係構築能力",
+      "evidence_from_transcript": "Q1 2015 Prepared Remarks（CEO発言）: '63% of our sales now go outside of Western Europe. Asia, up 11%, which is a standout figure in the pack... it's about getting closer to our customers; spending more money in our research and development laboratories, whether it's Singapore, whether it's China; increasing our manufacturing capability in the region... 2,000 new customers in 2014, incredible really.' (2015-02-24, Steve Foots)",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Steve Foots (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["CRDA-012"],
+      "cagr_connections": ["CRDA-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.2,
+            "reasoning": "アジア成長は結果（11%増）であり、能力の説明が弱い。「closer to customers」は方向性の説明。競合との差別化根拠なし"
+          }
+        ],
+        "overall_reasoning": "アジア11%成長は定量的だが、これは結果であって能力ではない（Rule 1-T違反）。2,000社の新規顧客は一定の活動量を示すが、構造的優位性の証拠としては弱い。市場全体の成長との区別もない。30%が適切"
+      }
+    },
+    {
+      "id": "CRDA-007",
+      "claim_type": "cagr_connection",
+      "claim": "NPP成長（特許保護製品23%・13%成長）→ ROS改善（24.6%）→ 収益CAGR",
+      "descriptive_label": "NPP成長→ROS改善→収益成長経路",
+      "source_advantage": "CRDA-001",
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "2ステップの因果（NPP増加→マージン改善→収益成長）は検証可能で合理的。ただしQ1発言で、Q4での年次体系的説明に準じるとして50%。売上2.9%成長・ROS 24.6%という直近実績が部分的裏付け"
+      }
+    },
+    {
+      "id": "CRDA-008",
+      "claim_type": "cagr_connection",
+      "claim": "バイオサーファクタント投資完成（2017）+ アジア市場拡大 → 新ホワイトスペース開拓 → 中期売上成長",
+      "descriptive_label": "バイオ投資完成＋アジア拡大→中期成長経路",
+      "source_advantage": "CRDA-002",
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": false
+        },
+        "confidence": 30,
+        "adjustments": [],
+        "overall_reasoning": "2017年完成予定の投資に基づく将来成長経路。因果関係は論理的だが、PoiT cutoff 2015-09-30時点では実現前。Q1発言であり3ステップの因果（投資→ホワイトスペース→顧客獲得→収益）は検証困難。30%が適切"
+      }
+    },
+    {
+      "id": "CRDA-009",
+      "claim_type": "factual_claim",
+      "claim": "NPP 23%（Q1 2015・全グループ売上に占める割合）、13% YoY成長（2014年）。Consumer Care では後半20%台、Performance Technologies では10%台",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": ["CRDA-001"]
+    },
+    {
+      "id": "CRDA-010",
+      "claim_type": "factual_claim",
+      "claim": "2013年: Return on Sales 24.6%（過去最高）、ROIC 23.8%、フリーキャッシュフロー GBP 2.5億（+38%）、EPS +8.3%",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": ["CRDA-003"]
+    },
+    {
+      "id": "CRDA-011",
+      "claim_type": "factual_claim",
+      "claim": "FDA承認取得に10年要したオメガ3製品（Lovaza/Par pharma）の市場投入成功（2014年H2）。EXCiPACT工場認定取得",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": ["CRDA-005"]
+    },
+    {
+      "id": "CRDA-012",
+      "claim_type": "factual_claim",
+      "claim": "2014年: アジア売上 +11%（最高パフォーマンス地域）、SAP経由で2,000社超の新規顧客獲得。全売上63%が西欧州外",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": ["CRDA-006"]
+    }
+  ]
+}

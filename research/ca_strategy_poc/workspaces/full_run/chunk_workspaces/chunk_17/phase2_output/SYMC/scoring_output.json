@@ -1,0 +1,559 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Global Intelligence Network（GIN）による脅威インテリジェンスの規模的優位性",
+      "evidence": "Q4 FY2015 Prepared Remarks（CEO発言）: 'we operate the largest civilian cyber intelligence threat network in the world, updated at a rate of 200,000 threats per second.'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "200,000 threats/secondは規模の開示（結果）であり、GINの仕組みの説明が不十分"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "200,000 threats/second という定量開示あり"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "大規模インストールベースからのテレメトリ蓄積は構造的優位性"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "業界構造×企業ポジションの合致（サイバー脅威テレメトリ規模）"
+        },
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "GIN規模は結果であり、仕組みへの言及不十分"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.05,
+          "reasoning": "業界構造との合致"
+        },
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "規模は結果"
+        },
+        {
+          "source": "transcript_call_type",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual call（主）"
+        }
+      ],
+      "overall_reasoning": "GINの規模（200,000脅威/秒）は定量的だが、なぜGINが競合には持てないのかの仕組みの説明が不十分。インストールベース規模は構造的優位性の要件を満たすが、次世代企業の台頭リスクあり。まあ納得レベルで確信度50%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "GINテレメトリ規模 → Unified Security Analytics差別化 → Enterprise Security成長率1-6%",
+      "evidence": "Q4 FY2015: GIN→Analytics差別化→FY16成長ガイダンス1-6%",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "3段階以上の因果チェーンでルール5-T違反"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "因果チェーン3段階以上でCausal Leapパターン"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_C",
+          "adjustment": -0.1,
+          "reasoning": "因果チェーン長すぎ"
+        }
+      ],
+      "overall_reasoning": "因果チェーンが3段階以上。ガイダンス成長率との直接接続根拠が弱い。あまり納得〜まあ納得の中間で40%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "DLPにおける市場シェア約2倍のリーダーシップ（次位競合比2倍）",
+      "evidence": "Q4 FY2015: 'DLP offering experienced above-market growth of 14% in fiscal 15 and is the undisputed leader in the market with double the share of the next largest competitor'",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "シェアは結果。なぜDLPでシェアを維持できるかの能力説明不足"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "次位比2倍、14%成長という定量データあり"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "シェアは結果"
+        },
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "定量的差別化（次位比2倍）は高評価要因"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "シェアは結果"
+        },
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "定量的比較データあり"
+        }
+      ],
+      "overall_reasoning": "DLPでの次位比2倍シェアは定量的だが結果に過ぎない。40%"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "DLPシェアリーダーシップ → クラウドDLP展開 → 14%以上の成長継続",
+      "evidence": "Q4 FY2015: DLPシェア→クラウド版展開（Office365/AWS）→既存顧客のアップグレード",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "DLPシェア→クラウド版展開は2-3ステップで合理的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "スイッチングコストに依拠した直接的CAGR接続"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.05,
+          "reasoning": "直接的CAGR接続"
+        }
+      ],
+      "overall_reasoning": "スイッチングコストに依拠したクラウド拡張は比較的直接的。まあ納得で50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "企業向けエンドポイントセキュリティ（SEP）における1億以上のインストールベース",
+      "evidence": "Q3 FY2015: 'ATP Endpoint is not a SEP replacement but a complementary add-on product that makes customers' investment in over 100 million Symantec endpoints more valuable'",
+      "final_confidence": 0.35,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "1億インストールは結果"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "大規模インストールベースは新製品拡販プラットフォームとして構造的意味あり"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "インストールベースは結果"
+        },
+        {
+          "pattern_id": "pattern_III",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "仕組みへの言及不十分"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_call_type_quarterly",
+          "adjustment": -0.1,
+          "reasoning": "Q3 quarterly（②相当）"
+        },
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "結果"
+        }
+      ],
+      "overall_reasoning": "インストールベース規模は定量的だが結果。Q3発言かつ次世代EDR競合リスクあり。あまり納得しない〜まあ納得で35%"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "1億エンドポイントインストールベース → ATP製品アドオン販売 → Enterprise Security成長加速",
+      "evidence": "Q3 FY2015: インストールベース→ATP追加販売",
+      "final_confidence": 0.35,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "既存インストールベース→ATP追加販売は2ステップで直接的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "直接的CAGR接続"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_call_type_quarterly",
+          "adjustment": -0.1,
+          "reasoning": "Q3発言（②相当）"
+        }
+      ],
+      "overall_reasoning": "Q3発言かつ次世代競合への顧客流出リスク。35%"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "SSL証明書市場での44%シェアによるTrust Services（PKI/SSL）リーダーシップ",
+      "evidence": "Q4 FY2015: 'world's largest SSL Certificate authentication provider with 44% market share'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "44%シェアは結果"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": false,
+          "reasoning": "Let's Encrypt等の無料証明書台頭リスク"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "シェアは結果、コモディティ化リスク高"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.15,
+          "reasoning": "SSL市場のコモディティ化リスク"
+        }
+      ],
+      "overall_reasoning": "44%シェアは定量的だが純粋に結果。Let's Encrypt等の破壊的競合リスクが高く将来性に疑問。あまり納得しない で30%"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "NetBackup Appliancesの市場リーダーシップ（Veritas）と47%市場シェア",
+      "evidence": "Q1 FY2016: 'IDC, Veritas claimed the #1 share of the open systems integrated backup appliance submarket for the first time at 47% share'",
+      "final_confidence": 0.25,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "47%シェアは結果"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": false,
+          "reasoning": "Veritas分離予定でSYMCとして将来的に無効化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "シェアは結果"
+        },
+        {
+          "pattern_id": "pattern_E",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Veritas分離（FY16）により優位性として機能しない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_call_type_quarterly",
+          "adjustment": -0.1,
+          "reasoning": "Q1 quarterly"
+        },
+        {
+          "source": "veritas_divestiture",
+          "adjustment": -0.1,
+          "reasoning": "Veritas分離予定でSYMC優位性として不適切"
+        }
+      ],
+      "overall_reasoning": "IDCデータ付き47%シェアだが結果かつVeritas分離予定。あまり納得しない で25%"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Cybersecurity Servicesにおける業界唯一のフルスタック提供能力（Monitoring/Incident Response/Threat Intelligence）",
+      "evidence": "Q3 FY2015: 'We are the only company in the world with the breadth of cybersecurity services'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "「世界唯一」の根拠不十分。IBM Security、Mandiant等も類似サービス提供"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "定量的裏付けなし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "定性的主張のみ"
+        },
+        {
+          "pattern_id": "pattern_G",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "競合差別化不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_call_type_quarterly",
+          "adjustment": -0.1,
+          "reasoning": "Q3 quarterly"
+        },
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.1,
+          "reasoning": "定性的主張のみ"
+        }
+      ],
+      "overall_reasoning": "フルスタックは差別化になりうるが「世界唯一」という主張に定量的裏付けなく、競合急拡大中。Q3発言。あまり納得しない で30%"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "フルスタックサービス → $10B市場機会（30% CAGR）獲得 → Cybersecurity Services成長",
+      "evidence": "Q3 FY2015: $10B市場機会の提示",
+      "final_confidence": 0.25,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "TAM→CAGR直結でルール5-T違反。市場規模→シェア獲得の接続メカニズム不明"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "TAM提示→CAGR接続はCausal Leap"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_call_type_quarterly",
+          "adjustment": -0.1,
+          "reasoning": "Q3発言"
+        },
+        {
+          "source": "kb2_pattern_C",
+          "adjustment": -0.1,
+          "reasoning": "Causal Leap"
+        }
+      ],
+      "overall_reasoning": "TAM/市場成長率の提示のみで、Symantecのシェア獲得根拠不明。ルール5-T違反。あまり納得しない で25%"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "GINは毎秒200,000の脅威を更新。世界最大の民間サイバー脅威インテリジェンスネットワーク",
+      "evidence": "Q4 FY2015 Prepared Remarks（CEO）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim。関連主張の裏付けデータ"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "DLPは次位競合の2倍のシェア。FY15で14%成長、Q4で33%成長",
+      "evidence": "Q4 FY2015 Prepared Remarks（CEO）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "1億以上のSEPエンドポイントインストールベース（Q3 FY2015発言）",
+      "evidence": "Q3 FY2015 Prepared Remarks（CEO）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "Trust Services：世界最大のSSL証明書認証プロバイダー、44%シェア",
+      "evidence": "Q4 FY2015 Prepared Remarks（CEO）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "IDCデータによりVeritas NetBackupがオープンシステム統合バックアップアプライアンス市場で47%シェア（2015年3月四半期）",
+      "evidence": "Q1 FY2016 Prepared Remarks（CEO）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 15,
+    "confidence_distribution": {
+      "50-60": 7,
+      "40-50": 2,
+      "30-40": 4,
+      "20-30": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

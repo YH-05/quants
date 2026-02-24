@@ -1,0 +1,398 @@
+{
+  "ticker": "UAA",
+  "company_name": "Under Armour, Inc.",
+  "transcript_source": "Q4 2014 Earnings Call (2015-02-04) as primary; Q3 2014 (2014-10-23) as supplementary",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2014", "Q2_2014", "Q3_2014", "Q1_2015", "Q2_2015"]
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Connected Fitnessプラットフォーム（MapMyFitness、Endomondo、MyFitnessPal）による1.2億人のデジタルコミュニティ構築能力",
+      "descriptive_label": "Connected Fitnessデジタルコミュニティ",
+      "seven_powers_category": "Network Economies",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Kevin Plank): 'we now have the world's largest digital health and fitness community, with a combined audience among all our platforms of over 120 million unique people... there are approximately 20 digital communities in the world with more than 100 million members... we now have 3 of the best minds in the space all adept at navigating in a rapidly shifting market'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "120百万ユーザーのコミュニティは結果的規模。ただし「世界最大の構築能力」という能力面もある。コミュニティのネットワーク効果そのものは構造的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "120百万ユーザー、世界上位20デジタルコミュニティに入る規模、1日100,000人増加という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "Connected FitnessはUAのコアビジネス（シャツ・靴）とは補完的。CEOも「Don't forget to sell shirts and shoes」と述べ、本業との境界を意識している"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "買収戦略（M&A）により獲得したプラットフォームであり、戦略実行の結果。ただしコミュニティ自体のネットワーク効果は構造的優位性に近い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call での言及（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Nike Training Club等の競合がすでに存在し、UAの差別化は規模のみ",
+            "adjustment": -10
+          },
+          {
+            "reason": "Connected FitnessとコアApparel/Footwearの収益接続が未証明",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "1.2億人という規模は印象的だが、これはM&A戦略の結果（結果の蓄積）。コミュニティが実際にシャツ・靴の売上に直結するメカニズムがCEO自身も「信じる」レベルで未証明。Q4での言及だが補完的事業に分類。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "スポーツマーケティング（Stephen Curry等トップアスリートとの深い関係構築）を通じたブランドエクイティ構築能力",
+      "descriptive_label": "アスリートスポーツマーケティング能力",
+      "seven_powers_category": "Branding",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Kevin Plank): 'next week, the biggest star in Under Armour's basketball universe and leading vote-getter for the NBA All-Star game, Stephen Curry, will be in New York City to debut his first signature shoe, the Curry One. We'll be telling the basketball world about it when we introduce our Holiday One commercial next week starring Stephen and a very special surprise guest. This will be the largest campaign in our company's history'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "Curry Oneシグネチャーシューズの展開はブランド構築の「能力」面もあるが、具体的な選択・発掘プロセスの説明が薄い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "「最大のキャンペーン」とあるが数値的裏付けなし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Nike（Jordan Brand）、Adidasに対して差別化しているがQ4のみで具体的比較少ない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "Curry OneはNBAドラフト全体1位指名の有望選手を先取りした事例であり、競合より先の選択眼を示す",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Stephen CurryをNike・Adidasに取られずに獲得・育成した事実は、アスリート発掘・関係構築能力を示唆する。ただしその能力の仕組み（スカウティング体制等）の詳細説明がなく50%。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "19四半期連続20%以上のApparel売上成長を支えるプラットフォームイノベーション能力（ColdGear Infrared、Charged Cotton、Storm等）",
+      "descriptive_label": "パフォーマンスアパレルプラットフォームイノベーション",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Kevin Plank): 'we had a tremendous year in our core Apparel business, growing total Apparel revenues by more than $0.5 billion. The growth was across all categories and genders... We continue to drive innovation and premium pricing throughout our North American Apparel business with large platforms like ColdGear Infrared, Charged Cotton and Storm'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「大型プラットフォームを一貫して立ち上げる能力」は能力面だが、CFOの発言は主に成長「結果」を強調"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "20四半期連続20%+成長というトラックレコードは定量的。プレミアム価格化の事例（$110→$130クリート）も具体的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Nike・Adidas対比での差別化は「パフォーマンス機能素材の先駆性」だが、今や両社も機能素材を持つ"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "パフォーマンスアパレル市場でのイノベーター地位は市場ポジションと合致するが、Nike・Adidasも同じ市場"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "20四半期連続成長という実績は強いトラックレコード",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "19四半期連続20%成長と価格プレミアム化（Highlight Cleat $110→$130）は定量的に評価できる。ただし「プラットフォームイノベーション能力」の具体的プロセス・仕組みへの言及が薄く、成長実績が先行している。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "フットウェア事業における8年間の学習曲線蓄積（クリート→バスケ→ランニングの段階的カテゴリー拡張能力）",
+      "descriptive_label": "フットウェアカテゴリー拡張ノウハウ",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q3 2014 Q&A (CEO Kevin Plank): 'we're 10 years in making footwear, we're 8 years having sold footwear... '06 was football cleats, '07 baseball, '08 was training, '09 running and '10 was basketball. And it's taken us really 8 years to get to the leadership position... the long-term investment we made in International at 94% growth. When we make these long-term investments and we're behind them and we demonstrate that continuity of leadership and vision, I think the results really speak for themselves.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [10],
+      "cagr_connections": [14],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_7_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "8年間の累積学習は能力蓄積だが、CEOの説明は主に「リーダーシップポジション獲得」という結果面が強い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "フットウェア市場はNike・Adidasが圧倒的。「#2 in some top wholesale accounts」は限定的差別化"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "weak",
+            "reasoning": "ネガティブケース（断念した投資）への言及なし。「まだ学習中」という謙虚な発言はあるが"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_C_causal_leap",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3四半期発言からの抽出（主でなく従）",
+            "adjustment": -10
+          },
+          {
+            "reason": "8年間のカテゴリー拡張という具体的な時系列説明あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "フットウェアの段階的拡張は事実だが、「能力」の具体的内容（設計力、調達力、マーケティング手法）の説明が乏しい。Q3での発言のため-10%調整。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "I WILL WHAT I WOMENキャンペーンを通じた女性アスリート/アスレチック女性への新規ブランド拡張能力",
+      "descriptive_label": "女性向けブランド拡張能力",
+      "seven_powers_category": "Branding",
+      "evidence_from_transcript": "Q3 2014 Prepared Remarks (CEO Kevin Plank): 'The I WILL WHAT I WANT campaign... immediately struck a chord with women, with the 2 commercials generating over 13 million views across YouTube and Under Armour sites... The campaign drove tremendous traffic to our E-Commerce site, primarily women, 70% of which were new consumers to Under Armour.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "キャンペーン成功（1300万視聴）は結果。ブランド拡張の「能力」（クリエイティブ開発力、アスリート発掘）が問われる"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "Nikeの「Just Do It」とは異なるUAの「I WILL WHAT I WANT」というメッセージの差別化は認識できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "13百万視聴、70%新規顧客という定量データあり。ただし売上への転換数値はなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3四半期発言（従）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "I WILL WHAT I WANTキャンペーンの反響は認識できるが、Q3での発言かつキャンペーン結果（視聴数）が主体。ブランド拡張能力の仕組みへの言及は薄い。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "factual_claim",
+      "claim": "2014年通期：売上高32%増の30.8億ドル、Apparel 30%増、Footwear 44%増、International 96%増、Direct-to-Consumer 32%増を達成",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Connected Fitness統合後の総ユーザー数1.2億人超（MapMyFitness+Endomondo+MyFitnessPal）、世界上位20デジタルコミュニティに入る規模",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Connected Fitnessプラットフォームは1日100,000人超（1月は136,000人/日）のユーザーが登録、1月の月間ワークアウト記録数1億件超",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Stephen Curry Oneシグネチャーシューズ（$120）とSpeedForm Gemini（$130）を2015年初頭に同時展開、UAブランド史上最大のキャンペーンを実施",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Footwear売上高：2014年通期44%増の$431百万、Q3 2014は50%増。一部大手小売アカウントで2014年のフットウェアブランド2位を獲得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Connected Fitnessプラットフォーム（1.2億人） → アスリートの健康・フィットネスデータ分析 → パーソナライズされた製品推奨 → Apparel/Footwear購買増加 → 売上CAGR支持",
+      "descriptive_label": "Connected Fitness→購買行動→売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "デジタルコミュニティ→データ→推奨→購買は3段階以上の因果チェーン。CEOも「信じる（believe）」レベルで検証データなし"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及。ただし戦略的展望としての発言"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムが3段階以上で、CEOも「believe」という言葉を使い証明済みと言っていない。データによる接続検証なし。"
+      }
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "Stephen Curry選手のNBA成功 → Curry Oneシグネチャーシューズの売上 → フットウェアビジネスの成長加速 → 全体売上CAGR+数pp",
+      "descriptive_label": "Curryアスリート→フットウェア成長経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "アスリート→シグネチャーシューズ→フットウェア売上は2ステップ。NikeのJordan Brandモデルで実証済みの因果パターン"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Curryの2015年NBA MVP獲得前（cutoff前）の見通し段階",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "アスリート人気→シグネチャーシューズ売上の因果はNike/Jordan Brandで実証済みパターン。Curryのポテンシャルは当時から高く評価されていた。ただしCurry Oneは2015年2月発売直前でトラックレコードなし。"
+      }
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "プラットフォームイノベーション能力（機能素材）→ 価格プレミアム維持・拡大 → GPM改善 → 営業利益CAGR",
+      "descriptive_label": "イノベーション→価格プレミアム→利益CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "イノベーション→価格プレミアム→GPMは2ステップ。Highlight Cleat $110→$130の具体事例あり。GPMは開示データで検証可能"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "価格プレミアム化の実例あり（クリート+$20）。GPM率も開示されており検証可能。ただし2015年はFX逆風でGPM改善が相殺されるリスクがCFOにより言及されており、確信度は中程度。"
+      }
+    },
+    {
+      "claim_id": 14,
+      "claim_type": "cagr_connection",
+      "claim": "フットウェアカテゴリー拡張ノウハウ → 各カテゴリー（Running、Basketball）での市場シェア獲得 → フットウェア売上成長（中長期でApparel規模に拡大）",
+      "descriptive_label": "フットウェア学習曲線→シェア獲得→売上成長経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "学習曲線→市場シェア→売上は2ステップ。クリート市場での実績あり（2014年Q3、Highlight Cleat #1 football cleat）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3四半期での発言（従・②相当）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3での発言（従）",
+            "adjustment": -10
+          },
+          {
+            "reason": "クリート市場での#1実績という検証可能な成功事例あり",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "クリートでの成功からRunning・Basketballへの横展開の論理は検証可能な実績に基づく。Q3での発言のため調整。最終50%。"
+      }
+    }
+  ]
+}

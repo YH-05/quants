@@ -1,0 +1,316 @@
+{
+  "ticker": "CSU",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-26) [Primary] + Q4 FY2013 + Q1-Q3 FY2014 + Q1-Q2 FY2015 [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4 FY2013", "Q1-Q3 FY2014", "Q1-Q2 FY2015"],
+    "transcripts_used": [
+      "201403_earnings_call.json (Q4 FY2013)",
+      "201502_earnings_call.json (Q4 FY2014 - Primary)",
+      "201507_earnings_call.json (Q2 FY2015)"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "CSU-001",
+      "claim_type": "competitive_advantage",
+      "claim": "垂直型市場ソフトウェア（VMS）に特化した永続保有型M&A選定・統合能力",
+      "descriptive_label": "VMS特化型永続保有M&A能力",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO Mark Leonard): 'companies that you would truly want to own forever.' 'we pride ourselves in buying and holding forever businesses and believe that, that affects how we act towards them.' '15 to 30 small acquisitions a year' Q4 FY2013: 'there is still an increase in EBITA margin...the 100 and something business units' 'I still see very, very significant growth in our prospects in the international area.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": ["CSU-F001"],
+      "cagr_connections": ["CSU-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_10_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "VMS特化型の永続保有M&A能力は能力・仕組みとして評価可能。個々の買収実績ではなく選定哲学・統合プロセスが能力"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "M&A選定能力・永続保有哲学は名詞で表現可能"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "ハードウェア流通事業の売却（「コアコンピタンスでない」）という断念例。高バリュエーション時に買収見送るという規律の言及"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "VMS市場は高いスイッチングコストを持ち、買収後のEBIT維持が構造的に支えられる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "永続保有哲学・VMS集中・年間15-30件の小型M&Aという具体的実践は評価できる。断念例の言及（ルール10-T）と能力・仕組みの説明も十分。競合との差別化（他のPEファンド比でのVMS特化）は暗示的。70%。"
+      }
+    },
+    {
+      "claim_id": "CSU-002",
+      "claim_type": "competitive_advantage",
+      "claim": "垂直型市場ソフトウェアの高いスイッチングコスト：顧客のコア業務への組み込みによる粘着性",
+      "descriptive_label": "VMS顧客のミッションクリティカル粘着性",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO): 'I would happily give up 1 point of EBIT for 1 point more of organic growth...it's a sign of a healthy business and that they're gaining share in their markets.' 'software tends to be a substitute for labor. And, hence, high labor cost areas tend to have more attractive software prospects for us to acquire.' Q&A: 'each of the business unit has a different set of economics, a different set of competitors and a different strategic position.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": ["CSU-F002"],
+      "cagr_connections": ["CSU-C002"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "スイッチングコスト・顧客粘着性は名詞属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "VMS顧客のコア業務への組み込みは構造的スイッチングコストを生む"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "高労働コスト市場での労働代替ソフトウェアという業界構造との合致"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "顧客粘着性の定量証拠（解約率等）が提示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "VMS企業の構造的スイッチングコストは業界的によく知られており、240以上のB/Uという規模も確認。定量的解約率データが不足だが構造的合理性は高い。70%。"
+      }
+    },
+    {
+      "claim_id": "CSU-003",
+      "claim_type": "competitive_advantage",
+      "claim": "分権型経営による240以上の業務単位の独自経営（ベストプラクティス共有+自治）",
+      "descriptive_label": "分権型組織による自律経営能力",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO): 'we've got 240 business unit P&Ls this quarter' 'there are 15 business units at TSS with managers, some of whom have been doing the job for ages and some of whom are pretty green.' 'each of the business unit has a different set of economics, a different set of competitors and a different strategic position. And they're all sort of pursuing their own business plans' 'we talk to them about best practices, we share what we know'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": ["CSU-F003"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "分権型経営能力は名詞属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "240超のBU管理はスケールを維持しながら自律性を保つ構造的仕組み"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "分権型経営は多くの大企業が実践。CSU特有のVMS集中との組み合わせが差別化の鍵"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "240以上のBU管理は具体的。分権型経営は普遍的概念だが、VMS特化との組み合わせで競争優位として機能。50%。"
+      }
+    },
+    {
+      "claim_id": "CSU-004",
+      "claim_type": "competitive_advantage",
+      "claim": "高バリュエーション環境での買収自制：低リターン案件を回避する資本配分規律",
+      "descriptive_label": "規律ある資本配分とバリュエーション自制",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO): 'I'm really hoping for a giant correction and that we will get to buy either entire companies or pieces of great vertical market software businesses' 'the multiples are as heavy as we've seen in a very long time...translates into a sort of our 4% return' 'if you have short-term assets, then short-term credit is a terrific way to finance them. I think if you're buying companies that you intend to keep forever, financing it with short-term debt is insanity.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_10_t", "rule_1_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "高バリュエーション環境での買収見送りという断念例（ルール10-T）が明確に言及"
+          },
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "規律ある資本配分は能力・仕組みとして評価できる"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "資本配分の規律そのものが優位性（戦略との混同リスクは低い）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "高バリュエーション環境での自制（断念例）は具体的。資本配分規律の開示は誠実でアナリストとして評価できる。ただしこれが競争優位として機能するかは時間軸依存。60%。"
+      }
+    },
+    {
+      "claim_id": "CSU-005",
+      "claim_type": "competitive_advantage",
+      "claim": "オーガニック成長への高いインセンティブ設定（EBITよりオーガニック成長を優先）",
+      "descriptive_label": "オーガニック成長優先のインセンティブ設計",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO): 'I would happily give up 1 point of EBIT for 1 point more of organic growth. All of our companies know that. And maybe after I've had a beer or 2, I even suggest that I'd give up 2 points EBIT for 1 point more of organic growth.' 'implicit in what you're asking is would we be happy with 4% organic going forward and frankly, no. We would like to see it be better than that.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": ["CSU-F004"],
+      "cagr_connections": ["CSU-C003"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "インセンティブ設計は能力・仕組みだが、実際のオーガニック成長率（4%）は低い"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "インセンティブ設計は経営戦略。オーガニック成長能力そのものが優位性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "オーガニック成長へのフォーカスは補完的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "インセンティブ設計は戦略（ルール8-T）に近い。実際の有機成長率（4%）は低く、オーガニック成長能力の証拠として弱い。40%。"
+      }
+    },
+    {
+      "claim_id": "CSU-F001",
+      "claim_type": "factual_claim",
+      "claim": "240以上のBusiness Unit P&L。年間15-30件の小型買収。",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["CSU-001", "CSU-003"]
+    },
+    {
+      "claim_id": "CSU-F002",
+      "claim_type": "factual_claim",
+      "claim": "オーガニック成長率：直近4%。CEOは1%EBITを1%オーガニック成長と交換することを提案",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["CSU-002", "CSU-005"]
+    },
+    {
+      "claim_id": "CSU-F003",
+      "claim_type": "factual_claim",
+      "claim": "15以上の異なる垂直市場(business unit clusters)にわたるVMSポートフォリオ",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["CSU-003"]
+    },
+    {
+      "claim_id": "CSU-F004",
+      "claim_type": "factual_claim",
+      "claim": "TSS買収後も既存のM&A規律を適用し、コアでない事業は売却（ハードウェア流通）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["CSU-004"]
+    },
+    {
+      "claim_id": "CSU-C001",
+      "claim_type": "cagr_connection",
+      "claim": "VMS特化M&A能力 → 年間15-30件の買収 × 高EBITA margin → 収益CAGR成長",
+      "descriptive_label": "VMS M&A→EBITA成長→CAGR",
+      "source_advantage": "CSU-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "VMS買収→EBITA成長は2ステップ。EBITAデータは開示（amortization-adjusted basis）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "年間15-30件M&A×高EBITAは開示データで検証可能。2ステップの直接接続。70%。"
+      }
+    },
+    {
+      "claim_id": "CSU-C002",
+      "claim_type": "cagr_connection",
+      "claim": "VMS顧客粘着性 → 低チャーン × オーガニック成長 → 既存顧客ベースからの収益CAGR",
+      "descriptive_label": "VMS粘着性→低チャーン→収益CAGR",
+      "source_advantage": "CSU-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "VMS粘着性→低チャーン→収益維持は2ステップ。ただしチャーン率の開示がない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "VMS粘着性の合理性は高いが、チャーン率等の定量データが開示されていない。60%。"
+      }
+    },
+    {
+      "claim_id": "CSU-C003",
+      "claim_type": "cagr_connection",
+      "claim": "オーガニック成長改善 → M&A依存度低下 × 既存BUの成長 → 長期持続可能CAGR",
+      "descriptive_label": "オーガニック成長→持続可能CAGR",
+      "source_advantage": "CSU-005",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "オーガニック成長改善→持続可能CAGR。現在4%の有機成長では実証されていない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CEO自身が4%は不満足と言及。将来の成長改善への期待ベース。50%。"
+      }
+    }
+  ]
+}

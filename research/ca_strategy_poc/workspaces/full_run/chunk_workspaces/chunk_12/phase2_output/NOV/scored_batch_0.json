@@ -1,0 +1,299 @@
+{
+  "scored_claims": [
+    {
+      "id": "NOV-001",
+      "claim_type": "competitive_advantage",
+      "claim": "大規模バックログ（$12.5B）による収益可視性とダウンサイクル耐性（Backlog Moat）",
+      "evidence": "Q4 2014 Prepared Remarks: 'This resulted in a Rig Systems backlog of $12.5 billion to start 2015. This is a high backlog for NOV by historical standards, 16% higher than we carried into the 2009 downturn'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "$12.5Bバックログは結果（受注残高）であり優位性ではない。バックログ積み上げ能力が優位性"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$12.5B、2009年比+16%という定量データあり"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "石油ガス掘削装置業界は長期契約が業界構造。バックログは業界特性と合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "バックログは受注残高という結果の指標。バックログ積み上げ力（技術的優位・仕様取込・顧客関係）が優位性の本体"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "結果→原因の部分的転倒。ただし2009年比16%高という比較データが一定の構造的優位性を示す"
+        }
+      ],
+      "overall_reasoning": "$12.5Bバックログは定量的に明確だが、これは結果の指標。ただし「2009年比+16%」という過去サイクル比較データは、NOVが前回ダウンサイクルより強いポジションにいることを示す。キャンセル不可の契約条件（2009年時に4%のみ消滅）という補強もある。能力説明が一部不足するが50%"
+    },
+    {
+      "id": "NOV-002",
+      "claim_type": "competitive_advantage",
+      "claim": "リグ後市場（Aftermarket）の大規模インストールベースによる反復収益（Installed Base Advantage）",
+      "evidence": "Q4 2014: 'The Rig Aftermarket segment posted record revenues of $850 million in the fourth quarter 2014... Our large and growing installed base of equipment... have resulted in solid growth.' マージン28.8%（+300bp）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "インストールベースという構造的能力を提示。顧客がNOV機器を使う限りNOVのサービス・部品を必要とするスイッチングコスト構造"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$850M四半期収益（記録的）、マージン28.8%（+300bp）という定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "インストールベース→Aftermarket収益は構造的（補完的ではない）"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "石油ガス掘削装置は高額かつ顧客固有の仕様。OEM部品以外への切り替えはリグ稼働リスクが高く、業界構造的にスイッチングコストが高い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "掘削装置市場の業界構造（高額装置・仕様依存・メンテナンス必須）とNOVのインストールベース（世界最大の陸上・海洋リグメーカー）の合致。高評価パターンIV（構造的市場ポジション）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "業界構造×インストールベースの合致で高評価"
+        }
+      ],
+      "overall_reasoning": "インストールベースからのAftermarket収益は7 Powersのスイッチングコストに近い優位性。石油ガス掘削リグにおいて、ドリルビット・トップドライブ・BOP等の主要部品はOEMメーカー（NOV）からの調達が最も信頼性が高く、切り替えリスクが高い。$850M四半期+28.8%マージンは定量的裏付けとして機能。競合（Schlumberger・Halliburton）との純粋比較がない点で70%"
+    },
+    {
+      "id": "NOV-003",
+      "claim_type": "competitive_advantage",
+      "claim": "閉ループ自動掘削システム（Closed-Loop Automated Drilling）等の次世代技術開発力",
+      "evidence": "Q4 2014: 'We are continuing to advance new technologies like closed-loop automated drilling, which has significantly improved drilling performance through several pilot programs.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "「significantly improved」は定性的主張。パイロット段階の定量成果（掘削コスト削減率、時間短縮率）なし"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Schlumberger・Baker Hughes（AutoTrak等）との技術比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "定性的のみパターン。「significantly improved」の数値化なし、競合技術との比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.2,
+          "reasoning": "定性的裏付けのみ"
+        }
+      ],
+      "overall_reasoning": "技術開発力の方向性は認める。しかしパイロット段階で定量的成果の開示がなく、競合（Schlumberger、Baker Hughes）との比較もない。PoiT制約（2015年9月30日以前）の範囲内では実用化ステータスが不明確。30%"
+    },
+    {
+      "id": "NOV-004",
+      "claim_type": "competitive_advantage",
+      "claim": "モジュール式FPSO統合パッケージ提供能力（Integrated FPSO Package Capability）",
+      "evidence": "Q4 2014: 'Our new approach is to offer a timely integrated package of NOV kit... NOV has a tremendous track record of success in bringing this modular package approach to the construction of offshore drilling rigs through the last decade.'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "10年間のオフショアリグ統合パッケージ実績は能力の証明"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "構造的な統合パッケージ能力（補完的ではない）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力ベースの主張（パターンIII: 能力>結果）。ただしFPSO分野は「まだ先」とCEO自身が述べており現時点での確実性が低い"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "オフショアリグでの10年間の統合パッケージ実績は能力として評価できる。しかしFPSO分野への横展開はCEO自ら「a large integrated package FPSO order for NOV is still a ways away」と述べており、現時点では将来機会。方向性は認めるが50%"
+    },
+    {
+      "id": "NOV-005",
+      "claim_type": "competitive_advantage",
+      "claim": "過去のダウンサイクル経験（6回目）に基づくコスト管理・サバイバル能力",
+      "evidence": "Q4 2014: 'By my count, this will be the sixth cyclical downturn we have faced through our careers'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "Schlumberger・Halliburton等の業界大手も同様のサイクル経験を有する。業界共通の主張"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "業界共通の主張パターン。6回のサイクル経験は業界大手に共通しており差別化にならない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通能力ゲートキーパー発動"
+        }
+      ],
+      "overall_reasoning": "6回のダウンサイクル経験は業界知識の蓄積を示すが、Schlumberger・Halliburton・Baker Hughes等も同等の経験を持つ。定量的なコスト削減能力の開示もなく30%"
+    },
+    {
+      "id": "NOV-006",
+      "claim_type": "competitive_advantage",
+      "claim": "ハイスペックリグおよびシェール向け機器での技術的仕様取込力（Design & Spec-in）",
+      "evidence": "Q4 2014: 'We shipped record levels of top drives, blowout preventers, fiberglass pipe, jacking systems and numerous other products.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "記録的出荷量は結果であり仕様取込能力の証明ではない（ルール1違反）"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Schlumberger・Baker Hughes・Weatherfordとの差別化説明なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "出荷量という結果指標を仕様取込能力（優位性）として提示している転倒パターン"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "結果→原因の転倒"
+        }
+      ],
+      "overall_reasoning": "記録的出荷量は事実だが結果の開示に過ぎない。仕様取込能力の説明（技術仕様、設計段階での顧客との連携、切り替えコスト）がなく競合との比較もない。30%"
+    },
+    {
+      "id": "NOV-007",
+      "claim_type": "competitive_advantage",
+      "claim": "シングルズ＆ダブルズ型M&A戦略による技術・地理的能力の積み上げ",
+      "evidence": "Q4 2014: 'We continue to pursue our singles and doubles acquisition strategy... We have 7 letters of intent in place and probably triple that in potential prospects.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "M&A戦略は意思決定であり優位性ではない（ルール8=戦略≠優位性）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略・優位性の混同パターン。統合能力・選定基準・断念例の開示なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_F",
+          "adjustment": -0.1,
+          "reasoning": "戦略≠優位性の混同"
+        }
+      ],
+      "overall_reasoning": "「singles and doubles strategy」はM&A方針の説明。CHD#1（70%）との比較では選定基準・統合プロセス・断念例の開示がなく、戦略と優位性の混同。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 4,
+      "40-50": 2,
+      "60-70": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "ticker": "CMG",
+  "company_name": "Chipotle Mexican Grill, Inc.",
+  "scoring_metadata": {
+    "primary_source": "Q4 2014 Earnings Call (2015-02-03)",
+    "cutoff_date": "2015-09-30",
+    "kb1_rules_applied": true,
+    "kb2_patterns_applied": true,
+    "kb3_fewshot_applied": true,
+    "dogma_applied": true,
+    "scorer_version": "chunk_agent_v1"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "CMG-CA-001",
+      "original_claim_id": "CMG-001",
+      "claim_type": "competitive_advantage",
+      "claim_text": "「レストラトゥールプログラム」による内部タレントパイプライン構築能力（GM の90%以上をクルーから昇進）",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_III_capability_over_result",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.60,
+      "final_confidence": 0.60,
+      "final_confidence_rationale": "Pattern III（能力重視）適用：GM90%以上内部昇進という能力の仕組みが明示。フィールドリーダー比率を15→8レストランへ圧縮というプロセス改善実績。~$2M YTD Q3 2014の人材育成ボーナスというインセンティブ設計。Pattern B（業界共通）の懸念：他社も内部昇進を志向するが、CMGの90%超という水準は業界トップクラス。PoiT期間内の外部検証が限定的。確信度60%維持。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CA-002",
+      "original_claim_id": "CMG-002",
+      "claim_type": "competitive_advantage",
+      "claim_text": "「4本柱スループット方法論」（ラインバッカー配置・mise en place・aces in places・専任エクスペダイター）による取引速度改善能力",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_I_quantitative_differentiation",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern I（定量的差別化）適用：Q4 2014 ランチ+3・ディナー+5取引/ピーク、Q3 2014 ランチ+6・ディナー+6の定量データあり。最速店舗の1/3しか処理できない平均店舗というギャップ指標は追加的成長ポテンシャルを示す。ただしPattern B（業界共通）部分適用：スループット最適化は他のファストカジュアルも取り組む汎用戦術。固有の特許・ネットワーク効果なし。確信度50%維持。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CA-003",
+      "original_claim_id": "CMG-003",
+      "claim_type": "competitive_advantage",
+      "claim_text": "ミレニアル・Gen X消費者における「Food with Integrity」ブランドアイデンティティ（ミレニアルが平均75%多く選択）",
+      "seven_powers_category": "Branding",
+      "kb2_pattern_applied": "pattern_I_quantitative_differentiation",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.60,
+      "final_confidence": 0.60,
+      "final_confidence_rationale": "Pattern I（定量的差別化）適用：ミレニアル75%・Gen X 33%という選好データは第三者調査に基づく定量的裏付け。Pattern V（特定競合比較）：ティーン#3（2013年#8から上昇）はランキング改善という競合比較。カルニータス撤去後も売上無影響という実証済み顧客ロイヤルティ証拠。6.3%値上げでもほぼ離反なしという価格非感応性証拠。消費者ブランドの脆弱性リスク（食品安全事故）を考慮しても60%は妥当。確信度60%維持。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CA-004",
+      "original_claim_id": "CMG-004",
+      "claim_type": "competitive_advantage",
+      "claim_text": "完全直営（非フランチャイズ）モデルによるレストランレベルマージン27.2%（業界平均2倍のROI70%）",
+      "seven_powers_category": "Counter-Positioning",
+      "kb2_pattern_applied": "pattern_IV_structural_market_position",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern IV（構造的市場ポジション）部分適用：レストランレベルマージン27.2%・新規ROI70%は業界平均（35%）の2倍という定量的優位性。Counter-Positioningとして：既存QSR競合はフランチャイズ収益依存で容易に模倣不可という論理は成立。ただしPattern G（Pure Competitor不明確）：ファストカジュアル新興勢（CAVA、Sweetgreen等）は同様の直営モデルで参入可能。管理上、競合店オープンの1-10日影響は検証されていない独自主張（-10%）。確信度40%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CA-005",
+      "original_claim_id": "CMG-005",
+      "claim_type": "competitive_advantage",
+      "claim_text": "責任ある飼育肉の優先サプライヤー関係（1.65億ポンド、全米生産量の少数割合）",
+      "seven_powers_category": "Cornered Resource",
+      "kb2_pattern_applied": "pattern_C_causal_leap",
+      "kb2_pattern_verdict": "caution",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.40,
+      "final_confidence": 0.30,
+      "final_confidence_rationale": "Pattern C（因果飛躍）部分適用：「米国生産量の小割合」という希少性は主張されているが、CMGの独占契約の証拠なし。カルニータス供給中断はむしろ供給脆弱性の実証であり、Cornered Resourceの信頼性を損なう（-10%）。ただし先行者優位（スケールで契約している）という部分的優位性は存在。実質的なロックインが不明瞭。確信度30%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CAGR-001",
+      "original_claim_id": "CMG-006",
+      "claim_type": "cagr_connection",
+      "claim_text": "レストラトゥールプログラム・スループット方法論 → 既存店スループット向上 → 同店売上高CAGR（FY2014 +16.8%）",
+      "source_advantage_claim_id": "CMG-CA-001",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）部分適用：文化投資→スループット改善→comp成長は2ステップだが、FY2014 comp +16.8%には6.3%値上げ効果が含まれており、純粋なオペレーション改善効果の分離が困難。Q3 2014の+19.8%（史上最高）という実績は強力な定量的裏付け。元優位性60%と連動して50%（プロセス改善の複合要因を考慮）。確信度50%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CAGR-002",
+      "original_claim_id": "CMG-007",
+      "claim_type": "cagr_connection",
+      "claim_text": "ブランドエクイティ（ミレニアル親和性）→ 価格非感応型リピート購買 → 値上げ実現＋マージン拡大 → EPS CAGR",
+      "source_advantage_claim_id": "CMG-CA-003",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.60,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）適用：ブランド→価格非感応性→マージン拡大→EPS成長は2ステップ。FY2014 EPS +35%（収益成長率+27.8%を上回る）という実証データ。6.3%値上げで実質的離反なし（カルニータステストの定量的確認）。Pattern I（定量的差別化）も重複適用。元優位性60%から+10%上方修正（メカニズムが特に明確かつ実証済み）。確信度60%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "CMG-CAGR-003",
+      "original_claim_id": "CMG-008",
+      "claim_type": "cagr_connection",
+      "claim_text": "直営モデルの単位経済学（ROI70%）→ 新規出店の自己資金調達 → 出店加速→ 長期FCF成長",
+      "source_advantage_claim_id": "CMG-CA-004",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）部分適用：ROI70%→自己資金出店→FCF成長は2ステップだが、元の優位性が40%に低下しているため連動。$1.25B無借金・$88M自社株買い実績はモデルの財務強度を示す。2015年190-205店舗ガイダンス（保守的設定）から出店加速の確信度は限定的。確信度40%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    }
+  ],
+  "stock_score_summary": {
+    "competitive_advantage_claims": {
+      "count": 5,
+      "avg_confidence": 0.48,
+      "max_confidence": 0.60,
+      "claims_above_50pct": 2,
+      "claims_above_70pct": 0
+    },
+    "cagr_connection_claims": {
+      "count": 3,
+      "avg_confidence": 0.50,
+      "max_confidence": 0.60,
+      "claims_above_50pct": 2,
+      "claims_above_70pct": 0
+    },
+    "overall_ca_score": 0.48,
+    "scoring_quality_note": "CMG Q4 2014 primary source. Top competitive advantages: Restaurateur program (Process Power, 60%) and Brand equity with millennials (Branding, 60%). The brand→pricing power→margin expansion CAGR connection is uniquely well-evidenced with EPS +35% and carnitas test results. Non-franchise Counter-Positioning is conceptually strong but diluted by emerging fast casual competitors outside the QSR moat. Cornered resource (responsibly-raised meat) is real but fragile given pork supply disruption. Overall CA quality: above average, with strong brand-driven unit economics as the core value driver."
+  }
+}

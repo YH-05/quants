@@ -1,0 +1,81 @@
+{
+  "ticker": "SKY",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["SKY-006", "SKY-007", "SKY-008", "SKY-009", "SKY-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "SKY-006",
+      "claim_type": "competitive_advantage",
+      "claim": "欧州3市場（英独伊）への展開によるコンテンツ・技術・調達のスケール優位（年次コンテンツ支出46億GBP）",
+      "descriptive_label": "欧州3市場スケール（コンテンツ・技術統合）",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 欧州3市場展開によるScale Economies（共通製品ロードマップ・調達規模）の仕組み説明あり",
+        "rule_4_t": "PASS - GBP 46億コンテンツ支出という定量値",
+        "rule_11_t": "PARTIAL - 統合開始11週間のみで実証前"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的接続）。コンテンツ支出スケール→単価交渉力という直接的メカニズム",
+      "kb3_t_calibration": "COST#3（倉庫型Scale→50%）に類似。統合初期段階（11週間）のため将来性主導。H1発言+統合初期の不確実性",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（スケール活用能力）。Rule 4（定量的裏付け）: PASS（GBP 46億）。ただし統合シナジーは初期段階で実証前。H1発言-10%調整",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1・4 PASS、Rule 11 部分的。KB2-T pattern_II_t（直接的接続）。統合11週間と初期段階。H1発言-10%調整。50%"
+    },
+    {
+      "id": "SKY-007",
+      "claim_type": "cagr_connection",
+      "claim": "独占コンテンツ + デュアルブランド → 顧客成長（60M世帯の獲得余地）→ ARPU成長 → 売上CAGR",
+      "descriptive_label": "コンテンツ独占→顧客成長→売上成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2-3ステップの因果で英独伊60M世帯という定量的ターゲット",
+        "rule_12_t": "FAIL - H1発言から"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。コンテンツ独占→チャーン低下→新規顧客→ARPUという明確なメカニズム",
+      "kb3_t_calibration": "COST顧客粘着力（会員→ARPU→売上→90%）に近い。SkyはARPU GBP 47/月という実績値がある。H1発言からの制約",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2-3ステップ）。60M世帯獲得余地という定量的ポテンシャル。H1発言で-10%制約。全体的に検証可能",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5 PASS、Rule 12 FAIL（H1発言）。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5（2-3ステップ因果）PASS。H1発言-10%調整。50%"
+    },
+    {
+      "id": "SKY-008",
+      "claim_type": "cagr_connection",
+      "claim": "クロスセル拡大（TV+BB+電話→モバイル追加）→ ARPU向上 → 売上成長",
+      "descriptive_label": "クロスセル深化→ARPU→売上成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（クロスセル→ARPU→売上）で検証可能",
+        "rule_12_t": "FAIL - H1発言から"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。ARPU GBP 47/月（成長中）、41%トランザクション収益増が裏付け",
+      "kb3_t_calibration": "COST顧客粘着力（会員→ARPU→売上→90%）に近い。SkyのARPU実績GBP 47/月は直接的な検証可能性を提供",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。ARPU GBP 47/月という実績値で検証可能。H1発言で-10%制約",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5 PASS、Rule 12 FAIL（H1発言）。KB2-T pattern_II_t（直接的接続）。ARPU実績値で検証可能。H1発言-10%調整。50%"
+    },
+    {
+      "id": "SKY-009",
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015 チャーン 9%超（10年超最低水準）、ARPU GBP 47/月、450,000純増顧客（Q2）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 2015 CEO/CFO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。SKY-001（独占コンテンツ）の顧客粘着性証拠として強力",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。SKY-001（70%）の支持事実として最も重要。チャーン9%超・10年最低という歴史的最良水準。0.7"
+    },
+    {
+      "id": "SKY-010",
+      "claim_type": "factual_claim",
+      "claim": "コネクテッドBOX 2/3基盤普及、NPS 77（訪問エンジニア）、オンラインヘルプ訪問43%増・コールセンター電話2M削減",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 2015 CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。SKY-002（コネクテッドホーム）の支持事実",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付けあり。SKY-002（50%）の支持事実。NPS 77・43%増は具体的。0.6"
+    }
+  ]
+}

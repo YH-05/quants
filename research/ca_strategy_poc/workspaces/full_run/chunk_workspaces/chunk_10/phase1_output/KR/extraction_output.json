@@ -1,0 +1,189 @@
+{
+  "ticker": "KR",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-03-05, fiscal year ended January 2015)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4 FY2014", "Q1 FY2015", "Q2 FY2015", "Q3 FY2015"]
+  },
+  "claims": [
+    {
+      "id": "KR-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Customer 1stデータ分析に基づくパーソナライズ価格戦略とロイヤルカスタマー拡大能力",
+      "descriptive_label": "データ駆動型パーソナライズ価格・販促による忠実顧客ロックイン（スイッチングコスト）",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): '45th consecutive quarter of positive identical supermarket sales growth without fuel...annual market share growth for the 10th consecutive year'. 'We are currently investing $3.5 billion annually in lower prices. We have a tremendous amount of data that we have developed internally to make sure that we're investing that in the right place where we get the best return'. Q4: 'loyal household count grew at a much faster rate than total household growth'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "W. McMullen",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["KR-009"],
+      "cagr_connections": ["KR-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明。45四半期連続の同店売上増という実績と、$3.5Bの価格投資（内部データで最適化）という能力の説明が揃っている。ロイヤル顧客が総顧客より速く増加という指標は顧客ロックインの証拠。10年連続のコスト削減→価格投資サイクルはプロセスパワーの典型"
+      }
+    },
+    {
+      "id": "KR-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Simple TruthプライベートブランドによるNatural & Organic市場の民主化（$1.2B、2年未満で$1B達成）",
+      "descriptive_label": "Simple TruthブランドによるOrganic/Natural市場の低価格民主化戦略（ブランド+スケール優位）",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (COO発言): 'Simple Truth, and in 2014, Simple Truth reached an amazing milestone by hitting a $1.2 billion annual sales mark. Simple Truth has been our most successful brand launch ever, reaching billion-dollar-brand status in less than 2 short years. During the year, more than 20 million households bought 1 or more of our 2,688 Simple Truth or Simple Truth Organic items. The brand continues to earn double-digit unit and sales growth, which we don't see ending anytime soon'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Michael Ellis",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での具体的な数値（$1.2B、2年未満でbillion dollar、20M世帯、2,688 SKU）。史上最も速い$1Bブランド到達という実績は能力の証拠。Natural/Organic市場を低価格で民主化するというカウンターポジショニング的要素あり。ただしSimple Truthを可能にする能力（製造・調達）の説明がやや不十分（rule_1_t不完全）"
+      }
+    },
+    {
+      "id": "KR-003",
+      "claim_type": "competitive_advantage",
+      "claim": "コーポレートブランド（プライベートブランド）による28.2%ユニットシェア獲得と製造垂直統合（ロボット酪農工場）能力",
+      "descriptive_label": "プライベートブランド×製造垂直統合による差別化商品提供力（Process Power）",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (COO発言): 'Corporate Brands representing 28.2% of total units sold, the highest level in at least 7 years'. 'We recently opened a state-of-the-art dairy processing plant in Denver...We are the first dairy in the U.S. to deploy robotic technology that enables us to pack cases and pick and palletize orders entirely by automation'. Q3 FY2015: 'Corporate Brands had their best performance in several years'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Michael Ellis",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での具体的な数値（28.2%ユニットシェア、7年で最高）と能力説明（ロボット完全自動化の米国初の酪農工場）。垂直統合による製造能力は品質・鮮度・コストで競合プライベートブランドより優位な能力を示す。製造投資（20年ぶりのゼロから建設）は競合が容易に複製できない"
+      }
+    },
+    {
+      "id": "KR-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Harris Teeter統合とVitacostによるデジタル・プレミアム市場の新規顧客層獲得とシナジー実現能力",
+      "descriptive_label": "M&A統合能力による隣接市場（プレミアム・オンライン）への拡張",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'Harris Teeter and Vitacost mergers are going very well...we are learning new ways to connect with our customers. The learnings from both our Vitacost and Harris Teeter mergers are allowing us to build an experience that gives the customer, our customers, the ability to interact with us when, where and how they want'. COO: 'our integration efforts have been fantastic. We are creating synergies both ways'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "W. McMullen / Michael Ellis",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での説明。両方向のシナジー（Harris Teeterがクロッガー全体に学習を提供）という統合能力の具体的な説明あり。ただし定量的なシナジー貢献データ（$X百万）なし。'on track'という表現は成果の説明ではなく進行中"
+      }
+    },
+    {
+      "id": "KR-005",
+      "claim_type": "competitive_advantage",
+      "claim": "ニールセンPOS+データを使った精緻な市場シェア計測と60bp市場シェア拡大・18/20市場でシェア増加",
+      "descriptive_label": "データ計測精緻化による市場シェア把握・拡大能力（10年連続シェア獲得）",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (COO発言): 'Kroger's overall market share of the products we sell in the markets where we operate grew approximately 60 basis points during fiscal 2014. This data also indicates that our share increased in 18 of the 20 markets...Kroger's share increased in all of those markets [where Walmart is a top competitor]'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Michael Ellis",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_7_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での定量的データ（+60bp、18/20市場、Walmart全競合市場でシェア増）。特にWalmart競合市場でシェア増は競合比較として有効（rule_7_t）。ただし市場シェア増は結果であり、それを可能にする能力の明確な説明としては不十分（rule_1_t不完全）"
+      }
+    },
+    {
+      "id": "KR-006",
+      "claim_type": "competitive_advantage",
+      "claim": "10年連続のコスト削減とROIC改善サイクル（13.74%、前年比+31bp）による持続的自己強化型経営モデル",
+      "descriptive_label": "コスト削減→価格投資→顧客獲得→売上成長→ROIC改善の10年継続サイクル",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'We are well on our way to achieving our 10th consecutive year of lowering costs and reinvesting those savings in our people, products, pricing and improved store experience'. CFO: 'Kroger's strong EBITDA performance resulted in a return on invested capital for fiscal 2014 of 13.74% compared with 13.43% for fiscal 2013'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "W. McMullen / J. Schlotman",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での定量的裏付けあり（10年連続コスト削減、ROIC 13.74%）。自己強化サイクル（コスト削減→価格投資→売上→ROIC）という能力の説明は十分。競合スーパーマーケット（Walmart・Target・Amazon等）がコスト競争力で圧力をかける中での持続的な実績はプロセスパワーを示す"
+      }
+    },
+    {
+      "id": "KR-007",
+      "claim_type": "cagr_connection",
+      "claim": "Customer 1stロイヤル顧客増加×市場シェア10年連続拡大 → 同店売上45四半期連続増 → EPS成長8-11%/年",
+      "descriptive_label": "顧客ロイヤリティ深化×シェア拡大→同店売上→EPS 8-11%成長",
+      "source_advantage": "KR-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明。8-11%のEPS成長ガイダンスという検証可能な目標。同店売上+5.2%（FY2014）→EPS+7%（2014 FY）の直接的な接続。FY2015目標（ID sales 3-4%、EPS $3.80-3.90）も具体的"
+      }
+    },
+    {
+      "id": "KR-008",
+      "claim_type": "cagr_connection",
+      "claim": "Simple Truth/コーポレートブランド拡大 + フィルイン戦略（8市場）→ 総売上成長×マージン改善 → ROIC持続的改善",
+      "descriptive_label": "プライベートブランド拡大×新市場拡張→総売上・ROIC成長",
+      "source_advantage": "KR-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での説明。フィルイン戦略（8市場、6→8へ拡大）とSimple Truth継続成長（double-digit）は具体的な成長ドライバー。2-3ステップの因果で検証可能"
+      }
+    },
+    {
+      "id": "KR-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 45四半期連続同店売上増、ID sales +5.2%（燃料除く）、調整後EPS $3.52（FY2014）、10年連続市場シェア獲得、Simple Truth $1.2B（2年未満で$1B到達）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["KR-001", "KR-002", "KR-006"]
+    }
+  ]
+}

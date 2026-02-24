@@ -1,0 +1,328 @@
+{
+  "ticker": "0388",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "0388_001",
+      "claim_type": "competitive_advantage",
+      "claim": "香港取引所（HKEX）が有するShanghai-Hong Kong Stock Connect（沪港通）の独占的接続インフラが、中国と国際投資家を唯一の合法・規制準拠ルートで結ぶネットワーク経済効果を生んでいる。",
+      "evidence": "2015年3月Q4年次決算でCEO Xiao Jia Liは「私たちは偶然この接続を得たわけではない。これは非常に慎重に設計されたプログラムであり、将来の活動に大きな意味を持つ」と説明。Connect導入後ADTの「ガラスの天井」を突破し、かつ連動は中国清算機関（ChinaClear）と純額決済で設計されており模倣困難な制度設計となっている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "Q4_annual発言（主・①相当）として採用",
+          "ルール2: 「接続インフラ」「ネットワーク効果」という名詞属性として識別",
+          "ルール6: 中国Capital Market Accessの制度的インフラは構造的要素",
+          "ルール11: 分断市場（中国・国際）という業界構造×両市場への唯一接続点という企業ポジションが合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "network_economies",
+        "benefit": "参加者が増えるほど流動性・決済効率が改善し、接続の価値が自己強化する",
+        "barrier": "中国・香港の2規制当局の共同承認が必要であり、後発者は同等の制度的認証を短期で取得できない"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Xiao Jia Li",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "It is not an accidental choice of one product. It's not just we got lucky. We negotiate something, we got a break. It is a very carefully designed program. It is a program that huge implications to what we're going to be doing in the future."
+        }
+      ]
+    },
+    {
+      "id": "0388_002",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXは70%超のEBITDAマージンを維持する高い運営コスト効率性と規模の経済を有しており、これは世界主要取引所の中で最高水準の収益性を支える構造的優位性である。",
+      "evidence": "Q4 2014（FY2014年次）にCFO Paul Kennedyは「EBITDA マージンが70%に回復し、グローバル取引所の中でもトップクラスの水準を維持している。収入の増加が費用の増加を大幅に上回っており、95%の収入増加が株主に還元されている（H1 2015）」と発言。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4_annual発言採用",
+          "ルール4: EBITDA 70%という定量的裏付けがある",
+          "ルール1: 高マージンは結果であり、それを可能にする構造（取引所独占・少スタッフ・変動費率の低さ）が優位性",
+          "ルール11: 業界構造との合致説明が不十分（グローバル取引所との比較名を特定していない）"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "取引量増加に対して費用がほとんど増加しない構造により、高い運営レバレッジを実現",
+        "barrier": "取引所としての歴史的インフラ・決済システム・規制認証の構築に数十年を要し、後発者が同等の効率を短期で達成できない"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Paul Kennedy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "95% of the increase in revenue that came in this half year flowed through to shareholders... Our cost income ratio will continue to remain to be very much at the very top of our global exchanges and by a mile."
+        }
+      ]
+    },
+    {
+      "id": "0388_003",
+      "claim_type": "competitive_advantage",
+      "claim": "LME（ロンドン金属取引所）の買収により、HKEXは欧州コモディティ決済インフラ（LME Clear）を内製化し、香港のアジアコモディティ市場との間で独自のグローバル商品体制を構築した。これは競合が容易に複製できないプロセス・パワーである。",
+      "evidence": "2015年3月（Q4年次）CFO発言でLME ITの内製化（約85名の吸収）、LME Clear立上げによる清算収入が記録。「LMEグループは翌年の収益の20%超を占める見込みで、マージンは60%台後半」と定量的将来予測。2014年8月（H1）のCEO発言でも「LME Clear、LMEのIT内製化、ウェアハウス改革を押し進め、LMEのマネジメントを全面刷新した」と言及。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule08", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule08": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4_annual発言（主・①相当）として採用",
+          "ルール1: 清算インフラ内製化という「能力構築プロセス」を評価（収益増は結果）",
+          "ルール8: 「LME commercialization」は戦略だが、内製化・独自清算基盤は構造的能力",
+          "ルール11: アジア投資家がコモディティデリバティブへのアクセスを求める業界構造と合致するが、CME/ICEとの差別化は未証明"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "コモディティ決済の垂直統合により取引・清算両面で収益を獲得しながら、アジア商品市場との接点を独占的に構築",
+        "barrier": "欧州CCP規制認証を新規に取得するのは極めて困難（ESMA認証プロセスに数年を要する）"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Xiao Jia Li",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2014",
+          "quote": "LME IT successfully brought inside – in sourced in-house. LME Clear is on track to go live September this year."
+        },
+        {
+          "speaker": "Paul Kennedy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "We would expect the LME Group to account for a little north of 20% of our group results next year."
+        }
+      ]
+    },
+    {
+      "id": "0388_004",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXは「世界最大の市場時価総額取引所」というブランド・ポジションを維持しており（CMEを再び抜いて世界1位）、このブランドが国際IPOと中国企業の上場窓口としての地位を強化している。",
+      "evidence": "H1 2014のCEO発言：「株価パフォーマンスが改善し、再び時価総額で世界No.1取引所に返り咲いた。CMEに抜かれていたが、ICEによる大型M&A後に再びNo.1に」。FY2014にはグローバルIPO2位、二次資本調達では記録最高額（HKD 943億）を達成。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07"],
+        "results": {
+          "rule01": false,
+          "rule02": true,
+          "rule04": false,
+          "rule07": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          "ルール1: 世界No.1時価総額は「結果」であり「能力」ではない",
+          "ルール4: IPO件数・金額は結果の数値であり、競争優位性の裏付けではない",
+          "ルール7: ナスダック・ニューヨーク証券取引所・シンガポール証券取引所などの純粋競合に対する差別化根拠が不十分",
+          "ポジション自体は実績であるため、それを可能にする構造（中国株式ゲートウェイとしての地位）が優位性の本質"
+        ]
+      },
+      "power_classification": {
+        "power_type": "branding",
+        "benefit": "中国企業の国際上場窓口としてのデファクト的認知により、IPOフロー・ADT・データ収入が自己強化する",
+        "barrier": "ブランドの構築に30年以上を要した歴史的実績と中国との制度的信頼関係が模倣困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Xiao Jia Li",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2014",
+          "quote": "Our share prices improved performance. Again, put us back into #1 as the world's largest stock exchange by market cap."
+        }
+      ]
+    },
+    {
+      "id": "0388_005",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXは中国本土規制当局（CSRC）と香港SFCの双方から信頼を得た唯一の市場インフラとして、両国間の市場相互アクセス（Mutual Market Access）における希少な制度的地位（Cornered Resource）を有している。",
+      "evidence": "2015年3月Q4年次（主・①相当）CEOが「中国と国際投資家の両方から信頼される取引所として、その優位性を持っているが、ツールと解決策が必要」と説明。規制上の信頼（CSRCとSFCによる共同規制スキームの承認）は他の取引所が短期で複製できない。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "Q4_annual発言（主・①相当）",
+          "ルール2: 「制度的信頼」「規制上の希少地位」という名詞属性",
+          "ルール6: 規制当局の承認・信頼は構造的要素（補完的ではない）",
+          "ルール11: 中国金融市場の対外開放政策という業界構造×唯一の承認済みブローカー的地位が合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "CSRC・SFC双方の承認により、中国資本市場へのアクセスを独占的に仲介できる",
+        "barrier": "中国政府の選択的承認（政治的・外交的プロセス）は後発者が市場競争だけで獲得できない"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Xiao Jia Li",
+          "role": "CEO",
+          "section_type": "answer",
+          "quarter": "Q4 2014",
+          "quote": "We have a huge advantage in terms of being trusted by China, being trusted by international investors' community. But we have to have all the tools and we have to have all the solutions in order to deliver what is needed."
+        }
+      ]
+    },
+    {
+      "id": "0388_006",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXの多様化された収益構造（取引・清算・上場料・データ・投資収益）は、ADT変動への耐性を高めており、グローバル取引所の中で最も分散された収益基盤を持つ。",
+      "evidence": "2015年8月Q2 2015（H1 2015）CFO発言：「収入増加の45%は非取引活動から生まれており、これは特に優れた結果」。また各セグメントが独自の収益ドライバーを持ち、ADTとの線形関係がないことを強調（データ収入・上場料は安定）。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule08"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule08": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q2_quarterly（従・②相当）から発見のため-10%調整",
+          "ルール4: 「非取引収益が収入増加の45%」という定量的裏付けがある",
+          "ルール6: 収益分散は構造的要素（特定製品への依存を低減するシステム設計）",
+          "ルール8: 「収益多様化戦略」は戦略。各セグメントが独立した経済構造を持つという「事業構造」が優位性",
+          "Q4 Callで体系的に提示されておらず、Q2での補完的説明のため確信度を抑制"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "複数の収益源が相互補完することで、ADT変動に対する業績安定性が競合取引所より高い",
+        "barrier": "複数の事業体（香港取引所本体・LME・LME Clear・OTC Clear）の統合的運営は長期的な組織構築を要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Paul Kennedy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "45% of that increase came from nontrading activities, which I think is a particularly good result."
+        }
+      ]
+    },
+    {
+      "id": "0388_007",
+      "claim_type": "cagr_connection",
+      "claim": "Shanghai-Hong Kong Connect → ADT拡大・収益多様化 → 売上CAGR支持",
+      "evidence": "Connect導入後H1 2015のADTは前年比2倍の$125億となり、かつ非取引収益も増加。この二重の成長メカニズムにより売上はADT単独では説明できない成長を実現。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06"],
+        "results": {
+          "rule01": true,
+          "rule06": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Connect→ADT増加の2ステップメカニズムは検証可能（開示データあり）",
+          "ただし中国市場の政策変動リスク（2015年夏の市場混乱）が接続の安定性を損なう"
+        ]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Paul Kennedy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "ADT has roughly doubled, $125 billion for this half year...Our income has gone up by 48%."
+        }
+      ]
+    },
+    {
+      "id": "0388_008",
+      "claim_type": "factual_claim",
+      "claim": "FY2014のHKEXのEBITDAマージンは70%であり、H1 2015はさらに8%改善した。",
+      "evidence": "CFO Paul Kennedy がQ4 2014年次決算で「Group EBITDA margin improved by 2% to 70%」と発言。H1 2015では「EBITDA margin increased 8%」と報告。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Paul Kennedy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "The group has improved its EBITDA margin by a whole 2%. We've gone back to the rate we were at several years ago where we're operating an EBITDA margin of 70%."
+        }
+      ]
+    },
+    {
+      "id": "0388_009",
+      "claim_type": "factual_claim",
+      "claim": "H1 2015のHKEX収入の増加分の95%が株主に還元され、H1 2015の純利益は前年同期比73%増加した（過去最高四半期）。",
+      "evidence": "CFO Paul Kennedy がH1 2015結果発表（Q2 2015）で「95% of the increase in revenue that came in this half year flowed through to shareholders」と明確に発言。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Paul Kennedy",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "A 73% increase in profits...95% of the increase in revenue that came in this half year flowed through to shareholders."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 4,
+    "claim_count": 9,
+    "competitive_advantage_count": 6,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 2,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "fewshot_COST.md",
+      "system_prompt_transcript.md",
+      "seven_powers_framework.md",
+      "dogma.md"
+    ]
+  }
+}

@@ -1,0 +1,470 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "da Vinci手術システムの実質的独占的地位と大規模インストールベースによるスイッチングコスト",
+      "evidence": "Q4 2014: da Vinci Xi発売、431システム販売、手術570,000件",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "プラットフォームそのもの（4世代進化、EndoWrist生態系）が能力として機能"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "FDA承認、外科医訓練エコシステム、病院資本コミットメントが参入障壁"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "ロボット手術はFirst-moverが圧倒的優位。業界構造との合致高い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "業界構造×ポジション：実質独占×First-mover"
+        },
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性（訓練エコシステム、FDA承認）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "業界構造との高い合致"
+        },
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "能力の具体的説明あり"
+        }
+      ],
+      "overall_reasoning": "da Vinciプラットフォームは実質的独占市場での先行者優位。外科医訓練エコシステム、FDA認証障壁、病院資本コミットメントが強固なスイッチングコストを形成。おおむね納得で70%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "インストールベース拡大 → Instrument & Accessory recurring revenue成長 → 売上CAGR下支え",
+      "evidence": "Q4 2014: インストールベース→I&A $1,830/procedure、Recurring 70%",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "システム設置→I&A revenue（$1,830/procedure）は直接的2ステップ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "直接的CAGR接続。Recurring 70%という検証可能な数値"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.1,
+          "reasoning": "直接的接続で検証可能"
+        }
+      ],
+      "overall_reasoning": "インストールベース→I&A revenueの接続は直接的。Recurring 70%という定量開示で検証可能。おおむね納得で70%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "EndoWristインストゥルメントエコシステムによる独自の収益機会（消耗品tied sale）",
+      "evidence": "Q4 2014: '$1,830 per procedure' + 'dozens of instruments and accessories'",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "プロプライエタリEndoWristシステムの設計・供給能力が仕組みとして機能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$1,830/procedure という定量データ"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "Razor-and-blades/Gillette modelは業界構造として確立"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "能力の優位性：プロプライエタリ消耗品設計"
+        },
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "定量的差別化：$1,830/procedure"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.1,
+          "reasoning": "能力の具体的説明"
+        },
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "定量的"
+        }
+      ],
+      "overall_reasoning": "プロプライエタリ消耗品モデルはRazor-and-bladesの構造として確立。$1,830/procedureという定量データ。おおむね納得で70%"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "プロプライエタリ消耗品モデル → procedure成長9-13%に連動したI&A revenue成長",
+      "evidence": "Q4 2014: procedure成長7-10%（後に11-13%に上方修正）",
+      "final_confidence": 0.9,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "procedure成長→I&A revenue（$1,830×件数）は最も直接的な1ステップ接続"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.2,
+          "reasoning": "最も直接的なCAGR接続。定量検証可能。Recurring 70%という開示あり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.2,
+          "reasoning": "直接的接続。定量検証可能"
+        }
+      ],
+      "overall_reasoning": "消耗品→手術件数→I&A revenueは最も直接的な1ステップ接続。定量検証可能。かなり納得で90%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "General Surgery（特にColorectal/Hernia）への拡大という新成長市場でのFirst-mover優位",
+      "evidence": "Q4 2014: 'General surgery growth was approximately 33% for the year'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "33%成長は結果。ただしプラットフォーム技術的能力が裏付け"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "33%成長という強い定量データ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "定量的差別化（33%成長）"
+        },
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "成長実績は結果でもある"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "定量"
+        },
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.05,
+          "reasoning": "結果要素"
+        }
+      ],
+      "overall_reasoning": "一般外科33%成長は強いデータ。ただし結果と能力が混在。まあ納得で50%"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "一般外科拡大（低普及率市場）→ procedure成長維持/加速 → I&A revenue CAGR",
+      "evidence": "Q4 2014: 一般外科の低普及率→今後の採用加速",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "低普及率市場→今後の採用加速→procedure成長は合理的な2-3ステップ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "低普及率市場の普及曲線は客観的根拠あり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.1,
+          "reasoning": "低普及率→成長余地の客観的根拠"
+        }
+      ],
+      "overall_reasoning": "低普及率市場における普及曲線は客観的な根拠あり。一般外科のTAMは泌尿器科より大きく成長余地高い。おおむね納得で70%"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "外科医訓練プログラムと認定制度による参入障壁の強化",
+      "evidence": "Q4 2014: European Academy of Robotic Colorectal Surgeons発足",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "訓練プログラムという仕組みを評価"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "定量的裏付けなし（訓練を受けた外科医数等なし）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性：訓練エコシステム"
+        },
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "定量的裏付けなし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "能力説明あり"
+        },
+        {
+          "source": "quantitative_lacking",
+          "adjustment": -0.1,
+          "reasoning": "定量的裏付けなし"
+        }
+      ],
+      "overall_reasoning": "訓練エコシステムはスイッチングコストを強化する重要な仕組みだが定量的開示が乏しい。まあ納得で50%"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "臨床エビデンス蓄積と第三者機関による臨床研究による科学的正当性の強化",
+      "evidence": "Q4 2014: Saarland大学等の外部研究がda Vinciの優位性を示す",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "臨床エビデンス蓄積能力（KOL管理・臨床試験投資）は仕組みとして評価"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "EUR 3,000/患者コスト削減という定量データ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性：KOL関係・臨床エビデンス蓄積"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "能力説明あり"
+        },
+        {
+          "source": "mixed_clinical_results",
+          "adjustment": -0.05,
+          "reasoning": "一部の臨床エビデンスに一貫性課題あり"
+        }
+      ],
+      "overall_reasoning": "臨床エビデンスの継続的蓄積は市場拡大を支える重要な仕組み。定量データあり。まあ納得で50%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 431システム販売、worldwide procedures 約570,000件（9%成長）、Recurring revenue 70%（$1.57B）",
+      "evidence": "Q4 2014 annual",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015: 118システム設置（前年96件）、procedures 約162,000件（14%成長）",
+      "evidence": "Q2 2015 quarterly",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "I&A revenue per procedure: 約$1,830/件（前年同水準）",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "一般外科procedures FY2014で33%成長。colorectal/hernia repairが牽引",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Saarland大学研究：da Vinci prostatectomyはopen比でEUR 3,000/患者コスト削減（1,400患者研究）",
+      "evidence": "Q4 2014 Clinical Highlights",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 13,
+    "confidence_distribution": {
+      "70-80": 4,
+      "90-100": 1,
+      "50-60": 8
+    },
+    "gatekeeper_applied": false
+  }
+}

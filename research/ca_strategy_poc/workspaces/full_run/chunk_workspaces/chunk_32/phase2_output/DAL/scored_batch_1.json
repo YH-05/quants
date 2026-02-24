@@ -1,0 +1,92 @@
+{
+  "ticker": "DAL",
+  "batch_index": 1,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "オペレーション信頼性→NPS向上→RASM premium（115%以上）→収益成長CAGR",
+      "descriptive_label": "オペレーション→NPS→RASM premium CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "3ステップ経路だが各ステップが実績データで裏付けられている。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。RASM premium 107/113%という検証可能なデータが経路の信頼性を高める。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "精油所収益→燃料コスト削減→EBITDAマージン拡大CAGR（年+$220mn以上の精油所収益）",
+      "descriptive_label": "精油所→燃料コスト削減→EBITDA CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "4四半期$220mn累計は実績データ。ただし油価変動で大きく変動",
+      "final_confidence": 0.6,
+      "confidence_rationale": "KB2 pattern_II_t。精油所収益の実績は強いが、原油価格変動（oil price drop 2014H2）による変動性が大きい。Phase1の-10%調整反映で60%。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "免疫JV拡大（米国-メキシコJV含む）→国際収益分散→通貨変動耐性→EBITDA安定化",
+      "descriptive_label": "免疫JV拡大→国際収益安定化CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "3ステップ経路で通貨ヘッジ効果の定量化不足",
+      "final_confidence": 0.5,
+      "confidence_rationale": "経路は論理的だが、JV→収益分散→通貨変動耐性→EBITDA安定化という定量的接続が不十分。50%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "Comfort+・アンシラリー収益成長（+16%/年）→Non-ticket収益20%→収益CAGR多様化",
+      "descriptive_label": "アンシラリー収益多様化→CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 60,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "$350mn実績と16%成長は具体的。Non-ticket 20%はグループレベルの多様化指標として有効",
+      "final_confidence": 0.6,
+      "confidence_rationale": "KB2 pattern_II_t。アンシラリー収益の成長実績は明確。ただし業界共通の取り組みとの差別化が不完全。60%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "AmexパートナーシップによるSkyMiles収益化→年数百百万ドルの固定的非運賃収益→CAGR安定化",
+      "descriptive_label": "AmexパートナーシップFFP→非運賃収益CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "契約改善15%・数百百万ドルの定量的収益は contract-based な安定収益として評価",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t。契約更新による固定的収益増加は予見可能性が高い。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"40-50": 1, "50-60": 2, "60-70": 2},
+    "gatekeeper_applied": false
+  }
+}

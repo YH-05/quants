@@ -1,0 +1,334 @@
+{
+  "project_name": "CA Strategy Phase 6: パフォーマンス評価の完全実装",
+  "project_type": "package",
+  "architecture": {
+    "overview": "既存の StrategyEvaluator（evaluator.py）は API 変更不要で完成済み。問題は Orchestrator が空の pd.Series を渡している点のみ。PriceDataProvider Protocol（データ取得抽象層）と PortfolioReturnCalculator（日次ウェイト加重リターン計算）を新規実装し、corporate_actions.json で消失企業を管理する。Orchestrator の Phase 6 を実データに切り替え、pit.py に新定数を追加し、types.py / generate_config.py で bloomberg_ticker フィールドを伝搬させる。",
+    "components": [
+      {
+        "name": "PriceDataProvider Protocol",
+        "type": "module",
+        "description": "株価データ取得の抽象層。Protocol クラスで fetch(tickers, start, end) -> dict[str, pd.Series] を定義。具体的なデータソース（yfinance/Bloomberg/FactSet）の実装は後から差し込み可能な設計。",
+        "responsibilities": [
+          "fetch() メソッドの Protocol 定義（日次終値 pd.Series を返す契約）",
+          "tickers は bloomberg_ticker 形式を受け取り、データソース固有の変換は実装側で行う",
+          "データ取得失敗時は空 Series を返しログ出力する契約"
+        ],
+        "interfaces": [
+          "fetch(tickers: list[str], start: date, end: date) -> dict[str, pd.Series]"
+        ]
+      },
+      {
+        "name": "CorporateAction モデル",
+        "type": "module",
+        "description": "消失企業データの Pydantic モデル。types.py に追加。corporate_actions.json をロードして PortfolioReturnCalculator に渡す。",
+        "responsibilities": [
+          "CorporateAction(ticker, action_date, action_type, description) モデル定義",
+          "action_type は 'delisting' | 'merger' | 'acquisition' の Literal 型"
+        ],
+        "interfaces": [
+          "CorporateAction Pydantic モデル"
+        ]
+      },
+      {
+        "name": "PortfolioReturnCalculator",
+        "type": "module",
+        "description": "日次ウェイト加重リターンを計算するクラス。CA ポートフォリオとベンチマーク（全395銘柄等ウェイト）の両方で使用。コーポレートアクション発生時にウェイト再配分を実行。",
+        "responsibilities": [
+          "初期ウェイト辞書の設定（CA: 閾値で選択された銘柄の等ウェイト、ベンチ: 全395銘柄の等ウェイト）",
+          "各営業日の日次リターン計算: sum(weight[t] * daily_return[t])",
+          "コーポレートアクション発生日にウェイト 0% → 残存銘柄へ比例再配分",
+          "データ欠損銘柄の除外とログ出力",
+          "pd.Series（日次リターン系列）の返却"
+        ],
+        "interfaces": [
+          "calculate(initial_weights: dict[str, float], price_data: dict[str, pd.Series], corporate_actions: list[CorporateAction], start_date: date, end_date: date) -> pd.Series"
+        ]
+      },
+      {
+        "name": "pit.py 定数追加",
+        "type": "module",
+        "description": "PORTFOLIO_DATE と EVALUATION_END_DATE の追加。既存の CUTOFF_DATE はそのまま維持。",
+        "responsibilities": [
+          "PORTFOLIO_DATE = date(2015, 12, 31) の定義",
+          "EVALUATION_END_DATE = date(2026, 2, 28) の定義"
+        ],
+        "interfaces": [
+          "PORTFOLIO_DATE: date, EVALUATION_END_DATE: date"
+        ]
+      },
+      {
+        "name": "UniverseTicker bloomberg_ticker 追加",
+        "type": "module",
+        "description": "types.py の UniverseTicker に bloomberg_ticker フィールドを追加（デフォルト値 '' で後方互換性維持）。",
+        "responsibilities": [
+          "bloomberg_ticker: str = '' フィールド追加"
+        ],
+        "interfaces": [
+          "UniverseTicker.bloomberg_ticker: str"
+        ]
+      },
+      {
+        "name": "generate_config.py bloomberg_ticker 出力",
+        "type": "module",
+        "description": "_write_universe() で元データの Bloomberg_Ticker をそのまま保存するよう修正。",
+        "responsibilities": [
+          "tickers 辞書に bloomberg_ticker フィールドを追加出力"
+        ],
+        "interfaces": [
+          "universe.json の各エントリに bloomberg_ticker フィールドが追加される"
+        ]
+      },
+      {
+        "name": "Orchestrator Phase 6 統合",
+        "type": "module",
+        "description": "orchestrator.py の _run_equal_weight_threshold() を修正し、空 Series の代わりに PortfolioReturnCalculator で計算した実データを StrategyEvaluator に渡す。",
+        "responsibilities": [
+          "PriceDataProvider から株価データを取得",
+          "corporate_actions.json をロード",
+          "CA ポートフォリオリターンとベンチマークリターンを計算",
+          "実データを StrategyEvaluator.evaluate() に渡す"
+        ],
+        "interfaces": [
+          "Orchestrator.__init__ に price_provider: PriceDataProvider | None パラメータ追加",
+          "Orchestrator.__init__ に corporate_actions_path: Path | None パラメータ追加"
+        ]
+      },
+      {
+        "name": "corporate_actions.json",
+        "type": "doc",
+        "description": "8社の消失企業データファイル。ticker, action_date, action_type, description を記録。",
+        "responsibilities": [
+          "ALTR, ARM, EMC, MON, CA, LIN, UTX, S の8社のコーポレートアクション情報"
+        ],
+        "interfaces": [
+          "JSON ファイル: {actions: [{ticker, action_date, action_type, description}]}"
+        ]
+      }
+    ],
+    "data_flow": "Orchestrator → PriceDataProvider.fetch() → 株価データ dict[str, pd.Series] → PortfolioReturnCalculator.calculate() → pd.Series（日次リターン） → StrategyEvaluator.evaluate() → EvaluationResult → OutputGenerator.generate_all()"
+  },
+  "file_map": [
+    {
+      "operation": "create",
+      "path": "src/dev/ca_strategy/price_provider.py",
+      "description": "PriceDataProvider Protocol 定義。fetch(tickers, start, end) -> dict[str, pd.Series] の抽象インターフェース。将来の yfinance/Bloomberg/FactSet 実装用。",
+      "estimated_size": "2KB",
+      "depends_on": [],
+      "wave": 1
+    },
+    {
+      "operation": "create",
+      "path": "research/ca_strategy_poc/config/corporate_actions.json",
+      "description": "8社の消失企業データ。各エントリに ticker, action_date (ISO 8601), action_type (delisting|merger|acquisition), description を持つ。",
+      "estimated_size": "1KB",
+      "depends_on": [],
+      "wave": 1
+    },
+    {
+      "operation": "modify",
+      "path": "src/dev/ca_strategy/pit.py",
+      "description": "PORTFOLIO_DATE = date(2015, 12, 31) と EVALUATION_END_DATE = date(2026, 2, 28) を追加。__all__ にも追加。既存の CUTOFF_DATE は変更なし。",
+      "change_description": "Constants セクションに2定数を追加（L36-37 の直後に挿入）。__all__ リストに2項目追加。",
+      "depends_on": [],
+      "wave": 1
+    },
+    {
+      "operation": "modify",
+      "path": "src/dev/ca_strategy/types.py",
+      "description": "UniverseTicker に bloomberg_ticker: str = '' フィールドを追加（デフォルト値で後方互換性維持）。CorporateAction モデルを新規追加（ticker, action_date, action_type, description）。",
+      "change_description": "UniverseTicker クラス（L543-558）に bloomberg_ticker フィールド追加。EvaluationResult の後に CorporateAction モデルを追加。CorporateActionType Literal 型エイリアスを追加。",
+      "depends_on": [],
+      "wave": 1
+    },
+    {
+      "operation": "create",
+      "path": "tests/dev/ca_strategy/unit/test_price_provider.py",
+      "description": "PriceDataProvider Protocol のテスト。Protocol 準拠チェック、ダミー実装の動作確認。",
+      "estimated_size": "3KB",
+      "depends_on": ["src/dev/ca_strategy/price_provider.py"],
+      "wave": 1
+    },
+    {
+      "operation": "modify",
+      "path": "tests/dev/ca_strategy/unit/test_pit.py",
+      "description": "PORTFOLIO_DATE と EVALUATION_END_DATE の定数テストを追加。",
+      "change_description": "TestCutoffDate クラスの後に TestPortfolioDate クラスと TestEvaluationEndDate クラスを追加（各2テスト）。",
+      "depends_on": ["src/dev/ca_strategy/pit.py"],
+      "wave": 1
+    },
+    {
+      "operation": "modify",
+      "path": "tests/dev/ca_strategy/unit/test_types.py",
+      "description": "UniverseTicker.bloomberg_ticker フィールドのテストを追加。CorporateAction モデルのテストを追加。",
+      "change_description": "UniverseTicker テストクラスに bloomberg_ticker 関連テストを追加。CorporateAction テストクラスを新規追加。",
+      "depends_on": ["src/dev/ca_strategy/types.py"],
+      "wave": 1
+    },
+    {
+      "operation": "create",
+      "path": "src/dev/ca_strategy/return_calculator.py",
+      "description": "PortfolioReturnCalculator クラス。calculate() メソッドで初期ウェイト辞書、株価データ、コーポレートアクション情報から日次リターン pd.Series を計算。コーポレートアクション発生日にウェイト再配分ロジックを実装。",
+      "estimated_size": "6KB",
+      "depends_on": [
+        "src/dev/ca_strategy/price_provider.py",
+        "src/dev/ca_strategy/types.py"
+      ],
+      "wave": 2
+    },
+    {
+      "operation": "create",
+      "path": "tests/dev/ca_strategy/unit/test_return_calculator.py",
+      "description": "PortfolioReturnCalculator のテスト。正常系（加重リターン計算）、コーポレートアクションによるウェイト再配分、データ欠損銘柄の除外、空データのエッジケース。",
+      "estimated_size": "8KB",
+      "depends_on": ["src/dev/ca_strategy/return_calculator.py"],
+      "wave": 2
+    },
+    {
+      "operation": "modify",
+      "path": "src/dev/ca_strategy/generate_config.py",
+      "description": "_write_universe() で bloomberg_ticker フィールドを出力に追加。tickers.append() の辞書に 'bloomberg_ticker': bloomberg_ticker.strip() を追加。",
+      "change_description": "L188 の tickers.append() 辞書に 'bloomberg_ticker': bloomberg_ticker.strip() を追加（1行追加）。",
+      "depends_on": ["src/dev/ca_strategy/types.py"],
+      "wave": 2
+    },
+    {
+      "operation": "modify",
+      "path": "tests/dev/ca_strategy/unit/test_generate_config.py",
+      "description": "bloomberg_ticker フィールドが universe.json に含まれることを検証するテストを追加。",
+      "change_description": "既存テストクラスに bloomberg_ticker 出力検証テストを1-2件追加。",
+      "depends_on": ["src/dev/ca_strategy/generate_config.py"],
+      "wave": 2
+    },
+    {
+      "operation": "modify",
+      "path": "src/dev/ca_strategy/orchestrator.py",
+      "description": "Phase 6 で PortfolioReturnCalculator を使い実データを StrategyEvaluator に渡す。__init__ に price_provider と corporate_actions_path パラメータを追加（Optional、デフォルト None で後方互換性維持）。_run_equal_weight_threshold() の Phase 6 ブロックを修正。_MAX_PHASE を 6 に更新。",
+      "change_description": "1) __init__ に price_provider: PriceDataProvider | None = None, corporate_actions_path: Path | None = None を追加。2) import に PriceDataProvider, PortfolioReturnCalculator, CorporateAction, PORTFOLIO_DATE, EVALUATION_END_DATE を追加。3) _run_equal_weight_threshold() の L414-432 を修正し、price_provider が設定されている場合は実データでリターン計算、None の場合は従来通り空 Series。4) _MAX_PHASE を 5 → 6 に更新。5) run_from_checkpoint に Phase 6 対応を追加。",
+      "depends_on": [
+        "src/dev/ca_strategy/return_calculator.py",
+        "src/dev/ca_strategy/price_provider.py",
+        "src/dev/ca_strategy/pit.py"
+      ],
+      "wave": 3
+    },
+    {
+      "operation": "modify",
+      "path": "tests/dev/ca_strategy/unit/test_orchestrator.py",
+      "description": "Orchestrator の Phase 6 統合テスト。price_provider=None 時の後方互換性テスト。price_provider 設定時の実データフローテスト（モック使用）。",
+      "change_description": "Phase 6 関連テストクラスを追加。既存テストが price_provider=None で壊れないことを確認。",
+      "depends_on": ["src/dev/ca_strategy/orchestrator.py"],
+      "wave": 3
+    },
+    {
+      "operation": "create",
+      "path": "tests/dev/ca_strategy/integration/test_phase6_pipeline.py",
+      "description": "Phase 6 統合テスト。PortfolioReturnCalculator + StrategyEvaluator + OutputGenerator のエンドツーエンド検証。モック PriceDataProvider を使用。",
+      "estimated_size": "6KB",
+      "depends_on": [
+        "src/dev/ca_strategy/return_calculator.py",
+        "src/dev/ca_strategy/orchestrator.py"
+      ],
+      "wave": 3
+    },
+    {
+      "operation": "modify",
+      "path": "src/dev/ca_strategy/__init__.py",
+      "description": "__all__ に PortfolioReturnCalculator と PriceDataProvider を追加。",
+      "change_description": "import 文と __all__ リストに2項目追加。",
+      "depends_on": [
+        "src/dev/ca_strategy/return_calculator.py",
+        "src/dev/ca_strategy/price_provider.py"
+      ],
+      "wave": 4
+    },
+    {
+      "operation": "modify",
+      "path": "research/ca_strategy_poc/config/universe.json",
+      "description": "generate_config.py 修正後に再生成し、bloomberg_ticker フィールドを追加。",
+      "change_description": "generate_config.py を実行して再生成。",
+      "depends_on": ["src/dev/ca_strategy/generate_config.py"],
+      "wave": 4
+    }
+  ],
+  "risks": [
+    {
+      "category": "compatibility",
+      "description": "Orchestrator.__init__ にパラメータ追加することで、既存の呼び出し元（テスト、コマンド、エージェント）が壊れる可能性",
+      "level": "low",
+      "mitigation": "全パラメータにデフォルト値 None を設定。price_provider=None の場合は従来通り空 Series を渡す後方互換パスを維持。"
+    },
+    {
+      "category": "compatibility",
+      "description": "UniverseTicker に bloomberg_ticker フィールドを追加することで、既存の universe.json を読み込む際にバリデーションエラーが発生する可能性",
+      "level": "low",
+      "mitigation": "bloomberg_ticker のデフォルト値を '' に設定。既存データは空文字列として読み込まれる。frozen=True のため既存コードへの影響なし。"
+    },
+    {
+      "category": "complexity",
+      "description": "PortfolioReturnCalculator のウェイト再配分ロジックで、コーポレートアクション日と株価データの営業日がずれる場合の処理",
+      "level": "medium",
+      "mitigation": "コーポレートアクション日が非営業日の場合は、次の営業日に再配分を適用するロジックを実装。テストで非営業日ケースをカバー。"
+    },
+    {
+      "category": "dependency",
+      "description": "PriceDataProvider の具体実装（yfinance 等）がなければ実データでの検証ができない",
+      "level": "low",
+      "mitigation": "Phase 6 PoC のスコープでは Protocol 定義と Calculator のみ実装。テストはモック PriceDataProvider で完結させる。具体実装は次フェーズで追加。"
+    },
+    {
+      "category": "testing",
+      "description": "PortfolioReturnCalculator の10年分のリターン計算を正しく検証することの難しさ",
+      "level": "medium",
+      "mitigation": "短期間（5-10営業日）のデータで手計算と照合する単体テストを作成。コーポレートアクション前後のウェイト変化を個別にテスト。"
+    },
+    {
+      "category": "schedule",
+      "description": "corporate_actions.json の消失日付データの正確性確認が必要",
+      "level": "low",
+      "mitigation": "8社のみの少量データ。設計書に記載の日付をそのまま使用し、後から修正可能な JSON ファイルで管理。"
+    }
+  ],
+  "implementation_order": [
+    {
+      "wave": 1,
+      "description": "基盤ファイル（他に依存しない新規作成・修正。全て並行実装可能）",
+      "files": [
+        "src/dev/ca_strategy/price_provider.py",
+        "research/ca_strategy_poc/config/corporate_actions.json",
+        "src/dev/ca_strategy/pit.py",
+        "src/dev/ca_strategy/types.py",
+        "tests/dev/ca_strategy/unit/test_price_provider.py",
+        "tests/dev/ca_strategy/unit/test_pit.py",
+        "tests/dev/ca_strategy/unit/test_types.py"
+      ]
+    },
+    {
+      "wave": 2,
+      "description": "Wave 1 に依存するファイル（PortfolioReturnCalculator と generate_config 修正）",
+      "files": [
+        "src/dev/ca_strategy/return_calculator.py",
+        "tests/dev/ca_strategy/unit/test_return_calculator.py",
+        "src/dev/ca_strategy/generate_config.py",
+        "tests/dev/ca_strategy/unit/test_generate_config.py"
+      ]
+    },
+    {
+      "wave": 3,
+      "description": "統合ファイル（Orchestrator の Phase 6 統合と統合テスト）",
+      "files": [
+        "src/dev/ca_strategy/orchestrator.py",
+        "tests/dev/ca_strategy/unit/test_orchestrator.py",
+        "tests/dev/ca_strategy/integration/test_phase6_pipeline.py"
+      ]
+    },
+    {
+      "wave": 4,
+      "description": "登録・更新ファイル（__init__.py 更新と universe.json 再生成）",
+      "files": [
+        "src/dev/ca_strategy/__init__.py",
+        "research/ca_strategy_poc/config/universe.json"
+      ]
+    }
+  ],
+  "estimated_total_effort": "8-10 時間（Wave 1: 2時間、Wave 2: 3時間、Wave 3: 2時間、Wave 4: 1時間）"
+}

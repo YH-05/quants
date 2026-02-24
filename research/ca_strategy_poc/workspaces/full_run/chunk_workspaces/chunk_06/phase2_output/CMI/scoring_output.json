@@ -1,0 +1,257 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Tier 4 Final排ガス規制先行対応による技術的差別化能力",
+      "descriptive_label": "排ガス規制先行技術力（Tier 4 Final）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "排ガス規制への先行対応は技術能力（仕組み）として評価できる（rule01 pass）。'available ahead of our competitors'は競合比較の表現だが定量データなし（rule07 partial）。業界構造（規制移行）×企業ポジション（先行対応）の合致はpattern_IV_t部分的に該当するが、規制対応は全社が必要とする条件でもある（rule11 partial）。構造的要素として評価（rule06 structural）。kb3 few-shot（COST#3相当: 倉庫型モデル、純粋競合差別化不完全で50%）と類似。純粋競合（Caterpillar）との定量比較なく上限50%。",
+      "kb1_flags": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "排ガス規制先行→競合不在期シェア獲得→売上成長の2ステップ因果チェーン。CMIの過去実績（北米中型市場、中国）で検証可能。Q4発言由来（rule12 primary）。CAGR接続として直接的。"
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "北米中型トラック市場での支配的市場シェアと製品力（72%シェア）",
+      "descriptive_label": "北米中型トラック市場支配的シェア",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "72%シェアは結果であり優位性ではない（rule01 concern, pattern_A_result_as_cause）。dogma.mdルール1「優位性は能力・仕組みであり結果ではない」に明白に違反。背後の能力（製品技術力、顧客関係）の説明が主張の核にあるべきだが、シェア数値の提示が中心。kb3 few-shot（MNST#1「シェアはあくまで結果」→50%と同等だが、純粋競合への説明がより乏しいため30%）。定量証拠あり（53%→63%→72%トレンド）だが、それ自体は結果の数値。",
+      "kb1_flags": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "市場支配的シェアからの量産効果・価格決定力は認められる。ただしシェア→量産効果→CAGR接続は3ステップ以上。北米中型市場規模が限定的のため全社CAGRへのインパクトは中程度。条件付き50%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル排ガス規制エンジニアリング能力と新製品投入機械（年70+製品）",
+      "descriptive_label": "グローバル排ガス規制対応の新製品投入能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "年70+新製品投入という規模は能力の指標として評価できる（rule01 pass, rule04 quantitative部分）。'basically in a new product introduction business'という自己認識は名詞属性としての能力表現（rule02 pass）。構造的要素（rule06 structural）。ただし競合（Caterpillar等）との比較データなく、2014年の品質コスト問題（warranty costs上昇）が新製品投入能力の完成度に疑問符を付ける。kb3 few-shot（CHD#3: ポート管理能力50%）と同水準。",
+      "kb1_flags": [
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "新製品投入能力→規制対応製品多様化→売上成長の接続は認められるが、品質コスト問題があり能力の信頼性に疑問。3ステップの接続でやや飛躍あり。50%が適切。"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "中国JV戦略（Foton/DCEC）による排ガス規制移行市場での構造的ポジション",
+      "descriptive_label": "中国JVによる排ガス規制市場での構造的ポジション",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": 0.5,
+      "scoring_rationale": "Foton/DCECとのJV関係は構造的資産（名詞属性, rule02 pass）として評価できる（rule06 structural）。中国NS4排ガス規制移行という市場構造的変化とCMIのJVポジションの合致はpattern_IV_structural_market_positionに部分的に該当（rule11 partial pass）。$3.3B売上・シェア10%→12%の定量データあり（rule04 quantitative）。ただしNS4施行タイミングの不確実性をCEO自身が認めており（'significant uncertainty'）、市場構造の安定性に疑問。50%が適切。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_IV_structural_market_position",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "NS4規制移行→JVエンジン採用増加→中国売上成長の2ステップ接続は直接的（2015年ガイダンス+15%）。ただし規制施行の不確実性（-10%調整）。50%が適切。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル製造・自然ヘッジ能力による為替耐性",
+      "descriptive_label": "グローバル製造による自然ヘッジ能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "グローバル製造拠点の多様性による自然ヘッジは構造として評価できるが（rule01 partial pass）、定量的な為替影響比較データなし（rule04 insufficient）、純粋競合（Caterpillar等）との差別化比較なし（rule07 insufficient）。'really successful'は定性的表現（pattern_D_qualitative_only）。グローバル大手製造業であれば多くが持つ能力でもある（pattern_B_industry_common相当）。dogma.md「業界共通の能力は却下」に近い。30%が適切。",
+      "kb1_flags": [
+        "rule04_quantitative_evidence",
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_D_qualitative_only",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "為替耐性→収益安定→CAGR支持の接続は抽象的。為替の定量的インパクト比較なし。CAGR接続としては弱い。30%。"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Distribution事業のアクイジション統合能力（北米ディストリビューター統合）",
+      "descriptive_label": "Distribution事業のM&A統合能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "'benefits exceed original estimates'は結果の報告（rule01 concern, pattern_A_result_as_cause）。統合能力（プロセス・仕組み）の詳細説明が乏しい。断念した案件やvalue destroyした例への言及なし（rule10 insufficient）。M&Aはある程度戦略的方向性（rule08 concern）。$0.40 EPS貢献は定量データだが結果の数値（rule04 結果の数値）。kb3 few-shot（CHD#4: 買収ブランドが成長加速=結果→30%）と同水準。M&A統合プレイブック等の能力説明なし。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "買収完了→売上加算という直接メカニズム（2015年Distribution CAGR 22-30%のガイダンス）。有機成長は3%のみで買収依存。Q4発言由来（rule12 primary）。買収依存のCAGR成長は持続性に疑問あるが、直接接続として70%。"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Components事業での排ガス後処理システム（Emission Solutions）市場での技術リーダーシップ",
+      "descriptive_label": "排ガス後処理システムの技術リーダーシップ",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "排ガス後処理技術能力（仕組み）として評価できる（rule01 pass）。欧米中国での段階的排ガス規制強化という市場構造とCMIの先行技術ポジションが合致（rule11 pass, pattern_IV_structural_market_position）。市場シェア言及あるがComponents全体の記録更新（rule04 partial）。競合（Bosch, Delphi等）との技術差別化説明が不十分（rule07 partial）。kb3-fewshot（COST#3: 純粋競合差別化不完全→50%）と同水準。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_IV_structural_market_position",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "欧米中国規制強化→CMI対応製品需要増加→Components売上成長の2ステップ接続。Q4 2013→2014の実績（Components連続記録更新）で検証済み。Components CAGR 4-8%（2015年ガイダンス）への直接接続。70%。"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新製品品質コスト問題への対応と品質向上投資（warrantyコスト0.5%増加への対処）",
+      "descriptive_label": "品質コスト問題への対応能力（品質管理プロセス）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "品質管理プロセスの継続的改善能力（仕組み）として評価できる（rule01 pass）。2009-2013の180bp削減という定量的トラックレコード（rule04 quantitative）。品質コスト悪化という課題へのネガティブケース開示（rule10 pass）。ただし2014年に実際の品質コスト後退があり、現時点での能力信頼性に疑問（-10%調整）。競合比較データなし。kb3 few-shot（CHD#7: 実行しなかった例による裏付け→50%）と類似。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "品質コスト改善→利益率向上→CAGR接続は間接的かつ3ステップ以上。2014年の後退が予想されるCAGR貢献に懸念。品質問題が解決されれば利益率改善につながるが、現状では投資段階。30%。"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Tier 4 Final排ガス規制製品の競合に先行した市場投入（2015年時点で最先行）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "排ガス規制先行技術力 → 規制移行期の市場シェア維持/拡大 → 売上成長 +2-3%",
+      "descriptive_label": "排ガス規制技術→シェア維持→売上CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "排ガス規制先行→競合不在期のシェア獲得→売上成長の2ステップ因果チェーン（rule05 direct）。北米中型・中国でのCMI実績で検証可能。Q4発言由来（rule12 primary）。パターンII-T（直接的CAGR接続メカニズム）に該当。70%。"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "北米中型トラック市場シェア72%（2014年末）、2013年からの急速拡大（53%→63%→72%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "北米中型トラック72%シェア＋中国新製品 → 量産効果・価格決定力 → 収益CAGR支持",
+      "descriptive_label": "市場シェア→価格決定力・量産効果→CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "シェア→量産効果→コスト低下→競争力→CAGRは3ステップ以上（pattern_C_causal_leap）。北米中型市場規模が限定的のため全社CAGRへのインパクトは中程度。飛躍あり（rule05 indirect）。50%。"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "中国JV売上$3.3B（2014年、前年比+13%、過去最高）。エンジン市場シェア10%→12%",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 14,
+      "claim_type": "cagr_connection",
+      "claim": "中国JVポジション×NS4規制移行 → 中国売上CAGR +15%見通し（2015年ガイダンス）",
+      "descriptive_label": "中国JV×NS4規制→中国売上成長CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "NS4規制移行→CMI NS4対応エンジン採用→JV売上成長の2ステップ（rule05 direct部分）。ただしNS4施行タイミング不確実性をCEO自身が認める（'significant uncertainty'）。不確実性調整-20%→70%から50%へ。2014実績（12%シェア）で部分的検証済み。50%。"
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "2014年Distribution事業M&A 7件完了、EPS貢献$0.40。2015年さらに3件予定、$0.50/株超の累積EPS貢献見込み",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 16,
+      "claim_type": "cagr_connection",
+      "claim": "Distribution事業M&A統合 → 売上CAGR 22-30%（2015年ガイダンス） → EPS成長",
+      "descriptive_label": "Distribution M&A→売上CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "買収完了→売上加算という直接的メカニズム（rule05 direct）。Distribution CAGR 22-30%（2015年ガイダンス）への直接接続。有機成長は3%のみでM&A依存だが、直近実績（$0.40 EPS貢献）で検証済み。Q4発言由来（rule12 primary）。パターンII-T（直接的CAGR接続）に該当。70%。"
+    },
+    {
+      "id": 17,
+      "claim_type": "cagr_connection",
+      "claim": "Components事業排ガス後処理システム → 欧米中国での規制移行需要 → Components CAGR 4-8%（2015年ガイダンス）",
+      "descriptive_label": "排ガス後処理システム→規制移行需要→Components CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "欧米中国規制強化→CMI Tier4/Euro6/NS4対応製品需要増加→Components売上成長の2ステップ接続（rule05 direct）。Q4 2013→2014の実績（Components連続記録更新）で検証済み。Components CAGR 4-8%（2015年ガイダンス）への直接接続。パターンII-T（直接的CAGR接続）。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 17,
+    "confidence_distribution": {
+      "0-10": 17
+    },
+    "gatekeeper_applied": false
+  }
+}

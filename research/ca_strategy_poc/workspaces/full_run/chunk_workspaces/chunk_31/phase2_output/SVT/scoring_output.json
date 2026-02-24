@@ -1,0 +1,126 @@
+{
+  "ticker": "SVT",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "kb3_fewshot_loaded": 5,
+    "dogma_loaded": true,
+    "scoring_date": "2026-02-24"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "SVT-001",
+      "claim_type": "competitive_advantage",
+      "claim": "英国規制水道事業における自然独占と規制ベースの安定収益構造（Regulated Capital Value）",
+      "descriptive_label": "自然独占×規制収益基盤（RCV）",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Scale Economies + Counter-Positioning",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_IV_t (構造的市場ポジション)",
+      "scoring_reasoning": "英国規制水道の自然独占は極めて強力な構造的優位（ルール6-T）。RCV+21%という定量データ。Ofwat規制という業界構造との完全な合致（ルール11-T）。ただし英国全水道会社が同様の独占を持つ（ルール3-T: 相対的優位はSVT固有ではない）。この点で90%に届かず70%が適切。"
+    },
+    {
+      "claim_id": "SVT-002",
+      "claim_type": "competitive_advantage",
+      "claim": "規制許容コスト（Totex）に対するコスト効率化による規制超過収益（outperformance）能力",
+      "descriptive_label": "Ofwat規制コスト許容に対するoutperformance能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.6,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_I_t (定量的差別化)",
+      "scoring_reasoning": "GBP300M/GBP372M Totex（達成率81%）という具体的数値（ルール4-T）。規制outperformance能力は能力・仕組みとして評価可能（ルール1-T）。競合水道会社との比較が不明。60%。"
+    },
+    {
+      "claim_id": "SVT-003",
+      "claim_type": "competitive_advantage",
+      "claim": "再生可能エネルギー自家発電能力（業界最高水準の自給率）によるコスト優位",
+      "descriptive_label": "再生エネルギー自家発電によるコスト優位",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.6,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_I_t (定量的差別化)",
+      "scoring_reasoning": "'leader of the pack'という相対的優位の言及（ルール3-T）と50%自給率目標・GBP190M投資（ルール4-T定量）。エネルギーコストという業界重要指標との合致（ルール11-T）。競合の自給率との具体的数値比較不足で60%。"
+    },
+    {
+      "claim_id": "SVT-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Ofwat KPI（14指標）での業界上位パフォーマンス：汚水漏洩・汚染防止での最高格付け",
+      "descriptive_label": "規制KPI業界上位パフォーマンス（EA 4つ星格付け）",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "partial",
+      "kb2_t_pattern": "pattern_A_t (結果を原因と取り違え) + pattern_I_t (定量差別化)",
+      "scoring_reasoning": "EA 4つ星（業界唯一）という相対的優位は評価（ルール3-T）。KPI改善は結果だが（ルール1-T注意）、業界最高格付けという差別化は認められる（パターンI-T）。背後の運営能力の説明が限定的で50%。"
+    },
+    {
+      "claim_id": "SVT-005",
+      "claim_type": "competitive_advantage",
+      "claim": "英国最低水道料金維持能力：コスト管理×規制交渉力による低料金ポジション",
+      "descriptive_label": "英国最低水道料金維持能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Scale Economies",
+      "confidence": 0.4,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "fail",
+      "kb2_t_pattern": "pattern_A_t (結果を原因と取り違え)",
+      "scoring_reasoning": "英国最低料金は結果（パターンA-T、ルール1-T違反）。コスト管理能力の具体的説明が不足。40%。"
+    },
+    {
+      "claim_id": "SVT-C001",
+      "claim_type": "cagr_connection",
+      "claim": "RCV成長 → 規制許容収益の拡大 → PBIT CAGR成長",
+      "descriptive_label": "RCV成長→規制許容収益→CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.8,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "規制事業のRCV→収益接続は1ステップで極めて直接的。RCV+21%（5年間）は開示済み。英国水道規制メカニズムは公開情報で検証可能。80%（規制事業の確実性を評価）。"
+    },
+    {
+      "claim_id": "SVT-C002",
+      "claim_type": "cagr_connection",
+      "claim": "Totex outperformance → 超過収益（outperformance sharing） → CAGR上乗せ",
+      "descriptive_label": "Totex効率化→超過収益sharing→CAGR上乗せ",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "GBP300M/372M達成率81%。Ofwat outperformance sharingメカニズムは規制で定義。直接接続で70%。"
+    },
+    {
+      "claim_id": "SVT-C003",
+      "claim_type": "cagr_connection",
+      "claim": "再生エネルギー自給率向上 → エネルギーコスト低減 → Totex outperformance →収益CAGR",
+      "descriptive_label": "自給率向上→コスト低減→収益CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.6,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "3ステップだが各ステップの合理性は高い。GBP190M投資のROIは不明だが方向性は明確。60%。"
+    },
+    {
+      "claim_id": "SVT-C004",
+      "claim_type": "cagr_connection",
+      "claim": "KPI改善 → ODI（Outcome Delivery Incentives）報奨金受取 → 収益CAGR上乗せ",
+      "descriptive_label": "KPI改善→ODI報奨→収益上乗せ",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "Ofwat ODIメカニズムへの直接接続。汚水氾濫・汚染KPIは大きなODIを持つと明示。2ステップで検証可能。70%。"
+    }
+  ],
+  "aggregate_score": {
+    "competitive_advantage_avg": 0.56,
+    "cagr_connection_avg": 0.7,
+    "overall_avg": 0.625,
+    "claim_count": 9,
+    "ca_claim_count": 5,
+    "cagr_claim_count": 4
+  }
+}

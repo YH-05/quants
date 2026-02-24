@@ -1,0 +1,124 @@
+{
+  "ticker": "XLNX",
+  "company_name": "Xilinx, Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201401_earnings_call.json", "quarter": "Q3 FY2014", "call_type": "secondary"},
+    {"file": "201404_earnings_call.json", "quarter": "Q4 FY2014", "call_type": "primary"},
+    {"file": "201407_earnings_call.json", "quarter": "Q1 FY2015", "call_type": "secondary"},
+    {"file": "201410_earnings_call.json", "quarter": "Q2 FY2015", "call_type": "secondary"},
+    {"file": "201501_earnings_call.json", "quarter": "Q3 FY2015", "call_type": "secondary"},
+    {"file": "201504_earnings_call.json", "quarter": "Q4 FY2015", "call_type": "primary"},
+    {"file": "201507_earnings_call.json", "quarter": "Q1 FY2016", "call_type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "XLNX-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "XilinxはFPGA/プログラマブル半導体においてTSMCとの長期独自パートナーシップ（28nm→20nm→16nm→7nm）でプロセスノードリーダーシップを維持している。20nm市場でのシェア82%推定、28nmでの65%以上のシェアが技術的Process Powerを実証している。",
+      "evidence_quotes": [
+        "We estimate our share of this node to be approaching 82%, confident our share of 20-nanometer will continue to exceed 65% market share we have delivered at 28-nanometer. (Q1 FY2016 prepared remarks)",
+        "we extended our world-class partnership with TSMC... we will be leveraging TSMC's 7-nanometer process technology... This product family represents the fourth consecutive generation where the 2 companies are partnered. (Q1 FY2016 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - TSMCパートナーシップと最先端プロセスへの優先アクセスという能力",
+        "rule04_quantitative_evidence": "PASS - 20nmシェア82%・28nmシェア65%+という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - TSMCとの4世代継続パートナーシップは構造的",
+        "rule07_pure_competitor_differentiation": "PASS - Altera（Intel買収）はIntelプロセスに移行→TSMC最先端から外れる可能性",
+        "rule08_strategy_not_advantage": "PASS - 実証済みの市場シェアで裏付けられた能力",
+        "rule10_negative_case": "PASS - 20nm $10M→$50M/四半期への急速な拡大で実証",
+        "rule11_industry_structure_fit": "PASS - FPGAは設計が長く複雑でプロセス優位性が重要",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q1 FY2016）"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "XilinxのTSMCパートナーシップによるプロセスリーダーシップは明確な優位性。20nmシェア82%は現時点での圧倒的な技術的優位性を示す。Altera/Intel統合によるTSMC離脱リスクはXilinxにとっての追い風要因でもある。"
+    },
+    {
+      "claim_id": "XLNX-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "XilinxのZynq（All Programmable SoC）ファミリーはADAS・産業IoT・5Gワイヤレスを対象とした独自アーキテクチャで、Q1 FY2016に前年比+40%超の成長を達成している。このAll Programmable SoC概念はXilinx独自の知的財産（IP）コアとして競合には代替困難な技術資産を形成している。",
+      "evidence_quotes": [
+        "sales from our Zynq product family, the industries first all-programmable SoCs, increased more than 40%. The primary driver for this growth came from ADAS applications, important industry growth driver ideally suited to benefit from the Zynq product families, innovative and differentiated capabilities. (Q1 FY2016 prepared remarks)",
+        "automotive are up nearly 50% from the same quarter a year ago and remain at a record 7% of total sales. (Q1 FY2016 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - All Programmable SoCという独自技術資産",
+        "rule04_quantitative_evidence": "PASS - +40%成長・自動車+50%・過去最高7%売上比率という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - ZynqアーキテクチャはIP保護された独自資産",
+        "rule07_pure_competitor_differentiation": "PASS - 業界初のAll Programmable SoCとして明確な差別化",
+        "rule08_strategy_not_advantage": "PASS - 実現済み製品として実績あり",
+        "rule10_negative_case": "PASS - ADAS・自動車の高成長で実証済み",
+        "rule11_industry_structure_fit": "PASS - ADAS・IoTは設計サイクルが長く早期参入者が有利",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.7,
+      "confidence_rationale": "Zynq SoCの+40%成長とADAS市場での認定実績は強力な証拠。業界初のAll Programmable SoCとしての知的財産的優位性は実在する。自動車市場での採用拡大（2016年以降の量産）は長期的な優位性を示唆。"
+    },
+    {
+      "claim_id": "XLNX-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "XilinxのFPGA/プログラマブルデバイスは設計ライフサイクルが非常に長く（軍事・航空宇宙・通信インフラは5-10年+）、一度設計に採用されると交換コストが極めて高い。Joint Strike Fighter（F-35）のような長期防衛プログラムへの採用は高い持続的スイッチングコストを形成する。",
+      "evidence_quotes": [
+        "there is a very large set of purchases going on over a period of 1.5 years to 2 years. And this is just the -- essentially the end of that particular procurement. And they are redesigning some of the key elements in electronics inside the aircraft. And as I've said, we're winning all the redesigns. (Q1 FY2016 Q&A)",
+        "we have delivered market share expansion of 28-nanometer. We're seeing that expand to a better position of 20. (Q1 FY2016 Q&A)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 長期設計採用という能力的地位",
+        "rule04_quantitative_evidence": "PARTIAL - シェア拡大は定量だが具体的金額なし",
+        "rule06_structural_vs_complementary": "PASS - 長期防衛・通信プログラムへの設計込みは構造的",
+        "rule07_pure_competitor_differentiation": "PASS - F-35の次期設計もXilinxが採択済み",
+        "rule08_strategy_not_advantage": "PASS - 実現済みの設計採用実績",
+        "rule10_negative_case": "PASS - F-35再設計でもXilinxが採択",
+        "rule11_industry_structure_fit": "PASS - 防衛・航空宇宙は最高レベルのスイッチングコスト",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "防衛・A&D分野でのスイッチングコストは非常に高く、F-35再設計でのXilinx採択継続が実証。ただしQ1 FY2016のA&D売上急減（大型プログラム終了）が四半期変動リスクを示す。長期的には安定的だが短期的には変動あり。"
+    },
+    {
+      "claim_id": "XLNX-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "ADAS（自動運転）・産業IoT・5Gワイヤレスインフラという3つの高成長市場はAll Programmable SoCの最適用途であり、Zynq/UltraScaleの採用拡大によりXilinxのTAM（全体アドレス可能市場）が拡大している。自動車売上は前年比+50%・7%シェアまで拡大。",
+      "evidence_quotes": [
+        "sales from automotive are up nearly 50% from the same quarter a year ago and remain at a record 7% of total sales. (Q1 FY2016 prepared remarks)",
+        "The 16-nanometer node, we taped out the industry's first All Programmable Multi-Processor SoC using TSMC's 16FF+ process. This product family targets applications in embedded vision, including ADAS, Industrial Internet of Things and 5G wireless systems. (Q1 FY2016 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.6,
+      "confidence_rationale": "ADAS・IoT・5Gという3市場への優位的なポジショニングは実績（自動車+50%）で部分的に裏付けられている。5G・IoTはまだ初期段階だが採用実績が積み上がっている。"
+    },
+    {
+      "claim_id": "XLNX-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q1 FY2016（2015年6月期）: 売上$549M（前期比-3%）、粗利率70.9%（予想上回る）、OPM 32.5%、EPS $0.55。CF from Operations $183M。20nmサンプル$10M→$50M（Q2予想）へ急拡大中。現金$3.6B（Net Cash $2B）。",
+      "evidence_quotes": [
+        "Xilinx sales were $549 million, down 3% sequentially. Gross margin was 70.9% for the quarter, better than anticipated. (Q1 FY2016 prepared remarks)",
+        "we are forecasting 20-nanometer sales to exceed $50 million, so experiencing a sales ramp that is more accelerated than our initial expectation. (Q1 FY2016 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "決算数値として確認済みの事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "competitive_advantage_claims": 3,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Process Power", "Cornered Resource", "Switching Costs"],
+    "analyst_notes": "XilinxはTSMCとの独自パートナーシップ・Zynq SoCの技術的先駆性・防衛/A&Dでのスイッチングコストという3つの優位性を持つ。20nmシェア82%は圧倒的。Altera/Intel統合という競合環境の変化はXilinxに有利。ワイヤレス通信の短期的弱さは構造的問題ではなく、長期的成長ドライバーは健在。"
+  }
+}

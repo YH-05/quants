@@ -1,0 +1,300 @@
+{
+  "ticker": "TEL2",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-10-29) [Primary] + Q3 FY2015 Earnings Call (2015-07-22) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ハーシュ環境（Harsh Environment）コネクタ・センサー市場でのエンジニアリングリーダーシップ：自動車・産業・航空宇宙向けに高度に設計された接続ソリューション",
+      "descriptive_label": "ハーシュ環境向け高度設計コネクタ・センサーの技術的差別化",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Tom Lynch): 'strengthening our leadership position in harsh environment applications, with another strong year of design wins in Auto, Industrial and Appliances...highly engineered, designed [applications in harsh environments]' Q&A: 'At every OEM in virtually every electronic application. We're at $60 per car of connectivity-related content'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "技術的リーダーシップ・エンジニアリング能力は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$60/車のコネクティビティコンテンツ、auto content growth 4-6%/年という数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ハーシュ環境向けの設計要件は高度で、競合が短期間では模倣困難な構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "自動車の電動化・電子化進展という市場構造と、TEL2のハーシュ環境向けエンジニアリング能力の合致が明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次で体系的に説明され、定量データ（content per car、design win実績）あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Amphenol、Molex等）との具体的な比較データなし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "ハーシュ環境向けエンジニアリング能力は業界構造（自動車電動化・航空宇宙・産業の厳しい要件）と合致し、設計規格への深い組み込みによるスイッチングコストを生む。定量的裏付け（$60/車）と設計採用実績（design wins）が示されており高評価候補"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "自動車電動化・電子化トレンド（電子コンテンツ増加）→ 1台あたりTEコンテンツ増加（年4-6%）→ 自動車売上CAGR押し上げ",
+      "descriptive_label": "自動車電動化→コンテンツ増加→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（電子化進展→コンテンツ増加）。content growth 4-6%という開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的裏付け（$60/車、4-6%/年content成長）あり。自動車電動化という業界トレンドが強力な裏付けとなる直接的なCAGR接続"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "TEOA（TE Operating Advantage）プログラムによる継続的な製造生産性改善：2014年度通期調整営業利益率15.4%達成（$14B未満売上での15%超マージンは重要マイルストーン）",
+      "descriptive_label": "TEOA製造改善プログラムによる収益性強化",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Tom Lynch): 'Adjusted operation -- operating margins were 15.4%, primarily powered by our TEOA program, and this was a very key milestone for the company to get through a full year at 15-plus in operating margin at less than $14 billion of revenue.' Q&A: 'TEOA program, which is really helping us improve customer satisfaction and driving productivity as evidenced by our margins'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "15.4%利益率は結果だが、TEOAというプログラム（仕組み）への言及が能力を示す"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "TEOAという名詞で表現されたプロセス能力"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "15.4%調整利益率、前年比+30bp等の数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "TEOAは長年にわたる組織的な改善プログラムで構造的な能力"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "TEOAの詳細な説明がなく、競合比（Amphenol等）との比較がない",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "TEOAプログラムは具体的な組織的改善能力を示し、15%超の調整利益率で検証可能。ただしAmphenol等の競合との比較がなく相対的優位性の強さが不明"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Measurement Specialtiesセンサー事業買収：フルレンジセンサーポートフォリオによる顧客へのソリューション提案力の拡大",
+      "descriptive_label": "センサー事業M&Aによる製品ポートフォリオ拡張（TAM拡大）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Tom Lynch): 'key acquisitions in sensors and oil and gas, which significantly expand our TAM.' Q&A: 'having a full range of sensors too, not just 1 or 2 technologies...When we go into a customer now, we can really offer some creative solutions on how to solve problems'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_2_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "TAM拡大は結果（将来の機会）、センサーポートフォリオ（能力）は優位性候補"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "M&A自体は戦略だが、買収後の統合によるソリューション提案能力（名詞の能力）が優位性候補"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "フルレンジセンサーポートフォリオは名詞で表現されるCornered Resource"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "M&A戦略と能力の混同",
+            "adjustment": -10
+          },
+          {
+            "reason": "設計採用サイクル2-3年で短期的CAGR貢献が不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "センサーポートフォリオの拡張はTAMを拡大するが、M&A戦略を優位性として混同するリスクがある。買収後の設計採用サイクル（2-3年）を考慮すると、PoiT（2015年9月）時点では競争優位性としての発現は初期段階"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "センサーポートフォリオ拡充（Measurement Specialties統合）→ 自動車・産業向けソリューション売上拡大（設計採用サイクル2-3年）",
+      "descriptive_label": "センサー統合→設計採用→売上成長経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "設計採用サイクル2-3年（CEOが明示）。PoiT時点では売上への貢献は将来的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CEOが設計採用サイクル2-3年と明示しているため、PoiT（2015年9月）時点での財務的貢献は限定的"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "自動車・産業・家電顧客への深い設計組み込みによるスイッチングコスト：既存設計の変更コストが高いため、連続的なデザインウィンが実現",
+      "descriptive_label": "設計組み込みによるスイッチングコスト",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO Tom Lynch): 'typical design-in cycle [is] 2 to 3 years...we've seen steady as she goes with the order rate in Transportation.' and 'we're exceeding them [customer growth rates] in every market. So we're getting designed in and around the world at a faster rate than ever before'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "スイッチングコスト・設計組み込みは名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "設計採用サイクル2-3年という数値があるが、顧客維持率・チャーンレートの開示なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "設計組み込みは構造的なスイッチングコストを生み出す"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "設計サイクル2-3年（CEOが明示）はスイッチングコストの証拠",
+            "adjustment": 0
+          },
+          {
+            "reason": "具体的な顧客維持率・再採用率の数値なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "設計組み込みによるスイッチングコストは構造的で、設計採用サイクル2-3年という数値で部分的に裏付けられている。競合との直接比較はないが、industry standard的な設計インサイクルがスイッチングコストの根拠となる"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "設計組み込みによる顧客維持 → 安定的・継続的な自動車・産業向け売上 → CAGR支持",
+      "descriptive_label": "スイッチングコスト→顧客維持→安定売上経路",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "設計組み込み→プラットフォーム変更コスト高→顧客維持という2ステップ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムは直接的。ただし顧客維持率の定量データがなく確度は中程度"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "TE Connectivity FY2014実績：売上5%増加、調整営業利益率15.4%、調整EPS17%増、FCF $1.7B（売上の10%超は7年連続）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "自動車コンテンツ：TEL2の1台あたりコネクティビティコンテンツ約$60、センサーコンテンツ約$2（2014年時点）。年間content growth率4-6%の見通し",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Measurement Specialties買収：$600M売上規模、EPS寄与約$0.10（買収時ガイダンス$0.04-0.06から上振れ）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    }
+  ]
+}

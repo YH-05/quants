@@ -1,0 +1,285 @@
+{
+  "ticker": "AAP",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-12) + Q1-Q3 2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "General Parts（CARQUEST・WORLDPAC）買収によるコマーシャル（B2B）自動車部品ビジネスの規模拡大",
+      "descriptive_label": "General Parts統合によるコマーシャル部品流通スケール獲得",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Darren Jackson): 'Total sales, excluding the 53rd week, grew 48.1% in the quarter compared to the third quarter of 2013, primarily as a result of the acquisition of General Parts.' Commercial business 'showed consistent and steady strength throughout the quarter, with notable increases in both traffic and ticket.' 'Geographically, there was consistent strength throughout our North American operations, including AAP, CARQUEST and the WORLDPAC locations.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "買収による規模拡大は「結果」の側面が強い。ただし統合実行能力（製品品揃え・物流統合）は「能力」として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "+48.1%売上成長（買収含む）、comparable SG&A改善510bpsという定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "統合後のコマーシャル部品網（AAP+CARQUEST+WORLDPAC）は規模の経済を生む構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "AutoZone、O'Reilly等との比較なし。ただしGeneral Parts買収でAutoZone規模に接近"
+          },
+          {
+            "rule": "rule_11_n",
+            "verdict": "partial",
+            "reasoning": "コマーシャル部品市場（独立整備工場向け）は景気耐性が高く、規模が重要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "General Parts統合は規模優位を生むが、統合が進行中（2014年は統合1年目）であり、シナジーの具体的実現はまだこれから。CEO自身が「methodically improving」と述べており、統合は確立した優位性ではなく進行中の作業"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "コマーシャル事業規模拡大 × 独立整備工場需要成長 → CAGR+5-7pp",
+      "descriptive_label": "コマーシャル事業規模×整備工場需要→収益CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ。統合完了後のシナジー実現→コマーシャル競争力→売上成長の経路。統合進行中であり確度は中程度"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "コマーシャル部品市場の成長トレンドは確実だが、AAP固有の優位性の確立が統合完了に依存している。comparable store sales +1.1%（低水準）がAAPのbase businessの弱さを示唆"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "WORLDPAC専門パーツ流通ネットワークによる外国車・欧州車パーツ供給の専門性",
+      "descriptive_label": "WORLDPAC専門輸入パーツ流通（ニッチ差別化）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'consistent strength throughout our North American operations, including AAP, CARQUEST and the WORLDPAC locations.' WORLDPAC is a leading specialty automotive parts distributor acquired as part of General Parts deal. Provides import and specialty car parts not available at typical auto parts stores.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "輸入車パーツのカタログ・サプライヤー関係は構造的参入障壁"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "輸入車パーツ市場での競合（Dorman Products等）との差別化なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "WORLDPACは輸入車増加（BMW、Mercedes、Toyota等）に対応した専門性を持つが、transcript上での詳細な説明が不足。コマーシャル競争力の一部としての言及に留まる"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Availability Plus（在庫充実度）の改善能力による顧客サービス差別化",
+      "descriptive_label": "在庫充実度改善（SKU深度）によるサービス差別化",
+      "evidence_from_transcript": "Q4 FY2014 and Q1-Q3 2015 calls: CEO repeatedly mentioned 'improving our base business' and operational improvements. 'Availability Plus' concept was mentioned in 2015 calls as a key differentiator vs. O'Reilly and AutoZone - ensuring right parts are in stock at right locations. Commercial customers demand high fill rates.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "在庫管理・フィルレート改善能力は「能力・仕組み」として評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "高い在庫充実度は整備工場の指名買いを促進し、切替コストを高める"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "O'Reilly（業界最高在庫充実度として知られる）との具体的比較データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "在庫充実度改善は重要な取り組みだが、Q4トランスクリプト上での具体的な説明が少ない。O'ReillyやAutoZoneとの差別化数値がなく、「improvement in progress」段階での主張"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "統合による販管費（SG&A）効率化とオペレーションレバレッジ",
+      "descriptive_label": "General Parts統合SG&A効率化能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'comparable SG&A rate declined... SG&A improved on a comparable basis 510 basis points to 36.6%.' Strong commercial comp sales growth drove margin improvement.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "SG&A改善510bpsは「結果」。General Parts統合によるコスト削減能力の説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "SG&A改善510bpsという定量データ。ただし買収効果・規模効果の分離が困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "SG&A改善は統合シナジーの結果として示されるが、継続的な能力（process power）として確立しているかは不明。GPM率の低下（-495bps）もあり、統合コストと効率化の評価が複雑"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "整備士向けHUB-and-SPOKE流通モデルによる翌日・当日配送能力",
+      "descriptive_label": "Hub-and-Spoke流通モデルによる配送速度差別化",
+      "evidence_from_transcript": "Q4 FY2014 (inferred from integration discussion): AAP/CARQUEST integration optimizes hub store network for commercial parts delivery. CEO mentioned 'serving our customers better' across geographies. Q1-Q3 2015: hub store optimization and delivery speed mentioned as key metrics for commercial customer satisfaction.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "Hub-and-Spoke配送能力（能力・仕組み）として評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "コマーシャル向け配送網は構造的優位性を持つが、O'ReillyやAutoZoneも同様のモデルを採用"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Hub-and-Spoke流通はコマーシャル部品業界の標準モデル。AAPの能力としての説明が不足しており、Q4トランスクリプト上での直接言及も少ない"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "統合後のコスト効率化目標（3年で$160M以上のシナジー）の実現可能性",
+      "descriptive_label": "General Parts統合シナジー実現能力（$160M目標）",
+      "evidence_from_transcript": "Q4 FY2014 CEO: 'Now having completed the first full year of integration activities, we are pleased with the overall ac[complishments]...' 2015 calls: $160M+ in total synergy targets mentioned (purchasing, SG&A, supply chain). On track with year 1 milestones.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "統合実行能力（仕組み）として評価。「methodically improving」という言及がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "$160M目標という定量目標あり。2014年の1年目実績は確認できるが、最終的なシナジー実現は不確実"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "自己評価は「pleased with progress」と肯定的。具体的数値での年次進捗開示なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "シナジー目標は具体的だが、2014年は統合1年目であり実績の蓄積が少ない。comparable store sales +1.1%という低水準がbase businessの課題を示す。統合完了後のCAGR接続は合理的"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "統合シナジー実現（$160M+）→ マージン改善 → EPS CAGR+10-15pp",
+      "descriptive_label": "統合シナジー→マージン改善→EPS成長経路",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2ステップ。シナジー実現→マージン改善→EPS成長の経路は明確だが統合進行中"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "統合シナジーのCAGR接続は合理的だが、進行中の統合リスク・DIY事業の弱さ・競合（O'Reilly）との差別化不足が確信度を下げる"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: 全社売上+48.1%（うち comparable +1.1%）、GPM 44.9% (-495bps)、comparable SGA 36.6% (-510bps)、comparable cash EPS $1.37 (+46%)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 7]
+    }
+  ]
+}

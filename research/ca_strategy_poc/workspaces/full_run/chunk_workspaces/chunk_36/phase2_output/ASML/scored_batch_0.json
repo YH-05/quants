@@ -1,0 +1,210 @@
+{
+  "ticker": "ASML",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "EUVリソグラフィ技術における世界唯一のメーカー地位（2nm以下ノードへの必須技術）",
+      "final_confidence": 0.90,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "EUVリソグラフィ製造能力という技術的能力（仕組み）を評価。30年の開発蓄積と100社以上のサプライヤーネットワークが能力の核心"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": true,
+          "reasoning": "世界唯一のEUVメーカー。Canon/Nikonはi-line/ArFに留まりEUVへの参入不可。絶対的な競合不在"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "2014年EUV出荷台数6台、500wafer/day達成（TSMCの発注確認）、EUV製品$600M（全体の11%）という定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "EUV技術は30年超の開発期間と$100億以上の累積投資が必要。技術的参入障壁は事実上無限"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "半導体微細化（Moore's Law継続）という業界構造において、2nm以下ノードへのEUV必須性が確立。TSMC/Intel/Samsungが採用"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "定量的差別化パターン。唯一のEUVメーカーという絶対的差別化"
+        },
+        {
+          "pattern_id": "pattern_V_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "具体的競合比較パターン。Canon/Nikonとの技術差異が明確"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "EUV技術の世界唯一のメーカー地位はCornered Resource + Process Powerの極限形態。dogma Rule3（相対的優位性）・Rule4（定量裏付け）・Rule11（業界構造合致）を完全に満たす。2015年時点での事実確認も完了。90%が妥当（dogma上位ランク「かなり納得」）"
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "EUV商業化 → 半導体ロジックノード移行 → EUV売上急成長（2014年$600M → 2017-2020年$1-2B）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "EUV商業化（500wafer/day達成）→ TSMCの7nm採用 → ASML受注増加の因果。TSMCのEUV発注として開示データ検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual発言由来。CFOが2016-2020年ロードマップを開示"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズム適合。EUV採用→受注増加の因果が明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "technology_timeline",
+          "adjustment": 0.0,
+          "reasoning": "EUV商業化のタイムラインリスクはあるが500wafer/dayの達成で主要ハードルは越えた"
+        }
+      ],
+      "overall_reasoning": "EUV商業化→半導体ノード移行→ASML受注増加の因果は開示データで検証可能。ただしCAGR実現にはTSMC/Intel/Samsungの設備投資サイクルに依存。70%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "主要半導体顧客（TSMC/Intel/Samsung）の共同投資によるエコシステム構造（顧客が株主かつ共同開発者）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "顧客が株主かつ共同開発者というエコシステム設計能力（仕組み）を評価。この共同開発モデルが競合の参入をさらに困難にする"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "TSMC/Intel/Samsungが株主として参加している構造は競合が模倣困難"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "半導体の超複雑な製造生態系において、顧客との協働開発モデルは業界構造的に合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合。顧客株主という構造的優位"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "顧客共同投資エコシステムはNetwork Economies + Switching Costsの組み合わせ。TSMC/Intel/Samsungが株主として参加しているという事実が構造的優位を示す。70%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "インストールベースからのホリスティック・リソグラフィー収益化能力（サービス・アップグレード・オプションで拡大）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "ホリスティック・リソグラフィーという概念的な収益化能力（仕組み）を評価。ハードウェア→サービス→アップグレードの多層収益モデル"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "サービス収益：システム1台あたり年間$2.5M（機器販売価格の約7%）。インストールベース6,000+台"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "インストールベースのサービス・アップグレード収益は競合が参入困難（顧客接点が独占的）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。インストールベース活用という仕組みが核心"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "インストールベース6,000+台からのサービス・アップグレード収益は持続的な収益源として評価。Switching Costs（顧客は切り替えが困難）と合わせて70%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 売上€5.86B（+6% YoY）、純利益€1.17B、EPS€2.72。EUV出荷6台（$600M、11%）、インストールベース6,000+台。DUV Logic: 9nm（Immersion）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Wolfgang Nickl Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "70-80": 4,
+      "90-100": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

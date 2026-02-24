@@ -1,0 +1,335 @@
+{
+  "ticker": "PSN",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00Z",
+  "claims": [
+    {
+      "id": "PSN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Space4 内製モジュール工法工場による独自ビルドコスト優位性",
+      "evidence": "CEO Jeffrey Fairburn (H1 2014 prepared_remarks): 'Space4 is working well in terms of the workforce and the productivity. As brick-laying rates increase, Space4 takes out some of the brick laying content... the factory is more efficient with more volume going through it. So we can make savings in the operational efficiency of the factory.' Q4 2014 (prepared_remarks): 'Space4 modern method of construction...turned out over 5,000 houses, which is helping support further growth in the business.' Analyst explicitly noted 'you're the only one with Space4' in Q&A (201408), and CEO confirmed build cost advantage at 1-2% vs peers at 3-5%.",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "ブリックワーク削減・生産速度向上・ビルドコスト低減（南部では他工法と同水準かやや低コスト）",
+        "barrier": "工場の構築・最適化に長年を要した独自製造システム。他社にはこのような閉鎖パネル断熱木造フレームシステムを所有する競合なし（アナリスト確認済み）"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2014",
+          "quote": "Space4, it's becoming increasingly effective because as rate increase for brick laying, for example, Space4 takes out some of the brick laying content... the factory is more efficient with more volume going through it."
+        },
+        {
+          "speaker": "Unknown Analyst",
+          "role": "Analysts",
+          "section_type": "question",
+          "quarter": "H1 2014",
+          "quote": "you've touched on sort of your build cost control...the standard house types and you also highlighted Space4. Can you maybe just try and quantify the impacts of those 2...you're the only one with Space4. So you've got an edge over the peers from that sort of thing."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "アナリストが 'you're the only one with Space4' と明示。競合との差別化が外部からも確認されている"
+          },
+          {
+            "rule": "rule06",
+            "direction": "positive",
+            "reason": "工場自体は構造的資産。ビルドコスト削減メカニズムが具体的に説明されている（ブリックワーク削減）"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PSN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "低コスト戦略的土地銀行（Strategic Land Bank）による構造的マージン優位性",
+      "evidence": "CFO Mike Killoran (FY2014 prepared_remarks): 'The cost of revenue percentage has improved further... 17.1% for total owned and under control plots at end of December... when you compare that with the cost recovery in 2014 of 20%, that points to further margin improvements.' H1 2015: plot cost to revenue ratio 16.5%. Strategic land now represents 43-44% of consented land bank, at far lower acquisition cost than spot market land.",
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "plot cost to revenue比率 16.5-17.1%（実際の回収率20-21%との差がマージン向上に直結）。戦略的土地は通常スポット市場より大幅低コスト",
+        "barrier": "100,000+plotsの戦略的土地銀行は数十年にわたる土地収用・計画許可取得の蓄積。新規参入者がこの規模の低コスト土地銀行を構築するには数十年と多大な資本を要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Mike Killoran",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "The cost of revenue percentage there is 17.1%, which has improved from 17.5% of the previous period end. And obviously, when you compare that with the cost recovery in '14 of 20%... that points to further margin improvements to come."
+        },
+        {
+          "speaker": "Mike Killoran",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "16.5% cost-to-revenue percentage, a further reduction from the 17.1% for the total owned and under control plots"
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true
+        },
+        "confidence": 0.65,
+        "adjustments": [
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "複数期間にわたる定量的指標（16.5-17.5%のplot cost ratio）で裏付け。実際のP&Lへの接続も定量的"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "Barratt, Taylor Wimpey等の純粋競合も戦略的土地銀行を保有。差別化の程度が明確ではない"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PSN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "標準化ハウスタイプと大量調達による材料調達力・ビルドコスト管理能力",
+      "evidence": "CEO Jeffrey Fairburn (H1 2014 Q&A): 'we've probably reduced down from as many as 150 different brick types, down to probably about 20 or 30 now. And that—if you can think of a manufacturer producing that smaller number of products, specifically for us, then it makes it more efficient for them.' H1 2015 prepared_remarks: 'We've introduced our group house types, and these are utilized well across the country. That has given us advantages in terms of our build costs, which are cost-effective.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "ブリック種類を150→20-30に削減、製造パートナーの効率化により低コスト調達実現。標準化による職人の作業効率向上",
+        "barrier": "UK最大規模のホームビルダーとしての購買規模（GBP510M+/年の土地購入+材料調達）が交渉力の源泉。小規模競合は同様の調達集中度を実現できない"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "H1 2014",
+          "quote": "we've probably reduced down from—it could be as many as 150 different brick types, down to probably about 20 or 30 now. And that—if you can think of a manufacturer producing that smaller number of products, specifically for us, then it makes it more efficient for them."
+        },
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "We've introduced our group house types, and these are utilized well across the country. That has given us advantages in terms of our build costs, which are cost-effective."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.45,
+        "adjustments": [
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "Barratt, Taylor Wimpey等も標準化を進めており、純粋競合に対する優位性が明確でない"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "150→20-30種類という具体的な数値による標準化の深さが示されている"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PSN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "英国全土24-26地域事業所のネットワークによる市場カバレッジと密度",
+      "evidence": "CEO Jeffrey Fairburn (FY2013/Q4 2014 prepared_remarks): 'We've got a network of 24 businesses around the country, and that has given us good market coverage... we've got very good exposure to the whole of the UK market.' By H1 2015, expanded to 26 offices with 380+ active sales outlets covering all regions.",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "英国全土での用地取得・建設・販売の効率的オペレーション。地域知識の蓄積と地場業者ネットワーク",
+        "barrier": "24→26の地域事業所ネットワークは長年にわたる拠点構築の蓄積。新規参入者が同等のカバレッジを構築するには多大な時間と資本を要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2013",
+          "quote": "We've got a network of 24 businesses around the country, and that has given us good market coverage... our business is aimed squarely at the middle-market."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.35,
+        "adjustments": [
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "Barratt Developments等の大手ホームビルダーも同様の全国ネットワークを保有。差別化根拠が弱い"
+          },
+          {
+            "rule": "rule03",
+            "direction": "negative",
+            "reason": "全国展開は大手ホームビルダーに共通の特徴であり、相対的優位性の根拠が希薄"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PSN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "土地サイクル最適タイミング購入能力と高マージン用地取得の規律",
+      "evidence": "CEO Jeffrey Fairburn (H1 2014 Q&A): 'We are increasing our hurdle rates all the time. We've increased them again, recently. It isn't a specific margin point, but we are buying land at over 30% gross margin.' Q4 FY2014: 'Capital efficiency and discipline around capital deployment in the business' is at the heart of the strategy. CFO noted land creditor management and strategic timing discipline as structural advantages.",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "30%超の取得マージン確保、ハードルレートの継続的引き上げ。土地クレジター活用による資本効率化",
+        "barrier": "長年の土地購入・計画許可取得の組織的ノウハウ。土地市場での関係構築と情報ネットワーク"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "H1 2014",
+          "quote": "We are increasing our hurdle rates all the time... we are buying land at over 30% gross margin. So there's great opportunities there for our business in the future."
+        },
+        {
+          "speaker": "Mike Killoran",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2013",
+          "quote": "At the heart of the strategy that we're pursuing, there is capital efficiency and discipline around capital deployment in the business."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true
+        },
+        "confidence": 0.45,
+        "adjustments": [
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "30%超という具体的なマージン目標・ハードルレートへの言及あり"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "純粋競合（Barratt, Taylor Wimpey）も同様の土地サイクル投資規律を持つと考えられ、差別化根拠が不明確"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PSN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "直接雇用と職人訓練プログラム（Combat to Construction）による安定的工数確保能力",
+      "evidence": "CEO Jeffrey Fairburn (FY2014 prepared_remarks): 'We look to employ our workforce directly wherever possible on site, which controls costs but also gives us longevity on our workforce... combat construction scheme, which is now well underway and looks to employ ex-forces individuals on site... those individuals are being directly employed by the business and trained for longevity.' 2014年に直接雇用人員を20%増加。",
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "スキル不足市場での安定的な建設工数確保。離職率低下・組織知識の蓄積",
+        "barrier": "元軍人採用・訓練プログラムという独自のパイプライン。直接雇用比率の高さが競合の間接雇用に対するコスト・品質優位性を生む"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "our flagship combat construction scheme, which is now well underway and looks to employ ex-forces individuals on site... Those individuals are being directly employed by the business and trained for longevity and to give us sustainability in our business model."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule06_structural_vs_complementary": false,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          {
+            "rule": "rule06",
+            "direction": "negative",
+            "reason": "直接雇用・訓練プログラムは補完的施策。事業モデルの核心的差別化要因ではなく、業界共通の課題への対応策に近い"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "純粋競合も同様の訓練プログラムや直接雇用を展開。差別化根拠が弱い"
+          }
+        ]
+      }
+    },
+    {
+      "id": "PSN-007",
+      "claim_type": "competitive_advantage",
+      "claim": "手頃な価格帯（GBP200,000未満）への集中とHelp to Buyシェアによる販売ボリューム優位",
+      "evidence": "CEO (FY2014): '57% of private sales priced below GBP200,000... well supported by good mortgage products and Help to Buy.' H1 2015: '56% of our product is still priced below GBP200,000.' CEO confirmed PSN holds ~15% of all Help to Buy transactions, targeting first-time buyer and first-time mover market as core strategy.",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "Help to Buy需要の最大受益者として高い販売スピードを実現。低価格帯への集中が政策支援の恩恵を最大化",
+        "barrier": "ファーストタイムバイヤー向けの製品設計・立地戦略の蓄積。Help to Buy申請支援体制（ブローカーネットワーク、資格確認80%成功率）"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "57% of private sales priced below GBP 200,000 and obviously, well supported by good mortgage products and Help to Buy... our ability to refer our buyers through our financial advisers is reaping success. And we're seeing the average qualification rate, about 80% of people are sure to do and are enabled to achieve a mortgage."
+        },
+        {
+          "speaker": "Jeffrey Fairburn",
+          "role": "Executives",
+          "section_type": "answer",
+          "quarter": "FY2013",
+          "quote": "we've got around 15% of the overall numbers that have been done so far on [Help to Buy]."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule08_strategy_not_advantage"],
+        "results": {
+          "rule01_capability_not_result": false,
+          "rule06_structural_vs_complementary": false,
+          "rule08_strategy_not_advantage": true
+        },
+        "confidence": 0.25,
+        "adjustments": [
+          {
+            "rule": "rule08",
+            "direction": "negative",
+            "reason": "Help to Buy需要の恩恵はPSN固有のものではなく、英国ホームビルダー全体が受けている。ポリシー依存の優位性は持続性に疑問"
+          },
+          {
+            "rule": "rule01",
+            "direction": "negative",
+            "reason": "低価格帯シェアは結果であり、それを可能にする固有の能力（vs競合）の説明が不十分"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "transcript_count": 4,
+    "quarters_covered": ["FY2013 (Q4_annual)", "H1 2014 (H1_semi)", "FY2014 (Q4_annual)", "H1 2015 (H1_semi)"],
+    "primary_transcripts": ["201402_earnings_call.json", "201502_earnings_call.json"],
+    "secondary_transcripts": ["201408_earnings_call.json", "201508_earnings_call.json"]
+  }
+}

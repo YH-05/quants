@@ -1,0 +1,112 @@
+{
+  "ticker": "GWW",
+  "company_name": "W.W. Grainger, Inc.",
+  "primary_transcript": "research/ca_strategy_poc/transcripts/GWW/201501_earnings_call.json",
+  "primary_transcript_date": "2015-01-26",
+  "fiscal_quarter": "Q4 2014",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2015-09-30",
+  "claims": [
+    {
+      "claim_id": "GWW_001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "transcript_quote": "For the full year, company sales increased 6% to $10 billion. Net earnings increased 1% to $802 million. We spent an incremental $78 million on growth and infrastructure and $387 million in gross capital spending to create long-term competitive advantage.",
+      "speaker": "Laura Brown",
+      "transcript_date": "2015-01-26",
+      "period_label": "Q4 2014",
+      "claim_summary": "W.W. Grainger の $10B 規模 MRO 流通基盤：年商 $10B 達成と持続的インフラ投資（$387M capex）による産業資材流通スケールメリット。",
+      "confidence": 0.4,
+      "confidence_rationale": "MRO 流通は規模が重要な業界であり $10B は大規模だが、Amazon Business 等の参入による規模優位の浸食リスクがある。収益成長(+6%)に対してEPS成長(+1%)が低く、スケールの利益還元効率に疑問。",
+      "kb1_rules_applied": ["rule03_quantitative_evidence", "rule01_capability_not_result"]
+    },
+    {
+      "claim_id": "GWW_002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "transcript_quote": "Our single-channel online model continued its strong growth... startup of the single-channel online model business in Europe. MonotaRO in Japan was strong in local currency. Zoro in the United States strong operating performance.",
+      "speaker": "Laura Brown / William Chapman",
+      "transcript_date": "2015-01-26",
+      "period_label": "Q4 2014",
+      "claim_summary": "シングルチャネルオンラインモデルの拡張：Zoro（米国）・MonotaRO（日本）・欧州での単一オンラインチャネル戦略は低コスト構造を実現し、従来型 MRO 流通業者への Counter-Positioning。",
+      "confidence": 0.5,
+      "confidence_rationale": "シングルチャネルオンラインモデルは Grainger の親会社として学習しているが、Zoro と MonotaRO は別ブランドで展開しており Grainger の中核競争優位と直接リンクしない面もある。Counter-Positioning として構造的には認識できる。",
+      "kb1_rules_applied": ["rule07_specificity_of_claim", "rule01_capability_not_result"]
+    },
+    {
+      "claim_id": "GWW_003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "transcript_quote": "We saw continued strong performance in the United States, with operating margins expanding 60 basis points to 18.2%... U.S. operating margin increased a healthy 70 basis points to 17% for the quarter versus the fourth quarter of 2013.",
+      "speaker": "Laura Brown / William Chapman",
+      "transcript_date": "2015-01-26",
+      "period_label": "Q4 2014",
+      "claim_summary": "米国事業の高マージン構造：営業利益率 18.2%（+60bp）は産業 MRO 流通における高い付加価値と価格決定力の証拠。ブランドと広範な在庫による差別化。",
+      "confidence": 0.5,
+      "confidence_rationale": "18%超の営業利益率は MRO 流通としては高水準で、価格転嫁力と効率性の証拠。60bp マージン拡大も実績あり。ただし競合他社（MSC Industrial等）比較なく、この優位が維持可能かどうかの判断材料が限定的。",
+      "kb1_rules_applied": ["rule03_quantitative_evidence", "rule04_historical_trend"]
+    },
+    {
+      "claim_id": "GWW_004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "transcript_quote": "Continued strong performance in the United States... price increases exceeding cost increases, partially offset by faster growth with lower-margin customers.",
+      "speaker": "William Chapman",
+      "transcript_date": "2015-01-26",
+      "period_label": "Q4 2014",
+      "claim_summary": "Grainger の価格転嫁能力：コスト上昇を価格増加で転嫁できる能力はMRO資材調達の顧客依存性（Switching Costs）を示唆。",
+      "confidence": 0.3,
+      "confidence_rationale": "価格転嫁自体は競争優位の表れだが、「低マージン顧客の成長加速」が混在しておりミックス悪化の懸念。Switching Costs の直接的証拠（継続率、離反率）がなく間接的な推論に留まる。KB2 Pattern A に近い。",
+      "kb1_rules_applied": ["rule01_capability_not_result", "rule07_specificity_of_claim"],
+      "kb2_patterns_flagged": ["pattern_A_result_as_cause"]
+    },
+    {
+      "claim_id": "GWW_005",
+      "claim_type": "cagr_connection",
+      "power_type": "Counter-Positioning",
+      "transcript_quote": "Single-channel online model continued its strong growth... $78 million on growth and infrastructure... creating long-term competitive advantage.",
+      "speaker": "Laura Brown",
+      "transcript_date": "2015-01-26",
+      "period_label": "Q4 2014",
+      "claim_summary": "シングルチャネルオンライン投資→長期 CAGR 接続：オンラインモデルへの継続投資（$78M インクリメンタル）が低コスト構造構築を通じて長期的な収益 CAGR を支える戦略。",
+      "confidence": 0.3,
+      "confidence_rationale": "投資額の明示はあるが CAGR へのリンクが間接的。カナダ油価問題（2015年ガイダンス引下げ）等の短期逆風が CAGR 接続の信頼性を低下させる。フォワードルッキングな主張として慎重評価が必要。",
+      "kb1_rules_applied": ["rule05_cagr_linkage", "rule06_forward_looking_caution"]
+    },
+    {
+      "claim_id": "GWW_fact_001",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_quote": "Company sales increased 6% to $10 billion. Net earnings increased 1% to $802 million, earnings per share increased 3% to $11.45. US operating margin 18.2% (+60 bps).",
+      "speaker": "Laura Brown",
+      "transcript_date": "2015-01-26",
+      "period_label": "FY2014 通期",
+      "claim_summary": "GWW FY2014 実績: 売上 $10B (+6%)、純利益 $802M (+1%)、EPS $11.45 (+3%)、米国営業利益率 18.2%",
+      "confidence": 0.9,
+      "confidence_rationale": "決算発表での財務開示。",
+      "kb1_rules_applied": ["rule03_quantitative_evidence"]
+    },
+    {
+      "claim_id": "GWW_fact_002",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_quote": "2015 guidance lowered to sales growth 3% to 7% and EPS $12.60 to $13.60 [from 5% to 9% and $12.90 to $13.80] due to 10% weakening in Canadian dollar. Canada represents 11% of total company sales, roughly 20% tied to Oil and Gas.",
+      "speaker": "Laura Brown",
+      "transcript_date": "2015-01-26",
+      "period_label": "2015年ガイダンス",
+      "claim_summary": "GWW 2015年ガイダンス修正：カナダドル10%安化によりガイダンス引下げ（売上成長3-7%、EPS $12.60-$13.60）。カナダ事業は売上の11%、うち20%が石油ガス関連。",
+      "confidence": 0.9,
+      "confidence_rationale": "開示されたガイダンスと背景説明。",
+      "kb1_rules_applied": ["rule03_quantitative_evidence"]
+    }
+  ],
+  "extraction_metadata": {
+    "total_claims": 7,
+    "competitive_advantage_count": 4,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 2,
+    "transcripts_analyzed": 6,
+    "notes": "GWW transcripts are podcast format with only 2 sections (no Q&A), limiting content for competitive advantage extraction. 7 claims extracted (below typical 10-15 range due to content limitation).",
+    "primary_transcript_type": "Q4 annual (podcast format)"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "ticker": "ITW",
+  "batch_index": 2,
+  "batch_total": 3,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_6_t", "rule_12_t"],
+    "kb2_patterns_applied": [],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 1
+  },
+  "scored_claims": [
+    {
+      "id": "ITW-011",
+      "claim_type": "factual_claim",
+      "claim": "2015年Q3時点で企業戦略開始後2.5年で営業利益率570bp改善、税後投資資本利益率540bp改善",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。ITW-002（Enterprise Strategy）とITW-005（高マージン）の裏付けとして機能する"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外。570bpのマージン改善という実績はITW-002の主張（Enterprise Strategy）を強く裏付けるQ3発言由来の事実"
+    }
+  ]
+}

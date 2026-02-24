@@ -1,0 +1,75 @@
+{
+  "ticker": "DIS",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "DIS-006",
+      "claim_type": "competitive_advantage",
+      "claim": "MyMagic+のMagicBandはWalt Disney World全体（パーク入場・ホテル・食事・乗り物予約）をシームレスに統合し、10百万人超が着用。技術的エコシステムによりゲストのリピート率と支出単価を向上させる粘着性を創出している。",
+      "descriptive_label": "MyMagic+ MagicBand 1000万人着用のデジタル統合エコシステム",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Switching Costs",
+      "confidence_score": 0.5,
+      "scoring_rationale": "1000万人着用という定量データ（rule04 quantitative）。MagicBandによる全体統合（仕組み, rule01 pass）。ただしParks体験そのものが主な粘着要因であり、MagicBandはその補完的要素（rule06 complementary）。'Positive impact to the bottom line'は定性的（rule07 insufficient）。競合Parks（Universal）との比較データなし。kb3 few-shot（COST#3: 補完的要素50%）と同水準。デジタル統合は差別化だが、スイッチングコスト自体（他Parksへの切り替え障壁）としては弱い。50%。",
+      "kb1_flags": ["rule06_structural_vs_complementary"],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "MagicBand→ゲスト体験向上→リピート率・支出単価向上→Parks OI CAGR（rule05 indirect, 3ステップ）。定量的な支出単価向上データ提示なし。50%。"
+    },
+    {
+      "id": "DIS-007",
+      "claim_type": "competitive_advantage",
+      "claim": "DisneyのConsumer Products部門はQ1で過去最高業績を達成。ライセンシング収入は前年比23%増（比較ベース）、同店舗売上は北米・欧州・日本でFrozenにより2桁増。ブランドIPの収益化力は他メディア企業と比較して圧倒的。",
+      "descriptive_label": "Consumer Products OI+46%・ライセンシング+23%のIP収益化力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.7,
+      "scoring_rationale": "OI+46%・ライセンシング+23%・同店舗売上2桁増は強力な定量的実績（rule04 quantitative, pattern_I_quantitative_differentiation）。過去最高業績はIP収益化能力の証拠（rule01 partial pass）。北米・欧州・日本の3地域同時で2桁増という地理的広がり（rule11 structural pass）。Q4 FY2014発言（rule12 primary）。ただし「Frozen効果」への依存がある（単一IPへの集中リスク）。11フランチャイズポートフォリオで分散（DIS-001との相乗効果）。dogma.md「Branding評価：IP収益化の仕組み」として70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "IPライセンシング能力→Consumer Products売上成長→全社CAGR貢献（rule05 direct）。Q1実績で検証済み。Frozen後のMarvel・Star Warsが次のドライバー。70%。"
+    },
+    {
+      "id": "DIS-008",
+      "claim_type": "factual_claim",
+      "claim": "FY2015 Q1（2014年10-12月期）：EPS+23%（$1.27）、売上+9%（過去最高）、セグメント営業利益+17%。Consumer Products OI+46%、Studio OI+33%、Parks OI+20%。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "DIS-009",
+      "claim_type": "factual_claim",
+      "claim": "Big Hero 6は全世界興収4億9,700万ドルに到達。日本で5週連続興収1位。Frozen関連玩具は2014年北米で最大・最速成長の玩具プロパティとなり玩具市場全体成長（+4%）をけん引。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "DIS-010",
+      "claim_type": "cagr_connection",
+      "claim": "Marvel・Star Wars・Disney Animation・PixarのIPポートフォリオは映画→Consumer Products→Parks→TV・デジタルへの「フランチャイズ機械」として機能し、一つのIP成功が全事業部門に波及するため、他社が複製不可能な複利的成長エンジンとなる。",
+      "descriptive_label": "IPフランチャイズ機械→全部門波及→複利的CAGR成長",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.9,
+      "cagr_rationale": "IPフランチャイズ（Marvel/Star Wars/Pixar/Disney Animation）→Studio+CP+Parks+TV全部門CAGR同時成長。11フランチャイズ×10億ドルという定量基盤。Q4発言（rule12 primary）。Wave効果（映画公開→玩具・パーク・TV）という直接的複利メカニズム。最高評価対象のCAGR接続。90%。"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "ticker": "ML",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Michelin は北米（35%）・欧州・アジア太平洋・新興国にわたる地理的多様化と、乗用車・トラック・特殊タイヤの製品多様化により、景気変動・原材料費変動・為替変動に対する自然なヘッジ機能を有する。",
+      "evidence": "The benefit of being a global company with a global production base, you have natural hedges in our cost base... North America represents about 35% of our revenue.",
+      "rule_evaluation": {
+        "applied_rules": ["rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_B",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "グローバル展開はBridgestone等大手タイヤメーカーに共通。Michelin固有の優位性説明不十分"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "Bridgestone等も同等のグローバル展開を持ちうる"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "グローバル多様化はタイヤ大手共通の能力"}
+      ],
+      "overall_reasoning": "グローバル展開と多様化は経営安定性の説明として合理的だが、競争優位の根拠として弱い。35%",
+      "power_classification": "Scale Economies（低評価）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Michelin FY2013 実績: 売上 EUR 20.5B（報告値）、営業利益 EUR 2.2B超、ROCE 12%超（4年連続）、構造的フリーキャッシュフロー EUR 750M（目標 EUR 700M超過）。",
+      "evidence": "EUR 20.5 billion in sales... more than EUR 2.2 billion of operating income... free cash flow, EUR 750 million.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2013_annual"]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Michelin FY2014 実績: 売上 EUR 19.5B（前年比 -3.4%、通貨逆風 -5.3% 影響）、ROCE 11.1%（前年比低下）、構造的フリーキャッシュフロー EUR 722M、配当 EUR 2.80/株（+7.7%）。",
+      "evidence": "EUR 19.5 billion in revenues, which is a decrease of 3.4%... ROCE 11.1%... EUR 722 million structural free cash flow... EUR 2.80 per share, an increase of 7.7%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Michelin は FY2014 に Sascar（ブラジルのフリート管理・テレマティクスサービス会社）を買収。Connected services をタイヤ+サービスの成長分野として位置付けており、長期的な収益多角化を図っている。",
+      "evidence": "We acquired Sascar, which is a fleet management and telematics service provider in Brazil.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "ML",
+    "claim_count": 9,
+    "scored_count": 4,
+    "target_claim_ids": [6, 7, 8, 9],
+    "batch_index": 1,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 3,
+      "0.35": 1
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb2_patterns_transcript/pattern_B_industry_common.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

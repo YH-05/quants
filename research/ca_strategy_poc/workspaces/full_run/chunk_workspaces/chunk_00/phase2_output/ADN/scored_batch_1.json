@@ -1,0 +1,81 @@
+{
+  "ticker": "ADN",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["ADN-006", "ADN-007", "ADN-008", "ADN-009", "ADN-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "ADN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIP統合から生まれた固定収益・ソリューション・不動産における専門能力の拡充（特にLloydsとの戦略的関係）",
+      "descriptive_label": "Lloyds戦略的パートナーシップとマルチアセット能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - Lloydsとの戦略的関係は顧客関係の結果。能力のメカニズム（Switching Costs、独占性）の証拠が薄い",
+        "rule_6_t": "FAIL - Lloyds関係はSWIP統合から派生した補完的優位。構造的優位ではない",
+        "rule_8_t": "FAIL - M&A由来のパートナーシップは戦略的行動の結果"
+      },
+      "kb2_t_pattern": "pattern_F_t（戦略と優位性の混同）",
+      "kb3_t_calibration": "COST#4（配送内製化 → 50%）と類似。Lloydsとの関係は特定大型顧客への依存であり、優位性としては中程度。Q4発言は評価",
+      "dogma_evaluation": "Dogma Rule 6（構造的vs補完的）: Lloyds関係は補完的。Rule 8（戦略≠優位性）: SWIP統合は戦略的決定。一定のSwitching Costs（Lloyds側のプロバイダー変更コスト）は認識できる",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 6と8の違反。しかしLloydsという特定大型顧客との長期契約はSwitching Costs要素を含む。Q4発言は評価。ただし補完的優位のため40%（30%より上だが50%未満）"
+    },
+    {
+      "id": "ADN-007",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場回帰とスタイル維持 → 流出抑制・流入再開 → AuM成長 → 経常収益CAGR接続",
+      "descriptive_label": "EM投資スタイル維持→AuM回復経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "FAIL - 3段階以上の因果チェーン（スタイル維持→EM回帰→流出抑制→AuM成長）で各段階の確度が低い。EM回帰は外部要因（マクロ）依存",
+        "rule_12_t": "FAIL - H1四半期発言から"
+      },
+      "kb2_t_pattern": "pattern_C_t（因果関係の飛躍）",
+      "kb3_t_calibration": "COST#1のCAGR接続（退職率→レバレッジ+0.25% → 20%）と類似した過度な因果チェーン。ADNはEM回帰という外部変数への依存がさらに問題",
+      "dogma_evaluation": "Dogma Rule 5（CAGR接続の直接性）: 3段階以上の間接接続。Rule 5の低評価パターン「TAM/シェアの中間ステップ欠如」に該当",
+      "final_confidence": 0.2,
+      "scoring_rationale": "KB1-T Rule 5（直接因果）の明確違反。KB2-T pattern_C_t（因果飛躍）。dogma.md Rule 5の低評価パターン該当。H1発言起源で外部変数依存。20%"
+    },
+    {
+      "id": "ADN-008",
+      "claim_type": "cagr_connection",
+      "claim": "SWIP統合による多資産化 → 収益源多様化 → 低EM依存度 → 収益安定性CAGR接続",
+      "descriptive_label": "多資産化→収益安定性経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2段階の直接因果（多資産化→EM依存低下）は検証可能",
+        "rule_12_t": "PASS - Q4発言由来"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続メカニズム）に近いが定量的検証が必要",
+      "kb3_t_calibration": "CHD multi-product approach類似。収益源多様化の効果は実際に進行中（固定収益・不動産拡大）だが、EM株式主導の現状と乖離",
+      "dogma_evaluation": "Dogma Rule 5（CAGR接続の直接性）: 多資産化→収益安定性は2ステップで合理的。Q4発言。しかし全体AuMはEM株式主導であり多様化の実効は限定的",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 5（2段階因果）・Rule 12（Q4発言）ともPASS。dogma.md Rule 5の「過去実績との整合性」に沿う面あり。ただし多様化の実効性に疑問。40%"
+    },
+    {
+      "id": "ADN-009",
+      "claim_type": "factual_claim",
+      "claim": "SWIP統合の増分マージンは55%（目標を1年前倒しで達成）、H1 2015時点では60%",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2014 CFO発言による定量的開示（55%）およびH1 2015 CEO発言（60%）で裏付けあり"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張としては検証可能。競争優位性評価への貢献度は中程度（M&Aコストシナジーは業界一般的）",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付け充分。競争優位性主張ADN-002を支持するが、その主張自体の評価は30%。事実主張としては0.5"
+    },
+    {
+      "id": "ADN-010",
+      "claim_type": "factual_claim",
+      "claim": "10年間の連続増配、過去5年で25%の配当CAGR、年度末純現金GBP 650百万",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2014 CEO/CFO発言による定量的開示で検証可能"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的裏付け）として事実面は評価",
+      "dogma_evaluation": "事実主張として検証可能。配当成長は財務的規律の証拠だが、競争優位性ではなく財務アウトカム",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付け充分。ADN-004（財務規律主張）を支持するが、競争優位性評価への貢献は限定的。事実主張としては0.5"
+    }
+  ]
+}

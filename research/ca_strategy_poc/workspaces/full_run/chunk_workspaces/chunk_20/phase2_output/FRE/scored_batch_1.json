@@ -1,0 +1,206 @@
+{
+  "ticker": "FRE",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "多角化ポートフォリオ → 事業間の景気感応度の違いによる収益安定 → 低コスト資本調達 → EPS持続成長",
+      "evidence": "多角化→収益安定→資本コスト低減→EPS成長という4段階の間接的因果チェーン",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR low pattern",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "4段階以上の間接的因果チェーン。dogmaルール5（CAGR接続は直接的メカニズム要求）の低評価パターンに該当"
+        },
+        {
+          "source": "base advantage score",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "優位性（#5）が30%評価のため、CAGR接続の上限は35%"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "multi_step", "reasoning": "多角化→安定→資本コスト→EPSは4段階以上の間接的因果チェーン"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4発言"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "優位性（#5）が30%評価のため上限35%。因果チェーンも4段階以上で間接的すぎる。35%",
+      "power_classification": "なし",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "小規模・中規模M&A規律（ヘルスケア分野特化、返戻率基準を持つ選定能力）",
+      "evidence": "Q4 FY2014 Q&A CEO発言: 'we're quite disciplined...when there's an elephant stampede, get out of the way, don't compete with the elephants so let's really stay focused on transactions that may be below the radar screen when it comes to auctions'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_10_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Pattern III（能力over結果）に部分的に該当。M&A規律の方向性は明確"
+        },
+        {
+          "source": "KB1-T rule_10_t Q&A bonus",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Q&Aでの率直な能力説明。準備発言より信頼性高い"
+        },
+        {
+          "source": "lack of specific examples",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "具体的なM&A断念事例なし。CHD#1（70%）と比較して断念例の開示なしで50%限界"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_pass", "reasoning": "M&A規律の説明（小型重視、高バリュエーション回避）は仕組みとして機能"},
+        {"rule": "rule_8_t", "verdict": "pass", "reasoning": "elephant stampede回避という組織的判断規律を優位性として評価"},
+        {"rule": "rule_10_t", "verdict": "partial", "reasoning": "意図的な不参加の姿勢は示すが具体的断念事例なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_III", "matched": true, "effect": "positive", "reason": "能力・仕組みとしてのM&A規律評価。戦略ではなく組織的判断規律として機能"}
+      ],
+      "overall_reasoning": "M&A規律の方向性は明確だが具体的な断念例がなく50%。「elephant stampede回避」という組織原則は評価できるが、CHD#1の明示的断念事例と比べると証拠が薄い。Q&A発言の率直さはプラス評価",
+      "power_classification": "Process Power（M&A規律）",
+      "evidence_sources": ["Q4_FY2014_qa_session"]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Fresenius Kabi の新興市場（特に中国・アジア）における医療栄養・IV製品の市場ポジション",
+      "evidence": "Q4 FY2013 CEO発言: 'China sales about EUR 500 million, almost 3/4 of that revenue came from our leading position in the medical nutrition market that we enjoy in China.' Q4 FY2014: '強い中国成長継続期待'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Pattern A（結果を原因と取り違え）。中国EUR500M売上という市場ポジション（結果）の報告が中心。能力（現地規制対応、流通ネットワーク）の説明薄い"
+        },
+        {
+          "source": "government price intervention risk",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "2013年中国政府価格引き下げリスクが優位性の持続性に疑問"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_fail", "reasoning": "市場リーダーシップ（結果）の報告が中心。能力の説明が薄い"},
+        {"rule": "rule_7_t", "verdict": "weak", "reasoning": "中国現地競合（B.Braun, Baxter）との比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "市場ポジション（結果）を競争優位として提示。能力の説明なし"}
+      ],
+      "overall_reasoning": "中国医療栄養リーダーシップは事実だが政府価格介入リスクと競合比較の不足。KB2-T Pattern A（結果→優位性の転倒）に該当。35%",
+      "power_classification": "Cornered Resource（市場ポジション、低評価）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場ポジション → 中国・アジアの医療支出増加 → ダブルデジット有機成長継続 → Kabi売上CAGR 5-8%貢献",
+      "evidence": "Kabi新興市場のダブルデジット有機成長継続期待",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "base advantage score",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "優位性（#8）が35%評価のため、CAGR接続上限は40%"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "direct", "reasoning": "新興市場ポジション→医療支出増加→成長は比較的直接的"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4での提示"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "接続の論理は明確だが優位性（#8）が35%評価のため上限40%",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "Fresenius Vamed のプロジェクト-サービス転換能力（収益安定化）",
+      "evidence": "Q4 FY2013 CEO発言: 'cautiously shifted its project and service business mix from roughly 70/30 to less than 60/40 over the past 5 years...service contracts bring more stability...typically multiyear' Q4 FY2014: 'revenue share of services increased by 3 percentage points to 46%'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "scale limitation",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Vamed全体の規模が小さくFresenius全体への影響が限定的"
+        },
+        {
+          "source": "geopolitical risk",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "地政学リスク（ロシア、ウクライナ）依存が高い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "pass", "reasoning": "70/30→60/40→54/46への移行は能力（ミックス管理力）として評価可能"},
+        {"rule": "rule_2_t", "verdict": "pass", "reasoning": "サービス契約への転換能力という名詞属性として表現可能"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_III", "matched": true, "effect": "positive", "reason": "能力over結果。ミックス転換という組織的能力を評価"}
+      ],
+      "overall_reasoning": "ミックス転換能力は評価できるが、Vamedの規模（全社売上の数%）と地政学リスクにより限定的。40%",
+      "power_classification": "Process Power（ミックス管理能力）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "FRE",
+    "claim_count": 16,
+    "scored_count": 5,
+    "target_claim_ids": [6, 7, 8, 9, 10],
+    "batch_index": 1,
+    "batch_total": 4,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 0,
+      "0.5": 1,
+      "0.4": 2,
+      "0.35": 2,
+      "0.3": 0,
+      "0.1": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_III_capability_over_result.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "ticker": "ROG",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-01-30) / Q4 FY2014 Earnings Call (2015-01-28)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "統合型ファルマ・診断薬プラットフォームによるパーソナライズドヘルスケアの実現能力",
+      "descriptive_label": "ファルマ・診断薬垂直統合プラットフォーム",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Dan O'Day): 'we have an ability — a unique opportunity to combine many, many agents around this immunotherapy circle.' And: 'Foundation Medicine...gives us even a more comprehensive look at our portfolio.' Also Roland Diggelmann: '250 projects internally between our Pharma and other diagnostics entity.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Dan O'Day / Roland Diggelmann",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "診断薬×製薬の統合能力（能力・仕組み）を評価。250の共同プロジェクトが具体的証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ファルマ+診断薬の垂直統合は競合が短期で再現困難な構造的優位。純粋ファルマ企業には持ちえない"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "Novartis、Pfizer等の純粋ファルマ企業は診断薬部門を持たず、同等の統合インフラを有しない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "精密医療・コンパニオン診断薬が主流化する環境でファルマ+診断薬統合は業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付け（250プロジェクト）あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ファルマ×診断薬の垂直統合はRocheが競合大手に対して構造的に差別化できる点。ただし「診断薬はRocheのPharmaが主にパーソナライズドヘルスケアを進めるための補完的手段」との見方もできるため、真の独自Powerとしての強度には疑問が残る"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ファルマ+診断薬統合 → コンパニオン診断薬増加 → 承認加速・パイプライン成功率向上 → 売上CAGR + 2-3pp",
+      "descriptive_label": "統合プラットフォーム→承認加速→売上成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "3ステップの因果チェーン（統合→コンパニオン診断→承認加速→売上）でやや間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果関係は3ステップで「まあ納得」レベル。統合プラットフォームが直接的に売上成長に繋がるメカニズムの説明は不十分"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "HER2フランチャイズにおける複数製品の組み合わせによる市場支配力",
+      "descriptive_label": "HER2フランチャイズ多製品エコシステム",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Dan O'Day): 'We've reset the standard of care in first-line metastatic and in second-line metastatic cancers with Perjeta, Herceptin combination and Kadcyla...Perjeta in first-line setting United States were around 55%...Kadcyla in second line, in the U.S. were above 40%'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Dan O'Day",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11, 12],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "市場シェア（55%、40%）は結果であり、それを生む能力の説明が主。シェアを「結果」として識別"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Perjeta一線55%シェア、Kadcyla二線40%超という定量的市場データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "HER2陽性乳がん領域で競合が単剤で展開するのと異なり、Roche は Herceptin+Perjeta+Kadcyla の多剤展開が可能"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "HER2陽性乳がん市場でのペルジェタ・カドサイラの多段階ラインアップは業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "シェアは結果であり優位性の根源説明は不十分（rule_1_t）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "複数製品でHER2治療の各ラインをカバーする能力は競合優位。ただしシェア数値（結果）が先行し、それを持続させる能力・仕組みの説明は浅い。CLEOPATRA試験等の科学的差別化は評価できる"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "HER2フランチャイズ多製品展開 → 一線・二線両方での市場支配 → HER2フランチャイズ売上CAGR +15-20%",
+      "descriptive_label": "HER2多剤展開→両ライン支配→売上成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（多剤展開→両ライン高シェア→売上）で開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年のHER2フランチャイズ20%成長と市場シェアデータで裏付けられた直接的メカニズム"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "がん免疫療法における最も包括的なパイプラインと組み合わせ試験ポートフォリオ",
+      "descriptive_label": "がん免疫療法包括パイプライン",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Dan O'Day): 'we now have 25 disclosed combinations in cancer immunotherapy in the clinic...at least 11 different Phase III PD-L1 trials running in 2015...we have some of the very best experts in immuno-oncology in the world that reside within the Genentech-Roche group'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Dan O'Day",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "25の開示済み組み合わせ試験と世界最高峰の免疫腫瘍専門家チームは能力・仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "25組み合わせ試験、11 Phase III PD-L1試験という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "PD-L1+社内外の薬剤を組み合わせる能力は長期蓄積。ただし外部ライセンスで補完している部分もある"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "BMS、MSD（Merck）も強力なIO競合。PD-1 vs PD-L1の差異はまだ不確定"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "BMSのニボルマブ、MSDのペムブロリズマブとの競合が激しく相対的差別化が不確定",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4での体系的な説明",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "IO分野の包括的パイプラインは評価できるが、BMS/MSDとの競合を考えると相対的優位性は50%レベル。PD-L1 vs PD-1の違いがどれほどの差別化につながるかは2015年時点では不確定"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "IO包括パイプライン → 複数がん種での承認 → 新規売上カテゴリ創出",
+      "descriptive_label": "IOパイプライン→複数がん種承認→新規売上",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "3ステップ（包括パイプライン→複数がん種承認→新規売上）でやや間接的。Phase III結果次第"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "IO市場全体の成長が前提。競合との相対的シェアが不確定のため、確度50%"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "診断薬事業における世界最大規模の自動化ラボラトリープラットフォームと最広メニュー",
+      "descriptive_label": "診断薬自動化プラットフォームと最広メニュー",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Roland Diggelmann): '16 years in a row now that the immunodiagnostics grows at a double-digit rate...we configure any lab, low, mid, high throughput requirements with our modular systems and automate the laboratory process...reagents demand will twofold in about the next 7 years. So we're building up an extra and a first manufacturing site in China'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Roland Diggelmann",
+      "section": "prepared_remarks",
+      "supported_by_facts": [14],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "モジュラー型プラットフォームと最広メニューという能力・仕組みとして評価。16年連続二桁成長は結果として区別"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "16年連続二桁成長、60% ビタミンD欧州市場シェアという定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プラットフォーム規模と最広メニューの組み合わせは長期蓄積による構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "検査室の効率化・自動化需要が高まる市場環境と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "16年連続二桁成長という長期実績の裏付け",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "診断薬の世界トップとしての規模・メニュー優位は構造的。Abbott/Siemens等との差別化が明確で、16年連続二桁成長が長期的な仕組みの証拠"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "診断薬プラットフォーム規模 → 新興市場での急速な浸透 → 診断薬売上CAGR +6-8%",
+      "descriptive_label": "診断薬プラットフォーム→新興市場浸透→売上成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（プラットフォーム規模→新興市場浸透→売上）で開示データで検証可能。中国23%成長が実証"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年診断薬6%成長、中国23%成長、新興市場強成長の実績データで裏付けられた直接的メカニズム"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "生物製剤製造における技術的ノウハウと大規模バイオ製造ネットワーク",
+      "descriptive_label": "生物製剤CMC製造ノウハウと製造ネットワーク",
+      "evidence_from_transcript": "Q4 FY2013 Q&A (Dan O'Day): 'the knowledge in CS. Beyond the cost, just a simple know-how and expertise associated with biologics is significant...What it takes to put an antibody, a linker and the chemotherapy in just the right balance so that the chemotherapy isn't released before it hits the tumor cell...this is really, really a significant competitive advantage.' Q4 FY2014 (Alan Hippe): manufacturing investments of CHF 800M over 5 years.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Dan O'Day / Alan Hippe",
+      "section": "qa_session",
+      "supported_by_facts": [15],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ADC製造（抗体+リンカー+化学療法薬の結合技術）という具体的な製造能力・仕組みを評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長年蓄積の生物製剤製造ノウハウは外部から模倣困難。CHF 800Mの設備投資が規模を示す"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "ADC技術はKadcylaの製造で独自の技術蓄積。小規模バイオテクが同等の技術を持てない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Q&Aでの発言（実際の製品での実証あり）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ADCやバイオシミラー対抗のHerceptin皮下注製剤等の複雑な生物製剤製造能力は真の構造的優位。CEO自身が『significant competitive advantage』と明言し、製品での実証あり"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "生物製剤製造能力 → 複雑なADC製品ラインアップ実現 → 製品差別化→価格プレミアム維持",
+      "descriptive_label": "CMC能力→ADC差別化→価格プレミアム",
+      "source_advantage": 9,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（CMC能力→ADC差別化製品→価格プレミアム）で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Kadcylaのような複雑なADC製品は競合が製造困難で、プレミアム価格を維持できる。直接的なCAGR接続"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Roche FY2013: 売上6%増（現地通貨）、コアEPS 10%増、27年連続増配",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 7]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "HER2フランチャイズ FY2014: 20%成長、Perjeta一線シェア55%（米国）、Kadcyla二線シェア40%超（米国）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Roche IO: 25の開示済み組み合わせ臨床試験、2015年に11のPD-L1 Phase III試験予定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "Professional Diagnostics: 16年連続二桁成長、欧州ビタミンD市場シェア60%、中国診断薬売上CHF 10億超",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "生物製剤製造ネットワーク拡張: 5年間でCHF 8億のCapEx投資予定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [9]
+    }
+  ]
+}

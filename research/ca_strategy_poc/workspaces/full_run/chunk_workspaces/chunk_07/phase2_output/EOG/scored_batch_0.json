@@ -1,0 +1,136 @@
+{
+  "ticker": "EOG",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "EOG-001",
+      "claim": "EOGは業界最先端の完成技術（コンプリーション技術）と探索地質学的専門知識により、同等の資産から競合他社より高い収益率を引き出す能力を持っている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "技術・専門知識という能力の主張。定量的証拠（$65で$95時と同等リターン）あり"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "完成技術・地質専門知識は能力・仕組みとして評価可能。'superior ability'という表現が能力を示す",
+        "rule04_quantitative": "$65油価で$95時と同等リターンという具体的な定量データあり。+20%評価向上要因",
+        "rule11_industry_structure": "シェール技術の優位性は地質・完成技術の差別化が実際に存在する領域。業界構造との合致"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 技術能力（能力）→高収益率（結果）という正しい因果方向",
+        "pattern_I": "quantitative_differentiation: '$65油価で$95時と同等リターン'という定量的差別化",
+        "adjustment": "+20% (定量データ)"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#1 (70%): 退職率9% vs 業界20%+という定量比較。EOG-001も$65/$95という定量データあり→70%相当",
+        "final_reasoning": "定量的証拠（油価差異×収益率）があり、技術能力の説明も具体的。シェール業界でのプロセスパワーとして評価"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "'$65 oil with better returns than $95 oil 2-3 years ago'という定量的証拠が明確（KB2パターンI適合、KB1ルール4適合）。シェール業界での完成技術差別化は実在する競争優位性の源泉であり、業界構造との合致（KB1ルール11）。長年のシェール経験（'longer than most people'）という先行者優位も示唆。競合との直接比較データは限定的だが、定量的な改善実績が優位性を裏付ける。70%が妥当。"
+    },
+    {
+      "id": "EOG-002",
+      "claim": "EOGの自社所有砂プラント（3工場）と多様なベンダーネットワークにより、フラッキング材料コストを競合より有利に管理できる",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "自社所有インフラ（砂プラント3工場）という具体的な能力の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "砂プラント3工場という自社資産は能力・仕組みとして評価可能",
+        "rule04_quantitative": "3工場という具体数字あり。コスト優位の定量化はなし",
+        "rule07_pure_competitor": "競合他社（Pioneer Natural Resources等）との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 砂プラント所有（能力）→コスト管理優位（結果）",
+        "pattern_I": "quantitative_differentiation: 3工場という数値はあるが、コスト削減率等の比較データなし",
+        "adjustment": "+0 (競合比較なし)"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#1 (70%): 競合比較データあり→70%。EOG-002は競合比較なし→50%相当",
+        "final_reasoning": "自社砂プラント3工場という具体的な資産（コーナードリソース要素あり）だが、競合比較なしで差別化の大きさ不明"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "砂プラント3工場＋複数ベンダーネットワークという具体的なインフラ所有は実在する競争優位性の基盤。垂直統合によるコスト管理能力として評価可能（KB2パターンIII適合）。しかし他の大手E&P（Pioneer, Devon等）も同様の調達戦略を持つ可能性があり、競合との相対優位の大きさが不明。3工場という数量は具体的だが、これがコスト優位に与える定量的影響の開示なし。50%が妥当。"
+    },
+    {
+      "id": "EOG-003",
+      "claim": "Eagle Ford、Bakken、Delaware Basinにおける高品質な既開発エリアのコアポジションが、競合より優れた掘削リターンを継続して生み出している",
+      "power_type": "cornered_resource",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "地質的資産（コアポジション）という希少資源の主張。ROE16%, ROCE14%という定量データ"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "コアポジション（資産）は能力・仕組みというより保有資産。ROE/ROCEは結果",
+        "rule04_quantitative": "ROE16%, ROCE14%という数値あり。但し競合比較なし",
+        "rule06_structural": "コアアクレッジはコーナードリソースとして構造的に評価可能"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "ROE/ROCE（結果）を優位性として提示する面あり。ただしコアアクレッジという資産自体は能力ではなく資源",
+        "pattern_IV": "structural_market_position: 主要シェール盆地でのコアポジションという構造的優位性",
+        "adjustment": "+0 (資産の希少性は認められるが競合比較なし)"
+      },
+      "kb3_calibration": {
+        "reference_case": "コアアクレッジは典型的なCornered Resource。独占的でなくても先行者優位として評価可能→50-70%",
+        "final_reasoning": "'equal to or better than Eagle Ford, Bakken and Permian'という基準設定が自社資産の質の高さを示唆。ROE/ROCEデータが定量的裏付け"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "Eagle Ford、Bakken、Delaware Basinという主要シェールプレイでのコアポジションはCornered Resource（KB2パターンIV適合）として評価。ROE16%/ROCE14%という財務実績が定量的裏付け（KB1ルール4適合）。「新規アクレッジはこれらと同等以上でなければ取得しない」という選別基準が既存資産の質の高さを示す。ただし競合の同等エリアでのリターンとの直接比較がなく、コアポジションの相対優位の大きさが不明。70%が妥当（強い定量データと資産希少性）。"
+    },
+    {
+      "id": "EOG-004",
+      "claim": "Delaware Basinにおける継続的な技術・ターゲティング改善により、2年間で推定正味資源量を74%増加させた地質技術能力を持っている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "74%増加という強力な定量データと技術能力の明確な主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「technology and targeting」という能力説明→「74%増加」という結果。正しい因果方向",
+        "rule04_quantitative": "74%増加、2.35 billion BOEという具体的な数値。+20%評価向上",
+        "rule11_industry_structure": "技術革新による資源量再評価は E&P 業界での実質的差別化要素"
+      },
+      "kb2_evaluation": {
+        "pattern_I": "quantitative_differentiation: 74%増加という明確な定量的差別化",
+        "pattern_III": "capability_over_result: 技術・ターゲティング能力（能力）→資源量増加（結果）",
+        "adjustment": "+20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "2年間で74%増加という実績は他社との相対比較がなくても能力の証拠として有力",
+        "final_reasoning": "'proven track record of increasing a play's potential'という表現が能力の継続性を示す"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "2年間で推定資源量74%増加という具体的な定量データ（2.35 billion BOE）は強力な証拠（KB2パターンI適合、KB1ルール4適合）。技術・ターゲティング改善が資源量拡大をもたらすという因果チェーンが明確。「proven track record」という実績への言及も能力の継続性を示す。競合他社の同期間での資源量変化との比較があれば90%評価も可能だったが、現状では70%が妥当。"
+    },
+    {
+      "id": "EOG-005",
+      "claim": "低油価環境下での掘削完了を戦略的に先送り（deferred completions）し、価格回復時に迅速に増産できる「ドリルド・ウンコンプリーテッド・ウェル」在庫戦略",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "DUC戦略の概念は財務的優位性を示唆するが、戦略説明に近い"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "DUC在庫管理は戦略的意思決定（戦略）に近く、構造的能力の説明ではない",
+        "rule08_strategy": "「deferred completions」は経営判断・戦略。この戦略を可能にする構造的根拠（財務余力等）の説明なし",
+        "adjustment": "-20%"
+      },
+      "kb2_evaluation": {
+        "pattern_F": "strategy_confusion: DUC戦略という意思決定を優位性として提示",
+        "adjustment": "-10%"
+      },
+      "kb3_calibration": {
+        "reference_case": "CHD#4 (30%): 成長加速という戦略を優位性とするパターン。DUC戦略も同様の罠",
+        "final_reasoning": "他の独立系E&P（Pioneer, Concho等）も同様のDUC戦略を採用可能。Emerson固有の能力ではない"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "DUC（Drilled Uncompleted Well）在庫戦略は概念的に理解可能だが、これは経営判断・戦略の説明（KB1ルール8: 戦略≠優位性）。「$10油価上昇で大幅リターン改善」という感度分析はあるが、なぜEOGだけがこの戦略を実行できるのか（財務体力の相対的優位、土地保有期間等）の構造的説明がない。他の大手独立系E&Pも同様の戦略を採用可能。KB2パターンFに適合。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

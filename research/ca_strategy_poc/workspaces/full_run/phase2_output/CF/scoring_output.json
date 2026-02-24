@@ -1,0 +1,266 @@
+{
+  "ticker": "CF",
+  "scored_claims": [
+    {
+      "claim_id": "CF-001",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "北米シェールガスによるコスト優位性（$2-3/MMBtu vs 中国石炭$10/MMBtu相当）は定量的に示された構造的コスト優位",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「北米の豊富で低コストな天然ガスという恒久的優位性」という構造的な資源コスト優位性の説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "シェールガス革命による恒久的コスト優位性は構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "$2-3/MMBtu vs 中国石炭$10/MMBtu相当という定量的なコスト差"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "グローバルコストカーブの最低コスト生産者というポジション"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "note": "中国石炭ベース生産者との具体的なコスト比較"
+        }
+      ],
+      "confidence_score": 0.9,
+      "confidence_rationale": "「北米天然ガスという恒久的優位性（enduring advantage）」という明確な表現と、$2-3/MMBtu vs 中国石炭$10/MMBtu相当という具体的な定量比較、「非常に幅広い市場条件下でも高収益を維持」というSensitivity分析（Slide 11）の存在は、dogma.md ルール11（業界構造との合致）に最高度に適合。シェールガス革命の恩恵を直接受けるポジションであり、競合（中東・中国）が短期間でこのコスト差を縮小することは困難。90%（かなり納得）",
+      "cagr_connection_score": 0.9,
+      "cagr_connection_rationale": "北米低コストガス（$2-3/MMBtu）→業界最低コスト製造→グローバルコストカーブ下位ポジション→価格サイクル全体での高収益という直接かつ開示データで検証可能なメカニズム"
+    },
+    {
+      "claim_id": "CF-002",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "ターミナルネットワーク + バージ・鉄道ネットワークは竸合が複製困難な物流インフラ",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「ターミナル・レール・バージ資産が一体となったネットワーク」という具体的なインフラ説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "物流インフラネットワークは構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "「単一設備での操業者と比べて大幅な優位性」という具体的な競合比較"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "note": "「ターミナル・レール・バージがなければ大幅に不利」という直接的な競合比較"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "NuStar・Magellanパイプライン・バージ・鉄道という具体的な物流インフラの説明と「単一施設競合との大幅な優位性」という明確な比較は高評価。ドナルドソンビルの位置（輸出ドック直結）も独自の構造的優位。拡張プロジェクト完了後の生産25%増加と組み合わさることで更に強化。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "物流ネットワーク→農業需要のピーク時の供給確実性→価格プレミアム実現→高EBITDA維持というメカニズムは概念的に明確"
+    },
+    {
+      "claim_id": "CF-003",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "アンモニア流通ターミナルシステム（パイプライン・バージ）は物理的に複製困難な希少資源",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "NuStar・Magellanパイプライン + バージシステムという具体的な物理インフラの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "アンモニア流通インフラは構造的希少資源"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "中西部農業市場への専用パイプライン・バージシステムは複製困難な物理インフラ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「1週間〜10日間の集中出荷期に対応できる体制が整っている」という具体的な能力説明と、NuStar・Magellanパイプライン + バージシステムという物理インフラの存在は高評価。アンモニアは特殊な低温・高圧輸送が必要で、インフラ複製コストは非常に高い。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "ターミナルシステム→農業ピーク需要への確実な供給→高価格実現・ボリューム確保という接続は2ステップで直接的"
+    },
+    {
+      "claim_id": "CF-004",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "ドナルドソンビルの輸出ドック直結の位置的優位性を活用した最適販売配分は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「北米農業市場と国際市場を比べて最大ネットバックを実現する意思決定プロセス」の説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "立地優位性（輸出ドック直結）+ 意思決定プロセスは構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「EBITDAではなく税引き後キャッシュフロー最大化を目指す新しい意思決定フレームワーク」という能力の説明"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「生産の50%を輸出可能なドック直結の立地」という物理的優位性と「農業市場・国際市場のどちらでも最大ネットバックを実現する意思決定能力」は明確な競争優位。新しい税引き後CF最大化フレームワークへの言及も高評価。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "販売最適化能力→内外市場の価格最大化→EBITDA・CF成長という直接的なメカニズム"
+    },
+    {
+      "claim_id": "CF-005",
+      "power_type": "Counter-Positioning",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "DEF事業は Counter-Positioning というより新規成長セグメント（年30-40%成長）への参入",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "DEF事業の成長率（30-40%/年）は結果。能力の具体的な説明（なぜCFがDEF市場で優位なのか）が弱い"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "DEF事業は農業系事業に対する補完的多様化要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "DEF市場参入（戦略）を Counter-Positioning（優位性）として分類しているが、Counter-Positioning の Barrier の説明がない"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "DEF成長→非農業依存低減→競争優位という因果関係が飛躍"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "DEF事業の年30-40%成長は注目に値するが、これが「Counter-Positioning」として分類される根拠（既存大手が合理的に模倣できない構造的理由）の説明がない。DEF市場はCFに特有の優位性がある説明がなく、他の化学・農業企業も参入できる。成長率は結果（Pattern A）。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "DEF市場30-40%成長→CF全体のボリューム成長に貢献という接続は理解できるが、成長能力の根拠不足"
+    },
+    {
+      "claim_id": "CF-006",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "製品間の生産配分最適化とターミナルポジショニング能力は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「先物・インデックス・スポット販売を組み合わせてネットバックを最大化する商業実行力」という具体的な能力説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "販売最適化能力は構造的なプロセス能力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「Forward・Index・Spotの3種類の価格形態を活用」という具体的な商業実行プロセスの説明"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「Forward・Index・Spot販売の組み合わせ」という具体的な商業実行手法と、Q3 2015での「3百万トンのUANフィルプログラム」という定量的実績は高評価。ただし競合（Terra、Mosaic等）も同様の商業実行能力を持ちうるため、相対的差別化の証拠はやや弱い。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "商業実行最適化→市場平均以上の価格実現→EBITDA最大化という2ステップの直接接続"
+    },
+    {
+      "claim_id": "CF-007",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "旧テラ設備の系統的アップグレードと稼働率向上は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「DCSシステム・冗長アンモニアタンク・制御システムの系統的アップグレード」という具体的な施設改善プロセス"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "設備アップグレードによる稼働率向上は構造的なプロセス能力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「CF標準に合わせた系統的なアップグレードプログラム」という能力の説明"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "旧Terra設備のCF標準への系統的アップグレード（DCSシステム、冗長タンク）と「$300-400M/年の標準維持CapEx」への正常化という具体的な説明は一定の評価。ただしこれは業界標準的な設備管理であり（Pattern B）、CF に固有の競合比差別化として評価するには証拠が弱い。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "設備信頼性向上→稼働率向上→生産コスト低下という接続は理解できるが定量的な差別化データが不足"
+    },
+    {
+      "claim_id": "CF-008",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "2016年全ガス需要の$3/MMBtu固定ヘッジは具体的な財務リスク管理プロセス",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「$3フラットで段階的にヘッジを構築した」という具体的な意思決定プロセスの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "ガスヘッジは補完的な財務リスク管理。構造的優位性（CF-001）の補完"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "ガス先物ヘッジは多くの窒素肥料生産者が行う一般的手法"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「市場観察→段階的ヘッジ構築」という意思決定プロセスの説明"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "2016年全ガス需要を$3/MMBtuで固定するヘッジ実行は具体的な財務管理能力。ただし競合も同様のヘッジが可能（Pattern B）であり、CFのガスヘッジが競合比で特に優れているかの証拠がない。CF-001（構造的低コスト）の補完的要素として位置付けるべき。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "2016年コスト確定→業績予測可能性の向上→投資家安心感という接続は理解できるが、長期的なCAGR成長への貢献は補完的"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "batch_count": 2
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "ticker": "GKN",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "自動車ドライブライン（CVJ）における世界最大シェアと、全輪駆動（AWD）システムへの技術移行による車両あたりコンテンツ増加",
+      "phase1_confidence": 70,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_IV_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_11"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "AWD SUVで2WD比8-9倍コンテンツという定量的差別化は強い証拠。dogma「定量的裏付けがあると納得度が上がる(+20%程度)」。ただし競合名明示なし",
+          "delta": 0
+        },
+        {
+          "rule": "rule_11",
+          "note": "SUV・AWD市場成長と企業ポジションの合致。dogma「業界構造と企業ポジションの合致を最も高く評価」",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 70,
+      "seven_powers_type": "Scale Economies / Process Power",
+      "overall_assessment": "AWD 8-9倍コンテンツ量という定量的差別化と市場成長との合致が強い証拠。年間受注GBP700Mも具体的。70%維持が妥当。"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "CVJ/AWDリーダーシップ → 車両あたりコンテンツ増加 → Driveline売上アウトパフォーム → 連結CAGR",
+      "phase1_confidence": 70,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_II_t"],
+      "dogma_rules_applied": ["rule_5"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_5",
+          "note": "Driveline +8% vs 市場+3%という実績データで検証可能。直接的2ステップ接続。dogma高評価パターン「過去実績との整合性(70%)」",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 70,
+      "seven_powers_type": "Scale Economies",
+      "overall_assessment": "Driveline有機成長が市場+5ppアウトパフォームという実績で直接検証済み。dogma基準で70%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "航空宇宙向け構造部品・エンジン部品の高度製造技術と$3B規模のBoeing/Airbus向け長期プログラム受注バックログ",
+      "phase1_confidence": 70,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_6"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_6",
+          "note": "Boeing/Airbus認定サプライヤー地位のスイッチングコスト型構造的優位は認められる",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 70,
+      "seven_powers_type": "Cornered Resource / Process Power",
+      "overall_assessment": "$3B新規受注・9年間バックログという定量証拠と、認定変更困難なスイッチングコスト構造。70%維持。"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Aerospace長期プログラム → Boeing/Airbus生産率上昇 → 連結CAGR下支え",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_II_t"],
+      "dogma_rules_applied": ["rule_5"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_5",
+          "note": "直接的2ステップだが軍需減少が相殺要因。-5ppのまま55%",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 55,
+      "seven_powers_type": "Cornered Resource",
+      "overall_assessment": "商業機のランプアップが直接的ドライバーだが軍需減少の相殺リスクあり。55%。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルなOEMカスタマーとの長期パートナーシップと、世界40工場のDriveline製造フットプリント",
+      "phase1_confidence": 40,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_B_t_partial"],
+      "dogma_rules_applied": ["rule_3"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_3",
+          "note": "グローバルフットプリントはTier1サプライヤー共通。dogma「業界共通の能力」却下基準に近い。-10pp",
+          "delta": -10
+        }
+      ],
+      "calibrated_confidence": 30,
+      "seven_powers_type": "Scale Economies",
+      "overall_assessment": "業界共通属性につきdogma rule_3で30%に下方調整。Magna, BorgWarner等も同様のフットプリント保有。"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Powder Metallurgy部門における「Design for PM」高付加価値技術",
+      "phase1_confidence": 50,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "「hard-to-make parts」・GKN exclusive技術は認められるが競合比較データなし。50%維持",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 50,
+      "seven_powers_type": "Process Power / Cornered Resource",
+      "overall_assessment": "専門技術は認められるが競合比較データ不足。50%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "high_70_90": 3,
+      "medium_50_65": 2,
+      "low_10_40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

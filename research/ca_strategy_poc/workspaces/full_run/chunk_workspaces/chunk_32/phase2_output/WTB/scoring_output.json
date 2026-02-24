@@ -1,0 +1,233 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier InnのUKネットワーク規模による立地密度の優位性（競合比172拠点以上の差）",
+      "descriptive_label": "国内ネットワーク密度優位（Scale Economies / Branding）",
+      "seven_powers_type": "Scale Economies",
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "定量的差別化（172拠点差）はKB3 few-shot の high confidence 事例に準ずる。ネットワーク密度拡大トレンド（134→172）が持続性を示す",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_I_t（定量的差別化）に合致。Travelodgeとの具体的拠点数比較あり。Scale Economiesとして市場構造との適合性高い。調整不要で70%維持。",
+      "dogma_applied": [
+        "dogma_rule_3",
+        "dogma_rule_7"
+      ],
+      "is_primary": true
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Inn直販チャネル（premierinn.com）によるOTA手数料回避と顧客粘着力",
+      "descriptive_label": "直販デジタルチャネル優位（Switching Costs / Process Power）",
+      "seven_powers_type": "Switching Costs",
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_III_t",
+      "kb3_calibration_note": "80%直販比率は定量的だが競合比較なし。KB3 mid confidence 事例に準ずる",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_III_t（能力>結果）に合致。80%という定量値は評価できるが、Travelodge等競合との比較不在で competitive differentiation が確認できない。50%維持。",
+      "dogma_applied": [
+        "dogma_rule_3"
+      ],
+      "is_primary": true
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Costaブランドの英国市場におけるカテゴリー支配（ブランド選好スコアで競合を大幅リード）",
+      "descriptive_label": "コーヒーショップブランド覇権（Branding）",
+      "seven_powers_type": "Branding",
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "ブランド優位はYouGov指標で示されるが背後の仕組みの説明が不足。KB3 mid confidence に準ずる",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Starbucks・Caffe Neroとの直接比較あり（KB2 pattern_I_t）。しかしrule_1_t「能力vs結果」の懸念が残る。Branding Powerとしては認識できるが「なぜ選ばれるか」の構造説明不足。50%維持。",
+      "dogma_applied": [
+        "dogma_rule_3",
+        "dogma_rule_7"
+      ],
+      "is_primary": true
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Innのダイナミックプライシング能力による収益最大化（高占有率でのARR成長）",
+      "descriptive_label": "独自ダイナミックプライシングシステム（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "「still quite a manual process」という開示はKB3 low confidence 事例（能力の限界開示）に該当",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）に近い。業界共通のRevenue Managementとの差別化が不明確。「still manual」開示が能力の未成熟を示す。30%維持。",
+      "dogma_applied": [
+        "dogma_rule_5"
+      ],
+      "is_primary": false
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Whitbreadの強固なバランスシートによる不動産取得優位性（フリーホールド物件の競争的取得）",
+      "descriptive_label": "財務力に基づく不動産取得優位（Cornered Resource）",
+      "seven_powers_type": "Cornered Resource",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "財務強度は競争優位の前提条件として評価されるが、Cornered Resourceとしての唯一性が欠如。KB3 low confidence 事例",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）に合致。バランスシートの強さは財務戦略であり、競合が財務を改善すれば模倣可能。Travelodgeとの比較では一時的優位に過ぎない。30%維持。",
+      "dogma_applied": [
+        "dogma_rule_5"
+      ],
+      "is_primary": false
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "従業員エンゲージメント80%（業界水準を大幅に上回る）による顧客サービス品質の持続的優位",
+      "descriptive_label": "高従業員エンゲージメントによるサービス品質（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_D_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "定性的のみ（業界比較なし）。KB3 low confidence 事例",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_D_t（定性的のみ）に合致。80%という数値はあるが業界ベンチマーク比較がなく、ホスピタリティ業界での相対的優位が確認できない。模倣可能性も高い。30%維持。",
+      "dogma_applied": [
+        "dogma_rule_4"
+      ],
+      "is_primary": false
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Costa UKにおける継続的製品イノベーション能力（食品・飲料ラインの定期更新でトランザクション成長を牽引）",
+      "descriptive_label": "製品イノベーション・バリスタ品質（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_B_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "業界共通の取り組み（製品イノベーション）。KB3 low confidence 事例",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_B_t（業界共通行為）に合致。Starbucks・Caffe Neroも同様の製品革新を実施。差別化が構造的でなく戦略的意思決定の域を超えない。30%維持。",
+      "dogma_applied": [
+        "dogma_rule_5"
+      ],
+      "is_primary": false
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Innのハブモデル（hub by Premier Inn）によるCentral Londonでの新たな市場アクセス",
+      "descriptive_label": "小型都心型ハブフォーマット展開（Counter-Positioning / Scale Economies）",
+      "seven_powers_type": "Counter-Positioning",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "Q2（半期）発表で初期段階。KB3 low confidence 事例（実績未確立）",
+      "final_confidence": 0.2,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）+ 半期情報（KB rule_12_t調整）。1号店のみで競争優位確立前。dogma.md quarterly discount適用で-10%。30%-10%=20%。",
+      "dogma_applied": [
+        "dogma_rule_9"
+      ],
+      "is_primary": false
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "Premier Innのネットワーク拡大（年4,500-5,500室）× RevPAR成長（8-9%）→売上CAGR 13-15%",
+      "descriptive_label": "室数拡大×RevPAR成長→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "2ステップの直接因果（室数×RevPAR=売上）は最もシンプルで検証可能な経路。KB3 high confidence 事例",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）に合致。室数拡大は pipeline データで検証可能、RevPAR実績も開示済み。過去5年11%/年の実績と整合。70%維持。",
+      "dogma_applied": [
+        "dogma_rule_6"
+      ],
+      "is_primary": true
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "Costa UKのLFL取引件数成長（5-6%）× 新規出店（150-200店/年）→システム売上CAGR 15-20%",
+      "descriptive_label": "Costa LFL×店舗拡大→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "2ステップ直接因果（LFL×新規出店）。2020 target GBP2.5bn開示で長期視点も確認可能",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）に合致。LFL 5-6%と出店150-200店/年は具体的に開示済み。UK コーヒーショップ市場成長とも整合。70%維持。",
+      "dogma_applied": [
+        "dogma_rule_6"
+      ],
+      "is_primary": true
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "直販比率80%の維持・向上→OTA手数料削減→利益率改善経路（利益CAGR + 1-2pp）",
+      "descriptive_label": "直販比率向上→マージン改善CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "2ステップだが定量的裏付け（OTA手数料率・マージン影響）が不開示。KB3 mid confidence 事例",
+      "final_confidence": 0.4,
+      "confidence_rationale": "経路は論理的だが、OTA手数料率が未開示でマージン貢献が定量化不可能。Phase1での-10%調整を維持してさらに若干下方修正。50%-10%=40%。",
+      "dogma_applied": [
+        "dogma_rule_6"
+      ],
+      "is_primary": false
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "ダイナミックプライシング高度化→高占有率期のARR成長→RevPAR改善→利益CAGR",
+      "descriptive_label": "DP高度化→ARR成長→RevPAR CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 40,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_C_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "3ステップ経路で「still manual」開示がある。KB2 pattern_C_t（因果の飛躍）に近い",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_C_t（因果の飛躍）に部分一致。DP「still manual」という開示が能力の限界を示し、経路の信頼性を低下させる。RevPAR改善は市場全体の回復の影響が大きく、DP貢献の分離が困難。40%→30%。",
+      "dogma_applied": [
+        "dogma_rule_6"
+      ],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 12,
+    "confidence_distribution": {
+      "70-80": 3,
+      "50-60": 2,
+      "30-40": 5,
+      "20-30": 1,
+      "40-50": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

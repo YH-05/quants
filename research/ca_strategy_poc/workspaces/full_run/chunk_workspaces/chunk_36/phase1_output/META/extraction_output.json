@@ -1,0 +1,289 @@
+{
+  "ticker": "META",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-28)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "モバイル広告における人物ベースターゲティング（People-based Marketing）の独自能力",
+      "descriptive_label": "実名制ユーザーデータ基盤によるPeople-based Marketing（Network Economies + Cornered Resource）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (COO Sandberg): 'We believe that the marketing -- that the market increasingly understands that we have the leading mobile ad product and are the only platform that delivers people-based marketing at scale.' Also: 'We also made progress improving ad relevance and measurement... re-launched Atlas to help marketers reach real people and measure results across multiple devices.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [3],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "実名制ユーザーデータに基づくターゲティング能力（仕組み）を評価。「唯一規模でpeople-based marketingを提供できる」という構造的優位性"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "「only platform that delivers people-based marketing at scale」という相対的優位性の明示。Googleは匿名クッキーベース、Twitterは規模で劣る"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "MAU 13.9億人、DAU 8.9億人（+18% YoY）、モバイル広告売上$2.5B（+100% YoY）、広告ARPU向上という定量実績"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "実名制の大規模ソーシャルグラフは競合が短期で構築困難。ネットワーク効果で規模が拡大するほど強化される構造"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "デジタル広告がTV/新聞からモバイルにシフトする業界構造と、Facebookのモバイル実名制ユーザーデータが完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量的裏付けと業界構造合致あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "People-based marketingの独自能力はNetwork Economies + Cornered Resourceとして評価。COOが「唯一規模で提供できる」と明示し、モバイル広告売上100%成長という定量実績で裏付け。70%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "People-based Marketing → 広告ARPU向上 + 広告主数増加 → 広告売上53%成長継続",
+      "descriptive_label": "ターゲティング優位→広告売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ターゲティング精度向上 → 広告主ROI改善 → 広告単価335%上昇 → 広告売上成長の2-3ステップ。Q4財務データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2014年広告売上53%成長という実績が裏付け"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ターゲティング → 広告単価向上 → 収益成長の経路は開示データで検証可能。ただし2015年以降の成長率鈍化リスクあり"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: MAU 13.9億人（+18% YoY）、DAU 8.9億人。広告売上$3.6B（+53%）、モバイル広告$2.5B（+100%、広告の69%）。広告単価+335%（インプレッション数-65%、右側広告再設計影響）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "直接的なソーシャルグラフによるネットワーク効果（友人・家族との繋がりがFacebookの粘着性を形成）",
+      "descriptive_label": "実名制ソーシャルグラフのネットワーク効果（Network Economies）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Zuckerberg): '1.39 billion people now use Facebook each month and 890 million people daily, an increase of 165 million monthly actives and 133 million daily actives this year. Time spent per person per day across our services continued to rise, growing this quarter by more than 10% compared to last year.' And Q&A on search: 'a lot of unique content...recommendations from friends that you can get that you just wouldn\u2019t be able to get through a traditional web search service'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ソーシャルグラフという「仕組み」がユーザーの粘着性を生む能力。DAUの高水準維持は結果であるが、ソーシャルグラフの構造が核心"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "DAU/MAU比率64%、一人当たり滞在時間+10% YoYという定量指標"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "実名制ソーシャルグラフは10年以上かけて構築。競合（Twitter, Snapchat）は匿名性が高く、同等の実名制グラフ構築は困難"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "モバイルインターネット普及により人々の社会的繋がりがデジタル化する市場構造とFacebookのソーシャルグラフが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量的ユーザーデータと業界構造合致あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "実名制ソーシャルグラフはFacebookの核心的競争優位性。DAU/MAU 64%という粘着性指標と一人当たり滞在時間増加が定量的裏付け。Twitter（匿名性高い）との差別化明確。70%が妥当"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "DAU/MAU比率: 64%（890M DAU / 1,390M MAU）。一人当たり滞在時間+10% YoY（WhatsApp除く）。写真/動画: 1日20億枚の写真シェア、動画30億再生/日",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "モバイル広告における測定・ROAS検証能力（A/Bテスト、実店舗売上への影響測定）",
+      "descriptive_label": "広告効果測定・ROI証明能力",
+      "evidence_from_transcript": "Q4 Q&A (COO Sandberg): 'we have more actual case studies of marketing we\u2019ve done with them. We have been able to A/B test Facebook ads versus no Facebook ads and what the effectiveness is on their sales. And I think across the board, we\u2019re showing very healthy, very competitive ROI...The opportunity and the challenge now is to scale.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "A/Bテストによる広告効果測定能力という「仕組み」を評価。実店舗売上への影響測定という独自データアセットが核心"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Thomas Cook事例（ベルギー人口の30%にリーチ、ROI 3.85x）など具体的数値はあるが、広告全体としての統計的証拠は限定的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Google Analyticsとの比較、TV広告との比較言及あり。ただし明示的な競合比較データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。具体的事例データあり。ただし体系的な競合比較不足",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "広告効果測定能力はFacebookの差別化要因として評価。Atlasの再ローンチによるクロスデバイス測定も裏付け。ただし「still early」との発言あり、能力の成熟度が限定的。60%が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "WhatsApp/Messenger/Instagramによる多層的コミュニケーション・プラットフォームエコシステム",
+      "descriptive_label": "マルチプラットフォームコミュニケーションエコシステム（Network Economies）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Zuckerberg): 'We expect WhatsApp and Messenger to connect hundreds of millions of more people and become indispensable services for the world...Messenger reached 500 million monthly actives, and at the beginning of January, WhatsApp reached 700 million monthly actives, with more than 30 billion messages sent each day. Instagram reached 300 million monthly actives'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "MAU数は結果。エコシステムを通じてユーザーの多様なコミュニケーションニーズを満たす「能力」が核心だが、能力の具体的説明が限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Messenger 5億MAU、WhatsApp 7億MAU（30億メッセージ/日）、Instagram 3億MAUという定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Facebook + WhatsApp + Instagram + Messengerの4プラットフォームを所有するのは競合が模倣困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。各プラットフォームの定量的規模あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "マルチプラットフォームエコシステムはFacebookの将来の成長エンジンとして評価。ただし各プラットフォームの収益化は2015年時点ではまだ初期段階。70%が妥当"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Messenger 5億MAU（2014年11月）、WhatsApp 7億MAU（2015年1月）・30億メッセージ/日、Instagram 3億MAU（70%以上が米国外）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "動画コンテンツ配信・エンゲージメント強化能力（3ヶ月で10億→30億再生/日に成長）",
+      "descriptive_label": "動画エンゲージメント急成長能力",
+      "evidence_from_transcript": "Q4 Q&A (CEO Zuckerberg): 'Video grew significantly this year to an average of more than 3 billion video views per day on Facebook...In 2014, we invested aggressively in improving our ad tech and measurement tools.' And: '5 years ago...a lot of Facebook was primarily text...Now I think the primary mode that people are using to share is photos. And I wouldn\u2019t be surprised if in the future that shifted more and more towards videos.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "動画再生数は結果。その成長を可能にしたニュースフィードアルゴリズム・動画再生UX改善の能力が核心。ただし能力の具体的説明が限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "3ヶ月で10億→30億再生/日という定量的成長。動画投稿数+75%（グローバル）、+94%（米国）"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "「動画への投資継続」は戦略。「動画コンテンツが優位性か」という問いには、現時点ではYouTubeとの差別化が不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量データはあるが戦略と優位性の混同リスクあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "動画の急成長は実績として印象的だが、YouTube（Google）との競合における持続的優位性が不明確。ニュースフィード文脈での動画視聴という差別化はあるが、能力の具体的説明不足。50%が妥当"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Facebook動画再生: 30億/日（2014年12月）、3ヶ月前比3倍。動画投稿数+75%（グローバル）、+94%（米国）。米国DAUの50%以上が1日1本以上動画視聴",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [9]
+    }
+  ]
+}

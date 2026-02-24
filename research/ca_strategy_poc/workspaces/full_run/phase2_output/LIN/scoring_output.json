@@ -1,0 +1,275 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "LIN-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "産業ガス事業における継続的コスト削減・生産性改善プロセス（毎年コストスタックの5%超の生産性節減）。全従業員が日常的に取り組む組織的能力であり、生産・調達・流通の3領域でインフレを相殺し続けている。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_6_t"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "Q4 annual callでの発言（主・①相当）で調整なし。一方、競合（Air Products, Air Liquide等）との差別化が明示されていない（rule_7_t未達）で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "Q4での体系的な説明。生産性改善プロセス（コストスタック5%超）はProcess Powerの能力証拠（KB2パターンIII）。全従業員が日常的に実施という組織的仕組みは構造的（rule_6_t通過）。ただし同業Air Products・Air Liquideも同様のコスト効率化プロセスを有しており、純粋競合との差別化証拠が不足（rule_7_t失敗）。OPM 22.4%・EBITDA 32.2%の実績は裏付けとなるが能力の直接証明には不十分。調整後0.4。"
+    },
+    {
+      "claim_id": "LIN-002",
+      "claim_id_int": 2,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "生産性改善プロセス → コストインフレ相殺 → OPM維持・拡大 → EPS成長CAGR + 1-2pp",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_II_direct_cagr_mechanism",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [],
+      "final_confidence": 0.5,
+      "scoring_rationale": "生産性→OPM維持のメカニズム（KB2パターンII：直接CAGR接続）。Q4発言（rule_12_t PRIMARY）。OPMは開示データで検証可能。ただしEPS成長への接続は為替・マクロ要因が介在し純粋な生産性効果の定量化が困難。2ステップの因果で直接的。調整なし0.5。"
+    },
+    {
+      "claim_id": "LIN-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "長期顧客契約と分散したプロジェクトバックログ（$1.9B・24プロジェクト）による安定的なキャッシュフロー創出能力。Take-or-pay契約構造と大規模設備投資が顧客の切り替えコストを高める。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_6_t",
+        "rule_7_t"
+      ],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "産業ガス業界ではTake-or-pay長期契約は業界共通の標準的特性（rule_7_t失敗）。Air Products・Air Liquideも同様の契約構造を持つ。-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "産業ガス業界での長期契約・大規模設備投資は構造的市場特性（KB2パターンIV）。$1.9Bバックログ（24プロジェクト）は規模証拠。ただし業界共通の構造的特性であり（rule_7_t失敗）、Praxair固有の競争優位として識別困難。キャッシュフロー安定性は結果指標にも近い。Q4 PRIMARY発言。調整後0.4。"
+    },
+    {
+      "claim_id": "LIN-004",
+      "claim_id_int": 4,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "安定的バックログ → 新規プロジェクト貢献 EPS $0.20-$0.30/年（3-4%相当）→ 安定的CAGR寄与",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_II_direct_cagr_mechanism",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [],
+      "final_confidence": 0.7,
+      "scoring_rationale": "CFOが$0.20-$0.30/年のEPS貢献を明示的に開示（定量的接続：KB2パターンII）。2ステップの因果（バックログ→プロジェクト貢献→EPS）は明確。Q4 PRIMARY発言（rule_12_t）。バックログの遅延リスクはあるが接続メカニズム自体は直接的。最高確信度水準0.7。"
+    },
+    {
+      "claim_id": "LIN-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "産業ガス事業における業界最高水準のOPM 22.4%・EBITDA 32.2%を可能にするコスト構造と規律あるキャピタルアロケーション。CFOが「best-performing industrial gas company」と表明。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_7_t",
+        "rule_11_t"
+      ],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "「最高業績」という自己申告は結果の提示（rule_1_t部分違反）で-10%。競合との具体的比較数値は未提示（rule_7_t部分通過）",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "業界最高水準OPM・EBITDAという定量証拠（KB2パターンI）。Q4 PRIMARY発言。ただし「best-performing」は自己申告であり（rule_1_t部分違反）、Air Products・Air Liquideとの比較数値なし（rule_7_t部分通過のみ）。OPM 22.4%という具体数値は存在するが、それを可能にする能力の具体的説明が不足。調整後0.4。"
+    },
+    {
+      "claim_id": "LIN-006",
+      "claim_id_int": 6,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "業界最高水準OPM → 新規プロジェクトでも高リターン確保（ROC 12.7%）→ EPS成長持続",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_C_causal_leap",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [],
+      "final_confidence": 0.5,
+      "scoring_rationale": "OPM→リターン率→EPS成長は2-3ステップの間接接続（KB2パターンC：因果的飛躍）。ROC 12.7%は開示データ。Q4 PRIMARY発言。為替・マクロ環境の影響が大きく、純粋なOPMからのEPS成長接続は限定的。調整なし0.5。"
+    },
+    {
+      "claim_id": "LIN-007",
+      "claim_id_int": 7,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "インフレ環境でも価格転嫁を維持できるプライシング力（全オペレーティングセグメントでプラス価格）。インフレ連動契約構造により1-2%/年のプライシング実現。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_7_t"
+      ],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "インフレ連動契約は産業ガス業界の標準的慣行（業界共通能力、KB2パターンB）。-20%調整",
+          "delta": -0.2
+        }
+      ],
+      "final_confidence": 0.1,
+      "scoring_rationale": "インフレ連動契約構造はプライシング力の根拠（rule_1_t通過）。Q4 PRIMARY発言で1-2%目標という定量データあり（rule_4_t部分通過）。しかしTake-or-payおよびインフレ連動契約は産業ガス業界の業界共通標準慣行（KB2パターンB：業界共通、rule_7_t失敗）。Praxair固有の競争優位として評価困難。大幅調整後0.1（最低水準）。"
+    },
+    {
+      "claim_id": "LIN-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "インフレ連動プライシング → 実質売上成長維持 → EPS成長 +1-2%",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_II_direct_cagr_mechanism",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [],
+      "final_confidence": 0.5,
+      "scoring_rationale": "価格転嫁→売上成長の2ステップ因果（KB2パターンII）は直接的。Q4 PRIMARY発言。プライシング力の優位性スコアは低いが、メカニズム自体は明確。業界全般でこの接続は成立する。調整なし0.5。"
+    },
+    {
+      "claim_id": "LIN-009",
+      "claim_id_int": 9,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "FY2014 EBITDA マージン 32.2%、OPM 22.4%（いずれも過去最高）",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_4_t"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Q4 PRIMARY発言での定量事実（OPM 22.4%、EBITDA 32.2%）。結果指標（KB2パターンA）として評価。競争優位性の間接的証拠としては機能するが、単独では競争優位性の直接証明にはならない。0.3。"
+    },
+    {
+      "claim_id": "LIN-010",
+      "claim_id_int": 10,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "FY2014末時点でのプロジェクトバックログ $1.9B（24プロジェクト）。北米・アジア・欧州南米に分散",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_4_t"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Q4 PRIMARY発言での定量事実（$1.9B・24プロジェクト）。結果指標（KB2パターンA）として評価。バックログ規模はLIN-004のCAGR接続の裏付けとして機能する。0.3。"
+    },
+    {
+      "claim_id": "LIN-011",
+      "claim_id_int": 11,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "FY2014 営業キャッシュフロー $2.9B（売上の23%）、記録的フリーキャッシュフロー $1.2B",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_4_t"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Q4 PRIMARY発言での定量事実（FCF $1.2B、OCF $2.9B）。結果指標（KB2パターンA）として評価。キャッシュフロー生成能力の強さを示すが、競争優位性の直接証拠としては機能しない。0.3。"
+    },
+    {
+      "claim_id": "LIN-012",
+      "claim_id_int": 12,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "アルゴン需要逼迫時に供給能力を最大化できる多様な供給源と生産能力拡張の柔軟性（北米アルゴン利用率90%超）。多拠点・多供給源の体制が需要機会を逃さないオペレーション能力を形成。",
+      "source_quarter": "Q3 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_7_t"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "Q3四半期発言（従・②相当）で-10%",
+          "delta": -0.1
+        },
+        {
+          "reason": "純粋競合（Air Products等）との差別化が不明確で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.1,
+      "scoring_rationale": "Q3 SECONDARY発言。供給柔軟性（KB2パターンIII：能力>結果）はProcess Powerの証拠として評価できるが、産業ガス大手は共通して多拠点・多供給源体制を持つ（rule_7_t失敗）。アルゴン逼迫は一時的な市場状況（2014年）であり持続的競争優位性としての評価は限定的。SECONDARY発言かつ差別化不明確でダブル調整後0.1。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 12,
+    "confidence_distribution": {
+      "40-50": 3,
+      "50-60": 3,
+      "70-80": 1,
+      "10-20": 2,
+      "30-40": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

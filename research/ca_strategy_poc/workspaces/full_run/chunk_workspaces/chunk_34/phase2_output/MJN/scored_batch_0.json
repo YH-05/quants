@@ -1,0 +1,211 @@
+{
+  "ticker": "MJN",
+  "batch_index": 0,
+  "batch_total": 1,
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding / Switching Costs",
+      "descriptive_label": "Enfa ブランドの医療専門家からの信頼と母親の愛着",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "reasoning": "医療専門家からの推奨という仕組みが顧客ロイヤルティを形成。ブランド価値の「能力」側面"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "high_eval_patterns": ["pattern_III"],
+          "adjustment": 0,
+          "reasoning": "医療専門家ネットワークとの関係構築能力はMJN固有。ただし競合（Abbott, Nestlé）との定量比較なし"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "Enfa ブランドの医療専門家信頼は仕組みとして評価（Pattern III合致）。ただし競合比較数値なく50%に留まる"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "Enfaブランド信頼→プレミアム価格維持→グロスマージン→CAGR",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "direct", "adjustment": 0, "reasoning": "63%+の粗利という定量データで直接接続"},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "ブランド→プレミアム価格→63%+粗利の2ステップ因果。CFOによる粗利開示が裏付け"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding / Scale Economies",
+      "descriptive_label": "63%超グロスマージンによるプライシングパワー",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "63%+粗利は定量データだが、これは結果。プライシングパワーの仕組みの説明が必要"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": ["pattern_A"],
+          "adjustment": -5,
+          "reasoning": "Pattern A: 高粗利率（結果）をプライシングパワー（優位性）として提示。Enfa ブランドが本来の優位性"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "63%+粗利は強力な定量データだが、これはPattern Aの典型（結果→能力への誤帰属）。ただしEnfaブランドの強さの間接証拠として50%は維持"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "プライシングパワー→値上げ余地→EPS成長→CAGR",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_direct", "adjustment": 0},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "高粗利→値上げ余地→EPS成長の因果は適度。ただし新興国での競合圧力に脆弱性あり"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies / Switching Costs",
+      "descriptive_label": "地理的分散（アジア・北米・欧州）による安定成長基盤",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_fail", "reasoning": "地理的分散はリスク管理であり競争優位性ではない"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": ["pattern_B"],
+          "adjustment": -5,
+          "reasoning": "Pattern B: 多国籍大手の地理的分散は業界共通。Nestlé・Abbottも同様"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "地理的分散はPattern B（業界共通）。競争優位性ではなくリスク管理。30%維持"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power / Cornered Resource",
+      "descriptive_label": "A&P（広告・販促）への持続的高投資による市場防衛",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "A&P投資は防衛的能力。ただし規模は大手比で小さい"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": ["pattern_B"],
+          "adjustment": -5,
+          "reasoning": "Pattern B: Abbott・Nestléも同様の高いA&P投資を行う。業界標準"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "A&P投資は業界標準（Pattern B）。MJN固有の差別化としては認定困難。30%維持"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "descriptive_label": "中国規制対応能力（CFDA登録・品質基準）",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "規制対応能力は示されているが一時的优位の可能性"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_C_causal_leap",
+          "rejection_patterns": ["pattern_C"],
+          "adjustment": -5,
+          "reasoning": "Pattern C: 規制対応→持続的優位への因果が飛躍。規制変更リスクと競合も同様に対応"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "中国規制対応能力はPattern C（因果飛躍）。競合も同様に規制対応しており差別化証拠薄い。30%"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "中国規制対応→市場シェア維持・拡大→アジア売上CAGR",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "indirect", "adjustment": 0},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "中国規制→シェア維持のCAGR接続は不確実性が高い。規制変更リスクと競合圧力。30%"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "Enfa アルファプラスのHMO（ヒト母乳オリゴ糖）研究開発能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "reasoning": "R&D能力（仕組み）を評価。HMO成分の特定研究は固有の能力"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "high_eval_patterns": ["pattern_III"],
+          "adjustment": 0,
+          "reasoning": "乳児栄養の科学的研究能力はMJN固有。ただし競合も同様のR&Dを展開"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "HMO研究能力はPattern III合致。乳児栄養分野での科学的差別化は示唆的。ただし競合比較なく50%"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "R&D投資→製品差別化→プレミアム維持→CAGR",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_direct", "adjustment": 0},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "R&D→製品差別化→プレミアム維持の2-3ステップ。乳幼児栄養分野での製品差別化は収益直結。50%"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "descriptive_label": "プレミアム乳幼児栄養特化戦略（総合食品会社と異なるフォーカス）",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "特化型企業のフォーカス戦略は示唆的。ただしAbbott Nutrition等も特化している"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_F_strategy_confusion",
+          "rejection_patterns": ["pattern_F"],
+          "adjustment": -10,
+          "reasoning": "Pattern F: 「特化戦略」は戦略であり優位性ではない。Counter-Positioning としては競合が模倣すれば自滅という構造が不明確"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "特化戦略はPattern F（戦略と優位性の混同）。Abbott NutritionやNestlé Nutrition等も特化型。30%に引き下げ"
+    }
+  ],
+  "summary": {
+    "total_claims_scored": 11,
+    "competitive_advantage_claims": 7,
+    "cagr_connection_claims": 4,
+    "avg_confidence": 0.409,
+    "high_confidence_claims": [],
+    "medium_confidence_claims": [1, 2, 3, 4, 9, 10],
+    "low_confidence_claims": [5, 6, 7, 8, 11]
+  }
+}

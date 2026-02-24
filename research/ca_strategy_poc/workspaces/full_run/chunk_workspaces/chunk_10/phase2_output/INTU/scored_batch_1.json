@@ -1,0 +1,98 @@
+{
+  "ticker": "INTU",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_II", "pattern_D"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "INTU-006",
+      "claim_type": "competitive_advantage",
+      "claim": "ProTax（会計専門家向け）市場でのクラウドシフト先行優位性",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "PASS: クラウドシフトの先行という能力の方向性は正しい",
+        "rule_4_t": "FAIL: 'strong new customer growth'は定量データなし。競合（Thomson Reuters、Drake等）との比較なし",
+        "rule_12_t": "FAIL: Q1発言（従・②相当）でQ4仮説への補足的位置づけ"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_D_qualitative_only",
+        "assessment": "Q1からの定性的な主張。ProTax市場でのクラウドシフト先行は概念的には正しいが定量的裏付けなし"
+      },
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.1,
+          "reasoning": "Q1発言のため-10%調整"
+        }
+      ],
+      "scoring_rationale": "Q1発言で-10%調整済み（Phase 1で適用済み）。ProTax市場での先行は認められるが具体的な競合比較データがない。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "INTU-007",
+      "claim_type": "cagr_connection",
+      "claim": "QBOサブスクライバー成長（57%/年）→ ARPU年数経過で50%増 → 小規模SMB市場浸透率上昇 → 売上CAGR加速",
+      "phase1_confidence": 0.9,
+      "final_confidence": 0.9,
+      "kb1_critique": {
+        "rule_5_t": "PASS: サブスクライバー数・ARPU・アタッチ率の3指標すべてが開示データで検証可能。2ステップの直接因果（成長→ARPU成熟）。dogma Section 3.2の高評価パターン（開示データで検証可能）に該当",
+        "rule_12_t": "PASS: Q4年次発言での体系的説明"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "開示データで検証可能なCAGR接続。サブスクライバー増加→ARPU成熟（Year2-3で50%超増加）という直接的因果チェーン。FY2017目標2Mサブスクライバーという具体的な目標値あり"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "INTU-007はCAGR接続として最高評価90%に相当する。開示データによる検証可能性（dogma 2.2上昇要因4：+20%）、直接的メカニズム（1-2ステップ）、定量目標（FY2017 2M）の3要素が揃っており、dogma Section 3.2の高評価パターンに完全適合。Phase 1評価90%を維持する"
+    },
+    {
+      "id": "INTU-008",
+      "claim_type": "cagr_connection",
+      "claim": "TurboTaxのカテゴリシェア獲得継続 → デジタル申告の年間成長5% → 売上成長8%以上",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: シェア+1.5pt×デジタル申告+5%という2要素の直接的因果",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "TurboTaxのシェア拡大とカテゴリ成長の組み合わせによる売上成長は直接的なCAGR接続"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言由来の直接的CAGR接続。デジタル申告市場+5%×シェア+1.5ptは売上成長の明確な数値的根拠。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "INTU-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2015末QBOサブスクライバー1,075,000（57%成長）、米国外198,000（135%成長）、9四半期連続加速",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。INTU-001とINTU-003の裏付けとして機能する重要な事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外。9四半期連続加速という事実はネットワーク効果の持続性を示す"
+    },
+    {
+      "id": "INTU-010",
+      "claim_type": "factual_claim",
+      "claim": "TurboTax Online 2シーズン累計シェア+4pt、FY2015単年+1.5pt、Online unit成長11%",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。INTU-002の裏付けとなる定量データ"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

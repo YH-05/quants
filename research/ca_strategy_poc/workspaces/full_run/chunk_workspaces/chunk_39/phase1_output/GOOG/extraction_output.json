@@ -1,0 +1,613 @@
+{
+  "ticker": "GOOG",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-29) [Primary] + Q4 FY2013 (2014-01-30), Q1-Q3 FY2014, Q1-Q2 FY2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": [
+      "Q1_2014",
+      "Q2_2014",
+      "Q3_2014",
+      "Q1_2015",
+      "Q2_2015"
+    ],
+    "seven_powers_framework": "Scale Economies, Network Economies, Counter-Positioning, Switching Costs, Branding, Cornered Resource, Process Power",
+    "note": "GOOG (Class C) shares the same earnings call transcripts as GOOGL (Class A). Claims extracted from identical transcript sources."
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "検索広告における圧倒的なデータ蓄積とユーザー行動理解によるネットワーク効果",
+      "descriptive_label": "検索データ蓄積型ネットワーク効果",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（Omid Kordestani発言）: 'Mobile is now a behavior, not a device, and it has a variety of unique characteristics.' / 'We continue to evolve the foundation of Google's advertising business to reflect the multiscreen, constantly connected world.' / Q2 2015 Prepared Remarks（Omid発言）: 'Google Search, YouTube, Android, Chrome and Google Maps each have over 1 billion users.' - 10億ユーザー×5サービスのデータ規模が検索アルゴリズムの精度を継続的に改善するメカニズム",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Omid Kordestani",
+      "section": "prepared_remarks",
+      "supported_by_facts": [
+        9,
+        10
+      ],
+      "cagr_connections": [
+        2
+      ],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t",
+          "rule_11_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "データ蓄積という仕組み・能力を評価。ユーザー数（10億）は結果だが、データ→アルゴリズム改善というメカニズムへの言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "5サービスが各10億ユーザー超という定量データあり。競合（Bing, Yahoo）との比較は明示されていないが規模の差は明白"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Mozillaとの契約がYahooに移行した事実（Q&A言及）は検索配信競争の激しさを示すが、Google自身はBingやYahooとの直接比較に言及を避けた"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "デジタル広告市場は検索クエリ意図とユーザーデータの規模が価値を決定する構造。Googleの10億ユーザー×5サービスの規模はこの市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "検索市場での競合（Bing, Yahoo）との直接的な定量比較なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な説明。10億ユーザー×5サービスという規模はデータ蓄積型ネットワーク効果の実態を示す。ただし純粋競合（Bing, Yahoo）との直接比較指標がなく、70%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "検索データ蓄積 → アルゴリズム精度向上 → CPC/CTR改善 → 広告収益CAGR",
+      "descriptive_label": "データ→アルゴリズム→CPC接続経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "3ステップの因果チェーン（データ蓄積→アルゴリズム→CPC）。Q4でCPC trends・monetization指標への言及あるが、検証可能なKPIとして公開されるのはCPC/paid click volumeのみ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。投資仮説の根幹として採用"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンは3ステップで「やや飛躍」。ただしCPCと paid clicksは開示データで検証可能。50%が適切"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Androidプラットフォームを通じたモバイルエコシステムのコントロールと間接ネットワーク効果",
+      "descriptive_label": "Androidエコシステム間接ネットワーク効果",
+      "evidence_from_transcript": "Q2 2015 Prepared Remarks（Omid Kordestani発言）: 'The Android phone ecosystem started with 1 device, 1 carrier and 1 OEM, the T-Mobile G1 in 2008, and has grown now to over 400 OEMs and over 500 carriers who make over...' / Q4 2014（Omid発言）: Android Lollipop launch, Nexus deviceを通じたエコシステム管理",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Omid Kordestani",
+      "section": "prepared_remarks",
+      "supported_by_facts": [
+        10
+      ],
+      "cagr_connections": [
+        4
+      ],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_2_t",
+          "rule_4_t",
+          "rule_6_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "エコシステム構築能力（400 OEMs, 500 carriers）という仕組みを評価。ユーザー数は結果だが、OEM/キャリアネットワークという能力の証拠"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "エコシステム = 名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "400 OEMs, 500 carriersという定量データあり。ただし競合（iOS）との直接比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "OEM/キャリアネットワークは構造的優位（短期で再現困難）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（従・②相当）、Q4での体系的言及なし",
+            "adjustment": -10
+          },
+          {
+            "reason": "iOSとの直接的な市場競争文脈での差別化説明なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Androidエコシステムは構造的優位の候補だが、Q2発言（従）から発見。OEM/キャリア数の定量データはあるが、iOSとの直接比較や収益化メカニズムへの具体的言及なし。50%が適切"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Androidエコシステム → モバイル検索シェア維持 → モバイル広告収益成長",
+      "descriptive_label": "Android→モバイル検索→広告成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "3ステップの因果チェーン。モバイル広告収益成長は開示データで確認可能だが、AndroidのシェアからのCPCへの直接メカニズムの説明は不完全"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言由来（従・②相当）。-10〜20%調整"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（従）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Androidエコシステム→モバイル広告の接続は論理的だが3ステップ。Q2発言。40-50%が適切"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "YouTube の急速な成長と動画広告プラットフォームとしての地位",
+      "descriptive_label": "YouTube動画広告プラットフォーム優位性",
+      "evidence_from_transcript": "Q4 2014 Q&A（Omid発言）: 'over 1 billion people come to the service every month, and YouTube mobile revenue is up more than 100% year-to-year.' / 'About 6,000 of [Brand Lift studies] have done this already with us.' / 'our investment in the service, in the creators just continues to pay back for us'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Omid Kordestani",
+      "section": "qa_session",
+      "supported_by_facts": [
+        11
+      ],
+      "cagr_connections": [
+        6
+      ],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "mixed",
+            "reasoning": "10億ユーザー・100%モバイル収益成長は結果の提示。ただしブランドリフト測定ツール（Brand Lift studies 6,000件）というプラットフォーム能力への言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "モバイル収益+100% YoY、Brand Lift studies 6,000件という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "純粋競合（Facebook Video, Vimeoなど）との直接比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Q&Aからの発言（主・①相当だが追加情報）",
+            "adjustment": 0
+          },
+          {
+            "reason": "動画広告市場での純粋競合（Facebook Video）との比較指標なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "YouTubeの規模（10億ユーザー、モバイル収益+100%）は印象的だが、競合比較なし。成長は結果。Brand Lift toolというプラットフォーム能力要素あり。50%が適切"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "YouTube動画広告成長 → ブランド広告主の予算獲得 → 非Search収益CAGR",
+      "descriptive_label": "YouTube→ブランド広告→収益多角化",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。YouTubeモバイル収益+100%は検証可能な開示データ。ブランド広告主→TV予算獲得の流れは具体的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 Q&Aからの発言（主・①相当）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4でのYouTubeモバイル収益+100%という定量データ + ブランド広告主獲得という2ステップ因果。CAGR接続として70%が適切"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "プログラマティック広告技術（DoubleClick、Ad Exchange）による広告主・パブリッシャーへのスイッチングコスト",
+      "descriptive_label": "広告技術プラットフォームによるスイッチングコスト",
+      "evidence_from_transcript": "Q4 2013 Prepared Remarks（Nikesh Arora発言）: '3rd, our ad technology platform used by thousands of agencies and publishers.' / Q4 2014 Prepared Remarks（Omid発言）: 'great momentum in our programmatic business, highlighted by our mobile display and our ads platform products' / Q2 2015（Omid発言）: 'increasingly benefiting from the shift toward programmatic advertising, particularly among brand advertisers'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Nikesh Arora",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [
+        8
+      ],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_6_t",
+          "rule_7_t",
+          "rule_8_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "広告技術プラットフォーム（DoubleClick）という仕組みを評価。thousands of agenciesという規模はエコシステムの証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "広告主・パブリッシャーが統合されたアドテクプラットフォームを切り替えるコストは高い（構造的スイッチングコスト）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "純粋競合（Facebook Ads, The Trade Desk, Amazon DSP）との直接比較なし"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "スイッチングコスト = 戦略ではなく構造的力。プラットフォーム統合という仕組み"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 2013発言（主・①相当）+ Q4 2014で再確認",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（The Trade Desk, Facebook）との比較指標なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "広告技術プラットフォームの構造的スイッチングコストは認められるが、競合比較指標なし。thousands of agenciesは定量的だが競合比との差は不明。50%が適切"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "アドテクプラットフォーム浸透 → プログラマティック移行での既存顧客拡張 → 収益CAGR",
+      "descriptive_label": "アドテク→プログラマティック→収益拡張",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "2-3ステップの因果。プログラマティック広告への業界移行という市場トレンドはQ4で明確に語られた。ただし Google の収益への定量的接続は不完全"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "プログラマティック移行×Googleのアドテク地位は方向性として妥当。接続の定量化なし。50%が適切"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Google のコアサーチ優位性：Knowledge Graph・モバイル対応・多画面シームレスの組み合わせ",
+      "descriptive_label": "マルチスクリーン検索・コア検索品質優位性",
+      "evidence_from_transcript": "Q4 2014 Q&A（Patrick Pichette発言）: 'the way to win in this in the long term...is very simple. You just make wonderful products. And when you make wonderful products that are magical, people will find them.' / Q4 2013 Nikesh Arora: 'Google is really well-positioned to help people navigate between web, apps and the places around them.' / Q2 2015: 'new Photos app is a great example of how we're combining the power of machine learning, search and beautiful design'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Patrick Pichette",
+      "section": "qa_session",
+      "supported_by_facts": [
+        10
+      ],
+      "cagr_connections": [
+        2
+      ],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "'wonderful products that are magical'は定性的な能力主張。Knowledge Graph・機械学習という仕組みへの言及はあるが、能力の具体的説明は不完全"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "検索品質の定量的裏付けなし。市場シェアデータは開示されていない"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Bing, Yahooとの直接的な検索品質比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "定性的表現が多く、定量的裏付けなし",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "Googleのコア検索優位性は実際には非常に強いが、トランスクリプトでの表現が'wonderful products'という定性的な主張に留まり、競合との定量的差別化が示されていない。30%"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Google Search, YouTube, Android, Chrome, Google Maps がそれぞれ10億ユーザー超（2015年Q2時点）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "YouTubeモバイル収益は前年比100%超成長（2014年Q4時点）、月間10億人訪問",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "Estimated Store Visits等の新測定ツールによる広告効果測定能力（オフライン→オンライン接続）",
+      "descriptive_label": "クロスチャネル広告効果測定能力",
+      "evidence_from_transcript": "Q4 2013 Nikesh Arora: '1-800-Flowers discovered a 7% increase in overall conversions when they figured out that conversion can start on one device and end on the other.' / Q4 2014 Omid: 'we recently added estimated store visits to our Estimated Total Conversions measurement suite.' / 'PetSmart saw 10% to 18% of clicks on search ads led to store visits' / 'Famous Footwear...15% to 17% of the clicks on ads resulted in store visits'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Omid Kordestani",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [
+        13
+      ],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_11_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "測定ツール（Estimated Store Visits, ETC）という仕組みを評価。'来店数を測定できる能力'は競争優位として成立"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "PetSmart 10-18%、Famous Footwear 15-17%の来店誘導率という顧客事例データあり。業界比較ではないが具体的数値"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "デジタル→実店舗接続の測定ニーズが高まる市場構造（O2O・OMO）と、Googleの位置情報+検索データ規模のポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）+ 顧客事例の定量データあり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Facebook Ads等）の同様の測定ツールとの差別化は不明",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な説明。顧客事例の定量データ（PetSmart 10-18%）あり。O2O測定という市場ニーズとGoogleの位置情報規模の合致。ただし競合比較なし。60-70%が適切"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "クロスチャネル測定能力 → 広告主のROI可視化 → 広告予算増加 → 収益CAGR",
+      "descriptive_label": "測定能力→ROI可視化→予算増加",
+      "source_advantage": 12,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2-3ステップの因果。PetSmart, Famous Footwear の来店誘導率（15-18%）が広告ROIの証拠。投資増加への接続は論理的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での顧客事例（PetSmart, Famous Footwear）による定量的ROI証拠 + 広告予算への接続。70%が適切"
+      }
+    },
+    {
+      "id": 14,
+      "claim_type": "competitive_advantage",
+      "claim": "FXヘッジプログラムによる通貨リスク管理能力（国際収益の保護）",
+      "descriptive_label": "グローバル収益へのFXヘッジ能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（Patrick Pichette発言）: 'our FX hedging program continues to do exactly what it's supposed to do...we've seen in Q4 approximately $150 million of hedge benefits' / 'On a gross basis, over $600 million [FX impact]. Thanks to our hedging program, the net impact was actually attenuated with a net revenue impact of $468 million.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Patrick Pichette",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_3_t",
+          "rule_6_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "FXヘッジプログラムという仕組みを評価。$150M保護という実績は仕組みの証拠"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "グローバル大手企業であればFXヘッジは業界共通能力。GoogleだけのFXヘッジ能力として評価しがたい（ルール3: 業界共通）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "FXヘッジは補完的要素（事業の収益安定化を支援するが、競争優位の中核ではない）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 20,
+        "confidence_adjustments": [
+          {
+            "reason": "グローバル大手企業なら共通のFXヘッジ能力（パターンB-T）",
+            "adjustment": -30
+          }
+        ],
+        "overall_reasoning": "FXヘッジは定量的($150M保護)だが、グローバル大手共通能力。競争優位としては成立しない。20%"
+      }
+    },
+    {
+      "id": 15,
+      "claim_type": "competitive_advantage",
+      "claim": "Googleのハイバー採用基準と文化維持能力（優秀な人材の囲い込み）",
+      "descriptive_label": "エリート採用・文化維持によるコーナードリソース",
+      "evidence_from_transcript": "Q4 2014 Q&A（Patrick Pichette発言）: 'we have a very high bar for hiring. If you can pass the bar, then we hire you.' / 'There's a natural kind of number that you can kind of absorb within the culture of Google. It's really important not to lose that culture and to have velocity, to have traction.' / 'we manage the hiring...we have our plans...rate of targets'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Patrick Pichette",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t"
+        ],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "採用基準・文化維持という仕組みを評価。'high bar for hiring'というプロセスへの言及"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "定量的裏付けなし。採用数（2,000人/Q）は開示されているが、採用品質・合格率・競合比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Microsoftやアップル等のテクノロジー大手との採用競争での差別化指標なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "定量的裏付けなし、テクノロジー大手共通の'高い採用基準'主張",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "採用文化・高い基準はGoogleの重要な能力だが、トランスクリプトでは定性的な言及のみ。テクノロジー大手共通主張。30%"
+      }
+    }
+  ]
+}

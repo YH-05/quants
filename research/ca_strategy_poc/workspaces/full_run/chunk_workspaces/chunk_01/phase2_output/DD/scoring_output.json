@@ -1,0 +1,431 @@
+{
+  "scored_claims": [
+    {
+      "id": "DD-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Pioneer Hi-Bred stacked trait IP（Leptra/DP4114）による高速ジェネティックゲインと価格プレミアム確保",
+      "evidence": "CEO Ellen Kullman (Q4 FY2013): Optimum AcreMax/AQUAmax, corn share gains >1pt North America, 3pt Brazil safrinha. (Q2 2015): Leptra launched US 2014, Brazil cultivation approval; DP4114 received US/Canada cultivation approval; 'faster genetic gain...price lift for Pioneer'. Agriculture segment 13% sales growth, 16% earnings growth FY2013.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "Pioneer Hi-Bred germplasm + 積み重ね形質IP（Leptra/DP4114）という能力資産の説明。市場シェアは副次的結果として言及されているが主張の核は仕組み"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "13% sales growth, 16% EPS growth Ag FY2013; 3pt corn share gain Brazil; 'price lift for Pioneer' の明示。複数期間にわたる定量的証拠"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "バイオテク形質特許（Leptra=3モード作用, DP4114=地上+地下害虫二重保護）は構造的IP資産。代替不可能な特許ポートフォリオ"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "CEO自ら『current traits』との差別化を明示。Leptra 3-mode-of-action はシンジェンタ・バイエルの単独モード品種と差別化。DP4114の地上+地下二重保護は当時業界初"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "形質IP組み合わせ能力（Pioneer germplasm × Leptra/DP4114特許）という具体的な組織能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "13% sales, 16% earnings growth, 3pt Brazil share gain, 'price lift' という定量的差別化指標"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "'faster genetic gain than current traits' という競合比較を明示（Syngenta/Bayer の既存形質との対比）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "形質IP × Pioneer germplasm という組み合わせ能力の説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "複数定量指標（売上成長・share gain・price lift）"
+        },
+        {
+          "source": "KB2-T pattern_V_specific_competitor_comparison",
+          "adjustment": 0.05,
+          "reasoning": "現行業界形質との明示的比較"
+        },
+        {
+          "source": "Phase 1 confidence cap",
+          "adjustment": -0.15,
+          "reasoning": "Q2 2015 に農業セグメントが出来高逆風直面（大豆低迷・作物保護圧力）。持続的価格プレミアムの確実性に上限を設定"
+        }
+      ],
+      "final_confidence": 0.7,
+      "overall_reasoning": "Pioneer Hi-Bred × Leptra/DP4114 積み重ね形質 IP は KB1-T 全ルール PASS。13% 売上・3pt ブラジルシェア・'price lift' の定量証拠（rule04 PASS）。CEO が 'current traits より高速なジェネティックゲイン' と競合差別化を明示（rule07 PASS）。KB2-T 3パターン全てポジティブ適用で +0.25。ただし Q2 2015 農業逆風（大豆・作物保護）が持続性の確実性を制限。dogma 的に『おおむね納得』上位 0.70。"
+    },
+    {
+      "id": "DD-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Rynaxypyr（クロラントラニリプロール）ジアミド殺虫剤：新作用メカニズム（IRAC Group 28）の創設者として年間$10億超を達成した特許防衛された殺虫剤カテゴリ",
+      "evidence": "CEO Ellen Kullman (Q4 FY2013): Rynaxypyr が年間販売額 $1B 超を突破; ジアミドクラス（Group 28）を新たに創設した殺虫剤として説明。FY2013 作物保護事業が Rynaxypyr の販売拡大により二桁成長。",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "プロプライエタリ化学メカニズム（リアノジン受容体標的）と特許保護という能力資産の説明。$1B 売上は能力の証拠として引用されているが主張の核は化学IP"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$1B+ 年間販売額を CEO が明示。作物保護事業の二桁成長も裏付け。ジアミドクラス（Group 28）創設という定性的差別化も明確"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "クロラントラニリプロールの基盤特許（リアノジン受容体化学）は構造的IP資産。製造スケールアップ優位（5年以上の商業生産）も非補完的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "CEO が 'ジアミドの新カテゴリを創設' と明示。競合（Syngenta, BASF, Bayer）はクロラントラニリプロール相当品を特許侵害なしに製造不可能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "$1B+ という明確な定量的マイルストーン; CEO による直接引用"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "新作用メカニズム（IRAC Group 28）の創設という能力・仕組みの説明"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "クロラントラニリプロール市場でのファーストムーバー × 基盤特許保有という構造的ポジション"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "$1B+ 年間販売のCEO直接言及"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "ジアミドクラス創設という能力の説明"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "ファーストムーバー × 基盤特許という構造的ポジション"
+        },
+        {
+          "source": "single_transcript_dependency",
+          "adjustment": -0.05,
+          "reasoning": "201401 の1トランスクリプトのみ Rynaxypyr/$1B を直接言及。201507 では Ag 逆風で言及なし。若干のエビデンス集中"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "Rynaxypyr のジアミド化学 IP は KB1-T 全ルール PASS。$1B+ を CEO が直接明示（rule04 PASS）。'新殺虫剤カテゴリを創設' という競合差別化の明示（rule07 PASS）。KB2-T 3パターン全てポジティブ（+0.25）で base 0.65 から 0.90 に達するが、単一トランスクリプト依存（-0.05）、および Syngenta の DPX-E2Y45 等ジアミド後続品が外部知識として存在（PoiT 内は言及なし）のため上限 0.75 に調整。dogma 的に『おおむね納得』 0.75。"
+    },
+    {
+      "id": "DD-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Kevlar/Nomex アラミドファイバーブランドによる Safety & Protection の構造的スイッチングコスト（防衛・航空・産業 PPE での認定サイクル）",
+      "evidence": "Q4 FY2013: 'Safety & Protection...4 consecutive quarters of operating margin improvement'; Kevlar/Nomex を主要ファイバーブランドとして明示。Q2 2015: Safety & Protection セグメントマージンが 2012 年比 ~450bp 改善（経営開示）; 医療包装・防護服での数量成長を、Nomex の石油・ガス需要減にもかかわらず確認。",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "認定サイクル（DoD/NFPA/航空OEM認定）というスイッチングコストの仕組みを説明。マージン改善はその能力の帰結"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "4 連続四半期マージン改善、450bp 改善（2012→H1 2015）という定量的証拠。ただし絶対マージン水準は非開示"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "製品認定によるスイッチングコストは構造的。DoD/NFPA 基準への組み込みは容易に模倣不可能"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Teijin Twaron（オランダ）が Kevlar の最近接競合として存在。競合がシェアを取れていないことへの明示的言及がない（rule07 PARTIAL）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "認定サイクルによるスイッチングコスト構造という能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "4 連続四半期改善・450bp マージン改善という定量証拠（絶対水準なしで部分的評価）"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Teijin Twaron との競合関係・シェア動向への明示的言及なし（rule07 FAIL）"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Q2 2015 に Nomex の石油・ガス需要減が顕在化。スイッチングコストが景気循環需要に勝てるかの接続が弱い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "認定サイクル = スイッチングコスト構造の説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "4 四半期連続・450bp の定量証拠"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "Teijin Twaron 等との比較なし"
+        },
+        {
+          "source": "KB2-T pattern_C_causal_leap",
+          "adjustment": -0.05,
+          "reasoning": "石油・ガス需要減が Nomex のスイッチングコスト効力を一部相殺"
+        }
+      ],
+      "final_confidence": 0.6,
+      "overall_reasoning": "Kevlar/Nomex のスイッチングコスト（認定サイクル）は rule01・rule04・rule06 PASS。450bp マージン改善という定量証拠あり。ただし Teijin Twaron との競合比較なし（rule07 FAIL）で pattern_G 適用（-0.05）。Q2 2015 Nomex の石油・ガス需要減から景気循環感応度が明らかになり因果接続にやや弱さ（pattern_C, -0.05）。KB2-T ネット +0.05 で Phase 1 base 0.60 を維持。dogma 的に『まあ納得』 0.60。"
+    },
+    {
+      "id": "DD-004",
+      "claim_type": "competitive_advantage",
+      "claim": "DuPont の繰り返し可能なポートフォリオ変革プロセスパワー（Chemours 分離・Danisco 統合・Pannar 買収の3年間3大アクション）",
+      "evidence": "Q4 FY2013: Performance Coatings 売却($5B, 2013年2月), Performance Chemicals 分離発表, Pannar Seed（南ア）買収完了。Q2 2015: Chemours 分離完了（7月1日）; 'almost 30% fewer manufacturing plants, with 60% now biology-based'; '$1 billion savings by year-end 2015, $1.3 billion by end of 2017'. Danisco 統合で N&H 27% 営業利益成長・~200bp マージン改善（FY2014）。",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.5
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "売却→生物系買収→統合のサイクルという能力・仕組みの説明。収益ミックスシフトは帰結"
+        },
+        {
+          "rule_id": "rule03_industry_wide_trend",
+          "result": false,
+          "reasoning": "多角化化学企業のポートフォリオ最適化は業界広範なトレンド（Dow, BASF も同様の構造変革を実施）。DuPont の実行速度（3年3大アクション）は上位だが戦略パターン自体は業界共通"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "大規模企業分離の制度的知識（税務構造化、EPA負債管理、年金配賦）は複製困難な構造的能力"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "BASF・Dow も大規模ポートフォリオ再編を実施。DuPont の生物系ファーストへの転換は特徴的だが絶対的に固有ではない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "多角化化学企業のポートフォリオ変革は業界広範なトレンド（gatekeeper rule3 TRIGGER。Dow/BASF も同様路線）"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "ポートフォリオ最適化は dogma rule08 の戦略的意思決定に近い。競争優位の源泉（能力）と戦略（方針）の境界が曖昧"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "企業分離の制度的能力（税務・EPA・年金）という具体的組織能力は存在する"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$1B/$1.3B コスト削減、30%工場削減、60%生物系化という具体的数値"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "多角化化学企業の業界広範なポートフォリオ変革トレンド"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.15,
+          "reasoning": "Dow/BASF も同様の変革を実施（dogma rule3 TRIGGER）"
+        },
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.05,
+          "reasoning": "戦略的意思決定 vs 能力の境界（dogma rule08 警告）"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "企業分離の制度的能力（税務・EPA）は実在する"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "$1B コスト削減・30%工場削減の定量証拠"
+        }
+      ],
+      "final_confidence": 0.45,
+      "overall_reasoning": "ポートフォリオ変革プロセスは rule01・rule06 PASS だが rule03（業界共通）と rule07（Dow/BASF 競合）の両方が FAIL。gatekeeper が override_confidence 0.50 で発動し、KB2-T パターン net -0.10 を加算して 0.45 に着地。$1B コスト削減等の定量証拠は存在するが業界広範なトレンドの中での固有性が弱い。dogma 的に『あまり納得しない』から『まあ納得』の境界 0.45。"
+    },
+    {
+      "id": "DD-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Danisco 由来の N&H プラットフォーム（培養菌・プロバイオティクス・専門タンパク質）における独自微生物株ライブラリと食品企業との共同開発関係",
+      "evidence": "Q4 FY2013: Danisco 買収（2011）後、N&H セグメントで FY2013 +40% 利益成長。Q2 2015: 'Danisco 買収の恩恵を受け続けている…昨年 27% 営業利益成長、~200bp マージン改善。今四半期も低ティーンの利益成長…プロバイオティクス・培養菌・テクスチャリングで幅広い進展'. YO-MIX テクスチャリング培養株（砂糖削減ヨーグルト向け）を新規ローンチ。",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "30年以上かけて構築された独自微生物株ライブラリ（Danisco/Chr.Hansenの遺産）という能力資産の説明。N&H 利益成長は帰結"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "FY2013 +40%, FY2014 +27%, Q2 2015 低ティーン成長という3年間の複数期間一貫した定量証拠。200bp マージン改善も裏付け"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "微生物株ライブラリは トレードシークレット保護（特許でなく秘匿）の構造的資産。発酵プロセスノウハウも構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Chr. Hansen が主競合として存在するが DuPont の規模（Danisco 買収後）と DuPont 他サイエンス（Performance Materials, Advanced Materials）との統合開発が差別化要素。YO-MIX 新株ローンチが具体的差別化の証拠"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "30年蓄積の微生物株ライブラリ × 発酵プロセスノウハウという具体的組織能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "FY2013 +40% / FY2014 +27% / Q2 2015 低ティーンという3年間の一貫した定量的差別化指標"
+        },
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "Danisco 買収 → 株ライブラリ獲得 → 食品顧客との共同開発 → 高マージン食材製品 → 安定的成長 という明確な因果連鎖（dogma rule5）"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Chr. Hansen との定量的シェア・マージン比較は不在。主競合との直接比較がないと rule07 の完全クリアに限界"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "微生物株ライブラリという能力説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "3年間複数期間の一貫した定量証拠"
+        },
+        {
+          "source": "KB2-T pattern_II_direct_cagr_mechanism",
+          "adjustment": 0.05,
+          "reasoning": "因果連鎖（Danisco→株→共開発→高マージン）が明確"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "Chr. Hansen との定量比較なし"
+        },
+        {
+          "source": "Phase 1 confidence cap",
+          "adjustment": -0.1,
+          "reasoning": "Chr. Hansen も強固な株ライブラリを保有。DuPont の優位は株深度ではなくDuPont 全体サイエンスとの統合にあり、それを支持する追加的証拠がトランスクリプト内で限定的"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "Danisco 由来 N&H 株ライブラリは KB1-T 全ルール PASS（rule07 も Chr. Hansen との差別化を YO-MIX 新株で実証）。3年間の一貫した定量証拠（+40%/+27%/低ティーン）は KB2-T で最高評価（pattern_I/II/III 全適用）。ただし Chr. Hansen との定量シェア・マージン比較が不在（pattern_G, -0.05）、DuPont 優位は統合開発にあるという側面が単一トランスクリプト証拠で支持限定（-0.10）。dogma 的に『おおむね納得』 0.65。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "70-80": 2,
+      "60-70": 2,
+      "40-50": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

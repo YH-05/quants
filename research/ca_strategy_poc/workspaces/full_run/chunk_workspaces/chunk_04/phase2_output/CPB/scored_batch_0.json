@@ -1,0 +1,63 @@
+{
+  "ticker": "CPB",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "CPB-001",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "米国ウェットスープ59%市場シェアの強力なブランド（但し有機成長停滞）",
+      "seven_powers_category": "Branding",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.4,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "59%シェアは過去のブランド力の証拠だが、有機成長-1%（FY2014）という現実はブランド力の侵食を示す。PatternA（結果を原因と混同）のリスク。将来のブランド持続可能性に疑問。40%から30%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "CPB-002",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "$8.3B規模の製造・流通コスト優位性",
+      "seven_powers_category": "Scale Economies",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.3,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "規模のメリットは一般論として成立するが、有機成長の欠如が規模メリットを活かせていないことを示す。PatternB（業界共通の規模）。30%から20%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.2
+    },
+    {
+      "claim_id": "CPB-003",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "Bolthouse Farmsによるパッケージドフレッシュ$18.6B市場参入のCounter-Positioning",
+      "seven_powers_category": "Counter-Positioning",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.3,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "フレッシュ食品への多角化は戦略であり（PatternF）、競合がなぜ模倣できないかの説明が弱い。FY2014でBolthouse+2%と成果が弱い。PatternF（戦略と優位性の混同）。30%から20%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.2
+    },
+    {
+      "claim_id": "CPB-004",
+      "claim_type": "cagr_connection",
+      "claim_summary": "【CAGRリンク】スープブランド+新プラットフォーム→長期目標3-4%有機成長",
+      "seven_powers_category": "Branding",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.2,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "FY2014の有機成長-1%という現実との乖離が大きい。CEOが「達成にはさらに時間がかかる」と認めており、CAGRドライバーとして弱い。PatternA+PatternF。10%相当だが最低10%で20%維持。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.2
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {
+      "20-30": 3,
+      "30-40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

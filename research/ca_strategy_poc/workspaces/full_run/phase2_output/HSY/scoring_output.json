@@ -1,0 +1,440 @@
+{
+  "scored_claims": [
+    {
+      "id": "HSY_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Hershey の米国 CMG 市場31.4%シェア（チョコレート・非チョコレート・ガム・ミント全セグメント）：4週間単位でほぼ全期間にわたるシェア獲得継続はブランドの一貫した競争力を示す。",
+      "evidence": "U.S. CMG xAOC+C market share reached 31.4%, up 0.3 share points versus last year. We gained market share in nearly every 4-week quad during the quarter and across every segment. That's chocolate, non-chocolate, gum and mint.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule04"
+        ],
+        "results": {
+          "rule03": true,
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "rule03: 31.4%という定量的シェアと+0.3ptの改善",
+          "rule04: 4週間単位での継続的シェア獲得"
+        ]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "31.4%シェアと全セグメント同時シェア獲得は定量的差別化の強い証拠"
+        },
+        {
+          "source": "pattern_V_specific_competitor_comparison",
+          "adjustment": 0.0,
+          "reasoning": "市場シェアデータは間接的に競合との相対ポジションを示す"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        },
+        {
+          "rule": "rule04",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "31.4%という圧倒的な市場シェアと4週間単位での継続的シェア獲得は Hershey ブランドの米国菓子市場での構造的優位を示す強力な証拠。全セグメント（チョコレート・非チョコレート・ガム・ミント）での同時シェア獲得は単一カテゴリ依存ではない多角的ブランド力の証明。",
+      "power_classification": "Branding",
+      "evidence_sources": [
+        "Q4 2014 CEO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Hershey のシーズナル・コンビニエンスチャネル支配力：ハロウィン+0.9pt・ホリデー+1.1pt のシーズナル市場シェア拡大とコンビニ4%テイクアウェイはブランド優位の多チャネル展開を示す。",
+      "evidence": "C-store merchandising and programming generated 4% retail takeaway in this important channel. Our market share in the food channel increased 0.3 points in the third quarter... Halloween and holiday market share increased 0.9 points and 1.1 points, respectively.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule07"
+        ],
+        "results": {
+          "rule03": true,
+          "rule07": true
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: ハロウィン+0.9pt・ホリデー+1.1ptという定量的証拠",
+          "rule07: チャネル別の具体的実績"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "シーズナル市場での具体的なシェア改善数値あり"
+        },
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "食品チャネルの軟調（0.3pt のみ）が全チャネル優位の主張を弱める"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        },
+        {
+          "rule": "rule07",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "ハロウィン・ホリデーシーズンでの大幅なシェア拡大は Hershey の菓子市場でのブランド力の最も説得力ある証拠の一つ。コンビニ4%テイクアウェイは主要チャネルでの実行力を示す。食品チャネルの軟調は一部の弱みを示すが全体的なブランド優位性は維持されている。",
+      "power_classification": "Branding",
+      "evidence_sources": [
+        "Q4 2014 CEO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_003",
+      "claim_type": "competitive_advantage",
+      "claim": "中国市場での規模倍増：Shanghai Golden Monkey 買収で中国プレゼンスを2倍以上に拡大。有機的にも中国が+35%（Q4・通期ともに）成長する高成長市場への早期規模確立。",
+      "evidence": "We acquired Shanghai Golden Monkey, which more than doubles the company's presence in China... China continues to drive international net sales growth, excluding Shanghai Golden Monkey, increased about 35% in both the fourth quarter and for the full year.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03",
+          "rule06"
+        ],
+        "results": {
+          "rule03": true,
+          "rule06": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule03: 有機+35%成長という定量証拠",
+          "rule06: SGM 統合は直前であり効果は未検証"
+        ]
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_future_dependent",
+          "adjustment": -0.05,
+          "reasoning": "SGM 統合の文化的・オペレーション的リスクは未解消"
+        },
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.0,
+          "reasoning": "有機+35%は強いエビデンスだが SGM 込みでは別問題"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        },
+        {
+          "rule": "rule06",
+          "pass": false
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "有機的+35%成長は中国市場での Hershey ブランドの受容性を示す強いエビデンス。SGM 買収による規模倍増は長期的な Scale Economies 構築の戦略として評価できる。ただし中国企業の買収統合は文化的・オペレーション的リスクを伴い、SGM ブランドと Hershey ブランドの共存戦略が不明確。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": [
+        "Q4 2014 CEO/CFO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Hershey のイノベーション・ブランド拡張能力：年間1pt以上のイノベーション貢献目標と KRAVE 買収によるミートスナック参入はブランドの新カテゴリ拡張力を示す。",
+      "evidence": "Innovation can continue to contribute at least one point of growth to our net sales algorithm on an annual basis... meaningful new product pipeline... KRAVE Jerky acquisition, enabling us to enter the rapidly growing meat snacks category, $2.5 billion growing at double-figure rate.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule06",
+          "rule01"
+        ],
+        "results": {
+          "rule06": false,
+          "rule01": false
+        },
+        "confidence": 0.4,
+        "adjustments": [
+          "rule06: 「少なくとも1pt以上」は目標であり実績ではない",
+          "rule01: イノベーション能力の具体的な仕組みの説明がない"
+        ]
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_future_dependent",
+          "adjustment": -0.1,
+          "reasoning": "KRAVE は買収直後で商業的成功は未証明"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "イノベーション能力の定量的証拠（過去の成功率、ヒット率等）が示されていない"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule06",
+          "pass": false
+        },
+        {
+          "rule": "rule01",
+          "pass": false
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_F_future_dependent",
+          "flagged": true,
+          "adjustment": -0.1
+        }
+      ],
+      "overall_reasoning": "KRAVE 買収によるミートスナック参入は菓子ブランドとしての消費者認知との乖離リスクがある。年間1pt以上のイノベーション貢献は目標に過ぎず実績で担保されていない。新カテゴリ拡張の成功率を示す歴史的データがなく、Branding の拡張として確信度は低い。",
+      "power_classification": "Branding",
+      "evidence_sources": [
+        "Q4 2014 CEO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Hershey のサステナビリティ・成分透明性への先行投資：カカオ30%認証調達（2020年100%目標）と non-GMO・rBST フリー原料調達は、ミレニアル世代の価値観変化への対応としてのブランド強化。",
+      "evidence": "We sourced 30% of our cocoa needs from certified and sustainable cocoa farms, putting us in a solid position to deliver on our 100% goal by 2020... We've done a lot of work here. We haven't leveraged what we've done... source non-GMO sugar and rBST-free milk.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule06"
+        ],
+        "results": {
+          "rule01": false,
+          "rule06": false
+        },
+        "confidence": 0.4,
+        "adjustments": [
+          "rule01: 現時点での競争優位としては証明が弱い",
+          "rule06: 「未活用」と自認しており現時点では顧客価値に転換されていない"
+        ]
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_future_dependent",
+          "adjustment": -0.1,
+          "reasoning": "30%→100%の移行はまだ途中で消費者認知への影響は将来的"
+        },
+        {
+          "source": "pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "サステナビリティへの消費者反応の定量的証拠なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule01",
+          "pass": false
+        },
+        {
+          "rule": "rule06",
+          "pass": false
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_F_future_dependent",
+          "flagged": true,
+          "adjustment": -0.1
+        }
+      ],
+      "overall_reasoning": "サステナビリティ投資は長期的ブランド価値向上として方向性は正しいが、CEO 自身が「未活用」と認めており現時点での競争優位としては弱い。30%という進捗は一定の評価ができるが、競合（Mars 等）との比較なしでは先行優位の証明が不十分。",
+      "power_classification": "Branding",
+      "evidence_sources": [
+        "Q4 2014 CEO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_006",
+      "claim_type": "cagr_connection",
+      "claim": "CMG市場シェア拡大→EPS CAGR：31.4%の市場シェア（+0.3pt）という支配的ポジションが、価格改定力（Q4価格効果+3.1%）を通じて EPS 成長 CAGR を支える構造。",
+      "evidence": "U.S. CMG xAOC+C market share reached 31.4%, up 0.3 share points versus last year... fourth quarter adjusted earnings per share diluted of $1.04, an increase of 20.9%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule05",
+          "rule03"
+        ],
+        "results": {
+          "rule05": true,
+          "rule03": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule05: シェア→価格転嫁→EPS の CAGR 接続ロジックが明確"
+        ]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "価格効果+3.1%という定量的な CAGR 接続要因あり"
+        },
+        {
+          "source": "pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "食品チャネル軟調・SNAP 削減の消費者影響が CAGR の不確実性を高める"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule05",
+          "pass": true
+        },
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "31.4%市場シェアという支配的ポジションと+3.1%の価格転嫁力の組み合わせは CAGR ロジックとして説得力がある。ただし 2014年通期が予想を下回ったことは短期的なリスクを示しており、食品チャネルの軟調・SNAP 削減効果が継続するリスクあり。",
+      "power_classification": "Branding",
+      "evidence_sources": [
+        "Q4 2014 CEO/CFO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_007",
+      "claim_type": "cagr_connection",
+      "claim": "中国規模倍増→国際 CAGR：SGM 買収で中国プレゼンス2倍化、有機+35%成長の継続見通しが国際収益 CAGR の加速要因として機能するロジック。",
+      "evidence": "We acquired Shanghai Golden Monkey, which more than doubles the company's presence in China... China increased about 35% in both the fourth quarter and for the full year. We anticipate a similar profile in 2015.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule05",
+          "rule03"
+        ],
+        "results": {
+          "rule05": true,
+          "rule03": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "rule05: 中国規模→国際収益 CAGR の接続ロジックあり"
+        ]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_future_dependent",
+          "adjustment": -0.05,
+          "reasoning": "SGM 統合リスクと中国経済不確実性が CAGR 実現を不確定にする"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule05",
+          "pass": true
+        },
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "中国の有機的+35%成長継続見通しと SGM 買収による規模倍増は国際 CAGR 加速の論理として成立する。ただし SGM の統合コスト・文化的課題・中国経済の2015年以降の不確実性を考えると、CAGR 接続の確実性は中程度にとどまる。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": [
+        "Q4 2014 CEO/CFO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "HSY Q4 2014 実績: 米国 CMG 市場シェア31.4% (+0.3pt)、売上$2B (+2.7%)、調整済 EPS $1.04 (+20.9%)",
+      "evidence": "U.S. CMG xAOC+C market share reached 31.4%, up 0.3 share points. Fourth quarter net sales of $2 billion increased 2.7% versus last year, adjusted EPS $1.04, increase of 20.9%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03"
+        ],
+        "results": {
+          "rule03": true
+        },
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "決算発表での財務・市場データ開示。",
+      "power_classification": null,
+      "evidence_sources": [
+        "Q4 2014 CEO/CFO prepared remarks (2015-01-29)"
+      ]
+    },
+    {
+      "id": "HSY_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "HSY FY2014 戦略実績: 認証カカオ調達30%達成、Shanghai Golden Monkey 買収（中国プレゼンス2倍超）",
+      "evidence": "Sourced 30% of cocoa needs from certified and sustainable cocoa farms. Acquired Shanghai Golden Monkey, which more than doubles the company's presence in China.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule03"
+        ],
+        "results": {
+          "rule03": true
+        },
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule03",
+          "pass": true
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CEO による具体的な戦略実績の開示。",
+      "power_classification": null,
+      "evidence_sources": [
+        "Q4 2014 CEO prepared remarks (2015-01-29)"
+      ]
+    }
+  ],
+  "metadata": {
+    "scored_count": 9,
+    "confidence_distribution": {
+      "70-80": 1,
+      "60-70": 1,
+      "40-50": 1,
+      "30-40": 2,
+      "50-60": 2,
+      "90-100": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

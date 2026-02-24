@@ -1,0 +1,202 @@
+{
+  "ticker": "CBA",
+  "company_name": "Commonwealth Bank of Australia",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "デジタル・テクノロジーへの継続的投資によるオーストラリア銀行業界での顧客満足度No.1（Roy Morgan調査）と取引口座の業界以上の成長",
+      "descriptive_label": "デジタル・テクノロジー優位による顧客獲得力（Switching Costs + Branding）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "SAPコアバンキングプラットフォームへの長期投資という仕組みが明示されており、顧客満足度は結果だが能力の証拠として評価可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "取引口座+38%、家計預金シェア成長11.6% vs 市場9.5%（+2.1pp超過）という定量的差別化"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "コアバンキングプラットフォームへの長期投資は構造的優位。他行は老朽化システムからのリプレースに時間・コストを要する"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "Roy Morgan調査で大手4行（ANZ/NAB/WBC/CBA）比較でNo.1と明示。外部評価による競合比較あり"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "オーストラリアは寡占的銀行市場。デジタルが差別化要因となる市場構造と合致"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（取引口座+38%、預金シェア超過成長）"},
+        {"pattern_id": "pattern_V_t", "matched": true, "adjustment": 0.0, "reasoning": "Roy Morgan No.1という外部評価による具体的競合比較あり"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "取引口座+38%・家計預金市場シェア超過成長（+2.1pp）という定量的データ。Roy Morgan調査No.1という外部評価。SAPコアバンキングという仕組みの説明あり。FY2015年次（主・①）。70%維持"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "テクノロジー優位→取引口座・預金シェア拡大→低コスト資金調達比率向上→NIM安定・収益成長",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "テクノロジー→取引口座採用→低コスト預金→NIM安定は2-3ステップ。預金成長が貸出100%をファンドとCFOが明示"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次決算（主・①）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（テクノロジー→預金→NIM→収益）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "預金成長が100%貸出をファンドという開示データで検証済み。NIM安定との接続も論理的。取引口座+38%という定量実績が接続を裏付ける。70%維持"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "3,700万以上の顧客関係と「メイン金融機関」シェア35%以上（主要行中最高水準）による顧客基盤の粘着性",
+      "descriptive_label": "メイン金融機関シェアによる顧客ロックイン（Switching Costs）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "顧客ライフサイクル全段階での改善という仕組みの記述あり。MFIシェアは結果だが、維持する能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "MFIシェア35%超（大手行中最高）、前年比+1.1ppという定量データ"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "メイン金融機関選択後の複合関係（給与・住宅ローン・カード）がスイッチングコストを生む構造"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "大手行中最高と明言。%データによる具体的比較"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（MFIシェア35%超、大手行最高、+1.1pp改善）"},
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（オーストラリア寡占銀行）×企業ポジション（MFIシェア最高）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "MFIシェア35%超・大手行中最高・前年比+1.1pp改善という定量的裏付け。メイン金融機関関係の複合製品スイッチングコスト構造。FY2015年次（主・①）。70%維持"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "MFIシェア拡大→クロスセル機会増加→1顧客あたり収益向上→収益成長",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "MFI→クロスセル→収益の3ステップ。論理的接続は成立するが定量的なクロスセル数値の開示は限定的"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "MFI→クロスセル→1顧客当たり収益の定量的接続証拠が限定的"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "MFI拡大とクロスセルの接続は論理的だが定量的な接続証拠（顧客あたり製品数・クロスセル収益）が限定的。50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "継続的な生産性改善プログラム（FY2015 $2.6億節減）によるコスト・トゥ・インカム比率の継続低下（小売銀行34.9%）",
+      "descriptive_label": "プロセス改善・生産性向上能力（Process Power）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "Six Sigma・Black Beltプログラムは仕組みとして明確。コスト削減額は結果だが仕組みの存在は実証済み"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "$2.6億削減、小売コスト・インカム比34.9%という定量データ"},
+        {"rule_id": "rule_6_t", "result": false, "reasoning": "競合も同様の効率化プログラムを実施しており固有の優位性は限定的"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "ANZ・NAB・WBC比較のコスト・インカム比データなし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.1, "reasoning": "Six Sigmaは金融業界共通のプログラム。競合も同様の生産性改善を実施"},
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "仕組み（Six Sigma・Black Belt）の存在が明示されている"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_B_t", "adjustment": -0.1, "reasoning": "業界共通プログラム。差別化効果の証拠が乏しい"}
+      ],
+      "overall_reasoning": "Six Sigma等の継続的生産性改善プログラムは実績あり（$2.6億節減）だが、他大手行も同様の取り組みを実施しており差別化効果は限定的。FY2015年次（主・①）。50%"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "生産性改善→費用効率向上→規制コスト増でもEPS成長維持",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "コスト削減→利益→EPSの直接的な1-2ステップ接続。生産性$2.6億が規制コスト増$3.47億をオフセット。開示データで検証可能"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（コスト削減→利益→EPS成長維持）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "生産性改善$2.6億が規制コスト増$3.47億に対してオフセットとして機能という開示データで検証可能。FY2015実績EPS+5%との接続も明確。70%"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル資産管理（Colonial First State）でのベンチマーク超過運用実績（90%のファンドがベンチマーク超過）と13%の運用資産成長",
+      "descriptive_label": "資産管理の運用パフォーマンス優位（Process Power）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "90%ベンチマーク超過は結果指標。CFO自身が市場上昇・為替・運用能力の3要因を並列しており、運用プロセス固有の能力の説明が不十分"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "90%ベンチマーク超過、FUA+13%という定量データ"},
+        {"rule_id": "rule_6_t", "result": false, "reasoning": "市場上昇・為替という外部要因が大きくプロセスパワーかどうか判断困難"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.2, "reasoning": "90%ベンチマーク超過という結果を運用能力（原因）として転倒するリスク。CFOが外部要因（市場・為替）も並列挙示"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_A_t", "adjustment": -0.2, "reasoning": "結果を能力と混同。外部要因の寄与が大きい"}
+      ],
+      "overall_reasoning": "90%ベンチマーク超過は印象的だが、CFOが市場上昇・為替という外部要因も並列挙示しており運用能力固有の優位性として評価しがたい。30%"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "資産管理の運用パフォーマンス→資金流入増加・パフォーマンスフィー→収益貢献",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "運用実績→フロー→FUA→収益の直接経路。CFOが明示的に言及。FUA+13%という実績"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（運用実績→フロー→収益）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "CAGR接続は明確だが、基盤となる運用優位性の持続性に疑問があるため50%。FUA+13%は実績として確認可能"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "30-40": 1,
+      "50-60": 3,
+      "70-80": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

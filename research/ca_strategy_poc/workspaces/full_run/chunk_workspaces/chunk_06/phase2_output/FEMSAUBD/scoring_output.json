@@ -1,0 +1,265 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXO コンビニエンスストアの出店機械（年1,000+店舗純増）とメキシコ全国展開能力",
+      "descriptive_label": "OXXO大量出店・全国展開能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "年1,132店純増・12,853店という定量的実績（rule04 quantitative）。構造的要素（rule06 structural）として評価できる。ただし年1,000+出店は結果の報告が中心で、それを可能にする仕組み（立地評価プロセス、物流ネットワーク構築力）の詳細説明が乏しい（rule01 concern）。メキシココンビニ市場での純粋競合（7-Eleven Mexico等）との比較なし（rule07 insufficient）。kb3 few-shot（COST#3: 倉庫型モデル50%, 純粋競合差別化不完全）と同水準。連続実績は能力を示唆する。",
+      "kb1_flags": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "出店数→売上加算の直接メカニズム（rule05 direct）。Q4 2014実績（収益+12%）で検証済み。パターンII-T（直接的CAGR接続）。70%。"
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOのサプライヤーとの協働による粗利率改善能力（グロスマージン管理）",
+      "descriptive_label": "サプライヤー協働による粗利管理能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "サプライヤー協働（仕組み）として評価できる（rule01 pass）。80bps粗利改善という定量データあり（rule04 quantitative）。ただし'effective collaboration'は定性的表現（rule07 insufficient、競合粗利比較なし）。12,853店の規模がバイイングパワーを生む構造は論理的だが説明が不十分。kb3 few-shot（COST: ベンダー交渉力70%相当の発想だが説明深度が低い）。50%が適切。",
+      "kb1_flags": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "規模拡大→交渉力向上→粗利改善→EBIT成長は3ステップで若干間接的（pattern_C_causal_leap部分）。80bpの持続性が不明。50%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの事業能力の隣接事業への横展開能力（ドラッグストア・ガソリンスタンド）",
+      "descriptive_label": "隣接事業横展開能力（ドラッグストア・ガソリンスタンド）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "横展開戦略（strategy）であり優位性（仕組み）の説明が不十分（rule08 concern, pattern_F_strategy_confusion）。'Above-industry service'は定性的（rule04 insufficient）。補完的要素（rule06 complementary）。20年のガソリンスタンド経験は能力の指標だが、定量的差別化説明なし。kb3 few-shot（CHD#5: 戦略ポートシフトは結果→30%）と同水準。",
+      "kb1_flags": [
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "新規事業からの売上加算は直接的だが、ドラッグ605店・ガソリン227店は初期段階。2-3年後の本格化。50%。"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの金融サービス（Saldazoデビットカード）によるエコシステム構築",
+      "descriptive_label": "OXXO金融エコシステム（Saldazo）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Network Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "Saldazoデビットカードエコシステム（仕組み）として評価（rule01 pass）。140万枚・月10万枚・業界平均超過利用率という定量データ（rule04 quantitative）。業界平均超過の利用率は差別化のシグナル（rule07 partial, pattern_I_quantitative_differentiation）。ただし金融サービスは補完的要素（rule06 complementary）。コンビニ来店への具体的影響の定量データなし。140万枚はまだ初期規模（12,853店対比）。50%が適切。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "金融サービス→ロイヤルティ→来店頻度→売上の3段階以上の因果チェーン（pattern_C_causal_leap）。定量連携データ提示なし。50%。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Coca-Cola FEMSA（KOF）を通じたラテンアメリカ複数国での瓶詰事業運営能力",
+      "descriptive_label": "KOF多国間瓶詰事業運営能力（ラテンアメリカ）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "多国間展開は大手飲料会社に共通の特性（pattern_B_industry_common）。'well-advanced in integration'は結果の報告（rule01 concern）。戦略的方向性（rule08 concern）。他のコカコーラ瓶詰業者（ARCA Continental等）との差別化不明（rule07 insufficient）。kb3 few-shot（CHD#4: 成長加速は結果→30%）と同水準。30%が適切。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_B_industry_common",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "KOF統合効率化→マージン改善→CAGR貢献は認められる。ただし為替・マクロリスク（ベネズエラ、ブラジル減速）が接続の不確実性を高める。50%→調整後40%だが50%で保持。"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの同質競合に対する優位な出店立地評価能力と品質管理（閉店ゼロの実績）",
+      "descriptive_label": "閉店ゼロの出店品質管理能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "'We've never shut down stores'は結果の報告（rule01 concern, pattern_A_result_as_cause）。dogma.md「優位性は能力・仕組みであり結果ではない」に明確に違反。12,853店で閉店ゼロは印象的な実績だが、それを可能にする出店評価プロセス（立地スコアリング、商圏分析、収益予測）の仕組み説明が全くない（rule04 insufficient）。競合（7-Eleven Mexico）との閉店率比較データなし（rule07 insufficient）。ネガティブケース（撤退候補店舗がなかった理由）の説明もなし（rule10 partial）。kb3 few-shot（COST#3: 純粋競合差別化不完全→50%より更に低い。結果のみの主張のため30%）。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule04_quantitative_evidence",
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Heineken持分（20%）を通じた安定的配当受取・資本配分の戦略的多様化",
+      "descriptive_label": "Heineken持分によるキャッシュフロー安定化",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": 0.3,
+      "scoring_rationale": "Heineken20%持分は財務資産（Cornered Resource的側面）だが、競争優位性としては評価が難しい（rule01 concern）。配当受取・資本配分は財務戦略の範疇で、OXXOやKOFの事業競争力とは異なる次元（pattern_B_industry_common: 大手コングロマリットの財務多様化は業界共通）。MXN 7.35Bの配当は定量データだが、競争上の差別化を示す数値ではない（rule04 partial）。持分比率自体は競合との比較になじまない（rule07 not applicable）。kb3 few-shot（CHD#4: 買収ブランドが成長加速=結果→30%）と同水準。財務持分は仕組みよりも資産の性格が強く30%。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_B_industry_common",
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOのドラッグストア事業（Farmacon買収含む）での地域ブランド活用とITプラットフォーム統合能力",
+      "descriptive_label": "ドラッグストア事業の地域ブランド+IT統合戦略",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "ITプラットフォーム統合能力（仕組み）への言及はあるが、「developing a strategy」という言及が示す通り、Q4 2014時点ではまだ戦略策定段階（rule08 concern, pattern_F_strategy_confusion）。「we are now...a strategy that...will allow us」という将来形は現時点での能力の証拠にならない（rule01 concern）。定量的実績データなし（rule04 insufficient）。kb3 few-shot（CHD#5: 戦略ポートシフトは結果→30%）と同水準。将来の能力構築計画であり現在の競争優位性としては30%。cutoff date（2015-09-30）内での実現も不確実。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "ドラッグストアIT統合→規模達成→マージン改善のCAGR接続は間接的かつ長期（2-3年）。cutoff date内では統合途中。Drugstore店舗数605は初期段階。全社CAGRへの現時点での貢献は限定的。30%。"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "OXXO総店舗数12,853店（2014年末）、2013年から1,132店純増（過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "OXXO年1,000+出店ペース → 同質比較売上+既存店成長 → 売上CAGR 12%+",
+      "descriptive_label": "OXXO出店→売上CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "新規出店→売上加算は直接的メカニズム（rule05 direct）。Q4 2014実績（売上+12%）で検証済み。1,132店純増という定量実績。メキシココンビニ市場での継続的出店余地あり（管理可能な競合状況）。Q4発言由来（rule12 primary）。パターンII-T（直接的CAGR接続）に該当。メキシコペソ安がリスク要因だが、売上は現地通貨建て。70%。"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014粗利率80bps改善（Q4 2014）。サプライヤー協働と販促効率化が要因",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "サプライヤー協働による粗利管理 + 出店規模による交渉力向上 → 粗利率継続改善 → EBIT CAGR支持",
+      "descriptive_label": "サプライヤー交渉力→粗利改善→EBIT CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "規模拡大→交渉力向上→粗利改善→EBIT成長は3ステップ以上（pattern_C_causal_leap）。80bpsの持続性が不明（単年の改善か構造的改善か不明）。Q4発言由来（rule12 primary）。方向性は認められるが飛躍あり。50%。"
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "OXXO能力横展開（ドラッグストア・ガソリンスタンド）→新規収益源 → 売上CAGR 15%+貢献",
+      "descriptive_label": "隣接事業展開→新規収益CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "新規事業からの売上加算は直接的だが、ドラッグストア605店・ガソリンスタンド227店は初期段階。FEMSAの連結売上に対するインパクト限定的。さらに統合・スケール化に2-3年かかるため、cutoff date内での本格貢献は不確実。3ステップ以上の因果チェーン（pattern_C_causal_leap部分）。40%。"
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "Saldazoデビットカード140万枚（2014年末）、月10万枚新規発行、業界平均超過の利用率",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 15,
+      "claim_type": "cagr_connection",
+      "claim": "Saldazo金融サービス → OXXO来店頻度・ロイヤルティ向上 → 既存店同質比較売上+0.5-1%",
+      "descriptive_label": "金融エコシステム→来店頻度→既存店売上CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Network Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "金融サービス→ロイヤルティ→来店頻度→売上の3段階以上の因果チェーン（pattern_C_causal_leap）。定量的な来店頻度→売上の連携データ提示なし。140万枚はまだ初期規模（12,853店対比）。理論的な接続は認められるが定量裏付け不足。40%。"
+    },
+    {
+      "id": 16,
+      "claim_type": "cagr_connection",
+      "claim": "KOFラテンアメリカ統合完了 → 売上成長 + マージン改善 → FEMSA CAGR貢献",
+      "descriptive_label": "KOF統合完了→マージン改善→CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "統合→効率化→利益成長は認められる方向性（rule05 indirect）。ただしベネズエラ為替問題・ブラジル経済減速という外生的リスクが接続の不確実性を大幅に高める（-10%調整）。Q4発言由来（rule12 primary）。統合進捗は'well-advanced'という定性的表現のみ。40%。"
+    },
+    {
+      "id": 17,
+      "claim_type": "cagr_connection",
+      "claim": "ドラッグストアIT統合→規模達成後のマージン改善→新規CAGR貢献",
+      "descriptive_label": "ドラッグストアITプラットフォーム→マージン改善CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "ITプラットフォーム統合（2-3年後）→規模達成→マージン改善→CAGR。長期的かつ複数ステップの因果チェーン（pattern_C_causal_leap）。cutoff date（2015-09-30）時点では統合途中段階（Q4 2014時点で戦略策定中）。全社CAGR接続としては最も遠い。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 17,
+    "confidence_distribution": {
+      "0-10": 17
+    },
+    "gatekeeper_applied": false
+  }
+}

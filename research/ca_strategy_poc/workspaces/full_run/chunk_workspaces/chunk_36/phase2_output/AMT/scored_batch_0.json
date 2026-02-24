@@ -1,0 +1,224 @@
+{
+  "ticker": "AMT",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ホリスティック・マスターリース契約（MLA）による収益可視性とチャーン最小化能力",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "ホリスティックMLAという契約設計能力（仕組み）を評価。$34B受注残高は結果だが、それを可能にする契約構造設計が能力の核心。Rule1適合"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$34B noncancelable revenue / 8x 2014 revenue、チャーン率1.8%という定量的裏付けあり。+20%相当の信頼度向上"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "長期ホリスティック契約はタワー専業会社特有の構造的優位。他のインフラREITでは同等の契約設計力を持つケースは少ない"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "少数大手タワー会社（AMT/Crown/SBA）と多数キャリアの構造下でのMLA設計能力は業界構造と合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン（capability over result）に合致。MLA設計能力という能力が主張の核心"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "$34Bの受注残高は結果だが、MLA設計という能力が主張の核心であるため却下パターンAには非該当"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern",
+          "adjustment": 0.0,
+          "reasoning": "高評価パターンIII-T適合。能力中心の主張で却下パターン非該当"
+        }
+      ],
+      "overall_reasoning": "Q4 annual callでCEOが詳細に説明。$34B受注残高・1.8%チャーン率という定量的裏付けと、ホリスティックMLA設計能力（能力・仕組み）の説明が整合。Crown Castle/SBAとの明示的比較はないが、タワー専業REITでの長期契約設計は業界構造合致あり。dogma Rule4・Rule11を満たし70%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ホリスティックMLA → 収益可視性向上 → 低チャーン → AFFO per share 安定成長 (+13-16% CAGR)",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "MLA→チャーン1.8%→有機成長7-10%→AFFO 13-16%の2-3ステップ因果連鎖。$34B開示データで検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual callでCEO/CFOが共に中期AFFO per share成長13-16%を明示。Primary sourceとして信頼度高"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズムパターンII-T適合。因果チェーン2-3ステップ、開示データで検証可能"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "因果メカニズム明確（MLA→チャーン低下→有機成長→AFFO成長）。Q4 annual call発言で開示データ検証可能。dogma Rule5基準（1-2ステップ直接接続）を満たし70%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "タワー資産のリース・アップ転換能力（低稼働率タワーを高収益化する運営ノウハウ）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "リース・アップ転換プロセスという能力を評価。Vintage別NOI yieldデータが能力の実績を証明"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "2005年以前: tenancy 2.7/NOI yield 25%超; 2005-10年: 2.3/23%; 2011-13年: 1.5/8.5%。Vintage別定量データが説得力を付与"
+        },
+        {
+          "rule_id": "rule_10_t",
+          "result": true,
+          "reasoning": "SpectraSite(2005)/GTP(2013): 勝; AT&T/T-Mobile: 負 というネガティブケース（断念例）が規律ある選定能力を示す"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Vintage別NOI yield時系列とリース・アップメカニズムが直接接続。定量データで検証可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "competitor_comparison",
+          "adjustment": 0.0,
+          "reasoning": "Crown/SBAとの直接比較はないが、Vintage別NOI yieldデータが能力の実証として機能。ゼロ調整"
+        }
+      ],
+      "overall_reasoning": "Q4での体系的説明とVintage別定量データ（NOI yield実績）が整合。Pure competitorとの比較欠如を定量実績で補完。dogma Rule4（定量裏付け）を満たし、Rule11（業界構造合致）との相乗効果で70%"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "リース・アップ能力 → 新規取得資産のNOI yield向上 → 有機的成長率7-10% → AFFO成長への貢献",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "リース・アップ→tenancy増加→NOI yield向上→有機成長の2-3ステップ。Vintage dataで各ステップが検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来。Verizon/TIM/Airtelポートフォリオの5年成長予測（9-10% CAGR）として具体化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズムパターン適合。Vintage別定量データで各ステップ検証可能"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "リース・アップ→NOI yield→有機成長のメカニズムはVintage別実績データで裏付けられる。Q4での包括的説明で信頼度高。70%が妥当"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル規模によるキャリア多角化と国際有機成長の優位性（単一国モデルより安定した成長）",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "グローバル分散は「構造的ポジション」（結果）に近い。能力というより、AMTの規模から生まれたポジション。Rule1境界ケース"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "Crown CastleはU.S.専業だが、SBAも国際展開有り。AMTの12カ国という規模は相対優位だが、定量的差別化データ不足"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "Structural market positionパターンだが、Q3 quarterly発言（二次情報源）で-10%"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_secondary",
+          "adjustment": -0.10,
+          "reasoning": "Q3 quarterly callでの発言（従・②相当）。dogma Rule12適用"
+        }
+      ],
+      "overall_reasoning": "国際分散は方向性として認められるが、Q3四半期発言かつ能力より結果・ポジションに近い。Pure competitor（Crown/SBA）との定量比較欠如。Phase 1の50%からQ3補正-10%で40%が妥当"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 1,
+      "70-80": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

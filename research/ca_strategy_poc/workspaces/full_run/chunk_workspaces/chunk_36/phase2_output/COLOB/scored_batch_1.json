@@ -1,0 +1,110 @@
+{
+  "ticker": "COLOB",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（中国・ブラジル・中東）への体系的投資による高成長市場先行者優位（2012年以来DKK1B投資、新興市場24%成長）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "新興市場24%成長は結果。先行者投資という戦略的決定（Rule 8-T）との混同リスク"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "新興市場24%成長（前年14%から加速）、DKK1B投資という定量データ"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "先行者投資は戦略決定（Rule 8-T）。地政学リスク（ロシア50%下落）が具体的リスクとして顕在化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "24%成長（結果）を先行者優位（能力）として提示"
+        },
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "戦略（先行投資）と優位性の混同。ただし-10%はパターンAで計上済み"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "geopolitical_risk",
+          "adjustment": 0.0,
+          "reasoning": "ロシア50%下落が地政学リスクを顕在化。Phase 1の50%を維持"
+        }
+      ],
+      "overall_reasoning": "新興市場先行者投資は方向性として認められるが、成長（結果）と能力の混同リスク、地政学リスク（ロシア）が介在。50%が妥当"
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "グロスマージン: 69%（+1ppt YoY）、EBIT margin 33%（目標34%、FY14/15）。CapEx: DKK533M（+21%）。長期EBIT margin目標: 年0.5-1ppt改善（3-5年）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Anders Lonning-Skovgaardの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "SpeediCath Compact転換率: 10%超（米国泌尿器カテーテル事業）。SenSura Mio: 12市場ローンチ済み、FY14/15でさらに5市場追加予定。新興市場投資: DKK200M/年（累計DKK1B since 2012）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 Q&Aでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 3,
+    "confidence_distribution": {
+      "50-60": 1,
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

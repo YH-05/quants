@@ -1,0 +1,136 @@
+{
+  "ticker": "MA",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "kb3_fewshot_loaded": 5,
+    "dogma_loaded": true,
+    "scoring_date": "2026-02-24"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "MA-001",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル決済ネットワークの二面性（発行銀行・加盟店双方への同時接続）と規模のスイッチングコスト",
+      "descriptive_label": "二面市場ネットワーク効果とスイッチングコスト",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Network Economies + Switching Costs",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_IV_t (構造的市場ポジション)",
+      "scoring_reasoning": "Q4年次決算（BAC・HSBC更新・新規）でのネットワーク効果証明。発行銀行と加盟店の双方を同時に保有する二面市場構造は強力なスイッチングコストを生む。Visa比較は乏しいが業界構造との合致（電子決済secular shift）は高評価。dogma ルール11適合。"
+    },
+    {
+      "claim_id": "MA-002",
+      "claim_type": "competitive_advantage",
+      "claim": "決済セキュリティ技術（EMV、トークン化、SafetyNet）による詐欺防止能力",
+      "descriptive_label": "多層決済セキュリティ技術基盤",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_III_t (能力の優位性)",
+      "scoring_reasoning": "SafetyNetの定量実績（$80M相当被害防止、80%以上の発行銀行利用）は能力の証拠として評価。ただしVisaも類似能力を保有しており業界共通能力（パターンB-T）の可能性。ルール3（相対的優位性）が部分的に制約。50%が適切。"
+    },
+    {
+      "claim_id": "MA-003",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルM&A戦略による処理・データ分析・ロイヤルティ領域の機能拡張と乗数効果",
+      "descriptive_label": "戦略的M&Aによるサービス拡張能力（乗数効果）",
+      "transcript_call_type": "Q2_quarterly",
+      "seven_powers_category": "Counter-Positioning",
+      "confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "warning",
+      "kb2_t_pattern": "pattern_F_t (戦略の混同)",
+      "scoring_reasoning": "M&A乗数効果フレームワーク自体は興味深いが、ルール8-T（戦略≠優位性）に抵触。統合能力・選定プロセスの具体的説明が不足。Q2発言（②相当）で-10〜20%調整。30%が適切。"
+    },
+    {
+      "claim_id": "MA-004",
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場における電子決済普及の先行者優位と現地インフラ構築能力",
+      "descriptive_label": "新興市場先行者優位とインフラ展開能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Scale Economies + Cornered Resource",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_IV_t (構造的市場ポジション)",
+      "scoring_reasoning": "アフリカ55カ国中50カ国の実績は具体的。電子化secular trendと市場構造の合致は評価できる（ルール11-T）。ただしVisaとの相対的差別化が不明確で、定量的競合比較なし。50%。"
+    },
+    {
+      "claim_id": "MA-005",
+      "claim_type": "competitive_advantage",
+      "claim": "データ・分析サービス（Advisors）によるMerchantsとIssuersへの付加価値提供能力",
+      "descriptive_label": "トランザクションデータ活用のアドバイザリー能力",
+      "transcript_call_type": "Q2_quarterly",
+      "seven_powers_category": "Cornered Resource",
+      "confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "weak",
+      "kb2_t_pattern": "pattern_D_t (定性的のみ)",
+      "scoring_reasoning": "能力の存在は認められるが、定量的差別化とVisaとの具体的比較が欠如（パターンD-T）。Q2発言（②相当）。30%。"
+    },
+    {
+      "claim_id": "MA-C001",
+      "claim_type": "cagr_connection",
+      "claim": "ネットワーク効果 → 取引量GDV・処理件数の secular growth → 純収益CAGR維持",
+      "descriptive_label": "ネットワーク規模→GDV/処理量→収益成長",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "2ステップの因果。GDV・処理件数は開示データで検証可能（ルール5-T直接接続）。新興市場GDV20-17%成長が定量的裏付け。70%。"
+    },
+    {
+      "claim_id": "MA-C002",
+      "claim_type": "cagr_connection",
+      "claim": "セキュリティ技術リーダーシップ → 加盟店・銀行の信頼維持 → チャーン抑制 → GDV成長継続",
+      "descriptive_label": "セキュリティ→信頼→チャーン抑制",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "3ステップの因果チェーン（ルール5-T: 間接）。中間段階の「信頼」定量化困難。50%。"
+    },
+    {
+      "claim_id": "MA-C003",
+      "claim_type": "cagr_connection",
+      "claim": "M&A乗数効果 → 非取引手数料収入の増加 → 収益成長のCAGR多様化",
+      "descriptive_label": "M&A乗数効果→非取引収益多様化",
+      "transcript_call_type": "Q2_quarterly",
+      "confidence": 0.3,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "クロスセル実績の定量開示なし（パターンD-T）。Q2発言（②相当）で-10〜20%調整。30%。"
+    },
+    {
+      "claim_id": "MA-C004",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場先行展開 → GDV成長の secular 余地 → 長期CAGR追加+2-3pp",
+      "descriptive_label": "新興市場secular growth→長期CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "新興市場GDVデータ（アジア太平洋20%、中南米17%）は開示で検証可能。2ステップの直接接続。70%。"
+    },
+    {
+      "claim_id": "MA-C005",
+      "claim_type": "cagr_connection",
+      "claim": "データ分析サービス → 発行銀行・加盟店への付加価値 → 非取引収益の CAGR 貢献",
+      "descriptive_label": "分析サービス→付加価値→非取引収益",
+      "transcript_call_type": "Q2_quarterly",
+      "confidence": 0.3,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "分析サービス収益規模・成長率が不透明。Q2発言（②相当）。30%。"
+    }
+  ],
+  "aggregate_score": {
+    "competitive_advantage_avg": 0.46,
+    "cagr_connection_avg": 0.5,
+    "overall_avg": 0.48,
+    "claim_count": 10,
+    "ca_claim_count": 5,
+    "cagr_claim_count": 5
+  }
+}

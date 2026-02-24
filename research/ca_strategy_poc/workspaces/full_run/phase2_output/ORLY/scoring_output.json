@@ -1,0 +1,167 @@
+{
+  "ticker": "ORLY",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true,
+    "kb3_calibration": "fewshot_ORLY.md参照済み - KYの既評価スコアをキャリブレーション基準として使用"
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "DIFM高頻度補充システムによるプロ顧客スイッチングコスト",
+      "seven_powers_category": "Switching Costs",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY#1",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：70%。AZO対比補充頻度優位性の言及あり"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "DIFM高頻度補充システム（能力・仕組み）として適切に識別"
+        }
+      ],
+      "final_score": 0.70,
+      "final_confidence_pct": 70,
+      "scoring_rationale": "KB3 fewshot_ORLY#1でKYが70%評価した主張と同様。DIFM特化型の高頻度補充システムはプロ顧客（整備工）のスイッチングコストを生む。AZO対比での補充頻度優位性を認識"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "高頻度補充→プロ顧客維持→同店売上成長経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：50%。DIY事業での優位性低下でCAGR全体として説明不足"
+        }
+      ],
+      "final_score": 0.50,
+      "final_confidence_pct": 50,
+      "scoring_rationale": "KY評価と同様の50%。DIY事業でのCAGR影響が限定的であることが制約"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "ローカルな規模の経済と既存ディストリビューションネットワーク",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 90,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY#2",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：90%。フラグメント市場×ローカルな規模の経済は業界構造と企業ポジションの最高の合致"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "自動車部品市場のフラグメント構造×ORLYの規模・密度の合致"
+        }
+      ],
+      "final_score": 0.90,
+      "final_confidence_pct": 90,
+      "scoring_rationale": "KB3 fewshot_ORLY#2でKYが90%評価。フラグメント市場×ローカルな規模の経済は業界構造と企業ポジションの典型的合致。FY2014売上$7.2B・営業利益率17.6%（過去最高）で裏付け"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "ローカル規模→新規出店収益化→CAGR貢献経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：70%。ローカル規模・密度・ネットワークは新規出店収益化に直結"
+        }
+      ],
+      "final_score": 0.70,
+      "final_confidence_pct": 70,
+      "scoring_rationale": "KY評価と同様の70%。ローカル規模による新規出店収益化は直接的なCAGR接続"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "フラグメント市場でのM&A実行・統合能力",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 90,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY#5",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：90%。フラグメント市場×規模・密度・ネットワーク背景でのM&A優位性は最高評価"
+        }
+      ],
+      "final_score": 0.90,
+      "final_confidence_pct": 90,
+      "scoring_rationale": "KB3 fewshot_ORLY#5でKYが90%評価。フラグメント市場での小型M&A実行・統合能力は規模の経済と組み合わさり最高評価。24連続四半期EPS成長15%超で実績証明"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "M&A統合→ネットワーク拡大→CAGR貢献経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：70%。影響規模が不明なものの直接的なCAGR接続"
+        }
+      ],
+      "final_score": 0.70,
+      "final_confidence_pct": 70,
+      "scoring_rationale": "KY評価と同様の70%。M&A統合→ネットワーク拡大は直接的な因果メカニズム"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "DIFM特化の組織文化・人材継続性",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB3 fewshot_ORLY#4",
+          "verdict": "calibrated",
+          "adjustment": 0,
+          "reasoning": "KY評価実績：50%。DIY/DIFM両事業への適用可能性に疑問"
+        }
+      ],
+      "final_score": 0.50,
+      "final_confidence_pct": 50,
+      "scoring_rationale": "KY評価と同様の50%。組織文化・継続性はあるがDIY事業での適用限界"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 7,
+    "competitive_advantage_claims": 5,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 2,
+    "weighted_avg_score": 0.70,
+    "top_claim": {
+      "claim_id": 3,
+      "final_score": 0.90,
+      "descriptive_label": "ローカルな規模の経済と既存ディストリビューションネットワーク"
+    },
+    "primary_seven_powers": ["Scale Economies", "Switching Costs"],
+    "investment_thesis_strength": "strong",
+    "key_risks": [
+      "DIY市場でのAmazon等のEC競合台頭",
+      "自動車部品市場の成熟化リスク",
+      "DIY/DIFM比率の変化"
+    ]
+  }
+}

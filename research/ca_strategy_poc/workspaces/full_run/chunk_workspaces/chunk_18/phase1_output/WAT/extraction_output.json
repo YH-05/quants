@@ -1,0 +1,319 @@
+{
+  "ticker": "WAT",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-26) + prior quarters",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "サービス（保守・サービス契約）と消耗品（クロマトグラフィーカラム）からなるリカリング収益が高い粘着性を持つ",
+      "descriptive_label": "リカリング収益の高粘着性（サービス＋消耗品）",
+      "evidence_from_transcript": "Q4 Q&A (Art Caputo/Waters Division President): 'The beauty of the strategy is that they stay somewhat immune to outside forces such as third party. Customers invest very heavily in our services and support to keep that going.' / 'for us, the services business is very strong. We feed it with new products, new services... it's perpetuating strength.' / Q4 Prepared Remarks (CEO): 'Our recurring revenues also grew impressively indicating increased instrument utilization and demonstrating the strategic value in offering a full portfolio of technical services and superior column offerings.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + Division President",
+      "section": "qa_session",
+      "supported_by_facts": [8, 9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "サービス拡張プラン（コンプライアンスサービス、インフォマティクスサービス含む）は能力・仕組みとして評価。インストールベース規模に依存する構造"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "リカリング収益+10%成長、サービス+13%成長という数値あり。ただし競合（Agilent Technologies）対比の数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "インストールベース→サービス契約→コンプライアンス要件という構造的なスイッチングコストが機能"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "医薬品品質管理（QC）市場では規制要件（FDA/GMP）によりサービス継続が義務。市場構造と粘着性の合致あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）+ Art Caputoの具体的な仕組み説明",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Agilent、Shimadzu）対比の直接比較数値なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Waters Division のサービス・消耗品事業は、インストールベースからの継続収益という構造的粘着性を持つ。規制遵守要件と深い技術統合がスイッチングコストを生成。Q4でArt Caputoが仕組みを具体的に説明。競合対比の定量データが欲しいが、リカリング収益成長の一貫性（数年間の高成長持続）は能力の証明として機能"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "リカリング収益のスイッチングコスト → 安定的な収益基盤 → 高い利益率とCAGR安定性",
+      "descriptive_label": "リカリング収益安定性→高利益率→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "リカリング→利益率は2ステップの直接因果。サービスの営業利益寄与がGene Cassisにより確認（operating margin accretive）。検証可能性高"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "リカリング収益（サービス+消耗品）は営業利益への直接的寄与。既存インストールベースが安定収益基盤として機能するCAGRメカニズムは直接的で検証可能"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "UPLC（超高性能液体クロマトグラフィー）技術の市場リードポジションと高いカラムアタッチレート",
+      "descriptive_label": "UPLC技術リードポジション×消耗品アタッチレート",
+      "evidence_from_transcript": "Q4 Q&A (CEO): 'The UPLC attach rate continues to grow. It's growing at a rate faster than the rest of our HPLC lines, and we continue to extend that capability by adding new chemical moieties to the substrate and new products. So the UPLC column business is quite a success story for it and it continues to expand. And we see very little competition attacking that specific performance range in the chemistry line.' / Gene Cassis: 'the attach rate continues to be very robust in the ballpark that you spoke about [80-90%].'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "qa_session",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "UPLC技術（Benefit）+化学組成の継続拡張（Process Power）は能力・仕組みとして評価"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "'very little competition attacking that specific performance range'という競合の不在を明示"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "80-90%のアタッチレートという定量的指標。アナリストの提示した数値をCEOが肯定"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "UPLC機器→専用カラム消耗品という構造的なタイアップ。競合がこの性能レンジを攻略できていない（CEO証言）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）+ 80-90%アタッチレートという定量データ + 競合不在の言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "UPLC分野での技術リードと高いアタッチレート（80-90%）は、Cornered Resource + Scale Economies（消耗品）の組み合わせ。競合が同等の性能レンジを持っていないという経営陣の言及はルール7-Tに近い説明"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "UPLC機器販売 → 80-90%アタッチレートのカラム消耗品需要 → リカリング収益の複利成長",
+      "descriptive_label": "UPLC機器→高アタッチ消耗品→リカリング複利",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ以内の直接因果。アタッチレート数値とUPLC機器出荷実績から消耗品需要が算出可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "機器→消耗品のアタッチメカニズムは直接的かつ検証可能。80-90%という具体的アタッチレートにより、インストールベース成長に対する消耗品収益の推算が可能"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "医薬品業界への高い集中と長期的な製薬会社との信頼関係（売上の50%超が製薬セクター）",
+      "descriptive_label": "製薬セクター集中とロングテール顧客関係",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'The big story was stronger demand from our pharmaceutical sector. This strength was geographically broad-based with improved demand from both research and quality control segments.' / Q&A: 'the pharma growth rate is at the corporate mid-single-digit growth [and pharma is more than half of our business].' / 'this large proportion of our sales to pharmaceutical end markets...allowed us to deliver a very solid full year performance.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "製薬セクターへの集中という戦略は能力ではなく結果に近い。ただし質の高い顧客基盤の維持力は能力として評価できる部分もある"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "concern",
+            "reasoning": "Agilent TechnologiesもMilestone Scientificも製薬セクターに注力しており、Waters固有の優位性かは不明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "製薬QC市場での規制要件が継続的な投資を義務付ける構造"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "製薬業界のR&D支出サイクルは一般的な景気変動と乖離しており、Watersのセクター集中はこの市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）",
+            "adjustment": 0
+          },
+          {
+            "reason": "製薬セクターへの集中は結果であり、Watersがそれを維持できる固有の能力の説明が不十分",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "製薬セクターへの高い依存度は市場構造との合致として評価できるが、なぜWatersが製薬顧客を獲得・維持できているかの能力説明がトランスクリプトでは不十分。UPLC技術（#3）の方が直接的な優位性の説明として機能している"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "製薬セクター集中 → 景気変動耐性の安定した売上成長 → CAGR安定化",
+      "descriptive_label": "製薬集中→景気耐性→CAGR安定",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "製薬→景気耐性→CAGR安定は2-3ステップ。欧州でも製薬が経済危機の影響を受けなかった実績あり（Q4発言）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "製薬セクターのR&D支出は景気循環と乖離した傾向があり、CAGR安定化への接続は概ね妥当。ただし中国での政府規制が製薬需要にも影響した事例があり、完全な景気耐性ではない"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "有機成長中心の規律ある経営戦略による業界トップクラスのROICと高い営業利益率・フリーキャッシュフロー",
+      "descriptive_label": "有機成長規律・高ROIC・高FCF創出能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'the discipline that we have demonstrated now over a couple of decades of primarily growing our business organically has enabled us to have industry-leading ROIC and consistently higher operating margins and cash flow.' / 'we generated record free cash flow in 2014, including a $115 million in the fourth quarter.' / 'In 2015, we expect another year of strong free cash flow and anticipate continued capital deployment toward our share repurchase program. On the M&A front, it is highly unlikely that you'll see us in pursuit of a major acquisition.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "高ROICと高FCFは結果。有機成長中心の規律は能力・仕組みとして解釈できる。ただし'decades'の実績が裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "'industry-leading ROIC'と言及しているが具体的な数値比較がない"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "大型M&Aを『やらない』という意思的な不実行（ネガティブケース）の明示。これが規律の証明として機能"
+          }
+        ],
+        "kb2_t_pattern_match": "partial_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）+ 大型M&A断念の明示（ルール10-T適用）",
+            "adjustment": 0
+          },
+          {
+            "reason": "'industry-leading ROIC'という主張に具体数値なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "数十年の有機成長規律は Process Power の要素を持つが、具体的な競合比較ROICデータがない。大型M&A不実行という断念例（ルール10-T）は能力の裏付けとして機能している。記録的FCFという成果と組み合わせると方向性は認められる"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q4 FY2014 Waters Division リカリング収益（サービス+消耗品）定数通貨ベース+11%成長。サービス+13%、消耗品+8%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "全年FY2014 Waters Division サービス収益定数通貨ベース+10%成長。記録的フリーキャッシュフロー（Q4: $150M、全年: ~$500M見込み）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 7]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "UPLC カラムのアタッチレートは約80-90%。成長はその他HPLC製品ラインを上回る速度",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "製薬セクターはWatersの売上の50%超を占め、FY2014の売上成長（定数通貨+6%）を牽引。EPS+9%成長（FX調整後）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "FY2014記録的フリーキャッシュフロー。Adj非GAAPのEPS+9%（$5.04→$5.47）。ROI industry-leadingと主張（具体数値は開示なし）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    }
+  ]
+}

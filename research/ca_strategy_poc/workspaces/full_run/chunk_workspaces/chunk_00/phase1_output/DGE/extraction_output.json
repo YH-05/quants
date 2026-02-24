@@ -1,0 +1,232 @@
+{
+  "ticker": "DGE",
+  "transcript_source": "H1 2014 (2014-01-30)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["H1_2014"]
+  },
+  "claims": [
+    {
+      "id": "DGE-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Reserve Brands（Johnnie Walker Blue/Platinum/Gold、Cîroc、Bulleit、Don Julio）による超高級スピリッツカテゴリーでの支配的プレゼンス（H1 2014: volume +13%、net sales +19%、全価格/ミックスの1/3）",
+      "descriptive_label": "Reserve超高級ブランドポートフォリオの差別化優位",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CEO発言）: 'Our reserve brands have truly delivered in the first half. Not only are we seeing strong volume growth, but these brands are creating significant value for Diageo, delivering around 1/3 of our total price/mix. When we look at the latest Drinks International report on the world\\'s 50 best bars, Diageo has 3 brands in the list of top-selling brands, including the #1 and 2 brands, and we have 4 in the list of the 10 top trending brands. This is a testament to our reserve organization and the impact of our World Class bartender program.' (2014-01-30, Ivan Menezes); CFO: 'Reserve brands grew volume 13% and net sales 19%'",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Ivan Menezes (CEO), Deirdre Mahlan (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["DGE-009"],
+      "cagr_connections": ["DGE-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "Reserve brands vol +13%・net sales +19%という定量的裏付け。Drinks International世界50ベストバーでのトップ3ブランドという第三者評価あり"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1発言から。Q4での年次総括ではないため-0.1調整"
+          }
+        ],
+        "overall_reasoning": "DiageoのReserve brandsは Cornered Resource（独占的ブランド資産）+ Branding（150年以上の歴史を持つブランド認知）の複合型優位性。世界最高バーのトップ1・2ブランドという独立第三者評価が強い裏付け。World Class バーテンダープログラムというエコシステムが差別化を強化。ただしH1発言"
+      }
+    },
+    {
+      "id": "DGE-002",
+      "claim_type": "competitive_advantage",
+      "claim": "150カ国にわたる地理的多様性と地域別市場ポジションによるリスク分散（北米・欧州・新興国のバランスポートフォリオ）",
+      "descriptive_label": "150カ国地理的多様性によるリスク分散能力",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CFO発言）: 'I think these results demonstrate that while we are not immune to an economic slowdown in emerging markets, our geographic diversity and leading position in North America, together with the breadth and depth of our brand portfolio, can mitigate the impact of challenges in individual markets... North America\\'s performance, with volume down 2% and net sales up 5%, reflects consumer trends, with higher-priced tiers performing better.' (2014-01-30, Deirdre Mahlan / Ivan Menezes)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Deirdre Mahlan (CFO), Ivan Menezes (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_B_t",
+            "adjustment": -0.1,
+            "reasoning": "地理的多様性はDiageo固有ではなく、Pernod Ricard・Brown-Forman等の競合も同様のグローバル展開を持つ"
+          }
+        ],
+        "overall_reasoning": "地理的多様性はリスク分散効果（結果）であり、競争優位性の仕組み（能力）ではない（Rule 1-T違反）。Scale Economiesとして解釈可能だが、競合他社との差別化根拠として弱い。30%"
+      }
+    },
+    {
+      "id": "DGE-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Route-to-Consumer（販路）への体系的投資とプロプライエタリな消費者データ活用によるラストマイル販売力（GBP 4Bの売上対象市場でのRtC展開）",
+      "descriptive_label": "Route-to-Consumer体系的投資によるラストマイル競争力",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CEO発言）: 'The launch of our route to consumer work covers approximately GBP 4 billion of our net sales, including Western Europe. Several of these markets are now in implementation phase... We have added feet on the street in Spain to cover an additional 2,000 outlets. And in Russia, we almost doubled the national sales force to just under 200 people and tripled our outlet coverage in Russia... increased the coverage of our exclusive third-party sales team in South Africa by 25%.' (2014-01-30, Ivan Menezes)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Ivan Menezes (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["DGE-010"],
+      "cagr_connections": ["DGE-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "Route-to-consumerへの投資は競合他社（Pernod Ricard等）も進めており、Diageo固有の差別化要因かは不明"
+          }
+        ],
+        "overall_reasoning": "RtCへの体系的投資（GBP 4BのNS対象）は能力（組織能力）として評価できる。ロシア国内販売員倍増・南ア25%アウトレット拡大等の具体的アクションが裏付け。Switching CostsとScale Economiesの要素もあるが、競合比較なし。50%"
+      }
+    },
+    {
+      "id": "DGE-004",
+      "claim_type": "competitive_advantage",
+      "claim": "スケールアドバンテージによる効率的マーケティング（フォーカスイノベーション4製品で全イノベーション売上の50%超）とプロキュアメントコスト削減",
+      "descriptive_label": "スケールを活用した効率的マーケティング・イノベーション集中化",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CEO発言）: 'Our focus on execution and innovation is to create fewer but bigger, more scalable ideas, and we\\'re starting to see this. In the half, just 4 innovations accounted for over 50% of the net sales growth from innovation... Savings in the procurement of promotional items have been reinvested in media spend. We\\'ve made substantial savings on travel costs, reducing the number of flights by over 50% in the half.' (2014-01-30, Ivan Menezes / Deirdre Mahlan)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Ivan Menezes (CEO), Deirdre Mahlan (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["DGE-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "4イノベーションで50%以上の成長という定量的裏付けあり"
+          },
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "マーケティング効率化は競合他社も追求しており、Diageo固有の差別化要因として弱い"
+          }
+        ],
+        "overall_reasoning": "スケールによるマーケティング効率化は Scale Economies の要素。ただし「4イノベーションで50%以上」という集中化の結果は定量的に明確。Process Powerとしても解釈可能。競合比較なしで50%"
+      }
+    },
+    {
+      "id": "DGE-005",
+      "claim_type": "competitive_advantage",
+      "claim": "World Class バーテンダープログラムとJohnnie Walker Housesによる超高級ブランドのコンシューマーエコシステム構築",
+      "descriptive_label": "World Classプログラムによる高級消費者エコシステム",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CEO発言）: 'We have increased our activations, signature drinks, drink menu presence and improved brand visibility. In the first half, a television program featuring the World Class contest was aired across many countries... The Johnnie Walker Houses are another example of where we\\'ve taken a proven growth driver to the next level. They have evolved beyond being an experience for a select group of individuals to being a direct sales route to the luxury consumer. Launch of new scotch whisky collections, such as the Epic Dates collection and bespoke blends, have generated incremental sales.' (2014-01-30, Ivan Menezes)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Ivan Menezes (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["DGE-009"],
+      "cagr_connections": ["DGE-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "World Classプログラムは業界内で独自の位置付け（Drinks Internationalでの評価が裏付け）。他のスピリッツメーカーが容易に模倣できないエコシステム"
+          }
+        ],
+        "overall_reasoning": "World Classプログラムはブランドエコシステムとして Network Economies の要素を持つ（バーテンダーの影響力が消費者選好に波及）。Johnnie Walker Houses は直接販売チャネルとして Switching Costs を形成。ただし定量的裏付けが不足。50%"
+      }
+    },
+    {
+      "id": "DGE-006",
+      "claim_type": "competitive_advantage",
+      "claim": "North America超高級スピリッツカテゴリーでの市場支配的ポジション（Bulleit +60%、JW Platinum、Don Julio等）",
+      "descriptive_label": "北米超高級スピリッツ市場でのリーダーポジション",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CEO発言）: 'North America is a great market for Diageo, not just the biggest and the most profitable, but also a strong route to market, a market-leading position and a great team. We are one of the few consumer goods companies that has delivered sustained performance on top line growth and margin expansion... Bulleit also performed well and grew 60%... Johnnie Walker continued to grow strongly in North America, especially in the U.S.' (2014-01-30, Ivan Menezes)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Ivan Menezes (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["DGE-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "北米の市場支配的ポジションは結果であり仕組みではない（Rule 1-T違反）。Bulleit 60%成長も結果"
+          }
+        ],
+        "overall_reasoning": "北米超高級市場でのリーダーポジションは定量的に示されているが、これは競争優位性の結果（market share）であり仕組みではない。「few consumer goods companies that delivered sustained performance」という主張は競合比較の方向性を示すが不十分。30%"
+      }
+    },
+    {
+      "id": "DGE-007",
+      "claim_type": "cagr_connection",
+      "claim": "Reserve brands価格/ミックス優位 + RtC強化 → 新興市場回復 → 売上CAGR改善",
+      "descriptive_label": "Reserve brands優位＋RtC→新興市場回復→成長経路",
+      "source_advantage": "DGE-001",
+      "transcript_call_type": "H1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 40,
+        "adjustments": [],
+        "overall_reasoning": "Reserve brands 1/3 price/mix + RtC展開（GBP 4B対象）→ 上位価格帯での回復という因果は論理的。ただし新興市場の回復は外部要因依存。H1発言・複数ステップの不確実性。40%"
+      }
+    },
+    {
+      "id": "DGE-009",
+      "claim_type": "factual_claim",
+      "claim": "Reserve brands H1 2014: volume +13%、net sales +19%、全価格/ミックスの1/3を占める。北米Reserve: volume +16%、net sales +26%。Drinks International世界50ベストバートップ3ブランドにDiageoが3銘柄（#1、#2含む）",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["DGE-001", "DGE-005"]
+    },
+    {
+      "id": "DGE-010",
+      "claim_type": "factual_claim",
+      "claim": "Route-to-Consumer対象売上: GBP 4億超（Western Europe含む）。ロシア販売員倍増（200人未満→）、ロシアアウトレットカバレッジ3倍化、南ア25%アウトレット拡大。Missouri分配業者90人追加",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["DGE-003"]
+    }
+  ]
+}

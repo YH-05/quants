@@ -1,0 +1,49 @@
+{
+  "ticker": "FLR",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "FLR-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "FLR FY2014実績：純利益$715M（EPS $4.48、+10%）、コンソリデート売上$215億（前年比-22%）、バックログ$425億（+22%）、新規受注$288億（記録）、FCF $643M。FY2015ガイダンス：EPS $4.40-$5.00",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "FLR-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Process Power",
+      "claim_text": "固定価格契約比率19%（低リスク）× 低油価環境でのバックログ維持 → リスク管理型収益 → 2015-2016年EPS安定化 → CAGR下支え",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "固定価格比率19%というリスク管理の実証データは方向性を支持。ただし低油価継続での新規受注減少リスク",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 固定価格比率19%（リスク管理型バックログ）→安定収益は直接的接続（dogma.md高評価パターン部分合致）。リスク管理型バックログという能力（Process Power）が優位性として100%あると仮定した場合の接続として妥当。低油価での新規受注減少リスクで50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 1,
+    "confidence_distribution": {"50-60": 1},
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "HRB_001",
+      "ticker": "HRB",
+      "claim_text": "H&R Blockは全米5番目の規模を持つ10,000店舗超の小売ネットワークを構築しており、その規模は業界の競合（Liberty Tax, Jackson Hewitt等のブランド競合）のみならず独立系業者（CPA・インデペンデント）に対しても圧倒的な差を持つ。この規模とブランド認知度（98%）の組み合わせは、分断化した税務申告市場でのスケール経済を形成する。",
+      "power_type": "Scale Economies",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: 「no one in this industry comes close to our reach」という明示的な競合比較（PatternV）。Liberty Tax・Jackson Hewittとの規模格差が明確。Rule04（定量的証拠）: 10,000店舗・ブランド認知度98%という具体的数値（+20%）。KB2-T PatternI（定量的差別化）: 定量的な規模優位性。PatternIV（構造的市場ポジション）: 分断化した税務申告市場×最大規模プレイヤーという構造的優位性（Rule11-T類似の業界構造×企業ポジション）。dogma §2.2（評価上げ要因1+2）: 定量+競合比較で+20-40%。確信度: 0.7",
+      "kb_rules_applied": [
+        "Rule04",
+        "Rule07",
+        "Rule11"
+      ],
+      "kb2_patterns_matched": [
+        "PatternI",
+        "PatternIV",
+        "PatternV"
+      ],
+      "adjustment": 20
+    },
+    {
+      "claim_id": "HRB_002",
+      "ticker": "HRB",
+      "claim_text": "H&R Blockは税務申告市場において、業界唯一の「アシスト申告（60%市場）」と「DIY申告（40%市場）」の両方に完全参加するブランドである。これにより競合他社（TurboTax はDIY特化、CPAはアシスト特化）が達成できない総合的な市場カバレッジを持ち、顧客の申告スタイル変化に柔軟に対応できる。",
+      "power_type": "Scale Economies",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: TurboTax（DIY特化）・CPA（アシスト特化）との明示的比較（+20%）。HRBのみが100%の市場に参加するという差別化は具体的。Rule06（構造的 vs 補完的）: 全市場カバレッジは構造的優位性。KB2-T PatternV（特定競合比較）: TurboTaxとの直接比較。PatternIV（構造的市場ポジション）: アシスト+DIY両セグメントへの参加。dogma §2.2: 競合比較が明確で+20%。ただしCAGR接続（顧客がスタイル変化した場合のリテンション）は間接的なため0.5。確信度: 0.7",
+      "kb_rules_applied": [
+        "Rule06",
+        "Rule07"
+      ],
+      "kb2_patterns_matched": [
+        "PatternIV",
+        "PatternV"
+      ],
+      "adjustment": 20
+    },
+    {
+      "claim_id": "HRB_003",
+      "ticker": "HRB",
+      "claim_text": "H&R BlockのTax Identity Shieldは、増加する税務身元盗難問題に対応する業界初・独自製品であり、Equifaxとのパートナーシップに基づく事前スキャン・税務詐欺早期検知・復旧サービスを提供する。競合が提供できない独自の解決策として、既存顧客の粘着性と新規顧客獲得の両方に貢献する。",
+      "power_type": "Cornered Resource",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: 「exclusive to H&R Block」という明示的な競合比較（PatternV）。Equifaxパートナーシップという独自リソースへのアクセスも明確。Rule06（構造的 vs 補完的）: Equifaxパートナーシップによるアクセスは構造的（模倣に時間がかかる）。KB2-T PatternV（特定競合比較）: 競合が同等サービスを提供できないことが明示。PatternIII（能力優先）: 独自製品能力が前面に出ている。dogma §2.2（評価上げ要因2）: 特定競合との比較で+20%。Cornered Resourceとしての独自性（業界初）と独占的パートナーシップが高評価。確信度: 0.7",
+      "kb_rules_applied": [
+        "Rule06",
+        "Rule07"
+      ],
+      "kb2_patterns_matched": [
+        "PatternIII",
+        "PatternV"
+      ],
+      "adjustment": 20
+    },
+    {
+      "claim_id": "HRB_004",
+      "ticker": "HRB",
+      "claim_text": "H&R BlockのMyBlockプラットフォームは既存顧客500万人が年間を通じて書類管理・税務士予約・Emeraldカード管理・パーソナライズドコンテンツを利用するデジタルエコシステムを形成しており、オフシーズンの顧客関係維持と翌シーズンへのロックインを実現している。この顧客データ基盤は競合が短期間で模倣困難な独自資産である。",
+      "power_type": "Switching Costs",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule04（定量的証拠）: 500万人利用者という具体的数値（+10%）。Rule06（構造的 vs 補完的）: 年間を通じた書類管理・ロックインは構造的スイッチングコスト。KB2-T PatternIII（能力優先）: デジタルプラットフォーム能力が前面。PatternD（定性的のみ）の要素も含む（競合比較データなし）。dogma §2.2: 500万人という定量データはあるが、実際のロックイン効果（翌シーズンのリテンション率等）の定量証拠なし（-10%）。競合（TurboTax）が同様のプラットフォームを持っている可能性（-10%）。確信度: 0.5",
+      "kb_rules_applied": [
+        "Rule04",
+        "Rule06"
+      ],
+      "kb2_patterns_matched": [
+        "PatternIII"
+      ],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "HRB_005",
+      "ticker": "HRB",
+      "claim_text": "ACAと税務の複雑な交差点（Affordable Care Act）はH&R Blockにとって市場拡大の機会となっており、健康保険と税務を同時に理解できるのは業界最大の税務申告会社であるHRBのみの強みである。数百万世帯が新たな申告複雑性に直面する中、専門知識とネットワーク規模の組み合わせが差別化要因となる。",
+      "power_type": "Process Power",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: 「HRBのみ」という主張があるが具体的な競合比較データなし（-10%）。TurboTaxもACA対応機能を持つ可能性。Rule06（構造的 vs 補完的）: ACA規制変化は外部要因であり、HRBの対応能力自体は評価可。KB2-T PatternC（因果飛躍）: 「ACA複雑性増大→HRBに有利」は競合も同等に恩恵を受ける一般論。PatternB（業界共通）: 全税務申告プロバイダーがACA対応をしている可能性。dogma §2.2: 規模×専門知識の組み合わせは評価できるが競合比較が弱い。確信度: 0.5",
+      "kb_rules_applied": [
+        "Rule06",
+        "Rule07"
+      ],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "HRB_006",
+      "ticker": "HRB",
+      "claim_text": "H&R Blockの真の競合は大手ブランド競合（Liberty Tax、Jackson Hewitt）ではなく、業界の78%を占めるCPA・独立系税務申告業者（高度にフラグメント化した市場）である。HRBの規模・ブランド・テクノロジー・人材は、この分断化した市場でのシェア獲得に対して構造的な優位性を持つ。",
+      "power_type": "Scale Economies",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule11（業界構造×企業ポジション）: 分断化市場（78%がCPA・独立系）×最大規模プレイヤーという業界構造の明示的な説明（Rule11-T適用で+20%）。Rule07（純粋競合との差別化）: CPAと独立系業者との比較が明確。KB2-T PatternIV（構造的市場ポジション）: フラグメント市場でのスケール優位。PatternI（定量的差別化）: 78%の市場フラグメントという定量的市場構造データ。dogma §2.2（評価上げ要因5）: 業界構造との明示的な合致（ORLY式のRule11-T）は最高評価パターン。HRBが最も強い競争優位性のある主張。確信度: 0.7",
+      "kb_rules_applied": [
+        "Rule07",
+        "Rule11"
+      ],
+      "kb2_patterns_matched": [
+        "PatternI",
+        "PatternIV"
+      ],
+      "adjustment": 20
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "0-10": 6
+    },
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "ticker": "CE",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "CE-006",
+      "power_type": "Switching Costs",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "タバコフィルター用セルロースアセテートトウの品質・信頼性へのこだわりは具体的なスイッチングコストの説明",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「すべてのトウが同じではない（ブランドアライメント）」という顧客側のスイッチング障壁を説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "タバコ製品の品質一貫性へのこだわりは構造的スイッチングコスト"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「顧客がトウ品質・信頼性を最優先する」という顧客側の行動パターンの説明"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "タバコOEMにとっての製品品質一貫性への依存は構造的"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "タバコフィルター顧客の「価格よりも品質・信頼性を優先する」という発言と「スティックごとの体験一貫性のためのブランドアライメント」は具体的なスイッチングコストの説明。スポンドン工場閉鎖後のトップポジション維持も裏付け。dogma.md ルール4（顧客行動の説明あり）に合致。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "タバコ顧客の高スイッチングコスト→安定的な価格設定能力→セグメント利益安定というメカニズムは直接的"
+    },
+    {
+      "claim_id": "CE-007",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "オランダ法人を通じたタックス最適化は組織的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "タックス最適化は一時的に模倣可能で、プロセスPowerとしては弱い"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "タックス最適化は補完的要素。競争優位性の構造的要素ではない"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "タックスヘイブン活用は多くのグローバル企業が行う一般的手法"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "税率引下げを「構造的優位性」として提示するのは飛躍"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "タックス最適化は短期的なメリットだが、競合も同様の税務構造を採用できるため差別化要因にならない（Pattern B: 業界共通手法）。また税制変更リスクもある。競争優位性の証拠として採用することは不適切。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "税率引下げ→EPS向上は直接的だが、持続的な差別化要因ではない"
+    },
+    {
+      "claim_id": "CE-008",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "新製品バイタリティ（継続的な新規製品投入）は長期的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "新製品の「自信」は発言しているが、具体的な新製品開発プロセスの説明が不足"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「製品イノベーション能力」という名詞属性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "note": "「非常に自信がある」「良い牽引力がある」という定性的説明が主"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "新製品→売上成長の因果関係の詳細説明が乏しい"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "CE-001 で示された三角化能力とCoolPoly買収によるサーマルマネジメント材料への拡張は認める。しかし「Investor Dayで詳細を共有する」という言及は現在の証拠が不足していることを示唆。新製品バイタリティの定量的指標（パイプライン件数、新製品売上比率等）がない。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "新製品導入→エンジニアリングマテリアルの業界成長超過成長への接続はCE-001と同様のメカニズムで説得力がある"
+    },
+    {
+      "claim_id": "CE-009",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "記録的EPS・キャッシュフローは結果。規模の経済としての解釈は弱い",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "調整後EPS26%成長・運営キャッシュフロー9.62億ドルは結果"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "記録的財務実績（結果）を優位性の証拠として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "EPS26%成長・記録的キャッシュフローは結果であり優位性ではない（Pattern A、dogma.md ルール1）。これらを可能にした仕組みは CE-001（アプリケーション開発能力）、CE-003（メタノールプラント規模）等の他のクレームで示されている。財務実績の列挙は単独では低評価。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "好財務実績は継続的な成長の基盤を示すが、メカニズムの説明なしではCAGR接続に限界"
+    },
+    {
+      "claim_id": "CE-010",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "米国シェールガスコスト優位性を活用した欧州からの生産集約は具体的なコスト優位性の仕組み",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "欧州工場閉鎖・米国集中という構造的な生産移管の仕組みが説明されている"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "米国生産拠点からの輸出構造は構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "シェールガス低コスト原料 + 米国生産集中という構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "note": "欧州拠点との対比でコスト優位性を説明"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "米国シェールガスの構造的低コスト優位性（CE-003のメタノールプラントと一体）と欧州からの生産集約による規模の経済は、明確な競争優位性のメカニズム。欧州生産拠点を持つ競合比で恒常的なコスト差を維持できる構造。dogma.md ルール11（業界構造との合致）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "米国低コスト生産→欧州・アジア市場への輸出競争力→酢酸チェーン全体のマージン改善への直接的なメカニズム"
+    }
+  ]
+}

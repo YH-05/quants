@@ -1,0 +1,254 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "PCP-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "航空宇宙・エンジン向け鋳造・鍛造部品における垂直統合型のフルライン製造能力。ニッケル・チタン素材からキャスティング・ファスナー・構造部品・加工まで、競合が「ピース」しか持たない中でPCPのみが完全な補完的資産群を保有。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_7_t",
+        "rule_11_t"
+      ],
+      "kb2_pattern_matched": "pattern_V_specific_competitor_comparison",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "定量的差別化（競合と比較した具体的マージン・シェアデータ）は限定的で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.6,
+      "scoring_rationale": "「nobody has that complement」という直接的な競合比較（KB2パターンV：競合比較）は明確。Q4 PRIMARY発言（CEO）。垂直統合のフルライン体制は航空宇宙エンジン市場構造との合致あり（rule_11_t通過）。最新エンジン向け受注でcontent share増加という成果が裏付け。定量的な競合比較データは未提示だが、競合との構造的差別化は明確に示されている。-10%調整後0.6。"
+    },
+    {
+      "claim_id": "PCP-002",
+      "claim_id_int": 2,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "垂直統合フルライン → 新エンジン向け受注シェア拡大（737MAX/A320neo等）→ エンジン量産開始後の売上CAGR + 3-5pp",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_II_direct_cagr_mechanism",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [],
+      "final_confidence": 0.7,
+      "scoring_rationale": "CEOが量産前の開発フェーズでの受注確定を明示し「multiplying effect」も説明（KB2パターンII：直接CAGR接続）。Q4 PRIMARY発言。737MAX/A320neoという具体的な量産プログラムへの受注が裏付け。2ステップの因果（フルライン→受注→量産時売上）は明確。調整なし0.7。"
+    },
+    {
+      "claim_id": "PCP-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "特定の航空宇宙部品・素材でのソールソース（唯一の供給者）ポジション。「only solution on that particular application」として顧客がPCP以外から調達できない特定の製品群を保有。",
+      "source_quarter": "Q3 FY2015",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_7_t"
+      ],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "Q3四半期発言（従・②相当）で-10%",
+          "delta": -0.1
+        },
+        {
+          "reason": "ソールソース品目の比率・規模が定量的に示されていない（rule_4_t部分通過のみ）で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "ソールソース供給ポジション（KB2パターンIV：構造的市場地位）は強力な競争優位性。「only solution on that particular application」という直接的な競合差別化言及（rule_7_t通過）。しかしQ3 SECONDARY発言（-10%）かつ事業全体に占めるソールソース品目の比率が不明（-10%）。ダブル調整後0.3。"
+    },
+    {
+      "claim_id": "PCP-004",
+      "claim_id_int": 4,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "ソールソースポジション → 顧客の需要変動に関わらず最低限の受注確保 → 売上安定性寄与",
+      "source_quarter": "Q3 FY2015",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_C_causal_leap",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "Q3発言由来（従・②相当）で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "ソールソース→受注安定→売上CAGR保護の接続（KB2パターンC：因果的飛躍）は間接的。需要変動の影響は依然受けることが実際のデストッキング事象から確認（Q3 2015でのTIMET売上減少は逆証拠）。Q3 SECONDARY発言。-10%調整後0.4。"
+    },
+    {
+      "claim_id": "PCP-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "買収後の急速な業務統合能力（well-defined playbook）によるパフォーマンス向上。TIMET（Forged OI+19%）・ADI（24ヶ月以内に大幅OI改善見込み）等、複数買収企業での一貫した実績を持つM&A統合プロセス。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_6_t"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "競合（Howmet等）との明示的な統合能力比較がない（rule_7_t未達）で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.6,
+      "scoring_rationale": "CEO自ら「well-defined playbook」と表現し、TIMET・ADI・Permaswage等での一貫した統合実績が裏付け（KB2パターンIII：能力>結果）。Q4 PRIMARY発言。TIMET統合でForged Products OI+19%・OPM+440bpsという定量的成果（rule_4_t）。組織的なM&A統合プロセスとして構造的評価（rule_6_t通過）。競合との定量比較は未提示だが実績の多さが信頼性を提供。-10%調整後0.6。"
+    },
+    {
+      "claim_id": "PCP-006",
+      "claim_id_int": 6,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "M&A統合プレイブック → 買収後24ヶ月以内の利益率向上 → EPS成長 +1-3%/年",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_II_direct_cagr_mechanism",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [],
+      "final_confidence": 0.7,
+      "scoring_rationale": "ADIの「significant upside on both operating income over the next 24 months」という具体的見通し（KB2パターンII：直接CAGR接続）。Q4 PRIMARY発言。TIMET統合でのForged OI+19%・OPM+440bpsが定量的な実績裏付け。2ステップ（統合→マージン向上→EPS寄与）の明確な接続。調整なし0.7。"
+    },
+    {
+      "claim_id": "PCP-007",
+      "claim_id_int": 7,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "原材料（ニッケル・チタン）のリバート（スクラップ）ループ内製化による低コスト材料調達能力。TIMET買収によって完成した独自の資産ループにより、機械加工工程から発生するスクラップを内部で再処理・活用できる体制。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_1_t",
+        "rule_4_t",
+        "rule_6_t"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "定量的なコスト削減効果が不明（rule_4_t部分通過のみ）で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "TIMET買収によって完成した独自のリバートループ（KB2パターンIII：能力>結果）。Q4 PRIMARY発言。外部から観察困難な組織的プロセス（rule_6_t構造的）。「revert levels reaching all-time highs」という定性指標あり。ただし具体的なコスト削減額が未開示（rule_4_t部分通過）。-10%調整後0.4。"
+    },
+    {
+      "claim_id": "PCP-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "リバートループ → 材料コスト低減 → OPM維持・拡大 → EPS成長支援",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_5_t",
+        "rule_12_t"
+      ],
+      "kb2_pattern_matched": "pattern_C_causal_leap",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [],
+      "final_confidence": 0.5,
+      "scoring_rationale": "原材料コスト削減→OPM維持→EPS成長の2-3ステップ（KB2パターンC：因果的飛躍）。Q4 PRIMARY発言。量的な効果が不明なため間接的接続。Forged Products OPM+440bpsの複数要因の一つとして評価。調整なし0.5。"
+    },
+    {
+      "claim_id": "PCP-009",
+      "claim_id_int": 9,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Q4 FY2014: OPM 28.5%（前年比+280bps）、Investment Cast OPM 35.6%、Forged Products OPM 27%（+440bps）",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_4_t"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Q4 PRIMARY発言での定量事実（OPM 28.5%、分野別マージン等）。結果指標（KB2パターンA）。PCP-001・PCP-005の競争優位性主張の裏付けとして機能。単独では競争優位性の直接証明にはならない。0.3。"
+    },
+    {
+      "claim_id": "PCP-010",
+      "claim_id_int": 10,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "最新ナローボディ再エンジン化（737MAX/A320neo）での受注シェア・コンテンツ価値が前世代エンジン比で増加",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_4_t"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Q4 PRIMARY発言での事実（737MAX/A320neo受注）。結果指標（KB2パターンA）だが、PCP-002のCAGR接続の強力な裏付けとして機能。競争優位性（フルライン能力）の成果として評価。0.3。"
+    },
+    {
+      "claim_id": "PCP-011",
+      "claim_id_int": 11,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "TIMET統合: Forged Products OI +19%達成。ADI（Valencia, CA）の24ヶ月以内の大幅OI改善見通し",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule_4_t"
+      ],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [],
+      "final_confidence": 0.5,
+      "scoring_rationale": "Q4 PRIMARY発言での定量事実（TIMET OI+19%）。M&A統合プレイブック（PCP-005）の定量的裏付けとして機能（KB2パターンI：定量的差別化）。単なる結果指標を超えてプロセス能力の証明として評価できる。0.5。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 11,
+    "confidence_distribution": {
+      "60-70": 2,
+      "70-80": 2,
+      "30-40": 3,
+      "40-50": 2,
+      "50-60": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

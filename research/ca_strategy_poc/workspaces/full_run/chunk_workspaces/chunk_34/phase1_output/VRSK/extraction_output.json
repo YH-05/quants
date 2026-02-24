@@ -1,0 +1,432 @@
+{
+  "ticker": "VRSK",
+  "company_name": "Verisk Analytics Inc",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-25) [Primary], Q4 FY2013 Earnings Call (2014-02-26) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"],
+    "transcripts_used": [
+      "201402_earnings_call.json (Q4 2013)",
+      "201404_earnings_call.json (Q1 2014)",
+      "201407_earnings_call.json (Q2 2014)",
+      "201410_earnings_call.json (Q3 2014)",
+      "201502_earnings_call.json (Q4 2014)",
+      "201504_earnings_call.json (Q1 2015)",
+      "201507_earnings_call.json (Q2 2015)"
+    ],
+    "excluded_transcripts": ["201510_earnings_call.json (Q3 2015, event_date=2015-10-28, after cutoff)"]
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Verisk の ISO（Insurance Services Office）起源の保険業界向けプロプライエタリ統計データベースは、保険会社による長年のデータ提供（コントリビュータリーデータモデル）により業界最大規模で最も包括的となり、単一企業では再現不可能なネットワーク効果を持つ",
+      "descriptive_label": "保険業界コントリビュータリーデータベースのネットワーク効果",
+      "seven_powers_category": "Network Economies / Cornered Resource",
+      "evidence_from_transcript": "Q4 FY2013 Q&A (CEO Scott Stephenson): '...the extremely proprietary nature of the data they've got [Argus]'; Q4 FY2014 CEO Prepared Remarks: '...EBITDA margin of 46.2% in the quarter and 46% for the full year... our consolidated organic revenue growth for the full year was 9.4%'；Q&A: 'In 2014, we had about 80% of all those [cat bond] transactions. But I'll just encourage you to keep it in context.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Scott Stephenson (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コントリビュータリーデータモデルという「仕組み」を評価。データベース規模は結果だが、蓄積の仕組みが優位性"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「コントリビュータリーデータベース」「ネットワーク効果」は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited_quantitative",
+            "reasoning": "cat bond市場での80%シェア（特定カテゴリ）。46%のEBITDA marginは間接証拠。直接的な競合比較データが欲しい"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "数十年にわたり業界が提供したデータの集積は短期間では代替不可能"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "保険業界は規制対応・リスク定量化が必須で、業界標準データへの依存度が高い。市場構造と完全合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言由来（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "業界構造との合致（保険規制データ依存）と数十年の蓄積",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Moody's Analytics, RMS等）との直接的定量比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "保険業界の規制・引受・理財に不可欠なデータベースのネットワーク効果は構造的優位。46%のEBITDA marginがその優位性の間接証拠。業界構造との合致で高評価"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "コントリビュータリーデータネットワーク効果 → 年次価格引き上げ（escalator付き多年契約）+ 新ソリューション採用増 → 保険部門の安定的9-12%有機成長 → 全社CAGR維持",
+      "descriptive_label": "データNW効果→価格エスカレータ→保険部門有機成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：データ優位→価格引き上げ+採用増→売上成長。CEOが明示（多年契約には常にyear-over-year price escalatorsあり）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "多年契約価格エスカレータの明示言及（定量的CAGR接続）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "データ優位→年次価格引き上げは直接的な2ステップ因果。保険部門の12.3%成長（Q4 2014）が裏付け。高信頼"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Argus（金融サービス部門）の極めてプロプライエタリな小売銀行コントリビュータリーデータプラットフォームは、参加銀行が自行だけでは得られない業界横断的ベンチマーク分析を提供し、脱退コストが極めて高い（自行データも失う）スイッチングコストを形成する",
+      "descriptive_label": "Argusコントリビュータリーデータによるスイッチングコスト",
+      "seven_powers_category": "Switching Costs / Network Economies",
+      "evidence_from_transcript": "Q4 FY2013 Q&A (CEO): 'there are a multitude of ways in which the Argus business grows...in addition to the extremely proprietary nature of the data they've got'; Q4 FY2013 Q&A: 'we're increasingly finding ways to try to repurpose the data to tie in what's happening in the retail banking channel with what's happening in other vertical markets'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Scott Stephenson (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [11],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コントリビュータリーデータプラットフォームという「仕組み」を評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited",
+            "reasoning": "「極めてプロプライエタリ」という定性的表現。Argus部門の具体的成長率（mid-teens）は提示あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "銀行が自行データを長年提供してきた履歴があり、脱退時に失うデータの価値が大きい"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合（Mastercard Data & Services等）との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 2013発言由来（主として採用可）",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合との定量比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "コントリビュータリーモデルのスイッチングコストは論理的に強いが、定量的裏付けと競合比較が不足。中程度の確信"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Argus スイッチングコスト → 高顧客維持率（mid-teens成長ガイダンス） + 国際展開（新興市場への複製） → 金融サービス部門売上CAGR +15%",
+      "descriptive_label": "Argusスイッチングコスト→高維持率→金融サービスCAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "2ステップの因果。ただしmid-teensガイダンスの具体的根拠が薄い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2013発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "mid-teens成長ガイダンスは一貫しているが、スイッチングコストとの直接的な因果チェーンの数値根拠が不足"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Verisk の WoodMac 買収（2015 Q2, $2.8B）で構築したエネルギー業界向けプロプライエタリデータ・分析サブスクリプション事業は、customer retention 99%（買収後）を示すスイッチングコストの強さを持つ",
+      "descriptive_label": "WoodMac エネルギー業界分析サブスクリプションのスイッチングコスト",
+      "seven_powers_category": "Switching Costs / Cornered Resource",
+      "evidence_from_transcript": "Q2 FY2015 CEO Prepared Remarks (Scott Stephenson): 'Year-to-date, the retention of our subscription-based customers was almost 99%, which demonstrates the value of the WoodMac solutions'; 'WoodMac is very much Verisk-like, a subscription business built on proprietary data assets and benefiting from network effects and scale economies'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Scott Stephenson (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プロプライエタリデータサブスクリプション能力（仕組み）を評価。99%維持率は能力の裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "99% customer retention という具体的定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "エネルギー業界の意思決定に不可欠なデータ分析で業界標準化しており短期代替困難"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "quarterly_adjustment",
+            "reasoning": "Q2 2015の発言。WoodMac は2015 Q2完了のため、Q4発言での言及なし。新たな優位性の「発見」として-10〜20%調整が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 2015発言由来（従・②相当）、-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "99%という明確な定量データあり、+10%",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "99% retention は強力な定量的証拠。ただしQ2 2015発言（従）であり、WoodMac はQ4 FY2014時点では未完了のためQ4発言での言及なし。調整後50%"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "WoodMac の99%顧客維持率 → エネルギー業界向けサブスク収益の安定成長 + Verisk既存顧客へのクロスセル → 中長期CAGR + 10%超への貢献",
+      "descriptive_label": "WoodMac99%維持率→安定成長＋クロスセル→CAGR貢献",
+      "source_advantage": 5,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：99%維持率→安定収益成長。クロスセルは3ステップになるが戦略として開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "quarterly",
+            "reasoning": "Q2 2015発言由来。調整適用"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 2015発言（従）、-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量データ（99%）により接続の信頼度は高め",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "CAGR接続としてはQ2発言ながら定量的根拠あり。50%"
+      }
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Verisk の持続的な有機成長投資（M&A IRR 20%超のハードルレート維持）とInterthinx売却（IRR>15%での規律ある撤退）に示される資本配分規律は、長期的な株主価値創出の仕組みを形成する",
+      "descriptive_label": "厳格なIRRハードルレートによる資本配分規律",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q4 FY2013 CEO Prepared Remarks: 'Our IRR on our mortgage services business...was greater than our typical 15% hurdle and similar to our return experience for our overall acquisition portfolio, which has IRRs of over 20% using our conservative 10x EBITDA terminal value'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Scott Stephenson (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "IRRハードルレートという「仕組み」を評価。撤退実績（Interthinx）は能力の裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "15%ハードルレート、20%超のポートフォリオIRR、10x EBITDAという具体的数値"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "Interthinx売却という「撤退例」がネガティブケースとして機能し、規律の実在を裏付け"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 2013発言由来（主）。IRR数値の具体的開示あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "業界標準的な資本配分フレームワーク。純粋競合との差別化証拠が薄い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "IRRハードルレートと撤退例は能力の実在を示す。ただし同業他社も同様の規律を持つ可能性があり純粋競合比較が不足。50%"
+      }
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "IRRハードル維持の資本配分規律 → 戦略的M&A（データ・分析への集中）→ 有機成長9%超の維持 → 長期EPS成長率CAGR +10-15%",
+      "descriptive_label": "IRRハードル→戦略M&A→有機成長→EPSのCAGR経路",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ以上の因果チェーン（規律→M&A→有機成長→EPS）。各ステップは論理的だが検証可能性は中程度"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2013発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "資本配分→CAGR接続は3ステップ。長期有機成長9%のトラックレコードは整合。50%"
+      }
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Xactware の損害保険理財・コスト算定プラットフォームは、承認ワークフロー・コスト算定データが業界標準となっており、保険会社と修繕業者の両面市場において切り替えコストが極めて高い",
+      "descriptive_label": "Xactware 損害算定プラットフォームの業界標準スイッチングコスト",
+      "seven_powers_category": "Switching Costs / Network Economies",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO): 'in that business, we've worked to have a balance between committed subscriptions and transaction-based revenues. And in fact, the mix has shifted more towards the committed volumes side'（コミット型サブスクへのシフトが示すロックイン）; Cat bond市場80%シェアは理財基盤の証拠",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Scott Stephenson (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [14],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プラットフォーム能力（仕組み）を評価。コミット型サブスク比率増加が顧客側のロックイン深化を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "コミット型へのシフト言及。cat bond市場80%は間接証拠。直接的なswitching cost数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "業界ワークフロー・コスト算定システムへの深い統合は移行コストを高くする"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "コミット型サブスクへのシフト言及あり（ロックイン証拠）",
+            "adjustment": 0
+          },
+          {
+            "reason": "直接的なスイッチングコスト数値の欠如",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "業界標準としてのXactwareのスイッチングコストは論理的に強い。コミット型シフト言及が裏付け。定量的競合比較の欠如で50%に留まる"
+      }
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "VRSK FY2014：全体収益成長12%（Q4）、9.4%有機収益成長（通年）、EBITDA margin 46%（通年）、diluted adjusted EPS成長18%（Q4）。保険カテゴリ収益成長12.3%（Q4 2014）。Cat bond市場での約80%シェア",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Argus（金融サービス部門）は mid-teens成長を維持。オーストラリア・NZ・アジア太平洋に展開（Dart買収）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "factual_claim",
+      "claim": "WoodMac 買収（2015 Q2、$2.8B）完了後のsubscription customer retention が99%。WoodMac は「subscription business built on proprietary data assets and benefiting from network effects and scale economies」と CEO が言及",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [5, 6]
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Interthinx（住宅ローン不正検出）の売却IRR >15%。全体M&Aポートフォリオ IRR >20%（10x EBITDA終端価値ベース）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7, 8]
+    },
+    {
+      "claim_id": 14,
+      "claim_type": "factual_claim",
+      "claim": "Xactware のコミット型サブスクリプション比率がトランザクション型より高い比率にシフト済み（2014-2015）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [9]
+    }
+  ]
+}

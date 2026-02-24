@@ -1,0 +1,79 @@
+{
+  "ticker": "LLY",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_6_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_II"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 3
+  },
+  "scored_claims": [
+    {
+      "id": "LLY-006",
+      "claim_type": "competitive_advantage",
+      "claim": "ElancのNovartis Animal Health買収によるトップ3アニマルヘルス企業へのポジション確立と10年間での$1B→$2B成長能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: M&A統合能力（内部成長+買収の組み合わせ）による10年での#8→Top3達成という能力説明",
+        "rule_4_t": "PASS: 10年で#8→Top3、$1B→$2B成長という定量的実績",
+        "rule_6_t": "PASS: Elanco成長はLLY戦略の核心的要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "Novartis Animal Health買収は1週間前完了の段階で統合リスクが残る。CFOが2015年のdilutive効果を明示しており、短期的には結果として現れにくい。買収完了直後の評価は控えめが適切"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "10年での#8→Top3達成は能力の証拠だが、Novartis Animal Health買収直後（1週間前完了）で統合リスクが残り、2015年にdilutive効果が見込まれる。確立済みの能力としての評価は50%が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "LLY-007",
+      "claim_type": "cagr_connection",
+      "claim": "糖尿病パイプライン（Trulicity, Jardiance, 基礎インスリン）発売 → 糖尿病事業売上成長 → 2015-2018年のEPS成長加速",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: Trulicity・Jardiance・基礎インスリン発売→糖尿病事業売上成長→2015-2018 EPS成長加速という直接的因果チェーン。2015年EPS $2.90-3.00というガイダンス",
+        "rule_12_t": "PASS: 年次ガイダンスコール（Q4_annualとして扱われる）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "3製品（Trulicity, Jardiance, 基礎インスリン）の発売軌跡が2015-2016年に集中という具体的タイムライン。2015年中〜高単桁FX調整後成長という検証可能な目標"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "年次コールで糖尿病3製品の発売時期（2015-2016集中）と、2015年EPS $2.90-3.00ガイダンスという検証可能な目標が示されている。パイプライン→発売→EPS成長の直接的接続。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "LLY-008",
+      "claim_type": "cagr_connection",
+      "claim": "Phase III R&Dパイプライン（7-9 assets）→ 持続的新製品発売（ixekizumab/baricitinib等）→ 「バイオテック的アップサイド」2020年代以降",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_5_t": "PARTIAL: Phase III 7-9 assets→第2波発売（cardiovascular, Alzheimer's）という2段階成長の説明。ただし第2波の発売時期（2020年代）が遠く、PoiT期間外の見通し",
+        "rule_12_t": "PASS: 年次ガイダンスコール"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "具体的な候補分子（evacetrapib, solanezumab, abemaciclib）は開示されているが、Phase III段階の成功確率不確実性（50%以下）が高い。第2波の時間軸が2020年代以降と遠い"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Phase III 7-9 assets維持という方針は示されているが、第2波の発売は2020年代以降で時間軸が長い。候補分子名（evacetrapib, solanezumab）の開示はあるが成功確率の不確実性が高い。50%が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "LLY-009",
+      "claim_type": "factual_claim",
+      "claim": "YZ期間の実績: Elanco 2倍（revenue）、日本volume倍増、中国売上倍増、5000人削減・$1B コスト削減達成、Phase III 12 NMEs（2011年末）、2014年3製品発売（Trulicity, Jardiance, Cyramza）",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。LLY-001とLLY-002の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

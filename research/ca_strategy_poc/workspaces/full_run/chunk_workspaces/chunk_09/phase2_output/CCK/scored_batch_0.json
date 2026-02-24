@@ -1,0 +1,292 @@
+{
+  "ticker": "CCK",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "北米食缶事業における低コストプラットフォーム（10年以上の施設統合による）",
+      "descriptive_label": "北米食缶の低コスト生産プラットフォーム",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "partial",
+          "reasoning": "10年の施設統合という仕組みへの言及はあるが、結果（高マージン15.7%）の提示が中心。CCKの「low-cost platform」という表現は能力的だが、そのプラットフォームを可能にした具体的メカニズムの説明が乏しい"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass",
+            "weight": "0"
+          },
+          "rule_4_t": {
+            "verdict": "partial",
+            "impact": "-10",
+            "reasoning": "競合（Ball, Ardagh）との定量比較なし"
+          },
+          "rule_6_t": {
+            "verdict": "structural",
+            "impact": "+0"
+          },
+          "rule_7_t": {
+            "verdict": "fail",
+            "impact": "-10",
+            "reasoning": "純粋競合との直接比較なし"
+          },
+          "rule_11_t": {
+            "verdict": "partial",
+            "impact": "+0",
+            "reasoning": "成熟食缶市場×低コスト構造の合致は部分的"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial - 高マージン（結果）の言及あり",
+            "pattern_D_t": "partial - 「low-cost」という表現は定量化不十分"
+          },
+          "high_eval_patterns": {
+            "pattern_III_t": "partial - 施設統合プロセスへの言及あり"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#3: ポート管理能力（50%）との比較 - 方向性は認めるが定量裏付け不十分。COST#1（定量比較あり70%）より劣る",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール7（純粋競合差別化）",
+            "adjustment": -10,
+            "reason": "Ball Corp等純粋競合との比較なし"
+          },
+          {
+            "rule": "ルール4（定量的裏付け）",
+            "adjustment": 0,
+            "reason": "セグメントマージン開示あるが競合比較なし"
+          }
+        ]
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "北米食缶低コスト基盤は能力として概ね認識できるが（10年施設統合）、純粋競合（Ball Corporation, Ardagh Group）との定量的比較なし。セグメントマージン15.7%は結果であり能力の証明としては弱い。Phase 1の50%から-10に調整",
+      "seven_powers_classification": "Scale Economies（規模の経済）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルなM&A実行・統合能力（Mivisa/EMPAQUE統合実績）",
+      "descriptive_label": "M&A統合実行能力",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "fail",
+          "reasoning": "Mivisa/EMPAQUE統合の成功は結果の提示が中心。CHD#1（断念例による裏付け）と比べると根拠が弱い。統合プレイブックの具体的説明なし"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail",
+            "impact": "-20"
+          },
+          "rule_8_t": {
+            "verdict": "partial",
+            "impact": "0"
+          },
+          "rule_10_t": {
+            "verdict": "absent",
+            "impact": "-10",
+            "reasoning": "断念例・失敗例の言及なし"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "match - 統合成功という結果を能力として提示"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#4（成長加速は結果：30%）と同種。統合成功の列挙はCHD#4と同パターン",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "統合完了という結果の報告が中心で、統合能力の仕組み（プレイブック、プロセス）の説明が乏しい。KB2-T pattern_A_t（結果を原因と取り違え）に該当。Phase 1の30%を維持",
+      "seven_powers_classification": "なし（戦略の実行であり構造的優位性として不十分）",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "金属缶製造機械の設計・製造能力（CMb engineering）による業界内での技術的優位性",
+      "descriptive_label": "缶製造機械設計・製造能力（垂直統合的な技術力）",
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "partial",
+          "reasoning": "CEOの退任挨拶的なQ3発言で定性的な自己宣伝が中心。「unparalleled」「world-leading」は定性的主張。Queen's Award受賞は外部承認だが競合との技術比較ではない"
+        },
+        "kb1_t_rules": {
+          "rule_4_t": {
+            "verdict": "absent",
+            "impact": "-20"
+          },
+          "rule_7_t": {
+            "verdict": "fail",
+            "impact": "-10"
+          },
+          "rule_12_t": {
+            "verdict": "secondary",
+            "impact": "-10",
+            "reasoning": "Q3発言（従）"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_D_t": "match - 定性的のみで測定不能",
+            "pattern_G_t": "partial - 純粋競合に対する差別化不明"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "COST#2（劇場的価値 10%）の定性的主張と類似。ただし内製製造能力は確かに存在するため30%程度",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール12（Q4主・Q3従）",
+            "adjustment": 0,
+            "reason": "Q3発言、退任コンテキストでの信頼性低下"
+          }
+        ]
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "Q3発言（退任挨拶的コンテキスト）、定量的裏付け皆無、競合との直接比較なし。KB2-T pattern_D_t（定性的のみ）。能力の存在は認めるが裏付けが不十分。Phase 1の30%を維持",
+      "seven_powers_classification": "Process Power（内製製造プロセス）の可能性あるが証明不十分",
+      "structural_vs_complementary": "structural（潜在的）"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルなスペシャルティ缶（非標準サイズ）製品ミックス移行能力",
+      "descriptive_label": "スペシャルティ缶への製品ミックス転換能力",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "fail",
+          "is_capability_not_result": "fail",
+          "reasoning": "スペシャルティ缶35-60%の比率は結果であり能力ではない。製品ミックス転換は戦略的選択（ルール8-T違反）であり、それを可能にする能力の説明なし"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail",
+            "impact": "-20"
+          },
+          "rule_8_t": {
+            "verdict": "fail",
+            "impact": "-10"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "match - 比率（結果）を能力として提示",
+            "pattern_F_t": "match - 戦略と優位性の混同"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#5（高収益ポートへの戦略的シフト：30%）と同パターン。「ポートシフトは結果」と同種",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "スペシャルティ缶比率は結果であり能力ではない（ルール1-T、ルール8-T違反）。KB2-T pattern_A_t（結果を原因）とpattern_F_t（戦略との混同）に該当。Phase 1の30%を維持",
+      "seven_powers_classification": "なし（戦略的選択であり構造的優位性として不十分）",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "低コスト北米食缶プラットフォーム → 競合のコスト改善に対する耐性 → マージン維持 → FCF安定",
+      "descriptive_label": "低コスト基盤→マージン防衛→FCF安定化経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "step_1": "低コストプラットフォーム→競合参入耐性（合理的）",
+          "step_2": "→マージン維持（競合新工場建設リスクあり）",
+          "step_3": "→FCF安定（直接的）",
+          "data_support": "マージン15.7%は開示。ただし競合Ball Corpの新工場建設（Q4 Q&Aで言及）によりマージン圧縮リスク",
+          "pattern_match": "中間ステップに不確実性あり（dogma 低評価パターン：数値の根拠不透明）"
+        }
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "低コスト→マージン維持の接続は2-3ステップで合理的。セグメントマージン15.7%で検証可能。ただし競合新工場建設リスクがあり、マージン防衛の確信度が完全ではない。Phase 1の50%を維持"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "M&A統合能力 → 新興市場での継続的な事業拡大 → 売上成長への寄与",
+      "descriptive_label": "M&A統合→新興市場拡大→売上CAGR寄与",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "source advantage（#3）のM&A能力証明が弱いため接続の信頼度も限定的",
+          "pattern_match": "dogma: TAM/シェアの中間ステップ欠如（30-50%）"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "ソースとなる優位性（#3: M&A能力）の証明が弱いため、CAGR接続も不確実。Mivisa/EMPAQUE統合実績は示されているが、継続的M&A機会とその成功率の裏付けなし。-10調整"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "内製缶製造機械能力 → 迅速・低コストな新工場建設 → 成長市場での設備投資効率向上",
+      "descriptive_label": "内製機械能力→資本効率向上→収益成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "Q3発言由来、定量的証拠なし。ソース優位性（#5）も証明が弱い",
+          "pattern_match": "dogma: 増収前提のレバレッジ接続（基盤説明なし）"
+        }
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "Q3発言由来、CMb engineering能力（#5）の証明が弱く、資本効率への定量的接続もない。dogma低評価パターン（基盤説明なし）に該当。Phase 1の40%から-10"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "スペシャルティ缶需要成長 → ASP向上 → 売上・収益成長寄与",
+      "descriptive_label": "スペシャルティ缶→ASP上昇→CAGR寄与",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "スペシャルティ缶→ASPプレミアムの2ステップ接続は合理的。ただし競合も同様の転換を進めており、CCK固有のCAGR寄与として過大評価すべきでない",
+          "pattern_match": "dogma: 業界特性に合致したドライバー（50%程度）"
+        }
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "スペシャルティ缶→ASP上昇の2ステップ接続は市場データで裏付け可能。ただし競合（Ball, Ardagh）も同様の転換中であり、CCK固有のCAGR寄与かは不明。Phase 1の50%を維持"
+    }
+  ],
+  "metadata": {
+    "gatekeeper_applied": true,
+    "batch_size": 8
+  }
+}

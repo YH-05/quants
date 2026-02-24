@@ -1,0 +1,227 @@
+{
+  "ticker": "KNEBV",
+  "scored_claims": [
+    {
+      "claim_id": "KNEBV-001",
+      "power_type": "Switching Costs",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "エレベーター保守契約の構造的粘着性（受注残に含まれない・競合の参入が困難）は Switching Costs の典型",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「保守契約を受注残に含まない」という財務構造の説明と「保守市場では小規模独立業者も参入」という競合構造の説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "OEMによる認定保守という制度的な顧客ロックイン構造"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "OEM認定による保守事業でのスイッチングコスト構造"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "note": "スイッチングコストの具体的な大きさの定量データが乏しい"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "エレベーター保守のOEM認定構造はスイッチングコストのメカニズムとして認める。ただしCEOの「来年を良いスタートで始める基盤になる」という発言は弱い根拠で、実際の顧客維持率データや競合との比較がない。「小規模独立業者の参入」という事実は保守市場が完全なロックインではないことを示唆。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "OEM認定保守の顧客ロックイン→新設機器の保守移行率向上→保守売上成長というメカニズムは理解できる"
+    },
+    {
+      "claim_id": "KNEBV-002",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "中国での全セグメント・全地域カバレッジは規模の経済の明確な説明",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「特定セグメント・地域に依存しないようにビジネスを構築した」という能力の説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "広範な地理的フットプリントは構造的規模優位性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "受注残€7B・24.4%成長（結果）だけでなく「特定依存排除の構造構築」（能力）を説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "受注残€7B・24.4%成長という定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「全セグメント・全地域をカバーして特定依存を排除する構造を構築した」という目的意識的な戦略の実現と、€7B（24.4%成長）の受注残という定量裏付けは高評価。ただし中国市場での「全セグメント・全地域カバレッジ」は中国系大手競合（CODA、上海三菱等）も持ちうるため、相対的差別化の証拠がやや弱い。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "全セグメント・全地域カバレッジ→市場環境変化に対するレジリエンス→安定成長という接続は2ステップで理解できる"
+    },
+    {
+      "claim_id": "KNEBV-003",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "5つの開発プログラム（3年ごとの体系的更新）は長期的なプロセス能力の証拠",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "2008年から継続して3年ごとに5つの開発プログラムを運営するという制度化された能力"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「組織学習サイクル」「開発プログラム」という名詞属性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "制度化された開発プログラムの継続（2008年以来）という能力の軌跡"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "2008年から継続する3年ごとの5開発プログラムは制度化された能力として認める。ただし「顧客ロイヤルティ第一・勝てるチーム・製品サービス差別化」というプログラム内容は定性的で、競合比での差別化の定量証拠がない。多くのグローバル企業が類似の組織的取り組みを持っており、KONEに固有の優位性かどうかの説明が弱い（Pattern B 傾向）。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "体系的な開発プログラム→競争力強化→成長への貢献という接続は理論的だが定量メカニズムが不明"
+    },
+    {
+      "claim_id": "KNEBV-004",
+      "power_type": "Cornered Resource",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "中国の設置認定OEM規制はKONEに有利な Cornered Resource（規制資源）",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「OEM認定を義務化する新法規制」という外部規制環境の変化がKONEに有利なポジションを与える構造"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "OEM認定という法的・制度的構造は構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "OEM認定義務化→保守市場でのKONEポジション強化という構造的変化"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "中国でのOEM認定義務化規制はKONEや他の大手OEMに有利な構造的変化。地方政府によるサービス品質への注目増加も追い風。ただしこの規制恩恵はKONEだけでなく中国系大手も含む全OEMが享受するため、KONEに固有ではない側面もある。CEOの発言は具体的で明確。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "OEM認定義務化→KONE自社施工比率向上→保守転換率向上→保守事業成長という直接的メカニズム"
+    },
+    {
+      "claim_id": "KNEBV-005",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "中国での完全現地化（現地生産・調達）による為替影響排除は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「中国で販売するものは中国で調達・製造する」という完全現地化の仕組みの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "完全現地化は構造的な製造プロセス優位性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「ユーロ安でも中国事業のマージンに影響しない」という為替リスク排除の仕組みの説明"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "中国での現地生産・調達は多くのグローバルメーカーが行う一般的な手法"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "中国での完全現地化による為替リスク排除は具体的な説明があり能力として認める。ただし多くのグローバルメーカーが中国市場では現地化を進めており（Pattern B）、KONEに固有の優位性とは言いにくい。欧州系競合（Schindler, Otis）が同様の現地化を行っているかの比較が不明。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "完全現地化→為替リスク排除→安定した中国事業収益への接続は理解できるが、成長への直接接続は限定的"
+    },
+    {
+      "claim_id": "KNEBV-006",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "2014年の財務実績（EBIT14.6%・FCF€368M）は結果の提示",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "EBIT14.6%・FCF€368M・受注残€7B成長はすべて結果"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "財務実績（結果）をビジネスモデルの質（優位性）として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "2014年の記録的財務実績は結果であり優位性ではない（Pattern A、dogma.md ルール1）。EBIT14.6%・FCF€368Mを生み出す仕組みは他のKNEBVクレーム（KNEBV-001～005）で個別に評価されるべき。独立したクレームとしての価値は低い。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "高水準のFCF生成能力は継続成長投資の基盤となるが、それ自体はCAGR成長のメカニズム説明ではない"
+    },
+    {
+      "claim_id": "KNEBV-007",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "南欧での Value-based retention アプローチ（価格競争不参加・販売能力強化）は具体的なプロセス能力の説明",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「価格競争に参加せず、販売能力開発でcompetition balanceを改善する」という具体的なアプローチの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "販売能力は構造的要素だが、南欧での改善は地域的な補完要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「わずかにネガティブ（2014年）→2013年より大幅改善」という能力の軌跡と具体的なアプローチ"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "「わずかにネガティブのみになった」という改善の方向性の定量的言及"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「強い価格競争に参加しない」という意思決定と「販売能力（セールスセットアップ・コンピテンシー）開発」というアプローチは、単なる戦略ではなく組織的な実行能力の説明。南欧でのcompetition balanceの改善という実績も示されている。dogma.md ルール10（実行しなかった例による裏付け：価格競争不参加）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "価格競争不参加・販売能力強化→保守顧客獲得・維持率改善→保守売上安定成長という接続は理解できるが定量証拠が限定的"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "batch_count": 2
+  }
+}

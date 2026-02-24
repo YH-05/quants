@@ -1,0 +1,66 @@
+{
+  "ticker": "DGE",
+  "batch_index": 1,
+  "batch_total": 2,
+  "target_claim_ids": ["DGE-006", "DGE-007", "DGE-009", "DGE-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "DGE-006",
+      "claim_type": "competitive_advantage",
+      "claim": "North America超高級スピリッツカテゴリーでの市場支配的ポジション（Bulleit +60%、JW Platinum、Don Julio等）",
+      "descriptive_label": "北米超高級スピリッツ市場でのリーダーポジション",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 北米リーダーポジション（結果=市場シェア）を優位性として提示",
+        "rule_4_t": "PARTIAL - Bulleit +60%という成長率はあるが市場シェア数値は不明",
+        "rule_6_t": "FAIL - 市場リーダーシップは結果であり構造的優位ではない"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）",
+      "kb3_t_calibration": "MNST#1（高市場シェア=結果→50%）と類似。Bulleit +60%は強力な成長率だが、それを可能にする能力の説明がない",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（市場リーダーは結果）。H1発言-10%。30%が適切",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・6 FAIL（結果の提示）。KB2-T pattern_A_t（結果を原因とする）。dogma.md Rule 1違反。北米リーダーは結果。H1発言-10%調整。30%"
+    },
+    {
+      "id": "DGE-007",
+      "claim_type": "cagr_connection",
+      "claim": "Reserve brands価格/ミックス優位 + RtC強化 → 新興市場回復 → 売上CAGR改善",
+      "descriptive_label": "Reserve brands優位＋RtC→新興市場回復→成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PARTIAL - 3ステップの因果（Reserve優位→RtC強化→新興市場回復→CAGR）で外部変数依存",
+        "rule_12_t": "FAIL - H1発言から"
+      },
+      "kb2_t_pattern": "pattern_C_t（因果関係の飛躍）。新興市場回復は外部要因",
+      "kb3_t_calibration": "ADN-007（EM市場回帰→AuM回復→20%）と類似した外部変数依存。Diageoの場合はRtC強化という内部要因との組み合わせで若干評価が高い",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: 部分的（3ステップ・外部変数）。H1発言-10%制約。40%が適切",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 5 部分的、Rule 12 FAIL（H1発言）。KB2-T pattern_C_t（因果飛躍）。外部変数（新興市場回復）依存。H1発言-10%調整。40%"
+    },
+    {
+      "id": "DGE-009",
+      "claim_type": "factual_claim",
+      "claim": "Reserve brands H1 2014: volume +13%、net sales +19%、全価格/ミックスの1/3を占める。北米Reserve: volume +16%、net sales +26%。Drinks International世界50ベストバートップ3ブランドにDiageoが3銘柄（#1、#2含む）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 2014 CEO/CFO発言による定量的開示。Drinks International独立評価"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。DGE-001（Reserve brands優位）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。DGE-001（70%）の最重要支持事実。独立第三者（Drinks International）の評価が特に価値高い。0.7"
+    },
+    {
+      "id": "DGE-010",
+      "claim_type": "factual_claim",
+      "claim": "Route-to-Consumer対象売上: GBP 4億超（Western Europe含む）。ロシア販売員倍増（200人未満→）、ロシアアウトレットカバレッジ3倍化、南ア25%アウトレット拡大。Missouri分配業者90人追加",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 2014 CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。DGE-003（RtC投資能力）の支持事実",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。DGE-003（50%）の支持事実。GBP 4億規模・具体的拡大数値が評価を支持。0.5"
+    }
+  ]
+}

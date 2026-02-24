@@ -1,0 +1,368 @@
+{
+  "ticker": "RAI",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-10) / Q3 FY2015 Earnings Call (2015-10-27)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "VUSEデジタルベイパー製品のプロプライエタリ技術とコンビニエンスストアチャネル#1ポジション",
+      "descriptive_label": "VUSE独自技術によるベイパー市場優位性",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: 'VUSE is already the top-selling e-cigarette in that channel overall.' 'VUSE is truly satisfying. It's simple and it's convenient to use... VUSE is earning the trust and credibility of skeptical vapor users because of its proprietary digital vapor technology and its American assembly. These are meaningful points of difference.' Q3 2015: 'VUSE digital vapor cigarette continued to perform well in the third quarter and increased its #1 share position in the c-store channel.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Susan Cameron (CEO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「proprietary digital vapor technology」という能力・仕組みへの言及あり。単なる市場シェア結果だけでなく、技術的差別化要因（American assembly含む）が説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "c-store channel #1という市場ポジションは示されている。ただし競合（NJoy、blu等）との定量的技術比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "proprietary digital vapor technologyは構造的技術優位性の可能性があるが、特許保護の強さや複製困難性の説明が不十分"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "c-store channel #1はNJoy、blu等競合対比の証拠だが、技術的優位性を定量的に競合比較していない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t（市場ポジション×技術的差別化）への部分的合致",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "ベイパー市場は急速進化中で参入障壁が不明確（戦略性の懸念）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "VUSEのproprietary digital vapor technologyはc-store channel #1シェアという結果で裏付けられており、単なる結果の羅列を超えた能力の説明がある。ただしベイパー市場全体の急速変化と競合の追い上げにより、優位性の持続可能性に懸念あり。自社技術という点でCornered ResourceまたはProcess Powerへの分類が可能"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "VUSEはコンビニエンスストア/ガスチャネルで#1電子タバコ（2014年末時点）、約100,000店舗で販売",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "タバコ業界における構造的価格設定力（Pricing Power）とマージン拡大能力",
+      "descriptive_label": "タバコ製品の構造的価格設定力",
+      "evidence_from_transcript": "Q4 CFO発言: 'R.J. Reynolds had another strong run in the fourth quarter with adjusted operating income increasing by almost 14%... The company's adjusted operating margin continued to widen in the quarter, increasing 4.4 percentage points to 40.5%, and that brought the full year to 39.6%.' 'American Snuff... operating margin remained strong at 56.4% for the year.' 'Santa Fe... full year to 51.2%.' Q4 CEO発言: 'The marketplace is quite competitive, so that kind of brand performance is a tribute to our companies' highly engaged and expert consumer and trade marketing teams.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Thomas Adams (CFO) / Susan Cameron (CEO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "価格設定力の結果（高マージン）は示されているが、それを可能にする仕組み（ブランド力、消費者ロイヤルティ、規制環境）の説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "RJR 39.6%、American Snuff 56.4%、Santa Fe 51.2%という具体的なセグメントマージンが開示されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "タバコ産業の規制・MSA構造・高い依存性による価格設定力は業界に本質的に組み込まれた構造的要素"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "単純な価格設定は戦略だが、ブランドエクイティに基づく価格設定力は能力として評価可能"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "タバコ産業は規制・価格設定契約（MSA）・高いブランドロイヤルティが共存する構造であり、価格設定力が競争優位の基盤になる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（業界共通能力）への懸念あり、ただしRAIのマージン水準は高い",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "タバコ産業全体（Altria等競合）も同様の価格設定力を有しており差別化が不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "RJR/American Snuff/Santa Feの各セグメントで極めて高いオペレーティングマージンが開示されており定量的根拠は十分。ただしタバコ産業全体の規制・MSA構造による業界共通の価格設定力であり、RAI固有の差別化要因の説明が弱い。Altriaとの比較が欠如"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "RJR operating margin 39.6%（2014年通年）、American Snuff 56.4%、Santa Fe 51.2%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Natural American Spiritブランドによるスーパープレミアム/オーガニックタバコの独占的ニッチポジション",
+      "descriptive_label": "Natural American Spiritのオーガニック・ニッチブランド優位性",
+      "evidence_from_transcript": "Q4 CEO発言: 'Natural American Spirit brand added another 0.3 percentage point in market share to 1.8%, making it 1 of the top 10 cigarette brands in the U.S.' 'Natural American Spirit's market share gain of 0.3% that Susan mentioned was on volume growth of 14%.' Q&A（Bonnie Herzog対話）: 'It has very strong market share in growing urban markets, and we continue to see that expanding... it grew in 49 out of 50 states last year.' Q3 2015: 'Natural American Spirit's distinctive natural tobacco style grew volume by almost 20%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Susan Cameron (CEO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "14%の量成長と0.3pp sharer gain（Q4）/20%量成長（Q3）は結果だが、Urban market特化・additive-free独自ポジショニングという能力への言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "1.8%市場シェア（top 10）、14%量成長、49州での成長という複数の定量的根拠"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "スーパープレミアムオーガニックカテゴリでの独自ポジションはあるが、新規参入競合との直接比較なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "アーバン消費者の健康志向・プレミアム化トレンドという市場構造がNASのポジションと明確に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×企業ポジション）への合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "NASの競争優位性は市場構造（健康志向プレミアム化）とブランドポジション（オーガニック・アディティブフリー）の合致により説明力が高い。14-20%の量成長、49州での拡大という定量的証拠も複数回一貫して示されている。ただし競合の参入可能性（Bonnie Herzog質問でも言及）はリスク"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Natural American Spirit 市場シェア1.8%（top 10）、量成長14%（Q4 2014）、49州で成長、Q3 2015では量成長約20%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "タバコカテゴリにまたがる多様化ポートフォリオによる消費者行動変化への対応力",
+      "descriptive_label": "マルチカテゴリ・ポートフォリオ対応力",
+      "evidence_from_transcript": "Q3 2015 CEO発言: 'our operating companies have a key advantage in offering a diversified product portfolio across tobacco categories with a range of distinctive brands at different price points. And this broad portfolio is also aligned with the key consumer macro trends that are driving brand choice.' 'Our companies are successfully managing this dynamic interplay between categories and between their key brands, and RAI is benefiting greatly from it.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Susan Cameron (CEO)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "「diversified product portfolio」は能力的表現だが、それがなぜ競争優位性になるかの仕組みの説明が「コンシューマーマクロトレンドとの整合」という高レベルに留まる"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "ポートフォリオ多様化は補完的戦略の可能性が高く、構造的優位性の証明が不十分"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "ポートフォリオ戦略は戦略的選択であり、それを維持する仕組みの説明がない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（結果・戦略を優位性と混同）の懸念",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）のため調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "ポートフォリオ戦略はAltria等競合も同様に保有",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "マルチカテゴリポートフォリオは競合（Altria, Philip Morris）も保有しており差別化要因になりにくい。消費者行動変化への対応力という主張は戦略論として有効だが、RAI固有の能力としての説明が弱い。Q3発言であることも信頼性を低下させる"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Lorillard/Newport統合による販売力強化とシナジー創出（$800Mシナジー計画）",
+      "descriptive_label": "Newport統合による販売力・規模経済優位性",
+      "evidence_from_transcript": "Q3 2015 CEO発言: 'The integration of Newport... continues to go very well... we doubled the sales force overnight... Newport is showing excellent momentum, with third quarter share of retail shipments increasing 0.5 percentage point from the prior year quarter to 13.3%.' CFO発言: 'On cost savings, we're on track. As we've talked about $800 million worth of synergies. We've got $300 million we anticipate achieving over the first 18 months of the deal.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Susan Cameron (CEO) / Andrew Gilchrist (CFO)",
+      "section_type": "answer",
+      "supported_by_facts": [2],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "「doubled the sales force overnight」という能力の説明があり、単なる結果ではない。ただし統合プレイブックや統合能力の仕組みの説明は限定的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "規模拡大は補完的（戦略的選択）だが、統合後の流通力・販売力強化は構造的な競争優位になりうる"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "M&Aは戦略だが、統合実行能力という観点では評価可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（結果を原因と取り違え）への懸念",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Newport統合の$800Mシナジーは具体的な目標として示されており、Q3時点で$300M/18M達成軌道にある。販売員倍増という具体的な能力強化の証拠もあるが、M&A統合という一過性の戦略的行動であり、持続的競争優位性としての評価は限定的。Q3発言でもあり確信度は低"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "VUSE技術的優位性 → c-store channel #1維持 → ベイパーカテゴリ成長に伴う売上拡大",
+      "descriptive_label": "VUSE優位性→ベイパー市場成長獲得→売上CAGR寄与",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "c-store #1→市場成長獲得の2ステップ接続は合理的。ただしベイパー市場全体の成長速度と競合追い上げリスクが不確実"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "ベイパー市場は急速進化中で#1ポジション維持の不確実性が高い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "c-store #1ポジションは現時点での優位を示しているが、ベイパー市場の急速な変化（JUUL等の後発参入）が懸念材料。2015年9月時点では依然VUSEが優位だが、将来の接続は不確実"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "タバコ価格設定力 → 安定した高マージン維持 → EPS成長・FCF生成",
+      "descriptive_label": "価格設定力→高マージン持続→FCF・EPS成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "価格設定→マージン拡大→EPS成長の直接的2-3ステップ接続。Q4での証拠（adjusted EPS +13%、operating margin +4.4pp）で検証可能"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "タバコ産業の価格設定力→EPS成長の接続は歴史的に安定しており、Q4 2014での実績（RJR OI +14%、EPS +13%）で裏付けられている。ただし業界共通の価格設定力であり、RAI固有の優位性としての評価は限定的"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Natural American Spirit ブランド成長 → スーパープレミアムセグメント拡大 → Santa Fe の高マージン成長",
+      "descriptive_label": "NASブランド成長→Santa Fe高収益拡大",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "NAS量成長14%（Q4）→Santa Fe OI +20.5%（通年）→operating margin 51.2%という直接的接続がデータで裏付けられている"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "NASの量成長とSanta Feの高収益成長の接続は、開示された財務データ（Santa Fe OI +20.5%、operating margin 51.2%）で直接的に裏付けられている。Urban市場での拡大可能性も複数回言及されており、CAGR接続の信頼性は高い"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "Newport統合シナジー（$800M）→ コスト削減＋販売力強化 → 売上CAGR+EPS成長への寄与",
+      "descriptive_label": "Newport統合シナジー→規模拡大→売上・収益成長",
+      "source_advantage": 8,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "$800Mシナジーの内訳（コスト・売上）が完全に開示されておらず、売上CAGR接続は間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来（従・②相当）"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Newport統合の$800M shynergy目標は具体的だが、売上CAGRへの接続は間接的。Q3発言由来であり、接続の信頼度は限定的"
+      }
+    }
+  ]
+}

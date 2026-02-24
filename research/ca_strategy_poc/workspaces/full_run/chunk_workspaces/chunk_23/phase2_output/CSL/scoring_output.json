@@ -1,0 +1,206 @@
+{
+  "ticker": "CSL",
+  "company_name": "CSL Limited",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "血漿分画製品（免疫グロブリン・アルブミン）の世界規模プラズマ収集ネットワーク（米国119センター含む128センター）による希少原材料の安定確保",
+      "descriptive_label": "プラズマ収集ネットワーク規模優位（Cornered Resource + Scale Economies）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "収集ネットワーク構築・運営能力は仕組みとして評価"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "128センター・年間21新規開設の定量データあり"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "規制許認可・ドナー確保で模倣困難な構造的優位"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "CEO: 業界内で際立つと明言（最大規模）"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "血漿分画市場の原材料希少性が参入障壁"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（128センター・年21新規開設）"},
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（原材料希少性）×企業ポジション（最大規模）"},
+        {"pattern_id": "pattern_V_t", "matched": true, "adjustment": 0.0, "reasoning": "競合比での突出をCEOが明言"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "128センターという具体的規模データ、CEOによる業界内最速の開設ペースの明言、プラズマ収集の構造的参入障壁（規制・ドナー確保）の三要素がそろっている。FY2015年次での発言で信頼性高。70%維持"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "プラズマ収集規模 → 製品供給能力 → 増加する免疫グロブリン・アルブミン需要への対応 → 売上成長",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "需要超過市場で供給能力がCAGRを規定する直接メカニズム"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（収集→製造→販売）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Ig+8%・アルブミン+12%という需要成長実績が接続を裏付ける。供給制約環境での直接的接続"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "免疫グロブリン分野における特化製品Hizentraの差別化と1万人以上の患者基盤",
+      "descriptive_label": "特化免疫グロブリン製品Hizentraの差別化（Branding + Switching Costs）",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "20%高濃度皮下投与製品は製品特性（能力）として評価"},
+        {"rule_id": "rule_3_t", "result": true, "reasoning": "CEO: 唯一の差別化皮下投与製品と明言"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "患者数10,000人以上という定量データあり"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "患者の治療変更コスト（スイッチングコスト）あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（患者数10,000人）"},
+        {"pattern_id": "pattern_V_t", "matched": true, "adjustment": 0.0, "reasoning": "唯一性（'only differentiated subcutaneous product'）をCEOが明言"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "唯一の差別化製品という明確な競合差別化。患者基盤10,000人以上のスイッチングコスト。FY2015年次での発言。70%維持"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Hizentra差別化 → 皮下投与採用拡大 → Ig売上成長",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "差別化製品→患者採用→売上の2ステップ。患者数で検証可能"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "患者数・成長率の開示で検証可能。欧州CIDP適応承認が追加ドライバー。70%維持"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "継続的R&D投資（年間$4.63億）による次世代組換えタンパク質製品パイプライン",
+      "descriptive_label": "組換えタンパク質製品開発パイプライン（Cornered Resource）",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "R&Dパイプラインは能力・資源として評価。BLA受理という進捗指標あり"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "$4.63億のR&D投資額、FDA BLA受理という具体的進捗"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "組換えタンパク質製造技術は長年の蓄積が必要"},
+        {"rule_id": "rule_10_t", "result": false, "reasoning": "断念例なし（ネガティブケース評価不可）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "能力の優位性（R&D力・製造技術）"},
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "パイプライン→承認→売上の因果チェーンに不確実性あり"}
+      ],
+      "confidence_adjustments": [
+        {"source": "PoiT制約", "adjustment": -0.1, "reasoning": "PoiT時点では未承認製品で競争優位は限定的"}
+      ],
+      "overall_reasoning": "強力なR&Dパイプラインだが、PoiT時点（2015-09-30）では製品承認前。市場全体のトレンドとして組換え凝固因子への移行があり、競合も同様の製品を開発中。50%維持"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "組換えタンパク質パイプライン → 凝固因子市場参入・シェア獲得 → 売上成長",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "承認後の売上貢献は直接的。FY2017以降の主要ドライバーとして一貫して言及"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "承認→市場参入→売上の明確な経路"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "経路は明確。FDA BLA受理という具体的進捗がある。CEO・CFOが一貫して言及。70%維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "希少疾患専門製品ポートフォリオと患者診断DNA検査キットによる市場開拓",
+      "descriptive_label": "希少疾患専門製品ポートフォリオ（Cornered Resource）",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "プロプライエタリDNA検査キット・希少疾患製品は能力・資源として評価"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "DNA検査キット9,000個配布、2,000病院でのKcentra採用"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "プロプライエタリ診断→治療の垂直統合的優位"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "希少疾患領域での差別化（競合は診断ツールを保有していない）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "能力の優位性（診断→治療の垂直統合）"},
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（9,000診断キット、2,000病院）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "プロプライエタリ診断ツール（DNA検査キット）による患者発見から製品販売への垂直統合的優位。Kcentraの2,000病院採用という具体的な市場浸透実績。70%維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "希少疾患製品ポートフォリオ + 診断ツール → 患者数拡大 → スペシャルティ製品売上成長",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "診断→患者発見→治療採用の直接経路。スペシャルティ+15%成長で検証済み"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（診断→患者→売上）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "スペシャルティ製品+15%成長という実績が接続を裏付ける。70%維持"
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル生産インフラへの持続的投資（FY2016 CapEx約$5億）による供給能力の拡充",
+      "descriptive_label": "グローバル生産インフラ投資能力（Scale Economies）",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "生産能力拡充は戦略的投資だが能力の証明としては間接的"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "FY2016 CapEx$5億、スイスLebnauに$5億工場"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "生産インフラ構築は長期投資で競合の短期模倣困難"},
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "投資する戦略と既存能力の境界線上"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_F_t", "matched": true, "adjustment": -0.1, "reasoning": "戦略（投資する）と能力（供給できる）の混同リスク"},
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.1, "reasoning": "競合（Grifols、Baxter）も同様のCapEx投資を実施"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_F_t", "adjustment": -0.1, "reasoning": "戦略と能力の混同"},
+        {"source": "pattern_B_t", "adjustment": -0.1, "reasoning": "業界共通の投資"}
+      ],
+      "overall_reasoning": "大規模生産インフラへの投資実績は印象的だが、競合他社も同様のインフラ投資を行っており独自の優位性とはなりにくい。50%維持"
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "生産インフラ拡充 → 需要充足率向上 → 売上成長（特にアルブミン・Ig需要）",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "需要超過市場で生産→出荷→売上の直接経路"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2015年次（主・①）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（生産拡充→需要充足→売上）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "需要超過環境での生産拡充はCAGRに直接貢献。アルブミン+12%・Ig+8%の成長実績が裏付け。70%維持"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "50-60": 2,
+      "70-80": 8
+    },
+    "gatekeeper_applied": false
+  }
+}

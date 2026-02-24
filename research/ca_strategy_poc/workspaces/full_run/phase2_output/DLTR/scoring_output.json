@@ -1,0 +1,175 @@
+{
+  "scored_claims": [
+    {
+      "id": "DLTR-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Dollar Treeは7年連続で毎四半期1%超の既存店売上増を達成しており、$1均一価格点という独自の業態が消費者の価格感覚に深く組み込まれ、価格変更による混乱なしに安定した来客数増加を実現している。",
+      "descriptive_label": "$1均一価格の7年連続既存店増収（Counter-Positioning）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Counter-Positioning",
+      "confidence_score": 0.7,
+      "scoring_rationale": "7年連続毎四半期1%超の既存店売上増という強力な定量的トラックレコード（rule04 quantitative, pattern_I_quantitative_differentiation）。$1均一価格ポジショニング（仕組み, rule01 pass）はDollar General等の多価格帯競合が模倣するとビジネスモデルを変える必要がある（Counter-Positioning）。業界構造としてディスカウントリテールは景気変動に強い（rule11 structural pass）。Q4 FY2014発言（rule12 primary）。Dollar General/Big Lotsとの比較として7年連続は明確な定量差別化（rule07 partial pass）。dogma.md「能力・仕組みとして評価可能」に合致。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "$1均一ポジション→安定既存店増収継続→売上CAGR接続（rule05 direct）。7年実績で持続性検証済み。Q4発言（rule12 primary）。パターンII-T（直接的CAGR接続）。70%。"
+    },
+    {
+      "id": "DLTR-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Dollar Treeは6年連続で粗利率35%超を維持し、業界最高水準の5年連続二桁営業利益率を達成。グローバルソーシングと商品構成管理により、インフレ・デフレ双方の環境で粗利率を安定的に維持する調達能力を持つ。",
+      "descriptive_label": "6年連続35%超粗利率・5年連続二桁営業利益率（業界最高）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.7,
+      "scoring_rationale": "6年連続35%超粗利率・5年連続二桁営業利益率・「業界最高」という強力な定量的・比較的証拠（rule04 quantitative, rule07 partial pass, pattern_I_quantitative_differentiation）。グローバルソーシング能力（仕組み, rule01 pass）とスケール効果（rule06 structural）。業界最高水準という競合比較あり（rule07 partial pass）。Q4 FY2014発言（rule12 primary）。kb3 few-shot（COST#1: 70%）に類似の長期トラックレコード。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "グローバルソーシング能力→粗利率35%超維持→営業利益率業界最高→EPS CAGR（rule05 direct）。6年実績で持続性検証済み。Q4発言（rule12 primary）。70%。"
+    },
+    {
+      "id": "DLTR-003",
+      "claim_type": "competitive_advantage",
+      "claim": "2014年に391新規店舗を開設（総床面積7.4%増）しながら在庫総額を前年比ほぼ横ばいに維持し、在庫回転率を30bps改善（4.4回転）した。大量開店と在庫効率化の同時達成は業界トップのサプライチェーン能力を示す。",
+      "descriptive_label": "391店新規開設+在庫横ばい+在庫回転30bps改善のサプライチェーン能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "391店開設+在庫横ばい+在庫回転30bps改善という定量的実績（rule04 quantitative, pattern_III_capability_over_result）。サプライチェーン能力（仕組み, rule01 pass）。大量開店と在庫効率化の同時達成は能力の証拠。ただし業界比較（Dollar General等のサプライチェーン効率との比較）なし（rule07 insufficient）。kb3 few-shot（COST#3: 50%）と同水準。50%。",
+      "kb1_flags": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "サプライチェーン効率化→在庫コスト抑制→粗利率維持→CAGR接続（rule05 indirect）。在庫回転改善は直接的だが利益率への影響は3ステップ。50%。"
+    },
+    {
+      "id": "DLTR-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Dollar Treeのロイヤリティプログラム「Value Seekers Club」は過去12ヶ月で80%近く拡大し、メール購読者は26%増、Facebook ファンは31%増。顧客との直接関係構築による再来店促進力が高まっている。",
+      "descriptive_label": "Value Seekers Club 80%拡大のロイヤリティプログラム",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.3,
+      "scoring_rationale": "Value Seekers Club 80%拡大・メール+26%・Facebook+31%は定量データだが、これらはシグナルであり競争優位性の仕組みではない（rule01 concern, pattern_A_result_as_cause）。ロイヤリティプログラムは補完的要素（rule06 complementary）。競合（Dollar General等）のロイヤリティプログラム比較なし（rule07 insufficient）。プログラム規模の絶対的水準（何百万人か）の説明なし（rule04 partial）。kb3 few-shot（CHD#5: 戦略ポートシフト→30%）と類似。補完的要素として30%。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "ロイヤリティ→再来店→既存店増収→CAGR（rule05 indirect, 3ステップ以上）。来店頻度への定量的接続データなし。補完的施策のため30%。"
+    },
+    {
+      "id": "DLTR-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Family Dollar買収により1.3万店超・売上190億ドル近くの北米最大ディスカウント小売業者が誕生。$1均一価格（Dollar Tree）と多価格帯（Family Dollar）の補完的業態で異なるデモグラフィック（郊外vs都市・農村）をカバーし、$300M以上の年間シナジーを3年以内に見込む。",
+      "descriptive_label": "Family Dollar買収→13,000店舗・$300Mシナジー・北米最大ディスカウント小売",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Counter-Positioning",
+      "confidence_score": 0.5,
+      "scoring_rationale": "13,000店超・$300M年間シナジーという定量的規模と成果（rule04 quantitative）。ただしM&Aシナジーは戦略的意図（rule08 concern, pattern_F_strategy_confusion）であり、現時点では見込み。買収完了後の統合能力が優位性の核だが説明が限定的（rule01 concern）。Family Dollar統合リスク（プライシング・文化・システム）はmanagement自身が認識。Q4 FY2014発言（rule12 primary）。$300Mシナジーは定量的だが将来の見込み。50%。",
+      "kb1_flags": [
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "Family Dollar統合シナジー$300M→コスト削減→EPS CAGR（rule05 direct）。統合完了（2015年）後に実現する直接的メカニズム。3年以内という時間軸明確。60%（統合リスク-10%調整済み）。"
+    },
+    {
+      "id": "DLTR-006",
+      "claim_type": "competitive_advantage",
+      "claim": "FY2014の既存店売上は定数通貨ベースで4.4%増（客数+3.4%、客単価+90bps）。初めて年間顧客取引件数が10億件を突破。買いやすさとトラフィック増加を同時に実現するリテールモデル。",
+      "descriptive_label": "年間取引件数10億件突破の規模優位性",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "10億件取引突破・客数+3.4%・客単価+90bpsは定量データ（rule04 quantitative）。ただしこれらは結果の数値（rule01 concern, pattern_A_result_as_cause）。10億件取引は規模のマイルストーンだが、これを生む仕組み（$1均一価格、立地戦略）の説明は他のクレームで評価済み。Dollar General（同様の規模）との比較なし（rule07 insufficient）。Q4 FY2014発言（rule12 primary）。結果の数値が中心のため50%。",
+      "kb1_flags": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "10億件取引規模→バイイングパワー向上→粗利率維持→CAGR（rule05 direct）。スケール→購買力は認められる。既存店増収+4.4%が実績として検証済み。60%。"
+    },
+    {
+      "id": "DLTR-007",
+      "claim_type": "competitive_advantage",
+      "claim": "Dollar Treeの季節商品戦略（ハロウィン→感謝祭→クリスマス→バレンタイン）はシームレスな店内移行と「Last 10 Days戦略」で季節末在庫を最小化し、全ゾーンで既存店増収を実現するオペレーション能力を示す。",
+      "descriptive_label": "季節商品管理のオペレーション能力（全ゾーン既存店増収）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "全ゾーンでの既存店増収は結果（rule01 concern, pattern_A_result_as_cause）。季節商品管理は戦略的能力（rule08 concern）だが、「Last 10 Days戦略」の詳細（仕組み）説明は限定的。競合比較なし（rule07 insufficient）。季節商品管理は大手小売業者が共通に取り組む（pattern_B_industry_common部分）。dogma.md「戦略的意図は能力評価に含まない」。30%。",
+      "kb1_flags": [
+        "rule01_capability_not_result",
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "季節商品最適化→在庫ロス最小化→粗利率改善→CAGR（rule05 indirect, 3ステップ）。定量的な季節末在庫ロス比較なし。40%。"
+    },
+    {
+      "id": "DLTR-008",
+      "claim_type": "factual_claim",
+      "claim": "FY2014通年：総売上86億ドル（+9.7%）、同店売上+4.4%（定数通貨）、営業利益10.7億ドル、EPS $3.12（+14.7%）、営業利益率12.4%（業界最高）。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "DLTR-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014末店舗数5,367店（米国48州+カナダ5省）、2014年に391新店舗開設。2015年計画は400新規開設+75移転で計475プロジェクト（床面積7.2%増）。カナダは最大1,000店の成長余地。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "DLTR-010",
+      "claim_type": "cagr_connection",
+      "claim": "$1均一価格という模倣困難なポジショニングと7年連続既存店増収の実績が、景気サイクルに関わらず安定した客数・客単価成長を支え、5年連続二桁営業利益率を維持。Family Dollar統合後の規模拡大とシナジー($300M/年)が複数年のEPS成長エンジンとなる。",
+      "descriptive_label": "$1均一ポジション+7年既存店増収+Family Dollar$300Mシナジー→EPS複数年成長",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Counter-Positioning",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "$1均一価格→既存店増収継続+Family Dollar$300Mシナジー→EPS CAGR（rule05 direct）。7年実績で既存店増収の持続性検証済み。$300Mシナジーは定量的時間軸あり（3年以内）。Q4発言（rule12 primary）。Family Dollar統合リスク(-10%調整)。70%。"
+    },
+    {
+      "id": "DLTR-011",
+      "claim_type": "cagr_connection",
+      "claim": "冷凍・冷蔵カテゴリ拡張（2014年に3,621店に導入済み、2015年さらに320店追加）は購買頻度を高め、高マージンの裁量商品への追加販売機会を創出し、既存店生産性向上に貢献する複利的成長ドライバーとなる。",
+      "descriptive_label": "冷凍・冷蔵拡張3,621店→来店頻度向上→既存店増収CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "冷凍導入→来店頻度増→追加カテゴリ購買→既存店売上増→CAGR（rule05 direct部分）。3,621店導入済みという定量実績あり。「Faster returning, more frequently purchased」という因果関係説明あり。Q4発言（rule12 primary）。冷凍は低マージンだが来店頻度向上が高マージン商品へのアップセルを生む論理は認められる。60%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 11,
+    "confidence_distribution": {
+      "0-10": 11
+    },
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "ticker": "CMI",
+  "batch_index": 1,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Distribution事業のアクイジション統合能力（北米ディストリビューター統合）",
+      "descriptive_label": "Distribution事業のM&A統合能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "'benefits exceed original estimates'は結果の報告（rule01 concern, pattern_A_result_as_cause）。統合能力（プロセス・仕組み）の詳細説明が乏しい。断念した案件やvalue destroyした例への言及なし（rule10 insufficient）。M&Aはある程度戦略的方向性（rule08 concern）。$0.40 EPS貢献は定量データだが結果の数値（rule04 結果の数値）。kb3 few-shot（CHD#4: 買収ブランドが成長加速=結果→30%）と同水準。M&A統合プレイブック等の能力説明なし。",
+      "kb1_flags": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "買収完了→売上加算という直接メカニズム（2015年Distribution CAGR 22-30%のガイダンス）。有機成長は3%のみで買収依存。Q4発言由来（rule12 primary）。買収依存のCAGR成長は持続性に疑問あるが、直接接続として70%。"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Components事業での排ガス後処理システム（Emission Solutions）市場での技術リーダーシップ",
+      "descriptive_label": "排ガス後処理システムの技術リーダーシップ",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "排ガス後処理技術能力（仕組み）として評価できる（rule01 pass）。欧米中国での段階的排ガス規制強化という市場構造とCMIの先行技術ポジションが合致（rule11 pass, pattern_IV_structural_market_position）。市場シェア言及あるがComponents全体の記録更新（rule04 partial）。競合（Bosch, Delphi等）との技術差別化説明が不十分（rule07 partial）。kb3-fewshot（COST#3: 純粋競合差別化不完全→50%）と同水準。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_IV_structural_market_position",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "欧米中国規制強化→CMI対応製品需要増加→Components売上成長の2ステップ接続。Q4 2013→2014の実績（Components連続記録更新）で検証済み。Components CAGR 4-8%（2015年ガイダンス）への直接接続。70%。"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新製品品質コスト問題への対応と品質向上投資（warrantyコスト0.5%増加への対処）",
+      "descriptive_label": "品質コスト問題への対応能力（品質管理プロセス）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "品質管理プロセスの継続的改善能力（仕組み）として評価できる（rule01 pass）。2009-2013の180bp削減という定量的トラックレコード（rule04 quantitative）。品質コスト悪化という課題へのネガティブケース開示（rule10 pass）。ただし2014年に実際の品質コスト後退があり、現時点での能力信頼性に疑問（-10%調整）。競合比較データなし。kb3 few-shot（CHD#7: 実行しなかった例による裏付け→50%）と類似。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "品質コスト改善→利益率向上→CAGR接続は間接的かつ3ステップ以上。2014年の後退が予想されるCAGR貢献に懸念。品質問題が解決されれば利益率改善につながるが、現状では投資段階。30%。"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Tier 4 Final排ガス規制製品の競合に先行した市場投入（2015年時点で最先行）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "排ガス規制先行技術力 → 規制移行期の市場シェア維持/拡大 → 売上成長 +2-3%",
+      "descriptive_label": "排ガス規制技術→シェア維持→売上CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "排ガス規制先行→競合不在期のシェア獲得→売上成長の2ステップ因果チェーン（rule05 direct）。北米中型・中国でのCMI実績で検証可能。Q4発言由来（rule12 primary）。パターンII-T（直接的CAGR接続メカニズム）に該当。70%。"
+    }
+  ]
+}

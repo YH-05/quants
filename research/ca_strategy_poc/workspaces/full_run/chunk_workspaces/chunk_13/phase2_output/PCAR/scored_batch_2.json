@@ -1,0 +1,112 @@
+{
+  "ticker": "PCAR",
+  "batch_index": 2,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 9,
+      "claim_type": "cagr_connection",
+      "power_type": "Process Power",
+      "claim_text": "エンジン燃費優位 → 顧客TCO削減 → シェア成長 → 売上CAGR経路",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "燃費優位→TCO→シェアの接続は2-3ステップ。方向性は妥当だが定量化なし",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: エンジン優位が100%ある前提で評価。燃費→TCO→シェア成長は論理的に妥当な2-3ステップ。ただしCummins等との燃費差数値がなく、CAGR接続の強度不明。50%。"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "北米市場回復 × 高シェア → 台数成長 → 売上CAGR経路",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "市場環境要因（市場回復）への依存度が高く、優位性起因のCAGR接続として弱い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 市場回復という外部要因に依存する接続は優位性起因として弱い（dogma.md低評価パターン）。ただし市場回復時に高シェアを活かす構造は存在する。50%。"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "PACCAR Parts事業のアニュイティ（反復収益）→ サイクル耐性のある利益CAGR安定化",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "Parts事業の高成長（+12%）と記録的利益は直接的な証拠。稼働台数に比例する反復収益モデル",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: 稼働台数増→Parts収益という1ステップの直接的メカニズム（dogma.md最高評価パターン）。$3.1B売上・$497M利益という開示数値で検証可能。サイクル下でも安定するアニュイティ性が高評価。70%。"
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "Financial Services台数連動 → 収益成長 → EPS CAGR経路",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "台数連動という2ステップのシンプルな接続だが、クレジットサイクルリスクで安定性に限界",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 台数→Finance収益は2ステップ（直接的）だが、クレジット環境依存でCAGR安定性に不確実性あり。50%。"
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "新興市場高シェア × 市場成長 → 国際台数CAGR経路",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "新興市場成長への依存が高く、構造的優位性起因のCAGR接続として弱い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: 新興市場という外部成長への依存が高く、CAGR接続の質が低い（dogma.md低評価パターン：TAM/シェアの中間ステップ欠如）。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 1, "50-60": 3, "70-80": 1},
+    "gatekeeper_applied": false
+  }
+}

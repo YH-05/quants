@@ -1,0 +1,206 @@
+{
+  "ticker": "HCA",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies / Switching Costs",
+      "descriptive_label": "ローカル統合医療ネットワークによる患者囲い込み能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+          "verdict": "partial_pass",
+          "adjustment": 0,
+          "reasoning": "能力（患者囲い込み仕組み）と結果（シェア成長）が混在。構造的優位（競合が短期複製困難な地域統合ネットワーク）は認められる"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_IV_structural_market_position",
+          "rejection_patterns": [],
+          "high_eval_patterns": ["pattern_IV"],
+          "adjustment": 0,
+          "reasoning": "フラグメント化した米国病院市場でのHCA地域密度・統合ネットワークは業界構造との合致（Pattern IV）。ただし競合比較数値欠如"
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#2 (90%): ローカル規模経済+ドミナント出店 - HCAは地域統合ネットワークで類似構造だが、医療業界特有の規制・参入障壁で競合複製がさらに困難",
+          "calibration_adjustment": 0,
+          "reasoning": "ORLY#2の90%と比較し、HCAは競合数値比較が欠如しているため50%に留める"
+        },
+        "dogma_adjustment": {
+          "applied_rules": ["Rule 7: Q4発言として扱う（Q4 FY2014 COO prepared remarks）", "Rule 3: 業界比較なし→控えめ評価"],
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "地域統合ネットワークは構造的優位でありPattern IV合致。ただし純粋競合（THC/CYH）との数値比較なく、結果と能力が混在しているため確信度 50% 維持"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "統合ネットワーク→高マージン専門科→EBITDA成長経路",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_5_t", "rule_12_t"],
+          "verdict": "partial_direct",
+          "adjustment": 0,
+          "reasoning": "2-3ステップの因果。CFOが調整済みEBITDA成長を開示しており検証可能"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_II_direct_cagr_mechanism",
+          "adjustment": 0
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "ネットワーク→専門科→EBITDA成長は2-3ステップで適度。中間因果の定量的根拠が薄いが、CAGR接続として中程度の確信度"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies / Process Power",
+      "descriptive_label": "Parallon共有サービスセンターによる収益サイクル管理能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t"],
+          "verdict": "pass",
+          "adjustment": 0,
+          "reasoning": "収益サイクル管理という能力（仕組み）を評価。外部顧客（LifePoint, CHP）への展開が裏付け。定量的差別化データは欠如"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "rejection_patterns": [],
+          "high_eval_patterns": ["pattern_III"],
+          "adjustment": 0,
+          "reasoning": "Parallon は HCA 固有の能力（Pattern III）。ただし外部顧客数・収益貢献の定量開示なし"
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#1 (70%): 買収選定能力 - Parallon は HCA 固有だが CHD#1 より定量証拠が薄い",
+          "calibration_adjustment": 0
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "Parallon は HCA 固有の能力で Pattern III 合致。しかし収益改善の定量比較なく、定量的差別化（Pattern I）には届かない。確信度 50% 妥当"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "Parallon外部展開→手数料収入→売上成長寄与",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_5_t"],
+          "verdict": "indirect",
+          "adjustment": -10,
+          "reasoning": "外部収益への経路は2ステップだが具体的売上寄与額の開示なし"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "Parallon 外部売上規模の開示がなく検証不能。CAGR接続として低信頼"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies / Counter-Positioning",
+      "descriptive_label": "ACA取引所ネットワーク交渉・参入能力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_1_t", "rule_3_t", "rule_8_t"],
+          "verdict": "fail",
+          "adjustment": -10,
+          "reasoning": "ACA参入は戦略的意思決定（rule_8）であり能力ではない。業界共通（rule_3）"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": ["pattern_B"],
+          "adjustment": -10,
+          "reasoning": "Pattern B: 業界大手なら取り組む ACA 対応。HCA 固有の優位性として認定不能"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "ACA取引所参入はHCA固有の能力でなく業界共通施策（Pattern B）。戦略と優位性の混同（Rule 8）。確信度 30% 維持"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "ACA取引所→新規患者→EBITDA成長追加寄与",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_5_t", "rule_12_t"],
+          "verdict": "direct",
+          "adjustment": 0,
+          "reasoning": "CFO が 2-3% EBITDA追加寄与を明示。2ステップで直接的因果"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "CFO による定量開示ありで CAGR 接続は適度。ただし優位性側（ACA）が業界共通なため上限 50%"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "大規模資本展開力によるネットワーク拡張能力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_1_t", "rule_3_t"],
+          "verdict": "fail",
+          "adjustment": -10,
+          "reasoning": "資本投下額は結果。「なぜ効率的か」という仕組みの説明が薄い（rule_1）。大手病院チェーン共通（rule_3）"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": ["pattern_A"],
+          "adjustment": -10,
+          "reasoning": "Pattern A: $4.45B FCF を能力として提示。背後の能力（資本効率の仕組み）の説明なし"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "資本展開額は結果の数値（Pattern A）。大規模資本は業界大手共通で固有の優位性として認定困難。確信度 30% 維持"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "capex→容量拡張→ボリューム成長→CAGR",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "rule_applied": ["rule_5_t", "rule_12_t"],
+          "verdict": "direct",
+          "adjustment": 0,
+          "reasoning": "3ステップだが医療業界では直接的因果。長期CAGR3-5%ガイダンスと整合"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "capex→容量→ボリューム成長の経路は医療業界で実証済み。3ステップは許容範囲内"
+    }
+  ],
+  "summary": {
+    "total_claims_scored": 8,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 4,
+    "avg_confidence": 0.4375,
+    "high_confidence_claims": [],
+    "medium_confidence_claims": [1, 2, 3, 6, 8],
+    "low_confidence_claims": [4, 5, 7]
+  }
+}

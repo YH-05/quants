@@ -1,0 +1,140 @@
+{
+  "ticker": "AZO",
+  "company_name": "AutoZone, Inc.",
+  "extraction_date": "2025-09-30",
+  "cutoff_date": "2015-09-30",
+  "source_transcripts": [
+    "201503_earnings_call.json"
+  ],
+  "claims": [
+    {
+      "claim_id": "AZO_001",
+      "power_type": "Scale Economies",
+      "claim_text": "AutoZone は 34 四半期連続で二桁 EPS 成長（直近 15.6%）を達成しており、5,042 店の国内ネットワークと 31.2% ROIC（「ハードライン小売業で最良の一つ」）が、規模を活かした仕入れ・在庫管理の優位性を示している。",
+      "evidence_quotes": [
+        "We are pleased this morning to report our 34th consecutive quarter of double-digit EPS growth, growing this quarter at a rate of 15.6%",
+        "Our return on invested capital was 31.2%, which we believe is one of the best, if not the best, in all of hard lines retailing",
+        "we ended the quarter with 5,042 domestic stores"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.7,
+      "confidence_rationale": "34 四半期連続の二桁 EPS 成長は稀有な実績であり、Scale Economies の発現を示す強い定量的証拠。31.2% ROIC は同業他社（O'Reilly, Advance Auto）を大きく上回り、規模の効率性を裏付ける。ただし Q2 FY2015 は secondary source のため確信度を若干調整。",
+      "kb1_flags": ["Q2 FY2015 secondary source - 10%~20% confidence discount applied"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AZO_002",
+      "power_type": "Process Power",
+      "claim_text": "AutoZone の MegaHub 戦略（35% の国内店舗に MegaHub アクセスを拡大予定）と配送頻度テスト（300 店超で週 3〜5 回対応）は、他の伝統的小売業が短期間で複製できない独自の在庫・物流オペレーション能力を構築しており、商業顧客への SKU 幅と即時性で差別化する。",
+      "evidence_quotes": [
+        "We are testing more frequent deliveries to stores from local market hubs as a way to expand our inventory availability to customers without adding significant inventory to the individual stores.",
+        "we have expanded the test to over 300 additional stores... some markets up to 5 times per week",
+        "we believe this test is working and we'll look to expand it with more stores across the country"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.5,
+      "confidence_rationale": "MegaHub+配送頻度の組み合わせは独自の Process Power を形成しつつあるが、PoiT 時点ではまだテスト段階（300 店超）。「本格展開を検討」という言及は実績ではなく将来計画。競合（O'Reilly の DC ネットワーク等）も同様の投資を行っており、独自性は相対的。",
+      "kb1_flags": ["Still in testing phase at PoiT - not yet proven at full scale"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AZO_003",
+      "power_type": "Scale Economies",
+      "claim_text": "AutoZone の Commercial（プロ向け）事業は Q2 FY2015 に前年比 14.5% 成長し、週次売上が店舗平均 $11,000 超（前年比 9% 増）に到達。5,042 店の国内ネットワークが Commercial の広域カバレッジを可能にし、競合が同密度のネットワークを構築するには多大な資本が必要。",
+      "evidence_quotes": [
+        "Our commercial business grew 14.5% and represented 19% of our total domestic auto parts sales.",
+        "Our weekly commercial sales per program were over $11,000, up approximately 9% versus last year.",
+        "We now have our commercial program in approximately 4,200 of our domestic stores"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.5,
+      "confidence_rationale": "4,200 店での Commercial プログラム展開は規模の優位を示すが、競合 O'Reilly も同規模のネットワークを展開中。14.5% 成長は強いが、Commercial 比率 19% はまだ O'Reilly より低く、規模の差別化が明確ではない。",
+      "kb1_flags": ["O'Reilly Automotive has comparable commercial scale"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AZO_004",
+      "power_type": "Process Power",
+      "claim_text": "AutoZone の ALLDATA は自動車修理診断ソフトウェアのマーケットリーダーであり、85,000 を超える独立修理工場・OEM・政府機関に利用されている。修理情報データベース（OEM 技術情報を含む）の蓄積は新規参入者が長年をかけて構築する必要があり、複製困難な優位性を持つ。",
+      "evidence_quotes": [
+        "ALLDATA remains the leading provider of automotive repair information and solutions to the automotive service industry",
+        "we've enhanced ALLDATA's community website where our technicians can share and resolve technical issues",
+        "we continue to see strong growth in our DIY business"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.5,
+      "confidence_rationale": "ALLDATA のマーケットリーダー地位は事実だが、決算コールでの言及が限定的で定量的詳細が少ない。85,000 修理工場への普及は Switching Costs も持つが、Mitchell1（Mitchell）等の競合も市場に存在し、独占とは言えない。",
+      "kb1_flags": ["Limited quantitative detail in transcript for ALLDATA claims"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AZO_005",
+      "power_type": "Switching Costs",
+      "claim_text": "AutoZone の Commercial プログラムは地域の独立修理工場と長期的な取引関係を構築しており、在庫の即時性・配送頻度・ALLDATA 診断情報の組み合わせが修理工場にとって切り替えコストを高める統合ソリューションとなっている。週次商業売上 $11,000/店は継続的な取引関係の深さを示す。",
+      "evidence_quotes": [
+        "Our weekly commercial sales per program were over $11,000, up approximately 9% versus last year.",
+        "we have expanded the test to over 300 additional stores",
+        "ALLDATA remains the leading provider of automotive repair information and solutions"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.3,
+      "confidence_rationale": "商業顧客の切り替えコストは存在するが、自動車部品販売では複数ベンダーからの調達が一般的であり、独占的な Switching Costs とは言えない。ALLDATA の Switching Costs は相対的に高いが、Commercial 全体の粘着性の証拠として使うには弱い。",
+      "kb1_flags": ["Multi-vendor sourcing is common in auto parts commercial market"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AZO_006",
+      "power_type": "Counter-Positioning",
+      "claim_text": "AutoZone は DIY（消費者向け）と Commercial（プロ向け）の両市場を同一店舗で提供する「デュアルチャネル」モデルを運営しており、純粋なディストリビューター（ Genuine Parts）や純粋小売（Amazon 等）が両方を同時にコストモデルを維持しながら模倣することが困難な構造を持つ。",
+      "evidence_quotes": [
+        "Our commercial business grew 14.5% and represented 19% of our total domestic auto parts sales.",
+        "we continue to see strong growth in our DIY business",
+        "Our return on invested capital was 31.2%"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.3,
+      "confidence_rationale": "DIY+Commercial のデュアルチャネルは事実だが、O'Reilly も同様のモデルを採用しており、Counter-Positioning としての独自性は限定的。Amazon の自動車部品参入は PoiT 以降であり、PoiT 時点での Counter-Positioning 主張は弱い。",
+      "kb1_flags": ["O'Reilly operates same dual-channel model - not unique Counter-Positioning"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AZO_007",
+      "power_type": "Cornered Resource",
+      "claim_text": "AutoZone の IMC（Interamerican Motor Corporation）買収により、18 支店を通じた輸入車部品（アジア・ヨーロッパ系 OEM）の第 2 位ディストリビューターポジションを獲得。輸入車比率が増加する米国市場で、特定の輸入車 OEM 部品アクセスをセキュアにした。",
+      "evidence_quotes": [
+        "We recently acquired Interamerican Motor Corporation, or IMC, which is one of the largest distributors of parts made for European and Asian manufacturers.",
+        "IMC has 18 branches located across the country",
+        "AutoZone is very well positioned to serve the growing population of foreign nameplate vehicles"
+      ],
+      "source_quarter": "Q2 FY2015",
+      "source_type": "secondary",
+      "confidence": 0.3,
+      "confidence_rationale": "IMC の「第 2 位の輸入車部品ディストリビューター」ポジションは Cornered Resource の萌芽だが、18 支店は AutoZone の 5,000 店規模に比べ小さく、統合初期段階。買収の競合優位性への転換には時間を要する。",
+      "kb1_flags": ["Recent acquisition at PoiT - integration track record limited"],
+      "dogma_flags": []
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 7,
+    "by_power_type": {
+      "Scale Economies": 2,
+      "Process Power": 2,
+      "Switching Costs": 1,
+      "Counter-Positioning": 1,
+      "Cornered Resource": 1,
+      "Network Economies": 0,
+      "Branding": 0
+    },
+    "primary_source_claims": 0,
+    "secondary_source_claims": 7,
+    "high_confidence_claims": 0,
+    "medium_confidence_claims": 3,
+    "low_confidence_claims": 4
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "ticker": "VFC",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "North Face・Timberland等Outdoor & Action Sports coalitionにおける13%成長（CC14%）による市場シェア拡大",
+      "evidence": "Q4 2014: 'led by 13% growth in our Outdoor & Action Sports coalition, or up 14% if you exclude the impact of foreign currency'",
+      "final_confidence": 0.4,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "13%/CC14%成長、DTC 19%成長という定量データ"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "Outdoor & Lifestyle市場はブランドが強い差別化要因。North Face等の認知度は資産"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.1, "reasoning": "13%成長は結果。仕組みへの具体的説明不足"},
+        {"pattern_id": "pattern_G", "matched": true, "adjustment": -0.05, "reasoning": "Nike、Columbia、Patagoniaとの比較なし"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_A", "adjustment": -0.1, "reasoning": "成長は結果"},
+        {"source": "kb2_pattern_G", "adjustment": -0.05, "reasoning": "競合比較なし"}
+      ],
+      "overall_reasoning": "Outdoor & Action Sports 13%成長は定量的だが結果。仕組みへの言及不足。あまり納得〜まあ納得で40%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Outdoor & Action Sports成長 + DTC 19%成長 → 2015年revenue CC+8%（5年計画目標）",
+      "evidence": "Q4 2014: 2015 CC revenue +8%ガイダンス、5年計画Year3",
+      "final_confidence": 0.4,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "ブランド成長 + DTC拡大 → 2015年CC+8%ガイダンスへの接続。5年計画Year3でtrack中"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_B", "matched": true, "adjustment": -0.1, "reasoning": "5年計画Year3の中期的接続でやや遠い。外部要因（為替等）も影響"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_B", "adjustment": -0.1, "reasoning": "接続ロジックが間接的"}
+      ],
+      "overall_reasoning": "5年計画目標の3年目進捗という接続。為替影響もあり直接的でない。まあ納得に届かず40%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "DTC（Direct-to-Consumer）チャネルの急拡大（19%成長、高一桁コンプ）によるブランドと消費者の直接関係強化",
+      "evidence": "Q4 2014: 'Our direct-to-consumer business grew 19% and included high single-digit comps'",
+      "final_confidence": 0.4,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "DTC拡大は「消費者との直接関係構築能力」として評価できる部分あり"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "DTC 19%成長、高一桁コンプという定量データ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I", "matched": true, "adjustment": 0.05, "reasoning": "定量的差別化：19%DTC成長"},
+        {"pattern_id": "pattern_C", "matched": true, "adjustment": -0.1, "reasoning": "DTC戦略はアパレル業界全体のトレンド。VFC固有の優位とは言えない"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_I", "adjustment": 0.05, "reasoning": "定量的"},
+        {"source": "kb2_pattern_C", "adjustment": -0.1, "reasoning": "業界共通トレンド"}
+      ],
+      "overall_reasoning": "DTC 19%成長は定量的だが業界トレンドへの乗り。VFC固有の優位性証明が弱い。まあ納得に届かず40%"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "North Face、Vans、Timberland、Wrangler・Leeという複数カテゴリ強ブランドポートフォリオによる分散効果",
+      "evidence": "Q4 2014: 'outstanding performances from our 4 largest brands'。FY2014 $12.3B（+8%）、gross margin 48.8%（+70bp）",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "複数ブランドポートフォリオは構造的事実。なぜこのポートフォリオが競合より優れているかの能力説明なし"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "FY2014 $12.3B（+8%）、gross margin 48.8%（+70bp）、adjusted EPS +14%という定量データ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.2, "reasoning": "ポートフォリオは結果。HanesやPVHも同様の戦略"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_A", "adjustment": -0.2, "reasoning": "ポートフォリオ多様性は結果であり競合優位の説明なし"}
+      ],
+      "overall_reasoning": "ブランドポートフォリオは定量的実績があるが、なぜ優位なのかの説明なし。あまり納得しないで30%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "国際事業の着実成長（CC+11%）と地理的拡大による長期成長余地",
+      "evidence": "Q4 2014: 'Our international business grew 9% or 11% if you adjust for currency'",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "国際成長は結果。地理的拡大「戦略」であり、仕組みへの言及なし"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "CC+11%という定量データ（nominal+9%）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_F", "matched": true, "adjustment": -0.2, "reasoning": "戦略的意図（地理的拡大）のみで現時点の競争優位性なし"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_F", "adjustment": -0.2, "reasoning": "戦略意図に過ぎない"}
+      ],
+      "overall_reasoning": "国際CC+11%は定量的だが結果。戦略的意図に過ぎず、なぜVFCが国際で勝てるかの能力説明なし。あまり納得しないで30%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: revenue $12.3B（+8%）、Outdoor & Action Sports +13%（CC+14%）、gross margin 48.8%（+70bp）、adjusted EPS $3.08（+14%）",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {"30-40": 2, "40-50": 3, "50-60": 1},
+    "gatekeeper_applied": false
+  }
+}

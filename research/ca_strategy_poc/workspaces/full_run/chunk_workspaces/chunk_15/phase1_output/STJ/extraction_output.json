@@ -1,0 +1,214 @@
+{
+  "ticker": "STJ",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-28)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2014", "Q2 FY2014", "Q3 FY2014", "Q1 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "心房細動（AF）アブレーションカテーテル分野での接触力センシング技術（TactiCath）による差別化とシェア急拡大（Q4 米国60%成長）",
+      "descriptive_label": "TactiCath接触力センシング技術によるAFアブレーション市場差別化",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'We think contact force sensing ablation catheters may become the new standard of care in the field of AF ablation due to the direct link between contact force and the creation of durable lesions that was demonstrated in the EFFICAS and EFFICAS II clinical trials...ablation catheter growth on a year-over-year basis in the United States increased from an average rate of 13% in the first 3 quarters of the year to approximately 60% growth during the fourth quarter.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "接触力センシング技術（TactiCath）は能力の主張。EFFICAS I/IIの臨床データが「新標準治療」への転換を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Q4米国アブレーションカテーテル60%成長（従来13%から急加速）。FDA承認後の急速な採用が確認"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Biosense Webster（J&J）も接触力センシング（ThermoCool SmartTouch）を販売。独占ではないが、FDAタイミングでSTJが先行"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "2014年AF製品10%売上の1/3しか持っていないアブレーションカテーテル部分の低シェア（10%台）をCEO自身が認めており、伸び代を示す"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "Biosense Websterも類似技術保有（独占ではない）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "TactiCathの接触力センシングは臨床エビデンス（EFFICAS I/II）で支持された差別化技術。米国FDA承認（2014年10月末）直後のQ4から60%成長は採用加速の強い証拠。ただしBiosense Webster（J&J）も同技術を持ち、独占的優位ではない"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "TactiCath/FlexAbility採用拡大（FDAタイミング先行）× AFアブレーション市場$1.1B成長 × 低シェアからの拡大余地 → AF製品収益11-13%定数通貨成長",
+      "descriptive_label": "TactiCath先行採用×低シェアからの拡大→AF製品高成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "低シェアからの採用拡大→AF収益成長の2ステップ。'expect full year 2015 constant currency AF product sales growth to be in the range of 11% to 13%'とガイダンス明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "AFアブレーション市場$1.1B、STJシェア10%台という状況から、TactiCath+FlexAbility採用拡大によるシェア倍増シナリオは合理的。Q4の60%成長加速は先行指標。11-13%ガイダンスはむしろ保守的かもしれない"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "CardioMEMSによる心不全クラスIII患者の入院再入院削減（78%減）技術による新規市場創出と先行者利益",
+      "descriptive_label": "CardioMEMS心不全管理システムの先行者優位（入院削減78%）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'CardioMEMS is a breakthrough technology that we believe could be one of the most exciting innovations we have ever launched...data from the landmark CHAMPION trial...shows that this technology can help reduce 30-day heart failure hospital readmission rates for Medicare-eligible Class III heart failure patients by as much as 78%...We already have signed CardioMEMS contracts with more than 90 customers.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "CardioMEMS技術自体（肺動脈圧センサー）は能力。CHAMPION trial 78%入院削減という臨床エビデンスが強い裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "78%入院削減（CHAMPION trial）、90顧客契約済み、$12M Q4収益（$70M 2015ガイダンス）。強力な定量証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "植え込み型センサーのスイッチングコスト（再手術のリスク・コスト）と医師のトレーニング投資が構造的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "CMS再入院率ペナルティ政策（ACA）という規制環境が病院に導入インセンティブを与える構造的背景と整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "市場開発フェーズ初期で採用拡大の不確実性あり（CEO自身'market development takes time'と言及）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "CardioMEMSは独自の植え込み型肺動脈圧センサー技術で、CHAMPION trial78%入院削減という強力な臨床エビデンス。CMS再入院率ペナルティ（ACA）との整合で病院の採用インセンティブが高い。競合なし（FDA初承認）の先行者優位。90顧客×$70M（2015E）は初期採用の証拠"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "CardioMEMS採用加速（初年度$70M目標 → ACA引き金で急拡大）× CMS入院制度変更 → 心不全管理市場新規創出",
+      "descriptive_label": "CardioMEMS×ACA制度→心不全管理市場の急速立ち上がり",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "CardioMEMS採用→CMS New Technology Add-On Payment→病院採用加速の3ステップ。構造は明確だが、保険適用スピードと商業展開の不確実性あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CMS New Technology Add-On Payment（入院）+ 外来通過料（2015年1月）の2つの制度的後押しが確認されている。90顧客への売込み済み。ただし'market development takes time'というCEO発言からロールアウト速度に不確実性"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "既存CRMビジネス（心臓電気生理デバイス）のインストールベースとEP領域でのシナジー（1/3 EPシェア）",
+      "descriptive_label": "CRMインストールベースのAFアブレーション/CardioMEMSへのクロスセルシナジー",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'our CRM program provides synergy and leverage supporting all 3 of our major sales catalysts for 2015. Our CRM business continues to generate significant operating profit and cash...CRM has overlap with CardioMEMS on the treatment of heart failure, overlap with ablation catheters with a common EP call point.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "CRMインストールベース×共通EPコールポイントというクロスセルの能力。ただし「シナジー」は戦略言語に近い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "同一医師グループ（EP医）へのCRM＋アブレーション＋CardioMEMSの複合販売は構造的なマルチプロダクト優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "CRMシェア1/3は結果。クロスセルの実現率データなし: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "CRMプラットフォームとAFアブレーション/CardioMEMSの共通EPコールポイントは理論的なクロスセルシナジーを持つ。ただし実現率や競合（Medtronic, BSX）との差別化データが不足"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 売上$5.622B（+2%、定数通貨+4%）、AF製品$1.044B（+9%）、EPS $3.98（+6%）。Q4 CardioMEMS $11.9M、90顧客契約済み。2015E EPS $3.95-4.00（定数通貨+8-10%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 5]
+    }
+  ]
+}

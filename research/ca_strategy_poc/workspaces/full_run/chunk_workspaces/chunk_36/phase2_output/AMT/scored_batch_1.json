@@ -1,0 +1,207 @@
+{
+  "ticker": "AMT",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "タワー資産評価・M&Aの規律ある選定能力（IRR基準・disciplined investment approach）",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "15年で構築したタワー資産評価方法論（能力・プロセス）を評価。買収断念例（AT&T/T-Mobile等）がネガティブケースとして機能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "IRR基準の具体的数値（threshold %）なし。CHD#1（70%）のような詳細プロセス開示に比べ定量的根拠が薄い"
+        },
+        {
+          "rule_id": "rule_10_t",
+          "result": true,
+          "reasoning": "AT&T/T-Mobile/Mobility/TowerCo等の買収断念例がネガティブケースとして機能。Rule10適合"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。タワー評価能力という仕組みが主張の核心"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_secondary",
+          "adjustment": -0.10,
+          "reasoning": "Q3 quarterly callでの発言（従・②相当）。dogma Rule12適用で-10%"
+        }
+      ],
+      "overall_reasoning": "ネガティブケース（断念例）による裏付けはCHD#1（70%）類似だが、IRR閾値の非開示とQ3発言の組み合わせで減点。Phase 1の50%からQ3補正-10%で40%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "通信タワーの立地・構造上の希少性（95%が郊外・農村部に位置、小セルや代替技術で代替困難）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "郊外・農村部タワーの代替不可性は構造的（小セル・WiFiは高密度都市部向け）。Cornered Resourceとして評価"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "95%が5,000人/平方マイル以下という定量的位置づけ。小セルとの技術比較も定量的"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "郊外・農村部での4G/5G需要増大という市場構造とAMTの立地ポジションが完全合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "Structural market positionパターン適合。Q3 quarterly発言で-10%"
+        },
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "Crown/SBAも同様の郊外立地保有の懸念はあるが、AMTの規模（95%郊外）は相対的に明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "transcript_secondary",
+          "adjustment": -0.10,
+          "reasoning": "Q3 quarterly callでの発言（従・②相当）"
+        }
+      ],
+      "overall_reasoning": "郊外・農村部立地の物理的希少性はCornered Resourceとして評価可能。95%定量データと業界構造合致あり。Q3発言-10%補正を適用し50%が妥当。Crown/SBAも同様の立地を持つ可能性があり、差別化は相対的に弱い"
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "地上権取得・長期延長プログラムによるコスト固定化能力（土地費用2%削減を継続）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "地上権取得・長期固定化という継続的プログラム（能力）を評価。2%コスト削減は結果だが、プログラムとして能力の証明"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "土地費用ベースの2%削減・60%所有/20年超契約という定量目標あり"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "Crown Castle/SBAも同様の地上権プログラムを実施している可能性が高い。相対的差別化が不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "業界共通プログラムの可能性あり（Crown/SBAも同様）。-10%調整"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。継続的プログラムという仕組みが核心"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.10,
+          "reasoning": "業界共通能力の可能性。Crown/SBAとの差別化不明確"
+        }
+      ],
+      "overall_reasoning": "地上権プログラムはProcess Powerとして評価するが、Crown/SBAも同様のプログラムを実施している可能性が高く相対的差別化が弱い。定量的裏付けあり50%が妥当"
+    },
+    {
+      "id": 14,
+      "claim_type": "competitive_advantage",
+      "claim": "サイクルタイム削減によるテナント対応スピード優位性（コロケーション処理能力）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "プロセス効率化という能力を評価。2010年比50%削減は結果だが、プロセス整合化という仕組みが核心"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "2010年比50%サイクルタイム削減という定量データあり"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Crown Castle/SBAとの比較なし。業界標準との比較データも不在"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。サイクルタイム削減能力という仕組みが核心"
+        },
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "業界共通改善とは言いにくい。MLA顧客限定の取り組みで差別化の側面あり"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "コロケーション処理速度50%改善は定量的裏付けとして機能するが、純粋競合との比較が全くない。MLA顧客限定の取り組みは差別化の側面があるが、Crown/SBAとの差を示すデータが必要。50%が妥当"
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {
+      "40-50": 3,
+      "50-60": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

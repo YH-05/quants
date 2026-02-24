@@ -1,0 +1,115 @@
+{
+  "ticker": "AGN",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Q4 FY2015 transcript not available within PoiT. Only Q2 2015 (2015-08-06) available. All claims receive -15% Q2 quarterly adjustment. Company in major transformation: Teva generic business sale pending (~$40.5B). PoiT scoring reflects high uncertainty from business model transition."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "BotoxによるGrowth Pharma（医療美容＋CNS＋眼科）での多領域テラピューティックリーダーシップ：過去6.5年で14のNME承認という業界最高水準の生産性",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_I_quantitative_differentiation",
+      "seven_powers_type": "Branding",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: 14 NME/6.5年という定量指標は存在。dogmaルール1（能力・仕組み）: データドリブンR&D優先付けという能力の説明はあるが、Botoxブランド力そのものの定量的優位性説明が不足。dogmaルール7（純粋競合差別化）: AbbVie、Novo Nordisk等との具体的NME生産性比較なし。dogmaルール12（Q4主/Q1-Q3従）: Q2 quarterly（従）のため-15%調整が必須。dogmaルール6（構造的vs補完的）: Growth Pharma戦略転換は進行中の変革であり、Botoxブランド優位性は既存資産だが事業構造変化で評価困難。KB3-T（LLY#1 新薬承認生産性 50%程度）のアナロジーだがQ2+過渡期でさらに低下。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterly（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "Teva へのジェネリック売却完了前の過渡期、事業構造の不確実性", "adjustment": -5},
+        {"reason": "純粋競合（AbbVie、Novo Nordisk等）との定量的NME比較なし", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Botox中心のブランド製品群（Restasis, Linzess等）→ 7つのコア治療領域でのフランチャイズリーダーシップ → ブランド売上CAGR（2017年EPS $25目標）",
+      "final_confidence": 0.20,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_C_causal_leap",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム要求）: ブランド製品群→テラピーリーダーシップ→ブランド売上→EPS $25は4ステップ以上の長い因果チェーン。KB2-TパターンC（因果の飛躍）が強く適用される。dogmaルール12（Q4主/Q1-Q3従）: Q2発言から-15%調整。$25 EPS目標はジェネリック売却後の事業構造前提であり、PoiT（2015年9月）時点では事業完了前でCAGR接続の検証が不可能。",
+      "confidence_adjustments": [
+        {"reason": "Q2発言（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "4ステップ以上の因果チェーン（パターンC適用）", "adjustment": -10},
+        {"reason": "Teva売却後の新事業構造でのEPS目標達成が不確実", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "外部R&Dリソース（ベンチャー、大学、小型バイオテク）の優先活用と内部R&Dの選択的集中による「バーチャル-実践型」ハイブリッドR&D能力",
+      "final_confidence": 0.10,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_F_strategy_confusion",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール8（戦略≠優位性）: 「外部R&Dを優先する」は戦略的選択であり、確立された優位性ではない。2015年7月時点の新経営陣（Saunders CEO）が宣言した方向性であり、実証実績がPoiT時点で存在しない。dogmaルール6（構造的vs補完的）: 外部R&D活用は多くの製薬会社が実施しており補完的アプローチ。KB2-TパターンF（戦略との混同）が強く適用。Q2 Q&Aセクションからの発言で二重の減点（-15%Q2従 + パターンF）。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterlyのQ&Aセクション（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "パターンF-T適用（戦略を優位性として主張）", "adjustment": -10},
+        {"reason": "業界共通のオープンイノベーション手法であり差別化が不明確", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Restasis（ドライアイ）、Botox（美容・CNS）、Namenda XR（アルツハイマー）を含む長期特許保護された複数のフランチャイズブランド群",
+      "final_confidence": 0.20,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Cornered Resource",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: 12/15主要ブランドが成長という定量データあり。dogmaルール6（構造的）: 特許保護という規制上の希少資源は明確な構造的要素。dogmaルール3（相対的優位性）: AbbVie、Roche等との比較なし。dogmaルール12（Q4主/Q1-Q3従）: Q2発言から-15%調整。Namenda IR特許切れによる事業変革が進行中であり独占性の持続性に不確実性。KB3-T（CHD#4 ブランドポートフォリオ 40%）のアナロジーだが過渡期でさらに低下。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterly（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "Namenda IR特許切れ・ジェネリック事業売却で主力製品構成が変化中", "adjustment": -10},
+        {"reason": "競合（AbbVie等）との特許期間・ブランド価値の定量比較なし", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "長期独占ブランドポートフォリオ → 高粗利率（医療美容93%、米国ブランド87%）→ フリーキャッシュフロー → 買収再投資サイクル",
+      "final_confidence": 0.20,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_C_causal_leap",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム要求）: 高粗利→FCF→M&A→新製品→成長は4ステップ以上の間接的因果チェーン。dogmaルール4（定量的裏付け）: 医療美容93%・米国ブランド87.4%という強力な粗利率データはあるが、CAGRとの直接接続が弱い。KB2-TパターンC（因果の飛躍）適用。Q2発言から-15%調整。M&A再投資が機能するかはジェネリック売却完了後の事業構造次第。",
+      "confidence_adjustments": [
+        {"reason": "Q2発言（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "4ステップ以上の間接因果チェーン（パターンC適用）", "adjustment": -10},
+        {"reason": "ジェネリック売却後の資本配分戦略が不透明", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "AGN Q2 2015: 連結売上$5.7B（前年比倍増）、調整後EBITDA $2.6B。医療美容事業粗利率93%、米国ブランド粗利率87.4%。14 NME承認（過去6.5年）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Allerganは70件の中後期パイプラインプロジェクト（45件が後期・審査段階）。ジェネリック事業はTevaへ$40.5Bで売却予定（2016年完了見込み）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Botox、Restasis、Namenda XR、Linzess等の主要15ブランドのうち12が成長（多数が2桁成長）。100件以上の承認・56件の申請（2015年上半期）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.20,
+  "score_distribution": {
+    "competitive_advantage": {"count": 3, "avg": 0.20},
+    "cagr_connection": {"count": 2, "avg": 0.20}
+  }
+}

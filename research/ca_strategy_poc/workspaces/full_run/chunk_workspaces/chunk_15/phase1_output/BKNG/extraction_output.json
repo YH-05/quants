@@ -1,0 +1,210 @@
+{
+  "ticker": "BKNG",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-19)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3 FY2014", "Q2 FY2014", "Q1 FY2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Booking.comの60万物件×212カ国の宿泊施設ネットワーク規模（+41% YoY）によるネットワークエコノミクス",
+      "descriptive_label": "Booking.comのグローバル宿泊施設ネットワーク規模優位（Network Economies）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Booking.com, which now has over 600,000 hotels and other accommodations in 212 countries and territories, up 41% over last year...Booking.com continues to invest aggressively in its global supply platform, building substantially differentiated hotel and accommodation supply, content and availability...our 247,000 [vacation rental] properties actually represent over 1 million instantly bookable and confirmable units within these properties.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "60万物件・212カ国という供給インフラ（能力）は明確。これは単なる結果ではなく、長年の地域展開と契約交渉の蓄積を反映"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "Expediaの物件数はBKNGより少ない。ただしExpediaがOrbitz/Travelocity統合中で差が縮まる可能性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "60万物件（+41%）、24.7万バケーションレンタル（×2）、346M室泊/年、グロス予約$50B。強力な定量証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "旅行者（多様な選択肢を求める需要）×ホテル（最大の露出）の二面性ネットワーク効果は構造的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "Expediaの統合的拡大（Orbitz/Travelocity買収）によるシェア圧縮の可能性: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Booking.com 60万物件+41%成長は他のOTA（Expedia、Hotels.com等）と比較して圧倒的規模。二面性ネットワーク（ホテル↔旅行者）で正のフィードバックループが働いている。CEOが「all 100% organic」と明示しており、有機的な競争力の証拠"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "物件数規模拡大（Network Effects）→ 旅行者選択肢増→ 室泊成長24%継続 → グロス予約定数通貨+17-24% CAGR",
+      "descriptive_label": "ネットワーク拡大→室泊成長継続→グロス予約CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "物件拡大→旅行者増→室泊成長は直接的2ステップ。Q1ガイダンス定数通貨+14-21%、室泊成長継続を明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "室泊成長24%（Q4）→Q1ガイダンス定数通貨+14-21%の接続は直接的。ネットワーク効果によるフライホイールが機能している。為替逆風は翻訳リスクのみで基礎的な成長動力に影響なし"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "モバイルプラットフォーム優位と直接訪問増大（ダイレクト比率向上）による顧客獲得効率とリテンション",
+      "descriptive_label": "モバイルファーストとダイレクトビジネス増大による顧客粘着性",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Just this past week, Booking.com exceeded 100,000 gross transactions...on just mobile phones on 2 different days...priceline.com leads the group in the percentage of travel bookings completed on mobile, on some days now approaching 50%...we have observed a growing mix of direct business all year while delivering market-leading organic performance.' Q4 Q&A: 'it's driving more of our business direct to our brands versus having to buy it.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "モバイルアプリ・ブランド力（能力）→ダイレクト比率向上（結果）。ただしダイレクト比率の定量開示なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "100,000取引/日（モバイルのみ）、priceline.com 50%モバイル。数値あり。ただしダイレクト比率の絶対値・競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "一度モバイルアプリを常用化した旅行者は競合切り替えコスト（アプリ乗換え、パスワード等）が高まる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "ダイレクト比率の定量データ不開示: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "モバイルへの移行はOTA市場全体の趨勢だが、BKNGのモバイル実行力（100K取引/日）とダイレクト増加の方向性は確認できる。ただしExpedia/Airbnbとの比較でのモバイル優位の定量証拠が不足"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "ダイレクト比率向上 → オンライン広告コスト/収益比率改善 → Non-GAAP OP マージン44%+ 維持・改善",
+      "descriptive_label": "ダイレクト増加→マーケティング効率改善→マージン維持",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "ダイレクト増→広告ROI改善→マージン維持。ただしOpEx投資（OpenTable、BookingSuite）でQ1マーケングコスト圧迫中。中期的な接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ダイレクト増加→広告コスト削減→マージン改善の論理は明確だが、OpenTable/BookingSuiteへの投資でQ1はマージン圧迫。CFOが「OpEx pressure will significantly diminish as we proceed through the year」と述べており、中期的には接続可能"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "アジア太平洋市場でのAgoda・Booking.com二重展開とCtrip提携による市場先行",
+      "descriptive_label": "アジア太平洋二重ブランド戦略（Agoda+Booking）とCtrip提携",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'The fast-growing Asia-Pacific market was another critical component to the group's success in 2014. We believe Agoda.com and Booking.com lead the region in intra-Asian hotel and accommodation bookings. And we're now harvesting the fruit of our new commercial agreement with Ctrip that we entered last year. China is a material and fast-growing portion of our Asia Pacific business.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "Agoda（アジア特化）+Booking.com（グローバル）の二重ブランド展開は能力。Ctrip提携も実行済み"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "アジアでの「リード」主張。ただしAirbnb、Ctrip自社OTA、地場プレーヤーとの比較が不明確"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "アジア市場でのシェアデータが定量的に開示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "アジアでの「リード」は定性主張のみ、定量的シェアデータなし: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Agoda+Booking.comのアジア二重展開とCtrip提携は戦略的に合理的だが、「We believe we lead the region」という自己評価のみ。定量的シェアデータが不足。アジア市場の競合（Ctrip, MakeMyTrip, Traveloka）との比較なし"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 グロス予約$50B（+28%）、室泊346M（+28%）、非GAAP EPS $53.31（+28%）、Adjusted EBITDA $3.5B（+29%）、OP マージン44.7%（グロスプロフィット比）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

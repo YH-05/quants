@@ -1,0 +1,70 @@
+{
+  "ticker": "MO",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "MO-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "MO FY2014実績：調整後EPS $2.57（+8%）、配当$3.9B（80%ペイアウト）、TSR 34.5%。FY2015ガイダンス：調整後EPS $2.75-$2.80（+7-9%）",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "MO-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Branding",
+      "claim_text": "e-vapor（MarkTen 130,000店舗全国展開）→ 次世代タバコカテゴリーでのプレミアムブランド地位確立 → トータルタバコ戦略でシェア維持 → 長期CAGR支援",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule08_strategy_not_advantage"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "e-vaporカテゴリーはまだ初期段階でMarkTenが上位ブランド地位を維持できるか不確定",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: e-vapor展開は戦略（意思決定）であり、CAGR接続として成立するにはMarkTenのカテゴリーリーダー地位確立が前提（未達）。130,000店舗配荷は事実だが「上位ブランド」地位の定量証拠が不足。30%。"
+    },
+    {
+      "claim_id": "MO-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "Marlboro約40%シェア × 寡占価格規律 → 業界ボリューム-3%を超える価格引き上げ → OCI+7-8% → 配当成長+7-9%EPS成長 → 長期CAGR",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "価格→OCI成長の1-2ステップ接続。業界ボリューム-3.5%でもOCI+7%という過去実績で検証済み",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: 価格支配力→OCI成長→EPS成長は1-2ステップの直接的メカニズム（dogma.md高評価パターン）。業界ボリューム-3.5%でOCI+7%という過去実績で検証可能（開示データによる検証）。寡占構造×Marlboro40%シェアという業界構造との合致（dogma.mdルール11）。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"30-40": 1, "70-80": 1},
+    "gatekeeper_applied": false
+  }
+}

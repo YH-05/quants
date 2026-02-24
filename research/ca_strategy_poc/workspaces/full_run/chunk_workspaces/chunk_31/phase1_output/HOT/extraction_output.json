@@ -1,0 +1,349 @@
+{
+  "ticker": "HOT",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-10) [Primary] + Q1-Q3 FY2013-2015 [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4 FY2013", "Q1-Q3 FY2014", "Q1-Q2 FY2015"],
+    "transcripts_used": [
+      "201402_earnings_call.json (Q4 FY2013)",
+      "201502_earnings_call.json (Q4 FY2014 - Primary)",
+      "201507_earnings_call.json (Q2 FY2015)"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "HOT-001",
+      "claim_type": "competitive_advantage",
+      "claim": "SPGロイヤルティプログラムによる高価値顧客の囲い込みとスイッチングコスト",
+      "descriptive_label": "SPGロイヤルティプログラムの顧客粘着力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Frits van Paasschen): 'SPG...which accounts for over half of its occupancy. Aloft's rise in REVPAR is a testament to that loyalty as well, with Aloft rates already on par with major Select Serve brands.' 'our active SPG Member base is now nearly 4x what it was 4 years ago, and outbound travel from China to our hotels was up nearly 20% in 2014.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HOT-F001"],
+      "cagr_connections": ["HOT-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ロイヤルティプログラム・スイッチングコストは名詞で表現可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "SPGがAloft occupancyの50%超、中国発SPG会員4倍増などの定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ロイヤルティプログラムは構造的スイッチングコストを生む"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "高級ホテルセグメントでのブランドロイヤルティは業界構造上重要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "SPG会員の定量データ（4倍増、50%超のOCC貢献）は具体的。ただしヒルトン・マリオットのロイヤルティプログラムとの差別化比較が不明"
+      }
+    },
+    {
+      "claim_id": "HOT-002",
+      "claim_type": "competitive_advantage",
+      "claim": "上位ラグジュアリー・アッパーアップスケールブランド群による開発者誘引力と高単価フィー獲得能力",
+      "descriptive_label": "高級ブランドポートフォリオによるアセットライト展開力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'over 60% of the rooms that entered our system in 2014 were high-end properties, either Luxury or Upper Upscale, and more than 85% were located outside of the U.S. This means, on a per room basis, that they will generate higher fees.' 'We're seeing more construction activity in the Select Serve segment but almost no industry supply growth in the Upper Upscale and Luxury segments.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HOT-F002"],
+      "cagr_connections": ["HOT-C002"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "高級ブランドポートフォリオは名詞属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2014年新規客室の60%以上がLuxury/Upper Upscale、85%以上が米国外"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "供給が制限されたLuxury/Upper Upscaleセグメントでの強いブランド力は構造的優位"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "マリオット・ヒルトンも高級ブランドを保有。Starwoodの差別化はW/Westin/St. Regisの独自性に依存"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "高級セグメント集中戦略は構造的優位だが、競合他社（マリオット、ヒルトン）との具体的差別化データが不足。市場構造（新規供給少）との合致は高く評価"
+      }
+    },
+    {
+      "claim_id": "HOT-003",
+      "claim_type": "competitive_advantage",
+      "claim": "アセットライト化（管理・フランチャイズフィーモデル）による資本効率の高い事業構造",
+      "descriptive_label": "アセットライト・フィーベース事業構造",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'we expect that, following the spinoff, we'll end 2015 with about 75% of our EBITDA before SG&A from fees' 'we approach our goal of the $3 billion in asset sales by the end of 2016, as we laid out at our Dubai Investor Day, we expect to be well above our 80% asset-light target.' '2014, we returned $2.4 billion in cash to shareholders and reduced our share count by over 10%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HOT-F003"],
+      "cagr_connections": ["HOT-C003"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_8_t", "rule_6_t", "rule_1_t"],
+        "results": [
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "アセットライト戦略は経営戦略。それを可能にする強力なブランド力がなければ実現不可能であり、優位性の根源はブランド力"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "フィーベース収益モデルは一旦構築されると高い安定性を持つ構造的優位"
+          },
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "75%フィー比率・$3B資産売却目標は進捗実績。ビジネスモデル変換能力が優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "アセットライト戦略は戦略（ルール8-T）であり優位性ではない。背後にあるブランド力・ロイヤルティが真の優位性。40%に留める"
+      }
+    },
+    {
+      "claim_id": "HOT-004",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル高級ホテル市場における先行者優位とブランド認知（特に中国・アジア新興市場）",
+      "descriptive_label": "新興市場高級ホテルの先行ブランド認知",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'China now accounts for 14% of our fees, more than 15% of our footprint and about 1/3 of our pipeline.' 'our active SPG Member base is now nearly 4x what it was 4 years ago, and outbound travel from China to our hotels was up nearly 20% in 2014.' 'the trend lines tell us that we're well positioned as the leader in markets where another billion people will move to cities in the coming 20 years'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HOT-F004"],
+      "cagr_connections": ["HOT-C004"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_11_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ブランド認知・先行者優位は名詞属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "中国：フィーの14%、フットプリントの15%、パイプラインの33%という具体的数値"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "都市化という長期市場構造変化と、高級ホテルブランドの先行展開は合致"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "マリオットも中国に積極展開。Starwoodの相対的優位の定量的証明が不足"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "中国のフィー・フットプリント・パイプラインの具体的数値は評価できる。都市化megatrendとの合致も高評価。ただし競合（マリオット）との差別化が不明確"
+      }
+    },
+    {
+      "claim_id": "HOT-005",
+      "claim_type": "competitive_advantage",
+      "claim": "REVPARインデックスの継続的上昇（競合比較での相対的性能優位）",
+      "descriptive_label": "REVPAR競合アウトパフォーマンス能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'Driving our REVPAR growth in 2014 was another year of rising REVPAR index. In other words, our hotels in aggregate around the world outperformed their competitive sets.' 'our hotels had significantly outperformed their competitors, which speaks to the strength of our brands and our distribution.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HOT-F005"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warning",
+            "reasoning": "REVPARインデックス上昇は結果。なぜアウトパフォームできるかの能力説明が不足（ルール1-T: 結果≠能力）"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "REVPARインデックスの具体的数値が示されておらず（「継続的上昇」のみ）、定量比較が不十分"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "REVPAR競合比較は結果の提示（パターンA-T: 結果を原因と取り違え）。競合比較指数の具体的数値も不明。30%が適切"
+      }
+    },
+    {
+      "claim_id": "HOT-F001",
+      "claim_type": "factual_claim",
+      "claim": "SPG会員基盤：4年間で4倍増。中国発のSPG会員によるHOT宿泊は2014年に約20%増",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HOT-001"]
+    },
+    {
+      "claim_id": "HOT-F002",
+      "claim_type": "factual_claim",
+      "claim": "2014年新規客室：60%以上がLuxury/Upper Upscale、85%以上が米国外。Aloftは50%超がSPG会員",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HOT-002"]
+    },
+    {
+      "claim_id": "HOT-F003",
+      "claim_type": "factual_claim",
+      "claim": "2014年株主還元：$2.4B（株式買い戻し含む）、株式数10%超削減。2016年末$3Bの資産売却目標。EBITDA費収比率80%以上のアセットライト目標",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HOT-003"]
+    },
+    {
+      "claim_id": "HOT-F004",
+      "claim_type": "factual_claim",
+      "claim": "中国：フィーの14%、フットプリントの15%、パイプラインの33%を占める",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HOT-004"]
+    },
+    {
+      "claim_id": "HOT-F005",
+      "claim_type": "factual_claim",
+      "claim": "REVPAR 2014年：全体+6%、北米+7%、中国+8%（マカオ除く+4%）、欧州+3%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HOT-005"]
+    },
+    {
+      "claim_id": "HOT-C001",
+      "claim_type": "cagr_connection",
+      "claim": "SPGロイヤルティ → REVPAR premium × 高い顧客リピート率 → フィー収益CAGR維持",
+      "descriptive_label": "SPG→REVPAR premium→フィー成長",
+      "source_advantage": "HOT-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "SPGロイヤルティ→REVPAR premium→フィー収益は2ステップ。REVPARは開示データ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2ステップの直接接続。REVPAR成長（+6%全体、+7%北米）は開示データで検証可能"
+      }
+    },
+    {
+      "claim_id": "HOT-C002",
+      "claim_type": "cagr_connection",
+      "claim": "高級ブランドポートフォリオ → 高フィー単価（per room）× 供給制約 → フィーCAGR成長",
+      "descriptive_label": "高級ブランド→高単価フィー→CAGR",
+      "source_advantage": "HOT-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "高級ブランド→高単価フィーは2ステップ。コアフィー+7%（FY2014）で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "高級ブランドの高単価フィーとコアフィー成長率（+7%）が整合。2ステップで検証可能"
+      }
+    },
+    {
+      "claim_id": "HOT-C003",
+      "claim_type": "cagr_connection",
+      "claim": "アセットライト化進展 → フィー収益比率上昇 → ROE・CAGR改善",
+      "descriptive_label": "アセットライト→フィー比率→ROE改善",
+      "source_advantage": "HOT-003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "アセットライト→フィー比率上昇は1ステップ。2015年末75%フィー比率目標は検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "フィー比率上昇という中間指標は検証可能。ROEへの具体的接続（資本効率改善）は推論として妥当"
+      }
+    },
+    {
+      "claim_id": "HOT-C004",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場先行展開 → フィー収益の地理的多様化 × 都市化secular growth → 長期CAGR追加",
+      "descriptive_label": "新興市場→地理的多様化→長期CAGR",
+      "source_advantage": "HOT-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "新興市場展開→GDV成長→フィー成長。都市化megatrendとの接続は合理的だが3ステップ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "中国フィー14%、パイプライン33%という具体数値は検証可能。都市化megatrendとの接続は長期的で間接的だが合理的"
+      }
+    }
+  ]
+}

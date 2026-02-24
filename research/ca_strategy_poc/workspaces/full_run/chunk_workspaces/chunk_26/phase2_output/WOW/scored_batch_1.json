@@ -1,0 +1,102 @@
+{
+  "ticker": "WOW",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "claim_id": "WOW_006",
+      "claim_type": "competitive_advantage",
+      "power_type": "branding",
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "Dan Murphy'sはオーストラリア最大のアルコール小売ブランドとして、everyday low price guarantee・圧倒的品揃え（3,500新商品）・MyDanMurphy'sロイヤルティプログラム（90万会員）を組み合わせた複合優位性を持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - ブランド力と複合優位性の主張",
+        "rule04": "PASS - 90万会員、3,500新商品という具体的規模",
+        "rule07": "FAIL - BWS（Woolworths傘下）やVinoteccaなど競合との比較なし",
+        "rule12": "PASS - FY2014年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["I-T (定量的差別化: 90万会員のロイヤルティプログラム規模)", "IV-T (構造的市場ポジション: 最大のアルコール小売ブランドという市場ポジション)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule07 (競合との差別化)"],
+        "conclusion": "Dan Murphy'sはオーストラリアで確立されたブランドポジションを持つ。90万会員のロイヤルティデータは実質的な規模。最大ブランドという市場ポジションは有効。ただし競合との定量比較なし。"
+      },
+      "scoring_rationale": "Dan Murphy'sのブランドポジション（最大）と定量的規模（90万会員）は有効な競争優位の根拠。一次ソース。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WOW_007",
+      "claim_type": "competitive_advantage",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2015",
+      "claim_summary": "WoolworthsはFY2015にColes比で$200M以上を価格投資し、Price Parityを達成（Nielsen Homescan 9,000品目での独立検証）。競合と同水準の価格を実現する価格管理能力を示す。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "FAIL - 価格パリティの達成は競争優位の「同等化」であり優位の証拠ではない",
+        "rule04": "PASS - $200M価格投資、9,000品目独立検証という定量的根拠",
+        "rule10": "PARTIAL - 価格劣位からの追いつきはネガティブケースの逆：劣位の克服は競争優位ではない",
+        "rule12": "PARTIAL - FY2015年次決算（一次ソース相当）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["A-T (結果を原因として提示: 価格パリティはColes比劣位からの回復という結果)", "F-T (戦略と優位の混同: $200M価格投資は戦略的コミットメントであり競争優位の源泉ではない)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule01 (能力 vs 結果)", "rule07 (競合との差別化)"],
+        "conclusion": "価格パリティとは競合と同等になることであり、優位を持つことではない。Colesより劣位だったものが同等になった—これは優位の消滅であり優位の創出ではない。30%が適切。"
+      },
+      "scoring_rationale": "価格パリティ達成は競争優位の証拠ではなく劣位の解消。rule01によりFAIL（結果=優位ではなく同等化）。パターンA適用。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "WOW_008",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "オンライン食料品事業（40-50%成長）+ Click&Collect全国展開 → 新規顧客獲得・既存顧客客単価増 → 既存店成長率（comp sales）+1-2%への直接寄与",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule04": "PASS - オンライン40-50%成長という定量的根拠",
+        "rule06": "PARTIAL - オンライン→comp sales の因果メカニズムは示されるが、複数の介在変数がある"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["C-T (因果の飛躍: オンライン成長→comp sales+1-2%の直接的メカニズムが不明確、プロモーション等の他要因が介在)"],
+        "high_eval_patterns": ["II-T (CAGR連結の直接メカニズム: オンライン→新規顧客→既存店収益という論理的な2ステップ)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule06 (補完的 vs 構造的)"],
+        "conclusion": "オンライン成長がcomp salesに貢献するメカニズムは論理的。ただし40-50%成長が実際にcomp salesへ貢献するエビデンスが薄い。50%。"
+      },
+      "scoring_rationale": "オンライン成長とcomp salesの因果メカニズムは有効だが多段階。一次ソースで定量的根拠あり（40-50%）。パターンII/Cの両面あり。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WOW_009",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2015",
+      "claim_summary": "WoolworthsのFY2015売上高は$60.7B（前年比-0.2%）、NPAT $2.45B（重大損失項目前）。Australian Food & Liquor売上$42.1B（+2.3%）。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 複数の定量的財務指標（売上$60.7B、NPAT $2.45B、AL売上$42.1B）",
+        "rule12": "PASS - FY2015年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["事実確認型クレームとして評価"],
+        "conclusion": "財務数値は検証可能な事実。年次決算（一次ソース）からの数値で高い確信度。"
+      },
+      "scoring_rationale": "事実確認型クレーム。一次ソースからの具体的財務指標。70%。",
+      "final_confidence": 0.7
+    }
+  ]
+}

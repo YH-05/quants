@@ -1,0 +1,323 @@
+{
+  "ticker": "KNIN",
+  "transcript_source": "FY2014 Full Year Results (2015-02-25) [Primary] + Q3 2014 [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "H1 2014", "Q3 2014", "Q1 2015", "H1 2015"],
+    "transcripts_used": [
+      "201410_earnings_call.json (Q3 2014)",
+      "201502_earnings_call.json (FY2014 Full Year - Primary)",
+      "201507_earnings_call.json (H1 2015)"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "KNIN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "海上・航空貨物における業界最高水準の「Conversion Rate」（粗利益のEBIT転換率）",
+      "descriptive_label": "業界最高水準のEBIT転換率（Conversion Rate）",
+      "evidence_from_transcript": "FY2014 Prepared Remarks (CEO Detlef Trefzger): 'The conversion rate in seafreight remains relatively high, was above 30%.' 'an improvement at the same time of the conversion rate, the EBIT in percentage of gross profit, 27% achieved last year [airfreight].' Q3 2014: 'an EBIT in percent of gross profit, our famous conversion rate, of very stable 30.2% year-to-date September...improvement in conversion rate in the quarter 3 2014 to 32.3%'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["KNIN-F001"],
+      "cagr_connections": ["KNIN-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warning",
+            "reasoning": "Conversion Rateは結果。なぜ高い転換率が実現できるかの仕組み（低コスト構造・ネットワーク密度等）の説明が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "海上30%超、航空27%という具体的数値あり。業界比較がない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ネットワーク密度に支えられた低コスト構造が背後にあれば構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "競合（DHL、Panalpina、DB Schenker）との比較数値が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Conversion Rateの数値は具体的だが、これは結果（パターンA-T）。背後の能力（ネットワーク密度、ソリューション営業力）の説明が部分的にある（'solution selling'）が、定量的な業界比較なし。40%。"
+      }
+    },
+    {
+      "claim_id": "KNIN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ソリューション販売（Solution Selling）能力：複雑な物流ニーズへの統合的対応力",
+      "descriptive_label": "複雑物流ニーズへのソリューション販売能力",
+      "evidence_from_transcript": "FY2014 Prepared Remarks (CEO): 'our success story in airfreight continues also in the third quarter...that shows the result of solution selling and a focus on the perishable sectors with regards to volume growth.' Q3 2014 (CEO): 'KN FreightNet, the online booking platform and execution platform for airfreight shipments, has been successfully launched, and we see double-digit growth in the shipments booked.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["KNIN-F002"],
+      "cagr_connections": ["KNIN-C002"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ソリューション販売能力は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "航空貨物における定量成果（volume growth, EBIT改善）はあるが、ソリューション販売能力自体の定量測定が困難"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "ソリューション販売は補完的要素。背後のネットワーク規模が構造的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ソリューション販売の概念は認められるが、定量的差別化がなく（パターンD-T）、競合との比較も不明。40%。"
+      }
+    },
+    {
+      "claim_id": "KNIN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "価格競争への非参加戦略：採算性の低い案件を断る規律（選択的引受能力）",
+      "descriptive_label": "採算性管理の選択的引受規律",
+      "evidence_from_transcript": "FY2014 Prepared Remarks (CEO): 'We don't participate in price wars and we step away from business. I've stated this in summer, last year, and I got a very nice press resonance on that as well. But that is our approach, and you will see the effect in the conversion rate and the gross profit margin.' Q&A: 'we would step away if...we would agree to a non-sustainable rate'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["KNIN-F003"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_10_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "価格競争非参加という能力・規律は結果ではなく能力として評価可能"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "断念例（価格競争からの離脱）の言及あり（ルール10-T: ネガティブケース）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規律ある価格設定は構造的優位に支えられていれば持続可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "価格競争からの離脱という断念例の言及（ルール10-T）は評価できる。ただしこの規律を維持できる背後の構造的優位（ネットワーク効果等）の説明が不足。50%。"
+      }
+    },
+    {
+      "claim_id": "KNIN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "航空貨物での特殊セグメント（生鮮食品・e-commerceペリシャブル）での専門能力",
+      "descriptive_label": "生鮮食品・e-commerce航空貨物の専門能力",
+      "evidence_from_transcript": "FY2014 Prepared Remarks (CEO): 'solution selling and a focus on the perishable sectors with regards to volume growth.' 'our to-market strategy got traction and seems to be successfully implemented.' Q3 2014 (CEO): 'KN FreightNet...launched...we see double-digit growth in the shipments booked'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["KNIN-F004"],
+      "cagr_connections": ["KNIN-C003"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "特殊セグメント専門能力は名詞属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "KN FreightNetの二桁成長は言及されているが規模感が不明"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "e-commerce成長という市場構造変化との合致はあるが、生鮮専門能力が業界で最強かどうかが不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "特殊セグメントへの集中は評価できるが、定量的差別化と競合比較が不足。40%。"
+      }
+    },
+    {
+      "claim_id": "KNIN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "海上貨物での大口キャリアー・キャパシティ調達能力（規模の経済に基づくバーゲニングパワー）",
+      "descriptive_label": "海上貨物キャリアーとのバーゲニングパワー",
+      "evidence_from_transcript": "FY2014 Q&A (CEO): 'we hedge capacity with big volumes directly with carriers, so when we buy and sell for longer-term contracts, we are locked in both on both sides. That is our approach.' 'we have achieved the #1 position in the U.S. A lot of the growth...came out of the North American market'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": ["KNIN-F005"],
+      "cagr_connections": ["KNIN-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "バーゲニングパワーは名詞属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "大量調達によるキャパシティヘッジは規模の経済に基づく構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "コンテナ船市場の過剰供給環境では、大口フォワーダーの交渉力が業界構造上重要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "米国#1のポジションは述べられているが、市場シェア数値や競合比較が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規模に基づくキャパシティ調達は構造的優位だが、競合（DHL、Panalpina）との定量比較がない。米国#1の実績は結果（ルール1-T）。50%。"
+      }
+    },
+    {
+      "claim_id": "KNIN-F001",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 海上Conversion Rate 30%超、航空Conversion Rate 27%（EBIT/粗利益）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["KNIN-001"]
+    },
+    {
+      "claim_id": "KNIN-F002",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 航空貨物EBIT +CHF16M増、Conversion Rate改善。KN FreightNet: 二桁成長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["KNIN-002", "KNIN-004"]
+    },
+    {
+      "claim_id": "KNIN-F003",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: EBIT成長11.1%（定数通貨）、純収益成長5.1%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["KNIN-003"]
+    },
+    {
+      "claim_id": "KNIN-F004",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 航空貨物Volume +5.3%(Q4)、海上Volume +6.8%。Overland: 5期連続正EBIT",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["KNIN-004"]
+    },
+    {
+      "claim_id": "KNIN-F005",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 海上貨物において米国市場シェア#1ポジション達成",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["KNIN-005"]
+    },
+    {
+      "claim_id": "KNIN-C001",
+      "claim_type": "cagr_connection",
+      "claim": "高Conversion Rate → EBIT成長 → 収益CAGR上乗せ",
+      "descriptive_label": "Conversion Rate→EBIT成長",
+      "source_advantage": "KNIN-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Conversion Rate→EBIT成長は1ステップ。EBIT成長11.1%は開示データ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2014年次発表（主）"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "1ステップの直接接続。EBIT成長は開示済み。ただしConversion Rate維持の持続可能性が不明（競合動向依存）"
+      }
+    },
+    {
+      "claim_id": "KNIN-C002",
+      "claim_type": "cagr_connection",
+      "claim": "ソリューション販売能力 → 高マージン案件獲得 → 粗利益CAGR改善",
+      "descriptive_label": "ソリューション販売→高マージン→CAGR",
+      "source_advantage": "KNIN-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ソリューション販売→高マージン案件→CAGR改善。3ステップの推論"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2014年次発表（主）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "航空貨物のEBIT改善との接続は合理的だが間接的。定量データも部分的。50%。"
+      }
+    },
+    {
+      "claim_id": "KNIN-C003",
+      "claim_type": "cagr_connection",
+      "claim": "e-commerce・生鮮航空貨物成長トレンド → KNINの取り扱い量拡大 → 収益CAGR",
+      "descriptive_label": "e-commerce成長→航空貨物取扱量→収益CAGR",
+      "source_advantage": "KNIN-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "e-commerce成長→KNINの取扱量拡大。市場成長に依存するため、KNINのシェア獲得能力が鍵"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2014年次発表（主）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "e-commerce成長というメガトレンドとの接続は合理的だが、KNINが競合比でシェアを伸ばせるかは不明。50%。"
+      }
+    }
+  ]
+}

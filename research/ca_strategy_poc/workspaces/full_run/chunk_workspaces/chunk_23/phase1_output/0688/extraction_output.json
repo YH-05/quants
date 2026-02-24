@@ -1,0 +1,317 @@
+{
+  "ticker": "0688",
+  "company_name": "China Overseas Land & Investment Limited",
+  "transcript_source": "H1 2015 Results（2015-08-19）/ FY2014 Annual Results（2015-03-24）/ H1 2014（2014-08-01）/ FY2013（2014-03-13）",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_2015", "FY2014_Aug", "H1_2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "中国国有大手建設グループ（COHL）傘下としての政策・土地取得・資金調達における親会社支援",
+      "descriptive_label": "国有企業ブランド・親会社バックアップ（Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks（Chairman Hao）: 'Our parent company will no longer participate in direct sales of property business... COLI as one of the important business arms of our parent company... the parent will continue to give support to us in terms of human resources, financials, financing, business resources and business network' / H1 2015 Q&A: 'We have a double platform for financing. We believe this is our advantage and our core competitiveness.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Chairman",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "親会社支援体制は構造的な能力として評価。競合参入禁止の取り決めは実質的な独占リソース"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "民間不動産会社は親会社による直接競合排除・資金調達支援を持てない。国有企業固有の優位"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative",
+            "reasoning": "親会社の直接不動産事業撤退という具体的な事実があるが定量的な優位性の証明は困難"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "国有企業系のバックアップは民間企業が持てない構造的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×企業ポジション）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2014年次）での発言、主・①相当",
+            "adjustment": 0
+          },
+          {
+            "reason": "親会社支援は有益だが、中国では他の有力国有企業系（Vanke、Evergrande等）も類似の支援を受けており差別化効果が限定的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "国有企業系の優位性は実在するが、中国の大手不動産企業の多くが何らかの国有企業バックアップを持っており純粋競合との差別化は50%程度"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "親会社支援・ダブルプラットフォーム→資金調達コスト優位→土地取得競争力→売上成長",
+      "descriptive_label": "国有バックアップ→低コスト資金→土地取得→売上",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "3ステップ以上の因果チェーン。資金調達→土地→売上は飛躍的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次（FY2014）決算での発言"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンが3段階以上で各ステップの定量的裏付けが不十分"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "中国全土47都市（2014年末）にわたる広域都市展開と高利益率維持（粗利率32-34%）を両立するコスト管理・製品品質能力",
+      "descriptive_label": "全国規模展開と高利益率両立のオペレーション能力（Process Power + Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks（Chairman Hao）: 'In terms of coverage of the regions... we have 9 cities which are already included... we have business in China across 47 cities.' / 'gross profit has increased by 0.2% to 32.7%' / H1 2015: 'gross margin, 32.24%; and our core net profit, 20.3%.' / FY2014: 'if we are not careful, the profit margin will drop greatly... We always maintain it at a level that we are very satisfied with.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Chairman",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "47都市展開は結果的側面が強い。ただし「コスト管理・製品品質のノウハウ」の言及は能力的要素"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "粗利率32-34%という具体数値あり。47都市という展開規模のデータあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "semi_structural",
+            "reasoning": "スケールと質の両立は構造的優位の指標だが、他大手も類似の数値"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Vanke、Country Garden等の純粋競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的指標）+ pattern_B_t（業界共通の大手戦略）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2014）での発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "粗利率32-34%は業界上位水準だが、Vankeや万科等の主要競合との比較なく差別化の程度が不明。47都市展開の規模は印象的だが中国不動産大手の多くが全国展開を実施"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "高利益率維持能力→成長環境での売上増加×利益率維持→利益成長",
+      "descriptive_label": "利益率維持→成長時の利益拡大",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "売上×利益率=利益の算術的接続。FY2014で売上+45.5%、純利益+20.1%で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次（FY2014）決算での発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "算術的接続は明快だが、高成長市場での利益率維持が今後も継続するかは不透明"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "「中国海外」ブランドによる物件品質への顧客信頼と、リノベーション6標準セット（内装標準化）による製品差別化",
+      "descriptive_label": "ブランド力と標準化リノベーション（Branding + Process Power）",
+      "evidence_from_transcript": "H1 2015 Q&A（Chairman Hao）: 'there are 6 sets of standards [for renovation], and in the past years, we can see that they are widely recognized by our clients... the profit level is not lower than presale projects.' / FY2014: 'we would maximize the advantage of our brand, and you could think and imagine how that's going to help us using the same brand.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Chairman",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ブランド力と内装標準化能力は能力として評価可能"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「ブランド」「標準化能力」は名詞で表現"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative",
+            "reasoning": "リノベーション利益率は「プレセール以上」との言及はあるが数値不開示"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ブランドは長期構築のものとして構造的要素"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t（定性的のみ）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "H1 2015（中間期）Q&Aでの発言（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ブランド優位性を言及しているが競合比での定量的裏付けなし。6標準セットという具体性はあるが利益率の数値が非開示"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "ブランド・内装標準化→リノベーション付き物件プレミアム→価格・利益率向上",
+      "descriptive_label": "ブランド→製品プレミアム→利益率",
+      "source_advantage": 5,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "ブランド→プレミアム価格→利益率の2-3ステップ。ただし定量的裏付けが乏しい"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "中間期Q&Aでの発言（従・②相当）"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果関係は概念的に成立するが定量的裏付けなし。中間期Q&A発言でさらに減点"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014：総収益HKD1200億（+45.5%）、純利益HKD277億（+20.1%）、粗利率32.7%。土地バンク：47都市4830万平方メートル",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "粗利率：FY2014 32.7%、H1 2015 32.24%。H1 2015純利益HKD163億（+20%）。ネットギアリング比率H1 2015 13.4%",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "一級・二級都市の大規模土地バンク（H1 2015後 4,409万平方メートル）と財務健全性（ネットギアリング比率13.4%、現金HKD786億）",
+      "descriptive_label": "土地バンク規模と財務体力（Cornered Resource）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（Chairman Hao）: 'by the end of June, our total reserve GFA, 44.09 million square meters... cash on hand, HKD 78.61 billion; and the net gearing ratio dropped essentially to 13.4%. This is a very healthy balance sheet showing financial flexibility.' / FY2014: 'Net gearing ratio, 32.4%. We have continuously realized our target of gearing ratio no higher than 40%'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Chairman",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "土地バンク保有量は結果的側面が強い。財務規律維持能力は仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "4,409万平方メートルの土地バンク、ネットギアリング13.4%という具体的数値"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "土地バンク規模は希少資源的要素。低ギアリング比率は追加投資の財務余力"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "H1 2015（中間期）での発言（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "低ギアリング比率13.4%と大規模土地バンクは定量的に確認可能。ただし中国不動産市場の政策リスクが高く、土地バンクの価値持続性に不確実性"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "土地バンク・財務余力→景気低迷時の土地追加取得→将来の売上成長",
+      "descriptive_label": "財務体力→逆張り土地取得→将来売上",
+      "source_advantage": 9,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "財務余力→土地取得→開発→売上の3-4ステップ。各ステップの不確実性が高い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "中間期での発言（従・②相当）"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "財務余力→将来売上の接続は間接的で不確実性が高い。中間期発言でさらに減点"
+      }
+    }
+  ]
+}

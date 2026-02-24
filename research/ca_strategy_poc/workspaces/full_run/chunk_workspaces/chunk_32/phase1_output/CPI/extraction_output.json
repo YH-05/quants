@@ -1,0 +1,271 @@
+{
+  "ticker": "CPI",
+  "transcript_source": "FY2014 Annual Results (2015-02-26)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q2_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Capitaの英国BPO市場における27%シェアと参照可能な契約実績（O2・政府JV等）",
+      "descriptive_label": "英国BPO市場でのScale Economies + 実績参照ネットワーク（Scale Economies / Switching Costs）",
+      "evidence_from_transcript": "FY2014 Annual (CEO Andy Parker): 'Only GBP 13 billion has already been outsourced with Capita having a 27% market share' [of UK BPM market] / 'Our competitive advantage here stems from our referenceable delivery track record; our existing trusted relationships; financial stability; and increasingly, our 30-year track record in generating growth.' / 'We focus on organic growth through continually increasing the penetration of our large growing addressable markets'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "市場シェア27%は結果。実績参照ネットワーク・信頼関係という「仕組み」が競争優位の背後にある能力として評価できる"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "UK BPM市場での27%シェアは定量的。GBP129bn市場のうちGBP13bn外注済みという市場構造の明確な数値比較"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "27%市場シェア、GBP1.7bn新規契約（2014）、GBP5.1bnパイプライン、30年実績という定量根拠"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "strong",
+            "reasoning": "UK公共・民間BPO市場（GBP129bn中GBP13bn外注済み=10%浸透率）という断片化×拡大余地の業界構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "公共部門依存（48%）が政権交代・予算制約リスクを内包（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "30年の参照可能な実績が新規契約獲得において構造的バリアを形成（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "UK BPM市場でのネットワーク効果（参照実績→新規受注→実績拡大）は業界構造に合致した規模優位性。10%市場浸透率というヘッドルームが成長余地を示す。公共部門リスクを考慮して70%。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Capitaの独自知的財産（IP）ポートフォリオ（SIMS、AXELOS、Evolvi等）による差別化",
+      "descriptive_label": "専有IP資産によるBPO差別化（Cornered Resource / Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'Intellectual property isn't an area we particularly highlighted before, but is, in fact, one of the key competitive differentiator that we enjoy.' / 'our skills management system, SIMS, is used by over 22,000 schools in the U.K.' / 'our rail ticketing system, Evolvi, issues over 6.5 million tickets every year to business users' / 'Orbit services 30% of the online employee benefits users in the U.K.' / AXELOS: 'expected revenue growth of 17% in 2015', PRINCE2/ITIL in 180 countries.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "SIMS・AXELOS・Evolvi・Orbitという独自IPは「能力・仕組み」として明確に評価できる資産"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "SIMS 22,000校（UK）、Orbit 30%オンライン受益者というシェアデータあり。直接競合との比較は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "SIMS 22,000校、Evolvi 650万チケット/年、Orbit 30%シェア、AXELOS 180カ国・+17%成長予想という定量根拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "IP資産の個別市場ポジション（ニッチ）であり、グループ全体の競争優位への寄与度が不明（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "専有IPは明確なCornered Resourceであり、SIMS・Orbit等のプロダクトマーケットシェアが定量的。AXELOSの政府資産商業化は'first'という唯一性。BPO提案への差別化貢献は明確。60%。"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Capitaの大型変革型パートナーシップ実行能力（O2で25%コスト削減、17%スタッフ生産性向上）",
+      "descriptive_label": "複合型変革アウトソーシング実行能力（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'For our target customer, O2, we've already delivered valuable benefits. We've achieved savings for the customer of over 25%; significant channel shift, reducing the weekly call volume from 700,000 to 540,000. We've increased staff productivity by 18%. And most importantly, we've increased sales conversions from 12% to 15%.' / 'cash conversion ratio increased year-on-year to 112%' / 'We have a wealth of IP, both through in-house developments and acquisitions. These products often provide key differentiation in large BPO deals.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "O2における具体的な変革実績（コスト25%削減・生産性18%向上・転換率12%→15%）は能力の実証として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "O2での具体的KPI改善数値（コスト25%削減、コール700K→540K、生産性+18%、転換率12%→15%）"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "not_applicable",
+            "reasoning": "ネガティブケースの明示なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "O2での定量的成果は変革実行能力の直接的証拠。'referenceable delivery track record'が新規受注の源泉として機能するProcess Power。70%。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Capitaの規律的M&A戦略（ROCE15%基準）と取得後オーガニック成長への転換能力",
+      "descriptive_label": "M&A選別能力と統合によるオーガニック成長促進（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'Our ROCE target is 15% after 12 months integration into the group.' / 'We've completed 17 deals last year for a total of GBP 310 million' / '2014 saw us spend GBP 310 million on 17 acquisitions' / (CFO Nick): 'we continue to target returns in excess of 15% [on acquisitions]' / 'Over the last 10 years...we've enabled us to return a net GBP 1.5 billion to shareholders...whilst investing GBP 2 billion in acquisitions, fueling further organic growth.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ROCE15%という明確な選別基準とその適用プロセスが能力として評価できる。30年間GBP2bn投資で10%複利成長という実績"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "ROCE14.8%（2014）、10年間FCF +11%複利、GBP2bn M&A→GBP1.5bn株主還元という定量実績"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "直近ROCE 14.8%は目標15%をわずかに下回り（買収ラグ効果）（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "10年間の実績（FCF +11%複利、GBP1.5bn還元）が能力の持続性を示す（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "ROCE15%基準は明確だが直近で14.8%と微妙。しかし10年間の複利成長実績がM&A選別能力の持続性を証明。50%。"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "UK BPO市場10%浸透率→ヘッドルーム大（GBP116bn未外注）→新規受注GBP1.7bn+ →有機成長9%+CAGR",
+      "descriptive_label": "市場浸透率拡大→新規受注→有機成長CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "市場未浸透（GBP116bn）→新規受注→有機成長は2ステップ。GBP5.1bnパイプライン・4.8%視認済み有機成長が接続の妥当性を示す"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次での言及"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GBP5.1bnパイプラインと4.8%視認済み有機成長は接続の直接的証拠。UK市場の浸透率10%という成長余地は業界構造に裏付けられた長期ドライバー。70%。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "O2実績（25%コスト削減）→参照可能実績→次世代大型変革契約獲得→売上CAGR加速",
+      "descriptive_label": "実績参照→大型契約→売上CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "O2実績→参照可能→入札勝率向上→新規受注は2-3ステップ。1:2の勝率（2014）が接続の妥当性を示す"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "参照実績→入札勝率→新規受注という接続はBPO業界の典型的成長メカニズムで業界構造に合致。O2実績の定量性（25%削減）が接続の信頼性を高める。70%。"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "M&A（ROCE15%基準）→ 12カ月統合→ オーガニック成長寄与（+4.5%寄与）→ FCF複利成長CAGR",
+      "descriptive_label": "M&A→統合→オーガニック成長→FCF CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "M&A→12カ月統合→有機成長への転換は明確な2ステップ。2014の買収起因有機成長+4.5%が実績"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "10年間のFCF +11%複利・GBP2bn M&A実績が接続の持続性を実証。FCF conversion 112%が現金創出能力の強さを示す。70%。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "CPI FY2014: 売上GBP4.4bn（+14%）、有機成長9.3%、基礎PBT GBP536mn（+13%）、基礎EPS 65.2p（+10%）、FCF GBP368mn（+18%）、ROCE 14.8%、ND/EBITDA 2.1x",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 4]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "2014新規契約GBP1.7bn（17件、勝率1:2）。2015年2月までにGBP1.1bn受注済み。入札パイプラインGBP5.1bn（前回GBP4.1bn比増、平均契約期間8年）。視認済み有機成長4.8%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 5]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "O2実績: コスト25%削減、週次コール700K→540K、Web chat +22%、生産性+18%、転換率12%→15%。SIMS 22,000校、Evolvi 650万チケット/年、Orbit 30%シェア、AXELOS 180カ国・2015年+17%成長予想",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2, 3]
+    }
+  ]
+}

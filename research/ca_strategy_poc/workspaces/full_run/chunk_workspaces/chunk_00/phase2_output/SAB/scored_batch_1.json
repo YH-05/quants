@@ -1,0 +1,57 @@
+{
+  "ticker": "SAB",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["SAB-006", "SAB-007", "SAB-008"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "SAB-006",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル調達・製造規模によるコモディティコスト管理能力（ホップ・大麦・アルミニウムのヘッジと調達スケール）",
+      "descriptive_label": "グローバル調達規模によるコスト管理能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - グローバル調達スケールによるサプライヤー交渉力という能力の説明あり",
+        "rule_4_t": "PARTIAL - 「input costs were broadly flat in local currency terms」という定性的記述のみ。定量的優位性なし",
+        "rule_7_t": "FAIL - ABInBev（世界最大ビール企業）は規模でSABを大幅に上回る。差別化要因として弱い"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。大手ビール企業はいずれもグローバル調達スケールを持つ。ABInBevはSABより大規模",
+      "kb3_t_calibration": "ADN-003（グローバルプレゼンス=業界共通→30%）と類似。調達規模はScale Economiesの一形態だが、より大規模な競合が存在",
+      "dogma_evaluation": "Dogma Rule 3（相対的優位性）: FAIL（ABInBevがより大規模な調達力）。Rule 7（競合差別化）: FAIL（業界共通）。30%が適切",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1 PASS、Rule 4部分的・Rule 7 FAIL（ABInBevが規模で上回る）。KB2-T pattern_B_t（業界共通）。dogma.md Rule 3・7違反。グローバル調達はScale Economiesだが業界共通かつSABより大規模な競合が存在。30%"
+    },
+    {
+      "id": "SAB-007",
+      "claim_type": "cagr_connection",
+      "claim": "アフリカ現地ブランド優位 + Castle Liteプレミアム化 → アフリカNPR持続成長（+10%/H1）→ グループ売上CAGR",
+      "descriptive_label": "アフリカブランド優位→NPR持続成長→グループ成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（アフリカブランド優位+Castle Lite高成長→NPR持続成長→グループ売上CAGR）で検証可能",
+        "rule_12_t": "FAIL - H1四半期発言から"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。Africa NPR +10%・Castle Lite +20%という実績値が裏付け",
+      "kb3_t_calibration": "STAN-007（RMB優位→アジア貿易成長→CAGR→50%）と類似。アフリカ中産階級成長という構造的テールウィンドあり。ただしH1発言とマクロ依存性。H1-0.1調整後40%",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ因果）。H1発言-0.1調整。外部変数（アフリカ経済成長・通貨安）リスクあり",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5 PASS、Rule 12 FAIL（H1発言）。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5（2ステップ）PASS。Africa NPR +10%実績値は強力。ただしH1発言と通貨リスク（アフリカ通貨安）。H1-0.1調整後50%（アフリカ構造的成長テールウィンドが維持）"
+    },
+    {
+      "id": "SAB-008",
+      "claim_type": "cagr_connection",
+      "claim": "USD 500Mコスト削減 + ラテンアメリカ価格設定力 → EBITA margin改善（70bps/年目標）→ EPS CAGR",
+      "descriptive_label": "コスト削減+価格設定力→マージン改善→EPS成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（コスト削減+価格設定力→マージン改善→EPS CAGR）で検証可能",
+        "rule_12_t": "FAIL - H1四半期発言から"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。70bps/年マージン改善目標という定量値",
+      "kb3_t_calibration": "BATS-007（GDB優位+価格設定力→CAGR→70%）より劣後（BATSはQ1も+10% EPS実績があるのに対し、SABはFY2018まで目標段階）。H1発言-0.1調整後40%",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ因果）。H1発言-0.1調整。FY2018目標達成の不確実性と為替リスク（USD/現地通貨）が懸念事項",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 5 PASS、Rule 12 FAIL（H1発言）。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5 PASS。70bps/年目標は定量的だがFY2018完了まで複数期間の不確実性あり。H1発言-0.1後40%"
+    }
+  ]
+}

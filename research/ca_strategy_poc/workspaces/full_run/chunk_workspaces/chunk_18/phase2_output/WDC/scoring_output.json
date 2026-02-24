@@ -1,0 +1,81 @@
+{
+  "ticker": "WDC",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "WDC-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "HelioSealヘリウム封入HDD技術・製造プロセス優位性",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_III (能力 > 結果)",
+      "scoring_rationale": "KB1: rule04 - 100万台出荷実績という定量証拠。rule01 - 製造技術能力という能力レベルの主張。KB2: Pattern I - 業界唯一のヘリウム封入量産技術（2015年時点）。Pattern III - 技術的Process Powerとして認められる。ただしKB1: rule10 - フラッシュへの業界移行という長期リスクを考慮。dogma.md: 確信度50%は中期的優位性ありだが長期持続に懐疑的という判断と整合。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WDC-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "MOFCOM解除後の規模優位性（OpEx $400M/年）",
+      "phase1_confidence": 0.3,
+      "kb2_pattern_applied": "pattern_F (戦略の混同)",
+      "scoring_rationale": "KB1: rule08 - MOFCOM解除が前提条件という戦略的依存性。KB2: Pattern F - 外部規制依存の潜在的優位性は現時点での優位性ではない。KB1: rule10 - 解除が実現しなかった場合のリスク。確信度30%は「解除時に実現するが現時点では仮定的」という評価と整合。",
+      "final_confidence": 0.3,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WDC-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Enterprise SSD成長（前年比2倍超の$244M）",
+      "phase1_confidence": 0.4,
+      "kb2_pattern_applied": "pattern_A (結果を原因と取り違え)",
+      "scoring_rationale": "KB1: rule01 - 成長率（結果）を優位性として提示。KB2: Pattern A適用 - $244Mという売上は結果であり、SSD技術能力の優位性証拠として機能しているか不明確。SSD市場ではSamsung・Intel・Micronとの競争が激しく差別化が不明確。確信度は下げが適当。",
+      "final_confidence": 0.3,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WDC-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "Active Archive System（$15B市場）",
+      "phase1_confidence": 0.3,
+      "kb2_pattern_applied": "pattern_F (戦略の混同)",
+      "scoring_rationale": "KB1: rule08 - 初期出荷段階の新製品カテゴリは戦略的ポジションニングの段階。KB2: Pattern F - Counter-Positioningとして機能するかは市場検証後でないと評価困難。$15Bは市場ポテンシャル推定であり実績ではない。",
+      "final_confidence": 0.3,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WDC-005",
+      "claim_type": "cagr_connection",
+      "claim_text": "データ成長・エクサバイト需要拡大",
+      "phase1_confidence": 0.4,
+      "scoring_rationale": "KB2: Pattern B - データ成長はHDD業界共通の主張。Pattern C（因果の飛躍）- データ成長→HDD需要の接続はフラッシュとの競合で複雑化している。",
+      "final_confidence": 0.3,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WDC-006",
+      "claim_type": "factual_claim",
+      "claim_text": "Q4 FY2015 決算数値",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 4,
+    "ca_weighted_confidence": 0.35,
+    "top_power_type": "Process Power (HelioSeal)",
+    "overall_assessment": "WDCはHelioSeal技術に中程度の優位性があるが、フラッシュへの業界移行リスクとMOFCOM規制という2つの構造的制約で優位性の持続が不確か。全体的に確信度は低め。"
+  }
+}

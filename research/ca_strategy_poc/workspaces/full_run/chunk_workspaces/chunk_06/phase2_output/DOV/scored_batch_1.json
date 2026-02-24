@@ -1,0 +1,75 @@
+{
+  "ticker": "DOV",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "DOV-006",
+      "claim_type": "competitive_advantage",
+      "claim": "DoverのMarkem-Imajeはコンシューマー向けパッケージングの刻印・識別ソリューションを提供し、製品をCapExではなくOpExとして位置づける。顧客のオペレーション組み込み型ソリューションは高い切り替えコストを内在。",
+      "descriptive_label": "Markem-Imaje OpEx組み込み型識別ソリューションのスイッチングコスト",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Switching Costs",
+      "confidence_score": 0.5,
+      "scoring_rationale": "オペレーション組み込み型識別ソリューション（仕組み, rule01 pass）はスイッチングコストを内包（rule06 structural）。「OpEx扱い」という顧客のコスト分類は購買行動を安定化させる構造（rule11 structural pass）。Q1 FY2015発言（rule12 secondary相当, -10%調整）。競合（Videojet、Imaje旧単体等）との比較なし（rule07 insufficient）。CapEx削減期でも成長8%という実績が切り替えコストの証拠（rule04 partial）。50%（Q1発言-10%で50%維持）。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "OpEx組み込み→解約率低→安定成長→Engineered Systems CAGR（rule05 direct）。CapEx削減局面での実績（有機成長8%）で検証済み。60%。"
+    },
+    {
+      "id": "DOV-007",
+      "claim_type": "competitive_advantage",
+      "claim": "DoverはRefrigeration部門でWalmartから約1億ドルの受注喪失があったにも関わらず、他の全国・地方チェーンへの転換で6,000万〜7,000万ドルの新規受注を獲得。顧客基盤多様化により単一顧客依存リスクを軽減する能力を持つ。",
+      "descriptive_label": "Walmart喪失$100Mを$60-70M新規受注で代替する顧客多様化能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Counter-Positioning",
+      "confidence_score": 0.3,
+      "scoring_rationale": "Walmart喪失の部分的穴埋め（$60-70M/$100M）は結果の数値（rule01 concern, pattern_A_result_as_cause）。「精力的に代替受注を追った」は能力の述語だが、仕組み（販売力、製品差別化）の説明が不十分（rule01 concern）。部分的穴埋めに留まりWalmart喪失の完全回収には至らない（rule10 partial, ネガティブケースとして一部失敗）。競合（Hussmann等）との比較なし（rule07 insufficient）。Q1 FY2015発言（rule12 secondary）。30%。",
+      "kb1_flags": ["rule01_capability_not_result"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "顧客多様化→Refrigeration売上回復→全社CAGR（rule05 indirect）。$100M喪失のうち$60-70M回収のみで純マイナスインパクト継続中。30%。"
+    },
+    {
+      "id": "DOV-008",
+      "claim_type": "factual_claim",
+      "claim": "2015年Q1：売上17億ドル（-5%）、有機成長-6%、買収貢献+5%、FX-4%。EPS $0.72（構造改革費用$0.10含む）。セグメント利益率13.5%（調整後15.5%）。FCF 1億300万ドル（売上比6%）。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "DOV-009",
+      "claim_type": "factual_claim",
+      "claim": "2015年通年ガイダンス：売上-4%〜-6%、有機成長-2%〜-4%、セグメント利益率16.8%〜17.3%（構造改革費用除く）、EPS $4.20〜$4.40。Energy有機成長-24%〜-26%。FCF売上比約11%。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "DOV-010",
+      "claim_type": "cagr_connection",
+      "claim": "Doverの多角化工業コングロマリット構造（Engineered Systems / Fluids / Refrigeration / Energy）は、Energy市場の急落（-24%）を他3部門の有機成長で一部相殺し、FCF 11%/売上の安定創出を維持する。資本配分（買収+自社株買い）とコスト構造改革の組み合わせが景気回復局面での強いEPS反発を可能にする。",
+      "descriptive_label": "多角化コングロマリット+FCF11%+コスト改革→景気回復期EPS反発CAGR",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "多角化構造+コスト改革→景気回復時のEPS反発→CAGR（rule05 indirect）。景気回復のタイミング・規模が不確実（pattern_C_causal_leap）。Energy有機成長-24%という現状の重さ。FCF 11%は資本配分柔軟性を提供するが直接的CAGR接続ではない。40%。"
+    }
+  ]
+}

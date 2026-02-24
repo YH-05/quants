@@ -1,0 +1,238 @@
+{
+  "ticker": "AGN",
+  "transcript_source": "Q2 FY2015 Earnings Call (2015-08-06) + Q3 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "BotoxによるGrowth Pharma（医療美容＋CNS＋眼科）での多領域テラピューティックリーダーシップ：過去6.5年で14のNME承認という業界最高水準の生産性",
+      "descriptive_label": "Botox中心のGrowth Pharmaテラピューティックリーダーシップ（Branding / Cornered Resource）",
+      "evidence_from_transcript": "Q2 2015 Prepared Remarks (R&D Head David Nicholson): 'The productivity of the legacy Allergan R&D organizations is demonstrated by the industry-leading figure of 14 NME approvals in the United States over the last 6.5 years.' / (CEO Brent Saunders): 'We are creating the most dynamic company in Growth Pharma... 12 of the top 15 global brands growing, many with double-digit pro forma year-over-year growth.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "14 NME承認は実績。その承認を生み出すR&D生産性という能力（データドリブン優先付け、外部リソース活用）の説明あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "14 NME / 6.5年という定量的指標。「業界最高」と主張"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "「業界最高」だが具体的な競合（AbbVie, Novo Nordisk等）との比較がない"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_pass",
+            "reasoning": "既に確立されたBotoxブランドとNME承認実績は戦略ではなく既存の優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterlyからの発言（従・②相当）、Q4 transcript不在、-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "ポイントインタイム（2015年9月）時点でジェネリック事業売却中で事業変革過渡期。評価の不確実性が高い",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "14 NME/6.5年の生産性は評価できるが、Q4 transcriptがなく、かつ事業変革の過渡期で評価が難しい"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Botox中心のブランド製品群（Restasis, Linzess等）→ 7つのコア治療領域でのフランチャイズリーダーシップ → ブランド売上CAGR（2017年EPS $25目標）",
+      "descriptive_label": "Botoxブランド群→テラピーリーダーシップ→売上CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "テラピーリーダー→ブランド優位→売上増加は3段階以上の因果。$25 EPS目標は事業売却後の不確実性が高い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言であり従（②相当）"
+          }
+        ],
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（従・②相当）、-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "Teva へのジェネリック売却後の事業構造が不透明で目標達成の確信度が低い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "事業変革の過渡期で因果チェーンに不確実性が高い。Q4 transcriptも存在しない"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "外部R&Dリソース（ベンチャー、大学、小型バイオテク）の優先活用と内部R&Dの選択的集中による「バーチャル-実践型」ハイブリッドR&D能力",
+      "descriptive_label": "選択的R&Dモデル（内部集中×外部調達）（Process Power）",
+      "evidence_from_transcript": "Q2 2015 Answer (CEO Saunders): 'What we won't do is waste our money on R&D that is widely available elsewhere. And so I think you have to really consider us as very practical when it comes to research, basic research. But also a virtual-like company when it comes to research as demonstrated by some of the deals we just did, like Naurex, or even the licensing of the oral CGRPs from Merck.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "answer",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "バーチャル-実践型という独自のR&Dモデルという能力の説明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "R&D外部調達は多くの製薬会社が実施。Allergan固有の構造的優位性かは疑問"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "外部R&D重視は現在進行中の戦略的選択であり、既確立の優位性とは言いにくい"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_strategy_confusion",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterlyのQ&Aセクション（従・②相当）、-15%調整",
+            "adjustment": -15
+          }
+        ],
+        "overall_reasoning": "戦略として述べられており、まだ確立された優位性とは評価しにくい。Q4 transcriptも存在しない"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Restasis（ドライアイ）、Botox（美容・CNS）、Namenda XR（アルツハイマー）を含む長期特許保護された複数のフランチャイズブランド群",
+      "descriptive_label": "長期独占ブランドポートフォリオ（Branding / Cornered Resource）",
+      "evidence_from_transcript": "Q2 2015 Prepared Remarks (CEO): 'it is a terrific lineup of brands with long exclusivity and is backed by a great team on the ground and our leading pipeline... Our pipeline remains one of the best-kept secrets of our company. With 70 projects in mid to late development, we are in an enviable position.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「長期独占性を持つ製品群」という構造的事実。70プロジェクトという能力の裏付け"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "特許保護という規制上の希少資源は明確な構造的要素"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "「業界最高のパイプライン」だが競合（AbbVie、Roche等）との具体的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterlyから（従・②相当）、-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "Namenda IR特許切れによる事業変革が進行中であり、独占性の持続性に不確実性",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "ブランド群の長期独占性は評価できるが、過渡期の事業変革とQ4 transcript不在で確信度は低め"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "長期独占ブランドポートフォリオ → 高粗利率（医療美容93%、米国ブランド87%）→ フリーキャッシュフロー → 買収再投資サイクル",
+      "descriptive_label": "高粗利ブランド→FCF→M&A再投資サイクル",
+      "source_advantage": 4,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "高粗利→FCF→M&A→新製品→成長は3段階以上の因果チェーン"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言（従・②相当）"
+          }
+        ],
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（従・②相当）、-15%調整",
+            "adjustment": -15
+          }
+        ],
+        "overall_reasoning": "因果チェーンは合理的だが長く、過渡期の不確実性が高い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "AGN Q2 2015: 連結売上$5.7B（前年比倍増）、調整後EBITDA $2.6B。医療美容事業粗利率93%、米国ブランド粗利率87.4%。14 NME承認（過去6.5年）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [1]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Allerganは70件の中後期パイプラインプロジェクト（45件が後期・審査段階）。ジェネリック事業はTevaへ$40.5Bで売却予定（2016年完了見込み）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Botox、Restasis、Namenda XR、Linzess等の主要15ブランドのうち12が成長（多数が2桁成長）。100件以上の承認・56件の申請（2015年上半期）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [4]
+    }
+  ]
+}

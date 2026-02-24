@@ -1,0 +1,266 @@
+{
+  "ticker": "ITV",
+  "transcript_source": "FY2014 Full Year Results (2015-03-04) [Primary]; H1 2015 Results (2015-07-29) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014 Full Year", "H1 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ITV Familyの「500万人以上視聴番組の99.4%」提供能力：英国で唯一の超大型マス視聴者を継続的に届けるブロードキャスト能力",
+      "descriptive_label": "マス視聴者デリバリー独占的能力（Cornered Resource + Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Adam Crozier): 'Our ability, as you see on the top-right chart there, to deliver unrivaled mass audiences is as strong as ever. And absolutely, it is our key commercial proposition. We delivered 99.4% of all the commercial programs with an audience over 5 million; 95% of all the programs over 3 million. And that has remained consistently strong throughout the last few years, and that's what drives our advertising proposition.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コンテンツ投資・番組制作・放送スケジュール管理という仕組みを評価。視聴者シェアは結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "500万人超視聴番組の99.4%という具体的かつ検証可能な指標。Broadcast広告シェア45.9%（5年間最高のアウトパフォーム）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "FTAチャンネルの規模とリーチは長年の番組投資の蓄積。新規参入が模倣するには数十年かかる"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Channel 4、Channel 5、BBC One等の競合と比較してマス視聴者シェアが明確に上位。広告主にとって代替不可"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_IV_t",
+        "confidence": 75,
+        "confidence_adjustments": [
+          {
+            "reason": "ITV Family全体視聴率は前年比-5%下落（投資増加にもかかわらず）であり、マス視聴者維持の持続性に若干の疑問",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "99.4%という圧倒的な大型番組集中率は実績に基づく強力な証拠。広告市場でのアウトパフォームと連動して確立された競争優位"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "マス視聴者デリバリー → 広告主の優先選択 → NAR広告収入のアウトパフォーム成長（市場+4.5%に対しITV+6%）",
+      "descriptive_label": "マス視聴者→NAR広告アウトパフォーム→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：番組力→視聴者集中→広告主優先選択→NAR成長。FY2014で市場+4.5%に対しITV+6%のアウトパフォーム実績あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算での繰り返し言及"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "市場対比アウトパフォームの実績（5年間で最高水準）で裏付けられた直接的メカニズム"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "ITV Studios：英国・米国における大型フォーマット（Come Dine With Me、Hell's Kitchen等）を軸にした国際コンテンツビジネスの規模と多様性",
+      "descriptive_label": "ITV Studios国際コンテンツIPポートフォリオ（Cornered Resource + Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Crozier): 'ITV Studios have delivered another strong year of revenue and profit growth...The U.S. business is now the largest unscripted indie in the U.S., and we're working with 45 networks in America. We have 141 programs on air in the States...We currently have 36 formats at ITVS that were sold internationally, 12 of them in 3 or more countries...fit to compete in a global market that's worth around $50 billion and growing at a rate of around 5% to 6% per annum.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9, 10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コンテンツIP開発・国際流通能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "米国最大のアンスクリプテッドインディ、45ネットワーク、141番組、36フォーマット（12が3か国以上）、国際売上47%という具体的数値"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ITV Studios → Leftfield（米国最大アンスクリプテッド）という買収構造は容易に模倣できない市場地位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "$50B/年成長5-6%のグローバルコンテンツ市場でのポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t + pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "米国最大のアンスクリプテッドインディという地位は独自の競争優位。36の国際フォーマットと45ネットワーク関係は実績ベースで確立"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "ITV Studios IPポートフォリオ拡大 → 国際コンテンツ売上成長（FY2014 +24%）→ 非NAR収入の増加で連結CAGR多様化",
+      "descriptive_label": "Studios IP成長→国際売上→CAGR多様化",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：IPポートフォリオ拡大→国際流通増加→Studios売上+9%（GBP98M増）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算での言及"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "FY2014の成長は主にLeftfield買収効果（有機成長は1%）。有機的成長継続性に不確実性",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Studios成長は実績あるが、FY2014は主に買収ドリブン。有機成長回帰が2015以降の確信の鍵"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Online, Pay & Interactive事業のハイマージン成長：VOD視聴+26%、8百万登録ユーザー、Pay TV追加収入の高収益構造",
+      "descriptive_label": "VOD・Pay TVオンライン事業（Counter-Positioning + Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CFO Ian Griffiths): 'our online and pay revenues are also high margin. The GBP 35 million of new revenue has led to GBP 33 million of incremental profit before additional content cost...Revenue has tripled over the last 5 years and up 30% year-on-year.' CEO: 'We now have 8 million registered users, and that's up about 129% year-on-year. VOD requests, driven by mobile and connected TVs, were up 26%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "オンラインプラットフォーム・VOD配信能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "5年で3倍、GBP35M新収入がGBP33Mの増分利益（95%利益率）、VOD+26%、登録ユーザー+129%という強力な定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "GBP1Bのコンテンツ投資がVODプラットフォームとPay収入の両方を支える構造は長期的に強化"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GBP35M新収入→GBP33M利益という95%の増分利益率は非常に高い。VOD・Pay成長の実績に裏付けられた強固な優位性"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "ITV放送コンテンツGBP1Bの多重マネタイズ：FTA広告→VOD広告→Payプラットフォーム→Studios再販という収益多重化構造",
+      "descriptive_label": "コンテンツ多重マネタイズ構造（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual CFO (Griffiths): 'The GBP 1 billion investment we make in Broadcast content is increasingly driving value to other parts of the business. Over half of this budget is original commissions to the main channel, many drama and entertainment. It's this content that's watched across the various VOD platforms through ITV Player, and it's also this content that's on our HD channels at Encore, for which we get paid by the platform operators.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "同一コンテンツからの多重マネタイズという仕組みを評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "GBP1Bの年次コンテンツ投資は規模での参入障壁。同等の構造を構築するには多年の投資が必要"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "structural",
+            "reasoning": "FTA→VOD→Pay→Studiosという4段階マネタイズは意図的な戦略設計"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_IV_t",
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "コンテンツ多重マネタイズは構造的に強力。GBP1B投資規模は競合との差別化要因"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 外部売上+8%（GBP3B）、NAR +6%（市場+4.5%に対しアウトパフォーム）、非NAR収入+10%（45%）、EBITA +18% GBP730M、EPS +23%、Broadcast利益+17%、Studios +22%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 5]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "ITV Broadcast: 500万人超視聴番組の99.4%を独占配信、放送広告シェア45.9%（5年最高）、家族視聴シェア-5%（投資増加にもかかわらず）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "ITV Studios FY2014: 売上+9%（Leftfield含む）、有機成長1%（UK flat、米国+5%、Rest+7%）、スタジオ利益率17%（+1pp）、国際売上47%（+24%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "ITV Studios: 米国最大のアンスクリプテッドインディ（Leftfield後）、45ネットワーク・141番組、36フォーマット（12が3か国以上）、2015年スクリプテッド12作品",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Online/Pay/Interactive FY2014: 収入+30%、5年で3倍（GBP35M増→GBP33M利益）、VODリクエスト+26%、登録ユーザー8M（+129%）、ITV Encore（Payチャンネル）黒字即達成",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    }
+  ]
+}

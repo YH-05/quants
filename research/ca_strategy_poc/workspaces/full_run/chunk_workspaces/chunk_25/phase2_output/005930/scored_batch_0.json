@@ -1,0 +1,293 @@
+{
+  "ticker": "005930",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": [1, 2, 3, 4, 5],
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "V-NAND（3D NAND）世界初量産・第3世代（48層）開発による競合1年以上先行の技術ギャップ",
+      "evidence": "Q4 2013: 'We became the first in the industry to mass-produce 3-bit MLC V-NAND.' Q4 2014: '2nd gen V-NAND'. Q2 2015: '3rd generation V-NAND with 48 layers coming in Q3'. Q3 2015: '3rd gen V-NAND in mass production'.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "V-NAND垂直スタッキング技術（電荷トラップセル・トンネリング絶縁膜技術）という能力・仕組みを評価。世界初量産→第3世代連続開発という技術蓄積の証拠"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "世界初（2013）、第2世代（2014）、第3世代48層（2015 Q2→Q3）という定量的マイルストーン。競合は1年以上後追い"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "Micron/Intelは後発（SkyLake platform向け3D NAND量産は2016年以降）。サムスンは最初のenterprise SSD唯一認定サプライヤー"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "NAND市場の高成長（データセンター・SSD移行）と技術リードの合致。業界構造との整合性最高水準"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.10,
+          "reasoning": "世界初（2013）からQ3 2015まで3世代連続リード。定量的に競合との差が確認可能。Enterprise SSD唯一認定サプライヤーという市場の評価"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "V-NAND製造プロセス（垂直スタッキング・電荷トラップ技術）という能力の評価。単なる量産実績ではなく3世代にわたる技術蓄積"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（主・①相当）で調整なし"
+        },
+        {
+          "source": "competitor_catch_up_risk",
+          "adjustment": -0.05,
+          "reasoning": "Micron・Intel・Toshibaが3D NANDを量産開始（2016年以降）。技術リードの持続性は限定的だが2015時点では明確なギャップ"
+        }
+      ],
+      "final_confidence": 0.80,
+      "overall_reasoning": "V-NAND世界初量産→第3世代連続開発は3世代にわたるプロセス能力の蓄積（パターンI-T、III-T）。競合1年以上先行という明確な技術ギャップ（ルール7-T）。Enterprise SSD唯一認定サプライヤーという市場の評価が付随。業界構造（NAND需要増）との合致（ルール11-T）も最高水準。80%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "V-NAND技術リード × enterprise SSD市場成長 → Memory事業売上CAGR+10-20%維持（SSD収益 $1B+/四半期）",
+      "evidence": "Q4 2014 CFO: 'SSD revenue has exceeded $1B per quarter since 1H 2014.' Q2 2015: 'V-NAND 3rd gen drives enterprise SSD demand'. Q3 2015: 'Strong SSD demand across enterprise/PC/mobile'.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "V-NAND技術リード→Enterprise SSD唯一認定サプライヤー→$1B+/Q売上という1-2ステップの直接的接続。2014H1以降の継続的実績で裏付けあり"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual callで言及（primary source）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "V-NAND技術→Enterprise SSD→$1B+/Qという直接的接続。開示データで検証可能"
+        },
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$1B+/Q以上という具体的な収益マイルストーン。2014H1から継続中"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "competitor_ssd_entry",
+          "adjustment": -0.05,
+          "reasoning": "Micron/Intel等が3D NAND SSDを量産開始すれば価格競争が激化。ただし2015年時点では競合不在"
+        },
+        {
+          "source": "nand_price_cycle",
+          "adjustment": -0.05,
+          "reasoning": "NANDは半導体サイクルによる価格変動がCAGRを左右する構造的リスク"
+        }
+      ],
+      "final_confidence": 0.70,
+      "overall_reasoning": "V-NAND技術リード→$1B+/Q SSD収益という直接的接続は開示データで検証可能（パターンII-T、I-T）。2014H1以降の継続的実績が裏付け。競合参入による価格競争リスクとNANDサイクルを差し引いて70%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "DRAM 20nmプロセス世界初量産による原価優位性（DDR4/LPDDR4ファーストムーバー）",
+      "evidence": "Q1 2014 VP: '20nm DRAM now in mass production. Migrating full capacity to 20nm.' Q2 2014: 'Bit growth in high 40% range vs market low 30% due to 20nm migration.' Q3 2014: 'DDR4 mass production at 20nm, first in industry.' Q4 2014: 'DRAM outperforming market in bit growth consistently in 2014.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "20nmプロセス技術（セル縮小・電界効果制御）という能力を評価。世界初DDR4量産はプロセス能力の定量証拠"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "ビット成長率high 40%（市場low 30%比+10%以上）という直接的な競合比較数値あり"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "市場ビット成長率対比での明確な定量優位（high 40% vs market low 30%）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.10,
+          "reasoning": "ビット成長率high 40% vs 市場low 30%という直接的競合比較数値。複数四半期にわたる一貫した優位性"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "20nmプロセスへの全容量移行というプロセス能力の評価。単なる市場シェアではなく技術的能力"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（primary source）で調整なし"
+        },
+        {
+          "source": "samsung_note_disclaimer",
+          "adjustment": -0.05,
+          "reasoning": "Q3 2014でのモバイル事業苦戦（iPhone 6による市場シェア喪失）がサムスン全体の競争優位性評価を複雑にする文脈"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "DRAM 20nm世界初量産はプロセス技術能力の証拠（パターンI-T、III-T）。ビット成長率high 40% vs 市場low 30%という直接的定量比較（ルール4-T、7-T）。複数四半期にわたる一貫した優位性。75%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "DRAM 20nm原価優位 × スマホ/PC/サーバーDRAM需要増 → DRAM事業CAGR安定成長（ASP下落をビット成長でカバー）",
+      "evidence": "Q2 2014: 'Market bit growth low to mid 20%, our bit growth high 40%—significant outperformance from 20nm migration.' Q4 2014 CFO: 'DRAM market stable, strong server DRAM demand.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "20nm原価優位→ASP下落カバー→DRAM CAGR安定という2ステップ接続。過去実績（ビット成長outperformance）で裏付けあり"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual call（primary source）と複数の四半期データで裏付け"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "20nm原価優位→ビット成長→収益維持という直接的因果関係。ビット成長データで検証可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "dram_price_cycle",
+          "adjustment": -0.10,
+          "reasoning": "DRAMは需給サイクルで価格が大きく変動。2015年時点では安定しているが供給過剰リスクが内在"
+        },
+        {
+          "source": "mobile_demand_volatility",
+          "adjustment": -0.05,
+          "reasoning": "スマホ市場の成熟化によるDRAM需要成長鈍化リスク（2014-2015のiPhone 6対応でサムスンモバイル苦戦が示す構造変化）"
+        }
+      ],
+      "final_confidence": 0.60,
+      "overall_reasoning": "20nm原価優位→ビット成長→CAGR安定という2ステップ接続は過去実績（ビット成長high 40% vs 市場low 30%）で裏付け（パターンII-T）。ただしDRAM価格サイクルとモバイル需要の構造変化がCAGR持続性のリスク。60%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "14nm FinFET System LSI（Exynos）の世界初商業化能力と外部ファウンドリ顧客獲得力",
+      "evidence": "Q4 2014 CEO: 'Samsung will begin mass production of 14nm FinFET System LSI products in early 2015—first in the industry worldwide.' Q1 2015: 'Ramping up 14nm—30% of 12-inch wafer capacity by end of 2015.' Q2 2015: 'Foundry customers responding very positively.' Q3 2015: '14nm foundry expanding to external customers.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "14nm FinFETプロセス技術（ゲート形状制御、ストレスエンジニアリング）という能力を評価。世界初商業化はプロセス蓄積の証左"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "30%/12インチキャパシティという定量目標、GlobalFoundries技術ライセンス（2014Q1）という具体的事実"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "TSMCは16nm FinFETで後追い。2015年時点でサムスンが世界唯一の14nm FinFET量産者"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.10,
+          "reasoning": "世界初14nm商業化（2015Q1）、30% of 12-inch capacity目標、外部顧客「very positive responses」という定量的差別化データ"
+        },
+        {
+          "pattern_id": "pattern_V_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "TSMCとの比較（TSMC 16nm FinFET量産は2015年後半）。明確な競合比較"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "foundry_customer_diversity",
+          "adjustment": -0.05,
+          "reasoning": "外部顧客の具体的な名前・収益規模が未開示。「very positive responses」は定性的"
+        },
+        {
+          "source": "apple_tsmc_dependence",
+          "adjustment": -0.10,
+          "reasoning": "Apple（世界最大の先端ファウンドリ顧客）がTSMCに移行（iPhone 6s向けA9のメインサプライヤー問題）。サムスン14nmの外部顧客の実際の規模に疑問"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "世界初14nm FinFET商業化はプロセス技術能力の明確な証拠（パターンI-T、V-T）。外部顧客「very positive responses」は市場の評価。ただしAppleのTSMC移行という文脈でファウンドリ収益規模の不確実性あり。65%が妥当"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "60-70": 2,
+      "65-75": 1,
+      "70-80": 1,
+      "75-85": 1,
+      "80-90": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

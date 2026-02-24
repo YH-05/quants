@@ -1,0 +1,117 @@
+{
+  "ticker": "PPG",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PPG-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "PPG IndustriesはComex買収（メキシコ最大の塗料ブランド）を含むポートフォリオ管理で2014年に調整後EPSを27%増加し、数年連続で20%以上の調整後EPS成長を達成。$3.2億をM&Aと自社株買いに投下し、積極的ポートフォリオ管理による複合的収益成長を実現",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "数年連続20%超EPS成長はM&Aとコスト管理の結果。持続可能かはポートフォリオの質による",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "EPS成長実績は「結果を原因と取り違え」のリスクがある（KB2パターンA部分合致）。ただし「積極的ポートフォリオ管理能力」という「仕組み」として解釈できる面もある。M&A統合能力（AkzoNobel前倒し達成）が能力の証拠として機能。50%が妥当。"
+    },
+    {
+      "claim_id": "PPG-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "PPGはAkzoNobel北米建築塗料事業の買収シナジーを目標より1年前倒しで達成（2014年）。Comexはメキシコ最大の塗料チェーンでミッドティーン%のEBIT利益率を誇る高品質ブランド",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "シナジー前倒し達成はPPGのM&A統合能力の証拠。Comexのミッドティーン利益率はブランド強度を示す",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "シナジー1年前倒し達成はM&A統合能力（Process Power的側面）の証拠（KB2パターンIII）。Comexのミッドティーン%EBIT利益率という定量値はブランド強度の証拠。ただし塗料ブランドの相対的地位（競合Sherwin-Williams、AkzoNobel対比）が不明確。50%。"
+    },
+    {
+      "claim_id": "PPG-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "PPGは115年連続配当支払い・43年連続増配（2014年10%増）を達成。Transitions Optical JVを$17億税引き前で売却し継続的な株主価値創造能力を持つ",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "115年連続配当はブランドと運営の長期安定性を示すが、これは結果指標",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "115年連続配当は長期安定性の証拠として印象的だが「結果」の側面（KB2パターンA）。43年連続増配という定量値はProcess Powerの証拠として部分的に機能するが、能力の「仕組み」説明が不足。dogma.mdルール1（能力vs結果）の警告。50%。"
+    },
+    {
+      "claim_id": "PPG-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "PPGの全地域（米加+5%、アジア太平洋+5%）での2014年Q4ボリューム成長は、グローバルな製品ラインナップと顧客関係によるサイクルに逆らった成長能力を示す。複数のセグメントが市場成長率を上回る",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "全地域ボリューム成長は結果。市場成長率超過は相対優位の証拠として部分的に機能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "全地域ボリューム成長（米加+5%、アジア太平洋+5%）は結果の側面があるが、「市場成長率を上回るセグメント複数」という相対比較は部分的に規模の経済の証拠（dogma.mdルール7）。ただしSherwin-Williams、Akzo Noble等との直接比較なし。50%。"
+    },
+    {
+      "claim_id": "PPG-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "PPGの欧州事業は通貨逆風（欧州通貨安）下で2014年に$1億超（+21%）の利益改善を達成した。コスト管理能力とポートフォリオ最適化が地域経済停滞下でも利益成長を実現する運営能力を示す",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "逆風下での$1億+21%欧州利益改善は運営能力の定量的証拠。通貨逆風は全競合も同様に直面",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "逆風下（通貨安・経済停滞）での$100M+21%欧州利益改善は定量的証拠（KB2パターンI部分合致）。全競合が同じ通貨環境に直面する中での相対的優位性の証拠として機能するが、AkzoNobel等欧州競合との具体的比較なし（dogma.mdルール7）。50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"50-60": 5},
+    "gatekeeper_applied": false
+  }
+}

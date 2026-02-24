@@ -1,0 +1,56 @@
+{
+  "ticker": "TSM",
+  "batch_index": 2,
+  "batch_total": 3,
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "id": "TSM_011",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCは顧客の製品競争力強化を目的として先端技術（16nm, 10nm, 7nm）の相互互換性を設計することで、設計アセットの再利用を可能にし顧客コストを削減する差別化ポジションを確立している。",
+      "descriptive_label": "マルチノード間プロセス互換性による顧客設計資産保護",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Mark Liu",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule07", "rule12"],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "「ノード間のtool compatibility設計能力」= 仕組みとしての能力を評価。顧客コスト削減という結果ではなく、互換性設計力という能力"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "structural",
+            "reasoning": "複数ノードにわたる互換性アーキテクチャは、数世代の設計投資が必要な構造的優位性"
+          },
+          {
+            "rule": "rule07",
+            "verdict": "fail",
+            "reasoning": "Samsung Foundryが同様の互換性戦略を採用しているかどうかの比較情報なし。「競合が持たない」差別化の定量根拠不足"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015の発言（従・②相当）。-10%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_G_t",
+        "kb2_t_reasoning": "純粋競合との差別化が不明（G-T）：Samsung Foundryの互換性戦略との比較なし。ルール7-T違反",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callでの発言（従・②相当）。ルール12-T適用: -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "Pure competitorとの比較なし（ルール7-T）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。16nm→10nm→7nmのtool compatibilityという具体的な技術的優位性は評価できる。顧客の設計資産再利用を可能にするスイッチングコスト構造としては有望。ただし純粋競合（Samsung Foundry）が同様の互換性設計を行っているかの比較なし。Q2発言のため-10%調整で50%（まあ納得）"
+      }
+    }
+  ]
+}

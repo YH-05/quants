@@ -1,0 +1,44 @@
+{
+  "ticker": "DFS",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Discover Networkグローバル拡大（Diners高一桁%成長）+ AribaPay（B2B決済）→決済事業売上CAGR",
+      "descriptive_label": "ネットワーク拡大→決済売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_C_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "Payments 2015年減益予想がCAGR接続を否定。KB3 low confidence",
+      "final_confidence": 0.2,
+      "confidence_rationale": "KB2 pattern_C_t（因果の飛躍）。2015年Payments減益予想がネットワーク拡大→売上成長の接続を否定。Phase1の-20%調整で10%→最低評価に近い20%。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "ROE 20%超×Tier1 14.1% → 株主還元（$1.6bn買戻し+配当増配）→ EPS CAGR（1株価値向上）",
+      "descriptive_label": "高ROE×資本効率→株主還元→EPS CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "$1.6bn CCAR枠内買戻しと ROE 20%+実績の直接的接続。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。ROE 20%+ とCCAR枠内$1.6bn買戻しは定量的で検証可能。EPS成長への経路は最もシンプル。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"10-20": 1, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

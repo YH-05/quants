@@ -1,0 +1,410 @@
+{
+  "ticker": "PCAR",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-30)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "PACCAR MXエンジン（MX-13）の業界最高水準の燃費効率による製品差別化。トラック+エンジン垂直統合による顧客価値提供",
+      "descriptive_label": "PACCARエンジン内製による燃費・信頼性の製品優位性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Ron Armstrong): 'the PACCAR MX-13 engine, earned 2015 Truck of the Year from the American Truck Dealers' / Q&A: 'MX engine, combined with the Peterbilt, Kenworth and DAF trucks, provide an excellent value proposition for those customers...fuel is still the first or second biggest expense in their P&L' / DAF: 'Predictive Cruise Control and Predictive Shifting that further enhance fuel efficiency'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Armstrong (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "エンジン内製という「能力・仕組み」を評価。Truck of the Year受賞は結果だが、エンジン垂直統合能力が背後にある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "MX penetration 37%という数値はあるが、競合比較（Cummins等）との燃費差データが不在"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "エンジン内製はDaimler/Volvoも実施。ただしPACCARのエンジン工場（Eindhoven/Columbus）は構造的資産"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「MX engine...excellent value proposition」は自己評価。Cummins、Dettroit Dieselとの具体的比較データが不在"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力の優位性)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）だが競合比較データが定量的に示されていない",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "エンジン内製は構造的差別化の芽があるが、競合（Cummins、Volvo）との定量的比較が不足。37%のMX penetrationという数値は能力の証拠として部分的に機能する"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "北米重型トラック市場（Class 8）でKenworth・Peterbiltの合算シェア約28%を長期維持するブランド・製品ポートフォリオ力",
+      "descriptive_label": "北米Class 8トラック市場における高シェアブランドポートフォリオ",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'Peterbilt and Kenworth achieved excellent market share, 27.9% in the U.S. and Canadian heavy-duty truck market in 2014. Retail sales totaled 250,000 units for the year.' / 'we're going to have -- if that market is there, we'll deliver more trucks in 2015 than we did last year'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Armstrong (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warn",
+            "reasoning": "28%シェアは「結果・実績」。このシェアを維持する能力（ブランド力、製品開発力、ディーラーネットワーク）の説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "27.9%という定量的シェアデータは明確"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "純粋競合（Freightliner/Daimler、Volvo/Mack）に対する差別化の説明がなく、シェアのみ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t (結果を原因として提示)",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "シェアは結果であり、能力の説明が乏しい",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "28%シェアは定量的だが典型的な「結果の提示」。シェアを維持するメカニズム（製品品質、TCO優位性、ディーラー網）の体系的説明がない"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "PACCAR Partsの独自アフターマーケット部品事業による高収益アニュイティ（2014年売上$3.1B、税前利益$497M記録更新）",
+      "descriptive_label": "PACCAR Parts独自アフターマーケット高収益事業",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'PACCAR Parts generated strong quarterly revenues of $789 million, an 8% increase compared to the same quarter of the prior year. PACCAR Parts quarterly pretax income was $130 million, an increase of 24%...For the full year, PACCAR Parts achieved record revenues of $3.1 billion and record pretax income of $497 million.' / 'The excellent results were driven by strong freight tonnage, high fleet utilization and the many innovative products and services offered by PACCAR Parts.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Armstrong (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "PACCAR Partsは既存トラック保有ベースへのアフターマーケット提供という「構造的な能力」。ただし説明が財務結果に偏っている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$3.1B売上・$497M利益という数値は明確。24%増益という成長率も示されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "既存のPACCAR トラックインストールベースへの専用部品提供はスイッチングコストを持つ構造的事業"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化—部分的)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合（Freightliner Parts等）との比較がなく、業界平均対比の優位性が不明確",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Parts事業は収益性が高く構造的だが、独立した競合パーツサプライヤー（Cummins等）に対してどう差別化するかの説明が不足。方向性は認めるが50%に留める"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "PACCAR Financial Servicesによるカスタマーファイナンス能力（2014年記録的税前利益$370M、過去2年間の延滞率1%未満）",
+      "descriptive_label": "PACCAR Financial Services低リスクファイナンス能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'PACCAR Financial Services fourth quarter pretax income was $96 million compared to $90 million earned last year. The excellent results benefited from growth in asset balances and continuing strong portfolio performance. For the full year, PACCAR Financial Services earned record pretax income of $370 million.' / Q&A: 'Past dues have been below 1% now for over 2 years'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Armstrong (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「延滞率1%未満を2年以上維持」は財務管理能力の証拠。結果でもあるが規律ある与信管理プロセスを示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "延滞率<1%（2年以上）という定量的裏付けあり。$370M記録利益も数値化されている"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "OEM系ファイナンス（Daimler Financial等）との比較がなく、純粋競合優位性が示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "延滞率<1%は業界比較がなく独自優位性として認定しにくい",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "OEMキャプティブファイナンスとして安定した実績は示されているが、独立系金融機関や競合OEMのファイナンス対比での差別化が不明確。50%"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "76年連続純利益達成という財務規律と保守的経営能力（業界固有の景気サイクルを通じた安定収益）",
+      "descriptive_label": "76年連続純利益達成の財務規律・保守的経営能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): '2014 was PACCAR's 76th consecutive year of earning net income.' / 'The positive contribution of all company segments enables PACCAR to attain the highest operating margins in our industry' / SG&A Q&A: 'one of our strengths as a company is rigorous oversight of our spending activities in our plants and warehouses and offices around the world'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Armstrong (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warn",
+            "reasoning": "76年連続黒字は「結果」であり、「能力」ではない。ただし「rigorous oversight」という表現は能力・プロセスへの言及として部分的に機能する"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "「highest operating margins in our industry」という主張があるが、具体的な業界平均との比較数値が不在"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "重型トラック市場は景気サイクル変動が大きい（market structure）。その中での安定収益はポジション的優位を示唆するが、構造的説明が不足"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t (結果を原因として提示—部分的)",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "76年連続黒字は典型的な「結果」の提示。能力の説明が乏しい",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "結果の積み上げが能力の証明として提示されているが、Rule 1-T 違反に近い。背後の能力（コスト管理、リスク管理、製品サイクル戦略）の説明なしで30%"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "オーストラリア（約25%シェア）・メキシコ（40%超シェア）での市場リーダーポジション維持能力",
+      "descriptive_label": "新興・成長市場での高シェアポジション維持（豪/メキシコ）",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CEO): 'Australia is a great market for Kenworth and DAF. We have about a 25% share of that market, continue to be the market leader.' / 'Mexico, again, we're the market leader there with over 40% share of that heavy-duty market.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "R. Armstrong (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warn",
+            "reasoning": "25%・40%シェアは結果。これを可能にした能力（ディーラーネットワーク、現地適応力）の説明が不在"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "具体的なシェア数値（25%、40%）が明確"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "純粋競合（Daimler、Volvo等）との差別化要因が示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t (結果の提示)",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "シェアは結果。維持する能力の説明なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "高シェアの定量的事実は示されているが、それを可能にする能力（ブランド力、流通網、製品適合）の説明がなく、rule_1_t違反。30%"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "2014年PACCAR: 売上$18.9B記録、純利益$1.36B（+16%）、Q4売上$5.1B記録。北米Class8 市場シェア27.9%、PACCAR MX-13エンジンUA/カナダ penetration 37%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "PACCAR Parts 2014年: 売上$3.1B記録、税前利益$497M記録。PACCAR Financial 2014年: 税前利益$370M記録、延滞率2年以上<1%。業界最高Operating Margin主張",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4, 5]
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "PACCARエンジン燃費優位性 → 顧客TCO削減 → トラック選好率向上 → MX penetration拡大 → 売上/マージン向上",
+      "descriptive_label": "エンジン燃費優位→顧客TCO→シェア成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "燃費→TCO削減→購買意欲は2ステップで直接的。燃料コストがトラック運行1-2位のコストという裏付けあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "方向性は妥当だが、実際の燃費差と顧客獲得への定量的接続が不在。TCO優位が確認できれば70%に上昇する可能性"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "北米市場シェア28% × 市場回復（250K-280K台）→ 台数・売上成長 → CAGR下支え",
+      "descriptive_label": "北米市場回復×高シェア→台数CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "市場規模×シェアは直接的。250K-280K台の市場見通しと28%シェアから台数推計可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "景気連動型成長。シェアの持続性が前提。シクリカル銘柄としての成長可視性は中程度"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "PACCAR Parts 部品事業 → 既存車両保有増加に伴う安定アニュイティ収益成長 → 利益成長のCAGR下支え",
+      "descriptive_label": "Parts事業アニュイティ→利益CAGR安定化経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "台数増加→Parts需要は1ステップで直接的。Parts Q4 +8%成長という実績で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "台数→Parts需要の因果は直接的で過去実績でも裏付けられている。70%"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "Financial Services低延滞率ポートフォリオ × 台数増加 → アセット残高拡大 → 利息収益成長",
+      "descriptive_label": "Financial Services台数連動→収益成長経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "台数→ローン残高→利息収益は2ステップで直接的。金利環境への依存あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "台数連動の構造は明確だが、金利環境・信用コスト変化への感応度があり条件付き。50%"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場（豪州・メキシコ）での高シェア × 市場成長 → 台数・売上成長への寄与",
+      "descriptive_label": "新興市場高シェア×市場成長→国際台数CAGR経路",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "市場成長×高シェアは直接的。メキシコの米国経済連動性に言及"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "豪州は鉱業依存リスク（CEO言及）、メキシコは米国連動。新興市場寄与は限定的で全体CAGR影響は小さい。30%"
+      }
+    }
+  ]
+}

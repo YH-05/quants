@@ -1,0 +1,354 @@
+{
+  "ticker": "SVT",
+  "transcript_source": "FY2015 Preliminary Results (2015-05-22) [Primary] + H1 FY2015 (2014-11-25) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014 Prelim", "H1 FY2015", "FY2015 Prelim"],
+    "transcripts_used": [
+      "201405_earnings_call.json (FY2014 Prelim)",
+      "201411_earnings_call.json (H1 FY2015)",
+      "201505_earnings_call.json (FY2015 Prelim - Primary)"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "SVT-001",
+      "claim_type": "competitive_advantage",
+      "claim": "英国規制水道事業における自然独占と規制ベースの安定収益構造（Regulated Capital Value）",
+      "descriptive_label": "自然独占×規制収益基盤（RCV）",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO Olivia Garfield): 'our RCV...over the last 5 years that's grown 21%, to leave ourselves with a GBP 7.7 billion closing balance.' 'we feel that we're in a strong position, ready for AMP6...confident we're in a position to, over the 5 years, to be able to outperform the regulatory settlements.' 'we've got the cheapest bills in the land...right through to 2020.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SVT-F001"],
+      "cagr_connections": ["SVT-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "自然独占・規制資産価値（RCV）は名詞属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規制事業の地域独占は法的・物理的に守られた構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "英国水道規制（Ofwat）という業界構造との深い合致"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "RCV GBP7.7B（5年間+21%）という具体的数値"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "英国規制水道の自然独占は極めて強力な構造的優位。RCV +21%という定量データ。業界構造との完全な合致。ただし競争優位性の観点からは「すべての英国水道会社が持つ」能力（ルール3-T: 相対的優位性が問われる）。70%。"
+      }
+    },
+    {
+      "claim_id": "SVT-002",
+      "claim_type": "competitive_advantage",
+      "claim": "規制許容コスト（Totex）に対するコスト効率化による規制超過収益（outperformance）能力",
+      "descriptive_label": "Ofwat規制コスト許容に対するoutperformance能力",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO): 'we've made really good progress on cost efficiencies. We're pleased to announce today the extra GBP 100 million that's now locked in, taking our total to GBP 300 million against the FD number of GBP 372 million.' 'confident we're in a position to, over the 5 years, to be able to outperform the regulatory settlements.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SVT-F002"],
+      "cagr_connections": ["SVT-C002"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コスト効率化能力（GBP300M/GBP372M Totex効率化）は能力・仕組みとして評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "GBP300M/GBP372M Totex（達成率81%）という具体的数値"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規制許容コストに対する系統的な効率化は構造的能力"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "他の英国水道会社（Thames Water、Anglian Water等）と比較したoutperformanceの証明が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GBP300M/GBP372M Totex効率化は具体的（達成率81%）。規制超過収益能力は定量的。ただし競合他社比較が不明。60%。"
+      }
+    },
+    {
+      "claim_id": "SVT-003",
+      "claim_type": "competitive_advantage",
+      "claim": "再生可能エネルギー自家発電能力（業界最高水準の自給率）によるコスト優位",
+      "descriptive_label": "再生エネルギー自家発電によるコスト優位",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO): 'we remain excited about the renewables opportunity. We've been leader of the pack for a while in terms of self-generation of energy...we generate over half of our needs in terms of equivalent energy generation...that's what we'll do between now and 2020.' 'we've chosen to spend GBP 190 million'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SVT-F003"],
+      "cagr_connections": ["SVT-C003"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "再生可能エネルギー自家発電能力は名詞属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "エネルギー自給率50%以上（2020年目標）、GBP190M投資額"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "'leader of the pack'という競合比較の言及あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "電力コストは水道事業のmajor costであり、自給率は構造的コスト優位につながる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "'leader of the pack'という相対的優位の言及（ルール3-T）と具体的数値（50%自給率目標、GBP190M）は評価できる。ただし競合の自給率との具体的比較数値がない。60%。"
+      }
+    },
+    {
+      "claim_id": "SVT-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Ofwat KPI（14指標）での業界上位パフォーマンス：汚水漏洩・汚染防止での最高格付け",
+      "descriptive_label": "規制KPI業界上位パフォーマンス（EA 4つ星格付け）",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO): '12 of the 14 Ofwat KPIs stable or improving.' 'internal sewer flooding...year-on-year performance improvement of 20%.' 'overall pollutions...further 18% performance improvement year-on-year.' H1 FY2015: '13 of the 14 Ofwat's key performance indicators' 'we've been the only 4-star-rated company by the EA'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SVT-F004"],
+      "cagr_connections": ["SVT-C004"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warning",
+            "reasoning": "KPI改善数は結果（パターンA-T リスク）。背後の運営能力が問われる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "内部汚水氾濫20%改善、汚染18%改善、EA 4つ星（業界唯一）という具体的数値"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "EA 4つ星は業界で唯一という相対的優位の証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "EA 4つ星（業界唯一）という相対的優位は評価できる。ただしKPI改善は結果（ルール1-T）。背後の運営能力説明が限定的。50%。"
+      }
+    },
+    {
+      "claim_id": "SVT-005",
+      "claim_type": "competitive_advantage",
+      "claim": "英国最低水道料金維持能力：コスト管理×規制交渉力による低料金ポジション",
+      "descriptive_label": "英国最低水道料金維持能力",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO): 'we've got the cheapest bills in the land, which is great, and that's right through to 2020.' H1 FY2015: 'Affordability is a key topic in the U.K. right now, and we're proud to have the lowest combined average build in the land and based on the drop's determination, we're confident of maintaining that for the next 5 years.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SVT-F005"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warning",
+            "reasoning": "最低料金は結果（パターンA-T）。それを実現するコスト管理能力が優位性"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "業界最低料金という相対的優位は具体的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "「業界最低」は言及されているが、競合との具体的な料金比較数値が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "業界最低料金は結果（ルール1-T、パターンA-T）。コスト管理能力の背後説明が不足。40%。"
+      }
+    },
+    {
+      "claim_id": "SVT-F001",
+      "claim_type": "factual_claim",
+      "claim": "FY2015: RCV GBP7.7B（5年間+21%）。AMP6 FD（Final Determination）確定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["SVT-001"]
+    },
+    {
+      "claim_id": "SVT-F002",
+      "claim_type": "factual_claim",
+      "claim": "FY2015: Totex効率化GBP300M/GBP372M（達成率81%）確定済み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["SVT-002"]
+    },
+    {
+      "claim_id": "SVT-F003",
+      "claim_type": "factual_claim",
+      "claim": "再生エネルギー自給率2020年目標50%以上。GBP190M投資予定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["SVT-003"]
+    },
+    {
+      "claim_id": "SVT-F004",
+      "claim_type": "factual_claim",
+      "claim": "FY2015: Ofwat KPI 14指標中12改善。EA 4つ星格付け（業界唯一）。汚水氾濫-20%、汚染-18%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["SVT-004"]
+    },
+    {
+      "claim_id": "SVT-F005",
+      "claim_type": "factual_claim",
+      "claim": "英国水道会社中で最低料金を2020年まで継続見込み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["SVT-005"]
+    },
+    {
+      "claim_id": "SVT-C001",
+      "claim_type": "cagr_connection",
+      "claim": "RCV成長 → 規制許容収益の拡大 → PBIT CAGR成長",
+      "descriptive_label": "RCV成長→規制許容収益→CAGR",
+      "source_advantage": "SVT-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "RCV成長→規制許容収益は1ステップ。RCV+21%（5年間）は開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 80,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規制事業のRCV→収益接続は1ステップで極めて直接的。開示データで検証可能。高い確信度。80%。"
+      }
+    },
+    {
+      "claim_id": "SVT-C002",
+      "claim_type": "cagr_connection",
+      "claim": "Totex outperformance → 超過収益（outperformance sharing） → CAGR上乗せ",
+      "descriptive_label": "Totex効率化→超過収益sharing→CAGR上乗せ",
+      "source_advantage": "SVT-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Totex outperformance→超過収益sharingは規制メカニズムとして定義されており2ステップで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GBP300M/372M（達成率81%）という具体的数値。英国水道規制のoutperformance sharingメカニズムは検証可能。70%。"
+      }
+    },
+    {
+      "claim_id": "SVT-C003",
+      "claim_type": "cagr_connection",
+      "claim": "再生エネルギー自給率向上 → エネルギーコスト低減 → Totex outperformance →収益CAGR",
+      "descriptive_label": "自給率向上→コスト低減→収益CAGR",
+      "source_advantage": "SVT-003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップの接続。GBP190M投資のROIが不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "3ステップだが各ステップの合理性は高い。エネルギーコストは水道事業の主要コスト。GBP190M投資のROI不明だが方向性は明確。60%。"
+      }
+    },
+    {
+      "claim_id": "SVT-C004",
+      "claim_type": "cagr_connection",
+      "claim": "KPI改善 → ODI（Outcome Delivery Incentives）報奨金受取 → 収益CAGR上乗せ",
+      "descriptive_label": "KPI改善→ODI報奨→収益上乗せ",
+      "source_advantage": "SVT-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "KPI改善→ODI報奨はOfwat規制メカニズムとして直接接続。2ステップ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ODI（Outcome Delivery Incentives）という規制メカニズムへの接続は直接的。内部汚水氾濫・汚染KPIは大きなODIを持つと明示。70%。"
+      }
+    }
+  ]
+}

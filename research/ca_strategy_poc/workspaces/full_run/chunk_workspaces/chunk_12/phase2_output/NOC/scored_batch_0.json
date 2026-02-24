@@ -1,0 +1,325 @@
+{
+  "scored_claims": [
+    {
+      "id": "NOC-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Global Hawk / HALE ISR Monopoly — only operational high-altitude long-endurance unmanned ISR in Western inventories",
+      "evidence": "Republic of Korea: contract for 4 Global Hawks. Japan: type-selected Global Hawk. NATO AGS program. International sales grew 20% to $3B in 2014. Unmanned programs expected double-digit growth 2015.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "ROK 4機、Japan type-selection、NATO AGS、3カ国の独立した主権顧客決定が定量的証拠"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "国防調達業界は長期プログラム・型式選定・維持支援でのロックインが業界構造。HALE ISR市場でNorthropのみが認定済み運用実績を持つ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "西側同盟国のHALE ISR調達という市場構造と、Northrop独占的なOperational HALE UASポジションの合致。高評価パターンIV（構造的市場ポジション）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "HALE ISR市場の独占的ポジション"
+        }
+      ],
+      "overall_reasoning": "HALE ISR市場（Global Hawk/Triton）は西側同盟国の調達において Northrop が実質的に独占している。ROK・Japan・NATO の独立した主権国による型式選定は、他社が代替品を持たないことの証拠。防衛業界の長期プログラムロックイン構造と合致。70%"
+    },
+    {
+      "id": "NOC-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Defense Program Lock-in via Long-Cycle Platform Relationships — $38.2B backlog",
+      "evidence": "Total backlog: $38.2B at year-end 2014, up 3% YoY. New awards: $25B in 2014. International backlog: 14%. B-2 sustainment, Global Hawk systems support, E-2D production ramp. F-35 component manufacturing.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "防衛プラットフォームへの組み込みは構造的（補完的ではない）。B-2・GlobalHawk・E-2D等の主要プラットフォームへの依存"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "国防調達は20-30年のライフサイクル。プログラム中途での切り替えは政府にとって莫大なコストとリスクを伴う"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$38.2B backlog（収益の約1.6倍）という定量的裏付け。2009年ダウンサイクル比較ではないが、長期収益可視性を示す"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "バックログの定量的裏付け"
+        }
+      ],
+      "overall_reasoning": "国防プラットフォームのスイッチングコストは業界で最も高い部類。$38.2Bバックロップは定量的な収益可視性を示す。B-2・Global Hawk・E-2D等の主要プラットフォームでの独占的地位が構造的優位を支持。70%"
+    },
+    {
+      "id": "NOC-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Technology Human Capital — ~32,500 Degreed Scientists/Engineers/Technologists with security clearances",
+      "evidence": "~50% of 65,000 employees (~32,500) are degreed scientists, engineers, mathematicians, or technologists. R&D +12% to $569M. Early-stage technology investments for 10+ year payoffs.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "セキュリティクリアランスを持つ高度STEM人材は防衛業での固有リソース"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Lockheed Martin・Raytheon・General Dynamicsも数万人規模の認定STEMエンジニアを保有"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "防衛プライムとしての大規模STEM人材保有は業界共通。純粋競合との差別化が不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "防衛プライム共通能力"
+        }
+      ],
+      "overall_reasoning": "認定技術者集団は防衛業での固有リソースだが、Lockheed Martin・Raytheon等の防衛プライムも同等規模を保有しており相対的差別化が限定的。50%"
+    },
+    {
+      "id": "NOC-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Sustained Segment Operating Margin Expansion in Budget Downturn — record 12.2% pension-adjusted margin",
+      "evidence": "2014 segment operating margin: 12.9% (12.7% ex-settlements, +20bp vs 2013). ES margin: 16.5%. Pension-adjusted: 12.2% (new record). EPS +17% to $9.75 through 7-year budget decline.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "7年間の予算削減下でのマージン維持・改善という定量的証拠"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Lockheed Martin・General Dynamics・Raytheonも同様のマージン維持を達成"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "予算削減下でのマージン維持は防衛プライム全体に見られる傾向"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界共通の達成"
+        }
+      ],
+      "overall_reasoning": "マージン拡大は定量的に明確だが、競合防衛プライムも同様の軌跡を示しており、Northrop固有の差別化とは言い難い。50%"
+    },
+    {
+      "id": "NOC-005",
+      "claim_type": "competitive_advantage",
+      "claim": "International Defense Business Acceleration — 20% growth to $3B (13% of revenue)",
+      "evidence": "International sales 2014: $3B (+20%). International backlog: 14%. Saudi Arabia MNNG: $900M. UK cyber 7-year. Japan/ROK Global Hawk.",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": false,
+          "reasoning": "国際展開の加速は戦略的意思決定（ルール8=戦略≠優位性）"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Lockheed Martin・Raytheon・General Dynamicsも国際展開を同様に推進"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "国際売上成長は戦略実行の結果であり構造的優位性ではない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_F",
+          "adjustment": -0.2,
+          "reasoning": "戦略≠優位性の混同"
+        }
+      ],
+      "overall_reasoning": "国際防衛展開は戦略（ルール8）。成長実績（+20%、$3B）は結果。Lockheed Martinは国際売上がより大きく、差別化を示せていない。30%"
+    },
+    {
+      "id": "NOC-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Capital Deployment Discipline — 160% of FCF returned to shareholders",
+      "evidence": "FCF: $2B+. Returned $3.2B (160% of FCF). Buybacks: 21.4M shares for $2.7B. Dividend +15%.",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": false,
+          "reasoning": "資本配分は経営施策であり構造的競争優位ではない（ルール8）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "FCF比160%の株主還元は財務規律の結果。優位性の源泉ではない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通の資本配分施策"
+        }
+      ],
+      "overall_reasoning": "資本配分規律は経営施策（ルール8）。Lockheed Martin・Raytheon等の防衛プライムも同様の高い株主還元を実施しており差別化にならない。30%"
+    },
+    {
+      "id": "NOC-007",
+      "claim_type": "competitive_advantage",
+      "claim": "UK Cybersecurity IDIQ — 7-Year Government Contract",
+      "evidence": "UK government: 7-year IDIQ for cybersecurity (data security, information assurance)",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "単一のIDIQ受賞は能力の証明ではなく、競争入札での勝利という実績"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Raytheon・SAIC・Leidos・Booz Allenも主要な政府サイバーセキュリティプロバイダー"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "サイバーセキュリティ分野は競争激しく、この単一の受注は構造的優位性の証明として不十分"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.2,
+          "reasoning": "競争的なサイバー市場での単一受注"
+        }
+      ],
+      "overall_reasoning": "単一のIDIQ受賞はサイバー分野での執行能力を示すが、IDIQ構造ではタスクオーダーごとに競争が発生する。Raytheon・SAIC等との差別化が不明で構造的モートの証明として不十分。30%"
+    },
+    {
+      "id": "NOC-008",
+      "claim_type": "factual_claim",
+      "claim": "2014 financial performance: sales ~$24B, segment OM 12.9%, EPS $9.75 (+17%), FCF $2B+, international $3B (+20%)",
+      "evidence": "FY2014 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NOC-009",
+      "claim_type": "cagr_connection",
+      "claim": "2015 EPS guidance $9.20-$9.50, international revenue target 15%",
+      "evidence": "2015 guidance: EPS $9.20-$9.50, sales $23.4-$23.8B, FCF $1.7-$2.0B",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "ガイダンスは具体的数値で開示されており検証可能。2014比較ベースがある"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "ガイダンスとしての妥当性はあるが、2015EPS $9.20-9.50は2014実績$9.75からの小幅減（一時的要因除外後）であり、長期CAGR接続としては限定的。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 3,
+      "40-50": 2,
+      "60-70": 2
+    },
+    "gatekeeper_applied": true
+  }
+}

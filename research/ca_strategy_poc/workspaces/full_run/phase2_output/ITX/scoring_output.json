@@ -1,0 +1,134 @@
+{
+  "ticker": "ITX",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Inditex FY ends January. Q3 FY2015 (Dec 2015 call) = effective annual call. No standard Q4 annual call within PoiT. Applied equivalent weight to Q4 annual (+5% adj). Multiple quarterly transcripts from 9M2014/Q4FY2014/9M2015."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "週2回以上のグローバル全店舗配送システムと2-48時間顧客受取可能な中央在庫一元管理モデル",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 週2回以上のグローバル配送と中央在庫一元管理という仕組みは能力として正当に評価。dogmaルール11（業界構造との合致）: ファストファッション業界において在庫鮮度・補充スピードは競争優位の核心要因であり業界構造と合致。dogmaルール4（定量的裏付け）: 週2回以上・2-48時間受取という定量的指標あり。dogmaルール3（相対的優位性）: H&Mとの補充頻度比較は暗示されるが明示的な定量比較はない。KB3-T（ORLY#1 DIFM補充頻度 70%、AZO対比あり）のアナロジーで60%。Inditex Q3がde facto年次として+5%調整も、H&Mとの定量比較がないことで相殺。",
+      "confidence_adjustments": [
+        {"reason": "Q3 FY2015が事実上の年次開示として評価", "adjustment": 5},
+        {"reason": "H&M等との補充頻度の定量的比較がない", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "高頻度補充能力 → 鮮度の高い商品提供 → LfL成長率維持（14-16%ローカル通貨ベース）→ CAGR",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム）: 高頻度補充→商品鮮度→LfL成長は2-3ステップで直接的。ローカル通貨LfL 10-16%は検証可能な開示データ。KB2-TパターンII-T（直接的CAGRメカニズム）の条件を満たす。Q3がde facto年次として追加評価。",
+      "confidence_adjustments": [
+        {"reason": "LfL成長率の定期開示で検証可能", "adjustment": 0},
+        {"reason": "通貨変動（EUR安、BRL安等）のヘッドウインドが考慮されていない", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "オムニチャネル統合型販売プラットフォーム：店舗内注文・店舗受取・店舗返品が可能な完全統合モデル",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_F_strategy_confusion",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール8（戦略≠優位性）: オムニチャネル統合は業界共通の戦略的投資領域であり、InditexのSC優位性と組み合わさると強化されるが単独では補完的。dogmaルール3（相対的優位性）: H&M等も同様にオムニチャネル投資中であり、2015年時点では差別化としての競争優位性が確立されていない。KB2-TパターンF（戦略との混同）。Q3 annual相当からの発言だが、確立された優位性とは言い難い。",
+      "confidence_adjustments": [
+        {"reason": "Q3 FY2015（de facto年次）", "adjustment": 0},
+        {"reason": "パターンF-T適用（戦略と優位性の混同）", "adjustment": -10},
+        {"reason": "業界共通の投資方向（H&M等も同様）", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "88市場にわたるグローバル分散型店舗ネットワークにより、特定市場への為替依存リスクを軽減",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_A_result_as_cause",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 88市場展開は結果。そのグローバル展開を可能にする能力（現地適応力、ロールアウト速度）の説明が薄い。dogmaルール4（定量的裏付け）: H&Mとの市場数比較（88対約60）はある程度定量的。dogmaルール8（戦略≠優位性）: グローバル展開は戦略であり、それを支える能力が優位性。KB2-TパターンA（結果を原因とする）。KB3-T（COST#5 国際展開 20%）のアナロジーで低めに評価するが、H&Mとの市場数比較で若干押し上げ。",
+      "confidence_adjustments": [
+        {"reason": "Q3 FY2015（de facto年次）", "adjustment": 0},
+        {"reason": "パターンA-T適用（88市場は結果）", "adjustment": -10},
+        {"reason": "現地適応能力の説明不足", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "88市場グローバル展開 → 各市場でのシェア<1%（大きな成長余地） → スペース拡張によるCAGR",
+      "final_confidence": 0.55,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム）: 「ほとんどの市場でシェア<1%」という開示は成長余地の定量的根拠。スペース拡張ガイダンス（+8-10%/年）と組み合わせると2ステップで接続可能。dogmaルール4（定量的裏付け）: シェア<1%という定量開示あり。KB2-TパターンII-T（直接的CAGRメカニズム）の条件をある程度満たす。",
+      "confidence_adjustments": [
+        {"reason": "シェア<1%という定量開示は成長余地の客観的指標", "adjustment": 0},
+        {"reason": "市場ごとの成熟度差（スペイン等3市場は除外）を考慮", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Zaraを筆頭に Bershka, Massimo Dutti, Pull&Bear 等の多概念（8ブランド）ポートフォリオによる幅広い顧客セグメント獲得",
+      "final_confidence": 0.40,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: マルチコンセプトという構造は能力の一側面だが、各ブランドを管理する能力の説明が薄い。dogmaルール11（業界構造との合致）: H&M（単一ブランド中心）との比較でマルチコンセプトは相対的優位。dogmaルール4（定量的裏付け）: Zara約2/3、若者向け約1/3の構成比は定量的。ただしポートフォリオ管理力の定量比較なし。KB2-TパターンIV（構造的市場ポジション）。Q3 de facto年次から、H&Mとの比較が暗示される。",
+      "confidence_adjustments": [
+        {"reason": "Q3 FY2015（de facto年次）", "adjustment": 0},
+        {"reason": "ポートフォリオ管理能力の具体的説明なし", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Inditexは全店舗への週2回以上のグローバル配送、顧客受取まで2-48時間を実現。中央在庫方式を採用",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "9M 2015: 売上 EUR 14.7B (+15%)、EBITDA EUR 3.3B、純利益 EUR 2B。粗利率 58.8%。ローカル通貨LfL 10.5-16%成長",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Inditexは88市場展開。ほとんどの市場でマーケットシェアは1%以下（スペイン、ポルトガル、ギリシャを除く）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Inditexは8ブランド（Zara約2/3、若者向けブランド群約1/3）。2015年に48市場で新規出店",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.46,
+  "score_distribution": {
+    "competitive_advantage": {"count": 4, "avg": 0.40},
+    "cagr_connection": {"count": 2, "avg": 0.575}
+  }
+}

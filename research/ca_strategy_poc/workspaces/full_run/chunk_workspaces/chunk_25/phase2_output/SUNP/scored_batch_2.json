@@ -1,0 +1,49 @@
+{
+  "ticker": "SUNP",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": [11, 12],
+  "scored_claims": [
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Sun Pharma FY2014全年業績：売上INR 16,004crores（+42%）、EBITDA INR 7,120crores（EBITDA率45%）。米国売上USD 1,620M（+43%）",
+      "evidence": "Q4 FY2014 CFO発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。FY2014全年業績はCFOが開示した財務事実。EBITDA率45%という高収益性は確認可能。70%"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Taro業績FY2015：売上USD 863M（+14%YoY）、純利益USD 484M（+39%YoY）。Q4 FY2015純利益USD 152M（+70%）",
+      "evidence": "Q4 FY2015 CFO Sudhir Valia発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。Taro業績はCFOが開示した事実。+14%売上成長・+39%純利益成長は検証可能。70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

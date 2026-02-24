@@ -1,0 +1,249 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "PGR-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "ProgressiveのSnapshotテレマティクスプログラムは累計$2Bの保険料ブック規模に達し、15年以上の運用実績（2015年比）を持つ。行動データに基づくリスク細分化能力は競合他社が15年かけても構築できない独自の損害保険定価プロセスを形成している。",
+      "source_quarter": "Q1 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "SECONDARY源（Q1 2014）のため-10%調整。ただし15年リードタイムと$2Bブック規模という定量証拠は強固。KB2-III（能力>結果）に該当",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "15年間のテレマティクス蓄積データと$2Bブック規模はProcess Powerの定量証拠（KB2パターンIII）。競合が今すぐ開始しても15年分のデータ積み上げが必要という時間的優位性は強力。ただしSECONDARY源からの情報であり確信度調整後0.4。State Farm等大手の参入も検討が必要（rule11）。"
+    },
+    {
+      "claim_id": "PGR-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Progressiveは損害率・費用率の合計Combined Ratio（コンバインドレシオ）96%を維持する規律ある引受規律を持ち、価格競争時でも利益率を犠牲にしない厳格なコスト管理能力が業界で卓越している。",
+      "source_quarter": "Q1 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "SECONDARY源。96%コンバインドレシオは業界平均比較が必要（rule07）。引受規律は業界共通概念（rule11）。調整後0.4",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "引受規律（CR96%維持）は構造的市場ポジション（KB2パターンIV）の証拠。ただし損害保険業界での96% CRが業界最低水準かどうかの比較データなし（rule07）。SECONDARY源からの情報で確信度調整後0.4。Progressive独自のリスク定価モデルとの組み合わせで意味を持つ。"
+    },
+    {
+      "claim_id": "PGR-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "ProgressiveはIT基幹システムを80%再構築中であり、リアルタイムのクレーム処理・代理店ポータル統合・テレマティクスデータ連携を実現する次世代オペレーティングプラットフォームを構築している。完成後は競合が数年かけて追いつけないIT処理優位性を持つ。",
+      "source_quarter": "Q2 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule01_capability_not_result",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "reason": "IT再構築は戦略的投資（パターンF）であり完成前の能力主張（rule01）。SECONDARY源でさらに-10%。完成後の優位性は将来的",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "IT基幹システム再構築80%完成はProcess Powerの潜在的証拠だが、完成前の段階（KB2パターンF：戦略混同）でありまだ実現していない能力（rule01）。SECONDARY源からの情報。完成後の競争優位性は評価できるが現時点では「投資中」の段階。30%。"
+    },
+    {
+      "claim_id": "PGR-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "ProgressiveはHome Advantageプログラムによって自動車保険顧客を住宅保険にクロスセルし、多品目契約者のスイッチングコストを高めている。保険料バンドルによる値引きと複数証券管理の利便性が解約障壁を形成する。",
+      "source_quarter": "Q3 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule06_structural_vs_complementary",
+        "rule11_industry_structure_fit"
+      ],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "マルチライン保険クロスセルは業界共通戦略（パターンB）。State Farm、Allstate等も同様。SECONDARY源でさらに-10%",
+          "delta": -0.2
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "マルチライン保険クロスセルは業界共通の戦略（KB2パターンB）。Progressive特有ではなくState Farm/Allstate等大手が全て取り組んでいる。Home Advantageは後発参入であり既存プレイヤーのコピー（rule11）。SECONDARY源で最終0.3。"
+    },
+    {
+      "claim_id": "PGR-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Progressiveはリアルタイムのデータセグメンテーション能力（即時損失データ→定価調整）を持ち、競合比で3-6ヶ月早くリスクに対応できる独自の保険料改定プロセスを維持している。このプロセスは10年以上の蓄積データで裏打ちされた予測精度を持つ。",
+      "source_quarter": "Q1 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule01_capability_not_result",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "リアルタイムデータセグメンテーションはProcess Power能力の証拠（KB2-III）。ただし競合比較の定量データなし（rule04）。SECONDARY源で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "リアルタイムデータセグメンテーション→即時定価調整というプロセス能力はProcess Power（KB2パターンIII）の証拠。Snapshotテレマティクスとの組み合わせでリスク細分化の優位性が強化される。ただし競合比較データなく（rule04）、SECONDARY源。調整後0.4。"
+    },
+    {
+      "claim_id": "PGR-006",
+      "claim_id_int": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "ProgressiveはGEICO（直販）・State Farm（代理店）という2つの異なるチャネルモデルと正面から競合しながら、直販とエージェント双方をサポートするハイブリッドモデルで成長している。既存の純粋代理店・純粋直販競合が模倣すれば自社チャネル政策と矛盾するため模倣困難。",
+      "source_quarter": "Q2 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern_matched": "pattern_C_causal_leap",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "ハイブリッドチャネルモデルはCounter-Positioningの側面があるが、定量証拠なし（パターンC：因果的飛躍）。SECONDARY源で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.2,
+      "scoring_rationale": "ハイブリッドチャネルモデルの論点はCounter-Positioningとして興味深いが、チャネル戦略から競争優位への因果関係が不明（KB2パターンC）。定量証拠なし（rule04）でSECONDARY源。GEICO/State Farmがハイブリッドに移行できないとする主張の根拠が弱い（rule07）。20%。"
+    },
+    {
+      "claim_id": "PGR-007",
+      "claim_id_int": 7,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Progressiveは国内損害保険（自動車）で市場シェア9-10%（保険料規模$2B+）を維持し、規模によるマーケティング費用比率低下と保険料ファンディング効率を享受している。",
+      "source_quarter": "Q2 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "市場シェアは結果指標（パターンA）。規模の経済の証拠として弱い。SECONDARY源で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.2,
+      "scoring_rationale": "市場シェア9-10%は規模の証拠だが結果指標（KB2パターンA）。Scale Economicsの議論として規模→コスト効率の具体的証拠が不足（rule04）。SECONDARY源、定量比較データなし（rule07）。20%。"
+    },
+    {
+      "claim_id": "PGR-008",
+      "claim_id_int": 8,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "ProgressiveのSnapshotテレマティクスは2015年時点で400万人超の顧客データを保有し、この膨大な行動データ（加速度・制動・走行時間帯等）の統計分析能力が業界の中で最も洗練されたリスク定価モデルの基盤を形成している。",
+      "source_quarter": "Q2 2015",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "400万人超データという定量規模はProcess Power能力証拠（KB2-III）。ただし競合（Allstate、Liberty Mutual）も同様プログラム展開中（rule11）。SECONDARY源-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "400万人超のテレマティクスデータはProcess Power能力の証拠（KB2パターンIII）。15年以上の先行優位は評価できるが、AllstateのDrivewise等競合のキャッチアップが進んでいる（rule11）。SECONDARY源で調整後0.4。PGR-001と組み合わせで評価。"
+    },
+    {
+      "claim_id": "PGR-009",
+      "claim_id_int": 9,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "Progressiveは自動車保険のコアビジネスで安定した引受利益（CR96%前後）を維持しながら、Snapshotプログラムによる差別化定価でリスク選別に優れた顧客を獲得し続けることで、長期的なEPS成長（アンダーライティング利益+投資利益）の複合成長を達成している。",
+      "source_quarter": "Q1 2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_pattern_matched": "pattern_II_direct_cagr_mechanism",
+      "raw_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "reason": "CAGR接続として引受利益→EPS成長のメカニズムを示すが、定量的CAGR数値なし（rule04）。SECONDARY源で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "CAGR接続としての引受利益→EPS成長メカニズム（KB2パターンII）。ただし具体的CAGR数値が示されていない（rule04）。SECONDARY源からの情報で調整後0.3。Snapshotを通じた優良顧客選別→利益率向上のロジックは理解できるが証拠の強度が不足。"
+    },
+    {
+      "claim_id": "PGR-010",
+      "claim_id_int": 10,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Progressiveの2015年上半期の保険料成長率はプライベートパッセンジャー自動車保険業界全体の成長率を上回っており、競争環境が激しいにもかかわらず市場シェアを拡大している。",
+      "source_quarter": "Q2 2015",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "業界成長上回りのシェア拡大は結果指標（パターンA）。SECONDARY源で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.2,
+      "scoring_rationale": "業界成長率を上回るシェア拡大は事業成長の結果（KB2パターンA）。競争優位性の間接証拠にはなるが、直接の構造的優位証拠ではない（rule01）。SECONDARY源で0.2。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "40-50": 4,
+      "30-40": 3,
+      "20-30": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

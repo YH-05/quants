@@ -1,0 +1,286 @@
+{
+  "ticker": "MC",
+  "transcript_source": "FY2014 Full Year Results (2015-02-03) [Primary]; H1 2015 Results (2015-07-28) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014 Full Year", "H1 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Louis Vuittonのブランド「デザイラビリティ」資産：Monoグラムキャンバスの神話的地位・Nicolas Ghesquière起用による創造的再生・欲求不満需要（生産能力不足）",
+      "descriptive_label": "Louis Vuittonブランド・デザイラビリティ（Branding + Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Bernard Arnault): 'Louis Vuitton has encountered excellent response to Nicolas Ghesquière...The Monogram fabric...It's like the blue sky. When you see the blue sky, you're immediately optimistic, you want it to last...We did a case with Cindy Sherman...It cost EUR 130,000. Well, this case was sold out in a fortnight...Everything's out of stock...some of the products indeed were not delivered, owing to a shortage of production capacity.' H1 2015 CFO Guiony: 'Louis Vuitton is benefiting from a strong creative dynamic...Nicolas Ghesquière shows in emblematic locations have been very well received across key markets.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ブランドアーキテクチャ・クリエイティブディレクター選定・製品ポートフォリオ管理という仕組みを評価。EUR130,000ケースが2週間で完売という事実は結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "EUR130,000ケース2週間完売・生産能力不足で納期遅延という欲求不満需要の具体的証拠。H1 2015 Fashion&Leather+5%有機成長・Q2で10%加速"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "100年以上のMonogramブランド資産は複製不可能。Nicolas Ghesquière等のトップクリエイターを引き寄せる磁力自体が競争優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Hermes、Chanel、Gucci（Kering）との直接競合でLVが「世界#1ブランド」を目標として明示。中国人客でのグローバル+10%成長はプレミアム需要の堅調さを証明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t + pattern_IV_t",
+        "confidence": 80,
+        "confidence_adjustments": [],
+        "overall_reasoning": "完売・欲求不満需要という事実は競争優位の最も説得力ある証拠の一つ。Ghesquière起用後のQ2加速（有機成長10%）が変革成功を実績で裏付け"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Louis Vuitton デザイラビリティ → 中国人客グローバル需要+10%→ Fashion&Leatherの利益成長加速 → 連結CAGR",
+      "descriptive_label": "LVデザイラビリティ→中国人需要→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：LVブランド創造力→中国人含む世界的欲求不満需要→Fashion&Leather利益+12%（H1 2015）。中国人客グローバル+10%（H1 2015）が実績"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算・半期決算両方での定量的言及"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "中国本土・香港・マカオは-10%と低迷。グレーマーケット・反腐敗・価格差が影響しており短期リスクあり",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "中国人客のグローバル+10%はGater China下振れを補って余りある。長期的にはLV消費が中国→欧州・日本にシフトしており総需要は堅調"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Sephora：全展開地域での市場シェア拡大・デジタル先駆者ポジション（48時間保証配送・Click&Collect）・米国コスメ eコマース#1",
+      "descriptive_label": "Sephoraオムニチャネル小売優位性（Counter-Positioning + Network Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Arnault): 'Sephora here, which is experiencing double-digit profitable organic revenue growth. We've opened in new countries, Australia and Indonesia in 2014, and in all countries where we're present, we're gaining market share. We're far and away #1 in France. We expect to be #1 in the U.S. market. We're the leader of Internet sales for cosmetics in the United States.' H1 2015 CFO Guiony: 'Sephora continues to grow strongly online, where it has been a digital pioneer and leader for some time due to consistently rolling out new services such as guaranteed delivery in 48 hours in U.S. and Click & Collect service in France...Sephora had a very, very solid first half, with strong top line and bottom line advances...about 8% like-for-like.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "デジタル先駆者・オムニチャネル・サービス革新（48時間配送等）という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2桁有機成長・全展開地域でシェア拡大・米国コスメeコマース#1・LFL約8%（H1 2015）という複数の定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "デジタルパイオニアとしての先行者利益。48時間配送・Click&Collectの継続投資はロイヤルティ構築を加速"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Ulta Beauty（米国）との競合で、米国コスメeコマース#1・フランスで圧倒的#1・全展開市場でシェア拡大という明確な優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_IV_t + pattern_V_t",
+        "confidence": 75,
+        "confidence_adjustments": [],
+        "overall_reasoning": "全展開地域でのシェア拡大という事実は構造的競争優位の強力な証拠。米国コスメeコマース#1・LFL8%は数値で裏付けられている"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Bulgari宝飾品の再活性化：アイコニックライン（Lvcea・Serpenti）の成功・Watches&Jewelry部門OP+91%（H1 2015）・長期20%マージン目標に向けた軌道",
+      "descriptive_label": "Bulgari宝飾品再活性化（Branding + Process Power）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Arnault): 'Bulgari had enjoyed significant improvement, both in revenue and profit...outstanding performance in watches for Bulgari.' H1 2015 CFO Guiony: 'profit from recurring operations rose a very strong 91%, reaching EUR 205 million...primary factor driving this performance is jewelry, particularly Bulgari, fueled by the success of its highly desired iconic lines...Bulgari is showing very, very strong momentum...We are even exceeding a little bit our initial forecast on margin improvement...long term...less than [10 years]...we are on track.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "宝飾品デザイン・アイコニックライン育成・店舗展開能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "OP+91%（H1 2015）・当初予測を上回る利益率改善・20%長期マージン目標への軌道という具体的データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Bulgari買収（2011年）後の統合・投資が結実するまでのランプアップ。LVMHの組み込み効果（グローバル流通・財務力）は競合が模倣困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "2014年の周年記念マーケ集中という比較ベース効果があり+91%の一部は反動増。持続的成長の確認は必要",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "OP+91%・当初予測超えという実績は真の優位性再生の証拠。20%長期マージン目標への軌道と中国人需要のBulgari向け強さが長期テーゼを支持"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "LVMHの分散型企業家精神経営モデル：65+ブランドを独立した企業家として経営・「勝つ公式」発見後に集中投資するブランド育成哲学（Céline事例）",
+      "descriptive_label": "分散型企業家文化・ブランド育成哲学（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Arnault): 'LVMH is an ensemble of companies managed quite independently, managed by entrepreneurs who feel the owners of their companies...this entrepreneurial spirit, which allows us to attract the best talents in the market...When you have a brand-new brand, Fresh, for instance, initially, well, it was something of a challenge. But thanks to the efforts made by Toni and his team, now this is a very successful business, especially in Asia...the main concept for us is to make our customers happy, to increase asset desirability...We don't see right now any brand to divest.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "分散型企業家モデル・ブランド育成哲学という仕組みを評価。「勝つ公式」発見→集中投資は再現可能なフレームワーク"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "Kering（Gucci等）も同様の分散型ブランド管理を採用。相対的差別化の証拠はLVMH規模（65+ブランド）にある"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Céline（15年かけて公式発見）・Bulgari（3年で+91%利益）という成功事例は説得力あるが、Marc Jacobs・Donna Karanの苦境も同モデル下で発生"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 55,
+        "confidence_adjustments": [
+          {
+            "reason": "Marc Jacobs・Donna Karanという大型ブランドが苦境にあり、分散型モデルの万能性に疑問符",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "65ブランド以上の分散型経営は規模と多様性の強みを持つが、Marc Jacobs等の問題がモデルの限界を示す。哲学的な主張で定量的証拠が限定的"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Hennessy Cognacのグローバル分散需要：中国デストッキング逆風下でも世界Cognac業界-4%に対しHennessy+0.5%のシェア拡大。米国ダブルディジット成長",
+      "descriptive_label": "Hennessy Cognacグローバルブランド優位性（Branding + Network Economies）",
+      "evidence_from_transcript": "FY2014 Annual Q&A (Christophe Navarre, Wines&Spirits CEO): 'shipments are down 4% in the Cognac industry, whereas Hennessy's up 0.5%. So market share gain of Hennessy over its peers, so we're very well positioned to grow significantly in the U.S. As we mentioned last year, double-digit growth, okay, with younger qualities...The Moët Hennessy strategy is to be evenly spread across the 4 continents, to be poised optimistically and to experience a significant rebound in 2015.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Wines&Spirits Division CEO",
+      "section": "q_and_a",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "グローバル分散流通・ブランド管理能力という仕組みを評価。中国下振れを他地域で補填する戦略は設計された構造"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "業界-4%対比Hennessy+0.5%という明確なシェア拡大データ。米国ダブルディジット成長という定量実績"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Rémy Martin（Rémy Cointreau）・Martell（Pernod Ricard）との競合でHennessyが逆境下でシェア拡大という明確な相対優位の証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_IV_t",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "中国のデストッキングがH1 2015も継続。X.O.の中国selloutは依然下振れており短期逆風が長期化するリスク",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "業界逆境下でのシェア拡大という事実は構造的競争優位の強力な証拠。米国・4大陸分散戦略は中国依存リスクを緩和する設計"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 売上EUR30B超（初突破）、有機成長+5%、純利益過去最高（Hermès処理でEUR5.6B +64%）、FCF EUR2.83B（過去最高水準）、負債比率21%。配当EUR3.20/株 (+3%)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 4]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 Fashion&Leather: 有機+3%（通貨-5%影響で報告-2%）。Q4 U.S.+13%・欧州+5%。LV香港・マカオはマイナス。LVマージン安定。H1 2015 Fashion&Leather: 有機+5%・Q2で+10%加速・OP+12%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Sephora FY2014: 2桁有機成長・2桁OP成長・全展開国でシェア拡大・米国eコマース#1・豪州・インドネシア新規出店。H1 2015: LFL約8%（全地域黒字）・中東・米国・フランスで特に好調",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Bulgari FY2014: 大幅な収益・利益改善（時計・宝飾品とも好調）。H1 2015 W&J: OP+91%(EUR205M)、うち大半がBulgari。当初利益率予測を上回る改善。長期20%マージン目標への軌道",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Hennessy FY2014: 業界出荷-4%に対しHennessy+0.5%（シェア拡大）、米国2桁成長。中国販売店デストッキングがH1 2015も継続（X.O.中国sellout下振れ）。4大陸分散戦略により回復見込み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

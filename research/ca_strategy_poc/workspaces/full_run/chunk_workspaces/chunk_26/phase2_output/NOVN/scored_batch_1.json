@@ -1,0 +1,77 @@
+{
+  "ticker": "NOVN",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "claim_id": "NOVN_006",
+      "claim_type": "competitive_advantage",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "Novartisは新興市場（中国・ブラジル・ロシア・インド）で新興市場製薬第2位（IMS）のポジションを維持し、GDP成長を上回る市場浸透率を実現する組織・商業化能力を持つ。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "PARTIAL - 新興市場商業化能力の主張",
+        "rule04": "PASS - IMS 新興市場#2という市場ポジション",
+        "rule07": "FAIL - Pfizer、Roche等の新興市場展開との具体的比較なし",
+        "rule11": "FAIL - 大手製薬各社はすべて新興市場展開に注力しており業界共通戦略"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["B-T (業界共通能力: 新興市場展開はBig Pharma全社の共通戦略であり差別化要因ではない)", "A-T (結果を原因として: 新興市場#2はポジション結果であり能力の証拠として弱い)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule11 (業界構造との適合)", "rule07 (競合との差別化)"],
+        "conclusion": "新興市場展開はBig Pharma全社の戦略であり差別化要因とはいえない。IMS #2もPfizer (#1)との差異が小さい可能性がある。パターンB適用。"
+      },
+      "scoring_rationale": "新興市場#2というポジションは業界共通戦略の結果。パターンB/A適用。競合との明示的差異なし。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "NOVN_007",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "LCZ696（心不全）+ Cosentyx（乾癬/PsA/AS）+ brexpiprazole承認 → 2015-2017の成長製品ポートフォリオ拡充 → Diovan特許切れ収益侵食（USD2.5B/年）を補填して売上CAGR low-to-mid single digitを維持。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - LCZ696 20%死亡率低下データ、Diovan侵食USD2.5B/年という定量的根拠",
+        "rule06": "PASS - 新製品→成長維持のメカニズムは製薬業界の標準的なCAGR接続"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["II-T (直接的CAGRメカニズム: 新製品群→特許切れ補填→CAGR維持という明確な2ステップ)", "I-T (定量的差別化: Diovan侵食USD2.5B/年、LCZ696臨床データ)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)"],
+        "conclusion": "LCZ696の20%死亡率低下という強力な臨床データとDiovan侵食$2.5B/年の定量化が組み合わさった具体的なCAGR接続。製品名（LCZ696、Cosentyx）も特定。"
+      },
+      "scoring_rationale": "LCZ696の臨床エビデンスとDiovan侵食$2.5B/年の定量化による明確なCAGR接続。パターンII/I適用。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "NOVN_008",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "NovartisのFY2013売上高はUSD58B規模（+4% constant currency）。成長製品が全売上の31%（$18B）を占め、15%増加。新興市場売上25%（+10%）。純利益USD9.3B（+7% CC）。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 複数の定量的財務指標（$58B、+4%、$18B/31%、+15%、+10%、$9.3B、+7%）",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["事実確認型クレームとして評価"],
+        "conclusion": "財務数値は検証可能な事実。一次ソースの年次決算数値。"
+      },
+      "scoring_rationale": "事実確認型クレーム。一次ソースの具体的財務指標。70%。",
+      "final_confidence": 0.7
+    }
+  ]
+}

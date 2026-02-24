@@ -1,0 +1,256 @@
+{
+  "scored_claims": [
+    {
+      "id": "ANSS_001",
+      "claim": "ANSYS は Cummins（25 年以上の顧客）のような大企業と多年度エンタープライズライセンス契約を締結しており、シミュレーション技術が製品開発プロセスの中核（Analysis-led Design）に深く統合されている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "25 年間の顧客関係とエンタープライズライセンス移行という Switching Costs の仕組みを評価。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "25 年という顧客継続期間・多年度契約への移行トレンドという定量的裏付けあり。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "Analysis-led Design への深い統合は構造的 Switching Costs。切り替えには設計プロセス全体の再構築が必要。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "設計プロセスへの深い統合という能力を評価。高評価パターン III 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "25 年間の顧客関係は Switching Costs の強さの直接的証拠。Cummins の Analysis-led Design への統合は設計プロセス全体の再構築なしでは切り替え不可能。多年度エンタープライズライセンス移行トレンドは Switching Costs の強化を示す。70%。"
+    },
+    {
+      "id": "ANSS_002",
+      "claim": "ANSYS は 36,000 コア以上での認定を受けた唯一のシミュレーションプロバイダーであり、ANSYS 16.0 ではクラウド対応 HPC、Multiphysics、Workbench プラットフォームにより、数日かかった計算を数分で実現する。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「唯一の 36,000 コア認定プロバイダー」という具体的な技術能力（仕組み）。45 年以上の R&D 投資の産物。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "36,000 コア認定・「数日→数分」という定量的技術差別化。検証可能な技術指標。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "「唯一（only）」という競合との明確な差別化表現。COMSOL、MSC 等との差別化。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "36,000 コア認定という定量的な技術差別化指標。高評価パターン I 合致。"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「唯一の認定プロバイダー」という業界内での独自ポジションの証拠。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "36,000 コア以上での唯一の認定は検証可能な具体的差別化。数十年の R&D 投資蓄積が競合に対する明確な技術的優位を形成。Multiphysics 統合能力は競合（COMSOL、MSC）では部分的にしか実現できない。70%。"
+    },
+    {
+      "id": "ANSS_003",
+      "claim": "ANSYS は非 GAAP 営業利益率 48%、営業キャッシュフロー $385M（前年比 16% 増）という業界トップクラスの収益性を実現しており、規模の拡大が固定的な R&D・プラットフォーム費用の分散をもたらしている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "48% 営業利益率は Scale Economies の結果であり、メカニズムの説明が必要。ただし R&D 固定費の分散というメカニズムへの言及あり。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "48% 非 GAAP OP マージン・$385M CF という具体的財務指標。ソフトウェア業界でも卓越した収益性。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_direct_cagr_mechanism",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "R&D 固定費の顧客・エンドマーケット分散という直接的メカニズム。高評価パターン II 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "48% のソフトウェア企業としても卓越した営業利益率は Scale Economies の発現を示す。R&D 投資を多数の顧客・エンドマーケット（航空・自動車・電子・半導体等）に分散させるモデルは Scale Economies の典型。$1B 超の売上規模が新規競合の追い付きを困難にする。70%。"
+    },
+    {
+      "id": "ANSS_004",
+      "claim": "ANSYS の繰り返し収益は全体の 71%（Q4 は 66%）に達しており、年次ライセンス・メンテナンス契約が安定した収益基盤を形成している。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "71% 繰り返し収益は Switching Costs の結果であり原因ではない。ただしデファードバックログ 14% 成長は顧客継続の証拠。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "71% 繰り返し収益率・デファード＋バックログ 14% 成長という定量的裏付けあり。"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "71% の繰り返し収益率は顧客の高い継続率を示す強力な証拠。デファード・バックログの 14% 成長は将来収益の可視性が高い。Switching Costs の「結果」でもあるが、それ自体が将来の継続を示す指標として機能。ANSS_001 の Switching Costs 主張の定量的裏付けとして機能。70%。"
+    },
+    {
+      "id": "ANSS_005",
+      "claim": "ANSYS Workbench プラットフォームは、ユーザーカスタマイズ・自動化ウィザード・パートナー拡張を可能にするエコシステムを形成している。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "プラットフォームのカスタマイズ性は能力だが、外部エコシステムの規模・開発者参加状況の詳細が不明。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「プラットフォーム地位を固めた」はマネジメントの自己評価。外部エコシステムデータなし。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "プラットフォームのカスタマイズ性は Network Economies の萌芽を示すが、外部開発者エコシステムの規模証拠が限定的。「プラットフォーム地位」はマネジメントの自己評価（外部検証なし）。50%。"
+    },
+    {
+      "id": "ANSS_006",
+      "claim": "ANSYS はシミュレーション分野で最も広いエンドマーケット（航空・自動車・電子・半導体・エネルギー・医療等）をカバーしており、業界の景気サイクルに対して分散効果を発揮する。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "業界カバレッジの広さは分散リスクをもたらすが、Scale Economies のメカニズム（規模拡大によるコスト逓減）の直接証拠としては弱い。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "多業界カバレッジ（ポートフォリオ戦略）を Scale Economies として提示。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "幅広い業界カバレッジはリスク分散をもたらすが、Scale Economies のメカニズム（コスト逓減）の直接証拠としては弱い。多様な顧客基盤はビジネス安定性を示すが Scale Economies の本質とは異なる。50%。"
+    },
+    {
+      "id": "ANSS_007",
+      "claim": "ANSYS は Reaction Design（燃焼シミュレーション）、SpaceClaim（幾何学処理）、Newmerical Technologies（着氷シミュレーション）の連続買収により、特定の専門シミュレーション技術を囲い込んでいる。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "特定ニッチ技術の買収による囲い込み（仕組み）を評価。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "各企業規模・技術の独自性の詳細が限定的。「競合からさらに距離をあける」はマネジメントの主観的評価。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "買収による Cornered Resource だが、純粋競合との差別化証拠が限定的。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "特定ニッチ技術（燃焼・着氷シミュレーション）の買収は Cornered Resource の萌芽。ただし各買収企業の技術独自性・規模の詳細が不明。買収統合リスクも考慮。50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "40-50": 3,
+      "60-70": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

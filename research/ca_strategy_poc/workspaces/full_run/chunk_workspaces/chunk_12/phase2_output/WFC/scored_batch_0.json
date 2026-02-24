@@ -1,0 +1,301 @@
+{
+  "scored_claims": [
+    {
+      "id": "WFC-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Cross-Sell Model: 6.16 Products Per Household — Structural Revenue Per Customer Advantage",
+      "evidence": "Retail Banking cross-sell: 6.16 products/household (record, Q4 2013, up from 6.05 YoY). Wholesale Banking: 7.1 products. WBR: 10.42 products. 16 consecutive quarters of EPS growth.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "6.16 products/household（記録）、Wholesale 7.1、WBR 10.42という三層の定量データ。YoY比較もあり"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "銀行業界でのクロスセルは各商品が顧客ロックインを強化する構造。製品数増加がスイッチングコスト上昇と相関"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "6.16 products/householdは米国主要銀行で開示される最高水準のクロスセル比率。定量的差別化パターンI該当"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "業界最高水準のクロスセル比率"
+        }
+      ],
+      "overall_reasoning": "6.16 products/householdは米国大手銀行中最高水準のクロスセル比率。三層（Retail/Wholesale/WBR）での高水準維持は構造的販売文化の証拠。各製品がスイッチングコストを積み上げる銀行業界の構造と合致。JPMorgan・Citiとの直接比較がない点で70%"
+    },
+    {
+      "id": "WFC-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Deposit Franchise Scale — $1.1 Trillion at 9bp Cost, 13 Consecutive Quarters of Deposit Growth",
+      "evidence": "Average deposits: $1.1T (Q4 2014, +$22.7B sequentially). Deposit cost: 9 basis points. 13 consecutive quarters of deposit growth + declining costs. Primary consumer checking +5.2% YoY.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "9bp預金コスト（業界最低水準）、13四半期連続成長、$1.1T規模という多層の定量データ"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "銀行業界では預金コストが低いほど金利環境での利鞘優位が構造的に高まる"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "米国小売銀行業界での支店密度・顧客信頼・デジタル基盤がfunding cost優位を生む市場構造とWFCの$1.1T+9bp預金の合致。高評価パターンIV"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "市場構造と低コスト預金基盤の合致"
+        }
+      ],
+      "overall_reasoning": "9bp預金コストは米国主要銀行中最低水準。13四半期連続で預金増加+コスト低下という定量的優位は明確。Branch density・顧客信頼・クロスセルによる構造的な低コスト預金基盤。Bank of America・Citiとの比較でも優位。70%"
+    },
+    {
+      "id": "WFC-003",
+      "claim_type": "competitive_advantage",
+      "claim": "90+ Business Line Diversification — Structural Revenue Stability Across Rate Cycles",
+      "evidence": "90+ businesses across Consumer/Commercial/Wealth/Mortgage/International. 2013: Mortgage refi declined $3.4B; offset by double-digit growth in brokerage, IB, cards, servicing. 16 consecutive EPS growth quarters.",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "90+事業ラインによる収益分散は構造的（補完的ではない）。Wachovia合併統合で獲得した恒久的特性"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "銀行業界では金利サイクルごとに有利な事業が変わる。90+事業は各サイクルでの収益補完が機能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "Mortgage $3.4B減少をBrokerage/IB/Cards/Servicingで相殺し16四半期連続EPS成長という定量的証拠"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "実証された収益補完の定量的証拠"
+        }
+      ],
+      "overall_reasoning": "90+事業ラインでの実証された収益補完（Mortgage下落→IB/Cards/WBR上昇）は構造的優位。16四半期のEPS継続成長がその有効性を実証。JPMorgan・Bank of Americaより多様化した事業構造はWachovia統合の恒久的成果。70%"
+    },
+    {
+      "id": "WFC-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Mortgage Market Scale — $50B+ Quarterly Origination, #1 US Mortgage Lender",
+      "evidence": "Q4 2013 originations: $50B (down from $80B Q3). Refi share: 32% (from 65%). Retail fulfillment FTEs reduced ~50% from peak while maintaining market leadership.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "モーゲージ起源高量は市場シェアという結果（ルール1）。起源能力そのものの説明が不足"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "JPMorgan Chase・Bank of Americaも主要モーゲージ起源銀行"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "$50B起源量は市場シェアという結果の指標。モーゲージは価格競争的な市場でStructural Moatが薄い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "市場規模は結果指標"
+        }
+      ],
+      "overall_reasoning": "#1モーゲージ起源銀行は事実だが、モーゲージは価格競争的市場でサービス差別化が困難。デジタルチャネルの台頭により支店密度優位が縮小する可能性。50%"
+    },
+    {
+      "id": "WFC-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Primary Checking Customer Growth — 5.2% Annual Growth, 42% Credit Card Penetration",
+      "evidence": "Primary consumer checking +5.2% YoY (highest since 2010). Credit card penetration: 42% (up from 37%). Card purchase volume +17%. New credit accounts +29%.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "5.2%成長（10年来最高）、42%クレジットカード浸透率という定量データ"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "プライマリーチェッキングは優位性の源泉だが、デジタルバンク（Chime、SoFi）の参入でスイッチングコストが低下しつつある"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "5.2%成長・42%クレカ浸透率は定量的。ただし競合比較なし"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "プライマリーチェッキングは銀行関係の入口製品であり、5.2%成長と42%クレカ浸透率は構造的顧客深化を示す。ただしデジタルバンクの台頭でスイッチングコスト低下のリスクあり。50%"
+    },
+    {
+      "id": "WFC-006",
+      "claim_type": "competitive_advantage",
+      "claim": "55-59% Efficiency Ratio Target — Outperforming Peer Banks",
+      "evidence": "Q4 2013 efficiency ratio: 58.5% (down 62bp). FY2014: 58.1%. Management: 'Even at the upper end of our target range, we are operating more efficiently than many of our peers.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "JPMorgan Chaseも55-60%の効率比率範囲内で運営"
+        },
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": false,
+          "reasoning": "効率比率目標の設定は経営施策であり構造的優位ではない（ルール8）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "効率比率は経営効率の結果指標。優位性の源泉ではない（結果→原因の転倒）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "効率比率は結果指標"
+        }
+      ],
+      "overall_reasoning": "58%台の効率比率は優れた経営効率だが、JPMorgan等の競合も同様の水準を達成しており差別化にならない。また効率比率は経営施策の結果であり競争優位の源泉ではない（ルール8）。30%"
+    },
+    {
+      "id": "WFC-007",
+      "claim_type": "factual_claim",
+      "claim": "16 Consecutive Quarters of EPS Growth through Q4 2013. FY2013: net income $21.9B, EPS $3.89 (+16%). FY2014: net income $23B, EPS $4.10 (+5%)",
+      "evidence": "FY2014/2013 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "WFC-008",
+      "claim_type": "cagr_connection",
+      "claim": "Core Loan Portfolio Growth: 14 Consecutive Quarters YoY Growth. FY2014: +$60B (+8%)",
+      "evidence": "14 consecutive quarters of YoY loan growth. FY2014: +$60B (+8%). C&I loans +$36.4B (+15%).",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "ローン成長→利息収益増→EPS成長の直接的メカニズム。14四半期の継続実績で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "14四半期継続のローン成長は定量的に明確かつ直接的なNII成長経路。クロスセルモデルと低コスト預金基盤が支援。70%"
+    },
+    {
+      "id": "WFC-009",
+      "claim_type": "cagr_connection",
+      "claim": "WBR Client Assets: $1.6T (Q4 2013, +11%), Brokerage Advisory Assets $423B (+13%)",
+      "evidence": "WBR client assets: $1.6T (Q4 2013, +11%). Brokerage advisory: $423B (+13%). Wealth management loans +13% YoY (6th consecutive double-digit quarter). Asset-based fees +12%.",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "AUM成長→資産ベースフィー増加の直接的メカニズム。+12%フィー成長で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "WBRのAUM+11%・アドバイザリー資産+13%・フィー+12%は直接的なフィー収益成長接続。継続的な正味フロー（new business）が構造的成長を示す。70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "20-30": 1,
+      "40-50": 2,
+      "60-70": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

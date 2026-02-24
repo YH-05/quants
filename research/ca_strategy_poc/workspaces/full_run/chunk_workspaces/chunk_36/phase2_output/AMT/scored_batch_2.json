@@ -1,0 +1,58 @@
+{
+  "ticker": "AMT",
+  "batch_index": 2,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "AMTタワーの95%が5,000人/平方マイル以下の郊外・農村部に立地。小セル等の代替技術は高密度都市部に適合",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Q4/Q3開示データで検証可能な定量的事実。優位性主張ID10の裏付けとして機能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張としての確認。Q3 callで開示された定量データとして妥当性は高い"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "U.S.地上権: 60%以上を自社所有/20年超制御（Verizon取得後proforma）、毎年土地費用ベースの2%超を削減継続",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Q4 CFO Bartlettの具体的開示データ。Verizon取引後のProforma数値として検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "CFOによる定量的開示。事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

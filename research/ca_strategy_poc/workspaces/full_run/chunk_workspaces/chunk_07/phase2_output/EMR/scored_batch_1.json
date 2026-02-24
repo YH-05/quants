@@ -1,0 +1,87 @@
+{
+  "ticker": "EMR",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "EMR-006",
+      "claim": "過去10年のプロセス管理・工業オートメーション設備への継続投資により、グローバルに積み上げられた大規模なインストールドベースが、MROサービス収益の安定した需要源となっている",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "EMR-001と実質同一の主張だが、より具体的な時間軸（10年）の記述あり"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "過去10年の投資蓄積は能力形成の説明として有効",
+        "rule04_quantitative": "「billions of dollars of equipment」「last 10 years」という時間軸あり。但しROI・競合比較なし",
+        "rule06_structural_vs_complementary": "インストールドベースはMRO収益の構造的基盤として認識可能"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 10年間の投資蓄積という能力説明が明確",
+        "pattern_II": "direct_cagr_mechanism: インストールドベース→MRO収益という接続メカニズムは直接的",
+        "adjustment": "+0 (EMR-001と類似の評価)"
+      },
+      "kb3_calibration": {
+        "reference_case": "EMR-001（50%）と同等。10年という具体的時間軸が追加されているが評価を変えるには不十分",
+        "final_reasoning": "EMR-001との差別化ポイントは時間軸の明確化のみ。同等スコアが妥当"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "10年間という具体的な投資蓄積期間の記述があり、インストールドベースの形成メカニズムが明確。EMR-001と実質的に同一の主張だが、'billions of dollars of equipment'という規模感が追加されている。MROサービス収益への接続は直接的（KB2パターンII適合）。ただし競合との定量比較は依然として欠如。50%が妥当。"
+    },
+    {
+      "id": "EMR-007",
+      "claim": "プロセス管理セグメントの大型プロジェクト縮小時に、収益性の高い小規模プロジェクト・MROビジネスへのミックスシフトにより、利益率を防衛できる",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "収益ミックス管理能力の主張。業界での優位性は要検討"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "ミックスシフトは戦略・結果に近い。「better profitability」は結果",
+        "rule08_strategy": "ミックスシフト戦略（大型→小型→MRO）は経営判断（戦略）に近い。構造的優位性の説明としては弱い",
+        "adjustment": "-10%〜-20%"
+      },
+      "kb2_evaluation": {
+        "pattern_F": "strategy_confusion: 「ミックスシフトできる」は戦略と優位性の混同の可能性あり",
+        "pattern_A": "「better profitability」は結果の提示",
+        "adjustment": "-10%"
+      },
+      "kb3_calibration": {
+        "reference_case": "CHD#5 (30%): 「ポートシフト」を優位性とするパターン。ミックスシフトは「結果/戦略」であり能力ではない",
+        "final_reasoning": "利益率差の説明（大型<小型<MRO）は事実の開示だが、なぜ競合よりも上手くシフトできるのかの説明がない"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "大型→小型→MROの利益率ヒエラルキー説明（'hardest are the large; smaller projects are good; MRO is even better'）は有用な情報だが、これは業界構造の一般的特徴であり、Emerson固有の能力の説明ではない。ミックスシフトが実行できること自体は戦略的判断（KB1ルール8適合）であり、構造的な競争優位性（なぜEmersonだけがうまくシフトできるのか）の説明が欠如。30%が妥当。"
+    },
+    {
+      "id": "EMR-008",
+      "claim": "Emersonは戦略的に「重要な市場」での投資を維持しながらリストラを行い、競合がコスト削減で後退する中でシェア獲得を図るオフェンシブ能力を有している",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "オフェンシブ投資維持能力の主張。競合後退時のシェア獲得機会の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「playing offense」は能力よりも行動・戦略の記述に近い",
+        "rule08_strategy": "戦略的投資の維持は経営判断（戦略）であり、構造的優位性（なぜ競合がコスト削減する中でEmersonが投資維持できるのか）の説明がない",
+        "rule07_pure_competitor": "「競合がコスト削減で後退する中で」という比較言及はあるが具体的データなし",
+        "adjustment": "-20%"
+      },
+      "kb2_evaluation": {
+        "pattern_F": "strategy_confusion: 「オフェンシブ戦略」という表現が戦略と優位性の混同",
+        "adjustment": "-10%"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#2 (90%): 業界構造×規模・密度という構造的優位性との対比で評価。EMR-008は構造的根拠が不明",
+        "final_reasoning": "「なぜEmersonは投資維持できるのか」の答え（財務的余力、技術的優位性等）が不明。自己申告の能力主張"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "'We are continuing to play offense'という表現は積極的経営姿勢を示すが、これは意思決定・戦略の説明であり（KB1ルール8: 戦略≠優位性）、なぜEmersonが競合後退中に投資を維持できるのか（財務体力、バランスシートの強度等）の構造的説明がない。「unique opportunities to gain share」という表現も自己申告に留まる。競合他社の後退に関する具体的データもない。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

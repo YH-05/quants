@@ -1,0 +1,131 @@
+{
+  "ticker": "COL",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "商業航空OEM向け次世代機（787、737MAX、A350）への航空電子システム組み込みとマーケットシェアゲイン（エアトランスポート9%成長）",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_6_t", "rule_11_t"],
+        "rule_partials": ["rule_1_t", "rule_4_t"]
+      },
+      "kb2_t_pattern": "pattern_III_t",
+      "confidence": 70,
+      "confidence_breakdown": {
+        "base": 70,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 70
+      },
+      "score": 0.70,
+      "rationale": "航空OEMアビオニクスの組み込み（能力）は機体寿命20-30年のスイッチングコストを生む。737MAX/A350への拡張は将来数十年の収益基盤確定（KB2-T パターンIII-T: 能力優先）。FSO認証という業界固有の参入障壁が構造的優位を強化（KB1-T ルール11）"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "商業機生産率増加（787+A350立ち上がり）× per-aircraft content拡大 → Commercial Systems OEM収益高一桁成長継続",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_5_t", "rule_12_t"],
+        "rule_partials": []
+      },
+      "kb2_t_pattern": "pattern_II_t",
+      "confidence": 70,
+      "confidence_breakdown": {
+        "base": 70,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 70
+      },
+      "score": 0.70,
+      "rationale": "CAGR接続高確信度。787月10→12機生産率増加+A350 EIS開始という直接的な乗数効果。CFO「OEM sales expected to go high single digits」ガイダンス明示。KB2-T パターンII（直接的CAGR接続）"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "ARINCアクイジション（2013）による航空情報管理サービス（IMS）プラットフォームと年金収入構造（年率二桁成長）",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_1_t", "rule_6_t"],
+        "rule_partials": ["rule_4_t"]
+      },
+      "kb2_t_pattern": "pattern_IV_t",
+      "confidence": 60,
+      "confidence_breakdown": {
+        "base": 70,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 60
+      },
+      "score": 0.60,
+      "rationale": "CEO自身が「annuity-based business」と説明するGLOBALinkは明確なスイッチングコスト（KB1-T ルール1パス）。ARINCは2013年買収で統合リスク残存（-10%調整）。EBITDA21%は保有確認。KB2-T パターンIV（構造的市場地位）"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "ARINC航空ITネットワーク成長（接続需要増大）× リカーリング収益構造 → IMS年率二桁成長継続",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_5_t", "rule_12_t"],
+        "rule_partials": []
+      },
+      "kb2_t_pattern": "pattern_II_t",
+      "confidence": 70,
+      "confidence_breakdown": {
+        "base": 70,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 70
+      },
+      "score": 0.70,
+      "rationale": "CAGR接続高確信度。航空機接続需要×ARINCリカーリング構造は2ステップ。CFO「IMS sales expected to grow near double digits」ガイダンス。KB2-T パターンII（直接的接続）"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "政府/国防事業のポートフォリオ最適化（平坦化転換）とOEM・IMSによる収益源多様化",
+      "gatekeeper_pass": false,
+      "kb1_t_assessment": {
+        "primary_rule_violation": "rule_1_t",
+        "rule_violations": ["rule_1_t", "rule_3_t"],
+        "rule_passes": [],
+        "rule_partials": []
+      },
+      "kb2_t_pattern": "pattern_B_t",
+      "confidence": 20,
+      "confidence_breakdown": {
+        "base": 30,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 20
+      },
+      "score": 0.20,
+      "rationale": "収益多様化は結果・戦略言語（KB1-T ルール1/8違反）。Honeywell/L3/BAEも同様の商業/防衛バランスを持つ（KB2-T パターンB-T: 業界共通）。各セグメントの独立優位が本質であり、ポートフォリオ多様化自体は優位性でない"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "high_0.7_plus": 3,
+      "medium_0.5_to_0.69": 1,
+      "low_below_0.5": 1
+    }
+  }
+}

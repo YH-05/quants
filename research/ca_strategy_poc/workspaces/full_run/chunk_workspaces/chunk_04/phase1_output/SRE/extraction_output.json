@@ -1,0 +1,338 @@
+{
+  "ticker": "SRE",
+  "company_name": "Sempra Energy",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-26) + Q3 FY2014 Earnings Call (2014-11-04)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "LNG液化施設の開発・許認可・資金調達を完了させた北米唯一の実績保有開発者 - Cameron Liquefactionの先行優位性",
+      "descriptive_label": "北米LNG開発・許認可・資金調達完遂能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Debra Reed): 'Sempra is one of the few developers who have successfully contracted, permitted and financed a liquefaction facility in North America. We plan to provide an in-depth discussion on our development projects at our March Analyst Conference'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Debra Reed",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「contracted, permitted and financed」完了という実績だが、その背後にある規制対応能力・資金調達能力・プロジェクト管理能力という「仕組み」を示している"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Cameron trains 1-3の12 Mtpa、FID完了、長期契約確保という具体的事実データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "LNG開発完遂実績は構造的優位性。同等の実績を持つ競合が北米に少ない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "2020-2023年向けLNG需要が旺盛な中、許認可完了者は極少数という市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの体系的説明（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "「few developers」という表現は他にも類似事業者が存在することを示唆",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "LNG開発を完遂した実績は構造的優位性として認められる。ただし「few developers（少数の開発者の一つ）」という表現から、唯一性は限定的。LNG需要の旺盛な市場構造との合致は評価できる。60%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "Cameron Liquefaction trains 1-3: FID完了、JV設立、建設着工済み。12 Mtpa、2018年完成見込み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "Cameron Liquefaction完成 → LNG長期take-or-pay収益 → 2019年以降EPS 9-11%成長の主要ドライバー",
+      "descriptive_label": "Cameron LNG→長期取or-pay収益→EPS成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Cameron完成 → take-or-pay長期契約収益は2ステップで直接的。2018年完成、2019年フル寄与という具体的時間軸"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。9-11% EPS成長という具体的数値目標"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Cameron LNG → take-or-pay収益 → EPS成長は2ステップの直接的因果。take-or-pay契約の定量的裏付けあり。ただし建設リスク・原油価格変動リスクが存在する"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "カリフォルニア規制ユーティリティ（SoCalGas・SDG&E）での安定収益基盤 - CPUC認可ROEによる規制保護",
+      "descriptive_label": "カリフォルニア規制ユーティリティ安定収益基盤",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Debra Reed): 'In December, the CPUC approved a 1 year extension of the utilities cost of capital rates. The extension keeps the authorized returns on equity of 10.1% for SoCalGas and 10.3% for SDG&E intact through 2016. It also keeps in place an automatic adjustment mechanism should interest rates move beyond a predetermined band.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Debra Reed",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "規制ユーティリティの認可ROEはすべての規制ユーティリティが持つ属性であり、SRE固有の優位性ではない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規制収益は構造的に安定しているが、競合との差別化という観点では弱い"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "カリフォルニアの規制環境（高ROE・自動調整メカニズム）という市場構造は有利だが、この優位性はPG&E・EdisonなどのCA規制ユーティリティ全般に共通"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "規制ユーティリティ共通の属性（パターンB-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "カリフォルニア規制ユーティリティの安定収益は構造的だが、PG&E・SCEなど同業の規制ユーティリティと差別化されない。パターンB-T（業界共通能力）に近い。40%評価"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "規制ユーティリティ認可ROE → 安定的なユーティリティ収益成長 → 配当持続成長の基盤",
+      "descriptive_label": "規制収益→安定配当成長基盤",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "規制ROE → ユーティリティ収益 → 配当成長は直接的2ステップ。6% dividend増額という具体的数値あり。2010年以来80%増という開示データ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規制収益基盤 → 配当成長の因果は直接的で検証可能（配当実績データあり）。ただしSRE固有の優位性は弱く、規制ユーティリティ共通の収益構造"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "メキシコエネルギー市場参入における先行者優位 - IEnovaによるCFEパイプライン受注実績と市場地位",
+      "descriptive_label": "メキシコエネルギーインフラ先行者優位",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Debra Reed): 'IEnova was also awarded the first natural gas pipeline tendered by CFE as part of Mexico's 5-year national infrastructure plan...Since our last call, the CFE has put out tenders for an additional 4 pipelines in Mexico, representing an estimated $1.8 billion in investment. One of the bids is due next month and the other 3 bids are due in May.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Debra Reed",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "「first natural gas pipeline tendered by CFE」の受注は結果だが、メキシコエネルギー市場への参入実績・現地関係・規制対応能力という「能力・仕組み」を示唆"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$300M CapEx、25年take-or-pay契約、ドル建て契約という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "メキシコ市場での先行実績は後発者が短期に追いつけない構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "メキシコが5年間の国家インフラ計画を推進中という市場構造と、SREのIEnova先行者地位が合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "メキシコ市場での参入実績は客観的事実だが、CFE入札競争では他社も参加可能",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "メキシコエネルギー改革という市場構造変化の中でCFE第1号パイプライン受注という先行者実績は評価できる。$300M/25年のtake-or-pay契約は定量的裏付けあり。市場構造との合致（ルール11-T）でやや評価を上げる。60%評価"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "IEnova: CFE第1号パイプライン受注（$300M CapEx、25年ドル建てtake-or-pay）。追加4パイプライン入札（$1.8B）への参加機会",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6, 8]
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "メキシコパイプライン受注 → 25年ドル建てtake-or-pay収益 → EPS成長目標（9-11%）への貢献",
+      "descriptive_label": "メキシコパイプライン→ドル建て長期収益→EPS成長",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "パイプライン受注 → take-or-pay収益は2ステップ。ドル建てで為替リスクも限定的。2017年稼働予定という具体的時間軸"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "25年ドル建てtake-or-payは直接的でリスクの低いCAGR接続。$300M投資に対する長期固定収益は高い確実性。70%評価"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "LNG低コスト競争力 - 既存インフラ活用とウエストコースト立地（ECA）によるコスト優位",
+      "descriptive_label": "LNG低コスト製造・輸送優位性",
+      "evidence_from_transcript": "Q4 Q&A (Mark Snell): 'we are highly confident that, especially with trains 4 and 5, that we'll be a low-cost provider and we think that will position us well for additional volumes. And then with -- at ECA too, as well, we believe we can be a relatively low-cost provider given both the existing facility and the transportation advantages that being on the West Coast has.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Snell",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "低コスト生産者という主張は結果の予測だが、既存インフラ（ECA）・立地優位（West Coast→アジア）という構造的能力を示唆"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "具体的なコスト数値・競合との比較データなし。「highly confident」「believe」という定性的表現のみ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "具体的な競合LNGプロジェクト（Sabine Pass等）との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでのQ&A発言（主・①相当だが信頼性は準主）",
+            "adjustment": 0
+          },
+          {
+            "reason": "「highly confident」のみで定量的コスト比較なし（パターンD-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "West Coast立地優位性は構造的に実在するが、具体的なコスト比較データがなく定性的主張に留まる。パターンD-T（定性的のみで測定不能）に近い。40%評価"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "REX（ロッキーエクスプレス）パイプラインの双方向化による新収益源 - 1.8 Bcf/日の東→西向け長期契約",
+      "descriptive_label": "REXパイプライン双方向化による差別化",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Debra Reed): 'Converting REX into a bidirectional pipeline was a positive long-term development last year. As you know, 1.8 Bcf per day of east-to-west capacity on REX is now under long-term contract. 1/3 of this capacity is in service, and the remaining capacity should be online mid-2015.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Debra Reed",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "双方向化は「戦略的決断（投資）」だが、その背後にある既存パイプラインインフラを活用する能力・規制対応能力が優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "1.8 Bcf/日の具体的容量、長期契約という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "既存パイプラインインフラの双方向活用は競合が短期に複製困難な構造的資産"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "既存パイプラインインフラの双方向活用は構造的優位性として認められる。1.8 Bcf/日の定量データあり。ただし純粋競合（他パイプライン事業者）との差別化の説明が不十分。50%評価"
+      }
+    }
+  ]
+}

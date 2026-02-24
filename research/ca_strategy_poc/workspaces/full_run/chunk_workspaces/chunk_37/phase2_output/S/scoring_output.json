@@ -1,0 +1,134 @@
+{
+  "ticker": "S",
+  "company_name": "Sprint Corp.",
+  "gics_sector": "Telecommunication Services",
+  "country": "UNITED STATES",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_applied": true,
+    "kb2_t_applied": true,
+    "kb3_t_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "2.5GHz帯を含む豊富なスペクトル資産（120MHz超）：業界最大規模の中波帯スペクトルポートフォリオ（800MHz/1.9GHz/2.5GHz三層）",
+      "phase1_confidence": 55,
+      "scoring": {
+        "kb2_t_verdict": "pattern_V_t（希少資源独占: スペクトラム）、pattern_A_t部分適用（「最大」は結果だが、MHzという定量的希少資源は評価可能）",
+        "kb3_t_alignment": "SIRI類似（スペクトラム希少資源）。ただしSIRIと異なりSprintのスペクトラムは使用・収益化の実証が必要",
+        "dogma_check": "Rule 6: 120MHz超の2.5GHzスペクトラムは物理的希少資源。Rule 7: ATT/Verizonとの比較で「最大規模の中波帯」は定量的に確認可能。ただしスペクトラムの活用能力（ネットワーク展開能力）が課題",
+        "final_confidence": 50,
+        "confidence_rationale": "2.5GHzスペクトラムの希少性は評価するが、2015年時点でのSprintのネットワーク品質は競合に劣っており、スペクトラムの優位性が収益に結びついていない。50%に引き下げ"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "2.5GHzスペクトル展開（Sprint Spark）→ ネットワーク品質向上 → 解約率低下 → 加入者CAGR回復",
+      "phase1_confidence": 40,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t（因果飛躍）: スペクトル展開→品質→解約率の定量リンクが不明確",
+        "kb3_t_alignment": "Sprintのネットワーク品質改善は進行中だが実証が不完全",
+        "dogma_check": "Rule 5: 4ステップ以上、間接的。解約率はネットワーク品質以外の要因（価格、顧客サービス）にも依存",
+        "final_confidence": 35,
+        "confidence_rationale": "スペクトラム→CAGR経路は4ステップ以上で間接的。Sprintの解約率は依然として業界最悪水準（2.3%）。35%に引き下げ"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "ネットワーク近代化（Network Vision）完了後の品質改善：41%のブロック通話削減、25%の3Gデータ速度向上（整備完了市場）",
+      "phase1_confidence": 35,
+      "scoring": {
+        "kb2_t_verdict": "pattern_A_t（改善実績=結果）、pattern_D_t（改善の絶対水準が不明）",
+        "kb3_t_alignment": "競合（ATT、Verizon）との比較なしでは優位性を評価できない",
+        "dogma_check": "Rule 7: ATT/Verizonとの直接比較なし。「整備完了市場」という限定条件付き",
+        "final_confidence": 30,
+        "confidence_rationale": "ネットワーク品質改善は実績だが、競合比較なしでは相対的優位性が不明。整備完了市場限定という条件付き。30%に引き下げ"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "ネットワーク品質改善 → 解約率低下（2.3%→業界平均水準への改善） → 加入者純増回復 → 収益CAGR改善",
+      "phase1_confidence": 45,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t（因果飛躍）: ネットワーク改善→解約率の定量接続が弱い",
+        "kb3_t_alignment": "2.3%の解約率は業界最悪水準で、改善の見通しが不確実",
+        "dogma_check": "Rule 5: 3ステップ、間接的。解約率はまだ業界最悪水準で改善が実証されていない",
+        "final_confidence": 35,
+        "confidence_rationale": "ネットワーク品質改善は進行中だが、解約率の改善実績が乏しい。CAGR接続の証拠は仮説的。35%に引き下げ"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "SoftBank支援による資金力と大規模ネットワーク投資能力（2014年CapEx $8B）：競合が追随困難な大規模インフラ投資",
+      "phase1_confidence": 20,
+      "scoring": {
+        "kb2_t_verdict": "pattern_F_t（戦略の混同: SoftBank支援による投資=戦略）、pattern_B_t（業界共通: 資本調達は全社可能）",
+        "kb3_t_alignment": "「親会社の支援」は競合優位性として評価不可。ATT/Verizonも同等以上の資本力を持つ",
+        "dogma_check": "Rule 1: 「SoftBank支援による資金力」は能力ではなく戦略的行動・外部要因。Rule 3: ATT/Verizonとの資本力比較で必ずしも優位でない",
+        "final_confidence": 15,
+        "confidence_rationale": "親会社支援による資金力は競争優位性として評価不可。KB2パターンF-T/B-T適用。15%に引き下げ"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "コスト競争力：Network Visionによる年間ケア費用$2B削減（2008年比）と、継続的なコスト削減プログラム（$1.5B annualized削減目標）",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量: $2B削減, $1.5B目標）、pattern_III_t（能力: コスト管理能力）",
+        "kb3_t_alignment": "コスト削減の定量的実績は評価可能だが、競合と比較してのコスト水準が不明",
+        "dogma_check": "Rule 4: $2B削減実績という定量データあり。Rule 7: ATT/Verizonとのコスト比較なし。EBITDA率は依然として競合を下回る",
+        "final_confidence": 45,
+        "confidence_rationale": "$2B削減実績は定量的だが、競合比較でのコスト水準は不明。EBITDAマージンは依然として劣位。45%に引き下げ"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "コスト削減（$1.5B annualized） → EBITDAマージン改善（20%→目標水準） → 利益CAGR向上",
+      "phase1_confidence": 55,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続: コスト削減→EBITDA→CAGR）",
+        "kb3_t_alignment": "コスト削減→EBITDA接続は直接的だが、目標水準の実現可能性が課題",
+        "dogma_check": "Rule 5: 2ステップで直接的。$1.5B目標のannualized実現が条件",
+        "final_confidence": 50,
+        "confidence_rationale": "コスト削減→EBITDA接続は直接的だが、$1.5Bの達成はまだ目標段階。50%に引き下げ"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "2015年2月時点でLTEカバレッジ270百万人、2.5GHz LTE 125百万POP展開済み。スペクトル保有は800/1.9/2.5GHzの三層で120MH",
+      "phase1_confidence": null,
+      "scoring": {"factual_verification": "Q3 FY2015（FY2015 Q3）発言として確認済み", "final_confidence": null, "confidence_rationale": "factual_claimのためスコアリング対象外"}
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "ネットワーク整備完了市場（70%超の整備率）でブロック通話41%減少、3Gデータ速度25%向上。通話切断率は50%超改善（前年比）",
+      "phase1_confidence": null,
+      "scoring": {"factual_verification": "発言内容として確認済み", "final_confidence": null, "confidence_rationale": "factual_claimのためスコアリング対象外"}
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "2014年通年CapEx目標$8B。2014年末流動性ポジション$7.5B（現金$3.7B＋未使用クレジット枠$3.8B）",
+      "phase1_confidence": null,
+      "scoring": {"factual_verification": "発言内容として確認済み", "final_confidence": null, "confidence_rationale": "factual_claimのためスコアリング対象外"}
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "顧客ケア年間オペコストを2008年比$2B削減済み。$1.5B追加コスト削減計画（対2014年）を推進中",
+      "phase1_confidence": null,
+      "scoring": {"factual_verification": "発言内容として確認済み", "final_confidence": null, "confidence_rationale": "factual_claimのためスコアリング対象外"}
+    }
+  ]
+}

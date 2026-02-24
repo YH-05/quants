@@ -1,0 +1,92 @@
+{
+  "ticker": "STAN",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": ["STAN-001", "STAN-002", "STAN-003", "STAN-004", "STAN-005"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "STAN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "アジア・アフリカ・中東（AAM）特化のネットワーク型銀行として25市場でUSD 1億超収益を達成する深度と幅の優位",
+      "descriptive_label": "AAM市場特化ネットワーク型銀行のポジション",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PARTIAL - 25市場×$100M以上収益という結果。AAM特化という集中化能力は評価できるが、なぜこれらの市場で優位かの説明が不足",
+        "rule_4_t": "PASS - 25市場・$100M以上という定量値",
+        "rule_7_t": "FAIL - HSBC・Citigroup等のグローバルバンクも同様のAAM展開を持つ"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。HSBC・Citibankも同様のAAM展開",
+      "kb3_t_calibration": "ADN-003（グローバル26カ国プレゼンス=業界共通→30%）と類似。ただしSTANはAAM特化という絞り込みがあり若干評価が高い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: 部分的（25市場$100M以上は結果）。Rule 3（相対的優位性）: 制約あり（HSBC等も同様）。AAM特化は相対的な集中化を示す",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 4 PASS、Rule 1 部分的・Rule 7 FAIL。KB2-T pattern_B_t（業界共通要素あり）。AAM特化という絞り込みはHSBCとの差別化根拠だが不完全。Q4発言扱い。50%"
+    },
+    {
+      "id": "STAN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIFT Bankersalmanaによるグローバル貿易金融第2位（トレードファイナンス）ポジションと貿易ルート特化能力",
+      "descriptive_label": "グローバル貿易金融第2位の構造的優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 貿易金融という特化能力（Trade Finance expertise・AAM貿易ルート特化）の仕組み説明あり",
+        "rule_4_t": "PASS - SWIFT Bankersalmanac第2位という独立第三者評価",
+        "rule_6_t": "PASS - 貿易ルート特化×現地ネットワーク（25市場）は構造的優位",
+        "rule_7_t": "PARTIAL - 第1位がHSBC（詳細不明）だが第2位という順位は具体的"
+      },
+      "kb2_t_pattern": "pattern_IV_t（構造的市場ポジション）、pattern_I_t（定量的差別化）",
+      "kb3_t_calibration": "ARM-001（市場シェア95%→70%）と類似した独占的ポジション。貿易金融第2位という独立第三者評価は強力な裏付け",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（貿易金融専門能力）。Rule 4（定量的裏付け）: PASS（SWIFT第2位）。Rule 11（業界構造）: PASS（AAM貿易ルートとSTANネットワークの合致）。Q4発言扱い",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T Rule 1・4・6 PASS。KB2-T pattern_IV_t・I_t（高評価パターン複合）。dogma.md Rule 1・4・11の3重適合。SWIFT独立第三者評価が決め手。Q4発言相当で70%確定"
+    },
+    {
+      "id": "STAN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "RMB国際化（AAM各国中央銀行・企業との元建て決済インフラ整備）による先行優位（清算行指定・RMBフロー+122%）",
+      "descriptive_label": "RMB国際化先行参入による先占優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 中国人民銀行との清算行指定・RMB決済インフラ構築という能力の仕組み",
+        "rule_4_t": "PASS - RMBフロー+122%・清算行指定という具体的定量値と第三者認定",
+        "rule_6_t": "PASS - 清算行指定は構造的優位（Cornered Resource）",
+        "rule_11_t": "PASS - 中国の資本規制緩和・RMB国際化トレンドとSTANの先行インフラの合致"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。清算行指定は中国当局の認可が必要で模倣困難",
+      "kb3_t_calibration": "ARM-001（IPライセンスモデル独占→70%）と類似した先占的ポジション。RMBフロー+122%という強力な成長率と中国当局認定（清算行）が裏付け",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（RMBインフラ構築能力）。Rule 4（定量的裏付け）: PASS（+122%・清算行指定）。Rule 11（業界構造合致）: PASS（RMB国際化トレンド）。Q4発言扱い",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_III_t（競合模倣困難）・pattern_I_t（定量的差別化）。dogma.md Rule 1・4・11の3重適合。清算行指定という当局認定と+122%成長が決め手。Q4発言相当70%"
+    },
+    {
+      "id": "STAN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "CET1比率11.4%・LCR 110%超の資本充実度による規制環境下での事業継続能力と投資余力",
+      "descriptive_label": "強固な資本基盤による規制対応能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - CET1比率・LCR（資本比率）は規制コンプライアンスの結果。強固な資本を維持する能力の説明なし",
+        "rule_7_t": "FAIL - 規制資本水準はバーゼルⅢ要件であり業界共通"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。規制資本充実は業界全体の要件",
+      "kb3_t_calibration": "ADN-004（財務規律=結果→30%）と類似。資本比率は財務アウトカム",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（資本比率は結果）。Rule 3（相対的優位性）: FAIL（業界共通）。30%が上限",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・7 FAIL（結果・業界共通）。KB2-T pattern_B_t（業界共通）。dogma.md Rule 1・3違反。規制資本は業界標準要件。Q4発言でも改善しない。30%"
+    },
+    {
+      "id": "STAN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "プライベートバンキング・ウェルスマネジメントのAAM高成長（AUM CAGR 30%・H1 2014）",
+      "descriptive_label": "AAM富裕層向けウェルスマネジメント高成長",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - AUM 30%成長は結果。PB/WM事業の成長を可能にする能力（専門人材・プロダクト・ネットワーク）の説明が不十分",
+        "rule_4_t": "PASS - AUM CAGR 30%という定量値",
+        "rule_7_t": "FAIL - HSBC Private Banking・UBSのAAM部門との比較なし"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）。AUM成長は能力の結果",
+      "kb3_t_calibration": "ADN-001（EM特化運用スタイル→30%）と類似。AUM成長という結果の提示",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（AUM成長は結果）。Rule 7（純粋競合差別化）: FAIL。30-50%の範囲だが、30%が適切",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1・7 FAIL（結果・競合比較なし）。KB2-T pattern_A_t（結果を原因）。dogma.md Rule 1・7違反。AUM CAGR 30%は印象的だが結果指標。能力説明の欠如。Q4発言扱いで50%（30%より高いのはCAGR 30%という顕著な数値のため）"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "ticker": "GKN",
+  "transcript_source": "FY2014 Full Year Results (2015-02-24) [Primary]; H1 2014 Results (2014-07) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1 2014", "H1 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "自動車ドライブライン（CVJ）における世界最大シェアと、全輪駆動（AWD）システムへの技術移行による車両あたりコンテンツ増加",
+      "descriptive_label": "Driveline CVJ/AWD技術リーダーシップ（Scale Economies + Process Power）",
+      "evidence_from_transcript": "FY2014 Results Prepared Remarks (CEO Nigel Stein): 'Our CVJ market share remains strong, whilst the number of all-wheel-drive projects we are now on has increased substantially...In a modern, medium-sized SUV, we can win 8x or 9x the content of a 2-wheel-drive car...Driveline won orders in total worth an annualized GBP 700 million.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "CVJ技術力・AWDシステム設計・製造能力という仕組みを評価。市場シェアは結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "AWD SUVで2WD比8-9倍のコンテンツという定量的差別化データあり。年間受注額GBP700Mも具体的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "CVJでの強いシェア維持と純粋競合（NTN, Dana等）への言及はないが業界での技術主導的地位が示される"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "SUV・AWD市場の成長（コンテンツ増加のメカニズム）と企業ポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "AWDコンテンツ量の定量比較データ（8-9倍）が強い証拠",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "定量的な技術差別化の証拠あり（AWD 8-9倍コンテンツ）。市場成長との合致も強い。競合名が明示的でない点がやや減点"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "CVJ/AWDリーダーシップ → 車両あたりコンテンツ増加 → Driveline売上のアウトパフォーマンス → 連結CAGR +2-3pp",
+      "descriptive_label": "AWDコンテンツ増→Driveline売上→CAGR貢献",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：AWD採用増→コンテンツ増→売上増。過去5年間の市場アウトパフォーム（Driveline +8% organic in FY2014 vs global market +3%）で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算発表での体系的説明"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "直接的メカニズムで過去実績によって部分的に検証済み"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "航空宇宙向け構造部品・エンジン部品の高度製造技術と$3B規模のBoeing/Airbus向け長期プログラム受注バックログ",
+      "descriptive_label": "Aerospace長期契約バックログ・製造技術（Cornered Resource + Process Power）",
+      "evidence_from_transcript": "FY2014 Results Prepared Remarks (CEO): 'Aerospace won $3 billion of new contracts over the life of various programs...With Airbus and Boeing posting a 9-year order backlog, some 12,000 aircraft...our technology, expanding our low-cost manufacturing presence in Mexico...supported by highly cost-effective manufacturing.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "製造技術・長期契約地位という仕組みを評価。バックログは結果だが優位性の証拠として機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$3B新規受注・9年間バックログ12,000機という具体的数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Boeing/Airbus認定サプライヤー地位は一度獲得すると変更コストが極めて高い構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "商業航空機生産が今後数年間堅調という市場構造と企業ポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的な受注バックログと市場成長の合致。長期プログラムによるスイッチングコスト型の構造的優位が認められる"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Aerospace技術挿入・長期プログラム → Boeing/Airbus生産率上昇に乗じた売上成長 → 連結CAGR下支え",
+      "descriptive_label": "Aerospace長期プログラム→生産率上昇→売上CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：長期プログラム地位→Boeing/Airbus生産率上昇→売上増。A350立ち上がりや737/A320ファミリー増産で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次発表での言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "軍需の減少（C-17終了等）が相殺要因として機能",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "商業機への移行を前提に中期的に成長見込み。軍需減少のオフセットが不確実性を高める"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルなOEMカスタマーとの長期パートナーシップと、世界40工場のDriveline製造フットプリント",
+      "descriptive_label": "グローバル製造フットプリント・OEM関係（Scale Economies）",
+      "evidence_from_transcript": "FY2014 Results Prepared Remarks (CEO): 'Leveraging our global footprints is about 2 things: supporting our customers around the world; as well as using one division's existing presence in a region to support another's entry or expansion plans.' CFO (Adam Walker): 'In Driveline...40 manufacturing plants around the world'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks + qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "他のTier 1自動車部品サプライヤー（Magna, BorgWarner等）もグローバルフットプリントを持つ。相対的優位の証拠が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "40工場という数値はあるが競合との比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "グローバルフットプリントはTier 1サプライヤー共通の特徴であり相対的差別化が弱い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (partial)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "業界共通の能力であり相対的優位が弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "グローバルフットプリントは認められるが、Tier 1競合との相対的優位の証拠が不十分。業態共通の属性に近い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Powder Metallurgy部門における「Design for PM」高付加価値技術と競合参入困難な専用生産技術",
+      "descriptive_label": "Powder Metallurgy専門技術（Process Power + Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Results Prepared Remarks (CEO Stein): 'The business also won GBP 165 million new and replacement business...\"Design for PM\" orders for technically advanced, hard-to-make parts, where we'd typically obtain higher margins...GKN exclusive technology...runs faster, set up quicker and is all around more productive.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "GKN exclusive技術・Design for PM能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "GBP 165M受注、技術品で高マージンという言及はあるが競合比較データなし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長年の技術蓄積による「hard-to-make parts」の生産能力は構造的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "高度粉末冶金技術は認められるが、競合比較データが不十分で確信度は中程度"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: GKN売上GBP75億、有機的利益成長+11%、EBIT margin 9.2%、ROIC改善中（20%目標）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Driveline FY2014: 有機成長+8%（グローバル市場+3%に対してアウトパフォーム5pp）、新規受注年間GBP700M、segment margin 8.1%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Aerospace: $3B新規契約受注、Airbus/Boeing 9年間・12,000機のオーダーバックログ、A350 Engine Systems売上約50%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Powder Metallurgy FY2014: 有機成長+5%（グローバル自動車市場アウトパフォーム）、GBP165M受注",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

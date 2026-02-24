@@ -1,0 +1,131 @@
+{
+  "ticker": "WOW",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "claim_id": "WOW_001",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "WoolworthsはオーストラリアのFresh Food（生鮮食品）市場においてGrocery（加工食品）を上回る市場シェア成長を実現する生鮮食品調達・鮮度管理能力を有する。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 調達・鮮度管理という能力の記述",
+        "rule06": "PARTIAL - 生鮮食品調達能力はスーパーマーケットとして必要な能力だが、Woolworthsの『Fresh Food People』ブランドポジションと連動した能力は補完的優位を超え得る",
+        "rule07": "FAIL - Colesとの具体的な生鮮食品調達能力比較なし",
+        "rule12": "PASS - FY2014年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["G-T (競合との差別化が不明確: Colesも生鮮食品強化を進めており、明示的な能力差異がない)"],
+        "high_eval_patterns": ["III-T (能力を示す: 市場シェア上昇という結果の背景にある調達能力)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule01 (能力 vs 結果)", "rule07 (競合との差別化)"],
+        "conclusion": "生鮮食品調達能力はWoolworthsブランドと連動するが、Colesとの明示的な能力差異が示されていない。市場シェア成長は結果。50%が適切。"
+      },
+      "scoring_rationale": "生鮮食品における能力主張。Woolworthsの長年の『Fresh Food People』ブランド戦略と整合する。ただしColesとの定量的差異なし。一次ソースで50%維持。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WOW_002",
+      "claim_type": "competitive_advantage",
+      "power_type": "network_economies",
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "WoolworthsのEveryday Rewardsロイヤルティプログラムと顧客データ分析（Quantiumとの提携）は、個人化されたオファー（週220万件）を通じて顧客粘着性を高める能力を有する。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - ロイヤルティプログラムと顧客粘着性の能力主張",
+        "rule04": "PASS - 週220万件という具体的な定量根拠",
+        "rule07": "FAIL - Coles FlyBuysとの直接比較なし",
+        "rule12": "PASS - FY2014年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["I-T (定量的差別化: 週220万件の個人化オファーという具体的な規模)", "IV-T (構造的市場ポジション: ロイヤルティデータを活用した顧客分析基盤)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule07 (競合との差別化)"],
+        "conclusion": "週220万件の個人化オファーは実装規模を示す有効な根拠。Quantiumとの提携による分析能力は差別化要因。ただしColesも類似のプログラム（FlyBuys）を保有。"
+      },
+      "scoring_rationale": "ロイヤルティプログラムの規模（週220万件）と顧客分析提携は有効な能力根拠。ただしColes FlyBuysとの差異が明示されていない。一次ソース、50%維持。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WOW_003",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "Woolworthsのオンラインスーパーマーケットはオーストラリアの食料品・酒類・ニュージーランドスーパーマーケットのオンライン首位を獲得し、多チャネル統合（Click&Collect、専用フルフィルメントセンター）による差別化を実現している。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - オンライン多チャネル統合能力の主張",
+        "rule04": "PASS - オンライン首位という市場ポジションの具体的主張",
+        "rule07": "PARTIAL - オンライン首位という比較優位は示されるが、Colesのオンラインシェアとの定量比較なし",
+        "rule12": "PASS - FY2014年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["IV-T (構造的市場ポジション: オンライン首位というポジション)", "I-T (定量的差別化: オンライン首位であることの業界内ポジション)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule07 (競合との差別化)"],
+        "conclusion": "オンライン首位は市場ポジションを示す有効な根拠。Click&Collectなどのインフラ整備も確認。2015年時点でのオンライン食料品普及率はまだ低く成長途上。"
+      },
+      "scoring_rationale": "オンライン首位とマルチチャネル統合は実質的な能力主張。一次ソース。ただし「スイッチングコスト」としての蓄積はまだ初期段階。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WOW_004",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "WoolworthsのMercury Supply Chain（Mercury II）は全事業（食品・酒類・非食品）にわたる在庫最適化・補充・物流技術の構造的インフラ優位性を形成する。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - サプライチェーンインフラという能力主張",
+        "rule04": "PARTIAL - Mercury IIという固有名称を持つ具体的システム、ただし定量的成果指標が不明確",
+        "rule07": "FAIL - Colesのサプライチェーンとの比較なし",
+        "rule12": "PASS - FY2014年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["III-T (能力を示す: サプライチェーンインフラという構造的能力)", "IV-T (構造的市場ポジション: 全事業統合サプライチェーンという規模)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule06 (補完的能力 vs 構造的優位)", "rule07 (競合との差別化)"],
+        "conclusion": "Mercury IIは実際の構造的インフラ投資を表し、スケール経済の基盤となる。ただしColesも大規模サプライチェーン投資をしており、定量的優位が不明確。"
+      },
+      "scoring_rationale": "固有名称を持つサプライチェーンシステム（Mercury II）は実質的な能力投資の証拠。一次ソース。競合比較なしだが構造的インフラとして50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WOW_005",
+      "claim_type": "competitive_advantage",
+      "power_type": "branding",
+      "transcript_type": "primary",
+      "source_quarter": "FY2014",
+      "claim_summary": "WoolworthsのKirkland相当のプライベートブランド（Woolworths Gold, Select, Own Brand）は、NBと競合しながら粗利ミックス改善と顧客粘着性を実現する複層的ブランド構造を持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - PBブランド構造という能力主張",
+        "rule06": "PARTIAL - PBブランドはスーパーマーケット共通の戦略だが、3層構造（Gold/Select/Own Brand）の体系性は差別化要因",
+        "rule07": "FAIL - ColesのPBブランドとの具体的比較なし",
+        "rule12": "PASS - FY2014年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["B-T (業界共通能力: PBブランド保有はスーパーマーケット業界共通の戦略)"],
+        "high_eval_patterns": ["III-T (能力を示す: 3層のPBブランド体系という組織的能力)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule06 (補完的能力 vs 構造的優位)", "rule07 (競合との差別化)"],
+        "conclusion": "3層PBブランド構造は体系的だが、Colesも類似のPBブランド体系を持つ。差別化の主張として弱め。ただし一次ソースで50%。"
+      },
+      "scoring_rationale": "3層PBブランド体系は有効な能力主張。ただしパターンB（業界共通）の懸念あり。Colesとの明示的比較なし。一次ソースで50%維持。",
+      "final_confidence": 0.5
+    }
+  ]
+}

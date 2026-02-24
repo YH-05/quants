@@ -1,0 +1,178 @@
+{
+  "ticker": "SUNP",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": [6, 7, 8, 9, 10],
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Taro高収益ニッチ事業成長 → Sun全体CAGR押し上げ（US事業への貢献）",
+      "evidence": "Taro売上→Sun US全体への直接貢献。FY2015 Taro $863M (+14%YoY)",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "Taro売上→Sun US全体への直接貢献という明確な1ステップ接続。過去実績で裏付けあり"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "Taro成長→Sun US売上という1ステップの直接的接続。実績（$863M +14%）で裏付け"
+        }
+      ],
+      "confidence_adjustments": [],
+      "final_confidence": 0.60,
+      "overall_reasoning": "直接的接続（1ステップ）。Taro成長はSun US事業成長に直接反映される。過去実績（+14%YoY）で裏付けあり。60%が妥当"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Ranbaxy統合による新興市場（Emerging Markets）への規模拡大と地理的多様化能力",
+      "evidence": "Q4 FY2015 MD: 'Post the Ranbaxy acquisition, we now have a meaningful presence in emerging markets. For Q4, sales in emerging market were USD 123M, accounting for 12% of total sales.' 'Synergy benefits of USD 250M by third year post closure.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "Ranbaxy統合は戦略的行動（ルール8-T：戦略≠優位性）。統合完了直後で運営能力の実績なし"
+        },
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "EM規模拡大は統合の「結果」。統合後の運営能力は「能力」だが実証データなし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "M&A統合は戦略（パターンF-T）。統合直後で優位性として未確定"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_8_t",
+          "adjustment": -0.1,
+          "reasoning": "戦略≠優位性（ルール8-T）"
+        },
+        {
+          "source": "integration_uncertainty",
+          "adjustment": -0.1,
+          "reasoning": "Ranbaxy統合の複雑性・コンプライアンスリスク（Ranbaxy自体がFDA問題を抱えていた）が実現を不透明にする"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "Ranbaxy統合によるEM事業拡大は戦略（パターンF-T、ルール8-T）。統合完了直後で運営能力の実績なし。Ranbaxy自体のFDA問題も重なる。30%が妥当"
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Ranbaxy統合シナジー（USD 250M、3年目）→ Sun全体CAGR+1-2%程度の収益寄与",
+      "evidence": "MD: 'Synergy benefits of USD 250M by third year post closure'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "統合シナジーUSD 250M目標は経営陣の見通し。検証には3年必要。因果チェーンが長い（統合完了→シナジー実現→収益寄与）"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "因果チェーンが長い（統合→統合完了→シナジー→収益）。検証困難"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_C_t",
+          "adjustment": -0.1,
+          "reasoning": "3年後の目標値であり、現時点での検証不可能"
+        },
+        {
+          "source": "ranbaxy_compliance_risk",
+          "adjustment": -0.1,
+          "reasoning": "Ranbaxy自体のコンプライアンスリスクがシナジー実現を不透明にする"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "目標値（USD 250M、3年後）は提示されているが、複雑な統合プロセスとRanbaxyコンプライアンスリスクで達成確度が低い。30%が妥当"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Sun Pharma インド市場シェア：FY2014で5.4%（#2）→ FY2015で約9%（#1）。処方シェア首位のドクター専門科：FY2014 7クラス→FY2015 12クラス",
+      "evidence": "Q4 FY2015 CEO発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。インド市場シェアとクラス別処方シェアはCEOが開示した定量事実。シェア拡大（5.4%→9%）はRanbaxy統合効果を含む可能性があるが、開示事実として70%"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Sun Pharma R&D支出：FY2015 Q4で売上の9%超（INR 579crores）、FY2015全年INR 1,955crores。承認ANDA 438件（FY2015）、特許申請1,598件、951件許可",
+      "evidence": "Q4 FY2015 CFO/MD発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。R&D支出・ANDA・特許データはCFO/MDが開示した事実。438ANDAおよび951許可特許は検証可能な数値。70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "30-40": 2,
+      "60-70": 1,
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

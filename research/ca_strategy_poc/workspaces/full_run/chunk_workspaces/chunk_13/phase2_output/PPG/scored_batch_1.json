@@ -1,0 +1,70 @@
+{
+  "ticker": "PPG",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PPG-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PPG FY2014実績：売上$154億（+8%）、調整後EPS $9.75（+27%）、Q4調整後EPS $2.11（+26%）、Q4ボリューム+4%、Comex売上$175M（部分期）",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "PPG-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "2014-2015年キャッシュ展開（M&A+自社株買い$30-40億目標→2014年$32億達成）→ EPS accretion → 長期複利EPS成長 → CAGR",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule08_strategy_not_advantage"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "キャピタルアロケーション戦略の一貫性は優位性を支援するが、M&Aの質（統合能力）が不確実性要因",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: M&A→EPS accretion→成長は2ステップで方向性は妥当（dogma.md過去実績との整合性）。2014年$3.2B展開目標達成という定量実績で信憑性あり。AkzoNobel統合前倒し達成がM&A能力の証拠。ただし個別M&Aの質は不確定で50%。"
+    },
+    {
+      "claim_id": "PPG-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Branding",
+      "claim_text": "原油価格下落 → 炭化水素連動原材料コスト低下交渉 → PPGの差別化原材料調達（炭化水素約20%、うち過半は差別化品）→ 競合より有利なコスト削減 → マージン拡大",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "「交渉中」であり実現はこれから。差別化原材料での有利交渉という主張の根拠が薄い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: 差別化原材料調達の有利交渉という主張は「交渉中」の段階であり実現前（dogma.md証拠要件不足）。炭化水素連動20%という数値はあるが、競合Sherwin-Williams等との調達差の証拠なし。dogma.mdルール3（相対優位）違反。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"30-40": 1, "50-60": 1},
+    "gatekeeper_applied": false
+  }
+}

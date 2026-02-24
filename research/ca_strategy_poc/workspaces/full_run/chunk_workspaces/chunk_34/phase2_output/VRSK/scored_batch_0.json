@@ -1,0 +1,175 @@
+{
+  "ticker": "VRSK",
+  "batch_index": 0,
+  "batch_total": 1,
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Network Economies / Cornered Resource",
+      "descriptive_label": "保険業界コントリビュータリーデータベースのネットワーク効果",
+      "phase1_confidence": 0.7,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "コントリビュータリーデータモデルという仕組みを評価。数十年の蓄積が競合に短期複製不可能"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_IV_structural_market_position",
+          "high_eval_patterns": ["pattern_IV"],
+          "adjustment": 0,
+          "reasoning": "保険規制・引受・理財で必須のデータベース。業界構造と完全合致。cat bond市場80%シェアは定量的証拠"
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#2 (90%): ローカル規模経済。VRSKはさらに強固なネットワーク効果を持つが競合比較数値欠如",
+          "calibration_adjustment": 0
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.7,
+      "confidence_rationale": "保険業界コントリビュータリーデータベースは数十年の蓄積で代替困難なネットワーク効果を持つ。Pattern IV合致。cat bond 80%シェアが定量的裏付け。ただし競合（RMS等）との直接数値比較なく70%に留まる"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "データNW効果→価格エスカレータ→保険部門有機成長",
+      "phase1_confidence": 0.7,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "direct", "adjustment": 0, "reasoning": "多年契約の価格エスカレータを明示。2ステップ直接因果"},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.7,
+      "confidence_rationale": "データ優位→年次価格引き上げは直接的2ステップ因果。保険部門12.3%成長が裏付け"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs / Network Economies",
+      "descriptive_label": "Argusコントリビュータリーデータによるスイッチングコスト",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "adjustment": 0, "reasoning": "コントリビュータリープラットフォームの仕組みを評価。脱退コストが高い構造"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "adjustment": 0,
+          "reasoning": "能力としてのコントリビュータリーモデル。競合比較数値欠如"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "Argusコントリビュータリーモデルのスイッチングコストは論理的に強いが定量的裏付けと競合比較が不足"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "Argusスイッチングコスト→高維持率→金融サービスCAGR",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_direct", "adjustment": 0},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "mid-teens成長ガイダンスは一貫しているがスイッチングコストとの因果チェーンの数値根拠が不足"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs / Cornered Resource",
+      "descriptive_label": "WoodMac エネルギー業界分析サブスクリプションのスイッチングコスト",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "adjustment": 0, "reasoning": "99%という具体的定量データで能力を裏付け"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "high_eval_patterns": ["pattern_I"],
+          "adjustment": 0,
+          "reasoning": "99% retention は強力な定量証拠（Pattern I）。ただしQ2 2015発言（従）で-10%調整"
+        },
+        "dogma_adjustment": {"applied_rules": ["Rule 12: Q2 2015発言（従）"], "adjustment": -5}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "99% customer retention は強力な定量的証拠（Pattern I）。Q2 2015の発言（従）で若干調整するが、定量的証拠の強さから 50% 維持"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "WoodMac99%維持率→安定成長＋クロスセル→CAGR貢献",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "direct", "adjustment": 0},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "CAGR接続はQ2 2015発言ながら定量的根拠あり。50%"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "厳格なIRRハードルレートによる資本配分規律",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "adjustment": 0, "reasoning": "IRRハードルレートという仕組み。Interthinx撤退がネガティブケースとして機能"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "adjustment": 0,
+          "reasoning": "15%ハードル・20%超ポートフォリオIRRという具体数値。撤退例でパターンIIIも合致"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "IRRハードルレートと撤退例は能力の実在を示す（Pattern I + III）。ただし同業他社も類似規律を持つ可能性があり純粋競合比較が不足"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "IRRハードル→戦略M&A→有機成長→EPSのCAGR経路",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "indirect", "adjustment": 0},
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "資本配分→CAGR接続は3ステップ。長期有機成長9%のトラックレコードは整合。50%"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs / Network Economies",
+      "descriptive_label": "Xactware 損害算定プラットフォームの業界標準スイッチングコスト",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "adjustment": 0, "reasoning": "コミット型サブスク比率増加がロックイン深化を示す"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "adjustment": 0,
+          "reasoning": "業界ワークフロー統合による高スイッチングコスト（Pattern III）。直接的定量比較なし"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "業界標準としてのXactwareのスイッチングコストは論理的に強い。コミット型シフト言及が裏付け。定量的競合比較の欠如で50%"
+    }
+  ],
+  "summary": {
+    "total_claims_scored": 9,
+    "competitive_advantage_claims": 5,
+    "cagr_connection_claims": 4,
+    "avg_confidence": 0.556,
+    "high_confidence_claims": [1, 2],
+    "medium_confidence_claims": [3, 4, 5, 6, 7, 8, 9],
+    "low_confidence_claims": []
+  }
+}

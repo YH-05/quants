@@ -1,0 +1,394 @@
+{
+  "ticker": "HRL",
+  "transcript_source": "Q1 FY2015 Earnings Call (2015-02-19) / Q4 FY2015 Earnings Call (2015-11-24)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q4 2014", "Q1 2015", "Q2 2015", "Q3 2015"],
+    "note": "HRLの会計年度はOctoberエンドのため、2015年2月発表はQ1 FY2015（10月-1月期）。PoiT制約(2015-09-30)内のQ4 FY2015(2015-11-24)は対象外。Q4 FY2014(201411)とQ1-Q3 FY2015(2月/5月/8月)が対象"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "SPAM・SKIPPY・Jennie-Oなど多様な消費者向けブランドポートフォリオによる収益の多様化と安定性",
+      "descriptive_label": "多様な消費者ブランドポートフォリオによる収益分散優位性",
+      "evidence_from_transcript": "Q1 FY2015 CEO発言: 'adjusted net earnings up 22% from a year ago on record first quarter sales of $2.4 billion.' 'SKIPPY has been a wonderful acquisition for the company.' 'SPAM product line, have good consumer marketing against that line and continue to add flavors.' Q4 FY2015: 'all 5 segments registered earnings growth this year... Adjusted earnings per share were $2.64, representing an 18% increase over last year with all 5 segments contributing.' '50th consecutive year in which we have increased our dividend rate.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Jeffrey Ettinger (CEO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "ポートフォリオの多様性は結果の提示が中心。なぜHRLのブランドポートフォリオが競合を上回るのかの仕組みの説明が限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "5セグメント全成長（18% EPS増）、50年連続配当増という複数の定量的証拠。SKIPPY 21%成長、Jennie-O 56%利益成長（Q1）等の個別データも具体的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "ポートフォリオ多様化は補完的戦略の可能性が高く、構造的優位性としての証明が弱い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Tyson Foods、Pilgrim's等競合との比較なし。5セグメント全成長は内部実績の提示のみ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言（従・②相当）。Q4 FY2014(201411)が最新の年次発表"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（業界共通能力）の懸念あり",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "競合との差別化が不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "5セグメント全成長・18% EPS増・50年連続配当増は印象的だが、多様化ポートフォリオ戦略は多くの食品メーカーが採用しており差別化要因としては弱い。SPAM/SKIPPY/Jennie-Oという個別ブランド価値の説明があれば優位性が高まる"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "Q1 FY2015: 調整後EPS +22%、売上高$2.4B（+7%）、5セグメント全成長。FY2015通年: 調整後EPS $2.64（+18%）、50年連続配当増",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "フードサービス向け付加価値製品（BACON 1・Pizza Toppings・FIRE BRAISED meats等）のイノベーション能力",
+      "descriptive_label": "フードサービス向けイノベーション製品開発能力",
+      "evidence_from_transcript": "Q1 FY2015 CEO Q&A発言: 'Our foodservice group achieved strong sales of branded items such as HORMEL BACON 1 fully cooked bacon, HORMEL pizza toppings and MENUMASTER hams.' 'the innovative new products that the team's come out with, including the BACON 1 that we're having good success with right away this year, and then also their focused approach on certain of the business segments, some of the noncommercial areas such as colleges and universities and health care that they've really been able to create new items for and really create some excellent relationships.' Q4 FY2015: 'HORMEL FIRE BRAISED meats and Hormel Pizza Toppings' as drivers of 27% operating profit increase.",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Jeffrey Ettinger (CEO)",
+      "section_type": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "BACON 1・FIRE BRAISEDという具体的な製品イノベーション名が挙げられており、フードサービス特化という仕組みの説明あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "フードサービス向け特化製品開発は戦略的選択の可能性が高い。ただし専門的なノウハウ蓄積という構造的優位性の面もある"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合（Tyson、Pilgrim's等）との直接比較なし"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Process Power）への部分的合致",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "BACON 1・FIRE BRAISED等のフードサービス向け付加価値製品は具体的な製品として言及されており、市場好評が確認されている。ただし競合との比較がなく、イノベーション能力自体の仕組みの説明が弱い。フードサービス市場への特化・関係構築というProcess Powerの萌芽は見られる"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "製造効率化による持続的マージン改善能力（Refrigerated Foods, Grocery Products両セグメントで長期マージンガイダンス引き上げ）",
+      "descriptive_label": "製造効率化による持続的マージン改善能力",
+      "evidence_from_transcript": "Q4 FY2015 CEO発言: 'Refrigerated Foods... significant progress in their efforts to improve product mix and drive sustainable margin improvement... we are increasing our long-term segment profit margin range from 5% to 8% up to 7% to 10%.' 'Grocery Products... significant improvements in manufacturing efficiencies over this past year giving us the confidence to raise our long-term Grocery Products segment operating margin guidance from 12% to 14% up to the 13% to 15%.' Q&A: 'tried to attain some long-term efficiencies. Refrigerated Foods certainly has not been quiet in that respect also.'",
+      "transcript_call_type": "Q4_quarterly",
+      "speaker": "Jeffrey Ettinger (CEO) / James Snee (COO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「significant improvements in manufacturing efficiencies」と「sustainable margin improvement」という能力への言及あり。植物閉鎖（Stockton）とライン最適化という具体的な施策も言及"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "Refrigerated Foods: 5-8%→7-10%、Grocery: 12-14%→13-15%という長期マージンガイダンスの定量的引き上げ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "製造効率化は補完的改善の可能性もあるが、Stockton植物閉鎖と再編による「sticking efficiencies」という表現は構造的改善を示唆"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q4 FY2015発言（2015-11-24、PoiT cutoff 2015-09-30以降）のため参考情報として扱う。ただし方向性はQ1-Q3の実績に整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Process Power）",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 FY2015はPoiT cutoff後の発言のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "2つのセグメントで長期マージンガイダンスを引き上げるという経営陣のコミットメントは、製造効率化の持続性への自信を示している。Stockton植物閉鎖という具体的な施策が裏付け。ただしQ4 FY2015はPoiT cutoff後の発言であり、信頼度調整が必要"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "Refrigerated Foods長期マージンガイダンス: 5-8%→7-10%に引き上げ。Grocery Products: 12-14%→13-15%に引き上げ（FY2015年次発表）",
+      "transcript_call_type": "Q4_quarterly",
+      "affected_claims": [4]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "食料品M&A統合能力（SKIPPY・CytoSport・Applegate買収の統合実績）",
+      "descriptive_label": "食品ブランドM&A統合能力",
+      "evidence_from_transcript": "Q1 FY2015 CEO Q&A: 'SKIPPY has been a wonderful acquisition... we've done a good job of gaining new distribution. We have our new ad campaign that we have confidence in going forward... looking to create innovative products, the first of which are the SKIPPY Singles items out in the marketplace.' 'CytoSport... a lot of activity has gone on in these first few months of ownership. We've already seen some really significant sales achievements within the food, drug and mass channel that we frankly kind of knew that HORMEL could -- would be an advantage.' Q4 FY2015: 'CytoSport acquisition is meeting our valuation expectations.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Jeffrey Ettinger (CEO)",
+      "section_type": "answer",
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_10_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "M&A統合の結果が中心。HORMELが流通チャネル力を統合に活用するという能力の一側面（FDM流通活用）の説明はある"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "M&Aは戦略であり、統合能力の仕組みが説明されていない"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "absent",
+            "reasoning": "断念事例への言及なし"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（結果を能力と取り違え）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "SKIPPY・CytoSport・Applegateの統合成功は示されているが、統合能力の仕組み（プレイブック、ブランド活性化プロセス）の説明が弱い。FDM流通チャネルへの活用という一点は具体的だが、M&A統合全体の優位性証明には不十分"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Jennie-Oブランドの「Make The Switch」キャンペーンによるターキー消費拡大能力と健康志向トレンドへの対応",
+      "descriptive_label": "Jennie-Oによる健康志向ターキー消費拡大マーケティング能力",
+      "evidence_from_transcript": "Q1 FY2015 CEO発言: 'Jennie-O Turkey Store delivered impressive growth this quarter, exceeding our expectations, with segment profit up 56% and sales up 10%... JENNIE-O lean ground turkey, rotisserie turkey and premium seasoned deli turkey led sales growth this quarter. We continue to support and build the Jennie-O brand through our Make The Switch media campaign.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Jeffrey Ettinger (CEO)",
+      "section_type": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "「Make The Switch」というマーケティングキャンペーンは能力の具体的名称として言及されているが、仕組みの説明は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Q1でsegment profit +56%、sales +10%という数値。ただしQ4 FY2015ではAIの影響で-23%と振れ幅が大きい"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "健康志向トレンドとJennie-Oターキー製品の整合性は示されているが、構造的優位性としての証明は弱い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（業界共通トレンドへの依存）の懸念",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "AIウイルスによる鳥インフルエンザリスクが顕在化（Q4 FY2015）し、収益安定性が低い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Make The SwitchキャンペーンはJennie-Oの健康志向ポジショニングとして機能しているが、Q4 FY2015での鳥インフルエンザによる大幅減益（-23%）から、農場依存リスクが高く競争優位性の安定性に疑問。健康志向トレンドへの対応は他競合も追随可能"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "多様な消費者ブランドポートフォリオ → 5セグメント相互補完成長 → 安定的EPS成長（18%+）",
+      "descriptive_label": "ポートフォリオ多様化→収益安定成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "5セグメント→相互補完（Jennie-O強い時期にRefrigerated Foods低調など）→安定成長という接続は合理的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言由来"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q1 FY2015で全5セグメント成長・22% EPS増という実績は多様化の効果を示しているが、Q4 FY2015のAIショック（Jennie-O -23%）は多様化でも完全には補えないリスクを示した。CAGR接続の信頼度は限定的"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "フードサービス向けイノベーション製品 → 市場シェア獲得＋プレミアム価格 → Refrigerated Foods利益成長",
+      "descriptive_label": "フードサービスイノベーション→プレミアム価格→利益成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "BACON 1→フードサービス売上→Refrigerated Foods利益成長の接続。Q4 FY2015で27% OI増として実証されているが、Refrigerated Foods全体の効果は分解困難"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言由来"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "フードサービス向けイノベーション製品の寄与は確認されているが、全体利益成長における貢献度の分解が不明。肉類コスト環境（豚価格）の影響と絡まっており、純粋な優位性貢献の測定が困難"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "製造効率化 → セグメントマージン改善（+200bps）→ EPS成長持続",
+      "descriptive_label": "製造効率化→マージン改善→EPS成長持続",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "製造効率化→マージン引き上げ（7-10%/13-15%）→持続的EPS成長の直接接続。2つのセグメントで定量的に示されている"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q4 FY2015発言（PoiT cutoff後）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 FY2015（PoiT cutoff後）のため-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Refrigerated/Grocery の両セグメントで長期マージンガイダンスを引き上げるという定量的コミットメントはCAGR接続として信頼性が高い。ただしPoiT cutoff後の発言のため確信度を調整"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "M&A統合能力（SKIPPY/CytoSport実績）→ 継続的なブランド買収・統合 → 売上規模拡大",
+      "descriptive_label": "M&A統合→ブランド拡大→売上CAGR",
+      "source_advantage": 6,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "M&A統合成功→次の買収への意欲→ポートフォリオ拡大という接続は合理的だが、M&A機会の継続的な確保という前提に不確実性"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "M&A優位性の証明自体が弱い（#6）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "SKIPPY/$203M（2014年）、CytoSportも期待通りという実績はあるが、継続的なM&Aが長期CAGRの主要ドライバーになれるかは不確実。食品業界での適切なM&A機会・価格の継続的確保が前提"
+      }
+    }
+  ]
+}

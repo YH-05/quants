@@ -1,0 +1,92 @@
+{
+  "ticker": "WTB",
+  "batch_index": 0,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier InnのUKネットワーク規模による立地密度の優位性（競合比172拠点以上の差）",
+      "descriptive_label": "国内ネットワーク密度優位（Scale Economies / Branding）",
+      "seven_powers_type": "Scale Economies",
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "定量的差別化（172拠点差）はKB3 few-shot の high confidence 事例に準ずる。ネットワーク密度拡大トレンド（134→172）が持続性を示す",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_I_t（定量的差別化）に合致。Travelodgeとの具体的拠点数比較あり。Scale Economiesとして市場構造との適合性高い。調整不要で70%維持。",
+      "dogma_applied": ["dogma_rule_3", "dogma_rule_7"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Inn直販チャネル（premierinn.com）によるOTA手数料回避と顧客粘着力",
+      "descriptive_label": "直販デジタルチャネル優位（Switching Costs / Process Power）",
+      "seven_powers_type": "Switching Costs",
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_III_t",
+      "kb3_calibration_note": "80%直販比率は定量的だが競合比較なし。KB3 mid confidence 事例に準ずる",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_III_t（能力>結果）に合致。80%という定量値は評価できるが、Travelodge等競合との比較不在で competitive differentiation が確認できない。50%維持。",
+      "dogma_applied": ["dogma_rule_3"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Costaブランドの英国市場におけるカテゴリー支配（ブランド選好スコアで競合を大幅リード）",
+      "descriptive_label": "コーヒーショップブランド覇権（Branding）",
+      "seven_powers_type": "Branding",
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "ブランド優位はYouGov指標で示されるが背後の仕組みの説明が不足。KB3 mid confidence に準ずる",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Starbucks・Caffe Neroとの直接比較あり（KB2 pattern_I_t）。しかしrule_1_t「能力vs結果」の懸念が残る。Branding Powerとしては認識できるが「なぜ選ばれるか」の構造説明不足。50%維持。",
+      "dogma_applied": ["dogma_rule_3", "dogma_rule_7"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Innのダイナミックプライシング能力による収益最大化（高占有率でのARR成長）",
+      "descriptive_label": "独自ダイナミックプライシングシステム（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "「still quite a manual process」という開示はKB3 low confidence 事例（能力の限界開示）に該当",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）に近い。業界共通のRevenue Managementとの差別化が不明確。「still manual」開示が能力の未成熟を示す。30%維持。",
+      "dogma_applied": ["dogma_rule_5"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Whitbreadの強固なバランスシートによる不動産取得優位性（フリーホールド物件の競争的取得）",
+      "descriptive_label": "財務力に基づく不動産取得優位（Cornered Resource）",
+      "seven_powers_type": "Cornered Resource",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "財務強度は競争優位の前提条件として評価されるが、Cornered Resourceとしての唯一性が欠如。KB3 low confidence 事例",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）に合致。バランスシートの強さは財務戦略であり、競合が財務を改善すれば模倣可能。Travelodgeとの比較では一時的優位に過ぎない。30%維持。",
+      "dogma_applied": ["dogma_rule_5"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"20-30": 2, "40-50": 2, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

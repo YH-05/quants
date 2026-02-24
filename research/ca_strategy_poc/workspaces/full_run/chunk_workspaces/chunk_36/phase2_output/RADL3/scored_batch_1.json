@@ -1,0 +1,179 @@
+{
+  "ticker": "RADL3",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "統合後のバックオフィス・ロジスティクス共有による規模の経済（Raia/Drogasil統合効果）",
+      "final_confidence": 0.50,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「統合が完了した」という結果の面が強い。統合後インフラ共有は能力として評価できるが、すでに完了した能力"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "EBITDA margin 6.6%（過去最高）が間接的証拠。直接的な統合コスト削減数値なし"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "2ブランド・共有バックオフィス構造は競合が短期で再構築困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "統合効果（結果）を優位性として提示するリスク"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.10,
+          "reasoning": "統合完了後の持続的優位性の不確かさ"
+        }
+      ],
+      "overall_reasoning": "統合後規模の経済は方向性として認められるが、統合固有の効果の定量分離が困難。EBITDA margin改善は結果として示されている。50%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "実店舗密度向上による顧客粘着性（近隣店舗増設が重複顧客の消費単価を増加させる）",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「粘着性の高まり」は結果に近い。高密度出店による顧客粘着強化の仕組みとして評価できるが、能力説明が限定的"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "「average tickets go up」という定性的説明のみ。具体的な客単価増加率なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合。地域密度が重要な業界構造"
+        },
+        {
+          "pattern_id": "pattern_D_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "定性的のみのパターン。定量データなし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_D",
+          "adjustment": -0.10,
+          "reasoning": "定量データ不足。業界構造合致はあるが能力証明が弱い"
+        }
+      ],
+      "overall_reasoning": "高密度出店による顧客粘着効果は業界構造合致（地域密度の重要性）があるが、定量的裏付け不足。40%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 131店舗新規出店（うち51店はQ4集中）、11店閉鎖。2015年計画: 130店舗出店。90契約済み（Q4 call時点）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "顧客識別率78%（来店顧客の78%をデータベースで特定）、2014年時点で23,000名の従業員、うち3,300名が薬剤師",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2011年合併後3年間: 店舗数41%増、売上62%増（年率17.2%）、EBITDA 86%増。2014年EBITDA margin 6.6%（過去最高）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 1,
+      "50-60": 1,
+      "70-80": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

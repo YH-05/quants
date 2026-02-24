@@ -1,0 +1,336 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "12,000+店舗ネットワークの規模経済と新店ROI 20%/回収2年未満",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "ROI 20%・回収2年未満という定量的裏付けあり"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "high_eval_patterns": [
+            "pattern_I"
+          ],
+          "adjustment": 0,
+          "reasoning": "新店ROI 20%・回収2年未満は定量的差別化（Pattern I）。ただしDollar Tree等との比較なし"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "新店ROI 20%・回収2年未満はPattern I合致の定量証拠。ただし競合（Dollar Tree）との直接比較なく、規模経済の仕組み（仕入れコスト優位）の定量開示もなし。50%"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "不動産「financial returns first」モデルによる8件/日実行能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "8件/日・年間1,000件以上の不動産実行能力は定量的裏付け"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "high_eval_patterns": [
+            "pattern_III"
+          ],
+          "adjustment": 0,
+          "reasoning": "不動産選定・実行プロセスという能力（Pattern III）。ただし Dollar Tree の類似実行能力と比較なし"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "1,000件/年超の不動産実行能力はPattern III合致。ROI基準の規律ある選定が裏付け。ただし競合比較なく50%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs",
+      "descriptive_label": "25年連続SSS成長に示す顧客来店習慣と利便性",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "25年連続成長は実績だが、これは結果。切り替えコストの仕組みの説明が薄い"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": [
+            "pattern_A"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern A: 25年連続成長（結果）をSwitching Costs（能力）として提示"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "30四半期連続のトラフィック・チケット増加はSwitching Costsの間接証拠。ただしPattern A（結果→能力）の問題あり。50%は維持可能"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "シュリンク管理の組織横断的取り組みによる粗利改善能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "70%の商品カテゴリ・70%の地域でシュリンク改善という定量データ"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "high_eval_patterns": [
+            "pattern_I"
+          ],
+          "adjustment": 0,
+          "reasoning": "70%/70%という定量データで差別化を裏付け（Pattern I）。組織横断的プロセスが能力の証拠"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "シュリンク改善の定量データ（70%/70%）はPattern I合致。組織横断的アプローチが能力の証拠。ただし競合比較なく50%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding",
+      "descriptive_label": "Smart & Simple プライベートブランドの価格帯訴求力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "$1価格帯のPLは顧客吸引力があるがブランドプレミアムではない"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": [
+            "pattern_B"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern B: PL展開は多くの小売業者が行う。DG固有のブランド優位の証拠薄い"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "$1価格帯PL展開はPattern B（業界共通）。Branding優位としての証拠が薄い。30%"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "デジタルクーポン（100万登録・3500万DL）による顧客データ活用能力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "ローンチ直後で実効果が不明"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_C_causal_leap",
+          "rejection_patterns": [
+            "pattern_C"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern C: 登録者数→購買行動変容への因果が飛躍。まだ展開初期で実証不足"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "デジタルクーポンはPattern C（因果飛躍）。ローンチ直後で実効果未実証。30%"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "ERP（Symphony EYC）による需要予測統合とスケーラブルサプライチェーン",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "ERP更新は基盤整備。移行中で優位性は未実証"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_C_causal_leap",
+          "rejection_patterns": [
+            "pattern_C"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern C: ERP導入→Scale Economies強化への因果が飛躍。競合も同様のシステムに投資可能"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "ERP移行中で優位性が未実証（Pattern C）。競合も同様の投資が可能。30%"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "descriptive_label": "DG Marketのテストラボ活用による段階的フォーマット進化",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "テストラボとしての活用は戦略的知恵を示すが、競合が模倣できない理由が不明確"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_F_strategy_confusion",
+          "rejection_patterns": [
+            "pattern_F"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern F: DG Market活用は戦略であり、Counter-Positioning の構造的優位とは異なる"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "テストラボ戦略はPattern F（戦略と優位性の混同）。Counter-Positioning として模倣困難な構造の証拠なし。30%"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "カテゴリーマネジメントの非消費財への拡張（6四半期連続改善）",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "6四半期連続の非消費財改善という実績で能力を裏付け"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_III_capability_over_result",
+          "high_eval_patterns": [
+            "pattern_III"
+          ],
+          "adjustment": 0,
+          "reasoning": "カテゴリーマネジメント能力はPattern III合致。消費財主体業態での非消費財成長は差別化的"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "非消費財6四半期連続改善はPattern III合致。消費財偏重の dollar store で非消費財を伸ばす能力は示唆的。競合比較なく50%"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "シェア成長（消費財 mid-single-digit 単位・金額ともに全期間）",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_fail",
+          "reasoning": "シェア成長は結果。背後の能力の説明が薄い"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": [
+            "pattern_A"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern A: シェア成長（結果）を Network Economies（能力）として提示"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "シェア成長はPattern A（結果→能力への誤帰属）。Network Economies は dollar store には通常適用不能。30%"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "PL・海外調達・カテゴリーマネジメントによるIMU継続改善",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "FY2015 H1で45bp+36bpの粗利拡大という定量的実績"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "high_eval_patterns": [
+            "pattern_I"
+          ],
+          "adjustment": 0,
+          "reasoning": "粗利改善の定量実績（Pattern I）。複数レバーの組み合わせが能力の証拠"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "FY2015 H1での粗利拡大（45bp+36bp）はPattern I合致の定量証拠。PL・調達・カテゴリーマネジメントの統合能力が示される。50%"
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "life-cycle リモデルの低投資・高ROI（+200bp以上）実行能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "+200bp ROI改善という具体的定量データ"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "high_eval_patterns": [
+            "pattern_I"
+          ],
+          "adjustment": 0,
+          "reasoning": "リモデルROI+200bpは定量的差別化（Pattern I）。低コストで高リターンを実現するプロセス能力"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "life-cycle リモデルのROI+200bpはPattern I合致。低投資・高リターンのプロセス能力が具体的に裏付けられる。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 12,
+    "confidence_distribution": {
+      "50-60": 7,
+      "30-40": 5
+    },
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "ticker": "UNH",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Optumプラットフォーム（OptumHealth/OptumInsight/OptumRx）の一体化による医療費管理能力",
+      "evidence": "Q4 2014: 'Optum had a remarkable year in 2014. Revenues grew by 25%... clinical encounter data set of over 55 million lives'",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "55百万人の臨床データ分析・OptumRx薬剤管理・OptumHealth医療提供の3能力統合プラットフォームとして評価可能"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "55百万人の臨床encounterデータは競合が短期間では取得不可能。データ規模→分析精度→顧客獲得の好循環"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "ACA移行期に医療費管理・分析ニーズが急増。Optumの統合的アプローチは業界トレンドと整合"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV", "matched": true, "adjustment": 0.15, "reasoning": "業界構造×ポジション：ACA改革下での統合医療管理プラットフォーム"},
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.05, "reasoning": "能力の優位性：55百万人臨床データによる分析精度"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_IV", "adjustment": 0.15, "reasoning": "業界構造との合致強い"},
+        {"source": "kb2_pattern_III", "adjustment": 0.05, "reasoning": "データ規模という再現困難な能力"}
+      ],
+      "overall_reasoning": "55百万人の臨床データという競争的モートと統合プラットフォームは評価できる。定量的で業界構造との合致も高い。おおむね納得で70%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Optum成長 → UnitedHealth Group高一桁収益成長 → FY2015 EPS二桁成長",
+      "evidence": "Q4 2014: Optum 25%収益成長・FY2015高一桁成長ガイダンス",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "Optum 25%成長 → UNH全体への直接貢献（Optumはトータルの1/3程度）。FY2015高一桁成長ガイダンスへの接続は明確"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.1, "reasoning": "直接的CAGR接続。Optum収益貢献率でガイダンス検証可能"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_II", "adjustment": 0.1, "reasoning": "直接的で定量的な接続"}
+      ],
+      "overall_reasoning": "Optum成長→UNH全体成長の接続は直接的で定量的。おおむね納得で70%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "メディケイド市場での5年間2百万人超有機成長（60%の州メディケイド人口をカバー）",
+      "evidence": "Q4 2014: 'organic growth of more than 2 million people over the last 5 years... nearly 60% of the Medicaid community reside'",
+      "final_confidence": 0.6,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "state programs運営のmedical management・consumer engagement techniques・dedicated on-the-ground resourcesという具体的能力言及"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "5年間2百万人超有機成長、2014年1百万人増、60%カバーという強い定量データ"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "100以上の州別プログラム運営実績と地域コミュニティとの信頼関係は競合に短期間では複製困難"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I", "matched": true, "adjustment": 0.05, "reasoning": "定量的差別化：60%メディケイド人口カバー"},
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.05, "reasoning": "能力の優位性：state program運営実績"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_I", "adjustment": 0.05, "reasoning": "定量的スケール優位"},
+        {"source": "kb2_pattern_III", "adjustment": 0.05, "reasoning": "州別運営能力"}
+      ],
+      "overall_reasoning": "メディケイドでのスケールとプログラム多様性は定量的で能力説明もある。まあ納得〜おおむね納得で60%"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "FY2015以降 value-based contract $43B超（前払い・リスク共有型）によるコスト管理リーダーシップ",
+      "evidence": "Q4 2014: 'In 2015, we foresee our volume of care delivered through value-based contracts exceeding $43 billion'",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "$43B value-based contractは仕組みの一側面。ただしコスト管理の詳細メカニズムへの言及が不十分"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "$43B超という業界最大級の定量数値"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I", "matched": true, "adjustment": 0.05, "reasoning": "定量的規模優位：$43B業界最大"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_I", "adjustment": 0.05, "reasoning": "規模の定量性"},
+        {"source": "mechanism_lacking", "adjustment": -0.05, "reasoning": "コスト管理メカニズムの詳細不足"}
+      ],
+      "overall_reasoning": "$43Bという業界最大規模のvalue-based契約は定量的だが、メカニズム説明が不足。まあ納得で50%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Optum FY2014: 収益+25%、OPM 6.9%、EPS貢献+32%、$1B/Q超初達成。OptumInsight backlog $8.6B（+20%）",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"50-60": 3, "60-70": 1, "70-80": 2},
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "ticker": "AFL",
+  "company_name": "Aflac Incorporated",
+  "extraction_date": "2025-09-30",
+  "cutoff_date": "2015-09-30",
+  "source_transcripts": [
+    "201502_earnings_call.json",
+    "201504_earnings_call.json",
+    "201507_earnings_call.json"
+  ],
+  "claims": [
+    {
+      "claim_id": "AFL_001",
+      "power_type": "Cornered Resource",
+      "claim_text": "Aflac Japan と Japan Post の戦略的提携は、日本最大の販売網（全郵便局）を通じた独占的保険販売チャネルを確立しており、競合他社がアクセスできない消費者接点を持つ。Q4 2014 には 10,000 局以上の郵便局で販売が開始され、新規がん保険（Japan Post 専用商品含む）の Q4 がん保険販売が 176% 増加した。",
+      "evidence_quotes": [
+        "Additionally, I consider our strategic alliance with Japan Post to be enormously advantageous. This alliance merges the broad consumer access of Japan Post with Japan Aflac's status of an industry leader of cancer insurance.",
+        "I would remind you that Japan Post has the largest distribution network in Japan.",
+        "Cancer insurance sales through all distribution outlets were up an outstanding 176% for the quarter.",
+        "we wanted to expand to the number of post offices, which equaled a number of 10,000 through end of last year... no one else has got anything like this"
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.7,
+      "confidence_rationale": "Japan Post との提携は他社が直接複製できないチャネル独占性を持つ。CEO が「誰もこれほどのものを持っていない」と明言。ただし独占契約の永続性や、今後 Japan Post が他社保険も扱う可能性（Dai-ichi 等の先例）についての詳細が不明。",
+      "kb1_flags": [],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_002",
+      "power_type": "Branding",
+      "claim_text": "Aflac は日本においてがん保険のカテゴリーリーダーとして認識されており、Third Sector（がん・医療保険）での市場地位が他社との差別化の根幹にある。日本のがん保険販売は 2015 年前半 3 四半期で 15% 増（rolling 12 ヶ月で約 20% 増）の見通し。",
+      "evidence_quotes": [
+        "This alliance merges the broad consumer access of Japan Post with Japan Aflac's status of an industry leader of cancer insurance.",
+        "For the 9 months of 2015, we project a 15% increase in third sector sales. When you add the 28% increase from the fourth quarter, we could be close to a 20% increase over the rolling 12-month period. Please note that this 12-month rolling period will be the biggest third sector increase in more than 10 years.",
+        "We believe that will continue, thus our 15% increase projected over the next 3 quarters."
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.7,
+      "confidence_rationale": "「業界のリーダー」という地位とがん保険への消費者認知は確立されている。10 年以上にわたるブランド蓄積があり、競合参入障壁は高い。ただし日本の保険市場は規制変化・競合大手の参入リスクがあり、過信は禁物。",
+      "kb1_flags": [],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_003",
+      "power_type": "Process Power",
+      "claim_text": "One Day Pay（1 日以内の保険金支払い）は業界初の仕組みであり、2015 年に 100 万件超の保険金を 1 日で処理・承認・支払いする計画。この迅速な請求処理プロセスは、顧客体験の差別化と新規顧客獲得に直結する。",
+      "evidence_quotes": [
+        "One Day Pay is an industry first that allows us to process, approve and pay in just 1 day, which would be about 70% of our eligible claims.",
+        "Through One Day Pay, we expect to pay more than 1 million claims in 2015.",
+        "I'm very excited about it and I think it will set us apart in the industry, thus increasing our sales."
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.5,
+      "confidence_rationale": "「業界初」という差別化は主張されているが、70% の eligible claims に限定される点と、競合が追従する可能性が高い。日本では「最速」と述べているが米国向けのメインメッセージ。プロセスの持続的優位性（複製困難性）の証拠が限定的。",
+      "kb1_flags": [],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_004",
+      "power_type": "Scale Economies",
+      "claim_text": "Aflac Japan は日本の生命保険市場において独自の資本構造（FSA ベース積立金再保険化・Swiss Re との提携）と規模を活用し、資本効率を高めながらも Third Sector 主体の保険引き受けを拡大している。在職 5,000 万人超への保険提供という規模が固定費効率を支えている。",
+      "evidence_quotes": [
+        "we have the privilege of providing financial protection to over 50 million people worldwide.",
+        "We did execute an agreement to retrocede 50% of the second tranche. You'll recall that the second tranche released about JPY 55 billion of FSA-based reserves",
+        "there is significant interest among reinsurers. This reinsurance is a very competitive market."
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.3,
+      "confidence_rationale": "5,000 万人超という規模は大きいが、Scale Economies のメカニズム（単位コスト逓減の具体的証拠）が示されていない。再保険スキームは資本効率の工夫であるが、競争優位性としての Scale Economies の証拠としては弱い。",
+      "kb1_flags": ["Scale claim lacks unit cost evidence"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_005",
+      "power_type": "Cornered Resource",
+      "claim_text": "Aflac Japan の Hiroshi Yamauchi 社長（在籍 39 年）に代表されるように、長期勤続の経営陣・営業組織が日本市場固有の顧客関係・規制知識・販売チャネルネットワークを内部に蓄積しており、外部からの参入障壁となっている。",
+      "evidence_quotes": [
+        "I joined Aflac Japan in 1976 as a member of the first group of new project hires. For the past 39 years, including 1 year in Columbus, I have been advancing my career with Aflac Japan's growth.",
+        "Toru Tonoike as our President, who had everyone aligned and ready to execute.",
+        "We've been successful in achieving all 3 of those [Japan Post strategic objectives]"
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.3,
+      "confidence_rationale": "人的資本の深さは言及されているが、7 Powers の Cornered Resource としての証拠は弱い。個人の在籍年数は組織的な優位性を示す直接的エビデンスとは言えない。むしろ経営陣交代（Tonoike → Yamauchi）というタイミングのリスクが示された。",
+      "kb1_flags": ["Human capital claim - difficult to verify as durable competitive advantage"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_006",
+      "power_type": "Switching Costs",
+      "claim_text": "Aflac Japan の既存契約者 5,000 万人超は、疾病・がん保険の長期継続的な保険関係により高い継続率を示す。Third Sector 保険は事故・病気のタイミングが不確実であるため、一度加入した顧客は他社への切り替えを行いにくい構造がある。",
+      "evidence_quotes": [
+        "we have the privilege of providing financial protection to over 50 million people worldwide.",
+        "our channeled growth was across the board... we also saw significant growth, not only in the corporate-affiliated agencies, but also with our independent agencies as well as our associates in all channels across the board.",
+        "Aflac Japan's impressive 28.5% increase in third sector sales in the fourth quarter of 2014 is particularly remarkable to me, considering the significant growth follows 2 years of excellent sales results"
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.5,
+      "confidence_rationale": "長期保険契約のスティッキネスは構造的に存在するが、同類の保険は競合（MetLife、外資系）も提供しており、AFlac 固有の切り替えコスト（技術統合など）の証拠は薄い。契約者基盤の維持率データは開示されていない。",
+      "kb1_flags": [],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_007",
+      "power_type": "Network Economies",
+      "claim_text": "Aflac の販売チャネルは個人代理店・提携代理店・Japan Post の三本柱を持ち、チャネルの多様化によってリーチが拡大されている。各チャネルが相互に参照・紹介することで網羅性が高まる可能性がある。",
+      "evidence_quotes": [
+        "Our goal is to have a presence in all the outlets where consumers want to make their insurance purchase decisions.",
+        "our channeled growth was across the board... not only in the corporate-affiliated agencies, but also with our independent agencies as well as our associates in all channels",
+        "we have a three-pronged approach to our overall success within our partnership with Japan Post"
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.3,
+      "confidence_rationale": "多チャネル展開は分布拡大だが、Network Economies（ネットワーク参加者が増えるほど価値が高まる）の典型的なメカニズムとは異なる。チャネル多様化は scale の問題に近く、Network Economies の証拠としては弱い。",
+      "kb1_flags": ["Distribution breadth != Network Economies mechanism"],
+      "dogma_flags": []
+    },
+    {
+      "claim_id": "AFL_008",
+      "power_type": "Branding",
+      "claim_text": "Aflac Duck を活用したマーケティングキャンペーン（GRAMMYs でのメディア露出）は米国での Aflac ブランド認知を強化し、One Day Pay 訴求と組み合わせることで保険加入の障壁を下げる効果を持つ。",
+      "evidence_quotes": [
+        "We're kicking it off at the GRAMMYs on Sunday. And on E! Entertainment channel, the preshow, the Aflac Duck will be the first-ever advertising icon to walk the red carpet.",
+        "I'm very excited about it and I think it will set us apart in the industry, thus increasing our sales.",
+        "You can also go to our website and see more about it."
+      ],
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "confidence": 0.5,
+      "confidence_rationale": "Aflac Duck は米国における高い認知度を持つブランド資産。ただし「set us apart」はマネジメントの期待値であり、実際の競争優位性（価格決定力、解約率低下など）の証拠は示されていない。",
+      "kb1_flags": ["Marketing campaign claim - results not yet demonstrable"],
+      "dogma_flags": []
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 8,
+    "by_power_type": {
+      "Cornered Resource": 2,
+      "Branding": 2,
+      "Process Power": 1,
+      "Scale Economies": 1,
+      "Switching Costs": 1,
+      "Network Economies": 1,
+      "Counter-Positioning": 0
+    },
+    "primary_source_claims": 8,
+    "secondary_source_claims": 0,
+    "high_confidence_claims": 2,
+    "medium_confidence_claims": 3,
+    "low_confidence_claims": 3
+  }
+}

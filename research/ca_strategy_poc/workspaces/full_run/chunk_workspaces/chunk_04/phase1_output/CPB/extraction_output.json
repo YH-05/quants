@@ -1,0 +1,95 @@
+{
+  "ticker": "CPB",
+  "company_name": "The Campbell's Company",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00",
+  "claims": [
+    {
+      "claim_id": "CPB-001",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding",
+      "source_transcript": "201409_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Campbell had a 59% market share, a decrease of 50 basis points in the period. All other branded players collectively had a share of 28%, with private label at 13%.",
+      "claim_summary": "キャンベルは米国ウェットスープカテゴリーで59%の市場シェアを保有。次位の全ブランド合計28%を大きく引き離す圧倒的なブランド独占。しかし有機成長は停滞しており、健康志向・食文化変化でブランドが侵食されている。",
+      "confidence": 0.4,
+      "confidence_rationale": "59%市場シェアは強力なブランド証拠だが、有機売上-1%（FY2014）という実績はブランド力の低下を示す。CEOが「業界は構造的変化の時代」と述べており、ブランドモートが縮小傾向。将来の持続可能性に疑問。",
+      "kb1_rules_applied": ["rule04", "rule10"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "59% wet soup market share",
+        "U.S. #1 soup brand for decades",
+        "Condensed + ready-to-serve + broth portfolio"
+      ]
+    },
+    {
+      "claim_id": "CPB-002",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201409_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "Adjusted earnings before interest and taxes from continuing operations grew 4% to nearly $1.3 billion, and adjusted earnings per share from continuing operations increased 2% to $2.53.",
+      "claim_summary": "キャンベルは$8.3Bの規模を活かした製造・流通コスト優位性（生産性改善3%/年）を持つ。ただし有機成長の欠如とコスト上昇が規模メリットを相殺している。",
+      "confidence": 0.3,
+      "confidence_rationale": "規模のメリットは一般論として成立するが、CPBの有機売上-1%という現実は規模の優位性が競争環境の悪化に勝てていないことを示す。積極的な证拠が不足。",
+      "kb1_rules_applied": ["rule01", "rule04"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "$8.3B revenues",
+        "3% annual productivity gains",
+        "Overhead cost reduction"
+      ]
+    },
+    {
+      "claim_id": "CPB-003",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "source_transcript": "201409_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We will continue to elevate quality, increase our brand-building and drive more innovation, including our first Campbell's organic soups...We are building our presence in packaged fresh...Bolthouse Farms has given us a solid foundation.",
+      "claim_summary": "キャンベルはBolthouse Farms（パッケージドフレッシュ$18.6B市場）への参入により、伝統的パッケージ食品企業のポジションを変換する戦略。競合の既存ブランドオーナーはこの新カテゴリー参入が自社既存事業を侵食するため模倣コストが高い。",
+      "confidence": 0.3,
+      "confidence_rationale": "Counter-Positioningとしての論理は弱い。競合もフレッシュ食品市場に参入しており、CPBだけが特別なわけではない。Bolthouse FarmsはFY2014で有機成長+2%と弱く、戦略の有効性が未証明。",
+      "kb1_rules_applied": ["rule08", "rule01"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "Bolthouse Farms acquisition",
+        "$18.6B packaged fresh category",
+        "Kelsen Group acquisition (China/HK 40% sales)"
+      ]
+    },
+    {
+      "claim_id": "CPB-004",
+      "claim_type": "cagr_connection",
+      "seven_powers_category": "Branding",
+      "source_transcript": "201409_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We continue to believe that our long-term growth targets of 3% to 4% in organic sales, 4% to 6% in EBIT and 5% to 7% in EPS are achievable.",
+      "claim_summary": "【CAGRリンク】キャンベルの長期目標（有機成長3-4%/年、EPS成長5-7%）は、スープブランド（59%シェア）の安定基盤とBolthouse Farms・Kelsenなど成長プラットフォームの組み合わせに依存する。ただし現時点では未達成。",
+      "confidence": 0.2,
+      "confidence_rationale": "目標は示されているが、FY2014の有機成長-1%という現実と乖離が大きい。CEOが「長期目標達成にはさらに時間がかかる」と認めており、CAGRドライバーとしての強度が低い。",
+      "kb1_rules_applied": ["rule08", "rule10"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "3-4% organic sales long-term target",
+        "FY2014 organic sales -1% (reality gap)",
+        "Portfolio diversification strategy"
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 4,
+    "by_seven_powers": {
+      "Branding": 1,
+      "Scale Economies": 1,
+      "Counter-Positioning": 1
+    },
+    "by_claim_type": {
+      "competitive_advantage": 3,
+      "cagr_connection": 1
+    },
+    "primary_transcript": "201409_earnings_call.json",
+    "transcripts_used": ["201409_earnings_call.json"],
+    "notes": "CPBのQ4はJuly fiscal year endで201409がQ4 FY2014。全体的に競争優位性の主張が弱く、業界の構造的変化（健康志向、有機食品、消費者行動変化）にブランドが侵食されている。全確信度が低い。最小件数（4件）で意図的に少なくした。"
+  }
+}

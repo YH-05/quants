@@ -1,0 +1,213 @@
+{
+  "ticker": "TMO",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-29) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "PPI Business System（Practical Process Improvement）による継続的な生産性改善能力",
+      "descriptive_label": "PPIシステムによる組織的生産性向上能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'we also continued to drive productivity through our PPI Business System, sourcing, low-cost regional manufacturing and footprint optimization efforts'。CFO発言: 'We're expecting our productivity drivers to yield about 260 basis points of adjusted operating margin expansion'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "PPIという独自のビジネスシステム（仕組み）を評価。単なる「コスト削減」ではなく、Danaher Business System等に類似した組織的な継続改善プロセスとして具体的に言及されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "260bpの生産性改善（見込み）という定量的数値あり。2014年で240bpの実績"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "PPIは長年にわたって構築された組織的プロセスであり、買収後の統合にも適用される。短期間での複製困難"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "科学機器・サービス市場では規模とコスト効率が重要。PPIによる継続的マージン改善は業界競争力に直結"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "PPIは具体的な組織能力として評価できる。定量的なマージン改善実績あり。業界構造との合致も高い。まあ納得〜おおむね納得の中間"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "PPI生産性向上 → 年間240-260bpのOPM拡大継続 → EPS成長",
+      "descriptive_label": "PPI→OPM拡大→EPS成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "PPI → コスト削減 → OPM拡大 → EPS成長という直接的な2-3ステップ。2014年実績240bp、2015年ガイダンス260bpという定量的接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "PPI→OPM拡大の接続は定量的で直接的"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Life Technologiesとの統合による業界最大規模のライフサイエンスソリューション提供能力",
+      "descriptive_label": "Life Technologies統合による規模×製品幅の競争優位",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'the addition of Life Technologies. It further strengthened our ability to help our customers drive innovation and productivity and really positions us well to continue to gain share with our biotech, pharma and industrial customers'。'We have the largest R&D budget by far in our industry and invest about $700 million annually'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「業界最大のR&D予算」と「統合による製品幅拡大」は能力として評価可能。ただし「規模」は結果でもある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$700M R&D予算という定量開示あり。Life Technologies統合での$300M cost synergy/Year3という数値も"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "研究者のワークフローを複数製品でカバーするフルスタック提供能力は競合が複製困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "DanaherやAgilentとの比較なし。「業界最大」の主張が詳細化されていない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "製薬/バイオのR&D支出はアウトソーシング化が進み、統合的CROが有利になる市場構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "$700M R&Dという業界最大規模と統合の能力説明がある。まあ納得〜おおむね納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Life Technologies統合 → $150M収益シナジー(Year3) → organic成長率上乗せ",
+      "descriptive_label": "統合収益シナジー→成長率加速",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "統合 → クロスセル機会 → $150M収益シナジー(2016年)という接続。2015年は$60M目標のうち$20M OPM貢献という具体的な数値あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "収益シナジーに具体的な数値目標があり、初期実行もtrack。まあ納得〜おおむね納得"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Customer Value Proposition：顧客の研究効率化・コスト削減を支援する統合ソリューション提供力",
+      "descriptive_label": "顧客バリュープロポジション（統合ソリューション）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'our customer value proposition continues to get stronger as more customers in a range of industries relies on us to help them meet their growth objectives. We've been leveraging our value proposition in biopharma with great success'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「バリュープロポジションが強化されている」は結果/主観的評価。具体的な仕組みの説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "定量的な顧客価値の証明なし"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "顧客バリュープロポジションの強化は「戦略」に近い言及"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t（定性的のみ）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callだが定性的主張に過ぎない",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "バリュープロポジションへの言及は定性的で能力の具体的説明なし。あまり納得しない"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: adjusted EPS $6.96（+28%）、adjusted OPM 21.9%（+240bp）、FCF $2.25B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "R&D予算$700M（業界最大）。Life Technologies統合でFY2014 cost synergy $115M達成（Year3目標$300Mに向けtrack ahead）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    }
+  ]
+}

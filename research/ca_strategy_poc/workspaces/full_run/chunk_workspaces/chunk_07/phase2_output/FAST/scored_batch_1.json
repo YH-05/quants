@@ -1,0 +1,87 @@
+{
+  "ticker": "FAST",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "FAST-004",
+      "claim": "2,600以上の店舗ネットワークによる地域密度と翌日配送能力が、大型競合（W.W. Grainger, MSC Industrial）でも難しい「サメデー」サービスを可能にしている",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "2,600+店舗という具体数値。W.W. Grainger、MSCへの競合言及あり"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "2,600+店舗ネットワーク（能力・インフラ）→同日サービス（結果）という正しい因果方向",
+        "rule04_quantitative": "2,600以上という具体的な店舗数",
+        "rule07_pure_competitor": "W.W. Grainger、MSC Industrialへの言及あり。ただし競合の店舗数との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_IV": "structural_market_position: 2,600+店舗という密度ネットワークが地理的規模の優位",
+        "pattern_V": "specific_competitor_comparison: 「大型競合でも難しい」という競合との比較言及",
+        "adjustment": "+10% (競合言及)"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#5 (90%): 地域密度ネットワーク×フラグメント市場構造。FASTの2,600+店舗も類似だが産業用品市場での差別化度合いが不明",
+        "final_reasoning": "2,600+という数値はあるが、GraingerのDCネットワーク（翌日配送）との比較でFASTが有利かどうか不明→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "2,600以上の店舗という具体的な数値（KB1ルール4）と競合（Grainger、MSC）への言及（KB2パターンV部分適合）がある。ただし産業用品（MRO）流通において、W.W. GraingerはDC（配送センター）ネットワーク戦略で翌日配送を実現しており、FASTの店舗密度が競合比較で有利かどうかの定量的証拠がない。「can do great same-day service」という言及はあるが競合の同日サービス能力との比較なし。50%が妥当。"
+    },
+    {
+      "id": "FAST-005",
+      "claim": "OEM製造業顧客へのオンサイト在庫管理ソリューションの提供が、顧客の在庫・調達業務を代替する「アウトソーシング型」ビジネスモデルとして機能しており、顧客の切り替えコストを高めている",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "オンサイト在庫管理というアウトソーシングモデル。顧客プロセスへの統合によるスイッチングコスト"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "オンサイト在庫管理（能力・仕組み）→切替コスト（結果）という正しい因果方向",
+        "rule04_quantitative": "「$2,000/月の目標月次売上」「OEM relationship」という具体的な目標・ターゲット",
+        "rule11_industry_structure": "製造業の在庫・調達アウトソーシング需要は業界構造として実在"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: オンサイト管理能力（能力）→顧客固定（結果）",
+        "pattern_II": "direct_cagr_mechanism: オンサイト管理→プロセス統合→切替コスト増→リテンション",
+        "adjustment": "+10% (プロセス統合の具体的説明)"
+      },
+      "kb3_calibration": {
+        "reference_case": "FAST-001, FAST-002のベンディング文脈と同一。FAST-005はさらにOEMオンサイトという深い統合",
+        "final_reasoning": "「process mapping」「tailor our deployment」という顧客特化型アプローチが統合深度を示す→70%"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "OEM顧客の在庫・調達プロセスへのオンサイト統合は、物理的・プロセス的なスイッチングコストを生み出す（KB2パターンIII、II適合）。「process mapping」「tailored deployment」という顧客特化型アプローチがプロセス統合の深度を示す（KB1ルール1: 能力・仕組み）。$2,000/月という具体的な売上目標も能力の収益化計画として評価できる。FAST-001、FAST-002と合わせてベンディング+オンサイトというスイッチングコスト体系が強固。70%が妥当。"
+    },
+    {
+      "id": "FAST-006",
+      "claim": "THUB（集中調達ハブ）による一括仕入れが、個店別仕入れより優れた価格と在庫回転率を実現する調達コスト優位性を生み出している",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "THUB集中調達という具体的な仕組みの主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "THUB集中調達（能力・仕組み）→低価格・高在庫回転（結果）という正しい因果方向",
+        "rule04_quantitative": "「very, very good prices」という定性的な評価のみ。具体的なコスト削減率なし",
+        "rule07_pure_competitor": "Grainger（独自のERP・調達システム）との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: THUB（能力）→調達コスト・在庫回転（結果）",
+        "pattern_D": "qualitative_only: 「very, very good prices」という定性的評価。定量データなし",
+        "adjustment": "-10% (定量データ不足)"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#3 (50%): SAMS/BJとの比較なしの倉庫型優位→50%。FASTのTHUBも競合比較なし",
+        "final_reasoning": "集中調達の仕組みは実在するが、「gross margin and inventory turns」という利点の定量化なし→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "THUB（集中調達ハブ）という具体的な仕組みの説明があり（KB2パターンIII適合）、「gross margin and inventory turns」という2つの利点も明示されている。ただし「very, very good prices」という定性的表現のみで具体的なコスト削減率が示されていない（KB2パターンD適合）。競合（Grainger、MSC）の調達コストとの比較もない。仕組みとしては評価できるが証拠の定量化が不十分。50%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

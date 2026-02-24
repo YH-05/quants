@@ -1,0 +1,380 @@
+{
+  "ticker": "BXB",
+  "transcript_source": "FY2015 Full Year Results (2015-08-19) [Primary] + H1 FY2015 + FY2014 Full Year [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1 FY2014", "FY2014", "H1 FY2015", "FY2015"],
+    "transcripts_used": [
+      "201408_earnings_call.json (FY2014 Full Year)",
+      "201502_earnings_call.json (H1 FY2015)",
+      "201508_earnings_call.json (FY2015 Full Year - Primary)"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "BXB-001",
+      "claim_type": "competitive_advantage",
+      "claim": "CHEPパレットプールの規模の経済と密なネットワーク：サプライチェーン全体の最適化を可能にするプール規模",
+      "descriptive_label": "CHEPパレットプール規模の経済",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO Tom Gorman): 'the unique position we hold in our customers' supply chains.' 'Sales revenue was up 8% to almost USD 5.5 billion.' FY2014: 'Pallets sales revenue in the year was up 5% to $4.1 billion with net new business wins contributing 2 percentage points.' Q&A FY2015: 'the EMEA business, it's a very, very strong business for us...we do not see that position improving substantially from where it is. So we think we're at a great set of returns, great set of return on capital.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BXB-F001"],
+      "cagr_connections": ["BXB-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "規模の経済・プールネットワークは名詞属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "全大陸にわたるパレットプールの規模は競合が短期で再現困難な構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "グローバルサプライチェーンの効率化という業界構造変化との合致"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "売上USD5.5B、EMEA ROCI>20%、RPC欧州ROCI 18.7%という数値"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CHEPパレットプールの規模とサプライチェーン統合能力は構造的優位（ルール6-T）。業界構造との合致（ルール11-T）も高評価。EMEA ROCIが20%超という定量証拠（ルール4-T）。ただし競合（LPR等）との具体的差別化比較が乏しい。70%。"
+      }
+    },
+    {
+      "claim_id": "BXB-002",
+      "claim_type": "competitive_advantage",
+      "claim": "IFCO RPCビジネスにおける欧州小売業者との深いパートナーシップと転換促進能力（段ボールからRPCへ）",
+      "descriptive_label": "IFCO RPC欧州小売転換促進能力",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO): 'The rate of growth we are experiencing for IFCO in Europe is well above what we assumed when we acquired this business. The growth is a real credit to the strength of our relationship with retailers in the region as shown by our recent extension of our contract with REWE, which is our biggest customer. Underlying profit growth in RPCs was 15% and ROCI increased by 70 basis points.' 'we continue to drive conversions from cardboard to RPCs with both existing and new retail partners.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BXB-F002"],
+      "cagr_connections": ["BXB-C002"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "REWE等大手小売との長期パートナーシップ能力は能力・仕組みとして評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "RPC欧州ROCI 18.7%（除く goodwill）、利益成長15%、REWE契約延長"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "RPC転換は一度確立されると逆転が難しいスイッチングコストを生む"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "段ボールからRPCへの secular shiftという業界構造変化との合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "REWE延長・RPC利益成長15%・ROCI 18.7%という定量データ（ルール4-T）。RPC転換のsecular shiftと合致（ルール11-T）。70%。"
+      }
+    },
+    {
+      "claim_id": "BXB-003",
+      "claim_type": "competitive_advantage",
+      "claim": "CHEP品質・耐久性改善プログラム（クリンチネイル、ネイルプレート）によるコスト優位",
+      "descriptive_label": "CHEP耐久性改善プログラムによるコスト優位",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (CEO): 'our durability improvements included the rollout of a new clinch nail process for repairing pallets and the addition of a new nail plate to all new pallet purchases. In FY '16, we anticipate that 25% of the pool will have been repaired with the clinch nail process and that 60% of new pallets will have nail plates. The financial implications of this are broadly neutral in FY '16 and are forecast to drive a benefit from FY '17 onwards.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BXB-F003"],
+      "cagr_connections": ["BXB-C003"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "技術的改善プロセス（クリンチネイル、ネイルプレート）は能力・仕組みとして評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "FY16末25%プール対応、60%新規パレット対応という具体的数値"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "耐久性改善はコスト管理能力として補完的優位"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "具体的な技術改善プロセスと実施規模の定量データは評価できる。ただし競合との差別化（他社が同様の改善を行っていないか）が不明。50%。"
+      }
+    },
+    {
+      "claim_id": "BXB-004",
+      "claim_type": "competitive_advantage",
+      "claim": "米国パレットサービスセンター内製化による運営コントロール強化（131センターの20%内製化）",
+      "descriptive_label": "米国サービスセンター内製化能力",
+      "evidence_from_transcript": "FY2014 Prepared Remarks (CEO): 'we have gone from operating essentially none of our 131 service centers in the U.S. to now having about 20% of our repair capacity directly under our control. This is a fundamental reshaping of our business in the United States.' FY2015 Q&A: 'we were not delivering the customer requirements. That is not the case of our returns in Europe. We've been able to deliver efficiencies in Europe.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BXB-F004"],
+      "cagr_connections": ["BXB-C004"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "サービスセンター内製化能力は能力・仕組みとして評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "131センター中20%（約26センター）内製化という具体的数値"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "内製化は長期的コスト構造改善に貢献する構造的取り組み"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "内製化20%は具体的。米国でのROCI改善への寄与が期待されるが、EMEA水準（20%超）との乖離が大きく、道のりが長い。50%。"
+      }
+    },
+    {
+      "claim_id": "BXB-005",
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（ラテンアメリカ、アフリカ、アジア）でのパレットプール先行展開による secular growth取り込み",
+      "descriptive_label": "新興市場パレットプール先行展開",
+      "evidence_from_transcript": "FY2014 Prepared Remarks (CEO): 'Across emerging markets, sales revenue growth was 14% at constant currency, reflecting strong progress in all of our emerging market regions.' FY2015: 'In Africa, we also made a small acquisition in the period, a timber plantation business, which further strengthens our lumber security in the region. We continue gradually to expand our footprint on the African continent with initiatives in countries such as Zambia and Morocco.' 'emerging market growth, fractional or display pallet growth...'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BXB-F005"],
+      "cagr_connections": ["BXB-C005"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_11_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "先行者優位・インフラ展開能力は名詞属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "新興市場成長14%（FY2014）、FY2015で12%という定量データ"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "サプライチェーン効率化のsecular trendと新興市場展開は合致"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "競合の新興市場展開との相対的差別化が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新興市場の定量成長（14%）は評価できる。secular trendとの合致も高評価。ただし競合との先行者優位の定量比較がない。50%。"
+      }
+    },
+    {
+      "claim_id": "BXB-F001",
+      "claim_type": "factual_claim",
+      "claim": "FY2015: 売上USD5.5B（+8%定数通貨）、利益USD986M（+10%定数通貨）。EMEA ROCI>20%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BXB-001"]
+    },
+    {
+      "claim_id": "BXB-F002",
+      "claim_type": "factual_claim",
+      "claim": "FY2015: RPC欧州ROCI 18.7%（除くgoodwill）、利益成長15%。REWE契約延長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BXB-002"]
+    },
+    {
+      "claim_id": "BXB-F003",
+      "claim_type": "factual_claim",
+      "claim": "FY2016末：プールの25%クリンチネイル対応、新規パレットの60%ネイルプレート化予定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BXB-003"]
+    },
+    {
+      "claim_id": "BXB-F004",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 米国131サービスセンター中20%（約26センター）内製化完了",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BXB-004"]
+    },
+    {
+      "claim_id": "BXB-F005",
+      "claim_type": "factual_claim",
+      "claim": "FY2014新興市場成長14%。FY2015新興市場成長12%。USD1.5B FY16-19成長CapEx計画",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BXB-005"]
+    },
+    {
+      "claim_id": "BXB-C001",
+      "claim_type": "cagr_connection",
+      "claim": "CHEPパレットプール規模 → サプライチェーン統合顧客（売上+8%）→ 収益CAGR",
+      "descriptive_label": "プール規模→売上成長→CAGR",
+      "source_advantage": "BXB-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "プール規模→売上成長は2ステップ。売上+8%は開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "売上8%成長は開示データ。High single-digit 5-year targetとも整合。70%。"
+      }
+    },
+    {
+      "claim_id": "BXB-C002",
+      "claim_type": "cagr_connection",
+      "claim": "IFCO RPC転換 → 欧州小売パートナー追加・利益率向上 → RPC収益CAGR",
+      "descriptive_label": "IFCO転換→欧州小売→RPC収益CAGR",
+      "source_advantage": "BXB-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "RPC転換→利益成長15%という直接データ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "RPC欧州利益成長15%・ROCI 18.7%という具体数値。段ボール→RPCのsecular shiftによる持続性。70%。"
+      }
+    },
+    {
+      "claim_id": "BXB-C003",
+      "claim_type": "cagr_connection",
+      "claim": "耐久性改善 → パレット補修コスト低減 → Totex efficiencyプログラム→CAGR改善",
+      "descriptive_label": "耐久性改善→コスト低減→CAGR改善",
+      "source_advantage": "BXB-003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップの推論。FY16は中立、FY17以降に恩恵という見通し"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "具体的な改善プロセス（25%・60%展開計画）は評価できるが、財務効果の定量化が未確定（FY17以降）。50%。"
+      }
+    },
+    {
+      "claim_id": "BXB-C004",
+      "claim_type": "cagr_connection",
+      "claim": "米国内製化 → EMEA水準へのROCI改善 → グループ全体CAGR改善",
+      "descriptive_label": "米国内製化→ROCI改善→CAGR改善",
+      "source_advantage": "BXB-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "内製化→ROCI改善→CAGR改善は3ステップ。EMAEとのギャップが大きく時間軸が長い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "内製化の方向性は明確だが、米国ROCI改善の具体的タイムラインが不明。中長期目標（FY19 20%）への確実性は中程度。50%。"
+      }
+    },
+    {
+      "claim_id": "BXB-C005",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場先行展開 → GDV成長14-12% × 低競合密度 → 長期CAGR追加",
+      "descriptive_label": "新興市場先行→secular growth→CAGR追加",
+      "source_advantage": "BXB-005",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "新興市場成長14%という開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次発表（主）"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新興市場の定量成長（14%/12%）は開示済み。USD1.5B成長CapExも具体的。60%。"
+      }
+    }
+  ]
+}

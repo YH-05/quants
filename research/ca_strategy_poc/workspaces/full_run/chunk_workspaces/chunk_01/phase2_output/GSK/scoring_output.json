@@ -1,0 +1,380 @@
+{
+  "scored_claims": [
+    {
+      "id": "GSK-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Ellipta 吸入器プラットフォームによる複数疾患をカバーする単一デバイス呼吸器フランチャイズ",
+      "evidence": "CEO Andrew Witty: Ellipta inhaler platform with 7+ respiratory products on single device for COPD and asthma (Breo Ellipta, Incruse Ellipta, Anoro). Differentiated by NGS Ellipta device design allowing once-daily dosing and multi-molecule combinations not possible with MDI.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "デバイス設計という能力・仕組みの説明。複数分子を単一デバイスで実現するという技術的メカニズム"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "デバイス特許とRSV/COPD適応承認プロセスは構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "AZ の Symbicort MDI、Novartis の Breezhaler との差別化。Ellipta の once-daily + multi-molecule は固有"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "デバイス設計能力の具体的説明"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "7+ 製品を単一デバイスに集約する構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Ellipta の商業的成功への接続はまだ臨床・規制の不確実性を含む（Q2 2015 時点）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "デバイス設計能力の記述"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "複数製品プラットフォームの構造的ポジション"
+        },
+        {
+          "source": "KB2-T pattern_C_causal_leap",
+          "adjustment": -0.05,
+          "reasoning": "臨床・規制不確実性"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "Ellipta プラットフォームは独自のデバイス設計により複数の競合 MDI との差別化が明確（rule07 PASS）。能力の仕組みが説明されている（rule01 PASS）。ただし、Q2 2015 時点で臨床的成功が確定しておらず、スケール面での優位性は今後次第。dogma 的に「おおむね納得」域 0.65。"
+    },
+    {
+      "id": "GSK-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ViiV Healthcare HIV フランチャイズ（Tivicay/Triumeq）による独立型カウンター・ポジショニング",
+      "evidence": "Tivicay/Triumeq: 59% HIV revenue growth, GBP 294M/Q, 74% ViiV operating margin. ViiV structured as separate JV (GSK 78.3%, Pfizer, Shionogi) enabling focus on HIV vs diversified Gilead/AbbVie.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "ViiV の JV 構造と HIV 特化モデルという仕組みの説明。74% マージンは結果だが JV 構造が能力の源泉"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "59% 成長率、GBP 294M/Q、74% 営業マージンという具体的数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "ViiV JV という独立構造がカウンター・ポジショニングを実現"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Gilead は多角化するほどHIVに特化できず。ViiV の特化型モデルは構造的差別化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "59% 成長・74% マージンという具体的差別化の定量化"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "HIV 特化 JV 構造という業界構造との合致（Gilead が多角化しにくい点）"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "ViiV JV という能力・仕組みの説明あり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "59% 成長・74% マージンの定量化"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.1,
+          "reasoning": "HIV 特化 JV 構造"
+        },
+        {
+          "source": "dogma rule11_industry_structure_fit",
+          "adjustment": 0.05,
+          "reasoning": "HIV 市場の専門性要求 × ViiV 特化モデルの合致（rule11 高評価）"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "ViiV の HIV 特化 JV 構造は教科書的なカウンター・ポジショニング（Gilead の多角化と対照的）。59% 成長・74% マージンという強力な定量証拠。KB1-T 全4ルール PASS。KB2-T パターンもすべてポジティブ。dogma rule11（業界構造合致）が適用。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "GSK-003",
+      "claim_type": "competitive_advantage",
+      "claim": "R&D DPU（Discovery Performance Unit）モデルによる13% IRR と 17 FDA 承認の生産性優位",
+      "evidence": "CEO Witty: DPU model generating 13% IRR above cost of capital, 17 FDA approvals 2012-2015. Alternative Innovation Fund for external molecule sourcing. 80 DPUs operating at small-team speed.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "DPU 組織モデルという仕組みの説明。IRR・承認数は結果だが DPU がその能力の源泉"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "13% IRR、17 FDA 承認という具体的数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "DPU 構造は R&D 組織の根本的再編"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "AZ の IMED/MedImmune モデル等も R&D 組織再編を実施。GSK 固有の差別化の根拠が限定的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "80 DPU の組織モデルという能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "13% IRR・17 FDA 承認の定量化"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "AZ・Pfizer 等との R&D 生産性の比較なし"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "R&D 組織改革は大手製薬に共通のトレンド（rule03 警告）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "DPU 組織モデルの説明"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合比較なし"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通トレンド"
+        }
+      ],
+      "final_confidence": 0.5,
+      "overall_reasoning": "DPU モデルは独自の組織構造だが、製薬業界全体で R&D 組織改革が進んでおり（rule03 警告）、AZ 等の純粋競合との比較が欠如（rule07 FAIL）。13% IRR は定量的だが競合比較がない。dogma 的に「まあ納得」域 0.50。"
+    },
+    {
+      "id": "GSK-004",
+      "claim_type": "competitive_advantage",
+      "claim": "ワクチン事業のグローバル規模と希少疾患ワクチン（RTS,S マラリア）のコーナード・リソース",
+      "evidence": "GSK #1 global vaccine manufacturer. RTS,S malaria vaccine (Phase 3 results 2015). Meningitis B (Bexsero), Shingrix precursor. 1B+ doses/year manufacturing scale. Vaccines segment 13% operating margin.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "製造規模とワクチン IP というコーナード・リソースの説明。#1 地位は結果だが製造能力と希少疾患 IP が能力"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "1B+ doses/年、13% 営業マージン、Phase 3 RTS,S 結果という数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "製造規模と希少疾患 IP は構造的資産"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Sanofi、Merck も大規模ワクチン製造能力。#1 地位の根拠が競合比較なしに限定的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "#1 グローバル地位は結果。製造規模という能力の説明はあるが、地位を維持する機構の説明が弱い"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "1B+ doses/年という製造規模の定量化"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Sanofi・Merck との比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.1,
+          "reasoning": "#1 地位は結果"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "製造規模の定量化"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "競合比較なし"
+        }
+      ],
+      "final_confidence": 0.45,
+      "overall_reasoning": "#1 地位は結果の提示（rule01 警告）。Sanofi・Merck との差別化根拠が欠如（rule07 FAIL）。RTS,S は希少疾患コーナード・リソースとして評価できるが、まだ Phase 3 段階で不確実性がある。dogma 的に「あまり納得しない」から「まあ納得」境界 0.45。"
+    },
+    {
+      "id": "GSK-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Sensodyne・Horlicks 等のコンシューマーヘルスケアブランドによる新興国市場でのブランディング優位",
+      "evidence": "CEO Witty: Sensodyne 18% global growth, Horlicks India/emerging markets leader. Consumer Healthcare segment growing double-digit in emerging markets. Novartis OTC merger creating scale.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "ブランド認知・新興国浸透という能力の示唆。18% 成長は結果"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "18% グローバル成長率という定量的裏付け"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "ブランドは構造的資産"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Colgate（感受性歯磨き）、Reckitt（OTC）との比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "18% 成長はブランド優位の結果。背後要因（なぜ Sensodyne が競合に勝つか）の説明が弱い（dogma rule1 FAIL）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "18% 成長率の定量化"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "ブランドの背後要因（品質差、配合差、顧客認識メカニズム）の説明が定性的で薄い（dogma ブランドフレームワーク警告）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.1,
+          "reasoning": "成長率は結果（dogma rule1 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "18% 成長率の定量化"
+        },
+        {
+          "source": "dogma brand_framework",
+          "adjustment": -0.05,
+          "reasoning": "dogma のブランド評価フレームワークでは背後要因の分析を重視（外見的評価に留まる警告）"
+        }
+      ],
+      "final_confidence": 0.45,
+      "overall_reasoning": "Sensodyne 18% 成長は定量的だが結果の提示（rule01 警告）。ブランドの背後要因（競合 vs 自社の配合優位、顧客エビデンス等）の説明が薄い（dogma ブランドフレームワーク）。Colgate 等との比較欠如（rule07 FAIL）。dogma 的に「あまり納得しない」から「まあ納得」境界 0.45。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "60-70": 1,
+      "70-80": 1,
+      "50-60": 1,
+      "40-50": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

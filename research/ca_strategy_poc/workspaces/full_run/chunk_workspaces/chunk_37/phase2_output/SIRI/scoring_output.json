@@ -1,0 +1,152 @@
+{
+  "ticker": "SIRI",
+  "company_name": "Sirius XM Holdings Inc.",
+  "gics_sector": "Consumer Discretionary",
+  "country": "UNITED STATES",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_applied": true,
+    "kb2_t_applied": true,
+    "kb3_t_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "車載衛星ラジオの独占的全米インフラ：25MHzの全国スペクトラム免許と70M台超の衛星対応車両（2014年末）による参入不可能な物理的インフラ",
+      "phase1_confidence": 80,
+      "scoring": {
+        "kb2_t_verdict": "pattern_V_t（希少資源独占: 25MHzスペクトラム + 衛星インフラ）、pattern_IV_t（業界構造×ポジション: 衛星ラジオは実質独占）。7 Powersの「Cornered Resource」に完全合致",
+        "kb3_t_alignment": "SIRI銘柄自体がKB3のfew-shot参照例（dogma.md）に記載されており最高評価。「25MHzスペクトラムは物理的に複製不可能な希少資源」という評価は一貫",
+        "dogma_check": "Rule 1: 衛星スペクトラム（Cornered Resource）は能力・仕組みとして最高評価。Rule 4: 70M台車両・25MHz・OEM搭載率71%という定量データ群。Rule 6: 新規参入者が衛星インフラ複製に要するコストは事実上無限大（構造的）。Rule 11: 合法的独占（FCC認可済み）という業界構造との合致。streaming代替（Spotify/Pandora）の存在で-5%",
+        "final_confidence": 80,
+        "confidence_rationale": "25MHzの全国衛星スペクトラムと70M台の車載インフラは物理的に複製不可能な希少資源（Cornered Resource）。Rule 11完全合致（実質独占市場でのナンバーワン）。Streaming代替の存在による不確実性あり。Phase 1の80%を維持"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "衛星インフラ → 71%新車OEM搭載率 → 15M試験ファネル（2014年、+2M YoY） → 1.2-1.75M純新規加入者/年 → 売上・FCF CAGR",
+      "phase1_confidence": 75,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格。OEM搭載率71%→試験ファネル→転換→加入者という経路は3ステップだが各ステップが定量的に検証可能",
+        "kb3_t_alignment": "ORLY類似（業界インフラ→顧客フロー→CAGR）。2013: 1.66M → 2014: 1.75M net addsの実績で検証済み",
+        "dogma_check": "Rule 5: 3ステップだが全ステップ定量化済み（OEM搭載率71%、試験ファネル15M、転換率44%）。Rule 4: 2年連続の実績（1.66M/1.75M net adds）で検証可能",
+        "final_confidence": 75,
+        "confidence_rationale": "OEM搭載→試験ファネル→転換→加入という経路は各ステップが定量データで裏付けられた稀な事例。2年の実績（1.66M/1.75M）で検証済み。75%維持"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "独占的エクスクルーシブコンテンツポートフォリオ：Howard Stern、NFL Radio、NBA Radio、PGA TOUR Radio等の排他的ライセンスによる「代替不可能な体験」",
+      "phase1_confidence": 55,
+      "scoring": {
+        "kb2_t_verdict": "pattern_III_t（能力優位性: 独占コンテンツ調達・キュレーション能力）。ただし競合（Spotify/Pandora）との定量比較なし。Howard Stern契約費用上昇リスクあり",
+        "kb3_t_alignment": "LLY類似（独占的ライセンスによる差別化）。ただしLLY の経口GLP-1と異なり、エクスクルーシブコンテンツは更新コストが高い",
+        "dogma_check": "Rule 1: 「独占ライセンス取得能力」は能力として評価可能。Rule 3: Spotify/Pandoraとの対比でSiriusXMの独占コンテンツは一定の差別化。ただし量的比較なし。Rule 7: 「can't be found elsewhere」という主張だが競合との定量比較なし",
+        "final_confidence": 55,
+        "confidence_rationale": "Howard Stern等の独占コンテンツは実質的なスイッチングコストを創出するが、コンテンツコスト上昇リスクとStreaming代替の存在が不確実性を高める。Phase 1の55%を維持"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "独占コンテンツ → 高い転換率（新車44%・中古車34%）→ 加入者維持（churn 1.9%） → ARPU上昇（+2%/年） → 売上・FCF CAGR",
+      "phase1_confidence": 65,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格。コンテンツ→転換率→churn→ARPU→FCFは3ステップだが定量指標で検証可能",
+        "kb3_t_alignment": "ORLY/COST類似（顧客維持→ARPU→CAGR）。churn 1.9%（過去最良）というPoiT時点での実績が強力",
+        "dogma_check": "Rule 5: 3ステップ。各ステップが定量的（44%転換率、1.9%churn、ARPU+2%）。2014年のFCF $1.16B（+25%）で最終検証可能",
+        "final_confidence": 65,
+        "confidence_rationale": "コンテンツ→転換・維持→ARPU→FCF経路は3ステップだが全ステップ定量化済み。churn 1.9%（過去最良）は独占コンテンツの効果を裏付ける。65%維持"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "衛星/IP統合型コネクテッドビークルプラットフォームの先行者優位：8 OEMブランドでの稼働実績と全世界OEMへの展開可能なアーキテクチャ（Agero CV事業買収後）",
+      "phase1_confidence": 30,
+      "scoring": {
+        "kb2_t_verdict": "pattern_A_t（結果を優位性として提示: 8 OEM稼働は結果）。CVビジネスはPoiT時点でまだ初期段階（$100M収益）。pattern_F_t部分適用（CV事業への拡大は戦略）",
+        "kb3_t_alignment": "CHD#4類似（新事業への拡大を優位性として提示）。KYは初期段階事業の先行者優位を低く評価（30-35%）",
+        "dogma_check": "Rule 1: OEM統合技術は能力だが、CVビジネスがまだ赤字・初期段階。Rule 8: CV展開は戦略的意思決定であり優位性ではない。Rule 6: テレマティクス専業他社（Verizon、AT&T）との競争が激しく構造的優位性は弱い",
+        "final_confidence": 30,
+        "confidence_rationale": "CVプラットフォームの先行者優位は仮説的で、事業規模（$100M、breakeven）がまだ小さい。テレマティクス競合との差別化が不明確（Rule 7失格）。Phase 1の30%を維持"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "CVプラットフォーム → $100M→$200M以上の収益成長（3年でdouble） → 衛星×IPの統合によるARPU向上 → FCF CAGR追加的上昇",
+      "phase1_confidence": 35,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t（因果飛躍）: CVプラットフォーム→OEM採用→収益→FCFは3ステップ以上で、初期段階事業の予測は不確実性が高い",
+        "kb3_t_alignment": "MNST#5類似（間接的な経路）。「3年でdouble」という予測はまだ実績がない",
+        "dogma_check": "Rule 5: 3ステップ以上、間接的。CVは初期段階で実績データ限定的。「$200M以上」はまだ経営目標段階",
+        "final_confidence": 30,
+        "confidence_rationale": "CVビジネスのCAGR接続は3ステップ以上で間接的。初期段階事業の成長予測は不確実性が高い（Rule 5違反）。Phase 1の35%から-5%して30%"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "70%超の高い限界利益率と低い変動費モデル：SAC（加入者獲得コスト）の継続的削減（11.8%/売上比、2014年）による高FCF変換効率（EBITDA→FCF 80%近い変換）",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量的差別化: 35%EBITDA率、80%FCF変換率、SAC 11.8%）、pattern_IV_t（業界構造: 固定費集約型衛星放送=Scale Economies）",
+        "kb3_t_alignment": "COST#1類似（定量裏付けが明確な構造的コスト優位性）。衛星ラジオの固定費集約型モデルはScale Economiesの典型。KYは定量データ付きの構造的優位性を高く評価",
+        "dogma_check": "Rule 1: 固定費集約型ビジネスモデルは構造として評価可能（Scale Economies）。Rule 4: 35%EBITDA率（+4pp）、80%FCF変換率、SAC 11.8%（-300bp）という三つの定量データ。Rule 6: 衛星インフラは一度構築すれば限界費用がほぼゼロ。コンテンツコスト上昇リスクで-5%",
+        "final_confidence": 70,
+        "confidence_rationale": "衛星ラジオの固定費集約型モデルはScale Economiesの典型。35%EBITDAと80%FCF変換は定量的に強固（Rule 4完全合格）。コンテンツコスト上昇リスクはあるが構造的優位性は揺らがない。Phase 1の70%を維持"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "高限界利益モデル → 加入者成長に対するEBITDA弾性高（2014年: 売上+10%→EBITDA+26%） → FCF CAGR 25%超の持続 → 自社株買いによるFCF/share CAGR追加",
+      "phase1_confidence": 75,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格。限界利益率70%→EBITDA弾性の経路は2年連続で実証（2013: +27%EBITDA、2014: +26%EBITDA）",
+        "kb3_t_alignment": "COST類似（オペレーティングレバレッジの直接的CAGR接続）。2年連続での実証が最大の強み",
+        "dogma_check": "Rule 5: 2ステップで直接的。2013: +12%売上→+27%EBITDA、2014: +10%売上→+26%EBITDAで一貫して実証。Rule 4: FCF $1.16B（+25%）の実績データ",
+        "final_confidence": 75,
+        "confidence_rationale": "売上成長のEBITDA増幅（2.5-2.7倍の弾性）は2年連続で一貫して実証。高限界利益モデルのCAGR接続は最も信頼性の高い経路の一つ。75%維持"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2013/2014 SiriusXM: 加入者25.5M/27.3M、売上$3.8B/$4.2B、EBITDA $1.17B/$1.47B（30.6%/35%率）、FCF $927M/$1.16B、SAC 14.7%/11.8%、新車搭載率71%",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2013/FY2014 CFO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "2013年末CV（コネクテッドビークル）事業: 8 OEMブランドでライブ稼働、Agero CV買収完了、2014年$100M収益見込み、3年でdouble予想",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2013 CEO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2014年末衛星対応車両70M台（5年以内に110M台予想）、使用済み車市場15,000ディーラー登録済み（+13,500 from 2013）",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014 CEO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    }
+  ]
+}

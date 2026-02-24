@@ -1,0 +1,270 @@
+{
+  "ticker": "SAB",
+  "transcript_source": "H1 FY2015 Earnings Call (2014-11-13)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["H1_FY2015"]
+  },
+  "claims": [
+    {
+      "id": "SAB-001",
+      "claim_type": "competitive_advantage",
+      "claim": "アフリカ市場における地域ブランドポートフォリオの支配的ポジション（Africa NPR +10%、vol +5%）と現地生産・流通ネットワークによる競合参入障壁",
+      "descriptive_label": "アフリカ地域ブランド+現地ネットワーク優位",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks（CEO発言）: 'In Africa, we achieved another good performance, with net producer revenue up 10% and volumes up 5%... Castle Lite continues to achieve exceptional growth, up more than 20% across Africa... Strong performances from our local brands... Tanzania, South Africa, Nigeria and Ghana all performing well.' (2014-11-13, Alan Clark). CFO補足: 'Africa accounts for our strongest growth region at NPR +10%.'",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Alan Clark (CEO), Jamie Wilson (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SAB-009"],
+      "cagr_connections": ["SAB-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "Africa NPR +10%・vol +5%という定量的裏付け。Castle Lite +20%以上という高成長ブランドの具体的証拠あり"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1四半期発言から。Q4年次総括ではないため-0.1調整"
+          }
+        ],
+        "overall_reasoning": "SABMillerのアフリカ優位はCornered Resource（50年以上の現地ブランド蓄積・Castle Lite/Eagle等）+ Scale Economies（現地生産・流通ネットワーク）の複合型。競合（Heineken・Carlsberg）が容量規模で比較不可能な現地密着度を持つ。Castle Lite 20%超成長は差別化の定量的証拠。ただしH1発言"
+      }
+    },
+    {
+      "id": "SAB-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ラテンアメリカ（特にコロンビア・ペルー）でのプレミアム化・価格設定力（NPR +7%、vol -4%でも価格/ミックスがカバー）",
+      "descriptive_label": "ラテンアメリカプレミアム化による価格設定力",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks（CEO発言）: 'In Latin America, we achieved net producer revenue growth of 7%, despite volumes declining 4%... the powerful net revenue management capability we have in Latin America... Colombia delivered very strong performance with NPR well ahead of volume, as did Peru.' (2014-11-13, Alan Clark)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Alan Clark (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SAB-010"],
+      "cagr_connections": ["SAB-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "vol -4%でもNPR +7%という逆張り定量的証拠。価格/ミックス管理能力の実証"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1四半期発言から"
+          }
+        ],
+        "overall_reasoning": "vol減少下でのNPR成長（+7% vs vol -4%）はBranding + Switching Costsの強力な証拠。「net revenue management capability」という仕組みの明示あり。ラテンアメリカでの独占的市場ポジション（コロンビア・ペルー）が裏付け。ただしH1発言"
+      }
+    },
+    {
+      "id": "SAB-003",
+      "claim_type": "competitive_advantage",
+      "claim": "USD 500M コスト効率化プログラム（FY2018完了目標）による構造的マージン改善能力",
+      "descriptive_label": "大規模コスト効率化プログラムによるProcess Power",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks（CFO発言）: 'We announced the evolution of our operational efficiency program to a target of delivering USD500 million of efficiency benefits by the end of FY2018... We're now targeting 70 basis points of margin improvement per year over the next three years.' (2014-11-13, Jamie Wilson)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jamie Wilson (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SAB-011"],
+      "cagr_connections": ["SAB-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "コスト削減プログラムは競合他社（ABInBev・Heineken）も同様の取り組みを推進。SAB固有の差別化要因として弱い"
+          }
+        ],
+        "overall_reasoning": "USD 500M・70bps/年マージン改善目標は具体的で定量的。Process Powerの要素あり。ただしビール業界の大手は同様のコスト削減を追求しており、競合比較なし。コスト削減は競争優位性の源泉というよりキャッチアップの側面が強い。50%"
+      }
+    },
+    {
+      "id": "SAB-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Castle Liteプレミアムブランドによるアフリカ全土でのアスピレーショナル消費者獲得（+20%超成長、複数国展開）",
+      "descriptive_label": "Castle Liteプレミアムブランドのアフリカ展開力",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks（CEO発言）: 'Castle Lite continues to achieve exceptional growth, up more than 20% across Africa... In South Africa, Castle Lite achieved spectacular growth on the back of... its association with premium experiences. Castle Lite is now a top-20 beer brand globally by revenue.' (2014-11-13, Alan Clark)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Alan Clark (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SAB-009"],
+      "cagr_connections": ["SAB-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "20%超成長・グローバルトップ20という定量的裏付け"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1四半期発言から"
+          }
+        ],
+        "overall_reasoning": "Castle Liteの20%超成長はBrandingの証拠として強力。アフリカにおける「アスピレーショナルブランド」としての独自ポジションはCornered Resourceに近い。ただし「premium experiences」の仕組みの詳細説明が不足。グローバルトップ20という独立的指標あり。50%"
+      }
+    },
+    {
+      "id": "SAB-005",
+      "claim_type": "competitive_advantage",
+      "claim": "CR Snow（中国）での合弁パートナーシップによる中国ビール市場#1ポジションと地域ブランド浸透",
+      "descriptive_label": "CR Snow合弁による中国市場#1ポジション",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks（CEO発言）: 'In China, our Snow brand continues to be the world's biggest-selling beer... CR Snow results were impacted by hot summer... volumes down 3% due to exceptionally wet weather... Snow brand maintained its leadership position.' (2014-11-13, Alan Clark)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Alan Clark (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SAB-012"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": false,
+          "rule_7_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "「世界最大売上ビールブランド」は結果（market share）であり仕組みではない（Rule 1-T違反）。また天候不順によるvol -3%は外部要因依存を示す"
+          }
+        ],
+        "overall_reasoning": "Snow世界最大ビールブランドはmarket shareの結果。CR Snowの合弁構造（SAB 49%持分）は参入障壁になるが、合弁パートナー（China Resources）依存度が高く、SAB固有の優位性として評価しにくい。30%"
+      }
+    },
+    {
+      "id": "SAB-006",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル調達・製造規模によるコモディティコスト管理能力（ホップ・大麦・アルミニウムのヘッジと調達スケール）",
+      "descriptive_label": "グローバル調達規模によるコスト管理能力",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks（CFO発言）: 'Commodity cost environment... we're well-hedged through FY2016... Our global procurement scale allows us to leverage supplier relationships across regions... input costs were broadly flat in local currency terms.' (2014-11-13, Jamie Wilson)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jamie Wilson (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["SAB-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_11_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "グローバル調達スケールはABInBev・Heineken等の競合も同様に持つ。SAB固有の差別化要因として弱い"
+          }
+        ],
+        "overall_reasoning": "グローバル調達はScale Economiesの一形態。しかしABInBev（世界最大ビール企業）と比較するとSABは規模で劣後する。ヘッジ戦略は定量的裏付けが不十分。30%"
+      }
+    },
+    {
+      "id": "SAB-007",
+      "claim_type": "cagr_connection",
+      "claim": "アフリカ現地ブランド優位 + Castle Liteプレミアム化 → アフリカNPR持続成長（+10%/H1）→ グループ売上CAGR",
+      "descriptive_label": "アフリカブランド優位→NPR持続成長→グループ成長経路",
+      "source_advantage": "SAB-001",
+      "transcript_call_type": "H1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "アフリカNPR +10%・Castle Lite +20%という実績値からの外挿は論理的。アフリカ中産階級拡大という構造的テールウィンドあり。ただしH1発言・外部マクロ依存。50%"
+      }
+    },
+    {
+      "id": "SAB-008",
+      "claim_type": "cagr_connection",
+      "claim": "USD 500Mコスト削減 + ラテンアメリカ価格設定力 → EBITA margin改善（70bps/年目標）→ EPS CAGR",
+      "descriptive_label": "コスト削減+価格設定力→マージン改善→EPS成長経路",
+      "source_advantage": "SAB-003",
+      "transcript_call_type": "H1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 40,
+        "adjustments": [],
+        "overall_reasoning": "70bps/年マージン改善目標は定量的。ただしFY2018完了まで複数ステップの不確実性。為替（USD/現地通貨）ヘッドウィンドがリスク。40%"
+      }
+    },
+    {
+      "id": "SAB-009",
+      "claim_type": "factual_claim",
+      "claim": "H1 FY2015: Africa NPR +10%（vol +5%）、Castle Lite Africa全体+20%超成長、South Africa vol +1%（業界outperformance）。グループ有機定数通貨NPR +5%",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SAB-001", "SAB-004"]
+    },
+    {
+      "id": "SAB-010",
+      "claim_type": "factual_claim",
+      "claim": "H1 FY2015: Latin America NPR +7%（vol -4%）、Colombia・Peru好調。EBITA margin 23.4%（前期比-30bps）",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SAB-002"]
+    },
+    {
+      "id": "SAB-011",
+      "claim_type": "factual_claim",
+      "claim": "USD 500M効率化プログラム（FY2018目標）、70bps/年マージン改善目標。FCF USD 1.485B（前期比+591M）",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SAB-003"]
+    },
+    {
+      "id": "SAB-012",
+      "claim_type": "factual_claim",
+      "claim": "CR Snow China: vol -3%（天候不順）、Snow世界最大売上ビールブランド維持。India NPR +11%（vol +8%）",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SAB-005"]
+    }
+  ]
+}

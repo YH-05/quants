@@ -1,0 +1,406 @@
+{
+  "ticker": "DAL",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-20) / Q1 2015 Earnings Call (2015-04-15)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Delta航空の業界最高水準のオペレーション信頼性（99.8%完了率、年間414メインラインキャンセルのみ）",
+      "descriptive_label": "オペレーション信頼性・プロセスパワー（Process Power）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Richard Anderson): 'We ran the best operation in the global aviation industry with 95 days of no mainline cancellations, a completion factor of 99.8% and an on-time rate of 85%, excluding the onetime impacts of the winter storms in 1Q of '14. Remarkably, Delta had only 414 mainline maintenance cancellations for all of 2014, a number our competitors sometimes exceed in a single month.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8, 9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "オペレーション信頼性は「結果」の側面があるが、414キャンセル/年という仕組み・能力を反映する指標。メンテナンスプロセスの卓越性として評価できる"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "競合が「月に414以上のキャンセルを出す」という具体的な比較あり。純粋競合（UAL、AA）との明確な差別化"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "99.8%完了率、414メインラインキャンセル/年という具体的定量データあり。競合比較も明示"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "「競合が月に超える数値を年間で達成」という明示的な競合比較"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "航空業界での運航信頼性は顧客満足・NPS向上→RASM premium→収益性の明確な連鎖。市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及（主）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な説明。年間414キャンセルという具体的数値と「競合が月に超える」という比較は定量的裏付けとして強力。航空業界での運航信頼性は顧客满足→RASM premium→収益へのメカニズムが明確。Process Powerの典型的例"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Delta精油所（Monroe Energy）による燃料コスト管理能力（直接精製による市場価格ヘッジ）",
+      "descriptive_label": "独自燃料精製・調達能力（Cornered Resource）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO Paul Jacobson): 'The refinery made $105 million profit for the December quarter, which represents $151 million improvement versus last year. Lower crude cost, combined with higher product crack spreads and increased throughput, were key contributors... Over the last 4 quarters, the refinery has produced a cumulative profit of over $220 million.' Q1 2015: 'The refinery made an $86 million profit this quarter versus a $41 million loss in the same period last year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "精油所の所有・運営という独自の仕組み・能力を評価。単なる燃料コスト低下（結果）ではなく、精製プロセスの管理能力"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "航空業界で独自の精油所を所有するのはDeltaのみ。他主要航空会社には真似できない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "精油所の所有は構造的な参入障壁を形成。競合が短期間で同様の設備を持つことは困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "純粋競合（UAL、AA）は精油所を持たず、燃料市場価格に完全に依存"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "精油所の収益性変動が大きく（$41mn loss→$105mn profit）、持続的Benefitかは不確実（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "精油所所有は航空業界で唯一無二のCornered Resource。Q4 4四半期累計$220mn利益は実績として強力。ただし精油所ビジネス自体の収益変動性と運営リスクが残る。競合が模倣困難なバリアとしては強い"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "免疫ジョイントベンチャー（Air France-KLM、Virgin Atlantic）による国際収益基盤の多様化と安定化",
+      "descriptive_label": "国際提携JV網によるRevenue Diversification（Switching Costs / Network Economies）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): '15% of our passenger revenues are part of immunized joint ventures, and 20% of total revenues from non-ticket sources.' / 'Our joint venture with Virgin Atlantic continues to perform well, with an 800 basis point margin improvement for the year, on 2% increase in capacity.' Q1 2015: 'We are pleased with the performance of our 2 trans-Atlantic joint ventures this quarter, as these relationships with Air France-KLM and Virgin Atlantic allowed us to expand margins despite significant currency pressure.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "JV ネットワーク構築能力（能力）を評価。15%のpassenger revenueがimmunized JV経由という仕組み"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "旅客収入の15%がJV由来、Virgin Atlantic JVで800bpのマージン改善という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "免疫JVは規制当局の承認が必要であり、競合が容易に模倣できない構造的障壁"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "グローバル航空業界でのリアル競争は規制・路線権・協調が複雑に絡む。JV構造は市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "免疫JVは規制による競争制限的な構造であり、模倣が困難。Virgin Atlantic JVの800bpマージン改善は定量的実績として強力。ただしJV収益は通貨変動の影響を受けやすく変動性あり"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Deltaの上客向けプレミアム商品（Comfort+）による差別化収益化能力（$350mn追加収益）",
+      "descriptive_label": "プレミアム商品差別化・アンシラリー収益化（Branding / Switching Costs）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (President Ed Bastian): 'Our revenues for our premium economy product, Comfort+, increased by 18%, and we're now generating an annual incremental revenue stream of roughly $350 million. Passenger unit revenues grew 1%, with our strongest performance in the domestic entity.' / 'Our first-class paid load factor increased by 6 points to 49%, and we did that off a base of 8% more first-class seats than last year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "President",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "$350mn収益は結果。プレミアム商品を提供する能力（シート設計、会員管理、価格戦略）という仕組みが主体だが、説明が薄い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "caution",
+            "reasoning": "UAL・AAもプレミアム商品（Economy Plus等）を持っており、相対的差別化の根拠が弱い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$350mn追加収益、18%成長、ファーストクラス有料搭乗率49%という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合（UAL、AA）の同種商品との比較が明示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合との差別化根拠が弱い（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Comfort+の$350mn収益は実績として確認できるが、UAL・AAも同種商品を持つ。Delta固有の仕組み・設計の説明が不十分。業界共通の取り組みの可能性あり"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "AmericanExpressとのSkyMilesパートナーシップ再交渉による収益改善（条件15%改善）",
+      "descriptive_label": "FFP・クレジットカードパートナーシップ交渉力（Cornered Resource）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (President): 'We were also able to translate the value of our frequent-flyer program into improved terms in the new agreement we've reached with American Express... That new agreement, which went into effect on January 1, is expected to deliver several hundred million dollars in higher revenues to Delta this year through a 15% improvement in terms.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "President",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "FFPの価値を商業交渉力に転換する能力。SkyMilesブランドの価値化能力として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "15%の条件改善、数百百万ドルの収益増加という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "顧客基盤の大きさと忠誠度がAmexとの交渉力を生む。競合も交渉できるが、顧客数・利用額での優位性が異なる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "UAL・AAも主要カード会社とのパートナーシップを持つ（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "条件改善15%は具体的実績。ただしFFP-カードパートナーシップは業界共通であり、Deltaが特別に優位かは不明確。顧客基盤の優位性からの交渉力という間接的Barrier"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "オペレーション信頼性→NPS向上→RASM premium（115%以上）→収益成長CAGR",
+      "descriptive_label": "オペレーション→NPS→RASM premium CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果（信頼性→NPS→RASM premium）。RASM 107/113%という検証可能なデータあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及。CEO・PresidentがRASM premiumを核心的強みとして位置づけ"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "運航信頼性からNPS改善（2pp向上）、RASM premium 113%という連鎖は定量的に検証可能。2-3ステップで論理的"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "精油所収益→燃料コスト削減→EBITDAマージン拡大CAGR（年+$220mn以上の精油所収益）",
+      "descriptive_label": "精油所→燃料コスト削減→EBITDA CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "精油所利益→燃料コスト相殺という2ステップ。4四半期$220mn累計利益は検証可能"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "原油価格変動による収益変動リスクあり（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "精油所収益のCAGR接続は直接的だが、原油価格と精製マージンの変動に大きく依存"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "免疫JV拡大（米国-メキシコJV含む）→国際収益分散→通貨変動耐性→EBITDA安定化",
+      "descriptive_label": "免疫JV拡大→国際収益安定化CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "JV→収益分散→安定化は3ステップ。各段階は論理的だが定量的裏付けが弱い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "JV収益分散効果は認められるが、通貨ヘッジ効果への定量的接続が薄い"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "Comfort+・アンシラリー収益成長（+16%/年）→Non-ticket収益20%→収益CAGR多様化",
+      "descriptive_label": "アンシラリー収益多様化→CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（アンシラリー成長→収益多様化）。16%成長実績と$350mn规模は検証可能"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "アンシラリー収益の成長性は実績で確認できるが、持続性と競合との差別化の明確さに限界あり"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "AmexパートナーシップによるSkyMiles収益化→年数百百万ドルの固定的非運賃収益→CAGR安定化",
+      "descriptive_label": "AmexパートナーシップFFP→非運賃収益CAGR経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "FFP価値→Amex条件改善→収益増加という2ステップ。15%改善・数百百万ドルは定量的"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Amex契約の条件改善は契約期間中固定的な収益をもたらす。CAGR接続は比較的直接的"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Delta FY2014: 税引前利益$4.5bn（前年比+70%）、ROIC 20.7%、フリーCF $3.7bn",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年の完了率99.8%、年間メインラインキャンセル414件、オンタイム率85%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "精油所（Monroe Energy）：Q4 $105mn利益（前年比$151mn改善）、4四半期累計$220mn利益",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "旅客収入の15%が免疫JV経由。Virgin Atlantic JVで年800bp マージン改善",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Comfort+年間追加収益$350mn、18%成長。ファーストクラス有料搭乗率49%（+6pp）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "AmexとのSkyMiles新契約：条件15%改善、数百百万ドルの収益増加見込み（2015年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    }
+  ]
+}

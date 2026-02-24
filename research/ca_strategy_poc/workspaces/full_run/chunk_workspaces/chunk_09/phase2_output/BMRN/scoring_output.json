@@ -1,0 +1,329 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "希少疾患（オーファン）薬における独占的製品ポジション — VIMIZIMがMPS IVa唯一の治療薬",
+      "descriptive_label": "MPS IVaにおけるVIMIZIM独占的Cornered Resource",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "pass",
+          "reasoning": "MPS IVaの唯一の治療薬という独占的地位は、規制承認・特許保護・希少疾患指定という構造的能力に裏付けられた明確な競争優位性（Cornered Resource）"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "pass"
+          },
+          "rule_4_t": {
+            "verdict": "partial",
+            "reasoning": "初年度$77.3M/19か国展開という実績。競合不在のため競合比較は不要"
+          },
+          "rule_6_t": {
+            "verdict": "structural"
+          },
+          "rule_7_t": {
+            "verdict": "pass",
+            "reasoning": "競合不在自体が優位性の証拠"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_IV_t": "strong match - MPS IVa希少市場×唯一の治療薬という完全な市場構造合致",
+            "pattern_I_t": "match - 初年度$77.3M/19か国という定量的実績"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#2（フラグメント市場×規模優位90%）に準ずる独占的ポジション。Cornered Resourceとして70%",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "MPS IVa唯一の治療薬はCornered Resourceの典型。規制承認（FDA・EMA）・希少疾患指定・特許保護という構造的障壁により模倣困難。初年度$77.3Mは良好なラウンチ実績。Phase 1の70%を維持",
+      "seven_powers_classification": "Cornered Resource（規制承認済み独占的医薬品）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "オーファン薬開発における長期的な患者成長の持続性 — Naglazyme 10年目でも成長継続",
+      "descriptive_label": "希少疾患酵素補充療法の長期持続的患者成長（Naglazyme事例）",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "partial_pass",
+          "reasoning": "10年間の持続成長は結果だが、希少疾患ERT特有の高Switching Costs（代替療法なし×治療中断=死亡リスク）という市場構造に基づく能力の源泉が説明されている"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_4_t": {
+            "verdict": "partial"
+          },
+          "rule_6_t": {
+            "verdict": "structural"
+          },
+          "rule_11_t": {
+            "verdict": "pass"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_III_t": "strong match - Naglazyme 10年継続成長は疾患特性由来Switching Costsの証拠",
+            "pattern_I_t": "match - $334.4M/9年目（2014年）という定量実績"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#1（顧客継続性70%）と同水準。疾患特性によるSwitching Costsは長期継続性の構造的源泉",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "Naglazyme 10年間の持続成長（9年目$334.4M、10年目$315-340M予想）は疾患特性由来の高Switching Costsを実証。「impressively compliant and persistent」という経営陣の表現も裏付け。Phase 1の70%を維持",
+      "seven_powers_classification": "Switching Costs（疾患特性による治療継続の必然性）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "希少疾患薬の規制承認プロセスにおける専門的実績（不完全なデータセットでの承認取得能力）",
+      "descriptive_label": "オーファン薬規制承認における専門的プロセス能力",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "Aldurazyme承認実績はあるが、規制プロセスの仕組み説明が限定的。drisapersen Phase III miss（プライマリエンドポイント未達）は規制能力の限界を示すネガティブケース"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_6_t": {
+            "verdict": "structural"
+          },
+          "rule_7_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_C_t": "partial - drisapersen失敗で因果関係の逆転懸念"
+          },
+          "high_eval_patterns": {
+            "pattern_III_t": "partial - Aldurazyme承認実績というProcess Power"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#7（経営フレームワーク実行力：50%）と同水準。能力の存在は認めるが証明が不完全",
+          "calibrated_confidence": 50
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール10（ネガティブケース）",
+            "adjustment": 0,
+            "reason": "drisapersen Phase III missがネガティブケースとして能力の限界を示す"
+          }
+        ]
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "Aldurazyme承認実績×Breakthrough Therapy指定はProcess Power的能力の証拠。ただしdrisapersen Phase III未達問題が能力の限界を示しており、Phase 1の50%を維持",
+      "seven_powers_classification": "Process Power（希少疾患規制専門能力）",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "KUVANの代謝疾患PKU治療における専門的な患者支援プログラムとラベル改訂による成長継続",
+      "descriptive_label": "KUVAN患者支援・ラベル改訂による持続的成長",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "partial",
+          "reasoning": "KUVAN成長はラベル改訂・治療ガイドライン変化という外部要因が主因。患者支援プログラムという能力は部分的に認識できるが、BMRN固有の差別化として弱い"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_4_t": {
+            "verdict": "pass"
+          },
+          "rule_8_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "partial - 外部要因（ガイドライン変化）への依存",
+            "pattern_A_t": "partial - 成長（結果）を優位性として提示"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#6（デジタルマーケティング能力：50%）より弱い。外部要因依存が強い",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "KUVAN 21%成長/$203Mは実績として示されているが、外部要因（ガイドライン・ラベル改訂）が主因。患者支援プログラムという能力は部分的。Phase 1の40%を維持",
+      "seven_powers_classification": "Switching Costs（PKU疾患特性）+ 患者支援プログラム（補完的）",
+      "structural_vs_complementary": "structural（疾患特性）/ complementary（患者支援）"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "10製品にわたる多様な希少疾患パイプライン（遺伝子療法・酵素補充・小分子を含む）",
+      "descriptive_label": "多様な希少疾患パイプラインによる将来成長オプション",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "partial",
+          "reasoning": "10製品パイプラインは現状報告（結果）。遺伝子療法+CNS酵素補充という技術プラットフォームには能力的側面があるが、drisapersen問題で開発能力に疑問"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_4_t": {
+            "verdict": "partial"
+          },
+          "rule_8_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial - パイプライン保有（結果）を優位性として提示",
+            "pattern_F_t": "partial - 戦略と優位性の混同（パイプライン構築は戦略）"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#5（戦略的ポートフォリオ：30%）に類似。パイプライン保有は戦略的選択",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "10製品パイプラインは数として示されているが、希少疾患開発能力の仕組みの説明が不十分。遺伝子療法+CNS酵素補充という技術プラットフォームは潜在的優位性を示すが、drisapersen問題でリスクも顕在化。Phase 1の40%を維持",
+      "seven_powers_classification": "Process Power（希少疾患技術プラットフォーム）の可能性あるが証明不十分",
+      "structural_vs_complementary": "structural（潜在的）"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "VIMIZIM独占的ポジション → 1,650人識別患者への浸透継続 → 売上CAGR（19か国展開）",
+      "descriptive_label": "VIMIZIM独占→患者浸透継続→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "唯一の治療薬→1,650人患者浸透→売上成長の直接接続。初年度$77.3M→2015年$170-200M予想（+120-160%）で裏付け",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70-90%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "唯一の治療薬であることから患者浸透=売上成長の直接接続が成立。開示データ（識別患者数、売上進捗）で追跡可能。Phase 1の70%を維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "希少疾患酵素補充療法の高継続性 → 累積患者ベース拡大 → Naglazyme/VIMIZIM長期CAGR",
+      "descriptive_label": "高継続性→累積患者→希少疾患薬CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "高継続性（疾患特性）→患者累積→年間収益成長の直接接続。Naglazyme 10年実績で証明済み。VIMIZIMも同様のパターンを踏む合理的根拠",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "Naglazyme 10年実証済みの高継続性→累積患者→CAGR接続。VIMIZIMへの適用も合理的。Phase 1の70%を維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "規制承認能力（drisapersen承認）→ DMD市場参入 → 2017年黒字化・収益成長加速",
+      "descriptive_label": "drisapersen承認→DMD市場参入→利益成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "Phase III未達→FDA申請→承認という高不確実性経路。承認前提のCAGR接続は信頼度低",
+          "pattern_match": "dogma低評価パターン: 数値根拠不透明（臨床リスク内包）→30%"
+        }
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "drisapersen Phase III primaryエンドポイント未達という高リスクが承認前提のCAGR接続の信頼性を大幅に低下。Phase 1の30%を維持"
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "KUVAN患者支援・ラベル拡大 → 患者数増加 → KUVAN売上CAGR",
+      "descriptive_label": "KUVAN拡大→患者成長→KUVAN CAGR",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "ラベル拡大→患者拡大→売上成長の合理的接続。2015年ガイダンス$210-230M（+3-13%）で検証可能。ただし成長率鈍化傾向",
+          "pattern_match": "dogma: 過去実績との整合（50%）"
+        }
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "KUVAN成長継続のCAGR接続は合理的だが成長率鈍化。外部要因依存の成長ドライバーで長期的不確実性。Phase 1の50%を維持"
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "多様な希少疾患パイプライン（3-4製品、3-4年で市場投入予定）→ ポートフォリオ規模拡大 → 長期CAGR",
+      "descriptive_label": "パイプライン成功→ポートフォリオ拡大→長期CAGR",
+      "source_advantage": 8,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "パイプライン→承認→売上の多段階接続は各ステップに臨床リスクを内包。3-4製品/3-4年は野心的だがdrisapersen問題でリスク認識必要",
+          "pattern_match": "dogma低評価パターン: TAM/中間ステップ欠如（30-40%）"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "長期CAGRへのパイプライン接続は方向性として合理的だが、臨床リスクが高く各ステップの確実性が低い。Phase 1の40%を維持"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "70-80": 4,
+      "50-60": 2,
+      "40-50": 3,
+      "30-40": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

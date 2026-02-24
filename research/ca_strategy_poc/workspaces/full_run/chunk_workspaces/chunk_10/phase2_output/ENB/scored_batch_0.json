@@ -1,0 +1,108 @@
+{
+  "ticker": "ENB",
+  "batch_index": 0,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_8_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_I", "pattern_IV"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "ENB-001",
+      "claim_type": "competitive_advantage",
+      "claim": "規制されたパイプラインインフラにおけるテイク・オア・ペイ/コスト・オブ・サービス商業構造による収益の予測可能性と下方リスク保護",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: テイク・オア・ペイ/コスト・オブ・サービスという具体的な商業仕組みの説明。この構造自体がスイッチングコスト型優位性として機能",
+        "rule_4_t": "PASS: 油価大幅下落下でも2015年EPS見通し維持（$2.05-2.35）という具体的な実証データ。ガイダンス一貫性の実績",
+        "rule_6_t": "PASS: 規制パイプラインの商業構造は事業モデルの核心的要素",
+        "rule_11_t": "PASS: パイプライン市場構造（規制インフラ×シッパーの長期契約依存）と完全に合致した優位性"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "テイク・オア・ペイ構造は規制インフラ事業の構造的市場ポジション。シッパーは物理的制約と長期契約で高いスイッチングコストを持つ。Pattern IV適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でテイク・オア・ペイ/コスト・オブ・サービス構造という商業仕組みを明確に説明。油価急落下でのEPS維持という実績は仕組みの実効性の証拠。規制パイプライン事業での本質的優位性として70%評価を維持"
+    },
+    {
+      "id": "ENB-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Mainlineシステムの340,000 bbl/日の容量最適化能力（プロセスパワー）と北米最大の液体パイプラインネットワーク運営力",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: '340,000 bbl/日の改善'という具体的な能力発現。既存インフラからの増分価値創出プロセスが能力",
+        "rule_4_t": "PASS: 340K bbl/日という定量的改善数値、記録スループット2.2M bbl/日",
+        "rule_6_t": "PASS: Mainline運営最適化は事業の核心的要素",
+        "rule_11_t": "PASS: 規制パイプラインで既存インフラ最大化は業界構造との合致"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "容量最適化プロセス（能力）→スループット増加（結果）という因果関係が明確に示されている。Pattern III（能力>結果）の適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で340K bbl/日の容量改善という具体的な能力発現が示されている。新設パイプライン建設が規制・環境問題で困難な現環境において、既存インフラの最大化能力は高い競争優位性を持つ。Phase 1評価70%を維持"
+    },
+    {
+      "id": "ENB-003",
+      "claim_type": "competitive_advantage",
+      "claim": "340億ドル（商業的に確保済み）の成長資本プログラムによる10-12% EPS成長の長期的可視性",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: '確保済み資本プログラム'は投資実行能力の側面もあるが、主に将来の成長計画の可視性（結果）の提示に近い",
+        "rule_4_t": "PASS: $34Bという具体的な数値、10-12% EPS成長目標",
+        "rule_6_t": "PASS: 資本プログラムはパイプライン事業成長の核心",
+        "rule_8_t": "PARTIAL: 成長資本プログラムは戦略の実行計画の色彩が強い"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "確保済みプログラムの規模は結果の可視性を示すが、なぜ$34Bを確保できたか（ENB-001の構造的優位性、ENB-002の実績）の能力説明とセットで理解すべき"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "投資プログラムの確保は成長の前提条件として重要だが、独立した競争優位性としては結果の側面が強い。ENB-001/ENB-002/ENB-004の実行プランとして評価すべき。50%が適切。Phase 1評価50%を維持"
+    },
+    {
+      "id": "ENB-004",
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ原油の170万 bbl/日の新市場アクセス開拓能力（Flanagan South/Seaway Twin/Line 9）による地理的コーナードリソース",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: Flanagan South/Seaway Twin/Line 9という具体的な物理インフラ資産と、それを可能にした規制許可取得能力の説明",
+        "rule_4_t": "PASS: 1.7M bbl/日の新市場アクセスという具体的数値。'初の大規模フルパス'という競合比較的言及",
+        "rule_6_t": "PASS: 物理インフラによる市場アクセスは事業の核心的構造要素",
+        "rule_11_t": "PASS: カナダ原油の差別（Discount）が大きい現状でGulf Coast/東カナダアクセスは高い業界価値"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "Flanagan South/Seaway Twinは'初の大規模フルパス'として競合が短期間で複製困難な物理インフラ。Cornered Resource的性質あり"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でFlangan South/Seaway TwinがWestern Canada重質原油のGulf Coast向け大規模ルートとして'初'であることが説明されている。1.7M bbl/日の新市場アクセスは地理的Cornered Resourceとして評価。Phase 1評価70%を維持"
+    },
+    {
+      "id": "ENB-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Sponsored Vehicle（ENF/EEP）を活用した財務最適化による資本コスト低減と競合優位な資金調達能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: ENF/EEPへのドロップダウンという具体的な財務最適化能力の説明",
+        "rule_4_t": "PASS: 10% EPS accretionという具体的な数値効果",
+        "rule_6_t": "PASS: 資本コスト構造は事業成長の核心要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_B_industry_common",
+        "assessment": "類似のMLP/Sponsored Vehicle構造はTransCanada（TC Pipelines）等のカナダパイプライン会社も活用。業界共通の財務構造の側面あり（Pattern B部分適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Sponsored Vehicle構造は有効だが業界共通の側面もある。ENBのスケール（$34Bプログラム）で活用する規模は大きいが差別化データ不足。50%が適切。Phase 1評価50%を維持"
+    }
+  ]
+}

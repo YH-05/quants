@@ -1,0 +1,153 @@
+{
+  "ticker": "ULVR",
+  "company_name": "Unilever PLC",
+  "scoring_metadata": {
+    "primary_source": "Full Year 2014 Results (Q4 2014, event_date 2015-01-20)",
+    "cutoff_date": "2015-09-30",
+    "kb1_rules_applied": true,
+    "kb2_patterns_applied": true,
+    "kb3_fewshot_applied": true,
+    "dogma_applied": true,
+    "scorer_version": "chunk_agent_v1"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "ULVR-CA-001",
+      "original_claim_id": "ULVR-001",
+      "claim_type": "competitive_advantage",
+      "claim_text": "EUR 10億超/年のサプライチェーン効率化プログラム（広告制作EUR 1.3億節減、洗剤フォーミュレーション80%削減）",
+      "seven_powers_category": "Scale Economies",
+      "kb2_pattern_applied": "pattern_I_quantitative_differentiation",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.60,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern I（定量的差別化）部分適用：EUR 10億超年間節減・EUR 1.3億広告制作節減・洗剤フォーミュレーション80%削減は具体的な定量データ。Project Half EUR 5億目標（2014年末EUR 2.5億実現+1,300名計画超過）という進捗。ただしPattern B（業界共通）が重要：P&G・Nestléも同規模でサプライチェーン効率化を追求しており、ULVRの優位性は主に地域中小プレイヤーとの差。グローバル競合との差別化は限定的（-10%）。確信度50%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CA-002",
+      "original_claim_id": "ULVR-002",
+      "claim_type": "competitive_advantage",
+      "claim_text": "グローバルトップ50 FMCGブランドで最多保有（Dove、Knorr、Lifebuoy等）、カンヌ2年連続最多受賞",
+      "seven_powers_category": "Branding",
+      "kb2_pattern_applied": "pattern_IV_structural_market_position",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.60,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern IV（構造的市場ポジション）部分適用：「世界のFMCGトップ50に最多」はランキング優位性（第三者認定）。60%のビジネスが市場シェアを拡大という定量的市場地位。カンヌ2年連続・Effie 3年連続という外部評価は能力証明。ただしPattern A（結果を原因と）部分適用：「トップ50最多」はブランド力の結果であり仕組みの説明なし（-10%）。食品・スプレッド等成熟カテゴリでのブランドエロージョンも懸念。確信度50%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CA-003",
+      "original_claim_id": "ULVR-003",
+      "claim_type": "competitive_advantage",
+      "claim_text": "「Project Half」とシンプリフィケーション継続プログラム（5年間で200bpsオーバーヘッド削減、4,700名削減）",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_III_capability_over_result",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern III（能力重視）部分適用：HR審査ステップを8→4に削減（200,000時間節約）という具体的プロセス改善。4,700名削減（計画比1,300名超）という実行能力の証拠。FX逆風40bpsにもかかわらずコアオペレーションマージン+40bps。しかしPattern B（業界共通）が大きな制約：P&Gも類似の効率化プログラムを展開。プロセスの独自性は実行規律に存在するが構造的には模倣可能（-10%）。確信度40%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CA-004",
+      "original_claim_id": "ULVR-004",
+      "claim_type": "competitive_advantage",
+      "claim_text": "新興国190カ国超での流通ネットワーク深度（Myanmar・エチオピア・農村インド・ブラジル内地）",
+      "seven_powers_category": "Scale Economies",
+      "kb2_pattern_applied": "pattern_IV_structural_market_position",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern IV（構造的市場ポジション）部分適用：190カ国超での流通展開は規模のインフラ優位性。インドネシア継続二桁成長・棚確保9ポイント改善という定量実績。先行者優位（Myanmar・Ethiopiaの新規参入）は特に評価。しかしPattern G（Pure Competitor不明確）：P&G・Nestléも多国籍で同規模流通を展開しており、地域特定の優位性の検証が困難（-10%）。確信度40%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CA-005",
+      "original_claim_id": "ULVR-005",
+      "claim_type": "competitive_advantage",
+      "claim_text": "「Maxing the Mix」イノベーションモデル（Dove・Knorr等グローバルブランドのプレミアムバリアント拡張）",
+      "seven_powers_category": "Branding",
+      "kb2_pattern_applied": "pattern_F_strategy_confusion",
+      "kb2_pattern_verdict": "caution",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.40,
+      "final_confidence_rationale": "Pattern F（戦略の混同）適用：「Maxing the Mix」はイノベーション戦略であり、構造的競争優位性ではない。P&G・L'Oréalも同等ブランドプラットフォームで類似戦略を実行。Dove Advanced Hair SeriesがGBP 10価格帯で受け入れられている実績は評価できるが、管理上の「accretive to margins」は定量化なし（-10%）。確信度40%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CAGR-001",
+      "original_claim_id": "ULVR-006",
+      "claim_type": "cagr_connection",
+      "claim_text": "EUR 10億節減 → 広告・ブランド投資に再配分 → 市場平均超の売上成長（ULVRが市場+1% outperform）",
+      "source_advantage_claim_id": "ULVR-CA-001",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）部分適用：節減→再投資→成長は2ステップ。FY2014 市場比+1ポイントのUSG outperformance（2.9% vs市場2.5%）という実証データ。全4カテゴリで広告シェア競合比改善。ただし+1ポイントのアウトパフォームは控えめであり、コアEPS成長CC+11%は実感より低い。元優位性50%から変化なし。確信度50%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CAGR-002",
+      "original_claim_id": "ULVR-007",
+      "claim_type": "cagr_connection",
+      "claim_text": "プレミアムブランドポートフォリオ（Dove・Ben & Jerry's・Magnum）→ 消費者二極化トレンド享受 → 収益ミックス改善 → マージン拡大",
+      "source_advantage_claim_id": "ULVR-CA-002",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）部分適用：プレミアムブランド→消費者二極化のポジショニング恩恵→ミックスシフトは2ステップ。Ben & Jerry's +10%・T2 +25%・Talenti取得（2015年1月）はプレミアム積み上げの証拠。低成長7食品ブランドの売却（2014年）はポートフォリオ最適化の証拠。FY2014全体USG 2.9%では顕在化が限定的だが、方向性は明確。確信度50%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "ULVR-CAGR-003",
+      "original_claim_id": "ULVR-008",
+      "claim_type": "cagr_connection",
+      "claim_text": "グローバル調達規模（EUR 200億コモディティ基盤）→ FX正常化時の収益追い風 → EPS CAGR",
+      "source_advantage_claim_id": "ULVR-CA-001",
+      "kb2_pattern_applied": "pattern_D_qualitative_only",
+      "kb2_pattern_verdict": "caution",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.40,
+      "final_confidence": 0.30,
+      "final_confidence_rationale": "Pattern D（定性的のみ）部分適用：FX追い風は構造的優位性ではなく為替サイクルへの依存。「レートが現状維持なら3%のテールウィンド」という条件付き期待は検証困難。CEOの「if rates were to stay as they are」という表現自体が確信度の低さを示す。確信度30%。",
+      "source_quality": "q4_annual",
+      "is_primary_source": true
+    }
+  ],
+  "stock_score_summary": {
+    "competitive_advantage_claims": {
+      "count": 5,
+      "avg_confidence": 0.44,
+      "max_confidence": 0.50,
+      "claims_above_50pct": 0,
+      "claims_above_70pct": 0
+    },
+    "cagr_connection_claims": {
+      "count": 3,
+      "avg_confidence": 0.433,
+      "max_confidence": 0.50,
+      "claims_above_50pct": 0,
+      "claims_above_70pct": 0
+    },
+    "overall_ca_score": 0.44,
+    "scoring_quality_note": "ULVR FY2014 primary source. Top competitive advantages: Supply chain scale savings (50%) and Brand portfolio quality (50%). ULVR's structural challenge is that P&G and Nestlé operate at comparable scale, making the moat most effective vs. regional/EM players. The premiumization trend and 'Maxing the Mix' strategy are directionally correct but still developing. All claims capped at 50% due to Pattern B (industry common) constraints across all dimensions. Overall CA quality: moderate—scale advantages are real but not differentiated vs. global peers."
+  }
+}

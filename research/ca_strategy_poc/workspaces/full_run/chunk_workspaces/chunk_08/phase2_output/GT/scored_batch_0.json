@@ -1,0 +1,310 @@
+{
+  "ticker": "GT",
+  "scored_claims": [
+    {
+      "id": "GT_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Goodyear ブランドのプレミアム価格転嫁力：消費者が対価を支払う意欲のある高価値セグメントに集中し、ブランド価値に基づくプレミアム価格を維持している。",
+      "evidence": "Our focus will stay on winning in the market segments where consumers are willing to pay for the value of our brand, our products, our services and the total Goodyear experience.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07", "rule08"],
+        "results": {"rule01": true, "rule07": false, "rule08": false},
+        "confidence": 0.4,
+        "adjustments": [
+          "rule07: 具体的なプレミアム価格指標や競合との価格差データがなく、定量的特定性が不足",
+          "rule08: タイヤは比較的商品化された製品であり、ブランドプレミアムの持続性は業界トレンドに依存"
+        ]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.1, "reasoning": "ブランド価値の主張は定性的のみで定量的な市場シェアや価格プレミアムデータがない"},
+        {"source": "pattern_A_result_as_cause", "adjustment": 0.1, "reasoning": "HVAシフト戦略の具体的取り組み（Assurance新製品、Kelly立ち上げ）が一定の具体性を与える"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01", "pass": true, "note": "能力主張（ブランド価値集中）であり結果のみではない"},
+        {"rule": "rule07", "pass": false, "note": "プレミアム価格の具体的数値なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.1},
+        {"pattern": "pattern_B_industry_common", "flagged": false}
+      ],
+      "overall_reasoning": "Goodyear のブランドプレミアム主張は戦略方向性として認識できるが、タイヤ業界での実際のプレミアム維持力を証明する定量的データが不足。HVAシフトは方向性として正しいが、競合（Michelin、Bridgestone）との差別化証明が弱い。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Goodyear の運営卓越イニシアチブ：複数年にわたってインフレ超過のコスト削減（年間約$165M）を達成する持続的なプロセス改善能力。",
+      "evidence": "Operational excellence initiative... delivering cost savings in excess of inflation... forecasting about the same cost outs in 2015 as we did in 2014, about $165 million.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule04", "rule07"],
+        "results": {"rule03": true, "rule04": true, "rule07": true},
+        "confidence": 0.5,
+        "adjustments": [
+          "rule03: $165M という定量的目標が明確",
+          "rule04: 複数年の継続実績（毎年インフレ超過）が示されている"
+        ]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "$165M コスト削減目標は業界内での差別化を定量的に示す"},
+        {"source": "pattern_G_unclear_vs_pure_competitor", "adjustment": -0.05, "reasoning": "競合（Bridgestone・Continental）の同等プログラムとの比較がない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule03", "pass": true, "note": "$165M の定量的コスト削減目標がある"},
+        {"rule": "rule04", "pass": true, "note": "複数年継続の「インフレ超過コスト削減」実績"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I_quantitative_differentiation", "flagged": false, "note": "定量データあり"},
+        {"pattern": "pattern_G_unclear_vs_pure_competitor", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "One Goodyear Way を中心としたコスト削減プログラムは実績として評価できる。複数年の継続性と$165M という定量目標が Process Power として認識される。ただし同業他社も同様のプログラムを実施しており、独自性の証明が必要。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)", "Q4 2014 CFO remarks"]
+    },
+    {
+      "id": "GT_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Goodyear のディーラーネットワークは業界最高とされる：高出席率のディーラー会議、タイヤ販売以上の価値提供をするアライアンスディーラー体制。",
+      "evidence": "North America Dealer Conference had the highest attendance in its history... customers were more enthusiastic... I believe we have the best dealer network in the industry because they do more than just sell tires.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07", "rule08"],
+        "results": {"rule01": false, "rule07": false, "rule08": false},
+        "confidence": 0.3,
+        "adjustments": [
+          "rule01: 成果（出席率記録）を根拠として使用しており能力の証明として弱い",
+          "rule07: 「業界最高」という主張に対する独立検証がない"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.1, "reasoning": "出席率記録という結果をディーラーネットワーク優位性の原因として提示しており因果関係の転倒"},
+        {"source": "pattern_C_self_reported_only", "adjustment": -0.1, "reasoning": "「業界最高のディーラーネットワーク」は自己申告のみ"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01", "pass": false, "note": "能力ではなく結果（記録的出席率）を証拠として使用"},
+        {"rule": "rule07", "pass": false, "note": "独立した検証なしの自己申告"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.1},
+        {"pattern": "pattern_C_self_reported_only", "flagged": true, "adjustment": -0.1}
+      ],
+      "overall_reasoning": "ディーラーネットワークの出席率向上は肯定的シグナルだが、「業界最高」という自己申告のみでは競争優位の証明として不十分。Kelly 立ち上げへの事前注文超過はより有意義な市場検証。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Kelly ブランドによるアジア輸入品・PB対抗：バリューラインとして Kelly を活用し、低価格セグメントでも価格ではなくブランドで勝負する戦略。",
+      "evidence": "The new Kelly tires are our response to our customers' need for a branded tire as a favorable option to Asian imports or private label tires... orders taken have exceeded our expectation.",
+      "rule_evaluation": {
+        "applied_rules": ["rule06", "rule07", "rule12"],
+        "results": {"rule06": false, "rule07": true, "rule12": true},
+        "confidence": 0.4,
+        "adjustments": [
+          "rule06: まだ正式ローンチ前の段階での主張",
+          "rule07: 事前注文超過という市場検証が一定の具体性を提供"
+        ]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "事前注文超過は定性的表現にとどまり定量化されていない"},
+        {"source": "pattern_F_future_dependent", "adjustment": -0.1, "reasoning": "ローンチ前の段階であり市場での実績未確認"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule06", "pass": false, "note": "フォワードルッキングな主張（春ローンチ予定）"},
+        {"rule": "rule07", "pass": true, "note": "事前注文超過という需要確認あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_F_future_dependent", "flagged": true, "adjustment": -0.1},
+        {"pattern": "pattern_B_industry_common", "flagged": false}
+      ],
+      "overall_reasoning": "Kelly ブランドのポジショニングは競合戦略として論理的だが、市場実績前の段階での評価。事前注文超過は需要の予備的証拠となり得る。Counter-Positioning として理論的に有効だが実証にはローンチ後のデータが必要。",
+      "power_classification": "Counter-Positioning",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_005",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル製造規模の最適化：新工場建設とフットプリント最適化によるHVAタイヤの生産スケールメリット追求。",
+      "evidence": "New state-of-the-art manufacturing plant for Latin America and North America [will] come online in 2017... optimizing our global manufacturing footprint to ensure our ability to deliver the right tires at the right cost.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule07"],
+        "results": {"rule01": false, "rule06": false, "rule07": false},
+        "confidence": 0.3,
+        "adjustments": [
+          "rule01: 現在の能力ではなく将来の計画",
+          "rule06: 2017年工場完成という将来依存"
+        ]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {"source": "pattern_F_future_dependent", "adjustment": -0.15, "reasoning": "2017年完成予定の将来計画であり現時点での競争優位として評価不可"},
+        {"source": "pattern_E_capex_as_moat", "adjustment": -0.05, "reasoning": "資本支出（新工場）は競合が複製可能であり持続的優位の証明にはならない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01", "pass": false, "note": "未来の製造能力計画を現在の優位性として提示"},
+        {"rule": "rule06", "pass": false, "note": "2017年完成予定の将来依存計画"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_F_future_dependent", "flagged": true, "adjustment": -0.15},
+        {"pattern": "pattern_E_capex_as_moat", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "製造投資は必要条件だが競合他社も同様の投資を行っており持続的優位の証明にはならない。現時点（PoiT 2015-09-30）では2017年工場は未完成であり評価対象外。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_006",
+      "claim_type": "competitive_advantage",
+      "claim": "北米事業の V字回復：5年間で$1B以上の利益改善はブランド戦略と実行力の証明。北米 SOI $803M は通期記録。",
+      "evidence": "We've grown our segment operating income organically from a $300 million loss in 2009 to an $800 million profit in 2014, a $1 billion-plus rebound in 5 years.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule04", "rule07"],
+        "results": {"rule03": true, "rule04": true, "rule07": true},
+        "confidence": 0.5,
+        "adjustments": [
+          "rule03: $1B以上の利益改善という定量的実績",
+          "rule04: 5年間の継続的改善トレンド"
+        ]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "$300M損失→$800M利益の改善は印象的だが業界サイクルとの分離が必要"},
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.05, "reasoning": "5年間の回復が戦略の証明か業界サイクル回復かの区別が困難"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule03", "pass": true, "note": "$1B以上の具体的な利益改善数値"},
+        {"rule": "rule04", "pass": true, "note": "2009-2014の継続的改善トレンド"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.05},
+        {"pattern": "pattern_I_quantitative_differentiation", "flagged": false}
+      ],
+      "overall_reasoning": "5年間での$1B以上の利益改善は実績として認められるが、この改善が Goodyear 固有の戦略によるものか、米国自動車市場・OE タイヤ需要の回復によるものかの分離が重要。記録的 SOI $803M は強い証拠だが持続可能性への証拠が必要。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_007",
+      "claim_type": "cagr_connection",
+      "claim": "ブランド投資→HVAシフト→利益率改善CAGR接続。",
+      "evidence": "Assurance All-Season tire, launched in 2014, will reach 1 million sold faster than any previous new product... focus on winning in market segments where consumers are willing to pay for the value of our brand.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule03"],
+        "results": {"rule05": true, "rule03": true},
+        "confidence": 0.4,
+        "adjustments": [
+          "rule05: ブランド投資→HVAミックス改善→利益率向上のロジックは一定の説得力あり"
+        ]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "Assurance最速100万台という定量的な新製品成功指標あり"},
+        {"source": "pattern_E_capex_as_moat", "adjustment": -0.05, "reasoning": "タイヤ新製品は競合も同様に投入可能であり差別化の持続性に疑問"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule05", "pass": true, "note": "CAGR 接続ロジックが存在する"},
+        {"rule": "rule03", "pass": true, "note": "Assurance 100万台という実績指標あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I_quantitative_differentiation", "flagged": false},
+        {"pattern": "pattern_E_capex_as_moat", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "ブランド→HVA→利益率のCAGRロジックは理論的に説得力があるが、タイヤの原材料コスト変動（ゴム・スチール）が利益率を強く左右するため、ブランド優位のみで中期CAGR予測することへの不確実性が高い。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_008",
+      "claim_type": "cagr_connection",
+      "claim": "運営卓越→コスト構造改善→EPS CAGR接続：インフレ超過コスト削減の持続（年間~$165M）が利益改善のCAGR構造要因として機能するロジック。",
+      "evidence": "Cost savings in excess of inflation... $165 million [target for 2015]... operational excellence initiatives will continue into 2015 and beyond.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule03"],
+        "results": {"rule05": true, "rule03": true},
+        "confidence": 0.4,
+        "adjustments": [
+          "rule05: コスト削減→EPS 向上のロジックが明確",
+          "rule03: $165M の定量的目標あり"
+        ]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "$165M は定量的だが全社利益への寄与率が不明"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "コスト削減プログラムは業界共通であり Goodyear 固有の CAGR 優位として認定するには証拠が弱い"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule05", "pass": true, "note": "コスト削減→EPS CAGR接続は明確"},
+        {"rule": "rule03", "pass": true, "note": "$165M 定量目標あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B_industry_common", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "コスト削減を通じた EPS 改善ロジックは説得力があるが、FX 影響（$180M 逆風/2015年）が $165M コスト削減効果を打ち消す可能性があり、純粋な CAGR 向上への貢献は不確実。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)", "CFO remarks"]
+    },
+    {
+      "id": "GT_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "GT 2014年通期実績: SOI $1.7B（通期記録、前年比+8%）、FCF $1B（2年連続）",
+      "evidence": "Full year 2014 segment operating income of $1.7 billion was a full year record, 8% improvement over last year. Generated $1 billion of free cash flow from operations.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": ["事実確認の財務データ"]
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true, "note": "決算開示数値"}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。信頼性高い。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    },
+    {
+      "id": "GT_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "GT 北米 2014年: 通期SOI $803M（記録）、Q4 SOI $229M（四半期記録）",
+      "evidence": "North America... reached $803 million of segment operating income, a full year record. Fourth quarter: $229 million, best performance of any quarter in its history.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": ["事実確認の財務データ"]
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true, "note": "決算開示数値"}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。信頼性高い。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-02-17)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "GT",
+    "scored_count": 10,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.3": 2,
+      "0.4": 4,
+      "0.5": 2,
+      "0.9": 2
+    }
+  }
+}

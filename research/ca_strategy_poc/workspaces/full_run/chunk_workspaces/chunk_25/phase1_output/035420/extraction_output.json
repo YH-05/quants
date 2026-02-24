@@ -1,0 +1,414 @@
+{
+  "ticker": "035420",
+  "company_name": "NAVER Corporation",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-29); Q1 FY2015 (2015-04-30); Q2 FY2015 (2015-07-30); Q3 FY2014 (2014-10-30)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015", "Q2_2015", "Q3_2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "韓国モバイル検索市場での支配的なプラットフォームポジション（モバイル検索シェア首位）と継続的な検索体験改善能力",
+      "descriptive_label": "韓国モバイル検索プラットフォーム支配力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Sang-Hun Kim): 'After enhancing integrated search for the PC platform in Q3, improvements were made to mobile integrated search in Q4. Close analysis on the usage patterns under the mobile environment was made, which led to improvements on accessibility and convenience.' Q2 2015: 'For search, we upgraded mobile search capabilities around keywords, such as local, multimedia, realtime, improving the quality and precision of search results.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "検索体験改善の「能力」を示しているが、シェア優位は結果。改善プロセス・分析能力の説明はある"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "検索インフラ・ユーザーデータ蓄積は構造的要素。継続投資は補完的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "韓国モバイルインターネット市場の急成長という構造と自社ポジションの合致あり。ただし業界構造の明示的言及は乏しい"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及（主・①相当）で調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Google等）への相対的差別化の具体的説明が乏しい",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "NAVER韓国での検索支配は事実だが、CEO発言は主に改善施策（結果）の説明。相対的優位性の定量的裏付けや競合比較なし。ルール3（相対的優位性）の観点で不十分。50%→調整後50%"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "モバイル検索シェア維持 → 国内広告売上成長 → 売上CAGR+10%程度",
+      "descriptive_label": "モバイル検索→国内広告→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Q4 CFO: 国内広告売上は8.3% YoY成長、全体ガイダンス10%成長を提示。2ステップの因果で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2ステップの因果で検証可能。Q4での言及。ただし国内広告依存度87%という集中リスクあり"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "LINEメッセンジャーの日本・台湾・タイでの#1ポジションと多様なコンテンツエコシステム構築能力",
+      "descriptive_label": "LINE多国間#1メッセンジャーポジション",
+      "evidence_from_transcript": "Q4 2014 CFO: 'LINE's MAU came in at 181 million.' Q3 2014 CEO: 'LINE is by far #1 in terms of market share (in Japan, Thailand, Taiwan).' Q2 2015 CEO: 'LINE Manga is Japan's biggest service in the category' (11M downloads), LINE Music 6.6M downloads, LINE News 12M MAU.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [11, 12],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "#1ポジションは「結果」。ただしエコシステム構築能力（複数垂直サービス展開）は「能力」として評価可能"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "プラットフォームエコシステム力は名詞で表現可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "#1ポジションと180M+ MAU基盤は構造的。垂直サービス展開は補完的側面もある"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "アジア地域でのメッセンジャー市場の多極化構造（WeChat, WhatsApp, KakaoTalk等が地域別）と地域集中戦略の合致はある"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callから（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "MAU成長の鈍化（181M Q4→205M Q1→211M Q2、純増が減少傾向）が示す限界",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "3カ国での#1ポジションは結果。エコシステム構築能力は評価できるが、WhatsApp/Wechatとの相対的差別化説明が乏しい。ルール3違反候補。50%→調整後40%だが、50%で記録（下限調整）"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "LINEプラットフォーム多様化（Pay, Music, TV, Manga等）→ コンテンツ収益多角化 → LINE全体CAGR高成長継続",
+      "descriptive_label": "LINEエコシステム拡張→コンテンツ収益成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "コンテンツ収益は実証されている（Q4 51%YoY成長）が、新サービス（Pay/Music/TV）の収益化時期・規模は不透明。3段階超の推論チェーン"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "過去のコンテンツ成長実績は強いが、新垂直サービスの収益化は不確定。因果チェーンがやや長い"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "NAVERの多様なモバイルコンテンツ（Webtoon、tvcast）の国内外展開における独自IP・クリエーターエコシステム形成能力",
+      "descriptive_label": "NAVERオリジナルコンテンツ・クリエーターエコシステム",
+      "evidence_from_transcript": "Q2 2015 CEO: 'NAVER Webtoon, which is Korea's biggest Webtoon platform, has 17 million monthly visitors, with daily active users at 7.5 million. We are cultivating amateur artists through the Challenge League, sourcing high-quality content and endeavoring to enter into overseas markets. For LINE Webtoon, we jointly held a contest with comic book writer Stan Lee.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "クリエーターエコシステム構築能力（Challenge League等）は「能力・仕組み」として評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "IP蓄積とクリエーターコミュニティは構造的要素"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2（四半期）発言。確信度調整が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly発言（従・②相当）。-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Webtoonはユニークなコンテンツ資産だが、Q2発言。クリエーター育成の仕組みは能力として評価可能。競合（日本マンガプラットフォーム等）との差別化は部分的。Q2調整後40%→50%（下限維持）"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "NAVERの広告プラットフォームにおける独自モバイル広告商品開発能力（Traffic Choice、Fashion Square等）",
+      "descriptive_label": "モバイル特化広告商品開発・最適化能力",
+      "evidence_from_transcript": "Q4 2014 CEO: 'Traffic Choice uses a Naver system to show advertisements automatically according to the ad information and the volume of traffic advertisers want... Fashion Square is a mobile-optimized advertising product where high-quality images of attention-grabbing products are showcased, which positively and significantly impact the purchase conversion rate.' Q2 2015: 'domestic ads revenue was up 8.4% YoY and 7.1% QoQ on favorable mobile fulfillment. Mobile ad now accounts for 32% of search ad revenue.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [14],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "広告商品開発の仕組み・プロセス（モバイルUI改善、自動化システム）は「能力」として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "モバイルシェア32%というデータはあるが、競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "検索トラフィックを基盤とした広告商品は構造的"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "広告商品開発は戦略的施策でもあるが、既存インフラを活用した能力でもある"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "モバイル広告は業界全体のトレンドであり、NAVER固有の差別化の程度が不明",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "モバイル広告移行の中での商品開発能力は評価できる。ただし業界共通トレンクへの適応であり、GoogleやKakao等との相対的差別化説明が不足。50%程度が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "モバイル広告商品最適化 → モバイル広告収益拡大 → 国内広告CAGR+8-10%維持",
+      "descriptive_label": "モバイル広告最適化→国内広告成長",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。実績値（Q4国内広告13.7% YoY）で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "実績裏付けあり。接続は直接的。ただしモバイル広告移行による成長鈍化リスクあり"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "LINEのイスラム文化対応スタンプ等、ローカライゼーション能力による新市場開拓力（中東・東南アジア）",
+      "descriptive_label": "ローカライゼーション能力による新興市場開拓",
+      "evidence_from_transcript": "Q2 2015 CFO: 'we have recently seen significant user base growth from MENA countries like Iran, Saudi Arabia and Egypt. We believe that the biggest driver behind this growth is that we have developed stickers that mostly fit the Islamic culture or countries, meaning we have really exerted a lot of efforts for localization.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CFO",
+      "section_type": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ローカライゼーション能力（文化適応スタンプ開発プロセス）は「能力」として評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "MENA成長の定性説明のみ。具体的数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "ローカライゼーションは補完的施策に近い。コアのネットワーク効果を補強"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言。-10〜20%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly発言（従・②相当）。-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的裏付けなし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ローカライゼーション能力は評価できるが、Q2発言+定量データなし+競合との相対差不明。30%が妥当"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "NAVERのオフライン事業者向けeコマース・決済プラットフォーム（NAVER Shopping + NAVER Pay）によるオンライン・オフライン統合能力",
+      "descriptive_label": "O2Oプラットフォーム統合能力（NAVER Pay/Shopping）",
+      "evidence_from_transcript": "Q2 2015 CEO: 'Unlike the existing online shopping platforms, NAVER shopping provides new channels to off-line businesses like department stores, outlets and flea markets who do not have an online base. NAVER has also built a unique and different database of merchandises... NAVER Pay was introduced helping for further enhanced usability of NAVER shopping as payment process is made convenient and secure.' 'Since the launch, number of transactions and the volume continues to trend up.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "O2O統合の「能力」を評価しているが、立ち上げ段階であり実績が限定的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "NAVER PayはShopping体験の補完的要素。コアの検索・広告事業の補完"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "O2O展開は戦略方向性と優位性の境界線"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言。確信度調整必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly発言（従・②相当）。-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "立ち上げ段階の戦略。実績データ不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "NAVER Payは2015年Q2立ち上げ段階。ルール8（戦略≠優位性）に抵触。Q2発言でもあり30%が妥当"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "NAVER国内広告売上Q4 2014: KRW 540.5B（YoY+13.7%、QoQ+8.3%）。モバイル検索広告比率28%、ディスプレイ12%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 6]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "LINE MAU: Q3 2014 170M→Q4 2014 181M→Q1 2015 205M→Q2 2015 211M。日本・台湾・タイが主要3カ国で全MAUの50%超",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "LINEコンテンツ収益Q4 2014: KRW 221.7B（YoY+61.9%）。ゲーム60%、スタンプ15%、広告15%、その他10%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "NAVER Webtoon月間訪問者1,700万人、DAU 750万人（Korea最大Webtoonプラットフォーム）。LINE Manga日本最大モバイルマンガサービス（累計1,100万DL）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [5]
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "NAVER Q2 2015スタンドアロン収益KRW 532B（YoY+43.8%）、営業利益KRW 208.5B（OPM 39.2%）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [6]
+    }
+  ]
+}

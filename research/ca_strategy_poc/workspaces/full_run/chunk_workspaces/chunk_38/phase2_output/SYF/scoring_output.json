@@ -1,0 +1,203 @@
+{
+  "ticker": "SYF",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Q4 FY2014 primary. Q1-Q3 quarterly secondary (-10% to -15% adj). No Q3 2015 available within cutoff."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "米国最大の民間ブランドクレジットカード（プライベートラベル）プロバイダーとしての規模優位性",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_A_result_as_cause",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール1（優位性=能力・仕組み）適用: 最大手というポジションは結果であり、それを生み出す能力（80年の関係構築力、専業特化による深い統合力）の説明が続く構造。dogmaルール7（純粋競合差別化）: Alliance Data Systems、Comenityとの定量比較なし。KB2-TパターンA（結果を原因とする）が強く適用される。Q4 annual callからの発言（主）だが、結果の提示に留まっている。KB3-T(COST#規模主張 50%程度)のアナロジーで30%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual call（主）", "adjustment": 0},
+        {"reason": "パターンA-T適用（結果を原因とする）", "adjustment": -10},
+        {"reason": "純粋競合（Alliance Data, Comenity）との定量比較なし", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "PLCC市場リーダーポジション → パートナー更新成功率向上 → 受取債権成長6-8% CAGR",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "Q4ガイダンス6-8%成長は定量的・検証可能。しかし市場リーダー→パートナー更新→債権成長の因果チェーンは3ステップ以上になりえる。dogmaルール5（CAGR接続は直接メカニズム要求）: パターンII-T（直接的CAGRメカニズム）の条件を一部満たすが、市場リーダー地位とパートナー更新の因果が弱い。KB3-T（ORLY CAGR接続50%のアナロジー）適用。",
+      "confidence_adjustments": [
+        {"reason": "Q4ガイダンス（6-8%）は定量・検証可能", "adjustment": 0},
+        {"reason": "因果チェーンが3ステップ以上になりうる", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "80年以上のPLCC専業運営履歴に基づくパートナー信頼・関係資産",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Switching Costs",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 80年の専業履歴は複製困難な関係資産として能力として評価可能。dogmaルール6（構造的要素）: 専業特化による深い統合は構造的。ただしdogmaルール3（相対的優位性）: Alliance Data（30年以上）との年数比較がなく、年数優位が相対的に際立つかが不明。dogmaルール4（定量的裏付け）: 継続年数という間接的定量はあるが競合比較なし。KB3-T(CHD#1 70%、組織能力として評価)のアナロジーで50%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual call（主）", "adjustment": 0},
+        {"reason": "純粋競合との年数比較なし（相対性が不明）", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "長期パートナー関係 → 90%超の受取債権が2019年以降まで契約済み → 解約リスク低・安定CAGR",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム）: Retail Card受取債権90%が2019年以降まで契約済みというデータは開示・検証可能。因果チェーンが2ステップ以内（ロックイン→安定成長）で直接的。KB2-Tパターン II-T（直接的CAGRメカニズム）の条件を満たす。Q4 annual callからの発言（主）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、90%のロックイン率は検証可能なデータ", "adjustment": 0},
+        {"reason": "ロックインされた受取債権のリニューアルリスクが考慮されていない（部分的リスク残存）", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "プロプライエタリな閉鎖ループネットワーク（クローズドループ）によるSKUレベルの購買データ取得能力",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Network Economies",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 閉鎖ループネットワーク＋SKUデータ取得という仕組みは能力として正当に評価される。dogmaルール4（定量的裏付け）: 取引50%超でSKUデータ受信という定量あり。dogmaルール3（相対的優位性）: VISAやMCとの差（閉鎖ループ）は明確だが、他のPLCC事業者（Alliance Data）との差が不明。Q1 quarterly（従）からの発言のため-10%調整。",
+      "confidence_adjustments": [
+        {"reason": "Q1 quarterly（従・②相当）", "adjustment": -10},
+        {"reason": "他PLCC事業者との差別化が不明確", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "閉鎖ループデータ → ターゲットマーケティング精度向上 → パートナー売上増加 → プラットフォーム収益CAGR",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_C_causal_leap",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム）: データ→マーケティング→パートナー売上→収益は4ステップの長い因果チェーン。dogmaルール低評価パターン（因果関係の飛躍）。KB2-Tパターン C-T（因果の飛躍）が適用される。Q1 quarterly（従）からの発言のため-10%調整。",
+      "confidence_adjustments": [
+        {"reason": "Q1 quarterly（従）", "adjustment": -10},
+        {"reason": "4ステップの長い因果チェーン、定量的中間証拠なし", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "CareCredit プラットフォームにおける医療機関ネットワーク（155,000+プロバイダー）の規模とリピート購買の増加",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_A_result_as_cause",
+      "seven_powers_type": "Network Economies",
+      "scoring_rationale": "dogmaルール1: リピート率47%は結果。ネットワーク拡大という仕組みの説明が薄い。dogmaルール7（純粋競合差別化）: GreenSky等の競合との比較なし。Q3 quarterly（従・②相当）からの発言のため-15%調整。KB3-T（ORLY#6 Q3発言 30%）のアナロジー適用。",
+      "confidence_adjustments": [
+        {"reason": "Q3 quarterly（従・②相当）", "adjustment": -15},
+        {"reason": "純粋競合との比較なし", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "直接預金プラットフォームによる低コスト・安定的な資金調達能力",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Counter-Positioning",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 直接預金プラットフォームという仕組みは能力として評価。dogmaルール6（構造的要素）: 低コスト資金調達は収益性向上の構造的要因。dogmaルール3（相対的優位性）: PLCC競合（Comenity, Alliance Data）との資金コスト比較なし。Q4 annual callからの発言（主）。56%→60-70%目標への進捗は検証可能。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、預金目標達成進捗は検証可能", "adjustment": 0},
+        {"reason": "PLCC純粋競合との資金コスト比較がない", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "直接預金成長（目標60-70%達成）→ 資金コスト安定化 → NIM 15-15.5% 維持 → 収益CAGR",
+      "final_confidence": 0.55,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム）: 預金比率→資金コスト→NIM→収益は2-3ステップ。Q4での2015年NIM 15-15.5%ガイダンスは定量・検証可能。KB2-TパターンII-T（直接的CAGRメカニズム）の条件をある程度満たす。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、NIMガイダンスは検証可能", "adjustment": 0},
+        {"reason": "金利環境変動リスクが考慮されていない", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "決済ソリューションプラットフォームにおける63,000パートナー/119,000拠点ネットワークの規模優位",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_A_result_as_cause",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 拠点数は規模の結果。そのネットワークを維持・拡大する能力の説明がない。dogmaルール7（純粋競合差別化）: 消費者向け特定用途ファイナンシング競合との比較なし。dogmaルール4（定量的裏付け）: 数値は存在するが差別化の根拠としては弱い。KB2-TパターンA（結果を原因とする）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）だが結果の提示", "adjustment": 0},
+        {"reason": "パターンA-T適用、純粋競合との比較なし", "adjustment": -20}
+      ]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2014年末時点: 受取債権$61B、アクティブアカウント数62M、Retail Card受取債権の90%が2019年以降まで契約済み",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Synchrony Financialの消費者金融事業の歴史は80年以上",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Q1 2015: 全取引の50%超でSKUレベルデータを受信。デジタル購買量前年比18%増。モバイルアプリ申請は2011年から累計約500万件",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "CareCredit リピート購買比率: Q3 2014 47%（前年45%、5年前はほぼゼロ）。Payment Solutionsリピート率: 24%",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "2014年末時点: 直接預金残高前年比$9B増（28%増、$35B）、預金が総資金調達の56%。目標は60-70%",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 16,
+      "claim_type": "factual_claim",
+      "claim": "Payment Solutions: 63,000パートナー、119,000拠点。受取債権成長11%、プラットフォーム収益成長8%（Q4 2014）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.42,
+  "score_distribution": {
+    "competitive_advantage": {"count": 6, "avg": 0.40},
+    "cagr_connection": {"count": 4, "avg": 0.49}
+  }
+}

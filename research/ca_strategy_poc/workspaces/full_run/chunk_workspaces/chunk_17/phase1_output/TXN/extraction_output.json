@@ -1,0 +1,375 @@
+{
+  "ticker": "TXN",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-26) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015", "Q2_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "300mmウェハー製造における業界最大規模と低コスト構造（競合比コスト優位）",
+      "descriptive_label": "300mm製造規模優位によるコスト構造差別化",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'This gross profit reflects higher revenue, increased factory loadings and an improved product portfolio focused on Analog and Embedded Processing that benefits from our efficient manufacturing strategy'。'We believe this reflects our improved product portfolio and the efficiencies of our manufacturing strategy, which includes our growing 300-millimeter output and the opportunistic purchase of assets ahead of demand'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「製造効率の戦略」という仕組みを評価している。300mmウェハーへの早期転換とopportunistic asset購入という具体的な能力・プロセスの言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "Gross margin 58%、Free cash flow 27% of revenueという定量的開示あり。ただし競合（ADI、ON Semiconductor等）との製造コスト比較数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "300mm設備投資はサンクコストが大きく、競合が短期間で追いつくことが困難。Long-term capexサイクルによる構造的優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "ADI、ON、Microchipなど競合との製造コスト比較なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "アナログ半導体市場は製造コストが競争力の主要因。300mm化が進むほど単位コストが下がる業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）+ pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "300mm製造の規模優位は具体的な仕組みとして評価できる。Free cash flow 27% of revenueという定量的成果あり。業界構造との合致が高い。おおむね納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "300mm製造コスト優位 → 高GPM維持 → Free cash flow成長 → 一株あたりFCF増加",
+      "descriptive_label": "製造コスト優位→GPM→FCF成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "製造コスト低下 → GPM維持/拡大 → FCF増加という直接的な2ステップ。Free cash flow 27%という開示数値で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "製造コスト→GPM→FCFの接続は直接的。FCF 27%という定量的な開示あり。おおむね納得"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Industrial（31%）とAutomotive（13%）への市場集中による長期・安定的な製品需要基盤",
+      "descriptive_label": "産業/車載市場集中による需要安定性・長期設計勝利",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'In 2014, industrial and automotive combined were 44% of TI's revenue, up a couple of percentage points from last year. Specifically, industrial made up 31% of TI's revenue; automotive, 13%'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「産業/車載が44%」は収益構成（結果）。なぜTXNが産業/車載での設計勝利率が高いのか（サポート体制、製品深さ）の能力説明が不十分"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "産業/車載への集中はTXNに固有ではない。ADIやMicrochipも同様の市場集中を持つ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "産業31%、車載13%という具体的な市場構成比が開示"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "産業/車載は設計寿命が長く（5-10年）、スイッチングコストが高い市場。この市場での設計勝利は持続的収益に直結する業界構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（市場構成は結果）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "市場構成比は結果であり、設計勝利の能力への言及不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "産業/車載への集中は業界構造的に有利だが、この結果をもたらす能力の説明が乏しい。まあ納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "産業/車載市場への集中 → 長期設計サイクルによる粘着的revenue → 市場シェア維持/成長",
+      "descriptive_label": "産業/車載設計勝利→長期粘着的売上",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "設計勝利 → 5-10年の粘着的売上 → 市場シェア維持という接続。産業/車載の設計寿命の長さは業界常識だが、具体的なTXNの設計寿命データなし"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "産業/車載の長期設計勝利のメカニズムは業界構造として合理的だが、TXN固有の定量データなし"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Analog 9期連続、Embedded Processing 9期連続の市場シェア獲得",
+      "descriptive_label": "継続的市場シェア獲得（Analog/Embedded）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'We gained market share in both businesses again in 2014. These 2 key businesses were 83% of TI's revenue for the year, up from 79% in 2013'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "市場シェア獲得は結果。なぜシェアを獲得できているかの能力説明（製品ポートフォリオの深さ、技術支援体制等）が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Analog 6期連続、Embedded 9期連続成長という継続性データあり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（結果を原因化）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "継続的シェア獲得は結果に過ぎず、能力説明なし",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "継続的なシェア獲得実績は定量的だが、それをもたらす能力の説明が皆無。「シェアは結果」ルール1-T違反。あまり納得しない"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "流通チャネルコンサインメントプログラムによるリアルタイム需要可視化と在庫効率化",
+      "descriptive_label": "コンサインメント在庫プログラムによる需給マッチング能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'we now have about 60% of our distribution revenue on consignment, up about 15 percentage points from a year ago. With this program, inventory sits on TI's balance sheet and revenue is recognized when our distributors pull products from our consignment inventory... giving us greater flexibility to meet customer demand'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コンサインメントプログラムという「仕組み」を評価。需要変動への対応能力（柔軟なファクトリー運用）という能力説明あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "流通売上の60%がコンサインメント（前年比+15pp）という定量データ。流通在庫4.5週間（歴史的低水準）のデータあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "コンサインメントプログラムの構築には顧客・流通との信頼関係と数年の実績が必要。短期間での複製困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "競合ADI等との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "コンサインメントプログラムは具体的な仕組みで定量データあり。競合比較なしだが業界慣行を超えた独自性があると評価できる。まあ納得"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "1万以上のアナログ製品ポートフォリオの広さによる設計デザインの一括対応能力",
+      "descriptive_label": "広範なアナログ製品カタログによる設計サポート優位",
+      "evidence_from_transcript": "Q4 2014 Q&A（CFO発言）: TXNはIndustrial/Automotiveの多様な顧客ニーズに対してAnalog+Embedded Processingの広いカタログで対応可能。連続的なCAGR成長（Analog 6期、Embedded 9期）を可能にしている要因として言及",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "製品カタログの「広さ」は仕組みとして機能するが、トランスクリプト内での直接的な言及は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "製品数の定量的開示なし（1万製品という数値はトランスクリプト外の一般知識）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "ADI、NXP等との製品カタログ比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t（定性的のみ）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言だがトランスクリプト内の直接証拠が弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "製品カタログの広さはTXNの特徴だが、トランスクリプト内での直接的・定量的な言及が不十分。あまり納得しない"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Free cash flow重視の資本配分規律（FCF 100%株主還元コミットメント）によるバリュエーション支持構造",
+      "descriptive_label": "FCF指向の資本配分規律",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'our intention is to return 100% of our free cash flow plus any proceeds we receive from exercises of equity compensation minus net debt retirement'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "FCF 100%還元コミットメントという資本配分の「仕組み」を評価している"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "資本配分規律は競争優位性の補完的要素。競合に対する直接的な優位性ではなく、財務的な価値創出メカニズム"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "資本配分コミットメントは「戦略」の一側面に近い。Hamilton Helmerの7 Powersフレームワークでは直接的な競争優位性とはなりにくい"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t（戦略の混同）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "資本配分は競争優位性ではなく戦略・財務メカニズム",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "FCF 100%還元は投資家への価値配分メカニズムとして評価できるが、競争優位性としての成立は困難（財務戦略）。あまり納得しない"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: Gross margin 58%、Operating margin 33.6%、FY2014 Free cash flow $3.5B（27% of revenue、前年比18%増）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Industrial 31%、Automotive 13%（合計44%）、Personal Electronics 29%（FY2014）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Analog 6期連続、Embedded Processing 9期連続の前年比成長。FY2014: Analog+13%、Embedded+12%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "流通売上の60%がコンサインメント（前年比+15pp）。流通在庫4.5週間（歴史的低水準）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 株主還元$4.2B（FCF $3.5Bを超える還元）。FCF 100%還元方針を継続",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [8]
+    }
+  ]
+}

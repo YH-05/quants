@@ -1,0 +1,81 @@
+{
+  "ticker": "STAN",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["STAN-006", "STAN-007", "STAN-008", "STAN-009", "STAN-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "STAN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "アフリカ→ロンドン→アジアのコリドー特化（金融センター横断型の独自の資本フロー仲介能力）",
+      "descriptive_label": "アフリカ-ロンドン-アジアコリドーの特化能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - アフリカ↔ロンドン↔アジアの資本フロー仲介という特化能力の仕組み説明",
+        "rule_4_t": "PARTIAL - コリドー特化の定量的裏付け（流量・シェア）が不十分",
+        "rule_7_t": "PARTIAL - HSBC等との比較でこのコリドーでの優位性が示されていない"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。3拠点にまたがるネットワークは短期的に構築困難",
+      "kb3_t_calibration": "STAN-002（貿易金融→70%）の派生。コリドー特化はより具体的な絞り込みだが定量的裏付けが弱い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（コリドー仲介能力）。Rule 4（定量的裏付け）: 部分的。Rule 7（純粋競合差別化）: 制約あり。Q4発言相当",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1 PASS、Rule 4・7 部分的。KB2-T pattern_III_t（競合模倣困難）。dogma.md Rule 4・7制約。コリドー特化という独自の絞り込みは評価するが定量的裏付け不足。50%"
+    },
+    {
+      "id": "STAN-007",
+      "claim_type": "cagr_connection",
+      "claim": "RMB国際化先行優位 + 貿易金融#2ポジション → アジア内貿易フロー増大 → 手数料収益CAGR接続",
+      "descriptive_label": "RMB優位+貿易金融#2→アジア貿易成長→CAGR経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの因果（RMB先行+貿易金融→アジア貿易フロー増大→手数料収益）で検証可能",
+        "rule_12_t": "PASS - Q4発言相当"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。RMBフロー+122%という実績値が裏付け",
+      "kb3_t_calibration": "ARM-007（ライセンス→ロイヤリティ→70%）と類似した直接的接続。RMBフロー+122%は強力な定量的実績値",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。Q4発言相当。「開示データで検証可能」（RMBフロー定期開示）。中国政策変化リスクが外部変数として存在",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5・12の両PASS。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5 PASS。中国政策変化という外部変数リスクと資本規制緩和ペースの不確実性。Q4発言相当。50%"
+    },
+    {
+      "id": "STAN-008",
+      "claim_type": "cagr_connection",
+      "claim": "PB/WM AUM成長（CAGR 30%）→ 経常手数料収益増 → グループ収益安定性向上",
+      "descriptive_label": "PB/WM高成長→経常収益→グループ安定性経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの因果（AUM→手数料→グループ安定性）で検証可能",
+        "rule_12_t": "PASS - Q4発言相当"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。AUM→手数料収益は直接的な2ステップ接続",
+      "kb3_t_calibration": "ADN-008（SWIP多資産化→収益安定性→40%）と類似。STANのPB/WMはAAMという高成長市場に特化しており若干評価が高い",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。Q4発言相当。ただしPB/WMは新興市場リスクに伴う資産フライトリスクがある",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5・12の両PASS。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5 PASS。新興市場リスク（EM AuM流出）が外部変数。Q4発言相当。50%"
+    },
+    {
+      "id": "STAN-009",
+      "claim_type": "factual_claim",
+      "claim": "RMBフロー+122%（H1 2014）、中国本土清算行指定（北京・上海）、アジア各国中央銀行とのRMB清算協定",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2013（年次報告相当）CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。STAN-003（RMB国際化先行優位）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。STAN-003（70%）の支持事実。+122%・清算行指定という独立第三者認定が特に重要。0.7"
+    },
+    {
+      "id": "STAN-010",
+      "claim_type": "factual_claim",
+      "claim": "SWIFT Bankersalmanac 貿易金融グローバル第2位の地位確認（FY2013）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - SWIFT独立機関による評価・外部定量ランキング"
+      },
+      "kb2_t_pattern": "pattern_IV_t（構造的市場ポジション）",
+      "dogma_evaluation": "事実主張として独立第三者評価による裏付け。STAN-002（貿易金融#2）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として独立第三者評価による裏付け充分。STAN-002（70%）の最重要支持事実。SWIFT独立評価という客観性が特に価値高い。0.7"
+    }
+  ]
+}

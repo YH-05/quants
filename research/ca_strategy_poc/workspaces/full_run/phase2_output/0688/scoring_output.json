@@ -1,0 +1,204 @@
+{
+  "ticker": "0688",
+  "company_name": "China Overseas Land & Investment Limited",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "中国国有大手建設グループ（COHL）傘下としての政策・土地取得・資金調達における親会社支援",
+      "descriptive_label": "国有企業ブランド・親会社バックアップ（Cornered Resource）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "親会社の直接不動産事業撤退という具体的事実。ダブルプラットフォームの資金調達構造は能力として評価可能"},
+        {"rule_id": "rule_3_t", "result": true, "reasoning": "民間不動産会社は親会社による直接競合排除・資金調達支援を持てない。国有企業固有の優位"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "親会社支援の定量的差別化データが乏しい（資金調達コスト差のbp等の数値開示なし）"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "国有企業系バックアップは民間企業が持てない構造的優位"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（中国国有企業の特権的地位）×企業ポジション（COHL系唯一の上場不動産会社）"},
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.1, "reasoning": "中国大手不動産の多くが何らかの国有バックアップを持つ（Vanke、CR Land等）"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_B_t", "adjustment": -0.1, "reasoning": "業界競合も類似の国有バックアップを有し純粋差別化は限定的"}
+      ],
+      "overall_reasoning": "国有企業系の優位性は実在するが、中国の大手不動産企業の多くが何らかの国有企業バックアップを持っており純粋競合との差別化は限定的。FY2014年次決算での発言（主・①）。-10%調整後 40%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "親会社支援・ダブルプラットフォーム→資金調達コスト優位→土地取得競争力→売上成長",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "3ステップ以上の因果チェーン（支援→資金調達→土地取得→売上）。各ステップの定量的裏付けが不十分"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2014年次決算（主・①）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "因果チェーンが長く各ステップに不確実性あり（特に土地取得→売上成長の接続）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "因果チェーンが3段階以上で各ステップの定量的裏付けが不十分。概念的には成立するが実証性が低い。30%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "中国全土47都市（2014年末）にわたる広域都市展開と高利益率維持（粗利率32-34%）を両立するコスト管理・製品品質能力",
+      "descriptive_label": "全国規模展開と高利益率両立のオペレーション能力（Process Power + Scale Economies）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "「コスト管理・製品品質のノウハウ」の言及は能力的要素。47都市展開は結果だが、維持する仕組みが背景に存在"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "粗利率32-34%という具体数値あり。FY2014 32.7%、H1 2015 32.24%と継続的に確認可能"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "スケールと高利益率の両立は模倣難易度の高い組織能力の証拠"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "Vanke、Country Garden等の純粋競合との比較データなし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的指標（粗利率32-34%、47都市）あり"},
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.1, "reasoning": "中国大手不動産企業の多くが全国展開を実施。業界共通の戦略"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_B_t", "adjustment": -0.1, "reasoning": "全国展開は業界大手共通。純粋競合との差別化を示す比較データなし"}
+      ],
+      "overall_reasoning": "粗利率32-34%の継続維持は数値で確認できる実績。ただし主要競合との比較なく業界内での差別化度が不明。FY2014年次（主・①）。-10%調整後50%維持（0688は特に競合比較の開示が乏しいため）"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "高利益率維持能力→成長環境での売上増加×利益率維持→利益成長",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "売上×利益率=利益の算術的接続。FY2014で売上+45.5%、純利益+20.1%という実績で検証済み"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2014年次（主・①）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的な算術的CAGRメカニズム（売上成長×利益率維持=利益成長）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "算術的接続は明快でFY2014実績（売上+45.5%・純利益+20.1%）で検証可能。ただし中国不動産市場の政策リスクで売上成長の継続性に不確実性。50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "「中国海外」ブランドによる物件品質への顧客信頼と、リノベーション6標準セット（内装標準化）による製品差別化",
+      "descriptive_label": "ブランド力と標準化リノベーション（Branding + Process Power）",
+      "final_confidence": 0.2,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "ブランド力と内装標準化能力は能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "リノベーション利益率は「プレセール以上」との言及はあるが具体的数値（$/sqm等）非開示"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "ブランドは長期構築のものとして構造的要素"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_D_t", "matched": true, "adjustment": -0.1, "reasoning": "競合比較なしの定性的ブランド優位主張"},
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.1, "reasoning": "顧客認知（結果）をブランド力（原因）として転倒するリスク"}
+      ],
+      "confidence_adjustments": [
+        {"source": "H1 2015 Q&A（中間期・②）", "adjustment": -0.1, "reasoning": "中間期Q&A（従・②相当）の発言で-10%調整"},
+        {"source": "pattern_D_t", "adjustment": -0.1, "reasoning": "定性的のみ、競合比較なし"}
+      ],
+      "overall_reasoning": "ブランド優位性の言及はあるが競合比較なし・定量的裏付けなし。6標準セットという具体性はあるが利益率の数値が非開示。中間期Q&A発言で-10%調整。20%"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "ブランド・内装標準化→リノベーション付き物件プレミアム→価格・利益率向上",
+      "final_confidence": 0.2,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "ブランド→プレミアム価格→利益率の2-3ステップだが定量的裏付けが乏しい"},
+        {"rule_id": "rule_12_t", "result": false, "reasoning": "中間期Q&A（従・②相当）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "因果飛躍（ブランド→プレミアム→利益率向上）の定量的証拠なし"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "因果関係は概念的に成立するが定量的裏付けなし。中間期Q&A発言でさらに信頼性低下。20%"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "一級・二級都市の大規模土地バンク（H1 2015後 4,409万平方メートル）と財務健全性（ネットギアリング比率13.4%、現金HKD786億）",
+      "descriptive_label": "土地バンク規模と財務体力（Cornered Resource）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "財務規律維持能力は仕組みとして評価可能。低ギアリング維持という行動パターンが継続的に確認できる"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "4,409万sqmの土地バンク、ネットギアリング13.4%（FY2014は32.4%→改善傾向）という具体数値あり"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "土地バンク規模は希少資源的要素。低ギアリング比率は追加投資の財務余力として構造的"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（4,409万sqm、ギアリング13.4%）あり"}
+      ],
+      "confidence_adjustments": [
+        {"source": "H1 2015（中間期・②）", "adjustment": -0.1, "reasoning": "中間期（従・②相当）での発言で-10%調整"}
+      ],
+      "overall_reasoning": "低ギアリング比率13.4%と大規模土地バンクは定量的に確認可能。ただし中間期発言で-10%調整。中国不動産市場の政策リスク・規制環境の変化が土地バンクの価値持続性に影響。40%"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "土地バンク・財務余力→景気低迷時の土地追加取得→将来の売上成長",
+      "final_confidence": 0.2,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "財務余力→土地取得→開発→売上の3-4ステップ。各ステップに不確実性が高い（特に市場回復タイミング）"},
+        {"rule_id": "rule_12_t", "result": false, "reasoning": "中間期（従・②相当）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "因果チェーンが長く各ステップに高い不確実性あり"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "財務余力→将来売上の接続は間接的で不確実性が高い。中間期発言でさらに信頼性低下。20%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "20-30": 4,
+      "40-50": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

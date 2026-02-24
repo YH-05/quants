@@ -1,0 +1,253 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "LUN_001",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "LundbeckはCNS（中枢神経系）疾患に特化した精神科・神経科の専門製薬会社として、他の大手製薬企業がCNSから撤退する中で、CNS専門のR&D能力と医師ネットワークを維持する差別化ポジションを持つ。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule01": "PASS - CNS専門R&D能力と医師ネットワークという能力主張",
+        "rule07": "PASS - 大手製薬企業（Pfizer、GSK等）のCNS撤退と対比したLundbeckの専門特化は明確な差別化",
+        "rule11": "PASS - CNS精神科薬は市場構造的に専門性が高く参入障壁が大きい",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": [
+          "IV-T (構造的市場ポジション: CNS専業という業界内の構造的ニッチポジション)",
+          "V-T (具体的競合比較: 大手製薬企業がCNSを撤退という対比)"
+        ]
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule07 (競合との差別化)",
+          "rule11 (業界構造との適合)"
+        ],
+        "conclusion": "大手製薬企業がCNSを撤退する逆張り戦略は競合比較として明確。CNS専門医師ネットワークとR&Dは他社が失いつつある能力であり、Lundbeckのコーナードリソースとなる。"
+      },
+      "scoring_rationale": "CNS撤退トレンドに逆行した専門特化は競合との明確な差別化。医師ネットワークと専門R&D能力はコーナードリソース。パターンIV/V適用。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "LUN_002",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "BrintelixはSSRI/SNRIと異なる多モード作用機序（multimodal profile）により差別化されたFDAラベルを取得し、既存療法不応患者向けの市場ポジションを確立する製品力を持つ。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 多モード作用機序という能力主張",
+        "rule04": "PASS - FDAラベルという規制上の具体的差別化",
+        "rule07": "PASS - SSRI/SNRIとの明確な作用機序の差異",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": [
+          "V-T (具体的競合比較: SSRI/SNRIとの作用機序の差異を明示)",
+          "I-T (定量的差別化: FDAラベルという規制上の差別化)"
+        ]
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule04 (定量的根拠)",
+          "rule07 (競合との差別化)"
+        ],
+        "conclusion": "多モード作用機序とFDAラベルの差別化は実質的。SSRI/SNRIとの機序差異は明確。既存療法不応患者への適応は医師処方決定の根拠となる構造的優位。"
+      },
+      "scoring_rationale": "多モード作用機序とFDAラベル差別化は実質的なコーナードリソース。競合（SSRI/SNRI）との明確な機序差異あり。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "LUN_003",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "LundbeckのOtsuka提携（brexpiprazole共同開発・商業化）は、Abilify（年商USD7B超の精神科薬）の後継製品開発において大手製薬パートナーの商業化力を活用するリソースシェアリング優位性を生み出す。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - パートナーシップ能力と商業化力活用の主張",
+        "rule04": "PASS - Abilify年商USD7B超という具体的規模",
+        "rule06": "FAIL - パートナーシップは補完的な戦略オプションであり構造的優位とは言えない",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [
+          "F-T (戦略と優位の混同: Otsuka提携は戦略的パートナーシップであり構造的競争優位ではない)"
+        ],
+        "high_eval_patterns": [
+          "I-T (定量的差別化: Abilify USD7B超という市場規模の具体化)"
+        ]
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule06 (補完的能力 vs 構造的優位)",
+          "rule08 (戦略と優位の区別)"
+        ],
+        "conclusion": "Otsuka提携は価値あるパートナーシップだが、競合他社も類似の提携を組める。brexpiprazoleの差別化は提携ではなく製品自体の差異化に依存。"
+      },
+      "scoring_rationale": "Otsuka提携の規模感（Abilify USD7B超）は具体的。ただし提携自体は戦略的オプション。rule06でFAIL。パターンF適用。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "LUN_004",
+      "claim_type": "competitive_advantage",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "Lundbeckの「Fit for the Future」コスト構造改革により、成熟製品（Cipralex/Ebixa）の特許切れによる収益侵食に対して、R&D・商業化への投資余力を創出する組織効率化能力を持つ。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "FAIL - コスト削減プログラムの宣言は実証済み能力ではない",
+        "rule06": "FAIL - コスト効率化は補完的な組織能力",
+        "rule08": "FAIL - 「Fit for the Future」は戦略的プログラム名称であり実証済み優位ではない",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [
+          "F-T (戦略と優位の混同: コスト構造改革プログラムは戦略実行であり競争優位ではない)"
+        ],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule08 (戦略と優位の区別)",
+          "rule01 (能力 vs 目標)"
+        ],
+        "conclusion": "特許切れへの対応としてのコスト改革は必要条件であるが、それが競争優位の源泉とは言えない。製薬業界では全社が特許切れに対してコスト削減を実施する。"
+      },
+      "scoring_rationale": "特許切れ対応のコスト削減プログラムは業界標準的な経営対応。rule08/06でFAIL。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "LUN_005",
+      "claim_type": "competitive_advantage",
+      "power_type": "branding",
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "LundbeckはCipralex（エスシタロプラム）の中国市場においてLexapro brand #1の地位を維持し、特許切れ後も中国での市場リーダーシップを保持する中国ブランド力を有する。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 特許切れ後のブランド力維持という能力主張",
+        "rule04": "PASS - 中国#1という市場ポジションの具体的主張",
+        "rule07": "FAIL - 中国でのジェネリック競合との具体的な価格・シェア比較なし",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": [
+          "IV-T (構造的市場ポジション: 特許切れ後も#1を維持するブランド力という構造的優位)"
+        ]
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule01 (能力 vs 結果)",
+          "rule07 (競合との差別化)"
+        ],
+        "conclusion": "特許切れ後もオリジナルブランドが#1を維持するのは実質的なブランド力の証拠。中国の成長（+30%）と合わせて有効な差別化。ただしジェネリック競合との価格差比較なし。"
+      },
+      "scoring_rationale": "特許切れ後も中国#1維持はブランド力の実質的な証拠。中国市場+30%成長と整合。一次ソース。ただしジェネリック競合比較なし。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "LUN_006",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "Selincroはアルコール依存症治療において世界初の飲酒量低減薬として、NICE推奨・フランスASMR IV分類を取得し、欧州の医療政策上のpayer endorsementを確保する規制差別化を持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 規制承認という能力の証拠",
+        "rule04": "PASS - NICE推奨・ASMR IV分類という具体的な規制上の差別化",
+        "rule07": "PASS - 世界初という競合比較（競合製品が存在しない）",
+        "rule11": "PASS - アルコール依存症治療の市場構造的ニッチ性",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": [
+          "V-T (具体的競合比較: 世界初という明確な競合優位)",
+          "IV-T (構造的市場ポジション: NICE推奨という規制上の参入障壁)"
+        ]
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule04 (定量的根拠)",
+          "rule07 (競合との差別化)",
+          "rule11 (業界構造との適合)"
+        ],
+        "conclusion": "世界初のアルコール依存症飲酒量低減薬というポジションはコーナードリソース。NICE推奨は英国での保険適用の基盤。ただしパイプラインが薄く、Selincroの市場規模がまだ小さい。将来の競合参入リスクもある。"
+      },
+      "scoring_rationale": "世界初の作用機序とNICE推奨による規制差別化は実質的なコーナードリソース。ただし市場初期段階で収益貢献は限定的。一次ソース。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "LUN_007",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "新製品群（Brintellix、Abilify Maintena、brexpiprazole、Selincro）の欧米市場展開 → 成熟製品（Cipralex、Ebixa）の特許切れによる収益侵食を補填 → 2020年までに事業規模を倍増（売上CAGR ~7-8%）",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 2020年倍増（CAGR ~7-8%）という定量目標、新製品成長+45%という実績数値",
+        "rule06": "PASS - 新製品ポートフォリオ→売上成長というメカニズムは製薬業界の標準的なCAGR接続"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": [
+          "II-T (直接的CAGRメカニズム: 新製品群→特許切れ補填→2020年倍増という明確な2ステップ)",
+          "I-T (定量的差別化: 新製品成長+45%/+55%という実績数値)"
+        ]
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "rule04 (定量的根拠)"
+        ],
+        "conclusion": "新製品成長実績（+45%/+55%）と将来目標（2020年倍増）の両方が定量化されており、CAGR接続の根拠は明確。Brintellix/Abilify Maintena/Selincroの具体的製品名も特定されている。"
+      },
+      "scoring_rationale": "新製品成長実績（+45%）と将来倍増目標（2020年）が具体化されたCAGR接続。パターンII適用。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "LUN_008",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "LundbeckのFY2013売上高はDKK 13.5B規模（ガイダンス達成）。新製品成長+45%（報告）/+55%（Q4）。US売上+22%。国際市場+8%（中国+30%）。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 複数の定量的指標（DKK 13.5B、+45%/+55%、+22%、+8%、+30%）",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": [
+          "事実確認型クレームとして評価"
+        ],
+        "conclusion": "財務数値は検証可能な事実。一次ソースから。"
+      },
+      "scoring_rationale": "事実確認型クレーム。一次ソースの具体的財務指標。70%。",
+      "final_confidence": 0.7
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "70-80": 4,
+      "50-60": 3,
+      "30-40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

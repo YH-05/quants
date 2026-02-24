@@ -1,0 +1,69 @@
+{
+  "ticker": "LKQ",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "LKQ-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "断片化市場のコンソリデーター・フルフィルメント率・SKU 18%増",
+      "phase1_confidence": 0.7,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule01 - フルフィルメント率という能力的優位性。rule04 - SKU 18%増という定量証拠、保険17社との提携という具体的な差別化。KB2: Pattern I - SKU密度・保険パートナー数という業界比較での優位性証拠。Pattern IV - 断片化市場でのコンソリデーターポジションは構造的。dogma.md: 70%は「定量的裏付け+構造的根拠」要件を満たす。",
+      "final_confidence": 0.7,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "LKQ-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "claim_text": "ECP欧州194支店ネットワーク密度・Tamworth T2投資",
+      "phase1_confidence": 0.6,
+      "kb2_pattern_applied": "pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule04 - 194支店・11.6%有機成長という定量証拠。KB2: Pattern IV - 支店密度は競合には再現困難な構造的資産。T2（GBP75M）はさらなる差別化投資。ただしKB1: rule10 - T2投資は2018年まで収益化せずコスト増加（短期的EPS-$0.09〜$0.12）。",
+      "final_confidence": 0.6,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "LKQ-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "保険会社パートナーシップ・代替部品モデル",
+      "phase1_confidence": 0.6,
+      "kb2_pattern_applied": "pattern_V (具体的競合比較)",
+      "scoring_rationale": "KB1: rule07 - OEM部品メーカーには代替部品モデルは模倣困難。KB2: Pattern V - 保険17社との提携という具体的な競合差別化。KB1: rule10 - スクラップ価格変動（36%下落）というコモディティリスク（ネガティブケース）あり。",
+      "final_confidence": 0.5,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "LKQ-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "走行距離増加・燃料費低下・雇用改善",
+      "phase1_confidence": 0.6,
+      "scoring_rationale": "KB2: Pattern II (直接的CAGRメカニズム) - 走行距離増加は保険事故件数増加→修理需要増加という直接的なCAGR接続。燃料費低下による北米オーガニック6.3%成長との整合。",
+      "final_confidence": 0.6,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "LKQ-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q2 2015 決算数値",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 3,
+    "ca_weighted_confidence": 0.60,
+    "top_power_type": "Scale Economies / Network Economies",
+    "overall_assessment": "LKQは断片化市場でのコンソリデーターとしてのScale EconomiesとECP欧州のNetwork Economiesが主要な優位性。保険会社との代替部品エコシステムも評価できる。スクラップ価格変動リスクはあるが構造的優位性は健全。"
+  }
+}

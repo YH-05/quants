@@ -1,0 +1,167 @@
+{
+  "ticker": "CCI",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Q4 FY2014 (2015-01-22) primary. Multiple quarterly transcripts Q1-Q3 2014/2015 secondary. REIT structure and AFFO basis. Infrastructure/tower REIT with unique market position."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "米国最大の無線インフラプロバイダーとしての約40,000タワー＋14,000スモールセルノードのネットワーク規模とロケーション独占性",
+      "final_confidence": 0.70,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール11（業界構造との合致）: 米国モバイルブロードバンド成長×タワー需要増加という市場構造とCCIの米国最大インフラ事業者ポジションが完全に合致。dogmaルール1（能力・仕組み）: ロケーション独占性（法的・物理的に再構築不可能）は構造的希少資源として能力として評価。dogmaルール4（定量的裏付け）: 40,000タワー+14,000ノードという定量的規模。AMTとの比較で米国特化の差別化あり。KB3-T（ORLY#2フラグメント市場×規模・密度 90%）に類似した「市場構造との合致」だがタワー業界は寡占構造のため90%には届かない。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、米国最大タワー事業者の定量実績", "adjustment": 0},
+        {"reason": "AMTとの比較でCCIは米国特化（AMTはグローバル）という差別化が明確", "adjustment": 0}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "タワー/スモールセル規模 → 4大通信キャリアとの長期リース契約（$22B将来収益）→ AFFO CAGR 6-7%",
+      "final_confidence": 0.70,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: $22B将来契約収益×エスカレーター（3-5%/年）→AFFO 6-7%は2ステップで直接的・定量的・検証可能。KB2-TパターンII-T（直接的CAGRメカニズム）の最高条件を満たす。Q4での5年間AFFO 6-7% CAGRガイダンスは開示済み。",
+      "confidence_adjustments": [
+        {"reason": "AFFO 6-7%ガイダンスは定量・検証可能", "adjustment": 0},
+        {"reason": "4大キャリア集中リスク（顧客集中）はリスク要因だが短期的には安定", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "タワー下の土地の長期所有・管理戦略：土地所有またはは20年超リースで70%のサイトを確保",
+      "final_confidence": 0.65,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Cornered Resource",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 17,000件の地権取引という能力・実績。70%が20年超という定量的コントロール。dogmaルール4（定量的裏付け）: 70%（20年超）、1/3（所有）という定量開示。dogmaルール3（相対的優位性）: 「業界最高のセキュアなポートフォリオ」と主張するがAMT、SBAとの比較数値なし。KB2-TパターンIII-T（能力>結果）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、17,000件実績と70%定量開示", "adjustment": 0},
+        {"reason": "AMT/SBAとの地権コントロール率の定量比較なし", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "既存タワーポートフォリオのリースアップによる収益率向上能力（5% → 15%投資収益率）",
+      "final_confidence": 0.70,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 5%→15%という実証済みのリースアップ能力。テナント追加という仕組みの説明あり。dogmaルール4（定量的裏付け）: 5%初期→15%レガシー実績という過去実績が強力な定量証拠。dogmaルール5（CAGR接続）: リースアップ→収益率向上→AFFO成長は直接的で短いメカニズム。KB3-T（過去実績からの証明 70%）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、5%→15%という強力な定量的過去実績", "adjustment": 0},
+        {"reason": "AT&T・T-Mobile資産のリースアップ速度が不確実（契約条件が異なる可能性）", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "新規タワーポートフォリオのリースアップ → 15%投資収益率到達 → AFFO成長200bp上乗せ",
+      "final_confidence": 0.65,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: 200bpの上乗せは具体的定量目標。過去実績（5%→15%）が根拠。KB2-TパターンII-T（直接的CAGRメカニズム）の条件をほぼ満たす。ただし10年超のタイムライン（新規資産成熟）の不確実性あり。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、200bpという具体的定量目標", "adjustment": 0},
+        {"reason": "リースアップタイムライン（10年以上）の長期不確実性", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "スモールセルネットワーク事業でのリーダーシップ：7,000マイルのファイバー、14,000ノードの戦略的展開",
+      "final_confidence": 0.70,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Cornered Resource",
+      "scoring_rationale": "dogmaルール11（業界構造との合致）: 5G展開に向けたスモールセル需要急増×CCI先行投資ポジションが市場構造と合致。dogmaルール1（能力・仕組み）: NextG買収起点のスモールセルリーダーシップという能力確立経緯の説明あり。dogmaルール4（定量的裏付け）: 収益前年比30%増、7,000マイルファイバーという強力な定量的裏付け。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、スモールセル収益30%増という強力な定量証拠", "adjustment": 5},
+        {"reason": "スモールセルは新興ビジネスで黒字転換タイミングが不確実", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "スモールセルネットワーク拡大 → 利回り向上（初期6-8%→ローティーン）→ AFFO追加貢献",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: スモールセルのリースアップ→利回り向上はタワービジネスの実証済みモデルの適用。ただし新規ビジネス（スモールセル）での実績が限られる。KB2-TパターンII-T条件を部分的に満たす。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、タワーの実証モデルを適用", "adjustment": 0},
+        {"reason": "スモールセルの経済性はタワーと異なる可能性（複数テナント化が困難）", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "全売上の95%以上が年初時点で契約済みという高い収益可視性と長期テナント契約構造",
+      "final_confidence": 0.65,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_I_quantitative_differentiation",
+      "seven_powers_type": "Switching Costs",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: 95%という高い収益可視性は定量的に明示。dogmaルール1（能力・仕組み）: キャリア装置の移設コスト（スイッチングコスト）が自然発生する仕組みの説明あり。dogmaルール3（相対的優位性）: AMT/SBAとの契約可視性比較なし（業界共通の特性かもしれない）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、95%という強力な定量的実績", "adjustment": 0},
+        {"reason": "REIT業界では高収益可視性は業界共通（AMT等も同様）の可能性", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年末: 米国内タワー約40,000基、スモールセルノード14,000基、ファイバー7,000マイル",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "タワー地権確保: 1/3が所有、70%が所有または20年超リース",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "レガシー資産投資収益率約15%。AFFO 2015年ガイダンス約$1.46B、配当$1.1B（6-7% CAGR目標）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "スモールセル収益前年比約30%増。初期収益利回り6-8%",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "年初時点での契約済み収益95%以上。将来契約収益$22B",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.669,
+  "score_distribution": {
+    "competitive_advantage": {"count": 4, "avg": 0.675},
+    "cagr_connection": {"count": 4, "avg": 0.663}
+  }
+}

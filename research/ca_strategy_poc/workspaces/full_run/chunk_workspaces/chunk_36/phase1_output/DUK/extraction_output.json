@@ -1,0 +1,284 @@
+{
+  "ticker": "DUK",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-18)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "規制事業における2012年合併後の統合コスト削減能力（5年間で$687M顧客コスト削減を2.5年で60%達成）",
+      "descriptive_label": "合併統合コスト削減実行能力（Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Lynn Good): 'We continued to deliver significant benefits from the 2012 merger, and we are on track to achieve the $687 million of savings for our Carolinas customers over the first 5 years of the merger. In fact, 2.5 years into the merger, we have generated over 60% of the guaranteed fuel and joint dispatch savings.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "合併後の統合実行能力（Process Power）として評価できるが、「保証された節約を達成している」という結果の面も強い。能力の説明が限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$687M節約目標、2.5年で60%超達成という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "weak",
+            "reasoning": "合併統合は一度限りのイベントであり、継続的な競争優位性の源泉とは言えない。規制事業における構造的優位性ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量的実績あり。ただし規制事業のコスト削減は競争優位性より規制義務の性質が強い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "規制電力会社の合併統合コスト削減は能力の一形態だが、競争市場の優位性とは異なる。規制当局へのコミットメントとしての性格が強く、30-40%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2012年Progress Energy合併後の統合節約: 5年目標$687M、2.5年時点で60%超達成（燃料・共同ディスパッチ節約）。2014年調整後EPS $4.55、ガイダンス内達成（5年連続）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "規制原子力フリートの高稼働率維持能力（93%稼働率、16年連続90%超）",
+      "descriptive_label": "規制原子力高稼働率維持能力（Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Lynn Good): 'Our regulated nuclear fleet set a new net generation record and achieved an annual capacity factor of 93%, the 16th consecutive year above 90%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "原子力設備の高稼働率維持は運営能力（Process Power）として評価できる。16年連続という継続性は能力の存在を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "93%稼働率、16年連続90%超という明確な定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合電力会社との原子力稼働率比較なし。業界平均（約90%）比での優位性が不明"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "規制電力市場では設備稼働率が固定費回収の核心。高稼働率 = 低コストで市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。16年連続という長期実績と定量データで客観的。ただし競合比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "原子力高稼働率維持はProcess Powerの典型。16年連続90%超は業界内でも高水準だが競合比較がなく50%が妥当。規制事業の安定性が反映"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "規制原子力フリート: 2014年稼働率93%（過去最高）、16年連続90%超達成",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "商業再生可能エネルギー事業における風力・太陽光ポートフォリオ構築能力（2007年から$4B超投資、2,000MW超）",
+      "descriptive_label": "商業再生可能エネルギーポートフォリオ構築能力（Cornered Resource）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Lynn Good): 'Since its inception in 2007, we have invested over $4 billion in this business and we'll have over 2,000 megawatts of wind and solar generation in service by the end of this year.' And: 'This business exceeded its financial target of $50 million in net income for the year and invested over $500 million in new wind and solar projects.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "再生可能エネルギーポートフォリオ構築能力として評価できるが、「$4B投資した」という結果の面が強い。能力の差別化が不明確"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$4B+投資、2,000MW超、$50M純利益超過達成という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "weak",
+            "reasoning": "再生可能エネルギー事業は競合（NextEra Energy等）も大規模投資。構造的模倣困難性が不明"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "「$4B投資した」は戦略的決定であり、能力そのものではない可能性。ROICや競合比較が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量実績あり。ただし戦略と能力の混同リスク（Rule 8-T）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "商業再生可能エネルギー事業は成長事業だが、$4B投資は戦略選択であり能力ではない。能力の差別化要因（他社より優位な点）が示されていない。40%が妥当"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "商業再生可能エネルギー事業: 2007年以来$4B超投資、2015年末2,000MW超。2014年純利益$60M（目標$50Mを超過）、年間$500M超投資",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "再生可能エネルギー拡大 + ACP pipeline + 規制Ratebase成長 → 4-6% EPS成長（2017年まで）",
+      "descriptive_label": "再生可能エネルギー+インフラ投資→規制利益成長経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "再生可能エネルギー投資 → レートベース増加 → 規制収益増加 → EPS4-6%成長。ステップが多く、規制当局承認を含む間接的経路"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2015年ガイダンス$4.55-4.75、2017年まで4-6%成長として具体化"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規制電力会社の成長経路として明確だが、規制当局承認リスクと水力発電・FX変動リスクが介在。50%が妥当"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "規制事業における率ケース不要の持続的成長能力（ライダー・AFUDC・卸売契約での利益成長）",
+      "descriptive_label": "規制率ケース不要成長モデル（Process Power）",
+      "evidence_from_transcript": "Q4 Q&A (CFO Steven Young): 'We do not anticipate any base rate cases through 2017. Our growth is expected to be supported by retail and wholesale load growth and significant investments. First, retail load growth provides additional earnings out of the existing investment base, in particular in between rate cases. As a rule of thumb, 0.5% to 1% of annual load growth provides roughly 1% to 2% earnings growth.' And: 'our regulated wholesale business will grow significantly in 2015 as we enter new contracts and our existing contracts grow. We expect $0.10 of growth in 2015 on top of the $0.06 we gained in 2014.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "answer",
+      "supported_by_facts": [9],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "率ケース不要での成長はビジネスモデルの特性（ライダー制度活用）として評価できるが、規制制度に依存した成長経路であり、能力とも戦略とも言える"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "0.5-1%ロード成長→1-2%EPS成長のルール、卸売$0.10成長という定量データあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "米国規制電力市場ではライダー制度活用が標準的。業界構造（規制リターン保証）と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。規制事業の安定性は業界構造によるもので、DUK固有の優位性として差別化しにくい",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "率ケース不要成長は規制モデルの特性であり、競合他社も同様の手法を使用。DUK固有の優位性とは言えず30-40%が妥当"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2015-2017年計画: 率ケース不要、年間$4-5B規制投資、規制Ratebase 6%成長、卸売$0.10/株成長（2015年）。ロード成長ルール: 0.5-1% → EPS1-2%成長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [8, 7]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "6州規制地域（カロライナス・フロリダ・インディアナ・オハイオ等）の多州規制許認可取得能力と政治的関係構築力",
+      "descriptive_label": "多州規制許認可・政治関係能力（Cornered Resource）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Lynn Good): 'our economic development team played a key role in recruiting 85 new industrial and commercial projects to our service territories during the year. These projects represent $3.5 billion in capital investments and over 11,000 new jobs in our 6 state service areas. Notable companies included GE, Walmart and Amazon.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "経済開発チームによる企業誘致能力は能力として評価できるが、規制独占の性質上、誘致が競合優位性に直結するかは疑問"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "none",
+            "reasoning": "規制独占企業間での比較がなじまない。地域内で競合他社は存在しない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "6州での規制ライセンスそのものが参入障壁。ただしこれは許認可の存在であり能力ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "規制独占企業の特性であり、競争優位性の枠組みで評価しにくい。Hamilton Helmer的な優位性とは性質が異なる",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "規制独占の性格が強く、7 Powers的な競争優位性として評価しにくい。許認可は参入障壁だが継続的な優位性の源泉としての主張は弱い。20-30%が妥当"
+      }
+    }
+  ]
+}

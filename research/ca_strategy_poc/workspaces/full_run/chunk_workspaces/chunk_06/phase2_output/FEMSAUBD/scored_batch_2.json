@@ -1,0 +1,61 @@
+{
+  "ticker": "FEMSAUBD",
+  "batch_index": 2,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "OXXO総店舗数12,853店（2014年末）、2013年から1,132店純増（過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "OXXO年1,000+出店ペース → 同質比較売上+既存店成長 → 売上CAGR 12%+",
+      "descriptive_label": "OXXO出店→売上CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "新規出店→売上加算は直接的メカニズム（rule05 direct）。Q4 2014実績（売上+12%）で検証済み。1,132店純増という定量実績。メキシココンビニ市場での継続的出店余地あり（管理可能な競合状況）。Q4発言由来（rule12 primary）。パターンII-T（直接的CAGR接続）に該当。メキシコペソ安がリスク要因だが、売上は現地通貨建て。70%。"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014粗利率80bps改善（Q4 2014）。サプライヤー協働と販促効率化が要因",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "サプライヤー協働による粗利管理 + 出店規模による交渉力向上 → 粗利率継続改善 → EBIT CAGR支持",
+      "descriptive_label": "サプライヤー交渉力→粗利改善→EBIT CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "規模拡大→交渉力向上→粗利改善→EBIT成長は3ステップ以上（pattern_C_causal_leap）。80bpsの持続性が不明（単年の改善か構造的改善か不明）。Q4発言由来（rule12 primary）。方向性は認められるが飛躍あり。50%。"
+    }
+  ]
+}

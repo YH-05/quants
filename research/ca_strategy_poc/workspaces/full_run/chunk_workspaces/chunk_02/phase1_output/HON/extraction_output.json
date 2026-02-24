@@ -1,0 +1,309 @@
+{
+  "ticker": "HON",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-23) + Q3 FY2014 (2014-10-17) + Q1 FY2015 (2015-04-17)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3_2014", "Q1_2015", "Q2_2015"]
+  },
+  "claims": [
+    {
+      "id": "HON_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Honeywell Operating System (HOS Gold) による組織的プロセスパワー — ファクトリーから供給チェーン・セールスまで横断的に適用されるオペレーティングシステム",
+      "descriptive_label": "HOS Goldオペレーティングシステム",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO David Cote): 'HOS Gold is working across Honeywell, from our engineering labs to our factories and supply chains, to our selling and marketing organizations and even to our back office.' Q1 2015 (CFO): '140 basis points of the 220 bps segment margin improvement was driven by commercial excellence and productivity — highly correlated to HOS Gold.' Q4: 'We also plan to share with you how HOS Gold is evolving throughout the organization, which we believe is a key differentiator.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "David Cote",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HON_007"],
+      "cagr_connections": ["HON_009"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": "PASS — プロセスシステム（能力・仕組み）を評価。EPS成長・マージン拡大は結果",
+          "rule_6_t": "structural — 長年蓄積された組織横断的システム。短期模倣困難",
+          "rule_11_t": "PASS — 多角化製造業での継続的改善システムは市場構造と合致",
+          "rule_4_t": "PARTIAL — 140bps改善のうちHOS Gold起因と開示あり。競合比較データなし"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次発言での言及あり（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付けは自社比（140bps）のみ。競合比較なし → 上限50%",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "HOS Goldは具体的なプロセスシステム（仕組み）の説明あり。CEO自身が'key differentiator'と明言。ただし競合比較データが乏しく、業界共通の継続的改善プログラムとの差別化が不明確。Process Power（長期蓄積型）として50%が適切。"
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "全組織横断的なプロセス改善による継続的マージン拡大（2014年70bps、2015年Q1 220bps）",
+        "barrier": "エンジニアリング・製造・SCM・マーケティング全体への深い統合は長年の蓄積が必要"
+      }
+    },
+    {
+      "id": "HON_002",
+      "claim_type": "competitive_advantage",
+      "claim": "厳格なM&A選定規律 — IRR 11-12%・5年目ROI 10%以上・2年目EPS accretiveの財務基準と断念例による裏付け",
+      "descriptive_label": "M&A規律・選定能力",
+      "evidence_from_transcript": "Q3 2014 Q&A (CEO): 'Our hurdles are not going to change. And they're the same ones that we've used for 13 years — accretive in the second year. IRR, clearly above the cost of capital, think of it as in the 11%, 12% range. And ROI, above 10% in the 5th year, and that's all in. So it's a more difficult hurdle than people might think.' Also: 'I never want to feel panicked and we don't... it's all going to meet those criteria.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "David Cote",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": {
+          "rule_1_t": "PASS — 選定基準（能力・仕組み）を評価。M&A実績は結果",
+          "rule_4_t": "quantitative — IRR 11-12%、ROI 10%という明確な数値基準。'13年間変えていない'という継続性",
+          "rule_10_t": "PARTIAL — panickingしない規律に言及。断念例の具体名なし（断念例あるという示唆のみ）"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）— -10%調整",
+            "adjustment": -0.1
+          },
+          {
+            "reason": "財務基準の定量的開示（IRR/ROI数値）は評価を上げる",
+            "adjustment": 0.1
+          }
+        ],
+        "overall_reasoning": "IRR/ROI基準の明確な数値開示と13年間継続の規律は能力の証明。ただしQ3発言のため従（②相当）。Intermec統合での超過達成への言及あり。dogma.md ルール10（断念例）の観点では具体的名前なし。50%が適切。"
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "規律あるM&A実行によるポートフォリオ価値向上（Intermecでの'remarkable'な超過達成）",
+        "barrier": "13年間変えない財務規律と組織的プロセスは文化として埋め込まれており短期模倣困難"
+      }
+    },
+    {
+      "id": "HON_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Solstice 低GWP冷媒・素材の独自技術ポートフォリオ — CO2比1000倍低いGWPを実現する固有技術（HFO-1234zeなど）",
+      "descriptive_label": "Solstice低GWP冷媒技術",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Our Fluorine Products business has started full-scale commercial production in our Baton Rouge, Louisiana facility as the newest Solstice product, HFO-1234ze. A lifetime value of signed agreements in 2014 exceeds $2.3 billion, and we have an additional $1 billion-plus under negotiation.' Q3: 'Solstice products...have global-warming potential lower than CO2.' 'Solstice helps customers meet CAFE standards in the U.S. and the new MAC regulation in Europe'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "David Cote",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["HON_008"],
+      "cagr_connections": ["HON_010"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": "PASS — 技術・製造能力（仕組み）を評価",
+          "rule_4_t": "quantitative — $2.3B signed agreements + $1B+ under negotiation。CO2比1000x低GWPという技術指標",
+          "rule_6_t": "structural — 規制（CAFE/MAC）対応の独自技術は構造的",
+          "rule_7_t": "PARTIAL — 競合比較（他社冷媒メーカーとの差別化）の明示なし"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付け（$2.3B契約額）と規制適合性（CAFE/MAC）による市場独占ポジション",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Honeywell独自の化学技術（HFO分子群）に基づく製品。$2.3B超の契約額は需要の具体的裏付け。CAFE/MAC規制対応により代替品が限定的。Cornered Resource（特許/独自技術）とScale Economiesの複合。70%が妥当。"
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "規制適合・低環境負荷冷媒の独自供給能力による長期契約（$2.3B+）獲得",
+        "barrier": "HFO分子技術の特許保護とBaton Rouge新設備への大規模投資は模倣困難"
+      }
+    },
+    {
+      "id": "HON_004",
+      "claim_type": "competitive_advantage",
+      "claim": "高成長地域（HGR）への先行投資による現地化競争力 — 中国・インド・中東での販売リソース投入と現地製品開発",
+      "descriptive_label": "高成長地域現地化能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO): 'HGRs now represent almost 1/4 of our total business and are expected to drive 50% of the sales growth over the course of our 5-year plan.' 'Our initiative on becoming the Chinese competitor continues to accelerate and bear fruit. Investments in local sales and marketing resources are targeted to the higher-growth cities in China.' Q1 2015: 'China and India each were up close to 15% in Q1.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Thomas Szlosek",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["HON_011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": "BORDERLINE — '現地化能力'（仕組み）vs '高成長地域での成長実績'（結果）の境界上",
+          "rule_3_t": "CONCERN — 多くの大手多国籍企業がHGR展開を行っている。相対的差別化が不明確",
+          "rule_4_t": "PARTIAL — 25% of sales、50% of growth contribution。中国・インドでの15%成長は裏付け",
+          "rule_11_t": "PASS — 都市化・インフラ投資というメガトレンドとポートフォリオ合致"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "多くのグローバル多国籍企業が同様の戦略。相対的優位性の差別化弱い → -10%",
+            "adjustment": -0.1
+          }
+        ],
+        "overall_reasoning": "「中国競合になる」という具体的方向性と現地投資の定量的言及は評価できる。ただし多くのグローバル企業がHGR展開しており、純粋競合（Emerson, GE等）との差別化が不明確。50%が適切。"
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "HGRでの先行市場シェア獲得によるローカル競合優位（中国・インドで15%成長）",
+        "barrier": "現地R&Dラボ、販売ネットワーク、ブランド認知の先行蓄積"
+      }
+    },
+    {
+      "id": "HON_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Scanning & Mobility 事業における統合技術プラットフォーム — Intermec・Hand Held・Metrologic・Vocollectの技術統合による製品カバレッジ拡大",
+      "descriptive_label": "Scanning&Mobilityプラットフォーム統合力",
+      "evidence_from_transcript": "Q3 2014 Q&A (CEO): 'We really pulling together several players in the industry and creating a One Honeywell approach... they all brought different technologies...whether it was Hand Held, Metrologic or Intermec...rationalizing it so that we expanded our offerings, pushed the technology...Voice or Vocollect coming out of the Intermec acquisition.' Q4: 'Datamax-O'Neil acquisition...expands Honeywell's ability to deliver enhanced workflow performance...extends our global reach and provides scale and significant synergy opportunities.' CFO Q3: 'we didn't have printing. We didn't have voice...the multiple vs. where we are today, it's quite remarkable.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "David Cote",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": "PASS — 統合プロセス・プラットフォームアーキテクチャ（能力）を評価",
+          "rule_6_t": "structural — 複数買収の技術統合プレイブックは構造的優位",
+          "rule_4_t": "PARTIAL — 'double-digit organic growth' は裏付けだが競合比較なし"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Scanning & Mobilityの成長裏付けあり。競合（Zebra Technologies等）との明示的比較なし → 50%維持",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Intermec等複数企業の技術統合によるフルポートフォリオ実現は評価できる能力。ただし競合（Zebra）との直接比較なし。M&A統合プロセスパワーと技術拡張の組み合わせとして50%。"
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "モバイルコンピュータ+プリンター+音声+スキャニングの統合ワークフローソリューション",
+        "barrier": "顧客の業務フローへの深い統合（例:USPSの75,000台展開）"
+      }
+    },
+    {
+      "id": "HON_006",
+      "claim_type": "competitive_advantage",
+      "claim": "航空宇宙事業における機器コンテンツ深度と長期プラットフォーム契約 — Gulfstream G500/G600等新型機体への統合型アビオニクス・機械システム搭載",
+      "descriptive_label": "航空宇宙プラットフォームコンテンツ深度",
+      "evidence_from_transcript": "Q3 2014 Prepared Remarks (CEO): 'Gulfstream new 600 and 500 series planes...Honeywell technologies onboard including our avionics and mechanical portfolios...integrated Honeywell touchscreens for cockpit systems controls, flight management, communication, checklist...' 'This exclusive high-speed connectivity will also enable us to differentiate our cockpits and mechanical systems.' Q4: 'We've won significant content in the air transport and business aviation sectors.' CFO Q4: 'upfront OEM incentives position us well on the platforms already won but also to win new business.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "David Cote",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": "PASS — 技術統合能力・コンテンツ設計力（仕組み）を評価",
+          "rule_6_t": "structural — OEM Incentivesによるプラットフォーム固定は構造的なSwitching Costs",
+          "rule_11_t": "PASS — BGA市場での高価値プラットフォームへの集中は市場構造と合致",
+          "rule_4_t": "PARTIAL — 'significant new engine content'は言及あり。シェア数値なし"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）— -10%調整",
+            "adjustment": -0.1
+          },
+          {
+            "reason": "GulfstreamでのFirst-ever統合タッチスクリーンは技術的差別化",
+            "adjustment": 0.1
+          }
+        ],
+        "overall_reasoning": "Gulfstream G500/G600への統合型アビオニクス搭載はSwitching Costs（プラットフォーム固定）とCornered Resource（独占的技術）の組み合わせ。OEM Incentivesによる長期関係固定は強力。Q3発言のためQ4調整なし。50%。"
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "機体ライフサイクル全体にわたるアビオニクス・機械システムの独占供給（アフターマーケット含む）",
+        "barrier": "新型機体認定取得の高コストとOEM Incentivesによる長期排他的関係"
+      }
+    },
+    {
+      "id": "HON_007",
+      "claim_type": "factual_claim",
+      "claim": "2014年全社セグメントマージンが70bps拡大（2013年比）し、17.0%を達成。5年連続二桁EPS成長（$5.56/株、+12%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HON_001", "HON_009"]
+    },
+    {
+      "id": "HON_008",
+      "claim_type": "factual_claim",
+      "claim": "Solsticeの生涯契約総額が2014年末時点で$2.3B超（さらに$1B+交渉中）。2015年Q1時点で$2.6B+$0.8B交渉中。Fluorine Productsは2015年Q1に二桁成長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["HON_003", "HON_010"]
+    },
+    {
+      "id": "HON_009",
+      "claim_type": "cagr_connection",
+      "claim": "HOS Gold → マージン継続拡大（100-130bps/年）→ EPS 7-11%成長維持（5年計画）",
+      "descriptive_label": "HOS Gold→マージン拡大→EPS成長経路",
+      "source_advantage": "HON_001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "DIRECT — 2ステップ（HOS Gold→マージン拡大はQ1で140bps実績確認済み、マージン拡大→EPS成長は開示数値で検証可能）",
+          "rule_12_t": "primary — Q4発言由来の5年計画コミットメント"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年70bps、2015年Q1 220bps（うち140bpsがHOS Gold）という実績あり。5年計画でのターゲット開示も一致。直接的メカニズムで検証可能性高い。70%。"
+      }
+    },
+    {
+      "id": "HON_010",
+      "claim_type": "cagr_connection",
+      "claim": "Solstice技術 → CAFE/MAC規制適合需要（2017年まで拡大）→ Advanced Materials高成長継続（mid-single digit+）",
+      "descriptive_label": "Solstice→規制対応需要→PMT成長",
+      "source_advantage": "HON_003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "DIRECT — Solstice技術→規制適合需要（CAFE 2017、MAC 2017全面施行）→売上成長は2ステップ",
+          "rule_12_t": "primary — Q4発言からの接続"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規制スケジュール（CAFE/MAC 2017）と既存契約額（$2.3B）から因果が明確。2025年に3.5億トンCO2削減相当という規模推計も開示。70%。"
+      }
+    },
+    {
+      "id": "HON_011",
+      "claim_type": "cagr_connection",
+      "claim": "HGR展開 → HGR比率25%→5年計画での成長寄与50% → 全社有機成長加速（3-5%目標達成）",
+      "descriptive_label": "HGR展開→成長加速経路",
+      "source_advantage": "HON_004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "BORDERLINE — HGR展開→現地売上増加は2ステップだが、全社CAGR改善までは中間ステップが多い",
+          "rule_12_t": "primary — Q4発言の5年計画コミットメント"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "25% of sales、50% of growth driverという定量的目標は開示あり。ただしHGR成長率の変動リスク（China GDP減速等）がある。50%が適切。"
+      }
+    }
+  ]
+}

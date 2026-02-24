@@ -1,0 +1,59 @@
+{
+  "ticker": "SAB",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["SAB-009", "SAB-010", "SAB-011", "SAB-012"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "SAB-009",
+      "claim_type": "factual_claim",
+      "claim": "H1 FY2015: Africa NPR +10%（vol +5%）、Castle Lite Africa全体+20%超成長、South Africa vol +1%（業界outperformance）。グループ有機定数通貨NPR +5%",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 FY2015 CEO発言（Alan Clark, 2014-11-13）による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。SAB-001（アフリカ地域ブランド優位）・SAB-004（Castle Lite）の核心的支持事実",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付け充分。SAB-001（60%）・SAB-004（50%）の支持事実。Castle Lite +20%超はBranding優位の証拠。グループNPR +5%はH1定数通貨ベース。0.6"
+    },
+    {
+      "id": "SAB-010",
+      "claim_type": "factual_claim",
+      "claim": "H1 FY2015: Latin America NPR +7%（vol -4%）、Colombia・Peru好調。EBITA margin 23.4%（前期比-30bps）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 FY2015 CEO/CFO発言（2014-11-13）による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。SAB-002（ラテンアメリカ価格設定力）の核心的支持事実。vol -4%でもNPR +7%という逆張りデータが特に重要",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付けあり。SAB-002（60%）の支持事実。vol -4%でもNPR +7%という逆張りデータが価格設定力の最重要証拠。EBITA margin -30bpsは若干の課題あり。0.6"
+    },
+    {
+      "id": "SAB-011",
+      "claim_type": "factual_claim",
+      "claim": "USD 500M効率化プログラム（FY2018目標）、70bps/年マージン改善目標。FCF USD 1.485B（前期比+591M）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 FY2015 CFO発言（Jamie Wilson, 2014-11-13）による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。SAB-003（コスト効率化プログラム）の支持事実。FCF +591Mは財務健全性の証拠",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。SAB-003（40%）の支持事実。USD 500Mという具体的目標値とFCF +591Mは財務規律を示す。ただし目標（将来）と実績（FCF）が混在。0.5"
+    },
+    {
+      "id": "SAB-012",
+      "claim_type": "factual_claim",
+      "claim": "CR Snow China: vol -3%（天候不順）、Snow世界最大売上ビールブランド維持。India NPR +11%（vol +8%）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - H1 FY2015 CEO発言（2014-11-13）による開示。中国は天候要因・インド好調"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として開示あり。SAB-005（CR Snow中国）の支持事実。ただし中国vol -3%は天候という外部要因依存を示す。インドNPR +11%・vol +8%は好調な成長実績",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として開示あり。SAB-005（30%）の支持事実。中国の一時的vol減少（天候要因）とインドの強い成長（NPR +11%）という混合シグナル。India好調が部分的に評価を高める。0.5"
+    }
+  ]
+}

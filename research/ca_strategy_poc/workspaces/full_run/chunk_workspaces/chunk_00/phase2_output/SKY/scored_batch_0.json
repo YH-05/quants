@@ -1,0 +1,92 @@
+{
+  "ticker": "SKY",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": ["SKY-001", "SKY-002", "SKY-003", "SKY-004", "SKY-005"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "SKY-001",
+      "claim_type": "competitive_advantage",
+      "claim": "独占的プレミアムスポーツ・映画コンテンツライセンスによるコンテンツバリュープロポジション（Studio5社・PLサッカー等）",
+      "descriptive_label": "独占コンテンツ（スポーツ・映画）ライセンス",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - 独占コンテンツライセンス獲得・更新能力（仕組み）が評価対象",
+        "rule_4_t": "PASS - チャーン9%（10年超最低）、450,000純増顧客という定量的裏付け",
+        "rule_6_t": "PASS - Cornered Resource（独占コンテンツ権）は構造的優位",
+        "rule_7_t": "PASS - Virgin Media等純粋競合はPremier League独占ライセンスを持たない"
+      },
+      "kb2_t_pattern": "pattern_IV_t（構造的市場ポジション）。UK有料TV市場でのコンテンツ独占という構造的ポジション",
+      "kb3_t_calibration": "ORLY#2（フラグメント市場×規模密度→90%）と類似した業界構造合致。ただしSkyのコンテンツ権は入札更新が必要（非永続的）。COST#1（定量的裏付け+仕組み→70%）に近い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（コンテンツ獲得・維持能力）。Rule 4（定量的裏付け）: PASS（チャーン9%最低水準）。Rule 11（業界構造合致）: PASS（有料TV=コンテンツが命）。H1発言で-10%調整",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T全ルールPASS。KB2-T pattern_IV_t（構造的市場ポジション）。dogma.md Rule 1・4・11の3重適合。チャーン9%最低という定量的裏付け強力。H1発言から-10%調整後でも70%維持"
+    },
+    {
+      "id": "SKY-002",
+      "claim_type": "competitive_advantage",
+      "claim": "デジタルファースト・コネクテッドホーム投資による顧客体験差別化（2/3基盤がコネクテッドBOX、NPS 77）",
+      "descriptive_label": "コネクテッドホームとデジタルサービス優位",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - コネクテッドBOX投資・NPS管理能力（仕組み）の説明あり",
+        "rule_4_t": "PASS - NPS 77（「業界最高水準」）、訪問43%増という定量値あり",
+        "rule_7_t": "FAIL - Virgin Mediaとの純粋比較NPS数値がない"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）。NPS 77という具体的数値あるが競合比較なし",
+      "kb3_t_calibration": "COST#4（配送内製化→50%）と類似。コネクテッドBOX 2/3普及はSwitching Costs強化の証拠。NPS 77は「自称業界最高」だが独立検証なし",
+      "dogma_evaluation": "Dogma Rule 4（定量的裏付け）: PASS。Rule 7（純粋競合差別化）: 制約あり。NPS 77という数値はあるが、競合（Virgin Media）との比較なし。H1発言から-10%調整",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1・4 PASS、Rule 7 FAIL。KB2-T pattern_I_t（定量的）。dogma.md Rule 4 PASS・Rule 7制約。NPS 77は評価するが競合比較なし。H1発言-10%調整。50%"
+    },
+    {
+      "id": "SKY-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Sky・NOW TVのデュアルブランド戦略によるマーケットセグメンテーション能力（90%がSky未検討のNOW TV顧客を獲得）",
+      "descriptive_label": "デュアルブランドによる市場セグメンテーション",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - デュアルブランドによる市場セグメンテーション能力（Counter-Positioning）",
+        "rule_4_t": "PASS - 90%のNOW TV顧客がSky未検討という定量的裏付け",
+        "rule_8_t": "PARTIAL - デュアルブランドは戦略的決定だが、セグメンテーション能力は優位性"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）。既存有料TV事業者がデュアルブランド戦略を採用すると自己競合のリスクがあり、Skyのみが実行可能",
+      "kb3_t_calibration": "COST#3（倉庫型×SAMS比較→50%）に近い。90%という定量値は強力。Q2で100万超の製品成長は定量的裏付け。H1発言からだが内容が体系的",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（セグメンテーション能力）。Rule 4（定量的裏付け）: PASS（90%）。Rule 8（戦略≠優位性）: 一部懸念あるが、能力として解釈可能。H1発言-10%調整",
+      "final_confidence": 0.6,
+      "scoring_rationale": "KB1-T Rule 1・4 PASS、Rule 8 部分的懸念。KB2-T pattern_III_t（競合模倣困難）。90%という強力な定量値。H1発言-10%調整後60%。5銘柄中最も独自のCounter-Positioningに近い主張"
+    },
+    {
+      "id": "SKY-004",
+      "claim_type": "competitive_advantage",
+      "claim": "クロスセル能力（平均3製品/顧客、TV+BB+電話のトリプルプレイ40%）と顧客データ分析能力（Sky IQ）",
+      "descriptive_label": "クロスセル・データアナリティクス能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - クロスセル能力・Sky IQというデータ分析（仕組み）が明確",
+        "rule_4_t": "PASS - 平均3製品/顧客・トリプルプレイ40%という定量値",
+        "rule_6_t": "PASS - Switching Costs（複数製品統合）は構造的優位"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）。3製品/顧客・40%トリプルプレイは具体的",
+      "kb3_t_calibration": "COST#1（退職率→顧客サービス→70%）と類似した仕組み説明。Sky IQというデータ分析能力の存在が差別化を強化。H1発言からだが数値が体系的",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: PASS（Sky IQ + クロスセル能力）。Rule 4（定量的裏付け）: PASS（40%トリプルプレイ）。Rule 6（構造的）: PASS（Switching Costs形成）。H1発言-10%調整",
+      "final_confidence": 0.6,
+      "scoring_rationale": "KB1-T Rule 1・4・6 PASS。KB2-T pattern_I_t（定量的差別化）。dogma.md Rule 1・4・6の3重適合。Sky IQという具体的な仕組み説明が差別化。H1発言-10%調整後60%"
+    },
+    {
+      "id": "SKY-005",
+      "claim_type": "competitive_advantage",
+      "claim": "効率的オペレーティングモデル（170bps削減・同時にNPS改善）",
+      "descriptive_label": "効率的運営モデルと顧客サービス品質同時改善",
+      "kb1_t_evaluation": {
+        "rule_1_t": "PASS - コスト削減と顧客サービス品質向上の同時達成能力（Process Power）",
+        "rule_4_t": "PASS - 170bps・NPS 24%改善という定量値",
+        "rule_7_t": "FAIL - Virgin Media等との比較なし"
+      },
+      "kb2_t_pattern": "pattern_G_t（純粋競合に対する優位性不明）。ペイTV業界の効率化はVirgin Mediaも追求",
+      "kb3_t_calibration": "COST#3（倉庫型運営効率→50%）に類似。170bps削減は具体的だが業界トレンドか固有能力か判断困難",
+      "dogma_evaluation": "Dogma Rule 4（定量的裏付け）: PASS。Rule 7（純粋競合差別化）: 制約あり。Process Powerの兆候はあるが、業界共通のコスト削減トレンドとの識別が不完全。H1発言-10%調整",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 1・4 PASS、Rule 7 FAIL。KB2-T pattern_G_t（競合比較不明）。dogma.md Rule 7制約。170bps削減は定量的だが競合比較なし。H1発言-10%調整。50%"
+    }
+  ]
+}

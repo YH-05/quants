@@ -1,0 +1,133 @@
+{
+  "ticker": "ABBN",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "claim_id": "ABBN_001",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "primary",
+      "source_quarter": "Q4 2013",
+      "claim_summary": "ABBは2008年以来毎年$1.2B規模のコスト削減を実行し続けており、5,000超のオペレーショナル・エクセレンス・プロジェクトとLean/Six Sigmaを活用したコスト削減がDNAとして定着している。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 継続的コスト削減実行能力の記述",
+        "rule04": "PASS - $1.2B/年、5,000+プロジェクト、6年間継続という定量的根拠",
+        "rule06": "FAIL - コスト削減プログラムはSiemens・GE等も同様に実施する補完的能力",
+        "rule07": "FAIL - Siemens等競合との具体的コスト削減額比較なし",
+        "rule12": "PASS - Q4 2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["B-T (業界共通能力: Siemens・GE等の大手産業財企業も同様のコスト削減プログラムを実施)"],
+        "high_eval_patterns": ["III-T (能力を示す: 6年間継続した実行力という組織的能力の証拠)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule06 (補完的能力 vs 構造的優位)", "rule07 (競合との差別化)"],
+        "conclusion": "6年間継続の実績は組織的実行力の証拠として価値がある。ただしSiemens・GEも同様のプログラムを持ち、構造的優位（7 Powers）の基準には届かない。パターンB/IIIの両面あり。50%。"
+      },
+      "scoring_rationale": "6年継続・$1.2B/年という定量的実績は有効だが業界共通能力。パターンB適用（部分）。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "ABBN_002",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "primary",
+      "source_quarter": "Q4 2013",
+      "claim_summary": "ABBは世界中に$300Bの稼働中インストールベースを持ち、そのうち$200Bを顧客・住所・機器種別・GPS座標を含むデータベースとして管理し、年間サービス機会の25%を捕捉—これは競合が再現困難な独自資産である。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule01": "PASS - インストールベース管理能力という能力主張",
+        "rule04": "PASS - $300B/$200B、25%捕捉率→40%目標という具体的定量根拠",
+        "rule07": "PARTIAL - 競合との直接比較はないが、歴史的インストールベースデータベースは競合が複製不可能",
+        "rule12": "PASS - Q4 2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["I-T (定量的差別化: $200Bカタログ済みベース、25%→40%捕捉率目標)", "IV-T (構造的市場ポジション: 数十年の歴史的インストールベースデータという独自資産)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule07 (競合との差別化)"],
+        "conclusion": "数十年にわたるインストールベース蓄積データは競合が初日から複製不可能な独自リソース。$200Bカタログ化という投資規模も実質的。捕捉率25%→40%の経路も明確。"
+      },
+      "scoring_rationale": "$300B/$200Bインストールベースデータベースは実質的なコーナードリソース。パターンI/IV適用。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "ABBN_003",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "transcript_type": "secondary",
+      "source_quarter": "Q3 2014",
+      "claim_summary": "ABBは電力と自動化の双方を提供できる統合ソリューション能力を持ち、純粋な電力専業・自動化専業競合では対応できない複合受注（Vale鉄鉱石鉱山など）を獲得している。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 電力+自動化統合能力という能力主張",
+        "rule04": "PASS - Vale鉱山という具体的受注事例",
+        "rule07": "PARTIAL - 電力専業/自動化専業との比較は示されるが、Siemens（同様の統合能力を保有）との比較なし",
+        "rule12": "FAIL - Q3 2014（二次ソース、-10%調整適用）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["B-T (部分的に: Siemensも電力+自動化の統合能力を持つため完全な差別化ではない)"],
+        "high_eval_patterns": ["III-T (能力を示す: 複合受注実績という能力証拠)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule07 (競合との差別化)", "rule11 (業界構造との適合)"],
+        "conclusion": "Vale受注という具体的事例はあるが、Siemensも類似の統合能力を持つ。二次ソース調整適用。50%。"
+      },
+      "scoring_rationale": "Vale受注事例は実質的だが、Siemensとの差異が明確ではない。二次ソース調整。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "ABBN_004",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "primary",
+      "source_quarter": "Q4 2013",
+      "claim_summary": "ABBは世界最大容量のHVDCサブシーケーブル（アイルランド・ウェールズ間）を建設済みであり、Statoilとの$100M・5年間の共同開発プログラムで次世代サブシー電力技術（顧客年間$500M CapEx削減効果）を開発中。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule01": "PASS - HVDCサブシー技術能力という能力主張",
+        "rule04": "PASS - 世界最大容量という定量的差別化、$100M投資、$500M顧客CapEx削減効果",
+        "rule07": "PASS - 世界最大容量という業界比較が明示的",
+        "rule12": "PASS - Q4 2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["I-T (定量的差別化: 世界最大容量・$100M共同投資・$500M顧客価値)", "V-T (具体的競合比較: 世界最大容量という業界内での明示的ポジション)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule07 (競合との差別化)"],
+        "conclusion": "世界最大容量HVDCサブシーケーブルという実績と$100M共同投資は実質的なコーナードリソース。HVDC市場はABB・Siemens・Alstom(GE)の寡占であり、技術リーダーシップは有効な差別化。"
+      },
+      "scoring_rationale": "世界最大容量HVDC実績と$100M共同投資は強力なコーナードリソース。パターンI/V適用。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "ABBN_005",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "secondary",
+      "source_quarter": "Q3 2014",
+      "claim_summary": "ABBのスウェーデン高圧工場で収益生産性40%向上・リードタイム50%削減・在庫回転2倍を達成し、このオペレーションモデルを全社標準として展開中。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 工場オペレーション改善能力",
+        "rule04": "PASS - 40%/50%/2xという定量的改善実績",
+        "rule06": "FAIL - 個別工場の改善事例であり構造的競争優位ではない",
+        "rule07": "FAIL - 競合工場との比較なし",
+        "rule12": "FAIL - Q3 2014（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["B-T (業界共通能力: 工場オペレーション改善はSiemens・GE等も同様に実施)", "C-T (因果の飛躍: 1工場の改善→全社競争優位という飛躍)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule06 (補完的能力 vs 構造的優位)"],
+        "conclusion": "1工場の改善事例は組織能力の一端を示すが構造的競争優位の証拠としては弱い。二次ソース調整も適用。"
+      },
+      "scoring_rationale": "1工場の改善実績。パターンB/C適用。二次ソース調整。30%。",
+      "final_confidence": 0.3
+    }
+  ]
+}

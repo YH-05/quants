@@ -1,0 +1,341 @@
+{
+  "ticker": "NKE",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-06-25)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_FY2015", "Q2_FY2015", "Q3_FY2015"]
+  },
+  "claims": [
+    {
+      "id": "NKE-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Flyknit技術プラットフォームによる製品革新とコスト構造優位性（Process Power / Cornered Resource）",
+      "descriptive_label": "Flyknit独自製造プロセスによる軽量・高性能・サステナビリティの構造的優位",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（CEO発言）: 'Flyknit, of course, continues to be one of NIKE's great breakthroughs for the athlete and for our company. It's created a whole new model for design and manufacturing. Instead of engineering down to the piece, we can now engineer it down to the pixel to enhance performance, aesthetics and sustainability... we've advanced Flyknit into other sports over the past few years.' (2015-06-25, Mark Parker)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Parker (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-010"],
+      "cagr_connections": ["NKE-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "「ピクセル単位での設計」という具体的なプロセス説明あり。FlyknitsはNIKE独自のニット製造技術（knitting machineryとプロセス）が競合（adidas、Under Armour）の追随を困難にしている点で構造的優位。ただし競合との性能比較データがない"
+          }
+        ],
+        "overall_reasoning": "Q4 FY2015での体系的説明。Flyknit技術は単一製品ではなくプラットフォームとして複数カテゴリに展開（Running, Basketball, Football等）。独自製造プロセスはProcess Powerの特性を持つ。ただし競合adidas Primeknit等との具体的な技術差別化データがなく70%"
+      }
+    },
+    {
+      "id": "NKE-002",
+      "claim_type": "competitive_advantage",
+      "claim": "アスリートとの長期関係に基づく製品開発インサイト（Cornered Resource / Branding）",
+      "descriptive_label": "トップアスリートとの独占的関係による製品開発力と消費者インスピレーション",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（Brand President発言）: 'It's no secret why we succeed in Basketball. Our relationship with the world's best athletes provide us great insight that produce incredible product innovation. And these products, in turn, excite and inspire consumers all over the world. Q2 was the 13th consecutive quarter of double-digit growth for our Basketball category.' (2015-06-25, Trevor Edwards)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Trevor Edwards (Brand President)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-010"],
+      "cagr_connections": ["NKE-012"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "LeBron、KD、Kyrie等のスター選手との独占契約はCornered Resourceの典型。バスケットボールカテゴリ13四半期連続二桁成長という定量的裏付けあり。ただしadidas（Kanye West、新規アスリート）との差別化が将来的に縮小するリスクあり"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。トップアスリートとの関係は長年の投資によるCornered Resource。13四半期連続二桁成長という定量的証拠が存在。バスケットボール事業$4B規模。純粋競合adidas・Under Armour に対する差別化は明確。70%"
+      }
+    },
+    {
+      "id": "NKE-003",
+      "claim_type": "competitive_advantage",
+      "claim": "DTC（Direct-to-Consumer）ビジネスの高マージン化と急成長（Scale Economies / Network Economies）",
+      "descriptive_label": "DTCチャネルの急拡大による高マージン比率向上",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（CFO発言）: 'gross margin expansion was primarily driven by higher average selling prices and continued growth in our higher-margin DTC business... We returned $3.4 billion in cash to shareholders in the form of share repurchases and dividends... FY15 ROIC reached 28.1%, up 360 basis points from the prior year.' (2015-06-25, Donald Blair); DTC revenue up 27% for Q4, 29% for FY15.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Donald Blair (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-009"],
+      "cagr_connections": ["NKE-013"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "DTCが27%成長（Q4）、FY15では29%成長という定量データ。ROIC 28.1%（+360bp）はDTC成長の財務的効果を示す。DTC比率の向上はマージン構造を構造的に改善する仕組み"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。DTC成長はブランド直接管理・高マージン・顧客データ取得の構造的優位を生む。ROIC 28.1%という定量指標が存在。ただし純粋競合（adidas、Under Armour）のDTC比率との直接比較がなく70%"
+      }
+    },
+    {
+      "id": "NKE-004",
+      "claim_type": "competitive_advantage",
+      "claim": "e-commerce/デジタルエコシステムの加速（ネットワーク効果）",
+      "descriptive_label": "Nike.comとデジタルサービスの統合エコシステムによる顧客エンゲージメント",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（CEO発言）: 'Fiscal 15 was a great year for NIKE.com. We delivered 51% revenue growth in Q4 with 55% growth for the full year... our e-commerce business surpassed $1 billion in revenue this past year... Nike+ Training Club app continues to build a motivated community of devoted athletes and now features 135 workouts and is available in 17 languages.' (2015-06-25, Mark Parker)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Parker (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-009"],
+      "cagr_connections": ["NKE-013"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_F_t",
+            "adjustment": -0.1,
+            "reasoning": "e-commerce 55%成長・$1B突破は定量的だが、adidas、Under Armourも同様にDTCデジタルに投資しており業界共通の成長トレンド。Nike+アプリの65M女性コミュニティというデータは差別化要因として機能しうるが競合比較なし"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。NIKE.com $1B突破・55%成長は定量的だが、業界全体のDTCシフトの中での差別化が不明確。Nike+65M女性コミュニティという数値は競合との差を示す可能性があるが検証不可。50%"
+      }
+    },
+    {
+      "id": "NKE-005",
+      "claim_type": "competitive_advantage",
+      "claim": "カテゴリーオフェンスによる消費者セグメント深化とブランドポートフォリオ管理力",
+      "descriptive_label": "NIKE/Jordan/Converseのポートフォリオ×カテゴリー攻略による市場拡大能力",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（Brand President発言）: 'What's more, only NIKE has the broad portfolio and global reach to execute this strategy around the world. We know what works and we know how to identify large, untapped opportunities, develop innovative products and marketing strategies on a global scale and execute them effectively in each marketplace around the world.' (2015-06-25, Trevor Edwards)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Trevor Edwards (Brand President)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-009"],
+      "cagr_connections": ["NKE-014"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_3_t": false,
+          "rule_7_t": false,
+          "rule_6_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "「only NIKE has the broad portfolio」という主張は純粋競合（adidas + Reebok + Taylor Made）との比較を伴わない。カテゴリーオフェンス戦略の実行能力は認めるが、競合との差別化の具体的説明がない"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。カテゴリーオフェンスは戦略（ルール8）。それを支える能力（ブランドポートフォリオ管理、グローバル実行力）は構造的優位の候補。しかし競合比較なく50%"
+      }
+    },
+    {
+      "id": "NKE-006",
+      "claim_type": "competitive_advantage",
+      "claim": "中国市場での#1ポジションとマーケットプレイス再構築能力（Counter-Positioning）",
+      "descriptive_label": "中国での競技用フットウェア・アパレル#1と流通構造改革実行力",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（Brand President発言）: 'The NIKE Brand is exceptionally strong with consumers in China, and we hold the #1 market share position in both athletic footwear and apparel... In China, where Q4 revenue grew 20%, and we posted a full year growth of 19%... DTC, we saw a growth of 52%.' (2015-06-25, Trevor Edwards / Donald Blair)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Trevor Edwards (Brand President)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-009"],
+      "cagr_connections": ["NKE-014"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_7_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "#1シェアは結果（ルール1）。マーケットプレイス再構築能力（流通合理化・在庫管理）は能力として評価できるが、それを可能にした仕組みの説明が不十分。Adidas中国でのシェア奪取リスクへの言及なし"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。中国#1シェアは結果だが、China FY19成長・DTC52%成長という定量データあり。流通構造改革（卸パートナーの再構築）は能力として評価可能。ただしLi-Ning、Anta等の国内競合との比較がなく50%"
+      }
+    },
+    {
+      "id": "NKE-007",
+      "claim_type": "competitive_advantage",
+      "claim": "女性アスリートビジネス$6B規模と成長加速力（新市場開拓能力）",
+      "descriptive_label": "女性アスリートカテゴリーの$6B規模・20%成長と専用製品・流通の構築",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（Brand President発言）: 'our Women's business continues to drive strong growth. For the year, revenue grew 20% to nearly $6 billion... we see 65 million women in our digital community... Better For It resonated with consumers because it wasn't just a campaign... 18 million online views.' (2015-06-25, Trevor Edwards)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Trevor Edwards (Brand President)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-009"],
+      "cagr_connections": ["NKE-014"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_12_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_7_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "$6B・20%成長は結果。65Mデジタルコミュニティは能力の一部として評価できるが、Under Armour等の純粋競合との女性市場でのポジション比較がなく差別化不明"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。女性ビジネス$6Bという規模と20%成長は定量的。デジタルコミュニティ65M女性という数値も存在。ただしUnder Armour、Lululemon等の純粋競合との比較がなく50%"
+      }
+    },
+    {
+      "id": "NKE-008",
+      "claim_type": "competitive_advantage",
+      "claim": "北米での5年連続二桁成長達成能力（先進国大規模市場での継続成長力）",
+      "descriptive_label": "北米$13.7B市場での5年連続二桁成長という構造的成長力の実証",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks（CFO発言）: 'North America delivered another remarkable year as FY15 revenue grew 12% to $13.7 billion, the fifth consecutive year of double-digit revenue growth.' (2015-06-25, Donald Blair)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Donald Blair (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NKE-009"],
+      "cagr_connections": ["NKE-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_7_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.2,
+            "reasoning": "5年連続二桁成長は結果であり優位性ではない（ルール1）。成長を可能にした能力（カテゴリーオフェンス実行、DTC展開、流通パートナー管理）は他で論じられており、重複する。市場飽和リスクと競合（adidas NAの回復）への言及なし"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。5年連続二桁成長は結果。成長実績として評価するが競争優位性の根拠としては弱い。北米$13.7Bという規模でのScale Economiesは認めるが、差別化の仕組みの説明が他主張と重複。30%"
+      }
+    },
+    {
+      "id": "NKE-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2015通期: 売上$30.6B（+10%）、通貨中立+14%、GPM 46%（+120bp）、EPS $3.70（+25%）、ROIC 28.1%（+360bp）、e-commerce $1B超（+55%）、DTC +29%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["NKE-003", "NKE-004", "NKE-006", "NKE-007", "NKE-008"]
+    },
+    {
+      "id": "NKE-010",
+      "claim_type": "factual_claim",
+      "claim": "Basketball 13四半期連続二桁成長、Basketball $4B規模、Running $5B規模、Women's $6B（FY15）、Futures +13%（通貨中立）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["NKE-001", "NKE-002", "NKE-005"]
+    },
+    {
+      "id": "NKE-011",
+      "claim_type": "cagr_connection",
+      "claim": "Flyknit技術プラットフォーム → 製品プレミアム化・ASP上昇 → 有機成長率向上",
+      "descriptive_label": "Flyknit技術→ASP上昇→売上CAGR寄与",
+      "source_advantage": "NKE-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 70,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。Flyknit→製品プレミアム化→ASP上昇→マージン改善は2-3ステップで比較的直接的。Futures ASP+5%（Q4）というデータが接続を部分的に検証可能。70%"
+      }
+    },
+    {
+      "id": "NKE-012",
+      "claim_type": "cagr_connection",
+      "claim": "アスリート関係→ブランドエクイティ強化→Consumer Pull→価格プレミアム維持",
+      "descriptive_label": "アスリート関係→ブランド力→価格プレミアム維持経路",
+      "source_advantage": "NKE-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。アスリート関係→ブランド力→価格プレミアムは3ステップ以上の因果チェーン。直接的な検証（GPM vs 競合）はないが、GPM 46%（+120bp）というデータが部分的な証拠。50%"
+      }
+    },
+    {
+      "id": "NKE-013",
+      "claim_type": "cagr_connection",
+      "claim": "DTC/e-commerce比率拡大 → GPM構造改善 → EPS成長加速",
+      "descriptive_label": "DTC拡大→マージン改善→EPS成長経路",
+      "source_advantage": "NKE-003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 70,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。DTC→高マージン→GPM改善は2ステップの直接的メカニズムで検証可能。GPM 120bp改善の要因としてDTCの成長を明示。FY16ガイダンスでも同メカニズムを確認。70%"
+      }
+    },
+    {
+      "id": "NKE-014",
+      "claim_type": "cagr_connection",
+      "claim": "ブランドポートフォリオ×カテゴリーオフェンス → 新市場開拓 → 新興国/女性/デジタル成長寄与",
+      "descriptive_label": "多様なポートフォリオ→未開拓市場攻略→長期売上CAGR",
+      "source_advantage": "NKE-005",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。カテゴリーオフェンス→市場拡大は3ステップ以上の因果。FY16低ダブルデジット成長ガイダンスの根拠として語られるが、各カテゴリー・地域の寄与を分離した検証が困難。50%"
+      }
+    }
+  ]
+}

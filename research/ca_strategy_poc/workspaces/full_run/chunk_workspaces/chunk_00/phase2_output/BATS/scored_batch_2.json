@@ -1,0 +1,35 @@
+{
+  "ticker": "BATS",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["BATS-011", "BATS-012"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "BATS-011",
+      "claim_type": "factual_claim",
+      "claim": "ミャンマー市場への唯一の海外タバコ企業としての参入（sole entry）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014 CEO発言による開示。「sole entry」という独占的地位の確認"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）",
+      "dogma_evaluation": "事実主張として定性的裏付けあり。BATS-005（新興市場先行参入能力）の支持事実",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として確認可能。BATS-005（50%）の支持事実。「sole entry」は独占的地位として評価。定量的収益貢献なし。0.5"
+    },
+    {
+      "id": "BATS-012",
+      "claim_type": "factual_claim",
+      "claim": "Vype e-cigarette 英国市場でのシェア拡大・Nicoventures（英国最大電子たばこ企業）との統合",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014 CEO発言による開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として確認可能。BATS-004（次世代製品開発能力）の支持事実",
+      "final_confidence": 0.4,
+      "scoring_rationale": "事実主張として確認可能。BATS-004（50%）の支持事実。Nicoventuresとの統合という具体的事実だが、市場シェア数値なし。0.4"
+    }
+  ]
+}

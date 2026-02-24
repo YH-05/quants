@@ -1,0 +1,137 @@
+{
+  "scored_claims": [
+    {
+      "id": "BEN-001",
+      "claim": "Franklin TempletonのグローバルブランドとAUMの大部分が3・5・10年で同業比較上位50%（上位2四分位）の運用パフォーマンスを維持しており、機関投資家・HNW顧客の資金流入を維持している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "運用パフォーマンスという定量的主張。ただしシェアはあくまで結果"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「上位2四分位」は結果（パフォーマンス実績）。それを可能にする運用能力・プロセスの説明なし",
+        "rule04_quantitative": "「3-, 5- and 10-year periods」という具体的な期間言及あり。ただし競合の上位2四分位比率との比較なし",
+        "rule07_pure_competitor": "BlackRock、Vanguard、PIMCO等との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "result_as_cause: パフォーマンス上位（結果）を競争優位の主要な証拠として提示",
+        "pattern_B": "industry_common: 多くの大手運用会社が「majority of AUM outperforming」を主張",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "MNST#1 (50%): 「シェアはあくまで結果」。BEN-001もパフォーマンス（結果）が主。50%に留まる",
+        "final_reasoning": "3-5-10年の複数期間での上位2四分位という実績は実在するが、それを可能にする運用プロセスの説明なし"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "「majority of AUM outperforming peer group medians across 3-, 5- and 10-year periods」という定量的実績言及があり（KB1ルール4部分適合）、複数期間での継続的なアウトパフォームは運用能力の間接的証拠として評価できる。ただしアウトパフォームは結果であり（KB2パターンA適合）、なぜFranklin Templetonの運用プロセスが競合より優れているか（特定の運用哲学、チーム体制、リスク管理等）の説明がない（KB1ルール1不足）。多くの大手運用会社が同様の主張を行う（KB2パターンB適合）。50%が妥当。"
+    },
+    {
+      "id": "BEN-002",
+      "claim": "Franklin Templeton傘下に複数の固定収益専門チーム（Bond Group、固定収益部門）を持ち、金利上昇局面での固定収益オーバーパフォーマンスが解約圧力を軽減している",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "固定収益専門チームという組織能力の主張。上位2四分位改善という定量言及"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「固定収益専門チーム」（能力・組織）→「上位2四分位増加」（結果）という因果方向",
+        "rule04_quantitative": "「percentage of assets in the top 2 quartiles increasing since March」という改善の言及",
+        "rule07_pure_competitor": "PIMCO（固定収益最大手）等との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 専門チーム（能力）→パフォーマンス改善（結果）",
+        "pattern_B": "多くの大手運用会社が固定収益専門チームを持つ（PIMCO、Vanguard、BlackRock等）",
+        "adjustment": "-10% (業界共通パターン)"
+      },
+      "kb3_calibration": {
+        "reference_case": "BEN-001（50%）と同系統。固定収益に特化した評価だが、競合比較なし→50%",
+        "final_reasoning": "固定収益オーバーパフォーマンスが解約軽減に貢献という因果チェーンは理解可能。ただし専門チームの能力の差別化が不明"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "固定収益専門チームという組織能力の存在（KB2パターンIII部分適合）と「top 2 quartiles increasing since March」という改善トレンドの言及がある。固定収益アウトパフォームが解約圧力軽減に繋がるという因果チェーンは直接的。ただしPIMCO等の固定収益専門会社との比較がなく（KB2パターンB適合）、専門チームの具体的な差別化（特定戦略、プロセス）の説明がない。50%が妥当。"
+    },
+    {
+      "id": "BEN-003",
+      "claim": "Franklinブランドの固定収益・TempltonブランドのグローバルエクイティのB2Cクロスボーダー展開（特に欧州・アジア向け）が、地域別・戦略別のAUM多様化を実現し、特定市場への集中リスクを分散している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "Franklin/Templetonのデュアルブランド体制という具体的な構造"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "デュアルブランド体制（能力）→AUM多様化（結果）。ただし多様化は「結果」に近い",
+        "rule08_strategy": "クロスボーダー展開は戦略的意思決定。AUM多様化は戦略の結果",
+        "rule07_pure_competitor": "BlackRock（圧倒的なグローバル展開）、Aberdeen等との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_F": "strategy_confusion: クロスボーダー展開という戦略を優位性として提示",
+        "pattern_B": "大手資産運用会社はいずれもグローバル展開を持つ",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#6 (30%): グローバルネットワーク（業界共通）→30%。BEN-003も大手運用会社の標準的グローバル展開",
+        "final_reasoning": "Franklin/Templetonのブランド独自性は認識できるが、BlackRock等との比較で差別化が不明"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "Franklin/Templetonのデュアルブランド体制（固定収益/グローバルエクイティ）は独自の歴史的強みだが、現代ではBlackRock（iShares + 固定収益）、Vanguard等も多様なブランド・戦略を提供する（KB2パターンB適合）。「クロスボーダー展開による多様化」は戦略的意思決定の結果（KB1ルール8: 戦略≠優位性）であり、なぜFranklin Templetonがこの分野でBlackRock等より優れているかの説明がない。30%が妥当。"
+    },
+    {
+      "id": "BEN-004",
+      "claim": "Fiduciary Trustの資産管理サービスが超高純資産個人（UHNW）セグメントへのアクセスを提供し、機関投資家向け大型フローの獲得を可能にしている",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "Fiduciary Trustという具体的な子会社・サービスの主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "Fiduciary Trust（能力・サービス体制）→UHNW顧客獲得（結果）という因果方向",
+        "rule04_quantitative": "「one of the largest new wealth management relationships」という定性的な実績言及",
+        "rule10_negative_case": "「one of our best quarters ever for institutional flows」という実績の強調"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "result_as_cause: 「largest new relationship」「best quarters」という結果を優位性の証拠として提示",
+        "pattern_B": "UHNW向け資産管理はGoldman Sachs、Morgan Stanley、UBS等多数が展開",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "「one of the largest」という記述は規模を示すが、競合（Goldman Sachs Private Wealth等）との比較なし→30%",
+        "final_reasoning": "Fiduciary Trustは独自の資産（UHNW向け信託）だが、競合との差別化が示されていない"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "Fiduciary Trustというブランドのウェルス管理サービスはFranklin Templetonの独自資産だが、UHNW向け資産管理市場はGoldman Sachs、Morgan Stanley、UBS、JPMorganが支配しており（KB2パターンB適合）、M&T BankがFiduciary Trustを持つ機会がこれらと比較して優位かどうかの説明がない。「one of the largest new relationships」という表現は自己申告（KB2パターンA適合）。30%が妥当。"
+    },
+    {
+      "id": "BEN-005",
+      "claim": "収益性の高い運用報酬（Investment Management Fee）構造と経費規律による高マージン維持（営業利益/総収益で高水準）が、AUM規模の経済効果を財務的に実証している",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "「operating income topped $3 billion」という定量的実績。財務的成果の具体的記述"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "高マージン・高営業利益は結果（KB2パターンA典型）。AUM規模の経済という能力の説明はあるが",
+        "rule04_quantitative": "「operating income topped $3 billion」「up 10%」という定量データ。ただし競合比較なし",
+        "rule07_pure_competitor": "BlackRock（最大規模のAUM）との運用報酬率・マージン比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "result_as_cause: 高営業利益・高マージン（結果）を規模の経済の証拠として提示",
+        "pattern_B": "大手運用会社（Vanguard除く）はいずれも高マージン構造を持つ",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#1 (70%): 退職率9% vs 業界20%+という対競合比較。BEN-005は競合との比較なし→30%",
+        "final_reasoning": "「record operating income」は実績（結果）の提示。規模の経済の仕組み説明が不十分"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "「operating income topped $3 billion for the first time, up 10%」という定量データはあるが（KB1ルール4部分適合）、これは高マージン（結果）の提示であり（KB2パターンA適合）、なぜFranklin TempletonのAUM規模の経済が競合より優れているかの説明がない。BlackRock（$4.6兆AUM）等と比較すると規模では劣り、Vanguardはコスト競争で優位。BENの規模の経済の実際の差別化が示されていない。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "50-60": 2,
+      "30-40": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

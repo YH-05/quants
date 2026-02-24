@@ -1,0 +1,99 @@
+{
+  "ticker": "CF",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "CF-006",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "製品間の生産配分最適化とターミナルポジショニング能力は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「先物・インデックス・スポット販売を組み合わせてネットバックを最大化する商業実行力」という具体的な能力説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "販売最適化能力は構造的なプロセス能力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「Forward・Index・Spotの3種類の価格形態を活用」という具体的な商業実行プロセスの説明"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「Forward・Index・Spot販売の組み合わせ」という具体的な商業実行手法と、Q3 2015での「3百万トンのUANフィルプログラム」という定量的実績は高評価。ただし競合（Terra、Mosaic等）も同様の商業実行能力を持ちうるため、相対的差別化の証拠はやや弱い。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "商業実行最適化→市場平均以上の価格実現→EBITDA最大化という2ステップの直接接続"
+    },
+    {
+      "claim_id": "CF-007",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "旧テラ設備の系統的アップグレードと稼働率向上は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「DCSシステム・冗長アンモニアタンク・制御システムの系統的アップグレード」という具体的な施設改善プロセス"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "設備アップグレードによる稼働率向上は構造的なプロセス能力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「CF標準に合わせた系統的なアップグレードプログラム」という能力の説明"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "旧Terra設備のCF標準への系統的アップグレード（DCSシステム、冗長タンク）と「$300-400M/年の標準維持CapEx」への正常化という具体的な説明は一定の評価。ただしこれは業界標準的な設備管理であり（Pattern B）、CF に固有の競合比差別化として評価するには証拠が弱い。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "設備信頼性向上→稼働率向上→生産コスト低下という接続は理解できるが定量的な差別化データが不足"
+    },
+    {
+      "claim_id": "CF-008",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "2016年全ガス需要の$3/MMBtu固定ヘッジは具体的な財務リスク管理プロセス",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「$3フラットで段階的にヘッジを構築した」という具体的な意思決定プロセスの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "ガスヘッジは補完的な財務リスク管理。構造的優位性（CF-001）の補完"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "note": "ガス先物ヘッジは多くの窒素肥料生産者が行う一般的手法"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「市場観察→段階的ヘッジ構築」という意思決定プロセスの説明"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "2016年全ガス需要を$3/MMBtuで固定するヘッジ実行は具体的な財務管理能力。ただし競合も同様のヘッジが可能（Pattern B）であり、CFのガスヘッジが競合比で特に優れているかの証拠がない。CF-001（構造的低コスト）の補完的要素として位置付けるべき。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "2016年コスト確定→業績予測可能性の向上→投資家安心感という接続は理解できるが、長期的なCAGR成長への貢献は補完的"
+    }
+  ]
+}

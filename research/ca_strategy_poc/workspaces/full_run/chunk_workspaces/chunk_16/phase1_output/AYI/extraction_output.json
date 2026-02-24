@@ -1,0 +1,342 @@
+{
+  "ticker": "AYI",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-10-01) + Q1-Q3 FY2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "北米照明市場で1.7M+ SKUポートフォリオによる圧倒的な製品多様性と顧客ソリューション提供能力",
+      "descriptive_label": "業界最大SKUポートフォリオ（1.7M+）によるソリューション提供能力",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO Vern Nagel): 'we offer customers more than 1.7 million SKUs to choose from, more than 3x as many as we had in 2008. No other lighting company provides customers with more choices and solutions than Acuity Brands.' また 'we believe our rate of growth for LED luminaires continues to far outpace the growth rates of our largest competitors for these types of products.' LED sales grew ~75% YoY in Q1 FY2015.",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "1.7M SKU（能力・仕組み）を評価。SKU数増加（2008年比3倍超）は能力の具体的証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "1.7M SKU（業界最多）、LED売上+75% YoY、LEDが総売上の40%超という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "「No other lighting company provides customers with more choices」という明示的な競合比較あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "LED移行期では多様なソリューション（新設・改修）に対応できる幅広いポートフォリオが市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1 quarterly callからの発見。Q4 FY2014でも同様の主張あり（従・②相当として-0%調整、Q4に同概念が言及）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "SKUポートフォリオの規模は業界最大（1.7M）で競合比較が明確。LEDソリューションの急成長（+75%）と市場成長率（mid single digit）の大幅乖離が競争優位の証拠。ただし「SKU数が多い」こと自体の模倣困難性の説明が不足"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "LEDソリューション移行 × 北米市場成長 → 市場2倍超のペースでの売上CAGR+12-15pp",
+      "descriptive_label": "LED市場シェア拡大×市場成長→売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。LED市場シェア拡大→売上成長の接続は7四半期連続ダブルディジット成長という実績で検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1 FY2015発言由来（従・②相当）。ただしQ4 FY2014でも同様の戦略が言及されている"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "7四半期連続の実績で検証可能（-0%調整）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "7期連続ダブルディジット成長が検証可能な証拠。北米市場成長（mid-upper single digit）の2倍超のペースで成長している事実が接続を支持。LED部品コスト低下→ROI改善→採用加速のポジティブサイクルも明確"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "LED照明とコントロールシステムの統合提供能力（Integrated Tiered Solutions）によるエネルギー管理・IOT接続の差別化",
+      "descriptive_label": "LED×Lighting Controls統合ソリューション提供能力",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO Nagel): 'We are evolving to an integrated tiered solutions approach which fully leverages the benefits of our product development capabilities with the integration of our many acquisitions, including our controls portfolio.' 'We are without equal in the design and development of fixtures and integrated lighting systems for virtually any application without a bias of the light source.' 'connecting smart lighting with smartphones for retailers as well as our growing electronic component capabilities.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "統合ソリューション提供能力（M&A含むControls portfolio統合能力）を評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "Controls sales成長は言及あるが具体的数値はLED全体に含まれる。「without equal」は定性的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "LED×Controls統合は買収・技術蓄積により構築された構造的優位。短期での模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「without equal」は主張だが、GE Lighting、Philips Lighting等との具体的比較データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1 quarterly callから（従・②相当）、Q4 FY2014にも同様の方向性あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "統合ソリューション能力は認められるが、GE、Philips等の競合も同様のIOT接続・コントロール統合を開発中の可能性が高く、相対的優位性の証拠が弱い。ただし「1.7M SKU×Controls」の組み合わせはアプリケーション多様性で差別化"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "北米照明市場での7期連続二桁成長を実現したオペレーショナルエクセレンスと市場シェア拡大能力",
+      "descriptive_label": "市場成長率2倍超のシェア拡大実績（プロセスパワー）",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO Nagel): 'this was the seventh quarter in a row where we achieved double-digit volume growth.' North American market grew mid-single digits; AYI grew >14% in volume. 'We believe our rate of growth for LED luminaires continues to far outpace the growth rates of our largest competitors.' Adjusted operating profit margin 14.9% (record), up 230bps. Variable contribution margin ~34% on incremental sales.",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9, 10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "7期連続ダブルディジット成長は「結果」。なぜ成長できるかの「能力」の説明が主（製品ポートフォリオ・チャネル等）だが、この主張自体は結果の提示"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "7期連続・14%超成長・市場2倍超・マージン230bps改善という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「far outpace the growth rates of our largest competitors」は競合比較だが具体的競合名・数値なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "成長実績は結果であり、それ自体は競争優位性ではない（ルール1-T違反）。ただし7期連続の持続性は背後の能力（SKU多様性・チャネル）の間接的証拠"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "照明コントロール買収（Distech、nLight等）による制御技術能力とIOT照明ソリューション開発力",
+      "descriptive_label": "M&A統合による照明コントロール技術能力（コーナードリソース的）",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO Nagel): 'we continued the development of luminaires incorporating other light source technologies such as organic LEDs... The strength of our portfolio is so significant, we are evolving to an integrated tiered solutions approach which fully leverages the benefits of our product development capabilities with the integration of our many acquisitions, including our controls portfolio.' Also: 'expansion of our solid-state luminaire and Lighting Controls portfolio.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "M&A統合後のコントロール技術ポートフォリオ（能力・仕組み）を評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Controls acquisitionsは技術資産として希少性があり、競合が同等ポートフォリオを構築するには時間を要する"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「M&A戦略」と「統合された技術能力（優位性）」の区別が必要。後者が優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Lutron、Honeywell等のControls競合との具体的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1 quarterly callから（従・②相当）、確信度-10%調整",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "コントロール技術のM&A統合能力は評価できるが、競合（Lutron、Johnson Controls等）との具体的差別化が不明確。Controls市場の競合状況と相対的なAYIのポジションの説明が不足"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Lighting Controls×LED統合ソリューション → 高ASP製品ミックス改善 → 利益率CAGR+200-300bps",
+      "descriptive_label": "統合ソリューション→高ASP→利益率改善経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ。統合ソリューション→高ASP→マージン改善の経路は合理的。Q1 FY2015実績（230bps改善）が部分的裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1 FY2015発言（従・②相当）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q1 FY2015実績での230bpsのマージン改善が部分的証拠。ただし持続性については、LED部品価格低下による製品価格圧力が相殺する可能性があり、確度は中程度"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "業界最高水準の運転資本管理能力（37日間=業界最高）",
+      "descriptive_label": "業界最高の運転資本管理効率（37日サイクル）",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CFO Richard Reece): 'Our operating working capital defined as accounts receivable plus inventory, less accounts payable, decreased 6 days to an industry leading 37 days and represents only about 12.5% of annualized revenues. Most of these improvement was in our management of inventory, where we continue to improve our inventory turns while also improving our service levels.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "在庫管理・サービスレベル向上能力（仕組み）を評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "37日（業界最高）という定量比較あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「industry leading」の主張あり。競合の具体的数値は不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1 quarterly callから（従・②相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "37日の運転資本サイクルは業界最高の主張あり。在庫回転率改善とサービスレベルの同時改善は能力として評価できるが、競合（Cooper、Hubbell等）との具体的比較数値が不足"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "IoT（Internet of Things）対応スマート照明ソリューション開発における先行投資と技術蓄積",
+      "descriptive_label": "IoTスマート照明先行技術蓄積（コーナードリソース的）",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO Nagel): 'we are very excited by the many opportunities to enhance our already strong platform, including the introduction of holistic lighting solutions like connecting smart lighting with smartphones for retailers as well as our growing electronic component capabilities.' 'we believe the lighting and lighting-related industry will experience significant growth over the next decade, particularly as energy and environmental concerns come to the forefront, along with emerging opportunities for digital lighting to play a key role in the Internet of Things.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "スマート照明開発能力（能力・仕組み）として評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "IoT照明の先行技術蓄積は一定の希少資源的側面あり"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「IoT対応戦略」vs「IoT技術能力（優位性）」の区別が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "定量的な技術差別化データなし。「very excited」は定性的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "IoT照明への戦略的方向性は明確だが、2015年時点では具体的な競合差別化データなし。GE、Philips、Siemensも同様のIOT照明戦略を展開中であり相対的優位性の証拠が弱い"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q1 FY2015: 売上+13%（$647M）、LED売上+75% YoY、LED比率40%超、調整済みOPM 14.9%（+230bps）、変動寄与率34%",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "運転資本サイクル37日（業界最高）、キャッシュポジション$583M（純現金）。Moody's格付け引き上げ（Baa2）",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": [4, 7]
+    }
+  ]
+}

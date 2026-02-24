@@ -1,0 +1,55 @@
+{
+  "ticker": "WPL",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "claim_id": "WPL_006",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "Woodsideは$800Mのenduring cost benefitプログラムを2016年末までに実現するオペレーション効率改善能力を持ち、業界低価格環境への耐性を高めている。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "FAIL - コスト削減プログラムの「目標」であり実現した能力の証拠ではない",
+        "rule04": "PASS - $800Mという定量的目標",
+        "rule06": "FAIL - コスト削減プログラムは業界標準的な補完的能力",
+        "rule08": "FAIL - 戦略的プログラム宣言であり実証済み優位ではない",
+        "rule12": "FAIL - H1 2015（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["F-T (戦略と優位の混同: $800Mプログラムは戦略的計画であり競争優位の実証ではない)", "C-T (因果の飛躍: コスト削減プログラム→競争優位という直接的メカニズムが不明確)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule08 (戦略と優位の区別)", "rule01 (能力 vs 目標)"],
+        "conclusion": "将来目標のプログラム宣言は実現した競争優位の証拠ではない。$800Mの目標達成実績は2015-09-30以前に未確認。"
+      },
+      "scoring_rationale": "コスト削減プログラムの目標宣言は戦略的コミットメントであり実証済み競争優位ではない。rule01/08でFAIL。パターンF適用。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "WPL_007",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "WoodsideのH1 2015純利益は$679M、生産量42MMboe、営業収益$2.55B。中間配当USD 0.66/shareは80%配当性向に基づく。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 複数の定量的財務指標（純利益$679M、生産量42MMboe、収益$2.55B、配当$0.66）",
+        "rule12": "FAIL - H1 2015（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["事実確認型クレームとして評価"],
+        "conclusion": "財務数値は検証可能な事実であり高い確信度が適切。ただし二次ソース。"
+      },
+      "scoring_rationale": "事実確認型クレーム。複数の定量的財務指標が具体的に開示されており検証可能。二次ソースだが財務事実は信頼性高い。70%。",
+      "final_confidence": 0.7
+    }
+  ]
+}

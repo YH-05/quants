@@ -1,0 +1,35 @@
+{
+  "ticker": "BA",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["BA-011", "BA-012"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "BA-011",
+      "claim_type": "factual_claim",
+      "claim": "Applied Intelligence FY2014: 有機成長~10%、受注残高+37%増、政府→民間サイバー市場への拡大実現",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - FY2014 Full Year CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。BA-003（Applied Intelligence能力）の支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。BA-003（70%）の支持事実。バックログ37%増という高成長率が特に重要。0.7"
+    },
+    {
+      "id": "BA-012",
+      "claim_type": "factual_claim",
+      "claim": "AMPV（装甲多目的車両）米陸軍開発パートナー選定、Platforms & Services（旧Combat Vehicles）の米陸軍プライムコントラクターポジション確立",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - FY2014 Full Year CEO発言による開示。米陸軍選定は独立第三者による能力認定"
+      },
+      "kb2_t_pattern": "pattern_III_t（競合模倣困難）",
+      "dogma_evaluation": "事実主張として定量的（AMPV選定）裏付けあり。BA-005（米陸軍プライム）の支持事実",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。BA-005（50%）の支持事実。AMPV選定は独立第三者評価として重要。開発段階のため0.5"
+    }
+  ]
+}

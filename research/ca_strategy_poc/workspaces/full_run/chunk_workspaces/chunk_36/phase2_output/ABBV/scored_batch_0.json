@@ -1,0 +1,202 @@
+{
+  "ticker": "ABBV",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "HUMIRAの多適応症展開能力（免疫学15年の蓄積による臨床・規制ノウハウ）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "免疫学15年の臨床知見・規制ノウハウという能力を評価。複数適応症展開という結果ではなく、それを可能にした蓄積が核心"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "売上$13B（+20.6%）、14適応症獲得、30以上の進行中試験という定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "TNF阻害剤の15年間の安全性・有効性データベースは競合が短期で構築困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力重視パターン適合。臨床知見という能力が核心"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "patent_cliff_risk",
+          "adjustment": 0.0,
+          "reasoning": "バイオシミラー参入リスク（2016年以降）はあるが、特許保護期間内（2016-2022年での特許訴訟）の評価"
+        }
+      ],
+      "overall_reasoning": "HUMIRA多適応症展開能力はCornered Resource（15年の安全性データ）+ Process Power（臨床開発ノウハウ）として評価。$13B売上という定量実績で裏付け。特許切れリスクを考慮しても70%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "HUMIRA成長 + VIEKIRA売上 + パイプライン商業化 → EPS成長20%以上/年（2015年EPS $4.90-5.10目標）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "HUMIRA成長（+20.6%）+ VIEKIRA（2015年$1B売上目標）+ パイプライン→EPS成長の2-3ステップ。財務データで検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual発言由来。CEO/CFOによる2015年EPS $4.90-5.10のガイダンス"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズム適合"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "EPS成長の構成要素（HUMIRA/VIEKIRA/パイプライン）が定量的に示されており因果チェーンが明確。70%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "HCV治療薬VIEKIRAの保険者排他的契約獲得能力（Express Scripts独占採用・CVS Caremark主要採用）",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Express Scripts独占採用という契約獲得能力（仕組み）を評価。価格交渉・製品差別化のプロセスが核心"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Express Scripts独占採用（米国最大PBM）、CVS Caremark主要採用という具体的な契約実績"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": true,
+          "reasoning": "Gilead（Sovaldi/Harvoni）との比較で価格競争力が示されている（Express Scriptsがハーボニーを除外してVIEKIRAを選択）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_V_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "具体的競合比較パターン適合。Gileadとの価格競争での勝利"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "product_durability",
+          "adjustment": 0.0,
+          "reasoning": "HCV治療薬は「治癒」するため長期的な継続需要が限定的。2014年の新規患者が尽きるリスクはあるが短期的評価"
+        }
+      ],
+      "overall_reasoning": "VIEKIRA排他的契約能力は価格交渉力と製品差別化の組み合わせ。Gileadとの比較での価格競争勝利が裏付け。ただしHCV治療薬の市場縮小リスク（治癒により患者が減少）を考慮。60%が妥当"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "免疫腫瘍学・神経学・腫瘍学における40以上の臨床プログラムを持つパイプライン構築能力",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "大手製薬会社（Pfizer/Merck/Roche）はほぼ全員が40以上の臨床プログラムを持つ。業界共通（Pattern B）リスク"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "プログラム数（40+）は規模を示すが、競合との差別化を示す数値なし。成功確率・Phase III成功率等の比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "大手製薬会社共通のパイプライン規模。差別化根拠が乏しい"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.10,
+          "reasoning": "メガファーマ共通能力（dogma Rule3適用）"
+        }
+      ],
+      "overall_reasoning": "40+の臨床プログラムは大手製薬会社共通。LLY#1（複数薬剤ポートフォリオ）と同様の批判が適用される（dogma参照）。40%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年: HUMIRA売上$13B（+20.6% op.）、14適応症、30以上の進行中試験。EPS（非GAAP）$3.14（+18.4%）。VIEKIRA: 2015年売上目標$1B超",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO/CFO Q4 annual callでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 1,
+      "60-70": 1,
+      "70-80": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

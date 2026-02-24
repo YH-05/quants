@@ -1,0 +1,221 @@
+{
+  "ticker": "TSM",
+  "batch_index": 1,
+  "batch_total": 3,
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "id": "TSM_006",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCは先端ノードでの圧倒的市場シェア（20nm唯一の量産ファウンドリ、16nm overwhelming share予測）を保持し、規模の経済がさらなるシェア獲得を可能にする自己強化ループを形成する。",
+      "descriptive_label": "先端ノード市場シェア自己強化ループ",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Morris Chang",
+      "section": "q_and_a",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule11", "rule12"],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "fail",
+            "reasoning": "「圧倒的市場シェア」「シェア獲得」は結果。ルール1違反の典型例。シェアをもたらす能力（プロセス技術、コスト構造）は評価できるが、シェア自体を優位性として提示している"
+          },
+          {
+            "rule": "rule11",
+            "verdict": "partial",
+            "reasoning": "市場構造（先端ノードの寡占化）との合致は認められるが、優位性の主体がシェア（結果）になっている"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "kb2_t_reasoning": "結果を原因と取り違え（A-T）：シェアは結果であり優位性ではない。dogmaルール1の典型的却下候補",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ルール1-T違反：シェアは結果。背後の能力（プロセス技術）がTSM_001で既に評価されている",
+            "adjustment": -20
+          },
+          {
+            "reason": "Q2 quarterly発言（従・②相当）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。「市場シェア」は結果であり能力ではない（ルール1-T違反、パターンA-T）。自己強化ループというメカニズムは概念的には理解できるが、シェアを優位性として提示している構造が問題。TSM_001（プロセス能力）とTSM_002（学習曲線）で評価した能力の重複でもある。30%が上限"
+      }
+    },
+    {
+      "id": "TSM_007",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのStructural Gross Margin（SGM）と高稼働率維持能力は、先端ノードへの大規模CapEx投資を継続しながらも利益率構造を改善できる財務的優位性を示す。",
+      "descriptive_label": "構造的粗利率（SGM）と高稼働率維持能力",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Lora Ho",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule12"],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "fail",
+            "reasoning": "SGM改善・ROE 27.9%・高稼働率は結果の数値。ルール1違反：これらを生み出す能力（高稼働率を維持するための顧客基盤構築力、コスト管理プロセス）の説明が不足"
+          },
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "ROE 27.9%（long-term goal 20%超）、SGM 5年間の継続改善という数値あり。ただし「優位性の裏付けとなる数値」ではなく「結果の数値」"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "fail",
+            "reasoning": "財務指標（SGM、ROE）は補完的要素であり構造的優位性の主軸ではない"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t + pattern_D_t",
+        "kb2_t_reasoning": "結果を原因と取り違え（A-T）：財務指標は結果。定性的のみで測定困難（D-T）：「SGM維持能力」の定量比較なし",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ルール1-T違反：ROE・SGMは結果の数値",
+            "adjustment": -10
+          },
+          {
+            "reason": "ルール6-T：財務的優位性は補完的要素",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q2 quarterly発言（従・②相当）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。SGM・ROEは財務的な結果指標であり競争優位性の能力ではない（ルール1-T違反）。「高稼働率維持能力」という言及はあるが、なぜ維持できるか（顧客基盤、長期契約、プロセス管理）の説明がない。純粋競合との比較なし。30%が適切"
+      }
+    },
+    {
+      "id": "TSM_008",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCはLED事業（Solid State Lighting）への遅参による競争劣位を認識し、撤退を決断した規律ある資本配分能力を持つ。",
+      "descriptive_label": "規律ある資本配分能力（LED事業撤退判断）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lora Ho",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule08", "rule10", "rule12"],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "「採算性見込みのない事業から撤退できる規律（能力）」を評価。撤退という意思決定の背後にある評価プロセス・基準が優位性"
+          },
+          {
+            "rule": "rule08",
+            "verdict": "warning",
+            "reasoning": "「撤退を決断した」は戦略的意思決定。ルール8に抵触する可能性。ただし、規律ある意思決定プロセス（能力）として評価するなら許容"
+          },
+          {
+            "rule": "rule10",
+            "verdict": "pass",
+            "reasoning": "ネガティブケース（LED事業撤退）による裏付け。ルール10-T（ネガティブケースによる裏付けを評価）の典型例"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言（主・①相当）。標準評価"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "kb2_t_reasoning": "能力の優位性（III-T）：意思決定規律という仕組みをネガティブケースで裏付け",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "本業（ファウンドリ）との関連性が薄く、競争優位性の中心軸ではない（補完的要素）。ルール6-T：補完的要素",
+            "adjustment": -10
+          },
+          {
+            "reason": "純粋競合（Samsung）も同様の資本配分規律を持っているかの比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q4 2014発言。ネガティブケース（LED撤退）による裏付けはルール10-T評価ポイント。規律ある資本配分能力というフレームは概念的に評価できる。しかしファウンドリ事業本体との関連性が薄く（補完的要素）、Samsung等の競合も同様の合理的意思決定プロセスを持つ可能性が高く差別化根拠が弱い。50%（まあ納得）"
+      }
+    },
+    {
+      "id": "TSM_009",
+      "claim_type": "factual_claim",
+      "claim": "TSMCの2014年売上高は前年比27.8%増（TWD 763B / USD 25B）、EPS前年比40%増のTWD 10.18で過去最高を達成した。",
+      "descriptive_label": "2014年業績過去最高（売上27.8%増、EPS40%増）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lora Ho",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": [
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "TWD 763B / USD 25B、27.8%成長、EPS TWD 10.18、40%増という具体的財務数値"
+          }
+        ],
+        "kb2_t_pattern_match": null,
+        "kb2_t_reasoning": "factual_claimのためパターン照合対象外",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）。SEC開示データと整合する可能性が高く検証可能",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4 2014発言。財務数値は具体的で検証可能。年次決算での公式発表のため信頼性高い。factual_claimとして70%で評価（事実確認用、競争優位性評価とは独立）"
+      }
+    },
+    {
+      "id": "TSM_010",
+      "claim_type": "cagr_connection",
+      "claim": "先端ノード（16nm/10nm）でのfar majority foundry share獲得 → 先端スマートフォン向けAP・GPU市場でのウェーハ単価上昇 → 売上CAGR 10%+への直接寄与",
+      "descriptive_label": "先端ノードシェア→ASP上昇→CAGR 10%+接続",
+      "source_advantage": "TSM_001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule12"],
+        "results": [
+          {
+            "rule": "rule05",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：先端ノードシェア→ASP上昇→売上CAGR。Lora Ho Q4 2014 Q&Aで「blended ASP will continue to grow, low single-digit range year-over-year」と開示データで検証可能"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言（主・①相当）。5年目標CAGR 10%の設定もQ4 2014"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "kb2_t_reasoning": "直接的CAGRメカニズム（II-T）：ASPトレンドが開示データ（quarterly revenue mix）で検証可能。2ステップ以内の因果",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "ASP成長「low single-digit range」という具体的開示。先端ノード比率向上→ASP上昇の因果は検証可能",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4 2014発言。2ステップの直接的CAGR接続：先端ノードシェア獲得→ASP上昇（開示値：low single-digit YoY）→CAGR 10%。Lora HoによるASP継続上昇予測と、Morris Changの16nm市場シェア宣言が組み合わさり、因果メカニズムが明確。開示データで検証可能なため70%"
+      }
+    }
+  ]
+}

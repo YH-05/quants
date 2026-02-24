@@ -1,0 +1,304 @@
+{
+  "ticker": "HRL",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "SPAM・SKIPPY・Jennie-Oなど多様な消費者向けブランドポートフォリオによる収益の多様化と安定性",
+      "descriptive_label": "多様な消費者ブランドポートフォリオによる収益分散優位性",
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "fail",
+          "reasoning": "5セグメント全成長・18% EPS増は業績結果の提示。ブランドポートフォリオの多様化はTyson Foods等競合も採用しており差別化として弱い。ポートフォリオ管理能力の仕組みの説明なし"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_4_t": {
+            "verdict": "pass"
+          },
+          "rule_7_t": {
+            "verdict": "fail",
+            "impact": "-10"
+          },
+          "rule_12_t": {
+            "verdict": "secondary",
+            "impact": "-10"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "partial - 食品業界共通のマルチブランド戦略",
+            "pattern_A_t": "partial - 5セグメント全成長（結果）を優位性として提示"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#3（ポート管理能力：50%）より弱い。CHD#5（戦略的ポートフォリオシフト：30%）に近い",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "Q1発言。多様化ポートフォリオは食品業界共通戦略であり差別化として弱い。5セグメント成長は結果の提示。KB2-T pattern_B_t/pattern_A_t。Phase 1の40%（extraction: 40%-10-10=20%に相当）から調整、40%に設定",
+      "seven_powers_classification": "Branding（SPAM/SKIPPYブランド認知）の可能性あるが証明不十分",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "フードサービス向け付加価値製品（BACON 1・Pizza Toppings・FIRE BRAISED meats等）のイノベーション能力",
+      "descriptive_label": "フードサービス向けイノベーション製品開発能力",
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "具体的な製品名（BACON 1、FIRE BRAISED）への言及はあり、フードサービス特化という能力への説明も部分的にある。ただし競合（Tyson等）との直接比較なし"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_7_t": {
+            "verdict": "fail",
+            "impact": "-10"
+          },
+          "rule_12_t": {
+            "verdict": "secondary",
+            "impact": "-10"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_G_t": "partial - 競合との比較なし"
+          },
+          "high_eval_patterns": {
+            "pattern_III_t": "partial - 具体的製品名とフードサービス関係構築という能力説明"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#6（デジタルマーケティング：50%）より弱い。Q1発言で競合比較なし",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "Q1発言。具体的なフードサービス向け製品名とセグメント特化という能力説明はある。競合比較なし。KB2-T pattern_III_t部分合致。Phase 1の40%（extraction: 40%-10=30%）から+10調整し40%",
+      "seven_powers_classification": "Process Power（フードサービス向け製品開発ノウハウ）の可能性あるが証明不十分",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "製造効率化による持続的マージン改善能力（Refrigerated Foods, Grocery Products両セグメントで長期マージンガイダンス引き上げ）",
+      "descriptive_label": "製造効率化による持続的マージン改善能力",
+      "transcript_call_type": "Q4_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial_pass",
+          "reasoning": "「sustainable margin improvement」「manufacturing efficiencies」という能力的表現とStockton植物閉鎖という具体的施策あり。ただしQ4 FY2015はPoiT cutoff後。2つのセグメントでの定量的ガイダンス引き上げは能力の証拠として評価可能"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_4_t": {
+            "verdict": "pass"
+          },
+          "rule_12_t": {
+            "verdict": "secondary_post_cutoff",
+            "impact": "-10",
+            "reasoning": "Q4 FY2015発言はPoiT cutoff(2015-09-30)後"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_III_t": "partial - 製造効率化プロセスの具体的説明（Stockton閉鎖）"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#7（経営フレームワーク：50%）に近い。具体的施策はあるが競合比較なし",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "Q4 FY2015（PoiT cutoff後）。2セグメントでの長期マージンガイダンス引き上げは定量的コミットメント。製造効率化という能力は部分的に認識できる。カットオフ後発言のため Phase 1の40%を維持",
+      "seven_powers_classification": "Process Power（製造効率化能力）の可能性あるが証明不十分",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "食料品M&A統合能力（SKIPPY・CytoSport・Applegate買収の統合実績）",
+      "descriptive_label": "食品ブランドM&A統合能力",
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "fail",
+          "is_capability_not_result": "fail",
+          "reasoning": "SKIPPY/CytoSport統合成功は結果の提示。統合能力の仕組み（プレイブック、FDM流通活用プロセス）の説明が不十分。M&A戦略と統合能力の混同"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail"
+          },
+          "rule_8_t": {
+            "verdict": "fail"
+          },
+          "rule_10_t": {
+            "verdict": "absent"
+          },
+          "rule_12_t": {
+            "verdict": "secondary"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "match - 統合成功（結果）を能力として提示",
+            "pattern_F_t": "partial - M&A戦略と統合能力の混同"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#4（M&A成長加速：30%）と同パターン",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "Q1発言。M&A統合結果（SKIPPY/$203M）の提示が中心。統合能力の仕組み説明なし、断念例なし。KB2-T pattern_A_tに該当。Phase 1の30%（extraction: 30%-10=20%）から+10調整し30%",
+      "seven_powers_classification": "なし（戦略実行結果であり構造的優位性として不十分）",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Jennie-Oブランドの「Make The Switch」キャンペーンによるターキー消費拡大能力と健康志向トレンドへの対応",
+      "descriptive_label": "Jennie-Oによる健康志向ターキー消費拡大マーケティング能力",
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "fail",
+          "is_capability_not_result": "partial",
+          "reasoning": "Make The Switchキャンペーンは具体的だが、Q4 FY2015での鳥インフルエンザによる大幅減益（-23%）が農場依存リスクを示す。健康志向トレンドへの対応は競合も追随可能"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_4_t": {
+            "verdict": "partial"
+          },
+          "rule_12_t": {
+            "verdict": "secondary"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "match - 業界共通の健康志向トレンドへの対応",
+            "pattern_A_t": "partial - キャンペーン成果（結果）を能力として提示"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "MNST#2（コカ・コーラ提携：30%）に類似。業界トレンドへの便乗であり差別化として弱い",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "Q1発言。健康志向トレンク対応×Jennie-Oキャンペーンは能力的側面あるが、Q4鳥インフルエンザで-23%というリスクが顕在化。業界共通トレンドへの対応で差別化として弱い。Phase 1の30%（extraction: 30%-10-10=10%）から調整し30%",
+      "seven_powers_classification": "Branding（Jennie-Oブランド）の可能性あるが農場リスクで弱化",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "多様な消費者ブランドポートフォリオ → 5セグメント相互補完成長 → 安定的EPS成長（18%+）",
+      "descriptive_label": "ポートフォリオ多様化→収益安定成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "5セグメント相互補完→安定EPS成長の接続は合理的。ただしQ4 FY2015のAIショック（Jennie-O -23%）は多様化効果の限界を示した。50年連続配当増という実績は安定性を示す",
+          "pattern_match": "dogma: 過去実績との整合性（50-60%）、ただし農場リスクで調整"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "Q1発言。5セグメント相互補完のCAGR接続は合理的だが、Jennie-Oの鳥インフルエンザリスクで安定性が低下。Phase 1の40%（extraction: 40%-10=30%）から+10調整し40%"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "フードサービス向けイノベーション製品 → 市場シェア獲得＋プレミアム価格 → Refrigerated Foods利益成長",
+      "descriptive_label": "フードサービスイノベーション→プレミアム価格→利益成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "フードサービス向け付加価値製品→プレミアム価格→利益成長の接続は合理的。Q4 FY2015でRefrigerated Foods OI +27%の実績。ただし肉類コスト環境との絡みで純粋な優位性貢献の分解困難",
+          "pattern_match": "dogma: 業界特性に合致（40-50%）"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "フードサービスイノベーション→利益成長の接続は部分的に実証されているが、コスト要因との絡みで分解困難。Phase 1の40%（extraction: 40%-10=30%）から+10調整し40%"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "製造効率化 → セグメントマージン改善（+200bps）→ EPS成長持続",
+      "descriptive_label": "製造効率化→マージン改善→EPS成長持続",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_quarterly",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "製造効率化→マージン引き上げ（7-10%/13-15%）→EPS成長の直接接続。定量的ガイダンス引き上げで検証可能。ただしPoiT cutoff後発言",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（50%。PoiT cutoff後-10%調整済み）"
+        }
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "製造効率化→マージン→EPS成長の直接接続は定量的ガイダンス引き上げで裏付け。PoiT cutoff後のQ4 FY2015発言だが方向性はQ1-Q3実績と整合。Phase 1の50%を維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "M&A統合能力（SKIPPY/CytoSport実績）→ 継続的なブランド買収・統合 → 売上規模拡大",
+      "descriptive_label": "M&A統合→ブランド拡大→売上CAGR",
+      "source_advantage": 6,
+      "transcript_call_type": "Q1_quarterly",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "M&A統合能力（#6）の証明が弱く、そのCAGR接続も不確実。継続的M&A機会の確保も不確実",
+          "pattern_match": "dogma低評価パターン: ソース優位性証明不十分（30%）"
+        }
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "ソースとなるM&A統合能力（#6）の証明が弱く、CAGR接続も確信度低い。Phase 1の30%（extraction: 30%-10=20%）から+10調整し30%"
+    }
+  ],
+  "metadata": {
+    "gatekeeper_applied": true,
+    "batch_size": 9
+  }
+}

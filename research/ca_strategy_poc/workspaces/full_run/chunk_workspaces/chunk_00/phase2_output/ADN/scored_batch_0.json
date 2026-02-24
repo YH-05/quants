@@ -1,0 +1,91 @@
+{
+  "ticker": "ADN",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": ["ADN-001", "ADN-002", "ADN-003", "ADN-004", "ADN-005"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "ADN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "EM・アジア・グローバル株式における底流研究基盤を持つ独自の長期運用スタイル（スタイルドリフトを行わない一貫性）",
+      "descriptive_label": "新興市場特化の運用スタイル一貫性",
+      "kb1_t_evaluation": {
+        "gatekeeper_rule3": "FAILED - グローバル大手資産運用会社（Ashmore, Schroders, BlackRock等）は同様のEM特化スタイルを標榜しており、相対的優位性が不明",
+        "rule_1_t": "PASS - スタイルドリフトを意識的に回避する規律は仕組みとして評価できる",
+        "rule_4_t": "FAIL - 純粋競合との対比データ（スタイルドリフト発生率、運用実績比較）がない",
+        "rule_7_t": "FAIL - Ashmore/Schroders等純粋競合に対して何が異なるか不明"
+      },
+      "kb2_t_pattern": "pattern_D_t（定性的のみ・測定不能）、pattern_B_t（業界共通能力）",
+      "kb3_t_calibration": "COST#2類似（定性的主張で定量裏付けなし → 低スコア）。ADNは新興市場特化という絞り込みがあるため完全却下ではないが30%が上限",
+      "dogma_evaluation": "Dogma Rule 2（能力は名詞で表現）: スタイル一貫性は能力として認識可能。Dogma Rule 3（相対的優位性）: 大手EM特化ファンドも同様の標榜 → 低評価。H1発言からの抽出でRule 12違反も加点なし",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 3（相対優位）とRule 7（純粋競合差別化）の両違反。KB2-T pattern_D_t（定性的）に該当。dogma.md Rule 3によりEM特化の相対優位性が確認できないため上限30%。H1発言のため-10%調整済み"
+    },
+    {
+      "id": "ADN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIPとの統合を通じた多資産クラス（固定収益・ソリューション・不動産）への拡大によるビジネス多様化能力",
+      "descriptive_label": "M&A統合プレイブックと多様化能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - M&A統合（戦略・行動）ではなく、統合を成功させる能力（プレイブック）が問われる。コストシナジー達成は結果",
+        "rule_4_t": "PASS - 55%増分マージン（目標1年前倒し）という定量値あり",
+        "rule_8_t": "FAIL - SWIP統合は戦略的意思決定であり、優位性そのものではない"
+      },
+      "kb2_t_pattern": "pattern_F_t（戦略と優位性の混同）、pattern_A_t（結果を原因とする）",
+      "kb3_t_calibration": "CHD#4類似（M&A実績を優位性とする → 30%）。ただしADNは55%という数値があり若干評価を支持。CHD#1（買収選定能力70%）と比較するとプロセス説明が不足",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: シナジー達成は結果。Rule 6（構造vs補完）: SWIP統合は補完的。Q4発言は評価されるが能力メカニズムの開示なし",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1と8の違反。KB2-T pattern_F_t（戦略と優位性の混同）に該当。dogma.md Rule 1（能力vs結果）違反。55%マージンは定量的だが結果の開示。30%が適切"
+    },
+    {
+      "id": "ADN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "26カ国のローカルプレゼンスによるグローバル分配ネットワーク",
+      "descriptive_label": "グローバル多地域分配チャネル",
+      "kb1_t_evaluation": {
+        "gatekeeper_rule3": "FAILED - BlackRock・Schroders・Amundiは30-50カ国以上のプレゼンスを持つ。26カ国は業界共通以下",
+        "rule_1_t": "FAIL - 26カ国プレゼンス（結果の数値）を能力として提示",
+        "rule_7_t": "FAIL - 純粋競合より少ない国数のプレゼンスで差別化根拠なし"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通能力）、pattern_A_t（結果を優位性とする）",
+      "kb3_t_calibration": "LLY#6類似（グローバルネットワーク=業界共通 → 30%）。ADNは地理的カバレッジが純粋競合より少なく、更に低評価が適当",
+      "dogma_evaluation": "Dogma Rule 3（相対的優位性）の明確な違反。H1発言からの抽出もある。却下基準2（業界共通能力）に該当",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 3（相対優位）の明確違反。KB2-T pattern_B_t（業界共通）に該当。dogma.md却下基準2（業界共通能力）に対応。30%が上限（10%も検討したが完全却下基準には該当せず）"
+    },
+    {
+      "id": "ADN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "10年間の連続増配実績と強力なキャッシュコンバージョン（経営の財務規律）",
+      "descriptive_label": "財務規律・安定した配当成長",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 10年連続増配は財務規律の結果。配当成長を可能にする仕組み（収益構造、キャッシュ変換能力）の説明なし",
+        "rule_4_t": "PASS - GBP 650M純現金・GBP 500M FCFという具体的定量値あり"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）",
+      "kb3_t_calibration": "MNST#1（高市場シェア=結果 → 50%）と類似。ADNの場合は配当成長という結果で能力のメカニズム説明がさらに薄い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: 10年増配は財務アウトカム。Rule 4（定量的裏付け）: 数値は豊富だが全て結果指標。Q4年次発言は評価されるが能力説明の欠如が致命的",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1の違反（結果の優位性への誤帰属）。KB2-T pattern_A_t（結果を原因とする）。dogma.md Rule 1違反。定量値は豊富だが全て結果指標のため30%"
+    },
+    {
+      "id": "ADN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "年金・保険・ウェルス・ソブリンウェルスクライアントの多様な機関投資家基盤とトラックレコード",
+      "descriptive_label": "機関投資家向けロングオンリー運用の信頼基盤",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 機関投資家基盤（顧客構成=結果）を優位性として提示",
+        "rule_4_t": "FAIL - 「グローバル優先パートナープログラム」の数・質の定量的裏付けなし",
+        "rule_6_t": "FAIL - 機関投資家クライアントの多様性は補完的要素であり構造的優位ではない"
+      },
+      "kb2_t_pattern": "pattern_D_t（定性的のみ）、pattern_B_t（業界共通=機関投資家向け大手AMは全社同様の基盤を持つ）",
+      "kb3_t_calibration": "COST#5（国際展開における現地適応 → 20%）と類似した「地理的・顧客的多様性」の主張。ADNはさらに証拠が薄い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: トラックレコードは結果。Rule 4（定量的裏付け）: 皆無。H1発言から。却下基準1と2の複合",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・4・6の3重違反。KB2-T pattern_D_t（定性的のみ）と pattern_B_t（業界共通）の複合。dogma.md Rule 1・4違反。H1発言からの抽出も不利。30%が上限（即却下ほどではない）"
+    }
+  ]
+}

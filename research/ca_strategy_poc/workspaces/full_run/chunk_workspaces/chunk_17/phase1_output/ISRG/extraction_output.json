@@ -1,0 +1,365 @@
+{
+  "ticker": "ISRG",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-22) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015", "Q2_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "da Vinci手術システムの実質的独占的地位と大規模インストールベースによるスイッチングコスト",
+      "descriptive_label": "ロボット手術プラットフォーム独占+スイッチングコスト",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'we launched our fourth-generation platform, the da Vinci Xi Surgical System... Customer reception of the Xi has been strong with interest in use by multiple specialties'。Q2 2015 Prepared Remarks（CEO発言）: '118 systems in the quarter compared to 96 in the second quarter of 2014'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9, 10],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プラットフォームそのもの（4世代にわたる製品進化、EndoWrist instrument生態系）が「能力・仕組み」として評価できる。インストールベースはその結果でもあるが、スイッチングコストの構造として機能する"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "431システム（FY2014）、da Vinci procedure 570,000件という定量データあり。競合比較数値は提示されていないが、実質的独占市場での絶対数として機能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "FDA承認、外科医訓練エコシステム、病院の資本支出コミットメントが参入障壁となっている。構造的優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "2015年時点でロボット手術における唯一の商業的競合はほぼ存在しない（Medtronic Mazor等は後発）。純粋競合との比較を求めにくい特殊市場構造"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ロボット手術市場はFirst-moverが圧倒的優位。外科医の再訓練コストと病院の資本コミットがスイッチングコストとして機能。業界構造との合致が高い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×企業ポジション）+ pattern_III_t（能力の優位性）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "実質独占市場での先行者優位と業界構造との高い合致",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "da Vinciプラットフォームは実質的独占市場における先行者優位。外科医訓練エコシステム、FDA承認の複雑性、病院資本コミットメントが参入障壁・スイッチングコストを形成。定量的競合比較は困難だが業界構造との合致が高い。おおむね納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "インストールベース拡大 → Instrument & Accessory recurring revenue成長 → 売上CAGR下支え",
+      "descriptive_label": "インストールベース→I&A recurring revenue成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "システム設置数増加 → I&A revenue（1件あたり$1,830/procedure）直接的メカニズム。Recurring revenue比率70%という開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "インストールベース→I&A revenueの接続は2ステップで直接的。Recurring revenue 70%という具体的開示データあり。高い検証可能性"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "EndoWristインストゥルメントエコシステムによる独自の収益機会（消耗品tied sale）",
+      "descriptive_label": "プロプライエタリインストゥルメント消耗品モデル",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'Instrument and accessory revenue realized per procedure, including initial stocking orders, was approximately $1,830 per procedure'。'Our systems are optimized for different procedures by dozens of instruments and accessories'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プロプライエタリなEndoWristシステムの設計・供給能力が「仕組み」として機能。消耗品の locked-in売上構造は競合に再現困難"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$1,830/procedure という定量的な消耗品収益が開示されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "インストゥルメントの使用回数制限（多くは10-15回）とプロプライエタリ設計により、競合品への代替が困難な構造的収益源"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "医療機器のRazor-and-blades/Gillette modelは業界構造として確立。手術件数成長がI&A revenue成長に直結するのは業界構造と整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）+ pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "プロプライエタリ消耗品モデルはRazor-and-bladesの構造として確立。$1,830/procedure という定量データあり。業界構造との合致が高い。おおむね納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "プロプライエタリ消耗品モデル → procedure成長9-13%に連動したI&A revenue成長",
+      "descriptive_label": "消耗品モデル→手術件数成長→recurring収益増加",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "procedure成長 → I&A revenue（$1,830/procedure × 件数）という最も直接的な1ステップの接続。2015年procedure成長ガイダンス7-10%（後に11-13%に上方修正）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 90,
+        "confidence_adjustments": [],
+        "overall_reasoning": "消耗品→手術件数→I&A revenueの接続は最も直接的。定量検証可能。Recurring revenue 70%という開示数値あり。かなり納得（90%）レベルに達する稀なケース"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "General Surgery（特にColorectal/Hernia）への拡大という新成長市場でのFirst-mover優位",
+      "descriptive_label": "一般外科への適用拡大First-mover優位",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'General surgery growth was approximately 33% for the year, comprised of strong growth in da Vinci colorectal surgery, hernia repair and in other general surgery procedures'。'we will focus on the expanded use of da Vinci in general surgery, particularly colorectal surgery and hernia repair'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「一般外科での採用を拡大」は戦略面もあるが、その実行を可能にするのはda Vinciプラットフォームの技術的能力（多角度アクセス、EndoWrist等）であり、能力評価は可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "一般外科33%成長という強い定量データ。大腸外科・ヘルニア修復の個別成長についても言及"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "「一般外科拡大」は戦略的優先課題であり、それ自体は優位性ではない。ただしプラットフォームの技術的能力がそれを可能にしている"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "大腸外科・ヘルニアは低普及率の大市場。ロボット手術の利点（精度、最小侵襲）が最大化される市場。業界構造との合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "「戦略」の要素があるが技術的能力による裏付けあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "一般外科33%成長という強いデータ。ただしこれは実績（結果）であり、能力・仕組みへの言及も混在。「まあ納得」レベル"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "一般外科拡大（低普及率市場）→ procedure成長維持/加速 → I&A revenue CAGR",
+      "descriptive_label": "低普及率一般外科→procedure成長継続",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "一般外科の低普及率 → 今後の採用加速 → procedure成長 → I&A revenue。2-3ステップだが各段階の合理性が高い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "低普及率市場における今後の普及曲線は客観的な根拠あり。一般外科の総addressable marketは泌尿器科より大きく、成長余地が高い。おおむね納得"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "外科医訓練プログラムと認定制度による参入障壁の強化",
+      "descriptive_label": "外科医訓練エコシステムによる参入障壁",
+      "evidence_from_transcript": "Q4 2014 Clinical Highlights（Patrick発言）: 'European Academy of Robotic Colorectal Surgeons was launched in December. Through a network of hospitals and surgeons, this group is providing standardized training and proctoring to support the introduction of robotic colorectal surgery across Europe'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Marketing/Clinical Lead",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "訓練プログラム・認定制度という「仕組み」を評価している。外科医の習熟コストとISRGへのコミットメントを高める構造的メカニズム"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "訓練エコシステムは競合他社が短期間で複製困難な構造的優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "現状競合が乏しいため比較が困難。ただし訓練インフラが参入障壁として機能する点は評価できる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付けなし（訓練を受けた外科医数等の数値なし）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "訓練エコシステムはスイッチングコストを強化する重要な仕組みだが、定量的開示が乏しい。まあ納得レベル"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "臨床エビデンス蓄積と第三者機関による臨床研究による科学的正当性の強化",
+      "descriptive_label": "臨床エビデンス蓄積による採用障壁低減・市場拡大力",
+      "evidence_from_transcript": "Q4 2014 Clinical Highlights（Patrick発言）: 複数の外部研究（Saarland大学、Michigan Surgical Quality Collaborativeなど）がda Vinciの優位性を示す臨床データを継続発表。'EUR 3,000 per patient less expensive... improved clinical outcomes'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Marketing/Clinical Lead",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "臨床エビデンス蓄積そのもの（能力）と、それが生み出す採用加速（結果）が混在。エビデンスを蓄積する能力（臨床試験への投資・Key Opinion Leader管理）は「仕組み」として評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "€3,000/患者のコスト削減という定量データあり。ただし外部研究の質や標準化の問題あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長年にわたるKOL関係構築と臨床エビデンス蓄積は競合がゼロから始める場合に再現困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "臨床エビデンスの継続的蓄積は市場拡大を支える重要な仕組みだが、エビデンスの一貫性に課題あり（Mixed clinical results）。まあ納得"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 431システム販売、worldwide procedures 約570,000件（9%成長）、Recurring revenue 70%（$1.57B）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015: 118システム設置（前年96件）、procedures 約162,000件（14%成長）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [1]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "I&A revenue per procedure: 約$1,830/件（前年同水準）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "一般外科procedures FY2014で33%成長。colorectal/hernia repairが牽引",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Saarland大学研究：da Vinci prostatectomyはopen比でEUR 3,000/患者コスト削減（1,400患者研究）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [8]
+    }
+  ]
+}

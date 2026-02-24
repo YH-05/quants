@@ -1,0 +1,107 @@
+{
+  "ticker": "TMO",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "PPI Business System（Practical Process Improvement）による継続的な生産性改善能力",
+      "evidence": "Q4 2014: 'PPI Business System'、OPM +240bp（2014実績）、+260bp（2015ガイダンス）",
+      "final_confidence": 0.6,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "PPIという独自のビジネスシステム（仕組み）を評価"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "240bpの生産性改善（実績）、260bp（見込み）という定量数値"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.1, "reasoning": "能力の優位性：PPIシステムという組織的能力"},
+        {"pattern_id": "pattern_IV", "matched": true, "adjustment": 0.05, "reasoning": "業界構造との合致（科学機器市場でのコスト効率重要性）"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_III", "adjustment": 0.1, "reasoning": "組織的能力の説明あり"},
+        {"source": "kb2_pattern_IV", "adjustment": 0.05, "reasoning": "業界構造合致"}
+      ],
+      "overall_reasoning": "PPIは具体的な組織能力で定量的マージン改善実績あり。まあ納得〜おおむね納得の中間で60%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "PPI生産性向上 → 年間240-260bpのOPM拡大継続 → EPS成長",
+      "evidence": "Q4 2014: 2015年ガイダンスで260bp OPM改善",
+      "final_confidence": 0.6,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "PPI→コスト削減→OPM拡大→EPS成長は直接的2-3ステップ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.1, "reasoning": "直接的CAGR接続で定量的"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_II", "adjustment": 0.1, "reasoning": "直接的接続"}
+      ],
+      "overall_reasoning": "PPI→OPM拡大の接続は定量的で直接的。60%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Life Technologiesとの統合による業界最大規模のライフサイエンスソリューション提供能力",
+      "evidence": "Q4 2014: '$700M R&D予算（業界最大）'、Life Technologies統合完了",
+      "final_confidence": 0.6,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "$700M R&D予算という定量開示"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I", "matched": true, "adjustment": 0.05, "reasoning": "定量的差別化：$700M R&D"},
+        {"pattern_id": "pattern_IV", "matched": true, "adjustment": 0.05, "reasoning": "業界構造×フルスタック提供能力"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_I", "adjustment": 0.05, "reasoning": "定量的"},
+        {"source": "kb2_pattern_IV", "adjustment": 0.05, "reasoning": "業界構造合致"}
+      ],
+      "overall_reasoning": "$700M R&Dと統合能力。まあ納得〜おおむね納得で60%"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Life Technologies統合 → $150M収益シナジー(Year3) → organic成長率上乗せ",
+      "evidence": "Q4 2014: 2015年$60M収益シナジー目標のうち$20M OPM貢献",
+      "final_confidence": 0.6,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "統合→クロスセル→$150M収益シナジーは具体的な数値目標あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.1, "reasoning": "数値目標付きの比較的直接的な接続"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_II", "adjustment": 0.1, "reasoning": "具体的数値目標"}
+      ],
+      "overall_reasoning": "収益シナジーに具体的な数値目標。初期実行もtrack。60%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Customer Value Proposition：顧客の研究効率化・コスト削減を支援する統合ソリューション提供力",
+      "evidence": "Q4 2014: 'customer value proposition continues to get stronger'",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "定性的評価のみ"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "定量的証明なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_D", "matched": true, "adjustment": -0.15, "reasoning": "定性的のみ"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_D", "adjustment": -0.15, "reasoning": "定性的のみ"}
+      ],
+      "overall_reasoning": "定性的な言及のみ。あまり納得しない で30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 1, "60-70": 4},
+    "gatekeeper_applied": false
+  }
+}

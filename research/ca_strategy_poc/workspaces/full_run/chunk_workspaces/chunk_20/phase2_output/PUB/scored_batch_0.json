@@ -1,0 +1,185 @@
+{
+  "ticker": "PUB",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Publicis は 2013年に売上の 38.4%（Q4は40.4%）をデジタルから獲得しており、競合他社（Omnicom、WPP等）を大幅に上回るデジタル比率を有する。デジタルの有機成長率は 13.9%（Q4は20%）を達成し、2015年に50%超を見込む。",
+      "evidence": "Our revenue in digital has reached 38.4% in 2013 and 40.4% for the fourth quarter. So we are quite ready to be on target. 50% of our revenue in digital by 2018.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "dogma rule_3",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "業界全体のデジタル移行トレンドの中でPublicis固有の持続的優位性かは疑問。競合のデジタル比率との定量比較欠如"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_pass", "reasoning": "38%→50%移行能力は方向性として評価できるが、業界全体のトレンドでもある"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "partial", "reasoning": "競合デジタル比率との明示的比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "デジタル移行は業界全体のトレンド。Publicis固有の優位性か不明確"}
+      ],
+      "overall_reasoning": "デジタル比率のリード（38%）は事実として明確。ただし広告業界のデジタル移行は全社に影響し、固有の持続的優位性かは疑問。Counter-Positioningとして差別化するためにはSapient統合後の具体的能力が必要。45%",
+      "power_classification": "Counter-Positioning（中程度）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Publicis のデジタル売上比率（38%→50%）の拡大が長期収益成長を牽引し、アナログの減少を補完する。デジタルは全地域で二桁成長を達成している。",
+      "evidence": "Digital showed double-digit growth in all regions.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "industry trend",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "デジタル全地域二桁成長は業界全体のトレンドでもあり、Publicis固有のCAGRドライバーとしての主張は中程度の妥当性"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "二桁成長は確認済みだが業界全体のトレンドでもある"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CAGR接続は論理的だが業界トレンドとの差別化が不明確。45%",
+      "power_classification": "Counter-Positioning",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Publicis は Shared Services（IT インフラ・バックオフィス集中化）により業界最高水準のオペレーティングマージン（16.5%、2013年）を達成した。この集中管理システムは競合他社が模倣困難な組織的資産を構成する。",
+      "evidence": "Our asset, which is quite huge, is our shared services. It's the way we can manage the number of support businesses centrally, for which not only do we know what the costs are, but we can also reduce them.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "dogma rule_1",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Shared Servicesという仕組み・能力として評価可能。dogmaルール1適合"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "業界最高マージン（16.5%）の主張に対し競合（Omnicom 13-14%等）との数値比較が不十分"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "pass", "reasoning": "Shared Servicesという仕組み・組織能力として評価可能"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "16.5%マージンという数値はあるが競合との比較は示されていない"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_III", "matched": true, "effect": "positive", "reason": "能力・仕組みとしてのShared Services評価が適切"}
+      ],
+      "overall_reasoning": "Shared Servicesによるマージン優位性は定量的に確認（16.5%）。能力として評価可能。競合比較がより明確であれば70%に上昇しうるが、現状では50%",
+      "power_classification": "Process Power（Shared Services）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Publicis は Sapient の買収（2015年2月）により、オムニチャンネル、eコマース（米国ネットEC取引の32%がSapientプラットフォーム経由）、技術コンサルティングの統合能力を獲得した。この組み合わせは競合他社が持たないユニークな市場ポジションを形成する。",
+      "evidence": "32% of what is sold via Internet in the U.S. goes through platforms owned by or developed by Sapient... there is no other offering besides Sapient's which combines creativeness; knowledge of brands...We're now the only ones who can do that.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation", "rule08_strategy_not_advantage"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "CEO subjectivity",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "「競合他社が持たない」という主張はCEOの主観的見解。独立検証困難"
+        },
+        {
+          "source": "integration uncertainty",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "2015年2月買収完了でPoiT（2015-09-30）前だが統合効果の確認が不十分"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "32%シェアは具体的数値だが統合効果は未確認"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "partial", "reasoning": "CEOの主観的主張。Accenture Interactive等との比較なし"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Sapient eコマース32%という具体的証拠はあるが、CEO主観的主張に依存。統合効果のcutoff前確認が困難。45%",
+      "power_classification": "Cornered Resource（Sapient技術）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Publicis はGoogle、Facebook、Adobe、Microsoft 等の主要プラットフォームとの戦略的アライアンスを業界で最も強固に構築しており（2007年以来）、デジタル広告エコシステムにおいて他社に優る影響力を持つ。",
+      "evidence": "We are quite incontrovertibly the player having the greatest clout in that field and, above all, the strongest alliances.",
+      "rule_evaluation": {
+        "applied_rules": ["rule07_pure_competitor_differentiation", "rule10_negative_case"],
+        "confidence": 40
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A / CEO subjective claim",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "「最強アライアンス」という主観的主張。客観的根拠・定量的差別化証拠なし。WPPやOmnicomも同様のアライアンスを持ちうる"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "fail", "reasoning": "純粋競合との定量比較なし。主観的主張のみ"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "「最強アライアンス」という主張は優位性の説明なく自己申告に依存"}
+      ],
+      "overall_reasoning": "「最強アライアンス」は客観的根拠なし。WPP、Omnicomも同様のアライアンスを持ちうる。dogmaルール3（相対的優位性要求）・ルール4（定量的裏付け）を満たさない。30%",
+      "power_classification": "Network Economies（低評価）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "PUB",
+    "claim_count": 8,
+    "scored_count": 5,
+    "target_claim_ids": [1, 2, 3, 4, 5],
+    "batch_index": 0,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 0,
+      "0.5": 1,
+      "0.45": 3,
+      "0.3": 1,
+      "0.1": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_B_industry_common.md",
+      "kb2_patterns_transcript/pattern_III_capability_over_result.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

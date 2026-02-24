@@ -1,0 +1,291 @@
+{
+  "ticker": "IBM",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00Z",
+  "claims": [
+    {
+      "id": "IBM-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Watson Cognitive Computing プラットフォームの商業展開：20 産業・30 カ国・$1B 投資の Watson Group 設立による先行優位",
+      "evidence": "CFO Martin Schroeter (Q4 2013 prepared_remarks): 'this month, we announced the $1 billion investment in Watson and established a new Watson Group. This new unit is dedicated to the development and commercialization of cloud-delivered, cognitive innovations.' Q2 2015: 'Watson is an example of where we're creating a market around cognitive computing and building an as-a-service business. Watson's being deployed across nearly 30 countries and in 20 industries. We are currently working on hundreds of projects to expand industry domain knowledge as well as teaching the system new languages.'",
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "Watson は Jeopardy! で実証された質問回答 AI の商業プラットフォームとして先行展開。医療（Watson Health）・法律・金融など 20 産業で企業との共同開発プロジェクト数百件を進行中。プラットフォームが自己強化（データ投入→精度向上→顧客追加）することで参入障壁が上昇",
+        "barrier": "$1B の専用投資と Watson Group 設立による組織的コミットメント。医療分野では Phytel・Explorys を買収し医療 AI に特化した知識ベースを独占的に構築。Bluemix API として提供することで開発者エコシステムを形成。競合（Google、Microsoft）は同等の自然言語処理を持つが企業 AI の vertical integration では IBM が先行"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Martin Schroeter;Senior Vice President and CFO, Finance and Enterprise Transformation",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "we announced the $1 billion investment in Watson and established a new Watson Group. This new unit is dedicated to the development and commercialization of cloud-delivered, cognitive innovations."
+        },
+        {
+          "speaker": "Martin Schroeter",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "Watson's being deployed across nearly 30 countries and in 20 industries. We are currently working on hundreds of projects to expand industry domain knowledge as well as teaching the system new languages such as Spanish, Portuguese, Japanese and Arabic."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.55,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "Watson Group という組織・プラットフォームへの $1B 投資という具体的な仕組みへの言及"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "30 カ国・20 産業・数百プロジェクトという定量的展開データ"
+          },
+          {
+            "rule": "rule12",
+            "direction": "negative",
+            "reason": "PoiT 時点では Watson の売上貢献が明示されておらず、まだ investment phase。商業的 ROI の証拠が乏しい"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "2015 時点で企業向け Cognitive AI を商業規模で展開しているのは IBM のみ。Google・MS は consumer 向けが主体"
+          }
+        ]
+      }
+    },
+    {
+      "id": "IBM-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Strategic Imperatives（Analytics/Cloud/Mobile/Security）の 30%+ 成長と $17B の Analytics 事業規模：業界最大のデータ分析ビジネス",
+      "evidence": "CFO Martin Schroeter (Q2 2015 prepared_remarks): 'Revenue in our strategic imperatives, those that address the market trends in data, cloud and engagement, is again up more than 30% in the second quarter. This is an acceleration from roughly 20% growth last year... analytics, where our revenue was up more than 20% in the first half, well above market rates. This is terrific growth on a large revenue base. Recall, we generated $17 billion of analytics revenue last year.' Q4 2013: 'our 2015 objective for business analytics revenue up to $20 billion.'",
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "$17B のアナリティクス収益基盤は IBM がこの領域で圧倒的な規模を持つことを示す。規模優位によりデータ資産の蓄積・専門家の集中（GBS に 20,000 人の digital front office リソース）・ツール統合が可能。クラウド収益も TTM $8.7B に達し急成長",
+        "barrier": "Analytics 事業は $16B（Q4 2013）→$17B（2014）→$20B 目標（2015）という規模ですでに業界最大。金融・医療・製造など特定産業の deep domain knowledge は個社の蓄積であり、参入企業が同等の産業 AI を数年で構築することは困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Martin Schroeter",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "Revenue in our strategic imperatives, those that address the market trends in data, cloud and engagement, is again up more than 30% in the second quarter... analytics, where our revenue was up more than 20% in the first half, well above market rates. This is terrific growth on a large revenue base. Recall, we generated $17 billion of analytics revenue last year."
+        },
+        {
+          "speaker": "Martin Schroeter;Senior Vice President and CFO, Finance and Enterprise Transformation",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "In 2013, we grew business analytics revenue 9%, led by GBS and by Software. This is now nearly a $16 billion business for us, which you'll recall was our original target for 2015. We've already taken our 2015 objective for business analytics revenue up to $20 billion."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": false,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "negative",
+            "reason": "$17B という規模は結果の提示。それを生む GBS の 20,000 リソースという仕組みへの言及はあるが不十分"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "$17B analytics、30%+ strategic imperatives 成長、$8.7B cloud TTM という定量データ"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "エンタープライズ analytics 市場では SAP・Oracle が主要競合だが $17B 規模で一貫して成長しているのは IBM のみ"
+          }
+        ]
+      }
+    },
+    {
+      "id": "IBM-003",
+      "claim_type": "competitive_advantage",
+      "claim": "$143B の IT サービスバックログによる収益の予見可能性とアウトソーシング契約継続性",
+      "evidence": "CFO Martin Schroeter (Q4 2013 prepared_remarks): 'We enter 2014 with a services backlog of $143 billion, and as we said in the past, approximately 70% of revenue in any year is driven by the opening backlog.' Q2 2015: 'We closed 22 deals greater than $100 million, balanced between renewals and new scope or clients. This is the third consecutive quarter of signings growth, and with it, our total backlog was up more than 1% year-to-year.'",
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "IT アウトソーシング契約は平均 5-7 年の長期契約であり、企業のインフラ・プロセスが IBM の GTS/GBS に深く組み込まれることで解約コストが非常に高い。$143B のバックログが年間売上の 70% を決定づけ、収益の予見可能性が他 IT 企業を大幅に上回る",
+        "barrier": "大企業のコアミッションクリティカルなシステム（銀行・製造・政府）を受託している IBM は、切り替えコスト（データ移行・プロセス変更・リスク）が非常に高い。22 件超の $100M+ 大型案件の継続的受注は長期顧客関係の証拠"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Martin Schroeter;Senior Vice President and CFO, Finance and Enterprise Transformation",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "We enter 2014 with a services backlog of $143 billion, and as we said in the past, approximately 70% of revenue in any year is driven by the opening backlog."
+        },
+        {
+          "speaker": "Martin Schroeter",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "We closed 22 deals greater than $100 million, balanced between renewals and new scope or clients. This is the third consecutive quarter of signings growth, and with it, our total backlog was up more than 1% year-to-year."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.6,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "バックログという長期契約の仕組み・年間売上の 70% を決定する構造的メカニズムへの明示的言及"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "$143B バックログ、年間売上カバー 70%、22 件の $100M+ 案件という定量データ"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "Accenture・HP・Infosys は IT サービスを提供するが、IBM の規模（$143B バックログ）と mission-critical な mainframe 統合は代替困難"
+          }
+        ]
+      }
+    },
+    {
+      "id": "IBM-004",
+      "claim_type": "competitive_advantage",
+      "claim": "System z（メインフレーム）の secular strength：銀行・保険・政府の基幹処理を独占し新サイクルで 28% 多い MIPS 出荷",
+      "evidence": "CFO Martin Schroeter (Q4 2013 prepared_remarks): 'Mainframe provides the highest levels of availability, reliability, efficiency and security, which positions it as the ideal platform for high-volume, mission-critical workloads... In the current cycle, we have shipped 28% more MIPS, a measure of capacity, compared to the same period in the prior cycle.' Q2 2015: 'z Systems revenue was up 15%, and through the first half, we grew about 50%... A leading managed service provider in Europe was looking to create a cloud platform for independent software vendors serving financial services clients, they opted for mainframe. This is another new IBM mainframe customer.'",
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "世界の銀行取引の 95%+ が IBM メインフレーム上で処理。移行コストは数十億ドル規模で事実上不可能。z Systems は最高の可用性・信頼性・セキュリティを提供し、代替プラットフォームへの移行はリスクが高すぎて銀行・政府機関は実行しない",
+        "barrier": "メインフレームのアーキテクチャ・OS（z/OS）・ミドルウェア（DB2、CICS）は完全に IBM 独自。同等のシステムを構築するには数十年の技術蓄積が必要。新規メインフレーム顧客の獲得（managed service provider in Europe）も継続中で secular growth を示す"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Martin Schroeter;Senior Vice President and CFO, Finance and Enterprise Transformation",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2013",
+          "quote": "Mainframe provides the highest levels of availability, reliability, efficiency and security, which positions it as the ideal platform for high-volume, mission-critical workloads. In the current cycle, we have shipped 28% more MIPS, a measure of capacity, compared to the same period in the prior cycle."
+        },
+        {
+          "speaker": "Martin Schroeter",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "z System revenue was up 15%, and through the first half, we grew about 50%... a leading managed service provider in Europe was looking to create a cloud platform for independent software vendors serving financial services clients, they opted for mainframe."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": true,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "「最高の可用性・信頼性・セキュリティ」という能力特性への言及。MIPS 出荷量という技術的な仕組みへの言及"
+          },
+          {
+            "rule": "rule04",
+            "direction": "positive",
+            "reason": "現サイクルで 28% 多い MIPS 出荷、Q2 2015 z Systems 売上 +50% という定量データ"
+          },
+          {
+            "rule": "rule07",
+            "direction": "positive",
+            "reason": "メインフレームの競合は存在しない。唯一の代替は x86 distributed computing への migration だが、銀行・政府機関にとってコスト・リスクが高すぎる"
+          },
+          {
+            "rule": "rule06",
+            "direction": "positive",
+            "reason": "メインフレームの顧客ロックインは数十年単位の構造的優位。一時的なリードではない"
+          }
+        ]
+      }
+    },
+    {
+      "id": "IBM-005",
+      "claim_type": "competitive_advantage",
+      "claim": "OpenPOWER コンソーシアムによる POWER アーキテクチャのエコシステム化と HPC・AI 領域での政府採用",
+      "evidence": "CFO Martin Schroeter (Q2 2015 prepared_remarks): 'The U.K. government joined the United States as the second major government to turn to OpenPOWER for its high-performance computing priorities... the United States Department of Energy selected for the Lawrence Livermore and Oak Ridge National Laboratories.' Q4 2013: 'Through our open POWER consortium, we're making POWER technology available to an open development alliance, building an ecosystem around our POWER technologies.'",
+      "power_classification": {
+        "power_type": "network_economies",
+        "benefit": "OpenPOWER コンソーシアムにより POWER アーキテクチャ周辺のエコシステムが形成。米国・英国の最高水準の HPC（スパコン・国防研究）に採用されることでアーキテクチャの信頼性・継続性が担保。中国 Suzhou PowerCore が POWER ライセンスを採用するなど国際的エコシステムの拡大",
+        "barrier": "x86（Intel/AMD）が支配する server 市場への対抗として、政府 HPC という明確な垂直市場での地位を確立。AI/Deep Learning ワークロードへの POWER8 最適化（vs GPU+x86）が企業のクラウド AI インフラ選択に影響"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Martin Schroeter",
+          "role": "Executives",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "The U.K. government joined the United States as the second major government to turn to OpenPOWER for its high-performance computing priorities. The U.K. government will utilize IBM's latest OpenPOWER high-performance computing and Watson-based cognitive technologies."
+        }
+      ],
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+        "results": {
+          "rule01_capability_not_result": true,
+          "rule04_quantitative_evidence": false,
+          "rule06_structural_vs_complementary": true,
+          "rule07_pure_competitor_differentiation": false
+        },
+        "confidence": 0.35,
+        "adjustments": [
+          {
+            "rule": "rule01",
+            "direction": "positive",
+            "reason": "OpenPOWER コンソーシアムという具体的なエコシステム戦略への言及"
+          },
+          {
+            "rule": "rule04",
+            "direction": "negative",
+            "reason": "Power 事業の売上・シェアの具体的な定量データが乏しく、HPC での採用事例のみ"
+          },
+          {
+            "rule": "rule07",
+            "direction": "negative",
+            "reason": "HPC 市場は Intel Xeon + NVIDIA GPU が支配し、POWER は特殊用途に限定される。エコシステムの規模では x86 に大きく劣る"
+          },
+          {
+            "rule": "rule12",
+            "direction": "negative",
+            "reason": "POWER ビジネス全体は売上減少中（Q4 2013 POWER revenue -31%）。政府 HPC 採用は小規模市場であり、全社的な競争優位に転換されているとは言いにくい"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "transcript_count": 7,
+    "quarters_covered": ["Q4 2013", "Q1 2014", "Q2 2014", "Q3 2014", "Q4 2014", "Q1 2015", "Q2 2015"],
+    "primary_transcripts": ["201401_earnings_call.json", "201507_earnings_call.json"],
+    "secondary_transcripts": ["201404_earnings_call.json", "201407_earnings_call.json", "201410_earnings_call.json", "201501_earnings_call.json", "201504_earnings_call.json"]
+  }
+}

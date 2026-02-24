@@ -1,0 +1,298 @@
+{
+  "ticker": "SOL",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": [1, 2, 3, 4, 5],
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Sasol独自GTL（Gas-to-Liquids）商業化技術とORYX GTL（カタール）での90%以上稼働実績による世界唯一の大規模GTL運営能力",
+      "evidence": "ORYX GTL achieved 97% annual utilization for FY2014—all-time record. Sasol is the only company in the world to successfully operate commercial-scale GTL facilities. (FY2014 CEO)",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "GTL技術（Fischer-Tropsch触媒・プロセス蓄積）という能力・仕組みを評価。97%稼働率はプロセス管理能力の定量証拠。「世界唯一」という主張は数十年の技術蓄積という能力を反映"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "97%稼働率（FY2014記録）、90%以上（複数年継続）という定量的裏付けあり。H1 FY2015でも計画外シャットダウンにもかかわらず91%達成"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "Sasolが世界唯一の大規模商業GTL運営者（Shellも一部有だがSasol技術ライセンス受領側）。競合に対する明確な差別化"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "天然ガス豊富地域でのGTL需要（カタール、ウズベキスタン）と技術独占の合致。業界構造との整合性高い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "97%稼働率（記録）という定量的差別化データ。世界唯一という比較可能な事実"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "GTLプロセス能力（触媒・反応器管理・合成ガス精製）という能力の評価。単なる稼働率実績ではなく背後のプロセス蓄積を評価"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "technology_licensing_extension",
+          "adjustment": 0.05,
+          "reasoning": "Uzbekistan GTLでの技術ライセンス供与検討（H1 FY2015）が技術の外部市場検証として機能"
+        },
+        {
+          "source": "oil_price_risk",
+          "adjustment": -0.10,
+          "reasoning": "低油価環境でGTL収益性が低下（FY2015でORYXシェア利益ZAR 1.9B vs FY2014 ZAR 3.5B相当）。GTL経済性は油価に連動する構造的制約"
+        }
+      ],
+      "final_confidence": 0.70,
+      "overall_reasoning": "世界唯一の大規模商業GTL運営能力は数十年の技術蓄積に基づくCornered Resource。97%稼働率（FY2014記録）という定量証拠あり（パターンI-T）。プロセス能力として評価可能（パターンIII-T）。競合不在という業界構造との合致も高い。ただし低油価環境下でGTL収益性が直接影響を受ける構造的制約がある。70%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "GTL技術ライセンス収入新設 × Uzbekistan GTLプロジェクト技術提供 → 中長期的な技術収入多様化（CapEx不要の収益源）",
+      "evidence": "H1 FY2015 CEO: 'For Uzbek GTL, we are considering a business model where Sasol would be licensing our technology, supplying catalysts, and providing technical services—without spending additional capital on the project.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "技術ライセンス→収入という1ステップ接続ではあるが、H1 FY2015時点では「検討中」に過ぎず（'considering a business model'）。具体的契約も収益規模も未確定"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "ライセンスモデルへの移行は戦略的意思決定（ルール8-T：戦略≠優位性）。能力（GTL技術）は認めるが、ライセンス収入CAGR接続は戦略レベル"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "「ライセンスモデルへのシフト」は戦略的決断（パターンF-T）。技術能力は存在するが、ライセンス収入化の実績がない"
+        },
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "技術保有→交渉中→合意→建設→収入という因果チェーンが長く、現時点では交渉段階。実現確度が低い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "early_stage_only",
+          "adjustment": -0.10,
+          "reasoning": "H1 FY2015時点でUzbekistan GTLは「ビジネスモデル検討中」の段階。FY2015での追加言及なし。収益規模・収入時期が不明"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "GTL技術の優位性自体は認めるが、ライセンス収入へのCAGR接続は戦略段階（パターンF-T）。H1 FY2015時点で「検討中」に過ぎず、因果チェーンが長い（パターンC-T）。30%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "南アフリカSasol Synfuels（Secunda）の石炭液化（CTL）統合プラットフォームによる独占的エネルギー供給能力と49%超の営業利益率",
+      "evidence": "FY2014: 'Sasol Synfuels achieved 7.6 million tons—a decade high. Operating margin 49%.' FY2015: 'Secunda Synfuels increased liquid fuels production by 2%. Gross margin decreased only 19% despite 33% oil price drop.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "CTL統合プラットフォーム（採炭→ガス化→合成→精製）という能力・仕組みを評価。49%OPMは単なる結果ではなく、代替不可能なインフラ規模（Scale Economies）の反映"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "49%OPM（FY2014）、7.6M tons（10年ぶり記録）、油価-33%に対しマージン-19%という3層の定量証拠あり"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "SA Synfuels統合プラットフォームは構造的優位性（後発参入者が短期間で複製不可能）。2050年まで操業延長決定が示す規模の深さ"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "南アフリカの液体燃料市場でSecundaが主要供給者（代替なし）という業界構造との合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.10,
+          "reasoning": "49%OPM（FY2014）、油価-33%に対しマージン-19%（FY2015）という定量的差別化。業界他社には真似できない垂直統合の証拠"
+        },
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "SA市場での構造的独占ポジション（代替供給者不在）。Scale Economiesによる高いバリアー"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "oil_price_sensitivity",
+          "adjustment": -0.05,
+          "reasoning": "低油価環境でエネルギー事業のマージンが圧縮される（FY2015: gross margin -19%）。ただし耐性は高い"
+        },
+        {
+          "source": "carbon_regulation_risk",
+          "adjustment": -0.05,
+          "reasoning": "南アフリカのCTL操業は炭素税リスクを抱える（H1 FY2015 CEO言及）。長期的な操業コストリスク"
+        }
+      ],
+      "final_confidence": 0.70,
+      "overall_reasoning": "SA Synfuels CTL統合プラットフォームは代替不可能なScale Economiesの典型例。49%OPMと10年ぶり記録産出は定量的裏付け（パターンI-T）。構造的独占ポジション（パターンIV-T）。低油価耐性も定量的に示されている（-33%油価→-19%マージン）。炭素税リスクと油価連動性を差し引いて70%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "SA Synfuels独占的地位 × 南アフリカ燃料需要増 → エネルギー事業CAGR安定（グループ収益の90%超を支える）",
+      "evidence": "FY2014: 'Southern African energy cluster contributes about 90% of group profitability.' FY2015: 'Gross margin decreased only 19% despite oil price dropping 33%—demonstrating resilience. SA liquid fuel sales 60M+ barrels.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "SA Synfuels独占→グループ収益90%支持という直接的接続（1ステップ）。「90%貢献」は開示済みデータで検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "複数年の決算発表での一貫した言及（primary source）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "SA Synfuels独占→SA市場需要→エネルギー事業CAGR支持という直接的接続（1-2ステップ）"
+        },
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "「グループ収益の90%」という開示済みの定量データで接続が検証可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "oil_price_drag",
+          "adjustment": -0.10,
+          "reasoning": "低油価環境でエネルギー事業収益が圧縮。FY2015でHEPS -17%（油価-33%環境下）。グループ収益90%依存は低油価感応度が高い"
+        },
+        {
+          "source": "rand_dollar_fx_risk",
+          "adjustment": -0.05,
+          "reasoning": "ZAR/USD変動がSA事業収益に影響（10%弱ZAR対比でプラスとマイナス相殺）"
+        }
+      ],
+      "final_confidence": 0.60,
+      "overall_reasoning": "SA Synfuels独占→グループ収益90%という直接的接続は開示データで検証可能（パターンII-T、I-T）。油価-33%でHEPS-17%という耐性データは肯定的。ただしグループ収益の90%がSA Synfuelsに集中しているため、低油価リスクがCAGR見通しを下押し。60%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Business Performance Enhancement Programme（BPEP/Project Phoenix）による持続的コスト削減能力（南アフリカPPI以下のコスト増加率維持）",
+      "evidence": "FY2015 CEO: 'BPEP achieved ZAR 2.5 billion in actual savings—ZAR 1 billion ahead of ZAR 1.5 billion target. Implementation cost ZAR 1.9B (ZAR 200M below plan). Cash fixed costs remained flat in nominal terms.' Management reduced by 61% since 2013.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "BPEPは管理層61%削減・組織設計変更・プロセス改革という「能力・仕組み」。コスト削減の「結果」ではなく、それを可能にする組織変革能力を評価"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "ZAR 2.5B実績（目標ZAR 1.5B超過）、実施費用ZAR 1.9B（計画ZAR 2.1B比節減）、管理層61%削減という多層の定量証拠"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "BPEPは当初は戦略的プログラムだが、3年以上の継続実施と目標超過達成パターンが組織能力の証左。単純な戦略とは区別できる"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "管理層61%削減・2500名分離・10,400サービスプロバイダー削減という具体的プロセス変革の開示。「結果」ではなく「能力（プロセス管理力）」として評価"
+        },
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "目標を毎回超過達成するパターン（ZAR 3B→4B→4.3Bの上方修正 + 実績が目標超過）は高い組織実行力の定量証拠"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "program_sunset_risk",
+          "adjustment": -0.10,
+          "reasoning": "BPEPはFY16で完了予定。FY17以降はインフレ連動（cash fixed costs follow inflation from FY17）。持続的コスト削減能力の構造的定着に疑問"
+        },
+        {
+          "source": "rule_8_t",
+          "adjustment": -0.05,
+          "reasoning": "プログラム型のコスト削減は中長期的には戦略判断に依存。組織能力として定着したか確認が難しい"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "BPEPは3年以上継続し目標を毎回超過達成する組織実行力を示す（パターンIII-T、I-T）。管理層61%削減・実施費用も計画比節減という二重の超過達成は高い能力証拠。ただしFY16完了後にコスト管理能力が構造的に定着するかは不確実（プログラム終了リスク）。50%が妥当"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "30-40": 1,
+      "50-60": 1,
+      "60-70": 1,
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

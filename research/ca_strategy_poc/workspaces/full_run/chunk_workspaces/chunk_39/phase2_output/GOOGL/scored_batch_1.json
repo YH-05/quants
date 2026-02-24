@@ -1,0 +1,101 @@
+{
+  "ticker": "GOOGL",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "YouTube動画広告成長 → ブランド広告主の予算獲得 → 非Search収益CAGR",
+      "descriptive_label": "YouTube→ブランド広告→収益多角化",
+      "scoring_result": {
+        "phase2_confidence": 70,
+        "phase1_confidence": 70,
+        "adjustments_applied": [],
+        "kb1_t_rules_applied": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "kb2_t_pattern": "",
+        "overall_reasoning": "Q4でのYouTubeモバイル収益+100%という定量データ + ブランド広告主獲得という2ステップ因果。CAGR接続として70%が適切"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "プログラマティック広告技術（DoubleClick、Ad Exchange）による広告主・パブリッシャーへのスイッチングコスト",
+      "descriptive_label": "広告技術プラットフォームによるスイッチングコスト",
+      "scoring_result": {
+        "phase2_confidence": 30,
+        "phase1_confidence": 50,
+        "adjustments_applied": [
+          {
+            "reason": "Q4 2013発言（主・①相当）+ Q4 2014で再確認",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（The Trade Desk, Facebook）との比較指標なし",
+            "adjustment": -10
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_6_t",
+          "rule_7_t",
+          "rule_8_t"
+        ],
+        "kb2_t_pattern": "pattern_III_t",
+        "overall_reasoning": "広告技術プラットフォームの構造的スイッチングコストは認められるが、競合比較指標なし。thousands of agenciesは定量的だが競合比との差は不明。50%が適切"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "アドテクプラットフォーム浸透 → プログラマティック移行での既存顧客拡張 → 収益CAGR",
+      "descriptive_label": "アドテク→プログラマティック→収益拡張",
+      "scoring_result": {
+        "phase2_confidence": 50,
+        "phase1_confidence": 50,
+        "adjustments_applied": [],
+        "kb1_t_rules_applied": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "kb2_t_pattern": "",
+        "overall_reasoning": "プログラマティック移行×Googleのアドテク地位は方向性として妥当。接続の定量化なし。50%が適切"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Google のコアサーチ優位性：Knowledge Graph・モバイル対応・多画面シームレスの組み合わせ",
+      "descriptive_label": "マルチスクリーン検索・コア検索品質優位性",
+      "scoring_result": {
+        "phase2_confidence": 10,
+        "phase1_confidence": 30,
+        "adjustments_applied": [
+          {
+            "reason": "定性的表現が多く、定量的裏付けなし",
+            "adjustment": -20
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t"
+        ],
+        "kb2_t_pattern": "pattern_D_t",
+        "overall_reasoning": "Googleのコア検索優位性は実際には非常に強いが、トランスクリプトでの表現が'wonderful products'という定性的な主張に留まり、競合との定量的差別化が示されていない。30%"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Google Search, YouTube, Android, Chrome, Google Maps がそれぞれ10億ユーザー超（2015年Q2時点）",
+      "descriptive_label": "",
+      "scoring_result": {
+        "verdict": "factual",
+        "note": "Factual claim - no confidence score assigned"
+      }
+    }
+  ]
+}

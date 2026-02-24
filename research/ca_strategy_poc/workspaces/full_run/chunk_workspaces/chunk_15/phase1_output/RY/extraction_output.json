@@ -1,0 +1,326 @@
+{
+  "ticker": "RY",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-12-03)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015", "Q2 FY2015", "Q3 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ国内銀行・富裕層向け総合金融サービスにおける圧倒的市場シェアとクロスセル能力",
+      "descriptive_label": "カナダ国内ユニバーサルバンクのスケールとクロスセル力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'we believe we can continue to extend our lead across all our domestic businesses by deepening client relationships through our proven ability to cross-sell more effectively than our peers.' Q&A (CFO): 'our market share has grown over 80 basis points over the past 2 years. And in mutual fund business, we have in excess of 30% share of all mutual funds sold.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "クロスセル「能力」は能力の主張。ただし'cross-sell more effectively than peers'はクロスセル比率等の定量データが欲しい"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "カナダ国内でNo.1ブローカー（Dominion Securities）、投資信託30%超シェアは相対的優位性を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "市場シェア80bp向上、投資信託30%超シェア。具体的数値あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "TD, BMO, Scotia等の純粋競合との具体的クロスセル比率比較は示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "クロスセル比率の定量データなし（'proven ability'は定性主張）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "カナダ最大のユニバーサルバンクとしての規模・ブランド力・インフラは実在する。ただしクロスセル「能力」の具体的証拠（TD等競合比の製品保有数、世帯当たり接点数）が不足。市場シェア数値は結果の側面も強い"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "クロスセル深化 → 世帯当たり収益向上 → NIM以外の手数料収入成長 → EPS CAGR 7%+",
+      "descriptive_label": "クロスセル→手数料収入成長→EPS成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "クロスセル→手数料収入成長の2ステップ。'strong growth in fee-based revenue of 14%'は結果として確認可能。接続の方向性は妥当"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "手数料収入14%成長は確認されており、クロスセル→手数料成長の接続は一定の証拠がある。ただしクロスセル自体の定量メカニズムが弱く、金利環境・市場の影響も大きいため確信度中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "北米資本市場（米国50%超シェア）での機関投資家・企業向けフランチャイズ構築",
+      "descriptive_label": "米国Capital Markets事業の機関投資家フランチャイズ",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Within Capital Markets, our U.S. business now accounts for more than 50% of the segment's revenue or approximately $4.1 billion. For the past 5 years, this business has made considerable investments in people and infrastructure and expanded its corporate client relationships substantially by providing credit.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "'50% of segment revenue'と'record year earnings exceeding $2 billion'は結果。5年間の投資（能力）への言及はあるが、その能力が競合に対して優位な点が具体的でない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative_result",
+            "reasoning": "数値（$4.1B, 50%）は結果の報告"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Goldman Sachs, JP Morgan, Morgan Stanleyといった米国純粋競合との具体的差別化が示されていない"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "'investments in people and infrastructure'、'expanded client relationships'は戦略・結果言語"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "米国投資銀行との純粋競合差別化が不明確: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "米国Capital Markets事業の収益規模は事実だが、Goldman/JPMorganを純粋競合とした場合のRBCの差別化は示されていない。カナダ系銀行としての米国展開は結果報告が主体。dogma.mdルール1（結果≠優位性）に該当"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "ウェルスマネジメントにおけるカナダ長期投資信託シェア30%超とグローバル機関投資家向け拡張",
+      "descriptive_label": "カナダ投資信託1位シェアと機関投資家AUM国際化",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'we have over 30% market share of long-term funds amongst the Canadian banks...today, more than half our assets under management are now from institutional clients. Further, roughly 30% of our institutional assets are from outside of Canada. This is largely due to BlueBay's growth since acquisition, our expanded institutional sales teams in the U.S. and international markets.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "BlueBay買収（能力）とグローバル拡張（結果）の混合。ただし機関投資家向け運用能力の強化という能力面はある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "30%シェア、50%機関投資家比率、30%海外機関という具体的数値。これらは結果だが量的規模感を示す"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "投資信託市場での1位は業界構造（カナダ金融寡占）と合致するが、合致の論理説明が不足"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "カナダ投資信託30%シェアは結果だが、Dominion SecuritiesとBlueBayを中核とした資産運用プラットフォームの構造は一定の持続性がある。ただし純粋競合（TD Asset Management等）との差別化メカニズムが不明"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "投資貯蓄製品市場（信用の3倍成長予測）× RBCシェア優位 → ウェルスマネジメント収益 CAGR加速",
+      "descriptive_label": "投資貯蓄市場3倍成長×シェア1位→ウェルス収益拡大",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "投資貯蓄市場3倍成長（business owner succession需要含む）× RBC首位シェア → 収益成長の2ステップ接続。CEOが'investment and savings products are forecasted to grow 3x faster than credit'と明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "カナダのデモグラフィクス（企業オーナーの世代交代、退職者増加）を背景とした市場構造の変化とRBCのポジションは整合している。3倍成長は外部予測だが、Q4での体系的説明。首位シェアからの不均衡なシェア獲得主張は中程度の説得力"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ中小企業市場でのリーダーシップ（30%市場シェア）とクロスセル・アップグレードパス",
+      "descriptive_label": "中小企業セグメント30%シェアと顧客進化パス",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'In the small business segment where RBC is a leader with over 30% market share. This is an important segment for us as we not only serve the needs of the business, we also provide advice and services to the business owner. Additionally, small business clients are a source of deposits and often grow into commercial accounts over time.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "30%シェアは結果。'grow into commercial accounts'という顧客進化パス（能力）は一定の構造を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "30%シェア、mobile app 20%/月成長。数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "SMB→商業銀行→プライベートバンキングという顧客進化パスは構造的なクロスセルメカニズム"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "SMBセグメントの30%シェアは結果だが、SMBが成長してcommercial→wealthになるという顧客進化パスは構造的なバンドリングメカニズム。ただし競合（TD、Scotia）も同様のサービスモデルを提供しており、相対的差別化が不明確"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "SMB顧客成長（SMB→商業→プライベートバンキング）× 世代交代需要 → 資産管理・投資銀行サービス手数料収入成長",
+      "descriptive_label": "SMB顧客ライフサイクル→複数事業収益化",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "SMB→商業→資産管理への顧客進化パスは3ステップで中程度の間接性"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "'over 45% of businesses are expected to change ownership in the next 5-10 years'という外部データと組み合わせた論理だが、RBC固有のシェア獲得力の証拠が弱い"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 純利益$90億（+8%）、ROE 19%、配当+12%。カナダ投資信託シェア30%超、カナダ中小企業市場シェア30%超、市場シェア+80bp（2年間）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4, 6]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Capital Markets FY2014収益$20億超、米国事業50%超（約$41億）。エネルギーセクター融資：企業融資全体の12-13%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ住宅ローン市場での保守的リスク管理能力と低信用損失率（過去水準に近い27bp）",
+      "descriptive_label": "カナダ住宅ローンの保守的引受力とリスク管理文化",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CRO): 'We continue to see favorable credit trends that remain near historic lows, reflecting our strong risk culture as well as the supportive economic backdrop...provisions in Canadian Banking were $236 million or 27 basis points and remain near historic lows.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CRO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "'strong risk culture'は能力の主張。低信用損失率は結果"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "カナダ大手銀行（TD、BMO、Scotia）はいずれも低信用損失率を誇る。カナダ経済の恩恵が大きく、RBC固有の優位性かが不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "27bp（過去最低水準）は定量データ。ただし競合比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "カナダ大手銀行全般が同様の低損失率（業界共通の恩恵）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "低信用損失率はカナダ経済環境の恩恵が大きく、RBC固有の優位性として認定するには競合比較が必要。dogma.mdルール3（相対的優位性）に課題あり"
+      }
+    }
+  ]
+}

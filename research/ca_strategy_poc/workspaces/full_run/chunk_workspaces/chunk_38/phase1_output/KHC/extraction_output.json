@@ -1,0 +1,196 @@
+{
+  "ticker": "KHC",
+  "transcript_source": "Q2 2015 Bond Holder Update (2015-08-14) — Pre-merger standalone + Q3 2015 post-merger (2015-11-05, post-cutoff)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["Q2_2015_pre_merger"],
+    "poi_t_note": "Q3 2015 (2015-11-05) はPoiT cutoff(2015-09-30)を超過のため除外。Q2 2015（2015-08-14）は合併完了前（7/2）の個別企業ベースのbondholder update。Kraft Heinz Company自体は2015年7月2日に誕生した新会社。Q4 2014相当の統合決算callは存在しない。"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ゼロベース予算（ZBB）・収益管理（Revenue Management）・目標管理（MBO）の3つの系統的な経営ツールによる3G Capital流オーナーシップ文化とコスト規律体制",
+      "descriptive_label": "ZBB+収益管理+MBO統合経営システム（Process Power）",
+      "evidence_from_transcript": "Q2 2015 / Q3 2015 Prepared Remarks (CEO Bernardo Hees): 'We are instituting new rituals and routines that represent the discipline, accountability and methodology... This includes cascading core business practice that will continue to build our competitive advantage like zero-based budgeting, revenue management and manage by objectives.' / 'ZBB is a systematic approach, not a onetime event. It's all about ownership and doing more with less. It drives accountability and encourages our employees to treat company dollars as if they are their own.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "ZBB・収益管理・MBOの3ツールという具体的な仕組みの提示あり。ただし2015年7月に誕生したばかりの会社でKraft側での実証実績が薄い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "ZBBはABInBev・Kraft Heinz・他3G Capital傘下企業に共通の手法。3G Capital固有のノウハウだがKHC固有の構造的優位性かは疑問"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "「ZBBを導入する」は戦略。その背後にある「執行能力・文化変革能力」が優位性だが、Kraft側での導入は開始直後（2015年7月）であり、確立された優位性とは言い難い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_strategy_confusion",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly bondholder update（従・②相当）から。Q4 annual callが存在せず、-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "2015年7月2日合併完了直後の新会社であり、統合プロセスの評価が困難",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "ZBB・MBOは3G Capitalが実証した経営システムだが、Kraft側への適用はPoiT時点で開始直後。Heinz側での実績はあるが、KHC全体としての優位性はまだ未検証"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ZBB・収益管理・製造フットプリント最適化（7工場閉鎖）→ 2017年$1.5Bコスト削減 → EBITDA拡大 → EPS CAGR",
+      "descriptive_label": "ZBB+フットプリント最適化→$1.5B削減→EBITDA→EPS CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ZBB→コスト削減→EBITDA→EPS成長は3ステップ以上の因果チェーン。$1.5Bは2017年目標（検証はPoiT後）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2 bondholder updateからの発言（従・②相当）"
+          }
+        ],
+        "confidence": 25,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly（従・②相当）、-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "$1.5B削減目標は2017年完了見込みで、PoiT（2015年9月）時点では実現前の目標に過ぎない",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "コスト削減目標は明確だが、PoiT時点では統合開始120日の段階で検証不能。Heinz単体では実績があるがKraft Heinz統合としては未検証"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Heinz（ケチャップ・ソース・調味料）とKraft（チーズ・食事・飲料）の補完的グローバルブランドポートフォリオ：$8B超ブランド群と45ヵ国展開",
+      "descriptive_label": "Heinz+Kraft統合ブランドポートフォリオ（Branding / Scale Economies）",
+      "evidence_from_transcript": "Q3 2015 Prepared Remarks (CEO Hees): '$8 billion-plus brands, 5 brands between $500 million and $1 billion in sales and many, many $100 million-plus brands spread across a broad range of categories and geographies... dedicated Kraft Heinz employees in over 45 countries.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「$8B超ブランド」は結果・規模の提示。それを支えるブランド管理能力や消費者接点の優位性の説明が薄い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$8B超ブランドという定量データ。ただし合併直後であり統合シナジーはまだ未実現"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Heinz（グローバル調味料）とKraft（北米食品）の地理・カテゴリ補完性は構造的な組み合わせ価値"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 2015（2015-11-05）はPoiT cutoff（2015-09-30）後のため参照不可。Q2 2015のbondholder update（従・②相当）から-15%調整",
+            "adjustment": -15
+          },
+          {
+            "reason": "合併直後（120日）で統合実績が乏しく、ブランド相乗効果は将来の仮定に過ぎない",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Heinz+Kraftのブランドポートフォリオの潜在価値は大きいが、PoiT時点では合併120日の統合過渡期。Q4 annual callが存在しないため確信度は低い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Heinz欧州事業での2年間の構造改革（SKU削減・フットプリント最適化・価格設定強化）による高マージン基盤構築：EBITDA margin ~30%・20%以上成長",
+      "descriptive_label": "Heinz欧州高マージン運営能力（Process Power）",
+      "evidence_from_transcript": "Q3 2015 Q&A (CEO Hees to analyst): 'we went through also restructure on the portfolio and on the sales in the last couple of years to get us the base and the results... working dollars increasing in Europe... constant currency adjusted EBITDA growth of over 20%.' / (CFO Basílio): 'Europe business in 2014, 9 months would be around the 30-ish percent in terms of margin.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section_type": "answer",
+      "supported_by_facts": [6],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "欧州での2年間の構造改革（SKU削減・フットプリント最適化・価格設定）という能力の実証がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "EBITDA margin ~30%（欧州）、EBITDA成長+20%以上（一定通貨ベース）という定量的裏付けあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ブランド強化+コスト規律の組み合わせは構造的な競争優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_proven_track_record",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 2015（2015-11-05）はPoiT cutoff後のため参照不可。Q2 2015 bond holder updateからの断片的な情報のみ",
+            "adjustment": -15
+          }
+        ],
+        "overall_reasoning": "Heinz欧州の30%マージン・20%超成長は定量的に実証された優位性。ただしQ4 annual callなし・Q3はPoiT後のため確信度は中程度に留まる"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "Kraft Heinz: 2015年7月2日にKraft Foods GroupとH.J. Heinz Holding Corporationが合併して誕生。$8B超ブランド・45ヵ国展開。Q3 2015（pro forma）：売上 -9%（うち通貨 -7%）、adjusted EBITDA一定通貨ベース+4.8%、$1.5Bシナジー（2017年目標）。北米で2,500名削減・7工場閉鎖を決定",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [1, 2, 3]
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Heinz欧州: 定通貨adjusted EBITDA +20%超、EBITDA margin ~30%（9M 2014）。欧州有機売上 +0.5%（価格+ボリューム）。Heinz Yellow Mustard: 米国・カナダで4ヶ月以内に高一桁市場シェア獲得",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": [4]
+    }
+  ]
+}

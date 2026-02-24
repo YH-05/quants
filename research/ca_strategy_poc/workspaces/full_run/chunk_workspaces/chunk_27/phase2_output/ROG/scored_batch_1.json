@@ -1,0 +1,87 @@
+{
+  "ticker": "ROG",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。3ステップ（IO包括パイプライン→複数がん種承認→新規売上）は間接的。",
+      "kb2_pattern": "pattern_C_causal_leap",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンC（因果の飛躍）の懸念あり。IO市場全体の成長が前提で競合との相対シェアが不確定。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価50%を維持。IO市場成長は確実だが競合との相対シェア不確定。パターンC懸念で50%上限。"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "モジュラー型プラットフォームと最広メニューという能力・仕組みを評価。16年連続二桁成長は結果として識別。ビタミンD欧州60%シェア・中国CHF10億超という定量データあり。",
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "kb2_verdict": "positive",
+      "kb2_reasoning": "パターンIII（能力>結果）に合致。診断薬プラットフォームの規模（最広メニュー）と自動化能力は16年継続という長期実証を伴う。Abbott/Siemensとの差別化も具体的。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "Phase 1の評価70%を維持。16年連続二桁成長という長期実績と、プラットフォームのスケール・メニュー幅は構造的優位の証拠として十分。KB2パターンIII適合。"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2ステップ（プラットフォーム規模→新興市場浸透→売上）で検証可能。",
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "kb2_verdict": "positive",
+      "kb2_reasoning": "パターンII（直接的CAGR接続）に合致。中国23%成長・診断薬6%成長という実績データで裏付けられた直接的メカニズム。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "Phase 1の評価70%を維持。2ステップの直接的接続でKB2パターンII適合。中国23%成長という実績で裏付け済み。"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "ADC製造（抗体+リンカー+化学療法薬の結合）という具体的製造能力を評価。CEO自身が『significant competitive advantage』と明言し、製品での実証あり。CHF 800Mの設備投資が規模を示す。",
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "kb2_verdict": "positive",
+      "kb2_reasoning": "パターンIII（能力>結果）に合致。ADC製造ノウハウという模倣困難な能力を具体的に開示。小規模バイオテクが持てない技術蓄積。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "Phase 1の評価70%を維持。ADC製造能力はProcess Powerの典型例（模倣困難な活動システム）。CEO自身による明示的な言及と製品実績で裏付け済み。KB2パターンIII適合。"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2ステップ（CMC能力→ADC差別化→価格プレミアム）で検証可能。",
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "kb2_verdict": "positive",
+      "kb2_reasoning": "パターンII（直接的CAGR接続）に合致。Kadcylaの製造難易度が競合参入障壁となり価格プレミアム維持に直接つながる。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "Phase 1の評価70%を維持。2ステップの直接的接続でKB2パターンII適合。ADCの製造困難性は競合参入を実質阻止し価格プレミアム維持に直接貢献。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"0.5": 1, "0.7": 4},
+    "gatekeeper_applied": false
+  }
+}

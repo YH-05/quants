@@ -1,0 +1,86 @@
+{
+  "ticker": "EL",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "EL-006",
+      "claim": "アジア（特に中国・韓国）でのスキンケア市場における高い市場シェアとブランド認知が、アジア旅行者消費者の主要購入先として機能している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "アジアスキンケアでの高シェアという主張。シェアの背後にあるブランド力を評価"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「高いシェア」は結果（KB2パターンA典型）。背後のブランド力・製品力の説明なし",
+        "rule04_quantitative": "'very, very high'という定性的表現のみ。具体的シェア数値なし",
+        "rule07_pure_competitor": "SK-II（P&G）、Lancôme（L'Oreal）等との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "result_as_cause: 高シェアという結果を競争優位として提示。「very, very high market share」はパターンA-T3（顧客基盤・シェアの提示）の典型",
+        "adjustment": "-30%"
+      },
+      "kb3_calibration": {
+        "reference_case": "MNST#1 (50%): 「シェアはあくまで結果」→50%に留まる。EL-006は数値も不明確→30%が妥当",
+        "final_reasoning": "「very very high」という強調は証拠の弱さを示す。SK-II（P&G）等との具体的比較なし"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "'Our market share in skincare in Asia is very, very high'という発言はパターンA-T3（シェアを優位性として提示）の典型（KB2パターンA適合）。具体的なシェア数値がなく（'very, very high'という曖昧表現）、なぜアジアでシェアが高いのか（製品処方の違い、サービス体制、チャネル整備等）の説明がない（KB1ルール1適合）。Shiseido、SK-II等との競合比較もなし。30%が妥当。"
+    },
+    {
+      "id": "EL-007",
+      "claim": "M.A.C.、GLAMGLOW、Smashboxなどのミレニアル向けブランドポートフォリオが、デジタル・ソーシャルメディアを活用した若年消費者獲得能力を提供している",
+      "power_type": "branding",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "ミレニアル向けブランドという具体的なブランド資産の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「M.A.C.がmillennial market leader」という市場ポジションの主張。具体的ブランド名あり",
+        "rule02_noun_attribute": "「makeup categories with millennials」という領域でのブランド力という名詞的表現",
+        "rule04_quantitative": "「market leaders in many makeup categories」という定性的なリーダーシップ主張。数値なし"
+      },
+      "kb2_evaluation": {
+        "pattern_IV": "structural_market_position: 特定セグメント（ミレニアル）でのリーダーポジション",
+        "pattern_B": "多くの美容企業がミレニアル獲得を強調（業界共通テーマ）",
+        "adjustment": "+0 (ブランド固有性とのバランス)"
+      },
+      "kb3_calibration": {
+        "reference_case": "dogma.md ブランド類型2: M.A.C.のカルト的ブランド認知。NIKEの「デザイン・アーティスト」ブランドに近い側面あり",
+        "final_reasoning": "M.A.C.のミレニアル・メイクアップ市場でのカルト的地位は実在するが定量証拠なし→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "M.A.C.のメイクアップカテゴリでのミレニアル向けブランドとしての地位は業界で広く認知されており（dogma.md ブランド類型2に近い）、GLAMGLOW、Smashboxなどの新興ブランド買収によるポートフォリオ構築も能力として評価できる（dogma.md ブランド類型1: ポートフォリオ運営力）。ただし具体的な市場シェア数値がなく、Urban Decay（L'Oreal）、NYX（L'Oreal）等との比較もない。50%が妥当。"
+    },
+    {
+      "id": "EL-008",
+      "claim": "デジタルマーケティングへの移行（従来の30bpsがTVからデジタルにシフト）とオンライン販売チャネルの強化が、広告費効率を改善しながら消費者エンゲージメントを高めている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "デジタルマーケティング移行という具体的な施策の主張。ただし業界共通テーマ"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "デジタルシフトという行動（戦略）であり、能力の説明ではない",
+        "rule08_strategy": "マーケティングミックスのシフト（TVからデジタル）は戦略的意思決定",
+        "rule07_pure_competitor": "L'Oreal、Coty等との比較なし。美容業界全体でデジタルシフトが進行中"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: 全ての美容企業がデジタルマーケティング強化を主張",
+        "pattern_F": "strategy_confusion: デジタルシフトという意思決定を優位性として提示",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#5 (20%): 業界共通戦略を固有優位として提示。デジタルシフトは美容業界の標準的動き",
+        "final_reasoning": "30bpsという具体的なシフト比率はあるが、競合比較なく業界での先行度も不明"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "30 basis pointsのデジタルシフトという具体的な数値言及はあるが、デジタルマーケティングへの移行は2015年時点で美容業界全体に広がるトレンドであり（KB2パターンB適合）、EL固有の能力ではない。「strategic weapon」という経営陣の表現はあるが、競合と比較したデジタル能力の差別化（例: デジタル広告のROI比較、SNSエンゲージメント率）が示されない（KB2パターンD適合）。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

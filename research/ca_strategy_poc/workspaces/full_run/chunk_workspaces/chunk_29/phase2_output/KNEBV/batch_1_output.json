@@ -1,0 +1,65 @@
+{
+  "ticker": "KNEBV",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "KNEBV-006",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "2014年の財務実績（EBIT14.6%・FCF€368M）は結果の提示",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "EBIT14.6%・FCF€368M・受注残€7B成長はすべて結果"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "財務実績（結果）をビジネスモデルの質（優位性）として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "2014年の記録的財務実績は結果であり優位性ではない（Pattern A、dogma.md ルール1）。EBIT14.6%・FCF€368Mを生み出す仕組みは他のKNEBVクレーム（KNEBV-001～005）で個別に評価されるべき。独立したクレームとしての価値は低い。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "高水準のFCF生成能力は継続成長投資の基盤となるが、それ自体はCAGR成長のメカニズム説明ではない"
+    },
+    {
+      "claim_id": "KNEBV-007",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "南欧での Value-based retention アプローチ（価格競争不参加・販売能力強化）は具体的なプロセス能力の説明",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「価格競争に参加せず、販売能力開発でcompetition balanceを改善する」という具体的なアプローチの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "販売能力は構造的要素だが、南欧での改善は地域的な補完要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "「わずかにネガティブ（2014年）→2013年より大幅改善」という能力の軌跡と具体的なアプローチ"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "「わずかにネガティブのみになった」という改善の方向性の定量的言及"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「強い価格競争に参加しない」という意思決定と「販売能力（セールスセットアップ・コンピテンシー）開発」というアプローチは、単なる戦略ではなく組織的な実行能力の説明。南欧でのcompetition balanceの改善という実績も示されている。dogma.md ルール10（実行しなかった例による裏付け：価格競争不参加）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "価格競争不参加・販売能力強化→保守顧客獲得・維持率改善→保守売上安定成長という接続は理解できるが定量証拠が限定的"
+    }
+  ]
+}

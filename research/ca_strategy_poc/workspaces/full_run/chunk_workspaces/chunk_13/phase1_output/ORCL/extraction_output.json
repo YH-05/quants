@@ -1,0 +1,427 @@
+{
+  "ticker": "ORCL",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-06-17) / Q4 FY2014 Earnings Call (2014-06-19)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015", "Q2 FY2015", "Q3 FY2015", "Q1 FY2016"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Oracleデータベースが競合クラウドSaaS企業（Salesforce、SAP SuccessFactors/Ariba/Concur）の基盤として広く採用されており、競合他社自身がOracle製品に依存しているという技術的ロックイン構造",
+      "descriptive_label": "競合依存型データベース技術ロックイン",
+      "evidence_from_transcript": "Q4 FY2015 Q&A (Larry Ellison発言): 'Salesforce paid us a lot of money for their platform. They buy Exadata from us to run their data center. They buy the Oracle Database...We signed an Oracle Database deal so SAP could run Concur...SAP can run Ariba...SAP could run SuccessFactors. If they're using HANA for anything, I don't know about it.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lawrence Ellison (CTO)",
+      "section": "qa_session",
+      "supported_by_facts": [7],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "競合他社がOracle DBに依存するという「構造的な力」（スイッチングコスト）を評価。競合の採用事実は裏付けになる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "SAP 3社（Concur/Ariba/SuccessFactors）とSalesforce.comの具体名が挙がり、9年契約という定量的言及あり（Q4 FY2014にSalesforceが9年Oracle DB契約）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "競合がOracle DB基盤から移行するにはアーキテクチャ全体の再構築が必要。構造的なスイッチングコスト"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "Workday以外の競合（Salesforce、SAP）が具体名で挙がり、差別化が明確"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "エンタープライズDB市場でのデファクトスタンダードとしてのポジションは市場構造と合致するが、クラウドシフトという構造変化への言及が不完全"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t (特定競合との比較)",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "競合他社自身がOracle DBに依存しているという事実は強力なスイッチングコスト証拠。ただし新規クラウドネイティブ企業（Workday）は非依存であり、完全な独占ではない"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "SaaS/PaaS/IaaSの垂直統合型クラウドスタック（ハードウェア Engineered Systems ＋ OS ＋ Database ＋ Java Middleware ＋ Applications）を一社で提供できる唯一性",
+      "descriptive_label": "垂直統合クラウドスタック独自性",
+      "evidence_from_transcript": "Q4 FY2015 Safra Catz (prepared_remarks→answer): 'We make most of the components for the cloud service ourselves...We are our supply chain. So we buy electricity and buildings. Everything else we make.' / Mark Hurd Q&A: 'when we win a SaaS application, we gain all the hardware, all the operating systems, all the database and all the middleware. When we gain PaaS, we get all the database, all the operating system and all the hardware as well.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Safra Catz (CEO) / Mark Hurd (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「自社でサプライチェーンを完結させる能力」という仕組みを評価。売上成長ではなく構造的能力の説明"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「垂直統合型スタック」「サプライチェーン内製化能力」という名詞で表現可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "競合他社（Salesforce、AWS）は一部レイヤーのみ提供。Oracleのフルスタック内製は構造的差別化"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Salesforce等との比較は示唆されるが、純粋競合（IBM、SAP）に対するコスト優位の定量化が弱い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力の優位性)",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "フルスタック内製は独自の強みだが、「クラウドにおけるコスト優位」への接続が定量的に示されていない。垂直統合モデルは新規クラウドネイティブの競合（AWS、Azure）が現れる中で相対優位性が問われる"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Oracle DatabaseとJava Middlewareがエンタープライズ向けPaaSプラットフォームにおけるデファクトスタンダードとなっており、ISVコミュニティ（基幹システムベンダー）が Oracle PaaS上でクラウド移行するネットワーク効果",
+      "descriptive_label": "ISVエコシステムのデファクト基盤（PaaS）",
+      "evidence_from_transcript": "Q4 FY2014 Larry Ellison Q&A: 'Virtually every ISV runs on top of the Oracle Database. Virtually all of these companies would like to be able to move their offerings to the cloud. We now enable that...This is a net new business for us going forward, moving all these ISVs into the cloud.' / 'Our platform is made up of the Oracle Database...and the world's most popular programming language, Java.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lawrence Ellison (CTO)",
+      "section": "qa_session",
+      "supported_by_facts": [7],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ISVの依存という「構造的ネットワーク効果」を能力として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative",
+            "reasoning": "「virtually every ISV」という表現はあるが、具体的なISV数や依存率の数値化が不十分"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "エンタープライズソフトウェア市場でのデファクト基盤という構造的ポジションは市場構造と合致するが、クラウドシフトによる新規参入（AWS RDS等）との相対優位性説明が不足"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t (業界構造合致)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 FY2014での発言（主・①相当）だが定量的裏付けが弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ISVの依存関係は7 PowersのSwitching Costs + Network Economiesとして有望な主張だが、「virtually every」の具体的数値化がなく、純粋競合（AWS Aurora等）に対する差別化の持続性が不明確"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "クラウドERP市場でWorkdayに対して10倍の顧客規模を持つスケール優位性（Q4 FY2015時点で約1,000顧客 vs Workday）",
+      "descriptive_label": "クラウドERPにおける規模の経済（対Workday比）",
+      "evidence_from_transcript": "Q4 FY2015 Mark Hurd Prepared Remarks: 'Our installed base is now almost 1,100 ERP customers in the cloud, nearly 10x the size of Workday. And let me add, we really never see SAP.' / Larry Ellison: 'We now have over 1,000 Fusion ERP customers, around 10x more than Workday. Mark said that once, I'm going to say it twice, around 10x more than Workday.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Mark Hurd (CEO) / Lawrence Ellison (CTO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warn",
+            "reasoning": "「10倍の顧客数」は結果・実績の側面が強い。この顧客規模を維持できる能力（製品の深さ、カスタマイズ、統合力）の説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "1,100顧客 vs Workdayという定量的比較は明確"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "純粋競合Workdayを明示的に比較対象として挙げ、10倍の差を数値化"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化) / pattern_A_t (結果を原因と取り違え—部分的)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "顧客数は「結果」の側面があり、能力・仕組みの説明が不足（rule_1_t警告）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Workday対比10倍の定量比較は強力だが、その規模を可能にした能力（製品スコープの広さ、既存on-premise顧客からの移行パス）の説明が不十分。50%に留める"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "クラウドサービスの課金成長率がSalesforce（21%）・Workday（31%）を大幅に上回る70%成長（Q4 FY2015 billings growth）を達成した競争力",
+      "descriptive_label": "クラウドbillings成長率での競合超過（Salesforce・Workday対比）",
+      "evidence_from_transcript": "Q4 FY2015 Safra Catz Prepared Remarks: 'billings grew from $468 million in fiscal 2014 fourth quarter to $834 million in this just finished quarter. That's a growth rate of more than 70% in U.S. dollars...this is dramatically faster than Salesforce's 21% billings growth and Workday's 31% billings growth in their most recently reported quarter. In summary, our cloud business is significantly outpacing the competition.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Safra Catz (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "warn",
+            "reasoning": "billings成長率は結果・実績。競合超過成長を可能にした能力（製品ポートフォリオの深さ、営業モデル、既存顧客基盤）への言及が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "70% vs Salesforce 21% vs Workday 31%という定量的競合比較は明確"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "Salesforce・Workdayという純粋競合の具体名と数値比較"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t (結果を原因として提示—部分的) / pattern_I_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "成長率は典型的な「結果」の提示。能力説明なしでは rule_1_t 違反に近い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "競合対比の定量的優位性は示されているが、成長率は「結果」。SaaS切替期の特殊要因（既存on-premise顧客の移行）が含まれており、持続的な競争優位性の証拠として弱い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "既存on-premise顧客（Siebel/EBS等）の保守サポート基盤が高更新率を維持しており、クラウド移行期においても安定した収益を生む高スイッチングコスト",
+      "descriptive_label": "on-premise顧客保守サポートの高スイッチングコスト",
+      "evidence_from_transcript": "Q4 FY2015 Safra Catz Q&A: 'our support base continues to grow...Our renewal rates, by the way, remain extremely high, very, very high, historically high rates. So many of our customers are not necessarily canceling support and moving everything to the cloud overnight.' / 'software support was $18.9 billion, growing 8%' / 'our on-prem base...continues to grow'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Safra Catz (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [8],
+      "cagr_connections": [14],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「高更新率を生み出す構造的スイッチングコスト」（業務深統合・移行コスト）という能力・仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "「historically high rates」という表現はあるが、更新率の具体的数値（例：95%以上）が開示されていない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ERP・Database等のミッションクリティカルシステムに深く統合されているため、切替コストは構造的に高い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力の優位性)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）だが更新率の具体的数値が不在",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "on-premise保守の高スイッチングコストは構造的に妥当だが、数値化が不十分。方向性は認めるが50%に留める"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Salesforce.comはOracleデータベースを9年間使用契約（2013年）、SAP Concur/Ariba/SuccessFactorsはOracle DBを採用",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Oracle Q4 FY2015: 総売上$10.7B（+3%）、Software Support $18.9B（+8%）、Cloud SaaS/PaaS $419M（+34%）、IaaS $160M（+31%）、営業利益率46%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2, 6]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 FY2015時点でOracle Fusion ERPクラウド顧客が約1,100社（Workday ERPクラウド顧客の約10倍）。SaaS bookings成長率200%超（Q4 FY2015）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4, 5]
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "競合クラウドベンダー（Salesforce、SAP等）のOracle DB依存 → Oracle DBのクラウドPaaSへの移行促進 → PaaS ARR成長 → 売上CAGR押し上げ",
+      "descriptive_label": "競合依存型DBロックイン→PaaS成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "競合依存→自社PaaS移行への接続は3段階以上（依存→顧客がクラウド移行→Oracle PaaS選択→ARR増加）。中間ステップに不確実性"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンが3段階以上で飛躍的。競合がOracle DBからクラウド移行する際にOracle PaaS（而非AWS）を選ぶ保証がない"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "垂直統合型クラウドスタック → クラウド運営コスト優位 → マージン改善 → EPS成長によるCAGR下支え",
+      "descriptive_label": "垂直統合→クラウドマージン優位→EPS成長経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "垂直統合→限界コスト低下→マージン改善は2ステップで直接的。SaaS/PaaSは「as profitable as license」との発言で数値の方向性は支持される"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "方向性は妥当だが、実際のコスト優位がどの程度クラウド競合（AWS、Azure）対比で出るかの定量化が不在。条件付きで50%"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "ISVエコシステム依存 → PaaS採用 → ARR成長（FY2016 $1.5B-$2B ARR見通し）→ 売上CAGR +2-3%寄与",
+      "descriptive_label": "ISV依存→PaaS ARR成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ISV→PaaS選択→ARR成長は2ステップ。FY2016 ARR $1.5B-$2B見通しという数値で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ARR成長見通しで検証可能性あり。ただしISVがAWS等代替PaaSを選択するリスクがあり、完全な必然性ではない"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "クラウドERP顧客基盤（1,100社）→ クロスセル/アップセル（HCM、Supply Chain等）→ ARPU拡大 → 売上CAGR下支え",
+      "descriptive_label": "ERPクラウド顧客基盤→クロスセルAARU拡大経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ERP顧客→クロスセルは2ステップだが、実際のクロスセル率や ARPU拡大の数値が開示されていない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "方向性は妥当。ERP基盤顧客へのスイート展開はSaaS企業の標準的成長モデルだが、ARPU数値の開示なしで50%"
+      }
+    },
+    {
+      "id": 14,
+      "claim_type": "cagr_connection",
+      "claim": "on-premise保守高更新率 → Software Support $18.9B（+8%）の安定成長継続 → 収益ベースの下支えによるCAGR安定化",
+      "descriptive_label": "保守サポート高更新率→安定収益CAGR下支え経路",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "高更新率→保守収益+8%成長は1ステップで直接的。過去実績と一致"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "保守収益の安定性は検証可能で、Q4発言で数値裏付けあり。クラウド移行でいずれ減少するリスクはあるが、cutoff_date 2015-09-30時点では高更新率を維持"
+      }
+    }
+  ]
+}

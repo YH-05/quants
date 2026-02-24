@@ -1,0 +1,335 @@
+{
+  "ticker": "MMM",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-27)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_FY2014", "Q2_FY2014", "Q3_FY2014", "Q1_FY2015", "Q2_FY2015"]
+  },
+  "claims": [
+    {
+      "id": "MMM-001",
+      "claim_type": "competitive_advantage",
+      "claim": "技術革新に基づく価格設定力（Technology-Driven Pricing Power）",
+      "descriptive_label": "技術革新による価格プレミアム維持能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'Selling prices continue to be supported by technology innovation, which is a key fundamental strength of the company and helps drive unique customer solutions and an increasing flow of new products.' (2015-01-27, Nicholas Gangestad)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Nicholas Gangestad (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MMM-010"],
+      "cagr_connections": ["MMM-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_D_t",
+            "adjustment": -0.1,
+            "reasoning": "定量的裏付けに乏しい。純粋競合（Honeywell, Emerson, Danaher等）に対する差別化の具体的説明がなく、業界共通の「技術革新が価格を支える」という言説に近い"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。テクノロジー起点の価格設定能力は方向性として認めるが、競合と比べた差別化の証拠（例：NPS差、ASP成長率の比較等）がなく、能力の仕組みの説明も不十分。50%留まり"
+      }
+    },
+    {
+      "id": "MMM-002",
+      "claim_type": "competitive_advantage",
+      "claim": "ポートフォリオ管理・再編能力（Portfolio Management Capability）",
+      "descriptive_label": "6セクターから5事業グループへの再編実行能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'Since 2012, we have realigned our portfolio from 6 sectors to 5 business groups and from 40 businesses to 27. In 2014, we combined businesses within 3 of our business groups... All in, we invested $90 million in 2014 in portfolio actions to position us for greater future success.' (2015-01-27, Inge Thulin)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Inge Thulin (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MMM-010"],
+      "cagr_connections": ["MMM-012"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_8_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_F_t",
+            "adjustment": -0.1,
+            "reasoning": "ポートフォリオ再編は戦略的意思決定（ルール8）。再編実行の背後にある管理能力（統合プロセス、基準、規律）の説明が不足。$90M投資という数値はあるが、能力の証明にはならない"
+          }
+        ],
+        "overall_reasoning": "Q4でのポートフォリオ再編の実績は事実として評価できるが、それを可能にした能力（選定基準、統合ノウハウ、見送り規律等）の説明がない。CHD#1（買収選定能力70%）との対比で、プロセス・基準の開示が不十分。50%"
+      }
+    },
+    {
+      "id": "MMM-003",
+      "claim_type": "competitive_advantage",
+      "claim": "100,000件以上の特許資産とR&D投資による技術的壁（IP Moat）",
+      "descriptive_label": "100,000件超の累積特許ポートフォリオ",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: '3M also earned more than 3,000 patents in 2014. In our history, we have now earned more than 100,000 patents globally.' (2015-01-27, Inge Thulin)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Inge Thulin (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MMM-010"],
+      "cagr_connections": ["MMM-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_7_t": false,
+          "rule_11_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "100,000件という数値は印象的だが、競合（Honeywell、Emerson等）との比較がなく、特許の質（活用率・ライセンス収入・製品への組み込み率）が不明"
+          }
+        ],
+        "overall_reasoning": "100,000件の特許は定量的に示されているが純粋競合との比較がない。また特許数は結果であり、それを生み出す研究プロセスや知識の累積構造が優位性。New Product Vitality Index 32-33%という補強データは存在するが、競合比較が不明。50%"
+      }
+    },
+    {
+      "id": "MMM-004",
+      "claim_type": "competitive_advantage",
+      "claim": "多角化事業ポートフォリオによる地理・セクター横断的な有機成長（Diversification-Driven Resilience）",
+      "descriptive_label": "5事業グループ×全地域での均衡的有機成長能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'For the sixth consecutive quarter, we posted organic growth everywhere, in all business groups and in all geographic areas... Our team is clearly capable of executing in tough environments.' (2015-01-27, Inge Thulin)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Inge Thulin (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MMM-009"],
+      "cagr_connections": ["MMM-013"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_3_t": false,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.2,
+            "reasoning": "「6四半期連続での全事業・全地域での有機成長」は結果の列挙。それを可能にした能力（商業化力、組織実行力）の説明がない。ルール1違反"
+          }
+        ],
+        "overall_reasoning": "多角化による成長の継続は結果であり優位性ではない（ルール1）。また「全事業・全地域で成長」という主張は業界大手に共通する言説（ルール3）。30%"
+      }
+    },
+    {
+      "id": "MMM-005",
+      "claim_type": "competitive_advantage",
+      "claim": "ヘルスケア事業の強固な市場ポジションと高マージン構造（Healthcare High-Margin Position）",
+      "descriptive_label": "ヘルスケア部門の31%オペレーティングマージン維持能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'Health Care delivered another very good quarter, with sales of $1.4 billion and organic growth of over 6%... Operating income was $431 million, and margins remained strong at 31%.' (2015-01-27, Nicholas Gangestad)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Nicholas Gangestad (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MMM-009"],
+      "cagr_connections": ["MMM-012"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.2,
+            "reasoning": "31%マージンは結果。感染防止・慢性疾患ケア・HIS等の各セグメントで競合（J&J Medical、Medtronic等）に対する差別化の具体的説明がなく、マージン維持を可能にする能力の開示なし"
+          }
+        ],
+        "overall_reasoning": "31%という高マージンは結果の数値であり優位性ではない（ルール1）。14四半期連続の二桁成長という記述は既存市場での実績だが、純粋競合（J&J、Medtronic）との比較や能力の説明がない。30%"
+      }
+    },
+    {
+      "id": "MMM-006",
+      "claim_type": "competitive_advantage",
+      "claim": "国内製造・地域自給自足モデルによる為替リスク軽減能力（Domestic Manufacturing Hedge）",
+      "descriptive_label": "地域別製造基盤による為替ヘッジ構造",
+      "evidence_from_transcript": "Q4 2014 Q&A（CEO発言）: 'One important thing is to just recognize the investments that we have done over years under the umbrella of domestic demand and domestic manufacturing, which is helping you a lot relative to issues like this... 3M never left United States. We stayed here.' (2015-01-27, Inge Thulin)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Inge Thulin (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": ["MMM-010"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "地域製造モデルは構造的な優位性の候補。しかし地域自給率の具体的数値がなく（「1/3以上は米国」という断片的情報のみ）、競合との比較も不明"
+          }
+        ],
+        "overall_reasoning": "Q4 Q&Aでの発言。地域製造基盤による為替リスク軽減は構造的な特性として認めるが、定量的裏付け（地域自給率、競合比較）がない。CFOの説明（50%ヘッジ戦略）と組み合わせると実力感は出るが、能力自体の競合比較がなく50%"
+      }
+    },
+    {
+      "id": "MMM-007",
+      "claim_type": "competitive_advantage",
+      "claim": "設計・仕様取込型（Design & Spec-in）ビジネスモデルの競争優位",
+      "descriptive_label": "製品プラットフォームへの仕様取込による顧客ロックイン",
+      "evidence_from_transcript": "Q4 2014 Q&A（CEO発言）: 'On design and spec-in businesses, where you provide technology innovation that is coming on platforms, that's a big advantage for us. Because the technology is there. And in most cases we are able to produce locally.' (2015-01-27, Inge Thulin)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Inge Thulin (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": ["MMM-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false,
+          "rule_11_t": false
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "Design & Spec-inは7 Powersのスイッチングコスト・プロセスパワーに近い概念。仕様取込による交換コストの高さは構造的優位性の候補だが、競合（Henkel、Avery Dennison等）との具体的比較がない"
+          }
+        ],
+        "overall_reasoning": "Q4 Q&Aでの発言。Design & Spec-inモデルはスイッチングコストを生む構造的優位性の候補として方向性は認める。ただし具体的な定量指標（スイッチング発生率、プラットフォーム採用率等）や競合名による比較がなく50%"
+      }
+    },
+    {
+      "id": "MMM-008",
+      "claim_type": "competitive_advantage",
+      "claim": "消耗品（Consumables）事業における反復購買・顧客粘着性",
+      "descriptive_label": "製造現場向け消耗品の反復需要による顧客粘着",
+      "evidence_from_transcript": "Q4 2014 Q&A（CEO発言）: 'We have one that I will describe as a design and spec-in business and then you have one on consumables. Where you're using our products in your manufacturing operation and so forth.' (2015-01-27, Inge Thulin); Q2 2014: adhesives and tape grew 8% in US (2014-07-24)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Inge Thulin (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": ["MMM-010"],
+      "cagr_connections": ["MMM-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false,
+          "rule_11_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_D_t",
+            "adjustment": -0.2,
+            "reasoning": "消耗品の反復購買は事業モデルの記述に過ぎず、具体的な顧客粘着の仕組み（スイッチングコスト、ロイヤルティデータ）が説明されていない。接着剤・テープ等での競合（Henkel、Loctite）との比較もなし"
+          }
+        ],
+        "overall_reasoning": "消耗品事業の存在自体は事実だが、粘着性の高さを示す指標（顧客維持率、チャーンレート、リオーダー比率等）がない。競合との比較もなく、業界共通の言説に近い。30%"
+      }
+    },
+    {
+      "id": "MMM-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014通期売上$32B（記録的）、EPS $7.49（+11.5%）、ROIC 22%（目標20%超達成）、フリーキャッシュフロー転換率104%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["MMM-004", "MMM-005"]
+    },
+    {
+      "id": "MMM-010",
+      "claim_type": "factual_claim",
+      "claim": "R&D支出$1.8B（2014年）、特許取得数3,000件超（2014年）、累積特許100,000件超、新製品活力指数（NVPI）32-33%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["MMM-001", "MMM-002", "MMM-003", "MMM-006"]
+    },
+    {
+      "id": "MMM-011",
+      "claim_type": "cagr_connection",
+      "claim": "技術イノベーション能力 → 設計取込・消耗品の継続需要 → 有機成長3-6%（2015年ガイダンス）",
+      "descriptive_label": "技術力→有機成長メカニズム",
+      "source_advantage": "MMM-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "rule_5_t",
+            "adjustment": 0.0,
+            "reasoning": "技術→設計取込→顧客需要→有機成長は3ステップ以上の因果チェーン。各ステップの検証可能性が低く、ルール5の直接的メカニズム要件を満たさない"
+          }
+        ],
+        "overall_reasoning": "Q4でのガイダンス（3-6%成長）はあるが、技術力から有機成長への因果チェーンが間接的。有機成長の構成要素（Price vs Volume）の開示はあるが、技術起点の寄与を分離できない。50%"
+      }
+    },
+    {
+      "id": "MMM-012",
+      "claim_type": "cagr_connection",
+      "claim": "ポートフォリオ管理・再編能力 → 生産性・規模の効率化 → EPS成長9-11%（中期目標）",
+      "descriptive_label": "ポートフォリオ再編→EPS成長経路",
+      "source_advantage": "MMM-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "rule_5_t",
+            "adjustment": -0.1,
+            "reasoning": "ポートフォリオ再編→生産性→EPS成長は因果チェーンが不明確。再編コスト$90Mは開示されているがROIの検証可能性が低い"
+          }
+        ],
+        "overall_reasoning": "中期EPS目標（9-11%）は開示されており、2014実績11.5%達成という事実はある。しかしポートフォリオ管理能力からEPS成長への直接的な接続メカニズムが弱い。30%"
+      }
+    },
+    {
+      "id": "MMM-013",
+      "claim_type": "cagr_connection",
+      "claim": "地域分散・多角化事業構造 → 外部環境変動への耐性 → 安定的な有機成長継続",
+      "descriptive_label": "多角化→成長継続性メカニズム",
+      "source_advantage": "MMM-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。多角化による成長安定性は方向性として認めるが、多角化効果の定量化（相関係数、セグメント間の業績分散等）がなく、接続メカニズムが間接的。50%"
+      }
+    }
+  ]
+}

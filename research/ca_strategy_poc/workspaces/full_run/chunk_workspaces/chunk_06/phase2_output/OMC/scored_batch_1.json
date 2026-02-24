@@ -1,0 +1,75 @@
+{
+  "ticker": "OMC",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "OMC-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Omnicomは2004年〜2014年の累計10年間で純利益100億ドルに対し、配当・自社株買いで108億ドル（累計還元率108%）を株主に還元。Invested Capital Return 20.3%・ROE 34.3%は業界最高水準の資本効率を示す。",
+      "descriptive_label": "10年累計還元率108%・ROIC20.3%・ROE34.3%の資本効率",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "ROIC 20.3%・ROE 34.3%・累計還元108%という強力な定量的実績（rule04 quantitative）。広告エージェンシーの低資本集約的ビジネスモデル（仕組みの一側面, rule06 structural）。10年という長期トラックレコード（rule04 quantitative長期）。ただし競合（WPP ROIC等）との比較なし（rule07 insufficient）。ROIC・ROE等の財務指標は結果の数値（rule01 concern部分）。「業界最高水準」という自己主張の外部検証なし（rule07 partial）。50%。",
+      "kb1_flags": ["rule01_capability_not_result"],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "高ROIC・低資本集約ビジネス→FCF創出→還元→EPS CAGR（rule05 direct部分）。還元108%という定量的メカニズム。ただし広告業界の成長率自体がCAGRの限界。50%。"
+    },
+    {
+      "id": "OMC-007",
+      "claim_type": "competitive_advantage",
+      "claim": "Omnicomの専門ヘルスケア事業（PR・スペシャルティ）は北米・英国で強い成長を見せ、スペシャルティコミュニケーション全体で9.4%増。ヘルスケアという規制の厳しいニッチ市場での専門性が参入障壁を形成している。",
+      "descriptive_label": "ヘルスケア専門コミュニケーション事業の9.4%高成長",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.3,
+      "scoring_rationale": "9.4%成長は定量データ（rule04 partial）。ヘルスケア規制による参入障壁は業界構造（rule11 partial pass）。ただしヘルスケア専門エージェンシー（Publicis Healthcare等）との比較なし（rule07 insufficient）。「規制の厳しいニッチ」は業界共通要因（pattern_B_industry_common）でありOMC固有の優位性説明が乏しい。dogma.md「業界構造による優位性は却下方向」。30%。",
+      "kb1_flags": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_B_industry_common",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "ヘルスケア専門性→成長ニッチシェア→Specialty Communications CAGR（rule05 indirect）。全社CAGR貢献としては小規模。40%。"
+    },
+    {
+      "id": "OMC-008",
+      "claim_type": "factual_claim",
+      "claim": "FY2014通年：総売上153億ドル（+5%）、有機成長5.7%、EBITDA 20.5億ドル（+4.3%）、EBITA利益率13.4%、EPS $4.23（+10.2%）、FCF 15.8億ドル（+8.6%）。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "OMC-009",
+      "claim_type": "factual_claim",
+      "claim": "2014年Q4：有機成長5.9%（北米+8.3%、英国+6.2%）、FX影響-3.1%、EPS $1.30（+10.2%）、EBITDA 6億900万ドル（+3.5%）、EBITA利益率13.8%。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "OMC-010",
+      "claim_type": "cagr_connection",
+      "claim": "BBDO 9年連続最優秀エージェンシー・OMDメディアエージェンシー・オブ・ザ・イヤーというブランドリーダーシップは優秀タレントの採用・保持力を高め、それがクリエイティブ品質→新規受注→有機成長5〜6%維持という好循環を生み出し、長期的なEPS成長（10%/年）を支える。",
+      "descriptive_label": "ブランド→タレント→クリエイティブ品質→受注→有機成長5-6%→EPS CAGR",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "ブランド→タレント→クリエイティブ→受注→有機成長5-6%→EPS CAGR（rule05 indirect, 4ステップ）。9年実績で持続性証明済み。Q4発言（rule12 primary）。EPS+10.2%という実績で検証済み。ただし因果チェーンが長い（pattern_C_causal_leap）。60%。"
+    }
+  ]
+}

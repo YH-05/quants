@@ -1,0 +1,277 @@
+{
+  "ticker": "ABBV",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-30)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "HUMIRAの複数適応症展開能力（リウマチ・消化器・皮膚科の3大カテゴリーで二桁市場成長を牽引、8年間で年$1B超成長継続）",
+      "descriptive_label": "HUMIRA多適応症展開・市場浸透能力（Branding × Switching Costs）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Richard Gonzalez): 'HUMIRA has averaged well over $1 billion of growth per year over the past 8 years. For 2015, we expect HUMIRA to once again be an important contributor to our robust performance with mid-teens global operational growth expected.' And CFO Bill Chase: 'In the U.S., HUMIRA sales increased 15.8%, reflecting continued strong prescription trends and double-digit market growth across all 3 major categories: rheum, gastro and derm.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "HUMIRAの複数適応症展開能力（リウマチ・消化器・皮膚科）は製品の科学的柔軟性と商業的展開力という能力として評価できる。「8年間で年$1B超成長」は継続的能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "年間$12.5B超（+18.9% operational）、8年連続年$1B以上成長、3カテゴリーで二桁市場成長という明確な定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "自己免疫疾患市場ではMOAへの患者依存性が高く、一度投与された患者は継続使用。医師の処方慣習（Switching Costs）が強固"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "自己免疫疾患市場は患者の生涯治療が一般的。バイオシミラーへの移行には医師・患者・保険会社の合意が必要という市場構造上の障壁と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。8年連続年$1B超成長という長期実績と3カテゴリー二桁成長が複合的に示す強力な主張",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "HUMIRAの多適応症展開は製薬業界でのBranding + Switching Costsの典型。8年間年$1B超成長という長期実績は能力の存在を明確に示す。ただしバイオシミラーリスクが将来の不確実性を内包。70%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年HUMIRA: グローバル売上$12.5B超（+18.9% operational）。米国+15.8%（リウマチ・消化器・皮膚科で二桁市場成長）。全社売上+7% operational。調整後EPS +6%。グロスマージン81.2%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "HUMIRA mid-teens成長 + VIEKIRA HCV $3B run rate + パイプライン（HS/uveitis/oncology） → EPS +28-34%成長（2015年）",
+      "descriptive_label": "HUMIRA持続成長+VIEKIRA立上げ+パイプライン→EPS高成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "HUMIRA mid-teens + VIEKIRA $3B run rate + グロスマージン+100bps → Operating margin 40% → EPS $4.25-4.45の直接的な経路"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2015年ガイダンス$4.25-4.45（+28-34%）として具体化"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "HUMIRA成長継続とVIEKIRA立上げの組み合わせによるEPS高成長は財務的に具体的に示されており信頼性が高い。FXリスクは内部ヘッジで一部緩和。70%が妥当"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "VIEKIRAによる競合規制（HCV市場でのペイヤー排他契約・フォーミュラリー確保能力）",
+      "descriptive_label": "HCVペイヤー排他契約確保能力（Counter-Positioning）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Richard Gonzalez): 'A significant number of payer contracts have been completed in the U.S. with more than half the managed care lives in the U.S. now under contract...more than 40% of the covered lives will have access to VIEKIRA PAK, including both the exclusive and parity positions we have secured. More than 20% of the lives will be in an exclusive position.' And: 'we applied a standard managed care contracting approach with each account, basing our contracting terms upon 4 key tenets, including: the volume of managed care lives, the level of formulary control, the term of the contract and patient access within the system.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ペイヤーとの排他契約確保は商業的能力（仕組み）として評価できる。4テナントベースのアプローチという具体的な交渉能力"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "strong",
+            "reasoning": "Gilead（HARVONI）との直接競合。排他20%超・パリティ合計40%超というシェア確保は、新参者がいかに有利なポジションを得たかを示す競合比較"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "20%超排他（Express Scripts含む）、40%超でアクセス、5億人超のManaged Care lives under contractという定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。具体的な排他契約比率（20%超）と総アクセス比率（40%超）が明示されており、立上げ段階としては強力な証拠",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "HCVペイヤー排他契約確保はGileadとの競合環境でのCounter-Positioningとして評価できる。ただし市場参入後間もない時点での評価であり、Merck参入後の価格競争リスクが介在。60%が妥当"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "VIEKIRA: 米国排他20%超（Express Scripts等）、パリティ含む40%超のManaged Care accessを確保。1,100処方箋（2015年1月16日まで）。年末2015年run rate $3B超見込み。2015年末時点価格：$48M（Q4 2014在庫積上げ）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "40以上の臨床開発プログラムを持つ広範なパイプライン構築能力（腫瘍・HCV・免疫学にわたる新薬開発能力）",
+      "descriptive_label": "多様な専門領域にわたる医薬品パイプライン構築能力（Cornered Resource）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Richard Gonzalez): 'We have a rich and broad pipeline with more than 40 clinical development programs underway spanning large and growing specialty categories. Our portfolio is comprised of assets that have the potential to deliver compelling clinical performance, patient benefits and economic value. Many of these products have the opportunity to generate multibillion-dollar peak year sales.' And: 'We have significant R&D efforts in place to advance the standard of care in each of our areas of immunology leadership'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "「40以上のパイプライン」は結果の一面もある。パイプライン構築能力の具体的な仕組み（どのようにR&Dを効率化しているか）の説明が限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "40以上のプログラム、ABT-199・elagolix・veliparibなど複数のPhase IIb/IIIプログラムが具体的に言及。ただし成功率・ROIの定量データなし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "競合製薬会社との比較なし。「40以上のプログラム」が業界水準対比で優れているかどうか不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし定性的主張（「rich and broad」）が中心で定量的競合比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "パイプライン規模は製薬会社の将来価値創造の基盤だが、「40以上のプログラム」という数字の質（成功確率）が不明。定性的主張の域を出ず40%が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "パイプライン: 40以上の臨床プログラム。主要プログラム: ABT-199（CLL Phase III）、elagolix（子宮内膜症Phase IIIデータ陽性）、ZINBRYTA（MS Phase III完了・申請準備中、45%再発率低下）、veliparib（がんPhase III 4試験進行中）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Synthroidブランドの後発薬競合に対する耐性（市場参入後も強いブランドロイヤルティ維持、14%成長継続）",
+      "descriptive_label": "Synthroidブランド後発薬耐性・市場ロイヤルティ（Branding）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO Bill Chase): 'U.S. sales of Synthroid were $186 million in the quarter with full year sales of $709 million, up nearly 14%. Synthroid maintains strong brand loyalty and market leadership despite the entry of generics into the market many years ago.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "後発薬市場参入後も「Synthroid」ブランドへの患者・医師ロイヤルティが維持されている状況は、Branding優位性の能力として評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$709M（+14%）という後発薬参入後の成長実績は定量的な証拠"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "「despite entry of generics...many years ago」という競合比較が明示。一般的に後発薬参入後はブランド品が大幅に減少するが、14%成長という例外的な実績"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "甲状腺ホルモン補充療法（レボチロキシン）市場では投与量微調整の重要性から医師が「ブランド品を変えない」という処方慣行が形成されている業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。後発薬参入後も14%成長という定量データと競合比較（後発薬存在にもかかわらず）が明示されており、Brandingの典型的な強力な証拠",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Synthroidのブランドロイヤルティは後発薬競合という最も厳しい競争環境での実証事例。甲状腺薬の投与量微調整の医療的必要性（吸収率のわずかな差が問題になる）という業界構造が背景。70%が妥当"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Creon膵臓酵素市場70%シェア維持・新規処方の大多数獲得能力",
+      "descriptive_label": "Creon膵臓酵素市場支配力（Switching Costs × Branding）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO Bill Chase): 'U.S. Creon sales were $151 million with full year sales of $516 million, up 25.3% versus 2013. Creon maintained its leadership position in the pancreatic enzyme market with roughly 70% share, and we continue to capture the vast majority of new prescription starts.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "70%市場シェアと新規処方の「大多数」獲得能力は製品・商業力の組み合わせとして評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$516M（+25.3%）、70%市場シェア、新規処方「vast majority」という定量・定性データ。ただし「vast majority」の具体的比率なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "膵外分泌不全（嚢胞性線維症・慢性膵炎）は生涯治療が必要な疾患。患者が既存治療から切り替えるリスクを取らない傾向が強い市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。70%シェアと+25.3%成長という定量データが明確。膵酵素市場でのリーダーシップは医師処方慣習（Switching Costs）で保護されている",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Creonの70%シェアはSwitching CostsとBrandingの複合優位性。膵外分泌不全の慢性治療特性が患者・医師の切替えを抑制。+25.3%成長がダイナミックな市場シェア拡大も示す。70%が妥当"
+      }
+    }
+  ]
+}

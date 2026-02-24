@@ -1,0 +1,137 @@
+{
+  "ticker": "GILD",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "GILD-001",
+      "claim": "Sovaldi/Harvoniによる「C型肝炎の機能的治癒」という前例のない治療効果（SVR率95%以上）が、ペイヤーへの交渉力と患者・医師の強い採用意欲をもたらしている",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "SVR率95%+という具体的な効果指標。治癒という前例のない差別化"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「機能的治癒という治療効果」（能力・製品特性）→「交渉力・採用意欲」（結果）という因果方向",
+        "rule04_quantitative": "SVR率95%以上という定量データ（ただし証拠引用では明示されていないが業界知識として実在）。'real world data matches or is better than clinical data'という定性的言及",
+        "rule11_industry_structure": "HCV治療市場での機能的治癒という業界構造変化との合致"
+      },
+      "kb2_evaluation": {
+        "pattern_I": "quantitative_differentiation: 95%+という治癒率は競合の標準的治療（IFN療法）と比較して圧倒的差別化",
+        "pattern_III": "capability_over_result: 治療効果（能力・製品特性）→市場採用・交渉力（結果）",
+        "adjustment": "+20% (圧倒的治療効果の差別化)"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#2 (90%): 業界構造×企業ポジションの合致。GILDのHCV治療もCounter-Positioning（競合が追随困難な技術的優位）として90%も可能",
+        "final_reasoning": "SVR率95%+は業界で突出した治療効果。AbbVieのViekirax（当時の競合）と比較しても明確な優位。'real world data'の蓄積が証拠を強化→70%"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "Sovaldi/Harvoniの機能的治癒能力はHCV治療市場でのCounter-Positioning（既存治療との圧倒的差別化）として実在する競争優位性（KB2パターンI、III適合、KB1ルール11適合）。'real world data matches or even is better than clinical data'という実臨床での有効性確認が能力の裏付けを強化。ペイヤーへの交渉力という因果チェーンも明確。AbbVie（Viekirax）との競合が存在するため90%には届かないが、70%が妥当。"
+    },
+    {
+      "id": "GILD-002",
+      "claim": "米国商業保険の96%のカバード・ライフとの契約締結により、Harvoniは83%のアクセス（排他的またはパリティ）を確保しており、広範な処方可能性が市場浸透を支えている",
+      "power_type": "network_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "96%カバード・ライフ、83%アクセスという非常に具体的な定量データ"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「保険カバレッジ確保」（仕組み・能力）→「市場浸透」（結果）という因果方向",
+        "rule04_quantitative": "96%カバード・ライフ、83%アクセスという非常に具体的な数値。+20%評価向上",
+        "rule11_industry_structure": "米国医療保険制度でのフォーミュラリー交渉は医薬品市場の構造的重要要素"
+      },
+      "kb2_evaluation": {
+        "pattern_I": "quantitative_differentiation: 96%/83%という明確な定量データによる市場アクセスの差別化",
+        "pattern_II": "direct_cagr_mechanism: 広範なアクセス→処方可能性→市場浸透という直接的メカニズム",
+        "adjustment": "+20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "dogma.md ルール5: CAGR接続は直接的メカニズムと検証可能性。96%/83%は開示データで検証可能→70%",
+        "final_reasoning": "非常に高い定量的なアクセス指標は実際の市場ポジションを示す強力な証拠"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "「96%のカバード・ライフと合意、Harvoniに83%のアクセス（排他的またはパリティ）」という非常に具体的な定量データは強力な証拠（KB1ルール4適合、KB2パターンI適合）。広範なフォーミュラリーアクセスが処方可能性と市場浸透を直接的に支えるというメカニズムも明確（KB2パターンII適合）。AbbVie（Viekirax）との比較でこのアクセス比率がどの程度優れているかの説明があれば90%も可能。70%が妥当。"
+    },
+    {
+      "id": "GILD-003",
+      "claim": "HCV治療薬のウェーブ3・4パイプライン（次世代製品）への継続投資により、既存の「Harvoni→次世代」への移行先を内部で確保し、競合（AbbVie等）による既存製品の侵食を先んじてヘッジする研究開発能力を持っている",
+      "power_type": "cornered_resource",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "「wave 3 and wave 4 products」への言及。自己カニバリゼーションを先取りする戦略"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "研究開発能力（能力）→次世代パイプライン（結果/資産）という因果方向",
+        "rule04_quantitative": "「wave 3 and wave 4」という段階的記述はあるが具体的な治験段階・投資額なし",
+        "rule08_strategy": "自己カニバリゼーション戦略は経営判断に近い面もある"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "大手製薬会社はいずれも次世代パイプラインへの投資を行う",
+        "pattern_III": "capability_over_result: R&D能力（能力）→次世代製品（結果）",
+        "adjustment": "-10% (業界共通のパイプライン投資)"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY feedback: R&Dパイプラインは50%程度の評価。「wave 3 and wave 4」という具体的な段階表現はGILD固有の差別化示唆",
+        "final_reasoning": "HCV特化の次世代パイプライン（Wave 3/4）は実在するが、証拠の具体性が低い→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "HCV治療薬のwave 3/4パイプラインは概念的に評価できるが、具体的な化合物名・治験段階・投資額が示されていない（KB1ルール4不足）。大手製薬会社はいずれも次世代パイプラインへの投資を行い（KB2パターンB適合）、GILDのパイプラインの相対的な優位が不明。ただしHCV特化という集中投資戦略は業界での特異性を持つ。50%が妥当。"
+    },
+    {
+      "id": "GILD-004",
+      "claim": "TAF（テノホビル・アラフェナミド）の優れた安全性プロファイル（TDF比）が、長期HIV治療患者の骨・腎臓への副作用を低減し、医師・患者双方に強い切替動機を提供している",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "TDF比較という具体的な競合比較。骨・腎臓副作用低減という定性的差別化"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "TAFの安全性プロファイル（能力・製品特性）→切替動機（結果）という因果方向",
+        "rule04_quantitative": "「superior safety profile compared to TDF」という比較はあるが数値的な差異なし（当時はフェーズ3段階）",
+        "rule07_pure_competitor": "TDF（Gilead自身の旧製品）との比較。外部競合（AbbVie等）との比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_V": "specific_competitor_comparison: TDFとの具体的な比較（GILDの旧製品との自己比較）",
+        "pattern_III": "capability_over_result: 安全性プロファイル（能力）→切替動機（結果）",
+        "adjustment": "+10% (具体的な比較)"
+      },
+      "kb3_calibration": {
+        "reference_case": "EOG-001 (70%): 定量データ（$65/$95）あり。TAF-TDF比較は定性的→50-70%",
+        "final_reasoning": "「superior safety profile compared to TDF」は具体的だが数値化されていない。将来の切替動機は期待値。50-70%の範囲"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "TAFのTDF比での安全性優位（骨・腎臓副作用低減）は具体的な競合比較（旧製品との比較）として評価できる（KB2パターンV適合）。「most newly diagnosed patients will now be treated for decades」という長期治療の必要性認識が安全性優位の持続的価値を示す。ただし安全性差の定量データ（比較試験結果）が引用されていない（KB1ルール4不足）。既存HIV治療患者の世代交代需要という業界構造との合致（KB1ルール11適合）。70%が妥当。"
+    },
+    {
+      "id": "GILD-005",
+      "claim": "GileadのHIV治療シングルタブレットレジメン（STR）のバックボーンとしての地位が、新HCV薬や将来の抗ウイルス薬のコンビネーション療法への組み込みを通じて「治療の基幹」としてのポジションを維持している",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "STRバックボーンという構造的ポジションの主張。コンビネーション療法への組み込み"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「STRのバックボーンとしての地位」（構造的ポジション）は能力より保有地位に近い",
+        "rule04_quantitative": "「increased sales of newer HIV STRs」という成長言及のみ。シェアデータなし",
+        "rule11_industry_structure": "HIV治療でのSTR採用は業界構造として実在。コンビネーション療法の標準化"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "「increased sales」という結果を優位性として提示する面あり",
+        "pattern_IV": "structural_market_position: HIV STRバックボーンとしての構造的ポジション",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "GILD-001 (70%): Sovaldi/Harvoniの圧倒的治療効果と比較すると、STRバックボーンは相対的に弱い主張",
+        "final_reasoning": "「Sofosbuvir still has a lot of value in subpopulation and in use with other agents」という言及は具体的だが、バックボーンとしての地位の持続性の説明が弱い→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "HIV STRバックボーンとしての地位は構造的なポジションとして評価できる（KB2パターンIV部分適合）。コンビネーション療法への組み込み（Daclatasvir、sofosbuvir等との併用）は実在する活用。ただし「increased sales of newer HIV STRs」は結果の提示（KB2パターンA適合）であり、競合（BMS等）との比較でGILDのSTRがバックボーンとして選ばれる理由の説明が不十分。50%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

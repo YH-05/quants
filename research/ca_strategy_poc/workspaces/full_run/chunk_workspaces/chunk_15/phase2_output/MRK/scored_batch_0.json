@@ -1,0 +1,131 @@
+{
+  "ticker": "MRK",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "KEYTRUDA（Pembrolizumab）のPD-1阻害剤先行認可（米国初承認）による免疫腫瘍学フランチャイズの先行者優位",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "rule_partials": ["rule_7_t"]
+      },
+      "kb2_t_pattern": "pattern_II_t",
+      "confidence": 60,
+      "confidence_breakdown": {
+        "base": 70,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": -10,
+        "final": 60
+      },
+      "score": 0.60,
+      "rationale": "米国初PD-1認可（能力）という具体的差別化事実（KB1-T ルール1パス）。KEYNOTE-001 ORR 21% vs 4%・PFS ハザード比0.57という強力な定量臨床データ（KB1-T ルール4パス）。腫瘍免疫療法パラダイムシフトとの整合（KB1-T ルール11パス）。KB2-T パターンII-T（直接的CAGR接続）。ただし2015年以降BMS Opdivo（Nivolumab）との競合激化が確実で独占的地位でない（競合比較調整-10%）"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "KEYTRUDA承認拡大（肺癌→6腫瘍型）× 免疫腫瘍学市場爆発的成長 → Oncology事業 major CAGR driver",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_12_t"],
+        "rule_partials": ["rule_5_t"]
+      },
+      "kb2_t_pattern": null,
+      "confidence": 40,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 40
+      },
+      "score": 0.40,
+      "rationale": "CAGR接続中程度。6腫瘍型への適応拡大→対象患者拡大→収益成長の接続論理はあるが、NSCLC申請が2015年中期以降で収益化が2016+（不確実性あり、-10%調整）。Q4 KEYTRUDA売上$50Mのみでガイダンスなし。BMS Opdivoとの競合激化で市場シェアの確保が不透明。3+ステップで確信度低め"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "JANUVIA（DPP-4阻害剤）の75%市場シェアと先発医薬品ブランド力による安定収益基盤",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_3_t", "rule_4_t"],
+        "rule_partials": ["rule_1_t"]
+      },
+      "kb2_t_pattern": "pattern_I_t",
+      "confidence": 40,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 40
+      },
+      "score": 0.40,
+      "rationale": "JANUVIA 75%シェアは相対的優位の定量証拠（KB1-T ルール3・4パス）。$1.7Bの規模は確認済み。KB2-T パターンI-T（定量的差別化）。ただし75%シェアは「結果」で、それを守る能力説明が「increased focus and investments」という戦略言語（KB1-T ルール1部分）。特許クリフ（2022年米国満了）への対応説明なし（持続可能性懸念-10%調整）。AZ・LLY競合との技術的優位性の説明が不足"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "JANUVIA 75%シェア × DPP-4クラス成長 × 新興市場展開（中国+14%）→ 安定成長収益基盤維持",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_12_t"],
+        "rule_partials": ["rule_5_t"]
+      },
+      "kb2_t_pattern": null,
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "CAGR接続中程度。JANUVIA+6%（Q4）・中国+14%という実績数値あり（KB1-T ルール12パス）。DPP-4クラス成長×JANUVIA 75%シェアの乗数接続（ルール5部分パス）。ただし2015年以降SGLT-2（Jardiance等）の台頭によるクラス競合増大と日本価格改定影響が織り込み不足。安定成長（4-6%）という控えめなCAGRへの接続で確信度中程度"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "ワクチンポートフォリオ（GARDASIL、ZOSTAVAX、PneumoVAX）によるリーダーシップと定期接種市場での長期収益安定性",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_4_t"],
+        "rule_partials": ["rule_1_t", "rule_7_t"]
+      },
+      "kb2_t_pattern": "pattern_I_t",
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "MRKワクチン$5.7B（+4%）という規模は定量確認済み（KB1-T ルール4パス）（KB2-T パターンI-T）。GARDASIL 9への移行は技術的能力の証拠（ルール1部分）。GARDASIL市場での独占的地位は強みだが、他ワクチン（ZOSTAVAX等）でGSK・Pfizer・Sanofiとの競合が多い（ルール7部分）。ワクチン製造プロセスパワーの説明が不足しているため確信度中程度"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "high_0.7_plus": 0,
+      "medium_0.5_to_0.69": 3,
+      "low_below_0.5": 2
+    }
+  }
+}

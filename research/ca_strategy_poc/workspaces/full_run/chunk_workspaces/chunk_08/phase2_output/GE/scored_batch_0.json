@@ -1,0 +1,188 @@
+{
+  "ticker": "GE",
+  "scored_claims": [
+    {
+      "id": "GE_001",
+      "claim_type": "competitive_advantage",
+      "claim": "GE の多角化コングロマリット構造：多様な産業セグメントが相互補完し、景気変動リスクを分散しながら9%有機成長を達成。",
+      "evidence": "Our diverse and integrated model worked for investors in the quarter... Industrial segment revenues were up 6% reported and up 9% organically.",
+      "rule_evaluation": {"applied_rules": ["rule01", "rule07"], "results": {"rule01": true, "rule07": false}, "confidence": 0.4, "adjustments": ["rule07: 多角化による安定性の定量的証拠が不足"]},
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "コングロマリット構造自体は競争優位として近年疑問視されている"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "多角化は大型産業企業の一般的特性"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "多角化安定性は認識できるが GE の積極的なポートフォリオ絞り込み（GE Capital 縮小）が「多角化優位」の将来性を制限する逆説あり。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_002",
+      "claim_type": "competitive_advantage",
+      "claim": "GE の産業部門マージン拡大能力：7%有機成長下で50bpのマージン拡大達成。成長投資しながらコスト効率を改善する Process Power。",
+      "evidence": "Industrial segment profits grew by 10%, driven by 7% organic growth and 50 basis points of margin expansion... Industrial EPS up 23%.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule07"], "results": {"rule03": true, "rule07": true}, "confidence": 0.5, "adjustments": ["rule03: 7%有機成長+50bp マージン拡大という定量的かつ同時達成"]},
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "成長とマージン改善の同時達成は Process Power の証拠"},
+        {"source": "pattern_G_unclear_vs_pure_competitor", "adjustment": -0.05, "reasoning": "Siemens、Honeywell との比較なし"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule07", "pass": true}],
+      "kb2_patterns": [{"pattern": "pattern_G_unclear_vs_pure_competitor", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "成長とマージン改善の同時達成は実行力の証拠だが競合比較なしでは GE 固有の Process Power の証明として不完全。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO and CFO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_003",
+      "claim_type": "competitive_advantage",
+      "claim": "GE Aviation のエンジン・サービス独占的地位：航空エンジンの記録的バックログとスペアパーツ（+37%）成長は長期サービス契約に基づく Cornered Resource。",
+      "evidence": "Aviation orders grew by 15% and may end the year with a record backlog. Aviation commercial spares grew by 37% in the quarter.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule07"], "results": {"rule03": true, "rule07": true}, "confidence": 0.6, "adjustments": ["rule03: スペアパーツ+37%成長という定量的証拠", "rule07: 航空エンジンのデュオポリー市場"]},
+      "final_confidence": 0.65,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "スペアパーツ+37%成長は市場シェアと長期契約の証拠"},
+        {"source": "pattern_V_specific_competitor_comparison", "adjustment": 0.0, "reasoning": "GE/CFM vs. P&W のデュオポリー構造は業界知識から認識可能"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule07", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "航空エンジンは典型的な Cornered Resource（デュオポリー + 長期LTSA）。スペアパーツ+37%成長は高粘着性サービス収益の強力な証拠。",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_004",
+      "claim_type": "competitive_advantage",
+      "claim": "GE の長期サービスバックログによる Switching Costs：サービス収益+10%とバックログ$17B増加は長期サービス契約の高粘着性。",
+      "evidence": "Services up 6% in the quarter and 10% for the year, grew backlog by $17 billion year-over-year. Total backlog expanded to a new record.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule04"], "results": {"rule03": true, "rule04": true}, "confidence": 0.6, "adjustments": []},
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "$17B のバックログ増加と10%サービス成長は Switching Costs の定量的証拠"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "産業機器（タービン・エンジン）のサービス市場では設備製造者が圧倒的優位。$17B バックログ増加は長期契約の粘着性を定量的に証明。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 2014 CEO and CFO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_005",
+      "claim_type": "competitive_advantage",
+      "claim": "GE Transportation の Tier4 ロコモティブ技術優位：環境規制（Tier4）適合機関車で記録的受注（1,355台）。",
+      "evidence": "Our success with the Tier 4 locomotive continues. We took 1,355 orders in 2014 and are positioned for record shipments in 2015.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule07"], "results": {"rule03": true, "rule07": true}, "confidence": 0.5, "adjustments": []},
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "1,355台という具体的受注数"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "Tier4 技術で先行優位を持つが EMD（Caterpillar）との2社競争。記録的受注は技術先行の証拠として評価できる。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_006",
+      "claim_type": "competitive_advantage",
+      "claim": "GE Power & Water の H型タービン受注と Alstom 統合によるエネルギーセクターのスケール強化。",
+      "evidence": "We have 15 H orders with another 30 technical selections... Alstom should be a financial and strategic driver.",
+      "rule_evaluation": {"applied_rules": ["rule06", "rule03"], "results": {"rule06": false, "rule03": true}, "confidence": 0.4, "adjustments": ["rule06: Alstom 統合は未完了（2015年予定）"]},
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_F_future_dependent", "adjustment": -0.1, "reasoning": "Alstom 統合効果は将来的な見込み"},
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "H型タービン15受注+30技術選定という定量データ"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule06", "pass": false}, {"rule": "rule03", "pass": true}],
+      "kb2_patterns": [{"pattern": "pattern_F_future_dependent", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "H型タービンは次世代製品として重要だが受注数はまだ限定的。Alstom 効果は未確定。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_007",
+      "claim_type": "cagr_connection",
+      "claim": "サービスバックログ拡大→収益 CAGR：高粘着性の長期サービス契約バックログが毎年積み上がることで産業部門収益の持続的CAGRを支える。",
+      "evidence": "Services up 10% for the year, backlog grew by $17 billion year-over-year... Industrial segment profits grew 10%, organic growth 7%, margins expanded 50 bps.",
+      "rule_evaluation": {"applied_rules": ["rule05", "rule03"], "results": {"rule05": true, "rule03": true}, "confidence": 0.5, "adjustments": []},
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "バックログ$17B増加という定量的CAGR根拠"},
+        {"source": "pattern_E_capex_as_moat", "adjustment": -0.05, "reasoning": "Oil & Gas 逆風（$500-600M FX影響）が全体CAGR達成を脅かす"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}, {"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "サービスバックログの積み上がりは安定的なCAGRの根拠として最も強力だが Oil & Gas・FX 逆風が短期的不確実性を生む。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 2014 CEO and CFO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_008",
+      "claim_type": "cagr_connection",
+      "claim": "多角化ポートフォリオ→安定的利益 CAGR：8事業中3事業が未達でも全体で計画達成（+10%）できる分散効果が、予測可能な産業部門 EPS CAGR を実現。",
+      "evidence": "Out of 8 industrial businesses, 3 beat their plan, 3 met their plan and 2 missed their plan, but together, we did what we set out to do, growing core earnings by 10%.",
+      "rule_evaluation": {"applied_rules": ["rule05", "rule04"], "results": {"rule05": true, "rule04": true}, "confidence": 0.4, "adjustments": []},
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.05, "reasoning": "ポートフォリオ効果による結果（計画達成）を将来CAGRの根拠として使用"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [{"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "8事業ポートフォリオの分散効果は実証済みだが、GE の戦略的絞り込み方向（GE Capital縮小）と多角化優位の方向性が矛盾。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "GE Q4 2014 実績: 営業 EPS $0.56 (+6%)、産業 EPS +23%、受注+3%（有機+5%）、産業 CFOA $7.2B (+64%)",
+      "evidence": "Operating EPS was $0.56, up 6% led by industrial EPS, which grew by 23%. Orders grew by 3%, organically 5%. Industrial CFOA was $7.2 billion, up 64%.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO and CFO prepared remarks (2015-01-23)"]
+    },
+    {
+      "id": "GE_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "GE FY2014 通期実績: 産業部門利益+10%（有機+7%、マージン+50bp）、CFOA $15.2B、FCF $11.2B (+6%)",
+      "evidence": "Industrial segment profits grew by 10%, driven by 7% organic growth and 50 basis points of margin expansion. CFOA at $15.2 billion. Free cash flow was $11.2 billion, up 6%.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO and CFO prepared remarks (2015-01-23)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "GE",
+    "scored_count": 10,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.4": 3,
+      "0.5": 2,
+      "0.6": 2,
+      "0.65": 1,
+      "0.9": 2
+    }
+  }
+}

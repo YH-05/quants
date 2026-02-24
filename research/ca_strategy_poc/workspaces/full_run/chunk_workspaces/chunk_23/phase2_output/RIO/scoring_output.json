@@ -1,0 +1,230 @@
+{
+  "ticker": "RIO",
+  "company_name": "Rio Tinto Group",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Pilbara iron ore事業の業界最低水準の生産コスト（C1 cash cost FY2014 $19.50/t、H1 2015 $16.20/t）と、60%超のFOB EBITDAマージン（H1 2014: 66%、H1 2015: 60%+）",
+      "descriptive_label": "Pilbara iron ore業界最低コスト・最高マージン（Scale Economies + Process Power）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "生産規模・地質条件・専用インフラに基づく構造的コスト優位は能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "C1 cash cost $16.20/t（H1 2015）・$19.50/t（FY2014）・FOB EBITDA margin 60-66%が継続的に開示"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "Pilbara地質・規模・専用インフラが構造的コスト優位を生む。鉄鉱石価格$62/tに対してC1 $16/tという圧倒的スプレッド"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "鉄鉱石価格2014年-30%でもearnings -8%に留まった実績。BHP Billitonとも対比されPilbara混合品は業界標準"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的差別化（C1 $16.20/t、FOB EBITDA 60%超）"},
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "高マージン維持：価格-30%でもearnings -8%という実績が能力を証明"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "C1コスト$16-19/t対鉄鉱石スポット$62-95/tという圧倒的な価格スプレッドは定量的に検証済み。FY2014年次・H1 2014中間でともに60%超のFOB EBITDAマージン確認。価格サイクル耐久性の実証性が高い。FY2013・FY2014年次（主・①）。70%維持"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Pilbara業界最低コスト→鉄鉱石価格下落局面での高マージン維持→競合が利益圧迫を受ける中での安定キャッシュフロー→株主還元",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "低コスト→マージン維持→FCFの接続はFY2014実績（価格-30%→earnings -8%）で実証済み。算術的に明快"},
+        {"rule_id": "rule_12_t", "result": true, "reasoning": "FY2013・FY2014年次決算（主・①）での繰り返し発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的CAGRメカニズム（低コスト→価格サイクル耐久性→FCF安定）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "価格-30%でもearnings -8%という実績がFY2014で確認済み。$14.3B operating CFと$2B buyback発表により因果チェーンの実証性が高い。70%維持"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Pilbara鉄鉱石向け専用鉄道・港湾インフラ（360Mtpa化に向けた独占的インフラ）による、第三者アクセス不能なサプライチェーン最適化能力",
+      "descriptive_label": "Pilbara専用インフラ独占（Cornered Resource + Counter-Positioning）",
+      "final_confidence": 0.6,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "専用インフラ所有・運営能力は構造的能力として評価可能"},
+        {"rule_id": "rule_3_t", "result": true, "reasoning": "「uniquely, amongst Australian operators, we own and we have sole access to port and rail infrastructure」という直接的な競合差別化言及"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "新規参入者が同等インフラを構築するには数十億ドル・数十年が必要。構造的参入障壁"},
+        {"rule_id": "rule_7_t", "result": true, "reasoning": "「uniquely amongst Australian operators」という明示的競合比較あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（インフラ構築の参入障壁）×企業ポジション（唯一の自社所有）"},
+        {"pattern_id": "pattern_V_t", "matched": true, "adjustment": 0.0, "reasoning": "「uniquely amongst Australian operators」による具体的競合比較"}
+      ],
+      "confidence_adjustments": [
+        {"source": "H1 2014（中間期・②）", "adjustment": -0.1, "reasoning": "H1 2014中間期（従・②相当）での発言で-10%調整"}
+      ],
+      "overall_reasoning": "専用rail/port独占は「uniquely amongst Australian operators」という直接的な競合差別化言及あり。構造的参入障壁は高い。ただし中間期発言で-10%調整。BHPも独自インフラを持つため絶対的優位ではなく相対的優位。60%"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "専用インフラ独占→ネットワーク最適化・自動化（autonomous rail）→生産性向上・コスト継続低下→Pilbara 360Mtpa低資本強度成長",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "インフラ独占→最適化→コスト低下の2ステップは論理的。360Mtpa拡張を$120-130/t資本強度（従来計画比$3B節減）で実現という定量実績"},
+        {"rule_id": "rule_12_t", "result": false, "reasoning": "H1 2014（中間期・従・②相当）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": true, "adjustment": 0.0, "reasoning": "直接的接続：インフラ独占→最適化→コスト低下"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "専用インフラ→コスト低下の接続は合理的。360Mtpa拡張$3B節減という定量実績が接続を支持。ただし中間期発言。自動化rail効果の定量的裏付けは将来見込み。50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Pilbara Blend iron ore製品の業界標準化（スポット販売でPlatts 62%指数プレミアムを継続達成）と、中国製鉄所の高品位原料需要増加による優位性強化",
+      "descriptive_label": "Pilbara Blend製品プレミアム（Branding + Switching Costs）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "製品設計・ブレンド最適化・マーケティング能力は能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "スポット販売でPlatts 62%プレミアム達成との言及はあるがプレミアムの具体的$/t数値は非開示"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "製品標準化は切替コストを生む。中国製鉄所が長年使用するPilbara Blendへの依存は構造的"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_D_t", "matched": true, "adjustment": -0.1, "reasoning": "プレミアムの定量的開示なし。「業界標準」は定性的表現"},
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "市場シェア（Pilbara Blend 70%のポートフォリオ）という数値は提示"}
+      ],
+      "confidence_adjustments": [
+        {"source": "H1 2014（中間期・②）", "adjustment": -0.1, "reasoning": "H1 2014中間期（従・②相当）での発言で-10%調整"}
+      ],
+      "overall_reasoning": "Pilbara Blendが中国製鉄所の標準的投入原料として確立という言及は強力だが、プレミアムの定量的開示がない。中間期発言で-10%調整。40%"
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Pilbara Blend業界標準化→中国製鉄所の高品位化需要増加×環境規制→スポットプレミアム継続→実現単価優位",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": false, "reasoning": "製品標準化→プレミアム価格の2ステップ。外部要因（中国環境規制）への依存が高く独自の因果接続としては弱い"},
+        {"rule_id": "rule_12_t", "result": false, "reasoning": "H1 2014（中間期・従・②相当）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "環境規制という外部要因依存の因果チェーン。定量的裏付けなし"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "プレミアムの定量的裏付けなし。外部要因（中国環境規制）への依存度が高く、独立した競争優位とは断定しがたい。中間期発言でさらに減点。30%"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "組織全体に浸透した継続的コスト削減文化（2012年比$4.8B削減）と、技術革新・自動化（自動運転トラック・autonomous rail）による将来的コスト低下能力",
+      "descriptive_label": "組織的コスト削減能力と自動化技術（Process Power）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "「acting like owners」文化・自動運転トラック（世界初商業規模）は能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "$4.8B累計削減（vs 2012）、目標20%超過達成、6ヶ月前倒しという具体的実績データ。H1 2015: $641M削減（通期目標$1Bに引き上げ）"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "自動運転トラック・autonomous railは世界初の商業規模実用化。模倣に時間とコストを要する"},
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "「コスト削減文化」は戦略として表現されており能力と戦略の境界が曖昧な側面あり"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的実績（$4.8B累計削減・目標20%超過・6ヶ月前倒し）"},
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "技術的差別化（世界初自動運転トラック商業規模）"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "$4.8B削減（目標20%超過、6ヶ月前倒し）という定量的実績と、世界初自動運転トラック商業運用という技術的差別化の組み合わせ。4年間のトランスクリプトを通じた継続的確認が信頼性を高める。FY2013・FY2014年次（主・①）。70%維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "アルミニウム事業における80%の電解槽が第1四分位コスト水準（Kitimat近代化完了後）と、水力発電（80%が低コスト水力電力）による持続的コスト優位",
+      "descriptive_label": "アルミ電解コスト第1四分位（Scale Economies + Process Power）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "電解槽の選択・配置・水力電力調達能力は構造的能力として評価可能"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "「80% of businesses in first cost quartile」という具体的なコスト分位置データ。H1 2015でも再確認"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "水力電力前提のアルミ製錬コスト構造は地理的・歴史的資産に基づき模倣困難"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "業界コストカーブ第1四分位の言及はあるが競合他社名（Alcoa・Norsk Hydro等）との直接比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的コスト分位置（80%が第1四分位）"}
+      ],
+      "confidence_adjustments": [
+        {"source": "alumina loss", "adjustment": -0.1, "reasoning": "alumina refinery の損失（FY2014 -$200M）がアルミ事業全体の評価を複雑にする"}
+      ],
+      "overall_reasoning": "80%が第1コスト四分位という具体的位置づけは明確だが、alumina refineryの損失（FY2014 -$200M）がアルミ事業全体の評価を複雑にしている。FY2014年次（主・①）での発言。-10%調整後40%"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "アルミ80%第1四分位コスト→LME価格回復時の利益拡大感応度（LME+10%→$444M earnings impact）→将来的収益成長",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "低コスト→価格回復時利益拡大の接続は概念的に成立。LME+10%=$444Mの定量的感応度開示あり"},
+        {"rule_id": "rule_12_t", "result": false, "reasoning": "H1 2014（中間期・従・②相当）での発言"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_C_t", "matched": true, "adjustment": -0.1, "reasoning": "LME価格回復のタイミングが不確実。外部要因依存の因果チェーン"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "感応度$444M/10%LMEは具体的だが、LME価格回復のタイミングが不確実。アルミna損失が事業全体の評価を下げる。中間期発言。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 9,
+    "confidence_distribution": {
+      "30-40": 3,
+      "40-50": 2,
+      "50-60": 1,
+      "60-70": 1,
+      "70-80": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

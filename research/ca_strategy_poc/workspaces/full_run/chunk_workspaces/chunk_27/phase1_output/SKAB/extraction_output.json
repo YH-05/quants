@@ -1,0 +1,325 @@
+{
+  "ticker": "SKAB",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-02-07) / Q4 FY2014 Earnings Call (2015-02-12)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 (May)", "Q2 (Jul/Aug)", "Q3 (Nov)"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "建設×不動産開発のシナジーモデルによる内製開発案件創出能力（売上12%を内部プロジェクトが占める）",
+      "descriptive_label": "建設×開発シナジーモデル",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Johan Karlstrom): 'we have now 12% of the revenue coming in internal projects created from the cash flow in the Construction operation. So the positive cash flow we have in Construction used in project development, plunk it into new projects that we own ourselves...it's a very important part of our model.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Johan Karlstrom",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "建設CFを開発投資に再投下するシナジーモデルという組織的な仕組みとして評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "売上12%を内部シナジープロジェクトが占めるという定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "建設会社と不動産開発の統合的シナジーモデルは同業の純粋建設会社（ACS、Vinci等）が持ちえない構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "純粋建設会社（Vinci、ACS等）は不動産開発のバランスシートを持たず、同等のシナジーを実現できない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4での体系的説明と12%という定量的裏付け",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "建設CFから不動産開発へのシナジーモデルは、Skanskaが同業の純粋建設会社に対して持つ構造的差別化。12%という定量的規模感も評価できる"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "建設×開発シナジー → 商業開発（CD）の規模拡大 → 高マージン開発利益でEPS成長を牽引",
+      "descriptive_label": "建設シナジー→CD拡大→高マージン利益",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（シナジーモデル→CD規模拡大→高マージン開発利益）。FY2014 CD利益SEK 23億が実証"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "FY2014年 CD利益SEK 23億（記録的水準）で直接的なCAGR接続が実証されている"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "米国建設・開発市場でのフットプリント拡大と大型インフラ・PPPプロジェクト受注能力",
+      "descriptive_label": "米国市場での大型インフラ・PPP受注能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Johan Karlstrom): 'USA Civil, there is exactly the same situation as we had the last quarter. A lot of projects out in the market on the infrastructure side, big ones, and several of them are with a PPP model, which is something that we are interested in.' And Q4 FY2014 (Peter Wallin): 'USA Civil, 6.4% is still a very good margin...we have said for quite some times that between 6% and 7% is what you should expect this business to produce.' And: 'biggest one was a Metro project in California...health care sector...3 out of the 6 projects'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Johan Karlstrom / Peter Wallin",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "大型インフラ・PPPプロジェクトの設計・施工・ファイナンス能力（能力・仕組み）として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "USA Civil 6-7%マージン、2014年受注book-to-bill 154%という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "PPPプロジェクトのファイナンス能力と建設・開発の統合能力は長期蓄積による優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "大型インフラではBechtel、Fluor等の競合が強く、相対的差別化の定量的説明がない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "大手インフラ競合との差別化根拠が弱い",
+            "adjustment": -10
+          },
+          {
+            "reason": "6-7%マージンという定量的実績",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "米国大型インフラ・PPP市場での実績は評価できるが、Bechtel等の強力な競合との相対的差別化の説明が不足。マージンデータは強み"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "米国インフラ市場拡大 → USA Civil・Building売上成長 → グループ売上CAGR +6-8%",
+      "descriptive_label": "米国インフラ市場→USA部門成長→グループ成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（米国市場強い→受注拡大→売上成長）。FY2013米国+18%、FY2014+24%受注増で裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "米国事業の高成長実績（受注+18〜24%）で直接的なCAGR接続が実証"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グリーンビル・エネルギー効率オフィス開発における差別化されたプロダクト能力",
+      "descriptive_label": "グリーン・エネルギー効率商業開発プロダクト",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Johan Karlstrom): 'still a demand for modern new, green, energy-efficient offices in central locations which is exactly the product that we have, and we will continue to focus on that segment.' Post Oak Office building in Houston: 'Modern, green, energy-efficient, very well located. It was completed. We also sold it last year with a very good profit.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Johan Karlstrom",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "グリーンビル開発能力は仕組みとして評価できるが、競合も同様の能力を持つ傾向"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "borderline",
+            "reasoning": "グリーン認証は業界標準化しており、Skanska固有の障壁かどうか疑問"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Jones Lang LaSalle、CBRE等の競合もグリーンビル開発に注力しており差別化が不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "業界共通化しつつある能力（ルール3-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "グリーンビル開発はSkanskaの強みだが、業界全体でESG対応が進み相対的差別化が薄れつつある。定量的な価格プレミアムの証拠なし"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "グリーンビル差別化 → 国際投資家からの需要増加 → CD利益の持続的成長",
+      "descriptive_label": "グリーン差別化→投資家需要→CD利益成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ（グリーン差別化→投資家需要→CD売却益）。スウェーデン市場での国際投資家流入が証拠として機能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CAGR接続は一定程度あるが、グリーンビル以外の要因（立地、市場環境）も大きく、単独の貢献度分離が困難"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "建設マージン管理とプロジェクト選別（Czech/LatAm縮小）による収益性改善能力",
+      "descriptive_label": "プロジェクト選別と収益性管理能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (Peter Wallin): 'We posted our net sales revenue, SEK 128.9 billion...EBIT by up 16% to SEK 4.5 billion...3.5% operating margin for the Construction stream.' And Q4 FY2013: 'In Latin America and in Czech Republic, we are now focusing our business into sectors, into type of projects, type of contracts and also type of client that we have a good performance in historically.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Wallin / Johan Karlstrom",
+      "section": "prepared_remarks",
+      "supported_by_facts": [14],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "不採算地域からの撤退と選別的案件受注という経営能力・仕組みとして評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "borderline",
+            "reasoning": "プロジェクト選別は経営判断の範囲であり、競合が模倣困難な構造的優位とは言えない"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "建設業界大手はいずれも同様のプロジェクト選別を実施しており相対的差別化が不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "戦略的意思決定（プロジェクト選別）≠構造的優位性（ルール8-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "プロジェクト選別による収益性改善は評価できる経営だが、これは戦略的意思決定であり構造的な競争優位性ではない（ルール8-T）"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "建設マージン改善 → Construction利益率3.5-4%達成 → グループEPS成長+10-15%への貢献",
+      "descriptive_label": "建設マージン改善→EPS成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（建設マージン改善→利益拡大→EPS成長）。FY2014 EPS +18%の実績で裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "FY2014の実績（EPS +18%）で短期的な接続は確認できるが、建設業の利益率改善はサイクル要因も大きく持続性に疑問"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "FY2013: グループ売上7%増（現地通貨）、商業開発売却SEK 58億（第2位記録）、建設受注SEK 1,200億",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: USA Civil 6.4%マージン、受注book-to-bill 154%。商業開発売却SEK 100億（記録的水準）、利益SEK 20億",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Commercial Development FY2014: 43の進行中プロジェクト（総投資SEK 140億）、リーシング330,000㎡",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 建設利益率3.5%（目標レンジ達成）、EPS SEK 9.98（+18%）、ネットキャッシュポジション回復",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "ticker": "SCMN",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "SCMN-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "original_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb2_patterns_applied": ["pattern_I_quantitative_differentiation", "pattern_B_industry_common"],
+      "kb2_adjustments": "Pattern I合致: Akamai/Gartnerという第三者独立評価機関による測定値（#1欧州）は定量的差別化証拠として強い。Pattern B検討: 全ての規制当局による接続義務のある通信会社は同様の主張を行うが、独立測定がSwisscomの優位を支持。0.5維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "独立評価機関による欧州#1の客観的証拠は cornered resource評価を支持。しかし規制環境での競合アクセス義務が限界。0.5適切。"
+    },
+    {
+      "claim_id": "SCMN-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "original_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb2_patterns_applied": ["pattern_F_strategy_confusion", "pattern_B_industry_common"],
+      "kb2_adjustments": "Pattern F適用: CHF 1.7BのCapEx投資は戦略的コミットメントであり、スケール経済の確立した優位性ではない。Pattern B: 全ての主要通信事業者が同様のインフラ投資を行う。0.3維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "高CapExコミットメントは戦略であり、現在確立したスケール優位の証明として不十分。0.3適切。"
+    },
+    {
+      "claim_id": "SCMN-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "original_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb2_patterns_applied": ["pattern_I_quantitative_differentiation", "pattern_IV_structural_market_position"],
+      "kb2_adjustments": "Pattern I強く合致: 72%TVバンドル浸透率、33%バンドル収益成長、24%バンドル全体浸透率という定量的差別化が複数確認。Pattern IV: 70%アップセル余地を持つ顧客基盤という構造的ポジション。0.7維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "TV中心バンドリングのスイッチングコストは定量的に強く支持されており、複数四半期で継続確認。0.7適切。"
+    },
+    {
+      "claim_id": "SCMN-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "counter_positioning",
+      "original_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb2_patterns_applied": ["pattern_G_unclear_vs_pure_competitor"],
+      "kb2_adjustments": "Pattern G検討: Infinityフラット料金に対する競合(Sunrise, Salt)の対応が「なぜ困難か」の説明が弱い。3四半期連続ARPU成長という証拠は強い。counter-positioningとしての純粋競合への損害の説明が不足。0.5維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "Infinity成功の実績は確認されるが、真のcounter-positioningとしての競合ダメージ説明が不足。0.5適切。"
+    },
+    {
+      "claim_id": "SCMN-005",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "original_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb2_patterns_applied": ["pattern_IV_structural_market_position"],
+      "kb2_adjustments": "Pattern IV合致: IT+通信統合のB2B ICT convergenceは高いスイッチングコストが期待される構造的ポジション。強い受注残は潜在的スイッチングコストの指標。ただしIT+通信部門統合は比較的最近（2013年）で実績の積み上げが始まったばかり。0.5維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "B2B ICT収束は高スイッチングコストの構造だが実績の証明がまだ浅い。0.5は適切。"
+    },
+    {
+      "claim_id": "SCMN-006",
+      "claim_type": "competitive_advantage",
+      "power_type": "branding",
+      "original_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb2_patterns_applied": ["pattern_D_qualitative_only", "pattern_G_unclear_vs_pure_competitor"],
+      "kb2_adjustments": "Pattern D適用: NPS 40/32-33という数値は提示されるが競合比較（SunriseやUPC NPS）が不明。Pattern G: '我々は競合より大幅優位'という発言は主観的。独立NPS調査の裏付けなし。0.3維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "NPSの競合比較データが欠如。通信業界でのブランドmoatとしての証明は弱い。0.3適切。"
+    },
+    {
+      "claim_id": "SCMN-007",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "original_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb2_patterns_applied": ["pattern_F_strategy_confusion"],
+      "kb2_adjustments": "Pattern F適用: All-IP移行は戦略的プロジェクトであり、完成予定（2018年）の将来的コスト削減は現在の process powerの証明にならない。CHF 100M削減目標は将来予測であり確認済み優位ではない。0.3維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "All-IP移行は戦略実行中であり、process powerとしての確立は2018年以降。現時点での確信度は0.3が適切。"
+    },
+    {
+      "claim_id": "SCMN-008",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "original_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb2_patterns_applied": ["pattern_II_direct_cagr_mechanism", "pattern_I_quantitative_differentiation"],
+      "kb2_adjustments": "Pattern II強く合致: バンドル普及率24%（70%余地）→ARPU成長→全体CAGR向上という直接メカニズム。Q3 2014でのCHF 92Mバンドル成長という定量証拠でPattern I合致。0.7維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "バンドリングCAGRメカニズムは複数四半期にわたる定量証拠で強く支持。0.7適切。"
+    },
+    {
+      "claim_id": "SCMN-009",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "original_confidence": 0.9,
+      "final_confidence": 0.9,
+      "kb2_patterns_applied": [],
+      "kb2_adjustments": "事実主張: 確認済み財務数値。0.9維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "確認済み財務数値。"
+    },
+    {
+      "claim_id": "SCMN-010",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "original_confidence": 0.9,
+      "final_confidence": 0.9,
+      "kb2_patterns_applied": [],
+      "kb2_adjustments": "事実主張: 確認済み財務数値。0.9維持。",
+      "gatekeeper_passed": true,
+      "scoring_rationale": "確認済み財務数値。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.9": 2,
+      "0.7": 2,
+      "0.5": 3,
+      "0.3": 3,
+      "0.1": 0
+    }
+  }
+}

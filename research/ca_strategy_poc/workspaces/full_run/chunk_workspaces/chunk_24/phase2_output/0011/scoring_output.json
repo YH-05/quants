@@ -1,0 +1,399 @@
+{
+  "ticker": "0011",
+  "total_scored_claims": 7,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_id": "0011_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng Bankは香港最大の地場銀行（Hong Kong's leading domestic bank）として、価格競争に依存しない強力なブランドと広範な顧客基盤により、業界平均を下回る低コストの預金調達を実現している。",
+      "descriptive_label": "ブランド力による非価格競争的な低コスト預金調達（Branding）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「価格競争に依存しない」低コスト調達は銀行の構造的能力として評価可能"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "「leading domestic bank」「trusted brand」「loyal customer base」という名詞属性"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "NIM 1.92%（H1 2014）という定量データで低コスト調達優位を間接的に支持"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "ブランド・ネットワーク・顧客基盤は長年の事業構築によって形成された構造的要素"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「trusted brand」「loyal customer base」は定性的な記述であり、具体的な競合比較や定量的な差別化指標が不足"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「not having to price deposits on just pricing」という能力表現は過去実績（NIM推移）によって部分的に検証可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_D_t",
+          "adjustment": -0.1,
+          "reasoning": "定性的ブランド主張で競合との数値差異が不明"
+        }
+      ],
+      "overall_reasoning": "香港最大地場銀行としてのブランドによる低コスト預金調達は、NIM 1.92%というデータで間接支持されるが、HSBC Hong Kong等の競合との直接比較がなく差別化の定量的根拠が弱い（パターンD）。H1 2014年次（主・①相当）発言。Phase 1評価の0.6から-0.1調整後: 50%。"
+    },
+    {
+      "id": 2,
+      "claim_id": "0011_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng Bankは上海-香港ストックコネクト、人民元国際化等の規制緩和政策において、香港地場銀行として先行者優位（first-mover advantage）を持つ。特に広州証券・上海フィナンシャルホールディングスとの合弁など具体的な先行投資を実施している。",
+      "descriptive_label": "クロスボーダー政策緩和先行者優位・合弁パートナーシップ（Cornered Resource）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "合弁契約・独占パートナーシップは「能力」として評価可能"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "クロスボーダーインフラへの継続投資は構造的要素"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "「first-mover advantage」は戦略的ポジショニングの意図に近く、具体的な競争優位（収益プレミアム等）の証拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "クロスボーダー進出・合弁設立は「成長戦略・投資計画」の側面が強く、競争優位（持続的な収益差別化）との区別が曖昧"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "HSBC Hong Kong・Standard Chartered等の競合も同様のクロスボーダー政策緩和を活用しており、差別化の具体的証拠がない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_t",
+          "adjustment": -0.1,
+          "reasoning": "戦略的意図と競争優位の境界が曖昧"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "競合との明確な差別化証拠なし"
+        }
+      ],
+      "overall_reasoning": "上海・広州での具体的な合弁契約（CSRC承認待ち）は先行者優位の実証的証拠として評価できる。しかしHSBC・OCBC・Standard Chartered等も同様のクロスボーダー戦略を持ち（パターンG）、「first-mover advantage」の具体的な収益差別化への連結が示されていない（パターンF）。H1 2015（主・①相当）。Phase 1評価の0.5から-0.2調整後: 30%→キャリブレーション後40%。"
+    },
+    {
+      "id": 3,
+      "claim_id": "0011_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng Bankは香港最大のローカルファンド運用会社（largest local fund management company）であり、Hang Seng Index・Hang Seng H-Share Indexの保有者・運営者として、インデックス連動型ファンドの製造・分配において固有のポジションを持つ。",
+      "descriptive_label": "Hang Seng Index保有者・最大地場ファンド運用会社（Cornered Resource）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Hang Seng Index保有という固有の知的財産は具体的な能力として評価可能"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "「largest local fund management company」「Hang Seng Index owner/operator」という具体的な名詞属性"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "インデックス保有・最大地場ファンド運用規模は長年にわたる構造的要素"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「largest local fund management」という定量的差別化主張（ただしAUM数値の具体的開示なし）"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "インデックス保有は結果指標ではなく、具体的な知的財産としての能力"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Hong Kong Exchanges (0388)自体もインデックスを保有しており、完全な独占ではない。またAUM規模の競合比較数値が不明"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "競合との差別化証拠（AUM数値）なし"
+        }
+      ],
+      "overall_reasoning": "Hang Seng Index保有は真に固有の知的財産（Cornered Resource）であり、競合が模倣できない。しかし本トランスクリプト内でAUM規模の具体数値開示がなく（パターンG）、実際の収益貢献への連結が不明確。最大地場ファンド運用という主張も競合との直接比較なし。H1 2015（主・①相当）。Phase 1評価の0.6から-0.1調整後: 50%。"
+    },
+    {
+      "id": 4,
+      "claim_id": "0011_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng Bankは香港・本土統合クロスボーダービジネスにおいて、リミタンスフィー増収（22%成長）・SME新規顧客の本土企業比率45-51%・Hang Seng China（50拠点）の緊密な連携により競争優位を持つ。",
+      "descriptive_label": "香港・本土クロスボーダーネットワーク優位（Network Economies）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "クロスボーダーネットワーク・リファラルシステムは構造的能力として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "リミタンス22%成長・本土顧客比率45-51%という定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "50拠点の本土ネットワーク構築は長期的な構造投資"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "HSBC Hong Kong・BOC HK等の競合との直接比較なし。本土ネットワーク規模での差別化が不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "本土顧客比率45-51%は顧客構成の結果指標。ネットワーク優位という能力の説明が副次的"
+        },
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "人民元国際化・One Belt One Road・クロスボーダー政策緩和という業界構造変化×Hang Seng の本土ネットワーク能力の合致"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "本土顧客比率は結果指標"
+        }
+      ],
+      "overall_reasoning": "22%成長のリミタンス収益・50拠点本土ネットワークは具体的な能力の証拠として評価できる。人民元国際化という業界構造変化との合致（パターンIV）も認められる。ただし、HSBC Hong Kong・BOC HK等の競合（いずれも本土ネットワークを持つ）との差別化が示されていない（Rule07不通過）。H1 2014年次（主・①相当）。Phase 1評価の0.5から-0.1調整後: 40%。"
+    },
+    {
+      "id": 5,
+      "claim_id": "0011_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng BankはBupa社との10年独占医療保険販売協定（exclusive 10-year distribution agreement）を締結し、富裕層顧客向けの「ヘルス&ウェルス」提案において競合が持ちえない固有のプロポジションを確立している。",
+      "descriptive_label": "Bupaとの10年独占医療保険販売契約（Cornered Resource）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "10年独占契約という具体的な参入障壁を持つ能力"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "「exclusive 10-year distribution agreement with Bupa」という具体的な名詞属性"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "独占販売契約は構造的要素（期間中は競合排除）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「exclusive」という能力表現は結果指標でなく、契約による直接の差別化能力"
+        },
+        {
+          "pattern_id": "pattern_D_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「bespoke medical insurance products」の競合比較定量データなし。保険収益20%成長はBupa効果の間接証拠に留まる"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_D_t",
+          "adjustment": -0.1,
+          "reasoning": "Bupa独占契約の収益貢献を直接示す定量データなし"
+        }
+      ],
+      "overall_reasoning": "10年独占契約という明確な参入障壁（Cornered Resource）は競合他社がBupa製品を販売できないことを保証する。しかし、競合他社（AIA、Prudential等）が独自医療保険商品を開発することを妨げるわけではなく、差別化の持続性に疑問。保険収益20%成長はBupa効果の間接証拠として評価可能（パターンD）。H1 2014（主・①相当）。Phase 1評価の0.5から-0.1調整後: 40%→キャリブレーション後50%。"
+    },
+    {
+      "id": 6,
+      "claim_id": "0011_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng Bankはコスト効率比率（cost efficiency ratio）30-32%という業界最高水準の運営効率を継続的に維持しており、ポジティブジョーズ（収益成長率>費用成長率）を複数期にわたり達成している。",
+      "descriptive_label": "31-32%のコスト効率比率・ポジティブジョーズ継続（Scale Economies）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "31-32%という具体的な定量データが複数期（2013/2014/H1 2015）で確認可能"
+        },
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "コスト効率比率は運営効率の結果指標。それを可能にする構造的能力（自動化・プロセス改善・規模効率）の説明が不足"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "香港地場銀行他社（BOC HK等）や競合との直接比較なし。「業界最高水準」という主張を検証する比較データがない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "コスト効率比率は運営上の「結果指標」であり、それを実現する能力（プロセス、テクノロジー、スケール）の説明が主張の中心でない"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「業界最高水準」という主張に対し、競合との数値比較がない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "コスト効率比率は結果指標"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "競合との直接比較なし"
+        }
+      ],
+      "overall_reasoning": "31.1-32.4%のコスト効率比率は複数期の定量データで確認可能。しかしコスト効率比率は「運営の結果」であり（パターンA）、競合との比較なしに「最高水準」とは検証できない（パターンG）。ポジティブジョーズも毎期報告されているが、それを支える構造的能力の説明が不足。Phase 1評価の0.4を維持。"
+    },
+    {
+      "id": 7,
+      "claim_id": "0011_007",
+      "claim_type": "factual_claim",
+      "claim": "Hang Seng BankのH1 2015業績：税引前利益$11.08B（前年同期比+12%、Industrial Bank売却益除く）、運営利益$10.79B（+14%）、NIM 1.86%、コスト効率比率31.1%、CET1 17.1%。",
+      "descriptive_label": "H1 2015年次財務確定値（税引前利益$11.08B・NIM 1.86%・CET1 17.1%）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "H1 2015半期確定財務数値。CEO準備発言（主・①相当）から採用。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "定量的財務データは factual_claim として評価を支える"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimは能力主張でなく財務事実の記録であるためPattern-Aは非適用"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "H1 2015半期確定財務数値（CEO準備発言、主・①相当）。Industrial Bank売却益を除いた実力ベースで税引前利益+12%は安定した収益成長を示す。factual_claimとして0.7を維持。"
+    }
+  ],
+  "confidence_distribution": {
+    "50-60": 3,
+    "40-50": 3,
+    "70-80": 1
+  },
+  "metadata": {
+    "batch_count": 2,
+    "source_files": [
+      "batch_0_output.json",
+      "batch_1_output.json"
+    ]
+  }
+}

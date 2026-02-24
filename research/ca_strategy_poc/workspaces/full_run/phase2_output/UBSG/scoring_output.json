@@ -1,0 +1,158 @@
+{
+  "ticker": "UBSG",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Q4 FY2014 (2015-02-10) primary. Multiple quarterly transcripts Q1-Q3 2014/2015 secondary. CHF appreciation shock (Jan 2015) is a significant macro risk factor."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "世界最大のウェルスマネジメント事業：グローバルで真に統合された唯一の大規模ウェルスマネジメントフランチャイズ",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 「世界最大」は結果だが「グローバル統合WM唯一の大規模プレイヤー」という構造的特徴がある。dogmaルール11（業界構造との合致）: グローバルUHNW市場の成長とUBSのポジションは合致。dogmaルール3（相対的優位性）: Credit Suisse、Morgan Stanleyとの比較でグローバル統合WM特化の唯一性が主張されるが定量比較が限定的。dogmaルール4（定量的裏付け）: AUM規模等の定量データはあるが、競合比較の形での提示がない。KB2-TパターンIV（構造的市場ポジション）で50%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）", "adjustment": 0},
+        {"reason": "Credit Suisse等との定量的差別化比較が限定的", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "世界最大WMフランチャイズ → グローバルUHNW純資産流入（NNM 3-5%成長目標） → CAGR",
+      "final_confidence": 0.55,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: WMフランチャイズ→NNM 3-5%成長は2ステップで直接的。NNMは定期開示で検証可能。KB2-TパターンII-T（直接的CAGRメカニズム）条件を満たす。CHF高騰による運用資産減少リスクが存在。",
+      "confidence_adjustments": [
+        {"reason": "NNM 3-5%目標は定量・検証可能", "adjustment": 0},
+        {"reason": "CHF急騰（2015年1月）によるUHNW顧客の資産評価減リスク", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "WMA部門のFA1人あたり生産性が業界最高水準（$1.1M以上/FA/年）",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_I_quantitative_differentiation",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: $1.1M以上/FA/年という定量的指標あり。dogmaルール3（相対的優位性）: 「業界最高」と主張するが、Merrill Lynch、Morgan Stanleyとの具体的数値比較が示されていない。dogmaルール1（能力・仕組み）: FAの生産性は能力・仕組みの成果として評価可能（顧客基盤、製品供給力）。KB2-TパターンI-T（定量的差別化）だが競合数値比較なし。KB3-T（COST#1 退職率比較あり 70%）対比で業界比較なし→50%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、$1.1Mという定量指標あり", "adjustment": 0},
+        {"reason": "Merrill Lynch等との具体的FA生産性比較が示されていない", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "FA生産性向上（$1.1M+目標）→ 純利益率向上 → WMA全体ROE → UBS EPS CAGR",
+      "final_confidence": 0.50,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: FA生産性→WMA利益率→EPS成長は2-3ステップ。$1.1M+への目標進捗は定期開示で追跡可能。KB2-TパターンII-T条件を一部満たす。",
+      "confidence_adjustments": [
+        {"reason": "FA生産性の定期開示で検証可能", "adjustment": 0},
+        {"reason": "FA人員数の変動（採用・退職）がCAGR予測の不確実要因", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "スイス大手行中でピア最高水準のCET1比率13.4%（完全Basel III適用ベース）",
+      "final_confidence": 0.40,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_I_quantitative_differentiation",
+      "seven_powers_type": "Counter-Positioning",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: CET1 13.4%という定量データあり。dogmaルール3（相対的優位性）: 「ピア最高水準」と主張するが、Credit Suisse（11%台）との比較は暗示的。dogmaルール11（業界構造との合致）: 規制強化環境でのCET1優位は構造的価値があるが、それ自体が競争優位性かは疑問（必要条件であり十分条件ではない）。Q4 annual（主）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、CET1 13.4%定量データあり", "adjustment": 0},
+        {"reason": "CET1は必要条件（コンプライアンス要件）であり競争優位性としては補完的", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "最高水準CET1 → 資本余力活用（株主還元拡大・成長投資）→ EPS CAGR",
+      "final_confidence": 0.40,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_C_causal_leap",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: CET1余力→株主還元→EPS成長は2ステップだが、CET1余力が確実に還元に転換されるかは不明。スイス規制当局の要求する追加バッファーがある。KB2-TパターンC（因果の飛躍：規制要件を利益に転換する経路が不明確）。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）", "adjustment": 0},
+        {"reason": "スイス規制当局の追加バッファー要求により余力が想定より小さい可能性", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "UBSマネージドアカウント（マンデート）の浸透率向上による収益の安定・反復性：マンデート受益者の定期フィー化",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Switching Costs",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: マンデートという仕組みによる反復収益化は能力として正当に評価。dogmaルール4（定量的裏付け）: マンデート浸透率78%という定量データあり（定期開示、検証可能）。dogmaルール5（CAGR接続）: マンデート→反復フィー→収益安定は直接的。KB3-T（COST会員更新率90% CAGR接続 90%）に類似した構造。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主）、マンデート浸透率78%は定量・検証可能", "adjustment": 0},
+        {"reason": "競合WM（Credit Suisse等）とのマンデート浸透率比較がない", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "マンデート浸透率向上 → 反復収益（recurring fee）比率拡大 → 安定的収益CAGR",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続）: マンデート→反復収益→CAGR安定は2ステップで直接的。マンデート浸透率は定期開示で追跡可能。KB2-TパターンII-T（直接的CAGRメカニズム）条件を満たす。",
+      "confidence_adjustments": [
+        {"reason": "マンデート浸透率の定期開示で検証可能", "adjustment": 0},
+        {"reason": "市場下落時のマンデート残高減少リスク（AUM連動フィー）", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "UBS WM AUM: CHF 1.7T。WM NNM: 2014年通期CHF 40B（+2.5%）。WMA FA生産性: $1.1M+/年。マンデート浸透率: 78%",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "UBS CET1（完全Basel III）: 13.4%。ROTE目標: 15%（中期）。配当CHF 0.50/株。2015年NNM目標: 3-5%",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "UBS IB部門（Corporate Client Solutions）: RWA削減継続中、IB比率低下（WM中心への転換）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "CHF急騰（2015年1月15日）による影響: Q1 2015 revenues への影響は限定的と経営陣が主張（CHF-denominated cost baseのoffset効果）",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.51,
+  "score_distribution": {
+    "competitive_advantage": {"count": 4, "avg": 0.50},
+    "cagr_connection": {"count": 4, "avg": 0.51}
+  }
+}

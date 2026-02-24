@@ -1,0 +1,295 @@
+{
+  "ticker": "ADN",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-12-01), H1 2014 (2014-05-06), H1 2015 (2015-05-05)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_2014", "H1_2015"]
+  },
+  "claims": [
+    {
+      "id": "ADN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "EM・アジア・グローバル株式における底流研究基盤を持つ独自の長期運用スタイル（スタイルドリフトを行わない一貫性）",
+      "descriptive_label": "新興市場特化の運用スタイル一貫性",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: 'Our traditional strengths in equities and emerging markets... It's very important that we don't have style drift at this point. It's very important that the bets we've made we adhere to. Because if we do have any style drift or change, anything, and that goes wrong, you're really finished as a business.' (H1 2015, Martin Gilbert)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Martin Gilbert (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["ADN-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_8_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false,
+          "rule_8_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1四半期発言（Q1-Q3相当）から抽出。Q4発言で同内容の言及なし、-10%調整"
+          },
+          {
+            "source": "pattern_D_t",
+            "adjustment": -0.1,
+            "reasoning": "スタイル一貫性は定性的で、純粋競合（Ashmore, Schroders等）との定量的差別化不明"
+          }
+        ],
+        "overall_reasoning": "新興市場特化のスタイル維持は仕組みとして評価できるが、純粋競合も同様の標榜をしており相対的優位性が不明。定量的裏付けなし。四半期発言からの抽出でQ4での体系的説明がない"
+      }
+    },
+    {
+      "id": "ADN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIPとの統合を通じた多資産クラス（固定収益・ソリューション・不動産）への拡大によるビジネス多様化能力",
+      "descriptive_label": "M&A統合プレイブックと多様化能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: 'We've done it before, and the integration process has begun... Cost synergies from SWIP are ahead of expectations, and the incremental margin is already 50% for the second half. The exit operating margin, if I can use that term, is already at 55%.' (Q4 2014, Martin Gilbert)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Martin Gilbert (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ADN-009"],
+      "cagr_connections": ["ADN-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_8_t": false,
+          "rule_11_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_F_t",
+            "adjustment": -0.1,
+            "reasoning": "M&A統合そのものは戦略であり優位性ではない。統合後に生まれる構造的優位の説明が不十分"
+          },
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "コストシナジー達成と運営マージン改善は結果。統合プレイブックという能力の具体的説明が欠如"
+          }
+        ],
+        "overall_reasoning": "M&Aシナジー（50%→55%増分マージン）の数値は定量的だが、これは結果の開示。統合を繰り返し成功させる能力のメカニズム（プレイブック、人材、プロセス）の説明がなければ優位性としては弱い"
+      }
+    },
+    {
+      "id": "ADN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "26カ国のローカルプレゼンスによるグローバル分配ネットワーク",
+      "descriptive_label": "グローバル多地域分配チャネル",
+      "evidence_from_transcript": "H1 2014 Prepared Remarks（CEO発言）: 'We have multiple business and distribution channels with local presence in 26 countries. We're continuing to see strong growth in North America, Continental Europe and selected markets in Asia.' (H1 2014, Martin Gilbert)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Martin Gilbert (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_3_t": false,
+          "rule_7_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "gatekeeper_rule3",
+            "adjustment": -0.1,
+            "reasoning": "グローバル大手資産運用会社であれば多くが26カ国以上のプレゼンスを持つ（業界共通）。相対的優位性が不明"
+          },
+          {
+            "source": "pattern_B_t",
+            "adjustment": -0.1,
+            "reasoning": "大手資産運用会社に共通する能力。純粋競合（BlackRock, Schroders等）と比較した差別化が示されていない"
+          }
+        ],
+        "overall_reasoning": "グローバル26カ国プレゼンスは大手資産運用会社として業界共通の要素。ルール3（相対的優位性）違反の疑いが強く、上限30%"
+      }
+    },
+    {
+      "id": "ADN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "10年間の連続増配実績と強力なキャッシュコンバージョン（経営の財務規律）",
+      "descriptive_label": "財務規律・安定した配当成長",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: '10 years of uninterrupted dividend growth and, over the last 5 years, 25% compounded dividend growth... net cash at the year-end of over GBP 650 million... free cash flow this year was GBP 500 million.' (Q4 2014, Martin Gilbert/William Rattray)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Martin Gilbert (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ADN-010"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "10年連続増配とキャッシュフローはアウトカム（結果）。キャッシュ生成能力の構造的説明がない"
+          }
+        ],
+        "overall_reasoning": "定量的根拠は豊富だが、これらは結果の開示。ルール1違反。高収益・強キャッシュフローを可能にする構造的メカニズム（高い経常収益率、資産運用ビジネスモデル）の説明が不足"
+      }
+    },
+    {
+      "id": "ADN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "年金・保険・ウェルス・ソブリンウェルスクライアントの多様な機関投資家基盤とトラックレコード",
+      "descriptive_label": "機関投資家向けロングオンリー運用の信頼基盤",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'The track record in managing assets for pensions, insurance, wealth, sovereign wealth clients around the world... increasingly important to us are the number of global preferred partner programs we have and strategic partnerships, which are growing.' (H1 2015, Martin Gilbert)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Martin Gilbert (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["ADN-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": false,
+          "rule_6_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_D_t",
+            "adjustment": -0.1,
+            "reasoning": "「グローバル優先パートナープログラム」の数や質の定量的裏付けなし"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "四半期（H1）発言から。Q4での体系的言及なし"
+          }
+        ],
+        "overall_reasoning": "機関投資家向けトラックレコードは資産運用会社として業界共通。パートナープログラムの優位性の定量的裏付けなし。四半期発言からの抽出"
+      }
+    },
+    {
+      "id": "ADN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIP統合から生まれた固定収益・ソリューション・不動産における専門能力の拡充（特にLloydsとの戦略的関係）",
+      "descriptive_label": "Lloyds戦略的パートナーシップとマルチアセット能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: 'The long-term strategic relationship with Lloyds, we're making good progress there and we're seeing very good flows into the property fund.' / Q4 Q&A（CEO発言）: 'This is the deal that António Horta-Osório wanted to do; and the cultural fit with Aberdeen and SWIP is good.' (Q4 2014)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Martin Gilbert (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_6_t": false,
+          "rule_8_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 40,
+        "adjustments": [
+          {
+            "source": "pattern_F_t",
+            "adjustment": -0.1,
+            "reasoning": "Lloydsとの戦略的関係はM&A由来の補完的優位。構造的優位性（スイッチングコスト、ネットワーク効果等）の証拠が薄い"
+          }
+        ],
+        "overall_reasoning": "LLoydsという特定の大型顧客との長期的関係はある程度の優位性だが、戦略的関係の持続性・独占性の証拠が不十分。40%はやや高い可能性あり。Q4発言から"
+      }
+    },
+    {
+      "id": "ADN-007",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場回帰とスタイル維持 → 流出抑制・流入再開 → AuM成長 → 経常収益CAGR接続",
+      "descriptive_label": "EM投資スタイル維持→AuM回復経路",
+      "source_advantage": "ADN-001",
+      "transcript_call_type": "H1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": false
+        },
+        "confidence": 20,
+        "adjustments": [],
+        "overall_reasoning": "EM市場回帰は外部要因依存。3段階以上の因果チェーン（スタイル維持→EM回帰→流出抑制→AuM成長）で各段階の確度が低い。四半期発言起源"
+      }
+    },
+    {
+      "id": "ADN-008",
+      "claim_type": "cagr_connection",
+      "claim": "SWIP統合による多資産化 → 収益源多様化 → 低EM依存度 → 収益安定性CAGR接続",
+      "descriptive_label": "多資産化→収益安定性経路",
+      "source_advantage": "ADN-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 40,
+        "adjustments": [],
+        "overall_reasoning": "Q4発言由来。多資産化による収益源多様化は2ステップの因果で、SWIP統合後の収益構造データで検証可能（固定収益・不動産への移行は実際に進行中）。ただし全体のAuMはEM株式主導であり、多様化の程度には疑問"
+      }
+    },
+    {
+      "id": "ADN-009",
+      "claim_type": "factual_claim",
+      "claim": "SWIP統合の増分マージンは55%（目標を1年前倒しで達成）、H1 2015時点では60%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["ADN-002"]
+    },
+    {
+      "id": "ADN-010",
+      "claim_type": "factual_claim",
+      "claim": "10年間の連続増配、過去5年で25%の配当CAGR、年度末純現金GBP 650百万",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["ADN-004"]
+    },
+    {
+      "id": "ADN-011",
+      "claim_type": "competitive_advantage",
+      "claim": "98-99%が経常収益（パフォーマンスフィーに依存しない安定収益構造）",
+      "descriptive_label": "高経常収益比率による収益安定性",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CFO発言）: '98% from recurring sources... performance fees were always a relatively small part of our overall revenues, historically no more than 5%.' (Q4 2014, William Rattray) / H1 2015: '99%, now coming from recurring fees.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "William Rattray (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "98-99%経常収益は収益構造の結果であり、それを可能にする仕組みの説明がない。資産運用会社全般の特徴でもある"
+          },
+          {
+            "source": "pattern_B_t",
+            "adjustment": -0.1,
+            "reasoning": "ロングオンリー資産運用会社の収益構造として業界共通。ヘッジファンドとの差別化は存在するが純粋競合（Schroders等）に対する優位ではない"
+          }
+        ],
+        "overall_reasoning": "定量的数値（98-99%）は明確だが、これは資産運用会社の一般的な収益構造を示す結果。純粋競合との相対的差別化が示されない"
+      }
+    }
+  ]
+}

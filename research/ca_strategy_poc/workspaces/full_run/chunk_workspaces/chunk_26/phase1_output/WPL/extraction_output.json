@@ -1,0 +1,230 @@
+{
+  "ticker": "WPL",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "WPL_001",
+      "claim_type": "competitive_advantage",
+      "claim": "WoodsideはLNG長期契約の大部分を早期に締結することで、油価下落局面でも安定的な収益基盤を確保する契約交渉能力・タイミング能力を持つ。",
+      "evidence": "Peter Coleman (H1 2015 Q&A): 'We got in early. back in late 2013, early 2014, we announced we'd actually entered into some midterm contracts with a couple of buyers. And at that point, we could see that there was going to be some uncertainty with a lot of new projects coming online. So we simply wanted to lock in some pricing.' 結果として90%以上の生産がlong-term contractベースで保護されている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule10", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule10": true,
+          "rule12": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule12: H1中間発表（従・②相当）からの抽出", "rule10: 先を見越した早期締結判断は意思決定規律のネガティブケースに近い", "定量的根拠（契約数量、価格、期間）が乏しく50%止まり"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "長期契約による収益の安定性と油価変動リスクの低減",
+        "barrier": "市場センス・契約交渉経験を持つチームの構築には長年の実績が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Peter Coleman",
+          "role": "CEO",
+          "section_type": "q_and_a",
+          "quarter": "H1 2015",
+          "quote": "We got in early. back in late 2013, early 2014, we announced we'd actually entered into some midterm contracts with a couple of buyers. we could see that there was going to be some uncertainty with a lot of new projects coming online. So we simply wanted to lock in some pricing."
+        }
+      ]
+    },
+    {
+      "id": "WPL_002",
+      "claim_type": "competitive_advantage",
+      "claim": "WoodsideはPluto LNGの大規模定期修繕を計画より10日（30%）前倒しで完了させる運営管理能力を持ち、競合との差別化要因となる。",
+      "evidence": "Lawrie Tremaine (H1 2015 prepared_remarks): 'the major Pluto turnaround was completed 10 days or 30% ahead of the original schedule.' Peter Coleman: 'our highlight for the first half was the completion of a major turnaround at our Pluto LNG plant. This was the first major turnaround for this plant since its startup, and we were able to complete that 10 days ahead of schedule.' COEMOパフォーマンスとして定量的に示されている。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule04: 30%前倒しという定量的裏付けあり", "rule07: 純粋競合（Santos、BG Group）との定期修繕期間の比較データなし"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "定期修繕期間の短縮による生産損失最小化と安定的な生産量維持",
+        "barrier": "LNGプラントの定期修繕ノウハウは複数回の実績積み重ねにより形成されるもので短期模倣困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Lawrie Tremaine",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "the major Pluto turnaround was completed 10 days or 30% ahead of the original schedule"
+        }
+      ]
+    },
+    {
+      "id": "WPL_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Woodsideは油価下落局面で業界ピア10社中3社しか黒字でない中でも黒字を維持できる低コスト生産構造を持つ。",
+      "evidence": "Lawrie Tremaine (H1 2015 prepared_remarks): 'Only 3 of the 10 peers have posted a first-half profit. We're also well positioned on a cash flow basis.' ピア10社との比較で収益・キャッシュフロー共に上位に位置し、コスト削減実績$163M（H1 2015）を達成。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule04": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule01: 黒字維持は結果であり、それを可能にするコスト構造（能力）の具体的説明が不十分", "rule04: 10社中3社のみ黒字という定量的業界比較あり", "低コストを実現するメカニズムの具体的説明が限定的"]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "大規模LNG施設における固定費分散による低コスト生産能力と業界トップクラスの耐低価格性",
+        "barrier": "PlutoやNorthwest Shelfのような大規模LNG資産は数十億ドルの資本投資と長期的な運営実績が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Lawrie Tremaine",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "Only 3 of the 10 peers have posted a first-half profit. We're also well positioned on a cash flow basis"
+        }
+      ]
+    },
+    {
+      "id": "WPL_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Woodsideは油価低迷期に競合優位な条件（2.6%の低金利）で$3.75BのDoorを調達できる財務的信頼性・強固な貸借対照表を持つ。",
+      "evidence": "Lawrie Tremaine (H1 2015): 'we've raised $3.75 billion in debt. We've pushed out our average term to maturity to well over 4 years, and we've done this at historically low interest rates, resulting in a current portfolio cost of debt of just 2.6%.' Gearing 9%と健全。業界他社がcapital marketsにアクセス困難な状況で好条件調達。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule06"],
+        "results": {
+          "rule04": true,
+          "rule06": false
+        },
+        "confidence": 0.3,
+        "adjustments": ["rule06: 財務的強さは補完的要素であり、LNG生産事業の構造的優位性の主軸ではない", "rule01違反: 低金利調達は結果であり能力の直接証明ではない"]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "低コスト資金調達による開発投資の継続と競合が資金難に陥る局面でのチャンス取り",
+        "barrier": "投資適格レーティングの維持には長期の財務規律と大規模資産基盤が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Lawrie Tremaine",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "we've raised $3.75 billion in debt. We've pushed out our average term to maturity to well over 4 years, resulting in a current portfolio cost of debt of just 2.6%"
+        }
+      ]
+    },
+    {
+      "id": "WPL_005",
+      "claim_type": "competitive_advantage",
+      "claim": "WoodsideはJames Price Point開発案件を「商業的要件を満たさない」として不実行とした規律ある投資意思決定能力を持つ。",
+      "evidence": "Peter Coleman (FY2013 full-year results, 2014-02-18 prepared_remarks): 'we took a decision not to proceed with the James Price Point development because it did not meet our commercial requirements for a positive investment decision.' これはルール10-T（ネガティブケース）の典型例であり、規律ある資本配分の証明。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule08", "rule10", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule08": true,
+          "rule10": true,
+          "rule12": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule10: 大型案件からの明確な撤退判断という強力なネガティブケース", "rule12: FY2013年次発表（Q4 annual相当、主）からの発言"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "商業的基準を満たさない案件からの迅速撤退による資本の効率的配分",
+        "barrier": "規律ある投資委員会プロセスと明確な商業的判断基準の組織的定着"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Peter Coleman",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 2014",
+          "quote": "we took a decision not to proceed with the James Price Point development because it did not meet our commercial requirements for a positive investment decision"
+        }
+      ]
+    },
+    {
+      "id": "WPL_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Woodsideは$800Mのenduring cost benefitプログラムを2016年末までに実現するオペレーション効率改善能力を持ち、業界低価格環境への耐性を高めている。",
+      "evidence": "Peter Coleman (H1 2015): 'We're still targeting $800 million in enduring benefits to be delivered to the bottom line by the end of 2016.' Lawrie Tremaine: 'net cost reductions of $163 million' in H1 2015 already achieved.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule06: コスト削減プログラムは補完的施策。業界他社も類似の取り組みを実施している可能性が高い", "rule07: 競合との比較なし"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "構造的コスト削減による収益力の持続的改善",
+        "barrier": "LNG運営の特殊性に基づく業界固有のコスト削減機会の識別能力"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Peter Coleman",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "We're still targeting $800 million in enduring benefits to be delivered to the bottom line by the end of 2016"
+        }
+      ]
+    },
+    {
+      "id": "WPL_007",
+      "claim_type": "factual_claim",
+      "claim": "WoodsideのH1 2015純利益は$679M、生産量42MMboe、営業収益$2.55B。中間配当USD 0.66/shareは80%配当性向に基づく。",
+      "evidence": "Peter Coleman/Lawrie Tremaine (H1 2015 prepared_remarks): 'Our reported net profit after tax was $679 million...underpinned by production of 42 million barrels and operating revenue of $2.55 billion...interim dividend of USD 0.66 per share...reflects our continued commitment to an 80% dividend payout ratio.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.5,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Peter Coleman",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2015",
+          "quote": "Our reported net profit after tax was $679 million...underpinned by production of 42 million barrels and operating revenue of $2.55 billion"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 4,
+    "claim_count": 7,
+    "competitive_advantage_count": 5,
+    "cagr_connection_count": 0,
+    "factual_claim_count": 1,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "system_prompt_transcript.md",
+      "dogma.md"
+    ]
+  }
+}

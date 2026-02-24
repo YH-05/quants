@@ -1,0 +1,107 @@
+{
+  "ticker": "BAX",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "BAX_001",
+      "ticker": "BAX",
+      "claim_text": "BaxterのADVATEは血友病A治療の金標準（Gold Standard）として、Biogenの新薬参入後も患者移行を抑え市場シェアを維持している。予防投与促進と体重増加バイアスがシェア損失を上回る成長を実現。",
+      "power_type": "Branding",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: 「金標準」はブランドポジション（能力）として評価可。Rule07（純粋競合との差別化）: Biogenとの比較あり（1-2%シェア損失言及）。KB2-T PatternV（特定競合比較）: Biogen名前言及。ただし「金標準」は定性的主張（PatternD的要素）。同分野競合（Biogen Eloctate）への移行が始まっており耐久性に疑問。dogma §2.3: 純粋競合（Biogen）に対する差別化は具体的だが定量的裏付けが「0 blips」という定性ベンチマークのみ。確信度: 0.5",
+      "kb_rules_applied": ["Rule01", "Rule07"],
+      "kb2_patterns_matched": ["PatternV"],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BAX_002",
+      "ticker": "BAX",
+      "claim_text": "BaxterのHYQVIAは皮下注射免疫グロブリン製品として月1回1本投与で約10%の総治療コスト削減を実現。30%の価格プレミアム設定にもかかわらず全体コストで優位。",
+      "power_type": "Cornered Resource",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule04（定量的証拠）: 30%価格プレミアム・10%総コスト削減という明確な定量データあり（+20%）。Rule07（純粋競合との差別化）: 競合subQ製品との直接比較。KB2-T PatternI（定量的差別化）: 価格プレミアムと総コスト削減の定量比較は高評価パターンに合致。PatternV（特定競合比較）: subQ vs HYQVIA の直接比較。dogma §2.2（評価上げ要因1+2）: 定量裏付け+競合比較で+20-40%。Cornered ResourceとしてのFcRn製法技術の独自性が高い。確信度: 0.7",
+      "kb_rules_applied": ["Rule04", "Rule07"],
+      "kb2_patterns_matched": ["PatternI", "PatternV"],
+      "adjustment": 20
+    },
+    {
+      "claim_id": "BAX_003",
+      "ticker": "BAX",
+      "claim_text": "Baxterはブラジル・タイ・中国等の新興市場において政府・国有機関との直接協働による独自のアクセス戦略を持つ。Hemobras（ブラジル）・タイ政府腹膜透析推進等が具体例。",
+      "power_type": "Cornered Resource",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule06（構造的 vs 補完的）: 政府関係は構造的要素だが他社も同様のアプローチを取りうる。Rule07（純粋競合との差別化）: 競合（Fresenius等）との比較なし。KB2-T PatternB（業界共通）: 大手医療機器企業が新興市場政府と協働することは業界共通。PatternIII（能力優先）: 「working with Thai government」は能力の一形態。dogma §1.2（却下基準2）: 業界共通能力の可能性。ただし具体的な先行事例（タイ・ブラジル）の独自性は一定程度評価。確信度: 0.5",
+      "kb_rules_applied": ["Rule06", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BAX_004",
+      "ticker": "BAX",
+      "claim_text": "BaxterのGambro統合により腹膜透析・血液透析双方のカバレッジが実現。米国PD患者の二桁成長（保険適用変更）が追加成長ドライバー。",
+      "power_type": "Scale Economies",
+      "confidence": 0.3,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: 「Gambro統合」は戦略行動。「二桁成長」は結果。Rule08（戦略の混同）: 買収統合は戦略であり優位性の源泉の説明不足。KB2-T PatternA（結果を原因）: 患者成長は市場環境変化であり競争優位性の証拠ではない。PatternF（戦略混同）: 統合= 戦略。dogma §1.2（却下基準3）: 戦略の優位性への混同。ただしPoJi/HD両モダリティカバレッジという規模は部分評価。確信度: 0.3（競争優位性より市場機会の描写）",
+      "kb_rules_applied": ["Rule01", "Rule08"],
+      "kb2_patterns_matched": ["PatternA"],
+      "adjustment": -20
+    },
+    {
+      "claim_id": "BAX_005",
+      "ticker": "BAX",
+      "claim_text": "BaxterのHEMLIBRA前身BAX855（ADVATE後継）は血友病A市場でのパイプライン確保。FEIBA（第VIII因子インヒビター）では6-8%成長継続。",
+      "power_type": "Cornered Resource",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: パイプライン保有は将来の能力として評価できる。Rule07（純粋競合との差別化）: Biogenとの競合文脈あり（高一桁シェア損失ガイダンス）。KB2-T PatternIII（能力優先）: 次世代製品パイプラインは能力保有として評価。dogma §2.2: パイプラインの独自性は一定程度認める。ただし現時点（PoiT 2015年）では承認前であり、将来不確実性が高い（-10%）。確信度: 0.5",
+      "kb_rules_applied": ["Rule01", "Rule07"],
+      "kb2_patterns_matched": ["PatternIII"],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "BAX_006",
+      "ticker": "BAX",
+      "claim_text": "Baxterは高物流コスト事業構造を認識し、より高マージン・高成長製品カテゴリ（麻酔薬Suprane、BioSurgery、静脈栄養）への集中を中期計画の柱としている。",
+      "power_type": "Process Power",
+      "confidence": 0.3,
+      "cagr_connection_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule08（戦略の混同）: ポートフォリオ集中は戦略的意思決定であり競争優位性ではない。Rule01（能力 vs 結果）: 「集中投資」は意思決定。KB2-T PatternF（戦略混同）: 典型的な戦略と優位性の混同。dogma §1.2（却下基準3）: 「戦略の優位性への混同」に完全に該当。スピン分離（2015年予定）という特殊な文脈で将来ポートフォリオを議論しているに過ぎない。確信度: 0.3",
+      "kb_rules_applied": ["Rule01", "Rule08"],
+      "kb2_patterns_matched": ["PatternF"],
+      "adjustment": -20
+    },
+    {
+      "claim_id": "BAX_007",
+      "ticker": "BAX",
+      "claim_text": "Baxterの血友病フランチャイズ（ADVATE・FEIBA）は「粘着性の高い市場（sticky market）」で展開。第VIII・IX因子市場での競合参入後も「0 blips」という高い有効性基準がスイッチングコストを形成。",
+      "power_type": "Switching Costs",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule06（構造的 vs 補完的）: 「sticky market」（患者側のスイッチングコスト）は構造的要素として高評価。Rule07（純粋競合との差別化）: 「RIXUBIS」（競合）参入後も変化なしという具体的証拠。Rule10（ネガティブケース）: 競合参入に対する耐性の実証（+10-20%）。KB2-T PatternIV（構造的市場ポジション）: 製薬市場の構造（患者・医師のスイッチング忌避）×BAXのポジション合致。PatternV（特定競合比較）: RIXUBIS/Biogenとの具体的比較。dogma §2.2: 定量的ではないが構造的市場ポジションは高評価。「0 blips」というベンチマークが具体的差別化指標。確信度: 0.7",
+      "kb_rules_applied": ["Rule06", "Rule07", "Rule10"],
+      "kb2_patterns_matched": ["PatternIV", "PatternV"],
+      "adjustment": 20
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.7": 2,
+      "0.5": 3,
+      "0.3": 2
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "ticker": "TSM",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "TSM_001",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCはファウンドリ業界で唯一、先端ノード（20nm/16nm）の大量生産を継続的に実現できる製造プロセス能力を持つ。",
+      "evidence": "20-nanometer revenue was 9% in Q3 2014, jumping to 21% in Q4 2014 - 'Such unprecedented ramp cannot be achieved without seamless teamwork with our customer, the R&D and operation people in TSMC.' C.C. Wei: 'we remain the only foundry capable of volume supply in the second year of its ramp-up' for 20nm. 16-FinFET has 'the best transistor performance among all foundries.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule07": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule07: 唯一のファウンドリとして純粋競合が存在しない状況での独占的優位性", "rule11: 半導体ロジックファウンドリ市場はTSMCが圧倒的シェアを持つ寡占構造"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "競合が模倣できない高歩留まり・最速ランプアップによるコスト優位性とデザインウィン獲得能力",
+        "barrier": "数十年にわたる製造ノウハウの蓄積、R&Dへの膨大な投資（2015年CapEx USD11.5-12B）、パートナー企業との深いエコシステム"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "C.C. Wei",
+          "role": "Co-CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "we remain the only foundry capable of volume supply in the second year of its ramp-up [for 20nm]"
+        },
+        {
+          "speaker": "Lora Ho",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Such unprecedented ramp cannot be achieved without seamless teamwork with our customer, the R&D and operation people in TSMC"
+        }
+      ]
+    },
+    {
+      "id": "TSM_002",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCの規模の経済により、28nmの製造コスト競争力は5年以上の生産経験から構造的に確立されており、市場シェア防衛が可能。",
+      "evidence": "C.C. Wei (Q2 2015 prepared_remarks): 'after having manufactured our 28-nanometer for more than 5 years, we can also use our learning curve or cost advantage to compete with good profit margins.' 28nm is 27-34% of quarterly wafer revenue across 2014-2015.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule04: 5年超の製造経験という具体的数値裏付け", "rule11: 28nmはスマートフォン用チップ設計の主流ノードで市場構造と合致"]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "5年以上の学習曲線効果による低コスト製造能力と利益率維持",
+        "barrier": "競合が同等の生産量・学習曲線効果を得るには5年以上要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "C.C. Wei",
+          "role": "Co-CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "after having manufactured our 28-nanometer for more than 5 years, we can also use our learning curve or cost advantage to compete with good profit margins"
+        }
+      ]
+    },
+    {
+      "id": "TSM_003",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのデザインエコシステム（EDAツール、IPパートナー、プロセスデザインキット）は競合他社より大規模で、顧客のスイッチングコストを高める。",
+      "evidence": "Mark Liu (Q3 2014): '16-nanometer design ecosystem is ready also. It supports 43 EDA tours and greater than 700 process design kits, with more than 100 IPs, all these are silicon validated. We believe this is the biggest ecosystem in the industry today.' Mark Liu (Q2 2015): 10nm 'completed certification of over 35 EDA tools using ARM CPU core as vehicle.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule04": true,
+          "rule07": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule04: EDA 43ツール、700+ PDK、100+ IPという具体的定量数値", "rule07: 『業界最大のエコシステム』という対競合優位性の明示"]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "設計ツール・IPの再認定コストが極めて高く、顧客が他ファウンドリに移行困難",
+        "barrier": "数百のIPパートナー・EDAベンダーとの深い統合は数年単位で構築したもので短期模倣不可"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "C.C. Wei",
+          "role": "Co-CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q3 2014",
+          "quote": "16-nanometer design ecosystem is ready also. It supports 43 EDA tours and greater than 700 process design kits, with more than 100 IPs, all these are silicon validated. We believe this is the biggest ecosystem in the industry today."
+        }
+      ]
+    },
+    {
+      "id": "TSM_004",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCの先端技術開発ロードマップ（10nm→7nm連続開発）により、顧客は将来製品をTSMCのタイムラインに合わせて設計する構造的依存関係が生じる。",
+      "evidence": "Mark Liu (Q2 2015): '10-nanometer technology qualification targeted at end of 2015, volume production 2016-end. 7-nanometer qualification Q1 2017, only 5 quarters after 10nm.' 7nmはtool compatibilityで10nmからleverage可能で投資効率が高い。これにより顧客は早期にTSMCの7nmロードマップに乗り込む。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule08", "rule12"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule08": true,
+          "rule12": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule08: ロードマップは戦略だが、継続的技術革新能力は名詞属性として評価", "rule12: Q2 2015四半期発言（従・②相当）で-10%調整候補だが補強材料として扱う"]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "顧客が複数世代にわたるロードマップをTSMCに合わせて設計することで、切り替えコストが指数的に増大",
+        "barrier": "競合が同等のノード連続性・tool compatibilityを実現するには数年のR&D投資が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Mark Liu",
+          "role": "Co-CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "We target 7-nanometer technology qualification in the first quarter 2017, only 5 quarters after 10-nanometer. We are developing 7-nanometer to be able to leverage the process tool compatibility and maturity from 10-nanometer volume production."
+        }
+      ]
+    },
+    {
+      "id": "TSM_005",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのInFO（Fan-Out）先進パッケージング技術は、基板不要の高密度実装により、競合ファウンドリが持たない差別化技術を提供する。",
+      "evidence": "C.C. Wei (Q2 2015): 'TSMC's InFo technology does not need package substrate and also provides a high-density interconnect. This allows our solution to have benefit in form factor, that is, package in service and in electrical performance.' Q4 2014時点でfirst-generation InFO qualifiedと報告。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: 純粋競合（Samsung、GlobalFoundries）のパッケージング能力との定量比較なし", "rule06: 半構造的要素。ファウンドリの本業（wafer製造）とは別軸の差別化"]
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "基板不要の高密度パッケージングによるフォームファクタ・電気特性の優位性",
+        "barrier": "InFO技術の特許と製造プロセスノウハウ、顧客との共同開発による先行者優位"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "C.C. Wei",
+          "role": "Co-CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "TSMC's InFo technology does not need package substrate and also provides a high-density interconnect. This allows our solution to have benefit in form factor, that is, package in service and in electrical performance."
+        }
+      ]
+    },
+    {
+      "id": "TSM_006",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCは先端ノードでの圧倒的市場シェア（20nm唯一の量産ファウンドリ、16nm overwhelming share予測）を保持し、規模の経済がさらなるシェア獲得を可能にする自己強化ループを形成する。",
+      "evidence": "Morris Chang (Q2 2015 Q&A): 'we expect some market share gain. our 16-nanometer market segment share will be much greater than our next competitors.' C.C. Wei (Q2 2015): 'we are confident that we will achieve a far majority foundry share in 16-nanometer in 2016 and beyond.' Mark Liu (Q2 2015): 'TSMC has been able to gain foundry market segment shares in recent years.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule11": true
+        },
+        "confidence": 0.3,
+        "adjustments": ["rule01: シェア自体は結果であり能力ではない", "シェアをもたらす構造的メカニズム（規模の経済+技術リード）は認められるが、シェア自体を優位性として評価するのは不適切"]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "先端ノードでの量産独占がさらなるコスト低下と顧客誘引を促す正のフィードバック",
+        "barrier": "競合が同等の量産規模に達するには数年の投資と技術開発が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Morris Chang",
+          "role": "Chairman",
+          "section_type": "q_and_a",
+          "quarter": "Q2 2015",
+          "quote": "we expect some market share gain. our 16-nanometer market segment share will be much greater than our next competitors"
+        }
+      ]
+    },
+    {
+      "id": "TSM_007",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのStructural Gross Margin（SGM）と高稼働率維持能力は、先端ノードへの大規模CapEx投資を継続しながらも利益率構造を改善できる財務的優位性を示す。",
+      "evidence": "Lora Ho (Q2 2015): '5-year target calls for CAGR of 10% for both revenue and net income and ROE ≥ 20%. Over the past 5 years, we have seen consistent improvement in SGM, while our utilization has also been at a consistently high level.' 2014年ROE 27.9%でlong-term goal 20%超を達成。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule06"],
+        "results": {
+          "rule04": true,
+          "rule06": false
+        },
+        "confidence": 0.3,
+        "adjustments": ["rule01違反: ROE・SGM改善は結果の数値であり能力の証明ではない", "rule06: 財務的優位性は補完的要素であり構造的優位性の主軸ではない"]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "大規模CapEx投資後の高稼働率維持による構造的利益率の優位性",
+        "barrier": "先端ノード投資の回収に必要な顧客基盤構築は競合には模倣困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Lora Ho",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "Over the past 5 years, we have seen consistent improvement in SGM, while our utilization has also been at a consistently high level. We plan to maintain or improve our structural profitability by maintaining or improving SGM and maintaining high utilization."
+        }
+      ]
+    },
+    {
+      "id": "TSM_008",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCはLED事業（Solid State Lighting）への遅参による競争劣位を認識し、撤退を決断した規律ある資本配分能力を持つ。",
+      "evidence": "Lora Ho (Q4 2014): 'Despite several years of dedication and hard work as a late entrant to the LED industry, TSMC's Solid State Lighting faced difficulties overcoming patent obstacles and the sales channels. Not seeing how the company will be able to reach profitability due to the oversupply...we have decided to transfer the ownership to Epistar.' これはルール10-T（ネガティブケース）の典型例。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule08", "rule10"],
+        "results": {
+          "rule01": true,
+          "rule08": true,
+          "rule10": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule10: 失敗事業からの撤退という規律ある意思決定の裏付け", "ただし本業ファウンドリ事業との関連性が薄く、優位性の中心軸ではない"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "事業評価の規律（採算見込みなき事業からの迅速撤退）によるリソース集中効果",
+        "barrier": "経営陣の判断規律は短期では模倣可能だが、組織文化として定着するには時間を要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Lora Ho",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Not seeing how the company will be able to reach profitability due to the oversupply exacerbated by massive expansions of LED companies worldwide, we have decided to transfer the ownership to Epistar"
+        }
+      ]
+    },
+    {
+      "id": "TSM_009",
+      "claim_type": "factual_claim",
+      "claim": "TSMCの2014年売上高は前年比27.8%増（TWD 763B / USD 25B）、EPS前年比40%増のTWD 10.18で過去最高を達成した。",
+      "evidence": "Lora Ho (Q4 2014 prepared_remarks): 'Our revenue grew 27.8% year-over-year to reach TWD 763 billion or USD 25 billion. full-year earnings per share increased by 40% to reach the historical high level of TWD 10.18 per share.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.5,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Lora Ho",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014",
+          "quote": "Our revenue grew 27.8% year-over-year to reach TWD 763 billion or USD 25 billion. full-year earnings per share increased by 40% to reach the historical high level of TWD 10.18 per share."
+        }
+      ]
+    },
+    {
+      "id": "TSM_010",
+      "claim_type": "cagr_connection",
+      "claim": "先端ノード（16nm/10nm）でのfar majority foundry share獲得 → 先端スマートフォン向けAP・GPU市場でのウェーハ単価上昇 → 売上CAGR 10%+への直接寄与",
+      "evidence": "Lora Ho (Q2 2015): '5-year target CAGR 10% for revenue.' Morris Chang: 'market share gain in 16nm.' Mark Liu: 'TSMC outperform foundry segment growth by several percentage points.' 先端ノード比率向上→ASP上昇→売上CAGR接続は2ステップ以内。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04", "rule12"],
+        "results": {
+          "rule04": true,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule12: Q4 2014での5年目標設定（Q4_annual主）", "ASP継続上昇はLora HoがQ4 2014 Q&Aで『low single-digit range year-over-year』と明言、検証可能"]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Lora Ho",
+          "role": "CFO",
+          "section_type": "q_and_a",
+          "quarter": "Q4 2014",
+          "quote": "We do expect the blended ASP will continue to grow in 2015. In low single-digit range year-over-year."
+        }
+      ]
+    },
+    {
+      "id": "TSM_011",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCは顧客の製品競争力強化を目的として先端技術（16nm, 10nm, 7nm）の相互互換性を設計することで、設計アセットの再利用を可能にし顧客コストを削減する差別化ポジションを確立している。",
+      "evidence": "Mark Liu (Q2 2015): '7-nanometer to be able to leverage the process tool compatibility and maturity from 10-nanometer volume production.' C.C. Wei (Q2 2015): '16-nanometer shares similar metal backend process with 20-nanometer, our 16-FinFET can benefit a lot from 20-nanometer's learning.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["純粋競合（Samsung Foundry）がこの戦略を採用しているかの比較情報なし", "構造的要素として評価できるが競合差別化の定量根拠に乏しい"]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "顧客は20nm→16nm→10nm→7nmとプロセス互換性を活かして再設計コストを最小化できる。TSMC以外に変更すると設計資産を一から作り直すコストが発生",
+        "barrier": "競合ファウンドリがこの互換性アーキテクチャを同水準で実現するには数世代分の開発期間が必要"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Mark Liu",
+          "role": "Co-CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q2 2015",
+          "quote": "7-nanometer to be able to leverage the process tool compatibility and maturity from 10-nanometer volume production"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 7,
+    "claim_count": 11,
+    "competitive_advantage_count": 9,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 1,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule10_negative_case.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "fewshot_CHD.md",
+      "fewshot_COST.md",
+      "fewshot_ORLY.md",
+      "system_prompt_transcript.md",
+      "dogma.md"
+    ]
+  }
+}

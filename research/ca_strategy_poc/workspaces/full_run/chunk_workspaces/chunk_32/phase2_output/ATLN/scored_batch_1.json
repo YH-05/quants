@@ -1,0 +1,44 @@
+{
+  "ticker": "ATLN",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "selexipag（Uptravi）承認→プロスタサイクリン市場の拡大（現状の低利用率からの急拡大）→売上CAGR加速",
+      "descriptive_label": "Uptravi承認→プロスタサイクリン市場拡大→CAGR加速経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "PoiT時点での未承認が大きな不確実要因。KB3 low confidence",
+      "final_confidence": 0.3,
+      "confidence_rationale": "Phase1の-20%調整（未承認）を反映して50%-20%=30%。プロスタサイクリン市場拡大ロジックは市場構造に合致するが、承認前の主張として低評価。",
+      "dogma_applied": ["dogma_rule_8"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "純現金CHF970mn + コアEPS+33%成長 → 株主還元継続（配当増額+10mn株買戻し）+ 選択的M&A → 株主価値CAGR",
+      "descriptive_label": "財務力→株主還元→株主価値CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "CHF1.1bn 3年間実績と新規10mn株買戻し計画は定量的。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。コアEarnings CHF743mn + 純現金CHF970mnによる株主還元継続は定量的で検証可能。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"20-30": 1, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

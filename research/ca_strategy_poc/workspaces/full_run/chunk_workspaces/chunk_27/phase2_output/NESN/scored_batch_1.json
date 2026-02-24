@@ -1,0 +1,87 @@
+{
+  "ticker": "NESN",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2-3ステップ（新興市場プレゼンス→市場成長連動→売上成長）。",
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "kb2_verdict": "positive",
+      "kb2_reasoning": "パターンII（直接的CAGR接続）に合致。新興市場8.9%成長・44%売上比率という実績データで裏付け済み。",
+      "dogma_check": "pass",
+      "final_confidence": 0.7,
+      "confidence_rationale": "Phase 1の評価70%を維持。新興市場44%売上比率と8.9%成長の実績データで裏付けられた直接的メカニズム。"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "60/40+という固有の評価フレームワークと年8,000製品改良という組織的能力・仕組みとして評価。定量的規模あり。ただしUnileverとの差別化が不明確。",
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンIII（能力>結果）に部分的に合致。60/40+という独自フレームワークは能力として評価できるが競合Unileverも同様のNHW戦略を持つ点でパターンBの懸念もあり。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価50%を維持。60/40+という独自評価システムとR&D投資+20bpは評価できるが、Unilever等との相対的差別化の定量証拠が不足。50%上限が適切。"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2-3ステップ（NHW→プレミアム化→価格優位→利益率改善）。",
+      "kb2_pattern": "pattern_C_causal_leap",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンC（因果の飛躍）の懸念あり。NHWのプレミアム化貢献度分離が困難。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価50%を維持。Nestlé Nutrition利益率+80bpの実績はあるがNHW貢献度の分離が困難。パターンC懸念で50%上限。"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Branding",
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule01_capability_not_result", "rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "Purinaの動物栄養研究能力（能力・仕組み）として評価。欧州・中南米での成長拡大は結果として区別。ペット人口増加と合致。ただしMarsとの差別化根拠が弱い。",
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンIII（能力>結果）に部分的に合致。Purinaの研究能力は評価できるがMars・Hill'sとの比較で定量的差別化が示されていない。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価（50%-10%調整で40%）を50%に維持。Purinaブランドと動物栄養研究は評価できるが競合との相対的優位性証拠が不足。50%が適切。"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "gatekeeper": "pass",
+      "kb1_rules_applied": ["rule02_noun_attribute"],
+      "kb1_verdict": "pass",
+      "kb1_reasoning": "CAGR接続クレームとして評価。2ステップ（プレミアムPetCare→高成長→利益率改善）。",
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "kb2_verdict": "caution",
+      "kb2_reasoning": "パターンII（直接的CAGR接続）に部分的に合致。PetCareの成長実績はあるが具体的マージン貢献の定量データが不足。",
+      "dogma_check": "pass",
+      "final_confidence": 0.5,
+      "confidence_rationale": "Phase 1の評価50%を維持。PetCareの成長実績はあるが利益率貢献度の定量証拠が不足。50%が適切。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"0.5": 4, "0.7": 1},
+    "gatekeeper_applied": false
+  }
+}

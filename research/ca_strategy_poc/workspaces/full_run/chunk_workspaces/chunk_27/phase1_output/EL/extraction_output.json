@@ -1,0 +1,196 @@
+{
+  "ticker": "EL",
+  "company_name": "Essilor International SA",
+  "transcript_source": {
+    "primary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/EL/201402_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/EL/201502_earnings_call.json"
+    ],
+    "secondary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/EL/201408_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/EL/201410_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/EL/201507_earnings_call.json"
+    ]
+  },
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "extraction_date": "2026-02-24",
+    "transcript_count": 5,
+    "primary_transcript_count": 2,
+    "framework": "Hamilton Helmer 7 Powers",
+    "note": "EL ticker has mixed transcripts (Essilor + Estee Lauder). Only Essilor transcripts used per chunk_27.json company_name=Essilor International SA. Excluded: 201405, 201411, 201505, 201508, 201511 (Estee Lauder)."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "claim_text": "Essilor の製造・物流ネットワーク（サプライチェーン）は競合他社が再現不可能な参入障壁となっており、英国・スペインなど主要市場の大手チェーンと長期サプライ契約を締結する原動力となっている。「私たちのサプライチェーンの優位性は競合他社の誰もが匹敵できない参入障壁」と経営陣が明言。",
+      "evidence_quotes": [
+        "we have an entry barrier which is unequaled by our competitors and this is our supply chain",
+        "the fast growth of supply chain contracts signed earlier with Boots and General Optica in Spain",
+        "our strategy is leveraging our supply chain and all the product offerings because we have a unique and competitive advantage that no competitors have actually, neither in Europe, in U.S. or Latin America"
+      ],
+      "transcript_source": "201502_earnings_call.json (FY2014 annual); 201507_earnings_call.json (H1 2015)",
+      "confidence": 0.7,
+      "confidence_rationale": "経営陣が明示的に「競合他社が匹敵できない参入障壁」と表現。Boots UK、Walmart、General Optica Spainとの長期供給契約という具体的な結果で裏付けられている。ただし、この主張は管理職の主観的評価であり、競合（Hoya、Zeiss）のサプライチェーン能力との比較データが欠如している。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 5-T: Process Power requires difficult-to-replicate embedded activity chain", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Branding",
+      "claim_text": "Essilor はCrizalブランドの価格プレミアムを5年間で2倍に引き上げながら販売量も増加させた。これは消費者のブランド認知と品質イメージが、価格上昇に耐えうるほど強固であることを示す。「Crizalの価格プレミアムは過去5年間で2倍になり、同時に販売量も増加した」と明言。",
+      "evidence_quotes": [
+        "the price premium of Crizal doubled in the last 5 years and at the same time, the volume of Crizal also increased",
+        "consumers love our advertising campaign. They love Crizal. They love the way we communicate"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201507_earnings_call.json (H1 2015)",
+      "confidence": 0.7,
+      "confidence_rationale": "価格プレミアムの倍増と販売量増加という具体的な量的証拠がある。消費者広告への大規模投資（2015年EUR 215M）との相乗効果で、ブランド力の実体的な証拠として信頼性が高い。ただし市場シェアデータによる独立検証がない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 6-T: Branding requires sustained price premium with volume maintenance", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Cornered Resource",
+      "claim_text": "Essilor は全世界の眼科用光学R&D支出の約75%を占め、同業他社の合計を大幅に上回るR&D投資を実施している。2013年に初めて100件超の特許登録を達成し、業界の知的財産形成において独占的な地位を持つ。",
+      "evidence_quotes": [
+        "we have registered more than 100 patents in 2013, and this never happened in the whole history of Essilor",
+        "Essilor now accounts for 3/4 of all R&D expenses in optical industry. And this has vast implications because in our sector, innovations drive product quality, which drives pricing power, which drives profitability"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201507_earnings_call.json (H1 2015)",
+      "confidence": 0.5,
+      "confidence_rationale": "R&D支出75%という主張は経営陣発言であり、独立した業界データによる検証がない。特許100件超は記録的だが、特許の質と商業的価値は不明。眼科用光学のグローバルR&D定義次第で数値が変わりうる。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 3-T: Cornered Resource requires scarce, proprietary asset", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "Essilor はTransitions Optical買収（調光レンズ市場の事実上の独占的製造元）により、Transitions販売を内部化・加速させ、マーケティングシナジーとして年間EUR 100Mを消費者広告に再投資するフライホイールを確立した。これにより競合他社が追随困難な規模の消費者マーケティング優位性を構築した。",
+      "evidence_quotes": [
+        "the integration of Transitions group and acceleration of sales of Transitions through Essilor group members as well as product mix improvement through the growth of our key brands",
+        "part of the reason of the acquisition of Transitions was to be able to develop that category because it's high margin and because it's good for the consumer",
+        "EUR 200 million in consumer marketing investments planned for 2015 compared to approximately EUR 50 million today"
+      ],
+      "transcript_source": "201502_earnings_call.json (FY2014 annual); 201507_earnings_call.json (H1 2015)",
+      "confidence": 0.5,
+      "confidence_rationale": "Transitions統合による調光レンズの内製化と消費者マーケティング投資の急拡大（EUR 50M→200M）は具体的な証拠。しかしこれは規模の経済というより独占的資源の活用に近く、競合（Carl Zeiss）の調光レンズ代替品の台頭がリスクとして存在する。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Network Economies",
+      "claim_text": "Essilor はオンライン直販プラットフォーム（EyeBuyDirect、FramesDirect、Coastal.com/Clearly）の展開により、消費者データベースを活用してコンタクトレンズ顧客を処方眼鏡・サングラス購買層に転換するクロスセル経済を構築している。オンラインマージンはブリック&モルタルより高く、成長率は30-40%。",
+      "evidence_quotes": [
+        "The first sites we have acquired, EyeBuyDirect, FramesDirect, are growing extremely fast with margins per consumer are significantly higher than the brick-and-mortar businesses",
+        "consumers who have one day purchased contact lenses and we are providing them sunglasses, frames and prescription lenses",
+        "our 2 historic online sites, EyeBuyDirect and FramesDirect, delivered a very strong growth with a special award to EyeBuyDirect"
+      ],
+      "transcript_source": "201507_earnings_call.json (H1 2015)",
+      "confidence": 0.3,
+      "confidence_rationale": "オンライン成長（30-40%）は事実だが、ネットワーク経済（規模が大きくなるほど各ユーザーへの価値が増大するメカニズム）としての証拠は弱い。むしろこれはスケール経済またはコーナードリソース（消費者データ）として分類すべきかもしれない。Coastal.comのターンアラウンドはまだ進行中。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 2-T: Network Economies require value increasing with user count", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "Essilor は新興国（高速成長市場）において市場の低浸透率を活かした持続的成長戦略を展開し、2018年目標EUR 2.8Bに向けて着実に拡大している。2015年H1時点でEUR 750Mを達成、2015年通年でEUR 1.5B超を見込む。市場が低浸透であるため経済変動の影響を受けにくいという独自の防御力を持つ。",
+      "evidence_quotes": [
+        "fast-growing markets continue to post double-digit growth domestically. And this will be a huge potential for the future because their markets is underpenetrated, and this underpenetration offsets any economic volatility in these countries",
+        "we will probably exceed the EUR 1.5 billion for this -- at the end of the year. And we are in a good situation to reach the EUR 2.8 billion objective by 2018"
+      ],
+      "transcript_source": "201507_earnings_call.json (H1 2015)",
+      "confidence": 0.3,
+      "confidence_rationale": "低浸透率市場の成長という構造的優位性の認識は正確だが、競合（Hoya、Carl Zeiss、Rodenstock）も同じ市場に参入しており、Essilorだけが享受できる独自の規模経済としての主張は弱い。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Counter-Positioning",
+      "claim_text": "Essilor はオンライン販売（EyeBuyDirect、FramesDirect、Clearly）に積極的に投資しており、伝統的光学小売業者（眼鏡チェーン）がオンライン化に慎重であるのと対照的に、消費者の購買チャネル変化（オンライン第1位、プライベートオプトメトリスト第2位）に先行して対応している。",
+      "evidence_quotes": [
+        "you see online. Second one is private optometry. Third one is key mass merchandiser, the Walmart, the Costco and everything. And fourth, at the end, the traditional old retailers",
+        "retailer sites tend to grow a little bit faster, so we have a program to actually help our retail partners developing their online business as well, because initially, there's always a little bit of reluctance and protection of their brick-and-mortar business"
+      ],
+      "transcript_source": "201507_earnings_call.json (H1 2015)",
+      "confidence": 0.3,
+      "confidence_rationale": "チャネル変化への先行対応という主張は興味深いが、Essilorは既存チェーンとのサプライ契約（Boots、Walmart）も維持しており、真のカウンターポジショニングとは言いにくい。また、Warby Parkerなどのネイティブオンライン競合の脅威が既に存在している。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 7-T: Counter-Positioning requires established players being unable to mimic without self-harm", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Switching Costs",
+      "claim_text": "Essilor は眼科チェーンと長期排他的供給契約（Boots UK、General Optica Spain、CVS Readersで7年間）を締結しており、契約更新時の高いスイッチングコストが安定したキャプティブ収益基盤を形成している。契約は初期契約だけでなく、新製品投入のたびに「セカンドライフ」を持つ継続的な深化が特徴。",
+      "evidence_quotes": [
+        "these accounts don't have an impact only in one year because they have a second life every new product that we launch, and it's an efficient way for us to get closer to the final consumer",
+        "FGX in the U.S. has started late in Q2 to execute a new contract with a key customer, a 7-years contract"
+      ],
+      "transcript_source": "201507_earnings_call.json (H1 2015)",
+      "confidence": 0.5,
+      "confidence_rationale": "長期契約による囲い込みは具体的な証拠があるが、スイッチングコストが買い手（眼鏡チェーン）側にとってどの程度高いかは不明。7年間の単一契約例はあるが、これがシステム全体のパターンかどうか不明。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 8-T: Switching Costs require meaningful friction for buyer to switch", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "claim_text": "Essilor FY2013: 売上高成長率5.4%（不変為替）、貢献利益率18.1%（過去最高）。FY2014: 売上高成長率13%、貢献利益率18.6%（調整後過去最高）、EBITDA EUR 1.022B、フリーキャッシュフローEUR 800M。H1 2015: 売上高成長率22.6%（うち通貨効果13.2%）、貢献利益率19.1%、EPS+19%、FCF+21%。2018年目標: 有機成長6-7%、貢献利益率18.8%以上。",
+      "evidence_quotes": [
+        "2013 was another year of growth. You see that our revenue has increased by 5.4% growth at constant exchange rates, and this is after 2 years of very strong growth",
+        "in 2014, a strong revenue growth of 13%, record contribution margin at 18.6%, EBITDA EUR 1.022 billion, free cash flow EUR 800 million",
+        "we have, as you have seen, delivered a strong revenue growth at 22.6% and even a stronger increase of 24% in our contributions from operations"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201502_earnings_call.json (FY2014 annual); 201507_earnings_call.json (H1 2015)",
+      "confidence": 0.7,
+      "confidence_rationale": "財務実績は一次情報として信頼性が高い。FY2013の5.4%（達成下回り）→FY2014の13%（Transitions統合効果含む）という動向と、18%台の安定した貢献利益率は競争優位性の持続性と一致している。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 9-T: CAGR connection claims require explicit financial linkage"]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "claim_text": "Essilor の研究開発費は世界の眼科光学産業全体のR&D支出の約75%を占める。2015年の消費者向け広告支出は前年EUR 150Mから EUR 215Mに拡大（43%増）。Transitions Optical統合後、外部販売は年3-4%減少しつつ内部グループ向け販売が加速している。",
+      "evidence_quotes": [
+        "Essilor now accounts for 3/4 of all R&D expenses in optical industry",
+        "worldwide investment this year of EUR 215 million compared to EUR 150 million last year",
+        "the third parties, we announced at that moment, more than 1 year ago, that we see long term, midterm, those sales decreasing slightly year after year"
+      ],
+      "transcript_source": "201507_earnings_call.json (H1 2015); 201502_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "これらはすべて経営陣の定量的な発言であり、一次情報として信頼性が高い。ただし「業界R&Dの75%」は独立したデータソースで検証されていない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 10-T: Factual claims must be clearly stated facts from transcripts"]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "claim_text": "Essilor は120カ国以上でのボルトオン買収戦略（2013年に28件のパートナーシップ・小型買収、2015年H1に9件・EUR 137M）により、地域ラボ・卸売業者・オンライン拠点を継続的に取得し、競合が模倣困難な地域密着型製造・流通ネットワークを構築している。",
+      "evidence_quotes": [
+        "the real indicator, the one that creates value, which is a real driving force for Essilor, is the combination of our bolt-on and our partnerships, small acquisitions and talented companies",
+        "9 deals that will represent EUR 137 million annual revenue",
+        "very fragmented with thousands of players active in lenses, in sunwear, in online distribution. We will continue to consolidate this market"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201507_earnings_call.json (H1 2015)",
+      "confidence": 0.5,
+      "confidence_rationale": "継続的なボルトオン買収による地域ネットワーク構築は実績に裏付けられているが、このモデル自体は競合も模倣可能であり、プロセスパワーとしての「模倣困難な活動システム」の証拠としては間接的。120カ国展開という地理的密度は重要な差別化要因。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 5-T: Process Power requires difficult-to-replicate embedded activity chain", "Rule 1-T: 7 Powers framework"]
+    }
+  ]
+}

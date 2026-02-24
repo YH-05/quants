@@ -1,0 +1,168 @@
+{
+  "ticker": "RR/",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true,
+    "note": "RR/ is Rolls-Royce Holdings plc (LSE:RR.). Special ticker with slash character."
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "TotalCareアフターマーケットサービスモデルによる顧客ロックイン",
+      "seven_powers_category": "Switching Costs",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "民間航空機市場のエンジン長寿命サイクル（20-30年）×TotalCareモデルの合致"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "OE 20%:アフターマーケット80%の収益構造が定量的に明示"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -5,
+          "reasoning": "GE Aviation・P&Wとの直接比較なし"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_9",
+          "verdict": "profit_warning_risk",
+          "adjustment": -5,
+          "reasoning": "2014年にRR/は大規模な業績修正（profit warning）を発表しており、経営リスクが高い"
+        }
+      ],
+      "final_score": 0.60,
+      "final_confidence_pct": 60,
+      "scoring_rationale": "TotalCare（Power by the Hour）モデルは長期サービス契約による構造的スイッチングコスト。OE20%:アフターマーケット80%という収益構造と高マージンが定量的に示されている。ただし2014年の業績修正リスクと競合比較欠如で70%から調整"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "TotalCare×インストールベース→アフターマーケット→収益成長経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "インストールベース拡大→飛行時間連動収益は直接的なCAGR接続"
+        }
+      ],
+      "final_score": 0.60,
+      "final_confidence_pct": 60,
+      "scoring_rationale": "インストールベース拡大が将来の確実なアフターマーケット収益を生む構造。2015-2018 OEデリバリーが将来のアフターマーケット基盤として明示"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "次世代燃料効率エンジン（Trent XWB/7000）の技術的優位性",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_D_t",
+          "verdict": "qualitative_only",
+          "adjustment": 0,
+          "reasoning": "GE・P&Wとの具体的技術比較データなし"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "weak",
+          "adjustment": -10,
+          "reasoning": "競合（GEnx、GTF）との差別化が定量的に示されていない"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "次世代エンジン技術は有望だが、GE・P&Wとの具体的比較がなく相対的優位性の根拠が不十分。オーダーブック（強力な受注残）が間接的な証拠"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "次世代エンジン採用→インストールベース→長期CAGR経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_5_t",
+          "verdict": "indirect",
+          "adjustment": -10,
+          "reasoning": "2018年以降のマージン向上という中期ホライズンで直接性が低い"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "CFOが2018年以降の見通しを明示しているが、PoiT（2015年9月）時点では実現前"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "エンジンライフサイクルコスト管理・技術的改善能力",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "600名エンジニア専従・IRR 40%超・2-3年回収という定量データあり"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -10,
+          "reasoning": "GE Aviation等との比較なし"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "600名専従エンジニアとIRR 40%超という定量的裏付けは能力の証拠。競合との比較なし"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "民間航空機以外の複数セグメントにわたる製品多様性",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_B_t",
+          "verdict": "industry_common",
+          "adjustment": -10,
+          "reasoning": "GEも同様のポートフォリオを保有（rule_3_t違反）"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "製品多様性はGE等も保有する業界共通要素。Marine・Power Systemsの業績悪化が逆にリスク"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 2,
+    "weighted_avg_score": 0.43,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.60,
+      "descriptive_label": "TotalCareアフターマーケットサービスモデルによる顧客ロックイン"
+    },
+    "primary_seven_powers": ["Switching Costs", "Cornered Resource"],
+    "investment_thesis_strength": "moderate",
+    "key_risks": [
+      "2014年の大規模業績修正（profit warning）と経営信頼性リスク",
+      "Marine・Power Systems部門の業績悪化",
+      "OEフェーズでの短期マージン悪化"
+    ]
+  }
+}

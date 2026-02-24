@@ -1,0 +1,62 @@
+{
+  "ticker": "PCAR",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "新興・成長市場での高シェアポジション維持（豪/メキシコ/その他）による国際規模の経済",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "新興市場シェアは結果の側面が強く、維持できる能力の具体的説明が不足",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "新興市場での高シェアは「結果」（KB2パターンA）。どのような構造的能力がシェア維持を可能にするかの説明が欠如。dogma.mdルール1違反。30%。"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "2014年PACCAR: 売上$18.9B記録、純利益$1.36B（+16%）、Q4売上$5.1B、北米シェア28-29%",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PACCAR Parts 2014年: 売上$3.1B記録、税前利益$497M記録。PACCAR Financial Services: EBT $269M",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。Parts/Financialセグメントの財務裏付け。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 1,
+    "confidence_distribution": {"30-40": 1},
+    "gatekeeper_applied": false
+  }
+}

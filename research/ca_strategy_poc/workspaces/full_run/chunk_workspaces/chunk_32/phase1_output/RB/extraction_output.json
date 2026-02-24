@@ -1,0 +1,281 @@
+{
+  "ticker": "RB/",
+  "transcript_source": "FY2014 Annual Results (2015-02-11)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q2_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "RBの「Virtuous Earnings Model」による継続的グロスマージン拡大（3年間330bps拡大）とBEI再投資サイクル",
+      "descriptive_label": "グロスマージン拡大サイクルの仕組み（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO Rakesh Kapoor): 'a virtuous earnings model is something we teach incoming people from day 1... starts with gross margin expansion.' / '2014...Gross margins grew by 100 basis points...fixed cost leverage of 50 basis points.' / 'Gross margin expanded by 330 basis points over 3 years. We reinvested 90 basis points in BEI.' / 'our revenue grew by 200 basis points ahead of market'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "グロスマージン拡大→BEI投資→トップライン成長というサイクルは「仕組み・能力」として評価できる。会社のDNAとして機能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "市場比200bps上回るトップライン成長という相対的優位性を明示。3年間の実績として定量的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "3年間GPM +330bps、2014 OPM +160bps（H2 +260bps）、BEI 30mn増（定額）、市場比+200bps成長"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "2014 H2の260bps OPM改善のうち100bps以上は一時的（採用・出張凍結等）と自ら認めており持続性に疑問（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Superchargeプログラムによる持続的マージン改善（GBP100-150mn）が中期的に裏付け（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "3年間GPM +330bpsの実績はVirtuous ModelがProcess Powerとして機能していることの証拠。ただし2014 H2の一時コスト削減効果への依存を自ら認めており、Superchargeによる持続的コスト削減の実現がポイント。70%。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "RBの19のPowerbrands（Dettol・Durex・Nurofen・Scholl等）と16のPowermarkets集中戦略による差別化",
+      "descriptive_label": "ブランドポートフォリオ集中による競争優位（Branding / Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): '3 years ago... 80% of our business was Health, Hygiene and Home... What has happened over the last 3 years? 92% has become Health, Hygiene, Home' / 'In Health, we delivered a growth rate of 8% in quarter 4' / 'Scholl looked a bit messy...But now I think what we've done on this brand over the last few years has been just clearly really very good.' / Health +8% Q4, Hygiene +6% Q4, Durex 'continued to perform strongly'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Powerbrands集中（80%→92%）は戦略的ポートフォリオ管理能力。20%不採算事業の除却はdogma.mdルール10（ネガティブケース）として評価"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "HealthカテゴリーでDettol・Nurofen等が成長しているが、主要競合（P&G・Unilever）との具体的シェア比較は少ない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Health +8%（Q4）、Hygiene +6%（Q4）、Health&Hygiene 92%に集中、3年間実績"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Merck OTC買収失敗（競合に負ける）がHealth&Hygieneポートフォリオ拡大戦略の限界を示す（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Health&Hygieneへの集中（80%→92%）とPowerbrandsの実績成長は明確な優位性。ただしDettolはPrivate Labelと競合し、Merck OTC買収失敗がM&A戦略の難易度を示す。60%。"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "RBの「Supercharge」組織改革プログラムによるGBP100-150mn持続的コスト削減と組織効率化",
+      "descriptive_label": "組織効率化・コスト構造改善能力（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'There's always juice in the lemon. And that's what we are going to paint the way...we benchmarked ourselves on 15 cost categories...GBP 100 million to GBP 150 million [cost savings opportunity].' / 'Supercharge really is about growth. It's about making sure that we can rejuvenate our organization, our talent, our culture' / 'simpler, more agile organization...super-efficient and cost-conscious organization'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "組織改革は戦略的意思決定。背後にある能力（ベンチマーク分析・コスト識別・変革実行）の仕組みの説明はある程度"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "GBP100-150mn目標は定量的だが、ベンチマーク15カテゴリーの詳細・実現時期は未開示"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "caution",
+            "reasoning": "Superchargeは組織改革という戦略。それを可能にする能力（EC直接コスト所有制）は部分的に説明あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "GBP100-150mnのコスト削減計画は実現前の宣言（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "EC（経営委員会）直接コスト所有制という仕組みは具体的（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "Superchargeは実現前の計画であり、現時点での競争優位性の証拠としては弱い。コスト削減15カテゴリーのベンチマーク手法は具体的だが、持続的削減の実現可能性は未知。30%。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "RBのイノベーション・ブランドパイプライン（Durex Invisible・Air Wick Life Scents・Optrex等の技術差別化製品）",
+      "descriptive_label": "製品イノベーション能力（Cornered Resource / Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'selexipag, as a very active oral...' [actually this is Actelion context] / (CEO RB): 'we found a very new way to talk about this product [Nurofen]...clinical and medical research actually shows you that the real cause of headaches' / 'Air Wick Life Scents...a true breakthrough in fragrance technology' / 'Durex Invisible...20% thinner' with maintained safety / Optrex ActiMist rolling out to 14 markets / MegaRed Super Heart combining 3 clinically proven ingredients",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "製品イノベーションの具体的な技術（Life Scentsのマルチフレグランス、Durex 20%薄化+安全性維持）は能力として評価できる。医学・臨床研究活用"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "個別製品の定量数値（Durex 20%薄化、Optrex 14市場展開）はあるが、イノベーション成功率・売上貢献の集計数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "R&Dと医学的専門性を事業の中核に位置づけており構造的要素として評価"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Nurofen（臨床データ活用）・Air Wick Life Scents（フレグランス技術）・Durex（安全性×薄化）は技術差別化の証拠。医学的・科学的研究投資が背後にある能力として評価。ただし競合（P&G）との定量比較がなく50%。"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "GPM拡大→BEI投資（+GBP30mn）→市場比+200bps成長→EBIT成長CAGR（OPM moderate-to-nice expansion）",
+      "descriptive_label": "Virtuous Model→EBIT CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "GPM拡大→BEI投資→売上成長→EBIT拡大は2-3ステップの明確なメカニズム。2015年'moderate to nice'ガイダンスで定量的方向性あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次での言及"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "2014 H2の一時的コスト削減（100bps以上）が2015年に逆風となる可能性（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "3年間の実績（GPM +330bps、EBIT growth）がVirtuous Modelの信頼性を担保。2015年'moderate to nice'はやや慎重だが方向性は維持。60%。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Powerbrand集中（Health +8%、Hygiene +6%）→ Net Revenue +4% LFL → Net Income +14% CER → EPS CAGR",
+      "descriptive_label": "Powerbrand成長→Net Income→EPS CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Powerbrand成長→NR増→NI増（2014 +14% CER）は直接的接続。2015年NR +4% LFLガイダンスが検証可能"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014 NI +14% CER（売上比3倍の増益）は優れた経営レバレッジを示す。2015年LFL +4%ガイダンスとの接続は明確。70%。"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "Supercharge GBP100-150mn持続的コスト削減→EBIT margin拡大→FCF増加CAGR（GBP800mn株主還元プラン）",
+      "descriptive_label": "Supercharge→EBIT margin→FCF CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "コスト削減→EBIT margin拡大は2ステップ。ただしSuperchargeは実行前段階（GBP200mn費用3年間）が先行"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Superchargeの実現は3年後の見通し（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "GBP100-150mnコスト削減→FCF増加は接続として明確だが、実現前の計画段階。GBP800mn株主還元（2015年）は現在のFCF力の証拠として強い。40%。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "RB FY2014: NR GBP8.836bn（+4% LFL）、Adj. OPM 29%（+160bps、H2 +260bps）、NI +14% CER（Indivior除く）、FCF 130% of NI（H2）。NR CER: Health +8% Q4、Hygiene +6% Q4、Food +4% Q4。GPM +100bps（3年間 +330bps）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 5]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Health&Hygiene比率: 80%→92%（3年間）。2015年ガイダンス: NR LFL +4%（total略減）、OPM moderate to nice expansion。株主還元: GBP800mn買戻し（2015年）、配当50% payout継続。Supercharge: GBP100-150mn持続的コスト削減、GBP200mn構造改革費用（3年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Indivior demerger完了（2014年12月）。GBP45mn stranded costs（2014年に吸収済み）。NWC改善継続（2014年H2で相殺要因あり）。16 Powermarkets、19 Powerbrands。ENA: Russia/ANZ統合",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    }
+  ]
+}

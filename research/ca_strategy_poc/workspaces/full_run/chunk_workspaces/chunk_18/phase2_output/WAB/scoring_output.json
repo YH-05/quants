@@ -1,0 +1,82 @@
+{
+  "ticker": "WAB",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "WAB-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "アフターマーケット60%・鉄道ブレーキ/信号システムのスイッチングコスト",
+      "phase1_confidence": 0.7,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule04 - $1.9B（60%）のリカーリング収益という強力な定量証拠。rule06 - 鉄道安全システムは一度採用すると変更コストが非常に高い（認証・乗務員訓練・部品互換性）。KB2: Pattern I - 60%アフターマーケット比率は業界他社との明確な差。Pattern IV - 安全規制要件が市場地位を構造的に保護。dogma.md: 70%は「定量的裏付け+構造的根拠あり」の要件を満たす。",
+      "final_confidence": 0.7,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true,
+      "notes": "鉄道安全システムのスイッチングコストは非常に高い。製薬承認と類似した規制環境。"
+    },
+    {
+      "claim_id": "WAB-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Wabtec Performance System（WPS）・キャッシュ変換力",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_III (能力 > 結果)",
+      "scoring_rationale": "KB1: rule01 - WPSという能力システムの存在は評価できる。KB2: Pattern III - $472M CF vs $352M Net Income（$120M超過）という定量証拠。ただしPattern A適用リスク - キャッシュ変換率（結果）→WPS（能力）の説明が薄い。WPSの具体的な内容（どのような仕組みか）がトランスクリプトで十分説明されていない。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAB-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "ECP技術（40,000台実績）×FRA規制義務化の可能性",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule01 - ECP技術は実現済み能力として40,000台の実績で証明。KB2: Pattern IV - 安全規制義務化は強制的な需要創造要因。ただしKnorrも同技術を持つため独占的優位性は限定的。KB1: rule10 - 規制義務化未確定というリスク。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAB-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "グローバル展開・M&A統合力",
+      "phase1_confidence": 0.4,
+      "kb2_pattern_applied": "pattern_A (結果を原因と取り違え)",
+      "scoring_rationale": "KB1: rule08 - グローバル展開は戦略的方向性。KB2: Pattern A - $3B売上・海外50%は結果指標。KB1: rule07 - 競合比較での差別化が不明確。",
+      "final_confidence": 0.3,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAB-005",
+      "claim_type": "cagr_connection",
+      "claim_text": "鉄道市場$100B超・年3%成長",
+      "phase1_confidence": 0.5,
+      "scoring_rationale": "KB2: Pattern II (直接的CAGRメカニズム) - 鉄道インフラ投資はWABの製品需要と直接リンク。PTC義務化は明確なカタリスト。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAB-006",
+      "claim_type": "factual_claim",
+      "claim_text": "2014年実績・2015年ガイダンス",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 4,
+    "ca_weighted_confidence": 0.50,
+    "top_power_type": "Switching Costs",
+    "overall_assessment": "WABは鉄道安全システムのスイッチングコストが最も評価できる優位性。アフターマーケット60%という収益構造は安定的。ECP規制義務化が実現すれば大きなアップサイドあり。"
+  }
+}

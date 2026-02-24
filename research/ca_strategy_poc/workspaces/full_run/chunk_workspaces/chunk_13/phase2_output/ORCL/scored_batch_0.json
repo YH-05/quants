@@ -1,0 +1,120 @@
+{
+  "ticker": "ORCL",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Oracleデータベースが競合クラウドSaaS企業（Salesforce、SAP SuccessFactors/Ariba/Concur）の基盤として広く採用されており、競合他社自身がOracle製品に依存しているという技術的ロックイン構造",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": "pattern_V_specific_competitor_comparison",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "競合他社（Salesforce、SAP）の具体名と依存事実が定量的に示されている（Salesforce 9年契約、SAP 3社）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "競合他社自身がOracle DBに依存するという事実は強力なSwitching Costsの証拠。Q4 annual callでの発言（主・①相当）。Workdayは非依存であり完全独占ではないが、Salesforce/SAPという主要競合の依存は構造的スイッチングコストの高さを示す。KB2パターンV（特定競合との比較）に合致し高評価。"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "SaaS/PaaS/IaaSの垂直統合型クラウドスタック（ハードウェア Engineered Systems ＋ OS ＋ Database ＋ Java Middleware ＋ Applications）を一社で提供できる唯一性",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "「自社でサプライチェーンを完結させる能力」という仕組みを評価。フルスタック内製は独自の強み",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "垂直統合型スタック（電気・建物以外は全自社製）は能力・仕組みとして明確。SaaS顧客獲得時にハードウェア・OS・DB・ミドルウェアを全て取り込めるモデルは規模の経済と差別化を両立。純粋競合（IBM、SAP）に対する定量的コスト優位の欠如で90%には届かないが、70%は妥当。"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "claim_text": "Oracle DatabaseとJava Middlewareがエンタープライズ向けPaaSプラットフォームにおけるデファクトスタンダードとなっており、ISVコミュニティ（基幹システムベンダー）が Oracle PaaS上でクラウド移行するネットワーク効果",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "「virtually every ISV」の具体的数値化が不十分。AWS Aurora等の代替との競合が不明確",
+          "delta": -0.1
+        },
+        {
+          "reason": "Q4 FY2014発言（主・①相当）でデファクト基盤という業界構造との合致",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "ISVの依存関係はNetwork Economies + Switching Costsとして有望。エンタープライズDB市場での歴史的なデファクト地位は市場構造と合致する（KB2パターンIV）。ただし定量的裏付け不足と、クラウドシフト（AWS RDS等）による競合優位性の変化リスクで50%が上限。"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "クラウドERP市場でWorkdayに対して10倍の顧客規模を持つスケール優位性（Q4 FY2015時点で約1,000顧客 vs Workday）",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "顧客数（10倍）は結果の側面が強い。規模を可能にした能力（製品スコープ、既存顧客移行パス）の説明が不足",
+          "delta": -0.1
+        },
+        {
+          "reason": "Workdayという純粋競合への定量比較は高評価要因",
+          "delta": 0.1
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "Workday対比10倍という定量比較（KB2パターンI）は強力だが、顧客数は「結果」の側面があり（KB2パターンA部分合致）。規模を維持できる能力の説明が不十分で50%に留める。dogma.mdルール1（能力vs結果）とルール7（純粋競合比較）が拮抗。"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "クラウドサービスの課金成長率がSalesforce（21%）・Workday（31%）を大幅に上回る70%成長（Q4 FY2015 billings growth）を達成した競争力",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "billings成長率は典型的な「結果」の提示。能力説明なしでrule_1_t違反に近い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "70% vs Salesforce 21% vs Workday 31%という定量的競合比較（KB2パターンI）は存在するが、成長率は「結果」（KB2パターンA）。SaaS切替期の特殊要因（既存on-premise顧客の移行）が含まれており、持続的競争優位性の証拠として弱い。dogma.mdルール1違反が明確。30%が適切。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 1, "50-60": 2, "70-80": 2},
+    "gatekeeper_applied": false
+  }
+}

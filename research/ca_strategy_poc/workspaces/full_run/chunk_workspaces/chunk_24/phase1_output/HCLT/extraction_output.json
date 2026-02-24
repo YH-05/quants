@@ -1,0 +1,223 @@
+{
+  "ticker": "HCLT",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "HCLT_001",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTはインフラストラクチャー管理サービス（IMS）において、リモートインフラ管理（RIM）市場を早期に識別し20年以上のポジション構築を通じて市場リーダーシップを確立しており、Gartner・Forrester・EverestのすべてのマジッククアドラントでLeaderに選定される唯一のITOプロバイダーとなっている。",
+      "evidence": "Q4 FY2015（主・①相当）CEO Anant Gupta：「We are the only IOP to be rated as a leader by Gartner, Forrester and Everest」。2000年代初頭からのRIMポジション構築を経て、Infrastructure Services収益が$2B超を達成。また顧客満足度調査でも業界最高水準を記録（FY2015）。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "Q4_annual（主・①相当）発言として採用",
+          "ルール2: 「市場リーダーシップ」「業界唯一のLeader認定」という名詞属性",
+          "ルール6: 20年以上のRIM事業構築は構造的要素",
+          "ルール11: ITアウトソーシング市場でのRIM/IMS市場の成長（$150B更新市場）という業界構造×HCLTの規模・実績ポジションが合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "Infrastructure Services収益$2B超の規模により、グローバル24時間対応体制・高度な自動化ツール・セキュリティ能力への継続投資が可能",
+        "barrier": "20年以上にわたるRIM/IMS市場での実績・ツール蓄積・グローバルデリバリー体制は後発者が短期で複製困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "C. Vijayakumar",
+          "role": "EVP Infrastructure Services",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2015",
+          "quote": "We are the only IOP to be rated as a leader by Gartner, Forrester and Everest."
+        }
+      ]
+    },
+    {
+      "id": "HCLT_002",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTはエンジニアリングサービス（製品開発・R&Dアウトソーシング）において市場No.1ポジションを確立しており、製造業からサービス化（servitization）という業界構造変化に対応したServSmart等の固有プロポジションを持つ。",
+      "evidence": "Q1 FY2015（2014年10月発言）CEO：「Engineering Services: we are already a #1 player in that market space」。FY2015年次でEngineering Services収益$1B超到達、25.8%成長（業界トップ水準）。ServSmartプロポジションが製造業のservitizationニーズに対応。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule04", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule02": true,
+          "rule04": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q1_quarterly（従・②相当）発言から採用、-10%調整",
+          "ルール1: 「No.1ポジション」は結果。ただし製品開発ライフサイクル全体を対象とした能力は名詞属性",
+          "ルール4: $1B超収益・25.8%成長という定量データあり",
+          "ルール11: 製造業のservitization（コア製品製造からサービス収益へ）という業界構造×Engineering Services能力の合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "製品開発ライフサイクル全体（設計・開発・テスト・サポート）を担える規模と専門能力により、顧客の開発コスト削減と時間短縮に貢献",
+        "barrier": "20年以上の組み込みシステム・ハードウェア設計・ソフトウェア開発の経験蓄積は後発者が短期で構築困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Anant Gupta",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 FY2015",
+          "quote": "HCL has been strong in identifying certain emerging opportunities and then positioning alternative propositions over the course of the last 15 years...remote infrastructure management in the early 2000s...we are already a #1 player in that market space."
+        }
+      ]
+    },
+    {
+      "id": "HCLT_003",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTはDryICEと呼ばれる自社開発の予測分析・自己修復型IT自動化プラットフォームを保有しており、これが次世代ITO（Gen 2.0）市場における差別化された知的財産（IP）となっている。",
+      "evidence": "Q1 FY2016（2015年10月発言、PoiT境界）CEO/EVP：「DryICE is a breakthrough thinking that focuses on work elimination through predictive analytics and self-healing solutions. We believe our focus on automation and orchestration over the years has truly culminated into a great offering in terms of DryICE」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule02", "rule06", "rule08"],
+        "results": {
+          "rule01": true,
+          "rule02": true,
+          "rule06": true,
+          "rule08": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "2015年10月発言（PoiT境界上、従・②相当）として慎重評価",
+          "ルール2: 「DryICE」「予測分析・自己修復能力」という名詞属性",
+          "ルール6: 独自開発の自動化プラットフォームは構造的要素",
+          "ルール8: デジタル化・自動化への「投資」という戦略的決定と能力の境界が曖昧"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "DryICEによる予測的ワーク排除・自己修復により、ITO運営コストを削減しながら品質を改善する独自の運営能力",
+        "barrier": "自動化・オーケストレーション分野での数年間の研究開発投資と実際の顧客環境での検証・改善サイクルは後発者が短期で複製困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "C. Vijayakumar",
+          "role": "EVP Infrastructure Services",
+          "section_type": "prepared_remarks",
+          "quarter": "Q1 FY2016",
+          "quote": "DryICE is a breakthrough thinking that focuses on work elimination through predictive analytics and self-healing solutions. We believe our focus on automation and orchestration over the years has truly culminated into a great offering in terms of DryICE, which is really a breakthrough proposition."
+        }
+      ]
+    },
+    {
+      "id": "HCLT_004",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTは大規模リベット・アウトソーシング市場（$150B・2016-2018年）において、98%の高い顧客維持率と業界トップのCSAT（顧客満足度スコア）を背景に、既存顧客のリベット成約率が高い粘着性ある顧客基盤を持っている。",
+      "evidence": "Q4 FY2015（主・①相当）CEO：「client retention rates are 98%. We are the only IOP to be rated as a leader by Gartner, Forrester and Everest」。Q1 FY2016：「$150 billion worth of renewals in 2016, '17 and '18...our excellent win ratios that we have been used to」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule02": true,
+          "rule04": true,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4_annual（主・①相当）発言として採用",
+          "ルール4: 顧客維持率98%という定量データあり",
+          "ルール1: 98%維持率は結果。その背後にある能力（デリバリー品質、SLAマネジメント、顧客エンゲージメント）の説明が不足",
+          "ルール11: リベット市場$150Bという業界構造×HCLTの市場ポジション（Gartner/Forrester/Everest Leader）の合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "大規模ITOシステムの移行コスト（データ移行・スタッフ移転・サービス連続性確保）が顧客の競合への乗り換えを抑止",
+        "barrier": "長期契約（マルチイヤー）・広範なインフラ統合・グローバルサービス体制の複製には数年と数百億ドルのコストを要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Anant Gupta",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2015",
+          "quote": "From a CEFX perspective, we continued to deliver industry-leading customer satisfaction. Our client retention rates are 98%."
+        }
+      ]
+    },
+    {
+      "id": "HCLT_005",
+      "claim_type": "cagr_connection",
+      "claim": "IMS市場リーダーシップ・98%顧客維持率 → リベット市場での高い成約率 → 収益CAGR（3年13%）支持",
+      "evidence": "Q4 FY2015 CEO：「3-year growth rate on revenue, delivering about 13% CAGR」「order book is 10% higher than the highest levels we have previously seen」。Q1 FY2016：「revenue profile for the last 3 consecutive financial years has been better than the average of the top 3 India offshore providers」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06"],
+        "results": {
+          "rule01": true,
+          "rule06": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4_annual（主・①相当）発言",
+          "3年13% CAGRはIMS/ITOサービスの長期契約の年次売上認識という因果チェーン（2ステップ）で検証可能",
+          "ただしCAGRの各ドライバー（既存顧客の維持率×リベット成約率×新規ロゴ獲得）への定量的分解が不足"
+        ]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Anant Gupta",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2015",
+          "quote": "Our quarterly Y-o-Y revenue grew by 13.5% in constant currency terms. And on LTM basis, we delivered 15% growth rate over the 3 years CAGR, now depicting about 12%...our order book is 10% higher than the highest levels we have previously seen."
+        }
+      ]
+    },
+    {
+      "id": "HCLT_006",
+      "claim_type": "factual_claim",
+      "claim": "HCLTのFY2015の業績：収益$6.2B（3年CAGR 13%）、EBIT $1.32B（3年CAGR 26%）、純利益$1.16B（3年CAGR 34%）。インフラサービス$2B超、エンジニアリングサービス$1B超、金融サービス$1.5B超の各マイルストーンを達成。",
+      "evidence": "Q4 FY2015（主・①相当）CEO発言による年次確定財務数値。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Anant Gupta",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 FY2015",
+          "quote": "Our 3-year growth rate on revenue, delivering about 13% CAGR, our EBIT delivering about 26% CAGR to end the year at $1,324 million, and net income growing to...by 34% over a 3-year basis to $1,164 million."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 8,
+    "claim_count": 6,
+    "competitive_advantage_count": 4,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 1,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule02_noun_attribute.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "system_prompt_transcript.md",
+      "seven_powers_framework.md",
+      "dogma.md"
+    ]
+  }
+}

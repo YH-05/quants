@@ -1,0 +1,187 @@
+{
+  "ticker": "NOVOB",
+  "company_name": "Novo Nordisk A/S",
+  "gics_sector": "Health Care",
+  "country": "DENMARK",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_applied": true,
+    "kb2_t_applied": true,
+    "kb3_t_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "GLP-1インスリン（Victoza）における世界市場の圧倒的リーダーシップ：GLP-1バリュー市場シェア71%（2013）/66%（2014）を維持し、競合（Eli Lilly dulaglutide、GSK albiglutide）の参入後もシェアを防衛",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量的差別化: GLP-1バリューシェア71%→66%維持）、pattern_IV_t（業界構造×ポジション: 処方薬の高いスイッチングコスト=Switching Costs）。pattern_A_t部分適用（66%シェアは結果だが、競合参入後の維持は能力の証拠）",
+        "kb3_t_alignment": "LLY類似（競合製品参入後のシェア防衛能力）。「競合2社の参入後もシェアへの影響は限定的」という直接比較（Rule 7）合格。Switching Costs（処方医の学習コスト・習慣）という7 Powers適用",
+        "dogma_check": "Rule 1: Victozaのシェア防衛を支える能力は「処方医との関係・臨床エビデンスの蓄積・スイッチングコスト」として能力評価可能。Rule 4: 71%→66%という2年間の定量データ。Rule 7: dulaglutide/albiglutideとの直接比較でシェア維持を実証（Rule 7合格）。Rule 11: 処方薬市場のスイッチングコスト構造との合致",
+        "final_confidence": 70,
+        "confidence_rationale": "競合2社の参入後もGLP-1シェアを71%→66%（5ポイント低下のみ）に維持した実績は、Switching Costs（処方医の学習コスト）の強さを示す。Rule 7の直接比較合格。PBM契約喪失影響は限定的。Phase 1の70%を維持"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Victoza GLP-1リーダーシップ → 米国GLP-1市場拡大（5.9%→6.9%の糖尿病市場シェア） → Victoza売上+16%成長 → 糖尿病部門全体のCAGR支持",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格。GLP-1市場シェアリーダー×市場拡大×自社成長という複合ドライバーが明確",
+        "kb3_t_alignment": "ORLY類似（市場シェア×市場拡大→CAGR）。2013: +28%、2014: +16%（PBM喪失にもかかわらず）という実績で検証済み",
+        "dogma_check": "Rule 5: 2-3ステップで直接的。GLP-1市場シェア（5.9%→6.9%拡大）×Victoza成長という経路はシンプル。2年の実績で検証可能",
+        "final_confidence": 70,
+        "confidence_rationale": "GLP-1リーダーシップ→市場拡大×自社成長→CAGR接続は2-3ステップで直接的。PBM契約喪失(-1%ヘッドウィンド)にもかかわらず+16%成長を達成した実績で裏付け。70%維持"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "糖尿病特化の圧倒的R&Dパイプラインと科学的蓄積：Tresiba（次世代基礎インスリン）・semaglutide（週1回GLP-1）・IDegLira・Saxenda（肥満）・faster-acting aspartの同時進行型パイプライン（世界最高水準の糖尿病研究組織）",
+      "phase1_confidence": 75,
+      "scoring": {
+        "kb2_t_verdict": "pattern_III_t（能力優位性: 糖尿病特化R&D組織）、pattern_V_t（Cornered Resource: 100年の糖尿病科学知見・試験設計能力）。7 Powersの「Process Power」に合致",
+        "kb3_t_alignment": "LLY#2類似（高度なR&D能力）。ただしNovo Nordiskの糖尿病特化度（100年の歴史）はLLYより遙かに深い。dogma.md Rule 11完全合致（業界構造：糖尿病特化×世界最大パイプライン）",
+        "dogma_check": "Rule 1: 複数Phase III同時実施能力は能力として最高評価。Rule 3: 糖尿病特化（100年の歴史）は他社との相対的差別化が明確。Rule 4: R&D費DKK 13.8B（+18%）・semaglutide全6試験完了・Saxenda FDA承認という定量データ。Rule 6: 糖尿病R&Dの100年蓄積は新規参入者が不可能（Process Power）",
+        "final_confidence": 75,
+        "confidence_rationale": "糖尿病特化100年のProcess PowerとCornered Resource（科学知見）はNovo Nordiskの核心的優位性。複数Phase III同時実施・Saxenda承認という実績で能力を証明（Rule 1,3,4全合格）。Phase 1の75%を維持"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "糖尿病R&Dパイプライン → Tresiba/semaglutide等の次世代製品ローンチ → 現行製品ポートフォリオの段階的更新 → 糖尿病部門の持続的売上CAGR（8-11%/年、LC）",
+      "phase1_confidence": 65,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t部分適用（3-4ステップ: R&D→承認→ローンチ→売上）。ただしTresiba（23カ国ローンチ済み）・Saxenda（FDA承認済み）という実証済み製品が経路の確実性を高める",
+        "kb3_t_alignment": "LLY類似（R&Dパイプライン→CAGR経路）。ただし全製品の商業化には時間がかかり、不確実性あり。Tresiba/Saxendaの実績が基準を設定",
+        "dogma_check": "Rule 5: 3-4ステップ、間接的。ただし一部は実証済み（Tresiba日本26%シェア、Saxenda承認）。全パイプラインの商業化は長期的で不確実性あり。semaglutideはまだPhase III段階",
+        "final_confidence": 60,
+        "confidence_rationale": "R&Dパイプライン→CAGR経路は3-4ステップで間接的だが、Tresiba/Saxendaの実績が経路の確実性を高める。semaglutideはPoiT時点でまだPhase III段階（米国承認前）。Phase 1の65%から-5%して60%"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "83%超の粗利率と高効率な販売組織（S&D費を売上の26%に制御）による業界トップクラスのプロフィタビリティ：営業利益率39%（2014年）でグローバル製薬最高水準",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量的差別化: 83.6%粗利率・39%営業利益率・26%S&D比）、pattern_IV_t（Scale Economies: 糖尿病特化製造・販売効率）",
+        "kb3_t_alignment": "COST#1類似（定量的な構造的コスト優位性）。製薬業界の中で39%の営業利益率は最高水準の一つ（Rule 3合格）。糖尿病特化による製造・販売の学習曲線効果を評価",
+        "dogma_check": "Rule 1: 83%粗利率はビジネスモデルとして評価可能（糖尿病特化による規模の経済）。Rule 4: 83.6%（+50bp）・39%・26%（安定）という三つの定量データ。Rule 3: 製薬大手比較で39%の営業利益率は最高水準（Roche等と比較可能）。米国薬価圧力リスクで-5%",
+        "final_confidence": 70,
+        "confidence_rationale": "83.6%粗利率と39%営業利益率は製薬業界最高水準（Rule 3合格）。糖尿病特化Scale Economiesが構造的根拠。米国薬価引き下げ圧力はあるが短期的な影響は限定的。Phase 1の70%を維持"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "高粗利率モデル → 売上成長がEPS成長に増幅（+8%売上→+13%営業利益、LC） → DKK 15B自社株買い×11%増配 → EPS CAGR持続",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続: オペレーティングレバレッジ→EPS増幅）、合格。2年連続実績（2013: +12%売上→+15%営業利益、2014: +8%→+13%）で検証可能",
+        "kb3_t_alignment": "COST類似（オペレーティングレバレッジの直接的EPS接続）。DKK 15B自社株買い＋11%増配によるEPS/配当成長の裏付けが追加的に強固",
+        "dogma_check": "Rule 5: 2ステップで直接的。高粗利率→売上成長の利益増幅→EPS。2年の実績（1.5-1.6倍の利益弾性）で検証済み",
+        "final_confidence": 70,
+        "confidence_rationale": "高粗利率によるオペレーティングレバレッジは2年連続で実証（2013: 1.25倍、2014: 1.625倍の弾性）。自社株買い・増配によるEPS成長の更なる加速も定量的根拠あり。70%維持"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Tresiba（超長時間作用型基礎インスリン）による次世代インスリン市場の開拓：日本で26%の基礎インスリン市場シェア獲得（2013年3月ローンチ後2年以内）、EU主要国での順次ローンチ",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量: 26%シェア獲得速度）、pattern_II_t（先行者優位: 次世代基礎インスリン）。ただし米国FDA CRL受領（最大市場未承認）が最大のリスク",
+        "kb3_t_alignment": "LLY#2類似（次世代製品の臨床的差別化）。Tresilbaの低血糖リスク低減という臨床的優位性は評価可能。日本でのsharetraction（10%→26%）が実証",
+        "dogma_check": "Rule 1: Tresiba（IDeg）の低血糖リスク低減という臨床的優位性は仕組みとして評価可能。Rule 4: 日本シェア10%（2013）→26%（2014）という定量実績。Rule 3: Sanofi Lantus（市場リーダー）との対比で差別化可能。米国FDA未承認が最大のネガティブ（-10%）",
+        "final_confidence": 45,
+        "confidence_rationale": "日本での26%シェア獲得は臨床的差別化（低血糖リスク低減）の実証だが、米国FDA CRL受領（最大市場未承認）という最大のリスク。Sanofi Lantusの支配的ポジションも障壁。Phase 1の50%から-5%して45%"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "現代インスリン3製品（Levemir、NovoRapid、NovoMix）の世界的ポートフォリオによる糖尿病インスリン市場でのScale Economics：78%の「modern insulin」売上比率と全地域での2桁成長",
+      "phase1_confidence": 60,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量: Levemir+22/25%・NovoRapid+12%、78%比率）、pattern_IV_t（Scale Economies: グローバルインスリン製造・流通）。ただしパターンA-T部分適用（「78%の現代インスリン比率」は結果）",
+        "kb3_t_alignment": "COST#1類似（規模の経済による構造的コスト優位性）。グローバルなインスリン製造（デンマーク）・流通（180カ国）はScale Economiesの典型",
+        "dogma_check": "Rule 1: グローバルインスリン製造・流通能力は能力として評価可能。Rule 4: 全製品の2桁成長・78%比率という定量データ。Rule 3: Sanofi/Lilly対比でのインスリンポートフォリオ優位性（現代インスリン3製品vs Sanofiの1製品支配）。米国価格効果との区別が必要（-5%）",
+        "final_confidence": 60,
+        "confidence_rationale": "現代インスリン3製品の全地域2桁成長はScale Economiesの強さを示す（Rule 1,4合格）。ただし米国の成長は価格上昇効果を含む可能性（Rule 9注意）。Phase 1の60%を維持"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "現代インスリンポートフォリオ → 全世界での+22%/+25%成長 → 糖尿病部門のLC売上CAGR 8-14%（2012-2014）→ グループ全体EPS CAGR",
+      "phase1_confidence": 65,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格。現代インスリンが糖尿病部門・グループ全体成長の主要ドライバー（2年実績で検証済み）",
+        "kb3_t_alignment": "ORLY類似（製品ラインup→CAGR）。2013/2014の実績（+14%LC現代インスリン成長）で直接的に検証可能",
+        "dogma_check": "Rule 5: 2ステップで直接的。現代インスリン売上→糖尿病部門→グループ成長。2年の実績で裏付け",
+        "final_confidence": 65,
+        "confidence_rationale": "現代インスリンがグループ成長の主要ドライバーであることは2年間の実績で明確に実証。CAGR接続は2ステップで直接的。65%維持"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Victoza GLP-1シェア: 2013年バリュー71%（世界）→2014年ボリューム66%（米国）。競合参入（dulaglutide、albiglutide）後もシェア維持。GLP-1の糖尿病市場シェア5.9%→6.9%に拡大",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2013/FY2014 CEO・COO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2014年R&D費 DKK 13.8B（+18%）。パイプライン: semaglutide Phase IIIa全6試験完了、Saxenda FDA承認（2014年12月）、DEVOTE 7,644患者リクルート完了、faster-acting aspart Phase IIIa 2試験完了",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014 CSO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "2014年財務: 売上DKK 88.8B（+8% LC）、粗利率83.6%（+50bp）、営業利益率39%（+5年平均34%比）、営業利益+13%（LC）、自社株買い DKK 15B（新プログラム）、配当DKK 5/株（+11%）",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014 CFO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "Tresiba: 2014年末23カ国でローンチ。日本（2013年3月ローンチ）で26%基礎インスリン市場シェア（2014年末）。米国FDA CRL受領で未承認",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014 COO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "現代インスリン3製品（Levemir, NovoRapid, NovoMix）: 2013年全体+14%(LC)、Levemir+22%、NovoRapid+12%、NovoMix+10%。現代インスリン=Novo Nordiskインスリン売上の78%",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2013/FY2014 CEO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    }
+  ]
+}

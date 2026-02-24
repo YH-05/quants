@@ -1,0 +1,107 @@
+{
+  "ticker": "TXN",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "300mmウェハー製造における業界最大規模と低コスト構造（競合比コスト優位）",
+      "evidence": "Q4 2014: '300-millimeter output and the opportunistic purchase of assets ahead of demand'",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "300mmウェハーへの早期転換という具体的な製造能力の説明あり"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "Gross margin 58%、FCF 27%の定量的成果"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "300mm設備投資はサンクコスト大で競合が短期間で追いつくことが困難"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.1, "reasoning": "能力の優位性：製造プロセスの具体的な能力説明"},
+        {"pattern_id": "pattern_IV", "matched": true, "adjustment": 0.05, "reasoning": "業界構造×コスト競争力"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_III", "adjustment": 0.1, "reasoning": "具体的製造能力"},
+        {"source": "kb2_pattern_IV", "adjustment": 0.05, "reasoning": "業界構造合致"}
+      ],
+      "overall_reasoning": "300mm製造の規模優位は具体的な仕組みとして評価できる。FCF 27%という定量的成果。業界構造との合致高い。おおむね納得で70%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "300mm製造コスト優位 → 高GPM維持 → Free cash flow成長 → 一株あたりFCF増加",
+      "evidence": "Q4 2014: GPM 58%、FCF 27% of revenue（+18%）",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "製造コスト低下→GPM維持/拡大→FCF増加は直接的2ステップ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.1, "reasoning": "直接的CAGR接続。FCF 27%で検証可能"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_II", "adjustment": 0.1, "reasoning": "直接的接続"}
+      ],
+      "overall_reasoning": "製造コスト→GPM→FCFの接続は直接的。FCF 27%という定量的開示あり。おおむね納得で70%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Industrial（31%）とAutomotive（13%）への市場集中による長期・安定的な製品需要基盤",
+      "evidence": "Q4 2014: 'industrial and automotive combined were 44% of TI's revenue'",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "産業/車載44%は収益構成（結果）"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "産業/車載は設計寿命長くスイッチングコストが高い市場"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV", "matched": true, "adjustment": 0.05, "reasoning": "業界構造：産業/車載の長設計サイクル"},
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.05, "reasoning": "市場構成比は結果"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_IV", "adjustment": 0.05, "reasoning": "業界構造合致"},
+        {"source": "kb2_pattern_A", "adjustment": -0.05, "reasoning": "結果要素"}
+      ],
+      "overall_reasoning": "産業/車載への集中は業界構造的に有利だが、能力説明が乏しい。まあ納得で50%"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "産業/車載市場への集中 → 長期設計サイクルによる粘着的revenue → 市場シェア維持/成長",
+      "evidence": "Q4 2014: 産業/車載長期設計勝利のメカニズム",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "設計勝利→5-10年の粘着的売上は業界常識として合理的"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.05, "reasoning": "比較的直接的なCAGR接続"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "長期設計勝利のメカニズムは業界構造として合理的だがTXN固有の定量データなし。まあ納得で50%"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Analog 9期連続、Embedded Processing 9期連続の市場シェア獲得",
+      "evidence": "Q4 2014: Analog 6期+13%、Embedded 9期+12%",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "シェア獲得は結果"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "連続成長の継続性データ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A", "matched": true, "adjustment": -0.2, "reasoning": "シェア獲得継続は結果。能力説明皆無"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_A", "adjustment": -0.2, "reasoning": "シェアは結果でルール1-T違反"}
+      ],
+      "overall_reasoning": "継続的シェア獲得実績は定量的だが、それをもたらす能力の説明が皆無。あまり納得しない で30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 1, "50-60": 2, "70-80": 2},
+    "gatekeeper_applied": false
+  }
+}

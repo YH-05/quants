@@ -1,0 +1,231 @@
+{
+  "ticker": "ITW",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-27)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": "ITW-001",
+      "claim_type": "competitive_advantage",
+      "claim": "80/20経営哲学による製品ライン簡素化と事業集中力",
+      "descriptive_label": "80/20-driven製品ポートフォリオ簡素化能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO発言): 'product line simplification activities reducing organic growth by roughly 1%' and 'we continue to have significant potential to further leverage the enterprise initiatives and expand margin'. Q3 2015 Q&A: '80/20 focus on highly differentiated equipment, which represents approximately 2/3 of the business'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "E. Santi / Michael Larsen",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ITW-010"],
+      "cagr_connections": ["ITW-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_6_t": true,
+          "rule_8_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での言及。製品ライン簡素化は能力・仕組みとして機能しており、業界の分散した製品構成に対して80/20に基づく集中力は構造的優位性として評価できる。ただし戦略と優位性の境界が微妙で、rule_8_tは不完全適合"
+      }
+    },
+    {
+      "id": "ITW-002",
+      "claim_type": "competitive_advantage",
+      "claim": "企業戦略（Enterprise Strategy）による継続的なマージン改善能力",
+      "descriptive_label": "企業戦略イニシアチブによる構造的マージン改善プロセス",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO発言): 'Enterprise initiatives contributed 120 basis points of margin expansion' and 'we continue to have significant potential to further leverage the enterprise initiatives'. Q3 2015: 'we fully expect this positive momentum from Enterprise Initiatives to continue to contribute about 100 basis points of margin expansion going forward, including in 2016 and 2017, independent of volume growth'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Michael Larsen",
+      "section": "prepared_remarks",
+      "cagr_connections": ["ITW-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での継続的な言及。BSS（Business Structure Simplification）とStrategic Sourcingの組み合わせで120bpのマージン改善を実現。「volume growth独立」という点が構造的優位性の強さを示す。競合との比較データは限定的だが、仕組みの説明が十分"
+      }
+    },
+    {
+      "id": "ITW-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Strategic Sourcing（戦略的調達）能力による構造的コスト削減",
+      "descriptive_label": "80/20駆動の戦略的調達システム",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'generated cost savings from our strategic sourcing initiative that exceeded our plan'. Q3 2015 Prepared Remarks: 'Strategic Sourcing is now fully embedded in our operations and is delivering consistent above-planned benefits'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "E. Santi",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4発言だが'exceeded our plan'は定量的裏付けが不十分。'fully embedded'という表現はプロセスパワーの性質を示すが、競合との差別化データがなく50%が適切"
+      }
+    },
+    {
+      "id": "ITW-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Automotive OEM分野での自動車生産台数を上回るアウトパフォーマンス能力",
+      "descriptive_label": "自動車OEMセグメントでのコンテンツ浸透力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO発言): 'Organic revenue in the quarter grew 7% compared to worldwide auto builds of 1%. By geography, European organic revenue stood out, up 12%'. Q3 2015 Q&A: 'historically, we've outperformed auto builds to the tune of 400 to 500 basis points'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Michael Larsen",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_7_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での数値裏付けあり（7% vs ビルド1%）。400-500bpのアウトパフォーマンスは実績データだが、それを可能にする能力（新製品開発力、浸透力）の説明が不十分。rule_1_t違反リスク（結果を提示している面がある）"
+      }
+    },
+    {
+      "id": "ITW-005",
+      "claim_type": "competitive_advantage",
+      "claim": "高度に差別化されたビジネスモデルによる業界横断的な高マージン維持能力",
+      "descriptive_label": "多セグメント高マージン構造（プロセスパワー）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO発言): 'ITW's unique and highly differentiated business model is delivering strong results'. Q3 2015: 'best-in-class margins, particularly Welding, which maintained 25% operating margin in the face of significant volume declines'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "E. Santi",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での言及。Welding 25%という具体的な数値あり。しかし'highly differentiated'という一般的な主張は能力ではなく結果の表現に近い。純粋競合（Parker Hannifin, Dover等）との比較データなし"
+      }
+    },
+    {
+      "id": "ITW-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Food Equipment分野での顧客バックドイノベーション（customer-backed innovation）能力",
+      "descriptive_label": "食品設備セグメントの顧客主導イノベーション力",
+      "evidence_from_transcript": "Q3 2015 Prepared Remarks: 'The team continues to do a very good job achieving above-market growth across the portfolio through customer-backed innovation'. Q4 2014: 'Food Equipment's organic growth rate of 5% was broad based across the major product categories and geographies'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Michael Larsen",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.2,
+            "reasoning": "Q3発言から新たに「発見」した主張のため確信度を-20%調整"
+          }
+        ],
+        "overall_reasoning": "Q3発言（従・②相当）のため-20%調整。'customer-backed innovation'は能力としての概念は正しいが、競合との比較データなし、定量的な差別化不明"
+      }
+    },
+    {
+      "id": "ITW-007",
+      "claim_type": "cagr_connection",
+      "claim": "製品ライン簡素化完了 → 高付加価値製品への集中 → オーガニック成長加速 → 売上CAGR押し上げ",
+      "descriptive_label": "PLS完了後のオーガニック成長回帰",
+      "source_advantage": "ITW-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4発言由来。PLS活動が1ppのオーガニック成長を抑制していたが2016年以降に緩和すると説明。2-3ステップの因果で検証可能性あり（売上開示データから確認可能）"
+      }
+    },
+    {
+      "id": "ITW-008",
+      "claim_type": "cagr_connection",
+      "claim": "Enterprise Initiatives（BSS + Strategic Sourcing）→ 100bp/年マージン改善 → EPS成長 → TSR 12-14%",
+      "descriptive_label": "企業戦略イニシアチブ→EPS成長経路",
+      "source_advantage": "ITW-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明。100bp/年のマージン改善はvolume独立であることが明示されており、2-3ステップの因果チェーンで検証可能。CFOが数値を開示しており透明性高い"
+      }
+    },
+    {
+      "id": "ITW-009",
+      "claim_type": "competitive_advantage",
+      "claim": "分散型事業ポートフォリオ構造による景気サイクルへの耐性",
+      "descriptive_label": "7セグメント分散ポートフォリオの耐景気変動性",
+      "evidence_from_transcript": "Q3 2015 Prepared Remarks: 'it's a tale of 2 economies, industrial and consumer. 60% of the company is growing at 5% in a tough environment'. Q4 2014: '6 of 7 segments expanding margins by more than 100 basis points'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Michael Larsen",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_12_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_6_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.2,
+            "reasoning": "Q3発言から新たに抽出のため-20%調整"
+          }
+        ],
+        "overall_reasoning": "分散ポートフォリオは多くの産業コングロマリットが持つ特徴であり、ITW固有の優位性として評価しにくい（ルール3違反に近い）。Q3発言のため割引"
+      }
+    },
+    {
+      "id": "ITW-010",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年の営業利益率19.9%（過去最高）、EPS成長29%、フリーキャッシュフロー変換率110%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["ITW-001", "ITW-002"]
+    },
+    {
+      "id": "ITW-011",
+      "claim_type": "factual_claim",
+      "claim": "2015年Q3時点で企業戦略開始後2.5年で営業利益率570bp改善、税後投資資本利益率540bp改善",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": ["ITW-002", "ITW-005"]
+    }
+  ]
+}

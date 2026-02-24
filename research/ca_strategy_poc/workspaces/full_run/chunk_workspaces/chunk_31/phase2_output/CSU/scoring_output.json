@@ -1,0 +1,116 @@
+{
+  "ticker": "CSU",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "kb3_fewshot_loaded": 5,
+    "dogma_loaded": true,
+    "scoring_date": "2026-02-24"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "CSU-001",
+      "claim_type": "competitive_advantage",
+      "claim": "垂直型市場ソフトウェア（VMS）に特化した永続保有型M&A選定・統合能力",
+      "descriptive_label": "VMS特化型永続保有M&A能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Counter-Positioning + Process Power",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_III_t (能力の優位性)",
+      "scoring_reasoning": "永続保有哲学・VMS集中・年間15-30件M&Aという具体的実践は能力として評価（ルール1-T）。断念例（高バリュエーション回避、コア外売却）でルール10-T適合。競合PEファンドとの差別化はVMS集中の点で明確。dogma ルール10（ネガティブケース）適用で+。70%。"
+    },
+    {
+      "claim_id": "CSU-002",
+      "claim_type": "competitive_advantage",
+      "claim": "垂直型市場ソフトウェアの高いスイッチングコスト：顧客のコア業務への組み込みによる粘着性",
+      "descriptive_label": "VMS顧客のミッションクリティカル粘着性",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Switching Costs",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_IV_t (構造的市場ポジション)",
+      "scoring_reasoning": "VMS顧客の業務コア組み込みは構造的スイッチングコスト（ルール6-T）。高労働コスト市場での労働代替という業界構造合致（ルール11-T）も高評価。240以上のBUという規模も確認。解約率の定量開示がないが、構造的合理性が高く70%。"
+    },
+    {
+      "claim_id": "CSU-003",
+      "claim_type": "competitive_advantage",
+      "claim": "分権型経営による240以上の業務単位の独自経営（ベストプラクティス共有+自治）",
+      "descriptive_label": "分権型組織による自律経営能力",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_III_t (能力の優位性)",
+      "scoring_reasoning": "240以上のBU管理は具体的だが分権型経営自体は業界共通概念（ルール3-T部分適用）。VMS集中との組み合わせで差別化。定量的優位性証明なし。50%。"
+    },
+    {
+      "claim_id": "CSU-004",
+      "claim_type": "competitive_advantage",
+      "claim": "高バリュエーション環境での買収自制：低リターン案件を回避する資本配分規律",
+      "descriptive_label": "規律ある資本配分とバリュエーション自制",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.6,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "pass",
+      "kb2_t_pattern": "pattern_III_t (能力の優位性) + pattern_10_t (ネガティブケース)",
+      "scoring_reasoning": "高バリュエーション回避という断念例（ルール10-T）は評価できる。資本配分規律の明示的な開示は誠実。競争優位として機能するかは長期的。60%。"
+    },
+    {
+      "claim_id": "CSU-005",
+      "claim_type": "competitive_advantage",
+      "claim": "オーガニック成長への高いインセンティブ設定（EBITよりオーガニック成長を優先）",
+      "descriptive_label": "オーガニック成長優先のインセンティブ設計",
+      "transcript_call_type": "Q4_annual",
+      "seven_powers_category": "Process Power",
+      "confidence": 0.4,
+      "gatekeeper_pass": true,
+      "kb1_t_verdict": "warning",
+      "kb2_t_pattern": "pattern_F_t (戦略の混同)",
+      "scoring_reasoning": "インセンティブ設計は戦略（ルール8-T）。実際の有機成長率4%は低く、能力の証拠として弱い（ルール1-T: 結果でなく能力が問われる）。CEOの意欲は評価できるが、実現可能性未証明。40%。"
+    },
+    {
+      "claim_id": "CSU-C001",
+      "claim_type": "cagr_connection",
+      "claim": "VMS特化M&A能力 → 年間15-30件の買収 × 高EBITA margin → 収益CAGR成長",
+      "descriptive_label": "VMS M&A→EBITA成長→CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "年間15-30件M&A×高EBITAは具体的。2ステップの直接接続。EBITAは開示データで検証可能。70%。"
+    },
+    {
+      "claim_id": "CSU-C002",
+      "claim_type": "cagr_connection",
+      "claim": "VMS顧客粘着性 → 低チャーン × オーガニック成長 → 既存顧客ベースからの収益CAGR",
+      "descriptive_label": "VMS粘着性→低チャーン→収益CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.6,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "VMS粘着性の合理性は高い。チャーン率の直接開示がないが、構造的にはサポートされる。60%。"
+    },
+    {
+      "claim_id": "CSU-C003",
+      "claim_type": "cagr_connection",
+      "claim": "オーガニック成長改善 → M&A依存度低下 × 既存BUの成長 → 長期持続可能CAGR",
+      "descriptive_label": "オーガニック成長→持続可能CAGR",
+      "transcript_call_type": "Q4_annual",
+      "confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_reasoning": "現在4%の有機成長は不満足とCEO自身が言及。将来改善への期待ベース。50%。"
+    }
+  ],
+  "aggregate_score": {
+    "competitive_advantage_avg": 0.58,
+    "cagr_connection_avg": 0.6,
+    "overall_avg": 0.59,
+    "claim_count": 8,
+    "ca_claim_count": 5,
+    "cagr_claim_count": 3
+  }
+}

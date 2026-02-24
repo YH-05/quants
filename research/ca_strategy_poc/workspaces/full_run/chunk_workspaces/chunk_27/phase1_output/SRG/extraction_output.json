@@ -1,0 +1,156 @@
+{
+  "ticker": "SRG",
+  "company_name": "Snam S.p.A.",
+  "transcript_source": {
+    "primary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SRG/201402_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SRG/201503_earnings_call.json"
+    ],
+    "secondary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SRG/201405_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SRG/201407_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SRG/201410_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SRG/201507_earnings_call.json"
+    ]
+  },
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "extraction_date": "2026-02-24",
+    "transcript_count": 6,
+    "primary_transcript_count": 2,
+    "framework": "Hamilton Helmer 7 Powers",
+    "note": "Snam is a regulated Italian gas infrastructure operator (transport, distribution, storage, LNG regasification). Competitive advantages are primarily regulatory/institutional. FY2013 results in 201402; FY2014+strategy 2015-2018 in 201503."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "Snam は イタリア最大の規制ガスインフラ事業者として、輸送・貯蔵・配送・LNG再ガス化において独占的または支配的なポジションを保持する。2014年推定RAB（規制資産ベース）は約EUR 250億で、イタリアの天然ガスインフラの規制収益基盤を独占的に保有している。これにより固定費の規模的優位性が持続的に発生する。",
+      "evidence_quotes": [
+        "our investments are aimed at increasing the flexibility, liquidity and security of both the Italian and the European system",
+        "the estimated RAB at the end of 2013 is around EUR 23.7 billion",
+        "Italgas is today the market leader in Italy with 1/3 of the total market share"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201503_earnings_call.json (FY2014 annual + strategy)",
+      "confidence": 0.5,
+      "confidence_rationale": "規制独占によるスケール経済は存在するが、これは市場支配力ではなく規制によるものであり、7 Powersの観点では「市場規模を背景とした本来の規模の経済」とは異なる。規制事業者のRABベースリターンは安定しているが競争優位性というより規制保護。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Cornered Resource",
+      "claim_text": "Snam はイタリア国内のガス輸送パイプライン（約32,700km）・貯蔵施設（約10.2bcm容量）・LNG再ガス化施設を独占的に保有・運営しており、これらの物理インフラは規制・許認可・地理的制約により複製不可能な希少資源である。TAGおよびTIGFの国際資産も取得し、欧州東西・南北ガス回廊の戦略的ポジションを確立した。",
+      "evidence_quotes": [
+        "around 75% of the overall spending is already authorized",
+        "the acquisition of TAG strengthens Snam's leading role amongst infrastructure operators in Europe",
+        "the acquisition of TIGF in particular, give us the opportunity to build up a strategic platform for gas infrastructure development in order to improve the cross-border interconnection in Europe"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201503_earnings_call.json (FY2014 annual + strategy)",
+      "confidence": 0.7,
+      "confidence_rationale": "物理インフラの希少性と複製不可能性は、規制と地理的制約によって強固に保護されている。TAGとTIGFの取得による欧州拡張は戦略的地位を強化しており、Cornered Resourceとしての証拠は具体的。ただし規制当局との関係依存が単一リスクとして存在。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 3-T: Cornered Resource requires scarce, proprietary asset", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "claim_text": "Snam は複数の規制期を通じて、実質コスト横ばいを維持しながら事業規模を拡大するコスト効率化能力を実証している。2013年に管理可能固定費EUR 4.6億を名目額でほぼ横ばい（実質フラット）に維持しつつ輸送・貯蔵インフラを拡大した。このコスト管理プロセスは規制資産ベースに対する9-10%のEBIT利回りを継続的に創出している。",
+      "evidence_quotes": [
+        "controllable fixed costs resulted equal to EUR 460 million, flat in real terms versus 2012. This is a significant result considering the growth of our activities",
+        "maintaining the full permitting us to maintain a return in terms of EBIT to RAB in the range of 9%",
+        "we have achieved a satisfactory cost base, and the current regulatory framework partially allows the recognition of the incremental cost related to the growing asset base"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201503_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "コスト規律の実績は具体的な数値で裏付けられているが、これは規制事業者として期待される標準的な運営効率であり、競合他社が参入できる市場での模倣困難な活動システムとは性質が異なる。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 5-T: Process Power requires difficult-to-replicate embedded activity chain", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Switching Costs",
+      "claim_text": "イタリアのガス配送業では177の「ガスエリア」への新規制に基づく入札プロセスが始まり、Snamは国内配送市場の1/3のシェアと1/4以上の既存コンセッションを持つ。市場リーダーとしての地位と既存インフラ（配送網・計量システム）が、競合他社へのスイッチングを困難にしており、Snamは10-12%の市場シェア拡大を低コストで実現できると経営陣が明言。",
+      "evidence_quotes": [
+        "more than 75% of its current business is carried out in gas areas where it holds a relevant market share",
+        "we are sure to be very competitive without increase, with marginal cost, we have the possibility, through the auctions, to reach the 40%, 42% of the market, without risk in increasing the operating cost",
+        "our objective will be to increase of around 10% -- 10%, 12% the market share in the distribution"
+      ],
+      "transcript_source": "201503_earnings_call.json (FY2014 annual + strategy)",
+      "confidence": 0.3,
+      "confidence_rationale": "規制コンセッションの入札プロセスがスイッチングコストの本来の定義（買い手が代替サプライヤーに切り替える際のコスト）とは異なる。Snamの優位性は既存インフラと市場シェアにあるが、入札プロセスにより競合他社は参入機会を持つ。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 8-T: Switching Costs require meaningful friction for buyer to switch", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Counter-Positioning",
+      "claim_text": "Snam は欧州東西・南北ガス回廊において、Fluxysとの戦略的提携を通じて欧州越境ガスフローの新たな主体（マーケットファシリテーター）としての役割を担う戦略を展開している。TIGFのEquity価値が取得時比40%増（EUR 1.8B超）となり、TAGの長期シップ・オア・ペイ契約（2022年満期）を活用した欧州インフラ統合の独自ポジションを確立した。",
+      "evidence_quotes": [
+        "the value creation of the asset has been recently proved by the investment base Crédit Agricole Assurance, which entered into the shareholder structure with a 10% stake, with an impact value for the 100% of the equity or more than EUR 1.8 billion. This shows the remarkable increase, around 40%",
+        "annual revenues largely derived from long-term ship-or-pay contracts expire in 2022, which ensures a high level of cash flow visibility",
+        "our role is evolving from being a mere asset owner, simply managing infrastructure to market facilitator providing innovative integrated services to shippers and final customers"
+      ],
+      "transcript_source": "201503_earnings_call.json (FY2014 annual + strategy)",
+      "confidence": 0.3,
+      "confidence_rationale": "マーケットファシリテーターへの役割転換という戦略的方向性は示されているが、具体的なCounter-Positioningのメカニズム（既存競合が模倣すると自社ビジネスを毀損する構造）としての証拠は限定的。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 7-T: Counter-Positioning requires established players being unable to mimic without self-harm", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "claim_text": "Snam FY2013: EBITDA EUR 28.0億（2012年並み）、純利益EUR 9.17億（+17.7%）、ROCFフロー EUR 16.98億、CapEx EUR 19億。FY2014: 総収益EUR 35.66億、EBITDA EUR 28億（2013年並み）、純利益EUR 11.88億（+30.6%）、負債コスト3.2%（2013年3.7%から低下）。2015-2018戦略: CapEx EUR 51億、RAB成長率年1%。配当EUR 0.25/株（配当利回り約6%）。",
+      "evidence_quotes": [
+        "net profit for the period amounted to EUR 917 million, increased by 17.7% compared to 2012",
+        "net profit grew by around 31% to EUR 1,198 million",
+        "in 2015, we expect to invest EUR 1.3 billion",
+        "cost of debt decreased to around 3.2% versus 3.7% of the last year"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201503_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "財務実績は具体的な数値で裏付けられており、純利益の大幅増（+17.7%、+30.6%）は主として負債コスト低下と税制変更（ロビンフッド税廃止）によるもの。EBITDA自体は安定的でRABの成長を反映。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 9-T: CAGR connection claims require explicit financial linkage"]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "claim_text": "Snamのガス輸送網はイタリア国内に約32,700km、貯蔵容量は約10.2bcm（戦略貯蔵4.5bcm除く）。2014年のRABは約EUR 250億。負債コストは2012年の4%台から2015年に2.9%に低下。イタリアのガス需要は2013年70.1bcm（前年比-6.5%）、2014年も低水準継続。CapExの75%は既に承認済み。",
+      "evidence_quotes": [
+        "the estimation of the RAB at the end of 2013 is around EUR 23.7 billion",
+        "in 2013, gas consumption totaled 70.1 bcm, down 6.5% or 4.8 bcm year-on-year",
+        "around 75% of the overall spending is already authorized",
+        "cost of our debt for 2015 to average around 2.9%"
+      ],
+      "transcript_source": "201402_earnings_call.json (FY2013 annual); 201503_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "これらの事実は経営陣の定量的発言として信頼性が高い。イタリアのガス需要減少という逆風の中でも安定した収益を維持している事実は、規制ビジネスモデルの強固さを示す。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 10-T: Factual claims must be clearly stated facts from transcripts"]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Switching Costs",
+      "claim_text": "Snamのガス輸送・貯蔵事業では、シッパーとの長期「シップ・オア・ペイ」契約（TAGで2022年まで）と規制フレームワークにより、安定した収益が保証されている。新ガス配送エリア制度（177エリア）では、既存オペレーターが技術・運営ノウハウの蓄積と既存インフラにより優位に入札できる。新たなスマートメータリング投資（CapEx EUR 4.5億）もSnamのデータ優位性を強化する。",
+      "evidence_quotes": [
+        "Annual revenues largely derived from long-term ship-or-pay contracts expire in 2022, which ensures a high level of cash flow visibility",
+        "smart metering project, which will allow Italgas to guarantee a high level of service quality",
+        "the gas benefit from a competitive cost structure and strong cash flow generation"
+      ],
+      "transcript_source": "201503_earnings_call.json (FY2014 annual + strategy)",
+      "confidence": 0.5,
+      "confidence_rationale": "長期契約による収益可視性は具体的だが、これは主に規制保護であり、スイッチングコストの意味での顧客ロックインとは異なる。スマートメータリングは将来的なデータ優位性を創出する可能性がある。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 8-T: Switching Costs require meaningful friction for buyer to switch", "Rule 1-T: 7 Powers framework"]
+    }
+  ]
+}

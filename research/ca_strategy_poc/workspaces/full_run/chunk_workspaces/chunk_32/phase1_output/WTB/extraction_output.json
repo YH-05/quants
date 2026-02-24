@@ -1,0 +1,522 @@
+{
+  "ticker": "WTB",
+  "transcript_source": "FY2014/15 Annual Results (2015-04-28) / H1 FY2014/15 (2014-10-21) / FY2013/14 Annual (2014-04-29)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier InnのUKネットワーク規模による立地密度の優位性（競合比172拠点以上の差）",
+      "descriptive_label": "国内ネットワーク密度優位（Scale Economies / Branding）",
+      "evidence_from_transcript": "FY2013/14 Annual Prepared Remarks (CEO Andy Harrison): 'Our U.K. network of 672 hotels means that we offer customers a much better choice of location than any of our competitors... we can get more customers much closer to their chosen destination than any other U.K. hotel chain. And as you can see on the slide, the gap in terms of network choice has continued to widen over Travelodge. We now have 172 more locations than they do, an even bigger gap than 134, 2 years ago.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [3],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ネットワーク密度（能力・仕組み）を評価。672拠点という規模は競合に対する構造的優位"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "172拠点差（vs Travelodge）という定量的比較あり。2年前の134差より拡大している点も評価"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "純粋競合（Travelodge）と具体的数値で差別化が明確"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "UK budget hotel市場は独立系が50%以上占める分散市場。規模・密度の優位はこの市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "年次決算での体系的な説明。172拠点差という定量的裏付けとTravelodgeとの具体的比較が揃っている。UK分散ホテル市場での規模・密度の優位性は市場構造との合致も強い。ただしネットワーク規模は将来的に縮小可能であり、Barrierの持続性に留保"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Inn直販チャネル（premierinn.com）によるOTA手数料回避と顧客粘着力",
+      "descriptive_label": "直販デジタルチャネル優位（Switching Costs / Process Power）",
+      "evidence_from_transcript": "FY2014/15 Annual Prepared Remarks (CEO Andy Harrison): '80% of our guests choose to book direct on premierinn.com, knowing that they get a good night's sleep guaranteed at a location near to their ultimate destination.' / FY2013/14 Annual: 'One of Premier Inn's core strengths is the power of premierinn.com. And you can see on the left the increasing percentage of reservations coming from customers who go direct to premierinn.com.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "直販比率80%という能力・仕組みを評価。OTA依存度の低さはコスト構造優位を生む"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "80%の直販比率という定量データあり。3pp改善の成長トレンドも確認"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ブランド認知+ネットワーク密度によりOTA依存が構造的に低い。ただし「guarantee good night's sleep」という製品品質と密接に結びついている"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Travelodgeとの直販比率比較は明示されていない。業界平均との比較も不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合直販比率との比較データなし（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "直販比率80%は優位性の証拠として重要。しかし純粋競合（Travelodge）との比較がなく、業界共通の取り組みの可能性も排除できない。OTAへの依存度低下メカニズムの説明（ブランド力+ネットワーク密度）は部分的に説明されている"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Costaブランドの英国市場におけるカテゴリー支配（ブランド選好スコアで競合を大幅リード）",
+      "descriptive_label": "コーヒーショップブランド覇権（Branding）",
+      "evidence_from_transcript": "FY2014/15 Annual Prepared Remarks (CEO Andy Harrison): 'Premier Inn is the U.K.'s favorite hotel chain, and Costa is the U.K.'s favorite coffee shop chain. We're winning market share because we have winning customer propositions, and customers are voting for us with their feet.' / 'I never tire of presenting this slide, which demonstrates Costa as the U.K.'s favorite coffee shop in terms of network scale, rate of growth and the all-important customer brand preference.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "「UK最高のコーヒーショップ」は主として結果の表現。ブランド選好を支える仕組み（製品品質、イノベーション、Costa Club）の説明は部分的"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "Starbucks・Caffe Neroとの明確な差別化。YouGovブランド選好でのリードが具体的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "UK市場シェア12%、ブランド選好スコードでのリードが数値化（ただし競合比較数値は限定的）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "Starbucks・Caffe Neroとの直接比較。特にStarbucksより強い選好という実態が確認できる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "ブランド背後要因（選好を支える仕組み）の説明が不十分（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Costa UKでの圧倒的ブランド選好は事実として確認できる。しかし「なぜ選ばれるか」の構造的説明（barista品質、製品革新の仕組み）が定性的。英国コーヒーショップ市場での圧倒的No.1ポジションはブランドPowerとして評価できるが、背後要因の説明の弱さで上限50%"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Innのダイナミックプライシング能力による収益最大化（高占有率でのARR成長）",
+      "descriptive_label": "独自ダイナミックプライシングシステム（Process Power）",
+      "evidence_from_transcript": "FY2013/14 Annual Prepared Remarks (CEO): 'As our occupancy increases year-after-year, there's a big opportunity to make selected rate increases using our dynamic pricing system... dynamic pricing is a journey, which combines progress in developing our pricing principles, which works specifically for Premier Inn, building our in-house expert pricing team and developing systems which will gradually automate what is still quite a manual process.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「ダイナミックプライシングシステム」という能力・仕組みを評価。in-house expert pricing teamの構築という組織的能力に言及"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "supplementary",
+            "reasoning": "「still quite a manual process」という開示は、現時点では補完的優位に留まる可能性を示唆。自動化が進めば構造的優位に転化"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "動的価格設定は戦略の要素でもあるが、専用チームとシステム開発という組織的能力として評価できる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "競合比較なし、「still manual」という開示が能力の限界を示す（-20%）",
+            "adjustment": -20
+          },
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ダイナミックプライシングは業界で一般的に採用されている。Premier Innの専用チームとシステムは評価できるが、「まだ手動」という限界の開示と競合比較の欠如で低評価。Hotel Revenue Managementは差別化要素ではなくなりつつある"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Whitbreadの強固なバランスシートによる不動産取得優位性（フリーホールド物件の競争的取得）",
+      "descriptive_label": "財務力に基づく不動産取得優位（Cornered Resource）",
+      "evidence_from_transcript": "FY2013/14 Annual (CFO): 'One of our competitive advantages, particularly in the property market, is our strong balance sheet... This balance sheet structure enables us to pursue our growth milestones with confidence, particularly as we increase the room opening rate over the next few years and allows us to grow the freehold estate of preferred property solution.' / FY2014/15 Annual (CFO): 'Our success in growing organically, especially in acquiring a greater mix of freehold properties, has been supported by our competitive advantage of a strong balance sheet.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "「強固なバランスシート」は財務的結果の側面も強い。取得能力という仕組みとして評価できるが、最終的には財務規律（戦略）の話"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "caution",
+            "reasoning": "多くのホスピタリティ企業も財務規律を持つ。UK budget hotelセクターでの相対的優位性は強調されているが、他チェーンとの明示的比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "supplementary",
+            "reasoning": "バランスシートは戦略的資産ではあるが、真に希少な资源ではない。競合も財務を改善すれば同様の取得ができる"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "フリーホールド取得は財務戦略であり、優位性そのものではない側面が強い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CFOが「競争優位性」と明示的に述べているが、バランスシートの強さは持続的な構造的優位ではなく戦略的アドバンテージ。Travelodgeが財務的困難にあった状況との比較では優位だが、市場全体での差別化Barrierが不明確"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "従業員エンゲージメント80%（業界水準を大幅に上回る）による顧客サービス品質の持続的優位",
+      "descriptive_label": "高従業員エンゲージメントによるサービス品質（Process Power）",
+      "evidence_from_transcript": "FY2013/14 Annual Prepared Remarks (CEO): 'One of the most important ingredients to a strong Customer Heartbeat is training and motivating our customer-facing teams. And we're particularly pleased to report our further strengthening of employee engagement... with engagement rising to 80%, which is the target that we set ourselves to achieve 4 years ago when engagement was just 63%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "エンゲージメント80%は「Customer Heartbeat model」という仕組みの結果として説明されている。トレーニング・動機付けのプロセスという能力評価に沿う"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "caution",
+            "reasoning": "業界平均との比較数値がない。63%→80%の改善は自社比較のみ。ホスピタリティ業界での競合のエンゲージメントが不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "80%という数値あり、4年前63%からの改善も示されるが、競合との比較が欠如"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "supplementary",
+            "reasoning": "高エンゲージメントはサービス品質を通じて競争優位に貢献するが、他チェーンも投資すれば達成可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "業界競合との比較なし、測定メカニズムが独自（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "エンゲージメント改善の取り組みと成果は確認できるが、業界競合との比較が欠如しており、「誰でも達成できる」かどうかが不明。Customer Heartbeat modelという仕組みへの言及はあるが、その模倣困難性の説明が不十分"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Costa UKにおける継続的製品イノベーション能力（食品・飲料ラインの定期更新でトランザクション成長を牽引）",
+      "descriptive_label": "製品イノベーション・バリスタ品質（Process Power）",
+      "evidence_from_transcript": "FY2014/15 Annual Prepared Remarks (CEO): 'Continuous innovation has always been central to our success, keeping our stores fresh, together with regular improvements in our product ranges. And our food gets better year after year and has been an important element of our like-for-like sales growth. This has driven growth in everyday part, especially in the morning with strong takeaway sales.' / H1 FY2015 (CEO): 'Continuing product innovation remains one of the important pillars of our success, constantly bringing new products, better products and a new feel to our stores.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [14],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "「イノベーション能力」は能力として評価できるが、具体的な製品開発プロセスや成功率の開示が不十分"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "Starbucks・Caffe Neroも製品イノベーションを実施。「継続的イノベーション」は業界共通の取り組み"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "LFL取引件数5%成長への貢献は言及されているが、イノベーション単独の貢献度は不明"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "製品開発への投資は戦略的意思決定であり、構造的優位とは区別が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "製品イノベーションは競合も実施しており、差別化Barrierが弱い。「barista品質」や「Old Paradise Street」のような具体的な製品開発は示されているが、競合不可能な仕組みの説明に欠ける"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Innのハブモデル（hub by Premier Inn）によるCentral Londonでの新たな市場アクセス",
+      "descriptive_label": "小型都心型ハブフォーマット展開（Counter-Positioning / Scale Economies）",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (CEO): 'Our first hub by Premier Inn opens in a few weeks in St Martin's Lane. It looks fantastic, and we're very excited about the future, the hub. We now have a committed pipeline of 12 hotels, of which 9 are in London. hub provides high quality rooms at great prices, and you can see from the map on the right, it also provides great locations at the heart of London.'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "新フォーマット展開は能力よりも戦略的行動に近い。まだ1号店段階でトラックレコードが不十分"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "hub by Premier Innは新市場への参入戦略であり、構造的優位性とは区別される"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "quarterly",
+            "reasoning": "H1（半期）からの情報のため、確信度を-10〜20%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2（半期）からの新たな「発見」（-15%）",
+            "adjustment": -15
+          },
+          {
+            "reason": "まだ1号店のみで実績不十分（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ハブモデルは初期段階で検証データが少ない。ARR discount 16%という数値は示されているが、これが持続的競争優位に繋がるかは不明。半期情報からの評価のため低評価"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "Premier Innのネットワーク拡大（年4,500-5,500室）× RevPAR成長（8-9%）→売上CAGR 13-15%",
+      "descriptive_label": "室数拡大×RevPAR成長→売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの明確な因果経路（室数×RevPAR=売上）。年間報告書で検証可能な開示データあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4（年次）での言及。2016・2018・2020マイルストーンの形で一貫して開示"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "室数拡大とRevPAR成長という2つの明確なドライバー。実績（過去5年で売上11%/年）との整合性が高く、検証可能"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "Costa UKのLFL取引件数成長（5-6%）× 新規出店（150-200店/年）→システム売上CAGR 15-20%",
+      "descriptive_label": "Costa LFL×店舗拡大→売上CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ因果（LFL成長+新規出店=システム売上増加）。各構成要素が年次報告書で開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及。2020ミルストーンGBP2.5bnという具体的目標が開示されている"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "LFL成長と出店数という2つの検証可能なドライバー。UKコーヒーショップ市場の4-5%成長という市場サポートも確認可能"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "直販比率80%の維持・向上→OTA手数料削減→利益率改善経路（利益CAGR + 1-2pp）",
+      "descriptive_label": "直販比率向上→マージン改善CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "2ステップの因果経路だが、OTA手数料削減から利益率改善への定量的裏付けが開示されていない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での言及。継続的な投資テーマとして開示"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "OTA手数料率の開示なく、マージンへの定量的影響が不明（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "直販→コスト削減という経路は論理的だが、定量的裏付けが不十分。80%から更に向上させる余地も限定的"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "ダイナミックプライシング高度化→高占有率期のARR成長→RevPAR改善→利益CAGR",
+      "descriptive_label": "DP高度化→ARR成長→RevPAR CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ダイナミックプライシング→ARR改善→RevPAR改善は3ステップ。DPの自動化が「still manual」との開示で不確実性が高い"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "RevPAR成長自体は実績で確認できるが、DPの貢献を分離することが困難。業界全体の市場回復の影響が大きい"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "Premier InnはTravelodgeより172拠点多い（2014年時点）。2年前は134差",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "Premier Innの直販（premierinn.com）比率80%（2014/15年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "Costa UKの市場シェア12%。UK Retailで1,755店舗（2014年）→1,900店舗（2014/15年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Whitbread調整後Net Debt/EBITDAR 3.0-3.2x（目標<3.5x）。EBITDA GBP670mn（FY14/15）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "従業員エンゲージメント80%（Your Say survey）。4年前は63%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

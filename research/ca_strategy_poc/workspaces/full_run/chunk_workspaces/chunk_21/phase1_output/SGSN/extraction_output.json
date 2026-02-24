@@ -1,0 +1,258 @@
+{
+  "ticker": "SGSN",
+  "transcript_source": "FY2014 Annual Results (2015-01) + H1 2015 Results (2015-07), SGS SA",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014_annual", "H1_2015"],
+    "note": "201501 is FY2014 annual results presentation, treated as Q4_annual (primary). 201507 is H1 2015 results, treated as Q2_quarterly (secondary). Rule 12-T applied accordingly."
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "SGSのグローバル多角的サービスポートフォリオによるリスク分散能力：OGC・Minerals・Industrialが逆風でも、CTS・Environment・Automotive・SSC・GISが代替成長源として機能し、単一ビジネスの逆風をグループで吸収できる構造（HY2015でCTS+Envi+Auto+SSCが全体成長を支援）",
+      "descriptive_label": "多角的TICサービスポートフォリオによるリスク分散と安定成長",
+      "evidence_from_transcript": "H1 2015 (Frankie Ng): 'OGC, Industrial and Minerals represent less than half of our business portfolio. Especially SSC, GIS and Auto had quite a good growth. However, the biggest increase in the relative rates coming from CTS and Envi.' H1 2015 (C. De Geyseleer): '3 businesses under pressure (OGC, Industrial, Minerals) represent less than half of total adjusted operating income.' FY2014 Annual (Chris Kirk): 'we have a broad portfolio of services, there's always some good things.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「多角的ポートフォリオ」は名詞で表現できるが、業界大手の共通要素（Intertek、Bureau Veritas等も同様）。SGS固有の優位性の説明が弱い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "85,000名以上・150カ国・1,650ラボは構造的規模だが、ポートフォリオの多角性自体は競合も同様に持つ"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "商品価格低迷・油価下落・欧州景気低迷という多重逆風の中でも3.4%成長を維持できたのはポートフォリオの証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "業界共通（Bureau Veritas、Intertek等も同様の多角化ポートフォリオを持つ）（-20%）",
+            "adjustment": -20
+          },
+          {
+            "reason": "年次カンファレンスからの発言（+0%）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ポートフォリオ多角化はTIC業界大手が共通して持つ構造。SGS固有の優位性として差別化するには規模（世界最大）・ネットワーク深度・品質管理能力での優位性の説明が必要。確信度は低め。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "多角的ポートフォリオ → 1つのビジネス逆風を他で補完 → グループ安定成長 → CAGR",
+      "descriptive_label": "ポートフォリオ多角化→グループ安定成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。ポートフォリオ分散→グループ安定成長は直接的で理解しやすい"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次カンファレンス（Q4相当）からの発言。一次情報"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Minerals・OGC逆風の中で4%有機成長（FY2014）という実績はポートフォリオの安定化効果の証拠。ただし優位性自体が業界共通のため確信度は低め"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "SGSのOGC（石油・ガス・化学）ビジネスにおける港湾・ターミナル運営（PTO）の先行者ポジション：12年以上前から参入し、現在はグローバルな港湾ターミナル検査ネットワークを構築（OGC売上CHF 10億超、8.6%成長）",
+      "descriptive_label": "OGC港湾・ターミナル検査での先行者ポジション（Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual (Chris Kirk): 'particularly strong is the port and terminal operations. That's the movement of a product around, inside terminals and ports. It's a business that we bought into 12 years ago or so, and now it's really a very, very strong business for us.' H1 2015 (Frankie Ng): '新しいFuel Integrity Programme契約をアフリカ・中東で獲得し、OGCのH2マージン改善を期待。'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「港湾・ターミナル運営ネットワーク」（名詞）は12年超の投資で構築した構造的資産"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "OGC売上CHF 10億超、8.6%成長という定量データあり。ただし港湾・ターミナル部分の具体的規模は未開示"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "12年以上の投資と現地ネットワーク構築は構造的資産。港湾コンセッション・政府認証等は競合が短期で複製困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Bureau Veritas等も港湾ターミナル事業を持つ。SGS固有の規模・ポジション優位性の定量比較がない（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "12年超の投資期間は先行者優位の証拠として有効（+5%）",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "港湾・ターミナル運営は認証・政府関係・現地ネットワークが参入障壁になる事業。12年の先行投資と現在の強力なポジションは構造的優位性の証拠。ただし競合比較なしのため確信度は中程度。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "港湾・ターミナル運営ネットワーク拡大 → OGC売上成長 → グループCAGR",
+      "descriptive_label": "PTO拡大→OGC成長→グループCAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。ネットワーク拡大→売上成長は直接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 45,
+        "confidence_adjustments": [],
+        "overall_reasoning": "PTO拡大（China・Canada）による売上成長は合理的な因果チェーン。ただしPTOはマージンが低い（11-12%）という開示もあり収益貢献への影響は限定的"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "SGSのCTS（消費者テストサービス）における高マージン・高資本集約型ラボビジネス：食品・E&E・化粧品分野で高い成長を維持し、OGC・Minerals・Industrial逆風の中でも最大の利益源として機能（CTS: 最大のAOI貢献・最大のCapEx消費）",
+      "descriptive_label": "CTS（消費者テスト）の規模・マージン優位性",
+      "evidence_from_transcript": "FY2014 Annual (Chris Kirk): 'CTS (Consumer Testing Services) grew at 7.5%, while keeping margins stable compared to 2013. Malcolm and his team did a fantastic job here...E&E grows double digit...Food has done remarkably well in CTS.' H1 2015 (C. De Geyseleer): 'CTS remains, by far, the biggest contributor from an operating income perspective. CTS organic growth of 4.8%...Food really performed well. Electrical & Electronics business grew very well, mainly in the U.S. and Korea.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「CTSのラボネットワーク」「市場ポジション」は名詞化できるが、具体的な差別化（資格・認証・技術的能力）の説明が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "7.5%成長（FY2014）、4.8%有機成長（H1 2015）、E&Eダブルディジット成長という定量データあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "電子機器・食品安全規制強化・新興市場での品質要求増加という構造的トレンドと合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Intertek・Bureau Veritasも同様のCTS事業を持つ。固有の技術的差別化の説明が弱い（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "最大の利益源として機能しているという事実は競合との相対優位性を示唆（+5%）",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "CTSが最大利益貢献事業という事実、E&Eダブルディジット成長は一定の優位性を示す。ただし業界共通構造（Intertek、Bureau Veritasも同様のCTS事業）なのでSGS固有の差別化説明が必要。確信度は中程度。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "CTS規模拡大・ラボネットワーク強化 → 高マージン利益基盤 → グループCAGR支援",
+      "descriptive_label": "CTS→高マージン利益→グループCAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。CTS成長→グループ利益貢献は財務データで確認可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 45,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CTSが最大AOI貢献事業というデータで因果は確認可能。CTSの成長継続が重要なグループCAGRドライバー"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: グループ売上CHF 58.83億（+5.4%定数通貨、+4%有機）。調整営業利益CHF 9.47億。純利益CHF 6.29億（+11%）。フリーキャッシュフローCHF 6.07億（+2.7%）。85,000名以上・150カ国以上で事業展開。10件買収（FY2013-14合計22件、買収目標CHF 7億達成）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 OGC: 8.6%成長（CHF 10億超）、全て有機成長。H1 2015 OGC: 0.2%成長（Upstream -20%をPTO・Trade活動が完全相殺）。H1 2015: アフリカ・中東でFuel Integrity Programme新規契約獲得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 CTS: 7.5%成長、マージン安定。E&Eダブルディジット成長。H1 2015 CTS: 有機成長4.8%（食品・E&E・化粧品が牽引）。CTS最大AOI貢献事業。H1 2015 Envi: 25%成長（有機5.2%）。H1 2015 GIS: 最高有機成長率。H1 2015 Auto: 12.4%成長（有機6.6%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    }
+  ]
+}

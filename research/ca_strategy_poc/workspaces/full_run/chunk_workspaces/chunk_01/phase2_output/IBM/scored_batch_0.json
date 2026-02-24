@@ -1,0 +1,381 @@
+{
+  "ticker": "IBM",
+  "scored_claims": [
+    {
+      "id": "IBM-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Watson 認知コンピューティングプラットフォームへの$1B 投資と 30 ヶ国 20 業種展開によるコーナード・リソース",
+      "evidence": "CEO Ginni Rometty (Q2 2015): Watson Business Unit $1B investment, 30 countries, 20 industries, 20,000+ developers using Watson APIs. Watson won Jeopardy and became commercial platform.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "Watson プラットフォームという能力・仕組みの説明。30 ヶ国展開は結果だが $1B 投資・API エコシステムが能力"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$1B 投資・30 ヶ国・20 業種・20,000+ 開発者という定量的証拠"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "Watson AI プラットフォームは構造的技術資産"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Google・Microsoft・Amazon も AI/ML プラットフォームを提供。Watson の固有差別化が 2015 時点では不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "Watson API エコシステムという能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$1B・30 ヶ国・20,000 開発者という定量化"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Google AI・Microsoft Azure ML との差別化が不明確"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Watson 投資→商業的競争優位への接続は 2015 時点で不確実"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "API エコシステムの能力説明"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "Google・Microsoft との差別化不明確"
+        },
+        {
+          "source": "KB2-T pattern_C_causal_leap",
+          "adjustment": -0.05,
+          "reasoning": "商業的成功への接続が不確実"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "Watson は独自のコグニティブ AI プラットフォームだが、Google・Microsoft・Amazon の AI プラットフォームに対する差別化根拠が 2015 時点で不明確（rule07 FAIL）。$1B 投資は定量的だが ROI への接続が弱い。dogma 的に「まあ納得」域 0.50。"
+    },
+    {
+      "id": "IBM-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Strategic Imperatives（クラウド・アナリティクス・モバイル・ソーシャル・セキュリティ）30%+ 成長と $17B アナリティクスビジネス",
+      "evidence": "CEO Rometty (Q2 2015): Strategic Imperatives revenue growing 30%+, analytics $17B/year. Cloud as-a-service $3.8B annual run rate. These areas represent where enterprise computing is moving.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.35
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "30%+ 成長・$17B は結果の提示。Strategic Imperatives を可能にする IBM 固有の能力説明が乏しい"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$17B アナリティクス・$3.8B クラウド run rate という数値"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "AWS・Azure・SAP・Oracle も同じ分野で競合。IBM 固有の差別化なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "30%+ 成長は結果（dogma rule1 FAIL）"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "クラウド・アナリティクスは業界全体のトレンド（dogma rule3）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "$17B という具体的数値"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通トレンドへの参加"
+        },
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "成長率は結果"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通トレンド"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "Strategic Imperatives の成長率は結果（rule01 FAIL）。クラウド・アナリティクスは業界全体のトレンドであり IBM 固有の差別化根拠が極めて弱い（rule03 FAIL, rule07 FAIL）。dogma 的に「あまり納得しない」域 0.30。"
+    },
+    {
+      "id": "IBM-003",
+      "claim_type": "competitive_advantage",
+      "claim": "$143B IT サービスバックログによる年収の70%が事前確定した安定収益基盤",
+      "evidence": "CEO Rometty (Q4 2013): 'IT services backlog of $143 billion.' This backlog represents ~70% of annual revenue predetermined. Long-term services contracts create high switching costs.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "長期サービス契約という仕組み・スイッチングコストの説明。バックログは結果だが契約構造が能力"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$143B バックログ・70% 年収事前確定という非常に具体的な定量的証拠"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "長期 IT サービス契約は構造的スイッチングコスト"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Accenture・HP・Infosys も大規模 IT サービスバックログを持つ。IBM 固有の差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "$143B バックログ・70% 確定収益という強力な定量的証拠"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "長期契約・スイッチングコスト構造という能力の説明"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Accenture・HP のバックログとの比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "$143B バックログの定量化"
+        },
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "スイッチングコスト構造の説明"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "競合バックログとの比較なし"
+        }
+      ],
+      "final_confidence": 0.60,
+      "overall_reasoning": "$143B バックログ・70% 確定収益という強力な定量的証拠（rule04 PASS）。スイッチングコスト構造の説明（rule01 PASS, rule06 PASS）。ただし Accenture・HP も大規模バックログを持つため純粋競合差別化の証拠が弱い（rule07 FAIL）。dogma 的に「まあ納得」上位域 0.60。"
+    },
+    {
+      "id": "IBM-004",
+      "claim_type": "competitive_advantage",
+      "claim": "System z メインフレームのスイッチングコスト（28% 追加 MIPS、銀行基幹システムのロックイン）",
+      "evidence": "CEO Rometty (Q2 2015): System z showed 28% more MIPS, secular growth driven by bank/financial institution core system lock-in. zEC12 → z13 upgrade cycle. Banks cannot easily migrate from z-architecture.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "z アーキテクチャへのロックイン・メインフレーム移行コストという仕組みの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "28% 追加 MIPS という具体的性能向上数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "基幹システムへの組み込みは構造的スイッチングコスト"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "競合メインフレーム（Fujitsu BS2000 等）と比較して IBM z は銀行業界でのデファクト。移行コストが非常に高い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "銀行業界での z アーキテクチャ独占的地位（dogma rule11 業界構造合致）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "28% 追加 MIPS という性能の定量化"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "z アーキテクチャという技術プラットフォームの能力説明"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.1,
+          "reasoning": "銀行業界でのデファクト地位（dogma rule11）"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "28% MIPS の定量化"
+        },
+        {
+          "source": "dogma rule11_industry_structure_fit",
+          "adjustment": 0.05,
+          "reasoning": "銀行基幹システム移行コスト × z アーキテクチャ独占の業界構造合致"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "System z のスイッチングコストは KB1-T 全ルール PASS。28% MIPS の定量化・銀行基幹システムへのロックイン・競合との明確な差別化（rule07 PASS）。dogma rule11（業界構造合致：銀行の移行コスト忌避 × z アーキテクチャ独占）が適用。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "IBM-005",
+      "claim_type": "competitive_advantage",
+      "claim": "OpenPOWER コンソーシアムによる英国・米国政府 HPC 採用とオープンエコシステム構築",
+      "evidence": "CEO (Q2 2015): OpenPOWER Consortium - UK STFC/US DOE HPC adoption, 100+ ecosystem members. Power8 architecture opening up to reduce x86 dependence in HPC.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "OpenPOWER コンソーシアムという仕組みの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "100+ エコシステムメンバーはあるが、HPC 市場シェアや売上の定量的証拠が弱い"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "HPC は IBM の主力事業でなく補完的。x86 Intel の支配的地位に対する挑戦者ポジション"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Intel x86 + AMD が主要競合。Power8 の差別化が HPC 市場全体での競争優位に繋がるかが不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "OpenPOWER の競争優位への接続が定性的で測定困難"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "OpenPOWER エコシステムは戦略的イニシアチブ（rule08）に近く、構造的優位性の説明が弱い"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Intel x86 との差別化根拠が HPC 市場全体への影響として不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "定量的競争優位の証拠が弱い"
+        },
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.1,
+          "reasoning": "戦略的イニシアチブに近い（rule08）"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "Intel との差別化不明確"
+        }
+      ],
+      "final_confidence": 0.25,
+      "overall_reasoning": "OpenPOWER は政府 HPC での採用実績があるが、構造的競争優位性への接続が弱い（rule06 FAIL）。HPC は IBM の補完的事業であり戦略的イニシアチブ（rule08 警告）に近い。定量的証拠も弱い（rule04 FAIL）。dogma 的に「あまり納得しない」域 0.25。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "20-30": 2,
+      "30-40": 1,
+      "50-60": 1,
+      "70-80": 1
+    }
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "ticker": "RADL3",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-27)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Raia・Drogasil 2ブランドによるポートフォリオ運営能力（A/Bクラス向け双ブランド戦略）",
+      "descriptive_label": "デュアルブランド運営能力（Branding×Process Power）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO De Zagottis): 'This was the first year that we operated as a fully combined company, fulfilling the vision that really guided the creation of RaiaDrogasil...the vision of really sharing assets in common, that we believe are unique in our industry across 2 of our brands, Raia and Drogasil, that are really iconic brands in the Brazilian retail environment.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [3],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ブランドポートフォリオの運営能力（仕組み）を評価。「iconic brands」という状態ではなく、共有インフラで2ブランドを並列運営する能力が核心"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "ブラジルのドラッグストア市場では競合（Grupo Pague Menos等）はシングルブランド中心。デュアルブランドは相対的に希少だが競合との定量比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "統合済みバックオフィス・ロジスティクスを共有しながら2ブランドを維持する構造は競合が短期で模倣困難"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "ブラジルのドラッグストア市場はフラグメント化しており、デュアルブランドによる多セグメントカバーは市場構造と合致するが業界構造への明示的言及なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし競合との定量比較なし、業界構造への明示的言及不足",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "デュアルブランド運営はKYのブランド類型1（ポートフォリオ運営力）として評価。ただし競合Drogariasとの差別化が定量的に示されていない。50%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "デュアルブランド + 新州進出 → 売上成長18-20% + SSS成長6-8% → 有機的EBITDA拡大",
+      "descriptive_label": "デュアルブランド→多市場カバー→成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ブランド力→市場シェア拡大→SSS6.5%+新店出店→売上18.5%成長の経路。2-3ステップで開示データ検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2014年実績18.5%成長と2015年130店舗出店計画として具体化"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "明確な成長経路と定量的実績。ただしブラジルマクロリスク（通貨、インフレ）が介在するため確信度を若干抑える"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 1,091店舗、売上成長18.5%、SSS成長6.5%、EBITDA margin 6.6%（過去最高）、国内市場シェア9.9%（50bp増）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "有機的出店による低コスト展開能力（M&Aより有機成長が圧倒的にROI優位）",
+      "descriptive_label": "低コスト有機出店能力（Process Power）",
+      "evidence_from_transcript": "Q4 Q&A (CFO De Zagottis): 'The cost of growing organically is much lower -- much, much, lower. So it\u2019s a much higher in terms of position growing organically versus buying someone. Growing organically, another -- addition advantages. The investment is completely privatized and diversified. So it\u2019s 130. Individual decisions will screw up a couple of those, but overall, the net out will be very good.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "answer",
+      "supported_by_facts": [5],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "有機的出店能力（プロセス）vs M&A戦略の選択（戦略）の境界。出店プロセスの優位性は能力として評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited",
+            "reasoning": "「much, much lower」という定性的表現のみ。具体的なROI比較データなし"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "有機的出店戦略は戦略の選択であり優位性ではない。出店プロセスの効率性（優位性）との区別が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし戦略と優位性の混同リスク（Rule 8-T）、定量データなし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "有機出店優位性は戦略（Rule 8-T）への抵触リスクがある。出店プロセスそのものの優位性は示されているが定量的根拠に乏しく、30-40%が適切"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 131店舗新規出店（うち51店はQ4集中）、11店閉鎖。2015年計画: 130店舗出店。90契約済み（Q4 call時点）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "カスタマーデータ活用能力（78%の顧客を識別・データ駆動カテゴリマネジメント）",
+      "descriptive_label": "顧客データ識別・カテゴリ管理能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Pousada): '78% of the customers, we know the customers very well. We rarely fight with customers. The use of this data for us is very, very important. When we closed the partnership decision it really helped us to enhance the category management in exchange for the next year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "顧客データ識別・分析能力（仕組み）を評価。78%識別率は能力の定量的指標"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "weak",
+            "reasoning": "ブラジルのドラッグストア競合との比較なし。78%識別率が業界水準対比で優位かどうか不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "78%顧客識別率は定量的だが、競合比較や活用による財務インパクトの数値なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。識別率78%という定量データあり。ただし競合比較不在",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "顧客データ識別能力はネットワーク経済・スイッチングコスト強化の基盤として評価。78%識別率は業界水準が不明だが、競合より強力な主張をするには比較データが必要。50%が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "顧客識別率78%（来店顧客の78%をデータベースで特定）、2014年時点で23,000名の従業員、うち3,300名が薬剤師",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "統合後のバックオフィス・ロジスティクス共有による規模の経済（Raia/Drogasil統合効果）",
+      "descriptive_label": "合併後統合インフラによる規模の経済",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO De Zagottis): 'We merged...We achieved a lead in execution, we achieved a lead in customer service...we also achieved a lead in value creation to our shareholders.' And: 'An investment for integration exactly is February 28. That\u2019s one year, which all the company should gather here. Now, with help for us in logistics, helps us to improve the operating net that we have on record.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "統合後インフラ共有は能力・仕組みとして評価できる。ただし「統合が完了した」という結果の面もある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited",
+            "reasoning": "EBITDA margin 6.6%（過去最高）、2年間での費用希釈40-50bpsが間接的な定量証拠。直接的な統合コスト削減数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "2ブランド・共有バックオフィス構造は競合が短期で再構築困難"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "ブラジルドラッグストア市場はフラグメント化しており規模の経済が重要な市場構造。統合後のスケールはこれと合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし統合効果の定量的分離が困難",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "統合後の規模の経済は方向性として認められる。EBITDA margin改善は結果として示されているが、統合固有の効果の定量分離ができない。50%が妥当"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2011年合併後3年間: 店舗数41%増、売上62%増（年率17.2%）、EBITDA 86%増。2014年EBITDA margin 6.6%（過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [8]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "実店舗密度向上による顧客粘着性（近隣店舗増設が重複顧客の消費単価を増加させる）",
+      "descriptive_label": "高密度出店による顧客粘着・消費増大効果",
+      "evidence_from_transcript": "Q4 Q&A (CFO De Zagottis): 'what happened is that, the consumers were closer to the store they are much more loyal, consumer much more heavy spenders, because they are better serviced by the stores...the number of tickets goes down, the average tickets goes up. It\u2019s an effect of increasing the insaturation in the market.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "高密度出店による顧客粘着強化は仕組みとして評価できるが、「粘着性の高まり」は結果に近い面もある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited",
+            "reasoning": "「average tickets go up」「number of tickets go down」という定性的説明。具体的な客単価増加率なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ブラジルのドラッグストア市場は地域密度が重要な構造（薬局は近隣立地が購買頻度に直結）と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。業界構造合致あり。ただし定量データ不足、競合比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "高密度出店による顧客粘着効果は業界構造合致（地域密度重要性）があるが、定量的裏付けに乏しく、競合との差別化が不明。40%が妥当"
+      }
+    }
+  ]
+}

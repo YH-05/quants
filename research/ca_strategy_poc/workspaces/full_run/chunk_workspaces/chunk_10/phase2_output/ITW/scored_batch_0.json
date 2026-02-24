@@ -1,0 +1,108 @@
+{
+  "ticker": "ITW",
+  "batch_index": 0,
+  "batch_total": 3,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_8_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_C", "pattern_D", "pattern_III"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "ITW-001",
+      "claim_type": "competitive_advantage",
+      "claim": "80/20経営哲学による製品ライン簡素化と事業集中力",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 80/20という具体的なオペレーティングシステムは能力・仕組みの説明。製品ライン簡素化というプロセスが能力として機能している",
+        "rule_6_t": "PASS: 製品ライン管理という事業モデルの核心的要素として構造的",
+        "rule_8_t": "PARTIAL: 80/20は哲学/戦略的アプローチであり、優位性の境界が曖昧だが、長期実践による組織能力への転化を評価",
+        "rule_11_t": "PASS: 分散工業製品市場においてSKU集中は業界構造と合致した優位性"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "80/20は単なる戦略宣言ではなく、実際に売上の2/3を占める高差別化製品への集中という実証済みのオペレーティングシステム。製品ライン数削減という具体的な能力発現を確認"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4年次発言。80/20という独自の経営システムは能力・仕組みとして認められる。長年実践により組織に埋め込まれたProcess Powerの性質を持つ。競合（Parker Hannifin、Dover等）との明示的比較はないが、売上の2/3を高差別化製品が占めるという構造的事実は業界文脈で優位性を示す。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "ITW-002",
+      "claim_type": "competitive_advantage",
+      "claim": "企業戦略（Enterprise Strategy）による継続的なマージン改善能力",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: Enterprise Initiativesという具体的なプログラム（BSS＋Strategic Sourcing）が能力・仕組みとして機能",
+        "rule_4_t": "PASS: 120bp/年のマージン改善という定量データあり。'volume growth独立'という重要な能力の質的説明も含む",
+        "rule_6_t": "PASS: 構造的なコスト削減メカニズムとして事業の核心的要素",
+        "rule_12_t": "PASS: Q4年次発言で投資仮説の根幹として設定されている"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_I_quantitative_differentiation",
+        "assessment": "120bp/年という定量データ＋volume独立という特性の説明が揃っており、Pattern I（定量的裏付けのある差別化）に該当。競合との明示的比較はないが、'volume growth独立'という点は産業財企業として珍しい構造的強みを示す"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4年次発言で体系的に説明されたEnterprise Strategy。100bp/年（Q4で120bp実績）のマージン改善がvolume growthに依存しないという説明は、業界での差別化を示す。BSS＋Strategic Sourcingという2本柱の能力説明が具体的。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "ITW-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Strategic Sourcing（戦略的調達）能力による構造的コスト削減",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 'fully embedded in operations'という表現はプロセスとして組織化された能力を示す",
+        "rule_4_t": "PARTIAL: 'exceeded our plan'は定量的だが絶対数値がない。Q3での'consistent above-planned benefits'も継続性を示すが競合比較なし",
+        "rule_6_t": "PASS: 調達は製造業のコスト構造の核心的要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_D_qualitative_only",
+        "assessment": "'fully embedded'、'above-planned'という表現は能力の実在を示すが、定量的な競合比較がない。Pattern D（定性的のみ）の部分適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Strategic SourcingはEnterprise Strategy（ITW-002）の一部として機能しており、重複の側面がある。ITW-002と組み合わせて理解すべき主張。単独では競合との差別化データが不足しており50%が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "ITW-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Automotive OEM分野での自動車生産台数を上回るアウトパフォーマンス能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: 7% vs 1%ビルドというアウトパフォーマンスは結果の面が強い。歴史的400-500bpのアウトパフォーマンスも同様",
+        "rule_4_t": "PASS: 定量的な比較データあり（7% vs 1%、400-500bp歴史実績）",
+        "rule_7_t": "PARTIAL: 自動車生産台数との比較は有効だが純粋競合（Illinois Tool Works競合の産業接着剤等の企業）との比較ではない",
+        "rule_11_t": "PASS: 自動車OEM市場の深化（複雑化・電動化）に対するITWのコンテンツ拡大は業界構造との合致"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "アウトパフォーマンスは結果。なぜ自動車OEMに浸透できるのか（接合・溶接技術の差別化、顧客特注ソリューション能力）の説明が不十分でPattern A部分適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "自動車OEM特化のアウトパフォーマンスは実績として確立されているが（400-500bpの歴史的差）、その能力根拠が明確でない。ただし自動車OEM向け接合技術への特化は構造的な市場密着性を示す。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "ITW-005",
+      "claim_type": "competitive_advantage",
+      "claim": "高度に差別化されたビジネスモデルによる業界横断的な高マージン維持能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: 'highly differentiated business model'は能力の説明ではなく結果の主張に近い。Welding 25%マージンは数値だが能力説明ではない",
+        "rule_4_t": "PASS: Welding 25%という具体的数値あり",
+        "rule_6_t": "PASS: 高マージン構造は事業の核心的要素",
+        "rule_7_t": "FAIL: Parker Hannifin、Dover等との具体的比較なし"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "高マージンは結果。ITW-001（80/20哲学）とITW-002（Enterprise Strategy）が生み出す結果として理解すべき。独立した主張として評価する場合、能力説明の不足がある"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "ITW-005は実際にはITW-001とITW-002の結果として生み出されるものであり、独立した競争優位性としては評価が難しい。Welding事業の25%マージン維持は能力の一面を示すが、背後の仕組み（80/20とEnterprise Strategy）はすでに別主張で評価済み。Phase 1評価50%を維持する"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "ticker": "SGE",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-12-03)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "SME向け30年の製品信頼性・ローカルサポート能力（ドイツ・フランス等欧州各国の規制対応ローカルサポートが競合との差別化要因）",
+      "descriptive_label": "SMEローカルサポート・規制対応能力（Switching Costs × Branding）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Stephen Kelly): 'particularly in our European businesses, is the value and the strength of the local support, being able to pick up the phone or go on the web and deal with someone who understands that compliance regime, that regulatory regime, that detailed, fundamental element that is relevant to, say, the German accounting marketplace. And it just came back stronger and stronger around the quality of the support that Sage provides its customers and the value derived from that and that they are local and available.' And Q&A (CEO): 'win rate of 66% of sales campaigns we're involved in...the customer feedback...3 reasons why they choose Sage X3: one is functionality is superior; secondly, total cost of ownership being less; and the third reason...is around local support'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "30年の欧州各国規制対応ノウハウとローカルサポート能力は仕組みとして評価できる。規制の複雑性（国ごとの会計・給与規制）への対応力が核心"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "X3製品での66%勝率と競合比較あり。Netsuiteなど競合はローカルサポートが弱い点が具体的に言及されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "30年の欧州規制対応ノウハウは短期で模倣困難。各国の会計・給与規制は頻繁に更新されるため継続的な能力投資が必要"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "欧州SME市場は規制遵守（VAT・給与税・GDPR前身）が重要。地域密着の規制サポートは市場構造上の必要条件と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。顧客の直接フィードバック（「indispensable」「great product」）と66%勝率という定量データあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ローカルサポート能力はSME SaaSにおいて競合他社との差別化点として具体的に言及されており、66%勝率という定量指標で裏付けられている。Switching Costsの強化にも寄与。60%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年FY: 有機成長5%、営業利益率27.5%（目標達成）。経常収益73%（前年比+2ppt）。Sage X3: 4,800顧客、290パートナー、勝率66%。Sage One: 86,000サブスクリプション（+150%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "ローカルサポート×規制対応 → クロスセル（既存2Mクライアントへの新サービス） → 経常収益7%成長 → 28%営業利益率維持",
+      "descriptive_label": "ローカル強みからクロスセル→経常収益成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ローカルサポート → 顧客信頼 → クロスセル（integrated payments等） → 経常収益+7%の経路。2-3ステップで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2015年6%成長・28%利益率ガイダンスとして具体化"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "クロスセル戦略とサブスクリプション移行の組み合わせが経常収益7%成長を裏付け。ただしガイダンス達成は競合動向・欧州マクロに依存。60%が妥当"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "SMEインストールベース（数百万社）を活用したサブスクリプション移行能力（既存顧客の再活性化・アップグレード・クロスセル戦略）",
+      "descriptive_label": "SMEインストールベース活用サブスク移行能力（Switching Costs）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO Stephen Hare): 'we have millions of small and medium-sized businesses that use our products and services...Think about 3 areas where our installed base gives us opportunities: firstly, reactivating existing customers...migrating existing customers to higher value offerings, this drives higher average revenue per user and customer stickiness through migrating existing maintenance and support customers to premium solutions with value-added features; and cross sell, cross sell to existing customers, driving a higher share of wallet from those customers.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "SMEインストールベースを再活性化・アップセル・クロスセルする能力（仕組み）として評価。単なる「大きな顧客基盤を持つ」という結果ではなく、3ステップの具体的アプローチを示している"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "既存契約2M社、英国UK自動登録で既存顧客の60%がSubscription機能を採用という定量データあり。ただし全体的な移行率は限定的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "30年かけて構築した数百万社のインストールベースは短期で模倣困難。顧客の切り替えコスト（データ移行・習熟コスト）が強い参入障壁"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。インストールベース活用の具体的な3ステップ戦略が示されており、UK自動登録で60%採用という実績あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "SMEインストールベースの活用は明確なSwitching Costs型の優位性。UK pension auto-enrollment機能で60%採用という具体的実績が能力の存在を示す。60%が妥当"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "既存顧客基盤: 2M社がサポート契約、約1M社が3年以内にトランザクションあり。UK Sage 50 Payroll顧客の60%がPension auto-enrollment機能（サブスク限定）を採用。Sage Oneチャーン率は英国で一桁%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "欧州規制複雑性を強みに変えるグローバル製品展開能力（欧州各国規制対応ノウハウが参入障壁として機能）",
+      "descriptive_label": "欧州規制複雑性対応力による参入障壁（Counter-Positioning）",
+      "evidence_from_transcript": "Q4 Q&A (CEO Stephen Kelly): 'being a European company and understanding the complexity of the countries around Europe and the different regulatory environment and the compliance requirement, probably they're quite a significant advantage to us...payroll is probably more country specific; but generally, 60% to 70% global requirements; and then the regulatory local requirements are the additional 30%. In some of the core accounting products, it's probably 80%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [2],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "欧州規制対応ノウハウは能力として評価できる。「規制の複雑性を理解している」という仕組みが核心"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "各国規制対応は30年かけて蓄積されたものであり、グローバル競合（Netsuite等）が短期で模倣困難な構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "欧州SME市場は規制遵守の複雑性が高い市場構造。規制対応能力が市場参入に必要不可欠で業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。競合（Netsuite）との具体的な差別化が言及されており、欧州規制の定量的割合（30%）の開示あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "欧州規制複雑性はSageにとってCounter-Positioningとして機能。グローバル大手SaaSが欧州市場に参入する際に直面する障壁であり、Sageの30年ノウハウが差別化要因。60%が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "SME市場での「顧客を生涯持つ」模型（マルチ世代にわたる顧客継続：親子でSage製品使用、churn率一桁%）",
+      "descriptive_label": "マルチ世代SME顧客継続性（Switching Costs × Branding）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Stephen Kelly): 'there was 3 occasions where I met multigenerational Sage customers. So a mom and dad in a bakery business have actually set up their 2 children...we have a Sage 50 customer in the bakery business and a Sage One customer in the cloud for the younger generation.' And CFO: 'Sage One churn rates are now down into single digits' in the U.K.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [5],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "マルチ世代顧客継続は結果に近い面もあるが、製品の継続的な世代対応能力（クラウド→オンプレ選択肢の提供）という能力が背景にある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "UK Sage Oneチャーン率一桁%は定量データ。ただしマルチ世代顧客数・継続率の全体データなし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "競合（QuickBooks等）のチャーン率比較なし。業界水準での優位性不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定性的事例とチャーン率一桁%の限定的定量データあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "マルチ世代顧客継続は強力なブランド・Switching Costsの証拠だが、anecdote（事例）に依存しており定量的裏付けが限定的。50%が妥当"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "2,000名以上のR&Dエンジニア規模によるSME製品開発・ローカライゼーション能力（競合の20-12名と比較して圧倒的規模）",
+      "descriptive_label": "大規模R&Dエンジニアリング能力（Scale Economies）",
+      "evidence_from_transcript": "Q4 Q&A (CEO Stephen Kelly): 'I'm aware of companies. In the last 10 years I've been involved around the cloud who've got products to market in 3 to 6 months. One of the competitors in our space has got 20 engineers, 20, 2-0. Another 1 has got 12 engineers. We've got over 2,000 engineers.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "2,000名のエンジニアは規模（Scale Economies）として評価できるが、それが優位な製品開発能力として発揮されているかは別問題。CEOも「shifting the dial around execution and productivity」と認めている"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "strong",
+            "reasoning": "競合20名、12名との直接比較あり。100倍以上の規模差は明確な定量比較"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2,000名超 vs 競合20名・12名という明確な定量比較。ただしR&D効率性（一人当たり成果）の比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。定量比較明確。ただしCEO自身が「execution efficiency改善が必要」と認めており、規模が優位性として十分発揮されているか疑問",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "R&D規模の差は明確だが、CEOが改善の余地を認めており規模が競争優位として完全に発揮されていない可能性。40-50%が妥当"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "R&Dエンジニア数: 2,200-2,300名、R&D費用は売上の約10%（有機ベース）。競合企業は20名・12名規模。Sage X3勝率: 66%（UK市場）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [8, 1]
+    }
+  ]
+}

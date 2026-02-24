@@ -1,0 +1,370 @@
+{
+  "ticker": "DOL",
+  "company_name": "Dollarama Inc.",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-03-25) [Primary], Q4 FY2014 Earnings Call (2014-04-09) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015", "Q2 FY2015", "Q3 FY2015", "Q1 FY2016", "Q2 FY2016"],
+    "transcripts_used": [
+      "201404_earnings_call.json (Q4 FY2014)",
+      "201406_earnings_call.json (Q1 FY2015)",
+      "201409_earnings_call.json (Q2 FY2015)",
+      "201412_earnings_call.json (Q3 FY2015)",
+      "201503_earnings_call.json (Q4 FY2015)",
+      "201506_earnings_call.json (Q1 FY2016)",
+      "201509_earnings_call.json (Q2 FY2016)"
+    ],
+    "excluded_transcripts": ["201512_earnings_call.json (Q3 FY2016, event_date=2015-12-09, after cutoff)"]
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Dollarama のカナダ全土への高密度店舗展開（874店→1,400店へのロードマップ）と単一物流センター活用による固定費分散は、カナダのドルストア市場でWalmart等の大手小売と共存しながら独自のスペースを確保する規模の経済を構築する",
+      "descriptive_label": "カナダ高密度展開による規模の経済と物流効率",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO Laurence Rossy): 'an aggressive store network expansion strategy across Canada'; CFO Michael Ross: '60 stores per year-ish... 6 to 7 or 8 years of runway in front of us [to reach 1,400]'; Q&A: 'Our stores perform very well... with our current stores which overlap with the 380 other Walmart stores in Canada'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Laurence Rossy (CEO) / Michael Ross (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「874店」「1,400店ロードマップ」は規模の結果。固定費分散のメカニズム説明は薄い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "カナダのDollar Treeも同様のモデルで参入試みる。Dollarama固有の差別化が必要"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_partial",
+            "reasoning": "カナダ市場での高い浸透率は競合の追いつきを困難にするが、Dollar Tree等の参入で揺らぎうる"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "カナダドルストア市場はまだフラグメントしており、規模展開の価値は認められる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "規模の現状（874店）は結果。スケールメリットの仕組み説明が不足",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "店舗数は結果であり能力ではない。スケールメリットを生む仕組み（物流密度、購買力）の説明が不十分。30%"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "年間60-80店の新規出店 → 年間売上新規貢献（新店効果） + 既存店4-5%成長 → Dollarama 全社売上CAGR 10-13%維持",
+      "descriptive_label": "新規出店+SSS成長→売上CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：新規出店+SSS成長→売上CAGR。FY2015実績12.9%成長が裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2015発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "CADドル安による将来の価格転嫁リスクが成長率に不確実性をもたらす",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "新規出店+SSS成長の因果は直接的で実績と整合。ただしCAD安・競争激化による不確実性あり。50%"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Dollarama のマルチ価格点モデル（$1-$3）への転換により、単一価格制約を超えた品揃え・品質向上が可能となり、より広い消費者ニーズに対応できる商品力を構築した。これにより$1制約下では提供不可能な価値を提供できる",
+      "descriptive_label": "マルチ価格点モデルによる品揃え・商品価値の拡張",
+      "seven_powers_category": "Counter-Positioning",
+      "evidence_from_transcript": "Q4 FY2015 Q&A (CEO): 'The model has changed over the last 20 years from one price point to this multi-price point. And it has allowed us to go into areas that we formerly would not have considered at the $1 price point'; 'We started off at $1.23 years ago, and we're 23 years later into that price point'; '72% of our sales originated from products priced higher than $1 compared to 61% in the corresponding quarter last year'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Laurence Rossy (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "マルチ価格点「モデル」という仕組みを評価。ただし競合（Dollar Tree等）も同様の転換を行いうる"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「マルチ価格点モデル」は名詞表現"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "価格点拡大は補完的な戦略転換。構造的障壁として競合が真似できない理由が薄い"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "flag",
+            "reasoning": "マルチ価格点導入は戦略的意思決定。優位性というより戦略"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_strategy_confusion",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "戦略と優位性の混同傾向。競合の追随が容易",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "マルチ価格点は戦略的決断であり、それ自体が競合の模倣を困難にする構造的障壁ではない。30%"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "マルチ価格点モデル → $1超製品比率の拡大（61%→72%）→ トランザクション金額の増加（+4.7%） → SSS成長の持続（4-5%）→ CAGR支持",
+      "descriptive_label": "マルチ価格点→トランザクション金額増加→SSS成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "直接的2ステップの因果：$1超比率増加→トランザクション金額増→SSS。CFOが定量データ（72% vs 61%、4.7%増）を開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2015発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "定量的な因果メカニズムの開示あり（$1超比率+トランザクション金額）",
+            "adjustment": 0
+          },
+          {
+            "reason": "優位性側（マルチ価格点）の強度が30%のため上限あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "CAGR接続としては直接的で定量データあり。前提となる優位性評価が低いが、CAGR接続は独立評価のため50%"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Dollarama のオリエント（主に中国）への直接買い付け・直輸入能力は、中間業者を排除して商品コストを削減し、カナダドル安の逆風下でも粗利率36-39%を維持できる仕入れ交渉力を構築する",
+      "descriptive_label": "中国直接仕入れによる仕入れ交渉力と粗利維持能力",
+      "seven_powers_category": "Scale Economies / Process Power",
+      "evidence_from_transcript": "Q4 FY2015 Q&A (CEO): 'We're going to the Orient in about a month and we'll get it directly and confront them [on pricing]'; 'between 25% and 30% [of offerings] to manage the margin accordingly by introducing...higher price point items'; Gross margin FY2015: 36.9%",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Laurence Rossy (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "直接仕入れ「能力」は評価できるが、どの競合と比べて具体的にどう優れているかが不明"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "大手小売チェーンは多くが中国直接仕入れを行う。Dollarama固有の差別化が不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "粗利率36.9%という具体的数値あり。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "直接仕入れは補完的要素。構造的に競合が複製できない理由が薄い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_industry_common",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "大手小売での中国直接仕入れは業界共通能力",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "直接仕入れは業界共通能力。純粋競合との差別化根拠が薄い。30%"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Target Canada撤退後の消費者の行き場を獲得したDollaramaの立地優位性と店舗密度（Target近隣380店でも既存店が好調を維持）は、ショッピングモール・ストリップモール内でのアンカーテナントとしての地位を強化する",
+      "descriptive_label": "Target撤退後の消費者取り込み・立地アンカーポジション",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "Q4 FY2015 Q&A (CFO): 'our current stores...which overlap with the 380 other Walmart stores in Canada. And again, these stores -- our stores perform very well'; CEO: 'if you put the stores where the people are, they will come'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Laurence Rossy (CEO) / Michael Ross (CFO)",
+      "section": "qa_session",
+      "supported_by_facts": [12],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "「Target撤退後の消費者取り込み」は短期的な外部要因への恩恵であり、能力ではない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "立地は補完的要素。Target撤退は一時的外部イベント"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "一時的外部要因（Target撤退）への依存。能力ではない",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "Target撤退の恩恵は一時的で能力ではない。立地密度は結果。30%"
+      }
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Dollarama のPOSシステム（SAP統合）・Kronos（人員管理）・Wi-Fi導入による在庫管理・労働生産性向上の継続投資は、大規模チェーン運営に必要なオペレーショナルエクセレンスを蓄積し、同等規模の競合が短期に複製できないプロセス能力を形成する",
+      "descriptive_label": "POS・SAP・Kronosによる店舗運営プロセス能力",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q4 FY2015 Q&A (CFO): 'Instead of doing the inventory with manually filling out the sheets, we could do it with scanners. And also, it's -- the risk of errors is reduced because as the scanner picks it up, it sends it through SAP to our system directly'; 'We continue to deliver savings related to labor productivity initiatives'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Michael Ross (CFO)",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "在庫管理・労働生産性向上の仕組みとプロセスを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "G&A率16.1%という数値あり。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "SAP・Kronos導入は業界標準技術の採用であり、特段の障壁ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_industry_common",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "SAP・Kronosは業界標準ソフトウェア。Dollarama固有の優位性として認定困難",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "プロセス投資は存在するが業界共通ツールの採用にとどまる。純粋競合との差別化なし。30%"
+      }
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "G&A効率化・労働生産性向上 → G&A率の緩やかな改善 → EBITDA margin拡大 → EPS CAGR 15-20%への寄与",
+      "descriptive_label": "オペレーション効率化→G&A率改善→EBITDA margin→CAGR",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップの因果。G&A率の具体的な改善目標・数値の開示なし"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2015発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "「緩やかな改善」という曖昧な表現。定量根拠なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "オペレーション効率化→EBITDA改善の因果は理論上だが、具体的な数値根拠が薄い。50%"
+      }
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "DOL FY2015実績：売上成長12.9%（通年）、SSS成長5.7%（通年）・8.5%（Q4）、粗利率36.9%、純利益18%増。店舗数874店（FY2014末）→FY2015末で955店相当。長期目標1,400店",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Q4 FY2015：$1超製品の売上比率72%（前年同期61%）。トランザクション金額増加4.7%、トランザクション数増加3.6%。デビットカード決済比率46%（前年43%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Dollaramaは定期的にオリエント（主に中国）への直接買い付けを実施。SKUの25-30%を毎年更新することでマージン管理を行う",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Dollaramaの現在店舗がWalmart 380店舗近隣と重複するが、既存店は好調を維持。Target Canada撤退後の同一立地での消費者取り込みも確認",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

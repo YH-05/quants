@@ -1,0 +1,131 @@
+{
+  "ticker": "WPL",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "claim_id": "WPL_001",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "WoodsideはLNG長期契約の大部分を早期に締結することで、油価下落局面でも安定的な収益基盤を確保する契約交渉能力・タイミング能力を持つ。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 能力の記述であり結果ではない",
+        "rule06": "FAIL - 契約交渉タイミングは補完的能力であり構造的優位ではない。競合LNG企業（Santos、BG Group）も長期契約を締結する",
+        "rule08": "FAIL - 早期締結判断は戦略的意思決定であり実証済みの構造的優位とは言えない",
+        "rule12": "FAIL - H1 2015中間決算（二次ソース、-10%調整適用）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["F-T (戦略と優位性の混同: 早期締結判断を能力として提示しているが、競合も同様の判断ができる)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule06 (補完的能力は採点対象外)", "rule08 (戦略と優位の区別)"],
+        "conclusion": "契約交渉の時間的センスは価値があるが、LNG業界ではすべての生産者が長期契約交渉能力を持つ。Woodsideの差別化は確認できない。"
+      },
+      "scoring_rationale": "契約タイミングの巧みさは評価できるが、これは業界標準的なオペレーション能力であり構造的な競争優位（7 Powers）とは言えない。rule06により補完的能力として採点。二次ソースの調整も適用。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "WPL_002",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "WoodsideはPluto LNGの大規模定期修繕を計画より10日（30%）前倒しで完了させる運営管理能力を持ち、競合との差別化要因となる。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 能力の記述",
+        "rule04": "PASS - 30%前倒しという定量的根拠あり",
+        "rule07": "FAIL - Santos、BG GroupなどのLNG事業者との定期修繕期間比較データなし",
+        "rule12": "FAIL - H1 2015中間決算（二次ソース、-10%調整適用）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["B-T (業界共通能力: LNG設備の定期修繕管理は全LNG事業者が持つ必要能力)", "G-T (競合との比較が不明確: 競合の修繕期間と比較していない)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule07 (競合との差別化が未確認)"],
+        "conclusion": "30%前倒し完了は良い実績だが、これが業界内でトップの実績かどうか不明。定期修繕能力は業界共通の必要能力。"
+      },
+      "scoring_rationale": "定量的証拠（30%前倒し）はあるが、競合比較なし。定期修繕能力はLNG業界共通の必要条件であり構造的優位ではない。パターンB/G適用。二次ソース調整。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "WPL_003",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "Woodsideは油価下落局面で業界ピア10社中3社しか黒字でない中でも黒字を維持できる低コスト生産構造を持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 構造的なコスト優位性の主張",
+        "rule04": "PASS - ピア10社中3社のみ黒字という具体的な比較",
+        "rule07": "PARTIAL - ピア比較を含むがWoodside自体のコスト数値が明示されていない",
+        "rule12": "FAIL - H1 2015中間決算（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["III-T (結果より能力: 黒字維持という結果の背景にある低コスト構造という能力に着目している)", "IV-T (構造的市場ポジション: LNG業界における低コスト事業者としてのポジション)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠の評価)", "rule07 (競合比較)"],
+        "conclusion": "油価低迷期のコスト競争力は実証されているが、具体的なブレークイーブン油価や生産コスト/boeが開示されていない。ピア比較は相対的優位性を示す。"
+      },
+      "scoring_rationale": "ピア10社中3社のみ黒字という具体的な業界内比較は有効な根拠。LNG低コスト生産者としての構造的優位。パターンIII/IV適用。ただし二次ソース調整と絶対コスト数値非開示から50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "WPL_004",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "Woodsideは油価低迷期に競合優位な条件（2.6%の低金利）で$3.75BのDoorを調達できる財務的信頼性・強固な貸借対照表を持つ。",
+      "confidence_score": 0.3,
+      "kb1_rules_applied": {
+        "rule01": "FAIL - 低金利調達は財務的結果であり、能力の証拠としては弱い",
+        "rule04": "PASS - 2.6%金利、$3.75Bという具体的数値",
+        "rule07": "FAIL - 競合の資金調達コストとの比較なし",
+        "rule12": "FAIL - H1 2015（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["A-T (結果を原因として提示: 低金利調達成功は財務的強さの結果であり、それ自体が競争優位の原因ではない)", "D-T (定性的のみ: 財務的信頼性の概念は示されるが競争優位メカニズムが不明確)"],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule01 (能力 vs 結果)", "rule07 (競合との差別化)"],
+        "conclusion": "良好な財務状況は競争優位の前提条件であるが、それ自体が7 Powersの1つとは言えない。"
+      },
+      "scoring_rationale": "低金利調達は財務的強さの結果。rule01によりFAIL。パターンA適用（結果を原因として）。競合との明示的比較なし。30%。",
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "WPL_005",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "transcript_type": "secondary",
+      "source_quarter": "H1 2015",
+      "claim_summary": "WoodsideはJames Price Point開発案件を「商業的要件を満たさない」として不実行とした規律ある投資意思決定能力を持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 規律ある意思決定能力の記述",
+        "rule10": "PASS - ネガティブケース（投資見送り）は戦略的規律を示す",
+        "rule06": "FAIL - 投資規律は補完的能力であり構造的優位ではない",
+        "rule12": "FAIL - H1 2015（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["F-T (戦略と優位の混同: 投資見送りは意思決定規律だが構造的競争優位の証拠ではない)"],
+        "high_eval_patterns": ["III-T (能力を示す: 商業的判断力という内部能力の発揮)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule10 (ネガティブケース評価)", "rule08 (戦略と優位の区別)"],
+        "conclusion": "投資規律は経営品質の証拠として有効だが、これが持続的競争優位（7 Powers）に直結する主張としては弱い。rule10のネガティブケースを考慮して50%。"
+      },
+      "scoring_rationale": "rule10のネガティブケース（投資見送り）は経営規律の証拠として有効。ただしrule06により補完的能力として評価。二次ソース調整。50%。",
+      "final_confidence": 0.5
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "ticker": "FEMSAUBD",
+  "batch_index": 1,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの同質競合に対する優位な出店立地評価能力と品質管理（閉店ゼロの実績）",
+      "descriptive_label": "閉店ゼロの出店品質管理能力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "'We've never shut down stores'は結果の報告（rule01 concern, pattern_A_result_as_cause）。dogma.md「優位性は能力・仕組みであり結果ではない」に明確に違反。12,853店で閉店ゼロは印象的な実績だが、それを可能にする出店評価プロセス（立地スコアリング、商圏分析、収益予測）の仕組み説明が全くない（rule04 insufficient）。競合（7-Eleven Mexico）との閉店率比較データなし（rule07 insufficient）。ネガティブケース（撤退候補店舗がなかった理由）の説明もなし（rule10 partial）。kb3 few-shot（COST#3: 純粋競合差別化不完全→50%より更に低い。結果のみの主張のため30%）。",
+      "kb1_flags": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Heineken持分（20%）を通じた安定的配当受取・資本配分の戦略的多様化",
+      "descriptive_label": "Heineken持分によるキャッシュフロー安定化",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": 0.3,
+      "scoring_rationale": "Heineken20%持分は財務資産（Cornered Resource的側面）だが、競争優位性としては評価が難しい（rule01 concern）。配当受取・資本配分は財務戦略の範疇で、OXXOやKOFの事業競争力とは異なる次元（pattern_B_industry_common: 大手コングロマリットの財務多様化は業界共通）。MXN 7.35Bの配当は定量データだが、競争上の差別化を示す数値ではない（rule04 partial）。持分比率自体は競合との比較になじまない（rule07 not applicable）。kb3 few-shot（CHD#4: 買収ブランドが成長加速=結果→30%）と同水準。財務持分は仕組みよりも資産の性格が強く30%。",
+      "kb1_flags": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "kb2_pattern": "pattern_B_industry_common",
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOのドラッグストア事業（Farmacon買収含む）での地域ブランド活用とITプラットフォーム統合能力",
+      "descriptive_label": "ドラッグストア事業の地域ブランド+IT統合戦略",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "ITプラットフォーム統合能力（仕組み）への言及はあるが、「developing a strategy」という言及が示す通り、Q4 2014時点ではまだ戦略策定段階（rule08 concern, pattern_F_strategy_confusion）。「we are now...a strategy that...will allow us」という将来形は現時点での能力の証拠にならない（rule01 concern）。定量的実績データなし（rule04 insufficient）。kb3 few-shot（CHD#5: 戦略ポートシフトは結果→30%）と同水準。将来の能力構築計画であり現在の競争優位性としては30%。cutoff date（2015-09-30）内での実現も不確実。",
+      "kb1_flags": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "ドラッグストアIT統合→規模達成→マージン改善のCAGR接続は間接的かつ長期（2-3年）。cutoff date内では統合途中。Drugstore店舗数605は初期段階。全社CAGRへの現時点での貢献は限定的。30%。"
+    }
+  ]
+}

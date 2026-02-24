@@ -1,0 +1,81 @@
+{
+  "ticker": "BA",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["BA-006", "BA-007", "BA-008", "BA-009", "BA-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "BA-006",
+      "claim_type": "competitive_advantage",
+      "claim": "複数地域・事業部門（Electronic Systems・Platforms & Services・Air・Applied Intelligence）の分散ポートフォリオによるリスク分散と財務安定性",
+      "descriptive_label": "多角化防衛ポートフォリオによるリスク分散",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 地理的・事業多様化はリスク分散の結果。多様化を可能にする能力の説明なし",
+        "rule_4_t": "FAIL - 「分散されている」という定性的説明のみ",
+        "rule_11_t": "PARTIAL - 防衛予算に対するリスク分散は業界論理と合致するが差別化根拠なし"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。Lockheed Martin・Raytheonも同様の多角化",
+      "kb3_t_calibration": "DGE-002（地理的多様性→30%）と同様の評価。防衛大手の多角化は業界共通",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（多様化は結果）。Rule 3（相対的優位性）: FAIL（業界共通）。Q4発言でも改善しない。30%",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・4 FAIL。KB2-T pattern_B_t（業界共通）。dogma.md Rule 1・3違反。防衛多角化は業界共通。Q4発言でも改善せず。30%"
+    },
+    {
+      "id": "BA-007",
+      "claim_type": "cagr_connection",
+      "claim": "GBP 40.5B受注残高 + Saudi/US長期プログラム → 収益可視性 → 安定的売上CAGR（+ Applied Intelligence成長による構成改善）",
+      "descriptive_label": "大規模受注残高→収益可視性→売上安定成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（受注残高→収益可視性→安定CAGR）で検証可能",
+        "rule_12_t": "PASS - Q4発言由来"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。受注残高→収益という直接的メカニズム",
+      "kb3_t_calibration": "ARM-007（ライセンス→ロイヤリティ→売上→70%）と類似した直接的接続。防衛の場合は契約書ベースの収益可視性がさらに高い",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。Q4発言。「開示データで検証可能」（受注残高は定期開示）。防衛予算削減リスクが外部変数として存在",
+      "final_confidence": 0.6,
+      "scoring_rationale": "KB1-T Rule 5・12の両PASS。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5高評価パターン「検証可能な接続」。防衛予算削減リスクがある分ARM-007より低い。Q4発言。60%"
+    },
+    {
+      "id": "BA-008",
+      "claim_type": "cagr_connection",
+      "claim": "Applied Intelligence 10%有機成長 + バックログ37%増 → 民間サイバー市場拡大 → グループポートフォリオのマージン構成改善",
+      "descriptive_label": "Applied Intelligence急成長→ポートフォリオ改善経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの因果（Applied Intelligence成長→グループ構成改善）で検証可能",
+        "rule_12_t": "PASS - Q4発言由来"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。Applied Intelligence成長→グループ構成改善という直接的メカニズム",
+      "kb3_t_calibration": "ARM-008（新市場展開→ロイヤリティ多様化→60%）と類似。Applied IntelligenceはBAEの小部分（~5-10%）であり、グループへの影響はARM-008より限定的",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。ただしApplied IntelligenceがBAEグループ全体への貢献は現時点では限定的（小部分）",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5・12の両PASS。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5 PASS。Applied IntelligenceはBAEの小部分でグループへの影響限定的。Q4発言。50%"
+    },
+    {
+      "id": "BA-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 受注残高GBP 40.5B、F-35将来100機/年生産体制へ拡大予定。サウジアラビア防衛支出削減なし見通し。GBP 925M株主還元（配当+自社株買い）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - FY2014 Full Year CEO/CFO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。BA-001（受注残高）・BA-004（サウジ関係）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。BA-001（70%）・BA-004（70%）の支持事実として最重要。GBP 40.5Bという具体的数値。0.7"
+    },
+    {
+      "id": "BA-010",
+      "claim_type": "factual_claim",
+      "claim": "Electronic Systems EBITA margin 15%超達成（FY2014）、APKWS売上好調、F-35 EWシステム差別化維持",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - FY2014 Full Year CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。BA-002（Electronic Systems優位）の核心的支持事実",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。BA-002（70%）の支持事実。15%超という業界平均比較が特に重要。0.7"
+    }
+  ]
+}

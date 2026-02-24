@@ -1,0 +1,349 @@
+{
+  "ticker": "BMRN",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-25) / Q3 FY2015 Earnings Call (2015-10-XX)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "希少疾患（オーファン）薬における独占的製品ポジション — VIMIZIMがMPS IVa唯一の治療薬",
+      "descriptive_label": "MPS IVaにおけるVIMIZIM独占的Cornered Resource",
+      "evidence_from_transcript": "Q4 CCO発言（Jeff Ajer）: 'physician and patient acceptance of the only therapy to treat Morquio A has been strong and we expect this fact to be an important driver of success going forward.' 'Sales were recorded in 19 countries at the end of the fourth quarter and VIMIZIM commercialization continues to proceed at the high end of our expectations.' 'A substantial portion of clinical trial in EAP patients have successfully been converted to commercial product.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jeffrey Ajer (CCO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「only therapy to treat Morquio A」という独占的地位は明確な能力の源泉（規制承認、特許保護）を示している。単なる結果報告を超えた構造的優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "初年度売上$77.3M（19か国展開）という定量的証拠あり。ただし競合不在のため競合比較は不可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規制承認済みの唯一の酵素補充療法という地位はCornered Resourceの典型。技術的・規制的参入障壁が高い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "唯一の治療薬であるため純粋競合比較は不要。競合不在自体が優位性の証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t（Cornered Resource 独占的地位）",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "MPS IVa（Morquio A症候群）の唯一の治療薬というCornered Resourceポジションは、7 Powersのフレームワークで最も強力な競争優位性の一つ。初年度$77.3Mは希少疾患薬として良好なランチ実績。1,650人以上の識別患者への浸透継続という成長余地も示されている"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "VIMIZIM初年度（承認からQ4 2014まで）売上$77.3M（米国/EUを含む19か国展開）。識別済みMPS IVa患者1,650人以上",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "オーファン薬開発における長期的な患者成長の持続性 — Naglazyme 10年目でも成長継続",
+      "descriptive_label": "希少疾患酵素補充療法の長期持続的患者成長（Naglazyme事例）",
+      "evidence_from_transcript": "Q4 CCO発言: 'Naglazyme revenues for 2015 are projected to be between $315 million and $340 million... reflecting the continued growth in patients even as Naglazyme enters its 10th year on the market.' 'The base of patients on Naglazyme remains impressively compliant and persistent, so the underlying strength of the business is intact.' 'We are delighted with the commercial progress this brand continues to make in a mature part of its life cycle and believe Naglazyme serves as an example of the opportunities overtime associated with innovative therapies that treat chronic and rare diseases.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jeffrey Ajer (CCO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "患者の高いコンプライアンス・継続性は結果だが、希少疾患酵素補充療法という疾患特性に基づく仕組み（代替療法なし、生存維持に必須）が説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Naglazyme 9年で$334.4M（2014年）、10年目も成長継続という事実はある。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "希少疾患酵素補充療法は「治療を止めたら死亡リスク」という疾患特性により、高いSwitching Costsを有する構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "MPS VI患者が代替療法なし・生命維持に必須という市場構造と高い継続性が完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Switching Costs）への高度合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Naglazymeの10年間にわたる持続成長は、희少疾患酵素補充療法特有の高いSwitching Costs（療法中断=疾患進行=死亡リスク）を実証する事例。「impressively compliant and persistent」という表現は継続性の高さを認める経営陣の言及。この成長パターンがVIMIZIM・Orenitramにも適用可能というロジックを会社自身が示している"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "Naglazyme 2014年売上$334.4M（前年比23%増）、2015年も$315-340M予想。9年目で成長継続",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "希少疾患薬の規制承認プロセスにおける専門的実績（不完全なデータセットでの承認取得能力）",
+      "descriptive_label": "オーファン薬規制承認における専門的プロセス能力",
+      "evidence_from_transcript": "Q4 CEO発言: 'BioMarin has a track record of getting approval of orphan drugs based on missed data sets and even missed primary endpoints as evidenced by our product, Aldurazyme. Our experience is consistent with FDA's record having approved 90 noncancer orphan drugs without conventional evidence.' CMO発言（Hank Fuchs）: 'Drisapersen is the only Duchenne Muscular Dystrophy product in development that has been granted Breakthrough Therapy designation and Fast Track designations with the Food and Drug Administration.' '3 placebo-controlled trials and 2 long-term open-label trials. Over 300 patients have been treated with drisapersen with less than 1% discontinuation rates.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jean-Jacques Bienaimé (CEO) / Henry Fuchs (CMO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「track record of getting approval of orphan drugs based on missed data sets」は過去の実績（結果）を中心に説明しているが、規制対応プロセスという能力の側面も含む"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "複数の希少疾患薬承認実績から蓄積された規制ノウハウ・FDAとの関係性は構造的なProcess Power"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "オーファン薬専門企業（Shire、Sanofi Genzyme等）との規制能力の定量的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Process Power）への部分的合致",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "承認実績は示されているが、規制プロセス能力の仕組みの説明が限定的（ルール1-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Aldurazyme（不完全データでの承認）という具体的実績はあるが、これが規制プロセス能力を示すには若干根拠が弱い。Breakthrough Therapy指定はFDAとの関係性の証拠として有効。ただしdrisapersen自身のPhase III miss（プライマリエンドポイント未達）というリスクを内包している"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "BioMarinは不完全なデータセットでのオーファン薬承認の実績あり（Aldurazyme事例）。drisapersenはBreakthrough TherapyおよびFast Track両指定を獲得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "KUVANの代謝疾患PKU治療における専門的な患者支援プログラムとラベル改訂による成長継続",
+      "descriptive_label": "KUVAN患者支援・ラベル改訂による持続的成長",
+      "evidence_from_transcript": "Q4 CCO発言: 'Revenue growth of 21% to $203 million for the full year of 2014 was exceptionally strong. Continued sustainable growth in patients coupled with high rates of compliance and persistence drove increased demand.' 'We believe that increased utilization of KUVAN in pediatric patients last year is attributable to the combined effect of the introduction of 100-milligram KUVAN powder, coupled with the revised label, noting that pediatric patients from 1 month were studied in clinical trials.' 'increased utilization of KUVAN in adolescents and adults is attributable to the combined effect of ACMG PKU treatment guidelines published January of 2014, coupled with case management services and patient education provided by BioMarin.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jeffrey Ajer (CCO)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "ラベル改訂・剤形追加・ガイドライン変化という外部要因による成長が中心。患者支援プログラムという能力への言及もあるが限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "KUVAN 21%成長/$203M（2014年）という定量的実績あり"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "ラベル改訂取得・剤形追加は戦略だが、患者支援プログラムという実施能力は優位性として評価可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（外部要因への依存懸念）への一部該当",
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "KUVANの21%成長はラベル改訂（1か月以上の乳児への適応拡大）・剤形追加・治療ガイドライン変化という外部要因が主因であり、BMRN固有の優位性としての評価は限定的。ただし患者支援プログラムという付加的な能力の説明もある"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "10製品にわたる多様な希少疾患パイプライン（遺伝子療法・酵素補充・小分子を含む）",
+      "descriptive_label": "多様な希少疾患パイプラインによる将来成長オプション",
+      "evidence_from_transcript": "Q4 CMO発言: 'very excited about these 2 new potential products as they leverage our in-house expertise in gene therapy and our successful track record delivering enzyme directly into the central nervous system.' CEO発言: 'a portfolio of 5 marketed products and a pipeline of 10 clinical and preclinical programs from which we expect a number of milestones and their readouts during the coming year.' 'we're more confident than ever that we can deliver 3 to 4 new products to treat serious unmet medical needs over the next 3 to 4 years.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jean-Jacques Bienaimé (CEO) / Henry Fuchs (CMO)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "10製品パイプラインは現状の報告（結果）であり、それを可能にする能力（希少疾患同定・分子設計・臨床開発）の説明は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "5製品市販・10製品パイプラインという数値はあるが、競合（Shire等）との比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "遺伝子療法・CNS酵素補充という技術プラットフォームは構造的優位性の可能性があるが、独自性の証明が限定的"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "パイプライン保有は戦略だが、希少疾患特化の技術プラットフォームは優位性として評価可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（戦略と優位性の混同）懸念あり",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "パイプラインは将来の可能性であり現時点での競争優位性としての証明が弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "10製品パイプライン（遺伝子療法BMN 270、CNS酵素補充BMN 250等）はBMRNの希少疾患専門能力を示しているが、これは現時点の戦略的ポジションであり競争優位性の仕組みの説明が弱い。ただし遺伝子療法+酵素補充の複合プラットフォームは競合が簡単に模倣できない可能性"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "VIMIZIM独占的ポジション → 1,650人識別患者への浸透継続 → 売上CAGR（19か国展開）",
+      "descriptive_label": "VIMIZIM独占→患者浸透継続→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "MPS IVa唯一の治療薬→1,650人以上の識別患者への市場浸透継続→売上CAGR。2ステップの直接接続。価格決定力も強い（独占）"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "唯一の治療薬であることから、浸透率向上が直接的に売上成長に接続。初年度$77.3Mから2015年$170-200M（+120-160%）という急成長軌道が示されており、CAGR接続の信頼性は高い"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "希少疾患酵素補充療法の高継続性 → 累積患者ベース拡大 → Naglazyme/VIMIZIM長期CAGR",
+      "descriptive_label": "高継続性→累積患者→希少疾患薬CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "疾患の進行性・代替療法なしによる高継続性→患者累積→年間収益成長の直接接続。Naglazyme 10年間の実績で証明済み"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Naglazyme 10年間の持続成長はSwitching Costs由来の高継続性を実証。VIMIZIMも同様のパターンを踏むという会社のテーゼは合理的。KUVAN（$203M）も高継続性を示しており、BMRN製品ポートフォリオ全体のCAGR接続として信頼性が高い"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "規制承認能力（drisapersen承認）→ DMD市場参入 → 2017年黒字化・収益成長加速",
+      "descriptive_label": "drisapersen承認→DMD市場参入→利益成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "drisapersen承認→DMD市場（約10,000人対象）参入→2017年非GAAP黒字化という接続は開示されているが、Phase III primaryエンドポイント未達というリスクあり"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Phase III primaryエンドポイント未達のため承認不確実性が高い",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "drisapersenはPhase III未達にもかかわらずFDA申請中という高リスク状態。承認が前提のCAGR接続であり、不確実性が高い。ただし承認された場合の収益インパクト（10,000人対象）は大きく、接続自体の論理は合理的"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "KUVAN患者支援・ラベル拡大 → 患者数増加 → KUVAN売上CAGR",
+      "descriptive_label": "KUVAN拡大→患者成長→KUVAN CAGR",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "ラベル拡大（小児適応）→患者層拡大→KUVAN成長という接続は合理的。2015年ガイダンス$210-230M（+3-13%）で実証"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "KUVANの成長は外部要因（ガイドライン改訂・ラベル拡大）が主因であり、BMRN固有の優位性としては弱い。ただし患者支援プログラムという継続的能力が一定の寄与をしている"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "多様な希少疾患パイプライン（3-4製品、3-4年で市場投入予定）→ ポートフォリオ規模拡大 → 長期CAGR",
+      "descriptive_label": "パイプライン成功→ポートフォリオ拡大→長期CAGR",
+      "source_advantage": 8,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "パイプライン→製品承認→売上増の接続は論理的だが、複数の臨床リスクを内包しており多段階の不確実性がある"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "10製品パイプラインから3-4年で3-4製品市場投入というテーゼは野心的だが、drisapersenのPhase III問題からも臨床リスクが高い。長期CAGR接続としては方向性は正しいが現時点での確信度は限定的"
+      }
+    }
+  ]
+}

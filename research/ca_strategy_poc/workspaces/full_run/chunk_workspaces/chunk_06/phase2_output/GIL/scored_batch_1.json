@@ -1,0 +1,75 @@
+{
+  "ticker": "GIL",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "GIL-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Comfort Colorsブランドは過去4年間に年率20%超の成長を達成しており、大学・書店・リゾートショップ向けのFashion Basics市場でのニッチブランド優位性を持つ。",
+      "descriptive_label": "Comfort Colors 4年連続20%超成長のニッチブランド優位性",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.7,
+      "scoring_rationale": "4年連続20%超という高成長率は強力な定量的トラックレコード（rule04 quantitative, pattern_I_quantitative_differentiation）。Fashion Basics市場という明確なニッチでの地位（仕組み, rule01 pass）。「Success story in our industry」という独立的第三者評価（rule11 industry recognition）。Q4 FY2014発言（rule12 primary）。ニッチ市場での高成長は競合参入が困難なポジション（Branding）を示す。ただし大学・書店チャネルは比較的小規模市場（全社CAGR貢献は限定的）。kb3 few-shot（MNST: ブランド優位性70%）に類似の強いブランドトラックレコード。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "Comfort Colors 20%成長継続→Branded Apparel売上貢献→全社CAGR接続（rule05 direct）。ただしComfort Colors単体の売上規模が全社に比して限定的のため60%。4年実績で信頼性高い。"
+    },
+    {
+      "id": "GIL-007",
+      "claim_type": "competitive_advantage",
+      "claim": "GildanはホンジュラスにRio Nance VIの新テキスタイル施設を建設中であり、カナダ・米国・バングラデシュを加えたグローバル製造ネットワークにより競合が複製困難な低コスト生産体制を整備している。",
+      "descriptive_label": "グローバル製造ネットワーク拡充（Rio Nance VI）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "Rio Nance VI（建設中）・コスタリカ（2017年生産開始予定）・バングラデシュ（拡大中）は将来の製造能力（rule08 concern, pattern_F_strategy_confusion）。「expected to begin production in Q4 2016」は現時点での優位性ではない（rule01 concern）。Q2 FY2015発言（rule12 secondary, -10%調整）。グローバル製造ネットワーク構築は大手繊維会社に共通の戦略（pattern_B_industry_common部分）。現時点で稼働中の施設の競争力のみ評価すべきで30%。",
+      "kb1_flags": ["rule08_strategy_not_advantage", "rule01_capability_not_result"],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "製造ネットワーク拡充→生産キャパ増強→売上成長支持→CAGR接続（rule05 indirect）。ただし稼働は2016-2017年以降。cutoff date（2015-09-30）内では建設中。40%。"
+    },
+    {
+      "id": "GIL-008",
+      "claim_type": "factual_claim",
+      "claim": "2015年12月期Q1（2014年10月-2015年1月）のBranded Apparel売上は前年比20%超増の約2.3億ドル。Gildanブランド下着販売量は前年12月期比ほぼ2倍。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "GIL-009",
+      "claim_type": "factual_claim",
+      "claim": "Gildanブランド下着の2015年12月期Q1の市場シェアは6.2%（前年3.2%から2倍）。2015年通年で10%達成が目標。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "GIL-010",
+      "claim_type": "cagr_connection",
+      "claim": "垂直統合によるヤーンスピニング投資（年間コスト削減1億ドル目標）とグローバル製造拠点拡充が長期的な粗利率改善と安定したEPS成長基盤を提供し、2016年の強い収益成長を支える。",
+      "descriptive_label": "垂直統合コスト削減$100M→粗利改善→EPS CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "垂直統合コスト削減$100M→粗利率改善→EPS成長という直接的メカニズム（rule05 direct）。2016年最大年次増分という具体的時間軸。Q4発言（rule12 primary）。GIL-001の能力スコア70%と対応。パターンII-T（直接的CAGR接続）。70%。"
+    }
+  ]
+}

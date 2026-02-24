@@ -1,0 +1,77 @@
+{
+  "ticker": "ORCL",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "既存on-premise顧客（Siebel/EBS等）の保守サポート基盤が高更新率を維持しており、クラウド移行期においても安定した収益を生む高スイッチングコスト",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "更新率の具体的数値（例：95%+）が開示されていないため定量裏付け不足",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "ERP/DBのミッションクリティカル深統合による高スイッチングコストは構造的に妥当。Software Support $18.9B（+8%）という数値で方向性は支持されるが、更新率の具体的数値化がなく、KB2パターンIIIに部分合致。50%が妥当。"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Salesforce.comはOracleデータベースを9年間使用契約（2013年）、SAP Concur/Ariba/SuccessFactorsはOracle DBを採用",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。claim ID 1, 3の裏付け事実として機能。"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Oracle Q4 FY2015: 総売上$10.7B（+3%）、Software Support $18.9B（+8%）、Cloud SaaS/PaaS $419M（+34%）、IaaS $160M（+31%）、営業利益率46%",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。claim ID 2, 6の財務裏付けとして機能。"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Q4 FY2015時点でOracle Fusion ERPクラウド顧客が約1,100社（Workday ERPクラウド顧客の約10倍）。SaaS bookings成長率200%超（Q4 FY2015）",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。claim ID 4, 5の定量裏付けとして機能。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"50-60": 2},
+    "gatekeeper_applied": false
+  }
+}

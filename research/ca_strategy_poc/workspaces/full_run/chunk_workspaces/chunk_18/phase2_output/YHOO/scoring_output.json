@@ -1,0 +1,72 @@
+{
+  "ticker": "YHOO",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "YHOO-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "BABA株式15.4%（384M株）・Yahoo Japan 35.5%株式保有",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_A (結果を原因と取り違え), pattern_F (戦略の混同)",
+      "scoring_rationale": "KB1: rule01 - BABA株は事業能力ではなく財務資産（CONDITIONAL）。rule08 - 保有株式は能力ではなくバランスシート上の資産。KB2: Pattern A適用 - 株式保有（財務的結果）を競争優位性（能力・プロセス）として評価するのは取り違え。7 Powersフレームワークは事業競争優位性を評価するフレームワークであり、金融資産の保有自体は評価対象外。ただし独自資産の側面はありKB1: rule06 - 他社には複製困難という点で部分的に認める。dogma.md: 財務資産としての価値は認めるが事業的競争優位性スコアとしては下方調整が適切。",
+      "final_confidence": 0.3,
+      "confidence_delta": -0.2,
+      "gatekeeper_pass": true,
+      "notes": "BABA株は明確な価値だが7 Powersフレームワークにおける事業的競争優位性ではない。コアインターネット事業のCA評価とは切り離すべき。スコアは財務資産としての独自性を一部反映した最低限の値。"
+    },
+    {
+      "claim_id": "YHOO-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "claim_text": "月間10億ユーザー・Yahoo Finance 6000万MAU",
+      "phase1_confidence": 0.2,
+      "kb2_pattern_applied": "pattern_B (業界共通), pattern_G (純粋競合との差別化不明確)",
+      "scoring_rationale": "KB1: rule07 - GoogleとFacebookは同等以上のリーチを持ち差別化が不明確（FAIL）。KB2: Pattern B - インターネット大規模プラットフォームは多数存在し業界共通の特性。Pattern G - 純粋競合（Google・Facebook）に対してどのように差別化されているかが示されていない。KB1: rule10 - ex-TAC広告収益の持続的低迷がネットワーク効果の機能不全を示す。dogma.md: 20%は「明確な差別化証拠が全くない主張」に相当。既存ユーザー基盤はあるが収益化力の低下が優位性の実効性を疑わせる。",
+      "final_confidence": 0.1,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": false,
+      "notes": "ゲートキーパー不通過。10億MAUは存在するがGoogleとFacebookの支配的地位に比べて差別化が全くない。ex-TAC広告収益の低迷がネットワーク効果の実効性の欠如を示す。"
+    },
+    {
+      "claim_id": "YHOO-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "ニュース・スポーツ・ファイナンス・メールのブランド認知",
+      "phase1_confidence": 0.2,
+      "kb2_pattern_applied": "pattern_D (定性的主張のみ), pattern_G (純粋競合との差別化不明確)",
+      "scoring_rationale": "KB1: rule04 - 定性的なカテゴリリーダーシップのみで定量的差別化証拠がない（PARTIAL）。rule07 - Google・Facebookとの競争でコア事業が構造的劣位（FAIL）。KB2: Pattern D - 定性的なブランド認知のみで競合比較での定量証拠なし。Pattern G - 広告主から見たYahoo!ブランドはGoogleに比較して明確に劣位。KB1: rule10 - 広告収益の持続的低迷がブランド力の限界を実証。dogma.md: 20%は適切。ブランドは実在するが実効的な競争優位性としては機能不全。",
+      "final_confidence": 0.1,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": false,
+      "notes": "ゲートキーパー不通過。ブランド認知は存在するが事業収益化への連結が機能不全。Google・Facebookとの競争で構造的に劣位。"
+    },
+    {
+      "claim_id": "YHOO-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "モバイルシフト・モバイル広告収益化挑戦",
+      "phase1_confidence": 0.2,
+      "scoring_rationale": "KB2: Pattern C (因果の飛躍) - モバイルシフトがYHOOの優位性に接続するかは疑問。デスクトップ広告収益低下への対応として示されているが、Google・Facebookがモバイルでも支配的であり、YHOOにとってCAGR接続となるかは不明確。",
+      "final_confidence": 0.1,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "YHOO-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Yahoo!コアビジネス競争状況・BABA/Yahoo Japan保有株式状況",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。コア事業のex-TAC広告収益低迷・BABA株384M株保有は事実。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 3,
+    "ca_weighted_confidence": 0.17,
+    "top_power_type": "Cornered Resource (BABA株・財務資産のみ)",
+    "overall_assessment": "YHOOはコアインターネット事業に事業的競争優位性がほとんど存在しない。BABA株・Yahoo Japan株は財務資産として価値があるが7 Powersフレームワークでの事業競争優位性とは切り離すべき。Google・Facebookとの競争でブランド・ネットワーク効果ともに機能不全。chunk_18内で最低の競争優位性スコア。"
+  }
+}

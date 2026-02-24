@@ -1,0 +1,202 @@
+{
+  "ticker": "UNP",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-22) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "西部米国の独占的鉄道ネットワーク（Franchise）による地理的参入障壁",
+      "descriptive_label": "西部米国独占鉄道フランチャイズの参入障壁",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（EVP発言）: 'With our diverse franchise, strong value proposition and continued focus on business development, we expect to deliver another year of positive volume and profitable revenue growth'。6ビジネスグループ（Ag、Automotive、Chemicals、Coal、Industrial、Intermodal）にわたる多様な貨物輸送",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "EVP",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "structural",
+            "reasoning": "鉄道ネットワーク自体が独自の資産・仕組み。新規参入者が西部米国に同等のネットワークを構築するのは物理的・規制的・資本的に不可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Q4 freight revenue $5.8B（四半期記録）、volume 6%増という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "鉄道インフラは最大の参入障壁（規制、土地、資本）。UNPのwestern franchise は100年以上の歴史的蓄積"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "Western railroad duopoly（UNP/BNSF）で直接比較はあるが、west側はUNP優位の地域もある"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "鉄道は石油・ガスや資源輸送において代替不可能。業界構造的な独占性が高い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×ポジション）",
+        "confidence": 80,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "地理的参入障壁は最も強い競争優位性の一つ",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "鉄道フランチャイズは新規参入が物理的・規制的に不可能な最強の参入障壁。定量的実績も強い。かなり納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "独占的フランチャイズ → 年間3%コア価格転嫁 + 6%ボリューム成長 → freight revenue record更新",
+      "descriptive_label": "フランチャイズ独占→pricing power+volume成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "独占的フランチャイズ → 3%コア価格転嫁能力 + 6%ボリューム成長 → freight revenue成長。2ステップで直接的。Q4で$5.8B（四半期記録）という検証可能な数値あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "フランチャイズ→価格転嫁→revenue成長の接続は定量的で直接的。おおむね納得"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Domestic Intermodal（ハイウェイ転換）の継続的勝利による成長加速能力",
+      "descriptive_label": "ハイウェイ転換によるIntermodal成長",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（EVP発言）: 'We had another strong quarter in Domestic Intermodal with volume up 10%. New premium services and highway conversions continued to drive and led to a best-ever fourth quarter in Domestic Intermodal'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "EVP",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「New premium services」と「highway conversions」はビジネス能力の具体的な言及。ただし何がhighway conversionを促進しているのか（コスト優位等）の説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Domestic Intermodal 10%増という定量データ。Best-ever Q4という実績"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "燃料費・ドライバー不足でhighway→rail conversionは長期トレンド。業界構造との合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的）",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ハイウェイ転換の長期トレンドと定量的成長は評価できる。まあ納得〜おおむね納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "6ビジネスグループの多角性による景気変動への耐性（Coal/Oil頭風をAg/Industrial/Intermodalが補完）",
+      "descriptive_label": "多様な貨物ポートフォリオによるサイクル耐性",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（EVP発言）: '2015 outlook shows various markets: crude oil headwind, but Ag/Automotive/Industrial/Intermodal strength expected'。Q4でAg/Automotive/Chemicals/Coal/Industrial/Intermodal全6グループが成長",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "EVP",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "6ビジネスグループの多様性は「仕組み」ではなくポートフォリオ構成（結果）"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "多角性はBNSFも同様に持つ。TXNに固有の優位性とは言えない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "6グループ全て成長という定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（ポートフォリオ多様性は結果）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "多角性は結果であり、競争優位性としての評価は低い",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "多角的ポートフォリオは景気耐性として機能するが、これはフランチャイズ独占の結果に過ぎない。あまり納得しない"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: freight revenue $5.8B（四半期記録）、volume+6%、core price+3%、average revenue/car+3%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Domestic Intermodal Q4 volume +10%（Best-ever Q4）。highway conversionsが牽引",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "6ビジネスグループ全て前年比成長（Q4）。Frac sand +35%、Industrial Products +10%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    }
+  ]
+}

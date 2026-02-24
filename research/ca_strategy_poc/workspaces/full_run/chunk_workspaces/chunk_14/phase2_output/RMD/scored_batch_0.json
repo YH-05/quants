@@ -1,0 +1,259 @@
+{
+  "ticker": "RMD",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "RMD-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "AirSense 10 / AirCurve 10プラットフォームとhealthcare informatics（AirView、U-Sleep）の統合により、Q4 FY2015で定数通貨ベース+17%の収益成長と米州flow generator販売+53%を達成した。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "+17%定数通貨成長・+53% flow generator（KB2-I）の定量差別化。ただし製品サイクル（AirSense 10）と構造的優位の区別（rule06）が必要",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "AirSense 10+AirView統合による+53% flow generator成長は定量差別化（KB2パターンI）の証拠。製品×ICTプラットフォームの一体化はPhilips等競合が短期間では複製困難なProcess Powerを形成。PRIMARY源で定量証拠強固。70%。"
+    },
+    {
+      "claim_id": "RMD-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "U-Sleepは在宅医療提供者の労働コストを最大60%削減し、患者adherenceを向上させる機能（テキスト・メール・IVR）を提供する独自のhealthcare informatics能力を持つ。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "HMEコスト60%削減という定量証拠がProcess Power能力を示す（KB2-III）。競争的入札環境でHME顧客に不可欠となることで構造的なデバイス依存を創出",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "60%労働コスト削減という定量証拠はProcess Power能力（KB2パターンIII）の典型。競争的入札（CB2）環境でのコスト削減の不可欠性がHME顧客のU-Sleep依存を生み、ReMSデバイスへのスイッチングコストを強化。PRIMARY源で70%。"
+    },
+    {
+      "claim_id": "RMD-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "EasyCare OnlineおよびAirViewなどのhealthcare informaticsプラットフォームがフランス・欧州全体でtelemonitoring規制（2014年10月施行）への対応需要と結びつき、顧客のデータシステム依存度を高めている。",
+      "source_quarter": "Q2 FY2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "規制義務化+EasyCare Onlineの組み合わせは構造的スイッチングコスト（KB2-IV）だが規制依存（rule11）。SECONDARY源-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "フランスtelemonitoring規制義務化との連携はStructural Market Position（KB2パターンIV）の要素を持つ。ただし規制依存の優位性は規制変更で失われる可能性（rule11）。SECONDARY源で調整後0.4。EasyCare Onlineのデータ基盤への依存は持続的な要素として評価できる。"
+    },
+    {
+      "claim_id": "RMD-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "ResMedはSERVE-HF（1,325患者・心不全治療の大規模臨床試験）を15ヶ月間fully enrolledで運営し、心不全患者への呼吸療法の効果に関する独自の臨床データ基盤を構築している。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "1,325患者規模の臨床試験は能力>結果（KB2-III）だが試験結果の不確実性あり（rule01）。後にSERVE-HFは否定的結果（CSR患者への害）を報告",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "1,325患者規模のSERVE-HF臨床試験はCornered Resource能力（KB2パターンIII）の証拠。ただし2015年後半に否定的結果（心不全患者への有害性）が報告されており（2015-09-30 cutoff内の可能性）、臨床データの価値に不確実性。PRIMARY源だが否定的結果リスクを考慮して40%。"
+    },
+    {
+      "claim_id": "RMD-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "ResMedは知的財産（特許）防衛において米国ITC・ドイツ裁判所双方で台湾メーカーに対する勝訴を得ており、独自技術（加湿特許・ヘッドギア設計）の排他的保護を実現している。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_V_specific_competitor_comparison",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "台湾メーカーとの直接比較で特許勝訴（KB2-V）。ただし特許訴訟は一時的な保護（rule01）。PRIMARY源0.5",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "ITC・ドイツ裁判所での特許勝訴は直接競合比較（KB2パターンV）の証拠。複数管轄での勝訴はIP資産の強さを示すが、特許保護は期間制限があり（rule01）永続的Cornered Resourceとは言えない。技術特許の蓄積はR&D投資の継続で維持可能。50%。"
+    },
+    {
+      "claim_id": "RMD-006",
+      "claim_id_int": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "ResMedは$1.7Bのグローバル収益基盤を持ち、50%が米州外に分散されており、米国の競争的入札（CB2）の逆風を欧州・アジアの高成長でヘッジできる地理的スケールを有する。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "地理的分散は業界共通のリスク管理（KB2-B）。Philips Respironicsも同様のグローバルプレゼンスを持つ（rule07）。0.5→0.4",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "地理的分散（50%米州外）はリスク分散として評価できるが、Scale Economicsの典型（単位コスト低下）とは異なる（KB2パターンB：業界共通）。Philips Respironics等も同様のグローバル展開を持ち（rule07）、RMD固有の優位とは言えない。40%。"
+    },
+    {
+      "claim_id": "RMD-007",
+      "claim_id_int": 7,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "AirFit P10（2014年1月発売）はカテゴリー最軽量・50%静音化を実現し、AirFit N10・F10（Q4 FY2014発売）と合わせてAirFitシリーズ全体の製品革新が競合に対する明確な技術優位性を示す。",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "製品スペック優位は業界共通の定期製品更新（KB2-B）。マスク製品は比較的模倣されやすく（rule06）一時的優位の可能性。0.5→0.4",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "AirFitシリーズの軽量・静音化は製品技術優位だが、定期製品更新サイクルは業界共通（KB2パターンB）。マスク製品は競合（Philips、Fisher&Paykel）も頻繁に新製品投入しており一時的優位の可能性が高い（rule06）。20年以上の製品革新蓄積は評価できるが0.4に収束。"
+    },
+    {
+      "claim_id": "RMD-008",
+      "claim_id_int": 8,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "ResMedは睡眠無呼吸の中核事業（Horizon 1）から、呼吸器ケア（COPD・神経筋疾患、Horizon 2）および心不全・心房細動（Horizon 3）へと「3 Horizons」戦略で拡張し、純粋な睡眠機器メーカーが模倣困難なビジネスモデルを構築している。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "3 Horizons戦略は戦略的野心の表明（KB2-F）であり現時点での優位性ではない（rule01）。Philips等は既に呼吸器ケア多角化済（rule07）",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "3 Horizons戦略は戦略的方向性の表明（KB2パターンF：戦略混同）。Counter-Positioningとして睡眠専業競合への参入障壁を論じるが、Philips Respironicsは既に呼吸器ケアに多角化済みで純粋なCounter-Positioningは成立しない（rule07）。40%。"
+    },
+    {
+      "claim_id": "RMD-009",
+      "claim_id_int": 9,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "ResMedはシンガポール製造拠点により実効税率を20~21%に抑制し、FY2016に向けて航空便から海運への輸送移行・調達・生産・物流コスト削減プログラムによるグローバル製造コスト構造改善を実施している。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "シンガポール製造+税制優遇は能力証拠（KB2-III）。ただしFY2016の将来計画が多く（rule04）現時点での確実な優位性は中程度",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "シンガポール製造によるコスト・税制優遇はScale Economicsの能力証拠（KB2パターンIII）。20~21%の実効税率は定量確認済み。ただしFY2016に向けた海運移行・調達改善は「計画中」（rule04）。構造的な製造コスト優位は評価できるが将来実現度に不確実性。50%。"
+    },
+    {
+      "claim_id": "RMD-010",
+      "claim_id_int": 10,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "ResMedは「グローバル睡眠・呼吸医療のリーダー」というブランドポジションを持ち、UCSD $5Mの研究寄付・APSS学会でのCMO発表・KOL（心臓専門医）ネットワークを通じた医療機関への信頼醸成を継続している。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_D_qualitative_only",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "学術機関連携・KOLネットワークはブランド維持活動だが定量化困難（KB2-D）。SERVE-HF否定的結果がブランドに一時的逆風。0.5→0.4",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "学術連携・KOLネットワークはブランド証拠だが定性的（KB2パターンD）。SERVE-HFの否定的結果（心不全患者への有害性懸念）がResMedの心臓分野進出ブランドに一時的なダメージを与えている点を考慮。睡眠医療コアブランドは維持されているが心臓分野への拡張には暗雲。40%。"
+    },
+    {
+      "claim_id": "RMD-011",
+      "claim_id_int": 11,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "healthcare informaticsとして位置付けられたAirView/U-Sleep/myAirのデータプラットフォームが、医療提供者の患者管理業務フローに組み込まれることで、ResMedデバイスと代替できないITシステム依存を形成する。",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "reason": "AirView/U-Sleep/myAirの業務フロー組み込みは構造的スイッチングコスト能力（KB2-III）。CareTouch買収で補完機能を追加",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.6,
+      "scoring_rationale": "healthcare informatics基盤のHME業務フロー組み込みは能力>結果（KB2パターンIII）のスイッチングコスト証拠。AirView/U-Sleep/myAir/CareTouch統合プラットフォームは代替が困難なIT依存を創出。RMD-002との相乗効果でデバイス+ITの一体依存を実現。60%。"
+    },
+    {
+      "claim_id": "RMD-012",
+      "claim_id_int": 12,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "ResMedは睡眠無呼吸の世界市場を6~8%の長期成長率と評価し、市場未診断率が高いこと（vast majority of sleep apnea sufferers are still not aware）を長期成長ドライバーとして明示している。",
+      "source_quarter": "Q2 FY2014",
+      "source_type": "secondary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "reason": "業界成長率6-8%はCAGR接続証拠だが市場全体に恩恵（パターンA）。SECONDARY源で-10%",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "業界成長率6-8%はCAGR接続の定量根拠（KB2パターンA）だが、全プレイヤーに等しく恩恵をもたらす市場成長は競争優位の証拠ではない（rule01）。SECONDARY源で0.3。RMDの市場でのシェア拡大能力との組み合わせで意味を持つが単独では弱い。"
+    }
+  ]
+}

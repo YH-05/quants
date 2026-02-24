@@ -1,0 +1,358 @@
+{
+  "ticker": "SBUX",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-10-30) + Q1-Q3 FY2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Starbucksブランドエクイティによるプレミアムコーヒー体験の消費者との感情的絆（19期連続5%+comp成長）",
+      "descriptive_label": "Starbucksブランドエクイティ（感情的絆×体験プレミアム）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Howard Schultz): 'Starbucks' record Q4 and fiscal 2014 financial and operating results again demonstrate the power and relevancy of the Starbucks brand and the success and scalability of our operating strategies and global business model.' '19th consecutive quarter of comp store sales growth at or above 5%.' Non-GAAP operating margin 20.5% (record, +280bps). Annual revenue $16.4B (+11%).",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10, 11],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「ブランドの力と関連性」は定性的。ただし19期連続5%+comp growthは維持能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "19期連続5%+、OPM 20.5%（+280bps）、全体売上+11%という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Starbucksブランド（感情的絆・店舗体験）は短期での模倣困難。30年超の蓄積"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "McDonald's（McCafe）、Dunkin'との比較なし。ただしプレミアムコーヒー市場での地位は自明"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "プレミアムコーヒー・第三の場所（サードプレイス）需要は電子商取引拡大の中でも底堅い市場構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明。19期連続5%+comp growthは困難な小売環境での維持であり（2013年の7%comp超えの翌年）、ブランドエクイティの持続力を示す。OPM 20.5%（過去最高レベル）は価格設定力の証拠。「1 in 8 Americans received a Starbucks gift card」という普及率が米国市場でのブランド浸透を示す"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ブランドプレミアム × 中国・アジア展開（1,400店/年追加計画）→ 売上CAGR+10-12pp",
+      "descriptive_label": "ブランド維持×新市場拡大→売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。ブランドプレミアム×店舗拡大が売上CAGRに直接接続。2014年実績（+11%）が裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年+11%成長と中国・アジア新規店舗計画が接続の根拠。2025年まで25,000店舗計画（Q4 FY2014で約20,000店）という具体的な拡大計画があり"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "My Starbucks Rewards会員プログラム（9M会員以上）によるデジタルエコシステムとデータ活用能力",
+      "descriptive_label": "MSRロイヤルティプログラム（デジタルエコシステム×データ）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Schultz): 'I'm going to lay out for you a road map that demonstrates how Starbucks is positioned to benefit from the massive cultural shift in consumer behavior underway.' Gift card strategy: '$1.4 billion in Q1 card loads last fiscal year,' '1 in 8 Americans receiving a Starbucks gift card.' Mobile payment and loyalty program are key growth drivers. 9M+ active MSR members (mentioned in 2015 calls, on track from Q4 FY2014 base).",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "MSRプログラム・デジタルエコシステム（能力・仕組み）を評価。$1.4Bギフトカードロードはシステム能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$1.4Bカードロード、「1 in 8 Americans」という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "9M会員のロイヤルティネットワーク＋モバイル決済データは蓄積資産として競合が短期で模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "小売コーヒーチェーンでSBUXのデジタルエコシステムは業界唯一の規模を持つ。McDonald's AppやDunkin' Donutsを大幅に凌駕"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "消費者行動のデジタルシフト（モバイル決済・デジタルロイヤルティ）はSBUXのエコシステムに有利な市場構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "MSRとデジタルエコシステムはSBUXの独自資産として競合に比較して圧倒的な規模と深度を持つ。$1.4Bのプリペイドカードはマイナス金利相当の無利子負債であり、消費者の強い愛着を示す"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "MSR会員拡大 → 訪問頻度向上・客単価上昇 → コンプ売上CAGR+2-3pp追加寄与",
+      "descriptive_label": "ロイヤルティ会員拡大→購買頻度×単価→コンプ売上CAGR寄与経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。MSR会員の高頻度訪問は実証済み。Q4 FY2014 comp +5%がベースとして確認"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 FY2014発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "MSR会員の平均購買頻度は非会員の約2倍（業界調査）。会員基盤拡大が comp CAGR に追加寄与するメカニズムは直接的"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "中国市場での先行者優位と高成長展開能力（CAP Region comp成長）",
+      "descriptive_label": "中国市場先行者優位（CAP Region高成長）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Schultz): Road map for Chinese expansion. In Q4 FY2014: CAP (China/Asia Pacific) segment had strong performance. Starbucks was expanding aggressively in China with new store openings. CEO emphasized China as the next major growth opportunity.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "中国市場での先行者優位（店舗ネットワーク・ブランド認知・パートナー関係）は能力として評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "1,600店舗超の中国ネットワーク（2014年末）は先行者利益として構造的優位"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「中国拡大戦略」と「中国展開能力（優位性）」の区別が必要"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Costa（Whitbread）等の競合も中国展開中だが、SBUXのブランド認知は圧倒的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "中国の中間層拡大・消費高度化はプレミアムコーヒー需要の成長を支持"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "中国でのSBUXブランド認知（「西洋的ライフスタイル」の象徴）は先行者優位として確立。2014年末1,600店→2016年末2,500店以上の計画が具体的拡大根拠"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "食事メニュー拡充（La Boulange×Food）によるチケットサイズ向上と午後帯需要創出能力",
+      "descriptive_label": "La Boulange×Food拡充によるチケットサイズ向上能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Schultz): 'We have great seasonal offerings from La Boulange and are introducing an innovative new handcrafted beverage, Chestnut Praline Latte.' La Boulange food program drives higher ticket. Food attachment rate improving.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "La Boulange買収後の食事メニュー統合能力（能力・仕組み）として評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "フード比較比率（food attachment rate）の改善言及あり。具体的数値は不明"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "McDonald's（McBreakfast）等との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "フード強化はチケット向上に寄与するが、コーヒー専業からフード拡大への展開は実行リスクを伴う。La Boulange統合はQ4 FY2014時点でまだ初期段階"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "パートナー（従業員）エンゲージメントと研修プログラムによるサービス品質維持能力",
+      "descriptive_label": "パートナーエンゲージメント×研修による顧客体験品質維持",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks: 'improved store operations enabled us to deliver an elevated experience to our customers.' CFO Troy Alstead: 'The hard work and dedication of our Starbucks partners has enabled us to be where we are today.' Healthcare and education benefits for partners mentioned in multiple calls.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "パートナープログラム（能力・仕組み）として評価。独自の福利厚生・研修体系"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "具体的な従業員満足度・離職率データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "パートナープログラムはSBUX文化の中核だが、競合比較での優位性データが不足。定性的な説明に留まる"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "コーヒー調達・焙煎能力（エチオピア、コロンビア等）によるコーヒー品質差別化",
+      "descriptive_label": "コーヒー調達・焙煎能力（サプライチェーン優位）",
+      "evidence_from_transcript": "Q4 FY2014 (inferred): Starbucks single-origin coffee, Reserve coffees, and commitment to ethical sourcing (C.A.F.E. Practices) mentioned. CEO's roadmap for premium coffee experience suggests continued focus on coffee quality.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "C.A.F.E. Practicesを通じたサプライチェーン能力（仕組み）として評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "優良農家との長期関係は一定の希少資源的側面"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "競合（ネスプレッソ、Intelligentsia等）との具体的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_C_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4トランスクリプト上での直接言及は限定的だが、CEO roadmap内でのコーヒー品質への言及あり。サプライチェーン能力は認められるが差別化の定量証拠不足"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Channel Development（CPG/食料品チャネル）によるブランドの家庭普及能力（K-Cups、VIA等）",
+      "descriptive_label": "Channel DevelopmentによるCPGブランド展開能力",
+      "evidence_from_transcript": "Q4 FY2014: Channel Development segment had strong performance. K-Cup and packaged coffee expanded distribution. In FY2014, Channel Development grew revenue significantly.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "CPGチャネルへのブランド展開能力（仕組み）として評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "スーパー・食料品でのSBUXブランド認知は店舗体験から生まれる構造的資産"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "Channel Development segment成長の定量データがQ4トランスクリプト上で限定的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CPGチャネル展開はブランド活用の追加収益源として評価。Keurig/K-Cup急成長時代に参加した意思決定が機能。ただし対Nestlé（Nespresso）等の競合差別化が不明確"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Q4 FY2014: 売上$4.2B (+10%)、非GAAP OPM 20.5% (+280bps)、コンプ+5%（19期連続）、EPS $0.74 (+23%)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "FY2014通年: 売上$16.4B (+11%)、global comp +6%、非GAAP EPS $2.66 (+21%)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    }
+  ]
+}

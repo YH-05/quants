@@ -1,0 +1,172 @@
+{
+  "ticker": "CBRE",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "GCS統合アウトソーシングプラットフォームによるクロスセル・顧客維持能力",
+      "seven_powers_category": "Switching Costs",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "大企業の不動産コスト最適化ニーズ×CBREの統合ソリューション提供能力の業界構造合致"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "2014年GCS+Asset Services収益$3.7B（+51%）、Q4新規契約107件（年間最多）、mid-teens成長見通し"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_6_t",
+          "verdict": "structural",
+          "adjustment": 0,
+          "reasoning": "複数年アウトソーシング契約による構造的スイッチングコスト。大企業の不動産管理委託は一旦切り替えると高コスト"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -5,
+          "reasoning": "JLL・Colliers等との直接的な契約獲得数・リテンション率の比較データなし"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "GCS統合アウトソーシングプラットフォームは大企業顧客のスイッチングコストを生む構造的優位性。107新規契約（年間最多）とmid-teens成長見通し（GCS単体）が定量的に裏付け。リーシングチームとの連携による差別化（GCS×リーシングシナジー）も示されている。JLL等との直接比較欠如で65%"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "統合プラットフォーム→アウトソーシング契約獲得→リカーリング収益→CAGR経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "契約収益51%・リーシング+契約収益77%という安定収益比率で直接的に裏付けられた接続"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "GCSの統合プラットフォーム→新規アウトソーシング契約→リカーリング収益という直接的な因果メカニズム。契約収益51%・77%安定収益化というデータとmid-teens成長見通しが裏付け。65%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "グローバル統合不動産サービスのスケール・カバレッジ優位性",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_B_t",
+          "verdict": "industry_common",
+          "adjustment": -10,
+          "reasoning": "JLL・Colliers等の競合も同様のグローバルカバレッジを保有。業界共通の属性"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_1_t",
+          "verdict": "borderline",
+          "adjustment": 0,
+          "reasoning": "$9B収益は結果指標だが、グローバルカバレッジ（能力）は顧客価値を生む構造的属性として評価"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "グローバルカバレッジは業界共通（KB2 pattern_B_t）。JLL等も同様のカバレッジを保有しており差別化の核はカバレッジ存在ではなくGCSとの統合深度にある。40%"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "グローバルカバレッジ→各地域シェア獲得→収益多様化→CAGR経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_5_t",
+          "verdict": "indirect",
+          "adjustment": -5,
+          "reasoning": "規模→シェア獲得→収益多様化という3段階で間接的"
+        }
+      ],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "Americas 9四半期連続2桁成長・EMEA+APAC全地域での成長実績は地理的多様化の証拠。ただし3段階の間接的な因果関係。45%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "インフィルM&A実行・統合能力（Norland統合成功事例）",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "Norland統合後20%成長という具体的成果データが能力を裏付け"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_B_t",
+          "verdict": "industry_common",
+          "adjustment": -5,
+          "reasoning": "M&A統合能力は不動産サービス業界全般に共通。JLL等も同様の能力を保有"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_10_t",
+          "verdict": "partial",
+          "adjustment": 0,
+          "reasoning": "CEOが非合理的高値案件を断ったと言及しているが、具体的な断念案件の詳細なし"
+        }
+      ],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "Norlandを1年で統合し20%成長させた実績はM&A実行能力の証拠。11件のインフィル買収を同時統合も示す。ただし業界共通能力として評価。規律ある買収姿勢（断念例言及）は加点要素。45%"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "インフィルM&A→地域強化→クロスセル→CAGR経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_5_t",
+          "verdict": "indirect",
+          "adjustment": -5,
+          "reasoning": "3段階（M&A→地域強化→クロスセル→CAGR）で間接的"
+        }
+      ],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "M&A→クロスセルという因果メカニズムは妥当だが間接的。Norland統合後のGCS連携効果が示されれば高評価になるが、定量的な連携効果データなし。45%"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 2,
+    "weighted_avg_score": 0.51,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.65,
+      "descriptive_label": "GCS統合アウトソーシングプラットフォームによるクロスセル・顧客維持能力"
+    },
+    "primary_seven_powers": ["Switching Costs", "Scale Economies"],
+    "investment_thesis_strength": "moderate",
+    "key_risks": [
+      "JLL・Colliers等との直接的な差別化データの欠如",
+      "不動産市場サイクルリスク（景気後退時のアウトソーシング解除）",
+      "Norland統合コスト（$869M収益、Norland除き+16%でオーガニック成長の確認が必要）"
+    ]
+  }
+}

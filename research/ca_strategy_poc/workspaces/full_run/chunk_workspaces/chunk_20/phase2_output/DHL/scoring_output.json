@@ -1,0 +1,314 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "DHL Express は時間確定型国際エクスプレス（TDI）において、グローバルネットワーク投資を通じてスケールメリットを活かし、FY2014 に EBIT マージン 10.1%（当初 2015年目標を1年前倒し）を達成した。TDI ボリュームが全地域で12%成長し、市場シェアを継続的に獲得している。",
+      "evidence": "The 2014 EBIT margin climbed to 10.1% for the full year, already exceeded the projected 10% margin that we originally targeted for 2015... continue to grow faster than the market... we continue to gain, on a global scale, market share.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01_capability_not_result",
+          "rule04_quantitative_evidence",
+          "rule07_pure_competitor_differentiation",
+          "rule11_industry_structure_fit"
+        ],
+        "confidence": 60
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "EBITマージン10.1%（目標1年前倒し）という定量的達成。全地域TDI12%成長という定量証拠"
+        },
+        {
+          "source": "KB1-T rule_11_t",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "国際エクスプレス業界：グローバルハブネットワークは参入障壁として機能。業界構造との合致"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "FedEx・UPSとの直接シェア・収益率比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule01_capability_not_result",
+          "verdict": "partial_pass",
+          "reasoning": "マージン達成（目標前倒し）は能力の証左。ただしシェア獲得という結果が中心"
+        },
+        {
+          "rule": "rule04_quantitative_evidence",
+          "verdict": "strong",
+          "reasoning": "10.1%マージン（目標前倒し）、TDI12%成長という定量証拠"
+        },
+        {
+          "rule": "rule11_industry_structure_fit",
+          "verdict": "structural",
+          "reasoning": "グローバルハブネットワークは国際エクスプレス業界の参入障壁として機能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_I",
+          "matched": true,
+          "effect": "positive",
+          "reason": "定量的裏付け（10.1%・目標前倒し達成）のある差別化"
+        }
+      ],
+      "overall_reasoning": "EBITマージン10.1%（目標1年前倒し）と全地域12%TDI成長は強力な定量証拠。グローバルハブネットワークのScale Economiesが業界構造に合致。FedEx・UPSとの直接比較なし。60%",
+      "power_classification": "Scale Economies（グローバルネットワーク）",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "DHL Express の TDI ボリューム成長（グローバル、年率8-12%）がグループ全体の EBIT を CAGR 8%以上（2013-2020年）で牽引する主要ドライバーとなる。DHL 部門全体で CAGR 約10%の EBIT 成長を見込む。",
+      "evidence": "We expect EBIT to increase by an average of more than 8% per year between 2013 and 2020, whereby the DHL divisions are expected to contribute an average EBIT growth of around 10%.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule04_quantitative_evidence"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "track record",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "2013年8%・2014年12%TDI成長の実績が裏付けとして機能。目標との整合性高い"
+        },
+        {
+          "source": "DGF risk",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "DGF（フォワーディング）の変革コストが短期逆風リスク"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule04_quantitative_evidence",
+          "verdict": "moderate",
+          "reasoning": "CAGR 8-10%は明確。実績（2013-2014）が裏付け"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Strategy 2020のEBIT CAGR 8%（DHL部門10%）は定量的目標として明確。過去実績が裏付け。50%",
+      "power_classification": "Scale Economies",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Deutsche Post の PeP（Post-eCommerce-Parcel）部門は、eコマース拡大によるドイツ国内外の宅配成長を取り込み、構造的な郵便（レター）減少を補いながら EBIT EUR 12億超（目標超過）を維持している。E-Post は初めて EUR 3億収益を達成した。",
+      "evidence": "MAIL EBIT has clearly been stabilized above EUR 1 billion... Parcel volumes remain strong... E-Post team has delivered for the first time more than EUR 300 million.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01_capability_not_result",
+          "rule07_pure_competitor_differentiation",
+          "rule11_industry_structure_fit"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "regulatory position",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "ドイツ国内宅配の独占的地位は規制・インフラに依存。純粋な競争優位としては中程度"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "民間宅配（DPD、GLS等）との競合比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule01_capability_not_result",
+          "verdict": "partial_pass",
+          "reasoning": "eコマース→宅配転換能力として評価可能。ただし郵便安定化は規制保護依存"
+        },
+        {
+          "rule": "rule11_industry_structure_fit",
+          "verdict": "partial",
+          "reasoning": "ドイツ郵政の規制的地位は業界構造に合致するが純粋競争優位としては中程度"
+        }
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "ドイツ国内宅配ネットワークの独占的地位は事実。Counter-Positioningとして評価できるが、規制・インフラ依存の側面あり。民間宅配との比較なし。45%",
+      "power_classification": "Counter-Positioning（規制的地位）",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "DHL Supply Chain は EUR 12億の新規受注（FY2014）を達成し、競合2社合計の総売上規模に匹敵する新規獲得を行った。標準化と組織スリム化による EBIT マージン改善（目標4-5%）が進行中。",
+      "evidence": "The EUR 1.2 billion in new signings is almost half of the next total revenue of the total revenue of the next competitor... The focus on standardization and making the organization leaner is paying off.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule04_quantitative_evidence",
+          "rule07_pure_competitor_differentiation",
+          "rule11_industry_structure_fit"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_V",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "「競合2社合計売上に匹敵」という相対的ポジショニングの証拠。具体的競合比較として珍しいケース"
+        },
+        {
+          "source": "current margin low",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "現状マージン（3-4%）は低く、4-5%目標達成は将来予測"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule04_quantitative_evidence",
+          "verdict": "moderate",
+          "reasoning": "EUR12億新規受注という定量証拠。競合比較含む"
+        },
+        {
+          "rule": "rule07_pure_competitor_differentiation",
+          "verdict": "partial",
+          "reasoning": "「競合2社合計売上に匹敵」は具体的な相対比較として機能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_V",
+          "matched": true,
+          "effect": "positive",
+          "reason": "具体的競合比較（競合2社合計売上規模）が部分的に提示"
+        }
+      ],
+      "overall_reasoning": "EUR12億新規受注と「競合2社合計売上に匹敵」という相対的ポジショニングの証拠は評価できる。現状マージンが低く将来予測依存。50%",
+      "power_classification": "Scale Economies（受注規模）",
+      "evidence_sources": [
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Deutsche Post DHL は5年連続で配当を増加（EUR 0.60 → EUR 0.80 → EUR 0.85）しながら、フリーキャッシュフローで配当をカバーする財務規律を確立した。EUR 1.3-1.65B のフリーキャッシュフロー生成能力（2013-2014年）が安定的な株主還元を支えている。",
+      "evidence": "Good history now. We're having increase in dividends in the last 5 years continuously... free cash flow of over EUR 1.3 billion, comfortably exceeding our forecast of surpassing the dividend.",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule04_quantitative_evidence",
+          "rule07_pure_competitor_differentiation"
+        ],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A partial",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "5年連続配当増加という実績（結果）が中心。財務規律の仕組みの説明が薄い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {
+          "rule": "rule04_quantitative_evidence",
+          "verdict": "moderate",
+          "reasoning": "EUR1.3-1.65BのFCF生成という定量証拠。配当カバー確認"
+        },
+        {
+          "rule": "rule07_pure_competitor_differentiation",
+          "verdict": "weak",
+          "reasoning": "FedEx・UPSとの比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern": "pattern_A",
+          "matched": true,
+          "effect": "negative",
+          "reason": "配当実績（結果）を財務規律（能力）として提示するPattern Aのリスク"
+        }
+      ],
+      "overall_reasoning": "5年連続配当増加とFCFカバーは財務規律として評価できるが、競合比較なし。配当実績（結果）が中心で能力説明が薄い。45%",
+      "power_classification": "Process Power（財務規律）",
+      "evidence_sources": [
+        "Q4_FY2013_prepared_remarks",
+        "Q4_FY2014_prepared_remarks"
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Deutsche Post DHL FY2013 実績: 売上 EUR ~555億（有機成長+3%）、EBIT EUR 28.6億（+7.4%、ガイダンス中間達成）、フリーキャッシュフロー EUR 16.5億（強力）、純利益 EUR 21億（+28%）。配当 EUR 0.80/株（+40%）。Express EBIT マージン 8.8%（+100bps以上）。",
+      "evidence": "EBIT at EUR 2.861 billion was just about in the middle of our guidance range... free cash flow was a star performer in 2013 with EUR 1.65 billion... net income grew faster than EBIT with almost 28% growth to around EUR 2.1 billion... dividend increase of EUR 0.10 per share to EUR 0.80.",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2013_annual"
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Deutsche Post DHL FY2014 実績: 売上+3%（有機成長+4.2%）、EBIT EUR 29.65億（+3.5%、ガイダンス EUR 29-31億の中間達成）、フリーキャッシュフロー EUR 13億超。純利益微減（EUR 20.7億）。Express EBIT マージン 10.1%（目標を1年前倒し達成）。配当 EUR 0.85/株（+EUR 0.05）。",
+      "evidence": "Operating profit grew by 3.5% or around EUR 100 million to EUR 2.965 billion... free cash flow for the year was over EUR 1.3 billion... The 2014 EBIT margin climbed to 10.1%... dividend of EUR 0.85, an increase of EUR 0.05.",
+      "rule_evaluation": {
+        "applied_rules": [],
+        "confidence": 90
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": [
+        "Q4_FY2014_annual"
+      ]
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "60-70": 1,
+      "50-60": 2,
+      "40-50": 2,
+      "90-100": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

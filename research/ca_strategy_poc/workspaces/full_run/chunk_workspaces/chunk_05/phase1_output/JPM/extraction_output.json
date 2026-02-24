@@ -1,0 +1,158 @@
+{
+  "ticker": "JPM",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2026-02-24",
+  "transcript_sources": [
+    "research/ca_strategy_poc/transcripts/JPM/201401_earnings_call.json",
+    "research/ca_strategy_poc/transcripts/JPM/201501_earnings_call.json"
+  ],
+  "claims": [
+    {
+      "id": "JPM_001",
+      "claim_type": "competitive_advantage",
+      "claim": "JPMorganのCIBは全世界IB手数料と市場収益の両方で第1位ランキングを維持しており、2013年に両カテゴリーで100ベーシスポイント以上のシェアを獲得した。",
+      "evidence": "Q4 2013（201401）トランスクリプト：「CIBは全世界IB手数料と市場収益の両方で第1位ランキングを維持しており、年次対比で100ベーシスポイント以上のシェアを獲得した」（Marianne Lake）。Q4 2014（201501）：「全世界IB手数料で第1位継続。米国で第1位、EEMAで今年第1位に上昇」",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule07", "rule01"],
+        "rule04_result": "PASS: 第1位ランキングと100bp以上のシェア獲得という定量的証拠",
+        "rule07_result": "PASS: 競合比較における直接的な市場シェア優位性",
+        "rule01_result": "PASS: リーグテーブル上位は能力ではなく結果指標にも見えるが、顧客関係と実行能力を反映",
+        "overall_confidence": 0.5,
+        "reasoning": "IB市場での第1位は実績あり。ただし金融機関のリーグテーブル順位は景気サイクルや規制環境に敏感で持続性に疑問。競合のGoldman Sachs、Morgan Stanleyとの競争は激しく、1-2年での順位変動は珍しくない。また規制リスクがフランチャイズに影響する可能性あり"
+      },
+      "power_classification": "scale_economies",
+      "evidence_sources": ["JPM_Q4_2013", "JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_002",
+      "claim_type": "competitive_advantage",
+      "claim": "JPMorganのカード事業は27四半期連続でインdustry leading purityを維持しており、同期間中に約500ベーシスポイントのシェアを獲得した。顧客獲得と報酬戦略の強化により持続的な優位性を構築している。",
+      "evidence": "Q4 2014（201501）：「カード事業は業界でリーディングを27四半期連続で維持し、同期間中に約500ベーシスポイントのシェアを獲得。今四半期の売上高成長率10%」（Marianne Lake）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule01", "rule06"],
+        "rule04_result": "PASS: 27四半期連続、500bp以上のシェア獲得という具体的な定量証拠",
+        "rule01_result": "PASS: 長期にわたる顧客獲得能力と報酬プログラム設計能力を示す",
+        "rule06_result": "PASS: 27四半期（6.75年）という長期のトラックレコードは構造的優位性を示唆",
+        "overall_confidence": 0.7,
+        "reasoning": "27四半期連続のshare gainという長期実績は競争優位性の強力な証拠。ただし現在は競合もプレミアムカード報酬で攻勢をかけており（Chase Sapphire Preferred vs Amex Platinumなど）、持続性への懸念もある。顧客基盤（Chase銀行網）との統合によるSwitching Costsも一定の強みとなる"
+      },
+      "power_classification": "switching_costs",
+      "evidence_sources": ["JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_003",
+      "claim_type": "competitive_advantage",
+      "claim": "JPMorganは顧客満足度調査（ACSI）で大手銀行中3年連続で第1位を獲得し続けており、預金成長率も堅調に維持（平均預金8%増）している。",
+      "evidence": "Q4 2014（201501）：「消費者コミュニティバンキングは大手銀行中の顧客満足度でACSI調査において3年連続第1位を維持。平均預金は地域・市場全体で8%増加」（Marianne Lake）；Q4 2013（201401）：「2年連続でACSI第1位、また住宅ローン組成でもJ.D. Power第1位」",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule01", "rule07"],
+        "rule04_result": "PASS: 3年連続第1位、8%預金成長という定量的証拠",
+        "rule01_result": "PARTIAL: 顧客満足度は能力指標だが、最終的には競合に対する優位性より顧客体験の絶対的品質を示す",
+        "rule07_result": "PASS: 大手銀行中での比較第1位",
+        "overall_confidence": 0.5,
+        "reasoning": "顧客満足度の継続的1位は一定の競争優位性を示すが、金融サービスでは主要な差別化要因にはなりにくい。預金成長は低金利環境での強みとも言えるが、金利正常化で状況が変化する可能性がある。特定の製品での差別化（例えばChase Sapphireカード）は強みだが、銀行全体のブランドとしての優位性は限定的"
+      },
+      "power_classification": "branding",
+      "evidence_sources": ["JPM_Q4_2013", "JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_004",
+      "claim_type": "competitive_advantage",
+      "claim": "JPMorganのアセットマネジメント部門は23四半期連続で長期純流入を達成しており、運用資産（AUM）は$1.7兆に達している。長期純流入実績は同業他社と比較して際立っている。",
+      "evidence": "Q4 2014（201501）：「アセットマネジメントは23四半期連続の長期純流入を達成。第4四半期は$100億。AUMは$1.7兆（9%増）。2014年通年は2年連続で$800億以上の長期純流入、5年連続の記録的収益」（Marianne Lake）；「2014年グローバル長期運用投資信託の純流入で第1位を達成」",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule06", "rule01"],
+        "rule04_result": "PASS: 23四半期連続、$1.7兆AUM、$800億以上の純流入という具体的な数値",
+        "rule06_result": "PASS: 23四半期（5.75年）の連続純流入は構造的な投資パフォーマンスと顧客信頼の証拠",
+        "rule01_result": "PASS: 運用能力と顧客維持力を示している",
+        "overall_confidence": 0.5,
+        "reasoning": "長期純流入の23四半期連続は実績として強力。ただし資産運用業界での競争優位性は長期的な運用パフォーマンスに依存しており、市場環境の変化で変わりやすい。JPMのAMはBlackRockやVanguardと比較してパッシブ運用での競争が激しい"
+      },
+      "power_classification": "switching_costs",
+      "evidence_sources": ["JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_005",
+      "claim_type": "competitive_advantage",
+      "claim": "JPMorganのコマーシャルバンキングは15四半期連続のCRE（商業用不動産）ローン成長を達成しており、C&I（商工業向け）貸出の信用品質も卓越している（NCO率わずか8bps、年間実質ネット回収）。",
+      "evidence": "Q4 2014（201501）：「CRE事業は15四半期連続で成長し、今四半期4%成長（業界を上回るペース）。年間のNCO率は一桁台（8bps）で実質ネット回収。コマーシャルバンキングのIB収益は年間$20億に達し目標を達成」（Marianne Lake）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule06", "rule07"],
+        "rule04_result": "PASS: 15四半期連続成長、8bps NCO率という具体的数値",
+        "rule06_result": "PASS: 15四半期の継続的成長は構造的なフランチャイズ強度を示す",
+        "rule07_result": "PASS: 業界ペースを上回るCRE成長",
+        "overall_confidence": 0.5,
+        "reasoning": "商業銀行部門での継続的成長と優れた信用管理は強みだが、これは主に信用サイクルの好況期を反映している可能性がある。低金利環境での不動産ローンの拡大は一定のリスクも伴う。CIBとの連携によるIB手数料$20億は差別化要素"
+      },
+      "power_classification": "scale_economies",
+      "evidence_sources": ["JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_006",
+      "claim_type": "competitive_advantage",
+      "claim": "JPMorganのモバイルバンキング顧客基盤は22%成長しており、デジタル化への早期投資が顧客エンゲージメントの向上と将来の競争優位性の源泉となっている。",
+      "evidence": "Q4 2014（201501）：「アクティブモバイル顧客基盤は22%増。クレジットカード売上高は10%増。新規口座獲得強化と報酬戦略により顧客エンゲージメントが深化している」（Marianne Lake）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule01", "rule04", "rule08"],
+        "rule04_result": "PASS: 22%成長という定量的証拠",
+        "rule01_result": "PARTIAL: モバイル利用率向上は能力の一側面だが、顧客維持や収益性との直接的な関係は不明確",
+        "rule08_result": "FLAG: デジタルバンキングはすべての大手銀行が投資しており、差別化よりも必要条件に近い可能性",
+        "overall_confidence": 0.3,
+        "reasoning": "モバイル顧客の成長は業界全体のトレンドを反映しており、JPM固有の競争優位性とは言い難い。BofA、CitiもモバイルApp投資を強化している。デジタル化は「必要条件」であり、「差別化要素」ではない可能性が高い"
+      },
+      "power_classification": null,
+      "evidence_sources": ["JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_007",
+      "claim_type": "cagr_connection",
+      "claim": "JPMorganは2014年に記録的なnet incomeおよびEPS（$22B / $5.29）を達成し、法的費用高止まりにもかかわらず13%のROTCEを実現した。強固な資本基盤（CET1 10.1%）と年間$100億の株主還元を維持している。",
+      "evidence": "Q4 2014（201501）：「2014年通期は記録的なnet income（$22B近く）と記録的EPS（$5.29）。ROTCE 13%。法的費用除きROTCE 14%。主要ローン成長8%。年間$100億の純資本還元（記録的配当$60億を含む）」（Marianne Lake）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule12", "rule04"],
+        "rule04_result": "PASS: 具体的な財務数値あり",
+        "rule12_result": "PASS: Q4（年次）レポートの主要財務結果",
+        "overall_confidence": 0.7,
+        "reasoning": "記録的な財務実績は強固なフランチャイズの証拠。ただし低金利・好信用サイクル環境の恩恵が大きく、環境変化時のレジリエンスは検証困難"
+      },
+      "power_classification": null,
+      "evidence_sources": ["JPM_Q4_2014"]
+    },
+    {
+      "id": "JPM_008",
+      "claim_type": "factual_claim",
+      "claim": "JPMorganの2014年通期収益は$98B近く。法的費用は依然高止まりで$1.1B（Q4）。調整後費用は$58.4Bでガイダンス通り、前年比$650M削減（コントロール環境強化投資継続にもかかわらず）。",
+      "evidence": "Q4 2014（201501）：「2014年通期収益は$98B近く。調整後費用は$58.4B（ガイダンス通り）、前年比$650M削減。法的費用除きROTCE 14%」（Marianne Lake）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule12", "rule04"],
+        "rule12_result": "PASS: Q4年次レポートの財務数値",
+        "rule04_result": "PASS: 具体的な財務数値",
+        "overall_confidence": 0.9,
+        "reasoning": "決算開示の財務数値として高い確実性"
+      },
+      "power_classification": null,
+      "evidence_sources": ["JPM_Q4_2014"]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 8,
+    "by_type": {
+      "competitive_advantage": 6,
+      "cagr_connection": 1,
+      "factual_claim": 1
+    },
+    "by_power": {
+      "scale_economies": 2,
+      "switching_costs": 2,
+      "branding": 1,
+      "null": 3
+    },
+    "confidence_distribution": {
+      "0.9": 1,
+      "0.7": 2,
+      "0.5": 4,
+      "0.3": 1,
+      "0.1": 0
+    }
+  }
+}

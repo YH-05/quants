@@ -1,0 +1,354 @@
+{
+  "ticker": "ALTR",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-22) + 2015 Outlook Call (2014-12-10)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3_2014", "Q2_2014", "Q1_2014"]
+  },
+  "claims": [
+    {
+      "id": "ALTR_001",
+      "claim_type": "competitive_advantage",
+      "claim": "FPGAアーキテクチャのイノベーション — HyperFlex（2x コアパフォーマンス）とIntel 14nm FinFET採用のStratix 10による高性能優位",
+      "descriptive_label": "Stratix10/HyperFlex技術優位性",
+      "evidence_from_transcript": "2015 Outlook Call (CEO John Daane): 'Stratix 10, with a new high-performance HyperFlex architecture...2x core performance increase over prior architectures...up to 5.5 million logic elements, 25% higher than competing products. World's first 14-nanometer FinFET based FPGA.' Q4 2014: 'Our Stratix 10 product...provides high-end customers with unparalleled FPGA performance and density levels.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ALTR_008"],
+      "cagr_connections": ["ALTR_009"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": "PASS — アーキテクチャ設計能力（仕組み）を評価",
+          "rule_4_t": "quantitative — 2x core performance、25% higher logic elements、5.5M LEs。競合比較の数値あり",
+          "rule_7_t": "PARTIAL — 競合（Xilinx）との比較を示唆するが具体的社名+数値比較の直接言及なし",
+          "rule_11_t": "PASS — データセンター高性能コンピューティングへの需要拡大との合致"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的差別化（2x performance、25% higher density）があり高評価要因",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "世界初14nm FinFET FPGA、HyperFlex 2x performanceという定量的技術差別化は明確。ただし唯一の競合であるXilinxとの直接比較数値なし。Cornered Resource（IntelとのFinFET独占的アクセス）とProcess Powerの組み合わせ。70%。"
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "業界最高性能FPGAによる高付加価値市場（データセンター・通信インフラ）の支配",
+        "barrier": "Intel 14nm FinFET製造へのファウンダリアクセス（Xilinxは別プロセスノード）とHyperFlex特許"
+      }
+    },
+    {
+      "id": "ALTR_002",
+      "claim_type": "competitive_advantage",
+      "claim": "OpenCL プログラミングツールによるFPGAアクセラレーター市場の拡大 — ソフトウェアエンジニアがFPGAをコプロセッサとして利用可能にする障壁除去",
+      "descriptive_label": "OpenCLによるFPGAアクセラレーター民主化",
+      "evidence_from_transcript": "2015 Outlook Call (CEO): 'Now with the arrival of OpenCL, a software platform easily used by software engineers to target FPGAs as coprocessors, Altera has uniquely removed the biggest engineering barrier to wide-scale adoption of our FPGAs in these acceleration roles. We estimate the accelerator market as a $1 billion TAM by decade's end.' Q4: 'CPUs alone are no longer providing the performance required by an array of markets, and FPGAs are being adopted as coprocessor accelerators...we are uniquely positioned to take advantage of this new growth opportunity.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ALTR_009"],
+      "cagr_connections": ["ALTR_010"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": "PASS — OpenCLプラットフォームという能力（仕組み）",
+          "rule_4_t": "PARTIAL — $1B TAM推計あり。採用企業数等の具体的数値なし",
+          "rule_8_t": "PASS — OpenCLはツール（能力）であり市場展開戦略ではない",
+          "rule_11_t": "PASS — データセンター加速化需要という市場構造との合致"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "'uniquely removed the biggest barrier'という競合との差別化表現は評価できる",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "FPGAアクセラレーター採用の最大障壁（HW記述言語）をOpenCL（SW言語）で除去するアプローチは市場拡大の直接的メカニズム。$1B TAM推計は根拠として機能。Counter-Positioningの要素あり（既存ASIC vs FPGA+OpenCL）。70%。"
+      },
+      "power_classification": {
+        "power_type": "counter_positioning",
+        "benefit": "HW設計エンジニア不要でデータセンター事業者が直接FPGA活用可能→採用加速",
+        "barrier": "ASIC/GPU事業者はOpenCL同等の柔軟性を同一コストで提供困難"
+      }
+    },
+    {
+      "id": "ALTR_003",
+      "claim_type": "competitive_advantage",
+      "claim": "固定ASICからFPGAへのリプレース継続成長 — Moore's Lawに伴うASIC開発コスト上昇とFPGAコスト低下による代替加速",
+      "descriptive_label": "ASIC代替による構造的成長優位",
+      "evidence_from_transcript": "2015 Outlook Call (CEO): 'ASIC replacement has long been the primary growth engine for the PLD industry, and with the economics of Moore's Law, this trend will continue. Rising development costs are limiting the role for fixed function custom ASICs and ASSPs. Simultaneously, Altera FPGAs, staying on Moore's Law, have become more feature-rich with improved performance and lower cost per unit of logic.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["ALTR_011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": "BORDERLINE — ASIC代替トレンドは外部要因（結果を引き起こす市場力）。Altera固有の能力ではない",
+          "rule_6_t": "structural — Moore's Lawに乗り続ける製造・設計能力は構造的優位",
+          "rule_11_t": "PASS — ASIC開発コスト上昇という業界構造変化とFPGA位置づけが合致"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "業界全体のトレンド。Xilinx等競合も同様に恩恵を受ける。相対的差別化弱い → 50%",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ASIC代替はPLD業界全体の追い風。AlteraとXilinxの両者が恩恵を受ける。純粋競合との差別化（Altera優位性）は説明されていない。industry-common trend → 50%。"
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "ASIC開発コスト上昇に伴う大規模FPGA需要獲得",
+        "barrier": "Moore's Lawへの乗り続ける設計・製造能力（継続的プロセスノード移行への投資）"
+      }
+    },
+    {
+      "id": "ALTR_004",
+      "claim_type": "competitive_advantage",
+      "claim": "PLD市場シェアの継続的拡大 — 半導体業界・PLD業界を上回る成長率（2014年+12%でほぼ業界成長2倍）",
+      "descriptive_label": "PLDシェア拡大実績",
+      "evidence_from_transcript": "Q4 2014 (CEO): 'We were able to grow significantly faster than the market and our competition and as a result, increase our PLD market share.' CFO: 'We nearly doubled the growth of the semiconductor industry with a revenue growth of 12%...new products grew 42% over the prior year led by 28-nanometer which grew 154% year-on-year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": {
+          "rule_1_t": "FAIL — 市場シェア拡大は結果であり優位性の能力・仕組みではない",
+          "rule_4_t": "quantitative — 12%成長・28nm 154%成長という数値は裏付けとして機能"
+        },
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "rule_1_t違反（結果を優位性として提示）→ -20%",
+            "adjustment": -0.2
+          }
+        ],
+        "overall_reasoning": "シェア拡大・業界2倍成長は結果。背後の能力（技術差別化、設計能力）は別主張で評価済み。dogma.md ルール1違反で30%。"
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "PLD市場でのスケール拡大による設計リソース・顧客基盤増強",
+        "barrier": "規模による開発投資効率向上（他PLDベンダーより大きいR&D絶対額）"
+      }
+    },
+    {
+      "id": "ALTR_005",
+      "claim_type": "competitive_advantage",
+      "claim": "R&D投資の成熟化による営業レバレッジ — 大型R&D投資フェーズ完了後のOpEx成長抑制（2015年: +2.7%のみ）と利益成長加速",
+      "descriptive_label": "R&D成熟化による営業レバレッジ",
+      "evidence_from_transcript": "2015 Outlook Call (CFO): 'We're planning operating expenses to grow 2.7% to $760 million in 2015 from $740 million in 2014.' CEO: 'All of these capabilities are now in place, allowing us to slow the rate of growth of R&D in the coming years...so that we can benefit from an extended period of operating leverage.' 'FY15 will be a year where percentage growth in revenue will create a much larger EPS percentage growth because of this operating leverage.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ALTR_009"],
+      "cagr_connections": ["ALTR_012"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_5_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": "BORDERLINE — 完成した製品ポートフォリオ（能力）と将来の営業レバレッジ（結果の見通し）",
+          "rule_5_t": "direct — 製品投資完了→OpEx抑制→EPS成長は2-3ステップで検証可能",
+          "rule_6_t": "structural — ハードウェアIPの完成は構造的な先行投資の結晶"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "収益化は需要側の成長に依存。製品投資完了は確認可能だが市場採用速度は不確実",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "大型R&D投資の完了（MAX10、Arria10、Stratix10、OpenCL）は確認可能な事実。OpEx成長2.7%という数値は具体的。ただし市場採用が計画通りかは不確実。50%が適切。"
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "製品IP資産（複数世代FPGA）の完成による高収益化フェーズへの移行",
+        "barrier": "開発済みのHyperFlex、OpenCL、14nm FinFET等のIP資産は短期で競合が再現困難"
+      }
+    },
+    {
+      "id": "ALTR_006",
+      "claim_type": "competitive_advantage",
+      "claim": "MAX 10超低コストFPGAによる新市場開拓 — 設計キット販売数の社内記録更新による低価格市場でのリーチ拡大",
+      "descriptive_label": "MAX10による低エンドFPGA市場開拓",
+      "evidence_from_transcript": "Q4 2014 (CEO): 'In 2014, we released our MAX 10, very low-end FPGA family, and the ramp has been exceptional. MAX 10 has set a company record for design kits sold.' 2015 Outlook Call: 'a new ultra low-end FPGA family in MAX 10'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": "BORDERLINE — 製品アーキテクチャ（能力）vs 初期採用実績（結果）の境界",
+          "rule_4_t": "PARTIAL — 'company record for design kits sold'は記録的実績の言及。数値なし",
+          "rule_7_t": "PARTIAL — 競合低エンドFPGA（Xilinx Coolrunner等）との直接比較なし"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "社内記録の言及のみ。競合比較なし。設計数→収益転換の時間軸不明 → 50%",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "MAX 10の設計キット記録は初期需要の証拠として機能。ただし低エンドFPGAは競合も多く、利益率も低い。新市場へのリーチ拡大という方向性は評価できるが差別化が弱い。50%。"
+      },
+      "power_classification": {
+        "power_type": "network_economies",
+        "benefit": "設計キット大量配布による設計コミュニティ拡大と将来の大量購入ルートの確保",
+        "barrier": "設計者が習得したAltera設計ツールの乗り換えコスト"
+      }
+    },
+    {
+      "id": "ALTR_007",
+      "claim_type": "competitive_advantage",
+      "claim": "通信インフラ（SDN/NFV）での$500M+の新機会パイプライン — Stratix 10による従来FPGAでは到達不可能だった通信帯域への対応",
+      "descriptive_label": "Stratix10による通信インフラ新機会",
+      "evidence_from_transcript": "2015 Outlook Call (CEO): 'We have identified more than a $0.5 billion of new Stratix 10 opportunities in the telecom and wireless space that previously was beyond the reach due to size, speed, power limitations.' Q4: 'With our superior new FPGAs combined with our OpenCL programming tool, we are uniquely positioned to take advantage of this new growth opportunity' in networking with SDN.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Daane",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["ALTR_008"],
+      "cagr_connections": ["ALTR_011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": "PASS — 技術的到達範囲の拡大（仕組み）",
+          "rule_4_t": "quantitative — $500M+の特定機会パイプラインは具体的",
+          "rule_6_t": "structural — 性能制約の突破による新市場アクセスは構造的"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "$500M+パイプラインの定量的開示は高評価要因",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "'Previously beyond reach' という技術的障壁突破の表現は能力の証明。$500M+の具体的機会パイプラインは裏付け。通信インフラ市場での新機会として70%が妥当。"
+      },
+      "power_classification": {
+        "power_type": "cornered_resource",
+        "benefit": "通信インフラ市場での$500M+の新機会へのアクセス（競合FPGAが性能要件未達のため）",
+        "barrier": "HyperFlex+14nm FinFETによる性能優位は数年間の競合優位をもたらす"
+      }
+    },
+    {
+      "id": "ALTR_008",
+      "claim_type": "factual_claim",
+      "claim": "Stratix 10は5.5M LEs（競合比25%高）、2x コアパフォーマンス改善、業界初14nm FinFET FPGA。世界初の称号はQ4 2014の201501決算での開示",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["ALTR_001", "ALTR_007"]
+    },
+    {
+      "id": "ALTR_009",
+      "claim_type": "cagr_connection",
+      "claim": "Stratix10/HyperFlex技術 → 高付加価値セグメント（データセンター・通信インフラ）での採用拡大 → ASP改善・グロスマージン70%台維持",
+      "descriptive_label": "Stratix10→高マージンセグメント採用→収益性改善経路",
+      "source_advantage": "ALTR_001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "DIRECT — 技術優位→特定高付加価値市場採用→マージン改善は2-3ステップ",
+          "rule_12_t": "primary — Q4発言由来"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "技術優位→高マージンセグメント採用の経路は論理的。ただしStratix10の採用量・タイミングが不確実（'begin shipping in 2015'）。CFOが67-69%グロスマージン範囲を指示しており数値裏付けあり。50%。"
+      }
+    },
+    {
+      "id": "ALTR_010",
+      "claim_type": "cagr_connection",
+      "claim": "OpenCL → FPGAアクセラレーター採用加速 → データセンター向け新市場（$1B TAM）→ 売上成長追加",
+      "descriptive_label": "OpenCL→アクセラレーター採用→新TAM成長経路",
+      "source_advantage": "ALTR_002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "BORDERLINE — OpenCL→採用→売上は論理的だが採用速度の不確実性が高い（'decade's end'）",
+          "rule_12_t": "primary — Q4発言由来"
+        },
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "$1B TAMの'decade's end'は長期的な目標。2015年時点での採用段階は初期。OpenCL自体は強力な差別化だが収益化タイムラインが長い。50%。"
+      }
+    },
+    {
+      "id": "ALTR_011",
+      "claim_type": "cagr_connection",
+      "claim": "ASIC代替トレンド継続 + Stratix10新機会 → PLD市場半導体業界比アウトグロース継続 → 売上2桁成長維持",
+      "descriptive_label": "ASIC代替+新機会→アウトグロース経路",
+      "source_advantage": "ALTR_003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "direct — ASIC代替は継続トレンド+Stratix10新機会で2-3ステップ",
+          "rule_12_t": "primary — Q4発言由来"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ASIC代替の構造的トレンドは業界データで裏付け可能。$500M+新機会との組み合わせで成長経路が明確。70%。"
+      }
+    },
+    {
+      "id": "ALTR_012",
+      "claim_type": "cagr_connection",
+      "claim": "OpEx成長抑制（2.7%）+ 製品投資完了 → 売上成長>OpEx成長 → 営業利益率継続拡大（2014年比+14%達成済み）",
+      "descriptive_label": "OpEx成長抑制→営業レバレッジ→EPS成長経路",
+      "source_advantage": "ALTR_005",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": "direct — OpEx成長抑制→売上成長との差分→利益拡大は1-2ステップ。数値開示あり",
+          "rule_12_t": "primary — Q4発言由来"
+        },
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "OpEx $760M（+2.7%）という具体的な計画値と2014年の14%営業利益成長の実績がある。売上成長が伴えば直接的メカニズム。数値裏付けあり。70%。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "scored_claims": [
+    {
+      "id": "NOV-008",
+      "claim_type": "competitive_advantage",
+      "claim": "強固な貸借対照表と海外キャッシュ活用による投資継続能力（Balance Sheet Strength）",
+      "evidence": "Q4 2014: 'We have a strong balance sheet... we ended the fourth quarter of 2014 with a cash balance of $3.5 billion... we ended the year in a net cash position of $370 million'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "強固なBSはSchlumberger等の業界大手に共通する主張（ルール3=業界共通能力）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "強固なBSは業界共通の言説。$3.5Bキャッシュという数値はあるが競合比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通能力ゲートキーパー発動"
+        }
+      ],
+      "overall_reasoning": "$3.5Bキャッシュという定量データは明確だが、「強固なBS」はSchlumberger等の業界大手も同様に主張しており差別化にならない。30%"
+    },
+    {
+      "id": "NOV-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014 EBITDA $4.6B（記録的、前年比+14%）、Rig Systemsバックログ$12.5B（2009年比+16%）、Aftermarket $850M四半期収益（記録的、マージン28.8%）",
+      "evidence": "FY2014 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NOV-010",
+      "claim_type": "cagr_connection",
+      "claim": "バックログ$12.5B → 2015年収益$7B（前倒し実行）→ 回復後の市場再拡張で長期成長",
+      "evidence": "バックログ消化ペース開示あり。2015年$7B収益予測",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "バックログ→収益は2ステップの直接的メカニズム。バックログ消化ペースの開示あり"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "バックログ→収益確実性の接続は直接的で検証可能。2015年$7B収益予測という具体数値あり。エネルギーサイクル回復仮定を含むが、接続メカニズムは明確。70%"
+    },
+    {
+      "id": "NOV-011",
+      "claim_type": "cagr_connection",
+      "claim": "インストールベース拡大 → Aftermarket反復収益増加 → 安定的な収益ベース",
+      "evidence": "Aftermarket $850M四半期（記録的）。ただしダウンサイクル中は顧客在庫流用リスクあり",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "2ステップのメカニズムは明確だが、ダウンサイクル中の顧客在庫流用リスクで接続が弱まる"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "インストールベース→Aftermarket収益は方向性として認める。ただしCEOが「ダウンサイクル中は顧客が在庫を流用する」と明言しており、ダウンサイクル時の接続確実性は低下。50%"
+    },
+    {
+      "id": "NOV-012",
+      "claim_type": "cagr_connection",
+      "claim": "統合FPSOパッケージ能力 → 新FPSO市場参入 → 将来の大型受注獲得",
+      "evidence": "CEOが「a large integrated package FPSO order for NOV is still a ways away」と明言",
+      "final_confidence": 0.3,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "CEO自身が「まだ先」と述べており短中期での検証が不可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "将来機会として方向性は認めるが、CEOが「a ways away」と述べており短中期の接続は不確実。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "20-30": 2,
+      "40-50": 1,
+      "60-70": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

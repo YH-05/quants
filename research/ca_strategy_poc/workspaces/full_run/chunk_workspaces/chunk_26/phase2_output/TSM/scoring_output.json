@@ -1,0 +1,575 @@
+{
+  "scored_claims": [
+    {
+      "id": "TSM_001",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCはファウンドリ業界で唯一、先端ノード（20nm/16nm）の大量生産を継続的に実現できる製造プロセス能力を持つ。",
+      "descriptive_label": "先端ノード大量生産プロセス能力（唯一のファウンドリ）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "C.C. Wei",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule04",
+          "rule06",
+          "rule07",
+          "rule11"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "「大量生産を実現できる能力（製造プロセス能力）」= 能力・仕組みの評価。「唯一のファウンドリ」という独占的能力の提示。結果ではなく能力を評価"
+          },
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "20nm revenue 9%→21%（Q3→Q4 2014）という数値変化。'unprecedented ramp'の定性評価。ただし競合との定量比較は「唯一」という独占宣言のみ"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "structural",
+            "reasoning": "製造プロセス能力は数十年のノウハウ蓄積と大規模投資（CapEx USD11.5-12B）から構成される構造的優位性"
+          },
+          {
+            "rule": "rule07",
+            "verdict": "pass",
+            "reasoning": "Samsung Foundry、GlobalFoundriesを純粋競合として、20nm量産能力で「唯一」と明示。ルール7の要件（純粋競合との差別化）を明確に満たす"
+          },
+          {
+            "rule": "rule11",
+            "verdict": "pass",
+            "reasoning": "先端スマートフォン用AP（Apple A8/A9、Qualcomm 820等）では先端ノードが必須。市場構造（モバイル半導体の先端ノード一極集中）とTSMCの独占的ポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_V_t",
+        "kb2_t_reasoning": "定量的差別化（20nm量産唯一）+ 特定競合（Samsung, GlobalFoundries）との差別化。パターンI-TとV-Tの複合",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）。標準評価",
+            "adjustment": 0
+          },
+          {
+            "reason": "「唯一のファウンドリ」は強力な差別化だが、競合比較の定量データ（Samsung vs TSMCの歩留まり比較等）が示されていないため90%には届かない",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4 2014での発言。20nm唯一量産ファウンドリという構造的独占的地位。能力（プロセス）を評価しており、結果（シェア）ではない。定量的裏付け（revenue比率変化）あり、純粋競合への差別化も明示。市場構造（モバイル半導体先端ノード需要）との合致も高い。90%に届かない理由：競合との歩留まり・コスト比較の定量データが欠如"
+      }
+    },
+    {
+      "id": "TSM_002",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCの規模の経済により、28nmの製造コスト競争力は5年以上の生産経験から構造的に確立されており、市場シェア防衛が可能。",
+      "descriptive_label": "28nm 学習曲線効果による構造的コスト優位性",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "C.C. Wei",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule04",
+          "rule06",
+          "rule11",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "「5年超の生産経験から構造的に確立されたコスト競争力（能力）」。学習曲線という仕組みを評価。シェア防衛（結果）ではなく学習曲線効果（能力）に基づく"
+          },
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "「5年以上の製造経験」という具体的数値。28nm revenue 27-34%という市場での圧倒的シェア数値"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "structural",
+            "reasoning": "学習曲線効果は構造的優位性。競合が同等の生産経験を得るには同じ期間を要し、短期模倣不可"
+          },
+          {
+            "rule": "rule11",
+            "verdict": "partial",
+            "reasoning": "28nmは成熟ノードだが、スマートフォン中低価格帯・IoT向けに依然主流。市場構造との合致はある程度認められる"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015の発言（従・②相当）。-10%調整適用"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "kb2_t_reasoning": "能力の優位性（仕組みの説明）：5年の学習曲線効果という明確なメカニズム。ただしQ2発言のため調整",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callでの発言（従・②相当）。ルール12-T適用: -10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。5年超の製造経験という具体的な能力の裏付けあり。28nmにおける学習曲線効果は構造的優位性として評価可能。ただし純粋競合（Samsung）の28nmコスト構造との比較がなく、差別化の程度が不明。Q2発言のため-10%調整で60%→スケール50%に。dogmaの確信度スケールは5段階（10/30/50/70/90%）のため50%に設定"
+      }
+    },
+    {
+      "id": "TSM_003",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのデザインエコシステム（EDAツール、IPパートナー、プロセスデザインキット）は競合他社より大規模で、顧客のスイッチングコストを高める。",
+      "descriptive_label": "デザインエコシステムによるスイッチングコスト構築",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Mark Liu",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule02",
+          "rule04",
+          "rule07",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "デザインエコシステム（EDA、IP、PDK）という能力・仕組みを評価。スイッチングコストの上昇という結果ではなく、エコシステム構築力という能力"
+          },
+          {
+            "rule": "rule02",
+            "verdict": "pass",
+            "reasoning": "「デザインエコシステム」という名詞で表現される属性。switching costsという名詞的属性"
+          },
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "43 EDAツール・700+ PDK・100+ IP という具体的定量数値。「業界最大のエコシステム」という相対的主張"
+          },
+          {
+            "rule": "rule07",
+            "verdict": "partial",
+            "reasoning": "「業界最大」という言及はあるが、Samsung Foundryの具体的なエコシステム規模との比較数値が示されていない"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q3 2014の発言（従・②相当）。-10〜20%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "kb2_t_reasoning": "定量的差別化：43 EDA、700+ PDK、100+ IPという業界最大規模の定量提示",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterly callでの発言（従・②相当）。ルール12-T適用: -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "Samsung Foundryとの具体的な定量比較なし。「業界最大」という主張のみ",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q3 2014発言。EDA 43ツール・700+ PDK・100+ IPという定量的数値は説得力がある。しかし純粋競合（Samsung Foundry）のエコシステム規模との直接比較がなく、「業界最大」という主張の定量的根拠が弱い。Q3発言のため-10%調整。スイッチングコスト構造は評価できるが、差別化の程度が不明確。50%評価が妥当"
+      }
+    },
+    {
+      "id": "TSM_004",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCの先端技術開発ロードマップ（10nm→7nm連続開発）により、顧客は将来製品をTSMCのタイムラインに合わせて設計する構造的依存関係が生じる。",
+      "descriptive_label": "マルチノード連続開発による顧客ロードマップ依存構造",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Mark Liu",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule06",
+          "rule08",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "partial",
+            "reasoning": "技術ロードマップの「継続的実行能力」は能力として評価できる側面がある。ただし「ロードマップ」自体は戦略的計画（ルール8に引っかかる可能性）"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "partial",
+            "reasoning": "顧客のロードマップ依存は構造的要素として認められるが、技術開発ロードマップの維持自体は戦略的意思決定の要素も含む"
+          },
+          {
+            "rule": "rule08",
+            "verdict": "warning",
+            "reasoning": "「10nm→7nm連続開発」は技術ロードマップ戦略。戦略=意思決定であり優位性ではない側面がある。ただし、ノード間互換性（tool compatibility）という実際の技術的優位性は認められる"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015の発言（従・②相当）。-10〜20%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "kb2_t_reasoning": "戦略の混同リスク（F-T）：ロードマップは戦略。ただし tool compatibility という技術的優位性の側面はIII-Tパターン部分適合",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callでの発言（従・②相当）。ルール12-T適用: -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "ロードマップ自体が戦略であり、優位性と混同しているリスク（ルール8-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。技術ロードマップは戦略的計画であり、優位性そのものではない（ルール8-T）。ただしtool compatibilityという具体的な技術的優位性は認められる。顧客のロードマップ依存という帰結は妥当だが、それを生む能力（競合が模倣できない理由）の定量的説明が不足。純粋競合（Samsung Foundry）のロードマップとの差別化が不明。30%が適切"
+      }
+    },
+    {
+      "id": "TSM_005",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのInFO（Fan-Out）先進パッケージング技術は、基板不要の高密度実装により、競合ファウンドリが持たない差別化技術を提供する。",
+      "descriptive_label": "InFO先進パッケージング技術（基板不要・高密度実装）",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "C.C. Wei",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule06",
+          "rule07",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "InFO技術という具体的な技術能力を評価。「基板不要の高密度実装」という仕組みの説明"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "partial",
+            "reasoning": "先進パッケージングはファウンドリの本業（ウェーハ製造）に対して補完的な要素。構造的か補完的かは議論の余地あり"
+          },
+          {
+            "rule": "rule07",
+            "verdict": "fail",
+            "reasoning": "Samsung Foundry、GlobalFoundriesのパッケージング能力との定量比較なし。「競合が持たない」という主張の根拠が弱い"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015の発言（従・②相当）。-10%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_G_t",
+        "kb2_t_reasoning": "純粋競合との差別化が不明確（G-T）：競合のパッケージング能力との定量比較なし",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callでの発言（従・②相当）。ルール12-T適用: -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "ルール7-T違反：Samsung Foundryのパッケージング能力との比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。InFO技術の技術的内容（基板不要、高密度）は能力として評価できる。ただしcutoff_date（2015-09-30）時点では「first-generation InFO qualified」の段階であり量産規模は限定的。純粋競合との差別化の定量根拠なし。補完的要素の可能性（ルール6-T）。Q2発言のため調整。30%が適切"
+      }
+    },
+    {
+      "id": "TSM_006",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCは先端ノードでの圧倒的市場シェア（20nm唯一の量産ファウンドリ、16nm overwhelming share予測）を保持し、規模の経済がさらなるシェア獲得を可能にする自己強化ループを形成する。",
+      "descriptive_label": "先端ノード市場シェア自己強化ループ",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Morris Chang",
+      "section": "q_and_a",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule11",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "fail",
+            "reasoning": "「圧倒的市場シェア」「シェア獲得」は結果。ルール1違反の典型例。シェアをもたらす能力（プロセス技術、コスト構造）は評価できるが、シェア自体を優位性として提示している"
+          },
+          {
+            "rule": "rule11",
+            "verdict": "partial",
+            "reasoning": "市場構造（先端ノードの寡占化）との合致は認められるが、優位性の主体がシェア（結果）になっている"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "kb2_t_reasoning": "結果を原因と取り違え（A-T）：シェアは結果であり優位性ではない。dogmaルール1の典型的却下候補",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ルール1-T違反：シェアは結果。背後の能力（プロセス技術）がTSM_001で既に評価されている",
+            "adjustment": -20
+          },
+          {
+            "reason": "Q2 quarterly発言（従・②相当）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。「市場シェア」は結果であり能力ではない（ルール1-T違反、パターンA-T）。自己強化ループというメカニズムは概念的には理解できるが、シェアを優位性として提示している構造が問題。TSM_001（プロセス能力）とTSM_002（学習曲線）で評価した能力の重複でもある。30%が上限"
+      }
+    },
+    {
+      "id": "TSM_007",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCのStructural Gross Margin（SGM）と高稼働率維持能力は、先端ノードへの大規模CapEx投資を継続しながらも利益率構造を改善できる財務的優位性を示す。",
+      "descriptive_label": "構造的粗利率（SGM）と高稼働率維持能力",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Lora Ho",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule04",
+          "rule06",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "fail",
+            "reasoning": "SGM改善・ROE 27.9%・高稼働率は結果の数値。ルール1違反：これらを生み出す能力（高稼働率を維持するための顧客基盤構築力、コスト管理プロセス）の説明が不足"
+          },
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "ROE 27.9%（long-term goal 20%超）、SGM 5年間の継続改善という数値あり。ただし「優位性の裏付けとなる数値」ではなく「結果の数値」"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "fail",
+            "reasoning": "財務指標（SGM、ROE）は補完的要素であり構造的優位性の主軸ではない"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t + pattern_D_t",
+        "kb2_t_reasoning": "結果を原因と取り違え（A-T）：財務指標は結果。定性的のみで測定困難（D-T）：「SGM維持能力」の定量比較なし",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "ルール1-T違反：ROE・SGMは結果の数値",
+            "adjustment": -10
+          },
+          {
+            "reason": "ルール6-T：財務的優位性は補完的要素",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q2 quarterly発言（従・②相当）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。SGM・ROEは財務的な結果指標であり競争優位性の能力ではない（ルール1-T違反）。「高稼働率維持能力」という言及はあるが、なぜ維持できるか（顧客基盤、長期契約、プロセス管理）の説明がない。純粋競合との比較なし。30%が適切"
+      }
+    },
+    {
+      "id": "TSM_008",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCはLED事業（Solid State Lighting）への遅参による競争劣位を認識し、撤退を決断した規律ある資本配分能力を持つ。",
+      "descriptive_label": "規律ある資本配分能力（LED事業撤退判断）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lora Ho",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule08",
+          "rule10",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "「採算性見込みのない事業から撤退できる規律（能力）」を評価。撤退という意思決定の背後にある評価プロセス・基準が優位性"
+          },
+          {
+            "rule": "rule08",
+            "verdict": "warning",
+            "reasoning": "「撤退を決断した」は戦略的意思決定。ルール8に抵触する可能性。ただし、規律ある意思決定プロセス（能力）として評価するなら許容"
+          },
+          {
+            "rule": "rule10",
+            "verdict": "pass",
+            "reasoning": "ネガティブケース（LED事業撤退）による裏付け。ルール10-T（ネガティブケースによる裏付けを評価）の典型例"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言（主・①相当）。標準評価"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "kb2_t_reasoning": "能力の優位性（III-T）：意思決定規律という仕組みをネガティブケースで裏付け",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "本業（ファウンドリ）との関連性が薄く、競争優位性の中心軸ではない（補完的要素）。ルール6-T：補完的要素",
+            "adjustment": -10
+          },
+          {
+            "reason": "純粋競合（Samsung）も同様の資本配分規律を持っているかの比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q4 2014発言。ネガティブケース（LED撤退）による裏付けはルール10-T評価ポイント。規律ある資本配分能力というフレームは概念的に評価できる。しかしファウンドリ事業本体との関連性が薄く（補完的要素）、Samsung等の競合も同様の合理的意思決定プロセスを持つ可能性が高く差別化根拠が弱い。50%（まあ納得）"
+      }
+    },
+    {
+      "id": "TSM_009",
+      "claim_type": "factual_claim",
+      "claim": "TSMCの2014年売上高は前年比27.8%増（TWD 763B / USD 25B）、EPS前年比40%増のTWD 10.18で過去最高を達成した。",
+      "descriptive_label": "2014年業績過去最高（売上27.8%増、EPS40%増）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lora Ho",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule04"
+        ],
+        "results": [
+          {
+            "rule": "rule04",
+            "verdict": "quantitative",
+            "reasoning": "TWD 763B / USD 25B、27.8%成長、EPS TWD 10.18、40%増という具体的財務数値"
+          }
+        ],
+        "kb2_t_pattern_match": null,
+        "kb2_t_reasoning": "factual_claimのためパターン照合対象外",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）。SEC開示データと整合する可能性が高く検証可能",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4 2014発言。財務数値は具体的で検証可能。年次決算での公式発表のため信頼性高い。factual_claimとして70%で評価（事実確認用、競争優位性評価とは独立）"
+      }
+    },
+    {
+      "id": "TSM_010",
+      "claim_type": "cagr_connection",
+      "claim": "先端ノード（16nm/10nm）でのfar majority foundry share獲得 → 先端スマートフォン向けAP・GPU市場でのウェーハ単価上昇 → 売上CAGR 10%+への直接寄与",
+      "descriptive_label": "先端ノードシェア→ASP上昇→CAGR 10%+接続",
+      "source_advantage": "TSM_001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule05",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule05",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：先端ノードシェア→ASP上昇→売上CAGR。Lora Ho Q4 2014 Q&Aで「blended ASP will continue to grow, low single-digit range year-over-year」と開示データで検証可能"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言（主・①相当）。5年目標CAGR 10%の設定もQ4 2014"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "kb2_t_reasoning": "直接的CAGRメカニズム（II-T）：ASPトレンドが開示データ（quarterly revenue mix）で検証可能。2ステップ以内の因果",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "ASP成長「low single-digit range」という具体的開示。先端ノード比率向上→ASP上昇の因果は検証可能",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q4 2014発言。2ステップの直接的CAGR接続：先端ノードシェア獲得→ASP上昇（開示値：low single-digit YoY）→CAGR 10%。Lora HoによるASP継続上昇予測と、Morris Changの16nm市場シェア宣言が組み合わさり、因果メカニズムが明確。開示データで検証可能なため70%"
+      }
+    },
+    {
+      "id": "TSM_011",
+      "claim_type": "competitive_advantage",
+      "claim": "TSMCは顧客の製品競争力強化を目的として先端技術（16nm, 10nm, 7nm）の相互互換性を設計することで、設計アセットの再利用を可能にし顧客コストを削減する差別化ポジションを確立している。",
+      "descriptive_label": "マルチノード間プロセス互換性による顧客設計資産保護",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "Mark Liu",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": [
+          "rule01",
+          "rule06",
+          "rule07",
+          "rule12"
+        ],
+        "results": [
+          {
+            "rule": "rule01",
+            "verdict": "pass",
+            "reasoning": "「ノード間のtool compatibility設計能力」= 仕組みとしての能力を評価。顧客コスト削減という結果ではなく、互換性設計力という能力"
+          },
+          {
+            "rule": "rule06",
+            "verdict": "structural",
+            "reasoning": "複数ノードにわたる互換性アーキテクチャは、数世代の設計投資が必要な構造的優位性"
+          },
+          {
+            "rule": "rule07",
+            "verdict": "fail",
+            "reasoning": "Samsung Foundryが同様の互換性戦略を採用しているかどうかの比較情報なし。「競合が持たない」差別化の定量根拠不足"
+          },
+          {
+            "rule": "rule12",
+            "verdict": "secondary",
+            "reasoning": "Q2 2015の発言（従・②相当）。-10%調整"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_G_t",
+        "kb2_t_reasoning": "純粋競合との差別化が不明（G-T）：Samsung Foundryの互換性戦略との比較なし。ルール7-T違反",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2 quarterly callでの発言（従・②相当）。ルール12-T適用: -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "Pure competitorとの比較なし（ルール7-T）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Q2 2015発言。16nm→10nm→7nmのtool compatibilityという具体的な技術的優位性は評価できる。顧客の設計資産再利用を可能にするスイッチングコスト構造としては有望。ただし純粋競合（Samsung Foundry）が同様の互換性設計を行っているかの比較なし。Q2発言のため-10%調整で50%（まあ納得）"
+      }
+    }
+  ],
+  "metadata": {
+    "scored_count": 11,
+    "confidence_distribution": {
+      "0-10": 11
+    },
+    "gatekeeper_applied": false
+  }
+}

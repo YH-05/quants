@@ -1,0 +1,320 @@
+{
+  "ticker": "IT",
+  "scored_claims": [
+    {
+      "id": "IT_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Gartner の Sales Academy プログラムによる営業担当者の採用・育成・定着力：体系化された営業育成システムにより業界最高の営業人材を確保し、離職率の継続的低下を達成。",
+      "evidence": "Over the past several years and throughout 2014, we made significant investments in our people...We're attracting the best talent in the industry... the key things we're doing to drive sales productivity, first, it's making sure that when we hire new salespeople, that we hire salespeople that are good with Gartner...we have a...best training program I've ever seen. Our turnover among our salespeople over the last few years have been trending down.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04"],
+        "results": {"rule01": true, "rule04": false},
+        "confidence": 0.5,
+        "adjustments": ["rule01: Sales Academy という能力・仕組みの説明あり", "rule04: 離職率低下トレンドはあるが業界比較数値なし"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "「最高のトレーニングプログラム」は CEO 自身による定性的評価"},
+        {"source": "pattern_III_t_process_system", "adjustment": 0.05, "reasoning": "Sales Academy という体系化されたプロセス・仕組みの存在は Process Power の候補"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}, {"rule": "rule04", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "Sales Academy という体系的プログラムの存在と離職率低下トレンドは能力の証拠として評価できる。しかし業界比較数値や外部評価がなく、CEO 自己評価にとどまる。定量的差別化（例: 業界平均との離職率比較）があれば確信度は大幅に上昇するが、現時点では 0.5 が妥当。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks/Q&A (2015-02-05)"]
+    },
+    {
+      "id": "IT_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Gartner ブランドの圧倒的認知力と Technology Research における独自ポジション：'class by itself' と自称するが定量的差別化証拠が不足。",
+      "evidence": "The Gartner brand is in a class by itself. Our products, services and people are superior to the competition with a great business model, and we continue to be more relevant to virtually every enterprise in the world.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule03", "rule07"],
+        "results": {"rule01": false, "rule03": false, "rule07": false},
+        "confidence": 0.3,
+        "adjustments": ["rule01: ブランドを能力として提示しているが背後要因の説明なし", "rule07: Forrester・IDC との具体的比較なし"]
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.1, "reasoning": "「class by itself」は定性的自己評価で定量証拠なし"},
+        {"source": "pattern_C_self_reported_only", "adjustment": -0.05, "reasoning": "外部機関による独立評価なし"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": false}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "Gartner ブランドの認知度は業界で高いことは一般的に知られているが、トランスクリプトでは CEO 自身による定性的主張のみで Forrester・IDC 等との定量比較がない。Magic Quadrant 作成者であるという固有の地位は重要だが、トランスクリプトからは十分な証拠が得られない。",
+      "power_classification": "Branding",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Gartner Research の高い顧客契約継続率（Enterprise Client Retention 85%・wallet retention 106%）による粘着性：過去最高水準の Retention 指標が Research サブスクリプションの高粘着性を証明。",
+      "evidence": "Retention metrics improved to all-time highs. For the fourth quarter 2014, enterprise client retention was 85%, up 2 points over the same quarter 2013. Enterprise wallet retention was 106%, also up 2 points over Q4 2013.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule03", "rule04"],
+        "results": {"rule01": false, "rule03": true, "rule04": true},
+        "confidence": 0.4,
+        "adjustments": ["rule03: 85%/106%という具体的数値", "rule01: Retention 率は結果であり Switching Costs の説明がない"]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.1, "reasoning": "高 Retention という結果を Switching Costs の証拠として使用しているが因果関係の説明がない"},
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "Wallet Retention 106%は顧客拡大を示す定量証拠として一定の価値"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}, {"rule": "rule01", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "Wallet Retention 106%は既存顧客が拡大していることを示し、単純な継続（85%）を超えた顧客エンゲージメントの証拠として評価できる。ただし、なぜ Retention が高いか（Switching Costs の源泉、製品の独自性、顧客組み込み度）の説明がなく、結果論にとどまる。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Gartner Research のスケール（全産業・全地域・全企業規模で double-digit成長）と addressable market の広さ：IT テクノロジーの全産業への普及が Gartner リサーチの普遍的需要を創出。",
+      "evidence": "We achieved double-digit contract value growth in every region, every industry and every company size... we're relevant whether an institution is growing or facing economic challenges.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06"],
+        "results": {"rule01": false, "rule06": true},
+        "confidence": 0.4,
+        "adjustments": ["rule01: 全方位成長という結果を能力として提示", "rule06: 業界構造（IT全産業浸透）はある程度構造的"]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.1, "reasoning": "全地域・全産業での成長という結果を競争優位として提示"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": false}, {"rule": "rule06", "pass": true}],
+      "kb2_patterns": [{"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "IT テクノロジーが全産業に浸透するという業界構造的な力は認識できるが、Gartner 固有の競争優位（なぜ Forrester でなく Gartner が全産業で選ばれるか）の説明が不十分。成長実績は印象的だが結果論にとどまる。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Gartner の規律ある M&A 選定プロセスとパイプライン管理能力：戦略的・文化的・人材的フィットという厳格な基準と少件数という規律が、高品質な M&A 実行能力を証明。",
+      "evidence": "Before we get to the financial criteria... we really do flex on making sure that it is a great fit strategically, both from a business perspective, from a culture perspective, from a people perspective. And those are very tough thresholds to get across, which is, again, why we've done so few acquisitions. Our pipeline looks great.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule07"],
+        "results": {"rule01": true, "rule07": false},
+        "confidence": 0.5,
+        "adjustments": ["rule01: M&A 選定基準という能力の説明あり", "rule07: 少件数の理由を規律として説明（ネガティブケース言及）"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "CFO が明確に選定基準（戦略的・文化的・人材フィット）と規律（tough thresholds、意図的に少件数）を説明しており、能力として評価可能。しかし断念案件の具体的な数値・理由は不明で外部評価もない。過去の M&A 成功事例の提示があれば確信度はより高い。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 FY2014 CFO Q&A (2015-02-05)"]
+    },
+    {
+      "id": "IT_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Gartner の研究・アドバイザリー製品の価格決定力（年間3-6%の価格改定実施能力）：顧客抵抗なく毎年3-6%の価格改定を継続できる Switching Costs の証拠。",
+      "evidence": "We've done 3 to 6. And again when you look at our price increase what it implies is some products were taking up higher than that, and some products lower... What we found over the last several years is that 3% on average is really a sweet spot for us. If there are opportunities to raise it more, we certainly will. No pricing pressure.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04"],
+        "results": {"rule01": true, "rule04": true},
+        "confidence": 0.5,
+        "adjustments": ["rule01: 価格決定力という能力の説明あり", "rule04: 継続的な価格改定実績"]
+      },
+      "final_confidence": 0.55,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "年間3-6%という具体的な価格改定率と「No pricing pressure」という CFO の言明"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}, {"rule": "rule04", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "年間3-6%の価格改定を顧客抵抗なく継続的に実施できることは Switching Costs の強力な間接証拠。CFO が「No pricing pressure」と明言し、具体的な価格改定率（3-6%）も開示されている。競合（Forrester）との比較がないが、この価格決定力は Gartner のアドバイザリー製品の独自価値を反映している。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 FY2014 CFO Q&A (2015-02-05)"]
+    },
+    {
+      "id": "IT_007",
+      "claim_type": "cagr_connection",
+      "claim": "Sales Academy による生産性向上 → 販売員数成長(+15-20%) + 生産性改善 → Contract Value +14-15% → Revenue CAGR",
+      "evidence": "Sales force headcount nearly +15% in 2014... Contract value grew 14% on FX-neutral basis, total revenue +14%, EBITDA +13%.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05"],
+        "results": {"rule05": true},
+        "confidence": 0.7,
+        "adjustments": ["rule05: 販売員数→Contract Value→Revenue の直接的2ステップ接続"]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "+15%販売員数増→+14% Contract Value 増という直接的な定量的接続"},
+        {"source": "pattern_II_t_recurring_model", "adjustment": 0.05, "reasoning": "Contract Value は先行指標として将来 Revenue CAGR の高信頼性指標"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "販売員数成長(+15%)→Contract Value 成長(+14%)→Revenue 成長という因果チェーンは2ステップで直接的かつ定量的に接続されている。Contract Value は毎期開示される先行指標であり、CAGR 接続の検証可能性が非常に高い。Q4 主要決算での体系的な説明は信頼性を高める。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks/Q&A (2015-02-05)"]
+    },
+    {
+      "id": "IT_008",
+      "claim_type": "cagr_connection",
+      "claim": "Gartner Research の普遍的適用可能性（全産業・全地域展開）→ 新規顧客開拓 → 契約価値成長 → Revenue CAGR",
+      "evidence": "We achieved double-digit contract value growth in every region, every industry and every company size... we're relevant whether an institution is growing or facing economic challenges.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05"],
+        "results": {"rule05": true},
+        "confidence": 0.5,
+        "adjustments": ["rule05: 全産業・全地域展開→新規顧客開拓→Contract Value 成長という接続はあるが間接的"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "全産業展開の市場機会は潜在的だが、浸透率・シェア拡大の定量的接続が弱い"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "全産業・全地域での成長は CAGR 持続の証拠として一定の説得力があるが、各市場での具体的な浸透率や成長余地の定量的分析が不足している。Q4 年次発言として信頼性はあるが、因果メカニズムの具体性が不十分。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_009",
+      "claim_type": "cagr_connection",
+      "claim": "高 Retention 率（85%/106%）→ 既存顧客からの安定的 Revenue Base → 累積的 CAGR 成長",
+      "evidence": "Enterprise client retention was 85%, up 2 points over Q4 2013. Enterprise wallet retention was 106%, also up 2 points over Q4 2013.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05"],
+        "results": {"rule05": true},
+        "confidence": 0.7,
+        "adjustments": ["rule05: Wallet Retention 106%→既存顧客の Revenue 拡大という直接的1ステップ接続"]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "Wallet Retention 106%は既存顧客が増額しており直接的なCAGR接続"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "Wallet Retention 106%は既存顧客ベースが自律的に成長していることを示す最も直接的な CAGR 証拠。Contract Value の定期開示で検証可能であり、サブスクリプションモデルの累積的成長構造（過去の契約が積み上がる）は CAGR の安定性を保証する。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_010",
+      "claim_type": "cagr_connection",
+      "claim": "価格改定力（3-6%/年）→ Research Revenue CAGR への価格貢献（+2-3pp）",
+      "evidence": "We've done 3 to 6% price increases. What we found over the last several years is that 3% on average is really a sweet spot. No pricing pressure.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05"],
+        "results": {"rule05": true},
+        "confidence": 0.7,
+        "adjustments": ["rule05: 価格改定（3-6%）→Revenue 直接貢献という1ステップの因果接続"]
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "3-6%という具体的な価格改定率から Revenue CAGR 貢献が直接計算可能"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "年間3-6%の価格改定は Revenue CAGR に直接的かつ定量的に貢献する。1ステップの因果接続で検証可能性が最も高い CAGR ドライバーの一つ。CFO が「No pricing pressure」と明言しており継続性への信頼性も高い。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 FY2014 CFO Q&A (2015-02-05)"]
+    },
+    {
+      "id": "IT_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "2014年Q4: Sales force headcount前年比+14.49%（ほぼ+15%）、全売上系指標でdouble-digit成長達成",
+      "evidence": "Sales force headcount grew nearly 15% in 2014... double-digit growth in every region, every industry and every company size.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "決算発表での事業指標開示。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "2014年Q4: Enterprise Client Retention 85%（前年比+2pt）、Enterprise Wallet Retention 106%（前年比+2pt）、過去最高水準",
+      "evidence": "Retention metrics improved to all-time highs. Enterprise client retention was 85%, up 2 points over Q4 2013. Enterprise wallet retention was 106%, also up 2 points over Q4 2013.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "決算発表での Retention 指標開示。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_fact_003",
+      "claim_type": "factual_claim",
+      "claim": "2014年度: FX中立ベースでContract Value +14%、Total Revenue +14%、EBITDA +13%。全地域・全産業・全企業規模でdouble-digit成長",
+      "evidence": "Contract value grew 14% on FX-neutral basis, total revenue +14%, EBITDA +13%. Double-digit growth in every region, every industry and every company size.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "決算発表での財務実績開示。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 FY2014 CEO prepared remarks (2015-02-05)"]
+    },
+    {
+      "id": "IT_fact_004",
+      "claim_type": "factual_claim",
+      "claim": "Research の年間価格改定率は3-6%範囲で継続実施。価格改定への顧客抵抗は低く、CFO が「No pricing pressure」と明言",
+      "evidence": "We've done 3 to 6% price increases. 3% on average is really a sweet spot for us. No pricing pressure.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03"],
+        "results": {"rule03": true},
+        "confidence": 0.9,
+        "adjustments": []
+      },
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "CFO による具体的な価格改定実績の開示。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 FY2014 CFO Q&A (2015-02-05)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "IT",
+    "scored_count": 14,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.3": 1,
+      "0.4": 2,
+      "0.5": 3,
+      "0.55": 1,
+      "0.7": 4,
+      "0.9": 4
+    }
+  }
+}

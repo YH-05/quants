@@ -1,0 +1,63 @@
+{
+  "ticker": "CON",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Continental FY2013 実績: 売上 EUR 33.3B（+2%）、調整後 EBIT EUR 3.7B（+4%、マージン11.3%）、フリーキャッシュフロー EUR 1.8B（+EUR 160M）、純利益 EUR 1.9B、ROCE 19.4%（+60bps）、ネット負債 EUR 4.3B（ギアリング比率46%）。配当 EUR 2.50/株（+EUR 0.25）。",
+      "evidence": "Sales were up in 2013 by 2% to EUR 33.3 billion... adjusted EBIT was up by 4% to EUR 3.7 billion... ROCE up by 60 basis points to 19.4%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2013_annual"]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Continental FY2014 実績: 売上 EUR 34.5B（+4%）、調整後 EBIT EUR 3.9B（+4%、マージン11.3%）、フリーキャッシュフロー EUR 2.0B（過去最高、+11%）、純利益 EUR 2.4B（+24%）、ROCE 20.0%（+60bps）、ネット負債 EUR 2.8B（ギアリング比率26%）。配当 EUR 3.25/株（+30%）。",
+      "evidence": "Sales were up by 4% to EUR 34.5 billion... adjusted EBIT was up by 4% to EUR 3.9 billion with a margin at 11.3%... free cash flow amounted to EUR 2 billion, up 11%, all-time record... ROCE was up by another 60 basis points to now our target rate of 20%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Continental は2015年1月30日に Veyance Technologies（ゴム・プラスチック製品）を EUR 14億で買収完了。ContiTech の非自動車向け事業比率が44%→56%に改善。北米売上シェアが8%→21%に拡大。",
+      "evidence": "We finally closed the Veyance acquisition on January 30, 2015... the sales split of Continental by regions will improve from 8% to 21% in North America.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "CON",
+    "claim_count": 8,
+    "scored_count": 3,
+    "target_claim_ids": [6, 7, 8],
+    "batch_index": 1,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 3
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": ["analyst/Competitive_Advantage/analyst_YK/dogma.md"]
+  }
+}

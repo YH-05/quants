@@ -1,0 +1,436 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_id": "IAG_001",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGは豪州・NZ市場において、アンダーライティング規律の徹底（underwriting discipline）を一貫して維持することで、underlying marginを2009年以来2倍以上に改善する能力を蓄積している。",
+      "descriptive_label": "アンダーライティング規律による長期的マージン改善能力（Process Power）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "アンダーライティング規律という「仕組み・能力」として評価可能。CEO発言が「規律の深化（improved underwriting disciplines now firmly embedded）」という能力の制度化を説明"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "アンダーライティング規律・クレームプラクティス改善という名詞属性"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "underlying margin 2倍以上（2009年比）という定量データあり。ただし業界平均比較やQBE/Allianz等の競合との比較が不足"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "アンダーライティング文化の組織的埋め込みは構造的要素（補完的ではなく中核的な能力）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "「規律の深化が組織全体に組み込まれた」という能力・プロセスの制度化を説明"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "QBE Insurance・Allianz Australia等の純粋競合との直接比較データが提示されていない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合との差別化根拠不足（ルール7-T）"
+        }
+      ],
+      "overall_reasoning": "アンダーライティング規律という能力の制度化は評価可能だが、純粋競合（QBE、Allianz Australia）との直接比較なし。underlying margin 2倍という内部改善データは存在するが業界比較がない。FY2014年次発言（主・①相当）。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 2,
+      "claim_id": "IAG_002",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGはオーストラリア・NZにおける強固な直販（Direct）・仲介（Intermediated）の二重チャネル構造と高い顧客維持率を持つ市場支配的なフランチャイズを保有しており、これがスイッチングコストの基盤となっている。",
+      "descriptive_label": "二重チャネル構造と高顧客維持率による市場支配的フランチャイズ（Switching Costs）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「フランチャイズの強さ」「顧客維持率の高さ」は名詞属性として能力を表現"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "フランチャイズ・顧客維持率・直販+仲介チャネルという名詞属性"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "直販・仲介の複合チャネル構造は構造的要素"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "NRMA Insurance（IAGブランド）・Allianz Australia等との顧客維持率の具体的比較データなし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「高い顧客維持率」「強いフランチャイズ」は大手保険会社が共通して主張する傾向あり"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "純粋競合との具体的比較（維持率%、更新率%等）が提示されていない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_B_t",
+          "adjustment": -0.1,
+          "reasoning": "大手保険会社が共通して主張する傾向がある"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合差別化データなし"
+        }
+      ],
+      "overall_reasoning": "フランチャイズの強さ・高顧客維持率という概念は存在するが、QBE/Allianz等の純粋競合との具体的な維持率比較がなく差別化が不明確。FY2015年次発言（主・①相当）だが主張の具体性が不足。Phase 1評価の0.5から-0.2調整後では30%になるが、フランチャイズという構造的資産の実在性を考慮して50%に留める。"
+    },
+    {
+      "id": 3,
+      "claim_id": "IAG_003",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGはWesfarmers保険事業の統合において、当初目標NZD 35百万を上回るシナジー（$230百万/年のラン・レート）を達成する実行能力を持っており、これはM&A統合能力という構造的プロセス・パワーである。",
+      "descriptive_label": "M&A統合シナジー超過達成による統合プレイブック能力（Process Power）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "AMI・Kurnia・Wesfarmers統合での目標超過シナジーは統合実行能力の証拠として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "AMI NZD 35M超過、Kurnia MYR 53M/目標50M超過という具体的な定量データ"
+        },
+        {
+          "rule_id": "rule_10_t",
+          "result": false,
+          "reasoning": "すべてポジティブ実績の提示。断念事例や見送り例がなく規律の片面のみ"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": false,
+          "reasoning": "豪州損保業界のM&A機会構造（フラグメント度等）との合致説明が不十分"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "複数の統合でシナジー超過という実績は統合プレイブック能力の証"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "シナジー「目標超過」は結果だが、それを可能にする統合能力（暗黙知・保険業固有のプロセス）が主張の核心"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "複数のM&A（AMI・Kurnia・Wesfarmers）で定量的に目標超過シナジーを実現する統合実行能力は高評価に値する。ただし断念事例（ルール10）がなく、業界構造との合致（ルール11）説明が不足。FY2014年次発言（主・①相当）。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 4,
+      "claim_id": "IAG_004",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGはBerkshire Hathawayとの戦略的パートナーシップ（20%クオータシェア）により、資本効率の高い保険引受モデルを構築し、競合が容易に獲得できない希少なパートナー関係による資本構造上の優位性を持つ。",
+      "descriptive_label": "Berkshire Hathaway 20%クオータシェア提携による資本効率優位（Cornered Resource）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "Berkshire提携は戦略的意思決定（戦略）。クオータシェアによる資本効率改善は結果。提携を可能にした能力（信頼関係の構築、保険引受実績の蓄積）への説明が不十分"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "Berkshire提携そのものは戦略（意思決定）。それを支える構造的な力への説明がない"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "Berkshire・IAG固有の提携関係は一種の希少資源として構造的要素"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "競合保険会社も大規模再保険会社と提携可能であり、相対的差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略（Berkshire提携）を優位性として提示"
+        },
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "大手保険会社は多くが大規模再保険会社と提携可能であり業界共通の施策の可能性"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_t",
+          "adjustment": -0.1,
+          "reasoning": "戦略と優位性の混同"
+        },
+        {
+          "source": "pattern_B_t",
+          "adjustment": -0.1,
+          "reasoning": "相対的差別化根拠が弱い"
+        }
+      ],
+      "overall_reasoning": "Berkshire Hathawayという世界最高格付けのパートナーとの提携は一定の優位性はあるが、それ自体は戦略的意思決定（ルール8-T）。提携を可能にした能力の説明がなく、他大手保険会社も類似の再保険提携が可能。Phase 1評価の0.3を維持。"
+    },
+    {
+      "id": 5,
+      "claim_id": "IAG_005",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGのニュージーランド事業はカンタベリー地震（2011年）後の保険金請求処理において、2015年6月末時点で78%の請求を解決する実行力を示しており、これは高リスク事象への対応能力という差別化された組織能力である。",
+      "descriptive_label": "大規模自然災害後の保険金請求処理実行能力（Process Power）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "78%解決という「進捗実績」が主体。それを可能にした能力（請求管理システム、EQCとの協働体制）の具体的説明が不足"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "78%（前年58%から+20%ポイント）という定量的進捗データ"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "NZの競合保険会社との請求解決率比較なし"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": false,
+          "reasoning": "NZ損保市場における自然災害リスクという業界構造との合致説明が不十分"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "78%解決率という結果実績を能力として提示"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "NZ競合との比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "結果を能力として提示"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "競合比較なし"
+        }
+      ],
+      "overall_reasoning": "地震後の請求処理進捗率という実績データは存在するが、それが組織能力の証拠として機能するには競合比較が必要。FY2015年次発言（主・①相当）だが能力ではなく結果の提示が中心。Phase 1評価の0.3を維持。"
+    },
+    {
+      "id": 6,
+      "claim_id": "IAG_006",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGはアジア（タイ・マレーシア・インド・ベトナム・インドネシア・中国）6市場への段階的参入戦略を通じて、低保険普及率・中流層拡大という構造的成長市場への長期プラットフォームを構築している。",
+      "descriptive_label": "アジア6市場先行参入による低普及率市場長期プラットフォーム（Scale Economies）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "アジア参入は戦略（意思決定）。そこから優位性（保険ライセンス蓄積、現地パートナー関係）を抽出しても競合に対する差別化根拠が弱い"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "低保険普及率・中流層拡大という業界構造への言及はあるが、IAGが競合より有利なポジションを持つ根拠が不明"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Allianz・AIA・QBEもアジア展開を行っており、IAGの相対的優位性が不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "アジア参入戦略を優位性として提示（戦略≠優位性）"
+        },
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "多くのグローバル保険会社がアジア展開を行っており業界共通の施策"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_t",
+          "adjustment": -0.1,
+          "reasoning": "戦略と優位性の混同"
+        },
+        {
+          "source": "pattern_B_t",
+          "adjustment": -0.1,
+          "reasoning": "業界共通の施策"
+        }
+      ],
+      "overall_reasoning": "低保険普及率・中流層成長という業界構造への言及は存在するが、IAGのポジションがAllianz/AIA/QBE等の競合より優れている具体的根拠がない。アジア参入は戦略であり優位性ではない（ルール8-T）。Q1-Q3含む複数期からの「発見」的要素があり慎重評価（ルール12-T）。Phase 1評価の0.3を維持。"
+    },
+    {
+      "id": 7,
+      "claim_id": "IAG_007",
+      "claim_type": "cagr_connection",
+      "claim": "Wesfarmers統合シナジー（$230M/年ラン・レート） → コスト削減・マージン改善 → 売上CAGR支持",
+      "descriptive_label": "Wesfarmers統合$230Mシナジー→マージン改善のCAGR接続",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "統合シナジーの定量目標と進捗が開示されており、マージン改善への因果チェーンが短い"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "統合シナジーは構造的要素（買収完了による持続的コスト削減）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "シナジー→マージン改善は2ステップで検証可能だが、売上CAGRへの接続は間接的（シナジーはコスト削減主体でトップライン成長への接続が弱い）"
+        },
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "因果チェーンは2-3ステップで許容範囲内"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "$80M/年達成（2015年末）→$230M/年見込み（2016年末）という開示データで検証可能なシナジー進捗。コスト削減→マージン改善の接続は2ステップで短い。ただし売上成長への接続はコスト削減主体のためトップライン成長との因果が弱い。FY2015年次（主・①相当）。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 8,
+      "claim_id": "IAG_008",
+      "claim_type": "factual_claim",
+      "claim": "IAGのFY2014 underlying marginは14%台（FY2013比改善）であり、FY2015のunderlying marginは13.1%（Wesfarmers下方影響考慮後でも長期ROEターゲット15%超）。",
+      "descriptive_label": "FY2014 underlying margin 14%台・FY2015 13.1%（Wesfarmers影響考慮後）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO発言による明確な財務数値（13.1%、ROEターゲット15%超）で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "factual_claimとして財務数値の正確性を評価。FY2015年次（主・①相当）CEOがunderlying margin 13.1%とWesfarmers影響を明確に説明。Wesfarmers低マージン事業の統合影響を考慮した上での説明であり、因果関係の開示あり。確信度: 70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "50-60": 4,
+      "30-40": 3,
+      "70-80": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

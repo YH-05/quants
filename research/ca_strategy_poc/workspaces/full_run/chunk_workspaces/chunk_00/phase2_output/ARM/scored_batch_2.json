@@ -1,0 +1,47 @@
+{
+  "ticker": "ARM",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["ARM-011", "ARM-012", "ARM-013"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "ARM-011",
+      "claim_type": "factual_claim",
+      "claim": "ARMベースMCU年55%成長（Q3 2014）、MCU市場シェア20%超",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q3 2014 CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。ARM-003（IoT/MCU展開能力）の支持事実",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付け充分。ARM-003（70%）の支持事実。55% YoYという高成長率が明確な定量的差別化。Q3発言。0.6"
+    },
+    {
+      "id": "ARM-012",
+      "claim_type": "factual_claim",
+      "claim": "ARMv8チップは2015年Q1時点で総出荷の3.5%（130百万チップ）、2015年下半期に50%達成見込み",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2015 CFO発言による定量的開示。将来見込みも具体的"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。ARM-004（v8移行による単価向上）の支持事実。将来見込みは不確実性あり",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。ARM-004（50%）の支持事実。Q1発言。将来見込みを含むため0.5"
+    },
+    {
+      "id": "ARM-013",
+      "claim_type": "factual_claim",
+      "claim": "エンタープライズインフラ市場シェア: 2012年2.5% → 2013年5% → 2014年Q3で35% YoY成長",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 FY2013/Q3 2014 CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。ARM-005（エンタープライズ展開能力）の支持事実。ただし低シェア（5%）からの高成長率",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。ARM-005（50%）の支持事実。市場シェアが低い起点からの成長率であることに注意。Q4発言。0.5"
+    }
+  ]
+}

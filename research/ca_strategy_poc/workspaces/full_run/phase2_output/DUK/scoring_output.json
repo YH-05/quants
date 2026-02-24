@@ -1,0 +1,364 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Progress Energy/Piedmont合併後の統合的コスト削減能力（2014年末までに目標削減額の40%超達成）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "合併統合コスト削減は一時的な能力であり、合併完了後は消滅する。持続的競争優位性としての評価は困難"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "40%超達成という定量データあり。ただし合併後の一時的改善"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "合併統合は戦略（意思決定）であり、統合後に消滅する優位性。Rule 8-T（戦略≠優位性）への抵触"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "合併統合成果（結果）を優位性として提示するパターン。-10%"
+        },
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略（合併）を優位性と混同するパターン。-10%"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "regulated_utility_constraint",
+          "adjustment": -0.1,
+          "reasoning": "規制独占企業において競争優位性分析はそもそも限定的。規制によるコスト回収構造が優位性を無効化"
+        }
+      ],
+      "overall_reasoning": "規制電力会社では合併統合コスト削減は一時的で持続的優位性とは言えない。7 Powers分析が適用困難な業態。30%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "原子力発電所の高稼働率維持能力（93%以上の稼働率、業界最高水準）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "原子力運営ノウハウという能力として評価できる"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "93%稼働率（業界最高水準）という定量データあり"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "規制独占企業にとって高稼働率の競争的意義が不明確。発電コストは規制当局が決定するため"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "規制独占企業共通の優秀なオペレーション。競争的差別化としての意義は限定的"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "regulated_utility_constraint",
+          "adjustment": -0.1,
+          "reasoning": "規制環境下では高稼働率の競争的優位性は限定的。コストは規制料金に反映されるだけ"
+        }
+      ],
+      "overall_reasoning": "原子力高稼働率は技術的能力として評価できるが、規制独占環境では競争的意義が限定的。40%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "再生可能エネルギー商業部門における規模・ポートフォリオ構築能力（2.8GWの風力・太陽光資産管理）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "2.8GW保有は結果・ポジション。再生可能エネルギー開発・運営能力の説明が限定的"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "NextEra Energy（業界最大の再生可能エネルギー企業）と比べてDUKのポジションは相対的に弱い。競合との差別化が不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "2.8GWという規模（結果）を優位性として提示。能力説明不足"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "規模（結果）→優位性の誤帰属リスク"
+        }
+      ],
+      "overall_reasoning": "再生可能エネルギーポートフォリオは業界共通の拡大トレンドの中でのPositioning。NextEra等との相対的差別化が不明確。30%が妥当"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "料金引き上げなしで電力需要成長達成できる規制モデルの活用能力（Atlantic Coast Pipeline活用による規制ベース資産成長）",
+      "final_confidence": 0.2,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "規制ベース成長戦略は戦略の選択（Rule 8-T）。規制環境を活用することは多くの電力会社が行っている"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "規制電力会社共通の成長戦略。差別化根拠が乏しい"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "規制電力会社共通の戦略・業界共通パターン"
+        },
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略（規制資産活用）を優位性と混同"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_patterns_B_F",
+          "adjustment": -0.1,
+          "reasoning": "業界共通+戦略混同の二重リスク。20%に"
+        }
+      ],
+      "overall_reasoning": "規制ベース成長モデルは業界共通かつ戦略。真の競争優位性とは言えない。20%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年合併統合コスト削減: 目標$687M削減のうち40%超達成。2015-17年計画: CapEx $19B（規制電力8.2B、ガス配送1B、商業再生可能0.9B、送電2B）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFOの定量的開示データ。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "再生可能エネルギー + ACP + 規制ベース資産成長 → EPS 4-6% CAGR（2015-17年）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "EPS 4-6% CAGR目標はあるが、競争優位性→CAGR接続のメカニズムが不明確。規制環境下では優位性→EPS接続の因果が弱い"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来。CFOのガイダンス"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "因果飛躍パターン。規制ベース資産→EPS成長の因果が示されていない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_C",
+          "adjustment": -0.1,
+          "reasoning": "規制環境下での競争優位性→CAGR接続の因果が弱い"
+        }
+      ],
+      "overall_reasoning": "規制電力会社のEPS成長は規制当局の決定に依存するため、競争優位性とCAGR接続の因果が弱い。30%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "マルチ州規制対応能力（Indiana, South Carolina等の規制当局との関係管理・料金承認取得能力）",
+      "final_confidence": 0.2,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "規制当局との関係管理は規制電力会社共通の基本能力。差別化根拠がない"
+        },
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「料金承認取得」は結果。当局との関係管理は仕組みとして評価できるが、業界共通"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "規制電力会社共通の能力。差別化なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界共通能力。競争的差別化不成立"
+        }
+      ],
+      "overall_reasoning": "マルチ州規制対応は規制電力会社共通の基本能力。競争的優位性として評価不可。20%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "原子力稼働率: 93%（2014年実績）。フロリダ核融合廃止による$700M減損。2015-17年: 核融合関連支出なし",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFOの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "商業再生可能エネルギー: 2.8GW（風力1.5GW + 太陽光1.3GW）、国内第7位。2015-17年 CapEx $900M（再生可能エネルギー向け）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "定量的開示データ。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2015-17年計画: EPS成長4-6%/年目標、配当維持、料金引き上げ不要。Atlantic Coast Pipeline: 2018年完成予定、$4.7B投資",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO/CEOによるガイダンス開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張・ガイダンスとして信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "30-40": 3,
+      "40-50": 1,
+      "20-30": 2,
+      "70-80": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

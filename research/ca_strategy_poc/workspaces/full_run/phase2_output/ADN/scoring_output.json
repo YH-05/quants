@@ -1,0 +1,180 @@
+{
+  "scored_claims": [
+    {
+      "id": "ADN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "EM・アジア・グローバル株式における底流研究基盤を持つ独自の長期運用スタイル（スタイルドリフトを行わない一貫性）",
+      "descriptive_label": "新興市場特化の運用スタイル一貫性",
+      "kb1_t_evaluation": {
+        "gatekeeper_rule3": "FAILED - グローバル大手資産運用会社（Ashmore, Schroders, BlackRock等）は同様のEM特化スタイルを標榜しており、相対的優位性が不明",
+        "rule_1_t": "PASS - スタイルドリフトを意識的に回避する規律は仕組みとして評価できる",
+        "rule_4_t": "FAIL - 純粋競合との対比データ（スタイルドリフト発生率、運用実績比較）がない",
+        "rule_7_t": "FAIL - Ashmore/Schroders等純粋競合に対して何が異なるか不明"
+      },
+      "kb2_t_pattern": "pattern_D_t（定性的のみ・測定不能）、pattern_B_t（業界共通能力）",
+      "kb3_t_calibration": "COST#2類似（定性的主張で定量裏付けなし → 低スコア）。ADNは新興市場特化という絞り込みがあるため完全却下ではないが30%が上限",
+      "dogma_evaluation": "Dogma Rule 2（能力は名詞で表現）: スタイル一貫性は能力として認識可能。Dogma Rule 3（相対的優位性）: 大手EM特化ファンドも同様の標榜 → 低評価。H1発言からの抽出でRule 12違反も加点なし",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 3（相対優位）とRule 7（純粋競合差別化）の両違反。KB2-T pattern_D_t（定性的）に該当。dogma.md Rule 3によりEM特化の相対優位性が確認できないため上限30%。H1発言のため-10%調整済み"
+    },
+    {
+      "id": "ADN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIPとの統合を通じた多資産クラス（固定収益・ソリューション・不動産）への拡大によるビジネス多様化能力",
+      "descriptive_label": "M&A統合プレイブックと多様化能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - M&A統合（戦略・行動）ではなく、統合を成功させる能力（プレイブック）が問われる。コストシナジー達成は結果",
+        "rule_4_t": "PASS - 55%増分マージン（目標1年前倒し）という定量値あり",
+        "rule_8_t": "FAIL - SWIP統合は戦略的意思決定であり、優位性そのものではない"
+      },
+      "kb2_t_pattern": "pattern_F_t（戦略と優位性の混同）、pattern_A_t（結果を原因とする）",
+      "kb3_t_calibration": "CHD#4類似（M&A実績を優位性とする → 30%）。ただしADNは55%という数値があり若干評価を支持。CHD#1（買収選定能力70%）と比較するとプロセス説明が不足",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: シナジー達成は結果。Rule 6（構造vs補完）: SWIP統合は補完的。Q4発言は評価されるが能力メカニズムの開示なし",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1と8の違反。KB2-T pattern_F_t（戦略と優位性の混同）に該当。dogma.md Rule 1（能力vs結果）違反。55%マージンは定量的だが結果の開示。30%が適切"
+    },
+    {
+      "id": "ADN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "26カ国のローカルプレゼンスによるグローバル分配ネットワーク",
+      "descriptive_label": "グローバル多地域分配チャネル",
+      "kb1_t_evaluation": {
+        "gatekeeper_rule3": "FAILED - BlackRock・Schroders・Amundiは30-50カ国以上のプレゼンスを持つ。26カ国は業界共通以下",
+        "rule_1_t": "FAIL - 26カ国プレゼンス（結果の数値）を能力として提示",
+        "rule_7_t": "FAIL - 純粋競合より少ない国数のプレゼンスで差別化根拠なし"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通能力）、pattern_A_t（結果を優位性とする）",
+      "kb3_t_calibration": "LLY#6類似（グローバルネットワーク=業界共通 → 30%）。ADNは地理的カバレッジが純粋競合より少なく、更に低評価が適当",
+      "dogma_evaluation": "Dogma Rule 3（相対的優位性）の明確な違反。H1発言からの抽出もある。却下基準2（業界共通能力）に該当",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 3（相対優位）の明確違反。KB2-T pattern_B_t（業界共通）に該当。dogma.md却下基準2（業界共通能力）に対応。30%が上限（10%も検討したが完全却下基準には該当せず）"
+    },
+    {
+      "id": "ADN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "10年間の連続増配実績と強力なキャッシュコンバージョン（経営の財務規律）",
+      "descriptive_label": "財務規律・安定した配当成長",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 10年連続増配は財務規律の結果。配当成長を可能にする仕組み（収益構造、キャッシュ変換能力）の説明なし",
+        "rule_4_t": "PASS - GBP 650M純現金・GBP 500M FCFという具体的定量値あり"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）",
+      "kb3_t_calibration": "MNST#1（高市場シェア=結果 → 50%）と類似。ADNの場合は配当成長という結果で能力のメカニズム説明がさらに薄い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: 10年増配は財務アウトカム。Rule 4（定量的裏付け）: 数値は豊富だが全て結果指標。Q4年次発言は評価されるが能力説明の欠如が致命的",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1の違反（結果の優位性への誤帰属）。KB2-T pattern_A_t（結果を原因とする）。dogma.md Rule 1違反。定量値は豊富だが全て結果指標のため30%"
+    },
+    {
+      "id": "ADN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "年金・保険・ウェルス・ソブリンウェルスクライアントの多様な機関投資家基盤とトラックレコード",
+      "descriptive_label": "機関投資家向けロングオンリー運用の信頼基盤",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 機関投資家基盤（顧客構成=結果）を優位性として提示",
+        "rule_4_t": "FAIL - 「グローバル優先パートナープログラム」の数・質の定量的裏付けなし",
+        "rule_6_t": "FAIL - 機関投資家クライアントの多様性は補完的要素であり構造的優位ではない"
+      },
+      "kb2_t_pattern": "pattern_D_t（定性的のみ）、pattern_B_t（業界共通=機関投資家向け大手AMは全社同様の基盤を持つ）",
+      "kb3_t_calibration": "COST#5（国際展開における現地適応 → 20%）と類似した「地理的・顧客的多様性」の主張。ADNはさらに証拠が薄い",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: トラックレコードは結果。Rule 4（定量的裏付け）: 皆無。H1発言から。却下基準1と2の複合",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・4・6の3重違反。KB2-T pattern_D_t（定性的のみ）と pattern_B_t（業界共通）の複合。dogma.md Rule 1・4違反。H1発言からの抽出も不利。30%が上限（即却下ほどではない）"
+    },
+    {
+      "id": "ADN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "SWIP統合から生まれた固定収益・ソリューション・不動産における専門能力の拡充（特にLloydsとの戦略的関係）",
+      "descriptive_label": "Lloyds戦略的パートナーシップとマルチアセット能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - Lloydsとの戦略的関係は顧客関係の結果。能力のメカニズム（Switching Costs、独占性）の証拠が薄い",
+        "rule_6_t": "FAIL - Lloyds関係はSWIP統合から派生した補完的優位。構造的優位ではない",
+        "rule_8_t": "FAIL - M&A由来のパートナーシップは戦略的行動の結果"
+      },
+      "kb2_t_pattern": "pattern_F_t（戦略と優位性の混同）",
+      "kb3_t_calibration": "COST#4（配送内製化 → 50%）と類似。Lloydsとの関係は特定大型顧客への依存であり、優位性としては中程度。Q4発言は評価",
+      "dogma_evaluation": "Dogma Rule 6（構造的vs補完的）: Lloyds関係は補完的。Rule 8（戦略≠優位性）: SWIP統合は戦略的決定。一定のSwitching Costs（Lloyds側のプロバイダー変更コスト）は認識できる",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 6と8の違反。しかしLloydsという特定大型顧客との長期契約はSwitching Costs要素を含む。Q4発言は評価。ただし補完的優位のため40%（30%より上だが50%未満）"
+    },
+    {
+      "id": "ADN-007",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場回帰とスタイル維持 → 流出抑制・流入再開 → AuM成長 → 経常収益CAGR接続",
+      "descriptive_label": "EM投資スタイル維持→AuM回復経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "FAIL - 3段階以上の因果チェーン（スタイル維持→EM回帰→流出抑制→AuM成長）で各段階の確度が低い。EM回帰は外部要因（マクロ）依存",
+        "rule_12_t": "FAIL - H1四半期発言から"
+      },
+      "kb2_t_pattern": "pattern_C_t（因果関係の飛躍）",
+      "kb3_t_calibration": "COST#1のCAGR接続（退職率→レバレッジ+0.25% → 20%）と類似した過度な因果チェーン。ADNはEM回帰という外部変数への依存がさらに問題",
+      "dogma_evaluation": "Dogma Rule 5（CAGR接続の直接性）: 3段階以上の間接接続。Rule 5の低評価パターン「TAM/シェアの中間ステップ欠如」に該当",
+      "final_confidence": 0.2,
+      "scoring_rationale": "KB1-T Rule 5（直接因果）の明確違反。KB2-T pattern_C_t（因果飛躍）。dogma.md Rule 5の低評価パターン該当。H1発言起源で外部変数依存。20%"
+    },
+    {
+      "id": "ADN-008",
+      "claim_type": "cagr_connection",
+      "claim": "SWIP統合による多資産化 → 収益源多様化 → 低EM依存度 → 収益安定性CAGR接続",
+      "descriptive_label": "多資産化→収益安定性経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2段階の直接因果（多資産化→EM依存低下）は検証可能",
+        "rule_12_t": "PASS - Q4発言由来"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続メカニズム）に近いが定量的検証が必要",
+      "kb3_t_calibration": "CHD multi-product approach類似。収益源多様化の効果は実際に進行中（固定収益・不動産拡大）だが、EM株式主導の現状と乖離",
+      "dogma_evaluation": "Dogma Rule 5（CAGR接続の直接性）: 多資産化→収益安定性は2ステップで合理的。Q4発言。しかし全体AuMはEM株式主導であり多様化の実効は限定的",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 5（2段階因果）・Rule 12（Q4発言）ともPASS。dogma.md Rule 5の「過去実績との整合性」に沿う面あり。ただし多様化の実効性に疑問。40%"
+    },
+    {
+      "id": "ADN-009",
+      "claim_type": "factual_claim",
+      "claim": "SWIP統合の増分マージンは55%（目標を1年前倒しで達成）、H1 2015時点では60%",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2014 CFO発言による定量的開示（55%）およびH1 2015 CEO発言（60%）で裏付けあり"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張としては検証可能。競争優位性評価への貢献度は中程度（M&Aコストシナジーは業界一般的）",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付け充分。競争優位性主張ADN-002を支持するが、その主張自体の評価は30%。事実主張としては0.5"
+    },
+    {
+      "id": "ADN-010",
+      "claim_type": "factual_claim",
+      "claim": "10年間の連続増配、過去5年で25%の配当CAGR、年度末純現金GBP 650百万",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2014 CEO/CFO発言による定量的開示で検証可能"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的裏付け）として事実面は評価",
+      "dogma_evaluation": "事実主張として検証可能。配当成長は財務的規律の証拠だが、競争優位性ではなく財務アウトカム",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付け充分。ADN-004（財務規律主張）を支持するが、競争優位性評価への貢献は限定的。事実主張としては0.5"
+    },
+    {
+      "id": "ADN-011",
+      "claim_type": "competitive_advantage",
+      "claim": "98-99%が経常収益（パフォーマンスフィーに依存しない安定収益構造）",
+      "descriptive_label": "高経常収益比率による収益安定性",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 98-99%経常収益比率は収益構造の結果。その収益構造を維持する能力（長期顧客関係、解約困難性）の説明なし",
+        "rule_4_t": "PASS - 98-99%という明確な定量値あり。競合比較はないが具体的",
+        "rule_7_t": "FAIL - ロングオンリー資産運用会社全般がパフォーマンスフィー依存度が低い（Schroders、M&G等も同様）"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）、pattern_B_t（業界共通）",
+      "kb3_t_calibration": "MNST#1（高市場シェア=結果 → 50%）と類似。ADNの場合は収益構造の安定性という結果。ただし98-99%という特に高い数値は注目に値する",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: 経常収益比率は収益モデルのアウトカム。Rule 3（相対的優位性）: ロングオンリーAM全般の特性として業界共通。Q4発言は評価されるが能力説明の欠如",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・7の違反。KB2-T pattern_A_t（結果を原因）と pattern_B_t（業界共通）の複合該当。dogma.md Rule 1・3違反。98-99%という定量値は評価するが、それは結果指標。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 11,
+    "confidence_distribution": {
+      "30-40": 6,
+      "40-50": 2,
+      "20-30": 1,
+      "50-60": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

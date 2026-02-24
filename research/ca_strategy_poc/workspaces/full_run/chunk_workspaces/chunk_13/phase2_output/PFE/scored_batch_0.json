@@ -1,0 +1,117 @@
+{
+  "ticker": "PFE",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PFE-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "Pfizerは2011年以来16の承認（うち10が新分子実体）を取得し、後期開発・承認申請段階に29プログラムを含む86の臨床開発プログラムを保有。Ibrance（palbociclib）はCDK 4/6阻害剤プラットフォームとして複数のがん適応症展開が可能",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "86プログラム・29後期段階という定量値と、CDK 4/6プラットフォームの複数適応症展開可能性は強力な証拠",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "知的財産・パイプラインはCornered Resourceの典型（KB2パターンIV）。86プログラム・29後期/承認申請という定量値で規模が明確。CDK 4/6プラットフォームの複数がん種展開は優位性の広がりを示す。ただしメガファーマの大型パイプラインは業界標準的（KB2パターンB要注意）だが、10/16 NMEという比率は競合を上回る。70%。"
+    },
+    {
+      "claim_id": "PFE-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "PfizerはMerck KGaAとの免疫腫瘍（IO）提携を通じてavelumab（抗PD-L1）を含む総合的なIOプラットフォームを構築。2015年に最大20試験を共同実施し、単剤・組み合わせ療法で複数のがん種への最初の3社以内の参入を目指す",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule08_strategy_not_advantage"],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "IO提携は戦略的ポジショニングだが、BMS、MSD等も同様のプラットフォームを構築中",
+          "delta": -0.2
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "IO提携は戦略（意思決定）であり優位性ではない（KB2パターンF：戦略混同、dogma.mdルール8）。avelumab単独では承認前であり Cornered Resourceとして未確立。BMS/MSD等が先行しており「最初の3社以内」という目標は現時点で未達。30%に引き下げ。"
+    },
+    {
+      "claim_id": "PFE-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Pfizerは4年間で営業費から約$55億を削減し、LipitorのLOEや複数高利益率製品の特許切れにもかかわらず営業利益率を維持。株主還元は4年間で$640億超、2015年$130億を見込む",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "4年間$55億のコスト削減と利益率維持は規模の経済による運営効率化の証拠。LOEへの対応能力として評価",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "4年間$55億コスト削減という定量実績は運営能力の証拠（KB2パターンIII）。LOE（特許切れ）という逆風下での利益率維持はProcess Powerの側面も持つ。ただし大手製薬のコスト削減は業界共通の対応（KB2パターンB要注意）で50%。"
+    },
+    {
+      "claim_id": "PFE-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "PfizerのEliquis（経口抗凝固薬）は循環器専門医の新処方シェアで首位に向かい、Xeljanzはリウマチ専門医の新処方シェアで3位、Prevnar 13成人用ワクチンはCDC接種推奨後に普及が加速",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "処方シェア順位は結果の側面がある。特許保護期間に依存し持続性に限界あり",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "3製品の処方シェア順位は定量的競合比較（KB2パターンV部分合致）だが、市場シェアは「結果」の側面もある（KB2パターンA部分合致）。医薬品市場シェアは特許保護に依存（一時的）。Brandingとして評価するには「なぜ処方されるか」の能力説明が不足。50%。"
+    },
+    {
+      "claim_id": "PFE-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "Pfizerはバイオシミラーポートフォリオ（Herceptin、Rituxan、Remicade、Avastin、Humiraのバイオシミラー）を構築し、従来の製薬会社がオリジネーター保護に固執する中でバイオシミラーリーダーを目指す両刀戦略",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule08_strategy_not_advantage"],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "バイオシミラー参入は戦略的選択であり、まだ収益化前。製造能力はあるが規模の優位性はこれから",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "バイオシミラーへの参入は戦略（意思決定）であり優位性ではない（KB2パターンF、dogma.mdルール8）。Counter-Positioningとして成立するには競合が模倣できない構造的な理由が必要だが、Sandoz（Novartis子会社）等も同様の戦略を持つ。現時点で収益化前のため30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 2, "50-60": 3, "70-80": 1},
+    "gatekeeper_applied": false
+  }
+}

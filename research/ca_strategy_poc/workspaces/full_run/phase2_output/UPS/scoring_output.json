@@ -1,0 +1,184 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "UPS-001",
+      "id": "UPS-001",
+      "power_type": "Scale Economies",
+      "confidence_raw": 0.7,
+      "final_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [],
+      "kb2_patterns_matched": [
+        "pattern_I_quantitative_differentiation",
+        "pattern_IV_structural_market_position"
+      ],
+      "dogma_adjustments": [
+        "Rule 4: Highly quantified - 17M packages/day, 34M peak day, 9.4M customers, 10 hyper-computing platforms, 27M instructions/second.",
+        "Rule 11: Industry structure fit - logistics networks are a classic Scale Economies business where fixed infrastructure costs create massive barriers to replication.",
+        "Rule 3: Relative advantage vs FedEx is not directly stated, but UPS and FedEx are the only two companies globally with this infrastructure scale."
+      ],
+      "scoring_rationale": "Scale Economies in logistics networks is one of the clearest examples of this power type. The quantification is exceptional (17M packages/day, 9.4M customers). Pattern I (quantitative differentiation) and Pattern IV (structural market position) both apply positively. The ability to achieve 34M deliveries on peak day requires decades of infrastructure investment. No new entrant or regional player can replicate this. Score maintained at 0.7. The caveat is that FedEx has comparable scale, so the advantage is duopoly-level, not monopoly-level.",
+      "cagr_connection": "Strong: e-commerce growth provides secular volume growth in the UPS network. Fixed infrastructure costs mean incremental volume flows primarily to operating income.",
+      "cagr_confidence": 0.7
+    },
+    {
+      "claim_id": "UPS-002",
+      "id": "UPS-002",
+      "power_type": "Process Power",
+      "confidence_raw": 0.7,
+      "final_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [],
+      "kb2_patterns_matched": [
+        "pattern_III_capability_over_result",
+        "pattern_I_quantitative_differentiation"
+      ],
+      "dogma_adjustments": [
+        "Rule 1: ORION is described as a capability (decade-long development, custom algorithms, telematics integration) not a result. Correct classification.",
+        "Rule 4: '$50M savings per 1-mile reduction per driver per year' provides direct economic quantification of the capability value.",
+        "Rule 10: 'Results exceeding expectations' and 45% deployment by end 2014 confirms the capability is delivering beyond projections."
+      ],
+      "scoring_rationale": "ORION is a textbook Process Power case: a decade-long proprietary technology development effort that embeds non-replicable optimization knowledge into the logistics operation. Pattern III (capability over result) and Pattern I (quantitative differentiation - $50M per mile reduction) both apply. The 10-year development history creates a time barrier: competitors cannot quickly replicate by hiring engineers. The $50M quantification is independently verifiable and creates a tangible economic moat. Score maintained at 0.7.",
+      "cagr_connection": "Moderate: ORION reduces cost per package, which improves unit economics on growing e-commerce volumes. The compounding nature of route optimization data (more deliveries → better data → better optimization) creates an improving moat over time.",
+      "cagr_confidence": 0.7
+    },
+    {
+      "claim_id": "UPS-003",
+      "id": "UPS-003",
+      "power_type": "Network Economies",
+      "confidence_raw": 0.5,
+      "final_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: network_effect_partial - My Choice creates value for consumers but direct network-effect loop (more users → more value per user) is weaker than pure network businesses."
+      ],
+      "kb2_patterns_matched": [
+        "pattern_C_causal_leap"
+      ],
+      "dogma_adjustments": [
+        "Rule 4: Quantified - 11.4M registered users, 100K new members/week, 15 countries.",
+        "Rule 1: The claim partially rests on a data flywheel interpretation (more deliveries → better data → better routing), which is a capability not fully demonstrated.",
+        "Rule 3: FedEx Delivery Manager is a direct comparable service - differentiation vs pure competitor is not established."
+      ],
+      "scoring_rationale": "Network economies in logistics are real but limited compared to pure digital networks. UPS My Choice's 11.4M users and 100K/week growth rate is impressive quantification, but the direct network effect (each additional user making the service more valuable for all other users) is weaker than B2B network effects. Pattern C (causal leap) partially applies to the data flywheel interpretation. FedEx Delivery Manager is a direct comparable. Score maintained at 0.5: real but moderate network dynamics.",
+      "cagr_connection": "Moderate: growing consumer preference data improves delivery precision and reduces redelivery costs, creating modest CAGR support.",
+      "cagr_confidence": 0.5
+    },
+    {
+      "claim_id": "UPS-004",
+      "id": "UPS-004",
+      "power_type": "Scale Economies",
+      "confidence_raw": 0.5,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: self_assertion_without_quantification - 'competitors will have a hard time offering customers this degree of collaboration and value' is direct self-assessment."
+      ],
+      "kb2_patterns_matched": [
+        "pattern_G_unclear_vs_pure_competitor",
+        "pattern_D_qualitative_only"
+      ],
+      "dogma_adjustments": [
+        "Rule 3: FedEx has a comparable integrated global network. The claim does not demonstrate how UPS's integrated model is superior to FedEx's.",
+        "Rule 4: No specific metrics on cross-border integration quality, lead time comparison, or customer satisfaction differentials vs FedEx.",
+        "Rule 7: Differentiation from pure competitor (FedEx) is unclear - both companies have built comparable global integrated networks."
+      ],
+      "scoring_rationale": "Pattern G (unclear vs pure competitor) and Pattern D (qualitative only) both apply. The integrated global network argument is structurally valid for Scale Economies, but FedEx has directly comparable capabilities. Management's self-assertion ('competitors will have a hard time') is not supported by specific differentiation evidence vs FedEx specifically. The healthcare/aerospace supply chain outsourcing examples in UPS-005 are a stronger piece of evidence for this theme but are placed in the Switching Costs claim. Adjusted down to 0.3 due to pure competitor equivalence problem.",
+      "cagr_connection": "Weak: if integration is not demonstrably superior to FedEx, the CAGR connection relies on volume growth shared with the duopoly rather than company-specific advantage.",
+      "cagr_confidence": 0.3
+    },
+    {
+      "claim_id": "UPS-005",
+      "id": "UPS-005",
+      "power_type": "Switching Costs",
+      "confidence_raw": 0.5,
+      "final_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [],
+      "kb2_patterns_matched": [
+        "pattern_IV_structural_market_position"
+      ],
+      "dogma_adjustments": [
+        "Rule 4: Quantified - 6.4M sq ft healthcare distribution, 36 field stocking locations, 80% of US hospital beds within 4 hours.",
+        "Rule 11: Industry structure fit - healthcare supply chain requires temperature control, compliance, and speed-to-patient characteristics that create genuine switching costs.",
+        "Note: Secondary call evidence (Q2 2014, Q4 2013) but the infrastructure facts are independently verifiable."
+      ],
+      "scoring_rationale": "The healthcare supply chain infrastructure (6.4M sq ft, 36 field stocking locations, 80% hospital bed coverage in 4 hours) creates genuine switching costs: replacing this infrastructure requires years of buildout, regulatory approvals, and customer relationship rebuilding. Pattern IV (structural market position) applies. The temperature-controlled and FDA-compliant nature of healthcare logistics creates compliance-based switching costs on top of operational ones. Score maintained at 0.5: the evidence is strong but comes from secondary calls (Rule 12 flag), and the competitive position vs FedEx Healthcare is not established.",
+      "cagr_connection": "Strong: healthcare supply chain is a secular growth market driven by aging demographics and increasing pharmaceutical complexity. UPS's specialized infrastructure creates CAGR support through market growth + switching cost retention.",
+      "cagr_confidence": 0.7
+    },
+    {
+      "claim_id": "UPS-006",
+      "id": "UPS-006",
+      "power_type": "Process Power",
+      "confidence_raw": 0.5,
+      "final_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: long_term_accumulation - 60-year data accumulation is acknowledged but requires assessment of actual uniqueness."
+      ],
+      "kb2_patterns_matched": [
+        "pattern_III_capability_over_result"
+      ],
+      "dogma_adjustments": [
+        "Rule 1: Correctly framed as a capability (prescriptive analytics built on 60-year data foundation) rather than a result.",
+        "Rule 4: The data history (60 years since 1954) and infrastructure specs (10 hyper-computing platforms, 27M instructions/second) are quantified.",
+        "Rule 3: Other large logistics operators (FedEx, DHL) also have decades of operational data. The relative differentiation vs pure competitors is unclear."
+      ],
+      "scoring_rationale": "Pattern III (capability over result) applies positively - George Smith's 1954 data vision and the subsequent 60-year accumulation is described as a capability development history, not a results claim. The shift from descriptive to prescriptive analytics is a genuine Process Power element. The uncertainty is whether FedEx, DHL, or Amazon logistics have achieved comparable analytics maturity. Score maintained at 0.5.",
+      "cagr_connection": "Moderate: better predictive analytics → better network optimization → cost efficiency on growing volume. The mechanism is credible but not directly quantified for CAGR impact.",
+      "cagr_confidence": 0.5
+    },
+    {
+      "claim_id": "UPS-007",
+      "id": "UPS-007",
+      "power_type": "Counter-Positioning",
+      "confidence_raw": 0.3,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: strategy_not_advantage - Dim weight pricing is a revenue management strategy, not a structural competitive advantage."
+      ],
+      "kb2_patterns_matched": [
+        "pattern_F_strategy_confusion"
+      ],
+      "dogma_adjustments": [
+        "Rule 8: Strategy vs advantage confusion. Dim weight pricing is an industry-wide practice that FedEx also adopted simultaneously. This is a pricing strategy decision, not a structural moat.",
+        "Rule 3: FedEx made the same pricing change, eliminating any counter-positioning advantage."
+      ],
+      "scoring_rationale": "Pattern F (strategy confusion) applies directly. Dim weight pricing expansion is a revenue management pricing policy that was adopted by both UPS and FedEx simultaneously in response to the same market dynamic (bulky, lightweight e-commerce packages). There is no counter-positioning here: competitors face zero dilemma because they adopted the same change. Score maintained at 0.3.",
+      "cagr_connection": "Weak: revenue per package improvement through dim weight pricing is a one-time yield improvement already implemented, not an ongoing CAGR driver.",
+      "cagr_confidence": 0.3
+    },
+    {
+      "claim_id": "UPS-008",
+      "id": "UPS-008",
+      "power_type": "Scale Economies",
+      "confidence_raw": 0.3,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: forward_looking_macro - Projections on TPP/TTIP trade agreements and 'Renaissance in trade' are speculative."
+      ],
+      "kb2_patterns_matched": [
+        "pattern_B_industry_common"
+      ],
+      "dogma_adjustments": [
+        "Rule 5: The CAGR connection here (global trade growth → UPS volume) benefits all global logistics companies equally. Pattern B (industry common benefit) applies.",
+        "Rule 4: Historical data (9.5% export daily volume gain Q4 2013, 5.5% Q2 2015) is quantified, but the growth is market-driven not company-specific."
+      ],
+      "scoring_rationale": "Pattern B (industry common) applies. International trade growth is a macroeconomic tailwind that benefits UPS, FedEx, DHL, Maersk, and all global logistics providers equally. There is no company-specific advantage claim here - just exposure to a growing market. The historical data is solid, but the forward-looking 'Renaissance in trade' language is speculative and dependent on trade policy outcomes. Score maintained at 0.3.",
+      "cagr_connection": "Weak: market-driven volume growth is a tailwind but not a company-specific CAGR driver. The macro sensitivity cuts both ways (trade wars reduce volume).",
+      "cagr_confidence": 0.3
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "70-80": 2,
+      "50-60": 3,
+      "30-40": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

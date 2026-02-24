@@ -1,0 +1,262 @@
+{
+  "ticker": "SWEDA",
+  "transcript_source": "Q4 2014 Annual Results (2015-02) + Q3 2015 Results (2015-10), Swedbank AB (publ)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4_2014_annual", "Q3_2015"],
+    "note": "201502 is Q4 2014 annual results (event date 2015-02-03), treated as Q4_annual (primary). 201510 is Q3 2015 results (event date 2015-10-20, covers Q3 period ending 2015-09-30), treated as Q3_quarterly (secondary, -10% adjustment). Rule 12-T applied accordingly."
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Swedbankのデジタルバンキングにおける圧倒的な顧客浸透率：スウェーデンで370万のインターネットバンク顧客・200万のモバイルバンク顧客を保有し、スウェーデン全体の200万Swishユーザーのうち40%がSwedbankまたは貯蓄銀行顧客。法人向けSwishでも接続10,000社中8,800社（88%）がSwedbankまたは貯蓄銀行顧客",
+      "descriptive_label": "デジタルバンキングの圧倒的顧客浸透率と決済エコシステム支配",
+      "evidence_from_transcript": "Q4 2014 (Michael Wolf): '3.7 million Internet Bank clients, 2 million Mobile Bank clients. In Sweden, there are 2 million users of Swish, where 40% of those clients are Swedbank or saving banks clients...Of the 10,000 corporate clients that have connected to Swish, 8,800 are Swedbank or saving banks customers.' Q3 2015 (Michael Wolf): 'penetration of digital services continues to increase from high levels...number of over-the-counter transactions at branch offices declines with 16% year-over-year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「デジタルバンキング顧客基盤・Swish決済ネットワーク支配」（名詞）は具体的な構造的資産。370万IB顧客・40%Swishシェアという数値で裏付けられた実体ある優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass_quantitative",
+            "reasoning": "370万IB顧客、200万MBクライアント、Swish 40%シェア、法人Swish 88%シェアという複数の定量データで優位性が確認可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "スウェーデン国内決済インフラ（Swish）での支配的ポジションは構造的優位。デジタル顧客の高満足度（90%）と対面取引削減（現金-18%、ATM-8%）により長期的なスイッチングコスト形成"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "スウェーデン国内4大銀行（SEB, Handelsbanken, Nordea）も同様のデジタル化を推進しており、絶対的優位性かは不明（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Swish決済での40%シェアは国民的インフラでの支配的ポジションを示す定量証拠（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "スウェーデン国内での370万IB顧客と決済インフラSwishでの40%シェアは、単なる「デジタル化推進」を超えた具体的な市場支配力の証拠。90%の顧客満足度が高いスイッチングコストを示唆。ただし競合（SEB, Nordea等）との定量比較がなく確信度は中程度。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "デジタルバンキング浸透率上昇 → 支店コスト削減・顧客接点増加・手数料収入増加 → グループCAGR",
+      "descriptive_label": "デジタル化→コスト効率化・収益増→グループCAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "3ステップ。デジタル化→支店コスト削減（現金取引-18%）+手数料収入→収益改善は直接的で理解しやすい"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "デジタル化による支店効率化と手数料増加の因果は合理的。「アドバイザー面談が4%増加」というデータも顧客エンゲージメント深化を示す"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Swedbankのバルティック銀行（エストニア・ラトビア・リトアニア）における長期フランチャイズ力：ロシア・ウクライナ地政学リスクや商品価格下落という逆風の中でも22四半期連続で低水準の貸倒損失（2014年: 3bp、Q3 2015: 4bp）を維持し、リトアニアのEU加入・Dankeバンクポートフォリオ取得でさらに市場支配力を強化",
+      "descriptive_label": "バルティック市場での長期フランチャイズ力と低リスクポートフォリオ",
+      "evidence_from_transcript": "Q4 2014 (Anders Karlsson): 'accumulated loan losses net in 2014 ended up with SEK 419 million, which is equivalent to 3 basis points loss level.' Q4 2014: 'Baltic Banking continued to show reversals.' Q3 2015 (Michael Wolf): 'I must once again lift my hat off for the Baltic Banking performance, very stable franchise, good client acquisition.' Q3 2015 (Anders Karlsson): 'the 22nd [quarter], with very low loan losses, ending at 4 basis points.' Q3 2015 (Goeran Bronner): 'acquisition of the Danske Bank's retail portfolio in Lithuania really solidifies our market leader position.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「バルティック銀行フランチャイズ・市場支配力」（名詞）は22四半期連続低損失という持続的実績で裏付けられた構造的優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass_quantitative",
+            "reasoning": "3bp（2014年）・4bp（Q3 2015）という低い貸倒損失率は定量的な資産品質優位性の証拠"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ロシア・ウクライナ地政学リスク・商品価格下落という厳しい外部環境にもかかわらず22四半期連続低損失は構造的優位性の証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "22四半期連続（5年超）の低損失という客観的実績は強力な証拠（+10%）",
+            "adjustment": 10
+          },
+          {
+            "reason": "バルティック市場での競合（SEB, Nordea）との相対的ポジション比較がない（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "22四半期連続低損失（3-4bp）という長期的パターンは、バルティック市場でのリスク管理能力と顧客関係の深さを示す。地政学リスク・商品価格下落という厳しい環境下での安定性はProcess Power（プロセス能力）の証拠。Dankeポートフォリオ取得でリトアニア市場支配力をさらに強化。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "バルティックフランチャイズ安定性 → 低貸倒損失+Dankeポートフォリオ取得による市場拡大 → グループCAGR",
+      "descriptive_label": "バルティック安定フランチャイズ→市場拡大→グループCAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。低損失維持+市場拡大→収益増はバルティックがグループ収益の重要な柱であることから直接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "バルティックの安定収益基盤（高ROE・低損失）がグループ全体の収益分散に貢献。Dankeポートフォリオ取得でリトアニアの市場支配力強化"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Swedbankのスウェーデン国内住宅ローン市場での構造的市場支配力：スウェーデン国内住宅ローンのバックブック市場シェア25-26%を維持し、都市化・住宅需要不足という長期構造的トレンドを背景に持続的な貸出成長が見込まれる（2014年: 年間SEK 1,100億（9%）のローン残高増加）",
+      "descriptive_label": "スウェーデン住宅ローム市場での構造的シェア（25-26%）と都市化トレンド",
+      "evidence_from_transcript": "Q4 2014 (Michael Wolf): 'Our market share on mortgages are back on back-book market share levels, i.e., 25% to 26%...We are taking market share on corporate lending, mainly in the property sector.' Q4 2014 (Goeran Bronner): 'the loan book has grown with SEK 110 billion, which is 9%...almost SEK 20 billion of credit growth in primarily in the mortgage market.' Q3 2015 (Michael Wolf): '...long term, there is a significant need in terms of housing starts and commercial properties...urbanization and on top of that, the immigration wave that we are witnessing.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「住宅ローン市場シェア25-26%」は名詞化できるが、なぜSwedbankが維持できるのかという構造的説明が弱い。単なるシェアデータ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "25-26%バックブックシェア、SEK 1,100億の年間成長は定量データだが、競合との差別化要因の説明が不足"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "スウェーデンの都市化・移民増加・住宅供給不足という構造的長期トレンドが継続的な住宅需要を支える"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "住宅ローム市場シェア25-26%はSEB・Handelsbanken・Nordeaも同様の規模を持つ4行寡占市場。Swedbankの固有優位性の説明が弱い（-15%）",
+            "adjustment": -15
+          },
+          {
+            "reason": "都市化・移民増加という長期構造的需要トレンドは追い風（+5%）",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "住宅ローム25-26%シェアはSwedbankが4大銀行の一角であることを示すが、なぜSwedbankが他行より優位かの説明が弱い。むしろ規制による集中リスク（SFSA）の方が顕著。都市化トレンドは業界共通の追い風。確信度は低め。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "住宅ローム市場支配+都市化構造的需要 → 持続的ローン残高成長 → NII成長 → グループCAGR",
+      "descriptive_label": "住宅ローム成長→NII成長→グループCAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。ローン残高成長→NII増加は銀行業の基本的収益構造。「2015年へのNII追い風」と直接言及"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次カンファレンスからの発言"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ローン成長→NII成長の因果は明確だが、競合も同様の恩恵を受けるため相対的優位性の証拠にはならない"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014実績: 貸倒損失SEK 4.19億（3bp）。住宅ローム市場シェア25-26%（バックブック）。ローン残高SEK 1,100億増加（+9%）。インターネットバンク顧客370万、モバイルバンク200万。現金取引-18%、ATM-8%。CET1比率21.2%（規制最低要件比+190bp）。アドバイザー面談+4%。Swishユーザーの40%がSwedbank/貯蓄銀行顧客",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q3 2015実績: 22四半期連続低貸倒損失（4bp = SEK 1.30億）。CET1比率23%（規制要件比+340bp）。ROE 13.5%。C/I比率0.42（非常に強い）。Sparbanken Öresund統合完了（20万顧客移行、IT変換成功）。ダンスク銀行バルティックポートフォリオ取得。支店店頭取引-16%（年率）。NSFR 101→104に改善",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [3, 5]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: 資産管理市場シェア（外部ファンド含む）22%。法人向けSwish接続10,000社中8,800社がSwedbank/貯蓄銀行。ネアショアリング（スウェーデン→バルティックへの人員移管）プログラム開始。2016年コストガイダンスSEK 160億。LC&I部門: スウェーデン1位、ノルウェー3位の債券資本市場ランキング",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 5]
+    }
+  ]
+}

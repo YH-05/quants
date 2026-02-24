@@ -1,0 +1,500 @@
+{
+  "scored_claims": [
+    {
+      "id": "PSN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Space4 内製モジュール工法工場による独自ビルドコスト優位性",
+      "evidence": "CEO Jeffrey Fairburn (H1 2014 prepared_remarks): 'Space4 is working well in terms of the workforce and the productivity. As brick-laying rates increase, Space4 takes out some of the brick laying content... the factory is more efficient with more volume going through it.' Analyst explicitly noted 'you're the only one with Space4' in Q&A (201408), and CEO confirmed build cost advantage at 1-2% vs peers at 3-5%.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "Space4 工場という具体的な能力・仕組みを記述。ビルドコスト低減は結果だが、工場オペレーション自体が優位性の主張であり rule01 適合"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "工場という固定資産・製造システムは構造的。補完的施策ではなく事業モデルの核心"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "アナリストが 'you're the only one with Space4' と明示。純粋競合（Barratt, Taylor Wimpey）にはこの閉鎖パネルシステムがない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "工場という具体的な能力・仕組みを提示。結果（コスト低減）ではなく機構（Space4 生産システム）が主体"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "アナリスト発言による競合不在確認。'you're the only one with Space4' は直接的な競合比較"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "競合との差別化は明確（外部アナリストが確認）。パターンGは非適用"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "能力・仕組みの明確な記述"
+        },
+        {
+          "source": "KB2-T pattern_V_specific_competitor_comparison",
+          "adjustment": 0.05,
+          "reasoning": "アナリストによる競合不在の直接確認"
+        },
+        {
+          "source": "dogma rule4 quantitative",
+          "adjustment": -0.05,
+          "reasoning": "コスト優位性の定量的規模（実際の数値差）が示されていない。'1-2% vs 3-5%' は evidence に記載されているが transcript の直接引用ではない"
+        }
+      ],
+      "final_confidence": 0.65,
+      "overall_reasoning": "Space4 は PSN 固有の工場製造システムであり、純粋競合他社が保有しないことがアナリストにより確認されている（rule07 PASS）。プロセスパワーとして構造的（rule06 PASS）。ただし、ビルドコスト優位性の定量的規模（vs 競合比較）がトランスクリプト直接引用では弱いため 0.70 には届かず 0.65。dogma 的には「おおむね納得」域に位置する。"
+    },
+    {
+      "id": "PSN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "低コスト戦略的土地銀行（Strategic Land Bank）による構造的マージン優位性",
+      "evidence": "CFO Mike Killoran (FY2014 prepared_remarks): plot cost to revenue ratio 17.1% → 16.5% trend. Strategic land 43-44% of consented land bank at far lower acquisition cost than spot market.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "土地銀行の蓄積・管理能力という仕組みを記述。マージン向上は結果。能力主体の主張"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "plot cost/revenue ratio 16.5-17.1% と cost recovery 20-21% の差分が定量的に示されている"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "100,000+ プロットの土地銀行は長期蓄積の構造的資産"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Barratt, Taylor Wimpey 等も戦略的土地銀行を保有。差別化の程度が PSN 固有であることの裏付けが不十分"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "16.5% vs 20% 回収率という差分が定量的に示されており、マージン向上への直接接続がある"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略的土地銀行は PSN 固有ではなく大手ホームビルダー共通の手法。dogma ルール3（誰でも持っている）の警告"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "43-44% 戦略的土地比率という構造的ポジションが数値で示されている"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "コスト比率の定量的裏付け"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "競合他社も同様の土地銀行を保有（dogma rule3 違反リスク）"
+        },
+        {
+          "source": "dogma rule4",
+          "adjustment": 0.05,
+          "reasoning": "複数期間の一貫した定量データ（16.5-17.1% の改善トレンド）"
+        }
+      ],
+      "final_confidence": 0.6,
+      "overall_reasoning": "定量的裏付け（plot cost ratio 16.5%→20% 回収率の差）は強い。しかし、競合他社（Barratt, Taylor Wimpey）も戦略的土地銀行を保有しており、PSN 固有の優位性として認定するには対競合比較が不足（rule07 FAIL）。dogma 的に「まあ納得」と「おおむね納得」の中間で 0.60。"
+    },
+    {
+      "id": "PSN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "標準化ハウスタイプと大量調達による材料調達力・ビルドコスト管理能力",
+      "evidence": "CEO Jeffrey Fairburn (H1 2014 Q&A): brick types reduced 150→20-30. H1 2015: group house types introduced nationally, build cost advantages noted.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.4
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "標準化・大量調達という能力・仕組みを記述"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "調達集中は規模の経済に基づく構造的優位性"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Barratt, Taylor Wimpey も標準化を進めており純粋競合に対する優位性が明確でない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "標準化は業界共通のコスト管理手法。大手ホームビルダー全般が採用"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "150→20-30 種類という具体的な削減数値あり"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "競合比較での優位性定量化がなく、同業他社との差別化が不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通の手法であることをゲートキーパーが検知"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通パターン検知"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "数値による標準化の深さの示唆"
+        }
+      ],
+      "final_confidence": 0.4,
+      "overall_reasoning": "標準化手法は UK ホームビルダー業界共通の取り組みであり、PSN 固有の優位性として認定するには対競合差別化の証拠が不足（dogma rule3 違反：業界共通能力）。150→20-30 の数値は標準化の深さを示すが、競合比較がない。dogma 的に「あまり納得しない」域 0.40。"
+    },
+    {
+      "id": "PSN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "英国全土24-26地域事業所のネットワークによる市場カバレッジと密度",
+      "evidence": "CEO Jeffrey Fairburn (FY2013): '24 businesses around the country...good market coverage'. H1 2015: 26 offices, 380+ active sales outlets.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "地域ネットワーク自体は能力・構造的資産"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "長年構築した地域拠点ネットワーク。構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Barratt 等の大手も同等の全国ネットワークを保有。相対的優位性の根拠なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "全国ネットワークは大手ホームビルダー共通。差別化根拠として弱い（dogma rule3）"
+        },
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "市場カバレッジという結果を優位性として提示している側面あり"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "競合比較なし。24 vs 競合の拠点数や密度データがない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通能力"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.15,
+          "reasoning": "全国ネットワークは業界共通"
+        },
+        {
+          "source": "dogma rule7",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合比較なし"
+        }
+      ],
+      "final_confidence": 0.3,
+      "overall_reasoning": "全国ネットワークは大手ホームビルダー共通の特徴であり（rule07 FAIL, rule3_industry_common）、PSN 固有の競争優位性として認定しがたい。dogma 的に「あまり納得しない」域 0.30。"
+    },
+    {
+      "id": "PSN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "土地サイクル最適タイミング購入能力と高マージン用地取得の規律",
+      "evidence": "CEO Jeffrey Fairburn (H1 2014 Q&A): '30% gross margin' hurdle. CFO: 'capital efficiency and discipline around capital deployment' as core strategy.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "規律ある土地取得プロセス・ハードルレート管理という能力を記述"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "30%超のグロスマージンハードルレートという定量的基準が示されている"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "土地取得規律は事業モデルの中核。補完的ではなく構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "純粋競合も同様の規律を持つと考えられる。PSN 固有の差別化根拠が不十分"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "土地取得規律は戦略的意思決定（rule08）に近い側面がある。優位性の能力側面（なぜ PSN の規律が競合より優れているか）の説明が不足"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "30% ハードルレートという具体的数値基準の存在"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "競合の土地取得規律との比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.1,
+          "reasoning": "土地規律は戦略に近く、優位性の構造的裏付けが弱い"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "30% ハードルレートの定量基準"
+        },
+        {
+          "source": "dogma rule8_strategy_not_advantage",
+          "adjustment": -0.05,
+          "reasoning": "規律・ディシプリンは戦略的意思決定であり優位性の構造的力の説明を要する"
+        }
+      ],
+      "final_confidence": 0.4,
+      "overall_reasoning": "土地取得規律は重要な経営能力だが、戦略（意思決定）と構造的優位性の境界が曖昧（rule08 警告）。30% ハードルレートは定量的だが競合との比較がなく純粋競合に対する差別化根拠が弱い（rule07 FAIL）。dogma 的に「あまり納得しない」から「まあ納得」境界域 0.40。"
+    },
+    {
+      "id": "PSN-006",
+      "claim_type": "competitive_advantage",
+      "claim": "直接雇用と職人訓練プログラム（Combat to Construction）による安定的工数確保能力",
+      "evidence": "CEO Jeffrey Fairburn (FY2014): 'combat construction scheme, which is now well underway and looks to employ ex-forces individuals on site... directly employed by the business and trained for longevity.' 2014年に直接雇用人員を20%増加。",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.25
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "直接雇用・訓練パイプラインという能力・仕組みを記述"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "訓練プログラムは補完的施策。業界共通の人員不足課題への対応。構造的差別化要因ではない"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "純粋競合も同様の直接雇用・訓練プログラムを展開している可能性が高い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "職人不足は業界全体の課題であり、直接雇用・訓練は業界共通の対応策"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "定量的な優位性（例：直接雇用率 vs 競合比較、コスト差など）が示されていない"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "採用プログラムは戦略的施策に近く、構造的優位性の説明ではない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通課題への対応"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通の施策"
+        },
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "定量的裏付けなし"
+        }
+      ],
+      "final_confidence": 0.25,
+      "overall_reasoning": "Combat to Construction プログラムは独自性があるが（元軍人採用という特徴）、構造的競争優位性として認定するには定量的裏付けが不足し、業界共通の人員確保施策の一形態。dogma 的に rule06 FAIL（補完的施策）、rule07 FAIL（純粋競合比較なし）。「あまり納得しない」下限域 0.25。"
+    },
+    {
+      "id": "PSN-007",
+      "claim_type": "competitive_advantage",
+      "claim": "手頃な価格帯（GBP200,000未満）への集中とHelp to Buyシェアによる販売ボリューム優位",
+      "evidence": "CEO (FY2014): '57% of private sales priced below GBP200,000'. CEO: '15% of all Help to Buy transactions'. Mortgage qualification rate 80%.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.2
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "低価格帯シェア（57%）は結果。それを可能にする固有の能力の説明が不十分"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "Help to Buy 政策への依存は政府施策に補完される優位性。政策変更により消滅するリスクがある"
+        },
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": true,
+          "reasoning": "低価格帯への集中戦略は戦略的意思決定。構造的優位性の説明ではない"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "Help to Buy 15% シェアは結果。なぜ PSN が競合より多く獲得できているかの構造的説明なし"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "低価格帯集中は戦略（rule08）。優位性の構造的説明なし"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Help to Buy 政策依存 → 持続的優位性への接続は因果関係の飛躍"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "Help to Buy は業界全体の政策支援"
+        },
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "シェアは結果（dogma rule1 違反）"
+        },
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.1,
+          "reasoning": "戦略と優位性の混同（dogma rule8）"
+        }
+      ],
+      "final_confidence": 0.2,
+      "overall_reasoning": "Help to Buy への依存と低価格帯集中は戦略的選択（rule08）であり、構造的競争優位性の条件を満たさない。シェアは結果（rule01 FAIL）。政策変更によって消滅するリスクがある外部依存型。dogma 的に「あまり納得しない」下限〜却下境界 0.20。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "60-70": 2,
+      "40-50": 2,
+      "30-40": 1,
+      "20-30": 2
+    },
+    "gatekeeper_applied": true
+  }
+}

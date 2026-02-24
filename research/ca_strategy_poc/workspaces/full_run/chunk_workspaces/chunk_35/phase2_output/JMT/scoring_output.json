@@ -1,0 +1,186 @@
+{
+  "ticker": "JMT",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true,
+    "note": "JMTはJohnson Matthey（英国）。April-March会計年度。Full Year FY2015（2015年3月期、2015年6月発表）が主要トランスクリプト。ECT（Emission Control Technologies）が主要成長部門。PGM（白金族金属）精製・PMP（Precious Metals Products）部門はAnglo契約喪失で縮小中"
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "排出規制連動型のECT触媒製品差別化（規制ごとに価値創造）",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "欧州Euro 6b・中国Euro IV→VI段階的規制強化×JMTのECT技術という業界構造と企業能力の典型的合致"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "1台あたり付加価値+20%（Euro 6b移行）、light duty sales +9% vs market +1%、ECT margin 12.4%→13.3%（+90bp）という強力な定量データ"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_I_t",
+          "verdict": "quantitative_differentiation",
+          "adjustment": 0,
+          "reasoning": "market growth比9倍（+9% vs +1%）という具体的な相対的パフォーマンスデータが優位性を直接示す"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -5,
+          "reasoning": "BASF Catalysts・Umicore等の競合との直接比較なし"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "排出規制強化×ECT触媒技術は業界構造と企業能力の典型的合致（KB2 pattern_IV_t）。市場成長+1%に対してlight duty sales +9%という9倍の相対的アウトパフォームが優位性を実証。1台あたり+20%付加価値増加（Euro 6b）という定量的メカニズムも明示。競合比較欠如で65%"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "排出規制強化→1台あたり価値増加×台数成長→ECT売上CAGR経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "規制強化→付加価値増加×台数という2ステップ。CEOが+20%/台と定量値を明示しており直接的"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "定量的に最も明確なCAGR接続。Euro 6b（欧州）・Euro VI HDD（米国）・中国Euro IV展開（30%フィット率から拡大）という複数規制ドライバーが継続的成長を支持。+20%/台という具体的な価値増加メカニズムが裏付け。65%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "ECT Manufacturing Excellenceプログラムによる持続的なコスト・生産性改善",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "2層→1層製造という具体的工程改善の言及あり。CEOが「持続可能」と明示"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -10,
+          "reasoning": "BASF・Umicore等との製造コスト比較なし。業界全般で製造効率化は標準的アプローチ"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "Manufacturing Excellenceは具体的工程改善（2層→1層製造・25%エネルギー削減）の裏付けあり。ECT margin +90bpという成果も示す。ただし競合比較なし。プロセス能力としての相対的優位性が不明。40%"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "化学プロセス触媒ライセンス技術（PT部門）のコーナードリソース",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "数十年にわたる化学プロセスライセンス技術蓄積（アンモニア・SNG・水素）は模倣困難"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_11_t",
+          "verdict": "partial",
+          "adjustment": -5,
+          "reasoning": "中東・アジアのインフラ整備需要と合致するが、中国需要低迷でFY2016も低調継続見込み（CEO明言）"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_8",
+          "verdict": "cyclical_risk",
+          "adjustment": -5,
+          "reasoning": "ライセンス収益の「ランピー」な性質と現在の中国需要低迷。FY2016-2017回復という中期ホライズン"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "化学プロセスライセンス技術は長期蓄積のCornered Resource候補。6件の新規ライセン受注（FY2015）で能力を確認。ただし中国需要低迷でPoiT時点での収益寄与は限定的。CEOが「FY2016も低調」と明示しており短期確度が低い。40%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "プロセス技術→新規プラント建設→ライセンス収益回復→CAGR経路",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_5_t",
+          "verdict": "indirect",
+          "adjustment": -5,
+          "reasoning": "FY2017以降の回復見通しでPoiT（2015年9月）時点では先行き不透明"
+        }
+      ],
+      "final_score": 0.25,
+      "final_confidence_pct": 25,
+      "scoring_rationale": "CEOが「FY2016は低迷継続、FY2017以降に回復」と明示。PoiT時点での確度は低い。25%"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "PGM二次精製における世界最大ポジション（Cornered Resource）",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "CEO自ら「世界最大（by some way）」と競合比較を明示。南アストライキ時の供給安定性という差別化実績あり"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "weak",
+          "adjustment": -5,
+          "reasoning": "「世界最大」という定性的主張はあるが、具体的なシェア数値なし"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_8",
+          "verdict": "cyclical_risk",
+          "adjustment": -5,
+          "reasoning": "Anglo Platinum契約喪失とPGM価格低迷でPMP部門全体が縮小中。PoiT時点での逆風"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "PGM二次精製の世界最大ポジションは南アストライキ時の供給安定性（競合への差別化）で裏付け。ただしAnglo契約喪失とPGM価格低迷でPMP部門縮小中。Cornered Resourceとしての価値はあるがPoiT時点での逆風を反映。40%"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 3,
+    "weighted_avg_score": 0.46,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.65,
+      "descriptive_label": "排出規制連動型のECT触媒製品差別化（規制ごとに価値創造）"
+    },
+    "primary_seven_powers": ["Scale Economies", "Cornered Resource"],
+    "investment_thesis_strength": "moderate",
+    "key_risks": [
+      "PT部門：中国需要低迷でFY2016も低調継続（CEO明言）",
+      "PMP部門：Anglo Platinum契約喪失とPGM価格低迷",
+      "ECT競合：BASF Catalysts・Umicore等との具体的差別化データ欠如"
+    ]
+  }
+}

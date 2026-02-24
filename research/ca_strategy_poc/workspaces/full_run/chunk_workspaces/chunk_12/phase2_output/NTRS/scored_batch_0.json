@@ -1,0 +1,301 @@
+{
+  "scored_claims": [
+    {
+      "id": "NTRS-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Best Private Bank USA — 6 Consecutive Years (Financial Times Group Award)",
+      "evidence": "Named Best Private Bank USA by Financial Times Group for 6th consecutive year (2014). WM AUM = $225B. WM fees up 5% YoY to $319M (Q4 2014).",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "プライベートバンキングにおけるブランド認知は構造的（補完的ではない）。UHNWクライアントの信頼構築に直接影響"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Goldman Sachs PWM、Morgan Stanley WM、JPMorgan Private Bankとの6年連続受賞は明確な差別化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "6年連続という継続性が定量的差別化を示す（高評価パターンI）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "連続受賞という継続的差別化"
+        }
+      ],
+      "overall_reasoning": "6年連続のFT Best Private Bank USA受賞はUHNWプライベートバンキング市場での強力なブランド差別化の証拠。プライベートバンキングはブランドと信頼性が主要な顧客獲得・維持要因であり、Goldman Sachs・JPMorgan等との比較で明確な優位性。WM fees +5%が商業的効果を裏付ける。70%"
+    },
+    {
+      "id": "NTRS-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Custody Platform Lock-in: $6 Trillion AUC with Multi-Service Integration",
+      "evidence": "C&IS AUC = $5.5T (Q4 2014), up 7% YoY. C&IS fees = $409M (+10% YoY). AIFMD compliance depository in Netherlands, UK, Guernsey. Securities lending collateral = $116B (+14%)",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$5.5T AUC、C&IS fees +10%、securities lending +14%という定量データ"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "機関投資家カストディは高スイッチングコスト業界（複数年契約、移行リスク、規制統合）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "機関カストディ市場の業界構造（高スイッチングコスト、規制統合、多年度契約）とNTRSの$5.5T AUCポジションの合致。高評価パターンIV（構造的市場ポジション）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.1,
+          "reasoning": "業界構造とポジションの合致"
+        }
+      ],
+      "overall_reasoning": "機関カストディは契約移行リスク・規制統合・多年度契約によって高スイッチングコスト業界として機能する。$5.5T AUCという規模とAIFMD等の規制対応統合がロックインを強化。State Street・BNY Mellon等との比較では規模は劣るが、AUC +7%の成長が新規受注獲得を示す。70%"
+    },
+    {
+      "id": "NTRS-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Global Operating Centers Scale Advantage — Bangalore, Manila, Limerick, Arizona",
+      "evidence": "~70% of 2014 staff growth in global operating centers. Expenses/trust fees ratio improved from 131% (2011) to 111% (2014).",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "expenses/trust fees -20ppという3年間の改善は定量的"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "State Street・BNY Mellonも同様のグローバルオペレーションセンター戦略を採用"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "グローバルオフショア処理センターは大手金融機関共通の戦略。差別化としては限定的"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界共通戦略"
+        }
+      ],
+      "overall_reasoning": "20ppのコスト効率改善は定量的に明確だが、State Street・BNY Mellonも同様のオフショア処理戦略を持っており相対的差別化が限定的。50%"
+    },
+    {
+      "id": "NTRS-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Driving Performance Initiative: $270M pretax improvement, Sustained Operating Efficiency",
+      "evidence": "$270M pretax operating income improvement by 2013 (exceeding $250M target). Expenses/trust fees: 131% (2011) → 111% (2014). ROE: 8.6% → 10%.",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$270M改善（目標超過）、ROE 8.6%→10%という定量データ"
+        },
+        {
+          "rule_id": "rule08_strategy_not_advantage",
+          "result": false,
+          "reasoning": "コスト削減プログラムは経営施策であり構造的競争優位ではない（ルール8）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "戦略・優位性の混同パターン。効率化プログラムは競合も実施可能な経営施策"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_F",
+          "adjustment": -0.1,
+          "reasoning": "経営施策は構造的優位でない"
+        }
+      ],
+      "overall_reasoning": "$270M超過達成は定量的だが、コスト削減プログラムは経営施策（ルール8）であり構造的優位ではない。競合他社も類似プログラムを実施可能。50%"
+    },
+    {
+      "id": "NTRS-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Global Fund Services Network — AIFMD Depository Capability Expansion",
+      "evidence": "AIFMD depository in Netherlands, UK, Guernsey. GFS growth drove ~50% of 2013 staff additions.",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "新規オフィス開設は能力への投資であり、競争優位の実証ではない"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "State Street・BNY Mellon・Deutsche Bankも同様のAIFMD対応を提供"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "AIFMD対応は業界共通の規制コンプライアンス要件。差別化にならない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "業界共通能力ゲートキーパー発動"
+        }
+      ],
+      "overall_reasoning": "AIFMD対応は規制コンプライアンスであり業界標準。State Street・BNY Mellon等も同様に展開しており固有の優位性とならない。30%"
+    },
+    {
+      "id": "NTRS-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Ultra-High-Net-Worth Client Relationship Depth and Goals-Driven Investing",
+      "evidence": "WM AUC = $496B (Q4 2014). WM AUM = $225B. Personal client interest rate swap transactions grew significantly in Q4 2014 (driving $21M record).",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "UHNWの多世代関係管理は構造的（単なる補完的サービスではない）"
+        },
+        {
+          "rule_id": "rule11_industry_structure_fit",
+          "result": true,
+          "reasoning": "UHNW市場は関係の深さと信頼が主要な維持要因"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "金利スワップ$21M記録等の定量データはあるが、競合との直接比較なし"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "UHNWの多サービス関係（カストディ・投資管理・レンディング・金利デリバティブ）は実質的なスイッチングコストを生む。金利スワップ$21M記録は新規クロスセル成功の証拠。ただし競合との比較なく50%"
+    },
+    {
+      "id": "NTRS-007",
+      "claim_type": "factual_claim",
+      "claim": "FY2014 ROE 10% (first time in target 10-15% since 2011). Trust/investment fees +9%. Net income $812M, EPS $3.32 (both +11%)",
+      "evidence": "FY2014 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NTRS-008",
+      "claim_type": "cagr_connection",
+      "claim": "Trust Fee CAGR 10% (2011-2013) vs 4% Expense CAGR — 6pp positive operating leverage",
+      "evidence": "Trust fees CAGR 10% (2011-2013). Expense CAGR 4%. ROE improvement 8.6%→10%.",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": true,
+          "reasoning": "フィー成長>費用成長の6ppスプレッドは直接的なオペレーティングレバレッジ。過去実績で検証済み"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Trust fee CAGR 10% vs expense CAGR 4%の6ppスプレッドは過去3年の実績で検証可能。ROE 8.6%→10%はその財務的効果を示す。接続は直接的かつ検証可能。70%"
+    },
+    {
+      "id": "NTRS-009",
+      "claim_type": "cagr_connection",
+      "claim": "International Expansion: New Offices in 8 Countries in 2013-2014",
+      "evidence": "New offices: Riyadh, Frankfurt, South Korea, Malaysia. AIFMD in Netherlands, UK, Guernsey. C&IS AUC grew 7% YoY",
+      "final_confidence": 0.3,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule05_cagr_mechanism",
+          "result": false,
+          "reasoning": "新規オフィス→AUC成長への接続が間接的。各地域での顧客獲得の定量データなし"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "地理的拡大の方向性は認めるが、各新規市場からのAUC・フィー貢献への接続データがない。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 2,
+      "40-50": 3,
+      "60-70": 2
+    },
+    "gatekeeper_applied": true
+  }
+}

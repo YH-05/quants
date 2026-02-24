@@ -1,0 +1,94 @@
+{
+  "ticker": "KHC",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Kraft Heinz Company was created July 2, 2015 (120 days old at PoiT). Only Q2 2015 (2015-08-14) bondholder update available within PoiT. Q3 2015 (2015-11-05) excluded as post-cutoff. All claims receive -15% Q2 quarterly adjustment. Heinz standalone has 2+ year track record; KHC combined entity has ~120 days. Extremely limited evaluation basis."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ゼロベース予算（ZBB）・収益管理（Revenue Management）・目標管理（MBO）の3つの系統的な経営ツールによる3G Capital流オーナーシップ文化とコスト規律体制",
+      "final_confidence": 0.10,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_F_strategy_confusion",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール8（戦略≠優位性）: 「ZBBを導入する」は現在進行中の戦略的取り組みであり、PoiT（2015年9月）時点で Kraft 側への適用が開始直後（2015年7月）。Heinz 側では実証済みだが、KHC統合体としての能力としてはまだ未検証。dogmaルール6（構造的vs補完的）: ZBBはABInBev等3G Capital傘下企業共通の手法。KHC固有の構造的優位性とは言い難い。dogmaルール12（Q4主/Q1-Q3従）: Q2 bondholder update（従・②相当）から-15%。KB2-TパターンF（戦略との混同）が明確に適用される。合併直後の過渡期でさらに-5%。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterly bondholder update（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "パターンF-T適用（ZBB導入は戦略、確立された優位性ではない）", "adjustment": -10},
+        {"reason": "2015年7月2日合併完了直後（120日）の新会社、統合評価が困難", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ZBB・収益管理・製造フットプリント最適化（7工場閉鎖）→ 2017年$1.5Bコスト削減 → EBITDA拡大 → EPS CAGR",
+      "final_confidence": 0.15,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_C_causal_leap",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム要求）: ZBB→コスト削減→EBITDA→EPS成長は3ステップ以上の因果チェーン。$1.5B削減は2017年目標であり、PoiT（2015年9月）時点では実現前の計画値。KB2-TパターンC（因果の飛躍）が適用。dogmaルール12（Q4主/Q1-Q3従）: Q2発言から-15%。Heinz単体のZBB実績は存在するが、Kraft側統合での検証がない。EBITDA一定通貨ベース+4.8%（Q3 2015 pro forma）という唯一の数値も post-PoiT。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterly（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "$1.5B削減目標は2017年完了見込みで、PoiT時点では実現前の目標", "adjustment": -10},
+        {"reason": "3ステップ以上の因果チェーン（パターンC適用）", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Heinz（ケチャップ・ソース・調味料）とKraft（チーズ・食事・飲料）の補完的グローバルブランドポートフォリオ：$8B超ブランド群と45ヵ国展開",
+      "final_confidence": 0.15,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_fail",
+      "kb2_t_pattern": "pattern_A_result_as_cause",
+      "seven_powers_type": "Branding",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 「$8B超ブランド」は規模の結果であり、それを支えるブランド管理能力の説明が薄い。合併直後でブランド統合シナジーはまだ仮定。dogmaルール4（定量的裏付け）: $8B超ブランド群という規模データは存在するが、合併前の単純合算に過ぎない。dogmaルール6（構造的）: Heinz+Kraftの補完性（地理・カテゴリ）は構造的価値があるが、統合実績がない。KB2-TパターンA（結果を原因とする）が適用される。Q2発言から-15%、合併直後-5%の二重ペナルティ。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterly bondholder update（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "パターンA-T適用（ブランド規模は結果、ブランド管理能力の説明なし）", "adjustment": -10},
+        {"reason": "合併直後（120日）で統合実績乏しく、シナジーは将来の仮定", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Heinz欧州事業での2年間の構造改革（SKU削減・フットプリント最適化・価格設定強化）による高マージン基盤構築：EBITDA margin ~30%・20%以上成長",
+      "final_confidence": 0.25,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 欧州での2年間の構造改革（SKU削減・フットプリント最適化・価格設定強化）という仕組みの説明あり。これはHeinz側での実証済み能力。dogmaルール4（定量的裏付け）: EBITDA margin ~30%（欧州）・一定通貨EBITDA成長+20%超という定量証拠。dogmaルール12（Q4主/Q1-Q3従）: Q3 2015（2015-11-05）はPoiT後のため参照不可。Q2 bondholderからの断片的情報のみ。この主張が最もHeinz固有の実証済み能力を示す点で他より高い評価が妥当。ただしQ4 annual callなし・Q2調整適用で上限制約。",
+      "confidence_adjustments": [
+        {"reason": "Q2 quarterly（従・②相当）、-15%調整", "adjustment": -15},
+        {"reason": "Heinz欧州の30%マージン・20%成長は唯一の実証済み定量的優位性", "adjustment": 5},
+        {"reason": "Q3 2015（最新実績）はPoiT後のため参照不可、情報が限定的", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "Kraft Heinz: 2015年7月2日にKraft Foods GroupとH.J. Heinz Holding Corporationが合併して誕生。$8B超ブランド・45ヵ国展開。Q3 2015（pro forma）：売上 -9%（うち通貨 -7%）、adjusted EBITDA一定通貨ベース+4.8%、$1.5Bシナジー（2017年目標）。北米で2,500名削減・7工場閉鎖を決定",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Heinz欧州: 定通貨adjusted EBITDA +20%超、EBITDA margin ~30%（9M 2014）。欧州有機売上 +0.5%（価格+ボリューム）。Heinz Yellow Mustard: 米国・カナダで4ヶ月以内に高一桁市場シェア獲得",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.16,
+  "score_distribution": {
+    "competitive_advantage": {"count": 3, "avg": 0.167},
+    "cagr_connection": {"count": 1, "avg": 0.15}
+  }
+}

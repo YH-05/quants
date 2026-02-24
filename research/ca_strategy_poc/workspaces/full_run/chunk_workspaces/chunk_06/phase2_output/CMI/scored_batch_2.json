@@ -1,0 +1,74 @@
+{
+  "ticker": "CMI",
+  "batch_index": 2,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "北米中型トラック市場シェア72%（2014年末）、2013年からの急速拡大（53%→63%→72%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "北米中型トラック72%シェア＋中国新製品 → 量産効果・価格決定力 → 収益CAGR支持",
+      "descriptive_label": "市場シェア→価格決定力・量産効果→CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_C_causal_leap",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "シェア→量産効果→コスト低下→競争力→CAGRは3ステップ以上（pattern_C_causal_leap）。北米中型市場規模が限定的のため全社CAGRへのインパクトは中程度。飛躍あり（rule05 indirect）。50%。"
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "中国JV売上$3.3B（2014年、前年比+13%、過去最高）。エンジン市場シェア10%→12%",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": 14,
+      "claim_type": "cagr_connection",
+      "claim": "中国JVポジション×NS4規制移行 → 中国売上CAGR +15%見通し（2015年ガイダンス）",
+      "descriptive_label": "中国JV×NS4規制→中国売上成長CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Cornered Resource",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "NS4規制移行→CMI NS4対応エンジン採用→JV売上成長の2ステップ（rule05 direct部分）。ただしNS4施行タイミング不確実性をCEO自身が認める（'significant uncertainty'）。不確実性調整-20%→70%から50%へ。2014実績（12%シェア）で部分的検証済み。50%。"
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "2014年Distribution事業M&A 7件完了、EPS貢献$0.40。2015年さらに3件予定、$0.50/株超の累積EPS貢献見込み",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    }
+  ]
+}

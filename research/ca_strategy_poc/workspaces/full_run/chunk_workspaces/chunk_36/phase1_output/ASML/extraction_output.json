@@ -1,0 +1,270 @@
+{
+  "ticker": "ASML",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-21)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "EUV（極端紫外線）リソグラフィーにおける事実上の独占的技術力（業界唯一のEUV量産装置メーカー）",
+      "descriptive_label": "EUV独占技術力（Cornered Resource × Counter-Positioning）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Peter Wennink): 'we have met the 500 wafer per day target that our customers set for us in 2014 as we have now demonstrated these productivity levels at notable customers over multiple days. We also demonstrated the source power at 100 watts with 96% die yield...Our 2015 productivity target remains at 1,000 wafers per day.' And: '1 foundry customer has ordered 2 production EUV tools for the eventual insertion in 10-nanometer high-volume manufacturing.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "EUV装置の開発・生産能力は明確な技術能力として評価できる。500枚/日達成・100W光源・96%ダイ歩留まりという具体的な能力指標あり"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "strong",
+            "reasoning": "EUV装置市場はASMLのみ（Nikon・Canonは事実上撤退）。競合不在の独占状態"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "500枚/日（2014年達成）、1,000枚/日（2015年目標）、100W光源、96%ダイ歩留まりという明確な定量指標"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "EUV開発には20年以上・数百億ドルの投資が必要。顧客（TSMC・Intel・Samsung）共同投資による生態系が参入障壁として機能"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "半導体製造はムーアの法則に従う微細化継続の市場構造。EUVは10nm以降の不可欠技術として業界構造上の必要条件に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 90,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。事実上の独占（競合不在）、顧客TASMCによる最初のProduction EUV発注という具体的実績、定量的技術指標達成が複合的に示される最高レベルの主張",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "EUV独占技術はCornered Resourceの典型例。競合不在の独占状態、TSMC等の最大手による採用注文、明確な技術マイルストーン達成が揃っており、Hamilton Helmerの7 Powersの中で最も強力な類型。90%が妥当"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年: 売上EUR5.86B（+12%）、グロスマージン44.3%（+3ppt）、EPS EUR2.74（+16%）。EUV: 500枚/日達成、100W光源・96%ダイ歩留まり実証。TSMC向け初のProduction EUV（NXE:3350）2台発注。バックログEUR2.8B（EUV含む）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "EUV量産化（2016年Revenue recognition見込み） + ロジック14/10nm移行 + 浸漬リソグラフィー需要継続 → 売上成長・グロスマージン拡大",
+      "descriptive_label": "EUV量産→収益化→成長加速経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "EUV技術成熟（2014-2015）→顧客採用（TSMC 10nm）→Revenue recognition 2016→EUV販売拡大の2-3ステップ。開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。2015年EUV 10台出荷計画、2016年Revenue recognition見込みとして具体化"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "EUV量産化の実現が2016年Revenue認識につながる経路は具体的で信頼性が高い。ただし技術リスク（性能指標未達）が介在。70%が妥当"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "顧客共同投資（TSMC・Intel・Samsung・Nikon）による競合排除的な生態系構築（Intel/TSMCがASML株式取得・R&D共同投資）",
+      "descriptive_label": "顧客共同投資による競合排除生態系（Counter-Positioning）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Peter Wennink): 'I would like to comment on some recent events regarding our customer co-investment partners equity holdings in ASML. All co-investment partners are approaching the end of their ASML equity lockup period...There is no impact on the co-investment R&D contributions committed by each partner company.' And Q&A (CFO Wolfgang Nickl): 'it won't change the total contributions to ASML from that particular customer. It's just being allocated to other engineering projects, EUV and other projects.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "顧客を株主・共同投資者として取り込む仕組み（Counter-Positioning）は明確な構造的優位性の源泉として評価できる"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Intel・TSMC・Samsungが株主として関与する構造は競合が短期で再現不可能。共同R&D投資による知的財産の共有がさらに参入障壁を高める"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "半導体装置市場は少数の大手顧客（Intel・TSMC・Samsung）が支配する寡占市場。この3社との共同投資関係は市場構造上の最強の防御"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ロックアップ期間終了（株式売却可能）にもかかわらずR&D貢献継続の確認という、株式売却の懸念への対応として具体的に示された",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "顧客共同投資モデルはCounter-Positioningの典型。競合が同様のR&D共同体制を構築するには20年以上かかる。70%が妥当"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "インストールベース向けホリスティックリソグラフィー製品群の収益化能力（YieldStar・システムアップグレード、EUR1B/2017年目標）",
+      "descriptive_label": "インストールベースホリスティックリソグラフィー収益化能力（Switching Costs）",
+      "evidence_from_transcript": "Q4 Q&A (CEO Peter Wennink): 'on the applications business, the holistic litho business, we said we have a target of reaching EUR 1 billion by 2017. I think we're just over halfway...there's not that many years left, so the compound annual growth rates are pretty steep. And that's only for the holistic litho. And that does not include, for instance, the system upgrades that I've talked about. So all in all, this is a very strong source of growth for us with good profitability.' And: 'we've had significant success in customer adoption of our new YieldStar metrology products with an installed base of all YieldStar products touching on 200 units.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [6],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "既存インストールベースへのアップグレード・オプション製品販売能力は明確な仕組みとして評価できる。YieldStar・1950/1960/1970/1980へのアップグレード等の具体例あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "YieldStar 200台超、EUR1B/2017年目標（現在「半分超」）、Q1 EUR400M Service&Field options（年間成長double-digit%）という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "顧客はASMLシステムを購入後、最適化のためにASML製アップグレード・計測装置に依存。他社製品との互換性なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。YieldStar 200台・EUR1B/2017目標の具体的な定量目標と実績進捗あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ホリスティックリソグラフィービジネスはASMLのSwitching Costsを高める典型的な収益構造。EUR1B目標に向けて半分以上達成済みという定量的進捗が能力を裏付ける。70%が妥当"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Service & Field Options: Q1 2015 EUR400M（年間成長double-digit%）。YieldStar metrology: 200台超インストール。ホリスティックリソグラフィー目標: EUR1B/2017年（現在「半分超」達成）。NXT:1970Ci: 2014年50台超出荷（史上最速製品ラインアップ）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "半導体微細化の構造的トレンドに乗った浸漬リソグラフィー需要の継続的拡大（28nm/20nm/16nm/14nm/10nmの並行需要）",
+      "descriptive_label": "半導体ノード移行に伴う需要構造的優位（Scale Economies × Network Economies）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Peter Wennink): 'foundry is essentially working on 3 to 4 nodes at the same time. The 28-nanometer node, the current high-volume node, is still at its full 100% capacity as new demand for this node keeps growing...At 20 nanometers, the first chips are on the market, so that node has moved into volume at some foundries. The 16- and 14-nanometer nodes are being qualified for production and there's process development happening at the 10-nanometer node.' And: 'we see about a 35% to 40%, 45% litho intensity increase because of double and triple patterning'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [3],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "複数ノードの同時需要は業界構造から来る特性であり、ASMLの能力というよりは外部環境。ただし複数ノードへの装置供給能力という観点では能力として評価できる"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "ノード間35-45%リソグラフィー強度増加、28nm需要が100%フルキャパシティというデータあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ムーアの法則による継続的微細化は半導体市場の構造的特性。多重露光（double/triple patterning）がリソグラフィー需要を倍増させる市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。業界構造からの需要であり、ASML固有能力より市場構造の優位性。ただし複数ノード対応製品ラインは能力の側面もある",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "ノード移行に伴う需要増加はASMLに有利な業界構造だが、これはASML固有の能力ではなく外部環境要因。60%が妥当"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "中国半導体市場参入による追加的地理的成長機会の取り込み能力（28/32nm対応の新規ファウンドリ顧客）",
+      "descriptive_label": "中国先端半導体市場新規参入取込能力（Scale Economies）",
+      "evidence_from_transcript": "Q4 Q&A (CEO Peter Wennink): 'The Chinese market, after years of silence, has actually come back...we have this announcement pre-Christmas on the deal that we signed with the Chinese foundry. Generally speaking, there is a lot more activity there. It is also focused on, let's say, what I would call an advanced node. It's the 32-nanometer and 28-nanometer node...the Chinese foundries will benefit from that also or at least that is what they are anticipating.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "marginal",
+            "reasoning": "中国顧客開拓は市場機会の活用であり、能力（仕組み）というよりは事業機会。ただし先端ノード対応装置供給能力という側面はある"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "中国市場参入は戦略的機会であり、競争優位性の仕組みとは区別が必要"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "中国の半導体自立化政策（中国製造2025）は市場構造上の大きな追い風だが、規制リスクも含む"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。ただし戦略機会（Rule 8-T）への抵触リスクと地政学的不確実性（輸出規制等）が介在",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "中国市場参入は重要な成長機会だが、優位性の仕組みではなく外部機会。規制リスク（輸出規制等）も考慮すると30-40%が妥当"
+      }
+    }
+  ]
+}

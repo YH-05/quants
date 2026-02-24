@@ -1,0 +1,145 @@
+{
+  "ticker": "0388",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_id": "0388_001",
+      "claim_type": "competitive_advantage",
+      "claim": "香港取引所（HKEX）が有するShanghai-Hong Kong Stock Connect（沪港通）の独占的接続インフラが、中国と国際投資家を唯一の合法・規制準拠ルートで結ぶネットワーク経済効果を生んでいる。",
+      "descriptive_label": "Stock Connect独占接続インフラによるネットワーク経済（Network Economies）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "「接続インフラ」「制度的設計」という能力・仕組みの説明あり。CEO自身が『非常に慎重に設計されたプログラム』と言及しており、接続インフラという能力（名詞属性）として評価可能"},
+        {"rule_id": "rule_2_t", "result": true, "reasoning": "ネットワーク経済効果・接続インフラという名詞で表現される属性として適切"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "中国Capital Market Accessの制度的インフラは補完的ではなく構造的要素。CSRC・SFC双方の承認という規制的障壁が構造を支える"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "中国金融市場の対外開放政策という業界構造（分断市場）×HKEXの唯一の承認済み接続インフラというポジションが合致"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "業界構造（中国・国際の分断市場）×企業ポジション（唯一の規制承認済み接続インフラ）の合致が明確"},
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "CEO発言は結果ではなく設計プロセス（慎重な設計、制度的認証）という能力を説明"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Stock ConnectはHKEXが設計・運用する制度的インフラであり、CSRCとSFCの共同承認による参入障壁は後発者が短期で複製不可能。Q4 2014（年次決算）でCEOが体系的に説明。業界構造（中国・国際分断市場）と企業ポジション（唯一の規制承認済み接続インフラ）の合致パターンIV-Tに該当。ChinaClearとの純額決済設計という制度的複雑性も模倣困難性を高める。ただしConnect後の2015年夏の市場混乱リスクが確信度を90%未満に留める。最終確信度: 70%"
+    },
+    {
+      "id": 2,
+      "claim_id": "0388_002",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXは70%超のEBITDAマージンを維持する高い運営コスト効率性と規模の経済を有しており、これは世界主要取引所の中で最高水準の収益性を支える構造的優位性である。",
+      "descriptive_label": "世界トップクラスEBITDAマージン70%を支える規模の経済（Scale Economies）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "EBITDA 70%は高収益の結果であり、それを可能にする構造（取引量に対してほぼ固定費的なコスト構造、少人員での高スループット）への説明が不十分"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "EBITDA 70%という具体的数値裏付けあり。ただし純粋競合比較（NYSE/Nasdaq等）との直接対比データが開示されていない"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "取引量増加に対して費用がほとんど増加しない構造は構造的要素と評価可能"},
+        {"rule_id": "rule_11_t", "result": false, "reasoning": "業界構造（取引所業界の寡占性・高固定費構造）との合致説明が不十分。グローバル取引所の比較名が特定されていない"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.1, "reasoning": "EBITDA 70%は高収益の結果であり、その結果を生み出す仕組み（低変動費率、決済インフラ規模経済）の説明が主張の核心より薄い"},
+        {"pattern_id": "pattern_G_t", "matched": true, "adjustment": -0.1, "reasoning": "純粋競合（CME、NYSE、Nasdaq、SGX等）に対する差別化根拠が不明確"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_A_t", "adjustment": -0.1, "reasoning": "結果（EBITDA70%）を原因（能力）として提示する傾向あり"},
+        {"source": "pattern_G_t", "adjustment": -0.1, "reasoning": "純粋競合との直接比較データが不足"}
+      ],
+      "overall_reasoning": "EBITDA 70%という定量データは存在するが、それを可能にする構造（固定費支配的なコスト構造・決済インフラの規模経済）の説明が結果の報告に留まる。純粋競合（CME/NYSE等）との直接比較なし。Q4 2014年次発言（主・①相当）であり格上調整はなし。Phase 1評価の0.5から-0.2調整後: 50%に留まる。"
+    },
+    {
+      "id": 3,
+      "claim_id": "0388_003",
+      "claim_type": "competitive_advantage",
+      "claim": "LME（ロンドン金属取引所）の買収により、HKEXは欧州コモディティ決済インフラ（LME Clear）を内製化し、香港のアジアコモディティ市場との間で独自のグローバル商品体制を構築した。これは競合が容易に複製できないプロセス・パワーである。",
+      "descriptive_label": "LME Clear内製化・欧州-アジアコモディティ清算インフラ統合（Process Power）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "LME IT内製化（85名吸収）、LME Clear立上げという具体的な能力構築プロセスを説明。結果（収益20%）ではなく能力（内製化・清算基盤）を中心に評価できる"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "欧州CCP規制認証（ESMA）を保有するLME Clearは構造的要素。模倣困難性が高い"},
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "LME買収そのものは戦略的意思決定であり優位性ではない。内製化・LME Clear設立という能力構築プロセスが優位性"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "アジア投資家のコモディティデリバティブアクセスという業界構造ニーズ×欧州CCP認証保有の唯一性が合致"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "LME IT内製化85名吸収・LME Clear立上げという能力・プロセスの具体的説明あり"},
+        {"pattern_id": "pattern_F_t", "matched": true, "adjustment": -0.1, "reasoning": "LME買収という戦略を優位性として混同する要素がある。内製化能力と戦略の区別が明確でない"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_F_t", "adjustment": -0.1, "reasoning": "戦略（LME買収）と優位性（内製化プロセス能力）の混同が一部存在"}
+      ],
+      "overall_reasoning": "LME Clear内製化は具体的な能力構築プロセスであり優位性として評価可能。欧州ESMA CCP認証という模倣困難な規制資産を保有。ただしLME買収という戦略と内製化能力（優位性）の境界が曖昧。CME/ICEとの差別化データが不足（ルール7）。Q4 2014年次発言（主・①相当）。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 4,
+      "claim_id": "0388_004",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXは「世界最大の市場時価総額取引所」というブランド・ポジションを維持しており（CMEを再び抜いて世界1位）、このブランドが国際IPOと中国企業の上場窓口としての地位を強化している。",
+      "descriptive_label": "世界最大取引所時価総額No.1ブランドによる国際IPO集客（Branding）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "世界No.1時価総額取引所は「結果」。そのポジションを可能にする構造的な能力（中国企業の国際上場ゲートウェイとしての制度的地位）の説明が主な優位性であり、ブランドポジション自体は結果"},
+        {"rule_id": "rule_2_t", "result": true, "reasoning": "ブランドは名詞属性として認識可能。ただし時価総額No.1は日々変動する結果指標"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "IPO金額・件数は結果の数値。それを支えるブランド構築の仕組みや競合比較データがない"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "Nasdaq・NYSE・SGX等の純粋競合に対する差別化根拠が具体的に示されていない"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.2, "reasoning": "時価総額No.1・IPO件数・二次資本調達額はすべて結果の数値。背後にある能力の説明なし"},
+        {"pattern_id": "pattern_G_t", "matched": true, "adjustment": -0.1, "reasoning": "Nasdaq/NYSE等の純粋競合との差別化根拠が不明確"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_A_t", "adjustment": -0.2, "reasoning": "結果（時価総額No.1、IPO実績）を優位性として提示"},
+        {"source": "pattern_G_t", "adjustment": -0.1, "reasoning": "純粋競合差別化根拠不足"}
+      ],
+      "overall_reasoning": "ブランド力の本質（中国企業の国際上場ゲートウェイとしての制度的信頼）は0388_005のcornered resourceとして評価すべき。本主張では時価総額No.1という結果指標が中心で、それを可能にする能力の説明が薄い。H1 2014発言（従・②相当）で-10%調整。純粋競合との差別化データなし。Phase 1評価の0.3を維持。"
+    },
+    {
+      "id": 5,
+      "claim_id": "0388_005",
+      "claim_type": "competitive_advantage",
+      "claim": "HKEXは中国本土規制当局（CSRC）と香港SFCの双方から信頼を得た唯一の市場インフラとして、両国間の市場相互アクセス（Mutual Market Access）における希少な制度的地位（Cornered Resource）を有している。",
+      "descriptive_label": "CSRC・SFC双方承認による中国-国際市場相互アクセスの独占的制度的地位（Cornered Resource）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "「CSRC・SFC双方からの信頼」「制度的地位」は構造的な能力・資産。結果ではなく希少資源（規制当局の承認）を能力として正確に評価"},
+        {"rule_id": "rule_2_t", "result": true, "reasoning": "制度的地位・規制信頼という名詞属性として表現"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "規制当局の承認・信頼は構造的要素（補完的ではない）。中国政府の政治的・外交的プロセスによる選択的承認は後発者が市場競争だけで獲得できない"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "中国金融市場の対外開放政策という業界構造×HKEXの唯一の規制承認済み地位というポジションの合致が明確"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_IV_t", "matched": true, "adjustment": 0.0, "reasoning": "市場構造（中国と国際市場の分断・開放政策）×企業ポジション（CSRC・SFC双方承認の唯一の市場インフラ）の合致パターン"},
+        {"pattern_id": "pattern_III_t", "matched": true, "adjustment": 0.0, "reasoning": "規制信頼の獲得は長期的な能力構築（30年以上の歴史的実績）の証"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "CSRC・SFC双方の規制承認という希少資源は中国政府の政治的・外交的プロセスに依存しており、後発者が市場競争だけで獲得することは不可能。Stock Connect（0388_001）と相補的に機能する制度的地位であり、独立した強力な優位性として評価。Q4 2014年次発言（主・①相当）でCEOが体系的に説明。業界構造（中国金融市場の対外開放）と企業ポジション（唯一の承認済みインフラ）の合致。最終確信度: 70%"
+    }
+  ]
+}

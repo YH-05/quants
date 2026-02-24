@@ -1,0 +1,189 @@
+{
+  "ticker": "CON",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Continental は自動車グループ（Automotive）において、世界の乗用車・商用車生産成長率を200-300bps以上アウトパフォームする受注残（order intake）を継続的に積み上げており、FY2014の新規受注は EUR 300億（過去最高）を記録した。ADAS（先進運転支援システム）の受注 book-to-bill ratio は4.0倍（トヨタ等大型案件）に達し、中期的な構造的成長ドライバーとなっている。",
+      "evidence": "The acquisition volume in our Automotive Group achieved a new record with EUR 30 billion lifetime sales... advanced driver assistance systems with a book-to-bill ratio at 4.0, specifically big orders at Toyota were supporting this.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 60
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I + pattern_IV",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "EUR300億受注（過去最高）・ADAS book-to-bill 4.0倍という強力な定量証拠。ADAS業界構造への先行投資"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Bosch、Denso等との直接比較はないが、受注規模自体が差別化の証左"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_pass", "reasoning": "受注残（継続的アウトパフォーマンス）は能力の証左。ただし結果（受注額）の提示が中心"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "strong", "reasoning": "EUR300億（過去最高）・ADAS 4.0倍book-to-billという強力な定量証拠"},
+        {"rule": "rule11_industry_structure_fit", "verdict": "strong", "reasoning": "ADAS/自動運転への業界移行という構造的トレンドに先行して受注を確保"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "定量的裏付けのある差別化。EUR300億・4.0倍book-to-bill"},
+        {"pattern": "pattern_IV", "matched": true, "effect": "positive", "reason": "ADAS業界移行という市場構造的ポジション"}
+      ],
+      "overall_reasoning": "EUR300億受注（過去最高）とADAS book-to-bill 4.0倍は定量的に強力。ADAS/自動運転への業界移行という構造的トレンドへの先行投資として評価。世界生産成長率を200-300bpsアウトパフォームという継続実績もProcess Power。60%",
+      "power_classification": "Process Power（受注能力）/ Cornered Resource（ADAS技術）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Continental はアジア事業の売上シェアを2008年の13%から2014年の26%へと拡大し、2015-2016年に30%目標達成の軌道上にある。この地域シフトは新規受注の構造的変化（アジア・中国比率の増大）によって支えられており、欧州依存リスクを低減している。",
+      "evidence": "The share of our Asia business in 2013 moved up to 25%. To remind you, 2008... the same number was basically half of it, only 13%... our target of 30% in 2015 is realistic.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 50
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.1,
+          "reason": "地域シフト（結果）が優位性として提示されている。競合も同様の地域シフトを進めており差別化根拠が弱い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "13%→26%という定量変化はあるが"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "競合自動車サプライヤーも同様のアジアシフト。固有の差別化なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "地域シフト（結果）を優位性として提示するPattern A"}
+      ],
+      "overall_reasoning": "アジア比率の倍増（13%→26%）は事実だが、業界全体のトレンド。Continentalの固有の能力説明が不十分。40%",
+      "power_classification": "Scale Economies（低評価）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Continental は6年間（2008-2014年）でネット負債をEUR 100億削減し、ROCE を FY2013の19.4% から FY2014の20.0%へと向上させた。売上が42%増加する一方でコストは33%増に抑制（2008年比）し、キャッシュ変換率85%を達成した。",
+      "evidence": "EUR 10 billion reduction in net indebtedness over the last 6 years... ROCE achieved in 2014, 20%, 60 basis points up... 85% of our net income in 2014 could be converted into free cash flow.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01_capability_not_result", "rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 60
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "ROCE 20%達成、EUR100億負債削減、キャッシュ変換率85%という複数の強力な定量証拠"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Bosch、ZF等との ROCE比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01_capability_not_result", "verdict": "partial_pass", "reasoning": "財務規律の継続的改善は能力として評価可能。ただし財務指標（結果）が中心"},
+        {"rule": "rule04_quantitative_evidence", "verdict": "strong", "reasoning": "ROCE 20%・EUR100億負債削減・キャッシュ変換85%という複数の強力な定量証拠"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "複数の定量的裏付けのある財務規律の差別化"}
+      ],
+      "overall_reasoning": "ROCE 20%達成、6年でEUR100億負債削減、キャッシュ変換85%は強力な定量証拠。財務規律のProcess Powerとして評価。競合との直接比較なし。60%",
+      "power_classification": "Process Power（財務規律）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Continental のADAS関連受注（book-to-bill 4.0倍）と自動車グループの構造的R&D投資増（8.8%/売上）が、中期的に EUR 500億売上目標（2020年）の達成を支える主要ドライバーとなる。",
+      "evidence": "EUR 30 billion lifetime sales... EUR 50 billion which we talked about this morning in the annual press conference is based on a car production of a little bit above 100 million cars.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence"],
+        "confidence": 50
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "source": "future forecast",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "EUR500億目標は2020年。受注残（EUR300億）が裏付けとして機能"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "EUR300億受注残がEUR500億目標の裏付けとして機能"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "受注残と中期目標の連動は論理的。2020年目標だが受注残で裏付けあり。50%",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Continental はタイヤ事業における高性能・冬用タイヤ（17インチ以上）の売上比率を2009年の36%から2014年の46%へと継続的に引き上げ（4年で+7pp）、低価格競合が侵食しにくいプレミアムセグメントにポジションを強化した。平均販売価格の安定（EUR 61）がこれを裏付ける。",
+      "evidence": "The share of our high-performance tires, which are all tires which are 17-inch and bigger, and winter tires was moving up over the last 2 years from 44% to 46%. However, if you look back over the last 4 years even by 7% structurally, increased 7 percentage points.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "peer comparison",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "Michelin（42%）との比較では若干劣後の可能性。競合との定量比較なし"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "+7pp/4年という定量的シフトは確認"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "partial", "reasoning": "Michelin等との比較が欠如"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "プレミアムタイヤシフト（+7pp/4年）は定量確認。ただし競合（Michelin42%、Bridgestone等）との比較なし。Counter-PositioningよりProcess Powerに近い。45%",
+      "power_classification": "Counter-Positioning（中程度）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "CON",
+    "claim_count": 8,
+    "scored_count": 5,
+    "target_claim_ids": [1, 2, 3, 4, 5],
+    "batch_index": 0,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.6": 2,
+      "0.5": 1,
+      "0.45": 1,
+      "0.4": 1,
+      "0.3": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb1_rules_transcript/rule11_industry_structure_fit.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_I_quantitative_differentiation.md",
+      "kb2_patterns_transcript/pattern_IV_structural_market_position.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

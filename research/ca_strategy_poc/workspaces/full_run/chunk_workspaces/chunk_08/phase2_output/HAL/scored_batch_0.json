@@ -1,0 +1,171 @@
+{
+  "ticker": "HAL",
+  "scored_claims": [
+    {
+      "id": "HAL_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Halliburton の業界首位級リターンと成長：$33B 収益・$5B 営業利益（共に記録）を達成した業界最高水準の収益性。",
+      "evidence": "We delivered industry-leading total company revenue growth and returns in 2014. Revenues of nearly $33 billion and operating income of $5 billion, both new records.",
+      "rule_evaluation": {"applied_rules": ["rule01", "rule07"], "results": {"rule01": false, "rule07": false}, "confidence": 0.4, "adjustments": ["rule01: 「業界首位」という成果を能力として提示", "rule07: 独立した競合比較なし"]},
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.1, "reasoning": "サイクルピークの記録的業績を競争優位の証拠として使用"},
+        {"source": "pattern_C_self_reported_only", "adjustment": -0.05, "reasoning": "「業界最高リターン」は自己申告"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": false}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "2014年のサイクルピーク実績は印象的だが、油価急落（Q4 2014以降）環境での持続可能性に疑問。Schlumberger との比較なしでは「業界首位」の証明不十分。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Halliburton の効率性重視マージン改善：価格引上げではなく効率化（Battle Red、Frac of the Future）でマージン改善を達成。",
+      "evidence": "Margin improvement this cycle was largely driven by our focus on gaining efficiencies and getting increased labor and input costs recovered more quickly, not through net pricing increases.",
+      "rule_evaluation": {"applied_rules": ["rule01", "rule07"], "results": {"rule01": true, "rule07": false}, "confidence": 0.5, "adjustments": ["rule01: 効率化能力の主張であり結果のみではない", "rule07: Battle Red 等の名前はあるが定量的効率性データがない"]},
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.05, "reasoning": "効率性プログラム名は挙げられるが定量的改善指標がない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule01", "pass": true}, {"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "価格依存ではなく効率化でのマージン改善という主張は下落局面での競争力として理論的に有意義だが定量証拠が不足。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Halliburton の3セグメント戦略的集中（非在来型・深海・成熟油田）：13製品ラインのうち12が過去最高を達成する製品ライン多様性。",
+      "evidence": "12 of our 13 product lines set new all-time highs.",
+      "rule_evaluation": {"applied_rules": ["rule03", "rule07"], "results": {"rule03": true, "rule07": true}, "confidence": 0.5, "adjustments": []},
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.05, "reasoning": "サイクルピークでの記録更新を持続的優位として解釈することへの懸念"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [{"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.05}],
+      "overall_reasoning": "12/13製品ライン記録更新は広範な実行能力の証拠だが油価急落環境での持続可能性に疑問。Baker Hughes 買収計画中で事業構造変化リスクもある。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Halliburton の技術差別化と顧客アライメント：効率的なクルーと差別化技術により、リザーバー最適地点の顧客との優先的パートナーシップを維持。",
+      "evidence": "We believe Halliburton's more efficient crews and differentiated technologies are best suited to outperform... being aligned with the right customers becomes more important.",
+      "rule_evaluation": {"applied_rules": ["rule07", "rule01"], "results": {"rule07": false, "rule01": false}, "confidence": 0.4, "adjustments": ["rule07: 「差別化技術」の具体的証拠なし"]},
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {"source": "pattern_D_qualitative_only", "adjustment": -0.1, "reasoning": "差別化技術の具体的内容・特許・独自ツールのエビデンスなし"},
+        {"source": "pattern_G_unclear_vs_pure_competitor", "adjustment": -0.05, "reasoning": "Schlumberger・Baker Hughes との具体的な技術比較なし"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule07", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_D_qualitative_only", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "差別化技術と顧客アライメントは主張のみで具体的証拠が最も弱い。油価下落下での検証が必要。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Baker Hughes 買収による規模強化：年間$2B のコストシナジー見込みと石油サービス最大手創出。",
+      "evidence": "Baker Hughes acquisition... unsurpassed depth and breadth of services... nearly $2 billion in annual cost synergies.",
+      "rule_evaluation": {"applied_rules": ["rule06", "rule03"], "results": {"rule06": false, "rule03": true}, "confidence": 0.3, "adjustments": ["rule06: M&A は完了前（2015年後半完成予定）"]},
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {"source": "pattern_F_future_dependent", "adjustment": -0.1, "reasoning": "規制承認待ちで確定していない"},
+        {"source": "pattern_E_capex_as_moat", "adjustment": -0.05, "reasoning": "$2B シナジーは楽観的前提に基づく可能性"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule06", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_F_future_dependent", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "Baker Hughes 買収は規制リスクあり（実際に2016年破談）。PoiT 時点での評価としては将来依存の主張として低確信度が妥当。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_006",
+      "claim_type": "cagr_connection",
+      "claim": "下落局面での市場シェア拡大→サイクル通じた CAGR：過去の下落局面での北米市場アウトパフォーム実績から今回も市場シェア拡大を見込み。",
+      "evidence": "We have historically outperformed the market in North America during downturns and we have no reason to believe that this downturn will be any different.",
+      "rule_evaluation": {"applied_rules": ["rule05", "rule06"], "results": {"rule05": true, "rule06": false}, "confidence": 0.3, "adjustments": ["rule05: サイクル通じたCAGRロジックは存在するが不確実性が高い"]},
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {"source": "pattern_B_industry_common", "adjustment": -0.1, "reasoning": "「歴史的アウトパフォーム」という一般的主張"},
+        {"source": "pattern_C_self_reported_only", "adjustment": -0.05, "reasoning": "過去アウトパフォームの具体的データなし"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}, {"rule": "rule06", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_B_industry_common", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "下落局面でのシェア拡大ロジックは存在するが「歴史的アウトパフォーム」の具体的データなしでは低確信度が妥当。今回の急落幅（WTI $45台）は過去と異なる可能性。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_007",
+      "claim_type": "cagr_connection",
+      "claim": "多製品ライン記録更新→多角的 CAGR 基盤：13製品ラインのうち12が過去最高を達成した多角的な実行力が CAGR を支える。",
+      "evidence": "12 of our 13 product lines set new all-time highs... operating income of $5 billion, a record.",
+      "rule_evaluation": {"applied_rules": ["rule05", "rule02"], "results": {"rule05": true, "rule02": false}, "confidence": 0.3, "adjustments": ["rule02: 石油サービスの周期性への認識が必要"]},
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.1, "reasoning": "サイクルピーク実績を CAGR 根拠として使用は危険"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "周期的業界でのピーク業績"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule02", "pass": false}],
+      "kb2_patterns": [{"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.1}],
+      "overall_reasoning": "2014年サイクルピーク実績を CAGR 根拠とすることはリスクが高い。油価急落が2015年以降の収益を大幅に圧迫することが CEO 自身も認めている。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "HAL FY2014 実績: 収益$33B（記録）、営業利益$5B（記録）。北米: 収益+16%、利益+23%。東半球: 収益+10%、利益+12%。",
+      "evidence": "Revenues of nearly $33 billion and operating income of $5 billion, both new records. North America revenue growth 16%, profit growth 23%.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    },
+    {
+      "id": "HAL_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "石油サービス市場環境：米国陸上リグカウント直近60日で-250台(-15%)、顧客資本支出予算平均-25%〜-30%削減。",
+      "evidence": "U.S. land rig count has fallen by 250 rigs or close to 15%. Capital expenditure budgets from customers reduced 25% to 30%.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.8, "adjustments": []},
+      "final_confidence": 0.8,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "市場環境データの事実確認。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 2014 CEO prepared remarks (2015-01-20)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "HAL",
+    "scored_count": 9,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.3": 3,
+      "0.35": 2,
+      "0.45": 2,
+      "0.8": 1,
+      "0.9": 1
+    }
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "ticker": "ZTS",
+  "company_name": "Zoetis, Inc. Class A",
+  "gics_sector": "Health Care",
+  "country": "UNITED STATES",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-02-11) / Q4 FY2014 Earnings Call (2015-02-11)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "業界最広ポートフォリオ（livestock + companion animal 両セグメント、複数種・地域）による収益の多様性と成長の安定性",
+      "descriptive_label": "幅広い製品ポートフォリオによる事業多角化能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'The diversity of our business across species, product lines, geographies, and therapeutic areas is one of our core strengths. Our global footprint enables us to overcome weaknesses in some regions and deliver consistent revenue and earnings growth.' / Q3 2014 (CEO): 'With the broadest product portfolio in the industry, the steady introduction of new products and our top-ranked field force, we are able to bring value solutions to veterinarians and livestock producers around the world.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「多様性」は事業の属性（名詞）として表現可能だが、どのように多様性を維持・拡大する能力があるかの説明が不十分。ポートフォリオの結果よりも、その管理能力が問われるべき"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「ポートフォリオ多様性」「地理的分散」は名詞で表現可能な属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "動物薬の特性として、livestock/companion animal の両セグメントを持つことは多くの競合（Elanco等）も追求する方向性だが、ZTSはPfizer由来の歴史的ポートフォリオで規模が大きい"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial_pass",
+            "reasoning": "動物医薬品市場は年5-6%成長見込みで、多様性が安定成長を担保するという論理は市場構造と合致する面がある"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (業界共通能力: 大手動物薬会社はいずれも多様化を目指す)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "「最広ポートフォリオ」の定量根拠なし—競合比较データ不在",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "多様性は競争優位性として一定の妥当性があるが、業界共通の方向性であり（Elanco、Boehringer Ingelheimも両セグメント展開）、ZTS固有の優位性の説明が不十分。「最広」という主張には定量的裏付けがない。50%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "製品ポートフォリオの多様性 → 地域・種別のマクロ逆風を相殺 → 安定的な年5-7%オペレーショナル収益成長の維持",
+      "descriptive_label": "多様性→リスク分散→安定CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：多様性→特定ショックへの耐性→CAGR安定化。実績でも2013-2014年の旱魃・PEDv等のショックを乗り越えて7%成長を維持した"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言由来。「diversity is one of our core strengths」という年次確認"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "多様性によるリスク分散がCAGR安定化に寄与するメカニズムは2ステップで直接的。ただし「多様性」自体が競合比較で際立っているかは不明"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "トップランク評価のフィールドフォース（獣医・畜産農家との直接的パートナーシップ関係）",
+      "descriptive_label": "業界最高水準のフィールドフォース能力",
+      "evidence_from_transcript": "Q4 2013 Prepared Remarks (CEO): 'We continue to benefit from our best-in-class field force. The commercial team remained focused on partnering with our customers to make their businesses successful. We are deepening these relationships with our customers through development of online platforms.' / Q3 2014 (CEO): 'the steady introduction of new products and our top-ranked field force, we are able to bring value solutions to veterinarians and livestock producers'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「フィールドフォース能力」は能力・仕組みを評価。「best-in-class」「top-ranked」という評価は結果だが、顧客パートナーシップ構築プロセスの言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative_only",
+            "reasoning": "定量的裏付けなし。「best-in-class」「top-ranked」の根拠（調査データ、社内指標）への言及なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Elanco、Boehringer Ingelheim等の純粋競合との具体的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t (定性的のみで測定不能)",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付け皆無、競合比較なし",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "フィールドフォースの質は重要な競争要素だが、「best-in-class」「top-ranked」の根拠となる調査・データ・競合比較の言及がなく、定性的主張に留まる。dogma.mdのルール4（定量的裏付けがないと低評価）に抵触"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "フィールドフォース能力 → 新製品の顧客採用率向上（APOQUEL等） → 売上CAGR上乗せ",
+      "descriptive_label": "フィールドフォース→新製品採用→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "フィールドフォース→採用率向上→売上増加は2-3ステップ。APOQUELの例では供給制約が主因で、フィールドフォースの貢献分を定量的に切り出せない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新製品採用促進へのフィールドフォース貢献は直感的に理解できるが、CAGR寄与を定量化できない"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "内部R&D能力による新製品・ライフサイクル管理（2014年に180件超の製品承認）と緊急製品開発力（PEDvワクチンを14ヶ月で上市）",
+      "descriptive_label": "動物薬特化型R&D能力とスピード開発力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'In 2014, Zoetis achieved more than 180 product approvals, representing new products, new indications, new formulations, new combinations and geographic expansion.' / Q3 2014 (CEO): 'We were able to bring this vaccine to market in only 14 months by leveraging our 3 interconnected capabilities. Our R&D capability and the expertise in biologics allow us to fast-track the development of PEDv vaccine. Manufacturing and scale-up capability enable us to produce enough of the vaccine to meet projected customer demand.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "R&D能力・プロセス（能力・仕組み）を評価。180件承認は結果だが、14ヶ月でのPEDvワクチン上市という具体的プロセス能力の説明あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "180件超の承認数（定量データ）、14ヶ月での市場投入という具体的タイムライン"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "動物薬専業の単焦点R&Dは、人薬との兼務大手に対して優位性を持つ可能性がある"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "動物医薬市場では製品多様性・迅速な対応が重要。ZTSの専業フォーカスは市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化: 180件承認、14ヶ月), pattern_III_t (能力の優位性説明)",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "180件承認の競合比較なし（絶対値のみ）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "動物薬専業によるR&Dの深度は一定の優位性。14ヶ月でのPEDvワクチン開発は具体的なプロセス能力の証拠。ただし競合（Elanco、Bayer Animal Health）比較での優位性は未確認。60%が適切"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "R&D能力 → 継続的新製品投入（年180件超） → 既存製品の patent cliff軽減 + 新成長ドライバー → 売上CAGR 5-8%の維持",
+      "descriptive_label": "R&D→製品パイプライン→CAGR経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "R&D→新製品→CAGR維持は2ステップ。動物薬は人薬ほど patent cliffが急激でないが、ライフサイクル管理への継続投資は重要。APOQUEL単品で$150-175M（2015年想定）というCAGR寄与の具体例あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言由来"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "R&D投資がCAGRに直接貢献するメカニズムは明確。APOQUELという具体的事例が存在し、検証可能性が高い"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "製造・サプライチェーン能力：品質安定供給と規模の経済による低コスト製造",
+      "descriptive_label": "グローバル製造・サプライチェーン能力",
+      "evidence_from_transcript": "Q4 2013 Prepared Remarks (CEO): 'We have remained focused on ensuring a steady supply of quality medicines to our customers and the market. In 2013, we delivered sustained improvement in our product availability metrics, ensuring that we can more reliably meet the demands of our customers around the world.' / Q3 2014 (CEO): 'Manufacturing and scale-up capability enable us to produce enough of the vaccine to meet projected customer demand.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "製造能力・サプライチェーン管理は能力・仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative_only",
+            "reasoning": "「sustained improvement in product availability metrics」とあるが具体的数値なし。COGS率（35%前後）は開示されているが競合比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "製造能力で競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (業界共通: 大手製薬各社は製造能力を持つ)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付け乏しく、業界共通能力に近い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "製造能力は重要だが業界共通の要件。Pfizer由来の製造基盤は歴史的優位性を持つ可能性があるが、競合比較での優位性証拠なし。40%が適切"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "製造スケールアップ能力 → 新製品の迅速供給（APOQUEL供給拡大） → 収益CAGR上乗せ",
+      "descriptive_label": "製造能力→新製品供給→CAGR経路",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "APOQUELは2014年に供給制約で$34M止まり。2015年4月供給拡大後に$150-175M見込み。製造能力がCAGRに直接寄与する具体例"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "APOQUELという具体的製品でのCAGR寄与が定量的に示されている（$34M→$150-175M）。製造能力がボトルネックを解消する経路は検証可能"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "モノクローナル抗体プラットフォームによる革新的治療法の開発能力（犬の皮膚炎向け抗体製剤の承認申請）",
+      "descriptive_label": "動物用モノクローナル抗体プラットフォーム技術",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'Zoetis has submitted a filing to the USDA for another antibody therapy to treat atopic dermatitis in dogs. We have been active in building a platform in monoclonal antibodies that will have a broad application across the species and medical conditions. The first potential product from this platform builds on our knowledge base in the area of canine dermatology.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "プラットフォーム技術（能力・仕組み）を評価。製品承認申請は結果だが、プラットフォームの構築という能力への言及あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "動物用モノクローナル抗体は人薬に比べて競合が少なく、ZTSのような専業大手がパイオニア的立場にある可能性"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "「プラットフォーム構築」は戦略的投資だが、「プラットフォーム技術自体」は優位性として成立"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t (能力の優位性: プラットフォーム技術), pattern_VI_未来 (まだ製品化前の主張)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "まだ製品化前で収益寄与の検証不可。cutoff_date 2015-09-30時点では承認待ち",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "動物用モノクローナル抗体という新領域でのパイオニア的立場は一定の優位性。ただし2015-09-30時点ではまだ承認前で、商業的成功は未確認。50%が適切"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "ZTSは2014年に動物医療市場全体の成長率（4.6%）を上回る5.5%の収益成長を達成（過去12ヶ月・Q3 2014まで）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "ZTSは2014年に180件超の製品承認を取得。PEDvワクチンは14ヶ月で条件付きUSDA認可を取得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（中国・インド・ブラジル等）での拡大戦略と地域特化製品（中国向けRUI LAN AN等）の展開",
+      "descriptive_label": "新興市場での地域適応型成長能力",
+      "evidence_from_transcript": "Q4 2013 Prepared Remarks (CEO): 'In China, we believe that the product could account for a growing percentage of our revenues in China, and become a top 10 product in our portfolio in the market in 2014.' / Q3 2014 (CFO): 'emerging markets delivering double-digit growth'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "「新興市場での展開」は戦略・行動（動詞）であり、優位性（能力・仕組み）の説明が乏しい"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "「新興市場拡大戦略」は戦略であり優位性ではない。その戦略を可能にする具体的な能力（現地適応力、規制対応力等）の説明なし"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t (戦略の混同), pattern_B_t (業界共通)",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）→ -10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "新興市場への展開は戦略的方向性であり、優位性（能力・仕組み）の説明が欠如。競合各社も新興市場を追求。ルール8-T・12-T違反で30%以下。20-30%が適切"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場の動物医薬品普及率向上 → 高い成長率（新興市場でのダブルディジット成長） → 全体CAGR上乗せ",
+      "descriptive_label": "新興市場成長→CAGR寄与経路",
+      "source_advantage": 12,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "新興市場の高成長→全体CAGR寄与は2ステップ。ただし為替ヘッドウィンドで報告ベースの貢献は減衰する"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来。-10〜20%調整候補"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）→ -10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "新興市場の高成長がCAGRに寄与するメカニズムは直接的だが、為替逆風とQ3発言（従）であることから40%が適切"
+      }
+    }
+  ]
+}

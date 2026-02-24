@@ -1,0 +1,347 @@
+{
+  "ticker": "SUNP",
+  "company_name": "Sun Pharmaceutical Industries Limited",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-05-30); Q4 FY2015 Earnings Call (2015-05-29)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_FY2015", "Q2_FY2015", "Q3_FY2015", "Q1_FY2016"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "インド製薬市場における#1市場シェアポジション（約9%）と専門医クラス別処方シェア首位（12領域）を支える医師関係構築・ブランド力",
+      "descriptive_label": "インド国内製薬市場でのブランド力と医師浸透力",
+      "evidence_from_transcript": "Q4 FY2015 CEO (Abhay Gandhi): 'Sun Pharma is now ranked #1 and holds approximately 9% market share in the INR 86,000 crores pharmaceutical market. Sun Pharma is ranked #1 based on share of prescriptions, with 12 classes of doctors: psychiatrists, neurologists, cardiologists, ophthalmologists, orthopedicians, nephrologists, gastroenterologists, diabetologists, urologists, dermatologists, chest physicians and consultant physicians.' Q4 FY2014: Ranked #2 with 5.4% share, #1 prescriptions in 7 specialist classes.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO India Business",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "#1シェアと処方シェアは「結果」。ただし12専門医クラス別首位は医師関係構築の「能力」の反映でもある"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ブランド力・医師浸透力は名詞として表現可能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "競合（Cipla, Dr. Reddy's等）との相対的差別化は示されているが、なぜ医師が好む具体的仕組みの説明は乏しい"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "9%シェア、12クラス別#1という定量データあり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "インド医薬品市場の高成長（政府統計）と自社の専門医浸透力の合致は論理的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "シェアは結果であり、背後の能力（MR力、製品差別化）の説明不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "定量データ（9%シェア、12クラス別1位）はあるが、競合比較での仕組みの優位性説明が不足。ルール1（結果vs能力）の観点で50%程度が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "インド製薬市場の継続成長 × Sun Pharma#1ポジション → インド事業売上CAGR+17-25%維持",
+      "descriptive_label": "インド市場成長×#1ポジション→売上成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "インド医薬品支出増加→処方増→Sun売上増という2ステップ接続。FY2014 India +21%、FY2015 India全年KRW 6,717crores（前年比+82%はRanbaxy統合効果含む）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "市場成長との接続は直接的。ただし政府価格規制（DPCO）という下押しリスクあり。60%が妥当"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "米国ジェネリック事業における垂直統合型API内製能力と専門品・複合型（differentiated）製品開発能力",
+      "descriptive_label": "米国向け垂直統合・差別化ジェネリック開発能力",
+      "evidence_from_transcript": "Q4 FY2014 MD: 'Our API business has strategic importance for vertical integration on key products.' Q4 FY2015: 'we increased the API supply for captive consumption significantly for key products, which enabled us to enjoy benefits of vertical integration.' 'R&D spending enables development of future product pipeline, including speciality and differentiated products.' '438 approved ANDAs with 1,598 patent applications, 951 granted patents.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "MD Dilip Shanghvi",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10, 11],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "API内製能力（垂直統合）と差別化製品開発プロセスは「能力・仕組み」として評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "438承認ANDA、951許可特許、R&D支出9%/売上というデータで裏付け"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "API垂直統合はコスト構造上の構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "米国ジェネリック市場での競争激化（コスト・差別化重要性増大）と Sun の垂直統合・差別化能力は合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Halol施設のFDA 483観察事項（コンプライアンスリスク）が優位性を一時的に毀損",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "API垂直統合と差別化製品開発能力は明確な構造的優位性。定量的裏付けあり。ただしHalol問題によるFDAリスクが確信度を下げる。60%→調整後50%"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "垂直統合によるコスト優位 + 差別化製品パイプライン → 米国CAGR+20-40%（規模拡大）",
+      "descriptive_label": "垂直統合×差別化パイプライン→米国売上成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの接続。FY2014 US USD 1,620M (+43% YoY)、Q4 FY2015 US USD 488M (+implied成長). 実績で裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "過去実績（43% YoY成長）で裏付けあり。ただしHalol問題による供給制限リスクが将来接続の確信度を下げる"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Taro Pharmaceutical（皮膚科・CNS）の高収益性と米国薬局市場での差別化ポジション維持能力",
+      "descriptive_label": "Taro子会社の高収益ニッチ市場ポジション",
+      "evidence_from_transcript": "Q4 FY2015 CFO: 'Taro posted Q4 FY15 sales at $244M, up 30% YoY. For the full year, sales $863M, up 14% YoY. Taro net profit for Q4 $152M, up 70% QoQ [sic], net profit for full year $484M, up 39%.' Q4 FY2014: 'Taro Q4 sales USD 187M, up 13%. Full year USD 759M, up 13%. Net profit Q4 USD 90M, up 82%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO Sudhir Valia",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "Taroの売上・利益成長は「結果」。高収益の背景となる薬価設定力・ニッチ市場ポジションの説明がより欲しい"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "定量データ豊富（売上+30%、利益+70%、OPM impliedで高水準）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Taroが皮膚科・CNSのニッチに集中している構造は差別化の基盤"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Taroの競合（Perrigo等）との差別化説明はトランスクリプトに乏しい"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "高収益の構造的説明（競合優位の仕組み）が不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Taroの高成長・高収益は明確な実績だが、競合対比での能力説明不足。50%程度が妥当"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Taro高収益ニッチ事業成長 → Sun全体CAGR押し上げ（US事業への貢献）",
+      "descriptive_label": "Taro高収益→Sun全体US売上成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Taro売上→Sun US全体への直接貢献。過去実績で裏付けあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "直接的接続。Taro成長はSun US事業成長に直接反映"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Ranbaxy統合による新興市場（Emerging Markets）への規模拡大と地理的多様化能力",
+      "descriptive_label": "Ranbaxy統合による新興市場ポートフォリオ拡大",
+      "evidence_from_transcript": "Q4 FY2015 MD: 'Post the Ranbaxy acquisition, we now have a meaningful presence in emerging markets. For Q4, sales in emerging market were USD 123M, accounting for 12% of total sales.' 'This highly complementary combination will lead to significant value creation opportunities, driven by strong position in U.S., India and emerging markets. Synergy benefits of USD 250M by third year post closure.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "MD Dilip Shanghvi",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "Ranbaxy統合は戦略的行動だが、統合後のEM事業運営能力は「能力」として評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "EM市場でのRanbaxy流通網は構造的資産"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "統合そのものは戦略。統合後の運営能力は優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "統合は戦略であり、現時点では優位性として未確定（ルール8）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Ranbaxy統合の複雑性・コンプライアンスリスクが実現を不透明にする",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "統合によるEM事業拡大は戦略（ルール8）。統合完了直後で運営能力の実績なし。30%が妥当"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Ranbaxy統合シナジー（USD 250M、3年目）→ Sun全体CAGR+1-2%程度の収益寄与",
+      "descriptive_label": "Ranbaxy統合シナジー→利益成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "統合シナジーUSD 250M目標は経営陣の見通し。検証には3年必要。因果チェーンが長い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "目標値（USD 250M）は提示されているが、複雑な統合プロセスと達成確度は低い。40%程度"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Sun Pharma インド市場シェア：FY2014で5.4%（#2）→ FY2015で約9%（#1）。処方シェア首位のドクター専門科：FY2014 7クラス→FY2015 12クラス",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Sun Pharma R&D支出：FY2015 Q4で売上の9%超（INR 579crores）、FY2015全年INR 1,955crores。承認ANDA 438件（FY2015）、特許申請1,598件、951件許可",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Sun Pharma FY2014全年業績：売上INR 16,004crores（+42%）、EBITDA INR 7,120crores（EBITDA率45%）。米国売上USD 1,620M（+43%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Taro業績FY2015：売上USD 863M（+14%YoY）、純利益USD 484M（+39%YoY）。Q4 FY2015純利益USD 152M（+70%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    }
+  ]
+}

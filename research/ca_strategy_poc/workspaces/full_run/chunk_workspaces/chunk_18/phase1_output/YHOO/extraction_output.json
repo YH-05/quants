@@ -1,0 +1,123 @@
+{
+  "ticker": "YHOO",
+  "company_name": "Yahoo! Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201401_earnings_call.json", "quarter": "Q4 2013", "call_type": "primary"},
+    {"file": "201404_earnings_call.json", "quarter": "Q1 2014", "call_type": "secondary"},
+    {"file": "201407_earnings_call.json", "quarter": "Q2 2014", "call_type": "secondary"},
+    {"file": "201410_earnings_call.json", "quarter": "Q3 2014", "call_type": "secondary"},
+    {"file": "201501_earnings_call.json", "quarter": "Q4 2014", "call_type": "primary"},
+    {"file": "201504_earnings_call.json", "quarter": "Q1 2015", "call_type": "secondary"},
+    {"file": "201507_earnings_call.json", "quarter": "Q2 2015", "call_type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "YHOO-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "Yahoo!はAlibaba Group（BABA）株式15.4%（2015年時点）およびYahoo Japan 35.5%株式を保有しており、これらの持分価値がYahoo!コア事業の時価総額を大幅に超えている。BABAは中国EC市場の支配的プレーヤーであり、このAsset Value自体が独自の価値源泉（Cornered Resource）となっている。",
+      "evidence_quotes": [
+        "Yahoo holds approximately 384 million shares of Alibaba Group. (Q2 2015 / Q4 2014 参照)",
+        "Yahoo Japan stake represents significant asset value for shareholders."
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "CONDITIONAL - 保有株式は資産であるが事業能力ではない",
+        "rule04_quantitative_evidence": "PASS - 384M株・15.4%株式という定量証拠",
+        "rule06_structural_vs_complementary": "PASS - BABA株は外部競合が複製できない独自資産",
+        "rule07_pure_competitor_differentiation": "PASS - 他のインターネット企業はBABA株を持たない",
+        "rule08_strategy_not_advantage": "CONDITIONAL - 保有株式は能力ではなく資産",
+        "rule10_negative_case": "PASS - 市場評価として実証済み",
+        "rule11_industry_structure_fit": "WARN - インターネット企業の競争優位性の文脈で株式保有を評価するのは異質",
+        "rule12_transcript_primary_secondary": "PRIMARY・SECONDARY両方で言及"
+      },
+      "confidence_score": 0.5,
+      "confidence_rationale": "BABA株は明確な価値だが、これは事業的な競争優位性ではなく財務資産。インターネット事業のコア（広告・コンテンツ）の競争優位性とは切り離して評価すべき。コア事業は構造的に劣化中。"
+    },
+    {
+      "claim_id": "YHOO-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "claim_text": "Yahoo!はMailとFinanceを中心に月間10億人規模のユーザーベースを持つグローバルなメディア・コミュニティプラットフォームであり、このユーザー規模が広告主にとっての大規模到達（Reach）を可能にしている。Tumblr買収によるメディア統合も試みられた。",
+      "evidence_quotes": [
+        "Yahoo reaches more than 1 billion monthly users. (Q2 2015 参照）",
+        "Yahoo Finance is the #1 financial news destination with over 60 million monthly users."
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - 10億ユーザーという能力・基盤",
+        "rule04_quantitative_evidence": "PASS - 10億MAU、Yahoo Finance 6000万MAUという定量証拠",
+        "rule06_structural_vs_complementary": "WARN - GoogleとFacebookも同等以上のリーチを持つ",
+        "rule07_pure_competitor_differentiation": "FAIL - GoogleとFacebookに比較して差別化が不明確",
+        "rule08_strategy_not_advantage": "WARN - ユーザー基盤は存在するが広告収益は低迷",
+        "rule10_negative_case": "WARN - ex-TACリブートの広告収益は低迷中",
+        "rule11_industry_structure_fit": "CONDITIONAL - インターネット広告ではリーチが重要だが質が問題",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.2,
+      "confidence_rationale": "10億MAUは規模としては実在するが、GoogleとFacebookの支配的地位に比べYahoo!の競争優位性は弱い。ex-TAC広告収益の低迷はネットワーク効果が機能不全に陥っていることを示す。ユーザー基盤は維持されているが収益化力は低下している。"
+    },
+    {
+      "claim_id": "YHOO-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Yahoo!ブランドはニュース、スポーツ、ファイナンス、メールという複数のコンテンツカテゴリで依然として米国トップ3の認知度と月間利用率を持つ。Marissa Meyerのリブランディング・Flickr再活性化・コンテンツ改善が進行中。",
+      "evidence_quotes": [
+        "Yahoo Finance, Yahoo Sports, Yahoo News remain top destinations in their categories.",
+        "Mobile MAU growth continues with Tumblr and mobile products."
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "CONDITIONAL - ブランド認知は維持されているが収益力が低下",
+        "rule04_quantitative_evidence": "PARTIAL - 定性的なカテゴリリーダーシップのみ",
+        "rule06_structural_vs_complementary": "WARN - コンテンツブランドはGoogleに押されている",
+        "rule07_pure_competitor_differentiation": "FAIL - コンテンツカテゴリでの差別化が弱い",
+        "rule08_strategy_not_advantage": "WARN - リブランディングは戦略であり優位性ではない",
+        "rule10_negative_case": "WARN - 広告収益低迷がブランド力の限界を示す",
+        "rule11_industry_structure_fit": "CONDITIONAL - ブランドはメディアビジネスで重要だが競合比較で劣位",
+        "rule12_transcript_primary_secondary": "PRIMARY確認"
+      },
+      "confidence_score": 0.2,
+      "confidence_rationale": "Yahoo!ブランドは認知度があるが、Google・Facebookとの競争でcore internet businessが構造的に劣位に置かれている。広告収益の持続的低迷がブランド力の実効性の限界を示す。"
+    },
+    {
+      "claim_id": "YHOO-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "モバイルインターネット移行に伴い、Yahoo!はモバイルMAU拡大とモバイル広告収益化に注力しているが、主要収益源であるデスクトップ広告の収益は低下中。モバイルシフトがコア事業の収益性低下を加速させている。",
+      "evidence_quotes": [
+        "Mobile revenue continues to grow as users shift to mobile platforms. However, desktop advertising revenue remains under pressure."
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.2,
+      "confidence_rationale": "モバイルシフトはYahoo!にとって追い風でも逆風でもあり、コア広告収益への負の影響が大きい。"
+    },
+    {
+      "claim_id": "YHOO-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Yahoo!コア事業はex-TAC広告収益の低迷（Googleに対する検索広告シェア喪失）が続いており、コアビジネスの価値は下落している。BABAとYahoo Japan保有株式の価値が市場時価総額の大半を占めており、コアインターネット事業への市場評価はほぼゼロに近い状態。",
+      "evidence_quotes": [
+        "Yahoo core advertising business faces ongoing pressure from Google and Facebook competition.",
+        "ex-TAC revenue continues to decline on a year-over-year basis."
+      ],
+      "primary_source": "201501_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "PRIMARY確認"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "コア事業の競争的劣位は市場データとして広く認識されている事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "competitive_advantage_claims": 3,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Cornered Resource (BABA株)", "Network Economies (ユーザー基盤)"],
+    "analyst_notes": "YHOOはコアインターネット事業に競争優位性はほとんど存在しない。BABA株・Yahoo Japan株という財務的資産が主要価値源泉であり、7 Powersフレームワークで評価すべき事業的優位性は乏しい。Google・Facebookとの競争で構造的に劣位。競争優位性スコアは全体的に低くなる。"
+  }
+}

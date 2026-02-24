@@ -1,0 +1,223 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Pratt & Whitney GTFエンジン（Geared Turbofan）による次世代航空エンジン技術優位",
+      "evidence": "Q4 2014: Capex $557M（aerospace ramp）、Commercial aftermarket +5%",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "commercial aerospaceへの投資ランプアップは仕組みとして評価可能"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "航空エンジン開発・認証には10-15年と数十億ドルの投資が必要"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "能力の優位性：aerospace技術"
+        },
+        {
+          "pattern_id": "pattern_G",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "CFMとの直接比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_III",
+          "adjustment": 0.05,
+          "reasoning": "能力あり"
+        },
+        {
+          "source": "transcript_evidence_limited",
+          "adjustment": -0.1,
+          "reasoning": "GTF技術の詳細がQ4発言に乏しい"
+        }
+      ],
+      "overall_reasoning": "aerospace投資は定量的だがGTF技術の詳細がQ4発言に乏しい。業界構造との合致は高い。まあ納得で50%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "GTFエンジン製造ランプアップ → Pratt Commercial Aftermarket長期成長 → Aerospace収益CAGR",
+      "evidence": "Q4 2014: aerospace rampへの投資継続",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "GTFエンジン設置→15年以上のaftermarket service機会は航空業界の標準モデル"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "aftermarket接続は航空業界の標準モデル"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "aftermarket接続は航空業界の標準モデルとして合理的。まあ納得で50%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Otisエレベーターの北米受注20%増（FY2014）と中国新規機器バックログ+13%の持続的成長",
+      "evidence": "Q4 2014: 'North American new equipment orders were up 20%...' バックログ+13%",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "受注増・バックログ増は結果"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "北米+20%（Q4）/+40%（FY）、中国バックログ+13%という定量データ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "受注は結果"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "受注は結果"
+        }
+      ],
+      "overall_reasoning": "Otisの受注数値は定量的だが結果。あまり納得〜まあ納得で40%"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "5セグメント全有機成長（4%）とOPM+90bp拡大という実行力",
+      "evidence": "Q4 2014: 5セグメント全有機成長4%、OPM+90bp → 16.6%",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "5セグメント全成長とOPM拡大は実行の結果"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "実行実績は結果"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "結果"
+        }
+      ],
+      "overall_reasoning": "5セグメント全成長は定量的だが結果。あまり納得しない で30%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: EPS $6.82（+10%）、organic成長4%（全5セグメント）、OPM +90bp → 16.6%",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Otis北米受注+20%（Q4）/+40%（FY）。China新規機器バックログ+13%",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Capex $557M（Q4）：commercial aerospace rampへの投資。Commercial aftermarket UTX AS +5%",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "50-60": 5,
+      "40-50": 1,
+      "30-40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

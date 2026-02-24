@@ -1,0 +1,462 @@
+{
+  "ticker": "RI",
+  "transcript_source": "H1 FY2014 + FY2014 Annual + H1 FY2015 + FY2015 Annual Earnings Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_FY2014", "FY2014", "H1_FY2015", "FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ブランドポートフォリオの深さと幅（Top 14ブランド + 地域ローカルブランド）による地理的分散とカテゴリ多様性",
+      "descriptive_label": "グローバルプレミアムブランドポートフォリオの幅と深さ",
+      "evidence_from_transcript": "FY2015 Prepared Remarks (Alexandre Ricard): 'Our group share of net profit is...solid results...return to growth of our Top 14...strong performance as well of our key local brands, up 5%...' また H1 2014 (Pierre Pringuet): 'we have the ideal positioning for that, the depth and the width of the portfolio. We have the full range'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "ポートフォリオの幅は「ある状態」（構造）であり、結果ではないが、その優位性の説明はやや薄い"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "名詞（ポートフォリオの幅・深さ）で表現されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "M&Aで構築してきたポートフォリオは構造的資産。個別市場の変動を分散できる"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "プレミアムスピリッツ市場でのマルチカテゴリ展開は市場構造と合致するが、競合（Diageo等）も同様の戦略を取る"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "FY2015 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "DiageoやBrown-Formmanも同様のポートフォリオ戦略を持つ（業界共通能力の要素あり）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ポートフォリオの幅と深さは構造的資産だが、上位競合（Diageo等）も同様の戦略を有するため、相対的差別化として弱い。数値的な優位性（シェア、銘柄数など）も不明確。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ポートフォリオ多様性 → 特定市場・カテゴリ下落を他市場で補完 → 売上安定性・CAGR下支え",
+      "descriptive_label": "地理的分散によるCAGRの安定化",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "中国下落→他地域で補完という因果は複数ステップ。証明は難しい"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015 annual callでの言及。優位性仮説の根幹として採用可"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "分散による安定性は論理的だが、個別市場の大幅下落（中国）を補いきれなかった実績もある。2ステップ以上の因果チェーン"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "世界規模の完全自社所有流通ネットワーク（デカントラライズドモデル：ブランドカンパニー×マーケットカンパニー）",
+      "descriptive_label": "自社完全所有流通ネットワーク（デカントラライズド組織）",
+      "evidence_from_transcript": "H1 FY2015 Prepared Remarks (Alexandre Ricard): 'Our business model, so our decentralized organization model, our second-to-none distribution -- fully owned distribution network globally and our wonderful portfolio of Premium brands remain at the roots of our business model.' FY2014 Annual (Pierre Pringuet): 'decentralization remains the cornerstone of organizations...duality between brand companies and market companies'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「second-to-none distribution network」は能力・仕組みとして言及されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative_only",
+            "reasoning": "「second-to-none」は定性的。市場カバレッジ率や効率性指標の定量データなし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "完全自社所有の流通ネットワークは長期投資で構築された構造的資産"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Diageoも同様の完全所有流通を持つため差別化の根拠が弱い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "CEO自身が「second-to-none」と強調（H1 FY2015）",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合Diageoも完全所有流通を有するため相対的差別化が不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "完全自社所有流通は構造的資産だが、大手競合（Diageo）との差別化が定量的に示されていない。デカントラライズドモデルの独自性は言及されているが、優位性を示す数値がない。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "完全所有流通網 → 価格規律の維持・プレミアムブランドポジションの保護 → ASP維持・売上成長",
+      "descriptive_label": "流通コントロール→価格規律→ASP維持",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "流通制御→価格管理→ASP保護は2ステップ。Martell中国の価格規律維持が実証例"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015 annual callでの言及"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "価格規律の維持は繰り返し強調されており（「no compromise on pricing」）、流通コントロールとの因果は概ね妥当。ただし定量的な効果測定がない"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Jamesonブランドの継続的な高成長と全市場展開能力（25年連続成長、2020年までに倍増目標）",
+      "descriptive_label": "Jamesonブランドのグローバル展開力とモメンタム",
+      "evidence_from_transcript": "FY2014 Annual (Pierre Pringuet): 'Jameson...gradually acquiring the status of the global brand...which has been achieved over the last 5 years.' H1 FY2014 (Alexandre Ricard): 'Jameson at plus 20% [in US], double-digit growth as well in Russia or in South Africa.' FY2014 (Alexandre Ricard): 'our ambition after 25 consecutive years of growth on Jameson, we want to double our sales to above EUR 8 billion by 2020 on Jameson'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "25年連続成長・2020年倍増目標は「結果・目標」であり、なぜそれが可能かの「能力・仕組み」の説明が乏しい"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "partial",
+            "reasoning": "「Jamesonブランド力」は名詞だが、その強さの根拠が不明確"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "US +20%、Irish whiskey category +16%に対しJameson +18%という比較データあり（FY2015）"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "Irish whiskey カテゴリの成長とJamesonのカテゴリ内ポジションは合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "成長実績を優位性として提示しているパターン（却下パターンA-T）",
+            "adjustment": -10
+          },
+          {
+            "reason": "Irish whiskey全体の成長がJamesonを引き上げており、固有の優位性かが疑問",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Jamesonの高成長は実績（結果）であり、背後の優位性（ブランド構築プロセス、流通優位性等）の具体的説明が乏しい。カテゴリ成長による追い風要因も大きい。30-50%相当。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Jamesonのグローバル展開 → Premium Irish whiskey カテゴリのシェア獲得 → 売上CAGR + 1-2pp",
+      "descriptive_label": "Jameson→Irish whiskey市場リード→CAGR寄与",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。Irish whiskey市場の成長率（+16%）とJameson（+18%）の実績で検証可"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015 annual callでの言及"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "カテゴリ成長との重複部分があるが、Jamesonがカテゴリをリードしている事実はある。CAGR接続としては妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "プレミアム化戦略（Premiumization）に基づく価格規律の維持：12のTop 14ブランドでポジティブ価格インパクト",
+      "descriptive_label": "プレミアムブランド価格規律維持能力",
+      "evidence_from_transcript": "FY2014 Annual (Alexandre Ricard): '12 of our 14 key brands posted positive pricing. Premiumization is actually working here. We have -- and Pierre mentioned it at the very beginning. We delivered our performance with no compromise and specifically no compromise on pricing.' FY2015 Annual (Gilles Bogaert): 'stable pricing. Given the environment and the competitive pressure we have, I think it's good to stress that point.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「価格規律」は能力と言えるが、その仕組みが「流通コントロール」や「ブランド力」に依存しており、独立した優位性かは曖昧"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "FY2014年でTop14の14銘柄中12銘柄がポジティブ価格インパクトという具体的数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プレミアムブランドとしての価格維持能力は構造的（ブランドエクイティ）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合比較なし。DiaGeoやBrown-Formanも価格維持を重視する"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "中国市場では価格規律が崩れつつある事実（認めている）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "「no compromise on pricing」の方針は繰り返し強調されており、14銘柄中12銘柄での正の価格インパクトという数値は一定の裏付け。ただし中国では例外が生じており、条件付きの評価"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "価格規律維持 → グロスマージン改善 → EBIT成長 → CAGR正寄与",
+      "descriptive_label": "価格規律→グロスマージン→CAGR",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "価格規律→グロスマージン改善（62.8%）は直接的。SECデータで検証可"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "複数のFY annual callで継続的に言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "グロスマージンの継続改善（4年連続）は開示データで検証可能。価格規律との因果は明確"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Allegro コスト効率化プログラムによる構造的なコスト削減能力（年間EUR150Mの削減目標）",
+      "descriptive_label": "Allegro構造コスト削減プログラム",
+      "evidence_from_transcript": "FY2014 Annual (Pierre Pringuet): 'Allegro is, first and foremost, an operational efficiency project...3 key principles: prioritization, simplification, mutualization...EUR 150 million of recurring savings' FY2015 Annual (Gilles Bogaert): 'strong decrease in structure cost, minus 3%... EUR 80 million in 14-15'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [14],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "コスト削減「プログラム」は戦略的施策。一過性か持続的かの判断が重要"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "コスト削減は補完的要素。事業の核心的競争優位ではない"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "Allegroは戦略的施策（コスト削減プログラム）であり、構造的な競争優位性ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "戦略的施策（プログラム）であり持続的な競争優位性とは言えない（ルール8-T違反）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "Allegroはコスト削減プログラムであり、持続的な競争優位性（Process Power等）とは異なる。EUR150Mの削減という具体的目標があるが、競合との比較なし。戦略と優位性の混同（ルール8-T）"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "FY2014年、Top 14ブランドの14銘柄中12銘柄でポジティブな価格インパクト達成。グロスマージン率は62.8%（4年連続改善）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 7]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Pernod Ricardは「second-to-none」の完全自社所有流通ネットワークをグローバルに展開（新CEO Alexandre Ricard、H1 FY2015で言及）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "JamesonはFY2015に25年連続成長を達成。FY2015の成長率はUS +18%（Irish whiskey category +16%に対し）、全世界+10%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "FY2015にAllegroコスト削減プログラムでEUR80Mの構造コスト削減を達成（年次目標EUR150Mのうち）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [9]
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "FY2015のA&P（広告宣伝費）は売上比~19%（業界最高水準）を維持。FY2015は前年比+2%増（特に中国・インドでの成長ドライバー向けに集中投資）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    },
+    {
+      "id": 15,
+      "claim_type": "competitive_advantage",
+      "claim": "インドでの現地ウィスキーブランド（Royal Stag, Imperial Blue, Blender's Pride）を通じた高成長新興市場への浸透力",
+      "descriptive_label": "インド新興市場ローカルブランド浸透力",
+      "evidence_from_transcript": "H1 FY2015 (Alexandre Ricard): 'Royal Stag, which was elected India's most valuable brand...all 3 brands now accumulate 35 million cases. So close to 1/3 of 1 billion liters of Indian whiskey.' FY2015 (Alexandre Ricard): 'India up 18%...driven by our Indian whiskies, Royal Stag, Imperial Blue, Blender's Pride'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [16],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "35百万ケース・最も価値あるブランド認定は結果。ブランド構築の仕組みの説明が弱い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "35百万ケース、インド売上18%という数値あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "インドの急成長するウィスキー市場（中間層拡大）との合致は明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの言及",
+            "adjustment": 0
+          },
+          {
+            "reason": "インドの規制・税制リスクへの言及がある（不確実性要因）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "35百万ケースという巨大な規模感は印象的。インド市場のウィスキー成長との合致も良好。ただし競合対比の説明が弱く、仕組みより結果の提示に偏っている。"
+      }
+    },
+    {
+      "id": 16,
+      "claim_type": "cagr_connection",
+      "claim": "インドローカルブランド → インド市場シェア・規模 → 新興市場全体のCAGR押し上げ",
+      "descriptive_label": "インドブランド→新興市場CAGR貢献",
+      "source_advantage": 15,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果。インドが現在中国と同規模であり、今後も18%成長が続けばCAGRへの寄与は大きい"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015 annual callでの言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "インドがグループ最大市場（中国と同規模）に成長しており、18%成長継続のCAGR寄与は大きい。規制リスクはあるが、成長ポテンシャルは明確"
+      }
+    }
+  ]
+}

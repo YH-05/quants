@@ -1,0 +1,92 @@
+{
+  "ticker": "ATLN",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Actelionの肺動脈性高血圧症（PAH）治療における専門性・ノウハウ（Tracleer→Opsumit→Uptravi→Veletriの連続ケア体制）",
+      "descriptive_label": "PAH専門治療フランチャイズの垂直統合（Switching Costs / Cornered Resource）",
+      "seven_powers_type": "Switching Costs",
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "PAH治療連続ケア体制（FC II-IV）は希少疾患でのSwitching Costs典型。ただしGilead競合とUptravi未承認が不確実性を高める。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_I_t（定量的差別化）+ pattern_II_t。PAH専門フランチャイズは業界構造（希少疾患×専門医コミュニティ）に深く合致。Phase1の-20%調整（競合圧力・未承認）を反映して50%。",
+      "dogma_applied": ["dogma_rule_3", "dogma_rule_7"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Opsumit（macitentan）のSERAPHINアウトカムトライアルデータによる差別化（死亡・罹患率45%リスク低減）",
+      "descriptive_label": "アウトカムデータによる医学的差別化（Cornered Resource）",
+      "seven_powers_type": "Cornered Resource",
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "SERAPHIN RCTデータは医薬品分野のCornered Resource典型例。ただしフランス差別化認定失敗とドイツ25%値引きが実用的優位の限界を示す。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。RCTアウトカムデータは模倣不可能なCornered Resource。ただし価格交渉での弱さ（フランス・ドイツ）が経済的優位への変換を制限。Phase1の-20%調整で50%。",
+      "dogma_applied": ["dogma_rule_3"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "selexipag（Uptravi）の経口プロスタサイクリン受容体作動薬としての革新性（39%罹患率/死亡率リスク低減）",
+      "descriptive_label": "経口投与可能なプロスタサイクリン経路の開拓（Cornered Resource）",
+      "seven_powers_type": "Cornered Resource",
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "GRIPHON 39%リスク低減は強力なデータだが、PoiT時点での未承認状態が実現前評価を制限。KB3 low-mid confidence",
+      "final_confidence": 0.4,
+      "confidence_rationale": "KB2 pattern_II_t（直接メカニズム）。革新性（IV→経口）と39%RCTデータは高評価だが、Phase1の-30%調整（PoiT時点で未承認-20%、承認後不確実性-10%）を反映して40%。",
+      "dogma_applied": ["dogma_rule_8"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Actelionの強固なバランスシート（純現金CHF970mn）と資本配分規律（選択的M&A・株主還元）",
+      "descriptive_label": "財務的柔軟性と資本配分規律（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 50,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_IV_t",
+      "kb3_calibration_note": "純現金CHF970mn + ネガティブケース（高プレミアムM&A回避）。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_IV_t（構造的市場ポジション）。選択的M&A規律のネガティブケース開示は評価できる。バイオファーマの資本配分としては高い透明性。50%維持。",
+      "dogma_applied": ["dogma_rule_3"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "Opsumit新規市場展開（18カ国→更なる拡大）+ Uptravi承認 → PAHフランチャイズ売上CAGR（core earnings低一桁%成長ガイダンス）",
+      "descriptive_label": "PAHフランチャイズ拡大→売上→CoreEarnings CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "低一桁%成長ガイダンスは保守的。Tracleer generic侵食とOpsumit成長の差し引きが制約。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "経路は明確だがTracleer generic侵食とUptravi承認の不確実性が相殺し、±10%調整後50%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 1, "40-50": 4},
+    "gatekeeper_applied": false
+  }
+}

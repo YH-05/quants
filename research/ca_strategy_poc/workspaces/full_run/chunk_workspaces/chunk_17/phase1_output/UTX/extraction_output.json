@@ -1,0 +1,197 @@
+{
+  "ticker": "UTX",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-26) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Pratt & Whitney GTFエンジン（Geared Turbofan）による次世代航空エンジン技術優位",
+      "descriptive_label": "GTFエンジン技術による航空エンジン市場での競合差別化",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'we continue to invest for the ramp in commercial aerospace'。UTX annual reportsで言及のGTFエンジン（16%燃料効率改善）への大規模投資。CFO: 'capex $557M...we continue to invest for the ramp in commercial aerospace'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "commercial aerospaceへの投資ランプアップは「仕組み」として評価可能。ただしGTFエンジンの具体的な技術優位性への言及がQ4トランスクリプト内では限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "Capex $557M（aerospace ramp）という定量データ。ただしGTFの燃料効率数値はトランスクリプト外知識"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "航空エンジンの開発・認証には10-15年と数十億ドルの投資が必要。極めて高い参入障壁"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "CFM（GEとSafran合弁）との直接比較がない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "航空旅客需要増と航空会社の燃料コスト削減ニーズがGTF採用を促進する業界構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言だがGTF技術への言及が限定的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "aerospace投資は定量的だがGTF技術の詳細がQ4発言に乏しい。業界構造との合致は高い。まあ納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "GTFエンジン製造ランプアップ → Pratt Commercial Aftermarket長期成長 → Aerospace収益CAGR",
+      "descriptive_label": "GTFランプ→aftermarket成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "GTFエンジン設置 → 15年以上の aftermarket service 機会（消耗品・MRO）。aerospace industryの標準モデルで2-3ステップの接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "aftermarket接続は航空業界の標準モデルとして合理的。まあ納得"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Otisエレベーターの北米受注20%増（FY2014）と中国新規機器バックログ+13%の持続的成長",
+      "descriptive_label": "Otisエレベーターの北米+新興国受注成長",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'Otis where North American new equipment orders were up 20% in the quarter and 40% for the year'。'In China, Otis new equipment orders were up 2% in the fourth quarter and finished up 6% for the full year. New equipment backlog remains strong, up 13% versus the prior year'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "受注増・バックログ増は結果。Otisがなぜエレベーター市場で勝てるのかの能力説明（サービスネットワーク、ブランド）が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "北米受注+20%（Q4）/+40%（FY）、中国バックログ+13%という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "Kone、Schindler、Thyssenkrupp等競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（受注は結果）",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "受注・バックログは結果であり仕組みの説明不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Otisの受注数値は定量的だが結果に過ぎない。あまり納得〜まあ納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "5セグメント全有機成長（4%）とOPM+90bp拡大という実行力",
+      "descriptive_label": "多角的コングロマリットとしての組織的実行力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: '4% organic growth with all 5 segments growing organically for the year. Segment operating margins expanded by 90 basis points to 16.6%'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "5セグメント全成長とOPM拡大は実行の結果。なぜこれが達成できるのかの組織能力への言及が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "4%有機成長、OPM+90bpという定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（実績は結果）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "実行実績は結果に過ぎず能力説明なし",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "5セグメント全成長は定量的だが結果。あまり納得しない"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: EPS $6.82（+10%）、organic成長4%（全5セグメント）、OPM +90bp → 16.6%、FCF/NI 90%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Otis北米受注+20%（Q4）/+40%（FY）。China新規機器バックログ+13%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Capex $557M（Q4）：commercial aerospace rampへの投資。Commercial aftermarket UTX AS +5%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    }
+  ]
+}

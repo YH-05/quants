@@ -1,0 +1,173 @@
+{
+  "ticker": "MON",
+  "company_name": "Monsanto Company",
+  "extraction_date": "2025-09-30",
+  "cutoff_date": "2015-09-30",
+  "transcripts_analyzed": [
+    {"file": "201401_earnings_call.json", "quarter": "Q1 FY2014", "type": "secondary"},
+    {"file": "201404_earnings_call.json", "quarter": "Q2 FY2014", "type": "secondary"},
+    {"file": "201406_earnings_call.json", "quarter": "Q3 FY2014", "type": "secondary"},
+    {"file": "201410_earnings_call.json", "quarter": "Q4 FY2014", "type": "primary"},
+    {"file": "201501_earnings_call.json", "quarter": "Q1 FY2015", "type": "secondary"},
+    {"file": "201504_earnings_call.json", "quarter": "Q2 FY2015", "type": "secondary"},
+    {"file": "201506_earnings_call.json", "quarter": "Q3 FY2015", "type": "secondary"},
+    {"file": "201510_earnings_call.json", "quarter": "Q4 FY2015", "type": "primary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "MON-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "title": "Germplasm Breeding Engine — 8 Bushel/Acre Corn Yield Advantage Over Competitors",
+      "description": "Monsanto's DEKALB corn varieties consistently outperform competitors by 7-10 bushels per acre (2013 final results: 8 bushels/acre advantage) across diverse field conditions. The breeding engine — described as Monsanto's 'biggest blockbuster' — leverages high-throughput screening, advanced genetic markers, and the world's largest proprietary field testing database. This consistent performance advantage has been maintained for multiple years, reflecting a process power advantage rooted in accumulated breeding knowhow and genetic databases.",
+      "evidence": "FY2014 final corn yield advantage: 8 bushels/acre over competitive best. 'Even in a year where overall yields were some of the strongest, we're still in that 7 to 10 bushel-an-acre advantage band.' 4+ years of back-to-back >4 bushel/acre advantage for Roundup Ready 2 Yield over first-generation products. Cotton: out-yielding competitive best by 6% (~74 pounds lint/acre or ~$60/acre advantage for Deltapine cotton). 1 million yield plots planned over next several years for continued advancement.",
+      "source_quarter": "Q4 FY2014 (primary), Q1 FY2014 (secondary)",
+      "speaker": "Robert Fraley (CTO), Brett Begemann (President/COO)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "rationale": "8 bushels/acre consistent yield advantage over competitors is a highly specific, quantified, multi-year proven superiority metric. Rule04: this is reproducible annual field trial data across diverse agronomic conditions — not a one-year fluke. Rule07: direct comparison with 'competitive best' is explicit, not implied. The consistency over 'a year where overall yields were some of the strongest' demonstrates the advantage holds in both favorable and challenging years. Score 70% (mostly convinced) — quantified multi-year competitive superiority in core product metric."
+    },
+    {
+      "claim_id": "MON-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "title": "Proprietary Genetic Database — Unrivaled Scale of Field Testing Data",
+      "description": "Monsanto possesses what management describes as 'a massive genetic database' from its global field testing operations — planned to reach 1 million yield plots over the next several years. This database, combined with The Climate Corporation's hyper-local weather modeling, creates a data asset that competitors cannot replicate in the near term. The Climate Corporation tools were already used on nearly 1 in 3 US corn and soybean acres in FY2014.",
+      "evidence": "Climate Corporation tools used on nearly 1 in 3 US corn and soybean acres (FY2014). 1 million yield plots planned for genetic database expansion. Climate basic tools head start: 'we believe is unrivaled.' The Climate Corporation + FieldScripts cross-synergy already producing enhanced algorithm outputs. Target: increase Climate active users by 50% in FY2015. Cross-synergy: hyper-local weather modeling embedded into FieldScripts prescription engine.",
+      "source_quarter": "Q4 FY2014 (primary), Q1 FY2014 (secondary)",
+      "speaker": "Robert Fraley (CTO), Brett Begemann (President/COO)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "rationale": "The combination of Monsanto's genetic database (decades of field trial data across millions of acres) with The Climate Corporation's weather modeling creates a data moat that compounds over time. Rule04: 1 in 3 US corn/soybean acres using Climate tools is a quantified base that generates increasing learning. Rule11: precision agriculture industry structure rewards data scale — the more acres adopt FieldScripts, the more prescription data feeds back into the algorithm, creating a self-reinforcing data advantage. Score 70% (mostly convinced) — unique data resource with demonstrated scale and early ecosystem adoption."
+    },
+    {
+      "claim_id": "MON-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "title": "RNAi Corn Rootworm III (SmartStax PRO) — Novel Mode of Action Unavailable to Competitors",
+      "description": "Monsanto's SmartStax PRO uses RNA interference (RNAi) as the first plant-expressed insect control product using RNAi-based modes of action. While the rest of the industry focuses exclusively on Bt genes, Monsanto has a completely novel approach — with regulatory submission completed in US and international markets. This counter-positions Monsanto against the entire industry's approach.",
+      "evidence": "SmartStax PRO: first insect control product using RNAi-based modes of action inside the plant. Reached Phase 4 (pre-commercial testing). Regulatory submissions completed in US and several international markets. 'While the rest of the industry still focuses exclusively on Bt genes, we have a completely novel approach.' Next generation of RNAi candidates advanced for durability and incremental value.",
+      "source_quarter": "Q1 FY2014 (secondary)",
+      "speaker": "Robert Fraley (CTO)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "rationale": "RNAi-based insect control is a fundamentally different technology class from Bt proteins. Rule06: this is a structural technology innovation, not a complementary capability. Rule11: as Bt resistance evolves (already observed), RNAi represents the next mode of action — giving Monsanto a pipeline advantage that cannot be replicated quickly by DuPont Pioneer or Syngenta. The specific statement 'while the rest of the industry focuses exclusively on Bt genes' is an explicit Rule07 competitor comparison. Score 70% (mostly convinced) — novel proprietary technology with regulatory submission stage and clear differentiation from industry."
+    },
+    {
+      "claim_id": "MON-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "title": "Annual Portfolio Upgrade Discipline — 5-10% Price/Mix Uplift Every Year for Over a Decade",
+      "description": "Monsanto has increased its average corn price (price/mix) in its global portfolio every year for over a decade, regardless of commodity market environment. In FY2015, the mid-single-digit price/mix benefit continues. This discipline — upgrading germplasm continuously and extracting price for superior performance — is embedded in Monsanto's breeding and product lifecycle management process.",
+      "evidence": "'Regardless of the environment, we've increased our average price in our portfolio every year in the last decade.' FY2015 guidance: mid-single-digit corn portfolio price/mix benefit. FY2014 results: corn margins increased despite several hundred million dollars of GP pressure from lower acres and currency effects. Corn COGS lower + positive total price + good volume against declining planted acres = margin expansion.",
+      "source_quarter": "Q4 FY2014 (primary)",
+      "speaker": "Brett Begemann (President/COO), Pierre Courduroux (CFO)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "rationale": "Annual price/mix increases 'every year for over a decade' in a commodity-facing industry is one of the strongest indicators of structural pricing power (a form of Process Power through annual product refresh). Rule04: 10+ years of consistent price/mix increases is a verifiable multi-year track record. Rule07: DuPont Pioneer and Syngenta face the same commodity environment but do not claim equivalent annual pricing consistency. Score 70% (mostly convinced) — proven multi-year pricing discipline backed by new germplasm performance each year."
+    },
+    {
+      "claim_id": "MON-005",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "title": "Intacta RR2 PRO — Soybean Trait Monopoly in Latin America",
+      "description": "Monsanto's Intacta RR2 PRO soybean trait (herbicide tolerance + insect control) had a 3 million acre launch in FY2014, expected to reach 10-12 million acres in FY2015 against a 100 million acre addressable market in Latin America. In a year with heavy insect pressure, Intacta reduced 2-3 insecticide sprays, delivering $60-100/acre economic value. No competing dual-mode soybean trait was commercially available.",
+      "evidence": "FY2014: 3 million acre Intacta launch. FY2015 target: 10-12 million acres (tipping point of adoption). Total addressable market: ~100 million acres in North and South America. Heavy insect pressure in 2014 showcased: competitors spraying 4-5 times, Intacta fields reduced 2-3 sprays. Second-generation Intacta already in Phase 4 in same year as first-generation launch. Next-gen: insect control + Roundup Ready 2 Xtend multi-trait system.",
+      "source_quarter": "Q4 FY2014 (primary), Q1 FY2014 (secondary)",
+      "speaker": "Brett Begemann (COO), Robert Fraley (CTO)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "rationale": "Intacta is the only commercially available dual-mode soybean trait in Latin America (herbicide tolerance + insect control). Rule04: 3 million → 10-12 million acre trajectory is rapid adoption data with quantified value ($60+ per acre savings from insect control reduction). Rule11: once farmers adopt Intacta at tipping-point scale, seed channel commitments and farmer trust create durable lock-in, with each year's yield data reinforcing adoption. Score 70% (mostly convinced) — monopoly position in large addressable market with strong adoption trajectory and quantified farmer value."
+    },
+    {
+      "claim_id": "MON-006",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "title": "The Climate Corporation Precision Agriculture Platform — Software-Pace Technology Upgrade Cycle",
+      "description": "Monsanto's acquisition of The Climate Corporation (2013) and integration with Integrated Farming Systems (FieldScripts) and Precision Planting creates a precision agriculture platform upgrading at software industry pace. Each year, new data from Climate users feeds back into prescription algorithms, creating a compounding data advantage. The platform architecture (seed prescription + weather modeling + soil data) is unlike any offering from agricultural incumbents.",
+      "evidence": "Climate tools used on nearly 1 in 3 US corn/soybean acres (FY2014). Target: increase active Climate users by 50% in FY2015. FieldScripts + Climate cross-synergy already producing enhanced hyper-local prescriptions. Phase 1 launch in FY2014; commercial premium upgrade (Climate Pro) in FY2015. $350M total platform investment planned for FY2015 ($150M incremental vs FY2014). WinField MOU (largest US agricultural retail distributor) to integrate IFS/Climate tools with R7 precision ag.",
+      "source_quarter": "Q4 FY2014 (primary), Q1 FY2014 (secondary)",
+      "speaker": "Brett Begemann (COO), Robert Fraley (CTO)",
+      "confidence": 0.5,
+      "kb_rules_applied": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "rationale": "Precision agriculture platform is a differentiated strategy but still early in commercialization. Rule01: 'used on nearly 1 in 3 acres' is impressively broad but the commercial revenue contribution is still minimal. Rule08: investing $350M in a new platform is a strategic investment; the question is whether it becomes a structural advantage or a cost center. The data feedback loop (more acres → better prescriptions → more adoption) is the potential moat, but proof of monetization is still ahead. Score 50% (somewhat convinced) — platform is uniquely positioned but commercial validation is early-stage."
+    },
+    {
+      "claim_id": "MON-007",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "title": "Multichannel Distribution and Direct-to-Grower Channel Strategy",
+      "description": "Monsanto's multichannel distribution architecture — full-service retail partners (e.g., WinField) PLUS direct-to-grower Channel seed brand (evolved to more direct sales force) — creates multiple customer touchpoints and relationship depth that competitors relying on single-channel distribution cannot match. The direct-to-grower model creates a sales force 'highly motivated by day-to-day relationships with the grower,' building personal switching costs.",
+      "evidence": "Channel seed brand evolved to direct-to-grower model (shifting supply chain to Monsanto while sales force focuses on grower relationships). WinField MOU (largest US agricultural retail distributor) for integrated precision ag platform. Multi-channel approach: full-service retail partners + regional brands + direct-to-grower brands. Multi-channel provides more touchpoints for the key seed decision. US order book strength maintained despite lower commodity prices.",
+      "source_quarter": "Q4 FY2014 (primary)",
+      "speaker": "Brett Begemann (COO)",
+      "confidence": 0.3,
+      "kb_rules_applied": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "rationale": "Multichannel distribution is a sales strategy, not a structural competitive advantage per Rule08. DuPont Pioneer and Syngenta also sell through multiple channels. The evolution of Channel seed brand to more direct-to-grower focus is a tactical adjustment, not a unique moat. Rule01: having a sales force is a capability, not a demonstrated result of higher customer retention. Score 30% (not very convinced) — distribution strategy is sensible but not structurally differentiated."
+    },
+    {
+      "claim_id": "MON-008",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "title": "FY2014 Financial Performance: EPS $5.23, FCF $959M",
+      "description": "Monsanto closed FY2014 with ongoing EPS of $5.23 (above updated guidance) and free cash flow of $959M. Seeds and Genomics delivered the majority of gross profit growth, with fourth consecutive year of strong earnings growth.",
+      "evidence": "FY2014 ongoing EPS: $5.23 (ahead of guidance). FCF: $959M. Seeds and Genomics: majority of GP growth. 4th consecutive year of strong earnings growth. 2 quarters of record share buybacks: $1.1B combined. $2B share repurchase authorization being executed at accelerated pace.",
+      "source_quarter": "Q4 FY2014 (primary)",
+      "speaker": "Bryan Hurley (IR), Hugh Grant (CEO), Pierre Courduroux (CFO)",
+      "confidence": null,
+      "kb_rules_applied": [],
+      "rationale": "Factual financial metric. Verifiable via fiscal year 2014 annual report."
+    },
+    {
+      "claim_id": "MON-009",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "title": "5-Year Target: At Least Double EPS to ~$10+ by FY2019",
+      "description": "Monsanto management set a target to at least double ongoing EPS from $5.23 (FY2014) to $10+ by FY2019, implying ~14% CAGR. The road map relies on: Seeds and Genomics double-digit growth (corn + soybeans), Intacta Latin America scale-up, Roundup Ready 2 Xtend platform launch, Climate Corporation monetization, and share buybacks ($10B authorization).",
+      "evidence": "FY2019 EPS target: at least double FY2014's $5.23 (~$10+). 5-year target set at Analyst Day, reaffirmed in Q4 FY2014 call. FY2015 EPS guidance: $5.75-$6.00 (+10-15%). FCF target FY2015: $2.0-$2.2B. $10B share buyback program announced. Seeds and Genomics GP growth: double-digit target. Intacta addressable market: 100M+ acres in Americas by 2019.",
+      "source_quarter": "Q4 FY2014 (primary)",
+      "speaker": "Hugh Grant (CEO), Pierre Courduroux (CFO)",
+      "confidence": null,
+      "kb_rules_applied": [],
+      "rationale": "Management multi-year EPS target. Verifiable against subsequent actual FY2015-2019 results."
+    },
+    {
+      "claim_id": "MON-010",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "title": "Biologicals Platform: 4-6 Bushel/Acre Corn Yield Benefit from Key Microbial Products",
+      "description": "First-year testing of the Novozymes BioAg Alliance microbial products showed 4-6 bushels per acre corn yield benefit — 'a level of performance that compares with some of the most successful biotech traits.' This early data suggests biologicals could be a third growth platform alongside seeds/traits and precision agriculture, with faster regulatory approvals (non-GMO pathway) and lower development costs.",
+      "evidence": "First-year testing: 4-6 bushel/acre corn yield benefit from key BioAg Alliance microbials. Performance 'compares with some of the most successful biotech traits.' Testing planned to expand to 1 million yield plots. Non-GMO pathway: expedited regulatory approvals, lower development cost, applicable to markets where biotech traits aren't relevant. Variable performance in different agronomic conditions identified — creates Monsanto precision ag + biologicals synergy opportunity.",
+      "source_quarter": "Q1 FY2014 (secondary)",
+      "speaker": "Robert Fraley (CTO)",
+      "confidence": null,
+      "kb_rules_applied": [],
+      "rationale": "Early R&D result. Verifiable against subsequent BioAg Alliance commercialization milestones."
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 10,
+    "competitive_advantage_claims": 7,
+    "factual_claims": 1,
+    "cagr_connection_claims": 2,
+    "power_type_distribution": {
+      "Process Power": 3,
+      "Cornered Resource": 2,
+      "Counter-Positioning": 1,
+      "Switching Costs": 1
+    },
+    "confidence_distribution": {
+      "0.7": 5,
+      "0.5": 1,
+      "0.3": 1
+    },
+    "key_themes": [
+      "Germplasm breeding engine (8 bushel/acre corn yield advantage)",
+      "Proprietary genetic database (1/3 of US acres using Climate tools)",
+      "Intacta soybean trait monopoly in Latin America",
+      "RNAi counter-positioning (SmartStax PRO vs. Bt-only competitors)",
+      "Annual price/mix increase discipline (10+ years)",
+      "Climate Corporation precision agriculture platform"
+    ]
+  }
+}

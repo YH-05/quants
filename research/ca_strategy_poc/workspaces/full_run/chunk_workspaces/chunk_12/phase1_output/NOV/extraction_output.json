@@ -1,0 +1,328 @@
+{
+  "ticker": "NOV",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-03)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_FY2014", "Q2_FY2014", "Q3_FY2014", "Q1_FY2015", "Q2_FY2015"]
+  },
+  "claims": [
+    {
+      "id": "NOV-001",
+      "claim_type": "competitive_advantage",
+      "claim": "大規模バックログ（$12.5B）による収益可視性とダウンサイクル耐性（Backlog Moat）",
+      "descriptive_label": "$12.5Bバックログによる多年度収益の確実性",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'This resulted in a Rig Systems backlog of $12.5 billion to start 2015. This is a high backlog for NOV by historical standards, 16% higher than we carried into the 2009 downturn... we expect the continued on-time execution of our backlog to continue.' (2015-02-03, Clay Williams)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Clay Williams (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NOV-009"],
+      "cagr_connections": ["NOV-010"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.1,
+            "reasoning": "$12.5Bバックログは結果（受注残高）であり優位性ではない（ルール1）。それを生み出す能力（技術的優位、仕様取込、顧客関係）が優位性。ただし2009年比16%高というデータは構造的な優位性のシグナルとして機能"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。$12.5Bバックログは定量的に明確だが、これは結果。バックログ積み上げ能力（技術力、仕様取込、顧客との長期関係）の説明と組み合わせると価値が増す。キャンセル不可の契約条件（2009年に4%のみ消滅）という補強データが構造的特性を示す。50%"
+      }
+    },
+    {
+      "id": "NOV-002",
+      "claim_type": "competitive_advantage",
+      "claim": "リグ後市場（Aftermarket）の大規模インストールベースによる反復収益（Installed Base Advantage）",
+      "descriptive_label": "グローバルインストールベースからの継続的サービス・部品需要",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CFO発言）: 'The Rig Aftermarket segment posted record revenues of $850 million in the fourth quarter 2014... Our large and growing installed base of equipment, combined with the investments that we have made in additional personnel, training, global infrastructure and inventory, have resulted in solid growth.' (2015-02-03, Jeremy Thigpen)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jeremy Thigpen (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NOV-009"],
+      "cagr_connections": ["NOV-011"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "インストールベース×サービス事業は業界構造（顧客がNOV機器を使い続ける限りNOV部品・サービスを使わざるを得ない）と合致。Aftermarkerマージン28.8%という数値も裏付け"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。インストールベースからのAftermarket収益はスイッチングコスト型の優位性として明確。$850M四半期収益、28.8%マージン（前年比+300bp）は定量的。ただし純粋競合（Schlumberger、Halliburton等のOEM部品）との差別化比較がなく70%に留まる"
+      }
+    },
+    {
+      "id": "NOV-003",
+      "claim_type": "competitive_advantage",
+      "claim": "閉ループ自動掘削システム（Closed-Loop Automated Drilling）等の次世代技術開発力",
+      "descriptive_label": "自動掘削技術による次サイクルへのポジショニング",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'We are continuing to advance new technologies like closed-loop automated drilling, which has significantly improved drilling performance through several pilot programs.' (2015-02-03, Clay Williams)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Clay Williams (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["NOV-010"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_D_t",
+            "adjustment": -0.2,
+            "reasoning": "「significantly improved drilling performance」は定性的主張。パイロットプログラムの定量的成果（掘削コスト削減%、時間短縮%）がなく、競合（Schlumberger、Baker Hughes）との比較もない。PoiT制約により2015年9月以降の実用化は評価外"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。技術開発力は方向性として認めるが、パイロット段階の技術のため定量的裏付けが乏しい。競合との差別化（Baker Hughes AutoTrak等との比較）もなく30%"
+      }
+    },
+    {
+      "id": "NOV-004",
+      "claim_type": "competitive_advantage",
+      "claim": "モジュール式FPSO統合パッケージ提供能力（Integrated FPSO Package Capability）",
+      "descriptive_label": "FPSO分野での新たな統合パッケージアプローチ",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'Our new approach is to offer a timely integrated package of NOV kit to minimize the interface conflicts brought about by the fragmented supply chain approach... NOV has a tremendous track record of success in bringing this modular package approach to the construction of offshore drilling rigs through the last decade. Our extensive experience in working closely with shipyards to execute, install and commission these complex construction projects uniquely positions NOV.' (2015-02-03, Clay Williams)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Clay Williams (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["NOV-012"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "「10年間のオフショアリグ構築での実績」は能力を示すが、FPSO分野では「まだ受注はない（a large integrated package FPSO order for NOV is still a ways away）」。将来の機会を語る段階であり、既存の優位性とは言い難い"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。オフショアリグでの統合パッケージ実績は能力の証明。しかしFPSO分野への横展開は「まだ先」とCEO自身が述べており、現時点での競争優位性としての確実性は低い。方向性は認めるが50%"
+      }
+    },
+    {
+      "id": "NOV-005",
+      "claim_type": "competitive_advantage",
+      "claim": "過去のダウンサイクル経験（6回目）に基づくコスト管理・サバイバル能力",
+      "descriptive_label": "繰り返すサイクル対応の組織的学習能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'By my count, this will be the sixth cyclical downturn we have faced through our careers... although we have new leadership and new positions throughout our new organization, I will stress that these figures are not new to NOV, nor are they new to the industry or to cyclical downturns.' (2015-02-03, Clay Williams)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Clay Williams (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t", "rule_8_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_3_t": false,
+          "rule_7_t": false,
+          "rule_8_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_B_t",
+            "adjustment": -0.2,
+            "reasoning": "ダウンサイクル対応の組織経験は業界大手（Schlumberger、Halliburton等）に共通する主張。具体的なコスト削減能力の定量指標や競合比較がなく業界共通の言説（ルール3）"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。6回のサイクル経験は業界知識の蓄積として方向性は認めるが、競合他社も同様の経験を持ち差別化にならない。具体的なコスト削減能力の開示なし。30%"
+      }
+    },
+    {
+      "id": "NOV-006",
+      "claim_type": "competitive_advantage",
+      "claim": "ハイスペックリグおよびシェール向け機器での技術的仕様取込力（Design & Spec-in）",
+      "descriptive_label": "高仕様掘削装置への技術仕様取込によるスイッチングコスト",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'We had several business units post record annual and record quarterly results in 2014... We shipped record levels of top drives, blowout preventers, fiberglass pipe, jacking systems and numerous other products.' (2015-02-03, Clay Williams); CFO: 'Our electronics-related businesses posted organic local currency growth of 9% in Latin America/Canada, 7% in Asia Pacific'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Clay Williams (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NOV-009"],
+      "cagr_connections": ["NOV-010"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_A_t",
+            "adjustment": -0.2,
+            "reasoning": "記録的出荷量は結果であり仕様取込能力の証明ではない（ルール1）。競合（Schlumberger、Baker Hughes、Weatherford）への差別化説明がなく、技術仕様が選ばれる理由の説明が不十分"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。記録的出荷量は事実だが結果の開示。仕様取込能力そのもの（技術仕様、顧客との設計段階での連携）の説明がない。30%"
+      }
+    },
+    {
+      "id": "NOV-007",
+      "claim_type": "competitive_advantage",
+      "claim": "シングルズ＆ダブルズ型M&A戦略による技術・地理的能力の積み上げ",
+      "descriptive_label": "継続的買収による技術ポートフォリオ拡充能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'We continue to pursue our singles and doubles acquisition strategy, which improves our capabilities and global reach in our technology portfolio. We have 7 letters of intent in place and probably triple that in potential prospects.' (2015-02-03, Clay Williams)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Clay Williams (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_10_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_6_t": true,
+          "rule_8_t": false,
+          "rule_10_t": false
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_F_t",
+            "adjustment": -0.1,
+            "reasoning": "M&A戦略は意思決定であり優位性ではない（ルール8）。7つのLOIという数値はあるが、統合能力・選定基準・断念例の開示がなく、CHD#1（70%）レベルの能力証明には達しない"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。「過去15年間の実績」という言及はあるがQ&Aで言及されたもの。統合プロセス・基準・断念例の開示なく、戦略と優位性の混同。30%"
+      }
+    },
+    {
+      "id": "NOV-008",
+      "claim_type": "competitive_advantage",
+      "claim": "強固な貸借対照表と海外キャッシュ活用による投資継続能力（Balance Sheet Strength）",
+      "descriptive_label": "$3.5Bキャッシュ残高によるダウンサイクル中の戦略的機動性",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'We have a strong balance sheet to help weather this downturn... we ended the fourth quarter of 2014 with a cash balance of $3.5 billion... we ended the year in a net cash position of $370 million as we were able to make the previously mentioned investments without assuming any incremental debt.' (2015-02-03, Clay Williams/Jeremy Thigpen)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Jeremy Thigpen (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["NOV-009"],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_3_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_B_t",
+            "adjustment": -0.2,
+            "reasoning": "強固なBSは業界大手（Schlumberger等）に共通する主張（ルール3）。$3.5Bキャッシュは数値として明確だが、競合比較がなく、ダウンサイクル中の戦略的投資機会の具体的説明もない"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。$3.5Bキャッシュという定量データは明確だが、「強固なBS」は業界共通の言説。競合との比較がなく30%"
+      }
+    },
+    {
+      "id": "NOV-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014 EBITDA $4.6B（記録的、前年比+14%）、Rig Systemsバックログ$12.5B（2009年比+16%）、Aftermarket $850M四半期収益（記録的、マージン28.8%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["NOV-001", "NOV-002", "NOV-006", "NOV-008"]
+    },
+    {
+      "id": "NOV-010",
+      "claim_type": "cagr_connection",
+      "claim": "バックログ$12.5B → 2015年収益$7B（前倒し実行）→ 回復後の市場再拡張で長期成長",
+      "descriptive_label": "バックログ→収益確実性→回復後成長経路",
+      "source_advantage": "NOV-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 70,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。バックログ→収益は2ステップの直接的メカニズムで検証可能（バックログ消化ペースの開示あり）。2015年$7B収益予測という具体的数値あり。エネルギーサイクルの回復という仮定は含むが、接続メカニズムは明確。70%"
+      }
+    },
+    {
+      "id": "NOV-011",
+      "claim_type": "cagr_connection",
+      "claim": "インストールベース拡大 → Aftermarket反復収益増加 → 安定的な収益ベース",
+      "descriptive_label": "インストールベース→Aftermarket→安定収益",
+      "source_advantage": "NOV-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "rule_5_t",
+            "adjustment": 0.0,
+            "reasoning": "ダウンサイクル中は顧客がスペアパーツ注文を削減し既存在庫を流用する（CEO発言で明言）。このリスクによりインストールベース→Aftermarket収益の因果が弱まる"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。2ステップのメカニズムは明確だが、ダウンサイクル中の顧客在庫流用リスクを考慮すると接続の確実性が下がる。50%"
+      }
+    },
+    {
+      "id": "NOV-012",
+      "claim_type": "cagr_connection",
+      "claim": "統合FPSOパッケージ能力 → 新FPSO市場参入 → 将来の大型受注獲得",
+      "descriptive_label": "統合FPSO能力→新市場→長期受注成長",
+      "source_advantage": "NOV-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": false,
+          "rule_12_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "rule_5_t",
+            "adjustment": -0.1,
+            "reasoning": "CEO自身が「まだ先（a ways away）」と述べており、CAGR接続の確実性が低い。現時点では検証不可能な将来機会"
+          }
+        ],
+        "overall_reasoning": "Q4での発言。将来機会として方向性は認めるが、「まだ受注はない」という明示があり短中期での接続は不確実。30%"
+      }
+    }
+  ]
+}

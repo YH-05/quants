@@ -1,0 +1,564 @@
+{
+  "ticker": "CMI",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-05) [primary]; Q4 FY2013 Earnings Call (2014-02-06) [secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Tier 4 Final排ガス規制先行対応による技術的差別化能力",
+      "descriptive_label": "排ガス規制先行技術力（Tier 4 Final）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Linebarger): 'at least in the near term, our volumes should hold up better than the overall market given our advantage in having Tier 4 Final products available ahead of our competitors.' Q4 2014 Q&A: 'for those products, we can say we had 0 cancellations' even amid oil price weakness.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "排ガス規制対応は技術開発能力（仕組み）を評価。'available ahead of our competitors'は能力の裏付け"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "排ガス規制技術は構造的要素。規制環境という市場構造と企業能力が合致"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合（Caterpillar等）への具体的差別化言及は限定的。ただし'ahead of our competitors'という比較表現あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "排ガス規制が業界構造的変化として機能。しかし規制主導であり、排ガス規制対応は業界全体の必要条件でもある点に注意"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（Caterpillar, PACCAR等）との定量的比較がなく'ahead'の程度が不明",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Tier 4 Final対応の先行は実際の優位性だが、規制対応は全社が行う必要あり。優位性は対応の速さ・完成度に。定量的競合比較なく、業界共通必要条件との境界線上"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "北米中型トラック市場での支配的市場シェアと製品力（72%シェア）",
+      "descriptive_label": "北米中型トラック市場支配的シェア",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'We strengthened our position as the market leader in the medium-duty truck engines market in 2014 with our market share increasing to 72%.' Q4 2013: 'strengthened our market share to 63% during the year, up from 53% a year ago.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "concern",
+            "reasoning": "72%シェアは結果。背後の能力（製品力、顧客関係、技術優位性）の説明が主で、シェア自体は結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "72%という具体的な市場シェア数値と上昇トレンド（53%→63%→72%）が定量的裏付けを提供"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "北米中型トラック市場での主要競合（Navistar, International）との比較が限定的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "シェア72%は結果であり、これを可能にする能力（製品技術力、顧客関係）の説明が不十分",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "高市場シェアは結果。ただし製品技術力（排ガス規制対応、ISG新製品）がシェア獲得の背景であることはトランスクリプトから読み取れる。純粋に結果の提示として低評価"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル排ガス規制エンジニアリング能力と新製品投入機械（年70+製品）",
+      "descriptive_label": "グローバル排ガス規制対応の新製品投入能力",
+      "evidence_from_transcript": "Q4 2014 Q&A (CEO Linebarger): 'we are launching north of 70 new and improved products a year now. So our company, on a global basis, we're basically in a new product introduction business.' 'We have just been driving a much stronger expectation for how we're going to launch products... we want to be world class as a new production introduction leader.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [9],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "新製品投入能力（仕組み・プロセス）を評価。年70+製品という規模の投入は能力の指標"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "年70+新製品という数値。ただし競合比較データなし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "新製品投入機械は事業の核心。グローバル排ガス規制対応という市場構造に合致"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "concern",
+            "reasoning": "新製品投入は戦略的方向性でもある。'we're basically in a new product introduction business'は方向性の表現"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "年70+製品という定量規模データ提供あり",
+            "adjustment": 5
+          },
+          {
+            "reason": "Q4 2014に品質コスト問題（warranty costs上昇）があり、新製品投入能力の完成度に疑問符",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "グローバルで年70+の新製品投入は規模として注目に値する。ただし品質コスト上昇問題がQ4 2014で明示されており、能力の成熟度に疑問。純粋競合との定量比較なし"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "中国JV戦略（Foton/DCEC）による排ガス規制移行市場での構造的ポジション",
+      "descriptive_label": "中国JVによる排ガス規制市場での構造的ポジション",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'Full year revenues in China, including joint ventures, were $3.3 billion, an increase of 13% year-over-year, reaching record levels... Our full year Engine market share increased from 10% in 2013 to 12% in 2014.' Q4 2013 Q&A (Rich Freeland): 'we have emerging market costs with world-class performance. So introduce in China and then take it up to global standards.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [14],
+      "rule_evaluation": {
+        "applied_rules": ["rule_6_t", "rule_11_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Foton/DCECとのJV関係は構造的資産。単なる投資ではなく、長期的な技術・市場アクセスの仕組み"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "中国NS4排ガス規制移行という市場構造的変化と、CMIのJV/新製品ポジションが合致"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "concern",
+            "reasoning": "中国展開はある程度戦略的方向性。JV構造という名詞属性は優位性候補"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "NS4規制移行という市場構造的変化とJVポジションの合致に業界構造的説明あり",
+            "adjustment": 5
+          },
+          {
+            "reason": "NS4施行タイミングの不確実性（'significant uncertainty still exists'とCEO自身が認める）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "中国市場でのJV構造（Foton+DCEC）は競合が短期で再現困難な構造的資産。NS4移行という市場構造変化でのポジションは評価できる。ただし規制施行の不確実性が存在"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル製造・自然ヘッジ能力による為替耐性",
+      "descriptive_label": "グローバル製造による自然ヘッジ能力",
+      "evidence_from_transcript": "Q4 2014 Q&A (CEO Linebarger): 'we have built a lot of natural hedges in our business because we manufacture in lots of locations... in our core business, we are always looking for ways to build natural hedges, and we've been really successful on that.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "グローバル製造拠点の多様性という構造（仕組み）を評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "insufficient",
+            "reasoning": "定量的な為替影響の比較データなし。'really successful'は定性的表現"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "insufficient",
+            "reasoning": "Caterpillar等の純粋競合との為替耐性比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量比較なし、純粋競合との差別化不明",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "グローバル製造による自然ヘッジは業界大手共通の能力。Caterpillar等も同様の対応をしており相対的優位性が不明。定性的な主張に留まる"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Distribution事業のアクイジション統合能力（北米ディストリビューター統合）",
+      "descriptive_label": "Distribution事業のM&A統合能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'The benefits of our distributor acquisitions continue to exceed our original estimates... We completed 7 distributor acquisitions in 2014.' CFO Pat Ward: 'The acquisitions completed in 2014 added approximately $0.40 to earnings per share... we expect that the aggregate impact of all the acquisitions will exceed the $1 billion in revenue and $0.50 in earnings per share.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [15],
+      "cagr_connections": [16],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_10_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "concern",
+            "reasoning": "'benefits exceed original estimates'は結果の報告。統合能力（仕組み）の詳細説明が乏しい"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "insufficient",
+            "reasoning": "断念した案件やvalue destroyした例への言及なし。成功例のみ列挙"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "concern",
+            "reasoning": "M&Aはある程度戦略的方向性。統合能力（仕組み）の説明が必要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "$0.40 EPS貢献という定量データあり",
+            "adjustment": 5
+          },
+          {
+            "reason": "統合能力の仕組み説明が乏しく、結果の報告が中心",
+            "adjustment": -15
+          }
+        ],
+        "overall_reasoning": "Distribution買収の財務成果は示されるが、なぜCMIが統合をうまくできるのか（能力・仕組み）の説明が乏しい。M&A統合プレイブック等の言及なし"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Components事業での排ガス後処理システム（Emission Solutions）市場での技術リーダーシップ",
+      "descriptive_label": "排ガス後処理システムの技術リーダーシップ",
+      "evidence_from_transcript": "Q4 2013 Prepared Remarks (CFO Ward): 'The Components segment recorded record sales...higher revenues were driven by market share gains in our Emission Solutions business.' Q4 2014: 'growth in our European after-treatment business when trucks transition from Euro 5 to Euro 6 standards' and 'increased penetration of after-treatment systems in the North American medium-duty truck market.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [17],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "排ガス後処理技術能力（仕組み）を評価。シェア拡大は結果だが、それを可能にする技術力が主張の核"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "市場シェア言及あり（Components全体で記録更新）。ただし後処理システム単独の競合比較データなし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "欧米中国での段階的排ガス規制強化という市場構造と、CMIの先行技術ポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "欧米中国での規制移行タイミングを活用する市場構造との合致",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "排ガス後処理システムは規制移行期に構造的優位を持つ。欧米中国でのタイミング差を活用した技術横展開が可能。ただし競合（Bosch, Delphi等）との技術差別化説明が不十分"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新製品品質コスト問題への対応と品質向上投資（warrantyコスト0.5%増加への対処）",
+      "descriptive_label": "品質コスト問題への対応能力（品質管理プロセス）",
+      "evidence_from_transcript": "Q4 2014 Q&A (CEO): 'we've been improving the quality of launch of our new products and reducing quality costs for more than 4 years... from 2009 to 2013, we took warranty costs down 180 basis points.' Also: 'we focused significant resources on driving improvements on product quality and customer service operations, both to improve product performance and to ensure that our customers were not impacted.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "品質管理プロセスの継続的改善能力（仕組み）。2009-2013の180bp削減は能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "180bps改善という定量的な過去実績。ただし2014には0.5%悪化という後退"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "pass",
+            "reasoning": "品質コスト悪化という失敗・課題への明示的言及（ネガティブケースの開示）。これが能力の透明性を示す"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "2014に実際の品質コスト後退が発生しており、現時点での能力信頼性に疑問",
+            "adjustment": -10
+          },
+          {
+            "reason": "ネガティブケース（悪化・失敗）への正直な開示は能力の透明性を示す",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "長期的品質改善のトラックレコード（2009-2013: 180bp削減）は印象的。2014の後退は懸念だが、CEOの正直な開示と対処コミットメントは能力の指標となる。競合比較データなし"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Tier 4 Final排ガス規制製品の競合に先行した市場投入（2015年時点で最先行）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 7]
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "排ガス規制先行技術力 → 規制移行期の市場シェア維持/拡大 → 売上成長 +2-3%",
+      "descriptive_label": "排ガス規制技術→シェア維持→売上CAGR接続",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ因果：排ガス規制先行→競合不在期のシェア獲得→売上成長。欧米中国のCMI実績で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。投資仮説の根幹として採用"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "排ガス規制移行期の先行製品投入→シェア獲得というメカニズムはCMIの歴史的実績（北米中型、中国NS4）で検証可能。2-3ステップの比較的直接的な因果"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "北米中型トラック市場シェア72%（2014年末）、2013年からの急速拡大（53%→63%→72%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "北米中型トラック72%シェア＋中国新製品 → 量産効果・価格決定力 → 収益CAGR支持",
+      "descriptive_label": "市場シェア→価格決定力・量産効果→CAGR接続",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "シェア→量産効果→コスト低下→競争力→CAGR。3ステップ以上で若干飛躍あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "市場支配的シェアからの利益は認められる。ただし中型トラック市場の市場規模・成長率自体が限定的であるため、CAGR全体へのインパクトは中程度"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "中国JV売上$3.3B（2014年、前年比+13%、過去最高）。エンジン市場シェア10%→12%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 14,
+      "claim_type": "cagr_connection",
+      "claim": "中国JVポジション×NS4規制移行 → 中国売上CAGR +15%見通し（2015年ガイダンス）",
+      "descriptive_label": "中国JV×NS4規制→中国売上成長CAGR接続",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "NS4規制移行→CMIのNS4対応エンジン採用増加→JV売上成長。2ステップ。2014実績で一部検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "NS4施行タイミング不確実性（CEOが'significant uncertainty'と認める）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "NS4規制移行とCMIのポジションの組み合わせは直接的メカニズム。2014実績（12%シェア達成）で部分的検証済み。規制施行リスクが存在"
+      }
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "2014年Distribution事業M&A 7件完了、EPS貢献$0.40。2015年さらに3件予定、$0.50/株超の累積EPS貢献見込み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 16,
+      "claim_type": "cagr_connection",
+      "claim": "Distribution事業M&A統合 → 売上CAGR 22-30%（2015年ガイダンス） → EPS成長",
+      "descriptive_label": "Distribution M&A→売上CAGR接続",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "M&A完了→売上加算という直接的メカニズム。ただし有機成長部分（3%）と買収効果（大部分）が混在"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "買収による売上加算は直接的。ただし有機成長は3%程度。M&A依存のCAGR成長は持続性に疑問あり（買収完了後に成長鈍化）"
+      }
+    },
+    {
+      "id": 17,
+      "claim_type": "cagr_connection",
+      "claim": "Components事業排ガス後処理システム → 欧米中国での規制移行需要 → Components CAGR 4-8%（2015年ガイダンス）",
+      "descriptive_label": "排ガス後処理システム→規制移行需要→Components CAGR接続",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "欧米中国規制強化→CMIのTier4/Euro6/NS4対応製品需要増加→Components売上成長。2ステップ。過去実績で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "排ガス規制移行という外部需要（構造的変化）とCMIのポジションの接続は直接的。Q4 2013からQ4 2014の実績（Components連続記録更新）で検証済み"
+      }
+    }
+  ]
+}

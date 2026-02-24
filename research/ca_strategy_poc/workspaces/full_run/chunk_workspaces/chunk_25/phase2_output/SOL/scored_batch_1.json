@@ -1,0 +1,242 @@
+{
+  "ticker": "SOL",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": [6, 7, 8, 9, 10],
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "BPEP コスト削減能力 × 低油価環境 → グループEBITDA維持能力（ZAR 4.3B年間節減 + Response Plan ZAR 8.9Bキャッシュ保全）",
+      "evidence": "FY2015 CEO: 'From January to June 2015, Response Plan delivered cash conservation benefit of ZAR 8.9 billion.' BPEP ZAR 2.5B actual vs ZAR 1.5B target. Cash conservation target ZAR 30-50B over 30 months.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "BPEP能力→コスト節減→EBITDA維持という1-2ステップ接続。ZAR 8.9B/6M実績は数値裏付けあり"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "FY2015年度末決算発表（primary source）での言及"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "BPEP実行能力→ZAR 8.9B保全（6ヶ月）という直接的で定量的な接続"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "lower_for_longer_oil",
+          "adjustment": -0.10,
+          "reasoning": "低油価の長期化（lower-for-longer）が続けば、コスト削減だけではCAGR回復が限定的。油価回復なしには収益成長が困難"
+        },
+        {
+          "source": "response_plan_temporary",
+          "adjustment": -0.05,
+          "reasoning": "Response PlanはZAR 30B-50B/30ヶ月の一時的なキャッシュ保全策。2017年以降の持続性は不確実"
+        }
+      ],
+      "final_confidence": 0.55,
+      "overall_reasoning": "BPEP能力→ZAR 8.9B/6M保全という直接的接続は定量的裏付けあり（パターンII-T）。ただしResponse Planは一時的措置で、低油価長期化下での構造的CAGR回復には限界。55%が妥当"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "米国Lake Charles エタンクラッカー（$8.9B）の米国シェールガス低コスト原料へのアクセスと70%超のエタン長期契約確保",
+      "evidence": "FY2014: 'We have secured approximately 70% of our ethane supply needs through long-term contracts.' H1 FY2015: '$4B credit facility established, 80% of funds secured. Specialty chemicals deliver high-value returns even if markets fluctuate.' FY2015: 'Cumulative spend $1.8B, $4.9B contracted. Still on track for 2018 completion.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "米国シェールエタンへのアクセス（70%長期契約確保）はCornered Resource。安価な原料へのアクセス権という能力・仕組みを評価。$8.9B投資と$4Bクレジット確保は実行能力の証左"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "70%エタン長期契約、$4Bクレジット確保、80%資金調達済、$1.8B執行済という多層の定量証拠"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "米国シェールエタン（最低コスト石化原料）へのアクセスは構造的優位性。サイト優位性（既存Lake Charles操業）と規模の経済も追加"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "70%エタン長期契約確保という定量的差別化。米国スペシャリティ化学品に特化した製品ミックス"
+        },
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "既存Lake Charles サイトの拡張（インフラ・ユーティリティ活用）による構造的優位性"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "construction_risk",
+          "adjustment": -0.15,
+          "reasoning": "$8.9B大型建設プロジェクトで2018H1完工予定。PoiT（2015-09-30）時点では建設中（$1.8B執行済）。完工前のため優位性の実現は将来"
+        },
+        {
+          "source": "ethane_price_risk",
+          "adjustment": -0.05,
+          "reasoning": "米国シェールガス供給増加でエタン価格下落傾向だが、長期契約で70%をヘッジ済。残り30%のスポット暴露がリスク"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "米国シェールエタンへのアクセス権（70%長期契約）と既存サイト優位性は構造的Cornered Resource（パターンI-T、IV-T）。定量的裏付けも充実。ただしPoiT時点では建設中（2018完工）で優位性の実現は将来。$8.9B建設リスクが確信度を下げる。50%が妥当"
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Lake Charles cracker 原料コスト優位 × 米国化学品市場成長 → Chemicals事業CAGR+30-50%（2018年以降、既存ZAR 4B/6M米国利益を拡大）",
+      "evidence": "H1 FY2015 CFO: 'U.S. business delivering ZAR 4B+ profits for 6 months.' FY2015: 'U.S. contributed ZAR 4.2B vs ZAR 4.1B FY14—resilient.' CEO: 'Specialty chemicals deliver high-value returns even if chemical markets fluctuate.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "既存US事業ZAR 4.2B/年は実績だが、Cracker完成（2018H1）後の+30-50%CAGR接続は3ステップ（建設完了→稼働→売上）で将来不確実性大。現時点では因果チェーンが長い"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "FY2015年度末決算（primary source）で既存US実績を開示"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "Cracker建設完了→稼働→化学品製造→販売→CAGRという因果チェーンが長い。2018H1以降の将来見通し"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "existing_us_base",
+          "adjustment": 0.05,
+          "reasoning": "既存US事業ZAR 4.2B/年（FY2015）は実績として検証済み。Cracker追加は既存基盤の上積み"
+        },
+        {
+          "source": "chemical_price_risk",
+          "adjustment": -0.10,
+          "reasoning": "化学品価格は低油価で下落傾向。FY2015 CFO: Base chemicals margins under pressure. Cracker完成時の化学品市況は不確実"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "既存US事業実績（ZAR 4.2B/年）は検証済みだが、Cracker完成後のCAGR+30-50%接続は因果チェーンが長く（パターンC-T）、化学品価格リスクも存在。2018年以降のPoiT範囲外接続。40%が妥当"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "モザンビークガス開発（Pande/Temane PSA）における15年超の現地インフラ・パートナーシップ資産と生産拡大能力",
+      "evidence": "FY2014: 'Mozambique gas volumes 116M GJ—13% increase YoY. Over 15 years of presence and extensive infrastructure.' FY2015: 'PSA FDP submitted Feb 2015. Proposing fifth train at CPF. Tranche 1: $2B investment, FDP approval expected by October 2015.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "15年以上の現地インフラ（中央処理設備、パイプライン）と政府PSA関係は能力・資産として評価可能。後発参入者が短期間で複製困難"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "116M GJ（+13% YoY）という生産量の定量実績。15年という期間は具体的な年数で裏付け"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "ガス開発はインフラ先着者優位（第1ムーバーがPSA確保・インフラ構築）という業界構造との合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "15年以上の現地プレゼンスと既存CPFインフラは構造的市場ポジション（先着者優位）"
+        },
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "116M GJ・+13%YoY・$2B tranche 1投資という定量的裏付けあり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "fsa_approval_risk",
+          "adjustment": -0.10,
+          "reasoning": "FY2015時点でPSA FDP承認待ち（10月予定）。政府承認リスクが存在"
+        },
+        {
+          "source": "mozambique_political_risk",
+          "adjustment": -0.05,
+          "reasoning": "モザンビークはフロンティア市場。政治リスクは限定的だがゼロではない（PSA交渉の前例あり）"
+        }
+      ],
+      "final_confidence": 0.60,
+      "overall_reasoning": "15年以上の現地プレゼンスとインフラ資産は後発参入を困難にする構造的優位性（パターンIV-T）。116M GJ・+13%YoYという生産実績（パターンI-T）。ただしPoiT時点でPSA FDP承認待ちであり、承認リスクと政治リスクが確信度を下げる。60%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Sasol FY2015 業績：Headline EPS ZAR 49.76（-17% YoY、油価-33%環境下で）、Profit from operations ZAR 46.5B（+2%）、キャッシュ残高ZAR 5B、コミット済ファシリティ残高ZAR 62B",
+      "evidence": "FY2015 CFO: 'Headline EPS ZAR 49.76, down 17%. Oil price down 33%. Profit from operations ZAR 46.5B, up 2%. Net cash ZAR 5B. Headroom ZAR 62B in committed facilities. Balance sheet ungeared at -2.8%.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claim。CFO開示の財務事実。油価-33%に対してHEPS-17%という事業耐性が示されており、ZAR 62B流動性残高は財務健全性の証左。定量的に検証可能な事実。70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 1,
+      "50-60": 2,
+      "55-65": 1,
+      "60-70": 1,
+      "70-80": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

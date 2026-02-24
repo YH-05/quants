@@ -1,0 +1,238 @@
+{
+  "ticker": "USB",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "USB-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "U.S. Bancorpは2013年通期でROA 1.65%・ROE 15.8%・効率比率52.4%、2014年通期でROA 1.54%・ROE 14.7%・効率比率53.2%という業界最高水準の収益性指標を一貫して維持しており、これを「consistent, predictable, repeatable results」として明示している。",
+      "source_quarter": "Q4 2013",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "ROA 1.65%・効率比率52%台という業界最高水準の定量差別化（KB2-I）。「consistent, predictable, repeatable」フレームはProcess Power主張の強化",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "ROA 1.65%・効率比率52%台という定量的業界最高水準は差別化の明確証拠（KB2パターンI）。CEOの「consistent, predictable, repeatable」表現が複数年維持されたProcess Powerとしての信頼性を示す。JPMorgan/BofA等との比較で業界最高ROAは長期的な信用審査能力の証拠。70%。"
+    },
+    {
+      "claim_id": "USB-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "U.S. Bancorpは2013年純利益$5.8B・2014年純利益$5.9B（各年記録更新）を達成し、Basel III Tier 1普通株式比率9.0%（基準7%を大幅超過）という強固な資本基盤を維持しながら、収益の71-72%を株主に還元している。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "reason": "記録的純利益と高株主還元率は規模の証拠だが結果指標（パターンA）。CET1 9.0%の資本余裕は規律の証拠",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "記録的純利益と71-72%の株主還元は規模優位の間接証拠だが結果指標（KB2パターンA）。CET1 9.0%（基準7%超過）という資本余力は規律的な経営を示す。Scale Economicsとしての単位コスト低下証拠は不十分だが、資本効率の高さは評価。50%。"
+    },
+    {
+      "claim_id": "USB-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "U.S. Bancorpは小売決済・マーチャントプロセッシング・トラスト・投資管理・財務管理・投資商品といった多様な手数料ビジネスを持ち、これらの複合的なサービス関係が企業・個人顧客のスイッチングコストを高めている。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "reason": "多様な手数料ビジネスと全米#1地方自治体信託ポジションは構造的市場ポジション（KB2-IV）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.6,
+      "scoring_rationale": "小売決済・マーチャントプロセッシング・トラスト等の多様な手数料ビジネスは構造的スイッチングコスト（KB2パターンIV）の証拠。特に全米#1の地方自治体信託サービスは高い業務フロー依存を創出。企業顧客の複数サービス依存が切り替え困難性を高める。60%。"
+    },
+    {
+      "claim_id": "USB-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "U.S. Bancorpは「他の銀行より速い貸出成長を目指さない」姿勢を明示し、信用品質を最優先にする慎重な成長戦略をとっており、高成長を求める競合の「市場シェア拡大→信用損失増加」サイクルとは対照的な経営モデルを維持している。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule07_pure_competitor_differentiation", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "reason": "10年以上継続した信用品質優先モデルはCounter-Positioningの能力証拠（KB2-III）。競合が模倣すれば成長戦略と矛盾するジレンマ構造あり（rule07）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.6,
+      "scoring_rationale": "信用品質優先の慎重な成長戦略は10年以上維持されたCounter-Positioning（KB2パターンIII）の証拠。高成長競合がこのモデルを採用すれば自社の成長戦略・株主期待との矛盾が生じる（rule07のジレンマ構造）。景気後退局面での優位が経営サイクルで証明されている。60%。"
+    },
+    {
+      "claim_id": "USB-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "U.S. Bancorpは過去10年以上、信用損失が低い状態を維持しており、2013年Q4の貸出損失率0.53%・2014年Q4の貸出損失率0.50%という業界最低水準を維持しつつ、不良資産が継続して減少している。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "0.50%という低損失率の定量証拠で業界最低水準を確認（KB2-I）。2期連続で改善継続が信用審査プロセス能力を示す",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "0.50-0.53%の継続的低損失率は定量差別化の典型（KB2パターンI）。銀行業界での長期低信用損失は信用審査・リスク管理プロセス能力の証拠。JPMorgan/BofAと比較して業界最高水準のクレジットクオリティは数十年のプロセス蓄積を示す。70%。"
+    },
+    {
+      "claim_id": "USB-006",
+      "claim_id_int": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "U.S. BancorpはRBSシチズンズのシカゴ支店フランチャイズ買収（2014年初）により市場シェアをほぼ倍増させ、地場市場での顧客関係・店舗ネットワークのスイッチングコストをさらに強化している。",
+      "source_quarter": "Q4 2013",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "支店買収による市場シェア拡大は業界共通戦略（KB2-B）。デジタルバンキング台頭で物理的店舗優位は低下傾向（rule11）",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "支店フランチャイズ買収は業界共通のM&A戦略（KB2パターンB）。シカゴ市場シェア倍増は地場優位を強化するが、デジタルバンキングの台頭で物理的店舗優位が低下傾向（rule11）。スイッチングコストの源泉として一定の価値はあるが持続性に疑問。40%。"
+    },
+    {
+      "claim_id": "USB-007",
+      "claim_id_int": 7,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "U.S. Bancorpの従業員エンゲージメントは過去最高水準にあり、CEOが「engaged employees do more with whatever assets they are given」と述べ、人材・文化的優位性が業績の基盤であることを明示している。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_D_qualitative_only",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "従業員エンゲージメント最高水準は定性的主張（KB2-D）。定量証拠なし（rule04）",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "従業員エンゲージメントはProcess Power基盤だが定性的（KB2パターンD）。「record levels」は具体的数値がなく（rule04）、従業員エンゲージメントの競合比較も不明。CEOの直接発言という証拠価値はあるが、それだけでは競争優位の確信度として0.4が上限。"
+    },
+    {
+      "claim_id": "USB-008",
+      "claim_id_int": 8,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "U.S. Bancorpは地方自治体信託・代理人サービスで全米第1位のポジションを持ち、アイルランドのクインティリオン（ヘッジファンド管理）買収により代替投資サービスのヨーロッパネットワークを拡大している。",
+      "source_quarter": "Q4 2013",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.6,
+      "confidence_adjustments": [
+        {
+          "reason": "全米#1地方自治体信託ポジションは構造的市場ポジション（KB2-IV）の強力証拠。規模によるコスト効率化が明確",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.6,
+      "scoring_rationale": "全米#1地方自治体信託ポジションは構造的市場支配（KB2パターンIV）の証拠。信託業務の規模経済（専門人材コストの希薄化・標準化プロセス）は競合が同規模に達するまで複製困難。Quintillion買収で欧州代替投資ネットワークも拡大。60%。"
+    },
+    {
+      "claim_id": "USB-009",
+      "claim_id_int": 9,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "U.S. BancorpはChecked Account Advance（短期小額預金融資）廃止等、短期収益よりも規制・信用リスク管理を優先する判断を積み重ねており、これが長期的な効率比率（低50%台）維持に貢献している。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "効率比率低50%台維持はProcess Power能力証拠（KB2-III）。ただしCAA廃止は規制対応の側面もあり（rule11）。0.5維持",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "高リスク商品廃止+効率比率低50%台維持の組み合わせはProcess Power能力（KB2パターンIII）の証拠。短期収益を犠牲にして長期的な信用品質・効率性を維持する経営文化は銀行業界で差別化要因。ただし規制要因との区別が必要（rule11）。50%。"
+    },
+    {
+      "claim_id": "USB-010",
+      "claim_id_int": 10,
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "claim_text": "U.S. Bancorpは2014年に高6%-低7%の貸出成長率を目標として設定し、「economy slowly improves」に伴って市場シェアをさらに拡大できるポジションを主張している。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.4,
+      "confidence_adjustments": [
+        {
+          "reason": "貸出成長率目標はCAGR接続の参考情報だが将来予測（パターンA）。「usually accurate」という主張も検証困難（rule04）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "6-7%の貸出成長目標はCAGRとの接続証拠（KB2パターンA）。過去の実績（6%近くのFY2014実績）がターゲットの信頼性を支持する。ただし将来予測への依存が高く（rule04）、経済環境変化で実現しない可能性もある。40%。"
+    },
+    {
+      "claim_id": "USB-011",
+      "claim_id_int": 11,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "U.S. BancorpのCEO Davisは「コンプライアンス・運営健全性・監査」に自らが注力し、CFOをCOOに昇格させて事業部門を担当させるという経営構造を採用しており、規制強化環境下での内部統制重視モデルが長期的な競争優位の源泉となっている。",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "コンプライアンス重視の経営構造変更は戦略的決定（KB2-F）。競合が採用すれば自社の成長戦略と矛盾するジレンマはやや弱い（rule07）",
+          "delta": -0.1
+        }
+      ],
+      "final_confidence": 0.4,
+      "scoring_rationale": "コンプライアンス重視経営は戦略的決定（KB2パターンF）だが、規制強化環境での差別化として評価。競合（JPMorgan等）が規制罰則・不正行為で悩む中、USBの相対的なコンプライアンス優位は実際に業績に反映。ただし経営構造変更は「意図的な戦略」（rule01）。40%。"
+    }
+  ]
+}

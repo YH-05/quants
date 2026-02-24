@@ -1,0 +1,131 @@
+{
+  "ticker": "ASSAB",
+  "scoring_metadata": {
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshots_applied": 5,
+    "dogma_applied": true,
+    "cutoff_date": "2015-09-30",
+    "scoring_note": "Q4 FY2014 (2015-02-05) primary and only transcript. ASSA ABLOY is a Swedish security/lock company (OMXS30 listed, ticker ASSA-B). Strong M&A track record (20 acquisitions/year, 64 facilities closed). Digital lock/mobile key transition as secular growth driver."
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "20件/年のグローバルM&A統合能力：高コスト国施設→組立ユニット化転換と64施設閉鎖による製造フットプリント最適化オペレーティングシステム",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 20件/年のM&A統合という仕組みは能力として正当に評価。高コスト国→組立転換という製造転換プロセスの具体的説明あり。dogmaルール4（定量的裏付け）: 20件/年・64施設閉鎖・EBIT希薄化0.3%のみ・SEK 940M provision など多数の定量証拠。dogmaルール6（構造的要素）: 数十年かけて構築したM&A統合OSは容易に複製できない構造的能力。dogmaルール11（業界構造との合致）: 分散したグローバル建築金物市場の統合フェーズにあるASSA ABLOYの統合能力はまさに業界構造と合致。dogmaルール12（Q4主）: Q4 annual callからの発言で最高評価適用。KB3-T（ORLY#1 DIFM補充能力 70%）対比で、M&A統合能力はよりニッチ・検証が難しいため60%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual transcript（主・①相当）、調整なし", "adjustment": 0},
+        {"reason": "2014年買収Amarrによる一時的希薄化残存（-5%）ただし全体の優位性評価には影響小", "adjustment": -5},
+        {"reason": "Dormakabaや競合との統合スピード・希薄化率の定量比較なし", "adjustment": 0}
+      ]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "M&A統合・製造転換能力 → 利益希薄化最小化（2014年dilution 0.3%のみ）→ EBIT 16-17%目標レンジ維持 → EPS CAGR（2014年+17%）",
+      "final_confidence": 0.60,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム要求）: 統合能力→희薄化最小化→EBIT維持→EPS成長は3ステップ以内で合理的・追跡可能。EPS +17%（2014年）は開示済みで検証可能。EBIT margin 16.9%（Q4）という定量的目標範囲の実績あり。KB2-TパターンII-T（直接的CAGRメカニズム）の条件を満たす。Q4 annual callからの発言で割引なし。KB3-T（COST会員更新率→CAGR 90%）より長い因果チェーンのため割引き60%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主・①相当）、調整なし", "adjustment": 0},
+        {"reason": "EPS+17%、EBIT 16.9%という検証可能な定量実績", "adjustment": 0},
+        {"reason": "SEK安→換算益という為替依存要因が一部含まれる（純粋なOperating leverage評価が困難）", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "32%の売上がここ3年以内の新製品由来：業界最高水準の新製品開発速度とデジタル化（モバイルキー・ホームオートメーション・HID Global Tech）への先行投資",
+      "final_confidence": 0.55,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "pass",
+      "kb2_t_pattern": "pattern_I_quantitative_differentiation",
+      "seven_powers_type": "Process Power",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: 32%という過去最高記録の定量指標は能力のアウトプット証拠として強力。dogmaルール1（能力・仕組み）: 新製品開発速度という能力。Starwood 150ホテルのモバイルキー転換という具体的な採用事例。dogmaルール3（相対的優位性）: Dormakaba・Allegion等との新製品売上比率の定量比較なし（この点が上限制約）。dogmaルール11（業界構造との合致）: デジタル化・スマートロック移行という市場構造の変化とASSA ABLOYの先行投資が合致。KB3-T（ORLY#2 フラグメント市場×規模・密度 70%対比）で定量比較なし→55%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual transcript（主・①相当）、調整なし", "adjustment": 0},
+        {"reason": "32%（過去最高）という強力な定量証拠、Starwood 150ホテル採用という具体事例あり", "adjustment": 0},
+        {"reason": "競合（Dormakaba、Allegion）との新製品比率の定量比較が明示されていない", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Americas（EBIT 21%）・HID Global Tech（EBIT 20%）の高収益性：アメリカ市場での建築金物・電子錠フランチャイズにおける規模の経済とブランド優位",
+      "final_confidence": 0.55,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_IV_structural_market_position",
+      "seven_powers_type": "Scale Economies",
+      "scoring_rationale": "dogmaルール4（定量的裏付け）: Americas 21%・HID 20%という具体的EBIT率。有機成長8%に対してレバレッジ0.7%という効率性の定量証拠。dogmaルール1（能力・仕組み）: Americas 21%は能力のアウトプットだが、それを可能にする仕組み（ブランド力・スペック承認力）の説明が限定的。dogmaルール3（相対的優位性）: AlegionやDormakaba等との比較EBIT率が明示されていない（業界平均比較があれば70%が妥当）。Q4 annual callからの発言で割引なし。KB3-T（CHD#3 Americas利益率比較あり 55%）対比で类似評価。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主・①相当）、調整なし", "adjustment": 0},
+        {"reason": "Americas 21%・HID 20%という高EBIT率の定量証拠あり", "adjustment": 0},
+        {"reason": "純粋競合（Allegion、Dormakaba）との明示的EBIT比較なし", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "Americas・HID高収益フランチャイズ → ドル高による換算益（2014年+5%通貨効果）→ キャッシュフロー（Q4 +37%）→ M&A再投資 → 売上CAGR",
+      "final_confidence": 0.45,
+      "gatekeeper": "pass",
+      "kb2_t_pattern": "pattern_II_direct_cagr_mechanism",
+      "scoring_rationale": "dogmaルール5（CAGR接続は直接メカニズム要求）: 高EBIT率→高CF→M&A資金→成長は3ステップで概ね直接的。Q4 CF +37%、EPS +25%という検証可能なデータで裏付け。ただし因果チェーンに為替効果（SEK安→換算益）という非持続的要因が含まれており、構造的な優位性かどうかが曖昧。KB2-TパターンII-T（直接的CAGRメカニズム）の条件を部分的に満たす。SEK安という外部依存変数の扱いが問題。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主・①相当）、調整なし", "adjustment": 0},
+        {"reason": "SEK安→翻訳益は構造的優位性ではなく為替依存（-5%）", "adjustment": -5},
+        {"reason": "CF→M&A→CAGR接続は合理的だが、M&A機会の定量的規模が不明確", "adjustment": -5}
+      ]
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "スウェーデン建築金物業界における「最初に声がかかる統合者」ポジション：M&A候補企業から優先的に相談を受ける業界認知と信頼資産",
+      "final_confidence": 0.30,
+      "gatekeeper": "pass",
+      "kb1_t_gate": "partial_pass",
+      "kb2_t_pattern": "pattern_III_capability_over_result",
+      "seven_powers_type": "Counter-Positioning",
+      "scoring_rationale": "dogmaルール1（能力・仕組み）: 「最初に声がかかる」という市場認知は能力の一側面だが、仕組みの説明が薄い。dogmaルール4（定量的裏付け）: CEO自身の発言（定性）のみで定量的裏付けなし。dogmaルール3（相対的優位性）: 競合統合者との比較なし。dogmaルール8（戦略≠優位性）: 「業界統合を続ける」は戦略であり、優先交渉ポジション自体は優位性だが証拠が薄い。KB2-TパターンIII-T（能力>結果）だが定性的で定量根拠なし→30%。",
+      "confidence_adjustments": [
+        {"reason": "Q4 annual（主・①相当）、調整なし", "adjustment": 0},
+        {"reason": "定性的な自己評価のみで競合との定量的差異なし", "adjustment": -10},
+        {"reason": "「最初に声がかかる」という主張の客観的検証手段がない", "adjustment": -10}
+      ]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "ASSA ABLOY FY2014: 売上 SEK 56.8B (+17%)、EBIT SEK 9.3B (+17%)、EBIT margin 16.9%（Q4）、EPS SEK 7.38 (+17%）。Q4 CF +37%。M&A 20件（年間）。新製品売上比率32%（過去最高）。製造施設64件閉鎖。債務/EBITDA 2.1x",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "ASSA ABLOYの過去3年以内の新製品が売上の32%を占める（過去最高）。Starwoodが150ホテルをモバイルキー対応に転換中。Government ID: Ireland、Saudi Arabia、Angola向け受注",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "部門別EBIT: Americas 21.0%（前年20.5%）、HID/Global Tech 20.0%（前年18.4%）、EMEA 17.5%（前年17.8%）、Entrance Systems 15.4%（前年16.2%）。Americas organic growth +8%",
+      "final_confidence": null,
+      "scoring_rationale": "事実的主張のためスコアリング対象外"
+    }
+  ],
+  "aggregate_score": 0.51,
+  "score_distribution": {
+    "competitive_advantage": {"count": 4, "avg": 0.50},
+    "cagr_connection": {"count": 2, "avg": 0.525}
+  }
+}

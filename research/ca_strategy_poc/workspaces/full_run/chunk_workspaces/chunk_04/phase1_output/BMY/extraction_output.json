@@ -1,0 +1,459 @@
+{
+  "ticker": "BMY",
+  "company_name": "Bristol-Myers Squibb Company",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-27) + Q3 FY2014 Earnings Call (2014-10-24)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "イムノオンコロジー（IO）領域における全生存（OS）データでの先行優位性 - Opdivo/Yervoyが業界初の PD-1 OS データを保有",
+      "descriptive_label": "IO領域OS実証能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Lamberto): 'some are the strategic choices that we made when we shaped our development program are putting us now in what we believe is a very strong competitive position. We have always felt that it was important to address the broader set of patients as possible. We have also always believed in the importance of demonstrating overall survival and this is what counts for patients, physicians and payers.' / Q4 Q&A: 'this marks the first time that any PD-1 has shown overall survival in cancer'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lamberto Andreotti / Francis Cuss",
+      "section": "prepared_remarks",
+      "supported_by_facts": [3],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "OS実証は結果だが、OS実証を可能にする戦略設計能力（OS優先エンドポイント設定、幅広い患者集団カバレッジ）を「能力・仕組み」として捉える場合は合格"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Opdivo Q4 melanoma share of voice 70%という定量データあり。業界初のPD-1 OS実証という客観的事実"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Keytruda (Merck) との比較で、OSデータ保有は明確な差別化だが、Keytruda加速承認でのPD-L1陽性患者限定という差異が明示的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "がん免疫療法市場でのOS実証が市場普及の鍵という業界構造への言及あり（payer/physician/patient重視）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの体系的説明（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "OS実証は先行優位性として認められるが、Keytruda台頭で差別化が弱まりつつある",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Q4での体系的な戦略説明でOSデータ優先を説明。ただしOSは「結果」の側面が強く、OS実証を可能にした臨床試験設計能力（OS endpoint設定・幅広い患者集団）が本来の優位性。定量的裏付け（業界初OS実証）はあるが、Keytruda参入後の差別化持続性に懸念"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "IO領域OS優位性 → payer・physician採用率向上 → Opdivo売上CAGR押し上げ",
+      "descriptive_label": "OS優位→採用率→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "OS証明 → payer採用 → 処方率向上 → 売上 は3ステップの因果チェーン。Yervoyでの実績（世界中でlabel通り償還）が検証可能な参考値"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。投資仮説の根幹として採用"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Yervoyのpayer関係実績によりOS→採用率の経路は一定の妥当性があるが、3ステップのチェーンはやや飛躍あり。Opdivo売上の具体的数値見通しは開示されておらず検証可能性は中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "Opdivo melanoma 承認後2週間以内にトップアカウント100%到達・melanoma分野でvoice of share 70%達成",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Yervoy商業展開実績を活用したOpdivo立ち上げ優位性 - immuno-oncology分野での医師・ペイヤー関係と教育能力",
+      "descriptive_label": "IO商業化能力・医師教育インフラ",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Giovanni): 'we are leveraging Yervoy's established commercial presence, building on our strong relationships with physicians and payers. In fact, our commercial organization is actively promoting Opdivo, and within the first 2 weeks, we reached nearly 100% of the top accounts and already have a 70% share of voice within the melanoma market.' / Q&A: 'that reflects the fact that we have been successfully commercializing Yervoy over the last few years, and we've gained a lot of experience in immuno-oncology'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Giovanni Caforio",
+      "section": "prepared_remarks",
+      "supported_by_facts": [3],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Yervoyでの医師教育インフラ・ペイヤー関係構築という「能力」を評価。4年間のYervoy商業展開で培った組織的ケイパビリティ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "2週間でトップアカウント100%到達・voice of share 70%という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "IO特化競合であるMerck Keytruda立ち上げとの比較で先行優位性あり（Yervoy実績を活用）。ただしMerckも強いがん領域基盤を持つ"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "がん免疫療法市場は医師教育・KOL関係が市場普及の鍵となる構造。その構造にBMYのYervoy実績が合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの体系的説明（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付け（2週間100%/70% SoV）があるが、Yervoy基盤はMerckも類似基盤を持ちうる",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "4年間のYervoy商業展開で培ったIO医師教育・ペイヤー関係は構造的優位性として認められる。2週間での100%到達・70% SoV という定量的裏付けで立ち上げ速度の優位を示す。ただしMerckのKeytruda普及が進む中で中期持続性は不確実"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "IO商業化能力 → Opdivo立ち上げ速度向上 → 早期市場シェア獲得 → 売上CAGR押し上げ",
+      "descriptive_label": "IO商業化→立ち上げ速度→早期シェア取得",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ因果: IO商業能力（Yervoy実績）→ Opdivo立ち上げ速度 → 売上成長。Opdivo立ち上げ初期の70% SoVは検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来。根幹的評価として採用"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "IO商業能力→立ち上げ速度は2ステップで比較的直接的な因果。初期SoVの70%は開示データで検証可能。ただし競合の台頭による中長期の維持可能性は不確実"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "IO組み合わせ療法（Opdivo+Yervoy）における先行開発優位性 - 複数腫瘍型×複数組み合わせの包括的パイプライン",
+      "descriptive_label": "IO組み合わせ療法パイプライン先行優位",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Charlie): '9 clinical collaborations to study Opdivo in more than a dozen tumor types' / Q4 Q&A (Francis): 'we've always believed in the important role for both monotherapy and combination regimens...we have 10 ongoing studies [in lung]...It is a very broad program' / 'combinations of I-O agents will play a critical role in bringing this potential long-term survival to the broadest number of patients'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Francis Cuss / Charles Bancroft",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "パイプラインの「数」は結果的側面があるが、多様な組み合わせをデザインし実行する「臨床試験デザイン能力」は能力・仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "9 clinical collaborations, 12+ tumor types, 10 ongoing studies in lung という具体的数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "IO組み合わせ療法の先行開発は、競合が短期で追いつけない構造的優位性として認識可能"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "IO組み合わせ戦略は「戦略」だが、その背後にある「複数化合物の同時並行開発能力・既存IO基盤」が優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの体系的説明（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Merck・Rocheも並行してIO組み合わせ開発を進めており純粋競合との差別化は相対的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "9 collaboration / 12+ tumor types の定量的裏付けはあるが、IO組み合わせ開発はMerck・Rocheも注力しており競合優位性は方向性で認められるが程度は不確実。開発能力（能力・仕組み）としての評価は50%水準が妥当"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Opdivo について9つのclinical collaboration、12以上の腫瘍型で試験実施中。肺がんで10の試験進行中",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Biologics製造能力の拡充 - Devens施設拡張・アイルランド新工場建設によるバイオ製造の垂直統合",
+      "descriptive_label": "生物製剤製造インフラ投資",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Lamberto): 'We committed significant resources to increase our biologics capacity, announcing strategic investments to expand our Devens, Massachusetts facility and build a new plant, totally new plant, in Ireland. Biologics now comprise about 50% of our R&D portfolio and that number will continue to grow.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Lamberto Andreotti",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "バイオ製造内製化は構造的優位性の要素だが、投資は「戦略的決断」であり優位性は製造能力そのもの"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "バイオ製造施設投資は「戦略」。その背後にある製造技術・品質管理能力が優位性。発言は主に投資行為（戦略）の説明にとどまる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "発言は製造能力（仕組み）ではなく投資（戦略）の説明に留まる",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "バイオ製造内製化の「戦略」説明に留まり、製造能力の具体的な競争優位性（歩留まり率・コスト・品質等）への言及がない。ルール8-T（戦略≠優位性）に該当。30%評価が妥当"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "IP（知的財産）ポジションの防衛 - Opdivo特許をMerck訴訟含め積極防衛",
+      "descriptive_label": "IO IP防衛能力",
+      "evidence_from_transcript": "Q3 Q&A (Giovanni Caforio): 'We believe in the strength of our IP's position. We will continue to defend it...obviously, we are going to defend our intellectual property rights and we are going to do it here and in Europe and elsewhere.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Giovanni Caforio",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "IP防衛の「意図表明」は能力の証明ではない。特許の強さ・有効期間・回避困難性の具体的説明がない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "fail",
+            "reasoning": "定量的裏付けなし。特許範囲・有効期間・競合との差異の数値なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterly callでの発言（従・②相当） -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的裏付けなし、定性的意図表明のみ",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "IP防衛の意図表明のみで具体的な優位性の説明なし。Q3発言（従・②相当）であることも減点要因。ただしOpdivo IPポジションは業界で議論されており、全否定はしない。30%評価が妥当"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "Eliquis新規処方シェアでのカーディオロジスト領域リーダーシップ - AFib+VTE適応拡大後47%シェア",
+      "descriptive_label": "Eliquis カーディオロジスト処方シェア",
+      "evidence_from_transcript": "Q4 Q&A (Giovanni Caforio): 'our new-to-brand share in cardiology, including VTE and atrial fibrillation, in the quarter in the U.S. has grown from 41% to 47%, which is a leading position.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Giovanni Caforio",
+      "section": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "47%処方シェアは「結果」。シェア獲得を可能にするEliquis固有の能力（有効性・安全性プロファイル・販売力）の説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "47%シェアという定量データあり。ただし競合（Xarelto）との明示的比較は限定的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "純粋競合（Xarelto/Bayer-J&J）との明示的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "シェアは結果であり優位性ではない（ルール1-T違反）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "47%シェアは結果の数値。シェアを生み出したEliquistの有効性・安全性・副作用プロファイル（AMPLIFY試験でのXarelto比較）への言及があれば評価は上がるが、本発言はシェア結果の報告に留まる。パターンA-T（結果を原因と取り違え）に該当。40%評価"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Eliquistカーディオロジストシェア向上 → 適応拡大（VTE）でプライマリケアへ拡張 → 売上CAGR貢献",
+      "descriptive_label": "Eliquis→カーディオロジスト→プライマリケア拡張経路",
+      "source_advantage": 10,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "カーディオロジスト47%シェア → VTE適応でプライマリケアへ → 売上成長 は2-3ステップ。Pfizer提携での分益構造により純利益への貢献は限定的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "VTE適応拡大でプライマリケアへの拡張は説得力あるが、Pfizer提携による低マージン構造（50%未満）が収益性への接続を弱める。CAGR接続として50%が妥当"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "困難患者集団対象のHCV（C型肝炎）ニッチ戦略 - ジェノタイプ別・地域別（日本）差別化戦略",
+      "descriptive_label": "HCV困難患者ニッチ戦略",
+      "evidence_from_transcript": "Q3 Prepared Remarks (Lamberto): 'We have a clear opportunity in Japan where hepatitis C patients have had limited treatment options...This Dual Regimen, which was developed to meet the distinct need of a significant proportion of the Japanese patient population' / Q4 Q&A (Francis): 'our strategy, our approach with daclatasvir has been to focus on difficult-to-treat patients around the world'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Lamberto Andreotti",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "困難患者向けニッチ戦略は「戦略」だが、その背後にあるジェノタイプ別製剤開発能力・地域規制対応能力が優位性"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "Sovaldi（Gilead）が大衆市場を取る中でのニッチポジションは差別化の方向性として認められるが、競合Gilead/AbbVieに対して「相対的優位」かは不確実"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Gilead・AbbVieとの具体的な差別化比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_G_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterly callでの発言（従・②相当）-10%調整。HCV市場はGilead・AbbVieが優位で市場地位は弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "HCV困難患者ニッチは戦略的方向性として存在するが、Gilead/AbbVieに対する明確な差別化根拠なし。Q3発言（従）であること、純粋競合差別化不明（パターンG-T）から30%評価が妥当"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "competitive_advantage",
+      "claim": "多様な疾患領域（IO・HCV・Eliquis・ORENCIA・SPRYCEL）にわたる収益分散化 - diversified specialty biopharma戦略",
+      "descriptive_label": "専門的多角化バイオファーマ収益分散",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Giovanni): 'I am confident that we will successfully find our way through it all by continuing to execute against our strategy and by maintaining our balanced approach of driving results today, while setting the stage for tomorrow. That means growth of our marketed products, strong product launches and continued investments in our portfolio of the future. And that means continuing to focus on leadership in immuno-oncology as a priority, but also remembering that we are a diversified specialty biopharma company, one with multiple products across multiple therapeutic areas.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Giovanni Caforio",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "fail",
+            "reasoning": "「diversified specialty biopharma」は名詞で表現されているが、多角化自体は多くのbig pharmaが言っていることであり、競合に対して際立つものではない"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "収益分散化はメガファーマ（Pfizer・Roche・Novartis等）が共通に持つ属性であり、相対的優位性として機能しない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 20,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言だが業界共通の一般論（パターンB-T）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "diversified specialty biopharmaは経営方針の表明であり、競合（Merck・AstraZeneca・Roche等）に対する際立った差別化を示さない。パターンB-T（業界共通能力）に該当。20%評価"
+      }
+    }
+  ]
+}

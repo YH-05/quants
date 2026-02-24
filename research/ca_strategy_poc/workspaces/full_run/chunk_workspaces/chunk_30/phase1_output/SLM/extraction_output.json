@@ -1,0 +1,338 @@
+{
+  "ticker": "SLM",
+  "company_name": "Sanlam Limited",
+  "transcript_source": "H1 2015 Earnings Presentation (2015-09-03) + prior quarterly calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["H1_2015", "H1_2014", "H2_2014"],
+    "note": "Sanlam uses half-year reporting cycle (H1/H2); no standard Q4 transcript available within cutoff. H1 2015 (2015-09-03) treated as primary source."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "南アフリカ市場における多層的分配ネットワーク（代理店・独立仲介業者・マルチチャネル）の構築能力",
+      "descriptive_label": "マルチチャネル分配能力",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO Ian Kirk): 'On the distribution side, largely, our business is intermediated. But of course, the game is changing. The consumers become king... we are lifting our game significantly there and moving more into this multi-access capability. So that the retail customers can deal with us with their channel of choice.'",
+      "transcript_call_type": "H1_half_year",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「マルチアクセス能力の構築」は能力・仕組みを指すが、具体的な仕組みの詳細説明は限定的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "97年の歴史を持つ伝統的代理店ネットワーク＋マルチチャネルへの移行能力は一定の構造性を持つ"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "マルチチャネル展開は戦略に近いが、長期間蓄積された分配ネットワーク自体は能力として評価しうる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_qualitative_only",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "H1半期発表からの主張（Q4相当なし）",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的差別化データなし（競合比較なし）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "分配ネットワークの構築能力を示唆しているが、競合（Old Mutual, Liberty等）との具体的差別化説明が欠如。マルチチャネル化は業界共通トレンドであり、Sanlam固有の優位性の証拠が不十分。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "アフリカ大陸全体（40カ国超）への保険・資産管理フットプリント構築能力（Pan-African Presence）",
+      "descriptive_label": "Pan-Africanフットプリント構築能力",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO Ian Kirk): 'The Emerging Markets, I've sort of indicated, the footprint is in place... building a Pan African presence... we know where the business is going to come from. We know where the offices of the intermediaries are. We know what the intermediaries want.'",
+      "transcript_call_type": "H1_half_year",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "フットプリント「構築能力」と「構築済みフットプリント（結果）」の境界線上。CEOの言及はフットプリックの知識・ノウハウ面も含む"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「Pan-African presence」「フットプリック」は名詞で表現される属性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "純粋競合（Old Mutual、Prudential Africa等）との差別化説明が限定的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "アフリカの低保険浸透率（penetration levels very low）と先行フットプリックの組み合わせは市場構造と一定程度合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "アフリカ新興市場での先行者優位性の潜在性",
+            "adjustment": 0
+          },
+          {
+            "reason": "Zambia・Kenya等での実行課題が顕在化しており優位性の質に疑問",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Pan-Africanフットプリックは希少な資源だが、H1 2015時点でZambia・Kenyaで実行課題あり。老舗競合Old Mutualも同様のアフリカ戦略を持ち、差別化は不明確。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Santamを通じた短期保険（P&C保険）でのアンダーライティング規律と統合的リスク管理能力",
+      "descriptive_label": "Santamアンダーライティング規律",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO Ian Kirk): 'Santam, a fantastic performance under the new leadership... underwriting margin of less than 9% on an already high base of 7.4%... the whole thing is to balance growth and profit. Anyone can sell 2-bob ice creams for 1 bob. Some of the competitors are still trying to do it.'",
+      "transcript_call_type": "H1_half_year",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "アンダーライティング規律は「能力・仕組み」。過剰な成長追求を断念した規律（ネガティブケース）に言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "アンダーライティングマージン9%という数値あり。ただし競合比較データなし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「競合が安売りしている」という対比言及あり、ただし競合固有名詞の言及なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "ネガティブケース（価格規律を維持して過剰成長断念）の言及がある",
+            "adjustment": 10
+          },
+          {
+            "reason": "H1報告のみ（Q4相当なし）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Santamのアンダーライティング規律は能力として評価できる要素あり。「競合が安売りしている」という対比と、価格規律維持の発言がある。ただし競合（Outsurance, Discovery等）との定量比較は欠如。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Glacier（アフルエント富裕層市場）における資産管理プラットフォームの競争的地位",
+      "descriptive_label": "Glacierウェルスプラットフォーム地位",
+      "seven_powers_category": "Scale Economies",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CFO Kobus Möller): 'Glacier continued to perform with a 22% growth... Glacier, we had a 30% growth in new business volumes... net flows of just more than ZAR 10 billion that we've achieved in SPF.'",
+      "transcript_call_type": "H1_half_year",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "22%成長・30%新規ビジネス成長は「結果」。プラットフォームを優位にする能力・仕組みの説明なし"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "富裕層向け資産管理プラットフォームは南ア市場で多数の競合（Nedgroup, Investec等）が持つ共通能力"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Glacierの成長実績は結果であり優位性ではない。プラットフォームの特異性（技術、機能、ネットワーク効果等）の説明が皆無。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "下位所得層市場（Sanlam Sky）における葬祭保険を核とした政府・公共部門チャネルへのアクセス能力",
+      "descriptive_label": "Sky低所得層保険チャネル能力",
+      "seven_powers_category": "Switching Costs",
+      "evidence_from_transcript": "H1 2015 Q&A (CEO Ian Kirk): 'we've been in the public sector... it does certainly plays into the hands of the business like Sky... We've got to lift our geographic presence. But the most important opportunity is around the product set. We're largely a funeral house.'",
+      "transcript_call_type": "H1_half_year",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "政府・公共部門への既存ルートは一種のチャネルアクセス能力だが、具体的な仕組み説明が希薄"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "CEOが「We're largely a funeral house」と言及し、自社の限定性を認めている。競合（Metropolitan、Old Mutual Sky等）との差別化不明"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "低浸透率の公共部門への先行アクセスは市場構造と一定程度合致するが、競合も同じ市場にいる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_G_unclear_vs_pure_competitor",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CEO自身が「主に葬祭保険会社」と述べており、優位性の主張が控えめ。公共部門チャネルは競合も持っており、差別化の根拠が弱い。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Glacier（富裕層プラットフォーム）はH1 2015に新規ビジネス量30%増加、純流入ZAR 100億超を達成",
+      "transcript_call_type": "H1_half_year",
+      "affected_claims": [4]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "claim": "新興市場（アフリカ・インド）のビジネス量は全体で34%増加（Kenya・Zambiaを除けば30%超）",
+      "transcript_call_type": "H1_half_year",
+      "affected_claims": [2]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Sanlam Personalの営業利益は11%増。Santamのアンダーライティングマージンは9%（前期7.4%から上昇）",
+      "transcript_call_type": "H1_half_year",
+      "affected_claims": [1, 3]
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Santamはグループ営業利益に対して17%の貢献増加を達成（H1 2015）",
+      "transcript_call_type": "H1_half_year",
+      "affected_claims": [3]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "マルチチャネル分配能力の強化 → 富裕層・中間層セグメントでの新規ビジネス成長 → VNBおよび営業利益CAGR支持",
+      "descriptive_label": "マルチチャネル→新規ビジネス成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "H1_half_year",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "マルチチャネル→顧客獲得→新規ビジネス→VNBは3段階以上の因果チェーン"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "H1半期発表からの言及。Q4相当なし"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンが3段階以上で検証可能性が低い。また分配能力自体の優位性が30%評価のため接続の確信度も低い。"
+      }
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Pan-Africanフットプリック × アフリカの低保険浸透率 → 新興市場でのVNB成長（過去VNB年平均17%成長の継続）",
+      "descriptive_label": "Pan-African低浸透率→VNB成長経路",
+      "source_advantage": 2,
+      "transcript_call_type": "H1_half_year",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "フットプリック×低浸透率→新規保険加入→VNBは2-3段階。過去VNB年平均17%という実績データがある"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "H1半期発表からの言及"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "2003年以来のVNB年平均17%成長という実績データあり",
+            "adjustment": 10
+          },
+          {
+            "reason": "足元Zambia・Kenya・インドでの実行課題が顕在化",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "過去17%のVNB成長という実績データがある点はポジティブ。ただしアフリカ市場の実行課題（Zambia・Kenya）が判明しており、継続性に疑問。競合も同じ市場を狙っており独占的優位性は低い。"
+      }
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "Santamのアンダーライティング規律 → 競合が安売り競争で収益悪化する中でSantamはマージン維持 → グループ利益への安定貢献",
+      "descriptive_label": "Santam規律→グループ利益安定貢献経路",
+      "source_advantage": 3,
+      "transcript_call_type": "H1_half_year",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "アンダーライティング規律→マージン維持→利益の2ステップ因果。アンダーライティングマージンは開示データで検証可能"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Santamのアンダーライティングマージン9%という定量データと、競合の安売り行動との対比がある。因果メカニズムは比較的明確だが、H1発表のみ（Q4相当なし）のため標準評価。"
+      }
+    }
+  ]
+}

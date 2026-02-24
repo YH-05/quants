@@ -1,0 +1,276 @@
+{
+  "ticker": "SPG",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-30) + Quarterly Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "業界最高水準のプレミアム立地・モールポートフォリオの希少性と規模",
+      "descriptive_label": "プレミアム立地のコーナードリソース（希少資源の独占）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO David Simon): 'Occupancy increased across the portfolio and our malls and Premium Outlets combined occupancy ended at the year at record 97.1%. Leasing activity is healthy. The malls and Premium Outlets recorded releasing spreads of $9.59 per square foot, an increase of 16.6%.' Jersey Gardens and UPV have sales per square foot of $850. 'our debt-to-market capitalization ratio of 29%, industry-leading; interest coverage was 3.8x, industry-leading.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8, 9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "97.1%稼働率・リリース賃料スプレッド+16.6%は「結果」だが、これらが立地の希少性（能力）の証拠として機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "97.1%稼働率、$9.59/sqft リリーシングスプレッド（+16.6%）、$850/sqft売上（Jersey Gardens）という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "プレミアム立地（大都市圏・主要商業地）は物理的制約により競合が模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "Macerich、Taubman、GGP等の競合と比較して業界最高稼働率・賃料スプレッドが明確"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "プレミアムリテール市場ではEコマース耐性が高い高品質立地の優位性が市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明。業界最高稼働率97.1%と+16.6%のリリーシングスプレッドは競合対比で明確に優位。プレミアム立地（Woodbury Common、Las Vegas等）は物理的希少性によりコーナードリソースとして評価できる"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "comp NOI成長+4-5% × 高稼働率維持 × 新規開発（Premium Outlets拡大）→ FFO CAGR+8-10pp",
+      "descriptive_label": "comp NOI成長×新規開発→FFO成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。comp NOI成長と新規開発がFFO成長に直接接続。2015年ガイダンスFFO+8-9%が裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "10年超の連続でガイダンス超過達成という実績（unprecedented 10-plus-years in a row）が確信度を高める。$2.1Bのコミット済み再開発パイプラインが成長の具体的根拠"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "業界最高のバランスシート強度（A格レーティング）による資本調達コスト優位性",
+      "descriptive_label": "業界最高信用力によるコスト・オブ・キャピタル優位",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO David Simon): 'our debt-to-market capitalization ratio of 29%, industry-leading; our interest coverage was 3.8x, industry-leading; net to EBITDA of 5.4x, industry-leading; our long-term issuer rating of A and A2 continues to be industry-leading. So let's not lose sight of this significant, differentiating and positive attribute of our balance sheet as compared to our peer group.' CP program at 18bps weighted average rate.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Debt/Market cap 29%、interest coverage 3.8x、net/EBITDA 5.4x、A/A2格というすべて定量的・定性的に「industry-leading」"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial_structural",
+            "reasoning": "信用力は高品質資産ポートフォリオから生まれる構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "「compared to our peer group」と明示的に競合比較。Macerich（BBB格）等との差が明確"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "資本集約型REIT事業では低コスト資本調達が市場成長機会取得において構造的に重要"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "「industry-leading」という表現が全指標で確認され、A格REITは競合に対して明確なコスト優位。CP program at 18bpsという具体的数値が能力の証拠。ただし、これが「能力」か「結果」かの境界は曖昧"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "低コスト資本調達 → 再開発・新規開発ROIの最大化 → FFO CAGR+2-3pp追加寄与",
+      "descriptive_label": "低資本コスト→再開発ROI最大化→FFO追加成長経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ。低コスト資本→スプレッド拡大→ROI向上の因果関係は合理的だが、競合との具体的スプレッド差の定量化が不足"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "低コスト資本の優位性はCAGRへの接続として説明可能だが、具体的な追加寄与の数値化が困難。競合比較での具体的金利差は示されていない"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Premium Outlets事業（Chelsea買収後）によるブランドアウトレット市場でのスケールメリット",
+      "descriptive_label": "Premium Outlets国際展開によるスケール経済",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO David Simon): 'opened Premium Outlets Montréal; started construction on 2 new Premium Outlets in strong and growing markets of Tampa and Tucson... we are slated to begin construction of 4 new domestic Premium Outlets in 2015, which include: Columbus, Ohio; Clarksburg, Maryland; Norfolk, Virginia; and Tulsa, Oklahoma.' Redevelopment and expansion projects across U.S. and Asia with $2.1B committed spend.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「新規開発パイプライン」は戦略的意図だが、それを実行する能力（開発・テナント誘致力）は評価可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "国際Premium Outlets規模はブランドテナント（Gucci、Coach等）との優先的関係を生む構造的優位"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「新規開発」は戦略だが、それを可能にする開発能力・テナント関係は優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "アウトレット市場はブランド希少性と立地希少性の交差点で成立。SPGの規模は市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "アウトレット市場での規模優位性は認められるが、競合（Tanger、Premium Outlets等）との具体的差別化説明が不足。戦略と優位性の混同リスクあり"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Klépierre投資によるヨーロッパ最大級プレミアムリテール資産へのアクセス（コーナードリソース的側面）",
+      "descriptive_label": "Klépierre欧州プレミアム資産へのアクセス権",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO David Simon): 'We are pleased with our investment in Klépierre. Our net equity investment is up $850 million, even with the weaker euro. And as their largest shareholder, we are excited for them as 94% of our Corio shares, of all Corio shares, were tendered in support of Klépierre's acquisition.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "$850M含み益は結果。欧州資産へのアクセスが「能力」としての説明は弱い"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「Klépierre投資」は戦略的意思決定。欧州市場知識・関係性が優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Klépierre投資の含み益は結果であり、これが構造的競争優位性かどうかは不明確。為替リスクも存在。他の外国REITも欧州投資可能であり相対的優位性の説明が弱い"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "10年超連続ガイダンス超過達成能力（経営執行力・予測精度）",
+      "descriptive_label": "長期的経営執行力と保守的ガイダンス慣行",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO David Simon): 'beating guidance for an unprecedented 10-plus-years in a row. We achieved record levels in occupancy, FFO per share, and dividends, despite the loss of approximately $1 per share of FFO from WP and the debt extinguishment charge.' 2014: beat initial guidance by $0.40.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「ガイダンス超過達成」は結果。経営執行力の能力説明は少ない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "10年超連続・2014年$0.40超過という定量的な実績"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "競合との比較での言及はないが、REIT業界での10年超連続超過は稀"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "10年超連続ガイダンス超過は経営品質の証拠として評価できるが、背後の能力説明が不足。「保守的ガイダンス設定能力」か「実際の経営執行力」かの区別が必要"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "2014年: malls+Premium Outlets合算稼働率97.1%（過去最高）、リリーシングスプレッド$9.59/sqft (+16.6%)、comp NOI成長5.1%（2014年通年）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2015年ガイダンス: FFO $9.60-$9.70/share (+8-9%)、comp NOI成長~4%。$2.1Bのコミット済み再開発パイプライン。",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    }
+  ]
+}

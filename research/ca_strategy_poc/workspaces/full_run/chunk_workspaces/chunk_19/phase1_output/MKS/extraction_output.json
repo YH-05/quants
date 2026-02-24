@@ -1,0 +1,264 @@
+{
+  "ticker": "MKS",
+  "transcript_source": "FY2014/15 Full Year Results (2015-05-20) [Primary]; H1 FY2014/15 (2014-11) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "M&S Foodの差別化されたスペシャリスト戦略：革新的商品開発・専門調理の食品品質で15年来の低い市場シェア損失率を達成",
+      "descriptive_label": "M&S Food差別化スペシャリスト戦略（Branding + Process Power）",
+      "evidence_from_transcript": "FY2014/15 Prepared Remarks (CEO Marc Bolland): 'Food sales growth...we have an excellent performance...more than 5 years of like-for-like growth...the lowest in 15 years, and the lowest on record. Now, why did we outperform? ...strategy to step away from the supermarket territory...focusing on quality and innovation. We launched, again last year, and 1,700 lines have changed over last year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "食品商品開発・品質革新能力という仕組みを評価。売上成長は結果"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "スーパーマーケット領域を離れたポジショニングは構造的差別化"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "Tesco、Sainsbury等のスーパーマーケットとの差別化が明確（「スーパーマーケット領域から離脱」）"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "英国の食品市場でスペシャリスト高付加価値食品への需要と企業ポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_V_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "GM事業の不振が全体的な競争力に疑問符をつけており信頼性を下げる",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "Food事業の差別化は実績で裏付けられているが、GM事業の長期低迷がM&S全体の競争優位性への確信を下げる"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "M&S Foodスペシャリスト差別化 → 継続的like-for-like成長 → 売上CAGR下支え（Simply Food拡大で250店舗へ）",
+      "descriptive_label": "Food差別化→like-for-like成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：食品差別化→like-for-like維持→売上成長。5年連続like-for-like成長で検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算発表での言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "実績で裏付けられた直接的メカニズム。Simply Food拡大計画（250店舗）も具体的"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "GM（服飾・雑貨）の直接デザイン・直接調達（Direct Design & Direct Buy）移行による粗利率改善能力",
+      "descriptive_label": "GM直接調達能力の構築（Process Power）",
+      "evidence_from_transcript": "FY2014/15 Prepared Remarks (CEO): 'we were actually, start of last year, at 20% of what I called direct design, direct buy. I told you that we wanted to move that within 3 years to 60%. Our target was to achieve 35% over the last year, and we have achieved it...This year, we then can come to 50%...9 offices around the world where we have more than 400 employees.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "直接調達能力の構築という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "20%→35%→50%→60%という明確な進捗トラッキングと目標がある。GM粗利+190bpsという実績もある"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "borderline",
+            "reasoning": "構築中の能力であり、既存の構造的優位ではなくまだ進行中の変革"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "能力が構築途中であり、競合が模倣困難な段階にはまだ達していない",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "進行中の変革プログラムで実績（粗利+190bps）は出始めているが、持続的競争優位として確立するには時間がかかる"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "GM直接調達移行 → GM粗利率改善150-200bps（FY2016予想）→ 利益CAGR改善",
+      "descriptive_label": "直接調達→GM粗利→利益CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：直接調達→仕入れコスト削減→GM粗利改善。FY2015実績（+190bps）で部分検証済み"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算発表での定量的ガイダンス（150-200bps）"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的なガイダンスがあり、FX影響を踏まえても実現可能性があると経営陣が主張"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "M&Sブランドの「Quality, Value, Service, Innovation, Trust」 - 130年超の英国での信頼ブランド",
+      "descriptive_label": "M&S英国信頼ブランド（Branding）",
+      "evidence_from_transcript": "FY2014/15 Prepared Remarks (CEO Bolland): 'this company is all about values and this company is all about integrity...Brand recognition is getting better every year. It has so much strength in this company of quality. It has so much strength of innovation...'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "英国小売でJohn Lewis、Next等も信頼ブランドとして認識されている。相対的優位が弱い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "「ブランド認知が毎年改善」という言及はあるが、具体的な比較数値なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "純粋競合との具体的なブランド価値比較がない。GM事業の売上下落がブランド優位性に疑問符"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t + pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "GM売上の長期低迷がブランド優位性の主張と矛盾",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ブランド自体の認知は高いが、GM事業の低迷が競争優位性としてのブランドの有効性に疑問を投げかける"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "M&S.comの大規模インフラ刷新（200人体制の内製チーム、単一プラットフォーム構築）による将来の成長エンジン",
+      "descriptive_label": "M&Sデジタル・EC能力構築（Process Power）",
+      "evidence_from_transcript": "FY2014/15 Prepared Remarks (CEO): '200 people in the house...faster browsing...traffic has gone up by 15%. Mobile and tablet...up 33%. Conversion is up 60 basis points...customer satisfaction going up 18%...808 million visitors to our Style & Living pages'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "EC内製能力の構築という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "トラフィック+15%、モバイル+33%、コンバージョン+60bps、顧客満足+18%という複数の定量的改善指標"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "インフラ刷新は戦略というより能力構築に近い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "M&S.com実売上は前年比-2%であり、KPI改善が実際の売上成長に未転換",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "KPI改善の実績はあるが売上への転換が不十分。将来の成長ポテンシャルとして評価し中程度の確信度"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014/15: PBT +6.1%→GBP661M、Food like-for-like +0.6%（5年連続）、GM like-for-like -3.1%、net debt -GBP240M→GBP2.2B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "M&S Food: 市場シェア損失が15年来の低水準・過去最低、Simply Food 62店舗開店（FY2015）→90店舗計画（FY2016）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "GM直接設計・調達比率: 20%→35%（FY2015実績）→50%計画（FY2016）→60%目標（3年）、世界9拠点400名の調達チーム、GM粗利+190bps",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "M&S.com: traffic +15%、mobile/tablet +33%、conversion +60bps、顧客満足+18%、Style&Living 8億訪問。ただし売上-2%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

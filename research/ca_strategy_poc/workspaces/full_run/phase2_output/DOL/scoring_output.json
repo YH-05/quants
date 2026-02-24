@@ -1,0 +1,284 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "カナダ高密度展開による規模の経済と物流効率",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "874→1,400店ロードマップと単一DC活用は規模経済の仕組みを示すが、競合比較数値なし"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": [
+            "pattern_A"
+          ],
+          "adjustment": -5,
+          "reasoning": "高密度展開（結果）を規模経済（能力）とする傾向あり（Pattern A）。物流効率の具体的指標なし"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "店舗網の成長は事実だがPattern A（結果→能力）の問題あり。カナダ市場でWalmartと共存できている点は示唆的だが、具体的な物流コスト優位の数値なし。30%"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "カナダ展開加速→店舗数増加→売上CAGR",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "direct",
+          "adjustment": 0
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "新店60店/年のペースは事実だが、新店 SSS 85%のような数値的根拠なし。CAGR接続として30%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "descriptive_label": "マルチ価格帯モデルによる差別化（$1-$4）",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "pass",
+          "reasoning": "価格帯の拡張は戦略的選択ではなく市場ポジショニング能力として評価"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_F_strategy_confusion",
+          "rejection_patterns": [
+            "pattern_F"
+          ],
+          "adjustment": -10,
+          "reasoning": "Pattern F: $1-$4の価格帯展開は戦略（価格設定）であり優位性ではない。顧客の受容性は示唆されるが構造的優位の証拠が薄い"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "価格帯戦略はPattern F（戦略と優位性の混同）。カナダ市場でのドルストア空白を埋めるポジションとしては示唆的だが、構造的優位の証拠薄く30%"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "マルチ価格帯→顧客層拡大→SSS成長→CAGR",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "indirect",
+          "adjustment": 0
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "価格帯拡張→顧客層拡大の因果は論理的だが、客層別購買データなく検証不能。30%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "直接調達（海外工場バイヤー）によるコスト構造優位",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "直接調達という仕組みは示されているが規模が小さく（$1.7B revenue）、競合比較なし"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": [
+            "pattern_B"
+          ],
+          "adjustment": -5,
+          "reasoning": "直接調達は多くの小売業者が行う業界標準手法（Pattern B）"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "直接調達はPattern B（業界共通）。Dollarama規模（$1.7B）では規模の経済での調達優位は限定的。30%"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "直接調達コスト優位→粗利維持→価格競争力→SSS成長",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "indirect",
+          "adjustment": 0
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "調達→粗利→SSS成長の3ステップ。各ステップの数値的証拠なく検証困難。30%"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Branding",
+      "descriptive_label": "Dollarama ブランドのカナダ消費者における価値認識",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass",
+          "reasoning": "ブランド価値の言及はあるが定量的な顧客ロイヤルティデータなし"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_D_qualitative_only",
+          "rejection_patterns": [
+            "pattern_D"
+          ],
+          "adjustment": -5,
+          "reasoning": "Pattern D: ブランド価値への言及は定性的。消費者調査データや推奨指標なし"
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "ブランド価値はPattern D（定性的のみ）。SSS成長実績は間接証拠だが、Branding優位の直接的証拠が欠如。30%"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "ブランド認知→来店頻度→SSS成長→CAGR",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "indirect",
+          "adjustment": 0
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "ブランド→CAGR接続は3ステップで間接的。ブランド優位性の証拠が薄く30%"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "新店舗フォーマット効率化と不動産実行能力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": [
+            "pattern_B"
+          ],
+          "adjustment": -5
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "不動産実行能力はPattern B（小売業者共通）。カナダ市場でのローカル知識は示唆されるが差別化証拠薄く30%"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies / Switching Costs",
+      "descriptive_label": "季節商品・クリスマス特化MDによる季節集客能力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": [
+            "pattern_A"
+          ],
+          "adjustment": -5
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "季節商品の充実は結果（Pattern A）であり、背後の選定・調達能力の証拠が薄い。30%"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "季節集客→非消費財売上→高粗利→CAGR",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "indirect",
+          "adjustment": 0
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "季節商品の粗利寄与の定量データなく検証困難。30%"
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "高顧客トラフィックと在庫回転効率による運転資本効率",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {
+          "verdict": "partial_pass"
+        },
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": [
+            "pattern_A"
+          ],
+          "adjustment": -5
+        },
+        "dogma_adjustment": {
+          "adjustment": 0
+        }
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "在庫回転は財務的結果（Pattern A）。背後の仕組み（在庫管理能力）の証拠が薄い。30%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 12,
+    "confidence_distribution": {
+      "30-40": 12
+    },
+    "gatekeeper_applied": false
+  }
+}

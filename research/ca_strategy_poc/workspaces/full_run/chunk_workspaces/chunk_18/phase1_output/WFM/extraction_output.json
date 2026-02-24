@@ -1,0 +1,125 @@
+{
+  "ticker": "WFM",
+  "company_name": "Whole Foods Market, Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2025-11-01",
+  "transcript_sources": [
+    {"file": "201402_earnings_call.json", "quarter": "Q1 FY2014", "call_type": "secondary"},
+    {"file": "201405_earnings_call.json", "quarter": "Q2 FY2014", "call_type": "secondary"},
+    {"file": "201407_earnings_call.json", "quarter": "Q3 FY2014", "call_type": "secondary"},
+    {"file": "201411_earnings_call.json", "quarter": "Q4 FY2014", "call_type": "primary"},
+    {"file": "201502_earnings_call.json", "quarter": "Q1 FY2015", "call_type": "secondary"},
+    {"file": "201505_earnings_call.json", "quarter": "Q2 FY2015", "call_type": "secondary"},
+    {"file": "201507_earnings_call.json", "quarter": "Q3 FY2015", "call_type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "WFM-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "claim_text": "Whole Foods Marketブランドは「高品質・自然・オーガニック食品」のカテゴリ認知において米国最強のポジションを持ち、顧客の価値観に訴えるブランド訴求力がプレミアム価格設定を可能にしている。売上/GSF $990（業界最高水準）という生産性指標がブランド力を実証している。",
+      "evidence_quotes": [
+        "The Whole Foods Market brand has helped lead the shift in consciousness towards fresh, healthy foods. (Q3 FY2015 prepared remarks)",
+        "industry-leading sales per gross square foot of $990 (Q3 FY2015 prepared remarks)",
+        "Our new store class for the last 8 quarters has averaged 38 stores, with sales per gross square foot of approximately $700, translating to productivity levels of 78% on a weighted square footage basis. (Q3 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "PASS - ブランド資産という能力",
+        "rule04_quantitative_evidence": "PASS - $990/GSFという定量証拠（業界最高水準）",
+        "rule06_structural_vs_complementary": "PASS - オーガニック食品ブランド認知は構造的優位性",
+        "rule07_pure_competitor_differentiation": "PASS - Kroger/Safewayとの明確な差別化",
+        "rule08_strategy_not_advantage": "PASS - 長年培われた実証済みブランド",
+        "rule10_negative_case": "WARN - NYC不正表示問題でブランド毀損が発生",
+        "rule11_industry_structure_fit": "PASS - 食料品では差別化ブランドが価格競争を回避",
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q3 FY2015）"
+      },
+      "confidence_score": 0.5,
+      "confidence_rationale": "WFMのブランド力は実証済みで売上生産性も高いが、NYC不正表示問題によるコンプ急落（2.5%→0.4%）がブランド脆弱性を示した。競合（Sprouts等）の台頭も懸念材料。ブランドは実在するが傷が入った状態での評価。"
+    },
+    {
+      "claim_id": "WFM-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Whole Foods Marketは422店舗（16M SF）の規模を活かした調達力・バイヤーネットワークを持ち、長期的な1,200店舗ポテンシャルと2形態展開（365 by WFM）による成長余地がある。既存の物流・品質基準インフラの活用が新店の効率的立ち上げを支える。",
+      "evidence_quotes": [
+        "With 424 stores totaling more than 16 million square feet today, we expect to cross the 500-store mark in fiscal year 2017, and over the longer term, continue to see potential for 1,200 Whole Foods Market stores in the United States. (Q3 FY2015 prepared remarks)",
+        "Comparable stores less than 2 years old have averaged 15% comps and most importantly, a 13% return on invested capital well in excess of our weighted average cost of capital. (Q3 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "CONDITIONAL - 規模は能力だが成長計画は戦略",
+        "rule04_quantitative_evidence": "PASS - 422店舗、13% ROIC、新店15%コンプという定量証拠",
+        "rule06_structural_vs_complementary": "WARN - 既存規模の優位性は不明確",
+        "rule07_pure_competitor_differentiation": "PARTIAL - 規模では大手スーパーに劣る",
+        "rule08_strategy_not_advantage": "WARN - 1,200店舗は戦略目標",
+        "rule10_negative_case": "WARN - 新店13% ROICは現在のコンプ悪化前の数値",
+        "rule11_industry_structure_fit": "PASS - 規模による調達力は食料品で重要",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.3,
+      "confidence_rationale": "現時点での規模優位性は限定的。1,200店舗計画は長期目標であり現在の課題（コンプ悪化）を解決しない。新店ROICは過去の数値でありコンプ悪化下では当てにならない。"
+    },
+    {
+      "claim_id": "WFM-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "Whole Foods Marketは業界初の「365 by Whole Foods Market」という低価格・高効率の第2フォーマットを展開（シルバーレイク等5店舗リース確定）。これは既存スーパーには「自分たちのブランドが傷つく」ため模倣困難なポジショニングを可能にする。",
+      "evidence_quotes": [
+        "we are introducing a second format, 365 by Whole Foods Market, which we believe expands our growth opportunity beyond the 1,200 stores. (Q3 FY2015 prepared remarks)",
+        "When we project this out, if we get anything close to what Whole Foods Market sales per square foot are in our new stores, the 365 stores are going to be incredibly profitable and with very high ROICs, even with reduced gross margins. (Q3 FY2015 Q&A)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule01_capability_not_result": "WARN - 第2フォーマットはまだ開店前",
+        "rule04_quantitative_evidence": "PARTIAL - 5店舗確定という初期段階の証拠のみ",
+        "rule06_structural_vs_complementary": "PASS - 既存スーパーには高品質基準維持+低価格の両立は困難",
+        "rule07_pure_competitor_differentiation": "PASS - Sprouts等との差別化として機能しうる",
+        "rule08_strategy_not_advantage": "WARN - まだ完全に戦略レベル",
+        "rule10_negative_case": "WARN - 開店前のため実績なし",
+        "rule11_industry_structure_fit": "PASS - フォーマット多様化は食料品では有効",
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.3,
+      "confidence_rationale": "365コンセプトはCounter-Positioningとして有望だが、2015年9月時点では未開店。理論的には魅力的だが実績がなく確信度は低い。コア事業のコンプ悪化という現実的課題がある中での新フォーマット展開は不確実性が高い。"
+    },
+    {
+      "claim_id": "WFM-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "「健康食品・オーガニック食品への意識向上」という長期的消費トレンドがWFMの成長基盤。ただしコンバンション食品大手（Kroger, Costco）のオーガニック参入が競合激化を引き起こしており、WFMの高価格プレミアムへの圧力が高まっている。",
+      "evidence_quotes": [
+        "The Whole Foods Market brand has helped lead the shift in consciousness towards fresh, healthy foods. (Q3 FY2015 prepared remarks)",
+        "in this retail marketplace, which is more dynamic and competitive than ever (Q3 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認"
+      },
+      "confidence_score": 0.3,
+      "confidence_rationale": "健康食品トレンドは実在するが競合激化で恩恵が薄れている。NYC問題後のコンプ急落はトレンド以上の影響を示す。"
+    },
+    {
+      "claim_id": "WFM-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q3 FY2015（2015年7月期）: 売上$3.6B（+7%）、調整コンプ+2.2%（Easter調整後）、NYC問題後最後の2週間はコンプ+0.4%に急落。EBITDA margin 9.7%、ROIC 15%、CF from Operations $287M。2015通期: 売上+9%、コンプ低一桁、EBITDA margin約9%、ROIC>14%。",
+      "evidence_quotes": [
+        "quarterly sales grew $255 million to a record $3.6 billion... comparable store sales increased 2.2% for the quarter (Q3 FY2015 prepared remarks)",
+        "we delivered 9.7% EBITDA margin, $287 million of operating cash flow and a 15% return on invested capital. (Q3 FY2015 prepared remarks)"
+      ],
+      "primary_source": "201507_earnings_call.json",
+      "rule_evaluation": {
+        "rule12_transcript_primary_secondary": "SECONDARY確認（Q3 FY2015）"
+      },
+      "confidence_score": 0.9,
+      "confidence_rationale": "決算数値として確認済みの事実。"
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "competitive_advantage_claims": 3,
+    "cagr_connection_claims": 1,
+    "factual_claims": 1,
+    "primary_power_types": ["Branding", "Counter-Positioning"],
+    "analyst_notes": "WFMはオーガニック食品ブランドとして業界をリードしてきたが、競合激化とNYC不正表示問題によりコンプが急落。ブランド優位性は実在するが毀損リスクが高い状態。365フォーマットはCounter-Positioningとして有望だが未実証。全体として確信度は低め。"
+  }
+}

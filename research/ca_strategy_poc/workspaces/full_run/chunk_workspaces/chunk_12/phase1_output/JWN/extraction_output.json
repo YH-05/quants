@@ -1,0 +1,174 @@
+{
+  "ticker": "JWN",
+  "company_name": "Nordstrom, Inc.",
+  "extraction_date": "2025-09-30",
+  "cutoff_date": "2015-09-30",
+  "transcripts_analyzed": [
+    {"file": "201402_earnings_call.json", "quarter": "Q4 FY2013", "type": "primary"},
+    {"file": "201405_earnings_call.json", "quarter": "Q1 FY2014", "type": "secondary"},
+    {"file": "201408_earnings_call.json", "quarter": "Q2 FY2014", "type": "secondary"},
+    {"file": "201411_earnings_call.json", "quarter": "Q3 FY2014", "type": "secondary"},
+    {"file": "201502_earnings_call.json", "quarter": "Q4 FY2014", "type": "primary"},
+    {"file": "201505_earnings_call.json", "quarter": "Q1 FY2015", "type": "secondary"},
+    {"file": "201508_earnings_call.json", "quarter": "Q2 FY2015", "type": "secondary"},
+    {"file": "201511_earnings_call.json", "quarter": "Q3 FY2015", "type": "secondary"}
+  ],
+  "claims": [
+    {
+      "claim_id": "JWN-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "title": "Nordstrom Rewards Multi-Tender Loyalty Lock-in",
+      "description": "Nordstrom Rewards program with 4.3 million active members represents a multi-channel switching cost creating customer retention. Members represent 40% of total sales volume, and multi-channel shoppers (store + online) demonstrate greater spending and loyalty. The expansion to tender-neutral loyalty (beyond credit/debit cards) deepens the lock-in to non-credit-card customers.",
+      "evidence": "Rewards members = 40% of total sales volume. 4.3 million active members (2014). Added 1 million new members in 2014 (15% YoY increase). Rack attracted nearly 4 million new customers (2014), with ~1/3 also shopping full-line. Loyalty pilot in Texas and Canada showed 'great results.' Customers shopping 2+ channels 'spend more and demonstrate greater loyalty.'",
+      "source_quarter": "Q4 FY2014 (primary), Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President), Michael Koppel (CFO)",
+      "confidence": 0.5,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "rationale": "Loyalty programs exist across retail (Macy's Star Rewards, Neiman Marcus InCircle) and are not uniquely Nordstrom. Rule06: loyalty programs are complementary to operations, not a structural competitive advantage per se. However, the 40% of sales through loyalty members is a meaningful metric indicating behavioral lock-in. Multi-channel stickiness (Rack returns driving full-line visits, ~1 million incremental store trips from return policy) shows structural cross-channel leverage. Score 50% (somewhat convinced) — real lock-in exists but loyalty programs are replicable."
+    },
+    {
+      "claim_id": "JWN-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "title": "Nordstrom Service Brand as Customer Experience Differentiator",
+      "description": "Nordstrom's brand is built on decades of legendary customer service — personal stylists (~1,500 in-store stylists), flexible return policies, and a service culture that drives repeat purchase. Fortune's Most Admired Companies #14 overall, leading in category. The brand commands premium positioning across full-price and off-price channels simultaneously, a rare dual-channel brand architecture.",
+      "evidence": "Fortune Most Admired Companies #14 (2014), leading in retail category. Award-winning store design concepts. Personal styling program with ~1,500 stylists. Free return policy enabling incremental store visits (nearly 1 million incremental Rack trips from HauteLook/NordstromRack.com return policy). Trunk Club acquisition adds high-personalization service model.",
+      "source_quarter": "Q4 FY2014 (primary), Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule06_structural_vs_complementary", "rule07_pure_competitor_differentiation"],
+      "rationale": "Nordstrom's service brand is genuinely differentiated vs. department store peers. The ability to operate both premium full-line and high-growth Rack without brand dilution is structurally unusual. Competitors (Macy's, JCPenney) who attempted similar dual-channel (full-price + off-price) strategies have faced brand confusion. Rule06: brand advantage is not complementary but structural in retail. Rule07: Nordstrom's service reputation empirically outperforms peers (satisfaction surveys, customer loyalty metrics). Score 70% (mostly convinced) — durable brand advantage evidenced by dual-channel success and sustained loyalty."
+    },
+    {
+      "claim_id": "JWN-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "title": "Multichannel Integration Scale — Shared Inventory and Fulfillment",
+      "description": "Nordstrom's fully integrated multichannel inventory platform (unified buying teams since ~2004) enables fulfillment from any store or fulfillment center to any customer. By 2015, 3 fulfillment centers provide 3x the capacity of 2012. This creates cost advantages in inventory utilization and fulfillment speed unavailable to pure-play online or pure-play physical retailers.",
+      "evidence": "Doubled daily fulfillment capacity to 300,000 units (2013). Third fulfillment center (East Coast) opening 2015 — 3x total capacity vs 2012. Rack can fulfill from one store's inventory to another store's customer. Online business growing at ~30% CAGR (3 consecutive years). Combined Rack/e-commerce = 40%+ of total sales (up from 30% 3 years prior).",
+      "source_quarter": "Q4 FY2013 (primary), Q4 FY2014 (primary)",
+      "speaker": "Michael Koppel (CFO), Blake Nordstrom (President)",
+      "confidence": 0.5,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "rationale": "Multichannel inventory integration is a structural capability that took decades to build (unified buying teams since early 2000s). Competitors (Macy's, Bloomingdale's) are catching up but started later. Rule04: 30% online CAGR over 3 years and capacity investment scale ($3.9B 5-year capital plan) provide quantitative support. Rule06: fulfillment infrastructure is operational but creates genuine scale advantages as volume grows. Score 50% (somewhat convinced) — genuine capability but not yet clearly ahead of best-in-class competitors like Amazon's fashion efforts."
+    },
+    {
+      "claim_id": "JWN-004",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "title": "Full-Price + Off-Price Dual Channel Architecture",
+      "description": "Nordstrom operates both premium full-price (Nordstrom full-line) and high-growth off-price (Nordstrom Rack) channels simultaneously, using the Rack as a customer acquisition engine that feeds into full-price. This dual architecture is difficult for full-price-only competitors to replicate (brand dilution risk) and for off-price-only competitors to replicate (lack of full-price aspiration). The Rack achieved $550/sqft productivity with 27 new stores in 2014.",
+      "evidence": "Rack = biggest source of new customers (4 million new in 2014). ~1/3 of Rack customers also shop full-line. Rack growth 17% total sales (2014). Rack NordstromRack.com + HauteLook = highest growth channel Q4 2014. Path to 300 Rack stores by 2020. Full-line brand strength maintained: 48 of top 50 full-line brands offered in Rack.",
+      "source_quarter": "Q4 FY2014 (primary), Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President), Michael Koppel (CFO)",
+      "confidence": 0.7,
+      "kb_rules_applied": ["rule06_structural_vs_complementary", "rule11_industry_structure_fit"],
+      "rationale": "The full-price + off-price dual architecture is structurally differentiated. Macy's (Bloomingdale's + Backstage) attempted this but Backstage was launched later and faces brand confusion challenges. TJX/Ross are pure-play off-price and cannot offer the brand aspiration channel. Rule11: retail industry structure rewards channel diversification as e-commerce disrupts pure-play models; Nordstrom's positioning is well-suited to this shift. The ~1/3 Rack-to-full-line customer conversion rate is strong evidence of cross-channel synergy. Score 70% (mostly convinced) — architecturally differentiated with quantified cross-channel conversion data."
+    },
+    {
+      "claim_id": "JWN-005",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "title": "Vendor Partnership and Brand Exclusivity Architecture",
+      "description": "Nordstrom's vendor partnerships (Topshop, Madewell, Charlotte Tilbury exclusives) create brand exclusivity and supply chain relationships that drive customer acquisition and differentiation. Offering new distribution channels to vendors creates a mutual dependence: vendors get incremental volume/reach, Nordstrom gets exclusivity and unique product. The tripling of nordstrom.com selection since 2011 is partially enabled by this vendor network.",
+      "evidence": "Topshop expanded from 14 stores (start 2013) to 41 (end 2013) to 80+ doors (2015 plan). Madewell partnership launched in 15 stores + online. Charlotte Tilbury exclusive. Dual-flash events on NordstromRack.com and HauteLook create 'lift in brand sales across all 4 channels.' Full-line selection on nordstrom.com tripled since 2011.",
+      "source_quarter": "Q4 FY2014 (primary), Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President)",
+      "confidence": 0.3,
+      "kb_rules_applied": ["rule01_capability_not_result", "rule07_pure_competitor_differentiation"],
+      "rationale": "Vendor exclusivity relationships are common in premium retail and contested regularly. Topshop also sells through ASOS and other channels. Rule01: offering vendor partnerships is a capability, not a demonstrated result of pricing power or volume advantage. Rule07: no evidence of Nordstrom's vendor terms being structurally superior to competitors like Neiman Marcus or Saks. Score 30% (not very convinced) — vendor relationships are valuable but not demonstrably exclusive or durable."
+    },
+    {
+      "claim_id": "JWN-006",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "title": "Trunk Club Personalization Service as Scalable Model",
+      "description": "Nordstrom's 2014 acquisition of Trunk Club brings a capital-light personal styling business model (online stylist curation + showrooms + road shows) that can be integrated with Nordstrom's 1,500 in-store stylists and scale nationally. Trunk Club doubled sales in 2014 and planned to double again in 2015 — demonstrating a differentiated customer acquisition approach targeting the male fashion-resistant segment.",
+      "evidence": "Trunk Club doubled sales in 2014, planned to double again 2015. Achieved breakeven operating profitability rapidly for a startup (before acquisition). Custom business road show tested in downtown Seattle Nordstrom store. 5 showrooms plus online plus custom road model. Planned integration with Nordstrom's 1,500 stylists.",
+      "source_quarter": "Q4 FY2014 (primary)",
+      "speaker": "Erik Nordstrom (President, Direct), Michael Koppel (CFO)",
+      "confidence": 0.3,
+      "kb_rules_applied": ["rule01_capability_not_result", "rule08_strategy_not_advantage"],
+      "rationale": "Trunk Club's personalization model is innovative but acquisition-stage companies often show strong growth rates before scaling challenges emerge. Rule08: acquiring a personalization startup is a strategic investment, not an inherently structural advantage. The EBIT loss of $30M in 2015 and uncertainty about scale economics limits confidence. Rule01: doubling sales from small base doesn't validate structural competitive advantage. Score 30% (not very convinced) — interesting capability but too early to assess structural moat."
+    },
+    {
+      "claim_id": "JWN-007",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "title": "Cross-Channel Customer Return Policy Driving Incremental Traffic",
+      "description": "Nordstrom's ability for customers to return HauteLook/NordstromRack.com purchases to any physical Rack store creates a unique network effect: online returns drive physical store traffic and incremental in-store purchases. This cross-channel capability requires both dense physical footprint (140+ Rack stores growing to 230+) and integrated inventory systems simultaneously — a capability that pure-play online competitors cannot replicate.",
+      "evidence": "Nearly 1 million incremental Rack store trips driven by HauteLook/NordstromRack.com return policy (2014). Many returning customers make in-store purchases during return visits. Rack fulfillment enables one-store inventory to fulfill another-store's customer. This required integrated inventory platform built over decade.",
+      "source_quarter": "Q4 FY2014 (primary), Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President)",
+      "confidence": 0.5,
+      "kb_rules_applied": ["rule04_quantitative_evidence", "rule06_structural_vs_complementary"],
+      "rationale": "The nearly 1 million incremental store trips from online return policy is a genuine, quantified network effect. Rule04: quantified traffic driver (+1M store visits annually) supports claim. Rule06: the value of this capability grows with the number of Rack stores (more return points = more convenience = more online purchases = more returns = more store traffic). This virtuous cycle strengthens as Rack store count grows from 140 to 230+. Score 50% (somewhat convinced) — genuine but requires density to be fully effective; growing as store count increases."
+    },
+    {
+      "claim_id": "JWN-008",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "title": "FY2014 Record Sales Performance",
+      "description": "Nordstrom achieved record sales of over $13 billion in FY2014, with 7.8% total sales growth and 4% comparable sales increase, both ahead of initial expectations. Online + Rack represent 40%+ of sales (up from 30% 3 years prior).",
+      "evidence": "FY2014 total sales >$13 billion (record). Total sales growth 7.8%, comp sales +4%. Added ~$1 billion in top-line vs FY2013. ROIC 12.6%. Operating cash flow >$1 billion (6th consecutive year). EPS $3.72 (above prior guidance).",
+      "source_quarter": "Q4 FY2014 (primary)",
+      "speaker": "Michael Koppel (CFO)",
+      "confidence": null,
+      "kb_rules_applied": [],
+      "rationale": "Factual financial metric. Verifiable via 10-K."
+    },
+    {
+      "claim_id": "JWN-009",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "title": "Path to $20 Billion Revenue by 2020",
+      "description": "Nordstrom's management targets becoming a $20+ billion business by 2020 (from $13B in FY2014), implying ~7-8% CAGR, driven by Rack expansion (300 stores by 2020), online growth (mid-teens nordstrom.com, ~25% NordstromRack.com/HauteLook), and Canadian market expansion ($1B+ opportunity).",
+      "evidence": "$20B+ revenue target by 2020 ($13B base in FY2014). 300 Rack stores by 2020 (from 140+). 7-9% total sales growth guidance for FY2015. Online business $2.5B growing by $1B+ over next several years. Canada: $1B+ market opportunity with profitability expected from 2017 onwards.",
+      "source_quarter": "Q4 FY2014 (primary), Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President), Michael Koppel (CFO)",
+      "confidence": null,
+      "kb_rules_applied": [],
+      "rationale": "Management forward guidance. Verifiable against subsequent actual results."
+    },
+    {
+      "claim_id": "JWN-010",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "title": "Direct Business 30%+ CAGR for 3 Consecutive Years",
+      "description": "Nordstrom's direct (online) business grew at 30%+ CAGR for three consecutive years (FY2011-FY2013), with 1 million new customers acquired online per year. Merchandise selection grew 30% in FY2013 after 50% expansion in FY2012.",
+      "evidence": "Direct business: 3rd consecutive year of 30%+ top-line growth. 1 million new customers acquired online per year (2012 and 2013). Selection grew 30% in FY2013, 50% in FY2012. Selection on nordstrom.com tripled since 2011. Fulfillment capacity: 300,000 units/day (doubled from 2012 level).",
+      "source_quarter": "Q4 FY2013 (primary)",
+      "speaker": "Blake Nordstrom (President)",
+      "confidence": null,
+      "kb_rules_applied": [],
+      "rationale": "Historical growth metric. Verifiable via annual reports."
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 10,
+    "competitive_advantage_claims": 7,
+    "factual_claims": 1,
+    "cagr_connection_claims": 2,
+    "power_type_distribution": {
+      "Switching Costs": 2,
+      "Branding": 1,
+      "Scale Economies": 1,
+      "Counter-Positioning": 1,
+      "Process Power": 1,
+      "Network Economies": 1
+    },
+    "confidence_distribution": {
+      "0.7": 2,
+      "0.5": 3,
+      "0.3": 2
+    },
+    "key_themes": [
+      "Dual channel architecture (full-price + off-price) with customer conversion",
+      "Nordstrom service brand strength and loyalty program",
+      "Multichannel integration and fulfillment scale",
+      "Vendor partnership exclusivity",
+      "Trunk Club personalization acquisition"
+    ]
+  }
+}

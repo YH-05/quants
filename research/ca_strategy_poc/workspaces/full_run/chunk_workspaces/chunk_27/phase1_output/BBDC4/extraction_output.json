@@ -1,0 +1,163 @@
+{
+  "ticker": "BBDC4",
+  "company_name": "Banco Bradesco S.A.",
+  "transcript_source": {
+    "primary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201401_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201501_earnings_call.json"
+    ],
+    "secondary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201404_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201408_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201410_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201504_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/BBDC4/201507_earnings_call.json"
+    ]
+  },
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "extraction_date": "2026-02-24",
+    "transcript_count": 7,
+    "primary_transcript_count": 2,
+    "framework": "Hamilton Helmer 7 Powers",
+    "note": "Banco Bradesco S.A. is one of Brazil's largest private sector banks with significant insurance operations (Bradesco Seguros). FY2013 results in 201401; FY2014 results + 2015 guidance in 201501. 201510 excluded (Q3 2015 after PoiT cutoff 2015-09-30, event_date assumed post-cutoff)."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "Bradesco はブラジル最大級の民間銀行として、総資産BRL 1兆超（2014年末）・拡大ローンポートフォリオBRL 4,550億を持ち、IT・インフラへの継続投資（年間BRL 50億＋2015年追加BRL 10億）が規模の経済を生む。OpEx成長率を2011年以降継続的にインフレ率以下に抑え（2013年4.6%、2014年4.5%）、効率性比率を5年前計画通り39%に到達させた。",
+      "evidence_quotes": [
+        "Our total assets exceed at BRL 1 trillion",
+        "We set our goal of reaching an efficiency ratio of around 39% by the end of this year",
+        "we reached now the best level ever that we have in the company, this 39%. That is one target that we planned 5 years ago",
+        "In 2015, we expected we will do an additional investment in around BRL 1 billion"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "規模の経済は銀行業では一般的であり、ブラジル市場での大手行としての優位性は実績で示されているが、OpEx管理はシステム投資・効率化委員会によるものであり、競合他社（Itau、Santander Brasil）も同様の施策を実施。Scale Economiesとしての独自性・持続的優位性は中程度。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Switching Costs",
+      "claim_text": "Bradesco はブラジル最大の保険・年金・資本化債券事業（Bradesco Seguros）を銀行と高度に統合し、2014年保険純利益BRL 44億（前年比+17.8%）、保険料BRL 160億規模を達成。銀行顧客への生命・年金・自動車・健康・住宅保険のバンドル販売と、2014年再編した新商業体制による銀行-保険間シナジーがスイッチングコストを創出。クレジットカード（手数料収入の1/3）・コンソーシアム・当座預金など複数サービスの組み合わせが顧客の乗り換え摩擦を高める。",
+      "evidence_quotes": [
+        "The net income from insurance amounted to BRL 4.4 billion in 2014, up 17.8% year-over-year growth",
+        "the high synergy that we have between the bank and the insurance company",
+        "the new commercial structure that we -- during 2014, we restructured",
+        "credit cards BRL 12.8 billion cards now is 1/3 of the total fees"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "銀行-保険統合モデルはブラジルの大手行の特徴であり、Bradesco固有のSwitching Costsとは言い難い側面がある。しかし、Bradesco Segurosの規模（ブラジル最大の民間保険グループの一角）と銀行との密接な統合は実証されており、顧客の複数サービス依存による乗り換えコストは中程度の優位性を持つ。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 8-T: Switching Costs require meaningful friction for buyer to switch", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "claim_text": "Bradesco は50以上の審査情報を使用した独自信用スコアリングモデルと継続的な改善プロセス（「継続的に我々のモデルに投資・改善」）により、ブラジルの困難なマクロ経済環境下（GDP成長期待2.1%→実績ほぼ0%/2013年）でも不良債権比率を3.5%に安定維持。2013年から5年ぶりの最低水準を達成し、延滞率は2014年末も3.5%横ばいを維持。IT再活性化プログラム（旧システム廃止・新システム稼働）が継続的なコスト削減と業務効率化をもたらす。",
+      "evidence_quotes": [
+        "our models, normally they check more than 50 information of the -- about the client and operations before to do the approval",
+        "we continually investing in our instruments for to do the analysis and to approve the credit operations",
+        "delinquency ratio over 90 days fell both on a quarter and an annual basis... reaching at 3.5%, at the lowest point in the last 5 years",
+        "our IT restabilization program that some systems that we are finishing, they will give in some contribution for to improve the efficiency"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "独自の信用審査プロセスと継続的なIT再活性化への投資は具体的。しかし、ブラジルの主要競合銀行も同様の信用スコアリング改善を行っており、Bradesco固有の模倣困難な活動システムとしての証拠は限定的。ROE 20.1%（2014年）の改善はリターン水準として実証されている。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 5-T: Process Power requires difficult-to-replicate embedded activity chain", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "Bradesco のデジタル・フィジカルチャネル統合モデルは、クレジットカード事業の継続的二桁成長（2014年+12%、手数料BRL 128億、手数料収入の1/3）と、コンソーシアム事業の毎年+20%成長を支えている。クライアント基盤の拡大・セグメンテーション（Classico・Exclusivo・Fine等）の深化と、顧客あたり製品数の増加を組み合わせ、手数料収入を11.6%成長させた。2015年ガイダンスは二桁成長の継続（手数料8-12%、期待値10-12%）。",
+      "evidence_quotes": [
+        "credit cards BRL 12.8 billion cards now is 1/3 of the total fees",
+        "consortium that maintain growth year-after-year around 20% is a very important product for us",
+        "fee and commission income increased by 11.6% year-over-year as a result of investments in the increased segmentation of our client base",
+        "we are working to develop now the segmentation in our base of clients"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "顧客セグメンテーションと手数料収入の二桁成長は実績として具体的。しかし、これはブラジルの消費者金融市場全体の成長によるものであり、Bradesco特有のスケール経済優位性とは言い難い。ブラジルのカード市場成長はItau、Cielo等との競争も激しい。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Counter-Positioning",
+      "claim_text": "Bradesco は公共銀行（Banco do Brasil、Caixa）が競争的スプレッドに戻る中、民間銀行としての柔軟な価格設定・リスク管理優位を生かす戦略を展開。「公共銀行は現在より正常なスプレッドで競争しており、スプレッドを通常水準に維持するチャンスを見ている」と経営陣が明言。ブラジル民間銀行としての独立ガバナンスにより、政治的制約なく信用コスト管理と収益性を追求。",
+      "evidence_quotes": [
+        "the competition that public banks are now working more in a normal way and are catching more normal spreads",
+        "We see opportunities for -- during the year to continue maintaining the spreads in a more normal level that considers the risk",
+        "we're growing in a more according what's possible to grow with quality"
+      ],
+      "transcript_source": "201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "公共銀行との差別化は戦略的視点としては示されているが、Counter-Positioningの本来の意味（既存プレイヤーが模倣すると自社を傷つける構造）には当てはまらない。民間銀行としての優位性はItau、Santander Brasil等の競合と共有されており、Bradesco固有の非対称的優位ではない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 7-T: Counter-Positioning requires established players being unable to mimic without self-harm", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Branding",
+      "claim_text": "Bradesco の生命・年金・資本化債券ブランド（Bradesco Seguros）は、ブラジル最大の民間保険グループとして機能。2015年保険料ガイダンス+12-15%成長は、Bradesco-保険間シナジーと新商業体制再編による顧客信頼に基づく。クレジットカード・コンソーシアム等の消費者向けサービスブランドも顧客基盤の忠実度（operating coverage ratio 71.8%＝5年最高水準）で実証されている。",
+      "evidence_quotes": [
+        "our insurance operation, which is one of the pillars of our business",
+        "the insurance written premiums increased 13.9%",
+        "our operating coverage ratio on the top line came to 71.8%. This ratio is a measure of our ability to cover operating expenses with fee income",
+        "insurance premiums, that we have very good guidance to grow 12% to 15%"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "Bradesco Segurosはブラジルの民間保険市場での地位を持つが、銀行ブランドとしての超過価格設定力（Branding powerの本質）の証拠が限定的。ブラジル銀行市場はItau Unibancoが強力なブランド優位を持ち、Bradesco固有のBranding powerとしての確信度は低い。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 6-T: Branding requires persistent price premium derived from brand", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "claim_text": "Bradesco FY2013: 調整後純利益BRL 122億（前年比+5.9%）、ROE 18%、手数料収入+13%、OpEx+4.6%（インフレ以下）、不良債権比率3.5%（5年最低水準）、効率性比率42.1%→5年最高。FY2014: 調整後純利益BRL 153億（前年比+25.9%）、ROE 20.1%（前年比+200bp）、手数料収入+11.6%、OpEx+4.5%（インフレ以下）、NIM 7.2%、効率性比率39.2%（過去最高・5年前の目標達成）。2015年ガイダンス: ローンポートフォリオ+5-9%、NII+6-10%、手数料+8-12%（期待10-12%）、OpEx+5-7%（インフレ以下維持）、保険料+12-15%。",
+      "evidence_quotes": [
+        "Adjusted net income, which amounted to BRL 12,202,000,000. In 2013, 5.9% year-over-year, with ROE of 18%",
+        "The adjusted net income reached BRL 15.3 billion in 2014, up 25.9% year-over-year",
+        "ROE reached 20.1% in 2014, 200 bps increase year-over-year",
+        "Our efficiency ratio reached at 39.2%. It's the best level ever"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "財務実績は具体的な数値で裏付けられており、ROE 20%台・効率性比率39%（5年前の目標達成）・純利益+25.9%は堅実な成長実績を示す。ただし2014年の大幅増益は金利環境改善（Selic上昇）・保険業績改善によるものが大きく、純粋な競争優位性改善とは切り分けが必要。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 9-T: CAGR connection claims require explicit financial linkage"]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "claim_text": "Bradesco の主要財務数値（2013-2014年）: 総資産2014年末BRL 1兆3,200億。拡大ローンポートフォリオ2014年末BRL 4,550億（前年比+6.5%）。保険金融資産BRL 1,660億、技術準備金BRL 1,530億（うち生命・年金BRL 1,340億）。Basel III Tier 1比率12.9%（完全実施シミュレーション後12.4%）。不良債権引当比率（過90日延滞カバレッジ）189%。手数料収入2014年BRL 58億/四半期（前年比+11.6%）。IT再活性化投資+BRL 10億/年（2015-2016年）。",
+      "evidence_quotes": [
+        "Our total assets exceed at BRL 1 trillion",
+        "the expanded loan portfolio reached BRL 450 billion, up 6.5% year-over-year",
+        "The financial assets amounted to BRL 166 billion, while technical reserves stood at BRL 153 billion",
+        "Our Tier 1 that we expect to have, is 12.4%",
+        "for the operations overdue more than 90 days is 189%"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "これらの事実は経営陣の定量的発言として信頼性が高い。ブラジルマクロ環境の悪化（GDP期待2.1%→実績ほぼ0%）の中での安定した財務指標は、リスク管理の実力を示す。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 10-T: Factual claims must be clearly stated facts from transcripts"]
+    }
+  ]
+}

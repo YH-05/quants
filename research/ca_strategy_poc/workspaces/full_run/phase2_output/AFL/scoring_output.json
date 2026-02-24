@@ -1,0 +1,287 @@
+{
+  "scored_claims": [
+    {
+      "id": "AFL_001",
+      "claim": "Aflac Japan と Japan Post の戦略的提携は、日本最大の販売網（全郵便局）を通じた独占的保険販売チャネルを確立しており、競合他社がアクセスできない消費者接点を持つ。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Japan Post チャネルという Cornered Resource（仕組み）を評価。CEO が「誰もこれほどのものを持っていない」と明言。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "10,000 局以上での販売開始・がん保険販売 176% 増という定量的裏付けあり。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "競合他社がアクセス不可能なチャネル（独占的）という明確な差別化。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Japan Post との独占的提携という構造的市場ポジション。高評価パターン IV 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Japan Post は日本最大の販売網（10,000 局超）を持ち、他の保険会社がアクセスできない Cornered Resource。がん保険販売 176% 増は定量的な成果の証拠。独占性の永続性（今後 Japan Post が他社も扱う可能性）に留保あり。70%。"
+    },
+    {
+      "id": "AFL_002",
+      "claim": "Aflac は日本においてがん保険のカテゴリーリーダーとして認識されており、Third Sector での市場地位が差別化の根幹にある。10 年以上で最大の Third Sector 販売増加予測（rolling 12M +20%）。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "がん保険カテゴリーリーダーとしてのブランド認知（仕組み）を評価。dogma.md ブランド類型 2（デファクト的認知）に合致。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "10 年以上で最大の Third Sector 販売増加（rolling 12M +20%）という定量的裏付けあり。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "10 年以上で最大の販売増加という定量差別化データ。高評価パターン I 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Aflac ジャパンのがん保険ブランドは 30 年以上の蓄積により、消費者認知では日本市場でデファクト的地位を持つ。Japan Post 提携との相乗効果で 10 年来最大の販売増加が見込まれる。競合（MetLife 等外資、Nippon Life 等）への優位性が定量的に示されている。70%。"
+    },
+    {
+      "id": "AFL_003",
+      "claim": "One Day Pay（1 日以内の保険金支払い）は業界初の仕組みであり、2015 年に 100 万件超の保険金を 1 日で処理する計画。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "1 日以内支払いプロセス（仕組み）を評価。「業界初」という差別化の明示あり。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "70% の eligible claims に適用・100 万件超の計画という定量的裏付けあり。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "プロセス能力（1 日支払い）を評価。高評価パターン III 部分合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "「業界初」のOne Day Pay は Process Power として評価できる。ただし 70% の eligible claims 限定であり、競合が追従する可能性が高い（複製困難性が低い）。プロセス優位性の持続性に疑問。50%。"
+    },
+    {
+      "id": "AFL_004",
+      "claim": "Aflac Japan は 5,000 万人超への保険提供という規模を活用し、資本効率を高めている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "5,000 万人超は規模の結果。Scale Economies のメカニズム（単位コスト逓減の具体的証拠）が示されていない。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "再保険スキームは資本効率の工夫であるが、Scale Economies の定量的裏付けとしては弱い。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "5,000 万人という規模（結果）を Scale Economies の証拠として提示する典型的なパターン。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb1_rule_1_t",
+          "adjustment": -0.2,
+          "reasoning": "規模は結果。コスト逓減メカニズムの説明なし。30% に引き下げ。"
+        }
+      ],
+      "overall_reasoning": "5,000 万人規模は事実だが Scale Economies の証拠としては弱い。再保険スキームは財務工学であり持続的競争優位性とは言いにくい。dogma.md 却下基準 1（結果の優位性への誤帰属）部分合致。30%。"
+    },
+    {
+      "id": "AFL_005",
+      "claim": "Aflac Japan の長期勤続経営陣（39 年）が日本市場固有の顧客関係・規制知識を蓄積しており、外部からの参入障壁となっている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "個人の在籍年数は組織的優位性の直接証拠にはならない。経営陣交代（Tonoike → Yamauchi）というリスクが発生。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "定性的な人的資本の主張。定量的裏付けなし。却下パターン D 合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "個人の 39 年在籍は人的資本の深さを示唆するが、Cornered Resource としての証拠は弱い。dogma.md 却下基準 4（定性的で測定不能な主張）部分合致。30%。"
+    },
+    {
+      "id": "AFL_006",
+      "claim": "Aflac Japan の既存契約者 5,000 万人超は、疾病・がん保険の長期継続的な保険関係により高い継続率を示す。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "長期保険契約の粘着性という構造的な Switching Costs を評価。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "同類保険は競合（MetLife、外資系）も提供。Aflac 固有の切り替えコスト（技術統合等）の証拠が薄い。"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "長期保険契約の粘着性は構造的に存在するが、競合も同様の長期契約を持つ。Aflac 固有の切り替えコスト（例：保険金支払い履歴・医療情報の Aflac 内完結）の証拠が不十分。50%。"
+    },
+    {
+      "id": "AFL_007",
+      "claim": "Aflac の販売チャネルは個人代理店・提携代理店・Japan Post の三本柱を持ち、チャネル多様化によってリーチが拡大されている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "多チャネル展開は分布拡大であり、Network Economies のメカニズム（参加者増加による価値向上）ではない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "チャネル戦略（意思決定）を Network Economies（能力）として提示するパターン。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "多チャネル展開は Scale の問題に近い。Network Economies の本質（参加者増加による価値の相互強化）とは異なる。dogma.md ルール 8（戦略≠優位性）部分合致。30%。"
+    },
+    {
+      "id": "AFL_008",
+      "claim": "Aflac Duck を活用したマーケティングキャンペーン（GRAMMYs）は米国での Aflac ブランド認知を強化し、One Day Pay 訴求と組み合わせる。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「set us apart」は期待値。実際の競争優位性（解約率低下、顧客粘着性）の証拠なし。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "マーケティングキャンペーンの効果に関する定量的裏付けなし。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "定性的なマーケティング主張。結果の測定が示されていない。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Aflac Duck は米国での知名度が高い（dogma.md ブランド類型 2 合致）。ただし GRAMMY キャンペーンの効果は未検証（「期待」のみ）。Phase 1 での 0.5 評価を維持。50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "20-30": 3,
+      "40-50": 3,
+      "60-70": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

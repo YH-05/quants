@@ -1,0 +1,131 @@
+{
+  "ticker": "RY",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ国内銀行・富裕層向け総合金融サービスにおける圧倒的市場シェアとクロスセル能力",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_3_t", "rule_4_t"],
+        "rule_partials": ["rule_1_t", "rule_7_t"]
+      },
+      "kb2_t_pattern": "pattern_I_t",
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "クロスセル「能力」は主張として認識できる。市場シェア80bp向上と投資信託30%+シェアは定量的証拠。ただしTD/BMO/Scotiaとの直接クロスセル比率比較がなく純粋競合差別化が不完全（KB2-T パターンI-T: 定量的差別化があるが比較対象不明確）"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "クロスセル深化 → 世帯当たり収益向上 → NIM以外の手数料収入成長 → EPS CAGR 7%+",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_12_t"],
+        "rule_partials": ["rule_5_t"]
+      },
+      "kb2_t_pattern": null,
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "CAGR接続。手数料収入14%成長は確認されており方向性は正しい。ただしクロスセル→手数料成長の定量的接続が弱い（金利環境・市場の影響も大）"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "北米資本市場（米国50%超シェア）での機関投資家・企業向けフランチャイズ構築",
+      "gatekeeper_pass": false,
+      "kb1_t_assessment": {
+        "primary_rule_violation": "rule_1_t",
+        "rule_violations": ["rule_1_t", "rule_7_t"],
+        "rule_passes": [],
+        "rule_partials": ["rule_4_t"]
+      },
+      "kb2_t_pattern": "pattern_A_t",
+      "confidence": 30,
+      "confidence_breakdown": {
+        "base": 40,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 30
+      },
+      "score": 0.30,
+      "rationale": "米国Capital Markets $4.1B収益（50%+）は結果の報告（KB2-T パターンA-T）。Goldman/JPMorganを純粋競合とした場合の差別化なし（KB1-T ルール7違反）。5年間の投資は「戦略」言語（ルール8）"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "ウェルスマネジメントにおけるカナダ長期投資信託シェア30%超とグローバル機関投資家向け拡張",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_4_t"],
+        "rule_partials": ["rule_1_t", "rule_11_t"]
+      },
+      "kb2_t_pattern": "pattern_I_t",
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "カナダ投資信託30%シェア+機関投資家AUM50%超（内30%が海外）は定量的証拠あり（KB2-T パターンI-T）。BlueBay買収という能力の証拠もある。ただし競合（TD Asset Management、Manulife）との差別化メカニズムが不明確"
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "投資貯蓄製品市場（信用の3倍成長予測）× RBCシェア優位 → ウェルスマネジメント収益 CAGR加速",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_5_t", "rule_12_t"],
+        "rule_partials": []
+      },
+      "kb2_t_pattern": "pattern_II_t",
+      "confidence": 70,
+      "confidence_breakdown": {
+        "base": 70,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 70
+      },
+      "score": 0.70,
+      "rationale": "CAGR接続高確信度。「investment and savings products are forecasted to grow 3x faster than credit」という外部データとRBC首位シェアの組み合わせは直接的。カナダの退職者増加・企業オーナー世代交代という構造的背景と整合（KB2-T パターンII-T）"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "high_0.7_plus": 1,
+      "medium_0.5_to_0.69": 2,
+      "low_below_0.5": 2
+    }
+  }
+}

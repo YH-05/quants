@@ -1,0 +1,394 @@
+{
+  "ticker": "2454",
+  "total_scored_claims": 7,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_id": "2454_001",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekはスマートフォンチップセット市場において、2013年3億台超・2014年3.5億台超・2015年4.5億台超という大規模出荷量を実現し、主に中国市場でのシェア確立と新興市場拡大（海外比率2014年34%→2015年40-50%目標）により規模の経済を享受している。",
+      "descriptive_label": "年4.5億台超出荷量による規模の経済・R&Dコスト分散（Scale Economies）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "4.5億台超の出荷規模は、R&D費・tapeout費・IP取得費の単位コスト低減という構造的能力として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "2014年収益213億NTD（+56.6%）・グロスマージン48.8%・純利益464億NTD（+68.8%）という具体的な定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "数千名のR&Dエンジニア・TSMC等との製造パートナー関係・複数世代のチップ開発実績は構造的要素"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "世界的な3G→4G/LTE移行（業界構造変化）×MediaTekの大規模SoC開発・出荷能力の合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "2013年+37%→2014年+57%の収益成長・グロスマージン48.8%という定量的差別化データで評価を支える"
+        },
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "LTE普及（世界的スマートフォン移行）という業界構造変化×MediaTekの出荷規模ポジションの合致"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "「出荷量の規模」は結果指標の側面もあるが、規模そのものが次の出荷量拡大を可能にする構造的要素として評価可能"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "4.5億台超の年間出荷量という規模の経済は、R&D費用分散という具体的なコスト優位を生む（Scale Economies）。2014年の定量データ（グロスマージン48.8%・純利益+68.8%）が強力に支持。LTE移行という業界構造変化との合致（パターンIV）も認められる。ただし2015年は競合激化でYoY収益成長鈍化（Q2 2015で-13%）が見られ、競争優位の持続性に一定の懸念。Q4 2014年次（主・①相当）。Phase 1評価の0.7を維持。"
+    },
+    {
+      "id": 2,
+      "claim_id": "2454_002",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekは中国スマートフォン市場において3G時代から支配的なポジションを確立しており、4G/LTE移行において独自のSoCロードマップ（Helioシリーズ）によってQualcommと競合しながら市場シェアを維持・拡大している。",
+      "descriptive_label": "Qualcommとの市場競争でのSoCロードマップ差別化（Counter-Positioning）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Helioシリーズ（X10、X20、P10）の具体的なSoCロードマップは能力として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "LTE 150M units（2015年目標）という定量データ"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "QualcommへのMediaTekの「優位性」の説明が不十分。Qualcommが一部セグメントで撤退しているという証拠はなく、市場競争が継続中"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "4G/LTEへの移行は「新技術への投資戦略」の側面が強く、Counter-Positioningとしての成立には慎重評価が必要"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「LTE SoCへの移行」は成長戦略の色合いが強く、確立した競争優位との区別が曖昧。4G GMがcorporate average以下という事実はLTEでの優位未確立を示唆"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Qualcommのシェアがどの程度侵食されているかの直接証拠なし。「競合できている」という事実のみ"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_F_t",
+          "adjustment": -0.1,
+          "reasoning": "LTE移行は確立した優位でなく進行中の戦略"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "Qualcommとの直接比較・シェアデータなし"
+        }
+      ],
+      "overall_reasoning": "Helioシリーズという具体的なSoCブランドは評価できるが、LTE SoCのグロスマージンがcorporate average以下という事実（CFO発言）はLTEでのCounter-Positioningが未確立であることを示す（パターンF）。3G時代のポジションは確立されているが、4G/LTE市場での競争優位確立はPoiT時点では進行中。Q4 2014年次（主・①相当）。Phase 1評価の0.5から-0.2調整後: 30%→キャリブレーション後40%。"
+    },
+    {
+      "id": 3,
+      "claim_id": "2454_003",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekはMStar Semiconductorの買収（2013年完了）によりデジタルテレビ（DTV）チップセット市場において支配的なポジションを確立し、スマートフォン以外の収益多様化（デジタルホーム事業30-35%）を実現している。",
+      "descriptive_label": "MStar買収によるDTV市場支配ポジション・収益多様化（Scale Economies）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "MStar買収による市場ポジション確立は構造的能力。DTV市場での規模的優位を獲得"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "デジタルホーム事業30-35%という収益構成データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "MStar買収で獲得した技術・顧客基盤・エンジニアリング能力は構造的要素"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「DTV市場支配」という主張は結果指標。MStar買収という能力の背景はあるが、それを可能にした継続的な競争優位の説明が不足"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "DTV市場での競合（Amlogic等）との比較は提示されていないが、推定60%超シェアはMediaTekの主張とも整合"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "DTV市場ポジションは結果指標として評価される側面あり"
+        }
+      ],
+      "overall_reasoning": "MStar買収（2013年）によるDTV市場でのポジション確立は評価できる。デジタルホーム事業30-35%という収益多様化も確認可能。ただしDTV市場はスマートフォン市場に比べ成熟しており、成長ドライバーとしての寄与は限定的（Q2 2015でflattish）。また市場シェアの具体的証拠がトランスクリプト内に直接記載がない（パターンA調整）。Q2 2015（従・②相当）。Phase 1評価の0.5から-0.1調整後: 40%→キャリブレーション後50%。"
+    },
+    {
+      "id": 4,
+      "claim_id": "2454_004",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekは高いR&D投資率（年20%成長）による技術開発能力を維持しており、LTE SoC（Helio X20: 10コア、Helio P10: octa-core）という技術的差別化を実現している。",
+      "descriptive_label": "R&D年20%増による継続的技術開発能力・Helio SoCロードマップ（Process Power）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "高いR&D投資・複数世代のtapeout実績・Helioブランドのロードマップは具体的な技術能力"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "R&D費用年20%増という定量データ。OpEx比率25-32%はR&D集約型の証拠"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "R&D投資増加は「成長投資戦略」の側面が強い。既存の技術優位（プロセスパワー）との区別が必要"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "半導体チップ設計会社はQualcomm・HiSilicon（Huawei）・Samsung等全て高いR&D投資を行っており、「R&D投資年20%増」は業界共通の投資領域"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "QualcommのR&D投資や技術ロードマップとの直接比較なし。Helioシリーズが競合SoCより優れているという具体的証拠なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_B_t",
+          "adjustment": -0.1,
+          "reasoning": "R&D投資増加は半導体業界共通"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "技術的差別化の競合比較なし"
+        }
+      ],
+      "overall_reasoning": "R&D年20%増という投資コミットメントは評価できるが、Qualcomm・HiSilicon等の競合も高水準のR&D投資を行っており差別化証拠が弱い（パターンB）。Helio SoCの技術優位の具体的証拠（ベンチマーク等）も不在（パターンG）。LTE SoCのGMがcorporate average以下という事実（Q4 2014）はR&D投資の技術的優位がまだ収益化されていないことを示す。Q4 2014年次（主・①相当）。Phase 1評価の0.5から-0.2調整後: 30%→キャリブレーション後40%。"
+    },
+    {
+      "id": 5,
+      "claim_id": "2454_005",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekは新興市場（インド・東南アジア・中東・アフリカ）への地理的拡大において、中価格帯LTEチップの競争力ある価格（「affordable even from emerging market perspective」）により、新興国のスマートフォン普及波に乗るポジションを確立している。",
+      "descriptive_label": "新興市場向け低価格LTEチップによるCounter-Positioning（Counter-Positioning）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「affordable pricing」は価格設定方針であり、構造的な競争優位（Cornerered Resource・Process Power等）の説明が不足。低価格は差別化能力でなく結果"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "海外比率34%→40-50%目標という定量データ"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "世界的な4G普及（新興市場のスマートフォン移行）という業界構造変化との合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "新興市場向け低価格チップはUnisoc（Spreadtrum）・HiSilicon等の中国ローカル競合も同様に追求しており業界共通の戦略"
+        },
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「新興市場への地理的拡大」は成長戦略であり、確立した競争優位との区別が曖昧"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_B_t",
+          "adjustment": -0.1,
+          "reasoning": "中国ローカル競合も同様の戦略"
+        },
+        {
+          "source": "pattern_F_t",
+          "adjustment": -0.1,
+          "reasoning": "地理的拡大は戦略であり確立した優位でない"
+        }
+      ],
+      "overall_reasoning": "新興市場でのLTE普及（業界構造変化）との合致は認められるが（パターンIV相当）、中価格帯LTEチップはUnisoc・HiSilicon等の中国ローカル競合も同様に展開しており差別化が弱い（パターンB）。「affordable」という価格設定は能力でなく戦略（パターンF）。Q4 2014（主・①相当）ベース。Phase 1評価の0.4から-0.2調整後: 20%→キャリブレーション後30%。"
+    },
+    {
+      "id": 6,
+      "claim_id": "2454_006",
+      "claim_type": "cagr_connection",
+      "claim": "大規模出荷量・中国市場支配的ポジション・R&D投資継続 → 高グロスマージン維持（45-49%） → 収益成長（2013年+37%、2014年+57%）支持",
+      "descriptive_label": "規模・ポジション→高GM維持→収益成長CAGR接続",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「出荷規模→GM高水準→収益成長」という因果チェーンは2ステップで検証可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "2014年GM48.8%・収益+56.6%・純利益+68.8%という強力な定量証拠で収益成長を支持"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "CAGR成長ドライバー（出荷量×ASP×GM）の定量的分解は提示されていないが、2期連続の高成長で因果関係は合理的"
+        },
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "2015年の収益減速（Q2 2015で-13% YoY、GM 45.9%→42.7%へ低下）により、CAGR継続性への疑念が生じる"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_C_t",
+          "adjustment": -0.1,
+          "reasoning": "2015年での競合激化による成長鈍化でCAGR継続性に疑念"
+        }
+      ],
+      "overall_reasoning": "2013-2014年の2期連続高成長（+37%→+57%）・GM高水準（48.8%）は規模・ポジションとの因果関係を支持。しかし2015年に競合激化による収益成長鈍化（-13% YoY）・GM低下（42.7%）が発生しており、長期CAGRの持続性を疑問視させる（パターンC）。Q4 2014年次（主・①相当）。Phase 1評価の0.5から-0.1調整後: 40%→キャリブレーション後50%（過去実績は高水準のため）。"
+    },
+    {
+      "id": 7,
+      "claim_id": "2454_007",
+      "claim_type": "factual_claim",
+      "claim": "MediaTekの2014年財務実績：収益2,131億NTD（前年比+56.6%）、グロスマージン48.8%、営業利益472億NTD（前年比+87.1%）、純利益464億NTD（前年比+68.8%）、EPS 30.04 NTD。スマートフォン出荷350M+（LTE 30M+を含む）。",
+      "descriptive_label": "2014年年次財務確定値（収益2,131億NTD・GM48.8%・純利益464億NTD）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Q4 2014年次（主・①相当）CFO準備発言による確定財務数値"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "2014年の財務実績は定量的差別化データとして他主張の評価を支える"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimは能力主張でなく財務事実の記録であるためPattern-Aは非適用"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Q4 2014年次（主・①相当）CFO準備発言による確定財務数値。収益2,131億NTD（+56.6%）・グロスマージン48.8%・純利益+68.8%は極めて強力な実績。factual_claimとして0.7を維持。"
+    }
+  ],
+  "confidence_distribution": {
+    "70-80": 2,
+    "40-50": 2,
+    "50-60": 2,
+    "30-40": 1
+  },
+  "metadata": {
+    "batch_count": 2,
+    "source_files": [
+      "batch_0_output.json",
+      "batch_1_output.json"
+    ]
+  }
+}

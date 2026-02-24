@@ -1,0 +1,112 @@
+{
+  "ticker": "VRSN",
+  "company_name": "VeriSign, Inc.",
+  "cutoff_date": "2015-09-30",
+  "extraction_timestamp": "2026-02-24T00:00:00",
+  "claims": [
+    {
+      "claim_id": "VRSN-001",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201502_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "VeriSign has operated the authoritative directory of all .com and .net domain names, and the infrastructure that enables internet users around the world to navigate the internet, for 17 consecutive years without interruption.",
+      "claim_summary": "VeriSignは.com/.netドメイン名の権威DNSレジストリ運営者として17年連続無中断稼働を達成。ICANN/政府との契約によりこの地位は法的に保護されている。",
+      "confidence": 0.7,
+      "confidence_rationale": "契約独占によるCornered Resourceは非常に強力。ただし政策変更リスクが存在し、ICANNとの契約更新は確実ではない。60%超の非GAAP営業利益率が経済的堀を定量的に示す。",
+      "kb1_rules_applied": ["rule06", "rule04"],
+      "kb2_patterns_matched": ["pattern_IV_structural_market_position"],
+      "supporting_evidence": [
+        "17 consecutive years without interruption",
+        "130.6 million .com and .net domain names",
+        "60.2% non-GAAP operating margin"
+      ]
+    },
+    {
+      "claim_id": "VRSN-002",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "source_transcript": "201502_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We had fourth quarter 2014 revenues of $264 million, up 5.4% from the same quarter in 2013. Full year 2014 revenues were just over $1.01 billion, up 5.1% from the prior year.",
+      "claim_summary": "VeriSignは130M超のドメイン名規模で固定コスト（インフラ・セキュリティ）を分散し、60%超の営業利益率を達成。規模が大きいほど単位コストが低下するスケールエコノミーが存在する。",
+      "confidence": 0.5,
+      "confidence_rationale": "規模の優位性は明確だが、競合他社がほぼ存在しない独占市場での比較は困難。スケールメリットの競合比較データが不足。",
+      "kb1_rules_applied": ["rule04", "rule01"],
+      "kb2_patterns_matched": ["pattern_I_quantitative_differentiation"],
+      "supporting_evidence": [
+        "$1.01B full year 2014 revenues",
+        "60.2% non-GAAP operating margin",
+        "80%+ gross margins"
+      ]
+    },
+    {
+      "claim_id": "VRSN-003",
+      "claim_type": "cagr_connection",
+      "seven_powers_category": "Cornered Resource",
+      "source_transcript": "201502_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We will continue to deliver, as we have for the past 17 years, the critical infrastructure services the internet depends upon with the goal of 100% availability.",
+      "claim_summary": "【CAGRリンク】.com/.net独占契約が持続的な売上成長（+5%/年）の直接メカニズム：ドメイン名登録増加がレジストリ手数料収入を継続的に拡大。独占的地位が収益成長の可視性を高める。",
+      "confidence": 0.7,
+      "confidence_rationale": "独占契約がCAGR可視性の直接原因。ドメイン名の世界的普及継続が前提だが、デジタル化トレンドは強固。更新率72%超が収益の安定性を裏付ける。",
+      "kb1_rules_applied": ["rule02", "rule06"],
+      "kb2_patterns_matched": ["pattern_II_direct_cagr_mechanism"],
+      "supporting_evidence": [
+        "5.1% full year revenue growth",
+        "72.4% renewal rate",
+        "Projected 2015 revenues $1.04B-$1.06B"
+      ]
+    },
+    {
+      "claim_id": "VRSN-004",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "source_transcript": "201502_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "VeriSign has operated the authoritative directory of all .com and .net domain names, and the infrastructure that enables internet users around the world to navigate the internet, for 17 consecutive years without interruption.",
+      "claim_summary": "17年間の100%稼働率維持はDNSインフラ運営における独自のプロセス能力（セキュリティ、冗長性、障害対応）を示す。競合他社（ccTLD等）では同等の稼働記録はない。",
+      "confidence": 0.6,
+      "confidence_rationale": "17年無中断稼働は具体的・検証可能な事実。ただし競合他社との直接比較データが不足するため、Process Powerとしての評価はやや弱い。",
+      "kb1_rules_applied": ["rule03", "rule04"],
+      "kb2_patterns_matched": ["pattern_III_capability_over_result"],
+      "supporting_evidence": [
+        "17 consecutive years 100% availability",
+        "Four Anycast clusters for DNS resolution"
+      ]
+    },
+    {
+      "claim_id": "VRSN-005",
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs",
+      "source_transcript": "201502_earnings_call.json",
+      "transcript_call_type": "Q4_annual",
+      "raw_quote": "We had a domain name base renewal rate of approximately 72.4% as of December 31, 2014.",
+      "claim_summary": "72%超のドメイン名更新率は、一度取得した.com/.netドメインのスイッチングコストの高さを示す（ウェブサイト・メール・ブランドとの紐付け）。毎年1億3,000万件超の更新が安定収益基盤を形成。",
+      "confidence": 0.5,
+      "confidence_rationale": "更新率は高いが、これはVeriSign自体ではなくレジストラ（GoDaddy等）への顧客ロックインに近い。VeriSignのスイッチングコストは間接的。",
+      "kb1_rules_applied": ["rule01", "rule06"],
+      "kb2_patterns_matched": [],
+      "supporting_evidence": [
+        "72.4% renewal rate",
+        "130.6 million .com and .net domain names"
+      ]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 5,
+    "by_seven_powers": {
+      "Cornered Resource": 2,
+      "Scale Economies": 1,
+      "Process Power": 1,
+      "Switching Costs": 1
+    },
+    "by_claim_type": {
+      "competitive_advantage": 4,
+      "cagr_connection": 1
+    },
+    "primary_transcript": "201502_earnings_call.json",
+    "transcripts_used": ["201502_earnings_call.json"],
+    "notes": "VeriSignは.com/.netレジストリの契約独占（Cornered Resource）が支配的な競争優位性。単純なビジネスモデルで高利益率を維持。policy/regulatory変更がメインリスク。"
+  }
+}

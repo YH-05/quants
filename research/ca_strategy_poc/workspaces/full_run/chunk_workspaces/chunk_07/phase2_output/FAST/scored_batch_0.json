@@ -1,0 +1,87 @@
+{
+  "ticker": "FAST",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "FAST-001",
+      "claim": "ベンディングマシン（FAST Solutions）の設置が顧客との接点を週複数回に高め、競合が参入しにくい「sticky」な顧客関係を構築している",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "ベンディングマシンというインフラが生み出すスイッチングコストの具体的な説明。競合からの防衛効果も言及"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "ベンディングマシン設置（能力・インフラ）→sticky顧客関係（結果）という正しい因果方向",
+        "rule11_industry_structure": "工業消耗品（MRO）市場でのオンサイトベンディングは差別化可能な業界構造的優位",
+        "rule10_negative_case": "「競合が見ると撤退を余儀なくされる」というネガティブケースによる裏付け"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: ベンディングマシンインフラ（能力）→顧客固定（結果）",
+        "pattern_V": "specific_competitor_comparison: 「when a competitor comes in and they see our blue machines」という競合排除効果の具体的記述",
+        "adjustment": "+10% (競合との比較要素あり)"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#1 (70%): DIFMの補充頻度優位（具体的な競合比較あり）→70%。FAST-001も競合排除効果の言及→70%相当",
+        "final_reasoning": "ベンディングマシンというインフラが生み出すスイッチングコストは理論的・実践的に実在。競合排除効果も具体的に記述"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "ベンディングマシンの設置は顧客の購買プロセスに物理的に統合されるため、スイッチングコストが実在する（KB2パターンIII適合）。「blue machines in there, how tough it is for the competition to get us out」という競合排除効果の言及は具体的な差別化証拠（KB2パターンV部分適合、KB1ルール10適合）。工業MRO市場でのオンサイトベンディングという業界構造との合致（KB1ルール11）。70%が妥当。"
+    },
+    {
+      "id": "FAST-002",
+      "claim": "ベンディング機器導入顧客（約40%の売上）は非ベンディング顧客より約20%高い成長率を示し、テクノロジーを通じた顧客固定化（ロックイン）効果が実証されている",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "40%売上占有率、20%高成長という定量データ。スイッチングコストの実証的証拠"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "ベンディング技術（能力）→顧客固定化・高成長（結果）。ただし20%高成長は結果",
+        "rule04_quantitative": "「40%の売上」「20%成長」という具体的な定量データ。強力な証拠。+20%向上要因",
+        "rule05_cagr_connection": "ベンディング→顧客固定→成長率差という直接的なCAGR接続メカニズム"
+      },
+      "kb2_evaluation": {
+        "pattern_I": "quantitative_differentiation: ベンディング顧客20%高成長という明確な定量差別化",
+        "pattern_III": "capability_over_result: ベンディング技術（能力）→高成長（結果）",
+        "adjustment": "+20% (定量データあり)"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#1 (70%): 退職率9% vs 業界20%+の定量比較→70%。FAST-002も20%の定量差が類似",
+        "final_reasoning": "40%売上・20%成長差という定量データはKY評価基準で高評価。能力（ベンディング技術）と結果（成長差）の因果が明確"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "「ベンディング顧客が売上の約40%を占め、20%の成長率を示す」という定量的証拠は強力（KB1ルール4適合、KB2パターンI適合）。ベンディング技術という具体的な能力が顧客固定化につながるという因果チェーンが明確（KB2パターンIII適合）。この定量データはFastenalのスイッチングコスト優位性を実証的に裏付ける。競合との直接比較（W.W. GraingerやMSCでの同指標）があれば90%も可能だが、現状では70%が妥当。"
+    },
+    {
+      "id": "FAST-003",
+      "claim": "「Pathway to Profit」モデルにより、平均店舗売上高の上昇に伴い固定費が分散されて構造的な利益率向上が実現し、大型顧客獲得が個別店舗の規模を高める好循環を生み出している",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "「structural」という明言あり。固定費分散の具体的メカニズム説明"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「Pathway to Profit」という仕組み（能力）→構造的利益率向上（結果）。正しい因果方向",
+        "rule04_quantitative": "「occupancy as a percentage of sales continues to decline」という具体的メカニズム説明",
+        "rule06_structural_vs_complementary": "固定費レバレッジは規模の経済の構造的要素。'that's structural'という明言あり"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: Pathway to Profitモデル（能力）→利益率向上（結果）",
+        "pattern_II": "direct_cagr_mechanism: 店舗規模拡大→固定費分散→利益率改善という直接的メカニズム",
+        "adjustment": "+10% (具体的メカニズム説明)"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#2 (90%): フラグメント市場×規模・密度という構造的優位。FASTのPathway to Profitも類似の規模の経済",
+        "final_reasoning": "'that's structural'という明言があり、固定費分散メカニズムの説明が具体的。70%が妥当"
+      },
+      "final_confidence": 0.7,
+      "scoring_rationale": "CFOが'that's structural'と明言し、「occupancy as % of sales decline」「store-tethered labor becoming smaller portion」という具体的なメカニズムを説明している（KB2パターンII、III適合）。規模の経済による固定費レバレッジは工業用品流通業での実在する構造的優位性（KB1ルール11）。Pathway to Profitという名前付きのモデルが能力の体系化を示す。競合（Grainger等）との利益率比較データがあれば90%も可能。70%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

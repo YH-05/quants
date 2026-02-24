@@ -1,0 +1,128 @@
+{
+  "ticker": "GOOGL",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "検索広告における圧倒的なデータ蓄積とユーザー行動理解によるネットワーク効果",
+      "descriptive_label": "検索データ蓄積型ネットワーク効果",
+      "scoring_result": {
+        "phase2_confidence": 70,
+        "phase1_confidence": 70,
+        "adjustments_applied": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "検索市場での競合（Bing, Yahoo）との直接的な定量比較なし",
+            "adjustment": -5
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t",
+          "rule_11_t"
+        ],
+        "kb2_t_pattern": "pattern_I_t",
+        "overall_reasoning": "Q4での体系的な説明。10億ユーザー×5サービスという規模はデータ蓄積型ネットワーク効果の実態を示す。ただし純粋競合（Bing, Yahoo）との直接比較指標がなく、70%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "検索データ蓄積 → アルゴリズム精度向上 → CPC/CTR改善 → 広告収益CAGR",
+      "descriptive_label": "データ→アルゴリズム→CPC接続経路",
+      "scoring_result": {
+        "phase2_confidence": 50,
+        "phase1_confidence": 50,
+        "adjustments_applied": [],
+        "kb1_t_rules_applied": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "kb2_t_pattern": "",
+        "overall_reasoning": "因果チェーンは3ステップで「やや飛躍」。ただしCPCと paid clicksは開示データで検証可能。50%が適切"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Androidプラットフォームを通じたモバイルエコシステムのコントロールと間接ネットワーク効果",
+      "descriptive_label": "Androidエコシステム間接ネットワーク効果",
+      "scoring_result": {
+        "phase2_confidence": 30,
+        "phase1_confidence": 50,
+        "adjustments_applied": [
+          {
+            "reason": "Q2発言（従・②相当）、Q4での体系的言及なし",
+            "adjustment": -10
+          },
+          {
+            "reason": "iOSとの直接的な市場競争文脈での差別化説明なし",
+            "adjustment": -5
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_2_t",
+          "rule_4_t",
+          "rule_6_t"
+        ],
+        "kb2_t_pattern": "pattern_IV_t",
+        "overall_reasoning": "Androidエコシステムは構造的優位の候補だが、Q2発言（従）から発見。OEM/キャリア数の定量データはあるが、iOSとの直接比較や収益化メカニズムへの具体的言及なし。50%が適切"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Androidエコシステム → モバイル検索シェア維持 → モバイル広告収益成長",
+      "descriptive_label": "Android→モバイル検索→広告成長経路",
+      "scoring_result": {
+        "phase2_confidence": 30,
+        "phase1_confidence": 50,
+        "adjustments_applied": [
+          {
+            "reason": "Q2発言（従）",
+            "adjustment": -10
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_5_t",
+          "rule_12_t"
+        ],
+        "kb2_t_pattern": "",
+        "overall_reasoning": "Androidエコシステム→モバイル広告の接続は論理的だが3ステップ。Q2発言。40-50%が適切"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "YouTube の急速な成長と動画広告プラットフォームとしての地位",
+      "descriptive_label": "YouTube動画広告プラットフォーム優位性",
+      "scoring_result": {
+        "phase2_confidence": 30,
+        "phase1_confidence": 50,
+        "adjustments_applied": [
+          {
+            "reason": "Q4 Q&Aからの発言（主・①相当だが追加情報）",
+            "adjustment": 0
+          },
+          {
+            "reason": "動画広告市場での純粋競合（Facebook Video）との比較指標なし",
+            "adjustment": -10
+          }
+        ],
+        "kb1_t_rules_applied": [
+          "rule_1_t",
+          "rule_4_t",
+          "rule_7_t"
+        ],
+        "kb2_t_pattern": "pattern_I_t",
+        "overall_reasoning": "YouTubeの規模（10億ユーザー、モバイル収益+100%）は印象的だが、競合比較なし。成長は結果。Brand Lift toolというプラットフォーム能力要素あり。50%が適切"
+      }
+    }
+  ]
+}

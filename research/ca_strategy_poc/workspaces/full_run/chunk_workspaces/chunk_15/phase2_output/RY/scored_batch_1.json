@@ -1,0 +1,131 @@
+{
+  "ticker": "RY",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ中小企業市場でのリーダーシップ（30%市場シェア）とクロスセル・アップグレードパス",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_6_t"],
+        "rule_partials": ["rule_1_t", "rule_4_t"]
+      },
+      "kb2_t_pattern": "pattern_III_t",
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "SMB→商業銀行→プライベートバンキングの顧客進化パスは構造的なクロスセルメカニズム（KB2-T パターンIII-T: 能力優先）。30%シェアは結果だが顧客進化パスという能力の説明が一定程度ある。ただし競合（TD、Scotia）も同様のモデル"
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "SMB顧客成長（SMB→商業→プライベートバンキング）× 世代交代需要 → 資産管理・投資銀行サービス手数料収入成長",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": ["rule_12_t"],
+        "rule_partials": ["rule_5_t"]
+      },
+      "kb2_t_pattern": null,
+      "confidence": 50,
+      "confidence_breakdown": {
+        "base": 50,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 50
+      },
+      "score": 0.50,
+      "rationale": "CAGR接続。SMB→商業→資産管理への顧客進化は3ステップで間接性あり。「over 45% of businesses are expected to change ownership in the next 5-10 years」という外部データは補完的証拠"
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 純利益$90億（+8%）、ROE 19%、配当+12%。カナダ投資信託シェア30%超、カナダ中小企業市場シェア30%超、市場シェア+80bp（2年間）",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": [],
+        "rule_partials": []
+      },
+      "kb2_t_pattern": null,
+      "confidence": 90,
+      "confidence_breakdown": {
+        "base": 90,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 90
+      },
+      "score": 0.90,
+      "rationale": "事実的主張。財務発表から確認可能。高確信度"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Capital Markets FY2014収益$20億超、米国事業50%超（約$41億）。エネルギーセクター融資：企業融資全体の12-13%",
+      "gatekeeper_pass": true,
+      "kb1_t_assessment": {
+        "primary_rule_violation": null,
+        "rule_violations": [],
+        "rule_passes": [],
+        "rule_partials": []
+      },
+      "kb2_t_pattern": null,
+      "confidence": 90,
+      "confidence_breakdown": {
+        "base": 90,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": 0,
+        "competitor_comparison_adjustment": 0,
+        "final": 90
+      },
+      "score": 0.90,
+      "rationale": "事実的主張。Q4発言から確認可能。高確信度"
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "カナダ住宅ローン市場での保守的リスク管理能力と低信用損失率（過去水準に近い27bp）",
+      "gatekeeper_pass": false,
+      "kb1_t_assessment": {
+        "primary_rule_violation": "rule_3_t",
+        "rule_violations": ["rule_3_t"],
+        "rule_passes": ["rule_4_t"],
+        "rule_partials": ["rule_1_t"]
+      },
+      "kb2_t_pattern": "pattern_B_t",
+      "confidence": 20,
+      "confidence_breakdown": {
+        "base": 30,
+        "call_type_adjustment": 0,
+        "evidence_quality_adjustment": -10,
+        "competitor_comparison_adjustment": 0,
+        "final": 20
+      },
+      "score": 0.20,
+      "rationale": "27bp低信用損失率はカナダ経済環境の恩恵が大きく、TD/BMO/Scotiaも同様に低損失（KB2-T パターンB-T: 業界共通）。KB1-T ルール3（相対的優位性）違反。カナダ銀行規制の恩恵を固有の優位性として主張"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "gatekeeper_applied": true,
+    "confidence_distribution": {
+      "high_0.7_plus": 2,
+      "medium_0.5_to_0.69": 2,
+      "low_below_0.5": 1
+    }
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "ticker": "SUNP",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": [1, 2, 3, 4, 5],
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "インド製薬市場における#1市場シェアポジション（約9%）と専門医クラス別処方シェア首位（12領域）を支える医師関係構築・ブランド力",
+      "evidence": "Q4 FY2015 CEO (Abhay Gandhi): 'Sun Pharma is now ranked #1 and holds approximately 9% market share in the INR 86,000 crores pharmaceutical market. Sun Pharma is ranked #1 based on share of prescriptions, with 12 classes of doctors...'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "#1シェアと12クラス処方シェアは「結果」。医師関係構築能力（MR力、製品差別化力）という「能力」の背後要因説明が不足。パターンA-T（結果→原因）に抵触"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "9%シェア（FY2014比+3.6pp）、12クラス別#1という定量データあり。競合（Cipla、Dr. Reddy's等）との比較は暗示的"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "インド医薬品市場の高成長（INR 86,000crores市場）と専門医浸透力の合致は論理的"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "#1シェア（結果）を競争優位性として提示"
+        },
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "9%シェア・12クラス別1位という定量データはある"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（主・①相当）で調整なし"
+        },
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "シェアは結果。背後の能力（MR力、製品差別化）の具体的説明が不足"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "インド#1シェア・12クラス処方首位は明確な定量データだが、これらは結果（パターンA-T）。背後の能力（なぜ医師がSun Pharmaを好むか）の説明が不足。dogma.md ルール1（能力vs結果）観点から40%が妥当。定量データ（9%、12クラス）は部分的にパターンI-Tに合致するが競合との差別化の仕組みが乏しい"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "インド製薬市場の継続成長 × Sun Pharma#1ポジション → インド事業売上CAGR+17-25%維持",
+      "evidence": "インド市場成長（INR 86,000crores）× #1シェア（9%）。FY2015 India全年+82%（Ranbaxy統合効果含む）",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "市場成長（インド医薬品支出増加）→処方増→売上増という2ステップ接続。直接的因果"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "2ステップの直接的接続。インド市場成長→Sun売上という明確な経路"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "dpco_risk",
+          "adjustment": -0.05,
+          "reasoning": "DPCO（Drug Price Control Order）による価格規制リスクがCAGR持続性を下押し"
+        },
+        {
+          "source": "ranbaxy_distortion",
+          "adjustment": -0.05,
+          "reasoning": "FY2015の+82%はRanbaxy統合効果を含み、オーガニック成長率の確認が困難"
+        }
+      ],
+      "final_confidence": 0.55,
+      "overall_reasoning": "市場成長との直接的接続は評価できる。ただし政府価格規制（DPCO）というリスクとRanbaxy統合効果による数値の歪みが確信度を下げる。55%程度が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "米国ジェネリック事業における垂直統合型API内製能力と専門品・複合型（differentiated）製品開発能力",
+      "evidence": "Q4 FY2014 MD: 'Our API business has strategic importance for vertical integration on key products.' Q4 FY2015: '438 approved ANDAs with 1,598 patent applications, 951 granted patents.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "API内製能力（垂直統合）と差別化製品開発プロセス（Stage-gate的R&D）は「能力・仕組み」として明確に評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "438承認ANDA、951許可特許、R&D支出9%/売上という定量データで裏付け"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "API垂直統合はコスト構造上の構造的優位性（短期再現困難）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "438承認ANDA・951特許・R&D9%という定量的差別化データあり。Q4での体系的説明"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "API内製プロセス（垂直統合）は能力として明確に評価可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（主・①相当）で調整なし"
+        },
+        {
+          "source": "halol_risk",
+          "adjustment": -0.15,
+          "reasoning": "Halol施設のFDA 483観察事項（コンプライアンスリスク）が製造能力の優位性を一時的に毀損。重大なリスク要因"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "API垂直統合と差別化製品開発能力は明確な構造的優位性（パターンI-T、III-T適合）。定量的裏付けも充実（438ANDA、951特許）。ただしHalol施設のFDA問題が製造優位性への確信度を大きく下げる（-15%）。dogma.md観点でHalol問題は深刻なリスク。50%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "垂直統合によるコスト優位 + 差別化製品パイプライン → 米国CAGR+20-40%（規模拡大）",
+      "evidence": "FY2014 US USD 1,620M (+43% YoY)、垂直統合・差別化パイプラインへの言及",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "2ステップ接続。FY2014 US USD 1,620M (+43% YoY)という過去実績で裏付けあり"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "垂直統合コスト優位→米国CAGR接続は2ステップで明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "halol_supply_risk",
+          "adjustment": -0.15,
+          "reasoning": "Halol問題による供給制限がCAGR実現確度を大きく低下させる"
+        },
+        {
+          "source": "base_effect",
+          "adjustment": -0.05,
+          "reasoning": "FY2014の+43%はRanbaxy統合前で高基数（FY2015以降の継続は困難）"
+        }
+      ],
+      "final_confidence": 0.45,
+      "overall_reasoning": "2ステップ接続で実績裏付けあり（+43% YoY）だが、Halol問題による供給制限リスクがCAGR実現確度を大きく低下させる。45%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Taro Pharmaceutical（皮膚科・CNS）の高収益性と米国薬局市場での差別化ポジション維持能力",
+      "evidence": "Q4 FY2015 CFO: 'Taro posted Q4 FY15 sales at $244M, up 30% YoY. For the full year, sales $863M, up 14% YoY. Taro net profit for Q4 $152M, up 70% QoQ, net profit for full year $484M, up 39%.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "Taroの売上・利益成長は「結果」。高収益の背後となる薬価設定力・ニッチ市場ポジションの「能力」説明が不足"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "売上+30%・利益+70%（implied高OPM）という定量データ豊富"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Perrigo等の競合との具体的差別化説明がトランスクリプトに乏しい"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "高収益実績（結果）を優位性として提示。ニッチ市場での薬価設定力（能力）の説明不足"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Perrigo等の純粋競合に対する差別化説明が不明確"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（主・①相当）で調整なし"
+        },
+        {
+          "source": "capability_explanation_lack",
+          "adjustment": -0.1,
+          "reasoning": "高収益の構造的説明（競合優位の仕組み）が不足"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "Taroの高成長・高収益は明確な実績データだが、競合対比での能力説明不足（パターンA-T、G-T）。なぜTaroが皮膚科・CNSニッチで高収益を維持できるかのメカニズム説明がなく、40%が妥当"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 3,
+      "50-60": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

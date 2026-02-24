@@ -1,0 +1,105 @@
+{
+  "ticker": "IP",
+  "batch_index": 0,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_8_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_I", "pattern_IV"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "IP-001",
+      "claim_type": "competitive_advantage",
+      "claim": "北米工業用包装（Industrial Packaging）ビジネスの規模と統合システムによる低コスト製造・デリバリー優位性",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: '低コストデリバリー'という機能（能力）の説明あり。'enhanced flexibility across a very large system'はScale Economiesの能力説明",
+        "rule_4_t": "PASS: EBITDA $2.7B、マージン24%という定量データ",
+        "rule_6_t": "PASS: 一貫した段ボールシステムは事業の核心的要素",
+        "rule_11_t": "PASS: 段ボール市場での大規模統合システムは業界構造と合致した優位性（Scale Economies）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "北米段ボール市場での規模的優位性（EBITDA $2.7B）は構造的市場ポジション。競合（Packaging Corporation of America等）との比較は示されていないが、規模の差は明確"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で北米段ボールシステムのScale Economies的優位性が説明されている。マージン24%という高水準と$2.7B EBITDAの規模は業界での構造的優位を示す。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IP-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Ilim JV（ロシア）のシベリア木材資源へのアクセスと中国向け輸出コスト優位性",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 地理的立地（Cornered Resource）という能力の説明。シベリア→中国鉄道という物流優位性",
+        "rule_4_t": "PASS: 'lowest cost on the globe'（ルーブル安後）、コスト構造の具体的開示（95%ルーブル、65%ドル収入）",
+        "rule_6_t": "PASS: 地理的資源アクセスは事業の核心的要素",
+        "rule_11_t": "PASS: パルプ市場でのコスト優位性は業界構造との合致"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "シベリア立地という地理的Cornered Resource。競合が同等の立地を獲得することが困難であり、Pattern IV（構造的市場ポジション）に該当"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Cornered Resourceとして評価できる最良の主張。シベリア木材→中国鉄道輸送というユニークな立地はルーブル安により世界最低コストを実現。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IP-003",
+      "claim_type": "competitive_advantage",
+      "claim": "繊維系食品包装（fiber-based food packaging）トレンドへの対応能力",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "FAIL: 'well positioned'は自己申告。具体的な能力の説明なし",
+        "rule_4_t": "FAIL: 定量データなし",
+        "rule_8_t": "FAIL: 業界全体のトレンドへの対応は戦略的ポジショニングであり固有の優位性ではない"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_B_industry_common",
+        "assessment": "フォームから紙へのトレンドは業界全体に共通。IP固有の能力説明なし（Pattern B適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "業界共通トレンドへの参加宣言に近い。固有の能力説明がなく30%が適切。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "IP-004",
+      "claim_type": "competitive_advantage",
+      "claim": "5年連続でコスト・オブ・キャピタルを上回るROICの維持能力",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "FAIL: ROICは結果。能力の説明なし",
+        "rule_4_t": "PASS: 9.2%という数値あり"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "ROICはビジネスモデルの結果。それを生み出す能力（IP-001、IP-002）はすでに別主張で評価済み（Pattern A適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "ROICは結果指標。dogma Section 1.2（結果の優位性への誤帰属）に該当。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "IP-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Temple-Inland買収後の北米段ボールシステム最適化（Valliant機械再稼働・DOJ要件消化）による柔軟性向上",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: システム最適化プロセスという能力の説明",
+        "rule_6_t": "PASS: 統合後のシステム最適化は補完的要素だが段ボールビジネスの核心と近い",
+        "rule_11_t": "PASS: 段ボール市場での最適化は業界構造と合致"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "Temple-Inland統合後の最適化実行という能力。ただし一時的なアドバンテージ（M&A後の最適化完了まで）の側面あり"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "M&A後の統合最適化は一時的な優位性の側面もある。DOJ要件消化後の柔軟性向上は具体的な将来的優位性として評価できる。50%が適切。Phase 1評価50%を維持する"
+    }
+  ]
+}

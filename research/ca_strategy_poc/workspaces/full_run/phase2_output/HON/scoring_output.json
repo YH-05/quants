@@ -1,0 +1,283 @@
+{
+  "scored_claims": [
+    {
+      "id": "HON_001",
+      "claim": "Honeywell Operating System (HOS Gold) による組織的プロセスパワー — ファクトリーから供給チェーン・セールスまで横断的に適用されるオペレーティングシステム",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "HOS Gold は具体的なプロセスシステム（仕組み）の説明あり。能力・仕組みとして適切に評価されている。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "組織横断的なシステムは構造的要素として評価。長年の蓄積による模倣困難性がある。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "140bps 改善のうち HOS Gold 起因と開示があるが、競合比較データなし。自社比のみの定量データは限定的評価。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "プロセスシステム（能力）を評価しており、高評価パターンIII に合致。ただし競合比較なし。"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "140bps という定量的裏付けあり。完全な定性的主張ではない。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb1_rule_4_t",
+          "adjustment": 0.0,
+          "reasoning": "競合比較なし。自社比のみ。上限 50%。"
+        }
+      ],
+      "overall_reasoning": "HOS Gold は全組織横断的なプロセス改善システム（仕組み）として評価できる。CEO が 'key differentiator' と明言し、140bps のマージン改善との関連付けがある。ただし競合（Emerson, GE 等）も独自の Operational Excellence プログラムを持っており、相対的優位性が不明確。dogma.md ルール 3（相対的優位性要求）の観点で上限 50%。"
+    },
+    {
+      "id": "HON_002",
+      "claim": "厳格なM&A選定規律 — IRR 11-12%・5年目ROI 10%以上・2年目EPS accretiveの財務基準と断念例による裏付け",
+      "claim_type": "competitive_advantage",
+      "power_type": "process_power",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "M&A 選定基準（能力・仕組み）を評価。財務基準の明確な定量的開示あり（IRR 11-12%、ROI 10%）。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "IRR/ROI という数値基準と 13 年間継続の規律は定量的裏付けとして機能。"
+        },
+        {
+          "rule_id": "rule_10_t",
+          "result": false,
+          "reasoning": "断念例への言及あるが具体的な企業名・案件名なし。ルール 10 の要件を完全には満たさない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "財務基準の能力（仕組み）が評価されており、高評価パターン III に合致。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q3 発言（従・②相当）のため -10% 調整が Phase 1 で適用済み。"
+        },
+        {
+          "source": "kb1_rule_4_t",
+          "adjustment": 0.1,
+          "reasoning": "IRR/ROI 数値基準の明確な定量的開示で +10% 調整。相殺して 50%。"
+        }
+      ],
+      "overall_reasoning": "13 年間変えない IRR/ROI 基準は選定能力の証明。Intermec 統合での超過達成実績あり。Q3 発言のため二次情報扱い。断念例の具体名なし（ルール 10 部分適用）。dogma.md に照らして 50% が妥当。"
+    },
+    {
+      "id": "HON_003",
+      "claim": "Solstice 低GWP冷媒・素材の独自技術ポートフォリオ — CO2比1000倍低いGWPを実現する固有技術（HFO-1234zeなど）",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "技術・製造能力（仕組み）を評価。$2.3B 契約額は需要の裏付け。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$2.3B 契約額 + $1B+ 交渉中、CO2 比 1000x 低 GWP という技術指標は明確な定量的裏付け。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "CAFE/MAC 規制対応の独自技術は構造的要素。代替品が限定的な市場環境。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "$2.3B 契約額・CO2 比 1000x という定量的差別化は高評価パターン I に合致。70% 評価を支持。"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "規制対応技術の独占的ポジションは構造的市場ポジションパターン IV に合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Honeywell 独自の HFO 分子技術に基づく製品。$2.3B 超の生涯価値契約は需要の具体的裏付け。CAFE/MAC 規制対応により代替品が限定的。特許保護と大規模製造設備投資（Baton Rouge）は模倣困難。Cornered Resource の典型的事例として 70%。"
+    },
+    {
+      "id": "HON_004",
+      "claim": "高成長地域（HGR）への先行投資による現地化競争力 — 中国・インド・中東での販売リソース投入と現地製品開発",
+      "claim_type": "competitive_advantage",
+      "power_type": "scale_economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.5
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "現地化能力（仕組み）vs 高成長地域での成長実績（結果）の境界。結果の要素が強い。"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": false,
+          "reasoning": "多くのグローバル多国籍企業が HGR 展開を行っている。相対的差別化が不明確（業界共通能力）。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "Emerson、GE、Siemens 等の競合も同様の HGR 展開戦略を持つ。却下パターン B 部分合致。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb1_rule_3_t",
+          "adjustment": -0.1,
+          "reasoning": "業界共通能力の固有化。相対的差別化弱い。-10%。"
+        }
+      ],
+      "overall_reasoning": "HGR 比率 25%・50% of growth driver という定量的目標は開示あり。ただし「中国競合になる」戦略は Emerson、Siemens 等の競合も同様に展開しており、純粋競合との差別化が不明確。dogma.md ルール 3（相対的優位性）の観点で 50%。"
+    },
+    {
+      "id": "HON_005",
+      "claim": "Scanning & Mobility 事業における統合技術プラットフォーム — Intermec・Hand Held・Metrologic・Vocollectの技術統合による製品カバレッジ拡大",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "統合プロセス・プラットフォームアーキテクチャ（能力）を評価。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "'double-digit organic growth' は裏付けだが競合（Zebra Technologies）との比較なし。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "M&A 統合プロセス能力を評価。高評価パターン III 部分合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Intermec 等複数企業の技術統合によるフルポートフォリオ実現（スキャナ＋プリンター＋音声）は評価できる能力。USPS への 75,000 台展開は規模の証拠。ただし競合 Zebra Technologies との直接比較なし。50%。"
+    },
+    {
+      "id": "HON_006",
+      "claim": "航空宇宙事業における機器コンテンツ深度と長期プラットフォーム契約 — Gulfstream G500/G600等新型機体への統合型アビオニクス・機械システム搭載",
+      "claim_type": "competitive_advantage",
+      "power_type": "switching_costs",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "技術統合能力・コンテンツ設計力（仕組み）を評価。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "OEM Incentives によるプラットフォーム固定は構造的な Switching Costs。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "航空機体ライフサイクル全体にわたる独占供給ポジションは構造的市場ポジション。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q3 発言（従・②相当）-10% 調整。"
+        },
+        {
+          "source": "technology_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "Gulfstream G500/G600 での first-ever 統合タッチスクリーンによる技術的差別化 +10%。相殺して 50%。"
+        }
+      ],
+      "overall_reasoning": "Gulfstream G500/G600 への統合型アビオニクス搭載は Switching Costs（プラットフォーム固定）の典型。OEM Incentives による長期排他的関係が強力な参入障壁。Q3 発言のため二次情報扱いで 50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "40-50": 5,
+      "60-70": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

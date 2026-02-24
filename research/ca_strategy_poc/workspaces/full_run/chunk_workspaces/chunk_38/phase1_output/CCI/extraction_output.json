@@ -1,0 +1,369 @@
+{
+  "ticker": "CCI",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-22) + Quarterly Calls 2014-2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "米国最大の無線インフラプロバイダーとしての約40,000タワー＋14,000スモールセルノードのネットワーク規模とロケーション独占性",
+      "descriptive_label": "米国最大無線インフラネットワーク規模（Scale Economies / Cornered Resource）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO Ben Moreland): 'As the U.S. market leader with nearly 40,000 towers, and a very attractive and growing small cell opportunity currently at 14,000 nodes, we are well positioned to help the U.S. carriers meet the growing demand by consumers for mobile broadband services.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "40,000タワーという規模は結果だが、ロケーション独占性（既設タワーの立地不可複製性）という能力として解釈可能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "AMT（American Tower）、SBA Communicationsとの比較でCCIは米国最大のタワー事業者"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "タワー立地は法的・物理的に再構築不可能な構造的希少資源"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "米国モバイルブロードバンドの急成長とタワー需要の増加という市場構造と完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "AMTとの比較での差別化（米国特化、スモールセル優位）の定量的説明あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "米国最大の無線インフラ事業者としての地位とロケーション独占性は構造的優位性として高く評価できる。米国特化戦略も明確"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "タワー/スモールセル規模 → 4大通信キャリアとの長期リース契約（$22B将来収益）→ AFFO CAGR 6-7%",
+      "descriptive_label": "インフラ規模→長期契約→AFFO CAGR 6-7%",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "将来契約収益$22B、エスカレーター込みAFFO成長ガイダンス6-7%という定量的かつ検証可能な目標"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での5年間長期ガイダンス。REIT配当基準として開示"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "AFFO 6-7% CAGRは契約エスカレーター（半分が既にコントラクト済み）で担保。高い検証可能性"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "タワー下の土地の長期所有・管理戦略：土地所有またはは20年超リースで70%のサイトを確保（17,000件の取引実績）",
+      "descriptive_label": "タワー地権の長期コントロール（Cornered Resource）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO Jay Brown): 'Our proactive approach to achieving long-term control of the ground beneath our sites is core to our business. Having completed more than 17,000 of these transactions, we believe we have the most secure portfolio of ground interest in the industry. Today, approximately 1/3 of our site rental gross margin is generated from towers on land that we own and approximately 70% on land that we own or lease for more than 20 years.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "地権コントロールという能力・仕組みの説明。17,000件の取引という実績"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "70%が20年超リース、1/3が完全所有という定量的開示。「業界で最もセキュアなポートフォリオ」と主張"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "地権コントロールはコスト安定化の構造的要因"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "「業界で最もセキュア」と主張するがAMT, SBAとの具体的比較数値なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "「業界最高」の根拠となる競合比較データなし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "地権70%長期確保は最大のコスト項目（地代）の安定化に直結。17,000件の取引実績は能力の証拠"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "既存タワーポートフォリオ（AT&T・T-Mobile取得含む）における実績済みのテナント追加による利回り向上能力（5% → 15%投資収益率）",
+      "descriptive_label": "タワー資産のリースアップによる収益率向上能力（Process Power）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'we acquired the AT&T assets and the T-Mobile assets at initial yields of approximately 5%. Long term, we believe we can drive the yield on these recently acquired assets to similar levels as our legacy assets, which currently yield approximately 15% on invested capital.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "テナント追加・リースアップという能力（仕組み）を評価。5%→15%という実績値が裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "初期5%→レガシー資産15%という定量的な利回り実績。10年で1テナント追加前提"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "既存インフラへのテナント追加は固定費分散によるScale Economies"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "neutral",
+            "reasoning": "断念例の言及なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_direct_cagr_mechanism",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "5%→15%という過去実績でリースアップ能力が定量的に検証済み",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "レガシー資産での5%→15%実績は強力な能力の証拠。新規取得資産（AT&T・T-Mobile）への適用可能性も合理的"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "新規タワーポートフォリオ（AT&T・T-Mobile）のリースアップ → 15%投資収益率到達 → AFFO成長200bp上乗せ",
+      "descriptive_label": "新規資産リースアップ→収益率向上→AFFO上積み",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "AT&T・T-Mobileポートフォリオ（全体の40%）が成熟すると長期配当成長に200bpの上乗せを明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での長期戦略開示"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "200bpの上乗せは具体的な定量目標。過去実績（T-Mobileは取得後に5%→6%成長に改善）が補強"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "スモールセルネットワーク事業でのリーダーシップ（NextG買収起点）：7,000マイルのファイバー、14,000ノードの戦略的展開",
+      "descriptive_label": "スモールセルファイバーネットワーク先行者優位（Cornered Resource / Scale Economies）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'Our acquisition of NextG in 2012 cemented our leadership position in small cell networks... Site rental revenue from small cell networks is up approximately 30% year-over-year... At the end of the fourth quarter, we had over 7,000 miles of fiber serving over 14,000 small cell nodes on air or under construction.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "NextG買収によるスモールセルリーダーシップという能力の確立経緯を説明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "収益前年比30%増、7,000マイルファイバー、14,000ノードという定量的実績"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ファイバーインフラは一度敷設すると競合が追随困難。立地選定と許認可取得に時間を要する"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "5Gに向けたスモールセル需要の急増という市場構造と完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "スモールセル収益前年比30%増という成長率は定量的証拠として強力",
+            "adjustment": 5
+          }
+        ],
+        "overall_reasoning": "2012年からのリーダーポジションと7,000マイルのファイバー資産は再構築困難な希少資源"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "スモールセルネットワーク拡大（初期6-8%→ローティーン利回りへ） → AFFO成長への追加貢献",
+      "descriptive_label": "スモールセル利回り向上→AFFO追加貢献",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "スモールセルで初期6-8%→ローティーン利回りへの向上はタワービジネスの実績（5%→15%）を踏まえた合理的な予測"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4での長期成長戦略として開示"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "タワービジネスの実証済みモデルをスモールセルに適用。ただし新規ビジネスであり不確実性あり"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "全売上の95%以上が年初時点で契約済みという高い収益可視性と長期テナント契約構造",
+      "descriptive_label": "95%以上の売上契約済み・高収益可視性（Switching Costs）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CEO): 'we have about $22 billion of future high-quality revenues on long-term contract primarily with the 4 major U.S. wireless carriers... In any given year, over 95% of our site rental revenues are typically under contract as of January 1.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "95%契約済みは結果だが、長期テナント契約を維持する能力（サービス品質、スイッチングコスト）を示す証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "95%という高い数値は定量的に明示"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "インフラ上に設置されたキャリア装置の移設コストが高く、スイッチングコストが自然発生"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_quantitative_differentiation",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "95%の契約可視性はREIT配当政策を支える強固な基盤。キャリア装置の撤去コストによる自然なスイッチングコストが根拠"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年末: 米国内タワー約40,000基、スモールセルノード14,000基（稼働・建設中）、ファイバー7,000マイル。AT&T・T-Mobileポートフォリオが全体の40%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 6]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "タワー地権確保: 1/3が所有、70%が所有または20年超リース（平均残存リース期間約30年）。17,000件以上の取引実績",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "レガシー資産の投資収益率約15%（初期取得時5%から向上）。AFFO 2015年ガイダンス約$1.46B、配当$1.1B（6-7% CAGR目標）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4, 5]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "スモールセル収益前年比約30%増。初期収益利回り6-8%（アンカーテナント）。将来的にローティーンへの向上を想定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6, 7]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "年初時点での契約済み収益 95%以上。将来契約収益$22B（4大キャリア：合計時価総額$415B、OCF $75B、平均借入コスト4.5%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [8]
+    }
+  ]
+}

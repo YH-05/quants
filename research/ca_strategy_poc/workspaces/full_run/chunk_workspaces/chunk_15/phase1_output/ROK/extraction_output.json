@@ -1,0 +1,405 @@
+{
+  "ticker": "ROK",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-11-12)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Logix プラットフォームの統合制御・情報アーキテクチャによるスイッチングコスト",
+      "descriptive_label": "Logix統合制御プラットフォームのスイッチングコスト",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO発言): 'Logix sales were up 7% this year. The CompactLogix portion is growing even faster... we continue to invest in innovative technology and domain expertise to expand the value we provide to customers.' Q&A (CEO発言): 'we have 2 major differentiators. One would be plant-wide optimization...we have the ability to have integrated intelligent motor control...we continue to be able to demonstrate a value proposition that can give us a competitive differentiation'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "Logixプラットフォームという「能力・仕組み」を評価。ただし売上成長7%は結果。仕組みの説明（統合制御+植物全体最適化）が能力の証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "plant-wide optimizationは事業モデルの核心。顧客の既存投資に組み込まれた構造的要素"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "プラットフォーム（名詞）として評価。戦略ではなく既存の構造的資産"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "製造自動化市場でのインテグレーション要求は業界構造と合致するが、市場フラグメント度の明示的言及なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的競合比較データなし（定性説明のみ）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Logixプラットフォームの統合性（motor control + process control + information）はスイッチングコストを生む能力として認識できる。ただし競合(Siemens, Honeywell, Emerson)に対する定量的差別化が示されておらず、CEO自身が'process is our best growth opportunity—we can't reach our growth objectives without a share increase'と課題を認めており確信度は中程度"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Logixプラットフォーム浸透 → 既存顧客のアップセル・リプレース需要 → 売上CAGR安定成長",
+      "descriptive_label": "Logixインストールベース拡大→アップセル成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "Logix成長(7%)は確認可能。ただし既存インストールベースのリプレース→売上という接続は中間ステップが暗黙的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Logix売上7%成長は確認できる。インストールベース拡大→将来リプレース需要というメカニズムは2-3ステップ。CompactLogix等の事例から成立性はあるが、検証可能な開示データが不足"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "製造業OEM向けグローバル顧客関係とサービスネットワークによるSwitching Costs",
+      "descriptive_label": "OEM顧客関係と機械制御統合による粘着性",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Globally, we had another year of solid performance with OEMs. We continue to broaden our content on machines, which is reflected in strength in our motion and safety businesses this year.' Q&A (CEO): 'FANUC...we see 2 world leaders providing a best-in-class solution of integrated control and information. And it basically helps faster time-to-market and reduce total cost of ownership.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "OEMとの関係の「深さ」（能力）ではなく「実績」（content broadening）が中心。機械設計への組み込みという構造は一定の能力として認識可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "定量的なOEM粘着性データなし。FANUCとの協業は具体的事例として評価できる"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "FANUCとの協業でSiemens等と差別化を試みているが、純粋競合(Siemens, ABB, Fanuc単独)との直接比較データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的差別化データなし、Q1 Q&Aでも「OEM business continues to grow」という結果言及が中心",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "OEMのマシンへのLogix組み込みはスイッチングコストを生む。ただし具体的な切替コスト、チャーン率等の定量データなし。CEOが「machine content broadening」と言っているのは主に結果の報告"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "OEMマシン組み込みコンテンツ拡大 → グローバルOEM出荷台数 × 台あたりROK含有量 → 売上成長",
+      "descriptive_label": "OEMコンテンツ拡大→グローバル出荷連動成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "OEM shipments × per-machine content の2ステップ。中国OEM成長などで確認できるが、定量的な規模感が不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "論理的な接続は成立。ただし per-machine content growth や OEM数の定量データが開示されておらず、CAGR寄与規模の検証が困難"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Architecture & Software セグメントの高利益率ポートフォリオによる規模の経済",
+      "descriptive_label": "A&Sセグメント高マージン構造（29.5%）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CFO): 'A&S margins increased by 60 basis points to 31.1%...For the full year, A&S sales were up 6.1% as reported with 6.8% organic growth. Segment operating margin for the full year was 29.5%, up 120 basis points from 2013.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "29.5%という高マージンは「結果」。それを生む能力（ソフトウェア開発効率、R&D活用率等）の説明なし。A&Sセグメントの構造的優位性（why 29.5%が持続するか）が不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative_result",
+            "reasoning": "数値は開示されているが、これは結果の数値。能力の定量化ではない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "ソフトウェア比率が高いA&Sは固定費分散による規模の経済が働く可能性があるが、説明が不足"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "高マージンは結果の報告（ルール1違反候補）: -20%",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "A&Sセグメントのマージン29.5%は結果の指標。その背後にある能力（ソフトウェアの限界コストの低さ、Logixプラットフォームのリカーリング収益構造等）の説明がなく、dogma.mdルール1「結果≠優位性」に該当する。確信度は低"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "A&Sセグメント成長（6.8%有機成長）→ 全社利益率改善 → EPS CAGR",
+      "descriptive_label": "A&S高成長→ミックス改善→全社利益率",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "A&S成長→ミックス改善→全社マージン上昇は2ステップ。過去実績でも確認可能（マージン毎年+0.5〜1pt）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "A&S比率拡大→全社マージン改善の経路は数値で検証可能。A&SのマージンがCP&Sの2倍以上（29.5% vs 13.6%）であり、ミックス改善効果は直接的。過去数年の実績とも整合"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "プロセス制御市場での成長余地と既存Logixプラットフォーム活用によるProcess Power",
+      "descriptive_label": "DCS/プロセス制御への横展開能力（Logix基盤活用）",
+      "evidence_from_transcript": "Q4 Q&A (CEO): 'I'm not satisfied with our results in process...we are continuing to invest to expand our capabilities and our commercial reach in process application...we have expanded our capabilities...process is our best growth opportunity...we're very excited about our modern DCS system that we think brings tremendous value.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "「投資継続」「能力拡大」は戦略・行動の説明。現時点での構造的な能力の説明として弱い"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "'we are expanding'、'we will continue to invest'は戦略言語。現存する優位性ではなく将来の戦略"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "negative_case_absent",
+            "reasoning": "CEOが'I'm not satisfied'とネガティブケースを認めているのは誠実さの証拠だが、これはM&A断念例のような能力の証明ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "CEOが現状の課題（シェア不足、プロセス市場での認知度低さ）を明示的に認めている: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "プロセス制御市場への展開はROKが今後の成長機会と位置付けているが、2015年時点では確立した優位性ではなく成長戦略。CEOの「I'm not satisfied」発言は現状の優位性の弱さを示す。戦略≠優位性（ルール8）に該当"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 全社売上$6,624M（有機成長5.1%）、Architecture & Software セグメントOP マージン29.5%、Control Products & Solutions 13.6%。FY2014 EPS $6.17（+8%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 5, 6]
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "消費財・自動車向け産業用自動化における地域ダイバーシフィケーションと収益安定性",
+      "descriptive_label": "垂直市場多様化と地域分散による収益安定性",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO): 'Our revenue diversification works, and we're executing very well across the globe...consumer is a sweet spot for Rockwell Automation. We remain excited about the opportunities we see in consumer and automotive, in process, with OEMs and the connected enterprise.'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "'revenue diversification works'は結果。多様化を実現できる能力（セールスフォースの専門性、縦割り産業知識等）の説明なし"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "産業用自動化のメガサプライヤー（Siemens、ABB、Schneider Electric）は同様に多様な垂直市場カバレッジを持つ。業界共通の能力"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "収益多様化は補完的要素。製品・技術の中核的優位性ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1発言（従・②相当）: -10%",
+            "adjustment": -10
+          },
+          {
+            "reason": "業界共通能力（ルール3違反候補）: 大手産業用自動化全社が同様の多様化を持つ",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "収益多様化は事実（oil & gasは売上12%のみ）だが、これは戦略的ポートフォリオ構成の結果。純粋競合（Siemens、ABB、Emerson）も同様の多様化を持ち、相対的優位性とは言えない。確信度低"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "Connected Enterprise構想（統合制御・情報プラットフォーム）による産業IoT分野での先行者優位",
+      "descriptive_label": "Connected Enterprise/産業IoT先行プラットフォーム",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'we will have an emphasis on the connected enterprise and how we are helping customers drive to the next level of productivity with our integrated control and information portfolio.' Q4 Q&A (CEO): 'Cloud is something that, quite frankly, I think we pioneered in the industry, in particular in remote monitoring applications, and in particular, around critical assets. So we feel really good in that.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「先行した」クラウドリモートモニタリング（'pioneered'）は能力の主張。ただし先行の程度、競合の追随状況が不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "「pioneered」という自己評価のみ。第三者比較データ、顧客採用率、競合の遅れを示す定量データなし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "potentially_structural",
+            "reasoning": "IoTプラットフォームは将来的に構造的優位になりうるが、2015年時点では発展途上"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "'connected enterprise'はビジョン・戦略の要素が強い。現時点での優位性の証拠が薄い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "「pioneered」という自己申告のみで第三者検証データなし、競合（Siemens、GE、Emerson）も同空間で活動中",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Connected Enterpriseは2015年時点では戦略的ビジョン。クラウドリモートモニタリングの「先行」は主張されているが、Emerson/Honeywell/GEも同領域に投資しており、競合差別化の定量的証拠がない。将来の優位性候補だが現時点では確信度低"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Connected Enterprise/IoTプラットフォーム採用拡大 → ソフトウェア・サービス比率上昇 → リカーリング収益化・マージン改善",
+      "descriptive_label": "IoTプラットフォーム→リカーリング収益化経路",
+      "source_advantage": 10,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "プラットフォーム採用→ソフトウェア比率→マージンの3ステップ。中間ステップの証拠が薄い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Connected Enterprise→リカーリング収益という接続は理論的だが、2015年時点では「Connected Enterprise」が具体的な収益モデルに結びついていない。CEOも「will emphasize」という将来形での説明。3段階以上の因果チェーンで確信度低"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Q1 FY2015: 有機成長2.1%、A&Sセグメント有機成長5.1%（6四半期連続5%超）、OP マージン22%（+140bp）、Oil & Gas売上比率12%",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": [9, 10]
+    }
+  ]
+}

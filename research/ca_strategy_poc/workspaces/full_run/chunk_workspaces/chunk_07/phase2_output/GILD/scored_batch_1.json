@@ -1,0 +1,37 @@
+{
+  "ticker": "GILD",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "GILD-006",
+      "claim": "Harvoniの高い治癒率を示す実臨床データ（Real World Evidence）の蓄積が、ペイヤーの処方制限緩和につながり、治療対象患者数の拡大を促進する正のフィードバックループを形成している",
+      "power_type": "network_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "Real World Evidenceの蓄積という具体的な能力。ポジティブフィードバックループの主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「RWEの蓄積」（能力・資産）→「ペイヤー制限緩和→患者数拡大」（結果）という正のフィードバック構造",
+        "rule04_quantitative": "「real world data matches or even is better than clinical data」という言及。ただしRWE研究数・患者数増加の具体数値なし",
+        "rule11_industry_structure": "医薬品市場でのReal World Evidence（RWE）の重要性は業界構造的に実在"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: RWEの蓄積（能力）→ペイヤー信頼→制限緩和→市場拡大（結果）",
+        "pattern_II": "direct_cagr_mechanism: RWE→ペイヤー信頼→処方制限緩和→患者数増加→売上成長という直接的メカニズム",
+        "adjustment": "+10% (直接的なCAGRメカニズム)"
+      },
+      "kb3_calibration": {
+        "reference_case": "dogma.md ルール5: CAGR接続は直接的メカニズムと検証可能性。RWEのフィードバックループは概念的に明確→50-70%",
+        "final_reasoning": "「I think this gives payers a level of confidence」というCFOの「think」という表現が確実性の低さを示す→50%"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "Real World Evidenceの蓄積→ペイヤー信頼→処方制限緩和→市場拡大という正のフィードバックループは理論的に明確なメカニズム（KB2パターンII、III適合）。ただし'I think this gives payers a level of confidence...I think that will start to play out'という「think」という表現が将来の期待値であることを示す（未実現の段階）。具体的なRWE研究数や処方制限緩和の実績データがない（KB1ルール4不足）。50%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

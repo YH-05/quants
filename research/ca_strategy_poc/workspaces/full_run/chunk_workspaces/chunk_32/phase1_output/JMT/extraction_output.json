@@ -1,0 +1,303 @@
+{
+  "ticker": "JMT",
+  "transcript_source": "FY2014 Annual Results (2015-03-05) + Q1 2015 Results (2015-04-30)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1_2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Biedronkaのポーランドにおけるハードディスカウント・フォーマットの構造的ポジション（食品デフレ環境下での逆張り優位性）",
+      "descriptive_label": "ディスカウント業態の構造的フィット（Counter-Positioning / Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual (CEO Pedro dos Santos): 'we did not [manage against deflation], as this would risk our competitive position.' / 'Biedronka's present network scale, both stores and distribution centers, allow us to keep growing at a different region without compromising our target to reach the 3,000 store check.' / (CFO Ana Luísa): 'food deflation hit Portugal and Poland harder than we expected...our main business outperformed their respective markets and posted positive like-for-like sales in volumes. This means that our capacity to track and retain consumers was reinforced during the year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ハードディスカウント業態という事業モデル（能力）がデフレ環境での競争力を支えている。「管理しなかった」という判断がCounter-Positioningとして機能"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "市場シェア16.9%（+1.1pp）という実績あり。ただし主要競合（Lidl等）との価格ギャップの数値比較は開示されず"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Biedronka市場シェア16.9%（+1.1pp）、3,000店舗目標、総売上EUR8.4bn（+9.5%）という定量根拠あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "strong",
+            "reasoning": "断片化したポーランド食品小売市場（ハイパーマーケット衰退、近隣店舗増加）でのディスカウント業態優位性は業界構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "競合（Lidl）との具体的価格ギャップ数値が未開示（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "食品デフレが逆に競合もバリュー強化するため差別化の持続性に疑問（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ポーランドの断片化した食品小売市場（伝統的小売→組織化移行中）×ハードディスカウント業態は業界構造との合致度が高い。3,000店舗ネットワークとDCインフラが規模の経済を形成しており、Counter-Positioningとして機能。ただし競合との定量的価格ギャップが未開示のため70%に留める。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Biedronkaの物流インフラ（DC網）とワーキングキャピタル管理の優秀さ",
+      "descriptive_label": "ロジスティクス効率・WC管理能力（Process Power / Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual (CFO): 'one of the key areas in our cost advantage is our logistic infrastructure. In 2014, we opened 5 new distribution centers, 3 of which in Biedronka.' / 'working capital that remains the key area of efficiency in our businesses' / 'we are already working with negative working capital in Colombia, which was for us a very good surprise because it's not that easy in Latin America' / 'the infrastructure in place is enough to cope with the next or this new pace of expansion...we will probably need one more [DC], but not much more than that.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "物流インフラ（DC網）とWC管理は「仕組み・能力」として評価できる。自社でコスト優位の源泉と明示"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "FCF EUR267mn（+EUR78mn）、ROIC 21%という定量根拠あり。ただしWC比率の業界比較数値なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ロジスティクスは補完的ではなくBiedronkaの構造的コスト優位の中核。CEO自ら'key areas in our cost advantage'と位置づけ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "WC管理の業界比較数値がなく相対優位性が不明（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "コロンビアでのネガティブWC実現がポーランドの能力移転可能性を示唆（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "ロジスティクスを'cost advantage'の核と位置づけており能力評価に値する。FCF EUR267mnとROIC 21%は定量的裏付けになるが、業界比較数値がないため純粋な競争優位性の証拠としては50%に留まる。コロンビアへの移転実績がProcess Powerの汎用性を示唆する点はプラス。"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Biedronkaの価格競争力強化プログラム（価格ギャップの積極的拡大と品揃え拡充）",
+      "descriptive_label": "価格競争力維持機能・品揃え調整能力（Process Power）",
+      "evidence_from_transcript": "Q1 2015 (CFO): 'we have increased the gap to our main competitors as it was our intention' / 'we are working in increasing that gap [to competitors]' / 'volumes continue to perform well, following the changes in the assortment already started in the last months of 2014' / Biedronka LFL +2.9% Q1 2015 with internal food deflation of -3.8% / Market share gain of 2.3pp in Jan-Feb 2015 (GfK Bimonthly data).",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "CFO",
+      "section": "answer",
+      "supported_by_facts": [8],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "価格ギャップ拡大は戦略的意思決定（行動）。背後にある能力は価格最適化・商品調達力だが、その仕組みは未説明"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "'increased the gap to our main competitors'という競合比較あり。GfK月次データによる2.3pp市場シェア増という第三者データ活用"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "LFL+2.9%（内部デフレ-3.8%環境下）、市場シェア2.3pp増というQ1実績あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q1四半期データのため補完情報として扱う。年次開示での価格ギャップ言及が主"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q1四半期データ（secondary）からの評価であり年次仮説設定には慎重さが必要（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "価格ギャップ拡大の「仕組み」（調達力・サプライヤー交渉）が未説明（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "デフレ環境下でLFL+2.9%達成と市場シェア2.3pp増は実績として印象的だが、価格ギャップ拡大は戦略的意思決定であり能力の証拠として弱い。サプライヤーとの交渉力やアソートメント調整の仕組みが説明されていないため30%。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "JMTのバランスシートの強靭性（低レバレッジ・高ROIC）による成長投資余力",
+      "descriptive_label": "財務的柔軟性・成長投資能力（Cornered Resource的）",
+      "evidence_from_transcript": "FY2014 Annual (CFO): 'Net debt stood at EUR 273 million with gearing at 16.7%, an extremely solid financial situation.' / 'pretax ROIC was at a healthy 21%' / 'Net debt to EBITDA was at 0.4 and interest covered at 13x' / 'strong cash flow generated...more than compensated the startup investments' / FCF EUR267mn (+EUR78mn YoY) despite CapEx EUR486mn.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "バランスシートの強靭性は結果であり能力ではない。能力はWC管理・FCF創出力という仕組みだが、それがバランスシートを支えている"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "ND/EBITDA 0.4x、金利カバレッジ13xは業界比較の明示なし。ただし食品小売としては構造的に低レバレッジ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "FCF EUR267mn、ROIC 21%、ND/EBITDA 0.4x、金利カバレッジ13xという定量根拠が豊富"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "定量的根拠は豊富で財務健全性は明確。ただし財務健全性そのものは能力ではなく結果であり、Biedronkaのキャッシュ創出力という仕組みが背後にある。コロンビア・ヘーベへの成長投資を支える資本配分の柔軟性として50%が妥当。"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "ポーランド食品小売市場シェア拡大（Biedronka ~18%）→ 売上成長（EUR8.4bn+）→ EBITDA成長CAGR",
+      "descriptive_label": "市場シェア→売上→EBITDA CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "市場シェア拡大→売上増→EBITDA増は2ステップの直接的メカニズム。ただしEBITDA margin floor 6.5%という条件付き"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次での言及（primary）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "食品デフレ継続でEBITDA margin圧力が続く（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "3,000店舗ネットワーク構築による規模の経済で長期的FCF拡大が期待できる（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "成長メカニズムは明確だが食品デフレによるマージン圧力がEBITDA成長を制約。EBITDA floor 6.5%は数値的に検証可能な見通しとして評価できる。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "DCインフラ投資（EUR486mn CapEx）→ 物流効率化・WC管理→ FCF創出力CAGR（EUR267mn→拡大）",
+      "descriptive_label": "インフラ→物流効率→FCF CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "DC投資→物流効率→FCF創出は2-3ステップ。FCF EUR267mn（+EUR78mn）という実績あり。ROIC 21%が接続の妥当性を示す"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "過去FCF実績（+EUR78mn）とROIC 21%が裏付けとなる。DC投資が売上規模拡大時に限界コストを低下させる規模の経済的接続は明確。2015年CapEx EUR500-550mnが将来FCF基盤を強化する。"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "低レバレッジ（ND/EBITDA 0.4x）→ 成長投資（ポーランド+コロンビア）→ 長期EBITDA CAGR",
+      "descriptive_label": "財務柔軟性→成長投資→EBITDA CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "低ND→成長投資→EBITDA成長は3ステップ。中間ステップ（成長投資の実現可能性）がコロンビア損失EUR60-70mnという不確実要因を含む"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "コロンビア損失EUR60-70mn（2015年予想）が短期EBITDA寄与を抑制（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "ND/EBITDA 0.4xという超低レバレッジが投資余力を明確に担保（+10%）",
+            "adjustment": 10
+          }
+        ],
+        "overall_reasoning": "財務的余力は明確だが、コロンビア投資の損益分岐点が未定（'sooner than Biedronka's 10 years'程度）であり、成長投資→EBITDA CAGR接続に中期的不確実性あり。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "JMT FY2014: 売上EUR12.7bn（+7.2%）、EBITDA margin 5.8%（-80bps）、FCF EUR267mn（+EUR78mn）、ND/EBITDA 0.4x、ROIC 21%。Biedronka市場シェア16.9%（+1.1pp）、Pingo Doce 18.2%（+0.6pp）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 4]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Biedronka FY2014: 売上EUR8.4bn（+9.5%）、EBITDA margin 6.8%（-100bps）、内部食品デフレ-1.8%、新規店舗211店、新規DC3店。2015年ガイダンス: EBITDA margin floor 6.5%、CapEx EUR500-550mn（うちBiedronka60%）、100店新規開設",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q1 2015: グループ売上EUR3.2bn（+9.4%）、EBITDA EUR166mn（+4.7%）、EBITDA margin 5.2%（-20bps）。Biedronka LFL+2.9%（内部食品デフレ-3.8%）、市場シェア+2.3pp（Jan-Feb、GfK）。コロンビアAra+Hebe損失EUR14mn",
+      "transcript_call_type": "Q1_quarterly",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

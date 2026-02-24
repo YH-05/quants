@@ -1,0 +1,145 @@
+{
+  "ticker": "AIR",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Airbus商業航空機の6,300機超のオーダーブック（10年超の生産カバレッジ）：A320family・A330・A350の強力な受注積み上げ",
+      "phase1_confidence": 80,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t", "pattern_IV_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_7", "rule_11"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "6,300機（+15% YoY）・Book-to-Bill 2超・A350バックログ779機という強力な定量データ。dogma「定量的裏付けがあると納得度が上がる(+20%程度)」。80%維持",
+          "delta": 0
+        },
+        {
+          "rule": "rule_7",
+          "note": "Boeingとの2社寡占市場での実質対等シェアは最強の競合比較証拠。80%維持",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 80,
+      "seven_powers_type": "Cornered Resource / Scale Economies",
+      "overall_assessment": "10年超のオーダーバックログはHA型の競争優位の最も強力な証拠。Boeing2社寡占市場で実質対等シェアは参入障壁が事実上の「不可能」水準。80%。"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "オーダーバックログ積み上げ → A320ファミリー月産50機（2017年〜）→ 売上・EBIT CAGR加速",
+      "phase1_confidence": 75,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_II_t"],
+      "dogma_rules_applied": ["rule_5"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_5",
+          "note": "2017年月産50機（現行46機→+9%増産）という具体的Guidanceがあり直接的2ステップ。75%維持",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 75,
+      "seven_powers_type": "Cornered Resource",
+      "overall_assessment": "バックログ→生産ランプアップ確定→売上増という直接的で検証可能なメカニズム。2015以降の実績で部分検証可能。75%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "A320neo/A350 XWBという次世代機の技術優位性：燃料効率・先進複合材・新世代エンジン統合能力",
+      "phase1_confidence": 70,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "A350初納期通り・A320neo初飛行スケジュール通りというマイルストーン達成は定量的証拠",
+          "delta": 0
+        },
+        {
+          "rule": "dogma_external",
+          "note": "A400M軍用輸送機でEUR551M追加費用計上が技術実行力への懸念を生む。-5pp",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 65,
+      "seven_powers_type": "Process Power / Cornered Resource",
+      "overall_assessment": "民間機の技術競争力は確立。Boeing 737MAX/787との競合でNEO/XWBはポジション維持。A400M問題が全体評価を若干下げ65%。"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "FX管理能力：$88Bヘッジブック（平均$1.33）・60%のドル自然ヘッジによる収益安定化",
+      "phase1_confidence": 50,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_F_t"],
+      "dogma_rules_applied": ["rule_8"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_8",
+          "note": "dogma.md「戦略≠優位性」。FXヘッジはリスク管理であり競争優位性のコアではない。-10pp",
+          "delta": -10
+        }
+      ],
+      "calibrated_confidence": 40,
+      "seven_powers_type": "Process Power",
+      "overall_assessment": "FXヘッジは財務リスク管理として高水準だが、dogmaルール「戦略≠優位性」により競争優位としては評価困難。40%。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "世界のサービス能力ネットワークと航空機部品・整備支援事業（MRO）における拡大余地",
+      "phase1_confidence": 35,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_B_t"],
+      "dogma_rules_applied": ["rule_3", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_3",
+          "note": "Boeingも同様のMRO事業を展開。このトランスクリプトでの証拠が限定的。dogma「業界共通の能力」基準に近い。-10pp",
+          "delta": -10
+        }
+      ],
+      "calibrated_confidence": 25,
+      "seven_powers_type": "Scale Economies",
+      "overall_assessment": "MROアフターマーケット事業の競争優位性は実在するが、このトランスクリプトでの証拠が不十分。Boeing等も同様の事業を展開。dogma却下基準に近い25%。"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Airbus Helicopters：官民両市場向け製品ポートフォリオ（EC175・H125等）と世界最大ヘリコプターメーカーとしての規模優位性",
+      "phase1_confidence": 50,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "402機受注・新型機認定という数値はあるが収益性の競合比較データなし",
+          "delta": 0
+        },
+        {
+          "rule": "dogma_external",
+          "note": "Oil&Gas低迷が北米需要に悪影響。短期見通しが不透明。-5pp",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 45,
+      "seven_powers_type": "Scale Economies",
+      "overall_assessment": "世界最大ヘリコプターメーカーとしての規模は認められる。ただしSikorsky・Leonardoとの相対比較データ不足・Oil&Gas低迷で45%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "high_70_90": 3,
+      "medium_50_65": 2,
+      "low_10_40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

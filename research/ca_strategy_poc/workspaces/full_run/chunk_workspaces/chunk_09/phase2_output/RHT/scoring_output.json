@@ -1,0 +1,368 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "エンタープライズLinux（RHEL）分野における事実上の標準プラットフォームとしての圧倒的市場地位",
+      "descriptive_label": "RHELのエンタープライズOS事実上の標準地位（Network Economies + Branding）",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "partial_pass",
+          "reasoning": "「undisputed leader in open source」という定性的表現があるものの、25/25ディール更新・120%拡大という仕組みの成果として説明されており、Network Economiesとして評価可能。エンタープライズOS認定・ISVエコシステムという構造的能力の言及もある"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass",
+            "reasoning": "成果（undisputed leader）と能力（コミュニティ×ISV認定エコシステム）が混在しているが、後者の説明もある"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "reasoning": "11四半期連続mid-to-high teens成長、25/25ディール更新・120%拡大、deferred revenue +16%、deal duration 24か月という複数定量証拠"
+          },
+          "rule_6_t": {
+            "verdict": "structural",
+            "reasoning": "RHELコミュニティ×ISV認定×Switching Costsの三重螺旋は構造的優位性"
+          },
+          "rule_7_t": {
+            "verdict": "partial",
+            "impact": "-0",
+            "reasoning": "「undisputed leader」は自己申告。競合（Microsoft、Ubuntu Server）との定量比較は限定的"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "weak - 11四半期連続成長は結果だが、仕組み（エコシステム×Switching Costs）の説明もある"
+          },
+          "high_eval_patterns": {
+            "pattern_IV_t": "match - エンタープライズOS市場構造×RHELのエコシステム地位の合致",
+            "pattern_V_t": "partial - 「undisputed leader」表現あるが定量的競合比較不足",
+            "pattern_I_t": "partial - 複数の定量的証拠（11四半期・25/25・deal duration 24か月）"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#1（競合差別化70%）と同水準。RHELのNetwork Economies + Switching Costsは真の構造的優位性として評価。Microsoft/Ubuntu との比較が限定的だが、実績データで間接的に証明",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "11四半期連続mid-to-high teens成長・25/25ディール更新・120%拡大・deal duration 24か月（2009年以来最長）という複数の定量的証拠はRHELの市場標準地位を強く支持。Network Economies（ISV認定エコシステム）とSwitching Costsの組み合わせは構造的。Phase 1の70%を維持",
+      "seven_powers_classification": "Network Economies（ISVエコシステム）+ Switching Costs（エンタープライズOS変更コスト）+ Branding（open sourceリーダー）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "エンタープライズ顧客の高いSwitching Costsによる収益の予測可能性（上位25ディール100%更新・120%拡大）",
+      "descriptive_label": "エンタープライズLinuxの高いSwitching Costsによる収益可視性",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "pass",
+          "reasoning": "エンタープライズOSの移行コスト（ISV認定・アプリケーション互換性・運用プロセス変更）という構造的メカニズムが明確に説明されている。100%更新率はその結果として正当"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "pass",
+            "reasoning": "Switching Costsの仕組み（認定・互換性・運用プロセス）という能力として明確に識別可能"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "reasoning": "25/25ディール更新（100%）・120%拡大、deferred $1.3B（+16%）、long-term deferred +24%、deal duration 24か月（最長）という4指標で定量裏付け"
+          },
+          "rule_6_t": {
+            "verdict": "structural"
+          },
+          "rule_11_t": {
+            "verdict": "pass",
+            "reasoning": "エンタープライズIT市場では標準化・安定性が最重視され、OS変更は数百〜数千万ドルの移行コストを伴う。RHELのSwitching Costsは市場構造と完全合致"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_III_t": "match - Switching Costsメカニズムの明確な説明",
+            "pattern_I_t": "match - 25/25更新・120%拡大・deferred $1.3Bという複数定量証拠",
+            "pattern_II_t": "match - deferred revenue成長→収益安定性の直接接続"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#1（顧客粘着性70%）と同水準。ただしRHTのSwitching Costsはエンタープライズ環境変更コストという点でより強固。90%まで検討したが競合（Ubuntu等）への切替事例が一部存在するため70%で維持",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "25/25ディール更新100%・120%拡大・deferred $1.3B・deal duration 24か月という証拠の質と量はSwitching Costsの存在を強力に支持。エンタープライズOS変更コストという構造的メカニズムも明確。Phase 1の70%を維持",
+      "seven_powers_classification": "Switching Costs（エンタープライズOS認定・互換性・運用移行コスト）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Application Development & Emerging Technologies（OpenStack/OpenShift/Middleware）の急成長による事業ポートフォリオ拡張",
+      "descriptive_label": "エマージング技術ポートフォリオ（OpenStack/OpenShift）の高成長拡張",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 60,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "OpenStack/OpenShift 48% CC成長という結果の提示が中心。RHT固有の優位性（なぜOpenStackでRHTが市場標準になるのか）の説明は「everyone is standardizing on Red Hat OpenStack」という間接的言及に留まる。クロスセル55%はRHEL基盤活用という能力を示す"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial",
+            "reasoning": "成長率（結果）が主で、差別化能力の説明が不十分"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "reasoning": "Emerging Tech $62M（CC+48%、過去最高）、売上比14%、クロスセル55%という定量証拠"
+          },
+          "rule_6_t": {
+            "verdict": "partial",
+            "reasoning": "RHELエコシステムを活用したクロスセルは構造的だが、OpenStack自体はオープンソースで業界共通"
+          },
+          "rule_7_t": {
+            "verdict": "partial",
+            "impact": "-0",
+            "reasoning": "「everyone is standardizing on Red Hat OpenStack」は間接的証拠。VMware等との定量比較なし"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "partial - OpenStackは業界共通プロジェクト。RHTの差別化は企業サポート付きエンタープライズ版にあるが説明不足"
+          },
+          "high_eval_patterns": {
+            "pattern_IV_t": "partial - OpenStack市場標準化×RHTの先行者地位の合致示唆"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#6（デジタルマーケティング能力：50%）とLLY#4（新製品展開：60%）の中間。48% CC成長は強い証拠だが競合比較不足。60%を維持",
+          "calibrated_confidence": 60
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール7（純粋競合差別化）",
+            "adjustment": 0,
+            "reason": "OpenStackの競合比較なし（-10%相当だが60%の下限として許容）"
+          }
+        ]
+      },
+      "final_confidence": 60,
+      "confidence_rationale": "Emerging Tech 48% CC成長（過去最高）とRHEL顧客基盤へのクロスセル55%は有意な証拠。ただしOpenStack自体はオープンソースで業界共通プロジェクト。RHT固有の差別化（企業サポート×RHEL統合）の説明が不十分。Phase 1の60%を維持",
+      "seven_powers_classification": "Scale Economies（RHEL顧客基盤×エマージング製品クロスセル）",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "サブスクリプション型ビジネスモデルによる高い収益予測可能性とFCF成長（非GAAP operating margin 23%+）",
+      "descriptive_label": "サブスクリプション型ビジネスモデルによるFCF成長と高いマージン構造",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 60,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "サブスクリプションモデル自体は競合（VMware等）も採用。差別化はRHELのSwitching Costsとの組み合わせにあるが、ここでは財務結果（粗利93.9%・FCF+48%）の提示が中心"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial",
+            "reasoning": "サブスクリプションモデルは仕組みだが、競合差別化の根拠説明が不足"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "reasoning": "サブスクリプション粗利93.9%・OCF $133M（+40%）・FCF+48%（3年最高）・full year OCF $600-610Mという複数定量証拠"
+          },
+          "rule_6_t": {
+            "verdict": "structural",
+            "reasoning": "サブスクリプション粗利93.9%×Switching Costsの組み合わせは構造的な収益予測可能性"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "match - サブスクリプションモデルは業界共通（VMware、Oracle等も採用）。RHTの優位性はモデル自体ではなくRHELとの組み合わせ"
+          },
+          "high_eval_patterns": {
+            "pattern_I_t": "partial - 粗利93.9%・FCF+48%という定量証拠"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#3（ビジネスモデル優位：50%）と同水準。サブスクリプションモデル自体は競合も採用。ただしRHTの93.9%粗利とFCF成長は財務的に優秀。50%に調整",
+          "calibrated_confidence": 50
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール8（戦略 vs 優位性）",
+            "adjustment": -10,
+            "reason": "サブスクリプションモデルはビジネス戦略として評価される側面が強く、競争優位性の源泉としては#1・#3の副次的要素"
+          }
+        ]
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "サブスクリプション粗利93.9%・FCF+48%は財務的に優秀だが、モデル自体は業界共通。差別化はRHEL Switching Costsとの組み合わせであり、単体の競争優位性評価は限定的。Phase 1の60%から50%に調整",
+      "seven_powers_classification": "Process Power（サブスクリプション×Switching Costs組み合わせ）",
+      "structural_vs_complementary": "complementary（#1・#3の収益化メカニズム）"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "オープンソースコミュニティ主導のイノベーションサイクルによる製品競争力維持能力",
+      "descriptive_label": "オープンソースコミュニティ連動によるイノベーション能力（Cornered Resource）",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "fail",
+          "reasoning": "「undisputed leader in open source」「never been broader or more current」は定性的自己主張のみ。コミュニティへの具体的貢献量・エンジニア数・コミット数等の定量的根拠が皆無"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail",
+            "impact": "-20",
+            "reasoning": "具体的な仕組みの説明なし。定性的主張のみ"
+          },
+          "rule_4_t": {
+            "verdict": "absent",
+            "impact": "-20",
+            "reasoning": "コミュニティ貢献の定量証拠ゼロ"
+          },
+          "rule_6_t": {
+            "verdict": "structural",
+            "reasoning": "概念としてはCornered Resourceだが証拠不足"
+          },
+          "rule_7_t": {
+            "verdict": "fail",
+            "impact": "-10",
+            "reasoning": "競合との比較なし。自己申告のみ"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_D_t": "match - 定性的のみで測定不能。Linuxカーネルコントリビューション数等の客観的指標なし",
+            "pattern_A_t": "partial - 「undisputed leader」は結果の主張"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "LLY#6（大手共通能力：30%）以下。定量証拠が皆無のため30%が上限",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "オープンソースリーダーシップは概念として魅力的だが、定量的証拠が皆無（コントリビューション数・エンジニア数・コミット数なし）。KB2-T pattern_D_t（定性的のみ）に完全合致。Phase 1の30%を維持",
+      "seven_powers_classification": "Cornered Resource（潜在的）— 証拠不足のため評価限定",
+      "structural_vs_complementary": "structural（証拠不足）"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "RHEL市場標準地位 → 企業のIT投資拡大に連動した自動的な規模拡大 → 総収益mid-to-high teens成長",
+      "descriptive_label": "RHEL標準地位→IT投資連動成長→収益CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "RHEL標準地位→企業IT投資増加×RHT採用→収益成長の直接接続。11四半期連続mid-to-high teens成長（FX300bpsヘッドウインドを吸収）が実証",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "11四半期連続成長はCAGR接続の信頼性を直接裏付ける。FX逆風（300bps）を吸収してもガイダンス超過という実績は優位性の強さを示す。Phase 1の70%を維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "エンタープライズ顧客のSwitching Costs → 上位ディールの100%更新+120%拡大 → deferred revenue成長 → 収益可視性向上",
+      "descriptive_label": "Switching Costs→ディール更新・拡大→deferred revenue→収益可視性",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "Switching Costs→25/25ディール更新100%→120%拡大→deferred $1.3B（+16%）→収益安定成長。4ステップだが各ステップが定量的に裏付けられており、接続の質は最高水準",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）。定量データ完全裏付けで90%も検討したが、macroリスク（企業IT投資縮小）への感応度を考慮し70%維持"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "25/25ディール更新・120%拡大・deal duration 24か月・deferred $1.3B（+16%）という4つの定量証拠は最高水準のCAGR根拠。Phase 1の70%を維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Emerging Technologies（OpenStack/OpenShift）の48%成長 → RHEL顧客基盤のアップセル拡大 → 長期CAGR加速",
+      "descriptive_label": "Emerging Tech高成長→RHEL顧客アップセル→CAGR加速",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 60,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "Emerging Tech 48%成長（売上比14%）×クロスセル55%→CAGR加速の接続。現時点での売上比14%はCAGR加速への寄与がまだ限定的",
+          "pattern_match": "dogma: 過去実績との整合性（60%）。成長軌道は明確だが規模がまだ小さい"
+        }
+      },
+      "final_confidence": 60,
+      "confidence_rationale": "48% CC成長とクロスセル55%は有望な接続を示すが、売上比14%という規模の小ささがCAGR加速への定量的寄与を限定する。成長軌道は明確。Phase 1の60%を維持"
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "サブスクリプションモデル → 粗利93.9%×規模拡大 → 営業レバレッジ → FCF成長",
+      "descriptive_label": "サブスクリプションモデル→粗利×規模→FCF成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "サブスクリプション粗利93.9%→規模拡大→OCF +40%・FCF+48%（3年最高）の直接接続。定量的に完全裏付け",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "粗利93.9%・OCF+40%・FCF+48%という数値は接続を直接裏付ける。3年最高という記録はCAGRの持続性を示す。Phase 1の70%を維持"
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "オープンソースコミュニティリーダーシップ → 製品競争力の継続的維持 → RHEL市場標準地位の持続",
+      "descriptive_label": "オープンソースリーダーシップ→製品競争力→RHEL標準地位持続",
+      "source_advantage": 8,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "コミュニティ→製品更新（all major product lines refreshed）→市場地位持続の接続。優位性#8の証拠不足を引き継ぐため接続の確信度も限定的",
+          "pattern_match": "dogma: 数値の根拠不透明（30-40%）。優位性の証拠不足がCAGR接続の信頼性を低下"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "「all major product lines refreshed this year」という事実は接続を部分的に示すが、コミュニティリーダーシップの定量証拠が弱いため接続の確信度も限定。Phase 1の40%を維持"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "70-80": 5,
+      "60-70": 2,
+      "50-60": 1,
+      "30-40": 1,
+      "40-50": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "ticker": "SBNY",
+  "company_name": "Signature Bank",
+  "transcript_source": {
+    "primary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201401_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201501_earnings_call.json"
+    ],
+    "secondary": [
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201404_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201407_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201410_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201504_earnings_call.json",
+      "/Users/yukihata/Desktop/finance/research/ca_strategy_poc/transcripts/SBNY/201507_earnings_call.json"
+    ]
+  },
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "extraction_date": "2026-02-24",
+    "transcript_count": 7,
+    "primary_transcript_count": 2,
+    "framework": "Hamilton Helmer 7 Powers",
+    "note": "Signature Bank is a New York-based commercial bank targeting high-net-worth private clients (real estate investors, professional services, law firms). The Private Client Banking model (single point-of-contact teams) is the core competitive mechanism. FY2013 results in 201401; FY2014 results in 201501."
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Switching Costs",
+      "claim_text": "Signature Bank の Private Client Banking モデルは、各クライアントに専任チームが単一の窓口として継続的にサービスを提供する（\"single point-of-contact\"）独自の銀行モデルを採用。このモデルにより、預金は6-7年連続で記録的な成長を達成（FY2013: +$29.7億、FY2014: +$55.6億）し、無利子預金（Non-interest bearing）がFY2014末で総預金の31%（$71億）・前年比+31%に達した。クライアントは専任チームへの依存とそのネットワーク効果から、メガ銀行に高い対抗力で引きつけられており、競合の大手行もこの客層を積極的に狙っているにもかかわらず引き留めに成功している。",
+      "evidence_quotes": [
+        "The ongoing strong core deposit growth is attributable to the superior level of service provided by all of our private client banking teams who continue to serve as a single point of contact for their clients",
+        "for our type of client, they're really wanted by the other institutions... you're wanted by the mega institutions and we're having to fight that competition",
+        "Noninterest-bearing deposits of $7.1 billion represented 31% of total deposits and grew $1.67 billion or 31% for the year"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "Single point-of-contactモデルによる顧客粘着性は具体的な成長数値で裏付けられており、大手行との競争下での記録的な預金成長はSwitching Costsの存在を強く示唆する。7年連続記録成長という実績はモデルの持続可能性を示している。ただし、このモデルは他の中堅私立銀行でも採用可能であり、完全に固有とは言えない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 8-T: Switching Costs require meaningful friction for buyer to switch", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Cornered Resource",
+      "claim_text": "Signature Bank は大手行から優秀な銀行チームを継続的に採用する独自のモデルを確立しており、採用したチームは前職よりも高いパフォーマンスを発揮する。例として、2007年末に採用した商業不動産チームはCapital One/North Forkでの実績を上回る成果を出した。2012年に採用したSignature Financial（設備リース・ファイナンス）チームは、前職（$45億規模）での「bureaucracy」から解放されて急成長中（2014年末残高$26億）。各チームは長年培った顧客関係・ニッチ専門性・ネットワークを持ち込み、Signature Bankの規模・文化・柔軟性の中で倍増させるプラットフォームが機能している。",
+      "evidence_quotes": [
+        "teams that come on board here can do better over time than where they came from",
+        "the bureaucracy that they had to put up with at their prior institution really put the breaks in their business. So we would expect that they can grow to that $4.5 billion and beyond here",
+        "That team has now surpassed their outstandings here at Signature compared to what they did at North Fork Capital One"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "優秀な銀行チームを引き抜いて活躍させるモデルは実績で裏付けられているが、これは「Cornered Resource」というより「Counter-Positioning」（大手行の官僚主義に対する優位）の側面が強い。チーム採用モデル自体は他の中堅銀行でも模倣可能であり、特許保護された希少資源ではない。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 3-T: Cornered Resource requires scarce, proprietary asset", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Counter-Positioning",
+      "claim_text": "Signature Bank の「Private Client Banking only・広告なし・single point-of-contact」モデルは、JPMorgan Chase・Bank of America等のメガ銀行が模倣しようとすると既存のリテール戦略を毀損する構造を持つ。メガ銀行はリテール顧客を維持するため低コスト・大量取引モデルに依存しており、専任チーム制の高コスト・高サービスモデルへの転換はカニバリゼーションを引き起こす。Signature Bankは「we use our balance sheet and our capital to attract quality clients... we always talk about the cleanliness of our balance sheet」という明確な差別化を持ち、Forbes 2015年「Best Bank in America」に選出された。",
+      "evidence_quotes": [
+        "we are competing against the too big to fail, mega institutions, we always talk about the cleanliness of our balance sheet and the strength of our capital",
+        "since we don't advertise, #1, and #2, since we're competing against the too big to fail",
+        "Signature Bank being named the Best Bank in America by Forbes for 2015"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "メガ銀行がSignatureのモデルを模倣しようとすると、規模の小ささと高サービスコストが逆に働く構造は明確。メガ銀行は広告・リテール規模で成立しており、ターゲット顧客層を独自モデルで取り込むSBNYのポジションは比較的保護されている。ただし、同様のモデルを採用する他の中堅コミュニティ銀行との差別化根拠として、SBNYのNY不動産特化という地域集中が優位であることも重要。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 7-T: Counter-Positioning requires established players being unable to mimic without self-harm", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Process Power",
+      "claim_text": "Signature Bank はニューヨーク商業不動産・マルチファミリーローン市場での独自の引き受けプロセスを確立しており、複数の建物・ローン・鑑定業者・環境評価会社が関わる複雑な取引を「迅速に実行できる」という評判を持つ。2013年Q4に$2.09億（86建物・49ローン）と$2.41億（36建物・29ローン）という複雑な大型取引を短期間で完結させたことで、次の大型案件紹介を獲得した。このオペレーション上の実行力が既存チームの競争力を高め、資産の質維持（不良債権比率23bps→12bps）を達成。",
+      "evidence_quotes": [
+        "there was a time that they needed to get these transactions done quickly... because getting these transactions done and executed well, it's allowing our team in Melville to see other transactions this quarter",
+        "non-accrual loans at only 8 basis points of total assets",
+        "the coverage ratio further improved to a very strong 783%",
+        "Watchlist credits increased slightly by $3.4 million this quarter to $117.5 million or a low 0.66% of loans"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.5,
+      "confidence_rationale": "複雑な大型取引の迅速実行能力は具体的な事例で裏付けられているが、Process Powerとして認定するためには模倣困難な活動システムが必要。SBNYの実行力は主に優秀な銀行チームによるものであり、独立した活動システムというよりも人材依存型の優位性に近い。不良債権管理の優秀さは実績として具体的。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 5-T: Process Power requires difficult-to-replicate embedded activity chain", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Scale Economies",
+      "claim_text": "Signature Bank のSignature Financial（設備リース・ファイナンス子会社）は、2012年の大型チーム採用後わずか3年以内に$26億超の残高を構築し、前職での$45億規模の実績再現を目指している。National Franchise Finance・Commercial Marine Financeという新ビジネスラインの追加により収益の多様化と規模拡大を両立。効率性比率は2013年Q4の35%→2014年Q4の34.1%へ改善し、大規模な採用・投資をこなしながらも業務効率が改善するという規模の経済が機能している。",
+      "evidence_quotes": [
+        "they can grow to that $4.5 billion and beyond here",
+        "Signature Financial's overall balances are a little over $2.6 billion now",
+        "the bank's efficiency ratio still improved slightly to 34.1% for the 2014 fourth quarter compared with 35% for the 2013 fourth quarter",
+        "We added 2 new business lines to Signature Financial: National Franchise Finance and Commercial Marine Finance"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "効率性比率34%は銀行業では優秀なレベルだが、これはPrivate Client Bankingモデルの人件費効率によるものである。成長とコスト効率の両立は示されているが、「スケールが上がるほど単位コストが継続的に低下する」という純粋なScale Economiesの証拠は限定的。Signature Financialの成長ポテンシャルは明確だが、まだ規模を示す段階にある。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 4-T: Scale Economies require persistent unit cost advantage at scale", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_type": "Branding",
+      "claim_text": "Signature BankはForbes 2015年「Best Bank in America」に選出されており、無広告でありながら高品質クライアント（プロフェッショナルサービス企業、ニューヨーク不動産事業者、法律事務所等）を引きつけるブランド力を有する。「we use our balance sheet and our capital to attract quality clients... since we don't advertise」という戦略は、評判（reputation）による差別化モデルを示す。非利子付預金の31%維持は顧客の信頼を反映している。",
+      "evidence_quotes": [
+        "Signature Bank being named the Best Bank in America by Forbes for 2015",
+        "we use our balance sheet and our capital to attract quality clients. Since we don't advertise",
+        "our seventh consecutive year of record earnings... our 21st consecutive quarter of record earnings"
+      ],
+      "transcript_source": "201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.3,
+      "confidence_rationale": "Forbes受賞と7年連続記録成長はブランド認知の証拠だが、銀行ブランドとして超過価格設定力（預金コスト面での優位性）を発揮しているとは言い難い。むしろSwitching CostsとCounter-Positioningが競争優位の主要なメカニズムであり、Branding Powerとしての独自性は限定的。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 6-T: Branding requires persistent price premium derived from brand", "Rule 1-T: 7 Powers framework"]
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "seven_powers_type": null,
+      "claim_text": "Signature Bank の記録的成長実績: FY2013: 純利益$2.29億（前年比+23%）、預金+$29.7億（+21%）、ローン+$37.5億（+38%）、NII+18%、効率性比率35%（改善）、非不良債権比率23bps（5年最低水準）。FY2014: 純利益$2.97億（前年比+30%）、預金+$55.6億（+33%）、ローン+$43.4億（+32%）、NII+23.6%（+$1.53億）、効率性比率34.1%（過去最高）、非不良債権比率12bps。2015年見通し: 費用増加（規制対応でmid-teen%）、NIM安定から微低下、ローン成長継続（Q1 2015はQ1 2014の$6.99億超を見込む）。",
+      "evidence_quotes": [
+        "delivered a 30% increase in net income to a record $296.7 million",
+        "deposits increased $5.56 billion, core deposits increased $4.14 billion",
+        "expanded net interest income by $152.8 million or 23.6%",
+        "loans grew a record $4.34 billion and represent 65.4% of total assets"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "財務実績は具体的数値で裏付けられており、純利益+30%・預金+33%・ローン+32%という三冠の記録的成長は実質的競争優位の存在を示す。7年連続記録・21四半期連続記録という持続性も注目に値する。ただし、このような高成長はニューヨーク不動産市場の好調さに依存しており、市場サイクル要因との切り分けが必要。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 9-T: CAGR connection claims require explicit financial linkage"]
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "seven_powers_type": null,
+      "claim_text": "Signature Bank の主要財務数値（2013-2014年）: 総資産2014年末$273億（前年比+22%）。ローンポートフォリオ2014年末$178億（総資産の65.4%）。預金2014年末$226億（うち無利子預金$71億=31%）。Tier 1リスクベース自己資本比率13.49%（要件を大幅超過）。引当金カバレッジ比率783%。不良債権残高$2,100万（ローン総額の12bps）。Signature Financialの残高$26億超（Marine Finance・Franchise Finance追加）。ABL残高$1億未満（前職での$2-3億目標に向けて成長中）。オフィス数28店舗（格林威治CT・ベイリッジBK追加予定）。",
+      "evidence_quotes": [
+        "total assets this year, which reached $27.3 billion",
+        "nonaccrual loans decreasing to $21 million or 12 basis points of total loans",
+        "tangible common equity ratio of 9.14%, Tier 1 risk-based of 13.49%",
+        "the coverage ratio further improved to a very strong 783%",
+        "Signature Financial's overall balances are a little over $2.6 billion now"
+      ],
+      "transcript_source": "201401_earnings_call.json (FY2013 annual); 201501_earnings_call.json (FY2014 annual)",
+      "confidence": 0.7,
+      "confidence_rationale": "これらの事実は経営陣の定量的発言として信頼性が高い。特に不良債権率12bps・カバレッジ783%という超優秀な資産品質指標は、Private Client Bankingモデルとニューヨーク商業不動産特化という戦略の有効性を示す。",
+      "poiT_compliant": true,
+      "rule_references": ["Rule 10-T: Factual claims must be clearly stated facts from transcripts"]
+    }
+  ]
+}

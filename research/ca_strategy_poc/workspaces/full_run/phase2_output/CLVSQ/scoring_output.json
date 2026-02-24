@@ -1,0 +1,175 @@
+{
+  "ticker": "CLVSQ",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true,
+    "note": "CLVSQは臨床段階バイオテック（収益ゼロ）。rociletinib（EGFR阻害剤）とrucaparib（PARP阻害剤）が主要パイプライン。PoiT（2015年9月）時点でNDA提出中・未承認。競合AZD9291（AstraZeneca）が同時期に類似適応症を追求。実際にはrociletinibは最終的に承認取得に失敗（PoiT以降の事実）。前臨床・臨床段階企業に適したスコアリングを適用"
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "rociletinib野生型EGFR温存による皮膚毒性フリーの差別化臨床プロファイル",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "野生型EGFR温存は作用機序レベルの分子的能力として識別。400人超の患者データが裏付け"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "partial",
+          "adjustment": -10,
+          "reasoning": "AZD9291との直接比較データなし。2015年時点でAZD9291（osimertinib）が同様のT790M選択性で先行している"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_4",
+          "verdict": "no_revenue_evidence",
+          "adjustment": -10,
+          "reasoning": "収益ゼロの臨床段階。承認前の優位性は定量的財務証拠が存在しない"
+        }
+      ],
+      "final_score": 0.30,
+      "final_confidence_pct": 30,
+      "scoring_rationale": "rociletinibの野生型EGFR温存は作用機序上の差別化だが、PoiT（2015年9月）時点で未承認薬。AZD9291が同一適応症（T790M陽性NSCLC）で競合・先行しており、相対的優位性は不確か。67% ORR・89% DCRという臨床データは存在するが財務的証拠ゼロ。臨床段階リスクを反映し30%"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "臨床差別化→承認・商業化→CAGR経路",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_5_t",
+          "verdict": "indirect",
+          "adjustment": -10,
+          "reasoning": "NDA提出→承認→市場参入という3段階。PoiT時点で実現前。臨床段階企業のCAGR接続は高度に仮定的"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "承認前薬剤のCAGR接続は仮定的。NDA提出を計画中だがPoiT時点で商業化ゼロ。ゲートキーパー判定で20%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "rucaparibのBRCAness分子スクリーニング体系（ARIEL2 biomarker platform）",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "Foundation Medicine連携のBRCAness分子スクリーニングは独自プロセス能力として識別"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_6_t",
+          "verdict": "structural",
+          "adjustment": 0,
+          "reasoning": "BRCAness biomarkerプラットフォームは他PARP阻害剤が短期模倣困難。患者プール50-60%への拡大可能性は業界構造と合致"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "70% ORR（54患者、robust sized）・80% DCRという定量的臨床データあり"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_4",
+          "verdict": "no_revenue_evidence",
+          "adjustment": -10,
+          "reasoning": "Phase 2段階（ARIEL3 Phase 3はPoiT時点で進行中）。承認前"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "rucaparibのBRCAness biomarker platformはFoundation Medicine連携による独自の精密医療アプローチ。70% ORRと卵巣癌患者50-60%への適応拡大可能性は差別化の証拠。ただし承認前（ARIEL3 Phase 3進行中）で財務的証拠なし。rociletinibより相対的競合優位性が高い評価"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "BRCAness拡大→患者プール拡大→2016年承認→CAGR経路",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_5_t",
+          "verdict": "indirect",
+          "adjustment": -10,
+          "reasoning": "ARIEL2 extension→NDA 2016年提出→承認→市場参入。4段階の多ステップCAGR接続"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "2016年NDA計画は開示されているが、臨床試験進行中でPoiT時点での商業化ゼロ。高リスク。20%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "多様な腫瘍学パイプライン（4モダリティ）による事業リスク分散",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_B_t",
+          "verdict": "industry_common",
+          "adjustment": -10,
+          "reasoning": "複数パイプラインを持つ腫瘍学バイオテックは業界標準。AstraZeneca・Roche等はより大規模なパイプラインを保有"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "パイプライン多様性は業界共通要素（KB2 pattern_B_t）。大手製薬会社比で規模が小さく競争優位性として際立たない。20%"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "FDA Breakthrough Therapy Designation取得によるレギュラトリー優位性",
+      "seven_powers_category": "Counter-Positioning",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_D_t",
+          "verdict": "qualitative_only",
+          "adjustment": 0,
+          "reasoning": "BTDは一時的な時間的優位性。承認後は消える補完的要素"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_6_t",
+          "verdict": "complementary",
+          "adjustment": -5,
+          "reasoning": "BTDは審査スピードという補完的優位性に過ぎない。競合AZD9291も類似の優先審査取得の可能性"
+        }
+      ],
+      "final_score": 0.25,
+      "final_confidence_pct": 25,
+      "scoring_rationale": "FDA BTDは重要なマイルストーンだが一時的な優位性。承認後は消失。競合も同様の優先審査を取得しうる。25%"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 3,
+    "weighted_avg_score": 0.26,
+    "top_claim": {
+      "claim_id": 3,
+      "final_score": 0.40,
+      "descriptive_label": "rucaparibのBRCAness分子スクリーニング体系（ARIEL2 biomarker platform）"
+    },
+    "primary_seven_powers": ["Cornered Resource"],
+    "investment_thesis_strength": "weak",
+    "key_risks": [
+      "PoiT（2015年9月）時点で収益ゼロの臨床段階バイオテック",
+      "rociletinib：AZD9291（osimertinib）が先行・競合（PoiT後に承認失敗）",
+      "rucaparib：ARIEL3 Phase 3進行中、承認前",
+      "臨床開発の不確実性（試験失敗・承認遅延リスク）"
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "ticker": "EMR",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "EMR-001",
+      "claim": "プロセス管理部門における独自のインストールドベース（設置済み機器基盤）が、MRO（維持・修理・運転）需要の安定的な収益源として機能している",
+      "power_type": "switching_costs",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "インストールドベースという明確な能力・仕組みの主張。切替コストの存在は産業機器では構造的に正当化可能"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "インストールドベースは結果ではなく、過去の販売蓄積によって形成された構造的資産。能力・仕組みとして評価可能",
+        "rule07_pure_competitor": "競合（Honeywell, Rockwell等）との相対比較が明示されていないが、'unique installed base parts'という表現が差別化を示唆",
+        "adjustment": "+0 (競合比較データなし)"
+      },
+      "kb2_evaluation": {
+        "pattern_match": "パターンA-T3（顧客基盤・シェアの提示）に近いが、具体的なMRO収益メカニズムの説明があり純粋な結果提示とは異なる",
+        "pattern_III": "capability_over_result パターンに部分適合: インストールドベースという能力が明示されている",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "ORLY#1 (70%): DIFMの補充頻度優位 - 競合比較あり。EMR-001は競合比較なし→スコアを下げる方向",
+        "final_reasoning": "能力・仕組みは認識できるが競合比較なし。産業機器のスイッチングコストは構造的に実在するが定量化なし"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "インストールドベースという実在する構造的資産が主張されており、MRO収益への接続メカニズムも概念的に理解可能。'unique installed base parts'という表現は差別化を示唆する。ただし競合他社との定量比較がなく、スイッチングコストの具体的な大きさ（切り替えコスト、契約期間等）が不明。KB1ルール1（能力・仕組み）には適合するが、KB1ルール4（定量的裏付け）が不足。50%が妥当。"
+    },
+    {
+      "id": "EMR-002",
+      "claim": "ロシア市場での現地製造能力とサービス能力が競争優位性をもたらしており、通貨変動下でもビジネスを維持できる",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "現地製造能力という能力主張。ただし地理的限定性と競合比較の欠如に注意"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "現地製造・サービス能力は能力として評価可能。通貨変動下でのビジネス維持は結果に近い",
+        "rule03_relative_advantage": "ロシアでの現地製造を持つ競合（Siemens等）との比較なし",
+        "adjustment": "-10% (業界共通の可能性)"
+      },
+      "kb2_evaluation": {
+        "pattern_match": "パターンB-T3（グローバルプレゼンスの主張）に近い。多国籍企業であればローカル製造能力を持つのは標準的",
+        "adjustment": "-10%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#6 (30%): グローバル医療機関ネットワーク - 業界共通能力→30%。ロシア限定能力は地理的限定で評価が難しい",
+        "final_reasoning": "地理的限定性（ロシアのみ）、競合比較なし、業界共通パターンに近い"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "ロシア市場での現地製造能力は実在するが、多国籍産業機器メーカー（Siemens, Honeywell等）も同様に現地製造体制を持つ可能性が高い。'giving us a pretty good competitive advantage'という経営陣の自己評価はあるが、具体的な差別化（シェアデータ、競合との比較）が不明。地理的に限定的で、会社全体の競争優位性への貢献度も不明。KB2パターンB-Tに部分適合。30%が妥当。"
+    },
+    {
+      "id": "EMR-003",
+      "claim": "グローバルサービス組織への継続投資が、インストールドベースからのMRO収益獲得能力を高めている",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "投資に基づく能力構築の主張。ただしEMR-001との重複要素あり"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "サービス組織の投資・構築は能力形成の説明として評価可能",
+        "rule02_noun_attribute": "「グローバルサービス組織」という名詞的能力の主張",
+        "rule04_quantitative": "「数十億ドル規模の設備」「直近3年の投資」という言及はあるが、具体的なROI・競合比較なし",
+        "adjustment": "-10% (定量比較なし)"
+      },
+      "kb2_evaluation": {
+        "pattern_match": "EMR-001と実質的に重複。グローバルサービス組織への投資は業界標準的な行動",
+        "pattern_B": "多くの産業機器メーカーがサービス組織強化を行っており、業界共通パターンに近い",
+        "adjustment": "-10%"
+      },
+      "kb3_calibration": {
+        "reference_case": "EMR-001（50%）と実質同一の主張。追加的な証拠なしに同一評価以上にはならない",
+        "final_reasoning": "EMR-001の説明変数として機能するが、独立した優位性としては弱い"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "グローバルサービス組織への投資は投資額の記述があるものの、競合との相対的な組織力の比較がない。この主張はEMR-001（インストールドベース）の補完的説明であり、独立した競争優位性としては評価が難しい。産業機器メーカーはいずれもアフターサービス強化を図っており（KB2パターンB-T適合）、差別化の証明が不十分。30%が妥当。"
+    },
+    {
+      "id": "EMR-004",
+      "claim": "プロセス管理事業における戦略的リストラクチャリング実行能力（「ガスペダルとブレーキを同時に踏む」）が、景気サイクル下での収益性維持を可能にしている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "コスト管理・リストラ能力の主張。プロセスパワーの主張として形式的には通過"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「ガスペダルとブレーキを同時に踏む」能力という表現は能力として呈示されているが、20%+ OPMは結果でもある",
+        "rule07_pure_competitor": "「Emerson's very good at this」という自己評価のみ。競合との実際の比較なし",
+        "rule11_industry_structure": "景気サイクル下でのコスト管理は産業機器会社の多くが主張する"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "OPM実績（20%+）を優位性として提示する側面あり。結果を原因とする要素を含む",
+        "pattern_B": "景気サイクル対応能力は多くの工業系企業が主張（GE, Honeywell等も類似発言）",
+        "adjustment": "-10%〜-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "CHD#4 (30%): 「成長加速」を優位性とするパターンに類似。リストラ実行は戦略であり構造的優位性ではない",
+        "final_reasoning": "リストラ能力は経営の柔軟性を示すが、持続的競争優位性としての構造的基盤が不明"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "「ガスペダルとブレーキを同時に踏む」という表現は巧みだが、これは経営判断・戦略の説明に近く（KB1ルール8: 戦略≠優位性）、構造的な競争優位性の説明としては不十分。20%+ OPMという数値は実績（結果）であり、それを生み出す仕組みの具体的説明が乏しい。競合（Honeywell, ABBなど）との比較なし。30%が妥当。"
+    },
+    {
+      "id": "EMR-005",
+      "claim": "下流部門（電力・石油化学）での高い受注ペースと特定ニッチ市場での価格決定力が、上流oil & gas市場の落ち込みを部分的に補完している",
+      "power_type": "counter-positioning",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "ポートフォリオ多様化による補完という主張。ただし価格決定力の構造的根拠に注意"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「record levels」の受注は結果。価格決定力は能力として認識可能だが証拠が薄い",
+        "rule04_quantitative": "「record levels」とあるが具体的な数値・成長率なし",
+        "rule08_strategy": "ポートフォリオ多様化は戦略的判断に近い面あり"
+      },
+      "kb2_evaluation": {
+        "pattern_A": "高い受注ペース（結果）を優位性として提示する側面が強い",
+        "pattern_C": "「価格決定力がある→補完できる」という因果チェーンが弱い",
+        "adjustment": "-10%〜-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "MNST#1 (50%): 高シェアを優位性とするパターン。EMR-005も受注実績を優位性とするパターンに近い",
+        "final_reasoning": "CEO自身が'nervous'と発言しており、価格決定力への確信も限定的"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "下流・ニッチ市場での価格決定力という主張は、構造的な優位性の説明として認識できる。しかし'record levels'は結果であり（KB2パターンA適合）、価格決定力の根拠（技術的差別化、顧客依存度等）が不明。CEO自ら'a little bit nervous'と言及しており、確信度の高い優位性主張とは言えない。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

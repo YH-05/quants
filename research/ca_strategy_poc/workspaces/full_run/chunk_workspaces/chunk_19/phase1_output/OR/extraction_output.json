@@ -1,0 +1,330 @@
+{
+  "ticker": "OR",
+  "transcript_source": "FY2014 Full Year Results (2015-02-13) [Primary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014 Full Year"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "「ユニバーサリゼーション」戦略：4事業部（Consumer Products・L'Oreal Luxe・Professional Products・Active Cosmetics）×全チャンネル×全価格帯のマルチ構造による市場全体へのリーチ",
+      "descriptive_label": "4事業部マルチ構造・ユニバーサリゼーション戦略（Scale Economies + Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Jean-Paul Agon): 'These results are in line with our strategy of universalization...We are present in all segments, all geographies, all distribution channels, with a very large portfolio of both local and international brands...In New Markets, which now represent 40% of the group's sales, we are the number 1 cosmetics company.' CFO Mulliez: 'L'Oreal generated sales of EUR22.53 billion, a like-for-like growth of +4.1%...operating profit increased by EUR 208 million to EUR 3.9 billion, operating margin rate improved by 30 basis points to reach 17.3%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "4事業部×全チャンネル×全価格帯という構造的な市場カバレッジという仕組みを評価。売上シェアは結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "EUR22.5B売上・+4.1% CC成長・17.3%営業利益率（+30bps、過去最高）・New Markets 40%（#1コスメティクス企業）という具体的かつ検証可能なデータ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "4事業部構造は数十年の買収・ブランド育成の蓄積。全価格帯×全地域×全チャンネルのプレゼンスは簡単に模倣できない"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Procter & Gamble（美容事業縮小）、Estee Lauder（Luxeに集中）、Unilever（全価格帯だが美容コミット低下）との比較で、唯一の完全な4部門構造。コスメティクス専業で最大"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t + pattern_IV_t",
+        "confidence": 75,
+        "confidence_adjustments": [
+          {
+            "reason": "Consumer Products部門（最大）が+1.6% CCと低成長。西欧市場の成熟と競合激化を反映",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "コスメティクス専業で唯一の4部門フルカバレッジは、他社が模倣困難な構造的優位性。New Markets #1・17.3%過去最高利益率が実績で裏付け"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ユニバーサリゼーション戦略 → New Markets拡大（40%→50%以上目標）→ 連結売上CAGR加速",
+      "descriptive_label": "新興市場拡大→CAGR加速",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：ユニバーサリゼーション→新興市場ポジション→売上成長。New Markets 2014年+7.4%（CC）・売上構成40%。CEO明示的に「50%以上が目標」と言及"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次決算でのCEO定量的言及"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "2014年後半からロシア・ブラジル・東欧での通貨減価・経済減速が業績に逆風。新興市場リスクは実顕",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "新興市場のロングラン成長テーゼは構造的に正しいが、通貨・地政学リスクが短期実績を抑制する可能性"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Active Cosmetics部門の皮膚科学的ブランド力（La Roche-Posay・Vichy・Skinceuticals）：薬局チャンネル専売・皮膚科医推薦による参入障壁と高成長",
+      "descriptive_label": "Active Cosmetics皮膚科学的ブランド優位性（Cornered Resource + Branding）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (Active Cosmetics Division Head Brigitte Liberman): 'Our division Active Cosmetics had an exceptional year with growth of +8.7% and now accounts for 5.5% of L'Oreal's total sales...La Roche-Posay achieved double-digit growth for the fifth consecutive year...our brands are recommended by dermatologists and pharmacists...Vichy...is worldwide number 1 in dermocosmetics...La Roche-Posay is the number 1 brand in many markets.' CEO: 'Active Cosmetics...a market leader and [having] a role to play in the long run'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Division Head + CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "皮膚科学研究・臨床試験・皮膚科医との協働という仕組みを評価。皮膚科医推薦という信頼資産は数十年の投資の蓄積"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "+8.7%成長・La Roche-Posay 5年連続2桁成長・Vichy世界#1デルモコスメティクス・5.5%の連結売上比率という複数の定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "薬局専売チャンネルと皮膚科医推薦というポジションは簡単に転換できない。新参者が同じ信頼性を構築するには20年以上必要"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Neutrogena（J&J）、Cetaphil（Galderma）との比較で、Vichy世界#1・La Roche-Posay多市場#1という独自のポジション"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t + pattern_V_t",
+        "confidence": 75,
+        "confidence_adjustments": [],
+        "overall_reasoning": "5年連続2桁成長は競争優位の最も強力な証拠の一つ。皮膚科医推薦チャンネルは規模が小さい（5.5%）が最高の成長率と利益率を誇る"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "L'Oreal Luxeのプレミアムブランドポートフォリオ（Lancôme・YSL・Armani・Kiehl's・Urban Decay）：デジタル+百貨店チャンネルでの優位性",
+      "descriptive_label": "L'Oreal Luxeブランドポートフォリオ（Branding + Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (Luxe Division Head Nicolas Hieronimus): 'L'Oreal Luxe had an exceptional year with +7.1% growth...YSL Beauté grew by +11.8%...Giorgio Armani Beauty grew by +10%...Kiehl's grew by +23%...Urban Decay grew by +50%...Lancôme is the world's number 1 luxury cosmetics brand...Our portfolio has become one of the most desirable portfolios in the market.' CEO: 'L'Oreal Luxe...is our biggest division in terms of contribution to growth this year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Division Head + CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ブランド育成・デザイナー協業・プレステージマーケティング能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "+7.1%全体成長、YSL +11.8%、Armani +10%、Kiehl's +23%、Urban Decay +50%という具体的ブランド別成長データ。Lancôme世界#1高級コスメ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Lancôme・YSL・Armani等のラグジュアリーブランドは買収時の希少性とブランド育成の長年投資の蓄積。模倣コスト極めて高い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Estee Lauder（MAC、Clinique、Tom Ford）との直接競合。L'Oreal Luxeは+7.1%でEstee Lauder同部門の+7%に対等。Lancôme世界#1という独自ポジション"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "複数ブランドの高成長と明確な市場ランキング（Lancôme世界#1）は実績ベースの強固な証拠。Kiehl's +23%・Urban Decay +50%はニッチプレミアム拡大"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "3.4%売上R&D投資とR&Dセンター（中国・日本・米国・ブラジル等）のグローバルネットワーク：科学的イノベーション能力",
+      "descriptive_label": "R&D投資能力・科学的イノベーション（Process Power + Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Agon): 'R&D represents 3.4% of net sales...We have set up research and development centers in China, in Japan, in the U.S., in Brazil, in India, in South Africa, which allow us to develop products that are adapted to the very specific needs of consumers of those countries...La Roche-Posay achieved double-digit growth for the fifth consecutive year...the scientific credibility being behind our dermocosmetics brands really sets us apart.' Active Cosmetics Division Head: 'our brands are recommended by dermatologists and pharmacists'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "3.4%売上R&D比率・グローバルR&Dセンターネットワークという仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "3.4%（EUR765M）という規模は定量的。ただし特許数・革新製品比率の詳細データなし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ローカルR&Dセンター（中国・日本・ブラジル等）は現地消費者ニーズへの適応を可能にする。皮膚科学的ブランドの科学的信頼性は長年の臨床投資の蓄積"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Estee Lauder・P&Gも同等のR&D投資比率を持つ。相対的優位の定量証拠が限定的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "R&D能力は実在するが競合と比較した際の差別化の定量証拠が限定的。Active Cosmeticsでの科学的信頼性が最も説得力ある具体例"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "デジタル変革リーダーシップ：MakeupGenius 6.3M DL・eコマース+60%・全5大ブランドがデジタルIQ Top10入り（米国・中国）",
+      "descriptive_label": "デジタル変革・eコマースリーダーシップ（Counter-Positioning + Scale Economies）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (CEO Agon): 'L'Oreal Paris MakeupGenius...already has 6.3 million downloads...e-commerce grew by +60% for the whole group...we have 5 brands in the top 10 of Luxury Beauty Digital IQ in the U.S. and in China' CFO Mulliez: 'Our e-commerce business is growing at +60% and is growing in all countries. And it's already representing close to 4% of our total group sales, which is roughly EUR 900 million out of EUR 22.5 billion.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "デジタルマーケティング・eコマース基盤・AR試着技術（MakeupGenius）という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "eコマース+60%・EUR900M（4%売上）・MakeupGenius 6.3M DL・デジタルIQ Top10に5ブランドという具体的な定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "emerging",
+            "reasoning": "デジタルファースト・AR試着技術は2015年時点での新興優位性。確立された競争優位というよりは構築中"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_V_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "eコマース4%は成長中だが主要チャンネルにはまだ成熟していない。競合も急速にデジタル投資を加速中",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "デジタルIQ Top10に5ブランドという複数ブランドでのデジタルリーダーシップは認められるが、eコマース4%は発展途上。MakeupGeniusのAR技術は真の差別化だが規模はまだ小さい"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Professional Products部門：150万人超のヘアドレッサーパートナーシップと教育プログラムによる排他的サロンチャンネル支配",
+      "descriptive_label": "プロフェッショナル製品ヘアドレッサーネットワーク（Network Economies + Switching Costs）",
+      "evidence_from_transcript": "FY2014 Annual Prepared Remarks (Professional Products Division Head Jochen Zaumseil): 'We are present in more than 80 countries. We work with 1.5 million hairdressers around the world...Our education program is one of our key strengths, because professionals who are educated on our brand products and techniques generate approximately 8% higher revenues than the ones which are not.' CEO: 'Professional Products...serves as a prescription platform for our mass-market brands such as Garnier and L'Oreal Paris.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Division Head + CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "150万ヘアドレッサーパートナーシップ・教育プログラム・サロン専売チャンネルという仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "150万ヘアドレッサー・80カ国以上・教育受講者が+8%高収益という具体的なデータあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ヘアドレッサーは製品認定後にブランドを切り替えるコストが高い。教育投資を受けたプロは当該ブランドとの粘着性が高い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Schwarzkopf（Henkel）、Wella（P&G→Coty）も同様のプロ向けネットワークを保有。+2.6%成長はやや低調"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Professional Products +2.6% CCは低成長。サロン市場の成熟と競合圧力を反映",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "150万ヘアドレッサーネットワークは実質的なスイッチングコストを持つ。ただし競合も同様のネットワークを構築しており相対優位の証拠が弱い"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 売上EUR22.53B (+1.5% reported、+4.1% CC)、営業利益EUR3.9B (+5.9%)、営業利益率17.3% (+30bps、過去最高)、EPS +8.5%、配当EUR2.50/株 (+10%)",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 4]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Active Cosmetics FY2014: +8.7% CC成長、5.5%連結売上比率。La Roche-Posay 5年連続2桁成長、Vichy世界#1デルモコスメティクス。皮膚科医・薬剤師推薦モデル",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 5]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "L'Oreal Luxe FY2014: +7.1% CC成長（最大成長貢献事業部）。YSL +11.8%、Armani +10%、Kiehl's +23%、Urban Decay +50%。Lancôme世界#1ラグジュアリーコスメブランド。デジタルIQ Top10に5ブランド（米国・中国）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4, 6]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "デジタル・eコマース FY2014: eコマース+60%成長・EUR900M（4%売上）。MakeupGenius AR試着アプリ 6.3M DL。New Markets +7.4% CC・40%売上比率（#1コスメティクス企業）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2, 6]
+    }
+  ]
+}

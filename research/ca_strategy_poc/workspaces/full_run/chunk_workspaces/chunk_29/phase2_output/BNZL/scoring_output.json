@@ -1,0 +1,271 @@
+{
+  "ticker": "BNZL",
+  "scored_claims": [
+    {
+      "claim_id": "BNZL-001",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "6業種向けワンストップサプライチェーンサービスは規模の経済の典型的な例",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "「6業種・ワンストップ」は能力の説明だが、それが競合比で際立つ具体的なメカニズムの説明が弱い"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "アウトソーシング型流通モデルは構造的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "note": "6業種・複数カテゴリーのワンストップは構造的ポジション"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": false,
+          "note": "「Top 40顧客の30が北米」という定量データあり"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "6業種・Top40顧客の30が北米という定量データは一定の裏付けになる。ただし「個別製品メーカーや地域流通業者が複製困難」な理由の具体的説明が限定的。規模の経済として業種の多様化が必ずしも規模のコスト優位につながるとは言えない。50%（まあ納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "ワンストップサプライチェーン→既存顧客への追加売上（クロスセル）→安定的な売上成長という接続は理解できる"
+    },
+    {
+      "claim_id": "BNZL-002",
+      "power_type": "Branding",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "自社ブランド浸透率向上（16%→18%）はブランド構築の具体的な指標",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "自社ブランド構築による高利益率（double-digit margin）という能力・仕組み"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "プライベートブランドは構造的な価格設定力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "Own Label 16%→18%という定量データ、セーフティセグメントでdouble-digit marginという定量裏付け"
+        },
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "自社ブランドの浸透率向上という能力の軌跡を示している"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "Own Label比率16%→18%→20%目標という定量的なブランド浸透の軌跡と、セーフティセグメントでのdouble-digit marginという具体的な利益指標がある。プライベートブランドは小売業・流通業での一般的手法だが（Pattern B）、Bunzlが複数業種にわたって体系的に展開している点が差別化要因。dogma.md ルール4（定量的裏付け）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "Own Label比率上昇（1%/年）→グループ利益率改善という直接的で定量的なメカニズム"
+    },
+    {
+      "claim_id": "BNZL-003",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "年10-17件のM&A実行とオーナー経営者の高エンゲージメント維持は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「元オーナー経営者がBunzlの傘下で依然として高いエンゲージメントを維持する」という仕組みの説明"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「M&Aエンジン」「統合プレイブック」という名詞属性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "M&A件数（結果）ではなく、エンゲージメント維持という能力・文化を説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "2013年11件・2億5千万ポンド、2014年17件・2.11億ポンドという定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "2013年11件・2014年17件の買収という実績と「元オーナー経営者が今でも情熱的に事業を推進する」という文化的説明は、Process Power（M&A統合プレイブック）の強力な裏付け。dogma.md ルール10（ネガティブケースによる裏付け）は直接ないが、具体的なエンゲージメント説明がある。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "系統的M&Aエンジン→毎年10-17件の買収→外部成長による継続的売上成長（LSD%程度の買収貢献）というメカニズムは直接的"
+    },
+    {
+      "claim_id": "BNZL-004",
+      "power_type": "Scale Economies",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "大陸欧州9%・英国7.4%・グループ7%の安定マージンは定量的な規模の経済の証拠",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "7%グループマージンは結果。効率的コスト管理（ブランチ統合・労働効率化）という能力の説明あり"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "7%マージン（結果）を規模の経済（優位性）として提示している側面"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "欧州9%・英国7.4%・グループ7%という具体的なマージンデータ"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "欧州9%という高マージンは注目に値するが、それを可能にする具体的な規模の経済メカニズム（ブランチ統合、労働効率化）の詳細説明が不足。マージン数値は結果の側面が強い（Pattern A）。ただし「低成長環境でも9%」という文脈は能力の証拠として一定評価できる。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "グループ7%マージン安定→成長を続けながらも利益率維持というメカニズムは理解できるが詳細不足"
+    },
+    {
+      "claim_id": "BNZL-005",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "ブラジル・チリで6年以内に市場最大手になった実績は具体的なM&A統合プレイブックの証拠",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「最初のチェックを書くと電話が鳴り始める」というM&A展開の再現可能なプレイブックの説明"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "pass",
+          "note": "新市場でのM&A展開プレイブックは構造的プロセス能力"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "ブラジル・チリ最大手（結果）だけでなく、その達成方法（プレイブック）を説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "6年以内という時間軸の定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "ブラジル・チリでの6年以内の最大手化という実績と「最初のチェックを書くと電話が鳴る」というネットワーク効果的な M&A 促進メカニズムは具体的。500件以上の潜在M&A対象という調査力も示されている。dogma.md ルール4（定量的裏付け）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "新興市場M&Aプレイブック→各市場での業界No.1ポジション確立→現地規模の経済と利益率改善という接続"
+    },
+    {
+      "claim_id": "BNZL-006",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "買収後の運転資本削減・IT統合は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「オーナー経営者は在庫量で富を測るが、我々は在庫の少なさで富を測る」という組織文化・プロセスの具体的説明"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「在庫管理効率化プロセス」という名詞属性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "2014年の平均運転資本が2013年比£10M低下という具体的な能力の成果"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "£10M運転資本削減という定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「オーナーの在庫観と我々の在庫観の違い」という文化的差異の具体的説明と、£10M運転資本削減という定量裏付けは、M&A後の統合プロセスPowerの証拠として高く評価できる。dogma.md ルール4（定量的裏付け）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "運転資本削減→フリーキャッシュフロー改善→さらなる買収原資の確保という直接的なメカニズム"
+    },
+    {
+      "claim_id": "BNZL-007",
+      "power_type": "Network Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "グローバル会議によるブランド共有はNetwork Economiesより Process Power またはブランドに近い",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "グローバルブランド共有（スペインのグローブブランドをUKに展開）は能力の一端だが、ネットワーク効果のメカニズムが弱い"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "グローバル会議は組織的仕組みだが、補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "グローバル会議→ブランド共有→スケールメリットの因果チェーンが飛躍的"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "グローバル会議を通じたプロダクトラインとブランドの共有は能力として認める。ただしこれはNetwork Economies（ユーザー数増加による価値向上）ではなく、Process Power（組織的ブランド管理プロセス）またはScale Economies（調達規模）に近い。フレームワーク分類の問題もあるが、能力自体は存在する。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "グローバルブランド共有→新市場でのOwnLabel早期展開→利益率向上という接続は理論的には成立"
+    },
+    {
+      "claim_id": "BNZL-008",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "Rest of World のプロフィット貢献4%→12%はポートフォリオ変化の結果",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "RoW貢献度12%は戦略の結果であり、規模の経済を生む能力の説明ではない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "地理的多様化は補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "RoW貢献度増加（結果）を成長エンジン（優位性）として提示"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "RoW展開（戦略）を規模の経済（優位性）として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "RoW貢献度4%→12%はポートフォリオ変化の結果であり競争優位性ではない（dogma.md ルール1、ルール8）。地理的分散はBNZL-005（プレイブック）の結果として評価すべきで、独立した優位性としての証拠は弱い。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "新興市場での成長はグループ全体の成長加速に貢献しうるが、メカニズムの説明不足"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "batch_count": 2
+  }
+}

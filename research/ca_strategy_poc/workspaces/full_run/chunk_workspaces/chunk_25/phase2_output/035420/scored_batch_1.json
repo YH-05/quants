@@ -1,0 +1,236 @@
+{
+  "ticker": "035420",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": [6, 7, 8, 9, 10],
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "NAVERの広告プラットフォームにおける独自モバイル広告商品開発能力（Traffic Choice、Fashion Square等）",
+      "evidence": "Q4 2014 CEO: 'Traffic Choice uses a Naver system to show advertisements automatically according to the ad information and the volume of traffic advertisers want... Fashion Square is a mobile-optimized advertising product...' Q2 2015: 'domestic ads revenue was up 8.4% YoY and 7.1% QoQ on favorable mobile fulfillment. Mobile ad now accounts for 32% of search ad revenue.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "広告商品開発の仕組み・プロセス（Traffic Choice自動化システム、Fashion Square モバイルUI）は「能力・仕組み」として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "モバイルシェア32%というデータはあるが、Google・Kakao等の純粋競合との定量比較なし"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "モバイル広告商品開発は戦略的施策の側面が強い。既存インフラを活用した能力との境界が曖昧"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "モバイル広告移行は業界全体のトレンド。NAVER固有の差別化かどうか不明"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Traffic ChoiceやFashion Squareは具体的な商品開発能力・仕組みとして評価可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（主）で調整なし"
+        },
+        {
+          "source": "industry_trend",
+          "adjustment": -0.1,
+          "reasoning": "モバイル広告移行は業界共通トレンク（パターンB-T）。NAVER独自の構造的優位性の説明不足"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "Traffic ChoiceやFashion Squareは具体的な商品開発能力として評価できるが、モバイル広告移行は業界共通トレンド（パターンB-T）。Google・Kakao等との定量的差別化なし。Q4発言だが競合比較を欠く。40%程度が妥当"
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "モバイル広告商品最適化 → モバイル広告収益拡大 → 国内広告CAGR+8-10%維持",
+      "evidence": "Q4 CFO: 国内広告13.7% YoY成長。Q2: domestic ads revenue +8.4% YoY",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "2ステップの因果。Q4国内広告+13.7% YoY、Q2+8.4%という実績数値で検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来（主）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "モバイル広告最適化→国内広告収益という直接的2ステップ接続。実績数値あり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "mobile_ad_saturation",
+          "adjustment": -0.05,
+          "reasoning": "モバイル広告移行による成長鈍化リスクあり（Q4 13.7%→Q2 8.4%の減速傾向）"
+        }
+      ],
+      "final_confidence": 0.55,
+      "overall_reasoning": "実績数値裏付けあり（+13.7%→+8.4%）、直接的接続、Q4発言。ただし成長率の減速傾向がCAGR維持の確信度を若干下げる。55%程度が妥当（CAGR接続は優位性より高め）"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "LINEのイスラム文化対応スタンプ等、ローカライゼーション能力による新市場開拓力（中東・東南アジア）",
+      "evidence": "Q2 2015 CFO: 'we have recently seen significant user base growth from MENA countries like Iran, Saudi Arabia and Egypt. We believe that the biggest driver behind this growth is that we have developed stickers that mostly fit the Islamic culture...'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "ローカライゼーション能力（文化適応スタンプ開発プロセス）は「能力・仕組み」として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "MENA成長の定性説明のみ。具体的なユーザー数・成長率数値なし"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": false,
+          "reasoning": "Q2発言（従・②相当）。ルール12-T調整が必要"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "定性的説明のみ（文化対応スタンプ開発）。定量的差別化（MENA成長数値）が欠如"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.1,
+          "reasoning": "Q2 quarterly発言（従・②相当）。ルール12-T適用で-10%調整"
+        },
+        {
+          "source": "quantitative_lack",
+          "adjustment": -0.1,
+          "reasoning": "MENA成長の定量データなし。パターンD-T（定性的のみ）に抵触"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "ローカライゼーション能力は評価できるが、Q2発言+定量データなし+競合（WhatsApp等）との相対差不明。dogma.mdの評価を下げる要因（定量データ皆無-10〜20%、Q2発言調整-10%）が重なり30%が妥当"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "NAVERのオフライン事業者向けeコマース・決済プラットフォーム（NAVER Shopping + NAVER Pay）によるオンライン・オフライン統合能力",
+      "evidence": "Q2 2015 CEO: 'Unlike the existing online shopping platforms, NAVER shopping provides new channels to off-line businesses like department stores, outlets and flea markets... NAVER Pay was introduced helping for further enhanced usability of NAVER shopping...' 'Since the launch, number of transactions and the volume continues to trend up.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "O2Oプラットフォーム展開は戦略方向性（ルール8-T：戦略≠優位性）。2015年Q2立ち上げ段階で実績なし"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": false,
+          "reasoning": "Q2発言（従・②相当）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "O2O展開は戦略的施策（パターンF-T：戦略混同）。立ち上げ段階で優位性としての評価が困難"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_8_t",
+          "adjustment": -0.1,
+          "reasoning": "戦略≠優位性（ルール8-T）。O2O展開は戦略的意思決定"
+        },
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.1,
+          "reasoning": "Q2 quarterly発言（従・②相当）"
+        },
+        {
+          "source": "early_stage",
+          "adjustment": -0.05,
+          "reasoning": "2015年Q2立ち上げ段階。実績データなし"
+        }
+      ],
+      "final_confidence": 0.30,
+      "overall_reasoning": "NAVER PayはQ2 2015立ち上げ段階（戦略、パターンF-T抵触）。Q2発言でルール12-T調整。実績データなし。30%が妥当"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "NAVER国内広告売上Q4 2014: KRW 540.5B（YoY+13.7%、QoQ+8.3%）。モバイル検索広告比率28%、ディスプレイ12%",
+      "evidence": "Q4 2014 CFO発言",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "final_confidence": 0.70,
+      "overall_reasoning": "factual_claimはQ4発言からの事実確認。CEOが開示したKRW数値は財務報告と整合。検証可能な事実として70%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "30-40": 2,
+      "40-50": 1,
+      "50-60": 1,
+      "60-70": 1,
+      "70-80": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

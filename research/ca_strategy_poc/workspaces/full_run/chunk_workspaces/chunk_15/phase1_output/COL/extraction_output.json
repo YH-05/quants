@@ -1,0 +1,205 @@
+{
+  "ticker": "COL",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-10-31)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "商業航空OEM向け次世代機（787、737MAX、A350）への航空電子システム組み込みとマーケットシェアゲイン（エアトランスポート9%成長）",
+      "descriptive_label": "商業航空OEMへのアビオニクス組み込みとシェア拡大",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'our commercial OEM business grew 9%, driven by higher 787 and narrowbody rates, and that's been amplified by our market share gains in the air transport segment...we added the new segment to the company and a whole new growth platform for -- with the acquisition of ARINC and the subsequent creation of our Information Management Service business.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "商業機へのアビオニクス組み込み（能力）はスイッチングコストを生む。ただし'market share gains'は結果"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "OEM事業9%成長、787・737の生産率増加。具体的数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "次世代機への組み込み（737MAX, A350）は長期契約（機体寿命20-30年）の生産フェーズでの安定収益源"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "航空OEM市場の特性（FSO認証取得困難、OEMベンダー選定の長期固定）と整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "航空OEM向けアビオニクスは一度機体に組み込まれると機体寿命全体（20-30年）のライフサイクルで取引が続く構造的スイッチングコスト。787への組み込み実績、737MAXへの拡張は将来数十年の収益基盤。市場シェア獲得は結果だが、認証取得プロセス（能力）が競合参入障壁"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "商業機生産率増加（787+A350立ち上がり）× per-aircraft content拡大 → Commercial Systems OEM収益高一桁成長継続",
+      "descriptive_label": "商業機生産率×コンテンツ拡大→OEM収益加速",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "生産率増加×機体当たりコンテンツの2ステップ。CFOが'Commercial Systems OEM sales expected to go high single digits'と明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "787月間10機→12機の生産率増加見通し、A350 EIS（2015年）開始。これらはCOLのアビオニクスコンテンツを直接乗数的に拡大する。2ステップで確認可能。ガイダンスとも整合"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "ARINCアクイジション（2013）による航空情報管理サービス（IMS）プラットフォームと年金収入構造（年率二桁成長）",
+      "descriptive_label": "ARINCのリカーリング航空ITサービス（GLOBALink等）による粘着性",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'IMS delivered strong performance with double-digit growth in the core aviation portion of the business...ARINC's contribution to our operating cash flow will more than double next year, in 2015...it's an annuity-based business, so you kind of get a -- once you capture a customer, that revenue continues once you sign them up year-to-year.' Q4 Q&A (CEO): 'we added a whole new growth platform...it's a hot spot for growth. There's more connectivity demands. There's more information flowing to and from the aircraft.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「annuity-based business」という明示的なスイッチングコストの説明。GLOBALink air-to-ground networkへの航空会社の依存性は構造的能力"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "IMS二桁成長、ARINC EBITDA マージン21%（ガイダンス20%超）。定量あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "air-to-groundネットワーク（GLOBALink）は一度導入すると代替が困難な航空通信インフラ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "ARINCは2013年買収で、まだ統合リスクが残る: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ARINCのリカーリング収益モデル（GLOBALink、ARINC Direct）はCEO自身が「annuity-based business」と説明。航空会社のswitch-out困難（グローバルネットワーク統合）はスイッチングコストの明確な証拠。21% EBITDAマージンは持続的な高収益性を示す"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "ARINC航空ITネットワーク成長（接続需要増大）× リカーリング収益構造 → IMS年率二桁成長継続",
+      "descriptive_label": "航空接続需要増加×ARINCリカーリング→IMS二桁成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "航空機接続需要増大×ARINCネットワーク基盤は2ステップ。'IMS sales expected to grow near double digits'とガイダンス明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "航空情報管理（GLOBALink、ARINC Direct）の接続需要は機体数増加とも連動。リカーリング収益構造（年次サブスクリプション）は収益の予測可能性が高い。2ステップで確信度高"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "政府/国防事業のポートフォリオ最適化（平坦化転換）とOEM・IMSによる収益源多様化",
+      "descriptive_label": "防衛事業フラット化+商業IMS成長の収益多様化",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'we reshaped our government portfolio, including selling some noncore elements...Government Systems business to be flat when compared to 2014, and while flat may not seem that exciting, it's a welcome change from the declines we have experienced over the last 4 years...I believe we're turning the corner in our defense business.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "収益多様化は結果・戦略の言語。ポートフォリオ管理能力の証拠として弱い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "防衛avionics企業（L3、BAE、DRS）も同様の商業/防衛バランス調整を行っており、相対的差別化ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "収益多様化は結果言語（ルール1）: -10%",
+            "adjustment": -10
+          },
+          {
+            "reason": "業界共通のバランス調整: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "防衛/商業/ITサービスの多様化は事実だが、これは組み合わせの結果。各セグメントの独立した競争優位が重要で、単なるポートフォリオ多様化は優位性とは言えない"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 総売上$4.98B（+11%）、Commercial Systems OP マージン22.1%（+110bp）、Government Systems OP マージン22.6%、ARINC EBITDA マージン21%。FY2015 EPS ガイダンス二桁成長、FCF $675-775M",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "ticker": "MA",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-30) [Primary] + Q1-Q3 FY2013-2015 [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2013", "Q2 FY2013", "Q3 FY2013", "Q4 FY2013", "Q1 FY2014", "Q2 FY2014", "Q3 FY2014", "Q1 FY2015", "Q2 FY2015"],
+    "transcripts_used": [
+      "201401_earnings_call.json (Q4 2013)",
+      "201405_earnings_call.json (Q1 2014)",
+      "201407_earnings_call.json (Q2 2014)",
+      "201410_earnings_call.json (Q3 2014)",
+      "201501_earnings_call.json (Q4 2014 - Primary)",
+      "201504_earnings_call.json (Q1 2015)",
+      "201507_earnings_call.json (Q2 2015)"
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "MA-001",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル決済ネットワークの二面性（発行銀行・加盟店双方への同時接続）と規模のスイッチングコスト",
+      "descriptive_label": "二面市場ネットワーク効果とスイッチングコスト",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Ajay Banga): 'We renewed our multiyear global partnership with Bank of America...primarily on commercial side. We recently won new business with HSBC...converting the remainder of their U.S. consumer credit portfolio to MasterCard.' Q2 FY2015: 'we signed a new agreement with Virgin Money...converting their debit card portfolio...we now have 100% of Virgin Money's existing proprietary debit and credit book. over 120 relationships with acquirers around the world'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MA-F001", "MA-F002"],
+      "cagr_connections": ["MA-C001"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ネットワーク効果・スイッチングコストは名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "二面市場ネットワークは構造的優位。銀行・加盟店の同時切り替えは現実的に困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Visaとの比較が明示されていないが、決済業界の文脈では二面市場の規模が純粋競合との差別化基盤となる"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "電子決済へのシフトという業界構造変化と、グローバルネットワーク規模が合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4での大手銀行（BAC、HSBC）との契約継続・新規獲得は、ネットワーク効果とスイッチングコストの実証。ただし競合Visaとの具体的差別化数値は乏しい"
+      }
+    },
+    {
+      "claim_id": "MA-002",
+      "claim_type": "competitive_advantage",
+      "claim": "決済セキュリティ技術（EMV、トークン化、SafetyNet）による詐欺防止能力",
+      "descriptive_label": "多層決済セキュリティ技術基盤",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'our plan for the U.S. migration from mag stripe to chip technology starting October 2014. we announced tokenization standards with all our other partners back in October.' Q2 FY2015: 'SafetyNet detected and stopped several confirmed fraud events including 2 where forensics determined that the issuer exposure could have been roughly $80 million...more than 80% of our issuers are now using this service.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MA-F003"],
+      "cagr_connections": ["MA-C002"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "EMV移行リーダーシップ・SafetyNetという能力・仕組みを評価。不正検知実績は裏付けとして機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "SafetyNet: 80億ドル規模の潜在被害を防止した2件の事例。80%以上の発行銀行が利用"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "ネットワーク全体をカバーするリアルタイム不正検知は構造的。ただしVisaも類似機能を保有"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Visaとの差別化が不明確（業界共通能力の可能性）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "SafetyNetの定量実績（8千万ドル相当の被害防止、80%以上の発行銀行利用）は評価できる。ただしVisaも同様の技術基盤を保有しており、相対的差別化が不明確"
+      }
+    },
+    {
+      "claim_id": "MA-003",
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルM&A戦略による処理・データ分析・ロイヤルティ領域の機能拡張と乗数効果",
+      "descriptive_label": "戦略的M&Aによるサービス拡張能力（乗数効果）",
+      "evidence_from_transcript": "Q2 FY2015 Prepared Remarks (CEO): 'our M&A focus areas include loyalty, data analytics, processing and safety and security...any transaction we do there has to stand on its own in terms of contribution, but it's also, most importantly, got to provide ways for us to cross-sell their capabilities in a bundled way with existing MasterCard products and services or what we talk about as the multiplier effect.' Q4 FY2014: 'we acquired 5one Marketing Limited...combine that kind of in-depth merchant understanding with our existing Advisors capabilities'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MA-F004"],
+      "cagr_connections": ["MA-C003"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "乗数効果フレームワーク自体は能力だが、それが実際に機能しているか（乗数部分）は結果依存"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "warning",
+            "reasoning": "M&Aフォーカスエリアの定義は戦略。それを可能にする選定能力・統合能力が優位性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "M&Aによる機能追加は補完的。ネットワーク規模に依拠した乗数効果の有無が構造的かどうかの鍵"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（従・②相当）。M&Aは戦略であり優位性そのものではない（ルール8-T違反リスク）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "乗数効果の考え方は評価できるが、M&A戦略自体は優位性ではなく、それを実行可能にする統合能力・選定能力が問われる。その具体的プロセスの説明が不足"
+      }
+    },
+    {
+      "claim_id": "MA-004",
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場における電子決済普及の先行者優位と現地インフラ構築能力",
+      "descriptive_label": "新興市場先行者優位とインフラ展開能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'Over the last 2 years, we've signed close to 100 new business agreements, we now have an accepted footprint in 50 out of Africa's 55 markets. In Africa, close to 95% of the region's transaction are still done in cash.' Q4 FY2013: 'signed an agreement with Ecobank. Ecobank is the largest pan-African bank...presence in 23 countries in Africa, reaching 65% of Africa's population.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["MA-F005"],
+      "cagr_connections": ["MA-C004"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_3_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "先行者優位・現地インフラは名詞で表現可能な属性"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "アフリカ55市場中50市場での展開は実績。VisaのアフリカプレゼンスとMA比較が不明"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "キャッシュ依存度95%という市場構造と電子化の波は、先行者が不均比な優位を持つ構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新興市場での先行展開の実績は具体的（50/55市場、100件以上の契約）。ただしVisaとの相対的差別化が不明確。市場構造との合致は高く評価できる"
+      }
+    },
+    {
+      "claim_id": "MA-005",
+      "claim_type": "competitive_advantage",
+      "claim": "データ・分析サービス（Advisors）によるMerchantsとIssuersへの付加価値提供能力",
+      "descriptive_label": "トランザクションデータ活用のアドバイザリー能力",
+      "evidence_from_transcript": "Q2 FY2015 Prepared Remarks (CEO): 'APT's Test & Learn platform, combined with our anonymized transaction data and advisers analytics capabilities, is what enables us to advance our ability to deliver differentiated products to issuers as well as to merchants and to expand our reach beyond our traditional client base.' Q4 FY2014: '5one Marketing Limited...combined with our existing Advisors capabilities, I think that will allow us to provide greater insight for retailers'",
+      "transcript_call_type": "Q2_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["MA-C005"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "取引データ活用能力・Advisorsプラットフォームは能力・仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "定量的差別化データが乏しい。APT獲得後の数件の契約例が挙げられているが、規模感が不明"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Visa Analytics、Amex Business Insights等との差別化が不明"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（従・②相当）。定量的裏付けが不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "アドバイザリー能力の存在は認められるが、定量的差別化とVisaとの具体的比較が欠如。Q2発言であり確信度を下げて調整"
+      }
+    },
+    {
+      "claim_id": "MA-F001",
+      "claim_type": "factual_claim",
+      "claim": "MA: 2年間で100件近いアフリカ新規契約、55カ国中50カ国でのフットプリント確立",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["MA-001", "MA-004"]
+    },
+    {
+      "claim_id": "MA-F002",
+      "claim_type": "factual_claim",
+      "claim": "世界中のアクワイアラーと120以上の関係（Q2 FY2015）",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": ["MA-001"]
+    },
+    {
+      "claim_id": "MA-F003",
+      "claim_type": "factual_claim",
+      "claim": "SafetyNet: 80億ドル相当の潜在被害防止事例2件、80%以上の発行銀行が利用",
+      "transcript_call_type": "Q2_quarterly",
+      "affected_claims": ["MA-002"]
+    },
+    {
+      "claim_id": "MA-F004",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 純収益成長率14%（FX調整後）、EPS成長率19%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["MA-003"]
+    },
+    {
+      "claim_id": "MA-F005",
+      "claim_type": "factual_claim",
+      "claim": "アフリカ: 取引の95%がキャッシュ、成人の80%が銀行口座未保有",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["MA-004"]
+    },
+    {
+      "claim_id": "MA-C001",
+      "claim_type": "cagr_connection",
+      "claim": "ネットワーク効果 → 取引量GDV・処理件数の secular growth → 純収益CAGR維持",
+      "descriptive_label": "ネットワーク規模→GDV/処理量→収益成長",
+      "source_advantage": "MA-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ネットワーク規模→GDV成長→手数料収益は2ステップ。取引量データは開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来の優位性に基づく接続"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "電子決済secular shiftという業界構造と、GDV・処理件数の開示データで検証可能な接続"
+      }
+    },
+    {
+      "claim_id": "MA-C002",
+      "claim_type": "cagr_connection",
+      "claim": "セキュリティ技術リーダーシップ → 加盟店・銀行の信頼維持 → チャーン抑制 → GDV成長継続",
+      "descriptive_label": "セキュリティ→信頼→チャーン抑制",
+      "source_advantage": "MA-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "セキュリティ→信頼→チャーン抑制→GDVは3ステップ。中間の「信頼」指標の検証が困難"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来の優位性"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンが3ステップで中間段階の定量化が困難。一定の合理性はあるが裏付け不十分"
+      }
+    },
+    {
+      "claim_id": "MA-C003",
+      "claim_type": "cagr_connection",
+      "claim": "M&A乗数効果 → 非取引手数料収入の増加 → 収益成長のCAGR多様化",
+      "descriptive_label": "M&A乗数効果→非取引収益多様化",
+      "source_advantage": "MA-003",
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "weak",
+            "reasoning": "クロスセル実績の定量開示がなく、乗数効果の規模感が不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言由来。-10〜20%の調整"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言（②相当）、定量的裏付け不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "M&A乗数効果の概念は説明されているが、非取引収益への寄与の定量化が不十分"
+      }
+    },
+    {
+      "claim_id": "MA-C004",
+      "claim_type": "cagr_connection",
+      "claim": "新興市場先行展開 → GDV成長の secular 余地 → 長期CAGR追加+2-3pp",
+      "descriptive_label": "新興市場secular growth→長期CAGR",
+      "source_advantage": "MA-004",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "新興市場GDV成長（アジア太平洋20%、中南米17%）は開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新興市場の電子化secular trendは明確で、GDV成長データも開示。ただし長期CAGR寄与の具体的試算は未提示"
+      }
+    },
+    {
+      "claim_id": "MA-C005",
+      "claim_type": "cagr_connection",
+      "claim": "データ分析サービス → 発行銀行・加盟店への付加価値 → 非取引収益の CAGR 貢献",
+      "descriptive_label": "分析サービス→付加価値→非取引収益",
+      "source_advantage": "MA-005",
+      "transcript_call_type": "Q2_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "weak",
+            "reasoning": "分析サービス収益の規模・成長率が開示されておらず、CAGR接続の定量化が困難"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q2発言由来（②相当）"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q2発言、定量的接続証明不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "概念的には合理的だが、分析サービス収益の規模・成長率が不透明"
+      }
+    }
+  ]
+}

@@ -1,0 +1,285 @@
+{
+  "ticker": "ITRK",
+  "transcript_source": "H1 2015 Results (2015-08-03) [Primary - only available transcript within cutoff]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["H1 2015"],
+    "note": "Only 1 transcript available within PoiT cutoff (2015-09-30). H1 results used as primary source. New CEO André Lacroix (2.5 months in) presenting first results."
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "TIC（Testing, Inspection, Certification）業界における100カ国以上のグローバルネットワークと深い技術専門性による参入障壁",
+      "descriptive_label": "グローバルTICネットワーク・技術専門性（Cornered Resource + Scale Economies）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO André Lacroix): 'I'm truly impressed by the breadth of the service offering of Intertek but also the depth of technical expertise we have around the world...We fulfill an essential role for our customers around the world who will provide, in essence, quality assurance in 100-plus countries across a range of industries, and we offer a broad set of services. We enjoy a very strong market share in our business lines, either globally or at local levels.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "100カ国以上のグローバルネットワークと認定施設・技術専門性という仕組みを評価。市場シェアは結果"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "TICは顧客が自前で行うのではなくアウトソースする業務。グローバルネットワークは構築に数十年を要する参入障壁"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "SGS、Bureau Veritasとの競合を考えると、グローバルネットワークは業界大手共通の特徴でもある。ただし規模での差別化は存在"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "グローバル貿易拡大・規制強化・品質要求増加というメガトレンドとネットワーク所有者のポジションが合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t + pattern_IV_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "新CEOの「初印象」発言であり客観的独立検証が限定的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "グローバルTICネットワークは実質的な参入障壁だが、SGS・BVも同様のネットワークを保有。相対優位の定量証拠不足で確信度は中程度"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "グローバルTICネットワーク → グローバルGDP+有機成長（中長期） → 売上CAGR下支え",
+      "descriptive_label": "TICネットワーク→GDP+成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：TICネットワーク位置→グローバル顧客獲得→売上成長。CEO自身が明示的に「GDP-plus organic growth」を中長期ガイダンスとして提示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "H1中間発表での言及（年次決算ではない）"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [
+          {
+            "reason": "Industry Services（油田関連）の不振が短期成長を阻害。H1実績は0.9%有機成長にとどまる",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "中長期の構造的成長テーゼは説得力あるが、短期的にはOil&Gas逆風が実績を抑制。新CEO就任直後のコミットとして中程度の確信度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Consumer Goods部門における32%安定高マージンとグローバル供給網の検査・試験ネットワーク",
+      "descriptive_label": "Consumer Goods高マージン部門（Process Power + Scale Economies）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO): 'Our margin remained strong and stable in our Consumer Goods business at 32%. We delivered an operating profit of GBP 62.8 million, up year-on-year by 5.5%...Our leading market position in Consumer Goods is underpinned, as you know, by a strong global network of laboratories, a very good industry expertise and good customer service.' CFO: 'Consumer Goods and Commercial & Electrical both grew at above 5% organically and with stable margins.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO + CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Consumer Goods試験・検査の技術専門性と世界実験室ネットワークという仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "32%マージン（stable）、5.7%有機成長、OP GBP62.8M（+5.5% YoY）という複数の定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Consumer Goods試験ではSGS、Bureau Veritasも競合。32%マージンが競合比で優位かの比較データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "5.7%有機成長と32%安定マージンは実績に裏付けられた具体的な優位性の証拠",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Consumer Goods部門の高マージン・成長の組み合わせは実績ベースで証明されているが、競合比較が限定的"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "B2B顧客関係の強固さ：TIC業界における顧客継続率をNo.1成功指標とする事業モデル",
+      "descriptive_label": "B2B顧客関係・継続率の優位性（Switching Costs）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO Lacroix): 'Having looked -- if you look at our client list, we work with an impressive list of clients, both global clients, regional clients and local clients. And this is a testament, in my view, of the quality of the operational delivery of the company. As you know, in the B2B business, customer retention is the #1 measurement of success.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "顧客継続率重視は経営哲学の表明。TIC業界のスイッチングコストは高いが構造的仕組みの詳細証拠が弱い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "weak",
+            "reasoning": "「印象的な顧客リスト」という言及はあるが具体的な継続率データなし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "顧客継続率の具体的数値提示なし。定量的証拠が欠如"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "新CEO就任2.5ヶ月の「初印象」発言であり独立した検証が困難",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "TIC業界のスイッチングコストは構造的に存在するが、このトランスクリプトでの証拠は定性的・定量データ不足"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "分散型・企業家精神文化によるローカル市場適応力と現場オペレーション品質",
+      "descriptive_label": "分散型企業家文化・現場適応力（Process Power）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO Lacroix): 'I really like our culture. This is a very confident entrepreneurial and passionate culture...We operate a decentralized business where we nurture entrepreneurship, innovation and definitely commercial acumen in the local market.' Q&A: 'In a market like Indonesia, for instance, we have almost 70% market share. We are clearly a market leader.' (referring to minerals)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "企業文化・分散型経営は仕組みとして認識可能だが、新CEOによる「初印象」の段階"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "インドネシア鉱業での70%市場シェアは具体的な現地適応の結果。ただし全体ではなく1地域のデータ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "分散型文化はSGS・BVも同様に採用。相対的差別化の証拠が不十分"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (partial)",
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "文化論は主観的で検証困難。新CEOの印象論に近い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "分散型文化は認識できるが、他のTIC大手も同様の特徴を持ち相対優位の証拠が不十分。確信度は低い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "「プロダクト・トレード・リソース」の3脚構造による多角化ポートフォリオと景気サイクル耐性",
+      "descriptive_label": "ビジネスモデル多角化・サイクル耐性（Counter-Positioning）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks (CEO): 'Our business model, in my view, is well positioned, given where the global growth drivers are today. 90% of our group's operating profit is derived from product and trade-related businesses...The resources business is, as you would expect, a more cyclical business and only represent today 10% of our profit.' Financial highlights: 85% of profit in Consumer Goods, C&E, C&P, Commodities where good growth is seen.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ポートフォリオ構造という仕組みを評価。85-90%の利益がGDP+成長部門から創出される構造的配分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Products 67%、Trade 23%、Resources 10%（利益比率）という具体的な構造データあり"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "structural",
+            "reasoning": "サイクリカルな資源事業を10%に抑えた構造は意図的なポートフォリオ設計"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 55,
+        "confidence_adjustments": [
+          {
+            "reason": "Industry Services低迷でH1有機成長は0.9%にとどまり、多角化のバッファー効果が限定的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "90%をGDP+成長部門に集中させた構造は説得力あるが、現実には油田低迷が全体に影響しており、多角化の効果が完全には発揮されていない"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "H1 2015: 全社有機成長+0.9%（低価値契約除外後+2.5%）、営業利益率15.5%（+30bps at CC）、EPS +6.7% actual、FCF +67%、中間配当17p（+6.3%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 6]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "事業別H1 2015: Consumer Goods有機成長+5.7%・マージン32%(stable)、C&E +5.4%・安定マージン、C&P +3.2%・+280bps、Commodities有機成長+4.6%・マージン大幅改善、I&A有機成長-8.2%・-300bps",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 6]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Consumer Goods: ベトナム・バングラデシュ・トルコでSoftline強成長、インドネシア・インド・ベトナム・メキシコでHardline新規ソーシング。中国・ミャンマー・メキシコに新施設投資",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "ビジネス構造: Products 67%（Consumer Goods・C&E・C&P・食品・BA）、Trade 23%（cargo・minerals・GTS）、Resources 10%（industry services・minerals）。利益の90%がProduct+Trade由来",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 6]
+    }
+  ]
+}

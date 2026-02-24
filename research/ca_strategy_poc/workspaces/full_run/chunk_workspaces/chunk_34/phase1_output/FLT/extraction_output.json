@@ -1,0 +1,374 @@
+{
+  "ticker": "FLT",
+  "company_name": "FleetCor Technologies, Inc.",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-05) [Primary], Q4 FY2013 Earnings Call (2014-02-05) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"],
+    "transcripts_used": [
+      "201402_earnings_call.json (Q4 2013)",
+      "201405_earnings_call.json (Q1 2014)",
+      "201407_earnings_call.json (Q2 2014)",
+      "201410_earnings_call.json (Q3 2014)",
+      "201502_earnings_call.json (Q4 2014)",
+      "201504_earnings_call.json (Q1 2015)",
+      "201508_earnings_call.json (Q2 2015)"
+    ],
+    "excluded_transcripts": ["201511_earnings_call.json (Q3 2015, event_date=2015-11-04, after cutoff)"]
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "FleetCor の石油会社との長期プライベートラベル・アウトソーシングパートナーシップ（Shell UK、Shell Germany等）は、石油会社が自社で構築するコストが高すぎる商用フリートカードシステムを代替し、競合他社（WEX等）が容易に模倣できない独占的ネットワークアクセスを構築する",
+      "descriptive_label": "石油会社プライベートラベルパートナーシップによる独占的ネットワーク",
+      "seven_powers_category": "Counter-Positioning / Switching Costs",
+      "evidence_from_transcript": "Q4 FY2014 CEO Prepared Remarks: 'We entered Germany, the fifth largest economy in the world, through our new outsourcing arrangement with Shell, went live on time in September and on budget'; Q4 FY2014 Q&A (CEO Ron Clarke): 'Shell... decided, call it, a year ago to let us do kind of a full outsourcing deal in 11 or 12 countries... we didn't miss a beat, we didn't bum out customers... I think that success is making its way into the conversations that we're having with some of the other [oil companies]'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ronald F. Clarke (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "石油会社アウトソーシングの実行能力（仕組み）を評価。Shell Germany稼働実績は能力の裏付け"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長期アウトソーシング契約は切り替えコストが高く、石油会社側の自社回帰も困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "WEX（Esso ディール言及あり）との競合が示唆されるが、FLTの具体的優位性（規模・技術差）の定量比較なし"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "「パートナーシップ獲得」という戦略ではなく、アウトソーシング実行能力という優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 2014での発言（主）",
+            "adjustment": 0
+          },
+          {
+            "reason": "Shell Germany の成功実績あり（ネガティブなし = 証拠として弱め）",
+            "adjustment": 0
+          },
+          {
+            "reason": "WEXとの直接的競合比較なく差別化根拠が薄い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "石油会社アウトソーシング能力は構造的優位の側面があり、Shell Germanyの成功が裏付け。ただしWEXも類似戦略を取っており純粋競合比較が不足。50%"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "石油会社パートナーシップ獲得能力 → 新規市場での急速な顧客獲得（Shell Germany等） → 国際部門での成長加速 → 全社売上CAGR 20-30%維持",
+      "descriptive_label": "パートナーシップ→新市場参入→国際成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "3ステップの因果。新市場参入からの売上成長は明確。ただしCAGR数値は環境（FX・燃料価格）への依存度が高い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "FX・燃料価格への高いCAGR感応度が不確実性を高める",
+            "adjustment": -10
+          },
+          {
+            "reason": "Q4 2013以来3年連続20-30%成長の実績",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "パートナーシップ→新市場成長の経路は実証済みだが、マクロ感応度が高くCAGR接続の持続性に疑問。50%"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "FleetCor の既存法人顧客基盤（フリート管理）に対する隣接サービス（食事カード・ホテルカード・通行料カード・テレマティクス等）のクロスセル能力は、既存の課金インフラと顧客関係を活用した低コスト展開を可能にする",
+      "descriptive_label": "既存フリート顧客基盤へのワークフォースペイメントクロスセル能力",
+      "seven_powers_category": "Scale Economies / Switching Costs",
+      "evidence_from_transcript": "Q4 FY2013 CEO Prepared Remarks: 'we expect over 1/4 of our total revenue in 2014 to be from beyond fuel cards. So areas like food cards, hotel cards, transportation cards, toll cards, telematics products'; Q4 FY2013 Q&A (CEO): 'our game is basically to call on people to deal with, get money to employees, and so that whole line of products kind of fits in there. Whether it's tolls or food or obviously, fuel or hotel, it's all basically money moving from the employer to the employee'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ronald F. Clarke (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "クロスセル能力（仕組み）を評価できるが、「25%が燃料カード以外」は結果の側面もある"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「ワークフォースペイメントクロスセル能力」は名詞で表現可能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_partial",
+            "reasoning": "既存課金インフラの流用は規模の経済だが、各製品は個別競合が存在"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "純粋競合（WEX、Comdata取得前）との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 2013発言由来（主）",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合との差別化根拠が薄い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "既存顧客へのクロスセルは規模の経済の論理として成立するが、競合比較が欠如。50%"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "既存法人顧客基盤へのクロスセル → 燃料カード以外の比率拡大（25%超→継続増加）→ 燃料価格・FX変動への感応度低下 → 安定的な有機成長10-11%の維持",
+      "descriptive_label": "クロスセル→製品多様化→燃料・FX感応度低下→有機成長安定化",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial_direct",
+            "reasoning": "2-3ステップの因果。製品多様化→FX感応度低下の論理は理解できるが、定量的根拠がやや薄い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2013発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "クロスセル→有機成長安定化の経路は論理的。有機成長10-11%という実績データが整合。50%"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "FleetCor の「build, buy and partner」戦略に基づく規律あるM&A（複数の事前閾値チェックリスト、プロフィットカーブ設定）は、新規市場・新規製品への体系的展開を可能にし、純粋競合が短期に複製できない事業開発能力を形成する",
+      "descriptive_label": "体系的M&A・事業開発能力",
+      "seven_powers_category": "Process Power",
+      "evidence_from_transcript": "Q4 FY2013 CEO Prepared Remarks: 'every deal, before we sign and wire, we have a thesis, a profit curve... every single deal has its checklist of things we're trying to do'; Q4 FY2013: '7 new assets [in 2013]... 6 distinct partnership deals'; Q4 FY2014 CEO: 'plan is to put $1.5 billion to $2 billion to work over 3 years'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ronald F. Clarke (CEO)",
+      "section": "qa_session",
+      "supported_by_facts": [11],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "thesis・profit curve・checklistという「能力・仕組み」を評価。M&A完了7件は結果だが仕組みの裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "limited_quantitative",
+            "reasoning": "7件/年のM&A実績。$500M/年の目標額。具体的ROIの開示なし（CHD#1との比較で弱め）"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "weak",
+            "reasoning": "見送り事例の言及なし（CHD#1のような断念例が欲しい）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "thesis・checklistという能力説明あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "断念事例（ネガティブケース）の言及なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "M&A能力は仕組みの説明があり（thesis/checklist）、実績（7件/年）が裏付け。ただし断念事例の欠如と定量ROI未開示で50%"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "体系的M&A能力 → 年間$500M-2B規模の戦略的買収 → 有機成長10%+買収成長10% = 全社20-30%成長 → EPS CAGR 25%超",
+      "descriptive_label": "M&A能力→buy+organic成長→EPS CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果：M&A能力→有機+買収成長=CAGR。CEOが明示的に「50-50, organic 10% and deal piece 10-11%」と言及"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2013発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "有機10%+買収10%という具体的分解の開示あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "マクロ環境（FX・燃料価格）への感応度の高さが不確実性",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "成長分解（有機+買収）の明示と実績整合あり。ただしマクロ感応度が高く達成確度に疑問。50%"
+      }
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "FleetCor の Comdata 買収（2014年11月、$3.4B）で取得したトラック運送業者向け商業用支払いネットワーク（SmartPay等）は、同業界での顧客ロックインが強く、切り替えが実質困難なミッションクリティカルな決済インフラ",
+      "descriptive_label": "Comdata トラック運送業者向け決済ネットワークのスイッチングコスト",
+      "seven_powers_category": "Switching Costs / Network Economies",
+      "evidence_from_transcript": "Q4 FY2014 CEO Prepared Remarks: 'Comdata, which was acquired on November 14, 2014'; 'our plan is to grow Comdata earnings about 20% over 2014 pro forma'; Q4 FY2014 Q&A: 'we've got 3 or 4 conversations on the deal side and looking at, call it, 3 or 4 conversations on the partner side'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ronald F. Clarke (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "Comdata自体のスイッチングコストの仕組みは説明が不十分。取得実績は言及されるが内部能力の詳細なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_potential",
+            "reasoning": "トラック運送業向け決済インフラは業界特化で切り替えコストが高い潜在性があるが、トランスクリプトでの具体的説明なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "weak",
+            "reasoning": "Comdata単独の顧客維持率・スイッチングコストの定量データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_qualitative_only",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 2014発言だが Comdata の競争優位性の具体的説明が欠如",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "Comdata のスイッチングコストは論理的に推測できるが、トランスクリプトでの具体的な能力説明が不足。定性的主張に留まり30%"
+      }
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Comdata の高い顧客ロックイン → Comdata 収益20%成長（2015計画） + FleetCor既存基盤へのクロスセル → FLT全社成長加速",
+      "descriptive_label": "Comdata維持率→20%成長+クロスセル→FLT成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "Comdata 20%成長計画はCEOが明示。ただしComdata 優位性の根拠が薄く前提が弱い"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4 2014発言"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Comdata の競争優位性根拠が薄く、前提の優位性評価が30%のため連動",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "前提となる Comdata の優位性が30%のため、CAGR接続も30%に留まる"
+      }
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Shell Germany のアウトソーシング契約：2014年9月オンタイム・オンバジェットで稼働。11-12カ国での完全アウトソーシング実施。Q4 2014に数百万ドルの新規収益寄与",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "factual_claim",
+      "claim": "FLT 2014年全体：燃料カード以外の収益が全体の25%超。CLC +22%、UK +16%、MasterCard製品 +24%。有機成長約11%（全体成長34%）。cash EPS $5.15（+27%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2013年M&A実績：7件の買収 + 6件のパートナーシップ。内部目標：年間$500M（後に$1.5-2B/3年に引き上げ）。有機成長ターゲット：主要事業US +13%、UK +20%、Russia +20%（2014計画）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Comdata 買収：2014年11月14日完了。Q4 2014に$70M収益寄与（6週間保有）。2015年に Comdata 収益20%成長計画（2014 pro formaベース）。SVSは2015年Q1売却予定",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7, 8]
+    }
+  ]
+}

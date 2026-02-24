@@ -1,0 +1,271 @@
+{
+  "ticker": "NXT",
+  "transcript_source": "FY2015 Full Year Results (2015-03-19) [Primary]; H1 FY2016 Results (2015-09-10) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2015 Full Year", "H1 FY2016"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "NEXT Directoryのオムニチャネル配送能力：深夜カットオフ（スト23:59/Home 23:00）、翌日配送ネットワーク、4百万顧客ベースによる配送効率",
+      "descriptive_label": "Directoryオムニチャネル配送優位性（Process Power + Scale Economies）",
+      "evidence_from_transcript": "FY2015 Annual Prepared Remarks (CEO Simon Wolfson): 'we moved the stores back to midnight...we've just moved our cutoff for Home back to 11 p.m., and we'll be moving it back to 12 p.m. by August of this year...midnight delivery for both stores and Home, which we think is a bit of a game changer for the U.K. market...our aim there is to take our delivery networks and our customer base, our 4 million customer base, and leverage it to sell noncompeting brands'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "配送ネットワーク・オペレーション能力という仕組みを評価。配送スピードは競合が簡単に模倣できない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "深夜カットオフという具体的サービス水準。4百万顧客、Directoryの8.2%成長という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "CEO明言：「ゲームチェンジャー」。他のUK小売（M&S、John Lewis等）が深夜カットオフを提供していないことを前提に差別化"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "UK eコマース拡大（オンライン買い物習慣の定着）とDirectory強化の方向性が合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 65,
+        "confidence_adjustments": [
+          {
+            "reason": "深夜注文の売上貢献はCEO自身が認める（8-10pmの21%に対し10pm-深夜は9%と小さい）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "配送能力は差別化要因として認められるが、競合追随可能であり持続的優位性の強度は中程度"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Directory配送能力・LABELプラットフォーム → Directoryオンライン成長（8%+/年）→ 連結売上CAGR下支え",
+      "descriptive_label": "Directory配送→オンライン成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：配送能力強化→顧客体験改善→Directory成長。FY2015 Directory +12.1%、H1 FY2016 +8.2%で実績あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次・半期両方での言及"
+          }
+        ],
+        "confidence": 65,
+        "confidence_adjustments": [],
+        "overall_reasoning": "直接的なメカニズムで実績データに裏付けられている。LABEL成長も追加ドライバー"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "NEXTブランドの服飾・雑貨コレクション開発能力と「Collection Right」（全5カテゴリ同時成功）による差別化",
+      "descriptive_label": "NEXT商品開発・コレクション能力（Process Power + Branding）",
+      "evidence_from_transcript": "FY2015 Annual Prepared Remarks (CEO Wolfson): 'we had 2 amazing quarters...we got all 5 of our rangers absolutely right. That is, it's not normal for us to get Home, men's wear, children's wear, women's clothing and women's nonclothing, get all the collections exactly where we want them...This year is a much more normal year in there are collections that we're not happy with'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "商品開発・コレクション判断能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial",
+            "reasoning": "M&S、Primark等も同様の商品開発能力を持つ。相対的優位の証拠は弱い"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "コレクション品質は季節・天候に依存する変動要因。持続的競争優位としての証拠が不十分"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (partial)",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "CEO自身が「FY2015は例外的に全カテゴリ成功した特殊な年」と認めており、持続性に疑問符",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "商品開発能力は存在するが、CEO自ら「通常は全カテゴリ成功しない」と認めており持続的競争優位として確立されているとは言い難い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "NEXTのリテール店舗ポートフォリオ変革：2008-2015の42%面積増・60%改装済みによる収益性改善",
+      "descriptive_label": "店舗ポートフォリオ最適化能力（Process Power）",
+      "evidence_from_transcript": "FY2015 Annual Prepared Remarks (CEO Wolfson): 'In January 2008, 50% of the store portfolio would've expired or had a break in 10 years -- just over 10 years. If you look at the portfolio today, the equivalent figure is around 6 years...4.4 million square feet of our current 7.3 million will either be new or significantly refitted...our square footage has gone up by 42%. Our sales in retail have only gone up by 4%...the store profitability has actually improved by just over 2%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "店舗ポートフォリオ管理・物件交渉能力という仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "42%面積増・60%改装済み・収益性+2%・リース平均残存6年という具体的数値あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "リースの柔軟性（平均残存6年）とポートフォリオ近代化は構造的な優位性"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "面積増に対して既存店like-for-likeが伸び悩んでおり、リテール部門の成長限界が示唆される",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "店舗ポートフォリオ変革は定量データで裏付けられた実績だが、UK小売の構造的逆風に対抗できるかは不確実"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "LABELプラットフォーム：4百万顧客ベースと配送インフラを活用した非競合ブランド販売、15%マージン目標",
+      "descriptive_label": "LABELマルチブランドプラットフォーム（Network Economies + Counter-Positioning）",
+      "evidence_from_transcript": "FY2015 Annual Prepared Remarks (CEO Wolfson): 'our aim there is to take our delivery networks and our customer base, our 4 million customer base, and leverage it to sell noncompeting brands...LABEL, we think will contribute GBP 40 million...the profitability on this business before any interest income be around 15%.' H1 FY2016: 'LABEL, up 30% on last year, an increase of GBP 22 million...LABEL margin of 15%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "配送インフラ・顧客基盤のレバレッジという仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "LABEL FY2015 +GBP21M、H1 FY2016 +30%/+GBP22M、マージン15%という具体的データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "ASOSや他のオンラインプラットフォームも類似モデルを展開。NEXTのユニークさは既存実店舗顧客との重複を回避する「非競合ブランド」戦略"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t + pattern_V_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "H1 FY2016でフルプライス販売は+20%だが、ホールセールからコミッションへの移行でマークダウン悪化。実態はガイダンスより弱い",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "4百万顧客ベースとインフラレバレッジは明確な競争優位。LABEL成長+30%は実績に裏付けられているが、収益認識の移行期的課題あり"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "LABELプラットフォーム拡大 → 非競合ブランド取扱増加 → NEXT全体のDirectory売上成長加速",
+      "descriptive_label": "LABEL→Directoryアクセラレーション→CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ：LABELブランド増加→NEXT顧客のエンゲージメント向上→Directory売上増。試験では既存NEXT売上も+3%"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次・半期両方での定量的言及"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "実験データで顧客カニバリゼーション懸念を否定済み。成長寄与も定量的に示されている"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2015: 全社売上+7.2%（GBP4B超）、PBT GBP782M（+12.3%）、EPS +14.7%、FCF GBP572M（株主還元）、連続6年EPS+15%成長",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "H1 FY2016: 全社フルプライス売上+3.5%（期待範囲上回る）、Directory +8.2%（LABEL +30%、海外 +24%）、EPS +8%、活動顧客数+13%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2, 5]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2015コレクション実績: 前半Q2・Q3で全5カテゴリ（Home・メンズ・子供・レディス衣料・レディス非衣料）同時成功（異例）、Q3は暖冬で失速",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "店舗ポートフォリオ（2008-2015）: 面積42%増（4.4Msqft / 7.3Msqft新規・改装済み）、リース平均残存6年（2008年の10年から短縮）、新店収益性+2%改善",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "LABEL: FY2015 +GBP21M売上増（ブランド拡大中）、H1 FY2016 +30%/+GBP22M、マージン15%（ホールセールからコミッションへの移行中）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    }
+  ]
+}

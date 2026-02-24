@@ -1,0 +1,312 @@
+{
+  "ticker": "SIK",
+  "transcript_source": "FY2014 Annual Investor Conference (2015-02) + H1 2015 Results (2015-07), Sika AG",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["FY2014_annual", "H1_2015"],
+    "note": "201502 is an annual investor conference (FY2014 results), treated as Q4_annual. 201507 is H1 2015 results, treated as Q2_quarterly. All confidence scores apply Rule 12-T accordingly."
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Sikaの新興市場浸透モデル：新工場設立→現地市場シェア獲得→ローカル化運営によるグローバル拡大能力（3.5年で14カ国・新規開設、ブラジル6年で1工場→7工場）",
+      "descriptive_label": "新興市場浸透・工場展開能力（Scale Economies + Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (Jan Jenisch): '我々の新興市場戦略は、これらの重要成長市場において15%以上の成長を達成し続けている。ブラジルでは6年前に工場が1つだったが、今は7工場あり、1都市だけでなく全地域でナショナルプレイヤーとなっている。インドネシアも同様。インドも中国と同様に6工場で加速したロールアウト。' H1 2015 (Jan Jenisch): 'Sika子会社を持つ国が91カ国目としてミャンマーに。過去3.5年で14の新規独立系Sika子会社を開設。'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「新興市場浸透能力」「工場展開・運営能力」は名詞属性として表現可能。Scale EconomiesとProcess Powerの組み合わせ"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "ブラジル1→7工場（6年間）、3.5年で14新規子会社、91カ国目開設という具体的数値あり。新興市場15%以上成長という定量的成果"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "地域に深く根ざした工場ネットワークと現地化運営は長年の投資の結果。競合（Henkel、Saint-Gobain Weber等）が短期で複製困難な構造的資産"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "pass",
+            "reasoning": "同一モデルをブラジル→インドネシア→インド→アフリカと反復展開する組織プロセスはProcess Powerの証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "年次カンファレンス（Q4相当）からの発言で一次情報として高評価",
+            "adjustment": 0
+          },
+          {
+            "reason": "複数市場での反復的な証拠があり確信度を高める（+10%）",
+            "adjustment": 10
+          },
+          {
+            "reason": "競合との直接比較（展開速度・成功率）がない（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "3.5年で14カ国開設、ブラジル1→7工場という定量的トラックレコードはProcess Powerと規模の経済の双方の証拠として強力。全地域での成長参加も能力の汎用性を示す。年次カンファレンスからのエビデンスで信頼度が高い。"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場工場展開 → 現地マーケットシェア獲得 → 売上成長 → グループCAGR",
+      "descriptive_label": "新興市場展開→マーケットシェア→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "工場展開→顧客獲得→売上成長は2ステップ。有機成長+7.3%（FY2014）として定量確認可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次カンファレンス（Q4相当）からの発言。一次情報として扱う"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "工場展開による有機成長貢献は年次データで確認可能。新興市場の成長は15%以上と定量化されており因果は明確"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Sikaの継続的イノベーション能力：800名以上の化学者・技術者を抱えるグローバルR&D組織による新製品開発と、ターゲット市場コンセプトへの移行による製品展開力（モルタルで31%成長、SikaPower+40%成長を3年連続）",
+      "descriptive_label": "継続的製品イノベーション能力（Cornered Resource + Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (Jan Jenisch): '私たちは今、これまでで最も多くのイノベーションと新製品を市場に出している。800人以上の化学者と技術者が世界中の研究所にいる。...モルタルは戦略2018の最強の成長ドライバー。2014年だけで31%成長し、グループ利益の20%を占める最高利益率事業。SikaPower（構造接着）は2012、2013、2014年と連続で40%成長。新ポリマーグループ（最大8時間作業時間）は導入初年度にCHF 3000万以上の売上。'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「R&D組織」「化学者・技術者リソース」「ターゲット市場コンセプト」は名詞属性として明確。イノベーション能力（Cornered Resource）として認定可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "800名以上のR&D人材、モルタル+31%成長、SikaPower 3年連続+40%、新製品の初年度CHF 3000万売上という多層の定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "専門化学者集団と独自の製品ポートフォリオは構造的資産。タイル接着剤の80%増面積カバレッジという技術的な差別化は複製困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "年次カンファレンスからの発言（一次）",
+            "adjustment": 0
+          },
+          {
+            "reason": "SikaPowerの3年連続+40%は反復性のある高品質な証拠（+10%）",
+            "adjustment": 10
+          },
+          {
+            "reason": "競合のイノベーション力との直接比較がない（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "800名以上のR&D組織、3年連続40%成長のSikaPowerという反復的な定量証拠は非常に強力。タイル接着剤の80%増面積カバレッジや最大8時間作業ポリマーは具体的な技術差別化の証拠。Cornered Resource（特殊化学技術人材）とProcess Power（イノベーション文化）の組み合わせ。"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "新製品投入 → プレミアム価格・Mix改善 → 粗利率向上（53%まで改善）→ グループCAGR",
+      "descriptive_label": "イノベーション→粗利率改善→CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。新製品のプレミアム価格→粗利率改善は財務データで確認可能（2013年52.4%→2014年53.0%、H1 2015で110bps追加改善）"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次カンファレンスからの発言。一次情報"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "粗利率の継続的改善（53%）は開示データで確認可能。新製品の価格プレミアムとMix改善という因果は定量的に裏付けられている"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "自動車業界向けSikaPowerの構造接着剤ポジション：ガラス・スチール・アルミ・マグネシウムの異種金属接合技術と高い安全基準を満たす接着ソリューションで、主要自動車メーカーの次世代車体設計に不可欠な地位を確立",
+      "descriptive_label": "自動車構造接着分野でのコーナード・リソース（技術・顧客関係）",
+      "evidence_from_transcript": "FY2014 Annual (Jan Jenisch): 'SikaPowerは構造接着、高い衝突耐性と異種金属（スチール・高強度スチール・アルミニウム・マグネシウム）の接合技術。これが将来の接合技術であり、2014年に40%の売上成長を達成（2013年・2012年に続く3年連続）。' H1 2015: 'H1 2015の自動車部門で10%以上の売上成長。中国では西洋ブランドでも中国国内ブランドでも同じ市場シェアを確保している。自動車生産台数が2%程度減少しても当社のモメンタムには影響しない。'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "異種金属接合技術（名詞）、構造接着剤ポジション（名詞）として表現可能。Cornered Resourceとして認定可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "3年連続+40%成長、H1 2015でも+10%以上成長。中国での西洋・国内両ブランドでの同一市場シェアという質的証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "自動車OEMとの長期設計統合（車体設計段階での採用）はスイッチングコストが高く構造的地位を示す"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "軽量化・高安全基準という自動車業界の構造的トレンドと完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "3年連続成長のトラックレコードが強力（+10%）",
+            "adjustment": 10
+          },
+          {
+            "reason": "年次カンファレンス一次情報",
+            "adjustment": 0
+          },
+          {
+            "reason": "直接競合（Dow Chemical、Henkel等）との比較がない（-5%）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "自動車構造接着は車体設計段階での採用決定が重要（設計統合型）。3年連続40%成長と生産台数下落への耐性（「生産台数が2%減少しても影響しない」）は高いスイッチングコストの証拠。軽量化トレンドとの合致も強力な追い風。7 PowersではCornered Resource（独自の接合技術）が最も適切。"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "自動車構造接着技術 → 自動車OEM設計採用 → スイッチングコスト → 継続的売上成長 → CAGR",
+      "descriptive_label": "自動車構造接着→OEM設計統合→スイッチングコスト→CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。設計統合→継続的部材供給→売上は直接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次カンファレンスからの発言。一次情報"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "OEM設計採用後のスイッチングコストが高く、継続的な売上貢献が期待できる因果チェーン。3年連続40%成長という実績が論拠を強化"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: Sika全地域で現地通貨・スイスフランの両方で過去最高売上。有機成長7.3%、買収成長5.7%、合計13%の定数通貨成長（スイスフランでは8.3%）。EBIT+21%、純利益+28%成長。粗利率53%（前年52.4%から改善）。新興市場で15%以上成長。3.5年で14の新規子会社設立",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: モルタルビジネスが+31%成長、グループ利益の20%を占める最高利益率事業、75工場（49カ国）体制。800人以上の化学者・技術者。新ポリマーグループ（8時間作業時間）が初年度CHF 3000万以上の売上。H1 2015: 粗利率110bps改善。EBIT+8.3%成長、EBIT率10%→11%。",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "SikaPower（構造接着）: 2012・2013・2014年と3年連続+40%成長。H1 2015の自動車セグメント+10%以上成長。中国では西洋ブランドも中国国内ブランドでも同一市場シェアを確保",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 10,
+      "claim_type": "competitive_advantage",
+      "claim": "Sikaの価格規律と原材料管理能力：原材料価格変動の中でも価格調整を通じて粗利率を維持・改善し続ける組織的な価格管理プロセス（H1 2015で110bpsの粗利率改善、新製品Mix改善との組み合わせ）",
+      "descriptive_label": "価格規律・原材料管理による粗利率防衛能力",
+      "evidence_from_transcript": "H1 2015 (Adrian Widmer): '粗利率はH1 2015に110bps改善。低原材料コストと規律ある価格設定によりマージン拡大。一部市場での通貨変動の悪影響を相殺。' FY2014 Annual (Jan Jenisch): '価格とタイミングの適切な管理に強い焦点を当てており、3.5年前に大幅な改善を行い、粗利率は53%まで大幅に改善した。顧客に一律価格リストを上げる会社ではない。全ての革新製品から価格面で非常にポジティブな結果が得られている。'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "「価格管理プロセス」は名詞化できるが具体的な仕組みの説明が限定的"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "「3.5年前に大幅な改善を行い継続している」という記述はProcess Powerの一部証拠だが、詳細が不足"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "「価格管理」という概念は業界共通。Sikaに固有のプロセスの説明が弱い（-10%）",
+            "adjustment": -10
+          },
+          {
+            "reason": "年次カンファレンスからの言及",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "粗利率の継続的改善（53%、H1 2015で110bps追加）は結果として強力だが、その背後にある「能力・仕組み」の説明が具体的でない。新製品Mixと価格管理の組み合わせという一般論に留まる。PatternF（戦略と優位性の混同）に注意が必要。"
+      }
+    }
+  ]
+}

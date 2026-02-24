@@ -1,0 +1,226 @@
+{
+  "ticker": "MRK",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-04)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3 FY2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "KEYTRUDA（Pembrolizumab）のPD-1阻害剤先行認可（米国初承認）による免疫腫瘍学フランチャイズの先行者優位",
+      "descriptive_label": "KEYTRUDA PD-1先行認可と腫瘍学フランチャイズ構築",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'our greater focus has led to better execution, a point underscored by the effort that led to KEYTRUDA being the first PD-1 inhibitor approved in the United States.' (CMO Roger Perlmutter): 'KEYTRUDA demonstrating the objective response rate was 21% versus 4% for chemotherapy...hazard ratio for progression-free survival was 0.57, favoring KEYTRUDA...registration-enabling studies ongoing or planned in 6 other tumor types.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO/CMO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "米国初PD-1認可（能力）という明確な差別化事実。KEYNOTE-001での21% vs 4% ORR（能力の定量証拠）"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "ORR 21% vs 4%（化学療法比）、PFS ハザード比0.57、~2000患者/月（Q4末）。強力な定量証拠"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Bristol-Myers Squibb（Opdivo）も同年後半に認可。先行優位はあるが独占は短命"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "腫瘍免疫療法の成長市場（がん治療パラダイムシフト）という業界構造とKEYTRUDAのポジションが整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "BMS Opdivoが同年11月認可で競合が迫っている: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "米国初PD-1認可は具体的な能力の証拠。KEYNOTE-001の強力な臨床データ（ORR 21% vs 4%、PFS 0.57）が差別化を裏付ける。ただし2015年以降のBMS Nivolumab（Opdivo）との競合激化が確実。先行者優位はあるが独占的地位でない"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "KEYTRUDA承認拡大（肺癌→6腫瘍型）× 免疫腫瘍学市場爆発的成長 → Oncology事業 major CAGR driver",
+      "descriptive_label": "KEYTRUDA適応拡大×IO市場成長→腫瘍学収益CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "KEYTRUDA適応拡大→対象患者拡大→収益成長。2ステップだが臨床試験結果次第という不確実性あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "KEYTRUDA Q4売上$50Mのみ（ガイダンスなし）、NSCLC申請は2015年中期以降: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "KEYTRUDA6腫瘍型展開（NSCLC登録試験進行中）は有望だが、NSCLC申請が2015年中期以降で収益化は2016+。BMS Opdivoとの競合も激化。接続の確信度は中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "JANUVIA（DPP-4阻害剤）の75%市場シェアと先発医薬品ブランド力による安定収益基盤",
+      "descriptive_label": "JANUVIA DPP-4市場75%シェアによるブランド力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Schechter): 'The JANUVIA franchise reached approximately $1.7 billion in sales and grew 6% in the quarter...In the United States, sales grew 5%. Our increased focus in investments enabled us to defend our 75% market share and to grow the DPP-4 class.' Q3 also references 75% share maintenance.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "President of Global Human Health",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "75%シェアは結果。それを守る能力（マーケティング力、処方医の習慣、DMエコシステム）の説明が「increased focus and investments」という戦略言語"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "AZ（Onglyza）、BMS（Onglyza）、LLY（Tradjenta）を競合とした場合の75%シェアは相対的優位を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "75%シェア、$1.7Bの具体的数値あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual call（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "特許クリフ（JANUVIA 2022年米国特許満了）への言及なし: 持続可能性の懸念",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "JANUVIA 75%シェアは事実として確認できる相対的優位。ただし先行者優位（2006年承認）とブランド力が主因で、内在的な技術差別化の説明が不足。2022年特許満了後の競争激化への対応が不明確"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "JANUVIA 75%シェア × DPP-4クラス成長 × 新興市場展開（中国+14%）→ 安定成長収益基盤維持",
+      "descriptive_label": "JANUVIA×DPP-4クラス成長×新興市場→安定成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "JANUVIA成長+6%（Q4）、中国+14%は確認可能。ただしDPP-4クラス成長が主因かRep activityかが不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "JANUVIA安定成長（4-6%）は過去実績で確認。中国等新興市場は成長ドライバー。ただし2015年以降はSOGLIFLOZIN（SGLT-2）競合増大、日本価格改定影響もあり純粋な成長確信度は中程度"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "ワクチンポートフォリオ（GARDASIL、ZOSTAVAX、PneumoVAX）によるリーダーシップと定期接種市場での長期収益安定性",
+      "descriptive_label": "予防ワクチンリーダーシップ（GARDASIL 9移行含む）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Schechter): 'full year, our vaccine business grew 4% to sales of $5.7 billion. Vaccines remains an important core focus area in 2015...GARDASIL 9 as the best-in-class HPV vaccine that will offer greater protection against cervical cancer...launched in more than 25 markets globally [for ZOSTAVAX].'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "President of Global Human Health",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "ワクチン製造能力（60年の蓄積）はプロセスパワーの候補。GARDASIL 9への移行は技術的能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$5.7Bワクチン収益（+4%）、ZOSTAVAX 25市場展開。数値あり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "GSK、Pfizer、Sanofiも大規模ワクチンポートフォリオを持つ。GARDASIL市場でのMRK独占は強みだが、他ワクチン領域は競合が多い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①）: 調整なし",
+            "adjustment": 0
+          },
+          {
+            "reason": "GARDASIL同様の9価ワクチンへの移行（GARDASILの独占的地位は維持）: +0%",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "MRKのワクチンリーダーシップ（特にGARDASIL、ZOSTAVAX）は相対的優位があるが、$5.7Bの大規模ポートフォリオの製造・流通能力（プロセスパワー）の説明が不足。GARDASIL 9移行は技術的強みの証拠"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q4 FY2014 収益$10.5B（-7%、定数通貨-4%）、KEYTRUDA売上$50M（~2000患者/月）、JANUVIA $1.7B（+6%）、ワクチン$1.6B（+18%）、グロスマージン74.6%（+160bp）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3, 5]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014 EPS $3.49（ガイダンス上端）、$13Bを株主還元（配当+自社株買い）。2015E 収益$38.3-39.8B（為替-$2.6B影響）、EPS $3.32-3.47（定数通貨+mid-single digit）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 5]
+    }
+  ]
+}

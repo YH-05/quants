@@ -1,0 +1,70 @@
+{
+  "ticker": "XLNX",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "XLNX-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "TSMCとの4世代継続独自パートナーシップ・20nmシェア82%",
+      "phase1_confidence": 0.7,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_IV (構造的市場地位), pattern_V (具体的競合比較)",
+      "scoring_rationale": "KB1: rule01 - TSMCとの最先端プロセスへの優先アクセスという能力的優位性。rule04 - 20nmシェア82%・28nmシェア65%+という強力な定量証拠。rule06 - 4世代継続パートナーシップは構造的。KB2: Pattern I - シェア82%という業界内の圧倒的数値。Pattern IV - Altera/Intel統合後のTSMC離脱リスクがXilinxに追い風という構造的地位変化。Pattern V - Altera（Intel買収）はIntelプロセスに移行→TSMCからの優先アクセスを失うという具体的競合比較。dogma.md: 70%は「定量的裏付け+構造的根拠+競合比較」要件を完全に満たす。",
+      "final_confidence": 0.7,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true,
+      "notes": "20nm $10M→$50M/四半期への急速拡大が能力の実証として機能。AlteraのIntel移行によるTSMC優先枠の獲得はXilinxにとって更なる構造的追い風。"
+    },
+    {
+      "claim_id": "XLNX-002",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "Zynq All Programmable SoC・ADAS/自動車+40%成長・業界初アーキテクチャ",
+      "phase1_confidence": 0.7,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_III (能力 > 結果), pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule01 - All Programmable SoCという独自技術IP資産。rule04 - Zynq+40%・自動車+50%・過去最高7%売上比率という強力な定量証拠。rule06 - ZynqアーキテクチャはIP保護された独自資産（業界初）。KB2: Pattern I - 業界初のAll Programmable SoCとして競合未到達の定量的差別化。Pattern III - Zynqという技術資産（能力）→ADAS採用（結果）という因果関係明確。Pattern IV - 自動車のFPGA設計サイクルは3-5年で一度採用されると交換困難という構造的地位。dogma.md: 70%は妥当。ADAS・IoT市場での設計採用実績が実証されている。",
+      "final_confidence": 0.7,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "XLNX-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "防衛・F-35設計込み・長期プログラムでのスイッチングコスト",
+      "phase1_confidence": 0.6,
+      "kb2_pattern_applied": "pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule01 - 長期防衛プログラムへの設計採用という能力的地位。rule06 - F-35再設計でもXilinxが採択継続→典型的なSwitching Costs。KB2: Pattern IV - 防衛・航空宇宙は認証・安全規制・乗務員訓練コストにより最高レベルのスイッチングコスト。KB1: rule10 - Q1 FY2016でA&D売上急減（大型プログラム終了）という短期変動リスクあり。定量的な差別化証拠（具体的金額）が限定的。dogma.md: 60%は適切。構造的には高いスイッチングコストだが短期的な収益変動リスクを反映。",
+      "final_confidence": 0.6,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "XLNX-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "ADAS・産業IoT・5Gワイヤレスという3成長市場への優位的ポジショニング",
+      "phase1_confidence": 0.6,
+      "scoring_rationale": "KB2: Pattern II (直接的CAGRメカニズム) - ADAS普及→Zynq SoC採用増加→XLNX売上拡大という直接的なCAGR接続。自動車+50%という実績が接続を実証。5G・産業IoTはまだ初期段階だが採用実績が積み上がっている。",
+      "final_confidence": 0.6,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "XLNX-005",
+      "claim_type": "factual_claim",
+      "claim_text": "Q1 FY2016 決算数値（2015年7月期）",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。売上$549M・粗利率70.9%・20nmサンプル$10M→$50M急拡大。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 3,
+    "ca_weighted_confidence": 0.67,
+    "top_power_type": "Process Power / Cornered Resource (Zynq SoC)",
+    "overall_assessment": "XilinxはTSMCとの4世代パートナーシップによるProcess PowerとZynq SoC・ADAS市場でのCornered Resourceが最も評価できる優位性。20nmシェア82%・自動車+50%という強力な定量証拠。Altera/Intel統合によるTSMC優先アクセス獲得がさらなる構造的追い風。chunk_18内でSWKSとともに最高水準の競争優位性スコア。"
+  }
+}

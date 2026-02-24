@@ -1,0 +1,319 @@
+{
+  "ticker": "HCLT",
+  "total_scored_claims": 6,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_id": "HCLT_001",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTはインフラストラクチャー管理サービス（IMS）において、Gartner・Forrester・EverestのすべてのマジッククアドラントでLeaderに選定される唯一のITOプロバイダーとなっている。",
+      "descriptive_label": "Gartner/Forrester/Everest全3社でLeader認定の唯一のITOプロバイダー（Scale Economies）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "「唯一のLeader認定」は結果。それを可能にした構造（20年以上のRIM/IMS投資・グローバルデリバリー体制・ツール蓄積）の説明は断片的"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "市場リーダーシップ・技術認定という名詞属性"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "20年以上のIMS事業構築は構造的要素"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "ITO更新市場$150B（2016-18）という業界構造×HCLTのIMS市場リーダーポジションの合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "「唯一のLeader認定」は結果指標（アナリスト評価）であり、競争優位性（能力）の直接証拠ではない"
+        },
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "ITO更新市場の規模($150B)×HCLTのリーダーポジションの市場構造合致"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "アナリスト認定は結果指標"
+        }
+      ],
+      "overall_reasoning": "Gartner/Forrester/Everest全3社でLeader認定は業界での客観的な能力評価として価値あり。ただし認定自体は結果であり、それを可能にした構造（20年以上の実績・ツール蓄積・グローバル体制）の説明が充分でない。ITO更新市場構造との合致パターンIV-Tは認められる。FY2015年次発言（主・①相当）。Phase 1評価の0.7から-0.1（パターンA）調整後: 60%→キャリブレーション後50%。"
+    },
+    {
+      "id": 2,
+      "claim_id": "HCLT_002",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTはエンジニアリングサービス（製品開発・R&Dアウトソーシング）において市場No.1ポジションを確立しており、製造業のservitizationニーズに対応したServSmart等の固有プロポジションを持つ。",
+      "descriptive_label": "エンジニアリングサービス市場No.1・ServSmartプロポジション（Scale Economies）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "No.1ポジションは結果。ただしServSmart等の固有プロポジションは能力として評価可能"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$1B超収益・25.8%成長（FY2015）という定量データあり"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "製造業のservitization（コア製品製造からライフサイクルサービス収益へ）という業界構造変化×HCLTのEngineering Services能力の合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "No.1ポジション・$1B達成は結果指標"
+        },
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "製造業servitizationという業界構造変化×Engineering Services専門能力の合致"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "No.1ポジションは結果指標"
+        }
+      ],
+      "overall_reasoning": "Engineering Services $1Bというマイルストーン達成・25.8%成長は業界トップ水準の定量データだが、No.1ポジションは結果。ServSmartという固有プロポジションは能力の証拠として評価できる。Q1 FY2015（従・②相当）発言から主に採用のため慎重評価。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 3,
+      "claim_id": "HCLT_003",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTはDryICEと呼ばれる自社開発の予測分析・自己修復型IT自動化プラットフォームを保有しており、これが次世代ITO（Gen 2.0）市場における差別化された知的財産（IP）となっている。",
+      "descriptive_label": "DryICE自社開発自動化プラットフォームによるGen 2.0 ITO差別化（Process Power）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "DryICEは自社開発プラットフォームという具体的な能力・ツールとして評価可能"
+        },
+        {
+          "rule_id": "rule_2_t",
+          "result": true,
+          "reasoning": "DryICE・予測分析・自己修復能力という名詞属性"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "自社開発の自動化プラットフォームは構造的要素"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "大手ITOプロバイダー（IBM、Infosys、TCS等）も自動化ツール・AI活用ツールを保有しており業界共通の投資領域"
+        },
+        {
+          "pattern_id": "pattern_G_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "DryICEのIBM・Infosys等の競合ツールとの具体的な性能比較がない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_B_t",
+          "adjustment": -0.1,
+          "reasoning": "大手ITOプロバイダーも同様の自動化投資あり"
+        },
+        {
+          "source": "pattern_G_t",
+          "adjustment": -0.1,
+          "reasoning": "純粋競合との差別化データなし"
+        }
+      ],
+      "overall_reasoning": "DryICEは固有のプラットフォームとして評価できるが、IBM・Infosys・TCS等の競合も類似の自動化プラットフォームを開発・保有しており業界共通の投資領域（パターンB-T）。Q1 FY2016（PoiT境界、従相当）での発言のため慎重評価。Phase 1評価の0.5から-0.2調整後: 40%。"
+    },
+    {
+      "id": 4,
+      "claim_id": "HCLT_004",
+      "claim_type": "competitive_advantage",
+      "claim": "HCLTは大規模ITOリベット市場（$150B・2016-2018年）において、98%の高い顧客維持率と業界トップのCSATを背景に、既存顧客のリベット成約率が高い粘着性ある顧客基盤を持っている。",
+      "descriptive_label": "98%顧客維持率と業界トップCSATによる粘着性顧客基盤（Switching Costs）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "顧客維持率98%という具体的な定量データ"
+        },
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "98%維持率は結果。それを可能にした能力（デリバリー品質マネジメント、SLA達成体制、顧客エンゲージメントプロセス）の具体的説明が不足"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "ITO更新市場$150Bという業界構造×高顧客維持率ポジションの合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "顧客維持率98%という定量的差別化データは評価を支える"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "98%維持率は結果指標。それを可能にした能力の説明が主張の中心でない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "維持率は結果"
+        }
+      ],
+      "overall_reasoning": "98%顧客維持率という定量データは強力だが、IBMやCapGemini等の競合との比較データが提示されておらず差別化の根拠が不明。FY2015年次（主・①相当）。ITO更新市場$150Bとの合致はあるが能力の説明が不足。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 5,
+      "claim_id": "HCLT_005",
+      "claim_type": "cagr_connection",
+      "claim": "IMS市場リーダーシップ・98%顧客維持率 → リベット市場での高い成約率 → 収益CAGR（3年13%）支持",
+      "descriptive_label": "IMS市場リーダーシップ→リベット成約→3年13% CAGR接続",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "長期ITOリベット契約の売上認識という因果チェーンは2ステップで検証可能"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "IMS市場リーダーシップという構造的要素→リベット成約率というCAGRドライバー接続"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "3年13% CAGRのドライバー分解（既存顧客維持×リベット成約率×新規ロゴ）が定量的に示されていない"
+        },
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "因果チェーンは2-3ステップで許容範囲内"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Order book 10%高水準・リベット市場$150Bという定量データは存在するが、13% CAGRへの各ドライバーの定量的寄与（維持率×成約率×新規ロゴ数）が分解されていない。FY2015年次（主・①相当）。CAGR接続の基本構造は評価できる。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 6,
+      "claim_id": "HCLT_006",
+      "claim_type": "factual_claim",
+      "claim": "HCLTのFY2015の業績：収益$6.2B（3年CAGR 13%）、EBIT $1.32B（3年CAGR 26%）、純利益$1.16B（3年CAGR 34%）。インフラサービス$2B超、エンジニアリングサービス$1B超、金融サービス$1.5B超の各マイルストーンを達成。",
+      "descriptive_label": "FY2015年次財務確定値（収益$6.2B・EBIT $1.32B・純利益$1.16B）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "収益$6.2B・EBIT $1.32B（26% CAGR）・純利益$1.16B（34% CAGR）という具体的な定量財務データ。CEO Q4 FY2015年次発言（主・①相当）から採用。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "FY2015年次の確定財務数値は定量的差別化データとして評価を支える"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "factual_claimは能力主張ではなく財務事実の記録であるためPattern-Aは非適用"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Q4 FY2015年次（主・①相当）CEO発言による確定財務数値。収益$6.2B（3年CAGR 13%）・EBIT $1.32B（3年CAGR 26%）・純利益$1.16B（3年CAGR 34%）は複数の事業部門マイルストーン（Infrastructure $2B超、Engineering $1B超、Financial Services $1.5B超）と整合する。factual_claim（事実記録）としてゲートキーパー不通過・KB2パターン非適用・Phase 1評価の0.7を維持。"
+    }
+  ],
+  "confidence_distribution": {
+    "50-60": 4,
+    "40-50": 1,
+    "70-80": 1
+  },
+  "metadata": {
+    "batch_count": 2,
+    "source_files": [
+      "batch_0_output.json",
+      "batch_1_output.json"
+    ]
+  }
+}

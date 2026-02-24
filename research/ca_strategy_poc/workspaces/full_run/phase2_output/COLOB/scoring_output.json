@@ -1,0 +1,277 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "消化管・泌尿器ケアにおけるグローバル市場リーダーシップを支える製品革新力（SenSura Mio・SpeediCath Compact・Biatain Siliconeの連続的新製品開発）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「史上最大規模の製品ライン」という継続的製品開発能力（仕組み）を評価。具体的製品名（SenSura Mio等）が能力の証明"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "消化管ケア35-40%グローバルシェア（市場DKK13-14B）、泌尿器ケア40%シェアという定量的市場ポジション"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "オストミー・失禁ケアは患者の生涯使用製品。製品差別化が市場シェアに直結する業界構造と合致"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "製品革新→市場転換→シェア深化のメカニズムが直接的"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "医療機器の連続的製品革新能力はProcess Power × Cornered Resource（臨床知見）として評価。35-40%シェアと定量的なSenSura Mio展開データで裏付け。70%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "cagr_connection",
+      "claim": "製品革新（SenSura Mio/SpeediCath Compact） + 新興市場展開 → 9%有機成長 + EBIT margin 34%（3-5年目標）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "SenSura Mio普及（12→19市場）→患者転換加速→継続成長の因果チェーン。10%転換率（SpeediCath）という開示データで検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4 annual発言由来。FY14/15の9%有機成長・34%EBIT margin目標として具体化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "直接的CAGR接続メカニズム適合"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "製品転換進行状況（SpeediCath 10%超転換）と新興市場投資（DKK200M/年）が定量的に示されており成長経路の信頼性高い。70%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "患者の直接接点（DTC）チャネルによる患者ロイヤルティ・製品転換加速能力",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "患者への直接アクセス能力（コールセンター・DTC）として評価できる。継続的な患者ロイヤルティ構築の仕組み"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "SpeediCath転換率10%超はあるが、全体的なDTC規模データが限定的。英国での運営問題（Q1 FY15で発覚）がリスク"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合。患者直接チャネルによるSwitching Costs強化"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "operational_risk",
+          "adjustment": -0.1,
+          "reasoning": "英国チャーターヘルスケアでの運営問題（Q1 FY15）がリスク要因として発現"
+        }
+      ],
+      "overall_reasoning": "DTCチャネルはSwitching Costs強化の仕組みとして評価できるが、英国での運営問題が具体的なリスクを示した。50%が妥当"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルオペレーションの継続的な生産効率改善能力（グロスマージン1ppt/年改善）",
+      "final_confidence": 0.6,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "6本の戦略トラックを持つグローバルオペレーション効率化プログラム（能力・仕組み）"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "グロスマージン69%（+1ppt YoY）という定量実績"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "定量的差別化パターン適合。グロスマージン+1pptの継続実績"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "グローバル製造効率改善能力は定量実績（グロスマージン+1ppt）と6本の戦略トラックで裏付け。医療機器ニッチ企業のProcess Powerとして60%が妥当"
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "FY2013/14: 有機成長9%、EBIT margin 33%（特別項目前）、EPS成長17%。消化管ケア35-40%グローバルシェア（市場DKK13-14B）、泌尿器ケア40%シェア（市場DKK10-11B）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 annual callでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（中国・ブラジル・中東）への体系的投資による高成長市場先行者優位（2012年以来DKK1B投資、新興市場24%成長）",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "新興市場24%成長は結果。先行者投資という戦略的決定（Rule 8-T）との混同リスク"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "新興市場24%成長（前年14%から加速）、DKK1B投資という定量データ"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "先行者投資は戦略決定（Rule 8-T）。地政学リスク（ロシア50%下落）が具体的リスクとして顕在化"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "24%成長（結果）を先行者優位（能力）として提示"
+        },
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "戦略（先行投資）と優位性の混同。ただし-10%はパターンAで計上済み"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "geopolitical_risk",
+          "adjustment": 0.0,
+          "reasoning": "ロシア50%下落が地政学リスクを顕在化。Phase 1の50%を維持"
+        }
+      ],
+      "overall_reasoning": "新興市場先行者投資は方向性として認められるが、成長（結果）と能力の混同リスク、地政学リスク（ロシア）が介在。50%が妥当"
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "グロスマージン: 69%（+1ppt YoY）、EBIT margin 33%（目標34%、FY14/15）。CapEx: DKK533M（+21%）。長期EBIT margin目標: 年0.5-1ppt改善（3-5年）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CFO Anders Lonning-Skovgaardの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "SpeediCath Compact転換率: 10%超（米国泌尿器カテーテル事業）。SenSura Mio: 12市場ローンチ済み、FY14/15でさらに5市場追加予定。新興市場投資: DKK200M/年（累計DKK1B since 2012）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 Q&Aでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 8,
+    "confidence_distribution": {
+      "70-80": 5,
+      "50-60": 2,
+      "60-70": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

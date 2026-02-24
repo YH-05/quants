@@ -1,0 +1,201 @@
+{
+  "ticker": "FTI",
+  "transcript_source": "Q3 FY2014 Earnings Call (2014-10-22) + Q4 FY2014 (2015-02)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2014", "Q2 FY2014", "Q3 FY2014", "Q1 FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "深海サブシー生産システムにおけるフレーム契約ネットワーク（BG Group、ConocoPhillips、Wintershall等）によるスイッチングコストと安定受注基盤",
+      "descriptive_label": "サブシーシステムのフレーム契約による長期顧客粘着性",
+      "evidence_from_transcript": "Q3 Prepared Remarks (CEO): 'We've successfully executed on this strategy by adding 3 new frame partners...signed a global master services agreement with ConocoPhillips...signed a 10-year global frame agreement with BG Group to provide subsea equipment and services for their developments worldwide...demonstrates the confidence that they have in FMC Technologies to partner with them in developing their growing portfolio of deepwater assets.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "フレーム契約（能力）→長期的な優先サプライヤー地位（スイッチングコスト）は能力の主張として適切。10年契約のBG Group、global frame of ConocoPhillipsは具体的な能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "フレーム契約の総数・規模は一部開示。$6Bバックログ、$5B+年間受注は定量的裏付け"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "深海開発の長期性（5-10年サイクル）と技術統合要件はフレーム契約を構造的なスイッチングコストにする"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）: -10%",
+            "adjustment": -10
+          },
+          {
+            "reason": "フレーム契約の競合（Cameron、Baker Hughes）との相対的優位は一定程度あるが具体的比較なし",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "FTIのフレーム契約戦略（長期exclusive/preferred supplier合意）は深海サブシー市場でのスイッチングコストを生む。BG Group 10年、ConocoPhillips global masterは具体的な証拠。オイル価格下落局面でも深海投資継続意欲が顧客側で維持されていることが確認された"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "フレーム契約拡大 × 深海サブシー受注$5B+/年 → バックログ$6B → 2015-2016 記録的サブシー収益",
+      "descriptive_label": "フレーム契約→受注→バックログ転換→中期収益成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "バックログ転換→収益認識は直接的な2ステップ。CEOが'14th consecutive year of company earnings growth'、'2015 to deliver another year of record subsea revenue'と明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来（従・②）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3時点では2014年末バックログ$6B、2015受注5B+の見通し。ただし油価急落リスクが顕在化済み: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "バックログ$6B→収益認識の接続は直接的。ただしQ4以降の油価急落でオフショア深海の将来需要リスクが増大。CEOは楽観的だが油価下落の影響が中期に顕在化するリスクあり"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "深海サブシー標準化イニシアチブ（Shell、BP、Anadarko、ConocoPhillipsとの合同HPHT開発）による技術標準設定力",
+      "descriptive_label": "深海HPHT技術標準化における業界主導的地位",
+      "evidence_from_transcript": "Q3 Prepared Remarks (CEO): 'Because operators remain focused on improving the returns of their deepwater portfolios, their interest in standardization has increased significantly. A good example of this is our joint development agreement with Shell, BP, Anadarko and ConocoPhillips for the next-generation, new High Pressure/High Temperature equipment technology. This was formed as a way to reduce development costs, reduce lead times and establish an industry-design standard.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "主要オペレーター4社との共同開発（能力）→業界標準設定（結果）の接続が明確。技術標準への組み込みはCornered Resourceに近い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "一度業界標準になると競合への切り替えコストが構造的に高まる。Shell、BP、Anadarko、ConocoPhillipsという主要オペレーター4社との合意は標準設定の有力な証拠"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "深海開発のコスト削減ニーズ（oilfield services市場の構造的変化）とFTIの標準化推進の整合性は高い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_V_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "主要オペレーター4社との合同HPHT標準化開発は業界標準設定に向けた能力の強力な証拠。将来のCornered Resourceまたはさらなるスイッチングコスト強化に繋がる可能性。競合（Cameron）も標準化に参加しているかの確認は必要"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "サブシーサービス事業（メンテナンス、アップグレード）の規模拡大によるスイッチングコスト強化",
+      "descriptive_label": "サブシーサービス収益（アフターマーケット）の構造的成長",
+      "evidence_from_transcript": "Q3 Prepared Remarks (CFO): 'We benefited from continued solid execution and higher volumes in all our regions, conversion of a favorably priced backlog and an improving mix of service activity.' (CEO): 'growth of Subsea service revenue drove these results...increasing levels of subsea service activity'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO/CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "サービス比率向上は結果だが、インストールベース（設置済みサブシー機器）からのサービス収益というメカニズムは能力の証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "インストールベース拡大→サービス必要性増大→スイッチングコスト強化の構造的接続"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②）: -10%",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "インストールベース累積→サービス収益構造は深海機器メーカーの典型的なスイッチングコストメカニズム。サービス比率向上はこのメカニズムが機能していることの証拠。ただし競合（Cameron, Baker Hughes）も同様のサービス戦略を持つ"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "インストールベース拡大 → サービス収益の自動成長（設備寿命の延長需要・改修）→ 高マージンサービスMix向上 → OP マージン15%+",
+      "descriptive_label": "インストールベース→サービスMix向上→マージン改善",
+      "source_advantage": 4,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "インストールベース→サービス需要→マージン改善の2-3ステップ。CFOが'improving mix of service activity'が利益率改善に貢献と明示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来（従・②）"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "サービス比率向上→マージン改善は確認されている（Q3 15.7%は過去最高水準）。ただし新規プロジェクト受注の落ち込みがサービス比率に与える影響（短期はプラス、長期はインストールベース成長鈍化でマイナス）への配慮が必要"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Q3 FY2014 サブシー収益$1.3B（+15.7%マージン）、全社受注$1.1B（累積$5B+）、年末バックログ目標$6B。Surface Technologies OP マージン19.7%（+47%）",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [1, 4]
+    }
+  ]
+}

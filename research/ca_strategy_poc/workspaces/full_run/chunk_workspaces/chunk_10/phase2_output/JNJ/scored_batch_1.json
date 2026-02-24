@@ -1,0 +1,79 @@
+{
+  "ticker": "JNJ",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_6_t", "rule_8_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_II"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 3
+  },
+  "scored_claims": [
+    {
+      "id": "JNJ-006",
+      "claim_type": "competitive_advantage",
+      "claim": "中国オンコロジー（肺がん）・新興市場での疾患別統合ソリューション提供による政府パートナーシップ構築能力",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "FAIL: 「計画段階」の取り組みであり実績として確立されていない",
+        "rule_4_t": "FAIL: 定量的なデータなし（計画段階）",
+        "rule_8_t": "FAIL: 中国肺がんセンター設立は戦略的計画であり確立された優位性ではない"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_B_industry_common",
+        "assessment": "政府連携モデルは製薬大手（Roche, Novartis等）が中国市場でも採用している戦略。JNJ固有の差別化根拠がなく、計画段階でもある（Pattern B部分適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "中国肺がんセンター設立は「計画を発表した」段階であり、実証された能力ではない。dogma Section 1.4（計画を能力として評価しない）に該当するリスク。30%が適切。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "JNJ-007",
+      "claim_type": "cagr_connection",
+      "claim": "新製品（OLYSIO除く5%成長ベース）→パイプライン（10製品2013-2017申請）→売上CAGR 6-8%（2015除く基礎ベース）",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: 新製品発売（14製品/$27B累積）→OLYSIO除く6%ベース→パイプライン10製品申請→売上CAGR 6-8%という直接的な接続。CFOが定量ガイダンスを開示",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "パイプライン→製品発売→売上成長という製薬の標準的な直接的CAGR接続。OLYSIO効果を除いた6%基礎成長という透明性が評価できる"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でOLYSIO除く基礎成長6%とパイプライン10製品申請計画（2013-2017）が具体的に示されている。CFOによる定量的なガイダンス開示で検証可能。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "JNJ-008",
+      "claim_type": "cagr_connection",
+      "claim": "3セグメント統合企業ソリューション → 医療システム統合購買での価格交渉力 → マージン安定的維持 → EPS成長",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_5_t": "PARTIAL: 概念的因果接続は明確だが、医療システム統合購買のマージン貢献が財務的に定量化されていない",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "3セグメント統合→医療システム購買交渉力→マージン→EPSという因果は論理的だが、病院システム統合購買の実際の財務貢献データが示されていない"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "概念的な因果接続としては有効だが、実際の財務データ（統合購買による具体的なマージン貢献）が不開示。発展中のトレンドへの対応として評価。50%が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "JNJ-009",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年売上$74.3B（前年比+4.2%、実質+6.1%）、調整後EPS $5.97（+8.2%）、FCF $14.7B（+$0.9B）、24ブランドが$1B超、医薬品部門$32B",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。JNJ-001とJNJ-002の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "ticker": "CPI",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "O2実績（25%コスト削減）→参照可能実績→次世代大型変革契約獲得→売上CAGR加速",
+      "descriptive_label": "実績参照→大型契約→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "参照実績→入札勝率（1:2）→新規受注はBPO業界の典型的成長メカニズム。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。O2実績の定量性（25%削減）と1:2の勝率が接続の信頼性を高める。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "M&A（ROCE15%基準）→ 12カ月統合→ オーガニック成長寄与（+4.5%寄与）→ FCF複利成長CAGR",
+      "descriptive_label": "M&A→統合→オーガニック成長→FCF CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "10年間FCF+11%複利・FCF conversion 112%の実績が接続を裏付ける。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。10年間の実績データ（FCF+11%複利、GBP2bn M&A投資）と2014買収起因有機成長+4.5%が接続の持続性を実証。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"60-70": 2},
+    "gatekeeper_applied": false
+  }
+}

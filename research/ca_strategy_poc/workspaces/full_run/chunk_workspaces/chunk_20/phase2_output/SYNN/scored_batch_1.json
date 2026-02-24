@@ -1,0 +1,126 @@
+{
+  "ticker": "SYNN",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Syngenta のパイプラインはピーク売上 $2B 超（2014年発表時点）を見込み、ELATUS 以外にも FORTENZA（種子処理）、CLARIVA（大豆シスト線虫）、Bicyclopyrone（除草剤）など複数の独自分子を有する。規制承認済み分子のポートフォリオが再現困難な資産を構成する。",
+      "evidence": "Our pipeline now has a peak sales potential of more than $2 billion, and we continue to add to it as new molecules emerge from our research program.",
+      "rule_evaluation": {
+        "applied_rules": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "future forecast risk",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "パイプライン価値$2Bは全て将来予測。農薬承認・市場成功には高い不確実性あり"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04_quantitative_evidence", "verdict": "moderate", "reasoning": "$2Bパイプラインは定量的だが将来予測"},
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "競合各社も同様のパイプラインを保有。Syngenta固有の差別化根拠なし"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "パイプラインの量的規模は明確だが全て将来予測。競合との比較なし。45%",
+      "power_classification": "Cornered Resource（パイプライン）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Syngenta は北米、欧州、アジア太平洋、中南米の4地域で均衡したグローバル販売ネットワークを保有し、そのうち3地域が2014年に市場シェアを獲得した。規模の経済と地域多様化により景気・為替変動耐性を有する。",
+      "evidence": "Three out of four regions gained market share in 2014. In Latin America, we grew 10%, and more than three-quarters of that growth was in currencies other than the Brazilian real.",
+      "rule_evaluation": {
+        "applied_rules": ["rule07_pure_competitor_differentiation", "rule11_industry_structure_fit"],
+        "confidence": 40
+      },
+      "final_confidence": 0.35,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_B",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "グローバル展開は農薬大手に共通。Syngenta固有のScale Economiesとしての根拠不十分"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule07_pure_competitor_differentiation", "verdict": "weak", "reasoning": "Monsanto、Bayer等も同等のグローバル展開を持つ。差別化根拠が弱い"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B", "matched": true, "effect": "negative", "reason": "業界大手に共通のグローバル展開能力"}
+      ],
+      "overall_reasoning": "グローバル展開は事実だが農薬業界大手に共通。Scale Economies としての構造的優位性の説明不十分。35%",
+      "power_classification": "Scale Economies（低評価）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Syngenta は 2013年度に underlying 6% の売上成長を達成した。農薬部門は 7% 成長、種子部門は 5% 成長（為替調整後）。",
+      "evidence": "In 2013, we achieved underlying sales growth of 6%, with Crop Protection up 7% and Seeds up 5%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2013_annual"]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Syngenta の 2014年度売上は $15.1B（為替調整後 +2%）。R&D 支出は売上の約 10% を継続的に投資している。",
+      "evidence": "Full year sales were $15.1 billion, up 2% on a like-for-like basis.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Syngenta の農薬事業は 2014年 Latin America で 10% 成長。新興市場全体では 5年連続二桁成長を達成した。",
+      "evidence": "In Latin America, we grew 10%, and more than three-quarters of that growth was in currencies other than the Brazilian real.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "SYNN",
+    "claim_count": 10,
+    "scored_count": 5,
+    "target_claim_ids": [6, 7, 8, 9, 10],
+    "batch_index": 1,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 3,
+      "0.45": 1,
+      "0.35": 1
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule07_pure_competitor_differentiation.md",
+      "kb2_patterns_transcript/pattern_B_industry_common.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

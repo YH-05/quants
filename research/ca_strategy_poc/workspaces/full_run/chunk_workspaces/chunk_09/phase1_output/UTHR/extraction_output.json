@@ -1,0 +1,299 @@
+{
+  "ticker": "UTHR",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-24) / Q3 FY2015 Earnings Call (2015-10-27)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "PAH（肺動脈性肺高血圧症）における複数投与経路トレプロスチニル製品ポートフォリオ（皮下/静注Remodulin・吸入Tyvaso・経口Orenitram）",
+      "descriptive_label": "PAH複数投与経路プロスタサイクリン製品プラットフォーム",
+      "evidence_from_transcript": "Q4 CEO発言（Martine Rothblatt）: 'it took only about half that amount of time, approximately 5 years, for Tyvaso to reach approximately $0.5 billion a year in sales... it's taken just about half a year for Orenitram to reach somewhere between a sixth and a fifth of the level of sales of those other products.' Q4: 'Orenitram exceeded 25% of Adcirca sales and 17% of Tyvaso sales despite the fact that December was only the seventh month of Orenitram's launch.' Q3 Roger Jeffs: 'Approximately 70% of starts in Q3 were from patients new to prostacyclin therapy, with approximately 20% being transitions from Tyvaso and approximately 10% transitioning from Remodulin.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Martine Rothblatt (CEO) / Roger Jeffs (Co-CEO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "複数投与経路（SC/IV/吸入/経口）という製品ポートフォリオの能力は明確な仕組みとして説明されている。患者の投与困難性への対応という能力の源泉も示されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Tyvaso 5年/$0.5B達成、Orenitram 7か月で競合製品比25%超達成という定量的根拠あり。ただし競合（Actelion等）との市場シェア比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "トレプロスチニルという分子実体を異なる投与経路で提供できる製剤能力は構造的な技術的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "PAH患者の投与困難性（注射拒否・地域センターでの管理困難）という市場構造と、経口Orenitramによる解決策が明確に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（Cornered Resource + Process Power）への合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "トレプロスチニル分子を3つの投与経路で提供できる製剤技術ポートフォリオは、PAH患者の多様な状況（病状・生活スタイル・コミュニティ vs 専門施設）に対応する構造的な競争優位性。Orenitramのラウンチ速度（7か月でTyvaso比25%）は市場浸透能力の定量的証拠。競合（Actelion等）はこの投与経路多様性を有していない"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014でOrenitramはlaunch 7か月でAdcirca比25%、Tyvaso比17%の売上達成。Tyvaso/$0.5B達成まで5年要した",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "PAH患者の高い療法継続性（Remodulin平均26か月、Tyvaso平均20か月）と収益の耐久性",
+      "descriptive_label": "PAH療法の高い患者継続性による収益耐久性",
+      "evidence_from_transcript": "Q3 Roger Jeffs発言（Q&A）: 'If you look at Remodulin, for example, it's 26 months. If you look at Tyvaso, the average duration of therapy is 20 months... from our open-label clinical trial experience, the duration of therapy was around 28 months or more... our expectation is because the therapy's starting earlier in the treatment algorithm, the patients will actually persist longer on Orenitram.' Q4 CEO発言: 'revenues first quarter, second quarter, third quarter, fourth quarter, there were growth in revenues every sequential quarter... we haven't seen that in our entire 10-year history.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "Roger Jeffs (Co-CEO)",
+      "section_type": "answer",
+      "supported_by_facts": [4],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "療法継続性の高さ（26か月/20か月）は結果だが、PAH疾患の進行性特性と投与経路の有効性という能力の源泉も言及されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "Remodulin 26か月、Tyvaso 20か月、臨床試験 28か月という具体的な継続性データが開示されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "PAH疾患の進行性と無治療での死亡リスクにより、一度適正な投与量が達成された患者は継続療法が必須となる構造"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "PAH疾患の進行性・致死性（治療なし時の中央生存期間は数年）という市場構造が、高い継続性の根本原因"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来（従・②相当）だが、Q4でも間接的に言及されている"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（Switching Costs）への合致",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3の詳細データ（主・①相当のQ4でも言及あり）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "PAH疾患の進行性・致死性により、一度安定した用量に達した患者の離脱率は極めて低い。Remodulin 26か月、Tyvaso 20か月という高継続性データは疾患特性に起因するSwitching Costs的な優位性を示している。収益耐久性（revenue durability）は四半期連続成長という形で実証されている"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "Remodulin平均継続期間26か月、Tyvaso平均20か月、臨床試験での継続期間28か月超",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Orenitramの経口プロスタサイクリン療法による未治療患者市場（30,000人中7,000人のみ治療）へのアクセス拡大能力",
+      "descriptive_label": "経口Orenitramによるコミュニティ市場での未充足PAH患者へのアクセス拡大",
+      "evidence_from_transcript": "Q4 CEO発言: 'there are 30,000 and growing numbers of pulmonary hypertension patients. The number of those patients in the U.S who are on our products currently are something in like the 7,000 patient range. So the vast majority of pulmonary hypertension patients don't yet have access to prostacyclin therapy.' Q3 Roger Jeffs: 'Over 500 prescribers have started a patient on Orenitram, an increase of 20% over Q2... the splits of starts in September was 52% community based and 48% center based'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Martine Rothblatt (CEO) / Roger Jeffs (Co-CEO)",
+      "section_type": "answer",
+      "supported_by_facts": [6],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "コミュニティ医師への浸透（専門施設から一般クリニックへの処方拡大）という能力の仕組みが具体的に説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "30,000患者中7,000人治療、処方医500人（+20%）、コミュニティ52%という複数の定量的根拠"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "PAH患者の77%が未治療という市場構造（巨大な未充足ニーズ）とOrenitramの経口製剤特性が明確に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（市場構造×企業ポジション）",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "PAH治療において7,000/30,000人（23%）のみが治療されているという未充足ニーズは、経口Orenitramにより大規模に拡大できる。経口投与の簡便性によりコミュニティ医師（52%のstarts）が処方可能になるという構造的変化。競合の経口プロスタサイクリン（Actelion Selexipag）は忍容性に課題あり（14%脱落）と対比して優位性を主張"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "米国PAH患者30,000人（増加中）のうちUTHR製品使用は約7,000人。Q3 2015でコミュニティ処方が52%と専門施設を逆転",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "GlaxoSmithKlineへのロイヤルティ失効（2014年10月）によるCOGS大幅削減",
+      "descriptive_label": "GSKロイヤルティ失効によるコスト構造改善",
+      "evidence_from_transcript": "Q4 CFO発言（John Ferrari）: 'our cost of goods, of product sales actually will decrease year-over-year now because we're not paying a 10% royalty to Glaxo for the treprostinil-based products.' CEO発言: 'significantly with the big drop in COGS by -- I guess, it would be somewhat close to 10%, a 10% drop in COGS. That's really, really significant.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "John Ferrari (CFO) / Martine Rothblatt (CEO)",
+      "section_type": "answer",
+      "supported_by_facts": [],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "ロイヤルティ失効はコスト削減の結果であり、それ自体は能力ではない。一過性のコスト改善イベント"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "ロイヤルティ失効後の低コスト構造は、継続して競合が有する外部ライセンス費用との比較で構造的優位になりうる"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "ライセンス交渉・IP取得は戦略だが、ロイヤルティ失効による永続的なコスト優位性は能力として評価可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（一過性イベント）の懸念",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "ロイヤルティ失効は一過性であり、競争優位性としての持続性が限定的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "10%のCOGS削減は財務的に重要だが、これは一過性のイベント（ロイヤルティ期間終了）であり持続的競争優位性の源泉とは言いにくい。ただし競合製品がライセンス費用を抱える場合は相対的なコスト優位になりうる"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "PAH複数投与経路ポートフォリオ → 患者の多様な治療ニーズ対応 → 総トレプロスチニル収益成長",
+      "descriptive_label": "複数投与経路ポートフォリオ→PAH総収益CAGR成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "複数投与経路→各製品売上増→総トレプロスチニル収益成長の直接接続。Q4での4四半期連続成長（10年初）で実証"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Q4 2014での4四半期連続成長（10年の歴史で初）は、複数製品ポートフォリオが機能していることの証拠。総トレプロスチニル収益という分析視点も会社自身が提示しており、接続の論理性は高い"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "PAH療法の高継続性 → 累積患者ベースの増大 → 年間収益の安定成長",
+      "descriptive_label": "療法継続性→患者累積→収益耐久性",
+      "source_advantage": 3,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "継続療法期間（26か月）→累積患者数増大→年間収益成長の直接接続。Orenitramの用量増加効果（dose titration）も追加の収益ドライバー"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言だが概念は会社の核心テーゼであり信頼度高",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "PAH療法の長期継続性（Remodulin 26か月）と新規患者の継続的な追加により、累積患者ベースが拡大し年間収益の安定成長が実現する。Orenitramの用量漸増効果（per-patient revenue increase over time）も加わり、CAGR接続の信頼度は高い"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "Orenitramによる未治療患者（23,000人）へのアクセス拡大 → PAH市場浸透率向上 → 売上CAGR",
+      "descriptive_label": "Orenitram未治療患者獲得→市場浸透率向上→CAGR",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "未治療患者23,000人→Orenitramアクセス拡大→売上成長の2ステップ接続は合理的。ただしコミュニティ医師の採用速度の不確実性あり"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "30,000人中23,000人が未治療という大規模な未充足ニーズは、Orenitramのラウンチ軌道（7か月でTyvaso比25%）と合わせて、売上CAGR接続の合理的な根拠を提供する。新患者70%（prostacyclin未治療）というQ3データも裏付けとなる"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "GSKロイヤルティ失効 → COGS約10%削減 → 利益率改善 → EPS成長加速",
+      "descriptive_label": "GSKロイヤルティ失効→利益率改善→EPS成長",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ロイヤルティ失効→COGS10%削減→利益率改善→EPSの直接接続。EPS成長の確実なドライバーとして開示されている"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ロイヤルティ失効（2014年10月）によるCOGS10%削減は確定したイベントであり、2015年以降の利益率改善・EPS成長への接続は最も直接的なCAGR接続の一つ。ただしこれは一時的なコスト構造改善であり、永続的優位性としての評価は限定的"
+      }
+    }
+  ]
+}

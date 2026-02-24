@@ -1,0 +1,431 @@
+{
+  "ticker": "WMT",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-02-19) + Q3 FY2015 (2014-11-13) + prior quarters",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "11,000店舗以上のグローバル物理ネットワークとデジタル・eコマース能力の統合による独自のオムニチャネル基盤",
+      "descriptive_label": "物理店舗ネットワーク×デジタル統合能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO Doug McMillon): 'We have an advantage at Walmart by combining our store and distribution network with our e-commerce capabilities to allow our customers to interact with our brand in ways that are most convenient for them.' / 'We're leveraging technology to strengthen our e-commerce and mobile capabilities and integrating these digital assets with our more than 11,000 stores globally.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "11,000店舗という物理資産は能力・仕組みとして解釈可能だが、「ネットワークとeコマースの統合」はまだ構築中（'building year'と明言）であり、結果というよりは戦略的投資段階"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_candidate",
+            "reasoning": "物理店舗ネットワーク規模（11,000店舗）は構造的資産として評価できるが、現時点ではeコマース統合は補完的・構築段階"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "mixed",
+            "reasoning": "'strategy is to...'という表現が多く、物理×デジタル統合は戦略的意図と構造的資産が混在。11,000店舗の規模自体は構造的"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "小売業の競争環境でオムニチャネルが重要となる市場構造への言及はあるが、純粋競合（Target, Amazon）との比較は不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "partial_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（Amazon, Target）との具体的差別化データなし。Amazonは同等以上の配送ネットワーク投資を実施",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "11,000店舗という物理資産は規模の経済（Scale Economies）として評価できるが、eコマース統合は'building year'と明言されており構築段階。競合（Amazon）も同様の統合投資を進めており純粋競合差別化が不明確。構造的資産の存在は認めるが確信度は中程度"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "物理店舗ネットワーク×デジタル統合 → 既存店売上+eコマース成長 → CAGR維持",
+      "descriptive_label": "オムニチャネル統合→既存店+eコマース成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3段階以上の因果チェーン（物理資産→統合能力→顧客利便性→売上成長）。eコマース22%成長は数値として示されているが、既存店への寄与経路が不明確"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "eコマース22%成長という実績数値はあるが、既存店comp（+1.5%）の主因はガソリン安・SNAP回復・天候など外部要因が大きい。物理×デジタル統合のCAGR接続としての直接性は中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Every Day Low Price（EDLP）の持続的な価格リーダーシップポジション",
+      "descriptive_label": "EDLP価格リーダーシップ",
+      "evidence_from_transcript": "Q4 Prepared Remarks (CEO): 'Being the low-price leader has been a part of our customer proposition, and it will continue to be a priority in the future.' / 'Value matters to everyone regardless of household income level, and digital access creates even more price transparency.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "EDLPは能力・仕組みとして解釈可能（調達力・コスト構造・スケール経済に裏付けられた価格設定力）だが、トランスクリプトでは仕組みの説明なく「価格リーダー」という結果提示に近い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "concern",
+            "reasoning": "Target, Kroger, Amazonも価格競争力を訴求しており、Walmartのみの相対的優位性の説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "insufficient",
+            "reasoning": "具体的な価格差データ（競合比較）が示されていない。純粋なスローガンレベル"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "insufficient",
+            "reasoning": "純粋競合（Target, Kroger）対比での価格差の具体的数値なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言だが定量的裏付けが全くない",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "EDLPはWalmartの歴史的強みだが、このトランスクリプトでは定量的裏付けなし。価格投資への言及（GPMへの影響）は逆にコスト要因となっており、優位性として現時点では確信度低"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "EDLP価格リーダーシップ → 価格感応度の高い消費者獲得 → トラフィック維持・既存店売上成長",
+      "descriptive_label": "EDLP→低所得層+幅広い所得層の顧客獲得→既存店売上",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "weak",
+            "reasoning": "EDLPの価格メカニズムは直接的だが、Q4の+1.5% compはガソリン安・SNAP回復が主因と経営陣自身が認めており、EDLPの寄与が独立して検証できない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "メカニズムは直接的だが外部要因（ガソリン安）との分離が困難。確信度は低め"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル調達ネットワークとベンダー交渉力による低コスト仕入れ能力",
+      "descriptive_label": "グローバル調達力・ベンダー交渉力",
+      "evidence_from_transcript": "Q4 International Prepared Remarks (Dave Cheesewright): 'We remain focused on saving our customers money by expanding our private label offering, improving product sourcing and driving costs out of our operations so that we can invest it back into price.' / Q4 China section: 'The We Operate for Less and the We Buy for Less programs in China have saved over $150 million over the course of the year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "International CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "'We Buy for Less'プログラムは調達能力（仕組み）を示す。$150M節約は能力の結果として機能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "中国での$150M節約という数値はあるが、グローバル全体での調達優位性の定量的裏付けが限定的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "規模に基づく調達交渉力は構造的要素として評価"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "大量仕入れ市場でのスケール経済という業界構造との合致はあるが、Amazonやカルフールとの具体的比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "partial_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "中国での$150M節約という具体数値あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "純粋競合（Carrefour, Costco）との比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Walmartの規模による調達力は構造的優位として概ね認められるが、このトランスクリプトでの定量的裏付けは中国限定。グローバル調達優位性の全体像が示されておらず確信度中程度"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "調達コスト削減 → 価格投資原資確保 → 価格競争力維持 → CAGR支援",
+      "descriptive_label": "調達効率化→価格投資→競争力",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップの因果チェーンで条件付き妥当性あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムは概ね妥当。ただし調達コスト節約が価格投資に回されていることでGPMが低下しており、CAGR接続の直接的な数値根拠は開示されていない"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Neighborhood Marketフォーマットの出店による利便性と近接性の強化",
+      "descriptive_label": "スモールフォーマット出店能力（Neighborhood Market）",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Greg Foran): 'Our traditional Neighborhood Markets delivered approximately a 7.7% comp for the quarter.' / 'By continuing to drive this format, we're able to offer customers easy and convenient access to fresh foods, pharmacy and services at Walmart's Every Day Low Price guarantee.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "US CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "7.7% compは結果。フォーマット展開能力が優位性として機能するかは、そのオペレーション力・立地選定力次第"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural_candidate",
+            "reasoning": "ブランド認知・調達ネットワークを活用した出店能力は構造的要素の側面あり"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "mixed",
+            "reasoning": "フォーマット拡大は戦略。そのフォーマットを成功させる能力（ブランド、調達、運営）が優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "都市部・郊外小型フォーマットへの移行という市場構造の変化への対応だが、Dollar General/Family Dollar/Whole Foodsとの純粋競合差別化が不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）",
+            "adjustment": 0
+          },
+          {
+            "reason": "スモールフォーマット競争は激しくDollar General, Kroger等との差別化不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "7.7% compは実績として良好だが、スモールフォーマット自体はDollar General, Kroger, Whole Foodsが既に展開。Walmartブランドによる親和性はあるが、スモールフォーマット固有の優位性としては中程度"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Neighborhood Market出店拡大（年間180-200店舗）→ 新規出店寄与でCAGR+1-2%",
+      "descriptive_label": "スモールフォーマット出店→新規売上寄与",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "出店数→売上増は直接的な因果。FY16で180-200店舗という具体数値あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新規出店による売上寄与は直接的メカニズムとして開示数値で検証可能。FY16の出店計画と7.7% compの組み合わせでCAGR接続として妥当性高"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "China の We Operate for Less + We Buy for Less プログラムで年間$150M以上のコスト節約",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Q4 FY2015 Walmart U.S. Neighborhood Market（traditional）の四半期comps +7.7%。全フォーマットでは+1.5%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    },
+    {
+      "id": 11,
+      "claim_type": "competitive_advantage",
+      "claim": "Sam's Club会員制モデルによる高更新率と会員収入の安定成長",
+      "descriptive_label": "Sam's Club会員制スイッチングコスト・顧客粘着性",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Roz Brewer): 'Our investments in membership value initiatives enabled us to grow our membership income by over 8% this quarter. Our Plus penetration is at historic highs as Plus members are seeing the benefits from our Cash Rewards program.' / 'Sam's Club had a solid year, with membership income up over 10%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Sam's Club CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "会員更新率・Plus浸透率という能力指標で評価。Cash Rewards等のプログラムが会員価値を高める仕組み"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "concern",
+            "reasoning": "CostcoのEFT更新率90%+という強力な競合が存在。Sam's Clubの更新率はCostcoと比較してどの程度優位かが不明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "会員収入+10%という成長率はあるが、更新率の実数がない。Costco対比での数値比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "insufficient",
+            "reasoning": "Costco（最大の純粋競合）との直接比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "partial_II_t",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）、会員収入成長は定量的",
+            "adjustment": 0
+          },
+          {
+            "reason": "Costcoが同様のモデルで更新率90%+の更に強固な粘着性を持つ",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Sam's Clubの会員制モデルは粘着性があるが、純粋競合のCostcoが著しく優位な更新率・単価を持つ。Sam'sの更新率具体値がなく、Costco対比での差別化が不明確"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Sam's Club会員収入FY2015全年+10.3%成長。Q4単独+8%成長。Plus会員比率が過去最高水準",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [11]
+    },
+    {
+      "id": 13,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバルeコマース事業（Pangaea技術プラットフォーム）への大規模投資による次世代フルフィルメント能力",
+      "descriptive_label": "Pangaeaグローバル技術プラットフォーム・フルフィルメント能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks (Neil Ashe): 'Starting with our global technology platform. I refer to this as the operating system for commerce because it is the foundation for serving customers digitally and enables the integration of digital and physical commerce.' / 'Pangaea hummed along all day, serving our customers at record volume.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Global eCommerce CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "技術プラットフォームは能力・仕組みだが、まだ構築中（'building year'）。完成後の能力として評価するか、構築中の投資段階として割り引くか"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary_candidate",
+            "reasoning": "現時点ではオムニチャネルの補完的要素として機能。Walmartの本質的優位性（規模・調達）とは別の補完的デジタル投資"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "strategy",
+            "reasoning": "デジタル投資・技術構築は現時点では戦略的投資であり優位性ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主）",
+            "adjustment": 0
+          },
+          {
+            "reason": "'building year'と明言。現時点ではAmazon/Alibaba等競合も同様の投資を進めており差別化未確立",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Pangaeaプラットフォームは長期的には価値を持つ可能性があるが、cutoff_date(2015-09)時点ではまだ構築段階。競合（Amazon AWS）と比較して技術的差別化が不明確。現時点の優位性としては低評価"
+      }
+    }
+  ]
+}

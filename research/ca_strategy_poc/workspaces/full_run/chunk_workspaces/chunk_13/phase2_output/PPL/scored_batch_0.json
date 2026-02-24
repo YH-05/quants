@@ -1,0 +1,117 @@
+{
+  "ticker": "PPL",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PPL-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "PPL Corporation傘下のWPD（Western Power Distribution）はイングランドとウェールズで4つの配電免許区域（中西部・南西部・東ミッドランド・西ミッドランド）を保有し、規制独占事業者として排他的サービス地域を有する",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.9,
+      "confidence_adjustments": [
+        {
+          "reason": "規制免許による地理的独占は典型的なCornered Resource。業界構造（規制独占）と完全合致",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.9,
+      "scoring_rationale": "規制免許による配電地域独占はCornered Resourceの典型例（KB2パターンIV：業界構造合致）。他社が同地域に参入不可能という構造的競合不在。dogma.mdルール11（業界構造との合致が最高評価）に完全合致。4地域の免許証保有という定量的事実で検証可能。90%が妥当。"
+    },
+    {
+      "claim_id": "PPL-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "WPDはOfgem（英国電力ガス市場庁）RIIO-ED1フレームワーク下で2023年まで8年間の確定収益構造を持ち、英国規制当局から「ファストトラック」認定（業界唯一）を受けた高品質の規制資産基盤を保有する",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.9,
+      "confidence_adjustments": [
+        {
+          "reason": "RIIO-ED1での8年間収益確定とOfgemファストトラック認定（業界唯一）は定量的かつ競合比較が明確",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.9,
+      "scoring_rationale": "Ofgemファストトラック認定（業界唯一、他12社との差別化が明確）は強力なKB2パターンV（特定競合比較）とIV（業界構造合致）の組み合わせ。RIIO-ED1で2023年まで8年間の収益確定という検証可能な定量的事実。dogma.mdルール11の最高評価要件（業界構造×企業ポジション合致）に完全合致。90%。"
+    },
+    {
+      "claim_id": "PPL-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "PPLは英国配電事業（WPD）でJD Power英国電力事業者顧客満足度調査において2年連続全4部門1位を獲得。顧客サービス品質の持続的優位性が規制資産収益率を最大化するための基盤",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule07_pure_competitor_differentiation"],
+      "kb2_pattern_matched": "pattern_I_quantitative_differentiation",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "JD Power全4部門2年連続1位は第三者機関による定量的競合比較",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "JD Power全4部門2年連続1位は第三者機関による明確な競合比較（KB2パターンI：定量的差別化、パターンV：特定競合比較）。顧客サービス品質が RIIO フレームワークの収益率に直接影響する業界構造との合致あり。dogma.mdルール4（定量裏付け）に合致。70%。"
+    },
+    {
+      "claim_id": "PPL-004",
+      "claim_id_int": 4,
+      "claim_type": "Cornered Resource",
+      "power_type": "Cornered Resource",
+      "claim_text": "PPLはケンタッキー州（LG&E+KU）とペンシルバニア州（PPL Electric）において規制独占の配電・送電免許を保有し、規制当局が認定した資産収益率（ROE）の確定収益フローを持つ",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "米国の規制独占は電力ユーティリティの標準的構造。WPDほどの独自性はないが構造的優位",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "米国の規制独占ユーティリティは業界標準的な構造だが（KB2パターンB要注意）、具体的な免許地域と規制当局認定収益率は検証可能。WPDのファストトラックほどの優位性はないが、構造的Cornered Resourceとして70%は妥当。"
+    },
+    {
+      "claim_id": "PPL-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "PPLは$180億の5年間CapEx計画（2015-2019年）のうち97%以上を規制収益が保証されたインフラ投資（WPD/PPL EU/LG&E/KU）に集中させ、為替リスクの97%をGBP/USDヘッジで軽減する財務規律を持つ",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "97%ヘッジ比率という定量値はリスク管理能力の証拠だが、競合ユーティリティも同様の財務規律を持つ可能性",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "97%ヘッジという定量的財務規律は評価できるが（KB2パターンIII）、規制ユーティリティの保守的財務管理は業界共通（KB2パターンB要注意）。$18Bの大規模投資計画は構造的に競合と差別化される規模だが、CapEx規模と能力を混同しないよう注意。50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"50-60": 1, "70-80": 2, "90-100": 2},
+    "gatekeeper_applied": false
+  }
+}

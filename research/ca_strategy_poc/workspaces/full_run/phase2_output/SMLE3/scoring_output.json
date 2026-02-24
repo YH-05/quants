@@ -1,0 +1,150 @@
+{
+  "ticker": "SMLE3",
+  "company_name": "Smiles SA",
+  "gics_sector": "Consumer Discretionary",
+  "country": "BRAZIL",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_applied": true,
+    "kb2_t_applied": true,
+    "kb3_t_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "ブラジル最大の連帯ロイヤルティプログラムとしての地位：GOL以外のパートナーでの高い成長率（35%成長）とブラジル主要銀行との独占的・戦略的提携",
+      "phase1_confidence": 60,
+      "scoring": {
+        "kb2_t_verdict": "pattern_IV_t（業界構造×企業ポジション: ブラジルのロイヤルティ市場での先行者優位）、part_A_t（「最大」は結果）",
+        "kb3_t_alignment": "COST類似（銀行との提携による顧客ロック）。KYは独占的パートナーシップを高評価するが、「unique relationship」の具体的内容が不十分",
+        "dogma_check": "Rule 1: 銀行との独占的提携は能力（仕組み）として評価可能。Rule 4: GOL除く成長35%という定量データあり。Rule 6: ブラジル主要銀行との長期関係は構造的",
+        "final_confidence": 55,
+        "confidence_rationale": "銀行パートナーシップの独占性の具体的内容が不明確。GOL除く35%成長は定量的だが、契約の排他的内容が開示されていない。55%に引き下げ"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "銀行パートナーシップ → マイル積算量増加（GOL除く20%成長） → 将来的マイル償還収益の増加 → 収益CAGR 15-20%維持",
+      "phase1_confidence": 65,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格。ブレイケージ率管理が具体的メカニズム",
+        "kb3_t_alignment": "COST類似（顧客基盤→収益経路）",
+        "dogma_check": "Rule 5: 2ステップで直接的。ブレイケージ率15-16%（安定）で経路は裏付けあり",
+        "final_confidence": 65,
+        "confidence_rationale": "マイル積算→収益の因果は2ステップで直接的。ブレイケージ率管理を含む定量的メカニズムが開示されている。65%維持"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "マイル償還の効率的なマージン管理能力：Smiles & Money製品によるマージン改善（47%の償還マージン）と動的プライシング能力",
+      "phase1_confidence": 65,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量: 47%マージン, +400bp）、pattern_III_t（能力優位性: TRM能力）",
+        "kb3_t_alignment": "ORLY#2（価格管理能力）類似。KYは定量的な価格管理能力を高く評価",
+        "dogma_check": "Rule 1: TRMと動的プライシングは仕組みとして評価可能。Rule 4: 47%マージン、+400bpという定量データあり。Rule 7: 競合比較なし",
+        "final_confidence": 60,
+        "confidence_rationale": "TRM能力と47%マージンは具体的だが、ブラジルの競合（Multiplus等）との比較がない。60%に引き下げ"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "マージン管理・プライシング能力 → 高いマージン維持（~47%） → 高収益性の持続 → EPS CAGR維持",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格",
+        "kb3_t_alignment": "ORLY類似（マージン管理→CAGR）",
+        "dogma_check": "Rule 5: 2ステップで直接的。2013-2014実績（95%ペイアウト率）で検証可能",
+        "final_confidence": 70,
+        "confidence_rationale": "マージン管理がEPS成長に直接寄与するメカニズムは明確。開示データで検証可能。70%維持"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Netpointsとの合併によるブラジル最大のロイヤルティJVの形成（21百万ユニークカスタマー）とリテール市場でのネットワーク拡大",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_A_t（「最大」は結果）、pattern_I_t（21百万顧客という定量データ）",
+        "kb3_t_alignment": "MNST#1類似（規模を優位性として提示）。KYは規模を結果と捉え能力の説明を求める",
+        "dogma_check": "Rule 1: JV形成自体は戦略的行動。JVがもたらすネットワーク効果（能力）の説明が不十分。Rule 8: 21百万顧客は定量的だが、それをどう収益化するかの説明が弱い",
+        "final_confidence": 45,
+        "confidence_rationale": "21百万顧客は定量的だが、ネットワーク効果の具体的メカニズム（クロスセル率等）が不明確。JVはまだ成長段階。45%に引き下げ"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "Netpoints JVによる顧客基盤拡大（21百万）→リテール積算チャネル多様化→マイル積算量増加→収益CAGR上乗せ",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t（因果飛躍）: 21百万顧客→収益は3ステップ以上",
+        "kb3_t_alignment": "パイプライン段階のJVで実績が限定的",
+        "dogma_check": "Rule 5: 3ステップ以上、間接的。Netpointsはまだ成長段階で実績データが限定的",
+        "final_confidence": 45,
+        "confidence_rationale": "CAGR接続の因果は3ステップ以上で間接的。Netpoints JVの実績が乏しく不確実性が高い。45%に引き下げ"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "国際航空パートナー拡大による高所得層（クラスA・B）向け国際フライト特典の多様化（86%増の国際マイル償還）とプレミアム顧客ロイヤルティの向上",
+      "phase1_confidence": 30,
+      "scoring": {
+        "kb2_t_verdict": "pattern_F_t（戦略の混同: パートナー拡大=戦略）、pattern_A_t（結果を優位性として提示）",
+        "kb3_t_alignment": "CHD#4類似（拡大戦略を優位性として提示）。KYは強く批判（25-30%）",
+        "dogma_check": "Rule 1: 「パートナー拡大」は戦略的行動。優位性（交渉力、ブランド価値）の説明なし。Rule 8: 86%増は実績（結果）",
+        "final_confidence": 25,
+        "confidence_rationale": "国際パートナー拡大は戦略であり優位性ではない。それを可能にする能力の説明が欠如。25%に引き下げ"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Smiles + Netpoints JVで21百万ユニークカスタマー、ブラジル最大のロイヤルティJVを形成",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年Q4の償還マージンは47%（前年比+400bp）。Smiles & Moneyのマージンも前年比+600bp改善",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014 CFO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "GOL除く2014年マイル積算成長率：Q4で20%、通年で19.3%。GOL除くグロスビリングは22%成長（2014年通年）",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "GOL除く国際エアパートナーからのマイル償還が2013年比86%増（実質倍増）。TAP、Aeromexico、Korean Airlines、Alitalia等を追加",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q4 FY2014 CEO発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    }
+  ]
+}

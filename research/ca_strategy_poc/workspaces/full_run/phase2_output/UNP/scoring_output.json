@@ -1,0 +1,247 @@
+{
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "西部米国の独占的鉄道ネットワーク（Franchise）による地理的参入障壁",
+      "evidence": "Q4 2014: Q4 freight revenue $5.8B（四半期記録）、6ビジネスグループ全て成長",
+      "final_confidence": 0.8,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "鉄道ネットワーク自体が独自の資産・仕組み。新規参入者が同等ネットワークを構築するのは物理的・規制的・資本的に不可能"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "鉄道インフラは最大の参入障壁。100年以上の歴史的蓄積"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "鉄道は石油・ガス・資源輸送において代替不可能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.15,
+          "reasoning": "業界構造×ポジション：地理的独占の強い優位性"
+        },
+        {
+          "pattern_id": "pattern_V",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "western railroad duopoly（UNP/BNSF）での比較"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.15,
+          "reasoning": "地理的独占＝最強の参入障壁"
+        },
+        {
+          "source": "kb2_pattern_V",
+          "adjustment": 0.05,
+          "reasoning": "競合との比較あり"
+        }
+      ],
+      "overall_reasoning": "鉄道フランチャイズは新規参入が物理的・規制的に不可能な最強の参入障壁。定量的実績も強い。かなり納得で80%"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "独占的フランチャイズ → 年間3%コア価格転嫁 + 6%ボリューム成長 → freight revenue record更新",
+      "evidence": "Q4 2014: core price +3%、volume +6%、freight revenue $5.8B（記録）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "独占的フランチャイズ→3%価格転嫁+6%ボリューム成長は直接的2ステップ"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "直接的CAGR接続。$5.8B（記録）で検証可能"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_II",
+          "adjustment": 0.1,
+          "reasoning": "直接的接続"
+        }
+      ],
+      "overall_reasoning": "フランチャイズ→価格転嫁→revenue成長の接続は定量的で直接的。おおむね納得で70%"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Domestic Intermodal（ハイウェイ転換）の継続的勝利による成長加速能力",
+      "evidence": "Q4 2014: Domestic Intermodal +10%（Best-ever Q4）",
+      "final_confidence": 0.6,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Domestic Intermodal 10%増、Best-ever Q4という定量データ"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "燃料費・ドライバー不足でhighway→rail conversionは長期トレンド"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "定量的差別化"
+        },
+        {
+          "pattern_id": "pattern_IV",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "業界構造との合致"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "定量的"
+        },
+        {
+          "source": "kb2_pattern_IV",
+          "adjustment": 0.05,
+          "reasoning": "業界構造合致"
+        }
+      ],
+      "overall_reasoning": "ハイウェイ転換の長期トレンドと定量的成長は評価できる。まあ納得〜おおむね納得で60%"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "6ビジネスグループの多角性による景気変動への耐性",
+      "evidence": "Q4 2014: 6グループ全て成長",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "多角性はポートフォリオ構成（結果）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "多角性は結果。競争優位性としての評価は低い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "結果"
+        }
+      ],
+      "overall_reasoning": "多角的ポートフォリオはフランチャイズ独占の結果に過ぎない。あまり納得しない で30%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: freight revenue $5.8B（四半期記録）、volume+6%、core price+3%",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Domestic Intermodal Q4 volume +10%（Best-ever Q4）。highway conversionsが牽引",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "6ビジネスグループ全て前年比成長（Q4）。Frac sand +35%、Industrial Products +10%",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "80-90": 1,
+      "70-80": 1,
+      "60-70": 1,
+      "30-40": 1,
+      "50-60": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

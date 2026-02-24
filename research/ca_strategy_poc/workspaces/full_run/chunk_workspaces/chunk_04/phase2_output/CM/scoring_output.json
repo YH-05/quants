@@ -1,0 +1,75 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "CM-001",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "カナダ大手5行の規模による安定的資本効率（ROE ~20%）",
+      "seven_powers_category": "Scale Economies",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.4,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "ROE 20%はカナダ銀行オリゴポリー構造による業界共通の特性（PatternB）。CIBC固有の差別化ではなく、5行すべてが高ROEを維持している。40%から30%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "CM-002",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "COMPASSアドバイザープラットフォーム - 行政時間50%削減によるスイッチングコスト",
+      "seven_powers_category": "Switching Costs",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.5,
+      "kb2_patterns_applied": [
+        "pattern_III"
+      ],
+      "scoring_rationale": "50%時間削減は定量証拠。PatternIII（能力重視）適合。ただし競合も同様プラットフォーム投資中。CIBCがRBC・TDに対して明確にリードしている証拠が不足。50%から45%相当だが50%維持。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "CM-003",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "Tim Hortonsダブルダブルカードパートナーシップ - 140万顧客関係を数ヶ月で構築",
+      "seven_powers_category": "Network Economies",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.5,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "140万顧客獲得は定量証拠。ただしこれはTim Hortonsのブランド力に依存した成果でありCIBC固有の優位性の証拠として弱い。PatternA（結果を原因と混同）のリスク。40%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.4
+    },
+    {
+      "claim_id": "CM-004",
+      "claim_type": "competitive_advantage",
+      "claim_summary": "米国富裕層向け資産管理（Atlantic Trust $26B + American Century $145B）",
+      "seven_powers_category": "Scale Economies",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.4,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "RBC（$450B以上）・TD（$300B以上）と比較してCIBCの米国ウェルスは規模が小さく、競合優位性というよりは成長中のビジネス。PatternB（業界共通の規模ビジネス）に近い。40%から30%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.3
+    },
+    {
+      "claim_id": "CM-005",
+      "claim_type": "cagr_connection",
+      "claim_summary": "【CAGRリンク】3戦略（リテール・ウェルス・米国）→スイッチングコスト・ネットワーク効果活用→収益成長",
+      "seven_powers_category": "Switching Costs",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 0.4,
+      "kb2_patterns_applied": [],
+      "scoring_rationale": "戦略的方向性はあるが具体的CAGR目標・実績なし。PatternC（因果飛躍）に近い。カナダ銀行の規制構造が業界全体を支えているため、CIBC固有のCAGRドライバーの説明が不十分。30%に引き下げ。",
+      "gatekeeper_pass": true,
+      "final_confidence": 0.3
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "30-40": 3,
+      "50-60": 1,
+      "40-50": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

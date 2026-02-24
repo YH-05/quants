@@ -1,0 +1,272 @@
+{
+  "ticker": "ITX",
+  "transcript_source": "Q3 2015 Earnings Call (2015-12-10) + 2014-2015 Quarterly Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["9M2014", "Q4FY2014", "9M2015", "Q3FY2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "週2回以上のグローバル全店舗配送システムと2-48時間顧客受取可能な中央在庫一元管理モデル",
+      "descriptive_label": "高頻度グローバル補充サプライチェーン（Process Power）",
+      "evidence_from_transcript": "Q3 2015 Prepared Remarks (CEO Pablo Isla): 'a global sales platform that fully integrates stores and online as the best way to respond to the demands of our customers. This is a result of our highly differentiated business model, with a central inventory position, distribution to all our stores globally at least twice a week and orders received by our customers between 2 and 48 hours.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "週2回以上という高頻度補充は能力・仕組みの提示。H&M, ZARAの競合と比較し差別化可能な物流モデル"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "中央在庫一元管理と高頻度補充はビジネスモデルの核心。数十年かけて構築した能力"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "H&M等のファストファッション競合との比較が暗示されるが明示的な定量比較はない"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ファストファッション市場でのスピード・鮮度優位は市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_capability_over_result",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Inditexは年次決算をQ3決算（FY1月末）として発表。Q3 2015 callが事実上の年次決算に相当",
+            "adjustment": 5
+          },
+          {
+            "reason": "定量的な競合比較（H&M, Gap等との補充頻度比較）がない",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "週2回以上のグローバル補充は業界でも際立った能力。中央在庫モデルは数十年の蓄積。ただし競合との定量的差異の明示なし"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "高頻度補充能力 → 鮮度の高い商品提供 → LfL成長率維持（14-16%ローカル通貨ベース）→ CAGR",
+      "descriptive_label": "補充頻度→商品鮮度→LfL成長→CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "高頻度補充→商品鮮度→顧客来店頻度・LfL成長は2-3ステップ。LfL成長は定期開示で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Inditexの年次発表はFY3月（スペイン会計）のため、Q3 2015が重要開示。事実上の年次開示として扱う"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "LfL成長率はローカル通貨で継続的に10-16%という検証可能なデータが存在"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "オムニチャネル統合型販売プラットフォーム：店舗内注文・店舗受取・店舗返品が可能な完全統合モデル",
+      "descriptive_label": "オムニチャネル統合プラットフォーム（Switching Costs / Process Power）",
+      "evidence_from_transcript": "Q3 2015 Answer (CEO to analyst question): 'we believe very much, as we always say, in this fully integrated approach between stores and online. Of course, online sales are growing... in-store deliveries, in-store returns with the possibility to order online from the stores.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section_type": "answer",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "統合型プラットフォームという仕組みの説明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "オムニチャネルは多くの小売業者が投資中の補完的要素。InditexのSC優位性と組み合わさると強化されるが単独では補完的"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "オムニチャネル統合はInditexの戦略的投資領域の1つで、現時点では能力と戦略の境界が曖昧"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_strategy_confusion",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterlyからの発言（従・②相当）、-10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "オムニチャネルは業界共通の方向性（パターンB-T適用部分）",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "オムニチャネル統合はInditexのビジネスモデルと高い親和性があるが、2015年時点では投資継続中であり確立された優位性とは言い難い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "88市場にわたるグローバル分散型店舗ネットワークにより、特定市場への為替依存リスクを軽減",
+      "descriptive_label": "グローバル市場分散によるリスク分散能力（Scale Economies）",
+      "evidence_from_transcript": "9M 2014 Prepared Remarks (CEO): 'We manage a diversified sales platform in 88 markets. The current base offers huge growth potential for the coming years.' / 'we have opened stores in 50 different markets over the period'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "88市場展開は結果。グローバル展開を可能にする能力（現地適応力、ロールアウト速度）の説明が不足"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "88市場という規模は競合（H&M: 約60市場）と比較すると優位"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "グローバル分散は通貨リスク軽減の構造的メリット"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_result_as_cause",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterlyから（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "グローバル展開の規模は大きいが、それが可能な能力の説明が薄い。H&Mとの市場数比較は一定の定量性がある"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "88市場グローバル展開 → 各市場でのシェア<1%（大きな成長余地） → スペース拡張によるCAGR",
+      "descriptive_label": "低市場シェア→グローバル拡張余地→CAGR",
+      "source_advantage": 4,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "ほとんどの市場でシェア<1%という開示は成長余地の定量的根拠。スペース拡張ガイダンスと組み合わせて検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言由来だが年次決算と同等の重要開示"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "「ほとんどの市場でシェア<1%」という定量開示は成長余地の客観的な指標"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "Zara を筆頭に Bershka, Massimo Dutti, Pull&Bear 等の多概念（8ブランド）ポートフォリオによる幅広い顧客セグメント獲得",
+      "descriptive_label": "マルチコンセプト・ブランドポートフォリオ（Scale Economies / Branding）",
+      "evidence_from_transcript": "9M 2015 Prepared Remarks (CEO): 'Inditex continues its global multi-concept growth... Zara continues to represent approximately 2/3 of group sales; the younger concepts, around 1/3.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "多概念という構造は能力の要素だが、各ブランドを管理する能力（ポートフォリオ管理力）の説明が薄い"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_pass",
+            "reasoning": "H&M（単一ブランド中心）との比較で多概念は相対的優位"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "8ブランドの同時運営はインフラ共有によるScale Economiesの源泉"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_structural_market_position",
+        "confidence": 45,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3 quarterlyから（従・②相当）、-10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "マルチコンセプト戦略はH&M等と比較した相対的優位だが、ポートフォリオ管理能力の具体的説明がなく中程度の評価"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Inditexは全店舗への週2回以上のグローバル配送、顧客受取まで2-48時間を実現。中央在庫方式を採用",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "9M 2015: 売上 EUR 14.7B (+15%)、EBITDA EUR 3.3B、純利益 EUR 2B。粗利率 58.8%。ローカル通貨LfL 10.5-16%成長",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Inditexは88市場展開。ほとんどの市場でマーケットシェアは1%以下（スペイン、ポルトガル、ギリシャを除く）",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Inditexは8ブランド（Zara約2/3、若者向けブランド群約1/3）。2015年に48市場で新規出店",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [6]
+    }
+  ]
+}

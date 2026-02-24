@@ -1,0 +1,117 @@
+{
+  "ticker": "PH",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PH-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Parker HannifinのWin Strategyリフレッシュにより、100年以上の運動制御技術の蓄積を基盤とした「最初の選択」地位の確立。精密流体制御・電気制御の複合ソリューション提供が単一製品競合との差別化を実現している",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "100年超の技術蓄積はProcess Powerの証拠だが、定量的競合比較が不足。Win Strategy自体は戦略であり優位性ではない",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "100年超の運動制御技術蓄積はProcess Powerとして構造的に妥当（KB2パターンIII）。複合ソリューション提供による差別化は方向性として認めるが、定量的競合比較がなく、Win Strategyは戦略であり優位性ではない（dogma.mdルール8）。50%が妥当。"
+    },
+    {
+      "claim_id": "PH-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Parker Hannifinの分割型事業構造（Diversified Industrial North America/International + Aerospace Systems）により、部門横断的な規模の経済と製品バンドル能力を実現。顧客は単一窓口でのソリューション調達が可能",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_B_industry_common",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "多角化工業企業の分割構造は業界共通。Emerson、Honeywell等も同様の構造を持つ",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "多角化工業企業の分割型事業構造はEmerson、Honeywellなど業界共通（KB2パターンB）。「単一窓口ソリューション」は多くの競合も主張する。相対的差別化の証拠不足でdogma.mdルール3違反。30%。"
+    },
+    {
+      "claim_id": "PH-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Parker Hannifinは14年連続で総売上の10%超の営業キャッシュフロー（>$1B）と10%超のフリーキャッシュフロー比率を達成。このキャッシュ創出能力は安定した資本配分（M&A + 増配 + 自社株買い）を可能にする",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule01_capability_not_result"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "14年連続10%超のFCF比率は実績・結果。それを可能にする運営能力の仕組みの説明が不足",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "14年連続の定量実績は印象的だが「結果」の側面が強い（KB2パターンA部分合致）。ただしProcess Powerとしての運営能力（規律ある資本配分）の方向性は認められる。dogma.mdルール1の警告あり。50%。"
+    },
+    {
+      "claim_id": "PH-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Parker HannifinはAerospace OEM長期生産工程への深い統合（部品認定・設計仕様への組み込み）により、プラットフォーム寿命（20-30年）にわたる反復収益を確保できる高スイッチングコスト構造を持つ",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "Aerospace OEMの長期認定プロセスは構造的なスイッチングコスト。業界特性（プラットフォーム寿命20-30年）と合致",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "Aerospace部品認定という規制・安全要件に裏打ちされたスイッチングコストは構造的に強力（KB2パターンIV：業界構造合致）。20-30年のプラットフォーム寿命という長期安定性はdogma.mdルール11に合致。70%が妥当。"
+    },
+    {
+      "claim_id": "PH-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "claim_text": "ParkerのSimplification戦略（製品SKU削減・事業ポートフォリオ最適化）は、既存の複雑な多角化構造を持つ大型競合（Emerson、Honeywell）が模倣しにくい組織変革能力を示す",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule08_strategy_not_advantage"],
+      "kb2_pattern_matched": "pattern_F_strategy_confusion",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "Simplification戦略は意思決定（戦略）であり、優位性ではない。競合が模倣しにくいという主張の根拠も不明確",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "Simplification（SKU削減・ポートフォリオ最適化）は戦略であり優位性ではない（KB2パターンF：戦略混同）。Counter-Positioningとして成立するには競合が模倣できない構造的な理由が必要だが、Emerson/Honeywellも同様のリストラを実施可能。dogma.mdルール8違反。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 2, "50-60": 2, "70-80": 1},
+    "gatekeeper_applied": false
+  }
+}

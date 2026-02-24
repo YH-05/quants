@@ -1,0 +1,47 @@
+{
+  "ticker": "STAN",
+  "batch_index": 2,
+  "batch_total": 3,
+  "target_claim_ids": ["STAN-011", "STAN-012", "STAN-013"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "STAN-011",
+      "claim_type": "factual_claim",
+      "claim": "PB/WM AUM CAGR 30%（過去5年）、AAM地域でのウェルスクライアント数増加",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2013年次発言相当による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。STAN-005（PB/WM成長）の支持事実",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付けあり。STAN-005（50%）の支持事実。CAGR 30%という高成長率が注目に値するが結果指標。0.6"
+    },
+    {
+      "id": "STAN-012",
+      "claim_type": "factual_claim",
+      "claim": "グローバル25市場でUSD 1億超収益達成（FY2013）、AAM事業への収益集中",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2013年次発言相当による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。STAN-001（AAM特化ネットワーク）の支持事実",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。STAN-001（50%）の支持事実。25市場×$100M以上という規模感を示す。0.5"
+    },
+    {
+      "id": "STAN-013",
+      "claim_type": "factual_claim",
+      "claim": "CET1比率11.4%・LCR 110%超・コア利益安定成長（H1 2014）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 2013年次/H1 2014 CFO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。STAN-004（資本充実度）の支持事実",
+      "final_confidence": 0.4,
+      "scoring_rationale": "事実主張として定量的裏付けあり。STAN-004（30%）の支持事実。規制資本比率は業界標準要件であり差別化要素としては限定的。0.4"
+    }
+  ]
+}

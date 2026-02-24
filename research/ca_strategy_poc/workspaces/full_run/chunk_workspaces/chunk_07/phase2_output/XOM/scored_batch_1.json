@@ -1,0 +1,87 @@
+{
+  "ticker": "XOM",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": "XOM-004",
+      "claim": "グローバル調達組織が大規模プロジェクト実行中に市場の節約分を捕捉する能力を持ち、下降サイクルでも資本効率を維持しながら投資を継続できる",
+      "power_type": "scale_economies",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "グローバル調達組織という能力の主張。'structural improvements'という言及あり"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「capability of global procurement organization」という能力説明は適切",
+        "rule04_quantitative": "「structural improvements」という表現あり。具体的なコスト削減額・率なし",
+        "rule11_industry_structure": "大型エネルギープロジェクトでの調達力は規模の経済の典型例"
+      },
+      "kb2_evaluation": {
+        "pattern_III": "capability_over_result: 調達能力（能力）→資本効率（結果）",
+        "pattern_B": "大手統合石油会社（Shell、Chevron等）も同様の調達組織を持つ。規模でのXOM優位はあるが",
+        "adjustment": "+0"
+      },
+      "kb3_calibration": {
+        "reference_case": "規模の経済による調達優位はXOMの規模（最大級）を考えると認められるが、具体的データ不足→50%",
+        "final_reasoning": "'structural improvements'という表現が組織的能力を示唆するが定量証拠なし"
+      },
+      "final_confidence": 0.5,
+      "scoring_rationale": "「capability of our global procurement organization」という表現は能力を適切に説明している（KB1ルール1適合）。XOMはエクソンモービルとして世界最大級の資本支出規模を持ち、調達規模の優位は理論的に存在する（Scale Economies）。ただし実際のコスト削減額・競合との比較が示されていない（KB1ルール4不足）。Shell、Chevronも同様の大規模調達組織を持つ（KB2パターンB適合）。50%が妥当。"
+    },
+    {
+      "id": "XOM-005",
+      "claim": "92億バレルの多様な資源ベースと、LNG・非在来型・深海など複数資源タイプにおける高品質な投資機会が、資本配分の最適化を可能にしている",
+      "power_type": "cornered_resource",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "92億バレルという具体的な規模の主張。資源多様性の主張"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "資源ベース（資産）は能力・仕組みではなく保有資源。「capital allocation optimization」は能力だが",
+        "rule04_quantitative": "92億バレルという具体数値あり。ただし競合との比較なし",
+        "rule07_pure_competitor": "Shell（同等規模の資源ベース）、BP、Chevronとの比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_B": "industry_common: 他の石油メジャーも同様に多様な資源ポートフォリオを保有",
+        "pattern_A": "「high-value investment opportunities」は自己評価・結果に近い",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "LLY#1 (50%): 複数薬剤ポートフォリオ（業界共通）。XOM-005も複数資源タイプの保有は石油メジャー共通",
+        "final_reasoning": "92億バレルは大きな数字だが、Shellやchevronも同等規模の資源ベースを持つ"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "92億バレルという資源ベースの規模は具体的だが、Shell（同様の資源規模）、Chevron、BPと比較した際の差別化が不明（KB2パターンB適合）。「diverse and deep resource base」という表現も統合石油メジャーに共通する表現。「high-value investment opportunities」は自己評価（KB2パターンA適合）。資本配分最適化は「できる」という主張だが、他社との比較でのROCE優位等の定量証拠がない（KB1ルール4不足）。30%が妥当。"
+    },
+    {
+      "id": "XOM-006",
+      "claim": "XTOへのボルトオン買収統合において、ExxonMobilの独自技術・資源開発ノウハウ・強固な財務力を活用して取得資産を高度化する能力を持っている",
+      "power_type": "process_power",
+      "gatekeeper": {
+        "passed": true,
+        "reason": "買収統合能力の主張。ただし証拠は自己評価レベル"
+      },
+      "kb1_evaluation": {
+        "rule01_capability_not_result": "「resource capability, expertise, proprietary technology, strong balance sheet」という能力列挙。ただし具体的な統合成果なし",
+        "rule04_quantitative": "「very beneficial」という定性評価のみ。具体的な生産量・コスト改善データなし",
+        "rule07_pure_competitor": "他の統合石油会社（Shell、Chevron）との買収統合能力比較なし"
+      },
+      "kb2_evaluation": {
+        "pattern_D": "qualitative_only: 「proprietary technology」「expertise」という定性的能力列挙のみ",
+        "pattern_B": "大型統合石油会社はいずれも買収統合能力を持つ",
+        "adjustment": "-20%"
+      },
+      "kb3_calibration": {
+        "reference_case": "COST#2 (10%): 「劇場的価値」の定性的差異。XOM-006も定性的能力列挙→30%に留める",
+        "final_reasoning": "自己申告の能力列挙。「very beneficial」という自己評価は証拠として弱い"
+      },
+      "final_confidence": 0.3,
+      "scoring_rationale": "'resource capability, expertise, proprietary technology, strong balance sheet'という能力の列挙は定性的かつ自己申告（KB2パターンD適合）。「very beneficial」という主観的評価のみで具体的な統合成果（生産性向上率、コスト削減額等）が示されていない（KB1ルール4不足）。XTOというシェール専門会社へのXOM技術・ノウハウの適用は理論的に意味があるが、証拠の質が低い。30%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scoring_date": "2015-09-30",
+    "kb_files_applied": ["dogma.md", "kb1_rules_transcript", "kb2_patterns_transcript", "kb3_fewshot_transcript"],
+    "evaluator": "transcript-claim-scorer"
+  }
+}

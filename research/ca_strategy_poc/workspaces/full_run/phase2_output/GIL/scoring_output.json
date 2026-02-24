@@ -1,0 +1,174 @@
+{
+  "scored_claims": [
+    {
+      "id": "GIL-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Gildanはヤーンスピニング（糸紡ぎ）への垂直統合投資を実施中であり、2016年に年間1億ドルの累積製造コスト削減を達成する見込みで、競合が容易に模倣できない製造プロセス優位性を構築している。",
+      "descriptive_label": "垂直統合ヤーンスピニングによる年1億ドルコスト削減",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.7,
+      "scoring_rationale": "年間$100M累積製造コスト削減という定量目標（rule04 quantitative）。垂直統合（仕組み, rule01 pass）であり、ヤーンスピニングへの長期投資は競合が容易に模倣できない（Process Power）。dogma.md「スケールと参入障壁を兼ね備えた製造プロセス能力」に合致。業界構造として原材料コストが競争力の主要決定要因のため rule11 structural pass。Hanesbrands等の競合との比較は明示されていないが（rule07 partial）、規模効果+垂直統合は差別化された能力。Q4 FY2014発言（rule12 primary）。kb3 few-shot（COST#1: 構造的コスト優位性70%）に類似。ただし「2016年目標」という将来形のため一段階割引。70%が適切。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "ヤーンスピニング垂直統合→製造コスト$100M削減→粗利率改善→EPS CAGR直接接続（rule05 direct）。2016年に最大年次増分を達成予定という時間軸明確。Q4発言（rule12 primary）。パターンII-T（直接的CAGR接続）。70%。"
+    },
+    {
+      "id": "GIL-002",
+      "claim_type": "competitive_advantage",
+      "claim": "GildanはPrintwear市場でのリーダーシップポジションを確保しており、2014年12月の戦略的価格引き下げにより流通業者在庫を適正化し、業界標準の価格水準を設定する能力を持つ。",
+      "descriptive_label": "Printwear市場リーダーシップと価格設定力",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "Printwear市場リーダーシップ（仕組み的要素, rule01 partial pass）。「価格設定を主導できる」は能力だが、定量的なシェアデータ未提示（rule04 partial）。'Reinforced our leadership position'は結果の表現（pattern_A_result_as_cause部分）。純粋競合（Hanesbrands, Fruit of the Loom）との定量比較なし（rule07 insufficient）。価格引き下げは戦略的行動であり能力の証拠としては弱い側面あり（rule08 concern）。Q4 FY2014発言（rule12 primary）。kb3（COST#3: 50%）と同水準。50%。",
+      "kb1_flags": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "リーダーシップ維持→価格設定力→売上安定→CAGR接続（rule05 indirect）。価格引き下げ後の需要回復（Q2 2015: +8%）で部分検証済み。3ステップの因果チェーン（pattern_C_causal_leap部分）。50%。"
+    },
+    {
+      "id": "GIL-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Gold Toeブランドは紳士靴下市場でメインの国内チェーン店での市場シェアを25ヶ月連続で拡大しており、ブランドの粘着性と小売棚スペース占有力を示している。",
+      "descriptive_label": "Gold Toe 25ヶ月連続シェア拡大のブランド粘着性",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.5,
+      "scoring_rationale": "25ヶ月連続シェア拡大は定量的トラックレコード（rule04 quantitative, pattern_I_quantitative_differentiation）。ブランドの継続的シェア拡大は能力の証拠（rule01 pass）。靴下市場でのブランド優位性（dogma.md Branding評価）。ただしシェア拡大は結果（rule01 concern部分）であり、ブランドを支える具体的な仕組み（製品差別化、価格帯管理）の説明が限定的。競合（Hanes靴下等）との定量比較なし（rule07 partial）。靴下市場はブランドスイッチが容易（switching cost低い）。50%が適切。",
+      "kb1_flags": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "ブランドシェア拡大→棚スペース確保継続→Branded Apparel売上CAGR接続（rule05 indirect）。25ヶ月というモメンタムは持続性の示唆。ただしカテゴリ規模が限定的のため全社CAGRへのインパクトは中程度。50%。"
+    },
+    {
+      "id": "GIL-004",
+      "claim_type": "competitive_advantage",
+      "claim": "GildanブランドのPrintwear市場での販売量は、2014年12月の価格調整後も米国で前年比8%増を達成しており、ブランドへの需要回復力を示している。",
+      "descriptive_label": "価格調整後の需要回復力（Printwear+8%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.5,
+      "scoring_rationale": "+8%成長は結果の数値（rule01 concern, pattern_A_result_as_cause）。ただし価格引き下げ後の需要回復は、ブランド支持の間接的証拠（能力の裏付け, rule01 partial pass）。定量データあり（rule04 quantitative）。純粋競合との比較なし（rule07 insufficient）。Q2 FY2015発言（rule12 secondary相当）。「Comparable basis」での比較であり前年より改善。50%で維持。",
+      "kb1_flags": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "需要回復実績→Printwear売上成長継続→全社売上CAGR接続（rule05 direct部分）。Q2 2015実績で検証済み。ただし価格引き下げベースの成長のため利益率インパクトに注意。50%。"
+    },
+    {
+      "id": "GIL-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Gildanのアジア太平洋・中南米のInternational Printwear市場は、それぞれ前年比30%超・40%超の売上増を達成しており、グローバル製造拠点の規模を活かした国際展開が加速している。",
+      "descriptive_label": "国際Printwear市場での高成長（APAC+30%超、中南米+40%超）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.5,
+      "scoring_rationale": "30%超・40%超という定量的な高成長数値（rule04 quantitative）。グローバル製造規模を活かした国際展開（仕組み, rule01 pass）。ただし国際市場は従来小規模な新興市場であり初期段階の高成長（pattern_B_industry_common部分）。各市場での競合との比較なし（rule07 insufficient）。Q2 FY2015発言（rule12 secondary相当, -10%調整考慮）。全社売上に対する国際Printwearの割合が限定的のため50%。",
+      "kb1_flags": [
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "国際Printwear高成長→グローバル売上多様化→全社CAGR貢献（rule05 indirect）。APAC・中南米の全社比率が限定的のためCAGR接続のインパクトは中程度。50%。"
+    },
+    {
+      "id": "GIL-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Comfort Colorsブランドは過去4年間に年率20%超の成長を達成しており、大学・書店・リゾートショップ向けのFashion Basics市場でのニッチブランド優位性を持つ。",
+      "descriptive_label": "Comfort Colors 4年連続20%超成長のニッチブランド優位性",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": 0.7,
+      "scoring_rationale": "4年連続20%超という高成長率は強力な定量的トラックレコード（rule04 quantitative, pattern_I_quantitative_differentiation）。Fashion Basics市場という明確なニッチでの地位（仕組み, rule01 pass）。「Success story in our industry」という独立的第三者評価（rule11 industry recognition）。Q4 FY2014発言（rule12 primary）。ニッチ市場での高成長は競合参入が困難なポジション（Branding）を示す。ただし大学・書店チャネルは比較的小規模市場（全社CAGR貢献は限定的）。kb3 few-shot（MNST: ブランド優位性70%）に類似の強いブランドトラックレコード。70%。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_I_quantitative_differentiation",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "Comfort Colors 20%成長継続→Branded Apparel売上貢献→全社CAGR接続（rule05 direct）。ただしComfort Colors単体の売上規模が全社に比して限定的のため60%。4年実績で信頼性高い。"
+    },
+    {
+      "id": "GIL-007",
+      "claim_type": "competitive_advantage",
+      "claim": "GildanはホンジュラスにRio Nance VIの新テキスタイル施設を建設中であり、カナダ・米国・バングラデシュを加えたグローバル製造ネットワークにより競合が複製困難な低コスト生産体制を整備している。",
+      "descriptive_label": "グローバル製造ネットワーク拡充（Rio Nance VI）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "Rio Nance VI（建設中）・コスタリカ（2017年生産開始予定）・バングラデシュ（拡大中）は将来の製造能力（rule08 concern, pattern_F_strategy_confusion）。「expected to begin production in Q4 2016」は現時点での優位性ではない（rule01 concern）。Q2 FY2015発言（rule12 secondary, -10%調整）。グローバル製造ネットワーク構築は大手繊維会社に共通の戦略（pattern_B_industry_common部分）。現時点で稼働中の施設の競争力のみ評価すべきで30%。",
+      "kb1_flags": [
+        "rule08_strategy_not_advantage",
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "製造ネットワーク拡充→生産キャパ増強→売上成長支持→CAGR接続（rule05 indirect）。ただし稼働は2016-2017年以降。cutoff date（2015-09-30）内では建設中。40%。"
+    },
+    {
+      "id": "GIL-008",
+      "claim_type": "factual_claim",
+      "claim": "2015年12月期Q1（2014年10月-2015年1月）のBranded Apparel売上は前年比20%超増の約2.3億ドル。Gildanブランド下着販売量は前年12月期比ほぼ2倍。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "GIL-009",
+      "claim_type": "factual_claim",
+      "claim": "Gildanブランド下着の2015年12月期Q1の市場シェアは6.2%（前年3.2%から2倍）。2015年通年で10%達成が目標。",
+      "transcript_call_type": "Q4_annual",
+      "power_type": null,
+      "confidence_score": null,
+      "scoring_rationale": "事実確認クレーム。スコアリング対象外。",
+      "kb1_flags": [],
+      "kb2_pattern": null,
+      "cagr_connection_score": null,
+      "cagr_rationale": null
+    },
+    {
+      "id": "GIL-010",
+      "claim_type": "cagr_connection",
+      "claim": "垂直統合によるヤーンスピニング投資（年間コスト削減1億ドル目標）とグローバル製造拠点拡充が長期的な粗利率改善と安定したEPS成長基盤を提供し、2016年の強い収益成長を支える。",
+      "descriptive_label": "垂直統合コスト削減$100M→粗利改善→EPS CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "垂直統合コスト削減$100M→粗利率改善→EPS成長という直接的メカニズム（rule05 direct）。2016年最大年次増分という具体的時間軸。Q4発言（rule12 primary）。GIL-001の能力スコア70%と対応。パターンII-T（直接的CAGR接続）。70%。"
+    },
+    {
+      "id": "GIL-011",
+      "claim_type": "cagr_connection",
+      "claim": "GildanブランドのBranded Apparel売上成長（前年比70%増）と18,000小売店舗展開拡大が、小売チャネルの多様化と経常収益基盤の確立を通じて長期EPS成長ドライバーとなる。",
+      "descriptive_label": "Branded Apparel70%成長+18,000店舗→小売多様化→EPS CAGR接続",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Branding",
+      "confidence_score": null,
+      "scoring_rationale": null,
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_II_direct_cagr_mechanism",
+      "cagr_connection_score": 0.7,
+      "cagr_rationale": "Branded Apparel売上成長70%+18,000店舗展開→小売売上直接加算→EPS CAGR（rule05 direct）。Q2 FY2015実績（+70%）で検証済み。店舗数倍増（約9,000→18,000）は直接的な成長メカニズム。Q2発言（rule12 secondary相当）だが実績が伴うため70%維持。パターンII-T（直接的CAGR接続）。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 11,
+    "confidence_distribution": {
+      "0-10": 11
+    },
+    "gatekeeper_applied": false
+  }
+}

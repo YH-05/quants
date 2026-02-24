@@ -1,0 +1,236 @@
+{
+  "ticker": "STX",
+  "batch_index": 0,
+  "batch_total": 1,
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "HDD製造における在庫35%削減のリーン生産管理能力",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "在庫35%削減という定量データで能力を裏付け。ただし吸収コスト悪化（100bp）を招いており純粋優位かは不明"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_I_quantitative_differentiation",
+          "high_eval_patterns": ["pattern_I"],
+          "adjustment": 0,
+          "reasoning": "競合比35%在庫削減は定量的差別化（Pattern I）。ただし一時的な管理判断か恒久的プロセス優位かは不明"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "競合比35%在庫削減は Pattern I の定量的差別化。ただし吸収コスト悪化を招いており、純粋なプロセス優位とは言い難い側面もある。50%維持"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "ニアライン/クラウド向けHDD exabyte出荷50%超成長",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_fail", "reasoning": "50%成長は結果。WDCとの2社寡占でシェア比較が不明確"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": ["pattern_A"],
+          "adjustment": -5,
+          "reasoning": "Pattern A: 成長率（結果）を規模優位（能力）として提示。WDCもニアラインシェアを取っているとCEO自身が認めている"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "ニアライン成長はPattern A（結果→能力）。WDCが分配チャネルでシェアを取ったとCEOが認めており、独占的Scale Economies優位とは言えない。30%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "6TB/8TBエア型（非ヘリウム）SMR駆動のHDD技術プラットフォーム",
+      "phase1_confidence": 0.5,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "pass", "reasoning": "ヘリウム不要のコスト優位は技術能力として評価"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_V_specific_competitor_comparison",
+          "high_eval_patterns": ["pattern_V"],
+          "adjustment": 0,
+          "reasoning": "HGST（WDC）のHelium HDDに対する非ヘリウムエア型の競合比較。コスト優位が明示（Pattern V）"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.5,
+      "confidence_rationale": "競合（HGST/WDC）のHelium型に対するエア型コスト優位（Pattern V）。ただしWDCが10TB Heliumで先行しており、8TB以上での競争では不確実。50%"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "descriptive_label": "フラッシュ非依存コントローラー技術によるメディア選択柔軟性",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "コントローラー技術は固有だが非HDD事業の利益率が低く未実証"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_C_causal_leap",
+          "rejection_patterns": ["pattern_C"],
+          "adjustment": -5,
+          "reasoning": "Pattern C: flash-agnosticコントローラー→長期優位への因果が飛躍。非HDD事業($250M)は企業平均を下回る利益率"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "フラッシュ非依存コントローラーの論理は示唆的だが、非HDD事業の低利益率で優位性が未実証（Pattern C）。30%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "FCF 65%超を株主還元する資本配分規律とOpEx10%削減能力",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "fail", "reasoning": "資本配分は財務管理能力。競争優位性の根拠にならない"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": ["pattern_A"],
+          "adjustment": -10,
+          "reasoning": "Pattern A: FCF率（結果）を競争優位（能力）として提示。資本配分は競合も実施可能"
+        },
+        "dogma_adjustment": {"applied_rules": ["Gatekeeper: 財務指標は競争優位の証拠ではなく結果"], "adjustment": -10}
+      },
+      "final_confidence": 0.1,
+      "confidence_rationale": "財務的資本配分はゲートキーパー（財務指標は結果）に該当。競争優位性として認定不可。10%に引き下げ"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "高容量化（6TB→8TB→10TB）に伴うHDD製造技術複雑性増大が規模経済を強化",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_fail", "reasoning": "業界全体の技術動向であり STX 固有ではない"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": ["pattern_B"],
+          "adjustment": -5,
+          "reasoning": "Pattern B: HDD容量増加・複雑性増大は業界共通。WDCも同等の恩恵を受ける"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "業界全体の技術トレンドはPattern B（業界共通）。STX固有の規模優位の証拠ではない。30%"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Switching Costs",
+      "descriptive_label": "ニアラインHDDの13週超リードタイム構造によるOEM qualification switching costs",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "リードタイムは業界特性だがWDCも同様のリードタイムを持つ"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": ["pattern_B"],
+          "adjustment": -5,
+          "reasoning": "Pattern B: 長リードタイムは業界全体の特性。WDCも同様の状況"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "リードタイムによるスイッチングコストは業界全体の特性（Pattern B）。STX固有ではない。Q4 2015にWDCがニアライン配分でシェア取得したことが切り替えの容易さを示唆。30%"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Cornered Resource",
+      "descriptive_label": "6TB/8TBの先行qualification完了による主要OEM・クラウド顧客との技術的深耕",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_fail", "reasoning": "先行qualification は事実だが WDC も同プロセスを経る"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_B_industry_common",
+          "rejection_patterns": ["pattern_B"],
+          "adjustment": -5
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "qualification先行はPattern B（業界共通プロセス）。排他的リソースとしての証拠が欠如。30%"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Counter-Positioning",
+      "descriptive_label": "フラッシュ代替論への反論（HDD+FlashハイブリッドモデルによるCounter-Positioning）",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_pass", "reasoning": "ハイブリッドモデルの論理は一貫しているが、PC市場でのHDD需要低下を過小評価していた可能性"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_C_causal_leap",
+          "rejection_patterns": ["pattern_C"],
+          "adjustment": -5,
+          "reasoning": "Pattern C: フラッシュは「storageに使われない」という主張は2015年時点で既に疑問符付き"
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "ハイブリッドモデルのCAGR論理は部分的に正しいが、PC市場でのHDD代替リスクの過小評価（Pattern C）。30%"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Scale Economies",
+      "descriptive_label": "Investment-grade債券調達による低コスト資本構造",
+      "phase1_confidence": 0.1,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "fail",
+        "kb1_t_rules": {"verdict": "fail", "reasoning": "財務最適化は Scale Economies ではない"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": ["pattern_A"],
+          "adjustment": -20
+        },
+        "dogma_adjustment": {"applied_rules": ["Gatekeeper: 財務指標"], "adjustment": -20}
+      },
+      "final_confidence": 0.1,
+      "confidence_rationale": "財務的資本構造はゲートキーパー（財務指標は結果）に該当。競争優位性として認定不可。10%"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "competitive_advantage",
+      "seven_powers_category": "Process Power",
+      "descriptive_label": "Hybrid drive の主要PC OEM 3 社への採用実績",
+      "phase1_confidence": 0.3,
+      "phase2_scoring": {
+        "gatekeeper_verdict": "pass",
+        "kb1_t_rules": {"verdict": "partial_fail", "reasoning": "OEM採用は事実だが volumes（250万台/四半期）は市場の1.8%のみ"},
+        "kb2_t_pattern": {
+          "matched_pattern": "pattern_A_result_as_cause",
+          "rejection_patterns": ["pattern_A"],
+          "adjustment": -5
+        },
+        "dogma_adjustment": {"adjustment": 0}
+      },
+      "final_confidence": 0.3,
+      "confidence_rationale": "Hybrid drive採用はPattern A（採用実績→能力への誤帰属）。戦略的重要性が市場全体の1.8%と低く30%維持"
+    }
+  ],
+  "summary": {
+    "total_claims_scored": 11,
+    "competitive_advantage_claims": 9,
+    "cagr_connection_claims": 2,
+    "avg_confidence": 0.282,
+    "high_confidence_claims": [],
+    "medium_confidence_claims": [1, 3],
+    "low_confidence_claims": [2, 4, 5, 6, 7, 8, 9, 10, 11]
+  }
+}

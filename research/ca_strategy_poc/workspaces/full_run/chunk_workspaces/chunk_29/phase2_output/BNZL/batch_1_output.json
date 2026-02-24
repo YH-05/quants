@@ -1,0 +1,104 @@
+{
+  "ticker": "BNZL",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "BNZL-006",
+      "power_type": "Process Power",
+      "gatekeeper": "pass",
+      "gatekeeper_reason": "買収後の運転資本削減・IT統合は具体的なプロセス能力",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "pass",
+          "note": "「オーナー経営者は在庫量で富を測るが、我々は在庫の少なさで富を測る」という組織文化・プロセスの具体的説明"
+        },
+        {
+          "rule_id": "rule02_noun_attribute",
+          "result": "pass",
+          "note": "「在庫管理効率化プロセス」という名詞属性"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "note": "2014年の平均運転資本が2013年比£10M低下という具体的な能力の成果"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "note": "£10M運転資本削減という定量データ"
+        }
+      ],
+      "confidence_score": 0.7,
+      "confidence_rationale": "「オーナーの在庫観と我々の在庫観の違い」という文化的差異の具体的説明と、£10M運転資本削減という定量裏付けは、M&A後の統合プロセスPowerの証拠として高く評価できる。dogma.md ルール4（定量的裏付け）に適合。70%（おおむね納得）",
+      "cagr_connection_score": 0.7,
+      "cagr_connection_rationale": "運転資本削減→フリーキャッシュフロー改善→さらなる買収原資の確保という直接的なメカニズム"
+    },
+    {
+      "claim_id": "BNZL-007",
+      "power_type": "Network Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "グローバル会議によるブランド共有はNetwork Economiesより Process Power またはブランドに近い",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "partial",
+          "note": "グローバルブランド共有（スペインのグローブブランドをUKに展開）は能力の一端だが、ネットワーク効果のメカニズムが弱い"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "partial",
+          "note": "グローバル会議は組織的仕組みだが、補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "note": "グローバル会議→ブランド共有→スケールメリットの因果チェーンが飛躍的"
+        }
+      ],
+      "confidence_score": 0.5,
+      "confidence_rationale": "グローバル会議を通じたプロダクトラインとブランドの共有は能力として認める。ただしこれはNetwork Economies（ユーザー数増加による価値向上）ではなく、Process Power（組織的ブランド管理プロセス）またはScale Economies（調達規模）に近い。フレームワーク分類の問題もあるが、能力自体は存在する。50%（まあ納得）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "グローバルブランド共有→新市場でのOwnLabel早期展開→利益率向上という接続は理論的には成立"
+    },
+    {
+      "claim_id": "BNZL-008",
+      "power_type": "Scale Economies",
+      "gatekeeper": "conditional",
+      "gatekeeper_reason": "Rest of World のプロフィット貢献4%→12%はポートフォリオ変化の結果",
+      "kb1_rules_applied": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": "fail",
+          "note": "RoW貢献度12%は戦略の結果であり、規模の経済を生む能力の説明ではない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": "fail",
+          "note": "地理的多様化は補完的要素"
+        }
+      ],
+      "kb2_patterns_matched": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "note": "RoW貢献度増加（結果）を成長エンジン（優位性）として提示"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "note": "RoW展開（戦略）を規模の経済（優位性）として提示"
+        }
+      ],
+      "confidence_score": 0.3,
+      "confidence_rationale": "RoW貢献度4%→12%はポートフォリオ変化の結果であり競争優位性ではない（dogma.md ルール1、ルール8）。地理的分散はBNZL-005（プレイブック）の結果として評価すべきで、独立した優位性としての証拠は弱い。30%（あまり納得しない）",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "新興市場での成長はグループ全体の成長加速に貢献しうるが、メカニズムの説明不足"
+    }
+  ]
+}

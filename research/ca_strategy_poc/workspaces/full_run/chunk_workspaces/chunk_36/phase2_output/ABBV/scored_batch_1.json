@@ -1,0 +1,136 @@
+{
+  "ticker": "ABBV",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Synthroidブランドの医師・患者ロイヤルティ（ジェネリック参入後も70%市場シェア維持、30年の処方習慣）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "医師・患者の処方習慣という仕組み（Branding）を評価。ジェネリック参入後も70%シェア維持という能力"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "ジェネリック参入後70%市場シェア維持という強力な定量的証拠"
+        },
+        {
+          "rule_id": "rule_3_t",
+          "result": true,
+          "reasoning": "ジェネリック参入にもかかわらずシェアを維持できることがBrandingの相対的優位性を示す"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "定量的差別化パターン。ジェネリック後70%シェアは強力な定量証拠"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Synthroidブランドのジェネリック後70%シェア維持は処方医の信頼・患者の粘着性という能力の証明。Branding（類型2: 医師・患者ブランド認知）として70%が妥当"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "Creon（膵外分泌不全治療薬）の70%市場シェア維持能力（FDA承認プロセス参入障壁）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "FDA承認製品の維持・拡大能力（仕組み）を評価。70%シェアは能力の結果だが、FDA承認取得・維持の仕組みが核心"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "70%市場シェアという定量的証拠"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "FDA承認要件（pancreatic enzyme preparationsの標準化要件）が参入障壁として機能"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合。FDA規制が参入障壁"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Creon 70%シェアはFDA承認要件という参入障壁とブランド認知の組み合わせ。Cornered Resource（FDA承認データ）として70%が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "factual_claim",
+      "claim": "VIEKIRA: Express Scripts独占採用（$1.00割引/日のリベート確定）、CVS Caremark主要採用（ハーボニーと同等扱い）。2015年売上目標$1B超",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 earningsでの具体的契約内容開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "40以上の臨床プログラム（Phase II/III中心）。癌：veliparib（PARP阻害剤）、免疫：ABT-494（JAK阻害剤）。Synthroid: ジェネリック参入後70%シェア維持。Creon: 70%市場シェア",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {
+      "70-80": 4
+    },
+    "gatekeeper_applied": false
+  }
+}

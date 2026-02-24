@@ -1,0 +1,112 @@
+{
+  "ticker": "ORCL",
+  "batch_index": 2,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "競合クラウドベンダー（Salesforce、SAP等）のOracle DB依存 → Oracle DBのクラウドPaaSへの移行促進 → PaaS ARR成長 → 売上CAGR押し上げ",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "因果チェーンが3段階以上。競合がOracle DBからクラウド移行する際にOracle PaaSを選ぶ保証がない",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: 優位性（競合DB依存）が100%ある前提でCAGR接続を評価。依存→PaaS移行→ARR成長の接続は3段階以上で各ステップに不確実性あり（dogma.md低評価パターン）。30%が妥当。"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "垂直統合型クラウドスタック → クラウド運営コスト優位 → マージン改善 → EPS成長によるCAGR下支え",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "垂直統合→限界コスト低下→マージン改善は2ステップで直接的。「SaaS/PaaSはlicenseと同等の利益率」との方向性はある",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 2ステップの直接的メカニズム（dogma.md高評価パターン）だが、AWS/Azure対比コスト優位の定量化が不在で50%。「as profitable as license」という方向性は部分的に支持。"
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "power_type": "Network Economies",
+      "claim_text": "ISVエコシステム依存 → PaaS採用 → ARR成長（FY2016 $1.5B-$2B ARR見通し）→ 売上CAGR +2-3%寄与",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "FY2016 ARR $1.5B-$2B見通しという検証可能な数値あり",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: ISV→PaaS選択→ARR成長は2ステップ。FY2016 ARR見通し数値で検証可能性あり（dogma.md高評価要因）。AWS等代替PaaSリスクで50%に留める。"
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "クラウドERP顧客基盤（1,100社）→ クロスセル/アップセル（HCM、Supply Chain等）→ ARPU拡大 → 売上CAGR下支え",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "クロスセル率やARPU拡大の数値が未開示",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: ERP基盤→クロスセルは2ステップで直接的。SaaSのスイート展開は業界標準モデルで方向性は妥当だが、ARPU開示なしで50%。"
+    },
+    {
+      "claim_id": 14,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "on-premise保守高更新率 → Software Support $18.9B（+8%）の安定成長継続 → 収益ベースの下支えによるCAGR安定化",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "高更新率→保守収益+8%成長は1ステップで直接的。過去実績と一致",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: 1ステップの直接的メカニズム（最も高評価パターン）。Software Support $18.9B（+8%）という開示数値で検証可能。クラウド移行による長期減少リスクはあるが、2015時点の安定性は明確。70%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {"30-40": 1, "50-60": 3, "70-80": 1},
+    "gatekeeper_applied": false
+  }
+}

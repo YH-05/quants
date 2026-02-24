@@ -1,0 +1,78 @@
+{
+  "ticker": "LUN",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "claim_id": "LUN_006",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "Selincroはアルコール依存症治療において世界初の飲酒量低減薬として、NICE推奨・フランスASMR IV分類を取得し、欧州の医療政策上のpayer endorsementを確保する規制差別化を持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 規制承認という能力の証拠",
+        "rule04": "PASS - NICE推奨・ASMR IV分類という具体的な規制上の差別化",
+        "rule07": "PASS - 世界初という競合比較（競合製品が存在しない）",
+        "rule11": "PASS - アルコール依存症治療の市場構造的ニッチ性",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["V-T (具体的競合比較: 世界初という明確な競合優位)", "IV-T (構造的市場ポジション: NICE推奨という規制上の参入障壁)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)", "rule07 (競合との差別化)", "rule11 (業界構造との適合)"],
+        "conclusion": "世界初のアルコール依存症飲酒量低減薬というポジションはコーナードリソース。NICE推奨は英国での保険適用の基盤。ただしパイプラインが薄く、Selincroの市場規模がまだ小さい。将来の競合参入リスクもある。"
+      },
+      "scoring_rationale": "世界初の作用機序とNICE推奨による規制差別化は実質的なコーナードリソース。ただし市場初期段階で収益貢献は限定的。一次ソース。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "LUN_007",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "新製品群（Brintellix、Abilify Maintena、brexpiprazole、Selincro）の欧米市場展開 → 成熟製品（Cipralex、Ebixa）の特許切れによる収益侵食を補填 → 2020年までに事業規模を倍増（売上CAGR ~7-8%）",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 2020年倍増（CAGR ~7-8%）という定量目標、新製品成長+45%という実績数値",
+        "rule06": "PASS - 新製品ポートフォリオ→売上成長というメカニズムは製薬業界の標準的なCAGR接続"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": ["II-T (直接的CAGRメカニズム: 新製品群→特許切れ補填→2020年倍増という明確な2ステップ)", "I-T (定量的差別化: 新製品成長+45%/+55%という実績数値)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)"],
+        "conclusion": "新製品成長実績（+45%/+55%）と将来目標（2020年倍増）の両方が定量化されており、CAGR接続の根拠は明確。Brintellix/Abilify Maintena/Selincroの具体的製品名も特定されている。"
+      },
+      "scoring_rationale": "新製品成長実績（+45%）と将来倍増目標（2020年）が具体化されたCAGR接続。パターンII適用。一次ソース。70%。",
+      "final_confidence": 0.7
+    },
+    {
+      "claim_id": "LUN_008",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "FY2013",
+      "claim_summary": "LundbeckのFY2013売上高はDKK 13.5B規模（ガイダンス達成）。新製品成長+45%（報告）/+55%（Q4）。US売上+22%。国際市場+8%（中国+30%）。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 複数の定量的指標（DKK 13.5B、+45%/+55%、+22%、+8%、+30%）",
+        "rule12": "PASS - FY2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["事実確認型クレームとして評価"],
+        "conclusion": "財務数値は検証可能な事実。一次ソースから。"
+      },
+      "scoring_rationale": "事実確認型クレーム。一次ソースの具体的財務指標。70%。",
+      "final_confidence": 0.7
+    }
+  ]
+}

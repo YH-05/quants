@@ -1,0 +1,273 @@
+{
+  "ticker": "HD",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-24) / Q3 FY2015 referenced",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "プロ顧客（Pro）向けの専門サービス・商品力と広い顧客ベース",
+      "descriptive_label": "プロ顧客向け専門サービス基盤",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: 'Strength in our Pro-driven businesses... double-digit comps in compressors, siding, roofing, ladders, concrete fasteners and several lumber categories'. CFO発言: 'We saw growth in those Pros that was above the company average'. クレジットカード承認率71.2%（Proは消費者より高い）、平均与信枠$6,900",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Craig Menear (CEO) / Carol Tome (CFO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "Proビジネスの成長（結果）が中心だが、Pro向け専用商品・与信・在庫管理という能力・仕組みも言及あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Proクレジット承認率71.2%、平均与信枠$6,900という数値はある。ただし純粋競合（Lowe's）との比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "Lowe'sなど純粋競合との直接比較なし。「company averageを上回る成長」という内部比較のみ"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "住宅リフォーム市場でプロ業者は大量・多頻度購入者であり、専門サービス提供能力は市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×企業ポジション）への部分的合致",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "純粋競合Lowe'sとの直接比較なし（ルール7-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "プロ向けビジネスの強さは定量的に示されているが（二桁コンプ、与信能力）、Lowe'sなど純粋競合との直接比較がない。プロ向け専門商品・与信サービスの仕組みは示されており部分的な優位性証明"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年プロ向け高額チケット（$900超）取引が前年比10.3%増、プライベートレーベルクレジット承認率71.2%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "インターコネクテッドリテール（オンライン×店舗）の統合能力",
+      "descriptive_label": "オンライン・オフライン統合（インターコネクテッドリテール）",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CEO発言）: 'For the year, our online business grew over $1 billion, a growth rate of over 36%. Almost 40% of our online orders were picked up in the store, a testament to the interconnectedness customers' desire for our business.' FIRST phones rollout完了（在庫確認・モバイルチェックアウト機能）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Craig Menear (CEO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "オンライン成長36%は結果。しかし40%のオンライン注文が店舗でピックアップという統合の仕組みは能力として評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "$4B規模のオンラインビジネス、36%成長、40%のストアピックアップ率は数値裏付けあり。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "オムニチャネル統合はデジタル投資（補完的要素の可能性）だが、物理店舗ネットワーク×オンラインの統合は構造的優位になりうる"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×企業ポジション）への部分的合致",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2,269店舗という物理的ネットワークをオンラインのラストマイル拠点として活用するモデルは構造的強みになりうる。ただし競合（Lowe's）も同様の戦略を採っており差別化は不明"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "オンラインビジネス年成長率36%（2014年）、オンライン注文の約40%が店舗でのピックアップ",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "住宅回復サイクルとの構造的連動性（GDP+150bpの売上成長モデル）",
+      "descriptive_label": "住宅回復サイクル連動による構造的成長力",
+      "evidence_from_transcript": "Q4 Prepared Remarks（CFO発言）: 'We expect U.S. comps to grow at GDP plus approximately 150 basis points coming from the recovering housing market.' CFO分析: 3.6百万軒の賃貸から持ち家への転換による需要、Harvard研究でのリモデル支出増加（2014年から2005年以来初）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Carol Tome (CFO)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_6_t", "rule_11_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "住宅市場との連動性はHDのビジネスモデルに本質的に組み込まれた構造的要素"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "住宅リフォーム市場での最大手としての地位と、住宅回復サイクルという市場構造が明確に合致している"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "「住宅回復から恩恵を受ける」はHD固有の優位性ではなく、同市場の競合（Lowe's）も同様に恩恵を受ける"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（業界共通の恩恵への懸念）",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "住宅回復による市場全体の恩恵はHD固有ではなくLowe'sも共有する。ただしHDの規模優位（米国最大手）により恩恵度は高い可能性。業界共通の追い風であり競争優位性としては弱い"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "マーチャンダイジング計画ツールによる品揃え最適化能力",
+      "descriptive_label": "データ駆動型マーチャンダイジング最適化能力",
+      "evidence_from_transcript": "Q4 Prepared Remarks（EVP Merchandising発言）: 'In 2014, we reviewed 154 product categories or roughly 1/3 of the store, using our merchandising planning tools. Results to date have been promising. For example, in vanities, we created store clusters based on certain SKU attributes... This allows us to better match our assortments to customer preferences.' Q&A: 'market share gains in 11 categories (out of tracked categories)'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Edward Decker (EVP Merchandising)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「マーチャンダイジング計画ツール」という能力・仕組みへの言及あり。154カテゴリのレビューという具体的プロセス説明"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "154カテゴリレビュー、11カテゴリでのシェア獲得という数値はある。しかし競合との直接比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "11カテゴリでのシェア獲得は競合対比の証拠だが、具体的な競合名（Lowe's）や比較数値なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力・仕組みの優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "データ駆動のマーチャンダイジング能力は具体的なプロセスとして説明されており、11カテゴリでのシェア獲得という結果も示されている。ただし同業のLowe'sも同様のデータ活用を行っており差別化は不明"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "2014年に154製品カテゴリ（全体の1/3）をレビュー、追跡カテゴリの11カテゴリでシェア獲得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "プロ向け専門サービス・商品力 → プロ顧客の高頻度・大額購買 → 既存店売上+チケット成長",
+      "descriptive_label": "プロ顧客強化→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "プロ向け専門化→高額取引増加→既存店コンプという2ステップの直接接続"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "プロ業者の購買行動（大量・高頻度）→既存店コンプ成長への接続は直接的でSEC開示データで検証可能。Q4での説明で信頼度高"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "オンライン×店舗統合（40%のBOPIS）→ 客数増加＋客単価上昇 → 既存店コンプ+1-1.5pp",
+      "descriptive_label": "インターコネクテッドリテール→売上成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "CFOが100bpのオンライン寄与を開示（直接的）。しかしBOPIS→追加購買への接続は間接的"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "オンラインが100bpコンプ寄与という直接的データあり。BOPISの追加購買効果は確認されているが定量化が不完全"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "住宅回復サイクル → GDP+150bpのコンプ成長 → 中期的売上CAGR",
+      "descriptive_label": "住宅回復→既存店売上成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "住宅回復→リモデル需要→HD売上の直接的接続。Harvard研究でのリモデル支出データで裏付け可能"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "GDP+150bpというフレームワークは開示されており検証可能。住宅ターンオーバー・価格データとの接続が明示的"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "マーチャンダイジング最適化 → シェア獲得 → 既存店コンプへの寄与",
+      "descriptive_label": "マーチャンダイジング→シェア獲得→コンプ成長",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "11カテゴリのシェア獲得は示されているが、それがコンプへの定量的寄与として開示されていない"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "カテゴリ別シェア獲得は実証されているが、全体コンプへの寄与度の定量化が不十分"
+      }
+    }
+  ]
+}

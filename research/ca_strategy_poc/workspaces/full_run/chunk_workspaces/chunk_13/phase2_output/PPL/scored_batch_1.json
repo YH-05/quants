@@ -1,0 +1,70 @@
+{
+  "ticker": "PPL",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PPL-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PPL FY2014実績：継続事業EPS $2.43、継続事業調整後EPS $2.18。2015年EPS見通し $2.05-$2.25。$18Bの5年CapEx計画（97%規制）、97% GBPヘッジ。WPD:英国配電市場シェア約25%",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "PPL-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Cornered Resource",
+      "claim_text": "WPD規制独占 → RIIO-ED1確定収益 → 97%GBPヘッジ後の安定USD利益 → 年率5-6%EPS成長（配当成長）→ 長期CAGR",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.9,
+      "confidence_adjustments": [
+        {
+          "reason": "RIIO-ED1確定収益→EPS成長は1-2ステップで直接的。97%ヘッジで為替不確実性も対処済み。開示データで完全検証可能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.9,
+      "scoring_rationale": "cagr_connection: RIIO-ED1確定収益→EPS成長は1ステップの直接的メカニズム（dogma.md最高評価パターン）。97%ヘッジで外部不確実性を排除し、2023年まで開示データで検証可能。業界構造（規制独占×確定収益）との完全合致でdogma.mdルール11が最高評価を支持。90%。"
+    },
+    {
+      "claim_id": "PPL-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Process Power",
+      "claim_text": "顧客満足度最優秀 → Ofgemの収益率インセンティブ（RIIO仕組み）→ 超過収益 → ROE向上 → CAGR支援",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "顧客満足度→規制インセンティブ→超過収益は2ステップで直接的。RIIOフレームワークの構造で検証可能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: 顧客満足度→RIIO収益インセンティブは2ステップ（dogma.md高評価パターン）。RIIOフレームワーク（業界特性）と顧客サービス品質（能力）の接続は構造的に明確。JD Power全1位という定量裏付けあり。70%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"70-80": 1, "90-100": 1},
+    "gatekeeper_applied": false
+  }
+}

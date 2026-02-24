@@ -1,0 +1,435 @@
+{
+  "scored_claims": [
+    {
+      "id": "NKE-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Flyknit技術プラットフォームによる製品革新とコスト構造優位性（Process Power / Cornered Resource）",
+      "evidence": "Q4 FY2015: 'Flyknit continues to be one of NIKE's great breakthroughs... It's created a whole new model for design and manufacturing. Instead of engineering down to the piece, we can now engineer it down to the pixel to enhance performance, aesthetics and sustainability'",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "「ピクセル単位での設計」という具体的プロセス説明あり。NIKEの独自ニット製造プロセスとして能力・仕組みを提示"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "Flyknit は補完的技術ではなく、製品設計・製造の構造的転換点"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "能力ベースの主張（パターンIII: 能力>結果）。「pixel-level engineering」という独自プロセスの説明あり"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Flyknit技術プラットフォームは単一製品ではなくRunning・Basketball・Football等に横展開されたプロセスパワー型の優位性。「ピクセル単位での設計」という具体的プロセス説明が能力の存在を裏付ける。ただしadidas Primeknit等との性能・コスト差の定量比較がなく70%"
+    },
+    {
+      "id": "NKE-002",
+      "claim_type": "competitive_advantage",
+      "claim": "アスリートとの長期関係に基づく製品開発インサイト（Cornered Resource / Branding）",
+      "evidence": "Q4 FY2015: 'Our relationship with the world's best athletes provide us great insight that produce incredible product innovation... Q2 was the 13th consecutive quarter of double-digit growth for our Basketball category.' Basketball $4B規模",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "トップアスリートとの独占的関係はCornered Resourceの典型。能力・仕組みとして提示"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "13四半期連続二桁成長・Basketball $4B規模という定量データあり"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": true,
+          "reasoning": "スポーツ消費財市場はアスリートのブランド力が消費者の購買に直結する構造"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "13四半期連続二桁成長という定量的裏付けが差別化を示す（高評価パターンI）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_I",
+          "adjustment": 0.05,
+          "reasoning": "定量的裏付けのある差別化"
+        }
+      ],
+      "overall_reasoning": "LeBron・KD・Kyrie等のスター選手との独占的契約はCornered Resource。13四半期連続二桁成長という定量的証拠が存在し、Basketball $4B規模で純粋競合（adidas、Under Armour）に対して明確な差別化を示す。adidas（Kanye West等）の追随リスクはあるが、現時点での優位性は明確。70%"
+    },
+    {
+      "id": "NKE-003",
+      "claim_type": "competitive_advantage",
+      "claim": "DTC（Direct-to-Consumer）ビジネスの高マージン化と急成長（Scale Economies / Network Economies）",
+      "evidence": "Q4 FY2015: DTC revenue +27% (Q4), +29% (FY15). GPM expansion driven by higher ASP and DTC growth. ROIC 28.1%（+360bp）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "DTCビジネスモデルはブランド直接管理・高マージン・顧客データ取得という構造的能力"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "DTC +29% FY15、ROIC 28.1%（+360bp）という定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "DTC拡大はNIKEのビジネス構造転換（補完的ではなく構造的）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "DTC +29%という成長率は定量的だが、業界全体のDTCシフトの中での差別化が必要"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "DTC成長はブランド直接管理・高マージン・顧客データ取得という構造的優位を生む。ROIC 28.1%という定量指標はDTC効果の財務的証拠として機能。ただし純粋競合（adidas、Under Armour）のDTC比率との直接比較がなく70%"
+    },
+    {
+      "id": "NKE-004",
+      "claim_type": "competitive_advantage",
+      "claim": "e-commerce/デジタルエコシステムの加速（ネットワーク効果）",
+      "evidence": "Q4 FY2015: 'Fiscal 15 was a great year for NIKE.com. We delivered 51% revenue growth in Q4 with 55% growth for the full year... e-commerce business surpassed $1 billion... Nike+ Training Club app... 65 million women in our digital community'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$1B超・55%成長・65M女性コミュニティという定量データ"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "adidas、Under Armourとのデジタルエコシステム規模の比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "e-commerceへの投資・DXは業界共通のトレンド。差別化の具体的証明が不足"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_B",
+          "adjustment": -0.1,
+          "reasoning": "業界共通トレンドの一部"
+        }
+      ],
+      "overall_reasoning": "NIKE.com $1B超・55%成長は定量的だが、業界全体のDTCシフトの中での差別化が不明確。Nike+65M女性コミュニティは競合との差を示す可能性があるが検証不可。50%"
+    },
+    {
+      "id": "NKE-005",
+      "claim_type": "competitive_advantage",
+      "claim": "カテゴリーオフェンスによる消費者セグメント深化とブランドポートフォリオ管理力",
+      "evidence": "Q4 FY2015: 'only NIKE has the broad portfolio and global reach to execute this strategy around the world. We know what works and we know how to identify large, untapped opportunities'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "カテゴリーオフェンスは戦略（意思決定）。それを支える能力（実行力、ブランドポートフォリオ管理）が優位性の本体"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "adidas（ポートフォリオ: Reebok、Taylor Made等）との比較なし。「only NIKE」は根拠なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_G",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "純粋競合との明確な比較なし（パターンG: 対純粋競合の差別化不明）"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_G",
+          "adjustment": -0.1,
+          "reasoning": "競合差別化不明パターン"
+        }
+      ],
+      "overall_reasoning": "カテゴリーオフェンスは戦略（ルール8）。NIKE/Jordan/Converseのポートフォリオ管理力は能力候補として認めるが、adidas（ポートフォリオ同等規模）との比較なし。「only NIKE」という主張に根拠が示されていない。50%"
+    },
+    {
+      "id": "NKE-006",
+      "claim_type": "competitive_advantage",
+      "claim": "中国市場での#1ポジションとマーケットプレイス再構築能力（Counter-Positioning）",
+      "evidence": "Q4 FY2015: 'NIKE Brand is exceptionally strong with consumers in China, and we hold the #1 market share position in both athletic footwear and apparel... Q4 revenue grew 20%... DTC grew 52%'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "#1シェアは結果（ルール1違反）"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Q4 +20%、FY15 +19%、DTC +52%という定量データ"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "中国では地場ブランド（Li-Ning、Anta）との市場競争。グローバルブランドの差別化として評価"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "#1シェアは結果。流通再構築という能力は認めるが、それを可能にした仕組みの説明が不十分"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "シェア指標の結果→原因の部分的転倒"
+        }
+      ],
+      "overall_reasoning": "中国#1シェアは結果だが、Q4+20%・DTC+52%という成長データと流通再構築という能力面での説明が一定程度存在する。ただしLi-Ning・Anta等の国内競合との比較がなく50%"
+    },
+    {
+      "id": "NKE-007",
+      "claim_type": "competitive_advantage",
+      "claim": "女性アスリートビジネス$6B規模と成長加速力（新市場開拓能力）",
+      "evidence": "Q4 FY2015: 'our Women's business continues to drive strong growth. For the year, revenue grew 20% to nearly $6 billion... we see 65 million women in our digital community'",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$6B規模・20%成長・65Mデジタルコミュニティという定量データ"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Under Armour・Lululemon等の女性アスリート市場での純粋競合との比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "$6B成長は結果。65M女性デジタルコミュニティは能力の一部として評価できるが、競合との比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.1,
+          "reasoning": "成長実績は結果指標"
+        }
+      ],
+      "overall_reasoning": "女性ビジネス$6B・20%成長は定量的。デジタルコミュニティ65M女性はCornered Resource候補として評価できるが、Under Armour・Lululemon等との比較がない。50%"
+    },
+    {
+      "id": "NKE-008",
+      "claim_type": "competitive_advantage",
+      "claim": "北米での5年連続二桁成長達成能力（先進国大規模市場での継続成長力）",
+      "evidence": "Q4 FY2015: 'North America delivered another remarkable year as FY15 revenue grew 12% to $13.7 billion, the fifth consecutive year of double-digit revenue growth.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "5年連続二桁成長は結果であり優位性ではない（ルール1違反）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "継続成長実績を優位性として提示する結果→原因の転倒。成長を可能にした能力は他のclaimで論じられており重複"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "成長実績は結果指標"
+        }
+      ],
+      "overall_reasoning": "5年連続二桁成長は優れた結果だが競争優位性の根拠としては弱い。成長要因は他のclaim（Flyknit、DTC、アスリート関係等）で説明されており本claim固有の価値が限定的。30%"
+    },
+    {
+      "id": "NKE-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2015通期: 売上$30.6B（+10%）、通貨中立+14%、GPM 46%（+120bp）、EPS $3.70（+25%）、ROIC 28.1%（+360bp）、e-commerce $1B超（+55%）、DTC +29%",
+      "evidence": "FY2015 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NKE-010",
+      "claim_type": "factual_claim",
+      "claim": "Basketball 13四半期連続二桁成長、Basketball $4B規模、Running $5B規模、Women's $6B（FY15）、Futures +13%（通貨中立）",
+      "evidence": "FY2015 Q4 Earnings Call category disclosures",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的カテゴリーデータ。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NKE-011",
+      "claim_type": "cagr_connection",
+      "claim": "Flyknit技術プラットフォーム → 製品プレミアム化・ASP上昇 → 有機成長率向上",
+      "evidence": "FY15 GPM +120bp。ASP上昇がGPM拡大の主要因（CFO発言）",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "Flyknit→プレミアム化→ASP上昇→GPM改善は2-3ステップの直接的メカニズム。GPM+120bpという実績で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Flyknit→ASP上昇→GPM改善の接続は直接的かつ検証可能（GPM+120bp実績）。技術プラットフォームからの複数カテゴリ展開が成長を支える。70%"
+    },
+    {
+      "id": "NKE-012",
+      "claim_type": "cagr_connection",
+      "claim": "アスリート関係 → Basketball・Running収益継続成長 → 売上CAGR寄与",
+      "evidence": "Basketball 13四半期連続二桁成長。$4B規模。Running $5B規模。",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "アスリート関係→カテゴリー成長の2ステップ接続。13四半期連続二桁成長で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "アスリート関係→消費者購買の接続は明確で、13四半期の継続的証拠で検証可能。70%"
+    },
+    {
+      "id": "NKE-013",
+      "claim_type": "cagr_connection",
+      "claim": "DTC成長 → GPM改善 → EPS成長",
+      "evidence": "DTC +29%がGPM拡大の主要因。ROIC 28.1%（+360bp）。EPS +25%",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "DTC→高マージン→EPS成長の直接的メカニズム。ROIC+360bpで検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "DTC成長→GPM改善→EPS成長は直接的で検証可能。ROIC 28.1%（+360bp）がDTC効果を裏付ける。70%"
+    },
+    {
+      "id": "NKE-014",
+      "claim_type": "cagr_connection",
+      "claim": "グローバル市場拡大（中国・女性・新興国）→ 売上規模拡大 → 長期CAGR",
+      "evidence": "China +19% FY15、Women's +20%、Emerging Markets成長継続",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "市場拡大→売上成長は2ステップだが、各地域での持続可能性（競合圧力、市場飽和）の検証が限定的"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "市場拡大の方向性は認めるが、競合圧力（中国：Li-Ning、Anta、女性：Lululemon）の開示が不足。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 14,
+    "confidence_distribution": {
+      "70-80": 6,
+      "50-60": 5,
+      "30-40": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

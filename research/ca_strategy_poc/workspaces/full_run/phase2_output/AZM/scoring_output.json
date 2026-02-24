@@ -1,0 +1,128 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "AZM_001",
+      "confidence_score": 0.65,
+      "power_type": "Switching Costs",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result",
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_III_capability_over_result",
+        "pattern_I_quantitative_differentiation"
+      ],
+      "scoring_rationale": "再値上げ能力（repricing capability）という名詞で表現された能力。2005年に80%のAUMを1.2-1.8%から1.5-2.5%に値上げし全顧客を維持したという定量的・歴史的裏付けがある。Rule01適合（能力として抽出）、Rule04適合（80%のAUM、25年間の実績など数値裏付けあり）。ただしパターンI完全適合には至らない（純粋競合との比較なし）。スイッチングコストは証明されるが、他のイタリアAMとの差別化不明（Rule07）のため0.65に留める。",
+      "cagr_connection_score": 0.5,
+      "cagr_connection_rationale": "再値上げ能力があれば規制変更時にマージンを守れ、AUM×手数料率の安定的な成長に直接接続可能。ただし、競合が同様の能力を持つか不明でCAGR接続の飛躍度中程度。"
+    },
+    {
+      "claim_id": "AZM_002",
+      "confidence_score": 0.55,
+      "power_type": "Scale Economies",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result",
+        "rule04_quantitative_evidence",
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_I_quantitative_differentiation",
+        "pattern_A_result_as_cause"
+      ],
+      "scoring_rationale": "ファイナンシャルアドバイザーネットワークの生産性イタリア1位（EUR 100万/FAの純流入）という定量データは高評価。ただしRankNo.1は結果であり（Pattern A）、なぜ1位を維持できるか（能力）の説明が弱い。金融危機時の顧客リテンション比較（FA対銀行員）は能力の示唆だが定量データなし。Rule07: 純粋競合（他のFA系AMや銀行系AMのFC）との比較が不明確。総合的に0.55。",
+      "cagr_connection_score": 0.4,
+      "cagr_connection_rationale": "FAネットワーク生産性→純流入→AUM成長→管理報酬増の接続は明確だが、能力の持続性証明が弱いため接続確実性は中程度。"
+    },
+    {
+      "claim_id": "AZM_003",
+      "confidence_score": 0.6,
+      "power_type": "Process Power",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result",
+        "rule04_quantitative_evidence",
+        "rule07_pure_competitor_differentiation"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_I_quantitative_differentiation",
+        "pattern_A_result_as_cause"
+      ],
+      "scoring_rationale": "20年以上にわたる年1%超の業界アウトパフォーマンスは定量的で期間も長く説得力がある。Rule04適合（1%超、200bp差、20年+の3つのデータポイント）。ただしPattern A リスク：アウトパフォーマンス実績（結果）を並べているが、その背後の投資プロセス（能力）の説明が薄い。「どのように1%超を実現しているか」への説明が限定的。インデックス対比のリスク調整後リターン（イタリア国債ウェイト低減）の言及は能力の一端を示す。Rule07: 純粋競合（Mediobanca AMなど）との比較なし。0.60。",
+      "cagr_connection_score": 0.45,
+      "cagr_connection_rationale": "パフォーマンス優位→資金流入→AUM成長→手数料増の接続は妥当だが、アウトパフォーマンス維持能力の証明が弱く中程度。"
+    },
+    {
+      "claim_id": "AZM_004",
+      "confidence_score": 0.45,
+      "power_type": "Branding",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result",
+        "rule08_strategy_not_advantage"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_D_qualitative_only"
+      ],
+      "scoring_rationale": "CEOの個人投資というアリバイ的な行動でアラインメントを示すのは有効だが、これは経営陣のコミットメント（補完的要素）であり構造的優位性ではない。パフォーマンスフィー体系（変動報酬優先）はアライメントを作る仕組みだが、業界共通のパフォーマンスフィー制度との差別化（Rule07）が不明確。定性的な主張が中心（Pattern D）。ブランド力の構造的要因（なぜこの体系が他社では実施できないか）の説明がない。0.45。",
+      "cagr_connection_score": 0.35,
+      "cagr_connection_rationale": "アラインメント→顧客信頼→AUM維持への接続は理論的に成立するが、定量的裏付けに乏しく低め。"
+    },
+    {
+      "claim_id": "AZM_005",
+      "confidence_score": 0.55,
+      "power_type": "Switching Costs",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result",
+        "rule06_structural_vs_complementary"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_III_capability_over_result"
+      ],
+      "scoring_rationale": "25年間のパフォーマンスフィー体系への顧客教育は構造的スイッチングコストを示唆する。「コストではなくネットパフォーマンスで評価する」という顧客マインドの醸成は仕組みとして評価できる。ただし、他のAMに乗り換えた際のコスト（何を失うか）の説明が弱い。AZM_001と主張が重複しており冗長。AZM_001の補完的主張として評価（Rule06: 補完的要素）。0.55。",
+      "cagr_connection_score": 0.4,
+      "cagr_connection_rationale": "顧客教育→チャーン低下→AUM安定の接続は妥当だが定量的検証なし。"
+    },
+    {
+      "claim_id": "AZM_006",
+      "confidence_score": 0.35,
+      "power_type": "Scale Economies",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_A_result_as_cause"
+      ],
+      "scoring_rationale": "AUMを3.5年で倍増させたことは成長の結果（結果）であり、それを可能にした能力（ファンドの品質、FAネットワーク、プロダクトラインアップ）の説明が主張としては弱い。Rule01違反傾向（Pattern A）。規模が拡大していること自体はScale Economiesの証明にならない。EUR 35.2 billion AUMは絶対規模だが、競合比較なく相対的優位不明（Rule07）。0.35。",
+      "cagr_connection_score": 0.3,
+      "cagr_connection_rationale": "AUM規模→管理報酬の固定費分散の論理は成立するが、能力としての主張が弱く接続確実性低い。"
+    },
+    {
+      "claim_id": "AZM_007",
+      "confidence_score": 0.35,
+      "power_type": "Branding",
+      "gatekeeper_pass": true,
+      "kb1_rules_applied": [
+        "rule01_capability_not_result",
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_patterns_matched": [
+        "pattern_A_result_as_cause",
+        "pattern_D_qualitative_only"
+      ],
+      "scoring_rationale": "新商品が1ヶ月でEUR 600百万に達したことは結果（Pattern A）であり、なぜその速度で資金を集められたのか（能力：ブランド力、FAの信頼、プロダクトの設計力）の説明がない。1ヶ月EUR 600百万が競合と比較して優れているかも不明。Rule07違反。補完的主張（Rule06）。0.35。",
+      "cagr_connection_score": 0.25,
+      "cagr_connection_rationale": "新商品投入能力→AUM多様化の接続は弱く、主張の証拠力が低い。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "0-10": 7
+    },
+    "gatekeeper_applied": false
+  }
+}

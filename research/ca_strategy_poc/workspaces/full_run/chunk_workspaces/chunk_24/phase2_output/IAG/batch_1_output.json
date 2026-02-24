@@ -1,0 +1,79 @@
+{
+  "ticker": "IAG",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_id": "IAG_006",
+      "claim_type": "competitive_advantage",
+      "claim": "IAGはアジア（タイ・マレーシア・インド・ベトナム・インドネシア・中国）6市場への段階的参入戦略を通じて、低保険普及率・中流層拡大という構造的成長市場への長期プラットフォームを構築している。",
+      "descriptive_label": "アジア6市場先行参入による低普及率市場長期プラットフォーム（Scale Economies）",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "アジア参入は戦略（意思決定）。そこから優位性（保険ライセンス蓄積、現地パートナー関係）を抽出しても競合に対する差別化根拠が弱い"},
+        {"rule_id": "rule_11_t", "result": true, "reasoning": "低保険普及率・中流層拡大という業界構造への言及はあるが、IAGが競合より有利なポジションを持つ根拠が不明"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "Allianz・AIA・QBEもアジア展開を行っており、IAGの相対的優位性が不明確"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_F_t", "matched": true, "adjustment": -0.1, "reasoning": "アジア参入戦略を優位性として提示（戦略≠優位性）"},
+        {"pattern_id": "pattern_B_t", "matched": true, "adjustment": -0.1, "reasoning": "多くのグローバル保険会社がアジア展開を行っており業界共通の施策"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_F_t", "adjustment": -0.1, "reasoning": "戦略と優位性の混同"},
+        {"source": "pattern_B_t", "adjustment": -0.1, "reasoning": "業界共通の施策"}
+      ],
+      "overall_reasoning": "低保険普及率・中流層成長という業界構造への言及は存在するが、IAGのポジションがAllianz/AIA/QBE等の競合より優れている具体的根拠がない。アジア参入は戦略であり優位性ではない（ルール8-T）。Q1-Q3含む複数期からの「発見」的要素があり慎重評価（ルール12-T）。Phase 1評価の0.3を維持。"
+    },
+    {
+      "id": 7,
+      "claim_id": "IAG_007",
+      "claim_type": "cagr_connection",
+      "claim": "Wesfarmers統合シナジー（$230M/年ラン・レート） → コスト削減・マージン改善 → 売上CAGR支持",
+      "descriptive_label": "Wesfarmers統合$230Mシナジー→マージン改善のCAGR接続",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "統合シナジーの定量目標と進捗が開示されており、マージン改善への因果チェーンが短い"},
+        {"rule_id": "rule_6_t", "result": true, "reasoning": "統合シナジーは構造的要素（買収完了による持続的コスト削減）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II_t", "matched": false, "adjustment": 0.0, "reasoning": "シナジー→マージン改善は2ステップで検証可能だが、売上CAGRへの接続は間接的（シナジーはコスト削減主体でトップライン成長への接続が弱い）"},
+        {"pattern_id": "pattern_C_t", "matched": false, "adjustment": 0.0, "reasoning": "因果チェーンは2-3ステップで許容範囲内"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "$80M/年達成（2015年末）→$230M/年見込み（2016年末）という開示データで検証可能なシナジー進捗。コスト削減→マージン改善の接続は2ステップで短い。ただし売上成長への接続はコスト削減主体のためトップライン成長との因果が弱い。FY2015年次（主・①相当）。Phase 1評価の0.5を維持。"
+    },
+    {
+      "id": 8,
+      "claim_id": "IAG_008",
+      "claim_type": "factual_claim",
+      "claim": "IAGのFY2014 underlying marginは14%台（FY2013比改善）であり、FY2015のunderlying marginは13.1%（Wesfarmers下方影響考慮後でも長期ROEターゲット15%超）。",
+      "descriptive_label": "FY2014 underlying margin 14%台・FY2015 13.1%（Wesfarmers影響考慮後）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "CEO発言による明確な財務数値（13.1%、ROEターゲット15%超）で検証可能"}
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "factual_claimとして財務数値の正確性を評価。FY2015年次（主・①相当）CEOがunderlying margin 13.1%とWesfarmers影響を明確に説明。Wesfarmers低マージン事業の統合影響を考慮した上での説明であり、因果関係の開示あり。確信度: 70%"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "ticker": "GEBN",
+  "batch_index": 1,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "B2Bブランド×市場アウトパフォーマンス（局所通貨で6.4%成長、市場比上回る）→売上CAGR",
+      "descriptive_label": "B2Bブランド→市場シェア拡大→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "市場outperformの定量的根拠が弱い。KB3 mid-low confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "B2Bブランド→市場outperformの接続は論理的だが、6.4%成長が市場平均を上回るという証拠が弱い。50%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "製造効率改善（EBITDA margin上昇）×売上成長→フリーキャッシュフロー成長CAGR（CHF460mn）",
+      "descriptive_label": "製造効率→EBITDA margin→FCF CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "CHF460mn FCFは検証可能。EBITDA margin 27.3%→FCF生成の直接接続。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。FCF CHF460mnとEBITDA margin 27.3%の実績データが接続を裏付ける。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Sanitec統合シナジー（EUR45mn以上）→欧州リーダーポジションでの中期的収益改善CAGR",
+      "descriptive_label": "Sanitec統合シナジー→EBIT CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 40,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_C_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "未実現シナジーへの経路は因果の飛躍。KB3 low confidence",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_C_t（因果の飛躍）。統合→シナジー→EBIT改善は不確実なステップが多い。Phase1の-10%調整から更に下方修正。30%。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "製品イノベーション→新製品導入→地域別成長機会の開拓→売上CAGR",
+      "descriptive_label": "製品イノベーション→地域展開→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "地域別市場条件依存度が高い。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "製品イノベーション→売上成長の接続は論理的。中国・インドでの双桁成長は示されている。ただし欧州建設市場軟調が全体成長を制限。50%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 4,
+    "confidence_distribution": {"20-30": 1, "40-50": 2, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

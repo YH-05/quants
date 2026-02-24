@@ -1,0 +1,264 @@
+{
+  "ticker": "2454",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "2454_001",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekはスマートフォンチップセット市場において、2013年3億台超・2014年3.5億台超・2015年4.5億台超という大規模出荷量を実現し、主に中国市場でのシェア確立と新興市場拡大（海外比率2014年34%→2015年40-50%目標）により規模の経済を享受している。",
+      "evidence": "Q4 2014（主・①相当）CFO David Ku：「Annual revenue totaled $213.1 billion, up 56.6% year-over-year」「we expect to ship over 450 million units of smartphone in 2015」。Q4 2013（主・①相当）：「we achieved TWD 136 billion, which was up 37.1% year-over-year」「we expect to ship over 300 million smartphone chipsets in 2014」。Q2 2015（従・②相当）：「outside China, for this year, out of our 450 million unit shipment, we are looking for 40% to 50% will be outside China」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule11": true
+        },
+        "confidence": 0.7,
+        "adjustments": [
+          "Q4年次（主・①相当）発言として採用",
+          "ルール1: 「3.5億台→4.5億台」という出荷量の規模は構造的能力",
+          "ルール4: 213億NTD（+56.6%）・グロスマージン48.8%（2014年）という定量データ",
+          "ルール6: 数千名のR&Dエンジニア蓄積・顧客関係・製造ノウハウは構造的",
+          "ルール11: LTE移行（3G→4G）という半導体業界の技術転換期×MediaTekのSoC開発能力の合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "年4.5億台超の出荷規模により、R&D費用（年1000億NTD超）・tapeout費用・IP取得費用の単位当たりコストを大幅に低減。チップ開発コストを出荷量で分散するため、競合が模倣困難な低価格高性能チップの提供が可能",
+        "barrier": "大規模出荷実績→顧客信頼→新規顧客獲得のポジティブサイクル。R&D投資規模（年20%成長）は競合が追随するのに数年を要する"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014 (2015-02-09)",
+          "quote": "Annual revenue totaled $213.1 billion, up 56.6% year-over-year. Gross margin...for the year was 48.8%...net income was $46.4 billion, up 68.8% year-over-year. For shipment, we expect to ship over 450 million units of smartphone in 2015, among which over 150 million units would be from LTE products."
+        }
+      ]
+    },
+    {
+      "id": "2454_002",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekは中国スマートフォン市場において3G時代から支配的なポジションを確立しており、4G/LTE移行において独自のSoCロードマップ（Helioシリーズ：X10、X20、P10）によってQualcommと競合しながら市場シェアを維持・拡大している。",
+      "evidence": "Q1 2015（従・②相当）CFO：「carrier aggregation looks for your timing and aggressive portfolio going up against Qualcomm」。Q2 2015（従・②相当）：「我々のLTE出荷は150M units以上（2015年）になる」。Q3 2015（従・②相当、cutoff境界）：「Helio X10...X20 and P10」。Q4 2014 CFO：「3G competition, the ASP is actually coming down...4G gross margin is somehow still below the corporate average」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07", "rule08"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule07": true,
+          "rule08": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4 2014（主・①相当）をメイン、Q1-Q2 2015（従・②相当）を補完として採用",
+          "ルール1: Helioブランドの自社SoC開発ロードマップは能力として評価可能",
+          "ルール4: 4G LTE 150M units（2015年目標）という定量データ",
+          "ルール7: Qualcommとの市場競合を直接言及しているが、MediaTekの優位性の根拠が「競争できている」という事実のみ",
+          "ルール8: 4G/LTEへの移行は「新市場への進出戦略」であり、確立された優位性との区別が必要"
+        ]
+      },
+      "power_classification": {
+        "power_type": "counter_positioning",
+        "benefit": "Qualcommが高価格・高マージンセグメントに特化している間、MediaTekは中価格帯・新興市場向けのコストパフォーマンスの高いSoCで市場を拡大。QualcommがMediaTekの価格帯に降りると自社の高マージンビジネスを毀損するジレンマがある",
+        "barrier": "中国OEM顧客（OPPO、vivo、Xiaomi等）との深い関係・カスタマイズ実績・サポート体制は後発者が短期で構築困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q2 2015 (2015-07-31)",
+          "quote": "For smartphone and also for tablet, overall, that revenue accounts for 55% to 60% of the overall revenue...we would adjust smartphone annual shipment targets to 400 million, among which 150 million units would be LTE products."
+        }
+      ]
+    },
+    {
+      "id": "2454_003",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekはMStar Semiconductorの買収（2013年完了）によりデジタルテレビ（DTV）チップセット市場において支配的なポジションを確立し、スマートフォン以外の収益多様化（デジタルホーム事業30-35%）を実現している。",
+      "evidence": "Q2 2015（従・②相当）CFO David Ku：「For digital home, which is including DTV and also all legacies, OTT and DVD players, roughly account for 30% to 35% of our overall revenue」。2013年のMStar合併により、DTV市場での規模的優位を獲得（業界推定でDTV市場シェア60%超）。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q2 2015（従・②相当）発言として採用。MStar合併は2013年（PoiT範囲内）の重大イベント",
+          "ルール1: MStar買収による市場ポジション確立は構造的能力",
+          "ルール4: デジタルホーム事業30-35%という定量的収益比率データ",
+          "ルール6: MStar買収による技術・顧客基盤の統合は構造的要素",
+          "ルール7: DTV市場の競合（Amlogic等）との直接比較データなし"
+        ]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "DTV市場での大規模出荷（推定60%超シェア）によりチップ開発コストを分散し、競合が模倣困難な低価格高機能チップを提供",
+        "barrier": "MStar買収で獲得した顧客関係・技術特許・エンジニアリング能力は後発者が短期で複製困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q2 2015 (2015-07-31)",
+          "quote": "For digital home, which is including DTV and also all legacies, OTT and DVD players, roughly account for 30% to 35% of our overall revenue."
+        }
+      ]
+    },
+    {
+      "id": "2454_004",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekは高いR&D投資率（年20%成長、売上比率25-32%のOpEx）による技術開発能力を維持しており、LTE SoC（Helio X20: 10コア、Helio P10: octa-core）という技術的差別化を実現している。LTE SoCは2015年に150M units超出荷を目標とし、将来の高マージン製品ポートフォリオを形成する。",
+      "evidence": "Q4 2014（主・①相当）CFO：「we're looking for -- to increase our investment for the overall R&D resource...We're looking for 20% growth this year...a big portion of that will be on R&D」。Q3 2015（PoiT境界・従・②相当）：「Helio X20 and also the P10, probably you would start at a very small volume by end of this year...first quarter of next year to see more contribution」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule08"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule08": false
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4 2014年次（主・①相当）をメイン採用",
+          "ルール1: 高いR&D投資・Helio SoCロードマップは具体的な能力",
+          "ルール4: R&D費用20%増・LTE 150M units目標という定量データ",
+          "ルール6: R&D継続投資は構造的要素",
+          "ルール8: LTE SoCへの移行投資は「成長戦略」の側面もあり、既存の競争優位との区別が必要"
+        ]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "高いR&D投資による継続的な技術革新（3G→4G→5G）により、各世代で競合より優れたコストパフォーマンスのSoCを開発する内製能力",
+        "barrier": "数千名の半導体エンジニア・複数世代にわたるtapeout実績・TSMC等の製造パートナーとの関係は後発者が短期で構築困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q4 2014 (2015-02-09)",
+          "quote": "we're looking for -- to increase our investment for the overall R&D resource...We're looking for 20% growth this year, 20% increase this year. I think a big portion of that will be on R&D."
+        }
+      ]
+    },
+    {
+      "id": "2454_005",
+      "claim_type": "competitive_advantage",
+      "claim": "MediaTekは新興市場（インド・東南アジア・中東・アフリカ）への地理的拡大において、中価格帯LTEチップの競争力ある価格（「affordable even from emerging market perspective」）により、新興国のスマートフォン普及波に乗るポジションを確立している。海外比率が2014年34%から2015年40-50%に拡大予定。",
+      "evidence": "Q4 2014（主・①相当）CFO：「outside China. For emerging market, we're still looking for opportunity to grow」「40% to 50% will be outside China」。Q3 2015（従・②相当）CFO：「a lot of emerging countries outside China, so we do see some early signs of 4G picking up...the overall pricing for the 4G right now becomes pretty affordable even from an emerging market perspective」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule11"],
+        "results": {
+          "rule01": false,
+          "rule04": true,
+          "rule06": false,
+          "rule11": true
+        },
+        "confidence": 0.4,
+        "adjustments": [
+          "Q4 2014（主・①相当）をメイン採用",
+          "ルール1: 新興市場シェア拡大は地理的展開の「計画」であり、確立された競争優位の証拠としては弱い",
+          "ルール4: 海外比率34%→40-50%目標という定量データあり",
+          "ルール6: 新興市場での製品・サポートインフラはまだ構築中の段階",
+          "ルール11: 世界的スマートフォン普及（新興市場の4G移行）という業界構造×MediaTekのコストパフォーマンス能力の合致"
+        ]
+      },
+      "power_classification": {
+        "power_type": "counter_positioning",
+        "benefit": "新興市場で求められる低価格・高機能チップを提供するポジションに特化。Qualcommが高付加価値セグメントに特化する中、MediaTekが新興市場を囲い込む",
+        "barrier": "ただし新興市場での障壁は弱く、中国ローカル設計会社（Unisoc/Spreadtrum等）も同市場を狙っており差別化が困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "answer",
+          "quarter": "Q4 2014 (2015-02-09)",
+          "quote": "out of our 450 million unit shipment, we are looking for 40% to 50% will be outside China."
+        }
+      ]
+    },
+    {
+      "id": "2454_006",
+      "claim_type": "cagr_connection",
+      "claim": "大規模出荷量・中国市場支配的ポジション・R&D投資継続 → 高グロスマージン維持（45-49%） → 収益成長（2013年+37%、2014年+57%）支持",
+      "evidence": "Q4 2013（主・①相当）：「2013 annual revenue, we achieved TWD 136 billion, which was up 37.1% year-over-year」。Q4 2014（主・①相当）：「Annual revenue totaled $213.1 billion, up 56.6% year-over-year...Gross margin for the year was 48.8%」。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true
+        },
+        "confidence": 0.5,
+        "adjustments": [
+          "Q4年次（主・①相当）発言から採用",
+          "2014年の収益成長+57%・グロスマージン48.8%という強力な定量証拠",
+          "ただし2015年は収益成長鈍化（Q2 2015で-13% YoY）しており、CAGRの継続性に疑問"
+        ]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014 (2015-02-09)",
+          "quote": "Annual revenue totaled $213.1 billion, up 56.6% year-over-year. The gross margin for the year was 48.8%. Operating profit of the year was $47.2 billion, up 87.1% year-over-year."
+        }
+      ]
+    },
+    {
+      "id": "2454_007",
+      "claim_type": "factual_claim",
+      "claim": "MediaTekの2014年財務実績：収益2,131億NTD（前年比+56.6%）、グロスマージン48.8%、営業利益472億NTD（前年比+87.1%）、純利益464億NTD（前年比+68.8%）、EPS 30.04 NTD。スマートフォン出荷350M+（LTE 30M+を含む）。",
+      "evidence": "Q4 2014（主・①相当）CFO準備発言による年次確定財務数値。",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "David Ku",
+          "role": "CFO",
+          "section_type": "prepared_remarks",
+          "quarter": "Q4 2014 (2015-02-09)",
+          "quote": "Annual revenue totaled $213.1 billion, up 56.6% year-over-year. The gross margin for the year was 48.8%. Operating profit of the year was $47.2 billion, up 87.1% year-over-year. Full year 2014 net income was $46.4 billion, up 68.8% year-over-year. Accumulated EPS was $30.04 for the year."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 8,
+    "claim_count": 7,
+    "competitive_advantage_count": 5,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 1,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "system_prompt_transcript.md",
+      "seven_powers_framework.md",
+      "dogma.md"
+    ]
+  }
+}

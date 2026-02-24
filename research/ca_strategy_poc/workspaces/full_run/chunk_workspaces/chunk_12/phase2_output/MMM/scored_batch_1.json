@@ -1,0 +1,131 @@
+{
+  "scored_claims": [
+    {
+      "id": "MMM-008",
+      "claim_type": "competitive_advantage",
+      "claim": "消耗品（Consumables）事業における反復購買・顧客粘着性",
+      "evidence": "Q4 2014 Q&A（CEO発言）: 'Where you're using our products in your manufacturing operation and so forth.' Q2 2014: adhesives and tape grew 8% in US",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.3
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "消耗品の反復購買は事業構造の説明として能力に近い"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "接着剤・テープ市場での競合（Henkel、Nitto Denko、Avery Dennison等）との比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "顧客粘着の具体的仕組み（スイッチングコスト定量化、リオーダー率、チャーンレート）の開示がなく定性的のみ"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper_rule3",
+          "adjustment": -0.2,
+          "reasoning": "製造現場向け消耗品事業は多くの素材・化学メーカーが保有する業界共通モデル"
+        }
+      ],
+      "overall_reasoning": "消耗品の反復購買は事業モデルの記述に過ぎず、なぜ3M製品が継続購買されるのか（スイッチングコスト、品質信頼性、取り換え困難性）の説明がない。Henkel・Nitto Denko等の競合との差別化も不明。30%"
+    },
+    {
+      "id": "MMM-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014通期売上$32B（記録的）、EPS $7.49（+11.5%）、ROIC 22%（目標20%超達成）、フリーキャッシュフロー転換率104%",
+      "evidence": "FY2014 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "MMM-010",
+      "claim_type": "factual_claim",
+      "claim": "R&D支出$1.8B（2014年）、特許取得数3,000件超（2014年）、累積特許100,000件超、新製品活力指数（NVPI）32-33%",
+      "evidence": "FY2014 Q4 Earnings Call R&D disclosures",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的開示データ。競争優位性評価の対象外。"
+    },
+    {
+      "id": "MMM-011",
+      "claim_type": "cagr_connection",
+      "claim": "技術イノベーション能力 → 設計取込・消耗品の継続需要 → 有機成長3-6%（2015年ガイダンス）",
+      "evidence": "Q4 2014ガイダンス: 有機成長率3-6%。技術起点の成長ドライバー",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "技術→設計取込→需要→有機成長は3ステップ以上の因果チェーン。各ステップの検証可能性が低い"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "ガイダンス3-6%有機成長は開示されているが、技術力から成長への因果チェーンが間接的。50%"
+    },
+    {
+      "id": "MMM-012",
+      "claim_type": "cagr_connection",
+      "claim": "ポートフォリオ管理・再編能力 → 生産性・規模の効率化 → EPS成長9-11%（中期目標）",
+      "evidence": "中期EPS目標9-11%。2014実績11.5%達成",
+      "final_confidence": 0.3,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "ポートフォリオ再編→生産性→EPS成長は因果チェーンが不明確。再編コスト$90MのROI検証可能性が低い"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "中期目標9-11%は開示されているが、ポートフォリオ管理能力からEPS成長への直接的接続メカニズムが弱い。30%"
+    },
+    {
+      "id": "MMM-013",
+      "claim_type": "cagr_connection",
+      "claim": "地域分散・多角化事業構造 → 外部環境変動への耐性 → 安定的な有機成長継続",
+      "evidence": "6四半期連続での全事業・全地域有機成長実績",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "多角化効果の定量化（相関係数、分散低減効果）がなく接続メカニズムが間接的"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "多角化による成長安定性は方向性として認める。ただし多角化効果の定量化がなく間接的。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "confidence_distribution": {
+      "20-30": 2,
+      "40-50": 2
+    },
+    "gatekeeper_applied": true
+  }
+}

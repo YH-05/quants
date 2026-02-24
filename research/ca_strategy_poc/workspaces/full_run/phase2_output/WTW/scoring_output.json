@@ -1,0 +1,188 @@
+{
+  "ticker": "WTW",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "フルカバレッジプライベート医療保険交換プラットフォームの独占性",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "能力（プラットフォームの包括性）として表現されており、パターンIII適合"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "weak_comparison",
+          "adjustment": -5,
+          "reasoning": "競合（Aon Hewitt等）との数値比較なし"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_4",
+          "verdict": "no_quantitative_proof",
+          "adjustment": -5,
+          "reasoning": "「唯一」の主張の定量的裏付けがなく確信度は50%上限"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "プラットフォームの包括性（全従業員層・両保険タイプ対応）は構造的差別化候補だが、競合との比較データなし。「唯一」という主張の裏付けが不十分。dogma_rule_4により50%上限から微調整で40%へ"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "プラットフォーム網羅性→クライアント獲得→売上成長経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "2ステップの直接的因果メカニズム"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "因果メカニズムは2ステップで直接的だが、source_advantage（claim_id=1）の確信度が低いため接続全体の確度も同水準に制限"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "退職者向けプライベート交換市場でのドミナントポジション",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_A_t",
+          "verdict": "result_as_cause",
+          "adjustment": -10,
+          "reasoning": "50%シェアは結果であり、能力の証明ではない（KB1 rule_1_t違反）"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "市場シェアは結果指標。シェアを生む能力（プラットフォーム品質・ネットワーク効果）の説明が不足。KB2 pattern_A（結果を原因として混同）に該当"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "市場ポジション→オフサイクル→収益安定化経路",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [],
+      "final_score": 0.30,
+      "final_confidence_pct": 30,
+      "scoring_rationale": "source_advantageが低確信度（20%）のため、CAGR接続も低確信度に維持"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "HR/年金/リスクコンサルティング専門知識とクライアントロックイン",
+      "seven_powers_category": "Switching Costs",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "no_quantitative_data",
+          "adjustment": -10,
+          "reasoning": "顧客継続率・チャーンレートの開示なし"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "コンサルティング業のスイッチングコストは構造的に存在するが、定量データ（継続率等）なし。CEOが「既存顧客へのアドバンテージ」を認識しており、40%が妥当"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "クライアント関係→クロスセル→収益成長経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "クロスセルメカニズムは直接的で、90+ Fortune 500という実績で部分的に裏付け。40%維持"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "戦略的M&Aによる能力拡張プレイブック",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_F_t",
+          "verdict": "strategy_confusion",
+          "adjustment": -10,
+          "reasoning": "M&A戦略と統合能力の混同（KB1 rule_8_t違反）"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "M&A戦略を優位性として混同。統合後の成長実績の具体的説明がなく、低確信度"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "グローバル統合HRコンサルティング能力",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_B_t",
+          "verdict": "industry_common",
+          "adjustment": -10,
+          "reasoning": "Mercer・Aon Hewitt等も同等のサービス提供可能（KB1 rule_3_t違反）"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "業界共通能力に分類。純粋競合との差別化根拠が弱い"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "組織再編・コスト管理のプロセス能力",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_6_t",
+          "verdict": "complementary",
+          "adjustment": -10,
+          "reasoning": "補完的要素（コスト管理）に分類"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "組織再編能力は補完的要素。競争優位性としての独自性が低い"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 9,
+    "competitive_advantage_claims": 6,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 2,
+    "weighted_avg_score": 0.29,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.40,
+      "descriptive_label": "フルカバレッジプライベート医療保険交換プラットフォームの独占性"
+    },
+    "primary_seven_powers": ["Cornered Resource", "Switching Costs"],
+    "investment_thesis_strength": "weak",
+    "key_risks": [
+      "競合（Aon Hewitt等）との比較データが欠如",
+      "プラットフォームの「唯一性」が裏付け不十分",
+      "Merge Willis Group検討中でビジネス変革リスク"
+    ]
+  }
+}

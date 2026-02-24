@@ -1,0 +1,92 @@
+{
+  "ticker": "WTB",
+  "batch_index": 1,
+  "batch_total": 4,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "従業員エンゲージメント80%（業界水準を大幅に上回る）による顧客サービス品質の持続的優位",
+      "descriptive_label": "高従業員エンゲージメントによるサービス品質（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": "pattern_D_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "定性的のみ（業界比較なし）。KB3 low confidence 事例",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_D_t（定性的のみ）に合致。80%という数値はあるが業界ベンチマーク比較がなく、ホスピタリティ業界での相対的優位が確認できない。模倣可能性も高い。30%維持。",
+      "dogma_applied": ["dogma_rule_4"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Costa UKにおける継続的製品イノベーション能力（食品・飲料ラインの定期更新でトランザクション成長を牽引）",
+      "descriptive_label": "製品イノベーション・バリスタ品質（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_B_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "業界共通の取り組み（製品イノベーション）。KB3 low confidence 事例",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_B_t（業界共通行為）に合致。Starbucks・Caffe Neroも同様の製品革新を実施。差別化が構造的でなく戦略的意思決定の域を超えない。30%維持。",
+      "dogma_applied": ["dogma_rule_5"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Premier Innのハブモデル（hub by Premier Inn）によるCentral Londonでの新たな市場アクセス",
+      "descriptive_label": "小型都心型ハブフォーマット展開（Counter-Positioning / Scale Economies）",
+      "seven_powers_type": "Counter-Positioning",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "Q2（半期）発表で初期段階。KB3 low confidence 事例（実績未確立）",
+      "final_confidence": 0.2,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）+ 半期情報（KB rule_12_t調整）。1号店のみで競争優位確立前。dogma.md quarterly discount適用で-10%。30%-10%=20%。",
+      "dogma_applied": ["dogma_rule_9"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "Premier Innのネットワーク拡大（年4,500-5,500室）× RevPAR成長（8-9%）→売上CAGR 13-15%",
+      "descriptive_label": "室数拡大×RevPAR成長→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "2ステップの直接因果（室数×RevPAR=売上）は最もシンプルで検証可能な経路。KB3 high confidence 事例",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）に合致。室数拡大は pipeline データで検証可能、RevPAR実績も開示済み。過去5年11%/年の実績と整合。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "Costa UKのLFL取引件数成長（5-6%）× 新規出店（150-200店/年）→システム売上CAGR 15-20%",
+      "descriptive_label": "Costa LFL×店舗拡大→売上CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "2ステップ直接因果（LFL×新規出店）。2020 target GBP2.5bn開示で長期視点も確認可能",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）に合致。LFL 5-6%と出店150-200店/年は具体的に開示済み。UK コーヒーショップ市場成長とも整合。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"10-20": 1, "20-30": 2, "60-70": 2},
+    "gatekeeper_applied": false
+  }
+}

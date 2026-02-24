@@ -1,0 +1,169 @@
+{
+  "ticker": "OR",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "「ユニバーサリゼーション」戦略：4事業部（Consumer Products・L'Oreal Luxe・Professional Products・Active Cosmetics）×全チャンネル×全価格帯のマルチ構造による市場全体へのリーチ",
+      "phase1_confidence": 75,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t", "pattern_IV_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_7"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_7",
+          "note": "P&G（美容縮小）・Estee Lauder（Luxe集中）・Unilever（コミット低下）との比較で唯一の完全4部門構造。dogma「競合比較が明確な場合は高く評価」",
+          "delta": 0
+        },
+        {
+          "rule": "dogma_external",
+          "note": "Consumer Products（最大部門）が+1.6% CCと低成長。西欧市場の成熟を反映。-5ppは妥当",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 70,
+      "seven_powers_type": "Scale Economies / Cornered Resource",
+      "overall_assessment": "コスメティクス専業で唯一の4部門フルカバレッジは模倣困難な構造的優位性。New Markets #1・17.3%過去最高利益率が裏付け。Consumer低成長で5%下方調整して70%。"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "ユニバーサリゼーション戦略 → New Markets拡大（40%→50%以上目標）→ 連結売上CAGR加速",
+      "phase1_confidence": 65,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_II_t"],
+      "dogma_rules_applied": ["rule_5"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_5",
+          "note": "New Markets 2014年+7.4% CC・売上構成40%・CEO「50%以上が目標」と明示。直接的2ステップ",
+          "delta": 0
+        },
+        {
+          "rule": "dogma_external",
+          "note": "ロシア・ブラジル・東欧での通貨減価・経済減速が逆風。新興市場リスクは実顕。-5ppは既に適用済み",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 60,
+      "seven_powers_type": "Scale Economies",
+      "overall_assessment": "新興市場の長期成長テーゼは構造的に正しい。ただし通貨・地政学リスクで短期実績が抑制。Phase1で既に-5pp調整済みのため60%。"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Active Cosmetics部門の皮膚科学的ブランド力（La Roche-Posay・Vichy・Skinceuticals）：薬局チャンネル専売・皮膚科医推薦による参入障壁と高成長",
+      "phase1_confidence": 75,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t", "pattern_V_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_7"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "+8.7%成長・La Roche-Posay 5年連続2桁成長・Vichy世界#1デルモコスメティクスという複数定量データ。dogma高評価基準に合致",
+          "delta": 0
+        },
+        {
+          "rule": "rule_7",
+          "note": "Neutrogena（J&J）・Cetaphil（Galderma）との比較でVichy世界#1・La Roche-Posay多市場#1という明確な競合優位",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 75,
+      "seven_powers_type": "Cornered Resource / Branding",
+      "overall_assessment": "5年連続2桁成長という持続的実績は最も強力な競争優位の証拠。皮膚科医推薦チャンネルは20年以上の信頼資産構築。相対的市場ランキング証拠も明確。75%。"
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "L'Oreal Luxeのプレミアムブランドポートフォリオ（Lancôme・YSL・Armani・Kiehl's・Urban Decay）：デジタル+百貨店チャンネルでの優位性",
+      "phase1_confidence": 70,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_III_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4", "rule_7"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "+7.1%全体成長、YSL +11.8%、Armani +10%、Kiehl's +23%、Urban Decay +50%という具体的ブランド別成長データ。70%維持",
+          "delta": 0
+        }
+      ],
+      "calibrated_confidence": 70,
+      "seven_powers_type": "Branding / Cornered Resource",
+      "overall_assessment": "複数ブランドの高成長と明確な市場ランキング（Lancôme世界#1）は実績ベースの強固な証拠。Estee Lauderとの対等比較でもLuxe+7.1%は高水準。70%。"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "3.4%売上R&D投資とR&Dセンター（中国・日本・米国・ブラジル等）のグローバルネットワーク：科学的イノベーション能力",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_III_t"],
+      "dogma_rules_applied": ["rule_3", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_3",
+          "note": "Estee Lauder・P&Gも同等のR&D投資比率を持つ。業界共通属性に近い。dogma「業界共通の能力→確信度大幅低下」-10pp",
+          "delta": -10
+        }
+      ],
+      "calibrated_confidence": 50,
+      "seven_powers_type": "Process Power / Cornered Resource",
+      "overall_assessment": "R&D能力は実在するが競合との相対差別化の定量証拠が限定的。Active Cosmeticsでの科学的信頼性が最も説得力ある具体例だが、全体としては業界共通属性。50%。"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "デジタル変革リーダーシップ：MakeupGenius 6.3M DL・eコマース+60%・全5大ブランドがデジタルIQ Top10入り（米国・中国）",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_I_t", "pattern_V_t"],
+      "dogma_rules_applied": ["rule_1", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_4",
+          "note": "eコマース+60%・EUR900M（4%売上）・MakeupGenius 6.3M DL・デジタルIQ Top10に5ブランドという具体的データ",
+          "delta": 0
+        },
+        {
+          "rule": "dogma_external",
+          "note": "eコマース4%は成長中だが主要チャンネルではまだ発展途上。競合も急速にデジタル投資を加速。Phase1調整分-5ppを踏まえ55%へ",
+          "delta": -5
+        }
+      ],
+      "calibrated_confidence": 55,
+      "seven_powers_type": "Counter-Positioning / Scale Economies",
+      "overall_assessment": "デジタルIQ Top10に5ブランドという複数ブランドでのリーダーシップは認められる。eコマース4%は発展途上。MakeupGenius AR技術は差別化だが規模小さく55%。"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Professional Products部門：150万人超のヘアドレッサーパートナーシップと教育プログラムによる排他的サロンチャンネル支配",
+      "phase1_confidence": 60,
+      "gatekeeper": "pass",
+      "kb2_pattern_applied": ["pattern_III_t", "pattern_IV_t"],
+      "dogma_rules_applied": ["rule_3", "rule_4"],
+      "calibration_adjustments": [
+        {
+          "rule": "rule_3",
+          "note": "Schwarzkopf（Henkel）・Wella（P&G→Coty）も同様のプロ向けネットワーク。業界共通属性に近い。-10pp",
+          "delta": -10
+        }
+      ],
+      "calibrated_confidence": 50,
+      "seven_powers_type": "Network Economies / Switching Costs",
+      "overall_assessment": "150万ヘアドレッサーネットワークは実質的スイッチングコストを持つ。ただし競合も同様のネットワーク構築あり。+2.6%成長は低調。業界共通性考慮で50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "high_70_90": 3,
+      "medium_50_65": 4,
+      "low_10_40": 0
+    },
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "ticker": "VFC",
+  "transcript_source": "Q4 2014 Earnings Call (2015-02-13) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "North Face・Timberland等Outdoor & Action Sports coalitionにおける13%成長（CC14%）による市場シェア拡大",
+      "descriptive_label": "Outdoor & Action Sportsブランドポートフォリオの成長優位",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'led by 13% growth in our Outdoor & Action Sports coalition, or up 14% if you exclude the impact of foreign currency'。DTC 19%成長",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "13%成長は結果。「lead in innovation」「deepen connections with consumers」は戦略的意図だが仕組みの具体的説明が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "13%/CC14%成長、DTC 19%成長という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "Nike、Columbia、Patagoniaとの比較なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "Outdoor & Lifestyle市場はブランドが強い差別化要因となる業界構造。North Face等の認知度は資産"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（成長は結果）",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "成長は結果であり仕組みへの言及不足",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Outdoor & Action Sports 13%成長は定量的だが結果。あまり納得〜まあ納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Outdoor & Action Sports成長 + DTC 19%成長 → 2015年revenue CC+8%（5年計画目標）",
+      "descriptive_label": "Outdoor/DTC成長→5年計画目標達成",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "ブランド成長 + DTC拡大 → 2015年CC+8%ガイダンスへの接続。5年計画Year3で目標に向けtrack"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [],
+        "overall_reasoning": "5年計画目標の3年目進捗という接続。まあ納得に届かない"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "DTC（Direct-to-Consumer）チャネルの急拡大（19%成長、高一桁コンプ）によるブランドと消費者の直接関係強化",
+      "descriptive_label": "DTC拡大によるブランド直接接続強化",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'Our direct-to-consumer business grew 19% and included high single-digit comps'。'we will serve consumers directly, reaching them across multiple channels, wherever and whenever they shop'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "DTC拡大は「消費者との直接関係構築能力」という仕組みとして評価できる部分もある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "DTC 19%成長、高一桁コンプという定量データ"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial_fail",
+            "reasoning": "DTC戦略はアパレル業界全体のトレンド。VFC固有ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的）",
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "DTC拡大は業界全体トレンドでVFC固有優位とは言えない",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "DTC 19%成長は定量的だが業界トレンドの乗り。まあ納得に届かない"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "North Face、Vans、Timberland、Wrangler・Leeという複数カテゴリ強ブランドポートフォリオによる分散効果",
+      "descriptive_label": "複数カテゴリブランドポートフォリオによる分散優位",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'outstanding performances from our 4 largest brands as well as some notable up-and-comers and the powerful platforms'。FY2014 total revenue $12.3B（+8%）、gross margin 48.8%（+70bp）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "複数ブランドポートフォリオは構造的事実。なぜこのポートフォリオが競合より優れているのかの能力説明なし"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "partial_fail",
+            "reasoning": "複数ブランドポートフォリオ戦略はHanes、PVH等も類似する。VFC固有ではない"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "FY2014 $12.3B（+8%）、gross margin 48.8%（+70bp）、adjusted EPS +14%"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（ポートフォリオは結果）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "ポートフォリオ多様性は結果。競合優位の能力説明なし",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "ブランドポートフォリオは定量的実績があるが、なぜ優位なのかの説明なし。あまり納得しない"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "国際事業の着実成長（CC+11%）と地理的拡大による長期成長余地",
+      "descriptive_label": "国際市場の成長と地理的拡大ポテンシャル",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'Our international business grew 9% or 11% if you adjust for currency'。'we will expand geographically, taking advantage of our scale in every region and channel'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "国際成長は結果。地理的拡大「戦略」であり、仕組みへの言及なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "CC+11%という定量データ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t（戦略的意図）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "国際成長は結果。戦略意図に過ぎない",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "国際CC+11%は定量的だが結果。戦略的意図に過ぎない。あまり納得しない"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: revenue $12.3B（+8%）、Outdoor & Action Sports +13%（CC+14%）、gross margin 48.8%（+70bp）、adjusted EPS $3.08（+14%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "DTC FY2014 +19%（高一桁コンプ）。International +9%（CC+11%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 5]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "2015ガイダンス: CC revenue +8%、GP margin +40bp → 49.2%、OP margin 15%、CC EPS +12%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    }
+  ]
+}

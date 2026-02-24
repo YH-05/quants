@@ -1,0 +1,265 @@
+{
+  "ticker": "HD",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "プロ顧客（Pro）向けの専門サービス・商品力と広い顧客ベース",
+      "descriptive_label": "プロ顧客向け専門サービス基盤",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "Pro向け与信・在庫管理という能力への言及はあるが、それがLowe'sに対して構造的に優位かは説明不十分。Proビジネスの成長（二桁コンプ）は結果の提示が中心"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_4_t": {
+            "verdict": "partial",
+            "reasoning": "Proクレジット承認率71.2%、平均与信枠$6,900は数値あるが競合比較なし"
+          },
+          "rule_7_t": {
+            "verdict": "fail",
+            "impact": "-10",
+            "reasoning": "Lowe'sとの直接比較なし"
+          },
+          "rule_11_t": {
+            "verdict": "pass"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial - Pro成長（結果）を優位性として提示"
+          },
+          "high_eval_patterns": {
+            "pattern_III_t": "partial - Pro向け与信・専門商品という能力の言及"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "COST#3（倉庫型モデル：50%、純粋競合比較なし）と同水準",
+          "calibrated_confidence": 50
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール7（純粋競合差別化）",
+            "adjustment": 0,
+            "reason": "Lowe'sとの定量比較なし（-10%相当だが50%で下限）"
+          }
+        ]
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "プロ向け専門化（与信・在庫・専用商品）は能力として部分的に認識できるが、Lowe'sとの直接比較がなく差別化として弱い。Phase 1の50%を維持",
+      "seven_powers_classification": "Scale Economies（規模ベースのPro専門化）",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "インターコネクテッドリテール（オンライン×店舗）の統合能力",
+      "descriptive_label": "オンライン・オフライン統合（インターコネクテッドリテール）",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "2,269店舗をラストマイル拠点とした40%のBOPIS（Buy Online Pick-up In Store）は物理ネットワーク×デジタルの構造的統合として評価可能。ただしLowe'sも同様の戦略を採用"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_4_t": {
+            "verdict": "partial"
+          },
+          "rule_6_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "partial - Lowe'sも同様のオムニチャネル戦略"
+          },
+          "high_eval_patterns": {
+            "pattern_IV_t": "partial - 物理店舗ネットワーク×デジタル統合"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "COST（デジタル補完的要素）に類似。業界共通の取り組みだがHDの規模は優位",
+          "calibrated_confidence": 50
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "$4Bオンラインビジネス、36%成長、40% BOPISは数値的に示されているが、Lowe'sも同様の戦略で差別化として弱い。物理ネットワークの規模優位（2,269店）は認めるが競合比較なし。Phase 1の50%を維持",
+      "seven_powers_classification": "Scale Economies（物理ネットワーク規模×デジタル統合）",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "住宅回復サイクルとの構造的連動性（GDP+150bpの売上成長モデル）",
+      "descriptive_label": "住宅回復サイクル連動による構造的成長力",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "fail",
+          "is_capability_not_result": "fail",
+          "reasoning": "住宅回復による恩恵はHD固有ではなくLowe'sも同様。業界共通の追い風（ルール3-T違反）。HDがLowe'sより大きな恩恵を受ける根拠の説明なし"
+        },
+        "kb1_t_rules": {
+          "rule_3_t": {
+            "verdict": "fail",
+            "impact": "-20"
+          },
+          "rule_8_t": {
+            "verdict": "fail"
+          },
+          "rule_11_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "match - 業界共通の住宅回復恩恵"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "LLY#6（大手共通能力：30%）に類似。業界共通の追い風",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "住宅回復は市場全体（HD+Lowe's）の追い風であり、HD固有の競争優位性ではない。KB2-T pattern_B_t（業界共通）に該当。GDP+150bpフレームワークはCAGR予測として有用だが優位性として認定不可。Phase 1の30%を維持",
+      "seven_powers_classification": "なし（業界共通の市場テイルウィンド）",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "マーチャンダイジング計画ツールによる品揃え最適化能力",
+      "descriptive_label": "データ駆動型マーチャンダイジング最適化能力",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial_pass",
+          "reasoning": "154カテゴリレビュー×「店舗クラスタリング」という具体的なプロセス説明はあり。11カテゴリでのシェア獲得という結果も示されている。ただしLowe'sも同様のデータ活用を行っている"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_4_t": {
+            "verdict": "partial"
+          },
+          "rule_7_t": {
+            "verdict": "partial"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_B_t": "partial - Lowe'sも同様の取り組みを実施"
+          },
+          "high_eval_patterns": {
+            "pattern_III_t": "partial - 具体的なプロセス（154カテゴリレビュー）の説明"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#6（デジタルマーケティング能力：50%）と同水準。プロセス説明があるが競合比較なし",
+          "calibrated_confidence": 50
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "具体的なマーチャンダイジングプロセス（154カテゴリ×店舗クラスタリング）の説明あり、11カテゴリでのシェア獲得実績あり。ただしLowe'sとの直接比較なく、業界共通能力としての懸念。Phase 1の50%を維持",
+      "seven_powers_classification": "Process Power（データ駆動マーチャンダイジング）",
+      "structural_vs_complementary": "structural（部分的）"
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "プロ向け専門サービス・商品力 → プロ顧客の高頻度・大額購買 → 既存店売上+チケット成長",
+      "descriptive_label": "プロ顧客強化→売上成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "Pro業者の高額取引（$900超：+10.3%）→既存店コンプ成長の直接接続。HD CFOが明示的に提示したフレームワーク。開示データで検証可能",
+          "pattern_match": "dogma高評価パターン: 直接的メカニズム（70%）"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "Pro向け高額取引+10.3%→既存店コンプへの直接接続。Q4での開示データで裏付け。Phase 1の70%を維持"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "オンライン×店舗統合（40%のBOPIS）→ 客数増加＋客単価上昇 → 既存店コンプ+1-1.5pp",
+      "descriptive_label": "インターコネクテッドリテール→売上成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "CFOがオンライン100bpコンプ寄与を開示。BOPISの追加購買効果は定量化不完全",
+          "pattern_match": "dogma: 直接的メカニズムに近いが一部間接的（50-60%）"
+        }
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "CFO開示のオンライン100bpコンプ寄与は直接的根拠。BOPISの追加購買効果は定量化不完全。Phase 1の50%を維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "住宅回復サイクル → GDP+150bpのコンプ成長 → 中期的売上CAGR",
+      "descriptive_label": "住宅回復→既存店売上成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "住宅回復→リモデル需要→HD売上の直接接続。GDP+150bpフレームワークはCFOが開示。Harvard研究のリモデル支出データで裏付け可能。ただしHD固有の優位性ではなく業界共通",
+          "pattern_match": "dogma高評価パターン: 業界特性に合致したドライバー（70%）。ただし業界共通性を認識"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "GDP+150bpフレームワークはCFO開示の検証可能なモデル。住宅ターンオーバー・価格データとの接続明示。業界共通の恩恵だが接続の論理性は高い。Phase 1の70%を維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "マーチャンダイジング最適化 → シェア獲得 → 既存店コンプへの寄与",
+      "descriptive_label": "マーチャンダイジング→シェア獲得→コンプ成長",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 50,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "11カテゴリシェア獲得→コンプ貢献の接続。全体コンプへの定量的寄与は開示されていない",
+          "pattern_match": "dogma: 数値の根拠不透明（30-50%）"
+        }
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "11カテゴリシェア獲得は実証されているが全体コンプへの定量寄与が不完全。Phase 1の50%を維持"
+    }
+  ],
+  "metadata": {
+    "gatekeeper_applied": true,
+    "batch_size": 8
+  }
+}

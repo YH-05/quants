@@ -1,0 +1,574 @@
+{
+  "ticker": "FEMSAUBD",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-26) [primary]; Q4 FY2013 Earnings Call (2014-02-??) [secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q1 2015", "Q2 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXO コンビニエンスストアの出店機械（年1,000+店舗純増）とメキシコ全国展開能力",
+      "descriptive_label": "OXXO大量出店・全国展開能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks (CFO Sanjines): 'we set a new benchmark for the opening of new stores reaching 1,132 net new OXXO units for the year... total store to 12,853 OXXOs.' 'For 2015, we expect net OXXO openings to once again exceed 1,000 units.' Q4 2013: 'we were able to deliver on our expectations of opening more than 1,000 new stores in the calendar year yet again.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "concern",
+            "reasoning": "年1,000+出店は結果の報告。背後の能力（出店評価プロセス、ロジスティクス、サプライチェーン）の詳細説明は限定的"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "1,132店純増、総店舗数12,853という定量データあり。連続して1,000+達成というトラックレコード"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "出店機械はOXXOの事業モデルの核心。単なる投資活動ではなく、規模の経済を生む構造的な仕組み"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "メキシコのコンビニ市場は成長余地あり。ただし市場構造（フラグメント度、競合状況）の詳細説明なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "連続出店実績（定量的トラックレコード）あり",
+            "adjustment": 5
+          },
+          {
+            "reason": "純粋競合（7-Eleven Mexico等）との比較なし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "年1,000+出店は規模として印象的だが、これを可能にする具体的な仕組み（立地評価プロセス、物流ネットワーク構築力）の説明が乏しい。12,853店という絶対的規模は規模の経済の源泉となりうるが、競合との定量比較なし"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOのサプライヤーとの協働による粗利率改善能力（グロスマージン管理）",
+      "descriptive_label": "サプライヤー協働による粗利管理能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks: 'Gross margin expanded 80 basis points, again, driven mainly by an effective collaboration and execution with our key supplier partners as well as some more efficient use of promotional-related marketing resources.' Q&A: OXXO has 'the ability to moderately improve margins going forward' through cost containment and same-store sales leverage.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "サプライヤーとの協働（仕組み）を評価。粗利改善は結果だが、それを可能にする協働メカニズムが主張の核"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "80bps粗利改善という定量データあり。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "insufficient",
+            "reasoning": "コンビニ純粋競合（7-Eleven Mexico, Circle K等）との粗利比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "80bps改善の定量データあり",
+            "adjustment": 5
+          },
+          {
+            "reason": "純粋競合との比較なし。'effective collaboration'は定性的表現",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "サプライヤー協働による粗利管理は認められる。ただし具体的なメカニズム（バイイングパワー、販促効率化の仕組み）の詳細なし。COSTのベンダー交渉力に類似するが、規模・仕組みの説明が不十分"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの事業能力の隣接事業への横展開能力（ドラッグストア・ガソリンスタンド）",
+      "descriptive_label": "隣接事業横展開能力（ドラッグストア・ガソリンスタンド）",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks: 'we have been participating for 20 years, providing services and assets through agreements with third parties... By providing above-industry service, we have been able to build a strong brand.' Q4 2014 Q&A: 'we have not really found any surprises telling us that we are overstretching outside of our core skill set. And the performance of the businesses have been, I would say, pretty much in line with our plans.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "横展開能力（仕組み）を評価。20年のガソリンスタンド運営経験、ドラッグストアでの早期好結果が能力の指標"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "concern",
+            "reasoning": "ドラッグストア・ガソリンスタンドへの参入は戦略的方向性。それを可能にする能力の詳細説明が必要"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "隣接事業横展開はOXXO事業の補完的要素。コア能力はOXXO運営力にあり、横展開は補完的位置づけ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "横展開戦略は方向性であり優位性の説明が不十分",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "隣接事業展開はFEMSAの戦略方向性。それを可能にするOXXOの運営能力（ロジスティクス、人材育成、テクノロジー）の横展開という観点は認められるが、定量的な差別化説明が不十分"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの金融サービス（Saldazoデビットカード）によるエコシステム構築",
+      "descriptive_label": "OXXO金融エコシステム（Saldazo）",
+      "evidence_from_transcript": "Q4 2014 Q&A (Juan Fonseca): 'we closed the year basically with 1.4 million [Saldazo cards]. So the rate of new accounts is slightly above 100,000 per month. And the utilization rate continues to be much higher than the industry norm. So not only are people opening the accounts, but they're actually using them actively.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "IR",
+      "section": "qa_session",
+      "supported_by_facts": [14],
+      "cagr_connections": [15],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "デビットカードエコシステム（仕組み）。業界平均を上回るカード利用率は能力の裏付け"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "140万枚、月10万枚新規発行、業界平均超過利用率という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "金融サービスはOXXOの補完的要素。コンビニエンスストアとの来店頻度・ロイヤルティへの接続が補完的"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "業界平均超過利用率という定量的差別化あり",
+            "adjustment": 5
+          },
+          {
+            "reason": "金融エコシステムはまだ初期段階（140万枚）。コンビニ来店への具体的影響の定量データなし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Saldazoは銀行口座を持てない低所得層へのOXXOを通じた金融サービス提供。業界平均を上回る利用率は差別化のシグナル。ただし12,853店舗ベースとしてのエコシステム効果の完成度はまだ発展途上"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Coca-Cola FEMSA（KOF）を通じたラテンアメリカ複数国での瓶詰事業運営能力",
+      "descriptive_label": "KOF多国間瓶詰事業運営能力（ラテンアメリカ）",
+      "evidence_from_transcript": "Q4 2013 Prepared Remarks: '3 key acquisitions: Yoli, Fluminense and Spaipa. These transactions should allow us to create value in the medium and long term, and we are well-advanced in our integration efforts in both countries. We also made our entrance into the Philippine market a reality with very encouraging early results.' Q4 2014: 'Brazil delivered encouraging organic growth and improved margins.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [16],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "concern",
+            "reasoning": "統合進捗('well-advanced in integration')は結果の報告。運営能力（仕組み）の詳細説明が乏しい"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "concern",
+            "reasoning": "地域拡大は戦略的方向性。それを支える現地適応能力・統合能力が優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "insufficient",
+            "reasoning": "ラテンアメリカの他の瓶詰業者（ARCA Continental等）との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "多国間展開は大手飲料会社共通の特性。固有の優位性説明が不十分",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "KOFのラテンアメリカ拡大は戦略的成果。ただし、それを可能にする固有の統合能力・現地適応能力の詳細説明なし。他のコカコーラ瓶詰業者との差別化不明"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOの同質競合に対する優位な出店立地評価能力と品質管理（閉店ゼロの実績）",
+      "descriptive_label": "閉店ゼロの出店品質管理能力",
+      "evidence_from_transcript": "Q4 2014 Q&A (CFO Sanjines): 'We are not shutting down stores as we've never done.' 'we see many opportunities to drive growth.' Management also states 'we don't really make decisions based on quarterly phenomenons, but we're looking more for the long term.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "'never shut down stores'は選別能力の証拠。ただし出店評価の仕組みの説明が乏しい"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "insufficient",
+            "reasoning": "定量的な出店ROI、失敗率データなし"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "閉店ゼロはポジティブな実績。ただしこれはネガティブケース（断念例）の開示ではなく実績の主張"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "出店品質の仕組み説明なし。結果（閉店ゼロ）のみの主張",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "閉店ゼロの実績は印象的だが、これを可能にする出店選定プロセス・能力の説明がない。12,853店という規模での閉店ゼロは注目に値するが、仕組みの説明なしには30%が適切"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Heineken持分（20%）を通じた安定的配当受取・資本配分の戦略的多様化",
+      "descriptive_label": "Heineken持分によるキャッシュフロー安定化",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks: 'we will be submitting to shareholders our proposal for an ordinary dividend payment of MXN 7.35 billion, representing a full pass-through of the dividends we expect to receive from Heineken and Coca-Cola FEMSA in 2015... This results in an increase of 10% over the amounts corresponding to 2014 and 2013.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "concern",
+            "reasoning": "Heineken持分は財務的結果を提供するが、競争上の優位性ではない。配当受取は資産（Cornered Resource）として機能"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "Heineken持分はFEMSAのコア（OXXO・KOF）の補完的財務資産"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "財務持分は競争優位性としては評価しにくい。補完的資産",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "Heineken20%持分は安定的キャッシュフローを提供するが、競争優位性としては弱い。競合優位性ではなく財務戦略の範疇"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "OXXOのドラッグストア事業（Farmacon買収含む）での地域ブランド活用とITプラットフォーム統合能力",
+      "descriptive_label": "ドラッグストア事業の地域ブランド+IT統合戦略",
+      "evidence_from_transcript": "Q4 2014 Q&A: 'we think that we're able to acquire some regional chains as beachheads based on current value propositions and banners... we have been, I would say, confirming some of the hypothesis that we had when we entered the business and learning much more than we anticipated... What we are now... a strategy that in the end will include having a consistent operating protocols and processes, supported by a backbone on an IT platform that will allow us to take advantage of scale.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [17],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_8_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "ITプラットフォーム・オペレーション統合能力（仕組み）への言及。ただし具体化はこれから（2-3年）"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "concern",
+            "reasoning": "ドラッグストア展開戦略。優位性はOXXOの運営能力の横展開"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "ドラッグストアはOXXO事業の補完的拡張"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_C_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "まだ開発中の戦略（2-3年かけてプラットフォーム統合）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "ドラッグストアのITプラットフォーム統合は魅力的なビジョンだが、現時点では実行中の戦略であり、能力の具体化は将来。Q4 2014時点では仮説確認段階"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "OXXO総店舗数12,853店（2014年末）、2013年から1,132店純増（過去最高）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 6]
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "OXXO年1,000+出店ペース → 同質比較売上+既存店成長 → 売上CAGR 12%+",
+      "descriptive_label": "OXXO出店→売上CAGR接続",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "新規出店→売上加算は直接的メカニズム。Q4 2014: 12%売上増加は実績で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "出店数→売上成長は直接的。Q4 2014実績（収益+12%）で確認済み。メキシコ経済の軟調がリスク要因"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014粗利率80bps改善（Q4 2014）。サプライヤー協働と販促効率化が要因",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "サプライヤー協働による粗利管理 + 出店規模による交渉力向上 → 粗利率継続改善 → EBIT CAGR支持",
+      "descriptive_label": "サプライヤー交渉力→粗利改善→EBIT CAGR接続",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "規模拡大→交渉力向上→粗利改善→EBIT成長。3ステップで若干間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規模拡大による仕入れ条件改善は認められる。ただし80bpの粗利改善が継続的に維持されるかは不明"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "OXXO能力横展開（ドラッグストア・ガソリンスタンド）→新規収益源 → 売上CAGR 15%+貢献",
+      "descriptive_label": "隣接事業展開→新規収益CAGR接続",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "新規事業統合→売上加算。ただしドラッグストア605店、ガソリンスタンド227店は初期段階"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新規事業からの売上加算は直接的だが、統合・規模化がこれからであり確度は中程度"
+      }
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "Saldazoデビットカード140万枚（2014年末）、月10万枚新規発行、業界平均超過の利用率",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    },
+    {
+      "id": 15,
+      "claim_type": "cagr_connection",
+      "claim": "Saldazo金融サービス → OXXO来店頻度・ロイヤルティ向上 → 既存店同質比較売上+0.5-1%",
+      "descriptive_label": "金融エコシステム→来店頻度→既存店売上CAGR接続",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "金融サービス→ロイヤルティ→来店頻度→売上。3段階以上で因果チェーンに若干飛躍あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "金融サービス→来店頻度の接続は理論的に認められる。ただしトランスクリプトで直接的な定量連携データは提示されていない"
+      }
+    },
+    {
+      "id": 16,
+      "claim_type": "cagr_connection",
+      "claim": "KOFラテンアメリカ統合完了 → 売上成長 + マージン改善 → FEMSA CAGR貢献",
+      "descriptive_label": "KOF統合完了→マージン改善→CAGR接続",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "統合→効率化→利益成長。ただし為替ヘッドウィンドが大きく実質成長が不透明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "ベネズエラ為替問題・ブラジル経済減速が接続の不確実性を高める",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "KOF統合による効率化効果は認められるが、マクロ・為替リスクが大きく、CAGR接続の確度は中程度"
+      }
+    },
+    {
+      "id": 17,
+      "claim_type": "cagr_connection",
+      "claim": "ドラッグストアIT統合→規模達成後のマージン改善→新規CAGR貢献",
+      "descriptive_label": "ドラッグストアITプラットフォーム→マージン改善CAGR接続",
+      "source_advantage": 8,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "ITプラットフォーム統合（2-3年後）→規模達成→マージン改善→CAGR。長期的かつ複数ステップ"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "2-3年かけてのプラットフォーム統合。cutoff date（2015-09-30）時点では実現前",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "ドラッグストア展開は長期的なCAGR貢献候補。ただしcutoff date内では統合途中段階"
+      }
+    }
+  ]
+}

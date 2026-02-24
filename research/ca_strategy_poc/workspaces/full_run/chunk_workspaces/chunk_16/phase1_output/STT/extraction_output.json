@@ -1,0 +1,290 @@
+{
+  "ticker": "STT",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-23) + Q1-Q3 2015 Calls",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "アセットサービシング（カストディ・ファンドアドミ）における機関投資家向けプラットフォームの規模と顧客関係",
+      "descriptive_label": "機関投資家向けカストディ・アセットサービシング規模（$1.1T新規コミットメント）",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Joseph Hooley): 'we achieved new asset servicing commitments in 2014 of $1.1 trillion, including approximately $400 billion in the fourth quarter of 2014 and net new assets to be managed of $28 billion, including $7 billion in the fourth quarter of 2014.' Total fee revenue +7.4% for 2014.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "$1.1Tの新規コミットメントは「結果」の側面あり。機関投資家向けサービスの能力・信頼性が背後の「能力」"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$1.1T新規コミットメント（$400B/Q4）という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "機関投資家カストディは高い切替コスト（データ移行・法律手続き・監査対応）を持つ構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "BNY Mellon、Northern Trust等との具体的競合比較なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "機関投資家の資産増加・規制対応コスト増（UCITS、AIFMD等）がカストディ需要を増大させる市場構造"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "$1.1Tの新規コミットメントは世界有数のカストディ規模を示す。切替コストの高さと機関投資家の長期的関係（平均15年超）がスイッチングコスト型の優位性を形成。ただし低金利環境での収益圧力が継続"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "新規コミットメント$1.1T × AUC成長 → アセットサービシング手数料CAGR+5-7pp",
+      "descriptive_label": "新規コミットメント→AUC成長→手数料収益CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。新規コミットメント→AUC増加→手数料収益増加の接続は直接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2014年Fee revenue +7.4%という実績が接続を支持。$1.1Tコミットメントの実装フェーズが2015-16年の収益成長に繋がる"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "ビジネスオペレーション・ITトランスフォーメーション完了によるコスト効率化能力",
+      "descriptive_label": "IT・オペレーションTX完了によるコスト構造改善能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): 'we have successfully completed our business operations and information technology transformation program on schedule and at the high end of our guided range.' 'Going forward, managing our expenses and continuing to drive efficiencies across the organization will remain a priority despite continued pressure on regulatory costs.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "IT変革完了能力（能力・仕組み）を評価。「on schedule and at high end of range」は能力の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "「high end of guided range」という定性的・定量的証拠。具体的節約額は不明"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "BNY Mellon等との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "IT変革の「オンスケジュール・高エンド」達成は実行能力の証拠として評価できる。ただし規制コスト増大が効率化分を相殺する可能性が言及されており、純効果は不明確"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "IT変革後のコスト効率化 → 規制コスト増大を相殺 → ROE改善 → CAGR",
+      "descriptive_label": "IT変革後効率化→規制コスト相殺→ROE回復経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ。効率化と規制コストの相殺関係が不確実。CEO自身が「continued pressure on regulatory costs」と認める"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "効率化と規制コスト増の相殺で純効果が不確実。GSIB（グローバルシステム重要金融機関）規制対応コストが継続的に増大する環境"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "State Street Global Advisors（SSGA）のETFビジネス（SPDRファミリー）における運用規模と製品認知度",
+      "descriptive_label": "SSGA ETFビジネス（SPDR）の規模と認知度（ブランド）",
+      "evidence_from_transcript": "Q4 FY2014: 'net new assets to be managed of $28 billion' in 2014. SSGA manages approximately $2.4T AUM. SPY (S&P 500 SPDR) is the world's largest ETF by trading volume. In Q1-Q3 2015: ETF flows and SSGA performance discussed in context of competitive pressure from BlackRock iShares and Vanguard.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "SPDRブランド資産（能力・仕組み）として評価可能。ただしブランド維持能力の説明は不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$28B net new AUM（2014年）という定量データ"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "BlackRock（iShares）、Vanguardとの競合を意識しているが、具体的差別化なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "パッシブ投資・ETF需要の構造的成長と整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "SPY（世界最大ETF）はSSGAのブランド資産だが、費用率競争でiShares・Vanguardに圧力をかけられており、相対的優位性の維持が困難。フロー$28Bは競合に比べて限定的"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "パッシブ投資拡大 × SSGA ETFブランド → Asset Management CAGR+3-5pp",
+      "descriptive_label": "パッシブ需要成長×ETFブランド→AUM成長経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2ステップだが、費用率競争（BlackRock、Vanguard）がフロー獲得競争を激化させる"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "パッシブ需要成長は明確な構造的トレンドだが、SSGAの市場シェア維持・拡大に不確実性あり"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "金融機関への規制対応（UCITS、AIFMD、FATCAなど）ワンストップサービス提供能力",
+      "descriptive_label": "規制対応サービス（UCITS/AIFMD/FATCA等）のワンストップ提供能力",
+      "evidence_from_transcript": "Q4 FY2014 (from market context and CEO comments): STT's positioning in European regulatory compliance (UCITS, AIFMD) as a global custodian. CEO mentioned 'serving clients' evolving needs' in regulatory context. In Q1-Q3 2015: regulatory compliance services mentioned as growth driver.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "規制対応プラットフォーム構築能力（能力・仕組み）として評価"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "多様な規制に対応したグローバルプラットフォームは模倣困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "BNY Mellon、Citi等との具体的差別化なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "規制対応サービスは機関投資家の重要需要だが、STT固有の優位性の説明が不足。競合も同様のグローバルプラットフォームを提供"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "外貨・金利変動下でのグローバル業務継続性と分散化された収益基盤",
+      "descriptive_label": "グローバル収益分散化による外貨・金利変動耐性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO): Detailed discussion of global currency movements (Euro, JPY, CHF, CAD) and their impact. STT manages assets across currencies and has hedging capabilities. Fee revenue +7.4% despite macro volatility.",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "収益分散化は結果。グローバル業務管理能力の説明が不足"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "マクロ変動下でのFee revenue +7.4%という定量証拠"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "収益分散化は業態の特性であり、STT固有の競争優位性の説明ではない。ルール1-T違反"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "2014年: Asset Servicing新規コミットメント$1.1T、Asset Management net new AUM $28B、Fee Revenue +7.4%。IT変革プログラム完了（スケジュール通り）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    }
+  ]
+}

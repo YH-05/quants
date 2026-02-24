@@ -1,0 +1,355 @@
+{
+  "ticker": "BIIB",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-01-29) / Q3 FY2015 Earnings Call (2015-07-XX)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2014", "Q2 2014", "Q3 2014", "Q4 2014", "Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "MS（多発性硬化症）治療分野における包括的ポートフォリオによる新規・スイッチ患者の約50%獲得",
+      "descriptive_label": "MS治療包括的ポートフォリオによる患者獲得50%の市場支配",
+      "evidence_from_transcript": "Q4 CCO発言（Tony Kingsley）: 'Over the past 6 months, our data suggests that our portfolio has consistently captured roughly half of all newly diagnosed patients and switch patients in the U.S.' 'We continued to grow our global MS market share, fueled by the continued rollout of TECFIDERA worldwide, improving performance from TYSABRI and continued strength from our interferon business, including the recent launch of PLEGRIDY.' CEO発言: 'In 2014, we launched 4 new products in 2 distinct therapeutic areas. I think that's a real accomplishment for our company of our size.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "George Scangos (CEO) / Tony Kingsley (CCO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「consistently captured roughly half」という能力の結果であり、その背景にあるポートフォリオ（TECFIDERA/TYSABRI/AVONEX/PLEGRIDY）という仕組みが明確に説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "新規・スイッチ患者の約50%獲得（6か月データ）、TECFIDERA米国シェア20%、ドイツでMS最多処方薬という複数の定量的根拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "複数の作用機序（経口/モノクロ/インターフェロン）をカバーするポートフォリオは、単一製品では不可能な患者カバレッジを実現する構造的優位性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "「roughly half of all newly diagnosed patients and switch patients」という市場シェア50%は競合全体との比較で示されている"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（市場構造×企業ポジション）への高度合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "MS市場での新規・スイッチ患者50%獲得という定量的証拠は極めて強力。複数作用機序ポートフォリオという構造的優位性も明確。4製品を1年間でローンチした実行力（CEO発言）も優位性の裏付け。競合（Novartis、Teva等）との比較では市場シェア50%が直接的な証拠"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "factual_claim",
+      "claim": "2014年全年売上$9.7B（+40% YoY）、non-GAAP EPS $13.83（+54%）。MS新規・スイッチ患者の約50%を6か月間一貫して獲得",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "TECFIDERAの経口MS治療における圧倒的なブランドポジション（米国最多処方経口MS薬・ドイツ最多処方MS薬）",
+      "descriptive_label": "TECFIDERAの経口MS治療最多処方ブランド地位",
+      "evidence_from_transcript": "Q4 CEO発言: 'TECFIDERA is now the most prescribed MS therapy in Germany, and the most prescribed oral therapy in the U.S. More than 135,000 people have been treated worldwide.' Q4 CCO発言: 'TECFIDERA continued to demonstrate strong performance, which we believe is a testament to its attractive product profile, combining strong efficacy, favorable safety and tolerability and the convenience of oral administration.' 'in the U.S., we saw continued growth through the fourth quarter with its market share near 20%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "George Scangos (CEO) / Tony Kingsley (CCO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [4],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "「strong efficacy, favorable safety and tolerability and the convenience of oral administration」という製品プロファイルの仕組みが具体的に説明されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "pass",
+            "reasoning": "米国最多処方経口MS薬、米国市場シェア20%、ドイツ最多処方MS薬、世界135,000人以上の治療実績という複数の定量的根拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "経口投与の利便性×高い有効性という製品特性は構造的優位性。先行者利益（First Mover Advantage）もある"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "pass",
+            "reasoning": "米国最多処方経口MS薬・ドイツ最多処方MS薬という市場リーダーシップが競合との直接比較で示されている"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "MS患者の経口薬への強い需要（注射を避けたい患者）という市場構造とTECFIDERAの製品特性が完全に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t（ブランド×製品差別化）への高度合致",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "米国最多処方経口MS薬・ドイツ最多処方MS薬という市場リーダーシップは、競合比較の観点から最も強力な競争優位性の証拠の一つ。世界135,000人治療という安全性・有効性データの蓄積も防御的優位性を形成。経口薬への患者需要という市場構造との合致も明確"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "factual_claim",
+      "claim": "TECFIDERA全年売上$2.9B（米国$2.4B、海外$483M）。米国市場シェア約20%（最多処方経口MS薬）。世界135,000人以上を治療",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "TYSABRIの高有効性による難治性MS患者市場での独自ポジション（3四半期連続で正の新規患者純増）",
+      "descriptive_label": "TYSABRIの高有効性による難治性MS市場での独自ポジション",
+      "evidence_from_transcript": "Q4 CCO発言: 'TYSABRI continues to perform well as the therapy enjoyed its third consecutive quarter of positive net new patient adds, even as the oral therapies have continued to gain share. We believe that this performance is due to the high level of efficacy that TYSABRI provides to patients.' CEO発言: 'TYSABRI worldwide revenue was $484 million in Q4. For the full year, worldwide TYSABRI revenue was approximately $2 billion.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Tony Kingsley (CCO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [6],
+      "cagr_connections": [11],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「high level of efficacy」という製品特性に基づく競争優位性の言及あり。難治性患者向けの高有効性という明確な製品ポジションの説明がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "Q4売上$484M、全年$2B、3四半期連続正純増という定量データあり。ただし競合との直接比較なし"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "TYSABRIの高有効性（経口薬に市場を奪われながらも新規患者純増）は難治性患者向けの構造的なニッチポジションを示す"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "経口薬が台頭しても純増維持という事実は、競合との差別化の証拠（難治性ニッチ）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（ニッチブランドポジション）",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "経口薬が台頭する中でもTYSABRIが3四半期連続で新規患者純増を維持しているという事実は、難治性患者市場での独自ポジションを実証している。全年$2Bという安定した売上規模も強さの証拠。ただし長期的な競合動向（次世代製品）によるリスクあり"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "TYSABRI全年売上約$2B（Q4 $484M）。3四半期連続で正の純新規患者増（経口薬台頭中にもかかわらず）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "アルツハイマー治療候補薬BIIB037（aducanumab）のPhase Ibでの有望な認知機能改善データによる将来的なFirst Mover優位性",
+      "descriptive_label": "BIIB037アルツハイマー治療候補のPhase Ib有望データによる先行者優位性",
+      "evidence_from_transcript": "Q4 CEO発言: 'In December, we announced positive top line results from a Phase Ib trial of BIIB037 in patients with Alzheimer's disease. These data are early, but we believe they're compelling and we are aggressively working to advance this program into Phase III.' R&D EVP発言（Doug Williams）: 'we achieved statistical significance on the CDR Sum of Boxes, which is our registrational endpoint.' 'our current plan is to initiate our Phase III program later this year.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "George Scangos (CEO) / Douglas Williams (R&D EVP)",
+      "section_type": "prepared_remarks",
+      "cagr_connections": [12],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial",
+            "reasoning": "Phase Ibでのamyloid plaqueクリアランスとCDR Sum of Boxesでの統計的有意性は能力の証拠だが、早期の臨床データ（Phase Ib）であり確信度に限界"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "CDR Sum of Boxesでの統計的有意性という定量的証拠あり。ただし患者数が少なく（Phase Ib）、フル開示もまだ"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "partial",
+            "reasoning": "アルツハイマー候補薬の開発は戦略だが、Phase Ib有望データに基づく先行開発は競争優位性の萌芽として評価可能"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_E_t（将来的な優位性の可能性、現時点では証明不十分）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Phase Ib（早期段階）であり、Phase III成功は不確実",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "BIIB037のPhase Ibデータ（amyloid clearance + CDR Sum of Boxes統計的有意性）は医学界で注目されているが、アルツハイマー分野ではPhase III成功率が極めて低く（Eli Lilly等の失敗事例多数）、競争優位性としての評価は限定的。Phase III開始（2015年予定）後のデータ待ちの段階"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "血友病A・B治療における拡張投与間隔（半減期延長技術）による患者利便性での差別化（ALPROLIX/ELOCTATE）",
+      "descriptive_label": "血友病治療における半減期延長技術による患者利便性優位性",
+      "evidence_from_transcript": "Q4 CCO発言: 'We continue to believe that reduced infusion frequency is the largest unmet need for the hemophilia community, and that ALPROLIX and ELOCTATE meaningfully address this burden.' 'the majority of patients starting on ALPROLIX have been choosing the once-weekly prophylaxis dosing schedule.' 'ALPROLIX ended the year with its market share in the low teens, with over 60% of hemophilia treatment centers prescribing the product.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Tony Kingsley (CCO)",
+      "section_type": "prepared_remarks",
+      "supported_by_facts": [2],
+      "cagr_connections": [13],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "半減期延長技術による週1回投与という能力の仕組みが明確に説明されている。「reduced infusion frequency is the largest unmet need」という市場需要との整合も示されている"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "ALPROLIX 市場シェアlowteens・60%以上の血友病治療センターが処方という定量データあり。ただし競合（Shire、Novo Nordisk）との直接比較なし"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "lowteens市場シェアは市場参入から2-3か月での実績（比較的早い浸透）だが、競合との直接比較なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "血友病患者の頻繁な注射負担という未充足ニーズと、半減期延長による週1回投与という製品特性が明確に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_II_t（製品差別化×市場需要）",
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "「reduced infusion frequency is the largest unmet need」という市場需要の明確な特定と、ALPROLIXの週1回投与という解決策の合致は強力な競争優位性の証拠。lowteens市場シェア・60%の治療センター採用は初年度ローンチとして良好。血友病B市場（ALPROLIX）はA市場より競争が少なく優位性が高い"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "MS治療包括的ポートフォリオ → 新規・スイッチ患者50%獲得継続 → MS部門売上成長（14-16%全社成長の主要ドライバー）",
+      "descriptive_label": "MSポートフォリオ→患者50%獲得→MS売上CAGR",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "MS包括ポートフォリオ→新規・スイッチ患者50%獲得→MS売上成長（2015年14-16%成長ガイダンスの主要ドライバー）の直接接続"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "2015年ガイダンス14-16%成長でTECFIDERAが最大寄与という開示は接続を直接裏付ける。PLEGRIDY（欧州展開）・TYSABRI（正の純増）・TECFIDERA（欧州拡大）の組み合わせは成長の複数エンジンを持つ強固な接続"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "TECFIDERA米国・欧州市場拡大（欧州主要国で2015年末までに完全償還）→ グローバル売上$2.9B+からの成長継続",
+      "descriptive_label": "TECFIDERA欧州完全拡大→グローバル売上CAGR",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "欧州主要国での償還取得→TECFIDERA売上拡大→グローバル収益成長の接続。2015年中に大半の欧州主要市場での完全償還を見込むという具体的な接続点あり"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "欧州での段階的な保険償還取得（英国・イタリア・スペイン等）は具体的な収益成長ドライバーとして開示されている。ドイツでの最多処方実績は欧州成長への期待を裏付ける"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "TYSABRIの難治性MS市場での安定地位 → 年間$2B規模の安定的FCF寄与 → 研究開発への再投資",
+      "descriptive_label": "TYSABRI安定売上→FCF貢献→R&D投資持続",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "TYSABRI年間$2B→FCF貢献→R&D再投資（non-GAAP R&D 19%、$1.9B）の直接接続。成長プラットフォームの基盤収入として機能"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "TYSABRIの$2B安定売上はR&D投資の資金源として機能しており、BIIB全体のCAGRを支える基盤収益として位置付けられる"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "BIIB037承認（仮定）→ アルツハイマー治療市場参入 → 長期的な第2の成長エンジン",
+      "descriptive_label": "BIIB037承認（条件付き）→AD市場参入→第2成長エンジン",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "Phase III成功→承認→AD市場参入という接続は論理的だが、Phase III成功自体の確率が低い（アルツハイマー分野の失敗率が高い）"
+          }
+        ],
+        "confidence": 20,
+        "confidence_adjustments": [
+          {
+            "reason": "アルツハイマー分野のPhase III成功率が歴史的に極めて低い",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "Phase Ib有望データは評価されるが、アルツハイマー分野での過去の多数の失敗（Eli Lilly、Roche等）を考慮すると、CAGR接続の確信度は低い。Phase III開始後のデータが重要"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "ALPROLIX/ELOCTATE血友病治療での市場浸透 → 60%+の治療センター採用からの更なる深化 → 血友病部門売上成長",
+      "descriptive_label": "血友病製品市場浸透深化→血友病部門CAGR",
+      "source_advantage": 8,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "60%以上の治療センター採用から残り40%への拡大→患者within center比率向上→売上成長。2ステップの接続。ELOCTATE（A型）の競争環境（more competitive）がリスク"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "ALPROLIX（B型）は競争が少なくlow teens市場シェア。ELOCTATE（A型）はmid single digits（競争激しい）。全体として血友病部門の成長軌道は確立されており、接続の信頼度は中程度"
+      }
+    }
+  ]
+}

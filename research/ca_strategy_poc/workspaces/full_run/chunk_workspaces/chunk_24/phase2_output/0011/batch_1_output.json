@@ -1,0 +1,58 @@
+{
+  "ticker": "0011",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_id": "0011_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Hang Seng Bankはコスト効率比率（cost efficiency ratio）30-32%という業界最高水準の運営効率を継続的に維持しており、ポジティブジョーズ（収益成長率>費用成長率）を複数期にわたり達成している。",
+      "descriptive_label": "31-32%のコスト効率比率・ポジティブジョーズ継続（Scale Economies）",
+      "final_confidence": 0.4,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "31-32%という具体的な定量データが複数期（2013/2014/H1 2015）で確認可能"},
+        {"rule_id": "rule_1_t", "result": false, "reasoning": "コスト効率比率は運営効率の結果指標。それを可能にする構造的能力（自動化・プロセス改善・規模効率）の説明が不足"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "香港地場銀行他社（BOC HK等）や競合との直接比較なし。「業界最高水準」という主張を検証する比較データがない"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_A_t", "matched": true, "adjustment": -0.1, "reasoning": "コスト効率比率は運営上の「結果指標」であり、それを実現する能力（プロセス、テクノロジー、スケール）の説明が主張の中心でない"},
+        {"pattern_id": "pattern_G_t", "matched": true, "adjustment": -0.1, "reasoning": "「業界最高水準」という主張に対し、競合との数値比較がない"}
+      ],
+      "confidence_adjustments": [
+        {"source": "pattern_A_t", "adjustment": -0.1, "reasoning": "コスト効率比率は結果指標"},
+        {"source": "pattern_G_t", "adjustment": -0.1, "reasoning": "競合との直接比較なし"}
+      ],
+      "overall_reasoning": "31.1-32.4%のコスト効率比率は複数期の定量データで確認可能。しかしコスト効率比率は「運営の結果」であり（パターンA）、競合との比較なしに「最高水準」とは検証できない（パターンG）。ポジティブジョーズも毎期報告されているが、それを支える構造的能力の説明が不足。Phase 1評価の0.4を維持。"
+    },
+    {
+      "id": 7,
+      "claim_id": "0011_007",
+      "claim_type": "factual_claim",
+      "claim": "Hang Seng BankのH1 2015業績：税引前利益$11.08B（前年同期比+12%、Industrial Bank売却益除く）、運営利益$10.79B（+14%）、NIM 1.86%、コスト効率比率31.1%、CET1 17.1%。",
+      "descriptive_label": "H1 2015年次財務確定値（税引前利益$11.08B・NIM 1.86%・CET1 17.1%）",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "H1 2015半期確定財務数値。CEO準備発言（主・①相当）から採用。"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_I_t", "matched": true, "adjustment": 0.0, "reasoning": "定量的財務データは factual_claim として評価を支える"},
+        {"pattern_id": "pattern_A_t", "matched": false, "adjustment": 0.0, "reasoning": "factual_claimは能力主張でなく財務事実の記録であるためPattern-Aは非適用"}
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "H1 2015半期確定財務数値（CEO準備発言、主・①相当）。Industrial Bank売却益を除いた実力ベースで税引前利益+12%は安定した収益成長を示す。factual_claimとして0.7を維持。"
+    }
+  ]
+}

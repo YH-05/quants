@@ -1,0 +1,268 @@
+{
+  "ticker": "HFC",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-02-25) [Primary] + Q4 FY2014 Earnings Call (2015-02-25) [Primary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "内陸部（ミッドコンチネント）の地理的優位性：WTIベースの割安内陸原油（WCS、Midland-Cushing差など）への安価なアクセスによるコスト優位",
+      "descriptive_label": "内陸地理的立地によるpriced-advantaged原油アクセス",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Mike Jennings): 'Given our advantaged geographic location, close to inland crude production, and reduced refinery maintenance activity within the HFC system, we're well positioned to capture the benefits of this spread environment.' Q&A: 'The inland markets still need to draw product from the Gulf Coast because they're indigenously short and then for that reason, we see these markets pricing at a premium versus Gulf Coast benchmarks'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "地理的立地優位性は名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "WCS差$23/bbl、Midland-Cushing差$10/bbl等の数値が示されている"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "地理的立地は変更不可能な構造的優位性"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "内陸市場の構造（沿岸からの製品調達必要性）と企業の地理的ポジション（内陸立地）の合致を説明。ただし中期的に差が縮小するリスクへの言及あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "構造的優位性だが中期的にはパイプライン整備でdifferentialが縮小するリスクあり",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的な差スプレッドデータあり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "地理的立地は変更不可能な構造的優位性で、定量的データ（WCS差$23/bbl等）も示されている。ただしパイプライン整備等でdifferentialが縮小するサイクル的リスクがあり、長期的持続性に疑問"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "内陸原油アクセス優位性 → 低原料コスト → 高い精製マージン → 収益成長",
+      "descriptive_label": "地理的立地→低原料コスト→マージン→収益経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップの因果（地理的立地→低原料コスト→高マージン）。Mid-Con 3-2-1インジケーターで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果メカニズムは直接的で検証可能。ただし原油differentialはサイクル的に変動するため確度は中程度"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "製油所信頼性の改善プログラム：2014年の設備利用率91.7%達成（2013年比約5%改善、5年平均超）",
+      "descriptive_label": "製油所信頼性改善プロセス能力",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO Mike Jennings): 'During 2014, we focused a tremendous amount of energy on improving our refinery reliability... Our 2014 refinery utilization rate was 91.7%, nearly a 5% improvement relative to 2013 levels and above our 5-year average. 2014 lost opportunity was half the 2013 levels'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "利用率91.7%は結果だが、リスクベース検査プログラム・操作訓練プログラムという能力・仕組みへの言及がある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "91.7%利用率（5年平均超）、lost opportunity半減という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "absent",
+            "reasoning": "同業他社（Valero、Phillips 66等）との利用率比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "競合との直接比較なし",
+            "adjustment": -10
+          },
+          {
+            "reason": "結果（利用率改善）と能力（プログラム）の混在",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "製油所信頼性改善は定量的に示されているが、競合との比較がなく相対的優位性が不明。改善プロセス自体は業界標準的なアプローチの可能性が高い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Holly Energy Partners (HEP)を通じた物流・パイプラインインフラの内部化：製油所向け安定的かつ経済的な原油・製品輸送力",
+      "descriptive_label": "MLP（HEP）を通じた物流インフラ内部化",
+      "evidence_from_transcript": "Q4 FY2013 Q&A (CEO Mike Jennings): 'The growth strategy for HEP is twofold. First, it's around continuing to partner with HFC and projects that have stable and high cash returns...We've got a strong footprint and a franchise out there [Permian gathering system].' Q4 FY2014: HEP distributions $83 million for full year 2014, general partner distributions $9.8M (+22% YoY)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [10],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "物流インフラ内部化（MLP構造）は名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "物流インフラの内部化は長期的に安定したコスト構造をもたらす構造的優位"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "partial",
+            "reasoning": "内陸市場の地理的制約（パイプライン依存）とHEPを通じた内部インフラの合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "定量的裏付け（HEP distributions $83M）あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合精製会社も同様のMLP構造を採用（業界共通の手法）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "MLP構造による物流内部化は構造的優位性の候補だが、業界内（Valero、Phillips 66等）でも同様の取り組みが見られ、差別化の明確な根拠が不足"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "物流インフラ内部化 → 製品市場拡大（南部・東部市場へのリーチ）→ 収益多様化・成長",
+      "descriptive_label": "物流インフラ→市場拡大→収益成長経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3段階（インフラ内部化→市場リーチ拡大→収益多様化）で間接的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "因果チェーンが3段階で間接的。具体的な新市場開拓の定量データが不足"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "資本規律の維持：高バリュエーション時の買収断念と株主還元（自社株買い・配当）への集中",
+      "descriptive_label": "規律ある資本配分能力（買収断念例あり）",
+      "evidence_from_transcript": "Q4 FY2013 Q&A (CEO Mike Jennings): 'We are considering, but it's a very competitive space right now...acquisitions are coming at very high multiples. So we're going to be disciplined. We'll focus first on the area where we have a competitive advantage and put capital to work there.' 'end of the day, deployment of our capital has to compete through internal projects, namely CapEx, share repurchase and market opportunities'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_10_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "資本配分規律（能力・仕組み）として評価。具体的な断念例の言及あり"
+          },
+          {
+            "rule": "rule_10_t",
+            "verdict": "partial",
+            "reasoning": "高バリュエーション時の断念意思を表明しているが、具体的な断念案件名・金額の開示なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "断念例の具体性不足（案件名・金額の開示なし）",
+            "adjustment": -10
+          },
+          {
+            "reason": "定量的裏付けなし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "資本規律の意思表明はあるが、具体的な断念例の詳細（案件名・規模・断念理由）が開示されておらず裏付けが不十分"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "HFCのQ4 FY2013平均原油コスト：ロッキーズ$14.35/bbl WTI割引、ミッドコン$4.82/bbl割引、サウスウェスト$0.51/bbl割増（地理的差異あり）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "2014年のHFC製油所稼働率91.7%（2013年比約5%改善、5年平均超）、Lost Opportunity 2013年比半減",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "HFC 2014年全体のHEP分配金受取約$83百万、Q4 GPインセンティブ分配$9.8百万（前年同期比+22%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    }
+  ]
+}

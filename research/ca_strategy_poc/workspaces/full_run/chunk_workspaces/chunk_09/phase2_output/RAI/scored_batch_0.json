@@ -1,0 +1,339 @@
+{
+  "ticker": "RAI",
+  "batch_index": 0,
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "VUSEデジタルベイパー製品のプロプライエタリ技術とコンビニエンスストアチャネル#1ポジション",
+      "descriptive_label": "VUSE独自技術によるベイパー市場優位性",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "partial",
+          "reasoning": "「proprietary digital vapor technology」という能力的表現はあるが、その具体的な技術的差別化（バッテリー寿命、蒸気品質、使いやすさ）の定量比較なし。c-store #1は結果だが、その原因として技術力を提示している点は部分評価"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_4_t": {
+            "verdict": "partial",
+            "impact": "-10",
+            "reasoning": "技術比較の定量データなし"
+          },
+          "rule_7_t": {
+            "verdict": "partial",
+            "impact": "0",
+            "reasoning": "c-store #1はNJoy、blu等対比の証拠"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial - #1シェアは結果"
+          },
+          "high_eval_patterns": {
+            "pattern_V_t": "partial - c-store channelでの競合対比ポジション"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "MNST#1（市場シェア：50%）とLLY#2（競合比較70%）の中間。定量技術比較はないがproprietary技術への言及あり",
+          "calibrated_confidence": 50
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール4（定量的裏付け）",
+            "adjustment": 0,
+            "reason": "市場ポジションの数値はあるが技術的優位の定量比較なし"
+          },
+          {
+            "rule": "ベイパー市場急速変化",
+            "adjustment": 0,
+            "reason": "2015年以降JUUL等が台頭し#1維持不確実（リスク要因）"
+          }
+        ]
+      },
+      "final_confidence": 50,
+      "confidence_rationale": "VUSEのproprietary digital vapor technologyはc-store #1という結果で裏付けられ、能力的説明が一定程度なされている。ただしベイパー市場の急速変化と定量的技術比較の欠如から50%。Phase 1の40%から+10（技術的差別化要因の認定）",
+      "seven_powers_classification": "Cornered Resource（独自技術）またはBranding（VUSEブランド）",
+      "structural_vs_complementary": "structural（潜在的）"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "タバコ業界における構造的価格設定力（Pricing Power）とマージン拡大能力",
+      "descriptive_label": "タバコ製品の構造的価格設定力",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "partial",
+          "is_capability_not_result": "fail",
+          "reasoning": "高マージン（RJR 39.6%、American Snuff 56.4%）は結果の提示。タバコ産業全体の構造的価格設定力（MSA・規制・依存性）はAltria等競合も共有しており差別化にならない"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail",
+            "impact": "-10"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "impact": "+0",
+            "reasoning": "複数セグメントのマージン開示あり（定量証拠は十分）"
+          },
+          "rule_3_t": {
+            "verdict": "fail",
+            "impact": "-20",
+            "reasoning": "Altriaも同様の価格設定力を保有（業界共通能力）"
+          },
+          "rule_11_t": {
+            "verdict": "pass",
+            "impact": "+0"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "match - 高マージンという結果を価格設定力（原因）として提示",
+            "pattern_B_t": "match - タバコ産業共通の価格設定力"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "LLY#6（大手共通ネットワーク：30%）と類似。業界共通能力として却下水準",
+          "calibrated_confidence": 40
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール3（相対的優位性）",
+            "adjustment": -10,
+            "reason": "Altria等競合も同様の価格設定力を保有"
+          }
+        ]
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "タバコ産業の規制・MSA構造による価格設定力はRAI固有ではなくAltria等競合も共有。高マージンは業界構造の恩恵（結果）。定量データは十分だが業界共通性により差別化として弱い。Phase 1の40%を維持",
+      "seven_powers_classification": "業界共通（差別化なし）",
+      "structural_vs_complementary": "structural（業界共通）"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Natural American Spiritブランドによるスーパープレミアム/オーガニックタバコの独占的ニッチポジション",
+      "descriptive_label": "Natural American Spiritのオーガニック・ニッチブランド優位性",
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": true,
+          "is_capability_not_result": "partial_pass",
+          "reasoning": "Urban市場での健康志向×additive-freeタバコという独自ニッチポジション。14-20%の量成長、49州拡大という複数の定量証拠。Altria/Philip Morrisが模倣困難なブランドアーキタイプ"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial_pass"
+          },
+          "rule_4_t": {
+            "verdict": "pass",
+            "impact": "+0",
+            "reasoning": "複数の定量証拠（1.8%シェア、14%量成長、49州、Q3では20%量成長）"
+          },
+          "rule_7_t": {
+            "verdict": "partial",
+            "impact": "0"
+          },
+          "rule_11_t": {
+            "verdict": "pass",
+            "impact": "+0",
+            "reasoning": "健康志向プレミアム化トレンド×NASのオーガニックポジション=合致"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {},
+          "high_eval_patterns": {
+            "pattern_IV_t": "partial match - アーバン市場構造×NASブランドポジションの合致",
+            "pattern_I_t": "match - 複数の定量的成長証拠（14%/20%量成長、49州）"
+          }
+        },
+        "kb3_t_calibration": {
+          "reference_case": "ORLY#1（競合名・差別化軸明示：70%）と同水準。市場構造×ブランドポジションの合致が明確",
+          "calibrated_confidence": 70
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "NASのオーガニック・プレミアムニッチポジションは市場構造（健康志向プレミアム化）と明確に合致し、複数の定量証拠（14-20%量成長、1.8%シェア、49州）で裏付けられている。競合（Altria）がこのカテゴリで同等のポジションを持っていないことが差別化要因。Phase 1の70%を維持",
+      "seven_powers_classification": "Branding（ニッチブランド認知・健康志向ポジション）",
+      "structural_vs_complementary": "structural"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "タバコカテゴリにまたがる多様化ポートフォリオによる消費者行動変化への対応力",
+      "descriptive_label": "マルチカテゴリ・ポートフォリオ対応力",
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "fail",
+          "is_capability_not_result": "fail",
+          "reasoning": "Q3発言。ポートフォリオ多様化は戦略的選択（ルール8-T）。Altria等競合も同様のマルチカテゴリ戦略を保有（ルール3-T違反）。管理能力の具体的説明なし"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "fail"
+          },
+          "rule_8_t": {
+            "verdict": "fail"
+          },
+          "rule_12_t": {
+            "verdict": "secondary",
+            "impact": "-10"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial",
+            "pattern_B_t": "match - Altriaも同様のポートフォリオ戦略",
+            "pattern_F_t": "match - 戦略と優位性の混同"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#5（戦略的ポートフォリオシフト：30%）と同パターン",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": [
+          {
+            "rule": "ルール12（Q3従）",
+            "adjustment": 0
+          }
+        ]
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "Q3発言。戦略とポートフォリオ構造（結果）を優位性と混同。Altria等競合も同様の多様化ポートフォリオを保有。KB2-T pattern_B_t/pattern_F_tに該当。Phase 1の30%を維持",
+      "seven_powers_classification": "なし",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Lorillard/Newport統合による販売力強化とシナジー創出（$800Mシナジー計画）",
+      "descriptive_label": "Newport統合による販売力・規模経済優位性",
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 30,
+      "scoring_analysis": {
+        "gatekeeping": {
+          "is_competitive_advantage": "questionable",
+          "is_capability_not_result": "partial",
+          "reasoning": "Q3発言。M&Aは戦略的行動（一過性）であり持続的競争優位性とは言いにくい。$800Mシナジーは具体的目標だが、統合完了後の構造的優位性がどのように維持されるかの説明なし。「doubled sales force overnight」はやや誇張的"
+        },
+        "kb1_t_rules": {
+          "rule_1_t": {
+            "verdict": "partial"
+          },
+          "rule_8_t": {
+            "verdict": "fail"
+          },
+          "rule_12_t": {
+            "verdict": "secondary",
+            "impact": "-10"
+          }
+        },
+        "kb2_t_patterns": {
+          "rejection_patterns": {
+            "pattern_A_t": "partial - Newport統合成功（結果）を優位性として提示",
+            "pattern_F_t": "partial - M&A戦略と優位性の混同"
+          },
+          "high_eval_patterns": {}
+        },
+        "kb3_t_calibration": {
+          "reference_case": "CHD#4（M&A統合結果：30%）と類似",
+          "calibrated_confidence": 30
+        },
+        "dogma_adjustments": []
+      },
+      "final_confidence": 30,
+      "confidence_rationale": "Q3発言。Lorillard/Newport統合は一過性のM&Aであり持続的競争優位性としては弱い。$800Mシナジーは具体的だが、その達成後の競合優位性の持続メカニズムの説明がない。Phase 1の30%を維持",
+      "seven_powers_classification": "Scale Economies（一時的・統合後に縮小）",
+      "structural_vs_complementary": "complementary"
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "VUSE技術的優位性 → c-store channel #1維持 → ベイパーカテゴリ成長に伴う売上拡大",
+      "descriptive_label": "VUSE優位性→ベイパー市場成長獲得→売上CAGR寄与",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "ベイパー市場全体は成長中だが、2015年以降のJUAL等参入によりVUSEの#1維持は不確実。接続自体は2ステップで合理的だが、市場構造の不確実性が高い",
+          "pattern_match": "dogma: 業界特性に合致したドライバー（合理的だが不確実性高）→ 40-50%"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "VUSE#1→ベイパー成長獲得の2ステップ接続は合理的だが、競合の急速追い上げリスクが高い。Phase 1の40%を維持"
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "タバコ価格設定力 → 安定した高マージン維持 → EPS成長・FCF生成",
+      "descriptive_label": "価格設定力→高マージン持続→FCF・EPS成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 60,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "タバコ産業の価格設定→マージン→FCF接続は歴史的に安定。直接的2-3ステップ。Q4 2014実績（RJR OI +14%、EPS +13%）で開示データによる検証可能。ただしRAI固有ではなく業界共通の接続",
+          "pattern_match": "dogma: 直接的メカニズム（60-70%）。ただし業界共通性による調整"
+        }
+      },
+      "final_confidence": 60,
+      "confidence_rationale": "価格設定→高マージン→EPS成長の直接的2-3ステップ接続は開示データで検証可能。歴史的に安定した接続だが業界共通要因によるCAGR寄与。Phase 1の60%を維持"
+    },
+    {
+      "id": 11,
+      "claim_type": "cagr_connection",
+      "claim": "Natural American Spirit ブランド成長 → スーパープレミアムセグメント拡大 → Santa Fe の高マージン成長",
+      "descriptive_label": "NASブランド成長→Santa Fe高収益拡大",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "phase1_confidence": 70,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 2,
+          "note": "NAS量成長14%(Q4)/20%(Q3)→Santa Fe OI +20.5%→operating margin 51.2%の直接的接続。開示財務データで完全に検証可能。Urban市場拡大可能性も複数回言及",
+          "pattern_match": "dogma高評価パターン: 直接的CAGRメカニズム（90%水準）。ただしソース優位性（#5 NASブランド）評価を反映して70%"
+        }
+      },
+      "final_confidence": 70,
+      "confidence_rationale": "NAS量成長とSanta Feの高収益成長の2ステップ接続は開示財務データ（OI +20.5%、OPM 51.2%）で直接的に検証可能。Phase 1の70%を維持"
+    },
+    {
+      "id": 12,
+      "claim_type": "cagr_connection",
+      "claim": "Newport統合シナジー（$800M）→ コスト削減＋販売力強化 → 売上CAGR+EPS成長への寄与",
+      "descriptive_label": "Newport統合シナジー→規模拡大→売上・収益成長",
+      "source_advantage": 8,
+      "transcript_call_type": "Q3_quarterly",
+      "phase1_confidence": 40,
+      "scoring_analysis": {
+        "cagr_evaluation": {
+          "chain_steps": 3,
+          "note": "Q3発言。$800Mシナジーの内訳（コスト/売上分割）が完全に開示されていない。売上CAGR接続は間接的。Q3発言であり信頼度低下",
+          "pattern_match": "dogma低評価パターン: 数値の根拠不透明（30-50%）"
+        }
+      },
+      "final_confidence": 40,
+      "confidence_rationale": "Q3発言由来。$800Mシナジーは具体的だが売上CAGR接続の内訳開示が不完全。Phase 1の40%を維持"
+    }
+  ],
+  "metadata": {
+    "gatekeeper_applied": true,
+    "batch_size": 9
+  }
+}

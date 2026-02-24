@@ -1,0 +1,107 @@
+{
+  "ticker": "KR",
+  "batch_index": 0,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_III", "pattern_IV"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "KR-001",
+      "claim_type": "competitive_advantage",
+      "claim": "Customer 1stデータ分析に基づくパーソナライズ価格戦略とロイヤルカスタマー拡大能力",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 内部データを活用した$3.5B価格投資の最適化という能力（プロセスパワー）の説明。'tremendous amount of data we have developed internally'という固有データ資産",
+        "rule_4_t": "PASS: $3.5B年間価格投資、45四半期連続同店売上増、ロイヤル顧客が総顧客より速く増加という複数の定量的指標",
+        "rule_6_t": "PASS: データ駆動型価格最適化はKRの事業の核心的要素",
+        "rule_11_t": "PASS: 食料品市場でのロイヤル顧客基盤は業界構造との合致（スーパーマーケットのロックイン最重要指標）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "45四半期連続同店売上増という長期的な実績は構造的な顧客ロックインを示す。$3.5Bの価格投資最適化という能力と組み合わさり、Pattern IV（構造的市場ポジション）に該当"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で45四半期連続同店売上増（10年以上）という実績と、内部データによる$3.5B価格投資最適化という能力が説明されている。ロイヤル顧客が総顧客より速く増加というスイッチングコスト指標も良好。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KR-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Simple TruthプライベートブランドによるNatural & Organic市場の民主化（$1.2B、2年未満で$1B達成）",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PARTIAL: $1.2B達成は結果の側面もあるが、2年未満でbillion dollar到達という実行速度が能力を示す",
+        "rule_4_t": "PASS: $1.2B、2年未満でbillion dollar、20M世帯購入、2,688 SKU、double-digit単位・売上成長という複数の定量的データ",
+        "rule_6_t": "PASS: プライベートブランドは食料品小売の核心的要素",
+        "rule_7_t": "PASS: '史上最も速い$1Bブランド到達'という業界比較の実績"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "Natural/Organic市場の低価格民主化というCounter-Positioning的能力→$1.2Bという実績。Whole Foods等のPremiumプレイヤーと異なる価格帯での展開は差別化能力を示す"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でSimple Truthの$1.2B到達（史上最速$1Bブランド）という実績と、Natural/Organic市場の民主化戦略が説明されている。KR固有の規模・流通力による競合との差別化は高い。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KR-003",
+      "claim_type": "competitive_advantage",
+      "claim": "コーポレートブランド（プライベートブランド）による28.2%ユニットシェア獲得と製造垂直統合（ロボット酪農工場）能力",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: ロボット酪農工場（米国初の完全自動化）という具体的な製造能力の説明。垂直統合による品質・コスト優位性",
+        "rule_4_t": "PASS: 28.2%ユニットシェア（7年で最高）という定量的実績",
+        "rule_6_t": "PASS: 製造垂直統合は事業の核心的差別化要素",
+        "rule_11_t": "PASS: 食料品小売でのプライベートブランド製造能力は業界構造上の優位性"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_IV_structural_market_position",
+        "assessment": "米国初のロボット完全自動化酪農工場という具体的な製造能力と、28.2%ユニットシェア（7年最高）という実績の組み合わせ。競合小売が複製困難な製造投資。Pattern IV適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でロボット完全自動化酪農工場（米国初）という具体的な製造能力と28.2%ユニットシェア（7年最高）が説明されている。製造垂直統合は食料品小売での希少な競争優位性。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KR-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Harris Teeter統合とVitacostによるデジタル・プレミアム市場の新規顧客層獲得とシナジー実現能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 双方向シナジー（Harris Teeterがクロッガー全体に学習を提供）という統合能力の説明",
+        "rule_4_t": "FAIL: 定量的なシナジー貢献データ（$X百万）なし",
+        "rule_6_t": "PASS: M&A統合能力はKRの事業拡張の核心的要素"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "M&A統合能力（プロセス）→プレミアム・デジタル顧客獲得（結果）。ただし定量的なシナジー数値が示されておらず確信度は中程度"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Harris Teeter・Vitacostの統合進捗は良好だが、定量的なシナジー貢献が示されていない。'going very well'という定性的評価にとどまる。50%が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "KR-005",
+      "claim_type": "competitive_advantage",
+      "claim": "ニールセンPOS+データを使った精緻な市場シェア計測と60bp市場シェア拡大・18/20市場でシェア増加",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "FAIL: 市場シェア+60bpは結果。データ計測精緻化は情報収集能力だが独立した競争優位性の説明として弱い",
+        "rule_4_t": "PASS: +60bp、18/20市場、Walmart競合市場全勝という定量的データ",
+        "rule_7_t": "PASS: Walmart競合市場全市場でシェア増という具体的な競合比較"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "市場シェア+60bpはKR-001（Customer 1st）・KR-003（垂直統合）の能力の結果。市場シェア計測精緻化は情報優位だが独立した競争優位性として評価しにくい。Pattern A部分適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Walmart競合市場全勝という競合比較は有効だが、市場シェア増は能力の結果の側面が強い。データ計測能力はKR-001（Customer 1st）の補完的要素として理解が適切。50%を維持する"
+    }
+  ]
+}

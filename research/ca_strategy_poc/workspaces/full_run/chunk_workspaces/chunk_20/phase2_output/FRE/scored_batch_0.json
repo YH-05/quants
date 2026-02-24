@@ -1,0 +1,208 @@
+{
+  "ticker": "FRE",
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "HELIOS病院統合・マージン改善システム（クリニック開発計画）",
+      "evidence": "Q4 FY2013 CEO発言: 'Fresenius Helios...eighth consecutive year of double-digit EBIT growth...EUR 337 million target, actual results EUR 387 million. The development plan works.' Q4 FY2014: 'achieved about 40% of our EUR 85 million annual synergy target in the first year already.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_10_t", "rule_11_t"],
+        "confidence": 70
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_I_IV",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "Pattern I（定量的裏付けあり差別化）とPattern IV（業界構造的市場ポジション）の両方に該当。EUR337M目標→EUR387M実績という超達成、8年連続ダブルデジットという定量データが強力"
+        },
+        {
+          "source": "KB1-T rule_11_t",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "ドイツ急性期病院市場：42%の病院が赤字、フラグメント市場でのプライベートオペレーターという業界構造との明示的合致。dogmaルール11（業界構造合致＋30%）の条件に近い"
+        },
+        {
+          "source": "dogma rule_7",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "純粋競合（Asklepios、Sana等）との直接比較はないが、業界構造の明示でカバー"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "pass", "reasoning": "クリニック開発計画（6年間マージン改善計画）は能力・仕組みとして明確に評価可能"},
+        {"rule": "rule_4_t", "verdict": "strong", "reasoning": "EUR337M目標→EUR387M実績（15%超達成）、8年連続ダブルデジットという強力な定量裏付け"},
+        {"rule": "rule_11_t", "verdict": "strong", "reasoning": "42%赤字病院、フラグメント市場という業界構造との合致が明示"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "定量的裏付けのある差別化。EUR337M目標超過・8年連続実績が高評価に寄与"},
+        {"pattern": "pattern_IV", "matched": true, "effect": "positive", "reason": "市場構造的ポジション。ドイツ急性期市場のフラグメント構造×統合能力の合致"}
+      ],
+      "overall_reasoning": "HELIOS統合能力はKB2-T Pattern IとIVの両方に該当する高評価ケース。EUR337M目標→EUR387M実績という超達成、8年連続ダブルデジットという定量裏付け、ドイツ急性期病院市場の42%赤字・フラグメント構造との合致という業界構造要件を満たす。dogmaルール11（業界構造合致）を適用。純粋競合比較はないが業界構造開示でカバー。70%維持",
+      "power_classification": "Process Power（統合・マージン改善システム）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "HELIOS統合能力 → Rhön買収統合シナジーEUR85M/年 → EBIT +15%以上 → 売上・EPS成長加速",
+      "evidence": "EUR85M年間シナジー目標のうち初年度40%達成。EBIT成長8年連続ダブルデジットの実績",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 70
+      },
+      "final_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "source": "dogma CAGR high pattern",
+          "direction": "up",
+          "magnitude": 0.0,
+          "reason": "統合能力→EUR85Mシナジー→EBIT成長は2ステップの直接的因果。開示数値（40%初年度達成）での検証可能性が高い"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "direct", "reasoning": "統合能力→EUR85Mシナジー→EBIT成長は2ステップの直接的因果"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4での体系的説明"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "CAGR接続は明確で開示数値あり。EUR85Mシナジーのうち40%初年度達成という実績データが裏付け。dogmaルール5（直接的メカニズム+検証可能性）を満たす。70%",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Fresenius Kabi のジェネリック静脈内薬品（IV Drugs）製造・承認取得能力と新興市場展開力",
+      "evidence": "Q4 FY2013 CEO発言: 'Propofol and Diprivan market share of 88%, despite competition from 3 other generics...launch schedule foresees a bolus of launches in the 2015 through 2017 time frame, expect to exceed our 6 to 10 targets'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "KB1-T rule_1_t",
+          "direction": "neutral",
+          "magnitude": 0.0,
+          "reason": "年間6-10製品ローンチ目標という能力指標はある。Propofol 88%シェアは結果だが競合3社存在下での維持は能力の証左"
+        },
+        {
+          "source": "FDA quality issues",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "FDA品質問題（Grand Island, Kalyani, Maricao）による能力への懸念。Phase 1評価での-5調整を継続"
+        },
+        {
+          "source": "drug shortage dependency",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "IV薬品不足（drug shortage）の外部要因依存が大きく競争優位の独自性に疑問"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "partial_pass", "reasoning": "製造・承認取得能力（年6-10製品ローンチ目標）は能力指標として機能"},
+        {"rule": "rule_7_t", "verdict": "partial", "reasoning": "Propofol競合（3社ジェネリック）との88%維持は差別化の証左だが包括的比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I", "matched": true, "effect": "positive", "reason": "88%シェアという定量的数値。ただしFDA問題が優位性の持続性に疑問を呈する"}
+      ],
+      "overall_reasoning": "IV Drugs製造能力はPropofol 88%シェアと年間ローンチ能力で評価できるが、FDA品質問題と薬品不足という外部要因が優位性の独自性を曇らせる。Hospira、Baxterとの直接比較なし。45%",
+      "power_classification": "Cornered Resource（FDA承認パイプライン）",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Kabi IV Drugs製造能力 → 2015-2017 ローンチボーラス（年6-10製品超）→ North America有機成長回復 → Kabi EBIT 6-10%成長",
+      "evidence": "2015-2017ローンチ計画。North America有機成長回復見通し",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "confidence": 50
+      },
+      "final_confidence": 0.45,
+      "confidence_adjustments": [
+        {
+          "source": "external dependency",
+          "direction": "down",
+          "magnitude": 0.05,
+          "reason": "drug shortage正常化という外部条件依存が大きい。dogmaCAGR低評価パターン「増収前提のレバレッジ接続（基盤説明なし）」に部分的に該当"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_5_t", "verdict": "conditional", "reasoning": "ローンチ→成長は2ステップで論理的だがdrug shortage正常化という外部条件依存大"},
+        {"rule": "rule_12_t", "verdict": "primary", "reasoning": "Q4での中期見通し提示"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "ローンチ計画は具体的だが外部条件（FDA・薬品不足）依存が強い。条件付きの接続として45%",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4_FY2013_prepared_remarks", "Q4_FY2014_prepared_remarks"]
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "多事業セグメント（Kabi, HELIOS, FMC, Vamed）のバランスポートフォリオによるリスク分散と成長安定性",
+      "evidence": "Q4 FY2014 CEO発言: 'Beta of about 0.4, we nonetheless, achieved a total return that is more than double the DAX's average...the ultimate low-risk, high-return investment.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t"],
+        "confidence": 30
+      },
+      "final_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "Pattern A（結果を原因と取り違え）の典型例。Beta 0.4やTSR 2倍は結果。ポートフォリオ管理能力の説明なし"
+        },
+        {
+          "source": "dogma rule_1",
+          "direction": "down",
+          "magnitude": 0.0,
+          "reason": "dogmaルール1（優位性は能力・仕組み）違反。「低Beta・高TSR」は結果であり、それを可能にする能力の説明がない"
+        }
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule_1_t", "verdict": "fail", "reasoning": "Beta 0.4やTSR 2倍は結果。多角化ポートフォリオ管理能力の説明なし"},
+        {"rule": "rule_6_t", "verdict": "complementary", "reasoning": "多角化自体は補完的要素。各事業の固有の競争優位が核心"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A", "matched": true, "effect": "negative", "reason": "財務指標（Beta, TSR）を競争優位性として提示するPattern A（結果を原因と取り違え）の典型例"}
+      ],
+      "overall_reasoning": "多角化ポートフォリオの結果（低Beta・高TSR）を競争優位として提示するPattern A（結果を原因と取り違え）の典型ケース。dogmaルール1（優位性は能力・仕組み）の違反。ポートフォリオ管理能力（CHD#3相当）の具体的説明がない。30%",
+      "power_classification": "なし（結果の誤帰属）",
+      "evidence_sources": ["Q4_FY2014_prepared_remarks", "Q4_FY2013_prepared_remarks"]
+    }
+  ],
+  "metadata": {
+    "ticker": "FRE",
+    "claim_count": 16,
+    "scored_count": 5,
+    "target_claim_ids": [1, 2, 3, 4, 5],
+    "batch_index": 0,
+    "batch_total": 4,
+    "confidence_distribution": {
+      "0.9": 0,
+      "0.7": 2,
+      "0.5-0.55": 0,
+      "0.4-0.45": 2,
+      "0.3": 1,
+      "0.1": 0
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": [
+      "kb1_rules_transcript/rule01_capability_not_result.md",
+      "kb1_rules_transcript/rule11_industry_structure_fit.md",
+      "kb2_patterns_transcript/pattern_A_result_as_cause.md",
+      "kb2_patterns_transcript/pattern_I_quantitative_differentiation.md",
+      "kb2_patterns_transcript/pattern_IV_structural_market_position.md",
+      "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    ]
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "ticker": "NESN",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-02-13) / Q4 FY2014 Earnings Call (2015-02-19)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q2 (Aug)"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Nestlé Continuous Excellence（NCE）による組織全体の継続的コスト効率化能力",
+      "descriptive_label": "NCEプロセス改善システム",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Wan Martello): 'NCE, Nestlé Continuous Excellence, once again delivered over CHF 1.5 billion and contributed to a 70-basis-points decline in the cost of goods sold. Distribution costs fell by 10 basis points, and admin costs also fell by 40 basis points.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Wan Martello",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "NCEという固有のプロセス改善システム（能力・仕組み）として評価。CHF15億超のコスト削減は結果だが、NCEそのものが仕組み"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "borderline",
+            "reasoning": "多くの食品大手もリーン生産やコスト効率化プログラムを有する。NCEの独自性の程度が不明"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "Unilever、P&G等の純粋競合との比較でNCEがどれほど優れているかの定量的説明なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "CHF15億超という定量的成果あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合との差別化が不明確",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "継続的改善システムとしてのNCEは評価できるが、食品業界大手はいずれも同様のシステムを持つ傾向があり、相対的優位性の説明が不十分。定量的成果（CHF15億超）はある"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "NCEによるコスト効率化 → 利益率改善 → EPS成長に年間+20-40bp寄与",
+      "descriptive_label": "NCE→利益率改善→EPS成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（NCE→コスト低下→利益率改善）で開示データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "毎年CHF15億超のNCE効果が開示データで確認でき、利益率改善への直接的接続が明確"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Nespressoのプレミアムコーヒーシステムによるスイッチングコストとブランドプレミアム",
+      "descriptive_label": "Nespressoプレミアムコーヒーシステム",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Paul Bulcke): 'Nespresso is our best example. It is used and abused, and it's going well, and we are pushing very hard the rollout worldwide of this fantastic concept that is, yes, is indeed, through its success, inviting quite a lot of other players.' And Q4 FY2014: 'Nespresso grew in all regions. Our ongoing focus on quality and the many investments we made and continue to make in products, machines and services delivered strong results.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Paul Bulcke / Wan Martello",
+      "section": "prepared_remarks",
+      "supported_by_facts": [12],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "カプセル+マシンのクローズドシステムという構造的能力・仕組みを評価"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "qualitative",
+            "reasoning": "定量的な売上成長率の言及なし。全地域成長は確認できるが数値不明"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "カプセル互換性の制限（クローズドシステム）とブランドの組み合わせは構造的スイッチングコストを創出"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Keurig（米国）、Dolce Gusto（自社競合）等のカプセルコーヒー競合が増加。差別化はブランドと品質のみ"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "クローズドシステムによるスイッチングコストは構造的",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合カプセルの増加で優位性が侵食されつつある",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Nespressoはカプセルとマシンのクローズドエコシステムによるスイッチングコストとブランドプレミアムを組み合わせた優位性を持つ。ただし競合カプセル（Keurig、Dolce Gusto等）の増加で侵食懸念あり"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "Nespressoシステム拡大 → リピート購入（カプセル）増加 → 高マージン売上成長",
+      "descriptive_label": "Nespresso→カプセル継続購入→高マージン成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（システム普及→カプセルリピート購入→高マージン売上）で検証可能なモデル"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "剃刀・刃モデル（マシン+カプセル）の直接的収益メカニズム。全地域成長の実績で裏付け"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場190ヵ国での「ネイティブプレゼンス」と長年のブランド構築による規模優位性",
+      "descriptive_label": "新興市場ネイティブプレゼンスと規模",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Paul Bulcke): 'We have been there for many, many years. And linking up with consumers, brand links is emotional I know it works and accumulates over years...We have indeed the biggest presence, I'd call it native presence in the developing markets.' Q4 FY2014 (Wan Martello): 'Emerging markets delivered 8.9% organic growth; sales totaling CHF 40.2 billion, which is about 44% of our group.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Paul Bulcke / Wan Martello",
+      "section": "prepared_remarks",
+      "supported_by_facts": [13],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "190ヵ国プレゼンスは能力と言えるが、「最大の存在感」は結果的側面もある"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "新興市場売上CHF 40億（グループの44%）、8.9%成長という定量データあり"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Unileverも広大な新興市場プレゼンスを持ち、純粋競合との差別化が不明確"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "新興市場中産階級の台頭という業界構造のトレンドと合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "UnileverやP&Gも同様の新興市場プレゼンスを持つ（ルール3-T）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "新興市場での長年のプレゼンスは優位性の一側面だが、Unilever等の純粋競合も同様の戦略を展開しており相対的差別化が困難。規模は「結果」の側面もある"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場プレゼンス規模 → 中産階級成長との連動 → グループ売上CAGR +4-5%への貢献",
+      "descriptive_label": "新興市場規模→中産階級成長連動→売上成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ（プレゼンス→市場成長への乗りこなし→売上成長）。新興市場8.9%成長実績で裏付けあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "新興市場44%売上比率と8.9%成長の実績データで裏付けられる直接的メカニズム"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "Nutrition, Health & Wellness戦略による60/40+イノベーション体系とR&D能力",
+      "descriptive_label": "NHW戦略と60/40+イノベーション体系",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Paul Bulcke): '60/40+...that is the most important tool and mindset that drives the Nutrition, Health and Wellness agenda in this company...Last year, we have reformulated just like that, 8,000 products, just last year...170 billion servings of micro-fortified products.' And Q4 FY2014: 'Our R&D investment increased by 20 basis points.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Paul Bulcke",
+      "section": "prepared_remarks",
+      "supported_by_facts": [14],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "60/40+という固有の評価フレームワークと年8,000製品の改良実行能力は組織的能力・仕組み"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "年8,000製品改良、1,700億回分の栄養強化製品という定量的規模"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "borderline",
+            "reasoning": "NHW戦略はNestlé固有だが、Unilever等も同様の健康・ウェルネス戦略を展開"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "UnileverのVitality Mission等との差別化が定量的に不明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "定量的規模（8,000製品改良）はあるが競合との相対比較がない",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "NHW戦略と60/40+イノベーション体系は食品業界で独自性があるが、Unilever等も健康・ウェルネスに投資しており相対的優位性の証明が難しい"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "NHW・60/40+イノベーション → プレミアムカテゴリ価格優位性 → 利益率改善+売上成長",
+      "descriptive_label": "NHW→プレミアム価格→利益率改善",
+      "source_advantage": 7,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "moderate",
+            "reasoning": "2-3ステップ（NHW→プレミアム化→価格優位→利益率改善）でやや間接的。ただし栄養製品セグメント利益率改善実績あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Nestlé Nutrition利益率20.8%（+80bp）の実績でCAGR接続の妥当性は確認できるが、NHWそのものの貢献度分離が困難"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "PetCareブランドポートフォリオ（Purina、Pro Plan、Felix等）による先進的動物栄養研究を基盤にしたプレミアム化能力",
+      "descriptive_label": "Purina動物栄養研究ベースのプレミアムPetCare",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (Paul Bulcke): 'The whole PetCare success that we have, that we see now reflected also in Europe and Latin America...That is innovation based on premiumization. And it is really linking the proposition of Purina towards added value, nutritional benefits.' Q4 FY2014: 'We continue to see good growth in PetCare in both emerging and developed markets.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Paul Bulcke",
+      "section": "prepared_remarks",
+      "supported_by_facts": [15],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Purinaの動物栄養研究能力（能力・仕組み）として評価。欧州・中南米での成長拡大は結果として区別"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Purinaの長年の動物栄養研究は模倣困難な構造的能力"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "Mars（Pedigree、Whiskas）との比較でPurinaの差別化根拠が不明確"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ペット人口増加・プレミアム化トレンドという業界構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Marsとの相対的差別化根拠が弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Purinaブランドの動物栄養研究能力は評価できるが、MarsやHill's等の競合も高い研究能力を持ち、相対的優位性の具体的な証拠が不足"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "Purinaプレミアム化 → PetCare高成長 → グループ全体の利益率改善貢献",
+      "descriptive_label": "Purina→PetCare高成長→利益率改善",
+      "source_advantage": 9,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（プレミアムPetCare→高成長→利益率改善）。欧州・中南米での成長加速実績で裏付け"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "PetCareの成長実績はあるが、具体的なマージン貢献の定量データが不足"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "NCE FY2013: CHF15億超のコスト削減を達成。売上原価率-70bp、販管費-40bp",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 12,
+      "claim_type": "factual_claim",
+      "claim": "Nespresso FY2014: 全地域で成長。北米VertuoLineシステム新規ローンチ成功",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 13,
+      "claim_type": "factual_claim",
+      "claim": "新興市場売上CHF 40.2億（グループ44%）、8.9%有機成長。E7諸国・中国・ラテンアメリカが牽引",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 14,
+      "claim_type": "factual_claim",
+      "claim": "FY2013: 8,000製品改良、1,700億回分の栄養強化製品提供。R&D投資：売上比+20bp（FY2014）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [7]
+    },
+    {
+      "id": 15,
+      "claim_type": "factual_claim",
+      "claim": "PetCare: 欧州・中南米でダブルデジット成長。新興市場展開加速（アジア・アフリカ）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [9]
+    }
+  ]
+}

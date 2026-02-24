@@ -1,0 +1,81 @@
+{
+  "ticker": "ARM",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["ARM-006", "ARM-007", "ARM-008", "ARM-009", "ARM-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "ARM-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Patent Box税制活用によるUK法人税率優遇（実効税率20%→16%への低下）",
+      "descriptive_label": "Patent Box税制による競争優位（税率優位）",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - 税制優遇は政府政策の恩恵（外部要因）であり、ARMの能力・仕組みではない",
+        "rule_6_t": "FAIL - 補完的メリットであり構造的優位ではない",
+        "rule_8_t": "FAIL - 税務戦略は戦略的意思決定であり優位性の仕組みではない"
+      },
+      "kb2_t_pattern": "pattern_B_t（業界共通）。UK Patent Boxは英国のIP保有全企業が活用可能",
+      "kb3_t_calibration": "他few-shotに類似事例なし。補完的メリットとして却下に近い評価",
+      "dogma_evaluation": "Dogma Rule 8（戦略≠優位性）: 税務最適化は戦略的行動。Rule 6（構造的vs補完的）: 補完的。30%が上限",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・6・8の3重違反。KB2-T pattern_B_t（業界共通）。dogma.md Rule 6・8違反。税制優遇は補完的メリットであり構争優位性の仕組みではない。30%"
+    },
+    {
+      "id": "ARM-007",
+      "claim_type": "cagr_connection",
+      "claim": "IPライセンス基盤 → ロイヤリティ収益（チップ出荷x単価）→ 売上CAGR 20%成長",
+      "descriptive_label": "IPライセンス→ロイヤリティ→売上成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（ライセンス→チップ出荷×ロイヤリティ単価）で検証可能",
+        "rule_12_t": "PASS - Q4発言由来"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続メカニズム）に完全合致。CFOのロイヤリティ収益モデル説明が裏付け",
+      "kb3_t_calibration": "COST顧客粘着力（会員更新率→ARPU→売上 → 90%）に類似。ARMの場合はチップ出荷増×v8移行の2変数で、COSTより複雑だが確度は高い",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。過去5年30%成長データで検証可能。Q4発言。高評価パターン「開示データで検証可能」に合致",
+      "final_confidence": 0.7,
+      "scoring_rationale": "KB1-T Rule 5・12の両PASS。KB2-T pattern_II_t（直接的CAGR接続）に合致。dogma.md Rule 5高評価パターン「検証可能な接続」該当。Q4発言。70%"
+    },
+    {
+      "id": "ARM-008",
+      "claim_type": "cagr_connection",
+      "claim": "新市場展開（IoT・エンタープライズ）+ ARMv8移行 → 多様化ロイヤリティ基盤 → 中期売上成長",
+      "descriptive_label": "新市場・v8移行→ロイヤリティ多様化→成長経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの因果（新市場+v8移行→ロイヤリティ基盤多様化）で検証可能",
+        "rule_12_t": "PASS - Q4発言由来（Q3での具体的数値が補強）"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。IoT/MCU 55% YoYとv8 3.5%→50%移行が定量的裏付け",
+      "kb3_t_calibration": "ARM-007より複雑（2変数の合算）。COST#3（倉庫型→新規出店成長接続 → 50%）に近い。不確実性はエンタープライズ展開の速度",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。ただしエンタープライズ展開の不確実性（現状5%シェア）が制約。過去実績との整合は部分的",
+      "final_confidence": 0.6,
+      "scoring_rationale": "KB1-T Rule 5・12の両PASS。KB2-T pattern_II_t。dogma.md Rule 5（2ステップ因果）PASS。エンタープライズ展開の不確実性でARM-007より低い。60%"
+    },
+    {
+      "id": "ARM-009",
+      "claim_type": "factual_claim",
+      "claim": "2013年に10億チップ出荷（累計50億超）、スマートフォンの約95%がARMプロセッサ搭載",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 FY2013 CEO発言による明確な定量的開示。独立検証可能"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。ARM-001の優位性評価を強力に支持",
+      "final_confidence": 0.7,
+      "scoring_rationale": "事実主張として定量的裏付け充分。ARM-001（70%）の根幹的な支持事実。Q4発言。0.7"
+    },
+    {
+      "id": "ARM-010",
+      "claim_type": "factual_claim",
+      "claim": "ARMライセンシー企業数は1500社超（Q4 FY2013時点）、TechCon参加者4000人",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q4 FY2013発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。ARM-002（パートナーシップネットワーク）の支持事実",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付けあり。ARM-002（70%）の支持事実。Q4発言。0.6"
+    }
+  ]
+}

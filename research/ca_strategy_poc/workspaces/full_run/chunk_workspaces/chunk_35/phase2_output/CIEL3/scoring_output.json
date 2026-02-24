@@ -1,0 +1,155 @@
+{
+  "ticker": "CIEL3",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "ブラジル決済アクワイアリング市場でのドミナントスケール・ネットワーク",
+      "seven_powers_category": "Network Economies",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_1_t",
+          "verdict": "borderline",
+          "adjustment": -5,
+          "reasoning": "規模（BRL 144B取引量）は結果。背後のネットワーク構築能力の説明が不足"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "ブラジル決済市場の寡占構造とCIELOのドミナントポジションの合致"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_3",
+          "verdict": "market_share_losing",
+          "adjustment": -10,
+          "reasoning": "CEO自ら「業界成長を下回る成長を予想」と言及。市場シェアを失っている事実"
+        }
+      ],
+      "final_score": 0.35,
+      "final_confidence_pct": 35,
+      "scoring_rationale": "ブラジル決済市場の寡占的ドミナントポジションは構造的価値があるが、CEO自ら市場シェア低下を認識。dogmaによりシェア喪失銘柄は評価を引き下げ"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "市場成長×ネットワーク拡大→取引量→収益成長経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "dogma_rule_3",
+          "verdict": "below_market_growth",
+          "adjustment": -15,
+          "reasoning": "CEOが業界成長を下回る成長見通しを開示しており、因果接続の確度が大幅低下"
+        }
+      ],
+      "final_score": 0.35,
+      "final_confidence_pct": 35,
+      "scoring_rationale": "業界成長11-13%は示されているが、CIELO自身は業界を下回る成長予測。CAGR接続の信頼性が低下"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "Banco do Brasil JVによる収益多様化・リーチ拡大",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_8_t",
+          "verdict": "borderline",
+          "adjustment": -5,
+          "reasoning": "JV設立は戦略。「BB系取引への独占的アクセス」という能力が優位性の本質"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "Banco do Brasil系取引への独占的アクセス権がCornered Resource"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "Banco do Brasil（ブラジルNo.1銀行）とのJVによる独占的取引フローアクセスはCornered Resource候補。JV評価BRL 11.6Bとnet income BRL 578Mという定量データで裏付け"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "BB JV→安定収益源→CAGR向上経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "BRL 578M net incomeという定量的裏付けで直接的"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "JV pro forma net income BRL 578Mで直接的な接続。投資額BRL 8.1Bが必要だが収益性は明確"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "取引コスト効率管理能力",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -10,
+          "reasoning": "競合（Rede等）との取引コスト比較なし"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "コスト/取引（BRL 0.76）はガイダンス内だが前年比5.2%上昇。競合比較なし"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "モバイル決済プラットフォームのファーストムーバー",
+      "seven_powers_category": "Counter-Positioning",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_D_t",
+          "verdict": "qualitative_only",
+          "adjustment": 0,
+          "reasoning": "技術的先行優位は模倣容易で持続性が低い"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "「市場初」の主張はあるが、決済インフラでのモバイル機能は競合も短期追随可能。低確信度"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 2,
+    "weighted_avg_score": 0.32,
+    "top_claim": {
+      "claim_id": 3,
+      "final_score": 0.40,
+      "descriptive_label": "Banco do Brasil JVによる収益多様化・リーチ拡大"
+    },
+    "primary_seven_powers": ["Cornered Resource", "Network Economies"],
+    "investment_thesis_strength": "weak",
+    "key_risks": [
+      "CEOが業界成長を下回る成長見通しを開示（市場シェア喪失）",
+      "ブラジルマクロ環境の悪化リスク",
+      "BB JV投資BRL 8.1Bの財務負担"
+    ]
+  }
+}

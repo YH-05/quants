@@ -1,0 +1,92 @@
+{
+  "ticker": "GEBN",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの欧州建築業界におけるB2Bブランド優位性（プランナー・設備士向け50年超の関係構築）",
+      "descriptive_label": "B2B建設専門家ブランド（Branding / Process Power）",
+      "seven_powers_type": "Branding",
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_III_t",
+      "kb3_calibration_note": "50年超・6,000万台実績と60,000回訪問の仕組みはKB3 high confidence 事例に近い。B2B専門家ブランドは市場構造に深く合致",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_III_t（能力>結果）+ pattern_IV_t。設備士・プランナーへの深い関係構築プロセス（60,000訪問・200イベント）は仕組みとして評価できる。市場構造（設備士が製品採用を決定する）との合致も強い。70%維持。",
+      "dogma_applied": ["dogma_rule_3", "dogma_rule_7"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの高水準EBITDA margin（27.3%、目標コリドー23-25%を上回る）を支える製造効率と連続改善プロセス",
+      "descriptive_label": "製造プロセス効率性・コスト構造優位（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 50,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "27.3%EBITDAは業界平均との比較なしで KB3 mid confidence。材料費改善（26.1%→25.1%）は定量的",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_I_t（定量的差別化）だが競合比較不在。製造効率改善の仕組みは評価できるが、衛生設備業界での相対的優位が確認できない。Phase1の-10%調整反映で40%→競合なし調整後50%維持。",
+      "dogma_applied": ["dogma_rule_3"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Sanitec買収によるバスルームセラミクス（壁前）への拡張と欧州衛生製品リーダーポジションの強化",
+      "descriptive_label": "M&A能力と欧州市場統合（Scale Economies）",
+      "seven_powers_type": "Scale Economies",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_F_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "M&A戦略をPower混同。EUR45mnシナジーは未実現。KB3 low confidence",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_F_t（戦略と優位性の混同）。買収直後で統合リスク・シナジー実現不確実。競争優位性として評価するには実績が必要。30%維持。",
+      "dogma_applied": ["dogma_rule_5"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの継続的製品イノベーション（設備士の生産性を向上するプロダクト設計）",
+      "descriptive_label": "設備士向け製品イノベーション（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 50,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_I_t",
+      "kb3_calibration_note": "特許製品（Sovent fitting：流速40%向上）は定量的技術差別化。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "KB2 pattern_I_t（定量的差別化：Sovent 40%流速向上）+ pattern_III_t。特許保護の技術イノベーションは評価できる。ただし競合（Viega等）との比較が明示されていない。Phase1の-10%調整で40%→特許評価を加味して50%に修正。",
+      "dogma_applied": ["dogma_rule_3"],
+      "is_primary": false
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの天然ヘッジ構造（売上と費用の通貨構成が近似）による為替リスクの構造的管理",
+      "descriptive_label": "自然ヘッジによる通貨リスク管理（Process Power）",
+      "seven_powers_type": "Process Power",
+      "phase1_confidence": 30,
+      "kb1_gate": "caution",
+      "kb2_pattern_rejection": "pattern_D_t",
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "財務的安定性であり競争優位性として機能しない。KB3 low confidence",
+      "final_confidence": 0.3,
+      "confidence_rationale": "KB2 pattern_D_t（定性的のみ）。天然ヘッジは製造拠点配置の結果であり競争優位のBarrierを形成しない。30%維持。",
+      "dogma_applied": ["dogma_rule_5"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"20-30": 2, "40-50": 2, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

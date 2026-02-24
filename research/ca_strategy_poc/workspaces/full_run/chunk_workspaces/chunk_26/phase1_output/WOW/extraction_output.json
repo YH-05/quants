@@ -1,0 +1,286 @@
+{
+  "ticker": "WOW",
+  "cutoff_date": "2015-09-30",
+  "claims": [
+    {
+      "id": "WOW_001",
+      "claim_type": "competitive_advantage",
+      "claim": "WoolworthsはオーストラリアのFresh Food（生鮮食品）市場においてGrocery（加工食品）を上回る市場シェア成長を実現する生鮮食品調達・鮮度管理能力を有する。",
+      "evidence": "Tjeerd Jegen (FY2014 prepared_remarks): 'our fresh market share is now growing faster than our grocery share, Nielsen in the final quarter of calendar year 2013, we've been the fastest-growing retailer in fresh food.' '3% comp growth in FY14 - Fresh again outstripped our growth in grocery, which is great for mix.' 97%のオーストラリア産青果物調達、Simplot契約で$17M投資し国産冷凍野菜に切り替え。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule07": false,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: Coles（純粋競合）との生鮮食品調達能力の定量比較なし。市場シェア成長率の差異も示されていない", "rule11: オーストラリアスーパーマーケット市場（Coles/Woolworths寡占）での生鮮差別化は市場構造と合致", "rule04: Nielsen調査での最速成長という定量データあり。97%国産調達という数値あり"]
+      },
+      "power_classification": {
+        "power_type": "process_power",
+        "benefit": "生鮮食品の市場シェア成長がGrocery比で高く、粗利ミックス改善と顧客ロイヤルティ向上に寄与",
+        "barrier": "長年のサプライヤーネットワーク構築（97%国産、農家直接調達）は短期模倣困難"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Tjeerd Jegen",
+          "role": "MD Australian Supermarkets",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "our fresh market share is now growing faster than our grocery share, and as mentioned by Nielsen in the final quarter of the calendar year 2013, we've been the fastest-growing retailer in fresh food"
+        }
+      ]
+    },
+    {
+      "id": "WOW_002",
+      "claim_type": "competitive_advantage",
+      "claim": "WoolworthsのEveryday Rewardsロイヤルティプログラムと顧客データ分析（Quantiumとの提携）は、個人化されたオファー（週220万件）を通じて顧客粘着性を高める能力を有する。",
+      "evidence": "Tjeerd Jegen (FY2014 prepared_remarks): 'we do about 2.2 million of those personalized offers every single week with our core customer group.' 'Everyday Rewards cards...10% up for those who have swiped.' Grant O'Brien: 'loyalty membership is now hitting 7.5 million in Onecard members.' Quantiumとの提携によるベンダーへのインサイト提供も進行中。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: Coles（Flybuys）との会員数・個人化能力の定量比較なし", "rule06: データ分析によるロイヤルティは構造的優位性として評価可能", "rule04: 750万会員、週220万件個人化オファーという定量数値あり"]
+      },
+      "power_classification": {
+        "power_type": "network_economies",
+        "benefit": "750万会員のデータネットワーク効果：会員増加→データ精度向上→個人化精度向上→粘着性向上の正のフィードバック",
+        "barrier": "QuantiumとのデータJVと750万会員の蓄積データは数年かけて構築されたもの"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Tjeerd Jegen",
+          "role": "MD Australian Supermarkets",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "we do about 2.2 million of those personalized offers every single week with our core customer group"
+        }
+      ]
+    },
+    {
+      "id": "WOW_003",
+      "claim_type": "competitive_advantage",
+      "claim": "Woolworthsのオンラインスーパーマーケットはオーストラリアの食料品・酒類・ニュージーランドスーパーマーケットのオンライン首位を獲得し、多チャネル統合（Click&Collect、専用フルフィルメントセンター）による差別化を実現している。",
+      "evidence": "Grant O'Brien (FY2014 prepared_remarks): 'Woolworths Group has Australia's leading online food business, Australia's leading online liquor business, and New Zealand's leading online food business. online sales, which was an increase of 50% on the previous years.' 専用フルフィルメントセンター（Mascot）開設。GPSトラッキング配達追跡でコールセンター問い合わせ大幅削減。Click&Collect全国展開。",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07", "rule08"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule07": false,
+          "rule08": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule08: オンライン展開は戦略的意思決定の側面が強い", "rule07: Colesのオンラインとの比較なし", "rule04: 50%成長、40%成長という数値あり。ただし絶対規模の競合比較なし"]
+      },
+      "power_classification": {
+        "power_type": "switching_costs",
+        "benefit": "オンライン購入習慣化と店舗受取（Click&Collect）のネットワーク拡大により顧客のスイッチングコストを増大",
+        "barrier": "専用フルフィルメントインフラと全国Click&Collectネットワークの構築は資本集約的"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Grant O'Brien",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "Woolworths Group has Australia's leading online food business, Australia's leading online liquor business, and New Zealand's leading online food business as well as being Australasia's leading apparel business"
+        }
+      ]
+    },
+    {
+      "id": "WOW_004",
+      "claim_type": "competitive_advantage",
+      "claim": "WoolworthsのMercury Supply Chain（Mercury II）は全事業（食品・酒類・非食品）にわたる在庫最適化・補充・物流技術の構造的インフラ優位性を形成する。",
+      "evidence": "Grant O'Brien (FY2014 prepared_remarks): 'The supply chain for us has been a source of competitive advantage, driven off the platform that was Mercury I. Mercury II is now alive and well...It's right across the business. It includes the nonfood general merchandise aspects...logistics, replenishment and technology.' CODB: 6 basis points down, flat in Food & Liquor - cost improvement realized.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule06", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule06": true,
+          "rule07": false,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: Colesの物流システムとの比較なし", "rule06: Mercury IIは構造的インフラ投資（模倣困難）として評価", "大規模スーパーマーケットにとってサプライチェーン優位性は市場構造と合致（ルール11）"]
+      },
+      "power_classification": {
+        "power_type": "scale_economies",
+        "benefit": "全事業統合による補充・在庫最適化でCODBを削減。規模効果で小規模競合が実現困難な在庫回転を達成",
+        "barrier": "Mercury II（前システムMercury Iを含む）は数年間の開発投資と全国展開インフラ"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Grant O'Brien",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "The supply chain for us has been a source of competitive advantage, driven off the platform that was Mercury I. Mercury II is now alive and well and starting to deliver within the Woolworths business but not this time confined to Food."
+        }
+      ]
+    },
+    {
+      "id": "WOW_005",
+      "claim_type": "competitive_advantage",
+      "claim": "WoolworthsのKirkland相当のプライベートブランド（Woolworths Gold, Select, Own Brand）は、NBと競合しながら粗利ミックス改善と顧客粘着性を実現する複層的ブランド構造を持つ。",
+      "evidence": "Tjeerd Jegen (H1 2014 prepared_remarks): 'our own-run architecture has been completed. We've got a good-better-best offer. Good offer is own brand, better offer is Select, best offer is affordable indulgence with Woolies Gold.' Woolies Gold: Royal Melbourne Fine Food Show金賞受賞。FY2014: '9 basis points margin improvement with majority reinvested in prices.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule07"],
+        "results": {
+          "rule01": true,
+          "rule04": false,
+          "rule06": true,
+          "rule07": false
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule04: 定量的な競合比較（Coles PB比較）なし。金賞は定性的評価", "rule07: Colesのプライベートブランド戦略との差別化不明", "3層構造のPBアーキテクチャは構造的要素（rule06）"]
+      },
+      "power_classification": {
+        "power_type": "branding",
+        "benefit": "Good-Better-Bestの3層PBにより全価格帯の顧客を確保し、粗利ミックスを改善",
+        "barrier": "各ブランドのポジショニングと品質管理の蓄積は数年の投資"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Tjeerd Jegen",
+          "role": "MD Australian Supermarkets",
+          "section_type": "prepared_remarks",
+          "quarter": "H1 2014",
+          "quote": "our own-run architecture has been completed. We've got a good-better-best offer which really covers all segments of choice for customers"
+        }
+      ]
+    },
+    {
+      "id": "WOW_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Dan Murphy'sはオーストラリア最大のアルコール小売ブランドとして、everyday low price guarantee・圧倒的品揃え（3,500新商品）・MyDanMurphy'sロイヤルティプログラム（90万会員）を組み合わせた複合優位性を持つ。",
+      "evidence": "Brad Banducci (FY2014 prepared_remarks): 'danmurphys.com.au is now Australia's most visited liquor site.' Martin Smith (FY2015 prepared_remarks): '900,000 members joined MyDanMurphy's loyalty program. introduced 3,500 new products to our customers. Dan Murphy's website, Australia's premier online liquor destination.' 'Woolworths Liquor Group is the clear, clear market leader across its format on price off a continuous elimination.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule06", "rule07", "rule11"],
+        "results": {
+          "rule01": true,
+          "rule04": true,
+          "rule06": true,
+          "rule07": false,
+          "rule11": true
+        },
+        "confidence": 0.5,
+        "adjustments": ["rule07: 純粋競合（BWS、Liquorland）との定量比較なし。「market leader」の数値的根拠薄い", "rule11: オーストラリア酒類小売市場での規模・ブランド優位性は市場構造と合致", "rule04: 90万会員、3,500新商品という数値あり"]
+      },
+      "power_classification": {
+        "power_type": "branding",
+        "benefit": "EDLP×品揃え×ロイヤルティの三位一体がDan Murphy'sブランドへの顧客粘着性を高める",
+        "barrier": "ブランド認知（Australia's most visited）と90万会員の蓄積データは長年の投資"
+      },
+      "evidence_sources": [
+        {
+          "speaker": "Martin Smith",
+          "role": "MD Liquor Group",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2015",
+          "quote": "MyDanMurphy's loyalty program, which was successfully launched in November last year. And note there's 900,000 members joined up. introduced 3,500 new products to our customers"
+        }
+      ]
+    },
+    {
+      "id": "WOW_007",
+      "claim_type": "competitive_advantage",
+      "claim": "WoolworthsはFY2015にColes比で$200M以上を価格投資し、Price Parityを達成（Nielsen Homescan 9,000品目での独立検証）。競合と同水準の価格を実現する価格管理能力を示す。",
+      "evidence": "Brad Banducci (FY2015 prepared_remarks): 'invested more than $200 million in price since the start of the calendar year. comparing almost 9,000 items to our major competitor using Nielsen Homescan...with Woolworths being cheaper. ACNielsen Homescan data confirms...we are competitive if not slightly cheaper than Coles as of the end of Q4.' Deflation 5.2% in Q4.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04", "rule07"],
+        "results": {
+          "rule01": false,
+          "rule04": true,
+          "rule07": true
+        },
+        "confidence": 0.3,
+        "adjustments": ["rule01: 価格平準化（投資結果）は優位性でなく追いつき。Coles対比でprice parityは差別化でなく能力回復", "rule07: Coles対比の定量比較はある。ただし優位性というより競争均衡", "この主張は競争優位性というよりネガティブなcatch-up（劣位からの回復）を示す"]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Bradford Banducci",
+          "role": "MD Australian Food",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2015",
+          "quote": "We have restored price parity with our major competitors by investing more than $200 million in price since the start of the calendar year"
+        }
+      ]
+    },
+    {
+      "id": "WOW_008",
+      "claim_type": "cagr_connection",
+      "claim": "オンライン食料品事業（40-50%成長）+ Click&Collect全国展開 → 新規顧客獲得・既存顧客客単価増 → 既存店成長率（comp sales）+1-2%への直接寄与",
+      "evidence": "Grant O'Brien (FY2014 prepared_remarks): 'online sales, which was an increase of 50%.' Tjeerd Jegen: 'online has been a focus. we've seen improved growth beyond our expectations this year for both the Food and Liquor business that grew at 50%.' Online 40% growth in FY15. 専用フルフィルメントセンター開設でキャパシティ拡大。Click&Collect cross-company展開。",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule12"],
+        "results": {
+          "rule05": true,
+          "rule12": true
+        },
+        "confidence": 0.7,
+        "adjustments": ["rule05: 2ステップの直接因果：オンライン成長→新規顧客/既存顧客の購買増→comp sales。オンライン売上比率はFY14報告で検証可能", "rule12: FY2014 annual（Q3相当）での発言が主"]
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Grant O'Brien",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2014",
+          "quote": "online sales, which was an increase of 50% on the previous years. We've now turned over about $1.2 billion in online sales"
+        }
+      ]
+    },
+    {
+      "id": "WOW_009",
+      "claim_type": "factual_claim",
+      "claim": "WoolworthsのFY2015売上高は$60.7B（前年比-0.2%）、NPAT $2.45B（重大損失項目前）。Australian Food & Liquor売上$42.1B（+2.3%）。",
+      "evidence": "Grant O'Brien (FY2015 prepared_remarks): 'Woolworths delivered a net profit after-tax of $2.45 billion before significant items for the FY '15 year. Group sales were $60.7 billion, which is a decrease of 0.2%. Australian Food and Liquor sales for the year were $42.1 billion, an increase of 2.3%.'",
+      "rule_evaluation": {
+        "applied_rules": ["rule04"],
+        "results": {
+          "rule04": true
+        },
+        "confidence": 0.7,
+        "adjustments": []
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        {
+          "speaker": "Grant O'Brien",
+          "role": "CEO",
+          "section_type": "prepared_remarks",
+          "quarter": "FY2015",
+          "quote": "Woolworths delivered a net profit after-tax of $2.45 billion before significant items for the FY '15 year. Group sales were $60.7 billion"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "transcript_count": 4,
+    "claim_count": 9,
+    "competitive_advantage_count": 7,
+    "cagr_connection_count": 1,
+    "factual_claim_count": 1,
+    "kb_files_read": [
+      "rule01_capability_not_result.md",
+      "rule04_quantitative_evidence.md",
+      "rule06_structural_vs_complementary.md",
+      "rule07_pure_competitor_differentiation.md",
+      "rule08_strategy_not_advantage.md",
+      "rule11_industry_structure_fit.md",
+      "rule12_transcript_primary_secondary.md",
+      "system_prompt_transcript.md",
+      "dogma.md"
+    ]
+  }
+}

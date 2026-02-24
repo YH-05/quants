@@ -1,0 +1,63 @@
+{
+  "ticker": "PUB",
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "factual_claim",
+      "claim": "Publicis Groupe の 2013年度売上は EUR 6,953M（前年比 +5.2%）、有機成長 +2.6%。オペレーティングマージンは 16.5%（+40bp）、純利益は EUR 816M（+11.5%）、EPS 希薄化後 EUR 3.64（+9%）、フリーキャッシュフロー EUR 901M（+19%）。",
+      "evidence": "EUR 6,953,000,000. organic growth has increased by 2.6%. the operational margin has reached EUR 1,145,000,000, and the rate is 16.5%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2013_annual"]
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Publicis Groupe の 2014年度売上は EUR 7,255M（前年比 +4.3%）、有機成長 +2.0%。オペレーティングマージンは 16.4%（調整後）、フリーキャッシュフロー EUR 836M。デジタル売上比率は 42%（Razorfish除外ベースで44%）。",
+      "evidence": "Revenue, EUR 7.255 billion, up 4.3%... Operating margin has gone up 40 basis points to 16.3%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Publicis は Sapient を 2015年2月6日に買収完了。Eurobond 2本（EUR 700M at 2.92%、EUR 600M at 2.9%）と$1.6Bシンジケートローン（LIBOR+60bp）により資金調達。Sapient の直近 12 ヶ月売上成長率は14%（Publicis本体の1.2%と対照的）。",
+      "evidence": "February 6, closing. Sapient's growth was 14%, while for Publicis, growth was 1.2%.",
+      "rule_evaluation": {"applied_rules": [], "confidence": 90},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "overall_reasoning": "事実確認。スコアリング対象外（事実主張）",
+      "power_classification": "N/A",
+      "evidence_sources": ["Q4_FY2014_annual"]
+    }
+  ],
+  "metadata": {
+    "ticker": "PUB",
+    "claim_count": 8,
+    "scored_count": 3,
+    "target_claim_ids": [6, 7, 8],
+    "batch_index": 1,
+    "batch_total": 2,
+    "confidence_distribution": {
+      "0.9": 3
+    },
+    "gatekeeper_applied": false,
+    "kb_files_read": ["analyst/Competitive_Advantage/analyst_YK/dogma.md"]
+  }
+}

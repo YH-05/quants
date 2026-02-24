@@ -1,0 +1,94 @@
+{
+  "ticker": "ISRG",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "一般外科拡大（低普及率市場）→ procedure成長維持/加速 → I&A revenue CAGR",
+      "evidence": "Q4 2014: 一般外科の低普及率→今後の採用加速",
+      "final_confidence": 0.7,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_5_t", "result": true, "reasoning": "低普及率市場→今後の採用加速→procedure成長は合理的な2-3ステップ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_II", "matched": true, "adjustment": 0.1, "reasoning": "低普及率市場の普及曲線は客観的根拠あり"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_II", "adjustment": 0.1, "reasoning": "低普及率→成長余地の客観的根拠"}
+      ],
+      "overall_reasoning": "低普及率市場における普及曲線は客観的な根拠あり。一般外科のTAMは泌尿器科より大きく成長余地高い。おおむね納得で70%"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "外科医訓練プログラムと認定制度による参入障壁の強化",
+      "evidence": "Q4 2014: European Academy of Robotic Colorectal Surgeons発足",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "訓練プログラムという仕組みを評価"},
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "定量的裏付けなし（訓練を受けた外科医数等なし）"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.05, "reasoning": "能力の優位性：訓練エコシステム"},
+        {"pattern_id": "pattern_D", "matched": true, "adjustment": -0.05, "reasoning": "定量的裏付けなし"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_III", "adjustment": 0.05, "reasoning": "能力説明あり"},
+        {"source": "quantitative_lacking", "adjustment": -0.1, "reasoning": "定量的裏付けなし"}
+      ],
+      "overall_reasoning": "訓練エコシステムはスイッチングコストを強化する重要な仕組みだが定量的開示が乏しい。まあ納得で50%"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "臨床エビデンス蓄積と第三者機関による臨床研究による科学的正当性の強化",
+      "evidence": "Q4 2014: Saarland大学等の外部研究がda Vinciの優位性を示す",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "臨床エビデンス蓄積能力（KOL管理・臨床試験投資）は仕組みとして評価"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "EUR 3,000/患者コスト削減という定量データ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.05, "reasoning": "能力の優位性：KOL関係・臨床エビデンス蓄積"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_III", "adjustment": 0.05, "reasoning": "能力説明あり"},
+        {"source": "mixed_clinical_results", "adjustment": -0.05, "reasoning": "一部の臨床エビデンスに一貫性課題あり"}
+      ],
+      "overall_reasoning": "臨床エビデンスの継続的蓄積は市場拡大を支える重要な仕組み。定量データあり。まあ納得で50%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 431システム販売、worldwide procedures 約570,000件（9%成長）、Recurring revenue 70%（$1.57B）",
+      "evidence": "Q4 2014 annual",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015: 118システム設置（前年96件）、procedures 約162,000件（14%成長）",
+      "evidence": "Q2 2015 quarterly",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"50-60": 3, "70-80": 2},
+    "gatekeeper_applied": false
+  }
+}

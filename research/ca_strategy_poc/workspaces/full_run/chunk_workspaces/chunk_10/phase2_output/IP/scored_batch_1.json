@@ -1,0 +1,78 @@
+{
+  "ticker": "IP",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_II"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 4
+  },
+  "scored_claims": [
+    {
+      "id": "IP-006",
+      "claim_type": "competitive_advantage",
+      "claim": "フリーキャッシュフロー生成能力と資本配分規律（FCF変換率・株主還元75%以上）",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "FAIL: FCFは結果。資本配分規律は能力の側面もあるが具体的なプロセス説明なし",
+        "rule_4_t": "PASS: FCF $2.1B、75%還元という数値"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_A_result_as_cause",
+        "assessment": "FCFは優れたビジネスモデル（IP-001、IP-002）の結果。資本配分の75%規律は財務管理の方針であり競争優位性ではない（Pattern A適用）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "FCF生成は結果。dogma Section 1.2に該当。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "IP-007",
+      "claim_type": "cagr_connection",
+      "claim": "北米Industrial PackagingのEBITDA5%成長 → Ilim JV margin拡大 → 連結EBITDA5%成長 → EPS成長",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: Valliant機械再稼働・DOJ要件消化という具体的なタイムライン。EBITDA5%成長という定量目標",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "具体的なタイムライン（DOJ要件消化、Valliant再稼働）を持つ直接的なCAGR接続"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言由来。具体的なオペレーショナルイベント（DOJ要件消化、Valliant再稼働）がCAGRドライバーとして明示されており高い検証可能性。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IP-008",
+      "claim_type": "cagr_connection",
+      "claim": "Ilimシベリア・ルーブル安→世界最低コストパルプ→中国向け輸出拡大→EBITDA改善",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: コスト構造の具体的開示（95%ルーブルコスト、65%ドル収入）→世界最低コスト→中国輸出拡大という直接因果",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "ルーブル安のコスト構造効果（95%ルーブルコスト）による世界最低コスト化→中国向け輸出増加は直接的なCAGR接続。ただしルーブル安の持続性リスクあり"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言由来。ルーブル安は外部要因だが、シベリア立地という構造的Cornered Resourceが基盤。ルーブル安の持続性は不確実だが構造的優位は維持される。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "IP-009",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年: FCF$2.1B（過去最高）、北米Industrial Packaging EBITDA $2.7B・マージン24%、ROIC 9.2%（5年連続COC超過）",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。IP-001とIP-004の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

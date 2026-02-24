@@ -1,0 +1,91 @@
+{
+  "ticker": "PH",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "PH-006",
+      "claim_id_int": 6,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "PH FY2015実績：売上$129億（▲2%）、調整後EPS $7.08（▲15%）、FCF/売上10.4%、Q4売上$34.7億（▲4%）。FY2016見通し：EPS $5.30-$6.30（為替・原油安影響）",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。財務実績の確認用。"
+    },
+    {
+      "claim_id": "PH-007",
+      "claim_id_int": 7,
+      "claim_type": "cagr_connection",
+      "power_type": "Process Power",
+      "claim_text": "Simplification + Win Strategyによるコスト削減 → 為替・市場逆風下での利益率維持 → 正常化環境でのEPS成長 → CAGR下支え",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "コスト削減→利益率維持→EPS成長は2-3ステップ。方向性は妥当だが実現は市場環境回復に依存",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 優位性（運営能力）が100%ある前提で評価。コスト削減→マージン→EPSの接続は直接的（dogma.md高評価パターン）だが、市場環境回復という外部要因への依存でdogma.md低評価要因も存在。50%。"
+    },
+    {
+      "claim_id": "PH-008",
+      "claim_id_int": 8,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "Aerospace OEM統合深化 → 長期契約アニュイティ収益 → Aerospace売上比率上昇 → CAGR安定化",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "Aerospace OEM統合→アニュイティ収益は1-2ステップの直接的接続。プラットフォーム寿命20-30年で検証可能",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: Aerospace統合→長期収益アニュイティは1-2ステップの直接的メカニズム（dogma.md最高評価パターン）。20-30年のプラットフォーム寿命という業界特性で検証可能。70%。"
+    },
+    {
+      "claim_id": "PH-009",
+      "claim_id_int": 9,
+      "claim_type": "cagr_connection",
+      "power_type": "Process Power",
+      "claim_text": "FCF比率10%+維持 → M&A（ニッチ運動制御）+ 自社株買い + 増配の組み合わせ → EPS複利成長 → 長期CAGR",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "FCF→資本配分→EPS成長は2-3ステップ。M&Aの質（統合能力）が不確実性要因",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: FCF→資本配分→EPS成長は方向性として妥当（dogma.md過去実績との整合性）。14年連続実績が方向性を支持するが、M&A統合能力の定量証拠が不足で50%に留まる。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 3,
+    "confidence_distribution": {"50-60": 2, "70-80": 1},
+    "gatekeeper_applied": false
+  }
+}

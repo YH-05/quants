@@ -1,0 +1,180 @@
+{
+  "ticker": "ZTS",
+  "company_name": "Zoetis Inc.",
+  "gics_sector": "Health Care",
+  "country": "UNITED STATES",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_applied": true,
+    "kb2_t_applied": true,
+    "kb3_t_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "業界最広ポートフォリオ（livestock + companion animal 両セグメント、複数種・地域）による収益の多様性と成長の安定性",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_A_t部分適用（ポートフォリオ自体は結果）、pattern_IV_t（業界構造×企業ポジション合致）",
+        "kb3_t_alignment": "CHD#1類似（ポートフォリオ多様性の評価）。CHD#1に対してKYは45-55%程度の評価",
+        "dogma_check": "Rule 6（構造的優位性）: 動物医薬品市場の多角化は緊急薬の多様化要件から構造的に有利。Rule 3（競合との比較）: Elanco/Merial との比較で最大ポートフォリオは定量的に確認可能",
+        "final_confidence": 50,
+        "confidence_rationale": "ポートフォリオ多様性は動物医薬品市場に特有のリスク分散優位性だが、ポートフォリオの広さ自体は結果。能力（M&A統合力、製品管理力）の説明が部分的。50%維持"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "製品ポートフォリオの多様性 → 地域・種別のマクロ逆風を相殺 → 安定的な年5-7%オペレーショナル収益成長の維持",
+      "phase1_confidence": 60,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続: 多様性→安定成長）、合格",
+        "kb3_t_alignment": "ORLY類似（多角化による安定成長）。ORLY他の因果経路は直接的で高評価",
+        "dogma_check": "Rule 5（CAGR接続の直接性）: 2ステップで直接的。2014年実績（Q3まで+5.5%）で検証可能",
+        "final_confidence": 60,
+        "confidence_rationale": "CAGR接続は2ステップで直接的。過去実績で裏付けあり。60%維持"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "トップランク評価のフィールドフォース（獣医・畜産農家との直接的パートナーシップ関係）",
+      "phase1_confidence": 30,
+      "scoring": {
+        "kb2_t_verdict": "pattern_A_t適用（「トップランク」は結果）、pattern_D_t（定性的のみ）",
+        "kb3_t_alignment": "ORLY#3（フィールドフォース）と類似。KYはフィールドフォース能力を評価するが、定量的裏付けなしには30-40%",
+        "dogma_check": "Rule 1（能力vs結果）: 「トップランク」は定量根拠なし。Rule 4（定量根拠）: 顧客満足度等の指標がない",
+        "final_confidence": 30,
+        "confidence_rationale": "「トップランク」という自己申告のみで定量根拠なし。KB2パターンA-T/D-T適用。30%維持"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "フィールドフォース能力 → 新製品の顧客採用率向上（APOQUEL等） → 売上CAGR上乗せ",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t（因果飛躍）: フィールドフォース→採用率の定量リンクが不明確",
+        "kb3_t_alignment": "ORLY類似だが、ZTSはフィールドフォースの定量的優位性を示していない",
+        "dogma_check": "Rule 5: 3ステップ、間接的。APOQUELの採用率向上への寄与はフィールドフォース以外の要因（製品の臨床効果）も大きい",
+        "final_confidence": 40,
+        "confidence_rationale": "フィールドフォースのCAGR接続は因果飛躍あり。APOQUELの採用はフィールドフォースより製品の革新性に依存。40%に引き下げ"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "内部R&D能力による新製品・ライフサイクル管理（2014年に180件超の製品承認）と緊急製品開発力（PEDvワクチンを14ヶ月で上市）",
+      "phase1_confidence": 60,
+      "scoring": {
+        "kb2_t_verdict": "pattern_I_t（定量: 180件承認, 14ヶ月）、pattern_III_t（能力優位性）",
+        "kb3_t_alignment": "LLY/COST の類似: KYは定量データ付きの能力を高く評価。PEDvワクチン14ヶ月上市は強力な実証",
+        "dogma_check": "Rule 1: R&D能力は仕組みとして評価可能。Rule 4: 180件承認と14ヶ月という定量根拠あり。Rule 6: 動物医薬品R&Dは独自知見（種別特化）が参入障壁",
+        "final_confidence": 65,
+        "confidence_rationale": "PEDvワクチン14ヶ月上市と180件超の承認は具体的な能力の証拠。動物医薬品市場の種別特化知識は参入障壁。65%に引き上げ"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "R&D能力 → 継続的新製品投入（年180件超） → 既存製品の patent cliff軽減 + 新成長ドライバー → 売上CAGR 5-8%の維持",
+      "phase1_confidence": 65,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（直接CAGR接続）、合格",
+        "kb3_t_alignment": "ZTS固有のR&D→成長経路。COST/LLY類似",
+        "dogma_check": "Rule 5: 3ステップだが各ステップが定量的に検証可能（180件承認実績）。Rule 12: Q4主発言",
+        "final_confidence": 65,
+        "confidence_rationale": "R&D能力→CAGR経路は3ステップだが定量的根拠あり。65%維持"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "製造・サプライチェーン能力：品質安定供給と規模の経済による低コスト製造",
+      "phase1_confidence": 40,
+      "scoring": {
+        "kb2_t_verdict": "pattern_D_t（定性のみ）、pattern_B_t（業界共通）",
+        "kb3_t_alignment": "MNST#2類似（製造規模の主張）。KYは定量根拠なしの製造優位性を低く評価",
+        "dogma_check": "Rule 1: 「低コスト製造」は定量根拠なし。Rule 4: コスト比較データ不在",
+        "final_confidence": 35,
+        "confidence_rationale": "製造優位性の定量根拠なし。APOQUEL供給拡大に触れているが、競合との比較コストデータなし。35%に引き下げ"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "製造スケールアップ能力 → 新製品の迅速供給（APOQUEL供給拡大） → 収益CAGR上乗せ",
+      "phase1_confidence": 70,
+      "scoring": {
+        "kb2_t_verdict": "pattern_II_t（APOQUEL供給→収益の直接接続）、合格",
+        "kb3_t_alignment": "APOQUEL成長ストーリーは定量的（需要>>供給）で高評価に値する",
+        "dogma_check": "Rule 5: 2ステップで直接的。APOQUELのQ3 2014での急成長（$68M in Q3）が実証",
+        "final_confidence": 70,
+        "confidence_rationale": "APOQUEL供給拡大→収益成長の因果は明確で定量的実証あり。70%維持"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "モノクローナル抗体プラットフォームによる革新的治療法の開発能力（犬の皮膚炎向け抗体製剤の承認申請）",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_III_t（能力優位性: mAb開発能力）",
+        "kb3_t_alignment": "LLY類似（バイオロジクス開発能力）。まだパイプライン段階のため評価は控えめ",
+        "dogma_check": "Rule 1: mAbプラットフォームは仕組みとして評価可能。Rule 6: 犬向けmAbは動物医薬品市場初の挑戦でFirst-mover潜在力あり。ただしPoiT 2015-09-30時点では未承認",
+        "final_confidence": 45,
+        "confidence_rationale": "mAbプラットフォームは将来的な優位性だがPoiT時点では申請段階。実現前の潜在的優位性として45%に引き下げ"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "ZTSは2014年に動物医療市場全体の成長率（4.6%）を上回る5.5%の収益成長を達成（過去12ヶ月・Q3 2014まで）",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "Q3 2014年次の経営陣発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "ZTSは2014年に180件超の製品承認を取得。PEDvワクチンは14ヶ月で条件付きUSDA認可を取得",
+      "phase1_confidence": null,
+      "scoring": {
+        "factual_verification": "経営陣発言として確認済み",
+        "final_confidence": null,
+        "confidence_rationale": "factual_claimのためスコアリング対象外"
+      }
+    },
+    {
+      "id": 12,
+      "claim_type": "competitive_advantage",
+      "claim": "新興市場（中国・インド・ブラジル等）での拡大戦略と地域特化製品（中国向けRUI LAN AN等）の展開",
+      "phase1_confidence": 30,
+      "scoring": {
+        "kb2_t_verdict": "pattern_F_t（戦略の混同: 新興市場拡大は戦略）、pattern_A_t（結果/戦略を優位性として提示）",
+        "kb3_t_alignment": "CHD#4類似（国際拡大戦略）。KYは戦略を優位性と混同することを強く批判（30%）",
+        "dogma_check": "Rule 1: 「新興市場拡大」は戦略的行動。Rule 8: 地域特化製品は競合との差別化だが、実績データが乏しい",
+        "final_confidence": 25,
+        "confidence_rationale": "新興市場拡大は戦略であり優位性ではない。KB2パターンF-T/A-T適用。25%に引き下げ"
+      }
+    },
+    {
+      "id": 13,
+      "claim_type": "cagr_connection",
+      "claim": "新興市場の動物医薬品普及率向上 → 高い成長率（新興市場でのダブルディジット成長） → 全体CAGR上乗せ",
+      "phase1_confidence": 50,
+      "scoring": {
+        "kb2_t_verdict": "pattern_C_t（因果飛躍）: 新興市場普及率→ZTS成長への接続は市場全体の話であり、ZTS固有の優位性に起因するものか不明",
+        "kb3_t_alignment": "市場全体の成長はZTSのCAGR接続として証明が難しい",
+        "dogma_check": "Rule 5: 3ステップ、間接的。ZTSが新興市場で市場より速く成長している証拠が必要",
+        "final_confidence": 40,
+        "confidence_rationale": "市場全体の成長をZTSのCAGR上乗せと結びつける証拠が弱い。40%に引き下げ"
+      }
+    }
+  ]
+}

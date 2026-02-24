@@ -1,0 +1,270 @@
+{
+  "ticker": "APTV",
+  "transcript_source": "Q4 FY2014 Earnings Call (2015-02-05) [Primary] + Q3 FY2014 Earnings Call (2014-10-24) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q2", "Q3"],
+    "note": "APTVは当時Delphi Automotive名義（後にAPTVへ改称）。自動車ハイテクサプライヤーとして電動化・自動運転向けシフト中"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Electronics & Safety（E&S）セグメントのハードウェアからソフトウェア・システムへのビジネスモデル転換：Active Safety（50% YoY成長予測）とインフォテインメントの高付加価値化による高利益率・高ROIC構造",
+      "descriptive_label": "E&Sのハード→ソフトウェア転換によるビジネスモデル差別化と高ROIC",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (COO Kevin Clark): 'On the E&S side, we talked about the transitioning of that business from a hardware business to a software business. As a result, volume flow through is very, very strong -- margin and volume flow through is very, very strong, and return on capital on that business is very strong.' CEO Rod O'Neal: 'the return on invested capital in that business would be breathtaking...E&S rotation, the revenue has been flat past 4, 6 quarters. And -- but we told you we were going to be shaping the D&A of the business, moving to more software, moving away from being a high capital kind of utilization asset where it's more intellectual, more engineering.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "qa_session",
+      "supported_by_facts": [7, 8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "ソフトウェアへのビジネスモデル転換（能力・仕組み）を評価。「breathtaking ROIC」は実績で裏付け"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "ソフトウェア化・知的財産重視のビジネスモデルは名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "E&S EBITDA margin 16.9%（Q4）・目標16% by 2016達成前倒し。Active Safety 50% YoY成長予測"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "自動車の電動化・自動運転化という業界構造転換と、DelphiのE&Sソフトウェア化の合致が明確"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "E&S EBITDA 16.9%（目標を達成前倒し）という定量的証拠あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "CEO/COOが共に「breathtaking ROIC」「margin and volume flow through is very strong」と強調",
+            "adjustment": 0
+          },
+          {
+            "reason": "Bosch・Continental等の競合との具体的な技術比較なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "E&Sのソフトウェア化はActive Safety・自動運転向けの高付加価値ポジションへの転換。2014年Q4でEBITDA 16.9%と目標16%（2016年）を前倒し達成しており、ビジネスモデル転換の成功が数字で示されている。CEOが「breathtaking ROIC」と言及"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "E&Sソフトウェア化 → Active Safety 50%成長×高マージン × volume flow-through → E&S EBITDA急拡大 → Delphi全体のEPS CAGR支持",
+      "descriptive_label": "E&Sソフトウェア化→Active Safety成長→高マージン→EPS CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（ソフトウェア化→高いvolume flow-through→EBITDA拡大）。Active Safety 50%成長予測で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Active Safety 50% YoY成長見通しとEBITDA 16.9%の実績が直接的な裏付け。ソフトウェアビジネスの高volume flow-throughがCAGR加速のメカニズムとして明示されている"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル低コスト製造フットプリント最適化：最も業界低水準のコスト構造（COO言及）を実現した製造拠点再編、Powertrain EBITDA 17.8%（目標16% by 2016を達成前倒し）",
+      "descriptive_label": "最適化製造フットプリントによる業界最低コスト構造",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (COO Kevin Clark): 'The optimization of our operating footprint has resulted in the industry's absolute best cost structure, which translates into significant operating leverage and very strong margin expansion.' 'Powertrain, it's really the benefit of 2 things: focused on our cost structure and restructuring and repositioning our footprint...getting the benefit of volume growth on that lower cost structure.' Powertrain EBITDA margin Q4: 17.8% (vs 2016 target of 16%)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "製造フットプリント最適化（能力・仕組み）として評価。「industry's absolute best cost structure」という主張は能力を示す"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Powertrain EBITDA 17.8%（Q4）、Powertrain margin +220bp、E&S margin +260bp。OI margin record 11.9%（FY全体）"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "「業界最低コスト構造」という競合比比較主張あり（COOが明言）。ただし数値での競合比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "「industry's absolute best cost structure」という明確な競合比主張あり（COO発言）",
+            "adjustment": 0
+          },
+          {
+            "reason": "目標（16% by 2016）を前倒し達成（17.8%）が実証",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（Bosch、Continental、Denso）との具体的な比較データなし",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "COOが「業界最低コスト構造」と明言し、Powertrain EBITDA 17.8%（2016年目標を前倒し）という実績が示されている。フットプリント再編による構造的コスト優位性は競争力の源泉だが、競合との数値比較がなく相対的優位性の確認が必要"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "低コスト製造フットプリント × 売上成長（市場比+2%上回り）→ 高いオペレーティングレバレッジ → Powertrain/E&S収益拡大 → EPS CAGR支持",
+      "descriptive_label": "低コスト構造×市場シェア成長→高オペレーティングレバレッジ→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（低コスト構造×成長→高leverage）。FY2014 OI +9%（売上+4%に対して）で検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "OI +9%（売上+4%比）という高いオペレーティングレバレッジが実証されており、低コスト構造との因果メカニズムは明確"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "25$Bのnew business bookingsパイプライン（FY2014）：Toyota・Daimler・VW等主要OEMからの受注多様化と、新プラットフォームへの設計採用によるマルチイヤー収益可視性",
+      "descriptive_label": "主要OEM向け設計採用bookingsによる中期収益可視性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (COO Kevin Clark): 'We booked $7.5 billion of new business in the fourth quarter, bringing the year-to-date total to over $25 billion. In January this year, we experienced very strong bookings, totaling almost $3 billion...Awards during the fourth quarter included a Toyota ECU award within the Powertrain segment, a Conquest Daimler wiring award as well as an Active Safety award, including a domain controller with a large European OEM.' Active Safety 50% YoY成長見通し（VW・Chryslerインフォテイメントのroll-on含む）",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "COO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "$25Bのbookingsは将来収益可視性（能力の結果）。設計採用の能力が優位性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$25B年間bookings、Q4単体$7.5B、2015年1月追加$3Bという定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "自動車プラットフォーム設計採用は2-4年のライフサイクルで収益が確定する構造的なスイッチングコスト"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "$25Bの年間bookingsという具体的な数値あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "bookingsは将来収益の先行指標であり、現時点での競争優位性としては間接的",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "設計採用bookingsは中期収益可視性を示す重要指標。主要OEMへの多様化（Toyota・Daimler・VW・Chrysler）と特にActive SafetyのConquest受注が差別化の証拠"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "$25Bの設計採用bookings（Toyota・Daimler・VW等）→ 2015-2018年のプラットフォームroll-on → 売上+3%→+6% over market加速 → EPS CAGR支持",
+      "descriptive_label": "設計採用bookings→プラットフォームroll-on→市場アウトパフォーム→CAGR経路",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（bookings→roll-on→売上）。COOが2015年Q1→Q4で3%→6% over market加速を具体的に予測"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4年次発言由来"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "COOが具体的なroll-onタイムライン（Q1 3%→Q4 6% over market）を示しており、bookings→収益の因果メカニズムが明確"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Delphi FY2014実績：収益$17B（+4%）、OI margin 11.9%（+70bp、記録更新）、EBITDA margin 15.3%、EPS $5.09（+16%）、FCF $2.1B、株主還元$1.3B",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 3]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Delphi Q4 FY2014実績：収益+3%（市場比+2%）、OI margin 12.5%（+120bp、記録更新）、EBITDA 16%、EPS $1.32（+18%）。Active Safety 2015年YoY成長見通し50%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Delphi FY2014 segment margins（Q4）：E&S EBITDA 16.9%（目標16% by 2016達成前倒し）、Powertrain EBITDA 17.8%（同目標達成前倒し）、E/EA +120bp、Thermal +130bp",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Delphi FY2014 new business bookings: 年間$25B超、Q4単体$7.5B、2015年1月単月$3B（Q4からのスリップ込み）。多様なOEM（Toyota・Daimler・VW・Chrysler等）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5, 6]
+    }
+  ]
+}

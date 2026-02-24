@@ -1,0 +1,391 @@
+{
+  "scored_claims": [
+    {
+      "id": "AZN-001",
+      "claim_type": "competitive_advantage",
+      "claim": "PD-L1 (MEDI4736) + CTLA-4 (tremelimumab) 13 登録試験コンビネーション IO ポートフォリオによるコーナード・リソース",
+      "evidence": "CEO Pascal Soriot (Q4 2014): 13 registration trials, combination IO portfolio unique to AZ + MedImmune. PD-L1 monotherapy + combo approach. Phase 3 data expected 2016-2017.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "IO コンビネーション IP・13 試験という能力資産の説明。結果（承認・市場シェア）ではなく IP ポジション"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "13 登録試験という具体的数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "PD-L1 IP は構造的資産"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "BMS（Opdivo/Yervoy）が先行する IO 市場。MEDI4736 の差別化根拠（vs BMS Opdivo）が Q2 2015 時点でまだ不確実"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "IP ポジションという能力資産の記述"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "13 登録試験という規模の定量化"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "BMS Opdivo/Yervoy との差別化根拠が Q2 2015 時点で臨床的に未確定"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Phase 3 データが 2016-2017 予定。IO 競争優位への接続は将来確実性に依存"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "IP ポジションの説明"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "BMS との差別化未確定"
+        },
+        {
+          "source": "KB2-T pattern_C_causal_leap",
+          "adjustment": -0.05,
+          "reasoning": "Phase 3 結果依存"
+        }
+      ],
+      "final_confidence": 0.5,
+      "overall_reasoning": "IO コンビネーション IP は構造的だが、BMS Opdivo/Yervoy の先行優位に対する差別化が PoiT 制約期間内（2015-09-30）では未確定（rule07 FAIL）。Phase 3 結果待ちの状態。dogma 的に「まあ納得」域 0.50。"
+    },
+    {
+      "id": "AZN-002",
+      "claim_type": "competitive_advantage",
+      "claim": "中国市場での 2x 市場成長率達成（Symbicort・Brilinta 主導）とローカル MNC 地位",
+      "evidence": "CEO (Q4 2013): China growing 2x market rate. Symbicort growing >30% China. Brilinta China launch. Local management empowerment and China-specific pricing strategy.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "2x 市場成長率は結果。それを可能にする能力（ローカル体制・製品適合）の説明が弱い"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "2x 市場成長率、Symbicort >30% 成長という定量的数値"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Roche・Pfizer 等の MNC も高い中国成長を達成。AZ 固有の差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "2x 成長率は結果の提示（dogma rule1 FAIL）。中国での成長を可能にする構造的説明なし"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "MNC の中国高成長は業界共通。AZ 固有の差別化なし（dogma rule3）"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "2x 倍率という定量的裏付け"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.15,
+          "reasoning": "成長率は結果（dogma rule1 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通のMNC中国高成長（dogma rule3）"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.05,
+          "reasoning": "定量的数値の存在"
+        }
+      ],
+      "final_confidence": 0.35,
+      "overall_reasoning": "中国 2x 成長率は結果の提示（rule01 FAIL）。大手 MNC の中国高成長は業界共通（rule03 業界共通能力）であり AZ 固有の差別化根拠が弱い（rule07 FAIL）。dogma 的に「あまり納得しない」域 0.35。"
+    },
+    {
+      "id": "AZN-003",
+      "claim_type": "competitive_advantage",
+      "claim": "MedImmune＋IMED デュアル・バイオテック R&D モデルによる Phase III パイプライン倍増（6→11）",
+      "evidence": "CEO (Q4 2014): Dual biotech model MedImmune (biologics, Gaithersburg) + IMED (small molecules, Cambridge). Phase III pipeline grew from 6 to 11 products. $1.5B+ peak sales potential per late-stage asset.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "デュアル・バイオテック組織モデルという仕組みの説明。パイプライン数は結果だが組織モデルが能力"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "Phase III 6→11 という定量的改善"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "MedImmune 買収・IMED 設立という組織的投資は構造的"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "GSK の DPU モデル、AbbVie 等も R&D 組織再編を実施。AZ 固有の差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "MedImmune + IMED という組織モデルの具体的説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "6→11 Phase III という定量的進展"
+        },
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "デュアル R&D センター体制は業界に類似例あり"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "GSK DPU、AbbVie 等との R&D 生産性比較なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "組織モデルの具体的説明"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界に類似例"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.05,
+          "reasoning": "競合比較なし"
+        }
+      ],
+      "final_confidence": 0.5,
+      "overall_reasoning": "MedImmune + IMED デュアルモデルは具体的な組織構造だが、業界に類似例がありAZ固有の差別化根拠が弱い（rule07 FAIL）。Phase III 6→11 の定量的進展は評価できるが臨床的成功は未確定。dogma 的に「まあ納得」域 0.50。"
+    },
+    {
+      "id": "AZN-004",
+      "claim_type": "competitive_advantage",
+      "claim": "Brilinta PEGASUS 21,000 患者試験による post-MI スイッチングコスト構築",
+      "evidence": "CEO (Q4 2014): PEGASUS trial 21,000 patients across 31 countries. Results showing Brilinta superior outcomes in post-MI patients vs Plavix. Physician behavior change enabled by large-scale RCT data.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "大規模 RCT による医師行動変容という仕組みの説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "21,000 患者・31 ヶ国という具体的試験規模"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "大規模 RCT データは構造的な switching cost を生む"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "Plavix（ジェネリック競合）に対する差別化が PEGASUS データで示されている"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "大規模 RCT 実施能力という仕組みの説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "21,000 患者・31 ヶ国という定量的規模"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "Plavix との直接比較試験"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "PEGASUS 結果→市場シェア転換への接続は規制承認と医師採用ラグを伴う"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "RCT 実施能力の説明"
+        },
+        {
+          "source": "KB2-T pattern_V_specific_competitor_comparison",
+          "adjustment": 0.05,
+          "reasoning": "Plavix との直接比較"
+        },
+        {
+          "source": "KB2-T pattern_C_causal_leap",
+          "adjustment": -0.05,
+          "reasoning": "規制承認・市場採用ラグ"
+        }
+      ],
+      "final_confidence": 0.55,
+      "overall_reasoning": "PEGASUS 試験は Plavix との直接比較（rule07 PASS）で具体的な差別化根拠。21,000 患者という規模は強い。ただし PoiT 期間内での市場シェア転換の証拠は限定的（規制承認後の採用ラグ）。dogma 的に「まあ納得」域 0.55。"
+    },
+    {
+      "id": "AZN-005",
+      "claim_type": "competitive_advantage",
+      "claim": "SGLT2 Farxiga/Forxiga のコーナード・リソース（BMS からの権利取得後の独立強化）",
+      "evidence": "CEO (Q4 2014): AZ secured full rights to dapagliflozin (Farxiga) from BMS. SGLT2 market growing rapidly. Farxiga EU approval. Competitor SGLT2 (J&J Invokana) market comparison showing market growth.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "BMS からの権利取得という資本配分能力と dapagliflozin IP の確保"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "Farxiga の具体的市場シェア・売上数値が PoiT 期間のトランスクリプトでは限定的"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "SGLT2 IP は構造的コーナード・リソース"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "J&J Invokana が先行し市場での差別化根拠が Q2 2015 時点で不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "IP 権利確保という能力の説明"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "J&J Invokana との差別化根拠が不明確"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "Farxiga の売上・シェアの定量的証拠が欠如"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.05,
+          "reasoning": "IP 確保の能力"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "J&J との差別化不明確"
+        },
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "定量的証拠欠如"
+        }
+      ],
+      "final_confidence": 0.4,
+      "overall_reasoning": "SGLT2 IP は構造的コーナード・リソースだが、J&J Invokana の先行優位に対する差別化が PoiT 期間内で未確定（rule07 FAIL）。定量的市場シェアの証拠が限定的（rule04 PARTIAL FAIL）。dogma 的に「あまり納得しない」から「まあ納得」境界 0.40。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "50-60": 3,
+      "30-40": 1,
+      "40-50": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "ticker": "DOV",
+  "batch_index": 0,
+  "batch_total": 3,
+  "scored_claims": [
+    {
+      "id": "DOV-001",
+      "claim_type": "competitive_advantage",
+      "claim": "DoverのPrinting & Identification部門（Markem-Imaje含む）は主要顧客の設備投資削減局面でも有機成長8%を達成。製品コストがCapExではなくオペレーティング支出として分類されるビジネスモデルが、景気変動への耐性を提供している。",
+      "descriptive_label": "Markem-Imaje OpEx型ビジネスモデルによるCapEx削減耐性（有機成長8%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.5,
+      "scoring_rationale": "CapEx削減環境での有機成長8%という定量的差別化（rule04 quantitative, pattern_III_capability_over_result）。「OpEx as classification」というビジネスモデル（仕組み, rule01 pass）は景気変動耐性を生む構造（rule11 industry structure pass）。Markem-Imaje（6%有機成長）が牽引（rule06 structural）。Q1 FY2015発言（rule12 secondary相当, -10%調整考慮）。競合（Videojet等）との比較なし（rule07 insufficient）。CapEx削減局面でも成長という反直感的実績は能力の強い証拠。50%（Q1発言で-10%調整で50%維持）。",
+      "kb1_flags": [],
+      "kb2_pattern": "pattern_III_capability_over_result",
+      "cagr_connection_score": 0.6,
+      "cagr_rationale": "OpEx型ビジネスモデル→景気耐性→安定有機成長→Engineered Systems CAGR（rule05 direct）。Q1実績で検証済み。CapEx削減サイクルでも持続可能。60%。"
+    },
+    {
+      "id": "DOV-002",
+      "claim_type": "competitive_advantage",
+      "claim": "DoverのFluids Transfer部門は安全・環境規制と小売燃料事業の好調に支えられた需要継続性を持ち、ポンプ・流体移送事業が2%有機成長を達成。規制によって需要が担保される防御的な市場ポジション。",
+      "descriptive_label": "規制環境による防御的流体移送事業需要（有機成長2%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "規制による需要継続は業界構造に由来（pattern_B_industry_common）。規制の恩恵は競合（Gorman-Rupp等）も同様に受けるため、DOV固有の優位性ではない（rule07 insufficient, rule11 partial pass）。2%有機成長は低成長（rule04 partial）。規制コンプライアンスは必要条件であり差別化要因ではない（rule01 concern）。Q1 FY2015発言（rule12 secondary相当）。kb3 few-shot（COST#5: 国際展開=業界共通→20%、本クレームは規制=業界共通として30%）。30%。",
+      "kb1_flags": ["rule07_pure_competitor_differentiation"],
+      "kb2_pattern": "pattern_B_industry_common",
+      "cagr_connection_score": 0.3,
+      "cagr_rationale": "規制需要→安定的流体移送事業→Fluids CAGR（rule05 indirect）。規制が変わると需要が変わるリスク。DOV固有の優位性による接続ではなく業界共通の規制効果。30%。"
+    },
+    {
+      "id": "DOV-003",
+      "claim_type": "competitive_advantage",
+      "claim": "DoverはEnergy部門で2四半期で約2500万ドルの追加構造改革コストを投下し、構造改革便益として2015年に4500万ドルを見込む。コスト削減と並行して製品開発への継続投資により、Energy事業のQ4退出時に20%近い営業利益率目標を設定できる実行力がある。",
+      "descriptive_label": "Energy部門構造改革実行力（$25M投入→$45Mベネフィット・利益率20%目標）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Process Power",
+      "confidence_score": 0.3,
+      "scoring_rationale": "$25M構造改革→$45Mベネフィットという定量目標（rule04 quantitative部分）。迅速なコスト対応能力（仕組みの一面, rule01 partial pass）。ただし構造改革は戦略的対応（rule08 concern, pattern_F_strategy_confusion）であり、現在進行中の改革として将来の成果未実現。「20%営業利益率目標」は見込み（rule01 concern）。Q1 FY2015発言（rule12 secondary）。kb3 few-shot（CHD#4: 成長加速は結果→30%）と類似。30%。",
+      "kb1_flags": ["rule08_strategy_not_advantage"],
+      "kb2_pattern": "pattern_F_strategy_confusion",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "構造改革$45Mベネフィット→Energy利益率20%→EPS貢献（rule05 indirect）。2015年Q4退出目標。Energy有機成長-24%〜-26%という逆風の中でのコスト削減効果が主。40%。"
+    },
+    {
+      "id": "DOV-004",
+      "claim_type": "competitive_advantage",
+      "claim": "DoverのEngineered Systems部門（Printing & ID + Industrial）は主要顧客のCapEx削減環境でも有機成長6%を達成し、廃棄物処理・自動車関連事業が牽引。多角化ポートフォリオがエネルギー市場への依存度を低減する。",
+      "descriptive_label": "Engineered Systems 多角化ポートフォリオのCapEx削減耐性（有機成長6%）",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "有機成長6%は定量データ（rule04 partial）。ただし多角化ポートフォリオ（能力的要素）よりも廃棄物・自動車の好況（外部要因）が主な成長ドライバーの可能性（rule01 concern, pattern_A_result_as_cause）。DOV固有の多角化能力の説明が乏しく、「多角化」自体は大手工業コングロマリットに共通（pattern_B_industry_common部分）。Q1 FY2015発言（rule12 secondary）。30%。",
+      "kb1_flags": ["rule01_capability_not_result"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.4,
+      "cagr_rationale": "Engineered Systems多角化→Energy依存低減→安定CAGR（rule05 indirect）。多角化が実際に安定CAGR提供するかはEnergy回復次第の面も。40%。"
+    },
+    {
+      "id": "DOV-005",
+      "claim_type": "competitive_advantage",
+      "claim": "Doverはエネルギー市場低迷期においても強力なフリーキャッシュフロー（Q1で1億300万ドル、売上の6%）を創出し、通年で売上の11%のFCF見込み。バランスシートの強さが買収パイプライン構築と6億ドルの自社株買いを可能にする。",
+      "descriptive_label": "エネルギー低迷期でもFCF11%/売上のバランスシート強度",
+      "transcript_call_type": "Q4_annual",
+      "power_type": "Scale Economies",
+      "confidence_score": 0.3,
+      "scoring_rationale": "FCF $103M（売上比6%）・通年11%は定量データ（rule04 quantitative）。ただしFCFは結果であり競争優位性の仕組みではない（rule01 concern, pattern_A_result_as_cause）。FCF 11%は多くの優良コングロマリットが達成する水準（pattern_B_industry_common）。競合（ITW、Emerson等）との比較なし（rule07 insufficient）。資本配分の柔軟性は能力の一面だが、それ自体が競争優位性ではない。30%。",
+      "kb1_flags": ["rule01_capability_not_result", "rule04_quantitative_evidence"],
+      "kb2_pattern": "pattern_A_result_as_cause",
+      "cagr_connection_score": 0.5,
+      "cagr_rationale": "FCF→買収・自社株買い→EPS成長（rule05 indirect）。$600M自社株買いプログラムは直接的なEPS上乗せ効果。買収パイプライン実現依存。50%。"
+    }
+  ]
+}

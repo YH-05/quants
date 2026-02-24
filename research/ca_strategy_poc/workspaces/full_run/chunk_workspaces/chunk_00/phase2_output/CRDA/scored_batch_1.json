@@ -1,0 +1,81 @@
+{
+  "ticker": "CRDA",
+  "batch_index": 1,
+  "batch_total": 3,
+  "target_claim_ids": ["CRDA-006", "CRDA-007", "CRDA-008", "CRDA-009", "CRDA-010"],
+  "metadata": {
+    "gatekeeper_applied": false
+  },
+  "scored_claims": [
+    {
+      "id": "CRDA-006",
+      "claim_type": "competitive_advantage",
+      "claim": "アジア（中国・インド・ASEAN）での新拠点展開と2,000社超の新規顧客獲得（Q1 2015）による地域拡大能力",
+      "descriptive_label": "アジア新市場拡大と新規顧客獲得能力",
+      "kb1_t_evaluation": {
+        "rule_1_t": "FAIL - アジア拡大と2,000社新規顧客は結果。拡大を可能にする能力の説明が不十分",
+        "rule_4_t": "PASS - 2,000社超の新規顧客という定量値",
+        "rule_7_t": "FAIL - アジア展開は特殊化学品業界全社が推進（BASF・Evonik等）"
+      },
+      "kb2_t_pattern": "pattern_A_t（結果を原因とする）、pattern_B_t（業界共通）",
+      "kb3_t_calibration": "COST#5（国際展開→20%）と類似。アジア展開は業界共通トレンド。2,000社新規顧客は具体的だが、獲得メカニズムの説明なし",
+      "dogma_evaluation": "Dogma Rule 1（能力vs結果）: FAIL（拡大は結果）。Rule 3（相対的優位性）: 制約あり（業界共通）。Q1発言から。30%が適切",
+      "final_confidence": 0.3,
+      "scoring_rationale": "KB1-T Rule 1・7 FAIL（結果の提示・業界共通）。KB2-T pattern_A_t・B_t（複合）。dogma.md Rule 1・3違反。アジア展開は業界トレンドであり固有能力の証拠に欠ける。Q1発言-10%。30%"
+    },
+    {
+      "id": "CRDA-007",
+      "claim_type": "cagr_connection",
+      "claim": "NPP戦略集中化 → マージン改善（ROS 25%維持） → CAGR上支え（価格/ミックス優位）",
+      "descriptive_label": "NPP集中化→マージン改善→CAGR経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PASS - 2ステップの直接因果（NPP比率向上→マージン改善）で検証可能",
+        "rule_12_t": "FAIL - Q1発言から"
+      },
+      "kb2_t_pattern": "pattern_II_t（直接的CAGR接続）。ROS 25%という実績値で検証可能",
+      "kb3_t_calibration": "COST顧客粘着力（会員→ARPU→売上→90%）に近い構造。ROS 25%という実績値は直接的検証を提供",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: PASS（2ステップ）。NPP比率+13%・ROS 25%という定量値で検証可能。Q1発言で制約",
+      "final_confidence": 0.5,
+      "scoring_rationale": "KB1-T Rule 5 PASS、Rule 12 FAIL（Q1発言）。KB2-T pattern_II_t（直接的接続）。dogma.md Rule 5 PASS（2ステップ）。Q1発言-10%調整。50%"
+    },
+    {
+      "id": "CRDA-008",
+      "claim_type": "cagr_connection",
+      "claim": "バイオサーファクタント商業化 → 天然由来製品需要拡大（規制・消費者トレンド） → 売上CAGR加速",
+      "descriptive_label": "バイオサーファクタント→天然由来需要→CAGR加速経路",
+      "kb1_t_evaluation": {
+        "rule_5_t": "PARTIAL - 2ステップの因果だが外部変数（消費者トレンド・規制）依存",
+        "rule_12_t": "FAIL - Q1発言から"
+      },
+      "kb2_t_pattern": "pattern_C_t（因果関係の飛躍）。消費者トレンド→売上成長は外部変数依存",
+      "kb3_t_calibration": "LLY#3（GLP-1市場成長→売上→中程度）に類似。外部変数（市場成長）への依存と商業化初期の不確実性",
+      "dogma_evaluation": "Dogma Rule 5（直接的メカニズム）: 部分的。外部市場成長という中間変数への依存。Q1発言。将来性主導",
+      "final_confidence": 0.4,
+      "scoring_rationale": "KB1-T Rule 5 部分的、Rule 12 FAIL（Q1発言）。KB2-T pattern_C_t（因果飛躍）。外部変数依存と商業化初期の不確実性。Q1発言-10%調整。40%"
+    },
+    {
+      "id": "CRDA-009",
+      "claim_type": "factual_claim",
+      "claim": "NPP比率: Q1 2014で20% → Q1 2015で23%（+13%成長）。バイオサーファクタント投資GBP 1.2億（英国プレストン工場）",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014/2015 CEO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付け充分。CRDA-001（NPP戦略）の支持事実として最も重要",
+      "final_confidence": 0.6,
+      "scoring_rationale": "事実主張として定量的裏付け充分。CRDA-001（70%）・CRDA-002（50%）の支持事実。NPP比率23%という業界内ベンチマークが重要。0.6"
+    },
+    {
+      "id": "CRDA-010",
+      "claim_type": "factual_claim",
+      "claim": "FCF GBP 250M（Q1 2014）、ROCE改善基調、Life Sciencesセグメント ROS 25%超",
+      "kb1_t_evaluation": {
+        "fact_check": "PASS - Q1 2014 CFO発言による定量的開示"
+      },
+      "kb2_t_pattern": "pattern_I_t（定量的差別化）",
+      "dogma_evaluation": "事実主張として定量的裏付けあり。CRDA-001（NPP戦略）とCRDA-003（Capital-Lightモデル）の支持事実",
+      "final_confidence": 0.5,
+      "scoring_rationale": "事実主張として定量的裏付けあり。CRDA-001（70%）・CRDA-003（50%）の支持事実。ROS 25%超が特に重要な定量的指標。0.5"
+    }
+  ]
+}

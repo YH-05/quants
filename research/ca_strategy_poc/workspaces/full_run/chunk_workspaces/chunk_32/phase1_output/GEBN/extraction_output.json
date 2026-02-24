@@ -1,0 +1,330 @@
+{
+  "ticker": "GEBN",
+  "transcript_source": "FY2014 Annual Results (2015-03-10) / Q3 2014 (2014-10-xx)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q3_2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの欧州建築業界におけるB2Bブランド優位性（プランナー・設備士向け50年超の関係構築）",
+      "descriptive_label": "B2B建設専門家ブランド（Branding / Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO Christian Buhl): 'Our competitive position is based on our long-term customer relationships, our innovative product portfolio and a strong B2B Geberit brand.' / 'In Germany, we conducted 60,000 individual customer visits with our sales force. On top, more than 10,000 customers participated in 1 of our 200 events in Germany.' / '50th anniversary of our concealed cistern. Since 1964, Geberit sold more than 60 million concealed cisterns.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "長期顧客関係の構築（能力）を評価。60,000回の個別訪問という仕組みが明示"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "50年間で6,000万台の暗渠型タンク販売実績。B2B建設専門家ブランドとしての特殊性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial",
+            "reasoning": "60,000回訪問、10,000人参加イベントという活動量データあり。ただし競合比較なし"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "欧州建設業界では設備士・プランナーが製品採用に決定的影響力。B2Bブランドは市場構造に合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t, pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "50年超の暗渠型タンク業界No.1ポジションと設備士向けB2Bブランドは市場構造に深く合致。競合比較の欠如はあるが、顧客関係構築の仕組みと市場構造との合致が強い"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの高水準EBITDA margin（27.3%、目標コリドー23-25%を上回る）を支える製造効率と連続改善プロセス",
+      "descriptive_label": "製造プロセス効率性・コスト構造優位（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO/CFO): 'With 27.3%, the EBITDA margin exceeded our midterm target corridor of 23% to 25%.' / 'Material cost, as a percentage of sales, decreased from 26.1% to 25.1%, also due to slightly lower raw material prices.' / 'We follow a long-term investment strategy, with continuous investments in all key areas: into our infrastructure, in R&D and new products and in marketing.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "27.3%のEBITDA marginは結果。それを支える製造効率・コスト管理という能力に帰属させる必要がある。長期投資戦略の継続は仕組みとして評価できる"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "caution",
+            "reasoning": "衛生設備業界での競合（Viega, Uponor）との比較がない。27%EBITDAが業界平均より大幅に高いかの確認が必要"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "27.3%EBITDA margin、材料費率25.1%（前年26.1%から改善）という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "継続的な製造投資と工程最適化は長期蓄積の結果であり、短期模倣困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合との明示的比較なし（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "27.3%EBITDAは高い水準だが、衛生設備特化企業として業界比較がなく相対的優位性が不明。製造投資の継続性と材料費改善は積極的評価の基盤だが、差別化Barrierの明確性が欠如"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Sanitec買収によるバスルームセラミクス（壁前）への拡張と欧州衛生製品リーダーポジションの強化",
+      "descriptive_label": "M&A能力と欧州市場統合（Scale Economies / Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'The acquisition is a combination of 2 complementary businesses fitting to the European sanitary market... With Sanitec, we will create the European leader in the sanitary products industry.' / 'The integrated organization will allow us to capture sales and cost synergies of at least EUR 45 million in the midterm.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [8],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "Sanitec買収は戦略的意思決定であり、M&A実行能力という仕組みよりも行動に近い"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "partial",
+            "reasoning": "欧州リーダーポジションは一定の規模の経済をもたらすが、セラミクス分野での新規参入でBarrierが不明確"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "borderline",
+            "reasoning": "M&Aは戦略。EUR45mnシナジーは実現すれば構造的になり得るが、現時点では見込み"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_F_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "買収直後で実績未検証、統合リスクあり（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "EUR45mnシナジーは見込みに過ぎず、セラミクス分野でのGeberitの優位性は未検証。M&A戦略として評価しても、持続的競争優位性の基盤は弱い"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの継続的製品イノベーション（設備士の生産性を向上するプロダクト設計）",
+      "descriptive_label": "設備士向け製品イノベーション（Process Power / Cornered Resource）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'Our innovations drive plumbing standards... In addition, we launched the Omega flushing systems with corresponding actuator plates. Omega flushing systems offer maximum flexibility... In China, we introduced a Monolith washbasin module developed specially for the middle class... the new Geberit wall draining system, slimmer in design and even easier and safer to install. The patent Geberit Sovent fitting. The Sovent fitting increases the flow performance by 40%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [9],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_3_t", "rule_4_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "製品イノベーション能力として評価。パテント（Sovent fitting）という特許保護と「流速40%向上」という技術的差別化"
+          },
+          {
+            "rule": "rule_3_t",
+            "verdict": "pass",
+            "reasoning": "'Our innovations drive plumbing standards'という業界標準設定能力の主張。特許製品は競合差別化の証拠"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "Sovent fittingの流速40%向上という定量的技術優位の言及"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t, pattern_III_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合（Viega等）との差別化の具体性が薄い（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "特許製品と「業界標準を牽引する」というイノベーション主張は評価できるが、競合比較の明示性が低い。設備士向け製品設計という特化は市場構造との合致あり"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "Geberitの天然ヘッジ構造（売上と費用の通貨構成が近似）による為替リスクの構造的管理",
+      "descriptive_label": "自然ヘッジによる通貨リスク管理（Process Power）",
+      "evidence_from_transcript": "FY2014 Annual (CEO): 'The currency split of our sales volume is very similar to the currency split of our cost base, with a slight over-proportional cost base in Swiss francs. Due to this strong natural hedge, the impact of the strength in Swiss franc on the operating margins is limited. In figures, this means that the strengthening of the Swiss francs by 10% against all other currencies leads to a decline of the EBIT level by 9% to 11%.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "caution",
+            "reasoning": "天然ヘッジは製造拠点配置という構造から生まれる能力だが、特定の競争優位性というより財務的安定性の特徴"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "supplementary",
+            "reasoning": "通貨リスク管理は構造的だが競合との差別化要素として弱い"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 30,
+        "confidence_adjustments": [],
+        "overall_reasoning": "天然ヘッジは財務的特性であり、競争優位性としての評価は低い。SNB決定後の透明な開示は評価できるが、競争優位性の定義（Benefit+Barrier）に合致しない"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "B2Bブランド×市場アウトパフォーマンス（局所通貨で6.4%成長、市場比上回る）→売上CAGR",
+      "descriptive_label": "B2Bブランド→市場シェア拡大→売上CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "B2Bブランド→顧客関係→市場outperformという2-3ステップ。「市場をアウトパフォーム」は独country数値で確認可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4（年次）からの言及"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "市場outperformは示されているが、ブランドとのCAGR接続における中間ステップが弱い"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "製造効率改善（EBITDA margin上昇）×売上成長→フリーキャッシュフロー成長CAGR（CHF460mn）",
+      "descriptive_label": "製造効率→EBITDA margin→FCF CAGR経路",
+      "source_advantage": 2,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "EBITDA margin改善→FCF成長は2ステップ。CHF460mnFCFは検証可能なデータ"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "FCF成長とEBITDA margin改善の連鎖は直接的。CHF460mnというデータで検証可能"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "cagr_connection",
+      "claim": "Sanitec統合シナジー（EUR45mn以上）→欧州リーダーポジションでの中期的収益改善CAGR",
+      "descriptive_label": "Sanitec統合シナジー→EBIT CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "シナジーEUR45mn→EBIT改善は3ステップ以上（統合完了→シナジー実現→EBIT改善→CAGR）。未実現の見込み数値"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "統合リスクと実現可能性の不確実性（-10%）",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "Sanitecシナジーは中期的(2016以降)で、PoiT時点での検証不可"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "cagr_connection",
+      "claim": "製品イノベーション→新製品導入→地域別成長機会の開拓→売上CAGR",
+      "descriptive_label": "製品イノベーション→地域展開→売上CAGR経路",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "partial",
+            "reasoning": "新製品→売上成長は直接的だが、市場別成長が地域別market条件に大きく依存"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "製品イノベーション→売上は論理的だが、欧州建設市場の軟調環境が影響。中国・インドでの双桁成長は示されている"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Geberit FY2014: 売上CHF2.4bn（+6.4%LCY）、EBITDA 27.3%margin、FCF CHF460mn",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "EBITDA margin 27.3%（目標23-25%超過）。材料費率25.1%（前年26.1%から改善）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [2]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Sanitec買収：CHF1.4bn、EUR689mn売上、EBIT margin 11.4%、最低EUR45mnシナジー見込み",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "ticker": "RR/",
+  "transcript_source": "Q4 FY2014 Earnings Call (2014-10-17) [Primary] + H1 FY2014 Earnings Call (2014-07-31) [Secondary]",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1", "Q3"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "TotalCare（Power by the Hour）モデル：航空機エンジンの長期サービス契約（飛行時間ベース課金）による顧客との長期的コミットメントとアフターマーケット収益の安定化",
+      "descriptive_label": "TotalCareアフターマーケットサービスモデルによる顧客ロックイン",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO John Rishton): 'in our model, we have the TotalCare model, which is driven by flying hours. Flying hours are fine at the moment.' CFO Mark Morris: 'how we drive upgrades and things that are keeping engine on wing for longer...80% of the revenue, much higher margin on the aftermarket, so that makes attractive sense'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "qa_session",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "TotalCareモデルはスイッチングコスト・顧客ロックインを生む名詞で表現される構造的属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "OE収益20%対アフターマーケット80%（低マージンOE対高マージンアフターマーケット）という定量的説明あり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "エンジン長期サービス契約は構造的なスイッチングコストを生む"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "民間航空機市場の構造（エンジン長期使用サイクル、高い交換コスト）とTotalCare（飛行時間課金）モデルの合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "OE 20%:アフターマーケット80%という定量的な収益モデル説明あり",
+            "adjustment": 0
+          },
+          {
+            "reason": "CFがこのモデルの具体的な収益貢献を数値で示している",
+            "adjustment": 0
+          },
+          {
+            "reason": "競合（GE Aviation、Pratt & Whitney）との直接比較なし",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "TotalCare/Power by the Hourモデルは長期サービス契約による構造的スイッチングコスト。OE20%:アフターマーケット80%の収益構造と、アフターマーケットの高マージン性が定量的に示されている。航空機エンジン市場の長寿命サイクル（20-30年）と合致"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "TotalCare × インストールベース拡大 → アフターマーケット収益の安定成長（飛行時間連動）→ CAGR支持",
+      "descriptive_label": "TotalCare×インストールベース→アフターマーケット→収益成長経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ（インストールベース拡大→飛行時間連動アフターマーケット収益）。飛行時間データで検証可能"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4的な年次決算（Trading Update）での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "インストールベースの拡大が将来のアフターマーケット収益を確実に生む構造。2015-2018のOEデリバリーが将来のアフターマーケット収益の基盤となることが明示"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "Trent XWB・Trent 7000等の次世代エンジン技術：燃料効率向上エンジンへの構造的シフトによる長期的な受注獲得能力",
+      "descriptive_label": "次世代燃料効率エンジン（Trent XWB/7000）の技術的優位性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CEO John Rishton): 'The demand for air travel will increase...driven by demand from emerging markets and the need for more fuel-efficient aircraft. As you all know, we have a very strong order book.' CFO: 'new programs, naturally, certainly at the front end, will depress margins because we're spending money on CapEx and R&D, but nonetheless where we see there's a good business case'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "オーダーブック（結果）への言及が多いが、燃料効率技術（能力）についての言及もある"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "次世代エンジン技術・燃料効率は名詞で表現される技術的属性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "weak",
+            "reasoning": "GE Aviation（GEnx）、Pratt & Whitney（GTF）との具体的な技術比較データなし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_D_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "競合（GE、P&W）との技術的差別化データなし",
+            "adjustment": -10
+          },
+          {
+            "reason": "短期マージン悪化（OEフェーズでの低マージン）が明示されている",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "次世代エンジン技術は有望な優位性候補だが、GE Aviation・P&Wとの具体的な技術比較がなく相対的優位性の根拠が不十分。長期的な航空需要増加という業界構造との合致は示されているが"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "次世代エンジン（Trent XWB/7000）採用 → インストールベース拡大（2018年以降マージン向上）→ 長期CAGR支持",
+      "descriptive_label": "次世代エンジン採用→インストールベース→長期CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3段階（エンジン採用→インストールベース→アフターマーケット）で間接的、かつ2018年まで時間軸"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "年次的なtrading update（Q4決算相当）での発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "中期（2018年）的な成長ストーリーで直接的ではないが、CFOが明示的に言及した定量的な見通し。PoiT（2015年9月）時点では実現前"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "ライフサイクルコスト改善能力：600名のエンジニアによるTrent 700エンジンの耐用時間延長・部品寿命最適化プログラム（IRR 40%超）",
+      "descriptive_label": "エンジンライフサイクルコスト管理・技術的改善能力",
+      "evidence_from_transcript": "Q4 FY2014 Q&A (CFO Mark Morris): 'We've got about 600 engineers at the moment working purely on unit cost reductions. And generally, we know we have very good payback on those. On average, we see an IRR, in many cases, in excess of 40% in payback in sort of within 2 to 3 years...half of it is life cycle cost, which is aftermarket: improving reliability; being clever about the work scopes; sweating the asset; using serviceable use material'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "qa_session",
+      "supported_by_facts": [8],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_2_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "エンジン改善能力・ライフサイクルコスト管理は名詞で表現されるプロセス能力"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "600名エンジニア専従、IRR 40%超、ライフサイクルコスト改善という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "長年の技術蓄積に基づくライフサイクルコスト管理は構造的能力"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "GE Aviation等との比較なし",
+            "adjustment": -10
+          },
+          {
+            "reason": "具体的な数値（600名、IRR 40%）あり",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "600名専従エンジニアとIRR 40%超という定量的裏付けは能力の証拠。ただし競合との比較がなく相対的優位性が不明"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "防衛・船舶・電力システム向け多様な高付加価値エンジン製品：民間航空機依存を分散するポートフォリオ",
+      "descriptive_label": "民間航空機以外の複数セグメントにわたる製品多様性",
+      "evidence_from_transcript": "Q4 FY2014 Prepared Remarks (CFO Mark Morris): 'Defense business...Marine...Power Systems...Land & Sea businesses, the demand for power was driven by population growth, increasing economic activity, urbanization and increasing affluence.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_3_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_3_t",
+            "verdict": "fail",
+            "reasoning": "GEも同様に民間航空機・防衛・エネルギーにまたがるポートフォリオを保有しており、業界共通能力"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "製品多様性はリスク分散であり、コアの競争優位性（エンジン技術）の補完的要素"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "fail",
+            "reasoning": "GE Aviation等との具体的な差別化が示されていない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "業界共通能力（GE、P&W等も同様のポートフォリオ）",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "製品ポートフォリオの多様性はGE等の大手競合も同様に保有しており、競争優位性として際立たない。むしろMarine・Power Systemsの業績悪化がトランスクリプト全体の重要なテーマ"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "Rolls-Royce Civil Aerospaceの収益構造：OE 20%（低マージン）、アフターマーケット 80%（高マージン）。民間航空機部門の長期平均利益率約12%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "RR/のライフサイクルコスト改善：600名エンジニア専従、ユニットコスト削減プロジェクトのIRR平均40%超、投資回収2-3年",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    }
+  ]
+}

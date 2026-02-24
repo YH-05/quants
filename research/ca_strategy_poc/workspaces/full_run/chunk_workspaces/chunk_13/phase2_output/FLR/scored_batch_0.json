@@ -1,0 +1,117 @@
+{
+  "ticker": "FLR",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "FLR-001",
+      "claim_id_int": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Fluor Corporationは過去3年間の競争力強化（コスト効率・資本効率・EPC能力向上）により、市場条件に関わらず競合可能なポジションを構築。Oil & Gasバックログは$284億（+42% YoY）の過去最高を達成",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "バックログ記録と新規受注記録は競争力の結果指標。3年の競争力強化プロセスは構造的優位性を示唆するが定量化が弱い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "「3年間の競争力強化」という能力の方向性は評価できるが、バックログ$28.4B（+42%）は結果の提示（KB2パターンA部分合致）。KBR、Bechtel等競合との具体的差別化が不明確（dogma.mdルール3・7）。方向性は認めるが50%に留める。"
+    },
+    {
+      "claim_id": "FLR-002",
+      "claim_id_int": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "Fluor Corporationは石油・ガス・政府・工業インフラ・電力の多様なセグメント構成により、Mining & Metals事業が衰退した際に同じ組織能力・人材をOil & Gas事業に振り向けることができた組織の柔軟性",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "Mining→O&G能力転換は実際に起きた事実として証拠価値が高い。多角化EPCの規模優位の側面",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "組織能力の転換性は規模の経済の重要な側面（KB2パターンIII：能力の優位性）。Mining→O&G人材転換は実際の事実として証拠価値がある。ただし多角化EPCはJacobs Engineering等競合も持ち、相対優位が不明確（dogma.mdルール3）。50%。"
+    },
+    {
+      "claim_id": "FLR-003",
+      "claim_id_int": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "FluorはOil & Gas顧客に対して統合ソリューション（EPC一貫）を提供し、$500億のOil & Gasプロジェクトパイプラインを維持（既存受注10件・キャンセル2件・新規追加10件で正味横ばい）",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule06_structural_vs_complementary", "rule04_quantitative_evidence"],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "$500億パイプライン維持は顧客関係の持続性を示すが、大型プロジェクトは入札競争で決まる面が大きい",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "$500億パイプラインの維持は顧客関係の持続性を示す（KB2パターンIII）。EPC統合ソリューションは長期関係を生み出すが、大型プロジェクトは入札競争で決まる面もあり純粋なSwitching Costsとして評価するには限界あり。50%。"
+    },
+    {
+      "claim_id": "FLR-004",
+      "claim_id_int": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "FluorのOil & Gasセグメントは利益率が5.9%に改善（前年3.8%）。Sasol、Pemex、Petronas等の超大型プロジェクト（$100億超）を受注できる数少ない企業の1つ",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule04_quantitative_evidence", "rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "超大型プロジェクト受注能力は高い参入障壁を示す。利益率2.1ポイント改善は定量的証拠",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "超大型EPC（$100B超）を受注できる企業は世界で5社未満という業界構造との合致（KB2パターンIV）。利益率5.9%（前年3.8%）という定量的改善証拠あり。ただし利益率が5.9%と低く絶対的な優位性の強さは限定的。50%。"
+    },
+    {
+      "claim_id": "FLR-005",
+      "claim_id_int": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "Fluor Government事業は政府機密インフラに対するセキュリティクリアランスと長期契約（4.7B backlog）を保有。Power事業ではDiablo Canyon核発電所の5年間メンテナンス契約延長を達成",
+      "source_quarter": "Q4 2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": ["rule11_industry_structure_fit"],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "政府セキュリティクリアランスと核発電所メンテナンスはProcess Powerの側面があるが、証拠が薄い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "政府セキュリティクリアランスは参入障壁として評価できるが（KB2パターンIV部分合致）、$4.7Bのバックログという数値の相対的評価基準がなく（競合比較不在）、Process Powerの具体的な「仕組み」説明が不足。dogma.mdルール3・4違反。30%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 1, "50-60": 4},
+    "gatekeeper_applied": false
+  }
+}

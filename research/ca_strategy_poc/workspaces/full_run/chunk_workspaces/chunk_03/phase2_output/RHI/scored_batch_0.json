@@ -1,0 +1,93 @@
+{
+  "ticker": "RHI",
+  "batch_index": 0,
+  "batch_total": 1,
+  "scored_claims": [
+    {
+      "claim_id": "RHI_001",
+      "ticker": "RHI",
+      "claim_text": "Robert Halfは「会計・財務・法務・IT」という高度専門職種に特化したスタッフィング会社として、小中規模企業（SMB）向けの「コンサルティング型アプローチ」を差別化の核心としている。SMBは人事部門を持たない場合が多く、Robert Halfの専門化された採用アドバイスの価値は特に高い。CEOは「companies of this size often lack their own human resources department, and as a result, they value our personalized, consultative approach」と述べ、競合が提供しにくい価値提案を明確にしている。",
+      "power_type": "Switching Costs",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule06（構造的 vs 補完的）: SMBの人事部門不在という構造的ニーズは実在するが、競合（Manpower、Adecco）も専門職スタッフィングサービスを提供。Rule07（純粋競合との差別化）: 競合との明示的な定量比較なし（-10%）。KB2-T PatternD（定性的のみ）: 「コンサルティングアプローチ」という定性的な差別化のみ。PatternB（業界共通）: SMB向け専門スタッフィングは同業他社も提供可能（競合の特化企業も存在）。dogma §2.2: 価値提案は明確だが競合比較が弱い。スイッチングコストの実際の効果（リテンション率等）の定量証拠なし。確信度: 0.5",
+      "kb_rules_applied": ["Rule06", "Rule07"],
+      "kb2_patterns_matched": [],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "RHI_002",
+      "ticker": "RHI",
+      "claim_text": "Robert Halfは「ペイフォーパフォーマンス文化」という内部の強力なインセンティブ構造を持ち、景気サイクルを通じた自動的なコスト調整機能を実現している。変動報酬の低下により変動費が自然に縮小し、その分を売上成長への先行投資（2013年に人員8%増加）に活用できる構造は、競合が模倣しにくい文化的競争優位である。15年連続EPS成長（2013年を除く）の背景にある強固な組織能力。",
+      "power_type": "Process Power",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: ペイフォーパフォーマンス文化という仕組み（能力）は適切に識別。Rule04（定量的証拠）: 15年連続EPS成長・2013年8%人員増という定量データ（+10%）。Rule10（ネガティブケース）: 2013年の唯一の例外（EPS低下）を説明できる構造的能力の証拠（+10%）。KB2-T PatternIII（能力優先）: 文化・組織能力が前面に出ている。PatternII（直接CAGRメカニズム）: 変動コスト自動調整→景気サイクルを通じた収益安定化というCAGR接続。dogma §2.2（評価上げ要因4）: 15年実績という時系列証拠が強い。ただし、同様の文化はCHROBinsonも持ち競合との差別化の独自性が一部不明（CAGR接続0.5）。確信度: 0.7",
+      "kb_rules_applied": ["Rule01", "Rule04", "Rule10"],
+      "kb2_patterns_matched": ["PatternIII", "PatternII"],
+      "adjustment": 20
+    },
+    {
+      "claim_id": "RHI_003",
+      "ticker": "RHI",
+      "claim_text": "Robert HalfのProtiviti部門（内部監査・リスク管理・IT安全保障・金融サービスアドバイザリー）は、スタッフィング部門との相乗効果を持つ差別化されたコンサルティングプラットフォームである。2013年Q4にProtiviti収益が18%増（米国20%増、欧州が黒字化）を達成し、内部監査部門がPCAOB検査強化により需要急増。スタッフィングとコンサルティングの組み合わせは競合（Manpower、Adecco）には存在しないビジネスモデルである。",
+      "power_type": "Scale Economies",
+      "confidence": 0.7,
+      "cagr_connection_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: Manpower・Adeccoにはないビジネスモデルという明示的比較（PatternV的要素）。Rule04（定量的証拠）: 18%収益増・欧州黒字化という定量データ（+10%）。KB2-T PatternV（特定競合比較）: 競合（Manpower・Adecco）との組み合わせ型ビジネスモデルの差別化が明示的。PatternI（定量的差別化）: 18%増という具体的成長率。dogma §2.2（評価上げ要因2）: 特定競合との比較で+20%。スタッフィング×コンサルティングの組み合わせは構造的に模倣困難（Counter-Positioning的要素）。確信度: 0.7",
+      "kb_rules_applied": ["Rule04", "Rule07"],
+      "kb2_patterns_matched": ["PatternI", "PatternV"],
+      "adjustment": 20
+    },
+    {
+      "claim_id": "RHI_004",
+      "ticker": "RHI",
+      "claim_text": "Robert Half Technologyは高度にスキルが希少な候補者主導市場（候補者数より求人数が多い状態）においてリクルーター能力の深化により差別化を実現している。CFOは「it's a very candidate-driven market. We typically have more orders than we do candidates. So it's all about recruiting」と述べ、候補者発掘スキルの蓄積が技術系スタッフィングの競争優位の核心であることを示す。この能力は訓練・経験の蓄積を要しており競合が短期間では複製困難。",
+      "power_type": "Process Power",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule01（能力 vs 結果）: リクルーター能力の蓄積という能力は評価可。Rule07（純粋競合との差別化）: 候補者主導市場という外部環境の説明だが、Robert Halfのリクルーター能力が競合より優れているという定量証拠なし（-10%）。KB2-T PatternD（定性的のみ）: 「better recruiters」という定性的説明のみ。PatternIII（能力優先）: 部分的に合致。dogma §2.2: 能力の方向性は正しいが、競合（Experis/Manpower IT等）との比較データなし。確信度: 0.5",
+      "kb_rules_applied": ["Rule01", "Rule07"],
+      "kb2_patterns_matched": ["PatternIII"],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "RHI_005",
+      "ticker": "RHI",
+      "claim_text": "Robert Halfは米国の一時的労働者比率が過去最高水準（all-time high as % of total employment）に達したことを構造的成長トレンドとして認識しており、「demand for flexible staffing has momentum far beyond these post-recession years」と表現している。変動費労働力（variable cost labor）への企業ニーズ増加は、人材派遣業界全体ではなくRobert Halfのような専門職特化企業に特に有利な長期的市場構造変化である。",
+      "power_type": "Counter-Positioning",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: 業界全体のトレンドを述べており、Robert Halfが競合より特に恩恵を受けることの根拠が弱い（-10%）。Rule06（構造的 vs 補完的）: 一時労働者比率増加トレンドは構造的だが外部環境の変化であり能力ではない。KB2-T PatternC（因果飛躍）: 「トレンド→RHIに特に有利」は因果飛躍（競合も同様に恩恵）。PatternA（結果を原因）の要素もある。dogma §1.2（却下基準3）: 「戦略（市場環境）の優位性への混同」に近い。ただし専門職特化×構造的需要増加は一定程度評価できる。確信度: 0.5",
+      "kb_rules_applied": ["Rule06", "Rule07"],
+      "kb2_patterns_matched": ["PatternC"],
+      "adjustment": 0
+    },
+    {
+      "claim_id": "RHI_006",
+      "ticker": "RHI",
+      "claim_text": "Robert Halfの規制・コンプライアンス専門人材（Dodd-Frank対応、医療改革対応）への需要増大は、同社が得意とする「会計・法務・IT」の各分野でのニッチ市場において競合他社（総合スタッフィング企業）が対応困難な専門性ギャップを生んでいる。特にProtiviti（内部監査・FSI規制コンプライアンス）とスタッフィング部門のジョイントソリューションは他社に模倣困難な統合サービスである。",
+      "power_type": "Scale Economies",
+      "confidence": 0.5,
+      "cagr_connection_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "scoring_rationale": "KB1-T Rule07（純粋競合との差別化）: Protiviti×スタッフィングのジョイントソリューションは差別化の説明として評価（競合には存在しないと示唆）。Rule01（能力 vs 結果）: 規制需要増加は外部環境の変化であり能力ではない（-10%）。KB2-T PatternC（因果飛躍）: 「規制強化→RHIに有利」は業界共通の外部環境変化。PatternB（業界共通）: KPMG・Deloitte等のコンプライアンス専門会社も同様のサービスを提供。dogma §1.2（却下基準3）: 外部環境変化を競争優位性と混同している面がある。ジョイントソリューションの独自性はRHI_003で既に評価済み。確信度: 0.5",
+      "kb_rules_applied": ["Rule01", "Rule07"],
+      "kb2_patterns_matched": ["PatternB"],
+      "adjustment": 0
+    }
+  ],
+  "metadata": {
+    "scored_count": 6,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.7": 2,
+      "0.5": 4
+    }
+  }
+}

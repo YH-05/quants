@@ -1,0 +1,322 @@
+{
+  "ticker": "CBA",
+  "company_name": "Commonwealth Bank of Australia",
+  "transcript_source": "FY2015 Full Year Results（2015-08-12）/ H1 FY2015（2015-02-10）/ FY2014 August（2014-08-13）/ H1 FY2014（2014-02-11）",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["H1_FY2015", "FY2014_Aug", "H1_FY2014"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "デジタル・テクノロジーへの継続的投資によるオーストラリア銀行業界での顧客満足度No.1（Roy Morgan調査）と取引口座の業界以上の成長",
+      "descriptive_label": "デジタル・テクノロジー優位による顧客獲得力（Switching Costs + Branding）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Ian Narev）: 'in the last Roy Morgan result for the 6 months ended June 2015, that the retail customer satisfaction had again reached #1 of all the major banks in the market... In international financial services and in Internet banking, corresponding customer satisfaction surveys are at #1.' / 'industry-leading market share in household deposits even notwithstanding that base at the start, still growing at 11.6% ahead of the system of 9.5%.' / 'Retail Bank in transaction accounts... retail transaction accounts actually grew 38% this period.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [7],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "顧客満足度No.1は結果的指標。テクノロジー投資プログラムは能力・仕組みとして評価可能"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "取引口座+38%、家計預金シェア成長11.6% vs 市場9.5%という定量的差別化データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "コアバンキングプラットフォーム（SAP）への長期投資は構造的優位"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "Roy Morgan調査での大手4行No.1という明確な競合比較あり"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "オーストラリアは寡占的銀行市場。デジタルが差別化要因となる市場構造と合致"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_V_t（具体的競合比較）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言、標準評価",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "取引口座+38%、家計預金市場シェア超過成長という定量的データ。Roy Morgan調査No.1という外部評価。テクノロジー投資とSAPコアプラットフォームという仕組みの説明あり"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "テクノロジー優位→取引口座・預金シェア拡大→低コスト資金調達比率向上→NIM安定・収益成長",
+      "descriptive_label": "テクノロジー→預金シェア→NIM→収益",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "テクノロジー→取引口座採用→低コスト預金→NIM安定は2-3ステップ。FY2015で取引口座+38%、預金成長が貸出成長を100%ファンドと実証"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "預金成長が100%貸出をファンド（CFO発言）という開示データで検証済み。NIM安定との接続も論理的"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "3,700万以上の顧客関係と「メイン金融機関」シェア35%以上（主要行中最高水準）による顧客基盤の粘着性",
+      "descriptive_label": "メイン金融機関シェアによる顧客ロックイン（Switching Costs）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Ian Narev）: 'A year ago, just over 1 in every 3 Australians said that Bankwest or Commonwealth Bank was their main financial institution, that was already the best in the market. We've added another 1.1% to that.' / 'the improvement in MFI share is actually occurring at all different stages of the customer life cycle.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "MFIシェア35%は結果。「顧客ライフサイクル全段階での改善」という記述は仕組みに近い"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "MFIシェア35%超、前年比+1.1ppという定量的データ。大手行中最高と明言"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "メイン金融機関として選ばれると給与口座・住宅ローン等の多製品関係が生まれスイッチングコストが増大"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "strong",
+            "reasoning": "大手行中最高と明言。具体的な%データで比較"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_IV_t（業界構造との合致）",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "メイン金融機関選択は住宅ローン・給与振込・カード等の複合的関係に発展するスイッチングコスト構造。35%超のシェアと前年比改善が定量的に裏付け"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "MFIシェア拡大→クロスセル機会増加→1顧客あたり収益向上→収益成長",
+      "descriptive_label": "MFIシェア→クロスセル→収益成長",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "conditional",
+            "reasoning": "MFI→クロスセル→収益の3ステップ。クロスセルの定量データは限定的"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "MFI拡大とクロスセルの接続は論理的だが定量的な接続証拠が限定的"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "継続的な生産性改善プログラム（FY2015 $2.6億節減）によるコスト・トゥ・インカム比率の継続低下（小売銀行34.9%）",
+      "descriptive_label": "プロセス改善・生産性向上能力（Process Power）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CEO Ian Narev）: '$260 million in productivity savings over the period. The banking cost-to-income ratio... Retail Bank, cost to income ratio down under 35% to 34.9%.' / 'Six Sigma, the visual management boards, the Black Belts across all the businesses really looking for the essence of the productivity initiative, which is simultaneous improvements and turnaround times, error rates and unit cost at the process level.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [6],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "Six Sigma・Black Beltプログラムは仕組みとして評価。コスト削減額は結果だが仕組みの存在は明確"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$2.6億削減、小売コスト・インカム比34.9%という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "semi_structural",
+            "reasoning": "Six Sigmaプログラムは組織的能力だが競合も同様プログラムを実施"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial",
+            "reasoning": "他大手行（ANZ、NAB、WBC）との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t（業界共通プログラム）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "Six Sigma等の継続的生産性改善プログラムは実績あり($2.6億)だが、他大手行も同様の取り組みを実施しており差別化効果は限定的"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "生産性改善→費用効率向上→規制コスト増でもEPS成長維持",
+      "descriptive_label": "コスト効率→EPS成長",
+      "source_advantage": 5,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "コスト削減→利益→EPSの直接的な1-2ステップ接続"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "生産性改善$2.6億が規制コスト増$3.47億に対してオフセットとして機能。開示データで検証可能"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "factual_claim",
+      "claim": "FY2015：純利益$91.4億（+5%）、EPS+5%、取引口座+38%、家計預金シェア成長11.6% vs 市場9.5%、コスト・インカム比（小売）34.9%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1]
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "メイン金融機関（MFI）シェア：大手行中最高35%超（前年比+1.1pp）。Roy Morgan顧客満足度調査：小売・法人・機関投資家・資産管理で大手行No.1",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "グローバル資産管理（Colonial First State）でのベンチマーク超過運用実績（90%のファンドがベンチマーク超過）と13%の運用資産成長",
+      "descriptive_label": "資産管理の運用パフォーマンス優位（Cornered Resource / Process Power）",
+      "evidence_from_transcript": "FY2015 Full Year Prepared Remarks（CFO David Craig）: '90% of the Global Asset Management funds are performing above benchmark, and that leads to better flows and of course, performance fees. So a very strong result from Global Asset Management.' / 'extraordinary result... on the back of 3 factors: So markets are up; foreign currency, favorable mix there; and in particular, 90% performing above benchmark'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [10],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "borderline",
+            "reasoning": "90%ベンチマーク超過は結果的指標。運用プロセス・チームの能力は背後要因として示唆されるが詳細説明なし"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "90%ベンチマーク超過、FUA+13%という定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "semi_structural",
+            "reasoning": "一時的な市場環境・為替の影響も大きくプロセスパワーかどうかの判断が困難（CFO自身が「3要因」と言及）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_A_t（結果を原因とする転倒リスク）",
+        "confidence": 30,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 Annual（FY2015）での発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "CFOが市場上昇・為替・ベンチマーク超過の3要因を並列しており、運用能力だけの優位性か不明",
+            "adjustment": -20
+          }
+        ],
+        "overall_reasoning": "90%ベンチマーク超過は印象的だが、CFOが市場上昇・為替という外部要因も並列挙示しており、運用能力固有の優位性として評価しがたい"
+      }
+    },
+    {
+      "id": 10,
+      "claim_type": "cagr_connection",
+      "claim": "資産管理の運用パフォーマンス→資金流入増加・パフォーマンスフィー→収益貢献",
+      "descriptive_label": "運用実績→資金流入→収益",
+      "source_advantage": 9,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "運用実績→フロー→FUA→収益の直接経路。CFOが明示的に言及"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "FY2015年次決算での発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "CAGR接続は明確だが、基盤となる優位性の持続性に疑問があるため50%"
+      }
+    }
+  ]
+}

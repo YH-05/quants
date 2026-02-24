@@ -1,0 +1,80 @@
+{
+  "ticker": "KR",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_6_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_II", "pattern_III"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 3
+  },
+  "scored_claims": [
+    {
+      "id": "KR-006",
+      "claim_type": "competitive_advantage",
+      "claim": "10年連続のコスト削減とROIC改善サイクル（13.74%、前年比+31bp）による持続的自己強化型経営モデル",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_1_t": "PASS: コスト削減→価格投資→顧客獲得→売上成長→ROIC改善の10年継続サイクルという自己強化プロセスの説明（Process Power）",
+        "rule_4_t": "PASS: ROIC 13.74%（+31bp）、10年連続コスト削減という定量的裏付け",
+        "rule_6_t": "PASS: 自己強化型経営サイクルは事業の核心的要素",
+        "rule_11_t": "PASS: 食料品小売でのWalmart・Amazon等の圧力に対して10年維持されてきたサイクルは業界構造との合致"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "10年連続コスト削減→価格投資→顧客ロックイン→ROIC改善という自己強化サイクルの能力。ROIC 13.74%は結果だが、10年継続という長期実績が能力を示す。Pattern III適用"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で10年連続コスト削減とROIC 13.74%（+31bp）が説明されている。コスト削減→価格投資→売上成長→ROICというサイクルは食料品小売でのProcess Powerの典型例。Walmart等の強力な競合下での10年継続は能力の証拠。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KR-007",
+      "claim_type": "cagr_connection",
+      "claim": "Customer 1stロイヤル顧客増加×市場シェア10年連続拡大 → 同店売上45四半期連続増 → EPS成長8-11%/年",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: ロイヤル顧客増加×シェア拡大→同店売上+5.2%（FY2014）→EPS+7%（FY2014）→8-11%ガイダンスという直接的な接続",
+        "rule_12_t": "PASS: Q4年次発言（KRのFY2015、財政年度は1月末）"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "同店売上45四半期連続増という実績→EPS 8-11%ガイダンス（FY2015: $3.80-3.90）は直接的なCAGR接続。具体的な数値が複数提示されており検証可能性が高い"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でロイヤル顧客→同店売上→EPS成長のチェーンと、FY2015 EPS $3.80-3.90という検証可能なガイダンスが示されている。45四半期連続という実績が接続の信頼性を裏付ける。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KR-008",
+      "claim_type": "cagr_connection",
+      "claim": "Simple Truth/コーポレートブランド拡大 + フィルイン戦略（8市場）→ 総売上成長×マージン改善 → ROIC持続的改善",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: Simple Truth継続成長（double-digit）＋フィルイン戦略（6→8市場）→総売上×マージン改善→ROIC改善という2-3ステップの直接的接続",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "Simple Truth double-digit成長継続＋フィルイン市場拡大（6→8）という具体的なCAGRドライバーによる直接的接続"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言でSimple Truth継続成長とフィルイン市場6→8への拡大という具体的な成長ドライバーが示されている。プライベートブランド×地理的拡大の組み合わせによる2-3ステップCAGR接続として評価。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "KR-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 45四半期連続同店売上増、ID sales +5.2%（燃料除く）、調整後EPS $3.52（FY2014）、10年連続市場シェア獲得、Simple Truth $1.2B（2年未満で$1B到達）",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。KR-001とKR-002の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

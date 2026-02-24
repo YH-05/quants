@@ -1,0 +1,46 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": "CHD_006",
+      "claim_type": "competitive_advantage",
+      "claim": "Church & Dwightの新製品開発プロセスは専任チーム（2006年設立）・ステージゲート管理・7つの成功要因フレームワークにより体系化されており、2013年の新製品が売上の32%を占め（2014年は40%）、持続的な有機成長ドライバーとなっている。",
+      "evidence": "Q4 2013（201402）：「専任の新製品チームを設立（2006年）。2013年の新製品が国内消費者売上の32%を占め、新製品は時間をかけて市場で粘着力を持つ。7つの成功要因：フォーカス・戦略的整合・消費者インサイト・規律あるP&Lモデル・チームワーク・開発・実行」（Steve Cugine）。Q4 2014（201502）：「2014年の売上の40%近くが2007年以降の新製品」",
+      "power_classification": "process_power",
+      "phase1_confidence": 0.5,
+      "kb2_patterns_applied": [],
+      "final_confidence": 0.5,
+      "scoring_rationale": "fewshot_CHD.md参照: CHD #6で類似クレームが50%評価。新製品開発能力は日用品業界での差別化要因だが、P&G等大手もイノベーション能力を持つ。定量的証拠（40%）は強いが、絶対的な差別化優位性の根拠は不明確"
+    },
+    {
+      "claim_id": "CHD_007",
+      "claim_type": "cagr_connection",
+      "claim": "Church & Dwightは13年連続のdouble-digit EPS成長（2013年）から、過去10年で394%の株主総利益（競合比較で業界最高）を実現している。明確なEPS成長ターゲット（7-9%）と4大KPI連動ボーナス制度が持続的な成長を確保している。",
+      "evidence": "Q4 2013（201402）：「13年連続のdouble-digit EPS成長。2004年から10年間で394%の株主総利益。過去10年平均年率16.3%」（CEO Craigie）。Q4 2014（201502）：「業界で最高の1年・3年・5年・10年TSR。2015年EPS成長ガイダンス7-9%、FCF$470M（記録）」",
+      "power_classification": null,
+      "phase1_confidence": 0.7,
+      "kb2_patterns_applied": [
+        "II-T: cagr_connection_type"
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "長期にわたる実績は強い証拠。13年連続のdouble-digit EPS成長はKB3-T CHD銘柄の中核命題。CAGR接続強度高。ただし2014年は価格戦争で成長鈍化（7-9%に低下）"
+    },
+    {
+      "claim_id": "CHD_008",
+      "claim_type": "factual_claim",
+      "claim": "Church & Dwightの2014年通期業績：有機成長3.5%（ボリューム主導4.4%）、EPS+8%（粗利戦争の逆風にもかかわらず）、FCF $470M（過去最高、FCF変換率113%）。2015年ガイダンス：有機成長2-3%、EPS+7-9%（FX逆風2.5%を含む）、粗利+25bp改善。",
+      "evidence": "Q4 2014（201502）：「2014年通期：有機成長3.5%、EPS+8%、FCF $470M（過去最高）。2015年ガイダンス：有機成長2-3%、EPS+7-9%、粗利+25bp」（Matthew Farrell CFO）",
+      "power_classification": null,
+      "phase1_confidence": 0.9,
+      "kb2_patterns_applied": [
+        "factual_baseline"
+      ],
+      "final_confidence": 0.9,
+      "scoring_rationale": "決算開示の財務数値として高い確実性"
+    }
+  ],
+  "metadata": {
+    "ticker": "CHD",
+    "batch_index": 1,
+    "gatekeeper_applied": false
+  }
+}

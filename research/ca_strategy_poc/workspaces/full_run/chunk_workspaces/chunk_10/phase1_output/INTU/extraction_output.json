@@ -1,0 +1,203 @@
+{
+  "ticker": "INTU",
+  "transcript_source": "Q4 FY2015 Earnings Call (2015-08-20)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 FY2015", "Q2 FY2015", "Q3 FY2015", "Q1 FY2014", "Q2 FY2014", "Q3 FY2014"]
+  },
+  "claims": [
+    {
+      "id": "INTU-001",
+      "claim_type": "competitive_advantage",
+      "claim": "QuickBooks Onlineのネットワーク効果によるエコシステム構築力",
+      "descriptive_label": "QBOエコシステムのネットワーク効果（プラットフォーム型）",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'We now have 1,075,000 paid subs worldwide. 425 third-party applications on our partner platform, which is up over 4x from where it was last year. 375 accountants became QuickBooks Online certified'. Q1 FY2015: 'new user attach rates of 12% for payments and 31% for payroll, up from 6% and 20%, respectively, a year ago'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Brad Smith",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["INTU-009"],
+      "cagr_connections": ["INTU-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での体系的な説明。425のサードパーティアプリ（4x成長）、accountant certificationという具体的なエコシステム指標あり。ペイメント・ペイロールのアタッチ率が倍増（12%, 31%）は強いネットワーク効果の証拠。クラウド会計SaaS市場では小規模競合（Xero等）に対して構造的優位"
+      }
+    },
+    {
+      "id": "INTU-002",
+      "claim_type": "competitive_advantage",
+      "claim": "TurboTaxの消費者税申告市場における圧倒的ブランド力とシェア優位性",
+      "descriptive_label": "TurboTaxの消費者税申告市場カテゴリ支配力",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'As the category champion, we helped drive digital category growth of about 5%...TurboTax Online gained about 1.5 of share, translating into 4 points of share gains over the past 2 seasons. TurboTax Online units grew 11% and total TurboTax units grew 7%'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Brad Smith",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での定量的裏付けあり（シェア+1.5pt、2シーズン累計+4pt）。カテゴリ全体の成長を牽引するという点でブランド力+ネットワーク効果の複合優位性。'category champion'は自己評価だが、シェアデータで裏付けられている。ただし能力ではなく結果の提示に近い面もあり（rule_1_t 不完全適合）"
+      }
+    },
+    {
+      "id": "INTU-003",
+      "claim_type": "competitive_advantage",
+      "claim": "QuickBooks Onlineのスイッチングコストと顧客ロックイン（デスクトップからの移行粘着性）",
+      "descriptive_label": "QBOプラットフォームのスイッチングコスト構造",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'We know that as you enter year 2 and year 3, that average revenue per user increases over 50%'. Q1 FY2015: 'over 75% of QuickBooks Online customers being new to the Intuit franchise'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Brad Smith",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。Year2-3でARPUが50%超増加という具体的な数値は、スイッチングコストによる顧客定着の証拠。会計データの蓄積・業務プロセスの統合がスイッチングコストを生む仕組みとして評価できる"
+      }
+    },
+    {
+      "id": "INTU-004",
+      "claim_type": "competitive_advantage",
+      "claim": "クラウド移行期における「operating system behind small business success」ポジショニング能力",
+      "descriptive_label": "中小企業向けクラウドOSとしてのカウンターポジショニング",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'We're fully committed to winning in the cloud, and we're focusing our attention and investments on assets that accelerate our ability to deliver our 2 strategic goals: First, to be the operating system behind small business success'. Divestiture of Demandforce, QuickBase and Quicken announced to focus on core ecosystem",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Brad Smith",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": false,
+          "rule_6_t": true,
+          "rule_8_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での戦略的方向性の説明。ただし'operating system for SMB'は主に戦略目標の表現であり優位性の説明ではない（rule_8_t違反リスク）。非戦略的資産の売却は戦略の集中を示すが、競争優位性の根拠としては間接的"
+      }
+    },
+    {
+      "id": "INTU-005",
+      "claim_type": "competitive_advantage",
+      "claim": "「do the nation's taxes」における消費者税申告のデータ活用優位性",
+      "descriptive_label": "TurboTaxの納税者データ蓄積・活用による差別化",
+      "evidence_from_transcript": "Q4 FY2015 Prepared Remarks (CEO発言): 'We'll continue our focus on improving conversion with a more simple and responsive experience that leverages data to get customers through their tax return with ease and confidence'. Security investment and IRS collaboration on fraud prevention standards",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Brad Smith",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_6_t": true
+        },
+        "confidence": 0.5,
+        "adjustments": [],
+        "overall_reasoning": "Q4での発言。データ活用というコンセプトは正しいが、具体的な定量的裏付けなし。IRSとの協力は規制関与という形でのCornered Resourceに近いが、業界他社との差別化が明確でない"
+      }
+    },
+    {
+      "id": "INTU-006",
+      "claim_type": "competitive_advantage",
+      "claim": "ProTax（会計専門家向け）市場でのクラウドシフト先行優位性",
+      "descriptive_label": "会計士向けクラウド税務ソフトウェアの先行者優位",
+      "evidence_from_transcript": "Q1 FY2015 Prepared Remarks (CEO発言): 'In the Professional Tax business, we're seeing strong new customer growth early in the season, and our shift to the cloud continues to pick up steam. We intend to build on our leadership position and capitalize on this once-in-a-generation shift to the cloud for accountants'",
+      "transcript_call_type": "Q1_quarterly",
+      "speaker": "Brad Smith",
+      "section": "prepared_remarks",
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_12_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": false,
+          "rule_12_t": false
+        },
+        "confidence": 0.3,
+        "adjustments": [
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "Q1発言（従・②相当）のため-10%調整"
+          }
+        ],
+        "overall_reasoning": "Q1発言（従）のため割引。'once-in-a-generation shift'という強い言葉だが、ProTax市場でのシェア・競合との差別化データなし"
+      }
+    },
+    {
+      "id": "INTU-007",
+      "claim_type": "cagr_connection",
+      "claim": "QBOサブスクライバー成長（57%/年）→ ARPU年数経過で50%増 → 小規模SMB市場浸透率上昇 → 売上CAGR加速",
+      "descriptive_label": "QBO成長→ARPU成熟化→売上CAGR",
+      "source_advantage": "INTU-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.9,
+        "adjustments": [],
+        "overall_reasoning": "Q4での説明。QBOサブスクライバー数・ARPU・アタッチ率のすべてが開示データで検証可能。2ステップの因果（成長→ARPU成熟）は直接的で透明性高い。カットオフ時点（2015年9月）で1.1M→FY2017目標2Mは具体的な軌跡が見えている"
+      }
+    },
+    {
+      "id": "INTU-008",
+      "claim_type": "cagr_connection",
+      "claim": "TurboTaxのカテゴリシェア獲得継続 → デジタル申告の年間成長5% → 売上成長8%以上",
+      "descriptive_label": "TurboTaxシェア拡大→消費者税売上成長",
+      "source_advantage": "INTU-002",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 0.7,
+        "adjustments": [],
+        "overall_reasoning": "Q4での実績に基づくCAGR接続。デジタル申告+5%成長とシェア+1.5ptは直接的な接続で検証可能"
+      }
+    },
+    {
+      "id": "INTU-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2015末QBOサブスクライバー1,075,000（57%成長）、米国外198,000（135%成長）、9四半期連続加速",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["INTU-001", "INTU-003"]
+    },
+    {
+      "id": "INTU-010",
+      "claim_type": "factual_claim",
+      "claim": "TurboTax Online 2シーズン累計シェア+4pt、FY2015単年+1.5pt、Online unit成長11%",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["INTU-002"]
+    }
+  ]
+}

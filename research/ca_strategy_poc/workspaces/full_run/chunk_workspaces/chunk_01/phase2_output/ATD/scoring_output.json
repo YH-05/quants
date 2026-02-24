@@ -1,0 +1,363 @@
+{
+  "scored_claims": [
+    {
+      "id": "ATD-001",
+      "claim_type": "competitive_advantage",
+      "claim": "M&A 統合プレイブック（$85M シナジー目標・ROIC 12.1%→13.3% 改善）による連続的買収価値創出プロセスパワー",
+      "evidence": "CEO Brian Hannasch (Q3 FY2014): $85M synergy targets for Statoil/Topaz acquisition. ROIC improved 12.1%→13.3% post-Statoil. Integration playbook: fuel procurement, labor optimization, store rationalization.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "統合プレイブックという能力・仕組みの説明。ROIC 改善は結果だが統合プロセスが能力主体"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": true,
+          "reasoning": "$85M シナジー目標・ROIC 12.1%→13.3% という具体的数値"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": true,
+          "reasoning": "長年の M&A 統合実績・プレイブックは構造的組織能力"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": true,
+          "reasoning": "c-stores 業界において系統的な M&A 統合能力を持つのは ATD と 7-Eleven 程度。小規模競合には実行困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_capability_over_result",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "統合プレイブックという具体的な組織能力の説明"
+        },
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": true,
+          "adjustment": 0.1,
+          "reasoning": "$85M シナジー・ROIC 改善という定量的証拠"
+        },
+        {
+          "pattern_id": "pattern_V_specific_competitor_comparison",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "c-stores 業界での系統的 M&A 能力保有者が限定的であることへの示唆"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_III_capability_over_result",
+          "adjustment": 0.1,
+          "reasoning": "統合プレイブックという能力説明"
+        },
+        {
+          "source": "KB2-T pattern_I_quantitative_differentiation",
+          "adjustment": 0.1,
+          "reasoning": "$85M・ROIC 改善の定量化"
+        },
+        {
+          "source": "dogma rule10_negative_case",
+          "adjustment": 0.05,
+          "reasoning": "規律ある買収基準・見送り例の示唆が含まれる（dogma rule10）"
+        }
+      ],
+      "final_confidence": 0.75,
+      "overall_reasoning": "M&A 統合プレイブックは KB1-T 全ルール PASS。$85M シナジー・ROIC 12.1%→13.3% という定量的証拠。c-stores 業界での系統的 M&A 能力保有者が限定的（rule07 PASS）。dogma 的に「おおむね納得」上位域 0.75。"
+    },
+    {
+      "id": "ATD-002",
+      "claim_type": "competitive_advantage",
+      "claim": "欧州市場での「miles」「milesplus」燃料ブランドによるロイヤリティ優位",
+      "evidence": "CEO (Q1 FY2016): 'miles' and 'milesplus' fuel brands launched in Scandinavia/Ireland post-Statoil acquisition. Customer loyalty programs tied to fuel quality differentiation.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "overview_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "燃料ブランドという能力資産の説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "ブランドのロイヤリティ・市場シェアへの具体的な定量的証拠なし"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "BP・Shell・OMV 等の大手石油会社のブランドに対する差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "ブランドロイヤリティの背後要因が定性的で定量化されていない（dogma ブランドフレームワーク）"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "BP・Shell 燃料ブランドとの差別化根拠なし"
+        },
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "新興ブランドであり、ロイヤリティはまだ実績として確認されていない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.1,
+          "reasoning": "定量的証拠なし"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "BP・Shell との比較なし"
+        },
+        {
+          "source": "KB2-T pattern_A_result_as_cause",
+          "adjustment": -0.05,
+          "reasoning": "新興ブランドの実績未確認"
+        }
+      ],
+      "final_confidence": 0.3,
+      "overall_reasoning": "欧州燃料ブランドは立ち上げ間もなく定量的証拠がない（rule04 FAIL）。BP・Shell 等の確立されたブランドとの差別化根拠が弱い（rule07 FAIL）。dogma ブランドフレームワークで外見的評価に留まると警告。dogma 的に「あまり納得しない」域 0.30。"
+    },
+    {
+      "id": "ATD-003",
+      "claim_type": "competitive_advantage",
+      "claim": "業界最低水準の運営コスト構造（低コスト文化・費用管理の厳格な規律）",
+      "evidence": "CEO (Q3 FY2014): 'low cost culture' and 'rigorous expense control' cited as core advantage. Operating expenses growing slower than revenue. SG&A discipline maintained through acquisition integration.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": false,
+          "reasoning": "'低コスト文化' は定性的・抽象的。具体的なコスト管理の仕組みの説明がない"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "競合比較でのコスト効率数値が示されていない"
+        },
+        {
+          "rule_id": "rule06_structural_vs_complementary",
+          "result": false,
+          "reasoning": "文化・規律は構造的資産とは言い難い（模倣可能性が高い）"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "競合のコスト構造との比較なし"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.15,
+          "reasoning": "'低コスト文化' は dogma rule4 の最悪例。定量的測定不能な定性的主張"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "競合コスト構造との比較なし"
+        },
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "コスト規律は戦略的意思決定（rule08）に近い"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.15,
+          "reasoning": "定性的・測定不能（dogma rule4 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_G_unclear_vs_pure_competitor",
+          "adjustment": -0.1,
+          "reasoning": "競合比較なし（rule07 FAIL）"
+        },
+        {
+          "source": "KB2-T pattern_F_strategy_confusion",
+          "adjustment": -0.05,
+          "reasoning": "戦略（rule08 警告）に近い"
+        }
+      ],
+      "final_confidence": 0.3,
+      "overall_reasoning": "'低コスト文化' は dogma rule4 の典型的な却下例（定性的で測定困難）。競合との比較なし（rule07 FAIL）。rule08 戦略警告も適用。dogma 的に「あまり納得しない」域 0.30。"
+    },
+    {
+      "id": "ATD-004",
+      "claim_type": "competitive_advantage",
+      "claim": "北米＋欧州の地理的分散による燃料マージンの安定性と通貨ヘッジ機能",
+      "evidence": "CEO (Q1 FY2016): NA fuel margins strong, Europe fuel margin recovery. Geographic diversification reduces single-market risk. Currency natural hedge from multi-currency operations.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "地理的分散という構造的優位性の説明"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "燃料マージンの安定性を示す具体的数値（vs 競合）が不足"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "Casey's（北米中心）等との比較で ATD の地理的分散の優位性は示されているが、Shell・BP 等と比べると差別化根拠が弱い"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "多国籍展開は大手 c-stores/石油会社に共通。ATD 固有の差別化ではない（dogma rule3）"
+        },
+        {
+          "pattern_id": "pattern_C_causal_leap",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "地理的分散→燃料マージン安定性への接続が自然ヘッジとして単純すぎる"
+        },
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "NA + 欧州という 2 大陸をカバーする構造的ポジション"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "多国籍展開は業界共通（dogma rule3）"
+        },
+        {
+          "source": "KB2-T pattern_C_causal_leap",
+          "adjustment": -0.05,
+          "reasoning": "因果接続がやや弱い"
+        },
+        {
+          "source": "KB2-T pattern_IV_structural_market_position",
+          "adjustment": 0.05,
+          "reasoning": "2 大陸展開の構造的ポジション"
+        }
+      ],
+      "final_confidence": 0.45,
+      "overall_reasoning": "地理的分散は構造的だが多国籍展開は業界共通（rule03 警告）。燃料マージン安定性への具体的な定量的証拠（対競合比較）が弱い（rule04 FAIL）。dogma 的に「あまり納得しない」から「まあ納得」境界 0.45。"
+    },
+    {
+      "id": "ATD-005",
+      "claim_type": "competitive_advantage",
+      "claim": "生鮮食品・プライベートラベルの既存店売上成長（SSS）による c-store 差別化",
+      "evidence": "CEO (Q1 FY2016): Fresh food and private label SSS growth. Proprietary fresh programs driving traffic. Private label margins higher than national brands.",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": true,
+        "triggered": true,
+        "override_confidence": 0.35
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule01_capability_not_result",
+          "result": true,
+          "reasoning": "生鮮プログラムという能力の示唆はあるが具体的仕組みの説明が弱い"
+        },
+        {
+          "rule_id": "rule04_quantitative_evidence",
+          "result": false,
+          "reasoning": "SSS 成長率の具体的数値が示されていない"
+        },
+        {
+          "rule_id": "rule07_pure_competitor_differentiation",
+          "result": false,
+          "reasoning": "7-Eleven・Casey's も生鮮・プライベートラベル強化を進めている（業界トレンド）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "c-stores 業界全体で生鮮強化がトレンド（dogma rule3）"
+        },
+        {
+          "pattern_id": "pattern_D_qualitative_only",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "SSS 数値なく定性的説明に留まる"
+        },
+        {
+          "pattern_id": "pattern_G_unclear_vs_pure_competitor",
+          "matched": true,
+          "adjustment": -0.05,
+          "reasoning": "7-Eleven・Casey's との差別化根拠なし"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "gatekeeper rule3_industry_common",
+          "adjustment": -0.05,
+          "reasoning": "業界共通トレンドへの参加"
+        },
+        {
+          "source": "KB2-T pattern_B_industry_common",
+          "adjustment": -0.1,
+          "reasoning": "業界共通トレンド（dogma rule3）"
+        },
+        {
+          "source": "KB2-T pattern_D_qualitative_only",
+          "adjustment": -0.05,
+          "reasoning": "定量的証拠なし"
+        }
+      ],
+      "final_confidence": 0.3,
+      "overall_reasoning": "生鮮・プライベートラベルは c-stores 業界全体のトレンドであり ATD 固有の差別化ではない（rule03 FAIL）。SSS 数値の定量的証拠が欠如（rule04 FAIL）。7-Eleven との差別化根拠なし（rule07 FAIL）。dogma 的に「あまり納得しない」域 0.30。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "70-80": 1,
+      "30-40": 3,
+      "40-50": 1
+    },
+    "gatekeeper_applied": true
+  }
+}

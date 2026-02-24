@@ -1,0 +1,145 @@
+{
+  "ticker": "WAT",
+  "scoring_date": "2025-11-01",
+  "cutoff_date": "2015-09-30",
+  "scored_claims": [
+    {
+      "claim_id": "WAT-001",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "リカーリング収益（サービス+消耗品）のスティッキネス",
+      "phase1_confidence": 0.7,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule06 - LC-MS分析システムのサービス+消耗品収益は高スイッチングコスト構造の典型。KB2: Pattern I適用 - 売上の65%以上がリカーリング（サービス+消耗品）という定量証拠。Pattern IV - 分析化学機器市場でのインストール後の高い乗り換えコスト（メソッド再検証、承認申請への影響）は製薬業界で特に強い。KB3 fewshot（COST類似）- リカーリングモデルの評価は高い。dogma.md: 確信度70%要件（明確な定量的証拠+構造的根拠）を満たす。",
+      "final_confidence": 0.7,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true,
+      "notes": "製薬承認プロセスとの関係でLC-MS機器の変更コストは非常に高い。70%は適切。"
+    },
+    {
+      "claim_id": "WAT-002",
+      "claim_type": "factual_claim",
+      "claim_text": "Q4 FY2014 決算数値",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-003",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "UPLC技術リード×カラムアタッチ率80-90%",
+      "phase1_confidence": 0.7,
+      "kb2_pattern_applied": "pattern_I (定量的差別化), pattern_V (具体的競合比較)",
+      "scoring_rationale": "KB1: rule01 - UPLCという技術能力であり結果ではない。KB2: Pattern I - 80-90%アタッチ率という高い定量証拠。Pattern V - Shimadzu・Agilent・Thermo Scientificとの技術格差が具体的。KB1: rule04 - カラム/消耗品の高いアタッチ率は技術的優位性を示す定量証拠として機能する。dogma.md: 70%は定量証拠+構造的根拠があり適切。",
+      "final_confidence": 0.7,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true,
+      "notes": "UPLC技術とカラムのバンドル販売は典型的なProcess Power（製造プロセス/技術）によるSwitching Costs創出パターン。"
+    },
+    {
+      "claim_id": "WAT-004",
+      "claim_type": "cagr_connection",
+      "claim_text": "製薬規制強化・バイオシミラー開発投資による分析需要",
+      "phase1_confidence": 0.5,
+      "scoring_rationale": "KB2: Pattern II (直接的CAGRメカニズム) 適用 - 製薬規制強化はWATの機器需要と直接リンク。ただし業界共通の恩恵でもある（Pattern B）。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-005",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "製薬セクター集中（65%超）によるリカーリング安定性",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule11 - 製薬業界は承認プロセスによる機器変更コストが非常に高い。KB2: Pattern IV - 製薬規制環境でのLC-MS機器依存度は構造的。ただし製薬単一依存（65%超）は集中リスクでもある（KB1: rule10 - ネガティブケース考慮）。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-006",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "claim_text": "オーガニック成長規律・高ROIC",
+      "phase1_confidence": 0.5,
+      "kb2_pattern_applied": "pattern_III (能力 > 結果)",
+      "scoring_rationale": "KB1: rule01 - 資本配分規律は能力だが、それ自体が競争優位性というより財務管理の優れた実践。KB2: Pattern III適用 - 高ROICは結果であり、規律ある成長（買収回避・有機成長重視）という能力は評価できる。ただしPattern A（結果→原因の取り違え）リスクもある。",
+      "final_confidence": 0.5,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-007",
+      "claim_type": "factual_claim",
+      "claim_text": "インストールベース・市場ポジション",
+      "phase1_confidence": 0.7,
+      "scoring_rationale": "定性的な市場地位の主張。定量証拠（市場シェア数値）がないため確信度を下げる。",
+      "final_confidence": 0.6,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-008",
+      "claim_type": "cagr_connection",
+      "claim_text": "新興国市場での分析化学需要成長",
+      "phase1_confidence": 0.4,
+      "scoring_rationale": "KB2: Pattern B (業界共通) 適用 - 新興国展開は多くの分析機器メーカーが主張。具体的な地域別売上比率と競合比較が不足。",
+      "final_confidence": 0.3,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-009",
+      "claim_type": "factual_claim",
+      "claim_text": "FY2014 決算サマリー",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-010",
+      "claim_type": "competitive_advantage",
+      "power_type": "Cornered Resource",
+      "claim_text": "TA Instruments熱分析・レオロジー市場でのリーダーシップ",
+      "phase1_confidence": 0.6,
+      "kb2_pattern_applied": "pattern_IV (構造的市場地位)",
+      "scoring_rationale": "KB1: rule07 - ニッチ市場でのリーダーシップは差別化として機能。KB2: Pattern IV適用 - 熱分析・レオロジーは専門性が高く新規参入が困難な市場。ただし具体的な市場シェア数値がないため確信度は中程度。",
+      "final_confidence": 0.5,
+      "confidence_delta": -0.1,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-011",
+      "claim_type": "cagr_connection",
+      "claim_text": "食品安全・環境規制強化による検査需要",
+      "phase1_confidence": 0.4,
+      "scoring_rationale": "KB2: Pattern B (業界共通) 適用。",
+      "final_confidence": 0.4,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    },
+    {
+      "claim_id": "WAT-012",
+      "claim_type": "factual_claim",
+      "claim_text": "Q3 FY2015 決算数値",
+      "phase1_confidence": 0.9,
+      "scoring_rationale": "事実主張として確認済み。",
+      "final_confidence": 0.9,
+      "confidence_delta": 0.0,
+      "gatekeeper_pass": true
+    }
+  ],
+  "aggregate_score": {
+    "ca_claims_count": 6,
+    "ca_weighted_confidence": 0.58,
+    "top_power_type": "Switching Costs",
+    "overall_assessment": "WATはLC-MS/UPLC技術リードとカラム高アタッチ率によるSwitching Costsが最も評価できる。製薬業界向けリカーリング収益構造は安定的。7 Powersの観点ではSwitching Costsが最も明確。"
+  }
+}

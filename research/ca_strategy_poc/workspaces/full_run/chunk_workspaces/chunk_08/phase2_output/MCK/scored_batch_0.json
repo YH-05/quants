@@ -1,0 +1,271 @@
+{
+  "ticker": "MCK",
+  "scored_claims": [
+    {
+      "id": "MCK_001",
+      "claim_type": "competitive_advantage",
+      "claim": "McKesson の圧倒的な流通規模：$179B 収益（業界最大級）は製薬会社・顧客に対する交渉力と仕入れ原価優位を生み出す Scale Economies。",
+      "evidence": "For the full year, revenues increased 30% to $179 billion and adjusted earnings per share from continuing operations increased 29%.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule01", "rule11"],
+        "results": {"rule03": true, "rule01": true, "rule11": true},
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: $179B という定量的規模証拠",
+          "rule11: 医薬品流通の業界構造（Big 3 デュオポリー）での規模優位"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "$179B という業界首位級の規模は定量的差別化の証拠"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "成長の相当部分は Celesio 買収による外形拡大であり有機的競争優位との分離が必要"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule03", "pass": true, "note": "$179B の具体的な規模数値"},
+        {"rule": "rule11", "pass": true, "note": "医薬品流通の業界特性が Scale Economies を支持"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I_quantitative_differentiation", "flagged": false},
+        {"pattern": "pattern_B_industry_common", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "医薬品流通は典型的なスケールビジネスであり $179B の規模は製薬メーカーへの交渉力と調達コスト優位を生む。ただし Celesio 統合による規模拡大と有機的成長の分離が重要。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_002",
+      "claim_type": "competitive_advantage",
+      "claim": "OneStop 独自ジェネリック調達プログラム：独自のジェネリック調達・流通プログラムが40%成長。規模とソーシング能力の組み合わせが競合との差別化要因。",
+      "evidence": "U.S. Pharmaceutical business delivered tremendous growth in fiscal 2015, driven by the strong expansion of our Generics business, including growth of approximately 40% in our OneStop proprietary generics program.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule07"],
+        "results": {"rule03": true, "rule07": true},
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: OneStop プログラムの40%成長という定量的証拠",
+          "rule07: 独自の in-house ジェネリック調達プログラムという具体的差別化"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "40%成長という業界平均を大幅に上回る成長率"},
+        {"source": "pattern_V_specific_competitor_comparison", "adjustment": 0.0, "reasoning": "AmerisourceBergen 等の競合との比較がない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule03", "pass": true, "note": "40%成長の定量証拠"},
+        {"rule": "rule07", "pass": true, "note": "McKesson 独自の in-house プログラムという具体性"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_I_quantitative_differentiation", "flagged": false}
+      ],
+      "overall_reasoning": "OneStop プログラムは McKesson 独自の調達・流通プラットフォームであり、ジェネリック薬の価格決定力と顧客への価値提供において差別化要因となっている。40%成長は市場での採用加速を示す。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_003",
+      "claim_type": "competitive_advantage",
+      "claim": "US Oncology Network と #1 腫瘍学EHR（iKnowMed）：腫瘍科医ネットワークと専用 EHR を組み合わせた独自エコシステムが専門薬流通における Cornered Resource。",
+      "evidence": "For the fourth year in a row, Black Book ranking placed McKesson's iKnowMed as the #1 oncology electronic health record in the market.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule04", "rule07"],
+        "results": {"rule03": true, "rule04": true, "rule07": true},
+        "confidence": 0.6,
+        "adjustments": [
+          "rule03: 4年連続 #1 EHR という定量的外部評価",
+          "rule04: 複数年の継続的ランキング実績"
+        ]
+      },
+      "final_confidence": 0.65,
+      "confidence_adjustments": [
+        {"source": "pattern_V_specific_competitor_comparison", "adjustment": 0.05, "reasoning": "独立機関（Black Book）による#1認定は客観的な競合比較の代替"},
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "4年連続は継続的優位の証拠"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule03", "pass": true, "note": "4年連続#1という独立評価"},
+        {"rule": "rule04", "pass": true, "note": "継続的な業界首位の実績"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_V_specific_competitor_comparison", "flagged": false, "note": "独立評価による間接的競合比較"}
+      ],
+      "overall_reasoning": "腫瘍科向け EHR（iKnowMed）とネットワーク拡大の組み合わせは、高成長・高価格帯の腫瘍薬流通における独自のエコシステムを形成している。4年連続#1という継続的外部評価は Cornered Resource としての信頼性を高める。",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_004",
+      "claim_type": "competitive_advantage",
+      "claim": "大規模顧客との長期契約更新・拡大：Rite Aid・Omnicare 等の主要顧客との契約維持・拡大は高い切替コストを示唆。",
+      "evidence": "Successfully operationalized our agreement with Rite Aid and entered into an expanded relationship with Omnicare for both the sourcing and distribution of brand and generic pharmaceuticals.",
+      "rule_evaluation": {
+        "applied_rules": ["rule07", "rule01"],
+        "results": {"rule07": true, "rule01": true},
+        "confidence": 0.5,
+        "adjustments": ["rule07: 具体的な大口顧客名と契約拡大の詳細"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_A_result_as_cause", "adjustment": -0.05, "reasoning": "契約更新・拡大という結果を切替コストの根拠として使用する面がある"},
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "Rite Aid・Omnicare という大手顧客名は重要性を示す"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule01", "pass": true, "note": "契約更新能力として認識可能"},
+        {"rule": "rule07", "pass": true, "note": "Rite Aid・Omnicare という具体的顧客名"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_A_result_as_cause", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "主要顧客との契約維持・拡大は高い切替コストを示唆するが、医薬品流通の切替コストは業界全体に当てはまる特性であり McKesson 固有の Switching Costs として差別化するには顧客維持率データが必要。",
+      "power_classification": "Switching Costs",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Health Mart 独立薬局バナーネットワーク：3,800店舗（前年比+15%）のバナーネットワーク。",
+      "evidence": "Health Mart maintained its strong record of growth during fiscal 2015, ending the year with nearly 3,800 stores or approximately 15% growth over the prior year.",
+      "rule_evaluation": {
+        "applied_rules": ["rule03", "rule07"],
+        "results": {"rule03": true, "rule07": true},
+        "confidence": 0.5,
+        "adjustments": ["rule03: 3,800店舗という定量的規模と15%成長率"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.0, "reasoning": "3,800店舗は規模として明確だが各店舗の McKesson 依存度データがない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule03", "pass": true, "note": "3,800店舗・15%成長の定量データ"}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "Health Mart は独立薬局向けブランドプログラムとして成長しているが、各薬局の McKesson への調達依存度と切替困難度のデータなしに Network Economies として評価することは困難。",
+      "power_classification": "Network Economies",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_006",
+      "claim_type": "competitive_advantage",
+      "claim": "M&A 統合実行能力：PSS World Medical 統合計画を2年連続で達成。大規模 M&A の体系的統合プロセス。",
+      "evidence": "Medical-Surgical business met or exceeded all of our year 2 integration priorities related to the PSS acquisition, driving significant efficiencies in our IT and distribution infrastructure.",
+      "rule_evaluation": {
+        "applied_rules": ["rule01", "rule04"],
+        "results": {"rule01": true, "rule04": true},
+        "confidence": 0.4,
+        "adjustments": ["rule04: 2年連続での統合目標達成実績"]
+      },
+      "final_confidence": 0.4,
+      "confidence_adjustments": [
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "M&A 統合能力は多くの大企業が主張する能力であり特段の差別化とはならない"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule04", "pass": true, "note": "2年連続統合目標達成の実績"}
+      ],
+      "kb2_patterns": [
+        {"pattern": "pattern_B_industry_common", "flagged": true, "adjustment": -0.05}
+      ],
+      "overall_reasoning": "PSS 統合の2年連続達成は実行能力の証拠だが、M&A 統合能力は Process Power として認定するには反復実績と独自の統合方法論の証明が必要。",
+      "power_classification": "Process Power",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_007",
+      "claim_type": "cagr_connection",
+      "claim": "規模拡大→EPS CAGR接続：$179B 規模の流通ビジネスにおいて、収益成長+30%がEPS成長+29%に一対一で変換され、翌年度も二桁成長ガイダンス。",
+      "evidence": "Revenues increased 30% to $179 billion... adjusted EPS increased 29%... Fiscal 2016 guidance $12.20 to $12.70, representing 12% to 16% growth.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule03"],
+        "results": {"rule05": true, "rule03": true},
+        "confidence": 0.5,
+        "adjustments": ["rule05: 収益成長→EPS成長のCAGRロジックが明確"]
+      },
+      "final_confidence": 0.5,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "過去実績+30%収益→+29%EPS変換という定量的実績"},
+        {"source": "pattern_B_industry_common", "adjustment": -0.05, "reasoning": "M&A主導の成長は有機的競争優位とは異なる"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule05", "pass": true}, {"rule": "rule03", "pass": true}],
+      "kb2_patterns": [{"pattern": "pattern_I_quantitative_differentiation", "flagged": false}],
+      "overall_reasoning": "収益成長→EPS成長の変換効率が高い実績と翌年ガイダンスの一貫性は CAGR ロジックとして説得力があるが、M&A 寄与を除いた有機的 CAGR の評価が必要。",
+      "power_classification": "Scale Economies",
+      "evidence_sources": ["Q4 FY2015 CEO and CFO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_008",
+      "claim_type": "cagr_connection",
+      "claim": "US Oncology Network 拡大→専門薬流通成長CAGR：腫瘍科医ネットワークの年次拡大（4年連続）が専門薬の高価格帯流通量増加を通じて収益 CAGR を支える構造。",
+      "evidence": "Drove market-leading growth in our specialty business... extending our track record of annual growth for new physicians joining the US Oncology Network... fourth year in a row, Black Book #1 iKnowMed.",
+      "rule_evaluation": {
+        "applied_rules": ["rule05", "rule04", "rule03"],
+        "results": {"rule05": true, "rule04": true, "rule03": true},
+        "confidence": 0.6,
+        "adjustments": [
+          "rule04: 4年連続の実績",
+          "rule05: ネットワーク拡大→専門薬流通量→CAGR のロジックが明確"
+        ]
+      },
+      "final_confidence": 0.6,
+      "confidence_adjustments": [
+        {"source": "pattern_I_quantitative_differentiation", "adjustment": 0.05, "reasoning": "4年連続という具体的継続実績"},
+        {"source": "pattern_V_specific_competitor_comparison", "adjustment": 0.0, "reasoning": "Black Book #1 という独立評価あり"}
+      ],
+      "gatekeeper": false,
+      "kb1_evaluations": [
+        {"rule": "rule05", "pass": true},
+        {"rule": "rule04", "pass": true}
+      ],
+      "kb2_patterns": [],
+      "overall_reasoning": "US Oncology Network の継続的拡大と iKnowMed の#1維持は腫瘍薬という高価格・高成長市場での Cornered Resource を基盤とした CAGR として最も信頼性の高い接続ロジック。",
+      "power_classification": "Cornered Resource",
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_fact_001",
+      "claim_type": "factual_claim",
+      "claim": "MCK FY2015 実績: 収益 $179B (+30%)、調整済 EPS $11.11 (+29%)、営業 CF $3.1B",
+      "evidence": "Revenues increased 30% to $179 billion and adjusted earnings per share increased 29% to $11.11. Generated $3.1 billion in operating cash flow.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "財務実績の事実確認。信頼性高い。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    },
+    {
+      "id": "MCK_fact_002",
+      "claim_type": "factual_claim",
+      "claim": "MCK FY2015 主要KPI: OneStop ジェネリック成長+40%、Health Mart 3,800店舗 (+15%)",
+      "evidence": "OneStop proprietary generics program growth of approximately 40%. Health Mart ending the year with nearly 3,800 stores or approximately 15% growth.",
+      "rule_evaluation": {"applied_rules": ["rule03"], "results": {"rule03": true}, "confidence": 0.9, "adjustments": []},
+      "final_confidence": 0.9,
+      "confidence_adjustments": [],
+      "gatekeeper": false,
+      "kb1_evaluations": [{"rule": "rule03", "pass": true}],
+      "kb2_patterns": [],
+      "overall_reasoning": "事業KPIの事実確認。信頼性高い。",
+      "power_classification": null,
+      "evidence_sources": ["Q4 FY2015 CEO prepared remarks (2015-05-12)"]
+    }
+  ],
+  "metadata": {
+    "ticker": "MCK",
+    "scored_count": 10,
+    "gatekeeper_applied": false,
+    "confidence_distribution": {
+      "0.4": 1,
+      "0.5": 3,
+      "0.6": 3,
+      "0.65": 1,
+      "0.9": 2
+    }
+  }
+}

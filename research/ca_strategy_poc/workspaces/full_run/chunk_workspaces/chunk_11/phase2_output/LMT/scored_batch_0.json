@@ -1,0 +1,115 @@
+{
+  "ticker": "LMT",
+  "batch_index": 0,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": "LMT-001",
+      "id": "LMT-001",
+      "power_type": "Cornered Resource",
+      "confidence_raw": 0.9,
+      "final_confidence": 0.9,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [],
+      "kb2_patterns_matched": ["pattern_IV_structural_market_position", "pattern_I_quantitative_differentiation"],
+      "dogma_adjustments": [
+        "Rule 11: Industry structure fit - legally assigned prime contractor status is the strongest form of Cornered Resource. Government defense programs are by definition monopsony contracts with single prime contractors.",
+        "Rule 4: Quantified - 58+ Australia aircraft, Turkey commitment, price target below $80M by 2019, $170M investment commitment.",
+        "Rule 3: No competitor can replicate - the F-35 prime contractor role is a government-assigned legal monopoly.",
+        "Rule 10: Cost reduction commitment ($170M) and price target demonstrate disciplined resource allocation toward defending the program."
+      ],
+      "scoring_rationale": "LMT-001 is the clearest Cornered Resource in the entire chunk_11 universe. The F-35 prime contractor status is a legally assigned single-source government contract - the ultimate Cornered Resource. No competitor can compete for this role once assigned. The multi-decade production program (Australia 72 aircraft, Turkey initial commitment, other international partners) provides backlog certainty. Pattern IV (structural market position) and Pattern I (quantitative differentiation) both apply at maximum strength. Score maintained at 0.9.",
+      "cagr_connection": "Very strong: F-35 production ramp (45% cost reduction through volume) provides multi-decade revenue with rising volume. International partner additions (Australia +58, Turkey) expand the backlog beyond initial projections.",
+      "cagr_confidence": 0.9
+    },
+    {
+      "claim_id": "LMT-002",
+      "id": "LMT-002",
+      "power_type": "Cornered Resource",
+      "confidence_raw": 0.7,
+      "final_confidence": 0.7,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [],
+      "kb2_patterns_matched": ["pattern_IV_structural_market_position"],
+      "dogma_adjustments": [
+        "Rule 11: Industry structure fit - government national security satellite programs (SBIRS) are legally single-source contracts. This is structurally similar to F-35 but for space/missile defense.",
+        "Rule 4: 'Backlog expansion' and 'second to none' are partially quantified through program awards, but specific contract values not cited.",
+        "Rule 3: For classified national security programs, competitors literally cannot access the same programs due to security clearance and contract structure."
+      ],
+      "scoring_rationale": "SBIRS and national security satellite programs represent the same Cornered Resource power type as F-35 but at a program level below the flagship. Government-assigned single-source programs in classified national security create structural barriers that domestic competitors face legally (contract assignment) and foreign competitors face additionally through security restrictions. 'Second to none' self-assertion is weak, but backlog expansion through new SBIRS spacecraft awards provides structural confirmation. Score maintained at 0.7 (lower than LMT-001 due to less quantification and multiple program diversity rather than single massive program).",
+      "cagr_connection": "Strong: new SBIRS spacecraft awards 'expand backlog of work and help position corporation for long-term growth in core markets' - direct language from management on CAGR support.",
+      "cagr_confidence": 0.7
+    },
+    {
+      "claim_id": "LMT-003",
+      "id": "LMT-003",
+      "power_type": "Counter-Positioning",
+      "confidence_raw": 0.5,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: strategy_not_advantage - Blueprint for Affordability is a specific strategic program, not a structural competitive advantage."
+      ],
+      "kb2_patterns_matched": ["pattern_F_strategy_confusion"],
+      "dogma_adjustments": [
+        "Rule 8: This is a cost reduction investment program (Blueprint for Affordability, $170M). While it creates a pricing target, the underlying advantage is really the F-35 prime contractor status (LMT-001), not this program itself.",
+        "Rule 1: The $80M price target and $170M investment are strategic actions/results, not the capability behind them.",
+        "Note: The actual Counter-positioning element (locking out 4th-gen alternatives by matching their price) is structurally sound, but the implementation is through the F-35 program itself (LMT-001), not through this separate program."
+      ],
+      "scoring_rationale": "Pattern F (strategy confusion) partially applies. Blueprint for Affordability is a strategic investment program that serves the F-35 prime contractor position (LMT-001), not a separate competitive advantage. The counter-positioning insight (make F-35 as cheap as 4th-gen fighters to eliminate the alternative) is structurally interesting, but the underlying power is still the Cornered Resource of the F-35 contract. The $170M investment commitment is a resource allocation decision (strategy), not an advantage. Adjusted down to 0.3 because this is derivative of LMT-001 and classified as strategy rather than independent advantage.",
+      "cagr_connection": "Moderate: if price target is achieved (<$80M by 2019), international adoption should accelerate, expanding production volume. But this CAGR connection flows through LMT-001 not independently.",
+      "cagr_confidence": 0.5
+    },
+    {
+      "claim_id": "LMT-004",
+      "id": "LMT-004",
+      "power_type": "Cornered Resource",
+      "confidence_raw": 0.7,
+      "final_confidence": 0.5,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: acquisition_not_yet_closed - Sikorsky acquisition announced but not closed as of Q2 2015 (before PoiT cutoff 2015-09-30)."
+      ],
+      "kb2_patterns_matched": ["pattern_IV_structural_market_position"],
+      "dogma_adjustments": [
+        "Rule 12: Secondary call (Q2 2015). Acquisition announced in July 2015, to close end of 2015.",
+        "Rule 4: $30B annual market size quantified. CH-53K, VH-92, Combat Rescue Helicopter programs named.",
+        "Note: If the acquisition closes before PoiT cutoff (2015-09-30), it becomes a valid Cornered Resource. The timing is uncertain."
+      ],
+      "scoring_rationale": "The Sikorsky acquisition creates additional Cornered Resource positions if it closes within the PoiT window. Sikorsky as prime contractor for CH-53K, VH-92 presidential helicopter, and Combat Rescue Helicopter provides the same government-assigned program structure as the F-35. However, the acquisition was not yet closed at Q2 2015 earnings (PoiT cutoff is 2015-09-30), creating uncertainty about whether this qualifies within the evaluation period. Pattern IV (structural market position) applies to Sikorsky's existing programs. Score adjusted to 0.5 due to acquisition closure uncertainty within PoiT window.",
+      "cagr_connection": "Moderate: Sikorsky's helicopter programs transitioning to production in 2019 provide long-term revenue visibility. The $30B market extension is a significant CAGR driver if acquisition closes.",
+      "cagr_confidence": 0.5
+    },
+    {
+      "claim_id": "LMT-005",
+      "id": "LMT-005",
+      "power_type": "Switching Costs",
+      "confidence_raw": 0.3,
+      "final_confidence": 0.3,
+      "gatekeeper_pass": true,
+      "kb1_adjustments": [
+        "KB1 flag: being_divested - Management actively planning to spin off or sell the IS&GS IT services businesses."
+      ],
+      "kb2_patterns_matched": ["pattern_A_result_as_cause"],
+      "dogma_adjustments": [
+        "Rule 1: The 21-year leadership claim is primarily a result (long tenure) rather than a capability description of why government agencies cannot switch.",
+        "Rule 8: The IS&GS divestiture decision is strategic, suggesting LMT itself does not believe this business creates strong competitive advantage worth retaining.",
+        "Note: The contradiction between citing switching cost advantage and simultaneously divesting is a clear signal that the advantage is weaker than the 21-year headline suggests."
+      ],
+      "scoring_rationale": "The IS&GS divestiture decision is the critical piece of counter-evidence. If government IT services had strong switching costs as claimed, LMT would have incentive to retain the business. The decision to spin off or sell implies that the 21-year market position is not creating durable competitive advantage sufficient to justify continued ownership within LMT's portfolio. Pattern A (result as cause) partially applies - 21 years of market position is a result, not a capability description. Score maintained at 0.3.",
+      "cagr_connection": "Weak: the IS&GS business was in revenue decline (cited by management) and being divested. No CAGR support from this segment.",
+      "cagr_confidence": 0.1
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "0.9": 1,
+      "0.7": 1,
+      "0.5": 1,
+      "0.3": 2
+    },
+    "gatekeeper_applied": false,
+    "scoring_date": "2026-02-24"
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "ticker": "TSCO",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-28) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "農村ライフスタイル向け小売における21連続四半期のコンプ成長（49州でのユニークな市場ポジション）",
+      "descriptive_label": "農村ライフスタイル特化小売の独自ポジション",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'The fourth quarter was our 21st consecutive quarter of positive comp store sales and our 27th consecutive quarter of positive comp transaction counts'。'we continue to stay focused on being the most dependable supplier of their lifestyle'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_fail",
+            "reasoning": "21連続四半期のコンプ成長は結果。なぜ農村ライフスタイル市場でTSCOが優位なのかの仕組みへの言及が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "21連続四半期正のコンプという定量的な継続性データ。5.3%のコンプ成長（Q4 2014）"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "農村ライフスタイル市場（農家・馬・農場動物飼育者等）への特化は競合（一般小売）が容易に複製できない専門性"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "農村ライフスタイル特化小売として実質的に専業競合が存在しない独自市場ポジション"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "農村地域は大手ディスカウントやオンライン小売が浸透しにくい。地域密着・専門性が業界構造的に有利"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×ポジション）+ pattern_A_t（コンプは結果）",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          },
+          {
+            "reason": "コンプ成長は結果だが、市場ポジションの独自性は認められる",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "農村ライフスタイル特化という独自ポジションは業界構造的に有利。21連続四半期のコンプ成長は定量的。ただし「仕組み」の説明が不十分。まあ納得〜おおむね納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "農村ライフスタイル特化ポジション → 110-115店舗/年の出店加速 → 売上高CAGR",
+      "descriptive_label": "特化ポジション→出店加速→成長",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "特化ポジション → 新規市場開拓 → 110-115店舗/年出店 → 売上成長という2-3ステップ。49州展開完了（Utah）とWashington転換が示す展開速度"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 60,
+        "confidence_adjustments": [],
+        "overall_reasoning": "出店計画数値あり。まあ納得〜おおむね納得"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "季節商品・C.U.E.（Consumable、Usable、Edible）カテゴリの在庫管理能力",
+      "descriptive_label": "季節性商品の高い在庫管理・需要予測能力",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'Throughout the year, the team did an excellent job of managing product flow and adjusting merchandise assortments and depth of inventory to capitalize on seasonal demands in the markets that we serve. We believe this continues to be a core competency and strategic advantage for Tractor Supply Company'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "在庫管理・需要予測能力は具体的な「仕組み」として評価可能。Demand Planningシステム導入（2014 Q4）という具体的なシステム投資も言及"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "partial_quantitative",
+            "reasoning": "定量的な在庫回転数等の開示なし。ただしコンプ成長継続が間接的な証拠"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "農村ライフスタイル市場特有の季節性（農業サイクル、気象）は専門知識が必要で競合には模倣困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言。CEOが「core competency and strategic advantage」と明言",
+            "adjustment": 0
+          },
+          {
+            "reason": "定量的裏付けが弱い",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "在庫管理能力はCEOが明示的にcore competencyと認識しているが、定量的裏付けが乏しい。まあ納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "サプライチェーン投資（DC拡充・mixing center）による西部・Texas展開の効率化能力",
+      "descriptive_label": "西部・Texas展開を支えるDC/mixing centerインフラ",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'We purchased land and have started construction on a new distribution center in Casa Grande, Arizona... it should lower our transportation costs and improve delivery times... 2 mixing centers in our Texas region... we can shorten our supply chain stem miles and reduce in-store inventory levels through more frequent store deliveries'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [5],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "DCとmixing centerというサプライチェーンインフラへの投資は具体的な仕組みとして評価できる"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "大規模サプライチェーンインフラは資本投資が必要で競合が短期間で複製困難"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_III_t（能力の優位性）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "DCインフラ投資は具体的で地域展開の裏付けとなる。まあ納得"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "cagr_connection",
+      "claim": "DC/mixing centerインフラ → 250店舗規模の西部展開可能 → 売上規模拡大",
+      "descriptive_label": "DCインフラ→西部展開加速",
+      "source_advantage": 4,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "semi_direct",
+            "reasoning": "DC建設 → 250店舗対応可能 → 西部展開加速という明確な接続。Casa Grande DCが「ultimate serve 250 stores in Southwest」という定量的規模も開示"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 50,
+        "confidence_adjustments": [],
+        "overall_reasoning": "接続は明確。定量的規模あり。まあ納得"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014コンプストア+5.3%（前年+3.5%）。21連続四半期正コンプ、27連続四半期正コントランズ",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "新規需要計画システムを複数部門に展開開始（2014 Q4）。Casa Grande、AZのDC建設開始",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3, 4]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "Casa Grande DC：最大250店舗対応可能。Texas 2箇所のmixing centerを2015年開設計画",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4, 5]
+    }
+  ]
+}

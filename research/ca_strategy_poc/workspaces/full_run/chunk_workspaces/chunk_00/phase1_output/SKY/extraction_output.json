@@ -1,0 +1,247 @@
+{
+  "ticker": "SKY",
+  "transcript_source": "H1 2015 Earnings Call (2015-02-04); H1 2014, Q1/Q2/Q3 transcripts",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": false,
+    "quarterly_transcripts_available": ["H1_2015", "H1_2014"]
+  },
+  "claims": [
+    {
+      "id": "SKY-001",
+      "claim_type": "competitive_advantage",
+      "claim": "独占的プレミアムスポーツ・映画コンテンツライセンスによるコンテンツバリュープロポジション（Studio5社・PLサッカー等）",
+      "descriptive_label": "独占コンテンツ（スポーツ・映画）ライセンス",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'We've renewed our deals with 5 of the 6 major studios over the last couple of years... we're naturally delighted to have announced yesterday a new agreement for live coverage of the Open Golf Championship... 25 rights renewals in 2014.' (2015-02-04, Jeremy Darroch)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jeremy Darroch (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SKY-009"],
+      "cagr_connections": ["SKY-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "独占コンテンツライセンス × UK/EU有料TV市場構造と合致。既存顧客の解約コスト（Premium sports content）が高い"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1四半期発言から。Q4相当の年次発言なし（Skyは暦年決算ではなく半期報告）"
+          }
+        ],
+        "overall_reasoning": "SkyのPremium Sports（Premier League、ゴルフ等）の独占ライセンスはCornered Resourceの典型。5社主要スタジオとの刷新済み契約も裏付け。10.9%チャーン（10年超最低水準）が顧客粘着性を示す。ただし、各コンテンツは入札更新があるため「永続的」ではない"
+      }
+    },
+    {
+      "id": "SKY-002",
+      "claim_type": "competitive_advantage",
+      "claim": "デジタルファースト・コネクテッドホーム投資による顧客体験差別化（2/3基盤がコネクテッドBOX、NPS 77）",
+      "descriptive_label": "コネクテッドホームとデジタルサービス優位",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'around 2/3 of our base have chosen to connect their boxes... our in-home engineers... achieved an average Net Promoter Score of 77 from customers, which is really industry leading... customer visits were up 43% in the first half [digital help], reducing calls by around 2 million.' (2015-02-04, Jeremy Darroch)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jeremy Darroch (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SKY-010"],
+      "cagr_connections": ["SKY-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_7_t": false,
+          "rule_7_t_note": "純粋競合（Virgin Media等）との比較データ不明"
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "NPS 77（業界最高水準）、デジタルヘルプ訪問43%増という定量的裏付けあり"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "H1四半期発言から"
+          }
+        ],
+        "overall_reasoning": "デジタル化投資（コネクテッドBOX 2/3普及、NPS 77）は具体的な能力として評価できる。スイッチングコスト（接続済みBOXのエコシステム）の補強材料。ただし純粋競合（Virgin Media）との比較なし"
+      }
+    },
+    {
+      "id": "SKY-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Sky・NOW TVのデュアルブランド戦略によるマーケットセグメンテーション能力（90%がSky未検討のNOW TV顧客を獲得）",
+      "descriptive_label": "デュアルブランドによる市場セグメンテーション",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'almost 90% of NOW TV customers had not even considered taking Sky... we're attracting new customers in a way that's complementary, not at odds... We added more than 1 million new products in Q2. That's our highest rate of product growth in 4 years.' (2015-02-04, Jeremy Darroch)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jeremy Darroch (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["SKY-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_8_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_8_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 60,
+        "adjustments": [],
+        "overall_reasoning": "デュアルブランドによる市場セグメンテーションは能力（Counter-Positioning に近い）。90%が既存Skyと重複しないというデータは顧客獲得の付加性を示す定量的証拠。H1発言だが構造的説明が明確"
+      }
+    },
+    {
+      "id": "SKY-004",
+      "claim_type": "competitive_advantage",
+      "claim": "クロスセル能力（平均3製品/顧客、TV+BB+電話のトリプルプレイ40%）と顧客データ分析能力（Sky IQ）",
+      "descriptive_label": "クロスセル・データアナリティクス能力",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'Almost 40% of customers already take the triple play of TV, broadband and telephony... our customers now choose, on average, to take more than 3 products each from us... Sky IQ, we can target the right products to the right customer.' (2015-02-04, Jeremy Darroch)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jeremy Darroch (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["SKY-011"],
+      "cagr_connections": ["SKY-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 60,
+        "adjustments": [],
+        "overall_reasoning": "クロスセル能力（3製品/顧客・40%トリプルプレイ）は定量的で、Sky IQというデータ分析能力という仕組みの説明あり。スイッチングコスト（複数製品統合）と組み合わさり構造的優位性を形成"
+      }
+    },
+    {
+      "id": "SKY-005",
+      "claim_type": "competitive_advantage",
+      "claim": "効率的オペレーティングモデル（170bps削減・同時にNPS改善）",
+      "descriptive_label": "効率的運営モデルと顧客サービス品質同時改善",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'In the last 12 months alone, we've taken something like 170 basis points out of our operating costs. But at the same time, we've improved our front-line customer service. So our Net Promoter Scores grew by further 24% from an already high base this year.' (2015-02-04, Jeremy Darroch)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jeremy Darroch (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_G_t",
+            "adjustment": -0.1,
+            "reasoning": "ペイTV業界のオペレーション効率化は純粋競合（Virgin Media）も進めており、Sky固有の差別化が不明"
+          }
+        ],
+        "overall_reasoning": "コスト削減170bps + NPS改善の同時達成は定量的に明確。Process Power の兆候。ただし、純粋競合との比較なしでは業界共通の傾向かもしれない"
+      }
+    },
+    {
+      "id": "SKY-006",
+      "claim_type": "competitive_advantage",
+      "claim": "欧州3市場（英独伊）への展開によるコンテンツ・技術・調達のスケール優位（年次コンテンツ支出46億GBP）",
+      "descriptive_label": "欧州3市場スケール（コンテンツ・技術統合）",
+      "evidence_from_transcript": "H1 2015 Prepared Remarks（CEO発言）: 'we're already Europe's biggest investor on screen, with annual spend of some GBP 4.6 billion... we've agreed a common product road map which will reduce the cost of set-top box and platform development... we've already identified those key areas of spend where we can leverage scale and procurement.' (2015-02-04, Jeremy Darroch)",
+      "transcript_call_type": "H1_quarterly",
+      "speaker": "Jeremy Darroch (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": ["SKY-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "rule_12_t",
+            "adjustment": -0.1,
+            "reasoning": "Sky Italia/DeutschlandはH1 2015での統合開始（11週間）。スケールメリットはまだ初期段階"
+          }
+        ],
+        "overall_reasoning": "欧州最大46億GBPのコンテンツ支出と共通製品ロードマップによるスケール優位はScale Economiesとして評価できる。ただし統合は11週間と初期段階で、シナジーの実現は将来的"
+      }
+    },
+    {
+      "id": "SKY-007",
+      "claim_type": "cagr_connection",
+      "claim": "独占コンテンツ + デュアルブランド → 顧客成長（60M世帯の獲得余地）→ ARPU成長 → 売上CAGR",
+      "descriptive_label": "コンテンツ独占→顧客成長→売上成長経路",
+      "source_advantage": "SKY-001",
+      "transcript_call_type": "H1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "英独伊60M世帯の獲得余地は定量的。コンテンツ独占→顧客成長→ARPU成長の2-3ステップ因果は検証可能"
+      }
+    },
+    {
+      "id": "SKY-008",
+      "claim_type": "cagr_connection",
+      "claim": "クロスセル拡大（TV+BB+電話→モバイル追加）→ ARPU向上 → 売上成長",
+      "descriptive_label": "クロスセル深化→ARPU→売上成長経路",
+      "source_advantage": "SKY-004",
+      "transcript_call_type": "H1_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": false
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "ARPU GBP 47/月（成長中）、41%トランザクション収益増が直接的に示す。モバイル追加（2016年）はさらなる成長余地"
+      }
+    },
+    {
+      "id": "SKY-009",
+      "claim_type": "factual_claim",
+      "claim": "Q2 2015 チャーン 9%超（10年超最低水準）、ARPU GBP 47/月、450,000純増顧客（Q2）",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SKY-001"]
+    },
+    {
+      "id": "SKY-010",
+      "claim_type": "factual_claim",
+      "claim": "コネクテッドBOX 2/3基盤普及、NPS 77（訪問エンジニア）、オンラインヘルプ訪問43%増・コールセンター電話2M削減",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SKY-002"]
+    },
+    {
+      "id": "SKY-011",
+      "claim_type": "factual_claim",
+      "claim": "顧客平均3製品超保有、トリプルプレイ40%、H1 2015グループ売上56億GBP（+5%）、営業利益6.75億GBP（+16%）",
+      "transcript_call_type": "H1_quarterly",
+      "affected_claims": ["SKY-004"]
+    }
+  ]
+}

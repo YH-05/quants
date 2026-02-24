@@ -1,0 +1,179 @@
+{
+  "ticker": "META",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "WhatsApp/Messenger/Instagramによる多層的コミュニケーション・プラットフォームエコシステム",
+      "final_confidence": 0.60,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "MAU数は結果。エコシステムとして「ユーザーを囲い込む能力」が核心だが、能力の具体的説明が不足。結果（MAU規模）と能力（エコシステム設計力）の境界ケース"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Messenger 5億MAU、WhatsApp 7億MAU（30億メッセージ/日）、Instagram 3億MAUという定量データ"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "4プラットフォーム所有（Facebook + WhatsApp + Instagram + Messenger）は競合が模倣困難"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "Structural market positionパターン適合"
+        },
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "MAU規模（結果）をエコシステム優位性として提示するリスクあり。-10%"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.10,
+          "reasoning": "MAU数は結果。エコシステム優位性の能力説明が不十分"
+        }
+      ],
+      "overall_reasoning": "マルチプラットフォームエコシステムは方向性として重要だが、2015年時点では各プラットフォームの収益化が初期段階。MAU規模（結果）vs能力の混同リスクあり。60%が妥当"
+    },
+    {
+      "id": 9,
+      "claim_type": "competitive_advantage",
+      "claim": "動画コンテンツ配信・エンゲージメント強化能力（3ヶ月で10億→30億再生/日に成長）",
+      "final_confidence": 0.40,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "動画再生数は結果。ニュースフィードアルゴリズムの能力が核心だが具体的説明なし"
+        },
+        {
+          "rule_id": "rule_8_t",
+          "result": true,
+          "reasoning": "「動画への投資継続」は戦略。戦略と優位性の混同リスクあり（Rule 8-T）。YouTubeとの差別化が不明確"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "結果（30億再生/日）を能力として提示。パターンA適合"
+        },
+        {
+          "pattern_id": "pattern_F_t",
+          "matched": true,
+          "adjustment": -0.10,
+          "reasoning": "戦略と優位性の混同パターン適合"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_patterns_A_F",
+          "adjustment": -0.10,
+          "reasoning": "結果提示+戦略混同の二重リスク。Phase 1の50%から-10%"
+        }
+      ],
+      "overall_reasoning": "動画の急成長は印象的だが、YouTubeとの競合における差別化が不明確。ニュースフィード文脈での動画視聴という差別化はあるが、能力説明不足かつ戦略・優位性の混同リスクあり。40%が妥当"
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "Messenger 5億MAU（2014年11月）、WhatsApp 7億MAU（2015年1月）・30億メッセージ/日、Instagram 3億MAU（70%以上が米国外）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 earningsでの定量的開示。各プラットフォームの規模データ"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Facebook動画再生: 30億/日（2014年12月）、3ヶ月前比3倍。動画投稿数+75%（グローバル）、+94%（米国）。米国DAUの50%以上が1日1本以上動画視聴",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "CEO Q4 earningsでの定量的開示。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    },
+    {
+      "id": 3,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: MAU 13.9億人（+18% YoY）、DAU 8.9億人。広告売上$3.6B（+53%）、モバイル広告$2.5B（+100%、広告の69%）。広告単価+335%（インプレッション数-65%）",
+      "final_confidence": 0.70,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "Q4 earningsで開示された主要財務データ。検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実主張として信頼度高い"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 1,
+      "60-70": 1,
+      "70-80": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

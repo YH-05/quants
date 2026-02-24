@@ -1,0 +1,93 @@
+{
+  "ticker": "TXN",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "流通チャネルコンサインメントプログラムによるリアルタイム需要可視化と在庫効率化",
+      "evidence": "Q4 2014: '60% of our distribution revenue on consignment'、流通在庫4.5週間",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_1_t", "result": true, "reasoning": "コンサインメントプログラムという具体的な仕組みを評価"},
+        {"rule_id": "rule_4_t", "result": true, "reasoning": "60%コンサインメント（+15pp）という定量データ"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_III", "matched": true, "adjustment": 0.05, "reasoning": "能力の優位性：需給マッチング仕組み"},
+        {"pattern_id": "pattern_G", "matched": true, "adjustment": -0.05, "reasoning": "競合比較なし"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_III", "adjustment": 0.05, "reasoning": "具体的仕組み"},
+        {"source": "kb2_pattern_G", "adjustment": -0.05, "reasoning": "競合比較なし"}
+      ],
+      "overall_reasoning": "コンサインメントプログラムは具体的な仕組みで定量データあり。競合比較なしだが独自性あり。まあ納得で50%"
+    },
+    {
+      "id": 7,
+      "claim_type": "competitive_advantage",
+      "claim": "1万以上のアナログ製品ポートフォリオの広さによる設計デザインの一括対応能力",
+      "evidence": "Q4 2014: Analog+Embedded Processing 83% of revenue（Analog 6期成長）",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_4_t", "result": false, "reasoning": "製品数の定量的開示なし"},
+        {"rule_id": "rule_7_t", "result": false, "reasoning": "競合との製品カタログ比較なし"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_D", "matched": true, "adjustment": -0.15, "reasoning": "定性的のみ。トランスクリプト内の直接証拠が弱い"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_D", "adjustment": -0.15, "reasoning": "定性的主張のみ"}
+      ],
+      "overall_reasoning": "製品カタログの広さはTXNの特徴だがトランスクリプト内での直接的・定量的言及が不十分。あまり納得しない で30%"
+    },
+    {
+      "id": 8,
+      "claim_type": "competitive_advantage",
+      "claim": "Free cash flow重視の資本配分規律（FCF 100%株主還元コミットメント）によるバリュエーション支持構造",
+      "evidence": "Q4 2014: 'intention is to return 100% of our free cash flow'",
+      "final_confidence": 0.3,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [
+        {"rule_id": "rule_8_t", "result": false, "reasoning": "資本配分コミットメントは戦略・財務メカニズム。競争優位性とは言えない"}
+      ],
+      "kb2_patterns": [
+        {"pattern_id": "pattern_F", "matched": true, "adjustment": -0.2, "reasoning": "戦略の混同：資本配分は競争優位性ではない"}
+      ],
+      "confidence_adjustments": [
+        {"source": "kb2_pattern_F", "adjustment": -0.2, "reasoning": "戦略の混同"}
+      ],
+      "overall_reasoning": "FCF 100%還元は財務戦略であって競争優位性ではない。あまり納得しない で30%"
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Q4 2014: Gross margin 58%、Operating margin 33.6%、FY2014 Free cash flow $3.5B（27%）",
+      "evidence": "Q4 2014 Prepared Remarks",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "Industrial 31%、Automotive 13%（合計44%）、Personal Electronics 29%（FY2014）",
+      "evidence": "Q4 2014",
+      "final_confidence": 0.5,
+      "gatekeeper": {"rule9_factual_error": false, "rule3_industry_common": false, "triggered": false, "override_confidence": null},
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Factual claim"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {"30-40": 2, "50-60": 3},
+    "gatekeeper_applied": false
+  }
+}

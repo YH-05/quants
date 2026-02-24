@@ -1,0 +1,179 @@
+{
+  "ticker": "APTV",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true,
+    "note": "APTVは当時Delphi Automotive名義（後にAPTVへ改称）。自動車ハイテクサプライヤー。E&S（Electronics & Safety）とPowertrain（PT）の2大セグメント。FY2014: 収益$17B、OI margin 11.9%（記録更新）、EPS +16%。E&S EBITDA 16.9%（2016年目標を前倒し達成）"
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "E&Sのハード→ソフトウェア転換によるビジネスモデル差別化と高ROIC",
+      "seven_powers_category": "Counter-Positioning",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "自動車電動化・自動運転化という業界構造転換×DelphiのE&Sソフトウェア化の合致が明確"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "E&S EBITDA 16.9%（Q4）、2016年目標16%を前倒し達成、Active Safety 50% YoY成長見通しという強力な定量データ"
+        },
+        {
+          "rule_or_pattern": "KB2 pattern_I_t",
+          "verdict": "quantitative_differentiation",
+          "adjustment": 0,
+          "reasoning": "「breathtaking ROIC」はCEO・COO共に強調。ソフトウェア化によるhigh volume flow-throughが競合との差別化"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "partial",
+          "adjustment": -5,
+          "reasoning": "Bosch・Continental等との具体的な技術比較・マージン比較なし"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "E&Sのソフトウェア化は自動車電動化・自動運転化という業界構造転換と企業能力の典型的合致（KB2 pattern_IV_t）。E&S EBITDA 16.9%（2016年目標前倒し）とActive Safety 50%成長見通しが強力な定量的裏付け。CEO・COOの「breathtaking ROIC」言及が質的にも強化。競合比較欠如で65%"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "E&Sソフトウェア化→Active Safety成長→高マージン→EPS CAGR経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "ソフトウェア化→高いvolume flow-through→EBITDA拡大という2ステップ。Active Safety 50%成長予測で検証可能"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "Active Safety 50% YoY成長見通しとE&S EBITDA 16.9%の実績が直接的な裏付け。ソフトウェアビジネスの高volume flow-throughがCAGR加速のメカニズムとして明示されており、因果関係が直接的。65%"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "最適化製造フットプリントによる業界最低コスト構造",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "COOが「industry's absolute best cost structure」と明言。Powertrain EBITDA 17.8%（2016年目標前倒し）が能力を裏付け"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "partial",
+          "adjustment": -5,
+          "reasoning": "「業界最低コスト構造」という競合比主張はあるがBosch・Denso等との具体的比較数値なし"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "Powertrain EBITDA 17.8%（+220bp）・E&S +260bp・OI margin 11.9%（記録更新）という強力な定量実績"
+        }
+      ],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "COOが「industry's absolute best cost structure」と明言し、全セグメントで目標を前倒し達成という実績が示されている。フットプリント再編による構造的コスト優位性は競争力の源泉。ただし競合との数値比較欠如でrule_7_t適用。45%"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "低コスト構造×市場シェア成長→高オペレーティングレバレッジ→CAGR経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "FY2014 OI +9%（売上+4%比）という高いオペレーティングレバレッジで直接的に裏付け"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "OI +9%（売上+4%比）・market上回り+2%という実績データが低コスト構造×成長のオペレーティングレバレッジを直接示す。因果メカニズムが明確で定量的に裏付けられている。65%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "主要OEM向け設計採用bookingsによる中期収益可視性",
+      "seven_powers_category": "Switching Costs",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_shown",
+          "adjustment": 0,
+          "reasoning": "設計採用×2-4年プラットフォームライフサイクルはスイッチングコストの構造的証拠"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_4_t",
+          "verdict": "quantitative",
+          "adjustment": 0,
+          "reasoning": "$25B年間bookings・Q4$7.5B・2015年1月追加$3Bという強力な定量データ"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_1_t",
+          "verdict": "borderline",
+          "adjustment": -5,
+          "reasoning": "$25Bのbookingsは将来収益の先行指標であり現在の競争優位性としては間接的"
+        }
+      ],
+      "final_score": 0.45,
+      "final_confidence_pct": 45,
+      "scoring_rationale": "Toyota・Daimler・VW・Chrysler等主要OEMへの多様化と$25B年間bookingsは中期収益可視性の証拠。Active SafetyのConquest受注（新規OEM獲得）が差別化力を示す。ただしbookingsは先行指標であり現在の競争優位性としては間接的。45%"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "設計採用bookings→プラットフォームroll-on→市場アウトパフォーム→CAGR経路",
+      "phase1_confidence": 70,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_II_t",
+          "verdict": "direct_mechanism",
+          "adjustment": 0,
+          "reasoning": "COOが具体的なroll-onタイムライン（Q1 3%→Q4 6% over market加速）を明示しており直接的"
+        }
+      ],
+      "final_score": 0.65,
+      "final_confidence_pct": 65,
+      "scoring_rationale": "COOが2015年に3%→6% over market加速という具体的なroll-onタイムラインを明示。bookings→収益のメカニズムが時系列で裏付けられており、最も直接的なCAGR接続。65%"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 4,
+    "weighted_avg_score": 0.59,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.65,
+      "descriptive_label": "E&Sのハード→ソフトウェア転換によるビジネスモデル差別化と高ROIC"
+    },
+    "primary_seven_powers": ["Counter-Positioning", "Process Power"],
+    "investment_thesis_strength": "moderate",
+    "key_risks": [
+      "Bosch・Continental・Denso等の競合との具体的差別化データ欠如",
+      "自動車生産サイクルリスク（PoiT時点での中国・欧州市場不確実性）",
+      "E&S hardware→software転換のタイミングリスク（競合の追随）"
+    ]
+  }
+}

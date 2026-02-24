@@ -1,0 +1,315 @@
+{
+  "ticker": "S",
+  "company_name": "Sprint Corp.",
+  "gics_sector": "Telecommunication Services",
+  "country": "UNITED STATES",
+  "transcript_source": "Q4 FY2013 Earnings Call (2014-02-11) / Q3 FY2015 Earnings Call (2015-02-05)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q1 2015", "Q2 2015", "Q3 2015"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "2.5GHz帯を含む豊富なスペクトル資産（120MHz超）：業界最大規模の中波帯スペクトルポートフォリオ（800MHz/1.9GHz/2.5GHz三層）",
+      "descriptive_label": "業界最大規模のスペクトルポートフォリオ（特に2.5GHz）",
+      "evidence_from_transcript": "Q3 FY2015 Prepared Remarks (CEO Claure): 'we intend to fully leverage our low band 800 megahertz, solid mid-band position on 1.9 and deep 2.5 spectrum holdings of more than 120 megahertz.' / 'carrier aggregation, through TDD/FDD carrier aggregation, makes our 2.5 spectrum pretty much be able to provide the same coverage at 1.9. So therefore, when you look at our spectrum holdings, they become very valuable.'",
+      "transcript_call_type": "Q3_quarterly",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [8],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_2_t", "rule_4_t", "rule_6_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "スペクトル保有（資源）は能力・仕組みの属性として評価可能。希少資源（Cornered Resource）として機能する可能性"
+          },
+          {
+            "rule": "rule_2_t",
+            "verdict": "pass",
+            "reasoning": "「スペクトルポートフォリオ」は名詞で表現可能な属性"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "120MHz超の具体的数値。2.5GHz LTE 125百万POPという展開状況も定量的"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "スペクトル免許は規制上の希少資源で、競合が短期に取得できない"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言（従・②相当）"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化: 120MHz超), pattern_IV_t (業界構造×ポジション: スペクトル希少性)",
+        "confidence": 55,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）→ -10%調整",
+            "adjustment": -10
+          },
+          {
+            "reason": "スペクトルは保有しているが、ネットワーク展開が完了していないため現時点での優位性は限定的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "2.5GHz帯スペクトルの豊富な保有は真の希少資源として評価できる。120MHz超は競合（AT&T、Verizon、T-Mobile）と比較して際立つ。ただし2015-09-30時点では展開中であり、スペクトル優位性がネットワーク品質に転換するまでの遅延がある。Q3発言での-10%調整。45%が適切"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "2.5GHzスペクトル展開（Sprint Spark）→ ネットワーク品質向上 → 解約率低下 → 加入者CAGR回復",
+      "descriptive_label": "スペクトル→ネットワーク→解約率→CAGR経路",
+      "source_advantage": 1,
+      "transcript_call_type": "Q3_quarterly",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3-4ステップの因果。スペクトル展開→ネットワーク品質→顧客満足→解約率低下→CAGR。各ステップに不確実性あり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "secondary",
+            "reasoning": "Q3発言（従・②相当）"
+          }
+        ],
+        "confidence": 40,
+        "confidence_adjustments": [
+          {
+            "reason": "Q3発言（従・②相当）→ -10%調整",
+            "adjustment": -10
+          }
+        ],
+        "overall_reasoning": "因果チェーンが長く、各ステップに不確実性がある。Sprint の解約率はネットワーク整備後も競合水準以上。因果関係は論理的だが証拠不十分"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "ネットワーク近代化（Network Vision）完了後の品質改善：41%のブロック通話削減、25%の3Gデータ速度向上（整備完了市場）",
+      "descriptive_label": "ネットワーク近代化による技術的品質改善能力",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (CTO Elfman): 'we are seeing a 41% decline in blocked calls. From a 3G data perspective, we are seeing 25% increase in 3G data speeds.' / Q3 FY2015 (CEO): 'our dropped-call rate as being the lowest ever and improved by more than 50% year-over-year' / 'Sprint ranks second for overall performance in Chicago'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CTO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [4],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "ネットワーク品質改善は進行中のプロセス。「完了後」の品質が優位性だが、整備中は顧客体験が悪化"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "41%減のブロック通話、25%速度向上、50%以上の通話切断率改善は定量的"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_pass",
+            "reasoning": "シカゴでの第2位というRootMetrics評価は競合比較あり"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的差別化), pattern_A_t (進行中の改善は現時点での結果ではない)",
+        "confidence": 35,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "2015-09-30時点でも依然として高い解約率（2.3%）。整備完了の遅延リスクあり",
+            "adjustment": -15
+          }
+        ],
+        "overall_reasoning": "ネットワーク近代化の定量的成果は確認できるが、全国規模での完了が2015-09-30以降も継続中。整備中の顧客体験悪化が解約率に反映されており、優位性としての確立は未達。競合（Verizon、AT&T）との差は依然大きい。35%が適切"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "ネットワーク品質改善 → 解約率低下（2.3%→業界平均水準への改善） → 加入者純増回復 → 収益CAGR改善",
+      "descriptive_label": "ネットワーク→解約率→加入者→CAGR経路",
+      "source_advantage": 3,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "indirect",
+            "reasoning": "3ステップ。整備完了市場での解約率改善パターンはQ4 2013で示されたが、全国規模への適用の確実性は不明"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来"
+          }
+        ],
+        "confidence": 45,
+        "confidence_adjustments": [],
+        "overall_reasoning": "整備完了市場での解約率改善という実証パターンがある。ただし全国完了後の競争環境は変動があり、CAGR接続の確実性は中程度"
+      }
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "SoftBank支援による資金力と大規模ネットワーク投資能力（2014年CapEx $8B）：競合が追随困難な大規模インフラ投資",
+      "descriptive_label": "SoftBank支援による資金力と投資能力",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (CFO): 'We ended the fourth quarter with a total liquidity position of $9.6 billion... we expect capital expenditures to be approximately $8 billion for the full year 2014.' / CEO: 'We closed transactions with SoftBank, with Clearwire and with U.S. Cellular.'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CFO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_6_t", "rule_8_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "fail",
+            "reasoning": "「SoftBank支援」は外部リソースへの依存であり、Sprint固有の能力・仕組みではない"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "complementary",
+            "reasoning": "資金力は補完的要素。AT&T、Verizonも十分な資金力を持つ"
+          },
+          {
+            "rule": "rule_8_t",
+            "verdict": "fail",
+            "reasoning": "大規模投資は戦略的行動（動詞）であり優位性ではない"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_B_t (業界共通: 大手通信会社はCapEx投資能力を持つ), pattern_F_t (戦略の混同)",
+        "confidence": 20,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "SoftBank支援による資金力は一定の優位性だが、競合（AT&T、Verizon）も同等以上の投資能力を持つ。業界共通能力かつ外部依存の優位性で20%"
+      }
+    },
+    {
+      "id": 6,
+      "claim_type": "competitive_advantage",
+      "claim": "コスト競争力：Network Visionによる年間ケア費用$2B削減（2008年比）と、継続的なコスト削減プログラム（$1.5B annualized削減目標）",
+      "descriptive_label": "運営コスト削減能力と顧客ケアコスト効率化",
+      "evidence_from_transcript": "Q4 FY2013 Prepared Remarks (CEO): 'we have reduced the annual care OpEx run rate by $2 billion, below where we were in 2008.' / Q3 FY2015 (CEO): 'working to eliminate at least $1.5 billion of operating costs on an annualized basis compared to our 2014 levels. We have implemented a zero-based budgeting process'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [7],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "コスト削減能力は仕組みとして評価できる。ゼロベース予算プロセスは具体的なプロセス説明あり"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$2B削減（実績）、$1.5B削減目標（計画）という定量データあり"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "Nextelネットワーク廃止によるコスト削減は構造的な変化"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t (定量的: $2B削減), pattern_III_t (プロセスの説明: ゼロベース予算)",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4発言（主・①相当）",
+            "adjustment": 0
+          },
+          {
+            "reason": "コスト削減は競合他社も実施中で差別化としては限定的",
+            "adjustment": -5
+          }
+        ],
+        "overall_reasoning": "$2B削減は確認可能な定量実績。ただしコスト削減は業界共通の目標であり、SprintがAT&T/Verizonに比べてコスト面で優位かどうかは未確認。EBITDAマージンは依然業界下位"
+      }
+    },
+    {
+      "id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "コスト削減（$1.5B annualized） → EBITDAマージン改善（20%→目標水準） → 利益CAGR向上",
+      "descriptive_label": "コスト削減→EBITDA→CAGR経路",
+      "source_advantage": 6,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "2ステップ。コスト削減→EBITDA改善は直接的。2015年EBITDA 5-7%成長見込みという数値的裏付けあり"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言由来の定量目標"
+          }
+        ],
+        "confidence": 55,
+        "confidence_adjustments": [],
+        "overall_reasoning": "コスト削減がEBITDA改善に直接貢献するメカニズムは明確。$1.5B目標に「clear line of sight」という表現あり"
+      }
+    },
+    {
+      "id": 8,
+      "claim_type": "factual_claim",
+      "claim": "2015年2月時点でLTEカバレッジ270百万人、2.5GHz LTE 125百万POP展開済み。スペクトル保有は800/1.9/2.5GHzの三層で120MHz超",
+      "transcript_call_type": "Q3_quarterly",
+      "affected_claims": [1]
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "ネットワーク整備完了市場（70%超の整備率）でブロック通話41%減少、3Gデータ速度25%向上。通話切断率は50%超改善（前年比）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "2014年通年CapEx目標$8B。2014年末流動性ポジション$7.5B（現金$3.7B＋未使用クレジット枠$3.8B）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [5]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "顧客ケア年間オペコストを2008年比$2B削減済み。$1.5B追加コスト削減計画（対2014年）を推進中",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [6]
+    }
+  ]
+}

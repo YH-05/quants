@@ -1,0 +1,230 @@
+{
+  "ticker": "CA",
+  "company_name": "CA Technologies (CA, Inc.)",
+  "extraction_date": "2015-09-30",
+  "cutoff_date": "2015-09-30",
+  "transcript_sources": [
+    "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+    "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+  ],
+  "extraction_notes": "CA Technologies has a March 31 fiscal year end. No Q4 annual earnings call transcripts were available in the dataset (only Q2/Q3 quarterly calls). Per Rule 12-T, Q3 FY2014 (Jan 2014) and Q3 FY2015 (Jan 2015) transcripts were used as the closest available annual-period proxies.",
+  "extraction_summary": {
+    "total_claims": 8,
+    "claim_type_breakdown": {
+      "competitive_advantage": 6,
+      "cagr_connection": 1,
+      "factual_claim": 1
+    },
+    "confidence_breakdown": {
+      "0.9": 1,
+      "0.7": 2,
+      "0.5": 3,
+      "0.3": 2
+    },
+    "power_classification_breakdown": {
+      "switching_costs": 2,
+      "scale_economies": 1,
+      "process_power": 1,
+      "counter_positioning": 1,
+      "null": 1,
+      "cagr_connection": 1,
+      "factual": 1
+    }
+  },
+  "claims": [
+    {
+      "id": "CA_001",
+      "claim_type": "competitive_advantage",
+      "claim": "CA Technologies' Mainframe Solutions business benefits from deep structural switching costs: customers with CA mainframe software (security, operations management, DevOps tools) face prohibitive migration costs due to decades of integration, customized configurations, and critical dependency of production workloads on CA's tools, enabling renewal yields consistently in the low-to-mid 90% range and Mainframe segment operating margins of 58-62%.",
+      "evidence": "Q3 FY2014 call: Mainframe segment operating margin 62%. Q3 FY2015 call: Mainframe segment operating margin 58%. Renewal yield consistently 'low 90s' across both periods. CEO stated: 'customers are getting very careful about mainframe purchases' but also confirmed top 100 mainframe customers all have significant ongoing spend with CA. CFO noted 'we are really the only vendor with IBM that have a strong Linux and strong mainframe' and 'renewal yield would have been in the low 90s' excluding an extraordinary large SI deal.",
+      "rule_evaluation": {
+        "applicable_rules": ["rule01", "rule04", "rule06", "rule07"],
+        "rule01": {
+          "result": "pass",
+          "note": "Consistently realized renewal yields in the low 90s and 58-62% segment margins are demonstrated outcomes, not stated intentions."
+        },
+        "rule04": {
+          "result": "pass",
+          "note": "Renewal yield consistently 'low 90s'; Mainframe segment margins 58-62% are quantified evidence of pricing power."
+        },
+        "rule06": {
+          "result": "pass",
+          "note": "The switching costs arise from structural dependency: replacing CA mainframe software in a production environment requires rewriting automation scripts, changing operations workflows, retraining staff, and risking downtime—all prohibitively expensive for large financial/government/utility customers."
+        },
+        "rule07": {
+          "result": "pass",
+          "note": "BMC Software is the primary competitor in mainframe management; however CA is described as one of the only firms still investing at scale in mainframe, and both EMEA/Asia customers are explicitly described as standardizing on CA over alternatives."
+        },
+        "overall_confidence": 0.7,
+        "reasoning": "Mainframe switching costs are well-documented and the high renewal yields and margins provide quantitative validation. Counter-argument: mainframe workloads overall are declining as a portion of IT, so the switching cost moat applies to a shrinking addressable market. 70% confidence."
+      },
+      "power_classification": "switching_costs",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_002",
+      "claim_type": "competitive_advantage",
+      "claim": "CA Technologies is one of the few enterprise software vendors that can deliver an integrated end-to-end solution from mobile application monitoring through middleware, application servers, and back to the mainframe—a capability that point-solution vendors fundamentally cannot replicate—positioning CA as the only vendor able to monitor mission-critical transactions at enterprise scale across multi-platform hybrid architectures.",
+      "evidence": "Q3 FY2015 call: CEO stated: 'We are one of the few software providers that can deliver an integrated set of solutions at scale across multiple platforms to help plan, develop, manage and secure applications.' Specific mobile APM claim: 'I think we're the only company that can go directly from a mobile application, all the way through all the middleware, into the mainframe or the cloud.' UIM competitive win: large cloud IaaS company chose CA 'over its parent company's alternative offering.' Athletic apparel company win: CA chosen 'for our ability to offer an enterprise-wide global solution and services view.'",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule06", "rule07"],
+        "rule04": {
+          "result": "partial",
+          "note": "Mobile APM to mainframe monitoring capability is asserted but limited quantitative evidence. Competitive wins cited are qualitative examples."
+        },
+        "rule06": {
+          "result": "pass",
+          "note": "The ability to instrument an entire application stack from mobile to mainframe is structural—it requires deep investments across multiple product families maintained in parallel, which point-solution vendors cannot fund at similar scale."
+        },
+        "rule07": {
+          "result": "pass",
+          "note": "CEO explicitly claims uniqueness ('the only company that can go directly from a mobile application... into the mainframe or the cloud'). IBM provides some overlap but lacks the breadth across DevOps, monitoring, security, and PPM."
+        },
+        "overall_confidence": 0.5,
+        "reasoning": "The end-to-end multi-platform claim is plausible and strategically important, but the uniqueness assertion has not been independently validated, and the breadth of portfolio creates integration complexity that may limit adoption. APM had 20%+ growth but overall ES was still declining. 50% confidence."
+      },
+      "power_classification": "scale_economies",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_003",
+      "claim_type": "competitive_advantage",
+      "claim": "CA Technologies holds a structural leadership position in DevOps service virtualization, enabling large enterprises to accelerate software development by simulating dependent systems and services—a capability that has demonstrated land-and-expand dynamics at major customers including Lloyds Banking Group (where a single project grew to a multi-million dollar enterprise standardization) and multiple Fortune 500 wins across financial services, retail, and technology verticals.",
+      "evidence": "Q3 FY2014 call: CEO described Lloyds Banking Group CA LISA Service Virtualization: 'What started as a single project has grown into a multimillion dollar investment to standardize on our Service Virtualization solution throughout the enterprise.' Q3 FY2015 call: EMEA win with 'large multinational bank... sixth new transaction with CA over the last 24 months' with spending increasing over 4 years. Fortune 500 restaurant chain: initial $250K transaction expanding; 'cross-sell potential greater than $5 million revenue run rate.' CEO claimed market leadership: 'I would argue that we are the market leader in [DevOps].'",
+      "rule_evaluation": {
+        "applicable_rules": ["rule01", "rule04", "rule06"],
+        "rule01": {
+          "result": "pass",
+          "note": "Lloyds enterprise standardization, $300M+ SI renewal including Nimsoft, and 580+ new logos over trailing 12 months are demonstrated outcomes."
+        },
+        "rule04": {
+          "result": "pass",
+          "note": "Multi-million dollar Lloyds standardization, 6th transaction with EMEA multinational bank, $5M cross-sell potential at restaurant chain—all quantified land-and-expand examples."
+        },
+        "rule06": {
+          "result": "pass",
+          "note": "Service virtualization creates a switching cost once it becomes embedded in a development workflow: replacing it requires re-virtualizing all dependent services, retraining development teams, and breaking automated testing pipelines."
+        },
+        "overall_confidence": 0.5,
+        "reasoning": "Service virtualization leadership is credible with transaction evidence. Counter-argument: the market is competitive with IBM, HP, and newer entrants; CA's claimed 'market leader' status is not independently verified. 50% confidence."
+      },
+      "power_classification": "switching_costs",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_004",
+      "claim_type": "competitive_advantage",
+      "claim": "CA Technologies' freemium/try-and-buy go-to-market model for enterprise software—deployed with Nimsoft Monitor Snap (5,000 downloads in 147 countries in 100 days) and expanding across the product portfolio—creates a customer acquisition process advantage by reducing cost of sales and enabling technical validation that shortens enterprise sales cycles from 12-18 months.",
+      "evidence": "Q3 FY2014 call: CEO described Nimsoft Monitor Snap: '5,000 customers in 147 countries downloaded Nimsoft Monitor Snap' in 100 days since launch. CEO: 'more than 20% and probably less than 50% of almost all of those [ITKO] purchases happen by the customer touching and feeling and seeing the application at work.' Q3 FY2015 call: CEO referenced 'shortening of our sales cycles, as the technical aspect of the buying process is already proven' for named and growth accounts using smaller initial transactions.",
+      "rule_evaluation": {
+        "applicable_rules": ["rule06", "rule08"],
+        "rule06": {
+          "result": "partial",
+          "note": "Try-and-buy is a go-to-market tactic, not a structural competitive moat. Competitors can replicate this approach. However, CA's breadth of products makes freemium at scale uniquely challenging to replicate for point-solution vendors."
+        },
+        "rule08": {
+          "result": "partial",
+          "note": "The 5,000 downloads are a leading indicator, not yet a proven revenue outcome. The conversion pipeline was 'less than 10 but more than 5 transactions' moving to paid—too early to declare as a structural advantage. Rule08 suggests caution: strategy ≠ advantage."
+        },
+        "overall_confidence": 0.3,
+        "reasoning": "The freemium/try-and-buy model is a promising tactical innovation but has not yet proven to be a structural competitive advantage at the time of these calls (Q3 FY2014). Conversion data was nascent. Rule08 applies. 30% confidence."
+      },
+      "power_classification": null,
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_005",
+      "claim_type": "competitive_advantage",
+      "claim": "CA Technologies' API management solution enables enterprises to manage and secure API traffic at the scale and security levels required by large organizations (telcos, financial services, e-commerce platforms), a market where CA is positioned as 'the only vendor' capable of enterprise-grade API management with requisite security, evidenced by wins at a large auto manufacturer (enterprise-wide expansion including mainframe and DevOps) and a media company (competitive displacement for superior performance/scalability).",
+      "evidence": "Q3 FY2015 call: 'We are the only vendor that can provide API management solution at the scale and security levels needed for the massive amount of data traversing these newly-created digital platforms.' Consumer electronics provider post-Cyber Monday e-commerce failure: chosen for CA API management. CEO: 'ability to triple our revenue run rate with this customer over the next 12 months.' By Q2 FY2016 (201510): API management new sales 'up in the high 30s year-over-year.' Large auto manufacturer: enterprise-wide expansion with API management establishing footprint in finance division.",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule07"],
+        "rule04": {
+          "result": "partial",
+          "note": "High-30s% new sales growth in API management is strong leading indicator. However the revenue base is not disclosed, limiting assessment of absolute scale."
+        },
+        "rule07": {
+          "result": "partial",
+          "note": "CEO's uniqueness claim ('only vendor') requires scrutiny. MuleSoft, Apigee (Google), and IBM also compete in API management at enterprise scale. CA may have differentiation in mainframe/security integration but the uniqueness claim is overstated."
+        },
+        "overall_confidence": 0.5,
+        "reasoning": "API management is a growing market and CA has real traction. However, the competitive landscape is crowded and the 'only vendor' claim lacks credible support. The mainframe-to-API integration angle is a genuine differentiator for hybrid enterprises. 50% confidence."
+      },
+      "power_classification": "counter_positioning",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_006",
+      "claim_type": "competitive_advantage",
+      "claim": "CA Technologies' strategic separation of platinum accounts (large ELA renewals) from named and growth accounts (new logos and expansion), combined with product discipline specialization in the sales force, has improved consistent execution—evidenced by EMEA growing for 3 consecutive quarters by Q3 FY2015 and Enterprise Solutions declining from -20% to approaching flat over 2 fiscal years.",
+      "evidence": "Q3 FY2015 call: 'EMEA team's third quarter in a row of performance that was in line with our expectations.' CEO: 'Enterprise segment was shrinking by 20% [when he joined]; After 1 year, we cut that in half. If you take a look at where we'll end this year, Enterprise segment will be down to flat.' Q3 FY2014 call: CEO described new quota-bearing rep structure and account separation strategy. By Q2 FY2016: 'improved win rates, decreased average sales cycles, improved pipeline conversion rates and increased average deal sizes.'",
+      "rule_evaluation": {
+        "applicable_rules": ["rule01", "rule08"],
+        "rule01": {
+          "result": "partial",
+          "note": "EMEA 3 consecutive quarters of in-line performance and ES from -20% to approaching flat are results, but they represent a recovery from a poor baseline rather than demonstration of competitive advantage."
+        },
+        "rule08": {
+          "result": "fail",
+          "note": "Sales force structural reorganization is an operational improvement strategy, not a competitive advantage in the Hamilton Helmer sense. Any competitor can reorganize their sales force. This is a management execution improvement, not a Power."
+        },
+        "overall_confidence": 0.3,
+        "reasoning": "Sales execution improvements are operationally important and show management quality, but do not constitute a structural competitive advantage per 7 Powers framework. Rule08 applied. 30% confidence."
+      },
+      "power_classification": "process_power",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_007",
+      "claim_type": "cagr_connection",
+      "claim": "CA Technologies maintained a non-GAAP operating margin of 37-39% throughout FY2014 (raised midpoint guidance to 37%) and FY2015 (guidance maintained at 37%), with Mainframe segment margin consistently 58-62%, and CFFO guidance of $960M-$1.04B (FY2014) and $1.0B-$1.07B (FY2015), demonstrating sustained cash generation despite flat-to-declining revenue.",
+      "evidence": "Q3 FY2014 call: 'Raising full year non-GAAP operating margins to 37% from 36%.' Mainframe margin 62%. Full year CFFO guidance $960M-$1.04B. Q3 FY2015 call: 'Non-GAAP operating margin of 37%.' Mainframe margin 58%. CFFO guidance $1.0B-$1.07B. CFO noted this includes headwinds from tax normalization and restructuring.",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04"],
+        "rule04": {
+          "result": "pass",
+          "note": "Quantified margins and CFFO across 2 fiscal year guidance updates provide strong evidence of earnings durability."
+        },
+        "overall_confidence": 0.7,
+        "reasoning": "Consistent 37%+ non-GAAP operating margins and $1B+ CFFO despite revenue headwinds demonstrate the resilience of CA's subscription-based model. The mainframe moat sustains cash generation even as Enterprise Solutions transitions. 70% confidence for cagr_connection."
+      },
+      "power_classification": "cagr_connection",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    },
+    {
+      "id": "CA_008",
+      "claim_type": "factual_claim",
+      "claim": "CA Technologies reported Q3 FY2014 revenue of $1.16B (down 2%), non-GAAP operating margin of 39%, and raised FY2014 full-year non-GAAP operating margin guidance to 37%. Q3 FY2015 revenue was $1.09B (down 1%), non-GAAP operating margin of 38%, with full-year FY2015 CFFO guidance of $1.0B-$1.07B. Mainframe segment margins were 62% (Q3 FY2014) and 58% (Q3 FY2015).",
+      "evidence": "Directly reported in Q3 FY2014 and Q3 FY2015 earnings call transcripts. These are reported financial results and management-issued guidance.",
+      "rule_evaluation": {
+        "applicable_rules": [],
+        "overall_confidence": 0.9,
+        "reasoning": "Directly reported financial results. 90% confidence for factual baseline. Note: CA Technologies has a March 31 fiscal year; 'Q3' calls occur in January and reflect year-to-date results through December."
+      },
+      "power_classification": "factual",
+      "evidence_sources": [
+        "research/ca_strategy_poc/transcripts/CA/201401_earnings_call.json",
+        "research/ca_strategy_poc/transcripts/CA/201501_earnings_call.json"
+      ]
+    }
+  ]
+}

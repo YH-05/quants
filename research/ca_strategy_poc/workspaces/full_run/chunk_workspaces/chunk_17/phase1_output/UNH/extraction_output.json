@@ -1,0 +1,194 @@
+{
+  "ticker": "UNH",
+  "transcript_source": "Q4 2014 Earnings Call (2015-01-21) + Q1-Q2 2015",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true
+  },
+  "claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "Optumプラットフォーム（OptumHealth/OptumInsight/OptumRx）の一体化による医療費管理能力",
+      "descriptive_label": "Optum統合プラットフォームによる医療費管理・分析優位",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'Optum had a remarkable year in 2014. Revenues grew by 25%. Operating margins expanded to 6.9% and earnings grew by 32%... OptumInsight's $8.6 billion backlog provides a clear indication of the future revenue performance... clinical encounter data set of over 55 million lives'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [9],
+      "cagr_connections": [2],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t", "rule_11_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "pass",
+            "reasoning": "OptumInsightのデータ分析（55百万人の臨床データ）、OptumHealthの医療提供（2百万人患者）、OptumRxの薬剤管理という具体的な3つの能力が統合プラットフォームを形成"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "55百万人の臨床データ、OptumInsight $8.6Bバックログ（+20%）、OptumRx revenue+$8B（+33%）という定量データ多数"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "55百万人の臨床encounter データは競合が短期間では取得不可能。データ規模が分析精度を高め、さらに顧客を獲得する好循環"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "Cigna、Aetna等との直接比較なし。「One Optum」のユニークさへの定量的証拠が不十分"
+          },
+          {
+            "rule": "rule_11_t",
+            "verdict": "pass",
+            "reasoning": "ACA移行期に医療費管理・分析ニーズが急増。Optumの統合的アプローチは業界トレンドと整合"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_IV_t（業界構造×ポジション）+ pattern_III_t",
+        "confidence": 70,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "55百万人の臨床データという競争的モートと統合プラットフォームは評価できる。定量的で業界構造との合致も高い。おおむね納得"
+      }
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "Optum成長 → UnitedHealth Group高一桁収益成長 → FY2015 EPS二桁成長",
+      "descriptive_label": "Optum高成長→UNH全体成長加速",
+      "source_advantage": 1,
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": [
+          {
+            "rule": "rule_5_t",
+            "verdict": "direct",
+            "reasoning": "Optum 25%収益成長 → UNH全体への直接貢献（Optumはトータルの1/3程度）。FY2015高一桁成長ガイダンスへの接続は明確"
+          },
+          {
+            "rule": "rule_12_t",
+            "verdict": "primary",
+            "reasoning": "Q4発言"
+          }
+        ],
+        "confidence": 70,
+        "confidence_adjustments": [],
+        "overall_reasoning": "Optum成長→UNH全体成長の接続は直接的で定量的。おおむね納得"
+      }
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "メディケイド市場での5年間2百万人超有機成長（60%の州メディケイド人口をカバー）",
+      "descriptive_label": "メディケイド市場でのスケールリーダーシップ",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'organic growth of more than 2 million people over the last 5 years, including an exceptional 1 million new members in 2014... Our footprint in the Medicaid market continues to grow, now reaching states where nearly 60% of the Medicaid community reside'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [10],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "「state programs運営のtuned-up medical management and consumer engagement techniques」という能力言及あり。また「dedicated on-the-ground resources」という具体的リソース"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "5年間2百万人超有機成長、2014年1百万人増、州人口60%カバーという強い定量データ"
+          },
+          {
+            "rule": "rule_6_t",
+            "verdict": "structural",
+            "reasoning": "100以上の州別プログラム運営実績と地域コミュニティとの信頼関係は競合に短期間では複製困難"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的差別化）+ pattern_III_t",
+        "confidence": 60,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "メディケイドでの規模とプログラム多様性は定量的で能力説明もある。まあ納得〜おおむね納得"
+      }
+    },
+    {
+      "id": 4,
+      "claim_type": "competitive_advantage",
+      "claim": "FY2015以降 value-based contract $43B超（前払い・リスク共有型）によるコスト管理リーダーシップ",
+      "descriptive_label": "value-based契約規模による医療費管理先進性",
+      "evidence_from_transcript": "Q4 2014 Prepared Remarks（CEO発言）: 'In 2015, we foresee our volume of care delivered through value-based contracts exceeding $43 billion'",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "CEO",
+      "section": "prepared_remarks",
+      "supported_by_facts": [11],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t"],
+        "results": [
+          {
+            "rule": "rule_1_t",
+            "verdict": "partial_pass",
+            "reasoning": "$43B value-based contractは仕組みの一側面。ただし「どのように」このコスト管理を実現するかの詳細が不十分"
+          },
+          {
+            "rule": "rule_4_t",
+            "verdict": "quantitative",
+            "reasoning": "$43B超という大きな定量数値。業界で最大級の規模"
+          },
+          {
+            "rule": "rule_7_t",
+            "verdict": "partial_fail",
+            "reasoning": "Cigna等競合との比較なし"
+          }
+        ],
+        "kb2_t_pattern_match": "pattern_I_t（定量的）",
+        "confidence": 50,
+        "confidence_adjustments": [
+          {
+            "reason": "Q4 annual callでの発言",
+            "adjustment": 0
+          }
+        ],
+        "overall_reasoning": "$43Bという業界最大規模のvalue-based契約は定量的だが、メカニズムへの説明が不足。まあ納得"
+      }
+    },
+    {
+      "id": 9,
+      "claim_type": "factual_claim",
+      "claim": "Optum FY2014: 収益+25%、OPM 6.9%（+）、EPS貢献+32%、$1B/Q超初達成。OptumInsight backlog $8.6B（+20%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [1, 2]
+    },
+    {
+      "id": 10,
+      "claim_type": "factual_claim",
+      "claim": "UNHメディケイド：5年間2百万人超の有機成長。2014年1百万人増。州人口60%カバー。100以上の州別プログラム",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [3]
+    },
+    {
+      "id": 11,
+      "claim_type": "factual_claim",
+      "claim": "FY2015: value-based contracts $43B超。OptumRx +33%収益成長（+$8B）。UNH全体収益$130B超（+6.5%）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": [4]
+    }
+  ]
+}

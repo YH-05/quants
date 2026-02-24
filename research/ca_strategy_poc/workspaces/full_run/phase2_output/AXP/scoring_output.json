@@ -1,0 +1,380 @@
+{
+  "scored_claims": [
+    {
+      "id": "AXP_001",
+      "claim": "American Express の closed-loop ネットワークは、カード会員データとマーチャントデータの双方を保有することで、競合の open-loop ネットワークには提供できない統合的な価値を提供できる構造を持つ。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "final_confidence": 0.7,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "closed-loop ネットワーク構造（仕組み）を評価。Small Business Saturday という具体的能力発揮例あり。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "データの双方向保有は構造的要素。Visa/Mastercard の open-loop では実現困難。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": true,
+          "reasoning": "Visa/Mastercard との明確な差別化（closed vs open）が示されている。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_IV_structural_market_position",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "closed-loop という構造的市場ポジションは高評価パターン IV に合致。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "AXP の closed-loop は Visa/MC の open-loop との構造的差別化として確立されており、データ統合によるマーチャント向け価値提供（Small Business Saturday 等）は具体的能力の証拠。CEO が繰り返し言及する中心的な競争優位性主張。Visa/MC も closed-loop 的機能を強化中という競合動向を加味しても 70%。"
+    },
+    {
+      "id": "AXP_002",
+      "claim": "American Express のプレミアムブランドは、高消費額カード会員（アフルエント層）を引き付ける力を持ち、ROE 29%（目標 25% 超）を実現する spend-centric モデルの基盤となっている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Branding",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "ROE 29% は結果の数値。ブランド力の背後要因（価格決定力、顧客粘着性のメカニズム）の説明が弱い。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": false,
+          "reasoning": "定量的裏付けは ROE 29%（財務実績）のみ。競合（Chase Sapphire 等）との顧客属性比較なし。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "ROE 29% という結果数値をブランド力の証拠として使用するパターン。却下パターン A 部分合致。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "costco_loss_risk",
+          "adjustment": -0.1,
+          "reasoning": "コストコ喪失（ビリングスの 8%）というモデル転換期のリスクがブランド力評価に影響。"
+        }
+      ],
+      "overall_reasoning": "AXP プレミアムブランドは実在するが、PoiT 時点でコストコ喪失というモデル転換期にある。カナダでコストコ終了後も 50%+ の出店外消費を retain した事実はブランド粘着性の証拠。ただし dogma.md ブランド類型 3（価値維持機能）としての証拠は限定的。50%。"
+    },
+    {
+      "id": "AXP_003",
+      "claim": "Membership Rewards プログラムおよびコーポレートカードの IT 統合（Concur との連携など）は、企業カード会員・個人カード会員の切り替えコストを高める。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Membership Rewards という切り替えコストの仕組み（能力）を評価。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "Chase UR、Citi TYP 等の競合ロイヤルティプログラムとの明確な差別化が示されていない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "Membership Rewards は AXP 特有の成熟したプログラムであり、業界共通とは言えない。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Membership Rewards の蓄積ポイント（切り替え時に失われる）は Switching Costs の典型的仕組み。Delta renewal の経済的リセット（$109M upfront cost）は co-brand パートナーにとっての切り替えコストの証拠。競合ロイヤルティプログラムとの差別化が弱い点を加味して 50%。"
+    },
+    {
+      "id": "AXP_004",
+      "claim": "2014 年にネットワーク上の支出が初めて 1 兆ドルを超えた。このスケールにより、マーチャント向けのデータ分析・マーケティング施策の提供を実現している。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "$1T 突破は規模の結果。規模がコスト逓減や差別化をもたらすメカニズムの説明が不十分。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "$1T という具体的数値。2 年連続でオペレーティングコスト成長を目標以下に抑制したという定量的裏付けあり。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "$1T 突破（結果）を Scale Economies（能力）の証拠として使用する傾向あり。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "costco_loss_risk",
+          "adjustment": -0.1,
+          "reasoning": "コストコ喪失でビリングスが 8% 減少するリスクがあり、スケール維持の不確実性。"
+        }
+      ],
+      "overall_reasoning": "$1T ネットワーク支出は規模の証拠。OpEx 成長 2 年連続で目標下回りという規律も評価。ただしコストコ喪失による縮小リスクが存在。Scale Economies のメカニズム（データ分析等）の具体的差別化証拠が限定的。50%。"
+    },
+    {
+      "id": "AXP_005",
+      "claim": "American Express は継続的な組織効率化とオペレーティングコスト規律を制度化しており、長期的なコスト管理能力が競合との差異化要素となっている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Process Power",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "組織的なコスト規律（仕組み）を評価。テクノロジー活用による構造的変革も含む。"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": false,
+          "reasoning": "テクノロジー活用による効率化は業界全体のトレンド。AXP 固有の Process Power か判断困難。補完的要素の性質が強い。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_B_industry_common",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "テクノロジー変革による効率化は業界共通施策。差別化の根拠が弱い。"
+        }
+      ],
+      "confidence_adjustments": [],
+      "overall_reasoning": "2 年連続でオペレーティングコスト成長目標以下という実績は Process Power の証拠として機能。ただし業界全体でテクノロジーによる効率化が進んでおり、AXP 固有の独自メカニズムの説明が不十分。50%。"
+    },
+    {
+      "id": "AXP_006",
+      "claim": "OptBlue プログラムを通じて、14 の米国主要マーチャント・アクワイアラーが参加し、2015 年上半期に 70 万超の新規スモールマーチャントを獲得した。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "OptBlue は仕組み（アクワイアラーを通じた加盟店拡大メカニズム）を評価。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "70 万超の新規マーチャント（2015 年上半期）という具体的定量データあり。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_I_quantitative_differentiation",
+          "matched": false,
+          "adjustment": 0.0,
+          "reasoning": "加盟店数の増加は定量的だが、Network Economies の典型指標（加盟店あたり消費額増加等）の証拠がない。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q2 2015 secondary source のため -10% 調整が Phase 1 で適用済み。"
+        }
+      ],
+      "overall_reasoning": "OptBlue による加盟店拡大は定量的に進捗確認。ただし「多年度のプロセス」であり、PoiT 時点での完成度は限定的。加盟店増加がカード会員の支出増加につながるメカニズムの証拠なし。50%。"
+    },
+    {
+      "id": "AXP_007",
+      "claim": "Plenti loyalty coalition を 2015 年に米国でローンチし、2 千万人超のコレクターを獲得した。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "20M コレクター登録数は初期の結果。Network Economies のメカニズム（コレクター増加による価値向上）はまだ機能していない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_result_as_cause",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "登録数（初期結果）を Network Economies の証拠として使用。早期段階で Network Economies の確認には至っていない。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "early_stage",
+          "adjustment": -0.2,
+          "reasoning": "ローンチ直後で「非常に初期段階」とマネジメント自身が認めている。"
+        }
+      ],
+      "overall_reasoning": "Plenti は 2015 年ローンチ直後。20M コレクターは登録数であり支出転換は未証明。dogma.md ルール 5（因果関係の飛躍）に注意。PoiT 時点では 30%。"
+    },
+    {
+      "id": "AXP_008",
+      "claim": "コストコ米国との関係終了を戦略的に選択した判断は、spend-centric モデルの明確化であり、競合が模倣困難な価値提供モデルへの収斂を示す。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Counter-Positioning",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_8_t",
+          "result": false,
+          "reasoning": "コストコ終了は戦略的意思決定（戦略）であり、それ自体が Counter-Positioning の証拠にはならない。"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_F_strategy_confusion",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "経営判断（コストコ終了）を Counter-Positioning 優位性として提示するパターン。"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "management_self_justification",
+          "adjustment": -0.2,
+          "reasoning": "経営判断の後付け説明に注意（dogma flags）。ビリングス 8% 喪失という具体的ダメージの証拠あり。"
+        }
+      ],
+      "overall_reasoning": "コストコ終了の選択は戦略的意思決定（dogma.md ルール 8 違反）。Counter-Positioning として機能するには「競合が模倣できない理由が自社ビジネスモデルを傷つけるから」という要件を満たさない。30%。"
+    },
+    {
+      "id": "AXP_009",
+      "claim": "GNS セグメントは 2015 年 Q1・Q2 ともに FX 調整後 16% 成長、ROE は全社平均を大幅に上回る。国際ネットワークのスケール拡大が、全体の ROE 維持に貢献している。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "GNS 高成長・高 ROE は結果の数値。国際ネットワーク拡大のメカニズムが Scale Economies をもたらす能力の説明が弱い。"
+        },
+        {
+          "rule_id": "rule_4_t",
+          "result": true,
+          "reasoning": "16% 成長・高 ROE は複数四半期で一貫した定量的裏付けあり。"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [
+        {
+          "source": "source_type_secondary",
+          "adjustment": -0.1,
+          "reasoning": "Q2 2015 secondary source のため -10% 調整。"
+        }
+      ],
+      "overall_reasoning": "GNS の継続的高成長・高 ROE は国際 Scale Economies の間接的証拠として機能。ただし GNS 規模・絶対額の詳細開示が限られており、全社への影響定量化が困難。50%。"
+    },
+    {
+      "id": "AXP_010",
+      "claim": "AXP はコーポレート向けカード事業において、大企業の経費管理システムへの深い統合（Concur・SAP との提携継続）を維持しており、法人顧客の切り替えコストを高めている。",
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "final_confidence": 0.5,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "Concur/SAP との IT 統合という切り替えコストの仕組み（能力）を評価。"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "AXP の Concur 持分は約 13%（少数株主）。SAP 傘下での排他性は不明確。"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Concur/SAP との提携は法人顧客の経費管理統合を強化。ただし AXP の少数株主ポジション（13%）では排他性は保証されない。GCS ビリングス成長鈍化（Q2: 2%）も懸念材料。50%。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 10,
+    "confidence_distribution": {
+      "20-30": 2,
+      "40-50": 7,
+      "60-70": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

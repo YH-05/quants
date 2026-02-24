@@ -1,0 +1,110 @@
+{
+  "ticker": "ITW",
+  "batch_index": 1,
+  "batch_total": 3,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_4_t", "rule_5_t", "rule_6_t", "rule_7_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_A", "pattern_B", "pattern_C", "pattern_D", "pattern_II"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 5
+  },
+  "scored_claims": [
+    {
+      "id": "ITW-006",
+      "claim_type": "competitive_advantage",
+      "claim": "Food Equipment分野での顧客バックドイノベーション（customer-backed innovation）能力",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 顧客起点のイノベーションプロセスは能力の説明として認められる",
+        "rule_4_t": "FAIL: 'above-market growth'は相対的だが定量的比較データなし（競合Food Equipment企業との比較なし）",
+        "rule_6_t": "PASS: イノベーション能力は事業の核心的要素",
+        "rule_12_t": "FAIL: Q3発言（従・②相当）。Q4仮説に含まれていなかった新発見として警戒"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_D_qualitative_only",
+        "assessment": "Q3での新たな発見。'customer-backed innovation'は定性的な概念で具体的なイノベーションプロセスの説明がない。競合（Manitowoc等）との比較なし"
+      },
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.2,
+          "reasoning": "Q3発言（従・②相当）でQ4仮説に含まれない新発見。dogma Section 5（情報ソースの優先順位）に基づき-20%調整適用"
+        }
+      ],
+      "scoring_rationale": "Q3発言で-20%調整適用。概念としては認められるが、具体的なイノベーションプロセスの開示なし、定量的競合比較なし。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "ITW-007",
+      "claim_type": "cagr_connection",
+      "claim": "製品ライン簡素化完了 → 高付加価値製品への集中 → オーガニック成長加速 → 売上CAGR押し上げ",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: PLS活動が1ppのオーガニック成長を抑制→完了後は緩和という直接的因果説明あり",
+        "rule_12_t": "PASS: Q4年次発言での体系的な説明"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "PLS完了→成長抑制解除→オーガニック成長加速という2-3ステップの直接的なメカニズム。検証可能性あり（将来の売上報告で確認可能）"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言由来のCAGR接続。優位性（ITW-001: 80/20哲学）が100%あるものとして評価。PLS活動の1pp成長抑制緩和は2016年以降に実現する具体的なメカニズム。開示データで検証可能。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "ITW-008",
+      "claim_type": "cagr_connection",
+      "claim": "Enterprise Initiatives（BSS + Strategic Sourcing）→ 100bp/年マージン改善 → EPS成長 → TSR 12-14%",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: 100bp/年マージン改善→EPS成長→TSR 12-14%という直接的因果チェーン。各ステップに定量データあり",
+        "rule_12_t": "PASS: Q4年次発言で投資仮説の根幹として設定"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "Volume growth独立の100bp/年マージン改善→EPS成長→TSR 12-14%という3ステップ。各ステップが数値で裏付けられており最高評価パターンに近い"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言由来のCAGR接続で最も信頼性が高い主張の一つ。優位性（ITW-002）が100%あるものとして評価。TSR 12-14%というガイダンスは株主へのコミットメントとして検証可能。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "ITW-009",
+      "claim_type": "competitive_advantage",
+      "claim": "分散型事業ポートフォリオ構造による景気サイクルへの耐性",
+      "phase1_confidence": 0.3,
+      "final_confidence": 0.3,
+      "kb1_critique": {
+        "rule_1_t": "FAIL: ポートフォリオ分散は構造的特性であり能力の説明ではない。多くの産業コングロマリットが持つ特徴",
+        "rule_6_t": "PASS: 分散構造自体は構造的要素",
+        "rule_12_t": "FAIL: Q3発言（従・②相当）でQ4仮説への補足として位置づけ"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_B_industry_common",
+        "assessment": "産業コングロマリット（Parker Hannifin、Dover、Emerson等）はいずれも複数セグメントを持つ。分散ポートフォリオはITW固有の優位性として評価困難（Pattern B適用）"
+      },
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.2,
+          "reasoning": "Q3発言のため-20%調整"
+        }
+      ],
+      "scoring_rationale": "Q3発言かつ産業コングロマリット共通の特性。dogma Section 1.2（業界共通能力の却下基準）に該当。Phase 1評価30%を維持する"
+    },
+    {
+      "id": "ITW-010",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年の営業利益率19.9%（過去最高）、EPS成長29%、フリーキャッシュフロー変換率110%",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。ITW-001とITW-002の主張を裏付ける事実情報として参照"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外。2014年の営業利益率19.9%（過去最高）という数値はITW-001/002の定量的裏付けとして機能する"
+    }
+  ]
+}

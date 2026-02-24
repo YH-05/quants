@@ -1,0 +1,78 @@
+{
+  "ticker": "ABBN",
+  "batch_index": 1,
+  "scored_claims": [
+    {
+      "claim_id": "ABBN_006",
+      "claim_type": "competitive_advantage",
+      "power_type": "cornered_resource",
+      "transcript_type": "secondary",
+      "source_quarter": "Q3 2014",
+      "claim_summary": "ABBは525kV HVDCケーブル（業界初、送電容量2倍）とYuMi協働ロボットという2つの革新的製品を開発し、HVDC電力インフラと産業自動化の新市場を開拓しようとしている。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule01": "PASS - 技術革新能力の主張",
+        "rule04": "PASS - 525kV/容量2倍という定量的技術差別化",
+        "rule07": "PASS - 525kVは業界初という明確な技術的先行",
+        "rule08": "FAIL - 新製品ローンチ段階であり商業的牽引力は未実証",
+        "rule12": "FAIL - Q3 2014（二次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["F-T (戦略と優位の混同: 新製品ローンチは戦略的投資であり実証済み優位ではない)"],
+        "high_eval_patterns": ["I-T (定量的差別化: 525kV/送電容量2倍という技術的差別化)", "III-T (能力を示す: 業界初の技術開発という能力)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule08 (戦略と優位の区別)", "rule12 (二次ソース調整)"],
+        "conclusion": "525kV HVDCケーブルは業界初の技術的成果として実質的。YuMiはコンセプト段階。二次ソース調整。新製品として商業的実績が未確認のため50%。"
+      },
+      "scoring_rationale": "525kV業界初技術は有効な差別化。ただし新製品ローンチ段階で商業的実証なし。二次ソース調整。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "ABBN_007",
+      "claim_type": "cagr_connection",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "Q4 2013",
+      "claim_summary": "ABBは$300Bインストールベースのサービス捕捉率を25%から40%へ高めることで、年間サービス売上の成長を通じグループ全体のCAGRを引き上げるメカニズムを持つ。",
+      "confidence_score": 0.5,
+      "kb1_rules_applied": {
+        "rule04": "PASS - $300B/$200B、25%→40%捕捉率という定量的根拠",
+        "rule06": "PASS - インストールベース捕捉→サービス売上成長→グループCAGR向上の2ステップメカニズム"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": ["C-T (因果の飛躍: 捕捉率25%→40%がグループCAGRに貢献するメカニズムの定量化が不十分—サービス売上構成比の開示なし)"],
+        "high_eval_patterns": ["II-T (直接的CAGRメカニズム: インストールベース捕捉→サービス収益という2ステップ)"]
+      },
+      "dogma_rules_applied": {
+        "applied": ["rule04 (定量的根拠)"],
+        "conclusion": "捕捉率向上→サービス売上増という機序は明確だが、サービス売上のグループ売上への貢献比率が開示されていない。グループ全体のCAGR向上への寄与度が不明確。50%。"
+      },
+      "scoring_rationale": "インストールベース捕捉率メカニズムは有効だが、グループCAGRへの寄与規模が不明確。パターンII/C両面あり。一次ソース。50%。",
+      "final_confidence": 0.5
+    },
+    {
+      "claim_id": "ABBN_008",
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "transcript_type": "primary",
+      "source_quarter": "Q4 2013",
+      "claim_summary": "ABB FY2013実績：売上~$42B（過去最高）、フリーキャッシュフロー$2.6B、オペレーショナルEBITDA前年比+9%、純運転資本/売上比率15%、5期連続増配（CHF 0.70/株）。",
+      "confidence_score": 0.7,
+      "kb1_rules_applied": {
+        "rule04": "PASS - 複数の定量的財務指標（$42B、$2.6B、+9%、15%、CHF 0.70）",
+        "rule12": "PASS - Q4 2013年次決算（一次ソース）"
+      },
+      "kb2_patterns_applied": {
+        "rejection_patterns": [],
+        "high_eval_patterns": []
+      },
+      "dogma_rules_applied": {
+        "applied": ["事実確認型クレームとして評価"],
+        "conclusion": "財務数値は検証可能な事実。年次決算一次ソース。"
+      },
+      "scoring_rationale": "事実確認型クレーム。一次ソースの具体的財務指標。70%。",
+      "final_confidence": 0.7
+    }
+  ]
+}

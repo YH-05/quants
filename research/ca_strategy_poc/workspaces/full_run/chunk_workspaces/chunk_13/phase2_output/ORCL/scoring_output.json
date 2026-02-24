@@ -1,0 +1,294 @@
+{
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "Oracleデータベースが競合クラウドSaaS企業（Salesforce、SAP SuccessFactors/Ariba/Concur）の基盤として広く採用されており、競合他社自身がOracle製品に依存しているという技術的ロックイン構造",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": "pattern_V_specific_competitor_comparison",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "競合他社（Salesforce、SAP）の具体名と依存事実が定量的に示されている（Salesforce 9年契約、SAP 3社）",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "競合他社自身がOracle DBに依存するという事実は強力なSwitching Costsの証拠。Q4 annual callでの発言（主・①相当）。Workdayは非依存であり完全独占ではないが、Salesforce/SAPという主要競合の依存は構造的スイッチングコストの高さを示す。KB2パターンV（特定競合との比較）に合致し高評価。"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "SaaS/PaaS/IaaSの垂直統合型クラウドスタック（ハードウェア Engineered Systems ＋ OS ＋ Database ＋ Java Middleware ＋ Applications）を一社で提供できる唯一性",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "「自社でサプライチェーンを完結させる能力」という仕組みを評価。フルスタック内製は独自の強み",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "垂直統合型スタック（電気・建物以外は全自社製）は能力・仕組みとして明確。SaaS顧客獲得時にハードウェア・OS・DB・ミドルウェアを全て取り込めるモデルは規模の経済と差別化を両立。純粋競合（IBM、SAP）に対する定量的コスト優位の欠如で90%には届かないが、70%は妥当。"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "power_type": "Network Economies",
+      "claim_text": "Oracle DatabaseとJava Middlewareがエンタープライズ向けPaaSプラットフォームにおけるデファクトスタンダードとなっており、ISVコミュニティ（基幹システムベンダー）が Oracle PaaS上でクラウド移行するネットワーク効果",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_pattern_matched": "pattern_IV_structural_market_position",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "「virtually every ISV」の具体的数値化が不十分。AWS Aurora等の代替との競合が不明確",
+          "delta": -0.1
+        },
+        {
+          "reason": "Q4 FY2014発言（主・①相当）でデファクト基盤という業界構造との合致",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "ISVの依存関係はNetwork Economies + Switching Costsとして有望。エンタープライズDB市場での歴史的なデファクト地位は市場構造と合致する（KB2パターンIV）。ただし定量的裏付け不足と、クラウドシフト（AWS RDS等）による競合優位性の変化リスクで50%が上限。"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "クラウドERP市場でWorkdayに対して10倍の顧客規模を持つスケール優位性（Q4 FY2015時点で約1,000顧客 vs Workday）",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "顧客数（10倍）は結果の側面が強い。規模を可能にした能力（製品スコープ、既存顧客移行パス）の説明が不足",
+          "delta": -0.1
+        },
+        {
+          "reason": "Workdayという純粋競合への定量比較は高評価要因",
+          "delta": 0.1
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "Workday対比10倍という定量比較（KB2パターンI）は強力だが、顧客数は「結果」の側面があり（KB2パターンA部分合致）。規模を維持できる能力の説明が不十分で50%に留める。dogma.mdルール1（能力vs結果）とルール7（純粋競合比較）が拮抗。"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "power_type": "Scale Economies",
+      "claim_text": "クラウドサービスの課金成長率がSalesforce（21%）・Workday（31%）を大幅に上回る70%成長（Q4 FY2015 billings growth）を達成した競争力",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule01_capability_not_result"
+      ],
+      "kb2_pattern_matched": "pattern_A_result_as_cause",
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "billings成長率は典型的な「結果」の提示。能力説明なしでrule_1_t違反に近い",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "70% vs Salesforce 21% vs Workday 31%という定量的競合比較（KB2パターンI）は存在するが、成長率は「結果」（KB2パターンA）。SaaS切替期の特殊要因（既存on-premise顧客の移行）が含まれており、持続的競争優位性の証拠として弱い。dogma.mdルール1違反が明確。30%が適切。"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "power_type": "Switching Costs",
+      "claim_text": "既存on-premise顧客（Siebel/EBS等）の保守サポート基盤が高更新率を維持しており、クラウド移行期においても安定した収益を生む高スイッチングコスト",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [
+        "rule04_quantitative_evidence"
+      ],
+      "kb2_pattern_matched": "pattern_III_capability_over_result",
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "更新率の具体的数値（例：95%+）が開示されていないため定量裏付け不足",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "ERP/DBのミッションクリティカル深統合による高スイッチングコストは構造的に妥当。Software Support $18.9B（+8%）という数値で方向性は支持されるが、更新率の具体的数値化がなく、KB2パターンIIIに部分合致。50%が妥当。"
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Salesforce.comはOracleデータベースを9年間使用契約（2013年）、SAP Concur/Ariba/SuccessFactorsはOracle DBを採用",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。claim ID 1, 3の裏付け事実として機能。"
+    },
+    {
+      "claim_id": 8,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Oracle Q4 FY2015: 総売上$10.7B（+3%）、Software Support $18.9B（+8%）、Cloud SaaS/PaaS $419M（+34%）、IaaS $160M（+31%）、営業利益率46%",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。claim ID 2, 6の財務裏付けとして機能。"
+    },
+    {
+      "claim_id": 9,
+      "claim_type": "factual_claim",
+      "power_type": null,
+      "claim_text": "Q4 FY2015時点でOracle Fusion ERPクラウド顧客が約1,100社（Workday ERPクラウド顧客の約10倍）。SaaS bookings成長率200%超（Q4 FY2015）",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": null,
+      "confidence_adjustments": [],
+      "final_confidence": null,
+      "scoring_rationale": "factual_claim: スコアリング対象外。claim ID 4, 5の定量裏付けとして機能。"
+    },
+    {
+      "claim_id": 10,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "競合クラウドベンダー（Salesforce、SAP等）のOracle DB依存 → Oracle DBのクラウドPaaSへの移行促進 → PaaS ARR成長 → 売上CAGR押し上げ",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.3,
+      "confidence_adjustments": [
+        {
+          "reason": "因果チェーンが3段階以上。競合がOracle DBからクラウド移行する際にOracle PaaSを選ぶ保証がない",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.3,
+      "scoring_rationale": "cagr_connection: 優位性（競合DB依存）が100%ある前提でCAGR接続を評価。依存→PaaS移行→ARR成長の接続は3段階以上で各ステップに不確実性あり（dogma.md低評価パターン）。30%が妥当。"
+    },
+    {
+      "claim_id": 11,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "垂直統合型クラウドスタック → クラウド運営コスト優位 → マージン改善 → EPS成長によるCAGR下支え",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "垂直統合→限界コスト低下→マージン改善は2ステップで直接的。「SaaS/PaaSはlicenseと同等の利益率」との方向性はある",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: 2ステップの直接的メカニズム（dogma.md高評価パターン）だが、AWS/Azure対比コスト優位の定量化が不在で50%。「as profitable as license」という方向性は部分的に支持。"
+    },
+    {
+      "claim_id": 12,
+      "claim_type": "cagr_connection",
+      "power_type": "Network Economies",
+      "claim_text": "ISVエコシステム依存 → PaaS採用 → ARR成長（FY2016 $1.5B-$2B ARR見通し）→ 売上CAGR +2-3%寄与",
+      "source_quarter": "Q4 FY2014",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "FY2016 ARR $1.5B-$2B見通しという検証可能な数値あり",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: ISV→PaaS選択→ARR成長は2ステップ。FY2016 ARR見通し数値で検証可能性あり（dogma.md高評価要因）。AWS等代替PaaSリスクで50%に留める。"
+    },
+    {
+      "claim_id": 13,
+      "claim_type": "cagr_connection",
+      "power_type": "Scale Economies",
+      "claim_text": "クラウドERP顧客基盤（1,100社）→ クロスセル/アップセル（HCM、Supply Chain等）→ ARPU拡大 → 売上CAGR下支え",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.5,
+      "confidence_adjustments": [
+        {
+          "reason": "クロスセル率やARPU拡大の数値が未開示",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.5,
+      "scoring_rationale": "cagr_connection: ERP基盤→クロスセルは2ステップで直接的。SaaSのスイート展開は業界標準モデルで方向性は妥当だが、ARPU開示なしで50%。"
+    },
+    {
+      "claim_id": 14,
+      "claim_type": "cagr_connection",
+      "power_type": "Switching Costs",
+      "claim_text": "on-premise保守高更新率 → Software Support $18.9B（+8%）の安定成長継続 → 収益ベースの下支えによるCAGR安定化",
+      "source_quarter": "Q4 FY2015",
+      "source_type": "primary",
+      "gatekeeper_pass": true,
+      "kb1_flags_triggered": [],
+      "kb2_pattern_matched": null,
+      "raw_confidence": 0.7,
+      "confidence_adjustments": [
+        {
+          "reason": "高更新率→保守収益+8%成長は1ステップで直接的。過去実績と一致",
+          "delta": 0.0
+        }
+      ],
+      "final_confidence": 0.7,
+      "scoring_rationale": "cagr_connection: 1ステップの直接的メカニズム（最も高評価パターン）。Software Support $18.9B（+8%）という開示数値で検証可能。クラウド移行による長期減少リスクはあるが、2015時点の安定性は明確。70%が妥当。"
+    }
+  ],
+  "metadata": {
+    "scored_count": 14,
+    "confidence_distribution": {
+      "70-80": 3,
+      "50-60": 6,
+      "30-40": 2
+    },
+    "gatekeeper_applied": false
+  }
+}

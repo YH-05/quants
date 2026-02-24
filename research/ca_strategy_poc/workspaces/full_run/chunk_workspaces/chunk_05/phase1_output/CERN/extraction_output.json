@@ -1,0 +1,206 @@
+{
+  "ticker": "CERN",
+  "cutoff_date": "2015-09-30",
+  "extraction_date": "2026-02-24",
+  "transcript_sources": [
+    "research/ca_strategy_poc/transcripts/CERN/201402_earnings_call.json",
+    "research/ca_strategy_poc/transcripts/CERN/201502_earnings_call.json"
+  ],
+  "claims": [
+    {
+      "id": "CERN_001",
+      "claim_type": "competitive_advantage",
+      "claim": "Cernerの主要競合（Epic）に対する競合比較勝率は過去3年間で2倍に増加しており、市場シェア獲得が加速している。",
+      "evidence": "Q4 2013（201402）トランスクリプト：「我々の勝率は過去3年間で2倍になった。InterMountain Healthcareの選択や他の主要な国内・グローバルでの競合勝利は業界全体に認知されており、当社のポジショニングにプラスの影響を与えている」（Zane Burke）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule01", "rule07", "rule04"],
+        "rule01_result": "PASS: 「勝率が2倍」は能力（市場での競争力）を示す指標であり、結果（市場シェア数値）のみではない",
+        "rule07_result": "PASS: 純粋な競合優位性の主張。特定競合（Epic）との直接比較",
+        "rule04_result": "PASS: 「3年間で2倍」という定量的根拠があるが、絶対値不明",
+        "overall_confidence": 0.5,
+        "reasoning": "勝率改善は競争優位性の直接指標だが、3年前の基準値と現在の絶対的勝率が不明。InterMountain HealthcareなどのSignature winは業界認知度を示す。ただしEpicとの競争は非常に激しく、単年度の趨勢が持続するか不確実。KB3-T参照では競合比較勝率改善は中程度の確信度が妥当"
+      },
+      "power_classification": "counter_positioning",
+      "evidence_sources": ["CERN_Q4_2013"]
+    },
+    {
+      "id": "CERN_002",
+      "claim_type": "competitive_advantage",
+      "claim": "Cernerはオープン・透明・相互運用可能なアーキテクチャを持つ唯一の大手HIT企業であり、主要競合（Epic）は「全く逆のアプローチ」をとっている。この差別化が市場での選択理由となっている。",
+      "evidence": "Q4 2013（201402）トランスクリプト：「Cernerはオープン、透明かつ相互運用可能な会社として明確に差別化されており、主要競合はまさにその逆である。市場にはそれに対する明確な需要と欲求がある」（Zane Burke）；Q4 2014（201502）トランスクリプト：「開放的でインターオペラブルなソリューションを持つことは非常に重要な要素。EMRがさまざまなソリューションを受け入れ、臨床医のワークフローに戻せる能力が必要」（Zane Burke）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule07", "rule06", "rule08"],
+        "rule07_result": "PASS: 純粋な競合比較における差別化主張",
+        "rule06_result": "PARTIAL: オープンアーキテクチャは構造的優位性だが、競合が閉鎖的アーキテクチャを維持し続けるかは不確実",
+        "rule08_result": "CAUTION: 「オープン戦略」は戦略的選択であり、その優位性が持続するかは市場動向依存",
+        "overall_confidence": 0.5,
+        "reasoning": "開放性・相互運用性は規制動向（Meaningful Use, HHS方針）と合致しており構造的有利性あり。ただし競合がアーキテクチャを転換する可能性や、開放性の実際の顧客価値創造の証拠が限定的。iBusが競合EMRクライアントにも販売できているという具体的証拠あり"
+      },
+      "power_classification": "counter_positioning",
+      "evidence_sources": ["CERN_Q4_2013", "CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_003",
+      "claim_type": "competitive_advantage",
+      "claim": "CernerのITWorksアウトソーシングサービスは全クライアントが参照可能（100%）であり、74%がHIMSS EMR採用レベル6または7（業界平均22%の3倍以上）を達成しており、競合が模倣困難なアウトカム実績を持つ。",
+      "evidence": "Q4 2014（201502）トランスクリプト：「ITWorksクライアントは全員が参照可能。100%がMeaningful Useテスト済み。74%がHIMSS EMR採用レベル6または7。これは業界達成水準22%の3倍以上。ITWorksクライアントは通常、最新コードを維持し、新ソリューションを採用し、強力なCernerの支持者である」（Mike Nill）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule01", "rule07"],
+        "rule04_result": "PASS: 100%参照可能、74% vs 22%という具体的な定量根拠",
+        "rule01_result": "PASS: 能力（ITWorks実施を通じた高いEMR採用率実現）を示している",
+        "rule07_result": "PASS: 業界平均との比較による競争優位性の主張",
+        "overall_confidence": 0.7,
+        "reasoning": "定量的な優位性の証拠が複数ある。74% vs 22%という業界平均との差は非常に大きく、ITWorksモデルの価値を裏付ける。収益も60%以上成長して3億ドル超。ただし、ITWorksを導入する組織はすでに意欲的なクライアントである可能性があるセレクションバイアスの問題がある。Process Powerの要素（知識集積）も含まれる"
+      },
+      "power_classification": "process_power",
+      "evidence_sources": ["CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_004",
+      "claim_type": "competitive_advantage",
+      "claim": "Cernerのプロフェッショナルサービス部門は約6,000名のアソシエイトを擁し、世界最大のヘルスケアIT特化コンサルティング企業であり、予測可能なコストと成果の提供能力で第三者依存の競合に対し優位性を持つ。",
+      "evidence": "Q4 2014（201502）トランスクリプト：「約6,000名のアソシエイトを擁するプロフェッショナルサービス部門は世界最大のヘルスケアIT特化コンサルティング企業。サービス能力は、ほぼ全面的に第三者サービスに依存する競合に対して競争優位性をもたらす。予測可能な成果を予測可能なコストで提供できるためである」（Mike Nill）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule07", "rule04", "rule01"],
+        "rule07_result": "PASS: 競合比較における差別化主張（競合は第三者依存）",
+        "rule04_result": "PASS: 6,000名という具体的な規模、プロサービス収益は25%増で10億ドル突破",
+        "rule01_result": "PASS: 規模の能力（デリバリー確実性）を示している",
+        "overall_confidence": 0.5,
+        "reasoning": "プロフェッショナルサービスの内製化は一定の競争優位性を持つが、大規模な実装組織の維持はコスト負担にもなる。予測可能な成果というクレームは検証困難。Scale EconomiesとProcess Powerの要素を兼ね備えるが、競合もサービス能力を強化できる"
+      },
+      "power_classification": "scale_economies",
+      "evidence_sources": ["CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_005",
+      "claim_type": "competitive_advantage",
+      "claim": "Cernerのpopulation healthプラットフォーム（Healthe Intent）はEMR非依存のクラウドベースであり、Cerner以外のEMRクライアントにも販売可能な独自のアドレサブル市場拡張戦略を実現している。",
+      "evidence": "Q4 2013（201402）トランスクリプト：「Healthe Intent Smart Registryはクラウドベースのシステム非依存ソリューション。Cerner以外のクライアントにもSmart Registriesを販売。特定の600床病院（主要競合のEMR使用）にHIEを販売。競合が他システムへの効果的接続ができないことを示した」（Zane Burke）；「EMR非依存のソリューション・デバイスプラットフォーム構築戦略により、アドレサブル市場が大幅拡大した」",
+      "rule_evaluation": {
+        "applicable_rules": ["rule06", "rule01", "rule08"],
+        "rule06_result": "PASS: EMR非依存という構造的な差別化要因",
+        "rule01_result": "PASS: 競合のEMRシステムにも販売できるという能力証拠あり",
+        "rule08_result": "CAUTION: EMR非依存戦略はビジネスモデル選択だが、具体的なクロス売上規模は不明",
+        "overall_confidence": 0.5,
+        "reasoning": "非依存性はCounter-Positioningの要素があるが、まだ初期段階（Q4 2013時点）。競合EMRクライアントへの具体的販売事例あり。長期的な優位性の持続は、Epicなどが同様の開放性を採用するかどうかによる。Population health事業は$450M規模に成長（Q4 2014）"
+      },
+      "power_classification": "counter_positioning",
+      "evidence_sources": ["CERN_Q4_2013", "CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_006",
+      "claim_type": "competitive_advantage",
+      "claim": "CernerのRevenue Cycleビジネスは2010年以来5倍成長しており、継続的なR&D投資と臨床連携型Revenue Cycleソリューションが競合との差別化を実現している。",
+      "evidence": "Q4 2014（201502）トランスクリプト：「Revenue Cycleビジネスは30%以上成長して約2億ドルに。これは2010年以来の5倍増であり、重要な継続的R&D投資の強力な進展と実績を反映している」（Zane Burke）；Lafayette General HospitalのMAP賞受賞事例：净AR日数を75日から44日に削減、未請求の受信料を$20Mから$6Mに削減",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule01", "rule06"],
+        "rule04_result": "PASS: 5倍成長、30%成長、具体的なクライアント成果数値あり",
+        "rule01_result": "PASS: 臨床主導型Revenue Cycleという能力（製品特性）を示している",
+        "rule06_result": "PARTIAL: 臨床システムとの統合は構造的な差別化だが、競合もRevenue Cycle能力を強化している",
+        "overall_confidence": 0.5,
+        "reasoning": "強い成長軌跡と具体的なクライアント成果事例がある。ただし、2010年の基準が低く5倍という数字が印象的に見えても、絶対的市場シェアはまだ限定的。競合も積極的に Revenue Cycle 領域に投資している"
+      },
+      "power_classification": "process_power",
+      "evidence_sources": ["CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_007",
+      "claim_type": "competitive_advantage",
+      "claim": "CernerのCommunityWorksモデルは、共有テナントドメイン型プリパッケージサービスにより、小規模・重要アクセス病院に大企業レベルの機能を費用対効果の高い形で提供し、従来型サプライヤーに対して競争優位性を持つ。",
+      "evidence": "Q4 2013（201402）トランスクリプト：「CommunityWorksモデルは共有テナントドメインで小規模・重要アクセス病院にスケールダウン。プリパッケージのフルサービスオファリングで通常は期待できない堅牢な機能を市場に提供。彼らにとって費用対効果が高く、我々にとっても収益性がある」（Zane Burke）；2013年に20の新CommunityWorksクライアントを追加、合計66クライアントに達成",
+      "rule_evaluation": {
+        "applicable_rules": ["rule06", "rule07", "rule04"],
+        "rule06_result": "PASS: 共有テナントドメインというアーキテクチャ選択が構造的コスト優位性を生んでいる",
+        "rule07_result": "PASS: 「従来型サプライヤー」に対するポジショニングが明確",
+        "rule04_result": "PASS: 2013年に20新クライアント追加という定量的証拠",
+        "overall_confidence": 0.5,
+        "reasoning": "Scale EconomiesとCounter-Positioningの要素がある。共有インフラによるコスト構造の優位性は理論的に成立する。しかし小規模病院市場は Meditech などの専業プレイヤーが強い。CommunityWorksの収益性や競合状況の詳細は不明"
+      },
+      "power_classification": "scale_economies",
+      "evidence_sources": ["CERN_Q4_2013"]
+    },
+    {
+      "id": "CERN_008",
+      "claim_type": "competitive_advantage",
+      "claim": "Cernerクライアントは病院M&A活動において圧倒的に支配的であり（2013年の買収活動の61%）、主要競合クライアントの4倍以上の新規サイト獲得機会を生み出している。",
+      "evidence": "Q4 2013（201402）トランスクリプト：「Cernerクライアントは2013年の買収活動の61%を占め、これにより100以上のサイトが潜在的にCernerフットプリントを拡大できる見通し。これは主要競合クライアントによって取得されたサイト数の4倍以上」（Zane Burke）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule07", "rule06"],
+        "rule04_result": "PASS: 61%、100以上のサイト、4倍以上という具体的な定量根拠",
+        "rule07_result": "PASS: 主要競合との直接比較",
+        "rule06_result": "PARTIAL: M&A活動の分布は市場構造の表れであり、Cernerのポジショニングを反映",
+        "overall_confidence": 0.5,
+        "reasoning": "定量的な証拠は強いが、これが先行指標となるかは不確実。大型病院システムのCerner採用率が高いことを示すが、これは過去の成功の結果であり、将来の競争優位性の源泉かは疑問。Switching Costsによる既存顧客基盤の安定性はあるが、新規競合への切り替えリスクも存在"
+      },
+      "power_classification": "switching_costs",
+      "evidence_sources": ["CERN_Q4_2013"]
+    },
+    {
+      "id": "CERN_009",
+      "claim_type": "cagr_connection",
+      "claim": "CernerのITWorksサービスは2014年に収益60%以上成長して3億ドル超に達し、強力なパイプラインにより2015年は記録的な年になると予測されている。長期契約（7-10年）によりRecurring revenueの安定性も高い。",
+      "evidence": "Q4 2014（201502）トランスクリプト：「ITWorksの2014年の財務実績は優秀であり、収益は60%以上成長して3億ドル以上に達した」（Mike Nill）；「ITWorksは7-10年の長期契約。我々は毎四半期1件のITWorksというリズムが見えてきている」（Marc Naughton, Q4 2013）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule04", "rule12"],
+        "rule04_result": "PASS: 60%以上成長、$300M超という定量証拠",
+        "rule12_result": "PASS: Q4（年次）レポートからの主要証拠",
+        "overall_confidence": 0.5,
+        "reasoning": "成長率は高いが基数も拡大しており、将来の成長率維持は不確実。長期契約構造は収益の可視性と安定性を高める。ただしITWorks市場の浸透率はCerner基盤の中でまだ限定的（barely double digits）"
+      },
+      "power_classification": "switching_costs",
+      "evidence_sources": ["CERN_Q4_2013", "CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_010",
+      "claim_type": "factual_claim",
+      "claim": "Cernerの2014年通年収益は$3.4B（17%成長）。全バックログは$10.62B（19%増）。2015年収益ガイダンスは$4.8-5.0B（Siemens Health Services買収込み、中点で44%成長）。",
+      "evidence": "Q4 2014（201502）トランスクリプト：Marc Naughtonの財務レビュー。「総収益は17%増の$3.4B。総バックログは19%増の$10.62B。2015年収益ガイダンスは$4.8-5.0B」",
+      "rule_evaluation": {
+        "applicable_rules": ["rule12", "rule04"],
+        "rule12_result": "PASS: Q4年次の財務データ",
+        "rule04_result": "PASS: 具体的財務数値",
+        "overall_confidence": 0.9,
+        "reasoning": "四半期決算開示の財務数値として高い確実性を持つ事実的な主張"
+      },
+      "power_classification": null,
+      "evidence_sources": ["CERN_Q4_2014"]
+    },
+    {
+      "id": "CERN_011",
+      "claim_type": "factual_claim",
+      "claim": "Cernerは2015年初頭にSiemens Health Servicesを$1.37B（働く資本調整含む）で買収完了し、月次収益貢献$95-100Mが見込まれる。Cernerプラットフォームへの移行機会に加え、managed servicesの継続的成長が期待される。",
+      "evidence": "Q4 2014（201502）トランスクリプト：「Siemens Health Servicesの取得は予定通り完了。取得価格は$1.37B。彼らは月に$95-100Mの収益貢献を提供する見通し」（Marc Naughton）",
+      "rule_evaluation": {
+        "applicable_rules": ["rule12", "rule04"],
+        "rule12_result": "PASS: Q4年次レポートでの発表",
+        "rule04_result": "PASS: 具体的な買収価格と月次収益見通し",
+        "overall_confidence": 0.9,
+        "reasoning": "発表済みの買収完了と財務ガイダンスとして高い確実性"
+      },
+      "power_classification": null,
+      "evidence_sources": ["CERN_Q4_2014"]
+    }
+  ],
+  "extraction_summary": {
+    "total_claims": 11,
+    "by_type": {
+      "competitive_advantage": 8,
+      "cagr_connection": 1,
+      "factual_claim": 2
+    },
+    "by_power": {
+      "counter_positioning": 3,
+      "process_power": 2,
+      "scale_economies": 2,
+      "switching_costs": 2,
+      "null": 2
+    },
+    "confidence_distribution": {
+      "0.9": 2,
+      "0.7": 1,
+      "0.5": 7,
+      "0.3": 0,
+      "0.1": 0
+    }
+  }
+}

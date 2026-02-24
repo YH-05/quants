@@ -1,0 +1,145 @@
+{
+  "scored_claims": [
+    {
+      "id": "NKE-008",
+      "claim_type": "competitive_advantage",
+      "claim": "北米での5年連続二桁成長達成能力（先進国大規模市場での継続成長力）",
+      "evidence": "Q4 FY2015: 'North America delivered another remarkable year as FY15 revenue grew 12% to $13.7 billion, the fifth consecutive year of double-digit revenue growth.'",
+      "final_confidence": 0.3,
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "5年連続二桁成長は結果であり優位性ではない（ルール1違反）"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A",
+          "matched": true,
+          "adjustment": -0.2,
+          "reasoning": "継続成長実績を優位性として提示する結果→原因の転倒。成長を可能にした能力は他のclaimで論じられており重複"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "kb2_pattern_A",
+          "adjustment": -0.2,
+          "reasoning": "成長実績は結果指標"
+        }
+      ],
+      "overall_reasoning": "5年連続二桁成長は優れた結果だが競争優位性の根拠としては弱い。成長要因は他のclaim（Flyknit、DTC、アスリート関係等）で説明されており本claim固有の価値が限定的。30%"
+    },
+    {
+      "id": "NKE-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2015通期: 売上$30.6B（+10%）、通貨中立+14%、GPM 46%（+120bp）、EPS $3.70（+25%）、ROIC 28.1%（+360bp）、e-commerce $1B超（+55%）、DTC +29%",
+      "evidence": "FY2015 Q4 Earnings Call financial results",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的財務実績。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NKE-010",
+      "claim_type": "factual_claim",
+      "claim": "Basketball 13四半期連続二桁成長、Basketball $4B規模、Running $5B規模、Women's $6B（FY15）、Futures +13%（通貨中立）",
+      "evidence": "FY2015 Q4 Earnings Call category disclosures",
+      "final_confidence": null,
+      "gatekeeper": null,
+      "kb1_evaluations": [],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "事実的カテゴリーデータ。競争優位性評価の対象外。"
+    },
+    {
+      "id": "NKE-011",
+      "claim_type": "cagr_connection",
+      "claim": "Flyknit技術プラットフォーム → 製品プレミアム化・ASP上昇 → 有機成長率向上",
+      "evidence": "FY15 GPM +120bp。ASP上昇がGPM拡大の主要因（CFO発言）",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "Flyknit→プレミアム化→ASP上昇→GPM改善は2-3ステップの直接的メカニズム。GPM+120bpという実績で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "Flyknit→ASP上昇→GPM改善の接続は直接的かつ検証可能（GPM+120bp実績）。技術プラットフォームからの複数カテゴリ展開が成長を支える。70%"
+    },
+    {
+      "id": "NKE-012",
+      "claim_type": "cagr_connection",
+      "claim": "アスリート関係 → Basketball・Running収益継続成長 → 売上CAGR寄与",
+      "evidence": "Basketball 13四半期連続二桁成長。$4B規模。Running $5B規模。",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "アスリート関係→カテゴリー成長の2ステップ接続。13四半期連続二桁成長で検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "アスリート関係→消費者購買の接続は明確で、13四半期の継続的証拠で検証可能。70%"
+    },
+    {
+      "id": "NKE-013",
+      "claim_type": "cagr_connection",
+      "claim": "DTC成長 → GPM改善 → EPS成長",
+      "evidence": "DTC +29%がGPM拡大の主要因。ROIC 28.1%（+360bp）。EPS +25%",
+      "final_confidence": 0.7,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "DTC→高マージン→EPS成長の直接的メカニズム。ROIC+360bpで検証可能"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "DTC成長→GPM改善→EPS成長は直接的で検証可能。ROIC 28.1%（+360bp）がDTC効果を裏付ける。70%"
+    },
+    {
+      "id": "NKE-014",
+      "claim_type": "cagr_connection",
+      "claim": "グローバル市場拡大（中国・女性・新興国）→ 売上規模拡大 → 長期CAGR",
+      "evidence": "China +19% FY15、Women's +20%、Emerging Markets成長継続",
+      "final_confidence": 0.5,
+      "gatekeeper": null,
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "市場拡大→売上成長は2ステップだが、各地域での持続可能性（競合圧力、市場飽和）の検証が限定的"
+        }
+      ],
+      "kb2_patterns": [],
+      "confidence_adjustments": [],
+      "overall_reasoning": "市場拡大の方向性は認めるが、競合圧力（中国：Li-Ning、Anta、女性：Lululemon）の開示が不足。50%"
+    }
+  ],
+  "metadata": {
+    "scored_count": 7,
+    "confidence_distribution": {
+      "20-30": 1,
+      "40-50": 1,
+      "60-70": 3
+    },
+    "gatekeeper_applied": false
+  }
+}

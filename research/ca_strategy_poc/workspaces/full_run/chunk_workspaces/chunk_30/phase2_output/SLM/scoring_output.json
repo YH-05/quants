@@ -1,0 +1,152 @@
+{
+  "ticker": "SLM",
+  "company_name": "Sanlam Limited",
+  "scoring_metadata": {
+    "primary_source": "H1 2015 Earnings Presentation (2015-09-03)",
+    "cutoff_date": "2015-09-30",
+    "kb1_rules_applied": true,
+    "kb2_patterns_applied": true,
+    "kb3_fewshot_applied": true,
+    "dogma_applied": true,
+    "scorer_version": "chunk_agent_v1"
+  },
+  "scored_claims": [
+    {
+      "claim_id": "SLM-CA-001",
+      "original_claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "claim_text": "マルチチャネル分配能力（代理店・独立仲介業者・マルチチャネル）の構築能力",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_D_qualitative_only",
+      "kb2_pattern_verdict": "reject_candidate",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.30,
+      "final_confidence": 0.20,
+      "final_confidence_rationale": "Pattern D (qualitative only): マルチチャネル分配は南ア保険業界の多数プレイヤーが追求する共通テーマであり、Sanlam固有の差別化説明がない。CEOのトランスクリプト発言は定性的に「能力を構築中」と述べるが、競合比較指標なし。Pattern B（業界共通）も部分適用。H1半期ソースのみ（-10%）。最終確信度20%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CA-002",
+      "original_claim_id": 2,
+      "claim_type": "competitive_advantage",
+      "claim_text": "Pan-Africanフットプリント（40カ国超）構築能力",
+      "seven_powers_category": "Scale Economies",
+      "kb2_pattern_applied": "pattern_IV_structural_market_position",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.40,
+      "final_confidence": 0.30,
+      "final_confidence_rationale": "Pattern IV（構造的市場ポジション）部分適用：アフリカ40カ国超のフットプリックは希少な先行者優位。しかし足元ではZambia・Kenyaで実行課題が判明（CEO発言）し、Pure Competitor（Old Mutual）も同様の戦略を持つ。Pattern G（Pure Competitor不明確）適用で-10%調整。確信度30%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CA-003",
+      "original_claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "claim_text": "Santamアンダーライティング規律と統合的リスク管理能力",
+      "seven_powers_category": "Process Power",
+      "kb2_pattern_applied": "pattern_III_capability_over_result",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern III（能力重視）適用：アンダーライティング規律はProcess Powerとして評価可能。ネガティブケース（'Some competitors are selling at a loss'）とアンダーライティングマージン9%の定量データがある。ただし競合との直接比較データなし。H1ソースのみ（-10%）だが能力の具体性から維持。確信度50%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CA-004",
+      "original_claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "claim_text": "Glacierウェルスプラットフォームの競争的地位",
+      "seven_powers_category": "Scale Economies",
+      "kb2_pattern_applied": "pattern_A_result_as_cause",
+      "kb2_pattern_verdict": "reject",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.30,
+      "final_confidence": 0.20,
+      "final_confidence_rationale": "Pattern A（結果を原因と取り違え）適用：22%成長・30%新規ビジネス成長は結果。プラットフォームの特異性（技術差、スイッチングコスト、ネットワーク効果）の説明なし。Glacier固有の優位性メカニズムが不在。確信度20%（reject境界）。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CA-005",
+      "original_claim_id": 5,
+      "claim_type": "competitive_advantage",
+      "claim_text": "Sanlam Sky低所得層保険チャネル能力",
+      "seven_powers_category": "Switching Costs",
+      "kb2_pattern_applied": "pattern_G_unclear_vs_pure_competitor",
+      "kb2_pattern_verdict": "reject_candidate",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.30,
+      "final_confidence": 0.20,
+      "final_confidence_rationale": "Pattern G（Pure Competitor不明確）適用：CEO自身が「主に葬祭保険会社」と自社の限定性を認める。Metropolitan・Old Mutual Skyも同市場に存在。政府・公共部門チャネルは複数競合が持ちうる。確信度20%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CAGR-001",
+      "original_claim_id": 10,
+      "claim_type": "cagr_connection",
+      "claim_text": "マルチチャネル分配能力の強化 → 新規ビジネス成長 → VNBおよび営業利益CAGR支持",
+      "source_advantage_claim_id": "SLM-CA-001",
+      "kb2_pattern_applied": "pattern_C_causal_leap",
+      "kb2_pattern_verdict": "causal_leap",
+      "kb2_adjustment": -10,
+      "phase1_confidence": 0.30,
+      "final_confidence": 0.20,
+      "final_confidence_rationale": "Pattern C（因果関係の飛躍）適用：マルチチャネル→顧客獲得→新規ビジネス→VNBは3段階以上の因果チェーンで定量的裏付けなし。元の優位性スコアも20%に低下しているため連動して低下。確信度20%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CAGR-002",
+      "original_claim_id": 11,
+      "claim_type": "cagr_connection",
+      "claim_text": "Pan-African低浸透率 × フットプリック → VNB成長（過去17%CAGR継続）",
+      "source_advantage_claim_id": "SLM-CA-002",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive_partial",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.40,
+      "final_confidence": 0.30,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）部分適用：過去2003年以来VNB年平均17%成長という実績データがある点はポジティブ。フットプリック×低浸透率→VNBの因果メカニズムは比較的明確（2段階）。ただし実行課題（Zambia・Kenya）と競合の存在で元の優位性スコア30%から連動。確信度30%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    },
+    {
+      "claim_id": "SLM-CAGR-003",
+      "original_claim_id": 12,
+      "claim_type": "cagr_connection",
+      "claim_text": "Santam規律 → 競合が安売りで悪化する中でマージン維持 → グループ利益安定貢献",
+      "source_advantage_claim_id": "SLM-CA-003",
+      "kb2_pattern_applied": "pattern_II_direct_cagr_mechanism",
+      "kb2_pattern_verdict": "positive",
+      "kb2_adjustment": 0,
+      "phase1_confidence": 0.50,
+      "final_confidence": 0.50,
+      "final_confidence_rationale": "Pattern II（直接CAGRメカニズム）適用：アンダーライティング規律→マージン維持→グループ利益は2ステップの明確な因果関係。アンダーライティングマージン9%の定量データと競合対比言及あり。元の優位性スコア50%と一致して維持。確信度50%。",
+      "source_quality": "half_year_primary",
+      "is_primary_source": true
+    }
+  ],
+  "stock_score_summary": {
+    "competitive_advantage_claims": {
+      "count": 5,
+      "avg_confidence": 0.28,
+      "max_confidence": 0.50,
+      "claims_above_50pct": 1,
+      "claims_above_70pct": 0
+    },
+    "cagr_connection_claims": {
+      "count": 3,
+      "avg_confidence": 0.333,
+      "max_confidence": 0.50,
+      "claims_above_50pct": 0
+    },
+    "overall_ca_score": 0.28,
+    "scoring_quality_note": "SLM is a South African insurance holding company using H1/H2 reporting. No Q4 annual equivalent transcript available within PoiT cutoff. All claims reflect H1 2015 source quality. Primary competitive advantage identified: Santam underwriting discipline (50%). Pan-African footprint is a potential future advantage but currently faces execution headwinds."
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "ticker": "035420",
+  "batch_index": 0,
+  "batch_total": 3,
+  "target_claim_ids": [1, 2, 3, 4, 5],
+  "scored_claims": [
+    {
+      "id": 1,
+      "claim_type": "competitive_advantage",
+      "claim": "韓国モバイル検索市場での支配的なプラットフォームポジション（モバイル検索シェア首位）と継続的な検索体験改善能力",
+      "evidence": "Q4 2014 Prepared Remarks (CEO Sang-Hun Kim): 'After enhancing integrated search for the PC platform in Q3, improvements were made to mobile integrated search in Q4. Close analysis on the usage patterns under the mobile environment was made, which led to improvements on accessibility and convenience.'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "モバイル検索シェア首位は「結果」。ただし検索体験改善プロセス（ユーザー行動分析→UI改善）は「能力・仕組み」として部分的に評価可能。パターンA-T（結果→原因）に部分的抵触"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "検索インフラ・ユーザーデータ蓄積は構造的要素として評価可能"
+        },
+        {
+          "rule_id": "rule_11_t",
+          "result": false,
+          "reasoning": "韓国モバイルインターネット市場成長との合致はあるが、業界構造の明示的言及が乏しい"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "シェア首位（結果）を優位性として提示している部分がある"
+        },
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "検索体験改善の仕組み（ユーザー行動分析→改善）は能力として評価"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callでの言及（主・①相当）で調整なし"
+        },
+        {
+          "source": "pattern_A_t",
+          "adjustment": -0.1,
+          "reasoning": "シェアは結果。競合（Google、Kakao等）への相対的差別化の具体的説明が乏しい"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "NAVER韓国での検索支配は事実だが、CEO発言は主に改善施策（結果）の説明。競合（Google、Kakao等）との相対的差別化の定量的説明がなく、ルール3（相対的優位性）の観点で不十分。検索体験改善の仕組みは能力として評価できるが、Q4発言でも競合比較数値ゼロ。Phase 1評価50%→dogma.md調整で40%（シェアは結果＋競合比較なし）"
+    },
+    {
+      "id": 2,
+      "claim_type": "cagr_connection",
+      "claim": "モバイル検索シェア維持 → 国内広告売上成長 → 売上CAGR+10%程度",
+      "evidence": "Q4 CFO: 国内広告売上は8.3% YoY成長、全体ガイダンス10%成長を提示",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": true,
+          "reasoning": "2ステップの直接的因果接続。Q4 CFOが国内広告売上+8.3% YoY成長、全体+10%ガイダンスを提示。実績で検証可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来。主・①相当として採用"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_II_t",
+          "matched": true,
+          "adjustment": 0.05,
+          "reasoning": "直接的CAGRメカニズム（検索シェア→広告売上→CAGR）が2ステップで示されている。Q4での実績数値裏付けあり"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4発言由来（主）で調整なし"
+        },
+        {
+          "source": "concentration_risk",
+          "adjustment": -0.05,
+          "reasoning": "国内広告依存度87%という集中リスクがCAGR持続性の確信度を下げる"
+        }
+      ],
+      "final_confidence": 0.60,
+      "overall_reasoning": "2ステップの因果接続で検証可能。Q4での言及。実績数値（+8.3%YoY）で裏付けあり。ただし国内広告集中（87%）リスクあり。CAGR接続としては標準的な60%が妥当"
+    },
+    {
+      "id": 3,
+      "claim_type": "competitive_advantage",
+      "claim": "LINEメッセンジャーの日本・台湾・タイでの#1ポジションと多様なコンテンツエコシステム構築能力",
+      "evidence": "Q4 2014 CFO: 'LINE's MAU came in at 181 million.' Q3 2014 CEO: 'LINE is by far #1 in terms of market share (in Japan, Thailand, Taiwan).'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": false,
+          "reasoning": "3カ国での#1ポジションは「結果」。エコシステム構築能力（複数垂直サービス展開）は「能力」として部分的評価可能だが、MAU成長鈍化（純増減少傾向）が限界を示す"
+        },
+        {
+          "rule_id": "rule_6_t",
+          "result": true,
+          "reasoning": "#1ポジションと180M+ MAU基盤は構造的。垂直サービス展開は補完的側面もある"
+        },
+        {
+          "rule_id": "rule_7_t",
+          "result": false,
+          "reasoning": "WhatsApp・WeChat等の競合との相対的差別化の具体的説明が乏しい"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_A_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "#1ポジション（結果）を優位性として提示"
+        },
+        {
+          "pattern_id": "pattern_I_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "MAU数値（181M）の開示はあるが、競合との相対的差別化の定量比較はない"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": 0.0,
+          "reasoning": "Q4 annual callから（主・①相当）で調整なし"
+        },
+        {
+          "source": "mau_growth_slowdown",
+          "adjustment": -0.1,
+          "reasoning": "MAU成長鈍化（181M Q4→205M Q1→211M Q2、純増減少傾向）がエコシステムの限界を示す"
+        },
+        {
+          "source": "competitor_differentiation",
+          "adjustment": -0.05,
+          "reasoning": "WhatsApp/WeChatとの相対的差別化説明が不十分"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "3カ国での#1ポジションは結果（パターンA-T抵触）。エコシステム構築能力は評価できるが、MAU成長鈍化とWhatsApp/WeChatとの差別化不足が確信度を下げる。dogma.mdのルール1（能力vs結果）・ルール3（相対的優位性）の観点から40%が妥当"
+    },
+    {
+      "id": 4,
+      "claim_type": "cagr_connection",
+      "claim": "LINEプラットフォーム多様化（Pay, Music, TV, Manga等）→ コンテンツ収益多角化 → LINE全体CAGR高成長継続",
+      "evidence": "コンテンツ収益Q4 51%YoY成長、新サービス（Pay/Music/TV）の収益化への言及",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_5_t",
+          "result": false,
+          "reasoning": "過去のコンテンツ収益成長（51%YoY）は実績として強いが、新サービス（Pay/Music/TV）の収益化時期・規模は不透明。因果チェーンが3段階超"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": true,
+          "reasoning": "Q4発言由来"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_C_t",
+          "matched": true,
+          "adjustment": -0.1,
+          "reasoning": "プラットフォーム多様化→収益多角化→CAGR成長という因果チェーンが間接的・3段階超"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "pattern_C_t",
+          "adjustment": -0.1,
+          "reasoning": "因果チェーンが長く（3段階超）、新サービス収益化の不確実性が高い"
+        }
+      ],
+      "final_confidence": 0.50,
+      "overall_reasoning": "過去のコンテンツ収益成長実績は強いが、新垂直サービスの収益化は不確定。プラットフォーム多様化→CAGR接続は3段階超で間接的。dogma.md CAGR接続評価基準では50%程度が妥当"
+    },
+    {
+      "id": 5,
+      "claim_type": "competitive_advantage",
+      "claim": "NAVERの多様なモバイルコンテンツ（Webtoon、tvcast）の国内外展開における独自IP・クリエーターエコシステム形成能力",
+      "evidence": "Q2 2015 CEO: 'NAVER Webtoon, which is Korea's biggest Webtoon platform, has 17 million monthly visitors, with daily active users at 7.5 million. We are cultivating amateur artists through the Challenge League...'",
+      "gatekeeper": {
+        "rule9_factual_error": false,
+        "rule3_industry_common": false,
+        "triggered": false,
+        "override_confidence": null
+      },
+      "kb1_evaluations": [
+        {
+          "rule_id": "rule_1_t",
+          "result": true,
+          "reasoning": "クリエーターエコシステム構築能力（Challenge League等の仕組み）は「能力・仕組み」として評価可能"
+        },
+        {
+          "rule_id": "rule_12_t",
+          "result": false,
+          "reasoning": "Q2（四半期）発言。従・②相当。確信度調整が必要"
+        }
+      ],
+      "kb2_patterns": [
+        {
+          "pattern_id": "pattern_III_t",
+          "matched": true,
+          "adjustment": 0.0,
+          "reasoning": "クリエーター育成の仕組み（Challenge League）は能力として評価可能。IP蓄積も構造的要素"
+        }
+      ],
+      "confidence_adjustments": [
+        {
+          "source": "rule_12_t",
+          "adjustment": -0.1,
+          "reasoning": "Q2 quarterly発言（従・②相当）。ルール12-T適用で-10%調整"
+        },
+        {
+          "source": "competitor_differentiation",
+          "adjustment": -0.05,
+          "reasoning": "日本マンガプラットフォーム等との相対的差別化説明が部分的"
+        }
+      ],
+      "final_confidence": 0.40,
+      "overall_reasoning": "Webtoonのクリエーター育成仕組み（Challenge League）は能力として評価できる。ただしQ2発言でルール12-T調整が必要（-10%）。競合との差別化説明も部分的。月間1700万訪問者という数値はあるが競合比較なし。40%が妥当"
+    }
+  ],
+  "metadata": {
+    "scored_count": 5,
+    "confidence_distribution": {
+      "40-50": 3,
+      "50-60": 1,
+      "60-70": 1
+    },
+    "gatekeeper_applied": false
+  }
+}

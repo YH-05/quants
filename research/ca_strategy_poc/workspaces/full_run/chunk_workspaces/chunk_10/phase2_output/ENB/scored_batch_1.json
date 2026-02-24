@@ -1,0 +1,79 @@
+{
+  "ticker": "ENB",
+  "batch_index": 1,
+  "batch_total": 2,
+  "metadata": {
+    "kb1_rules_applied": ["rule_1_t", "rule_5_t", "rule_6_t", "rule_11_t", "rule_12_t"],
+    "kb2_patterns_applied": ["pattern_II", "pattern_III"],
+    "dogma_applied": true,
+    "gatekeeper_applied": false,
+    "scored_count": 3
+  },
+  "scored_claims": [
+    {
+      "id": "ENB-006",
+      "claim_type": "competitive_advantage",
+      "claim": "低コストの増分bolt-on型パイプライン拡張オプションによる追加50万 bbl/日市場アクセスの実行能力",
+      "phase1_confidence": 0.5,
+      "final_confidence": 0.5,
+      "kb1_critique": {
+        "rule_1_t": "PASS: 既存権利道・フットプリント内の低コスト拡張という能力の説明。新規権利道取得・規制許可不要という競合に対する構造的コスト優位性",
+        "rule_6_t": "PASS: パイプライン拡張は事業の核心的要素",
+        "rule_11_t": "PASS: 新設パイプライン建設の規制難易度が高い現環境での低コスト増分拡張は業界構造に合致した優位性"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_III_capability_over_result",
+        "assessment": "既存インフラ活用の増分拡張という能力（プロセス）→追加容量（結果）の因果。ただし定量的コスト差の開示がなく、競合比較データも不十分"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "既存権利道・フットプリント内の低コスト増分拡張は新設より規制ハードルが低く、oil price低下環境でも'highly probable'とされる有望な能力。ただし具体的なコスト数値（新設比でのコスト優位定量化）がなく50%評価が適切。Phase 1評価50%を維持する"
+    },
+    {
+      "id": "ENB-007",
+      "claim_type": "cagr_connection",
+      "claim": "テイク・オア・ペイ構造+$34B確保済みプログラム → 10-12% EPS成長 → 14-16%配当成長（2013-2018）",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: テイク・オア・ペイ（収益保護）→$34B確保済み→10-12%EPS成長→14-16%配当成長という2-3ステップの直接的因果チェーン。全ての数値が定量的に開示",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "$34B確保済みという商業的裏付けがある成長プログラムによる10-12%EPS→14-16%配当成長は直接的CAGR接続。商業的に確保済みという点でリスクが明示的に限定されている"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で商業構造（テイク・オア・ペイ）→$34B確保済みプログラム→EPS・配当成長という体系的なCAGR接続が説明されている。2013-2018の5年間のガイダンスとして検証可能。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "ENB-008",
+      "claim_type": "cagr_connection",
+      "claim": "Mainline容量最適化（340K bbl/日）+ 市場アクセス拡大（1.7M bbl/日） → スループット増加 → Liquids Pipelines EBITDA拡大",
+      "phase1_confidence": 0.7,
+      "final_confidence": 0.7,
+      "kb1_critique": {
+        "rule_5_t": "PASS: 340K bbl/日の容量改善実績＋Line 9稼働（2015 Q2）での400K追加アクセス→記録スループット→EBITDA拡大という直接的接続",
+        "rule_12_t": "PASS: Q4年次発言"
+      },
+      "kb2_critique": {
+        "pattern_applied": "pattern_II_direct_cagr_mechanism",
+        "assessment": "容量最適化（実績：2.2M bbl/日記録）と市場アクセス拡大（Line 9: 2015 Q2稼働見込み）は具体的なタイムラインを持つ直接的CAGR接続"
+      },
+      "confidence_adjustments": [],
+      "scoring_rationale": "Q4発言で記録スループット達成（2.2M bbl/日）という実績と、Line 9稼働（2015 Q2）による400K bbl/日の追加アクセスという具体的タイムラインが示されている。直接的な2ステップCAGR接続。Phase 1評価70%を維持する"
+    },
+    {
+      "id": "ENB-009",
+      "claim_type": "factual_claim",
+      "claim": "2014年通年調整後EPS $1.90（ガイダンス内）、Liquids Pipelines調整後利益前年比+11%、Mainline記録スループット2.2M bbl/日（12月・1月連続）、$34B商業的確保済み成長プログラム",
+      "phase1_confidence": null,
+      "final_confidence": null,
+      "kb1_critique": {
+        "assessment": "factual_claim: スコアリング対象外。ENB-001とENB-002の裏付けとなる事実情報"
+      },
+      "kb2_critique": null,
+      "confidence_adjustments": [],
+      "scoring_rationale": "事実主張のためスコアリング対象外"
+    }
+  ]
+}

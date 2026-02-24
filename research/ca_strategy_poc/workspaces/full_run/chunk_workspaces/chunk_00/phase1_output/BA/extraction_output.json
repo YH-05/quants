@@ -1,0 +1,262 @@
+{
+  "ticker": "BA",
+  "transcript_source": "FY2014 Full Year Results (2015-02-19)",
+  "extraction_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_loaded": 9,
+    "kb2_t_patterns_loaded": 12,
+    "dogma_loaded": true,
+    "sec_data_available": false,
+    "q4_transcript_available": true,
+    "quarterly_transcripts_available": ["Q4_FY2014"]
+  },
+  "claims": [
+    {
+      "id": "BA-001",
+      "claim_type": "competitive_advantage",
+      "claim": "GBP 40.5Bの受注残高（order backlog）によるマルチイヤー収益可視性と長期防衛プログラムフランチャイズ（F-35等）",
+      "descriptive_label": "大規模受注残高による長期収益可視性",
+      "evidence_from_transcript": "FY2014 Full Year Results Prepared Remarks（CEO発言）: 'Our order backlog stood at GBP40.5 billion at year-end, providing us with a strong foundation for future revenues... The F-35 program is in full rate production and we expect to deliver more than 100 aircraft per year by the end of the decade... these are long-term franchise programs.' (2015-02-19, Ian King)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ian King (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BA-009"],
+      "cagr_connections": ["BA-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "GBP 40.5Bという具体的数値・F-35長期フランチャイズという独立第三者（US政府）との契約が裏付け。防衛産業のSwitching Costs（プライムコントラクター変更は実質不可能）に合致"
+          }
+        ],
+        "overall_reasoning": "GBP 40.5Bの受注残高はSwitching Costs（長期防衛プログラムは一度採用されると10-20年間継続）+ Cornered Resource（F-35等プログラムへの独占的参加資格）の複合型優位性。Q4年次発言・定量的・仕組みが明確。70%"
+      }
+    },
+    {
+      "id": "BA-002",
+      "claim_type": "competitive_advantage",
+      "claim": "Electronic Systemsの15%超EBITA マージンによる高収益性と電子・センサー技術における競争力（F-35 EW・APKWS等）",
+      "descriptive_label": "Electronic Systems高マージン事業と技術優位",
+      "evidence_from_transcript": "FY2014 Full Year Results Prepared Remarks（CEO発言）: 'Electronic Systems delivered a return on sales of over 15% for the full year, reflecting its strong market position and technology leadership... APKWS laser-guided rocket achieved strong sales growth... Our electronic warfare capability on the F-35 continues to be a key differentiator.' (2015-02-19, Ian King)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ian King (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BA-010"],
+      "cagr_connections": ["BA-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_7_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_7_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_III_t",
+            "adjustment": 0.0,
+            "reasoning": "F-35 EWシステムはBAEがプライムとして設計・製造。15%超マージンは業界平均（8-12%）を大幅に上回り、技術差別化の定量的証拠"
+          }
+        ],
+        "overall_reasoning": "Electronic Systems 15%超マージンはProcess Power（組織的製造優位）+ Cornered Resource（F-35 EWプログラム独占）の複合。APKWSのような成功製品は具体的な技術差別化証拠。Q4年次発言・定量的・仕組み明確。70%"
+      }
+    },
+    {
+      "id": "BA-003",
+      "claim_type": "competitive_advantage",
+      "claim": "Applied Intelligence（サイバー・インテリジェンス）のオーガニック成長（10%）とバックログ37%増による民間・政府向け二刀流戦略",
+      "descriptive_label": "Applied Intelligenceサイバー事業の急成長とバックログ拡大",
+      "evidence_from_transcript": "FY2014 Full Year Results Prepared Remarks（CEO発言）: 'Applied Intelligence achieved organic revenue growth of around 10% in 2014. The order backlog grew by 37%... we're winning work in commercial cybersecurity... expanding beyond our traditional government customer base to commercial clients... this positions us well for the cyber threat environment.' (2015-02-19, Ian King)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ian King (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BA-011"],
+      "cagr_connections": ["BA-008"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "オーガニック成長10%・バックログ37%増という具体的定量値。政府→民間への市場拡大という仕組みの説明あり"
+          }
+        ],
+        "overall_reasoning": "Applied Intelligenceのバックログ37%増はCounter-Positioning（既存民間ITセキュリティ企業が持たない政府ネットワーク経験・クリアランスを活用した民間展開）の典型。政府向けSwitching Costs（機密クリアランス・信頼関係）が民間展開の基盤。Q4年次・定量的・仕組み明確。70%"
+      }
+    },
+    {
+      "id": "BA-004",
+      "claim_type": "competitive_advantage",
+      "claim": "サウジアラビアとの長期戦略パートナーシップ（Typhoon・ホーク・維持管理契約）による中東防衛市場での独占的プレゼンス",
+      "descriptive_label": "サウジアラビア戦略パートナーシップと中東防衛優位",
+      "evidence_from_transcript": "FY2014 Full Year Results Prepared Remarks（CEO発言）: 'Saudi Arabia continues to be a very important market for BAE Systems. We have a long-standing strategic relationship with the Kingdom... The Salam Typhoon contract, together with our maintenance and support work, underpins a strong revenue stream... We do not anticipate any reduction in Saudi defense spending.' (2015-02-19, Ian King)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ian King (CEO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BA-009"],
+      "cagr_connections": ["BA-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_7_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_7_t": true,
+          "rule_11_t": true
+        },
+        "confidence": 70,
+        "adjustments": [
+          {
+            "source": "pattern_IV_t",
+            "adjustment": 0.0,
+            "reasoning": "サウジアラビアはBAEの最大顧客の一つ。TyphoonのプライムコントラクターとしてのSwitching Costs（後継機選定に20-30年を要する）が極めて高い"
+          }
+        ],
+        "overall_reasoning": "サウジアラビアとの戦略パートナーシップはCornered Resource（独占的防衛調達関係・Typhoon MRO独占）の典型。防衛調達のSwitching Costsは主権国家レベルで極めて高い。「長期的関係」という仕組みの説明あり。Q4年次発言。70%"
+      }
+    },
+    {
+      "id": "BA-005",
+      "claim_type": "competitive_advantage",
+      "claim": "AMPV（装甲多目的車両）契約獲得とCombat Vehiclesでの米陸軍プライムコントラクターポジション（GBP 925M株主還元継続）",
+      "descriptive_label": "米陸軍装甲車両プライムコントラクター地位",
+      "evidence_from_transcript": "FY2014 Full Year Results Prepared Remarks（CEO発言）: 'We were selected to develop the Army's next Armored Multi-Purpose Vehicle... This positions us as a prime contractor to the US Army for the next generation of combat vehicles... GBP 925 million returned to shareholders this year through dividends and buybacks.' (2015-02-19, Ian King / Peter Lynas)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Ian King (CEO), Peter Lynas (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": ["BA-012"],
+      "cagr_connections": ["BA-007"],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_6_t"],
+        "results": {
+          "rule_1_t": true,
+          "rule_4_t": true,
+          "rule_6_t": true
+        },
+        "confidence": 50,
+        "adjustments": [
+          {
+            "source": "pattern_I_t",
+            "adjustment": 0.0,
+            "reasoning": "AMPV選定は具体的な独立第三者（米陸軍）による能力認定"
+          },
+          {
+            "source": "rule_12_t",
+            "adjustment": 0.0,
+            "reasoning": "Q4年次発言のため調整なし"
+          }
+        ],
+        "overall_reasoning": "AMPV選定は競合（General Dynamics等）に勝利した能力証明。米陸軍プライムコントラクターポジションはCornered Resource。ただしAMPVは開発段階であり、量産契約・収益貢献は将来的。GBP 925M株主還元は財務力の証拠。50%"
+      }
+    },
+    {
+      "id": "BA-006",
+      "claim_type": "competitive_advantage",
+      "claim": "複数地域・事業部門（Electronic Systems・Platforms & Services・Air・Applied Intelligence）の分散ポートフォリオによるリスク分散と財務安定性",
+      "descriptive_label": "多角化防衛ポートフォリオによるリスク分散",
+      "evidence_from_transcript": "FY2014 Full Year Results Prepared Remarks（CFO発言）: 'Our portfolio is well diversified across geographies and market segments... Electronic Systems and Platforms & Services provide resilient US earnings... Maritime continues to benefit from UK government programs... The geographic spread reduces our exposure to any single defense budget.' (2015-02-19, Peter Lynas)",
+      "transcript_call_type": "Q4_annual",
+      "speaker": "Peter Lynas (CFO)",
+      "section": "prepared_remarks",
+      "supported_by_facts": [],
+      "cagr_connections": [],
+      "rule_evaluation": {
+        "applied_rules": ["rule_1_t", "rule_4_t", "rule_11_t"],
+        "results": {
+          "rule_1_t": false,
+          "rule_4_t": false,
+          "rule_11_t": true
+        },
+        "confidence": 30,
+        "adjustments": [
+          {
+            "source": "pattern_B_t",
+            "adjustment": -0.1,
+            "reasoning": "地理的多様性はBAE固有ではなく、Lockheed Martin・Raytheon等も同様のグローバル展開を持つ"
+          }
+        ],
+        "overall_reasoning": "ポートフォリオ多様化はリスク分散の結果（market structure）であり競争優位性の仕組みではない（Rule 1-T違反）。BAEより規模の大きいLockheed Martinも同様の多角化を持つ。30%"
+      }
+    },
+    {
+      "id": "BA-007",
+      "claim_type": "cagr_connection",
+      "claim": "GBP 40.5B受注残高 + Saudi/US長期プログラム → 収益可視性 → 安定的売上CAGR（+ Applied Intelligence成長による構成改善）",
+      "descriptive_label": "大規模受注残高→収益可視性→売上安定成長経路",
+      "source_advantage": "BA-001",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 60,
+        "adjustments": [],
+        "overall_reasoning": "GBP 40.5B受注残高（複数年分の売上をカバー）→ 収益可視性の因果は直接的。F-35量産拡大（100機/年目標）は定量的。ただし防衛予算削減リスク（UK・US政府）が外部要因として存在。Q4年次発言。60%"
+      }
+    },
+    {
+      "id": "BA-008",
+      "claim_type": "cagr_connection",
+      "claim": "Applied Intelligence 10%有機成長 + バックログ37%増 → 民間サイバー市場拡大 → グループポートフォリオのマージン構成改善",
+      "descriptive_label": "Applied Intelligence急成長→ポートフォリオ改善経路",
+      "source_advantage": "BA-003",
+      "transcript_call_type": "Q4_annual",
+      "rule_evaluation": {
+        "applied_rules": ["rule_5_t", "rule_12_t"],
+        "results": {
+          "rule_5_t": true,
+          "rule_12_t": true
+        },
+        "confidence": 50,
+        "adjustments": [],
+        "overall_reasoning": "Applied Intelligence 10%有機成長・37%バックログ増は実績値から外挿可能。サイバーセキュリティ市場の構造的成長（脅威環境拡大）がテールウィンド。ただしApplied IntelligenceはBAEグループの小部分であり、グループへの影響は限定的。50%"
+      }
+    },
+    {
+      "id": "BA-009",
+      "claim_type": "factual_claim",
+      "claim": "FY2014: 受注残高GBP 40.5B、F-35将来100機/年生産体制へ拡大予定。サウジアラビア防衛支出削減なし見通し。GBP 925M株主還元（配当+自社株買い）",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BA-001", "BA-004"]
+    },
+    {
+      "id": "BA-010",
+      "claim_type": "factual_claim",
+      "claim": "Electronic Systems EBITA margin 15%超達成（FY2014）、APKWS売上好調、F-35 EWシステム差別化維持",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BA-002"]
+    },
+    {
+      "id": "BA-011",
+      "claim_type": "factual_claim",
+      "claim": "Applied Intelligence FY2014: 有機成長~10%、受注残高+37%増、政府→民間サイバー市場への拡大実現",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BA-003"]
+    },
+    {
+      "id": "BA-012",
+      "claim_type": "factual_claim",
+      "claim": "AMPV（装甲多目的車両）米陸軍開発パートナー選定、Platforms & Services（旧Combat Vehicles）の米陸軍プライムコントラクターポジション確立",
+      "transcript_call_type": "Q4_annual",
+      "affected_claims": ["BA-005"]
+    }
+  ]
+}

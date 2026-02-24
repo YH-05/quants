@@ -1,0 +1,44 @@
+{
+  "ticker": "JMT",
+  "batch_index": 1,
+  "batch_total": 2,
+  "scored_claims": [
+    {
+      "claim_id": 6,
+      "claim_type": "cagr_connection",
+      "claim": "DCインフラ投資（EUR486mn CapEx）→ 物流効率化・WC管理→ FCF創出力CAGR（EUR267mn→拡大）",
+      "descriptive_label": "インフラ→物流効率→FCF CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 70,
+      "kb1_gate": "pass",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": "pattern_II_t",
+      "kb3_calibration_note": "FCF EUR267mn（+EUR78mn）とROIC 21%が直接的証拠。KB3 high confidence",
+      "final_confidence": 0.7,
+      "confidence_rationale": "KB2 pattern_II_t（直接CAGRメカニズム）。DC投資→物流効率→FCF創出の実績（+EUR78mn）とROIC 21%が接続を裏付ける。70%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": true
+    },
+    {
+      "claim_id": 7,
+      "claim_type": "cagr_connection",
+      "claim": "低レバレッジ（ND/EBITDA 0.4x）→ 成長投資（ポーランド+コロンビア）→ 長期EBITDA CAGR",
+      "descriptive_label": "財務柔軟性→成長投資→EBITDA CAGR経路",
+      "seven_powers_type": null,
+      "phase1_confidence": 50,
+      "kb1_gate": "partial",
+      "kb2_pattern_rejection": null,
+      "kb2_pattern_positive": null,
+      "kb3_calibration_note": "コロンビア損失EUR60-70mnが中期的EBITDA寄与を抑制。KB3 mid confidence",
+      "final_confidence": 0.5,
+      "confidence_rationale": "財務的余力（ND/EBITDA 0.4x）は明確だがコロンビア損失が中期的成長への接続を弱める。±10%調整が相殺されて50%維持。",
+      "dogma_applied": ["dogma_rule_6"],
+      "is_primary": false
+    }
+  ],
+  "metadata": {
+    "scored_count": 2,
+    "confidence_distribution": {"40-50": 1, "60-70": 1},
+    "gatekeeper_applied": false
+  }
+}

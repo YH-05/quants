@@ -1,0 +1,148 @@
+{
+  "ticker": "HFC",
+  "scoring_metadata": {
+    "cutoff_date": "2015-09-30",
+    "kb1_t_rules_applied": 9,
+    "kb2_t_patterns_applied": 12,
+    "kb3_t_fewshot_applied": true,
+    "dogma_applied": true
+  },
+  "scored_claims": [
+    {
+      "claim_id": 1,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "内陸地理的立地によるpriced-advantaged原油アクセス",
+      "seven_powers_category": "Cornered Resource",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_IV_t",
+          "verdict": "structural_market_position",
+          "adjustment": 0,
+          "reasoning": "地理的立地×内陸市場構造の合致。構造的優位性として評価"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_11_t",
+          "verdict": "partial",
+          "adjustment": -5,
+          "reasoning": "パイプライン整備でdifferentialが縮小するサイクル的リスクあり（CEO自ら言及）"
+        },
+        {
+          "rule_or_pattern": "dogma_rule_8",
+          "verdict": "cyclical_risk",
+          "adjustment": -5,
+          "reasoning": "原油differentialはサイクル変動。2015年時点で縮小リスクが高まっている"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "地理的立地は変更不可能な構造的優位性だが、原油differentialのサイクル性（パイプライン整備リスク）が長期持続性に疑問を生む。定量データ（WCS差$23/bbl）あり。40%が適切"
+    },
+    {
+      "claim_id": 2,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "地理的立地→低原料コスト→マージン→収益経路",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "dogma_rule_8",
+          "verdict": "cyclical_mechanism",
+          "adjustment": -10,
+          "reasoning": "原油differentialはサイクル変動するためCAGR接続の持続性に疑問"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "因果メカニズムは直接的だが、differentialのサイクル変動で持続性が限定的。40%維持"
+    },
+    {
+      "claim_id": 3,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "製油所信頼性改善プロセス能力",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_III_t",
+          "verdict": "capability_but_unverified",
+          "adjustment": 0,
+          "reasoning": "能力として表現されているが競合との比較なし"
+        },
+        {
+          "rule_or_pattern": "KB1 rule_7_t",
+          "verdict": "absent",
+          "adjustment": -10,
+          "reasoning": "Valero・Phillips 66等との稼働率比較なし"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "稼働率91.7%は数値的証拠だが、競合との比較がなく相対的優位性が不明。製油所信頼性改善プログラムは業界標準的なアプローチ"
+    },
+    {
+      "claim_id": 4,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "MLP（HEP）を通じた物流インフラ内部化",
+      "seven_powers_category": "Scale Economies",
+      "phase1_confidence": 50,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB2 pattern_B_t",
+          "verdict": "industry_common",
+          "adjustment": -10,
+          "reasoning": "Valero・Phillips 66等もMLP構造採用。業界共通の手法"
+        }
+      ],
+      "final_score": 0.40,
+      "final_confidence_pct": 40,
+      "scoring_rationale": "MLP構造による物流内部化は構造的優位性の候補だが業界共通。HEP distributions $83Mという定量データはあり。40%"
+    },
+    {
+      "claim_id": 5,
+      "claim_type": "cagr_connection",
+      "descriptive_label": "物流インフラ→市場拡大→収益成長経路",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [],
+      "final_score": 0.30,
+      "final_confidence_pct": 30,
+      "scoring_rationale": "3段階で間接的。具体的な新市場開拓の定量データが不足"
+    },
+    {
+      "claim_id": 6,
+      "claim_type": "competitive_advantage",
+      "descriptive_label": "規律ある資本配分能力（買収断念例あり）",
+      "seven_powers_category": "Process Power",
+      "phase1_confidence": 30,
+      "phase2_adjustments": [
+        {
+          "rule_or_pattern": "KB1 rule_10_t",
+          "verdict": "partial_evidence",
+          "adjustment": -10,
+          "reasoning": "断念例の具体性不足（案件名・金額の開示なし）"
+        }
+      ],
+      "final_score": 0.20,
+      "final_confidence_pct": 20,
+      "scoring_rationale": "資本規律の意思表明はあるが、具体的な断念例の詳細が開示されておらず低確信度"
+    }
+  ],
+  "aggregate_summary": {
+    "total_claims_scored": 6,
+    "competitive_advantage_claims": 4,
+    "cagr_connection_claims": 2,
+    "factual_claims_excluded": 3,
+    "weighted_avg_score": 0.32,
+    "top_claim": {
+      "claim_id": 1,
+      "final_score": 0.40,
+      "descriptive_label": "内陸地理的立地によるpriced-advantaged原油アクセス"
+    },
+    "primary_seven_powers": ["Cornered Resource", "Scale Economies"],
+    "investment_thesis_strength": "weak",
+    "key_risks": [
+      "原油differentialのサイクル変動リスク",
+      "パイプライン整備（Keystone等）による内陸優位性の縮小",
+      "精製マージンの高ボラティリティ"
+    ]
+  }
+}
