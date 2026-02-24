@@ -13,6 +13,8 @@ Functions
 - validate_scoring_output: Parse and validate Phase 2 agent output JSON
 - consolidate_scored_claims: Merge scored_batch_*.json files into scoring_output.json
 - run_phase3_to_5: Execute Phase 3-5 using existing Python code
+- prepare_universe_chunks: Split universe.json into chunk_{n:02d}.json files
+- build_phase2_checkpoint: Aggregate phase2 scoring outputs into phase2_scored.json
 
 Notes
 -----
@@ -62,12 +64,18 @@ def prepare_extraction_input(
     ticker: str,
     workspace_dir: Path,
     cutoff_date: date = CUTOFF_DATE,
+    output_dir: Path | None = None,
 ) -> dict[str, Any]:
-    """Build Phase 1 agent input and write it to workspace_dir/extraction_input.json.
+    """Build Phase 1 agent input and write it to extraction_input.json.
 
     Loads transcripts for *ticker* via TranscriptLoader (which applies PoiT
     filtering), constructs KB directory paths, and writes the result as a
     JSON file that can be passed to the extraction agent.
+
+    By default the file is written to ``workspace_dir/extraction_input.json``.
+    When *output_dir* is given, the file is written to
+    ``output_dir/extraction_input.json`` instead, and the ``workspace_dir``
+    key in the returned payload reflects *output_dir*.
 
     Parameters
     ----------
@@ -81,9 +89,14 @@ def prepare_extraction_input(
     ticker : str
         Ticker symbol to prepare input for.
     workspace_dir : Path
-        Working directory where ``extraction_input.json`` will be written.
+        Working directory used as the default output location.
     cutoff_date : date, optional
         PoiT cutoff date for transcript filtering.  Defaults to CUTOFF_DATE.
+    output_dir : Path | None, optional
+        When provided, ``extraction_input.json`` is written to this directory
+        instead of *workspace_dir*.  The ``workspace_dir`` field in the
+        returned payload is set to *output_dir*.  Defaults to ``None``
+        (uses *workspace_dir*).
 
     Returns
     -------
@@ -93,7 +106,7 @@ def prepare_extraction_input(
         - ``transcript_paths``: list of PoiT-filtered transcript file paths (str)
         - ``kb1_dir``: path to KB1-T rules directory (str)
         - ``kb3_dir``: path to KB3-T few-shot examples directory (str)
-        - ``workspace_dir``: workspace directory path (str)
+        - ``workspace_dir``: effective output directory path (str)
         - ``cutoff_date``: PoiT cutoff date as ISO string
     """
     _validate_ticker(ticker)
@@ -103,6 +116,9 @@ def prepare_extraction_input(
         transcript_dir=str(transcript_dir),
         cutoff_date=cutoff_date.isoformat(),
     )
+
+    # Determine the effective output directory
+    effective_dir = output_dir if output_dir is not None else workspace_dir
 
     # Load transcripts with PoiT filtering
     loader = TranscriptLoader(base_dir=transcript_dir, cutoff_date=cutoff_date)
@@ -127,17 +143,13 @@ def prepare_extraction_input(
         "transcript_paths": transcript_paths,
         "kb1_dir": str(kb1_dir),
         "kb3_dir": str(kb3_dir),
-        "workspace_dir": str(workspace_dir),
+        "workspace_dir": str(effective_dir),
         "cutoff_date": cutoff_date.isoformat(),
     }
 
-    # Write to workspace
-    workspace_dir.mkdir(parents=True, exist_ok=True)
-    output_path = workspace_dir / "extraction_input.json"
-    output_path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    # Write to effective output directory
+    output_path = effective_dir / "extraction_input.json"
+    _write_json_file(output_path, payload)
 
     logger.info(
         "Extraction input prepared",
@@ -183,15 +195,8 @@ def validate_extraction_output(
         )
         return []
 
-    try:
-        data = json.loads(output_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning(
-            "Failed to parse extraction output JSON",
-            ticker=ticker,
-            path=str(output_path),
-            error=str(exc),
-        )
+    data = _read_json_file(output_path, context=f"extraction_output ticker={ticker}")
+    if data is None:
         return []
 
     raw_claims = data.get("claims", [])
@@ -258,25 +263,14 @@ def prepare_scoring_input(
         workspace_dir=str(workspace_dir),
     )
 
-    phase1_output_dir = workspace_dir / "phase1_output" / ticker
-    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
-
-    payload: dict[str, Any] = {
-        "ticker": ticker,
-        "phase1_output_dir": str(phase1_output_dir),
-        "kb1_dir": str(kb1_dir),
-        "kb2_dir": str(kb2_dir),
-        "kb3_dir": str(kb3_dir),
-        "workspace_dir": str(workspace_dir),
-    }
+    kb_dirs = _build_kb_dirs(kb_base_dir)
+    payload: dict[str, Any] = _build_scoring_base_payload(
+        ticker, workspace_dir, kb_dirs
+    )
 
     # Write to workspace
-    workspace_dir.mkdir(parents=True, exist_ok=True)
     output_path = workspace_dir / "scoring_input.json"
-    output_path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    _write_json_file(output_path, payload)
 
     logger.info(
         "Scoring input prepared",
@@ -325,15 +319,8 @@ def validate_scoring_output(
         )
         return []
 
-    try:
-        data = json.loads(output_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning(
-            "Failed to parse scoring output JSON",
-            ticker=ticker,
-            path=str(output_path),
-            error=str(exc),
-        )
+    data = _read_json_file(output_path, context=f"scoring_output ticker={ticker}")
+    if data is None:
         return []
 
     raw_scored_list = data.get("scored_claims", [])
@@ -430,17 +417,13 @@ def prepare_scoring_batches(
         )
         raise ValueError(msg)
 
-    try:
-        data = json.loads(extraction_output_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        msg = f"Failed to read extraction_output.json for ticker {ticker!r}: {exc}"
-        logger.error(
-            "Failed to read extraction_output.json",
-            ticker=ticker,
-            path=str(extraction_output_path),
-            error=str(exc),
-        )
-        raise ValueError(msg) from exc
+    data = _read_json_file(
+        extraction_output_path,
+        context=f"extraction_output ticker={ticker}",
+    )
+    if data is None:
+        msg = f"Failed to read extraction_output.json for ticker {ticker!r}: {extraction_output_path}"
+        raise ValueError(msg)
 
     raw_claims = data.get("claims", [])
     claim_ids: list[str] = [
@@ -465,8 +448,7 @@ def prepare_scoring_batches(
     batch_input_dir = workspace_dir / "batch_inputs"
     batch_input_dir.mkdir(parents=True, exist_ok=True)
 
-    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
-
+    kb_dirs = _build_kb_dirs(kb_base_dir)
     phase2_output_dir = workspace_dir / "phase2_output" / ticker
 
     results: list[dict[str, Any]] = []
@@ -475,22 +457,14 @@ def prepare_scoring_batches(
         output_path = phase2_output_dir / f"scored_batch_{batch_index}.json"
 
         payload: dict[str, Any] = {
-            "ticker": ticker,
-            "phase1_output_dir": str(workspace_dir / "phase1_output" / ticker),
-            "kb1_dir": str(kb1_dir),
-            "kb2_dir": str(kb2_dir),
-            "kb3_dir": str(kb3_dir),
-            "workspace_dir": str(workspace_dir),
+            **_build_scoring_base_payload(ticker, workspace_dir, kb_dirs),
             "target_claim_ids": ids,
             "output_path": str(output_path),
             "batch_index": batch_index,
             "batch_total": batch_total,
         }
 
-        input_path.write_text(
-            json.dumps(payload, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        _write_json_file(input_path, payload)
 
         results.append(
             {
@@ -515,6 +489,7 @@ def prepare_scoring_batches(
 def consolidate_scored_claims(
     workspace_dir: Path,
     ticker: str,
+    output_path: Path | None = None,
 ) -> Path:
     """Merge all scored batch files into a single scoring_output.json.
 
@@ -523,8 +498,9 @@ def consolidate_scored_claims(
     the ``scored_claims`` lists, and re-calculates the ``metadata`` fields
     (``scored_count``, ``confidence_distribution``, ``gatekeeper_applied``).
 
-    The merged result is written to ``workspace_dir/scoring_output.json``
-    (overwriting any existing file).
+    By default the merged result is written to
+    ``workspace_dir/scoring_output.json`` (overwriting any existing file).
+    When *output_path* is given, the file is written to that path instead.
 
     Parameters
     ----------
@@ -533,11 +509,15 @@ def consolidate_scored_claims(
         ``phase2_output/{ticker}/scored_batch_*.json`` files.
     ticker : str
         Ticker symbol whose batch files should be consolidated.
+    output_path : Path | None, optional
+        Destination path for the consolidated JSON file.  When ``None``
+        (default), the file is written to
+        ``workspace_dir/scoring_output.json``.
 
     Returns
     -------
     Path
-        Path to the written ``scoring_output.json`` file.
+        Path to the written consolidated JSON file.
 
     Raises
     ------
@@ -580,14 +560,8 @@ def consolidate_scored_claims(
     any_gatekeeper_applied = False
 
     for _, batch_path in batch_files:
-        try:
-            batch_data = json.loads(batch_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError) as exc:
-            logger.warning(
-                "Failed to read scored batch file, skipping",
-                path=str(batch_path),
-                error=str(exc),
-            )
+        batch_data = _read_json_file(batch_path, context="scored_batch")
+        if batch_data is None:
             continue
 
         batch_claims = batch_data.get("scored_claims", [])
@@ -621,20 +595,243 @@ def consolidate_scored_claims(
         "metadata": metadata,
     }
 
-    output_path = workspace_dir / "scoring_output.json"
-    output_path.write_text(
-        json.dumps(output_data, ensure_ascii=False, indent=2),
-        encoding="utf-8",
+    effective_output_path = (
+        output_path
+        if output_path is not None
+        else workspace_dir / "scoring_output.json"
     )
+    _write_json_file(effective_output_path, output_data)
 
     logger.info(
         "Scored claims consolidated",
         ticker=ticker,
         total_claims=len(all_scored_claims),
+        output_path=str(effective_output_path),
+    )
+
+    return effective_output_path
+
+
+def prepare_universe_chunks(
+    universe_path: Path,
+    chunk_size: int = 10,
+) -> list[Path]:
+    """Split universe.json into chunk_{n:02d}.json files.
+
+    Reads the ``tickers`` array from *universe_path*, partitions it into
+    groups of *chunk_size*, and writes each group as
+    ``chunk_{n:02d}.json`` in the same directory as *universe_path*.
+
+    Parameters
+    ----------
+    universe_path : Path
+        Path to ``universe.json`` containing a ``tickers`` list.
+    chunk_size : int, optional
+        Number of tickers per chunk.  Defaults to 10.
+
+    Returns
+    -------
+    list[Path]
+        Sorted list of paths to the written chunk files.
+        Returns an empty list when the ``tickers`` array is empty.
+
+    Raises
+    ------
+    ValueError
+        If *universe_path* does not exist.
+        If *chunk_size* is not a positive integer.
+    """
+    if chunk_size <= 0:
+        raise ValueError(f"chunk_size must be a positive integer, got {chunk_size}")
+
+    if not universe_path.exists():
+        msg = f"universe.json not found: {universe_path}"
+        logger.error("universe.json not found", path=str(universe_path))
+        raise ValueError(msg)
+
+    data = _read_json_file(universe_path, context="universe.json")
+    if data is None:
+        msg = f"Failed to read universe.json: {universe_path}"
+        raise ValueError(msg)
+
+    tickers: list[dict[str, Any]] = data.get("tickers", [])
+
+    logger.info(
+        "Splitting universe into chunks",
+        universe_path=str(universe_path),
+        total_tickers=len(tickers),
+        chunk_size=chunk_size,
+    )
+
+    if not tickers:
+        return []
+
+    output_dir = universe_path.parent
+    chunk_paths: list[Path] = []
+
+    ticker_batches: list[list[dict[str, Any]]] = [
+        tickers[i : i + chunk_size] for i in range(0, len(tickers), chunk_size)
+    ]
+
+    for idx, batch in enumerate(ticker_batches):
+        chunk_path = output_dir / f"chunk_{idx:02d}.json"
+        chunk_data: dict[str, Any] = {"tickers": batch}
+        _write_json_file(chunk_path, chunk_data)
+        chunk_paths.append(chunk_path)
+
+    logger.info(
+        "Universe chunks prepared",
+        chunk_count=len(chunk_paths),
+        output_dir=str(output_dir),
+    )
+
+    return chunk_paths
+
+
+def build_phase2_checkpoint(
+    workspace_dir: Path,
+    output_path: Path,
+    skip_missing: bool = False,
+) -> dict[str, list[dict[str, Any]]]:
+    """Aggregate phase2 scoring outputs into a single checkpoint file.
+
+    Scans ``workspace_dir/phase2_output/`` for per-ticker subdirectories,
+    reads ``scoring_output.json`` from each, and builds a mapping of
+    ``{ticker: [ScoredClaim.model_dump()]}`` which is written to
+    *output_path* as JSON.
+
+    Parameters
+    ----------
+    workspace_dir : Path
+        Working directory containing ``phase2_output/{TICKER}/scoring_output.json``
+        files.
+    output_path : Path
+        Destination path for the checkpoint JSON.  Parent directories are
+        created automatically.
+    skip_missing : bool, optional
+        When ``True``, ticker subdirectories that lack a
+        ``scoring_output.json`` are silently skipped.  When ``False``
+        (default), a missing file raises :class:`ValueError`.
+
+    Returns
+    -------
+    dict[str, list[dict[str, Any]]]
+        Mapping of ticker symbol to list of scored claim dicts
+        (``ScoredClaim.model_dump()`` format).
+
+    Raises
+    ------
+    ValueError
+        If no ``scoring_output.json`` files are found and
+        *skip_missing* is ``False``.
+    """
+    phase2_dir = workspace_dir / "phase2_output"
+
+    logger.info(
+        "Building phase2 checkpoint",
+        workspace_dir=str(workspace_dir),
+        output_path=str(output_path),
+        skip_missing=skip_missing,
+    )
+
+    # Collect ticker subdirectories
+    ticker_dirs: list[Path] = []
+    if phase2_dir.exists():
+        ticker_dirs = [d for d in sorted(phase2_dir.iterdir()) if d.is_dir()]
+
+    if not ticker_dirs:
+        if not skip_missing:
+            msg = (
+                f"No scoring_output.json found in {phase2_dir}: "
+                "phase2_output directory is empty or does not exist"
+            )
+            logger.error(
+                "No phase2 ticker directories found",
+                phase2_dir=str(phase2_dir),
+            )
+            raise ValueError(msg)
+        # skip_missing=True: return empty dict
+        checkpoint: dict[str, list[dict[str, Any]]] = {}
+        _write_json_file(output_path, checkpoint)
+        return checkpoint
+
+    checkpoint = {}
+    found_any = False
+
+    for ticker_dir in ticker_dirs:
+        ticker = ticker_dir.name
+        scoring_output_path = ticker_dir / "scoring_output.json"
+
+        if not scoring_output_path.exists():
+            if skip_missing:
+                logger.debug(
+                    "scoring_output.json not found, skipping",
+                    ticker=ticker,
+                    path=str(scoring_output_path),
+                )
+                continue
+            msg = (
+                f"No scoring_output.json found for ticker {ticker!r}: "
+                f"{scoring_output_path}"
+            )
+            logger.error(
+                "scoring_output.json not found",
+                ticker=ticker,
+                path=str(scoring_output_path),
+            )
+            raise ValueError(msg)
+
+        data = _read_json_file(
+            scoring_output_path,
+            context=f"scoring_output ticker={ticker}",
+        )
+        if data is None:
+            if skip_missing:
+                continue
+            msg = f"Failed to read scoring_output.json for ticker {ticker!r}: {scoring_output_path}"
+            raise ValueError(msg)
+
+        raw_scored_list: list[dict[str, Any]] = data.get("scored_claims", [])
+
+        # Restore as ScoredClaim models and dump back to validate the schema
+        scored_dicts: list[dict[str, Any]] = []
+        for raw in raw_scored_list:
+            if not isinstance(raw, dict):
+                continue
+            # Reconstruct a minimal ScoredClaim-compatible dict by passing through
+            # _parse_raw_scored_claim (which validates fields) then model_dump()
+            parsed = _parse_raw_scored_claim(raw, {}, ticker)
+            if parsed is not None:
+                scored_dicts.append(parsed.model_dump())
+
+        checkpoint[ticker] = scored_dicts
+        found_any = True
+        logger.debug(
+            "Loaded scoring output",
+            ticker=ticker,
+            scored_count=len(scored_dicts),
+        )
+
+    if not found_any and not skip_missing:
+        msg = (
+            f"No scoring_output.json found in {phase2_dir}: "
+            "all ticker directories were missing scoring_output.json"
+        )
+        logger.error(
+            "No scoring_output.json found in any ticker directory",
+            phase2_dir=str(phase2_dir),
+        )
+        raise ValueError(msg)
+
+    _write_json_file(output_path, checkpoint)
+
+    logger.info(
+        "Phase2 checkpoint built",
+        ticker_count=len(checkpoint),
         output_path=str(output_path),
     )
 
-    return output_path
+    return checkpoint
 
 
 def run_phase3_to_5(
@@ -671,12 +868,9 @@ def run_phase3_to_5(
     # Import here to avoid circular imports at module level
     from dev.ca_strategy.orchestrator import Orchestrator
 
-    # AIDEV-NOTE: kb_base_dir is not needed for Phase 3-5, but Orchestrator
-    # requires it.  We pass workspace_dir as a fallback path since Phase 3-5
-    # does not read KB files.
     orch = Orchestrator(
         config_path=config_path,
-        kb_base_dir=workspace_dir,
+        kb_base_dir=None,
         workspace_dir=workspace_dir,
     )
     orch.run_from_checkpoint(phase=3)
@@ -687,6 +881,79 @@ def run_phase3_to_5(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+
+def _build_scoring_base_payload(
+    ticker: str,
+    workspace_dir: Path,
+    kb_dirs: tuple[Path, Path, Path],
+) -> dict[str, str]:
+    """スコアリングAPIの共通ベースペイロードを構築する。
+
+    Parameters
+    ----------
+    ticker : str
+        ティッカーシンボル。
+    workspace_dir : Path
+        ワークスペースディレクトリ。
+    kb_dirs : tuple[Path, Path, Path]
+        (kb1_dir, kb2_dir, kb3_dir) のタプル。
+
+    Returns
+    -------
+    dict[str, str]
+        スコアリング用の共通ベースペイロード。
+    """
+    kb1_dir, kb2_dir, kb3_dir = kb_dirs
+    return {
+        "ticker": ticker,
+        "phase1_output_dir": str(workspace_dir / "phase1_output" / ticker),
+        "kb1_dir": str(kb1_dir),
+        "kb2_dir": str(kb2_dir),
+        "kb3_dir": str(kb3_dir),
+        "workspace_dir": str(workspace_dir),
+    }
+
+
+def _read_json_file(path: Path, context: str) -> dict[str, Any] | None:
+    """JSONファイルを安全に読み込む。失敗時はNoneを返す。
+
+    Parameters
+    ----------
+    path : Path
+        読み込むJSONファイルのパス。
+    context : str
+        ログ出力用のコンテキスト文字列。
+
+    Returns
+    -------
+    dict[str, Any] | None
+        パースされたJSONデータ、またはエラー時はNone。
+    """
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning(
+            "Failed to parse JSON",
+            path=str(path),
+            context=context,
+            error=str(exc),
+        )
+        return None
+
+
+def _write_json_file(path: Path, data: Any) -> None:
+    """JSONファイルを書き込む。親ディレクトリを自動作成する。
+
+    Parameters
+    ----------
+    path : Path
+        書き込み先のパス。
+    data : Any
+        シリアライズするデータ。
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def _validate_ticker(ticker: str) -> None:
@@ -1129,10 +1396,12 @@ def _default_rule_evaluation() -> RuleEvaluation:
 
 
 __all__ = [
+    "build_phase2_checkpoint",
     "consolidate_scored_claims",
     "prepare_extraction_input",
     "prepare_scoring_batches",
     "prepare_scoring_input",
+    "prepare_universe_chunks",
     "run_phase3_to_5",
     "validate_extraction_output",
     "validate_scoring_output",
