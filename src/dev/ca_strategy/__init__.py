@@ -9,6 +9,7 @@ from dev.ca_strategy.cost import CostTracker
 from dev.ca_strategy.extractor import ClaimExtractor
 from dev.ca_strategy.orchestrator import Orchestrator
 from dev.ca_strategy.price_provider import NullPriceDataProvider, PriceDataProvider
+from dev.ca_strategy.return_calculator import PortfolioReturnCalculator
 from dev.ca_strategy.scorer import ClaimScorer
 from dev.ca_strategy.types import (
     Claim,
@@ -29,6 +30,7 @@ __all__ = [
     "Orchestrator",
     "PortfolioHolding",
     "PortfolioResult",
+    "PortfolioReturnCalculator",
     "PriceDataProvider",
     "ScoredClaim",
     "StockScore",
