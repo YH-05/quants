@@ -1,4 +1,4 @@
-"""Phase 0-5 pipeline orchestrator for the CA Strategy.
+"""Phase 0-6 pipeline orchestrator for the CA Strategy.
 
 Integrates all pipeline phases in order:
 
@@ -9,6 +9,8 @@ Integrates all pipeline phases in order:
 4. **Portfolio Construction** (Phase 4): Ranked -> Portfolio via
    PortfolioBuilder
 5. **Output Generation** (Phase 5): Portfolio -> Files via OutputGenerator
+6. **Evaluation** (Phase 6): Portfolio + Returns -> EvaluationResult via
+   StrategyEvaluator + PortfolioReturnCalculator
 
 Supports full pipeline execution and checkpoint-based resumption.
 Logs each phase's execution status to ``execution_log.json``.
@@ -35,6 +37,8 @@ from typing import TYPE_CHECKING, Any, cast
 if TYPE_CHECKING:
     from collections.abc import Callable
 
+    from dev.ca_strategy.price_provider import PriceDataProvider
+
 import pandas as pd
 from pydantic import BaseModel
 
@@ -45,8 +49,9 @@ from dev.ca_strategy.evaluator import StrategyEvaluator
 from dev.ca_strategy.extractor import ClaimExtractor
 from dev.ca_strategy.neutralizer import SectorNeutralizer
 from dev.ca_strategy.output import OutputGenerator
-from dev.ca_strategy.pit import CUTOFF_DATE
+from dev.ca_strategy.pit import CUTOFF_DATE, EVALUATION_END_DATE, PORTFOLIO_DATE
 from dev.ca_strategy.portfolio_builder import PortfolioBuilder, RankedStock
+from dev.ca_strategy.return_calculator import PortfolioReturnCalculator
 from dev.ca_strategy.scorer import ClaimScorer
 from dev.ca_strategy.transcript import TranscriptLoader
 from dev.ca_strategy.types import (
@@ -78,7 +83,7 @@ _DEFAULT_THRESHOLDS: list[float] = [0.3, 0.4, 0.5, 0.6, 0.7]
 # Public API
 # ---------------------------------------------------------------------------
 class Orchestrator:
-    """Orchestrate the full CA Strategy pipeline (Phase 1-5).
+    """Orchestrate the full CA Strategy pipeline (Phase 1-6).
 
     Loads configuration, manages pipeline state, and coordinates
     execution of each phase in order.  Supports checkpoint-based
@@ -87,8 +92,9 @@ class Orchestrator:
     Parameters
     ----------
     config_path : Path | str
-        Directory containing ``universe.json`` and
-        ``benchmark_weights.json``.
+        Directory containing ``universe.json``,
+        ``benchmark_weights.json``, and optionally
+        ``corporate_actions.json``.
     kb_base_dir : Path | str | None
         Root directory for knowledge base files (KB1-T, KB2-T,
         KB3-T, system prompt).  Pass ``None`` when running
@@ -96,6 +102,12 @@ class Orchestrator:
     workspace_dir : Path | str
         Working directory for intermediate outputs, checkpoints,
         and execution logs.
+    price_provider : PriceDataProvider | None, optional
+        Provider for fetching daily close prices.  When set,
+        Phase 6 uses ``PortfolioReturnCalculator`` to compute
+        real portfolio and benchmark returns.  When ``None``
+        (default), Phase 6 uses empty Series (NaN metrics),
+        preserving backward compatibility.
 
     Raises
     ------
@@ -117,13 +129,18 @@ class Orchestrator:
         config_path: Path | str,
         kb_base_dir: Path | str | None,
         workspace_dir: Path | str,
+        price_provider: PriceDataProvider | None = None,
     ) -> None:
         self._config_path = Path(config_path)
         self._kb_base_dir = Path(kb_base_dir) if kb_base_dir is not None else None
         self._workspace_dir = Path(workspace_dir)
+        self._price_provider = price_provider
 
         # ConfigRepository validates config_path existence
         self._config = ConfigRepository(self._config_path)
+
+        # Load corporate_actions.json if present (fallback: empty list)
+        self._corporate_actions: list[dict[str, Any]] = self._load_corporate_actions()
 
         # Ensure workspace directory exists
         self._workspace_dir.mkdir(parents=True, exist_ok=True)
@@ -141,6 +158,10 @@ class Orchestrator:
             if self._kb_base_dir is not None
             else None,
             workspace_dir=str(self._workspace_dir),
+            price_provider=type(self._price_provider).__name__
+            if self._price_provider is not None
+            else None,
+            corporate_actions_count=len(self._corporate_actions),
         )
 
     # -----------------------------------------------------------------------
@@ -402,7 +423,7 @@ class Orchestrator:
         portfolio = builder.build_equal_weight(
             ranked=ranked_list,  # type: ignore[arg-type]
             threshold=threshold,
-            as_of_date=CUTOFF_DATE,
+            as_of_date=PORTFOLIO_DATE,
         )
         self._save_execution_log(phase_label, "completed", None)
 
@@ -417,16 +438,40 @@ class Orchestrator:
         logger.info("Phase 6 started", threshold=threshold)
 
         evaluator = StrategyEvaluator()
-        # AIDEV-NOTE: portfolio_returns and benchmark_returns are empty Series
-        # in the PoC because yfinance fetching is out of scope here.
-        # The StrategyEvaluator handles empty Series gracefully.
 
-        empty_returns: pd.Series = pd.Series([], dtype=float)
+        # AIDEV-NOTE: When price_provider is set, PortfolioReturnCalculator
+        # computes real portfolio and benchmark returns using daily close prices.
+        # When price_provider is None (default), empty Series are used and
+        # StrategyEvaluator returns NaN performance metrics.
+        portfolio_returns: pd.Series
+        benchmark_returns: pd.Series
+
+        if self._price_provider is not None:
+            calculator = PortfolioReturnCalculator(
+                price_provider=self._price_provider,
+                corporate_actions=self._corporate_actions,
+            )
+            portfolio_weights = {h.ticker: h.weight for h in portfolio.holdings}
+            portfolio_returns = calculator.calculate_returns(
+                weights=portfolio_weights,
+                start=PORTFOLIO_DATE,
+                end=EVALUATION_END_DATE,
+            )
+            universe_tickers = [t.ticker for t in self._config.universe.tickers]
+            benchmark_returns = calculator.calculate_benchmark_returns(
+                tickers=universe_tickers,
+                start=PORTFOLIO_DATE,
+                end=EVALUATION_END_DATE,
+            )
+        else:
+            portfolio_returns = pd.Series([], dtype=float)
+            benchmark_returns = pd.Series([], dtype=float)
+
         evaluation = evaluator.evaluate(
             portfolio=portfolio,
             scores=scores,
-            portfolio_returns=empty_returns,
-            benchmark_returns=empty_returns,
+            portfolio_returns=portfolio_returns,
+            benchmark_returns=benchmark_returns,
             analyst_scores={},
             threshold=threshold,
         )
@@ -721,7 +766,7 @@ class Orchestrator:
         portfolio = builder.build(
             ranked=ranked_list,
             benchmark=benchmark,
-            as_of_date=CUTOFF_DATE,
+            as_of_date=PORTFOLIO_DATE,
         )
 
         logger.info(
@@ -786,6 +831,37 @@ class Orchestrator:
         """
         aggregator = ScoreAggregator()
         return aggregator.aggregate(scored_claims)
+
+    # -----------------------------------------------------------------------
+    # Corporate actions loading
+    # -----------------------------------------------------------------------
+    def _load_corporate_actions(self) -> list[dict[str, Any]]:
+        """Load corporate actions from ``corporate_actions.json`` in config_path.
+
+        Returns an empty list if the file does not exist, allowing
+        graceful fallback for configurations without corporate action data.
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            List of corporate action records.
+        """
+        ca_path = self._config_path / "corporate_actions.json"
+        if not ca_path.exists():
+            logger.debug(
+                "corporate_actions.json not found, using empty list",
+                config_path=str(self._config_path),
+            )
+            return []
+
+        data = json.loads(ca_path.read_text(encoding="utf-8"))
+        actions: list[dict[str, Any]] = data.get("corporate_actions", [])
+        logger.info(
+            "Corporate actions loaded",
+            count=len(actions),
+            path=str(ca_path),
+        )
+        return actions
 
     # -----------------------------------------------------------------------
     # Checkpoint I/O
