@@ -235,6 +235,114 @@ class TestGenerateUniverse:
 
         assert aapl_entry["gics_sector"] == "Information Technology"
 
+    def test_正常系_tickersにbloomberg_tickerフィールドが含まれる(
+        self, tmp_path: Path, sample_portfolio_file: Path
+    ) -> None:
+        """生成された universe.json の各エントリに bloomberg_ticker フィールドが含まれることを確認。"""
+        from dev.ca_strategy.generate_config import generate_universe
+
+        output_dir = tmp_path / "output"
+        output_dir.mkdir()
+
+        generate_universe(source=sample_portfolio_file, output_dir=output_dir)
+
+        universe_path = output_dir / "universe.json"
+        data = json.loads(universe_path.read_text(encoding="utf-8"))
+
+        for entry in data["tickers"]:
+            assert "bloomberg_ticker" in entry
+            assert isinstance(entry["bloomberg_ticker"], str)
+            assert entry["bloomberg_ticker"] != ""
+
+    def test_正常系_bloomberg_tickerが元データのBloomberg_Tickerをstripした値である(
+        self, tmp_path: Path, sample_portfolio_file: Path
+    ) -> None:
+        """bloomberg_ticker フィールドが元データの Bloomberg_Ticker を strip した値であることを確認。"""
+        from dev.ca_strategy.generate_config import generate_universe
+
+        output_dir = tmp_path / "output"
+        output_dir.mkdir()
+
+        generate_universe(source=sample_portfolio_file, output_dir=output_dir)
+
+        universe_path = output_dir / "universe.json"
+        data = json.loads(universe_path.read_text(encoding="utf-8"))
+
+        aapl_entry = next(e for e in data["tickers"] if e["ticker"] == "AAPL")
+        assert aapl_entry["bloomberg_ticker"] == "AAPL UW Equity"
+
+        msft_entry = next(e for e in data["tickers"] if e["ticker"] == "MSFT")
+        assert msft_entry["bloomberg_ticker"] == "MSFT UW Equity"
+
+        jpm_entry = next(e for e in data["tickers"] if e["ticker"] == "JPM")
+        assert jpm_entry["bloomberg_ticker"] == "JPM UN Equity"
+
+    def test_正常系_既存フィールドがbloomberg_ticker追加後も変更されない(
+        self, tmp_path: Path, sample_portfolio_file: Path
+    ) -> None:
+        """bloomberg_ticker 追加により既存フィールドが変更されていないことを確認。"""
+        from dev.ca_strategy.generate_config import generate_universe
+
+        output_dir = tmp_path / "output"
+        output_dir.mkdir()
+
+        generate_universe(source=sample_portfolio_file, output_dir=output_dir)
+
+        universe_path = output_dir / "universe.json"
+        data = json.loads(universe_path.read_text(encoding="utf-8"))
+
+        aapl_entry = next(e for e in data["tickers"] if e["ticker"] == "AAPL")
+        assert aapl_entry["ticker"] == "AAPL"
+        assert aapl_entry["company_name"] == "Apple Inc."
+        assert aapl_entry["gics_sector"] == "Information Technology"
+        assert aapl_entry["country"] == "UNITED STATES"
+
+    def test_後方互換_bloomberg_tickerがないJSONでUniverseTickerのパースがエラーにならない(
+        self, tmp_path: Path
+    ) -> None:
+        """bloomberg_ticker フィールドがない既存 JSON を UniverseTicker でパースしてもエラーにならないことを確認。"""
+        from dev.ca_strategy.types import UniverseTicker
+
+        # bloomberg_ticker なしの旧形式データ
+        old_format = {"ticker": "AAPL", "gics_sector": "Information Technology"}
+        ticker = UniverseTicker.model_validate(old_format)
+        assert ticker.ticker == "AAPL"
+        assert ticker.bloomberg_ticker == ""
+
+    def test_正常系_bloomberg_tickerの前後空白がstripされる(
+        self, tmp_path: Path
+    ) -> None:
+        """元データの Bloomberg_Ticker に前後空白がある場合にstripされることを確認。"""
+        from dev.ca_strategy.generate_config import generate_universe
+
+        # 前後に空白を持つ Bloomberg_Ticker を含むデータ
+        data_with_spaces = {
+            "0001": [
+                {
+                    "Name": "Test Corp",
+                    "Country": "US",
+                    "GICS_Sector": "Energy",
+                    "MSCI_Mkt_Cap_USD_MM": 100000.0,
+                    "Bloomberg_Ticker": "  TEST US Equity  ",
+                }
+            ]
+        }
+
+        source = tmp_path / "test_spaces.json"
+        source.write_text(
+            json.dumps(data_with_spaces, ensure_ascii=False), encoding="utf-8"
+        )
+
+        output_dir = tmp_path / "output"
+        output_dir.mkdir()
+
+        generate_universe(source=source, output_dir=output_dir)
+
+        universe_path = output_dir / "universe.json"
+        result = json.loads(universe_path.read_text(encoding="utf-8"))
+
+        assert result["tickers"][0]["bloomberg_ticker"] == "TEST US Equity"
+
     def test_正常系_生成されたuniverse_jsonがConfigRepositoryで読み込める(
         self, tmp_path: Path, sample_portfolio_file: Path
     ) -> None:
