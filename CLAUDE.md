@@ -168,6 +168,8 @@ updated_at: 2026-02-18
 | `/ai-research-collect` | AI投資バリューチェーン収集（77社・10カテゴリ、投資視点要約→Project #44投稿） | `ai-research-workflow` |
 | `/dr-industry` | 業界・セクター分析（セクターETF・構成銘柄データ収集→クロス検証→セクター分析→レポート生成） | `dr-industry` |
 | `/ca-eval` | 競争優位性評価（アナリストレポート+SEC EDGAR+業界データ→主張抽出→ルール適用→検証→レポート生成） | `ca-eval` |
+| `/run-ca-strategy-sample` | 任意銘柄のCA Strategy end-to-endサンプルパイプラインを実行（6ステップ：トランスクリプト読込→主張抽出→スコアリング→集約→出力） | - |
+| `/run-ca-strategy-full` | 395銘柄の競争優位性ベース投資戦略パイプラインを3チャンク並列で全実行（ユニバース分割→Phase1-2並列→Phase3-5→ポートフォリオ生成） | - |
 
 ### ドキュメント・その他
 
