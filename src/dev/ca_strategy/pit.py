@@ -36,6 +36,19 @@ logger = get_logger(__name__)
 CUTOFF_DATE: date = date(2015, 9, 30)
 """Default cutoff date for PoiT management (end of Q3 FY2015)."""
 
+PORTFOLIO_DATE: date = date(2015, 12, 31)
+"""Portfolio construction date (end of Q4 FY2015).
+
+The date when the portfolio is assumed to be constructed based on
+scores derived from transcripts up to CUTOFF_DATE.
+"""
+
+EVALUATION_END_DATE: date = date(2026, 2, 28)
+"""Evaluation end date for performance measurement.
+
+The end date for calculating portfolio returns in backtesting.
+"""
+
 
 # ---------------------------------------------------------------------------
 # Public API
@@ -129,6 +142,8 @@ def validate_pit_compliance(
 
 __all__ = [
     "CUTOFF_DATE",
+    "EVALUATION_END_DATE",
+    "PORTFOLIO_DATE",
     "filter_by_pit",
     "get_pit_prompt_context",
     "validate_pit_compliance",
