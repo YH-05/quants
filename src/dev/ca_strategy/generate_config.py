@@ -132,6 +132,10 @@ def _write_universe(
     matches the transcript directory naming used by
     :class:`~dev.ca_strategy.transcript.TranscriptLoader`.
 
+    The ``bloomberg_ticker`` field preserves the **full Bloomberg identifier**
+    (e.g. ``"AAPL US Equity"``) from the source data, stripped of leading
+    and trailing whitespace.  This is required by Phase 6 data fetching.
+
     Parameters
     ----------
     entries : list[dict]
@@ -188,6 +192,7 @@ def _write_universe(
         tickers.append(
             {
                 "ticker": base_ticker,
+                "bloomberg_ticker": bloomberg_ticker.strip(),
                 "company_name": company_name,
                 "gics_sector": gics_sector,
                 "country": country,

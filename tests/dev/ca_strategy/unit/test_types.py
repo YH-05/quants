@@ -812,6 +812,40 @@ class TestUniverseTicker:
                 gics_sector="",
             )
 
+    def test_正常系_bloomberg_tickerなしで作成できる_後方互換(self) -> None:
+        ticker = UniverseTicker(
+            ticker="AAPL",
+            gics_sector="Information Technology",
+        )
+        assert ticker.ticker == "AAPL"
+        assert ticker.gics_sector == "Information Technology"
+        assert ticker.bloomberg_ticker == ""
+
+    def test_正常系_bloomberg_tickerありで作成できる(self) -> None:
+        ticker = UniverseTicker(
+            ticker="AAPL",
+            gics_sector="Information Technology",
+            bloomberg_ticker="AAPL US Equity",
+        )
+        assert ticker.ticker == "AAPL"
+        assert ticker.gics_sector == "Information Technology"
+        assert ticker.bloomberg_ticker == "AAPL US Equity"
+
+    def test_正常系_bloomberg_tickerのデフォルト値が空文字列(self) -> None:
+        ticker = UniverseTicker(
+            ticker="MSFT",
+            gics_sector="Information Technology",
+        )
+        assert ticker.bloomberg_ticker == ""
+
+    def test_正常系_国際銘柄のbloomberg_ticker(self) -> None:
+        ticker = UniverseTicker(
+            ticker="ADN",
+            gics_sector="Industrials",
+            bloomberg_ticker="ADN LN Equity",
+        )
+        assert ticker.bloomberg_ticker == "ADN LN Equity"
+
 
 # =============================================================================
 # UniverseConfig

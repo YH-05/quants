@@ -1,4 +1,4 @@
-"""Phase 0-5 pipeline orchestrator for the CA Strategy.
+"""Phase 0-6 pipeline orchestrator for the CA Strategy.
 
 Integrates all pipeline phases in order:
 
@@ -9,6 +9,8 @@ Integrates all pipeline phases in order:
 4. **Portfolio Construction** (Phase 4): Ranked -> Portfolio via
    PortfolioBuilder
 5. **Output Generation** (Phase 5): Portfolio -> Files via OutputGenerator
+6. **Evaluation** (Phase 6): Portfolio + Returns -> EvaluationResult via
+   StrategyEvaluator + PortfolioReturnCalculator
 
 Supports full pipeline execution and checkpoint-based resumption.
 Logs each phase's execution status to ``execution_log.json``.
@@ -35,6 +37,8 @@ from typing import TYPE_CHECKING, Any, cast
 if TYPE_CHECKING:
     from collections.abc import Callable
 
+    from dev.ca_strategy.price_provider import PriceDataProvider
+
 import pandas as pd
 from pydantic import BaseModel
 
@@ -45,8 +49,9 @@ from dev.ca_strategy.evaluator import StrategyEvaluator
 from dev.ca_strategy.extractor import ClaimExtractor
 from dev.ca_strategy.neutralizer import SectorNeutralizer
 from dev.ca_strategy.output import OutputGenerator
-from dev.ca_strategy.pit import CUTOFF_DATE
+from dev.ca_strategy.pit import CUTOFF_DATE, EVALUATION_END_DATE, PORTFOLIO_DATE
 from dev.ca_strategy.portfolio_builder import PortfolioBuilder, RankedStock
+from dev.ca_strategy.return_calculator import PortfolioReturnCalculator
 from dev.ca_strategy.scorer import ClaimScorer
 from dev.ca_strategy.transcript import TranscriptLoader
 from dev.ca_strategy.types import (
@@ -78,7 +83,7 @@ _DEFAULT_THRESHOLDS: list[float] = [0.3, 0.4, 0.5, 0.6, 0.7]
 # Public API
 # ---------------------------------------------------------------------------
 class Orchestrator:
-    """Orchestrate the full CA Strategy pipeline (Phase 1-5).
+    """Orchestrate the full CA Strategy pipeline (Phase 1-6).
 
     Loads configuration, manages pipeline state, and coordinates
     execution of each phase in order.  Supports checkpoint-based
@@ -87,8 +92,9 @@ class Orchestrator:
     Parameters
     ----------
     config_path : Path | str
-        Directory containing ``universe.json`` and
-        ``benchmark_weights.json``.
+        Directory containing ``universe.json``,
+        ``benchmark_weights.json``, and optionally
+        ``corporate_actions.json``.
     kb_base_dir : Path | str | None
         Root directory for knowledge base files (KB1-T, KB2-T,
         KB3-T, system prompt).  Pass ``None`` when running
@@ -96,6 +102,12 @@ class Orchestrator:
     workspace_dir : Path | str
         Working directory for intermediate outputs, checkpoints,
         and execution logs.
+    price_provider : PriceDataProvider | None, optional
+        Provider for fetching daily close prices.  When set,
+        Phase 6 uses ``PortfolioReturnCalculator`` to compute
+        real portfolio and benchmark returns.  When ``None``
+        (default), Phase 6 uses empty Series (NaN metrics),
+        preserving backward compatibility.
 
     Raises
     ------
@@ -117,13 +129,18 @@ class Orchestrator:
         config_path: Path | str,
         kb_base_dir: Path | str | None,
         workspace_dir: Path | str,
+        price_provider: PriceDataProvider | None = None,
     ) -> None:
         self._config_path = Path(config_path)
         self._kb_base_dir = Path(kb_base_dir) if kb_base_dir is not None else None
         self._workspace_dir = Path(workspace_dir)
+        self._price_provider = price_provider
 
         # ConfigRepository validates config_path existence
         self._config = ConfigRepository(self._config_path)
+
+        # Load corporate_actions.json if present (fallback: empty list)
+        self._corporate_actions: list[dict[str, Any]] = self._load_corporate_actions()
 
         # Ensure workspace directory exists
         self._workspace_dir.mkdir(parents=True, exist_ok=True)
@@ -141,6 +158,10 @@ class Orchestrator:
             if self._kb_base_dir is not None
             else None,
             workspace_dir=str(self._workspace_dir),
+            price_provider=type(self._price_provider).__name__
+            if self._price_provider is not None
+            else None,
+            corporate_actions_count=len(self._corporate_actions),
         )
 
     # -----------------------------------------------------------------------
@@ -160,7 +181,7 @@ class Orchestrator:
         """
         logger.info("Starting full pipeline execution")
 
-        claims, scored_claims, scores, ranked = self._run_phases_1_to_3()
+        _claims, scored_claims, scores, ranked = self._run_phases_1_to_3()
 
         # Phase 4: Portfolio Construction
         portfolio = self._execute_phase(
@@ -394,15 +415,46 @@ class Orchestrator:
         tuple[PortfolioResult, EvaluationResult]
             Portfolio and evaluation results for this threshold.
         """
+        # Phase 4b: Equal-weight portfolio construction
+        portfolio = self._run_phase4b_equal_weight(ranked_list, threshold)
+
+        # Phase 6: Evaluation
+        evaluation = self._run_phase6_evaluation(portfolio, scores, threshold)
+
+        # Phase 5 extended: Output generation with evaluation
+        self._run_phase5_extended(
+            portfolio, scored_claims, scores, evaluation, threshold
+        )
+
+        return portfolio, evaluation
+
+    def _run_phase4b_equal_weight(
+        self,
+        ranked_list: list[dict[str, Any]],
+        threshold: float,
+    ) -> PortfolioResult:
+        """Execute Phase 4b: equal-weight portfolio construction.
+
+        Parameters
+        ----------
+        ranked_list : list[dict[str, Any]]
+            Ranked stocks as list of dicts.
+        threshold : float
+            Score threshold.
+
+        Returns
+        -------
+        PortfolioResult
+            Equal-weight portfolio result.
+        """
         phase_label = f"phase4b_threshold_{threshold:.2f}"
         logger.info("Phase 4b started", threshold=threshold)
 
-        # Phase 4b: Equal-weight portfolio construction
         builder = PortfolioBuilder()
         portfolio = builder.build_equal_weight(
             ranked=ranked_list,  # type: ignore[arg-type]
             threshold=threshold,
-            as_of_date=CUTOFF_DATE,
+            as_of_date=PORTFOLIO_DATE,
         )
         self._save_execution_log(phase_label, "completed", None)
 
@@ -412,21 +464,83 @@ class Orchestrator:
             holdings_count=len(portfolio.holdings),
         )
 
-        # Phase 6: Evaluation
+        return portfolio
+
+    def _calculate_phase6_returns(
+        self,
+        portfolio: PortfolioResult,
+    ) -> tuple[pd.Series, pd.Series]:
+        """Calculate portfolio and benchmark returns for Phase 6 evaluation.
+
+        When ``price_provider`` is set, uses ``PortfolioReturnCalculator``
+        to compute real portfolio and benchmark returns using daily close
+        prices.  When ``None`` (default), returns empty Series so that
+        ``StrategyEvaluator`` produces NaN performance metrics.
+
+        Parameters
+        ----------
+        portfolio : PortfolioResult
+            Portfolio from Phase 4 or 4b.
+
+        Returns
+        -------
+        tuple[pd.Series, pd.Series]
+            ``(portfolio_returns, benchmark_returns)``
+        """
+        if self._price_provider is None:
+            return pd.Series([], dtype=float), pd.Series([], dtype=float)
+
+        calculator = PortfolioReturnCalculator(
+            price_provider=self._price_provider,
+            corporate_actions=self._corporate_actions,
+        )
+        portfolio_weights = {h.ticker: h.weight for h in portfolio.holdings}
+        portfolio_returns = calculator.calculate_returns(
+            weights=portfolio_weights,
+            start=PORTFOLIO_DATE,
+            end=EVALUATION_END_DATE,
+        )
+        universe_tickers = [t.ticker for t in self._config.universe.tickers]
+        benchmark_returns = calculator.calculate_benchmark_returns(
+            tickers=universe_tickers,
+            start=PORTFOLIO_DATE,
+            end=EVALUATION_END_DATE,
+        )
+        return portfolio_returns, benchmark_returns
+
+    def _run_phase6_evaluation(
+        self,
+        portfolio: PortfolioResult,
+        scores: dict[str, StockScore],
+        threshold: float,
+    ) -> EvaluationResult:
+        """Execute Phase 6: strategy evaluation.
+
+        Parameters
+        ----------
+        portfolio : PortfolioResult
+            Portfolio from Phase 4b.
+        scores : dict[str, StockScore]
+            Aggregated stock scores.
+        threshold : float
+            Score threshold.
+
+        Returns
+        -------
+        EvaluationResult
+            Evaluation metrics.
+        """
         phase6_label = f"phase6_threshold_{threshold:.2f}"
         logger.info("Phase 6 started", threshold=threshold)
 
-        evaluator = StrategyEvaluator()
-        # AIDEV-NOTE: portfolio_returns and benchmark_returns are empty Series
-        # in the PoC because yfinance fetching is out of scope here.
-        # The StrategyEvaluator handles empty Series gracefully.
+        portfolio_returns, benchmark_returns = self._calculate_phase6_returns(portfolio)
 
-        empty_returns: pd.Series = pd.Series([], dtype=float)
+        evaluator = StrategyEvaluator()
         evaluation = evaluator.evaluate(
             portfolio=portfolio,
             scores=scores,
-            portfolio_returns=empty_returns,
-            benchmark_returns=empty_returns,
+            portfolio_returns=portfolio_returns,
+            benchmark_returns=benchmark_returns,
             analyst_scores={},
             threshold=threshold,
         )
@@ -438,7 +552,31 @@ class Orchestrator:
             sharpe=evaluation.performance.sharpe_ratio,
         )
 
-        # Phase 5 extended: Output generation with evaluation
+        return evaluation
+
+    def _run_phase5_extended(
+        self,
+        portfolio: PortfolioResult,
+        scored_claims: dict[str, list[ScoredClaim]],
+        scores: dict[str, StockScore],
+        evaluation: EvaluationResult,
+        threshold: float,
+    ) -> None:
+        """Execute Phase 5 extended: output generation with evaluation.
+
+        Parameters
+        ----------
+        portfolio : PortfolioResult
+            Portfolio from Phase 4b.
+        scored_claims : dict[str, list[ScoredClaim]]
+            Scored claims from Phase 2.
+        scores : dict[str, StockScore]
+            Aggregated stock scores.
+        evaluation : EvaluationResult
+            Evaluation result from Phase 6.
+        threshold : float
+            Score threshold.
+        """
         output_dir = self._workspace_dir / "output" / f"threshold_{threshold:.2f}"
         generator = OutputGenerator()
         generator.generate_all(
@@ -457,8 +595,6 @@ class Orchestrator:
             threshold=threshold,
             output_dir=str(output_dir),
         )
-
-        return portfolio, evaluation
 
     # -----------------------------------------------------------------------
     # Execution log
@@ -721,7 +857,7 @@ class Orchestrator:
         portfolio = builder.build(
             ranked=ranked_list,
             benchmark=benchmark,
-            as_of_date=CUTOFF_DATE,
+            as_of_date=PORTFOLIO_DATE,
         )
 
         logger.info(
@@ -786,6 +922,83 @@ class Orchestrator:
         """
         aggregator = ScoreAggregator()
         return aggregator.aggregate(scored_claims)
+
+    # -----------------------------------------------------------------------
+    # Corporate actions loading
+    # -----------------------------------------------------------------------
+    def _load_corporate_actions(self) -> list[dict[str, Any]]:
+        """Load corporate actions from ``corporate_actions.json`` in config_path.
+
+        Returns an empty list if the file does not exist or contains
+        invalid data, allowing graceful fallback for configurations
+        without corporate action data.
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            List of validated corporate action records.
+        """
+        ca_path = self._config_path / "corporate_actions.json"
+        if not ca_path.exists():
+            logger.debug(
+                "corporate_actions.json not found, using empty list",
+                config_path=str(self._config_path),
+            )
+            return []
+
+        try:
+            data = json.loads(ca_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as e:
+            logger.warning(
+                "Failed to parse corporate_actions.json, using empty list",
+                error=str(e),
+                path=str(ca_path),
+            )
+            return []
+
+        if not isinstance(data, dict) or "corporate_actions" not in data:
+            logger.warning(
+                "Invalid corporate_actions.json structure, "
+                "expected {'corporate_actions': [...]}, using empty list",
+                path=str(ca_path),
+            )
+            return []
+
+        actions_raw = data["corporate_actions"]
+        if not isinstance(actions_raw, list):
+            logger.warning(
+                "corporate_actions field is not a list, using empty list",
+                path=str(ca_path),
+            )
+            return []
+
+        # Validate each action has required fields
+        required_fields = {"ticker", "action_date", "action_type"}
+        valid_actions: list[dict[str, Any]] = []
+        for i, action in enumerate(actions_raw):
+            if not isinstance(action, dict):
+                logger.warning(
+                    "Skipping non-dict corporate action entry",
+                    index=i,
+                )
+                continue
+            missing = required_fields - set(action.keys())
+            if missing:
+                logger.warning(
+                    "Skipping corporate action with missing required fields",
+                    index=i,
+                    missing_fields=sorted(missing),
+                )
+                continue
+            valid_actions.append(action)
+
+        logger.info(
+            "Corporate actions loaded",
+            count=len(valid_actions),
+            skipped=len(actions_raw) - len(valid_actions),
+            path=str(ca_path),
+        )
+        return valid_actions
 
     # -----------------------------------------------------------------------
     # Checkpoint I/O

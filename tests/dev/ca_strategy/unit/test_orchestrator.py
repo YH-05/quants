@@ -1,11 +1,12 @@
 """Tests for ca_strategy orchestrator module.
 
-Orchestrator integrates Phase 1-5 of the CA Strategy pipeline:
+Orchestrator integrates Phase 1-6 of the CA Strategy pipeline:
 1. Extraction: Transcript -> Claims (via ClaimExtractor)
 2. Scoring: Claims -> ScoredClaims (via ClaimScorer)
 3. Neutralization: Scores -> Ranked DataFrame (via ScoreAggregator + SectorNeutralizer)
 4. Portfolio Construction: Ranked -> Portfolio (via PortfolioBuilder)
 5. Output Generation: Portfolio -> Files (via OutputGenerator)
+6. Evaluation: Portfolio + Returns -> EvaluationResult (via StrategyEvaluator + PortfolioReturnCalculator)
 
 All tests use mocks to avoid LLM API calls and external dependencies.
 """
@@ -22,6 +23,8 @@ import pytest
 
 from dev.ca_strategy._config import ConfigRepository
 from dev.ca_strategy.orchestrator import Orchestrator
+from dev.ca_strategy.pit import PORTFOLIO_DATE
+from dev.ca_strategy.price_provider import NullPriceDataProvider, PriceDataProvider
 from dev.ca_strategy.types import (
     AnalystCorrelation,
     BenchmarkWeight,
@@ -933,3 +936,396 @@ class TestRunEqualWeightPipeline:
         mock_phase4 = mock_p4
         mock_phase4.assert_called_once()
         mock_p5.assert_called_once()
+
+
+# ===========================================================================
+# Orchestrator with price_provider (Phase 6 integration)
+# ===========================================================================
+class TestOrchestratorPriceProviderInit:
+    """Tests for Orchestrator price_provider parameter (backward compatibility)."""
+
+    def test_正常系_price_provider省略時に後方互換性が維持される(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """Orchestrator(config_path, kb_base_dir, workspace_dir) works as before."""
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert orch is not None
+        # _price_provider should be None (backward compatible)
+        assert orch._price_provider is None
+
+    def test_正常系_price_providerをNoneで渡しても後方互換性が維持される(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+            price_provider=None,
+        )
+        assert orch._price_provider is None
+
+    def test_正常系_PriceDataProviderを注入できる(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        provider = NullPriceDataProvider()
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+            price_provider=provider,
+        )
+        assert orch._price_provider is provider
+
+
+class TestOrchestratorCorporateActions:
+    """Tests for corporate_actions.json loading from config_path."""
+
+    def test_正常系_corporate_actions_jsonが存在する場合に読み込まれる(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        actions_data = {
+            "corporate_actions": [
+                {
+                    "ticker": "EMC",
+                    "company_name": "EMC Corporation",
+                    "action_date": "2016-09-07",
+                    "action_type": "delisting",
+                    "reason": "Merged into Dell Technologies",
+                },
+            ]
+        }
+        (config_dir / "corporate_actions.json").write_text(
+            json.dumps(actions_data, ensure_ascii=False, indent=2)
+        )
+
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert len(orch._corporate_actions) == 1
+        assert orch._corporate_actions[0]["ticker"] == "EMC"
+
+    def test_正常系_corporate_actions_jsonが存在しない場合に空リスト(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        # Ensure no corporate_actions.json exists
+        ca_path = config_dir / "corporate_actions.json"
+        if ca_path.exists():
+            ca_path.unlink()
+
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert orch._corporate_actions == []
+
+    def test_異常系_corporate_actions_jsonが不正JSONの場合に空リスト(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        (config_dir / "corporate_actions.json").write_text("not valid json{{{")
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert orch._corporate_actions == []
+
+    def test_異常系_corporate_actions_jsonにcorporate_actionsキーがない場合に空リスト(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        (config_dir / "corporate_actions.json").write_text(
+            json.dumps({"wrong_key": []})
+        )
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert orch._corporate_actions == []
+
+    def test_異常系_corporate_actionsに必須フィールド欠損のエントリがスキップされる(
+        self,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        actions_data = {
+            "corporate_actions": [
+                {
+                    "ticker": "EMC",
+                    "action_date": "2016-09-07",
+                    "action_type": "delisting",
+                },
+                {
+                    "ticker": "ALTR",
+                    # missing action_date and action_type
+                },
+            ]
+        }
+        (config_dir / "corporate_actions.json").write_text(
+            json.dumps(actions_data, ensure_ascii=False, indent=2)
+        )
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+        )
+        assert len(orch._corporate_actions) == 1
+        assert orch._corporate_actions[0]["ticker"] == "EMC"
+
+
+class TestPhase6WithPriceProvider:
+    """Tests for Phase 6 evaluation with PortfolioReturnCalculator integration."""
+
+    @patch.object(Orchestrator, "_run_phase3_neutralization")
+    @patch.object(Orchestrator, "_run_phase2_scoring")
+    @patch.object(Orchestrator, "_run_phase1_extraction")
+    def test_正常系_price_providerがNoneのときPhase6メトリクスがNaN(
+        self,
+        mock_phase1: MagicMock,
+        mock_phase2: MagicMock,
+        mock_phase3: MagicMock,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """price_provider=None should produce NaN metrics (backward compat)."""
+        mock_phase1.return_value = _make_claims()
+        mock_phase2.return_value = _make_scored_claims()
+        mock_phase3.return_value = _make_ranked_df()
+
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+            price_provider=None,
+        )
+
+        with (
+            patch("dev.ca_strategy.orchestrator.PortfolioBuilder") as mock_builder_cls,
+            patch("dev.ca_strategy.orchestrator.StrategyEvaluator") as mock_eval_cls,
+            patch("dev.ca_strategy.orchestrator.OutputGenerator"),
+        ):
+            mock_builder = MagicMock()
+            mock_builder.build_equal_weight.return_value = _make_portfolio_result()
+            mock_builder_cls.return_value = mock_builder
+
+            mock_eval = MagicMock()
+            mock_eval.evaluate.return_value = _make_evaluation_result()
+            mock_eval_cls.return_value = mock_eval
+
+            orch.run_equal_weight_pipeline(thresholds=[0.5])
+
+        # Evaluator should receive empty Series
+        call_kwargs = mock_eval.evaluate.call_args
+        portfolio_returns = call_kwargs.kwargs.get("portfolio_returns")
+        benchmark_returns = call_kwargs.kwargs.get("benchmark_returns")
+        assert portfolio_returns is not None
+        assert benchmark_returns is not None
+        assert len(portfolio_returns) == 0
+        assert len(benchmark_returns) == 0
+
+    @patch.object(Orchestrator, "_run_phase3_neutralization")
+    @patch.object(Orchestrator, "_run_phase2_scoring")
+    @patch.object(Orchestrator, "_run_phase1_extraction")
+    def test_正常系_price_provider設定時にPortfolioReturnCalculatorで実リターンを計算(
+        self,
+        mock_phase1: MagicMock,
+        mock_phase2: MagicMock,
+        mock_phase3: MagicMock,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """When price_provider is set, PortfolioReturnCalculator produces real returns."""
+        mock_phase1.return_value = _make_claims()
+        mock_phase2.return_value = _make_scored_claims()
+        mock_phase3.return_value = _make_ranked_df()
+
+        mock_provider = MagicMock(spec=PriceDataProvider)
+
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+            price_provider=mock_provider,
+        )
+
+        # Create non-empty returns
+        mock_portfolio_returns = pd.Series([0.01, 0.02, -0.01], dtype=float)
+        mock_benchmark_returns = pd.Series([0.005, 0.01, -0.005], dtype=float)
+
+        with (
+            patch("dev.ca_strategy.orchestrator.PortfolioBuilder") as mock_builder_cls,
+            patch("dev.ca_strategy.orchestrator.StrategyEvaluator") as mock_eval_cls,
+            patch("dev.ca_strategy.orchestrator.OutputGenerator"),
+            patch(
+                "dev.ca_strategy.orchestrator.PortfolioReturnCalculator"
+            ) as mock_calc_cls,
+        ):
+            mock_builder = MagicMock()
+            mock_builder.build_equal_weight.return_value = _make_portfolio_result()
+            mock_builder_cls.return_value = mock_builder
+
+            mock_calc = MagicMock()
+            mock_calc.calculate_returns.return_value = mock_portfolio_returns
+            mock_calc.calculate_benchmark_returns.return_value = mock_benchmark_returns
+            mock_calc_cls.return_value = mock_calc
+
+            mock_eval = MagicMock()
+            mock_eval.evaluate.return_value = _make_evaluation_result()
+            mock_eval_cls.return_value = mock_eval
+
+            orch.run_equal_weight_pipeline(thresholds=[0.5])
+
+        # Verify PortfolioReturnCalculator was constructed with provider + corporate_actions
+        mock_calc_cls.assert_called_once()
+        calc_kwargs = mock_calc_cls.call_args
+        assert calc_kwargs.kwargs.get("price_provider") is mock_provider
+
+        # Verify evaluator received non-empty returns
+        eval_call_kwargs = mock_eval.evaluate.call_args
+        actual_portfolio_returns = eval_call_kwargs.kwargs.get("portfolio_returns")
+        actual_benchmark_returns = eval_call_kwargs.kwargs.get("benchmark_returns")
+        assert actual_portfolio_returns is not None
+        assert len(actual_portfolio_returns) == 3
+        assert actual_benchmark_returns is not None
+        assert len(actual_benchmark_returns) == 3
+
+
+class TestCalculatePhase6Returns:
+    """Tests for _calculate_phase6_returns helper method."""
+
+    @patch.object(Orchestrator, "_run_phase3_neutralization")
+    @patch.object(Orchestrator, "_run_phase2_scoring")
+    @patch.object(Orchestrator, "_run_phase1_extraction")
+    def test_正常系_price_provider設定時にPriceDataProviderエラーが伝播する(
+        self,
+        mock_phase1: MagicMock,
+        mock_phase2: MagicMock,
+        mock_phase3: MagicMock,
+        config_dir: Path,
+        kb_base_dir: Path,
+        workspace_dir: Path,
+    ) -> None:
+        """When PriceDataProvider raises an error, it should propagate."""
+        mock_phase1.return_value = _make_claims()
+        mock_phase2.return_value = _make_scored_claims()
+        mock_phase3.return_value = _make_ranked_df()
+
+        mock_provider = MagicMock(spec=PriceDataProvider)
+
+        orch = Orchestrator(
+            config_path=config_dir,
+            kb_base_dir=kb_base_dir,
+            workspace_dir=workspace_dir,
+            price_provider=mock_provider,
+        )
+
+        with (
+            patch("dev.ca_strategy.orchestrator.PortfolioBuilder") as mock_builder_cls,
+            patch(
+                "dev.ca_strategy.orchestrator.PortfolioReturnCalculator"
+            ) as mock_calc_cls,
+        ):
+            mock_builder = MagicMock()
+            mock_builder.build_equal_weight.return_value = _make_portfolio_result()
+            mock_builder_cls.return_value = mock_builder
+
+            mock_calc = MagicMock()
+            mock_calc.calculate_returns.side_effect = RuntimeError("Provider failed")
+            mock_calc_cls.return_value = mock_calc
+
+            with pytest.raises(RuntimeError, match="Provider failed"):
+                orch.run_equal_weight_pipeline(thresholds=[0.5])
+
+
+class TestPhase4bAsOfDate:
+    """Tests for Phase 4b as_of_date using PORTFOLIO_DATE."""
+
+    @patch.object(Orchestrator, "_run_phase3_neutralization")
+    @patch.object(Orchestrator, "_run_phase2_scoring")
+    @patch.object(Orchestrator, "_run_phase1_extraction")
+    def test_正常系_Phase4bのas_of_dateがPORTFOLIO_DATEに設定される(
+        self,
+        mock_phase1: MagicMock,
+        mock_phase2: MagicMock,
+        mock_phase3: MagicMock,
+        orchestrator: Orchestrator,
+    ) -> None:
+        mock_phase1.return_value = _make_claims()
+        mock_phase2.return_value = _make_scored_claims()
+        mock_phase3.return_value = _make_ranked_df()
+
+        with (
+            patch("dev.ca_strategy.orchestrator.PortfolioBuilder") as mock_builder_cls,
+            patch("dev.ca_strategy.orchestrator.StrategyEvaluator") as mock_eval_cls,
+            patch("dev.ca_strategy.orchestrator.OutputGenerator"),
+        ):
+            mock_builder = MagicMock()
+            mock_builder.build_equal_weight.return_value = _make_portfolio_result()
+            mock_builder_cls.return_value = mock_builder
+
+            mock_eval = MagicMock()
+            mock_eval.evaluate.return_value = _make_evaluation_result()
+            mock_eval_cls.return_value = mock_eval
+
+            orchestrator.run_equal_weight_pipeline(thresholds=[0.5])
+
+        # Phase 4b: build_equal_weight should use PORTFOLIO_DATE
+        call_kwargs = mock_builder.build_equal_weight.call_args
+        assert call_kwargs.kwargs.get("as_of_date") == PORTFOLIO_DATE
+
+    @patch.object(Orchestrator, "_run_phase5_output_generation")
+    @patch.object(Orchestrator, "_run_phase3_neutralization")
+    @patch.object(Orchestrator, "_run_phase2_scoring")
+    @patch.object(Orchestrator, "_run_phase1_extraction")
+    def test_正常系_run_full_pipelineのPhase4もPORTFOLIO_DATEを使用(
+        self,
+        mock_phase1: MagicMock,
+        mock_phase2: MagicMock,
+        mock_phase3: MagicMock,
+        mock_phase5: MagicMock,
+        orchestrator: Orchestrator,
+    ) -> None:
+        mock_phase1.return_value = _make_claims()
+        mock_phase2.return_value = _make_scored_claims()
+        mock_phase3.return_value = _make_ranked_df()
+
+        with patch("dev.ca_strategy.orchestrator.PortfolioBuilder") as mock_builder_cls:
+            mock_builder = MagicMock()
+            mock_builder.build.return_value = _make_portfolio_result()
+            mock_builder_cls.return_value = mock_builder
+
+            orchestrator.run_full_pipeline()
+
+        # Phase 4: build should use PORTFOLIO_DATE
+        call_kwargs = mock_builder.build.call_args
+        assert call_kwargs.kwargs.get("as_of_date") == PORTFOLIO_DATE

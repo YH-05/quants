@@ -549,12 +549,17 @@ class UniverseTicker(BaseModel):
         Ticker symbol.
     gics_sector : str
         GICS sector classification.
+    bloomberg_ticker : str
+        Bloomberg ticker identifier including exchange code
+        (e.g. ``"AAPL US Equity"``).  Defaults to ``""`` for
+        backward compatibility with existing universe files.
     """
 
     model_config = ConfigDict(frozen=True)
 
     ticker: NonEmptyStr
     gics_sector: NonEmptyStr
+    bloomberg_ticker: str = ""
 
 
 class UniverseConfig(BaseModel):

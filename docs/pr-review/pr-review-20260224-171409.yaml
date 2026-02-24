@@ -1,0 +1,214 @@
+# PRレビューレポート
+# 生成日時: 2026-02-24 17:14:09
+# 生成スキル: review-pr
+
+metadata:
+  generated_at: "2026-02-24 17:14:09"
+  pr_number: 3667
+  pr_title: "feat(ca-strategy): Phase 6 パフォーマンス評価基盤を実装 (Issues #3661-#3666)"
+  base_branch: "main"
+  head_branch: "feature/prj61"
+  review_mode: "remote"
+
+pr_info:
+  files_changed: 15
+  additions: 1276
+  deletions: 25
+  changed_files:
+    - path: "src/dev/ca_strategy/pit.py"
+      additions: 8
+      deletions: 0
+    - path: "src/dev/ca_strategy/types.py"
+      additions: 3
+      deletions: 0
+    - path: "src/dev/ca_strategy/price_provider.py"
+      additions: 103
+      deletions: 0
+    - path: "src/dev/ca_strategy/return_calculator.py"
+      additions: 416
+      deletions: 0
+    - path: "src/dev/ca_strategy/orchestrator.py"
+      additions: 89
+      deletions: 13
+    - path: "src/dev/ca_strategy/generate_config.py"
+      additions: 5
+      deletions: 2
+    - path: "src/dev/ca_strategy/__init__.py"
+      additions: 12
+      deletions: 3
+    - path: "research/ca_strategy_poc/config/corporate_actions.json"
+      additions: 62
+      deletions: 0
+    - path: "research/ca_strategy_poc/config/universe.json"
+      additions: 0
+      deletions: 0
+    - path: "tests/dev/ca_strategy/unit/test_pit.py"
+      additions: 55
+      deletions: 0
+    - path: "tests/dev/ca_strategy/unit/test_types.py"
+      additions: 30
+      deletions: 0
+    - path: "tests/dev/ca_strategy/unit/test_price_provider.py"
+      additions: 75
+      deletions: 0
+    - path: "tests/dev/ca_strategy/unit/test_generate_config.py"
+      additions: 50
+      deletions: 7
+    - path: "tests/dev/ca_strategy/unit/test_return_calculator.py"
+      additions: 250
+      deletions: 0
+    - path: "tests/dev/ca_strategy/unit/test_orchestrator.py"
+      additions: 110
+      deletions: 0
+
+scores:
+  code_quality: 80
+  security: 82
+  test: 83
+  overall: 81
+
+code_quality:
+  readability_score: 88
+  design_score: 82
+  performance_score: 65
+
+  strengths:
+    - "PriceDataProvider Protocol による依存性逆転の原則が適切に実装されている"
+    - "NullPriceDataProvider による Null Object パターンがテスト容易性を向上"
+    - "NumPy 形式の Docstring が全パブリックメソッドに付与されている"
+    - "snake_case / PascalCase / UPPER_SNAKE の命名規則が一貫している"
+    - "corporate_actions.json の ALTR 日付クランプ処理が適切にドキュメント化されている"
+    - "PEP 695 スタイルの型ヒントが全体に適用されている"
+    - "テストの日本語命名が意図を明確に表現している"
+
+  issues:
+    critical: []
+    high: []
+    medium:
+      - id: "CQ-001"
+        category: "SRP violation"
+        location: "src/dev/ca_strategy/orchestrator.py:_run_equal_weight_threshold"
+        description: "_run_equal_weight_threshold メソッドが3つの責務（コーポレートアクション読込、リターン計算、閾値評価）を持ち、113行に達している"
+        recommendation: "Phase 6 のリターン計算ロジックを専用メソッド _calculate_phase6_returns() に抽出する"
+      - id: "CQ-002"
+        category: "DRY violation"
+        location: "src/dev/ca_strategy/return_calculator.py:calculate_returns, calculate_benchmark_returns"
+        description: "calculate_returns と calculate_benchmark_returns に18行の重複パイプライン（fetch→missing check→build returns→redistribute weights→compute weighted）が存在"
+        recommendation: "共通パイプラインを _prepare_returns_pipeline() として抽出し、重み計算のみ差分化する"
+      - id: "CQ-003"
+        category: "Performance"
+        location: "src/dev/ca_strategy/return_calculator.py:_compute_weighted_returns"
+        description: "_compute_weighted_returns のPythonループ（for idx_date in dates_index）が大規模データで非効率。pandas の vectorized 演算（.dot()）で置き換え可能"
+        recommendation: "pandas DataFrame の dot 演算を使用して日次リターン計算をベクトル化する"
+      - id: "CQ-004"
+        category: "Input validation"
+        location: "src/dev/ca_strategy/return_calculator.py:_parse_actions"
+        description: "_parse_actions に KeyError/ValueError の try/except がなく、不正な corporate_actions 入力でクラッシュする"
+        recommendation: "try/except で個別アクションの解析エラーをキャッチし、ログ出力してスキップする"
+    low:
+      - id: "CQ-005"
+        category: "Type precision"
+        location: "src/dev/ca_strategy/return_calculator.py"
+        description: "list[dict] 型パラメータが list[dict[str, Any]] ではなく曖昧"
+        recommendation: "TypedDict または dict[str, Any] で型を明確化する"
+      - id: "CQ-006"
+        category: "Naming inconsistency"
+        location: "src/dev/ca_strategy/return_calculator.py"
+        description: "calculate_returns では missing_tickers、calculate_benchmark_returns では missing と変数名が不統一"
+        recommendation: "両メソッドで統一した変数名を使用する"
+
+  solid_compliance:
+    single_responsibility: "WARN"
+    open_closed: "PASS"
+    liskov_substitution: "PASS"
+    interface_segregation: "PASS"
+    dependency_inversion: "PASS"
+
+security:
+  code_security_score: 82
+  infra_security_score: 82
+
+  vulnerability_count:
+    critical: 0
+    high: 0
+    medium: 2
+    low: 2
+
+  findings:
+    - id: "SEC-001"
+      severity: "MEDIUM"
+      category: "A04: Insecure Design"
+      location: "src/dev/ca_strategy/orchestrator.py:_load_corporate_actions"
+      description: "corporate_actions.json の読み込みに JSON スキーマバリデーションがなく、不正なデータ構造が後段で予期しない動作を引き起こす可能性"
+      recommendation: "Pydantic モデルまたは JSON Schema で入力データを検証する"
+      cwe_id: "CWE-20"
+    - id: "SEC-002"
+      severity: "MEDIUM"
+      category: "A05: Security Misconfiguration"
+      location: "src/dev/ca_strategy/return_calculator.py:_parse_actions"
+      description: "corporate_actions の解析で例外処理がなく、不正データによる DoS の可能性"
+      recommendation: "入力バリデーションと例外処理を追加する"
+      cwe_id: "CWE-20"
+    - id: "SEC-003"
+      severity: "LOW"
+      category: "A09: Security Logging and Monitoring"
+      location: "src/dev/ca_strategy/return_calculator.py"
+      description: "重要な操作（ウェイト再配分、コーポレートアクション適用）のログレベルが DEBUG のみ"
+      recommendation: "ウェイト変更の要約を INFO レベルで記録する"
+      cwe_id: "CWE-778"
+    - id: "SEC-004"
+      severity: "LOW"
+      category: "A06: Vulnerable Components"
+      location: "pyproject.toml"
+      description: "pandas のバージョンピンニングの確認を推奨"
+      recommendation: "dependabot または pip-audit で定期的に脆弱性をスキャンする"
+      cwe_id: "CWE-1104"
+
+test:
+  coverage_score: 87
+  quality_score: 79
+  coverage_assessment: "GOOD"
+  edge_cases_covered: true
+
+  missing_tests:
+    - "PortfolioReturnCalculator: 全ティッカーがコーポレートアクション対象となるケース"
+    - "PortfolioReturnCalculator: 同一日に複数のコーポレートアクションが発生するケース"
+    - "PortfolioReturnCalculator: NaN を含む価格データでの振る舞い"
+    - "orchestrator: Phase 6 で PriceDataProvider がエラーを返すケース"
+    - "_parse_actions: 不正な日付フォーマットや欠損キーでの振る舞い"
+
+  test_quality:
+    isolation: "PASS"
+    reproducibility: "PASS"
+    readability: "PASS"
+    naming: "WARN"
+
+  test_quality_issues:
+    - severity: "MEDIUM"
+      description: "test_return_calculator.py のフィクスチャが大きく複雑（30行超）。テストデータファクトリの導入を推奨"
+    - severity: "LOW"
+      description: "一部のテストでマジックナンバー（0.5, 0.3, 0.2等）が直接使用されている"
+
+recommended_actions:
+  required: []
+
+  suggested:
+    - priority: 1
+      action: "calculate_returns と calculate_benchmark_returns の重複パイプラインを共通メソッドに抽出"
+      related_issues: ["CQ-002"]
+    - priority: 2
+      action: "_compute_weighted_returns を pandas vectorized 演算に置き換え"
+      related_issues: ["CQ-003"]
+    - priority: 3
+      action: "_parse_actions と _load_corporate_actions に入力バリデーションを追加"
+      related_issues: ["CQ-004", "SEC-001", "SEC-002"]
+    - priority: 4
+      action: "Phase 6 欠損テストケース（全ティッカーCA、同日複数CA、NaN価格データ）を追加"
+      related_issues: []
+    - priority: 5
+      action: "_run_equal_weight_threshold メソッドを分割して SRP を改善"
+      related_issues: ["CQ-001"]
+
+summary:
+  verdict: "APPROVE"
+  comment: "Phase 6 パフォーマンス評価基盤が適切に実装されています。PriceDataProvider Protocol による依存性逆転、NullPriceDataProvider による Null Object パターンの採用は優れた設計判断です。全体的なコード品質は良好で、マージブロッカーとなる重大な問題はありません。DRY改善とパフォーマンス最適化を次のイテレーションで対応することを推奨します。"

@@ -12,6 +12,8 @@ import pytest
 
 from dev.ca_strategy.pit import (
     CUTOFF_DATE,
+    EVALUATION_END_DATE,
+    PORTFOLIO_DATE,
     filter_by_pit,
     get_pit_prompt_context,
     validate_pit_compliance,
@@ -54,6 +56,48 @@ class TestCutoffDate:
 
     def test_正常系_CUTOFF_DATEがdate型である(self) -> None:
         assert isinstance(CUTOFF_DATE, date)
+
+
+# =============================================================================
+# PORTFOLIO_DATE constant
+# =============================================================================
+class TestPortfolioDate:
+    """PORTFOLIO_DATE constant tests."""
+
+    def test_正常系_PORTFOLIO_DATEが2015年12月31日である(self) -> None:
+        assert date(2015, 12, 31) == PORTFOLIO_DATE
+
+    def test_正常系_PORTFOLIO_DATEがdate型である(self) -> None:
+        assert isinstance(PORTFOLIO_DATE, date)
+
+
+# =============================================================================
+# EVALUATION_END_DATE constant
+# =============================================================================
+class TestEvaluationEndDate:
+    """EVALUATION_END_DATE constant tests."""
+
+    def test_正常系_EVALUATION_END_DATEが2026年2月28日である(self) -> None:
+        assert date(2026, 2, 28) == EVALUATION_END_DATE
+
+    def test_正常系_EVALUATION_END_DATEがdate型である(self) -> None:
+        assert isinstance(EVALUATION_END_DATE, date)
+
+
+# =============================================================================
+# Date ordering
+# =============================================================================
+class TestDateOrdering:
+    """Date constant ordering tests."""
+
+    def test_正常系_CUTOFF_DATEがPORTFOLIO_DATEより前(self) -> None:
+        assert CUTOFF_DATE < PORTFOLIO_DATE
+
+    def test_正常系_PORTFOLIO_DATEがEVALUATION_END_DATEより前(self) -> None:
+        assert PORTFOLIO_DATE < EVALUATION_END_DATE
+
+    def test_正常系_3定数の順序が成立する(self) -> None:
+        assert CUTOFF_DATE < PORTFOLIO_DATE < EVALUATION_END_DATE
 
 
 # =============================================================================
