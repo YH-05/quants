@@ -23,6 +23,7 @@ import pytest
 
 from dev.ca_strategy.agent_io import build_phase2_checkpoint
 from dev.ca_strategy.orchestrator import Orchestrator
+from tests.dev.ca_strategy.conftest import make_scored_claim_dict
 
 # ---------------------------------------------------------------------------
 # Chunk configuration
@@ -40,28 +41,8 @@ _PRESENT_TICKERS: list[str] = [t for t in _ALL_TICKERS if t != _MISSING_TICKER]
 # ---------------------------------------------------------------------------
 
 
-def _make_scored_claim_dict(
-    claim_id: str, *, final_confidence: float = 0.7
-) -> dict[str, Any]:
-    """Build a minimal valid scored claim dict (ScoredClaim-compatible)."""
-    return {
-        "id": claim_id,
-        "claim_type": "competitive_advantage",
-        "claim": f"Claim text for {claim_id}",
-        "evidence": "Evidence for claim.",
-        "rule_evaluation": {
-            "applied_rules": ["rule_1_t"],
-            "results": {"rule_1_t": True},
-            "confidence": 0.7,
-            "adjustments": [],
-        },
-        "final_confidence": final_confidence,
-        "adjustments": [],
-        "gatekeeper": None,
-        "kb1_evaluations": [],
-        "kb2_patterns": [],
-        "overall_reasoning": "Strong evidence.",
-    }
+# _make_scored_claim_dict は tests.dev.ca_strategy.conftest.make_scored_claim_dict に統合済み
+_make_scored_claim_dict = make_scored_claim_dict
 
 
 def _write_phase2_scoring_output(

@@ -89,9 +89,10 @@ class Orchestrator:
     config_path : Path | str
         Directory containing ``universe.json`` and
         ``benchmark_weights.json``.
-    kb_base_dir : Path | str
+    kb_base_dir : Path | str | None
         Root directory for knowledge base files (KB1-T, KB2-T,
-        KB3-T, system prompt).
+        KB3-T, system prompt).  Pass ``None`` when running
+        Phase 3-5 only (KB files are not required).
     workspace_dir : Path | str
         Working directory for intermediate outputs, checkpoints,
         and execution logs.
@@ -114,11 +115,11 @@ class Orchestrator:
     def __init__(
         self,
         config_path: Path | str,
-        kb_base_dir: Path | str,
+        kb_base_dir: Path | str | None,
         workspace_dir: Path | str,
     ) -> None:
         self._config_path = Path(config_path)
-        self._kb_base_dir = Path(kb_base_dir)
+        self._kb_base_dir = Path(kb_base_dir) if kb_base_dir is not None else None
         self._workspace_dir = Path(workspace_dir)
 
         # ConfigRepository validates config_path existence
@@ -136,7 +137,9 @@ class Orchestrator:
         logger.info(
             "Orchestrator initialized",
             config_path=str(self._config_path),
-            kb_base_dir=str(self._kb_base_dir),
+            kb_base_dir=str(self._kb_base_dir)
+            if self._kb_base_dir is not None
+            else None,
             workspace_dir=str(self._workspace_dir),
         )
 
@@ -572,6 +575,9 @@ class Orchestrator:
         transcripts = loader.load_batch(tickers)
 
         # Extract claims
+        if self._kb_base_dir is None:
+            msg = "kb_base_dir is required for Phase 1 (claim extraction)"
+            raise ValueError(msg)
         extractor = ClaimExtractor(
             kb1_dir=self._kb_base_dir / "kb1_rules_transcript",
             kb3_dir=self._kb_base_dir / "kb3_fewshot_transcript",
@@ -615,6 +621,9 @@ class Orchestrator:
         dict[str, list[ScoredClaim]]
             Mapping of ticker to list of scored claims.
         """
+        if self._kb_base_dir is None:
+            msg = "kb_base_dir is required for Phase 2 (claim scoring)"
+            raise ValueError(msg)
         scorer = ClaimScorer(
             kb1_dir=self._kb_base_dir / "kb1_rules_transcript",
             kb2_dir=self._kb_base_dir / "kb2_patterns_transcript",

@@ -148,12 +148,8 @@ def prepare_extraction_input(
     }
 
     # Write to effective output directory
-    effective_dir.mkdir(parents=True, exist_ok=True)
     output_path = effective_dir / "extraction_input.json"
-    output_path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    _write_json_file(output_path, payload)
 
     logger.info(
         "Extraction input prepared",
@@ -199,15 +195,8 @@ def validate_extraction_output(
         )
         return []
 
-    try:
-        data = json.loads(output_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning(
-            "Failed to parse extraction output JSON",
-            ticker=ticker,
-            path=str(output_path),
-            error=str(exc),
-        )
+    data = _read_json_file(output_path, context=f"extraction_output ticker={ticker}")
+    if data is None:
         return []
 
     raw_claims = data.get("claims", [])
@@ -274,25 +263,14 @@ def prepare_scoring_input(
         workspace_dir=str(workspace_dir),
     )
 
-    phase1_output_dir = workspace_dir / "phase1_output" / ticker
-    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
-
-    payload: dict[str, Any] = {
-        "ticker": ticker,
-        "phase1_output_dir": str(phase1_output_dir),
-        "kb1_dir": str(kb1_dir),
-        "kb2_dir": str(kb2_dir),
-        "kb3_dir": str(kb3_dir),
-        "workspace_dir": str(workspace_dir),
-    }
+    kb_dirs = _build_kb_dirs(kb_base_dir)
+    payload: dict[str, Any] = _build_scoring_base_payload(
+        ticker, workspace_dir, kb_dirs
+    )
 
     # Write to workspace
-    workspace_dir.mkdir(parents=True, exist_ok=True)
     output_path = workspace_dir / "scoring_input.json"
-    output_path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    _write_json_file(output_path, payload)
 
     logger.info(
         "Scoring input prepared",
@@ -341,15 +319,8 @@ def validate_scoring_output(
         )
         return []
 
-    try:
-        data = json.loads(output_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning(
-            "Failed to parse scoring output JSON",
-            ticker=ticker,
-            path=str(output_path),
-            error=str(exc),
-        )
+    data = _read_json_file(output_path, context=f"scoring_output ticker={ticker}")
+    if data is None:
         return []
 
     raw_scored_list = data.get("scored_claims", [])
@@ -446,17 +417,13 @@ def prepare_scoring_batches(
         )
         raise ValueError(msg)
 
-    try:
-        data = json.loads(extraction_output_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        msg = f"Failed to read extraction_output.json for ticker {ticker!r}: {exc}"
-        logger.error(
-            "Failed to read extraction_output.json",
-            ticker=ticker,
-            path=str(extraction_output_path),
-            error=str(exc),
-        )
-        raise ValueError(msg) from exc
+    data = _read_json_file(
+        extraction_output_path,
+        context=f"extraction_output ticker={ticker}",
+    )
+    if data is None:
+        msg = f"Failed to read extraction_output.json for ticker {ticker!r}: {extraction_output_path}"
+        raise ValueError(msg)
 
     raw_claims = data.get("claims", [])
     claim_ids: list[str] = [
@@ -481,8 +448,7 @@ def prepare_scoring_batches(
     batch_input_dir = workspace_dir / "batch_inputs"
     batch_input_dir.mkdir(parents=True, exist_ok=True)
 
-    kb1_dir, kb2_dir, kb3_dir = _build_kb_dirs(kb_base_dir)
-
+    kb_dirs = _build_kb_dirs(kb_base_dir)
     phase2_output_dir = workspace_dir / "phase2_output" / ticker
 
     results: list[dict[str, Any]] = []
@@ -491,22 +457,14 @@ def prepare_scoring_batches(
         output_path = phase2_output_dir / f"scored_batch_{batch_index}.json"
 
         payload: dict[str, Any] = {
-            "ticker": ticker,
-            "phase1_output_dir": str(workspace_dir / "phase1_output" / ticker),
-            "kb1_dir": str(kb1_dir),
-            "kb2_dir": str(kb2_dir),
-            "kb3_dir": str(kb3_dir),
-            "workspace_dir": str(workspace_dir),
+            **_build_scoring_base_payload(ticker, workspace_dir, kb_dirs),
             "target_claim_ids": ids,
             "output_path": str(output_path),
             "batch_index": batch_index,
             "batch_total": batch_total,
         }
 
-        input_path.write_text(
-            json.dumps(payload, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        _write_json_file(input_path, payload)
 
         results.append(
             {
@@ -602,14 +560,8 @@ def consolidate_scored_claims(
     any_gatekeeper_applied = False
 
     for _, batch_path in batch_files:
-        try:
-            batch_data = json.loads(batch_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError) as exc:
-            logger.warning(
-                "Failed to read scored batch file, skipping",
-                path=str(batch_path),
-                error=str(exc),
-            )
+        batch_data = _read_json_file(batch_path, context="scored_batch")
+        if batch_data is None:
             continue
 
         batch_claims = batch_data.get("scored_claims", [])
@@ -648,11 +600,7 @@ def consolidate_scored_claims(
         if output_path is not None
         else workspace_dir / "scoring_output.json"
     )
-    effective_output_path.parent.mkdir(parents=True, exist_ok=True)
-    effective_output_path.write_text(
-        json.dumps(output_data, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    _write_json_file(effective_output_path, output_data)
 
     logger.info(
         "Scored claims consolidated",
@@ -701,16 +649,10 @@ def prepare_universe_chunks(
         logger.error("universe.json not found", path=str(universe_path))
         raise ValueError(msg)
 
-    try:
-        data = json.loads(universe_path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        msg = f"Failed to read universe.json: {exc}"
-        logger.error(
-            "Failed to read universe.json",
-            path=str(universe_path),
-            error=str(exc),
-        )
-        raise ValueError(msg) from exc
+    data = _read_json_file(universe_path, context="universe.json")
+    if data is None:
+        msg = f"Failed to read universe.json: {universe_path}"
+        raise ValueError(msg)
 
     tickers: list[dict[str, Any]] = data.get("tickers", [])
 
@@ -734,10 +676,7 @@ def prepare_universe_chunks(
     for idx, batch in enumerate(ticker_batches):
         chunk_path = output_dir / f"chunk_{idx:02d}.json"
         chunk_data: dict[str, Any] = {"tickers": batch}
-        chunk_path.write_text(
-            json.dumps(chunk_data, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        _write_json_file(chunk_path, chunk_data)
         chunk_paths.append(chunk_path)
 
     logger.info(
@@ -813,11 +752,7 @@ def build_phase2_checkpoint(
             raise ValueError(msg)
         # skip_missing=True: return empty dict
         checkpoint: dict[str, list[dict[str, Any]]] = {}
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(
-            json.dumps(checkpoint, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        _write_json_file(output_path, checkpoint)
         return checkpoint
 
     checkpoint = {}
@@ -846,19 +781,15 @@ def build_phase2_checkpoint(
             )
             raise ValueError(msg)
 
-        try:
-            data = json.loads(scoring_output_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError) as exc:
+        data = _read_json_file(
+            scoring_output_path,
+            context=f"scoring_output ticker={ticker}",
+        )
+        if data is None:
             if skip_missing:
-                logger.warning(
-                    "Failed to read scoring_output.json, skipping",
-                    ticker=ticker,
-                    path=str(scoring_output_path),
-                    error=str(exc),
-                )
                 continue
-            msg = f"Failed to read scoring_output.json for ticker {ticker!r}: {exc}"
-            raise ValueError(msg) from exc
+            msg = f"Failed to read scoring_output.json for ticker {ticker!r}: {scoring_output_path}"
+            raise ValueError(msg)
 
         raw_scored_list: list[dict[str, Any]] = data.get("scored_claims", [])
 
@@ -892,11 +823,7 @@ def build_phase2_checkpoint(
         )
         raise ValueError(msg)
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        json.dumps(checkpoint, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    _write_json_file(output_path, checkpoint)
 
     logger.info(
         "Phase2 checkpoint built",
@@ -941,12 +868,9 @@ def run_phase3_to_5(
     # Import here to avoid circular imports at module level
     from dev.ca_strategy.orchestrator import Orchestrator
 
-    # AIDEV-NOTE: kb_base_dir is not needed for Phase 3-5, but Orchestrator
-    # requires it.  We pass workspace_dir as a fallback path since Phase 3-5
-    # does not read KB files.
     orch = Orchestrator(
         config_path=config_path,
-        kb_base_dir=workspace_dir,
+        kb_base_dir=None,
         workspace_dir=workspace_dir,
     )
     orch.run_from_checkpoint(phase=3)
@@ -957,6 +881,79 @@ def run_phase3_to_5(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+
+def _build_scoring_base_payload(
+    ticker: str,
+    workspace_dir: Path,
+    kb_dirs: tuple[Path, Path, Path],
+) -> dict[str, str]:
+    """スコアリングAPIの共通ベースペイロードを構築する。
+
+    Parameters
+    ----------
+    ticker : str
+        ティッカーシンボル。
+    workspace_dir : Path
+        ワークスペースディレクトリ。
+    kb_dirs : tuple[Path, Path, Path]
+        (kb1_dir, kb2_dir, kb3_dir) のタプル。
+
+    Returns
+    -------
+    dict[str, str]
+        スコアリング用の共通ベースペイロード。
+    """
+    kb1_dir, kb2_dir, kb3_dir = kb_dirs
+    return {
+        "ticker": ticker,
+        "phase1_output_dir": str(workspace_dir / "phase1_output" / ticker),
+        "kb1_dir": str(kb1_dir),
+        "kb2_dir": str(kb2_dir),
+        "kb3_dir": str(kb3_dir),
+        "workspace_dir": str(workspace_dir),
+    }
+
+
+def _read_json_file(path: Path, context: str) -> dict[str, Any] | None:
+    """JSONファイルを安全に読み込む。失敗時はNoneを返す。
+
+    Parameters
+    ----------
+    path : Path
+        読み込むJSONファイルのパス。
+    context : str
+        ログ出力用のコンテキスト文字列。
+
+    Returns
+    -------
+    dict[str, Any] | None
+        パースされたJSONデータ、またはエラー時はNone。
+    """
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning(
+            "Failed to parse JSON",
+            path=str(path),
+            context=context,
+            error=str(exc),
+        )
+        return None
+
+
+def _write_json_file(path: Path, data: Any) -> None:
+    """JSONファイルを書き込む。親ディレクトリを自動作成する。
+
+    Parameters
+    ----------
+    path : Path
+        書き込み先のパス。
+    data : Any
+        シリアライズするデータ。
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def _validate_ticker(ticker: str) -> None:

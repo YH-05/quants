@@ -44,6 +44,7 @@ from dev.ca_strategy.types import (
     RuleEvaluation,
     ScoredClaim,
 )
+from tests.dev.ca_strategy.conftest import make_scored_claim_dict
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -1619,28 +1620,8 @@ def _write_scoring_output(
     return output_path
 
 
-def _make_scored_claim_dict(
-    claim_id: str, *, final_confidence: float = 0.7
-) -> dict[str, Any]:
-    """Build a minimal scored claim dict for use in scoring_output.json."""
-    return {
-        "id": claim_id,
-        "claim_type": "competitive_advantage",
-        "claim": f"Claim text for {claim_id}",
-        "evidence": "Evidence for claim.",
-        "rule_evaluation": {
-            "applied_rules": ["rule_1_t"],
-            "results": {"rule_1_t": True},
-            "confidence": 0.7,
-            "adjustments": [],
-        },
-        "final_confidence": final_confidence,
-        "adjustments": [],
-        "gatekeeper": None,
-        "kb1_evaluations": [],
-        "kb2_patterns": [],
-        "overall_reasoning": "Good claim.",
-    }
+# _make_scored_claim_dict は tests.dev.ca_strategy.conftest.make_scored_claim_dict に統合済み
+_make_scored_claim_dict = make_scored_claim_dict
 
 
 class TestBuildPhase2Checkpoint:

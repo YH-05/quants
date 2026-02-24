@@ -6,6 +6,7 @@ Provides common test data used across unit and integration tests:
 - ``sample_portfolio_result``: valid PortfolioResult with 3 holdings
 - ``sample_stock_scores``: StockScore map for 10 tickers
 - ``sample_analyst_scores``: AnalystScore list for 10 tickers
+- ``make_scored_claim_dict``: ScoredClaim 辞書表現を生成するヘルパー関数
 
 All fixtures use ``np.random.seed(42)`` style reproducibility where
 random data is generated.
@@ -14,6 +15,7 @@ random data is generated.
 from __future__ import annotations
 
 from datetime import date
+from typing import Any
 
 import numpy as np
 import pytest
@@ -209,3 +211,57 @@ def sample_analyst_scores() -> list[AnalystScore]:
         )
         for ticker, _sector, _score, _rank in _TICKER_SECTOR_MAP
     ]
+
+
+# ---------------------------------------------------------------------------
+# Shared helper functions (not fixtures)
+# ---------------------------------------------------------------------------
+
+
+def make_scored_claim_dict(
+    claim_id: str,
+    *,
+    final_confidence: float = 0.7,
+) -> dict[str, Any]:
+    """ScoredClaim の辞書表現を生成するテストヘルパー。
+
+    単体テストと統合テストの両方で使用される共通ファクトリ関数。
+
+    Parameters
+    ----------
+    claim_id : str
+        クレームのID（例: "AAPL-CA-001"）。
+    final_confidence : float, default=0.7
+        最終確信度スコア（0.0〜1.0）。
+
+    Returns
+    -------
+    dict[str, Any]
+        ScoredClaim.model_dump() 互換の辞書。
+
+    Examples
+    --------
+    >>> claim = make_scored_claim_dict("AAPL-CA-001", final_confidence=0.8)
+    >>> claim["id"]
+    'AAPL-CA-001'
+    >>> claim["final_confidence"]
+    0.8
+    """
+    return {
+        "id": claim_id,
+        "claim_type": "competitive_advantage",
+        "claim": f"Claim text for {claim_id}",
+        "evidence": "Evidence for claim.",
+        "rule_evaluation": {
+            "applied_rules": ["rule_1_t"],
+            "results": {"rule_1_t": True},
+            "confidence": 0.7,
+            "adjustments": [],
+        },
+        "final_confidence": final_confidence,
+        "adjustments": [],
+        "gatekeeper": None,
+        "kb1_evaluations": [],
+        "kb2_patterns": [],
+        "overall_reasoning": "Good claim.",
+    }
