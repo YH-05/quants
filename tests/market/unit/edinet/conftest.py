@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 from unittest.mock import patch
 
 if TYPE_CHECKING:
@@ -11,25 +11,12 @@ if TYPE_CHECKING:
 
 import pytest
 
-# AIDEV-NOTE: #3671 — types.py は未実装のため条件付きインポート。
-# types.py が実装されたらこのガードを外して直接インポートに戻す。
-try:
-    from market.edinet.types import (  # type: ignore[import-not-found]
-        Company,
-        EdinetConfig,
-        FinancialRecord,
-        RatioRecord,
-    )
-
-    _HAS_TYPES = True
-except ModuleNotFoundError:
-    _HAS_TYPES = False
-
-
-def _skip_if_no_types() -> None:
-    """Skip the current test if market.edinet.types is not available."""
-    if not _HAS_TYPES:
-        pytest.skip("market.edinet.types not yet implemented (#3671)")
+from market.edinet.types import (
+    Company,
+    EdinetConfig,
+    FinancialRecord,
+    RatioRecord,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -57,7 +44,7 @@ def mock_api_key(monkeypatch: pytest.MonkeyPatch) -> str:
 
 
 @pytest.fixture
-def sample_config(tmp_path: Path) -> Any:
+def sample_config(tmp_path: Path) -> EdinetConfig:
     """テスト用の EdinetConfig を tmp_path で作成。
 
     Parameters
@@ -70,7 +57,6 @@ def sample_config(tmp_path: Path) -> Any:
     EdinetConfig
         一時ディレクトリを使用した EDINET 設定
     """
-    _skip_if_no_types()
     return EdinetConfig(
         api_key="test_edinet_api_key_12345",
         db_path=tmp_path / "edinet.duckdb",
@@ -78,7 +64,7 @@ def sample_config(tmp_path: Path) -> Any:
 
 
 @pytest.fixture
-def sample_company() -> Any:
+def sample_company() -> Company:
     """テスト用の Company サンプルデータを作成。
 
     Returns
@@ -86,7 +72,6 @@ def sample_company() -> Any:
     Company
         サンプル企業データ
     """
-    _skip_if_no_types()
     return Company(
         edinet_code="E00001",
         sec_code="10000",
@@ -98,7 +83,7 @@ def sample_company() -> Any:
 
 
 @pytest.fixture
-def sample_financial_record() -> Any:
+def sample_financial_record() -> FinancialRecord:
     """テスト用の FinancialRecord サンプルデータを作成。
 
     Returns
@@ -106,7 +91,6 @@ def sample_financial_record() -> Any:
     FinancialRecord
         サンプル財務データ（24指標）
     """
-    _skip_if_no_types()
     return FinancialRecord(
         edinet_code="E00001",
         fiscal_year="2025",
@@ -136,7 +120,7 @@ def sample_financial_record() -> Any:
 
 
 @pytest.fixture
-def sample_ratio_record() -> Any:
+def sample_ratio_record() -> RatioRecord:
     """テスト用の RatioRecord サンプルデータを作成。
 
     Returns
@@ -144,7 +128,6 @@ def sample_ratio_record() -> Any:
     RatioRecord
         サンプル財務比率データ（13指標）
     """
-    _skip_if_no_types()
     return RatioRecord(
         edinet_code="E00001",
         fiscal_year="2025",
