@@ -4,9 +4,9 @@
 
 - **Ticker**: CHD
 - **Sector**: Consumer Staples
-- **Portfolio Weight**: 3.50%
+- **Portfolio Weight**: 3.25%
 - **Score**: 0.65875
-- **Rationale**: Sector rank 2, score 0.66
+- **Rationale**: Sector rank 3, score 0.66
 
 ## Score Details
 

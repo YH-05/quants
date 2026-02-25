@@ -1795,3 +1795,252 @@ class TestBuildPhase2Checkpoint:
 
         assert "AAPL" in result
         assert result["AAPL"] == []
+
+    def test_正常系_phase1_dirsで渡したPhase1データからevidenceが復元される(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """phase1_dirs should allow restoring evidence from Phase 1 outputs."""
+        # Phase 1 output
+        phase1_dir = tmp_path / "phase1"
+        p1_ticker_dir = phase1_dir / "AAPL"
+        p1_ticker_dir.mkdir(parents=True, exist_ok=True)
+        p1_data = {
+            "ticker": "AAPL",
+            "claims": [
+                {
+                    "id": "AAPL-CA-001",
+                    "claim": "Apple has strong brand loyalty.",
+                    "evidence": "Customers repurchase at high rate.",
+                    "rule_evaluation": {
+                        "applied_rules": ["rule_1_t"],
+                        "results": {"rule_1_t": True},
+                        "confidence": 0.7,
+                        "adjustments": [],
+                    },
+                },
+            ],
+        }
+        (p1_ticker_dir / "extraction_output.json").write_text(
+            json.dumps(p1_data), encoding="utf-8"
+        )
+
+        # Phase 2 scoring output (without evidence)
+        scored = {
+            "id": "AAPL-CA-001",
+            "final_confidence": 0.8,
+            "confidence_adjustments": [],
+        }
+        _write_scoring_output(workspace_dir, "AAPL", [scored])
+
+        output_path = tmp_path / "phase2_scored.json"
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+            phase1_dirs=[phase1_dir],
+        )
+
+        assert "AAPL" in result
+        assert len(result["AAPL"]) == 1
+        claim = result["AAPL"][0]
+        assert claim["evidence"] == "Customers repurchase at high rate."
+        assert claim["claim"] == "Apple has strong brand loyalty."
+
+    def test_正常系_phase1_dirsがNoneのとき既存動作と同一(
+        self,
+        workspace_dir: Path,
+        tmp_path: Path,
+    ) -> None:
+        """phase1_dirs=None should behave same as before."""
+        _write_scoring_output(
+            workspace_dir,
+            "AAPL",
+            [_make_scored_claim_dict("AAPL-CA-001")],
+        )
+        output_path = tmp_path / "phase2_scored.json"
+
+        result = build_phase2_checkpoint(
+            workspace_dir=workspace_dir,
+            output_path=output_path,
+            phase1_dirs=None,
+        )
+
+        assert "AAPL" in result
+        assert len(result["AAPL"]) == 1
+
+
+# ===========================================================================
+# Tests: Schema B/C/D fallback support (_parse_raw_claim variants)
+# ===========================================================================
+
+
+class TestSchemaVariants:
+    """Schema B/C/D のフォールバック対応テスト."""
+
+    def test_正常系_SchemaB形式のclaim_idとevidence_quotesをパースできる(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """Schema B: claim_id, claim_text, evidence_quotes (list)."""
+        phase1_dir = workspace_dir / "phase1_output" / "AAPL"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        output_path = phase1_dir / "extraction_output.json"
+        data = {
+            "ticker": "AAPL",
+            "claims": [
+                {
+                    "claim_id": "AAPL_001",
+                    "claim_text": "Apple has strong brand loyalty.",
+                    "evidence_quotes": [
+                        "Our customer retention is over 90%.",
+                        "Brand loyalty drives repeat purchases.",
+                    ],
+                    "confidence": 0.75,
+                },
+            ],
+        }
+        output_path.write_text(json.dumps(data), encoding="utf-8")
+        claims = validate_extraction_output(output_path, "AAPL")
+        assert len(claims) == 1
+        assert claims[0].id == "AAPL_001"
+        assert claims[0].claim == "Apple has strong brand loyalty."
+        assert "Our customer retention is over 90%" in claims[0].evidence
+        assert "Brand loyalty drives repeat purchases" in claims[0].evidence
+        assert claims[0].rule_evaluation.confidence == 0.75
+
+    def test_正常系_SchemaC形式のevidence_from_transcriptをパースできる(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """Schema C: id, claim, evidence_from_transcript, confidence 0-100."""
+        phase1_dir = workspace_dir / "phase1_output" / "MSFT"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        output_path = phase1_dir / "extraction_output.json"
+        data = {
+            "ticker": "MSFT",
+            "claims": [
+                {
+                    "id": "MSFT-001",
+                    "claim": "Azure cloud has scale economies.",
+                    "evidence_from_transcript": "We serve 95% of Fortune 500.",
+                    "rule_evaluation": {
+                        "applied_rules": ["rule_1_t"],
+                        "results": {"rule_1_t": True},
+                        "confidence": 50,
+                        "adjustments": [],
+                    },
+                },
+            ],
+        }
+        output_path.write_text(json.dumps(data), encoding="utf-8")
+        claims = validate_extraction_output(output_path, "MSFT")
+        assert len(claims) == 1
+        assert claims[0].evidence == "We serve 95% of Fortune 500."
+        assert claims[0].rule_evaluation.confidence == 0.5  # 50 -> 0.5
+
+    def test_正常系_SchemaD形式のevidence_quoteをパースできる(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """Schema D: claim_id, claim_text, evidence_quote (singular string)."""
+        phase1_dir = workspace_dir / "phase1_output" / "GOOGL"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        output_path = phase1_dir / "extraction_output.json"
+        data = {
+            "ticker": "GOOGL",
+            "claims": [
+                {
+                    "claim_id": "GOOGL-001",
+                    "claim_text": "Search has network effects.",
+                    "evidence_quote": "More users drive more advertiser value.",
+                    "confidence": 0.8,
+                },
+            ],
+        }
+        output_path.write_text(json.dumps(data), encoding="utf-8")
+        claims = validate_extraction_output(output_path, "GOOGL")
+        assert len(claims) == 1
+        assert claims[0].id == "GOOGL-001"
+        assert claims[0].claim == "Search has network effects."
+        assert claims[0].evidence == "More users drive more advertiser value."
+
+    def test_正常系_rule_evaluationがない場合デフォルトで構築する(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """Schema B/D without rule_evaluation should get default."""
+        phase1_dir = workspace_dir / "phase1_output" / "AMZN"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        output_path = phase1_dir / "extraction_output.json"
+        data = {
+            "ticker": "AMZN",
+            "claims": [
+                {
+                    "claim_id": "AMZN_001",
+                    "claim_text": "AWS has switching costs.",
+                    "evidence_quotes": ["Migration costs are high."],
+                    "confidence": 0.65,
+                },
+            ],
+        }
+        output_path.write_text(json.dumps(data), encoding="utf-8")
+        claims = validate_extraction_output(output_path, "AMZN")
+        assert len(claims) == 1
+        assert claims[0].rule_evaluation.applied_rules == []
+        assert claims[0].rule_evaluation.results == {}
+        assert claims[0].rule_evaluation.confidence == 0.65
+
+    def test_正常系_claim_idフォールバックでidが取得できる(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """claim_id field should be used when id is absent."""
+        phase1_dir = workspace_dir / "phase1_output" / "META"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        output_path = phase1_dir / "extraction_output.json"
+        data = {
+            "ticker": "META",
+            "claims": [
+                {
+                    "claim_id": "META_CA_001",
+                    "claim_text": "Instagram has network effects.",
+                    "evidence_quote": "2B monthly active users.",
+                    "confidence": 0.7,
+                },
+            ],
+        }
+        output_path.write_text(json.dumps(data), encoding="utf-8")
+        claims = validate_extraction_output(output_path, "META")
+        assert len(claims) == 1
+        assert claims[0].id == "META_CA_001"
+
+    def test_正常系_整数claim_idが文字列に変換される(
+        self,
+        workspace_dir: Path,
+    ) -> None:
+        """Integer id should be converted to string."""
+        phase1_dir = workspace_dir / "phase1_output" / "NVDA"
+        phase1_dir.mkdir(parents=True, exist_ok=True)
+        output_path = phase1_dir / "extraction_output.json"
+        data = {
+            "ticker": "NVDA",
+            "claims": [
+                {
+                    "id": 1,
+                    "claim": "CUDA is a cornered resource.",
+                    "evidence_from_transcript": "Developers prefer CUDA.",
+                    "rule_evaluation": {
+                        "applied_rules": [],
+                        "results": {},
+                        "confidence": 0.8,
+                        "adjustments": [],
+                    },
+                },
+            ],
+        }
+        output_path.write_text(json.dumps(data), encoding="utf-8")
+        claims = validate_extraction_output(output_path, "NVDA")
+        assert len(claims) == 1
+        assert claims[0].id == "1"
+        assert isinstance(claims[0].id, str)

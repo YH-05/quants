@@ -4,9 +4,9 @@
 
 - **Ticker**: FFIV
 - **Sector**: Information Technology
-- **Portfolio Weight**: 3.77%
+- **Portfolio Weight**: 3.50%
 - **Score**: 0.6780000000000002
-- **Rationale**: Sector rank 2, score 0.68
+- **Rationale**: Sector rank 5, score 0.68
 
 ## Score Details
 

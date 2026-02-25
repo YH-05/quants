@@ -688,10 +688,47 @@ def prepare_universe_chunks(
     return chunk_paths
 
 
+def _build_phase1_evidence_lookup(
+    phase1_dirs: list[Path],
+) -> dict[str, dict[str, Claim]]:
+    """Phase 1 extraction outputs から {ticker: {claim_id: Claim}} を構築.
+
+    Parameters
+    ----------
+    phase1_dirs : list[Path]
+        Phase 1 output ディレクトリのリスト。各ディレクトリの直下に
+        ``{TICKER}/extraction_output.json`` が存在する想定。
+
+    Returns
+    -------
+    dict[str, dict[str, Claim]]
+        ``{ticker: {claim_id: Claim}}`` の lookup 辞書。
+    """
+    from dev.ca_strategy.types import Claim
+
+    lookup: dict[str, dict[str, Claim]] = {}
+    for phase1_dir in phase1_dirs:
+        for extraction_path in sorted(phase1_dir.glob("*/extraction_output.json")):
+            ticker = extraction_path.parent.name
+            claims = validate_extraction_output(extraction_path, ticker)
+            if claims:
+                ticker_lookup = lookup.setdefault(ticker, {})
+                for claim in claims:
+                    ticker_lookup[claim.id] = claim
+                logger.debug(
+                    "Phase 1 evidence loaded",
+                    ticker=ticker,
+                    claim_count=len(claims),
+                    source=str(phase1_dir),
+                )
+    return lookup
+
+
 def build_phase2_checkpoint(
     workspace_dir: Path,
     output_path: Path,
     skip_missing: bool = False,
+    phase1_dirs: list[Path] | None = None,
 ) -> dict[str, list[dict[str, Any]]]:
     """Aggregate phase2 scoring outputs into a single checkpoint file.
 
@@ -712,6 +749,10 @@ def build_phase2_checkpoint(
         When ``True``, ticker subdirectories that lack a
         ``scoring_output.json`` are silently skipped.  When ``False``
         (default), a missing file raises :class:`ValueError`.
+    phase1_dirs : list[Path] | None, optional
+        Phase 1 output ディレクトリのリスト。指定すると、Phase 1 の
+        extraction_output.json から evidence を復元する。
+        デフォルトは ``None``（既存動作と同一）。
 
     Returns
     -------
@@ -725,6 +766,18 @@ def build_phase2_checkpoint(
         If no ``scoring_output.json`` files are found and
         *skip_missing* is ``False``.
     """
+    # Build Phase 1 evidence lookup if phase1_dirs provided
+    from dev.ca_strategy.types import Claim as _Claim
+
+    phase1_lookup: dict[str, dict[str, _Claim]] = {}
+    if phase1_dirs:
+        phase1_lookup = _build_phase1_evidence_lookup(phase1_dirs)
+        logger.info(
+            "Phase 1 evidence lookup built",
+            ticker_count=len(phase1_lookup),
+            total_claims=sum(len(v) for v in phase1_lookup.values()),
+        )
+
     phase2_dir = workspace_dir / "phase2_output"
 
     logger.info(
@@ -800,7 +853,8 @@ def build_phase2_checkpoint(
                 continue
             # Reconstruct a minimal ScoredClaim-compatible dict by passing through
             # _parse_raw_scored_claim (which validates fields) then model_dump()
-            parsed = _parse_raw_scored_claim(raw, {}, ticker)
+            ticker_lookup = phase1_lookup.get(ticker, {})
+            parsed = _parse_raw_scored_claim(raw, ticker_lookup, ticker)
             if parsed is not None:
                 scored_dicts.append(parsed.model_dump())
 
@@ -1042,38 +1096,60 @@ def _parse_raw_claim(raw: dict[str, Any], ticker: str) -> Claim | None:
     )
 
     try:
-        claim_id = raw.get("id", "unknown")
+        claim_id = raw.get("id") or raw.get("claim_id", "unknown")
+        if isinstance(claim_id, int):
+            claim_id = str(claim_id)
 
-        # rule_evaluation is required
+        # rule_evaluation is optional – Schema B/D may omit it
         rule_eval_raw = raw.get("rule_evaluation")
         if not isinstance(rule_eval_raw, dict):
-            logger.warning(
-                "Claim missing rule_evaluation, excluding",
-                claim_id=claim_id,
-                ticker=ticker,
+            raw_confidence = raw.get("confidence", 0.5)
+            confidence = _normalize_confidence(raw_confidence)
+            rule_evaluation = RuleEvaluation(
+                applied_rules=[],
+                results={},
+                confidence=confidence,
+                adjustments=[],
             )
-            return None
-
-        # Normalize confidence (clamping included in _normalize_confidence)
-        raw_confidence = rule_eval_raw.get("confidence", 0.5)
-        confidence = _normalize_confidence(raw_confidence)
-
-        # Parse results (support dict and list-of-dict formats)
-        results_raw = rule_eval_raw.get("results", {})
-        if isinstance(results_raw, dict):
-            results: dict[str, bool] = {
-                k: bool(v) if not isinstance(v, bool) else v
-                for k, v in results_raw.items()
-            }
         else:
-            results = {}
+            # Normalize confidence (clamping included in _normalize_confidence)
+            raw_confidence = rule_eval_raw.get("confidence", 0.5)
+            confidence = _normalize_confidence(raw_confidence)
 
-        rule_evaluation = RuleEvaluation(
-            applied_rules=rule_eval_raw.get("applied_rules", []),
-            results=results,
-            confidence=confidence,
-            adjustments=rule_eval_raw.get("adjustments", []),
-        )
+            # Parse results (support dict and list-of-dict formats)
+            results_raw = rule_eval_raw.get("results", {})
+            if isinstance(results_raw, dict):
+                results: dict[str, bool] = {
+                    k: bool(v) if not isinstance(v, bool) else v
+                    for k, v in results_raw.items()
+                }
+            else:
+                results = {}
+
+            # Normalize adjustments: accept list[str] or list[dict]
+            raw_adjustments = rule_eval_raw.get("adjustments", [])
+            adjustments_list: list[str] = []
+            if isinstance(raw_adjustments, list):
+                for adj in raw_adjustments:
+                    if isinstance(adj, str):
+                        adjustments_list.append(adj)
+                    elif isinstance(adj, dict):
+                        # Convert dict adjustment to descriptive string
+                        source = adj.get("source", "")
+                        reasoning = adj.get("reasoning", "")
+                        adj_val = adj.get("adjustment", "")
+                        adjustments_list.append(
+                            f"{source}: {adj_val} ({reasoning})"
+                            if reasoning
+                            else f"{source}: {adj_val}"
+                        )
+
+            rule_evaluation = RuleEvaluation(
+                applied_rules=rule_eval_raw.get("applied_rules", []),
+                results=results,
+                confidence=confidence,
+                adjustments=adjustments_list,
+            )
 
         # Optional 7 Powers structured fields
         power_classification: PowerClassification | None = None
@@ -1119,12 +1195,19 @@ def _parse_raw_claim(raw: dict[str, Any], ticker: str) -> Claim | None:
                         )
                     )
 
-        # evidence fallback
+        # evidence fallback (Schema A/C: evidence/evidence_from_transcript,
+        # Schema B: evidence_quotes (list), Schema D: evidence_quote (str))
         evidence = raw.get("evidence") or raw.get("evidence_from_transcript", "")
         if not evidence:
-            evidence = raw.get("claim", "No evidence provided")
+            eq = raw.get("evidence_quotes") or raw.get("evidence_quote")
+            if isinstance(eq, list):
+                evidence = "; ".join(eq)
+            elif isinstance(eq, str):
+                evidence = eq
+        if not evidence:
+            evidence = raw.get("claim") or raw.get("claim_text", "No evidence provided")
 
-        claim_text = raw.get("claim", "")
+        claim_text = raw.get("claim", "") or raw.get("claim_text", "")
         claim_type = raw.get("claim_type", "competitive_advantage")
 
         if not claim_text:
@@ -1182,7 +1265,9 @@ def _parse_raw_scored_claim(
         Validated ScoredClaim, or None if required fields are missing or invalid.
     """
     try:
-        claim_id = raw.get("id", "unknown")
+        claim_id = raw.get("id") or raw.get("claim_id", "unknown")
+        if isinstance(claim_id, int):
+            claim_id = str(claim_id)
 
         # final_confidence is required
         raw_confidence = raw.get("final_confidence")
@@ -1221,6 +1306,27 @@ def _parse_raw_scored_claim(
 
         # Restore Phase 1 data from original claims lookup
         original = claim_lookup.get(claim_id)
+        if original is None:
+            # Try original_claim_id (Phase 2 may use a different ID scheme)
+            orig_id = raw.get("original_claim_id")
+            if orig_id is not None:
+                original = claim_lookup.get(str(orig_id))
+        if original is None:
+            # Ordinal fallback: extract trailing number from claim_id
+            # e.g. "WMT-001" → "1", "TICKER_003" → "3"
+            import re
+
+            m = re.search(r"[-_]0*(\d+)$", claim_id)
+            if m:
+                original = claim_lookup.get(m.group(1))
+        if original is None and claim_id.isdigit():
+            # Reverse ordinal: P2 has bare integer "1", P1 has "TICKER_001"
+            # Search P1 lookup for a claim whose trailing number matches
+            for p1_id, p1_claim in claim_lookup.items():
+                m2 = re.search(r"[-_]0*(\d+)$", p1_id)
+                if m2 and m2.group(1) == claim_id:
+                    original = p1_claim
+                    break
         if original is not None:
             return ScoredClaim(
                 id=original.id,
@@ -1239,8 +1345,16 @@ def _parse_raw_scored_claim(
             )
 
         # Fallback: use raw data when original claim not found
-        fallback_claim = raw.get("claim", "")
+        fallback_claim = raw.get("claim", "") or raw.get("claim_text", "")
         fallback_evidence = raw.get("evidence", "")
+        if not fallback_evidence:
+            fallback_evidence = raw.get("evidence_from_transcript", "")
+        if not fallback_evidence:
+            eq = raw.get("evidence_quotes") or raw.get("evidence_quote")
+            if isinstance(eq, list):
+                fallback_evidence = "; ".join(eq)
+            elif isinstance(eq, str):
+                fallback_evidence = eq
         fallback_claim_type = raw.get("claim_type", "competitive_advantage")
 
         return ScoredClaim(

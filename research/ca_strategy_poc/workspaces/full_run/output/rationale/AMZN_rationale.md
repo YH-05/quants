@@ -4,7 +4,7 @@
 
 - **Ticker**: AMZN
 - **Sector**: Consumer Discretionary
-- **Portfolio Weight**: 3.70%
+- **Portfolio Weight**: 3.45%
 - **Score**: 0.7
 - **Rationale**: Sector rank 1, score 0.70
 
@@ -18,8 +18,8 @@
 
 ### Claim 1: competitive_advantage
 
-- **Claim**: AWS クラウドインフラの規模の経済（11グローバルリージョン、21.4%営業マージン、81%成長率）
-- **Evidence**: Q2 2015: AWS operating margin 21.4% ($464M/Q), 81% revenue growth ($1.82B/Q), 11 global regions. AWS segment disclosed separately for first time Q1 2015. Cost structure benefits from scale with price reductions passed to customers.
+- **Claim**: Amazon Web Services（AWS）のクラウドインフラ先行優位：規模拡大による単位コスト低下と 81% 売上成長・21% 営業利益率
+- **Evidence**: CFO Brian Olsavsky (Q2 2015 prepared_remarks): 'Amazon Web Services segment revenue increased 81% to $1.82 billion. Amazon Web Services segment operating income increased 407% to $391 million, a 21.4% operating margin.' Q1 2015: 'AWS revenue grew 49% to $1.57 billion... operating income increased 8% to $265 million, a 16.9% operating margin.' Q4 2013: 'significant investments in technology infrastructure, including Amazon Web Services.' AWS usage growth outpaces revenue growth of 81% per Q2 2015.
 - **Final Confidence**: 85%
 - **Adjustments**:
   - KB2-T pattern_I_quantitative_differentiation: +10% (強力な定量的証拠群)
@@ -28,8 +28,8 @@
 
 ### Claim 2: competitive_advantage
 
-- **Claim**: Prime エコシステムのスイッチングコスト（数千万人会員、19M+対象品目、翌日配送習慣化）
-- **Evidence**: Q2 2015: Prime membership 'tens of millions', 19M+ Prime-eligible items. Prime free 2-day shipping habituation creates high switching cost. Prime members buy more, more frequently. FBA sellers 39%→45% of paid units.
+- **Claim**: Amazon Prime エコシステムによる顧客ロックイン：年会費 $79 で 19M+ 品目の 2 日配送・Prime Video・Prime Music を統合した会員経済圏
+- **Evidence**: CFO Tom Szkutak (Q4 2013 prepared_remarks): 'We've launched Prime in the U.S. 9 years ago with free, unlimited 2-day shipping on 1 million items at an annual membership price of $79. Today, Prime's selection has grown to over 19 million items... On a per-customer basis, Prime members are ordering more items across more categories with free 2-day shipping than ever before.' Q1 2015: 'We remain heads-down focused on driving a better customer experience through price selection and convenience... we're continuing to invest selectively as we build the Prime platform' including video, music, Prime Now.
 - **Final Confidence**: 80%
 - **Adjustments**:
   - KB2-T pattern_III_capability_over_result: +10% (仕組みの具体的説明)
@@ -38,8 +38,8 @@
 
 ### Claim 3: competitive_advantage
 
-- **Claim**: 109ヶ所フルフィルメントセンター・20年間構築の物流ネットワークによる規模の経済
-- **Evidence**: Q4 2013: 109 fulfillment centers globally. Amazon shipping costs growing but scale enables delivery at lower unit cost. 20+ years of logistics network investment. Same-day delivery in select markets.
+- **Claim**: 109 の世界規模フルフィルメントセンターネットワークと Prime Now（1-2 時間配送）の構築による物理的インフラ優位
+- **Evidence**: CFO Tom Szkutak (Q1 2015 prepared_remarks): 'we ended the year with 109 fulfillment centers around the world.' CFO Brian Olsavsky (Q1 2015 Q&A): 'our operations network that we've been building for the last 20 years helps make Prime Now a viable proposition for us and scale makes it possible... we have expanded to 7 cities with more on the way.' Q4 2013: 'capital expenditures were $3.44 billion...additional capacities to support our fulfillment operations.'
 - **Final Confidence**: 75%
 - **Adjustments**:
   - KB2-T pattern_IV_structural_market_position: +10% (構造的物流ポジション)
@@ -48,8 +48,8 @@
 
 ### Claim 4: competitive_advantage
 
-- **Claim**: FBAネットワーク効果（FBA出品者増加→品目数増加→Prime価値向上→Prime会員増加の正のループ）
-- **Evidence**: Q2 2015: FBA units 39%→45% of paid units. FBA sellers benefit from Prime eligibility. Virtuous cycle: more sellers → more selection → more Prime value → more members → more sellers.
+- **Claim**: サードパーティセラー（FBA）エコシステムの規模：販売単位の 45% をサードパーティが占めるネットワーク効果
+- **Evidence**: CFO Brian Olsavsky (Q2 2015 prepared_remarks): 'Worldwide seller units represented 45% of paid units, up from 41% in the comparable prior year period.' Q4 2013: 'Worldwide active seller accounts were more than 2 million. Seller units represented 39% of paid units.' The progression from 39% (Q4 2013) to 44% (Q1 2015) to 45% (Q2 2015) shows consistent increase in third-party seller penetration.
 - **Final Confidence**: 75%
 - **Adjustments**:
   - KB2-T pattern_II_direct_cagr_mechanism: +10% (直接的なネットワーク効果メカニズム（dogma rule5）)
@@ -58,8 +58,8 @@
 
 ### Claim 5: competitive_advantage
 
-- **Claim**: インド市場への 25M ASIN 展開と最大オンラインストア確立によるファーストムーバー優位
-- **Evidence**: Q2 2015: India Amazon.in launched with 25M ASINs, largest online store in India. Amazon India first major marketplace to offer Prime. Significant investment in India logistics infrastructure.
+- **Claim**: インド市場での急速な拡大：25M+ ASINs で最大オンラインストアとなりポジティブサプライズによる投資倍増方針
+- **Evidence**: CFO Brian Olsavsky (Q2 2015 Q&A): 'India is that kind of surprise. So we're very happy, very encouraged early on with what we've seen, the ramping of the business, the level of invention going on for both customers and sellers. Over 25 million ASINs, which is the largest online store in India and continue to improve pricing and fast delivery. So we're super excited about India. We'll not get into specific investment levels right now, but we continue to ramp up our investment there.' Q2 2015: 'when we see a positive surprise, we double down on it.'
 - **Final Confidence**: 35%
 - **Adjustments**:
   - KB2-T pattern_A_result_as_cause: -15% (最大ストアは結果（dogma rule1 FAIL）)
