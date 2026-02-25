@@ -2,7 +2,7 @@
 
 This module provides a unified hierarchy of exception classes for handling
 various error conditions across all market data sources (yfinance, Bloomberg,
-FRED, NASDAQ, etc.).
+FRED, NASDAQ, EDINET, etc.).
 
 All exceptions include:
 - Error codes for programmatic handling
@@ -33,11 +33,23 @@ MarketError (base)
         NasdaqAPIError (API response error - 4xx, 5xx)
         NasdaqRateLimitError (rate limit exceeded)
         NasdaqParseError (response parse failure)
+    EdinetError (EDINET DB API operations)
+        EdinetAPIError (API response error - 4xx, 5xx)
+        EdinetRateLimitError (daily API call limit exceeded)
+        EdinetValidationError (input validation failure)
+        EdinetParseError (response parse failure)
 """
 
 from enum import Enum
 from typing import Any
 
+from market.edinet.errors import (
+    EdinetAPIError,
+    EdinetError,
+    EdinetParseError,
+    EdinetRateLimitError,
+    EdinetValidationError,
+)
 from market.etfcom.errors import (
     ETFComBlockedError,
     ETFComError,
@@ -103,6 +115,10 @@ class ErrorCode(str, Enum):
         NASDAQ API rate limit exceeded
     NASDAQ_PARSE_ERROR : str
         NASDAQ API response parse failure
+    EDINET_API_ERROR : str
+        EDINET DB API response error (4xx, 5xx)
+    EDINET_RATE_LIMIT : str
+        EDINET DB API daily call limit exceeded
     """
 
     UNKNOWN = "UNKNOWN"
@@ -127,6 +143,8 @@ class ErrorCode(str, Enum):
     NASDAQ_API_ERROR = "NASDAQ_API_ERROR"
     NASDAQ_RATE_LIMIT = "NASDAQ_RATE_LIMIT"
     NASDAQ_PARSE_ERROR = "NASDAQ_PARSE_ERROR"
+    EDINET_API_ERROR = "EDINET_API_ERROR"
+    EDINET_RATE_LIMIT = "EDINET_RATE_LIMIT"
 
 
 class MarketError(Exception):
@@ -834,6 +852,11 @@ __all__ = [
     "ETFComError",
     "ETFComScrapingError",
     "ETFComTimeoutError",
+    "EdinetAPIError",
+    "EdinetError",
+    "EdinetParseError",
+    "EdinetRateLimitError",
+    "EdinetValidationError",
     "ErrorCode",
     "ExportError",
     "FREDCacheNotFoundError",

@@ -1,7 +1,7 @@
 """Market package for financial market data analysis.
 
 This package provides core infrastructure for market data handling including:
-- Data fetching (Yahoo Finance, FRED, NASDAQ, etc.)
+- Data fetching (Yahoo Finance, FRED, NASDAQ, EDINET, etc.)
 - Data export (JSON, CSV, SQLite, Agent-optimized JSON)
 - Type definitions for market data
 - JSON schema definitions for validation
@@ -17,6 +17,8 @@ etfcom
     ETF.com scraper (ticker, fundamentals, fund flows)
 nasdaq
     NASDAQ Stock Screener API (stock screening data)
+edinet
+    EDINET DB API (Japanese listed company financial data)
 factset
     FactSet API integration (planned)
 export
@@ -31,7 +33,8 @@ Public API
 DataExporter
     Export market data to various formats
 DataSource
-    Data source enum (YFINANCE, FRED, LOCAL, BLOOMBERG, FACTSET, ETF_COM, NASDAQ)
+    Data source enum (YFINANCE, FRED, LOCAL, BLOOMBERG, FACTSET, ETF_COM, NASDAQ,
+    EDINET_DB)
 MarketDataResult
     Result of market data fetch operation
 AnalysisResult
@@ -50,8 +53,26 @@ ScreenerCollector
     NASDAQ Stock Screener data collector
 ScreenerFilter
     Filter conditions for the NASDAQ Stock Screener API
+EdinetClient
+    Synchronous HTTP client for all 10 EDINET DB API endpoints
+EdinetStorage
+    DuckDB storage layer managing 8 tables for EDINET data
+EdinetSyncer
+    6-phase sync orchestrator with checkpoint-based resume support
 """
 
+from .edinet import (
+    DailyRateLimiter,
+    EdinetAPIError,
+    EdinetClient,
+    EdinetConfig,
+    EdinetError,
+    EdinetParseError,
+    EdinetRateLimitError,
+    EdinetStorage,
+    EdinetSyncer,
+    EdinetValidationError,
+)
 from .errors import (
     BloombergConnectionError,
     BloombergDataError,
@@ -119,6 +140,7 @@ __all__ = [
     # Core
     "CacheConfig",
     "CacheError",
+    "DailyRateLimiter",
     "DataExporter",
     "DataFetchError",
     "DataSource",
@@ -130,6 +152,16 @@ __all__ = [
     "ETFComScrapingError",
     "ETFComTimeoutError",
     "EconomicDataMetadata",
+    # EDINET
+    "EdinetAPIError",
+    "EdinetClient",
+    "EdinetConfig",
+    "EdinetError",
+    "EdinetParseError",
+    "EdinetRateLimitError",
+    "EdinetStorage",
+    "EdinetSyncer",
+    "EdinetValidationError",
     "ErrorCode",
     "ExportConfig",
     "ExportError",
