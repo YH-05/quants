@@ -402,7 +402,8 @@ class EdinetStorage:
         """
         logger.debug("Getting company", edinet_code=edinet_code)
         result = self._client.query_df(
-            f"SELECT * FROM {TABLE_COMPANIES} WHERE edinet_code = '{edinet_code}'"  # nosec B608
+            f"SELECT * FROM {TABLE_COMPANIES} WHERE edinet_code = $1",
+            params=[edinet_code],
         )
         if result.empty:
             logger.debug("Company not found", edinet_code=edinet_code)
@@ -425,7 +426,8 @@ class EdinetStorage:
         """
         logger.debug("Getting financials", edinet_code=edinet_code)
         result = self._client.query_df(
-            f"SELECT * FROM {TABLE_FINANCIALS} WHERE edinet_code = '{edinet_code}'"  # nosec B608
+            f"SELECT * FROM {TABLE_FINANCIALS} WHERE edinet_code = $1",
+            params=[edinet_code],
         )
         if result.empty:
             logger.debug("Financials not found", edinet_code=edinet_code)
@@ -471,21 +473,36 @@ class EdinetStorage:
         return stats
 
     # ------------------------------------------------------------------
-    # Raw query
+    # Raw query (SELECT-only)
     # ------------------------------------------------------------------
 
     def query(self, sql: str) -> pd.DataFrame:
-        """Execute an arbitrary SQL query and return results.
+        """Execute a read-only SQL query and return results.
+
+        Only ``SELECT`` statements are allowed. Other SQL operations
+        (INSERT, UPDATE, DELETE, DROP, etc.) are rejected to prevent
+        unintended data modification.
 
         Parameters
         ----------
         sql : str
-            SQL query to execute.
+            SQL SELECT query to execute.
 
         Returns
         -------
         pd.DataFrame
             Query results as a DataFrame.
+
+        Raises
+        ------
+        ValueError
+            If the SQL statement is not a SELECT query.
         """
-        logger.debug("Executing raw query", sql_preview=sql[:100])
+        stripped = sql.strip().lstrip("(")
+        if not stripped.upper().startswith("SELECT"):
+            raise ValueError(
+                "Only SELECT queries are allowed. "
+                f"Got: {sql.split()[0] if sql.split() else '(empty)'}..."
+            )
+        logger.debug("Executing query", query_type="SELECT")
         return self._client.query_df(sql)

@@ -42,13 +42,20 @@ class DuckDBClient:
         """Get the database file path."""
         return self._db_path
 
-    def query_df(self, sql: str) -> pd.DataFrame:
+    def query_df(
+        self,
+        sql: str,
+        params: list[object] | None = None,
+    ) -> pd.DataFrame:
         """Execute query and return DataFrame.
 
         Parameters
         ----------
         sql : str
-            SQL query to execute
+            SQL query to execute. Use ``$1``, ``$2``, ... for
+            positional parameter placeholders.
+        params : list[object] | None
+            Positional parameters to bind to the query placeholders.
 
         Returns
         -------
@@ -57,7 +64,10 @@ class DuckDBClient:
         """
         logger.debug("Executing DuckDB query", sql_preview=sql[:100])
         with duckdb.connect(str(self._db_path)) as conn:
-            result = conn.execute(sql).fetchdf()
+            if params is not None:
+                result = conn.execute(sql, params).fetchdf()
+            else:
+                result = conn.execute(sql).fetchdf()
             logger.debug("Query completed", row_count=len(result))
             return result
 

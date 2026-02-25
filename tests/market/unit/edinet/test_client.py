@@ -13,7 +13,6 @@ market.edinet.errors : Custom exception classes.
 
 from __future__ import annotations
 
-import time
 from typing import TYPE_CHECKING, Any
 from unittest.mock import MagicMock, patch
 
@@ -147,6 +146,14 @@ class TestAuthentication:
         self,
         config: EdinetConfig,
     ) -> None:
+        with EdinetClient(config=config) as client:
+            # Verify X-API-Key header is set on the underlying httpx.Client
+            assert client._client.headers.get("x-api-key") == "test_key_12345"
+
+    def test_正常系_認証ヘッダーがリクエストに含まれる(
+        self,
+        config: EdinetConfig,
+    ) -> None:
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -157,10 +164,10 @@ class TestAuthentication:
         ):
             client.search("テスト")
             mock_get.assert_called_once()
-            call_kwargs = mock_get.call_args
-            # search endpoint does not require auth per spec,
-            # but the client sends the key on all requests
-            assert call_kwargs is not None
+            # Verify the request was made (headers are set at client level)
+            call_args = mock_get.call_args
+            assert call_args is not None
+            assert call_args[0][0] == "/v1/search"
 
 
 # =============================================================================
@@ -679,14 +686,15 @@ class TestPoliteDelay:
                 "get",
                 return_value=_make_response(json_data=response_data),
             ),
+            patch("market.edinet.client.time.sleep") as mock_sleep,
         ):
-            start = time.monotonic()
             client.search("test1")
             client.search("test2")
-            elapsed = time.monotonic() - start
-            # At least one polite_delay should have been applied
-            # (between first and second request)
-            assert elapsed >= polite_delay * 0.8  # allow small margin
+            # Verify that sleep was called with a positive delay
+            # (polite delay is applied between consecutive requests)
+            assert mock_sleep.call_count >= 1
+            sleep_arg = mock_sleep.call_args[0][0]
+            assert sleep_arg > 0
 
 
 # =============================================================================

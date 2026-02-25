@@ -126,21 +126,23 @@ class TestRecordCall:
             limiter.record_call()
         assert limiter.get_remaining() == 1000 - 50 - 5
 
-    def test_正常系_JSONファイルに書き込まれること(
+    def test_正常系_flush後にJSONファイルに書き込まれること(
         self, limiter: DailyRateLimiter, state_path: Path
     ) -> None:
         limiter.record_call()
+        limiter.flush()
         assert state_path.exists()
         data = json.loads(state_path.read_text(encoding="utf-8"))
         assert data["calls"] == 1
         assert data["date"] == date.today().isoformat()
 
-    def test_正常系_JSONファイルのカウントが更新されること(
+    def test_正常系_flush後にJSONファイルのカウントが更新されること(
         self, limiter: DailyRateLimiter, state_path: Path
     ) -> None:
         limiter.record_call()
         limiter.record_call()
         limiter.record_call()
+        limiter.flush()
         data = json.loads(state_path.read_text(encoding="utf-8"))
         assert data["calls"] == 3
 
@@ -299,6 +301,7 @@ class TestPersistence:
         limiter1 = DailyRateLimiter(state_path=state_path)
         for _ in range(15):
             limiter1.record_call()
+        limiter1.flush()
 
         # Create a new instance from the same state file
         limiter2 = DailyRateLimiter(state_path=state_path)
@@ -308,6 +311,7 @@ class TestPersistence:
         self, limiter: DailyRateLimiter, state_path: Path
     ) -> None:
         limiter.record_call()
+        limiter.flush()
         data = json.loads(state_path.read_text(encoding="utf-8"))
         assert set(data.keys()) == {"date", "calls"}
         assert isinstance(data["date"], str)

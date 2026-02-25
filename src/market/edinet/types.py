@@ -92,8 +92,14 @@ class EdinetConfig:
         Raises
         ------
         ValueError
-            If any configuration value is outside its valid range.
+            If any configuration value is outside its valid range,
+            or if ``api_key`` is empty.
         """
+        if not self.api_key or not self.api_key.strip():
+            raise ValueError(
+                "api_key must not be empty. "
+                "Set EDINET_DB_API_KEY environment variable or pass api_key explicitly."
+            )
         if not (1.0 <= self.timeout <= 300.0):
             raise ValueError(
                 f"timeout must be between 1.0 and 300.0, got {self.timeout}"

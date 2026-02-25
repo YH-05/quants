@@ -42,7 +42,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 import pandas as pd
 
@@ -68,15 +68,15 @@ logger = get_logger(__name__)
 # Phase names (execution order)
 # ---------------------------------------------------------------------------
 
-PHASE_COMPANIES: str = "companies"
-PHASE_INDUSTRIES: str = "industries"
-PHASE_RANKINGS: str = "rankings"
-PHASE_COMPANY_DETAILS: str = "company_details"
-PHASE_FINANCIALS_RATIOS: str = "financials_ratios"
-PHASE_ANALYSIS_TEXT: str = "analysis_text"
-PHASE_COMPLETE: str = "complete"
+PHASE_COMPANIES: Final[str] = "companies"
+PHASE_INDUSTRIES: Final[str] = "industries"
+PHASE_RANKINGS: Final[str] = "rankings"
+PHASE_COMPANY_DETAILS: Final[str] = "company_details"
+PHASE_FINANCIALS_RATIOS: Final[str] = "financials_ratios"
+PHASE_ANALYSIS_TEXT: Final[str] = "analysis_text"
+PHASE_COMPLETE: Final[str] = "complete"
 
-PHASE_ORDER: list[str] = [
+PHASE_ORDER: Final[list[str]] = [
     PHASE_COMPANIES,
     PHASE_INDUSTRIES,
     PHASE_RANKINGS,
@@ -86,7 +86,7 @@ PHASE_ORDER: list[str] = [
 ]
 
 # Checkpoint interval: save progress every N companies
-CHECKPOINT_INTERVAL: int = 100
+CHECKPOINT_INTERVAL: Final[int] = 100
 
 
 # ---------------------------------------------------------------------------
@@ -728,12 +728,7 @@ class EdinetSyncer:
 
                 # Checkpoint save
                 if processed % CHECKPOINT_INTERVAL == 0:
-                    self._state = SyncProgress(
-                        current_phase=phase,
-                        completed_codes=tuple(sorted(completed)),
-                        today_api_calls=self._state.today_api_calls,
-                        errors=tuple(list(self._state.errors) + errors),
-                    )
+                    self._state = self._build_progress(phase, completed, errors)
                     self._save_state()
                     logger.info(
                         "Checkpoint saved",
@@ -748,12 +743,7 @@ class EdinetSyncer:
                     phase=phase,
                     processed=processed,
                 )
-                self._state = SyncProgress(
-                    current_phase=phase,
-                    completed_codes=tuple(sorted(completed)),
-                    today_api_calls=self._state.today_api_calls,
-                    errors=tuple(list(self._state.errors) + errors),
-                )
+                self._state = self._build_progress(phase, completed, errors)
                 self._save_state()
                 return SyncResult(
                     phase=phase,
@@ -777,12 +767,7 @@ class EdinetSyncer:
                     errors.append(f"{code}: {e.message}")
 
         # Final save
-        self._state = SyncProgress(
-            current_phase=phase,
-            completed_codes=tuple(sorted(completed)),
-            today_api_calls=self._state.today_api_calls,
-            errors=tuple(list(self._state.errors) + errors),
-        )
+        self._state = self._build_progress(phase, completed, errors)
         self._save_state()
 
         logger.info(
@@ -878,6 +863,38 @@ class EdinetSyncer:
             errors=self._state.errors,
         )
         self._save_state()
+
+    def _build_progress(
+        self,
+        phase: str,
+        completed: set[str],
+        extra_errors: list[str] | None = None,
+    ) -> SyncProgress:
+        """Build a new SyncProgress from current state.
+
+        Parameters
+        ----------
+        phase : str
+            Phase name.
+        completed : set[str]
+            Set of completed EDINET codes.
+        extra_errors : list[str] | None
+            Additional error messages to append.
+
+        Returns
+        -------
+        SyncProgress
+            New immutable progress instance.
+        """
+        errors = list(self._state.errors)
+        if extra_errors:
+            errors.extend(extra_errors)
+        return SyncProgress(
+            current_phase=phase,
+            completed_codes=tuple(sorted(completed)),
+            today_api_calls=self._state.today_api_calls,
+            errors=tuple(errors),
+        )
 
     def _increment_api_calls(self, count: int) -> None:
         """Increment the API call counter in state.

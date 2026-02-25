@@ -491,9 +491,11 @@ class TestGetCompany:
 
             assert result is not None
             assert len(result) == 1
-            # Verify the query includes the edinet_code
+            # Verify parameterized query with $1 placeholder
             query_sql = mock_client.query_df.call_args.args[0]
-            assert "E00001" in query_sql
+            assert "$1" in query_sql
+            query_params = mock_client.query_df.call_args.kwargs.get("params")
+            assert query_params == ["E00001"]
 
     def test_正常系_存在しないedinet_codeでNoneを返す(
         self,

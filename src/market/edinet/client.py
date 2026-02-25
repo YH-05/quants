@@ -41,6 +41,7 @@ market.edinet.constants : API URL, ranking metrics, and HTTP settings.
 
 from __future__ import annotations
 
+import os
 import random
 import time
 from typing import TYPE_CHECKING, Any
@@ -117,7 +118,10 @@ class EdinetClient:
         retry_config: RetryConfig | None = None,
         rate_limiter: DailyRateLimiter | None = None,
     ) -> None:
-        self._config: EdinetConfig = config or EdinetConfig(api_key="")
+        if config is None:
+            api_key = os.environ.get("EDINET_DB_API_KEY", "")
+            config = EdinetConfig(api_key=api_key)
+        self._config: EdinetConfig = config
         self._retry_config: RetryConfig = retry_config or RetryConfig()
         self._rate_limiter: DailyRateLimiter | None = rate_limiter
         self._last_request_time: float = 0.0

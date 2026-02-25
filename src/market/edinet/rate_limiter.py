@@ -47,6 +47,10 @@ class DailyRateLimiter:
     changes. A configurable safety margin is subtracted from the
     daily limit to prevent accidental overuse.
 
+    To reduce file I/O overhead, state is only persisted every
+    ``flush_interval`` calls (default: 100). Call ``flush()`` explicitly
+    to force a write (e.g. before shutdown).
+
     Parameters
     ----------
     state_path : Path
@@ -57,6 +61,8 @@ class DailyRateLimiter:
     safe_margin : int
         Safety margin subtracted from the daily limit
         (default: ``SAFE_MARGIN`` = 50).
+    flush_interval : int
+        Persist state to disk every N calls (default: 100).
 
     Attributes
     ----------
@@ -81,12 +87,15 @@ class DailyRateLimiter:
         state_path: Path,
         daily_limit: int = DAILY_RATE_LIMIT,
         safe_margin: int = SAFE_MARGIN,
+        flush_interval: int = 100,
     ) -> None:
         self._state_path = state_path
         self.daily_limit = daily_limit
         self.safe_margin = safe_margin
+        self._flush_interval = flush_interval
         self._date: str = date.today().isoformat()
         self._calls: int = 0
+        self._dirty: int = 0
 
         self._load_state()
 
@@ -95,28 +104,47 @@ class DailyRateLimiter:
             state_path=str(state_path),
             daily_limit=daily_limit,
             safe_margin=safe_margin,
+            flush_interval=flush_interval,
             current_calls=self._calls,
             current_date=self._date,
         )
 
     def record_call(self) -> None:
-        """Record a single API call and persist the updated count.
+        """Record a single API call.
 
-        Increments the internal call counter by one and writes the
-        updated state to the JSON file.
+        Increments the internal call counter by one. State is persisted
+        to disk every ``flush_interval`` calls to reduce I/O overhead.
 
         Examples
         --------
         >>> limiter.record_call()
         """
         self._calls += 1
-        self._save_state()
+        self._dirty += 1
+
+        if self._dirty >= self._flush_interval:
+            self._save_state()
+            self._dirty = 0
 
         logger.debug(
             "API call recorded",
             calls=self._calls,
             remaining=self.get_remaining(),
         )
+
+    def flush(self) -> None:
+        """Force-persist the current state to disk.
+
+        Call this before shutdown or when accurate persistence is needed.
+
+        Examples
+        --------
+        >>> limiter.flush()
+        """
+        if self._dirty > 0:
+            self._save_state()
+            self._dirty = 0
+            logger.debug("Rate limiter state flushed", calls=self._calls)
 
     def get_remaining(self) -> int:
         """Get the number of remaining API calls for today.
@@ -175,6 +203,7 @@ class DailyRateLimiter:
             )
             self._date = today
             self._calls = 0
+            self._dirty = 0
             self._save_state()
 
     def _load_state(self) -> None:
