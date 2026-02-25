@@ -60,11 +60,20 @@ More examples:
 | Format | Extension | Notes |
 |--------|-----------|-------|
 | (default) | `.drawio` | Native XML, editable in draw.io, no desktop CLI needed |
-| `png` | `.drawio.png` | Viewable everywhere, embedded XML, editable in draw.io |
+| `png` | `.drawio.png` + `.png` | `.drawio.png` = 再編集用（XML埋め込み）、`.png` = 閲覧用（クリーン） |
 | `svg` | `.drawio.svg` | Scalable, embedded XML, editable in draw.io |
 | `pdf` | `.drawio.pdf` | Printable, embedded XML, editable in draw.io |
 
 The `.drawio.*` double extension signals that the file contains embedded diagram XML. Open any of these in draw.io to recover and edit the full diagram. The intermediate `.drawio` source file is deleted after export since the exported file contains the complete diagram.
+
+### PNG: Two files are produced
+
+PNG export generates **two files**:
+
+- `name.drawio.png` — draw.io で再編集可能（XML メタデータ埋め込み）
+- `name.png` — Claude API / 一般閲覧用（メタデータ除去済み）
+
+draw.io の `--embed-diagram` は PNG の `zTXt` チャンクに XML を埋め込みますが、このメタデータがあると Claude API が画像を処理できません（400 エラー）。そのため、macOS の `sips` コマンドでメタデータを除去したクリーン版を自動生成します。
 
 ## Why XML Only?
 

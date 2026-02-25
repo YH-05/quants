@@ -13,7 +13,8 @@ Generate draw.io diagrams as native `.drawio` files. Optionally export to PNG, S
 1. **Generate draw.io XML** in mxGraphModel format for the requested diagram
 2. **Write the XML** to a `.drawio` file in the current working directory using the Write tool
 3. **If the user requested an export format** (png, svg, pdf), export using the draw.io CLI with `--embed-diagram`, then delete the source `.drawio` file
-4. **Open the result** — the exported file if exported, or the `.drawio` file otherwise
+4. **If PNG export**: generate a **clean copy** without embedded XML metadata (see "Clean PNG generation" below)
+5. **Open the result** — the exported file if exported, or the `.drawio` file otherwise
 
 ## Choosing the output format
 
@@ -82,6 +83,38 @@ Key flags:
 - For export, use double extensions: `name.drawio.png`, `name.drawio.svg`, `name.drawio.pdf` — this signals the file contains embedded diagram XML
 - After a successful export, delete the intermediate `.drawio` file — the exported file contains the full diagram
 
+### PNG export produces two files
+
+| File | Purpose |
+|------|---------|
+| `name.drawio.png` | draw.io 再編集用（XML メタデータ埋め込み） |
+| `name.png` | Claude API / 一般閲覧用（メタデータ除去済み） |
+
+## Clean PNG generation
+
+draw.io の `--embed-diagram` オプションは PNG の `zTXt` チャンクに mxGraphModel XML を埋め込む。このメタデータが含まれると **Claude API が画像を処理できず 400 エラーになる**。
+
+PNG エクスポート後、必ず以下のコマンドでクリーン版を生成すること：
+
+```bash
+# macOS (sips を使用)
+sips -s format png name.drawio.png --out name.png
+
+# Linux (Python PIL を使用)
+python3 -c "from PIL import Image; img = Image.open('name.drawio.png'); img.save('name.png', 'PNG', optimize=True)"
+```
+
+### 実行フロー（PNG の場合）
+
+```
+1. drawio -x -f png -e -b 10 -o name.drawio.png input.drawio
+2. sips -s format png name.drawio.png --out name.png   ← クリーン版生成
+3. rm input.drawio                                      ← 中間ファイル削除
+4. open name.png                                        ← クリーン版を開く
+```
+
+**結果**: `name.drawio.png`（再編集用）と `name.png`（閲覧用）の2ファイルが残る。
+
 ## XML format
 
 A `.drawio` file is native mxGraphModel XML. Always generate XML directly — Mermaid and CSV formats require server-side conversion and cannot be saved as native files.
@@ -104,12 +137,80 @@ Every diagram must have this structure:
 - Cell `id="1"` is the default parent layer
 - All diagram elements use `parent="1"` unless using multiple layers
 
+### CRITICAL: No HTML in cell values (plain text only)
+
+draw.io の `value` 属性には **プレーンテキストのみ** を使用すること。HTML タグ (`<b>`, `<br>`, `<font>` 等) を含めてはならない。
+
+**理由**: エクスポートした PNG を Claude のビジョンモデルで読む際、HTML タグがそのままテキストとして認識され、図の内容が正確に読み取れなくなる。
+
+#### 禁止パターン
+
+```xml
+<!-- WRONG: HTML tags in value -->
+<mxCell value="<b>Title</b><br>subtitle<br><font color='#FF0000'>warning</font>" style="html=1;" .../>
+```
+
+#### 正しいパターン
+
+```xml
+<!-- CORRECT: plain text + style attributes for formatting -->
+<mxCell value="Title&#xa;subtitle" style="fontStyle=1;fontColor=#333333;whiteSpace=wrap;" .../>
+```
+
+#### style 属性での装飾（HTML の代替）
+
+| やりたいこと | HTML（禁止） | style 属性（推奨） |
+|-------------|-------------|-------------------|
+| 太字 | `<b>text</b>` | `fontStyle=1` |
+| イタリック | `<i>text</i>` | `fontStyle=2` |
+| 太字+イタリック | `<b><i>text</i></b>` | `fontStyle=3` |
+| 下線 | `<u>text</u>` | `fontStyle=4` |
+| 太字+下線 | `<b><u>text</u></b>` | `fontStyle=5` |
+| 文字色 | `<font color="#F00">` | `fontColor=#FF0000` |
+| 文字サイズ | `<font size="4">` | `fontSize=16` |
+| 改行 | `<br>` | `&#xa;` (XML entity) |
+| テキスト折り返し | HTML の wrap | `whiteSpace=wrap` |
+
+`fontStyle` はビットフラグ: 1=bold, 2=italic, 4=underline（加算で組み合わせ）。
+
+#### 複数行テキスト
+
+改行には `&#xa;` を使用する。`<br>` は使わない。
+
+```xml
+<!-- CORRECT: multi-line with &#xa; -->
+<mxCell value="Phase 1: ANALYSIS&#xa;データ収集 + 評価&#xa;2人/KB1活用" style="whiteSpace=wrap;" .../>
+
+<!-- WRONG: <br> tags -->
+<mxCell value="Phase 1: ANALYSIS<br>データ収集 + 評価<br>2人/KB1活用" style="html=1;" .../>
+```
+
+#### セル内の一部だけ装飾を変えたい場合
+
+1つのセル内で一部だけ色やサイズを変える「混合フォーマット」が必要な場合は、**セルを分割する** ことで対応する。
+
+```xml
+<!-- CORRECT: separate cells for different formatting -->
+<mxCell id="10" value="Main Title" style="fontStyle=1;fontSize=14;fontColor=#333333;" .../>
+<mxCell id="11" value="subtitle text" style="fontSize=11;fontColor=#999999;" .../>
+
+<!-- WRONG: mixed HTML in one cell -->
+<mxCell value="<b style='font-size:14px'>Main Title</b><br><font color='#999'>subtitle text</font>" style="html=1;" .../>
+```
+
 ### Common styles
 
 **Rounded rectangle:**
 ```xml
 <mxCell id="2" value="Label" style="rounded=1;whiteSpace=wrap;" vertex="1" parent="1">
   <mxGeometry x="100" y="100" width="120" height="60" as="geometry"/>
+</mxCell>
+```
+
+**Multi-line rounded rectangle:**
+```xml
+<mxCell id="2" value="Title&#xa;description line" style="rounded=1;whiteSpace=wrap;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="100" y="100" width="160" height="60" as="geometry"/>
 </mxCell>
 ```
 
@@ -140,6 +241,9 @@ Every diagram must have this structure:
 |----------|--------|---------|
 | `rounded=1` | 0 or 1 | Rounded corners |
 | `whiteSpace=wrap` | wrap | Text wrapping |
+| `fontStyle=1` | 1/2/3/4/5 | Bold/italic/both/underline/bold+underline |
+| `fontSize=14` | number | Font size in pt |
+| `fontFamily=Helvetica` | font name | Font family |
 | `fillColor=#dae8fc` | Hex color | Background color |
 | `strokeColor=#6c8ebf` | Hex color | Border color |
 | `fontColor=#333333` | Hex color | Text color |
@@ -152,8 +256,17 @@ Every diagram must have this structure:
 | `dashed=1` | 0 or 1 | Dashed lines |
 | `swimlane` | style keyword | Swimlane containers |
 
-## CRITICAL: XML well-formedness
+## CRITICAL rules
+
+### XML well-formedness
 
 - **NEVER use double hyphens (`--`) inside XML comments.** `--` is illegal inside `<!-- -->` per the XML spec and causes parse errors. Use single hyphens or rephrase.
 - Escape special characters in attribute values: `&amp;`, `&lt;`, `&gt;`, `&quot;`
 - Always use unique `id` values for each `mxCell`
+
+### No HTML in cell values
+
+- **NEVER use `html=1` in style attributes.** HTML mode causes `<b>`, `<br>`, `<font>` tags to appear as literal text when Claude reads the exported PNG.
+- **NEVER use HTML tags** (`<b>`, `<br>`, `<font>`, `<i>`, `<u>`) in `value` attributes.
+- Use `&#xa;` for line breaks, `fontStyle` / `fontColor` / `fontSize` in style for formatting.
+- See "No HTML in cell values" section above for the complete reference.

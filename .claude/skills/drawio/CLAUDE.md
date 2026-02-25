@@ -15,7 +15,8 @@ Claude Code skill that generates native `.drawio` files, with optional export to
 2. Claude generates mxGraphModel XML for the requested diagram
 3. The XML is written to a `.drawio` file in the working directory via the Write tool
 4. If the user requested an export format (png, svg, pdf), the draw.io CLI exports to `.drawio.png` / `.drawio.svg` / `.drawio.pdf` with `--embed-diagram`, then deletes the source `.drawio` file
-5. The result is opened for viewing (`open` / `xdg-open` / `start`)
+5. If PNG export: a clean copy (`.png`, without embedded XML) is auto-generated via `sips` for Claude API compatibility
+6. The result is opened for viewing (`open` / `xdg-open` / `start`)
 
 Default output is `.drawio` (no export). The user requests export by mentioning a format: `/drawio png ...`, `/drawio svg: ...`, etc.
 
