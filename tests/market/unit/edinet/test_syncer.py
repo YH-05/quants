@@ -333,7 +333,7 @@ class TestPhaseRankings:
     ) -> None:
         results = syncer.run_initial()
 
-        assert mock_client.get_ranking.call_count == 18
+        assert mock_client.get_ranking.call_count == 20
         mock_storage.upsert_rankings.assert_called()
         assert results[2].phase == PHASE_RANKINGS
         assert results[2].success is True
@@ -701,7 +701,7 @@ class TestErrorSkip:
             if code == "E00001":
                 raise EdinetAPIError(
                     message="Not found",
-                    url=f"https://edinetdb.jp/api/v1/companies/{code}",
+                    url=f"https://edinetdb.jp/v1/companies/{code}",
                     status_code=404,
                     response_body="",
                 )
@@ -733,7 +733,7 @@ class TestErrorSkip:
     ) -> None:
         mock_client.get_industry.side_effect = EdinetAPIError(
             message="Not found",
-            url="https://edinetdb.jp/api/v1/industries/test",
+            url="https://edinetdb.jp/v1/industries/test",
             status_code=404,
             response_body="",
         )
@@ -797,7 +797,7 @@ class TestSyncCompany:
     ) -> None:
         mock_client.get_company.side_effect = EdinetAPIError(
             message="Not found",
-            url="https://edinetdb.jp/api/v1/companies/E99999",
+            url="https://edinetdb.jp/v1/companies/E99999",
             status_code=404,
             response_body="",
         )

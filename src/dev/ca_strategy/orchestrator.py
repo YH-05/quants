@@ -44,6 +44,7 @@ from pydantic import BaseModel
 
 from dev.ca_strategy._config import ConfigRepository
 from dev.ca_strategy.aggregator import ScoreAggregator
+from dev.ca_strategy.analyst_scores import load_analyst_scores
 from dev.ca_strategy.cost import CostTracker
 from dev.ca_strategy.evaluator import StrategyEvaluator
 from dev.ca_strategy.extractor import ClaimExtractor
@@ -55,6 +56,7 @@ from dev.ca_strategy.return_calculator import PortfolioReturnCalculator
 from dev.ca_strategy.scorer import ClaimScorer
 from dev.ca_strategy.transcript import TranscriptLoader
 from dev.ca_strategy.types import (
+    AnalystScore,
     BenchmarkWeight,
     Claim,
     EvaluationResult,
@@ -108,6 +110,17 @@ class Orchestrator:
         real portfolio and benchmark returns.  When ``None``
         (default), Phase 6 uses empty Series (NaN metrics),
         preserving backward compatibility.
+    benchmark_ticker : str | None, optional
+        Ticker symbol for the benchmark index (e.g. ``"MXKOKUS"``).
+        When set, Phase 6 fetches benchmark returns from
+        ``price_provider`` instead of using equal-weight universe
+        returns.  When ``None`` (default), uses the equal-weight
+        universe method.
+    analyst_scores_path : Path | str | None, optional
+        Path to the portfolio list JSON file containing analyst
+        KY/AK scores.  When set, Phase 6 loads scores and
+        passes them to ``StrategyEvaluator``.  When ``None``
+        (default), an empty dict is used.
 
     Raises
     ------
@@ -130,11 +143,17 @@ class Orchestrator:
         kb_base_dir: Path | str | None,
         workspace_dir: Path | str,
         price_provider: PriceDataProvider | None = None,
+        benchmark_ticker: str | None = None,
+        analyst_scores_path: Path | str | None = None,
     ) -> None:
         self._config_path = Path(config_path)
         self._kb_base_dir = Path(kb_base_dir) if kb_base_dir is not None else None
         self._workspace_dir = Path(workspace_dir)
         self._price_provider = price_provider
+        self._benchmark_ticker = benchmark_ticker
+        self._analyst_scores_path = (
+            Path(analyst_scores_path) if analyst_scores_path is not None else None
+        )
 
         # ConfigRepository validates config_path existence
         self._config = ConfigRepository(self._config_path)
@@ -162,6 +181,10 @@ class Orchestrator:
             if self._price_provider is not None
             else None,
             corporate_actions_count=len(self._corporate_actions),
+            benchmark_ticker=self._benchmark_ticker,
+            analyst_scores_path=str(self._analyst_scores_path)
+            if self._analyst_scores_path is not None
+            else None,
         )
 
     # -----------------------------------------------------------------------
@@ -477,6 +500,11 @@ class Orchestrator:
         prices.  When ``None`` (default), returns empty Series so that
         ``StrategyEvaluator`` produces NaN performance metrics.
 
+        When ``benchmark_ticker`` is set, fetches the benchmark index
+        price data directly from ``price_provider`` and converts to
+        daily returns.  Otherwise, uses the equal-weight universe method
+        via ``PortfolioReturnCalculator.calculate_benchmark_returns()``.
+
         Parameters
         ----------
         portfolio : PortfolioResult
@@ -500,13 +528,58 @@ class Orchestrator:
             start=PORTFOLIO_DATE,
             end=EVALUATION_END_DATE,
         )
-        universe_tickers = [t.ticker for t in self._config.universe.tickers]
-        benchmark_returns = calculator.calculate_benchmark_returns(
-            tickers=universe_tickers,
+
+        # Benchmark returns: index ticker or equal-weight universe
+        if self._benchmark_ticker is not None:
+            benchmark_returns = self._fetch_benchmark_index_returns()
+        else:
+            universe_tickers = [t.ticker for t in self._config.universe.tickers]
+            benchmark_returns = calculator.calculate_benchmark_returns(
+                tickers=universe_tickers,
+                start=PORTFOLIO_DATE,
+                end=EVALUATION_END_DATE,
+            )
+        return portfolio_returns, benchmark_returns
+
+    def _fetch_benchmark_index_returns(self) -> pd.Series:
+        """Fetch benchmark index returns from price_provider.
+
+        Uses ``benchmark_ticker`` to fetch daily close prices from
+        ``price_provider``, then converts to daily returns via
+        ``pct_change().iloc[1:]``.
+
+        Returns
+        -------
+        pd.Series
+            Daily benchmark index returns.
+            Empty Series if no data is available.
+        """
+        assert self._price_provider is not None
+        assert self._benchmark_ticker is not None
+
+        price_data = self._price_provider.fetch(
+            tickers=[self._benchmark_ticker],
             start=PORTFOLIO_DATE,
             end=EVALUATION_END_DATE,
         )
-        return portfolio_returns, benchmark_returns
+
+        if self._benchmark_ticker not in price_data:
+            logger.warning(
+                "Benchmark ticker not found in price data",
+                benchmark_ticker=self._benchmark_ticker,
+            )
+            return pd.Series([], dtype=float)
+
+        benchmark_prices = price_data[self._benchmark_ticker]
+        benchmark_returns: pd.Series = benchmark_prices.pct_change().iloc[1:]
+
+        logger.info(
+            "Benchmark index returns calculated",
+            benchmark_ticker=self._benchmark_ticker,
+            return_count=len(benchmark_returns),
+        )
+
+        return benchmark_returns
 
     def _run_phase6_evaluation(
         self,
@@ -535,13 +608,16 @@ class Orchestrator:
 
         portfolio_returns, benchmark_returns = self._calculate_phase6_returns(portfolio)
 
+        # Load analyst scores if path is configured
+        analyst_scores: dict[str, AnalystScore] = self._load_analyst_scores()
+
         evaluator = StrategyEvaluator()
         evaluation = evaluator.evaluate(
             portfolio=portfolio,
             scores=scores,
             portfolio_returns=portfolio_returns,
             benchmark_returns=benchmark_returns,
-            analyst_scores={},
+            analyst_scores=analyst_scores,
             threshold=threshold,
         )
         self._save_execution_log(phase6_label, "completed", None)
@@ -553,6 +629,37 @@ class Orchestrator:
         )
 
         return evaluation
+
+    def _load_analyst_scores(self) -> dict[str, AnalystScore]:
+        """Load analyst scores from configured path.
+
+        Returns
+        -------
+        dict[str, AnalystScore]
+            Analyst scores keyed by ticker. Empty dict if no path configured.
+        """
+        if self._analyst_scores_path is None:
+            return {}
+
+        universe_path = self._config_path / "universe.json"
+        try:
+            scores = load_analyst_scores(
+                portfolio_list_path=self._analyst_scores_path,
+                universe_path=universe_path,
+            )
+            logger.info(
+                "Analyst scores loaded for Phase 6",
+                scores_count=len(scores),
+                path=str(self._analyst_scores_path),
+            )
+            return scores
+        except (FileNotFoundError, Exception) as e:
+            logger.warning(
+                "Failed to load analyst scores, using empty dict",
+                error=str(e),
+                path=str(self._analyst_scores_path),
+            )
+            return {}
 
     def _run_phase5_extended(
         self,

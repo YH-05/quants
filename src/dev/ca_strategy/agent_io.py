@@ -1269,8 +1269,29 @@ def _parse_raw_scored_claim(
         if isinstance(claim_id, int):
             claim_id = str(claim_id)
 
-        # final_confidence is required
+        # final_confidence is required — try all known schema variants
         raw_confidence = raw.get("final_confidence")
+        if raw_confidence is None:
+            raw_confidence = raw.get("confidence")
+        if raw_confidence is None:
+            raw_confidence = raw.get("confidence_score")
+        if raw_confidence is None:
+            raw_confidence = raw.get("calibrated_confidence")
+        if raw_confidence is None:
+            raw_confidence = raw.get("final_score")
+        if raw_confidence is None:
+            raw_confidence = raw.get("final_confidence_pct")
+        if raw_confidence is None:
+            raw_confidence = raw.get("confidence_raw")
+        if raw_confidence is None:
+            raw_confidence = raw.get("raw_confidence")
+        if raw_confidence is None:
+            raw_confidence = raw.get("cagr_connection_confidence")
+        # Nested in scoring_result (GOOG/GOOGL schema)
+        if raw_confidence is None:
+            sr = raw.get("scoring_result")
+            if isinstance(sr, dict):
+                raw_confidence = sr.get("phase2_confidence") or sr.get("final_confidence")
         if raw_confidence is None:
             logger.warning(
                 "Scored claim missing final_confidence, excluding",
@@ -1300,9 +1321,28 @@ def _parse_raw_scored_claim(
 
         # Parse structured evaluation fields
         gatekeeper = _parse_gatekeeper(raw)
+        # Old schema: gatekeeper_pass (bool) → synthesize GatekeeperResult
+        if gatekeeper is None and "gatekeeper_pass" in raw:
+            gk_pass = raw.get("gatekeeper_pass", True)
+            gatekeeper = GatekeeperResult(
+                rule9_factual_error=not gk_pass,
+                rule3_industry_common=False,
+                triggered=not gk_pass,
+                override_confidence=None,
+            )
         kb1_evaluations = _parse_kb1_evaluations(raw)
         kb2_patterns = _parse_kb2_patterns(raw)
-        overall_reasoning = raw.get("overall_reasoning", "")
+        overall_reasoning = (
+            raw.get("overall_reasoning", "")
+            or raw.get("scoring_rationale", "")
+            or raw.get("overall_assessment", "")
+            or raw.get("confidence_rationale", "")
+        )
+        # Nested in scoring_result (GOOG/GOOGL schema)
+        if not overall_reasoning:
+            sr = raw.get("scoring_result")
+            if isinstance(sr, dict):
+                overall_reasoning = sr.get("overall_reasoning", "")
 
         # Restore Phase 1 data from original claims lookup
         original = claim_lookup.get(claim_id)
@@ -1345,7 +1385,15 @@ def _parse_raw_scored_claim(
             )
 
         # Fallback: use raw data when original claim not found
-        fallback_claim = raw.get("claim", "") or raw.get("claim_text", "")
+        fallback_claim = (
+            raw.get("claim", "")
+            or raw.get("claim_text", "")
+            or raw.get("claim_summary", "")
+            or raw.get("claim_title", "")
+            or raw.get("descriptive_label", "")
+            or raw.get("scoring_rationale", "")
+            or raw.get("kb1_reasoning", "")
+        )
         fallback_evidence = raw.get("evidence", "")
         if not fallback_evidence:
             fallback_evidence = raw.get("evidence_from_transcript", "")
@@ -1432,7 +1480,7 @@ def _parse_kb1_evaluations(raw: dict[str, Any]) -> list[KB1RuleApplication]:
     """
     evals_raw = raw.get("kb1_evaluations", [])
     if not isinstance(evals_raw, list):
-        return []
+        evals_raw = []
 
     evaluations: list[KB1RuleApplication] = []
     for item in evals_raw:
@@ -1448,6 +1496,57 @@ def _parse_kb1_evaluations(raw: dict[str, Any]) -> list[KB1RuleApplication]:
                 reasoning=item.get("reasoning", ""),
             )
         )
+
+    # Old schema fallback: try all known flat-list variants
+    if not evaluations:
+        rules_applied = (
+            raw.get("kb_rules_applied")
+            or raw.get("applied_rules")
+            or raw.get("dogma_rules_applied")
+            or raw.get("kb1_rules_applied")
+        )
+        # Also try scoring_result.kb1_t_rules_applied (GOOG schema)
+        if not rules_applied:
+            sr = raw.get("scoring_result")
+            if isinstance(sr, dict):
+                rules_applied = sr.get("kb1_t_rules_applied")
+        if isinstance(rules_applied, list):
+            for rule_item in rules_applied:
+                if isinstance(rule_item, str) and rule_item:
+                    evaluations.append(
+                        KB1RuleApplication(
+                            rule_id=rule_item,
+                            result=True,
+                            reasoning="Migrated from old schema",
+                        )
+                    )
+                elif isinstance(rule_item, dict):
+                    # BNZL schema: list of {rule_id, result, note}
+                    rid = rule_item.get("rule_id", "")
+                    if rid:
+                        res_str = rule_item.get("result", "")
+                        is_pass = isinstance(res_str, str) and res_str.lower() in ("pass", "true")
+                        evaluations.append(
+                            KB1RuleApplication(
+                                rule_id=rid,
+                                result=is_pass,
+                                reasoning=rule_item.get("note", "") or rule_item.get("reasoning", ""),
+                            )
+                        )
+        # Also try kb1_t_evaluation (mid schema: dict of rule_id -> result string)
+        if not evaluations:
+            kb1_dict = raw.get("kb1_t_evaluation")
+            if isinstance(kb1_dict, dict):
+                for rule_id, result_str in kb1_dict.items():
+                    is_pass = isinstance(result_str, str) and "PASS" in result_str.upper()
+                    evaluations.append(
+                        KB1RuleApplication(
+                            rule_id=rule_id,
+                            result=is_pass,
+                            reasoning=result_str if isinstance(result_str, str) else "",
+                        )
+                    )
+
     return evaluations
 
 
@@ -1466,7 +1565,7 @@ def _parse_kb2_patterns(raw: dict[str, Any]) -> list[KB2PatternMatch]:
     """
     patterns_raw = raw.get("kb2_patterns", [])
     if not isinstance(patterns_raw, list):
-        return []
+        patterns_raw = []
 
     patterns: list[KB2PatternMatch] = []
     for pat in patterns_raw:
@@ -1490,6 +1589,69 @@ def _parse_kb2_patterns(raw: dict[str, Any]) -> list[KB2PatternMatch]:
                 reasoning=pat.get("reasoning", ""),
             )
         )
+
+    # Old schema fallback: try all known flat-list and string variants
+    if not patterns:
+        matched_list = (
+            raw.get("kb2_patterns_matched")
+            or raw.get("kb2_patterns_applied")
+            or raw.get("kb2_pattern_applied")
+        )
+        if isinstance(matched_list, list):
+            for pat_item in matched_list:
+                if isinstance(pat_item, str) and pat_item:
+                    # Old schema: adjustment is a single integer at the claim level
+                    adj_raw = raw.get("adjustment", 0)
+                    adj_val = 0.0
+                    if isinstance(adj_raw, (int, float)):
+                        # Old schema stores percentage (e.g. 20 = +20%)
+                        adj_val = max(-1.0, min(1.0, float(adj_raw) / 100.0))
+                    patterns.append(
+                        KB2PatternMatch(
+                            pattern_id=pat_item,
+                            matched=True,
+                            adjustment=adj_val,
+                            reasoning="Migrated from old schema",
+                        )
+                    )
+                elif isinstance(pat_item, dict):
+                    # BNZL schema: list of {pattern_id, matched, note}
+                    pid = pat_item.get("pattern_id", "")
+                    if pid:
+                        adj_v = pat_item.get("adjustment", 0)
+                        if isinstance(adj_v, (int, float)):
+                            adj_v = max(-1.0, min(1.0, float(adj_v)))
+                        else:
+                            adj_v = 0.0
+                        patterns.append(
+                            KB2PatternMatch(
+                                pattern_id=pid,
+                                matched=bool(pat_item.get("matched", True)),
+                                adjustment=adj_v,
+                                reasoning=pat_item.get("note", "") or pat_item.get("reasoning", ""),
+                            )
+                        )
+        # Single-string variants: kb2_t_pattern, kb2_pattern
+        if not patterns:
+            kb2_str = (
+                raw.get("kb2_t_pattern")
+                or raw.get("kb2_pattern")
+            )
+            # Also check scoring_result.kb2_t_pattern (GOOG schema)
+            if not kb2_str:
+                sr = raw.get("scoring_result")
+                if isinstance(sr, dict):
+                    kb2_str = sr.get("kb2_t_pattern")
+            if isinstance(kb2_str, str) and kb2_str:
+                patterns.append(
+                    KB2PatternMatch(
+                        pattern_id=kb2_str,
+                        matched=True,
+                        adjustment=0.0,
+                        reasoning="Migrated from old schema",
+                    )
+                )
+
     return patterns
 
 

@@ -22,45 +22,45 @@
 
 | Ticker | Weight | Sector | Score |
 |--------|--------|--------|-------|
-| AAPL | 3.76% | Information Technology | 0.73 |
-| MHFI | 3.68% | Financials | 0.75 |
-| CPI | 3.60% | Industrials | 0.67 |
-| SWKS | 3.59% | Information Technology | 0.69 |
-| PAYX | 3.57% | Information Technology | 0.69 |
-| XLNX | 3.55% | Information Technology | 0.69 |
-| FFIV | 3.50% | Information Technology | 0.68 |
-| AMZN | 3.45% | Consumer Discretionary | 0.70 |
-| FAST | 3.42% | Industrials | 0.63 |
-| CVS | 3.32% | Consumer Staples | 0.67 |
-| CSL | 3.31% | Health Care | 0.69 |
-| KR | 3.29% | Consumer Staples | 0.67 |
-| DHL | 3.28% | Industrials | 0.61 |
-| CHD | 3.25% | Consumer Staples | 0.66 |
-| CL | 3.25% | Consumer Staples | 0.66 |
-| CCI | 3.23% | Financials | 0.66 |
-| CON | 3.20% | Consumer Discretionary | 0.65 |
-| MO | 3.20% | Consumer Staples | 0.65 |
-| FL | 3.19% | Consumer Discretionary | 0.65 |
-| LKQ | 3.19% | Consumer Discretionary | 0.65 |
-| UTHR | 3.19% | Health Care | 0.67 |
-| ABBV | 3.16% | Health Care | 0.66 |
-| ROG | 3.12% | Health Care | 0.65 |
-| COLOB | 3.08% | Health Care | 0.65 |
-| ALXN | 3.06% | Health Care | 0.64 |
-| HNR1 | 3.05% | Financials | 0.62 |
-| KBC | 3.03% | Financials | 0.62 |
-| ENB | 2.96% | Energy | 0.64 |
+| AMS | 3.70% | Information Technology | 0.73 |
+| AAPL | 3.68% | Information Technology | 0.73 |
+| MHFI | 3.58% | Financials | 0.74 |
+| SAP | 3.56% | Information Technology | 0.70 |
+| AVGO | 3.54% | Information Technology | 0.70 |
+| CPI | 3.52% | Industrials | 0.69 |
+| SWKS | 3.51% | Information Technology | 0.69 |
+| DIS | 3.49% | Consumer Discretionary | 0.76 |
+| BA | 3.42% | Industrials | 0.67 |
+| CCEP | 3.41% | Consumer Staples | 0.70 |
+| COL | 3.36% | Industrials | 0.66 |
+| ORLY | 3.29% | Consumer Discretionary | 0.71 |
+| KR | 3.25% | Consumer Staples | 0.67 |
+| CSL | 3.25% | Health Care | 0.69 |
+| AMZN | 3.23% | Consumer Discretionary | 0.70 |
+| CVS | 3.22% | Consumer Staples | 0.66 |
+| CHD | 3.21% | Consumer Staples | 0.66 |
+| CL | 3.21% | Consumer Staples | 0.66 |
+| CCI | 3.21% | Financials | 0.66 |
+| IFC | 3.18% | Financials | 0.66 |
+| BAYN | 3.16% | Health Care | 0.67 |
+| STJ | 3.15% | Health Care | 0.67 |
+| UTHR | 3.13% | Health Care | 0.67 |
+| SHP | 3.12% | Health Care | 0.67 |
+| ABBV | 3.11% | Health Care | 0.66 |
+| HNR1 | 3.02% | Financials | 0.62 |
+| ITV | 3.01% | Consumer Discretionary | 0.65 |
+| ENB | 2.82% | Energy | 0.64 |
 | DD | 2.73% | Materials | 0.63 |
-| EOG | 2.57% | Energy | 0.56 |
-| PPL | 1.27% | Utilities | 0.78 |
+| SLB | 2.71% | Energy | 0.62 |
+| PPL | 1.27% | Utilities | 0.79 |
 | SCMN | 0.92% | Telecommunication Services | 0.57 |
 
 ## Score Distribution
 
-- **Mean**: 0.5252
+- **Mean**: 0.5270
 - **Min**: 0.1588
-- **Max**: 0.7800
-- **Count**: 215
+- **Max**: 0.7933
+- **Count**: 313
 
 ## Selection Criteria
 

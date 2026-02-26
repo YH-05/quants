@@ -39,7 +39,7 @@ class TestAPIConstants:
         assert DEFAULT_BASE_URL.startswith("https://")
 
     def test_正常系_DEFAULT_BASE_URLが正しい値であること(self) -> None:
-        assert DEFAULT_BASE_URL == "https://edinetdb.jp/api"
+        assert DEFAULT_BASE_URL == "https://edinetdb.jp"
 
     def test_正常系_DEFAULT_BASE_URLが末尾スラッシュを含まないこと(self) -> None:
         assert not DEFAULT_BASE_URL.endswith("/")
@@ -223,8 +223,8 @@ class TestTableNameConstants:
 class TestRankingMetrics:
     """ランキングメトリクス定数のテスト。"""
 
-    def test_正常系_RANKING_METRICSが18指標を含むこと(self) -> None:
-        assert len(RANKING_METRICS) == 18
+    def test_正常系_RANKING_METRICSが20指標を含むこと(self) -> None:
+        assert len(RANKING_METRICS) == 20
 
     def test_正常系_RANKING_METRICSがリストであること(self) -> None:
         assert isinstance(RANKING_METRICS, list)
@@ -306,8 +306,10 @@ class TestRankingMetrics:
             "eps",
             "dividend-yield",
             "payout-ratio",
+            "free-cf",
             "revenue",
             "health-score",
+            "credit-score",
             "revenue-growth",
             "ni-growth",
             "eps-growth",
@@ -317,7 +319,7 @@ class TestRankingMetrics:
             "eps-cagr-3y",
         ],
     )
-    def test_パラメトライズ_全18メトリクスが含まれること(self, metric: str) -> None:
+    def test_パラメトライズ_全20メトリクスが含まれること(self, metric: str) -> None:
         assert metric in RANKING_METRICS
 
     def test_正常系_メトリクスがURLパスセグメントとして有効であること(self) -> None:

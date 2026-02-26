@@ -35,7 +35,7 @@ from typing import Final
 # 1. API settings
 # ---------------------------------------------------------------------------
 
-DEFAULT_BASE_URL: Final[str] = "https://edinetdb.jp/api"
+DEFAULT_BASE_URL: Final[str] = "https://edinetdb.jp"
 """Base URL for the EDINET DB REST API.
 
 All API requests are constructed by appending endpoint paths to this URL.
@@ -44,7 +44,7 @@ The API requires authentication via ``X-API-Key`` header for most endpoints.
 Examples
 --------
 >>> f"{DEFAULT_BASE_URL}/v1/companies"
-'https://edinetdb.jp/api/v1/companies'
+'https://edinetdb.jp/v1/companies'
 """
 
 EDINET_API_KEY_ENV: Final[str] = "EDINET_DB_API_KEY"
@@ -86,10 +86,10 @@ default database path. The resulting file is ``edinet.duckdb``.
 # ---------------------------------------------------------------------------
 
 DAILY_RATE_LIMIT: Final[int] = 1000
-"""Maximum number of API calls allowed per day (Beta plan).
+"""Maximum number of API calls allowed per day (Pro plan).
 
-The EDINET DB API Beta plan allows 1,000 requests per day.
-After the beta period, the free plan will be limited to 100 requests/day.
+The EDINET DB API Pro plan allows 1,000 requests per day.
+Free plan allows 100 requests/day, Business 10,000 requests/day.
 """
 
 SAFE_MARGIN: Final[int] = 50
@@ -214,8 +214,10 @@ RANKING_METRICS: Final[list[str]] = [
     "eps",
     "dividend-yield",
     "payout-ratio",
+    "free-cf",
     "revenue",
     "health-score",
+    "credit-score",
     "revenue-growth",
     "ni-growth",
     "eps-growth",
@@ -224,7 +226,7 @@ RANKING_METRICS: Final[list[str]] = [
     "ni-cagr-3y",
     "eps-cagr-3y",
 ]
-"""List of 18 ranking metrics available via the EDINET DB API.
+"""List of 20 ranking metrics available via the EDINET DB API.
 
 Each metric can be used as the ``{metric}`` path parameter in
 ``GET /v1/rankings/{metric}`` to retrieve company rankings for
@@ -235,8 +237,9 @@ The metrics are organized into the following categories:
 - **Profitability**: roe, operating-margin, net-margin, roa
 - **Valuation**: per, eps
 - **Shareholder returns**: dividend-yield, payout-ratio
+- **Cash Flow**: free-cf
 - **Scale**: revenue
-- **Health**: health-score, equity-ratio
+- **Health**: health-score, credit-score, equity-ratio
 - **Growth (YoY)**: revenue-growth, ni-growth, eps-growth
 - **Growth (3Y CAGR)**: revenue-cagr-3y, oi-cagr-3y, ni-cagr-3y,
   eps-cagr-3y
@@ -246,7 +249,7 @@ Examples
 >>> "roe" in RANKING_METRICS
 True
 >>> len(RANKING_METRICS)
-18
+20
 """
 
 # ---------------------------------------------------------------------------

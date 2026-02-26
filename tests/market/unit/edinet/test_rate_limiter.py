@@ -163,9 +163,9 @@ class TestGetRemaining:
     def test_正常系_コール後に正しい残数を返すこと(
         self, limiter: DailyRateLimiter
     ) -> None:
-        for _ in range(100):
+        for _ in range(10):
             limiter.record_call()
-        assert limiter.get_remaining() == 850
+        assert limiter.get_remaining() == 940
 
     def test_正常系_カスタムlimitとmarginで正しく計算されること(
         self, state_path: Path

@@ -1,7 +1,7 @@
 """EDINET DB API module for Japanese listed company financial data.
 
 This package provides tools for accessing the EDINET DB REST API
-(https://edinetdb.jp/api), which provides structured financial data
+(https://edinetdb.jp), which provides structured financial data
 extracted from securities reports filed with the Financial Services
 Agency of Japan (FSA).
 

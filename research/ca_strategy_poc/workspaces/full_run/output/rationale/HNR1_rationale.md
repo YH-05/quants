@@ -4,9 +4,9 @@
 
 - **Ticker**: HNR1
 - **Sector**: Financials
-- **Portfolio Weight**: 3.05%
+- **Portfolio Weight**: 3.02%
 - **Score**: 0.6241666666666666
-- **Rationale**: Sector rank 3, score 0.62
+- **Rationale**: Sector rank 4, score 0.62
 
 ## Score Details
 
@@ -18,7 +18,7 @@
 
 ### Claim 1: competitive_advantage
 
-- **Claim**: Hannover Re は規律ある引受方針（cycle management）により、ソフト市場（競合が価格を引き下げる局面）においても Combined Ratio 94-96% 以下を維持し、保守的損失準備金ポリシーを一貫して適用する能力を有する。2014年はEBIT前年比+20%、ROE 14.7%を達成した。
+- **Claim**: Hannover Re は規律ある引受方針（cycle management）により、ソフト市場においても Combined Ratio 94-96% 以下を維持し、保守的損失準備金ポリシーを一貫して適用する能力を有する。2014年はEBIT前年比+20%、ROE 14.7%を達成した。
 - **Evidence**: The discipline to concentrate on our margin requirement in more difficult times even if that means that in a soft market like currently, we forgo top line growth... we managed to increase the after-tax earnings of the group by more than 10%.
 - **Final Confidence**: 60%
 - **Adjustments**:
@@ -36,7 +36,7 @@
 
 ### Claim 3: competitive_advantage
 
-- **Claim**: Hannover Re は Property & Casualty 再保険において北米で600超のクライアントを保有し、生命・健康再保険では新興国（特にアジア、中国）での成長機会を持つ。規模の経済と分散化されたグローバルポートフォリオが安定的な収益を実現する。
+- **Claim**: Hannover Re は Property & Casualty 再保険において北米で600超のクライアントを保有し、生命・健康再保険では新興国での成長機会を持つ。規模の経済と分散化されたグローバルポートフォリオが安定的な収益を実現する。
 - **Evidence**: In the U.S., where we have more than 600 clients. So writing larger shares with these clients and being involved in their new reinsurance purchasing.
 - **Final Confidence**: 35%
 - **Adjustments**:
@@ -44,8 +44,8 @@
 
 ### Claim 4: competitive_advantage
 
-- **Claim**: Hannover Re の生命・健康再保険における Financial Solutions（Longevity）事業は、専門的な長寿リスク移転ノウハウと実績により高マージン（EBIT margin >target）を達成しており、参入障壁が高い専門分野において優位なポジションを確立している。
-- **Evidence**: Financial Solutions, impressive margins that is the business we especially write in the U.S. where our colleagues do provide coverage for the balance sheet... The value of new business is for 3 or even 4 years in a row, now on a very high level over and above our threshold.
+- **Claim**: Hannover Re の生命・健康再保険における Financial Solutions（Longevity）事業は、専門的な長寿リスク移転ノウハウと実績により高マージンを達成しており、参入障壁が高い専門分野において優位なポジションを確立している。
+- **Evidence**: Financial Solutions, impressive margins... The value of new business is for 3 or even 4 years in a row, now on a very high level over and above our threshold.
 - **Final Confidence**: 50%
 - **Adjustments**:
   - MCEV evidence: +0% ()

@@ -90,7 +90,7 @@ class EdinetAPIError(EdinetError):
     --------
     >>> raise EdinetAPIError(
     ...     "API returned HTTP 500",
-    ...     url="https://edinetdb.jp/api/v2/companies",
+    ...     url="https://edinetdb.jp/v2/companies",
     ...     status_code=500,
     ...     response_body='{"error": "Internal Server Error"}',
     ... )

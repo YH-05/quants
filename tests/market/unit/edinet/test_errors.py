@@ -49,12 +49,12 @@ class TestEdinetAPIError:
 
         error = EdinetAPIError(
             "API returned HTTP 500",
-            url="https://edinetdb.jp/api/v2/companies",
+            url="https://edinetdb.jp/v2/companies",
             status_code=500,
             response_body='{"error": "Internal Server Error"}',
         )
         assert error.message == "API returned HTTP 500"
-        assert error.url == "https://edinetdb.jp/api/v2/companies"
+        assert error.url == "https://edinetdb.jp/v2/companies"
         assert error.status_code == 500
         assert error.response_body == '{"error": "Internal Server Error"}'
 
@@ -64,7 +64,7 @@ class TestEdinetAPIError:
 
         error = EdinetAPIError(
             "HTTP 403 Forbidden",
-            url="https://edinetdb.jp/api/v2/companies",
+            url="https://edinetdb.jp/v2/companies",
             status_code=403,
             response_body="Forbidden",
         )
@@ -76,7 +76,7 @@ class TestEdinetAPIError:
 
         error = EdinetAPIError(
             "API error",
-            url="https://edinetdb.jp/api/v2/companies",
+            url="https://edinetdb.jp/v2/companies",
             status_code=400,
             response_body="Bad Request",
         )
@@ -282,7 +282,7 @@ class TestExceptionUsagePatterns:
         with pytest.raises(EdinetError):
             raise EdinetAPIError(
                 "API error",
-                url="https://edinetdb.jp/api/v2/companies",
+                url="https://edinetdb.jp/v2/companies",
                 status_code=500,
                 response_body="error",
             )
@@ -320,7 +320,7 @@ class TestExceptionUsagePatterns:
         with pytest.raises(EdinetAPIError):
             raise EdinetAPIError(
                 "API error",
-                url="https://edinetdb.jp/api/v2/companies",
+                url="https://edinetdb.jp/v2/companies",
                 status_code=500,
                 response_body="error",
             )
@@ -330,7 +330,7 @@ class TestExceptionUsagePatterns:
             try:
                 raise EdinetAPIError(
                     "API error",
-                    url="https://edinetdb.jp/api/v2/companies",
+                    url="https://edinetdb.jp/v2/companies",
                     status_code=500,
                     response_body="error",
                 )
