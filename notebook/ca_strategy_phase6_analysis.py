@@ -693,6 +693,217 @@ def _(bench_msci_ret, mo, np, pd, weighted_returns):
 
 
 @app.cell
+def _(DATA_SOURCE, Path, daily_returns, ew_returns, mo, np, pd, portfolio_weights, weighted_returns):
+    """vs List Portfolio Universe benchmark analysis."""
+    import plotly.graph_objects as go
+
+    _source = DATA_SOURCE.value
+    _univ_path = Path(f"../data/raw/{_source}/stocks/universe_benchmark_close_prices.parquet")
+
+    if not _univ_path.exists():
+        mo.stop(True, mo.md("**Universe benchmark データが未取得です。** `/tmp/build_universe_benchmark.py` を実行してください。"))
+
+    _univ_close = pd.read_parquet(_univ_path)
+
+    # Load universe weights from list_portfolio
+    _list_path = Path("../data/Transcript/list_portfolio_20151224.json")
+    import json as _json
+
+    with open(_list_path) as _f:
+        _list_data = _json.load(_f)
+
+    # Bloomberg → yfinance mapping (simplified)
+    _exchange_map = {
+        "US": "", "LN": ".L", "SW": ".SW", "VX": ".SW", "GR": ".DE",
+        "HK": ".HK", "CN": ".TO", "AU": ".AX", "FP": ".PA", "SJ": ".JO",
+        "IJ": ".JK", "BZ": ".SA", "KS": ".KS", "NA": ".AS", "SS": ".SS",
+        "IN": ".NS", "IM": ".MI", "MM": ".MX", "TT": ".TW", "TB": ".BK",
+        "DC": ".CO", "BB": ".BR", "PM": ".PS", "MK": ".KL", "SM": ".MC",
+        "NO": ".OL", "FH": ".HE", "PL": ".WA", "NR": "", "NQ": "", "QM": "",
+        "GK": "", "LI": "", "TI": "",
+    }
+    _manual = {
+        "GSK": "GSK", "AZN": "AZN", "BA/": "BAESY", "DGE": "DEO",
+        "BATS": None, "PRU": "PUK", "CBG": None, "STJ": None,
+        "RB/": "RBGLY", "VOD": "VOD", "ULVR": "UL", "ABI": "BUD",
+        "SAB": None, "SKY": None, "ARM": None, "ADN": None,
+        "NESN": "NSRGY", "NOVN": "NVS", "ROG": "RHHBY", "SCMN": None,
+        "SAP": "SAP", "BAYN": None, "CON": None, "HNR1": None,
+        "IFC": None, "DHL": None, "CBA": None, "CPI": None,
+        "005930": None, "COLOB": None,
+    }
+
+    def _bbg_to_yf(bbg_ticker):
+        if not bbg_ticker:
+            return None
+        parts = bbg_ticker.split()
+        if len(parts) < 3:
+            return None
+        short, exchange = parts[0], parts[1]
+        if short in _manual:
+            return _manual[short]
+        suffix = _exchange_map.get(exchange, "")
+        return f"{short}{suffix}" if suffix or exchange == "US" else short
+
+    # Build market-cap weights
+    _valid_cols = set(_univ_close.columns)
+    _valid_cols = {c for c in _valid_cols if _univ_close[c].dropna().shape[0] >= 252}
+    _yf_weights = {}
+    _yf_sectors = {}
+    _total_mcap = 0
+    for _k, _entries in _list_data.items():
+        _e = _entries[0]
+        _bbg = _e.get("Bloomberg_Ticker")
+        _mcap = _e.get("MSCI_Mkt_Cap_USD_MM", 0)
+        if not _bbg or _mcap <= 0:
+            continue
+        _yft = _bbg_to_yf(_bbg)
+        if _yft and _yft in _valid_cols:
+            _yf_weights[_yft] = _yf_weights.get(_yft, 0) + _mcap
+            _yf_sectors[_yft] = _e["GICS_Sector"]
+            _total_mcap += _mcap
+
+    # Normalize
+    for _t in _yf_weights:
+        _yf_weights[_t] /= _total_mcap
+
+    # Compute benchmark return
+    _bench_cols = list(_yf_weights.keys())
+    _bench_close = _univ_close[_bench_cols].ffill()
+    _bench_daily = _bench_close.pct_change().iloc[1:].clip(-0.5, 0.5)
+    _w_ser = pd.Series(_yf_weights).reindex(_bench_daily.columns).fillna(0)
+    _w_ser = _w_ser / _w_ser.sum()
+    bench_univ_ret = (_bench_daily.fillna(0) * _w_ser).sum(axis=1)
+
+    _ann = 252
+    _rf = 0.045
+
+    _aligned = pd.concat(
+        [weighted_returns.rename("port"), ew_returns.rename("ew"), bench_univ_ret.rename("bench")],
+        axis=1,
+    ).dropna()
+
+    _p = _aligned["port"]
+    _b = _aligned["bench"]
+    _active = _p - _b
+    _n_yr = len(_aligned) / _ann
+
+    _cum_p = float((1 + _p).prod() - 1)
+    _cum_b = float((1 + _b).prod() - 1)
+    _ann_p = float((1 + _cum_p) ** (1 / _n_yr) - 1)
+    _ann_b = float((1 + _cum_b) ** (1 / _n_yr) - 1)
+    _ann_active = _ann_p - _ann_b
+
+    _te = float(_active.std() * np.sqrt(_ann))
+    _ir = float(_active.mean() / _active.std() * np.sqrt(_ann)) if _active.std() > 0 else 0
+
+    _cov = np.cov(_p, _b)
+    _beta = float(_cov[0, 1] / _cov[1, 1]) if _cov[1, 1] > 0 else 1.0
+    _alpha = _ann_p - (_rf + _beta * (_ann_b - _rf))
+
+    _sharpe_p = float((_p.mean() - _rf / _ann) / _p.std() * np.sqrt(_ann))
+    _sharpe_b = float((_b.mean() - _rf / _ann) / _b.std() * np.sqrt(_ann))
+
+    _cum_curve_p = (1 + _p).cumprod()
+    _cum_curve_b = (1 + _b).cumprod()
+    _mdd_p = float((_cum_curve_p / _cum_curve_p.cummax() - 1).min())
+    _mdd_b = float((_cum_curve_b / _cum_curve_b.cummax() - 1).min())
+
+    _down = _p[_p < 0]
+    _down_std = float(_down.std() * np.sqrt(_ann)) if len(_down) > 0 else 1
+    _sortino = float((_p.mean() * _ann - _rf) / _down_std)
+    _calmar = _ann_p / abs(_mdd_p) if _mdd_p != 0 else 0
+
+    _up = _b > 0
+    _dn = _b < 0
+    _up_cap = float(_p[_up].mean() / _b[_up].mean() * 100) if _b[_up].mean() != 0 else 0
+    _dn_cap = float(_p[_dn].mean() / _b[_dn].mean() * 100) if _b[_dn].mean() != 0 else 0
+    _win = float((_active > 0).mean())
+
+    mo.md(
+        f"""
+    ### vs List Portfolio Universe (MCap-weighted, {len(_yf_weights)} stocks)
+
+    投資ユニバース（list_portfolio_20151224.json）の時価総額加重ベンチマーク
+
+    | Metric | Portfolio | Universe | Active |
+    |--------|:-:|:-:|:-:|
+    | **Ann. Return** | {_ann_p:.2%} | {_ann_b:.2%} | **{_ann_active:+.2%}** |
+    | **Cum. Return** | {_cum_p:.2%} | {_cum_b:.2%} | {_cum_p - _cum_b:+.2%} |
+    | **Sharpe Ratio** | {_sharpe_p:.4f} | {_sharpe_b:.4f} | {_sharpe_p - _sharpe_b:+.4f} |
+    | **Max Drawdown** | {_mdd_p:.2%} | {_mdd_b:.2%} | |
+    | **Beta** | {_beta:.4f} | 1.0 | |
+    | **Alpha (CAPM)** | | | **{_alpha:+.2%}** |
+    | **Tracking Error** | | | {_te:.2%} |
+    | **Information Ratio** | | | {_ir:.4f} |
+    | **Sortino Ratio** | {_sortino:.4f} | | |
+    | **Calmar Ratio** | {_calmar:.4f} | | |
+    | **Up Capture** | {_up_cap:.1f}% | | |
+    | **Down Capture** | {_dn_cap:.1f}% | | |
+    | **Win Rate (日次)** | {_win:.1%} | | |
+    """
+    )
+    return bench_univ_ret
+
+
+@app.cell
+def _(bench_univ_ret, ew_returns, mo, pd, weighted_returns):
+    """Yearly active return table vs Universe."""
+    _aligned = pd.concat(
+        [weighted_returns.rename("port"), ew_returns.rename("ew"), bench_univ_ret.rename("bench")],
+        axis=1,
+    ).dropna()
+
+    _rows = []
+    for _y in sorted(_aligned.index.year.unique()):
+        _yp = _aligned["port"][_aligned.index.year == _y]
+        _yb = _aligned["bench"][_aligned.index.year == _y]
+        _rp = float((1 + _yp).prod() - 1)
+        _rb = float((1 + _yb).prod() - 1)
+        _rows.append(
+            {
+                "Year": _y,
+                "Portfolio": f"{_rp:+.2%}",
+                "Universe": f"{_rb:+.2%}",
+                "Active": f"{_rp - _rb:+.2%}",
+            }
+        )
+
+    mo.md("### Yearly Returns vs Universe")
+    _yearly_df = pd.DataFrame(_rows)
+    mo.ui.table(_yearly_df, selection=None)
+    return
+
+
+@app.cell
+def _(bench_univ_ret, mo, pd, weighted_returns):
+    """Cumulative return chart: Portfolio vs Universe."""
+    import plotly.graph_objects as go
+
+    _aligned = pd.concat([weighted_returns.rename("port"), bench_univ_ret.rename("bench")], axis=1).dropna()
+    _cum_p = (1 + _aligned["port"]).cumprod()
+    _cum_bm = (1 + _aligned["bench"]).cumprod()
+
+    fig_univ = go.Figure()
+    fig_univ.add_trace(
+        go.Scatter(x=_cum_p.index, y=_cum_p, name="CA Strategy Portfolio", line={"width": 2.5, "color": "#2563eb"})
+    )
+    fig_univ.add_trace(
+        go.Scatter(x=_cum_bm.index, y=_cum_bm, name="Universe (MCap)", line={"width": 2.5, "dash": "dash", "color": "#d97706"})
+    )
+    fig_univ.update_layout(
+        title="Cumulative Returns: Portfolio vs Universe",
+        yaxis_title="Cumulative Return",
+        xaxis_title="Date",
+        template="plotly_white",
+        height=450,
+    )
+
+    mo.ui.plotly(fig_univ)
+    return (fig_univ,)
+
+
+@app.cell
 def _(
     DATA_SOURCE,
     PORTFOLIO_SIZE,
@@ -813,8 +1024,16 @@ def _(
     | 60 | 0.701 | +3.88% | +2.99% | 0.342 | +356.1% | +250.5% |
     | 90 | 0.666 | +3.13% | +2.15% | 0.247 | +323.9% | +250.5% |
 
-    全ポートフォリオが MSCI Kokusai を年率 +2〜3% アウトパフォーム。
-    60銘柄が最高の Information Ratio (0.342) を示す。
+    **Cross-Portfolio Comparison vs Universe (MCap-weighted)**:
+
+    | Size | Sharpe | Alpha | Active Return | IR | Cum. Return | Universe |
+    |------|--------|-------|---------------|-----|-------------|----------|
+    | 30 | 0.698 | +1.05% | +1.14% | 0.177 | +349.1% | +306.2% |
+    | 60 | 0.701 | +0.55% | +1.32% | 0.272 | +356.1% | +306.2% |
+    | 90 | 0.666 | -0.28% | +0.48% | 0.154 | +323.9% | +306.2% |
+
+    vs MSCI Kokusai: 全ポートフォリオが年率 +2〜3% アウトパフォーム。60銘柄が最高の IR (0.342)。
+    vs Universe: 銘柄選択による付加価値は年率 +0.5〜1.3%。60銘柄が最高の IR (0.272)。
     """
     )
     return (evaluation_result,)
