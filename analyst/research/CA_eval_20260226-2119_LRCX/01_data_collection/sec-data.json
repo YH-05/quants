@@ -1,0 +1,206 @@
+{
+  "ticker": "LRCX",
+  "company_name": "Lam Research Corporation",
+  "retrieved_at": "2026-02-26T21:20:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPで直近10-Qの財務データを取得。10-Kセクション詳細（Business, Risk Factors等）はMCPの制限により取得不可。アナリストレポートで補完。",
+    "affected_fields": ["filing_sections_full_text", "10k_detailed_sections"],
+    "available_fields": ["financials_from_sec", "recent_filings", "insider_summary", "key_metrics_from_report"]
+  },
+  "financials": {
+    "note": "直近10-Q（FY26Q2, 2025年12月28日期）のXBRLデータをSEC EDGARから取得。過去の年次データはアナリストレポートから補完。",
+    "revenue": {
+      "description": "売上高",
+      "latest_quarter": {
+        "value": 5344791000,
+        "currency": "USD",
+        "period": "Q2 FY26 (ending 2025-12-28)",
+        "source": "SEC EDGAR 10-Q (accession: 0000707549-26-000009)"
+      },
+      "historical_reference": {
+        "fy2024_annual_approx": "14920000000",
+        "fy2023_annual_approx": "14065000000",
+        "note": "アナリストレポートの四半期データ積み上げ概算。正確な年次値はSEC EDGAR 10-K参照要。"
+      }
+    },
+    "segment_revenue_mix": {
+      "equipment": {
+        "share": "67%",
+        "description": "装置売上（エッチング、成膜、洗浄装置）",
+        "sub_segments": {
+          "etching": "60% of equipment revenue",
+          "deposition_cvd_ald": "30% of equipment revenue",
+          "cleaning": "10% of equipment revenue"
+        }
+      },
+      "services_csbg": {
+        "share": "33%",
+        "description": "CSBG（Customer Support Business Group）: 据付装置向けサービス・消耗品・アップグレード"
+      }
+    },
+    "end_market_mix": {
+      "memory": "45% (NAND 20%, DRAM 25%)",
+      "foundry": "45%",
+      "logic": "10%",
+      "note": "3Q24時点。メモリ比率は半導体サイクルにより大きく変動（過去レンジ: 27-65%）"
+    },
+    "income_statement": {
+      "latest_quarter_q2fy26": {
+        "revenue": 5344791000,
+        "gross_profit": 2651162000,
+        "gpm_pct": 49.6,
+        "operating_income": 1810203000,
+        "opm_pct": 33.9,
+        "net_income": 1593994000,
+        "eps_diluted": 1.26,
+        "source": "SEC EDGAR 10-Q"
+      },
+      "historical_opm_trend": {
+        "fy2021": "30.6%",
+        "fy2022_fy2024": "30%前後横這い",
+        "note": "アナリスト: FY21に30.6%到達後は横這い。競争激化を背景にマージン改善ハードルが上昇。"
+      }
+    },
+    "balance_sheet": {
+      "as_of": "2025-12-28",
+      "total_assets": 21391171000,
+      "current_assets": 14018023000,
+      "total_liabilities": 11245745000,
+      "current_liabilities": 6213153000,
+      "stockholders_equity": 10145426000,
+      "cash_and_equivalents": 6180440000,
+      "accounts_receivable": 3491987000,
+      "ppe_net": 2689199000,
+      "source": "SEC EDGAR 10-Q"
+    },
+    "cash_flow": {
+      "period": "H1 FY26 (6 months ending 2025-12-28)",
+      "operating_cf": 3259009000,
+      "investing_cf": 443831000,
+      "financing_cf": 3006840000,
+      "source": "SEC EDGAR 10-Q",
+      "capital_return_policy": "FCFの75%~100%を株主還元（長期方針）。ヒストリカルFCF利回り6%。Buyback還元率は概ね50%（100%超の年を除く）。"
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "unavailable",
+      "partial_info": {
+        "filing_date_approx": "2025年8月頃（FY25 10-K, 6月期決算）",
+        "note": "直近365日のフィルタ内にFY25 10-Kが存在する可能性があるが、API結果では10-Qが最新"
+      }
+    },
+    "10q": {
+      "status": "available",
+      "latest": {
+        "form_type": "10-Q",
+        "filing_date": "2026-01-29",
+        "accession_number": "0000707549-26-000009",
+        "period": "2025-12-28 (Q2 FY26)"
+      }
+    },
+    "8k": {
+      "status": "available",
+      "recent": [
+        {
+          "form_type": "8-K/A",
+          "filing_date": "2026-02-04",
+          "accession_number": "0000707549-26-000014",
+          "period_of_report": "2026-01-30"
+        },
+        {
+          "form_type": "8-K",
+          "filing_date": "2026-02-03",
+          "accession_number": "0000707549-26-000012",
+          "period_of_report": "2026-01-30"
+        },
+        {
+          "form_type": "8-K",
+          "filing_date": "2026-01-28",
+          "accession_number": "0000707549-26-000006",
+          "period_of_report": "2026-01-28"
+        }
+      ]
+    }
+  },
+  "insider_summary": {
+    "status": "available",
+    "period_days": 180,
+    "total_filings": 28,
+    "form_4_count": 26,
+    "form_3_count": 1,
+    "note": "直近180日で28件のインサイダー関連提出。Form 4が26件と活発。CEO交代（Tim Archer → 新体制）に伴う取引の可能性。"
+  },
+  "key_metrics": {
+    "roe_latest": "50.97% (FY23, 6月期)",
+    "wfe_market_share": "11.8% (2023年、WFE市場3位)",
+    "etching_market_share": "60% (2023年、世界トップ)",
+    "deposition_market_share": "30% (CVD, 2023年)",
+    "cleaning_market_share": "10% (2023年)",
+    "installed_base": "84,000台以上（2023年2月時点、2019年から+30%以上）",
+    "rd_to_revenue": "約10% (FY23)",
+    "rd_employees_pct": "28% of total workforce",
+    "employee_turnover_rate": "4.7% (FY22)",
+    "china_revenue_pct": "35% (Q4 FY25) - 長期見通しは20%台前半～中盤",
+    "esg": {
+      "risk_score": 12.2,
+      "risk_category": "Low risk",
+      "management_score": 68.2,
+      "management_category": "Strong",
+      "industry_rank": "4/130 (Semiconductor Equipment), 3rd percentile"
+    },
+    "capital_return": {
+      "fcf_yield_historical": "6%",
+      "buyback_as_fcf_pct": "~50% (excluding 100%+ years)",
+      "buyback_eps_accretion": "+3% per year (analyst estimate)"
+    },
+    "3d_nand_deep_etch_share": "~100% (ほぼ独占、ただしTELクライオエッチャー参入で変化の兆し)"
+  },
+  "filing_sections": {
+    "note": "SEC EDGAR MCPからの直接セクション取得不可。アナリストレポート及び1on1取材報告から要約。",
+    "business": {
+      "summary": "1980年設立の半導体製造装置メーカー。主に前工程のエッチング（ドライエッチング中心）・成膜（CVD, ALD）・洗浄装置を製造。世界16カ国に拠点。WFE市場シェア11.8%で世界3位（ASML 24.3%, AMAT 20.7%に次ぐ）。エッチング装置で世界トップシェア60%。特に3D NANDのチャネルホールエッチング（深孔エッチング）ではシェアほぼ100%を独占。",
+      "key_products": [
+        "プラズマエッチング装置（ドライエッチング: シェア60%）",
+        "CVD成膜装置（Chemical Vapor Deposition: シェア30%台）",
+        "ALD成膜装置（Atomic Layer Deposition）",
+        "洗浄装置（シェア約10%）",
+        "Akara（次世代高度エッチング装置、3D DRAM/CFET対応）",
+        "Cryo 3.0（クライオエッチング、Profile deviation 10nm未満）"
+      ],
+      "key_customers": "マイクロン、サムスン、TSMC、Intel等の主要半導体メーカー",
+      "competitive_landscape": "エッチング: LRCX/TEL/AMAT = 50%/30%/20%。成膜CVD: AMAT(36%)/LRCX(31%)/ASMI/TEL。洗浄: SCREEN(44%)/LRCX(16%)。",
+      "growth_drivers": [
+        "3D NAND高積層化（成膜+エッチング繰り返し）",
+        "3D DRAM化（近い将来に期待。HBM3e→HBM4移行でTSVシェア100%が追い風）",
+        "FinFET→GAA→CFET移行（エッチング+成膜需要増）",
+        "Content per chip上昇（CPU数フラットでもNAND/DRAM +20%yoy成長）",
+        "AI/HPC需要（AIサーバーは従来サーバー比でメモリ・ロジック搭載額格段に高い）"
+      ]
+    },
+    "risk_factors": {
+      "summary": "アナリストレポートで識別された主要リスク",
+      "risks": [
+        "High-NA EUV浸透によるエッチングプロセスステップ数の減少（ロジック・ファウンドリの半分程度が影響、年▲MSD-HSD%の逆風）",
+        "TELクライオエッチャー参入による3D NAND深孔エッチング独占の喪失リスク（2025年投入予定）",
+        "中国規制リスク（売上比率変動大、YMTC復帰で年間$2bn失った実績）",
+        "AMATによるエッチング市場でのシェア奪取（2023年のメモリ低迷期に発生）",
+        "メモリ需要のシクリカルリスク（NAND/DRAM投資サイクルの波が大きい）",
+        "中国ローカルメーカー（AMEC, NAURA）の台頭",
+        "エッチング以外の領域（成膜、洗浄）では失敗してきた過去"
+      ]
+    },
+    "mda": {
+      "summary": "直近の業績動向と見通し",
+      "latest_quarter": "Q2 FY26 (Dec 2025): Revenue $5.34B, GPM 49.6%, OPM 33.9%, EPS $1.26",
+      "cagr_analyst_estimate": {
+        "revenue": "+8% (WSTS+9%, WFE/WSTS+1%, Etch/WFE flat, シェアロス▲1%)",
+        "eps": "+11% (売上+8%, マージン改善flat, 自社株買い+3%)",
+        "note": "2024年6月のSELL推奨時のCAGR。シェアロス▲1%とマージン改善見送りが主な修正点。"
+      },
+      "sell_recommendation_rationale": "技術面での逆風（High-NA EUV浸透）、エッチング分野の競争優位性低下懸念、株価急騰によるバリュエーション魅力度低下"
+    }
+  }
+}

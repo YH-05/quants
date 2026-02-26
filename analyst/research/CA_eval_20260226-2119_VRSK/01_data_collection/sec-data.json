@@ -1,0 +1,201 @@
+{
+  "ticker": "VRSK",
+  "company_name": "Verisk Analytics, Inc.",
+  "retrieved_at": "2026-02-26T21:20:00Z",
+  "data_source": "analyst_report_extracted",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "unavailable",
+    "reason": "Batch run環境のためSEC EDGAR MCPへのアクセスが制限。財務データはアナリストレポート（analyst/raw/VRSK.md）から抽出した参照値のみ。",
+    "affected_fields": ["financials_detailed", "filing_sections_full", "recent_filings_full"],
+    "available_fields": ["financials_from_report", "key_metrics_from_report", "insider_summary_partial"]
+  },
+  "financials": {
+    "note": "アナリストレポートからの参照値。正確な財務諸表データはSEC EDGAR直接参照が必要。",
+    "revenue": {
+      "description": "売上高",
+      "latest_annual": {
+        "value_approx": "3090000000",
+        "currency": "USD",
+        "period": "FY2024（ガイダンスベース: USD 3.09-3.13bn）",
+        "source": "25/2Q決算フォローアップ: Sales USD 3.09-3.13bn (OG +6~8%)"
+      },
+      "historical_reference": {
+        "fy2023_guidance": "USD 2.59-2.64bn",
+        "fy2024_guidance": "USD 2.84-2.90bn → USD 3.03-3.08bn → USD 3.09-3.13bn（上方修正）",
+        "note": "FY25ガイダンスではAccuLynx買収により追加40-50M寄与見込み"
+      }
+    },
+    "segment_revenue_mix": {
+      "Insurance": {
+        "share": "100%（2022年以降、Energy/Financial売却後）",
+        "description": "損害保険会社向け情報・データ分析サービス",
+        "subscription_ratio": "約80%",
+        "transactional_ratio": "約20%",
+        "sub_segments": {
+          "Underwriting_Rating": "ISO関連事業（契約書ひな型、予想損失率算出等）",
+          "Claims": "保険金請求プロセス（不正請求防止、修繕見積等）"
+        }
+      }
+    },
+    "income_statement": {
+      "adjusted_ebitda_margin": {
+        "fy2022": "52%",
+        "fy2023_guidance": "53-54%",
+        "fy2024_guidance": "55.0-55.8%",
+        "q1_2025": "55.3%",
+        "q2_2025": "57.6%",
+        "trend": "改善傾向（global talent optimization、コスト規律、Operating Leverage）"
+      },
+      "eps": {
+        "fy2023_guidance": "5.50-5.70",
+        "fy2024_guidance": "6.80-7.00（買収影響で6.80-7.10から若干修正）",
+        "q1_2025": "1.73",
+        "q2_2025": "1.88"
+      },
+      "revenue_growth": {
+        "og_target": "+7%（長期ターゲット）",
+        "fy2024_og_range": "+6~8%",
+        "q1_2025_og": "+7.9%",
+        "q2_2025_og": "+7.9%",
+        "subscription_og_q1_2025": "+10.6%",
+        "subscription_og_q2_2025": "+9.3%"
+      }
+    },
+    "balance_sheet": {
+      "note": "詳細データはSEC EDGAR参照要。以下はレポートからの参照値のみ。",
+      "roic": "約26%（2023年）",
+      "incremental_roic": "約19%（2023年）"
+    },
+    "cash_flow": {
+      "capex_to_revenue": "5-6%ターゲット（従来7-8%から低下傾向）",
+      "capital_allocation": {
+        "buyback": "過去3年平均50%以上を株主還元（buyback + dividend）に充当",
+        "buyback_q1_2025": "USD 170M（4月追加30M）",
+        "authorization": "USD 1.4bn枠（2024年1Q時点）→追加USD 1.0bn承認→合計USD 1.6bn（2023年4Q時点）"
+      }
+    }
+  },
+  "recent_filings": {
+    "note": "SEC EDGAR MCP利用不可のため詳細なフォームデータは取得不可",
+    "10k": {
+      "status": "unavailable",
+      "partial_info": {
+        "note": "FY2024 10-K filing estimated Feb 2025"
+      }
+    },
+    "10q": {
+      "status": "partial",
+      "latest": {
+        "note": "Q2 2025決算（2025年8月8日発表）の詳細はレポートに記載"
+      }
+    },
+    "8k": {
+      "status": "unavailable"
+    }
+  },
+  "insider_summary": {
+    "status": "unavailable_for_vrsk",
+    "note": "SEC EDGAR MCPアクセス制限のためインサイダーデータ取得不可",
+    "management_info_from_report": {
+      "ceo": "新CEO（元CFO、キャピタルアロケーションの規律を期待された就任。2022年~）",
+      "cfo": "Elizabeth Mann CFO（S&Pでの組織スリム化実績あり）",
+      "management_focus": "規律あるキャピタルアロケーション、ROIC経営推進、Incremental ROICインセンティブ"
+    }
+  },
+  "key_metrics": {
+    "roic": "約26%（2023年）",
+    "incremental_roic": "約19%（2023年）",
+    "customer_retention": "99%（損保会社向けビジネス）",
+    "customer_concentration": "米国損保会社のほぼ全てと取引（90%以上、上位100社とは100%）",
+    "revenue_per_customer_cost": "顧客コストの約25bp（保険料対比で極めて低い）",
+    "subscription_ratio": "約80%（契約期間1-5年、通常3年）",
+    "data_assets": {
+      "statistical_records": "297億の統計データベース（法人82億、個人215億）",
+      "annual_data_inflow": "26億件/年の保険料・損失取引データ受領（2021年）",
+      "claims_data": "15億件以上の保険金請求データ、毎日175K以上の新規データ",
+      "property_inspections": "年間368K件超の実地調査、15.4Mデータストック"
+    },
+    "workforce": {
+      "specialist_lawyers": "約200名（保険契約書ひな型作成）",
+      "statisticians_actuaries": "530名の統計専門家+190名のアクチュアリー",
+      "field_inspectors": "約520名（個別不動産調査）"
+    },
+    "ma_track_record": {
+      "period": "2018-2021",
+      "insurance_allocation": "70%（USD 1.5bnのうち）",
+      "ma_growth_contribution": {
+        "fy2018": "2.8%",
+        "fy2019": "2.0%",
+        "fy2020": "1.8%",
+        "fy2021": "3.8%"
+      },
+      "recent_acquisitions": {
+        "AccuLynx": {
+          "value": "USD 2.35bn",
+          "revenue": "USD 150-200M",
+          "ebitda_margin": "55%程度",
+          "sub_ratio": "80%以上",
+          "tam": "USD 2bn (CAGR 9%成長)",
+          "completion": "25/3Q末見込み"
+        },
+        "SuranceBay": {
+          "value": "USD 163M",
+          "description": "生命保険/年金プラットフォームFastに追加される業務管理ソフトウェア"
+        }
+      }
+    },
+    "pricing": {
+      "model": "インフレ並み価格改定 + 2%/年エスカレータ条項（サブスクリプション）",
+      "value_based": "Value-based pricing（毎年〇%ではなく付加価値ベース）",
+      "ai_pricing": "Mozart AI Tool 50%近く浸透、価格引上げの可能性あり"
+    },
+    "tam": {
+      "insurance_tam_2018": "USD 9bn",
+      "breakdown": {
+        "underwriting_us": "USD 3.6bn",
+        "claims_us": "USD 2.7bn",
+        "international": "USD 2.5bn"
+      },
+      "insurance_revenue_2021": "USD 2.2bn（TAMの約24%）",
+      "tam_drivers": ["InsurTech領域の機会", "既存サービスの付加価値化"]
+    }
+  },
+  "filing_sections": {
+    "note": "SEC EDGAR MCP利用不可のため直接取得不可。アナリストレポートからの要約のみ。",
+    "business": {
+      "summary": "米国の損保会社向け情報サービス会社。1971年設立の非営利組織（ISO）を前身とし、ほぼ全ての米国損保会社から保険料・損失額等の保険取引データを収集・蓄積。2022年にEnergy（Wood Mackenzie含む）/Financial Services/Specialized Markets事業を売却し、Insurance事業に集中。",
+      "key_services": [
+        "保険契約書ひな型作成（約30種類の保険に対応、著作権保有）",
+        "予想損失率の算出・提供（保険会社のプライシング基盤）",
+        "当局向け報告業務（各州の規制当局への報告義務対応）",
+        "保険金不正請求発見プログラム（Claim Analytics）",
+        "カタストロフィモデル（AIR: グローバルスタンダード3社のうち1社）",
+        "不動産修繕費見積もり（Xactware）",
+        "個別不動産リスク評価"
+      ],
+      "origin": "1971年 米国損保会社が共同で非営利業界団体ISO設立。各社から保険取引データを収集・分析・報告する仕組みを構築"
+    },
+    "risk_factors": {
+      "summary": "レポートで言及されたリスクファクター",
+      "risks": [
+        "非保険事業（Energy, Financial, Specialized Markets）の売却がROIC低下を招いたAsset買収の反省",
+        "AccuLynx大型買収（USD 2.35bn）の統合リスク・高値掴みリスク",
+        "AI/InsurTech企業による代替リスク（ただし保険取引データの蓄積は模倣困難）",
+        "自動車保険市場の循環的な変動（Transactional Revenue 20%の変動要因）",
+        "海外展開でのローカルデータ取得の必要性（ノウハウは国境超えるがデータは調達要）"
+      ]
+    },
+    "mda": {
+      "summary": "2025年2Q実績とFY24ガイダンス",
+      "revenue_q2_2025": "Sales +7.8% yoy (OG +7.9%)",
+      "ebitda_margin_q2_2025": "57.6% (前年同期比220bp改善、うちFX 120bp)",
+      "fy24_guidance": "Sales USD 3.09-3.13bn, EBITDA Margin 55.0-55.8%, EPS 6.80-7.00",
+      "key_drivers": [
+        "ISO関連コアビジネスの安定成長（NWP成長の2年遅れ効果）",
+        "Mozart AI Tool導入効果（50%浸透）",
+        "Global Talent Optimization（ポーランド・ハイデラバード）",
+        "AccuLynx/SuranceBay買収のシナジー期待"
+      ]
+    }
+  }
+}

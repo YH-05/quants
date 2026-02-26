@@ -1,0 +1,126 @@
+{
+  "ticker": "LRCX",
+  "verified_at": "2026-02-26T21:37:00Z",
+  "verifier": "ca-eval-lead",
+  "kb2_patterns_checked": 12,
+  "claims_checked": 7,
+  "rejection_patterns_detected": [
+    {
+      "claim_id": 6,
+      "pattern": "A",
+      "pattern_name": "結果を原因と取り違え",
+      "severity": "moderate",
+      "description": "高シェア（60%）を競争優位性として提示。シェアは結果であり、背後の技術力（Claim#1）が真の優位性。MNST#1（シェア=結果: 50%）と同構造。",
+      "confidence_adjustment": 0,
+      "note": "既にclaims.jsonで50%に設定済み（ルール1適用済み）"
+    },
+    {
+      "claim_id": 7,
+      "pattern": "F",
+      "pattern_name": "戦略を優位性と混同",
+      "severity": "moderate",
+      "description": "FCF還元方針は戦略・意思決定であり、構造的な競争優位性ではない。CHD#5（ポートシフト戦略: 30%）と同構造。",
+      "confidence_adjustment": 0,
+      "note": "既にclaims.jsonで30%に設定済み（ルール8適用済み）"
+    },
+    {
+      "claim_id": 2,
+      "pattern": "B",
+      "pattern_name": "業界共通で差別化にならない",
+      "severity": "moderate",
+      "description": "インテンシティ上昇はSPE業界全体の恩恵。AMAT、TEL、ASMLも同様に受益。LLY#6（メガファーマ共通ネットワーク: 30%）と類似するが、Lamのエッチング・成膜シェアが高い分、恩恵量は差別化される。",
+      "confidence_adjustment": 0,
+      "note": "50%に留めているのは適切。LLY#6(30%)ほど厳しくない理由: Lamはシェア60%で恩恵量が大きい"
+    },
+    {
+      "claim_id": 5,
+      "pattern": "B",
+      "pattern_name": "業界共通で差別化にならない",
+      "severity": "high",
+      "description": "R&D投資は全てのSPEプレイヤーが実施。さらにLamのR&D規模はTEL/AMATより小さい（全社R&D費比2:2:3）。業界共通かつ相対劣位の可能性。",
+      "confidence_adjustment": 0,
+      "note": "30%は妥当。LLY#6と同構造"
+    },
+    {
+      "claim_id": 4,
+      "pattern": "D",
+      "pattern_name": "定性的で説明力不足",
+      "severity": "low",
+      "description": "スイッチングコストの定量的裏付けが不足。IR VPの定性コメントが主な根拠。COST#2（劇場的価値: 10%）ほど深刻ではないが、説明力に改善余地あり。",
+      "confidence_adjustment": 0,
+      "note": "50%は妥当。アナリスト自身が再評価中という点が救い"
+    }
+  ],
+  "high_evaluation_patterns_detected": [
+    {
+      "claim_id": 1,
+      "pattern": "IV",
+      "pattern_name": "業界構造×企業ポジションの合致",
+      "description": "3D NAND高積層化トレンド（業界構造）× 深孔エッチング技術独占（企業ポジション）の合致。ORLY#2/5（フラグメント市場×規模: 90%）と類似するが、TEL参入で独占崩壊の兆しがあるため90%には至らない。",
+      "confidence_support": "70%を支持",
+      "note": "独占が安定していれば90%候補だが、競争激化で70%に留まる"
+    },
+    {
+      "claim_id": 1,
+      "pattern": "I",
+      "pattern_name": "定量的裏付けのある差別化",
+      "description": "シェア~100%、Profile deviation 10nm未満、TSV 100%シェア等の定量データが豊富。",
+      "confidence_support": "70%を支持",
+      "note": ""
+    },
+    {
+      "claim_id": 1,
+      "pattern": "V",
+      "pattern_name": "競合との具体的比較",
+      "description": "TEL対比でのクライオエッチング技術差（Cryo 3.0 vs TELクライオ）、AMAT対比でのシェア動向が具体的。1on1取材でのIR発言も具体的。",
+      "confidence_support": "70%を支持",
+      "note": ""
+    },
+    {
+      "claim_id": 4,
+      "pattern": "III",
+      "pattern_name": "能力（仕組み）が結果より重視される",
+      "description": "装置のFab深層インテグレーション→スイッチングコストは「仕組み」として成立。ただし定量裏付け不足で50%止まり。",
+      "confidence_support": "50%を支持",
+      "note": ""
+    }
+  ],
+  "cagr_pattern_matches": [
+    {
+      "claim_id": 1,
+      "pattern": "direct_mechanism",
+      "description": "3D NAND高積層化 → エッチング工程数増 → 装置台数需要増。1-2ステップの直接的メカニズム。",
+      "confidence_support": "70%を支持"
+    },
+    {
+      "claim_id": 7,
+      "pattern": "quantitative_transparent",
+      "description": "FCF利回り6% × 還元率50% → +3%/年のEPS accretion。数値ベースで透明性高い。",
+      "confidence_support": "70%を支持（CAGR接続として）"
+    }
+  ],
+  "consistency_check": {
+    "status": "pass",
+    "issues": [
+      {
+        "type": "overlap",
+        "claims": [1, 6],
+        "description": "Claim#1（深孔エッチング独占）とClaim#6（エッチング全体60%シェア）は重複要素あり。#1は技術的能力、#6はその結果のシェア。#1の技術力が#6のシェアを生んでいる因果関係。二重カウントのリスクは低いが、評価時に注意。",
+        "resolution": "Claim#6の確信度を#1に包含する形で50%に抑制（#1が本質的優位性、#6はその結果）"
+      },
+      {
+        "type": "contradiction_risk",
+        "claims": [2, 1],
+        "description": "Claim#2（インテンシティ上昇=恩恵）とClaim#1（技術独占=能力）は補完的だが、High-NA EUVの逆風がClaim#1にもClaim#2にも影響。整合的に逆風を織り込んでいるか要確認。",
+        "resolution": "両方とも逆風を認識し、Claim#1は70%、Claim#2は50%に抑制。整合的。"
+      }
+    ],
+    "overall": "主張間の一貫性は概ね確保されている。Claim#1が最も強い主張であり、他の主張はこれを補完する構造。"
+  },
+  "summary": {
+    "rejection_patterns_found": 5,
+    "high_eval_patterns_found": 4,
+    "confidence_adjustments": 0,
+    "key_finding": "Claim#1（深孔エッチング技術独占: 70%）が最も堅牢。業界構造合致(IV)、定量裏付け(I)、競合比較(V)の3パターンが支持。ただし独占崩壊リスクで90%には届かない。Claim#5(R&D)と#7(FCF還元)は却下パターンB/Fに該当し30%に抑制済み。"
+  }
+}

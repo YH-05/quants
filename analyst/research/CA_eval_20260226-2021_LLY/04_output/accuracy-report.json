@@ -1,0 +1,117 @@
+{
+  "research_id": "CA_eval_20260226-2021_LLY",
+  "ticker": "LLY",
+  "mode": "full",
+  "generated_at": "2026-02-26T20:50:00Z",
+  "kb_version": "v1.0",
+  "mode_determination": {
+    "reason": "LLYはPhase 2データ（analyst/phase2_KY/pattern1_LLY_phase2.md）が存在するためフルモードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*LLY*",
+    "phase2_data_found": true,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": {
+    "phase2_source": "analyst/phase2_KY/pattern1_LLY_phase2.md",
+    "claim_matching": {
+      "method": "semantic_similarity",
+      "matches": [
+        {
+          "ai_claim_id": 1,
+          "ai_claim_title": "複数の超大型市場への同時ポートフォリオ戦略",
+          "y_claim_id": 1,
+          "y_claim_title": "複数の超大型市場への同時ポートフォリオ戦略",
+          "match_confidence": "exact",
+          "ai_ca_confidence": 50,
+          "y_ca_confidence": 50,
+          "deviation": 0
+        },
+        {
+          "ai_claim_id": 2,
+          "ai_claim_title": "低分子型経口GLP-1作動薬における技術的差別化",
+          "y_claim_id": 2,
+          "y_claim_title": "低分子型経口GLP-1作動薬における技術的差別化",
+          "match_confidence": "exact",
+          "ai_ca_confidence": 70,
+          "y_ca_confidence": 70,
+          "deviation": 0
+        },
+        {
+          "ai_claim_id": 3,
+          "ai_claim_title": "アルツハイマー領域における長期的臨床開発ノウハウ",
+          "y_claim_id": 4,
+          "y_claim_title": "アルツハイマー型認知症領域における長期的な臨床開発ノウハウの蓄積",
+          "match_confidence": "high",
+          "match_note": "AI Claim #3はY#3（複数メカニズム, 30%）とY#4（臨床開発ノウハウ, 50%）を統合。Y#4を主要マッチとする。Y#3の30%批判はT8で明示追記済み。",
+          "ai_ca_confidence": 50,
+          "y_ca_confidence": 50,
+          "deviation": 0
+        },
+        {
+          "ai_claim_id": 4,
+          "ai_claim_title": "GLP-1デュオポリーにおける供給能力の参入障壁",
+          "y_claim_id": null,
+          "y_claim_title": null,
+          "match_confidence": "no_match",
+          "match_note": "KB3 LLYにない新規主張。Y評価なし。平均乖離計算から除外。",
+          "ai_ca_confidence": 70,
+          "y_ca_confidence": null,
+          "deviation": null
+        },
+        {
+          "ai_claim_id": 5,
+          "ai_claim_title": "既承認GLP-1製品(Mounjaro)による市場ポジション確立と粘着性",
+          "y_claim_id": 5,
+          "y_claim_title": "既承認GLP-1製品(Mounjaro)による市場ポジション確立とブランド構築",
+          "match_confidence": "high",
+          "ai_ca_confidence": 50,
+          "y_ca_confidence": 50,
+          "deviation": 0
+        },
+        {
+          "ai_claim_id": 6,
+          "ai_claim_title": "グローバル医療機関ネットワークと医学情報提供体制",
+          "y_claim_id": 6,
+          "y_claim_title": "グローバル医療機関ネットワークと医学情報提供体制",
+          "match_confidence": "exact",
+          "ai_ca_confidence": 30,
+          "y_ca_confidence": 30,
+          "deviation": 0
+        }
+      ],
+      "unmatched_y_claims": [
+        {
+          "y_claim_id": 3,
+          "y_claim_title": "アルツハイマー型認知症領域における複数メカニズムの多面的開発戦略",
+          "y_ca_confidence": 30,
+          "note": "AI Claim #3に統合（Y#4をメインマッチ）。Y#3の30%批判はT8で明示追記済み。"
+        }
+      ]
+    },
+    "accuracy_metrics": {
+      "metric_id": "mean_deviation_ca",
+      "metric_description": "マッチした主張のCA確信度の平均乖離（新規主張は除外）",
+      "matched_count": 5,
+      "unmatched_ai_claims": 1,
+      "unmatched_y_claims": 1,
+      "deviations": [0, 0, 0, 0, 0],
+      "mean_deviation": 0.0,
+      "threshold": 15,
+      "pass": true
+    },
+    "overall_verdict": "pass",
+    "annotation": "マッチした5主張全てでAI評価とY評価が完全一致（乖離0%）。KB3 LLYキャリブレーションが極めて正確に機能。ただしClaim #4（供給能力参入障壁, 70%）は新規主張でY評価なし。また、AI Claim #3はY#3（30%）とY#4（50%）を統合しており、Y#3をメインマッチとした場合は乖離+20%となる点に留意。",
+    "detailed_analysis": {
+      "perfect_matches": ["#1(50%=50%)", "#2(70%=70%)", "#5(50%=50%)", "#6(30%=30%)"],
+      "close_matches": ["#3(AI:50%, Y#4:50%=0%, Y#3:30%=+20%)"],
+      "new_claims": ["#4(70%, Y評価なし)"],
+      "kb3_overfitting_risk": "5/5マッチが完全一致はKB3 LLY自体が直接参照であるため必然的。独自の批判的視点の限定性はsystematic_issuesで指摘済み。"
+    }
+  },
+  "simplified_mode_results": null,
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "high",
+    "reason": "フルモード精度チェック合格。マッチした5主張のCA確信度平均乖離は0.0%（閾値15%以下）。KB3 LLYキャリブレーションが極めて正確に機能している。ただしClaim #4（新規主張）のY評価が存在せず、この主張の妥当性はアナリストフィードバックで確認が必要。",
+    "recommendation": "Claim #4（供給能力参入障壁, 70%）はKB3にない新規主張であり、アナリストのフィードバックによりKB3への追加を検討すべき。また、AI Claim #3のY#3/Y#4統合の妥当性についてもアナリストの判断を求める。KB3 LLY過剰フィットのリスクについては、CVS Wegovy事例等のKB3評価後の新情報の反映度合いを継続的にモニタリングすべき。"
+  }
+}

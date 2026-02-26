@@ -1,0 +1,418 @@
+{
+  "research_id": "CA_eval_20260226-2001_ORLY",
+  "ticker": "ORLY",
+  "company_name": "O'Reilly Automotive, Inc.",
+  "extracted_at": "2026-02-26T20:05:00Z",
+  "extractor": "ca-eval-lead (T4 direct execution)",
+  "kb_applied": {
+    "kb1_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule08", "rule10", "rule11"],
+    "kb3_references": ["ORLY#1", "ORLY#2", "ORLY#3", "ORLY#4", "ORLY#5", "ORLY#6", "CHD#1", "CHD#7", "COST#1", "COST#3", "COST#7", "MNST#4"],
+    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+  },
+  "cagr_estimate": {
+    "current": "10.0% (2025/7/25 revised)",
+    "breakdown": {
+      "revenue": "6.0% (SSS 4.5% + new stores 1.5%)",
+      "op_leverage": "0.5% (GM flat, SGA 10bp/yr leverage)",
+      "buyback": "3.5% (FCF Yield x 120%)"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "DIFM高頻度補充システムによるスイッチングコスト",
+      "ca_type": "structural",
+      "description": "歩合制の自動車整備士にとって安定的な部品調達は死活問題であり、ORLYの週5日・複数回/日の高頻度補充体制はAZO対比で優位性を持つ。顧客の金銭的インセンティブに根差す構造的スイッチングコスト。",
+      "source_text": "「安定的な部品調達が歩合制である自動車整備士にとって死活問題であり、当社の存在は必要不可欠といっても過言ではない状況」「補充ペースの優劣はORLY>AZO>AAP。ORLYはdailyベース、AZOは数日ベース」",
+      "factual_claims": [
+        "週5日・1日複数回の補充体制（95%以上の店舗）",
+        "28カ所のDC、383のハブ店舗で供給ネットワーク構成",
+        "店舗平均2.2万SKU、DCキャパシティ15.4万SKU",
+        "AZO対比で補充頻度が優位（ORLY daily vs AZO数日ベース）",
+        "DIFM顧客は歩合制で欠品=収入減のためスイッチングコスト高い"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "高頻度補充→DIFM顧客の粘着性→既存店成長SSS+4.5%を下支え。価格弾性値の低さ→値上げ余地→マージン改善+0.5%を一部サポート。ただしDIY事業（売上高比率がDIFMより高い）では優位性が低下するため、全体CAGRとしては説明不足。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「高頻度補充システム」「供給ネットワーク」「スイッチングコスト」は能力・仕組みとして正しく表現されている。30年連続増収は結果であり主張の核心ではない。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "スイッチングコスト、補充システム、供給ネットワーク--いずれも名詞で表現される属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "補充頻度（daily vs 数日）、DC数(28)、ハブ店舗数(383)、SKU数(2.2万/15.4万)という豊富な定量データ。AZO対比の補充頻度比較がJefferiesアナリスト面談で確認済み。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "供給システムはORLYの事業モデルの核心。DIFM祖業に根差す構造的要素。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PASS",
+          "comment": "AZO（最大の純粋競合）対比での補充頻度・品質差異がアナリストレポートおよびJefferiesアナリスト面談で具体的に確認されている。AZOは認めている（「DIFMにおいてはORLYに劣後」）。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "「高頻度補充システム」「スイッチングコスト」という構造的優位性として抽出。「DIFM特化戦略」ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "断念例は直接適用されないが、AZOがORLYの供給網に追いつけていない事実がネガティブケースとして間接的に機能。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "DIFM市場のフラグメント構造とスイッチングコストの関連は示されるが、市場構造との直接的な合致（Claim#2ほど）は弱い。主張の核心はスイッチングコストそのもの。"
+        }
+      },
+      "confidence": {
+        "ca_score": 70,
+        "label": "おおむね納得",
+        "reasoning": "AZO対比での補充頻度差異が具体的データ（daily vs 数日）とアナリスト面談（Jefferies）で裏付けられている。DIFM顧客の金銭的インセンティブ（歩合制）に根差すスイッチングコストは構造的で説得力がある。KB3 ORLY#1(70%)と一致。ただしKYが指摘した「DIFM特化型」の違和感--DIY比率がDIFMより高い事実--を考慮すると、DIFM限定のスイッチングコストが全社レベルの優位性としてどこまで効くかに留保あり。",
+        "kb3_calibration": "ORLY#1(70%)と完全一致。KYは「おおむね納得」としつつ「DIFM特化型」表現への違和感を指摘。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "DIFM顧客粘着性→既存店SSS下支えは直接的メカニズム。ただしKB3 ORLY#1のCAGR(50%)と同様、DIY事業で優位性が低下するため全体CAGRとしては説明不足。マージン改善+0.5%への接続も間接的。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "title": "ローカルな規模の経済（規模・密度・ネットワーク）",
+      "ca_type": "structural",
+      "description": "配送網内の物流管理効率で規模・店舗密度・既存ディストリビューションネットワークが優位性。フラグメントなDIY/DIFM市場でコンソリ余地が大きく、出店可能エリアで飽和未到達。",
+      "source_text": "「商品購買、陳列を高頻度に行うにあたり配送網内での物流管理を効率よく行える点で規模、店舗密度(density)、既存ディストリビューションネットワークは優位性となる」「出店可能エリアで飽和が見られない場合は上記の優位性により新規出店の効果が期待できる」",
+      "factual_claims": [
+        "市場全体の店舗数3.5万横ばい推移（大手がコンソリ進行中）",
+        "毎年150-200店舗の出店ペース（店舗ベースで年40-60bpコンソリ）",
+        "DCキャパシティ/店舗比率でAZO対比2倍以上の供給能力",
+        "Northeast・フロリダ南部に多くの出店余地あり",
+        "6,000+店舗を47州+メキシコに展開"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "ローカル規模・密度・ネットワーク→新規出店の収益化に直結→新規出店寄与+1.5%。フラグメント市場構造×ORLYの構造的ポジション→持続的なシェアゲイン。ただし新規+1.5%等の数値面は優位性のみからはサポートされず。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「規模の経済」「密度」「ネットワーク」は能力・仕組みとして正しく抽出。出店数は結果だが主張の核心は構造的ポジション。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "規模の経済、密度、ネットワーク--名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "店舗数(6,000+)、DC(28)、出店ペース(150-200/年)、DCキャパシティ比率(AZO対比2倍+)の豊富な定量データ。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "事業モデルの核心。規模・密度が物流効率と出店の収益化を支える。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PASS",
+          "comment": "AZO対比でのDCキャパシティ/店舗比率が2倍以上。具体的データによる差別化。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "KYの指摘通り、「ドミナント出店戦略」=戦略であり、優位性は「ローカルな規模の経済」。正しく区別して抽出。",
+          "flag": "KY_explicit_feedback"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "出店時のカニバリゼーション懸念に対し、店舗当り・sqft当り売上が安定との反証あり。完全なネガティブケースではないが一定の裏付け。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "フラグメント市場構造×規模・密度・ネットワーク=最高評価パターン。KB3 ORLY#2(90%)の根拠そのもの。KYが全評価中わずか2件に90%を付与した条件に完全合致。"
+        }
+      },
+      "confidence": {
+        "ca_score": 90,
+        "label": "かなり納得",
+        "reasoning": "フラグメント市場構造×ORLYの規模・密度・ネットワークの合致は、ルール11の最高評価条件に完全合致。KYが全34件中わずか2件に付与した90%（いずれもORLY）のパターン。AZO対比でのDCキャパシティ比率2倍+という定量的裏付けもあり。ルール8（戦略≠優位性）でKYが明示的に指摘した「ドミナント出店戦略」ではなく「ローカルな規模の経済」として正しく抽出。",
+        "kb3_calibration": "ORLY#2(90%)と完全一致。KYの「かなり納得」判定の再現。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "ローカル規模・密度・ネットワークは新規出店の収益化に直結する要因であり納得感高い。KB3 ORLY#2 CAGR(70%)と一致。ただし新規+1.5%、前提の店舗成長率2.6%x60% productivityなどの数値面は優位性のみからはサポートされない。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "title": "PB商品（売上50%超）によるコストマネジメント力と価格自由度",
+      "ca_type": "operational",
+      "description": "PB比率50%超でコストマネージしやすい（会社見解）。3価格帯(Good/Better/Best)展開、ファブレス生産、PB品質がAZOより上位。ただしPB比率とサプライヤー依存度の関係は飛躍。",
+      "source_text": "「PBが売上高の50%を占める中、他社よりもコストをマネージしやすいポジションにある」「AZOは個人向けのPBで商売をしてきたため、DIFMのプロ向けの商品としては品質がORLYより劣る」",
+      "factual_claims": [
+        "PB商品が売上高50%超",
+        "Murray, Syntec, Precisionが三大PBブランド",
+        "サプライヤー815社以上、トップ5シェア24%",
+        "中国輸入比率30%（低下傾向）",
+        "AZO対比でPB品質が上位（Jefferiesアナリスト確認）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "PB5割→コストマネジメント力→GM維持/改善→マージン改善+0.5%の一部。競合対比で高品質PB→シェア増（売上成長）にも寄与。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "PB比率50%は結果の側面もあるが、コストマネジメント力・品質管理力は能力として評価可能。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "コストマネジメント力、価格自由度は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "PB比率50%+、3価格帯、サプライヤー数815、トップ5シェア24%の定量データあり。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "PBはコスト構造の一部であり構造的だが、Claim#1(スイッチングコスト)やClaim#2(規模の経済)ほどの核心性はない。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "AZO対比でのPB品質差異はJefferiesアナリスト確認済み。ただしNAPA(GPC)との具体的比較はない。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "PB戦略ではなくコストマネジメント力として抽出。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "該当なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "自動車部品の安定粗利特性（陳腐化しない財）にPBが適合。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "PB5割でコストマネージしやすいとの会社見解を複数の要素（3価格帯、ファブレス、品質）で補完した仮説はある程度納得感あり。ただしKB3 ORLY#3(50%)と同様、「PB比率が高いほどサプライヤー依存度が低い」は飛躍。AZO対比のPB品質差異は確認済みだがNAPAとの比較はなし。",
+        "kb3_calibration": "ORLY#3(50%)と完全一致。「まあ納得」。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "PB5割に起因する交渉力→マージン改善方向にプラス。競合対比で高品質PB→シェア増への寄与は妥当。KB3 ORLY#3 CAGR(70%)と一致。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "title": "祖業DIFMに根ざす人材・組織文化の継続性と顧客関係の深化",
+      "ca_type": "operational",
+      "description": "Promote from within方針。部品専門員の1年研修制度。成果主義報酬（DM以上にshare plan）。Senior Management平均社歴20年+。メリトクラシー文化。DIFM事業での顧客関係深化に寄与。",
+      "source_text": "「社内で育成したプロパー人材がマネージメントとなる組織」「テクニカルなことは誰でも教えられるが、カスタマーサービスの精神は教えられない」「Senior Management:226名(平均社歴20年以上)」",
+      "factual_claims": [
+        "Senior Management 226名（平均社歴20年以上）",
+        "Corporate Manager 293名（平均社歴16年以上）",
+        "District Manager 591名（平均社歴14年以上）",
+        "入社後1年間の部品専門員研修プログラム",
+        "DM以上にshare plan（成果連動型報酬）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "人材・文化→DIFM事業での顧客関係深化→walletシェア拡大→既存店SSS+4.5%をサポート。レバレッジ効果としてのマージン改善にも間接的に寄与。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "人材育成制度、報酬体系、組織文化は能力・仕組みとして正しく抽出。長い社歴は結果だが、制度（研修・報酬）が背景にある。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "組織文化、人材育成制度、メリトクラシーは名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "社歴データ（SM 20年+、CM 16年+、DM 14年+）、人数（226/293/591名）は豊富。ただし競合対比の離職率データがない。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "人材・文化はClaim#1(スイッチングコスト)を支える要素だが、独立した構造的優位性としてはやや弱い。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "AZOやNAPAとの人材制度の具体的比較はない。定量的な離職率比較がない。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "「promote from within」方針は戦略だが、主張の核心は組織文化と人材蓄積（優位性）。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "該当なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "DIFM市場での顧客関係の重要性は高いが、市場構造との合致はClaim#2ほど明確ではない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "人材データ（社歴、人数）は豊富で制度的裏付けもある。ただしKB3 ORLY#4(50%)と同様、「DIFM特化による」の表現に違和感がある--DIY事業参入は80年代で売上比率はDIFMより高い。人材・文化はDIY/DIFM共通に適用されうるもの。AZO・NAPAとの具体的人材制度比較がない。",
+        "kb3_calibration": "ORLY#4(50%)と完全一致。「まあ納得」。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "DIFM事業でのBtB顧客関係深化はwalletシェアに直結。KB3 ORLY#4 CAGR(70%)と一致。既存店増収+4.5%のうちシェア増分、マージン改善寄与をサポートする見解として妥当。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "title": "フラグメントDIFM市場での小型M&A/コンソリ実行能力",
+      "ca_type": "structural",
+      "description": "DIFM市場はフラグメントでIndependentsの倒産等を経てシェア獲得。毎月数店舗単位の買収を実行。Claim#2(規模・密度・ネットワーク)とClaim#4(顧客関係)を背景にM&A実行・事後統合で優位性。",
+      "source_text": "「市場自体、とくにDIFM市場でよりフラグメントな構造でありM&Aによる成長機会は高い」「上記2（規模、密度、ネットワーク）と4（深化した顧客関係）を背景にM&A実行、事後統合での優位性あり」",
+      "factual_claims": [
+        "毎月数店舗単位の買収を実行（Analyst Dayコメント）",
+        "過去の大型買収実績: CSK(1,342店舗/2008)、Hi/Lo(182店舗/1998)等",
+        "DIFMはIndependentsが多くフラグメント",
+        "Independentsの倒産を経てシェア獲得がメインルート",
+        "カナダVast-Auto買収(2024年、23店舗+DC2拠点)"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "フラグメントDIFM市場×M&A能力→新規出店+1.5%の一部に組み込まれ。Claim#2(規模・密度)とClaim#4(顧客関係)が統合力を支える。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "M&A実行能力・統合能力は能力。買収件数は裏付けとして使用。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "M&A実行能力、統合力は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "買収実績の件数・規模は示されるが、CHD(86件/USD8.4bn/ROIC基準)ほどの体系的な定量裏付けではない。ORLYのM&Aは小粒で散発的。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "フラグメント市場でのコンソリ能力は事業モデルの核心的成長ドライバー。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "AZO・NAPAもM&Aを実行しているが、ORLYのClaim#2(規模・密度)とClaim#4(顧客関係)が差別化要因。ただし具体的なM&A能力比較はない。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "M&A戦略ではなくM&A実行・統合能力として抽出。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "M&A断念例の具体的記述はない（CHD#1のような明示的断念例はORLYレポートにない）。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "フラグメントDIFM市場構造×ORLYの規模・密度・顧客関係に基づくM&A能力の合致。KB3 ORLY#5(90%)の根拠。"
+        }
+      },
+      "confidence": {
+        "ca_score": 90,
+        "label": "かなり納得",
+        "reasoning": "フラグメントDIFM市場構造×ORLYのM&A実行能力の合致はルール11の最高評価条件。Claim#2(規模・密度・ネットワーク)とClaim#4(顧客関係)を背景にした統合力が具体的。KB3 ORLY#5(90%)と完全一致。KYが2件目の90%を付与した条件。",
+        "kb3_calibration": "ORLY#5(90%)と完全一致。「かなり納得」。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "新規+1.5%への寄与は妥当。KB3 ORLY#5 CAGR(70%)と一致。ただし影響規模は不明。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "title": "DIFM・DIY両領域でのフラグメント市場における持続的価値創造",
+      "ca_type": "structural",
+      "description": "DIY・DIFMともにフラグメントな市場で優位性を梃にシェアゲイン。ただしDIFMの優位性をDIY市場で同等に発揮できるかは不明。Claim#2(規模・密度・ネットワーク)はDIYでも発揮されうる。",
+      "source_text": "「DIYとDIFMともにいまだフラグメントな競争環境であることを踏まえると、今後も競争優位性を梃に持続的な価値創造が可能と思われる」",
+      "factual_claims": [
+        "DIY・DIFMともにフラグメントな競争環境",
+        "DIY比率がDIFMより売上高で高い",
+        "DIY成長性はDIFMより低い（車の複雑化でDIFMシフト）",
+        "Eコマース比率は限定的（15%@2025年予想）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "DIY・DIFM両領域のフラグメント構造→持続的シェアゲイン→売上成長6.0%の基盤。ただしDIY事業でDIFMと同等の優位性が発揮できるかは不明で、CAGRの持続可能性への接続は限定的。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "「持続的価値創造」は結果に近い。フラグメント市場での「コンソリ力」が優位性だが、Claim#2・#5と重複。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PARTIAL",
+          "comment": "「持続的価値創造」は動詞的。「フラグメント市場でのコンソリ力」なら名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "DIY/DIFMの市場構造データはあるが、DIYでの具体的優位性データが乏しい。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "Claim#2(規模の経済)はDIYでも構造的に発揮されうるが、Claim#1(スイッチングコスト)はDIFM限定。全体として独立した主張としての強度は低い。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "DIY領域でのAZO・Walmart等との具体的差別化は不明。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PARTIAL",
+          "comment": "「両領域での価値創造」は戦略的意図に近い。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "該当なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "フラグメント市場構造はあるが、DIY領域でのORLYのポジション合致はDIFMほど明確でない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "KB3 ORLY#6(30%)と完全一致。DIFMの優位性をDIY市場で同等に発揮できるかは不明。Claim#2(規模・密度)はDIYでも発揮されるが、Claim#1(スイッチングコスト)のDIY適用は限定的。独立した主張としての強度は低く、Claim#2・#5の派生。",
+        "kb3_calibration": "ORLY#6(30%)と完全一致。「あまり納得しない」。"
+      },
+      "cagr_confidence": {
+        "score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "DIY参入から40年近く経過、売上比率はDIYの方が高く、DIY・DIFM含むパーツ市場全体の影響を受ける。KB3 ORLY#6 CAGR(30%)と一致。"
+      }
+    }
+  ],
+  "rule9_gatekeeping": {
+    "applied": false,
+    "reason": "ファクトチェック（T5）によるcontradicted事実確認後に適用判断。現時点では事実誤認は未検出。"
+  },
+  "summary": {
+    "total_claims": 6,
+    "confidence_distribution": {
+      "90_very_convinced": 2,
+      "70_mostly_convinced": 1,
+      "50_somewhat_convinced": 2,
+      "30_not_convinced": 1,
+      "10_rejected": 0
+    },
+    "avg_ca_confidence": 63,
+    "claims_with_cagr_connection": 6,
+    "avg_cagr_confidence": 60,
+    "key_strengths": [
+      "Claim#2(ローカル規模の経済, 90%)とClaim#5(M&A能力, 90%)はルール11(業界構造×企業ポジション合致)の最高評価条件に完全合致",
+      "Claim#1(スイッチングコスト, 70%)はAZO対比の具体的データ（補充頻度daily vs数日）で裏付け",
+      "ルール8(戦略≠優位性)でKYが明示的に指摘した「ドミナント出店戦略」を正しく「ローカルな規模の経済」として区別",
+      "KB3 ORLY全6件の評価と完全一致するキャリブレーション"
+    ],
+    "key_weaknesses": [
+      "「DIFM特化型」の表現に対するKYの違和感(DIY比率がDIFMより高い)がClaim#1・#4・#6に影響",
+      "CAGRブレークダウン数値(SSS+4.5%、新規+1.5%、マージン+0.5%)への優位性からの説明不足",
+      "DIY領域での具体的競合優位性データの不足",
+      "Claim#6はClaim#2・#5の派生で独立性低い"
+    ],
+    "poc_skipped": ["rule12_report_type_distinction"]
+  }
+}

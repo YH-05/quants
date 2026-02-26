@@ -1,0 +1,205 @@
+{
+  "ticker": "AME",
+  "company_name": "AMETEK, Inc.",
+  "retrieved_at": "2026-02-26T20:48:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPでFY2025 10-KのXBRLデータ（損益/BS/CF）を取得。ただしkey_metricsは空、filing_sectionsは取得不可。セグメント別データ・KPIはアナリストレポートから補完。",
+    "affected_fields": ["filing_sections_full_text", "key_metrics_from_edgar", "segment_details_from_edgar"],
+    "available_fields": ["financials_from_10k_xbrl", "financials_from_report", "key_metrics_from_report", "insider_filing_count"]
+  },
+  "financials": {
+    "note": "FY2025 10-K XBRLデータ + アナリストレポートからの参照値",
+    "revenue": {
+      "description": "売上高",
+      "latest_annual": {
+        "value": 7401116000,
+        "currency": "USD",
+        "period": "FY2025",
+        "source": "10-K XBRL (RevenueFromContractWithCustomerExcludingAssessedTax)"
+      },
+      "historical_reference": {
+        "fy2018_approx": 5000000000,
+        "fy2023_approx": 6500000000,
+        "note": "2018年12月レポートに『売上5Bn$』、2024年6月面談時点で売上高7bn程度と記載"
+      }
+    },
+    "segment_revenue_mix": {
+      "EIG": {
+        "share": "68%",
+        "description": "電子計器事業（電力・医療・工業・航空宇宙等）",
+        "opm": "25.5%",
+        "latest_quarter_opm": "30.3%（2024Q2）"
+      },
+      "EMG": {
+        "share": "32%",
+        "description": "電気機械事業（精密動作ソリューション・熱管理・電気相互接続・特殊金属）",
+        "opm": "24.5%",
+        "latest_quarter_opm": "21.2%（2024Q2）"
+      }
+    },
+    "income_statement": {
+      "fy2025_10k": {
+        "revenue": 7401116000,
+        "operating_income": 1910317000,
+        "net_income": 1480142000,
+        "eps_basic": 6.42,
+        "eps_diluted": 6.40,
+        "opm_calculated": "25.8%"
+      },
+      "q2_2024_from_report": {
+        "opm": "25.8% (vs Cons 25.3%)",
+        "eps": "1.66 (vs Cons 1.64)",
+        "revenue_growth_yoy": "+5.4% (OG-2%, M&A+8%, FX-1%)"
+      },
+      "long_term_target": "Core EBIT Margin 30bp/年改善"
+    },
+    "balance_sheet": {
+      "fy2025_10k": {
+        "total_assets": 16067543000,
+        "current_assets": 3019842000,
+        "total_liabilities": 5438757000,
+        "current_liabilities": 2842752000,
+        "stockholders_equity": 10628786000,
+        "cash": 457951000,
+        "ppe_net": 855215000
+      },
+      "note": "ROIC算出時はgoodwill除外ベースで20%超を維持"
+    },
+    "cash_flow": {
+      "fy2025_10k": {
+        "operating_cf": 1801763000,
+        "investing_cf": 1062770000,
+        "financing_cf": 686322000
+      },
+      "capex_to_revenue": "約2%",
+      "cumulative_capital_deployment_since_2012": {
+        "total": "USD10bn",
+        "breakdown": {
+          "ma": "74% (USD7.4bn)",
+          "dividends": "11% (USD1.1bn)",
+          "buyback": "15% (USD1.5bn)"
+        }
+      },
+      "note": "高いFCF創出力：M&A資金のほとんどを内部資金で賄う"
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "available",
+      "filing_date": "2026-02-17",
+      "accession_number": "0001037868-26-000016",
+      "form_type": "10-K",
+      "period": "FY2025",
+      "sec_url": "https://www.sec.gov/Archives/edgar/data/1037868/000103786826000016/0001037868-26-000016.txt"
+    },
+    "10q": {
+      "status": "not_searched",
+      "note": "10-K available, 10-Q search not performed"
+    },
+    "8k": {
+      "status": "not_searched"
+    }
+  },
+  "insider_summary": {
+    "status": "partial",
+    "period_days": 365,
+    "total_filings": 50,
+    "form_4_count": 47,
+    "form_3_count": 1,
+    "management_info_from_report": {
+      "ceo": "David Zapico（EIG事業Head出身、当社戦略を熟知）",
+      "cfo": "新CFO（2017年以降在職、Capital Allocation方針不変）",
+      "ma_team": "11名のM&Aチーム（deal sourcing 4名、execution 6名、+1名追加）"
+    }
+  },
+  "key_metrics": {
+    "source": "analyst_report",
+    "roic_excl_goodwill": "20%超（M&A中心の成長でも安定維持）",
+    "opm_trend": "過去5年平均65bp/年改善",
+    "opm_long_term_target": "30bp/年改善（2024年面談後修正）",
+    "rd_to_revenue": "5.5%程度（Engineering含むR&D全体）",
+    "direct_sales_ratio": "約80%",
+    "vitality_index": "約29%（直近Q）",
+    "price_cost_spread": {
+      "normal": "50-100bp",
+      "fy2021": "100bp (Pricing6%, Cost5%)",
+      "fy2024_target": "50bp (Pricing3%, CostInflation2.5%)"
+    },
+    "ma_track_record": {
+      "period": "2002年以降",
+      "total_amount": "USD8.4bn",
+      "total_count": "86件",
+      "avg_per_year": "約4件",
+      "avg_deal_size": "約USD100M",
+      "criteria": {
+        "roic_3yr": "10%以上",
+        "irr": "15%以上",
+        "eps_y1": "EPS Accretive"
+      }
+    },
+    "bu_structure": {
+      "current_bu_count": "42（売上高7bn時点）",
+      "historical_bu_count": "32（売上高2bn時点、約16-17年前）",
+      "avg_bu_revenue": "約USD200M"
+    },
+    "end_market_mix": {
+      "medical": "約21%（Paragon買収後）",
+      "aerospace_defense": "約20%",
+      "general_industries": "約30%",
+      "china_exposure": "約10%（売上高比）"
+    }
+  },
+  "filing_sections": {
+    "note": "10-Kセクション全文はSEC EDGAR MCP経由では取得不可。アナリストレポートからの要約。",
+    "business": {
+      "summary": "電子計器（EIG、68%）と電気機械（EMG、32%）の2セグメント。ニッチ領域のミッションクリティカル計測機器・プロセス機器に特化。Tier2サプライヤーとして大手OEMへ納入。直販8割体制。",
+      "key_products": [
+        "電子計器・測定機器（速度、温度、金属構成、密度、流体速度、圧力等の計測）",
+        "プロセス機器（流体制御用機器・部品）",
+        "精密動作ソリューション",
+        "熱管理システム",
+        "電気相互接続製品",
+        "特殊金属"
+      ],
+      "key_customers": [
+        "エマソン（Tier1）へのTier2納入",
+        "GE（Tier1）へのTier2納入",
+        "Honeywell（Tier1）へのTier2納入",
+        "Airbus・Boeing向けTier1（Lockheed Martin、UTX）へのTier2納入"
+      ],
+      "niche_market_size": "USD150-400M（1bn以上の大規模市場は回避）",
+      "market_share": "30-50%（各ニッチ領域）"
+    },
+    "risk_factors": {
+      "summary": "レポートで言及されたリスクファクター",
+      "risks": [
+        "事業規模拡大に伴うM&A対象ニッチビジネスの縮小（値打ちのある買収のハードル上昇）",
+        "大型買収（USD1bn以上）実施時の高値掴み・インテグレーション・競争優位性変化リスク",
+        "ESGスコア（相対スコア58）が閾値付近にあり除外リスク",
+        "中国リスク（売上高比1割弱、サプライチェーン分散で対応済み）",
+        "オートメーション・ヘルスケア向けシクリカルリスク"
+      ]
+    },
+    "mda": {
+      "summary": "2024Q2実績とガイダンス",
+      "revenue_q2_2024": "+5.4% YoY (OG-2%, M&A+8%, FX-1%)",
+      "opm_q2_2024": "25.8%",
+      "fy2024_guidance": "+5-7% (前回比-4%引き下げ)",
+      "key_drivers": [
+        "オートメーション関連：OEM在庫調整が想定より長期化（-2%影響）",
+        "ヘルスケア：Paragon関連在庫調整（業界全体要因）（-1%影響）",
+        "EIG：地政学・選挙不透明感によるプロジェクト遅延（-1%影響）",
+        "Aero/Defense：堅調"
+      ],
+      "pricing": "Price-Costスプレッド1% (Pricing3.5%, Cost2.5%)を維持"
+    }
+  },
+  "filing_reference": {
+    "filing_date": "2026-02-17",
+    "accession_number": "0001037868-26-000016",
+    "form_type": "10-K",
+    "sec_url": "https://www.sec.gov/Archives/edgar/data/1037868/000103786826000016/0001037868-26-000016.txt"
+  }
+}

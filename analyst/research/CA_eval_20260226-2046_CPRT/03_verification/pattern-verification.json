@@ -1,0 +1,135 @@
+{
+  "research_id": "CA_eval_20260226-2046_CPRT",
+  "ticker": "CPRT",
+  "verified_at": "2026-02-26T20:53:00Z",
+  "kb2_patterns_scanned": 12,
+  "rejection_patterns_detected": [
+    {
+      "pattern": "pattern_A_result_as_cause",
+      "affected_claims": [4],
+      "severity": "moderate",
+      "description": "Claim#4（複占市場構造）: 市場シェア4割超は結果であり能力ではない。MNST#1（シェアはあくまで結果→50%）と類似。ただし、CPRTの場合は複占構造そのものを主張しており、シェアの高さを直接的に優位性とはしていない点でMNST#1とは区別できる。confidence 50%は適切。",
+      "confidence_adjustment": "none (50% is appropriate)"
+    },
+    {
+      "pattern": "pattern_B_industry_common",
+      "affected_claims": [5, 6],
+      "severity": "moderate",
+      "description": "Claim#5（TLF上昇）: 業界全体の追い風であり企業固有の優位性ではない。LLY#6（メガファーマ共通→30%）に類似するが、TLFはCAGRドライバーとして正しく位置づけられているため50%は妥当。Claim#6（スケールメリット）: IAAも同様にオンラインプラットフォームを運営しており差別化不明確。",
+      "confidence_adjustment": "none (50% for both is appropriate)"
+    },
+    {
+      "pattern": "pattern_D_qualitative_only",
+      "affected_claims": [7],
+      "severity": "low",
+      "description": "Claim#7（海外横展開）: 「横展開可能なビジネスモデル」はやや定性的だが、英国シェア4割、International +17%超の実績データがあるためCOST#2（劇場型→10%）ほど深刻ではない。50%は妥当。",
+      "confidence_adjustment": "none"
+    },
+    {
+      "pattern": "pattern_F_strategy_confusion",
+      "affected_claims": [7],
+      "severity": "low",
+      "description": "Claim#7: 「国際展開を推進している」は戦略的行動であり、横展開を可能にする「仕組み」（損保ドリブンモデルの移植力）が本来の優位性。ルール8を適用し、優位性の表現を「横展開可能なビジネスモデル」（名詞）に修正済み。",
+      "confidence_adjustment": "none (already reflected in 50%)"
+    },
+    {
+      "pattern": "pattern_G_unclear_vs_pure_competitor",
+      "affected_claims": [6],
+      "severity": "moderate",
+      "description": "Claim#6（スケールメリット）: IAA対比でのスケールメリット差異が定量的に示されていない。COST#3（倉庫型モデル→50%: SAMS/BJ対比不明）と類似。50%は適切。",
+      "confidence_adjustment": "none"
+    }
+  ],
+  "high_evaluation_patterns_detected": [
+    {
+      "pattern": "pattern_I_quantitative_differentiation",
+      "affected_claims": [1, 2, 3],
+      "description": "Claim#1: Bidder数40万超、ASP格差（CPRT +5.7% vs IAA +1%）の定量データあり。Claim#2: Yard 1万エーカー、200施設の定量データあり。Claim#3: 7/10社契約、4社独占、Express Titling 1M台の定量データあり。いずれもルール4の+20%効果を適用。",
+      "confidence_effect": "+20% (already reflected in 70% for each)"
+    },
+    {
+      "pattern": "pattern_II_direct_cagr_mechanism",
+      "affected_claims": [5],
+      "description": "Claim#5 CAGR接続: TLF上昇→全損処理増加→Units成長は1-2ステップの直接的メカニズム。業界レポートで定期開示される検証可能なデータ。KB3 COST顧客粘着力CAGR（90%）と同等の検証可能性。CAGR 90%は妥当。",
+      "confidence_effect": "CAGR connection 90%"
+    },
+    {
+      "pattern": "pattern_IV_structural_market_position",
+      "affected_claims": [1, 2, 4],
+      "description": "複占市場×ネットワーク効果×NIMBY参入障壁という構造は、ORLY#2（フラグメント市場×規模・密度→90%）とは異なる構造だが、業界構造と企業ポジションの合致は認められる。ただし、ORLY#2ほどの深い市場構造分析（フラグメント度、密度依存性の定量的論拠）には達していないため、90%ではなく70%が妥当な上限。",
+      "confidence_effect": "supports 70% ceiling (not 90%)"
+    },
+    {
+      "pattern": "pattern_V_specific_competitor_comparison",
+      "affected_claims": [1, 2, 3],
+      "description": "Claim#1: IAA対比でのASP成長率格差。Claim#2: IAA対比での土地保有vs リース。Claim#3: Express TitlingはCPRT独自のサービス。いずれもIAA/RBとの具体的比較あり。ルール7の要件を満たす。",
+      "confidence_effect": "+10-20% (already reflected)"
+    }
+  ],
+  "cagr_pattern_verification": {
+    "cagr_connections_checked": 7,
+    "high_confidence_cagr": [
+      {
+        "claim_id": 5,
+        "cagr_confidence": 90,
+        "pattern": "直接的メカニズム + 検証可能データ",
+        "note": "TLF→Units成長。CCC Crash Course Reportで定期確認可能。"
+      }
+    ],
+    "medium_confidence_cagr": [
+      {
+        "claim_id": 1,
+        "cagr_confidence": 70,
+        "pattern": "ネットワーク効果→ASP→価格寄与",
+        "note": "ASP成長率は決算で開示。Bidder数は未開示だがASP格差が代理指標。"
+      },
+      {
+        "claim_id": 2,
+        "cagr_confidence": 70,
+        "pattern": "Yard保有→顧客獲得→Volume",
+        "note": "Yard数は確認可能。non-salvageシフトリスクが留意点。"
+      },
+      {
+        "claim_id": 3,
+        "cagr_confidence": 70,
+        "pattern": "スイッチングコスト→Volume安定",
+        "note": "保険会社契約数は部分開示。Express Titling run rateも開示。"
+      },
+      {
+        "claim_id": 4,
+        "cagr_confidence": 70,
+        "pattern": "複占→新規参入困難→マージン維持",
+        "note": "マージン推移は決算で確認可能。"
+      },
+      {
+        "claim_id": 6,
+        "cagr_confidence": 70,
+        "pattern": "スケールメリット→SGA率低下→OPMレバ",
+        "note": "SGA率は決算で確認可能。CHD#2 CAGR（70%）と同等構造。"
+      },
+      {
+        "claim_id": 7,
+        "cagr_confidence": 70,
+        "pattern": "海外展開→International成長",
+        "note": "International成長率は決算で開示。実績ベース。"
+      }
+    ]
+  },
+  "consistency_check": {
+    "status": "pass",
+    "issues": [
+      {
+        "type": "minor_inconsistency",
+        "description": "Claim#4（複占市場構造: CA 50%）のCAGR接続（70%）がCA confidenceより20%高い。通常はCA >= CAGRだが、このケースでは複占構造がCAGRの基盤（前提条件）として機能するためCA < CAGRは許容範囲。dogma.md §3.1「優位性の有無とCAGR接続は独立して評価する」に準拠。",
+        "resolution": "許容範囲。claims.jsonのnoteで理由説明済み。"
+      }
+    ]
+  },
+  "overall_assessment": {
+    "kb_alignment": "high",
+    "rejection_pattern_count": 5,
+    "high_evaluation_pattern_count": 4,
+    "confidence_adjustments_made": 0,
+    "note": "全7主張について却下パターンスキャンと高評価パターンスキャンを完了。claims.jsonで設定されたconfidence値はKB2パターンと整合しており、調整は不要。主な留意点は、(1)IAA対比での純粋競合差別化がClaim#6で不足、(2)Claim#5はCAGRドライバーとして有効だがCA（企業固有の優位性）としては限定的、(3)Claim#7は戦略と優位性の境界にある。"
+  }
+}

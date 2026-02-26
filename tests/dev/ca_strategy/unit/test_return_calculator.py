@@ -551,6 +551,178 @@ class TestParseActionsValidation:
 # =============================================================================
 # Property tests
 # =============================================================================
+# =============================================================================
+# Buy-and-Hold drift tests
+# =============================================================================
+class TestBuyAndHoldDrift:
+    """Tests for Buy-and-Hold weight drift behavior."""
+
+    def test_正常系_異なるリターンでウェイトがドリフトする(self) -> None:
+        """Weights should drift toward higher-returning tickers."""
+        # AAPL goes up 10% per day, MSFT stays flat
+        provider = StubPriceDataProvider(
+            {
+                "AAPL": _make_price_series([100, 110, 121, 133.1]),
+                "MSFT": _make_price_series([100, 100, 100, 100]),
+            }
+        )
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        weights = {"AAPL": 0.5, "MSFT": 0.5}
+        result = calc.calculate_returns(weights=weights, start=_START, end=_END)
+
+        # Day 0: weights = {AAPL: 0.5, MSFT: 0.5}
+        # Return = 0.5 * 0.1 + 0.5 * 0.0 = 0.05
+        assert result.iloc[0] == pytest.approx(0.05, rel=1e-10)
+
+        # After day 0 drift: AAPL=0.5*1.1=0.55, MSFT=0.5*1.0=0.5 → normalize
+        # AAPL=0.55/1.05=0.52381, MSFT=0.5/1.05=0.47619
+        # Day 1 return = 0.52381*0.1 + 0.47619*0.0 = 0.052381
+        assert result.iloc[1] == pytest.approx(0.52381 * 0.1, rel=1e-6)
+
+        # After day 1 drift: AAPL grows more, MSFT stays
+        # AAPL=0.52381*1.1=0.57619, MSFT=0.47619*1.0=0.47619 → normalize
+        # AAPL=0.57619/1.05238=0.54751, MSFT=0.47619/1.05238=0.45249
+        # Day 2 return = 0.54751*0.1 + 0.45249*0.0 = 0.054751
+        assert result.iloc[2] == pytest.approx(0.54751 * 0.1, rel=1e-4)
+
+    def test_正常系_同一リターンでウェイト比率が維持される(self) -> None:
+        """When all tickers have the same return, weight ratios stay constant."""
+        # Both go up exactly 1% per day
+        provider = StubPriceDataProvider(
+            {
+                "AAPL": _make_price_series([100, 101, 102.01]),
+                "MSFT": _make_price_series([200, 202, 204.02]),
+            }
+        )
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        weights = {"AAPL": 0.6, "MSFT": 0.4}
+        result = calc.calculate_returns(weights=weights, start=_START, end=_END)
+
+        # Day 0: same return for both → weights unchanged
+        assert result.iloc[0] == pytest.approx(0.01, rel=1e-10)
+        # Day 1: same return again → weights still 0.6/0.4
+        assert result.iloc[1] == pytest.approx(0.01, rel=1e-4)
+
+    def test_正常系_定数ウェイトと異なる結果になる(self) -> None:
+        """Buy-and-Hold drift produces different cumulative return than
+        constant-weight (daily rebalancing) for divergent tickers.
+        """
+        # AAPL doubles, MSFT halves
+        provider = StubPriceDataProvider(
+            {
+                "AAPL": _make_price_series([100, 120, 150, 200]),
+                "MSFT": _make_price_series([100, 90, 75, 50]),
+            }
+        )
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        weights = {"AAPL": 0.5, "MSFT": 0.5}
+        result = calc.calculate_returns(weights=weights, start=_START, end=_END)
+
+        # Cumulative Buy-and-Hold return
+        cum_bh = (1 + result).prod() - 1
+
+        # Theoretical constant-weight return (daily rebalancing)
+        # would be different because it sells winners and buys losers
+        # Buy-and-Hold: effectively 0.5*100→200 + 0.5*100→50 = 125, return=25%
+        # For 50/50 initial investment: final = 0.5*(200/100) + 0.5*(50/100) = 1.25
+        assert cum_bh == pytest.approx(0.25, rel=1e-2)
+
+
+# =============================================================================
+# MCap benchmark tests
+# =============================================================================
+class TestCalculateMcapBenchmarkReturns:
+    """calculate_mcap_benchmark_returns() tests."""
+
+    def test_正常系_MCap加重ベンチマークが計算できる(self) -> None:
+        """MCap-weighted benchmark returns using initial weights + drift."""
+        provider = _make_3ticker_provider()
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        mcap_weights = {"AAPL": 0.5, "MSFT": 0.3, "GOOGL": 0.2}
+        result = calc.calculate_mcap_benchmark_returns(
+            tickers=["AAPL", "MSFT", "GOOGL"],
+            mcap_weights=mcap_weights,
+            start=_START,
+            end=_END,
+        )
+        assert isinstance(result, pd.Series)
+        assert len(result) == 9
+
+        # First return uses initial MCap weights (same as portfolio)
+        expected_day0 = 0.5 * 0.01 + 0.3 * 0.01 + 0.2 * (-1 / 150)
+        assert result.iloc[0] == pytest.approx(expected_day0, rel=1e-10)
+
+    def test_正常系_リバランススケジュール付きMCapベンチマーク(self) -> None:
+        """Bloomberg mode: rebalance weights at specified dates."""
+        provider = _make_3ticker_provider()
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        mcap_weights = {"AAPL": 0.5, "MSFT": 0.3, "GOOGL": 0.2}
+        # Rebalance on Jan 8: shift weight to AAPL
+        rebalance = {
+            date(2024, 1, 8): {"AAPL": 0.7, "MSFT": 0.2, "GOOGL": 0.1},
+        }
+        result = calc.calculate_mcap_benchmark_returns(
+            tickers=["AAPL", "MSFT", "GOOGL"],
+            mcap_weights=mcap_weights,
+            start=_START,
+            end=_END,
+            rebalance_schedule=rebalance,
+        )
+        assert isinstance(result, pd.Series)
+        assert len(result) == 9
+
+    def test_エッジケース_空のtickerリストで空Series(self) -> None:
+        """Empty tickers should return empty Series."""
+        calc = PortfolioReturnCalculator(
+            price_provider=EmptyPriceDataProvider(),
+            corporate_actions=[],
+        )
+        result = calc.calculate_mcap_benchmark_returns(
+            tickers=[],
+            mcap_weights={},
+            start=_START,
+            end=_END,
+        )
+        assert len(result) == 0
+
+    def test_正常系_欠損銘柄がMCapウェイトから除外される(self) -> None:
+        """Tickers missing from price data are excluded, weights redistributed."""
+        provider = StubPriceDataProvider(
+            {
+                "AAPL": _make_price_series([100, 101, 102]),
+                "MSFT": _make_price_series([200, 202, 204]),
+            }
+        )
+        calc = PortfolioReturnCalculator(
+            price_provider=provider,
+            corporate_actions=[],
+        )
+        mcap_weights = {"AAPL": 0.4, "MSFT": 0.3, "MISSING": 0.3}
+        result = calc.calculate_mcap_benchmark_returns(
+            tickers=["AAPL", "MSFT", "MISSING"],
+            mcap_weights=mcap_weights,
+            start=_START,
+            end=_END,
+        )
+        assert isinstance(result, pd.Series)
+        assert len(result) == 2
+
+
 class TestPropertyWeightInvariant:
     """Property-based tests for weight invariant."""
 

@@ -1,0 +1,480 @@
+{
+  "research_id": "CA_eval_20260226-2059_NFLX",
+  "ticker": "NFLX",
+  "company_name": "Netflix, Inc.",
+  "extracted_at": "2026-02-26T21:03:00Z",
+  "extractor": "ca-eval-lead (T4直接実行)",
+  "kb_applied": {
+    "kb1_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule08", "rule10", "rule11"],
+    "kb3_references": ["MNST#1", "MNST#4", "CHD#1", "CHD#6", "COST#1", "COST#2", "LLY#1", "ORLY#2"],
+    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+  },
+  "cagr_estimate": {
+    "current": "+MDD% EPS CAGR（7/22/25微修正）",
+    "breakdown": {
+      "revenue": "+10%（会員数+5%、価格+5%）",
+      "margin_improvement": "+3%",
+      "buyback_ma": "+LSD%（前回+MSD%から引き下げ）"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "オリジナルコンテンツ制作能力（独特な人事戦略による人材プール維持）",
+      "ca_type": "operational",
+      "description": "最高水準の報酬＋自由度の高い労働環境＋厳格な成果主義レイオフという独特な人事戦略により、優秀なクリエイターの人材プールを維持。質の高いオリジナルコンテンツを継続的に生み出す能力。アカデミー賞・エミー賞等を多数受賞。",
+      "source_text": "Netflix はそれを可能とするために、優秀な人材プールの維持継続を目的として、最高水準の報酬及びかなり自由度の高い労働環境が認められている一方、特定の期間内に期待される結果を出せていないと即刻レイオフ、という相当ドラスティックな人事戦略を取っている。",
+      "factual_claims": [
+        "アカデミー賞やゴールデングローブ賞を数多く受賞",
+        "2025年はエミー賞44ノミネート",
+        "カルチャーデックが存在するが休暇規定や経費規定はない",
+        "期待される結果を出せないと即刻レイオフ"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "人材プール維持→質の高いコンテンツ継続的生産→会員維持+新規獲得→会員数+5%/年→売上+10%のうちの半分を担当。ただしコンテンツ制作能力→会員数への接続は3ステップで間接的。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「人事戦略」「人材プール維持」という能力・仕組みが主張の核心。受賞歴は結果だが、それを生み出す仕組み（人事戦略）が明確に説明されている。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「コンテンツ制作能力」「人材プール」は名詞属性として正しく表現。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "エミー賞44ノミネートという定量データあり。しかし人事戦略の具体的メカニズム（報酬水準の業界比較等）は定量的に示されていない。説明力はある（カルチャーデック、レイオフ方針）がデータ裏付けは限定的。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "コンテンツ制作能力は動画ストリーミング事業の核心。構造的要素。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "Disney、Amazon等の複合事業体との差異は示唆されるが、純粋な動画配信競合（Disney+のコンテンツ制作部門等）との具体的な人事戦略比較はない。他社もこの人事戦略をマネできないわけではない（アナリスト自身が指摘）。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "「人事戦略」自体は戦略だが、その結果としての「人材プール」「制作能力」は構造的優位性として記述。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "ネガティブケース（人材流出事例等）の言及はない。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "コンテンツ業界自体のEconomic Moatが低い（アナリスト自身が認識）中で、継続的制作能力が重要であるという業界特性への言及はあるが、市場構造の定量分析は限定的。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "人事戦略の具体的仕組み（カルチャーデック、成果主義レイオフ、自由度）が説明されており説明力はある。しかしアナリスト自身が「他社にマネできないものではない」と指摘しており、純粋競合との差別化根拠が弱い（ルール7）。KB3 MNST#1（50%）と類似：背後要因の記述はあるが競合比較が不足。",
+        "kb3_calibration": "MNST#1類似（ブランド力の背後要因はあるが競合対比の具体性不足→50%）"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "コンテンツ制作能力→会員維持→会員数成長のチェーンは3ステップ。開示データでの検証は困難（会員数非開示化）。KB3 COST思いやり経営CAGR（20%）ほどの飛躍はないが、直接的でもない。50%が妥当。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "title": "コンテンツ投資の資本力と「数を打つ」能力（データ解析＋資本力）",
+      "ca_type": "structural",
+      "description": "FY24コンテンツ投資約$17bn。勝率100%はあり得ないコンテンツ業界で「数多く」投入し、ビッグデータ解析とrecommend最適化で「ダメなものは早めに切る」微調整技術。Magnificent 7に迫る規模の企業として十分な資本力を有する。",
+      "source_text": "Netflix は既にマグニフィセント7に迫る規模の会社であり、十分な資本力を有し"数"を打てる力があると共に、ビッグデータ解析及びrecommend最適化を随時機動的に行っている。",
+      "factual_claims": [
+        "FY24コンテンツ投資約$17bn、FY25計画$18bn",
+        "FY24コンテンツ支出は売上比46%（かつて60-70%）",
+        "創業者Hastingsの元ピュア・ソフトウェア経営背景",
+        "延べ有料会員数3億人超"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "資本力→コンテンツ大量投入→視聴者嗜好分析→最適配信→会員維持+新規獲得。コンテンツ投資効率化（売上比60-70%→46%）がマージン改善+3%のドライバー。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "「資本力」は能力だが、「Magnificent 7に迫る規模」は結果の側面が強い。主張の核心はデータ解析と微調整技術という能力にあるが、「規模」を前面に出している点に注意。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「資本力」「データ解析能力」「微調整技術」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "$17bnのコンテンツ投資額、売上比46%（低下トレンド）、3億人の会員基盤という定量的裏付けが豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "資本力とデータ解析はNetflixの事業モデルの核心。構造的要素。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "Disney、Amazon、Appleも巨大な資本力を持つ。Netflixの資本力が「動画配信に全振り」されている点で差別化されるが、純粋な資本規模では劣る可能性。データ解析能力については競合比較なし。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PARTIAL",
+          "comment": "「数を打つ」は戦略の側面がある。それを可能にする「資本力」と「データ解析能力」は優位性。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "「爆死」作品の存在に言及しているが、具体的な失敗事例からの学習は記述されていない。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "「コンテンツ業界はEconomic Moatが低い」が「継続的に出し続けられることが重要」という業界構造認識との合致はある。ただし定量的な市場構造分析は限定的。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "定量的裏付け（$17bn、売上比46%）は豊富。しかしDisney、Amazon等も巨大な資本力を持ち、資本力単体では差別化が不明確（ルール7: PARTIAL）。「動画に全振り」との組合せで差別化が成立するが、Claim #3と重複する部分が大きい。KB3 LLY#1類似（大手共通の能力に近い→50%）。",
+        "kb3_calibration": "LLY#1類似（複数薬剤ポート→大手なら当然→50%。資本力もBig Techなら同等レベル）"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "コンテンツ投資効率化（売上比低下）→マージン改善は1-2ステップで直接的。OPM改善トレンド（FY20:21.5%→FY24:26.7%）で検証可能。パターンII（直接的CAGR接続）に近い。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "title": "動画ストリーミング専業モデルによる競争ポジション",
+      "ca_type": "structural",
+      "description": "動画ストリーミングに全振りし、FCFの大半をオリジナルコンテンツ制作に投じるビジネスモデル。Disney（スタジオ+テーマパーク）、Amazon（クラウド+EC）等の複合事業体に対し、1本足打法ゆえに他の追随を許さないポジショニング。",
+      "source_text": "Netflix は動画ストリーミングビジネス1本足打法であり...基本的に本業のオリジナルコンテンツ制作に全振りしている。多くのプレイヤーが乱立している中ではリスキーな経営戦略とも考えられるが、だからこそ他の追随を許さないポジショニングを確立している",
+      "factual_claims": [
+        "事業は動画配信事業のみ（売上99%超）",
+        "Disney+はスタジオ・テーマパーク等の複合事業",
+        "Amazon prime videoはクラウド・EC等の複合事業",
+        "FCFは基本的にオリジナルコンテンツ制作に全振り"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "専業集中→コンテンツ投資の全額本業投入→会員数成長+マージン改善。ただし「ポジショニング」は結果であり、CAGRドライバーとしてはClaim #1・#2に内包される。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "WARN",
+          "comment": "「ポジショニング確立」は結果。「専業集中」は戦略。それを可能にする仕組み（何が専業を維持させるのか）の説明が不足。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PARTIAL",
+          "comment": "「専業モデル」は属性として表現可能だが、「全振り」は動詞的で戦略寄り。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "売上99%超が動画配信という数値あり。ただし「全振り」の程度（投資配分等）の定量的裏付けは限定的。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "ビジネスモデル自体は構造的だが、「1本足打法はリスキー」とアナリスト自身が指摘しており、構造的強みとリスクが表裏一体。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "Disney+、Amazon等の複合事業体との差異は明確。ただし「専業だから優位」の論理が弱い。複合事業体が動画配信に本腰を入れた場合の耐性は不明。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "WARN",
+          "comment": "「動画ストリーミングに全振り」は戦略的決断。それを優位性とするには、専業であるがゆえに生まれる構造的な力（例：意思決定速度、投資集中度）の説明が必要。",
+          "flag": "strategy_confusion"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "アナリストがゲームビジネスへの多角化懸念（Disney化リスク）に言及しており、「専業を維持するリスク」の認識はあるが、これは専業モデルの裏付けではなく弱体化リスク。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "可処分時間の奪い合いという業界構造との関係は示唆されるが、専業モデルがなぜその構造で効くのかの論理が不十分。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "「専業」は戦略的選択であり、構造的優位性ではない（ルール8: WARN）。アナリスト自身が「リスキーな経営戦略」と認識しており、優位性としての主張は弱い。KB3 CHD#5類似（戦略を優位性と混同→30%）。ゲーム・ライブイベント等への多角化が進めばこの主張自体が崩れるリスクもある。",
+        "kb3_calibration": "CHD#5類似（戦略的ポートシフト→30%。専業モデルも戦略的選択）"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "専業→投資集中→コンテンツの質はロジカルだが、Claim #1・#2のCAGR接続に内包される。独立したCAGRドライバーとしての説明力は限定的。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "title": "価格決定力（ケーブルTV対比の割安感＋定期的値上げ実績）",
+      "ca_type": "structural",
+      "description": "従来型ケーブル事業者（月額$100）対比で依然割安。米国で1-2年おきに値上げを実施しても長期的な加入者数への影響なし。広告付きプラン$7.99は景気減速下でもレジリエンスを発揮。",
+      "source_text": "同社は米国市場において1-2年おきに+1ドルずつ値上げを行っており、値上げ直後こそ解約率は上昇するものの、長期的な加入者数の伸びに影響は見られず価格決定力は強いと思料される。",
+      "factual_claims": [
+        "米国で1-2年おきに値上げ実施",
+        "従来型ケーブル事業者サービスは月額平均$100",
+        "Netflixスタンダード$17.99、広告付き$7.99、プレミアム$24.99",
+        "値上げ直後の解約率上昇は一時的で長期的影響なし"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "価格決定力→価格+5%/年→売上+10%の半分を担当。ケーブル対比の割安感が継続する限り値上げ余地あり。開示データ（料金改定履歴・会員数推移）で検証可能。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "「値上げしても解約されない」は結果。価格決定力を生み出す構造（コンテンツの質、乗り換え先の不在、習慣性）の説明はClaim #1・#7に分散。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「価格決定力」は名詞属性として適切。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "料金体系、ケーブル対比($100 vs $18)、値上げ頻度（1-2年おき）の定量データが豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "価格決定力自体は構造的だが、Claim #1（コンテンツ力）の派生結果でもある。単独の構造的優位性としては弱い。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "ケーブル対比での割安感は明確。しかしDisney+($8.99)やApple TV+($9.99)等の純粋競合との価格優位性は限定的。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "「価格決定力」は能力であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "値上げ失敗事例の言及なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "サブスクリプション業界で価格決定力は最も重要なCAGRドライバー。業界構造との合致あり。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "定量的裏付け（料金体系、ケーブル対比）が豊富でルール4は高評価。しかし価格決定力は「結果」の側面が強く（ルール1: PARTIAL）、それを生み出す構造的な力はClaim #1・#7に依存。独立した主張としてはやや弱い。KB3 COST#7類似（PB kirklandの交渉力→70%だが、NB対比での差別化がより明確）。NFFLXの場合、純粋競合（Disney+等）対比での優位性がやや弱いため50%。",
+        "kb3_calibration": "COST#3類似（倉庫型モデルの優位性は一般小売対比で認めるも純粋競合対比は不明→50%）"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "価格決定力→価格+5%/年は1ステップで直接的。過去の値上げ履歴と会員数推移で検証可能。ケーブル対比の割安感が維持される限り有効。パターンII（直接的CAGR接続）に近い。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "title": "パスワード共有取り締まり＋広告プランによる成長メカニズム",
+      "ca_type": "operational",
+      "description": "違法視聴者1億世帯の取り締まりと、広告付きプラン（ARPM>通常プラン）の導入により、新規会員獲得+収益化の二重効果。モバイル端末取り締まり（5億世帯）は今後の成長ドライバー。",
+      "source_text": "パスワード共有化は全地域で収益改善に寄与しており解約反応は特になかった...広告付きプラン会員数はYoY+30-70%増加...新規会員のうち55%超が広告付きプランを選択",
+      "factual_claims": [
+        "違法視聴者は1億世帯（2023年同社認識）",
+        "UCAN地域で3,000万世帯特定（BBG調査）",
+        "FY24に950万件新規会員化（BBG推定）",
+        "広告付きARPMがスタンダードプランを上回る（米国）",
+        "新規会員の55%超が広告付きプランを選択（4Q24）",
+        "FY24広告収入は前期比2倍、FY25も2倍見込み"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "パスワード取り締まり→新規会員化（+LSD売上寄与）。広告プラン→ARPM向上+新規獲得コスト低減。いずれも会員数+5%/年と価格+5%/年に直接寄与。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "WARN",
+          "comment": "パスワード取り締まりと広告プラン導入は「施策」（戦略的行動）であり、「能力」ではない。これらを可能にする構造的な力（技術力、ユーザーデータ、会員基盤規模）の説明が不足。",
+          "flag": "primarily_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "WARN",
+          "comment": "「取り締まり」「導入」は動詞的。「成長メカニズム」と名付けているが実態は施策。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "1億世帯、3,000万世帯特定、950万件転換、広告プラン55%選択率等の定量データが非常に豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "パスワード取り締まりは一過性の施策（ストックは有限）。広告プランはより持続的だが、構造的優位性というより成長施策。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "パスワード共有取り締まりはNetflix固有（他社は同規模の共有者ベースを持たない）。広告プランはDisney+やPeacock等も展開しており差別化は限定的。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "WARN",
+          "comment": "パスワード取り締まりも広告プランも戦略的施策。これを優位性とするには、施策を可能にする構造（技術基盤、3億人のユーザーベース）の説明が必要。",
+          "flag": "strategy_confusion"
+        },
+        "rule10_negative_case": {
+          "result": "PASS",
+          "comment": "「解約反応は特になかった」というネガティブケースの不在が記録されている。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "サブスクリプション業界でのパスワード共有は業界共通の課題。Netflixが先行して取り締まりを成功させた実績は評価できるが、業界構造との合致というより先行者利益。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "定量的裏付けは非常に豊富（ルール4: PASS）だが、これらは「戦略的施策」であり「構造的優位性」ではない（ルール8: WARN）。パスワード取り締まりは一過性の成長ドライバーであり、ストックが尽きれば効果は減衰。KB3 CHD#4類似（成長加速は結果であり優位性ではない→30%）。",
+        "kb3_calibration": "CHD#4類似（施策の成果を優位性と混同→30%）。ただしCHD#4より定量的裏付けは豊富。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "パスワード取り締まり→新規会員数→売上は1-2ステップで直接的。BBGデータ（950万件）で検証可能。広告収入2倍見込みも具体的。ただし取り締まり効果は減衰する性質であり、長期CAGRへの持続的寄与は不確実。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "title": "グローバル会員基盤のスケールメリット（コンテンツ投資効率化）",
+      "ca_type": "financial",
+      "description": "有料会員3億人超の基盤により、コンテンツ投資の費用対効果が向上。売上増加がそのまま限界利益率改善につながるコスト構造。OPM: FY20 21.5%→FY24 26.7%。",
+      "source_text": "規模拡大に伴って近年は費用負担が軽減されており、同社のコスト構造（同社コストの大半はコンテンツ償却費用）ゆえに売上の増加（会員数増加、値上げ）がそのまま限界利益率の改善につながりやすい傾向。",
+      "factual_claims": [
+        "OPM FY20: 21.5%→FY24: 26.7%（コロナ禍超え）",
+        "コンテンツ支出は売上比46%（かつて60-70%）",
+        "有料会員数3.01億人（FY24末）",
+        "米国TVシェア約10%（ニールセン）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "会員数増加→コンテンツ1人当たりコスト低下→OPMレバレッジ+3%/年。OPM改善トレンドは開示データで検証可能。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "WARN",
+          "comment": "OPM改善は「結果」。3億人の会員基盤も「結果」。スケールメリットを生み出す「仕組み」（コンテンツ制作のスケーラビリティ、固定費の性質）の説明はあるが限定的。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「スケールメリット」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "OPMトレンド、コンテンツ投資比率の低下、会員数という定量データが豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "スケールメリットはサブスクリプション事業の核心的構造。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PASS",
+          "comment": "3億人は競合（Disney+約1.5億人）の約2倍。規模の差は明確。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "スケールメリットは能力であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "スケール喪失の事例なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "デジタルコンテンツ配信はスケールメリットが最も効く業界構造。固定費（コンテンツ制作）が大きく変動費が小さい。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "定量的裏付け豊富（ルール4: PASS）、業界構造との合致あり（ルール11: PASS）、競合対比でも規模優位（ルール7: PASS）。しかし「スケールメリット」は多くの大企業が主張する一般的な優位性であり（ルール1: WARN, 結果の側面）、KB3 LLY#1（大手共通→50%）と類似。70%に引き上げるには、スケールがなぜNetflixにとって特に重要かの「業界構造×企業ポジション」の深い分析が必要。",
+        "kb3_calibration": "LLY#1類似（大手なら共通のスケールメリット→50%。ただしNetflixの規模優位は競合対比で明確なため上限寄り）"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "スケール→OPMレバレッジは1ステップで直接的。OPM改善トレンド（FY20:21.5%→FY24:26.7%）で検証可能。+3%/年のマージン改善はCAGR推定の重要パーツ。パターンII適合。"
+      }
+    },
+    {
+      "claim_id": 7,
+      "title": "コンテンツの質とエンゲージメントによる顧客粘着性",
+      "ca_type": "operational",
+      "description": "視聴時間あたりの会員費は業界低位（UBS調べでDisney+の半分以下）。人気作の続編多数、クリエイターへの高い訴求力。会員1日あたり視聴2時間。エンゲージメントの高さが解約率の低さに直結。",
+      "source_text": "コンテンツの質・強さは不変であり、顧客粘着性を高く評価...視聴時間あたりの会員費は業界内低位（UBS調べではDisney+の半分以下）...会員1日あたりの視聴時間は広告有無に関わらず2時間程度",
+      "factual_claims": [
+        "視聴時間あたり会員費は業界低位（UBS調べ、Disney+の半分以下）",
+        "会員1日あたり視聴2時間（広告有無問わず）",
+        "2025年エミー賞44ノミネート",
+        "パスワード共有取り締まり後も解約反応なし"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "コンテンツ品質→高エンゲージメント→低解約率→会員数維持→会員数+5%/年の基盤。ただし会員数非開示化により検証困難化。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "「顧客粘着性」は結果の側面が強い。「コンテンツの質」はClaim #1と重複。粘着性を生み出す仕組み（スイッチングコストの有無、ネットワーク効果等）の独立した説明が不足。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「顧客粘着性」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "視聴時間あたり会員費（Disney+の半分以下）、視聴2時間/日、エミー賞44ノミネートの定量データあり。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "顧客粘着性はサブスクリプション事業の核心。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PASS",
+          "comment": "Disney+対比でのコスパ優位が具体的に示されている（UBSデータ）。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "顧客粘着性は能力/結果であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "2021-2022年の一時的な会員数減少からの回復は、粘着性の証拠として機能しうる（不完全なネガティブケース）。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "サブスクリプション業界では顧客粘着性が最重要指標。業界構造との合致あり。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "定量的裏付け（ルール4: PASS）、競合比較（Disney+対比のUBSデータ、ルール7: PASS）、業界構造合致（ルール11: PASS）はいずれも高評価。しかし「粘着性」は結果の側面が強く（ルール1: PARTIAL）、Claim #1（コンテンツ制作能力）の派生的結果として整理するのが適切。独立した主張としては50%が妥当。KB3 ORLY#1（70%）と異なり、スイッチングコストの構造的説明が不足。",
+        "kb3_calibration": "MNST#3類似（イノベーション能力→結果としてのシェア動向に依存→50%）"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "粘着性→低解約率→会員数維持は1-2ステップ。視聴時間データで部分的に検証可能。ただし会員数非開示化により直接的な検証は困難化（CAGR接続の検証可能性が低下）。"
+      }
+    }
+  ],
+  "rule9_gatekeeping": {
+    "applied": false,
+    "reason": "ファクトチェック（T5）によるcontradicted事実確認後に適用判断。現時点では明確な事実誤認は未検出。"
+  },
+  "summary": {
+    "total_claims": 7,
+    "confidence_distribution": {
+      "90_very_convinced": 0,
+      "70_mostly_convinced": 0,
+      "50_somewhat_convinced": 4,
+      "30_not_convinced": 2,
+      "10_rejected": 0
+    },
+    "avg_ca_confidence": 44,
+    "claims_with_cagr_connection": 7,
+    "avg_cagr_confidence": 64,
+    "key_strengths": [
+      "定量的裏付けが全体的に豊富（OPMトレンド、料金体系、会員数、エミー賞等）",
+      "CAGR推定の内訳が明確で各ドライバーが主張と対応",
+      "業界構造（サブスクリプション×デジタルコンテンツ）との合致はClaim #4, #6, #7で認められる"
+    ],
+    "key_weaknesses": [
+      "90%・70%の高評価主張がゼロ。構造的優位性の核心が特定されていない",
+      "Claim #3, #5は戦略を優位性と混同するパターンF/ルール8のリスク",
+      "Claim #1の「人事戦略→コンテンツ制作能力」はアナリスト自身が模倣可能性を指摘",
+      "会員数非開示化（1Q25）によりCAGR接続の検証可能性が低下",
+      "コンテンツ業界自体のEconomic Moatの低さがアナリスト自身により指摘されている"
+    ],
+    "poc_skipped": ["rule12_report_type_distinction"]
+  }
+}

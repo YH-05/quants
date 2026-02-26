@@ -1,0 +1,185 @@
+{
+  "ticker": "ORLY",
+  "company_name": "O'Reilly Automotive, Inc.",
+  "retrieved_at": "2026-02-26T20:02:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPでは10-Q(Q3 2025)のXBRLデータが取得可能。10-Kセクション全文は未取得。アナリストレポートからの補完データを併用。",
+    "affected_fields": ["filing_sections_full_text", "10k_full_sections"],
+    "available_fields": ["financials_from_10q", "recent_filings", "insider_summary", "financials_from_report"]
+  },
+  "financials": {
+    "note": "SEC EDGAR 10-Q(Q3 2025)のXBRL直接抽出 + アナリストレポートからの参照値",
+    "revenue": {
+      "description": "売上高",
+      "latest_quarterly": {
+        "value": 4705696000,
+        "currency": "USD",
+        "period": "Q3 2025 (3M ending 2025-09-30)",
+        "source": "SEC EDGAR 10-Q XBRL",
+        "accession": "0000898173-25-000057"
+      },
+      "annual_references": {
+        "fy2024_guidance": "16.6-16.9bn (analyst report 2024/7/31)",
+        "fy2025_guidance": "17.5-17.8bn (analyst report 2025/7/25)",
+        "fy2023_actual": "15.8bn (analyst report 2024/2/16)"
+      }
+    },
+    "income_statement": {
+      "q3_2025_sec_edgar": {
+        "revenue": 4705696000,
+        "gross_profit": 2439946000,
+        "gpm": "51.8%",
+        "operating_income": 976067000,
+        "opm": "20.7%",
+        "net_income": 725896000,
+        "eps_basic": 0.86,
+        "eps_diluted": 0.85,
+        "source": "SEC EDGAR 10-Q XBRL direct extraction"
+      },
+      "q2_2025_report": {
+        "revenue_yoy": "+5.9%",
+        "sss": "+4.1%",
+        "difm_sss": "7%+",
+        "diy_sss": "LSD",
+        "gpm": "51.4%",
+        "opm": "20.2%",
+        "eps": 0.78
+      },
+      "q1_2025_report": {
+        "revenue_yoy": "+4.0%",
+        "sss": "+3.6%",
+        "difm_sss": "MSD",
+        "diy_sss": "LSD",
+        "gpm": "51.28%",
+        "opm": "17.9%",
+        "eps": 9.35
+      }
+    },
+    "balance_sheet": {
+      "as_of_q3_2025": {
+        "total_assets": 16279627000,
+        "current_assets": 6596975000,
+        "ppe_net": 6133764000,
+        "cash": 204513000,
+        "accounts_receivable": 422849000,
+        "current_liabilities": 8709759000,
+        "stockholders_equity": 894676000,
+        "source": "SEC EDGAR 10-Q XBRL"
+      },
+      "note": "マイナスの株主資本は自社株買いの累積効果による典型的パターン。投資適格格付を維持しつつ積極的なレバレッジ運用。"
+    },
+    "cash_flow": {
+      "ytd_9m_2025": {
+        "operating_cf": 2128501000,
+        "investing_cf": -896565000,
+        "financing_cf": -1159848000,
+        "source": "SEC EDGAR 10-Q XBRL"
+      },
+      "fy2025_guidance": {
+        "capex": "1.2-1.3bn",
+        "fcf": "1.6-1.9bn"
+      },
+      "capital_allocation_note": "創出CFのほとんどは株主還元（自社株買い）に使用。配当なし。"
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "available",
+      "filings": [
+        {"form_type": "10-K", "filing_date": "2025-02-28", "period": "FY2024", "accession": "0000898173-25-000008"},
+        {"form_type": "10-K", "filing_date": "2024-02-28", "period": "FY2023", "accession": "0000898173-24-000009"},
+        {"form_type": "10-K", "filing_date": "2023-02-28", "period": "FY2022", "accession": "0000898173-23-000011"},
+        {"form_type": "10-K", "filing_date": "2022-02-28", "period": "FY2021", "accession": "0000898173-22-000012"},
+        {"form_type": "10-K", "filing_date": "2021-02-26", "period": "FY2020", "accession": "0000898173-21-000012"}
+      ]
+    },
+    "10q": {
+      "status": "available",
+      "latest": {
+        "form_type": "10-Q",
+        "filing_date": "2025-11-07",
+        "period": "Q3 2025",
+        "accession": "0000898173-25-000057"
+      }
+    },
+    "8k": {
+      "status": "partial",
+      "note": "8-K一覧は取得可能だが個別内容は未取得"
+    }
+  },
+  "insider_summary": {
+    "status": "available",
+    "period": "365 days",
+    "total_filings": 47,
+    "form_4_count": 46,
+    "form_3_count": 1,
+    "note": "直近1年で47件のインサイダー取引報告。Form 4が46件と活発。",
+    "management_info_from_report": {
+      "ceo": "Brad Beckham (2024年1月就任、Greg Johnson後任。COOからの昇格)",
+      "former_ceo": "Greg Johnson (勤続41年、2024年1月引退)",
+      "founder_family": "David O'Reilly (Vice Chairman, 0.46%), Lawrence O'Reilly (Co-Vice Chairman, 0.34%) - ガバナンス影響ほぼなし",
+      "senior_management": "226名（平均社歴20年以上）",
+      "district_managers": "591名（平均社歴14年以上）"
+    }
+  },
+  "key_metrics": {
+    "store_count": {
+      "fy2022": 5971,
+      "annual_openings": "150-200 stores/year",
+      "fy2025_guidance": "200-210 stores",
+      "coverage": "47 US states + Mexico"
+    },
+    "sss_history": {
+      "fy2023": "+7.9%",
+      "long_term_cagr_11_19": "SSS +4.5%"
+    },
+    "supply_system": {
+      "dc_count": 28,
+      "hub_stores": 383,
+      "avg_sku_per_store": 22000,
+      "dc_sku_capacity": 154000,
+      "hub_sku_range": "49000-94000",
+      "replenishment": "95%+ stores receive multiple daily deliveries, week 5 days",
+      "dc_capacity_per_dc": "220 stores"
+    },
+    "pb_share": "50%+ of sales",
+    "china_import_ratio": "30% (declining - shifted to Vietnam, Thailand, India)",
+    "difm_vs_diy": "DIFM>DIY in growth, DIY>DIFM in sales mix",
+    "tam": "USD 130-140bn (ORLY estimate of addressable US auto aftermarket)",
+    "consecutive_growth": "30+ years of consecutive revenue and profit growth (since 1993 IPO)",
+    "roic": "High and expanding (NOPAT margin improvement + Vendor Financing Program)",
+    "vendor_financing": "AP ~70% via Vendor Financing Program (USD 4.3bn, FY23)"
+  },
+  "filing_sections": {
+    "note": "10-Kセクション全文はSEC EDGAR MCPで未取得。アナリストレポートからの要約。",
+    "business": {
+      "summary": "米国2位の自動車部品販売会社。ミズーリ州拠点。47州+メキシコに6,000+店舗展開。DIFMが祖業（1957年）、DIYは1980年代から。Dual Market Strategy（DIY+DIFM）。",
+      "key_products": ["ハードパーツ（エンジン、ブレーキ、シャーシ等）", "メンテナンス製品（オイル、ワイパー等）", "アクセサリー", "サービス（バッテリー交換、テスト等）"],
+      "business_model": "自動車部品の販売供給システム。28DC+383ハブ店舗の物流ネットワーク。週5日・1日複数回の高頻度補充体制。",
+      "competitive_position": "DIFM全米2位。AZO対比で補充頻度・品質で優位。フラグメント市場でのコンソリデーター。"
+    },
+    "risk_factors": {
+      "summary": "アナリストレポートで言及されたリスク",
+      "risks": [
+        "EV化リスク: 長期的にネガティブ（AZO推計で-20%影響）。ただし2030年のSweet Spot内EV比率はMSD-10%で当面限定的",
+        "関税リスク: 中国からの仕入25%（低下傾向）。部品によっては免除あり",
+        "店舗カニバリゼーション: ドミナント戦略に伴う懸念だが、店舗当り・sqft当り売上は安定",
+        "店舗保有比率引上げ(40%→60%): Capex増→自社株買い原資への影響",
+        "National Accounts拡大によるマージン圧力",
+        "AAP凋落後の競争環境変化"
+      ]
+    },
+    "mda": {
+      "summary": "FY2025 Q2決算ベース（最新アナリストレポート 2025/7/25）",
+      "key_points": [
+        "SSS+4.1%（DIFM 7%+, DIY LSD）。上方修正。",
+        "GM 51.4%。関税初期段階（Same SKU LfL価格+1.5%未満）。2Hは短期GM圧力の可能性。",
+        "SGA per store +4.5% yoy（インセンティブコスト・インフレ要因）。通年3-3.5%見込み。",
+        "在庫投資: 前年比+90%。関税動向を睨み戦略的投資。",
+        "CAGR変更: Buyback 6%→3.5%に修正。CAGR 12.5%→10.0%に変更。"
+      ]
+    }
+  }
+}

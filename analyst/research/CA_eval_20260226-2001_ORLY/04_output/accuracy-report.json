@@ -1,0 +1,110 @@
+{
+  "research_id": "CA_eval_20260226-2001_ORLY",
+  "ticker": "ORLY",
+  "mode": "full",
+  "generated_at": "2026-02-26T20:25:00Z",
+  "kb_version": "v1.0.0",
+  "mode_determination": {
+    "reason": "ORLYはPhase 2データ（analyst/phase2_KY/phase1_ORLY_phase2.md）が存在するためフルモードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*ORLY*",
+    "phase2_data_found": true,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": {
+    "phase2_source": "analyst/phase2_KY/phase1_ORLY_phase2.md",
+    "claim_matching": [
+      {
+        "claim_id": 1,
+        "ai_title": "DIFM高頻度補充システムによるスイッチングコスト",
+        "ky_title": "DIFM特化型の高頻度補充システムによるスイッチングコスト",
+        "match_confidence": "exact",
+        "ai_ca_confidence": 70,
+        "ky_ca_confidence": 70,
+        "ca_deviation": 0,
+        "ai_cagr_confidence": 50,
+        "ky_cagr_confidence": 50,
+        "cagr_deviation": 0
+      },
+      {
+        "claim_id": 2,
+        "ai_title": "ローカルな規模の経済（規模・密度・ネットワーク）",
+        "ky_title": "ローカルな規模の経済とドミナント出店戦略によるシェアゲイン加速",
+        "match_confidence": "high",
+        "match_note": "KYタイトルには「ドミナント出店戦略」を含むが、KY自身がルール8で戦略≠優位性と指摘。AIは「ローカルな規模の経済」として正しく分離。同一主張と判定。",
+        "ai_ca_confidence": 90,
+        "ky_ca_confidence": 90,
+        "ca_deviation": 0,
+        "ai_cagr_confidence": 70,
+        "ky_cagr_confidence": 70,
+        "cagr_deviation": 0
+      },
+      {
+        "claim_id": 3,
+        "ai_title": "PB商品（売上50%超）によるコストマネジメント力と価格自由度",
+        "ky_title": "PB商品（売上の50%超）による利益率維持と価格自由度",
+        "match_confidence": "exact",
+        "ai_ca_confidence": 50,
+        "ky_ca_confidence": 50,
+        "ca_deviation": 0,
+        "ai_cagr_confidence": 70,
+        "ky_cagr_confidence": 70,
+        "cagr_deviation": 0
+      },
+      {
+        "claim_id": 4,
+        "ai_title": "祖業DIFMに根ざす人材・組織文化の継続性と顧客関係の深化",
+        "ky_title": "祖業DIFM特化による人材・組織文化の継続性と顧客関係の深化",
+        "match_confidence": "exact",
+        "ai_ca_confidence": 50,
+        "ky_ca_confidence": 50,
+        "ca_deviation": 0,
+        "ai_cagr_confidence": 70,
+        "ky_cagr_confidence": 70,
+        "cagr_deviation": 0
+      },
+      {
+        "claim_id": 5,
+        "ai_title": "フラグメントDIFM市場での小型M&A/コンソリ実行能力",
+        "ky_title": "フラグメント市場での小型M&A実行能力による継続的なシェアゲイン確保",
+        "match_confidence": "exact",
+        "ai_ca_confidence": 90,
+        "ky_ca_confidence": 90,
+        "ca_deviation": 0,
+        "ai_cagr_confidence": 70,
+        "ky_cagr_confidence": 70,
+        "cagr_deviation": 0
+      },
+      {
+        "claim_id": 6,
+        "ai_title": "DIFM・DIY両領域でのフラグメント市場における持続的価値創造",
+        "ky_title": "DIFM・DIY両領域でのフラグメント競争環境における持続的な価値創造",
+        "match_confidence": "exact",
+        "ai_ca_confidence": 30,
+        "ky_ca_confidence": 30,
+        "ca_deviation": 0,
+        "ai_cagr_confidence": 30,
+        "ky_cagr_confidence": 30,
+        "cagr_deviation": 0
+      }
+    ],
+    "mean_ca_deviation": 0.0,
+    "mean_cagr_deviation": 0.0,
+    "threshold": 15,
+    "ca_pass": true,
+    "cagr_pass": true,
+    "overall_verdict": "pass",
+    "annotation": "AI評価とKY評価（Phase 2）の平均乖離は0%（CA: 0%、CAGR: 0%）。全6件が完全一致。合格基準（平均乖離 <= 15%）を大幅に下回る。",
+    "caveats": [
+      "ORLYはKB3 fewshot_ORLY.mdに含まれるfew-shot銘柄であり、KB3キャリブレーション時にKYの評価値が直接参照された。したがって、今回の完全一致は独立した評価精度の検証ではなく、KB3キャリブレーションの精度確認に相当する。",
+      "KB3に含まれない銘柄（例: AME）での精度検証がより有意義な独立テストとなる。Phase 2データが5銘柄分蓄積された段階で、Leave-One-Out交差検証（1銘柄をfew-shotから除外して評価→除外銘柄のKY値と比較）を実施することを推奨。",
+      "KYの評価コメントには「DIFM特化型への違和感」「PB比率→サプライヤー依存の因果飛躍」などの定性的フィードバックが含まれるが、これらはconfidence値には反映されていない（confidence一致でもコメントの深さに差がある可能性）。"
+    ]
+  },
+  "simplified_mode_results": null,
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "medium",
+    "reason": "フルモードのCA平均乖離0%（合格基準<=15%）で合格。ただしORLYはKB3 few-shot銘柄であり、完全一致はKB3キャリブレーション精度の確認であって独立した評価精度の検証ではない。信頼性は「medium」（KB3の精度は高いが、独立性は限定的）。",
+    "recommendation": "KB3に含まれない銘柄（AME等）でのフルモード精度検証を優先的に実施し、KB3パターンの転用性を検証すべき。特にパターンIV（構造的市場ポジション→90%）がORLY以外でも適切にキャリブレーションされるかが鍵。"
+  }
+}

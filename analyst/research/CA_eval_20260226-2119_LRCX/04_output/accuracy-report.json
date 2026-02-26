@@ -1,0 +1,36 @@
+{
+  "research_id": "CA_eval_20260226-2119_LRCX",
+  "ticker": "LRCX",
+  "mode": "simplified",
+  "generated_at": "2026-02-26T21:50:00Z",
+  "kb_version": "v1.0.0",
+  "mode_determination": {
+    "reason": "LRCXはPhase 2データ（analyst/phase2_KY/*LRCX*.md）が存在しないため簡易モードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*LRCX*",
+    "phase2_data_found": false,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": null,
+  "simplified_mode_results": {
+    "check_id": "S-8",
+    "check_description": "contradicted事実に対するルール9自動適用（confidence → 10%）の確認",
+    "fact_check_source": "analyst/research/CA_eval_20260226-2119_LRCX/03_verification/fact-check.json",
+    "contradicted_claims": [],
+    "contradicted_count": 0,
+    "rule9_applied_count": 0,
+    "overall_verdict": "pass",
+    "pass": true,
+    "annotation": "contradictedと判定された事実の主張は0件（verified: 8件、unverifiable: 4件）。ルール9（事実誤認→confidence 10%）の適用対象なし。簡易モードのS-8チェックは合格。",
+    "caveats": [
+      "unverifiable 4件（F10: HBM TSV 100%シェア、F11: TELクライオエッチャー2025年投入、F12: YMTC関連$2bn売上喪失、F9の一部）は会社側IR発言または第三者未検証の業界データ。SEC開示ベースでの照合のみ実施。",
+      "SEC EDGAR MCP経由の10-Q財務データ（FY26 Q2）で検証済みだが、10-K年次ベースの詳細検証は未実施。",
+      "アナリストレポート内の数値間の内部一貫性は概ね確認済みだが、第三者データソース（VLSI Research等の業界調査）との照合は未実施。"
+    ]
+  },
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "medium",
+    "reason": "簡易モードのS-8チェックのみ実施。contradicted事実は0件であり、ルール9の適用対象なし。SEC EDGAR MCPで10-Q財務データを取得して検証を実施したため、信頼性はmedium。ただしPhase 2データ（Y評価値）との比較による精度検証は未実施。",
+    "recommendation": "LRCXのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim#1（3D NANDドライエッチング技術独占: CA 70%）のTELクライオエッチャー参入後の評価変化と、Claim#2（インテンシティ上昇恩恵: CA 50%）のLLY#6(30%)との乖離についてのY評価との比較が有益。"
+  }
+}

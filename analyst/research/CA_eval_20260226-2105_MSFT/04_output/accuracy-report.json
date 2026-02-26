@@ -1,0 +1,37 @@
+{
+  "research_id": "CA_eval_20260226-2105_MSFT",
+  "ticker": "MSFT",
+  "mode": "simplified",
+  "generated_at": "2026-02-26T21:30:00Z",
+  "kb_version": "v1.0",
+  "mode_determination": {
+    "reason": "MSFTはPhase 2データ（analyst/phase2_KY/*MSFT*.md）が存在しないため簡易モードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*MSFT*",
+    "phase2_data_found": false,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": null,
+  "simplified_mode_results": {
+    "check_id": "S-8",
+    "check_description": "contradicted事実に対するルール9自動適用（confidence → 10%）の確認",
+    "fact_check_source": "analyst/research/CA_eval_20260226-2105_MSFT/03_verification/fact-check.json",
+    "contradicted_claims": [],
+    "contradicted_count": 0,
+    "rule9_applied_count": 0,
+    "overall_verdict": "pass",
+    "pass": true,
+    "annotation": "contradictedと判定された事実の主張は0件。ルール9（事実誤認→confidence 10%）の適用対象なし。簡易モードのS-8チェックは合格。全28件の事実主張のうち、22件がverified、4件がverified_with_caveat、1件がunverifiable、0件がcontradicted。",
+    "caveats": [
+      "SEC EDGAR MCPから10-Q(Dec 2025)のXBRLデータを取得済み。Capex、総資産、PPE、営業利益等の財務数値はSEC EDGARデータとアナリストレポートの間で整合性を確認済み。",
+      "「Azure AI顧客60,000社」の出典が特定できず(unverifiable)。ただしcontradictedではないため、S-8チェックの対象外。",
+      "verified_with_caveat（クラウド比率22%→35%の出典不明確、FB Workplace終了済み、Capexの整合性）: 4件存在するが、いずれもcontradictedではなく留意事項のアノテーションであるため、S-8チェックの対象外。",
+      "T8 AI批判プロセスで3件のconfidence調整（#2 CAGR 70%→50%、#3 CA 50%→30%、#7 CA 50%→30%）が実施されたが、いずれも事実誤認に基づく調整ではなくKB整合性の調整であり、S-8とは無関係。"
+    ]
+  },
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "medium",
+    "reason": "簡易モードのS-8チェックのみ実施。SEC EDGAR MCPで直接取得した財務データ（10-Q Dec 2025）との照合を含むため、AME評価時（SEC EDGAR不可）よりは信頼性が高い。ただしPhase 2データ（Y評価値）との比較による精度検証は未実施。",
+    "recommendation": "MSFTのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim#1（Windows/Officeスイッチングコスト, CA70%）とClaim#2（Azure, CA50%）のY評価との比較が有益。T8修正後の平均CA確信度47%がアナリスト評価とどの程度乖離するかを検証すべき。"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "research_id": "CA_eval_20260226-2021_LLY",
+  "ticker": "LLY",
+  "verified_at": "2026-02-26T20:28:00Z",
+  "verifier": "ca-eval-lead (T6直接実行)",
+  "kb2_patterns_applied": {
+    "rejection_patterns": ["A", "B", "C", "D", "E", "F", "G"],
+    "high_eval_patterns": ["I", "II", "III", "IV", "V"]
+  },
+  "pattern_results": [
+    {
+      "claim_id": 1,
+      "claim_title": "複数の超大型市場への同時ポートフォリオ戦略",
+      "rejection_patterns_detected": [
+        {
+          "pattern": "B",
+          "name": "業界共通で差別化にならない",
+          "match_strength": "moderate",
+          "reasoning": "KB3 LLY#1で「グローバル大手医薬品であれば売上は複数製品の薬剤ポートから構成されるものであり、大手間の優位性とはなりにくい」と指摘。パターンBに該当。"
+        }
+      ],
+      "high_eval_patterns_detected": [],
+      "confidence_adjustment": {
+        "direction": "none",
+        "reason": "claims.jsonの50%はパターンBの影響を既に反映。KB3 LLY#1と一致。"
+      },
+      "final_confidence": 50,
+      "cagr_pattern_assessment": {
+        "pattern_II_match": "partial",
+        "reasoning": "製品ミックス変化→マージン改善の相殺はKB3 LLY#1 CAGR 70%で「妥当な見解」と評価済み。CAGR接続は比較的直接的だが大手共通。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "claim_title": "低分子型経口GLP-1作動薬における技術的差別化",
+      "rejection_patterns_detected": [],
+      "high_eval_patterns_detected": [
+        {
+          "pattern": "I",
+          "name": "定量的裏付けのある差別化",
+          "match_strength": "strong",
+          "reasoning": "P3データ（体重減少率、中断率8%）、$5.5B在庫、3年リード等の定量裏付け豊富。"
+        },
+        {
+          "pattern": "III",
+          "name": "能力>結果（プロセスの評価）",
+          "match_strength": "moderate",
+          "reasoning": "低分子技術力は能力。ただし「なぜ低分子製法を選別し得たのか」の根源要因の議論が不足（KB3 LLY#2指摘）。"
+        },
+        {
+          "pattern": "V",
+          "name": "特定競合との具体的比較",
+          "match_strength": "strong",
+          "reasoning": "NOVOのペプチド製剤との食事制限・製造効率・安全性プロファイルの3軸比較が明確。"
+        }
+      ],
+      "confidence_adjustment": {
+        "direction": "none",
+        "reason": "claims.jsonの70%はパターンI, III, Vを反映済み。KB3 LLY#2と一致。根源要因不足で90%には届かない。"
+      },
+      "final_confidence": 70,
+      "cagr_pattern_assessment": {
+        "pattern_II_match": "moderate",
+        "reasoning": "経口GLP-1差別化→シェア獲得→売上成長の接続は1-2ステップで直接的。製造効率→グロスマージン改善も合理的。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "claim_title": "アルツハイマー領域における長期的臨床開発ノウハウ",
+      "rejection_patterns_detected": [
+        {
+          "pattern": "D",
+          "name": "定性的のみ（説明力不足）",
+          "match_strength": "moderate",
+          "reasoning": "「長年の知見蓄積」は定性的。donanemabの臨床データは定量的だが、ノウハウ自体の定量的裏付けは不十分。ただしv1.0修正で説明力がMUSTとされており、ノウハウの説明は一定の水準あり。"
+        }
+      ],
+      "high_eval_patterns_detected": [
+        {
+          "pattern": "III",
+          "name": "能力>結果（プロセスの評価）",
+          "match_strength": "moderate",
+          "reasoning": "臨床開発ノウハウは能力として記述。donanemab承認は結果だがノウハウ蓄積プロセスの帰結として位置づけ。"
+        }
+      ],
+      "confidence_adjustment": {
+        "direction": "none",
+        "reason": "claims.jsonの50%はパターンD(moderate)とIII(moderate)のバランスを反映。KB3 LLY#4に準拠。"
+      },
+      "final_confidence": 50,
+      "cagr_pattern_assessment": {
+        "pattern_II_match": "none",
+        "reasoning": "ノウハウ→CAGR数値への接続は間接的。「達成確度」への寄与であり直接的メカニズムではない。KB3 LLY#4 CAGR 30%と整合。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "claim_title": "GLP-1デュオポリーにおける供給能力の参入障壁",
+      "rejection_patterns_detected": [],
+      "high_eval_patterns_detected": [
+        {
+          "pattern": "I",
+          "name": "定量的裏付けのある差別化",
+          "match_strength": "strong",
+          "reasoning": "PP&E $24.7B(SEC EDGAR確認)、$5.5B在庫、compoundersシェア10%→解消等の定量裏付け。"
+        },
+        {
+          "pattern": "IV",
+          "name": "構造的な市場ポジション",
+          "match_strength": "strong",
+          "reasoning": "GLP-1市場の急拡大×供給能力の参入障壁×デュオポリーは市場構造と企業ポジションの明確な合致。ORLY#2に類似パターン。"
+        }
+      ],
+      "pattern_G_analysis": {
+        "detected": true,
+        "severity": "moderate",
+        "reasoning": "NOVO（純粋競合）との供給能力の具体的比較が不足。両社とも供給拡大中だが、LLY固有の供給優位の定量論拠なし。"
+      },
+      "confidence_adjustment": {
+        "direction": "none",
+        "reason": "高評価パターンI(strong)・IV(strong)が揃うが、パターンG(moderate)と30年代以降のデュオポリー持続性の不確実性で70%。"
+      },
+      "final_confidence": 70,
+      "cagr_pattern_assessment": {
+        "pattern_II_match": "strong",
+        "reasoning": "供給能力→デュオポリー維持→TAM享受のメカニズムは直接的。TAM $1000億(2030年)は検証可能。PP&E投資が継続的に確認可能。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "claim_title": "既承認GLP-1製品(Mounjaro)による市場ポジション確立と粘着性",
+      "rejection_patterns_detected": [
+        {
+          "pattern": "A",
+          "name": "結果を原因と混同",
+          "match_strength": "moderate",
+          "reasoning": "市場ポジション確立は何らかの優位性の「結果」。KB3 LLY#5で「何らかの優位性の結果構築されたMounjaroの市場規模」と指摘。"
+        }
+      ],
+      "high_eval_patterns_detected": [],
+      "confidence_adjustment": {
+        "direction": "none",
+        "reason": "claims.jsonの50%はパターンA(moderate)を反映済み。KB3 LLY#5と一致。"
+      },
+      "final_confidence": 50,
+      "cagr_pattern_assessment": {
+        "pattern_II_match": "partial",
+        "reasoning": "ブランド粘着性→患者維持→売上継続は間接的。PBM判断での容易なスイッチリスクが接続の信頼性を弱める。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "claim_title": "グローバル医療機関ネットワークと医学情報提供体制",
+      "rejection_patterns_detected": [
+        {
+          "pattern": "B",
+          "name": "業界共通で差別化にならない",
+          "match_strength": "strong",
+          "reasoning": "KB3 LLY#6で「グローバル大手医薬品であればほぼ同等に備わっているネットワーク」と明確に否定。パターンBに強く該当。"
+        },
+        {
+          "pattern": "G",
+          "name": "純粋競合対比不明",
+          "match_strength": "strong",
+          "reasoning": "NOVO、PFE、MRK、ABBV等との具体的なネットワーク規模・効率性の比較なし。"
+        }
+      ],
+      "high_eval_patterns_detected": [],
+      "confidence_adjustment": {
+        "direction": "none",
+        "reason": "claims.jsonの30%はパターンB(strong)・G(strong)を反映済み。KB3 LLY#6と一致。"
+      },
+      "final_confidence": 30,
+      "cagr_pattern_assessment": {
+        "pattern_II_match": "none",
+        "reasoning": "ネットワーク→売上/SGA寄与の接続は間接的で数値根拠不透明。KB3 LLY#6 CAGR 50%でも「背景不明」と評価。"
+      }
+    }
+  ],
+  "systematic_pattern_analysis": {
+    "most_common_rejection_pattern": "B（業界共通能力）",
+    "pattern_G_frequency": "3/6主張で検出（Claim #1のNOVO以外の大手比較、#4のNOVO供給能力比較、#6のメガファーマ比較）",
+    "pattern_B_concerns": "Claim #1と#6はメガファーマ共通能力。LLYの優位性はGLP-1固有の技術力（Claim #2）と供給能力（Claim #4）に集中。",
+    "strongest_high_eval_patterns": "パターンI（定量的裏付け）とV（特定競合比較）がClaim #2で強く検出。パターンIV（構造的市場ポジション）がClaim #4で強く検出。",
+    "overall_assessment": "LLYの競争優位性は2本の柱（Claim #2:低分子技術、Claim #4:供給能力）に集中。残りは業界共通（#1,#6）、高リスク（#3）、結果寄り（#5）。KB3 LLYの評価パターンと高い整合性。"
+  },
+  "consistency_check": {
+    "internal_consistency": "good",
+    "cross_claim_consistency": [
+      {
+        "issue": "Claim #1（ポートフォリオ）とClaim #4（供給能力）は補完関係で整合的",
+        "status": "consistent"
+      },
+      {
+        "issue": "Claim #2（低分子技術）とClaim #5（Mounjaro粘着性）は注射→経口移行シナリオで連結",
+        "status": "consistent"
+      },
+      {
+        "issue": "Claim #6（ネットワーク）はClaim #1（ポートフォリオ）の下位概念として整合",
+        "status": "consistent_but_redundant"
+      }
+    ],
+    "cagr_consistency": "CAGR High teensの主要ドライバーはGLP-1（Claim #2, #4, #5）であり、Claim #2・#4のCAGR接続が最も直接的。整合的。"
+  },
+  "summary": {
+    "rejection_patterns_detected": {
+      "A": 1,
+      "B": 2,
+      "C": 0,
+      "D": 1,
+      "E": 0,
+      "F": 0,
+      "G": 2
+    },
+    "high_eval_patterns_detected": {
+      "I": 2,
+      "II": 0,
+      "III": 2,
+      "IV": 1,
+      "V": 1
+    },
+    "confidence_adjustments_made": 0,
+    "overall_pattern_quality": "moderate_to_good"
+  }
+}

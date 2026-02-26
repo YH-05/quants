@@ -1,0 +1,288 @@
+{
+  "research_id": "CA_eval_20260226-2119_VRSK",
+  "ticker": "VRSK",
+  "company_name": "Verisk Analytics, Inc.",
+  "generated_at": "2026-02-26T21:35:00Z",
+  "generator": "ca-eval-lead (T7直接実行)",
+  "report_version": "draft_v1",
+  "cagr_estimate": {
+    "current": "LDD (11%)",
+    "components": {
+      "revenue": "9%（Organic +7% + bolt-on 2%）",
+      "op_leverage": "1%程度（Capex/Sales低下+コスト効率化）",
+      "buyback": "1~2%"
+    },
+    "source": "2022年9月改訂（CAGR引上げ: 8%→LDD 11%）"
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "独占的保険データプラットフォーム（Proprietary Data Access）",
+      "ca_type": "structural",
+      "final_confidence": 90,
+      "label": "かなり納得",
+      "cagr_confidence": 90,
+      "cagr_label": "かなり納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PASS（データプラットフォームという仕組みを優位性として正しく抽出）",
+        "rule02": "PASS（独占的データプラットフォーム・データアクセスは名詞属性）",
+        "rule03": "PASS（保険取引データプラットフォームとして事実上の独占。総合プラットフォームとしてVRSKが唯一）",
+        "rule04": "PASS（297億データ、26億件/年データ流入、90%+顧客カバレッジ、25bp/保険料、99%継続率）",
+        "rule06": "PASS（全サービスの基盤であり構造的要素）",
+        "rule07": "PASS（事実上独占。CoreLogic/RELXはセグメント別部分競合のみ）",
+        "rule08": "PASS（歴史的経緯から形成された構造的資産であり戦略ではない）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A（ただしEnergy事業売却がコアデータ外拡張の失敗例として間接的に裏付け）",
+        "rule11": "PASS（米国損保業界の規制構造がVRSKの独占を制度的に支える。ORLY#2に匹敵する構造合致）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": [],
+        "high_eval": ["I（定量的裏付け、strong）", "II（直接的CAGR接続、strong）", "III（能力>結果、strong）", "IV（構造的市場ポジション、strong）"]
+      },
+      "key_evidence": [
+        "297億の統計データベース（法人82億、個人215億）",
+        "年間26億件のデータ流入（2021年）",
+        "米国損保会社90%以上と取引、上位100社100%カバー",
+        "保険料対比わずか25bpのコスト",
+        "1971年設立の非営利組織ISOを前身（歴史的独占の根拠）",
+        "顧客継続率99%（Claim #3と連動）"
+      ],
+      "upside_conditions": "既に90%の最高評価。追加のアップサイド条件は限定的。SEC EDGAR直接照合によるデータの独立検証が完了すれば評価の信頼性がさらに向上。",
+      "downside_risks": "AI/InsurTech企業による代替リスク（ただし保険取引データの蓄積は模倣困難）。データプライバシー規制強化による活用制限のリスク。"
+    },
+    {
+      "claim_id": 2,
+      "title": "ネットワーク効果（データ量×分析精度の正循環）",
+      "ca_type": "structural",
+      "final_confidence": 70,
+      "label": "おおむね納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PASS（ネットワーク効果は構造的な仕組み）",
+        "rule02": "PASS（名詞属性）",
+        "rule03": "PASS（独占プラットフォーム上のネットワーク効果）",
+        "rule04": "PARTIAL（概念は妥当だが効果量の定量化なし）",
+        "rule06": "PASS（事業核心のメカニズム）",
+        "rule07": "PASS（独占プラットフォーム上で純粋競合が享受できない）",
+        "rule08": "PASS（構造的特性であり戦略ではない）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A",
+        "rule11": "PASS（保険業界のデータ集約構造が制度的に支持）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["D（定性的のみ、moderate: 効果量の定量化なし）"],
+        "high_eval": ["III（能力>結果、strong）"]
+      },
+      "key_evidence": [
+        "データ量増加→分析精度向上→顧客価値向上の正循環",
+        "年間26億件のデータ流入で蓄積が加速",
+        "時とともに参入障壁が高くなる構造"
+      ],
+      "upside_conditions": "ネットワーク効果の効果量（データ量X%増→精度Y%向上）が定量化されれば90%に近づく可能性",
+      "downside_risks": "Claim #1との独立性が低く、独立した優位性としての付加価値は限定的",
+      "note": "Claim #1（データプラットフォーム）を補強するメカニズムとしての位置づけ。独立評価としての70%は、Claim #1との重複を反映。"
+    },
+    {
+      "claim_id": 3,
+      "title": "高いスイッチングコスト（ワークフロー組込み×低コスト×長期契約）",
+      "ca_type": "structural",
+      "final_confidence": 90,
+      "label": "かなり納得",
+      "cagr_confidence": 90,
+      "cagr_label": "かなり納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PASS（ワークフロー組込み・低コスト・長期契約という仕組み）",
+        "rule02": "PASS（スイッチングコストは名詞属性）",
+        "rule03": "PASS（独占プラットフォーム上でのスイッチングコスト）",
+        "rule04": "PASS（99%継続率、25bp/保険料、80%サブスク比率、1-5年契約、2%エスカレータ条項）",
+        "rule06": "PASS（収益安定性の基盤であり構造的要素）",
+        "rule07": "PASS（独占プラットフォーム上でのワークフロー組込みの深さ）",
+        "rule08": "PASS（構造的特性。インフレ並み価格抑制は戦略だがスイッチングコスト自体は構造）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "PASS（値上げ余地がありながら意図的に抑制する「やらない判断」）",
+        "rule11": "PASS（保険契約書ひな型・予想損失率算出が規制上必須。VRSKサービスが業界規制構造に組込み）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": [],
+        "high_eval": ["I（定量的裏付け、strong）", "II（直接的CAGR接続、strong）", "III（能力>結果、strong）", "IV（構造的市場ポジション、strong）"]
+      },
+      "key_evidence": [
+        "顧客継続率99%",
+        "保険料対比わずか25bpのコスト（スイッチの動機が極めて低い）",
+        "サブスク売上比率80%、契約期間1-5年（通常3年）",
+        "2%/年のエスカレータ条項（Automatic Revenue Growth）",
+        "値上げ余地があるにもかかわらずインフレ並みに抑制（独占維持の規律）",
+        "顧客のOPEX（Capexではない）として提供"
+      ],
+      "upside_conditions": "既に90%の最高評価。追加のアップサイド条件は限定的。",
+      "downside_risks": "InsurTech企業による代替プラットフォームの登場（ただし規制構造が障壁として機能）"
+    },
+    {
+      "claim_id": 4,
+      "title": "保険エコシステム構築力（クロスセル×TAM拡大）",
+      "ca_type": "operational",
+      "final_confidence": 50,
+      "label": "まあ納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified_with_caveat",
+      "rule_summary": {
+        "rule01": "PARTIAL（能力として記述されるが結果の側面もあり）",
+        "rule02": "PASS（名詞属性）",
+        "rule03": "PARTIAL（InsurTech企業との一部競合あり）",
+        "rule04": "PASS（TAM USD9bn、浸透率24%、27ソリューション、M&A Growth実績）",
+        "rule06": "PARTIAL（成長のドライバーであり核心的優位性の活用戦略）",
+        "rule07": "PARTIAL（Guidewire等との競合が一部存在）",
+        "rule08": "WARN（エコシステム構築は戦略の側面が強い）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "PARTIAL（Energy/Financial事業売却がコア外拡張のネガティブケース）",
+        "rule11": "PARTIAL（保険業界のデジタル化ニーズとの合致はあるが進行中）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["F（戦略と優位性の混同、moderate）", "C（因果関係の飛躍、weak）"],
+        "high_eval": ["I（定量的裏付け、moderate）"]
+      },
+      "key_evidence": [
+        "Insurance TAM USD9bn vs 売上USD2.2bn（24%浸透率）",
+        "27ソリューション提供、最大ユーザー16採用",
+        "M&A Growth: 2.8%(2018)→3.8%(2021)",
+        "AccuLynx大型買収USD2.35bnによるエコシステム拡大"
+      ],
+      "upside_conditions": "TAM浸透率の具体的なロードマップとクロスセルの定量実績が示されれば70%に近づく可能性",
+      "downside_risks": "TAM USD9bnは2018年の古いデータ。AccuLynx買収が従来の規律あるbolt-on方針からの逸脱リスク。Energy事業と同様のコア外拡張失敗リスク。"
+    },
+    {
+      "claim_id": 5,
+      "title": "規律あるキャピタルアロケーション（元CFOのROIC経営）",
+      "ca_type": "operational",
+      "final_confidence": 50,
+      "label": "まあ納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PARTIAL（ROIC 26%は結果。Incremental ROICインセンティブは仕組み）",
+        "rule02": "PASS（名詞属性として記述可能）",
+        "rule03": "PARTIAL（S&P Global/MSCI等とのROIC比較なし）",
+        "rule04": "PASS（ROIC 26%、Incremental ROIC 19%、Capex/Sales 5-6%、buyback 50%+）",
+        "rule06": "PARTIAL（補完的要素。ガバナンスの質）",
+        "rule07": "PARTIAL（同業比較なし）",
+        "rule08": "WARN（経営上の意思決定であり戦略に近い）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "PASS（Energy/Financial事業売却が明確なネガティブケース。M&A断念方針も）",
+        "rule11": "N/A（業界構造より経営の質に関する主張）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["F（戦略と優位性の混同、moderate）", "A（結果を原因と混同、weak）"],
+        "high_eval": ["I（定量的裏付け、strong）", "III（能力>結果、moderate）"]
+      },
+      "key_evidence": [
+        "ROIC約26%（2023年）",
+        "Incremental ROIC約19%（Proxy Statementにインセンティブ設定）",
+        "Capex/Sales 7-8%→5-6%ターゲット",
+        "過去3年平均50%以上を株主還元",
+        "元CFOがCEOに就任（規律のガバナンス強化）",
+        "Energy/Financial事業売却（過去の失敗からの原点回帰）"
+      ],
+      "upside_conditions": "S&P Global/MSCI等とのROIC比較データが得られれば70%に近づく可能性",
+      "downside_risks": "AccuLynx大型買収（USD2.35bn）が従来のbolt-on方針からの逸脱。CEO個人への依存リスク。"
+    },
+    {
+      "claim_id": 6,
+      "title": "ニッチ領域での規模の経済（専門人材×データ蓄積コスト）",
+      "ca_type": "structural",
+      "final_confidence": 70,
+      "label": "おおむね納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PASS（専門人材集積とデータ蓄積は仕組み）",
+        "rule02": "PASS（名詞属性）",
+        "rule03": "PARTIAL（CATモデリングでAIR/RMS/CoreLogicの3社競合あり）",
+        "rule04": "PASS（人員数・データ量・調査件数の定量裏付け豊富）",
+        "rule06": "PASS（参入障壁の主要構成要素）",
+        "rule07": "PARTIAL（セグメント別競合比較なし）",
+        "rule08": "PASS（構造的特性であり戦略ではない）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A",
+        "rule11": "PASS（保険リスク領域が高度専門知識を要求する業界構造との合致）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": [],
+        "high_eval": ["I（定量的裏付け、strong）", "III（能力>結果、strong）", "IV（構造的市場ポジション、moderate）"]
+      },
+      "key_evidence": [
+        "530名の統計専門家、190名のアクチュアリー",
+        "約200名の専門弁護士（年間13K法案、8.5K規制措置対応）",
+        "約520名のフィールド調査員（年間368K件超の実地調査）",
+        "15.4M不動産データストック",
+        "297億の統計データベース"
+      ],
+      "upside_conditions": "セグメント別の競合比較（AIR vs RMS, Xactware vs 競合）データが得られれば90%に近づく可能性",
+      "downside_risks": "Claim #1との重複が大きく独立した優位性としての付加価値は人的資本の模倣困難性に限定。Global Talent Optimization（海外移管）による専門人材の質低下リスク。"
+    },
+    {
+      "claim_id": 7,
+      "title": "AI/データ分析による付加価値化（Mozart AI Tool等）",
+      "ca_type": "operational",
+      "final_confidence": 30,
+      "label": "あまり納得しない",
+      "cagr_confidence": 50,
+      "cagr_label": "まあ納得",
+      "fact_check_status": "verified_with_caveat",
+      "rule_summary": {
+        "rule01": "PARTIAL（AI活用能力は能力だが浸透率50%は進行中の結果）",
+        "rule02": "PASS（名詞属性）",
+        "rule03": "WARN（AI活用は業界全体のトレンド。パターンB検出）",
+        "rule04": "PARTIAL（浸透率50%は定量的だがOGへの定量インパクト非開示）",
+        "rule06": "PARTIAL（Claim #1の付加価値化手段。補完的要素）",
+        "rule07": "WARN（AI能力自体の競合比較なし。パターンG strong）",
+        "rule08": "WARN（AI投資は戦略の側面が強い）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A",
+        "rule11": "PARTIAL（デジタル化トレンドとの合致はあるが独自ポジション不明確）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["B（業界共通、strong）", "D（定性的のみ、moderate）", "F（戦略と優位性の混同、moderate）"],
+        "high_eval": []
+      },
+      "key_evidence": [
+        "Mozart AI Tool 50%近くの浸透",
+        "Value-based pricingモデル採用",
+        "Discovery Navigator等のAI Use Case"
+      ],
+      "note": "Claim #1（独占データ）の付加価値化手段として整理が適切。独立した優位性としての強度は低い。「データ企業ならどこでもAI活用する」ため固有の差別化にならない。",
+      "downside_risks": "AI/InsurTech企業による破壊的イノベーションリスク。AI能力自体はデータ独占とは独立に模倣可能。"
+    }
+  ],
+  "overall_summary": {
+    "avg_ca_confidence": 64,
+    "avg_cagr_confidence": 74,
+    "strongest_claims": [
+      {"id": 1, "title": "独占的保険データプラットフォーム", "confidence": 90},
+      {"id": 3, "title": "高いスイッチングコスト", "confidence": 90}
+    ],
+    "weakest_claims": [
+      {"id": 7, "title": "AI/データ分析による付加価値化（業界共通トレンド）", "confidence": 30},
+      {"id": 4, "title": "保険エコシステム構築力（戦略寄り）", "confidence": 50},
+      {"id": 5, "title": "規律あるキャピタルアロケーション（戦略寄り）", "confidence": 50}
+    ],
+    "key_insight": "VRSKの競争優位性の核心はClaim #1（独占的保険データプラットフォーム）とClaim #3（高いスイッチングコスト）の2本柱。1971年の非営利組織ISOを前身とする歴史的独占に、99%継続率・25bp/保険料・80%サブスクが加わり、業界構造×企業ポジション合致（ルール11）が極めて明確。Claim #2（ネットワーク効果）と#6（規模の経済）はこれらを補強する構造要素。Claim #4-#5は戦略、Claim #7は業界共通トレンドとして適切に評価されている。",
+    "comparison_to_kb3": {
+      "closest_analog": "ORLY（平均63%。フラグメント市場×規模・密度×ネットワーク。核心2主張が90%、周辺が50-70%）",
+      "difference": "VRSKはORLYと同様に業界構造×企業ポジション合致が明確な銘柄。ORLYがフラグメントDIY市場での規模優位性であるのに対し、VRSKは規制構造に裏付けられたデータ独占。VRSK平均64%はORLY平均63%と近似し、両者とも核心的主張（90%）と周辺的主張（30-50%）の明確な二極化が特徴。"
+    }
+  }
+}

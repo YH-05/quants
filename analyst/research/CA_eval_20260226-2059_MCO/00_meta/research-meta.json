@@ -1,0 +1,55 @@
+{
+  "research_id": "CA_eval_20260226-2059_MCO",
+  "type": "ca_eval",
+  "ticker": "MCO",
+  "created_at": "2026-02-26T20:59:00Z",
+  "completed_at": "2026-02-26T21:25:00Z",
+  "parameters": {
+    "ticker": "MCO",
+    "report_path": "analyst/raw/MCO US.md",
+    "skip_industry": true
+  },
+  "status": "completed",
+  "model_config": {
+    "lead": "claude-opus-4-6 (inherit)",
+    "teammates": "sonnet (not used - lead direct execution)"
+  },
+  "workflow": {
+    "phase_0": "done",
+    "phase_1": "done",
+    "phase_2": "done",
+    "phase_3": "done",
+    "phase_4": "done",
+    "phase_5": "done"
+  },
+  "task_results": {
+    "T0_setup": { "status": "completed", "owner": "ca-eval-lead", "output": "00_meta/research-meta.json" },
+    "T1_sec_filings": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/sec-data.json" },
+    "T2_report_parser": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/parsed-report.json" },
+    "T3_industry": { "status": "skipped", "owner": "ca-eval-lead", "note": "PoC段階のポリシーによりスキップ（SEC EDGAR以外の外部データソース不使用）" },
+    "T4_claim_extractor": { "status": "completed", "owner": "ca-eval-lead", "output": "02_claims/claims.json" },
+    "T5_fact_checker": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/fact-check.json" },
+    "T6_pattern_verifier": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/pattern-verification.json" },
+    "T7_report_generator": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/draft-report.md", "04_output/structured.json"] },
+    "T8_ai_critique": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/critique.json", "04_output/revised-report.md"] },
+    "T9_accuracy": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/accuracy-report.json", "verdict": "pass" }
+  },
+  "outputs": {
+    "final_report": "04_output/revised-report.md",
+    "draft_report": "04_output/draft-report.md",
+    "structured_json": "04_output/structured.json",
+    "critique": "04_output/critique.json",
+    "accuracy": "04_output/accuracy-report.json"
+  },
+  "summary": {
+    "avg_ca_confidence": 56,
+    "avg_cagr_confidence": 71,
+    "strongest_claims": [
+      "Claim #1: 格付け事業の寡占構造（CA 90%）- 業界構造合致の最高評価",
+      "Claim #2: プライシングパワー（CA 70%）- 定量裏付け豊富",
+      "Claim #3: スイッチングコスト（CA 70%）- 経路依存性"
+    ],
+    "kb3_closest_analog": "ORLY#2（規模の経済90%）: 業界構造×企業ポジション合致パターン",
+    "notable_t8_modification": "Claim #6（ブランド認知）を50%→30%に引き下げ。claim#1-3と3重ダブルカウント、ブランドは寡占構造の結果であり原因ではない。"
+  }
+}

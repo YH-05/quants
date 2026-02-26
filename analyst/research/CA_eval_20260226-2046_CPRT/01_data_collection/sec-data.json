@@ -1,0 +1,204 @@
+{
+  "ticker": "CPRT",
+  "company_name": "Copart, Inc.",
+  "retrieved_at": "2026-02-26T20:47:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPから直近10-Qの財務データは取得成功。10-Kセクション（Business, Risk Factors, MD&A）やkey_metricsの詳細は取得不可。アナリストレポートの記載で補完。",
+    "affected_fields": ["filing_sections_full", "key_metrics_detailed"],
+    "available_fields": ["financials_from_10q", "financials_from_report", "key_metrics_from_report", "insider_summary_partial"]
+  },
+  "financials": {
+    "note": "SEC EDGAR 10-Q (FY2026/1Q, period ending 2025-10-31) + アナリストレポートからの参照値。",
+    "revenue": {
+      "description": "売上高",
+      "latest_quarterly": {
+        "note": "10-Qからは売上高の単独表示なし。OperatingIncome $430.7M, NetIncome $403.7M (FY26/1Q)",
+        "source": "SEC EDGAR 10-Q (accession: 0001193125-25-291660)"
+      },
+      "from_report": {
+        "fy24_4q_sales_yoy": "+7.2%",
+        "fy24_4q_service_yoy": "+7.1%",
+        "fy24_4q_vehicle_yoy": "+7.7%",
+        "fy24_annual_global_unit_growth": "約10%",
+        "us_revenue_share": "約85%",
+        "international_share": "約15%",
+        "service_share": "約75%（サルベージオークション）",
+        "vehicle_share": "約10%（中古車オークション）"
+      }
+    },
+    "segment_revenue_mix": {
+      "US": {
+        "share": "85%",
+        "description": "米国事業（サルベージオークション+中古車オークション）",
+        "salvage_auction": "売上高の約75%",
+        "whole_car_auction": "売上高の約10%"
+      },
+      "International": {
+        "share": "15%",
+        "description": "海外事業（英国、カナダ、ブラジル、フィンランド、ドイツ、UAE、スペイン等）"
+      }
+    },
+    "income_statement": {
+      "from_sec_edgar": {
+        "period": "FY2026/1Q (3 months ending 2025-10-31)",
+        "operating_income": "$430,694,000",
+        "net_income": "$403,714,000",
+        "eps_basic": "$0.42",
+        "eps_diluted": "$0.41",
+        "source": "SEC EDGAR 10-Q (accession: 0001193125-25-291660)"
+      },
+      "from_report": {
+        "fy24_4q_gross_margin": "42.4%",
+        "fy24_4q_opm": "33.6%",
+        "fy24_4q_ni_margin": "30.1%",
+        "fy23_3q_opm": "40.9%",
+        "fy23_3q_ni_margin": "33.9%",
+        "historical_opm": "約35%（非常に高い）",
+        "historical_cogs_ratio": "56-57%で安定、少しずつ改善傾向",
+        "historical_sga_trend": "6年前の10%半ばから9%へ一貫して低下"
+      }
+    },
+    "balance_sheet": {
+      "from_sec_edgar": {
+        "period": "2025-10-31",
+        "total_assets": "$10,581,014,000",
+        "current_assets": "$6,202,134,000",
+        "total_liabilities": "$961,903,000",
+        "current_liabilities": "$781,196,000",
+        "stockholders_equity": "$9,600,157,000",
+        "accounts_receivable": "$759,687,000",
+        "pp_and_e_net": "$3,650,424,000",
+        "cash_and_equivalents": "$5,233,590,000",
+        "source": "SEC EDGAR 10-Q (accession: 0001193125-25-291660)"
+      },
+      "note": "BS非常に健全。負債比率極めて低い（Total Liabilities $962M vs Equity $9,600M）。利払い負担ほぼゼロ。Cash $5.2Bnは総資産の約半分。"
+    },
+    "cash_flow": {
+      "from_sec_edgar": {
+        "period": "FY2026/1Q (3 months ending 2025-10-31)",
+        "operating_cf": "$535,253,000",
+        "investing_cf": "$1,916,306,000",
+        "financing_cf": "$450,000",
+        "source": "SEC EDGAR 10-Q (accession: 0001193125-25-291660)"
+      },
+      "note": "配当ゼロ。自社株買いは年率1%程度。既存事業の強化を優先して再投資。IAA対比で財務体力で優位。"
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "partial",
+      "partial_info": {
+        "note": "Copart FYは7月末決算。直近10-KはFY2024（2024年7月期）",
+        "fiscal_year_end": "July"
+      }
+    },
+    "10q": {
+      "status": "available",
+      "latest": {
+        "form_type": "10-Q",
+        "filing_date": "2025-11-24",
+        "accession_number": "0001193125-25-291660",
+        "period": "FY2026/1Q (ending 2025-10-31)"
+      }
+    },
+    "8k": {
+      "status": "unavailable"
+    }
+  },
+  "insider_summary": {
+    "status": "partial",
+    "management_info_from_report": {
+      "founder": "Willis J. Johnson（1982年創業）",
+      "note": "Jim CEOが二年前に就任し組織改編を実施（RB Global面談メモ2025/10）",
+      "culture": "オーナー企業でスピーディー・柔軟。IAA（RB）は官僚的と対比される"
+    }
+  },
+  "key_metrics": {
+    "market_structure": {
+      "north_america_salvage_auction": "大手2社で複占。CPRT 4割超（50%近い）、IAA(RB) 4割弱",
+      "total_annual_salvage_volume_us": "約5M台/年",
+      "total_registered_vehicles_us": "約300M台",
+      "new_car_sales_us": "約15M台超",
+      "annual_vehicle_removals_us": "約13M台（うちsalvage 5M台、中古車8M台）",
+      "auction_penetration": "約35%（CPRT+IAA合計550万台/1200万台リサイクル車）",
+      "total_loss_frequency": {
+        "1981": "4%",
+        "2020": "20%",
+        "fy24": "21.4%（yoy約2%上昇）",
+        "medium_term": "中長期的には30%を超えるとの認識"
+      }
+    },
+    "competitive_position": {
+      "global_bidder_base": "40万超の登録者数（2015年時点、その後も増加）",
+      "us_insurance_clients": "米国10大保険会社のうち7社と契約、うち4社と独占契約",
+      "notable_client_wins": ["GEICO（IAA独占→CPRT移行）", "USAA"],
+      "asp_resilience": "Manheim Index ▲9%の中でUS Insurance ASP ▲4%未満（FY24/4Q）",
+      "express_titling_run_rate": "年間1M台（所有権移転手続きの代行）",
+      "us_asp_vs_iaa": "直近決算CPRT +5.7% vs IAA +1%（ASP成長率格差）"
+    },
+    "operational": {
+      "yards": "200施設以上",
+      "land": "1万エーカー以上（保有、リースの IAA と対照的）",
+      "monthly_pickup_capacity": "25万台/月",
+      "online_auction": "100%オンライン（2003年VB2導入で業界初の完全オンライン化）",
+      "excess_yard_capacity": "50%の余剰キャパシティ（RB面談2025/10）"
+    },
+    "purple_wave": {
+      "description": "商用車・農機オークション（2023年10月買収、保有比率80%）",
+      "growth": "前年同期比+17%（FY24/4Q）",
+      "acquisition_revenue": "買収時売上高USD70M程度"
+    },
+    "cagr_drivers_from_report": {
+      "units_growth": "4%（走行距離1%+事故率一定+全損判定率上昇3%）",
+      "penetration": "+2%（ペネトレ35%→40%）",
+      "price": "+LSD%（廃車価格上昇）",
+      "total_revenue_cagr": "HSD~10%",
+      "operating_leverage": "+2%（OPM35%→40%超を10年で見込む）",
+      "buyback": "+1%",
+      "eps_cagr": "LDD（11%、配当ゼロ）"
+    }
+  },
+  "filing_sections": {
+    "note": "SEC EDGAR MCPからの直接取得は限定的。アナリストレポートからの要約。",
+    "business": {
+      "summary": "廃車・中古車のオンラインオークションプラットフォーム。北米サルベージオークション市場で40%超のシェア（IAA/RB Globalと合わせて80%の複占）。100%オンラインオークション。損保会社が主な売り手（80%）、解体業者が主な買い手。米国85%、海外15%（英国、カナダ、ブラジル等）。",
+      "key_products": [
+        "サルベージオークション（売上75%）:全損判定車のオンライン競売",
+        "中古車オークション（売上10%）:故障車・軽傷車のオンライン競売",
+        "付帯サービス:搬送、保管、所有権移転（Express Titling）",
+        "Purple Wave:商用車・農機オークション（2023年買収）"
+      ],
+      "revenue_model": "オークションフィー（売り手・買い手から徴収）+搬送料/保管料。買い手フィーは落札額×一定割合、売り手フィーは固定+変動混在。"
+    },
+    "risk_factors": {
+      "summary": "レポートで言及されたリスクファクター",
+      "risks": [
+        "自動運転・ADASの発展による事故率の趨勢的減少（ただし2030年までに急激な低下は想定せず）",
+        "保険未加入・保険不足（uninsured/underinsured）の増加による取引量への逆風（ドライバーの3人に1人が該当）",
+        "保険料高騰により保険請求を避ける顧客の存在",
+        "中古車価格（Manheim Index）の下落によるASPへの影響",
+        "IAA/RBのシェア奪還意欲（rebateや接待による顧客獲得）",
+        "non-salvage比率増加によるyard保有の重要性が変遷する可能性"
+      ]
+    },
+    "mda": {
+      "summary": "FY24/4Q実績とCAGRドライバー",
+      "fy24_4q": {
+        "sales_yoy": "+7.2%",
+        "global_unit_sales_yoy": "+8%（US +6%超、International +17%）",
+        "us_insurance_volume_yoy": "+6%",
+        "us_non_insurance_volume_yoy": "Blue Car +20%, Dealer +10%",
+        "global_asp_yoy": "▲5%",
+        "total_loss_frequency": "21.4%（yoy +2%上昇）"
+      },
+      "key_trends": [
+        "TLF（全損判定率）は構造的に上昇トレンド（車齢上昇、電装化・複雑化、新興国ニーズ）",
+        "Express Titlingの拡大（run rate 1M台、顧客のコア業務集中を支援）",
+        "海外事業の高成長（International +17%）",
+        "non-insurance volumeの比率上昇トレンド"
+      ]
+    }
+  }
+}

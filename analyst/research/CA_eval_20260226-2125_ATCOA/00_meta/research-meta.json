@@ -1,0 +1,51 @@
+{
+  "research_id": "CA_eval_20260226-2125_ATCOA",
+  "type": "ca_eval",
+  "ticker": "ATCOA",
+  "created_at": "2026-02-26T21:25:00Z",
+  "completed_at": "2026-02-26T21:50:00Z",
+  "parameters": {
+    "ticker": "ATCOA",
+    "report_path": "analyst/raw/ATCOA SS.md",
+    "skip_industry": true
+  },
+  "status": "completed",
+  "model_config": {
+    "lead": "claude-opus-4-6 (inherit)",
+    "teammates": "sonnet (N/A - Lead直接実行モード)"
+  },
+  "workflow": {
+    "phase_0": "done",
+    "phase_1": "done",
+    "phase_2": "done",
+    "phase_3": "done",
+    "phase_4": "done",
+    "phase_5": "done"
+  },
+  "task_results": {
+    "T0_setup": { "status": "completed", "owner": "ca-eval-lead", "output": "00_meta/research-meta.json" },
+    "T1_sec_filings": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/sec-data.json", "note": "Pre-enriched IR data copied (Swedish company, no SEC EDGAR)" },
+    "T2_report_parser": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/parsed-report.json" },
+    "T3_industry": { "status": "skipped", "owner": "ca-eval-lead", "note": "PoCポリシーによりスキップ（SEC EDGAR以外の外部データソース不使用）" },
+    "T4_claim_extractor": { "status": "completed", "owner": "ca-eval-lead", "output": "02_claims/claims.json" },
+    "T5_fact_checker": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/fact-check.json" },
+    "T6_pattern_verifier": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/pattern-verification.json" },
+    "T7_report_generator": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/draft-report.md", "04_output/structured.json"] },
+    "T8_ai_critique": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/critique.json", "04_output/revised-report.md"], "modifications": "critical x 1 (Claim#5 CAGR 70%->50%), minor x 5 (annotations)" },
+    "T9_accuracy": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/accuracy-report.json", "verdict": "pass", "mode": "simplified" }
+  },
+  "outputs": {
+    "final_report": "04_output/revised-report.md",
+    "draft_report": "04_output/draft-report.md",
+    "structured_json": "04_output/structured.json",
+    "critique": "04_output/critique.json",
+    "accuracy": "04_output/accuracy-report.json"
+  },
+  "summary": {
+    "avg_ca_confidence": 41,
+    "avg_cagr_confidence": 50,
+    "strongest_claims": ["#1 スイッチングコスト (70%)"],
+    "kb3_closest_analog": "COST（平均39%、純粋競合比較不足で評価抑制。二極化パターンはATCOA固有）",
+    "notable_t8_modification": "Claim#5 M&A Playbook CAGR: 70%→50%（CA=CAGR整合性、Dogma v1.0掛け算方針に基づく）"
+  }
+}

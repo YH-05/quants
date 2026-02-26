@@ -1,0 +1,419 @@
+{
+  "research_id": "CA_eval_20260226-2021_LLY",
+  "ticker": "LLY",
+  "company_name": "Eli Lilly and Company",
+  "extracted_at": "2026-02-26T20:25:00Z",
+  "extractor": "ca-eval-lead (T4直接実行)",
+  "kb_applied": {
+    "kb1_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule08", "rule10", "rule11"],
+    "kb3_references": ["LLY#1", "LLY#2", "LLY#3", "LLY#4", "LLY#5", "LLY#6", "ORLY#2", "CHD#1", "COST#1"],
+    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+  },
+  "cagr_estimate": {
+    "current": "High teens（10%台後半）",
+    "breakdown": {
+      "topline": "+10-15%",
+      "mounjaro_orforglipron": "GLP-1作動薬がメインドライバー（Mounjaro $10B+ピーク、orforglipron追加）",
+      "donanemab": "$5-10B（成功確率75%）",
+      "gpm_improvement": "+2-3%ポイント",
+      "sga_leverage": "数%ポイント"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "複数の超大型市場への同時ポートフォリオ戦略",
+      "ca_type": "operational",
+      "description": "GLP-1（糖尿病・抗肥満症）、アルツハイマー型認知症、乳がんの複数超大型市場に同時展開。単一薬品依存ではなく複数成長ドライバーが分散。業界他社比で20年代の大型特許切れリスクが小さい。",
+      "source_text": "重点領域が揃って大型成長市場であること、それぞれの分野においてリーディング企業として位置することにより、研究開発投資・マーケティングインフラなどの投資効率・資産効率が高いと考えられる。",
+      "factual_claims": [
+        "GLP-1、アルツハイマー、乳がんの3領域に成長ドライバーを保有",
+        "業界他社比で20年代の大型特許切れリスクが小さい",
+        "Jardiance(SGLT2阻害剤)は20年代後半に特許切れ",
+        "FY2025売上高$65.2B（SEC EDGAR 10-K確認済み）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "複数大型新薬のポートフォリオにより売上成長+10-15%を牽引。特許切れ薬剤（Jardiance等）の粗利低下を複数新薬の製品ミックス高度化で相殺。ただし製品ミックス変化がマージン改善を相殺する可能性あり。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "「複数超大型市場への展開」自体はポジション（結果に近い）。ただしポートフォリオをマネジメントする経営執行の能力として見れば能力の側面もある。KB3 LLY#1で50%と評価された主張。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PARTIAL",
+          "comment": "「ポートフォリオ戦略」は戦略的側面あり。名詞としては「ポートフォリオ管理力」が適切だが、レポートの記述は戦略寄り。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "FY2025売上$65.2B、3領域への展開は事実。ただし各領域での相対的ポジションの定量比較は限定的。説明力としては「大型成長市場でのリーディング企業」の記述あり。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "構造的優位性というより経営能力の側面が強い。個々の薬剤の競争力が本質であり、ポートフォリオ自体は補完的。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "FAIL",
+          "comment": "KB3 LLY#1で「グローバル大手医薬品であれば売上は複数製品の薬剤ポートから構成されるものであり、大手間の優位性とはなりにくい」と指摘。NOVO、PFE、MRK、ABBV等との差別化が不十分。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "WARN",
+          "comment": "「ポートフォリオ戦略」は戦略であり優位性ではない。ポートフォリオ管理能力として再定義すべき。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "ネガティブケースの言及なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "医薬品業界は研究開発集約型で複数パイプラインが重要だが、これは業界構造との合致というよりメガファーマの基本条件。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "KB3 LLY#1が50%。単一薬品依存企業との比較では業績安定性への寄与あるが、大手間の優位性とはなりにくい（ルール7 FAIL）。経営執行の優位性としてある程度評価。",
+        "kb3_calibration": "KB3 LLY#1（50%）と完全一致。「グローバル大手医薬品であれば大手間の優位性とはなりにくい」"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "KB3 LLY#1 CAGR 70%。大型市場複数新薬ポートが売上成長を牽引、安定性に寄与しうる。製品ミックス変化がマージン改善を相殺する可能性の指摘は妥当。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "title": "低分子型経口GLP-1作動薬における技術的差別化",
+      "ca_type": "structural",
+      "description": "orforglipronは低分子型GLP-1作動薬として、NOVOの経口ペプチド製剤に対して食事制限なし・製造効率で優位。P3試験3本成功。低分子GLP-1で3年以上リード。肝毒性なし（競合多数が断念）。$5.5Bの先行在庫でロケットスタート想定。",
+      "source_text": "低分子 GLP-1 作動薬として３年以上リードしており、LLY はその優位性を最大限追求する模様。注射剤や NOVO など他社の経口剤（ペプチド製剤）では、供給制限が市場構築のボトルネックとなっており、それに応じたビジネスモデルによる展開が主流。",
+      "factual_claims": [
+        "orforglipronは低分子型GLP-1作動薬",
+        "NOVOの経口GLP-1はペプチド製剤",
+        "P3試験3本成功（ACHIEVE-1:体重減-7.9%, ATTAIN-1:体重減-11%, ATTAIN-2:体重減-8.3%）",
+        "低分子GLP-1で3年以上リード",
+        "肝毒性検出されず（競合プロジェクト多数がこれで断念）",
+        "未承認薬在庫$5.5B計上（2024年12月末、10-K開示）",
+        "ACHIEVE-1: 中断率8%（Mounjaro 1桁半ば%を若干上回る）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "低分子経口GLP-1の差別化→注射剤対比で維持治療・米国外市場でシェア優位→GLP-1市場拡大期に経口剤シェアを獲得→売上成長+10-12%寄与。グロスマージン改善にも寄与（低分子=製造効率高い）。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "低分子製法の技術力は「能力」。P3成功は結果だが、技術的差別化の根拠として機能。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「技術的差別化」「製造効率」「低分子技術力」はいずれも名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "P3データ（体重減少率、中断率）、$5.5B在庫、3年リードタイムという定量的裏付け豊富。NOVO経口剤との直接的な数値比較あり。説明力も十分。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "低分子技術は構造的優位性。GLP-1市場の経口剤セグメントの核心。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PASS",
+          "comment": "NOVO（ペプチド経口剤）との具体的な技術差異が明示。食事制限、製造効率、安全性プロファイルの3軸で比較。KB3 LLY#2で70%評価。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "技術力は能力であり戦略ではない。ただしKB3 LLY#2で「なぜ低分子製法を選別し得たのかの根源要因への言及は不足」と指摘あり。"
+        },
+        "rule10_negative_case": {
+          "result": "PASS",
+          "comment": "肝毒性なし（競合多数が断念）がネガティブケースの裏付けとして機能。他社の失敗がLLYの技術力の相対的証明。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "GLP-1市場は注射剤→経口剤への移行期。供給能力が参入障壁。この市場構造において低分子製造の優位性は市場構造と合致。"
+        }
+      },
+      "confidence": {
+        "ca_score": 70,
+        "label": "おおむね納得",
+        "reasoning": "KB3 LLY#2と一致。NOVO対比で食事制限・製造面での優位性が確認。注射剤より差別化が明確。ただし「なぜ低分子製法を選別し得たのか」の根源要因への言及不足で90%には届かない。",
+        "kb3_calibration": "KB3 LLY#2（70%）と一致。「競合であるNovoの経口薬剤と比較し、食事等の制限や製造面での優位性が確認されており」"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "KB3 LLY#2 CAGR 70%。差別化された経口剤でシェア増→売上牽引。営業レバレッジも期待。メカニズムは1-2ステップで直接的。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "title": "アルツハイマー領域における長期的臨床開発ノウハウ",
+      "ca_type": "operational",
+      "description": "AB抗体で先行、PET診断薬で先行、donanemab承認。同領域での活動が長期に及び、エーザイ/BIIB連合と並ぶ幅広なパイプラインと経験値の奥行。",
+      "source_text": "アルツハイマー型認知症領域では、AB 抗体で先行、BACE 阻害剤では２番手の１つ、また新規メカニズムの抗体薬が P1 に複数ある。同領域での活動も長期に及び、PET 診断薬で先行、治療薬候補品でもエーザイ・BIIB 連合と並ぶ幅広なパイプラインと経験値の奥行があると考える。",
+      "factual_claims": [
+        "AB抗体で先行（solanezumab等）",
+        "PET診断薬で先行",
+        "donanemab承認済み",
+        "donanemabのP2でLeqembiを上回るアミロイドβ除去効果",
+        "2010年代半ば~後半に多数の企業が開発失敗してきた分野",
+        "donanemabのARIA発症率は30%台（Leqembiは20%台）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "臨床開発ノウハウ→P3成功確度の向上→CAGR達成の確度向上。直接的な売上・マージン増加ではなく計画の実現性を保証する下支え要因。ただしアルツハイマー市場自体のリスクは高い。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「臨床開発ノウハウ」は能力。donanemab承認は結果だが、長期蓄積の知見が能力として機能。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "ノウハウ、経験値、パイプラインの奥行は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "donanemabのP2データ（アミロイドβ除去効果）は定量的。ただし「15年以上の研究期間」の認定には2時点（2016年と2023年）のコメントに基づく違和感あり（KB3 LLY#4指摘）。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "アルツハイマーノウハウは特定領域の専門知識であり、GLP-1という主力成長ドライバーに対しては補完的位置づけ。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "エーザイ/BIIB（Leqembi）との比較はある程度示されるが、ROG（trontinemab）のBBB技術等の次世代との差別化は不明確。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "ノウハウ蓄積は能力であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "2010年代の多数の企業の開発失敗が間接的なネガティブケース。LLY自身も失敗経験あり（solanezumab）。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "アルツハイマー市場は高リスク・高リターン構造。長期知見蓄積は市場構造に合致するが、donanemab単品の市場形成はLeqembiに後れを取った面あり。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "KB3 LLY#4（50%）に近い。長年の知見蓄積は妥当だが、複数メカニズムへの取り組みが必ずしも優位性につながるとは限らない（KB3 LLY#3の30%指摘を参照）。donanemab承認で具体的成果が出た点を加味し、50%が妥当。",
+        "kb3_calibration": "KB3 LLY#4（50%）に準拠。KB3 LLY#3（30%：複数メカニズムの多面的開発戦略）よりは高い。個別メカニズムではなく蓄積ノウハウに焦点を絞った分。"
+      },
+      "cagr_confidence": {
+        "score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "KB3 LLY#4 CAGR 30%。臨床開発ノウハウは「達成確度」に寄与するが「CAGR数値」への直接的寄与ではない。アルツハイマー市場自体の高リスクを考慮。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "title": "GLP-1デュオポリーにおける供給能力の参入障壁",
+      "ca_type": "structural",
+      "description": "GLP-1作動薬市場においてLLYとNOVOが供給能力で圧倒的優位。供給制限が市場構築のボトルネック。製造能力の階段状拡大が続く。compounders（ローカルジェネリック）の脅威は正規品供給力増で解消。",
+      "source_text": "供給能力が大きな参入障壁となり、LLY と Novo Nordisk(NOVO)が圧倒的優位なポジションにあるとの見解も変更は無い。",
+      "factual_claims": [
+        "供給能力がGLP-1市場の参入障壁",
+        "LLYとNOVOの2社デュオポリー",
+        "両社のキャパが階段状に拡大中",
+        "FDA公式の品不足は解消済み",
+        "compounders（ローカルジェネリック）は24年央に10%以上の数量シェアを占めたが問題解消",
+        "orforglipronの未承認薬在庫$5.5B（ロケットスタート準備）",
+        "PP&E $24.7B（製造能力拡大投資を反映、SEC EDGAR確認）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "供給能力の参入障壁→デュオポリー維持→GLP-1市場拡大の大部分をLLY+NOVOが享受→売上成長+10-15%の主要ドライバー。TAM 1000億ドル（2030年頃）をLLY+NOVOで分け合う構図。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "供給能力は製造能力という「仕組み」。PP&E $24.7Bの投資が裏付け。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "供給能力、製造能力、参入障壁は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "PP&E $24.7B（SEC EDGAR）、orforglipron在庫$5.5B、TAM $1000億（2030年）、compoundersシェア10%→解消の定量的裏付け豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "供給能力は事業の核心的な構造的優位性。GLP-1市場での競争の本質。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "NOVO（純粋競合）との供給能力差の具体的比較は不十分。両社とも供給能力拡大中で、LLY固有の優位かNOVOとの同等かが不明確。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "供給能力は設備投資の蓄積結果であり、戦略ではなく構造的力。"
+        },
+        "rule10_negative_case": {
+          "result": "PASS",
+          "comment": "compounders（10%シェア→解消）が「正規品に対抗できない」ネガティブケースとして機能。NOVOの供給制限による機会損失も間接的裏付け。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "GLP-1市場は急拡大するTAMに対して供給が追いつかない構造。この市場構造において製造能力は最も重要な優位性。ORLY#2（フラグメント市場×規模）に類似した市場構造合致だが、デュオポリーの持続性に不確実性あり。"
+        }
+      },
+      "confidence": {
+        "ca_score": 70,
+        "label": "おおむね納得",
+        "reasoning": "供給能力×急拡大市場の構造合致はルール11に合致し、高い評価に値する。ただしNOVOとの具体的供給能力比較が不足（ルール7 PARTIAL）し、デュオポリーの持続性（30年代以降の新規参入）に不確実性あり。ORLY#2（90%）ほどの明確なフラグメント市場分析はないため70%。",
+        "kb3_calibration": "ORLY#2（90%: フラグメント市場×規模）に類似パターンだが、デュオポリーの持続性の不確実性と純粋競合比較の不足で70%に留まる。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "供給能力→デュオポリー維持→TAM享受のメカニズムは1-2ステップで直接的。TAM $1000億、PP&E投資の検証可能性あり。ただしGLP-1市場の価格競争リスク（HCV類似シナリオ）が不確実性要因。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "title": "既承認GLP-1製品(Mounjaro)による市場ポジション確立と粘着性",
+      "ca_type": "structural",
+      "description": "慢性疾患（糖尿病・肥満症）での継続的服用が粘着性を生む。Mounjaro/Zepboundでの市場規模・服用者数が規模の効果を発揮。注射剤→経口薬への移行時にも粘着性効果が一定程度期待。",
+      "source_text": "慢性疾患である糖尿、肥満症を取り扱うため、既存客が継続的に服用するような「粘着性」は重要。何らかの優位性の結果構築された Mounjaro の市場規模、服用者数は規模の効果を発揮し、注射剤から経口薬への移行に際しても粘着性効果は一定程度見込める。",
+      "factual_claims": [
+        "Mounjaro/Zepboundは22年2Qに米国上市",
+        "糖尿病・肥満症は慢性疾患で継続服用が必要",
+        "注射剤→経口薬への移行シナリオ",
+        "PBM/CVSのformulary選定でWegovyが優先推奨された事例あり"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "既承認薬での市場ポジション→ブランド粘着性→注射→経口移行時の患者維持→売上継続成長。ただし薬剤の効果・副作用・服用の手間が変わる新製品に対しては粘着性が機能しない可能性あり。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "市場ポジション確立は結果の側面がある。粘着性は構造的特性。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "粘着性、ブランド力、規模の効果は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "Mounjaro売上データはSEC EDGAR参照可能だが、粘着性の定量指標（処方更新率等）は不明。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "粘着性はGLP-1市場での構造的要素だが、薬剤スイッチが比較的容易な市場特性も考慮すべき。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "NOVO（Ozempic/Wegovy）も同等の粘着性効果を持つ。CVSのWegovyの優先推奨が示すように、PBM判断で容易にスイッチされる可能性。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "粘着性は市場構造から生まれる属性であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "CVSのWegovy優先推奨がネガティブケースとして機能するが、LLYはカンファレンスコールで「特に心配していない」と言及。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "慢性疾患治療薬市場では粘着性が重要な構造的要因。業界構造に合致。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "KB3 LLY#5（50%）と一致。慢性疾患での粘着性は重要だが、PBM判断での容易なスイッチリスク、薬剤特性変更時の粘着性喪失の可能性が50%の上限を示す。",
+        "kb3_calibration": "KB3 LLY#5（50%）と完全一致。「粘着性は重要だが、本来薬剤に求める効果、副作用、服用の手間などの条件が変わる新製品に対しては、粘着性は機能しない可能性は残る」"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "KB3 LLY#5 CAGR 70%。既承認薬ポジション+ブランド+粘着性→新薬上市時の売上寄与は直接的メカニズム。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "title": "グローバル医療機関ネットワークと医学情報提供体制",
+      "ca_type": "operational",
+      "description": "医師・医療機関との広範な関係構築による情報提供・販売インフラ。複数超大型市場への同時展開を支えるグローバルネットワーク。",
+      "source_text": "研究開発投資・マーケティングインフラなどの投資効率・資産効率が高いと考えられる。",
+      "factual_claims": [
+        "グローバル大手医薬品企業の一角",
+        "糖尿病、中枢神経系、抗がん剤、自己免疫疾患の複数領域に展開"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "広汎なネットワーク上で流れる情報・製品が増大→一定の売上寄与・販管費効率化。ただし数値+1-2%/+1-2%の根拠は不透明。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "ネットワーク、情報提供体制は能力・仕組み。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "ネットワーク、インフラは名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "FAIL",
+          "comment": "具体的な定量データなし。「投資効率・資産効率が高い」は定性的記述のみ。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "補完的要素。個々の薬剤の競争力が構造的であり、ネットワークはそれを活かすインフラ。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "FAIL",
+          "comment": "KB3 LLY#6で「グローバル大手医薬品であればほぼ同等に備わっているネットワークであり、大手間での優位性とはなりにくい」と明確に否定。ルール3（誰でも持っている能力は却下）に該当。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "ネットワークは資産であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "ネガティブケースの言及なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "FAIL",
+          "comment": "メガファーマ共通のインフラであり、LLY固有の業界構造合致ではない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "KB3 LLY#6（30%）と一致。メガファーマ共通の能力であり、dogma却下基準#2「業界共通の能力」に該当。大手間での優位性とはなりにくい。",
+        "kb3_calibration": "KB3 LLY#6（30%）と完全一致。「グローバル大手医薬品であればほぼ同等に備わっているネットワーク」"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "KB3 LLY#6 CAGR 50%。広汎なネットワーク上での効率化は一定程度認めるが、数値+1-2%/+1-2%の背景不明。"
+      }
+    }
+  ],
+  "rule9_gatekeeping": {
+    "applied": false,
+    "reason": "ファクトチェック（T5）で事実誤認なし。ルール9適用対象なし。"
+  },
+  "summary": {
+    "total_claims": 6,
+    "confidence_distribution": {
+      "90_very_convinced": 0,
+      "70_mostly_convinced": 2,
+      "50_somewhat_convinced": 2,
+      "30_not_convinced": 1,
+      "10_rejected": 0
+    },
+    "avg_ca_confidence": 53,
+    "claims_with_cagr_connection": 6,
+    "avg_cagr_confidence": 60,
+    "key_strengths": [
+      "低分子経口GLP-1（orforglipron）のNOVO対比技術差別化は明確（Claim #2: 70%）",
+      "GLP-1デュオポリーの供給能力参入障壁は市場構造に合致（Claim #4: 70%）",
+      "P3データ、SEC EDGAR財務データ、$5.5B在庫等の定量的裏付け豊富"
+    ],
+    "key_weaknesses": [
+      "Claim #1（ポートフォリオ戦略）・#6（ネットワーク）はメガファーマ共通能力として評価が限定的",
+      "アルツハイマー領域（Claim #3）は高リスクでCAGR接続の確度が低い",
+      "NOVO対比でのLLY固有の供給能力優位の具体的比較が不足（Claim #4のルール7）"
+    ],
+    "poc_skipped": ["rule12_report_type_distinction"]
+  }
+}

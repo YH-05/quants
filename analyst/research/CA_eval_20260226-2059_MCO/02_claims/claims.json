@@ -1,0 +1,480 @@
+{
+  "research_id": "CA_eval_20260226-2059_MCO",
+  "ticker": "MCO",
+  "company_name": "Moody's Corporation",
+  "extracted_at": "2026-02-26T21:05:00Z",
+  "extractor": "ca-eval-lead (T4直接実行)",
+  "kb_applied": {
+    "kb1_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule08", "rule10", "rule11"],
+    "kb3_references": ["ORLY#2", "COST#1", "COST#7", "CHD#1", "LLY#6", "MNST#1", "MNST#4"],
+    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+  },
+  "cagr_estimate": {
+    "current": "EPS +9.5%（売上+6%）（2025年8月修正）",
+    "breakdown": {
+      "mis": "+6%（実質GDP2.5%+価格効果2.5%+新興国/PC+1%）",
+      "ma": "+6.5%",
+      "margin_improvement": "+1%",
+      "share_reduction": "+1.5%",
+      "external_growth": "+1%"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "格付け事業の寡占構造による構造的参入障壁",
+      "ca_type": "structural",
+      "description": "MCOとSPGIで格付け市場の約8割を占め、過去20年ほぼ変動なし。信用付与はトラックレコード重視であり新規参入のハードルが極めて高い。発行体は概ね2社のレーティング取得が一般的であり、MCO/SPの2社体制は構造的に固定されている。",
+      "source_text": "寡占業界（MCOとSPグローバル（SPGI US）で4割ずつのシェア、Fitchは2割弱で3位、その他5%）であり、信用付与を行う業態であることからトラックレコード重視であり、新規参入の恐れが低い。",
+      "factual_claims": [
+        "MCOとSPGIで格付け市場の各約40%シェア",
+        "Fitch2割弱で3位、その他5%",
+        "過去20年ほぼシェア変動なし",
+        "発行体は概ね2社のレーティングを取得するのが一般的"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "寡占構造→安定的な格付け収入基盤→MIS CAGR +6%の土台。新規参入リスクが低いことでCAGR予見性が高い。実質GDP成長+2.5%はMIS売上にほぼ直結（債券発行はGDP成長に連動）。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「寡占構造」「参入障壁」は能力・仕組みの記述。シェア40%は結果だが、主張の核心はそれを維持する構造的メカニズム（信用付与業態のトラックレコード重視性、2社取得慣行）にある。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「寡占構造」「参入障壁」「トラックレコード」—いずれも名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "シェア比率（MCO/SPGI各40%、Fitch20%弱、他5%）が明示。20年のシェア安定性も定量的裏付け。説明力も十分。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "寡占構造は格付け事業の核心的・構造的要素。補完的要素ではない。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "SPGIとの差別化はMCOの格付け事業比率の高さ（50% vs 30%弱）として示されるが、格付けの質そのものでの差別化は限定的。アナリスト自身が「MCOを選好する」理由は格付け事業ウェイトの高さ。Fitchに対しては規模とトラックレコードで明確に優位。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "寡占構造は市場の構造的特性であり、MCOの戦略的決断ではない。正しく「構造」として記述されている。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "新規参入の失敗例や、格付け会社を変えた発行体が市場で不利になった事例への具体的言及はないが、「過去20年ほぼ変動なし」という実績自体がネガティブケース（参入試みの不成功）を間接的に示す。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "格付け市場は信用付与という業態特性から自然独占的な寡占構造を形成。MCOのポジション（2社寡占の一角）はこの業界構造に完全に合致。ORLYのフラグメント市場×規模とは異なるが、寡占市場×トラックレコード×2社取得慣行という構造合致は明確。"
+        }
+      },
+      "confidence": {
+        "ca_score": 90,
+        "label": "かなり納得",
+        "reasoning": "格付け市場の寡占構造は教科書的な構造的優位性。過去20年のシェア安定性、2社取得慣行、信用付与業態のトラックレコード重視性という3重の構造的裏付けがある。KB3ではORLY#2（フラグメント市場×規模=90%）が最高評価だったが、MCOの寡占構造×参入障壁は同等かそれ以上に強固な業界構造との合致を示す。ルール11の条件を満たし、定量的シェアデータ（ルール4）も揃っている。ただしSPGIとの純粋競合での質的差別化（ルール7）が不完全な点を考慮しても、業界構造合致の強さから90%を維持。",
+        "kb3_calibration": "ORLY#2（90%）類似：業界構造×企業ポジションの合致。MCOの寡占構造はORLYのフラグメント市場以上に安定的。"
+      },
+      "cagr_confidence": {
+        "score": 90,
+        "label": "かなり納得",
+        "reasoning": "寡占構造→安定収入基盤→MIS CAGR +6%は1ステップで直結。債券発行はGDP成長に連動し、20年のシェア安定性がCAGR予見性を高める。開示データ（市場シェア、起債統計）で検証可能。KB3のCOST顧客粘着力（90%）と同等の検証可能性。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "title": "格付け事業のプライシングパワー（価格交渉力）",
+      "ca_type": "structural",
+      "description": "寡占構造を背景に年間+2-3%（会社見解）、CS証券推定では過去10年平均+4-5%の価格引き上げを継続。格付け会社変更のリスクが高く、手数料引き上げへの抵抗は低い。より複雑なストラクチャー債券への移行も価格上昇に寄与。",
+      "source_text": "価格交渉力が高く必要に応じて値上げが可能（より複雑なストラクチャー債券へ移行など、寡占環境下で年間+2-3％の価格引き上げが見込めるとの会社見解。CS証券推定では過去10年平均では年+4-5％程度。）",
+      "factual_claims": [
+        "年間+2-3%の格付け価格引き上げ（会社見解）",
+        "CS証券推定では過去10年平均+4-5%",
+        "MA事業でも3-4%程度の値上げを実施",
+        "格付け事業での提示価格はこれまで通り年+3-4%の上昇ペース維持（2023年4Q）"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "プライシングパワー→CAGR内「価格効果+2.5%」に直接対応。MIS CAGR +6%のうち2.5%が価格効果。過去実績+4-5%に対しアナリストは保守的に+2.5%を採用。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「価格交渉力」は能力。値上げ実績は結果だが、主張の核心は寡占構造に基づく構造的な価格設定力にある。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「プライシングパワー」「価格交渉力」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "年+2-3%（会社見解）、+4-5%（CS証券推定）、MA事業+3-4%と複数の定量データあり。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "プライシングパワーは事業モデルの核心。構造的要素。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "SPGIも同等のプライシングパワーを持つ可能性が高い（同じ寡占構造の恩恵）。MCO固有の差別化というよりは寡占構造の恩恵。ただしFitchや新興格付け会社に対しては明確に差別化。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "値上げは戦略的決断だが、それを可能にする「プライシングパワー」は構造的な力。"
+        },
+        "rule10_negative_case": {
+          "result": "PASS",
+          "comment": "「手数料の値下げで競争に勝つことはない。むしろ手数料を上げてより高い格付けを得ようとするインセンティブが強い」（1on1）が逆の意味でのネガティブケース（値下げ競争の不存在）を示す。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "寡占市場での価格設定力は業界構造に直接起因。claim#1（寡占構造）の派生的帰結であり、構造合致は明確。"
+        }
+      },
+      "confidence": {
+        "ca_score": 70,
+        "label": "おおむね納得",
+        "reasoning": "プライシングパワーは寡占構造（claim#1）の派生的帰結であり、独立した優位性というよりはclaim#1の一側面。ただし定量的な裏付け（+2-3%/年、CS推定+4-5%）が豊富で説明力は高い。SPGIも同等のプライシングパワーを持つため純粋競合差別化（ルール7）は部分的。KB3のCOST#7（PB商品力70%）と同等レベル—NB交渉ツールとしてのKirklandがCOSTの構造（倉庫型）から派生するのと同様、MCOのプライシングパワーは寡占構造から派生する。90%としないのは独立性の弱さとSPGI同等性のため。",
+        "kb3_calibration": "COST#7（70%）類似：構造的要素からの派生的優位性で定量裏付け豊富。"
+      },
+      "cagr_confidence": {
+        "score": 90,
+        "label": "かなり納得",
+        "reasoning": "プライシングパワー→価格効果+2.5%はCAGR内で直接対応するパラメータ。過去10年+4-5%に対し保守的に+2.5%としており、達成確度は高い。開示データ（四半期決算でのpricing disclosure）で検証可能。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "title": "格付け評価の経路依存性によるスイッチングコスト",
+      "ca_type": "structural",
+      "description": "格付け評価の継続性・経路依存性を背景とした契約維持力の高さ。格付け会社を変えることは発行体にとってリスク（格付け変更による市場混乱、投資家の信頼喪失）が大きく、実質的にロックインされる。CLO等で方法論の保守性が短期的に案件を失うことがあっても、長期の信頼性がブランドを支える。",
+      "source_text": "格付け評価の継続性/経路依存性を背景とした契約維持力の高さ。格付け会社を変えることのリスクが高いため、顧客を失うリスクは低く、価格交渉力もある。",
+      "factual_claims": [
+        "格付け事業は経路依存性が高い",
+        "CLOの方法論がS&Pより保守的な領域がある",
+        "MA事業の契約維持率93-94%"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "スイッチングコスト→顧客維持→MIS安定収入基盤→CAGR +6%の確度支持。MA維持率93%→ARR安定成長+HSD。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「スイッチングコスト」「経路依存性」は構造的仕組み。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「スイッチングコスト」「経路依存性」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "MA維持率93-94%は定量的。MIS側のスイッチングコストは定性的記述が中心で、「シェア安定20年」が間接的裏付け。スイッチングコストの金銭的規模や発行体アンケート等の直接的データはなし。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "スイッチングコストは格付けビジネスの核心的構造。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "SPGIに対しても同様のスイッチングコストが存在する。MCO固有というよりは業界構造に内在する特性。CLO方法論の保守性（S&P比）は差別化要素だが限定的。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "経路依存性は市場構造の特性であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "「CLO方法論の保守性で短期的に案件を失うが長期信頼を重視」はネガティブケース的要素。ただし具体的な案件喪失と回復の事例データは不明。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "信用付与業態における経路依存性は業界構造に起因。"
+        }
+      },
+      "confidence": {
+        "ca_score": 70,
+        "label": "おおむね納得",
+        "reasoning": "スイッチングコストは格付け事業の本質的特性として広く認識されており、方向性は明確。ただしclaim#1（寡占構造）と大部分が重複しており、独立した優位性としての付加価値は限定的。MA維持率93%という定量データはあるが、MIS側のスイッチングコスト定量化は不十分。SPGIにも同様に存在する特性であることからルール7は部分的にしか充足せず。90%とせず70%にとどめるのはclaim#1との重複性とSPGI同等性のため。",
+        "kb3_calibration": "COST#1（70%）類似：定量裏付け（維持率93%）あり、方向性は納得だが純粋競合差別化が限定的。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "スイッチングコスト→顧客維持→安定収入は直接的。MA維持率93%で検証可能。ただしMIS側の検証データが不足。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "title": "MA事業のデータ蓄積とクロスセル拡大力",
+      "ca_type": "operational",
+      "description": "100年近くにわたり蓄積された企業データ（格付け、非公開企業データ、KYC等）が競争優位の源泉。KYCクロスセルが顧客の2割まで進展。保険顧客では上位10社6-7品購入。蓄積データ・操作性から業者変更コストが高い。ただしアナリスト自身が「引き続き優位性評価は課題として残存」と指摘。",
+      "source_text": "100年近くにわたり蓄積されてきた企業データの蓄積が強みであり、銀行、保険などの業界中心に貸し付けリスク評価などのデータを提供。顧客認証（KYC）は多くの業態から需要あり。",
+      "factual_claims": [
+        "100年近いデータ蓄積",
+        "KYCクロスセルは分析部門顧客の2割まで進展",
+        "保険顧客上位10社で6-7品、次の90社で4-5品",
+        "ARR $3.3B (+8% yy)",
+        "維持率93%",
+        "生成AIサービス追加で3割の価格アップ"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "データ蓄積→KYCクロスセル→ARPU向上→MA ARR +HSD→MA CAGR +6.5%。維持率93%がベースラインを保証。ただしアナリストは「明確に言語化できていない」と優位性の評価を留保。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "「データ蓄積」「クロスセル能力」は能力・資産。ARR成長は結果だが主張の核心は蓄積データという資産にある。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「データ蓄積」「クロスセル力」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "KYCクロスセル2割、保険顧客品数、ARR $3.3B、維持率93%と定量データ豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "格付けデータ蓄積は構造的だが、KYCや災害リスクなどの個別サービスは補完的側面もある。MISとMAのシナジー（格付けデータ→MA製品）は構造的。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "SPGI（Market Intelligence）、Bloomberg、MSCI等と競合。アナリスト自身が「データ分析事業では競争環境は厳しい」「優位性評価は課題として残存」と指摘しており、純粋競合に対する差別化が不明確。SPGIのCapital IQ、FactSetとの比較でMCOデータの具体的優位性は未言語化。",
+          "flag": "analyst_flagged_as_unclear"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "クロスセルは戦略だが、それを可能にする「データ蓄積」は資産・能力。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "MA事業での買収断念例や参入しなかった領域への言及なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "金融データ市場は複数プレイヤーが存在する競争的市場であり、格付け市場のような寡占構造ではない。業界構造との合致はMIS事業ほど強くない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "方向性は認めるが、アナリスト自身が「優位性評価は課題として残存」「明確に言語化できていない」と明示的に留保している点が重要。データ蓄積100年は事実だが、SPGIのCapital IQやBloombergとの具体的差別化（ルール7）が不明確。KYCクロスセル2割という定量データはあるものの、競合他社も同様のサービスを展開しており、「データ提供企業は多岐に数多く存在し、SPGIやMSCI等の競合も買収による事業展開を進めている」とレポート自身が記述。KB3のLLY#6（メガファーマ共通ネットワーク=30%）ほど業界共通ではないが、COSTの数値裏付け（70%）ほどの差別化も示されていない。50%が妥当。",
+        "kb3_calibration": "COST#4（50%）類似：方向性は認めるが情報不足。LLY#6（30%）よりは差別化あるが、COST#1（70%）ほどの定量差別化なし。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "データ蓄積→KYCクロスセル→ARPUは2ステップで直接的。ARR $3.3B・維持率93%のデータで検証可能。MA CAGR +6.5%のうちクロスセル寄与は明確。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "title": "プライベートクレジット市場成長による格付け需要拡大機会",
+      "ca_type": "structural",
+      "description": "プライベートクレジットTAM $3T以上。ファンドファイナンス（BDC/CLO）とABFが主要格付け対象。新規マンデートの25%がPC関連、ディール数+50% yy。保険・年金のPC資産配分拡大が格付け需要をけん引。ただしダイレクトレンディングでは格付け不要、公開格付けへのカニバリも存在。",
+      "source_text": "プライベートクレジットをダイレクト・レンディングとして捉え、公社債市場の代替としての選択肢と考えがちだがそれだけではなくファンドファイナンス、証券化なども含まれる。保険会社がプライベートクレジットへの資産配分を増やし続けており、格付けの需要をけん引。",
+      "factual_claims": [
+        "プライベートクレジットTAM $3T以上（MCO推定）",
+        "新規マンデートの25%がPC関連",
+        "ディール数+50% yy",
+        "ストラクチャードファイナンス1Q25収益成長の20%がPC由来",
+        "PreqinのPC AUM予測：29年$2.6T、CAGR 8%",
+        "SPGIのPC収益$140mil（格付け+MI合算、+21% yy）",
+        "MCOはダイレクトレンディングではCAGR引き上げ見込みにくい"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "PC市場成長→格付け需要（BDC/CLO/ABF）→MIS CAGR内「新興国/PC +1%」の寄与。ただしアナリストの判断は「CAGR引き上げは行わず」「サポート材料程度」。MA側は「引き上げ余地あり（アドオン+1%程度）」だが「時期尚早」。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "WARN",
+          "comment": "「プライベートクレジット市場の成長」は外部環境の変化であり、MCO固有の能力・仕組みではない。MCO固有の優位性は「寡占構造のPC市場への拡張可能性」であり、主張の再定義が必要。",
+          "flag": "primarily_market_opportunity"
+        },
+        "rule02_noun_attribute": {
+          "result": "PARTIAL",
+          "comment": "「成長機会」は名詞だが、優位性そのものではなく機会の記述。MCO固有の属性に変換すると「寡占的格付け提供力のPC市場への適用可能性」。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "TAM $3T、ディール数+50%、CAGR 8%等の定量データ豊富。アナリストの詳細な1on1調査に基づく。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "PCの格付け需要（BDC/CLO/ABF）はMIS事業の構造的延長だが、ダイレクトレンディングでは格付け不要。全てが構造的とは言えない。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "SPGIもPC市場で同等のポジション。SPGIは既にPC収益$140mil開示。MCO固有のPC優位性は不明確。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "WARN",
+          "comment": "「PC市場への参入」は戦略的判断。それを可能にする「寡占的格付け提供力」が優位性。主張は戦略/機会の記述に偏っている。"
+        },
+        "rule10_negative_case": {
+          "result": "PASS",
+          "comment": "アナリスト自身がダイレクトレンディングでの限界（格付け不要、カニバリリスク）を明示的に記述。MCO IR担当もMIS CAGR引き上げ困難を認識。優れたネガティブケース分析。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "PC市場での格付け需要は発展途上であり、業界構造が確定していない。MCOの寡占ポジションがPC市場にそのまま適用されるかは未検証。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "PC市場の成長は確からしいが、これはMCO固有の「優位性」というよりは「市場機会」（ルール1のWARN）。MCO/SPGIの寡占構造がPC市場に拡張される可能性はあるが、PC市場の業界構造はまだ発展途上。アナリスト自身がMIS CAGR引き上げを見送っている点は重要なシグナル。ダイレクトレンディングではCAGR寄与困難という明確なネガティブケース分析（ルール10）は高評価要素。TAM $3Tだが実際に格付け需要があるのは$1.5-2T程度（アナリスト推定）。KB3のCHD#3（ポートフォリオ管理50%）と類似—方向性は認めるが独立した優位性としての確立度が不十分。",
+        "kb3_calibration": "CHD#3（50%）類似：方向性は認めるが能力と機会の区別が曖昧。MNST#3（50%）とも類似—市場での成長可能性は認めるが優位性自体の評価は保留。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "PC→格付け需要→MIS CAGRは論理的だが、アナリスト自身が「CAGR引き上げは行わず」と明言。MIS内の既存パラメータ（新興国/PC +1%）に統合されており、追加的CAGR寄与は限定的。MA側は「アドオン+1%程度」の期待値だが「時期尚早」。TAMの大きさとCAGR寄与の小ささのギャップが説明不足。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "title": "格付けブランドのデファクト標準としての認知",
+      "ca_type": "structural",
+      "description": "Moody'sは格付けのデファクト標準として認知されている。dogma.md類型2（知名度・ブランド認知）において「MSCI, MCO, S&Pはデファクト的認知」と明示的に言及。100年以上の歴史を持つ格付会社としてのブランド。適切なプライシング（保守的な方法論）がブランド/信頼として機能。",
+      "source_text": "100年以上の歴史を有する格付会社。CLOの方法論がS&Pより保守的である領域があり、短期的には案件を失うことがあるが、長期で見ると適切なプライシングが出来ることがブランド/信頼として重要と考えている。",
+      "factual_claims": [
+        "100年以上の歴史",
+        "dogma.mdでデファクト的認知として言及",
+        "CLO方法論がS&Pより保守的な領域がある"
+      ],
+      "cagr_connected": false,
+      "cagr_mechanism": "ブランド認知→顧客信頼→スイッチングコスト/価格力の支持要因。直接的なCAGRパラメータ対応は困難だが、claim#1-3の確度を間接的に支持。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "ブランドは蓄積された能力・資産。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "「ブランド認知」は名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "100年の歴史は定量的だが、ブランド認知度の測定データはなし。dogma.mdの類型2言及は定性的。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "ブランドは構造的要素だが、claim#1（寡占構造）やclaim#3（スイッチングコスト）と大部分が重複。独立した構造的要素としての付加価値は限定的。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "SPGIも同等のブランド認知を持つ。Moody'sとS&Pのブランド間での差別化は不明確。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "ブランド認知は戦略ではなく蓄積された資産。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "CLO保守性による短期的案件喪失→長期信頼維持はネガティブケース的要素。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "信用付与業態においてブランド/信頼性は業界構造の核心。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "Moody'sのブランド力は疑いないが、claim#1（寡占構造）、claim#3（スイッチングコスト）と大部分が重複しており、独立した優位性としての付加価値が限定的。dogma.md類型2で「デファクト的認知」として言及されている点は裏付けだが、dogma.md自体が「外見的な評価が多く、背後要因をもとにした評価が少ない」と自己認識している。SPGIも同等のブランド認知を持つためルール7は部分的。KB3のMNST#1（シェア50%）と類似—ブランドの存在は認めるが背後要因の分析が不足。",
+        "kb3_calibration": "MNST#1（50%）類似：ブランド力は認めるが「背後要因」（類型5の継承・変革の歴史等）の分析不足。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "ブランド→CAGR接続は間接的。直接対応するCAGRパラメータがない。claim#1-3の確度支持要因として機能するが、独立したCAGR寄与は示せない。"
+      }
+    },
+    {
+      "claim_id": 7,
+      "title": "借換え需要の構造的成長と起債サイクルの恩恵",
+      "ca_type": "financial",
+      "description": "今後4年の借換え予定金額$5T（前年比+11%）、HY債借換え+19%。借換え需要はGDP成長と独立した構造的な成長ドライバー。2028年が次の大型借換え年（2020-21年発行の5年満期）。",
+      "source_text": "今後4年の借換え予定金額は5兆ドルとされ前年比11%増加。特にHY債借換え予定金額は前年比で+19%と増加。",
+      "factual_claims": [
+        "今後4年の借換え予定金額$5T（前年比+11%）",
+        "HY債借換え+19%",
+        "2028年が次の大型借換え年（2020-21年発行分の満期）",
+        "IG債の前倒しは過去平均以下"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "借換え需要→起債数量→MIS格付け収入。CAGR内の「実質GDP成長+2.5%」は起債数量に連動。借換えサイクルは短期的な業績変動要因だが、構造的な借換え需要の存在がMIS CAGRの底支え。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "WARN",
+          "comment": "借換え需要は外部市場環境であり、MCO固有の能力・仕組みではない。MCOの優位性は「寡占構造を通じた借換え需要の確実な取り込み」だが、主張自体は市場環境の記述。",
+          "flag": "primarily_market_environment"
+        },
+        "rule02_noun_attribute": {
+          "result": "PARTIAL",
+          "comment": "「借換え需要」は外部環境。MCO属性に変換すると「寡占的な起債需要の取り込み能力」。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "$5T、+11%、HY +19%と定量データ豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "借換えサイクルは格付け事業の業績変動要因だが、MCOの構造的優位性そのものではない。補完的/環境的要素。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "FAIL",
+          "comment": "借換え需要はSPGIにも同等に恩恵。MCO固有の差別化にならない。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "N/A",
+          "comment": "市場環境の記述であり戦略でも優位性でもない。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "該当なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "起債市場の構造的特性（満期→借換え→格付け需要）は業界環境だがMCO固有のポジションとの合致ではない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "借換え需要の構造的成長はMCOの業績にとってポジティブだが、これはMCO固有の「競争優位性」ではなく「市場環境」（ルール1のWARN）。SPGIにも同等に恩恵があり純粋競合差別化なし（ルール7 FAIL）。アナリストレポートの「投資前提」に含まれているが、優位性というよりはCAGR前提条件の一つ。dogma.mdの却下基準#1「結果の優位性への誤帰属」に近い—借換え需要は結果をもたらす外部条件であり、MCOの能力ではない。30%が妥当。",
+        "kb3_calibration": "COST#6（20%）に近い：外部環境の恩恵であり、MCO固有の優位性ではない。ただしCOSTのガソリンほど補完的ではなく、格付けビジネスの主要ドライバーであるため30%。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "借換え需要→起債→格付け収入は直接的メカニズム。$5T/$19%の定量データで検証可能。CAGR内のGDP+2.5%との関連性は明確。優位性としての評価は低いが、CAGR前提条件としての確度は高い。"
+      }
+    }
+  ],
+  "rule9_gatekeeping": {
+    "applied": false,
+    "reason": "ファクトチェック（T5）によるcontradicted事実確認後に適用判断。現時点ではレポート内のシェアデータ・価格データに明白な事実誤認は未検出。"
+  },
+  "summary": {
+    "total_claims": 7,
+    "confidence_distribution": {
+      "90_very_convinced": 1,
+      "70_mostly_convinced": 2,
+      "50_somewhat_convinced": 3,
+      "30_not_convinced": 1,
+      "10_rejected": 0
+    },
+    "avg_ca_confidence": 59,
+    "claims_with_cagr_connection": 6,
+    "avg_cagr_confidence": 71,
+    "key_strengths": [
+      "格付け事業の寡占構造（Claim #1: 90%）は教科書的な構造的優位性。業界構造との合致が明確でルール11を満たす",
+      "プライシングパワー（Claim #2: 70%）は定量裏付け豊富で説明力高い",
+      "アナリストの詳細な1on1調査に基づくPC市場分析はルール10（ネガティブケース）の好例",
+      "CAGR前提が明確に分解されており（MIS+6%、MA+6.5%等）、各パラメータへの接続が検証可能"
+    ],
+    "key_weaknesses": [
+      "Claim#1-3は寡占構造の異なる側面を記述しており重複度が高い。独立した優位性としての整理が必要",
+      "MA事業の競争優位性はアナリスト自身が「課題として残存」と指摘しており、SPGI/Bloomberg等との差別化が不明確（Claim #4: 50%）",
+      "Claim#5（PC）とClaim#7（借換え）は市場機会/環境であり、MCO固有の優位性（能力・仕組み）ではない",
+      "純粋競合SPGIに対する差別化がほぼ全主張で不完全（ルール7が全体的に弱い）"
+    ],
+    "poc_skipped": ["rule12_report_type_distinction"]
+  }
+}

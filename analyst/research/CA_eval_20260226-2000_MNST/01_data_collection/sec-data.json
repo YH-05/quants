@@ -1,0 +1,156 @@
+{
+  "ticker": "MNST",
+  "company_name": "Monster Beverage Corp",
+  "retrieved_at": "2026-02-26T20:01:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPから直近10-Q (Q3 2025)の財務データ、10-Kフィリング一覧、インサイダー取引サマリーを取得。一部のセクション抽出・詳細XBRL解析はアナリストレポートからの補完。",
+    "affected_fields": ["filing_sections_full_text", "segment_detail_xbrl"],
+    "available_fields": ["financials_from_10q", "recent_filings_list", "insider_summary", "key_metrics_from_report"]
+  },
+  "financials": {
+    "note": "Q3 2025 10-Q (SEC EDGAR XBRL) + アナリストレポートからの補完値",
+    "revenue": {
+      "description": "売上高",
+      "latest_quarterly": {
+        "value": 2197139000,
+        "currency": "USD",
+        "period": "Q3 2025 (2025-07-01 to 2025-09-30)",
+        "source": "SEC EDGAR 10-Q (0001104659-25-107944)"
+      },
+      "historical_reference": {
+        "fy2023_net_sales": "FY23 Net Sales Growth +16.1% (4Q23 OG basis, per analyst report)",
+        "fy2022_note": "OPM 25.1% (FY22), GPM 50-60% range"
+      }
+    },
+    "income_statement": {
+      "q3_2025": {
+        "revenue": 2197139000,
+        "gross_profit": 1224486000,
+        "gpm": "55.7% (1,224,486 / 2,197,139)",
+        "operating_income": 675352000,
+        "opm": "30.7% (675,352 / 2,197,139)",
+        "net_income": 524455000,
+        "source": "SEC EDGAR XBRL"
+      },
+      "historical_opm_from_report": {
+        "fy2020": "35.5%",
+        "fy2021": "32.4%",
+        "fy2022": "25.1%",
+        "q2_2023": "25.7%",
+        "q3_2023": "27.5%",
+        "q1_2024_gpm": "54.1%",
+        "q2_2024_gpm": "53.6%",
+        "note": "OPMとGPMは明確に区別すべき。GPMは50-60%台、OPMは25-35%台で推移。"
+      }
+    },
+    "balance_sheet": {
+      "as_of_q3_2025": {
+        "total_assets": 9611273000,
+        "current_assets": 5066217000,
+        "cash_and_equivalents": 2292939000,
+        "accounts_receivable": 1601216000,
+        "pp_and_e_net": 1110705000,
+        "current_liabilities": 1590420000,
+        "stockholders_equity": 7745160000,
+        "source": "SEC EDGAR XBRL"
+      }
+    },
+    "cash_flow": {
+      "ytd_9m_2025": {
+        "operating_cf": 1718762000,
+        "investing_cf": 719248000,
+        "financing_cf": 312601000,
+        "note": "高いキャッシュフロー創出力。自社株買い・M&A原資として活用。",
+        "source": "SEC EDGAR XBRL"
+      }
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "available",
+      "filings": [
+        {"filing_date": "2025-02-28", "period": "FY2024", "accession": "0001410578-25-000248"},
+        {"filing_date": "2024-02-29", "period": "FY2023", "accession": "0001104659-24-029425"},
+        {"filing_date": "2023-03-01", "period": "FY2022", "accession": "0001104659-23-027245"},
+        {"filing_date": "2022-02-28", "period": "FY2021", "accession": "0001104659-22-028182"},
+        {"filing_date": "2021-03-01", "period": "FY2020", "accession": "0001104659-21-029943"}
+      ]
+    },
+    "10q": {
+      "status": "available",
+      "latest": {
+        "filing_date": "2025-11-07",
+        "period": "Q3 2025 (ending 2025-09-30)",
+        "accession": "0001104659-25-107944"
+      }
+    },
+    "8k": {
+      "status": "not_retrieved",
+      "note": "8-Kの詳細取得はスキップ"
+    }
+  },
+  "insider_summary": {
+    "status": "available",
+    "period": "直近365日",
+    "total_form4_filings": 46,
+    "form3_count": 1,
+    "recent_activity": "2026年1月に複数のForm 4提出（3件）。2025年12月にも複数件あり活発なインサイダー取引活動。",
+    "management_info_from_report": {
+      "co_ceo_retired": "Rodney Sacks (74歳) が退任の意向（会長に移行）",
+      "ceo": "Hilton Schlosberg (71歳) が共同CEOからCEOに移行予定（2024年5月時点）",
+      "succession_risk": "共同CEO体制からの移行期。後任経営陣の実績は注視が必要"
+    }
+  },
+  "key_metrics": {
+    "us_market_share": "約37% (FY22時点、RedBullと拮抗)",
+    "global_market_share": "約13% (RedBull約37%に対して成長余地あり)",
+    "us_revenue_mix": "約65% (北米)",
+    "energy_drink_market_cagr": "+8% (FY23-27 ユーロモニター見通し)",
+    "cagr_estimate": "+10% (売上+8%+営業レバ0%+自社株買い/MA+2%)",
+    "gpm_range": "50-60%台 (GPM、OPMではない)",
+    "opm_trend": "FY20:35.5% → FY21:32.4% → FY22:25.1% → Q3 2025:30.7% (回復傾向)",
+    "price_increase": "2024/11/1に約+5%値上げ実施予定",
+    "coca_cola_stake": "19.63% (2015年以降のパートナーシップ)",
+    "bang_energy_acquisition": "2023年7月31日完了",
+    "dutch_auction_buyback": "最大$30億のダッチオークション方式自社株買い（2Q24開始予定）"
+  },
+  "filing_sections": {
+    "note": "アナリストレポートからの主要セクション要約",
+    "business": {
+      "summary": "Monster, Burn, Predator, Reign等の主要ブランドを有する、米国市場シェア約37%の世界的エナジードリンクメーカー。1935年にHansen'sとして設立、1992年にRodney SacksとHilton Schlosbergが買収。2015年にCoca-Cola(KO)が16.7%出資（現19.63%）、グローバル販売網を活用。",
+      "key_brands": ["Monster", "Monster Ultra（ゼロシュガー）", "Burn", "Predator", "Reign", "Bang Energy（2023年買収）"],
+      "competitive_positioning": "RedBullとの価格差（半額）とブランド戦略差（RedBull:マス広告 vs Monster:スポーツイベント・SNS）が特徴。複数ブランド展開でRedBull(単一ブランド)との差別化。"
+    },
+    "risk_factors": {
+      "summary": "アナリストレポートから抽出されたリスク要因",
+      "risks": [
+        "米国低所得者層の消費環境悪化（コンビニ来客数YoY▲3.5%）",
+        "RedBull旗艦ブランド対比でのMonster Green（旗艦）売上見劣り",
+        "新興ブランド（Celsius等）の急成長と競争激化",
+        "シュガーレス特需への過度な依存可能性",
+        "11月値上げ計画への懸念（市場減速下での実施）",
+        "共同CEO(70代)の後継者問題",
+        "Coca-Colaとの関係悪化リスク",
+        "アルコール事業（売上比2%）の継続的苦戦"
+      ]
+    },
+    "mda": {
+      "summary": "2Q24実績と市場環境（2024年8月決算時点）",
+      "q2_2024": {
+        "net_sales_growth": "+2.5% (為替調整後+6.3%、市場予想+8.8%)",
+        "gpm": "53.6% (市場予想54.6%)",
+        "adj_eps": "$0.41 (市場予想$0.45)",
+        "assessment": "市場懸念以上に悪い決算"
+      },
+      "q3_2025_latest": {
+        "revenue": "$2.197B",
+        "gpm": "55.7%",
+        "opm": "30.7%",
+        "net_income": "$524M",
+        "note": "SEC EDGAR XBRLから直接取得。GPMは55.7%で堅調。OPMは30.7%に回復。"
+      }
+    }
+  }
+}

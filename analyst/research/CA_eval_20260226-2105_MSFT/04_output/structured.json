@@ -1,0 +1,282 @@
+{
+  "research_id": "CA_eval_20260226-2105_MSFT",
+  "ticker": "MSFT",
+  "company_name": "Microsoft Corporation",
+  "generated_at": "2026-02-26T21:20:00Z",
+  "generator": "ca-eval-lead (T7直接実行)",
+  "report_version": "draft_v1",
+  "cagr_estimate": {
+    "current": "+14% EPS CAGR",
+    "components": {
+      "revenue": "+11% (PBP:+HSD, IC:+LDD, MPC:+MSD の構成比加重)",
+      "margin_improvement": "+1% (営業レバレッジ、AI投資回収期の収益拡大)",
+      "ma_and_buyback": "+2% (M&A + 自社株買い FCF利回り3%×40%=1.2% + M&A寄与)"
+    },
+    "source": "2024年6月更新（以降据え置き）"
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "Windows/Officeのビジネススタンダード地位によるスイッチングコスト",
+      "ca_type": "structural",
+      "final_confidence": 70,
+      "label": "おおむね納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PASS（スイッチングコスト・ネットワーク効果は能力・仕組みとして正しく表現）",
+        "rule02": "PASS（スイッチングコスト、ネットワーク効果、ブランド力は名詞属性）",
+        "rule03": "N/A（dogmaルール3はPoCスキップ対象外だが、KB1ファイルにrule03がないため不適用）",
+        "rule04": "PARTIAL（Office365 +16%、Copilot $30/月の数値あり。スイッチングコストの定量指標（解約率等）の直接開示なし）",
+        "rule06": "PASS（Windows/Officeのスイッチングコストは事業モデルの核心的構造要素）",
+        "rule07": "PARTIAL（Google Workspace等の純粋競合との具体的差別化比較が不足）",
+        "rule08": "PASS（スイッチングコストは構造的優位性であり戦略ではない）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A（顧客離脱事例の言及なし）",
+        "rule11": "PASS（エンタープライズソフトウェア市場の業務標準化構造にデファクト地位が合致。dogma類型2でMSFTは「圧倒的」と例示）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": [],
+        "high_eval": ["III（能力>結果、strong）", "IV（構造的市場ポジション、moderate）"]
+      },
+      "key_evidence": [
+        "Windows/Officeはビジネススタンダードの地位確立（業界認知の事実）",
+        "Office365 Commercial +16% (4Q25)の安定成長",
+        "E5セキュリティライセンスアップグレードによるARPU成長",
+        "Microsoft 365 Copilot $30/月/ユーザーで導入拡大",
+        "PBP(42%)セグメントが最大構成比でサブスク収益の基盤"
+      ],
+      "upside_conditions": "Google Workspace対比での顧客移行率や解約率データが得られれば90%に近づく可能性。ORLY#2(90%)レベルの市場構造分析深度が必要。",
+      "downside_risks": "Google Workspaceの浸透（特に中小企業・スタートアップ）、AIネイティブの次世代Office代替ツール出現リスク"
+    },
+    {
+      "claim_id": 2,
+      "title": "Azureクラウドプラットフォームの成長基盤（Windows親和性×DC規模）",
+      "ca_type": "structural",
+      "final_confidence": 50,
+      "label": "まあ納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PARTIAL（DCの規模とWindows親和性は能力。市場2位シェアやシェアゲインは結果の側面が強い）",
+        "rule02": "PASS（プラットフォーム、親和性、グローバルカバレッジは名詞属性）",
+        "rule03": "N/A",
+        "rule04": "PASS（Azure +39%、$75bn年間売上、400+DC、70エリアの豊富な定量的裏付け）",
+        "rule06": "PASS（IC(37%)は最大成長セグメント。成長戦略の核心的構造要素）",
+        "rule07": "PARTIAL（AWS(1位)との差別化はWindows親和性のみ。GCPとの比較もデータ不足）",
+        "rule08": "PARTIAL（クラウド投資はCapex戦略。結果としてのDC規模が優位性。境界が曖昧）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "PARTIAL（「無理に案件を獲りに行かない」は一種の断念判断だが具体例ではない）",
+        "rule11": "PASS（クラウド市場の寡占化+規模の経済構造とMSFTのポジション(2位)が合致）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["A（結果を原因と取り違え、moderate）", "G（純粋競合対比不明、strong）"],
+        "high_eval": ["I（定量的裏付け、moderate）"]
+      },
+      "key_evidence": [
+        "Azure成長率 +39% yy/cc (4Q25)、加速基調（FY26 1Q guidance: +37%）",
+        "Azure年間売上$75bn超(FY25)、クラウド市場2位",
+        "70エリアに400以上のデータセンター（業界最多）",
+        "WindowsのOSシェアによるオンプレ→クラウド移行の親和性",
+        "Capex FY25: $88.2b (+58% yy)の積極投資"
+      ],
+      "upside_conditions": "AWS対比でのワークロード移行率、顧客満足度、価格競争力の具体的データが得られれば70%に近づく可能性",
+      "downside_risks": "AWSの先行者利得、GCPのAI/データ分析特化、AI時代のクラウド構造変化（モデルベンダー主導への移行）"
+    },
+    {
+      "claim_id": 3,
+      "title": "テクノロジーエコシステム構築力（パートナーシップ×プラットフォーム）",
+      "ca_type": "structural",
+      "final_confidence": 50,
+      "label": "まあ納得",
+      "cagr_confidence": 50,
+      "cagr_label": "まあ納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PARTIAL（エコシステム構築「力」は能力だが「世界最大規模」は結果。主張がやや結果寄り）",
+        "rule02": "PASS（エコシステム、プラットフォームは名詞属性）",
+        "rule03": "N/A",
+        "rule04": "PARTIAL（AI Foundry 14,000社、1800モデルの数値あり。競合エコシステムとの規模比較なし）",
+        "rule06": "PASS（アナリストが「Microsoftの強さの軸」と明記）",
+        "rule07": "PARTIAL（AWSエコシステム、GCP AI研究力との具体比較なし）",
+        "rule08": "WARN（パートナーシップ構築は戦略的意思決定。dogmaルール8に近い）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A（パートナーシップの断念例なし）",
+        "rule11": "PASS（プラットフォーム経済のネットワーク効果構造に合致）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["A（結果を原因と取り違え、moderate）", "B（業界共通、moderate）", "F（戦略混同、moderate）", "G（純粋競合不明、strong）"],
+        "high_eval": []
+      },
+      "key_evidence": [
+        "Azure AI Foundry: 1800以上のモデル利用可能、14,000社導入",
+        "Azure Marketplace: Snowflake, Databricks, Oracle, SAP等と提携",
+        "IBM・ソニーとクラウド協業、AppleのiPhoneでOfficeアプリ稼働",
+        "OpenAIへの戦略的投資"
+      ],
+      "upside_conditions": "AWSエコシステムとの具体的規模比較（Marketplace掲載数、パートナー数等）が得られれば70%に近づく可能性",
+      "downside_risks": "OpenAIとの関係性リスク（Oracle移管可能性）、大手テック企業共通のエコシステム戦略との差別化が不明瞭"
+    },
+    {
+      "claim_id": 4,
+      "title": "LinkedInのビジネスSNS独占ポジション",
+      "ca_type": "structural",
+      "final_confidence": 70,
+      "label": "おおむね納得",
+      "cagr_confidence": 50,
+      "cagr_label": "まあ納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PASS（ネットワーク効果とプラットフォーム独占は構造的能力）",
+        "rule02": "PASS（ネットワーク効果、独占ポジション、ブランド力は名詞属性）",
+        "rule03": "N/A",
+        "rule04": "PARTIAL（+9%成長率あり。MAU、エンゲージメント率等の定量指標は不足）",
+        "rule06": "PARTIAL（MSFT全体売上の7%程度。補完的要素に近い）",
+        "rule07": "PASS（FB Workplace終了により純粋競合不在が明確）",
+        "rule08": "PASS（LinkedInの独占ポジションは構造的優位性）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "PASS（FB Workplaceの失敗は後発参入の困難性を示すネガティブケース）",
+        "rule11": "PASS（SNS市場のwinner-take-all構造にLinkedInの独占が合致。dogma類型2でMSFTは「圧倒的」）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": [],
+        "high_eval": ["IV（構造的市場ポジション、strong）", "V（競合比較、strong）", "III（能力>結果、moderate）"]
+      },
+      "key_evidence": [
+        "ビジネスSNSとして事実上独占（英語圏でLinkedInアカウントなければビジネス上存在しない人と言われる）",
+        "FB Workplace（Meta Workplace）は2025年9月終了。後発参入困難性を実証",
+        "LinkedIn成長率: +9% yy/cc (4Q25)、+MSD-HSD%安定成長見込み",
+        "ネットワーク効果による高い参入障壁"
+      ],
+      "upside_conditions": "独立銘柄としてなら90%に近い評価。MSFT全体への寄与度が拡大すれば評価向上の余地あり",
+      "downside_risks": "MSFT全体売上の7%程度にとどまり、CAGR+14%への直接的寄与が限定的",
+      "note": "構造的優位性としては最も明確な主張だが、MSFT全体へのインパクトが限定的なため70%にとどまる"
+    },
+    {
+      "claim_id": 5,
+      "title": "経営戦略の柔軟性と成長領域への資本配分（ナデラ体制）",
+      "ca_type": "operational",
+      "final_confidence": 30,
+      "label": "あまり納得しない",
+      "cagr_confidence": 50,
+      "cagr_label": "まあ納得",
+      "fact_check_status": "verified_with_caveat",
+      "rule_summary": {
+        "rule01": "PARTIAL（経営戦略の柔軟性は「能力」、クラウド転換成功やActivision買収は「結果」。混在）",
+        "rule02": "PARTIAL（「柔軟性」は名詞属性だが、構造的説明が薄い）",
+        "rule03": "N/A",
+        "rule04": "PARTIAL（クラウド比率推移、Capex$88.2bの数値あり。「柔軟性」の定量指標ではない）",
+        "rule06": "PARTIAL（経営品質の一般評価。特定の構造的優位性ではない）",
+        "rule07": "PARTIAL（Apple/Google/Amazon/Metaとの比較なし）",
+        "rule08": "WARN（経営戦略の柔軟性は「戦略」そのもの。dogmaルール8に直接抵触）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "PARTIAL（リスト削除→再採用のV字回復、モバイル撤退は一種の自己認識）",
+        "rule11": "PARTIAL（テック業界では経営判断の柔軟性は必須だがMSFT固有の構造的合致ではない）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["A（結果を原因と取り違え、strong）", "B（業界共通、strong）", "F（戦略混同、strong）", "G（純粋競合不明、strong）"],
+        "high_eval": []
+      },
+      "key_evidence": [
+        "ナデラCEO下でのクラウド転換成功実績",
+        "OpenAI投資、Activision買収、量子コンピュータ投資",
+        "Capex FY25: $88.2b (+58% yy)の積極的資本配分",
+        "DeepSeek対応での迅速な技術取り込み"
+      ],
+      "downside_risks": "dogmaルール8に直接抵触。「戦略は意思決定であり、優位性はそれを可能にする構造的な力」。GAFAM各社との具体的差別化が不明"
+    },
+    {
+      "claim_id": 6,
+      "title": "AI収益化のリーダーポジション（Copilot/AI Foundry）",
+      "ca_type": "operational",
+      "final_confidence": 50,
+      "label": "まあ納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified",
+      "rule_summary": {
+        "rule01": "PARTIAL（AI収益化の「リーダーポジション」は結果的側面。AI Foundryの設計力、Copilotの統合力は能力）",
+        "rule02": "PARTIAL（「リーダーポジション」は結果指標。「AI統合能力」が本来の名詞属性）",
+        "rule03": "N/A",
+        "rule04": "PASS（AI関連売上$10b超、AI Foundry 14,000社、1800モデル、Copilot $30/月の定量データ豊富）",
+        "rule06": "PARTIAL（Claim#1(Office)とClaim#2(Azure)の派生拡張。独立した構造的要素ではない）",
+        "rule07": "PARTIAL（AWS Bedrock、Google Vertex AIとの具体比較なし）",
+        "rule08": "WARN（AI投資戦略の成果。OpenAI投資は戦略的意思決定）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A（AI投資の断念例なし）",
+        "rule11": "PARTIAL（AI市場は黎明期でwinnerが確定していない）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["A（結果を原因と取り違え、moderate）", "B（業界共通、moderate）", "F（戦略混同、moderate）", "G（純粋競合不明、strong）"],
+        "high_eval": ["I（定量的裏付け、moderate）"]
+      },
+      "key_evidence": [
+        "FY25 AI関連売上$10b超",
+        "Azure AI Foundry: 14,000社導入、1800以上のモデル利用可能",
+        "Microsoft 365 Copilot: $30/月/ユーザー",
+        "4Q25よりAI寄与の区分開示停止（AIとnon-AIの区分困難化=浸透進展）"
+      ],
+      "upside_conditions": "AWS Bedrock/GCP Vertex AIとの市場シェア・導入数比較データが得られれば70%に近づく可能性",
+      "downside_risks": "AI市場の構造変化（モデルのコモディティ化、OSSモデル台頭）、OpenAI依存リスク"
+    },
+    {
+      "claim_id": 7,
+      "title": "高い顧客粘着力とサブスクモデルによる収益安定性",
+      "ca_type": "structural",
+      "final_confidence": 50,
+      "label": "まあ納得",
+      "cagr_confidence": 70,
+      "cagr_label": "おおむね納得",
+      "fact_check_status": "verified_with_caveat",
+      "rule_summary": {
+        "rule01": "PARTIAL（顧客粘着力はClaim#1/2の結果。独立した能力ではない）",
+        "rule02": "PASS（顧客粘着力、収益安定性は名詞属性）",
+        "rule03": "N/A",
+        "rule04": "PARTIAL（Azure顧客数、支出額増加の数値あり。解約率の直接開示なし）",
+        "rule06": "PARTIAL（Claim#1(Office)とClaim#2(Azure)の結果的集約。独立した構造的要素ではない）",
+        "rule07": "PARTIAL（AWS/GCPの顧客粘着力との比較なし）",
+        "rule08": "PASS（顧客粘着力は構造的特性）",
+        "rule09": "N/A（事実誤認なし）",
+        "rule10": "N/A（顧客離脱事例の言及なし）",
+        "rule11": "PASS（SaaS/クラウド市場のサブスク×スイッチングコスト→高粘着力構造に合致）",
+        "rule12": "SKIP（PoC段階）"
+      },
+      "patterns_detected": {
+        "rejection": ["A（結果を原因と取り違え、strong）", "D（説明力不足、moderate）", "G（純粋競合不明、moderate）"],
+        "high_eval": []
+      },
+      "key_evidence": [
+        "Office365サブスク化による安定収益基盤",
+        "Azure従量課金モデルによる顧客ロックイン",
+        "PBP/IC/MPCの複数収益源で分散（SEC EDGAR 10-Qで確認）",
+        "顧客1人あたり平均支出額の増加継続（ARPU成長）"
+      ],
+      "note": "Claim#1(スイッチングコスト)とClaim#2(Azure)の派生結果として整理が適切。独立した主張としての強度は低い。"
+    }
+  ],
+  "overall_summary": {
+    "avg_ca_confidence": 52,
+    "avg_cagr_confidence": 61,
+    "strongest_claims": [
+      {"id": 1, "title": "Windows/Officeのスイッチングコスト", "confidence": 70},
+      {"id": 4, "title": "LinkedInのビジネスSNS独占ポジション", "confidence": 70}
+    ],
+    "weakest_claims": [
+      {"id": 5, "title": "経営戦略の柔軟性（戦略≠優位性の批判）", "confidence": 30},
+      {"id": 3, "title": "テクノロジーエコシステム構築力（大手テック共通の批判）", "confidence": 50}
+    ],
+    "key_insight": "MSFTの競争優位性の核心はClaim#1（Windows/Officeのスイッチングコスト）とClaim#4（LinkedInの独占）の2本柱。いずれもネットワーク効果×構造的市場ポジションに基づく。Azure(Claim#2)は印象的な成長だが2位ポジションでの構造的確定に至っておらず、エコシステム(Claim#3)/経営柔軟性(Claim#5)/AI収益化(Claim#6)は大手テック企業共通の批判が当てはまる。全体として「大手テック企業としてのプレゼンスは認めるが、MSFTに固有の構造的優位性はWindows/Office+LinkedInに集中」という評価。",
+    "comparison_to_kb3": {
+      "closest_analog": "COST（平均CA: 39%、スイッチングコスト+顧客粘着力の構造。COSTの会員モデルはMSFTのOffice365サブスクモデルに構造的に類似）",
+      "difference": "MSFTはCOSTより多くの主張（7件 vs COSTの8件）を持つが、純粋競合比較の深度がCOST（SAMS CLUB/BJ's具体名）より浅い。MSFT平均CA 52%はCOST平均39%より高いが、これはLinkedInの独占ポジション（70%）が引き上げ要因。Windows/Officeの構造はCOST会員モデルに匹敵する明確さがある。"
+    }
+  }
+}

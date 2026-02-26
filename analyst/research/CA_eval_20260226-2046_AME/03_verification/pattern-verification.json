@@ -1,0 +1,211 @@
+{
+  "research_id": "CA_eval_20260226-2046_AME",
+  "ticker": "AME",
+  "generated_at": "2026-02-26T21:02:00Z",
+  "kb_version": "v1.0",
+  "rejection_patterns_scan": {
+    "pattern_A_result_as_cause": {
+      "detected_claims": [7],
+      "details": [
+        {
+          "claim_id": 7,
+          "severity": "minor",
+          "note": "Claim#7（ニッチトップ参入障壁）において、シェア30-50%（結果）と参入障壁（構造）が混在。ただしメインの主張は市場構造上の参入障壁であり、完全なパターンA該当ではない。confidence 50%に既に反映。"
+        }
+      ]
+    },
+    "pattern_B_industry_common": {
+      "detected_claims": [3, 5],
+      "details": [
+        {
+          "claim_id": 3,
+          "severity": "minor",
+          "note": "ローコスト生産拠点は多くのグローバル製造業が展開。AME固有の差別化としては集中購買のスケールのみ。confidence 50%に反映済み。"
+        },
+        {
+          "claim_id": 5,
+          "severity": "moderate",
+          "note": "分散型組織はITWが先行者として有名。アナリストレポート自身が『ITWに類似』と記載。ルール3（業界共通能力の排除）の観点から慎重な評価が必要。confidence 50%で事業特性の差を考慮済み。"
+        }
+      ]
+    },
+    "pattern_C_causal_leap": {
+      "detected_claims": [4],
+      "details": [
+        {
+          "claim_id": 4,
+          "severity": "moderate",
+          "note": "直販→顧客ニーズ→M&Aリスト→クロスセル→OPM改善は4ステップの因果チェーン。KB3 COST思いやり経営CAGR(20%)との類似構造。confidence 50%に反映済みだがCAGR接続では更なる慎重さが必要。"
+        }
+      ]
+    },
+    "pattern_D_qualitative_only": {
+      "detected_claims": [],
+      "details": [],
+      "note": "全主張に説明力のある記述あり。パターンD該当なし。"
+    },
+    "pattern_E_factual_error": {
+      "detected_claims": [],
+      "details": [],
+      "note": "事実誤認は検出されず。FY2025 OPM(25.8%)はSEC EDGAR XBRLで直接確認済み。"
+    },
+    "pattern_F_strategy_confusion": {
+      "detected_claims": [7],
+      "details": [
+        {
+          "claim_id": 7,
+          "severity": "minor",
+          "note": "「ニッチトップ戦略」は戦略的決断。優位性は「参入障壁」「市場構造上のポジション」。claims.jsonで部分的に区別済み（rule08: partial）。confidence 50%に反映済み。"
+        }
+      ]
+    },
+    "pattern_G_unclear_vs_pure_competitor": {
+      "detected_claims": [1, 2, 3, 5, 7],
+      "details": [
+        {
+          "claim_id": 1,
+          "severity": "moderate",
+          "note": "各ニッチ領域の純粋競合の特定が不足。多数のニッチ市場に分散しているため一律の比較は困難だが、代表的なニッチ（例：電力計測、航空宇宙コネクタ）での競合特定が有効。"
+        },
+        {
+          "claim_id": 2,
+          "severity": "moderate",
+          "note": "ITW・Roper Technologies・Fortive等のM&A型コングロマリットとの比較が全面的に欠如。ROIC、M&A件数/規模、PMI成功率等での比較が有効。"
+        },
+        {
+          "claim_id": 3,
+          "severity": "minor",
+          "note": "生産コスト、Capex比率での同業比較なし。"
+        },
+        {
+          "claim_id": 5,
+          "severity": "moderate",
+          "note": "ITW、Danaher、Fortive等の分散型/マトリックス組織との具体的比較なし。"
+        },
+        {
+          "claim_id": 7,
+          "severity": "minor",
+          "note": "各ニッチ市場の個別競合との比較なし。"
+        }
+      ]
+    }
+  },
+  "high_evaluation_patterns_scan": {
+    "pattern_I_quantitative_differentiation": {
+      "detected_claims": [1, 2],
+      "details": [
+        {
+          "claim_id": 1,
+          "strength": "moderate",
+          "note": "市場シェア30-50%、ChurnRateほぼゼロ（定性）、市場規模USD150-400Mの数値あり。ただしChurnRateの定量裏付けがWANT未充足。"
+        },
+        {
+          "claim_id": 2,
+          "strength": "strong",
+          "note": "86件/USD8.4bn、ROIC20%超、IRR15%基準、チーム11名等の豊富な定量データ。KB3 CHD#1(70%)に匹敵する裏付け水準。"
+        }
+      ]
+    },
+    "pattern_II_direct_cagr_mechanism": {
+      "detected_claims": [1, 2],
+      "details": [
+        {
+          "claim_id": 1,
+          "strength": "moderate",
+          "note": "スイッチングコスト→顧客維持→OG: 1-2ステップ。ただし検証可能データ（ChurnRate開示）がないためパターンII完全適合には至らず。"
+        },
+        {
+          "claim_id": 2,
+          "strength": "moderate",
+          "note": "M&A→外部成長+4%: 1ステップの直接メカニズム。過去実績との整合あり。ただし大型化リスクが前提を揺るがす。"
+        }
+      ]
+    },
+    "pattern_III_capability_over_result": {
+      "detected_claims": [2, 4, 5],
+      "details": [
+        {
+          "claim_id": 2,
+          "strength": "strong",
+          "note": "M&A選定能力（チーム体制、基準、PMI Playbook）を結果（86件のトラックレコード）と明確に区別。KB3 CHD#1との高い整合性。"
+        },
+        {
+          "claim_id": 4,
+          "strength": "moderate",
+          "note": "直販体制（仕組み）を評価。ただしフィードバックループの各段階の能力証明は不足。"
+        },
+        {
+          "claim_id": 5,
+          "strength": "moderate",
+          "note": "BU自律経営の仕組みとメリットベース報酬を能力として評価。"
+        }
+      ]
+    },
+    "pattern_IV_structural_market_position": {
+      "detected_claims": [1, 7],
+      "details": [
+        {
+          "claim_id": 1,
+          "strength": "moderate",
+          "note": "ニッチ市場構造（小規模→大手参入困難）とAMEのポジション（シェア30-50%×ミッションクリティカル）の合致あり。ただしORLY#2(90%)のような定量的フラグメント分析は不足。70%レベルの適用。"
+        },
+        {
+          "claim_id": 7,
+          "strength": "weak",
+          "note": "市場構造の記述はあるが定量性が不足。50%レベル。"
+        }
+      ]
+    },
+    "pattern_V_specific_competitor_comparison": {
+      "detected_claims": [],
+      "details": [],
+      "note": "具体的な競合名と比較軸の組み合わせが全主張で不足。これはAMEの事業特性（多数のニッチ領域に分散、各領域で異なる競合）による構造的な制約でもある。systematic_issueとして記録。"
+    }
+  },
+  "cagr_pattern_check": {
+    "cagr_high_evaluation": [
+      {
+        "claim_id": 2,
+        "pattern": "M&A→外部成長+4%は過去実績と整合",
+        "confidence_support": 70,
+        "caveat": "大型化リスクが前提を揺るがす可能性"
+      }
+    ],
+    "cagr_low_evaluation": [
+      {
+        "claim_id": 4,
+        "pattern": "4ステップの因果チェーン（パターンC類似）",
+        "confidence_support": 50,
+        "caveat": "直販→OPM改善ループは間接的"
+      },
+      {
+        "claim_id": 6,
+        "pattern": "Pricing→CAGR寄与はAME固有ではない",
+        "confidence_support": 30,
+        "caveat": "事業環境依存のため独立したCAGR寄与として弱い"
+      }
+    ]
+  },
+  "consistency_check": {
+    "status": "pass",
+    "issues": [
+      {
+        "type": "minor_overlap",
+        "claims": [1, 7],
+        "note": "Claim#1（スイッチングコスト）とClaim#7（ニッチトップ参入障壁）は部分的に重複。スイッチングコストは参入障壁の一形態であり、分離が適切かの検討が必要。ただし#1は顧客側の粘着性、#7は市場構造側の参入困難性に焦点を当てており、視点の違いは妥当。"
+      },
+      {
+        "type": "minor_overlap",
+        "claims": [2, 3],
+        "note": "Claim#2（M&A実行能力）とClaim#3（コストシナジー）は部分的に重複。#3はM&A後のPMIの一側面であり、#2の補完的要素としての位置づけが妥当。"
+      }
+    ]
+  },
+  "summary": {
+    "rejection_patterns_detected": 5,
+    "high_evaluation_patterns_detected": 4,
+    "confidence_adjustments": 0,
+    "consistency_status": "pass",
+    "systematic_issue": "全主張で純粋競合比較（パターンG/ルール7）が不足。AMEの多ニッチ分散ビジネスモデルの特性上、一律の純粋競合比較は困難だが、代表的ニッチでの競合比較（例：ITWとのM&A ROIC比較）が全体評価を高める余地あり。"
+  }
+}

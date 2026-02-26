@@ -1,0 +1,214 @@
+{
+  "ticker": "NFLX",
+  "company_name": "Netflix, Inc.",
+  "retrieved_at": "2026-02-26T21:00:00Z",
+  "data_source": "analyst_report_extracted",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "unavailable",
+    "reason": "SEC EDGAR MCPへのアクセスが制限されているため、財務データはアナリストレポート（analyst/raw/NFLX.md）から抽出した参照値のみ。",
+    "affected_fields": ["financials_detailed", "filing_sections_full", "recent_filings_full"],
+    "available_fields": ["financials_from_report", "key_metrics_from_report", "insider_summary_partial"]
+  },
+  "financials": {
+    "note": "アナリストレポートからの参照値。正確な財務諸表データはSEC EDGAR直接参照が必要。",
+    "revenue": {
+      "description": "売上高",
+      "latest_annual": {
+        "value_approx": "39000000000",
+        "currency": "USD",
+        "period": "FY2024",
+        "source": "レポート記載：FY24売上高$39bn程度"
+      },
+      "historical_reference": {
+        "fy2022_approx": "31600000000",
+        "fy2023_approx": "33700000000",
+        "note": "FY22 Revenue Growthは約+6%、FY23は約+7%"
+      },
+      "fy2025_guidance": {
+        "range": "$44.8-45.2bn",
+        "growth_yoy": "+15%",
+        "note": "2Q25決算時上方修正（為替追い風主因）"
+      }
+    },
+    "segment_revenue_mix": {
+      "note": "Netflix は単一セグメント（動画配信）。地域別売上構成のみ。",
+      "UCAN": {
+        "share": "約40%",
+        "description": "United States and Canada",
+        "subscriber_count": "90百万人（FY24）",
+        "subscriber_share": "29.7%"
+      },
+      "EMEA": {
+        "share": "約30%",
+        "description": "Europe, Middle East, and Africa",
+        "subscriber_count": "101百万人（FY24）",
+        "subscriber_share": "33.5%"
+      },
+      "LATAM": {
+        "share": "約15%",
+        "description": "Latin America",
+        "subscriber_count": "53百万人（FY24）",
+        "subscriber_share": "17.7%"
+      },
+      "APAC": {
+        "share": "約15%",
+        "description": "Asia-Pacific",
+        "subscriber_count": "57百万人（FY24）",
+        "subscriber_share": "19.1%"
+      }
+    },
+    "income_statement": {
+      "opm_trend": {
+        "FY20": "21.5%",
+        "FY22": "17.8%",
+        "FY23": "20.7%",
+        "FY24": "26.7%",
+        "FY25_guidance": "29.5% cc",
+        "note": "FY20-FY24 OPM CAGR+5%（コロナ禍超え）"
+      },
+      "quarterly_opm": {
+        "1Q25": "31.7%（cons30%）",
+        "2Q25": "34.1%（cons32.9%）",
+        "3Q25_guidance": "31.5%",
+        "note": "下期はコンテンツ費用偏重で低下"
+      },
+      "eps": {
+        "2Q25": "$7.19（cons $7.08）、+47% yy",
+        "1Q25": "$6.61（cons $5.66）、+25% yy",
+        "note": "コンセンサスを継続的に上回る"
+      },
+      "revenue_growth": {
+        "2Q25_yoy": "+16%",
+        "1Q25_yoy": "+13%",
+        "FY24_yoy": "+16%",
+        "note": "持続的な2桁成長"
+      }
+    },
+    "balance_sheet": {
+      "note": "詳細データはSEC EDGAR参照要。レポートからは自社株買い実績・FCF情報のみ。"
+    },
+    "cash_flow": {
+      "fcf": {
+        "FY23": "$5,849mil",
+        "FY24": "$5,439mil",
+        "FY21": "$649mil",
+        "FY22": "なし",
+        "note": "直近2年は$5bn超のFCF。約8割をBuybackに活用。"
+      },
+      "content_investment": {
+        "FY24": "$17bn",
+        "FY25_plan": "$18bn",
+        "ratio_to_revenue_FY24": "約46%（FY24売上$39bn）",
+        "historical_peak": "売上比60-70%（初期）",
+        "note": "コンテンツ投資効率化が進行"
+      }
+    }
+  },
+  "recent_filings": {
+    "note": "SEC EDGAR MCP利用不可のため詳細なフォームデータは取得不可",
+    "10k": {
+      "status": "unavailable"
+    },
+    "10q": {
+      "status": "unavailable"
+    },
+    "8k": {
+      "status": "unavailable"
+    }
+  },
+  "insider_summary": {
+    "status": "unavailable_for_nflx",
+    "note": "SEC EDGAR MCPが利用不可のためインサイダーデータ取得不可。",
+    "management_info_from_report": {
+      "founders": "Reed Hastings（1997年創業）、Marc Randolph",
+      "ceo_note": "Reed Hastingsは2023年に会長に退く。後任CEOはTed SarandosとGreg Peters。",
+      "founder_background": "Hastingsは元ピュア・ソフトウェア経営（ソフトウェアトラブルシューティング）→高いテクノロジー技術"
+    }
+  },
+  "key_metrics": {
+    "subscribers": {
+      "total_FY24": "301百万人（3.01億人）",
+      "disclosure_status": "1Q25より非開示化",
+      "note": "1Q25以降は会員数・ARPUを非開示。今後はエンゲージメント（視聴時間等）の情報開示を拡大。"
+    },
+    "pricing": {
+      "US_standard": "$17.99/月",
+      "US_ad_supported": "$7.99/月",
+      "US_premium": "$24.99/月",
+      "note": "定期的に価格改定実施。値上げ直後の解約率上昇は一時的で長期の加入者数の伸びに影響なし。"
+    },
+    "ad_plan_growth": {
+      "yoy_growth_1Q24": "+65%",
+      "yoy_growth_3Q24": "+35%",
+      "yoy_growth_4Q24": "+30%（推定）",
+      "new_member_ad_selection_rate": "55%超（4Q24新規会員）",
+      "note": "広告収入はFY24で前期比2倍。FY25も2倍見込み。"
+    },
+    "password_sharing": {
+      "estimated_borrowers": "1億世帯（2023年時点の同社認識）",
+      "ucan_identified": "3,000万世帯（BBG調査レポート2025/7）",
+      "converted_fy24": "950万件（BBG推定）",
+      "note": "取り締まりはまだ初期段階。モバイル端末取り締まり（約5億世帯）は今後の成長ドライバー。"
+    },
+    "itg_valuation": {
+      "latest": "ITG3/4: 9.5/11.7（7/22/25時点）",
+      "previous": "ITG3/4: 9.2/11.2（5/13/25時点）",
+      "note": "スプレッドの魅力はやや低下もBUY継続"
+    },
+    "us_tv_share": {
+      "netflix": "約10%（ニールセン）",
+      "youtube": "約10%（ニールセン）",
+      "note": "2社で米国ストリーミング市場の約50%。今後もシェア拡大可能とコメント。"
+    },
+    "content_awards": {
+      "note": "アカデミー賞やゴールデングローブ賞を数多く受賞。2025年はエミー賞44ノミネート。",
+      "significance": "スケールメリットとハイクオリティの証明"
+    }
+  },
+  "filing_sections": {
+    "note": "SEC EDGAR MCP利用不可のため直接取得不可。アナリストレポートからの要約のみ。",
+    "business": {
+      "summary": "延べ有料会員数3億人超を誇る世界最大の動画ストリーミングサービス企業。1997年創業。事業は動画配信事業のみ。(有料会員数)×(会員単価)のサブスクリプション収益モデル+広告収入。主な会員プラン（米国）：スタンダード$17.99、広告付き$7.99、プレミアム$24.99。",
+      "key_products": [
+        "動画ストリーミング配信（サブスクリプション）",
+        "広告付きプラン",
+        "オリジナルコンテンツ制作",
+        "ゲーム事業（初期段階）",
+        "ライブイベント（NFL、WWE等）"
+      ],
+      "key_customers": [
+        "グローバル3億人超の有料会員",
+        "広告主（ファーストパーティー広告プラットフォーム展開中）"
+      ]
+    },
+    "risk_factors": {
+      "summary": "レポートで言及されたリスクファクター",
+      "risks": [
+        "オリジナルコンテンツ製作力の弱体化リスク（大）：人材マネジメント失敗による優秀クリエイター流出",
+        "他の動画ストリーミングサービスとの競争激化（中）：Disney+、Amazon prime video、Apple TV、YouTube等",
+        "新興国での価格戦略の難しさ（小）：先進国での値上げ耐性は高いが新興国では解約率リスク",
+        "Corporate Governance（ESG）：戦略開示限定、有料会員数四半期開示取りやめ",
+        "Data Privacy and Cybersecurity：個人情報・視聴嗜好データの情報漏洩リスク",
+        "可処分時間の奪い合い（ゲーム、SNS等との競争）",
+        "Disney化リスク：ゲーム等への多角化による本業フォーカスの希薄化"
+      ]
+    },
+    "mda": {
+      "summary": "2Q25実績とガイダンス",
+      "revenue_2Q25": "$11.08bn（+16% yy）",
+      "opm_2Q25": "34.1%（+2.4Pt yy）",
+      "eps_2Q25": "$7.19（+47% yy）",
+      "fy2025_guidance": {
+        "revenue": "$44.8-45.2bn（前回$43.5-44.5bn）",
+        "opm": "29.5% cc（前回29%）",
+        "note": "通期上方修正。主に為替追い風。既存事業も堅調。"
+      },
+      "key_drivers": [
+        "広告付きプランの堅調な成長",
+        "価格改定（2025/1実施）の浸透",
+        "オリジナルコンテンツのエンゲージメント",
+        "パスワード共有取り締まりの継続効果"
+      ]
+    }
+  }
+}

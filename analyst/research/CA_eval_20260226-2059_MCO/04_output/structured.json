@@ -1,0 +1,116 @@
+{
+  "research_id": "CA_eval_20260226-2059_MCO",
+  "ticker": "MCO",
+  "company_name": "Moody's Corporation",
+  "generated_at": "2026-02-26T21:15:00Z",
+  "generator": "ca-eval-lead (T7直接実行)",
+  "version": "draft_v1",
+  "cagr_estimate": {
+    "current": "EPS +9.5%（売上+6%）",
+    "breakdown": {
+      "mis": "+6%（実質GDP2.5%+価格効果2.5%+新興国/PC+1%）",
+      "ma": "+6.5%",
+      "margin_improvement": "+1%",
+      "share_reduction": "+1.5%",
+      "external_growth": "+1%"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "格付け事業の寡占構造による構造的参入障壁",
+      "ca_type": "structural",
+      "final_ca_confidence": 90,
+      "final_cagr_confidence": 90,
+      "verification_summary": {
+        "fact_check": "全3件verified",
+        "pattern_match": "パターンIV（構造的市場ポジション）検出。パターンG（純粋競合SPGI不明）も該当。",
+        "rule_summary": "ルール11 PASS（業界構造合致）。ルール7 PARTIAL（SPGI同等性）。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "title": "格付け事業のプライシングパワー",
+      "ca_type": "structural",
+      "final_ca_confidence": 70,
+      "final_cagr_confidence": 90,
+      "verification_summary": {
+        "fact_check": "全4件verified",
+        "pattern_match": "パターンI（定量的裏付け）、パターンII（直接的CAGR接続）検出。",
+        "rule_summary": "ルール4 PASS（定量データ豊富）。ルール7 PARTIAL（SPGI同等）。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "title": "格付け評価の経路依存性によるスイッチングコスト",
+      "ca_type": "structural",
+      "final_ca_confidence": 70,
+      "final_cagr_confidence": 70,
+      "verification_summary": {
+        "fact_check": "全2件verified",
+        "pattern_match": "claim#1との重複度が高い。",
+        "rule_summary": "ルール1 PASS。ルール7 PARTIAL（業界構造に内在する特性）。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "title": "MA事業のデータ蓄積とクロスセル拡大力",
+      "ca_type": "operational",
+      "final_ca_confidence": 50,
+      "final_cagr_confidence": 70,
+      "verification_summary": {
+        "fact_check": "全4件verified",
+        "pattern_match": "パターンI検出。パターンG（SPGI/BBG差別化不明）も該当。",
+        "rule_summary": "ルール4 PASS。ルール7 PARTIAL（アナリスト自身が課題認識）。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "title": "プライベートクレジット市場成長による格付け需要拡大機会",
+      "ca_type": "structural",
+      "final_ca_confidence": 50,
+      "final_cagr_confidence": 50,
+      "verification_summary": {
+        "fact_check": "3件verified、1件verified_with_caveat（TAM $3T）",
+        "pattern_match": "パターンF（戦略混同）検出。ルール10（ネガティブケース）高評価。",
+        "rule_summary": "ルール1 WARN（市場機会）。ルール10 PASS（DL限界の明示的分析）。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "title": "格付けブランドのデファクト標準としての認知",
+      "ca_type": "structural",
+      "final_ca_confidence": 50,
+      "final_cagr_confidence": 50,
+      "verification_summary": {
+        "fact_check": "全3件verified",
+        "pattern_match": "パターンD（定性的裏付け中心）検出。",
+        "rule_summary": "ルール4 PARTIAL（ブランド定量測定なし）。claim#1-3と重複大。"
+      }
+    },
+    {
+      "claim_id": 7,
+      "title": "借換え需要の構造的成長と起債サイクルの恩恵",
+      "ca_type": "financial",
+      "final_ca_confidence": 30,
+      "final_cagr_confidence": 70,
+      "verification_summary": {
+        "fact_check": "全4件verified",
+        "pattern_match": "パターンA（結果帰属）、パターンB（業界共通）検出。",
+        "rule_summary": "ルール1 WARN（外部環境）。ルール7 FAIL（SPGI同等恩恵）。"
+      }
+    }
+  ],
+  "summary_statistics": {
+    "total_claims": 7,
+    "avg_ca_confidence": 59,
+    "avg_cagr_confidence": 71,
+    "confidence_distribution": {
+      "90": 1,
+      "70": 2,
+      "50": 3,
+      "30": 1,
+      "10": 0
+    }
+  }
+}

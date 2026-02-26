@@ -1,0 +1,36 @@
+{
+  "research_id": "CA_eval_20260226-2125_ATCOA",
+  "ticker": "ATCOA",
+  "mode": "simplified",
+  "generated_at": "2026-02-26T21:48:00Z",
+  "kb_version": "v1.0",
+  "mode_determination": {
+    "reason": "ATCOAはPhase 2データ（analyst/phase2_KY/*ATCOA*.md）が存在しないため簡易モードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*ATCOA*",
+    "phase2_data_found": false,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": null,
+  "simplified_mode_results": {
+    "check_id": "S-8",
+    "check_description": "contradicted事実に対するルール9自動適用（confidence → 10%）の確認",
+    "fact_check_source": "analyst/research/CA_eval_20260226-2125_ATCOA/03_verification/fact-check.json",
+    "contradicted_claims": [],
+    "contradicted_count": 0,
+    "rule9_applied_count": 0,
+    "overall_verdict": "pass",
+    "pass": true,
+    "annotation": "contradictedと判定された事実の主張は0件。ルール9（事実誤認→confidence 10%）の適用対象なし。簡易モードのS-8チェックは合格。",
+    "caveats": [
+      "ATCOAはスウェーデン上場企業のためSEC EDGAR MCPでの財務数値照合は不可。ファクトチェックはアナリストレポートの内部一貫性チェックとIR開示資料との照合に限定。",
+      "全34件の事実チェックのうち31件がverified、3件がverified_with_caveat。contradictedは0件。",
+      "verified_with_caveat 3件の内訳: (1) プライシングフォーミュラLfL1-2%はセミコン・自動車向けではフラット（Claim#6）、(2) セミコン・自動車向けプライシング弱（Claim#7）、(3) LfL1-2%のセグメント別格差（Claim#7）。いずれもcontradictedではなく留意事項のアノテーションであるため、S-8チェックの対象外。"
+    ]
+  },
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "low",
+    "reason": "簡易モードのS-8チェックのみ実施。SEC EDGAR非利用（スウェーデン上場企業）のため、チェックの信頼性は低い。Phase 2データ（Y評価値）との比較による精度検証は未実施。",
+    "recommendation": "ATCOAのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim#1（スイッチングコスト70%）とClaim#3（分散型組織30%）のY評価との比較が有益。アナリスト自身が「大企業病懸念」「入替検討」と述べている銘柄であり、KB3にない「保有継続に疑問がある銘柄」パターンとしてのフィードバックが重要。"
+  }
+}

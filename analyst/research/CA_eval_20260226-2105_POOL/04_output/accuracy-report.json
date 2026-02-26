@@ -1,0 +1,36 @@
+{
+  "research_id": "CA_eval_20260226-2105_POOL",
+  "ticker": "POOL",
+  "mode": "simplified",
+  "generated_at": "2026-02-26T21:25:00Z",
+  "kb_version": "v1.0.0",
+  "mode_determination": {
+    "reason": "POOLはPhase 2データ（analyst/phase2_KY/*POOL*.md）が存在しないため簡易モードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*POOL*",
+    "phase2_data_found": false,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": null,
+  "simplified_mode_results": {
+    "check_id": "S-8",
+    "check_description": "contradicted事実に対するルール9自動適用（confidence → 10%）の確認",
+    "fact_check_source": "analyst/research/CA_eval_20260226-2105_POOL/03_verification/fact-check.json",
+    "contradicted_claims": [],
+    "contradicted_count": 0,
+    "rule9_applied_count": 0,
+    "overall_verdict": "pass",
+    "pass": true,
+    "annotation": "contradictedと判定された事実の主張は0件。ルール9（事実誤認→confidence 10%）の適用対象なし。簡易モードのS-8チェックは合格。",
+    "caveats": [
+      "SEC EDGAR MCP（10-Q 2025-09-30）で取得したGPMデータ（29.6%）がファクトチェックに使用されたが、10-Kセクション（Business, Risk Factors等）は取得不可であったため、全事実の網羅的検証は実施されていない。",
+      "コスト構造データ（F8: 人件費比率、F9: Fixed/Variable比率）はヒアリングベースであり、外部データでの検証が不可能。これらが仮にcontradictedとなった場合、Claim#3（価格転嫁力）やClaim#7（収益レジリエンス）のconfidenceに影響する可能性がある。",
+      "verified_with_caveat（市場シェア40%、拠点数400等）: 4件存在するが、これらはcontradictedではなく留意事項のアノテーションであるため、S-8チェックの対象外。"
+    ]
+  },
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "medium",
+    "reason": "簡易モードのS-8チェックのみ実施。SEC EDGAR MCPで10-Qデータを取得しGPM検証に成功しており、ファクトチェックの信頼性は中程度。ただし、Phase 2データ（Y評価値）との比較による精度検証は未実施。",
+    "recommendation": "POOLのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim#1（川中寡占バーゲニングパワー, 70%）がORLY#2（90%）に構造的に類似するとの批判があり、Y評価との乖離確認が有益。また、Claim#5（メンテナンス安定性, アナリスト自己否定）はKB3に存在しない新パターンであり、dogma v2.0の却下基準追加候補として記録済み。"
+  }
+}

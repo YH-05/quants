@@ -1,0 +1,57 @@
+{
+  "research_id": "CA_eval_20260226-2001_ORLY",
+  "type": "ca_eval",
+  "ticker": "ORLY",
+  "created_at": "2026-02-26T20:01:00Z",
+  "completed_at": "2026-02-26T20:45:00Z",
+  "parameters": {
+    "ticker": "ORLY",
+    "report_path": "analyst/raw/ORLY.md",
+    "skip_industry": true
+  },
+  "model_config": {
+    "lead": "claude-opus-4-6 (inherit)",
+    "teammates": "sonnet (fixed)",
+    "note": "Lead executes all tasks directly in batch mode"
+  },
+  "status": "completed",
+  "workflow": {
+    "phase_0": "done",
+    "phase_1": "done",
+    "phase_2": "done",
+    "phase_3": "done",
+    "phase_4": "done",
+    "phase_5": "done"
+  },
+  "task_results": {
+    "T0_setup": { "status": "completed", "owner": "ca-eval-lead", "output": "00_meta/research-meta.json" },
+    "T1_sec_filings": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/sec-data.json" },
+    "T2_report_parser": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/parsed-report.json" },
+    "T3_industry": { "status": "skipped", "owner": "ca-eval-lead", "note": "PoC skip (SEC EDGAR only policy)" },
+    "T4_claim_extractor": { "status": "completed", "owner": "ca-eval-lead", "output": "02_claims/claims.json" },
+    "T5_fact_checker": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/fact-check.json" },
+    "T6_pattern_verifier": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/pattern-verification.json" },
+    "T7_report_generator": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/draft-report.md, 04_output/structured.json" },
+    "T8_ai_critique": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/critique.json, 04_output/revised-report.md" },
+    "T9_accuracy": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/accuracy-report.json", "verdict": "pass", "mode": "full", "mean_ca_deviation": 0.0, "mean_cagr_deviation": 0.0 }
+  },
+  "outputs": {
+    "final_report": "04_output/revised-report.md",
+    "draft_report": "04_output/draft-report.md",
+    "structured_json": "04_output/structured.json",
+    "critique": "04_output/critique.json",
+    "accuracy": "04_output/accuracy-report.json"
+  },
+  "summary": {
+    "total_claims": 6,
+    "avg_ca_confidence": 63,
+    "avg_cagr_confidence": 60,
+    "strongest_claims": "Claim#2(90%): ローカルな規模の経済, Claim#5(90%): M&A/コンソリ実行能力",
+    "weakest_claim": "Claim#6(30%): DIFM・DIY両領域での持続的価値創造（派生主張）",
+    "fact_check": "30 facts checked: 25 verified, 4 verified_with_caveat, 1 unverifiable, 0 contradicted",
+    "pattern_verification": "rejection: 11 detected (mostly weak), high_eval: 13 detected (Pattern IV strongest indicator)",
+    "critique": "0 critical, 4 minor (all annotation_only, no confidence adjustments)",
+    "accuracy": "FULL mode: mean CA deviation 0%, mean CAGR deviation 0% (PASS, threshold <= 15%)",
+    "key_insight": "ORLYの競争優位性の核心はClaim#2（ローカル規模の経済）とClaim#5（M&A実行能力）の2本柱。いずれもフラグメント市場構造×構造的ポジションの合致(パターンIV)で90%の最高評価。KB3 ORLY自身がfew-shotのため全6件が完全一致（独立性は限定的）。"
+  }
+}

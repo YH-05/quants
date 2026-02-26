@@ -1,0 +1,54 @@
+{
+  "research_id": "CA_eval_20260226-2021_LLY",
+  "type": "ca_eval",
+  "ticker": "LLY",
+  "created_at": "2026-02-26T20:21:00Z",
+  "completed_at": "2026-02-26T20:52:00Z",
+  "parameters": {
+    "ticker": "LLY",
+    "report_path": "analyst/raw/LLY US.md",
+    "skip_industry": true
+  },
+  "status": "completed",
+  "workflow": {
+    "phase_0": "done",
+    "phase_1": "done",
+    "phase_2": "done",
+    "phase_3": "done",
+    "phase_4": "done",
+    "phase_5": "done"
+  },
+  "task_results": {
+    "T0_setup": { "status": "completed", "owner": "ca-eval-lead", "output": "00_meta/research-meta.json" },
+    "T1_sec_filings": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/sec-data.json" },
+    "T2_report_parser": { "status": "completed", "owner": "ca-eval-lead", "output": "01_data_collection/parsed-report.json" },
+    "T3_industry": { "status": "skipped", "owner": "ca-eval-lead", "note": "PoC段階のポリシーによりスキップ（SEC EDGAR以外の外部データソース不使用）" },
+    "T4_claim_extractor": { "status": "completed", "owner": "ca-eval-lead", "output": "02_claims/claims.json" },
+    "T5_fact_checker": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/fact-check.json" },
+    "T6_pattern_verifier": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/pattern-verification.json" },
+    "T7_report_generator": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/draft-report.md", "04_output/structured.json"] },
+    "T8_ai_critique": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/critique.json", "04_output/revised-report.md"], "critical_issues": 1, "minor_issues": 5 },
+    "T9_accuracy": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/accuracy-report.json", "mode": "full", "verdict": "pass", "mean_deviation": 0.0 }
+  },
+  "outputs": {
+    "final_report": "04_output/revised-report.md",
+    "draft_report": "04_output/draft-report.md",
+    "structured_json": "04_output/structured.json",
+    "critique": "04_output/critique.json",
+    "accuracy": "04_output/accuracy-report.json"
+  },
+  "summary": {
+    "avg_ca_confidence": 53,
+    "avg_cagr_confidence": 60,
+    "strongest_claims": [
+      {"id": 2, "title": "低分子型経口GLP-1作動薬における技術的差別化", "confidence": 70},
+      {"id": 4, "title": "GLP-1デュオポリーにおける供給能力の参入障壁", "confidence": 70}
+    ],
+    "kb3_closest_analog": "LLY自体（KB3 LLY、平均CA 47% vs AI 53%。4/5マッチ主張が完全一致）",
+    "notable_t8_modification": "confidence変更なし（全6件annotation_only）。主要修正: (1)Claim #4のデュオポリー持続性リスク（critical）、(2)Claim #2の根源要因不足を70%上限条件として明示、(3)Claim #5のCVS事例によるPBMリスクの条件付きアノテーション"
+  },
+  "model_config": {
+    "lead": "claude-opus-4-6 (inherit)",
+    "teammates": "sonnet (not used - lead direct execution)"
+  }
+}

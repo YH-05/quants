@@ -1,0 +1,36 @@
+{
+  "research_id": "CA_eval_20260226-2046_AME",
+  "ticker": "AME",
+  "mode": "simplified",
+  "generated_at": "2026-02-26T21:15:00Z",
+  "kb_version": "v1.0",
+  "mode_determination": {
+    "reason": "AMEはPhase 2データ（analyst/phase2_KY/*AME*.md）が存在しないため簡易モードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*AME*",
+    "phase2_data_found": false,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": null,
+  "simplified_mode_results": {
+    "check_id": "S-8",
+    "check_description": "contradicted事実に対するルール9自動適用（confidence → 10%）の確認",
+    "fact_check_source": "analyst/research/CA_eval_20260226-2046_AME/03_verification/fact-check.json",
+    "contradicted_claims": [],
+    "contradicted_count": 0,
+    "rule9_applied_count": 0,
+    "overall_verdict": "pass",
+    "pass": true,
+    "annotation": "contradictedと判定された事実の主張は0件。ルール9（事実誤認→confidence 10%）の適用対象なし。簡易モードのS-8チェックは合格。",
+    "caveats": [
+      "SEC EDGAR MCPで10-K XBRLの主要財務指標（Revenue, OperatingIncome, NetIncome, EPS, BS項目）を直接確認しており、ファクトチェックの信頼性は中程度。ただしM&Aトラックレコード（FC1）やROIC goodwill除外ベース（FC3）はverified_with_caveatであり、完全な外部検証ではない。",
+      "verified_with_caveat（FC1: M&A 86件/USD8.4bn、FC3: ROIC20%超）: 2件存在するが、いずれもcontradictedではなく留意事項のアノテーションであるため、S-8チェックの対象外。",
+      "AMEのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim #1（スイッチングコスト70%）とClaim #2（M&A実行能力70%）のY評価との乖離チェックが有益。"
+    ]
+  },
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "medium",
+    "reason": "簡易モードのS-8チェックのみ実施。SEC EDGAR 10-K XBRLによる主要財務数値（FY2025: Revenue $7.4bn, OPM 25.8%）の直接確認済みのため、ファクトチェックの信頼性は中程度。ただしPhase 2データ（Y評価値）との比較による精度検証は未実施。",
+    "recommendation": "AMEのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim #2（M&A実行能力）のCAGR confidence（70%条件付き: 大型化リスク顕在化時50%低下）についてのY評価との比較が有益。"
+  }
+}

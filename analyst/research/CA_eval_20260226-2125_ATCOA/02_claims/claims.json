@@ -1,0 +1,481 @@
+{
+  "research_id": "CA_eval_20260226-2125_ATCOA",
+  "ticker": "ATCOA",
+  "company_name": "Atlas Copco AB",
+  "extracted_at": "2026-02-26T21:28:00Z",
+  "extractor": "ca-eval-lead (T4直接実行)",
+  "kb_applied": {
+    "kb1_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule08", "rule10", "rule11"],
+    "kb3_references": ["CHD#1", "CHD#2", "CHD#3", "ORLY#2", "ORLY#5", "COST#1", "COST#3", "LLY#6", "MNST#1"],
+    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+  },
+  "cagr_estimate": {
+    "current": "10%（2022年11月ベース、以降微調整あり）",
+    "breakdown": {
+      "revenue": "8%（OG5%+InOG(M&A)3%）",
+      "op_leverage": "1%（年20bp VT改善含む全社1%）",
+      "buyback": "1%（3-5年に一度自社株買い）"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": 1,
+      "title": "インストールベース×アフターサービスによるスイッチングコスト",
+      "ca_type": "structural",
+      "description": "コンプレッサーは工場の心臓部（ミッションクリティカル財）。TCOの8割が電気代であり省エネ効果>価格上昇で値上げ受容性が高い。ハイエンド領域のカスタマイズ性、サービスエンジニア（2年訓練）による密着型アフターサービス、データモニタリングによる稼働率向上サービスがスイッチングコストを構造的に形成。",
+      "source_text": "コンプレッサーは生産フロー全体の責任を担う。従って、圧縮空気の供給が止まると工場内の生産がストップしてしまう為、『工場の心臓部』とも言われる。...ハイエンドコンプレッサーは効率性最大化するためのカスタマイズが必要...各地域にサービスエンジニア(2年程度の訓練要する模様)を配置し、トラブル発生時に迅速に対応できる体制を構築",
+      "factual_claims": [
+        "コンプレッサーのTCO：電気代8割・サービス1割・機器1割（10年使用時）",
+        "コンプレッサーは工場全体の電力コストの2-3割を占める",
+        "直販比率約8割（Customer Centers 300以上）",
+        "コンプレッサー事業ROIC 84%",
+        "コンプレッサー世界シェア34%（2番手の1.8倍）",
+        "サービスエンジニアは2年程度の訓練が必要"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "スイッチングコスト→高い顧客継続率→OG安定成長（OG5%のうちCT OG4%の基盤）→インストールベース拡大→アフターサービス収益安定化。イノベーションによるリプレイス促進（7-8%効率改善）も加わる。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "スイッチングコスト、ミッションクリティカル性、カスタマイズ能力、サービスエンジニア体制はいずれも能力・仕組みとして正しく表現。ROIC84%やシェア34%は結果だが、主張の核心はそれを生む構造。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "スイッチングコスト、ミッションクリティカル性、カスタマイズ能力、サービス体制—いずれも名詞で表現される属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "TCO構成比、直販率80%、シェア34%、ROIC84%と定量データは豊富。ただし顧客のChurn Rate・更新率の具体的開示はなし（非開示）。説明力は十分だが検証可能性に限界。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "スイッチングコストは事業モデルの核心。ミッションクリティカル性×カスタマイズ×アフターサービスは全て構造的要素。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "2番手（Ingersoll Rand/Siemens等）に対しシェアは1.8倍だが、スイッチングコストの相対的強さの比較が不足。産業用コンプレッサー市場自体のConsolidation状況も不明確。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "直販戦略やアフターサービス戦略ではなく、その結果生まれるスイッチングコストという構造的力を主張の核心としている。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "明示的な断念例・不参入判断は本主張に含まれない。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PASS",
+          "comment": "産業用コンプレッサー市場はミッションクリティカル性×カスタマイズ性が高く、トップシェア企業のスイッチングコストが構造的に効く市場。市場構造との合致あり。ただしORLYのフラグメント市場ほどの明確な市場構造分析はない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 70,
+        "label": "おおむね納得",
+        "reasoning": "ミッションクリティカル×カスタマイズ×アフターサービスという3要素が構造的スイッチングコストを形成。TCO構成比・ROIC84%・シェア34%と定量的裏付けが豊富。ただし純粋競合（IR、Siemens Energy等）との具体的スイッチングコスト比較が不足（ルール7 PARTIAL）で90%には届かない。",
+        "kb3_calibration": "CHD#1類似（能力×定量裏付け→70%）。ORLY#2（市場構造合致→90%）ほどの市場フラグメント分析はないため70%が妥当。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "スイッチングコスト→顧客継続率→OG安定のメカニズムは1-2ステップ。ROIC84%が高い顧客価値創出を示す。ただしインストールベース規模が非開示でOG5%の内訳検証に限界あり。"
+      }
+    },
+    {
+      "claim_id": 2,
+      "title": "バキューム事業のクロスセル・部品共通化による規模の経済",
+      "ca_type": "structural",
+      "description": "コンプレッサー顧客の半分が真空ポンプも購入するクロスセル構造。VSD部品の75%がコンプレッサーと共通化。バキューム市場全体で約50%シェア。半導体向けは顧客投資額の2%程度と値上げ受容性高い。販売網・倉庫のロジスティクスコスト共有。",
+      "source_text": "コンプレッサー事業の顧客の半分が真空ポンプも購入している模様(クロスセルによるコスト削減(販売網、倉庫などのロジスティクス)が可能)...バキュームの可変速ドライバー(VSD)の75%の部品は、コンプレッサーと同じであり、両事業で部品の共通化",
+      "factual_claims": [
+        "コンプレッサー顧客の半分が真空ポンプも購入",
+        "VSD部品の75%がコンプレッサーと共通",
+        "バキューム市場全体で約50%シェア",
+        "半導体向け真空ポンプは顧客投資額の2%程度",
+        "半導体向け比率60-70%"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "クロスセル→CT/VT売上シナジー→ロジスティクスコスト共有→マージン改善。VTサービス比率40%ターゲット→安定収益源の拡大。VT OPM改善年20bp→全社OPレバレッジ1%への寄与。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "クロスセル構造と部品共通化はシステム・仕組みとして正しく記述。シェア50%は結果だが、規模の経済を生む構造が核心。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "規模の経済、クロスセル構造、部品共通化—名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PASS",
+          "comment": "顧客の半分がクロスセル、VSD部品75%共通、シェア50%、投資額2%と定量データが豊富。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "CT-VT間のシナジーは事業モデルの構造的要素。VT事業のCT事業からの戦略的拡張。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "Ebara（Dry）、島津（Turbo）等の純粋競合に対する部品共通化・クロスセルの相対的優位性が不明。VT市場でシェア50%だが純粋競合との具体的比較なし。ただしCFOコメント「VTビジネスでは当社シェアが高いのでプライシングも当社次第」。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "クロスセル「戦略」ではなく、部品共通化・顧客基盤重複という構造的事実を主張。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "断念例は本主張に含まれない。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "産業用コンプレッサーとバキュームの顧客基盤重複は市場構造に依存するが、フラグメント度の分析がない。同一工場内で両製品が必要という市場特性は確認できるが、ORLY的な明確な構造分析には至らない。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "クロスセル構造と部品共通化は定量的に裏付けられた実在する優位性。ただしVTビジネスの価格支配力の弱さ（セミコン向けはLfLフラット）と純粋競合比較の不足が50%の要因。アナリスト自身がVTの競争優位性に懸念を示している点も考慮。",
+        "kb3_calibration": "COST#3類似（構造的だが純粋競合比較不足→50%）。VT独自の優位性根拠が弱い。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "VTサービス比率向上→OPM改善20bp/年は明示的だが、VTのダウンサイクル（CEOコメント：今まで経験した中で一番長い）が短期的にCAGR寄与を圧迫。長期では構造的だがサイクル依存性が高い。"
+      }
+    },
+    {
+      "claim_id": 3,
+      "title": "分散型組織体制による環境適応力",
+      "ca_type": "operational",
+      "description": "4セグメント・23BU・約400のP/Lに分散。権限と責任が現場に付与され、R&D・Capex・M&Aの意思決定がボトムアップ。24ディビジョンが毎年製品ポートフォリオ検証・3年計画策定。評価はROIベース。",
+      "source_text": "23のBU(ビジネスユニット)あり。全社ベースで400程度のP/Lが存在し、権限と責任が現場に付与されている...24のディビジョンからボトムアップで基本的に決定。現状のプロダクトポートフォリオの検証、3年後の予想作成を24ディビジョンで毎年策定",
+      "factual_claims": [
+        "4セグメント・23BU・約400のP/L",
+        "24ディビジョンのボトムアップ意思決定",
+        "毎月マネジメントミーティング、年3回ビジネスレビュー",
+        "ROI視点で評価"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "分散型組織→各市場での迅速な意思決定→OG成長（市場セグメント別の最適化）。M&A後のPMI（ボトムアップ統合）→InOG成長3%への寄与。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "組織体制は能力・仕組みとして記述可能。ただし「分散型組織=環境適応力」の因果は自明ではない。アナリスト自身が「大企業病的な要素が多分にあるのでは」と懸念している点が能力評価と矛盾。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "分散型組織体制、環境適応力—名詞属性で表現可能。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "23BU・400P/L・24ディビジョンの数値はあるが、組織体制の「質」の定量評価は困難。説明力は一定あるが、大企業病リスクとの矛盾解消が必要。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "組織体制は事業運営の基盤だが、構造的優位性と言えるかは議論あり。ITW（80/20戦略）が先行者として類似モデルを実践。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "WARN",
+          "comment": "アナリストレポート自身が「ITWが先行者（80/20戦略で有名なコングロマリット企業）」と記載。ATCOAの分散型組織がITW等のコングロマリット対比で優位な根拠が不明。パターンB（業界共通能力）のリスク。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PARTIAL",
+          "comment": "分散型組織は「組織戦略」の側面もある。優位性は分散型がもたらす「環境適応力」だが、具体的にどのような環境変化にどう適応したかの事例が不足。"
+        },
+        "rule10_negative_case": {
+          "result": "PARTIAL",
+          "comment": "Epiroc売却は事業取捨選択の好例（Capital効率性重視）。ただしアナリスト面談で「大企業病的」「リアクティブ」の指摘があり、ネガティブケースが逆方向に働いている。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "多様なエンド市場（製造業、半導体、自動車、建設）をカバーする必要性から分散型は合理的。ただし市場構造との合致の論証は弱い。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "分散型組織は「多くのコングロマリットが標榜する」運営モデルであり、ATCOAに固有の優位性とは言い難い（ルール7 WARN）。ITWが先行者として同様のモデルを実践。さらにアナリスト自身が「大企業病」「リアクティブ」と懸念しており（2025年4月面談）、分散型=環境適応力の仮説と矛盾。KB3のLLY#6（メガファーマ共通→30%）に類似。",
+        "kb3_calibration": "LLY#6類似（大手企業共通の能力→30%）。ITWとの比較でATCOA固有の差別化が不明。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "ボトムアップ組織がOG成長をサポートする論理は一定の妥当性あり。ただし分散型組織→OG5%の直接的因果は3ステップ以上（組織→意思決定迅速化→市場対応→成長）で飛躍のリスク。"
+      }
+    },
+    {
+      "claim_id": 4,
+      "title": "変動費型コスト構造による景気耐性力",
+      "ca_type": "operational",
+      "description": "コア部品25%内製・75%アウトソースの変動費型構造。営業レバレッジは効きにくいが景気後退時のクッション機能。アフターサービス比率の高さ（CT事業は機器:アフターセールス最大1:1）による安定収益バッファー。",
+      "source_text": "75%の部品はアウトソースする一方、コア部品の25%は内製化 ⇒ 変動費型の収益構造となっており、営業レバはあまり効かないが、景気減速・後退時にそれなりのクッションをもつ",
+      "factual_claims": [
+        "コア部品25%内製・75%アウトソース",
+        "CT事業アフターセールス比率：機器:アフターセールス最大1:1",
+        "VT事業サービス比率ターゲット40%"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "変動費型構造→景気後退時のMargin Floor維持→サイクルを通じた安定的EPS CAGR。アフターサービス比率向上→Recurring収益→OPレバレッジ1%への寄与。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "コスト構造は仕組みだが、「景気耐性力」は結果の側面が強い。変動費型構造を持つ能力自体は評価できるが、景気耐性の「結果」としての説明に寄っている。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "変動費型コスト構造、景気耐性力—名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "75%アウトソース比率は明確。ただし景気後退時の実際のMargin Floor（GFC時やコロナ時のOPM下限値）の定量データがあれば説得力が増す。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "コスト構造は事業運営の基盤だが、CAGR成長ドライバーというよりはダウンサイドプロテクション（補完的要素）。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "WARN",
+          "comment": "他の産業機器メーカーも同様の変動費型構造を持つ可能性。ATCOAの75%アウトソースが純粋競合対比で際立つかは不明。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PARTIAL",
+          "comment": "アウトソース比率の選択は戦略的決断。それが生む景気耐性は結果/能力の中間。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "本主張に断念例は含まれない。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "シクリカルな産業機器市場では変動費型構造に一定の合理性あり。ただし市場構造分析が不足。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "変動費型構造は「コスト管理手法」であり独立した競争優位性とは言い難い。景気耐性は結果（ルール1 PARTIAL）。純粋競合との比較なし（ルール7 WARN）。ダウンサイドプロテクションは優位性の補完的要素（ルール6 PARTIAL）。",
+        "kb3_calibration": "CHD#5類似（戦略/結果の混同→30%）。景気耐性は優位性の「結果」であって、能力そのものではない。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "アフターサービス比率向上→Recurring収益→OPレバレッジの因果は2ステップで比較的直接的。ただしVT事業サービス比率40%ターゲットの達成見通しが不透明（ダウンサイクル中）。"
+      }
+    },
+    {
+      "claim_id": 5,
+      "title": "M&A Playbookと規律ある資本配分",
+      "ca_type": "operational",
+      "description": "WACC超（約8%）のM&A投資基準。魅力的領域特定→対象企業ピックアップ→DCF分析の3段階プロセス。年29-33件のM&A実績。Distributor買収による流通網コントロール。Epiroc売却によるCapital効率重視の実績。",
+      "source_text": "Financial Metric: WACCを超える投資(約8%)...対象企業を考える前に、当社にとって魅力的なビジネス領域を特定...デューデリプロセスは当社の中で厳密なプロセスがあり...DCF分析(WACC:8%)を用いて業績の健全性を確認",
+      "factual_claims": [
+        "M&A投資基準：WACC超（約8%）",
+        "2024年33件、FY2025 29件のM&A実績",
+        "FY2025 M&A投資額12B SEK",
+        "Epiroc社を2018年にスピンオフ（Capital効率重視）",
+        "ROCE FY2025: 24%",
+        "M&A検討は魅力的領域特定→対象企業ピックアップ→DCF分析の3段階"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "M&A→InOG成長3%（CAGR10%のうち売上8%のM&A寄与3%相当）。WACC8%基準→長期ROIC維持（FY2025 ROCE24%）。Distributor買収→流通網コントロール→顧客囲い込み→OG安定化。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PASS",
+          "comment": "M&A Playbook、選定基準、検討プロセスは能力・仕組みとして正しく記述。年33件のM&A実績は結果だが、プロセスの説明が核心。"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "M&A実行能力、資本配分規律—名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "WACC8%基準、年29-33件、ROCE24%と定量データあり。ただしIRRやPaybackの達成率は不明（CHD#1同様の限界）。M&A後のROIC推移データがあればより強い。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PASS",
+          "comment": "M&Aは売上成長の3%を担う構造的要素。InOG成長の中核ドライバー。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "IR（Ingersoll Rand）やDanaher等のM&A巧者との比較なし。ATCOAのM&Aがこれら企業と比較して優位な根拠が不明。件数は多いがサイズは比較的小さい点が差別化要因かもしれないが明示されていない。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PARTIAL",
+          "comment": "M&A実行は戦略的活動。背後にあるPlaybook・プロセス・規律が優位性として抽出されているが、「M&Aを多く実施している」という行動面の記述も含む。"
+        },
+        "rule10_negative_case": {
+          "result": "PASS",
+          "comment": "Epiroc売却（2018年）はCapital効率重視のスピンオフ判断。収益性の高い事業でも整理するという規律の証明。CFOが「サイズが小さくIBが関心を示さない」案件をインターナルでソーシングと述べており、規模規律の兆候。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "産業機器市場のConsolidation機会は存在するが、フラグメント度の定量分析がない。ORLY#5（フラグメントDIFM市場×M&A→90%）ほどの明確な市場構造分析なし。"
+        }
+      },
+      "confidence": {
+        "ca_score": 50,
+        "label": "まあ納得",
+        "reasoning": "M&A Playbookの存在とEpiroc売却（ルール10）は能力の裏付けとして評価。WACC8%基準・ROCE24%の定量データあり。ただし純粋競合（IR、Danaher等）との比較なし（ルール7 PARTIAL）、IRR達成率不明。CHD#1（70%）と比較すると断念例の定量性が弱い。",
+        "kb3_calibration": "CHD#1（70%）より低め。CHDは断念例の具体的記述があった（人員増強、バリュエーション見送り）。ATCOAはEpiroc売却のみで断念例が弱い。CHD#3（50%）に近い。"
+      },
+      "cagr_confidence": {
+        "score": 70,
+        "label": "おおむね納得",
+        "reasoning": "M&A→InOG3%は直接的な1ステップ接続。年29-33件のトラックレコードが実績として裏付け。WACC8%超の基準でROCE24%維持は検証可能。ORLY#5 CAGR（70%）に類似。"
+      }
+    },
+    {
+      "claim_id": 6,
+      "title": "イノベーションによる顧客囲い込みとリプレイス促進",
+      "ca_type": "operational",
+      "description": "R&Dは好不景気に関わらず一定水準投下。7-8%の効率性改善でリプレイス促進。漸次的イノベーションによる顧客ロックイン。価格設定は省エネ効果>価格上昇の範囲。",
+      "source_text": "テクノロジーによって7～8%の効率性を提供できればリプレイスを促せるのでやはりイノベーションは大事。因みにアジアでは一度も価格競争に巻き込まれたことはない...R&Dのパイプラインを見る限り、プライシングのカギとなるイノベーション状況については満足(CEOコメント)",
+      "factual_claims": [
+        "R&Dは好不景気に関わらず一定水準投下（GFC・コロナ禍でも投資）",
+        "7-8%の効率性改善でリプレイス促進",
+        "アジアでは一度も価格競争に巻き込まれたことはない（CEOコメント）",
+        "コンプレッサー新商品開発サイクル2-5年",
+        "価格設定LfL 1-2%+イノベーション効果"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "イノベーション→リプレイス促進→既存顧客からの追加売上→OG成長のイノベーション寄与。LfL 1-2%のプライシング→マージン維持。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "PARTIAL",
+          "comment": "R&D投資の一貫性は仕組みだが、イノベーション「結果」としてのリプレイス促進・価格支配力が核心の記述になっている。",
+          "flag": "partially_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "イノベーション能力、R&D投資規律—名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "7-8%効率改善、LfL1-2%の数値はあるが、セミコン・自動車向けではプライシング弱い（LfLフラット）とアナリスト面談で確認。市場セグメントにより大きく異なる。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "イノベーションはClaim#1（スイッチングコスト）の補完的要素。独立した優位性としてはClaim#1からの派生。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "WARN",
+          "comment": "「漸次的イノベーション」は産業機器業界共通の取り組み。ATCOAの7-8%効率改善が競合（IR、Kaeser等）対比で際立つかは不明。アナリスト面談で「革新的な技術は必要ないのでは？」という質問に対し「漸次的なイノベーションであることは確か」と回答。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PARTIAL",
+          "comment": "R&D投資は戦略的意思決定。イノベーション自体は結果。イノベーションを生む「能力」の根源的説明が不足。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "本主張に断念例は含まれない。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "ミッションクリティカル市場ではイノベーション＝TCO改善が購買決定要因。市場構造との合致は部分的。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "イノベーション能力はClaim#1（スイッチングコスト）の派生・補完的要素（ルール6 PARTIAL）。「漸次的イノベーション」は業界共通取り組み（ルール7 WARN）。セミコン・自動車向けはプライシング弱い。独立した優位性としての強度が不足。",
+        "kb3_calibration": "CHD#6類似（マーケティング能力：根源的要因への言及不足→50%）。ただしATCOAの場合はセグメント別の価格支配力格差が明らかでさらに弱い。30%が妥当。"
+      },
+      "cagr_confidence": {
+        "score": 50,
+        "label": "まあ納得",
+        "reasoning": "イノベーション→リプレイス→OG成長は2ステップだが、セミコン・自動車向けのLfLフラットがOG5%全体への寄与を弱める。CTの産業向け（アジアでは価格競争なし）ではCAGR接続が成立するが、セグメント別の寄与度が不明。"
+      }
+    },
+    {
+      "claim_id": 7,
+      "title": "トップシェアによるプライシング主導権",
+      "ca_type": "structural",
+      "description": "CT世界シェア34%（2番手の1.8倍）、VT世界シェア約50%、IT自動車向け2番手の4倍。圧倒的シェアを背景にしたプライシング主導権。ただしセミコン・自動車向けでは顧客交渉力が強くプライシング弱い。",
+      "source_text": "VTビジネスでは当社シェアが高いので、プライシングも当社次第という状況...セミコンと自動車向けはプライシングが弱く、LfLでフラットのイメージ...LfLで1～2%+イノベーション効果がフォーミュラ",
+      "factual_claims": [
+        "CT世界シェア34%（2番手の1.8倍）",
+        "VT世界シェア約50%",
+        "IT自動車向け2番手の4倍",
+        "セミコン・自動車向けプライシングはLfLフラット",
+        "LfL 1-2%+イノベーション効果が全社フォーミュラ"
+      ],
+      "cagr_connected": true,
+      "cagr_mechanism": "トップシェア→プライシング主導権→LfL価格上昇1-2%→マージン維持→OPレバレッジ寄与。ただしセミコン・自動車向けではこのメカニズムが機能しない。",
+      "rule_applications": {
+        "rule01_capability_not_result": {
+          "result": "WARN",
+          "comment": "市場シェア34%・50%は明確に結果。プライシング主導権はシェアから派生する結果。MNST#1（シェア=結果→50%）と同様の問題。",
+          "flag": "primarily_result"
+        },
+        "rule02_noun_attribute": {
+          "result": "PASS",
+          "comment": "プライシング主導権、市場ポジション—名詞属性。"
+        },
+        "rule04_quantitative_evidence": {
+          "result": "PARTIAL",
+          "comment": "シェア数値は豊富。ただしプライシング実績はLfL1-2%で、セミコン・自動車向けはフラット。アナリスト面談で「価格支配力はよくてインフレ並み」と評価。"
+        },
+        "rule06_structural_vs_complementary": {
+          "result": "PARTIAL",
+          "comment": "Claim#1（スイッチングコスト）の結果として生まれるプライシング力。独立した構造的優位性というよりClaim#1の派生。"
+        },
+        "rule07_pure_competitor_differentiation": {
+          "result": "PARTIAL",
+          "comment": "CTでは2番手の1.8倍で相対優位は明確。ただしVTではEbara・島津との価格支配力比較なし。ITではローカルプレイヤーとの価格競争状況不明。"
+        },
+        "rule08_strategy_not_advantage": {
+          "result": "PASS",
+          "comment": "プライシングは能力/結果であり戦略ではない。"
+        },
+        "rule10_negative_case": {
+          "result": "N/A",
+          "comment": "断念例なし。"
+        },
+        "rule11_industry_structure_fit": {
+          "result": "PARTIAL",
+          "comment": "Consolidated市場でのトップシェアはプライシング力に寄与するが、市場構造分析が不足。"
+        }
+      },
+      "confidence": {
+        "ca_score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "市場シェアは結果であり優位性ではない（ルール1 WARN）。MNST#1と同様。さらにアナリスト面談で「価格支配力はよくてインフレ並み」「セミコン・自動車向けは弱い」と明示的に懸念。VTではASMLのようなドミナント顧客に対し交渉力なし。Claim#1の派生結果。",
+        "kb3_calibration": "MNST#1類似（シェア=結果→50%）。ATCOAの場合はアナリスト自身がプライシング力に懸念を示しているためMNST#1より低い30%。"
+      },
+      "cagr_confidence": {
+        "score": 30,
+        "label": "あまり納得しない",
+        "reasoning": "LfL1-2%だがセミコン・自動車向けフラット。VTとITが全社売上の約5割を占め、これらでのプライシング弱さはCAGR全体への寄与を大幅に限定。OPレバレッジ1%のうちプライシング寄与は限定的。"
+      }
+    }
+  ],
+  "rule9_gatekeeping": {
+    "applied": false,
+    "reason": "ファクトチェック（T5）でcontradicted事実が検出されなければ適用しない。現時点では事実誤認は未検出。"
+  },
+  "summary": {
+    "total_claims": 7,
+    "confidence_distribution": {
+      "90_very_convinced": 0,
+      "70_mostly_convinced": 1,
+      "50_somewhat_convinced": 2,
+      "30_not_convinced": 3,
+      "10_rejected": 0
+    },
+    "avg_ca_confidence": 41,
+    "claims_with_cagr_connection": 7,
+    "avg_cagr_confidence": 53,
+    "key_strengths": [
+      "Claim#1（スイッチングコスト70%）：ミッションクリティカル×カスタマイズ×アフターサービスの構造が実在",
+      "定量データ豊富：シェア・ROIC・TCO構成比・アウトソース率等",
+      "Epiroc売却がCapital効率重視の規律を裏付け（ルール10）"
+    ],
+    "key_weaknesses": [
+      "純粋競合比較が全主張で不足（IR、ITW、Danaher、Ebara等との具体的比較なし）",
+      "アナリスト自身がVTの価格支配力と大企業病に懸念を表明",
+      "Claim#3（分散型組織30%）・#4（変動費型30%）・#6（イノベーション30%）・#7（プライシング30%）は結果/業界共通/派生であり独立した優位性として弱い",
+      "インストールベース規模が非開示で検証可能性に限界"
+    ],
+    "poc_skipped": ["rule12_report_type_distinction"]
+  }
+}

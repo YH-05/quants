@@ -1,0 +1,181 @@
+{
+  "research_id": "CA_eval_20260226-2059_MCO",
+  "ticker": "MCO",
+  "checked_at": "2026-02-26T21:10:00Z",
+  "checker": "ca-eval-lead (T5直接実行)",
+  "data_source": "analyst_report_internal_consistency",
+  "data_limitations": "SEC EDGAR MCPが利用不可のため、ファクトチェックはアナリストレポート内部一貫性チェックに限定。外部データソースとの照合は未実施。",
+  "claim_verifications": [
+    {
+      "claim_id": 1,
+      "factual_claims_checked": [
+        {
+          "claim": "MCOとSPGIで格付け市場の各約40%シェア",
+          "verdict": "verified",
+          "evidence": "レポート複数箇所で一貫して「MCOとSPグローバルで4割ずつのシェア、Fitch2割弱、その他5%」と記載。2022年11月の初回評価から2025年8月の最新レビューまで同一数値。",
+          "source": "analyst_report_multiple_sections"
+        },
+        {
+          "claim": "過去20年ほぼシェア変動なし",
+          "verdict": "verified",
+          "evidence": "「過去20年ほぼ変化なし」とレポートに明記。四半期レビューでも寡占構造の変化に言及なし。",
+          "source": "analyst_report_initial_section"
+        },
+        {
+          "claim": "発行体は概ね2社のレーティングを取得するのが一般的",
+          "verdict": "verified",
+          "evidence": "「債券発行の際、発行する企業は概ね2社のレーティングを取得するのが一般的」と記載。業界ヒアリング（2024年3月）でも確認。",
+          "source": "analyst_report_initial_section + 2024_hearing"
+        }
+      ]
+    },
+    {
+      "claim_id": 2,
+      "factual_claims_checked": [
+        {
+          "claim": "年間+2-3%の格付け価格引き上げ（会社見解）",
+          "verdict": "verified",
+          "evidence": "複数四半期で「年間+2-3%の価格引き上げが見込める」「提示価格は年+3-4%上昇ペース維持」と一貫記載。1on1でも確認。",
+          "source": "analyst_report_multiple_quarters"
+        },
+        {
+          "claim": "CS証券推定では過去10年平均+4-5%",
+          "verdict": "verified",
+          "evidence": "「CS証券推定では過去10年平均では+4-5％程度」と記載。2014年レポート以降一貫。",
+          "source": "analyst_report_initial_section"
+        },
+        {
+          "claim": "MA事業でも3-4%程度の値上げを実施",
+          "verdict": "verified",
+          "evidence": "2025年8月レポート「MAについてもMIS同様、3～4%程度の値上げを行っている」と記載。",
+          "source": "analyst_report_2q25"
+        },
+        {
+          "claim": "生成AIサービス追加で従来比3割の価格アップ",
+          "verdict": "verified",
+          "evidence": "2024年3月業界ヒアリング「生成AIサービスの追加により従来比3割の価格アップ」と記載。",
+          "source": "analyst_report_2024_hearing"
+        }
+      ]
+    },
+    {
+      "claim_id": 3,
+      "factual_claims_checked": [
+        {
+          "claim": "MA事業の契約維持率93-94%",
+          "verdict": "verified",
+          "evidence": "四半期レビューで一貫して維持率93-94%と記載。2Q25: 93%、1Q25: 93%、3Q24: 93%、2Q24: 94%。",
+          "source": "analyst_report_multiple_quarters"
+        },
+        {
+          "claim": "CLOの方法論がS&Pより保守的な領域がある",
+          "verdict": "verified",
+          "evidence": "1on1面談記録「CLOの方法論がS&Pより保守的である領域があり、短期的には案件を失うことがある」と記載。",
+          "source": "analyst_report_1on1_2025"
+        }
+      ]
+    },
+    {
+      "claim_id": 4,
+      "factual_claims_checked": [
+        {
+          "claim": "KYCクロスセルは分析部門顧客の2割まで進展",
+          "verdict": "verified",
+          "evidence": "2023年11月レポート「マネーロンダリング防止のための顧客認証（KYC）では分析部門顧客の2割までクロスセルが進展」と記載。",
+          "source": "analyst_report_3q23"
+        },
+        {
+          "claim": "保険顧客上位10社で6-7品購入",
+          "verdict": "verified",
+          "evidence": "2024年3月業界ヒアリング「保険顧客では大型客ほどクロスセルが進んでおり、上位10社で6-7品」と記載。",
+          "source": "analyst_report_2024_hearing"
+        },
+        {
+          "claim": "ARR $3.3B (+8% yy)",
+          "verdict": "verified",
+          "evidence": "2Q25決算で「ARR $3.3bn +8% yy」と記載。",
+          "source": "analyst_report_2q25"
+        },
+        {
+          "claim": "維持率93%",
+          "verdict": "verified",
+          "evidence": "claim_id 3で検証済み。93%（2Q25）。",
+          "source": "analyst_report_2q25"
+        }
+      ]
+    },
+    {
+      "claim_id": 5,
+      "factual_claims_checked": [
+        {
+          "claim": "プライベートクレジットTAM $3T以上（MCO推定）",
+          "verdict": "verified_with_caveat",
+          "evidence": "レポートに「$3T以上のTAMが見込める」と記載。ただし「多くを占めるダイレクトレンディング分を除くと需要が見えているのは$1.5tn~$2tn程度」とアナリスト自身が推定しており、格付け対象TAMは$3Tより小さい。",
+          "caveat": "TAM $3Tは市場全体であり、MCOの格付け対象TAMは$1.5-2T程度（アナリスト推定）",
+          "source": "analyst_report_1on1_2025 + analyst_analysis"
+        },
+        {
+          "claim": "新規マンデートの25%がPC関連",
+          "verdict": "verified",
+          "evidence": "2Q25レポート「新規マンデートの25%がプライベートクレジット」と記載。",
+          "source": "analyst_report_2q25"
+        },
+        {
+          "claim": "PreqinのPC AUM予測：29年$2.6T、CAGR 8%",
+          "verdict": "verified",
+          "evidence": "レポートに「Preqinはプライベートクレジット(US)のAUMは29年までに2.6兆ドルに達し、2023-29年で8%のCAGR」と記載。",
+          "source": "analyst_report_pc_research"
+        },
+        {
+          "claim": "SPGIのPC収益$140mil（+21% yy）",
+          "verdict": "verified",
+          "evidence": "レポートに「SPGI(1Q25)はプライベートクレジット収益を開示しており、$140mil (+21% yy)」と記載。",
+          "source": "analyst_report_1q25"
+        }
+      ]
+    },
+    {
+      "claim_id": 6,
+      "factual_claims_checked": [
+        {
+          "claim": "100年以上の歴史",
+          "verdict": "verified",
+          "evidence": "「100年以上の歴史を有する格付会社」と記載。",
+          "source": "analyst_report_initial_section"
+        },
+        {
+          "claim": "dogma.mdでデファクト的認知として言及",
+          "verdict": "verified",
+          "evidence": "dogma.md類型2「MSCI, MCO, S&Pはデファクト的認知」と明記。",
+          "source": "dogma.md"
+        }
+      ]
+    },
+    {
+      "claim_id": 7,
+      "factual_claims_checked": [
+        {
+          "claim": "今後4年の借換え予定金額$5T（前年比+11%）",
+          "verdict": "verified",
+          "evidence": "3Q24レポート「今後4年の借換え予定金額は5兆ドルとされ前年比11%増加」と記載。",
+          "source": "analyst_report_3q24"
+        },
+        {
+          "claim": "HY債借換え+19%",
+          "verdict": "verified",
+          "evidence": "「特にHY債借換え予定金額は前年比で+19%と増加」と同じ箇所で記載。",
+          "source": "analyst_report_3q24"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_facts_checked": 22,
+    "verified": 21,
+    "verified_with_caveat": 1,
+    "contradicted": 0,
+    "unverifiable": 0,
+    "rule9_applications": 0,
+    "note": "全ての事実主張はアナリストレポート内部で一貫性あり。TAM $3Tについてのみcaveat付き（格付け対象TAMは$1.5-2T）。SEC EDGAR外部照合は未実施。"
+  }
+}

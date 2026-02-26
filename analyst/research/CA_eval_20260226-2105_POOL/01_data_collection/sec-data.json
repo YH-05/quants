@@ -1,0 +1,199 @@
+{
+  "ticker": "POOL",
+  "company_name": "Pool Corporation",
+  "retrieved_at": "2026-02-26T21:06:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPから10-Q財務データとインサイダー取引サマリーを取得。10-Kセクション詳細は取得不可のため、アナリストレポートで補完。",
+    "affected_fields": ["filing_sections_detailed", "10k_full_text"],
+    "available_fields": ["financials_from_10q", "insider_summary", "key_metrics_from_report"]
+  },
+  "financials": {
+    "note": "SEC EDGAR 10-Q (2025-09-30 Q3) + アナリストレポートから補完",
+    "revenue": {
+      "description": "売上高",
+      "latest_quarterly": {
+        "value": 1451131000,
+        "currency": "USD",
+        "period": "Q3 FY2025 (ending 2025-09-30)",
+        "source": "SEC EDGAR 10-Q (accession: 0001193125-25-255740)"
+      },
+      "annual_reference": {
+        "fy2018_approx": 3000000000,
+        "fy2023_approx": 5300000000,
+        "note": "2018年レポートに「売上$3.0B」、業界市場規模$11.5Bに対しシェア約40%"
+      }
+    },
+    "segment_revenue_mix": {
+      "maintenance_repair": {
+        "share": "60%",
+        "description": "ケミカル、ポンプ、フィルター、ヒーター等のメンテナンス用品",
+        "growth_driver": "installed pool base growth 2% + inflation 1-2%",
+        "cyclicality": "低（ただしアナリスト指摘: 想定外に不安定な面あり）"
+      },
+      "remodel_renovation": {
+        "share": "20%",
+        "description": "プール老朽化に伴う補修工事",
+        "growth_driver": "平均プール年齢20年超、10-12年毎に補修必要",
+        "cyclicality": "セミシクリカル"
+      },
+      "new_construction": {
+        "share": "20%",
+        "description": "新規プール建設",
+        "growth_driver": "住宅着工件数との相関",
+        "cyclicality": "シクリカル"
+      }
+    },
+    "income_statement": {
+      "q3_2025": {
+        "revenue": 1451131000,
+        "cogs": 1021948000,
+        "gross_profit": 429183000,
+        "gpm": "29.6%",
+        "operating_income": 177987000,
+        "opm": "12.3%",
+        "net_income": 127013000,
+        "eps_basic": 3.41,
+        "eps_diluted": 3.40,
+        "source": "SEC EDGAR 10-Q"
+      },
+      "historical_margins": {
+        "gpm_normal_range": "29-30%",
+        "opm_2022": "16.6%",
+        "opm_2024_projected": "12.9%",
+        "note": "売上減少局面でも荒利率30%近辺を維持（交渉力の証左）"
+      }
+    },
+    "balance_sheet": {
+      "q3_2025": {
+        "total_assets": 3500671000,
+        "current_assets": 1849039000,
+        "total_liabilities": 2120781000,
+        "current_liabilities": 719511000,
+        "stockholders_equity": 1379890000,
+        "ppe_net": 267408000,
+        "cash_and_equivalents": 128483000,
+        "source": "SEC EDGAR 10-Q"
+      }
+    },
+    "cash_flow": {
+      "q3_2025_ytd": {
+        "operating_cf": 285743000,
+        "investing_cf": 55747000,
+        "financing_cf": 182372000,
+        "source": "SEC EDGAR 10-Q"
+      },
+      "shareholder_returns": {
+        "policy": "分配可能キャッシュの約8割を自社株買い/配当に充当",
+        "buyback_contribution_to_cagr": "2-3%"
+      }
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "unavailable",
+      "note": "10-Kセクション詳細データは未取得"
+    },
+    "10q": {
+      "status": "available",
+      "latest": {
+        "form_type": "10-Q",
+        "filing_date": "2025-10-29",
+        "accession_number": "0001193125-25-255740",
+        "period": "2025-09-30"
+      }
+    },
+    "8k": {
+      "status": "unavailable"
+    }
+  },
+  "insider_summary": {
+    "status": "available",
+    "period_days": 365,
+    "total_filings": 36,
+    "form_4_count": 35,
+    "form_3_count": 1,
+    "recent_activity": "2026年2月に集中的なForm 4提出（10件以上）、通常の年次インセンティブ関連の可能性",
+    "management_info_from_report": {
+      "ceo": "Peter D Arvan（56歳、2018年就任、GE出身でサプライチェーン領域20年超）",
+      "founder_family": "Kenneth Romain（59歳、Vice President、創業家一族）",
+      "historical_ceos": [
+        "Frank J. St. Romain（創業者、1999年までCEO、2022年逝去）",
+        "Wilson B. Sexton（1993-2001年CEO、2017年まで取締役会長）",
+        "Manuel Perez de la Mesa（2001-2018年CEO、Watsco出身、売上USD856mn→2.9bnに拡大した中興の祖）"
+      ]
+    }
+  },
+  "key_metrics": {
+    "market_share": "約40%（プール用品卸売市場、業界2位は30拠点に対し当社400拠点）",
+    "roic_historical": "過去3年平均26%（Bloomberg）",
+    "sales_centers": "約400拠点（北米・欧州・南米・豪州）",
+    "customer_count": "約120,000（大部分が零細・家族経営企業10名以下）",
+    "top100_customer_share": "10%未満",
+    "supplier_count": "2,200以上",
+    "product_categories": "50以上のカテゴリー、600以上のプロダクトライン、20万点以上",
+    "geographic_concentration": "カリフォルニア・テキサス・フロリダ・アリゾナの4州で売上高約55%",
+    "cost_structure": {
+      "fixed_variable_ratio": "75:25",
+      "marginal_profit_rate": "約24%（2010-2019平均）",
+      "builder_cost_allocation": "プール建設コスト100のうち人件費40-60、Pool帰属コスト約20"
+    },
+    "ma_track_record": {
+      "total_count": "40件以上（1993年PE傘下以降）",
+      "pe_era_acquisitions": "29件（1993-1998年）",
+      "recent_notable": "Porpoise Pool & Patio（2021年、小売フランチャイズ進出）"
+    },
+    "industry_structure": {
+      "upstream_fragmented": "2,200以上のサプライヤー",
+      "midstream_concentrated": "Pool Corp約40%シェア（寡占）",
+      "downstream_fragmented": "120,000以上の顧客",
+      "top_suppliers": {
+        "pentair": "仕入シェア20%",
+        "hayward": "仕入シェア10%",
+        "zodiac": "仕入シェア10%"
+      },
+      "distribution_channel": "サプライヤー→卸売(70%)/大手小売(30%)→プール建設業者/小売→Poolオーナー"
+    }
+  },
+  "filing_sections": {
+    "note": "アナリストレポートからの要約",
+    "business": {
+      "summary": "世界最大のプール関連卸売業者。プール建設資材、交換部品、メンテナンス用品（化学薬品等）、灌漑・造園用品を取扱い。家庭用中心だが2017年より商業用プール施設にも本格参入。売上高の約60%がメンテナンス関連の安定収益。米国南部・西部地域中心（人口増加率の高い地域）。",
+      "value_chain": {
+        "procurement": "Preferred Vendor Programでサプライヤー絞込み、大量購入ディスカウント、オフシーズン割引購入",
+        "distribution": "SCP（国内+海外）、Superior（国内）、Horizon（灌漑）、NPT（タイル）の4子会社、CSLs（集中出荷拠点）4カ所",
+        "sales": "セールスセンターから顧客ピックアップ/自社配送/サードパーティ運送",
+        "technology": "warehouse management technology使用"
+      }
+    },
+    "risk_factors": {
+      "summary": "アナリストレポートとFluidra面談から抽出されたリスク",
+      "risks": [
+        "メンテナンス収益の安定性への疑問（化学薬品以外のheater/pumpは顧客節約志向で買い控え発生）",
+        "New Pool Constructionのシクリカル性（GFC後54K→コロナ120K→現在61K、ノーマライズ70-80K）",
+        "金利高止まりによるR&Rおよび新築プール需要への影響（利下げ効果は26年以降）",
+        "中抜きリスク（メーカー直販、小売Buying Group形成。現時点では顕在化せず）",
+        "Eコマース脅威（B2B品質保証、重量品・引火性商品が多くEC向きでない。脅威は限定的）",
+        "関税リスク（Fluidra面談：2/3価格転嫁、1/3調達シフトで対応計画）",
+        "M&A寄与度低下（事業規模拡大に伴い1-2%維持のハードル上昇、FY25予算25-50M）",
+        "顧客粘着度の低さ（アナリスト指摘：故障しても直さない、自分で掃除する等の消費行動）"
+      ]
+    },
+    "mda": {
+      "summary": "2023Q3決算時点のコメントとアナリスト分析",
+      "q3_2023_yoy": "-8.8%",
+      "breakdown": "New Pool Construction -5%, R&R -3%, その他 -1%",
+      "2024_outlook": "LSD-MSD程度のトップライン成長想定（インフレ3-4%、volumeフラット）",
+      "sell_decision_2025": {
+        "date": "2025-08-15",
+        "reason": "投資仮説の瓦解。メンテナンス収益の安定性過大評価。CAGR 12%→9.5%へ引下げ。",
+        "cagr_revision": {
+          "old": "12%（売上8% + OPレバ1-2% + BB2-3%）",
+          "new": "9.5%（売上5.5% + OPレバ1-2% + BB2-3%）",
+          "revenue_change": "8%→5.5%（市場成長6%→4%、M&A寄与2%→0.5%、店舗拡大1%→1%）"
+        }
+      }
+    }
+  }
+}

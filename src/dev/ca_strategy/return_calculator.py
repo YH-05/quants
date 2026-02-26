@@ -379,21 +379,103 @@ class PortfolioReturnCalculator:
 
         return new_weights
 
+    def calculate_mcap_benchmark_returns(
+        self,
+        tickers: list[str],
+        mcap_weights: dict[str, float],
+        start: date,
+        end: date,
+        rebalance_schedule: dict[date, dict[str, float]] | None = None,
+    ) -> pd.Series:
+        """Calculate MCap-weighted benchmark returns with Buy-and-Hold drift.
+
+        Two modes are supported:
+
+        **yfinance mode** (no rebalance_schedule):
+            Uses initial MCap weights from the universe and lets them drift
+            daily based on returns.  Simple but does not account for share
+            issuance or buybacks.
+
+        **Bloomberg mode** (with rebalance_schedule):
+            Accepts periodic MCap weight snapshots.  Between rebalance dates,
+            weights drift via Buy-and-Hold.  At each rebalance date, weights
+            are reset to the provided snapshot.
+
+        Parameters
+        ----------
+        tickers : list[str]
+            List of ticker symbols in the universe.
+        mcap_weights : dict[str, float]
+            Initial market-cap-proportional weights (must sum to ~1.0).
+        start : date
+            Start date (inclusive).
+        end : date
+            End date (inclusive).
+        rebalance_schedule : dict[date, dict[str, float]] | None
+            Optional mapping of rebalance dates to new MCap weight dicts.
+            Used for Bloomberg mode with periodic historical MCap data.
+
+        Returns
+        -------
+        pd.Series
+            Daily MCap-weighted benchmark returns with DatetimeIndex.
+            Empty Series if no price data is available.
+        """
+        if not tickers:
+            logger.warning("Empty tickers list for MCap benchmark")
+            return pd.Series([], dtype=float)
+
+        logger.info(
+            "Calculating MCap benchmark returns",
+            ticker_count=len(tickers),
+            mcap_ticker_count=len(mcap_weights),
+            start=start.isoformat(),
+            end=end.isoformat(),
+            has_rebalance_schedule=rebalance_schedule is not None,
+        )
+
+        prepared = self._fetch_and_prepare_returns(tickers, start, end)
+        if prepared is None:
+            return pd.Series([], dtype=float)
+
+        returns_df, missing_tickers = prepared
+
+        # Adjust MCap weights for missing tickers
+        adjusted_weights = self._redistribute_weights(
+            current_weights=mcap_weights,
+            removed_tickers=missing_tickers,
+        )
+
+        daily_returns = self._compute_weighted_returns(
+            returns_df=returns_df,
+            initial_weights=adjusted_weights,
+            rebalance_dates=rebalance_schedule,
+        )
+
+        logger.info(
+            "MCap benchmark returns calculated",
+            return_count=len(daily_returns),
+        )
+
+        return daily_returns
+
     def _compute_weighted_returns(
         self,
         returns_df: pd.DataFrame,
         initial_weights: dict[str, float],
+        rebalance_dates: dict[date, dict[str, float]] | None = None,
     ) -> pd.Series:
-        """Compute weighted daily returns with corporate action handling.
+        """Compute weighted daily returns with Buy-and-Hold drift.
 
-        For each trading day, checks whether any corporate action occurs
-        on that date. If so, the affected ticker's weight is set to 0
-        and the freed weight is redistributed proportionally to remaining
-        tickers.
+        Implements a **Buy-and-Hold** strategy where portfolio weights
+        drift daily based on individual ticker returns.  The weight of
+        ticker *i* on day *t+1* is:
 
-        Uses vectorized pandas operations for the daily return computation
-        (element-wise multiply + row sum) while iterating over dates only
-        for corporate action state tracking.
+            w_i(t+1) = w_i(t) × (1 + r_i(t)) / Σ_j[ w_j(t) × (1 + r_j(t)) ]
+
+        Corporate actions (delisting/merger) are applied before recording
+        each day's weights.  An optional ``rebalance_dates`` dict allows
+        resetting weights at specific dates (e.g., periodic MCap rebalance).
 
         Parameters
         ----------
@@ -401,6 +483,9 @@ class PortfolioReturnCalculator:
             Daily returns with tickers as columns.
         initial_weights : dict[str, float]
             Starting weights (already adjusted for missing data).
+        rebalance_dates : dict[date, dict[str, float]] | None
+            Optional mapping of dates to weight dicts for periodic
+            rebalancing (Bloomberg MCap mode).
 
         Returns
         -------
@@ -416,7 +501,7 @@ class PortfolioReturnCalculator:
         if total > 0 and abs(total - 1.0) > 1e-10:
             current_weights = {k: v / total for k, v in current_weights.items()}
 
-        # Build weight matrix row-by-row (corporate actions change weights)
+        # Build weight matrix row-by-row (weights drift via Buy-and-Hold)
         weight_rows: list[dict[str, float]] = []
 
         for idx_date in returns_df.index:
@@ -439,7 +524,35 @@ class PortfolioReturnCalculator:
                     removed_tickers=sorted(removed_on_date),
                 )
 
+            # Check for periodic rebalance (Bloomberg MCap mode)
+            if rebalance_dates and trading_date in rebalance_dates:
+                rebal_weights = rebalance_dates[trading_date]
+                active = set(returns_df.columns) & set(rebal_weights.keys())
+                current_weights = {t: rebal_weights[t] for t in active if t in current_weights or t in rebal_weights}
+                rebal_total = sum(current_weights.values())
+                if rebal_total > 0 and abs(rebal_total - 1.0) > 1e-10:
+                    current_weights = {k: v / rebal_total for k, v in current_weights.items()}
+                logger.info(
+                    "Periodic rebalance applied",
+                    date=str(trading_date),
+                    ticker_count=len(current_weights),
+                )
+
+            # Record weights for this day's return computation
             weight_rows.append(dict(current_weights))
+
+            # Drift weights based on today's returns (Buy-and-Hold)
+            if current_weights:
+                day_returns = returns_df.loc[idx_date]
+                new_values: dict[str, float] = {}
+                for t, w in current_weights.items():
+                    ret = day_returns.get(t, 0.0)
+                    if pd.isna(ret):
+                        ret = 0.0
+                    new_values[t] = w * (1.0 + ret)
+                drift_total = sum(new_values.values())
+                if drift_total > 0:
+                    current_weights = {t: v / drift_total for t, v in new_values.items()}
 
         # Vectorized computation: build weights DataFrame, align columns,
         # element-wise multiply, and sum across tickers per day

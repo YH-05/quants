@@ -1,0 +1,268 @@
+{
+  "ticker": "CPRT",
+  "report_path": "analyst/raw/CPRT US.md",
+  "parsed_at": "2026-02-26T20:48:00Z",
+  "report_type": "mixed",
+  "report_type_note": "期初投資仮説レポート（9/9/22, 7/15/20）+ 四半期決算レビュー + CFO面談メモ + RB Global面談メモ。PoC段階では①/②区別スキップ。",
+  "sections": [
+    {
+      "id": "S1",
+      "type": "initial_thesis",
+      "date": "2022-09-09",
+      "title": "ESG評価、中長期競争優位、CAGR推定",
+      "subsections": ["ESG", "CA（競争優位性）", "CL（競争環境）", "BM（ビジネスモデル）", "HIST（沿革）"]
+    },
+    {
+      "id": "S2",
+      "type": "initial_thesis",
+      "date": "2020-07-15",
+      "title": "事業概要・競争優位性・CAGR分析",
+      "subsections": ["101（事業概要）", "CA（競争優位性）"]
+    },
+    {
+      "id": "S3",
+      "type": "quarterly_review",
+      "date": "2025-10-03",
+      "title": "米国出張@2025/9 RB Global面談メモ",
+      "subsections": ["所見", "市場環境", "競争環境"]
+    },
+    {
+      "id": "S4",
+      "type": "quarterly_review",
+      "date": "2024-09-11",
+      "title": "FY24/4Q決算",
+      "subsections": ["決算コメント", "所見"]
+    },
+    {
+      "id": "S5",
+      "type": "quarterly_review",
+      "date": "2024-02-28",
+      "title": "FY24/2Q決算",
+      "subsections": ["決算コメント", "所見"]
+    },
+    {
+      "id": "S6",
+      "type": "cfo_meeting",
+      "date": "2023-06-23",
+      "title": "Copart CFO面談メモ",
+      "subsections": ["Volume構造", "Non-Insurance優位性", "ASP", "Yard投資", "EV影響", "IAA比較", "キャピタルアロケーション"]
+    },
+    {
+      "id": "S7",
+      "type": "quarterly_review",
+      "date": "2023-05-19",
+      "title": "FY23/3Q決算",
+      "subsections": ["決算概要", "決算コメント", "所見"]
+    },
+    {
+      "id": "S8",
+      "type": "qa_response",
+      "date": "2022-09-12",
+      "title": "社内QA（小林弘二氏質問への回答）",
+      "subsections": ["手数料率", "IAA比較", "スイッチングコスト"]
+    }
+  ],
+  "competitive_advantage_candidates": [
+    {
+      "ca_id": "CA1",
+      "title": "ネットワーク効果（オークションプラットフォーム）",
+      "source_sections": ["S1", "S2"],
+      "source_text": "ネットワーク効果(多数の売り手と買い手)。オークションというネットワーク効果が重要なビジネスモデルからシェアが高いCPRTの優位性高い。Bidder登録者数40万超。海外バイヤーも増加。年々競争優位性は高まっている。",
+      "analyst_conviction": "high"
+    },
+    {
+      "ca_id": "CA2",
+      "title": "ヤード保有（NIMBY資産）の参入障壁",
+      "source_sections": ["S1", "S2", "S8"],
+      "source_text": "極めて価値の高いヤードの保有(NIMBY産業でヤードの新規獲得には長期間の行政折衝などがハードルとなる)。1万エーカー、200施設。Yardは景観を損なうNIMBY施設であり、取得に時間がかかり行政も慎重に認可。小売の店舗のように競合間で顧客の取り合いが起こるほど両社のYardが近接することはない（イス取りゲーム）。CPRTは戦略的に大都市近辺のYardを取得。",
+      "analyst_conviction": "high"
+    },
+    {
+      "ca_id": "CA3",
+      "title": "スイッチングコスト（保険会社とのプロセス統合）",
+      "source_sections": ["S1", "S2", "S8"],
+      "source_text": "保険会社とオークション業者はプロセスを一部統合。米国10大保険会社のうち7社と契約、うち4社と独占契約。お互いの部署に人材を配置することもあり関係はとてもsticky。exclusive契約が多い。一度契約するとスイッチングコストが高くなる。",
+      "analyst_conviction": "high"
+    },
+    {
+      "ca_id": "CA4",
+      "title": "複占市場構造（CPRT+IAAで80%）",
+      "source_sections": ["S1", "S2"],
+      "source_text": "大手2社で複占。CPRT 4割超、IAA 4割弱。手数料はIAAとほぼ同じかわずかにCPRTの方が安い。",
+      "analyst_conviction": "medium"
+    },
+    {
+      "ca_id": "CA5",
+      "title": "IAA対比でのASP成長率格差",
+      "source_sections": ["S3", "S5"],
+      "source_text": "ASPの成長率を比較するとCPRT +5.7% vs IAA +1%（ネットワーク効果の違い）。Manheim Index ▲9%の中でUS Insurance ASP ▲4%未満。中古車価格が下がっても同じ速度でASPが下がらない。",
+      "analyst_conviction": "high"
+    },
+    {
+      "ca_id": "CA6",
+      "title": "TLF（全損判定率）上昇トレンド",
+      "source_sections": ["S1", "S2", "S4", "S5"],
+      "source_text": "車齢上昇、車体の電装化・複雑化、新興国の自動車ニーズにより、修理よりも全損処理の方がコスト有利なケースが増加。1981年4%→2020年20%→FY24 21.4%。中長期的には30%超の認識。",
+      "analyst_conviction": "high"
+    },
+    {
+      "ca_id": "CA7",
+      "title": "Express Titling（所有権移転代行）による顧客囲い込み",
+      "source_sections": ["S4"],
+      "source_text": "Express Titlingを拡大（従来損保会社が自ら行っていた自動車の所有権手続きをCopartが代行）。run rate 1M台。顧客はunderwriteやclaimのコア業務に集中できる。ビジネスサイクルの短縮にも寄与。",
+      "analyst_conviction": "medium"
+    },
+    {
+      "ca_id": "CA8",
+      "title": "オンラインプラットフォームのスケールメリット",
+      "source_sections": ["S1", "S2"],
+      "source_text": "販管費はオンラインプラットフォームでスケールメリットが効きやすい。SGA率は6年前の10%半ばから9%へ一貫して低下。営業利益率35%と非常に高い。",
+      "analyst_conviction": "medium"
+    }
+  ],
+  "factual_claims": [
+    {
+      "fc_id": "FC1",
+      "claim": "北米サルベージオークション市場はCPRT(4割超)とIAA(4割弱)の2社で80%の複占",
+      "source": "S1",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC2",
+      "claim": "米国10大保険会社のうち7社と契約、うち4社と独占契約",
+      "source": "S1",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC3",
+      "claim": "Bidder登録者数40万超（2015年時点）",
+      "source": "S1",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC4",
+      "claim": "GEICOがIAA独占からCPRTへスイッチ",
+      "source": "S8",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC5",
+      "claim": "FY24/4Q Global Unit Sales yoy +8%、US +6%超、International +17%",
+      "source": "S4",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC6",
+      "claim": "TLF(全損判定率) 21.4%まで上昇(yoy約2%上昇)",
+      "source": "S4",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC7",
+      "claim": "Express Titling run rate 1M台",
+      "source": "S4",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC8",
+      "claim": "ASP成長率 CPRT +5.7% vs IAA +1%（直近決算）",
+      "source": "S3",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC9",
+      "claim": "ヤード1万エーカー、200施設、月25万台のピックアップ能力",
+      "source": "S2",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC10",
+      "claim": "営業利益率35%、純利益率29%",
+      "source": "S2",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC11",
+      "claim": "COGS/売上は56-57%で安定か少しずつ改善傾向",
+      "source": "S2",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC12",
+      "claim": "SGA率は6年前の10%半ばから9%へ一貫して低下",
+      "source": "S2",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC13",
+      "claim": "RB Global（IAA親会社）が50%の余剰キャパシティを持つと主張",
+      "source": "S3",
+      "verifiable": false,
+      "note": "RB側の自己申告であり検証困難"
+    },
+    {
+      "fc_id": "FC14",
+      "claim": "Purple Wave前年同期比+17%、買収時売上高USD70M程度",
+      "source": "S4",
+      "verifiable": true
+    },
+    {
+      "fc_id": "FC15",
+      "claim": "保険未加入又は保険不足の割合はドライバーの3人に1人（無保険15.4%、保険不足18.0%）",
+      "source": "S3",
+      "verifiable": true,
+      "note": "アナリスト面談での言及"
+    }
+  ],
+  "cagr_references": [
+    {
+      "cagr_id": "CAGR1",
+      "component": "EPS CAGR",
+      "value": "LDD (11%)",
+      "breakdown": "売上HSD~10% + 営業レバ2% + 自社株買い1%（配当ゼロ）",
+      "source": "S1(9/8/22), S2(7/15/20)",
+      "date": "2022-09-08"
+    },
+    {
+      "cagr_id": "CAGR2",
+      "component": "売上CAGR",
+      "value": "HSD~10%",
+      "breakdown": "Units 4%(走行距離1%+事故率一定+TLF上昇3%) + ペネトレ2% + 価格LSD",
+      "source": "S2(7/15/20)",
+      "date": "2020-07-15"
+    },
+    {
+      "cagr_id": "CAGR3",
+      "component": "Units成長",
+      "value": "4%",
+      "breakdown": "走行距離1%pa + 事故率一定 + TLF 20%→25%(年率3%上昇)",
+      "source": "S2(7/15/20)",
+      "date": "2020-07-15"
+    },
+    {
+      "cagr_id": "CAGR4",
+      "component": "営業レバレッジ",
+      "value": "+2%",
+      "breakdown": "原価・販管費の縮小により年率70bps程度改善、10年でOPM35%→40%超",
+      "source": "S2(7/15/20)",
+      "date": "2020-07-15"
+    },
+    {
+      "cagr_id": "CAGR5",
+      "component": "修正後EPS CAGR",
+      "value": "11%",
+      "breakdown": "売上8%(事故率▲1%反映) + 営業レバ2% + 自社株買い1%（配当ゼロ）",
+      "source": "S1(9/8/22)",
+      "date": "2022-09-08",
+      "note": "事故率を保守的に▲1%反映した修正版"
+    }
+  ],
+  "analyst_overall_assessment": {
+    "rating": "BUY",
+    "confidence": "高い（中長期の利益成長/競争優位性に対する見方に変化なし）",
+    "key_quote_1": "内部成長率高く、再投資による複利効果も期待できる投資先（FY23/3Q所見）",
+    "key_quote_2": "Salvageオークションにおける IAA との競争優位性の差は開いている可能性が高い（CFO面談メモ）",
+    "key_quote_3": "事実としてシェアを奪っているが、どこまで当社の個社要因に起因するかは冷静に考える必要がある（RB面談メモ）",
+    "risk_monitoring": "non-salvageへのシフトによるyard保有の重要性変遷の可能性"
+  }
+}

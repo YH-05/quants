@@ -1,0 +1,282 @@
+{
+  "ticker": "LRCX",
+  "report_path": "analyst/raw/LRCS US.md",
+  "parsed_at": "2026-02-26T21:22:00Z",
+  "report_type": "期初レポート+四半期フォローアップ集約",
+  "report_structure": {
+    "sections": [
+      {
+        "id": "header",
+        "title": "投資判断推移・ESG評価・中長期競争優位・CAGR推定",
+        "type": "summary_table",
+        "date_range": "2020/04 - 2025/09",
+        "note": "4列テーブル形式: 投資判断/ESG/競争優位/CAGR"
+      },
+      {
+        "id": "quarterly_follow",
+        "title": "四半期決算フォローアップ",
+        "type": "quarterly_updates",
+        "entries": [
+          "2025/09/16 - SPE 2社1on1取材報告",
+          "2024/06/21 - 3Q24決算 CAGR再考 SELL推奨",
+          "2023/10/23 - FY24Q1決算",
+          "2023/04/25 - 3Q23FY決算",
+          "2023/02/02 - 2Q23決算",
+          "2022/11/10 - 1Q23決算（投資前提含む）",
+          "2022/08/05 - 4Q22FY決算",
+          "2022/05/30 - 競争優位/CAGR詳細分析",
+          "2022/05/09 - CAGR内訳明確化",
+          "2022/04/25 - CAGR初期設定",
+          "2020/05/25 - CAGR前提（売上+6.5%, EPS+11%）",
+          "2020/04/23 - 3Q決算、投資判断"
+        ]
+      }
+    ]
+  },
+  "competitive_advantage_candidates": [
+    {
+      "id": "CA1",
+      "title": "3D NANDドライエッチング（深孔エッチング）での技術的独占ポジション",
+      "description": "3D NANDで高積層化されたものに穴を貫通させるチャネルホールエッチング（プラズマエッチング）でシェア100%。2次元NANDなら数分の工程が3Dでは1時間に1枚かかるため、装置台数が多く必要。",
+      "evidence": [
+        "シェア100%（3D NAND深孔エッチング）",
+        "2010年代後半NAND3次元化転換でLam躍進",
+        "Cryo 3.0のProfile deviation 10nm未満（垂直加工技術で優位維持）",
+        "TSVアプリケーションで100%シェア（HBM向け）"
+      ],
+      "risk_factors": [
+        "TELクライオエッチャー2025年投入（100%シェア維持不可との認識）",
+        "AMATもLamとTELからシェア奪取（2023年メモリ低迷期）",
+        "High-NA EUVによるエッチングステップ減少"
+      ],
+      "confidence_preliminary": "high",
+      "source_dates": ["2022/04", "2022/05", "2022/11", "2024/06", "2025/09"]
+    },
+    {
+      "id": "CA2",
+      "title": "プラズマエッチング装置全体での高市場シェア（60%）",
+      "description": "エッチング装置全体でシェア60%。LRCX/TEL/AMAT = 50%/30%/20%（過去20年でLam+15%, TEL 0%, AMAT -15%）。ロジック向けでも先端ノード移行でシェア獲得。",
+      "evidence": [
+        "エッチングシェア60%（2023年）、20年で+15%のシェアゲイン",
+        "WFE市場3位（11.8%、ASML/AMATに次ぐ）",
+        "ROE 50.97%（FY23）",
+        "先端ノード移行（FinFET→GAA→CFET）でエッチング需要増"
+      ],
+      "risk_factors": [
+        "競争環境激化（AMAT、TELからの攻勢）",
+        "アナリスト: シェアロス▲1%をCAGRに反映",
+        "エッチング以外（成膜、洗浄）ではトップシェアでない"
+      ],
+      "confidence_preliminary": "medium-high",
+      "source_dates": ["2022/04", "2022/05", "2024/06"]
+    },
+    {
+      "id": "CA3",
+      "title": "Installed Base（84,000台超）からの安定サービス収入とデータ活用",
+      "description": "据付装置台数84,000台（2019年から+30%以上）。サービス事業（売上の1/3）は装置メンテナンス、消耗品補充、歩留まり改善ソリューション等。Installed Baseからデータ収集し装置生産性改善にフィードバック。",
+      "evidence": [
+        "Installed Base 84,000台（前サイクルボトムから+30%以上）",
+        "サービス売上は売上全体の1/3",
+        "サービスの幅も拡張、装置当たり収益増加にも注力"
+      ],
+      "risk_factors": [
+        "ダウンサイクルではサービス売上も減収（2023年Q4FYで実証済み）",
+        "安定収入源としての期待に反し減収実績あり"
+      ],
+      "confidence_preliminary": "medium",
+      "source_dates": ["2022/11", "2023/02", "2023/04"]
+    },
+    {
+      "id": "CA4",
+      "title": "半導体3D化・積層化トレンドからの構造的恩恵ポジション",
+      "description": "3D NAND, 3D DRAM（将来）, GAA/CFET移行において成膜+エッチングの繰り返し工程が増加。Content per chip上昇もLamに追い風。デバイス全体の成膜密度上昇、カーボンギャップ拡大、裏面応力管理強化がDRAM分野で特に有利。",
+      "evidence": [
+        "Content per chip +20%yoy（2022年時点）",
+        "3D NAND高積層化で成膜+エッチング繰り返し工程増",
+        "GAA→CFET移行でエッチング・成膜共にポジティブ",
+        "AIサーバーはCPU当たりDRAM +20%yoy",
+        "HBM TSVで100%シェア"
+      ],
+      "risk_factors": [
+        "High-NA EUVによるプロセスステップ減少（ロジック+ファウンドリの半分で影響）",
+        "年▲MSD-HSD%の逆風（アナリスト試算）"
+      ],
+      "confidence_preliminary": "medium-high",
+      "source_dates": ["2022/05", "2022/08", "2024/06", "2025/09"]
+    },
+    {
+      "id": "CA5",
+      "title": "スイッチングコスト（既存装置ユーザーのアップグレード優位性）",
+      "description": "既存のLam装置を使用している顧客は、次世代へのアップグレードが費用対効果高く容易。新規装置を導入するよりも顧客にとって低コスト。競合が技術面で並んでも簡単にスイッチングされない。",
+      "evidence": [
+        "1on1取材（2025/08/22）でのIR VP発言: 「競合が技術面で並んだからと言って簡単にスイッチングされるものではない」",
+        "既存システムの次世代アップグレードが費用対効果高い",
+        "アナリスト: 「装置性能以外の要因によるスイッチングコストを過小評価していた可能性あり」"
+      ],
+      "risk_factors": [
+        "定量的な裏付けが乏しい（スイッチングコストの具体的な数値なし）"
+      ],
+      "confidence_preliminary": "medium",
+      "source_dates": ["2025/09"]
+    },
+    {
+      "id": "CA6",
+      "title": "R&D投資力と技術開発の持続性",
+      "description": "売上の約10%をR&Dに投下、従業員の28%がR&D活動に従事。エッチング+成膜の両方で次世代技術を開発。Akara（3D DRAM/CFET対応）、Cryo 3.0等の先端製品を投入。",
+      "evidence": [
+        "R&D費/売上比率: ~10%",
+        "R&D従事者: 全従業員の28%",
+        "Akara（次世代エッチング）、Cryo 3.0の投入",
+        "グローバルR&D体制（インド、韓国等に拠点）"
+      ],
+      "risk_factors": [
+        "R&D規模はAMAT、TELと比較して小さい（全社RD費比 2:2:3）",
+        "TEL/AMATはエッチング以外の安定収入源（TEL: コータデベロッパ$2b, AMAT: スパッタリング$2b）があり、R&D資金余力で劣後する可能性"
+      ],
+      "confidence_preliminary": "medium",
+      "source_dates": ["2022/11", "2023/02", "2025/09"]
+    },
+    {
+      "id": "CA7",
+      "title": "自社株買いによるEPS成長（FCF還元方針）",
+      "description": "FCFの75~100%を株主還元する長期方針。ヒストリカルFCF利回り6%、Buyback還元率~50%で年間+3%のEPS押し上げ。低バリュエーション（予想PE10x前半）が自社株買い効果を高める。",
+      "evidence": [
+        "FCFの75~100%を還元する長期方針",
+        "ヒストリカルFCF利回り6%",
+        "Buyback寄与+3%/年（アナリスト推計）"
+      ],
+      "risk_factors": [
+        "メモリサイクルの波により還元率にバラつき（FY23は配当込み60%と低水準）"
+      ],
+      "confidence_preliminary": "low",
+      "source_dates": ["2022/04", "2022/05", "2024/06"]
+    }
+  ],
+  "factual_claims": [
+    {
+      "id": "F1",
+      "claim": "3D NANDのチャネルホールエッチング（深孔エッチング）でシェア100%を独占",
+      "source": "競争優位セクション（2024/06/20, 2022/05/30）",
+      "verifiability": "partially_verifiable"
+    },
+    {
+      "id": "F2",
+      "claim": "プラズマエッチングでシェア50%弱（エッチング全体60%）",
+      "source": "競争優位セクション（2024/06/20）",
+      "verifiability": "partially_verifiable"
+    },
+    {
+      "id": "F3",
+      "claim": "WFE市場シェア11.8%（世界3位、2023年）",
+      "source": "競争優位セクション（2024/06/20）",
+      "verifiability": "verifiable_via_industry_data"
+    },
+    {
+      "id": "F4",
+      "claim": "Installed Base 84,000台以上（前ダウンサイクルから+30%以上増加）",
+      "source": "2023/02/02 レポート",
+      "verifiability": "verifiable_via_10k"
+    },
+    {
+      "id": "F5",
+      "claim": "R&D費は売上の約10%、従業員28%がR&D活動従事",
+      "source": "ESGセクション（2024/06/20）",
+      "verifiability": "verifiable_via_10k"
+    },
+    {
+      "id": "F6",
+      "claim": "ROE 50.97%（FY23）",
+      "source": "競争優位セクション冒頭（2024/06/20）",
+      "verifiability": "verifiable_via_sec"
+    },
+    {
+      "id": "F7",
+      "claim": "FCFの75~100%を還元する長期資本還元方針",
+      "source": "CAGRセクション（2024/06/20）",
+      "verifiability": "verifiable_via_10k"
+    },
+    {
+      "id": "F8",
+      "claim": "従業員回転率4.7%（FY22）",
+      "source": "ESGセクション（2022/04/25）",
+      "verifiability": "verifiable_via_proxy"
+    },
+    {
+      "id": "F9",
+      "claim": "エッチングシェア LRCX/TEL/AMAT = 50%/30%/20%（過去20年でLam+15%）",
+      "source": "投資前提セクション（2022/11/10）",
+      "verifiability": "verifiable_via_industry_data"
+    },
+    {
+      "id": "F10",
+      "claim": "HBM TSVアプリケーションで100%シェア",
+      "source": "1on1取材報告（2025/09/16）",
+      "verifiability": "company_claim"
+    },
+    {
+      "id": "F11",
+      "claim": "TELのクライオエッチャー2025年投入予定",
+      "source": "CAGRセクション（2024/06/20）",
+      "verifiability": "verifiable_via_public_info"
+    },
+    {
+      "id": "F12",
+      "claim": "2022-23年にYMTC復帰で年間約$2bnの売上を失った",
+      "source": "1on1取材報告（2025/09/16）",
+      "verifiability": "company_claim"
+    }
+  ],
+  "cagr_references": [
+    {
+      "id": "CAGR1",
+      "date": "2024/06/20",
+      "revenue_cagr": "+8%",
+      "eps_cagr": "+11%",
+      "breakdown": {
+        "equipment_2_3": "WSTS+9%, WFE/WSTS+1%, Etch/WFE flat, シェアロス▲1% → 5.3%",
+        "service_1_3": "+9% → 3.0%",
+        "margin": "flat (従来+1%から下方修正)",
+        "buyback": "+3%"
+      },
+      "investment_recommendation": "SELL"
+    },
+    {
+      "id": "CAGR2",
+      "date": "2023/03/31",
+      "revenue_cagr": "+8%",
+      "eps_cagr": "+12%",
+      "breakdown": {
+        "equipment_2_3": "半導体市場+7%, WFE/半導体+1%, Etch/WFE+1%",
+        "service_1_3": "+7%",
+        "margin": "+1%",
+        "buyback": "+3%"
+      },
+      "investment_recommendation": "BUY"
+    },
+    {
+      "id": "CAGR3",
+      "date": "2022/05/30",
+      "revenue_cagr": "+10%",
+      "eps_cagr": "+14%",
+      "breakdown": {
+        "equipment_2_3": "半導体市場+7%, インテンシティ上昇+3%",
+        "service_1_3": "+7%",
+        "margin": "+1%",
+        "buyback": "+3%"
+      },
+      "investment_recommendation": "BUY"
+    }
+  ],
+  "analyst_judgment_evolution": {
+    "initial_stance": "BUY (2020/04 - 2024/06)",
+    "current_stance": "SELL (2024/06/20~)",
+    "key_pivot": "2024/06/20: CAGR 12→11%, Etch/WFE flat, シェアロス▲1%, マージン改善flat, SELL推奨へ転換",
+    "key_concerns": [
+      "High-NA EUVによるエッチングプロセス減少",
+      "TELクライオエッチャー参入でシェアロス不可避",
+      "AMATのシェア奪取（2023年）",
+      "株価急騰によるバリュエーション魅力度低下"
+    ],
+    "notable_reassessment_2025": "2025/09取材後: スイッチングコストを過小評価していた可能性を認識。Etch/WFE Capital intensityにプラス付与すべきか再検討"
+  }
+}

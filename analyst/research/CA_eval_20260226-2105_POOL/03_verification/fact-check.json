@@ -1,0 +1,105 @@
+{
+  "research_id": "CA_eval_20260226-2105_POOL",
+  "ticker": "POOL",
+  "checked_at": "2026-02-26T21:14:00Z",
+  "data_sources": ["SEC EDGAR 10-Q (2025-09-30)", "analyst_report"],
+  "results": [
+    {
+      "claim_ref": "F1",
+      "text": "市場シェア約40%",
+      "verdict": "verified_with_caveat",
+      "confidence": "medium",
+      "evidence": "アナリストレポート内で2019年、2022年の2時点で「40%」と一貫。10-Kの市場シェア開示は未確認（SEC EDGAR 10-Kセクション取得不可）。業界情報として広く引用される数値。",
+      "caveat": "自社申告ベースのシェア。第三者検証データなし。"
+    },
+    {
+      "claim_ref": "F2",
+      "text": "セールスセンター約400拠点（業界2位は30拠点）",
+      "verdict": "verified_with_caveat",
+      "confidence": "medium",
+      "evidence": "2022/8/8レポートで「約400拠点」、2019/9/10レポートで「250拠点程度」。2019→2022で拡大しているが、具体的な時点の拠点数は変動あり。業界2位が30拠点という記述は2019年レポートの記載。",
+      "caveat": "拠点数は時点により変動。2025年現在の正確な数は未確認。"
+    },
+    {
+      "claim_ref": "F3",
+      "text": "売上高の約60%がメンテナンス関連",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "アナリストレポートで複数箇所（2019年、2022年）で「60%」と一貫。2023年売却レポートでもメンテナンス60%を前提に議論。"
+    },
+    {
+      "claim_ref": "F4",
+      "text": "顧客数約12万",
+      "verdict": "verified",
+      "confidence": "medium",
+      "evidence": "2022/8/8レポートに記載。150,000社（2019/9/10レポート）との記載もあり若干の齟齬があるが、同一オーダー。"
+    },
+    {
+      "claim_ref": "F5",
+      "text": "サプライヤー2,200以上",
+      "verdict": "verified",
+      "confidence": "medium",
+      "evidence": "2022/8/8レポートに記載。"
+    },
+    {
+      "claim_ref": "F6",
+      "text": "ROIC過去3年平均26%",
+      "verdict": "verified_with_caveat",
+      "confidence": "medium",
+      "evidence": "2019/9/10レポートに「ROIC過去3年平均26%（BBG）」と記載。Bloomberg参照値であり、計算方法（Goodwill込み/除外）は不明。",
+      "caveat": "2019年時点のデータ。2025年現在のROIC水準はアナリストコメントで「相応の水準維持」とされるが具体値なし。"
+    },
+    {
+      "claim_ref": "F7",
+      "text": "荒利率30%近辺を維持",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "SEC EDGAR Q3 2025 10-Q: GrossProfit $429,183K / Revenue $1,451,131K = GPM 29.6%。2023Q3決算: GM 29.1%（cons 29.8%）。2023ガイダンス: GM 30% range。一貫して29-30%の範囲。"
+    },
+    {
+      "claim_ref": "F8",
+      "text": "プール建設コスト100中、人件費40-60、Pool帰属コスト20",
+      "verdict": "unverifiable",
+      "confidence": "low",
+      "evidence": "ヒアリングベースのデータ。SECファイリングでの確認手段なし。"
+    },
+    {
+      "claim_ref": "F9",
+      "text": "Fixed vs Variable costs = 75:25",
+      "verdict": "unverifiable",
+      "confidence": "low",
+      "evidence": "ヒアリングベースのデータ。SECファイリングでの確認手段なし。"
+    },
+    {
+      "claim_ref": "F10",
+      "text": "トップ100顧客が売上高に占める比率は10%未満",
+      "verdict": "verified",
+      "confidence": "medium",
+      "evidence": "2022/8/8レポートに記載。10-K Customer Concentrationセクションでの確認が理想だが未取得。"
+    },
+    {
+      "claim_ref": "F13",
+      "text": "New Pool Construction: GFC後54K→コロナ120K→現在61K",
+      "verdict": "verified_with_caveat",
+      "confidence": "medium",
+      "evidence": "Fluidra CFO（2025/4/9面談）のコメント。第三者データだが、アナリストの解釈との整合性は高い。",
+      "caveat": "Fluidra（川上企業）の認識であり、Pool Corp自身の開示ではない。"
+    },
+    {
+      "claim_ref": "F14",
+      "text": "CAGR修正: 12%→9.5%",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "2025/8/15アナリストレポートに明記。CAGR構成の各要素（市場成長、M&A、店舗拡大、OPレバ、BB）も詳細に記載。"
+    }
+  ],
+  "summary": {
+    "total_checked": 12,
+    "verified": 5,
+    "verified_with_caveat": 4,
+    "unverifiable": 2,
+    "contradicted": 0,
+    "rule9_applications": 0,
+    "note": "contradictedと判定された事実はゼロ。SEC EDGAR MCPで取得したQ3 2025 10-QデータがGPM検証に有用だった。コスト構造データ（F8, F9）はヒアリングベースで外部検証不能。"
+  }
+}

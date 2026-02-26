@@ -1,0 +1,261 @@
+{
+  "ticker": "MSFT",
+  "company_name": "Microsoft Corporation",
+  "retrieved_at": "2026-02-26T21:06:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "available",
+    "reason": "SEC EDGAR MCPから最新10-Q(2025-12-31期)の財務データを取得。一部セクション(10-K Business/Risk Factors/MD&A)はアナリストレポートから補完。",
+    "affected_fields": ["filing_sections_partial"],
+    "available_fields": ["financials", "recent_filings", "insider_summary", "key_metrics"]
+  },
+  "financials": {
+    "note": "SEC EDGAR 10-Q(2025-12-31期) + アナリストレポートからの補完",
+    "revenue": {
+      "description": "売上高",
+      "latest_quarterly": {
+        "value": 69600000000,
+        "currency": "USD",
+        "period": "2Q25 (Dec 2025)",
+        "yoy_growth": "+12%",
+        "source": "SEC EDGAR 10-Q + analyst report"
+      },
+      "fy25_full_year": {
+        "value": 281720000000,
+        "currency": "USD",
+        "period": "FY25 (Jun 2025)",
+        "yoy_growth": "+14%",
+        "source": "analyst report (4Q25 section)"
+      },
+      "fy24_full_year": {
+        "value": 245100000000,
+        "currency": "USD",
+        "period": "FY24 (Jun 2024)",
+        "yoy_growth": "+16%",
+        "source": "analyst report"
+      }
+    },
+    "segment_revenue_mix": {
+      "PBP": {
+        "name": "Productivity and Business Processes",
+        "share": "42%",
+        "description": "Office365, LinkedIn, Dynamics365などBtoBビジネス",
+        "latest_growth": "+16% yy/cc (4Q25)",
+        "key_drivers": "Office365 Commercial +16%, LinkedIn +9%"
+      },
+      "IC": {
+        "name": "Intelligent Cloud",
+        "share": "37%",
+        "description": "Azure中心のクラウド事業",
+        "latest_growth": "+26% yy/cc (4Q25)",
+        "key_drivers": "Azure +39% (4Q25), AI workload acceleration"
+      },
+      "MPC": {
+        "name": "More Personal Computing",
+        "share": "21%",
+        "description": "Windows OEM, Xbox, Surface, Bing等のBtoCビジネス",
+        "latest_growth": "+9% yy/cc (4Q25)",
+        "key_drivers": "Windows OEM +3%, Xbox content +13%, Search ads +21%"
+      }
+    },
+    "income_statement": {
+      "opm": {
+        "latest_quarter": "45% (2Q25, Dec 2025)",
+        "fy25": "45.6% (+1.0pt yy)",
+        "fy24": "45% (+3pt yy)",
+        "trend": "Capex増加によるマージン圧力あるが営業レバレッジで相殺"
+      },
+      "eps": {
+        "latest_quarter": "$3.23 (2Q25) +10% yy",
+        "fy25": "$13.64 +16% yy",
+        "fy24": "$11.80 +22% yy"
+      },
+      "gross_profit_2q25_sec": {
+        "value": 55295000000,
+        "period": "Q2 FY26 (Oct-Dec 2025)",
+        "source": "SEC EDGAR XBRL"
+      },
+      "operating_income_2q25_sec": {
+        "value": 38275000000,
+        "period": "Q2 FY26 (Oct-Dec 2025)",
+        "source": "SEC EDGAR XBRL"
+      }
+    },
+    "balance_sheet": {
+      "total_assets": {
+        "value": 665302000000,
+        "period": "Dec 2025",
+        "source": "SEC EDGAR XBRL"
+      },
+      "stockholders_equity": {
+        "value": 390875000000,
+        "period": "Dec 2025",
+        "source": "SEC EDGAR XBRL"
+      },
+      "ppe_net": {
+        "value": 261126000000,
+        "period": "Dec 2025",
+        "source": "SEC EDGAR XBRL",
+        "note": "Data center/cloud infrastructure investment reflected"
+      },
+      "cash_and_equivalents": {
+        "value": 24296000000,
+        "period": "Dec 2025",
+        "source": "SEC EDGAR XBRL"
+      },
+      "roe_fy24": "27% (FY24)"
+    },
+    "cash_flow": {
+      "operating_cf_q2fy26": {
+        "value": 35758000000,
+        "period": "H1 FY26 (Jul-Dec 2025)",
+        "source": "SEC EDGAR XBRL"
+      },
+      "capex": {
+        "fy25": "$88.2b (+58% yy)",
+        "fy24": "$55.7b (+74% yy)",
+        "4q25": "$24.2b (record high)",
+        "2q25": "$22.6b (+97% yy)",
+        "allocation": "50% land/buildings (15yr), 50% server/GPU/network (6yr)",
+        "note": "クラウド・AI向けに集中投資。FY26はFY25比緩やかな増加率予想"
+      },
+      "fcf_yield_historical": "~3% (FY20以降低下基調、成長投資優先)",
+      "buyback_ratio": "~40-50% of FCF (FY23は34%と最低水準)"
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "available",
+      "latest": {
+        "form_type": "10-K",
+        "filing_date": "2025-08-01",
+        "period": "FY25 (Jun 2025)",
+        "note": "Annual report for fiscal year ending June 2025"
+      }
+    },
+    "10q": {
+      "status": "available",
+      "latest": {
+        "form_type": "10-Q",
+        "filing_date": "2026-01-28",
+        "accession_number": "0001193125-26-027207",
+        "period": "Q2 FY26 (Dec 2025)",
+        "sec_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/0001193125-26-027207.txt"
+      }
+    },
+    "8k": {
+      "status": "available",
+      "latest": {
+        "form_type": "8-K",
+        "filing_date": "2026-01-28",
+        "accession_number": "0001193125-26-027198",
+        "note": "2Q25 earnings release"
+      }
+    }
+  },
+  "insider_summary": {
+    "status": "available",
+    "period_days": 180,
+    "total_form4_filings": 75,
+    "total_form3_filings": 1,
+    "note": "Active insider trading activity with 76 filings in 180 days. Predominantly Form 4 (stock option exercises and planned sales under 10b5-1 plans).",
+    "management_info_from_report": {
+      "ceo": "Satya Nadella (2014~, クラウド・AI転換を主導)",
+      "key_strategy": "クラウド・AI中心の成長戦略。エコシステム構築と多様なパートナーシップによる競争優位",
+      "openai_partnership": "OpenAIへの戦略的投資。Azure AI Foundryで1800以上のAIモデル提供",
+      "m_and_a": "Activision Blizzard買収(FY24完了)、ゲーム事業のSaaS化を推進"
+    }
+  },
+  "key_metrics": {
+    "roe": "27% (FY24)",
+    "opm_trend": "FY22: 42% → FY23: 42% → FY24: 45% → FY25: 45.6%",
+    "azure_growth": {
+      "4q25": "+39% yy/cc",
+      "3q25": "+35% yy/cc",
+      "2q25": "+31% yy/cc",
+      "1q25": "+34% yy/cc",
+      "ai_contribution": "4Q25よりAI寄与の区分開示を停止（AIとnon-AIの区分が困難化）",
+      "trend": "加速基調。FY26 1Q guidance: +37% yy/cc"
+    },
+    "cloud_market_position": {
+      "azure_rank": "2位（AWS追う形、GCPが3位）",
+      "cloud_spend_forecast": "2021-2030 CAGR MDD-20%",
+      "msft_cloud_annual": "$75bn+ annual run rate (Azure alone, FY25)",
+      "data_centers": "70エリアに400以上のデータセンター（業界最多）"
+    },
+    "office365_metrics": {
+      "commercial_growth": "+16% (4Q25)",
+      "copilot_adoption": "Microsoft 365 Copilot $30/month per user",
+      "arpu_driver": "E5 security license upgrade + Copilot",
+      "seat_growth": "鈍化基調だがARPU成長で補完"
+    },
+    "linkedin": {
+      "growth": "+9% yy/cc (4Q25)",
+      "position": "ビジネスSNSで事実上独占。英語圏でLinkedInアカウントなければビジネス上存在しない人と言われる",
+      "cagr_contribution": "+MSD-HSD%安定成長見込み"
+    },
+    "cagr_estimate_analyst": {
+      "eps_cagr": "+14%",
+      "breakdown": {
+        "revenue": "+11% (PBP:+HSD, IC:+LDD, MPC:+MSD の構成比加重)",
+        "margin_improvement": "+1% (営業レバレッジ、AI投資回収期の収益拡大)",
+        "ma_and_buyback": "+2% (M&A + 自社株買い)"
+      },
+      "valuation": "ITG対比CAGRの魅力度高い。BUY継続"
+    }
+  },
+  "filing_sections": {
+    "note": "10-K Business/Risk Factors/MD&AはSEC EDGAR直接取得ではなくアナリストレポートからの要約",
+    "business": {
+      "summary": "世界最大のソフトウェア企業。3セグメント: PBP(42%), IC(37%), MPC(21%)。OS Windows、Office365、Azure、LinkedIn、Xbox、Bing等を展開。サティア・ナデラCEO下でクラウド・AI中心の成長戦略に転換。",
+      "key_products": [
+        "Windows OS（ビジネススタンダード）",
+        "Office365（サブスクモデル）",
+        "Azure（クラウドプラットフォーム、業界2位）",
+        "LinkedIn（ビジネスSNS、事実上独占）",
+        "Microsoft 365 Copilot（AIアシスタント）",
+        "Azure AI Foundry（1800+モデル提供）",
+        "Xbox / Activision（ゲーム事業、SaaS化推進）"
+      ],
+      "competitive_landscape": [
+        "エンタープライズ: IBM/Oracle/SAP",
+        "クラウド: AWS(1位), GCP(3位)",
+        "検索: Google",
+        "スマホ: Apple/Samsung",
+        "ゲーム: Sony",
+        "CRM: Salesforce, ServiceNow"
+      ]
+    },
+    "risk_factors": {
+      "summary": "アナリストレポートで言及されたリスクファクター",
+      "risks": [
+        "クラウド事業の競争激化（AWSが最大シェア、トップシェアでない以上環境変化時にプレゼンスは盤石と言い切れない）",
+        "AI投資の収益化遅延リスク（Capex FY25: $88.2b +58% yy、投資対効果の顕在化遅れ時にマージン下方圧力）",
+        "反トラスト法リスク（2024年6月、米当局がNvidiaとMSFTに対して反トラスト法調査開始）",
+        "OpenAIとの関係性リスク（OpenAIのOracle移管の可能性、パートナーシップの不確実性）",
+        "既存事業の収益依存によるイノベーション力低下（Windows中心主義からの脱却歴史あり）",
+        "Horizontal SaaSとしての他社ソフトウェア企業との競合拡大（Salesforce Agent Force等）"
+      ]
+    },
+    "mda": {
+      "summary": "FY25/4Q25実績とFY26ガイダンス",
+      "key_metrics": {
+        "fy25_revenue": "$281.72b +14% yy",
+        "fy25_opm": "45.6% +1.0pt yy",
+        "fy25_eps": "$13.64 +16% yy",
+        "fy25_capex": "$88.2b +58% yy"
+      },
+      "key_drivers": [
+        "Azure成長加速（4Q25: +39%）、AI workload拡大",
+        "Office365 Commercial安定成長（+16%）",
+        "Copilot導入拡大による ARPU向上",
+        "Activision買収効果（ゲーム事業SaaS化）"
+      ],
+      "fy26_outlook": {
+        "1q_guidance": "PBP $32.2-32.5b, IC $30.1-30.4b, MPC $12.4-12.9b",
+        "azure_1q26_guidance": "+37% yy/cc（加速継続）",
+        "capex_fy26": "FY25比緩やかな増加率（ただし1Hに大型Finance lease集中）"
+      }
+    }
+  }
+}

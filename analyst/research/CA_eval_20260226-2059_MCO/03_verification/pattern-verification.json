@@ -1,0 +1,124 @@
+{
+  "research_id": "CA_eval_20260226-2059_MCO",
+  "ticker": "MCO",
+  "verified_at": "2026-02-26T21:10:00Z",
+  "verifier": "ca-eval-lead (T6直接実行)",
+  "kb2_patterns_applied": 12,
+  "rejection_patterns_detected": [
+    {
+      "pattern_id": "A",
+      "pattern_name": "結果を原因と取り違え",
+      "affected_claims": [7],
+      "description": "Claim#7（借換え需要）は外部市場環境であり、MCO固有の能力ではない。「結果をもたらす外部条件」を「優位性」として記述。",
+      "confidence_impact": "claim#7のconfidence 30%に既に反映済み"
+    },
+    {
+      "pattern_id": "B",
+      "pattern_name": "業界共通で差別化にならない",
+      "affected_claims": [7],
+      "description": "借換え需要はSPGIにも同等に恩恵。MCO固有の差別化にならない。",
+      "confidence_impact": "claim#7のconfidence 30%に既に反映済み"
+    },
+    {
+      "pattern_id": "D",
+      "pattern_name": "定性的で定量的裏付けなし",
+      "affected_claims": [6],
+      "description": "Claim#6（ブランド認知）は定性的記述が中心。ブランド認知度の定量測定データがない。dogma.md自身が「外見的評価が多い」と認識。",
+      "confidence_impact": "claim#6のconfidence 50%に既に反映済み"
+    },
+    {
+      "pattern_id": "F",
+      "pattern_name": "戦略を優位性と混同",
+      "affected_claims": [5],
+      "description": "Claim#5（PC市場成長）は市場機会への「参入戦略」に近く、MCO固有の構造的優位性ではない。",
+      "confidence_impact": "claim#5のconfidence 50%に既に反映済み"
+    },
+    {
+      "pattern_id": "G",
+      "pattern_name": "純粋競合に対する優位性不明",
+      "affected_claims": [1, 2, 3, 4, 5, 6, 7],
+      "description": "ほぼ全主張でSPGIとの純粋競合差別化が不完全。MCOとSPGIは同じ寡占構造の恩恵を受けており、MCO固有の差別化要素は格付け事業比率の高さ（50% vs 30%弱）に限定。",
+      "confidence_impact": "全主張のconfidenceに反映済み。特にclaim#1は90%を維持するがルール7 PARTIALを明記。"
+    }
+  ],
+  "high_evaluation_patterns_detected": [
+    {
+      "pattern_id": "I",
+      "pattern_name": "定量的裏付けのある差別化",
+      "affected_claims": [1, 2, 4],
+      "description": "Claim#1: シェア40%/40%/20%の定量データ。Claim#2: 価格+2-3%/+4-5%の複数ソース。Claim#4: KYCクロスセル2割、維持率93%。",
+      "confidence_impact": "各主張のconfidence上方要因として反映済み"
+    },
+    {
+      "pattern_id": "II",
+      "pattern_name": "直接的CAGRメカニズム",
+      "affected_claims": [1, 2],
+      "description": "Claim#1: 寡占→安定収入→MIS CAGR +6%が1ステップ。Claim#2: プライシングパワー→価格効果+2.5%がCAGRパラメータに直接対応。",
+      "confidence_impact": "CAGR confidence 90%として反映済み"
+    },
+    {
+      "pattern_id": "IV",
+      "pattern_name": "構造的な市場ポジション",
+      "affected_claims": [1],
+      "description": "Claim#1: 格付け市場の寡占構造×MCOの2社体制でのポジションは業界構造との合致が最も明確。ルール11を満たす。",
+      "confidence_impact": "claim#1のCA confidence 90%の主要根拠"
+    },
+    {
+      "pattern_id": "V",
+      "pattern_name": "競合との具体的比較",
+      "affected_claims": [2, 5],
+      "description": "Claim#2: SPGIとの価格力比較（同等）。Claim#5: SPGIのPC収益$140milとの比較、ダイレクトレンディング限界の分析。",
+      "confidence_impact": "各主張の評価に反映済み"
+    }
+  ],
+  "cagr_pattern_verification": {
+    "cagr_estimate": "EPS +9.5%（売上+6%）",
+    "parameter_mapping": [
+      {
+        "claim_id": 1,
+        "cagr_parameter": "MIS CAGR +6%全体の基盤",
+        "connection_strength": "strong",
+        "mechanism": "寡占構造→安定的な格付け需要取り込み→MIS +6%"
+      },
+      {
+        "claim_id": 2,
+        "cagr_parameter": "MIS内 価格効果 +2.5%",
+        "connection_strength": "strong",
+        "mechanism": "プライシングパワー→年+2.5%の価格効果"
+      },
+      {
+        "claim_id": 3,
+        "cagr_parameter": "MIS全体の確度支持",
+        "connection_strength": "moderate",
+        "mechanism": "スイッチングコスト→顧客維持→CAGR確度"
+      },
+      {
+        "claim_id": 4,
+        "cagr_parameter": "MA CAGR +6.5%",
+        "connection_strength": "moderate",
+        "mechanism": "データ→クロスセル→ARPU→ARR成長"
+      },
+      {
+        "claim_id": 5,
+        "cagr_parameter": "MIS内 新興国/PC +1%",
+        "connection_strength": "weak",
+        "mechanism": "PC市場成長→格付け需要だがCAGR引き上げ見送り"
+      },
+      {
+        "claim_id": 7,
+        "cagr_parameter": "MIS内 実質GDP +2.5%の環境要因",
+        "connection_strength": "moderate",
+        "mechanism": "借換え需要→起債→格付け収入の下支え"
+      }
+    ]
+  },
+  "consistency_check": {
+    "status": "consistent",
+    "notes": [
+      "Claim#1(90%)とClaim#2(70%)の関係：#2は#1の派生。#1が90%で#2が70%は整合的（独立性の弱さを反映）",
+      "Claim#1(90%)とClaim#3(70%)の関係：#3も#1の別側面。同様に整合的",
+      "Claim#5(50%)とClaim#7(30%)の関係：市場機会/環境として適切に区別。#7はより外部環境的で低評価は妥当",
+      "全体平均CA 59%、CAGR 71%：CAGRがCA対比で高いのはKB3の傾向と一致（dogma.md §7参照）"
+    ]
+  }
+}

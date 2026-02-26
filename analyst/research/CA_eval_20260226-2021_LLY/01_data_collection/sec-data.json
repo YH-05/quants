@@ -1,0 +1,151 @@
+{
+  "ticker": "LLY",
+  "company_name": "Eli Lilly and Company",
+  "retrieved_at": "2026-02-26T20:22:00Z",
+  "data_source": "mixed",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "partial",
+    "reason": "SEC EDGAR MCPから最新10-K(FY2025)の財務データを取得。filing_sectionsの詳細テキスト抽出は一部制限あり。アナリストレポートの情報で補完。",
+    "affected_fields": ["filing_sections_full_text"],
+    "available_fields": ["financials", "key_metrics", "recent_filings", "insider_summary_partial"]
+  },
+  "financials": {
+    "note": "SEC EDGAR 10-K (FY2025, filed 2026-02-12) + アナリストレポートからの補完情報",
+    "revenue": {
+      "description": "売上高",
+      "latest_annual": {
+        "value": "65179000000",
+        "currency": "USD",
+        "period": "FY2025 (ending 2025-12-31)",
+        "source": "SEC EDGAR 10-K (accession: 0000059478-26-000013)"
+      },
+      "historical_reference": {
+        "fy2023_approx": "34124000000",
+        "fy2024_approx": "45000000000",
+        "note": "FY2025は$65.2Bで前年比大幅増。GLP-1作動薬(Mounjaro/Zepbound)の急拡大が主因"
+      }
+    },
+    "key_products": {
+      "mounjaro_zepbound": {
+        "description": "GLP-1作動薬（糖尿病・抗肥満症）",
+        "status": "急拡大中、FY2025で最大の売上ドライバー",
+        "competitive_position": "NOVOとの2社寡占。注射剤で市場リーダーの一角"
+      },
+      "orforglipron": {
+        "description": "低分子型経口GLP-1作動薬（開発中）",
+        "status": "P3試験3本成功（ACHIEVE-1, ATTAIN-1, ATTAIN-2）。26年商業化見込み",
+        "competitive_position": "低分子型で3年以上リード。NOVOの経口剤（ペプチド製剤）に対して食事制限・製造面で優位",
+        "pre_launch_inventory": "$5.5B（2024年12月末時点、原価ベース）"
+      },
+      "verzenio": {
+        "description": "CDK4/6阻害薬（HR陽性乳がん）",
+        "status": "術後補助療法で差別化成功、再加速シナリオ",
+        "competitive_position": "PFEのIbrance（市場参入1番手）が失敗した術後補助療法で成功"
+      },
+      "donanemab": {
+        "description": "抗アミロイドβ抗体（アルツハイマー型認知症）",
+        "status": "承認済み。Leqembi（エーザイ/BIIB）との競合",
+        "competitive_position": "アミロイドβ除去効果ではLeqembiを上回るが、ARIAリスクも高い"
+      },
+      "jardiance": {
+        "description": "SGLT2阻害剤（糖尿病・心不全）",
+        "status": "2026-27年に特許切れ見込み",
+        "note": "20年代後半にパテント・クリフ"
+      }
+    },
+    "income_statement": {
+      "revenue_fy2025": "$65,179M",
+      "net_income_fy2025": "$20,640M",
+      "eps_basic_fy2025": "$23.00",
+      "eps_diluted_fy2025": "$22.95",
+      "gpm_note": "GPM 2-3%ポイント改善余地（アナリスト見解、2023年時点）"
+    },
+    "balance_sheet": {
+      "total_assets": "$112,476M",
+      "total_liabilities": "$2,375M (注: XBRL抽出値。総負債はより大きい可能性あり。current liabilities $35,228Mを別途計上)",
+      "stockholders_equity": "$26,535M",
+      "cash_and_equivalents": "$7,268M",
+      "accounts_receivable": "$17,760M",
+      "pp_and_e_net": "$24,675M",
+      "note": "PP&E $24.7Bは製造能力拡大投資（orforglipron含む）を反映"
+    },
+    "cash_flow": {
+      "operating_cf": "$16,813M",
+      "investing_cf": "$10,972M",
+      "financing_cf": "$2,213M",
+      "note": "投資CFが大きいのは製造能力拡大（orforglipron量産準備等）を反映"
+    }
+  },
+  "recent_filings": {
+    "10k": {
+      "status": "available",
+      "filing_date": "2026-02-12",
+      "accession_number": "0000059478-26-000013",
+      "period": "FY2025 (ending 2025-12-31)",
+      "sec_url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/0000059478-26-000013.txt"
+    },
+    "10q": {
+      "status": "partial",
+      "note": "直近10-Kが最新のため10-Q参照は不要"
+    },
+    "8k": {
+      "status": "partial",
+      "note": "直近Form 4の集中提出あり（2026年2月、インサイダー取引関連）"
+    }
+  },
+  "insider_summary": {
+    "status": "partial",
+    "note": "直近30日にForm 4が多数提出（2026年2月に9件以上）。RSUベスティングに伴う定期的売却が中心と推察。",
+    "management_info_from_report": {
+      "ceo": "David A. Ricks",
+      "key_pipeline": "orforglipron（経口GLP-1）が25年の中核テーマ",
+      "strategic_focus": "GLP-1作動薬でのNOVOとのデュオポリー維持、orforglipronのロケットスタート"
+    }
+  },
+  "key_metrics": {
+    "revenue_fy2025": "$65.2B",
+    "net_income_margin_fy2025": "31.7%",
+    "cagr_estimate_analyst": "High teens（10%台後半）",
+    "cagr_breakdown": {
+      "topline": "+10-15%",
+      "mounjaro_peak": "$10B+（糖尿病・抗肥満症）",
+      "donanemab": "$5-10B（成功確率75%）",
+      "gpm_improvement": "+2-3%ポイント",
+      "sga_leverage": "数%ポイント",
+      "buyback": "織り込まず"
+    },
+    "patent_cliff_risk": "Jardiance（SGLT2阻害剤）が20年代後半に特許切れ。ただし業界他社比で20年代の大型特許切れリスクは小さい",
+    "glp1_market_position": "NOVOとの2社デュオポリー。供給能力が参入障壁。30年代まで継続想定",
+    "orforglipron_lead": "低分子GLP-1作動薬として3年以上リード"
+  },
+  "filing_sections": {
+    "note": "アナリストレポートからの要約（SEC EDGAR全文抽出は制限あり）",
+    "business": {
+      "summary": "米メガファーマの一角。糖尿病/内分泌代謝系、中枢神経系、抗がん剤、自己免疫疾患領域に重点展開。GLP-1作動薬（Mounjaro/Zepbound）と経口GLP-1（orforglipron）が20年代の最大成長ドライバー。アルツハイマー領域ではdonanemabが承認済み。",
+      "key_segments": "医薬品事業（単一セグメント）",
+      "geographic": "グローバル展開。米国が最大市場"
+    },
+    "risk_factors": {
+      "summary": "アナリストレポートで言及されたリスク",
+      "risks": [
+        "GLP-1作動薬市場での価格競争リスク（PBMのformulary選定、CVSがWegovy優先推奨等）",
+        "orforglipronのP3試験リスク（3本成功済みだが追加試験進行中）",
+        "インスリンの政治的薬価リスク（米国における構造的リスク）",
+        "Jardiance特許切れ（20年代後半）",
+        "アルツハイマー薬（donanemab）のARIA（脳浮腫）安全性リスク",
+        "HCV類似シナリオ（大型薬のPBM主導価格競争によるピークアウト）の可能性"
+      ]
+    },
+    "mda": {
+      "summary": "FY2025実績（SEC EDGAR 10-Kベース）",
+      "revenue_fy2025": "$65.2B",
+      "net_income_fy2025": "$20.6B",
+      "key_drivers": [
+        "Mounjaro/Zepbound: GLP-1作動薬の急拡大",
+        "Verzenio: 乳がん術後補助療法での差別化",
+        "donanemab: アルツハイマー領域の承認・上市",
+        "orforglipron: P3成功によるパイプラインバリュー向上"
+      ]
+    }
+  }
+}

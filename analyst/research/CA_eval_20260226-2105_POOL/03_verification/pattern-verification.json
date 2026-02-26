@@ -1,0 +1,157 @@
+{
+  "research_id": "CA_eval_20260226-2105_POOL",
+  "ticker": "POOL",
+  "verified_at": "2026-02-26T21:15:00Z",
+  "kb2_version": "v1.0",
+  "rejection_patterns_scan": [
+    {
+      "pattern": "A_result_as_cause",
+      "detected_claims": [4, 5],
+      "details": {
+        "claim_4": "M&A実績40件は「結果」。能力（選定基準、PMIプロセス）の具体的記述が不足。CHD#1（70%）ほどの能力記述がない。",
+        "claim_5": "メンテナンス60%の収益構成は「結果」。安定性を維持する「能力」が不明確。アナリスト自身が過大評価を認定。"
+      },
+      "confidence_impact": "claim_4: -10%(50%は妥当), claim_5: -20%(30%が妥当)"
+    },
+    {
+      "pattern": "B_industry_common",
+      "detected_claims": [3, 6],
+      "details": {
+        "claim_3": "価格転嫁力は業界のコスト構造（建設業者の人件費比率）に起因し、同業他社も同等の恩恵を受ける可能性。ただし当社の規模による追加交渉力（Claim#1）との組み合わせで差別化あり。",
+        "claim_6": "Eコマース参入障壁は業界全体に共通する特性。パパママショップも同じ恩恵。COST#5（国際展開20%）やCOST#6（ガソリン20%）の「業界共通」パターンに類似。"
+      },
+      "confidence_impact": "claim_3: 50%維持(規模との組合せあり), claim_6: 50%→業界共通面考慮だが物理的特性の固有性あり"
+    },
+    {
+      "pattern": "C_causal_leap",
+      "detected_claims": [],
+      "details": {},
+      "confidence_impact": "該当なし"
+    },
+    {
+      "pattern": "D_qualitative_only",
+      "detected_claims": [],
+      "details": {},
+      "confidence_impact": "該当なし。POOLのレポートは業界構造やコスト構造の定量データが比較的豊富。"
+    },
+    {
+      "pattern": "E_factual_error",
+      "detected_claims": [],
+      "details": {},
+      "confidence_impact": "該当なし。fact-checkでcontradicted=0。"
+    },
+    {
+      "pattern": "F_strategy_confusion",
+      "detected_claims": [4],
+      "details": {
+        "claim_4": "「コンソリデーション戦略」は戦略。背後の「M&A実行能力」が優位性だが、能力の具体的プロセス記述が不足。ORLY#2（ドミナント出店戦略→規模の経済）のパターンと同様の変換が必要。"
+      },
+      "confidence_impact": "claim_4: 50%維持。戦略と能力の区別を明示すべき。"
+    },
+    {
+      "pattern": "G_unclear_vs_pure_competitor",
+      "detected_claims": [3, 6, 7],
+      "details": {
+        "claim_3": "同業他社との価格転嫁力の比較なし。",
+        "claim_6": "同業他社も同じEC参入障壁の恩恵。",
+        "claim_7": "他の卸売業者との収益構造比較なし。"
+      },
+      "confidence_impact": "各主張-10%程度"
+    }
+  ],
+  "high_evaluation_patterns_scan": [
+    {
+      "pattern": "I_quantitative_differentiation",
+      "detected_claims": [1, 2, 7],
+      "details": {
+        "claim_1": "GPM 29-30%維持（SEC EDGAR検証済）、市場シェア40%、拠点数400 vs 30の定量差別化。",
+        "claim_2": "400拠点 vs 30拠点の格差、4州で55%の地理的集中度。",
+        "claim_7": "Fixed:Variable=75:25、限界利益率24%、ROIC26%の定量データ。"
+      },
+      "confidence_impact": "claim_1: +10-20%, claim_2: +10%, claim_7: ヒアリングベースのため効果限定的"
+    },
+    {
+      "pattern": "II_direct_cagr_mechanism",
+      "detected_claims": [3],
+      "details": {
+        "claim_3": "価格転嫁力→年間1-2%のinflation pricing→売上成長は1ステップで直接的。Fluidra CFOの裏付けもあり。CAGR接続70%は妥当。"
+      },
+      "confidence_impact": "claim_3 CAGR: 70%を支持"
+    },
+    {
+      "pattern": "III_capability_over_result",
+      "detected_claims": [1],
+      "details": {
+        "claim_1": "バーゲニングパワーは構造的な「能力」として正しく抽出されている。シェア40%という結果ではなく、フラグメント構造における寡占ポジションという能力を評価。"
+      },
+      "confidence_impact": "claim_1: 70%を支持"
+    },
+    {
+      "pattern": "IV_structural_market_position",
+      "detected_claims": [1, 2, 4],
+      "details": {
+        "claim_1": "川上フラグメント×川下フラグメント×川中寡占は明確な構造的市場ポジション。ORLY#2（90%）に構造的に類似だが、密度データの具体性が不足するため70%止まり。",
+        "claim_2": "400拠点の地域密度はORLY#2の「ローカルな規模の経済」に類似。ただし個別拠点の効率データなし。",
+        "claim_4": "フラグメント市場（パパママショップ）でのコンソリデーションはORLY#5に類似だが、M&A寄与度が低下中。"
+      },
+      "confidence_impact": "claim_1: 70%を支持（90%にはデータ不足）、claim_2: 70%を支持、claim_4: 50%を支持（寄与度低下）"
+    },
+    {
+      "pattern": "V_specific_competitor_comparison",
+      "detected_claims": [],
+      "details": {},
+      "confidence_impact": "該当なし。POOLのレポートでは純粋競合の具体名が不足。業界2位の拠点数（30）は示されるが社名なし。"
+    }
+  ],
+  "cagr_pattern_verification": {
+    "claim_1_cagr": {
+      "pattern_match": "II_direct（部分的）",
+      "assessment": "GPM維持→OPレバレッジの基盤は2ステップ。検証可能だが、「基盤」としての間接性があり70%。"
+    },
+    "claim_2_cagr": {
+      "pattern_match": "なし",
+      "assessment": "シェアゲインへの寄与メカニズムが不透明。50%。"
+    },
+    "claim_3_cagr": {
+      "pattern_match": "II_direct",
+      "assessment": "inflation pricing→売上成長は1ステップで最も直接的。Fluidra CFO裏付けもあり70%。"
+    },
+    "claim_4_cagr": {
+      "pattern_match": "IV_structural（弱体化）",
+      "assessment": "M&A→売上成長は直接的だが、寄与度が1-2%→0.5%に引き下げ。30%。"
+    },
+    "claim_5_cagr": {
+      "pattern_match": "なし",
+      "assessment": "安定性仮説が否定されCAGR基盤が弱体化。30%。"
+    },
+    "claim_6_cagr": {
+      "pattern_match": "なし",
+      "assessment": "ダウンサイドプロテクションのみでCAGR寄与なし。30%。"
+    },
+    "claim_7_cagr": {
+      "pattern_match": "II_direct（部分的）",
+      "assessment": "ROIC維持→OPレバレッジの基盤は間接的。50%。"
+    }
+  },
+  "consistency_check": {
+    "status": "pass",
+    "issues": [
+      {
+        "type": "overlap",
+        "claims": [1, 2],
+        "description": "Claim#1（バーゲニングパワー）とClaim#2（ディストリビューションネットワーク）は相互補完的だが、優位性の源泉が重複する面がある（規模→交渉力 & 規模→配送網）。ただし別の側面（価格vs利便性）を捉えているため分離は妥当。"
+      },
+      {
+        "type": "overlap",
+        "claims": [1, 3],
+        "description": "Claim#1（バーゲニングパワー）とClaim#3（価格転嫁力）は関連が深い。Claim#3は業界構造由来の特性であり、Claim#1の規模による追加効果と分離が困難な面がある。"
+      },
+      {
+        "type": "internal_contradiction",
+        "claims": [5],
+        "description": "Claim#5はアナリスト自身が期初仮説を否定した唯一のケース。confidence 30%は適切だが、レポート内の記述で「安定的なrevenue stream」（2022年）と「安定的なビジネスとは言い難い」（2025年）が併存。この矛盾はアナリストの学習・修正として記録すべき。"
+      }
+    ],
+    "overall_confidence_consistency": "pass。confidence分布（70%x2, 50%x3, 30%x2）はKB3実績（5銘柄平均）と整合的。90%がないのはルール11の明確な合致データが不足するため。"
+  }
+}

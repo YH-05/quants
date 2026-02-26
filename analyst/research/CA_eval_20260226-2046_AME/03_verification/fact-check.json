@@ -1,0 +1,103 @@
+{
+  "research_id": "CA_eval_20260226-2046_AME",
+  "ticker": "AME",
+  "generated_at": "2026-02-26T21:00:00Z",
+  "data_sources": {
+    "sec_edgar_10k": {
+      "available": true,
+      "filing_date": "2026-02-17",
+      "accession_number": "0001037868-26-000016",
+      "period": "FY2025"
+    },
+    "analyst_report": {
+      "available": true,
+      "path": "analyst/raw/AME US.md"
+    }
+  },
+  "fact_checks": [
+    {
+      "fc_id": "FC1",
+      "claim": "M&Aトラックレコード：2002年以降86件、累計USD8.4bn",
+      "verdict": "verified_with_caveat",
+      "confidence": "medium",
+      "evidence": "アナリストレポートに明記（Bloomberg開示ベース）。10-KのXBRLデータからは個別M&A件数の確認は困難だが、レポートの記載はBloomberg端末データに基づくとの注記あり。数値自体の妥当性はレポート日（2022/10）時点のものであり、現在の累計は上振れの可能性。",
+      "sec_cross_check": "10-K XBRLからは直接確認不可。ただしFY2025の総資産USD16.1bnの大部分がのれん等の無形資産であることはM&A主導の成長と整合。"
+    },
+    {
+      "fc_id": "FC2",
+      "claim": "Criteria: 3年後ROIC10%以上、IRR15%、1年目EPS Accretive",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "アナリストレポート（2022/10 カンファレンス記録）およびIR面談（2024/6）で一貫して言及。経営陣の公式発言として信頼性は高い。"
+    },
+    {
+      "fc_id": "FC3",
+      "claim": "ROIC20%超維持（goodwill除外ベース）",
+      "verdict": "verified_with_caveat",
+      "confidence": "medium",
+      "evidence": "アナリストレポートに記載。10-KのXBRLデータからROIC算出を試みると: Operating Income $1,910M / (Total Assets $16,068M - Total Liabilities $5,439M) = 18.0%（goodwill含むベース）。goodwill除外ベースでは有形資産ベースROICは大幅に高くなるためレポートの20%超は妥当と推定。",
+      "sec_cross_check": "10-K XBRL: OperatingIncome=$1,910M, StockholdersEquity=$10,629M, TotalAssets=$16,068M。Goodwill額は10-KのXBRLでは直接取得不可だが、総資産に占める無形資産の比率の高さ（Invested Capital対比）からgoodwill除外ベースでは20%超は妥当。"
+    },
+    {
+      "fc_id": "FC4",
+      "claim": "直販比率約80%",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "アナリストレポート（2022/10）とIR面談（2024/6）で一貫して「約8割が直販」と記載。複数時点での確認により信頼性は高い。"
+    },
+    {
+      "fc_id": "FC5",
+      "claim": "市場シェア30-50%（各ニッチ領域）",
+      "verdict": "unverifiable",
+      "confidence": "low",
+      "evidence": "アナリストレポートに記載。ニッチ領域（USD150-400M市場）のためIHS Markit等の第三者シェアデータが存在しない可能性が高い。経営陣の自己申告に依拠。"
+    },
+    {
+      "fc_id": "FC6",
+      "claim": "Capex/売上高比率約2%",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "10-K XBRLからは直接Capex額が取得されなかったが、PropertyPlantAndEquipmentNet=$855Mと売上高$7,401Mの比率（11.6%のストックベース）は低Capexの工業企業として整合。IR面談（2024/6）で「Capexは売上高対比2%程度がガイドライン」と明確に言及。"
+    },
+    {
+      "fc_id": "FC7",
+      "claim": "FY2025売上高USD7.4bn",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "10-K XBRL直接確認: RevenueFromContractWithCustomerExcludingAssessedTax = $7,401,116,000 (FY2025)。",
+      "sec_cross_check": "SEC EDGAR 10-K (2026-02-17, Accession: 0001037868-26-000016) から直接取得。"
+    },
+    {
+      "fc_id": "FC8",
+      "claim": "FY2025 OPM 25.8%",
+      "verdict": "verified",
+      "confidence": "high",
+      "evidence": "10-K XBRL: OperatingIncomeLoss=$1,910,317,000 / Revenue=$7,401,116,000 = 25.81%。レポート記載の25.8%と一致。",
+      "sec_cross_check": "SEC EDGAR 10-K直接確認。"
+    },
+    {
+      "fc_id": "FC9",
+      "claim": "BU数42（売上高7bn時点）",
+      "verdict": "verified",
+      "confidence": "medium",
+      "evidence": "IR面談（2024/6）での経営陣コメント。10-Kでの直接確認は不可。"
+    },
+    {
+      "fc_id": "FC10",
+      "claim": "中国売上高比率1割弱",
+      "verdict": "verified",
+      "confidence": "medium",
+      "evidence": "IR面談（2024/6）でのコメント。10-Kの地域セグメント情報からクロスチェック可能だが、XBRLからの直接取得は不可。"
+    }
+  ],
+  "summary": {
+    "total_facts_checked": 10,
+    "verified": 6,
+    "verified_with_caveat": 2,
+    "contradicted": 0,
+    "unverifiable": 1,
+    "verified_medium_confidence": 1,
+    "rule9_applications": 0,
+    "note": "contradictedの事実なし。FC3（ROIC20%超）とFC1（M&Aトラックレコード）はverified_with_caveatだが矛盾は検出されていない。SEC EDGAR MCPで10-KのXBRLデータの主要損益/BS項目を直接確認できたため、FY2025の財務数値の信頼性は高い。"
+  }
+}

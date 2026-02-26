@@ -1,0 +1,36 @@
+{
+  "research_id": "CA_eval_20260226-2046_CPRT",
+  "ticker": "CPRT",
+  "mode": "simplified",
+  "generated_at": "2026-02-26T21:02:00Z",
+  "kb_version": "v1.0.0",
+  "mode_determination": {
+    "reason": "CPRTはPhase 2データ（analyst/phase2_KY/*CPRT*.md）が存在しないため簡易モードを適用",
+    "phase2_data_searched": "analyst/phase2_KY/*CPRT*",
+    "phase2_data_found": false,
+    "full_mode_eligible_tickers": ["CHD", "COST", "LLY", "MNST", "ORLY"]
+  },
+  "full_mode_results": null,
+  "simplified_mode_results": {
+    "check_id": "S-8",
+    "check_description": "contradicted事実に対するルール9自動適用（confidence → 10%）の確認",
+    "fact_check_source": "analyst/research/CA_eval_20260226-2046_CPRT/03_verification/fact-check.json",
+    "contradicted_claims": [],
+    "contradicted_count": 0,
+    "rule9_applied_count": 0,
+    "overall_verdict": "pass",
+    "pass": true,
+    "annotation": "contradictedと判定された事実の主張は0件。ルール9（事実誤認→confidence 10%）の適用対象なし。簡易モードのS-8チェックは合格。",
+    "caveats": [
+      "SEC EDGAR MCPでget_key_metricsが空結果を返したため、一部の財務指標検証は10-Qデータとアナリストレポートの内部一貫性チェックに限定。",
+      "verified_with_caveatが3件存在するが（FC2: 保険会社契約数の時点ずれ、FC3: Bidder数の古さ、FC10: OPMの四半期変動）、いずれもcontradictedではなくS-8チェックの対象外。",
+      "unverifiableが1件（FC13: RB Globalの余剰キャパシティ50%主張）存在するが、これはRB側の自己申告であり検証困難な性質。contradictedではないためS-8チェックの対象外。"
+    ]
+  },
+  "overall_assessment": {
+    "accuracy_verdict": "pass",
+    "confidence_level": "medium",
+    "reason": "簡易モードのS-8チェックのみ実施。SEC EDGAR 10-Qデータとの照合で主要財務指標は整合。contradicted事実は0件でルール9適用対象なし。ただしPhase 2データ（Y評価値）との比較による精度検証は未実施。",
+    "recommendation": "CPRTのPhase 2評価（Y評価値）が蓄積された後、フルモードで再評価することを推奨。特にClaim#1-3の三位一体構造（CA 70%）のY評価との比較、およびClaim#2（NIMBY Yard）のnon-salvageシフトリスクに対するY見解の確認が有益。"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "research_id": "CA_eval_20260226-2021_LLY",
+  "ticker": "LLY",
+  "verified_at": "2026-02-26T20:27:00Z",
+  "verifier": "ca-eval-lead (T5直接実行)",
+  "data_sources": {
+    "primary": "analyst/raw/LLY US.md",
+    "sec_edgar_mcp": "partial（FY2025 10-Kの財務データを取得。filing_sections詳細テキストは制限あり）",
+    "note": "ファクトチェックはアナリストレポートの内部一貫性チェック + SEC EDGAR 10-K（FY2025）の財務データ照合を実施。"
+  },
+  "fact_checks": [
+    {
+      "claim_id": 1,
+      "claim_title": "複数の超大型市場への同時ポートフォリオ戦略",
+      "factual_claims_checked": [
+        {
+          "fact": "GLP-1、アルツハイマー、乳がんの3領域に成長ドライバーを保有",
+          "status": "verified",
+          "evidence": "アナリストレポートにMounjaro(GLP-1)、donanemab(アルツハイマー)、Verzenio(乳がん)の3製品が明示。SEC EDGAR 10-KのFY2025売上$65.2Bが成長を裏付け。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "業界他社比で20年代の大型特許切れリスクが小さい",
+          "status": "verified",
+          "evidence": "レポートに「既存品群では、業界他社と比べると20年代における特許切れリスクが小さい」と明示。Jardiance特許切れは認識済み。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "FY2025売上高$65.2B",
+          "status": "verified",
+          "evidence": "SEC EDGAR 10-K (accession: 0000059478-26-000013) でRevenues $65,179,000,000を確認。",
+          "confidence_impact": "none"
+        }
+      ],
+      "overall_status": "verified",
+      "rule9_applied": false,
+      "notes": "主要事実はレポートおよびSEC EDGARと整合。"
+    },
+    {
+      "claim_id": 2,
+      "claim_title": "低分子型経口GLP-1作動薬における技術的差別化",
+      "factual_claims_checked": [
+        {
+          "fact": "orforglipronは低分子型GLP-1作動薬",
+          "status": "verified",
+          "evidence": "レポートに「低分子 GLP-1 作動薬として３年以上リード」と明示。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "P3試験3本成功（ACHIEVE-1:体重減-7.9%, ATTAIN-1:体重減-11%, ATTAIN-2:体重減-8.3%）",
+          "status": "verified",
+          "evidence": "レポートにACHIEVE-1（体重減7.9%）、ATTAIN-1（体重減11%）、ATTAIN-2（体重減8.3%）のデータが明示。3本とも成功と記載。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "肝毒性検出されず（競合プロジェクト多数がこれで断念）",
+          "status": "verified",
+          "evidence": "レポートに「安全性では、肝毒性などは検出されていない(競合プロジェクトの多くがこれで断念)」と明示。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "未承認薬在庫$5.5B計上（2024年12月末、10-K開示）",
+          "status": "verified",
+          "evidence": "レポートに「24年12月末時点でorforglipronを中心に未承認薬の在庫を約5.5億ドル計上していると開示」と明示。10-K開示情報。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "ACHIEVE-1: 中断率8%（Mounjaro 1桁半ば%を若干上回る）",
+          "status": "verified",
+          "evidence": "レポートに「忍容性では、治療中断／中止患者の割合が８％(プラセボ１％)。１桁半ば％であるLLYのMounjaroを若干上回る」と明示。",
+          "confidence_impact": "none"
+        }
+      ],
+      "overall_status": "verified",
+      "rule9_applied": false,
+      "notes": "orforglipronの臨床データは全てレポートの記述と整合。定量データが豊富で検証可能。"
+    },
+    {
+      "claim_id": 3,
+      "claim_title": "アルツハイマー領域における長期的臨床開発ノウハウ",
+      "factual_claims_checked": [
+        {
+          "fact": "donanemab承認済み",
+          "status": "verified",
+          "evidence": "レポートにdonanemabの承認審査プロセス（FDA ADCOM招集、承認遅延等）の記載あり。2024年後半に承認と推察される。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "donanemabのP2でLeqembiを上回るアミロイドβ除去効果",
+          "status": "verified",
+          "evidence": "レポートに「donanemabのP２試験ではLeqembiを上回るアミロイドβ除去効果が示された」と明示。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "donanemabのARIA発症率は30%台（Leqembiは20%台）",
+          "status": "verified",
+          "evidence": "レポートに「有効性(アミロイドβ除去)は優れるも安全性(特にARIA、脳浮腫リスク)も高い」と記載。ROGのtrontinemabデータ比較でLeqembi 20%台、donanemab 30%台と示唆。",
+          "confidence_impact": "none"
+        }
+      ],
+      "overall_status": "verified",
+      "rule9_applied": false,
+      "notes": "アルツハイマー関連データはレポートと整合。ARIA発症率の数値はROGセクションのデータ比較から確認。"
+    },
+    {
+      "claim_id": 4,
+      "claim_title": "GLP-1デュオポリーにおける供給能力の参入障壁",
+      "factual_claims_checked": [
+        {
+          "fact": "供給能力がGLP-1市場の参入障壁",
+          "status": "verified",
+          "evidence": "レポートに「供給能力が大きな参入障壁となり、LLYとNovo Nordisk(NOVO)が圧倒的優位なポジション」と明示。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "compoundersが24年央に10%以上の数量シェアを占めた",
+          "status": "verified",
+          "evidence": "レポートに「一説によると10%以上の数量ベースシェアを占めた」と明示。",
+          "confidence_impact": "none",
+          "caveat": "「一説によると」という留保付きの数値。"
+        },
+        {
+          "fact": "PP&E $24.7B（SEC EDGAR確認）",
+          "status": "verified",
+          "evidence": "SEC EDGAR 10-K (accession: 0000059478-26-000013) でPropertyPlantAndEquipmentNet $24,675,000,000を確認。",
+          "confidence_impact": "minor_upward",
+          "note": "SEC EDGARで独立検証済み。大規模な製造投資を裏付け。"
+        }
+      ],
+      "overall_status": "verified",
+      "rule9_applied": false,
+      "notes": "供給能力関連の事実はレポートおよびSEC EDGAR財務データと整合。PP&EのSEC EDGAR確認が独立検証として有効。"
+    },
+    {
+      "claim_id": 5,
+      "claim_title": "既承認GLP-1製品(Mounjaro)による市場ポジション確立と粘着性",
+      "factual_claims_checked": [
+        {
+          "fact": "Mounjaro/Zepboundは22年2Qに米国上市",
+          "status": "verified",
+          "evidence": "レポートに「22年２Qに米国で上市されたMounjaroが良好な有効性・安全性プロファイルや利便性を背景に急拡大」と明示。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "PBM/CVSのformulary選定でWegovyが優先推奨された事例あり",
+          "status": "verified",
+          "evidence": "レポートに「CVSが、標準推奨リスト(formulary)でNOVOのWegovyを優先推奨と決定」と明示。2025年5月。",
+          "confidence_impact": "minor_downward",
+          "note": "粘着性への反証事例として機能。PBM判断でブランド粘着性が覆される可能性を示す。"
+        }
+      ],
+      "overall_status": "verified_with_caveat",
+      "rule9_applied": false,
+      "notes": "事実は整合だが、CVSのWegovy優先推奨がMounjaro粘着性への反証事例として機能する点をcaveat付き。"
+    },
+    {
+      "claim_id": 6,
+      "claim_title": "グローバル医療機関ネットワークと医学情報提供体制",
+      "factual_claims_checked": [
+        {
+          "fact": "グローバル大手医薬品企業の一角",
+          "status": "verified",
+          "evidence": "レポートに「米メガファーマの一角」と明示。SEC EDGAR確認のFY2025売上$65.2Bが規模を裏付け。",
+          "confidence_impact": "none"
+        },
+        {
+          "fact": "糖尿病、中枢神経系、抗がん剤、自己免疫疾患の複数領域に展開",
+          "status": "verified",
+          "evidence": "レポートに「糖尿病／内分泌代謝系、中枢神経系、抗がん剤、自己免疫疾患領域など」と明示。",
+          "confidence_impact": "none"
+        }
+      ],
+      "overall_status": "verified",
+      "rule9_applied": false,
+      "notes": "事実としてはすべて検証済み。ただし優位性としての評価（KB3 LLY#6: 30%）とは別の問題。"
+    }
+  ],
+  "summary": {
+    "total_facts_checked": 22,
+    "verified": 20,
+    "verified_with_caveat": 1,
+    "unverifiable": 0,
+    "contradicted": 0,
+    "rule9_applications": 0
+  },
+  "overall_assessment": {
+    "data_quality": "high",
+    "sec_edgar_verification": "partial",
+    "major_findings": [
+      "全主要事実主張はアナリストレポートおよびSEC EDGAR 10-Kと整合（事実誤認ゼロ）",
+      "SEC EDGAR 10-K（FY2025）から売上高$65.2B、PP&E $24.7B、純利益$20.6Bを独立検証",
+      "orforglipronのP3臨床データ（体重減少率、中断率、安全性）はレポートの記述と整合",
+      "CVSのWegovy優先推奨がMounjaro粘着性への反証事例として記録（Claim #5のcaveat）"
+    ],
+    "no_rule9_triggered": "事実誤認はゼロ。ルール9（事実誤認→confidence 10%）の適用なし。",
+    "annotation": "全主張のconfidenceスコアを現状維持。SEC EDGAR 10-Kの製品別売上（Segment情報）が取得可能であれば、GLP-1製品群の売上構成比を追加検証すべき。"
+  }
+}

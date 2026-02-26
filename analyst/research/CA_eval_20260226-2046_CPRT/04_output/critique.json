@@ -1,0 +1,77 @@
+{
+  "research_id": "CA_eval_20260226-2046_CPRT",
+  "ticker": "CPRT",
+  "critique_timestamp": "2026-02-26T20:58:00Z",
+  "overall_assessment": {
+    "kb_alignment": "high",
+    "reasoning_quality": "high",
+    "critical_issues": 1,
+    "minor_issues": 4
+  },
+  "claim_critiques": [
+    {
+      "claim_id": 1,
+      "critique_type": "reasoning_gap",
+      "severity": "minor",
+      "issue": "Bidder登録者数「40万超」は2015年時点のデータであり、11年間アップデートなし。この数値をconfidence 70%の主要根拠として使用しているが、最新データが未確認の状態で「年々競争優位性は高まっている」とするのは推測に基づく。ASP格差（CPRT +5.7% vs IAA +1%）は直近データだが、Bidder数との因果関係は間接的。",
+      "kb_reference": "KB2パターンI「定量的裏付けのある差別化」の条件として、データの鮮度・検証可能性が重要。KB3 COST#1（退職率9% vs 業界20+%: 70%）のデータは現在進行形で開示されている点で優れる。",
+      "suggested_action": "annotation_only",
+      "suggested_value": null,
+      "reasoning": "CA confidence 70%は維持。ASP格差がネットワーク効果の代理指標として十分に機能している。ただし「40万超」が2015年データであることを明記し、「最新Bidder数の開示が得られれば上振れの余地」というアノテーションを追加すべき。"
+    },
+    {
+      "claim_id": 2,
+      "critique_type": "reasoning_gap",
+      "severity": "critical",
+      "issue": "アナリスト自身がCFO面談メモ（S6: 2023/6）で「non-salvageへのシフトによってyard保有の重要性が変遷し、競争優位性が中長期的に希薄化する可能性がある」と明確に警告しているにもかかわらず、CA confidence 70%にはこのリスクが十分に反映されていない。KB1ルール10（ネガティブケース）の逆方向として、「Yard保有の優位性が構造的に弱体化するリスク」はconfidenceを下方修正する要因として明示的に扱うべき。CFO面談メモでの「中古車は移動できるし、必ずしもYardは必要ないだろう」というアナリストの観察は重要。",
+      "kb_reference": "KB1ルール10「ネガティブケース（実行しなかった例）による裏付けを評価」の逆方向。KB3 CHD#1（70%: 断念例が能力の証明）の逆パターンとして、従来の優位性が構造的に弱体化する兆候。KB3 AME Claim#2（大型化リスク: CAGR confidence条件付き70%→リスク顕在化時50%）と類似の構造。",
+      "suggested_action": "confidence_adjustment",
+      "suggested_value": 70,
+      "reasoning": "CA confidence 70%を維持するが、条件付きアノテーションを追加: 「現状のsalvage中心のmix（Insurance Volume 80%）が維持される限り70%。non-salvage比率が50%を超えるようなmixシフトが進行した場合、Yard保有の優位性は50%に低下する可能性」。これはKB3 AMEのClaim#2（M&A大型化リスク）と同じ構造の条件付き評価。"
+    },
+    {
+      "claim_id": 3,
+      "critique_type": "kb_misalignment",
+      "severity": "minor",
+      "issue": "RB Global面談（S3: 2025/10）で「rebateや接待でシェア奪還」を目指す姿勢が示されており、さらにErie InsuranceのRB→CPRT移行事例が報告されている。これはスイッチが「起きうる」ことの証拠であり、スイッチングコストが「高い」という主張と緊張関係にある。ドラフトでは「RBのrebate戦略」を懸念点に挙げているが、confidenceへの影響分析が不足。",
+      "kb_reference": "KB1ルール10の双方向性: GEICOのIAA→CPRTスイッチはスイッチの稀少性の裏付けだが、Erie InsuranceのRB→CPRTスイッチは逆にスイッチが起きうることの証拠。KB3 MNST#2（コカ・コーラ提携: 30%）では「Celsiusもペプシコと同等の提携」としてスイッチングコストの優位性を否定。",
+      "suggested_action": "annotation_only",
+      "suggested_value": null,
+      "reasoning": "CA confidence 70%は維持。rebate戦略は短期的リスクだが、プロセス統合・人材配置・Express Titlingという構造的要素はrebateだけでは覆されない。ただし「スイッチングコストは絶対的ではなく、rebateやサービス品質の変化により侵食される可能性がある」というアノテーションを追加すべき。"
+    },
+    {
+      "claim_id": 4,
+      "critique_type": "reasoning_gap",
+      "severity": "minor",
+      "issue": "CA confidence 50%（複占市場構造）に対してCAGR confidence 70%と20%の乖離がある。dogma.md §3.1「優位性の有無とCAGR接続は独立して評価する」に準拠するとこの乖離は許容されるが、§3.1の注記では「最終納得度は掛け算で評価すべき（本来のあるべき姿）」とあり、CA 50% × CAGR 70% = 実質35%という解釈も可能。claims.jsonのnoteで理由説明済みだが、revised-reportでより明確に説明すべき。",
+      "kb_reference": "dogma.md §3.1: 「最終納得度は『優位性』×『CAGR前提』の掛け算で評価すべき」。KB3 COST#6（ガソリン販売: CA 20%, CAGR 20%）では掛け算すると4%で実質的に無視できる水準。",
+      "suggested_action": "annotation_only",
+      "suggested_value": null,
+      "reasoning": "CA 50%、CAGR 70%はいずれも維持。revised-reportで「掛け算ベースでは実質35%であり、Claim#4単体のCAGR寄与は限定的。ただし複占構造はClaim#1-3の優位性が機能する基盤条件として重要」という注記を追加すべき。"
+    },
+    {
+      "claim_id": 5,
+      "critique_type": "kb_misalignment",
+      "severity": "minor",
+      "issue": "CAGR confidence 90%はKB3 COST顧客粘着力CAGR（90%: 会員更新率→ARPU→既存店）と同等としているが、両者の性質は異なる。COST顧客粘着力は「企業固有の能力→CAGRパラメータ」の接続であるのに対し、TLF上昇は「業界マクロドライバー→CAGRパラメータ」の接続である。dogma.md §3.1「優位性が100%あるものとして」CAGR接続を評価するとの方針に従えば、TLF上昇はCPRT固有の優位性ではないため、CAGR接続90%は「業界ドライバーとしてのCAGR前提の確実性」であって「CPRTの優位性に基づくCAGR接続」ではない。この区別をレポートで明確にすべき。",
+      "kb_reference": "dogma.md §3.1「優位性が100%あるものとして、CAGR接続への納得度評価とする」。TLFはCPRT固有の優位性ではないため、この基準の適用に注意が必要。KB3 CHD#6 CAGR（90%: マーケティング=日用品の主要ドライバー）は企業能力とCAGRドライバーが一致するケース。",
+      "suggested_action": "annotation_only",
+      "suggested_value": null,
+      "reasoning": "CAGR confidence 90%は維持するが、「これは業界マクロドライバーとしてのCAGR前提の確実性であり、CPRT固有の優位性に基づくCAGR接続ではない」というアノテーションを追加すべき。CA 50% × CAGR 90% = 実質45%として解釈すべき。"
+    }
+  ],
+  "systematic_issues": [
+    {
+      "pattern": "三位一体構造の相互依存リスクの過小評価",
+      "affected_claims": [1, 2, 3],
+      "description": "Claim#1（ネットワーク効果）、#2（NIMBY Yard）、#3（スイッチングコスト）は相互に強化し合う三位一体構造として評価されているが、この相互依存性は逆にリスクでもある。non-salvageシフトが進行してYard保有の重要性が低下すれば、保険会社のスイッチングコストも低下し（Yardがスイッチの障壁の一部であるため）、ネットワーク効果の基盤も揺らぐ可能性がある。ドラフトではClaim#2のみにリスクを限定しているが、連鎖リスクとして三位一体全体に波及する可能性を明記すべき。",
+      "kb_lesson": "KB3での90%評価（ORLY#2, #5）はいずれも独立した構造的優位性。相互依存構造は強みであると同時に、一角が崩れた場合の連鎖リスクを内包する。レポートで明示的に言及すべき。"
+    },
+    {
+      "pattern": "アナリストの自己批判的観察の活用不足",
+      "affected_claims": [2, 3, 7],
+      "description": "アナリストレポートには自己批判的な観察が複数含まれている: (1)「non-salvageへのシフトによるyard保有の重要性変遷」(S6)、(2)「事実としてシェアを奪っているが、どこまで当社の個社要因に起因するかは冷静に考える必要がある」(S3)、(3)「事業面での競争優位性を示す話は一つもなく、Rebateや接待の話に終始」(S3 RB面談)。これらはKYが重視する「既存判断への警鐘機能」（dogma.md §5.2）として活用すべきだが、ドラフトでは十分に反映されていない。",
+      "kb_lesson": "dogma.md §5.2: 「既存判断への警鐘（FM/ANが既存判断に縛られていることへの指摘）」を最高優先度の機能として位置づけ。アナリスト自身の自己批判的観察はまさにこの機能のインプット。"
+    }
+  ]
+}

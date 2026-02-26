@@ -1,0 +1,150 @@
+{
+  "ticker": "MCO",
+  "company_name": "Moody's Corporation",
+  "retrieved_at": "2026-02-26T21:00:00Z",
+  "data_source": "analyst_report_extracted",
+  "data_limitations": {
+    "sec_edgar_mcp_status": "unavailable",
+    "reason": "SEC EDGAR MCPツールのロードを省略し、アナリストレポート（analyst/raw/MCO US.md）から財務データを抽出。",
+    "affected_fields": ["financials_detailed", "filing_sections_full", "recent_filings_full"],
+    "available_fields": ["financials_from_report", "key_metrics_from_report", "segment_data_from_report"]
+  },
+  "financials": {
+    "note": "アナリストレポートからの参照値。正確な財務諸表データはSEC EDGAR直接参照が必要。",
+    "revenue": {
+      "description": "売上高",
+      "latest_annual": {
+        "value_approx": "7200000000",
+        "currency": "USD",
+        "period": "FY2024（概算）",
+        "source": "2Q25決算: 四半期売上$1.9B×4 = 年間$7.6B程度。FY2024は通年High-Teens成長で推定$7.2B"
+      },
+      "quarterly_reference": {
+        "q2_2025": "$1.9B (+8% yy/cc)",
+        "q1_2025": "$1.9B (+7.7% yy/cc)",
+        "q3_2024": "$1.81B (+23% yy/cc)",
+        "q2_2024": "$1.82B (+22% yy/cc)"
+      }
+    },
+    "segment_revenue_mix": {
+      "MIS": {
+        "share": "50%",
+        "description": "Moody's Investors Service - 格付け事業。債券発行毎の手数料(5-12Bps)と格付け維持収入。4割が経常収入。",
+        "opm": "64.2%（2Q25）",
+        "revenue_q2_2025": "$1,010M (フラット yy)",
+        "long_term_cagr": "+6%（実質GDP2.5%+価格効果2.5%+新興国/PC寄与+1%）"
+      },
+      "MA": {
+        "share": "50%",
+        "description": "Moody's Analytics - リスク分析、データ、ソフトウェア提供。経常収入9割超、維持率93-94%。",
+        "opm": "32.1%（2Q25、+2.1ppt yy）",
+        "revenue_q2_2025": "$888M (+13% yy/cc)",
+        "arr": "$3.3B (+8% yy)",
+        "long_term_cagr": "+6.5%（M-HSD：一般データ事業者並み）"
+      }
+    },
+    "income_statement": {
+      "eps": {
+        "q2_2025": "3.83 (+14% yy)",
+        "q1_2025": "3.83 (+13.7% yy)",
+        "fy2024_approx": "12.5（概算、各四半期EPSの合計）",
+        "fy2023": "9.9"
+      },
+      "opm_consolidated": {
+        "mis_opm_2q25": "64.2%",
+        "ma_opm_2q25": "32.1%",
+        "company_target_2027": "50%（MIS低60%台、MA30%台中~後半）"
+      },
+      "revenue_growth": {
+        "fy2025_guidance": "+MSD（通年）",
+        "mis_fy2025_guidance": "+LSD~MSD",
+        "ma_fy2025_guidance": "+HSD"
+      }
+    },
+    "balance_sheet": {
+      "note": "レポートに詳細なBS情報の記載は限定的。自己資本はマイナス（積極的自社株買いによる会計上の控除項目）。"
+    },
+    "cash_flow": {
+      "buyback_fy2025_guidance": "$1.3bn以上",
+      "buyback_history": "過去平均でFCFの50%程度を自社株買いに配分",
+      "fcf_yield_approx": "3%（レポートの間接的推定）",
+      "capital_allocation_priority": "オーガニック成長→M&A→自社株買い/配当"
+    }
+  },
+  "recent_filings": {
+    "note": "SEC EDGAR MCP利用不可のため詳細なフォームデータは取得不可",
+    "10k": {
+      "status": "unavailable",
+      "partial_info": {
+        "filing_date_approx": "2026年2月頃（FY2025 10-K）"
+      }
+    },
+    "10q": {
+      "status": "unavailable"
+    },
+    "8k": {
+      "status": "unavailable"
+    }
+  },
+  "insider_summary": {
+    "status": "unavailable_for_mco",
+    "note": "SEC EDGAR MCPのCIK解決未実施。インサイダー取引データ取得不可。",
+    "management_info_from_report": {
+      "ir_head": "Shivani Kak, Head of IR（2025年5月1on1面談）",
+      "note": "CEO/CFO名はレポートに明示なし"
+    }
+  },
+  "key_metrics": {
+    "mis_market_share": "40%（SPGIと2社で80%。Fitch2割弱、その他5%）",
+    "ma_retention_rate": "93%（2Q25、前四半期94%）",
+    "ma_arr": "$3.3B（+8% yy、2Q25）",
+    "pricing_power": "年間+2-3%の価格引き上げ（会社見解）、CS証券推定では過去10年平均+4-5%",
+    "ma_genai_penetration": "40%のプロダクト（ARRベース）で生成AI機能追加。AI関連プロダクト売上ARR $200mil。",
+    "private_credit_tam": "$3T以上（MCO推定）",
+    "private_credit_revenue_contribution": "ストラクチャードファイナンス1Q25収益成長の20%がPC由来",
+    "borrowing_refinancing_schedule": "今後4年の借換え予定金額$5T（前年比+11%増）、HY債借換え+19%",
+    "ma_cross_sell": "保険顧客：上位10社6-7品、続く90社4-5品、その他1-2品",
+    "cagr_estimate": {
+      "revenue": "+6%",
+      "eps": "+9.5%（従前+10%、2025年8月にbuyback寄与0.5%引き下げ）",
+      "breakdown": {
+        "mis": "+6%（実質GDP2.5%+価格効果2.5%+新興国/PC+1%）",
+        "ma": "+6.5%",
+        "margin_improvement": "+1%",
+        "share_reduction": "+1.5%（従前+2%）",
+        "external_growth": "+1%"
+      }
+    }
+  },
+  "filing_sections": {
+    "note": "SEC EDGAR MCP利用不可のため直接取得不可。アナリストレポートからの要約のみ。",
+    "business": {
+      "summary": "クレジット格付会社。格付情報提供のMIS（売上50%、OPM62-64%）と、リスク分析・データ・ソフトウェア提供のMA（売上50%、OPM30-33%）の2事業。地域別では北米55%、その他45%。100年以上の歴史。",
+      "mis_detail": "債券発行毎の手数料(5-12Bps)+格付け維持収入。4割は経常的収入。格付け事業ではMCOとSPGIで各4割のシェア、Fitch2割弱。",
+      "ma_detail": "金融機関向けにデータ（格付け、非公開企業データ）、調査ツール（経済予測、クレジットリスク計測）、管理ツール（ポート管理）を提供。経常収入9割超、顧客維持率93-95%。Decision Solutions(5割)、Research & Insights(2.5割)、Data & Information(2.5割)。"
+    },
+    "risk_factors": {
+      "summary": "レポートで言及されたリスクファクター",
+      "risks": [
+        "金利・マクロ環境悪化に伴う起債減少（MIS部門の業績変動リスク）",
+        "関税・地政学リスクによる企業投資判断の先送り",
+        "MISストラクチャードファイナンス領域でのモーニングスターDBRSのシェア獲得",
+        "プライベートクレジットの既存公開格付けへのカニバリゼーション",
+        "MA事業のARRガイダンス下方修正（MSCI ESG連携の製品整理、顧客予算引き締め）",
+        "バリュエーションの高さ（ITG3/4 8.4/10.5、CAGR-ITGマイナス）"
+      ]
+    },
+    "mda": {
+      "summary": "2Q25実績と通期ガイダンス",
+      "revenue_2q25": "+8% yy/cc",
+      "eps_2q25": "3.83 (+14%)",
+      "fy2025_guidance": "売上+MSD、MIS +LSD~MSD、MA +HSD",
+      "key_drivers": [
+        "IG債発行堅調（金額+16%、収益+18%）",
+        "HY債はEMEA中心にフラット",
+        "バンクローン価格再交渉数量減少によりミックス改善",
+        "プライベートクレジット: 新規マンデートの25%がPC、ディール数+50% yy"
+      ]
+    }
+  }
+}

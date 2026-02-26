@@ -1,0 +1,243 @@
+{
+  "ticker": "LRCX",
+  "extracted_at": "2026-02-26T21:30:00Z",
+  "extractor": "ca-eval-lead",
+  "total_claims": 7,
+  "kb_versions": {
+    "dogma": "v1.0 (2026-02-26)",
+    "kb1_rules": "8 files",
+    "kb3_fewshot": "5 files (CHD, COST, LLY, MNST, ORLY)"
+  },
+  "claims": [
+    {
+      "id": 1,
+      "title": "3D NANDドライエッチング（深孔エッチング）での技術的独占ポジション",
+      "category": "competitive_advantage",
+      "description": "3D NANDで高積層化されたチャネルホールエッチングでシェア100%を独占。Cryo 3.0技術でProfile deviation 10nm未満を実現。HBM向けTSVアプリケーションでも100%シェア。",
+      "confidence": 70,
+      "confidence_rationale": "構造的な技術優位性であり、ルール1（能力・仕組み）、ルール2（名詞属性: 技術力・市場ポジション）に合致。業界構造（3D NAND高積層化トレンド）と企業ポジション（深孔エッチング独占）の合致はルール11に該当するが、TELクライオエッチャー参入で100%シェア維持不可との認識がアナリスト自身からある。90%には達しない理由: 独占ポジションが既に崩壊の兆しがある（TEL参入、AMAT攻勢）。KB3参照: ORLY#2/5の90%はフラグメント市場×規模の経済の「安定した」構造合致であり、技術独占が脅かされている状態とは異なる。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "pass", "comment": "深孔エッチング技術は「能力・仕組み」であり結果ではない" },
+        "rule2": { "applicable": true, "result": "pass", "comment": "技術力・市場ポジションとして名詞属性で表現可能" },
+        "rule3": { "applicable": true, "result": "pass", "comment": "TEL/AMATに対して相対的に際立つ（シェア~100%）" },
+        "rule4": { "applicable": true, "result": "pass", "comment": "シェア100%、Profile deviation 10nm未満等の定量裏付けあり。また1on1取材での技術説明に説明力あり" },
+        "rule5": { "applicable": false, "result": "n/a", "comment": "CAGR接続は別途評価" },
+        "rule6": { "applicable": true, "result": "pass", "comment": "構造的要素。エッチング事業の核心" },
+        "rule7": { "applicable": true, "result": "partial", "comment": "TEL対比での具体的技術差異（Cryo 3.0 vs TELクライオ）が言及されている。ただしTEL参入で差別化が縮小中" },
+        "rule8": { "applicable": true, "result": "pass", "comment": "技術的独占は能力であり戦略ではない" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "事実誤認なし" },
+        "rule10": { "applicable": true, "result": "partial", "comment": "ネガティブケース: 「100%シェア維持不可」「幾分のシェアロスはある」との自社認識は規律の証明" },
+        "rule11": { "applicable": true, "result": "partial", "comment": "3D NAND高積層化トレンドとの合致はあるが、High-NA EUVによる逆風も存在" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "期初レポート（2022/05, 2022/11）からの一貫した主張" }
+      },
+      "cagr_connection": {
+        "mechanism": "3D NAND高積層化 → エッチング工程数増加 → 装置台数需要増 → 売上成長。ただしHigh-NA EUV浸透で一部相殺。",
+        "confidence": 70,
+        "rationale": "直接的メカニズム（積層化→工程数増→装置需要）は明確。アナリストのEtch/WFE flatという評価は逆風を織り込み済み。HBM TSV 100%シェアは3D DRAM化の追い風。開示データ（WFE市場データ、装置シェア）で検証可能。KB3参照: COST顧客粘着力（90%）のように検証可能なデータ連鎖があるが、逆風要因が大きいため70%。",
+        "parameters_affected": ["装置売上成長率", "Etch/WFE比率"]
+      },
+      "factual_claims": ["F1", "F2", "F9", "F10", "F11"],
+      "source_dates": ["2022/04", "2022/05", "2022/11", "2024/06", "2025/09"]
+    },
+    {
+      "id": 2,
+      "title": "半導体前工程における構造的ポジション（成膜+エッチングのインテンシティ上昇）",
+      "category": "competitive_advantage",
+      "description": "半導体製造プロセスの複雑化（3D化、GAA/CFET移行、Content per chip上昇）により、エッチング・成膜工程の重要性（Capital Intensity）が構造的に高まるポジションにある。WFE市場成長を上回る成長が見込める。",
+      "confidence": 50,
+      "confidence_rationale": "方向性は正しいが、ルール1の観点からは「業界トレンドからの恩恵」は「結果」であり「能力・仕組み」ではない。インテンシティ上昇は業界構造の変化であり、Lam固有の能力ではなくAMAT、TELも同様に恩恵を受ける。ルール3（相対的優位性）の観点: SPE全体が恩恵を受けるトレンドで、Lam固有の差別化は不十分。KB3参照: LLY#6「メガファーマ共通」→30%と同様の構造（SPE共通の恩恵）だが、Lamのエッチング・成膜シェアが高いため全く同等ではない。50%が妥当。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "partial", "comment": "インテンシティ上昇は業界トレンドであり、Lam固有の「能力」ではなく「結果的恩恵」に近い" },
+        "rule2": { "applicable": true, "result": "partial", "comment": "「構造的ポジション」は名詞だが、本質は市場トレンドへの受動的恩恵" },
+        "rule3": { "applicable": true, "result": "partial", "comment": "AMAT、TELも同様に恩恵を受ける。Lamのシェアが高い分、恩恵は大きいが固有性は弱い" },
+        "rule4": { "applicable": true, "result": "pass", "comment": "Content per chip +20%yoy等の定量裏付けあり" },
+        "rule5": { "applicable": false, "result": "n/a", "comment": "CAGR接続は別途" },
+        "rule6": { "applicable": true, "result": "partial", "comment": "半構造的。市場トレンドへのポジショニングであり、Lam固有の構造ではない" },
+        "rule7": { "applicable": true, "result": "fail", "comment": "TEL/AMATとの差別化が不十分。High-NA EUVのASMLも受益者" },
+        "rule8": { "applicable": true, "result": "pass", "comment": "ポジションであり戦略ではない" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "事実誤認なし" },
+        "rule10": { "applicable": false, "result": "n/a", "comment": "ネガティブケース該当なし" },
+        "rule11": { "applicable": true, "result": "partial", "comment": "業界構造との合致はあるが、Lam固有ではない" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "期初から一貫した認識" }
+      },
+      "cagr_connection": {
+        "mechanism": "WFE/WSTS比率上昇 → エッチング/成膜のCapital Intensity上昇 → Lam売上がWFE成長を上回る",
+        "confidence": 70,
+        "rationale": "アナリストのWFE/WSTS +1%、Etch/WFE flat(→ プラス再検討中)は保守的だが具体的。半導体市場成長+9%をベースに装置売上成長を導出するメカニズムは明確。ただしEtch/WFE比率はアナリスト自身flat→プラス再検討中で不確実。",
+        "parameters_affected": ["装置売上成長率", "WFE/WSTS比率"]
+      },
+      "factual_claims": ["F3"],
+      "source_dates": ["2022/05", "2022/08", "2024/06", "2025/09"]
+    },
+    {
+      "id": 3,
+      "title": "Installed Base（84,000台超）からのデータフィードバックループとサービス収益基盤",
+      "category": "competitive_advantage",
+      "description": "据付装置84,000台超のInstalled Baseから稼働データを収集し、歩留まり改善・装置生産性向上にフィードバック。サービス事業（売上1/3）は消耗品・メンテナンス・アップグレードで安定収入源。装置当たり収益も増加傾向。",
+      "confidence": 50,
+      "confidence_rationale": "ルール1: Installed Baseからのデータフィードバックは「仕組み」であり能力の評価に値する。ルール4: 84,000台（+30%）の定量裏付けあり。しかし懸念点: (1) ダウンサイクルでサービス売上も減収した実績（2023年Q4FY）があり、「安定収入源」という主張は否定済み。(2) 競合AMAT、TELも同様のInstalled Baseビジネスを展開。ルール7: 純粋競合対比での差別化が不十分。KB3参照: COST#3（倉庫型モデル: 50%）と類似構造で、「異業種比較では優位だが純粋競合対比で不明」。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "pass", "comment": "データフィードバックループは仕組み" },
+        "rule2": { "applicable": true, "result": "pass", "comment": "「Installed Base」「データフィードバック」は名詞属性" },
+        "rule3": { "applicable": true, "result": "partial", "comment": "AMAT/TELも類似のInstalled Baseサービスを展開" },
+        "rule4": { "applicable": true, "result": "pass", "comment": "84,000台、+30%の定量裏付け" },
+        "rule5": { "applicable": false, "result": "n/a", "comment": "CAGR接続は別途" },
+        "rule6": { "applicable": true, "result": "partial", "comment": "半構造的。サービスは補完的だがデータフィードバックは構造的" },
+        "rule7": { "applicable": true, "result": "fail", "comment": "AMAT/TEL対比での差別化が示されていない" },
+        "rule8": { "applicable": true, "result": "pass", "comment": "能力であり戦略ではない" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "事実誤認なし。ただしサービス安定収入の主張はダウンサイクル実績で疑問" },
+        "rule10": { "applicable": true, "result": "negative", "comment": "ダウンサイクルでの減収実績がネガティブケースとして存在し、安定性主張を弱める" },
+        "rule11": { "applicable": false, "result": "n/a", "comment": "業界構造との特別な合致なし" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "一貫した主張" }
+      },
+      "cagr_connection": {
+        "mechanism": "Installed Base増加 → サービス売上成長（半導体生産=稼働にリンク）",
+        "confidence": 50,
+        "rationale": "アナリスト: サービス+9%(半導体市場成長にリンク)は妥当。ただし台数増→収益増の直接性は弱く、稼働率変動の影響が大きい。ダウンサイクルでの減収実績が確度を下げる。",
+        "parameters_affected": ["サービス売上成長率"]
+      },
+      "factual_claims": ["F4"],
+      "source_dates": ["2022/11", "2023/02", "2023/04"]
+    },
+    {
+      "id": 4,
+      "title": "スイッチングコスト（既存装置ユーザーの移行コスト）",
+      "category": "competitive_advantage",
+      "description": "半導体製造装置は顧客のFabに深く組み込まれており、既存装置からの移行コストが高い。次世代アップグレードが新規導入より費用対効果が高く、競合が技術面で追いついても簡単にスイッチングされない。",
+      "confidence": 50,
+      "confidence_rationale": "ルール2: 「スイッチングコスト」は優位性の典型的名詞属性。ルール1: 装置の深いインテグレーションは「仕組み」として成立。しかし懸念: (1) ルール4: 定量的裏付けがない。スイッチングコストの規模感（移行にどの程度の費用・期間がかかるか）が不明。(2) 1on1取材でのIR発言（会社側主張）が主な根拠で、第三者検証が乏しい。(3) アナリスト自身が「スイッチングコストを過小評価していた可能性」と述べており、評価途上。KB3参照: ORLY#1（DIFMスイッチングコスト: 70%）はAZO対比の具体的データ（補充頻度）があった。本件は定量裏付けが不足。50%が妥当。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "pass", "comment": "装置インテグレーションによるスイッチングコストは仕組み" },
+        "rule2": { "applicable": true, "result": "pass", "comment": "スイッチングコストは名詞属性" },
+        "rule3": { "applicable": true, "result": "partial", "comment": "SPE全般にスイッチングコストがあるが、Lamのエッチング独占でより強い可能性" },
+        "rule4": { "applicable": true, "result": "fail", "comment": "定量裏付けなし。スイッチングコストの具体的規模不明" },
+        "rule5": { "applicable": false, "result": "n/a", "comment": "CAGR接続は別途" },
+        "rule6": { "applicable": true, "result": "pass", "comment": "構造的要素。装置メーカーの本質的優位性" },
+        "rule7": { "applicable": true, "result": "partial", "comment": "TEL/AMATにもスイッチングコストは存在する。Lam固有の高さの裏付け不足" },
+        "rule8": { "applicable": true, "result": "pass", "comment": "能力・構造であり戦略ではない" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "事実誤認なし" },
+        "rule10": { "applicable": false, "result": "n/a", "comment": "ネガティブケースの言及なし" },
+        "rule11": { "applicable": true, "result": "partial", "comment": "SPE業界ではスイッチングコストが構造的に高い（顧客のFabプロセス認定に数年）" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "2025/09取材で新たに認識された側面" }
+      },
+      "cagr_connection": {
+        "mechanism": "高いスイッチングコスト → シェア維持/安定 → CAGR基盤の安定性",
+        "confidence": 50,
+        "rationale": "スイッチングコストはシェアロス▲1%を緩和する要因。アナリスト自身「過小評価していた可能性」と再評価中。ただしCAGR数値への具体的寄与の定量化は困難。",
+        "parameters_affected": ["シェアロス率の緩和"]
+      },
+      "factual_claims": [],
+      "source_dates": ["2025/09"]
+    },
+    {
+      "id": 5,
+      "title": "R&D投資力と次世代技術開発能力",
+      "category": "competitive_advantage",
+      "description": "売上の約10%をR&Dに投下し、従業員28%がR&D活動に従事。Akara（3D DRAM/CFET対応次世代エッチング）、Cryo 3.0等の先端製品を継続投入。グローバルR&D拠点（インド、韓国等）を展開。",
+      "confidence": 30,
+      "confidence_rationale": "ルール3: TEL/AMATも同等以上のR&D投資を行っており、相対的優位性が不明。アナリスト指摘: 「全社R&D費規模は2:2:3（Lam:TEL:AMAT）でLamが最小。TEL/AMATにはエッチング以外の安定収入源（TELコータデベロッパ$2b, AMATスパッタリング$2b）がありR&D資金余力で劣後する可能性」。ルール7: 純粋競合対比で劣位の可能性すらある。KB3参照: LLY#6（メガファーマ共通ネットワーク: 30%）と類似。「SPEなら誰でもR&Dに投資している」。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "pass", "comment": "R&D投資は能力" },
+        "rule2": { "applicable": true, "result": "pass", "comment": "技術開発能力は名詞属性" },
+        "rule3": { "applicable": true, "result": "fail", "comment": "TEL/AMATも同等以上のR&D投資。相対的優位性なし" },
+        "rule4": { "applicable": true, "result": "partial", "comment": "R&D比率10%、28%従事は定量的だが競合対比で劣位" },
+        "rule5": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule6": { "applicable": true, "result": "pass", "comment": "構造的要素" },
+        "rule7": { "applicable": true, "result": "fail", "comment": "TEL/AMAT対比で全社R&D費規模が最小" },
+        "rule8": { "applicable": true, "result": "pass", "comment": "能力であり戦略ではない" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule10": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule11": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "" }
+      },
+      "cagr_connection": {
+        "mechanism": "R&D投資 → 次世代技術開発 → シェア維持/拡大",
+        "confidence": 50,
+        "rationale": "R&D投資は技術競争力維持の必要条件だが十分条件ではない。Akara等の具体的製品投入はClaim#1の技術優位性をサポートするが、R&D投資そのものがCAGRに直結するメカニズムは間接的。",
+        "parameters_affected": ["シェア動向"]
+      },
+      "factual_claims": ["F5"],
+      "source_dates": ["2022/11", "2023/02", "2025/09"]
+    },
+    {
+      "id": 6,
+      "title": "プラズマエッチング市場全体での高シェアポジション（60%）",
+      "category": "competitive_advantage",
+      "description": "エッチング装置全体でシェア60%を保有。過去20年でLam +15%, TEL 0%, AMAT -15%とシェアゲインを継続。ロジック向けでも先端ノード移行（FinFET→GAA）でシェア獲得。",
+      "confidence": 50,
+      "confidence_rationale": "ルール1: 高シェアは「結果」であり「能力・仕組み」ではない。シェアの背後にある技術力（Claim#1で評価済み）が本質。KB3参照: MNST#1（高シェア: 50%）「シェアはあくまで結果であり、どのようにブランド価値を蓄積、維持しているかなどの背後要因が乏しい」と同構造。ただしLamの場合、シェアゲイン+15%の背景（3D NAND技術シフト）は説明されており、MNST#1よりは裏付けあり。50%が妥当。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "fail", "comment": "高シェアは結果。背後の技術力はClaim#1で評価済み" },
+        "rule2": { "applicable": true, "result": "partial", "comment": "「市場ポジション」は名詞だが、シェア=結果の側面が強い" },
+        "rule3": { "applicable": true, "result": "pass", "comment": "TEL/AMAT対比で明確に高い" },
+        "rule4": { "applicable": true, "result": "pass", "comment": "シェア60%、+15%の定量裏付け" },
+        "rule5": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule6": { "applicable": true, "result": "pass", "comment": "構造的。事業の核心" },
+        "rule7": { "applicable": true, "result": "pass", "comment": "TEL(30%), AMAT(20%)との具体的比較あり" },
+        "rule8": { "applicable": true, "result": "pass", "comment": "" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule10": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule11": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "" }
+      },
+      "cagr_connection": {
+        "mechanism": "エッチングシェア60% → WFE成長に連動した売上成長基盤。ただしアナリストはシェアロス▲1%を織り込み。",
+        "confidence": 50,
+        "rationale": "シェア維持/拡大はCAGR基盤だが、アナリスト自身がシェアロス▲1%を明示的に織り込んでおり、むしろ逆風。60%からの微減はドル額では大きいインパクト。",
+        "parameters_affected": ["エッチングシェア動向", "装置売上成長率"]
+      },
+      "factual_claims": ["F2", "F9"],
+      "source_dates": ["2022/04", "2022/05", "2022/11", "2024/06"]
+    },
+    {
+      "id": 7,
+      "title": "FCF還元方針と自社株買いによるEPS成長",
+      "category": "cagr_driver",
+      "description": "FCFの75~100%を株主還元する長期方針。ヒストリカルFCF利回り6%、Buyback還元率~50%で年間+3%のEPS押し上げ。低バリュエーション（予想PE10x前半）が自社株買い効果を高める。",
+      "confidence": 30,
+      "confidence_rationale": "ルール1: 資本還元方針は「意思決定」であり「能力・仕組み」ではない。ルール8: 戦略（株主還元方針）を優位性と混同。自社株買い自体は競争優位性ではなくCAPITAL ALLOCATION施策。KB3参照: CHDでも自社株買い+配当は優位性として独立評価されていない。CAGR寄与（+3%/年）は合理的だが、競争優位性とは別カテゴリ。",
+      "rules_applied": {
+        "rule1": { "applicable": true, "result": "fail", "comment": "資本還元方針は意思決定・戦略であり能力ではない" },
+        "rule2": { "applicable": true, "result": "fail", "comment": "「FCF還元方針」は名詞だが属性ではなく方針" },
+        "rule3": { "applicable": true, "result": "partial", "comment": "SPE各社も同様の還元を実施" },
+        "rule4": { "applicable": true, "result": "pass", "comment": "FCF利回り6%、還元率の定量裏付けあり" },
+        "rule5": { "applicable": true, "result": "pass", "comment": "+3%/年のEPS寄与は合理的推計" },
+        "rule6": { "applicable": true, "result": "fail", "comment": "補完的要素。競争優位性ではなく財務方針" },
+        "rule7": { "applicable": true, "result": "fail", "comment": "SPE各社も同等の還元策を実施" },
+        "rule8": { "applicable": true, "result": "fail", "comment": "戦略を優位性と混同" },
+        "rule9": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule10": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule11": { "applicable": false, "result": "n/a", "comment": "" },
+        "rule12": { "applicable": true, "result": "pass", "comment": "" }
+      },
+      "cagr_connection": {
+        "mechanism": "FCF × 還元率50% / 時価総額 → ~3%/年のEPS accretion",
+        "confidence": 70,
+        "rationale": "数値的根拠は明確。ヒストリカル実績とも整合。ただし還元率のバラつき（FY23は60%と低水準）がリスク。CAGR接続としては合理的メカニズム。",
+        "parameters_affected": ["EPS成長率（自社株寄与+3%）"]
+      },
+      "factual_claims": ["F7"],
+      "source_dates": ["2022/04", "2022/05", "2024/06"]
+    }
+  ],
+  "summary": {
+    "total_ca_claims": 6,
+    "total_cagr_claims": 1,
+    "confidence_distribution": {
+      "90": 0,
+      "70": 1,
+      "50": 4,
+      "30": 2,
+      "10": 0
+    },
+    "avg_ca_confidence": 47,
+    "avg_cagr_confidence": 60,
+    "strongest_claim": "#1 3D NANDドライエッチング技術的独占ポジション (70%)",
+    "weakest_claims": ["#5 R&D投資力 (30%)", "#7 FCF還元方針 (30%)"],
+    "gatekeeper_flags": {
+      "rule9_violations": 0,
+      "rule3_violations": 2,
+      "note": "Claim#5(R&D)とClaim#7(FCF還元)はルール3/8違反でそれぞれ30%に抑制"
+    }
+  }
+}
