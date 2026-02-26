@@ -464,12 +464,232 @@ def _(mo, np, weighted_returns):
 
 
 @app.cell
-def _(daily_returns, mo):
-    """Sector allocation chart."""
-    import plotly.express as px
+def _(DATA_SOURCE, Path, daily_returns, ew_returns, mo, np, pd, portfolio_weights, weighted_returns):
+    """vs MSCI Kokusai benchmark analysis."""
+    import plotly.graph_objects as go
 
-    # Need portfolio_weights from parent scope
+    _source = DATA_SOURCE.value
+    _bench_path = Path(f"../data/raw/{_source}/stocks/msci_benchmark_close_prices.parquet")
+
+    if not _bench_path.exists():
+        mo.stop(True, mo.md("**MSCI Kokusai データが未取得です。** yfinance で TOK/URTH/ACWI を取得してください。"))
+
+    _bench_close = pd.read_parquet(_bench_path)
+    _tok = _bench_close["TOK"].ffill()
+    bench_msci_ret = _tok.pct_change().iloc[1:].clip(-0.5, 0.5)
+
+    _ann = 252
+    _rf = 0.045
+
+    # Align portfolio returns with benchmark
+    _aligned = pd.concat(
+        [weighted_returns.rename("port"), ew_returns.rename("ew"), bench_msci_ret.rename("bench")],
+        axis=1,
+    ).dropna()
+
+    _p = _aligned["port"]
+    _ew = _aligned["ew"]
+    _b = _aligned["bench"]
+    _active = _p - _b
+    _n_yr = len(_aligned) / _ann
+
+    # Cumulative
+    _cum_p = float((1 + _p).prod() - 1)
+    _cum_b = float((1 + _b).prod() - 1)
+    _ann_p = float((1 + _cum_p) ** (1 / _n_yr) - 1)
+    _ann_b = float((1 + _cum_b) ** (1 / _n_yr) - 1)
+    _ann_active = _ann_p - _ann_b
+
+    # Tracking error & IR
+    _te = float(_active.std() * np.sqrt(_ann))
+    _ir = float(_active.mean() / _active.std() * np.sqrt(_ann)) if _active.std() > 0 else 0
+
+    # Beta & Alpha
+    _cov = np.cov(_p, _b)
+    _beta = float(_cov[0, 1] / _cov[1, 1]) if _cov[1, 1] > 0 else 1.0
+    _alpha = _ann_p - (_rf + _beta * (_ann_b - _rf))
+
+    # Sharpe
+    _sharpe_p = float((_p.mean() - _rf / _ann) / _p.std() * np.sqrt(_ann))
+    _sharpe_b = float((_b.mean() - _rf / _ann) / _b.std() * np.sqrt(_ann))
+
+    # Max DD
+    _cum_curve_p = (1 + _p).cumprod()
+    _cum_curve_b = (1 + _b).cumprod()
+    _mdd_p = float((_cum_curve_p / _cum_curve_p.cummax() - 1).min())
+    _mdd_b = float((_cum_curve_b / _cum_curve_b.cummax() - 1).min())
+
+    # Sortino
+    _down = _p[_p < 0]
+    _down_std = float(_down.std() * np.sqrt(_ann)) if len(_down) > 0 else 1
+    _sortino = float((_p.mean() * _ann - _rf) / _down_std)
+
+    # Calmar
+    _calmar = _ann_p / abs(_mdd_p) if _mdd_p != 0 else 0
+
+    # Up/Down capture
+    _up = _b > 0
+    _dn = _b < 0
+    _up_cap = float(_p[_up].mean() / _b[_up].mean() * 100) if _b[_up].mean() != 0 else 0
+    _dn_cap = float(_p[_dn].mean() / _b[_dn].mean() * 100) if _b[_dn].mean() != 0 else 0
+
+    # Win rate
+    _win = float((_active > 0).mean())
+
+    mo.md(
+        f"""
+    ### vs MSCI Kokusai (TOK ETF)
+
+    | Metric | Portfolio | MSCI Kokusai | Active |
+    |--------|:-:|:-:|:-:|
+    | **Ann. Return** | {_ann_p:.2%} | {_ann_b:.2%} | **{_ann_active:+.2%}** |
+    | **Cum. Return** | {_cum_p:.2%} | {_cum_b:.2%} | {_cum_p - _cum_b:+.2%} |
+    | **Sharpe Ratio** | {_sharpe_p:.4f} | {_sharpe_b:.4f} | {_sharpe_p - _sharpe_b:+.4f} |
+    | **Max Drawdown** | {_mdd_p:.2%} | {_mdd_b:.2%} | |
+    | **Beta** | {_beta:.4f} | 1.0 | |
+    | **Alpha (CAPM)** | | | **{_alpha:+.2%}** |
+    | **Tracking Error** | | | {_te:.2%} |
+    | **Information Ratio** | | | {_ir:.4f} |
+    | **Sortino Ratio** | {_sortino:.4f} | | |
+    | **Calmar Ratio** | {_calmar:.4f} | | |
+    | **Up Capture** | {_up_cap:.1f}% | | |
+    | **Down Capture** | {_dn_cap:.1f}% | | |
+    | **Win Rate (日次)** | {_win:.1%} | | |
+    """
+    )
+    return bench_msci_ret
+
+
+@app.cell
+def _(bench_msci_ret, ew_returns, mo, pd, weighted_returns):
+    """Yearly active return table vs MSCI Kokusai."""
+    _aligned = pd.concat(
+        [weighted_returns.rename("port"), ew_returns.rename("ew"), bench_msci_ret.rename("bench")],
+        axis=1,
+    ).dropna()
+
+    _rows = []
+    for y in sorted(_aligned.index.year.unique()):
+        _yp = _aligned.loc[_aligned.index.year == y, "port"]
+        _yb = _aligned.loc[_aligned.index.year == y, "bench"]
+        _ye = _aligned.loc[_aligned.index.year == y, "ew"]
+        rp = float((1 + _yp).prod() - 1)
+        rb = float((1 + _yb).prod() - 1)
+        re = float((1 + _ye).prod() - 1)
+        _rows.append(
+            {
+                "Year": str(y),
+                "Portfolio": f"{rp:+.2%}",
+                "MSCI Kokusai": f"{rb:+.2%}",
+                "Active (SW)": f"{rp - rb:+.2%}",
+                "EW": f"{re:+.2%}",
+                "Active (EW)": f"{re - rb:+.2%}",
+            }
+        )
+
+    yearly_vs_bench = pd.DataFrame(_rows)
+    mo.md("### Yearly Returns vs MSCI Kokusai")
+    return (yearly_vs_bench,)
+
+
+@app.cell
+def _(mo, yearly_vs_bench):
+    mo.ui.table(yearly_vs_bench)
     return
+
+
+@app.cell
+def _(bench_msci_ret, ew_returns, mo, np, pd, weighted_returns):
+    """Cumulative return chart: Portfolio vs MSCI Kokusai."""
+    import plotly.graph_objects as go
+
+    _aligned = pd.concat(
+        [weighted_returns.rename("port"), ew_returns.rename("ew"), bench_msci_ret.rename("bench")],
+        axis=1,
+    ).dropna()
+
+    _cum_sw = (1 + _aligned["port"]).cumprod()
+    _cum_ew = (1 + _aligned["ew"]).cumprod()
+    _cum_bm = (1 + _aligned["bench"]).cumprod()
+
+    fig_vs_bench = go.Figure()
+    fig_vs_bench.add_trace(
+        go.Scatter(x=_cum_sw.index, y=_cum_sw, name="Score-Weighted", line={"width": 2.5, "color": "#2563eb"})
+    )
+    fig_vs_bench.add_trace(
+        go.Scatter(x=_cum_ew.index, y=_cum_ew, name="Equal-Weight", line={"width": 2, "dash": "dot", "color": "#6b7280"})
+    )
+    fig_vs_bench.add_trace(
+        go.Scatter(x=_cum_bm.index, y=_cum_bm, name="MSCI Kokusai", line={"width": 2.5, "dash": "dash", "color": "#dc2626"})
+    )
+    fig_vs_bench.update_layout(
+        title="Cumulative Returns: Portfolio vs MSCI Kokusai",
+        xaxis_title="Date",
+        yaxis_title="Growth of $1",
+        template="plotly_white",
+        height=500,
+    )
+
+    mo.ui.plotly(fig_vs_bench)
+    return (fig_vs_bench,)
+
+
+@app.cell
+def _(bench_msci_ret, mo, np, pd, weighted_returns):
+    """Rolling 1Y active return vs MSCI Kokusai."""
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+
+    _aligned = pd.concat(
+        [weighted_returns.rename("port"), bench_msci_ret.rename("bench")],
+        axis=1,
+    ).dropna()
+
+    _active = _aligned["port"] - _aligned["bench"]
+    _w = 252
+
+    _rolling_active = _active.rolling(_w).mean() * 252 * 100
+    _rolling_te = _active.rolling(_w).std() * np.sqrt(252) * 100
+    _rolling_ir = _rolling_active / _rolling_te
+
+    fig_active = make_subplots(
+        rows=3,
+        cols=1,
+        shared_xaxes=True,
+        subplot_titles=[
+            "Rolling 1Y Active Return (%)",
+            "Rolling 1Y Tracking Error (%)",
+            "Rolling 1Y Information Ratio",
+        ],
+        vertical_spacing=0.08,
+    )
+
+    fig_active.add_trace(
+        go.Scatter(x=_rolling_active.index, y=_rolling_active, name="Active Return", line={"color": "#2563eb"}),
+        row=1, col=1,
+    )
+    fig_active.add_hline(y=0, line_dash="dash", line_color="gray", row=1, col=1)
+
+    fig_active.add_trace(
+        go.Scatter(x=_rolling_te.index, y=_rolling_te, name="Tracking Error", line={"color": "orange"}),
+        row=2, col=1,
+    )
+
+    fig_active.add_trace(
+        go.Scatter(x=_rolling_ir.index, y=_rolling_ir, name="Info Ratio", line={"color": "green"}),
+        row=3, col=1,
+    )
+    fig_active.add_hline(y=0, line_dash="dash", line_color="gray", row=3, col=1)
+
+    fig_active.update_layout(
+        height=800,
+        template="plotly_white",
+        showlegend=False,
+        title_text="Rolling 1-Year Active Performance vs MSCI Kokusai",
+    )
+
+    mo.ui.plotly(fig_active)
+    return (fig_active,)
 
 
 @app.cell
@@ -585,16 +805,16 @@ def _(
 
     ---
 
-    **Cross-Portfolio Comparison**（事前計算済み JSON を参照）:
+    **Cross-Portfolio Comparison vs MSCI Kokusai**:
 
-    | Size | Sharpe | Max DD | Cum. Return | Ann. Return | Ann. Vol |
-    |------|--------|--------|-------------|-------------|----------|
-    | 30 | 0.625 | -27.8% | +233.7% | 12.7% | 13.3% |
-    | 60 | 0.701 | -35.6% | +356.1% | 16.2% | 17.1% |
-    | 90 | 0.666 | -36.4% | +323.9% | 15.3% | 16.8% |
+    | Size | Sharpe | Alpha | Active Return | IR | Cum. Return | MSCI Kokusai |
+    |------|--------|-------|---------------|-----|-------------|-------------|
+    | 30 | 0.698 | +4.22% | +2.81% | 0.260 | +349.1% | +250.5% |
+    | 60 | 0.701 | +3.88% | +2.99% | 0.342 | +356.1% | +250.5% |
+    | 90 | 0.666 | +3.13% | +2.15% | 0.247 | +323.9% | +250.5% |
 
-    60銘柄ポートフォリオが最も高い Sharpe Ratio を示す。90銘柄では欠損ティッカーの増加
-    （非米国銘柄）によりカバレッジが低下し、パフォーマンスが若干低下。
+    全ポートフォリオが MSCI Kokusai を年率 +2〜3% アウトパフォーム。
+    60銘柄が最高の Information Ratio (0.342) を示す。
     """
     )
     return (evaluation_result,)
