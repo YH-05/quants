@@ -97,6 +97,12 @@ market = [
     "openpyxl>=3.1.5",
 ]
 
+# Bloomberg Terminal optional dependencies
+# Wheels bundle C++ SDK; Bloomberg Terminal or B-PIPE required at runtime
+bloomberg = [
+    "blpapi>=3.24.0",
+]
+
 # analyze optional dependencies (Kalman filter for beta estimation)
 kalman = [
     "pykalman>=0.9.7",
@@ -250,6 +256,14 @@ markers = [
     "integration: marks tests as integration tests",
     "playwright: marks tests as requiring playwright (deselect with '-m \"not playwright\"')",
 ]
+
+[[tool.uv.index]]
+name = "bloomberg"
+url = "https://blpapi.bloomberg.com/repository/releases/python/simple/"
+explicit = true
+
+[tool.uv.sources]
+blpapi = { index = "bloomberg" }
 
 [tool.uv.workspace]
 members = [

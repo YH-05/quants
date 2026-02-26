@@ -27,14 +27,23 @@ Examples
 >>> results = fetcher.get_historical_data(options)
 """
 
+from __future__ import annotations
+
 import re
 import time
 from datetime import date, datetime
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-import blpapi  # type: ignore[import-not-found]
 import pandas as pd
+
+if TYPE_CHECKING:
+    import blpapi  # type: ignore[import-not-found]
+
+try:
+    import blpapi  # type: ignore[import-not-found,no-redef]
+except ImportError:
+    blpapi = None  # type: ignore[assignment]
 
 from database.db import DuckDBClient
 from market.bloomberg.constants import (
@@ -126,6 +135,13 @@ class BloombergFetcher:
         host: str = DEFAULT_HOST,
         port: int = DEFAULT_PORT,
     ) -> None:
+        if blpapi is None:
+            msg = (
+                "blpapi is not installed. "
+                "Install with: uv pip install blpapi "
+                "(requires Bloomberg C++ SDK)"
+            )
+            raise ImportError(msg)
         self.host = host
         self.port = port
 

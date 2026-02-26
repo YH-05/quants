@@ -221,6 +221,18 @@ wheels = [
 ]
 
 [[package]]
+name = "blpapi"
+version = "3.26.1.1"
+source = { registry = "https://blpapi.bloomberg.com/repository/releases/python/simple/" }
+sdist = { url = "https://blpapi.bloomberg.com/repository/releases/python/blpapi-3.26.1.1.tar.gz", hash = "sha256:844eed5a8246ed2ab1910a204fe3a0e6a9a4878e0c4d8c97ba9bbd67acb0ea6b" }
+wheels = [
+    { url = "https://blpapi.bloomberg.com/repository/releases/python/blpapi-3.26.1.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:92903043c027cb75b2390a1cd85d0c296a273bd15efa2803061f0e7e87394301" },
+    { url = "https://blpapi.bloomberg.com/repository/releases/python/blpapi-3.26.1.1-py3-none-manylinux2014_x86_64.whl", hash = "sha256:07566bfafd31b4ec98706fb8ac657837ca51e656a442476f49d29616a4526627" },
+    { url = "https://blpapi.bloomberg.com/repository/releases/python/blpapi-3.26.1.1-py3-none-win32.whl", hash = "sha256:ac0e09489ae17b146ea6b47c016776323bf62025213fd7f93fcb010dac818a5a" },
+    { url = "https://blpapi.bloomberg.com/repository/releases/python/blpapi-3.26.1.1-py3-none-win_amd64.whl", hash = "sha256:f8d4759b498c4740c6dab61bafb4eb401b0d228e3c3f0833ba8835969f655209" },
+]
+
+[[package]]
 name = "boolean-py"
 version = "5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -948,6 +960,9 @@ automation = [
     { name = "anyio" },
     { name = "claude-agent-sdk" },
 ]
+bloomberg = [
+    { name = "blpapi" },
+]
 cli = [
     { name = "click" },
 ]
@@ -1016,6 +1031,7 @@ requires-dist = [
     { name = "apscheduler", marker = "extra == 'scheduler'", specifier = ">=3.10.0" },
     { name = "bandit", marker = "extra == 'dev'", specifier = ">=1.7.0" },
     { name = "beautifulsoup4", specifier = ">=4.12.0" },
+    { name = "blpapi", marker = "extra == 'bloomberg'", specifier = ">=3.24.0", index = "https://blpapi.bloomberg.com/repository/releases/python/simple/" },
     { name = "chromadb", marker = "extra == 'embedding'", specifier = ">=0.5.0" },
     { name = "claude-agent-sdk", marker = "extra == 'automation'", specifier = ">=0.1.22" },
     { name = "click", marker = "extra == 'cli'", specifier = ">=8.1.0" },
@@ -1076,7 +1092,7 @@ requires-dist = [
     { name = "werkzeug", specifier = ">=3.1.6" },
     { name = "yfinance", specifier = ">=0.2.0" },
 ]
-provides-extras = ["dev", "docs", "scheduler", "mcp", "cli", "playwright", "automation", "market", "kalman", "embedding"]
+provides-extras = ["dev", "docs", "scheduler", "mcp", "cli", "playwright", "automation", "market", "bloomberg", "kalman", "embedding"]
 
 [package.metadata.requires-dev]
 dev = [
