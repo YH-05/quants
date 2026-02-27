@@ -332,7 +332,7 @@ class TestCacheManagerErrorHandling:
 
         with (
             patch.object(cache, "_connection", side_effect=RuntimeError("DB error")),
-            pytest.raises(CacheError, match="get cached text for filing.*failed"),
+            pytest.raises(CacheError, match=r"get cached text for filing.*failed"),
         ):
             cache.get_cached_text("filing-001")
 
@@ -346,7 +346,7 @@ class TestCacheManagerErrorHandling:
 
         with (
             patch.object(cache, "_connection", side_effect=RuntimeError("DB error")),
-            pytest.raises(CacheError, match="save text for filing.*failed"),
+            pytest.raises(CacheError, match=r"save text for filing.*failed"),
         ):
             cache.save_text("filing-001", "Some text")
 

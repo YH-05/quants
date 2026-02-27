@@ -23,11 +23,15 @@ class TestModuleImport:
 
     def test_正常系_サブモジュールがインポートできる(self) -> None:
         """サブモジュールが正しくインポートできることを確認。"""
-        from market.bloomberg import errors, fetcher, types
+        from market.bloomberg import fetcher, types
 
         assert types is not None
-        assert errors is not None
         assert fetcher is not None
+
+        # errors は market.errors に定義されている（market.bloomberg.errors は存在しない）
+        import market.errors
+
+        assert market.errors is not None
 
 
 class TestPublicExports:

@@ -37,13 +37,14 @@ from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
-if TYPE_CHECKING:
+try:
     import blpapi  # type: ignore[import-not-found]
 
-try:
-    import blpapi  # type: ignore[import-not-found,no-redef]
+    _HAS_BLPAPI = True
 except ImportError:
-    blpapi = None  # type: ignore[assignment]
+    _HAS_BLPAPI = False
+    if TYPE_CHECKING:
+        import blpapi  # type: ignore[import-not-found,no-redef]  # noqa: TC004
 
 from database.db import DuckDBClient
 from market.bloomberg.constants import (
@@ -135,7 +136,7 @@ class BloombergFetcher:
         host: str = DEFAULT_HOST,
         port: int = DEFAULT_PORT,
     ) -> None:
-        if blpapi is None:
+        if not _HAS_BLPAPI:
             msg = (
                 "blpapi is not installed. "
                 "Install with: uv pip install blpapi "

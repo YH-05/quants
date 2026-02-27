@@ -254,7 +254,7 @@ class TestRetry429:
         request_fn = AsyncMock(return_value=response_429)
         policy = ScrapingPolicy(base_backoff=0.01, max_retries=3)
 
-        with pytest.raises(RateLimitError, match="Max retries.*exceeded"):
+        with pytest.raises(RateLimitError, match=r"Max retries.*exceeded"):
             await policy.execute_with_retry(request_fn, "https://example.com/page")
 
         # Initial + 3 retries = 4 calls

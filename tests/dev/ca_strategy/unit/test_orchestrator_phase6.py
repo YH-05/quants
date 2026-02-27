@@ -177,7 +177,9 @@ class TestOrchestratorBenchmarkTicker:
         )
 
         portfolio = _make_portfolio_result()
-        _portfolio_returns, benchmark_returns = orch._calculate_phase6_returns(portfolio)
+        _portfolio_returns, benchmark_returns = orch._calculate_phase6_returns(
+            portfolio
+        )
 
         # benchmark_returns should be derived from MXKOKUS price data
         # not from equal-weight universe returns

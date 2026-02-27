@@ -105,13 +105,10 @@ class TestStoreToDatabaseDuckDB:
 
         call_args = mock_client.store_df.call_args
         assert call_args is not None
-        # Verify the call is made with the right table_name (second positional or keyword arg)
+        # store_df(data, table_name, if_exists="replace")
+        # table_name is the second positional arg (index 1)
         positional_args = call_args.args if hasattr(call_args, "args") else call_args[0]
-        keyword_args = (
-            call_args.kwargs if hasattr(call_args, "kwargs") else call_args[1]
-        )
-        all_args = list(positional_args) + list(keyword_args.values())
-        assert "my_table" in all_args
+        assert positional_args[1] == "my_table"
 
 
 class TestGetLatestDateFromDbDuckDB:

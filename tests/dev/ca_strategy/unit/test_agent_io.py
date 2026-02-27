@@ -1565,7 +1565,7 @@ class TestPrepareUniverseChunks:
         self, tmp_path: Path
     ) -> None:
         """prepare_universe_chunks() should raise ValueError when universe_path missing."""
-        with pytest.raises(ValueError, match="universe.json not found"):
+        with pytest.raises(ValueError, match=r"universe\.json not found"):
             prepare_universe_chunks(
                 universe_path=tmp_path / "nonexistent.json",
                 chunk_size=10,
@@ -1725,7 +1725,7 @@ class TestBuildPhase2Checkpoint:
         # phase2_output/AAPL/ does not exist
         output_path = tmp_path / "phase2_scored.json"
 
-        with pytest.raises(ValueError, match="No scoring_output.json found"):
+        with pytest.raises(ValueError, match=r"No scoring_output\.json found"):
             build_phase2_checkpoint(
                 workspace_dir=workspace_dir,
                 output_path=output_path,

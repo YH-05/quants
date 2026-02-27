@@ -1291,7 +1291,9 @@ def _parse_raw_scored_claim(
         if raw_confidence is None:
             sr = raw.get("scoring_result")
             if isinstance(sr, dict):
-                raw_confidence = sr.get("phase2_confidence") or sr.get("final_confidence")
+                raw_confidence = sr.get("phase2_confidence") or sr.get(
+                    "final_confidence"
+                )
         if raw_confidence is None:
             logger.warning(
                 "Scored claim missing final_confidence, excluding",
@@ -1525,12 +1527,16 @@ def _parse_kb1_evaluations(raw: dict[str, Any]) -> list[KB1RuleApplication]:
                     rid = rule_item.get("rule_id", "")
                     if rid:
                         res_str = rule_item.get("result", "")
-                        is_pass = isinstance(res_str, str) and res_str.lower() in ("pass", "true")
+                        is_pass = isinstance(res_str, str) and res_str.lower() in (
+                            "pass",
+                            "true",
+                        )
                         evaluations.append(
                             KB1RuleApplication(
                                 rule_id=rid,
                                 result=is_pass,
-                                reasoning=rule_item.get("note", "") or rule_item.get("reasoning", ""),
+                                reasoning=rule_item.get("note", "")
+                                or rule_item.get("reasoning", ""),
                             )
                         )
         # Also try kb1_t_evaluation (mid schema: dict of rule_id -> result string)
@@ -1538,7 +1544,9 @@ def _parse_kb1_evaluations(raw: dict[str, Any]) -> list[KB1RuleApplication]:
             kb1_dict = raw.get("kb1_t_evaluation")
             if isinstance(kb1_dict, dict):
                 for rule_id, result_str in kb1_dict.items():
-                    is_pass = isinstance(result_str, str) and "PASS" in result_str.upper()
+                    is_pass = (
+                        isinstance(result_str, str) and "PASS" in result_str.upper()
+                    )
                     evaluations.append(
                         KB1RuleApplication(
                             rule_id=rule_id,
@@ -1628,15 +1636,13 @@ def _parse_kb2_patterns(raw: dict[str, Any]) -> list[KB2PatternMatch]:
                                 pattern_id=pid,
                                 matched=bool(pat_item.get("matched", True)),
                                 adjustment=adj_v,
-                                reasoning=pat_item.get("note", "") or pat_item.get("reasoning", ""),
+                                reasoning=pat_item.get("note", "")
+                                or pat_item.get("reasoning", ""),
                             )
                         )
         # Single-string variants: kb2_t_pattern, kb2_pattern
         if not patterns:
-            kb2_str = (
-                raw.get("kb2_t_pattern")
-                or raw.get("kb2_pattern")
-            )
+            kb2_str = raw.get("kb2_t_pattern") or raw.get("kb2_pattern")
             # Also check scoring_result.kb2_t_pattern (GOOG schema)
             if not kb2_str:
                 sr = raw.get("scoring_result")

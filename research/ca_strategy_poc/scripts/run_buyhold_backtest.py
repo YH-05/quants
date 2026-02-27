@@ -26,7 +26,9 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[3]
 DATA_DIR = ROOT / "data" / "raw" / "yfinance" / "stocks"
 CONFIG_DIR = ROOT / "research" / "ca_strategy_poc" / "config"
-OUTPUT_DIR = ROOT / "research" / "ca_strategy_poc" / "workspaces" / "full_run" / "output"
+OUTPUT_DIR = (
+    ROOT / "research" / "ca_strategy_poc" / "workspaces" / "full_run" / "output"
+)
 RESULT_DIR = ROOT / "research" / "ca_strategy_poc" / "reports"
 FRED_CACHE_DIR = ROOT / "data" / "raw" / "fred"
 
@@ -108,7 +110,7 @@ def load_portfolio_weights(size: int) -> dict[str, float]:
     suffix = "" if size == 30 else f"_{size}"
     path = OUTPUT_DIR / f"portfolio_weights{suffix}.csv"
     df = pd.read_csv(path)
-    return dict(zip(df["ticker"], df["weight"]))
+    return dict(zip(df["ticker"], df["weight"], strict=True))
 
 
 def load_corporate_actions() -> list[dict]:
@@ -270,7 +272,9 @@ def compute_metrics(
         rf_aligned = daily_rf_series.reindex(port.index).ffill().bfill()
         daily_rf = rf_aligned
         # Annualized rf = geometric mean of daily rf over period
-        ann_rf = float((1 + daily_rf).prod() ** (TRADING_DAYS_PER_YEAR / len(daily_rf)) - 1)
+        ann_rf = float(
+            (1 + daily_rf).prod() ** (TRADING_DAYS_PER_YEAR / len(daily_rf)) - 1
+        )
     else:
         daily_rf = (1 + RISK_FREE_RATE_FALLBACK) ** (1 / TRADING_DAYS_PER_YEAR) - 1
         ann_rf = RISK_FREE_RATE_FALLBACK
@@ -280,11 +284,19 @@ def compute_metrics(
     port_vol = port.std() * np.sqrt(TRADING_DAYS_PER_YEAR)
 
     # Sharpe
-    sharpe = (excess.mean() / excess.std()) * np.sqrt(TRADING_DAYS_PER_YEAR) if excess.std() > 0 else 0.0
+    sharpe = (
+        (excess.mean() / excess.std()) * np.sqrt(TRADING_DAYS_PER_YEAR)
+        if excess.std() > 0
+        else 0.0
+    )
 
     # Sortino
     downside = excess[excess < 0]
-    downside_std = np.sqrt((downside**2).mean()) * np.sqrt(TRADING_DAYS_PER_YEAR) if len(downside) > 0 else 0.0
+    downside_std = (
+        np.sqrt((downside**2).mean()) * np.sqrt(TRADING_DAYS_PER_YEAR)
+        if len(downside) > 0
+        else 0.0
+    )
     sortino = (ann_port - ann_rf) / downside_std if downside_std > 0 else 0.0
 
     # Max Drawdown
@@ -388,7 +400,11 @@ def main() -> None:
     if len(daily_rf_series) > 0:
         rf_source = "FRED DGS10 (US 10-Year Treasury)"
         # Compute annualized rf for metadata
-        _rf_ann = float((1 + daily_rf_series).prod() ** (TRADING_DAYS_PER_YEAR / len(daily_rf_series)) - 1)
+        _rf_ann = float(
+            (1 + daily_rf_series).prod()
+            ** (TRADING_DAYS_PER_YEAR / len(daily_rf_series))
+            - 1
+        )
         print(f"Risk-free rate: {rf_source}")
         print(f"  Annualized (geometric mean): {_rf_ann:.2%}")
     else:
@@ -430,9 +446,29 @@ def main() -> None:
         if ticker in universe_returns.columns:
             mcap_mapped[ticker] = weight
         # Also try with yfinance suffix variants
-        for suffix in [".L", ".PA", ".DE", ".SW", ".AS", ".AX", ".TO", ".T", ".HK",
-                        ".MI", ".MC", ".ST", ".CO", ".OL", ".HE", ".BR", ".SA",
-                        ".SI", ".KS", ".JK", ".BK"]:
+        for suffix in [
+            ".L",
+            ".PA",
+            ".DE",
+            ".SW",
+            ".AS",
+            ".AX",
+            ".TO",
+            ".T",
+            ".HK",
+            ".MI",
+            ".MC",
+            ".ST",
+            ".CO",
+            ".OL",
+            ".HE",
+            ".BR",
+            ".SA",
+            ".SI",
+            ".KS",
+            ".JK",
+            ".BK",
+        ]:
             candidate = f"{ticker}{suffix}"
             if candidate in universe_returns.columns:
                 mcap_mapped[candidate] = weight
@@ -448,8 +484,9 @@ def main() -> None:
     )
 
     # Compute equal-weight universe benchmark (Buy-and-Hold drift)
-    valid_universe_cols = [c for c in universe_returns.columns
-                          if universe_returns[c].notna().sum() > 100]
+    valid_universe_cols = [
+        c for c in universe_returns.columns if universe_returns[c].notna().sum() > 100
+    ]
     ew_weights = {c: 1.0 / len(valid_universe_cols) for c in valid_universe_cols}
     ew_bench_returns, _ = compute_buyhold_portfolio_returns(
         returns_df=universe_returns,
@@ -489,8 +526,12 @@ def main() -> None:
         print(f"  Missing: {set(weights.keys()) - set(returns_df.columns)}")
 
         # Identify US vs non-US
-        us_tickers = [t for t in weights if ticker_country.get(t, "") == "UNITED STATES"]
-        non_us_tickers = [t for t in weights if ticker_country.get(t, "") != "UNITED STATES"]
+        us_tickers = [
+            t for t in weights if ticker_country.get(t, "") == "UNITED STATES"
+        ]
+        non_us_tickers = [
+            t for t in weights if ticker_country.get(t, "") != "UNITED STATES"
+        ]
         us_weight = sum(weights.get(t, 0) for t in us_tickers)
         non_us_weight = sum(weights.get(t, 0) for t in non_us_tickers)
         data_available = set(weights.keys()) & set(returns_df.columns)
@@ -515,7 +556,9 @@ def main() -> None:
         metrics_vs_msci = compute_metrics(port_returns, tok_returns, daily_rf_series)
 
         # Metrics vs MCap benchmark
-        metrics_vs_mcap = compute_metrics(port_returns, mcap_bench_returns, daily_rf_series)
+        metrics_vs_mcap = compute_metrics(
+            port_returns, mcap_bench_returns, daily_rf_series
+        )
 
         # Metrics vs Equal-Weight benchmark
         metrics_vs_ew = compute_metrics(port_returns, ew_bench_returns, daily_rf_series)
@@ -541,14 +584,14 @@ def main() -> None:
         }
 
         # Print summary
-        print(f"\n  vs MSCI Kokusai:")
+        print("\n  vs MSCI Kokusai:")
         print(f"    Sharpe: {metrics_vs_msci['sharpe_ratio']}")
         print(f"    Ann Return: {metrics_vs_msci['annualized_return']}%")
         print(f"    Alpha: {metrics_vs_msci['alpha_capm']}%")
         print(f"    Max DD: {metrics_vs_msci['max_drawdown']}%")
         print(f"    IR: {metrics_vs_msci['information_ratio']}")
 
-        print(f"\n  vs MCap Benchmark:")
+        print("\n  vs MCap Benchmark:")
         print(f"    Alpha: {metrics_vs_mcap['alpha_capm']}%")
         print(f"    IR: {metrics_vs_mcap['information_ratio']}")
 
@@ -557,7 +600,13 @@ def main() -> None:
         "msci_kokusai": {
             "etf": "TOK",
             "ann_return": round(
-                ((1 + tok_returns).prod() ** (TRADING_DAYS_PER_YEAR / len(tok_returns)) - 1) * 100, 2
+                (
+                    (1 + tok_returns).prod()
+                    ** (TRADING_DAYS_PER_YEAR / len(tok_returns))
+                    - 1
+                )
+                * 100,
+                2,
             ),
             "cum_return": round(((1 + tok_returns).prod() - 1) * 100, 2),
         },
@@ -601,8 +650,10 @@ def main() -> None:
     if len(daily_rf_series) > 0:
         cum_data["dgs10"] = {
             "dates": [d.isoformat() for d in daily_rf_series.index],
-            "annual_rate_pct": [round(float(((1 + v) ** TRADING_DAYS_PER_YEAR - 1) * 100), 3)
-                                for v in daily_rf_series.values],
+            "annual_rate_pct": [
+                round(float(((1 + v) ** TRADING_DAYS_PER_YEAR - 1) * 100), 3)
+                for v in daily_rf_series.values
+            ],
         }
 
     cum_path = RESULT_DIR / "buyhold_cumulative_returns.json"

@@ -505,7 +505,8 @@ def mock_blpapi_session_factory():
             except StopIteration:
                 # Return a TIMEOUT event if events are exhausted
                 timeout_event = MagicMock()
-                timeout_event.eventType.return_value = 6  # blpapi.Event.TIMEOUT
+                # blpapi.Event.TIMEOUT == 10 (NOT 6, which is PARTIAL_RESPONSE)
+                timeout_event.eventType.return_value = 10  # blpapi.Event.TIMEOUT
                 return timeout_event
 
         session.nextEvent.side_effect = _next_event

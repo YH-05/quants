@@ -528,10 +528,16 @@ class PortfolioReturnCalculator:
             if rebalance_dates and trading_date in rebalance_dates:
                 rebal_weights = rebalance_dates[trading_date]
                 active = set(returns_df.columns) & set(rebal_weights.keys())
-                current_weights = {t: rebal_weights[t] for t in active if t in current_weights or t in rebal_weights}
+                current_weights = {
+                    t: rebal_weights[t]
+                    for t in active
+                    if t in current_weights or t in rebal_weights
+                }
                 rebal_total = sum(current_weights.values())
                 if rebal_total > 0 and abs(rebal_total - 1.0) > 1e-10:
-                    current_weights = {k: v / rebal_total for k, v in current_weights.items()}
+                    current_weights = {
+                        k: v / rebal_total for k, v in current_weights.items()
+                    }
                 logger.info(
                     "Periodic rebalance applied",
                     date=str(trading_date),
@@ -552,7 +558,9 @@ class PortfolioReturnCalculator:
                     new_values[t] = w * (1.0 + ret)
                 drift_total = sum(new_values.values())
                 if drift_total > 0:
-                    current_weights = {t: v / drift_total for t, v in new_values.items()}
+                    current_weights = {
+                        t: v / drift_total for t, v in new_values.items()
+                    }
 
         # Vectorized computation: build weights DataFrame, align columns,
         # element-wise multiply, and sum across tickers per day

@@ -170,7 +170,7 @@ class TestLoadFeeds:
         tmp_path.mkdir(parents=True, exist_ok=True)
         feeds_file.write_text("invalid json", encoding="utf-8")
 
-        with pytest.raises(RSSError, match="load feeds from.*failed"):
+        with pytest.raises(RSSError, match=r"load feeds from.*failed"):
             storage.load_feeds()
 
 
@@ -324,7 +324,7 @@ class TestLoadItems:
         items_file = feed_dir / "items.json"
         items_file.write_text("invalid json", encoding="utf-8")
 
-        with pytest.raises(RSSError, match="load items for feed.*failed"):
+        with pytest.raises(RSSError, match=r"load items for feed.*failed"):
             storage.load_items(feed_id)
 
 

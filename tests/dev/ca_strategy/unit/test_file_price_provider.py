@@ -20,22 +20,26 @@ Key behaviors:
 from __future__ import annotations
 
 from datetime import date
+from typing import TYPE_CHECKING
 
 import pandas as pd
 import pytest
 
 from dev.ca_strategy.price_provider import FilePriceProvider, PriceDataProvider
 
+if TYPE_CHECKING:
+    from pathlib import Path
+
 
 class TestFilePriceProvider:
     """FilePriceProvider per-ticker mode unit tests."""
 
-    def test_正常系_Parquetファイルから読み取り(self, tmp_path: object) -> None:
+    def test_正常系_Parquetファイルから読み取り(self, tmp_path: Path) -> None:
         """Parquet file with close column should be read correctly."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame({"close": [100.0, 101.0, 102.0, 103.0]}, index=idx)
-        df.to_parquet(data_dir / "AAPL.parquet")  # type: ignore[operator]
+        df.to_parquet(data_dir / "AAPL.parquet")
 
         provider = FilePriceProvider(data_dir)
         result = provider.fetch(
@@ -49,12 +53,12 @@ class TestFilePriceProvider:
         assert result["AAPL"].iloc[0] == 100.0
         assert result["AAPL"].iloc[-1] == 103.0
 
-    def test_正常系_CSVファイルから読み取り(self, tmp_path: object) -> None:
+    def test_正常系_CSVファイルから読み取り(self, tmp_path: Path) -> None:
         """CSV file with close column should be read correctly."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame({"close": [200.0, 201.0, 202.0, 203.0]}, index=idx)
-        df.to_csv(data_dir / "MSFT.csv")  # type: ignore[operator]
+        df.to_csv(data_dir / "MSFT.csv")
 
         provider = FilePriceProvider(data_dir)
         result = provider.fetch(
@@ -67,12 +71,12 @@ class TestFilePriceProvider:
         assert len(result["MSFT"]) == 4
         assert result["MSFT"].iloc[0] == 200.0
 
-    def test_正常系_日付フィルタリング(self, tmp_path: object) -> None:
+    def test_正常系_日付フィルタリング(self, tmp_path: Path) -> None:
         """Data outside start/end range should be excluded."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-31", freq="B")
         df = pd.DataFrame({"close": range(len(idx))}, index=idx)
-        df.to_parquet(data_dir / "AAPL.parquet")  # type: ignore[operator]
+        df.to_parquet(data_dir / "AAPL.parquet")
 
         provider = FilePriceProvider(data_dir)
         result = provider.fetch(
@@ -85,15 +89,15 @@ class TestFilePriceProvider:
         series = result["AAPL"]
         # All dates should be within range
         for dt in series.index:
-            d = dt.date() if hasattr(dt, "date") else dt
+            d: date = dt.date() if hasattr(dt, "date") else dt  # type: ignore[assignment]
             assert date(2024, 1, 10) <= d <= date(2024, 1, 15)
 
-    def test_正常系_存在しないティッカーはスキップ(self, tmp_path: object) -> None:
+    def test_正常系_存在しないティッカーはスキップ(self, tmp_path: Path) -> None:
         """Tickers without files should be silently skipped."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame({"close": [100.0, 101.0, 102.0, 103.0]}, index=idx)
-        df.to_parquet(data_dir / "AAPL.parquet")  # type: ignore[operator]
+        df.to_parquet(data_dir / "AAPL.parquet")
 
         provider = FilePriceProvider(data_dir)
         result = provider.fetch(
@@ -105,16 +109,16 @@ class TestFilePriceProvider:
         assert "AAPL" in result
         assert "NONEXISTENT" not in result
 
-    def test_正常系_Parquet優先_両方ある場合(self, tmp_path: object) -> None:
+    def test_正常系_Parquet優先_両方ある場合(self, tmp_path: Path) -> None:
         """When both Parquet and CSV exist, Parquet should be preferred."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
 
         # Parquet has different values than CSV
         df_parquet = pd.DataFrame({"close": [100.0, 101.0, 102.0, 103.0]}, index=idx)
         df_csv = pd.DataFrame({"close": [999.0, 999.0, 999.0, 999.0]}, index=idx)
-        df_parquet.to_parquet(data_dir / "AAPL.parquet")  # type: ignore[operator]
-        df_csv.to_csv(data_dir / "AAPL.csv")  # type: ignore[operator]
+        df_parquet.to_parquet(data_dir / "AAPL.parquet")
+        df_csv.to_csv(data_dir / "AAPL.csv")
 
         provider = FilePriceProvider(data_dir)
         result = provider.fetch(
@@ -132,9 +136,9 @@ class TestFilePriceProvider:
         with pytest.raises(FileNotFoundError):
             FilePriceProvider("/nonexistent/path/to/data")
 
-    def test_エッジケース_空のティッカーリスト(self, tmp_path: object) -> None:
+    def test_エッジケース_空のティッカーリスト(self, tmp_path: Path) -> None:
         """Empty tickers list should return empty dict."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         provider = FilePriceProvider(data_dir)
         result = provider.fetch(
             tickers=[],
@@ -143,9 +147,9 @@ class TestFilePriceProvider:
         )
         assert result == {}
 
-    def test_正常系_PriceDataProviderProtocolを満たす(self, tmp_path: object) -> None:
+    def test_正常系_PriceDataProviderProtocolを満たす(self, tmp_path: Path) -> None:
         """FilePriceProvider should satisfy the PriceDataProvider Protocol."""
-        data_dir = tmp_path  # type: ignore[assignment]
+        data_dir = tmp_path
         provider = FilePriceProvider(data_dir)
         assert isinstance(provider, PriceDataProvider)
 
@@ -154,10 +158,10 @@ class TestFilePriceProviderSingleFile:
     """Single-file mode unit tests."""
 
     def test_正常系_Parquet単一ファイルから複数ティッカー読み取り(
-        self, tmp_path: object
+        self, tmp_path: Path
     ) -> None:
         """Single Parquet file with multiple tickers as columns."""
-        tmp = tmp_path  # type: ignore[assignment]
+        tmp = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame(
             {
@@ -182,9 +186,9 @@ class TestFilePriceProviderSingleFile:
         assert result["AAPL"].iloc[0] == 100.0
         assert result["MSFT"].iloc[0] == 200.0
 
-    def test_正常系_CSV単一ファイルから読み取り(self, tmp_path: object) -> None:
+    def test_正常系_CSV単一ファイルから読み取り(self, tmp_path: Path) -> None:
         """Single CSV file with tickers as columns."""
-        tmp = tmp_path  # type: ignore[assignment]
+        tmp = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame(
             {"AAPL": [100.0, 101.0, 102.0, 103.0]},
@@ -204,10 +208,10 @@ class TestFilePriceProviderSingleFile:
         assert len(result["AAPL"]) == 4
 
     def test_正常系_単一ファイルで存在しないティッカーはスキップ(
-        self, tmp_path: object
+        self, tmp_path: Path
     ) -> None:
         """Tickers not in columns should be skipped."""
-        tmp = tmp_path  # type: ignore[assignment]
+        tmp = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame({"AAPL": [100.0, 101.0, 102.0, 103.0]}, index=idx)
         file_path = tmp / "prices.parquet"
@@ -223,9 +227,9 @@ class TestFilePriceProviderSingleFile:
         assert "AAPL" in result
         assert "NONEXISTENT" not in result
 
-    def test_正常系_単一ファイルで日付フィルタリング(self, tmp_path: object) -> None:
+    def test_正常系_単一ファイルで日付フィルタリング(self, tmp_path: Path) -> None:
         """Date filtering should work in single-file mode."""
-        tmp = tmp_path  # type: ignore[assignment]
+        tmp = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-31", freq="B")
         df = pd.DataFrame({"AAPL": range(len(idx))}, index=idx)
         file_path = tmp / "prices.parquet"
@@ -240,14 +244,14 @@ class TestFilePriceProviderSingleFile:
 
         assert "AAPL" in result
         for dt in result["AAPL"].index:
-            d = dt.date() if hasattr(dt, "date") else dt
+            d: date = dt.date() if hasattr(dt, "date") else dt  # type: ignore[assignment]
             assert date(2024, 1, 10) <= d <= date(2024, 1, 15)
 
     def test_正常系_PriceDataProviderProtocolを満たす_単一ファイル(
-        self, tmp_path: object
+        self, tmp_path: Path
     ) -> None:
         """Single-file mode should also satisfy PriceDataProvider Protocol."""
-        tmp = tmp_path  # type: ignore[assignment]
+        tmp = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame({"AAPL": [100.0, 101.0, 102.0, 103.0]}, index=idx)
         file_path = tmp / "prices.parquet"
@@ -257,10 +261,10 @@ class TestFilePriceProviderSingleFile:
         assert isinstance(provider, PriceDataProvider)
 
     def test_エッジケース_単一ファイルで空のティッカーリスト(
-        self, tmp_path: object
+        self, tmp_path: Path
     ) -> None:
         """Empty tickers list should return empty dict in single-file mode."""
-        tmp = tmp_path  # type: ignore[assignment]
+        tmp = tmp_path
         idx = pd.date_range("2024-01-02", "2024-01-05", freq="B")
         df = pd.DataFrame({"AAPL": [100.0, 101.0, 102.0, 103.0]}, index=idx)
         file_path = tmp / "prices.parquet"

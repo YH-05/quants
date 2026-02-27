@@ -25,12 +25,20 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "src"))
 
-from dev.ca_strategy.aggregator import ScoreAggregator
-from dev.ca_strategy.neutralizer import SectorNeutralizer
-from dev.ca_strategy.output import OutputGenerator
-from dev.ca_strategy.pit import CUTOFF_DATE, PORTFOLIO_DATE
-from dev.ca_strategy.portfolio_builder import PortfolioBuilder, RankedStock
-from dev.ca_strategy.types import BenchmarkWeight, ScoredClaim, StockScore, UniverseConfig
+from dev.ca_strategy.aggregator import ScoreAggregator  # noqa: E402
+from dev.ca_strategy.neutralizer import SectorNeutralizer  # noqa: E402
+from dev.ca_strategy.output import OutputGenerator  # noqa: E402
+from dev.ca_strategy.pit import CUTOFF_DATE, PORTFOLIO_DATE  # noqa: E402
+from dev.ca_strategy.portfolio_builder import (  # noqa: E402
+    PortfolioBuilder,
+    RankedStock,
+)
+from dev.ca_strategy.types import (  # noqa: E402
+    BenchmarkWeight,
+    ScoredClaim,
+    StockScore,
+    UniverseConfig,
+)
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -177,9 +185,15 @@ def main() -> None:
             rationale_count = 0
 
         print(f"  Rationale files: {rationale_count}")
-        print(f"  portfolio_weights.csv: {(output_dir / 'portfolio_weights.csv').exists()}")
-        print(f"  portfolio_weights.json: {(output_dir / 'portfolio_weights.json').exists()}")
-        print(f"  portfolio_summary.md: {(output_dir / 'portfolio_summary.md').exists()}")
+        print(
+            f"  portfolio_weights.csv: {(output_dir / 'portfolio_weights.csv').exists()}"
+        )
+        print(
+            f"  portfolio_weights.json: {(output_dir / 'portfolio_weights.json').exists()}"
+        )
+        print(
+            f"  portfolio_summary.md: {(output_dir / 'portfolio_summary.md').exists()}"
+        )
 
     print("\n" + "=" * 60)
     print("Done!")

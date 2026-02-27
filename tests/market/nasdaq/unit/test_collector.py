@@ -157,7 +157,7 @@ class TestGetSession:
 
         with patch("market.nasdaq.collector.NasdaqSession") as mock_cls:
             mock_cls.return_value = MagicMock(spec=NasdaqSession)
-            session, should_close = collector._get_session()
+            _session, should_close = collector._get_session()
 
         assert should_close is True
         mock_cls.assert_called_once()
@@ -416,7 +416,7 @@ class TestPathTraversalProtection:
         mock_session = _make_mock_session()
         collector = ScreenerCollector(session=mock_session)
 
-        with pytest.raises(ValueError, match="outside.*output directory"):
+        with pytest.raises(ValueError, match=r"outside.*output directory"):
             collector.download_csv(
                 filter=None,
                 output_dir=tmp_path,
@@ -430,7 +430,7 @@ class TestPathTraversalProtection:
         mock_session = _make_mock_session()
         collector = ScreenerCollector(session=mock_session)
 
-        with pytest.raises(ValueError, match="outside.*output directory"):
+        with pytest.raises(ValueError, match=r"outside.*output directory"):
             collector.download_csv(
                 filter=None,
                 output_dir=tmp_path,

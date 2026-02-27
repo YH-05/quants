@@ -358,9 +358,13 @@ class TestNasdaqConfig:
 
     def test_異常系_timeoutが範囲外でValueError(self) -> None:
         """timeout が範囲外の場合 ValueError が発生すること。"""
-        with pytest.raises(ValueError, match="timeout must be between 1.0 and 300.0"):
+        with pytest.raises(
+            ValueError, match=r"timeout must be between 1\.0 and 300\.0"
+        ):
             NasdaqConfig(timeout=0.5)
-        with pytest.raises(ValueError, match="timeout must be between 1.0 and 300.0"):
+        with pytest.raises(
+            ValueError, match=r"timeout must be between 1\.0 and 300\.0"
+        ):
             NasdaqConfig(timeout=301.0)
 
     def test_正常系_境界値でpolite_delayが受け入れられる(self) -> None:
@@ -373,11 +377,11 @@ class TestNasdaqConfig:
     def test_異常系_polite_delayが範囲外でValueError(self) -> None:
         """polite_delay が範囲外の場合 ValueError が発生すること。"""
         with pytest.raises(
-            ValueError, match="polite_delay must be between 0.0 and 60.0"
+            ValueError, match=r"polite_delay must be between 0\.0 and 60\.0"
         ):
             NasdaqConfig(polite_delay=-0.1)
         with pytest.raises(
-            ValueError, match="polite_delay must be between 0.0 and 60.0"
+            ValueError, match=r"polite_delay must be between 0\.0 and 60\.0"
         ):
             NasdaqConfig(polite_delay=61.0)
 
@@ -391,11 +395,11 @@ class TestNasdaqConfig:
     def test_異常系_delay_jitterが範囲外でValueError(self) -> None:
         """delay_jitter が範囲外の場合 ValueError が発生すること。"""
         with pytest.raises(
-            ValueError, match="delay_jitter must be between 0.0 and 30.0"
+            ValueError, match=r"delay_jitter must be between 0\.0 and 30\.0"
         ):
             NasdaqConfig(delay_jitter=-0.1)
         with pytest.raises(
-            ValueError, match="delay_jitter must be between 0.0 and 30.0"
+            ValueError, match=r"delay_jitter must be between 0\.0 and 30\.0"
         ):
             NasdaqConfig(delay_jitter=31.0)
 
