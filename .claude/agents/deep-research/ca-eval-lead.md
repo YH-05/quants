@@ -55,7 +55,7 @@ ca-eval-lead (リーダー)
     │       blockedBy: [T5, T6]
     │       ↓ draft-report.md, structured.json
     ├── [T8] Lead: AI批判プロセス (Step 1: 批判生成 → Step 2: 反映・修正)
-    │       ↓ critique.json, revised-report.md
+    │       ↓ critique.json, revised-report-{TICKER}.md
     └── [T9] Lead: 精度検証（簡素化版: 1メトリクス、ブロックなし）
             ↓ accuracy-report.json
             [HF2] 最終出力提示
@@ -181,7 +181,7 @@ output: |
   評価が完了しました。
 
   ## レポート
-  - ファイル: {research_dir}/04_output/revised-report.md
+  - ファイル: {research_dir}/04_output/revised-report-{TICKER}.md
   - 競争優位性候補: {ca_count}件
   - 平均確信度: {avg_confidence}%
 
@@ -740,7 +740,7 @@ TaskUpdate:
    - 批判を反映した最終版レポートを生成
 
    **入力**: draft-report.md, structured.json, KB1-KB3（全26ファイル）, dogma.md
-   **出力**: critique.json, revised-report.md
+   **出力**: critique.json, revised-report-{TICKER}.md
 
    **処理フロー**:
    ```
@@ -754,8 +754,8 @@ TaskUpdate:
    │    ├─ critique.json の指摘を structured.json に反映
    │    ├─ confidence 調整（上げ/下げ）
    │    ├─ コメント修正（批判を反映）
-   │    └─ revised-report.md 生成
-   └─ 出力: revised-report.md + critique.json
+   │    └─ revised-report-{TICKER}.md 生成
+   └─ 出力: revised-report-{TICKER}.md + critique.json
    ```
 
    **Step 1: 批判生成（~45秒）**:
@@ -805,7 +805,7 @@ TaskUpdate:
    1. critique.json の指摘を structured.json に反映
    2. confidence 調整（KB3実績ベースで上げ/下げ）
    3. コメント修正（批判を反映した新しいコメント）
-   4. revised-report.md 生成（修正箇所を `[⬇️ T8修正]` で明示）
+   4. revised-report-{TICKER}.md 生成（修正箇所を `[⬇️ T8修正]` で明示）
    5. **AI中間フィールドの削除**: draft版の「AI所見」「AI判定: KB一般化候補」フィールドを削除する（T8批判で内容は吸収済み）。revised版はアナリストに渡す最終版であり、AIが自答したフィールドを残してはならない。
 
    **修正の原則**:
@@ -817,14 +817,14 @@ TaskUpdate:
    | `reasoning_gap` | コメント文を修正（批判を反映） |
    | `kb_misalignment` | ルール適用結果を修正 |
 
-   **revised-report.md のフォーマット**:
+   **revised-report-{TICKER}.md のフォーマット**:
 
    `.claude/skills/ca-eval/templates/revised-report-format.md` を Read で読み込み、テンプレートに従って生成すること。
    draft-report.md をベースに、T8修正（`[⬇️ T8修正]` アノテーション、`[注N] T8批判` セクション、T8修正サマリー等）を適用する。
 
    **出力ファイル**:
    - `{research_dir}/04_output/critique.json`（AI批判内容の記録）
-   - `{research_dir}/04_output/revised-report.md`（批判反映版レポート、アナリストに渡す最終版）
+   - `{research_dir}/04_output/revised-report-{TICKER}.md`（批判反映版レポート、アナリストに渡す最終版）
 
 7. **T9: 精度検証（Lead 直接実行、簡素化版）**:
 
@@ -856,7 +856,7 @@ TaskUpdate:
    |----------|---------|--------|
    | **平均乖離（優位性のみ）** | <= 15% | <= 10%（緩和） |
 
-   **不合格時**: accuracy-report.json に記録 + revised-report.md に注釈追加。**レポートはブロックせず出力**。
+   **不合格時**: accuracy-report.json に記録 + revised-report-{TICKER}.md に注釈追加。**レポートはブロックせず出力**。
 
    **簡易モード（1チェック）**:
 
@@ -1014,7 +1014,7 @@ ca_eval_result:
     failed: 0
 
   outputs:
-    report: "{research_dir}/04_output/revised-report.md"
+    report: "{research_dir}/04_output/revised-report-{TICKER}.md"
     structured_json: "{research_dir}/04_output/structured.json"
     critique: "{research_dir}/04_output/critique.json"
     accuracy: "{research_dir}/04_output/accuracy-report.json"
@@ -1053,7 +1053,7 @@ ca_eval_result:
 - [ ] Phase 1 で 3 タスクが並列実行された
 - [ ] Phase 3 で 2 タスク（T5, T6）が並列実行された
 - [ ] T7 が完了し draft-report.md + structured.json が生成された
-- [ ] T8（AI批判プロセス）が完了し critique.json + revised-report.md が生成された
+- [ ] T8（AI批判プロセス）が完了し critique.json + revised-report-{TICKER}.md が生成された
 - [ ] T9（精度検証）が実行された（フルモード or 簡易モード）
 - [ ] research-meta.json の workflow が全フェーズ done に更新された
 - [ ] 全チームメイトが正常にシャットダウンした

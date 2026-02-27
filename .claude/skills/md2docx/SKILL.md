@@ -162,14 +162,14 @@ ls -lh <output.docx>
 
 **処理**:
 ```bash
-/md2docx analyst/research/CA_eval_20260226-2021_LLY/04_output/revised-report.md
+/md2docx analyst/research/CA_eval_20260226-2021_LLY/04_output/revised-report-LLY.md
 ```
 
 **結果**:
 ```
-pandoc で変換完了: revised-report.docx
+pandoc で変換完了: revised-report-LLY.docx
 表フォント後処理完了: Times New Roman / 游明朝 10pt
-出力: analyst/research/CA_eval_20260226-2021_LLY/04_output/revised-report.docx (245 KB)
+出力: analyst/research/CA_eval_20260226-2021_LLY/04_output/revised-report-LLY.docx (245 KB)
 ```
 
 ---

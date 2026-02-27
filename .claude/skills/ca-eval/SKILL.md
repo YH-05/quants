@@ -86,7 +86,7 @@ SEC EDGAR ──────── → [T1] 財務データ取得 ──┘
     |       blockedBy: [T5, T6]
     |       出力: draft-report.md + structured.json
     |-- [T8] Lead: AI批判プロセス (Step 1: 批判生成 → Step 2: 反映・修正)
-    |       出力: critique.json + revised-report.md
+    |       出力: critique.json + revised-report-{TICKER}.md
     |-- [T9] Lead: 精度検証（簡素化版: 1メトリクス、ブロックなし）
     |       出力: accuracy-report.json
     |       [HF2] 最終出力
@@ -208,7 +208,7 @@ analyst/research/CA_eval_{YYYYMMDD}-{HHMM}_{TICKER}/
     ├── draft-report.md            <- T7: ドラフト版レポート（全12ルール明示）
     ├── structured.json            <- T7: 構造化JSON（applied_rules / not_applied_rules / confidence_rationale 含む）
     ├── critique.json              <- T8: AI批判内容（claim単位の指摘 + 全体傾向）
-    ├── revised-report.md          <- T8: 批判反映版レポート（Yに渡す最終版）
+    ├── revised-report-{TICKER}.md <- T8: 批判反映版レポート（Yに渡す最終版）
     └── accuracy-report.json       <- T9: 精度検証結果（簡素化版: 1メトリクス）
 ```
 

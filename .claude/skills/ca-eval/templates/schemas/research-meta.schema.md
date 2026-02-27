@@ -35,11 +35,11 @@
     "T5_fact_checker": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/fact-check.json", "verified": 18, "contradicted": 0, "unverifiable": 1 },
     "T6_pattern_verifier": { "status": "completed", "owner": "ca-eval-lead", "output": "03_verification/pattern-verification.json" },
     "T7_report_generator": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/draft-report.md", "04_output/structured.json"] },
-    "T8_ai_critique": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/critique.json", "04_output/revised-report.md"], "critical_issues": 2, "minor_issues": 5 },
+    "T8_ai_critique": { "status": "completed", "owner": "ca-eval-lead", "output": ["04_output/critique.json", "04_output/revised-report-{TICKER}.md"], "critical_issues": 2, "minor_issues": 5 },
     "T9_accuracy": { "status": "completed", "owner": "ca-eval-lead", "output": "04_output/accuracy-report.json", "mode": "simplified", "verdict": "pass" }
   },
   "outputs": {
-    "final_report": "04_output/revised-report.md",
+    "final_report": "04_output/revised-report-{TICKER}.md",
     "draft_report": "04_output/draft-report.md",
     "structured_json": "04_output/structured.json",
     "critique": "04_output/critique.json",
@@ -84,7 +84,7 @@
 | `task_results.T9_accuracy.mode` | string | ✅ | 精度チェックモード: `"simplified"` / `"full"` |
 | `task_results.T9_accuracy.verdict` | string | ✅ | 精度チェック結果: `"pass"` / `"fail"` |
 | `outputs` | object | ✅ | 最終成果物へのファイルパス |
-| `outputs.final_report` | string | ✅ | 最終レポート（revised-report.md）パス |
+| `outputs.final_report` | string | ✅ | 最終レポート（revised-report-{TICKER}.md）パス |
 | `outputs.draft_report` | string | ✅ | ドラフトレポートパス |
 | `outputs.structured_json` | string | ✅ | 構造化JSONパス |
 | `outputs.critique` | string | ✅ | 批評JSONパス |

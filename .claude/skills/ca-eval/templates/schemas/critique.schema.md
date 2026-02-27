@@ -1,7 +1,7 @@
 # critique.schema.md スキーマ
 
 > 生成タスク: T8 | 生成エージェント: ca-eval-lead（T8直接実行）
-> 読み込み先: T8後半（revised-report.md生成時に修正事項を参照）、T9_accuracy（overall_assessmentのKB整合性を参照）
+> 読み込み先: T8後半（revised-report-{TICKER}.md生成時に修正事項を参照）、T9_accuracy（overall_assessmentのKB整合性を参照）
 
 ## JSONスキーマ
 
@@ -35,7 +35,7 @@
       "kb_reference": "KB1ルール10「断念例が能力の証明」。大型化傾向はこの断念能力の喪失を示唆する逆パターン。KB3 CHD#1（70%）では断念例の定量性が明示されていた。",
       "suggested_action": "confidence_adjustment",
       "suggested_value": 60,
-      "reasoning": "CAGR confidence を70%から実質的に「70%だが大型化リスクあり」として扱うべき。70%を維持しつつ「大型化リスクが顕在化した場合は50%に低下」という条件付きアノテーションを追加する形が適切。revised-report.mdで「[⬇️ T8修正]」として明示。"
+      "reasoning": "CAGR confidence を70%から実質的に「70%だが大型化リスクあり」として扱うべき。70%を維持しつつ「大型化リスクが顕在化した場合は50%に低下」という条件付きアノテーションを追加する形が適切。revised-report-{TICKER}.mdで「[⬇️ T8修正]」として明示。"
     },
     {
       "claim_id": 2,

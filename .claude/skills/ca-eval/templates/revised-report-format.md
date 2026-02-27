@@ -1,11 +1,11 @@
-# revised-report.md フォーマットテンプレート
+# revised-report-{TICKER}.md フォーマットテンプレート
 
 T8（AI批判プロセス）で `draft-report.md` を批判的に検証し、修正を反映した最終版レポートのフォーマット。
 Lead（ca-eval-lead）が直接実行する。アナリストに渡す最終版。
 
 ## draft-report.md との差分
 
-revised-report.md は draft-report.md をベースに以下の修正を適用する:
+revised-report-{TICKER}.md は draft-report.md をベースに以下の修正を適用する:
 
 | 修正要素 | 説明 |
 |---------|------|

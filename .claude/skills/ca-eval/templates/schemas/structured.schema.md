@@ -158,4 +158,4 @@
 - `claims[].fact_check_status` は fact-check.json の `fact_checks[].overall_status` と一致すること
 - `overall_summary.strongest_claims` と `overall_summary.weakest_claims` の各オブジェクトは `id` / `title` / `confidence` の3フィールドを含むこと
 - `overall_summary.avg_ca_confidence` は `claims[].final_confidence` の平均値と一致すること（小数点以下は切り捨て）
-- `report_version` が `"draft_v1"` の場合、T8完了後に `"revised_v1"` に更新されること（revised-report.mdとは別ファイルだが、バージョン管理は重要）
+- `report_version` が `"draft_v1"` の場合、T8完了後に `"revised_v1"` に更新されること（revised-report-{TICKER}.mdとは別ファイルだが、バージョン管理は重要）

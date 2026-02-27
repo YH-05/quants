@@ -11,7 +11,7 @@ Markdown ファイルを pandoc + カスタムテンプレートで Word(.docx) 
 
 ```bash
 # 基本的な変換（同じディレクトリに .docx を生成）
-/md2docx analyst/research/CA_eval_20260226-2021_LLY/04_output/revised-report.md
+/md2docx analyst/research/CA_eval_20260226-2021_LLY/04_output/revised-report-LLY.md
 
 # 出力先を指定
 /md2docx research/DR_stock_20260220_AAPL/04_output/report.md --output /tmp/AAPL_report.docx
