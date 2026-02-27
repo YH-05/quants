@@ -1,3 +1,15 @@
+---
+id: pattern_III
+title: "能力 > 結果（プロセスの評価）"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: high_rating
+confidence_range: "50-70%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 高評価パターンIII: 能力 > 結果（プロセスの評価）
 
 ## 種別: 高評価パターン

@@ -1,3 +1,15 @@
+---
+id: pattern_D
+title: "優位性主張の説明力不足"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: rejection
+confidence_range: "10-30%"
+created: "2026-02-26"
+updated: "2026-02-26"
+---
+
 # 却下パターンD: 優位性主張の説明力不足
 
 ## 種別: 却下パターン

@@ -1,3 +1,15 @@
+---
+id: pattern_F
+title: "戦略を優位性と混同"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: rejection
+confidence_range: "30-50%"
+created: "2026-02-26"
+updated: "2026-02-26"
+---
+
 # 却下パターンF: 戦略を優位性と混同
 
 ## 種別: 却下パターン

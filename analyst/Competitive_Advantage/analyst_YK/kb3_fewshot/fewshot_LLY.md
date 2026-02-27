@@ -1,3 +1,15 @@
+---
+id: fewshot_LLY
+title: "Eli Lilly"
+ticker: LLY
+version: "1.0"
+kb: KB3
+type: fewshot
+avg_score: 47
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # few-shot例: LLY（Eli Lilly）
 
 ## 銘柄概要

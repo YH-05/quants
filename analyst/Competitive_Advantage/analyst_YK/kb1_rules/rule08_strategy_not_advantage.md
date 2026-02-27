@@ -1,3 +1,14 @@
+---
+id: rule_08
+title: "戦略 ≠ 優位性"
+version: "1.0"
+kb: KB1
+type: rule
+category: "優位性の定義"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # ルール8: 戦略 ≠ 優位性
 
 ## カテゴリ: 優位性の定義

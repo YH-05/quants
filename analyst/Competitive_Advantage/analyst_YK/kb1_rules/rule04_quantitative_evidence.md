@@ -1,3 +1,14 @@
+---
+id: rule_04
+title: "説明力が評価の基盤（定量はWANT、説明力がMUST）"
+version: "1.0"
+kb: KB1
+type: rule
+category: "裏付けの質"
+created: "2026-02-26"
+updated: "2026-02-26"
+---
+
 # ルール4: 説明力が評価の基盤（定量はWANT、説明力がMUST）
 
 ## カテゴリ: 裏付けの質

@@ -1,3 +1,15 @@
+---
+id: fewshot_CHD
+title: "Church & Dwight"
+ticker: CHD
+version: "1.0"
+kb: KB3
+type: fewshot
+avg_score: 50
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # few-shot例: CHD（Church & Dwight）
 
 ## 銘柄概要

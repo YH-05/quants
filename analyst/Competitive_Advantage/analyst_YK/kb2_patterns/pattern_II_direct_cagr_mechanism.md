@@ -1,3 +1,15 @@
+---
+id: pattern_II
+title: "直接的なCAGR接続メカニズム"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: high_rating
+confidence_range: "90%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 高評価パターンII: 直接的なCAGR接続メカニズム
 
 ## 種別: 高評価パターン

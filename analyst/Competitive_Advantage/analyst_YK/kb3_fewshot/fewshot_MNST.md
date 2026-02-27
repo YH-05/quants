@@ -1,3 +1,15 @@
+---
+id: fewshot_MNST
+title: "Monster Beverage"
+ticker: MNST
+version: "1.0"
+kb: KB3
+type: fewshot
+avg_score: 40
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # few-shot例: MNST（Monster Beverage）
 
 ## 銘柄概要

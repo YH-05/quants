@@ -1,3 +1,15 @@
+---
+id: pattern_A
+title: "結果を原因と取り違え"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: rejection
+confidence_range: "却下〜30%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 却下パターンA: 結果を原因と取り違え
 
 ## 種別: 却下パターン

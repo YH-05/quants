@@ -1,3 +1,15 @@
+---
+id: fewshot_COST
+title: "Costco"
+ticker: COST
+version: "1.0"
+kb: KB3
+type: fewshot
+avg_score: 39
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # few-shot例: COST（Costco）
 
 ## 銘柄概要

@@ -1,3 +1,15 @@
+---
+id: pattern_E
+title: "事実誤認"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: rejection
+confidence_range: "10%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 却下パターンE: 事実誤認
 
 ## 種別: 却下パターン

@@ -1,3 +1,15 @@
+---
+id: pattern_V
+title: "競合との具体的比較による差別化確認"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: high_rating
+confidence_range: "70%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 高評価パターンV: 競合との具体的比較による差別化確認
 
 ## 種別: 高評価パターン

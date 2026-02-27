@@ -1,3 +1,15 @@
+---
+id: pattern_G
+title: "純粋競合に対する優位性不明"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: rejection
+confidence_range: "50%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 却下パターンG: 純粋競合に対する優位性不明
 
 ## 種別: 却下パターン

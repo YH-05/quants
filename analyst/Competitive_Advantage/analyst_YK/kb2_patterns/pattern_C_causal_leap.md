@@ -1,3 +1,15 @@
+---
+id: pattern_C
+title: "因果関係の混同・拡大解釈"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: rejection
+confidence_range: "20-30%"
+created: "2026-02-26"
+updated: "2026-02-26"
+---
+
 # 却下パターンC: 因果関係の混同・拡大解釈
 
 ## 種別: 却下パターン

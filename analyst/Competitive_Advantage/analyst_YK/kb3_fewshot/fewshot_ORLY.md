@@ -1,3 +1,15 @@
+---
+id: fewshot_ORLY
+title: "O'Reilly Automotive"
+ticker: ORLY
+version: "1.0"
+kb: KB3
+type: fewshot
+avg_score: 63
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # few-shot例: ORLY（O'Reilly Automotive）
 
 ## 銘柄概要

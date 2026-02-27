@@ -1,3 +1,15 @@
+---
+id: pattern_I
+title: "定量的裏付けのある差別化"
+version: "1.0"
+kb: KB2
+type: pattern
+pattern_type: high_rating
+confidence_range: "70-90%"
+created: "2026-02-27"
+updated: "2026-02-27"
+---
+
 # 高評価パターンI: 定量的裏付けのある差別化
 
 ## 種別: 高評価パターン
