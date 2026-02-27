@@ -78,7 +78,7 @@ Step 6: 結果を JSON ファイルに書き出す
 ### dogma.md
 
 ```
-analyst/Competitive_Advantage/analyst_YK/dogma.md
+analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
 ```
 
 ### KB1-T ルール一覧（9ファイル）

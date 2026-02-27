@@ -416,7 +416,7 @@ articles/{article_id}/
 
 ### 競争優位性フレームワーク
 
-- `analyst/Competitive_Advantage/analyst_YK/dogma.md`
+- `analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md`
 
 ## 注意事項
 

@@ -75,7 +75,7 @@ portfolio.json、phase2_scored.json、aggregated_scores.json から必要なデ�
   "sector_allocations": [...],
   "data_sources": {
     "transcript_eval": "KB1-T/KB2-T/KB3-T",
-    "dogma": "analyst_YK/dogma.md"
+    "dogma": "analyst_YK/dogma/dogma_v1.0.md"
   }
 }
 ```

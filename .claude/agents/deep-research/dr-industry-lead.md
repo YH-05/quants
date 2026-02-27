@@ -436,7 +436,7 @@ TaskCreate:
     ## 入力
     - {research_dir}/00_meta/research-meta.json
     - data/config/industry-research-presets.json
-    - analyst/Competitive_Advantage/analyst_YK/dogma.md
+    - analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
 
     ## 出力ファイル
     {research_dir}/01_data_collection/industry-data.json
@@ -1497,6 +1497,6 @@ non_fatal_error_handling:
 - **dr-stock-lead**: `.claude/agents/deep-research/dr-stock-lead.md`（ベースとなるリーダーエージェント）
 - **スキル定義**: `.claude/skills/dr-stock/SKILL.md`
 - **プリセット設定**: `data/config/industry-research-presets.json`
-- **競争優位性フレームワーク**: `analyst/Competitive_Advantage/analyst_YK/dogma.md`
+- **競争優位性フレームワーク**: `analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md`
 - **研究リーダー参考実装**: `.claude/agents/research-lead.md`（finance-research リーダー）
 - **週次レポートリーダー**: `.claude/agents/weekly-report-lead.md`（同規模のリーダー参考実装）

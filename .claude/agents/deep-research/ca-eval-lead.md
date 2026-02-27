@@ -141,7 +141,7 @@ output: |
   - KB1 ルール集: 8ファイル
   - KB2 パターン集: 12ファイル
   - KB3 few-shot集: 5ファイル
-  - Dogma: analyst_YK/dogma.md
+  - Dogma: analyst_YK/dogma/dogma_v1.0.md
 
   この設定でリサーチを開始しますか？
   - 「はい」→ Phase 1 へ進む
@@ -320,7 +320,7 @@ TaskCreate:
 
     ## 入力
     - {research_dir}/00_meta/research-meta.json
-    - analyst/Competitive_Advantage/analyst_YK/dogma.md
+    - analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
 
     ## 出力ファイル
     {research_dir}/01_data_collection/industry-context.json
@@ -345,7 +345,7 @@ TaskCreate:
     - {research_dir}/01_data_collection/sec-data.json（T1, 必須）
     - {research_dir}/01_data_collection/parsed-report.json（T2, 必須）
     - {research_dir}/01_data_collection/industry-context.json（T3, 任意）
-    - analyst/Competitive_Advantage/analyst_YK/dogma.md
+    - analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
     - analyst/Competitive_Advantage/analyst_YK/kb1_rules/ 配下の全8ファイル
     - analyst/Competitive_Advantage/analyst_YK/kb3_fewshot/ 配下の全5ファイル
 
@@ -392,7 +392,7 @@ TaskCreate:
     ## 入力ファイル
     - {research_dir}/02_claims/claims.json（T4, 必須）
     - analyst/Competitive_Advantage/analyst_YK/kb2_patterns/ 配下の全12ファイル
-    - analyst/Competitive_Advantage/analyst_YK/dogma.md
+    - analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
 
     ## 出力ファイル
     {research_dir}/03_verification/pattern-verification.json
@@ -419,7 +419,7 @@ TaskCreate:
     - {research_dir}/02_claims/claims.json（T4, 必須）
     - {research_dir}/03_verification/fact-check.json（T5, 任意）
     - {research_dir}/03_verification/pattern-verification.json（T6, 任意）
-    - analyst/Competitive_Advantage/analyst_YK/dogma.md
+    - analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
     - analyst/Competitive_Advantage/analyst_YK/kb1_rules/*.md（全8ファイル）
 
     ## 出力ファイル
@@ -591,7 +591,7 @@ Task:
        - {research_dir}/01_data_collection/sec-data.json (必須)
        - {research_dir}/01_data_collection/parsed-report.json (必須)
        - {research_dir}/01_data_collection/industry-context.json (任意)
-       - analyst/Competitive_Advantage/analyst_YK/dogma.md
+       - analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
        - analyst/Competitive_Advantage/analyst_YK/kb1_rules/ 配下の全8ファイル
        - analyst/Competitive_Advantage/analyst_YK/kb3_fewshot/ 配下の全5ファイル
     5. 主張抽出（5-15件）+ ルール適用 + KB3キャリブレーション
@@ -1074,5 +1074,5 @@ ca_eval_result:
 - **Dify比較表**: `analyst/design/dify_comparison.md`
 - **Dify詳細設計書**: `analyst/memo/dify_workflow_design.md`
 - **スキル定義**: `.claude/skills/ca-eval/SKILL.md`
-- **Dogma**: `analyst/Competitive_Advantage/analyst_YK/dogma.md`
+- **Dogma**: `analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md`
 - **テンプレート**: `.claude/agents/deep-research/dr-stock-lead.md`（Agent Teams パターンの参考）

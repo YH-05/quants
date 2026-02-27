@@ -283,7 +283,7 @@ research/DR_stock_{YYYYMMDD}_{TICKER}/
 - **スキル定義**: `.claude/skills/dr-stock/SKILL.md`
 - **リーダーエージェント**: `.claude/agents/deep-research/dr-stock-lead.md`
 - **プリセット設定**: `data/config/industry-research-presets.json`
-- **競争優位性フレームワーク**: `analyst/Competitive_Advantage/analyst_YK/dogma.md`
+- **競争優位性フレームワーク**: `analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md`
 - **設計書**: `docs/project/research-restructure/dr-stock-lead-design.md`
 
 ## 注意事項

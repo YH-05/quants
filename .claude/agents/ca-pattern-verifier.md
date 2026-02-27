@@ -22,7 +22,7 @@ Difyワークフローのステップ4（検証/JSON）に相当。**KB2の全12
 4. 以下のファイルを全て Read で読み込み:
    a. {research_dir}/02_claims/claims.json (T4)
    b. analyst/Competitive_Advantage/analyst_YK/kb2_patterns/ 配下の全12ファイル
-   c. analyst/Competitive_Advantage/analyst_YK/dogma.md
+   c. analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
 5. 各 competitive_advantage をパターンと照合
 6. {research_dir}/03_verification/pattern-verification.json に出力
 7. TaskUpdate(status: completed) でタスクを完了
@@ -35,7 +35,7 @@ Difyワークフローのステップ4（検証/JSON）に相当。**KB2の全12
 |---------|------|------|------|
 | claims.json | `{research_dir}/02_claims/claims.json` | Yes | T4 出力 |
 | KB2 パターン集 | `analyst/Competitive_Advantage/analyst_YK/kb2_patterns/*.md` | Yes | 12パターン（却下7 + 高評価5） |
-| Dogma | `analyst/Competitive_Advantage/analyst_YK/dogma.md` | Yes | 確信度スケール参照 |
+| Dogma | `analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md` | Yes | 確信度スケール参照 |
 
 ## パターン一覧
 

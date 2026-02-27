@@ -15,7 +15,7 @@
   "kb_applied": {
     "kb1_rules": ["rule01", "rule02", "rule04", "rule06", "rule07", "rule08", "rule10", "rule11"],
     "kb3_references": ["CHD#1", "CHD#7", "ORLY#2", "ORLY#5", "COST#1", "MNST#1"],
-    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma.md"
+    "dogma": "analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md"
   },
   "cagr_estimate": {
     "current": "10%（2024年6月面談後）",

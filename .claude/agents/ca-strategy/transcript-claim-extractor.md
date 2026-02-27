@@ -80,7 +80,7 @@ Step 6: extraction_output.json に書き出す
 ### dogma.md
 
 ```
-analyst/Competitive_Advantage/analyst_YK/dogma.md
+analyst/Competitive_Advantage/analyst_YK/dogma/dogma_v1.0.md
 ```
 
 ### KB1-T ルール一覧（9ファイル）
