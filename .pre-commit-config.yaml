@@ -12,6 +12,7 @@ repos:
       - id: check-json
         exclude: ^(notebook_sample|src_sample|\.vscode_example)/
       - id: check-added-large-files
+        args: [--maxkb=10240]
       - id: check-merge-conflict
         exclude: ^\.claude/commands/analyze-conflicts\.md$
       - id: debug-statements
