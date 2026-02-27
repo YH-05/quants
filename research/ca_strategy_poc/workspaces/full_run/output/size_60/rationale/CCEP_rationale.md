@@ -19,29 +19,29 @@
 ### Claim 1: competitive_advantage
 
 - **Claim**: 西欧8カ国でのCoca-Cola独占ボトラー権という規制的参入障壁
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 90%
 
 ### Claim 2: competitive_advantage
 
 - **Claim**: Business Transformation Programによる供給チェーン・販売組織の固定費最適化
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 50%
 
 ### Claim 3: competitive_advantage
 
 - **Claim**: Coca-Colaブランドを基盤とした交渉力と「One Brand」戦略による商品力強化
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 4: competitive_advantage
 
 - **Claim**: 欧州複数市場での同時的な価格交渉・商業実行プロセス
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 5: competitive_advantage
 
 - **Claim**: エナジードリンク・スチル飲料ポートフォリオのクロスディストリビューションによる規模優位
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%

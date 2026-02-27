@@ -19,29 +19,29 @@
 ### Claim 1: competitive_advantage
 
 - **Claim**: Nike/Jordan独占パートナーシップスペース（House of Hoops 165店）
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 2: competitive_advantage
 
 - **Claim**: アスレチックカルチャーハブ・全地域ダブルディジット
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 60%
 
 ### Claim 3: competitive_advantage
 
 - **Claim**: 在庫管理・3x Turn・保守的計画×積極的チェイス
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 50%
 
 ### Claim 4: cagr_connection
 
 - **Claim**: カジュアル化トレンド・女性・子供・デジタル多様化
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 60%
 
 ### Claim 5: factual_claim
 
 - **Claim**: Q2 FY2015 決算数値
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 90%

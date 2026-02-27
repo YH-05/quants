@@ -19,29 +19,29 @@
 ### Claim 1: competitive_advantage
 
 - **Claim**: TSMCとの4世代継続独自パートナーシップ・20nmシェア82%
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 2: competitive_advantage
 
 - **Claim**: Zynq All Programmable SoC・ADAS/自動車+40%成長・業界初アーキテクチャ
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 3: competitive_advantage
 
 - **Claim**: 防衛・F-35設計込み・長期プログラムでのスイッチングコスト
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 60%
 
 ### Claim 4: cagr_connection
 
 - **Claim**: ADAS・産業IoT・5Gワイヤレスという3成長市場への優位的ポジショニング
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 60%
 
 ### Claim 5: factual_claim
 
 - **Claim**: Q1 FY2016 決算数値（2015年7月期）
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 90%

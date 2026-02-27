@@ -19,35 +19,35 @@
 ### Claim 1: competitive_advantage
 
 - **Claim**: コロナ・エクストラ 米国輸入ビール第1位（年間1億ケース超）の強力なブランド
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 2: competitive_advantage
 
 - **Claim**: モデロ・エスペシャル +20%成長 - 米国主要ビールブランド中で最速成長
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 3: competitive_advantage
 
 - **Claim**: Nava醸造所10M→20M hL拡張計画 - 規模拡大によるコスト優位性
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 60%
 
 ### Claim 4: competitive_advantage
 
 - **Claim**: コロナ・モデロブランド米国永続的輸入・販売独占権
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 5: cagr_connection
 
 - **Claim**: 【CAGRリンク】コロナ・モデロブランド力→業界成長85%取り込み→10年10% CAGR
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 6: competitive_advantage
 
 - **Claim**: プレミアムインポート・クラフトセグメント特化のCounter-Positioning
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 40%

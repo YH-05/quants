@@ -19,29 +19,29 @@
 ### Claim 1: competitive_advantage
 
 - **Claim**: .com/.netドメイン名権威DNSレジストリ契約独占 - 17年連続無中断稼働
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 2: competitive_advantage
 
 - **Claim**: 130M超ドメイン規模によるスケールエコノミー - 60%超の営業利益率
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 50%
 
 ### Claim 3: cagr_connection
 
 - **Claim**: 【CAGRリンク】.com/.net独占契約→持続的売上成長のメカニズム
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 70%
 
 ### Claim 4: competitive_advantage
 
 - **Claim**: 17年間100%稼働率維持のDNSインフラ運営プロセス能力
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 60%
 
 ### Claim 5: competitive_advantage
 
 - **Claim**: 72%超ドメイン名更新率 - スイッチングコストの間接的証拠
-- **Evidence**: 
+- **Evidence**:
 - **Final Confidence**: 50%
