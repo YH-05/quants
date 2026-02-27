@@ -16,24 +16,47 @@ LOG_DIR : str, optional
     Log directory (default: logs/)
 PROJECT_ENV : str, optional
     Project environment (default: development)
+DATA_DIR : str, optional
+    Data root directory (default: data/)
+RESEARCH_DIR : str, optional
+    Research workspace directory (default: research/)
 """
 
 from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, ClassVar
+from pathlib import Path
+from typing import ClassVar
 
 from .settings import load_project_env
-
-if TYPE_CHECKING:
-    from pathlib import Path
 
 # AIDEV-NOTE: frozen dataclass を使用することで、設定の不変性を保証する。
 # インスタンス生成後はフィールドへの代入が FrozenInstanceError を引き起こす。
 
 _VALID_LOG_LEVELS: tuple[str, ...] = ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
 _VALID_LOG_FORMATS: tuple[str, ...] = ("json", "console")
+
+
+def _find_project_root() -> Path:
+    """pyproject.toml を目印にプロジェクトルートを検索する.
+
+    Returns
+    -------
+    Path
+        プロジェクトルートの絶対パス。
+
+    Raises
+    ------
+    FileNotFoundError
+        pyproject.toml が見つからない場合。
+    """
+    current = Path(__file__).resolve().parent
+    for parent in [current, *current.parents]:
+        if (parent / "pyproject.toml").exists():
+            return parent
+    msg = "Project root not found (pyproject.toml not found in parent directories)"
+    raise FileNotFoundError(msg)
 
 
 @dataclass(frozen=True)
@@ -57,6 +80,10 @@ class ProjectConfig:
         ログディレクトリのパス。デフォルトは 'logs/'。
     project_env : str
         プロジェクト環境。デフォルトは 'development'。
+    data_dir : str
+        データルートディレクトリ。デフォルトは 'data/'。
+    research_dir : str
+        リサーチワークスペースディレクトリ。デフォルトは 'research/'。
 
     Examples
     --------
@@ -75,6 +102,11 @@ class ProjectConfig:
     Traceback (most recent call last):
         ...
     dataclasses.FrozenInstanceError: cannot assign to field 'log_level'
+
+    >>> # notebook など任意の CWD から絶対パスを取得
+    >>> config = ProjectConfig.from_defaults()
+    >>> config.data_path.is_absolute()
+    True
     """
 
     # AIDEV-NOTE: ClassVar はデータクラスのフィールドとして扱われない。
@@ -87,6 +119,8 @@ class ProjectConfig:
     log_format: str = "console"
     log_dir: str = "logs/"
     project_env: str = "development"
+    data_dir: str = "data/"
+    research_dir: str = "research/"
 
     def __post_init__(self) -> None:
         """フィールドのバリデーションを実行する.
@@ -121,6 +155,88 @@ class ProjectConfig:
                 f"Valid values: {', '.join(_VALID_LOG_FORMATS)}"
             )
             raise ValueError(msg)
+
+    def _resolve_dir(self, dir_str: str) -> Path:
+        """ディレクトリパスを絶対パスに解決する.
+
+        絶対パスはそのまま返し、相対パスはプロジェクトルート起点で解決する。
+        notebook など CWD がプロジェクトルート以外の場合でも正しく動作する。
+
+        Parameters
+        ----------
+        dir_str : str
+            解決対象のディレクトリパス文字列。
+
+        Returns
+        -------
+        Path
+            絶対パスに解決された Path オブジェクト。
+        """
+        p = Path(dir_str)
+        if p.is_absolute():
+            return p
+        return _find_project_root() / p
+
+    def get_path(self, env_var: str, default: str = "") -> Path:
+        """任意の環境変数からパスを取得し、絶対パスに解決する.
+
+        config.py を書き換えずに .env へ環境変数を追加するだけで
+        新しいフォルダパスを利用できる汎用アクセサ。
+
+        Parameters
+        ----------
+        env_var : str
+            環境変数名（例: "ARTICLES_DIR"）。
+        default : str
+            環境変数が未設定の場合のデフォルト値。空文字の場合は ValueError を送出する。
+
+        Returns
+        -------
+        Path
+            絶対パスに解決された Path オブジェクト。
+
+        Raises
+        ------
+        ValueError
+            環境変数が未設定かつ default が空文字の場合。
+
+        Examples
+        --------
+        >>> import os
+        >>> os.environ["ARTICLES_DIR"] = "articles/"
+        >>> config = ProjectConfig.from_defaults()
+        >>> config.get_path("ARTICLES_DIR").is_absolute()
+        True
+        """
+        value = os.environ.get(env_var, default)
+        if not value:
+            msg = (
+                f"Environment variable {env_var!r} is not set and no default provided."
+            )
+            raise ValueError(msg)
+        return self._resolve_dir(value)
+
+    @property
+    def data_path(self) -> Path:
+        """データルートディレクトリの絶対パス.
+
+        Returns
+        -------
+        Path
+            data_dir をプロジェクトルート起点で解決した絶対パス。
+        """
+        return self._resolve_dir(self.data_dir)
+
+    @property
+    def research_path(self) -> Path:
+        """リサーチワークスペースディレクトリの絶対パス.
+
+        Returns
+        -------
+        Path
+            research_dir をプロジェクトルート起点で解決した絶対パス。
+        """
+        return self._resolve_dir(self.research_dir)
 
     @classmethod
     def from_env(cls, env_path: Path | None = None) -> "ProjectConfig":
@@ -161,6 +277,8 @@ class ProjectConfig:
             log_format=os.environ.get("LOG_FORMAT", "console"),
             log_dir=os.environ.get("LOG_DIR", "logs/"),
             project_env=os.environ.get("PROJECT_ENV", "development"),
+            data_dir=os.environ.get("DATA_DIR", "data/"),
+            research_dir=os.environ.get("RESEARCH_DIR", "research/"),
         )
 
     @classmethod
@@ -189,6 +307,8 @@ class ProjectConfig:
             log_format="console",
             log_dir="logs/",
             project_env="development",
+            data_dir="data/",
+            research_dir="research/",
         )
 
 

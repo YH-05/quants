@@ -264,7 +264,7 @@ def map_portfolio_to_bbg(
 
 def compute_daily_returns(prices: pd.DataFrame) -> pd.DataFrame:
     """Compute daily returns from prices, capped at RETURN_CAP."""
-    returns = prices.pct_change().iloc[1:]
+    returns = prices.ffill().pct_change().iloc[1:]
     returns = returns.clip(lower=-RETURN_CAP, upper=RETURN_CAP)
     return returns
 

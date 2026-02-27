@@ -10,7 +10,7 @@
 
 import marimo
 
-__generated_with = "0.19.4"
+__generated_with = "0.19.6"
 app = marimo.App(width="medium")
 
 
@@ -64,7 +64,9 @@ def _(mo):
 @app.cell
 def _(Path, json, mo):
     """Load backtest results JSON."""
-    _results_path = Path("../research/ca_strategy_poc/reports/buyhold_backtest_results.json")
+    _results_path = Path(
+        "../research/ca_strategy_poc/reports/buyhold_backtest_results.json"
+    )
 
     if not _results_path.exists():
         mo.stop(
@@ -90,12 +92,12 @@ def _(Path, json, mo):
 
     | Item | Value |
     |------|-------|
-    | Methodology | {_meta['methodology']} |
-    | Period | {_meta['start_date']} ~ {_meta['end_date']} |
+    | Methodology | {_meta["methodology"]} |
+    | Period | {_meta["start_date"]} ~ {_meta["end_date"]} |
     | Risk-Free Rate | {_rf_source} |
     | Risk-Free Rate (Ann.) | {_rf_ann:.2%} |
-    | Return Cap | ±{_meta['return_cap']:.0%} |
-    | Computed At | {_meta['computed_at'][:19]} |
+    | Return Cap | ±{_meta["return_cap"]:.0%} |
+    | Computed At | {_meta["computed_at"][:19]} |
     """
     )
     return (backtest_results,)
@@ -104,7 +106,9 @@ def _(Path, json, mo):
 @app.cell
 def _(Path, json, mo):
     """Load cumulative returns time series."""
-    _cum_path = Path("../research/ca_strategy_poc/reports/buyhold_cumulative_returns.json")
+    _cum_path = Path(
+        "../research/ca_strategy_poc/reports/buyhold_cumulative_returns.json"
+    )
 
     if not _cum_path.exists():
         mo.stop(
@@ -121,9 +125,9 @@ def _(Path, json, mo):
 
     | Portfolio | Data Points |
     |-----------|-------------|
-    | 30-stock | {len(cumulative_data.get('30', {}).get('dates', []))} days |
-    | 60-stock | {len(cumulative_data.get('60', {}).get('dates', []))} days |
-    | 90-stock | {len(cumulative_data.get('90', {}).get('dates', []))} days |
+    | 30-stock | {len(cumulative_data.get("30", {}).get("dates", []))} days |
+    | 60-stock | {len(cumulative_data.get("60", {}).get("dates", []))} days |
+    | 90-stock | {len(cumulative_data.get("90", {}).get("dates", []))} days |
     """
     )
     return (cumulative_data,)
@@ -153,31 +157,30 @@ def _(BENCHMARK, PORTFOLIO_SIZE, backtest_results, mo):
 
     | Item | Value |
     |------|-------|
-    | Total Tickers | {_comp['total_tickers']} |
-    | Data Available | {_comp['data_available']} |
-    | Data Missing | {_comp['data_missing']} |
-    | US Tickers | {_comp['us_tickers']} ({_comp['us_weight']:.1%}) |
-    | Non-US Tickers | {_comp['non_us_tickers']} ({_comp['non_us_weight']:.1%}) |
+    | Total Tickers | {_comp["total_tickers"]} |
+    | Data Available | {_comp["data_available"]} |
+    | Data Missing | {_comp["data_missing"]} |
+    | US Tickers | {_comp["us_tickers"]} ({_comp["us_weight"]:.1%}) |
+    | Non-US Tickers | {_comp["non_us_tickers"]} ({_comp["non_us_weight"]:.1%}) |
 
-    ### Performance Metrics ({_perf['n_years']:.1f} years, {_perf['n_days']} trading days)
+    ### Performance Metrics ({_perf["n_years"]:.1f} years, {_perf["n_days"]} trading days)
 
     | Metric | Portfolio | Benchmark | Active |
     |--------|:-:|:-:|:-:|
-    | **Cumulative Return** | {_perf['cumulative_return']:.2f}% | {_perf['benchmark_cum_return']:.2f}% | {_perf['cumulative_return'] - _perf['benchmark_cum_return']:+.2f}% |
-    | **Annualized Return** | {_perf['annualized_return']:.2f}% | {_perf['benchmark_ann_return']:.2f}% | {_perf['annualized_return'] - _perf['benchmark_ann_return']:+.2f}% |
-    | **Volatility** | {_perf['volatility']:.2f}% | — | |
-    | **Sharpe Ratio** | {_perf['sharpe_ratio']:.3f} | — | |
-    | **Sortino Ratio** | {_perf['sortino_ratio']:.3f} | — | |
-    | **Max Drawdown** | {_perf['max_drawdown']:.2f}% | — | |
-    | **Calmar Ratio** | {_perf['calmar_ratio']:.3f} | — | |
-    | **Beta** | {_perf['beta']:.3f} | 1.0 | |
-    | **Alpha (CAPM)** | — | — | **{_perf['alpha_capm']:+.2f}%** |
-    | **Tracking Error** | — | — | {_perf['tracking_error']:.2f}% |
-    | **Information Ratio** | — | — | {_perf['information_ratio']:.3f} |
-    | **Win Rate (日次)** | {_perf['win_rate']:.2f}% | — | |
+    | **Cumulative Return** | {_perf["cumulative_return"]:.2f}% | {_perf["benchmark_cum_return"]:.2f}% | {_perf["cumulative_return"] - _perf["benchmark_cum_return"]:+.2f}% |
+    | **Annualized Return** | {_perf["annualized_return"]:.2f}% | {_perf["benchmark_ann_return"]:.2f}% | {_perf["annualized_return"] - _perf["benchmark_ann_return"]:+.2f}% |
+    | **Volatility** | {_perf["volatility"]:.2f}% | — | |
+    | **Sharpe Ratio** | {_perf["sharpe_ratio"]:.3f} | — | |
+    | **Sortino Ratio** | {_perf["sortino_ratio"]:.3f} | — | |
+    | **Max Drawdown** | {_perf["max_drawdown"]:.2f}% | — | |
+    | **Calmar Ratio** | {_perf["calmar_ratio"]:.3f} | — | |
+    | **Beta** | {_perf["beta"]:.3f} | 1.0 | |
+    | **Alpha (CAPM)** | — | — | **{_perf["alpha_capm"]:+.2f}%** |
+    | **Tracking Error** | — | — | {_perf["tracking_error"]:.2f}% |
+    | **Information Ratio** | — | — | {_perf["information_ratio"]:.3f} |
+    | **Win Rate (日次)** | {_perf["win_rate"]:.2f}% | — | |
     """
     )
-    return
 
 
 @app.cell
@@ -211,7 +214,6 @@ def _(backtest_results, mo, pd):
 @app.cell
 def _(comparison_df, mo):
     mo.ui.table(comparison_df)
-    return
 
 
 @app.cell
@@ -275,14 +277,12 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, pd):
     )
 
     mo.ui.plotly(fig_cum)
-    return (fig_cum,)
+    return (go,)
 
 
 @app.cell
-def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
+def _(PORTFOLIO_SIZE, cumulative_data, go, mo, np, pd):
     """Drawdown chart."""
-    import plotly.graph_objects as go
-
     _size = PORTFOLIO_SIZE.value
     _data = cumulative_data[_size]
     _dates = pd.to_datetime(_data["dates"])
@@ -294,7 +294,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
 
     _dd_port = _drawdown_from_cum(_data["portfolio"])
     _dd_msci = _drawdown_from_cum(_data["msci_kokusai"])
-
     fig_dd = go.Figure()
     fig_dd.add_trace(
         go.Scatter(
@@ -321,33 +320,27 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         template="plotly_white",
         height=400,
     )
-
     mo.ui.plotly(fig_dd)
-    return (fig_dd,)
 
 
 @app.cell
-def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
+def _(PORTFOLIO_SIZE, cumulative_data, go, mo, np, pd):
     """Rolling 1-Year metrics (Return, Volatility, Sharpe)."""
-    import plotly.graph_objects as go
     from plotly.subplots import make_subplots
 
     _size = PORTFOLIO_SIZE.value
     _data = cumulative_data[_size]
     _dates = pd.to_datetime(_data["dates"])
-
-    # Reconstruct daily returns from cumulative
     _cum = np.array(_data["portfolio"])
     _daily_ret = pd.Series(np.diff(_cum) / _cum[:-1], index=_dates[1:])
-
     _w = 252
+    # Reconstruct daily returns from cumulative
     _rf = 0.045
     _rolling_ret = _daily_ret.rolling(_w).mean() * 252 * 100
     _rolling_vol = _daily_ret.rolling(_w).std() * np.sqrt(252) * 100
     _rolling_sharpe = (_daily_ret.rolling(_w).mean() * 252 - _rf) / (
         _daily_ret.rolling(_w).std() * np.sqrt(252)
     )
-
     fig_rolling = make_subplots(
         rows=3,
         cols=1,
@@ -359,7 +352,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         ],
         vertical_spacing=0.08,
     )
-
     fig_rolling.add_trace(
         go.Scatter(
             x=_rolling_ret.index,
@@ -371,7 +363,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         col=1,
     )
     fig_rolling.add_hline(y=0, line_dash="dash", line_color="gray", row=1, col=1)
-
     fig_rolling.add_trace(
         go.Scatter(
             x=_rolling_vol.index,
@@ -382,7 +373,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         row=2,
         col=1,
     )
-
     fig_rolling.add_trace(
         go.Scatter(
             x=_rolling_sharpe.index,
@@ -394,40 +384,32 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         col=1,
     )
     fig_rolling.add_hline(y=0, line_dash="dash", line_color="gray", row=3, col=1)
-
     fig_rolling.update_layout(
         height=800,
         template="plotly_white",
         showlegend=False,
         title_text=f"Rolling 1-Year Metrics: {_size}-Stock Portfolio (Buy-and-Hold)",
     )
-
     mo.ui.plotly(fig_rolling)
-    return (fig_rolling,)
+    return (make_subplots,)
 
 
 @app.cell
-def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
+def _(PORTFOLIO_SIZE, cumulative_data, go, make_subplots, mo, np, pd):
     """Rolling 1-Year active return vs MSCI Kokusai."""
-    import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
-
     _size = PORTFOLIO_SIZE.value
     _data = cumulative_data[_size]
     _dates = pd.to_datetime(_data["dates"])
-
-    # Daily returns from cumulative
     _cum_p = np.array(_data["portfolio"])
     _cum_b = np.array(_data["msci_kokusai"])
     _dr_p = pd.Series(np.diff(_cum_p) / _cum_p[:-1], index=_dates[1:])
     _dr_b = pd.Series(np.diff(_cum_b) / _cum_b[:-1], index=_dates[1:])
+    # Daily returns from cumulative
     _active = _dr_p - _dr_b
-
     _w = 252
     _rolling_active = _active.rolling(_w).mean() * 252 * 100
     _rolling_te = _active.rolling(_w).std() * np.sqrt(252) * 100
     _rolling_ir = _rolling_active / _rolling_te
-
     fig_active = make_subplots(
         rows=3,
         cols=1,
@@ -439,7 +421,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         ],
         vertical_spacing=0.08,
     )
-
     fig_active.add_trace(
         go.Scatter(
             x=_rolling_active.index,
@@ -451,7 +432,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         col=1,
     )
     fig_active.add_hline(y=0, line_dash="dash", line_color="gray", row=1, col=1)
-
     fig_active.add_trace(
         go.Scatter(
             x=_rolling_te.index,
@@ -462,7 +442,6 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         row=2,
         col=1,
     )
-
     fig_active.add_trace(
         go.Scatter(
             x=_rolling_ir.index,
@@ -474,16 +453,13 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         col=1,
     )
     fig_active.add_hline(y=0, line_dash="dash", line_color="gray", row=3, col=1)
-
     fig_active.update_layout(
         height=800,
         template="plotly_white",
         showlegend=False,
         title_text=f"Rolling 1-Year Active Performance vs MSCI Kokusai: {_size}-Stock",
     )
-
     mo.ui.plotly(fig_active)
-    return (fig_active,)
 
 
 @app.cell
@@ -503,10 +479,10 @@ def _(PORTFOLIO_SIZE, backtest_results, mo):
 
     | Metric | Initial | Final | Change |
     |--------|:-:|:-:|:-:|
-    | **HHI (集中度)** | {_drift['initial_hhi']:.4f} | {_drift['final_hhi']:.4f} | ×{_hhi_change:.1f} |
-    | **最大ウェイト** | {_drift['initial_max_weight']:.1%} | {_drift['final_max_weight']:.1%} | |
-    | **Top 5 ウェイト** | {_drift['initial_top5_weight']:.1%} | {_drift['final_top5_weight']:.1%} | |
-    | **最大ドリフト銘柄** | — | {_drift['max_drift_ticker']} | +{_drift['max_drift_value']:.1%} |
+    | **HHI (集中度)** | {_drift["initial_hhi"]:.4f} | {_drift["final_hhi"]:.4f} | ×{_hhi_change:.1f} |
+    | **最大ウェイト** | {_drift["initial_max_weight"]:.1%} | {_drift["final_max_weight"]:.1%} | |
+    | **Top 5 ウェイト** | {_drift["initial_top5_weight"]:.1%} | {_drift["final_top5_weight"]:.1%} | |
+    | **最大ドリフト銘柄** | — | {_drift["max_drift_ticker"]} | +{_drift["max_drift_value"]:.1%} |
 
     ### HHI の解釈
     - **< 0.01**: 高度に分散
@@ -514,13 +490,12 @@ def _(PORTFOLIO_SIZE, backtest_results, mo):
     - **0.15 ~ 0.25**: 中程度の集中
     - **> 0.25**: 高度な集中
 
-    **所見**: {_size}-stock ポートフォリオの HHI は {_drift['initial_hhi']:.4f} → {_drift['final_hhi']:.4f} へ
-    ×{_hhi_change:.1f} 倍に上昇。{_drift['max_drift_ticker']} が最大ドリフト
-    （初期 → 最終: +{_drift['max_drift_value']:.1%}）を記録。
-    Top 5 銘柄のウェイトが全体の {_drift['final_top5_weight']:.1%} を占める状態に。
+    **所見**: {_size}-stock ポートフォリオの HHI は {_drift["initial_hhi"]:.4f} → {_drift["final_hhi"]:.4f} へ
+    ×{_hhi_change:.1f} 倍に上昇。{_drift["max_drift_ticker"]} が最大ドリフト
+    （初期 → 最終: +{_drift["max_drift_value"]:.1%}）を記録。
+    Top 5 銘柄のウェイトが全体の {_drift["final_top5_weight"]:.1%} を占める状態に。
     """
     )
-    return
 
 
 @app.cell
@@ -542,7 +517,9 @@ def _(PORTFOLIO_SIZE, Path, mo, pd):
     _weights_path = _weights_dir / _weights_file
 
     if not _price_path.exists() or not _weights_path.exists():
-        mo.stop(True, mo.md(f"**Error**: {_size}-stock のデータファイルが見つかりません。"))
+        mo.stop(
+            True, mo.md(f"**Error**: {_size}-stock のデータファイルが見つかりません。")
+        )
 
     _close = pd.read_parquet(_price_path)
     _weights_df = pd.read_csv(_weights_path)
@@ -552,7 +529,7 @@ def _(PORTFOLIO_SIZE, Path, mo, pd):
 
     _ann = 252
     _daily = _close.ffill().pct_change().iloc[1:].clip(-0.5, 0.5)
-    _w_map = dict(zip(_weights_df["ticker"], _weights_df["weight"]))
+    _w_map = dict(zip(_weights_df["ticker"], _weights_df["weight"], strict=False))
 
     _stock_rows = []
     for _col in _daily.columns:
@@ -581,9 +558,13 @@ def _(PORTFOLIO_SIZE, Path, mo, pd):
     # Normalize final weights
     _total_final = sum(r["Final Value (relative)"] for r in _stock_rows)
     for r in _stock_rows:
-        r["Final Weight (%)"] = round(r["Final Value (relative)"] / _total_final * 100, 2)
+        r["Final Weight (%)"] = round(
+            r["Final Value (relative)"] / _total_final * 100, 2
+        )
 
-    stock_stats = pd.DataFrame(_stock_rows).sort_values("Final Weight (%)", ascending=False)
+    stock_stats = pd.DataFrame(_stock_rows).sort_values(
+        "Final Weight (%)", ascending=False
+    )
     stock_stats = stock_stats.drop(columns=["Final Value (relative)"])
 
     mo.md(f"### Per-Stock Statistics: {_size}-Stock Portfolio")
@@ -593,23 +574,16 @@ def _(PORTFOLIO_SIZE, Path, mo, pd):
 @app.cell
 def _(mo, stock_stats):
     mo.ui.table(stock_stats.reset_index(drop=True))
-    return
 
 
 @app.cell
-def _(mo, np, pd, stock_stats):
+def _(go, mo, pd, stock_stats):
     """Top/Bottom performers chart."""
-    import plotly.graph_objects as go
-
     _sorted = stock_stats.sort_values("Ann. Return (%)", ascending=True)
     _top10 = _sorted.tail(10)
     _bot10 = _sorted.head(10)
     _combined = pd.concat([_bot10, _top10])
-
-    _colors = [
-        "#dc2626" if v < 0 else "#059669" for v in _combined["Ann. Return (%)"]
-    ]
-
+    _colors = ["#dc2626" if v < 0 else "#059669" for v in _combined["Ann. Return (%)"]]
     fig_performers = go.Figure()
     fig_performers.add_trace(
         go.Bar(
@@ -628,16 +602,12 @@ def _(mo, np, pd, stock_stats):
         template="plotly_white",
         height=500,
     )
-
     mo.ui.plotly(fig_performers)
-    return (fig_performers,)
 
 
 @app.cell
-def _(mo, stock_stats):
+def _(go, mo, stock_stats):
     """Weight drift scatter: Initial vs Final weight."""
-    import plotly.graph_objects as go
-
     fig_drift = go.Figure()
     fig_drift.add_trace(
         go.Scatter(
@@ -656,11 +626,8 @@ def _(mo, stock_stats):
             },
         )
     )
-
-    # 45-degree reference line
     _max_w = max(
-        stock_stats["Initial Weight (%)"].max(),
-        stock_stats["Final Weight (%)"].max(),
+        stock_stats["Initial Weight (%)"].max(), stock_stats["Final Weight (%)"].max()
     )
     fig_drift.add_trace(
         go.Scatter(
@@ -671,7 +638,6 @@ def _(mo, stock_stats):
             showlegend=False,
         )
     )
-
     fig_drift.update_layout(
         title="Weight Drift: Initial vs Final (Buy-and-Hold)",
         xaxis_title="Initial Weight (%)",
@@ -679,9 +645,8 @@ def _(mo, stock_stats):
         template="plotly_white",
         height=500,
     )
-
+    # 45-degree reference line
     mo.ui.plotly(fig_drift)
-    return (fig_drift,)
 
 
 @app.cell
@@ -728,27 +693,25 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
 @app.cell
 def _(mo, yearly_df):
     mo.ui.table(yearly_df)
-    return
 
 
 @app.cell
-def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
+def _(PORTFOLIO_SIZE, cumulative_data, go, mo, np, pd):
     """Yearly returns bar chart."""
-    import plotly.graph_objects as go
-
     _size = PORTFOLIO_SIZE.value
     _data = cumulative_data[_size]
     _dates = pd.to_datetime(_data["dates"])
-
     _cum_p = np.array(_data["portfolio"])
     _cum_msci = np.array(_data["msci_kokusai"])
     _dr_p = pd.Series(np.diff(_cum_p) / _cum_p[:-1], index=_dates[1:])
     _dr_msci = pd.Series(np.diff(_cum_msci) / _cum_msci[:-1], index=_dates[1:])
-
     _years = sorted(_dr_p.index.year.unique())
-    _port_yearly = [float((1 + _dr_p[_dr_p.index.year == y]).prod() - 1) * 100 for y in _years]
-    _msci_yearly = [float((1 + _dr_msci[_dr_msci.index.year == y]).prod() - 1) * 100 for y in _years]
-
+    _port_yearly = [
+        float((1 + _dr_p[_dr_p.index.year == y]).prod() - 1) * 100 for y in _years
+    ]
+    _msci_yearly = [
+        float((1 + _dr_msci[_dr_msci.index.year == y]).prod() - 1) * 100 for y in _years
+    ]
     fig_yearly_bar = go.Figure()
     fig_yearly_bar.add_trace(
         go.Bar(
@@ -775,9 +738,7 @@ def _(PORTFOLIO_SIZE, cumulative_data, mo, np, pd):
         template="plotly_white",
         height=400,
     )
-
     mo.ui.plotly(fig_yearly_bar)
-    return (fig_yearly_bar,)
 
 
 @app.cell
@@ -815,19 +776,14 @@ def _(backtest_results, mo):
             _lines.append(f"| **{_label}** | {_vals[0]} | {_vals[1]} | {_vals[2]} |")
 
     mo.md("## Cross-Portfolio Benchmark Comparison\n" + "\n".join(_lines))
-    return
 
 
 @app.cell
-def _(cumulative_data, mo, pd):
+def _(cumulative_data, go, mo, pd):
     """All portfolios cumulative returns on one chart."""
-    import plotly.graph_objects as go
-
     fig_all = go.Figure()
-
     _colors = {"30": "#2563eb", "60": "#059669", "90": "#7c3aed"}
     _dash = {"30": "solid", "60": "dash", "90": "dot"}
-
     for _size in ["30", "60", "90"]:
         _data = cumulative_data[_size]
         _dates = pd.to_datetime(_data["dates"])
@@ -839,8 +795,6 @@ def _(cumulative_data, mo, pd):
                 line={"color": _colors[_size], "dash": _dash[_size], "width": 2.5},
             )
         )
-
-    # Add MSCI Kokusai (from 30-stock data, same for all)
     _data30 = cumulative_data["30"]
     _dates30 = pd.to_datetime(_data30["dates"])
     fig_all.add_trace(
@@ -851,7 +805,6 @@ def _(cumulative_data, mo, pd):
             line={"color": "#dc2626", "dash": "dash", "width": 2},
         )
     )
-
     fig_all.update_layout(
         title="All Portfolios vs MSCI Kokusai (Buy-and-Hold)",
         xaxis_title="Date",
@@ -860,9 +813,8 @@ def _(cumulative_data, mo, pd):
         height=550,
         legend={"yanchor": "top", "y": 0.99, "xanchor": "left", "x": 0.01},
     )
-
+    # Add MSCI Kokusai (from 30-stock data, same for all)
     mo.ui.plotly(fig_all)
-    return (fig_all,)
 
 
 @app.cell
@@ -894,17 +846,16 @@ def _(backtest_results, mo):
 
     | Metric | 30-stock | 60-stock | 90-stock |
     |--------|:-:|:-:|:-:|
-    | **Initial HHI** | {_rows[0]['Initial HHI']} | {_rows[1]['Initial HHI']} | {_rows[2]['Initial HHI']} |
-    | **Final HHI** | {_rows[0]['Final HHI']} | {_rows[1]['Final HHI']} | {_rows[2]['Final HHI']} |
-    | **HHI 変化** | {_rows[0]['HHI Change']} | {_rows[1]['HHI Change']} | {_rows[2]['HHI Change']} |
-    | **最大ドリフト** | {_rows[0]['Max Drift']} | {_rows[1]['Max Drift']} | {_rows[2]['Max Drift']} |
-    | **Initial Max Weight** | {_rows[0]['Initial Max Wt']} | {_rows[1]['Initial Max Wt']} | {_rows[2]['Initial Max Wt']} |
-    | **Final Max Weight** | {_rows[0]['Final Max Wt']} | {_rows[1]['Final Max Wt']} | {_rows[2]['Final Max Wt']} |
-    | **Initial Top5** | {_rows[0]['Initial Top5']} | {_rows[1]['Initial Top5']} | {_rows[2]['Initial Top5']} |
-    | **Final Top5** | {_rows[0]['Final Top5']} | {_rows[1]['Final Top5']} | {_rows[2]['Final Top5']} |
+    | **Initial HHI** | {_rows[0]["Initial HHI"]} | {_rows[1]["Initial HHI"]} | {_rows[2]["Initial HHI"]} |
+    | **Final HHI** | {_rows[0]["Final HHI"]} | {_rows[1]["Final HHI"]} | {_rows[2]["Final HHI"]} |
+    | **HHI 変化** | {_rows[0]["HHI Change"]} | {_rows[1]["HHI Change"]} | {_rows[2]["HHI Change"]} |
+    | **最大ドリフト** | {_rows[0]["Max Drift"]} | {_rows[1]["Max Drift"]} | {_rows[2]["Max Drift"]} |
+    | **Initial Max Weight** | {_rows[0]["Initial Max Wt"]} | {_rows[1]["Initial Max Wt"]} | {_rows[2]["Initial Max Wt"]} |
+    | **Final Max Weight** | {_rows[0]["Final Max Wt"]} | {_rows[1]["Final Max Wt"]} | {_rows[2]["Final Max Wt"]} |
+    | **Initial Top5** | {_rows[0]["Initial Top5"]} | {_rows[1]["Initial Top5"]} | {_rows[2]["Initial Top5"]} |
+    | **Final Top5** | {_rows[0]["Final Top5"]} | {_rows[1]["Final Top5"]} | {_rows[2]["Final Top5"]} |
     """
     )
-    return
 
 
 @app.cell
@@ -916,8 +867,12 @@ def _(backtest_results, mo):
         _comp = backtest_results["portfolios"][_size]["composition"]
         _missing = _comp["missing_tickers"]
         _lines.append(f"### {_size}-Stock Portfolio")
-        _lines.append(f"- Data Available: **{_comp['data_available']}** / {_comp['total_tickers']}")
-        _lines.append(f"- US: {_comp['us_tickers']} ({_comp['us_weight']:.1%}), Non-US: {_comp['non_us_tickers']} ({_comp['non_us_weight']:.1%})")
+        _lines.append(
+            f"- Data Available: **{_comp['data_available']}** / {_comp['total_tickers']}"
+        )
+        _lines.append(
+            f"- US: {_comp['us_tickers']} ({_comp['us_weight']:.1%}), Non-US: {_comp['non_us_tickers']} ({_comp['non_us_weight']:.1%})"
+        )
         if _missing:
             _lines.append(f"- Missing ({len(_missing)}): `{'`, `'.join(_missing)}`")
         else:
@@ -926,19 +881,18 @@ def _(backtest_results, mo):
 
     _lines.append(
         """
-### Missing Tickers の主な原因
+    ### Missing Tickers の主な原因
 
-| カテゴリ | 銘柄例 | 原因 |
-|----------|--------|------|
-| M&A/上場廃止 (US) | ALXN, CELG, XLNX, RTN, STJ | 買収・合併により上場廃止 |
-| 非US (欧州) | NESN, SCMN, BAYN, COLOB | スイス・デンマーク等のティッカー形式不一致 |
-| 非US (その他) | ITUB4, HNR1, 005930 | ブラジル・ドイツ・韓国等の特殊形式 |
-| ティッカー変更 | FL, KBC, MHFI | yfinance でのデータ取得不可 |
-"""
+    | カテゴリ | 銘柄例 | 原因 |
+    |----------|--------|------|
+    | M&A/上場廃止 (US) | ALXN, CELG, XLNX, RTN, STJ | 買収・合併により上場廃止 |
+    | 非US (欧州) | NESN, SCMN, BAYN, COLOB | スイス・デンマーク等のティッカー形式不一致 |
+    | 非US (その他) | ITUB4, HNR1, 005930 | ブラジル・ドイツ・韓国等の特殊形式 |
+    | ティッカー変更 | FL, KBC, MHFI | yfinance でのデータ取得不可 |
+    """
     )
 
     mo.md("\n".join(_lines))
-    return
 
 
 @app.cell
@@ -998,7 +952,6 @@ def _(mo):
     | S | 2020-04-01 | T-Mobile との合併 |
     """
     )
-    return
 
 
 if __name__ == "__main__":
