@@ -6,6 +6,13 @@ app = marimo.App()
 
 @app.cell
 def _():
+    import marimo as mo
+
+    return (mo,)
+
+
+@app.cell
+def _():
     from __future__ import annotations
 
     import json
@@ -15,6 +22,7 @@ def _():
 
     import numpy as np
     import pandas as pd
+    import plotly.graph_objects as go
     from IPython.display import display
 
     # プロジェクトルートを sys.path に追加（notebook/LIST_Transcript/ の2つ上）
@@ -56,19 +64,55 @@ def _():
     MSCI_KOKUSAI_COL = "MXKO INDEX"
     MSCI_KOKUSAI_EW_COL = "MXKOEW INDEX"
     MSCI_WORLD_COL = "MXWDJ INDEX"
-    return bt, display, pd
+    return bt, display, go, pd
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## 1. データ確認
+    """)
 
 
 @app.cell
 def _(bt):
     rf = bt.fetch_dgs10_daily_rf()
-    price = bt.load_bloomberg_prices()
+    prices = bt.load_bloomberg_prices()
+    returns = bt.compute_daily_returns(prices=prices)
     mcap = bt.load_bloomberg_mcap()
 
     universe_data = bt.load_universe_data()
-
     mapping = bt.build_bbg_ticker_map()
-    return mcap, price, universe_data
+    return mcap, returns, rf, universe_data
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Risk Free Rate確認
+    """)
+
+
+@app.cell
+def _(display, rf):
+    display(rf)
+
+
+@app.cell
+def _(go, pd, rf):
+    df_rf = pd.DataFrame(rf)
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=df_rf.index, y=df_rf["DGS10"], mode="lines"))
+    fig.update_layout(margin=dict(l=10, r=10, t=50, b=50))
+    fig.show()
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ### Universe data
+    """)
 
 
 @app.cell
@@ -81,14 +125,8 @@ def _(display, pd, universe_data):
 
 
 @app.cell
-def _(display, price):
-    display(price)
-
-
-@app.cell
-def _(display, price):
-    returns = price.pct_change()
-    display(returns)
+def _(display, returns):
+    display(returns[["MXKO INDEX", "MXKOEW INDEX"]])
 
 
 @app.cell

@@ -162,7 +162,15 @@ def build_bbg_ticker_map() -> dict[str, str]:
     """Build short ticker -> Bloomberg ticker mapping from universe JSON.
 
     Returns dict mapping e.g. 'AAPL' -> 'AAPL US Equity'.
+    Also maps Dead Ticker codes to current short tickers (e.g. AVGO -> 1373183D US Equity).
     """
+    # Dead Ticker -> current short ticker mapping
+    # These tickers were renamed/merged after the 2015-12-24 universe snapshot
+    DEAD_TICKER_MAP: dict[str, str] = {
+        "AVGO": "1373183D US Equity",  # Avago Technologies -> Broadcom
+        "CCEP": "9876641D US Equity",  # Coca-Cola Enterprises -> Coca-Cola Europacific Partners
+    }
+
     with open(UNIVERSE_JSON) as f:
         data = json.load(f)
 
@@ -173,6 +181,11 @@ def build_bbg_ticker_map() -> dict[str, str]:
         if bbg:
             short = bbg.split()[0]
             short_to_bbg[short] = bbg
+
+    # Add Dead Ticker mappings for renamed/merged companies
+    for current_ticker, dead_bbg in DEAD_TICKER_MAP.items():
+        if current_ticker not in short_to_bbg:
+            short_to_bbg[current_ticker] = dead_bbg
 
     return short_to_bbg
 

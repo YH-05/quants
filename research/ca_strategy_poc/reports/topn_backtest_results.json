@@ -1,0 +1,1461 @@
+{
+  "metadata": {
+    "description": "Top-N portfolios ranked by aggregate_score (NO sector neutralization)",
+    "data_source": "Bloomberg Terminal",
+    "methodology": "Buy-and-Hold (drift weight)",
+    "start_date": "2016-01-04",
+    "end_date": "2026-02-25",
+    "computed_at": "2026-02-27T19:48:48.599336"
+  },
+  "portfolios": {
+    "top30_score_weighted": {
+      "size": 30,
+      "method": "score_weighted",
+      "composition": {
+        "total_tickers": 30,
+        "data_available": 28,
+        "data_missing": 2,
+        "missing_tickers": [
+          "CPI",
+          "MHFI"
+        ],
+        "coverage_pct": 93.3
+      },
+      "vs_msci_kokusai": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 205.47,
+        "annualized_return": 11.21,
+        "benchmark_cum_return": 183.67,
+        "benchmark_ann_return": 10.43,
+        "volatility": 14.86,
+        "sharpe_ratio": 0.61,
+        "sortino_ratio": 0.535,
+        "max_drawdown": -28.45,
+        "calmar_ratio": 0.394,
+        "beta": 0.872,
+        "alpha_capm": 1.77,
+        "tracking_error": 5.66,
+        "information_ratio": 0.138,
+        "win_rate": 48.72,
+        "up_capture": 89.8,
+        "down_capture": 87.6,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_msci_kokusai_ew": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 205.47,
+        "annualized_return": 11.21,
+        "benchmark_cum_return": 114.29,
+        "benchmark_ann_return": 7.52,
+        "volatility": 14.86,
+        "sharpe_ratio": 0.61,
+        "sortino_ratio": 0.535,
+        "max_drawdown": -28.45,
+        "calmar_ratio": 0.394,
+        "beta": 0.818,
+        "alpha_capm": 4.57,
+        "tracking_error": 8.29,
+        "information_ratio": 0.445,
+        "win_rate": 50.19,
+        "up_capture": 85.2,
+        "down_capture": 79.3,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_mcap_benchmark": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 205.47,
+        "annualized_return": 11.21,
+        "benchmark_cum_return": 204.27,
+        "benchmark_ann_return": 11.17,
+        "volatility": 14.86,
+        "sharpe_ratio": 0.61,
+        "sortino_ratio": 0.535,
+        "max_drawdown": -28.45,
+        "calmar_ratio": 0.394,
+        "beta": 0.99,
+        "alpha_capm": 0.13,
+        "tracking_error": 4.89,
+        "information_ratio": 0.008,
+        "win_rate": 49.55,
+        "up_capture": 100.2,
+        "down_capture": 100.0,
+        "risk_free_rate_ann": 2.71
+      },
+      "annual_vs_msci": [
+        {
+          "year": 2016,
+          "portfolio_return": 4.89,
+          "benchmark_return": 5.8,
+          "active_return": -0.91
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 21.01,
+          "benchmark_return": 19.95,
+          "active_return": 1.06
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -0.48,
+          "benchmark_return": -10.04,
+          "active_return": 9.57
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.41,
+          "benchmark_return": 25.96,
+          "active_return": -0.55
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 22.64,
+          "benchmark_return": 14.23,
+          "active_return": 8.41
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 22.4,
+          "benchmark_return": 21.82,
+          "active_return": 0.58
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -20.57,
+          "benchmark_return": -19.53,
+          "active_return": -1.04
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 21.32,
+          "benchmark_return": 22.03,
+          "active_return": -0.71
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 15.57,
+          "benchmark_return": 17.68,
+          "active_return": -2.11
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 10.16,
+          "benchmark_return": 19.34,
+          "active_return": -9.18
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 4.68,
+          "benchmark_return": 2.79,
+          "active_return": 1.89
+        }
+      ],
+      "annual_vs_mcap": [
+        {
+          "year": 2016,
+          "portfolio_return": 4.89,
+          "benchmark_return": 5.07,
+          "active_return": -0.18
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 21.01,
+          "benchmark_return": 23.42,
+          "active_return": -2.41
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -0.48,
+          "benchmark_return": -7.28,
+          "active_return": 6.8
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.41,
+          "benchmark_return": 25.93,
+          "active_return": -0.52
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 22.64,
+          "benchmark_return": 16.12,
+          "active_return": 6.52
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 22.4,
+          "benchmark_return": 20.91,
+          "active_return": 1.49
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -20.57,
+          "benchmark_return": -15.8,
+          "active_return": -4.77
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 21.32,
+          "benchmark_return": 19.25,
+          "active_return": 2.07
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 15.57,
+          "benchmark_return": 17.55,
+          "active_return": -1.98
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 10.16,
+          "benchmark_return": 17.48,
+          "active_return": -7.31
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 4.68,
+          "benchmark_return": 3.22,
+          "active_return": 1.46
+        }
+      ],
+      "weight_drift": {
+        "initial_hhi": 0.0358,
+        "final_hhi": 0.0807,
+        "max_drift_ticker": "ASML NA Equity",
+        "max_drift_value": 0.1564,
+        "initial_max_weight": 0.0411,
+        "final_max_weight": 0.1912,
+        "initial_top5_weight": 0.1932,
+        "final_top5_weight": 0.5317
+      }
+    },
+    "top30_equal_weighted": {
+      "size": 30,
+      "method": "equal_weighted",
+      "composition": {
+        "total_tickers": 30,
+        "data_available": 28,
+        "data_missing": 2,
+        "missing_tickers": [
+          "CPI",
+          "MHFI"
+        ],
+        "coverage_pct": 93.3
+      },
+      "vs_msci_kokusai": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 206.11,
+        "annualized_return": 11.23,
+        "benchmark_cum_return": 183.67,
+        "benchmark_ann_return": 10.43,
+        "volatility": 14.83,
+        "sharpe_ratio": 0.612,
+        "sortino_ratio": 0.538,
+        "max_drawdown": -28.33,
+        "calmar_ratio": 0.397,
+        "beta": 0.87,
+        "alpha_capm": 1.81,
+        "tracking_error": 5.7,
+        "information_ratio": 0.141,
+        "win_rate": 49.06,
+        "up_capture": 89.6,
+        "down_capture": 87.4,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_msci_kokusai_ew": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 206.11,
+        "annualized_return": 11.23,
+        "benchmark_cum_return": 114.29,
+        "benchmark_ann_return": 7.52,
+        "volatility": 14.83,
+        "sharpe_ratio": 0.612,
+        "sortino_ratio": 0.538,
+        "max_drawdown": -28.33,
+        "calmar_ratio": 0.397,
+        "beta": 0.815,
+        "alpha_capm": 4.6,
+        "tracking_error": 8.3,
+        "information_ratio": 0.447,
+        "win_rate": 50.42,
+        "up_capture": 85.1,
+        "down_capture": 79.1,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_mcap_benchmark": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 206.11,
+        "annualized_return": 11.23,
+        "benchmark_cum_return": 204.27,
+        "benchmark_ann_return": 11.17,
+        "volatility": 14.83,
+        "sharpe_ratio": 0.612,
+        "sortino_ratio": 0.538,
+        "max_drawdown": -28.33,
+        "calmar_ratio": 0.397,
+        "beta": 0.986,
+        "alpha_capm": 0.18,
+        "tracking_error": 4.94,
+        "information_ratio": 0.013,
+        "win_rate": 49.66,
+        "up_capture": 100.0,
+        "down_capture": 99.7,
+        "risk_free_rate_ann": 2.71
+      },
+      "annual_vs_msci": [
+        {
+          "year": 2016,
+          "portfolio_return": 4.89,
+          "benchmark_return": 5.8,
+          "active_return": -0.91
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 21.16,
+          "benchmark_return": 19.95,
+          "active_return": 1.21
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -0.57,
+          "benchmark_return": -10.04,
+          "active_return": 9.47
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.17,
+          "benchmark_return": 25.96,
+          "active_return": -0.79
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 22.6,
+          "benchmark_return": 14.23,
+          "active_return": 8.37
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 22.65,
+          "benchmark_return": 21.82,
+          "active_return": 0.83
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -20.53,
+          "benchmark_return": -19.53,
+          "active_return": -1.01
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 21.21,
+          "benchmark_return": 22.03,
+          "active_return": -0.81
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 15.4,
+          "benchmark_return": 17.68,
+          "active_return": -2.28
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 10.36,
+          "benchmark_return": 19.34,
+          "active_return": -8.98
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 4.92,
+          "benchmark_return": 2.79,
+          "active_return": 2.13
+        }
+      ],
+      "annual_vs_mcap": [
+        {
+          "year": 2016,
+          "portfolio_return": 4.89,
+          "benchmark_return": 5.07,
+          "active_return": -0.18
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 21.16,
+          "benchmark_return": 23.42,
+          "active_return": -2.26
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -0.57,
+          "benchmark_return": -7.28,
+          "active_return": 6.71
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.17,
+          "benchmark_return": 25.93,
+          "active_return": -0.76
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 22.6,
+          "benchmark_return": 16.12,
+          "active_return": 6.48
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 22.65,
+          "benchmark_return": 20.91,
+          "active_return": 1.74
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -20.53,
+          "benchmark_return": -15.8,
+          "active_return": -4.73
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 21.21,
+          "benchmark_return": 19.25,
+          "active_return": 1.96
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 15.4,
+          "benchmark_return": 17.55,
+          "active_return": -2.16
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 10.36,
+          "benchmark_return": 17.48,
+          "active_return": -7.12
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 4.92,
+          "benchmark_return": 3.22,
+          "active_return": 1.7
+        }
+      ],
+      "weight_drift": {
+        "initial_hhi": 0.0357,
+        "final_hhi": 0.0809,
+        "max_drift_ticker": "ASML NA Equity",
+        "max_drift_value": 0.16,
+        "initial_max_weight": 0.0357,
+        "final_max_weight": 0.1958,
+        "initial_top5_weight": 0.1786,
+        "final_top5_weight": 0.5284
+      }
+    },
+    "top60_score_weighted": {
+      "size": 60,
+      "method": "score_weighted",
+      "composition": {
+        "total_tickers": 60,
+        "data_available": 54,
+        "data_missing": 6,
+        "missing_tickers": [
+          "005930",
+          "CPI",
+          "DD",
+          "MHFI",
+          "QIA",
+          "REE"
+        ],
+        "coverage_pct": 90.0
+      },
+      "vs_msci_kokusai": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 150.08,
+        "annualized_return": 9.11,
+        "benchmark_cum_return": 183.67,
+        "benchmark_ann_return": 10.43,
+        "volatility": 14.42,
+        "sharpe_ratio": 0.492,
+        "sortino_ratio": 0.417,
+        "max_drawdown": -29.71,
+        "calmar_ratio": 0.307,
+        "beta": 0.871,
+        "alpha_capm": -0.32,
+        "tracking_error": 4.44,
+        "information_ratio": -0.297,
+        "win_rate": 48.94,
+        "up_capture": 88.8,
+        "down_capture": 89.1,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_msci_kokusai_ew": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 150.08,
+        "annualized_return": 9.11,
+        "benchmark_cum_return": 114.29,
+        "benchmark_ann_return": 7.52,
+        "volatility": 14.42,
+        "sharpe_ratio": 0.492,
+        "sortino_ratio": 0.417,
+        "max_drawdown": -29.71,
+        "calmar_ratio": 0.307,
+        "beta": 0.847,
+        "alpha_capm": 2.33,
+        "tracking_error": 6.46,
+        "information_ratio": 0.247,
+        "win_rate": 49.92,
+        "up_capture": 87.2,
+        "down_capture": 84.1,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_mcap_benchmark": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 150.08,
+        "annualized_return": 9.11,
+        "benchmark_cum_return": 204.27,
+        "benchmark_ann_return": 11.17,
+        "volatility": 14.42,
+        "sharpe_ratio": 0.492,
+        "sortino_ratio": 0.417,
+        "max_drawdown": -29.71,
+        "calmar_ratio": 0.307,
+        "beta": 0.978,
+        "alpha_capm": -1.87,
+        "tracking_error": 3.94,
+        "information_ratio": -0.522,
+        "win_rate": 48.79,
+        "up_capture": 98.1,
+        "down_capture": 100.5,
+        "risk_free_rate_ann": 2.71
+      },
+      "annual_vs_msci": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.48,
+          "benchmark_return": 5.8,
+          "active_return": -3.32
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 20.94,
+          "benchmark_return": 19.95,
+          "active_return": 0.99
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.12,
+          "benchmark_return": -10.04,
+          "active_return": 4.93
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 26.03,
+          "benchmark_return": 25.96,
+          "active_return": 0.07
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 17.17,
+          "benchmark_return": 14.23,
+          "active_return": 2.94
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 26.36,
+          "benchmark_return": 21.82,
+          "active_return": 4.54
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -18.32,
+          "benchmark_return": -19.53,
+          "active_return": 1.21
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 18.0,
+          "benchmark_return": 22.03,
+          "active_return": -4.03
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 9.39,
+          "benchmark_return": 17.68,
+          "active_return": -8.29
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 7.33,
+          "benchmark_return": 19.34,
+          "active_return": -12.02
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.7,
+          "benchmark_return": 2.79,
+          "active_return": -2.09
+        }
+      ],
+      "annual_vs_mcap": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.48,
+          "benchmark_return": 5.07,
+          "active_return": -2.59
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 20.94,
+          "benchmark_return": 23.42,
+          "active_return": -2.48
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.12,
+          "benchmark_return": -7.28,
+          "active_return": 2.16
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 26.03,
+          "benchmark_return": 25.93,
+          "active_return": 0.09
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 17.17,
+          "benchmark_return": 16.12,
+          "active_return": 1.05
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 26.36,
+          "benchmark_return": 20.91,
+          "active_return": 5.45
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -18.32,
+          "benchmark_return": -15.8,
+          "active_return": -2.51
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 18.0,
+          "benchmark_return": 19.25,
+          "active_return": -1.25
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 9.39,
+          "benchmark_return": 17.55,
+          "active_return": -8.16
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 7.33,
+          "benchmark_return": 17.48,
+          "active_return": -10.15
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.7,
+          "benchmark_return": 3.22,
+          "active_return": -2.51
+        }
+      ],
+      "weight_drift": {
+        "initial_hhi": 0.0186,
+        "final_hhi": 0.0415,
+        "max_drift_ticker": "ASML NA Equity",
+        "max_drift_value": 0.1065,
+        "initial_max_weight": 0.0221,
+        "final_max_weight": 0.1252,
+        "initial_top5_weight": 0.1038,
+        "final_top5_weight": 0.3481
+      }
+    },
+    "top60_equal_weighted": {
+      "size": 60,
+      "method": "equal_weighted",
+      "composition": {
+        "total_tickers": 60,
+        "data_available": 54,
+        "data_missing": 6,
+        "missing_tickers": [
+          "005930",
+          "CPI",
+          "DD",
+          "MHFI",
+          "QIA",
+          "REE"
+        ],
+        "coverage_pct": 90.0
+      },
+      "vs_msci_kokusai": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 148.42,
+        "annualized_return": 9.05,
+        "benchmark_cum_return": 183.67,
+        "benchmark_ann_return": 10.43,
+        "volatility": 14.4,
+        "sharpe_ratio": 0.488,
+        "sortino_ratio": 0.413,
+        "max_drawdown": -29.71,
+        "calmar_ratio": 0.304,
+        "beta": 0.87,
+        "alpha_capm": -0.38,
+        "tracking_error": 4.44,
+        "information_ratio": -0.312,
+        "win_rate": 48.98,
+        "up_capture": 88.7,
+        "down_capture": 89.0,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_msci_kokusai_ew": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 148.42,
+        "annualized_return": 9.05,
+        "benchmark_cum_return": 114.29,
+        "benchmark_ann_return": 7.52,
+        "volatility": 14.4,
+        "sharpe_ratio": 0.488,
+        "sortino_ratio": 0.413,
+        "max_drawdown": -29.71,
+        "calmar_ratio": 0.304,
+        "beta": 0.847,
+        "alpha_capm": 2.26,
+        "tracking_error": 6.4,
+        "information_ratio": 0.238,
+        "win_rate": 49.77,
+        "up_capture": 87.2,
+        "down_capture": 84.2,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_mcap_benchmark": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 148.42,
+        "annualized_return": 9.05,
+        "benchmark_cum_return": 204.27,
+        "benchmark_ann_return": 11.17,
+        "volatility": 14.4,
+        "sharpe_ratio": 0.488,
+        "sortino_ratio": 0.413,
+        "max_drawdown": -29.71,
+        "calmar_ratio": 0.304,
+        "beta": 0.976,
+        "alpha_capm": -1.92,
+        "tracking_error": 3.97,
+        "information_ratio": -0.535,
+        "win_rate": 48.75,
+        "up_capture": 97.9,
+        "down_capture": 100.3,
+        "risk_free_rate_ann": 2.71
+      },
+      "annual_vs_msci": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.4,
+          "benchmark_return": 5.8,
+          "active_return": -3.4
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 21.02,
+          "benchmark_return": 19.95,
+          "active_return": 1.06
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.35,
+          "benchmark_return": -10.04,
+          "active_return": 4.69
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.93,
+          "benchmark_return": 25.96,
+          "active_return": -0.03
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 16.86,
+          "benchmark_return": 14.23,
+          "active_return": 2.63
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 26.67,
+          "benchmark_return": 21.82,
+          "active_return": 4.85
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -18.18,
+          "benchmark_return": -19.53,
+          "active_return": 1.35
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 17.8,
+          "benchmark_return": 22.03,
+          "active_return": -4.23
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 9.06,
+          "benchmark_return": 17.68,
+          "active_return": -8.62
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 7.36,
+          "benchmark_return": 19.34,
+          "active_return": -11.99
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.69,
+          "benchmark_return": 2.79,
+          "active_return": -2.1
+        }
+      ],
+      "annual_vs_mcap": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.4,
+          "benchmark_return": 5.07,
+          "active_return": -2.67
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 21.02,
+          "benchmark_return": 23.42,
+          "active_return": -2.41
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.35,
+          "benchmark_return": -7.28,
+          "active_return": 1.93
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.93,
+          "benchmark_return": 25.93,
+          "active_return": -0.0
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 16.86,
+          "benchmark_return": 16.12,
+          "active_return": 0.74
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 26.67,
+          "benchmark_return": 20.91,
+          "active_return": 5.76
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -18.18,
+          "benchmark_return": -15.8,
+          "active_return": -2.38
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 17.8,
+          "benchmark_return": 19.25,
+          "active_return": -1.45
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 9.06,
+          "benchmark_return": 17.55,
+          "active_return": -8.49
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 7.36,
+          "benchmark_return": 17.48,
+          "active_return": -10.12
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.69,
+          "benchmark_return": 3.22,
+          "active_return": -2.53
+        }
+      ],
+      "weight_drift": {
+        "initial_hhi": 0.0185,
+        "final_hhi": 0.0405,
+        "max_drift_ticker": "ASML NA Equity",
+        "max_drift_value": 0.1063,
+        "initial_max_weight": 0.0185,
+        "final_max_weight": 0.1248,
+        "initial_top5_weight": 0.0926,
+        "final_top5_weight": 0.3368
+      }
+    },
+    "top90_score_weighted": {
+      "size": 90,
+      "method": "score_weighted",
+      "composition": {
+        "total_tickers": 90,
+        "data_available": 78,
+        "data_missing": 12,
+        "missing_tickers": [
+          "005930",
+          "BFB",
+          "BF_B",
+          "CBS",
+          "CI",
+          "CPI",
+          "DD",
+          "MHFI",
+          "ML",
+          "MON",
+          "QIA",
+          "REE"
+        ],
+        "coverage_pct": 86.7
+      },
+      "vs_msci_kokusai": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 144.48,
+        "annualized_return": 8.88,
+        "benchmark_cum_return": 183.67,
+        "benchmark_ann_return": 10.43,
+        "volatility": 14.6,
+        "sharpe_ratio": 0.473,
+        "sortino_ratio": 0.398,
+        "max_drawdown": -30.5,
+        "calmar_ratio": 0.291,
+        "beta": 0.887,
+        "alpha_capm": -0.68,
+        "tracking_error": 4.12,
+        "information_ratio": -0.376,
+        "win_rate": 48.19,
+        "up_capture": 89.6,
+        "down_capture": 90.2,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_msci_kokusai_ew": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 144.48,
+        "annualized_return": 8.88,
+        "benchmark_cum_return": 114.29,
+        "benchmark_ann_return": 7.52,
+        "volatility": 14.6,
+        "sharpe_ratio": 0.473,
+        "sortino_ratio": 0.398,
+        "max_drawdown": -30.5,
+        "calmar_ratio": 0.291,
+        "beta": 0.866,
+        "alpha_capm": 2.0,
+        "tracking_error": 6.14,
+        "information_ratio": 0.221,
+        "win_rate": 49.81,
+        "up_capture": 88.5,
+        "down_capture": 85.7,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_mcap_benchmark": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 144.48,
+        "annualized_return": 8.88,
+        "benchmark_cum_return": 204.27,
+        "benchmark_ann_return": 11.17,
+        "volatility": 14.6,
+        "sharpe_ratio": 0.473,
+        "sortino_ratio": 0.398,
+        "max_drawdown": -30.5,
+        "calmar_ratio": 0.291,
+        "beta": 0.994,
+        "alpha_capm": -2.24,
+        "tracking_error": 3.79,
+        "information_ratio": -0.604,
+        "win_rate": 49.51,
+        "up_capture": 98.7,
+        "down_capture": 101.5,
+        "risk_free_rate_ann": 2.71
+      },
+      "annual_vs_msci": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.51,
+          "benchmark_return": 5.8,
+          "active_return": -3.29
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 22.02,
+          "benchmark_return": 19.95,
+          "active_return": 2.07
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.0,
+          "benchmark_return": -10.04,
+          "active_return": 5.04
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.68,
+          "benchmark_return": 25.96,
+          "active_return": -0.28
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 14.06,
+          "benchmark_return": 14.23,
+          "active_return": -0.17
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 23.96,
+          "benchmark_return": 21.82,
+          "active_return": 2.14
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -17.43,
+          "benchmark_return": -19.53,
+          "active_return": 2.1
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 17.93,
+          "benchmark_return": 22.03,
+          "active_return": -4.1
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 8.15,
+          "benchmark_return": 17.68,
+          "active_return": -9.53
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 8.98,
+          "benchmark_return": 19.34,
+          "active_return": -10.36
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.9,
+          "benchmark_return": 2.79,
+          "active_return": -1.89
+        }
+      ],
+      "annual_vs_mcap": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.51,
+          "benchmark_return": 5.07,
+          "active_return": -2.57
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 22.02,
+          "benchmark_return": 23.42,
+          "active_return": -1.41
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.0,
+          "benchmark_return": -7.28,
+          "active_return": 2.28
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.68,
+          "benchmark_return": 25.93,
+          "active_return": -0.26
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 14.06,
+          "benchmark_return": 16.12,
+          "active_return": -2.06
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 23.96,
+          "benchmark_return": 20.91,
+          "active_return": 3.05
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -17.43,
+          "benchmark_return": -15.8,
+          "active_return": -1.63
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 17.93,
+          "benchmark_return": 19.25,
+          "active_return": -1.32
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 8.15,
+          "benchmark_return": 17.55,
+          "active_return": -9.4
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 8.98,
+          "benchmark_return": 17.48,
+          "active_return": -8.5
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.9,
+          "benchmark_return": 3.22,
+          "active_return": -2.32
+        }
+      ],
+      "weight_drift": {
+        "initial_hhi": 0.0129,
+        "final_hhi": 0.0267,
+        "max_drift_ticker": "ASML NA Equity",
+        "max_drift_value": 0.0778,
+        "initial_max_weight": 0.0158,
+        "final_max_weight": 0.0912,
+        "initial_top5_weight": 0.074,
+        "final_top5_weight": 0.2616
+      }
+    },
+    "top90_equal_weighted": {
+      "size": 90,
+      "method": "equal_weighted",
+      "composition": {
+        "total_tickers": 90,
+        "data_available": 78,
+        "data_missing": 12,
+        "missing_tickers": [
+          "005930",
+          "BFB",
+          "BF_B",
+          "CBS",
+          "CI",
+          "CPI",
+          "DD",
+          "MHFI",
+          "ML",
+          "MON",
+          "QIA",
+          "REE"
+        ],
+        "coverage_pct": 86.7
+      },
+      "vs_msci_kokusai": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 142.62,
+        "annualized_return": 8.8,
+        "benchmark_cum_return": 183.67,
+        "benchmark_ann_return": 10.43,
+        "volatility": 14.6,
+        "sharpe_ratio": 0.468,
+        "sortino_ratio": 0.393,
+        "max_drawdown": -30.55,
+        "calmar_ratio": 0.288,
+        "beta": 0.886,
+        "alpha_capm": -0.75,
+        "tracking_error": 4.14,
+        "information_ratio": -0.394,
+        "win_rate": 48.11,
+        "up_capture": 89.5,
+        "down_capture": 90.2,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_msci_kokusai_ew": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 142.62,
+        "annualized_return": 8.8,
+        "benchmark_cum_return": 114.29,
+        "benchmark_ann_return": 7.52,
+        "volatility": 14.6,
+        "sharpe_ratio": 0.468,
+        "sortino_ratio": 0.393,
+        "max_drawdown": -30.55,
+        "calmar_ratio": 0.288,
+        "beta": 0.867,
+        "alpha_capm": 1.92,
+        "tracking_error": 6.09,
+        "information_ratio": 0.21,
+        "win_rate": 50.0,
+        "up_capture": 88.6,
+        "down_capture": 85.9,
+        "risk_free_rate_ann": 2.71
+      },
+      "vs_mcap_benchmark": {
+        "n_days": 2648,
+        "n_years": 10.51,
+        "cumulative_return": 142.62,
+        "annualized_return": 8.8,
+        "benchmark_cum_return": 204.27,
+        "benchmark_ann_return": 11.17,
+        "volatility": 14.6,
+        "sharpe_ratio": 0.468,
+        "sortino_ratio": 0.393,
+        "max_drawdown": -30.55,
+        "calmar_ratio": 0.288,
+        "beta": 0.993,
+        "alpha_capm": -2.31,
+        "tracking_error": 3.84,
+        "information_ratio": -0.617,
+        "win_rate": 49.43,
+        "up_capture": 98.6,
+        "down_capture": 101.4,
+        "risk_free_rate_ann": 2.71
+      },
+      "annual_vs_msci": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.46,
+          "benchmark_return": 5.8,
+          "active_return": -3.34
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 22.1,
+          "benchmark_return": 19.95,
+          "active_return": 2.15
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.18,
+          "benchmark_return": -10.04,
+          "active_return": 4.86
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.54,
+          "benchmark_return": 25.96,
+          "active_return": -0.42
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 13.58,
+          "benchmark_return": 14.23,
+          "active_return": -0.64
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 24.0,
+          "benchmark_return": 21.82,
+          "active_return": 2.17
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -17.25,
+          "benchmark_return": -19.53,
+          "active_return": 2.28
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 17.76,
+          "benchmark_return": 22.03,
+          "active_return": -4.27
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 7.8,
+          "benchmark_return": 17.68,
+          "active_return": -9.88
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 9.12,
+          "benchmark_return": 19.34,
+          "active_return": -10.22
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.92,
+          "benchmark_return": 2.79,
+          "active_return": -1.87
+        }
+      ],
+      "annual_vs_mcap": [
+        {
+          "year": 2016,
+          "portfolio_return": 2.46,
+          "benchmark_return": 5.07,
+          "active_return": -2.62
+        },
+        {
+          "year": 2017,
+          "portfolio_return": 22.1,
+          "benchmark_return": 23.42,
+          "active_return": -1.32
+        },
+        {
+          "year": 2018,
+          "portfolio_return": -5.18,
+          "benchmark_return": -7.28,
+          "active_return": 2.1
+        },
+        {
+          "year": 2019,
+          "portfolio_return": 25.54,
+          "benchmark_return": 25.93,
+          "active_return": -0.39
+        },
+        {
+          "year": 2020,
+          "portfolio_return": 13.58,
+          "benchmark_return": 16.12,
+          "active_return": -2.53
+        },
+        {
+          "year": 2021,
+          "portfolio_return": 24.0,
+          "benchmark_return": 20.91,
+          "active_return": 3.09
+        },
+        {
+          "year": 2022,
+          "portfolio_return": -17.25,
+          "benchmark_return": -15.8,
+          "active_return": -1.45
+        },
+        {
+          "year": 2023,
+          "portfolio_return": 17.76,
+          "benchmark_return": 19.25,
+          "active_return": -1.49
+        },
+        {
+          "year": 2024,
+          "portfolio_return": 7.8,
+          "benchmark_return": 17.55,
+          "active_return": -9.75
+        },
+        {
+          "year": 2025,
+          "portfolio_return": 9.12,
+          "benchmark_return": 17.48,
+          "active_return": -8.36
+        },
+        {
+          "year": 2026,
+          "portfolio_return": 0.92,
+          "benchmark_return": 3.22,
+          "active_return": -2.3
+        }
+      ],
+      "weight_drift": {
+        "initial_hhi": 0.0128,
+        "final_hhi": 0.0257,
+        "max_drift_ticker": "ASML NA Equity",
+        "max_drift_value": 0.0755,
+        "initial_max_weight": 0.0128,
+        "final_max_weight": 0.0883,
+        "initial_top5_weight": 0.0641,
+        "final_top5_weight": 0.252
+      }
+    }
+  },
+  "comparison_vs_sector_neutral": [
+    {
+      "portfolio": "Top-30 ScoreW",
+      "ann_return": 11.21,
+      "sharpe": 0.61,
+      "alpha": 1.77,
+      "max_dd": -28.45,
+      "ir": 0.138,
+      "beta": 0.872
+    },
+    {
+      "portfolio": "Top-30 EqualW",
+      "ann_return": 11.23,
+      "sharpe": 0.612,
+      "alpha": 1.81,
+      "max_dd": -28.33,
+      "ir": 0.141,
+      "beta": 0.87
+    },
+    {
+      "portfolio": "SectorNeutral-30",
+      "ann_return": 7.87,
+      "sharpe": 0.433,
+      "alpha": -0.89,
+      "max_dd": -28.73,
+      "ir": -0.428,
+      "beta": 0.783
+    },
+    {
+      "portfolio": "Top-60 ScoreW",
+      "ann_return": 9.11,
+      "sharpe": 0.492,
+      "alpha": -0.32,
+      "max_dd": -29.71,
+      "ir": -0.297,
+      "beta": 0.871
+    },
+    {
+      "portfolio": "Top-60 EqualW",
+      "ann_return": 9.05,
+      "sharpe": 0.488,
+      "alpha": -0.38,
+      "max_dd": -29.71,
+      "ir": -0.312,
+      "beta": 0.87
+    },
+    {
+      "portfolio": "SectorNeutral-60",
+      "ann_return": 8.81,
+      "sharpe": 0.482,
+      "alpha": -0.42,
+      "max_dd": -29.44,
+      "ir": -0.352,
+      "beta": 0.845
+    },
+    {
+      "portfolio": "Top-90 ScoreW",
+      "ann_return": 8.88,
+      "sharpe": 0.473,
+      "alpha": -0.68,
+      "max_dd": -30.5,
+      "ir": -0.376,
+      "beta": 0.887
+    },
+    {
+      "portfolio": "Top-90 EqualW",
+      "ann_return": 8.8,
+      "sharpe": 0.468,
+      "alpha": -0.75,
+      "max_dd": -30.55,
+      "ir": -0.394,
+      "beta": 0.886
+    },
+    {
+      "portfolio": "SectorNeutral-90",
+      "ann_return": 8.95,
+      "sharpe": 0.482,
+      "alpha": -0.54,
+      "max_dd": -31.47,
+      "ir": -0.373,
+      "beta": 0.877
+    }
+  ]
+}
