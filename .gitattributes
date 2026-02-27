@@ -45,3 +45,8 @@ Dockerfile text eol=lf
 *.db binary
 *.sqlite binary
 *.duckdb binary
+
+# ===== Git LFS（大容量ファイル）=====
+data/Transcript/*.csv filter=lfs diff=lfs merge=lfs -text
+data/Transcript/list_port_*.json filter=lfs diff=lfs merge=lfs -text
+research/ca_strategy_poc/reports/*_cumulative_returns*.json filter=lfs diff=lfs merge=lfs -text
