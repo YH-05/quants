@@ -37,6 +37,34 @@ except ImportError:  # pragma: no cover
 logger = get_logger(__name__)
 
 
+# --- モジュール定数 ---
+_NASDAQ_API_HEADERS: dict[str, str] = {
+    "Accept": "application/json",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+}
+_TICKER_RE = re.compile(r"[A-Za-z0-9.\-]{1,10}")
+
+
+def _validate_ticker(ticker: str) -> None:
+    """ティッカーシンボルのバリデーション.
+
+    Parameters
+    ----------
+    ticker : str
+        検証するティッカーシンボル
+
+    Raises
+    ------
+    ValueError
+        ティッカーが不正な形式の場合
+    """
+    if not _TICKER_RE.fullmatch(ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
+        )
+
+
 def _parse_article_date(date_str: str) -> datetime | None:
     """NASDAQ API/ページの日付文字列を datetime にパースする.
 
@@ -73,6 +101,7 @@ def _parse_article_date(date_str: str) -> datetime | None:
         "%m/%d/%Y",  # MM/DD/YYYY: 02/23/2026
         "%B %d, %Y",  # Month DD, YYYY: February 23, 2026
         "%b %d, %Y",  # Mon DD, YYYY: Feb 23, 2026
+        "%a, %d %b %Y %H:%M:%S %z",  # RSS/RFC 2822: Mon, 23 Feb 2026 12:00:00 +0000
     ]
 
     for fmt in formats:
@@ -83,6 +112,108 @@ def _parse_article_date(date_str: str) -> datetime | None:
 
     logger.debug("Failed to parse date string", date_str=date_str)
     return None
+
+
+def _parse_rss_entry(entry: object, category: str | None) -> Article:
+    """feedparser のエントリを Article に変換する.
+
+    Parameters
+    ----------
+    entry : object
+        feedparser のエントリオブジェクト
+    category : str | None
+        カテゴリ名（None で "general"）
+
+    Returns
+    -------
+    Article
+        変換された記事情報
+    """
+    published_raw = str(entry.get("published", ""))  # type: ignore[union-attr]
+    # RSSの日付フォーマット: "Mon, DD Mon YYYY HH:MM:SS +ZZZZ"
+    parsed_dt = _parse_article_date(published_raw)
+    published_iso = parsed_dt.isoformat() if parsed_dt else published_raw
+
+    return Article(
+        title=str(entry.get("title", "")),  # type: ignore[union-attr]
+        url=str(entry.get("link", "")),  # type: ignore[union-attr]
+        published=published_iso,
+        summary=str(entry.get("summary", "")),  # type: ignore[union-attr]
+        category=category or "general",
+        source="nasdaq",
+    )
+
+
+def _row_to_article(row: dict[str, object], ticker_upper: str) -> Article:
+    """NASDAQ API のレスポンス行を Article に変換する.
+
+    Parameters
+    ----------
+    row : dict[str, object]
+        APIレスポンスの rows 要素
+    ticker_upper : str
+        大文字のティッカーシンボル
+
+    Returns
+    -------
+    Article
+        変換された記事情報
+    """
+    return Article(
+        title=str(row.get("title", "")),
+        url=str(row.get("url", "")),
+        published=str(row.get("created", "")),
+        ticker=ticker_upper,
+        author=str(row.get("provider", "")),
+        source="nasdaq",
+    )
+
+
+def _filter_article_by_date(
+    pub_dt: datetime | None,
+    start_date: datetime | None,
+    end_date: datetime | None,
+) -> tuple[bool, bool]:
+    """記事の日付を start_date/end_date でフィルタリングする.
+
+    Parameters
+    ----------
+    pub_dt : datetime | None
+        記事の公開日時
+    start_date : datetime | None
+        この日時より古い記事を除外（None で制限なし）
+    end_date : datetime | None
+        この日時より新しい記事を除外（None で制限なし）
+
+    Returns
+    -------
+    tuple[bool, bool]
+        (skip_article, is_older_than_start)
+        - skip_article: True なら記事をスキップ
+        - is_older_than_start: True なら start_date より古い（ページ終了判定に使用）
+    """
+    if pub_dt is None:
+        return False, False
+
+    # tzinfo を除去して比較（naive datetime に統一）
+    pub_naive = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+
+    # end_date フィルタリング
+    if end_date is not None:
+        end_naive = end_date.replace(tzinfo=None) if end_date.tzinfo else end_date
+        if pub_naive > end_naive:
+            return True, False
+
+    # start_date フィルタリング
+    if start_date is not None:
+        start_naive = (
+            start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
+        )
+        if pub_naive < start_naive:
+            return True, True  # 古い記事なのでスキップ & older_than_start フラグ
+        return False, False  # start_date 以降の記事なのでスキップしない
+
+    return False, False
 
 
 def _category_to_url_segment(category: str) -> str:
@@ -159,26 +290,7 @@ def fetch_rss_feed(
 
     feed = feedparser.parse(resp.text)
 
-    articles = []
-    for entry in feed.entries:
-        # 公開日時のパース
-        published_raw = str(entry.get("published", ""))
-        try:
-            pub_dt = datetime.strptime(published_raw, "%a, %d %b %Y %H:%M:%S %z")
-            published_iso = pub_dt.isoformat()
-        except (ValueError, TypeError):
-            published_iso = published_raw
-
-        articles.append(
-            Article(
-                title=str(entry.get("title", "")),
-                url=str(entry.get("link", "")),
-                published=published_iso,
-                summary=str(entry.get("summary", "")),
-                category=category or "general",
-                source="nasdaq",
-            )
-        )
+    articles = [_parse_rss_entry(entry, category) for entry in feed.entries]
 
     logger.info(
         "NASDAQ RSS fetched",
@@ -235,26 +347,7 @@ async def async_fetch_rss_feed(
 
     feed = feedparser.parse(resp.text)
 
-    articles = []
-    for entry in feed.entries:
-        # 公開日時のパース
-        published_raw = str(entry.get("published", ""))
-        try:
-            pub_dt = datetime.strptime(published_raw, "%a, %d %b %Y %H:%M:%S %z")
-            published_iso = pub_dt.isoformat()
-        except (ValueError, TypeError):
-            published_iso = published_raw
-
-        articles.append(
-            Article(
-                title=str(entry.get("title", "")),
-                url=str(entry.get("link", "")),
-                published=published_iso,
-                summary=str(entry.get("summary", "")),
-                category=category or "general",
-                source="nasdaq",
-            )
-        )
+    articles = [_parse_rss_entry(entry, category) for entry in feed.entries]
 
     logger.info(
         "NASDAQ RSS fetched (async)",
@@ -414,6 +507,7 @@ def fetch_article_content(
         return None
 
     html = resp.text
+    soup = BeautifulSoup(html, "html.parser")
 
     # trafilatura で本文抽出
     text = trafilatura.extract(
@@ -425,7 +519,6 @@ def fetch_article_content(
 
     if not text:
         # フォールバック: BeautifulSoup
-        soup = BeautifulSoup(html, "html.parser")
         article_el = soup.select_one("article") or soup.select_one(".article-body")
         if article_el:
             text = article_el.get_text(separator="\n", strip=True)
@@ -433,9 +526,7 @@ def fetch_article_content(
     if not text:
         return None
 
-    # メタデータ抽出
-    soup = BeautifulSoup(html, "html.parser")
-
+    # メタデータ抽出（soup を再利用）
     title_el = soup.select_one("h1")
     title = title_el.get_text(strip=True) if title_el else ""
 
@@ -516,32 +607,32 @@ async def async_fetch_article_content(
         no_fallback=False,
     )
 
-    if not text:
-        # フォールバック: BeautifulSoup（スレッドプールへオフロード）
-        def _bs4_fallback(html_content: str) -> str | None:
-            soup = BeautifulSoup(html_content, "html.parser")
+    # BS4フォールバック・メタデータ抽出を1回のスレッドで処理（soup を再利用）
+    def _bs4_parse(
+        html_content: str, extracted_text: str | None
+    ) -> tuple[str | None, str, str, str]:
+        soup = BeautifulSoup(html_content, "html.parser")
+
+        # フォールバック: BeautifulSoup で本文抽出
+        result_text = extracted_text
+        if not result_text:
             article_el = soup.select_one("article") or soup.select_one(".article-body")
             if article_el:
-                return article_el.get_text(separator="\n", strip=True)
-            return None
+                result_text = article_el.get_text(separator="\n", strip=True)
 
-        text = await asyncio.to_thread(_bs4_fallback, html)
-
-    if not text:
-        return None
-
-    # メタデータ抽出（スレッドプールへオフロード）
-    def _extract_metadata(html_content: str) -> tuple[str, str, str]:
-        soup = BeautifulSoup(html_content, "html.parser")
+        # メタデータ抽出（soup を再利用）
         title_el = soup.select_one("h1")
         title = title_el.get_text(strip=True) if title_el else ""
         time_el = soup.select_one("time")
         published = str(time_el.get("datetime", "")) if time_el else ""
         author_el = soup.select_one('[rel="author"]') or soup.select_one(".author")
         author = author_el.get_text(strip=True) if author_el else ""
-        return title, published, author
+        return result_text, title, published, author
 
-    title, published, author = await asyncio.to_thread(_extract_metadata, html)
+    text, title, published, author = await asyncio.to_thread(_bs4_parse, html, text)
+
+    if not text:
+        return None
 
     return {
         "url": url,
@@ -576,18 +667,11 @@ def fetch_stock_news_api(
     list[Article]
         記事情報のリスト
     """
-    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
-        raise ValueError(
-            f"Invalid ticker symbol: {ticker!r}. "
-            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
-        )
+    _validate_ticker(ticker)
 
     url = f"https://api.nasdaq.com/api/news/topic/articlebysymbol?q={ticker}|STOCKS&offset=0&limit={limit}"
 
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-    }
+    headers = _NASDAQ_API_HEADERS
 
     logger.debug("Fetching NASDAQ stock news", ticker=ticker)
 
@@ -596,20 +680,9 @@ def fetch_stock_news_api(
         resp.raise_for_status()
         data = resp.json()
 
-        articles = []
         rows = data.get("data", {}).get("rows", [])
-
-        for row in rows:
-            articles.append(
-                Article(
-                    title=row.get("title", ""),
-                    url=row.get("url", ""),
-                    published=row.get("created", ""),
-                    ticker=ticker.upper(),
-                    author=row.get("provider", ""),
-                    source="nasdaq",
-                )
-            )
+        ticker_upper = ticker.upper()
+        articles = [_row_to_article(row, ticker_upper) for row in rows]
 
         logger.info(
             "NASDAQ stock news fetched", ticker=ticker, article_count=len(articles)
@@ -659,18 +732,11 @@ async def async_fetch_stock_news_api(
     ...     print(len(articles))
     >>> asyncio.run(main())
     """
-    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
-        raise ValueError(
-            f"Invalid ticker symbol: {ticker!r}. "
-            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
-        )
+    _validate_ticker(ticker)
 
     url = f"https://api.nasdaq.com/api/news/topic/articlebysymbol?q={ticker.upper()}|STOCKS&offset=0&limit={limit}"
 
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-    }
+    headers = _NASDAQ_API_HEADERS
 
     logger.debug("Fetching NASDAQ stock news (async)", ticker=ticker)
 
@@ -679,20 +745,8 @@ async def async_fetch_stock_news_api(
         resp.raise_for_status()
         data = resp.json()
 
-        articles = []
         rows = data.get("data", {}).get("rows", [])
-
-        for row in rows:
-            articles.append(
-                Article(
-                    title=row.get("title", ""),
-                    url=row.get("url", ""),
-                    published=row.get("created", ""),
-                    ticker=ticker.upper(),
-                    author=row.get("provider", ""),
-                    source="nasdaq",
-                )
-            )
+        articles = [_row_to_article(row, ticker.upper()) for row in rows]
 
         logger.info(
             "NASDAQ stock news fetched (async)",
@@ -747,21 +801,14 @@ def fetch_stock_news_api_paginated(
     list[Article]
         記事情報のリスト（API エラー時は取得済みの部分結果）
     """
-    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
-        raise ValueError(
-            f"Invalid ticker symbol: {ticker!r}. "
-            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
-        )
+    _validate_ticker(ticker)
 
     if config is None:
         config = ScraperConfig()
 
     from .types import get_delay
 
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-    }
+    headers = _NASDAQ_API_HEADERS
 
     ticker_upper = ticker.upper()
     articles: list[Article] = []
@@ -807,52 +854,17 @@ def fetch_stock_news_api_paginated(
             )
             break
 
-        # 全記事が start_date より古い場合に早期終了するフラグ
         all_older_than_start = start_date is not None
 
         for row in rows:
             pub_str = row.get("created", "")
             pub_dt = _parse_article_date(pub_str)
-
-            # end_date フィルタリング
-            if end_date is not None and pub_dt is not None:
-                # タイムゾーン比較のための正規化
-                _end = end_date.replace(tzinfo=None) if end_date.tzinfo else end_date
-                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
-                if _pub > _end:
-                    continue
-
-            # start_date フィルタリング
-            if start_date is not None and pub_dt is not None:
-                _start = (
-                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
-                )
-                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
-                if _pub >= _start:
-                    all_older_than_start = False
-                # start_date より古い記事はスキップするが、ページ内に新しいものがあれば継続
-            else:
+            skip, is_older = _filter_article_by_date(pub_dt, start_date, end_date)
+            if not is_older:
                 all_older_than_start = False
-
-            # start_date フィルタリング: 古い記事はスキップ
-            if start_date is not None and pub_dt is not None:
-                _start = (
-                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
-                )
-                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
-                if _pub < _start:
-                    continue
-
-            articles.append(
-                Article(
-                    title=row.get("title", ""),
-                    url=row.get("url", ""),
-                    published=pub_str,
-                    ticker=ticker_upper,
-                    author=row.get("provider", ""),
-                    source="nasdaq",
-                )
-            )
+            if skip:
+                continue
+            articles.append(_row_to_article(row, ticker_upper))
 
         offset += page_size
 
@@ -937,21 +949,14 @@ async def async_fetch_stock_news_api_paginated(
     ...     print(len(articles))
     >>> asyncio.run(main())
     """
-    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
-        raise ValueError(
-            f"Invalid ticker symbol: {ticker!r}. "
-            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
-        )
+    _validate_ticker(ticker)
 
     if config is None:
         config = ScraperConfig()
 
     from .types import get_delay
 
-    headers = {
-        "Accept": "application/json",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
-    }
+    headers = _NASDAQ_API_HEADERS
 
     ticker_upper = ticker.upper()
     articles: list[Article] = []
@@ -999,50 +1004,17 @@ async def async_fetch_stock_news_api_paginated(
             )
             break
 
-        # 全記事が start_date より古い場合に早期終了するフラグ
         all_older_than_start = start_date is not None
 
         for row in rows:
             pub_str = row.get("created", "")
             pub_dt = _parse_article_date(pub_str)
-
-            # end_date フィルタリング
-            if end_date is not None and pub_dt is not None:
-                _end = end_date.replace(tzinfo=None) if end_date.tzinfo else end_date
-                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
-                if _pub > _end:
-                    continue
-
-            # start_date フィルタリング
-            if start_date is not None and pub_dt is not None:
-                _start = (
-                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
-                )
-                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
-                if _pub >= _start:
-                    all_older_than_start = False
-            else:
+            skip, is_older = _filter_article_by_date(pub_dt, start_date, end_date)
+            if not is_older:
                 all_older_than_start = False
-
-            # start_date より古い記事はスキップ
-            if start_date is not None and pub_dt is not None:
-                _start = (
-                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
-                )
-                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
-                if _pub < _start:
-                    continue
-
-            articles.append(
-                Article(
-                    title=row.get("title", ""),
-                    url=row.get("url", ""),
-                    published=pub_str,
-                    ticker=ticker_upper,
-                    author=row.get("provider", ""),
-                    source="nasdaq",
-                )
-            )
+            if skip:
+                continue
+            articles.append(_row_to_article(row, ticker_upper))
 
         offset += page_size
 
@@ -1733,7 +1705,11 @@ def collect_historical_news(
 
     all_articles: list[dict] = []
 
-    # 戦略A: tickers 指定時は API ページネーション
+    # AIDEV-NOTE: 収集戦略の選択。Strategy A (API) / Strategy B (Playwright)
+    # 新たな収集方法を追加する場合は、_collect_with_*(strategy) のような
+    # プライベート関数に抽出してここで選択するパターンを検討してください。
+
+    # Strategy A: ティッカー別 API ページネーション
     if tickers:
         session = create_session(impersonate=config.impersonate, proxy=config.proxy)
 
@@ -1762,7 +1738,7 @@ def collect_historical_news(
 
             time.sleep(get_delay(config))
 
-    # 戦略B: categories + use_playwright=True のとき Playwright アーカイブ
+    # Strategy B: Playwright によるアーカイブページスクレイピング
     if config.use_playwright:
         cats = categories if categories is not None else list(NASDAQ_QUANT_CATEGORIES)
 
