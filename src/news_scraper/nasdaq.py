@@ -1676,5 +1676,382 @@ async def async_fetch_news_archive_playwright(
                 await playwright_ctx.stop()
 
 
+def collect_historical_news(
+    start_date: datetime,
+    end_date: datetime,
+    tickers: list[str] | None = None,
+    categories: list[str] | None = None,
+    config: ScraperConfig | None = None,
+    output_dir: str | Path | None = None,
+) -> pd.DataFrame:
+    """指定期間の NASDAQ 過去ニュースを収集する統合オーケストレーター.
+
+    CNBC の ``collect_historical_news`` と同じインターフェースで NASDAQ の過去記事を収集する。
+    ``tickers`` 指定時は API ページネーション（戦略A）、``categories`` + ``use_playwright=True``
+    では Playwright アーカイブ（戦略B）を使用する。
+
+    Parameters
+    ----------
+    start_date : datetime
+        開始日時
+    end_date : datetime
+        終了日時
+    tickers : list[str] | None
+        銘柄コードリスト。指定時は API ページネーション（戦略A）を使用。
+    categories : list[str] | None
+        カテゴリリスト（``NASDAQ_CATEGORIES`` のいずれか）。
+        ``config.use_playwright=True`` のとき Playwright アーカイブ（戦略B）を使用。
+        None のときデフォルトカテゴリ（``NASDAQ_QUANT_CATEGORIES``）を使用。
+    config : ScraperConfig | None
+        スクレイパー設定（None でデフォルト）
+    output_dir : str | Path | None
+        出力ディレクトリ（None で保存しない）。日別 JSON + 全体 Parquet を保存。
+
+    Returns
+    -------
+    pd.DataFrame
+        収集した記事のデータフレーム
+
+    Examples
+    --------
+    >>> from datetime import datetime
+    >>> df = collect_historical_news(
+    ...     start_date=datetime(2024, 1, 1),
+    ...     end_date=datetime(2024, 1, 7),
+    ...     tickers=["AAPL", "MSFT"],
+    ... )
+    """
+    if config is None:
+        config = ScraperConfig()
+
+    from .types import get_delay
+
+    output_path: Path | None = None
+    if output_dir:
+        output_path = Path(output_dir)
+        output_path.mkdir(parents=True, exist_ok=True)
+
+    all_articles: list[dict] = []
+
+    # 戦略A: tickers 指定時は API ページネーション
+    if tickers:
+        session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+
+        for ticker in tickers:
+            logger.info(
+                "Collecting historical news via API",
+                ticker=ticker,
+                start_date=str(start_date.date()),
+                end_date=str(end_date.date()),
+            )
+            try:
+                articles = fetch_stock_news_api_paginated(
+                    session,
+                    ticker,
+                    start_date=start_date,
+                    end_date=end_date,
+                    config=config,
+                )
+                all_articles.extend([a.to_dict() for a in articles])
+            except Exception as e:
+                logger.error(
+                    "Ticker fetch failed",
+                    ticker=ticker,
+                    error=str(e),
+                )
+
+            time.sleep(get_delay(config))
+
+    # 戦略B: categories + use_playwright=True のとき Playwright アーカイブ
+    if config.use_playwright:
+        cats = categories if categories is not None else list(NASDAQ_QUANT_CATEGORIES)
+
+        close_playwright = False
+        playwright_ctx = None
+        browser = None
+
+        if sync_playwright is None:  # pragma: no cover
+            logger.warning("playwright not installed, skipping archive collection")
+        else:
+            playwright_ctx = sync_playwright().start()
+            browser = playwright_ctx.chromium.launch(headless=True)
+            close_playwright = True
+
+        try:
+            for category in cats:
+                logger.info(
+                    "Collecting historical news via Playwright archive",
+                    category=category,
+                )
+                try:
+                    archive_articles = fetch_news_archive_playwright(
+                        category,
+                        browser=browser,
+                    )
+                    all_articles.extend(archive_articles)
+                except Exception as e:
+                    logger.error(
+                        "Archive fetch failed",
+                        category=category,
+                        error=str(e),
+                    )
+
+                time.sleep(get_delay(config))
+        finally:
+            if close_playwright:
+                if browser is not None:
+                    browser.close()
+                if playwright_ctx is not None:
+                    playwright_ctx.stop()
+
+    # include_content=True のとき本文取得
+    if config.include_content and all_articles:
+        session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+
+        for article in all_articles:
+            url = article.get("url", "")
+            if not url:
+                continue
+            content_data = fetch_article_content(session, url, config.timeout)
+            if content_data:
+                article["content"] = content_data.get("content", "")
+            time.sleep(get_delay(config))
+
+    df = pd.DataFrame(all_articles)
+
+    # 日別 JSON + 全体 Parquet 保存
+    if output_path and not df.empty:
+        _save_articles_by_date(df, output_path)
+
+    return df
+
+
+async def async_collect_historical_news(
+    start_date: datetime,
+    end_date: datetime,
+    tickers: list[str] | None = None,
+    categories: list[str] | None = None,
+    config: ScraperConfig | None = None,
+    output_dir: str | Path | None = None,
+) -> pd.DataFrame:
+    """指定期間の NASDAQ 過去ニュースを並列で非同期収集する統合オーケストレーター.
+
+    ``collect_historical_news`` の非同期版。ティッカー間の並列化を ``RateLimiter`` +
+    ``gather_with_errors`` で実現し、本文取得の並列化も ``max_concurrency_content``
+    で制御する。
+
+    Parameters
+    ----------
+    start_date : datetime
+        開始日時
+    end_date : datetime
+        終了日時
+    tickers : list[str] | None
+        銘柄コードリスト。指定時は API ページネーション（戦略A）を使用。
+        ティッカー間の並列化は ``RateLimiter`` + ``gather_with_errors`` で実行。
+    categories : list[str] | None
+        カテゴリリスト（``NASDAQ_CATEGORIES`` のいずれか）。
+        ``config.use_playwright=True`` のとき Playwright アーカイブ（戦略B）を使用。
+        None のときデフォルトカテゴリ（``NASDAQ_QUANT_CATEGORIES``）を使用。
+    config : ScraperConfig | None
+        スクレイパー設定（None でデフォルト）
+    output_dir : str | Path | None
+        出力ディレクトリ（None で保存しない）。日別 JSON + 全体 Parquet を保存。
+
+    Returns
+    -------
+    pd.DataFrame
+        収集した記事のデータフレーム
+
+    Examples
+    --------
+    >>> import asyncio
+    >>> from datetime import datetime
+    >>> async def main():
+    ...     df = await async_collect_historical_news(
+    ...         start_date=datetime(2024, 1, 1),
+    ...         end_date=datetime(2024, 1, 7),
+    ...         tickers=["AAPL", "MSFT"],
+    ...     )
+    ...     print(len(df))
+    >>> asyncio.run(main())
+    """
+    if config is None:
+        config = ScraperConfig()
+
+    output_path: Path | None = None
+    if output_dir:
+        output_path = Path(output_dir)
+        output_path.mkdir(parents=True, exist_ok=True)
+
+    all_articles: list[dict] = []
+
+    # 戦略A: tickers 指定時は API ページネーション（RateLimiter + gather_with_errors で並列化）
+    if tickers:
+        ticker_session = create_async_session(
+            impersonate=config.impersonate, proxy=config.proxy
+        )
+        ticker_limiter = RateLimiter(
+            delay=config.delay, max_concurrency=config.max_concurrency
+        )
+
+        async def _fetch_ticker(ticker: str) -> list[Article]:
+            async with ticker_limiter:
+                logger.info(
+                    "Collecting historical news via API (async)",
+                    ticker=ticker,
+                    start_date=str(start_date.date()),
+                    end_date=str(end_date.date()),
+                )
+                return await async_fetch_stock_news_api_paginated(
+                    ticker_session,
+                    ticker,
+                    start_date=start_date,
+                    end_date=end_date,
+                    config=config,
+                )
+
+        ticker_tasks = [asyncio.create_task(_fetch_ticker(t)) for t in tickers]
+        ticker_results = await gather_with_errors(ticker_tasks, logger)
+
+        for article_list in ticker_results:
+            all_articles.extend([a.to_dict() for a in article_list])
+
+    # 戦略B: categories + use_playwright=True のとき Playwright アーカイブ
+    if config.use_playwright:
+        cats = categories if categories is not None else list(NASDAQ_QUANT_CATEGORIES)
+
+        close_playwright = False
+        playwright_ctx = None
+        browser = None
+
+        if async_playwright is None:  # pragma: no cover
+            logger.warning("playwright not installed, skipping archive collection")
+        else:
+            playwright_ctx = await async_playwright().start()
+            browser = await playwright_ctx.chromium.launch(headless=True)
+            close_playwright = True
+
+        try:
+            for category in cats:
+                logger.info(
+                    "Collecting historical news via Playwright archive (async)",
+                    category=category,
+                )
+                try:
+                    archive_articles = await async_fetch_news_archive_playwright(
+                        category,
+                        browser=browser,
+                    )
+                    all_articles.extend(archive_articles)
+                except Exception as e:
+                    logger.error(
+                        "Archive fetch failed (async)",
+                        category=category,
+                        error=str(e),
+                    )
+
+                await asyncio.sleep(config.delay)
+        finally:
+            if close_playwright:
+                if browser is not None:
+                    await browser.close()
+                if playwright_ctx is not None:
+                    await playwright_ctx.stop()
+
+    # include_content=True のとき本文取得（max_concurrency_content で並列化）
+    if config.include_content and all_articles:
+        content_session = create_async_session(
+            impersonate=config.impersonate, proxy=config.proxy
+        )
+        content_limiter = RateLimiter(
+            delay=config.delay, max_concurrency=config.max_concurrency_content
+        )
+
+        async def _fetch_content(article: dict) -> tuple[str, str]:
+            url = article.get("url", "")
+            async with content_limiter:
+                content_data = await async_fetch_article_content(
+                    content_session, url, config.timeout
+                )
+                content = content_data.get("content", "") if content_data else ""
+                return url, content
+
+        urls = [a.get("url", "") for a in all_articles]
+        content_tasks = [
+            asyncio.create_task(_fetch_content(a)) for a in all_articles if a.get("url")
+        ]
+        content_results = await gather_with_errors(content_tasks, logger)
+
+        content_map: dict[str, str] = {}
+        for url, content in content_results:
+            content_map[url] = content
+
+        for article in all_articles:
+            url = article.get("url", "")
+            if url in content_map:
+                article["content"] = content_map[url]
+
+    df = pd.DataFrame(all_articles)
+
+    # 日別 JSON + 全体 Parquet 保存
+    if output_path and not df.empty:
+        _save_articles_by_date(df, output_path)
+
+    return df
+
+
+def _save_articles_by_date(df: pd.DataFrame, output_path: Path) -> None:
+    """記事を日別 JSON と全体 Parquet に保存する内部ヘルパー.
+
+    ``published`` カラムが存在する場合は日付でグループ化して日別 JSON を保存する。
+    全体は ``all_articles.parquet`` として保存する。
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        保存する記事データフレーム
+    output_path : Path
+        出力ディレクトリ
+    """
+    import json
+
+    # metadata カラムが空辞書の場合は Parquet 書き込みでエラーになるため文字列化する
+    df_to_save = df.copy()
+    if "metadata" in df_to_save.columns:
+        df_to_save["metadata"] = df_to_save["metadata"].apply(
+            lambda v: str(v) if isinstance(v, dict) else v
+        )
+
+    # 全体 Parquet 保存
+    df_to_save.to_parquet(output_path / "all_articles.parquet", index=False)
+
+    # 日別 JSON 保存（published カラムがある場合）
+    if "published" in df.columns:
+        for article in df.to_dict(orient="records"):
+            pub_str = article.get("published", "")
+            date_str = ""
+            if pub_str:
+                try:
+                    dt = _parse_article_date(str(pub_str))
+                    if dt:
+                        date_str = dt.strftime("%Y-%m-%d")
+                except Exception as e:
+                    logger.debug(
+                        "Date parse failed for grouping", pub_str=pub_str, error=str(e)
+                    )
+            if not date_str:
+                date_str = "unknown"
+
+            date_file = output_path / f"{date_str}.json"
+            existing: list[dict] = []
+            if date_file.exists():
+                with open(date_file, encoding="utf-8") as f:
+                    existing = json.load(f)
+            existing.append(article)
+            with open(date_file, "w", encoding="utf-8") as f:
+                json.dump(existing, f, ensure_ascii=False, indent=2)
+
+
 # 後方互換性のためのエイリアス
 QUANT_CATEGORIES = NASDAQ_QUANT_CATEGORIES
