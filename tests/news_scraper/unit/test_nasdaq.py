@@ -1165,3 +1165,415 @@ class TestAsyncFetchStockNewsApiPaginated:
 
         assert mock_session.get.call_count == 1
         assert len(result) == 5
+
+
+class TestFetchNewsArchivePlaywright:
+    """fetch_news_archive_playwright() のテスト."""
+
+    def _make_playwright_mocks(
+        self,
+        mock_page: MagicMock,
+    ) -> tuple[MagicMock, MagicMock]:
+        """sync_playwright と browser のモックを生成するヘルパー.
+
+        実装の sync_playwright().start() パターンに対応したモックを返す。
+
+        Returns
+        -------
+        tuple[MagicMock, MagicMock]
+            (mock_sync_playwright_fn, mock_browser)
+        """
+        mock_browser = MagicMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_pw_instance = MagicMock()
+        mock_pw_instance.chromium.launch.return_value = mock_browser
+
+        mock_sync_pw = MagicMock()
+        mock_sync_pw.return_value.start.return_value = mock_pw_instance
+
+        return mock_sync_pw, mock_browser
+
+    def _make_mock_page(
+        self,
+        article_links: list[tuple[str, str]],
+        has_load_more: bool = False,
+    ) -> MagicMock:
+        """ページモックを生成するヘルパー.
+
+        Parameters
+        ----------
+        article_links : list[tuple[str, str]]
+            (href, text) のリスト
+        has_load_more : bool
+            "Load More" ボタンが存在するか
+        """
+        page = MagicMock()
+
+        def _make_link(href: str, text: str) -> MagicMock:
+            link = MagicMock()
+            link.get_attribute.return_value = href
+            link.inner_text.return_value = text
+            return link
+
+        links = [_make_link(href, text) for href, text in article_links]
+        page.query_selector_all.return_value = links
+
+        if has_load_more:
+            load_more_btn = MagicMock()
+            page.query_selector.return_value = load_more_btn
+        else:
+            page.query_selector.return_value = None
+
+        return page
+
+    def test_正常系_記事一覧を取得できる(self) -> None:
+        """ページに記事リンクが存在するとき記事リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/test-article-1", "Test Article One"),
+            ("https://www.nasdaq.com/articles/test-article-2", "Another Article"),
+        ]
+
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=10)
+
+        assert len(result) == 2
+        assert result[0]["title"] == "Test Article One"
+        assert result[0]["url"] == "https://www.nasdaq.com/articles/test-article-1"
+        assert result[0]["source"] == "nasdaq"
+        assert result[0]["category"] == "Markets"
+
+    def test_正常系_出力形式がtitle_url_date_category_sourceを含む(self) -> None:
+        """各記事 dict が必須キーを含むことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/sample", "Sample Article Title"),
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=10)
+
+        assert len(result) == 1
+        article = result[0]
+        assert "title" in article
+        assert "url" in article
+        assert "date" in article
+        assert "category" in article
+        assert "source" in article
+        assert article["source"] == "nasdaq"
+
+    def test_正常系_browserNoneで新規ブラウザを作成し終了する(self) -> None:
+        """browser=None のとき新規ブラウザを起動して終了することを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            fetch_news_archive_playwright("Markets", max_articles=10, browser=None)
+
+        mock_sync_pw.assert_called_once()
+        mock_browser.close.assert_called_once()
+
+    def test_正常系_browser指定で既存インスタンスを再利用する(self) -> None:
+        """browser 引数を渡したとき新規ブラウザを起動しないことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_browser = MagicMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_sync_pw = MagicMock()
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            fetch_news_archive_playwright(
+                "Markets", max_articles=10, browser=mock_browser
+            )
+            mock_sync_pw.assert_not_called()
+
+        mock_browser.close.assert_not_called()
+
+    def test_正常系_LoadMoreボタンを繰り返しクリックできる(self) -> None:
+        """Load More ボタンが存在するとき click() が呼ばれることを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/article-1", "Article One"),
+        ]
+        mock_page = MagicMock()
+
+        def _make_link(href: str, text: str) -> MagicMock:
+            link = MagicMock()
+            link.get_attribute.return_value = href
+            link.inner_text.return_value = text
+            return link
+
+        links = [_make_link(href, text) for href, text in article_links]
+        mock_page.query_selector_all.return_value = links
+
+        # 1回クリック後に None を返す（ボタンが消える）
+        load_more = MagicMock()
+        mock_page.query_selector.side_effect = [load_more, None]
+
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            fetch_news_archive_playwright("Markets", max_articles=100)
+
+        load_more.click.assert_called_once()
+
+    def test_正常系_エラー時に空リストを返す(self) -> None:
+        """ページ取得が例外を送出したとき空リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        mock_browser = MagicMock()
+        mock_browser.new_page.side_effect = Exception("Browser error")
+
+        result = fetch_news_archive_playwright(
+            "Markets", max_articles=10, browser=mock_browser
+        )
+
+        assert result == []
+
+    def test_正常系_max_articlesで取得数を制限できる(self) -> None:
+        """max_articles を超えたとき取得を停止することを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            (f"https://www.nasdaq.com/articles/article-{i}", f"Article {i}")
+            for i in range(10)
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=3)
+
+        assert len(result) <= 3
+
+    def test_正常系_URLにnasdaqドメイン以外のリンクを除外する(self) -> None:
+        """NASDAQ ドメイン以外の URL を含む記事が除外されることを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/valid-article", "Valid Article"),
+            ("https://external.com/news/external-link", "External Article"),
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=10)
+
+        urls = [a["url"] for a in result]
+        assert all("nasdaq.com" in u for u in urls)
+
+
+class TestAsyncFetchNewsArchivePlaywright:
+    """async_fetch_news_archive_playwright() のテスト."""
+
+    def _make_playwright_mocks(
+        self,
+        mock_page: AsyncMock,
+    ) -> tuple[MagicMock, AsyncMock]:
+        """async_playwright と browser のモックを生成するヘルパー.
+
+        実装の async_playwright().start() パターン（await あり）に対応したモックを返す。
+
+        Returns
+        -------
+        tuple[MagicMock, AsyncMock]
+            (mock_async_playwright_fn, mock_browser)
+        """
+        mock_browser = AsyncMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_pw_instance = AsyncMock()
+        mock_pw_instance.chromium.launch.return_value = mock_browser
+
+        mock_async_pw = MagicMock()
+        # async_playwright().start() は await されるので AsyncMock にする
+        mock_async_pw.return_value.start = AsyncMock(return_value=mock_pw_instance)
+
+        return mock_async_pw, mock_browser
+
+    def _make_mock_page(
+        self,
+        article_links: list[tuple[str, str]],
+        has_load_more: bool = False,
+    ) -> AsyncMock:
+        """非同期ページモックを生成するヘルパー."""
+        page = AsyncMock()
+
+        def _make_link(href: str, text: str) -> AsyncMock:
+            link = AsyncMock()
+            link.get_attribute.return_value = href
+            link.inner_text.return_value = text
+            return link
+
+        links = [_make_link(href, text) for href, text in article_links]
+        page.query_selector_all.return_value = links
+
+        if has_load_more:
+            load_more_btn = AsyncMock()
+            page.query_selector.return_value = load_more_btn
+        else:
+            page.query_selector.return_value = None
+
+        return page
+
+    @pytest.mark.asyncio
+    async def test_正常系_記事一覧を取得できる(self) -> None:
+        """ページに記事リンクが存在するとき記事リストを返すことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/test-article-1", "Test Article One"),
+            ("https://www.nasdaq.com/articles/test-article-2", "Another Article"),
+        ]
+
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            result = await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10
+            )
+
+        assert len(result) == 2
+        assert result[0]["title"] == "Test Article One"
+        assert result[0]["url"] == "https://www.nasdaq.com/articles/test-article-1"
+        assert result[0]["source"] == "nasdaq"
+        assert result[0]["category"] == "Markets"
+
+    @pytest.mark.asyncio
+    async def test_正常系_出力形式がtitle_url_date_category_sourceを含む(
+        self,
+    ) -> None:
+        """各記事 dict が必須キーを含むことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/sample", "Sample Article Title"),
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            result = await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10
+            )
+
+        assert len(result) == 1
+        article = result[0]
+        assert "title" in article
+        assert "url" in article
+        assert "date" in article
+        assert "category" in article
+        assert "source" in article
+        assert article["source"] == "nasdaq"
+
+    @pytest.mark.asyncio
+    async def test_正常系_browserNoneで新規ブラウザを作成し終了する(self) -> None:
+        """browser=None のとき新規ブラウザを起動して終了することを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10, browser=None
+            )
+
+        mock_async_pw.assert_called_once()
+        mock_browser.close.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_正常系_browser指定で既存インスタンスを再利用する(self) -> None:
+        """browser 引数を渡したとき新規ブラウザを起動しないことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_browser = AsyncMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_async_pw = MagicMock()
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10, browser=mock_browser
+            )
+            mock_async_pw.assert_not_called()
+
+        mock_browser.close.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_正常系_LoadMoreボタンを繰り返しクリックできる(self) -> None:
+        """Load More ボタンが存在するとき click() が呼ばれることを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/article-1", "Article One"),
+        ]
+        mock_page = AsyncMock()
+
+        def _make_link(href: str, text: str) -> AsyncMock:
+            link = AsyncMock()
+            link.get_attribute.return_value = href
+            link.inner_text.return_value = text
+            return link
+
+        links = [_make_link(href, text) for href, text in article_links]
+        mock_page.query_selector_all.return_value = links
+
+        load_more = AsyncMock()
+        mock_page.query_selector.side_effect = [load_more, None]
+
+        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            await async_fetch_news_archive_playwright("Markets", max_articles=100)
+
+        load_more.click.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_正常系_エラー時に空リストを返す(self) -> None:
+        """ページ取得が例外を送出したとき空リストを返すことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        mock_browser = AsyncMock()
+        mock_browser.new_page.side_effect = Exception("Browser error")
+
+        result = await async_fetch_news_archive_playwright(
+            "Markets", max_articles=10, browser=mock_browser
+        )
+
+        assert result == []
+
+    @pytest.mark.asyncio
+    async def test_正常系_max_articlesで取得数を制限できる(self) -> None:
+        """max_articles を超えたとき取得を停止することを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            (f"https://www.nasdaq.com/articles/article-{i}", f"Article {i}")
+            for i in range(10)
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            result = await async_fetch_news_archive_playwright(
+                "Markets", max_articles=3
+            )
+
+        assert len(result) <= 3

@@ -24,6 +24,16 @@ from .async_core import RateLimiter, gather_with_errors
 from .session import create_async_session, create_session
 from .types import NASDAQ_CATEGORIES, NASDAQ_QUANT_CATEGORIES, Article, ScraperConfig
 
+try:
+    # Playwright はオプション依存。インストール時のみモジュールスコープに公開し、
+    # テスト時に patch("news_scraper.nasdaq.sync_playwright") でモック差し替えを可能にする。
+    from playwright.async_api import async_playwright  # type: ignore[import-not-found]
+    from playwright.sync_api import sync_playwright  # type: ignore[import-not-found]
+except ImportError:  # pragma: no cover
+    sync_playwright = None  # type: ignore[assignment]
+    async_playwright = None  # type: ignore[assignment]
+
+
 logger = get_logger(__name__)
 
 
@@ -1397,6 +1407,273 @@ async def async_collect_nasdaq_news(
         df.to_parquet(output_path / f"nasdaq_{timestamp}.parquet", index=False)
 
     return df
+
+
+def fetch_news_archive_playwright(
+    category: str,
+    max_articles: int = 100,
+    browser=None,
+) -> list[dict]:
+    """Playwright を使って NASDAQ ニュースアーカイブページから記事一覧を取得する.
+
+    JS レンダリング後に記事リンクを抽出し、"Load More" ボタンを繰り返しクリックして
+    過去記事を取得する。CNBC の ``fetch_sitemap_articles_playwright`` と同じパターンを踏襲。
+
+    Parameters
+    ----------
+    category : str
+        NASDAQ_CATEGORIES に含まれるカテゴリ名（例: "Markets", "Technology"）
+    max_articles : int
+        最大取得件数
+    browser : Browser | None
+        既存の Playwright ブラウザインスタンス。None の場合は新規作成して終了時に閉じる。
+
+    Returns
+    -------
+    list[dict]
+        記事情報のリスト。各 dict は以下のキーを持つ:
+        - ``title``: 記事タイトル
+        - ``url``: 記事 URL
+        - ``date``: 取得日付（YYYY-MM-DD 形式）
+        - ``category``: カテゴリ名
+        - ``source``: "nasdaq"
+
+    Examples
+    --------
+    >>> articles = fetch_news_archive_playwright("Markets", max_articles=50)
+    >>> print(len(articles))
+    """
+    url_segment = _category_to_url_segment(category)
+    url = f"https://www.nasdaq.com/news-and-insights/topic/{url_segment}"
+
+    logger.debug("Fetching NASDAQ archive (playwright)", category=category, url=url)
+
+    close_browser = False
+    playwright_ctx = None
+
+    if browser is None:
+        if sync_playwright is None:  # pragma: no cover
+            raise ImportError(
+                "playwright is not installed. Run: uv add playwright && playwright install"
+            )
+        playwright_ctx = sync_playwright().start()
+        browser = playwright_ctx.chromium.launch(headless=True)
+        close_browser = True
+
+    try:
+        page = browser.new_page()
+        page.goto(url, timeout=30000)
+        page.wait_for_load_state("networkidle", timeout=15000)
+
+        # "Load More" ボタンを繰り返しクリックして記事を追加読み込み
+        while True:
+            load_more = page.query_selector("button:has-text('Load More')")
+            if load_more is None:
+                break
+
+            # 現在の記事数が max_articles に達したら追加クリックを停止
+            links = page.query_selector_all("a")
+            current_count = sum(
+                1
+                for link in links
+                if "/articles/" in (link.get_attribute("href") or "")
+                and "nasdaq.com" in (link.get_attribute("href") or "")
+            )
+            if current_count >= max_articles:
+                break
+
+            load_more.click()
+            page.wait_for_load_state("networkidle", timeout=15000)
+
+        links = page.query_selector_all("a")
+
+        articles = []
+        seen: set[str] = set()
+        today = datetime.now().strftime("%Y-%m-%d")
+
+        for link in links:
+            if len(articles) >= max_articles:
+                break
+
+            href = link.get_attribute("href") or ""
+            text = link.inner_text().strip()
+
+            # NASDAQ ドメインの記事リンクのみ対象
+            if (
+                "nasdaq.com" not in href
+                or "/articles/" not in href
+                or not text
+                or href in seen
+            ):
+                continue
+
+            seen.add(href)
+            articles.append(
+                {
+                    "title": text,
+                    "url": href,
+                    "date": today,
+                    "category": category,
+                    "source": "nasdaq",
+                }
+            )
+
+        page.close()
+        logger.info(
+            "NASDAQ archive fetched (playwright)",
+            category=category,
+            article_count=len(articles),
+        )
+        return articles
+
+    except Exception as e:
+        logger.error(
+            "NASDAQ archive fetch failed (playwright)", category=category, error=str(e)
+        )
+        return []
+
+    finally:
+        if close_browser:
+            browser.close()
+            if playwright_ctx:
+                playwright_ctx.stop()
+
+
+async def async_fetch_news_archive_playwright(
+    category: str,
+    max_articles: int = 100,
+    browser=None,
+) -> list[dict]:
+    """Playwright を使って NASDAQ ニュースアーカイブページから記事一覧を非同期で取得する.
+
+    ``fetch_news_archive_playwright`` の非同期版。Playwright の非同期 API
+    (``playwright.async_api``) を使用し、``await page.goto()`` や
+    ``await page.wait_for_load_state()`` で非同期にブラウザ操作を行う。
+
+    Parameters
+    ----------
+    category : str
+        NASDAQ_CATEGORIES に含まれるカテゴリ名（例: "Markets", "Technology"）
+    max_articles : int
+        最大取得件数
+    browser : Browser | None
+        既存の Playwright ブラウザインスタンス。None の場合は新規作成して終了時に閉じる。
+
+    Returns
+    -------
+    list[dict]
+        記事情報のリスト。各 dict は以下のキーを持つ:
+        - ``title``: 記事タイトル
+        - ``url``: 記事 URL
+        - ``date``: 取得日付（YYYY-MM-DD 形式）
+        - ``category``: カテゴリ名
+        - ``source``: "nasdaq"
+
+    Examples
+    --------
+    >>> import asyncio
+    >>> async def main():
+    ...     articles = await async_fetch_news_archive_playwright("Markets", max_articles=50)
+    ...     print(len(articles))
+    >>> asyncio.run(main())
+    """
+    url_segment = _category_to_url_segment(category)
+    url = f"https://www.nasdaq.com/news-and-insights/topic/{url_segment}"
+
+    logger.debug(
+        "Fetching NASDAQ archive (playwright, async)", category=category, url=url
+    )
+
+    close_browser = False
+    playwright_ctx = None
+
+    if browser is None:
+        if async_playwright is None:  # pragma: no cover
+            raise ImportError(
+                "playwright is not installed. Run: uv add playwright && playwright install"
+            )
+        playwright_ctx = await async_playwright().start()
+        browser = await playwright_ctx.chromium.launch(headless=True)
+        close_browser = True
+
+    try:
+        page = await browser.new_page()
+        await page.goto(url, timeout=30000)
+        await page.wait_for_load_state("networkidle", timeout=15000)
+
+        # "Load More" ボタンを繰り返しクリックして記事を追加読み込み
+        while True:
+            load_more = await page.query_selector("button:has-text('Load More')")
+            if load_more is None:
+                break
+
+            # 現在の記事数が max_articles に達したら追加クリックを停止
+            links = await page.query_selector_all("a")
+            current_count = 0
+            for link in links:
+                href = await link.get_attribute("href") or ""
+                if "/articles/" in href and "nasdaq.com" in href:
+                    current_count += 1
+            if current_count >= max_articles:
+                break
+
+            await load_more.click()
+            await page.wait_for_load_state("networkidle", timeout=15000)
+
+        links = await page.query_selector_all("a")
+
+        articles = []
+        seen: set[str] = set()
+        today = datetime.now().strftime("%Y-%m-%d")
+
+        for link in links:
+            if len(articles) >= max_articles:
+                break
+
+            href = await link.get_attribute("href") or ""
+            text = (await link.inner_text()).strip()
+
+            # NASDAQ ドメインの記事リンクのみ対象
+            if (
+                "nasdaq.com" not in href
+                or "/articles/" not in href
+                or not text
+                or href in seen
+            ):
+                continue
+
+            seen.add(href)
+            articles.append(
+                {
+                    "title": text,
+                    "url": href,
+                    "date": today,
+                    "category": category,
+                    "source": "nasdaq",
+                }
+            )
+
+        await page.close()
+        logger.info(
+            "NASDAQ archive fetched (playwright, async)",
+            category=category,
+            article_count=len(articles),
+        )
+        return articles
+
+    except Exception as e:
+        logger.error(
+            "NASDAQ archive fetch failed (playwright, async)",
+            category=category,
+            error=str(e),
+        )
+        return []
+
+    finally:
+        if close_browser:
+            await browser.close()
+            if playwright_ctx:
+                await playwright_ctx.stop()
 
 
 # 後方互換性のためのエイリアス
