@@ -83,7 +83,7 @@ class ScraperConfig:
     include_content : bool
         本文を取得するか
     use_playwright : bool
-        Playwright を使用するか（CNBC サイトマップ用）
+        Playwright を使用するか（CNBC サイトマップ用・NASDAQ 過去記事取得用）
     max_concurrency : int
         RSS/API の最大同時リクエスト数
     max_concurrency_content : int

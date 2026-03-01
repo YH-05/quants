@@ -60,6 +60,9 @@ from .exceptions import (
     ScraperError,
 )
 from .nasdaq import (
+    async_collect_historical_news as async_collect_nasdaq_historical,
+)
+from .nasdaq import (
     async_collect_nasdaq_news,
     collect_nasdaq_news,
 )
@@ -76,6 +79,12 @@ from .nasdaq import (
     async_fetch_rss_feed as async_fetch_nasdaq_rss,
 )
 from .nasdaq import (
+    async_fetch_stock_news_api_paginated as async_fetch_nasdaq_stock_news_paginated,
+)
+from .nasdaq import (
+    collect_historical_news as collect_nasdaq_historical,
+)
+from .nasdaq import (
     fetch_article_content as fetch_nasdaq_content,
 )
 from .nasdaq import (
@@ -89,6 +98,9 @@ from .nasdaq import (
 )
 from .nasdaq import (
     fetch_stock_news_api as fetch_nasdaq_stock_news,
+)
+from .nasdaq import (
+    fetch_stock_news_api_paginated as fetch_nasdaq_stock_news_paginated,
 )
 from .session import create_async_session, create_session
 from .types import (
@@ -131,6 +143,7 @@ __all__ = [
     # 統合
     "async_collect_financial_news",
     # NASDAQ
+    "async_collect_nasdaq_historical",
     "async_collect_nasdaq_news",
     "async_fetch_cnbc_categories",
     "async_fetch_cnbc_content",
@@ -138,10 +151,12 @@ __all__ = [
     "async_fetch_nasdaq_categories",
     "async_fetch_nasdaq_content",
     "async_fetch_nasdaq_rss",
+    "async_fetch_nasdaq_stock_news_paginated",
     "async_fetch_nasdaq_stocks",
     "collect_cnbc_historical",
     "collect_financial_news",
     "collect_financial_news_fast",
+    "collect_nasdaq_historical",
     "collect_nasdaq_news",
     # yfinance
     "collect_yfinance_news",
@@ -155,6 +170,7 @@ __all__ = [
     "fetch_nasdaq_content",
     "fetch_nasdaq_rss",
     "fetch_nasdaq_stock_news",
+    "fetch_nasdaq_stock_news_paginated",
     "fetch_nasdaq_stocks",
     "fetch_yf_content",
     "fetch_yf_search_news",
