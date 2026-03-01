@@ -697,6 +697,377 @@ async def async_fetch_stock_news_api(
         return []
 
 
+def fetch_stock_news_api_paginated(
+    session: requests.Session,
+    ticker: str,
+    max_articles: int = 200,
+    page_size: int = 20,
+    start_date: datetime | None = None,
+    end_date: datetime | None = None,
+    config: ScraperConfig | None = None,
+) -> list[Article]:
+    """NASDAQ API から銘柄別ニュースをページネーションで取得する.
+
+    ``offset`` パラメータを ``0, page_size, 2*page_size, ...`` とループしながら
+    複数ページの記事を取得する。以下の条件のいずれかを満たすと終了する:
+
+    - ``offset >= data.totalrecords``（全記事取得済み）
+    - ``offset >= max_articles``（上限到達）
+    - レスポンスの rows が空
+    - 全記事が ``start_date`` より古い（日付フィルタリング）
+
+    Parameters
+    ----------
+    session : requests.Session
+        HTTP セッション
+    ticker : str
+        銘柄コード（例: AAPL, MSFT）
+    max_articles : int
+        最大取得件数
+    page_size : int
+        1 ページの取得件数
+    start_date : datetime | None
+        この日時より古い記事を除外（None で全期間）
+    end_date : datetime | None
+        この日時より新しい記事を除外（None で制限なし）
+    config : ScraperConfig | None
+        スクレイパー設定（None でデフォルト）
+
+    Returns
+    -------
+    list[Article]
+        記事情報のリスト（API エラー時は取得済みの部分結果）
+    """
+    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
+        )
+
+    if config is None:
+        config = ScraperConfig()
+
+    from .types import get_delay
+
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    }
+
+    ticker_upper = ticker.upper()
+    articles: list[Article] = []
+    offset = 0
+
+    logger.debug(
+        "Fetching NASDAQ stock news paginated",
+        ticker=ticker_upper,
+        max_articles=max_articles,
+        page_size=page_size,
+    )
+
+    while offset < max_articles:
+        url = (
+            f"https://api.nasdaq.com/api/news/topic/articlebysymbol"
+            f"?q={ticker_upper}|STOCKS&offset={offset}&limit={page_size}"
+        )
+
+        try:
+            resp = session.get(url, headers=headers, timeout=config.timeout)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception as e:
+            logger.error(
+                "NASDAQ paginated API failed",
+                ticker=ticker_upper,
+                offset=offset,
+                error=str(e),
+            )
+            break
+
+        rows = data.get("data", {}).get("rows", [])
+        total_records_str = data.get("data", {}).get("totalrecords", "0")
+        try:
+            total_records = int(total_records_str)
+        except (ValueError, TypeError):
+            total_records = 0
+
+        # 空 rows で早期終了
+        if not rows:
+            logger.debug(
+                "Empty rows, stopping pagination", ticker=ticker_upper, offset=offset
+            )
+            break
+
+        # 全記事が start_date より古い場合に早期終了するフラグ
+        all_older_than_start = start_date is not None
+
+        for row in rows:
+            pub_str = row.get("created", "")
+            pub_dt = _parse_article_date(pub_str)
+
+            # end_date フィルタリング
+            if end_date is not None and pub_dt is not None:
+                # タイムゾーン比較のための正規化
+                _end = end_date.replace(tzinfo=None) if end_date.tzinfo else end_date
+                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+                if _pub > _end:
+                    continue
+
+            # start_date フィルタリング
+            if start_date is not None and pub_dt is not None:
+                _start = (
+                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
+                )
+                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+                if _pub >= _start:
+                    all_older_than_start = False
+                # start_date より古い記事はスキップするが、ページ内に新しいものがあれば継続
+            else:
+                all_older_than_start = False
+
+            # start_date フィルタリング: 古い記事はスキップ
+            if start_date is not None and pub_dt is not None:
+                _start = (
+                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
+                )
+                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+                if _pub < _start:
+                    continue
+
+            articles.append(
+                Article(
+                    title=row.get("title", ""),
+                    url=row.get("url", ""),
+                    published=pub_str,
+                    ticker=ticker_upper,
+                    author=row.get("provider", ""),
+                    source="nasdaq",
+                )
+            )
+
+        offset += page_size
+
+        # 全記事が start_date より古い場合は早期終了
+        if all_older_than_start:
+            logger.debug(
+                "All articles older than start_date, stopping",
+                ticker=ticker_upper,
+                offset=offset,
+            )
+            break
+
+        # totalrecords で終了判定
+        if total_records > 0 and offset >= total_records:
+            logger.debug(
+                "Reached totalrecords, stopping pagination",
+                ticker=ticker_upper,
+                offset=offset,
+                total_records=total_records,
+            )
+            break
+
+        # ページ間レートリミット
+        delay = get_delay(config)
+        time.sleep(delay)
+
+    logger.info(
+        "NASDAQ stock news paginated fetch completed",
+        ticker=ticker_upper,
+        article_count=len(articles),
+    )
+    return articles
+
+
+async def async_fetch_stock_news_api_paginated(
+    session: AsyncSession,
+    ticker: str,
+    max_articles: int = 200,
+    page_size: int = 20,
+    start_date: datetime | None = None,
+    end_date: datetime | None = None,
+    config: ScraperConfig | None = None,
+) -> list[Article]:
+    """NASDAQ API から銘柄別ニュースをページネーションで非同期取得する.
+
+    ``fetch_stock_news_api_paginated`` の非同期版。HTTP 取得を
+    ``await session.get()`` で非同期化し、ページ間の待機を
+    ``asyncio.sleep()`` で実行する。
+
+    Parameters
+    ----------
+    session : AsyncSession
+        非同期 HTTP セッション（``create_async_session()`` で作成）
+    ticker : str
+        銘柄コード（例: AAPL, MSFT）
+    max_articles : int
+        最大取得件数
+    page_size : int
+        1 ページの取得件数
+    start_date : datetime | None
+        この日時より古い記事を除外（None で全期間）
+    end_date : datetime | None
+        この日時より新しい記事を除外（None で制限なし）
+    config : ScraperConfig | None
+        スクレイパー設定（None でデフォルト）
+
+    Returns
+    -------
+    list[Article]
+        記事情報のリスト（API エラー時は取得済みの部分結果）
+
+    Examples
+    --------
+    >>> import asyncio
+    >>> from datetime import datetime
+    >>> from news_scraper.session import create_async_session
+    >>> async def main():
+    ...     session = create_async_session()
+    ...     articles = await async_fetch_stock_news_api_paginated(
+    ...         session, "AAPL", max_articles=100
+    ...     )
+    ...     print(len(articles))
+    >>> asyncio.run(main())
+    """
+    if not re.fullmatch(r"[A-Za-z0-9.\-]{1,10}", ticker):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters, dots, and hyphens are allowed (max 10 chars)."
+        )
+
+    if config is None:
+        config = ScraperConfig()
+
+    from .types import get_delay
+
+    headers = {
+        "Accept": "application/json",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    }
+
+    ticker_upper = ticker.upper()
+    articles: list[Article] = []
+    offset = 0
+
+    logger.debug(
+        "Fetching NASDAQ stock news paginated (async)",
+        ticker=ticker_upper,
+        max_articles=max_articles,
+        page_size=page_size,
+    )
+
+    while offset < max_articles:
+        url = (
+            f"https://api.nasdaq.com/api/news/topic/articlebysymbol"
+            f"?q={ticker_upper}|STOCKS&offset={offset}&limit={page_size}"
+        )
+
+        try:
+            resp = await session.get(url, headers=headers, timeout=config.timeout)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception as e:
+            logger.error(
+                "NASDAQ paginated API failed (async)",
+                ticker=ticker_upper,
+                offset=offset,
+                error=str(e),
+            )
+            break
+
+        rows = data.get("data", {}).get("rows", [])
+        total_records_str = data.get("data", {}).get("totalrecords", "0")
+        try:
+            total_records = int(total_records_str)
+        except (ValueError, TypeError):
+            total_records = 0
+
+        # 空 rows で早期終了
+        if not rows:
+            logger.debug(
+                "Empty rows, stopping pagination (async)",
+                ticker=ticker_upper,
+                offset=offset,
+            )
+            break
+
+        # 全記事が start_date より古い場合に早期終了するフラグ
+        all_older_than_start = start_date is not None
+
+        for row in rows:
+            pub_str = row.get("created", "")
+            pub_dt = _parse_article_date(pub_str)
+
+            # end_date フィルタリング
+            if end_date is not None and pub_dt is not None:
+                _end = end_date.replace(tzinfo=None) if end_date.tzinfo else end_date
+                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+                if _pub > _end:
+                    continue
+
+            # start_date フィルタリング
+            if start_date is not None and pub_dt is not None:
+                _start = (
+                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
+                )
+                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+                if _pub >= _start:
+                    all_older_than_start = False
+            else:
+                all_older_than_start = False
+
+            # start_date より古い記事はスキップ
+            if start_date is not None and pub_dt is not None:
+                _start = (
+                    start_date.replace(tzinfo=None) if start_date.tzinfo else start_date
+                )
+                _pub = pub_dt.replace(tzinfo=None) if pub_dt.tzinfo else pub_dt
+                if _pub < _start:
+                    continue
+
+            articles.append(
+                Article(
+                    title=row.get("title", ""),
+                    url=row.get("url", ""),
+                    published=pub_str,
+                    ticker=ticker_upper,
+                    author=row.get("provider", ""),
+                    source="nasdaq",
+                )
+            )
+
+        offset += page_size
+
+        # 全記事が start_date より古い場合は早期終了
+        if all_older_than_start:
+            logger.debug(
+                "All articles older than start_date, stopping (async)",
+                ticker=ticker_upper,
+                offset=offset,
+            )
+            break
+
+        # totalrecords で終了判定
+        if total_records > 0 and offset >= total_records:
+            logger.debug(
+                "Reached totalrecords, stopping pagination (async)",
+                ticker=ticker_upper,
+                offset=offset,
+                total_records=total_records,
+            )
+            break
+
+        # ページ間レートリミット
+        delay = get_delay(config)
+        await asyncio.sleep(delay)
+
+    logger.info(
+        "NASDAQ stock news paginated fetch completed (async)",
+        ticker=ticker_upper,
+        article_count=len(articles),
+    )
+    return articles
+
+
 async def async_fetch_multiple_stocks(
     session: AsyncSession,
     tickers: list[str],
