@@ -28,6 +28,90 @@ from .types import NASDAQ_CATEGORIES, NASDAQ_QUANT_CATEGORIES, Article, ScraperC
 logger = get_logger(__name__)
 
 
+def _parse_article_date(date_str: str) -> datetime | None:
+    """NASDAQ API/ページの日付文字列を datetime にパースする.
+
+    複数の日付フォーマットを順次試行し、最初にパース成功した datetime を返す。
+    いずれのフォーマットにもマッチしない場合は None を返す。
+
+    Parameters
+    ----------
+    date_str : str
+        パース対象の日付文字列。対応フォーマット:
+        - ISO 8601: "2026-02-23T12:00:00+00:00", "2026-02-23T12:00:00Z"
+        - "MM/DD/YYYY": "02/23/2026"
+        - "Month DD, YYYY": "February 23, 2026"
+        - "Mon DD, YYYY": "Feb 23, 2026"
+
+    Returns
+    -------
+    datetime | None
+        パース成功時は datetime オブジェクト、失敗時は None
+    """
+    if not date_str:
+        return None
+
+    # ISO 8601: "2026-02-23T12:00:00Z" のZサフィックスを標準形式に変換
+    normalized = date_str.strip()
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+
+    # 試行するフォーマット一覧（優先順）
+    formats = [
+        "%Y-%m-%dT%H:%M:%S%z",  # ISO 8601 with timezone: 2026-02-23T12:00:00+00:00
+        "%Y-%m-%dT%H:%M:%S",  # ISO 8601 without timezone: 2026-02-23T12:00:00
+        "%Y-%m-%d",  # ISO 8601 date only: 2026-02-23
+        "%m/%d/%Y",  # MM/DD/YYYY: 02/23/2026
+        "%B %d, %Y",  # Month DD, YYYY: February 23, 2026
+        "%b %d, %Y",  # Mon DD, YYYY: Feb 23, 2026
+    ]
+
+    for fmt in formats:
+        try:
+            return datetime.strptime(normalized, fmt)
+        except (ValueError, TypeError):
+            continue
+
+    logger.debug("Failed to parse date string", date_str=date_str)
+    return None
+
+
+def _category_to_url_segment(category: str) -> str:
+    """NASDAQ_CATEGORIES をアーカイブページの URL パスに変換する.
+
+    カテゴリ名を小文字に変換し、URL セグメントとして適切な形式を返す。
+    NASDAQ_CATEGORIES に含まれないカテゴリを渡した場合は ValueError を送出する。
+
+    Parameters
+    ----------
+    category : str
+        NASDAQ_CATEGORIES に含まれるカテゴリ名（例: "Markets", "Personal-Finance"）
+
+    Returns
+    -------
+    str
+        URL パスセグメント（小文字）。例: "markets", "personal-finance"
+
+    Raises
+    ------
+    ValueError
+        category が NASDAQ_CATEGORIES に含まれない場合
+
+    Examples
+    --------
+    >>> _category_to_url_segment("Markets")
+    'markets'
+    >>> _category_to_url_segment("Personal-Finance")
+    'personal-finance'
+    """
+    if category not in NASDAQ_CATEGORIES:
+        raise ValueError(
+            f"Unknown NASDAQ category: {category!r}. "
+            f"Valid categories: {sorted(NASDAQ_CATEGORIES)}"
+        )
+    return category.lower()
+
+
 def fetch_rss_feed(
     session: requests.Session,
     category: str | None = None,

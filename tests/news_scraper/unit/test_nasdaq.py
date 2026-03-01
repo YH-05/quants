@@ -355,3 +355,159 @@ class TestAsyncFetchStockNewsApi:
         result = await async_fetch_stock_news_api(mock_session, "GOOG")
 
         assert result == []
+
+
+class TestParseArticleDate:
+    """_parse_article_date() のテスト."""
+
+    def test_正常系_ISO8601形式をパースできる(self) -> None:
+        """ISO 8601 形式の日付文字列を datetime にパースできることを確認。"""
+        from datetime import datetime, timezone
+
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("2026-02-23T12:00:00+00:00")
+
+        assert result is not None
+        assert isinstance(result, datetime)
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_正常系_ISO8601形式Zサフィックスをパースできる(self) -> None:
+        """ISO 8601 形式（Z サフィックス）の日付文字列をパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("2026-01-15T08:30:00Z")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 1
+        assert result.day == 15
+
+    def test_正常系_MM_DD_YYYY形式をパースできる(self) -> None:
+        """'MM/DD/YYYY' 形式の日付文字列を datetime にパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("02/23/2026")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_正常系_Month_DD_YYYY形式をパースできる(self) -> None:
+        """'Month DD, YYYY' 形式の日付文字列を datetime にパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("February 23, 2026")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_正常系_月名省略形Month_DD_YYYY形式をパースできる(self) -> None:
+        """'Mon DD, YYYY' 形式（月名省略形）の日付文字列をパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("Feb 23, 2026")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_異常系_不正形式でNoneを返す(self) -> None:
+        """認識できない形式の日付文字列で None を返すことを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("not-a-date")
+
+        assert result is None
+
+    def test_異常系_空文字列でNoneを返す(self) -> None:
+        """空文字列を渡したとき None を返すことを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("")
+
+        assert result is None
+
+    def test_エッジケース_数字のみでNoneを返す(self) -> None:
+        """数字のみの文字列を渡したとき None を返すことを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("12345")
+
+        assert result is None
+
+
+class TestCategoryToUrlSegment:
+    """_category_to_url_segment() のテスト."""
+
+    def test_正常系_Marketsをmarketsに変換する(self) -> None:
+        """'Markets' カテゴリを 'markets' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("Markets")
+
+        assert result == "markets"
+
+    def test_正常系_PersonalFinanceをpersonal_financeに変換する(self) -> None:
+        """'Personal-Finance' カテゴリを 'personal-finance' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("Personal-Finance")
+
+        assert result == "personal-finance"
+
+    def test_正常系_全NASDAQ_CATEGORIESを正しく変換する(self) -> None:
+        """全 NASDAQ_CATEGORIES が ValueError を送出せずに変換できることを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+        from news_scraper.types import NASDAQ_CATEGORIES
+
+        for category in NASDAQ_CATEGORIES:
+            result = _category_to_url_segment(category)
+            assert isinstance(result, str)
+            assert len(result) > 0
+            # URL セグメントは小文字であることを確認
+            assert result == result.lower()
+
+    def test_正常系_Technologyをtechnologyに変換する(self) -> None:
+        """'Technology' カテゴリを 'technology' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("Technology")
+
+        assert result == "technology"
+
+    def test_正常系_ETFsをetfsに変換する(self) -> None:
+        """'ETFs' カテゴリを 'etfs' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("ETFs")
+
+        assert result == "etfs"
+
+    def test_正常系_IPOsをiposに変換する(self) -> None:
+        """'IPOs' カテゴリを 'ipos' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("IPOs")
+
+        assert result == "ipos"
+
+    def test_異常系_不明カテゴリでValueErrorを送出する(self) -> None:
+        """NASDAQ_CATEGORIES に含まれない不明カテゴリで ValueError を送出することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        with pytest.raises(ValueError, match="Unknown NASDAQ category"):
+            _category_to_url_segment("UnknownCategory")
+
+    def test_異常系_空文字列でValueErrorを送出する(self) -> None:
+        """空文字列を渡したとき ValueError を送出することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        with pytest.raises(ValueError, match="Unknown NASDAQ category"):
+            _category_to_url_segment("")
