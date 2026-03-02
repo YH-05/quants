@@ -11,6 +11,37 @@ import pytest
 
 from news_scraper.types import Article, ScraperConfig
 
+# ---- モジュールレベルテストヘルパー ----
+
+
+def _nasdaq_page_response(rows: list[dict], total_records: int = 40) -> MagicMock:
+    """NASDAQ ページネーション API レスポンスのモックを生成するヘルパー."""
+    mock_response = MagicMock()
+    mock_response.raise_for_status = MagicMock()
+    mock_response.json.return_value = {
+        "data": {
+            "rows": rows,
+            "totalrecords": str(total_records),
+        }
+    }
+    return mock_response
+
+
+def _sync_playwright_link(href: str, text: str) -> MagicMock:
+    """sync Playwright のリンク要素モックを生成するヘルパー."""
+    link = MagicMock()
+    link.get_attribute.return_value = href
+    link.inner_text.return_value = text
+    return link
+
+
+def _async_playwright_link(href: str, text: str) -> AsyncMock:
+    """async Playwright のリンク要素モックを生成するヘルパー."""
+    link = AsyncMock()
+    link.get_attribute.return_value = href
+    link.inner_text.return_value = text
+    return link
+
 
 class TestFetchRssFeed:
     """fetch_rss_feed() のテスト."""
@@ -355,3 +386,1683 @@ class TestAsyncFetchStockNewsApi:
         result = await async_fetch_stock_news_api(mock_session, "GOOG")
 
         assert result == []
+
+
+class TestParseArticleDate:
+    """_parse_article_date() のテスト."""
+
+    def test_正常系_ISO8601形式をパースできる(self) -> None:
+        """ISO 8601 形式の日付文字列を datetime にパースできることを確認。"""
+        from datetime import datetime, timezone
+
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("2026-02-23T12:00:00+00:00")
+
+        assert result is not None
+        assert isinstance(result, datetime)
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_正常系_ISO8601形式Zサフィックスをパースできる(self) -> None:
+        """ISO 8601 形式（Z サフィックス）の日付文字列をパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("2026-01-15T08:30:00Z")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 1
+        assert result.day == 15
+
+    def test_正常系_MM_DD_YYYY形式をパースできる(self) -> None:
+        """'MM/DD/YYYY' 形式の日付文字列を datetime にパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("02/23/2026")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_正常系_Month_DD_YYYY形式をパースできる(self) -> None:
+        """'Month DD, YYYY' 形式の日付文字列を datetime にパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("February 23, 2026")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_正常系_月名省略形Month_DD_YYYY形式をパースできる(self) -> None:
+        """'Mon DD, YYYY' 形式（月名省略形）の日付文字列をパースできることを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("Feb 23, 2026")
+
+        assert result is not None
+        assert result.year == 2026
+        assert result.month == 2
+        assert result.day == 23
+
+    def test_異常系_不正形式でNoneを返す(self) -> None:
+        """認識できない形式の日付文字列で None を返すことを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("not-a-date")
+
+        assert result is None
+
+    def test_異常系_空文字列でNoneを返す(self) -> None:
+        """空文字列を渡したとき None を返すことを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("")
+
+        assert result is None
+
+    def test_エッジケース_数字のみでNoneを返す(self) -> None:
+        """数字のみの文字列を渡したとき None を返すことを確認。"""
+        from news_scraper.nasdaq import _parse_article_date
+
+        result = _parse_article_date("12345")
+
+        assert result is None
+
+
+class TestCategoryToUrlSegment:
+    """_category_to_url_segment() のテスト."""
+
+    def test_正常系_Marketsをmarketsに変換する(self) -> None:
+        """'Markets' カテゴリを 'markets' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("Markets")
+
+        assert result == "markets"
+
+    def test_正常系_PersonalFinanceをpersonal_financeに変換する(self) -> None:
+        """'Personal-Finance' カテゴリを 'personal-finance' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("Personal-Finance")
+
+        assert result == "personal-finance"
+
+    def test_正常系_全NASDAQ_CATEGORIESを正しく変換する(self) -> None:
+        """全 NASDAQ_CATEGORIES が ValueError を送出せずに変換できることを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+        from news_scraper.types import NASDAQ_CATEGORIES
+
+        for category in NASDAQ_CATEGORIES:
+            result = _category_to_url_segment(category)
+            assert isinstance(result, str)
+            assert len(result) > 0
+            # URL セグメントは小文字であることを確認
+            assert result == result.lower()
+
+    def test_正常系_Technologyをtechnologyに変換する(self) -> None:
+        """'Technology' カテゴリを 'technology' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("Technology")
+
+        assert result == "technology"
+
+    def test_正常系_ETFsをetfsに変換する(self) -> None:
+        """'ETFs' カテゴリを 'etfs' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("ETFs")
+
+        assert result == "etfs"
+
+    def test_正常系_IPOsをiposに変換する(self) -> None:
+        """'IPOs' カテゴリを 'ipos' URL セグメントに変換することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        result = _category_to_url_segment("IPOs")
+
+        assert result == "ipos"
+
+    def test_異常系_不明カテゴリでValueErrorを送出する(self) -> None:
+        """NASDAQ_CATEGORIES に含まれない不明カテゴリで ValueError を送出することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        with pytest.raises(ValueError, match="Unknown NASDAQ category"):
+            _category_to_url_segment("UnknownCategory")
+
+    def test_異常系_空文字列でValueErrorを送出する(self) -> None:
+        """空文字列を渡したとき ValueError を送出することを確認。"""
+        from news_scraper.nasdaq import _category_to_url_segment
+
+        with pytest.raises(ValueError, match="Unknown NASDAQ category"):
+            _category_to_url_segment("")
+
+
+class TestFetchStockNewsApiPaginated:
+    """fetch_stock_news_api_paginated() のテスト."""
+
+    def test_正常系_複数ページの記事を取得できる(self) -> None:
+        """2 ページ分の記事が正しく結合されることを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        page1_rows = [
+            {
+                "title": f"Article {i}",
+                "url": f"https://nasdaq.com/article/{i}",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+            for i in range(3)
+        ]
+        page2_rows = [
+            {
+                "title": f"Article {i + 3}",
+                "url": f"https://nasdaq.com/article/{i + 3}",
+                "created": "2026-02-22T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+            for i in range(3)
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.side_effect = [
+            _nasdaq_page_response(page1_rows, total_records=6),
+            _nasdaq_page_response(page2_rows, total_records=6),
+        ]
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=10, page_size=3
+            )
+
+        assert len(result) == 6
+        assert all(isinstance(a, Article) for a in result)
+
+    def test_正常系_totalrecordsで自動終了する(self) -> None:
+        """totalrecords に達したとき追加リクエストを送らないことを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article",
+                "url": "https://nasdaq.com/a",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=1
+            )
+
+        assert mock_session.get.call_count == 1
+        assert len(result) == 1
+
+    def test_正常系_max_articlesで取得数を制限できる(self) -> None:
+        """max_articles を超えたとき取得を停止することを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": f"Article {i}",
+                "url": f"https://nasdaq.com/article/{i}",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+            for i in range(5)
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=5, page_size=5
+            )
+
+        assert mock_session.get.call_count == 1
+        assert len(result) == 5
+
+    def test_正常系_空rowsで早期終了する(self) -> None:
+        """rows が空のとき追加リクエストを送らないことを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response([], total_records=10)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=20
+            )
+
+        assert mock_session.get.call_count == 1
+        assert result == []
+
+    def test_正常系_start_dateより古い記事を除外する(self) -> None:
+        """start_date より古い記事がフィルタリングされることを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "New Article",
+                "url": "https://nasdaq.com/new",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+            {
+                "title": "Old Article",
+                "url": "https://nasdaq.com/old",
+                "created": "2026-01-01T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session,
+                "AAPL",
+                max_articles=100,
+                page_size=20,
+                start_date=datetime(2026, 2, 1),
+            )
+
+        assert len(result) == 1
+        assert result[0].title == "New Article"
+
+    def test_正常系_end_dateより新しい記事を除外する(self) -> None:
+        """end_date より新しい記事がフィルタリングされることを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Future Article",
+                "url": "https://nasdaq.com/future",
+                "created": "2026-03-01T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+            {
+                "title": "Old Article",
+                "url": "https://nasdaq.com/old",
+                "created": "2026-01-15T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session,
+                "AAPL",
+                max_articles=100,
+                page_size=20,
+                end_date=datetime(2026, 2, 28),
+            )
+
+        assert len(result) == 1
+        assert result[0].title == "Old Article"
+
+    def test_正常系_全記事がstart_dateより古い場合に早期終了する(self) -> None:
+        """ページ内の全記事が start_date より古い場合に次ページを取得しないことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Very Old Article",
+                "url": "https://nasdaq.com/very-old",
+                "created": "2025-01-01T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session,
+                "AAPL",
+                max_articles=100,
+                page_size=1,
+                start_date=datetime(2026, 1, 1),
+            )
+
+        assert mock_session.get.call_count == 1
+        assert result == []
+
+    def test_正常系_APIエラー時に取得済みの部分結果を返す(self) -> None:
+        """1 ページ目成功・2 ページ目エラーのとき 1 ページ目の記事を返すことを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article 1",
+                "url": "https://nasdaq.com/1",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.side_effect = [
+            _nasdaq_page_response(rows, total_records=100),
+            Exception("Network error"),
+        ]
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=1
+            )
+
+        assert len(result) == 1
+        assert result[0].title == "Article 1"
+
+    def test_正常系_ページ間にget_delayでレートリミットする(self) -> None:
+        """複数ページ取得時に time.sleep が呼ばれることを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article",
+                "url": "https://nasdaq.com/a",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.side_effect = [
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+        ]
+
+        config = ScraperConfig(delay=1.0, jitter=0.0)
+
+        with patch("news_scraper.nasdaq.time.sleep") as mock_sleep:
+            fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=3, page_size=1, config=config
+            )
+
+        assert mock_sleep.call_count >= 1
+
+    def test_異常系_不正なtickerでValueErrorを送出する(self) -> None:
+        """不正な ticker シンボルで ValueError を送出することを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        mock_session = MagicMock()
+
+        with pytest.raises(ValueError, match="Invalid ticker symbol"):
+            fetch_stock_news_api_paginated(mock_session, "INVALID!!!!")
+
+    def test_正常系_tickerが大文字に正規化される(self) -> None:
+        """小文字ティッカーを渡したとき Article.ticker が大文字になることを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article",
+                "url": "https://nasdaq.com/a",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "aapl", max_articles=100, page_size=1
+            )
+
+        assert result[0].ticker == "AAPL"
+
+    def test_正常系_configがNoneのときデフォルトScraperConfigを使用する(self) -> None:
+        """config=None のときデフォルト ScraperConfig で動作することを確認。"""
+        from news_scraper.nasdaq import fetch_stock_news_api_paginated
+
+        mock_session = MagicMock()
+        mock_session.get.return_value = _nasdaq_page_response([], total_records=0)
+
+        with patch("news_scraper.nasdaq.time.sleep"):
+            result = fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=20, config=None
+            )
+
+        assert result == []
+
+
+class TestAsyncFetchStockNewsApiPaginated:
+    """async_fetch_stock_news_api_paginated() のテスト."""
+
+    @pytest.mark.asyncio
+    async def test_正常系_複数ページの記事を取得できる(self) -> None:
+        """2 ページ分の記事が正しく結合されることを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        page1_rows = [
+            {
+                "title": f"Article {i}",
+                "url": f"https://nasdaq.com/article/{i}",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+            for i in range(3)
+        ]
+        page2_rows = [
+            {
+                "title": f"Article {i + 3}",
+                "url": f"https://nasdaq.com/article/{i + 3}",
+                "created": "2026-02-22T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+            for i in range(3)
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.side_effect = [
+            _nasdaq_page_response(page1_rows, total_records=6),
+            _nasdaq_page_response(page2_rows, total_records=6),
+        ]
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=10, page_size=3
+            )
+
+        assert len(result) == 6
+        assert all(isinstance(a, Article) for a in result)
+
+    @pytest.mark.asyncio
+    async def test_正常系_totalrecordsで自動終了する(self) -> None:
+        """totalrecords に達したとき追加リクエストを送らないことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article",
+                "url": "https://nasdaq.com/a",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=1
+            )
+
+        assert mock_session.get.call_count == 1
+        assert len(result) == 1
+
+    @pytest.mark.asyncio
+    async def test_正常系_空rowsで早期終了する(self) -> None:
+        """rows が空のとき追加リクエストを送らないことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response([], total_records=10)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=20
+            )
+
+        assert mock_session.get.call_count == 1
+        assert result == []
+
+    @pytest.mark.asyncio
+    async def test_正常系_start_dateより古い記事を除外する(self) -> None:
+        """start_date より古い記事がフィルタリングされることを確認（非同期版）。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "New Article",
+                "url": "https://nasdaq.com/new",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+            {
+                "title": "Old Article",
+                "url": "https://nasdaq.com/old",
+                "created": "2026-01-01T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session,
+                "AAPL",
+                max_articles=100,
+                page_size=20,
+                start_date=datetime(2026, 2, 1),
+            )
+
+        assert len(result) == 1
+        assert result[0].title == "New Article"
+
+    @pytest.mark.asyncio
+    async def test_正常系_end_dateより新しい記事を除外する(self) -> None:
+        """end_date より新しい記事がフィルタリングされることを確認（非同期版）。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Future Article",
+                "url": "https://nasdaq.com/future",
+                "created": "2026-03-01T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+            {
+                "title": "Old Article",
+                "url": "https://nasdaq.com/old",
+                "created": "2026-01-15T10:00:00+00:00",
+                "provider": "Reuters",
+            },
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session,
+                "AAPL",
+                max_articles=100,
+                page_size=20,
+                end_date=datetime(2026, 2, 28),
+            )
+
+        assert len(result) == 1
+        assert result[0].title == "Old Article"
+
+    @pytest.mark.asyncio
+    async def test_正常系_全記事がstart_dateより古い場合に早期終了する(self) -> None:
+        """全記事が start_date より古いとき次ページを取得しないことを確認（非同期版）。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Very Old Article",
+                "url": "https://nasdaq.com/very-old",
+                "created": "2025-01-01T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session,
+                "AAPL",
+                max_articles=100,
+                page_size=1,
+                start_date=datetime(2026, 1, 1),
+            )
+
+        assert mock_session.get.call_count == 1
+        assert result == []
+
+    @pytest.mark.asyncio
+    async def test_正常系_APIエラー時に取得済みの部分結果を返す(self) -> None:
+        """1 ページ目成功・2 ページ目エラーのとき 1 ページ目の記事を返すことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article 1",
+                "url": "https://nasdaq.com/1",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.side_effect = [
+            _nasdaq_page_response(rows, total_records=100),
+            Exception("Network error"),
+        ]
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=100, page_size=1
+            )
+
+        assert len(result) == 1
+        assert result[0].title == "Article 1"
+
+    @pytest.mark.asyncio
+    async def test_正常系_ページ間にasyncio_sleepでレートリミットする(self) -> None:
+        """複数ページ取得時に asyncio.sleep が呼ばれることを確認。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article",
+                "url": "https://nasdaq.com/a",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.side_effect = [
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+        ]
+
+        config = ScraperConfig(delay=1.0, jitter=0.0)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep") as mock_sleep:
+            await async_fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=3, page_size=1, config=config
+            )
+
+        assert mock_sleep.call_count >= 1
+
+    @pytest.mark.asyncio
+    async def test_異常系_不正なtickerでValueErrorを送出する(self) -> None:
+        """不正な ticker シンボルで ValueError を送出することを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        mock_session = AsyncMock()
+
+        with pytest.raises(ValueError, match="Invalid ticker symbol"):
+            await async_fetch_stock_news_api_paginated(mock_session, "INVALID!!!!")
+
+    @pytest.mark.asyncio
+    async def test_正常系_tickerが大文字に正規化される(self) -> None:
+        """小文字ティッカーを渡したとき Article.ticker が大文字になることを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": "Article",
+                "url": "https://nasdaq.com/a",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session, "msft", max_articles=100, page_size=1
+            )
+
+        assert result[0].ticker == "MSFT"
+
+    @pytest.mark.asyncio
+    async def test_正常系_max_articlesで取得数を制限できる(self) -> None:
+        """max_articles を超えたとき取得を停止することを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
+
+        rows = [
+            {
+                "title": f"Article {i}",
+                "url": f"https://nasdaq.com/article/{i}",
+                "created": "2026-02-23T10:00:00+00:00",
+                "provider": "Reuters",
+            }
+            for i in range(5)
+        ]
+
+        mock_session = AsyncMock()
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
+
+        with patch("news_scraper.nasdaq.asyncio.sleep"):
+            result = await async_fetch_stock_news_api_paginated(
+                mock_session, "AAPL", max_articles=5, page_size=5
+            )
+
+        assert mock_session.get.call_count == 1
+        assert len(result) == 5
+
+
+class TestFetchNewsArchivePlaywright:
+    """fetch_news_archive_playwright() のテスト."""
+
+    def _make_playwright_mocks(
+        self,
+        mock_page: MagicMock,
+    ) -> tuple[MagicMock, MagicMock]:
+        """sync_playwright と browser のモックを生成するヘルパー.
+
+        実装の sync_playwright().start() パターンに対応したモックを返す。
+
+        Returns
+        -------
+        tuple[MagicMock, MagicMock]
+            (mock_sync_playwright_fn, mock_browser)
+        """
+        mock_browser = MagicMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_pw_instance = MagicMock()
+        mock_pw_instance.chromium.launch.return_value = mock_browser
+
+        mock_sync_pw = MagicMock()
+        mock_sync_pw.return_value.start.return_value = mock_pw_instance
+
+        return mock_sync_pw, mock_browser
+
+    def _make_mock_page(
+        self,
+        article_links: list[tuple[str, str]],
+        has_load_more: bool = False,
+    ) -> MagicMock:
+        """ページモックを生成するヘルパー.
+
+        Parameters
+        ----------
+        article_links : list[tuple[str, str]]
+            (href, text) のリスト
+        has_load_more : bool
+            "Load More" ボタンが存在するか
+        """
+        page = MagicMock()
+        links = [_sync_playwright_link(href, text) for href, text in article_links]
+        page.query_selector_all.return_value = links
+
+        if has_load_more:
+            load_more_btn = MagicMock()
+            page.query_selector.return_value = load_more_btn
+        else:
+            page.query_selector.return_value = None
+
+        return page
+
+    def test_正常系_記事一覧を取得できる(self) -> None:
+        """ページに記事リンクが存在するとき記事リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/test-article-1", "Test Article One"),
+            ("https://www.nasdaq.com/articles/test-article-2", "Another Article"),
+        ]
+
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=10)
+
+        assert len(result) == 2
+        assert result[0]["title"] == "Test Article One"
+        assert result[0]["url"] == "https://www.nasdaq.com/articles/test-article-1"
+        assert result[0]["source"] == "nasdaq"
+        assert result[0]["category"] == "Markets"
+
+    def test_正常系_出力形式がtitle_url_date_category_sourceを含む(self) -> None:
+        """各記事 dict が必須キーを含むことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/sample", "Sample Article Title"),
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=10)
+
+        assert len(result) == 1
+        article = result[0]
+        assert "title" in article
+        assert "url" in article
+        assert "date" in article
+        assert "category" in article
+        assert "source" in article
+        assert article["source"] == "nasdaq"
+
+    def test_正常系_browserNoneで新規ブラウザを作成し終了する(self) -> None:
+        """browser=None のとき新規ブラウザを起動して終了することを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            fetch_news_archive_playwright("Markets", max_articles=10, browser=None)
+
+        mock_sync_pw.assert_called_once()
+        mock_browser.close.assert_called_once()
+
+    def test_正常系_browser指定で既存インスタンスを再利用する(self) -> None:
+        """browser 引数を渡したとき新規ブラウザを起動しないことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_browser = MagicMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_sync_pw = MagicMock()
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            fetch_news_archive_playwright(
+                "Markets", max_articles=10, browser=mock_browser
+            )
+            mock_sync_pw.assert_not_called()
+
+        mock_browser.close.assert_not_called()
+
+    def test_正常系_LoadMoreボタンを繰り返しクリックできる(self) -> None:
+        """Load More ボタンが存在するとき click() が呼ばれることを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/article-1", "Article One"),
+        ]
+        mock_page = MagicMock()
+        links = [_sync_playwright_link(href, text) for href, text in article_links]
+        mock_page.query_selector_all.return_value = links
+
+        # 1回クリック後に None を返す（ボタンが消える）
+        load_more = MagicMock()
+        mock_page.query_selector.side_effect = [load_more, None]
+
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            fetch_news_archive_playwright("Markets", max_articles=100)
+
+        load_more.click.assert_called_once()
+
+    def test_正常系_エラー時に空リストを返す(self) -> None:
+        """ページ取得が例外を送出したとき空リストを返すことを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        mock_browser = MagicMock()
+        mock_browser.new_page.side_effect = Exception("Browser error")
+
+        result = fetch_news_archive_playwright(
+            "Markets", max_articles=10, browser=mock_browser
+        )
+
+        assert result == []
+
+    def test_正常系_max_articlesで取得数を制限できる(self) -> None:
+        """max_articles を超えたとき取得を停止することを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            (f"https://www.nasdaq.com/articles/article-{i}", f"Article {i}")
+            for i in range(10)
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=3)
+
+        assert len(result) <= 3
+
+    def test_正常系_URLにnasdaqドメイン以外のリンクを除外する(self) -> None:
+        """NASDAQ ドメイン以外の URL を含む記事が除外されることを確認。"""
+        from news_scraper.nasdaq import fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/valid-article", "Valid Article"),
+            ("https://external.com/news/external-link", "External Article"),
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
+            result = fetch_news_archive_playwright("Markets", max_articles=10)
+
+        urls = [a["url"] for a in result]
+        assert all("nasdaq.com" in u for u in urls)
+
+
+class TestAsyncFetchNewsArchivePlaywright:
+    """async_fetch_news_archive_playwright() のテスト."""
+
+    def _make_playwright_mocks(
+        self,
+        mock_page: AsyncMock,
+    ) -> tuple[MagicMock, AsyncMock]:
+        """async_playwright と browser のモックを生成するヘルパー.
+
+        実装の async_playwright().start() パターン（await あり）に対応したモックを返す。
+
+        Returns
+        -------
+        tuple[MagicMock, AsyncMock]
+            (mock_async_playwright_fn, mock_browser)
+        """
+        mock_browser = AsyncMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_pw_instance = AsyncMock()
+        mock_pw_instance.chromium.launch.return_value = mock_browser
+
+        mock_async_pw = MagicMock()
+        # async_playwright().start() は await されるので AsyncMock にする
+        mock_async_pw.return_value.start = AsyncMock(return_value=mock_pw_instance)
+
+        return mock_async_pw, mock_browser
+
+    def _make_mock_page(
+        self,
+        article_links: list[tuple[str, str]],
+        has_load_more: bool = False,
+    ) -> AsyncMock:
+        """非同期ページモックを生成するヘルパー."""
+        page = AsyncMock()
+        links = [_async_playwright_link(href, text) for href, text in article_links]
+        page.query_selector_all.return_value = links
+
+        if has_load_more:
+            load_more_btn = AsyncMock()
+            page.query_selector.return_value = load_more_btn
+        else:
+            page.query_selector.return_value = None
+
+        return page
+
+    @pytest.mark.asyncio
+    async def test_正常系_記事一覧を取得できる(self) -> None:
+        """ページに記事リンクが存在するとき記事リストを返すことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/test-article-1", "Test Article One"),
+            ("https://www.nasdaq.com/articles/test-article-2", "Another Article"),
+        ]
+
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            result = await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10
+            )
+
+        assert len(result) == 2
+        assert result[0]["title"] == "Test Article One"
+        assert result[0]["url"] == "https://www.nasdaq.com/articles/test-article-1"
+        assert result[0]["source"] == "nasdaq"
+        assert result[0]["category"] == "Markets"
+
+    @pytest.mark.asyncio
+    async def test_正常系_出力形式がtitle_url_date_category_sourceを含む(
+        self,
+    ) -> None:
+        """各記事 dict が必須キーを含むことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/sample", "Sample Article Title"),
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            result = await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10
+            )
+
+        assert len(result) == 1
+        article = result[0]
+        assert "title" in article
+        assert "url" in article
+        assert "date" in article
+        assert "category" in article
+        assert "source" in article
+        assert article["source"] == "nasdaq"
+
+    @pytest.mark.asyncio
+    async def test_正常系_browserNoneで新規ブラウザを作成し終了する(self) -> None:
+        """browser=None のとき新規ブラウザを起動して終了することを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10, browser=None
+            )
+
+        mock_async_pw.assert_called_once()
+        mock_browser.close.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_正常系_browser指定で既存インスタンスを再利用する(self) -> None:
+        """browser 引数を渡したとき新規ブラウザを起動しないことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        mock_page = self._make_mock_page([], has_load_more=False)
+        mock_browser = AsyncMock()
+        mock_browser.new_page.return_value = mock_page
+
+        mock_async_pw = MagicMock()
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            await async_fetch_news_archive_playwright(
+                "Markets", max_articles=10, browser=mock_browser
+            )
+            mock_async_pw.assert_not_called()
+
+        mock_browser.close.assert_not_called()
+
+    @pytest.mark.asyncio
+    async def test_正常系_LoadMoreボタンを繰り返しクリックできる(self) -> None:
+        """Load More ボタンが存在するとき click() が呼ばれることを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            ("https://www.nasdaq.com/articles/article-1", "Article One"),
+        ]
+        mock_page = AsyncMock()
+        links = [_async_playwright_link(href, text) for href, text in article_links]
+        mock_page.query_selector_all.return_value = links
+
+        load_more = AsyncMock()
+        mock_page.query_selector.side_effect = [load_more, None]
+
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            await async_fetch_news_archive_playwright("Markets", max_articles=100)
+
+        load_more.click.assert_called_once()
+
+    @pytest.mark.asyncio
+    async def test_正常系_エラー時に空リストを返す(self) -> None:
+        """ページ取得が例外を送出したとき空リストを返すことを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        mock_browser = AsyncMock()
+        mock_browser.new_page.side_effect = Exception("Browser error")
+
+        result = await async_fetch_news_archive_playwright(
+            "Markets", max_articles=10, browser=mock_browser
+        )
+
+        assert result == []
+
+    @pytest.mark.asyncio
+    async def test_正常系_max_articlesで取得数を制限できる(self) -> None:
+        """max_articles を超えたとき取得を停止することを確認（非同期版）。"""
+        from news_scraper.nasdaq import async_fetch_news_archive_playwright
+
+        article_links = [
+            (f"https://www.nasdaq.com/articles/article-{i}", f"Article {i}")
+            for i in range(10)
+        ]
+        mock_page = self._make_mock_page(article_links, has_load_more=False)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
+
+        with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
+            result = await async_fetch_news_archive_playwright(
+                "Markets", max_articles=3
+            )
+
+        assert len(result) <= 3
+
+
+class TestCollectHistoricalNews:
+    """collect_historical_news() のテスト."""
+
+    def test_正常系_tickers指定でAPIページネーションを使用する(self) -> None:
+        """tickers を指定したとき fetch_stock_news_api_paginated を呼ぶことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        mock_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-news",
+            published="2024-01-01T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+
+        with (
+            patch("news_scraper.nasdaq.create_session") as mock_create_session,
+            patch(
+                "news_scraper.nasdaq.fetch_stock_news_api_paginated",
+                return_value=[mock_article],
+            ) as mock_paginated,
+        ):
+            mock_session = MagicMock()
+            mock_create_session.return_value = mock_session
+
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            df = collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL"],
+                config=config,
+            )
+
+        mock_paginated.assert_called_once()
+        assert len(df) == 1
+        assert df.iloc[0]["ticker"] == "AAPL"
+
+    def test_正常系_use_playwrightTrueでアーカイブを使用する(self) -> None:
+        """use_playwright=True のとき fetch_news_archive_playwright を呼ぶことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        archive_articles = [
+            {
+                "title": "Markets Article",
+                "url": "https://www.nasdaq.com/articles/markets-1",
+                "date": "2024-01-01",
+                "category": "Markets",
+                "source": "nasdaq",
+            }
+        ]
+
+        mock_pw = MagicMock()
+        mock_browser = MagicMock()
+        mock_pw.return_value.__enter__ = MagicMock(return_value=mock_pw.return_value)
+        mock_pw.return_value.start.return_value = mock_pw.return_value
+        mock_pw.return_value.chromium.launch.return_value = mock_browser
+
+        with (
+            patch("news_scraper.nasdaq.sync_playwright", mock_pw),
+            patch(
+                "news_scraper.nasdaq.fetch_news_archive_playwright",
+                return_value=archive_articles,
+            ) as mock_archive,
+        ):
+            config = ScraperConfig(use_playwright=True, delay=0.0, jitter=0.0)
+            df = collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                categories=["Markets"],
+                config=config,
+            )
+
+        mock_archive.assert_called_once()
+        assert len(df) == 1
+        assert df.iloc[0]["category"] == "Markets"
+
+    def test_正常系_use_playwrightFalseでアーカイブをスキップする(self) -> None:
+        """use_playwright=False のとき fetch_news_archive_playwright を呼ばないことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        with patch("news_scraper.nasdaq.fetch_news_archive_playwright") as mock_archive:
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            df = collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                categories=["Markets"],
+                config=config,
+            )
+
+        mock_archive.assert_not_called()
+        assert df.empty
+
+    def test_正常系_include_contentTrueで本文取得する(self) -> None:
+        """include_content=True のとき fetch_article_content を呼ぶことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        mock_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-1",
+            published="2024-01-01T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+
+        with (
+            patch("news_scraper.nasdaq.create_session") as mock_create_session,
+            patch(
+                "news_scraper.nasdaq.fetch_stock_news_api_paginated",
+                return_value=[mock_article],
+            ),
+            patch(
+                "news_scraper.nasdaq.fetch_article_content",
+                return_value={"content": "Article body text"},
+            ) as mock_content,
+        ):
+            mock_session = MagicMock()
+            mock_create_session.return_value = mock_session
+
+            config = ScraperConfig(
+                include_content=True, use_playwright=False, delay=0.0, jitter=0.0
+            )
+            df = collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL"],
+                config=config,
+            )
+
+        mock_content.assert_called_once()
+        assert df.iloc[0]["content"] == "Article body text"
+
+    def test_正常系_tickersもcategoriesもなければ空DataFrameを返す(self) -> None:
+        """tickers も categories も指定せず use_playwright=False なら空を返す。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+        df = collect_historical_news(
+            start_date=datetime(2024, 1, 1),
+            end_date=datetime(2024, 1, 7),
+            config=config,
+        )
+
+        assert df.empty
+
+    def test_正常系_output_dirにParquetとJSONを保存する(self, tmp_path) -> None:
+        """output_dir を指定したとき Parquet と日別 JSON が保存されることを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        mock_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-1",
+            published="2024-01-03T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+
+        with (
+            patch("news_scraper.nasdaq.create_session") as mock_create_session,
+            patch(
+                "news_scraper.nasdaq.fetch_stock_news_api_paginated",
+                return_value=[mock_article],
+            ),
+        ):
+            mock_create_session.return_value = MagicMock()
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL"],
+                config=config,
+                output_dir=tmp_path,
+            )
+
+        assert (tmp_path / "all_articles.parquet").exists()
+        # 日別 JSON が作成されていることを確認
+        json_files = list(tmp_path.glob("*.json"))
+        assert len(json_files) >= 1
+
+    def test_正常系_tickerAPIエラー時に他のtickerを継続する(self) -> None:
+        """あるティッカーで例外が発生しても残りのティッカーを処理することを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        mock_article = Article(
+            title="MSFT News",
+            url="https://www.nasdaq.com/articles/msft-1",
+            published="2024-01-01T10:00:00",
+            ticker="MSFT",
+            source="nasdaq",
+        )
+
+        def _side_effect(session, ticker, **kwargs):
+            if ticker == "AAPL":
+                raise RuntimeError("AAPL fetch failed")
+            return [mock_article]
+
+        with (
+            patch("news_scraper.nasdaq.create_session") as mock_create_session,
+            patch(
+                "news_scraper.nasdaq.fetch_stock_news_api_paginated",
+                side_effect=_side_effect,
+            ),
+        ):
+            mock_create_session.return_value = MagicMock()
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            df = collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL", "MSFT"],
+                config=config,
+            )
+
+        assert len(df) == 1
+        assert df.iloc[0]["ticker"] == "MSFT"
+
+    def test_正常系_configNoneのときデフォルトScraperConfigを使用する(self) -> None:
+        """config=None のときデフォルト ScraperConfig で動作することを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import collect_historical_news
+
+        mock_pw = MagicMock()
+        mock_browser = MagicMock()
+        mock_pw.return_value.start.return_value = mock_pw.return_value
+        mock_pw.return_value.chromium.launch.return_value = mock_browser
+
+        with (
+            patch("news_scraper.nasdaq.sync_playwright", mock_pw),
+            patch(
+                "news_scraper.nasdaq.fetch_news_archive_playwright",
+                return_value=[],
+            ),
+        ):
+            # config=None でエラーなく動作すればよい
+            df = collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 3),
+                config=None,
+            )
+
+        assert isinstance(df, __import__("pandas").DataFrame)
+
+
+class TestAsyncCollectHistoricalNews:
+    """async_collect_historical_news() のテスト."""
+
+    @pytest.mark.asyncio
+    async def test_正常系_tickers指定でAPIページネーションを使用する(self) -> None:
+        """tickers を指定したとき async_fetch_stock_news_api_paginated を呼ぶことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        mock_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-news",
+            published="2024-01-01T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+
+        with (
+            patch(
+                "news_scraper.nasdaq.create_async_session"
+            ) as mock_create_async_session,
+            patch(
+                "news_scraper.nasdaq.async_fetch_stock_news_api_paginated",
+                new=AsyncMock(return_value=[mock_article]),
+            ) as mock_paginated,
+        ):
+            mock_create_async_session.return_value = AsyncMock()
+
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            df = await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL"],
+                config=config,
+            )
+
+        mock_paginated.assert_awaited_once()
+        assert len(df) == 1
+        assert df.iloc[0]["ticker"] == "AAPL"
+
+    @pytest.mark.asyncio
+    async def test_正常系_use_playwrightTrueでアーカイブを使用する(self) -> None:
+        """use_playwright=True のとき async_fetch_news_archive_playwright を呼ぶことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        archive_articles = [
+            {
+                "title": "Markets Article",
+                "url": "https://www.nasdaq.com/articles/markets-1",
+                "date": "2024-01-01",
+                "category": "Markets",
+                "source": "nasdaq",
+            }
+        ]
+
+        mock_browser = AsyncMock()
+        mock_pw_instance = AsyncMock()
+        mock_pw_instance.chromium.launch.return_value = mock_browser
+        mock_async_pw = MagicMock()
+        mock_async_pw.return_value.start = AsyncMock(return_value=mock_pw_instance)
+
+        with (
+            patch("news_scraper.nasdaq.async_playwright", mock_async_pw),
+            patch(
+                "news_scraper.nasdaq.async_fetch_news_archive_playwright",
+                new=AsyncMock(return_value=archive_articles),
+            ) as mock_archive,
+        ):
+            config = ScraperConfig(use_playwright=True, delay=0.0, jitter=0.0)
+            df = await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                categories=["Markets"],
+                config=config,
+            )
+
+        mock_archive.assert_awaited_once()
+        assert len(df) == 1
+        assert df.iloc[0]["category"] == "Markets"
+
+    @pytest.mark.asyncio
+    async def test_正常系_use_playwrightFalseでアーカイブをスキップする(self) -> None:
+        """use_playwright=False のとき async_fetch_news_archive_playwright を呼ばないことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        with patch(
+            "news_scraper.nasdaq.async_fetch_news_archive_playwright"
+        ) as mock_archive:
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            df = await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                categories=["Markets"],
+                config=config,
+            )
+
+        mock_archive.assert_not_called()
+        assert df.empty
+
+    @pytest.mark.asyncio
+    async def test_正常系_include_contentTrueで本文を並列取得する(self) -> None:
+        """include_content=True のとき async_fetch_article_content を呼ぶことを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        mock_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-1",
+            published="2024-01-01T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+
+        with (
+            patch(
+                "news_scraper.nasdaq.create_async_session"
+            ) as mock_create_async_session,
+            patch(
+                "news_scraper.nasdaq.async_fetch_stock_news_api_paginated",
+                new=AsyncMock(return_value=[mock_article]),
+            ),
+            patch(
+                "news_scraper.nasdaq.async_fetch_article_content",
+                new=AsyncMock(return_value={"content": "Async article body"}),
+            ) as mock_content,
+        ):
+            mock_create_async_session.return_value = AsyncMock()
+
+            config = ScraperConfig(
+                include_content=True, use_playwright=False, delay=0.0, jitter=0.0
+            )
+            df = await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL"],
+                config=config,
+            )
+
+        mock_content.assert_awaited_once()
+        assert df.iloc[0]["content"] == "Async article body"
+
+    @pytest.mark.asyncio
+    async def test_正常系_複数tickers並列取得する(self) -> None:
+        """複数ティッカーを gather_with_errors + RateLimiter で並列取得することを確認。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        aapl_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-1",
+            published="2024-01-01T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+        msft_article = Article(
+            title="MSFT News",
+            url="https://www.nasdaq.com/articles/msft-1",
+            published="2024-01-02T10:00:00",
+            ticker="MSFT",
+            source="nasdaq",
+        )
+
+        call_count = 0
+
+        async def _mock_paginated(session, ticker, **kwargs):
+            nonlocal call_count
+            call_count += 1
+            if ticker == "AAPL":
+                return [aapl_article]
+            return [msft_article]
+
+        with (
+            patch(
+                "news_scraper.nasdaq.create_async_session"
+            ) as mock_create_async_session,
+            patch(
+                "news_scraper.nasdaq.async_fetch_stock_news_api_paginated",
+                side_effect=_mock_paginated,
+            ),
+        ):
+            mock_create_async_session.return_value = AsyncMock()
+
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            df = await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL", "MSFT"],
+                config=config,
+            )
+
+        assert call_count == 2
+        assert len(df) == 2
+
+    @pytest.mark.asyncio
+    async def test_正常系_output_dirにParquetとJSONを保存する(self, tmp_path) -> None:
+        """output_dir を指定したとき Parquet と日別 JSON が保存されることを確認（非同期版）。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        mock_article = Article(
+            title="AAPL News",
+            url="https://www.nasdaq.com/articles/aapl-1",
+            published="2024-01-03T10:00:00",
+            ticker="AAPL",
+            source="nasdaq",
+        )
+
+        with (
+            patch(
+                "news_scraper.nasdaq.create_async_session"
+            ) as mock_create_async_session,
+            patch(
+                "news_scraper.nasdaq.async_fetch_stock_news_api_paginated",
+                new=AsyncMock(return_value=[mock_article]),
+            ),
+        ):
+            mock_create_async_session.return_value = AsyncMock()
+            config = ScraperConfig(use_playwright=False, delay=0.0, jitter=0.0)
+            await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 7),
+                tickers=["AAPL"],
+                config=config,
+                output_dir=tmp_path,
+            )
+
+        assert (tmp_path / "all_articles.parquet").exists()
+        json_files = list(tmp_path.glob("*.json"))
+        assert len(json_files) >= 1
+
+    @pytest.mark.asyncio
+    async def test_正常系_configNoneのときデフォルトScraperConfigを使用する(
+        self,
+    ) -> None:
+        """config=None のときデフォルト ScraperConfig で動作することを確認（非同期版）。"""
+        from datetime import datetime
+
+        from news_scraper.nasdaq import async_collect_historical_news
+
+        mock_browser = AsyncMock()
+        mock_pw_instance = AsyncMock()
+        mock_pw_instance.chromium.launch.return_value = mock_browser
+        mock_async_pw = MagicMock()
+        mock_async_pw.return_value.start = AsyncMock(return_value=mock_pw_instance)
+
+        with (
+            patch("news_scraper.nasdaq.async_playwright", mock_async_pw),
+            patch(
+                "news_scraper.nasdaq.async_fetch_news_archive_playwright",
+                new=AsyncMock(return_value=[]),
+            ),
+        ):
+            df = await async_collect_historical_news(
+                start_date=datetime(2024, 1, 1),
+                end_date=datetime(2024, 1, 3),
+                config=None,
+            )
+
+        assert isinstance(df, __import__("pandas").DataFrame)

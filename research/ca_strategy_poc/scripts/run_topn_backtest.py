@@ -141,7 +141,7 @@ def main() -> dict:
     sn_results: dict = {}
     for size in [30, 60, 90]:
         sn_weights = bt.load_portfolio_weights(size)
-        sn_mapped, sn_missing = bt.map_portfolio_to_bbg(
+        sn_mapped, _sn_missing = bt.map_portfolio_to_bbg(
             sn_weights, short_to_bbg, available_cols
         )
         sn_total = sum(sn_mapped.values())

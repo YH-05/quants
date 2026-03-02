@@ -1,0 +1,291 @@
+
+# PRレビューレポート
+# 生成日時: 2026-03-02
+# PR: #3692 feat(news_scraper): NASDAQ歴史データ収集機能の実装
+
+metadata:
+  generated_at: "2026-03-02"
+  pr_number: 3692
+  pr_title: "feat(news_scraper): NASDAQ歴史データ収集機能の実装 (Issues #3687-#3691)"
+  base_branch: "main"
+  head_branch: "feature/prj63"
+  review_mode: "remote"
+
+pr_info:
+  files_changed: 26
+  additions: 2974
+  deletions: 127
+  key_files:
+    - path: "src/news_scraper/nasdaq.py"
+      additions: 1189
+      deletions: 105
+    - path: "tests/news_scraper/unit/test_nasdaq.py"
+      additions: 1747
+      deletions: 0
+    - path: "src/news_scraper/__init__.py"
+      additions: 16
+      deletions: 0
+    - path: "src/news_scraper/types.py"
+      additions: 1
+      deletions: 1
+
+scores:
+  readability: 83
+  design: 74
+  performance: 74
+  security_code: 72
+  security_infra: 75
+  test_coverage: 82
+  test_quality: 82
+  code_quality: 77   # (83×0.35) + (74×0.40) + (74×0.25)
+  security: 73       # (72×0.60) + (75×0.40)
+  test: 82           # (82×0.50) + (82×0.50)
+  overall: 77        # (77×0.40) + (73×0.35) + (82×0.25)
+
+# ========== コード品質 ==========
+
+readability:
+  score: 83
+  strengths:
+    - "型ヒントカバレッジ 98.4%（目標90%以上を大きく達成）"
+    - "Docstringカバレッジ 80.6%（目標80%達成）"
+    - "_prefix + snake_case の命名規則が全関数で準拠"
+    - "戦略分岐コメントに AIDEV-NOTE で意図と改善提案を記載"
+  issues:
+    high:
+      - location: "nasdaq.py:1387, 1517"
+        issue: "fetch_news_archive_playwright / async_fetch_news_archive_playwright の browser パラメータに型ヒントがない"
+        suggestion: "TYPE_CHECKING ガードで Playwright Browser 型をインポートし 'browser: Browser | None = None' と明示する"
+    medium:
+      - location: "nasdaq.py:1388, 1518"
+        issue: "Playwright 関数の戻り値型が list[dict] と未特定化（キーが固定なのに TypedDict を使っていない）"
+      - location: "nasdaq.py:1956"
+        issue: "async_collect_historical_news 内で 'urls = ...' が定義されるが未使用"
+        suggestion: "該当行を削除する"
+      - location: "nasdaq.py:303-357 vs 255-300"
+        issue: "async_fetch_rss_feed が sync版のカテゴリバリデーション（ValueError）を持たない"
+      - location: "nasdaq.py:1708 vs 1865"
+        issue: "sync版コメントが英語（Strategy A/B）、async版が日本語（戦略A/B）と不統一"
+  naming_compliance: "PASS"
+  type_hints_coverage: "98.4%"
+  docstring_coverage: "80.6%"
+
+design:
+  score: 74
+  strengths:
+    - "ヘルパー関数への適切な責務分離"
+    - "sync/async 公開 API の対称性が保たれている（7ペア）"
+    - "Playwright オプション依存の try/except が意図的で明快"
+  solid_compliance:
+    single_responsibility: "WARN"  # collect_nasdaq_news が収集・本文取得・保存の複数責務
+    open_closed: "PASS"
+    liskov_substitution: "PASS"
+    interface_segregation: "PASS"
+    dependency_inversion: "WARN"  # create_session を直接呼んでセッション生成に依存
+  dry_violations:
+    - description: "fetch_stock_news_api_paginated と async版のページネーションループ（60行）が完全重複"
+      severity: "HIGH"
+      lines: 60
+    - description: "fetch_news_archive_playwright と async版のリンクフィルタリング（55行）が重複"
+      severity: "HIGH"
+      lines: 55
+    - description: "テストの _make_page_response が2クラスで完全重複定義"
+      severity: "MEDIUM"
+    - description: "テストの _make_link インナー関数が4箇所に重複定義"
+      severity: "MEDIUM"
+
+performance:
+  score: 74
+  strengths:
+    - "RateLimiter (asyncio.Semaphore + delay) による同時実行数・間隔制御"
+    - "gather_with_errors で並列タスクの失敗を個別に吸収"
+    - "asyncio.to_thread() で CPU バウンドな HTML 解析をオフロード"
+    - "3段階早期終了（totalrecords・空rows・start_date）による無駄なページ取得防止"
+  issues:
+    medium:
+      - location: "nasdaq.py:2022"
+        issue: "_save_articles_by_date が記事1件ごとにファイルを read-modify-write（N回のI/O）"
+        recommendation: "defaultdict(list) で日付別に集約してからD回（ユニーク日付数）のファイル操作に削減する"
+      - location: "nasdaq.py:1583"
+        issue: "async_fetch_news_archive_playwright の Load More カウントで await get_attribute を逐次ループ"
+        recommendation: "page.evaluate() で href リストを1回のJS実行で取得する"
+      - location: "nasdaq.py:1447"
+        issue: "fetch_news_archive_playwright で同一リンクへの get_attribute('href') が2回呼ばれている"
+        recommendation: "href を変数に保持して再利用する"
+  complexity_assessment: "MEDIUM"  # 最大複雑度14（async_fetch_news_archive_playwright）
+  async_usage: "GOOD"
+  rate_limiting: "IMPLEMENTED"
+
+# ========== セキュリティ ==========
+
+security_code:
+  score: 72
+  vulnerability_count:
+    critical: 0
+    high: 1
+    medium: 3
+    low: 2
+  findings:
+    - id: "SEC-001"
+      severity: "HIGH"
+      category: "A03 インジェクション / A10 SSRF"
+      location: "nasdaq.py:592-596"
+      description: "async_fetch_article_content にURLスキーム検証がない（sync版 L496-500 には実装済みだが非対称）"
+      recommendation: "sync版と同一のスキームチェック（urlparse で http/https のみ許可）を先頭に追加する"
+      cwe_id: "CWE-918"
+    - id: "SEC-002"
+      severity: "MEDIUM"
+      category: "A05 セキュリティ設定ミス"
+      location: "nasdaq.py:41-44"
+      description: "User-Agent が途中で切断されており curl_cffi の impersonate=chrome131 と不整合"
+      recommendation: "完全な Chrome131 UA に修正するか impersonate に一元化する"
+    - id: "SEC-003"
+      severity: "MEDIUM"
+      category: "A04 安全でない設計"
+      location: "nasdaq.py:763-1049"
+      description: "fetch_stock_news_api_paginated の page_size / max_articles に上限バリデーションなし"
+      recommendation: "page_size を 1-100 に制限する入力バリデーションを追加する"
+    - id: "SEC-004"
+      severity: "MEDIUM"
+      category: "A03 インジェクション"
+      location: "nasdaq.py:338-341"
+      description: "async_fetch_rss_feed にカテゴリバリデーションなし（クエリパラメータインジェクション起点）"
+      recommendation: "sync版と同一のホワイトリスト検証を追加する"
+  secrets_detected: false
+
+security_infra:
+  score: 75
+  vulnerability_count:
+    critical: 0
+    high: 1
+    medium: 3
+    low: 0
+  findings:
+    - id: "SEC-I-001"
+      severity: "HIGH"
+      category: "A06 脆弱で古いコンポーネント"
+      location: "pyproject.toml (transitive: diskcache==5.6.3)"
+      description: "CVE-2025-69872: Python pickle によるデフォルトシリアライズで任意コード実行の脆弱性"
+      recommendation: "修正版リリース次第アップデート。それまでキャッシュディレクトリのパーミッションを制限し CI に pip-audit を組み込む"
+    - id: "SEC-I-002"
+      severity: "MEDIUM"
+      category: "A10 SSRF"
+      location: "nasdaq.py:592-596"
+      description: "async_fetch_article_content にURLスキーム検証なし（SEC-001と同一）"
+    - id: "SEC-I-003"
+      severity: "MEDIUM"
+      category: "A10 SSRF"
+      location: "nasdaq.py:338-341"
+      description: "async_fetch_rss_feed にカテゴリホワイトリスト検証なし（SEC-004と同一）"
+    - id: "SEC-I-004"
+      severity: "MEDIUM"
+      category: "A10 SSRF"
+      location: "nasdaq.py:1233, 1350, 1791, 1948"
+      description: "本文取得フェーズでホスト名ホワイトリスト検証なし"
+  ssrf_risk: "MEDIUM"
+  logging_assessment: "ADEQUATE"
+  dependencies:
+    vulnerable:
+      - package: "diskcache"
+        version: "5.6.3"
+        cve: "CVE-2025-69872"
+        severity: "HIGH"
+        fixed_version: "なし（修正バージョン未リリース）"
+
+# ========== テスト ==========
+
+test_coverage:
+  score: 82
+  coverage_assessment: "GOOD"
+  strengths:
+    - "主要5関数すべてに対応するテストクラスが存在"
+    - "sync/async の対称的テスト設計"
+    - "ページネーション・日付フィルタ・早期終了・エラー回復など重要分岐を網羅"
+  missing_tests:
+    - function: "_save_articles_by_date"
+      priority: "HIGH"
+      cases:
+        - "既存 JSON への追記（date_file.exists() == True）"
+        - "metadata カラム dict→str 変換"
+        - "published カラムなし時の Parquet のみ保存"
+    - function: "_filter_article_by_date"
+      priority: "MEDIUM"
+      cases: ["pub_dt=None のとき (False, False) を返す直接単体テスト"]
+    - function: "fetch_article_content"
+      priority: "MEDIUM"
+      cases: ["不正スキーム（file://）で None を返すテスト"]
+  branch_coverage_assessment: "FAIR"
+
+test_quality:
+  score: 82
+  strengths:
+    - "日本語命名規則（test_[正常系|異常系|エッジケース]_条件で結果）が全体で一貫"
+    - "全外部依存をモック/tmp_path で隔離、ネットワーク不要で実行可能"
+    - "pytest.raises(ValueError, match=...) でエラーメッセージまで厳格に検証"
+  issues:
+    high:
+      - location: "test_nasdaq.py:280, 348, 741, 1050, 1333, 1549, 1772"
+        issue: "エラー応答テストが test_正常系_ に分類（7件）"
+        recommendation: "test_異常系_ プレフィックスに変更する"
+      - location: "test_nasdaq.py:795, 1105"
+        issue: "assert mock_sleep.call_count >= 1 が曖昧（3ページ取得で1回以上は不十分）"
+        recommendation: "assert mock_sleep.call_count == 2 など正確な期待値を指定する"
+    medium:
+      - location: "test_nasdaq.py:1346, 1563"
+        issue: "assert len(result) <= 3 が上限のみチェックで 0件でもパス"
+        recommendation: "assert len(result) == 3 に変更する"
+  naming_convention: "WARN"
+  isolation: "PASS"
+  reproducibility: "PASS"
+  mock_usage: "GOOD"
+  assertion_quality: "FAIR"
+
+# ========== 推奨アクション ==========
+
+recommended_actions:
+  required:  # マージ前に必須
+    - priority: 1
+      action: "async_fetch_article_content (nasdaq.py:592) にURLスキームバリデーション追加（sync版 L496-499 と同一コードを適用）"
+      related: ["SEC-001", "SEC-I-002"]
+    - priority: 2
+      action: "async_fetch_rss_feed (nasdaq.py:338) にカテゴリホワイトリスト検証追加（sync版 L277-281 と同一）"
+      related: ["SEC-004", "SEC-I-003"]
+    - priority: 3
+      action: "async_collect_historical_news 内の未使用変数 urls (nasdaq.py:1956) を削除"
+      related: ["readability"]
+    - priority: 4
+      action: "エラーシナリオのテスト命名を test_正常系_ から test_異常系_ に変更（7件）"
+      related: ["test_quality"]
+
+  suggested:  # 推奨対応
+    - priority: 1
+      action: "fetch_stock_news_api_paginated と async版のページネーションループ（60行）の共通化"
+      related: ["design"]
+    - priority: 2
+      action: "_save_articles_by_date の日付別集約後一括ファイル操作への変更（N回→D回）"
+      related: ["performance", "test_coverage"]
+    - priority: 3
+      action: "diskcache CVE-2025-69872 の監視（CI に pip-audit 追加）"
+      related: ["SEC-I-001"]
+    - priority: 4
+      action: "browser パラメータに Playwright Browser | None 型ヒントを追加"
+      related: ["readability"]
+    - priority: 5
+      action: "async_fetch_news_archive_playwright の Load More href 取得を page.evaluate() で一括化"
+      related: ["performance"]
+    - priority: 6
+      action: "_save_articles_by_date の単体テスト追加（追記・metadata変換・Parquetのみ保存）"
+      related: ["test_coverage"]
+
+summary:
+  verdict: "REQUEST_CHANGES"
+  comment: |
+    全体的に高品質な実装で、sync/async の対称設計・RateLimiter・早期終了ロジック・
+    70+テストケースと日本語命名規則の徹底は高く評価できます。
+
+    必須対応が2件あります：
+    1. async_fetch_article_content のURLスキームバリデーション欠落（HIGH セキュリティ）
+    2. async_fetch_rss_feed のカテゴリ検証欠落（MEDIUM セキュリティ）
+
+    これらは sync 版に既存のコードを5行追加するだけで対応可能です。
+    修正後は APPROVE を推奨します。
