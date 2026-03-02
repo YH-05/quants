@@ -234,17 +234,23 @@ portfolio_return = sum(w_i * simple_r_i)
 
 ## ルール 5: 前方参照バイアス（Look-Ahead Bias）防止
 
-### 5.1 Point-in-Time 制約
+### 5.1 基本原則
+
+リターン計算では以下の2つの前方参照を防止する:
+
+| バイアス | 原因 | 防止策 |
+|----------|------|--------|
+| シグナル前方参照 | 当日 close で当日リターンを取る | `signals.shift(1)` |
+| データ前方参照 | 未公表の決算データを使用 | `as_of_date <= rebalance_date` |
 
 ```python
 # 決算データは公表日以降のみ使用可能
 scores = scores_df[scores_df["as_of_date"] <= rebalance_date]
 ```
 
-### 5.2 フォワードリターンの計算（未来データのシフト）
+### 5.2 フォワードリターンの使用制限
 
-フォワードリターンは「将来のリターン」を計算するが、これをシグナルとして使用してはならない。
-バックテストの評価指標としてのみ使用する。
+フォワードリターンはバックテストの**評価指標としてのみ**使用可能。シグナルへの使用は禁止。
 
 ```python
 # Forward returns: バックテスト評価用（シグナルに使用禁止）
@@ -255,29 +261,10 @@ df_regular[f"Forward_Return_{period_name}"] = df_regular.groupby(
 
 > **参照**: `src/factor/core/return_calculator.py` lines 171-173 -- フォワードリターン計算
 
-### 5.3 CAGR 計算における PoiT 制約
+### 5.3 PoiT 制約の詳細パターン
 
-CAGR の開始値は過去のラグされた値を使用し、未来データを参照しない：
-
-```python
-# Period T = years * 12 months
-periods = years * 12
-
-# Start value (lagged) — 過去のデータのみ使用
-v_start = prices.shift(periods)
-
-# End value (current)
-v_end = prices
-
-# CAGR = (v_end / v_start)^(1/years) - 1
-cagr = np.where(
-    v_start > 0,
-    (v_end / v_start) ** (1 / years) - 1,
-    np.nan,
-)
-```
-
-> **参照**: `src/factor/core/return_calculator.py` lines 420-428 -- CAGR 計算（PoiT 対応）
+Point-in-Time フィルタリング、コンプライアンス検証、LLM プロンプトへの制約注入の
+詳細な実装パターンは **`backtesting.md` セクション 5** を参照。
 
 ---
 

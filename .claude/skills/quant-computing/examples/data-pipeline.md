@@ -684,112 +684,38 @@ sector_neutral = normalizer.normalize_by_group(
 
 ## ルール 7: リトライとフォールバック
 
-### 7.1 RetryConfig
+外部 API 呼び出しのリトライ・指数バックオフ・ブラウザローテーションの詳細パターンは
+**`performance.md` セクション 2** を参照してください。
 
-外部 API 呼び出しのリトライ設定:
+ここではデータパイプライン固有の適用ガイドラインのみ記載します。
 
-```python
-from dataclasses import dataclass
+### 7.1 パイプラインでのリトライ適用箇所
 
-@dataclass(frozen=True)
-class RetryConfig:
-    """Configuration for retry behavior.
+| ステップ | リトライ | 根拠 |
+|----------|---------|------|
+| **取得（Fetch）** | 必須 | ネットワーク障害・レート制限は一時的 |
+| **検証（Validate）** | 不要 | 入力データの問題であり、リトライで解決しない |
+| **変換（Transform）** | 不要 | 計算処理でありリトライ不要 |
+| **保存（Save）** | 条件付き | ディスク I/O 障害時のみリトライ |
 
-    Parameters
-    ----------
-    max_attempts : int
-        Maximum number of retry attempts (default: 3).
-    initial_delay : float
-        Initial delay between retries in seconds (default: 1.0).
-    max_delay : float
-        Maximum delay between retries in seconds (default: 60.0).
-    exponential_base : float
-        Base for exponential backoff (default: 2.0).
-    jitter : bool
-        Whether to add random jitter (default: True).
-    """
-
-    max_attempts: int = 3
-    initial_delay: float = 1.0
-    max_delay: float = 60.0
-    exponential_base: float = 2.0
-    jitter: bool = True
-```
-
-> **参照**: `src/market/yfinance/types.py` lines 64-91 -- `RetryConfig` の定義
-
-### 7.2 デフォルトリトライ設定
+### 7.2 パイプライン統合例
 
 ```python
-DEFAULT_RETRY_CONFIG = RetryConfig(
-    max_attempts=3,
-    initial_delay=1.0,
-    max_delay=30.0,
-    exponential_base=2.0,
-    jitter=True,
+from market.yfinance.fetcher import YFinanceFetcher
+from market.yfinance.types import RetryConfig
+
+# パイプラインのフェッチャーにリトライ設定を渡す
+fetcher = YFinanceFetcher(
+    retry_config=RetryConfig(
+        max_attempts=3,
+        initial_delay=1.0,
+        max_delay=30.0,
+        jitter=True,
+    ),
 )
 ```
 
-> **参照**: `src/market/yfinance/fetcher.py` lines 46-52 -- `DEFAULT_RETRY_CONFIG` の定義
-
-### 7.3 指数バックオフの計算
-
-```python
-import random
-
-def _calculate_delay(
-    attempt: int,
-    config: RetryConfig,
-) -> float:
-    """Calculate delay with exponential backoff and optional jitter.
-
-    delay = min(initial_delay * base^attempt, max_delay)
-    jitter: delay * random(0.5, 1.5)
-    """
-    delay = min(
-        config.initial_delay * (config.exponential_base ** attempt),
-        config.max_delay,
-    )
-    if config.jitter:
-        delay *= random.uniform(0.5, 1.5)  # nosec B311
-    return delay
-```
-
-### 7.4 リトライの適用フロー
-
-```
-外部 API 呼び出し:
-├── 成功 → 結果を返却
-└── 失敗（attempt < max_attempts）
-    ├── delay = initial_delay * base^attempt（指数バックオフ）
-    ├── jitter を適用（delay * random(0.5, 1.5)）
-    ├── min(delay, max_delay) で上限制限
-    ├── time.sleep(delay)
-    └── リトライ（次の attempt へ）
-        └── 全 attempt 失敗 → DataFetchError 送出
-```
-
-### 7.5 ブラウザインパーソネーション（レート制限回避）
-
-Yahoo Finance のレート制限を回避するため、curl_cffi によるブラウザ偽装を使用:
-
-```python
-BROWSER_IMPERSONATE_TARGETS: list[BrowserTypeLiteral] = [
-    "chrome",
-    "chrome110",
-    "chrome120",
-    "edge99",
-    "safari15_3",
-]
-
-# リトライ時にブラウザ指紋をローテーション
-def _rotate_session(self) -> None:
-    """Rotate to a new browser impersonation to avoid detection."""
-    new_target = random.choice(BROWSER_IMPERSONATE_TARGETS)  # nosec B311
-    self._session = CurlCffiSession(impersonate=new_target)
-```
-
-> **参照**: `src/market/yfinance/fetcher.py` lines 37-43 -- ブラウザ偽装ターゲット一覧
+> **詳細**: `performance.md` セクション 2（RetryConfig 定義、指数バックオフ実装、チャンク+リトライ、ブラウザローテーション）
 
 ---
 

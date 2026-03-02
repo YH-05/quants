@@ -170,22 +170,6 @@ storage.save_parquet(transformed, path)                 # 保存
 
 このスキルには以下のリソースが含まれています：
 
-### ./guide.md
-
-9領域の詳細ガイド：
-
-- 数値精度: Decimal vs float64 の判断基準、丸め戦略
-- ベクトル化: groupby + transform/apply パターン集
-- 高速化: プロファイリング手法、ボトルネック判定フロー
-- テスト: Hypothesis 戦略の設計、許容誤差の根拠
-- リターン計算: simple vs log の使い分け表、年率化の複利公式
-- リスク指標: 各指標の前提条件と計算式
-- バックテスト: PoiT 制約の実装パターン
-- DBスキーマ: SQLite vs DuckDB 判断フローチャート
-- データパイプライン: 取得→検証→変換→保存の詳細パターン
-- 並列処理: asyncio / ProcessPool の使い分け
-- プロファイリング: profile / timeit / profile_context の使い分け
-
 ### ./examples/numerical-precision.md
 
 数値精度パターン集：

@@ -42,17 +42,10 @@ daily_rf = self._risk_free_rate / self._annualization_factor
 
 ---
 
-## ゼロ除算防止パターン（`_EPSILON`）
+## ゼロ除算防止パターン
 
-全リスク指標で共通のゼロ除算防止パターン。詳細は `numerical-precision.md` を参照。
-
-```python
-# Threshold for considering standard deviation as effectively zero
-# This handles floating-point precision issues
-_EPSILON = 1e-15
-```
-
-> **参照**: `src/strategy/risk/calculator.py` line 20 -- `_EPSILON = 1e-15`
+全リスク指標で `_EPSILON = 1e-15` によるゼロ除算防止を適用する。
+`_EPSILON` の値の根拠・実装パターン・NaN との複合チェックの詳細は **`numerical-precision.md` セクション 2** を参照。
 
 ### 分母がゼロ近傍の場合の戻り値規約
 
@@ -61,6 +54,17 @@ _EPSILON = 1e-15
 | < EPSILON | `float("inf")` | `float("-inf")` | `float("nan")` |
 
 この規約は Sharpe / Sortino / Treynor / Information Ratio の全てで一貫して適用される。
+各指標の実装コード内では以下のパターンで適用する:
+
+```python
+if std < _EPSILON:
+    if mean_excess > _EPSILON:
+        return float("inf")
+    elif mean_excess < -_EPSILON:
+        return float("-inf")
+    else:
+        return float("nan")
+```
 
 ---
 
