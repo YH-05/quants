@@ -68,18 +68,23 @@ Phase 1: 初期化
 ├── 出力ディレクトリ作成
 └── 必要ツール確認
 
-Phase 2: 市場データ収集（★PerformanceAnalyzer4Agent使用）
-├── collect_market_performance.py → data/market/
-│   ├── {category}_{YYYYMMDD-HHMM}.json（複数期間: 1D, 1W, MTD, YTD...）
-│   └── all_performance_{YYYYMMDD-HHMM}.json（統合）
+Phase 2: 市場データ収集
+├── collect_weekly_report_data.py → data/
+│   ├── indices.json          # 指数パフォーマンス（S&P500, RSP, VUG, VTV等）
+│   ├── mag7.json             # MAG7 + SOX パフォーマンス
+│   ├── sectors.json          # セクター分析（上位・下位3セクター）
+│   ├── interest_rates.json   # 金利データ
+│   ├── currencies.json       # 通貨データ
+│   ├── upcoming_events.json  # 今後の主要イベント
+│   └── metadata.json         # 収集メタデータ
 └── データ鮮度チェック（日付ズレ警告）
 
-Phase 3: 仮説生成（★新規）
+Phase 3: 仮説生成（将来計画: 現在は Phase 2 の出力データを直接使用）
 ├── market-hypothesis-generator サブエージェント
 ├── パターン検出 → 仮説生成 → 検索クエリ計画
 └── hypotheses_{YYYYMMDD-HHMM}.json 出力
 
-Phase 4: ニュース調査（★仮説ベース検索）
+Phase 4: ニュース調査（将来計画: 仮説ベース検索は未実装）
 ├── GitHub Project から既存ニュース取得
 ├── 仮説ベースの追加検索（--no-search でスキップ可能）
 └── news_with_context.json（仮説との関連付き）
@@ -226,7 +231,8 @@ articles/weekly_report/{YYYY-MM-DD}/
 | スクリプト | 用途 |
 |-----------|------|
 | `scripts/market_report_data.py` | 基本モード用データ収集 |
-| `scripts/weekly_comment_data.py` | 週次モード用データ収集 |
+| `scripts/collect_weekly_report_data.py` | `--weekly` モード用データ収集（固定名7ファイル出力） |
+| `scripts/weekly_comment_data.py` | `--weekly-comment` モード専用データ収集 |
 
 ## エラーハンドリング
 
