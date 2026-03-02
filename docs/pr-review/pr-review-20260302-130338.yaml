@@ -1,0 +1,331 @@
+# PRレビューレポート
+# 生成日時: 2026-03-02 13:03:38
+# 生成スキル: review-pr
+
+metadata:
+  generated_at: "2026-03-02 13:03:38"
+  pr_number: 3706
+  pr_title: "feat(quant-computing): クオンツ計算スキルの新規作成（SKILL.md + 9 examples + CLAUDE.md 登録）"
+  base_branch: "main"
+  head_branch: "feature/prj65"
+  review_mode: "remote"
+
+pr_info:
+  files_changed: 11
+  additions: 5662
+  deletions: 0
+  changed_files:
+    - path: ".claude/skills/quant-computing/SKILL.md"
+      additions: 372
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/numerical-precision.md"
+      additions: 519
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/vectorization.md"
+      additions: 408
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/performance.md"
+      additions: 733
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/testing.md"
+      additions: 559
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/returns.md"
+      additions: 456
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/risk-metrics.md"
+      additions: 588
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/backtesting.md"
+      additions: 683
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/db-schema.md"
+      additions: 521
+      deletions: 0
+    - path: ".claude/skills/quant-computing/examples/data-pipeline.md"
+      additions: 822
+      deletions: 0
+    - path: "CLAUDE.md"
+      additions: 1
+      deletions: 0
+
+scores:
+  code_quality: 87  # (readability:84 × 0.35) + (design:88 × 0.40) + (performance:89 × 0.25)
+  security: 91  # (code_security:95 × 0.60) + (infra_security:84 × 0.40)
+  test: 82  # (coverage:82 × 0.50) + (quality:82 × 0.50)
+  overall: 87  # (code_quality:87 × 0.40) + (security:91 × 0.35) + (test:82 × 0.25)
+
+code_quality:
+  readability_score: 84
+  design_score: 88
+  performance_score: 89
+
+  strengths:
+    - "9領域への分割が適切かつ直交性が高い。各ファイルの責務が明確で重複を最小化"
+    - "SKILL.md→examples/の2段階参照構造がOCP準拠の拡張性を実現"
+    - "NG/OKパターンの対比が統一されており、何を修正すべきかが即座に判断可能"
+    - "既存ソースコードへの行番号付き参照が全パターンに付与されトレーサビリティを確保"
+    - "各ファイル末尾のチェックリストが実装者の自己検証フローとして機能"
+    - "testing.mdとtdd-developmentスキルの役割分担表が設計品質として優秀"
+    - "数値精度の根拠（1e-15の選択根拠、1.4826のMADスケールファクター導出）が具体的に説明"
+    - "ゼロ除算の戻り値規約（inf/-inf/nan）がリスク指標全体で統一"
+
+  issues:
+    critical: []
+
+    high:
+      - id: "CQ-001"
+        file: "returns.md:151"
+        description: "BADパターン（単利年率化）が正しい実装と視覚的に区別しにくく、AIエージェントが誤って正しいパターンとして採用するリスク"
+        recommendation: "セクションタイトルを「BADパターン（既存コードの既知問題 — 修正予定）」に変更し、コードブロック冒頭にも警告コメントを明記"
+
+      - id: "CQ-002"
+        file: "numerical-precision.md:195"
+        description: "ゼロスケール検出パターンでscale == 0（浮動小数点直接比較）を使用しており、同ドキュメントが教えるepsilon比較ルールと自己矛盾"
+        recommendation: "abs(scale) < _EPSILONに変更するか、整数ゼロとの比較が安全な理由を補足"
+
+      - id: "CQ-003"
+        file: "vectorization.md:363 + returns.md + numerical-precision.md"
+        description: "ウェイト正規化コードが3箇所に重複しDRY原則に反する"
+        recommendation: "numerical-precision.mdに一本化し、他ファイルからは参照のみとする"
+
+    medium:
+      - id: "CQ-004"
+        file: "SKILL.md:119"
+        description: "Sortino定義（downside < daily_rf）がrisk-metrics.mdの実装（downside < 0）と矛盾"
+        recommendation: "どちらの定義を採用するかを統一し、使い分け基準を明記"
+
+      - id: "CQ-005"
+        file: "SKILL.md:110"
+        description: "Sharpe計算式でdaily_returns.std()を使用しているが、risk-metrics.mdではexcess_returns.std()が正しい"
+        recommendation: "クイックリファレンスをrisk-metrics.mdと整合させる"
+
+      - id: "CQ-006"
+        file: "risk-metrics.md:413"
+        description: "Treynorレシオの年率化に単利方式を使用しており、returns.mdの複利必須ルールと矛盾"
+        recommendation: "複利方式に統一するか、短期近似として使用する理由を明記"
+
+      - id: "CQ-007"
+        file: "performance.md:332"
+        description: "ブラウザフィンガープリントローテーションがquant-computingスキルの責務範囲外"
+        recommendation: "本パターンを削除するか、news_scraper固有のパターンとして別スキルに分離"
+
+      - id: "CQ-008"
+        file: "vectorization.md:375"
+        description: "パフォーマンス比較表の数値にベンチマーク環境の記載なし"
+        recommendation: "「参考値。実際の計測にはprofile_contextを使用」と注記を追加"
+
+      - id: "CQ-009"
+        file: "data-pipeline.md:512"
+        description: "ffill()のPoiT制約に関する説明が技術的に不正確（ffillは過去方向への補完でありPoiT安全）"
+        recommendation: "「データ取得時のフィルタリング不足が本質的な問題」と正確に書き直す"
+
+      - id: "CQ-010"
+        file: "SKILL.md:263"
+        description: "使用例1のウェイト合計チェックに_EPSILON(1e-15)を使用。numerical-precision.mdでは1e-10を推奨しており矛盾"
+        recommendation: "閾値を1e-10に変更するか使い分けの理由を明記"
+
+    low:
+      - id: "CQ-011"
+        file: "performance.md:459"
+        description: "FundIdResolverのDocstringが日英混在"
+        recommendation: "コードブロック内コメントの言語を統一"
+
+      - id: "CQ-012"
+        file: "db-schema.md:433"
+        description: "DDLを「...」で省略しており完全な形式が不明"
+        recommendation: "完全なDDLを記載するか参照先を明記"
+
+      - id: "CQ-013"
+        file: "returns.md:42"
+        description: "period: int | strの型ヒントだが、str型の動作が未定義"
+        recommendation: "型ヒントをintに修正するかstr時の動作を説明"
+
+      - id: "CQ-014"
+        file: "backtesting.md:1"
+        description: "タイトル「ベクトル化バックテストの標準パターン」が内容の広さを反映していない"
+        recommendation: "「バックテスト実装パターン集」に変更"
+
+  solid_compliance:
+    single_responsibility: "WARN"  # performance.mdにブラウザFP混入、vectorization.mdにウェイト正規化混入
+    open_closed: "PASS"  # 新領域の追加がexamplesファイル追加のみで可能
+    liskov_substitution: "N/A"  # ドキュメントスキルのため継承関係なし
+    interface_segregation: "PASS"  # 各ファイルが独立して参照可能
+    dependency_inversion: "PASS"  # SKILL.md→examples/の一方向依存
+
+security:
+  code_security_score: 95
+  infra_security_score: 84
+
+  vulnerability_count:
+    critical: 0
+    high: 1
+    medium: 4
+    low: 2
+
+  findings:
+    - id: "SEC-001"
+      severity: "HIGH"
+      category: "A06 - 脆弱なコンポーネント"
+      location: "pyproject.toml（既存依存関係）"
+      description: "diskcache 5.6.3にCVE-2025-69872（pickle経由の任意コード実行）。スキルがdiskcacheベースのキャッシュを推奨パターンとして記載"
+      recommendation: "スキル内に警告コメント追加。修正版リリースまでアクセス制御されたディレクトリのみに限定"
+      cwe_id: "CWE-502"
+
+    - id: "SEC-002"
+      severity: "MEDIUM"
+      category: "A03 - インジェクション"
+      location: "db-schema.md:224-233"
+      description: "DuckDB upsertサンプルでSQL識別子バリデーション呼び出しを省略した危険パターン"
+      recommendation: "サンプルコード直前にバリデーション呼び出し必須の注記を追加"
+      cwe_id: "CWE-89"
+
+    - id: "SEC-003"
+      severity: "MEDIUM"
+      category: "A05 - セキュリティ設定ミス"
+      location: "performance.md:236-239"
+      description: "ブラウザ偽装のToS違反リスクへの注記不足、nosec B311の根拠説明なし"
+      recommendation: "ToS確認の注記追加、nosec理由の明記"
+      cwe_id: "CWE-16"
+
+    - id: "SEC-004"
+      severity: "MEDIUM"
+      category: "A09 - ログ・モニタリング"
+      location: "performance.md:239"
+      description: "nosecコメントがパターン例として根拠なしに掲載され、安易な模倣リスク"
+      recommendation: "nosecコメントに理由を追記し、チェックリストに「nosecには必ず理由を記載」を追加"
+      cwe_id: "CWE-778"
+
+    - id: "SEC-005"
+      severity: "MEDIUM"
+      category: "A09 - ログ・モニタリング"
+      location: "backtesting.md:464-475"
+      description: "LLMプロンプト構築のPoiT制約注入パターンに型バリデーション例示不足"
+      recommendation: "isinstance(cutoff_date, date)チェックの追加例を記載"
+      cwe_id: "CWE-20"
+
+    - id: "SEC-006"
+      severity: "LOW"
+      category: "A02 - 暗号化の失敗"
+      location: "data-pipeline.md:391-398"
+      description: "キャッシュキー生成で区切り文字による理論的なプレフィックス衝突リスク"
+      recommendation: "json.dumpsによる明示的シリアライズへの改善を推奨"
+      cwe_id: "CWE-330"
+
+    - id: "SEC-007"
+      severity: "LOW"
+      category: "A06 - 脆弱なコンポーネント"
+      location: "performance.md:338-345"
+      description: "ブラウザバージョン文字列のハードコードが将来的に陳腐化するリスク"
+      recommendation: "curl_cffi最新ドキュメント参照の注記を追加"
+      cwe_id: "CWE-1104"
+
+test:
+  coverage_score: 82
+  quality_score: 82
+
+  coverage_assessment: "GOOD"
+  edge_cases_covered: true
+
+  test_quality:
+    isolation: "PASS"
+    reproducibility: "PASS"
+    readability: "PASS"
+
+  strengths:
+    - "testing.mdがHypothesis戦略・rtol/atol選択・assumeパターンを網羅的に体系化"
+    - "6種類の不変条件パターン（非負性・スケーリング・シフト・範囲・単調性・符号）が体系化"
+    - "既存テストコードへの行番号注釈によるトレーサビリティ確保"
+    - "エッジケースカバレッジが充実（NaN・Infinity・空データ・定数データ・Sortino固有）"
+    - "rtol/atol選択フローチャートが実践的"
+
+  issues:
+    high:
+      - id: "TST-001"
+        file: "testing.md:346"
+        description: "test_エッジケース_全NaN入力のアサーションが過度に緩い（assert vol == 0.0 or math.isnan(vol)はリグレッション検出能力がほぼゼロ）"
+        recommendation: "実装の具体的な挙動（std < _EPSILONのとき0.0返却）に合わせてassert vol == 0.0に限定"
+
+      - id: "TST-002"
+        file: "testing.md:483"
+        description: "test_エッジケース_負のリターン1件のアサーションが型チェックのみ（assert isinstance(sortino, float)）"
+        recommendation: "assert math.isinf(sortino) or math.isnan(sortino)に絞り込み、excess_returnの符号も検証"
+
+    medium:
+      - id: "TST-003"
+        file: "testing.md:403"
+        description: "test_エッジケース_空のSeriesの本体がテスト対象関数を呼び出していない"
+        recommendation: "RiskCalculator(empty)呼び出しとpytest.raisesまたはデフォルト返値の検証を追加"
+
+      - id: "TST-004"
+        file: "testing.md:114"
+        description: "プロパティテスト例でmin_size=10だが、推奨値はmin_size=20で矛盾"
+        recommendation: "min_size=20に統一するか10件を使う理由を明記"
+
+      - id: "TST-005"
+        file: "SKILL.md:95"
+        description: "クイックリファレンスのst.floats()にallow_nan=False, allow_infinity=Falseが欠落"
+        recommendation: "testing.mdの推奨パターンと整合させる"
+
+      - id: "TST-006"
+        file: "testing.md:293"
+        description: "VaRプロパティテストの許容誤差1e-10の根拠が未記載"
+        recommendation: "Historical VaRでの同一データ点一致の理由をコメントで説明"
+
+    low:
+      - id: "TST-007"
+        file: "returns.md:151"
+        description: "BADパターンに対応するテストケース（単利と複利の乖離を検出）が未提示"
+        recommendation: "単利年率化の誤りを検出するテスト例を追加"
+
+      - id: "TST-008"
+        file: "backtesting.md:278"
+        description: "rolling/expanding_walk_forwardのオリジナルコードにテスト参照なし"
+        recommendation: "既存テストへの参照を追記"
+
+  missing_tests:
+    - "backtesting.md: rolling_walk_forward/expanding_walk_forwardの境界値テスト参照"
+    - "backtesting.md: largest_remainder_roundのテスト参照"
+
+recommended_actions:
+  required:  # マージ前に修正必要
+    - priority: 1
+      action: "SKILL.md/risk-metrics.md間のSortino・Sharpe定義の統一（CQ-004, CQ-005）"
+      related_issues: ["CQ-004", "CQ-005"]
+
+    - priority: 2
+      action: "returns.md BADパターンの視覚的区別強化（CQ-001）"
+      related_issues: ["CQ-001"]
+
+    - priority: 3
+      action: "numerical-precision.mdのscale == 0自己矛盾の修正（CQ-002）"
+      related_issues: ["CQ-002"]
+
+    - priority: 4
+      action: "SKILL.mdクイックリファレンスのst.floats()にallow_nan=False, allow_infinity=False追加（TST-005）"
+      related_issues: ["TST-005"]
+
+  suggested:  # 推奨
+    - priority: 1
+      action: "ウェイト正規化コードの3箇所重複をnumerical-precision.mdに一本化（CQ-003）"
+
+    - priority: 2
+      action: "testing.mdの曖昧なアサーション2件を具体化（TST-001, TST-002）"
+
+    - priority: 3
+      action: "Treynorレシオの単利年率化をreturns.mdルールと整合（CQ-006）"
+
+    - priority: 4
+      action: "diskcache CVE-2025-69872の警告コメントをperformance.mdに追加（SEC-001）"
+
+    - priority: 5
+      action: "performance.mdからブラウザFPローテーションを分離（CQ-007）"
+
+summary:
+  verdict: "COMMENT"
+  comment: |
+    全体として高品質なナレッジベースであり、9領域の分割・2段階参照構造・
+    行番号付き実装参照・チェックリストの設計は優秀。
+    マージ前にSKILL.mdとexamples間の定義矛盾（Sortino/Sharpe/ウェイト閾値）の統一と、
+    BADパターンの視覚的区別強化を推奨する。
+    セキュリティ上の重大な問題はないが、diskcache CVEの警告追加を推奨。
