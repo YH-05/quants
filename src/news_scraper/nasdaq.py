@@ -5,8 +5,10 @@ curl-cffi（ブラウザ偽装）+ trafilatura（本文抽出）を使用。
 """
 
 import asyncio
+import json
 import re
 import time
+from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse
@@ -671,12 +673,10 @@ def fetch_stock_news_api(
 
     url = f"https://api.nasdaq.com/api/news/topic/articlebysymbol?q={ticker}|STOCKS&offset=0&limit={limit}"
 
-    headers = _NASDAQ_API_HEADERS
-
     logger.debug("Fetching NASDAQ stock news", ticker=ticker)
 
     try:
-        resp = session.get(url, headers=headers, timeout=timeout)
+        resp = session.get(url, headers=_NASDAQ_API_HEADERS, timeout=timeout)
         resp.raise_for_status()
         data = resp.json()
 
@@ -736,12 +736,10 @@ async def async_fetch_stock_news_api(
 
     url = f"https://api.nasdaq.com/api/news/topic/articlebysymbol?q={ticker.upper()}|STOCKS&offset=0&limit={limit}"
 
-    headers = _NASDAQ_API_HEADERS
-
     logger.debug("Fetching NASDAQ stock news (async)", ticker=ticker)
 
     try:
-        resp = await session.get(url, headers=headers, timeout=timeout)
+        resp = await session.get(url, headers=_NASDAQ_API_HEADERS, timeout=timeout)
         resp.raise_for_status()
         data = resp.json()
 
@@ -758,6 +756,67 @@ async def async_fetch_stock_news_api(
     except Exception as e:
         logger.error("NASDAQ API failed (async)", ticker=ticker, error=str(e))
         return []
+
+
+def _build_pagination_url(ticker_upper: str, offset: int, page_size: int) -> str:
+    """ページネーション取得用 URL を構築する."""
+    return (
+        f"https://api.nasdaq.com/api/news/topic/articlebysymbol"
+        f"?q={ticker_upper}|STOCKS"
+        f"&offset={offset}&limit={page_size}"
+    )
+
+
+def _process_pagination_page(
+    data: dict,
+    ticker_upper: str,
+    start_date: datetime | None,
+    end_date: datetime | None,
+) -> tuple[list[Article], int, bool, bool]:
+    """ページレスポンスデータを処理して記事リストと制御フラグを返す.
+
+    Parameters
+    ----------
+    data : dict
+        NASDAQ API のレスポンス JSON
+    ticker_upper : str
+        大文字化済みティッカーシンボル
+    start_date : datetime | None
+        取得開始日時
+    end_date : datetime | None
+        取得終了日時
+
+    Returns
+    -------
+    tuple[list[Article], int, bool, bool]
+        (articles, total_records, all_older_than_start, rows_empty)
+        rows_empty が True のとき rows が空でループを打ち切る必要がある
+    """
+    data_section = data.get("data", {})
+    rows = data_section.get("rows", [])
+    total_records_str = data_section.get("totalrecords", "0")
+    try:
+        total_records = int(total_records_str)
+    except (ValueError, TypeError):
+        total_records = 0
+
+    if not rows:
+        return [], total_records, False, True
+
+    page_articles: list[Article] = []
+    all_older_than_start = start_date is not None
+
+    for row in rows:
+        pub_str = row.get("created", "")
+        pub_dt = _parse_article_date(pub_str)
+        skip, is_older = _filter_article_by_date(pub_dt, start_date, end_date)
+        if not is_older:
+            all_older_than_start = False
+        if skip:
+            continue
+        page_articles.append(_row_to_article(row, ticker_upper))
+
+    return page_articles, total_records, all_older_than_start, False
 
 
 def fetch_stock_news_api_paginated(
@@ -808,8 +867,6 @@ def fetch_stock_news_api_paginated(
 
     from .types import get_delay
 
-    headers = _NASDAQ_API_HEADERS
-
     ticker_upper = ticker.upper()
     articles: list[Article] = []
     offset = 0
@@ -822,13 +879,10 @@ def fetch_stock_news_api_paginated(
     )
 
     while offset < max_articles:
-        url = (
-            f"https://api.nasdaq.com/api/news/topic/articlebysymbol"
-            f"?q={ticker_upper}|STOCKS&offset={offset}&limit={page_size}"
-        )
+        url = _build_pagination_url(ticker_upper, offset, page_size)
 
         try:
-            resp = session.get(url, headers=headers, timeout=config.timeout)
+            resp = session.get(url, headers=_NASDAQ_API_HEADERS, timeout=config.timeout)
             resp.raise_for_status()
             data = resp.json()
         except Exception as e:
@@ -840,32 +894,18 @@ def fetch_stock_news_api_paginated(
             )
             break
 
-        rows = data.get("data", {}).get("rows", [])
-        total_records_str = data.get("data", {}).get("totalrecords", "0")
-        try:
-            total_records = int(total_records_str)
-        except (ValueError, TypeError):
-            total_records = 0
+        page_articles, total_records, all_older_than_start, rows_empty = (
+            _process_pagination_page(data, ticker_upper, start_date, end_date)
+        )
 
         # 空 rows で早期終了
-        if not rows:
+        if rows_empty:
             logger.debug(
                 "Empty rows, stopping pagination", ticker=ticker_upper, offset=offset
             )
             break
 
-        all_older_than_start = start_date is not None
-
-        for row in rows:
-            pub_str = row.get("created", "")
-            pub_dt = _parse_article_date(pub_str)
-            skip, is_older = _filter_article_by_date(pub_dt, start_date, end_date)
-            if not is_older:
-                all_older_than_start = False
-            if skip:
-                continue
-            articles.append(_row_to_article(row, ticker_upper))
-
+        articles.extend(page_articles)
         offset += page_size
 
         # 全記事が start_date より古い場合は早期終了
@@ -956,8 +996,6 @@ async def async_fetch_stock_news_api_paginated(
 
     from .types import get_delay
 
-    headers = _NASDAQ_API_HEADERS
-
     ticker_upper = ticker.upper()
     articles: list[Article] = []
     offset = 0
@@ -970,13 +1008,12 @@ async def async_fetch_stock_news_api_paginated(
     )
 
     while offset < max_articles:
-        url = (
-            f"https://api.nasdaq.com/api/news/topic/articlebysymbol"
-            f"?q={ticker_upper}|STOCKS&offset={offset}&limit={page_size}"
-        )
+        url = _build_pagination_url(ticker_upper, offset, page_size)
 
         try:
-            resp = await session.get(url, headers=headers, timeout=config.timeout)
+            resp = await session.get(
+                url, headers=_NASDAQ_API_HEADERS, timeout=config.timeout
+            )
             resp.raise_for_status()
             data = resp.json()
         except Exception as e:
@@ -988,15 +1025,12 @@ async def async_fetch_stock_news_api_paginated(
             )
             break
 
-        rows = data.get("data", {}).get("rows", [])
-        total_records_str = data.get("data", {}).get("totalrecords", "0")
-        try:
-            total_records = int(total_records_str)
-        except (ValueError, TypeError):
-            total_records = 0
+        page_articles, total_records, all_older_than_start, rows_empty = (
+            _process_pagination_page(data, ticker_upper, start_date, end_date)
+        )
 
         # 空 rows で早期終了
-        if not rows:
+        if rows_empty:
             logger.debug(
                 "Empty rows, stopping pagination (async)",
                 ticker=ticker_upper,
@@ -1004,18 +1038,7 @@ async def async_fetch_stock_news_api_paginated(
             )
             break
 
-        all_older_than_start = start_date is not None
-
-        for row in rows:
-            pub_str = row.get("created", "")
-            pub_dt = _parse_article_date(pub_str)
-            skip, is_older = _filter_article_by_date(pub_dt, start_date, end_date)
-            if not is_older:
-                all_older_than_start = False
-            if skip:
-                continue
-            articles.append(_row_to_article(row, ticker_upper))
-
+        articles.extend(page_articles)
         offset += page_size
 
         # 全記事が start_date より古い場合は早期終了
@@ -1953,7 +1976,6 @@ async def async_collect_historical_news(
                 content = content_data.get("content", "") if content_data else ""
                 return url, content
 
-        urls = [a.get("url", "") for a in all_articles]
         content_tasks = [
             asyncio.create_task(_fetch_content(a)) for a in all_articles if a.get("url")
         ]
@@ -1990,8 +2012,6 @@ def _save_articles_by_date(df: pd.DataFrame, output_path: Path) -> None:
     output_path : Path
         出力ディレクトリ
     """
-    import json
-
     # metadata カラムが空辞書の場合は Parquet 書き込みでエラーになるため文字列化する
     df_to_save = df.copy()
     if "metadata" in df_to_save.columns:
@@ -2003,30 +2023,37 @@ def _save_articles_by_date(df: pd.DataFrame, output_path: Path) -> None:
     df_to_save.to_parquet(output_path / "all_articles.parquet", index=False)
 
     # 日別 JSON 保存（published カラムがある場合）
-    if "published" in df.columns:
-        for article in df.to_dict(orient="records"):
-            pub_str = article.get("published", "")
-            date_str = ""
-            if pub_str:
-                try:
-                    dt = _parse_article_date(str(pub_str))
-                    if dt:
-                        date_str = dt.strftime("%Y-%m-%d")
-                except Exception as e:
-                    logger.debug(
-                        "Date parse failed for grouping", pub_str=pub_str, error=str(e)
-                    )
-            if not date_str:
-                date_str = "unknown"
+    if "published" not in df.columns:
+        return
 
-            date_file = output_path / f"{date_str}.json"
-            existing: list[dict] = []
-            if date_file.exists():
-                with open(date_file, encoding="utf-8") as f:
-                    existing = json.load(f)
-            existing.append(article)
-            with open(date_file, "w", encoding="utf-8") as f:
-                json.dump(existing, f, ensure_ascii=False, indent=2)
+    # 日付別に記事をインメモリ集約し、ファイル I/O をユニーク日付数に削減
+    date_groups: defaultdict[str, list[dict]] = defaultdict(list)
+    for article in df.to_dict(orient="records"):
+        pub_str = article.get("published", "")
+        date_str = ""
+        if pub_str:
+            try:
+                dt = _parse_article_date(str(pub_str))
+                if dt:
+                    date_str = dt.strftime("%Y-%m-%d")
+            except Exception as e:
+                logger.debug(
+                    "Date parse failed for grouping", pub_str=pub_str, error=str(e)
+                )
+        if not date_str:
+            date_str = "unknown"
+        date_groups[date_str].append(article)
+
+    # 日付ごとに 1 回の read-modify-write（N 件 → D 件のファイル操作）
+    for date_str, new_articles in date_groups.items():
+        date_file = output_path / f"{date_str}.json"
+        existing: list[dict] = []
+        if date_file.exists():
+            with open(date_file, encoding="utf-8") as f:
+                existing = json.load(f)
+        existing.extend(new_articles)
+        with open(date_file, "w", encoding="utf-8") as f:
+            json.dump(existing, f, ensure_ascii=False, indent=2)
 
 
 # 後方互換性のためのエイリアス

@@ -11,6 +11,37 @@ import pytest
 
 from news_scraper.types import Article, ScraperConfig
 
+# ---- モジュールレベルテストヘルパー ----
+
+
+def _nasdaq_page_response(rows: list[dict], total_records: int = 40) -> MagicMock:
+    """NASDAQ ページネーション API レスポンスのモックを生成するヘルパー."""
+    mock_response = MagicMock()
+    mock_response.raise_for_status = MagicMock()
+    mock_response.json.return_value = {
+        "data": {
+            "rows": rows,
+            "totalrecords": str(total_records),
+        }
+    }
+    return mock_response
+
+
+def _sync_playwright_link(href: str, text: str) -> MagicMock:
+    """sync Playwright のリンク要素モックを生成するヘルパー."""
+    link = MagicMock()
+    link.get_attribute.return_value = href
+    link.inner_text.return_value = text
+    return link
+
+
+def _async_playwright_link(href: str, text: str) -> AsyncMock:
+    """async Playwright のリンク要素モックを生成するヘルパー."""
+    link = AsyncMock()
+    link.get_attribute.return_value = href
+    link.inner_text.return_value = text
+    return link
+
 
 class TestFetchRssFeed:
     """fetch_rss_feed() のテスト."""
@@ -516,21 +547,6 @@ class TestCategoryToUrlSegment:
 class TestFetchStockNewsApiPaginated:
     """fetch_stock_news_api_paginated() のテスト."""
 
-    def _make_page_response(
-        self,
-        rows: list[dict],
-        total_records: int = 40,
-    ) -> MagicMock:
-        """ページレスポンスモックを生成するヘルパー."""
-        mock_response = MagicMock()
-        mock_response.json.return_value = {
-            "data": {
-                "rows": rows,
-                "totalrecords": str(total_records),
-            }
-        }
-        return mock_response
-
     def test_正常系_複数ページの記事を取得できる(self) -> None:
         """2 ページ分の記事が正しく結合されることを確認。"""
         from news_scraper.nasdaq import fetch_stock_news_api_paginated
@@ -556,8 +572,8 @@ class TestFetchStockNewsApiPaginated:
 
         mock_session = MagicMock()
         mock_session.get.side_effect = [
-            self._make_page_response(page1_rows, total_records=6),
-            self._make_page_response(page2_rows, total_records=6),
+            _nasdaq_page_response(page1_rows, total_records=6),
+            _nasdaq_page_response(page2_rows, total_records=6),
         ]
 
         with patch("news_scraper.nasdaq.time.sleep"):
@@ -582,7 +598,7 @@ class TestFetchStockNewsApiPaginated:
         ]
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=1)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -607,9 +623,7 @@ class TestFetchStockNewsApiPaginated:
         ]
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response(
-            rows, total_records=100
-        )
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -624,7 +638,7 @@ class TestFetchStockNewsApiPaginated:
         from news_scraper.nasdaq import fetch_stock_news_api_paginated
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response([], total_records=10)
+        mock_session.get.return_value = _nasdaq_page_response([], total_records=10)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -656,7 +670,7 @@ class TestFetchStockNewsApiPaginated:
         ]
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=2)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -692,7 +706,7 @@ class TestFetchStockNewsApiPaginated:
         ]
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=2)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -722,9 +736,7 @@ class TestFetchStockNewsApiPaginated:
         ]
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response(
-            rows, total_records=100
-        )
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -753,7 +765,7 @@ class TestFetchStockNewsApiPaginated:
 
         mock_session = MagicMock()
         mock_session.get.side_effect = [
-            self._make_page_response(rows, total_records=100),
+            _nasdaq_page_response(rows, total_records=100),
             Exception("Network error"),
         ]
 
@@ -780,9 +792,9 @@ class TestFetchStockNewsApiPaginated:
 
         mock_session = MagicMock()
         mock_session.get.side_effect = [
-            self._make_page_response(rows, total_records=3),
-            self._make_page_response(rows, total_records=3),
-            self._make_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
         ]
 
         config = ScraperConfig(delay=1.0, jitter=0.0)
@@ -817,7 +829,7 @@ class TestFetchStockNewsApiPaginated:
         ]
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=1)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -831,7 +843,7 @@ class TestFetchStockNewsApiPaginated:
         from news_scraper.nasdaq import fetch_stock_news_api_paginated
 
         mock_session = MagicMock()
-        mock_session.get.return_value = self._make_page_response([], total_records=0)
+        mock_session.get.return_value = _nasdaq_page_response([], total_records=0)
 
         with patch("news_scraper.nasdaq.time.sleep"):
             result = fetch_stock_news_api_paginated(
@@ -843,22 +855,6 @@ class TestFetchStockNewsApiPaginated:
 
 class TestAsyncFetchStockNewsApiPaginated:
     """async_fetch_stock_news_api_paginated() のテスト."""
-
-    def _make_page_response(
-        self,
-        rows: list[dict],
-        total_records: int = 40,
-    ) -> MagicMock:
-        """ページレスポンスモックを生成するヘルパー."""
-        mock_response = MagicMock()
-        mock_response.raise_for_status = MagicMock()
-        mock_response.json.return_value = {
-            "data": {
-                "rows": rows,
-                "totalrecords": str(total_records),
-            }
-        }
-        return mock_response
 
     @pytest.mark.asyncio
     async def test_正常系_複数ページの記事を取得できる(self) -> None:
@@ -886,8 +882,8 @@ class TestAsyncFetchStockNewsApiPaginated:
 
         mock_session = AsyncMock()
         mock_session.get.side_effect = [
-            self._make_page_response(page1_rows, total_records=6),
-            self._make_page_response(page2_rows, total_records=6),
+            _nasdaq_page_response(page1_rows, total_records=6),
+            _nasdaq_page_response(page2_rows, total_records=6),
         ]
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
@@ -913,7 +909,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         ]
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=1)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -929,7 +925,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         from news_scraper.nasdaq import async_fetch_stock_news_api_paginated
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response([], total_records=10)
+        mock_session.get.return_value = _nasdaq_page_response([], total_records=10)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -962,7 +958,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         ]
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=2)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -999,7 +995,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         ]
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=2)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=2)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -1030,9 +1026,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         ]
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response(
-            rows, total_records=100
-        )
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -1062,7 +1056,7 @@ class TestAsyncFetchStockNewsApiPaginated:
 
         mock_session = AsyncMock()
         mock_session.get.side_effect = [
-            self._make_page_response(rows, total_records=100),
+            _nasdaq_page_response(rows, total_records=100),
             Exception("Network error"),
         ]
 
@@ -1090,9 +1084,9 @@ class TestAsyncFetchStockNewsApiPaginated:
 
         mock_session = AsyncMock()
         mock_session.get.side_effect = [
-            self._make_page_response(rows, total_records=3),
-            self._make_page_response(rows, total_records=3),
-            self._make_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
+            _nasdaq_page_response(rows, total_records=3),
         ]
 
         config = ScraperConfig(delay=1.0, jitter=0.0)
@@ -1129,7 +1123,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         ]
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response(rows, total_records=1)
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=1)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -1154,9 +1148,7 @@ class TestAsyncFetchStockNewsApiPaginated:
         ]
 
         mock_session = AsyncMock()
-        mock_session.get.return_value = self._make_page_response(
-            rows, total_records=100
-        )
+        mock_session.get.return_value = _nasdaq_page_response(rows, total_records=100)
 
         with patch("news_scraper.nasdaq.asyncio.sleep"):
             result = await async_fetch_stock_news_api_paginated(
@@ -1209,14 +1201,7 @@ class TestFetchNewsArchivePlaywright:
             "Load More" ボタンが存在するか
         """
         page = MagicMock()
-
-        def _make_link(href: str, text: str) -> MagicMock:
-            link = MagicMock()
-            link.get_attribute.return_value = href
-            link.inner_text.return_value = text
-            return link
-
-        links = [_make_link(href, text) for href, text in article_links]
+        links = [_sync_playwright_link(href, text) for href, text in article_links]
         page.query_selector_all.return_value = links
 
         if has_load_more:
@@ -1237,7 +1222,7 @@ class TestFetchNewsArchivePlaywright:
         ]
 
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
             result = fetch_news_archive_playwright("Markets", max_articles=10)
@@ -1256,7 +1241,7 @@ class TestFetchNewsArchivePlaywright:
             ("https://www.nasdaq.com/articles/sample", "Sample Article Title"),
         ]
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
             result = fetch_news_archive_playwright("Markets", max_articles=10)
@@ -1309,21 +1294,14 @@ class TestFetchNewsArchivePlaywright:
             ("https://www.nasdaq.com/articles/article-1", "Article One"),
         ]
         mock_page = MagicMock()
-
-        def _make_link(href: str, text: str) -> MagicMock:
-            link = MagicMock()
-            link.get_attribute.return_value = href
-            link.inner_text.return_value = text
-            return link
-
-        links = [_make_link(href, text) for href, text in article_links]
+        links = [_sync_playwright_link(href, text) for href, text in article_links]
         mock_page.query_selector_all.return_value = links
 
         # 1回クリック後に None を返す（ボタンが消える）
         load_more = MagicMock()
         mock_page.query_selector.side_effect = [load_more, None]
 
-        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
             fetch_news_archive_playwright("Markets", max_articles=100)
@@ -1352,7 +1330,7 @@ class TestFetchNewsArchivePlaywright:
             for i in range(10)
         ]
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
             result = fetch_news_archive_playwright("Markets", max_articles=3)
@@ -1368,7 +1346,7 @@ class TestFetchNewsArchivePlaywright:
             ("https://external.com/news/external-link", "External Article"),
         ]
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_sync_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_sync_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.sync_playwright", mock_sync_pw):
             result = fetch_news_archive_playwright("Markets", max_articles=10)
@@ -1412,14 +1390,7 @@ class TestAsyncFetchNewsArchivePlaywright:
     ) -> AsyncMock:
         """非同期ページモックを生成するヘルパー."""
         page = AsyncMock()
-
-        def _make_link(href: str, text: str) -> AsyncMock:
-            link = AsyncMock()
-            link.get_attribute.return_value = href
-            link.inner_text.return_value = text
-            return link
-
-        links = [_make_link(href, text) for href, text in article_links]
+        links = [_async_playwright_link(href, text) for href, text in article_links]
         page.query_selector_all.return_value = links
 
         if has_load_more:
@@ -1441,7 +1412,7 @@ class TestAsyncFetchNewsArchivePlaywright:
         ]
 
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
             result = await async_fetch_news_archive_playwright(
@@ -1465,7 +1436,7 @@ class TestAsyncFetchNewsArchivePlaywright:
             ("https://www.nasdaq.com/articles/sample", "Sample Article Title"),
         ]
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
             result = await async_fetch_news_archive_playwright(
@@ -1525,20 +1496,13 @@ class TestAsyncFetchNewsArchivePlaywright:
             ("https://www.nasdaq.com/articles/article-1", "Article One"),
         ]
         mock_page = AsyncMock()
-
-        def _make_link(href: str, text: str) -> AsyncMock:
-            link = AsyncMock()
-            link.get_attribute.return_value = href
-            link.inner_text.return_value = text
-            return link
-
-        links = [_make_link(href, text) for href, text in article_links]
+        links = [_async_playwright_link(href, text) for href, text in article_links]
         mock_page.query_selector_all.return_value = links
 
         load_more = AsyncMock()
         mock_page.query_selector.side_effect = [load_more, None]
 
-        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
             await async_fetch_news_archive_playwright("Markets", max_articles=100)
@@ -1569,7 +1533,7 @@ class TestAsyncFetchNewsArchivePlaywright:
             for i in range(10)
         ]
         mock_page = self._make_mock_page(article_links, has_load_more=False)
-        mock_async_pw, mock_browser = self._make_playwright_mocks(mock_page)
+        mock_async_pw, _mock_browser = self._make_playwright_mocks(mock_page)
 
         with patch("news_scraper.nasdaq.async_playwright", mock_async_pw):
             result = await async_fetch_news_archive_playwright(
