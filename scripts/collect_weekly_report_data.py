@@ -44,6 +44,7 @@ from __future__ import annotations
 import argparse
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
@@ -109,6 +110,49 @@ def _build_name_map(group: str, subgroup: str | None = None) -> dict[str, str]:
 # =============================================================================
 
 
+def _fetch_yfinance_info_with_retry(
+    ticker: str,
+    max_retries: int = YFINANCE_MAX_RETRIES,
+) -> dict[str, Any] | None:
+    """Fetch yfinance .info with exponential backoff retry.
+
+    Parameters
+    ----------
+    ticker : str
+        Ticker symbol to fetch info for.
+    max_retries : int
+        Maximum number of retry attempts.
+
+    Returns
+    -------
+    dict[str, Any] | None
+        The .info dict if successful, None if all retries fail.
+    """
+    for attempt in range(max_retries):
+        try:
+            return yf.Ticker(ticker).info  # type: ignore[return-value]
+        except Exception as e:
+            if attempt < max_retries - 1:
+                wait_time = YFINANCE_BACKOFF_BASE**attempt
+                logger.warning(
+                    "yfinance .info failed, retrying",
+                    ticker=ticker,
+                    attempt=attempt + 1,
+                    wait_seconds=wait_time,
+                    error_type=type(e).__name__,
+                )
+                logger.debug("Full error", error_details=str(e), exc_info=True)
+                time.sleep(wait_time)
+            else:
+                logger.error(
+                    "yfinance .info failed after all retries, using null fallback",
+                    ticker=ticker,
+                    error_type=type(e).__name__,
+                )
+                logger.debug("Full error", error_details=str(e), exc_info=True)
+    return None
+
+
 def fetch_market_caps(
     tickers: list[str],
     max_retries: int = YFINANCE_MAX_RETRIES,
@@ -130,30 +174,8 @@ def fetch_market_caps(
     result: dict[str, int | None] = {}
 
     for ticker in tickers:
-        market_cap: int | None = None
-        for attempt in range(max_retries):
-            try:
-                info = yf.Ticker(ticker).info
-                market_cap = info.get("marketCap")
-                break
-            except Exception as e:
-                if attempt < max_retries - 1:
-                    wait_time = YFINANCE_BACKOFF_BASE**attempt
-                    logger.warning(
-                        "yfinance .info failed, retrying",
-                        ticker=ticker,
-                        attempt=attempt + 1,
-                        wait_seconds=wait_time,
-                        error=str(e),
-                    )
-                    time.sleep(wait_time)
-                else:
-                    logger.error(
-                        "yfinance .info failed after all retries, using null fallback",
-                        ticker=ticker,
-                        error=str(e),
-                    )
-        result[ticker] = market_cap
+        info = _fetch_yfinance_info_with_retry(ticker, max_retries)
+        result[ticker] = info.get("marketCap") if info is not None else None
 
     return result
 
@@ -179,37 +201,12 @@ def fetch_sector_weights(
     result: dict[str, dict[str, Any]] = {}
 
     for ticker in tickers:
-        weight: float | None = None
-        top_holdings: list[str] = []
-
-        for attempt in range(max_retries):
-            try:
-                info = yf.Ticker(ticker).info
-                # yfinance does not expose weight directly; set to None
-                weight = None
-                # top holdings are not reliably available from .info
-                top_holdings = []
-                _ = info  # suppress unused warning
-                break
-            except Exception as e:
-                if attempt < max_retries - 1:
-                    wait_time = YFINANCE_BACKOFF_BASE**attempt
-                    logger.warning(
-                        "yfinance sector info failed, retrying",
-                        ticker=ticker,
-                        attempt=attempt + 1,
-                        wait_seconds=wait_time,
-                        error=str(e),
-                    )
-                    time.sleep(wait_time)
-                else:
-                    logger.error(
-                        "yfinance sector info failed after all retries",
-                        ticker=ticker,
-                        error=str(e),
-                    )
-
-        result[ticker] = {"weight": weight, "top_holdings": top_holdings}
+        info = _fetch_yfinance_info_with_retry(ticker, max_retries)
+        if info is not None:
+            # yfinance does not expose weight directly; set to None
+            # top holdings are not reliably available from .info
+            _ = info  # suppress unused warning
+        result[ticker] = {"weight": None, "top_holdings": []}
 
     return result
 
@@ -258,6 +255,27 @@ def _get_ytd_return(symbol_data: dict[str, float]) -> float | None:
     return None
 
 
+def _build_period_dict(start_date: date, end_date: date) -> dict[str, str]:
+    """Build period info dict in unified ISO format.
+
+    Parameters
+    ----------
+    start_date : date
+        Period start date.
+    end_date : date
+        Period end date.
+
+    Returns
+    -------
+    dict[str, str]
+        Dict with "start" and "end" keys in ISO 8601 format.
+    """
+    return {
+        "start": start_date.isoformat(),
+        "end": end_date.isoformat(),
+    }
+
+
 def adapt_to_indices(
     perf_result: dict[str, Any],
     start_date: date,
@@ -296,16 +314,10 @@ def adapt_to_indices(
         weekly_return = _get_weekly_return(period_data)
         ytd_return = _get_ytd_return(period_data)
 
-        # price and change: not available from PerformanceResult directly
-        # (PerformanceResult only provides return_pct, not raw prices)
-        # Set to None; downstream scripts can supplement if needed
+        # AIDEV-NOTE: price と change は PerformanceResult から直接取得不可。
+        # wr-data-aggregator が別途外部データで補完する想定のため null で固定。
         price: float | None = None
         change: float | None = None
-
-        if price is not None and weekly_return is not None:
-            # change = price_start * weekly_return = price / (1 + weekly_return) * weekly_return
-            # Approximation: change = price * weekly_return (since weekly_return is small)
-            change = price * weekly_return
 
         result.append(
             {
@@ -522,7 +534,9 @@ def collect_interest_rates(
 
     except Exception as e:
         logger.error(
-            "Failed to collect interest rate data", error=str(e), exc_info=True
+            "Failed to collect interest rate data",
+            error_type=type(e).__name__,
+            exc_info=True,
         )
         return None
 
@@ -560,7 +574,11 @@ def collect_currencies(
         return result_dict
 
     except Exception as e:
-        logger.error("Failed to collect currency data", error=str(e), exc_info=True)
+        logger.error(
+            "Failed to collect currency data",
+            error_type=type(e).__name__,
+            exc_info=True,
+        )
         return None
 
 
@@ -591,7 +609,9 @@ def collect_upcoming_events(
 
     except Exception as e:
         logger.error(
-            "Failed to collect upcoming events data", error=str(e), exc_info=True
+            "Failed to collect upcoming events data",
+            error_type=type(e).__name__,
+            exc_info=True,
         )
         return None
 
@@ -614,6 +634,152 @@ def save_json(data: dict[str, Any], file_path: Path) -> None:
     with file_path.open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     logger.info("Data saved", file=str(file_path))
+
+
+# =============================================================================
+# Private Orchestration Helpers
+# =============================================================================
+
+
+def _collect_indices(
+    analyzer: PerformanceAnalyzer4Agent,
+    output_dir: Path,
+    start_date: date,
+    end_date: date,
+) -> dict[str, Any] | None:
+    """Collect US indices performance and write indices.json.
+
+    Parameters
+    ----------
+    analyzer : PerformanceAnalyzer4Agent
+        Shared analyzer instance.
+    output_dir : Path
+        Output directory for JSON files.
+    start_date : date
+        Period start date.
+    end_date : date
+        Period end date.
+
+    Returns
+    -------
+    dict[str, Any] | None
+        Raw US performance dict (used by _collect_mag7 for SOX data), or None on failure.
+    """
+    us_result = analyzer.get_group_performance("indices", "us")
+    us_perf = us_result.to_dict()
+
+    indices_list = adapt_to_indices(us_perf, start_date, end_date)
+    indices_output = {
+        "period": _build_period_dict(start_date, end_date),
+        "indices": indices_list,
+    }
+    save_json(indices_output, output_dir / "indices.json")
+
+    if us_result.data_freshness.get("has_date_gap"):
+        logger.warning(
+            "Date gap detected in US indices data",
+            newest_date=us_result.data_freshness.get("newest_date"),
+            oldest_date=us_result.data_freshness.get("oldest_date"),
+        )
+
+    return us_perf
+
+
+def _collect_mag7(
+    analyzer: PerformanceAnalyzer4Agent,
+    output_dir: Path,
+    start_date: date,
+    end_date: date,
+    us_perf: dict[str, Any] | None,
+) -> None:
+    """Collect MAG7 performance and write mag7.json.
+
+    Parameters
+    ----------
+    analyzer : PerformanceAnalyzer4Agent
+        Shared analyzer instance.
+    output_dir : Path
+        Output directory for JSON files.
+    start_date : date
+        Period start date.
+    end_date : date
+        Period end date.
+    us_perf : dict[str, Any] | None
+        US indices performance dict for SOX data (from _collect_indices).
+    """
+    mag7_result = analyzer.get_group_performance("mag7")
+    mag7_perf = mag7_result.to_dict()
+
+    mag7_tickers = list(mag7_perf.get("symbols", {}).keys())
+    try:
+        market_caps = fetch_market_caps(mag7_tickers)
+    except Exception as e:
+        logger.warning(
+            "Failed to fetch market caps",
+            error_type=type(e).__name__,
+        )
+        logger.debug("Full error", error_details=str(e), exc_info=True)
+        market_caps = {}
+
+    mag7_output = adapt_to_mag7(
+        mag7_perf,
+        sox_perf=us_perf,
+        market_caps=market_caps,
+    )
+    mag7_output["period"] = _build_period_dict(start_date, end_date)
+    save_json(mag7_output, output_dir / "mag7.json")
+
+    if mag7_result.data_freshness.get("has_date_gap"):
+        logger.warning(
+            "Date gap detected in MAG7 data",
+            newest_date=mag7_result.data_freshness.get("newest_date"),
+            oldest_date=mag7_result.data_freshness.get("oldest_date"),
+        )
+
+
+def _collect_sectors(
+    analyzer: PerformanceAnalyzer4Agent,
+    output_dir: Path,
+    start_date: date,
+    end_date: date,
+) -> None:
+    """Collect sectors performance and write sectors.json.
+
+    Parameters
+    ----------
+    analyzer : PerformanceAnalyzer4Agent
+        Shared analyzer instance.
+    output_dir : Path
+        Output directory for JSON files.
+    start_date : date
+        Period start date.
+    end_date : date
+        Period end date.
+    """
+    sectors_result = analyzer.get_group_performance("sectors")
+    sectors_perf = sectors_result.to_dict()
+
+    sector_tickers = list(sectors_perf.get("symbols", {}).keys())
+    try:
+        sector_weights = fetch_sector_weights(sector_tickers)
+    except Exception as e:
+        logger.warning(
+            "Failed to fetch sector weights",
+            error_type=type(e).__name__,
+        )
+        logger.debug("Full error", error_details=str(e), exc_info=True)
+        sector_weights = {}
+
+    sectors_output = adapt_to_sectors(sectors_perf, sector_weights=sector_weights)
+    sectors_output["period"] = _build_period_dict(start_date, end_date)
+    save_json(sectors_output, output_dir / "sectors.json")
+
+    if sectors_result.data_freshness.get("has_date_gap"):
+        logger.warning(
+            "Date gap detected in sectors data",
+            newest_date=sectors_result.data_freshness.get("newest_date"),
+            oldest_date=sectors_result.data_freshness.get("oldest_date"),
+        )
 
 
 # =============================================================================
@@ -654,115 +820,84 @@ def collect_all_data(
 
     analyzer = PerformanceAnalyzer4Agent()
 
-    # --- Collect US indices performance ---
+    # --- Phase 1: Collect US indices (must run first; MAG7 needs SOX data) ---
     us_perf: dict[str, Any] | None = None
     try:
-        us_result = analyzer.get_group_performance("indices", "us")
-        us_perf = us_result.to_dict()
-
-        indices_list = adapt_to_indices(us_perf, start_date, end_date)
-        indices_output = {
-            "period": {"start": start_date.isoformat(), "end": end_date.isoformat()},
-            "indices": indices_list,
-        }
-        save_json(indices_output, output_dir / "indices.json")
+        us_perf = _collect_indices(analyzer, output_dir, start_date, end_date)
         results["indices.json"] = True
-
-        if us_result.data_freshness.get("has_date_gap"):
-            logger.warning(
-                "Date gap detected in US indices data",
-                newest_date=us_result.data_freshness.get("newest_date"),
-                oldest_date=us_result.data_freshness.get("oldest_date"),
-            )
     except Exception as e:
-        logger.error("Failed to collect US indices data", error=str(e), exc_info=True)
+        logger.error(
+            "Failed to collect US indices data",
+            error_type=type(e).__name__,
+            exc_info=True,
+        )
         results["indices.json"] = False
 
-    # --- Collect MAG7 performance ---
+    # --- Phase 2: Collect MAG7 (depends on us_perf for SOX) ---
     try:
-        mag7_result = analyzer.get_group_performance("mag7")
-        mag7_perf = mag7_result.to_dict()
-
-        # Fetch market caps for MAG7 tickers
-        mag7_tickers = list(mag7_perf.get("symbols", {}).keys())
-        try:
-            market_caps = fetch_market_caps(mag7_tickers)
-        except Exception as e:
-            logger.warning("Failed to fetch market caps", error=str(e))
-            market_caps = {}
-
-        mag7_output = adapt_to_mag7(
-            mag7_perf,
-            sox_perf=us_perf,
-            market_caps=market_caps,
-        )
-        mag7_output["period"] = {
-            "start": start_date.isoformat(),
-            "end": end_date.isoformat(),
-        }
-        save_json(mag7_output, output_dir / "mag7.json")
+        _collect_mag7(analyzer, output_dir, start_date, end_date, us_perf)
         results["mag7.json"] = True
-
-        if mag7_result.data_freshness.get("has_date_gap"):
-            logger.warning(
-                "Date gap detected in MAG7 data",
-                newest_date=mag7_result.data_freshness.get("newest_date"),
-                oldest_date=mag7_result.data_freshness.get("oldest_date"),
-            )
     except Exception as e:
-        logger.error("Failed to collect MAG7 data", error=str(e), exc_info=True)
+        logger.error(
+            "Failed to collect MAG7 data",
+            error_type=type(e).__name__,
+            exc_info=True,
+        )
         results["mag7.json"] = False
 
-    # --- Collect Sectors performance ---
-    try:
-        sectors_result = analyzer.get_group_performance("sectors")
-        sectors_perf = sectors_result.to_dict()
-
-        # Fetch sector weights (best-effort, null on failure)
-        sector_tickers = list(sectors_perf.get("symbols", {}).keys())
+    # --- Phase 3: Collect independent data in parallel ---
+    def _run_sectors() -> tuple[str, bool]:
         try:
-            sector_weights = fetch_sector_weights(sector_tickers)
+            _collect_sectors(analyzer, output_dir, start_date, end_date)
+            return "sectors.json", True
         except Exception as e:
-            logger.warning("Failed to fetch sector weights", error=str(e))
-            sector_weights = {}
-
-        sectors_output = adapt_to_sectors(sectors_perf, sector_weights=sector_weights)
-        sectors_output["period"] = {
-            "start": start_date.isoformat(),
-            "end": end_date.isoformat(),
-        }
-        save_json(sectors_output, output_dir / "sectors.json")
-        results["sectors.json"] = True
-
-        if sectors_result.data_freshness.get("has_date_gap"):
-            logger.warning(
-                "Date gap detected in sectors data",
-                newest_date=sectors_result.data_freshness.get("newest_date"),
-                oldest_date=sectors_result.data_freshness.get("oldest_date"),
+            logger.error(
+                "Failed to collect sectors data",
+                error_type=type(e).__name__,
+                exc_info=True,
             )
-    except Exception as e:
-        logger.error("Failed to collect sectors data", error=str(e), exc_info=True)
-        results["sectors.json"] = False
+            return "sectors.json", False
 
-    # --- Collect interest rates ---
-    ir_result = collect_interest_rates(output_dir)
-    results["interest_rates.json"] = ir_result is not None
+    def _run_interest_rates() -> tuple[str, bool]:
+        result = collect_interest_rates(output_dir)
+        return "interest_rates.json", result is not None
 
-    # --- Collect currencies ---
-    fx_result = collect_currencies(output_dir)
-    results["currencies.json"] = fx_result is not None
+    def _run_currencies() -> tuple[str, bool]:
+        result = collect_currencies(output_dir)
+        return "currencies.json", result is not None
 
-    # --- Collect upcoming events ---
-    events_result = collect_upcoming_events(output_dir)
-    results["upcoming_events.json"] = events_result is not None
+    def _run_upcoming_events() -> tuple[str, bool]:
+        result = collect_upcoming_events(output_dir)
+        return "upcoming_events.json", result is not None
+
+    parallel_tasks = [
+        _run_sectors,
+        _run_interest_rates,
+        _run_currencies,
+        _run_upcoming_events,
+    ]
+
+    with ThreadPoolExecutor(max_workers=len(parallel_tasks)) as executor:
+        futures = {executor.submit(task): task.__name__ for task in parallel_tasks}
+        for future in as_completed(futures):
+            task_name = futures[future]
+            try:
+                file_key, success = future.result()
+                results[file_key] = success
+            except Exception as e:
+                logger.error(
+                    "Parallel task failed unexpectedly",
+                    task=task_name,
+                    error_type=type(e).__name__,
+                    exc_info=True,
+                )
 
     # --- Metadata ---
     try:
         metadata = {
             "generated_at": datetime.now().isoformat(),
             "period": {
-                "start": start_date.isoformat(),
-                "end": end_date.isoformat(),
+                **_build_period_dict(start_date, end_date),
                 "start_jp": format_date_japanese(start_date, "short"),
                 "end_jp": format_date_japanese(end_date, "short"),
                 "start_us": format_date_us(start_date, "short"),
@@ -774,7 +909,11 @@ def collect_all_data(
         save_json(metadata, output_dir / "metadata.json")
         results["metadata.json"] = True
     except Exception as e:
-        logger.error("Failed to save metadata", error=str(e), exc_info=True)
+        logger.error(
+            "Failed to save metadata",
+            error_type=type(e).__name__,
+            exc_info=True,
+        )
         results["metadata.json"] = False
 
     success_count = sum(results.values())
@@ -914,7 +1053,11 @@ def main() -> int:
         return 0
 
     except Exception as e:
-        logger.error("Unexpected error", error=str(e), exc_info=True)
+        logger.error(
+            "Unexpected error",
+            error_type=type(e).__name__,
+            exc_info=True,
+        )
         return 1
 
 
