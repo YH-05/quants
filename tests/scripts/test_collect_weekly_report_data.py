@@ -377,6 +377,56 @@ class TestAdaptToIndices:
                 # Since price is end price and weekly_return is decimal
                 assert item["change"] is not None
 
+    def test_異常系_symbolsが空の場合は空リストを返す(self) -> None:
+        """symbols が空 dict の PerformanceResult を渡したとき空リストを返すことを確認。"""
+        from scripts.collect_weekly_report_data import adapt_to_indices
+
+        empty_perf: dict[str, Any] = {
+            "group": "indices",
+            "subgroup": "us",
+            "periods": ["1W", "YTD"],
+            "symbols": {},
+        }
+        result = adapt_to_indices(
+            empty_perf,
+            date(2026, 1, 14),
+            date(2026, 1, 21),
+            name_map={},
+        )
+
+        assert result == []
+
+    def test_異常系_weekly_returnが全てNoneの場合ソートが壊れない(self) -> None:
+        """1W キーが存在しない場合、adapt_to_indices が例外を発生させずリストを返すことを確認。
+
+        ソート後も全エントリの weekly_return が None であること。
+        """
+        from scripts.collect_weekly_report_data import adapt_to_indices
+
+        none_weekly_perf: dict[str, Any] = {
+            "group": "indices",
+            "subgroup": "us",
+            "periods": ["1D", "YTD"],
+            "symbols": {
+                "^GSPC": {"1D": 0.52, "YTD": 3.20},
+                "^DJI": {"1D": 0.31, "YTD": 2.10},
+                "^IXIC": {"1D": 0.75, "YTD": 4.50},
+            },
+        }
+        # 例外を発生させずにリストを返すこと
+        result = adapt_to_indices(
+            none_weekly_perf,
+            date(2026, 1, 14),
+            date(2026, 1, 21),
+            name_map={"^GSPC": "S&P500", "^DJI": "Dow Jones", "^IXIC": "NASDAQ"},
+        )
+
+        assert isinstance(result, list)
+        assert len(result) == 3
+        # 全エントリの weekly_return が None であること
+        for item in result:
+            assert item["weekly_return"] is None
+
 
 # ---------------------------------------------------------------------------
 # Test: adapt_to_mag7
@@ -439,6 +489,30 @@ class TestAdaptToMag7:
             assert "ticker" in item
             assert "name" in item
             assert "weekly_return" in item
+
+    def test_異常系_market_cap取得失敗時はNoneでフォールバック(
+        self, sample_performance_result_mag7: dict[str, Any]
+    ) -> None:
+        """market_caps に一部のティッカーが存在しない場合、そのエントリの market_cap が None になることを確認。"""
+        from scripts.collect_weekly_report_data import adapt_to_mag7
+
+        # AAPL のみ market_cap あり、残りは欠損
+        partial_market_caps: dict[str, int | None] = {
+            "AAPL": 3_800_000_000_000,
+        }
+        result = adapt_to_mag7(
+            sample_performance_result_mag7,
+            market_caps=partial_market_caps,
+        )
+
+        mag7_list = result["mag7"]
+        aapl = next(item for item in mag7_list if item["ticker"] == "AAPL")
+        assert aapl["market_cap"] == 3_800_000_000_000
+
+        # AAPL 以外のティッカーは market_caps に存在しないため None になること
+        others = [item for item in mag7_list if item["ticker"] != "AAPL"]
+        for item in others:
+            assert item["market_cap"] is None
 
 
 # ---------------------------------------------------------------------------
@@ -518,6 +592,21 @@ class TestAdaptToSectors:
         # XLK weekly 2.80% -> 0.028
         xlk = next(s for s in result["all_sectors"] if s["ticker"] == "XLK")
         assert xlk["weekly_return"] == pytest.approx(0.028)
+
+    def test_異常系_sector_weightsが空の場合はNullフィールドで返す(
+        self, sample_performance_result_sectors: dict[str, Any]
+    ) -> None:
+        """sector_weights={} を渡したとき weight が None、top_holdings が [] になることを確認。"""
+        from scripts.collect_weekly_report_data import adapt_to_sectors
+
+        result = adapt_to_sectors(
+            sample_performance_result_sectors,
+            sector_weights={},
+        )
+
+        for sector in result["all_sectors"]:
+            assert sector["weight"] is None
+            assert sector["top_holdings"] == []
 
 
 # ---------------------------------------------------------------------------
@@ -1287,3 +1376,44 @@ class TestMainFunction:
             assert "period" in metadata
 
         assert exit_code == 0
+
+
+# ---------------------------------------------------------------------------
+# Test: Return Value Conversion edge cases (None handling)
+# ---------------------------------------------------------------------------
+
+
+class TestReturnConversion:
+    """Test edge cases in return value conversion, especially None handling."""
+
+    def test_異常系_週次リターンが全てNoneの場合weekly_returnはNone(self) -> None:
+        """PerformanceResult の 1W キーが存在しないとき weekly_return が None になることを確認。
+
+        1W キーが存在しない（未設定）場合、None を /100 してはいけない。
+        TypeError が発生しないことも検証する。
+        """
+        from scripts.collect_weekly_report_data import adapt_to_indices
+
+        # 1W キーを含まない（YTD のみ）シンボルデータ
+        no_1w_perf: dict[str, Any] = {
+            "group": "indices",
+            "subgroup": "us",
+            "periods": ["YTD"],
+            "symbols": {
+                "^GSPC": {"YTD": 3.20},
+            },
+        }
+
+        # TypeError が発生しないこと
+        result = adapt_to_indices(
+            no_1w_perf,
+            date(2026, 1, 14),
+            date(2026, 1, 21),
+            name_map={"^GSPC": "S&P500"},
+        )
+
+        assert len(result) == 1
+        gspc = result[0]
+        assert gspc["ticker"] == "^GSPC"
+        # 1W キーが存在しないため weekly_return は None
+        assert gspc["weekly_return"] is None
