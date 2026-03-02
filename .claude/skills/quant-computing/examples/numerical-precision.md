@@ -50,7 +50,7 @@ def _zscore_series(self, series: pd.Series, *, robust: bool) -> pd.Series:
         center = series.mean()
         scale = series.std()
 
-    if scale == 0 or bool(pd.isna(scale)):
+    if abs(scale) < _EPSILON or bool(pd.isna(scale)):
         return pd.Series(np.nan, index=series.index)
 
     return (series - center) / scale
@@ -192,7 +192,9 @@ def beta(self, benchmark_returns: pd.Series) -> float:
 データが全て同じ値の場合、MAD もスケールもゼロになる：
 
 ```python
-if scale == 0 or bool(pd.isna(scale)):
+# AIDEV-NOTE: ソースコード (normalizer.py) は `scale == 0` だが、
+# epsilon 比較が本来望ましい（浮動小数点の直接比較を避ける原則）
+if abs(scale) < _EPSILON or bool(pd.isna(scale)):
     logger.warning(
         "Zero or NaN scale in zscore calculation",
         robust=robust,

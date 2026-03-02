@@ -329,7 +329,10 @@ def get_financial_data_chunked(
 
 ---
 
-### 2.5 ブラウザフィンガープリントローテーション
+### 2.5 ブラウザフィンガープリントローテーション（`news_scraper` 固有）
+
+> **スコープ**: このパターンは `news_scraper` / `market.yfinance` パッケージ固有です。
+> クオンツ計算の一般的なリトライとは異なり、Web スクレイピングに特化した戦略です。
 
 リトライ時にセッション情報を変更し、レート制限を回避する戦略。
 curl_cffi でブラウザの TLS フィンガープリントを切り替えます。
@@ -405,6 +408,10 @@ PERSISTENT_CACHE_CONFIG = CacheConfig(
 
 > **参照**: `src/market/cache/cache.py` lines 34-47 -- デフォルト・永続キャッシュ設定
 > **参照**: `src/market/cache/types.py` lines 14-61 -- `CacheConfig` 型定義
+>
+> **セキュリティ注意**: `diskcache` ライブラリは内部で `pickle` を使用します。
+> 信頼できないソースのキャッシュファイルを読み込むと任意コード実行のリスクがあります
+> （CVE-2025-69872）。キャッシュ DB ファイルのパーミッションを適切に制限してください。
 
 ---
 

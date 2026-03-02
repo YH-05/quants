@@ -369,6 +369,7 @@ if total > 0 and abs(total - 1.0) > 1e-10:
 ```
 
 > **参照**: `src/dev/ca_strategy/return_calculator.py` lines 500-502 — ウェイト正規化
+> **正規化パターンの詳細**: `numerical-precision.md` セクション 3「ウェイト正規化の閾値」を参照
 
 ---
 

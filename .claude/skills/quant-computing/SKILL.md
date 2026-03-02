@@ -92,7 +92,7 @@ with profile_context("リターン計算"):
 from hypothesis import given
 from hypothesis import strategies as st
 
-@given(returns=st.lists(st.floats(min_value=-0.5, max_value=0.5), min_size=2))
+@given(returns=st.lists(st.floats(min_value=-0.5, max_value=0.5, allow_nan=False, allow_infinity=False), min_size=2))
 def test_プロパティ_ボラティリティは非負(returns: list[float]) -> None:
     series = pd.Series(returns)
     assert RiskCalculator(series).volatility() >= 0.0
@@ -117,12 +117,13 @@ annualized = (1 + cumulative_return) ** (252 / n_days) - 1
 # 年率化ボラティリティ
 volatility = daily_returns.std() * np.sqrt(252)
 
-# Sharpe（日次リスクフリーレートに変換して計算）
+# Sharpe（超過リターンの標準偏差で除算）
 daily_rf = annual_rf / 252
-sharpe = (daily_returns.mean() - daily_rf) / daily_returns.std() * np.sqrt(252)
+excess_returns = daily_returns - daily_rf
+sharpe = (excess_returns.mean() / excess_returns.std()) * np.sqrt(252)
 
-# Sortino（下方偏差のみ使用）
-downside = daily_returns[daily_returns < daily_rf]
+# Sortino（下方偏差のみ使用、閾値は 0）
+downside = daily_returns[daily_returns < 0]
 sortino = (daily_returns.mean() - daily_rf) / downside.std() * np.sqrt(252)
 ```
 

@@ -416,6 +416,10 @@ annualized_return = mean(daily_returns) * annualization_factor
 treynor = (annualized_return - risk_free_rate) / beta
 ```
 
+> **AIDEV-NOTE**: Treynor の年率化は `mean * factor`（単利）を使用しています。
+> これはソースコード（`calculator.py` lines 601-667）の実装に準拠したものです。
+> Sharpe/Sortino の年率化（`sqrt(factor)` でスケーリング）とは方式が異なります。
+
 ### Sharpe との違い
 
 | 項目 | Sharpe | Treynor |

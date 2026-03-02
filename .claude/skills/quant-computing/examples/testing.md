@@ -344,13 +344,13 @@ class TestEdgeCaseNaN:
         assert pd.isna(returns.iloc[3])  # NaN 直後のリターンも NaN（分母が NaN）
 
     def test_エッジケース_全NaN入力でボラティリティ(self) -> None:
-        """全て NaN の入力でボラティリティが NaN または 0 を返す."""
+        """全て NaN の入力でボラティリティが NaN を返す."""
         nan_series = pd.Series([float("nan")] * 10)
         calculator = RiskCalculator(nan_series)
         vol = calculator.volatility()
 
-        # 実装依存: NaN → 0.0 (EPSILON 未満) or NaN
-        assert vol == 0.0 or math.isnan(vol)
+        # pd.Series([NaN]*10).std() → NaN → NaN < _EPSILON は False → NaN * sqrt(252) = NaN
+        assert math.isnan(vol)
 
     def test_エッジケース_一部NaN入力で統計量は有効値のみで計算(self) -> None:
         """NaN を含む Series の std() は NaN を除外して計算される."""
@@ -481,13 +481,16 @@ class TestEdgeCaseSortino:
         assert math.isinf(sortino) and sortino > 0
 
     def test_エッジケース_負のリターン1件でinf(self) -> None:
-        """負のリターンが 1 件だけの場合、std が NaN で inf."""
-        one_negative = pd.Series([0.01, 0.02, -0.01, 0.03, 0.01] * 4)
+        """負のリターンが 1 件だけの場合、len(negative)==1 の専用分岐で inf."""
+        one_negative = pd.Series(
+            [0.01, 0.02, 0.03, 0.01, 0.02, 0.01, 0.03, 0.02, 0.01, 0.03,
+             0.02, 0.01, 0.03, 0.01, 0.02, 0.03, 0.01, 0.02, -0.01, 0.03]
+        )
         calculator = RiskCalculator(one_negative, risk_free_rate=0.0)
         sortino = calculator.sortino_ratio()
 
-        # 負のリターンが1件 → std() が NaN → inf or 有限値
-        assert isinstance(sortino, float)
+        # 負のリターン1件 → len(negative_returns)==1 専用分岐 → excess > 0 → inf
+        assert math.isinf(sortino) and sortino > 0
 
     def test_エッジケース_全て同じ負のリターンでSortino(self) -> None:
         """全て同じ負のリターンの場合、下方偏差ゼロで -inf."""

@@ -111,6 +111,7 @@ if drift_total > 0:
 ```
 
 > **参照**: `src/dev/ca_strategy/return_calculator.py` lines 551-563 -- ドリフト後のウェイト正規化
+> **正規化パターンの詳細**: `numerical-precision.md` セクション 3「ウェイト正規化の閾値」を参照
 
 ---
 
@@ -146,11 +147,12 @@ def annualize_return(
 
 > **参照**: `src/factor/core/return_calculator.py` lines 284-287 -- 2つの年率化方式（simple / compound）
 
-### 3.3 BAD パターン: 単利年率化
+### 3.3 BAD パターン（既存コードの既知問題 — 修正予定）
 
-**以下のコードは BAD パターンです。修正は別 Issue で対応予定。**
+> **WARNING**: 以下は **BAD パターン** です。新規コードで絶対に使用しないでください。
 
 ```python
+# WARNING: BAD PATTERN — DO NOT COPY
 # BAD: 単利年率化（数学的に不正確）
 annualization_factor = 12 / period_month
 df_regular[f"Return_{period_name}_annualized"] = (
