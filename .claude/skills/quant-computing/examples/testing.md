@@ -118,7 +118,7 @@ from hypothesis import strategies as st
 @given(
     returns=st.lists(
         st.floats(min_value=-0.5, max_value=0.5, allow_nan=False, allow_infinity=False),
-        min_size=10,
+        min_size=20,  # 統計量の安定性に20件以上が必要（セクション 2.1 参照）
         max_size=500,
     ),
     annualization_factor=st.integers(min_value=1, max_value=365),
@@ -296,6 +296,8 @@ def test_プロパティ_VaR99はVaR95以下(self, returns: list[float]) -> None
     var_99 = calculator.var(confidence=0.99, method="historical")
 
     # 99% VaR は 95% VaR 以下（許容誤差付き）
+    # 1e-10: Historical VaR はソート済みデータの percentile で算出するため、
+    # 同一データ点に一致する場合の浮動小数点誤差のみを許容
     assert var_99 <= var_95 + 1e-10
 ```
 
@@ -400,13 +402,14 @@ class TestEdgeCaseInfinity:
 class TestEdgeCaseEmpty:
     """空・不十分なデータのテスト."""
 
-    def test_エッジケース_空のSeriesでNoneまたはデフォルト値(self) -> None:
-        """空の Series が渡された場合の挙動を検証."""
+    def test_エッジケース_空のSeriesでNaNまたは例外(self) -> None:
+        """空の Series が渡された場合、NaN を返すか例外を投げる."""
         empty = pd.Series([], dtype=float)
+        calculator = RiskCalculator(empty)
 
-        # 実装によって例外 or デフォルト値を返す
-        # 明示的に dtype=float を指定すること
-        assert len(empty) == 0
+        # 実装は空データに対して NaN を返す（len < 2 の早期リターン）
+        vol = calculator.volatility()
+        assert math.isnan(vol)
 
     def test_エッジケース_1要素のSeriesでリターンNone(self) -> None:
         """1 要素しかない場合、リターンが計算できないことを検証."""

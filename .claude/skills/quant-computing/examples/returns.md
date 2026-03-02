@@ -39,7 +39,7 @@ simple_return = (price_end / price_start) - 1
 ### 1.3 実装例: 個別銘柄の期間リターン
 
 ```python
-def calculate_return(prices: pd.Series, period: int | str) -> float | None:
+def calculate_return(prices: pd.Series, period: int) -> float | None:
     # ...validation...
 
     # Calculate return: (current - past) / past
@@ -179,6 +179,23 @@ df_regular[f"Forward_Return_{period_name}_annualized"] = (
 | -5% | -60.0% | -46.01% | +13.99pp |
 
 リターンが大きいほど、また期間が長いほど乖離が拡大する。
+
+**検出テスト例**: 単利と複利の乖離を検出するテスト:
+
+```python
+def test_異常系_単利年率化の乖離を検出(self) -> None:
+    """単利年率化と複利年率化の乖離が閾値を超えることを検証."""
+    monthly_return = 0.05  # 5%
+    period_month = 1
+
+    # BAD: 単利年率化
+    simple_annualized = monthly_return * (12 / period_month)
+    # GOOD: 複利年率化
+    compound_annualized = (1 + monthly_return) ** (12 / period_month) - 1
+
+    # 乖離が 1pp 以上あることを確認（単利の不正確さの証明）
+    assert abs(compound_annualized - simple_annualized) > 0.01
+```
 特に負のリターンでは単利が過大評価（より悪く見せる）するため注意。
 
 ---

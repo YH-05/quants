@@ -1,6 +1,6 @@
-# バックテストパターン集
+# バックテスト実装パターン集
 
-ベクトル化バックテストの標準パターンを体系化したパターン集です。
+バックテストの標準パターンを体系化したパターン集です。
 前方参照バイアス防止（`signals.shift(1)` 必須）、取引コストモデル、
 ウォークフォワード分割、Buy-and-Hold ドリフト実装を含みます。
 既存コードベースの実装例と行番号注釈を含みます。
@@ -283,6 +283,8 @@ def rolling_walk_forward(
 ) -> list[tuple[pd.DataFrame, pd.DataFrame]]:
     """Generate rolling walk-forward train/test splits.
 
+    テスト参照: `tests/factor/unit/core/test_walk_forward.py` -- 境界値・空データ・重複日付テスト
+
     Parameters
     ----------
     data : pd.DataFrame
@@ -334,6 +336,8 @@ def expanding_walk_forward(
     test_months: int = 12,
 ) -> list[tuple[pd.DataFrame, pd.DataFrame]]:
     """Generate expanding walk-forward train/test splits.
+
+    テスト参照: `tests/factor/unit/core/test_walk_forward.py` -- 境界値・空データ・重複日付テスト
 
     The training window starts from the beginning of the data
     and expands forward. This preserves all historical information.
@@ -463,6 +467,8 @@ LLM を使った分析でも PoiT 制約を適用する:
 ```python
 def get_pit_prompt_context(cutoff_date: date = CUTOFF_DATE) -> str:
     """Generate temporal constraint text for LLM prompt injection."""
+    if not isinstance(cutoff_date, date):
+        raise TypeError(f"cutoff_date must be a date, got {type(cutoff_date).__name__}")
     date_str = cutoff_date.isoformat()
     return (
         f"TEMPORAL CONSTRAINTS (MANDATORY):\n"

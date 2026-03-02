@@ -253,6 +253,7 @@ DBスキーマパターン集：
 
 ```python
 _EPSILON = 1e-15
+_WEIGHT_TOLERANCE = 1e-10  # ウェイト正規化の閾値（numerical-precision.md セクション 3 参照）
 
 def calculate_portfolio_return(
     weights: dict[str, float],
@@ -260,7 +261,7 @@ def calculate_portfolio_return(
 ) -> pd.Series:
     """Calculate weighted portfolio daily returns."""
     weight_series = pd.Series(weights)
-    if abs(weight_series.sum() - 1.0) > _EPSILON:
+    if abs(weight_series.sum() - 1.0) > _WEIGHT_TOLERANCE:
         raise ValueError(f"Weights must sum to 1.0, got {weight_series.sum():.6f}")
     return daily_returns[list(weights.keys())].dot(weight_series)
 ```

@@ -222,6 +222,10 @@ client.store_df(
 DuckDB には `INSERT ... ON CONFLICT` 構文がないため、DELETE + INSERT 方式でべき等な更新を実現する。
 
 ```python
+# AIDEV-NOTE: table_name, key_columns はバリデーション済みの内部値を使用すること。
+# ユーザー入力を直接 f-string に渡すと SQL インジェクション（CWE-89）のリスクがある。
+# 実装では validate_identifier() を呼び出してからこのパターンを適用する。
+
 # Step 1: キーが一致する既存行を削除
 key_cond = " AND ".join(f"existing.{c} = new.{c}" for c in key_columns)
 conn.execute(f"""
@@ -427,13 +431,13 @@ _TABLE_DDL: dict[str, str] = {
             period_type VARCHAR NOT NULL,
             revenue BIGINT NOT NULL,
             operating_income BIGINT NOT NULL,
-            ...
+            -- 他のカラムは参照先を参照
         )
     """,
 }
 ```
 
-> **参照**: `src/market/edinet/storage.py` lines 73-170 -- 8テーブルの DDL 辞書定義
+> **参照**: `src/market/edinet/storage.py` lines 73-170 -- 8テーブルの完全な DDL 辞書定義（全カラム含む）
 
 ### 6.2 一括テーブル作成
 

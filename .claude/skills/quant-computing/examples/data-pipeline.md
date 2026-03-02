@@ -394,6 +394,8 @@ def generate_cache_key(
         interval,
         source,
     ]
+    # AIDEV-NOTE: ":" 区切りは symbol に ":" が含まれない前提。
+    # より堅牢にするには json.dumps(parts, sort_keys=True) を使用する。
     key_str = ":".join(parts)
     return hashlib.sha256(key_str.encode()).hexdigest()
 ```
@@ -508,7 +510,7 @@ def fill_missing_by_sector_median(
 
 | 注意事項 | 説明 |
 |----------|------|
-| 前方参照禁止 | `fillna(method="ffill")` は PoiT 制約下で未来データを使用する可能性がある |
+| 前方参照禁止 | `fillna(method="ffill")` 自体は過去方向への補完で PoiT 安全だが、データ取得段階で未来データが混入している場合、それを伝播させるリスクがある。本質的な問題はデータ取得時のフィルタリング不足 |
 | 補完前にログ | 補完前後の欠損数をログに記録し、補完の影響を追跡可能にする |
 | 中立値の選択 | ファクター値が 0-1 スケールの場合は 0.5、Z-score の場合は 0.0 |
 | グループ単位で適用 | 日付ごとにグループ化して補完する（クロスセクション単位） |

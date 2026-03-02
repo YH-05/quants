@@ -375,6 +375,9 @@ if total > 0 and abs(total - 1.0) > 1e-10:
 
 ## 5. パフォーマンス比較の目安
 
+> **注意**: 以下の数値は参考値です（Python 3.12, pandas 2.x, Apple M2, 単一列処理）。
+> 実際の計測には必ず `profile_context` を使用してください。
+
 | パターン | 1万行 | 100万行 | 備考 |
 |----------|-------|---------|------|
 | Python ループ (`for i in range`) | ~50ms | ~5,000ms | 最も遅い |
@@ -383,8 +386,6 @@ if total > 0 and abs(total - 1.0) > 1e-10:
 | `groupby().transform()` | ~3ms | ~100ms | C 実装の集約 |
 | ベクトル演算 (`pct_change`, `clip`) | ~1ms | ~10ms | 最速、C/Cython 実装 |
 | `np.where` / `np.select` | ~1ms | ~10ms | NumPy の条件分岐 |
-
-**測定のポイント**: 改善前後で必ず `profile_context` を使って計測すること。
 
 ```python
 from finance.utils.profiling import profile_context
