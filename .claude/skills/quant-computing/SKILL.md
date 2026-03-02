@@ -171,6 +171,24 @@ storage.save_parquet(transformed, path)                 # 保存
 
 このスキルには以下のリソースが含まれています：
 
+### ./guide.md
+
+詳細な設計判断基準と実装パターンガイド（SKILL.md の補完）：
+
+- 数値精度（epsilon 閾値設計、dtype 選択）
+- ベクトル化（変換優先順位、apply() 回避基準）
+- 高速化（ボトルネック判定フロー、リトライ設定）
+- テスト（許容誤差設計、Hypothesis ストラテジー）
+- 並列処理（I/O バウンド vs CPU バウンド選択）
+- プロファイリング（手法選択基準）
+- DB 選択基準（SQLite vs DuckDB 判断表）
+- MultiIndex → DB 変換パターン
+- マイグレーション規約
+- リターン計算標準（simple vs log 使い分け、年率化は複利必須）
+- リスクフリーレート標準（DFF vs DGS3MO）
+- バックテスト（signals.shift(1) 必須、PoiT 制約、コーポレートアクション）
+- データパイプライン（3層モデル、スキーマ検証、欠損値・外れ値処理）
+
 ### ./examples/numerical-precision.md
 
 数値精度パターン集：
