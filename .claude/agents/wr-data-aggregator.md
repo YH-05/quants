@@ -42,7 +42,10 @@ permissionMode: bypassPermissions
 ├── mag7.json             # MAG7 パフォーマンス（必須）
 ├── sectors.json          # セクター分析（必須）
 ├── news_from_project.json # GitHub Project からのニュース（必須、task-1の出力）
-└── news_supplemental.json # 追加検索結果（任意）
+├── news_supplemental.json # 追加検索結果（任意）
+├── interest_rates.json   # 金利データ（任意、InterestRateResult形式）
+├── currencies.json       # 為替データ（任意、CurrencyResult形式）
+└── upcoming_events.json  # 来週注目イベント（任意、UpcomingEventsResult形式）
 ```
 
 ### indices.json 形式
@@ -112,7 +115,10 @@ Phase 1: ファイル読み込み
 │   ├── mag7.json（必須）
 │   ├── sectors.json（必須）
 │   ├── news_from_project.json（必須）
-│   └── news_supplemental.json（任意）
+│   ├── news_supplemental.json（任意）
+│   ├── interest_rates.json（任意）
+│   ├── currencies.json（任意）
+│   └── upcoming_events.json（任意）
 └── パースエラー時は警告を記録
 
 Phase 2: データ検証
@@ -133,7 +139,8 @@ Phase 4: データ集約
 ├── MAG7データを整理（top/bottom performer）
 ├── セクターデータを整理（top_3 / bottom_3）
 ├── ニュースデータを整理（by_category + highlights）
-└── 金利・為替データを整理（存在する場合）
+├── 金利データを整理（interest_rates.json が存在する場合は実データを読み込み、存在しない場合はデフォルト null 値で補完）
+└── 為替データを整理（currencies.json が存在する場合は実データを読み込み、存在しない場合はデフォルト null 値で補完）
 
 Phase 5: 出力
 └── aggregated_data.json を生成
@@ -196,7 +203,10 @@ Phase 5: 出力
       "mag7": true,
       "sectors": true,
       "news_from_project": true,
-      "news_supplemental": false
+      "news_supplemental": false,
+      "interest_rates": false,
+      "currencies": false,
+      "upcoming_events": false
     },
     "warnings": []
   },

@@ -711,24 +711,51 @@ gh auth status || {
 ### Phase 2: 市場データ収集
 
 ```bash
-uv run python scripts/weekly_comment_data.py \
+uv run python scripts/collect_weekly_report_data.py \
     --start ${START_DATE} \
     --end ${END_DATE} \
     --output "${OUTPUT_DIR}/data"
 ```
 
-**出力ファイル**:
+**出力ファイル**（全7ファイル）:
 
 #### indices.json
 ```json
 {
-  "as_of": "2026-01-21",
   "period": {"start": "2026-01-14", "end": "2026-01-21"},
   "indices": [
-    {"ticker": "^GSPC", "name": "S&P 500", "weekly_return": 0.025, "price": 6012.45},
-    {"ticker": "RSP", "name": "S&P 500 Equal Weight", "weekly_return": 0.018, "price": 175.30},
-    {"ticker": "VUG", "name": "Vanguard Growth ETF", "weekly_return": 0.032, "price": 385.20},
-    {"ticker": "VTV", "name": "Vanguard Value ETF", "weekly_return": 0.012, "price": 168.50}
+    {
+      "ticker": "^GSPC",
+      "name": "S&P 500",
+      "weekly_return": 0.025,
+      "ytd_return": 0.032,
+      "price": null,
+      "change": null
+    },
+    {
+      "ticker": "RSP",
+      "name": "S&P 500 Equal Weight",
+      "weekly_return": 0.018,
+      "ytd_return": 0.021,
+      "price": null,
+      "change": null
+    },
+    {
+      "ticker": "VUG",
+      "name": "Vanguard Growth ETF",
+      "weekly_return": 0.032,
+      "ytd_return": 0.041,
+      "price": null,
+      "change": null
+    },
+    {
+      "ticker": "VTV",
+      "name": "Vanguard Value ETF",
+      "weekly_return": 0.012,
+      "ytd_return": 0.015,
+      "price": null,
+      "change": null
+    }
   ]
 }
 ```
@@ -736,51 +763,263 @@ uv run python scripts/weekly_comment_data.py \
 #### mag7.json
 ```json
 {
-  "as_of": "2026-01-21",
   "period": {"start": "2026-01-14", "end": "2026-01-21"},
   "mag7": [
-    {"ticker": "AAPL", "name": "Apple", "weekly_return": 0.015, "price": 245.50},
-    {"ticker": "MSFT", "name": "Microsoft", "weekly_return": 0.022, "price": 425.30},
-    {"ticker": "GOOGL", "name": "Alphabet", "weekly_return": -0.008, "price": 185.20},
-    {"ticker": "AMZN", "name": "Amazon", "weekly_return": 0.028, "price": 215.80},
-    {"ticker": "META", "name": "Meta", "weekly_return": -0.012, "price": 585.40},
-    {"ticker": "NVDA", "name": "NVIDIA", "weekly_return": 0.019, "price": 950.20},
-    {"ticker": "TSLA", "name": "Tesla", "weekly_return": 0.037, "price": 285.60}
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "weekly_return": 0.037,
+      "ytd_return": 0.052,
+      "price": null,
+      "market_cap": 900000000000
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "weekly_return": 0.028,
+      "ytd_return": 0.035,
+      "price": null,
+      "market_cap": 2200000000000
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "weekly_return": 0.022,
+      "ytd_return": 0.028,
+      "price": null,
+      "market_cap": 3100000000000
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "weekly_return": 0.019,
+      "ytd_return": 0.045,
+      "price": null,
+      "market_cap": 2800000000000
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "weekly_return": 0.015,
+      "ytd_return": 0.018,
+      "price": null,
+      "market_cap": 3800000000000
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "weekly_return": -0.008,
+      "ytd_return": 0.005,
+      "price": null,
+      "market_cap": 2000000000000
+    },
+    {
+      "ticker": "META",
+      "name": "Meta",
+      "weekly_return": -0.012,
+      "ytd_return": 0.010,
+      "price": null,
+      "market_cap": 1500000000000
+    }
   ],
-  "sox": {"ticker": "^SOX", "name": "SOX Index", "weekly_return": 0.031, "price": 5250.30}
+  "sox": {
+    "ticker": "^SOX",
+    "name": "Philadelphia Semiconductor",
+    "weekly_return": 0.031,
+    "ytd_return": 0.042,
+    "price": null
+  }
 }
 ```
 
 #### sectors.json
 ```json
 {
-  "as_of": "2026-01-21",
   "period": {"start": "2026-01-14", "end": "2026-01-21"},
   "top_sectors": [
-    {"ticker": "XLK", "name": "Technology", "weekly_return": 0.025},
-    {"ticker": "XLE", "name": "Energy", "weekly_return": 0.018},
-    {"ticker": "XLF", "name": "Financials", "weekly_return": 0.012}
+    {
+      "ticker": "XLK",
+      "name": "Technology",
+      "weekly_return": 0.025,
+      "ytd_return": 0.038,
+      "weight": null,
+      "top_holdings": []
+    },
+    {
+      "ticker": "XLE",
+      "name": "Energy",
+      "weekly_return": 0.018,
+      "ytd_return": 0.022,
+      "weight": null,
+      "top_holdings": []
+    },
+    {
+      "ticker": "XLF",
+      "name": "Financials",
+      "weekly_return": 0.012,
+      "ytd_return": 0.015,
+      "weight": null,
+      "top_holdings": []
+    }
   ],
   "bottom_sectors": [
-    {"ticker": "XLV", "name": "Healthcare", "weekly_return": -0.029},
-    {"ticker": "XLU", "name": "Utilities", "weekly_return": -0.022},
-    {"ticker": "XLB", "name": "Materials", "weekly_return": -0.015}
+    {
+      "ticker": "XLV",
+      "name": "Healthcare",
+      "weekly_return": -0.029,
+      "ytd_return": -0.015,
+      "weight": null,
+      "top_holdings": []
+    },
+    {
+      "ticker": "XLU",
+      "name": "Utilities",
+      "weekly_return": -0.022,
+      "ytd_return": -0.010,
+      "weight": null,
+      "top_holdings": []
+    },
+    {
+      "ticker": "XLB",
+      "name": "Materials",
+      "weekly_return": -0.015,
+      "ytd_return": -0.008,
+      "weight": null,
+      "top_holdings": []
+    }
   ],
   "all_sectors": [...]
+}
+```
+
+#### interest_rates.json
+```json
+{
+  "group": "interest_rates",
+  "generated_at": "2026-01-22T09:30:00",
+  "periods": ["1D", "1W", "1M"],
+  "data": {
+    "DGS10": {
+      "latest": 4.625,
+      "changes": {"1D": 0.02, "1W": 0.08, "1M": 0.15}
+    },
+    "DGS2": {
+      "latest": 4.325,
+      "changes": {"1D": -0.01, "1W": 0.05, "1M": 0.10}
+    },
+    "DGS30": {
+      "latest": 4.825,
+      "changes": {"1D": 0.03, "1W": 0.09, "1M": 0.18}
+    }
+  },
+  "yield_curve": {
+    "is_inverted": false,
+    "spread_10y_2y": 0.30
+  },
+  "data_freshness": {
+    "newest_date": "2026-01-21",
+    "oldest_date": "2026-01-21",
+    "has_date_gap": false
+  }
+}
+```
+
+#### currencies.json
+```json
+{
+  "group": "currencies",
+  "subgroup": "jpy_crosses",
+  "base_currency": "JPY",
+  "generated_at": "2026-01-22T09:30:00",
+  "periods": ["1D", "1W", "1M"],
+  "symbols": {
+    "USDJPY=X": {"1D": 0.16, "1W": 0.85, "1M": 2.30},
+    "EURJPY=X": {"1D": -0.05, "1W": 0.42, "1M": 1.50},
+    "GBPJPY=X": {"1D": 0.10, "1W": 0.65, "1M": 1.80}
+  },
+  "summary": {
+    "strongest_currency": {"symbol": "USDJPY=X", "period": "1M", "return_pct": 2.30},
+    "weakest_currency": {"symbol": "EURJPY=X", "period": "1D", "return_pct": -0.05},
+    "period_averages": {"1D": 0.07, "1W": 0.64, "1M": 1.87}
+  },
+  "latest_dates": {
+    "USDJPY=X": "2026-01-21",
+    "EURJPY=X": "2026-01-21",
+    "GBPJPY=X": "2026-01-21"
+  },
+  "data_freshness": {
+    "newest_date": "2026-01-21",
+    "oldest_date": "2026-01-21",
+    "has_date_gap": false
+  }
+}
+```
+
+#### upcoming_events.json
+```json
+{
+  "group": "upcoming_events",
+  "generated_at": "2026-01-22T09:30:00+00:00",
+  "period": {"start": "2026-01-23", "end": "2026-01-29"},
+  "earnings": [
+    {
+      "ticker": "AAPL",
+      "company_name": "Apple Inc.",
+      "earnings_date": "2026-01-27",
+      "timing": "AMC"
+    },
+    {
+      "ticker": "META",
+      "company_name": "Meta Platforms Inc.",
+      "earnings_date": "2026-01-28",
+      "timing": "AMC"
+    }
+  ],
+  "economic_releases": [
+    {
+      "name": "FOMC Meeting",
+      "release_date": "2026-01-28",
+      "importance": "high",
+      "description": "Federal Open Market Committee Interest Rate Decision"
+    },
+    {
+      "name": "GDP (Advance)",
+      "release_date": "2026-01-29",
+      "importance": "high",
+      "description": "Q4 2025 GDP Advance Estimate"
+    }
+  ],
+  "summary": {
+    "earnings_count": 2,
+    "economic_release_count": 2,
+    "high_importance_count": 2,
+    "busiest_date": "2026-01-28"
+  }
 }
 ```
 
 #### metadata.json
 ```json
 {
-  "report_date": "2026-01-22",
+  "generated_at": "2026-01-22T09:30:00",
   "period": {
     "start": "2026-01-14",
-    "end": "2026-01-21"
+    "end": "2026-01-21",
+    "start_jp": "1月14日",
+    "end_jp": "1月21日",
+    "start_us": "Jan 14",
+    "end_us": "Jan 21"
   },
-  "generated_at": "2026-01-22T09:30:00+09:00",
   "mode": "weekly",
-  "project_number": 15
+  "files": {
+    "indices.json": "ok",
+    "mag7.json": "ok",
+    "sectors.json": "ok",
+    "interest_rates.json": "ok",
+    "currencies.json": "ok",
+    "upcoming_events.json": "ok",
+    "metadata.json": "ok"
+  }
 }
 ```
 
