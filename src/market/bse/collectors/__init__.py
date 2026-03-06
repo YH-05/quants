@@ -1,7 +1,14 @@
 """BSE data collector implementations.
 
-This subpackage will contain collector classes for various BSE data
-endpoints (e.g., Bhavcopy, scrip quotes, corporate actions).
+This subpackage contains collector classes for various BSE data
+endpoints (e.g., scrip quotes, bhavcopy, corporate actions).
 
-Placeholder for Wave 2+ implementation.
+Public API
+----------
+QuoteCollector
+    Collector for BSE scrip quote and historical price data.
 """
+
+from market.bse.collectors.quote import QuoteCollector
+
+__all__ = ["QuoteCollector"]

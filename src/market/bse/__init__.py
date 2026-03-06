@@ -44,12 +44,20 @@ ScripQuote, FinancialResult, Announcement, CorporateAction
     Frozen dataclasses for BSE data records.
 """
 
+from market.bse.collectors.quote import QuoteCollector
 from market.bse.errors import (
     BseAPIError,
     BseError,
     BseParseError,
     BseRateLimitError,
     BseValidationError,
+)
+from market.bse.parsers import (
+    clean_indian_number,
+    clean_price,
+    clean_volume,
+    parse_historical_csv,
+    parse_quote_response,
 )
 from market.bse.session import BseSession
 from market.bse.types import (
@@ -77,7 +85,13 @@ __all__ = [
     "CorporateAction",
     "FinancialResult",
     "IndexName",
+    "QuoteCollector",
     "RetryConfig",
     "ScripGroup",
     "ScripQuote",
+    "clean_indian_number",
+    "clean_price",
+    "clean_volume",
+    "parse_historical_csv",
+    "parse_quote_response",
 ]
