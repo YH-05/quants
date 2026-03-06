@@ -41,6 +41,7 @@ market.edinet.constants : API URL, ranking metrics, and HTTP settings.
 
 from __future__ import annotations
 
+import dataclasses
 import os
 import random
 import time
@@ -218,8 +219,10 @@ class EdinetClient:
         1
         """
         logger.debug("Searching companies", query=query)
-        data = self._request("GET", "/v1/search", params={"q": query})
-        results: list[dict[str, Any]] = data.get("results", [])
+        raw = self._request("GET", "/v1/search", params={"q": query})
+        results: list[dict[str, Any]] = self._unwrap_response(raw)
+        if not isinstance(results, list):
+            results = []
         logger.info("Search completed", query=query, result_count=len(results))
         return results
 
@@ -252,12 +255,13 @@ class EdinetClient:
         3848
         """
         logger.debug("Listing companies", per_page=per_page)
-        data = self._request(
+        raw = self._request(
             "GET",
             "/v1/companies",
             params={"per_page": str(per_page)},
         )
-        companies = [Company(**item) for item in data]
+        data = self._unwrap_response(raw)
+        companies = [self._parse_record(Company, item) for item in data]
         logger.info("Companies listed", count=len(companies))
         return companies
 
@@ -290,8 +294,9 @@ class EdinetClient:
         'テスト株式会社'
         """
         logger.debug("Getting company", code=code)
-        data = self._request("GET", f"/v1/companies/{code}")
-        company = Company(**data)
+        raw = self._request("GET", f"/v1/companies/{code}")
+        data = self._unwrap_response(raw)
+        company = self._parse_record(Company, data)
         logger.info("Company retrieved", code=code, name=company.corp_name)
         return company
 
@@ -324,8 +329,9 @@ class EdinetClient:
         6
         """
         logger.debug("Getting financials", code=code)
-        data = self._request("GET", f"/v1/companies/{code}/financials")
-        records = [FinancialRecord(**item) for item in data]
+        raw = self._request("GET", f"/v1/companies/{code}/financials")
+        data = self._unwrap_response(raw)
+        records = [self._parse_record(FinancialRecord, item) for item in data]
         logger.info("Financials retrieved", code=code, years=len(records))
         return records
 
@@ -358,8 +364,9 @@ class EdinetClient:
         3.89
         """
         logger.debug("Getting ratios", code=code)
-        data = self._request("GET", f"/v1/companies/{code}/ratios")
-        records = [RatioRecord(**item) for item in data]
+        raw = self._request("GET", f"/v1/companies/{code}/ratios")
+        data = self._unwrap_response(raw)
+        records = [self._parse_record(RatioRecord, item) for item in data]
         logger.info("Ratios retrieved", code=code, years=len(records))
         return records
 
@@ -392,8 +399,9 @@ class EdinetClient:
         75.0
         """
         logger.debug("Getting analysis", code=code)
-        data = self._request("GET", f"/v1/companies/{code}/analysis")
-        result = AnalysisResult(**data)
+        raw = self._request("GET", f"/v1/companies/{code}/analysis")
+        data = self._unwrap_response(raw)
+        result = self._parse_record(AnalysisResult, data)
         logger.info(
             "Analysis retrieved",
             code=code,
@@ -436,12 +444,13 @@ class EdinetClient:
         params: dict[str, str] = {}
         if year is not None:
             params["year"] = year
-        data = self._request(
+        raw = self._request(
             "GET",
             f"/v1/companies/{code}/text-blocks",
             params=params if params else None,
         )
-        blocks = [TextBlock(**item) for item in data]
+        data = self._unwrap_response(raw)
+        blocks = [self._parse_record(TextBlock, item) for item in data]
         logger.info("Text blocks retrieved", code=code, count=len(blocks))
         return blocks
 
@@ -483,8 +492,9 @@ class EdinetClient:
                 f"Must be one of: {', '.join(RANKING_METRICS)}"
             )
         logger.debug("Getting ranking", metric=metric)
-        data = self._request("GET", f"/v1/rankings/{metric}")
-        entries = [RankingEntry(**item) for item in data]
+        raw = self._request("GET", f"/v1/rankings/{metric}")
+        data = self._unwrap_response(raw)
+        entries = [self._parse_record(RankingEntry, item) for item in data]
         logger.info("Ranking retrieved", metric=metric, count=len(entries))
         return entries
 
@@ -512,8 +522,9 @@ class EdinetClient:
         34
         """
         logger.debug("Listing industries")
-        data = self._request("GET", "/v1/industries")
-        industries = [Industry(**item) for item in data]
+        raw = self._request("GET", "/v1/industries")
+        data = self._unwrap_response(raw)
+        industries = [self._parse_record(Industry, item) for item in data]
         logger.info("Industries listed", count=len(industries))
         return industries
 
@@ -547,8 +558,38 @@ class EdinetClient:
         '情報・通信業'
         """
         logger.debug("Getting industry", slug=slug)
-        data = self._request("GET", f"/v1/industries/{slug}")
+        raw = self._request("GET", f"/v1/industries/{slug}")
+        data = self._unwrap_response(raw)
         logger.info("Industry retrieved", slug=slug)
+        return data
+
+    def get_status(self) -> dict[str, Any]:
+        """Get API status information.
+
+        Calls ``GET /v1/status``. This endpoint does not require
+        authentication and can be used to verify API availability.
+
+        Returns
+        -------
+        dict[str, Any]
+            Status information including available industries and
+            total company count.
+
+        Raises
+        ------
+        EdinetAPIError
+            If the API returns an error response.
+
+        Examples
+        --------
+        >>> status = client.get_status()
+        >>> status["total_companies"]
+        3848
+        """
+        logger.debug("Getting API status")
+        raw = self._request("GET", "/v1/status")
+        data = self._unwrap_response(raw)
+        logger.info("API status retrieved")
         return data
 
     # =========================================================================
@@ -572,6 +613,69 @@ class EdinetClient:
         if self._rate_limiter is None:
             return None
         return self._rate_limiter.get_remaining()
+
+    # =========================================================================
+    # Internal Parsing Helpers
+    # =========================================================================
+
+    def _parse_record[T](self, cls: type[T], data: dict[str, Any]) -> T:
+        """Create a dataclass instance from a dict, ignoring unknown fields.
+
+        Extracts only the fields defined on ``cls`` from ``data``,
+        silently discarding any keys that do not match a dataclass field.
+        This provides resilience against API response changes that add
+        new fields.
+
+        Parameters
+        ----------
+        cls : type[T]
+            The frozen dataclass type to instantiate.
+        data : dict[str, Any]
+            Raw API response dictionary (may contain unknown keys).
+
+        Returns
+        -------
+        T
+            An instance of ``cls`` with only known fields populated.
+
+        Examples
+        --------
+        >>> client._parse_record(Company, {"edinet_code": "E00001", "unknown": 1})
+        Company(edinet_code='E00001', ...)
+        """
+        field_names = {f.name for f in dataclasses.fields(cls)}  # type: ignore[arg-type]
+        filtered = {k: v for k, v in data.items() if k in field_names}
+        return cls(**filtered)
+
+    def _unwrap_response(self, body: Any) -> Any:
+        """Unwrap the API response envelope if present.
+
+        The EDINET DB API wraps all responses in a ``{"data": ...}``
+        envelope. This method extracts the inner payload. If the
+        response is not wrapped (e.g. already a list or a dict without
+        a ``"data"`` key), it is returned as-is.
+
+        Parameters
+        ----------
+        body : Any
+            Parsed JSON response body from the API.
+
+        Returns
+        -------
+        Any
+            The unwrapped payload (``body["data"]`` if present,
+            otherwise ``body`` itself).
+
+        Examples
+        --------
+        >>> client._unwrap_response({"data": [{"id": 1}], "meta": {}})
+        [{'id': 1}]
+        >>> client._unwrap_response([{"id": 1}])
+        [{'id': 1}]
+        """
+        if isinstance(body, dict) and "data" in body:
+            return body["data"]
+        return body
 
     # =========================================================================
     # Internal HTTP Logic
