@@ -198,3 +198,23 @@ NASDAQ_QUANT_CATEGORIES: list[str] = [
     "Technology",
     "Stocks",
 ]
+
+# 日本語 RSS フィード定数
+
+TOYOKEIZAI_FEEDS: dict[str, str] = {
+    "all": "https://toyokeizai.net/list/feed/rss",
+}
+
+INVESTING_JP_FEEDS: dict[str, str] = {
+    "forex": "https://jp.investing.com/rss/news_301.rss",
+    "commodities": "https://jp.investing.com/rss/news_302.rss",
+    "stocks": "https://jp.investing.com/rss/news_303.rss",
+    "economy": "https://jp.investing.com/rss/news_304.rss",
+    "bonds": "https://jp.investing.com/rss/news_305.rss",
+}
+
+YAHOO_JP_FEEDS: dict[str, str] = {
+    "business": "https://news.yahoo.co.jp/rss/topics/business.xml",
+    "economy": "https://news.yahoo.co.jp/rss/topics/economy.xml",
+    "it": "https://news.yahoo.co.jp/rss/topics/it.xml",
+}
