@@ -79,7 +79,7 @@ from market.etfcom.constants import (
     SUMMARY_DATA_ID,
     TICKERS_API_URL,
 )
-from market.etfcom.errors import ETFComAPIError, ETFComBlockedError
+from market.etfcom.errors import ETFComAPIError, ETFComBlockedError, ETFComNotFoundError
 from market.etfcom.session import ETFComSession
 from market.etfcom.types import RetryConfig, ScrapingConfig
 from utils_core.logging import get_logger
@@ -625,6 +625,7 @@ class FundamentalsCollector(DataCollector):
 
         try:
             for ticker in tickers:
+                ticker = ticker.upper()
                 url = PROFILE_URL_TEMPLATE.format(ticker=ticker)
                 logger.debug(
                     "Fetching fundamentals",
@@ -642,6 +643,13 @@ class FundamentalsCollector(DataCollector):
                         ticker=ticker,
                         field_count=len(record),
                     )
+                except ETFComNotFoundError:
+                    logger.warning(
+                        "ETF not found (HTTP 404), adding minimal record",
+                        ticker=ticker,
+                        url=url,
+                    )
+                    all_records.append({"ticker": ticker})
                 except Exception as e:
                     logger.warning(
                         "Failed to fetch fundamentals",
@@ -1016,6 +1024,8 @@ class FundFlowsCollector(DataCollector):
         if not ticker:
             logger.info("No ticker provided, returning empty DataFrame")
             return pd.DataFrame()
+
+        ticker = ticker.upper()
 
         url = FUND_FLOWS_URL_TEMPLATE.format(ticker=ticker)
         logger.info(
@@ -1593,6 +1603,8 @@ class HistoricalFundFlowsCollector(DataCollector):
         if not ticker:
             logger.info("No ticker provided, returning empty DataFrame")
             return pd.DataFrame()
+
+        ticker = ticker.upper()
 
         logger.info(
             "Starting historical fund flow collection",

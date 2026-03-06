@@ -40,6 +40,10 @@ Test TODO List:
 - [x] FundFlowsCollector: FUND_FLOWS_URL_TEMPLATE を使用して URL 構築
 - [x] FundFlowsCollector: validate() で必須カラム存在チェック
 - [x] __all__ に 3 つの Collector 全てがエクスポート
+- [x] TickerNormalization: FundamentalsCollector が小文字を大文字に正規化
+- [x] TickerNormalization: FundFlowsCollector が小文字を大文字に正規化
+- [x] TickerNormalization: HistoricalFundFlowsCollector が小文字を大文字に正規化
+- [x] FundamentalsCollector: 404 エラー時に minimal レコードが追加される
 """
 
 from __future__ import annotations
@@ -50,6 +54,7 @@ import pandas as pd
 import pytest
 
 from market.base_collector import DataCollector
+from market.etfcom.errors import ETFComNotFoundError
 from market.etfcom.types import RetryConfig, ScrapingConfig
 
 # =============================================================================
@@ -1205,3 +1210,196 @@ class TestFundFlowsValidate:
         df = pd.DataFrame({"some_column": [1, 2, 3]})
 
         assert collector.validate(df) is False
+
+
+# =============================================================================
+# Ticker normalization tests
+# =============================================================================
+
+
+class TestTickerNormalization:
+    """3 つの Collector のティッカー大文字正規化テスト。"""
+
+    def test_正常系_FundamentalsCollectorが小文字を大文字に正規化する(self) -> None:
+        """FundamentalsCollector.fetch() が小文字ティッカーを大文字に正規化すること。"""
+        from market.etfcom.collectors import FundamentalsCollector
+        from market.etfcom.constants import PROFILE_URL_TEMPLATE
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = SAMPLE_PROFILE_HTML
+        mock_response.status_code = 200
+        mock_session.get_with_retry.return_value = mock_response
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundamentalsCollector(session=mock_session, config=config)
+
+        df = collector.fetch(tickers=["spy"])
+
+        # URL should use uppercase ticker
+        called_url = mock_session.get_with_retry.call_args[0][0]
+        expected_url = PROFILE_URL_TEMPLATE.format(ticker="SPY")
+        assert called_url == expected_url
+
+        # DataFrame ticker should be uppercase
+        assert df["ticker"].iloc[0] == "SPY"
+
+    def test_正常系_FundamentalsCollectorが大文字入力でも正常動作する(self) -> None:
+        """FundamentalsCollector.fetch() が大文字入力でも冪等に動作すること。"""
+        from market.etfcom.collectors import FundamentalsCollector
+        from market.etfcom.constants import PROFILE_URL_TEMPLATE
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = SAMPLE_PROFILE_HTML
+        mock_response.status_code = 200
+        mock_session.get_with_retry.return_value = mock_response
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundamentalsCollector(session=mock_session, config=config)
+
+        df = collector.fetch(tickers=["SPY"])
+
+        called_url = mock_session.get_with_retry.call_args[0][0]
+        expected_url = PROFILE_URL_TEMPLATE.format(ticker="SPY")
+        assert called_url == expected_url
+        assert df["ticker"].iloc[0] == "SPY"
+
+    def test_正常系_FundFlowsCollectorが小文字を大文字に正規化する(self) -> None:
+        """FundFlowsCollector.fetch() が小文字ティッカーを大文字に正規化すること。"""
+        from market.etfcom.collectors import FundFlowsCollector
+        from market.etfcom.constants import FUND_FLOWS_URL_TEMPLATE
+
+        mock_session = MagicMock()
+        mock_response = MagicMock()
+        mock_response.text = SAMPLE_FUND_FLOWS_HTML
+        mock_response.status_code = 200
+        mock_session.get_with_retry.return_value = mock_response
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundFlowsCollector(session=mock_session, config=config)
+
+        df = collector.fetch(ticker="spy")
+
+        # URL should use uppercase ticker
+        called_url = mock_session.get_with_retry.call_args[0][0]
+        expected_url = FUND_FLOWS_URL_TEMPLATE.format(ticker="SPY")
+        assert called_url == expected_url
+
+        # DataFrame ticker should be uppercase
+        assert df["ticker"].iloc[0] == "SPY"
+
+    def test_正常系_HistoricalFundFlowsCollectorが小文字を大文字に正規化する(
+        self,
+    ) -> None:
+        """HistoricalFundFlowsCollector.fetch() が小文字ティッカーを大文字に正規化すること。"""
+        from market.etfcom.collectors import HistoricalFundFlowsCollector
+
+        mock_session = MagicMock()
+        collector = HistoricalFundFlowsCollector(session=mock_session)
+
+        # Mock _resolve_fund_id and _fetch_fund_flows to avoid actual API calls
+        with (
+            patch.object(
+                collector, "_resolve_fund_id", return_value=12345
+            ) as mock_resolve,
+            patch.object(collector, "_fetch_fund_flows", return_value=[]),
+        ):
+            collector.fetch(ticker="spy")
+
+        # _resolve_fund_id should be called with uppercase ticker
+        mock_resolve.assert_called_once_with("SPY")
+
+
+# =============================================================================
+# FundamentalsCollector ETFComNotFoundError handling tests
+# =============================================================================
+
+
+class TestFundamentalsNotFoundHandling:
+    """FundamentalsCollector.fetch() の ETFComNotFoundError ハンドリングテスト。"""
+
+    def test_正常系_404エラー時にminimalレコードが追加される(self) -> None:
+        """ETFComNotFoundError 発生時に最小レコード {"ticker": ticker} が追加されること。"""
+        from market.etfcom.collectors import FundamentalsCollector
+
+        mock_session = MagicMock()
+        # First ticker succeeds, second raises ETFComNotFoundError
+        mock_response_ok = MagicMock()
+        mock_response_ok.text = SAMPLE_PROFILE_HTML
+        mock_response_ok.status_code = 200
+
+        mock_session.get_with_retry.side_effect = [
+            mock_response_ok,
+            ETFComNotFoundError(
+                "ETF not found: HTTP 404",
+                url="https://www.etf.com/INVALID",
+            ),
+        ]
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundamentalsCollector(session=mock_session, config=config)
+
+        df = collector.fetch(tickers=["SPY", "INVALID"])
+
+        # Both tickers should be in the result
+        assert len(df) == 2
+        assert df["ticker"].tolist() == ["SPY", "INVALID"]
+
+    def test_正常系_404エラー後も他ティッカーの処理が継続される(self) -> None:
+        """ETFComNotFoundError 後も残りのティッカーの処理が継続されること。"""
+        from market.etfcom.collectors import FundamentalsCollector
+
+        mock_session = MagicMock()
+        mock_response_ok = MagicMock()
+        mock_response_ok.text = SAMPLE_PROFILE_HTML
+        mock_response_ok.status_code = 200
+
+        # First raises 404, second succeeds
+        mock_session.get_with_retry.side_effect = [
+            ETFComNotFoundError(
+                "ETF not found: HTTP 404",
+                url="https://www.etf.com/INVALID",
+            ),
+            mock_response_ok,
+        ]
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundamentalsCollector(session=mock_session, config=config)
+
+        df = collector.fetch(tickers=["INVALID", "SPY"])
+
+        assert len(df) == 2
+        # INVALID should have minimal record, SPY should have full data
+        invalid_row = df[df["ticker"] == "INVALID"].iloc[0]
+        spy_row = df[df["ticker"] == "SPY"].iloc[0]
+
+        # INVALID should only have ticker field (other fields NaN)
+        assert pd.isna(invalid_row.get("issuer"))
+        # SPY should have full data
+        assert spy_row["issuer"] == "State Street"
+
+    def test_正常系_404時にPlaywrightフォールバックがトリガーされない(self) -> None:
+        """ETFComNotFoundError が _get_html() から直接伝播し Playwright fallback しないこと。"""
+        from market.etfcom.collectors import FundamentalsCollector
+
+        mock_session = MagicMock()
+        mock_session.get_with_retry.side_effect = ETFComNotFoundError(
+            "ETF not found: HTTP 404",
+            url="https://www.etf.com/INVALID",
+        )
+
+        mock_browser = AsyncMock()
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundamentalsCollector(
+            session=mock_session, browser=mock_browser, config=config
+        )
+
+        df = collector.fetch(tickers=["INVALID"])
+
+        # Browser should NOT be called (no Playwright fallback for 404)
+        mock_browser._get_page_html_with_retry.assert_not_called()
+        # Should still get a minimal record
+        assert len(df) == 1
+        assert df["ticker"].iloc[0] == "INVALID"
