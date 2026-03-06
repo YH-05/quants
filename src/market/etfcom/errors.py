@@ -11,6 +11,7 @@ ETFComError (base, inherits Exception)
     ETFComScrapingError (HTML parse failure)
     ETFComTimeoutError (page load / navigation timeout)
     ETFComBlockedError (bot-blocking detection)
+    ETFComNotFoundError (HTTP 404 not found)
     ETFComAPIError (REST API error response)
 
 Notes
@@ -195,6 +196,50 @@ class ETFComBlockedError(ETFComError):
         self.status_code = status_code
 
 
+class ETFComNotFoundError(ETFComError):
+    """Exception raised when an ETF.com page returns HTTP 404 Not Found.
+
+    This exception is raised when a request to ETF.com returns an
+    HTTP 404 status code, indicating that the requested resource
+    (e.g. an ETF profile page) does not exist.
+
+    Parameters
+    ----------
+    message : str
+        Human-readable error message describing the not-found condition.
+    url : str | None
+        The URL that returned 404.
+    status_code : int
+        The HTTP status code returned (default: 404).
+
+    Attributes
+    ----------
+    message : str
+        The error message.
+    url : str | None
+        The URL that returned 404.
+    status_code : int
+        The HTTP status code.
+
+    Examples
+    --------
+    >>> raise ETFComNotFoundError(
+    ...     "ETF not found: HTTP 404",
+    ...     url="https://www.etf.com/INVALID",
+    ... )
+    """
+
+    def __init__(
+        self,
+        message: str,
+        url: str | None,
+        status_code: int = 404,
+    ) -> None:
+        super().__init__(message)
+        self.url = url
+        self.status_code = status_code
+
+
 class ETFComAPIError(ETFComError):
     """Exception raised when the ETF.com REST API returns an error response.
 
@@ -269,6 +314,7 @@ __all__ = [
     "ETFComAPIError",
     "ETFComBlockedError",
     "ETFComError",
+    "ETFComNotFoundError",
     "ETFComScrapingError",
     "ETFComTimeoutError",
 ]
