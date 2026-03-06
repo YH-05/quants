@@ -285,29 +285,25 @@ class TestGetFinancials:
         response_data = [
             {
                 "edinet_code": "E00001",
-                "fiscal_year": "2025",
-                "period_type": "annual",
-                "revenue": 1_000_000_000,
-                "operating_income": 100_000_000,
-                "ordinary_income": 110_000_000,
-                "net_income": 70_000_000,
-                "total_assets": 5_000_000_000,
-                "net_assets": 2_000_000_000,
-                "equity": 1_800_000_000,
-                "interest_bearing_debt": 1_000_000_000,
-                "operating_cf": 150_000_000,
-                "investing_cf": -80_000_000,
-                "financing_cf": -50_000_000,
-                "free_cf": 70_000_000,
+                "fiscal_year": 2025,
+                "revenue": 1_000_000_000.0,
+                "operating_income": 100_000_000.0,
+                "ordinary_income": 110_000_000.0,
+                "net_income": 70_000_000.0,
+                "total_assets": 5_000_000_000.0,
+                "net_assets": 2_000_000_000.0,
+                "shareholders_equity": 1_800_000_000.0,
+                "cf_operating": 150_000_000.0,
+                "cf_investing": -80_000_000.0,
+                "cf_financing": -50_000_000.0,
                 "eps": 350.0,
                 "bps": 9_000.0,
                 "dividend_per_share": 100.0,
-                "shares_outstanding": 200_000,
-                "employees": 5_000,
-                "capex": 80_000_000,
-                "depreciation": 60_000_000,
-                "rnd_expense": 30_000_000,
-                "goodwill": 10_000_000,
+                "num_employees": 5_000,
+                "capex": 80_000_000.0,
+                "depreciation": 60_000_000.0,
+                "rnd_expenses": 30_000_000.0,
+                "goodwill": 10_000_000.0,
             }
         ]
         with (
@@ -321,7 +317,7 @@ class TestGetFinancials:
             records = client.get_financials("E00001")
             assert len(records) == 1
             assert isinstance(records[0], FinancialRecord)
-            assert records[0].revenue == 1_000_000_000
+            assert records[0].revenue == 1_000_000_000.0
 
 
 # =============================================================================
@@ -336,21 +332,17 @@ class TestGetRatios:
         response_data = [
             {
                 "edinet_code": "E00001",
-                "fiscal_year": "2025",
-                "period_type": "annual",
+                "fiscal_year": 2025,
                 "roe": 3.89,
                 "roa": 1.40,
-                "operating_margin": 10.0,
                 "net_margin": 7.0,
                 "equity_ratio": 36.0,
-                "debt_equity_ratio": 0.56,
-                "current_ratio": 1.50,
-                "interest_coverage_ratio": 5.0,
                 "payout_ratio": 28.57,
                 "asset_turnover": 0.20,
-                "revenue_growth": 5.0,
-                "operating_income_growth": 8.0,
-                "net_income_growth": 6.0,
+                "eps": 350.0,
+                "bps": 9_000.0,
+                "dividend_per_share": 100.0,
+                "per": 15.0,
             }
         ]
         with (

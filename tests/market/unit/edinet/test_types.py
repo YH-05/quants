@@ -13,8 +13,8 @@ Test TODO List:
 - [x] EdinetConfig: __post_init__ validation (timeout, polite_delay)
 - [x] RetryConfig: frozen, defaults, __post_init__ validation
 - [x] Company: frozen, all 6 fields
-- [x] FinancialRecord: frozen, all 24+3 columns
-- [x] RatioRecord: frozen, all 13+3 columns
+- [x] FinancialRecord: frozen, fiscal_year=int, all Optional fields, no period_type
+- [x] RatioRecord: frozen, fiscal_year=int, all Optional fields, no period_type
 - [x] AnalysisResult: frozen, all fields
 - [x] TextBlock: frozen, all fields
 - [x] RankingEntry: frozen, all fields
@@ -22,7 +22,7 @@ Test TODO List:
 - [x] SyncProgress: frozen, all fields, defaults
 """
 
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, fields
 from pathlib import Path
 from unittest.mock import patch
 
@@ -359,138 +359,196 @@ class TestCompany:
 
 
 class TestFinancialRecord:
-    """Test FinancialRecord frozen dataclass."""
+    """Test FinancialRecord frozen dataclass (API-verified fields)."""
 
     def test_正常系_frozenである(self) -> None:
         """FinancialRecord がフィールド変更不可であること。"""
         record = FinancialRecord(
             edinet_code="E00001",
-            fiscal_year="2025",
-            period_type="annual",
-            revenue=1_000_000_000,
-            operating_income=100_000_000,
-            ordinary_income=110_000_000,
-            net_income=70_000_000,
-            total_assets=5_000_000_000,
-            net_assets=2_000_000_000,
-            equity=1_800_000_000,
-            interest_bearing_debt=1_000_000_000,
-            operating_cf=150_000_000,
-            investing_cf=-80_000_000,
-            financing_cf=-50_000_000,
-            free_cf=70_000_000,
-            eps=350.0,
-            bps=9_000.0,
-            dividend_per_share=100.0,
-            shares_outstanding=200_000,
-            employees=5_000,
-            capex=80_000_000,
-            depreciation=60_000_000,
-            rnd_expense=30_000_000,
-            goodwill=10_000_000,
+            fiscal_year=2025,
+            revenue=1_000_000_000.0,
         )
         with pytest.raises(FrozenInstanceError):
-            record.revenue = 0
+            record.revenue = 0.0
 
-    def test_正常系_全27フィールドが正しく設定される(
+    def test_正常系_fiscal_yearがint型である(self) -> None:
+        """fiscal_year が int 型であること（API検証結果に基づく）。"""
+        record = FinancialRecord(edinet_code="E00001", fiscal_year=2025)
+        assert isinstance(record.fiscal_year, int)
+        assert record.fiscal_year == 2025
+
+    def test_正常系_period_typeフィールドが存在しない(self) -> None:
+        """period_type フィールドが削除されていること。"""
+        assert not hasattr(
+            FinancialRecord(edinet_code="E00001", fiscal_year=2025),
+            "period_type",
+        )
+        field_names = {f.name for f in fields(FinancialRecord)}
+        assert "period_type" not in field_names
+
+    def test_正常系_全Optionalフィールドのデフォルトがnone(self) -> None:
+        """全財務フィールドが default=None であること。"""
+        record = FinancialRecord(edinet_code="E00001", fiscal_year=2025)
+        # API検証で確認された24フィールド（edinet_code, fiscal_year 除く）
+        optional_fields = [
+            "accounting_standard",
+            "bps",
+            "cash",
+            "cf_financing",
+            "cf_investing",
+            "cf_operating",
+            "comprehensive_income",
+            "diluted_eps",
+            "dividend_per_share",
+            "eps",
+            "equity_ratio_official",
+            "net_assets",
+            "net_income",
+            "num_employees",
+            "ordinary_income",
+            "payout_ratio",
+            "per",
+            "profit_before_tax",
+            "revenue",
+            "roe_official",
+            "shareholders_equity",
+            "submit_date",
+            "total_assets",
+            # JP GAAP追加フィールド
+            "operating_income",
+            "capex",
+            "depreciation",
+            "rnd_expenses",
+            "goodwill",
+        ]
+        for field_name in optional_fields:
+            value = getattr(record, field_name)
+            assert value is None, (
+                f"Field {field_name} default should be None, got {value}"
+            )
+
+    def test_正常系_新フィールド名が存在する(self) -> None:
+        """API検証で確認された新フィールド名が存在すること。"""
+        field_names = {f.name for f in fields(FinancialRecord)}
+        # APIレスポンスで確認されたフィールド
+        expected_new_fields = {
+            "cf_operating",
+            "cf_investing",
+            "cf_financing",
+            "num_employees",
+            "rnd_expenses",
+            "shareholders_equity",
+            "cash",
+            "comprehensive_income",
+            "diluted_eps",
+            "equity_ratio_official",
+            "payout_ratio",
+            "per",
+            "profit_before_tax",
+            "roe_official",
+            "accounting_standard",
+            "submit_date",
+        }
+        for field_name in expected_new_fields:
+            assert field_name in field_names, (
+                f"New field {field_name} is missing from FinancialRecord"
+            )
+
+    def test_正常系_削除済みフィールドが存在しない(self) -> None:
+        """旧フィールドが削除されていること。"""
+        field_names = {f.name for f in fields(FinancialRecord)}
+        deleted_fields = {
+            "equity",
+            "interest_bearing_debt",
+            "operating_cf",
+            "investing_cf",
+            "financing_cf",
+            "free_cf",
+            "shares_outstanding",
+            "employees",
+            "rnd_expense",
+            "period_type",
+        }
+        for field_name in deleted_fields:
+            assert field_name not in field_names, (
+                f"Deleted field {field_name} still exists in FinancialRecord"
+            )
+
+    def test_正常系_全フィールドが正しく設定される(
         self, sample_financial_record: FinancialRecord
     ) -> None:
         """FinancialRecord の全フィールドが正しく設定されること。"""
         record = sample_financial_record
         assert record.edinet_code == "E00001"
-        assert record.fiscal_year == "2025"
-        assert record.period_type == "annual"
-        assert record.revenue == 1_000_000_000
-        assert record.operating_income == 100_000_000
-        assert record.ordinary_income == 110_000_000
-        assert record.net_income == 70_000_000
-        assert record.total_assets == 5_000_000_000
-        assert record.net_assets == 2_000_000_000
-        assert record.equity == 1_800_000_000
-        assert record.interest_bearing_debt == 1_000_000_000
-        assert record.operating_cf == 150_000_000
-        assert record.investing_cf == -80_000_000
-        assert record.financing_cf == -50_000_000
-        assert record.free_cf == 70_000_000
+        assert record.fiscal_year == 2025
+        assert record.revenue == 1_000_000_000.0
+        assert record.operating_income == 100_000_000.0
+        assert record.ordinary_income == 110_000_000.0
+        assert record.net_income == 70_000_000.0
+        assert record.total_assets == 5_000_000_000.0
+        assert record.net_assets == 2_000_000_000.0
+        assert record.shareholders_equity == 1_800_000_000.0
+        assert record.cf_operating == 150_000_000.0
+        assert record.cf_investing == -80_000_000.0
+        assert record.cf_financing == -50_000_000.0
         assert record.eps == 350.0
         assert record.bps == 9_000.0
+        assert record.diluted_eps == 345.0
         assert record.dividend_per_share == 100.0
-        assert record.shares_outstanding == 200_000
-        assert record.employees == 5_000
-        assert record.capex == 80_000_000
-        assert record.depreciation == 60_000_000
-        assert record.rnd_expense == 30_000_000
-        assert record.goodwill == 10_000_000
+        assert record.num_employees == 5_000
+        assert record.capex == 80_000_000.0
+        assert record.depreciation == 60_000_000.0
+        assert record.rnd_expenses == 30_000_000.0
+        assert record.goodwill == 10_000_000.0
+        assert record.cash == 500_000_000.0
+        assert record.comprehensive_income == 75_000_000.0
+        assert record.equity_ratio_official == 36.0
+        assert record.payout_ratio == 28.57
+        assert record.per == 15.0
+        assert record.profit_before_tax == 95_000_000.0
+        assert record.roe_official == 3.89
+        assert record.accounting_standard == "JP GAAP"
+        assert record.submit_date == "2025-06-15"
 
-    def test_正常系_キーフィールドがstr型(self) -> None:
-        """FinancialRecord のキーフィールドが str であること。"""
+    def test_正常系_最小構成で生成できる(self) -> None:
+        """edinet_code と fiscal_year のみで生成できること。"""
+        record = FinancialRecord(edinet_code="E00001", fiscal_year=2025)
+        assert record.edinet_code == "E00001"
+        assert record.fiscal_year == 2025
+        assert record.revenue is None
+
+    def test_正常系_数値フィールドがfloat_or_none型(self) -> None:
+        """FinancialRecord の数値フィールドが float | None であること。"""
         record = FinancialRecord(
             edinet_code="E00001",
-            fiscal_year="2025",
-            period_type="annual",
-            revenue=0,
-            operating_income=0,
-            ordinary_income=0,
-            net_income=0,
-            total_assets=0,
-            net_assets=0,
-            equity=0,
-            interest_bearing_debt=0,
-            operating_cf=0,
-            investing_cf=0,
-            financing_cf=0,
-            free_cf=0,
-            eps=0.0,
-            bps=0.0,
-            dividend_per_share=0.0,
-            shares_outstanding=0,
-            employees=0,
-            capex=0,
-            depreciation=0,
-            rnd_expense=0,
-            goodwill=0,
-        )
-        assert isinstance(record.edinet_code, str)
-        assert isinstance(record.fiscal_year, str)
-        assert isinstance(record.period_type, str)
-
-    def test_正常系_数値フィールドが適切な型(self) -> None:
-        """FinancialRecord の数値フィールドが int/float であること。"""
-        record = FinancialRecord(
-            edinet_code="E00001",
-            fiscal_year="2025",
-            period_type="annual",
-            revenue=100,
-            operating_income=50,
-            ordinary_income=55,
-            net_income=35,
-            total_assets=500,
-            net_assets=200,
-            equity=180,
-            interest_bearing_debt=100,
-            operating_cf=75,
-            investing_cf=-40,
-            financing_cf=-25,
-            free_cf=35,
+            fiscal_year=2025,
+            revenue=100.0,
             eps=17.5,
             bps=90.0,
-            dividend_per_share=5.0,
-            shares_outstanding=10,
-            employees=100,
-            capex=40,
-            depreciation=30,
-            rnd_expense=15,
-            goodwill=5,
         )
-        # int fields
-        assert isinstance(record.revenue, int)
-        assert isinstance(record.operating_income, int)
-        assert isinstance(record.shares_outstanding, int)
-        assert isinstance(record.employees, int)
-        # float fields
+        assert isinstance(record.revenue, float)
         assert isinstance(record.eps, float)
         assert isinstance(record.bps, float)
-        assert isinstance(record.dividend_per_share, float)
+
+    def test_正常系_num_employeesがint_or_none型(self) -> None:
+        """num_employees が int | None であること。"""
+        record = FinancialRecord(
+            edinet_code="E00001",
+            fiscal_year=2025,
+            num_employees=5000,
+        )
+        assert isinstance(record.num_employees, int)
+
+    def test_正常系_str型フィールドがstr_or_none型(self) -> None:
+        """accounting_standard, submit_date が str | None であること。"""
+        record = FinancialRecord(
+            edinet_code="E00001",
+            fiscal_year=2025,
+            accounting_standard="JP GAAP",
+            submit_date="2025-06-15",
+        )
+        assert isinstance(record.accounting_standard, str)
+        assert isinstance(record.submit_date, str)
 
 
 # =============================================================================
@@ -499,92 +557,145 @@ class TestFinancialRecord:
 
 
 class TestRatioRecord:
-    """Test RatioRecord frozen dataclass."""
+    """Test RatioRecord frozen dataclass (API-verified fields)."""
 
     def test_正常系_frozenである(self) -> None:
         """RatioRecord がフィールド変更不可であること。"""
-        record = RatioRecord(
-            edinet_code="E00001",
-            fiscal_year="2025",
-            period_type="annual",
-            roe=3.89,
-            roa=1.40,
-            operating_margin=10.0,
-            net_margin=7.0,
-            equity_ratio=36.0,
-            debt_equity_ratio=0.56,
-            current_ratio=1.50,
-            interest_coverage_ratio=5.0,
-            payout_ratio=28.57,
-            asset_turnover=0.20,
-            revenue_growth=5.0,
-            operating_income_growth=8.0,
-            net_income_growth=6.0,
-        )
+        record = RatioRecord(edinet_code="E00001", fiscal_year=2025, roe=3.89)
         with pytest.raises(FrozenInstanceError):
             record.roe = 0.0
 
-    def test_正常系_全16フィールドが正しく設定される(
+    def test_正常系_fiscal_yearがint型である(self) -> None:
+        """fiscal_year が int 型であること（API検証結果に基づく）。"""
+        record = RatioRecord(edinet_code="E00001", fiscal_year=2025)
+        assert isinstance(record.fiscal_year, int)
+        assert record.fiscal_year == 2025
+
+    def test_正常系_period_typeフィールドが存在しない(self) -> None:
+        """period_type フィールドが削除されていること。"""
+        assert not hasattr(
+            RatioRecord(edinet_code="E00001", fiscal_year=2025),
+            "period_type",
+        )
+        field_names = {f.name for f in fields(RatioRecord)}
+        assert "period_type" not in field_names
+
+    def test_正常系_全Optionalフィールドのデフォルトがnone(self) -> None:
+        """全比率フィールドが default=None であること。"""
+        record = RatioRecord(edinet_code="E00001", fiscal_year=2025)
+        # API検証で確認された20フィールド（edinet_code, fiscal_year 除く）
+        optional_fields = [
+            "adjusted_dividend_per_share",
+            "asset_turnover",
+            "bps",
+            "diluted_eps",
+            "dividend_per_share",
+            "dividend_yield",
+            "eps",
+            "equity_ratio",
+            "equity_ratio_official",
+            "fcf",
+            "net_income_per_employee",
+            "net_margin",
+            "payout_ratio",
+            "per",
+            "revenue_per_employee",
+            "roa",
+            "roe",
+            "roe_official",
+            "split_adjustment_factor",
+        ]
+        for field_name in optional_fields:
+            value = getattr(record, field_name)
+            assert value is None, (
+                f"Field {field_name} default should be None, got {value}"
+            )
+
+    def test_正常系_新フィールド名が存在する(self) -> None:
+        """API検証で確認された新フィールド名が存在すること。"""
+        field_names = {f.name for f in fields(RatioRecord)}
+        expected_new_fields = {
+            "adjusted_dividend_per_share",
+            "dividend_yield",
+            "equity_ratio_official",
+            "fcf",
+            "net_income_per_employee",
+            "per",
+            "revenue_per_employee",
+            "roe_official",
+            "split_adjustment_factor",
+            "diluted_eps",
+            "bps",
+        }
+        for field_name in expected_new_fields:
+            assert field_name in field_names, (
+                f"New field {field_name} is missing from RatioRecord"
+            )
+
+    def test_正常系_削除済みフィールドが存在しない(self) -> None:
+        """旧フィールドが削除されていること。"""
+        field_names = {f.name for f in fields(RatioRecord)}
+        deleted_fields = {
+            "operating_margin",
+            "debt_equity_ratio",
+            "current_ratio",
+            "interest_coverage_ratio",
+            "revenue_growth",
+            "operating_income_growth",
+            "net_income_growth",
+            "period_type",
+        }
+        for field_name in deleted_fields:
+            assert field_name not in field_names, (
+                f"Deleted field {field_name} still exists in RatioRecord"
+            )
+
+    def test_正常系_全フィールドが正しく設定される(
         self, sample_ratio_record: RatioRecord
     ) -> None:
         """RatioRecord の全フィールドが正しく設定されること。"""
         record = sample_ratio_record
         assert record.edinet_code == "E00001"
-        assert record.fiscal_year == "2025"
-        assert record.period_type == "annual"
+        assert record.fiscal_year == 2025
         assert record.roe == 3.89
         assert record.roa == 1.40
-        assert record.operating_margin == 10.0
+        assert record.roe_official == 3.89
         assert record.net_margin == 7.0
         assert record.equity_ratio == 36.0
-        assert record.debt_equity_ratio == 0.56
-        assert record.current_ratio == 1.50
-        assert record.interest_coverage_ratio == 5.0
+        assert record.equity_ratio_official == 36.0
         assert record.payout_ratio == 28.57
         assert record.asset_turnover == 0.20
-        assert record.revenue_growth == 5.0
-        assert record.operating_income_growth == 8.0
-        assert record.net_income_growth == 6.0
+        assert record.eps == 350.0
+        assert record.diluted_eps == 345.0
+        assert record.bps == 9_000.0
+        assert record.dividend_per_share == 100.0
+        assert record.adjusted_dividend_per_share == 100.0
+        assert record.dividend_yield == 2.5
+        assert record.per == 15.0
+        assert record.fcf == 70_000_000.0
+        assert record.net_income_per_employee == 14_000.0
+        assert record.revenue_per_employee == 200_000.0
+        assert record.split_adjustment_factor == 1.0
 
-    def test_正常系_全比率フィールドがfloat型(self) -> None:
-        """RatioRecord の比率フィールドが float であること。"""
+    def test_正常系_最小構成で生成できる(self) -> None:
+        """edinet_code と fiscal_year のみで生成できること。"""
+        record = RatioRecord(edinet_code="E00001", fiscal_year=2025)
+        assert record.edinet_code == "E00001"
+        assert record.fiscal_year == 2025
+        assert record.roe is None
+
+    def test_正常系_全比率フィールドがfloat_or_none型(self) -> None:
+        """RatioRecord の比率フィールドが float | None であること。"""
         record = RatioRecord(
             edinet_code="E00001",
-            fiscal_year="2025",
-            period_type="annual",
+            fiscal_year=2025,
             roe=3.89,
             roa=1.40,
-            operating_margin=10.0,
             net_margin=7.0,
-            equity_ratio=36.0,
-            debt_equity_ratio=0.56,
-            current_ratio=1.50,
-            interest_coverage_ratio=5.0,
-            payout_ratio=28.57,
-            asset_turnover=0.20,
-            revenue_growth=5.0,
-            operating_income_growth=8.0,
-            net_income_growth=6.0,
         )
-        float_fields = [
-            "roe",
-            "roa",
-            "operating_margin",
-            "net_margin",
-            "equity_ratio",
-            "debt_equity_ratio",
-            "current_ratio",
-            "interest_coverage_ratio",
-            "payout_ratio",
-            "asset_turnover",
-            "revenue_growth",
-            "operating_income_growth",
-            "net_income_growth",
-        ]
-        for field_name in float_fields:
-            assert isinstance(getattr(record, field_name), float), (
-                f"Field {field_name} is not float"
-            )
+        assert isinstance(record.roe, float)
+        assert isinstance(record.roa, float)
+        assert isinstance(record.net_margin, float)
 
 
 # =============================================================================
