@@ -322,7 +322,7 @@ class ETFComBrowserMixin:
                 )
                 await page.close()
                 raise ETFComNotFoundError(
-                    f"HTTP 404 Not Found: {url}",
+                    "HTTP 404 Not Found",
                     url=url,
                 )
 
@@ -350,15 +350,17 @@ class ETFComBrowserMixin:
                     timeout_seconds=self._config.timeout,
                 ) from e
 
-            # TargetClosedError (playwright optional dependency, check by name)
+            # AIDEV-NOTE: playwright is an optional dependency and may not be
+            # imported at module level. Checking by class name avoids a hard
+            # import of playwright.async_api.TargetClosedError.
             if type(e).__name__ == "TargetClosedError":
                 logger.warning(
                     "TargetClosedError detected, wrapping as NotFound",
                     url=url,
-                    error=str(e),
+                    error_type=type(e).__name__,
                 )
                 raise ETFComNotFoundError(
-                    f"Target closed (likely 404 redirect): {url}",
+                    "Target closed (likely 404 redirect)",
                     url=url,
                 ) from e
 
@@ -389,6 +391,8 @@ class ETFComBrowserMixin:
         ------
         ETFComTimeoutError
             If the page load exceeds the configured timeout.
+        ETFComNotFoundError
+            If the page returns HTTP 404 or a ``TargetClosedError`` occurs.
         """
         page = await self._navigate(url)
         try:

@@ -280,6 +280,8 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If the response status code is 403 or 429.
+        ETFComNotFoundError
+            If the response status code is 404.
 
         Examples
         --------
@@ -319,6 +321,8 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If the response status code is 403 or 429.
+        ETFComNotFoundError
+            If the response status code is 404.
 
         Examples
         --------
@@ -365,6 +369,9 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If all retry attempts fail due to bot-blocking.
+        ETFComNotFoundError
+            If the response status code is 404 (propagated immediately,
+            no retry).
         """
         last_error: ETFComBlockedError | None = None
 
@@ -452,6 +459,9 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If all retry attempts fail due to bot-blocking.
+        ETFComNotFoundError
+            If the response status code is 404 (propagated immediately,
+            no retry).
 
         Examples
         --------
@@ -486,6 +496,9 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If all retry attempts fail due to bot-blocking.
+        ETFComNotFoundError
+            If the response status code is 404 (propagated immediately,
+            no retry).
 
         Examples
         --------

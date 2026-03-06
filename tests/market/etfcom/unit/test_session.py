@@ -996,7 +996,7 @@ class TestRequestWithRetry:
             retry_delays = [d for d in sleep_calls if d >= 1.0]
             assert len(retry_delays) >= 2
 
-    def test_正常系_404はリトライせず即座に伝播する(self) -> None:
+    def test_異常系_404はリトライせず即座に伝播する(self) -> None:
         """_request_with_retry() が ETFComNotFoundError をリトライせず即座に伝播すること。"""
         with patch("market.etfcom.session.curl_requests") as mock_curl:
             mock_session = MagicMock()
