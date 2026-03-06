@@ -218,3 +218,25 @@ YAHOO_JP_FEEDS: dict[str, str] = {
     "economy": "https://news.yahoo.co.jp/rss/topics/economy.xml",
     "it": "https://news.yahoo.co.jp/rss/topics/it.xml",
 }
+
+JPX_FEEDS: dict[str, str] = {
+    "news_release": "https://www.jpx.co.jp/corporate/news-releases/news-release.rss",
+    "listing": "https://www.jpx.co.jp/listing/stocks/new/new.rss",
+    "market_news": "https://www.jpx.co.jp/markets/equities/market-news/market-news.rss",
+    "regulations": "https://www.jpx.co.jp/regulation/public-comment/public-comment.rss",
+}
+
+TDNET_BASE_URL: str = "https://webapi.yanoshin.jp/webapi/tdnet/list"
+
+TDNET_DEFAULT_CODES: list[str] = [
+    "7203",  # トヨタ自動車
+    "6758",  # ソニーグループ
+    "9984",  # ソフトバンクグループ
+    "8306",  # 三菱UFJフィナンシャル・グループ
+    "6861",  # キーエンス
+    "6098",  # リクルートホールディングス
+    "9432",  # 日本電信電話 (NTT)
+    "6501",  # 日立製作所
+    "8035",  # 東京エレクトロン
+    "6902",  # デンソー
+]
