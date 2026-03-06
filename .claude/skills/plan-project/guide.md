@@ -508,7 +508,7 @@ fi
 task-breakdown.json の各タスクについて：
 
 ```bash
-# Issue 作成
+# Issue 作成（gh issue create は --json 非対応のため標準出力からURLを取得）
 ISSUE_URL=$(gh issue create \
   --title "{title}" \
   --body "$(cat <<'EOF'
@@ -519,8 +519,7 @@ ISSUE_URL=$(gh issue create \
 - GitHub Project: [#{project_number}]({project_url})
 EOF
 )" \
-  --label "{label}" \
-  --json url --jq '.url')
+  --label "{label}")
 
 # Project に追加
 gh project item-add {project_number} --owner @me --url "$ISSUE_URL"
