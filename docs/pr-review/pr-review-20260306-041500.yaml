@@ -1,0 +1,191 @@
+# PRレビューレポート
+# 生成日時: 2026-03-06 04:15:00
+# 生成スキル: review-pr
+
+metadata:
+  generated_at: "2026-03-06 04:15:00"
+  pr_number: 3731
+  pr_title: "feat(market/bse): BSE（ボンベイ証券取引所）データ収集モジュールの新規作成"
+  base_branch: "main"
+  head_branch: "feature/prj69"
+  review_mode: "remote"
+
+pr_info:
+  files_changed: 32
+  additions: 10021
+  deletions: 7
+
+scores:
+  code_quality: 83  # (91*0.35 + 81*0.40 + 78*0.25) = 31.85 + 32.40 + 19.50 = 83.75
+  security: 86  # (82*0.60 + 92*0.40) = 49.20 + 36.80 = 86.00
+  test: 90  # (87*0.50 + 92*0.50) = 43.50 + 46.00 = 89.50
+  overall: 86  # (83*0.40 + 86*0.35 + 90*0.25) = 33.20 + 30.10 + 22.50 = 85.80
+
+code_quality:
+  readability_score: 91
+  design_score: 81
+  performance_score: 78
+
+  strengths:
+    - "命名規則（PascalCase/snake_case/UPPER_SNAKE）が98%準拠"
+    - "型ヒントカバレッジ97%、Docstringカバレッジ96%と高水準"
+    - "DI（依存性注入）パターンが全コレクターで徹底されている"
+    - "_create_cleanerファクトリーによる型安全な数値クリーニング設計"
+    - "DataCollector ABC準拠とTemplateMethodパターンの適切な適用"
+    - "NASDAQモジュールとの設計一貫性が保たれている"
+
+  issues:
+    critical: []
+    high: []
+    medium:
+      - category: "dry"
+        file: "src/market/bse/collectors/"
+        description: "_get_session()が4コレクタークラスで完全重複（各12行×4=48行）"
+        recommendation: "BaseBseCollectorミックスインを作成し_get_session()を集約"
+      - category: "dry"
+        file: "src/market/bse/parsers.py"
+        description: "parse_historical_csvとparse_bhavcopy_csvが92%類似（約24行重複）"
+        recommendation: "_parse_csv_common(content, column_map, label)ヘルパーに抽出"
+      - category: "algorithm"
+        file: "src/market/bse/parsers.py"
+        description: ".apply(lambda ...)による非ベクトル化処理（文字列クリーニング・数値変換）"
+        recommendation: "pandas str.strip()やpd.to_numeric()に置き換えで10-50倍高速化"
+      - category: "memory"
+        file: "src/market/bse/collectors/bhavcopy.py"
+        description: "fetch_date_range()が全日分DataFrameをメモリ蓄積してからconcat"
+        recommendation: "docstringに推奨上限を明記するかchunk処理を追加"
+    low:
+      - category: "naming"
+        file: "src/market/bse/parsers.py"
+        description: "関数内定数2箇所がUPPER_SNAKE_CASEでない、ネスト関数名_getが汎用的すぎる"
+      - category: "solid"
+        file: "src/market/bse/collectors/corporate.py"
+        description: "CorporateCollectorが非ABC設計でコレクター層のインターフェース非一貫"
+      - category: "solid"
+        file: "src/market/bse/session.py"
+        description: "get_with_retry()のリトライ対象がNASDAQと非対称（OCP観点）"
+
+  solid_compliance:
+    single_responsibility: "PASS"
+    open_closed: "WARN"
+    liskov_substitution: "PASS"
+    interface_segregation: "WARN"
+    dependency_inversion: "PASS"
+
+security:
+  code_security_score: 82
+  infra_security_score: 92
+
+  vulnerability_count:
+    critical: 0
+    high: 1
+    medium: 3
+    low: 3
+
+  findings:
+    - id: "SEC-001"
+      severity: "HIGH"
+      category: "A03/CWE-209"
+      location: "src/market/bse/errors.py:98-108"
+      description: "BseAPIError.response_bodyに生レスポンスを保持→情報漏洩リスク"
+      recommendation: "response_bodyをトリミング（最大200文字）してサニタイズ"
+
+    - id: "SEC-002"
+      severity: "MEDIUM"
+      category: "A03/CWE-20"
+      location: "src/market/bse/collectors/corporate.py:386-465"
+      description: "search_scrip()のqueryパラメータに入力検証なし"
+      recommendation: "空文字・長さ・許可文字パターンのバリデーション追加"
+
+    - id: "SEC-003"
+      severity: "MEDIUM"
+      category: "A02/CWE-295"
+      location: "src/market/bse/session.py:140-142"
+      description: "httpx.ClientのSSL検証が暗黙的（verify明示なし）"
+      recommendation: "verify=Trueを明示的に指定"
+
+    - id: "SEC-004"
+      severity: "MEDIUM"
+      category: "A06/CWE-502"
+      location: "uv.lock (transitive)"
+      description: "diskcache 5.6.3のCVE-2025-69872（本PR由来ではない）"
+      recommendation: "修正版リリース後にアップデート"
+
+    - id: "SEC-005"
+      severity: "LOW"
+      category: "A10/CWE-918"
+      location: "src/market/bse/session.py:422"
+      description: "_validate_url()にHTTPSスキーム強制なし"
+      recommendation: "parsed.scheme != 'https'のチェック追加"
+
+    - id: "SEC-006"
+      severity: "LOW"
+      category: "A04/CWE-22"
+      location: "src/market/bse/collectors/quote.py:346"
+      description: "scrip_codeのフォーマット検証なし（パストラバーサルリスク）"
+      recommendation: "正規表現^\\d{1,6}$でバリデーション"
+
+    - id: "SEC-007"
+      severity: "LOW"
+      category: "A04/CWE-400"
+      location: "src/market/bse/parsers.py:521,626"
+      description: "CSVパース前のデータサイズ上限チェックなし"
+      recommendation: "MAX_CSV_SIZE制限の追加"
+
+  secrets_detected: []
+
+test:
+  coverage_score: 87
+  quality_score: 92
+
+  coverage_assessment: "GOOD"
+  edge_cases_covered: true
+
+  test_quality:
+    isolation: "PASS"
+    reproducibility: "PASS"
+    readability: "PASS"
+
+  missing_tests:
+    - target: "parsers.py:_apply_numeric_cleaning NaN分岐"
+      priority: "MEDIUM"
+    - target: "session.py:_polite_delay sleepスキップ分岐"
+      priority: "MEDIUM"
+    - target: "bhavcopy.py:fetch_date_range 全日失敗時の空DataFrame"
+      priority: "MEDIUM"
+    - target: "parsers.py:latin-1フォールバックパス"
+      priority: "LOW"
+    - target: "index.py:fetch()の不正日付フォーマット"
+      priority: "LOW"
+    - target: "session.py:_calculate_backoff_delay直接テスト"
+      priority: "LOW"
+
+recommended_actions:
+  required:
+    - priority: 1
+      action: "SEC-001: BseAPIError.response_bodyの長さ制限追加（情報漏洩防止）"
+      related_issues: ["SEC-001"]
+
+  suggested:
+    - priority: 1
+      action: "_get_session()の4重複をBaseBseCollectorミックスインに集約"
+    - priority: 2
+      action: "parse_historical_csv/parse_bhavcopy_csvの共通ヘルパー抽出"
+    - priority: 3
+      action: ".apply(lambda)をpandasベクトル化操作に置き換え"
+    - priority: 4
+      action: "search_scrip()の入力バリデーション追加"
+    - priority: 5
+      action: "httpx.Client初期化でverify=True明示"
+    - priority: 6
+      action: "欠落テスト3件（NaN分岐・sleepスキップ・全日失敗）の追加"
+
+summary:
+  verdict: "APPROVE"
+  comment: >
+    BSEデータ収集モジュールは全体的に高い品質で実装されている。
+    NASDAQモジュールとの設計一貫性、DI/ABCパターンの徹底、
+    包括的なテスト（単体+プロパティ+統合の三層）が評価できる。
+    DRY違反（_get_session 4重複、CSVパーサー類似）と
+    パフォーマンス改善（pandas非ベクトル化）は将来のリファクタリングで対応可能。
+    セキュリティ面ではresponse_bodyの長さ制限のみ必須対応を推奨。
