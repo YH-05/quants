@@ -1,13 +1,14 @@
 """統合金融ニューススクレイパー（同期版）.
 
-CNBC・NASDAQ・yfinance の複数ソースから金融ニュースを一括収集する。
-各ソースを逐次実行し、結果を統合して返す。
+CNBC・NASDAQ・yfinance の複数ソースおよび日本語ソース
+（東洋経済・Investing.com JP・Yahoo!ニュース・JPX・TDnet）から
+金融ニュースを一括収集する。各ソースを逐次実行し、結果を統合して返す。
 
 Examples
 --------
 >>> from news_scraper.unified import collect_financial_news
 >>>
->>> # 基本的な使用（全ソース）
+>>> # 基本的な使用（デフォルト: cnbc + nasdaq）
 >>> df = collect_financial_news()
 >>> print(f"収集記事数: {len(df)}")
 >>>
@@ -15,6 +16,11 @@ Examples
 >>> df = collect_financial_news(
 ...     sources=["cnbc"],
 ...     cnbc_categories=["economy", "earnings"],
+... )
+>>>
+>>> # 日本語ソース
+>>> df = collect_financial_news(
+...     sources=["toyokeizai", "yahoo_jp", "jpx"],
 ... )
 """
 
@@ -28,7 +34,7 @@ import pandas as pd
 
 from utils_core.logging import get_logger
 
-from . import cnbc, nasdaq, yfinance
+from . import cnbc, investing_jp, jpx, nasdaq, tdnet, toyokeizai, yahoo_jp, yfinance
 from .async_unified import async_collect_financial_news
 from .session import create_session
 from .types import (
@@ -112,6 +118,70 @@ def _collect_yfinance_search(
     return df.to_dict("records")
 
 
+def _collect_toyokeizai(config: ScraperConfig) -> list[dict]:
+    """東洋経済オンラインからニュースを収集して記事辞書リストを返す."""
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = toyokeizai.fetch_multiple_categories(
+        session,
+        delay=config.delay,
+        timeout=config.timeout,
+    )
+    logger.info("Toyokeizai collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_investing_jp(config: ScraperConfig) -> list[dict]:
+    """Investing.com JP からニュースを収集して記事辞書リストを返す."""
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = investing_jp.fetch_multiple_categories(
+        session,
+        delay=config.delay,
+        timeout=config.timeout,
+    )
+    logger.info("Investing.com JP collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_yahoo_jp(config: ScraperConfig) -> list[dict]:
+    """Yahoo!ニュース経済からニュースを収集して記事辞書リストを返す."""
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = yahoo_jp.fetch_multiple_categories(
+        session,
+        delay=config.delay,
+        timeout=config.timeout,
+    )
+    logger.info("Yahoo JP collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_jpx(config: ScraperConfig) -> list[dict]:
+    """JPX（日本取引所グループ）からニュースを収集して記事辞書リストを返す."""
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    df = jpx.fetch_multiple_categories(
+        session,
+        delay=config.delay,
+        timeout=config.timeout,
+    )
+    logger.info("JPX collection completed", article_count=len(df))
+    return df.to_dict("records")
+
+
+def _collect_tdnet(
+    config: ScraperConfig,
+    codes: list[str] | None = None,
+) -> list[dict]:
+    """TDnet から適時開示情報を収集して記事辞書リストを返す."""
+    session = create_session(impersonate=config.impersonate, proxy=config.proxy)
+    articles = tdnet.fetch_disclosure_feed(
+        session,
+        codes=codes,
+        timeout=config.timeout,
+    )
+    df = pd.DataFrame([a.to_dict() for a in articles]) if articles else pd.DataFrame()
+    logger.info("TDnet collection completed", article_count=len(df))
+    return df.to_dict("records") if not df.empty else []
+
+
 def collect_financial_news(
     sources: list[str] | None = None,
     cnbc_categories: list[str] | None = None,
@@ -119,18 +189,23 @@ def collect_financial_news(
     tickers: list[str] | None = None,
     config: ScraperConfig | None = None,
     output_dir: str | Path | None = None,
+    tdnet_codes: list[str] | None = None,
 ) -> pd.DataFrame:
     """複数ソースから金融ニュースを一括収集する（同期版）.
 
-    CNBC・NASDAQ・yfinance（ticker/search）の複数ソースを逐次実行し、
-    全記事を統合したデータフレームを返す。重複は URL をキーに除去する。
+    CNBC・NASDAQ・yfinance（ticker/search）および日本語ソース
+    （toyokeizai・investing_jp・yahoo_jp・jpx・tdnet）の複数ソースを
+    逐次実行し、全記事を統合したデータフレームを返す。
+    重複は URL をキーに除去する。
 
     Parameters
     ----------
     sources : list[str] | None
         収集するソース名のリスト。デフォルトは ``["cnbc", "nasdaq"]``。
         有効な値: ``"cnbc"``, ``"nasdaq"``,
-        ``"yfinance_ticker"``, ``"yfinance_search"``
+        ``"yfinance_ticker"``, ``"yfinance_search"``,
+        ``"toyokeizai"``, ``"investing_jp"``, ``"yahoo_jp"``,
+        ``"jpx"``, ``"tdnet"``
     cnbc_categories : list[str] | None
         CNBC の収集カテゴリ。None でクオンツ向けデフォルト 8 カテゴリを使用。
     nasdaq_categories : list[str] | None
@@ -143,6 +218,10 @@ def collect_financial_news(
     output_dir : str | Path | None
         出力ディレクトリ。None の場合はファイル保存しない。
         指定時は JSON + Parquet 形式でタイムスタンプ付きファイルを保存。
+    tdnet_codes : list[str] | None
+        TDnet の証券コードリスト（例: ``["7203", "6758"]``）。
+        ``"tdnet"`` ソース使用時に ``tdnet.fetch_disclosure_feed`` へ渡す。
+        None の場合は TDnet モジュールのデフォルトコードを使用。
 
     Returns
     -------
@@ -161,6 +240,13 @@ def collect_financial_news(
     ...     sources=["nasdaq"],
     ...     nasdaq_categories=["Markets"],
     ...     tickers=["AAPL", "MSFT"],
+    ... )
+    >>> df = collect_financial_news(
+    ...     sources=["toyokeizai", "yahoo_jp"],
+    ... )
+    >>> df = collect_financial_news(
+    ...     sources=["tdnet"],
+    ...     tdnet_codes=["7203", "6758"],
     ... )
     >>> df = collect_financial_news(output_dir="data/financial_news")
     """
@@ -215,6 +301,36 @@ def collect_financial_news(
         except Exception as e:
             logger.error("yfinance search collection failed", error=str(e))
 
+    if "toyokeizai" in sources:
+        try:
+            all_articles.extend(_collect_toyokeizai(config))
+        except Exception as e:
+            logger.error("Toyokeizai collection failed", error=str(e))
+
+    if "investing_jp" in sources:
+        try:
+            all_articles.extend(_collect_investing_jp(config))
+        except Exception as e:
+            logger.error("Investing.com JP collection failed", error=str(e))
+
+    if "yahoo_jp" in sources:
+        try:
+            all_articles.extend(_collect_yahoo_jp(config))
+        except Exception as e:
+            logger.error("Yahoo JP collection failed", error=str(e))
+
+    if "jpx" in sources:
+        try:
+            all_articles.extend(_collect_jpx(config))
+        except Exception as e:
+            logger.error("JPX collection failed", error=str(e))
+
+    if "tdnet" in sources:
+        try:
+            all_articles.extend(_collect_tdnet(config, codes=tdnet_codes))
+        except Exception as e:
+            logger.error("TDnet collection failed", error=str(e))
+
     df = pd.DataFrame(all_articles)
 
     if df.empty:
@@ -261,6 +377,7 @@ def collect_financial_news_fast(
     tickers: list[str] | None = None,
     config: ScraperConfig | None = None,
     output_dir: str | Path | None = None,
+    tdnet_codes: list[str] | None = None,
 ) -> pd.DataFrame:
     """複数ソースから金融ニュースを高速一括収集する（同期ラッパー）.
 
@@ -278,7 +395,9 @@ def collect_financial_news_fast(
     sources : list[str] | None
         収集するソース名のリスト。デフォルトは ``["cnbc", "nasdaq"]``。
         有効な値: ``"cnbc"``, ``"nasdaq"``,
-        ``"yfinance_ticker"``, ``"yfinance_search"``
+        ``"yfinance_ticker"``, ``"yfinance_search"``,
+        ``"toyokeizai"``, ``"investing_jp"``, ``"yahoo_jp"``,
+        ``"jpx"``, ``"tdnet"``
     cnbc_categories : list[str] | None
         CNBC の収集カテゴリ。None でクオンツ向けデフォルト 8 カテゴリを使用。
     nasdaq_categories : list[str] | None
@@ -289,6 +408,8 @@ def collect_financial_news_fast(
         スクレイパー設定。None でデフォルト設定を使用。
     output_dir : str | Path | None
         出力ディレクトリ。None の場合はファイル保存しない。
+    tdnet_codes : list[str] | None
+        TDnet の証券コードリスト。``"tdnet"`` ソース使用時に渡す。
 
     Returns
     -------
@@ -313,5 +434,6 @@ def collect_financial_news_fast(
             tickers=tickers,
             config=config,
             output_dir=output_dir,
+            tdnet_codes=tdnet_codes,
         )
     )

@@ -59,6 +59,18 @@ from .exceptions import (
     RetryableError,
     ScraperError,
 )
+from .investing_jp import (
+    async_fetch_multiple_categories as async_fetch_investing_jp_categories,
+)
+from .investing_jp import (
+    async_fetch_rss_feed as async_fetch_investing_jp_rss,
+)
+from .investing_jp import (
+    fetch_multiple_categories as fetch_investing_jp_categories,
+)
+from .investing_jp import (
+    fetch_rss_feed as fetch_investing_jp_rss,
+)
 from .jpx import (
     async_fetch_multiple_categories as async_fetch_jpx_categories,
 )
@@ -125,19 +137,47 @@ from .tdnet import (
 from .tdnet import (
     fetch_multiple_codes as fetch_tdnet_codes,
 )
+from .toyokeizai import (
+    async_fetch_multiple_categories as async_fetch_toyokeizai_categories,
+)
+from .toyokeizai import (
+    async_fetch_rss_feed as async_fetch_toyokeizai_rss,
+)
+from .toyokeizai import (
+    fetch_multiple_categories as fetch_toyokeizai_categories,
+)
+from .toyokeizai import (
+    fetch_rss_feed as fetch_toyokeizai_rss,
+)
 from .types import (
     CNBC_FEEDS,
     CNBC_QUANT_CATEGORIES,
+    INVESTING_JP_FEEDS,
     JPX_FEEDS,
     NASDAQ_CATEGORIES,
     NASDAQ_QUANT_CATEGORIES,
     TDNET_BASE_URL,
     TDNET_DEFAULT_CODES,
+    TOYOKEIZAI_FEEDS,
+    YAHOO_JP_FEEDS,
+    YFINANCE_JP_TICKERS,
     Article,
     ScraperConfig,
     get_delay,
 )
 from .unified import collect_financial_news, collect_financial_news_fast
+from .yahoo_jp import (
+    async_fetch_multiple_categories as async_fetch_yahoo_jp_categories,
+)
+from .yahoo_jp import (
+    async_fetch_rss_feed as async_fetch_yahoo_jp_rss,
+)
+from .yahoo_jp import (
+    fetch_multiple_categories as fetch_yahoo_jp_categories,
+)
+from .yahoo_jp import (
+    fetch_rss_feed as fetch_yahoo_jp_rss,
+)
 from .yfinance import collect_yfinance_news
 from .yfinance import fetch_article_content as fetch_yf_content
 from .yfinance import fetch_multiple_searches as fetch_yf_searches
@@ -149,11 +189,15 @@ __all__ = [
     # カテゴリ定義
     "CNBC_FEEDS",
     "CNBC_QUANT_CATEGORIES",
+    "INVESTING_JP_FEEDS",
     "JPX_FEEDS",
     "NASDAQ_CATEGORIES",
     "NASDAQ_QUANT_CATEGORIES",
     "TDNET_BASE_URL",
     "TDNET_DEFAULT_CODES",
+    "TOYOKEIZAI_FEEDS",
+    "YAHOO_JP_FEEDS",
+    "YFINANCE_JP_TICKERS",
     # 型・設定
     "Article",
     "BotDetectionError",
@@ -178,6 +222,9 @@ __all__ = [
     "async_fetch_cnbc_rss",
     # TDnet
     "async_fetch_disclosure_feed",
+    # Investing.com JP
+    "async_fetch_investing_jp_categories",
+    "async_fetch_investing_jp_rss",
     # JPX
     "async_fetch_jpx_categories",
     "async_fetch_jpx_rss",
@@ -187,6 +234,12 @@ __all__ = [
     "async_fetch_nasdaq_stock_news_paginated",
     "async_fetch_nasdaq_stocks",
     "async_fetch_tdnet_codes",
+    # Toyokeizai
+    "async_fetch_toyokeizai_categories",
+    "async_fetch_toyokeizai_rss",
+    # Yahoo JP
+    "async_fetch_yahoo_jp_categories",
+    "async_fetch_yahoo_jp_rss",
     "collect_cnbc_historical",
     "collect_financial_news",
     "collect_financial_news_fast",
@@ -201,6 +254,9 @@ __all__ = [
     "fetch_cnbc_content",
     "fetch_cnbc_rss",
     "fetch_disclosure_feed",
+    # Investing.com JP
+    "fetch_investing_jp_categories",
+    "fetch_investing_jp_rss",
     "fetch_jpx_categories",
     "fetch_jpx_rss",
     "fetch_nasdaq_categories",
@@ -210,6 +266,12 @@ __all__ = [
     "fetch_nasdaq_stock_news_paginated",
     "fetch_nasdaq_stocks",
     "fetch_tdnet_codes",
+    # Toyokeizai
+    "fetch_toyokeizai_categories",
+    "fetch_toyokeizai_rss",
+    # Yahoo JP
+    "fetch_yahoo_jp_categories",
+    "fetch_yahoo_jp_rss",
     "fetch_yf_content",
     "fetch_yf_search_news",
     "fetch_yf_searches",
