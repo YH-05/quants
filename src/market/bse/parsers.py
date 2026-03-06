@@ -40,7 +40,11 @@ if TYPE_CHECKING:
 
 import pandas as pd
 
-from market.bse.constants import BHAVCOPY_COLUMN_NAME_MAP, COLUMN_NAME_MAP
+from market.bse.constants import (
+    BHAVCOPY_COLUMN_NAME_MAP,
+    COLUMN_NAME_MAP,
+    INDEX_COLUMN_NAME_MAP,
+)
 from market.bse.errors import BseParseError
 from market.bse.types import ScripQuote
 from utils_core.logging import get_logger
@@ -662,6 +666,116 @@ def parse_bhavcopy_csv(content: str | bytes) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Index data parser
+# ---------------------------------------------------------------------------
+
+
+def parse_index_data(raw: list[dict[str, Any]]) -> pd.DataFrame:
+    """Parse BSE index historical data JSON into a cleaned pandas DataFrame.
+
+    The BSE Index API returns a JSON array of objects with keys like
+    ``I_open``, ``I_high``, ``I_low``, ``I_close``, ``Tdate``, etc.
+    This function renames columns to snake_case using
+    ``INDEX_COLUMN_NAME_MAP``, parses date strings, and applies numeric
+    cleaning to price columns.
+
+    Parameters
+    ----------
+    raw : list[dict[str, Any]]
+        The raw JSON array from the BSE Index API endpoint.
+        Each dict represents one trading day with keys such as
+        ``"I_open"``, ``"I_high"``, ``"I_low"``, ``"I_close"``,
+        ``"Tdate"`` (or ``"TDate"``).
+
+    Returns
+    -------
+    pd.DataFrame
+        A DataFrame with snake_case column names (``open``, ``high``,
+        ``low``, ``close``, ``date``, etc.) and cleaned numeric values.
+        The ``date`` column is converted to ``datetime64[ns]``.
+
+    Raises
+    ------
+    BseParseError
+        If the input is not a list, is empty, or cannot be parsed.
+
+    Examples
+    --------
+    >>> raw = [
+    ...     {
+    ...         "I_open": "73800.50",
+    ...         "I_high": "74200.00",
+    ...         "I_low": "73500.25",
+    ...         "I_close": "74100.75",
+    ...         "Tdate": "2026-03-05T00:00:00",
+    ...     }
+    ... ]
+    >>> df = parse_index_data(raw)
+    >>> df["close"].iloc[0]
+    74100.75
+    """
+    logger.debug("Parsing index data")
+
+    if not isinstance(raw, list):
+        raise BseParseError(
+            f"Expected list for index data, got {type(raw).__name__}",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    if not raw:
+        raise BseParseError(
+            "Empty index data response",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    try:
+        df = pd.DataFrame(raw)
+    except Exception as e:
+        raise BseParseError(
+            f"Failed to create DataFrame from index data: {e}",
+            raw_data=str(raw)[:500],
+            field=None,
+        ) from e
+
+    if df.empty:
+        logger.info("Index data contains no rows")
+        return df
+
+    # Rename columns using INDEX_COLUMN_NAME_MAP
+    rename_map: dict[str, str] = {}
+    for col in df.columns:
+        mapped = INDEX_COLUMN_NAME_MAP.get(col)
+        if mapped is not None:
+            rename_map[col] = mapped
+        else:
+            rename_map[col] = col.strip().lower().replace(" ", "_")
+
+    df = df.rename(columns=rename_map)
+
+    # Parse date column
+    if "date" in df.columns:
+        df["date"] = pd.to_datetime(df["date"], errors="coerce")
+
+    # Apply numeric cleaning to price columns
+    _index_price_columns = ("open", "high", "low", "close", "pe", "pb", "yield")
+    for col in _index_price_columns:
+        if col in df.columns:
+            df[col] = df[col].apply(
+                lambda v, c=clean_price: c(str(v)) if pd.notna(v) else None,
+            )
+
+    logger.info(
+        "Index data parsed",
+        row_count=len(df),
+        columns=list(df.columns),
+    )
+
+    return df
+
+
+# ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
 
@@ -671,5 +785,6 @@ __all__ = [
     "clean_volume",
     "parse_bhavcopy_csv",
     "parse_historical_csv",
+    "parse_index_data",
     "parse_quote_response",
 ]

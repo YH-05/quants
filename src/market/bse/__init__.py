@@ -45,6 +45,7 @@ ScripQuote, FinancialResult, Announcement, CorporateAction
 """
 
 from market.bse.collectors.bhavcopy import BhavcopyCollector
+from market.bse.collectors.index import IndexCollector
 from market.bse.collectors.quote import QuoteCollector
 from market.bse.errors import (
     BseAPIError,
@@ -59,6 +60,7 @@ from market.bse.parsers import (
     clean_volume,
     parse_bhavcopy_csv,
     parse_historical_csv,
+    parse_index_data,
     parse_quote_response,
 )
 from market.bse.session import BseSession
@@ -87,6 +89,7 @@ __all__ = [
     "BseValidationError",
     "CorporateAction",
     "FinancialResult",
+    "IndexCollector",
     "IndexName",
     "QuoteCollector",
     "RetryConfig",
@@ -97,5 +100,6 @@ __all__ = [
     "clean_volume",
     "parse_bhavcopy_csv",
     "parse_historical_csv",
+    "parse_index_data",
     "parse_quote_response",
 ]

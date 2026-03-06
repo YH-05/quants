@@ -175,6 +175,23 @@ COLUMN_NAME_MAP: Final[dict[str, str]] = {
     "TotalTradedQuantity": "total_traded_quantity",
 }
 
+INDEX_COLUMN_NAME_MAP: Final[dict[str, str]] = {
+    "I_open": "open",
+    "I_high": "high",
+    "I_low": "low",
+    "I_close": "close",
+    "I_pe": "pe",
+    "I_pb": "pb",
+    "I_yield": "yield",
+    "Tdate": "date",
+    "TDate": "date",
+}
+"""Mapping from BSE Index API response keys to snake_case column names.
+
+The BSE Index historical data API returns JSON with keys prefixed
+by ``I_`` for index values and ``Tdate``/``TDate`` for the date.
+"""
+
 BHAVCOPY_COLUMN_NAME_MAP: Final[dict[str, str]] = {
     "SC_CODE": "scrip_code",
     "SC_NAME": "scrip_name",
@@ -222,4 +239,5 @@ __all__ = [
     "DEFAULT_POLITE_DELAY",
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",
+    "INDEX_COLUMN_NAME_MAP",
 ]
