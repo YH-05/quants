@@ -7,11 +7,14 @@ Modules
 -------
 constants : API URLs, headers, and configuration defaults.
 errors : Exception hierarchy for BSE API operations.
+session : httpx-based HTTP session with bot-blocking countermeasures.
 types : Configuration dataclasses, Enums, and data record types.
 collectors : Data collector implementations (placeholder for Wave 2+).
 
 Public API
 ----------
+BseSession
+    httpx-based HTTP session with UA rotation, polite delay, and retry.
 BseConfig
     Configuration for BSE API HTTP behaviour.
 RetryConfig
@@ -48,6 +51,7 @@ from market.bse.errors import (
     BseRateLimitError,
     BseValidationError,
 )
+from market.bse.session import BseSession
 from market.bse.types import (
     Announcement,
     BhavcopyType,
@@ -68,6 +72,7 @@ __all__ = [
     "BseError",
     "BseParseError",
     "BseRateLimitError",
+    "BseSession",
     "BseValidationError",
     "CorporateAction",
     "FinancialResult",
