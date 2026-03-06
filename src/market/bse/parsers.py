@@ -15,6 +15,9 @@ It provides:
   getScripHeaderData JSON payload to a ``ScripQuote`` dataclass.
 - **CSV parser**: ``parse_historical_csv`` for converting BSE historical
   CSV content to a cleaned pandas DataFrame.
+- **Corporate parsers**: ``parse_company_info``, ``parse_financial_results``,
+  ``parse_announcements``, ``parse_corporate_actions`` for converting BSE
+  corporate data JSON payloads to typed dicts and dataclasses.
 
 All cleaning functions treat empty strings and ``"N/A"`` as missing data,
 returning ``None``.  Unknown or malformed formats also return ``None``
@@ -25,7 +28,8 @@ See Also
 market.nasdaq.parser : Similar parser pattern for the NASDAQ module.
 market.bse.constants : ``COLUMN_NAME_MAP`` used for column renaming.
 market.bse.errors : ``BseParseError`` raised on structural failures.
-market.bse.types : ``ScripQuote`` dataclass for quote data.
+market.bse.types : ``ScripQuote``, ``FinancialResult``, ``Announcement``,
+    ``CorporateAction`` dataclasses for BSE data.
 """
 
 from __future__ import annotations
@@ -46,7 +50,7 @@ from market.bse.constants import (
     INDEX_COLUMN_NAME_MAP,
 )
 from market.bse.errors import BseParseError
-from market.bse.types import ScripQuote
+from market.bse.types import Announcement, CorporateAction, FinancialResult, ScripQuote
 from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -776,6 +780,394 @@ def parse_index_data(raw: list[dict[str, Any]]) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Corporate data parsers
+# ---------------------------------------------------------------------------
+
+
+def parse_company_info(raw: dict[str, Any]) -> dict[str, str | None]:
+    """Parse a BSE company info JSON response into a normalised dictionary.
+
+    The BSE API returns company information with PascalCase keys. This
+    function extracts the relevant fields and maps them to snake_case keys.
+
+    Parameters
+    ----------
+    raw : dict[str, Any]
+        The raw JSON response from the BSE API's company info endpoint.
+        Expected keys include ``"scrip_cd"``, ``"SCRIP_CD"``,
+        ``"compname"``, ``"COMPNAME"``, ``"ISIN_NUMBER"``, ``"Scrip_grp"``,
+        ``"INDUSTRY"``, ``"Mktcap"``, ``"Facevalue"``, etc.
+
+    Returns
+    -------
+    dict[str, str | None]
+        A dictionary containing normalised company info with keys:
+        ``scrip_code``, ``company_name``, ``isin``, ``scrip_group``,
+        ``industry``, ``market_cap``, ``face_value``.
+
+    Raises
+    ------
+    BseParseError
+        If the response is empty, not a dict, or missing critical fields.
+
+    Examples
+    --------
+    >>> raw = {
+    ...     "scrip_cd": "500325",
+    ...     "compname": "RELIANCE INDUSTRIES LTD",
+    ...     "ISIN_NUMBER": "INE002A01018",
+    ...     "Scrip_grp": "A",
+    ...     "INDUSTRY": "Refineries",
+    ...     "Mktcap": "1800000",
+    ...     "Facevalue": "10.00",
+    ... }
+    >>> info = parse_company_info(raw)
+    >>> info["scrip_code"]
+    '500325'
+    """
+    logger.debug("Parsing company info response")
+
+    if not isinstance(raw, dict):
+        raise BseParseError(
+            f"Expected dict for company info, got {type(raw).__name__}",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    if not raw:
+        raise BseParseError(
+            "Empty company info response",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    # BSE API uses inconsistent casing; try multiple key variants
+    def _get(keys: list[str]) -> str | None:
+        for k in keys:
+            val = raw.get(k)
+            if val is not None:
+                return str(val).strip() or None
+        return None
+
+    scrip_code = _get(["scrip_cd", "SCRIP_CD", "ScripCode", "scripcode"])
+    company_name = _get(["compname", "COMPNAME", "ScripName", "scripname"])
+
+    if scrip_code is None and company_name is None:
+        raise BseParseError(
+            "Missing both scrip_code and company_name in company info",
+            raw_data=str(raw)[:500],
+            field="scrip_cd, compname",
+        )
+
+    info: dict[str, str | None] = {
+        "scrip_code": scrip_code,
+        "company_name": company_name,
+        "isin": _get(["ISIN_NUMBER", "isin_number", "ISIN"]),
+        "scrip_group": _get(["Scrip_grp", "scrip_grp", "ScripGroup"]),
+        "industry": _get(["INDUSTRY", "industry", "Industry"]),
+        "market_cap": _get(["Mktcap", "mktcap", "MarketCap"]),
+        "face_value": _get(["Facevalue", "facevalue", "FaceValue"]),
+    }
+
+    logger.info(
+        "Company info parsed",
+        scrip_code=scrip_code,
+        company_name=company_name,
+    )
+
+    return info
+
+
+def parse_financial_results(
+    raw: list[dict[str, Any]],
+) -> list[FinancialResult]:
+    """Parse BSE financial results JSON into a list of FinancialResult.
+
+    The BSE API returns financial results as a JSON array of objects
+    with keys like ``"scrip_cd"``, ``"companyname"``, ``"cons_prd_to"``,
+    ``"cons_revenue"``, ``"cons_netpnl"``, ``"cons_eps"``.
+
+    Parameters
+    ----------
+    raw : list[dict[str, Any]]
+        The raw JSON array from the BSE financial results endpoint.
+        Each dict represents one financial period.
+
+    Returns
+    -------
+    list[FinancialResult]
+        A list of ``FinancialResult`` frozen dataclasses.
+
+    Raises
+    ------
+    BseParseError
+        If the input is not a list.
+
+    Examples
+    --------
+    >>> raw = [
+    ...     {
+    ...         "scrip_cd": "500325",
+    ...         "companyname": "RELIANCE INDUSTRIES LTD",
+    ...         "cons_prd_to": "31-Mar-2025",
+    ...         "cons_revenue": "250000",
+    ...         "cons_netpnl": "18500",
+    ...         "cons_eps": "27.35",
+    ...     }
+    ... ]
+    >>> results = parse_financial_results(raw)
+    >>> results[0].scrip_code
+    '500325'
+    """
+    logger.debug("Parsing financial results")
+
+    if not isinstance(raw, list):
+        raise BseParseError(
+            f"Expected list for financial results, got {type(raw).__name__}",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    if not raw:
+        logger.info("Financial results response is empty")
+        return []
+
+    results: list[FinancialResult] = []
+    for item in raw:
+        if not isinstance(item, dict):
+            logger.warning(
+                "Skipping non-dict item in financial results",
+                item_type=type(item).__name__,
+            )
+            continue
+
+        result = FinancialResult(
+            scrip_code=str(item.get("scrip_cd", item.get("SCRIP_CD", ""))).strip(),
+            scrip_name=str(
+                item.get(
+                    "companyname",
+                    item.get("COMPANYNAME", item.get("ScripName", "")),
+                )
+            ).strip(),
+            period_ended=str(
+                item.get(
+                    "cons_prd_to",
+                    item.get("CONS_PRD_TO", item.get("prd_to", "")),
+                )
+            ).strip(),
+            revenue=str(
+                item.get(
+                    "cons_revenue",
+                    item.get("CONS_REVENUE", item.get("revenue", "")),
+                )
+            ).strip(),
+            net_profit=str(
+                item.get(
+                    "cons_netpnl",
+                    item.get("CONS_NETPNL", item.get("netpnl", "")),
+                )
+            ).strip(),
+            eps=str(
+                item.get(
+                    "cons_eps",
+                    item.get("CONS_EPS", item.get("eps", "")),
+                )
+            ).strip(),
+        )
+        results.append(result)
+
+    logger.info(
+        "Financial results parsed",
+        count=len(results),
+    )
+
+    return results
+
+
+def parse_announcements(
+    raw: list[dict[str, Any]],
+) -> list[Announcement]:
+    """Parse BSE announcements JSON into a list of Announcement.
+
+    The BSE API returns announcements as a JSON array of objects
+    with keys like ``"SCRIP_CD"``, ``"SLONGNAME"``, ``"HEADLINE"``,
+    ``"DT_TM"``, ``"CATEGORYNAME"``.
+
+    Parameters
+    ----------
+    raw : list[dict[str, Any]]
+        The raw JSON array from the BSE announcements endpoint.
+        Each dict represents one corporate announcement.
+
+    Returns
+    -------
+    list[Announcement]
+        A list of ``Announcement`` frozen dataclasses.
+
+    Raises
+    ------
+    BseParseError
+        If the input is not a list.
+
+    Examples
+    --------
+    >>> raw = [
+    ...     {
+    ...         "SCRIP_CD": "500325",
+    ...         "SLONGNAME": "RELIANCE INDUSTRIES LTD",
+    ...         "HEADLINE": "Board Meeting Outcome",
+    ...         "DT_TM": "15-Jan-2025",
+    ...         "CATEGORYNAME": "Board Meeting",
+    ...     }
+    ... ]
+    >>> announcements = parse_announcements(raw)
+    >>> announcements[0].subject
+    'Board Meeting Outcome'
+    """
+    logger.debug("Parsing announcements")
+
+    if not isinstance(raw, list):
+        raise BseParseError(
+            f"Expected list for announcements, got {type(raw).__name__}",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    if not raw:
+        logger.info("Announcements response is empty")
+        return []
+
+    announcements: list[Announcement] = []
+    for item in raw:
+        if not isinstance(item, dict):
+            logger.warning(
+                "Skipping non-dict item in announcements",
+                item_type=type(item).__name__,
+            )
+            continue
+
+        ann = Announcement(
+            scrip_code=str(item.get("SCRIP_CD", item.get("scrip_cd", ""))).strip(),
+            scrip_name=str(
+                item.get(
+                    "SLONGNAME",
+                    item.get("slongname", item.get("ScripName", "")),
+                )
+            ).strip(),
+            subject=str(
+                item.get(
+                    "HEADLINE",
+                    item.get("headline", item.get("NEWS_SUBJECT", "")),
+                )
+            ).strip(),
+            announcement_date=str(
+                item.get(
+                    "DT_TM",
+                    item.get("dt_tm", item.get("NEWS_DT", "")),
+                )
+            ).strip(),
+            category=str(
+                item.get(
+                    "CATEGORYNAME",
+                    item.get("categoryname", item.get("CAT_NAME", "")),
+                )
+            ).strip(),
+        )
+        announcements.append(ann)
+
+    logger.info(
+        "Announcements parsed",
+        count=len(announcements),
+    )
+
+    return announcements
+
+
+def parse_corporate_actions(
+    raw: list[dict[str, Any]],
+) -> list[CorporateAction]:
+    """Parse BSE corporate actions JSON into a list of CorporateAction.
+
+    The BSE API returns corporate actions as a JSON array of objects
+    with keys like ``"scrip_code"``, ``"comp_name"``, ``"ex_dt"``,
+    ``"PURPOSE"``, ``"Record_dt"``.
+
+    Parameters
+    ----------
+    raw : list[dict[str, Any]]
+        The raw JSON array from the BSE corporate actions endpoint.
+        Each dict represents one corporate action.
+
+    Returns
+    -------
+    list[CorporateAction]
+        A list of ``CorporateAction`` frozen dataclasses.
+
+    Raises
+    ------
+    BseParseError
+        If the input is not a list.
+
+    Examples
+    --------
+    >>> raw = [
+    ...     {
+    ...         "scrip_code": "500325",
+    ...         "comp_name": "RELIANCE INDUSTRIES LTD",
+    ...         "ex_dt": "01-Feb-2025",
+    ...         "PURPOSE": "Dividend - Rs 8 Per Share",
+    ...         "Record_dt": "03-Feb-2025",
+    ...     }
+    ... ]
+    >>> actions = parse_corporate_actions(raw)
+    >>> actions[0].purpose
+    'Dividend - Rs 8 Per Share'
+    """
+    logger.debug("Parsing corporate actions")
+
+    if not isinstance(raw, list):
+        raise BseParseError(
+            f"Expected list for corporate actions, got {type(raw).__name__}",
+            raw_data=str(raw)[:500],
+            field=None,
+        )
+
+    if not raw:
+        logger.info("Corporate actions response is empty")
+        return []
+
+    actions: list[CorporateAction] = []
+    for item in raw:
+        if not isinstance(item, dict):
+            logger.warning(
+                "Skipping non-dict item in corporate actions",
+                item_type=type(item).__name__,
+            )
+            continue
+
+        action = CorporateAction(
+            scrip_code=str(item.get("scrip_code", item.get("SCRIP_CODE", ""))).strip(),
+            scrip_name=str(
+                item.get(
+                    "comp_name",
+                    item.get("COMP_NAME", item.get("ScripName", "")),
+                )
+            ).strip(),
+            ex_date=str(item.get("ex_dt", item.get("EX_DT", ""))).strip(),
+            purpose=str(item.get("PURPOSE", item.get("purpose", ""))).strip(),
+            record_date=str(item.get("Record_dt", item.get("RECORD_DT", ""))).strip(),
+        )
+        actions.append(action)
+
+    logger.info(
+        "Corporate actions parsed",
+        count=len(actions),
+    )
+
+    return actions
+
+
+# ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
 
@@ -783,7 +1175,11 @@ __all__ = [
     "clean_indian_number",
     "clean_price",
     "clean_volume",
+    "parse_announcements",
     "parse_bhavcopy_csv",
+    "parse_company_info",
+    "parse_corporate_actions",
+    "parse_financial_results",
     "parse_historical_csv",
     "parse_index_data",
     "parse_quote_response",
