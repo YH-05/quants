@@ -238,7 +238,7 @@ updated_at: 2026-02-18
 
 | スキル | 説明 | 呼び出し方法 |
 |--------|------|--------------|
-| `review-pr` | PRの包括的レビュー（7サブエージェント並列実行：品質・セキュリティ・テスト） | `/review-pr` |
+| `review-pr` | PRの包括的レビュー（最大8サブエージェント並列実行：品質・セキュリティ・テスト） | `/review-pr` |
 | `review-docs` | ドキュメントの詳細レビュー（完全性・具体性・一貫性・測定可能性） | `/review-docs` |
 | `analyze-conflicts` | PRコンフリクトの詳細分析と解決策提示（リスク評価・依存関係分析） | `/analyze-conflicts` |
 
@@ -318,6 +318,7 @@ updated_at: 2026-02-18
 | `pr-readability` | PRの可読性・命名規則・ドキュメント検証 |
 | `pr-design` | PRのSOLID原則・設計パターン・DRY検証 |
 | `pr-performance` | PRのアルゴリズム複雑度・メモリ効率・I/O検証 |
+| `pr-quant` | PRのクオンツ計算コード品質検証（数値精度・ベクトル化・バックテスト・リスク指標、クオンツファイル変更時のみ） |
 | `pr-security-code` | PRのコード内セキュリティ脆弱性検証（OWASP A01-A05） |
 | `pr-security-infra` | PRのインフラセキュリティ検証（OWASP A06-A10） |
 | `pr-test-coverage` | PRのテストカバレッジとエッジケース網羅性検証 |
@@ -521,7 +522,7 @@ updated_at: 2026-02-18
 ```
 finance/
 ├── .claude/                    # Claude Code 設定
-│   ├── agents/                 # サブエージェント定義（100個）
+│   ├── agents/                 # サブエージェント定義（101個）
 │   │   ├── deep-research/      # ディープリサーチエージェント群（13個）
 │   │   └── ca-strategy/        # CA Strategy エージェント群（8個）
 │   ├── commands/               # スラッシュコマンド（20個）
