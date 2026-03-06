@@ -24,6 +24,8 @@ ETFComAPIError
     Exception raised when the ETF.com REST API returns an error response.
 ETFComBlockedError
     Exception raised when bot-blocking is detected.
+ETFComNotFoundError
+    Exception raised when an ETF.com page returns HTTP 404 Not Found.
 ETFComScrapingError
     Exception raised when HTML parsing / data extraction fails.
 ETFComTimeoutError
@@ -71,6 +73,7 @@ from market.etfcom.errors import (
     ETFComAPIError,
     ETFComBlockedError,
     ETFComError,
+    ETFComNotFoundError,
     ETFComScrapingError,
     ETFComTimeoutError,
 )
@@ -89,6 +92,7 @@ __all__ = [
     "ETFComAPIError",
     "ETFComBlockedError",
     "ETFComError",
+    "ETFComNotFoundError",
     "ETFComScrapingError",
     "ETFComSession",
     "ETFComTimeoutError",

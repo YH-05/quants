@@ -29,6 +29,7 @@ MarketError (base)
         ETFComScrapingError (HTML parse failure)
         ETFComTimeoutError (page load / navigation timeout)
         ETFComBlockedError (bot-blocking detection)
+        ETFComNotFoundError (HTTP 404 not found)
     NasdaqError (NASDAQ API operations)
         NasdaqAPIError (API response error - 4xx, 5xx)
         NasdaqRateLimitError (rate limit exceeded)
@@ -65,6 +66,7 @@ from market.edinet.errors import (
 from market.etfcom.errors import (
     ETFComBlockedError,
     ETFComError,
+    ETFComNotFoundError,
     ETFComScrapingError,
     ETFComTimeoutError,
 )
@@ -880,6 +882,7 @@ __all__ = [
     "DataFetchError",
     "ETFComBlockedError",
     "ETFComError",
+    "ETFComNotFoundError",
     "ETFComScrapingError",
     "ETFComTimeoutError",
     "EdinetAPIError",
