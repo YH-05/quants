@@ -33,7 +33,7 @@ news.extractors.playwright : Similar Playwright pattern for news extraction.
 market.etfcom.session : curl_cffi-based session for non-JS pages.
 market.etfcom.constants : Stealth settings and CSS selectors.
 market.etfcom.types : ScrapingConfig and RetryConfig dataclasses.
-market.etfcom.errors : ETFComTimeoutError for timeout handling.
+market.etfcom.errors : ETFComTimeoutError, ETFComNotFoundError for error handling.
 """
 
 from __future__ import annotations
@@ -49,7 +49,7 @@ from market.etfcom.constants import (
     STEALTH_INIT_SCRIPT,
     STEALTH_VIEWPORT,
 )
-from market.etfcom.errors import ETFComTimeoutError
+from market.etfcom.errors import ETFComNotFoundError, ETFComTimeoutError
 from market.etfcom.types import RetryConfig, ScrapingConfig
 from utils_core.logging import get_logger
 
@@ -294,6 +294,8 @@ class ETFComBrowserMixin:
         ------
         ETFComTimeoutError
             If the page load exceeds the configured timeout.
+        ETFComNotFoundError
+            If the page returns HTTP 404 or a ``TargetClosedError`` occurs.
         """
         # Apply polite delay
         delay = self._config.polite_delay + random.uniform(  # nosec B311
@@ -309,13 +311,29 @@ class ETFComBrowserMixin:
         timeout_ms = self._config.timeout * 1000
 
         try:
-            await page.goto(url, timeout=timeout_ms, wait_until=wait_until)
+            response = await page.goto(url, timeout=timeout_ms, wait_until=wait_until)
+
+            # Check for HTTP 404
+            if response is not None and response.status == 404:
+                logger.warning(
+                    "HTTP 404 Not Found",
+                    url=url,
+                    status_code=404,
+                )
+                await page.close()
+                raise ETFComNotFoundError(
+                    f"HTTP 404 Not Found: {url}",
+                    url=url,
+                )
+
             logger.debug(
                 "Navigation completed",
                 url=url,
                 wait_until=wait_until,
             )
             return page
+        except ETFComNotFoundError:
+            raise
         except (asyncio.TimeoutError, Exception) as e:
             # Close the page on failure
             await page.close()
@@ -330,6 +348,18 @@ class ETFComBrowserMixin:
                     f"Page load timed out after {self._config.timeout}s",
                     url=url,
                     timeout_seconds=self._config.timeout,
+                ) from e
+
+            # TargetClosedError (playwright optional dependency, check by name)
+            if type(e).__name__ == "TargetClosedError":
+                logger.warning(
+                    "TargetClosedError detected, wrapping as NotFound",
+                    url=url,
+                    error=str(e),
+                )
+                raise ETFComNotFoundError(
+                    f"Target closed (likely 404 redirect): {url}",
+                    url=url,
                 ) from e
 
             logger.error(

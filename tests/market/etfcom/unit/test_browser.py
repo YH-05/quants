@@ -13,6 +13,9 @@ Test TODO List:
 - [x] _create_stealth_context(): STEALTH_INIT_SCRIPT 注入
 - [x] _navigate(): URL へのナビゲーションとポライトディレイ
 - [x] _navigate(): タイムアウト時に ETFComTimeoutError
+- [x] _navigate(): 404 レスポンスで ETFComNotFoundError
+- [x] _navigate(): TargetClosedError で ETFComNotFoundError
+- [x] _navigate(): 200 レスポンスでページを返す（回帰テスト）
 - [x] _get_page_html(): ページ HTML を取得
 - [x] _get_page_html_with_retry(): リトライ + バックオフ
 - [x] _get_page_html_with_retry(): 全リトライ失敗で例外
@@ -41,7 +44,7 @@ from market.etfcom.constants import (
     STEALTH_INIT_SCRIPT,
     STEALTH_VIEWPORT,
 )
-from market.etfcom.errors import ETFComTimeoutError
+from market.etfcom.errors import ETFComNotFoundError, ETFComTimeoutError
 from market.etfcom.types import RetryConfig, ScrapingConfig
 
 # =============================================================================
@@ -395,6 +398,109 @@ class TestNavigate:
                 await mixin._navigate("https://www.etf.com/SPY")
 
             assert exc_info.value.url == "https://www.etf.com/SPY"
+
+    @pytest.mark.asyncio
+    async def test_異常系_404レスポンスでETFComNotFoundError(self) -> None:
+        """HTTP 404 レスポンス時に ETFComNotFoundError が発生すること。"""
+        from market.etfcom.browser import ETFComBrowserMixin
+
+        mock_async_playwright, _mock_pw, mock_browser, mock_page = (
+            _make_mock_playwright()
+        )
+
+        # Configure goto to return a response with status 404
+        mock_response = MagicMock()
+        mock_response.status = 404
+        mock_page.goto = AsyncMock(return_value=mock_response)
+
+        mock_context = AsyncMock()
+        mock_context.new_page = AsyncMock(return_value=mock_page)
+        mock_context.add_init_script = AsyncMock()
+        mock_browser.new_context = AsyncMock(return_value=mock_context)
+
+        with (
+            patch(
+                "market.etfcom.browser._get_async_playwright",
+                return_value=mock_async_playwright(),
+            ),
+            patch("market.etfcom.browser.asyncio.sleep", new_callable=AsyncMock),
+        ):
+            mixin = ETFComBrowserMixin()
+            await mixin._ensure_browser()
+
+            with pytest.raises(ETFComNotFoundError) as exc_info:
+                await mixin._navigate("https://www.etf.com/INVALID")
+
+            assert exc_info.value.url == "https://www.etf.com/INVALID"
+            assert exc_info.value.status_code == 404
+            mock_page.close.assert_awaited_once()
+
+    @pytest.mark.asyncio
+    async def test_異常系_TargetClosedErrorでETFComNotFoundError(self) -> None:
+        """TargetClosedError 発生時に ETFComNotFoundError でラップされること。"""
+        from market.etfcom.browser import ETFComBrowserMixin
+
+        mock_async_playwright, _mock_pw, mock_browser, mock_page = (
+            _make_mock_playwright()
+        )
+
+        # Create a TargetClosedError-like exception
+        target_closed_error = type("TargetClosedError", (Exception,), {})()
+        mock_page.goto = AsyncMock(side_effect=target_closed_error)
+
+        mock_context = AsyncMock()
+        mock_context.new_page = AsyncMock(return_value=mock_page)
+        mock_context.add_init_script = AsyncMock()
+        mock_browser.new_context = AsyncMock(return_value=mock_context)
+
+        with (
+            patch(
+                "market.etfcom.browser._get_async_playwright",
+                return_value=mock_async_playwright(),
+            ),
+            patch("market.etfcom.browser.asyncio.sleep", new_callable=AsyncMock),
+        ):
+            mixin = ETFComBrowserMixin()
+            await mixin._ensure_browser()
+
+            with pytest.raises(ETFComNotFoundError) as exc_info:
+                await mixin._navigate("https://www.etf.com/INVALID")
+
+            assert exc_info.value.url == "https://www.etf.com/INVALID"
+            mock_page.close.assert_awaited_once()
+
+    @pytest.mark.asyncio
+    async def test_正常系_200レスポンスでページを返す(self) -> None:
+        """HTTP 200 レスポンス時にページオブジェクトが返されること（回帰テスト）。"""
+        from market.etfcom.browser import ETFComBrowserMixin
+
+        mock_async_playwright, _mock_pw, mock_browser, mock_page = (
+            _make_mock_playwright()
+        )
+
+        # Configure goto to return a response with status 200
+        mock_response = MagicMock()
+        mock_response.status = 200
+        mock_page.goto = AsyncMock(return_value=mock_response)
+
+        mock_context = AsyncMock()
+        mock_context.new_page = AsyncMock(return_value=mock_page)
+        mock_context.add_init_script = AsyncMock()
+        mock_browser.new_context = AsyncMock(return_value=mock_context)
+
+        with (
+            patch(
+                "market.etfcom.browser._get_async_playwright",
+                return_value=mock_async_playwright(),
+            ),
+            patch("market.etfcom.browser.asyncio.sleep", new_callable=AsyncMock),
+        ):
+            mixin = ETFComBrowserMixin()
+            await mixin._ensure_browser()
+            page = await mixin._navigate("https://www.etf.com/SPY")
+
+            assert page is mock_page
+            mock_page.close.assert_not_awaited()
 
 
 # =============================================================================
