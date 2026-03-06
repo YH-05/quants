@@ -23,7 +23,7 @@ from utils_core.logging import get_logger
 from .exceptions import ContentExtractionError, PermanentError, RetryableError
 from .retry import classify_http_error, create_retry_decorator
 from .session import create_session
-from .types import Article, ScraperConfig, get_delay
+from .types import YFINANCE_JP_TICKERS, Article, ScraperConfig, get_delay
 
 logger = get_logger(__name__)
 
@@ -592,3 +592,75 @@ def collect_yfinance_news(
         df.to_parquet(output_path / f"yfinance_{timestamp}.parquet", index=False)
 
     return df
+
+
+def fetch_jp_stock_news(
+    session: Session,
+    tickers: list[str] | None = None,
+    timeout: int = 30,
+) -> list[Article]:
+    """日本株プリセットティッカーのニュース記事を取得する.
+
+    ``fetch_multiple_tickers()`` の薄いラッパーで、デフォルトで主要
+    日本株 25 銘柄のニュースを取得できる便利関数。
+
+    Parameters
+    ----------
+    session : Session
+        HTTP セッション（curl_cffi）
+    tickers : list[str] | None
+        取得するティッカーシンボルのリスト。None の場合は
+        ``YFINANCE_JP_TICKERS``（主要日本株 25 銘柄）をデフォルトで使用する。
+    timeout : int
+        タイムアウト秒数（デフォルト: 30）
+
+    Returns
+    -------
+    list[Article]
+        Article のリスト
+
+    Examples
+    --------
+    >>> from news_scraper.session import create_session
+    >>> session = create_session()
+    >>> articles = fetch_jp_stock_news(session)
+    >>> for a in articles:
+    ...     print(a.ticker, a.title)
+
+    >>> # カスタムティッカー指定
+    >>> articles = fetch_jp_stock_news(session, tickers=["7203.T", "6758.T"])
+    """
+    if tickers is None:
+        tickers = YFINANCE_JP_TICKERS
+
+    logger.info(
+        "Fetching JP stock news",
+        ticker_count=len(tickers),
+        timeout=timeout,
+    )
+
+    df = fetch_multiple_tickers(session, tickers, timeout=timeout)
+
+    if df.empty:
+        return []
+
+    articles: list[Article] = []
+    for record in df.to_dict("records"):
+        articles.append(
+            Article(
+                title=str(record.get("title", "")),
+                url=str(record.get("url", "")),
+                published=str(record.get("published", "")),
+                summary=str(record.get("summary", "")),
+                category=str(record.get("category", "")),
+                source=str(record.get("source", "yfinance_ticker")),
+                content=str(record.get("content", "")),
+                ticker=str(record.get("ticker", "")),
+                author=str(record.get("author", "")),
+                article_id=str(record.get("article_id", "")),
+                metadata=record.get("metadata") or {},
+            )
+        )
+
+    logger.info("JP stock news fetched", article_count=len(articles))
+    return articles
