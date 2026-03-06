@@ -38,6 +38,10 @@ class DataSource(str, Enum):
         EDINET DB API data source (Japanese listed company financials)
     BSE : str
         Bombay Stock Exchange data source
+    JQUANTS : str
+        J-Quants API data source (Japanese stock market data via JPX)
+    EDINET_API : str
+        EDINET disclosure API data source (FSA filings search/download)
     """
 
     YFINANCE = "yfinance"
@@ -49,6 +53,8 @@ class DataSource(str, Enum):
     NASDAQ = "nasdaq"
     EDINET_DB = "edinet_db"
     BSE = "bse"
+    JQUANTS = "jquants"
+    EDINET_API = "edinet_api"
 
 
 @dataclass

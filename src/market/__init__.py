@@ -34,7 +34,7 @@ DataExporter
     Export market data to various formats
 DataSource
     Data source enum (YFINANCE, FRED, LOCAL, BLOOMBERG, FACTSET, ETF_COM, NASDAQ,
-    EDINET_DB, BSE)
+    EDINET_DB, BSE, JQUANTS, EDINET_API)
 MarketDataResult
     Result of market data fetch operation
 AnalysisResult
@@ -96,6 +96,7 @@ from .edinet import (
     EdinetSyncer,
     EdinetValidationError,
 )
+from .edinet_api import EdinetApiClient
 from .errors import (
     BloombergConnectionError,
     BloombergDataError,
@@ -126,6 +127,7 @@ from .etfcom import (
     TickerCollector,
 )
 from .export import DataExporter
+from .jquants import JQuantsClient
 from .nasdaq import (
     ScreenerCollector,
     ScreenerFilter,
@@ -189,8 +191,10 @@ __all__ = [
     "ETFComScrapingError",
     "ETFComTimeoutError",
     "EconomicDataMetadata",
-    # EDINET
+    # EDINET (DB API)
     "EdinetAPIError",
+    # EDINET (Disclosure API)
+    "EdinetApiClient",
     "EdinetClient",
     "EdinetConfig",
     "EdinetError",
@@ -211,6 +215,8 @@ __all__ = [
     "FundamentalsCollector",
     "IndexCollector",
     "IndexName",
+    # J-Quants
+    "JQuantsClient",
     "MarketConfig",
     "MarketDataResult",
     "MarketError",
