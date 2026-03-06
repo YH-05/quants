@@ -38,11 +38,20 @@ BASE_URL: Final[str] = "https://api.bseindia.com/BseIndiaAPI/api"
 
 All API requests are constructed by appending endpoint paths
 to this base URL (e.g., ``BASE_URL + "/getScripHeaderData"``).
+"""
+
+BHAVCOPY_DOWNLOAD_BASE_URL: Final[str] = (
+    "https://www.bseindia.com/download/BhavCopy/Equity"
+)
+"""Base URL for BSE Bhavcopy (daily market data) CSV downloads.
+
+Bhavcopy files are published daily after market close for equity,
+derivatives, and debt segments.
 
 Examples
 --------
->>> f"{BASE_URL}/getScripHeaderData?Ession_id=&scripcode=500325"
-'https://api.bseindia.com/BseIndiaAPI/api/getScripHeaderData?Session_id=&scripcode=500325'
+>>> f"{BHAVCOPY_DOWNLOAD_BASE_URL}/BhavCopy_BSE_CM_0_0_0_20260305_F_0000.CSV"
+'https://www.bseindia.com/download/BhavCopy/Equity/BhavCopy_BSE_CM_0_0_0_20260305_F_0000.CSV'
 """
 
 # ---------------------------------------------------------------------------
@@ -165,6 +174,25 @@ COLUMN_NAME_MAP: Final[dict[str, str]] = {
     "TotalTradedValue": "total_traded_value",
     "TotalTradedQuantity": "total_traded_quantity",
 }
+
+BHAVCOPY_COLUMN_NAME_MAP: Final[dict[str, str]] = {
+    "SC_CODE": "scrip_code",
+    "SC_NAME": "scrip_name",
+    "SC_GROUP": "scrip_group",
+    "SC_TYPE": "scrip_type",
+    "OPEN": "open",
+    "HIGH": "high",
+    "LOW": "low",
+    "CLOSE": "close",
+    "LAST": "last",
+    "PREVCLOSE": "prev_close",
+    "NO_TRADES": "num_trades",
+    "NO_OF_SHRS": "num_shares",
+    "NET_TURNOV": "net_turnover",
+    "TDCLOINDI": "tdcloindi",
+    "ISIN_CODE": "isin_code",
+    "TRADING_DATE": "trading_date",
+}
 """Mapping from BSE API response column names to snake_case.
 
 The API returns PascalCase or mixed-case keys. This mapping normalises
@@ -185,6 +213,8 @@ Examples
 __all__ = [
     "ALLOWED_HOSTS",
     "BASE_URL",
+    "BHAVCOPY_COLUMN_NAME_MAP",
+    "BHAVCOPY_DOWNLOAD_BASE_URL",
     "COLUMN_NAME_MAP",
     "DEFAULT_DELAY_JITTER",
     "DEFAULT_HEADERS",

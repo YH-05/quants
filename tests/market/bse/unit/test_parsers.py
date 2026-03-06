@@ -144,12 +144,13 @@ class TestModuleExports:
         for name in __all__:
             assert hasattr(parsers, name), f"{name} is not defined in parsers module"
 
-    def test_正常系_allが5項目を含む(self) -> None:
-        """__all__ が全5関数をエクスポートしていること。"""
+    def test_正常系_allが6項目を含む(self) -> None:
+        """__all__ が全6関数をエクスポートしていること。"""
         expected = {
             "clean_indian_number",
             "clean_price",
             "clean_volume",
+            "parse_bhavcopy_csv",
             "parse_historical_csv",
             "parse_quote_response",
         }

@@ -40,7 +40,7 @@ if TYPE_CHECKING:
 
 import pandas as pd
 
-from market.bse.constants import COLUMN_NAME_MAP
+from market.bse.constants import BHAVCOPY_COLUMN_NAME_MAP, COLUMN_NAME_MAP
 from market.bse.errors import BseParseError
 from market.bse.types import ScripQuote
 from utils_core.logging import get_logger
@@ -557,6 +557,111 @@ def parse_historical_csv(content: str | bytes) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
+# Bhavcopy CSV parser
+# ---------------------------------------------------------------------------
+
+
+def parse_bhavcopy_csv(content: str | bytes) -> pd.DataFrame:
+    """Parse BSE Bhavcopy (daily market data) CSV into a cleaned DataFrame.
+
+    Bhavcopy files use uppercase column names (``SC_CODE``, ``SC_NAME``, etc.)
+    which differ from the historical CSV format.  This function decodes the
+    content, renames columns to snake_case using ``BHAVCOPY_COLUMN_NAME_MAP``,
+    strips whitespace, and applies numeric cleaning.
+
+    Parameters
+    ----------
+    content : str | bytes
+        The raw CSV content from a BSE Bhavcopy download.
+        Can be a string or bytes (utf-8 decoded automatically).
+
+    Returns
+    -------
+    pd.DataFrame
+        A DataFrame with snake_case column names and cleaned numeric
+        values.
+
+    Raises
+    ------
+    BseParseError
+        If the CSV content cannot be parsed or is empty.
+
+    Examples
+    --------
+    >>> csv_content = (
+    ...     "SC_CODE,SC_NAME,OPEN,HIGH,LOW,CLOSE\\n"
+    ...     "500325,RELIANCE,2450.00,2480.50,2440.00,2470.25\\n"
+    ... )
+    >>> df = parse_bhavcopy_csv(csv_content)
+    >>> df["scrip_code"].iloc[0]
+    '500325'
+    """
+    logger.debug("Parsing Bhavcopy CSV")
+
+    if isinstance(content, bytes):
+        try:
+            content = content.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            try:
+                content = content.decode("utf-8")
+            except UnicodeDecodeError:
+                content = content.decode("latin-1")
+
+    if not content.strip():
+        raise BseParseError(
+            "Empty Bhavcopy CSV content",
+            raw_data=None,
+            field=None,
+        )
+
+    try:
+        df = pd.read_csv(io.StringIO(content))
+    except Exception as e:
+        raise BseParseError(
+            f"Failed to parse Bhavcopy CSV: {e}",
+            raw_data=content[:500] if len(content) > 500 else content,
+            field=None,
+        ) from e
+
+    if df.empty:
+        logger.info("Bhavcopy CSV contains no rows")
+        return df
+
+    # Strip whitespace from column names
+    df.columns = pd.Index([col.strip() for col in df.columns])
+
+    # Rename columns using BHAVCOPY_COLUMN_NAME_MAP
+    rename_map: dict[str, str] = {}
+    for col in df.columns:
+        mapped = BHAVCOPY_COLUMN_NAME_MAP.get(col)
+        if mapped is not None:
+            rename_map[col] = mapped
+        else:
+            # Fallback: lowercase with underscores
+            rename_map[col] = col.strip().lower().replace(" ", "_")
+
+    df = df.rename(columns=rename_map)
+
+    # Strip whitespace from string columns
+    for col in df.columns:
+        if df[col].dtype == object:
+            df[col] = df[col].apply(
+                lambda v: v.strip() if isinstance(v, str) else v,
+            )
+
+    # Apply numeric cleaning
+    df = _apply_numeric_cleaning(df)
+
+    logger.info(
+        "Bhavcopy CSV parsed",
+        row_count=len(df),
+        columns=list(df.columns),
+    )
+
+    return df
+
+
+# ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
 
@@ -564,6 +669,7 @@ __all__ = [
     "clean_indian_number",
     "clean_price",
     "clean_volume",
+    "parse_bhavcopy_csv",
     "parse_historical_csv",
     "parse_quote_response",
 ]
