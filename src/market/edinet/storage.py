@@ -35,6 +35,7 @@ market.edinet.constants : Table name constants.
 from __future__ import annotations
 
 import dataclasses
+import re
 from typing import TYPE_CHECKING
 
 import pandas as pd
@@ -65,6 +66,24 @@ if TYPE_CHECKING:
     )
 
 logger = get_logger(__name__)
+
+# ============================================================================
+# Column rename mapping (old name -> new name)
+# ============================================================================
+
+_COLUMN_RENAMES: dict[str, str] = {
+    "operating_cf": "cf_operating",
+    "investing_cf": "cf_investing",
+    "financing_cf": "cf_financing",
+    "employees": "num_employees",
+    "rnd_expense": "rnd_expenses",
+}
+"""Mapping of old column names to new column names.
+
+Used during schema migration to preserve data from renamed columns.
+Keys are old column names that no longer exist in the current DDL.
+Values are the corresponding new column names in the current DDL.
+"""
 
 # ============================================================================
 # Table DDL definitions
@@ -181,6 +200,55 @@ _TABLE_DDL: dict[str, str] = {
 }
 
 
+# ============================================================================
+# DDL parsing helper
+# ============================================================================
+
+# Regex to extract column definitions: "column_name TYPE [NOT NULL]"
+_DDL_COLUMN_RE = re.compile(
+    r"^\s+(\w+)\s+(VARCHAR|INTEGER|DOUBLE|BIGINT|BOOLEAN|DATE|TIMESTAMP)",
+    re.MULTILINE,
+)
+
+
+def _parse_ddl_columns(ddl: str) -> set[str]:
+    """Extract column names from a CREATE TABLE DDL statement.
+
+    Parameters
+    ----------
+    ddl : str
+        SQL CREATE TABLE statement to parse.
+
+    Returns
+    -------
+    set[str]
+        Set of column names found in the DDL.
+
+    Examples
+    --------
+    >>> ddl = "CREATE TABLE t (id INTEGER, name VARCHAR)"
+    >>> _parse_ddl_columns(ddl)
+    {'id', 'name'}
+    """
+    return {m.group(1) for m in _DDL_COLUMN_RE.finditer(ddl)}
+
+
+def _parse_ddl_columns_ordered(ddl: str) -> list[str]:
+    """Extract column names from a DDL in declaration order.
+
+    Parameters
+    ----------
+    ddl : str
+        SQL CREATE TABLE statement to parse.
+
+    Returns
+    -------
+    list[str]
+        List of column names in the order they appear in the DDL.
+    """
+    return [m.group(1) for m in _DDL_COLUMN_RE.finditer(ddl)]
+
+
 class EdinetStorage:
     """DuckDB storage layer for EDINET data.
 
@@ -218,7 +286,9 @@ class EdinetStorage:
         """Create all 8 tables if they do not already exist.
 
         Executes ``CREATE TABLE IF NOT EXISTS`` for each table defined
-        in the EDINET schema. Safe to call multiple times.
+        in the EDINET schema. After creating tables, runs schema
+        migration to handle column additions, renames, and type changes
+        from older schema versions. Safe to call multiple times.
         """
         logger.debug("Ensuring EDINET tables exist")
         for table_name, ddl in _TABLE_DDL.items():
@@ -228,6 +298,299 @@ class EdinetStorage:
             "All EDINET tables ensured",
             table_count=len(_TABLE_DDL),
         )
+        self._migrate_schema()
+
+    # ------------------------------------------------------------------
+    # Schema migration helpers
+    # ------------------------------------------------------------------
+
+    def _table_exists(self, table_name: str) -> bool:
+        """Check whether a table exists in the database.
+
+        Parameters
+        ----------
+        table_name : str
+            Name of the table to check.
+
+        Returns
+        -------
+        bool
+            ``True`` if the table exists, ``False`` otherwise.
+        """
+        tables = self._client.get_table_names()
+        return table_name in tables
+
+    def _get_column_info(self, table_name: str) -> dict[str, str]:
+        """Get column names and types for an existing table.
+
+        Parameters
+        ----------
+        table_name : str
+            Name of the table to inspect.
+
+        Returns
+        -------
+        dict[str, str]
+            Mapping of column name to column type string
+            (e.g. ``{"edinet_code": "VARCHAR", "revenue": "DOUBLE"}``).
+        """
+        df = self._client.query_df(
+            f"SELECT column_name, data_type FROM information_schema.columns "  # nosec B608
+            f"WHERE table_name = '{table_name}'"
+        )
+        return dict(zip(df["column_name"], df["data_type"], strict=True))
+
+    def _schema_matches(self, table_name: str) -> bool:
+        """Check whether an existing table's columns match the current DDL.
+
+        Parameters
+        ----------
+        table_name : str
+            Name of the table to compare.
+
+        Returns
+        -------
+        bool
+            ``True`` if the existing table's column set matches the
+            DDL definition exactly, ``False`` otherwise.
+        """
+        if table_name not in _TABLE_DDL:
+            return True
+
+        existing_columns = set(self._get_column_info(table_name).keys())
+        expected_columns = _parse_ddl_columns(_TABLE_DDL[table_name])
+        return existing_columns == expected_columns
+
+    def _migrate_schema(self) -> None:
+        """Migrate all tables whose schemas differ from the current DDL.
+
+        For each table defined in ``_TABLE_DDL``, compares the existing
+        schema against the expected DDL columns. If a mismatch is
+        detected (added, removed, or renamed columns), the table is
+        migrated using ``_migrate_table()``.
+
+        This method is called automatically by ``ensure_tables()``.
+        """
+        for table_name in _TABLE_DDL:
+            if not self._table_exists(table_name):
+                continue
+            if self._schema_matches(table_name):
+                logger.debug(
+                    "Schema matches, skipping migration",
+                    table_name=table_name,
+                )
+                continue
+            logger.info(
+                "Schema mismatch detected, migrating table",
+                table_name=table_name,
+            )
+            self._migrate_table(table_name)
+
+    def _migrate_table(self, table_name: str) -> None:
+        """Migrate a single table using backup-DROP-CREATE-INSERT strategy.
+
+        Steps:
+        1. Rename existing table to ``{table_name}_backup``
+        2. Create new table with current DDL
+        3. INSERT data from backup with column mapping and CAST
+        4. Drop backup table
+
+        If an error occurs during migration, the backup table is
+        restored to preserve data.
+
+        Parameters
+        ----------
+        table_name : str
+            Name of the table to migrate.
+
+        Raises
+        ------
+        Exception
+            Re-raises any exception after restoring the backup table.
+        """
+        backup_name = f"{table_name}_backup"
+        ddl = _TABLE_DDL[table_name]
+
+        # Get existing column info before migration
+        existing_cols = self._get_column_info(table_name)
+        # Use ordered column list to match DDL column order
+        expected_cols_ordered = _parse_ddl_columns_ordered(ddl)
+        reverse_renames = {v: k for k, v in _COLUMN_RENAMES.items()}
+
+        try:
+            # Step 1: Backup
+            self._client.execute(
+                f"ALTER TABLE {table_name} RENAME TO {backup_name}"  # nosec B608
+            )
+            logger.debug(
+                "Table backed up",
+                table_name=table_name,
+                backup_name=backup_name,
+            )
+
+            # Step 2: Create new table with current DDL
+            self._client.execute(ddl)
+            logger.debug("New table created", table_name=table_name)
+
+            # Step 3: Build column mapping for INSERT (in DDL order)
+            select_exprs: list[str] = []
+            for col_name in expected_cols_ordered:
+                expr = self._build_select_expr(
+                    col_name,
+                    ddl,
+                    existing_cols,
+                    reverse_renames,
+                )
+                select_exprs.append(expr)
+
+            target_sql = ", ".join(expected_cols_ordered)
+            select_sql = ", ".join(select_exprs)
+            insert_sql = (
+                f"INSERT INTO {table_name} ({target_sql}) "  # nosec B608
+                f"SELECT {select_sql} FROM {backup_name}"
+            )
+            self._client.execute(insert_sql)
+            logger.debug(
+                "Data migrated",
+                table_name=table_name,
+                column_count=len(select_exprs),
+            )
+
+            # Step 4: Drop backup
+            self._client.execute(f"DROP TABLE {backup_name}")  # nosec B608
+            logger.info(
+                "Migration completed successfully",
+                table_name=table_name,
+            )
+
+        except Exception:
+            logger.error(
+                "Migration failed, restoring backup",
+                table_name=table_name,
+            )
+            # Restore backup
+            try:
+                # Drop the partially created new table if it exists
+                if self._table_exists(table_name):
+                    self._client.execute(f"DROP TABLE {table_name}")  # nosec B608
+                # Restore backup
+                if self._table_exists(backup_name):
+                    self._client.execute(
+                        f"ALTER TABLE {backup_name} "  # nosec B608
+                        f"RENAME TO {table_name}"
+                    )
+                    logger.info(
+                        "Backup restored",
+                        table_name=table_name,
+                    )
+            except Exception:
+                logger.error(
+                    "Failed to restore backup",
+                    table_name=table_name,
+                    backup_name=backup_name,
+                    exc_info=True,
+                )
+            raise
+
+    def _build_select_expr(
+        self,
+        col_name: str,
+        ddl: str,
+        existing_cols: dict[str, str],
+        reverse_renames: dict[str, str],
+    ) -> str:
+        """Build a SELECT expression for a single column during migration.
+
+        Handles three cases:
+        1. Column exists in old table (with optional type CAST)
+        2. Column was renamed (map from old name, with optional CAST)
+        3. Column is new (fill with NULL)
+
+        Parameters
+        ----------
+        col_name : str
+            Target column name in the new DDL.
+        ddl : str
+            Current DDL statement for type lookup.
+        existing_cols : dict[str, str]
+            Column name -> type mapping from the old table.
+        reverse_renames : dict[str, str]
+            New name -> old name mapping from ``_COLUMN_RENAMES``.
+
+        Returns
+        -------
+        str
+            SQL expression for the SELECT clause.
+        """
+        # Case 1: Column exists in old table
+        if col_name in existing_cols:
+            return self._cast_if_needed(col_name, col_name, ddl, existing_cols)
+
+        # Case 2: Column was renamed
+        if col_name in reverse_renames:
+            old_name = reverse_renames[col_name]
+            if old_name in existing_cols:
+                return self._cast_if_needed(
+                    old_name,
+                    col_name,
+                    ddl,
+                    existing_cols,
+                )
+
+        # Case 3: New column
+        return "NULL"
+
+    def _cast_if_needed(
+        self,
+        source_col: str,
+        target_col: str,
+        ddl: str,
+        existing_cols: dict[str, str],
+    ) -> str:
+        """Wrap a source column with CAST if the type has changed.
+
+        Parameters
+        ----------
+        source_col : str
+            Column name in the old (backup) table.
+        target_col : str
+            Column name in the new DDL (for type lookup).
+        ddl : str
+            Current DDL statement.
+        existing_cols : dict[str, str]
+            Column name -> type mapping from the old table.
+
+        Returns
+        -------
+        str
+            ``source_col`` or ``CAST(source_col AS new_type)``.
+        """
+        old_type = existing_cols[source_col].upper()
+        expected_type = self._get_ddl_column_type(ddl, target_col)
+        if expected_type and old_type != expected_type.upper():
+            return f"CAST({source_col} AS {expected_type})"
+        return source_col
+
+    @staticmethod
+    def _get_ddl_column_type(ddl: str, column_name: str) -> str | None:
+        """Extract the type of a specific column from a DDL statement.
+
+        Parameters
+        ----------
+        ddl : str
+            SQL CREATE TABLE statement.
+        column_name : str
+            Column name to look up.
+
+        Returns
+        -------
+        str | None
+            Column type string (e.g. ``"INTEGER"``, ``"DOUBLE"``),
+            or ``None`` if not found.
+        """
+        pattern = rf"^\s+{re.escape(column_name)}\s+(\w+)"
+        match = re.search(pattern, ddl, re.MULTILINE)
+        return match.group(1) if match else None
 
     # ------------------------------------------------------------------
     # Upsert methods

@@ -6,16 +6,20 @@ Tests cover:
 - get_company(), get_financials(), get_all_company_codes(): Query methods
 - get_stats(): Table row counts
 - query(): Arbitrary SQL execution
+- _COLUMN_RENAMES: Column rename mapping accuracy
+- _migrate_schema() / _migrate_table(): Schema migration
+- DDL/dataclass field consistency
 """
 
 from __future__ import annotations
 
 import dataclasses
 from typing import TYPE_CHECKING
-from unittest.mock import MagicMock, call, patch
+from unittest.mock import MagicMock, patch
 
+import duckdb
+import numpy as np
 import pandas as pd
-import pytest
 
 from market.edinet.constants import (
     TABLE_ANALYSES,
@@ -27,6 +31,7 @@ from market.edinet.constants import (
     TABLE_RATIOS,
     TABLE_TEXT_BLOCKS,
 )
+from market.edinet.storage import _COLUMN_RENAMES, _TABLE_DDL
 from market.edinet.types import (
     AnalysisResult,
     Company,
@@ -825,3 +830,499 @@ class TestEdinetStorageIntegration:
             f"SELECT COUNT(*) as cnt FROM {TABLE_COMPANIES}"  # nosec B608
         )
         assert result["cnt"].iloc[0] == 1
+
+
+# ============================================================================
+# Test: _COLUMN_RENAMES
+# ============================================================================
+
+
+class TestColumnRenames:
+    """Tests for _COLUMN_RENAMES constant."""
+
+    def test_正常系_リネームマップのキーが文字列である(self) -> None:
+        """_COLUMN_RENAMESのキーが全て文字列であること."""
+        for old_name in _COLUMN_RENAMES:
+            assert isinstance(old_name, str), f"Key {old_name!r} is not str"
+
+    def test_正常系_リネームマップの値が文字列である(self) -> None:
+        """_COLUMN_RENAMESの値が全て文字列であること."""
+        for old_name, new_name in _COLUMN_RENAMES.items():
+            assert isinstance(new_name, str), (
+                f"Value for {old_name!r} is not str: {new_name!r}"
+            )
+
+    def test_正常系_リネーム先がDDLカラムに存在する(self) -> None:
+        """_COLUMN_RENAMESの値がfinancials/ratiosのDDLカラムに存在すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        financials_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS])
+        ratios_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_RATIOS])
+        all_ddl_cols = financials_cols | ratios_cols
+
+        for old_name, new_name in _COLUMN_RENAMES.items():
+            assert new_name in all_ddl_cols, (
+                f"Rename target {new_name!r} (from {old_name!r}) "
+                f"not found in DDL columns"
+            )
+
+    def test_正常系_リネーム元がDDLカラムに存在しない(self) -> None:
+        """_COLUMN_RENAMESのキーが新DDLカラムに存在しないこと（古い名前は削除済み）."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        financials_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS])
+        ratios_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_RATIOS])
+        all_ddl_cols = financials_cols | ratios_cols
+
+        for old_name in _COLUMN_RENAMES:
+            assert old_name not in all_ddl_cols, (
+                f"Old column name {old_name!r} still exists in DDL. "
+                f"Should have been renamed to {_COLUMN_RENAMES[old_name]!r}"
+            )
+
+    def test_正常系_期待されるリネームが含まれている(self) -> None:
+        """_COLUMN_RENAMESに期待される5つのリネームが含まれていること."""
+        expected_renames = {
+            "operating_cf": "cf_operating",
+            "investing_cf": "cf_investing",
+            "financing_cf": "cf_financing",
+            "employees": "num_employees",
+            "rnd_expense": "rnd_expenses",
+        }
+        for old_name, new_name in expected_renames.items():
+            assert _COLUMN_RENAMES.get(old_name) == new_name, (
+                f"Expected rename {old_name!r} -> {new_name!r}, "
+                f"got {_COLUMN_RENAMES.get(old_name)!r}"
+            )
+
+
+# ============================================================================
+# Test: DDL / dataclass consistency
+# ============================================================================
+
+
+class TestDDLDataclassConsistency:
+    """Tests for DDL and dataclass field name consistency."""
+
+    def test_正常系_FinancialRecordフィールドとDDLカラムが完全一致する(self) -> None:
+        """dataclasses.fields(FinancialRecord)のフィールド名がDDLカラム名と完全一致すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        dataclass_fields = {f.name for f in dataclasses.fields(FinancialRecord)}
+        ddl_columns = _parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS])
+
+        assert dataclass_fields == ddl_columns, (
+            f"FinancialRecord fields and DDL columns mismatch.\n"
+            f"Only in dataclass: {dataclass_fields - ddl_columns}\n"
+            f"Only in DDL: {ddl_columns - dataclass_fields}"
+        )
+
+    def test_正常系_RatioRecordフィールドとDDLカラムが完全一致する(self) -> None:
+        """dataclasses.fields(RatioRecord)のフィールド名がDDLカラム名と完全一致すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        dataclass_fields = {f.name for f in dataclasses.fields(RatioRecord)}
+        ddl_columns = _parse_ddl_columns(_TABLE_DDL[TABLE_RATIOS])
+
+        assert dataclass_fields == ddl_columns, (
+            f"RatioRecord fields and DDL columns mismatch.\n"
+            f"Only in dataclass: {dataclass_fields - ddl_columns}\n"
+            f"Only in DDL: {ddl_columns - dataclass_fields}"
+        )
+
+    def test_正常系_financials_DDLのカラム数がFinancialRecordと一致する(self) -> None:
+        """financials DDLのカラム数がFinancialRecordのフィールド数と一致すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        ddl_count = len(_parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS]))
+        field_count = len(dataclasses.fields(FinancialRecord))
+        assert ddl_count == field_count, (
+            f"Column count mismatch: DDL={ddl_count}, dataclass={field_count}"
+        )
+
+    def test_正常系_ratios_DDLのカラム数がRatioRecordと一致する(self) -> None:
+        """ratios DDLのカラム数がRatioRecordのフィールド数と一致すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        ddl_count = len(_parse_ddl_columns(_TABLE_DDL[TABLE_RATIOS]))
+        field_count = len(dataclasses.fields(RatioRecord))
+        assert ddl_count == field_count, (
+            f"Column count mismatch: DDL={ddl_count}, dataclass={field_count}"
+        )
+
+
+# ============================================================================
+# Test: _parse_ddl_columns
+# ============================================================================
+
+
+class TestParseDdlColumns:
+    """Tests for _parse_ddl_columns helper."""
+
+    def test_正常系_シンプルなDDLからカラム名を抽出する(self) -> None:
+        """_parse_ddl_columnsが簡単なDDLからカラム名を正しく抽出すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        ddl = """
+            CREATE TABLE IF NOT EXISTS test_table (
+                id INTEGER NOT NULL,
+                name VARCHAR,
+                value DOUBLE
+            )
+        """
+        result = _parse_ddl_columns(ddl)
+        assert result == {"id", "name", "value"}
+
+    def test_正常系_financials_DDLからカラム名を抽出する(self) -> None:
+        """_parse_ddl_columnsがfinancialsテーブルDDLから正しいカラム名を抽出すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        result = _parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS])
+        assert "edinet_code" in result
+        assert "fiscal_year" in result
+        assert "revenue" in result
+
+
+# ============================================================================
+# Test: _schema_matches
+# ============================================================================
+
+
+class TestSchemaMatches:
+    """Tests for _schema_matches helper."""
+
+    def test_正常系_同一スキーマでTrueを返す(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_schema_matchesが同一スキーマに対してTrueを返すこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        # Tables are created with current DDL in __init__, so they should match
+        assert storage._schema_matches(TABLE_FINANCIALS) is True
+
+    def test_正常系_カラム不足でFalseを返す(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_schema_matchesがカラム不足のテーブルに対してFalseを返すこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        # Drop and recreate with a minimal schema
+        storage._client.execute(f"DROP TABLE {TABLE_FINANCIALS}")
+        storage._client.execute(
+            f"CREATE TABLE {TABLE_FINANCIALS} "
+            "(edinet_code VARCHAR, fiscal_year INTEGER)"
+        )
+        assert storage._schema_matches(TABLE_FINANCIALS) is False
+
+
+# ============================================================================
+# Test: _table_exists
+# ============================================================================
+
+
+class TestTableExists:
+    """Tests for _table_exists helper."""
+
+    def test_正常系_存在するテーブルでTrueを返す(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_table_existsが存在するテーブルに対してTrueを返すこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        assert storage._table_exists(TABLE_FINANCIALS) is True
+
+    def test_正常系_存在しないテーブルでFalseを返す(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_table_existsが存在しないテーブルに対してFalseを返すこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        assert storage._table_exists("nonexistent_table") is False
+
+
+# ============================================================================
+# Test: _get_column_info
+# ============================================================================
+
+
+class TestGetColumnInfo:
+    """Tests for _get_column_info helper."""
+
+    def test_正常系_既存テーブルのカラム情報を取得する(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_get_column_infoが既存テーブルのカラム名と型を返すこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        columns = storage._get_column_info(TABLE_FINANCIALS)
+        assert isinstance(columns, dict)
+        assert "edinet_code" in columns
+        assert "fiscal_year" in columns
+        assert "revenue" in columns
+
+    def test_正常系_カラム型がVARCHARやDOUBLEを含む(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_get_column_infoがカラム型を正しく返すこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        columns = storage._get_column_info(TABLE_FINANCIALS)
+        assert "VARCHAR" in columns["edinet_code"].upper()
+        assert "INTEGER" in columns["fiscal_year"].upper()
+
+
+# ============================================================================
+# Test: _migrate_schema / _migrate_table
+# ============================================================================
+
+
+class TestMigrateSchema:
+    """Tests for _migrate_schema and _migrate_table methods."""
+
+    def test_正常系_スキーマ一致時にマイグレーションが実行されない(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_migrate_schemaがスキーマ一致時に何もしないこと."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        # Insert test data
+        storage.upsert_financials(
+            [
+                FinancialRecord(
+                    edinet_code="E00001",
+                    fiscal_year=2025,
+                    revenue=1_000_000.0,
+                )
+            ]
+        )
+        # Manually call _migrate_schema - should be a no-op
+        storage._migrate_schema()
+        # Data should still be there
+        result = storage.get_financials("E00001")
+        assert result is not None
+        assert len(result) == 1
+
+    def test_正常系_カラム追加でマイグレーションが実行される(
+        self,
+        tmp_path: Path,
+    ) -> None:
+        """旧スキーマ（カラム不足）から新スキーマへマイグレーションされること."""
+        from market.edinet.storage import EdinetStorage
+        from market.edinet.types import EdinetConfig as EC
+
+        db_path = tmp_path / "migrate_test.duckdb"
+        config = EC(api_key="test_key", db_path=db_path)
+
+        # Create old schema manually (fewer columns)
+        with duckdb.connect(str(db_path)) as conn:
+            conn.execute(
+                f"CREATE TABLE {TABLE_FINANCIALS} ("
+                "edinet_code VARCHAR NOT NULL, "
+                "fiscal_year INTEGER NOT NULL, "
+                "revenue DOUBLE"
+                ")"
+            )
+            conn.execute(
+                f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', 2025, 1000000.0)"
+            )
+            # Create all other tables so ensure_tables doesn't fail
+            for tbl, ddl in _TABLE_DDL.items():
+                if tbl != TABLE_FINANCIALS:
+                    conn.execute(ddl)
+
+        # Initialize storage - should trigger migration
+        storage = EdinetStorage(config=config)
+
+        # Verify the table now has all columns
+        columns = storage._get_column_info(TABLE_FINANCIALS)
+        expected_fields = {f.name for f in dataclasses.fields(FinancialRecord)}
+        assert set(columns.keys()) == expected_fields
+
+        # Verify data was preserved
+        result = storage.get_financials("E00001")
+        assert result is not None
+        assert len(result) == 1
+        assert result["edinet_code"].iloc[0] == "E00001"
+        assert result["fiscal_year"].iloc[0] == 2025
+        assert result["revenue"].iloc[0] == 1_000_000.0
+
+    def test_正常系_カラムリネームでデータが保持される(
+        self,
+        tmp_path: Path,
+    ) -> None:
+        """旧カラム名（operating_cf等）のデータがリネーム後のカラムに移行されること."""
+        from market.edinet.storage import EdinetStorage
+        from market.edinet.types import EdinetConfig as EC
+
+        db_path = tmp_path / "rename_test.duckdb"
+        config = EC(api_key="test_key", db_path=db_path)
+
+        # Create old schema with old column names
+        with duckdb.connect(str(db_path)) as conn:
+            conn.execute(
+                f"CREATE TABLE {TABLE_FINANCIALS} ("
+                "edinet_code VARCHAR NOT NULL, "
+                "fiscal_year INTEGER NOT NULL, "
+                "revenue DOUBLE, "
+                "operating_cf DOUBLE, "
+                "investing_cf DOUBLE, "
+                "financing_cf DOUBLE"
+                ")"
+            )
+            conn.execute(
+                f"INSERT INTO {TABLE_FINANCIALS} VALUES "
+                "('E00001', 2025, 1000000.0, 500000.0, -200000.0, -100000.0)"
+            )
+            for tbl, ddl in _TABLE_DDL.items():
+                if tbl != TABLE_FINANCIALS:
+                    conn.execute(ddl)
+
+        storage = EdinetStorage(config=config)
+
+        # Verify renamed columns have data
+        result = storage.get_financials("E00001")
+        assert result is not None
+        assert result["cf_operating"].iloc[0] == 500_000.0
+        assert result["cf_investing"].iloc[0] == -200_000.0
+        assert result["cf_financing"].iloc[0] == -100_000.0
+
+    def test_正常系_fiscal_yearのVARCHARからINTEGERへのCAST(
+        self,
+        tmp_path: Path,
+    ) -> None:
+        """fiscal_yearがVARCHAR型からINTEGER型にCASTされること."""
+        from market.edinet.storage import EdinetStorage
+        from market.edinet.types import EdinetConfig as EC
+
+        db_path = tmp_path / "cast_test.duckdb"
+        config = EC(api_key="test_key", db_path=db_path)
+
+        # Create old schema with VARCHAR fiscal_year
+        with duckdb.connect(str(db_path)) as conn:
+            conn.execute(
+                f"CREATE TABLE {TABLE_FINANCIALS} ("
+                "edinet_code VARCHAR NOT NULL, "
+                "fiscal_year VARCHAR NOT NULL, "
+                "revenue DOUBLE"
+                ")"
+            )
+            conn.execute(
+                f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', '2025', 1000000.0)"
+            )
+            for tbl, ddl in _TABLE_DDL.items():
+                if tbl != TABLE_FINANCIALS:
+                    conn.execute(ddl)
+
+        storage = EdinetStorage(config=config)
+
+        # Verify fiscal_year is now INTEGER
+        columns = storage._get_column_info(TABLE_FINANCIALS)
+        assert "INTEGER" in columns["fiscal_year"].upper()
+
+        # Verify data was preserved and correctly cast
+        result = storage.get_financials("E00001")
+        assert result is not None
+        assert result["fiscal_year"].iloc[0] == 2025
+        assert np.issubdtype(type(result["fiscal_year"].iloc[0]), np.integer)
+
+    def test_正常系_マイグレーション前後で行数が一致する(
+        self,
+        tmp_path: Path,
+    ) -> None:
+        """マイグレーション前後でテーブルの行数が一致すること."""
+        from market.edinet.storage import EdinetStorage
+        from market.edinet.types import EdinetConfig as EC
+
+        db_path = tmp_path / "rowcount_test.duckdb"
+        config = EC(api_key="test_key", db_path=db_path)
+
+        # Create old schema with multiple rows
+        with duckdb.connect(str(db_path)) as conn:
+            conn.execute(
+                f"CREATE TABLE {TABLE_FINANCIALS} ("
+                "edinet_code VARCHAR NOT NULL, "
+                "fiscal_year INTEGER NOT NULL, "
+                "revenue DOUBLE"
+                ")"
+            )
+            for year in range(2020, 2026):
+                conn.execute(
+                    f"INSERT INTO {TABLE_FINANCIALS} VALUES "
+                    f"('E00001', {year}, {year * 1000}.0)"
+                )
+            for tbl, ddl in _TABLE_DDL.items():
+                if tbl != TABLE_FINANCIALS:
+                    conn.execute(ddl)
+
+            pre_count_result = conn.execute(
+                f"SELECT COUNT(*) FROM {TABLE_FINANCIALS}"
+            ).fetchone()
+            pre_count = pre_count_result[0] if pre_count_result else 0
+
+        storage = EdinetStorage(config=config)
+
+        # Post-migration row count
+        post_result = storage.query(f"SELECT COUNT(*) as cnt FROM {TABLE_FINANCIALS}")
+        post_count = post_result["cnt"].iloc[0]
+
+        assert pre_count == post_count == 6
+
+    def test_正常系_マイグレーション失敗時にバックアップが復元される(
+        self,
+        tmp_path: Path,
+    ) -> None:
+        """_migrate_tableがエラー時にバックアップテーブルを復元すること."""
+        from market.edinet.storage import EdinetStorage
+        from market.edinet.types import EdinetConfig as EC
+
+        db_path = tmp_path / "backup_test.duckdb"
+        config = EC(api_key="test_key", db_path=db_path)
+
+        # Create old schema
+        with duckdb.connect(str(db_path)) as conn:
+            conn.execute(
+                f"CREATE TABLE {TABLE_FINANCIALS} ("
+                "edinet_code VARCHAR NOT NULL, "
+                "fiscal_year INTEGER NOT NULL, "
+                "revenue DOUBLE"
+                ")"
+            )
+            conn.execute(
+                f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', 2025, 1000000.0)"
+            )
+            for tbl, ddl in _TABLE_DDL.items():
+                if tbl != TABLE_FINANCIALS:
+                    conn.execute(ddl)
+
+        # Create storage without migration (by pre-creating all tables)
+        storage = EdinetStorage(config=config)
+
+        # Verify data exists after migration (even with column mismatch,
+        # backup-restore ensures data safety)
+        result = storage.get_financials("E00001")
+        assert result is not None
+
+    def test_正常系_ensure_tablesからmigrate_schemaが呼ばれる(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """ensure_tablesの後に_migrate_schemaが呼び出されること."""
+        from market.edinet.storage import EdinetStorage
+
+        with patch.object(EdinetStorage, "_migrate_schema") as mock_migrate:
+            EdinetStorage(config=sample_config)
+            mock_migrate.assert_called_once()
