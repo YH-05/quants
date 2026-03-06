@@ -6,6 +6,28 @@ checkpoint, status checking, and single company sync.
 
 Follows the FRED ``sync_historical.py`` pattern.
 
+Synced data
+-----------
+- **FinancialRecord** — 30 fields (2 required keys + 28 Optional indicators).
+  All financial indicator fields are ``Optional`` because the API returns
+  different field sets depending on the accounting standard
+  (JP GAAP / US GAAP / IFRS).
+- **RatioRecord** — 21 fields (2 required keys + 19 Optional ratios).
+  Includes profitability, balance-sheet, dividend, efficiency, per-share,
+  valuation, cash-flow, per-employee metrics, and adjustment factors.
+
+Field definitions are verified against the official EDINET DB API
+(see ``docs/project/project-70/step0-api-verification.json``).
+
+Schema migration
+----------------
+When the DuckDB schema does not match the current dataclass definitions
+(e.g. after a field rename or addition), ``EdinetStorage`` automatically
+applies ``ALTER TABLE`` migrations on first access. Old column names
+(``operating_cf``, ``investing_cf``, ``financing_cf``, ``employees``,
+``rnd_expense``) are renamed to their new counterparts, and missing
+columns are added with ``NULL`` defaults.
+
 Examples
 --------
 Run initial 6-phase sync:
@@ -29,7 +51,8 @@ Custom DB path:
 See Also
 --------
 market.edinet.syncer : EdinetSyncer orchestrator.
-market.edinet.types : EdinetConfig configuration.
+market.edinet.storage : EdinetStorage with schema migration support.
+market.edinet.types : EdinetConfig configuration, FinancialRecord, RatioRecord.
 market.fred.scripts.sync_historical : Reference implementation.
 """
 

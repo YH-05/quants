@@ -313,7 +313,7 @@ class EdinetClient:
         Returns
         -------
         list[FinancialRecord]
-            Financial records (up to 6 years, 24 indicators each).
+            Financial records (up to 6 years, 30 fields each).
 
         Raises
         ------
@@ -348,7 +348,7 @@ class EdinetClient:
         Returns
         -------
         list[RatioRecord]
-            Ratio records (up to 6 years, 13 ratios each).
+            Ratio records (up to 6 years, 21 fields each).
 
         Raises
         ------

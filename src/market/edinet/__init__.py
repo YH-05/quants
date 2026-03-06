@@ -52,9 +52,11 @@ Data Types
 Company
     Company master data (~3,848 rows).
 FinancialRecord
-    Annual financial statements (24 indicators).
+    Annual financial statements (30 fields: 2 required keys +
+    28 Optional indicators verified against the official API).
 RatioRecord
-    Computed financial ratios (13 ratios).
+    Computed financial ratios (21 fields: 2 required keys +
+    19 Optional ratios verified against the official API).
 AnalysisResult
     AI-generated financial health analysis.
 TextBlock
@@ -65,6 +67,8 @@ Industry
     Industry master data (34 classifications).
 SyncProgress
     Sync state for resume support.
+SyncResult
+    Result of a sync phase execution.
 
 Examples
 --------
@@ -85,7 +89,7 @@ from market.edinet.errors import (
 )
 from market.edinet.rate_limiter import DailyRateLimiter
 from market.edinet.storage import EdinetStorage
-from market.edinet.syncer import EdinetSyncer
+from market.edinet.syncer import EdinetSyncer, SyncResult
 from market.edinet.types import (
     AnalysisResult,
     Company,
@@ -118,5 +122,6 @@ __all__ = [
     "RatioRecord",
     "RetryConfig",
     "SyncProgress",
+    "SyncResult",
     "TextBlock",
 ]
