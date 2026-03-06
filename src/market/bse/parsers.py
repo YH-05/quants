@@ -764,13 +764,14 @@ def parse_index_data(raw: list[dict[str, Any]]) -> pd.DataFrame:
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
-    # Apply numeric cleaning to price columns
-    _index_price_columns = ("open", "high", "low", "close", "pe", "pb", "yield")
-    for col in _index_price_columns:
+    # Apply numeric cleaning to price columns (vectorised)
+    _INDEX_PRICE_COLUMNS = ("open", "high", "low", "close", "pe", "pb", "yield")
+    for col in _INDEX_PRICE_COLUMNS:
         if col in df.columns:
-            df[col] = df[col].apply(
-                lambda v, c=clean_price: c(str(v)) if pd.notna(v) else None,
-            )
+            series = df[col].astype(str).str.replace(",", "", regex=False)
+            numeric = pd.to_numeric(series, errors="coerce")
+            # Filter out non-finite values (inf, -inf)
+            df[col] = numeric.where(numeric.abs() != float("inf"), other=None)
 
     logger.info(
         "Index data parsed",
