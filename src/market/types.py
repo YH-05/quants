@@ -36,6 +36,8 @@ class DataSource(str, Enum):
         NASDAQ Stock Screener data source
     EDINET_DB : str
         EDINET DB API data source (Japanese listed company financials)
+    BSE : str
+        Bombay Stock Exchange data source
     """
 
     YFINANCE = "yfinance"
@@ -46,6 +48,7 @@ class DataSource(str, Enum):
     ETF_COM = "etfcom"
     NASDAQ = "nasdaq"
     EDINET_DB = "edinet_db"
+    BSE = "bse"
 
 
 @dataclass

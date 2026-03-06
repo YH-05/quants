@@ -38,11 +38,23 @@ MarketError (base)
         EdinetRateLimitError (daily API call limit exceeded)
         EdinetValidationError (input validation failure)
         EdinetParseError (response parse failure)
+    BseError (BSE API operations)
+        BseAPIError (API response error - 4xx, 5xx)
+        BseRateLimitError (rate limit exceeded)
+        BseParseError (response parse failure)
+        BseValidationError (data validation failure)
 """
 
 from enum import Enum
 from typing import Any
 
+from market.bse.errors import (
+    BseAPIError,
+    BseError,
+    BseParseError,
+    BseRateLimitError,
+    BseValidationError,
+)
 from market.edinet.errors import (
     EdinetAPIError,
     EdinetError,
@@ -119,6 +131,14 @@ class ErrorCode(str, Enum):
         EDINET DB API response error (4xx, 5xx)
     EDINET_RATE_LIMIT : str
         EDINET DB API daily call limit exceeded
+    BSE_API_ERROR : str
+        BSE API response error (4xx, 5xx)
+    BSE_RATE_LIMIT : str
+        BSE API rate limit exceeded
+    BSE_PARSE_ERROR : str
+        BSE API response parse failure
+    BSE_VALIDATION_ERROR : str
+        BSE data validation failure
     """
 
     UNKNOWN = "UNKNOWN"
@@ -145,6 +165,10 @@ class ErrorCode(str, Enum):
     NASDAQ_PARSE_ERROR = "NASDAQ_PARSE_ERROR"
     EDINET_API_ERROR = "EDINET_API_ERROR"
     EDINET_RATE_LIMIT = "EDINET_RATE_LIMIT"
+    BSE_API_ERROR = "BSE_API_ERROR"
+    BSE_RATE_LIMIT = "BSE_RATE_LIMIT"
+    BSE_PARSE_ERROR = "BSE_PARSE_ERROR"
+    BSE_VALIDATION_ERROR = "BSE_VALIDATION_ERROR"
 
 
 class MarketError(Exception):
@@ -846,6 +870,12 @@ __all__ = [
     "BloombergError",
     "BloombergSessionError",
     "BloombergValidationError",
+    # BSE errors
+    "BseAPIError",
+    "BseError",
+    "BseParseError",
+    "BseRateLimitError",
+    "BseValidationError",
     "CacheError",
     "DataFetchError",
     "ETFComBlockedError",
