@@ -465,7 +465,7 @@ class TestCorporateGetSession:
         """session 未注入時に新規 BseSession を生成し should_close=True。"""
         collector = CorporateCollector()
 
-        with patch("market.bse.collectors.corporate.BseSession") as mock_cls:
+        with patch("market.bse.collectors._base.BseSession") as mock_cls:
             mock_cls.return_value = MagicMock(spec=BseSession)
             _session, should_close = collector._get_session()
 
@@ -509,7 +509,7 @@ class TestGetCompanyInfo:
         collector = CorporateCollector()
 
         with patch(
-            "market.bse.collectors.corporate.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.get_company_info("500325")
@@ -578,7 +578,7 @@ class TestGetFinancialResults:
         collector = CorporateCollector()
 
         with patch(
-            "market.bse.collectors.corporate.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.get_financial_results("500325")
@@ -622,7 +622,7 @@ class TestGetAnnouncements:
         collector = CorporateCollector()
 
         with patch(
-            "market.bse.collectors.corporate.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.get_announcements("500325")
@@ -669,7 +669,7 @@ class TestGetCorporateActions:
         collector = CorporateCollector()
 
         with patch(
-            "market.bse.collectors.corporate.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.get_corporate_actions("500325")
@@ -722,7 +722,7 @@ class TestSearchScrip:
         collector = CorporateCollector()
 
         with patch(
-            "market.bse.collectors.corporate.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.search_scrip("RELIANCE")

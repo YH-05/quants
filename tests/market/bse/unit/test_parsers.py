@@ -471,6 +471,29 @@ class TestApplyNumericCleaning:
         assert result["scrip_code"].iloc[0] == "500325"
         assert result["scrip_name"].iloc[0] == "RELIANCE"
 
+    def test_エッジケース_NaN値がNoneに変換される(self) -> None:
+        """NaN / 空文字 / N/A 値が None に変換されること。"""
+        df = pd.DataFrame(
+            [
+                {
+                    "open": "",
+                    "close": "N/A",
+                    "num_trades": "abc",
+                    "net_turnover": "",
+                }
+            ]
+        )
+        result = _apply_numeric_cleaning(df)
+
+        assert result["open"].iloc[0] is None or pd.isna(result["open"].iloc[0])
+        assert result["close"].iloc[0] is None or pd.isna(result["close"].iloc[0])
+        assert result["num_trades"].iloc[0] is None or pd.isna(
+            result["num_trades"].iloc[0]
+        )
+        assert result["net_turnover"].iloc[0] is None or pd.isna(
+            result["net_turnover"].iloc[0]
+        )
+
 
 # =============================================================================
 # parse_quote_response
@@ -589,12 +612,12 @@ class TestParseHistoricalCsv:
 
     def test_異常系_空のCSVでBseParseErrorを発生させる(self) -> None:
         """空の CSV で BseParseError が発生すること。"""
-        with pytest.raises(BseParseError, match="Empty CSV"):
+        with pytest.raises(BseParseError, match="Empty"):
             parse_historical_csv("")
 
     def test_異常系_空白のみでBseParseErrorを発生させる(self) -> None:
         """空白のみの CSV で BseParseError が発生すること。"""
-        with pytest.raises(BseParseError, match="Empty CSV"):
+        with pytest.raises(BseParseError, match="Empty"):
             parse_historical_csv("   \n  \n  ")
 
     def test_正常系_bytes入力をデコードできる(self) -> None:

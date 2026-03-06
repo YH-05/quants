@@ -66,6 +66,9 @@ logger = get_logger(__name__)
 # HTTP status code indicating rate limiting
 _RATE_LIMIT_STATUS_CODE = 429
 
+# Maximum length of response body stored in BseAPIError (CWE-209 mitigation)
+_MAX_RESPONSE_BODY_LOG = 200
+
 
 class BseSession:
     """httpx-based HTTP session for BSE API with bot-blocking countermeasures.
@@ -136,9 +139,10 @@ class BseSession:
             else list(DEFAULT_USER_AGENTS)
         )
 
-        # Create httpx client with timeout
+        # Create httpx client with timeout and explicit SSL verification
         self._client: httpx.Client = httpx.Client(
             timeout=httpx.Timeout(self._config.timeout),
+            verify=True,
         )
 
         logger.info(
@@ -419,7 +423,12 @@ class BseSession:
         ValueError
             If the URL host is not in ``ALLOWED_HOSTS``.
         """
-        parsed_host = urlparse(url).netloc
+        parsed = urlparse(url)
+        if parsed.scheme not in ("http", "https"):
+            raise ValueError(
+                f"URL scheme must be 'http' or 'https', got '{parsed.scheme}'"
+            )
+        parsed_host = parsed.netloc
         if parsed_host not in ALLOWED_HOSTS:
             logger.warning(
                 "Request blocked: host not in allowed hosts",
@@ -505,7 +514,7 @@ class BseSession:
                 message=f"Access forbidden: HTTP {status}",
                 url=url,
                 status_code=status,
-                response_body=response.text,
+                response_body=response.text[:_MAX_RESPONSE_BODY_LOG],
             )
 
         # 5xx: server error
@@ -519,7 +528,7 @@ class BseSession:
                 message=f"Server error: HTTP {status}",
                 url=url,
                 status_code=status,
-                response_body=response.text,
+                response_body=response.text[:_MAX_RESPONSE_BODY_LOG],
             )
 
     def _calculate_backoff_delay(self, attempt: int) -> float:

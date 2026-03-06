@@ -42,6 +42,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
+from market.bse.collectors._base import BseCollectorMixin
 from market.bse.constants import BASE_URL
 from market.bse.parsers import (
     parse_announcements,
@@ -49,10 +50,10 @@ from market.bse.parsers import (
     parse_corporate_actions,
     parse_financial_results,
 )
-from market.bse.session import BseSession
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
+    from market.bse.session import BseSession
     from market.bse.types import Announcement, CorporateAction, FinancialResult
 
 logger = get_logger(__name__)
@@ -65,7 +66,7 @@ _CORPORATE_ACTIONS_ENDPOINT: str = f"{BASE_URL}/CorporateAction"
 _SCRIP_SEARCH_ENDPOINT: str = f"{BASE_URL}/suggestscripname"
 
 
-class CorporateCollector:
+class CorporateCollector(BseCollectorMixin):
     """Collector for BSE corporate data (non-ABC).
 
     Fetches corporate information from the BSE India API including
@@ -113,26 +114,12 @@ class CorporateCollector:
             Pre-configured BseSession for dependency injection.
             If None, a new BseSession is created when needed.
         """
-        self._session_instance: BseSession | None = session
+        super().__init__(session=session)
 
         logger.info(
             "CorporateCollector initialized",
             session_injected=session is not None,
         )
-
-    def _get_session(self) -> tuple[BseSession, bool]:
-        """Resolve the session: use injected or create new.
-
-        Returns
-        -------
-        tuple[BseSession, bool]
-            A tuple of (session, should_close).  ``should_close`` is True
-            when a new session was created internally and must be closed
-            by the caller.
-        """
-        if self._session_instance is not None:
-            return self._session_instance, False
-        return BseSession(), True
 
     def get_company_info(self, scrip_code: str) -> dict[str, str | None]:
         """Fetch company information for a BSE scrip.
@@ -412,6 +399,11 @@ class CorporateCollector:
         >>> results[0]["scrip_code"]
         '500325'
         """
+        if not query or not query.strip():
+            raise ValueError("query must not be empty")
+        if len(query) > 100:
+            raise ValueError("query must not exceed 100 characters")
+
         logger.info(
             "Searching scrip",
             query=query,

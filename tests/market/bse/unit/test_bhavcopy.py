@@ -252,6 +252,23 @@ class TestBhavcopyCollectorFetchDateRange:
         # 2 successful days x 2 rows each
         assert len(df) == 4
 
+    def test_エッジケース_全日失敗で空DataFrameを返す(self) -> None:
+        mock_session = MagicMock()
+
+        # All days fail
+        mock_session.download.side_effect = [
+            Exception("404 Not Found"),
+            Exception("500 Server Error"),
+            Exception("Timeout"),
+        ]
+
+        collector = BhavcopyCollector(session=mock_session)
+        start = datetime.date(2026, 3, 3)
+        end = datetime.date(2026, 3, 5)
+        df = collector.fetch_date_range(start, end)
+
+        assert df.empty
+
 
 # ===========================================================================
 # DataCollector ABC compliance tests
@@ -319,7 +336,7 @@ class TestBhavcopyCollectorABCCompliance:
 
     def test_正常系_session未注入で新規作成(self) -> None:
         collector = BhavcopyCollector()
-        with patch("market.bse.collectors.bhavcopy.BseSession") as mock_cls:
+        with patch("market.bse.collectors._base.BseSession") as mock_cls:
             session, should_close = collector._get_session()
 
             mock_cls.assert_called_once()

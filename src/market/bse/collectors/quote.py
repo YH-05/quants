@@ -42,13 +42,14 @@ from typing import TYPE_CHECKING, Any
 import pandas as pd
 
 from market.base_collector import DataCollector
+from market.bse.collectors._base import BseCollectorMixin
 from market.bse.constants import BASE_URL
 from market.bse.errors import BseParseError
 from market.bse.parsers import parse_historical_csv, parse_quote_response
-from market.bse.session import BseSession
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
+    from market.bse.session import BseSession
     from market.bse.types import ScripQuote
 
 logger = get_logger(__name__)
@@ -61,7 +62,7 @@ _QUOTE_ENDPOINT: str = f"{BASE_URL}/getScripHeaderData"
 _HISTORICAL_ENDPOINT: str = f"{BASE_URL}/StockReachGraph/stockreachgraphdata/1/"
 
 
-class QuoteCollector(DataCollector):
+class QuoteCollector(BseCollectorMixin, DataCollector):
     """Collector for BSE scrip quote and historical price data.
 
     Fetches quote data from the BSE India API, parsing the JSON response
@@ -103,36 +104,12 @@ class QuoteCollector(DataCollector):
             Pre-configured BseSession for dependency injection.
             If None, a new BseSession is created when needed.
         """
-        self._session_instance: BseSession | None = session
+        BseCollectorMixin.__init__(self, session=session)
 
         logger.info(
             "QuoteCollector initialized",
             session_injected=session is not None,
         )
-
-    def _get_session(self) -> tuple[BseSession, bool]:
-        """Resolve the session: use injected or create new.
-
-        Returns
-        -------
-        tuple[BseSession, bool]
-            A tuple of (session, should_close).  ``should_close`` is True
-            when a new session was created internally and must be closed
-            by the caller.
-
-        Examples
-        --------
-        >>> collector = QuoteCollector()
-        >>> session, should_close = collector._get_session()
-        >>> try:
-        ...     response = session.get_with_retry(url)
-        ... finally:
-        ...     if should_close:
-        ...         session.close()
-        """
-        if self._session_instance is not None:
-            return self._session_instance, False
-        return BseSession(), True
 
     def fetch(self, **kwargs: Any) -> pd.DataFrame:
         """Fetch scrip quote data from the BSE API as a DataFrame.

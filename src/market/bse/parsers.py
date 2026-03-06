@@ -325,8 +325,9 @@ to each numeric column in a single loop iteration.
 def _apply_numeric_cleaning(df: pd.DataFrame) -> pd.DataFrame:
     """Apply numeric cleaning to all known numeric columns in a DataFrame.
 
-    Iterates over ``_COLUMN_CLEANERS`` and applies each cleaner to its
-    corresponding column if present in the DataFrame.
+    Uses pandas vectorised string operations where possible for
+    performance, falling back to ``apply`` only for the Indian
+    number format cleaner (which requires regex).
 
     Parameters
     ----------
@@ -339,7 +340,22 @@ def _apply_numeric_cleaning(df: pd.DataFrame) -> pd.DataFrame:
         The same DataFrame with numeric columns cleaned in-place.
     """
     for column, cleaner in _COLUMN_CLEANERS.items():
-        if column in df.columns:
+        if column not in df.columns:
+            continue
+
+        if cleaner is clean_price:
+            # Vectorised: strip commas → to_numeric → replace inf with None
+            series = df[column].astype(str).str.replace(",", "", regex=False)
+            numeric = pd.to_numeric(series, errors="coerce")
+            # Filter out non-finite values (inf, -inf)
+            df[column] = numeric.where(numeric.abs() != float("inf"), other=None)
+        elif cleaner is clean_volume:
+            # Vectorised: strip commas → to_numeric (integer)
+            series = df[column].astype(str).str.replace(",", "", regex=False)
+            numeric = pd.to_numeric(series, errors="coerce")
+            df[column] = numeric.where(numeric.notna(), other=None)
+        else:
+            # Fallback for clean_indian_number (regex-based)
             df[column] = df[column].apply(
                 lambda v, c=cleaner: c(str(v)) if pd.notna(v) else None,
             )
@@ -465,6 +481,116 @@ def parse_quote_response(raw: dict[str, Any]) -> ScripQuote:
 # ---------------------------------------------------------------------------
 
 
+def _decode_csv_bytes(content: bytes) -> str:
+    """Decode CSV bytes with multi-encoding fallback.
+
+    Tries utf-8-sig first (BOM-aware), then utf-8, then latin-1.
+
+    Parameters
+    ----------
+    content : bytes
+        Raw bytes from a BSE CSV download.
+
+    Returns
+    -------
+    str
+        Decoded string content.
+    """
+    for encoding in ("utf-8-sig", "utf-8", "latin-1"):
+        try:
+            return content.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    # latin-1 never raises UnicodeDecodeError, so this is unreachable
+    return content.decode("latin-1")  # pragma: no cover
+
+
+def _parse_csv_with_column_map(
+    content: str | bytes,
+    column_map: dict[str, str],
+    label: str,
+) -> pd.DataFrame:
+    """Shared CSV parsing logic for historical and bhavcopy formats.
+
+    Decodes bytes, reads CSV, renames columns, strips whitespace,
+    and applies numeric cleaning.
+
+    Parameters
+    ----------
+    content : str | bytes
+        Raw CSV content (string or bytes).
+    column_map : dict[str, str]
+        Mapping from BSE column names to snake_case names.
+    label : str
+        Human-readable label for log messages (e.g. "Historical CSV").
+
+    Returns
+    -------
+    pd.DataFrame
+        Cleaned DataFrame with snake_case column names.
+
+    Raises
+    ------
+    BseParseError
+        If the CSV content cannot be parsed or is empty.
+    """
+    logger.debug("Parsing %s", label)
+
+    if isinstance(content, bytes):
+        content = _decode_csv_bytes(content)
+
+    if not content.strip():
+        raise BseParseError(
+            f"Empty {label} content",
+            raw_data=None,
+            field=None,
+        )
+
+    try:
+        df = pd.read_csv(io.StringIO(content))
+    except Exception as e:
+        raise BseParseError(
+            f"Failed to parse {label}: {e}",
+            raw_data=content[:500] if len(content) > 500 else content,
+            field=None,
+        ) from e
+
+    if df.empty:
+        logger.info("%s contains no rows", label)
+        return df
+
+    # Strip whitespace from column names
+    df.columns = pd.Index([col.strip() for col in df.columns])
+
+    # Rename columns
+    rename_map: dict[str, str] = {}
+    for col in df.columns:
+        mapped = column_map.get(col)
+        if mapped is not None:
+            rename_map[col] = mapped
+        else:
+            rename_map[col] = col.strip().lower().replace(" ", "_")
+
+    df = df.rename(columns=rename_map)
+
+    # Strip whitespace from string columns (vectorised)
+    for col in df.columns:
+        if df[col].dtype == object:
+            df[col] = df[col].str.strip()
+
+    # Apply numeric cleaning
+    df = _apply_numeric_cleaning(df)
+
+    logger.info(
+        "%s parsed",
+        label,
+        row_count=len(df),
+        columns=list(df.columns),
+    )
+
+    return df
+
+
 def parse_historical_csv(content: str | bytes) -> pd.DataFrame:
     """Parse BSE historical CSV content into a cleaned pandas DataFrame.
 
@@ -499,69 +625,7 @@ def parse_historical_csv(content: str | bytes) -> pd.DataFrame:
     >>> df["scrip_code"].iloc[0]
     '500325'
     """
-    logger.debug("Parsing historical CSV")
-
-    if isinstance(content, bytes):
-        try:
-            content = content.decode("utf-8-sig")
-        except UnicodeDecodeError:
-            try:
-                content = content.decode("utf-8")
-            except UnicodeDecodeError:
-                content = content.decode("latin-1")
-
-    if not content.strip():
-        raise BseParseError(
-            "Empty CSV content",
-            raw_data=None,
-            field=None,
-        )
-
-    try:
-        df = pd.read_csv(io.StringIO(content))
-    except Exception as e:
-        raise BseParseError(
-            f"Failed to parse CSV: {e}",
-            raw_data=content[:500] if len(content) > 500 else content,
-            field=None,
-        ) from e
-
-    if df.empty:
-        logger.info("Historical CSV contains no rows")
-        return df
-
-    # Strip whitespace from column names
-    df.columns = pd.Index([col.strip() for col in df.columns])
-
-    # Rename columns using COLUMN_NAME_MAP
-    rename_map: dict[str, str] = {}
-    for col in df.columns:
-        mapped = COLUMN_NAME_MAP.get(col)
-        if mapped is not None:
-            rename_map[col] = mapped
-        else:
-            # Fallback: lowercase with underscores
-            rename_map[col] = col.strip().lower().replace(" ", "_")
-
-    df = df.rename(columns=rename_map)
-
-    # Strip whitespace from string columns
-    for col in df.columns:
-        if df[col].dtype == object:
-            df[col] = df[col].apply(
-                lambda v: v.strip() if isinstance(v, str) else v,
-            )
-
-    # Apply numeric cleaning
-    df = _apply_numeric_cleaning(df)
-
-    logger.info(
-        "Historical CSV parsed",
-        row_count=len(df),
-        columns=list(df.columns),
-    )
-
-    return df
+    return _parse_csv_with_column_map(content, COLUMN_NAME_MAP, "Historical CSV")
 
 
 # ---------------------------------------------------------------------------
@@ -604,69 +668,7 @@ def parse_bhavcopy_csv(content: str | bytes) -> pd.DataFrame:
     >>> df["scrip_code"].iloc[0]
     '500325'
     """
-    logger.debug("Parsing Bhavcopy CSV")
-
-    if isinstance(content, bytes):
-        try:
-            content = content.decode("utf-8-sig")
-        except UnicodeDecodeError:
-            try:
-                content = content.decode("utf-8")
-            except UnicodeDecodeError:
-                content = content.decode("latin-1")
-
-    if not content.strip():
-        raise BseParseError(
-            "Empty Bhavcopy CSV content",
-            raw_data=None,
-            field=None,
-        )
-
-    try:
-        df = pd.read_csv(io.StringIO(content))
-    except Exception as e:
-        raise BseParseError(
-            f"Failed to parse Bhavcopy CSV: {e}",
-            raw_data=content[:500] if len(content) > 500 else content,
-            field=None,
-        ) from e
-
-    if df.empty:
-        logger.info("Bhavcopy CSV contains no rows")
-        return df
-
-    # Strip whitespace from column names
-    df.columns = pd.Index([col.strip() for col in df.columns])
-
-    # Rename columns using BHAVCOPY_COLUMN_NAME_MAP
-    rename_map: dict[str, str] = {}
-    for col in df.columns:
-        mapped = BHAVCOPY_COLUMN_NAME_MAP.get(col)
-        if mapped is not None:
-            rename_map[col] = mapped
-        else:
-            # Fallback: lowercase with underscores
-            rename_map[col] = col.strip().lower().replace(" ", "_")
-
-    df = df.rename(columns=rename_map)
-
-    # Strip whitespace from string columns
-    for col in df.columns:
-        if df[col].dtype == object:
-            df[col] = df[col].apply(
-                lambda v: v.strip() if isinstance(v, str) else v,
-            )
-
-    # Apply numeric cleaning
-    df = _apply_numeric_cleaning(df)
-
-    logger.info(
-        "Bhavcopy CSV parsed",
-        row_count=len(df),
-        columns=list(df.columns),
-    )
-
-    return df
+    return _parse_csv_with_column_map(content, BHAVCOPY_COLUMN_NAME_MAP, "Bhavcopy CSV")
 
 
 # ---------------------------------------------------------------------------

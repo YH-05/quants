@@ -181,6 +181,35 @@ class TestBseSessionGet:
                 assert len(delay_calls) >= 1
                 assert delay_calls[0] == pytest.approx(1.5, abs=0.01)
 
+    def test_正常系_polite_delay経過済みでsleepスキップ(self) -> None:
+        """十分な時間が経過していれば sleep がスキップされること。"""
+        config = BseConfig(polite_delay=0.1, delay_jitter=0.0)
+
+        with patch("market.bse.session.httpx.Client") as mock_client_cls:
+            mock_client = MagicMock()
+            mock_response = MagicMock()
+            mock_response.status_code = 200
+            mock_client.get.return_value = mock_response
+            mock_client_cls.return_value = mock_client
+
+            with (
+                patch("market.bse.session.time.sleep") as mock_sleep,
+                patch(
+                    "market.bse.session.time.monotonic",
+                    side_effect=[100.0, 100.0, 101.0, 101.0],
+                ),
+                patch("market.bse.session.random.uniform", return_value=0.0),
+            ):
+                session = BseSession(config=config)
+                session.get(_TEST_URL)
+                session.get(_TEST_URL)
+
+                # Elapsed 1.0s > polite_delay 0.1s → no sleep needed
+                polite_sleeps = [
+                    c[0][0] for c in mock_sleep.call_args_list if c[0][0] > 0
+                ]
+                assert len(polite_sleeps) == 0
+
     def test_正常系_User_Agentヘッダーが設定される(self) -> None:
         """ランダムな User-Agent がヘッダーに設定されること。"""
         with patch("market.bse.session.httpx.Client") as mock_client_cls:
@@ -376,7 +405,7 @@ class TestBseSessionURLWhitelist:
 
             session = BseSession()
 
-            with pytest.raises(ValueError, match="not in allowed hosts"):
+            with pytest.raises(ValueError, match="URL scheme must be"):
                 session.get("/relative/path/only")
 
     def test_正常系_ALLOWED_HOSTSにapi_bseindia_comが含まれる(self) -> None:

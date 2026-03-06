@@ -132,7 +132,7 @@ class TestGetSession:
         """session 未注入時に新規 BseSession を生成し should_close=True。"""
         collector = QuoteCollector()
 
-        with patch("market.bse.collectors.quote.BseSession") as mock_cls:
+        with patch("market.bse.collectors._base.BseSession") as mock_cls:
             mock_cls.return_value = MagicMock(spec=BseSession)
             _session, should_close = collector._get_session()
 
@@ -255,7 +255,7 @@ class TestFetchQuote:
         collector = QuoteCollector()
 
         with patch(
-            "market.bse.collectors.quote.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.fetch_quote("500325")
@@ -322,7 +322,7 @@ class TestFetchHistorical:
         collector = QuoteCollector()
 
         with patch(
-            "market.bse.collectors.quote.BseSession",
+            "market.bse.collectors._base.BseSession",
             return_value=mock_new_session,
         ):
             collector.fetch_historical("500325")

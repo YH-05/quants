@@ -42,15 +42,18 @@ market.bse.types : BhavcopyType enum.
 from __future__ import annotations
 
 import datetime
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
 from market.base_collector import DataCollector
+from market.bse.collectors._base import BseCollectorMixin
 from market.bse.constants import BHAVCOPY_DOWNLOAD_BASE_URL
 from market.bse.parsers import parse_bhavcopy_csv
-from market.bse.session import BseSession
 from market.bse.types import BhavcopyType
+
+if TYPE_CHECKING:
+    from market.bse.session import BseSession
 from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -72,7 +75,7 @@ _URL_TEMPLATES: dict[BhavcopyType, str] = {
 }
 
 
-class BhavcopyCollector(DataCollector):
+class BhavcopyCollector(BseCollectorMixin, DataCollector):
     """Collector for BSE Bhavcopy (daily market data) CSV files.
 
     Fetches daily bhavcopy CSV files from the BSE India website,
@@ -114,26 +117,12 @@ class BhavcopyCollector(DataCollector):
             Pre-configured BseSession for dependency injection.
             If None, a new BseSession is created when needed.
         """
-        self._session_instance: BseSession | None = session
+        BseCollectorMixin.__init__(self, session=session)
 
         logger.info(
             "BhavcopyCollector initialized",
             session_injected=session is not None,
         )
-
-    def _get_session(self) -> tuple[BseSession, bool]:
-        """Resolve the session: use injected or create new.
-
-        Returns
-        -------
-        tuple[BseSession, bool]
-            A tuple of (session, should_close).  ``should_close`` is True
-            when a new session was created internally and must be closed
-            by the caller.
-        """
-        if self._session_instance is not None:
-            return self._session_instance, False
-        return BseSession(), True
 
     def _build_url(
         self,
