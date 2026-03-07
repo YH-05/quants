@@ -43,6 +43,11 @@ MarketError (base)
         BseRateLimitError (rate limit exceeded)
         BseParseError (response parse failure)
         BseValidationError (data validation failure)
+    JQuantsError (J-Quants API operations)
+        JQuantsAPIError (API response error - 4xx, 5xx)
+        JQuantsRateLimitError (rate limit exceeded)
+        JQuantsValidationError (data validation failure)
+        JQuantsAuthError (authentication failure)
 """
 
 from enum import Enum
@@ -139,6 +144,14 @@ class ErrorCode(str, Enum):
         BSE API response parse failure
     BSE_VALIDATION_ERROR : str
         BSE data validation failure
+    JQUANTS_API_ERROR : str
+        J-Quants API response error (4xx, 5xx)
+    JQUANTS_RATE_LIMIT : str
+        J-Quants API rate limit exceeded
+    JQUANTS_VALIDATION_ERROR : str
+        J-Quants data validation failure
+    JQUANTS_AUTH_ERROR : str
+        J-Quants authentication failure
     """
 
     UNKNOWN = "UNKNOWN"
@@ -169,6 +182,10 @@ class ErrorCode(str, Enum):
     BSE_RATE_LIMIT = "BSE_RATE_LIMIT"
     BSE_PARSE_ERROR = "BSE_PARSE_ERROR"
     BSE_VALIDATION_ERROR = "BSE_VALIDATION_ERROR"
+    JQUANTS_API_ERROR = "JQUANTS_API_ERROR"
+    JQUANTS_RATE_LIMIT = "JQUANTS_RATE_LIMIT"
+    JQUANTS_VALIDATION_ERROR = "JQUANTS_VALIDATION_ERROR"
+    JQUANTS_AUTH_ERROR = "JQUANTS_AUTH_ERROR"
 
 
 class MarketError(Exception):

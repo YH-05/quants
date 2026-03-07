@@ -2,7 +2,7 @@
 
 import random
 from dataclasses import dataclass, field
-from typing import Literal
+from typing import Final, Literal
 
 
 @dataclass
@@ -197,4 +197,81 @@ NASDAQ_QUANT_CATEGORIES: list[str] = [
     "Currencies",
     "Technology",
     "Stocks",
+]
+
+# 日本語 RSS フィード定数
+
+TOYOKEIZAI_FEEDS: dict[str, str] = {
+    "all": "https://toyokeizai.net/list/feed/rss",
+}
+
+INVESTING_JP_FEEDS: dict[str, str] = {
+    "forex": "https://jp.investing.com/rss/news_301.rss",
+    "commodities": "https://jp.investing.com/rss/news_302.rss",
+    "stocks": "https://jp.investing.com/rss/news_303.rss",
+    "economy": "https://jp.investing.com/rss/news_304.rss",
+    "bonds": "https://jp.investing.com/rss/news_305.rss",
+}
+
+YAHOO_JP_FEEDS: dict[str, str] = {
+    "business": "https://news.yahoo.co.jp/rss/topics/business.xml",
+    "economy": "https://news.yahoo.co.jp/rss/topics/economy.xml",
+    "it": "https://news.yahoo.co.jp/rss/topics/it.xml",
+}
+
+JPX_FEEDS: dict[str, str] = {
+    "news_release": "https://www.jpx.co.jp/corporate/news-releases/news-release.rss",
+    "listing": "https://www.jpx.co.jp/listing/stocks/new/new.rss",
+    "market_news": "https://www.jpx.co.jp/markets/equities/market-news/market-news.rss",
+    "regulations": "https://www.jpx.co.jp/regulation/public-comment/public-comment.rss",
+}
+
+TDNET_BASE_URL: Final[str] = "https://webapi.yanoshin.jp/webapi/tdnet/list"
+
+TDNET_DEFAULT_CODES: list[str] = [
+    "7203",  # トヨタ自動車
+    "6758",  # ソニーグループ
+    "9984",  # ソフトバンクグループ
+    "8306",  # 三菱UFJフィナンシャル・グループ
+    "6861",  # キーエンス
+    "6098",  # リクルートホールディングス
+    "9432",  # 日本電信電話 (NTT)
+    "6501",  # 日立製作所
+    "8035",  # 東京エレクトロン
+    "6902",  # デンソー
+]
+
+# yfinance 日本株プリセット
+
+YFINANCE_JP_TICKERS: list[str] = [
+    "7203.T",  # トヨタ自動車
+    "6758.T",  # ソニーグループ
+    "9984.T",  # ソフトバンクグループ
+    "8306.T",  # 三菱UFJフィナンシャル・グループ
+    "6861.T",  # キーエンス
+    "6902.T",  # デンソー
+    "9432.T",  # 日本電信電話 (NTT)
+    "6501.T",  # 日立製作所
+    "7741.T",  # HOYA
+    "8035.T",  # 東京エレクトロン
+    "6098.T",  # リクルートホールディングス
+    "9433.T",  # KDDI
+    "4063.T",  # 信越化学工業
+    "6367.T",  # ダイキン工業
+    "8058.T",  # 三菱商事
+    "8031.T",  # 三井物産
+    "6981.T",  # 村田製作所
+    "7974.T",  # 任天堂
+    "4519.T",  # 中外製薬
+    "6594.T",  # 日本電産
+    "8766.T",  # 東京海上ホールディングス
+    "4568.T",  # 第一三共
+    "6723.T",  # ルネサスエレクトロニクス
+    "6857.T",  # アドバンテスト
+    "9983.T",  # ファーストリテイリング
+]
+
+YFINANCE_JP_INDICES: list[str] = [
+    "^N225",  # 日経平均株価
+    "^TOPX",  # TOPIX
 ]

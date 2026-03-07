@@ -1,7 +1,10 @@
 """統合金融ニューススクレイパー（非同期版）.
 
-CNBC・NASDAQ・yfinance の複数ソースから金融ニュースを並列収集する。
-``asyncio.gather()`` を使用して全ソースを並列実行し、高速に結果を統合する。
+CNBC・NASDAQ・yfinance の複数ソースおよび日本語ソース
+（東洋経済・Investing.com JP・Yahoo!ニュース・JPX・TDnet）から
+金融ニュースを並列収集する。``asyncio.gather()`` を使用して全ソースを
+並列実行し、高速に結果を統合する。日本語 RSS スクレイパーは native async
+対応のため直接 ``asyncio.create_task`` で実行する。
 
 Examples
 --------
@@ -27,7 +30,7 @@ import pandas as pd
 
 from utils_core.logging import get_logger
 
-from . import cnbc, nasdaq
+from . import cnbc, investing_jp, jpx, nasdaq, tdnet, toyokeizai, yahoo_jp
 from .async_core import RateLimiter, gather_with_errors
 from .session import create_async_session
 from .types import (
@@ -49,11 +52,13 @@ async def async_collect_financial_news(
     tickers: list[str] | None = None,
     config: ScraperConfig | None = None,
     output_dir: str | Path | None = None,
+    tdnet_codes: list[str] | None = None,
 ) -> pd.DataFrame:
     """複数ソースから金融ニュースを並列収集する（非同期版）.
 
-    CNBC・NASDAQ・yfinance（ticker/search）の複数ソースを ``asyncio.gather()``
-    で並列実行し、全記事を統合したデータフレームを返す。
+    CNBC・NASDAQ・yfinance（ticker/search）および日本語ソース
+    （toyokeizai・investing_jp・yahoo_jp・jpx・tdnet）の複数ソースを
+    ``asyncio.gather()`` で並列実行し、全記事を統合したデータフレームを返す。
     ``include_content=True`` 時の本文取得も並列化する。
 
     Parameters
@@ -61,7 +66,9 @@ async def async_collect_financial_news(
     sources : list[str] | None
         収集するソース名のリスト。デフォルトは ``["cnbc", "nasdaq"]``。
         有効な値: ``"cnbc"``, ``"nasdaq"``,
-        ``"yfinance_ticker"``, ``"yfinance_search"``
+        ``"yfinance_ticker"``, ``"yfinance_search"``,
+        ``"toyokeizai"``, ``"investing_jp"``, ``"yahoo_jp"``,
+        ``"jpx"``, ``"tdnet"``
     cnbc_categories : list[str] | None
         CNBC の収集カテゴリ。None でクオンツ向けデフォルト 8 カテゴリを使用。
     nasdaq_categories : list[str] | None
@@ -74,6 +81,10 @@ async def async_collect_financial_news(
     output_dir : str | Path | None
         出力ディレクトリ。None の場合はファイル保存しない。
         指定時は JSON + Parquet 形式でタイムスタンプ付きファイルを保存。
+    tdnet_codes : list[str] | None
+        TDnet の証券コードリスト（例: ``["7203", "6758"]``）。
+        ``"tdnet"`` ソース使用時に ``tdnet.async_fetch_disclosure_feed`` へ渡す。
+        None の場合は TDnet モジュールのデフォルトコードを使用。
 
     Returns
     -------
@@ -89,6 +100,9 @@ async def async_collect_financial_news(
     ...     df = await async_collect_financial_news(
     ...         sources=["cnbc", "nasdaq"],
     ...         tickers=["AAPL", "MSFT", "GOOGL"],
+    ...     )
+    ...     df = await async_collect_financial_news(
+    ...         sources=["toyokeizai", "yahoo_jp"],
     ...     )
     >>> asyncio.run(main())
     """
@@ -191,6 +205,82 @@ async def async_collect_financial_news(
 
         gather_tasks.append(asyncio.create_task(_async_collect_yfinance_search()))
         task_labels.append("yfinance_search")
+
+    # Toyokeizai 非同期収集（native async）
+    if "toyokeizai" in sources:
+        session_toyokeizai = create_async_session(
+            impersonate=config.impersonate,
+            proxy=config.proxy,
+        )
+        gather_tasks.append(
+            asyncio.create_task(
+                toyokeizai.async_fetch_multiple_categories(
+                    session_toyokeizai, config=config
+                )
+            )
+        )
+        task_labels.append("toyokeizai")
+
+    # Investing.com JP 非同期収集（native async）
+    if "investing_jp" in sources:
+        session_investing = create_async_session(
+            impersonate=config.impersonate,
+            proxy=config.proxy,
+        )
+        gather_tasks.append(
+            asyncio.create_task(
+                investing_jp.async_fetch_multiple_categories(
+                    session_investing, config=config
+                )
+            )
+        )
+        task_labels.append("investing_jp")
+
+    # Yahoo JP 非同期収集（native async）
+    if "yahoo_jp" in sources:
+        session_yahoo = create_async_session(
+            impersonate=config.impersonate,
+            proxy=config.proxy,
+        )
+        gather_tasks.append(
+            asyncio.create_task(
+                yahoo_jp.async_fetch_multiple_categories(session_yahoo, config=config)
+            )
+        )
+        task_labels.append("yahoo_jp")
+
+    # JPX 非同期収集（native async）
+    if "jpx" in sources:
+        session_jpx = create_async_session(
+            impersonate=config.impersonate,
+            proxy=config.proxy,
+        )
+        gather_tasks.append(
+            asyncio.create_task(
+                jpx.async_fetch_multiple_categories(session_jpx, config=config)
+            )
+        )
+        task_labels.append("jpx")
+
+    # TDnet 非同期収集（native async）
+    if "tdnet" in sources:
+        session_tdnet = create_async_session(
+            impersonate=config.impersonate,
+            proxy=config.proxy,
+        )
+
+        async def _async_collect_tdnet() -> pd.DataFrame:
+            articles = await tdnet.async_fetch_disclosure_feed(
+                session_tdnet,
+                codes=tdnet_codes,
+                timeout=config.timeout,
+            )
+            if not articles:
+                return pd.DataFrame()
+            return pd.DataFrame([a.to_dict() for a in articles])
+
+        gather_tasks.append(asyncio.create_task(_async_collect_tdnet()))
+        task_labels.append("tdnet")
 
     if not gather_tasks:
         logger.info("No sources to collect")
