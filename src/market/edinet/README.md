@@ -9,8 +9,8 @@
 **取得可能なデータ:**
 
 - **企業情報**: EDINET コード・証券コード・業種・上場ステータス
-- **財務データ（年次）**: 売上高・営業利益・純利益・総資産・キャッシュフロー等 24 指標（最大 6 期分）
-- **財務比率**: ROE・ROA・自己資本比率・営業利益率等 13 比率（最大 6 期分）
+- **財務データ（年次）**: P/L・B/S・CF・1株指標・比率・その他の 30 フィールド（最大 6 期分、会計基準に応じて Optional）
+- **財務比率**: 収益性・BS・配当・効率性・1株指標・バリュエーション・CF・従業員生産性の 21 フィールド（最大 6 期分）
 - **ランキング**: 指標別企業ランキング（20 指標対応）
 - **テキスト**: 事業概要・リスク要因・経営者分析（有価証券報告書から抽出）
 - **AI 分析**: 財務健全性スコアと AI 生成コメンタリー
@@ -80,12 +80,16 @@ with EdinetClient(config=config) as client:
     results = client.search("トヨタ")
     edinet_code = results[0]["edinet_code"]
 
-    # 5. 年次財務データを取得（最大6期分、24指標）
+    # 5. 年次財務データを取得（最大6期分、30フィールド）
+    #    全指標フィールドは Optional（会計基準により None の場合あり）
     financials = client.get_financials(edinet_code)
     latest = financials[0]
-    print(f"売上高: {latest.revenue:,} 円")
-    print(f"営業利益: {latest.operating_income:,} 円")
-    print(f"純利益: {latest.net_income:,} 円")
+    if latest.revenue is not None:
+        print(f"売上高: {latest.revenue:,.0f} 円")
+    if latest.operating_income is not None:
+        print(f"営業利益: {latest.operating_income:,.0f} 円")
+    if latest.net_income is not None:
+        print(f"純利益: {latest.net_income:,.0f} 円")
 ```
 
 **出力例:**
@@ -133,77 +137,115 @@ with EdinetClient(config=config) as client:
 | `industry_name` | 業種名（日本語） | `"情報・通信業"` |
 | `listing_status` | 上場ステータス | `"上場"` |
 
-### 財務データ取得（24 指標の年次財務データ）
+### 財務データ取得（30 フィールドの年次財務データ）
 
 ```python
 with EdinetClient(config=config) as client:
     # 最大6期分の年次財務データを取得
+    # 全指標フィールドは Optional（会計基準により None の場合あり）
     records = client.get_financials("E02529")
     for r in records:
-        print(f"FY{r.fiscal_year}: 売上高={r.revenue:,}, 純利益={r.net_income:,}")
-        print(f"  EPS={r.eps:.1f}円, BPS={r.bps:.1f}円, 配当={r.dividend_per_share:.1f}円")
-        print(f"  FCF={r.free_cf:,}, 設備投資={r.capex:,}")
+        rev = f"{r.revenue:,.0f}" if r.revenue is not None else "N/A"
+        ni = f"{r.net_income:,.0f}" if r.net_income is not None else "N/A"
+        print(f"FY{r.fiscal_year}: 売上高={rev}, 純利益={ni}")
+
+        eps_s = f"{r.eps:.1f}円" if r.eps is not None else "N/A"
+        bps_s = f"{r.bps:.1f}円" if r.bps is not None else "N/A"
+        dps = f"{r.dividend_per_share:.1f}円" if r.dividend_per_share is not None else "N/A"
+        print(f"  EPS={eps_s}, BPS={bps_s}, 配当={dps}")
+
+        if r.accounting_standard is not None:
+            print(f"  会計基準: {r.accounting_standard}")
 ```
 
-`FinancialRecord` の 24 指標:
+`FinancialRecord` の 30 フィールド:
 
-| カテゴリ | フィールド | 説明 |
-|---------|-----------|------|
-| 損益計算書 | `revenue` | 売上高（円） |
-| | `operating_income` | 営業利益（円） |
-| | `ordinary_income` | 経常利益（円） |
-| | `net_income` | 当期純利益（円） |
-| 貸借対照表 | `total_assets` | 総資産（円） |
-| | `net_assets` | 純資産（円） |
-| | `equity` | 自己資本（円） |
-| | `interest_bearing_debt` | 有利子負債（円） |
-| | `goodwill` | のれん（円） |
-| キャッシュフロー | `operating_cf` | 営業 CF（円） |
-| | `investing_cf` | 投資 CF（円） |
-| | `financing_cf` | 財務 CF（円） |
-| | `free_cf` | フリー CF（円） |
-| 1株当たり | `eps` | 1株当たり利益 |
-| | `bps` | 1株当たり純資産 |
-| | `dividend_per_share` | 1株当たり配当 |
-| | `shares_outstanding` | 発行済株式数 |
-| その他 | `employees` | 従業員数 |
-| | `capex` | 設備投資（円） |
-| | `depreciation` | 減価償却費（円） |
-| | `rnd_expense` | 研究開発費（円） |
-| | `fiscal_year` | 会計年度（例: `"2025"`） |
-| | `period_type` | 期間種別（`"annual"`） |
+> **必須フィールド**: `edinet_code` と `fiscal_year` のみ。
+> 全指標フィールドは `Optional`（`None` デフォルト）。会計基準（JP GAAP / US GAAP / IFRS）により
+> API の返却フィールドが異なるため、存在しないフィールドは `None` になります。
 
-### 財務比率取得（13 種の財務比率）
+| カテゴリ | フィールド | 型 | 説明 |
+|---------|-----------|-----|------|
+| キー | `edinet_code` | `str` | EDINET コード（必須） |
+| | `fiscal_year` | `int` | 会計年度（必須、例: `2025`） |
+| 損益計算書 | `revenue` | `float \| None` | 売上高（円） |
+| | `operating_income` | `float \| None` | 営業利益（円）JP GAAP のみ |
+| | `ordinary_income` | `float \| None` | 経常利益（円） |
+| | `net_income` | `float \| None` | 当期純利益（円） |
+| | `profit_before_tax` | `float \| None` | 税引前利益（円） |
+| | `comprehensive_income` | `float \| None` | 包括利益（円） |
+| 貸借対照表 | `total_assets` | `float \| None` | 総資産（円） |
+| | `net_assets` | `float \| None` | 純資産（円） |
+| | `shareholders_equity` | `float \| None` | 自己資本（円） |
+| | `cash` | `float \| None` | 現金及び現金同等物（円） |
+| | `goodwill` | `float \| None` | のれん（円）JP GAAP のみ |
+| キャッシュフロー | `cf_operating` | `float \| None` | 営業 CF（円） |
+| | `cf_investing` | `float \| None` | 投資 CF（円） |
+| | `cf_financing` | `float \| None` | 財務 CF（円） |
+| 1株当たり | `eps` | `float \| None` | 1株当たり利益 |
+| | `diluted_eps` | `float \| None` | 希薄化後 EPS |
+| | `bps` | `float \| None` | 1株当たり純資産 |
+| | `dividend_per_share` | `float \| None` | 1株当たり配当 |
+| 比率 | `equity_ratio_official` | `float \| None` | 自己資本比率（%、会社公表値） |
+| | `payout_ratio` | `float \| None` | 配当性向（%） |
+| | `per` | `float \| None` | 株価収益率 |
+| | `roe_official` | `float \| None` | 自己資本利益率（%、会社公表値） |
+| その他 | `num_employees` | `int \| None` | 従業員数 |
+| | `capex` | `float \| None` | 設備投資（円）JP GAAP のみ |
+| | `depreciation` | `float \| None` | 減価償却費（円）JP GAAP のみ |
+| | `rnd_expenses` | `float \| None` | 研究開発費（円）JP GAAP のみ |
+| | `accounting_standard` | `str \| None` | 会計基準（`"JP GAAP"` / `"US GAAP"` / `"IFRS"`） |
+| | `submit_date` | `str \| None` | 提出日（例: `"2025-06-15"`） |
+
+### 財務比率取得（21 フィールドの財務比率）
 
 ```python
 with EdinetClient(config=config) as client:
     # 最大6期分の財務比率を取得
+    # 全比率フィールドは Optional（企業・年度により None の場合あり）
     ratios = client.get_ratios("E02529")
     latest = ratios[0]
-    print(f"ROE: {latest.roe:.1f}%")
-    print(f"ROA: {latest.roa:.1f}%")
-    print(f"営業利益率: {latest.operating_margin:.1f}%")
-    print(f"自己資本比率: {latest.equity_ratio:.1f}%")
-    print(f"売上高成長率: {latest.revenue_growth:.1f}%")
+
+    if latest.roe is not None:
+        print(f"ROE: {latest.roe:.1f}%")
+    if latest.roa is not None:
+        print(f"ROA: {latest.roa:.1f}%")
+    if latest.net_margin is not None:
+        print(f"純利益率: {latest.net_margin:.1f}%")
+    if latest.equity_ratio is not None:
+        print(f"自己資本比率: {latest.equity_ratio:.1f}%")
+    if latest.dividend_yield is not None:
+        print(f"配当利回り: {latest.dividend_yield:.1f}%")
 ```
 
-`RatioRecord` の 13 比率:
+`RatioRecord` の 21 フィールド:
 
-| フィールド | 説明 | 単位 |
-|-----------|------|------|
-| `roe` | 自己資本利益率 | % |
-| `roa` | 総資産利益率 | % |
-| `operating_margin` | 営業利益率 | % |
-| `net_margin` | 純利益率 | % |
-| `equity_ratio` | 自己資本比率 | % |
-| `debt_equity_ratio` | 負債資本比率 | 倍 |
-| `current_ratio` | 流動比率 | 倍 |
-| `interest_coverage_ratio` | インタレスト・カバレッジ・レシオ | 倍 |
-| `payout_ratio` | 配当性向 | % |
-| `asset_turnover` | 総資産回転率 | 回 |
-| `revenue_growth` | 売上高成長率 | % |
-| `operating_income_growth` | 営業利益成長率 | % |
-| `net_income_growth` | 純利益成長率 | % |
+> **必須フィールド**: `edinet_code` と `fiscal_year` のみ。
+> 全比率フィールドは `Optional`（`None` デフォルト）。
+
+| カテゴリ | フィールド | 型 | 説明 |
+|---------|-----------|-----|------|
+| キー | `edinet_code` | `str` | EDINET コード（必須） |
+| | `fiscal_year` | `int` | 会計年度（必須） |
+| 収益性 | `roe` | `float \| None` | 自己資本利益率（%） |
+| | `roa` | `float \| None` | 総資産利益率（%） |
+| | `roe_official` | `float \| None` | 会社公表 ROE（%） |
+| | `net_margin` | `float \| None` | 純利益率（%） |
+| 貸借対照表 | `equity_ratio` | `float \| None` | 自己資本比率（%） |
+| | `equity_ratio_official` | `float \| None` | 会社公表自己資本比率（%） |
+| 配当 | `payout_ratio` | `float \| None` | 配当性向（%） |
+| | `dividend_per_share` | `float \| None` | 1株当たり配当 |
+| | `adjusted_dividend_per_share` | `float \| None` | 調整後1株配当（株式分割調整済） |
+| | `dividend_yield` | `float \| None` | 配当利回り（%） |
+| 効率性 | `asset_turnover` | `float \| None` | 総資産回転率 |
+| 1株指標 | `eps` | `float \| None` | 1株当たり利益 |
+| | `diluted_eps` | `float \| None` | 希薄化後 EPS |
+| | `bps` | `float \| None` | 1株当たり純資産 |
+| バリュエーション | `per` | `float \| None` | 株価収益率 |
+| キャッシュフロー | `fcf` | `float \| None` | フリーキャッシュフロー（円） |
+| 従業員生産性 | `net_income_per_employee` | `float \| None` | 従業員1人当たり純利益 |
+| | `revenue_per_employee` | `float \| None` | 従業員1人当たり売上高 |
+| 調整係数 | `split_adjustment_factor` | `float \| None` | 株式分割調整係数 |
 
 ### ランキング取得（指標別企業ランキング）
 
@@ -338,8 +380,8 @@ df = storage.query("""
 | テーブル名 | 説明 | 主キー |
 |-----------|------|--------|
 | `companies` | 企業マスタ（約 3,848 件） | `edinet_code` |
-| `financials` | 年次財務データ（24 指標） | `(edinet_code, fiscal_year)` |
-| `ratios` | 財務比率（13 種） | `(edinet_code, fiscal_year)` |
+| `financials` | 年次財務データ（30 フィールド） | `(edinet_code, fiscal_year)` |
+| `ratios` | 財務比率（21 フィールド） | `(edinet_code, fiscal_year)` |
 | `analyses` | AI 財務健全性分析 | `edinet_code` |
 | `text_blocks` | 有価証券報告書テキスト | `(edinet_code, fiscal_year)` |
 | `rankings` | 指標別ランキング（20 指標） | `(metric, rank)` |
@@ -473,8 +515,8 @@ EdinetClient(
 | `search(query)` | 企業名・キーワードで検索（`GET /v1/search`） | `list[dict]` |
 | `list_companies(per_page=5000)` | 全企業一覧を取得（`GET /v1/companies`） | `list[Company]` |
 | `get_company(code)` | EDINET コードで企業を取得（`GET /v1/companies/{code}`） | `Company` |
-| `get_financials(code)` | 年次財務データを取得（`GET /v1/companies/{code}/financials`） | `list[FinancialRecord]` |
-| `get_ratios(code)` | 財務比率を取得（`GET /v1/companies/{code}/ratios`） | `list[RatioRecord]` |
+| `get_financials(code)` | 年次財務データを取得（`GET /v1/companies/{code}/financials`、30 フィールド） | `list[FinancialRecord]` |
+| `get_ratios(code)` | 財務比率を取得（`GET /v1/companies/{code}/ratios`、21 フィールド） | `list[RatioRecord]` |
 | `get_analysis(code)` | AI 財務健全性分析を取得（`GET /v1/companies/{code}/analysis`） | `AnalysisResult` |
 | `get_text_blocks(code, year=None)` | 有価証券報告書テキストを取得（`GET /v1/companies/{code}/text-blocks`） | `list[TextBlock]` |
 | `get_ranking(metric)` | 指標別ランキングを取得（`GET /v1/rankings/{metric}`） | `list[RankingEntry]` |
@@ -527,11 +569,11 @@ EDINET DB API クライアントの設定クラス（イミュータブル）。
 
 ### EdinetStorage
 
-DuckDB ストレージ管理クラス。
+DuckDB ストレージ管理クラス。スキーマの自動マイグレーション機構を内蔵。
 
 | メソッド | 説明 |
 |---------|------|
-| `ensure_tables()` | 8テーブルを作成（存在しない場合） |
+| `ensure_tables()` | 8テーブルを作成し、既存テーブルのスキーママイグレーションを実行 |
 | `upsert_companies(companies)` | 企業データをアップサート |
 | `upsert_financials(records)` | 財務データをアップサート |
 | `upsert_ratios(records)` | 財務比率をアップサート |
@@ -577,6 +619,98 @@ DuckDB ストレージ管理クラス。
 | `EdinetRateLimitError` | 日次 API コール上限超過時（`calls_used`, `calls_limit` 属性あり） |
 | `EdinetValidationError` | 入力バリデーションエラー時（`field`, `value` 属性あり） |
 | `EdinetParseError` | API レスポンスのパースエラー時（`raw_data` 属性あり） |
+
+---
+
+## マイグレーション手順
+
+### 旧バージョンからの移行
+
+`FinancialRecord` と `RatioRecord` のフィールド定義が公式 API 仕様に基づき全面更新されています。既存コードの更新が必要な場合があります。
+
+#### フィールド名の変更
+
+| 旧フィールド名 | 新フィールド名 | 対象 |
+|---------------|---------------|------|
+| `operating_cf` | `cf_operating` | FinancialRecord |
+| `investing_cf` | `cf_investing` | FinancialRecord |
+| `financing_cf` | `cf_financing` | FinancialRecord |
+| `employees` | `num_employees` | FinancialRecord |
+| `rnd_expense` | `rnd_expenses` | FinancialRecord |
+| `equity` | `shareholders_equity` | FinancialRecord |
+
+#### 削除されたフィールド
+
+以下のフィールドは API 検証の結果、実際の API レスポンスに存在しないことが確認されたため削除されました。
+
+| 旧フィールド | 代替 | 備考 |
+|-------------|------|------|
+| `interest_bearing_debt` | なし | API 未提供 |
+| `free_cf` | `RatioRecord.fcf` | ratios エンドポイントで提供 |
+| `shares_outstanding` | なし | API 未提供 |
+| `period_type` | なし | API 未提供（全レコード annual） |
+| `operating_margin` | `RatioRecord.net_margin` | ratios エンドポイントで提供 |
+| `debt_equity_ratio` | なし | API 未提供 |
+| `current_ratio` | なし | API 未提供 |
+| `interest_coverage_ratio` | なし | API 未提供 |
+| `revenue_growth` | なし | API 未提供 |
+| `operating_income_growth` | なし | API 未提供 |
+| `net_income_growth` | なし | API 未提供 |
+
+#### 新規追加フィールド（FinancialRecord）
+
+| フィールド | 説明 |
+|-----------|------|
+| `profit_before_tax` | 税引前利益 |
+| `comprehensive_income` | 包括利益 |
+| `shareholders_equity` | 自己資本（旧 `equity`） |
+| `cash` | 現金及び現金同等物 |
+| `diluted_eps` | 希薄化後 EPS |
+| `equity_ratio_official` | 会社公表自己資本比率（%） |
+| `payout_ratio` | 配当性向（%） |
+| `per` | 株価収益率 |
+| `roe_official` | 会社公表 ROE（%） |
+| `accounting_standard` | 会計基準 |
+| `submit_date` | 提出日 |
+
+#### 新規追加フィールド（RatioRecord）
+
+| フィールド | 説明 |
+|-----------|------|
+| `roe_official` | 会社公表 ROE |
+| `equity_ratio_official` | 会社公表自己資本比率 |
+| `adjusted_dividend_per_share` | 調整後1株配当 |
+| `dividend_yield` | 配当利回り |
+| `diluted_eps` | 希薄化後 EPS |
+| `fcf` | フリーキャッシュフロー |
+| `net_income_per_employee` | 従業員1人当たり純利益 |
+| `revenue_per_employee` | 従業員1人当たり売上高 |
+| `split_adjustment_factor` | 株式分割調整係数 |
+
+#### Optional 扱いへの変更
+
+**重要**: 全指標フィールドが `Optional`（`None` デフォルト）に変更されました。会計基準（JP GAAP / US GAAP / IFRS）によって API が返すフィールドセットが異なるためです。
+
+```python
+# 旧コード（None チェックなし）
+print(f"売上高: {record.revenue:,}")
+print(f"営業CF: {record.operating_cf:,}")
+
+# 新コード（None チェック必須）
+if record.revenue is not None:
+    print(f"売上高: {record.revenue:,.0f}")
+if record.cf_operating is not None:
+    print(f"営業CF: {record.cf_operating:,.0f}")
+```
+
+#### DuckDB スキーマの自動マイグレーション
+
+`EdinetStorage` は初回アクセス時に既存テーブルのスキーマを自動検査し、以下を実行します:
+
+1. **カラム名の変更**: `operating_cf` → `cf_operating` 等の自動リネーム
+2. **不足カラムの追加**: 新フィールドに対応するカラムを `NULL` デフォルトで追加
+
+手動のスキーマ変更は不要です。既存の DuckDB ファイルはそのまま使用できます。
 
 ---
 

@@ -1,0 +1,138 @@
+{
+  "verified_at": "2026-03-06",
+  "api_key_plan": "Pro",
+  "test_company": "E02144 (Toyota)",
+
+  "endpoints": {
+    "financials": {
+      "url": "/v1/companies/E02144/financials",
+      "response_wrapper": "data",
+      "response_format": "{\"data\": [...]}",
+      "field_count": 24,
+      "fields": {
+        "accounting_standard": "str",
+        "bps": "float",
+        "cash": "float",
+        "cf_financing": "float",
+        "cf_investing": "float",
+        "cf_operating": "float",
+        "comprehensive_income": "float",
+        "diluted_eps": "float",
+        "dividend_per_share": "float",
+        "eps": "float",
+        "equity_ratio_official": "float",
+        "fiscal_year": "int",
+        "net_assets": "float",
+        "net_income": "float",
+        "num_employees": "int",
+        "ordinary_income": "float",
+        "payout_ratio": "float",
+        "per": "float",
+        "profit_before_tax": "float",
+        "revenue": "float",
+        "roe_official": "float",
+        "shareholders_equity": "float",
+        "submit_date": "str",
+        "total_assets": "float"
+      },
+      "notes": "Toyota uses USGAAP. JP GAAP companies may have additional fields (cost_of_sales, gross_profit, sga, etc). All financial fields are Optional."
+    },
+
+    "ratios": {
+      "url": "/v1/companies/E02144/ratios",
+      "response_wrapper": "data",
+      "field_count": 20,
+      "fields": {
+        "adjusted_dividend_per_share": "float",
+        "asset_turnover": "float",
+        "bps": "float",
+        "diluted_eps": "float",
+        "dividend_per_share": "float",
+        "dividend_yield": "float",
+        "eps": "float",
+        "equity_ratio": "float",
+        "equity_ratio_official": "float",
+        "fcf": "float",
+        "fiscal_year": "int",
+        "net_income_per_employee": "float",
+        "net_margin": "float",
+        "payout_ratio": "float",
+        "per": "float",
+        "revenue_per_employee": "float",
+        "roa": "float",
+        "roe": "float",
+        "roe_official": "float",
+        "split_adjustment_factor": "float"
+      },
+      "notes": "Growth rates (revenue_growth, oi_growth, etc) and CAGR fields not present for Toyota 2012. Likely Optional and absent for this company/year."
+    },
+
+    "status": {
+      "url": "/v1/status",
+      "exists": true,
+      "auth_required": false,
+      "response_wrapper": "data",
+      "notes": "Returns available_industries list and other status info"
+    },
+
+    "earnings": {
+      "url": "/v1/companies/E02144/earnings",
+      "exists": false,
+      "http_status": 401,
+      "error": "auth_required",
+      "notes": "Returns 401 even with valid API key. Endpoint not available for Pro plan. DO NOT add EarningsRecord."
+    },
+
+    "search": {
+      "url": "/v1/search?q=トヨタ",
+      "response_wrapper": "data",
+      "response_format": "{\"data\": [...], \"meta\": {\"query\": ..., \"total\": N}}",
+      "response_key": "data",
+      "notes": "Key is 'data', NOT 'results'. Need to update search() method."
+    },
+
+    "companies": {
+      "url": "/v1/companies?per_page=2",
+      "response_wrapper": "data",
+      "response_format": "{\"data\": [...], \"meta\": {\"pagination\": {...}}}",
+      "fields": {
+        "edinet_code": "str",
+        "sec_code": "str",
+        "name": "str",
+        "industry": "str",
+        "accounting_standard": "str",
+        "credit_rating": "str",
+        "credit_score": "int"
+      },
+      "renames": {
+        "corp_name": "name",
+        "industry_name": "industry"
+      },
+      "deleted_fields": ["industry_code", "listing_status"],
+      "new_fields": ["accounting_standard", "credit_rating", "credit_score"],
+      "notes": "Company dataclass needs updating too"
+    }
+  },
+
+  "key_decisions": {
+    "response_wrapper": "All endpoints use {\"data\": [...]} wrapper. Add _unwrap_response() to client.",
+    "fiscal_year_type": "int (confirmed)",
+    "period_type": "Not in any response. Delete from all dataclasses.",
+    "earnings_record": "DO NOT add. Endpoint returns 401.",
+    "company_changes": "corp_name->name, industry_name->industry, industry_code/listing_status removed, accounting_standard/credit_rating/credit_score added",
+    "field_renames_financials": {
+      "operating_cf": "cf_operating",
+      "investing_cf": "cf_investing",
+      "financing_cf": "cf_financing",
+      "employees": "num_employees",
+      "rnd_expense": "rnd_expenses"
+    },
+    "field_renames_ratios": {
+      "debt_equity_ratio": "de_ratio",
+      "operating_income_growth": "oi_growth",
+      "net_income_growth": "ni_growth"
+    },
+    "search_response_key": "data (not results)",
+    "submit_date": "New field in financials response (str)"
+  }
+}

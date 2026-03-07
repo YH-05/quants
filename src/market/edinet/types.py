@@ -6,8 +6,8 @@ including:
 - Configuration dataclasses (EdinetConfig, RetryConfig)
 - Data record dataclasses for API responses:
   - Company: company master data (~3,848 rows)
-  - FinancialRecord: annual financial statements (24 indicators)
-  - RatioRecord: computed financial ratios (13 ratios)
+  - FinancialRecord: annual financial statements (API-verified fields)
+  - RatioRecord: computed financial ratios (API-verified fields)
   - AnalysisResult: AI-generated financial health analysis
   - TextBlock: securities report text excerpts
   - RankingEntry: metric-based company rankings
@@ -15,6 +15,8 @@ including:
   - SyncProgress: sync state for resume support
 
 All dataclasses use ``frozen=True`` to ensure immutability.
+Field definitions are based on the Step 0 API verification
+(``docs/project/project-70/step0-api-verification.json``).
 
 See Also
 --------
@@ -80,7 +82,7 @@ class EdinetConfig:
     60.0
     """
 
-    api_key: str
+    api_key: str = field(repr=False)
     base_url: str = DEFAULT_BASE_URL
     timeout: float = DEFAULT_TIMEOUT
     polite_delay: float = DEFAULT_POLITE_DELAY
@@ -272,117 +274,134 @@ class Company:
 class FinancialRecord:
     """Annual financial statement data from the EDINET DB API.
 
-    Represents a single fiscal year's financial data for a company,
-    containing 24 financial indicators. Data is returned by the
-    ``GET /v1/companies/{edinet_code}/financials`` endpoint.
+    Represents a single fiscal year's financial data for a company.
+    Fields are based on the actual API response verified in Step 0
+    (``docs/project/project-70/step0-api-verification.json``).
+
+    Required fields are ``edinet_code`` and ``fiscal_year`` only.
+    All financial indicator fields are ``Optional`` (``None`` by default)
+    because the API returns different field sets depending on the
+    company's accounting standard (JP GAAP / US GAAP / IFRS).
 
     Parameters
     ----------
     edinet_code : str
-        EDINET code of the company.
-    fiscal_year : str
-        Fiscal year (e.g. ``"2025"``).
-    period_type : str
-        Period type (e.g. ``"annual"``).
-    revenue : int
+        EDINET code of the company (e.g. ``"E02144"``).
+    fiscal_year : int
+        Fiscal year as integer (e.g. ``2025``).
+    revenue : float | None
         Revenue (売上高) in JPY.
-    operating_income : int
-        Operating income (営業利益) in JPY.
-    ordinary_income : int
+    operating_income : float | None
+        Operating income (営業利益) in JPY. JP GAAP only.
+    ordinary_income : float | None
         Ordinary income (経常利益) in JPY.
-    net_income : int
+    net_income : float | None
         Net income (当期純利益) in JPY.
-    total_assets : int
+    total_assets : float | None
         Total assets (総資産) in JPY.
-    net_assets : int
+    net_assets : float | None
         Net assets (純資産) in JPY.
-    equity : int
+    shareholders_equity : float | None
         Shareholders' equity (自己資本) in JPY.
-    interest_bearing_debt : int
-        Interest-bearing debt (有利子負債) in JPY.
-    operating_cf : int
+    cf_operating : float | None
         Operating cash flow (営業CF) in JPY.
-    investing_cf : int
+    cf_investing : float | None
         Investing cash flow (投資CF) in JPY.
-    financing_cf : int
+    cf_financing : float | None
         Financing cash flow (財務CF) in JPY.
-    free_cf : int
-        Free cash flow (フリーCF) in JPY.
-    eps : float
+    eps : float | None
         Earnings per share (1株当たり利益).
-    bps : float
+    bps : float | None
         Book value per share (1株当たり純資産).
-    dividend_per_share : float
+    diluted_eps : float | None
+        Diluted earnings per share (希薄化後EPS).
+    dividend_per_share : float | None
         Dividend per share (1株当たり配当).
-    shares_outstanding : int
-        Shares outstanding (発行済株式数).
-    employees : int
+    num_employees : int | None
         Number of employees (従業員数).
-    capex : int
-        Capital expenditure (設備投資) in JPY.
-    depreciation : int
-        Depreciation (減価償却費) in JPY.
-    rnd_expense : int
-        R&D expense (研究開発費) in JPY.
-    goodwill : int
-        Goodwill (のれん) in JPY.
+    capex : float | None
+        Capital expenditure (設備投資) in JPY. JP GAAP only.
+    depreciation : float | None
+        Depreciation (減価償却費) in JPY. JP GAAP only.
+    rnd_expenses : float | None
+        R&D expenses (研究開発費) in JPY. JP GAAP only.
+    goodwill : float | None
+        Goodwill (のれん) in JPY. JP GAAP only.
+    cash : float | None
+        Cash and cash equivalents (現金及び現金同等物) in JPY.
+    comprehensive_income : float | None
+        Comprehensive income (包括利益) in JPY.
+    equity_ratio_official : float | None
+        Official equity ratio (自己資本比率) in percent.
+    payout_ratio : float | None
+        Payout ratio (配当性向) in percent.
+    per : float | None
+        Price-to-earnings ratio (株価収益率).
+    profit_before_tax : float | None
+        Profit before tax (税引前利益) in JPY.
+    roe_official : float | None
+        Official return on equity (自己資本利益率) in percent.
+    accounting_standard : str | None
+        Accounting standard (e.g. ``"JP GAAP"``, ``"US GAAP"``, ``"IFRS"``).
+    submit_date : str | None
+        Report submission date (e.g. ``"2025-06-15"``).
 
     Examples
     --------
     >>> record = FinancialRecord(
     ...     edinet_code="E00001",
-    ...     fiscal_year="2025",
-    ...     period_type="annual",
-    ...     revenue=1_000_000_000,
-    ...     operating_income=100_000_000,
-    ...     ordinary_income=110_000_000,
-    ...     net_income=70_000_000,
-    ...     total_assets=5_000_000_000,
-    ...     net_assets=2_000_000_000,
-    ...     equity=1_800_000_000,
-    ...     interest_bearing_debt=1_000_000_000,
-    ...     operating_cf=150_000_000,
-    ...     investing_cf=-80_000_000,
-    ...     financing_cf=-50_000_000,
-    ...     free_cf=70_000_000,
-    ...     eps=350.0,
-    ...     bps=9_000.0,
-    ...     dividend_per_share=100.0,
-    ...     shares_outstanding=200_000,
-    ...     employees=5_000,
-    ...     capex=80_000_000,
-    ...     depreciation=60_000_000,
-    ...     rnd_expense=30_000_000,
-    ...     goodwill=10_000_000,
+    ...     fiscal_year=2025,
+    ...     revenue=1_000_000_000.0,
+    ...     net_income=70_000_000.0,
     ... )
     >>> record.revenue
-    1000000000
+    1000000000.0
     """
 
+    # --- Required key fields ---
     edinet_code: str
-    fiscal_year: str
-    period_type: str
-    revenue: int
-    operating_income: int
-    ordinary_income: int
-    net_income: int
-    total_assets: int
-    net_assets: int
-    equity: int
-    interest_bearing_debt: int
-    operating_cf: int
-    investing_cf: int
-    financing_cf: int
-    free_cf: int
-    eps: float
-    bps: float
-    dividend_per_share: float
-    shares_outstanding: int
-    employees: int
-    capex: int
-    depreciation: int
-    rnd_expense: int
-    goodwill: int
+    fiscal_year: int
+
+    # --- API-verified financial fields (all Optional) ---
+    # P/L fields
+    revenue: float | None = None
+    operating_income: float | None = None
+    ordinary_income: float | None = None
+    net_income: float | None = None
+    profit_before_tax: float | None = None
+    comprehensive_income: float | None = None
+
+    # B/S fields
+    total_assets: float | None = None
+    net_assets: float | None = None
+    shareholders_equity: float | None = None
+    cash: float | None = None
+    goodwill: float | None = None
+
+    # Cash flow fields
+    cf_operating: float | None = None
+    cf_investing: float | None = None
+    cf_financing: float | None = None
+
+    # Per-share fields
+    eps: float | None = None
+    diluted_eps: float | None = None
+    bps: float | None = None
+    dividend_per_share: float | None = None
+
+    # Ratio fields
+    equity_ratio_official: float | None = None
+    payout_ratio: float | None = None
+    per: float | None = None
+    roe_official: float | None = None
+
+    # Other fields
+    num_employees: int | None = None
+    capex: float | None = None
+    depreciation: float | None = None
+    rnd_expenses: float | None = None
+    accounting_standard: str | None = None
+    submit_date: str | None = None
 
 
 @dataclass(frozen=True)
@@ -390,84 +409,111 @@ class RatioRecord:
     """Computed financial ratio data from the EDINET DB API.
 
     Represents a single fiscal year's computed financial ratios for a
-    company, containing 13 ratio indicators. Data is returned by the
-    ``GET /v1/companies/{edinet_code}/ratios`` endpoint.
+    company. Fields are based on the actual API response verified in
+    Step 0 (``docs/project/project-70/step0-api-verification.json``).
+
+    Required fields are ``edinet_code`` and ``fiscal_year`` only.
+    All ratio fields are ``Optional`` (``None`` by default) because
+    not all ratios are available for every company/year combination.
 
     Parameters
     ----------
     edinet_code : str
         EDINET code of the company.
-    fiscal_year : str
-        Fiscal year (e.g. ``"2025"``).
-    period_type : str
-        Period type (e.g. ``"annual"``).
-    roe : float
+    fiscal_year : int
+        Fiscal year as integer (e.g. ``2025``).
+    roe : float | None
         Return on equity (自己資本利益率) in percent.
-    roa : float
+    roa : float | None
         Return on assets (総資産利益率) in percent.
-    operating_margin : float
-        Operating margin (営業利益率) in percent.
-    net_margin : float
+    roe_official : float | None
+        Official ROE as reported by the company.
+    net_margin : float | None
         Net margin (純利益率) in percent.
-    equity_ratio : float
+    equity_ratio : float | None
         Equity ratio (自己資本比率) in percent.
-    debt_equity_ratio : float
-        Debt-to-equity ratio (負債資本比率).
-    current_ratio : float
-        Current ratio (流動比率).
-    interest_coverage_ratio : float
-        Interest coverage ratio (インタレスト・カバレッジ・レシオ).
-    payout_ratio : float
+    equity_ratio_official : float | None
+        Official equity ratio as reported by the company.
+    payout_ratio : float | None
         Payout ratio (配当性向) in percent.
-    asset_turnover : float
+    asset_turnover : float | None
         Asset turnover (総資産回転率).
-    revenue_growth : float
-        Revenue growth (売上高成長率) in percent.
-    operating_income_growth : float
-        Operating income growth (営業利益成長率) in percent.
-    net_income_growth : float
-        Net income growth (純利益成長率) in percent.
+    eps : float | None
+        Earnings per share (1株当たり利益).
+    diluted_eps : float | None
+        Diluted earnings per share (希薄化後EPS).
+    bps : float | None
+        Book value per share (1株当たり純資産).
+    dividend_per_share : float | None
+        Dividend per share (1株当たり配当).
+    adjusted_dividend_per_share : float | None
+        Split-adjusted dividend per share (調整後1株配当).
+    dividend_yield : float | None
+        Dividend yield (配当利回り) in percent.
+    per : float | None
+        Price-to-earnings ratio (株価収益率).
+    fcf : float | None
+        Free cash flow (フリーキャッシュフロー) in JPY.
+    net_income_per_employee : float | None
+        Net income per employee (従業員1人当たり純利益).
+    revenue_per_employee : float | None
+        Revenue per employee (従業員1人当たり売上高).
+    split_adjustment_factor : float | None
+        Stock split adjustment factor (株式分割調整係数).
 
     Examples
     --------
     >>> record = RatioRecord(
     ...     edinet_code="E00001",
-    ...     fiscal_year="2025",
-    ...     period_type="annual",
+    ...     fiscal_year=2025,
     ...     roe=3.89,
     ...     roa=1.40,
-    ...     operating_margin=10.0,
-    ...     net_margin=7.0,
-    ...     equity_ratio=36.0,
-    ...     debt_equity_ratio=0.56,
-    ...     current_ratio=1.50,
-    ...     interest_coverage_ratio=5.0,
-    ...     payout_ratio=28.57,
-    ...     asset_turnover=0.20,
-    ...     revenue_growth=5.0,
-    ...     operating_income_growth=8.0,
-    ...     net_income_growth=6.0,
     ... )
     >>> record.roe
     3.89
     """
 
+    # --- Required key fields ---
     edinet_code: str
-    fiscal_year: str
-    period_type: str
-    roe: float
-    roa: float
-    operating_margin: float
-    net_margin: float
-    equity_ratio: float
-    debt_equity_ratio: float
-    current_ratio: float
-    interest_coverage_ratio: float
-    payout_ratio: float
-    asset_turnover: float
-    revenue_growth: float
-    operating_income_growth: float
-    net_income_growth: float
+    fiscal_year: int
+
+    # --- API-verified ratio fields (all Optional) ---
+    # Profitability ratios
+    roe: float | None = None
+    roa: float | None = None
+    roe_official: float | None = None
+    net_margin: float | None = None
+
+    # Balance sheet ratios
+    equity_ratio: float | None = None
+    equity_ratio_official: float | None = None
+
+    # Dividend ratios
+    payout_ratio: float | None = None
+    dividend_per_share: float | None = None
+    adjusted_dividend_per_share: float | None = None
+    dividend_yield: float | None = None
+
+    # Efficiency ratios
+    asset_turnover: float | None = None
+
+    # Per-share metrics
+    eps: float | None = None
+    diluted_eps: float | None = None
+    bps: float | None = None
+
+    # Valuation ratios
+    per: float | None = None
+
+    # Cash flow
+    fcf: float | None = None
+
+    # Per-employee metrics
+    net_income_per_employee: float | None = None
+    revenue_per_employee: float | None = None
+
+    # Adjustment factors
+    split_adjustment_factor: float | None = None
 
 
 @dataclass(frozen=True)

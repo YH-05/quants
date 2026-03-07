@@ -1,6 +1,7 @@
 """Tests for the EDINET DB API HTTP client (EdinetClient).
 
-Tests cover all 10 API methods, retry logic with exponential backoff,
+Tests cover all 10+ API methods, _parse_record generic helper,
+_unwrap_response wrapper handling, retry logic with exponential backoff,
 polite delay, rate limiter integration, error handling (4xx/5xx),
 and context manager support. All HTTP calls are mocked via httpx.Client.
 
@@ -135,6 +136,156 @@ class TestContextManager:
 
 
 # =============================================================================
+# _parse_record
+# =============================================================================
+
+
+class TestParseRecord:
+    """Test the _parse_record[T] generic helper method."""
+
+    def test_正常系_既知フィールドのみ抽出される(self, config: EdinetConfig) -> None:
+        """Known fields are extracted, unknown fields are ignored."""
+        data = {
+            "edinet_code": "E00001",
+            "sec_code": "10000",
+            "corp_name": "テスト株式会社",
+            "industry_code": "3050",
+            "industry_name": "情報・通信業",
+            "listing_status": "上場",
+            "unknown_field_1": "should be ignored",
+            "unknown_field_2": 12345,
+        }
+        with EdinetClient(config=config) as client:
+            result = client._parse_record(Company, data)
+            assert isinstance(result, Company)
+            assert result.edinet_code == "E00001"
+            assert result.corp_name == "テスト株式会社"
+
+    def test_正常系_未知フィールドが無視される(self, config: EdinetConfig) -> None:
+        """Unknown fields do not cause errors."""
+        data = {
+            "edinet_code": "E00001",
+            "fiscal_year": 2025,
+            "revenue": 1_000_000.0,
+            "completely_new_api_field": "this should not break",
+            "another_unknown": 999,
+        }
+        with EdinetClient(config=config) as client:
+            result = client._parse_record(FinancialRecord, data)
+            assert isinstance(result, FinancialRecord)
+            assert result.edinet_code == "E00001"
+            assert result.fiscal_year == 2025
+            assert result.revenue == 1_000_000.0
+
+    def test_正常系_Optionalフィールドが欠落してもデフォルトNone(
+        self, config: EdinetConfig
+    ) -> None:
+        """Optional fields default to None when not present in data."""
+        data = {
+            "edinet_code": "E00001",
+            "fiscal_year": 2025,
+        }
+        with EdinetClient(config=config) as client:
+            result = client._parse_record(FinancialRecord, data)
+            assert result.revenue is None
+            assert result.net_income is None
+
+    def test_正常系_RatioRecordで未知フィールドが無視される(
+        self, config: EdinetConfig
+    ) -> None:
+        """RatioRecord also ignores unknown fields."""
+        data = {
+            "edinet_code": "E00001",
+            "fiscal_year": 2025,
+            "roe": 10.5,
+            "new_ratio_field": 42.0,
+        }
+        with EdinetClient(config=config) as client:
+            result = client._parse_record(RatioRecord, data)
+            assert isinstance(result, RatioRecord)
+            assert result.roe == 10.5
+
+
+# =============================================================================
+# _unwrap_response
+# =============================================================================
+
+
+class TestUnwrapResponse:
+    """Test the _unwrap_response helper method."""
+
+    def test_正常系_dataキーでアンラップされる(self, config: EdinetConfig) -> None:
+        """Response with 'data' key is unwrapped correctly."""
+        response_body = {"data": [{"edinet_code": "E00001"}], "meta": {"total": 1}}
+        with EdinetClient(config=config) as client:
+            result = client._unwrap_response(response_body)
+            assert result == [{"edinet_code": "E00001"}]
+
+    def test_正常系_dataキーがない場合はそのまま返す(
+        self, config: EdinetConfig
+    ) -> None:
+        """Response without 'data' key is returned as-is."""
+        response_body = {"edinet_code": "E00001", "name": "Test"}
+        with EdinetClient(config=config) as client:
+            result = client._unwrap_response(response_body)
+            assert result == response_body
+
+    def test_正常系_リスト直接の場合はそのまま返す(self, config: EdinetConfig) -> None:
+        """Response that is a plain list is returned as-is."""
+        response_body = [{"edinet_code": "E00001"}]
+        with EdinetClient(config=config) as client:
+            result = client._unwrap_response(response_body)
+            assert result == [{"edinet_code": "E00001"}]
+
+
+# =============================================================================
+# get_status()
+# =============================================================================
+
+
+class TestGetStatus:
+    """Test the get_status() method."""
+
+    def test_正常系_ステータス情報が返される(self, config: EdinetConfig) -> None:
+        response_data = {
+            "data": {
+                "available_industries": ["情報・通信業", "輸送用機器"],
+                "total_companies": 3848,
+            }
+        }
+        with (
+            EdinetClient(config=config) as client,
+            patch.object(
+                client._client,
+                "get",
+                return_value=_make_response(json_data=response_data),
+            ),
+        ):
+            result = client.get_status()
+            assert isinstance(result, dict)
+            assert "available_industries" in result
+            assert result["total_companies"] == 3848
+
+    def test_正常系_認証ヘッダーなしでもアクセス可能(
+        self, config: EdinetConfig
+    ) -> None:
+        """get_status uses /v1/status which requires no auth."""
+        response_data = {"data": {"status": "ok"}}
+        with (
+            EdinetClient(config=config) as client,
+            patch.object(
+                client._client,
+                "get",
+                return_value=_make_response(json_data=response_data),
+            ) as mock_get,
+        ):
+            client.get_status()
+            mock_get.assert_called_once()
+            call_args = mock_get.call_args
+            assert call_args[0][0] == "/v1/status"
+
+
+# =============================================================================
 # Authentication
 # =============================================================================
 
@@ -159,7 +310,9 @@ class TestAuthentication:
             patch.object(
                 client._client,
                 "get",
-                return_value=_make_response(json_data={"results": [], "total": 0}),
+                return_value=_make_response(
+                    json_data={"data": [], "meta": {"total": 0}}
+                ),
             ) as mock_get,
         ):
             client.search("テスト")
@@ -180,8 +333,8 @@ class TestSearch:
 
     def test_正常系_検索結果が返される(self, config: EdinetConfig) -> None:
         response_data = {
-            "results": [{"edinet_code": "E00001", "corp_name": "テスト株式会社"}],
-            "total": 1,
+            "data": [{"edinet_code": "E00001", "corp_name": "テスト株式会社"}],
+            "meta": {"query": "テスト", "total": 1},
         }
         with (
             EdinetClient(config=config) as client,
@@ -196,7 +349,10 @@ class TestSearch:
             assert result[0]["edinet_code"] == "E00001"
 
     def test_正常系_空の検索結果(self, config: EdinetConfig) -> None:
-        response_data: dict[str, Any] = {"results": [], "total": 0}
+        response_data: dict[str, Any] = {
+            "data": [],
+            "meta": {"query": "存在しない企業", "total": 0},
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -218,16 +374,19 @@ class TestListCompanies:
     """Test the list_companies() method."""
 
     def test_正常系_企業一覧が返される(self, config: EdinetConfig) -> None:
-        response_data = [
-            {
-                "edinet_code": "E00001",
-                "sec_code": "10000",
-                "corp_name": "テスト株式会社",
-                "industry_code": "3050",
-                "industry_name": "情報・通信業",
-                "listing_status": "上場",
-            }
-        ]
+        response_data = {
+            "data": [
+                {
+                    "edinet_code": "E00001",
+                    "sec_code": "10000",
+                    "corp_name": "テスト株式会社",
+                    "industry_code": "3050",
+                    "industry_name": "情報・通信業",
+                    "listing_status": "上場",
+                }
+            ],
+            "meta": {"pagination": {"total": 1}},
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -253,12 +412,14 @@ class TestGetCompany:
 
     def test_正常系_企業情報が返される(self, config: EdinetConfig) -> None:
         response_data = {
-            "edinet_code": "E00001",
-            "sec_code": "10000",
-            "corp_name": "テスト株式会社",
-            "industry_code": "3050",
-            "industry_name": "情報・通信業",
-            "listing_status": "上場",
+            "data": {
+                "edinet_code": "E00001",
+                "sec_code": "10000",
+                "corp_name": "テスト株式会社",
+                "industry_code": "3050",
+                "industry_name": "情報・通信業",
+                "listing_status": "上場",
+            }
         }
         with (
             EdinetClient(config=config) as client,
@@ -282,34 +443,32 @@ class TestGetFinancials:
     """Test the get_financials(code) method."""
 
     def test_正常系_財務データが返される(self, config: EdinetConfig) -> None:
-        response_data = [
-            {
-                "edinet_code": "E00001",
-                "fiscal_year": "2025",
-                "period_type": "annual",
-                "revenue": 1_000_000_000,
-                "operating_income": 100_000_000,
-                "ordinary_income": 110_000_000,
-                "net_income": 70_000_000,
-                "total_assets": 5_000_000_000,
-                "net_assets": 2_000_000_000,
-                "equity": 1_800_000_000,
-                "interest_bearing_debt": 1_000_000_000,
-                "operating_cf": 150_000_000,
-                "investing_cf": -80_000_000,
-                "financing_cf": -50_000_000,
-                "free_cf": 70_000_000,
-                "eps": 350.0,
-                "bps": 9_000.0,
-                "dividend_per_share": 100.0,
-                "shares_outstanding": 200_000,
-                "employees": 5_000,
-                "capex": 80_000_000,
-                "depreciation": 60_000_000,
-                "rnd_expense": 30_000_000,
-                "goodwill": 10_000_000,
-            }
-        ]
+        response_data = {
+            "data": [
+                {
+                    "edinet_code": "E00001",
+                    "fiscal_year": 2025,
+                    "revenue": 1_000_000_000.0,
+                    "operating_income": 100_000_000.0,
+                    "ordinary_income": 110_000_000.0,
+                    "net_income": 70_000_000.0,
+                    "total_assets": 5_000_000_000.0,
+                    "net_assets": 2_000_000_000.0,
+                    "shareholders_equity": 1_800_000_000.0,
+                    "cf_operating": 150_000_000.0,
+                    "cf_investing": -80_000_000.0,
+                    "cf_financing": -50_000_000.0,
+                    "eps": 350.0,
+                    "bps": 9_000.0,
+                    "dividend_per_share": 100.0,
+                    "num_employees": 5_000,
+                    "capex": 80_000_000.0,
+                    "depreciation": 60_000_000.0,
+                    "rnd_expenses": 30_000_000.0,
+                    "goodwill": 10_000_000.0,
+                }
+            ]
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -321,7 +480,34 @@ class TestGetFinancials:
             records = client.get_financials("E00001")
             assert len(records) == 1
             assert isinstance(records[0], FinancialRecord)
-            assert records[0].revenue == 1_000_000_000
+            assert records[0].revenue == 1_000_000_000.0
+
+    def test_正常系_未知フィールドが含まれても正常に処理される(
+        self, config: EdinetConfig
+    ) -> None:
+        """API response with unknown fields should not break parsing."""
+        response_data = {
+            "data": [
+                {
+                    "edinet_code": "E00001",
+                    "fiscal_year": 2025,
+                    "revenue": 500_000.0,
+                    "future_api_field": "should_be_ignored",
+                    "another_new_field": 42,
+                }
+            ]
+        }
+        with (
+            EdinetClient(config=config) as client,
+            patch.object(
+                client._client,
+                "get",
+                return_value=_make_response(json_data=response_data),
+            ),
+        ):
+            records = client.get_financials("E00001")
+            assert len(records) == 1
+            assert records[0].revenue == 500_000.0
 
 
 # =============================================================================
@@ -333,26 +519,24 @@ class TestGetRatios:
     """Test the get_ratios(code) method."""
 
     def test_正常系_財務比率データが返される(self, config: EdinetConfig) -> None:
-        response_data = [
-            {
-                "edinet_code": "E00001",
-                "fiscal_year": "2025",
-                "period_type": "annual",
-                "roe": 3.89,
-                "roa": 1.40,
-                "operating_margin": 10.0,
-                "net_margin": 7.0,
-                "equity_ratio": 36.0,
-                "debt_equity_ratio": 0.56,
-                "current_ratio": 1.50,
-                "interest_coverage_ratio": 5.0,
-                "payout_ratio": 28.57,
-                "asset_turnover": 0.20,
-                "revenue_growth": 5.0,
-                "operating_income_growth": 8.0,
-                "net_income_growth": 6.0,
-            }
-        ]
+        response_data = {
+            "data": [
+                {
+                    "edinet_code": "E00001",
+                    "fiscal_year": 2025,
+                    "roe": 3.89,
+                    "roa": 1.40,
+                    "net_margin": 7.0,
+                    "equity_ratio": 36.0,
+                    "payout_ratio": 28.57,
+                    "asset_turnover": 0.20,
+                    "eps": 350.0,
+                    "bps": 9_000.0,
+                    "dividend_per_share": 100.0,
+                    "per": 15.0,
+                }
+            ]
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -366,6 +550,32 @@ class TestGetRatios:
             assert isinstance(records[0], RatioRecord)
             assert records[0].roe == 3.89
 
+    def test_正常系_未知フィールドが含まれても正常に処理される(
+        self, config: EdinetConfig
+    ) -> None:
+        """RatioRecord parsing ignores unknown API fields."""
+        response_data = {
+            "data": [
+                {
+                    "edinet_code": "E00001",
+                    "fiscal_year": 2025,
+                    "roe": 5.0,
+                    "new_growth_metric": 12.3,
+                }
+            ]
+        }
+        with (
+            EdinetClient(config=config) as client,
+            patch.object(
+                client._client,
+                "get",
+                return_value=_make_response(json_data=response_data),
+            ),
+        ):
+            records = client.get_ratios("E00001")
+            assert len(records) == 1
+            assert records[0].roe == 5.0
+
 
 # =============================================================================
 # get_analysis()
@@ -377,10 +587,12 @@ class TestGetAnalysis:
 
     def test_正常系_分析結果が返される(self, config: EdinetConfig) -> None:
         response_data = {
-            "edinet_code": "E00001",
-            "health_score": 75.0,
-            "benchmark_comparison": "above_average",
-            "commentary": "健全な財務状況です。",
+            "data": {
+                "edinet_code": "E00001",
+                "health_score": 75.0,
+                "benchmark_comparison": "above_average",
+                "commentary": "健全な財務状況です。",
+            }
         }
         with (
             EdinetClient(config=config) as client,
@@ -404,15 +616,17 @@ class TestGetTextBlocks:
     """Test the get_text_blocks(code) method."""
 
     def test_正常系_テキストブロックが返される(self, config: EdinetConfig) -> None:
-        response_data = [
-            {
-                "edinet_code": "E00001",
-                "fiscal_year": "2025",
-                "business_overview": "事業概要テキスト",
-                "risk_factors": "リスクファクターテキスト",
-                "management_analysis": "経営分析テキスト",
-            }
-        ]
+        response_data = {
+            "data": [
+                {
+                    "edinet_code": "E00001",
+                    "fiscal_year": "2025",
+                    "business_overview": "事業概要テキスト",
+                    "risk_factors": "リスクファクターテキスト",
+                    "management_analysis": "経営分析テキスト",
+                }
+            ]
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -436,15 +650,17 @@ class TestGetRanking:
     """Test the get_ranking(metric) method."""
 
     def test_正常系_ランキングが返される(self, config: EdinetConfig) -> None:
-        response_data = [
-            {
-                "metric": "roe",
-                "rank": 1,
-                "edinet_code": "E00001",
-                "corp_name": "テスト株式会社",
-                "value": 25.5,
-            }
-        ]
+        response_data = {
+            "data": [
+                {
+                    "metric": "roe",
+                    "rank": 1,
+                    "edinet_code": "E00001",
+                    "corp_name": "テスト株式会社",
+                    "value": 25.5,
+                }
+            ]
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -477,13 +693,15 @@ class TestListIndustries:
     """Test the list_industries() method."""
 
     def test_正常系_業種一覧が返される(self, config: EdinetConfig) -> None:
-        response_data = [
-            {
-                "slug": "information-communication",
-                "name": "情報・通信業",
-                "company_count": 500,
-            }
-        ]
+        response_data = {
+            "data": [
+                {
+                    "slug": "information-communication",
+                    "name": "情報・通信業",
+                    "company_count": 500,
+                }
+            ]
+        }
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -508,11 +726,13 @@ class TestGetIndustry:
 
     def test_正常系_業種詳細が返される(self, config: EdinetConfig) -> None:
         response_data = {
-            "slug": "information-communication",
-            "name": "情報・通信業",
-            "company_count": 500,
-            "companies": [{"edinet_code": "E00001"}],
-            "averages": {"roe": 10.0},
+            "data": {
+                "slug": "information-communication",
+                "name": "情報・通信業",
+                "company_count": 500,
+                "companies": [{"edinet_code": "E00001"}],
+                "averages": {"roe": 10.0},
+            }
         }
         with (
             EdinetClient(config=config) as client,
@@ -542,7 +762,7 @@ class TestRetry:
     ) -> None:
         responses = [
             _make_response(status_code=500, json_data={"error": "ISE"}),
-            _make_response(json_data={"results": [], "total": 0}),
+            _make_response(json_data={"data": [], "meta": {"total": 0}}),
         ]
         with (
             EdinetClient(config=config, retry_config=retry_config) as client,
@@ -575,7 +795,7 @@ class TestRetry:
     ) -> None:
         effects: list[Any] = [
             httpx.ConnectError("Connection refused"),
-            _make_response(json_data={"results": [], "total": 0}),
+            _make_response(json_data={"data": [], "meta": {"total": 0}}),
         ]
         with (
             EdinetClient(config=config, retry_config=retry_config) as client,
@@ -591,7 +811,7 @@ class TestRetry:
     ) -> None:
         effects: list[Any] = [
             httpx.ReadTimeout("Read timed out"),
-            _make_response(json_data={"results": [], "total": 0}),
+            _make_response(json_data={"data": [], "meta": {"total": 0}}),
         ]
         with (
             EdinetClient(config=config, retry_config=retry_config) as client,
@@ -715,7 +935,9 @@ class TestRateLimiterIntegration:
             patch.object(
                 client._client,
                 "get",
-                return_value=_make_response(json_data={"results": [], "total": 0}),
+                return_value=_make_response(
+                    json_data={"data": [], "meta": {"total": 0}}
+                ),
             ),
         ):
             client.search("test")
@@ -750,7 +972,9 @@ class TestRateLimiterIntegration:
             patch.object(
                 client._client,
                 "get",
-                return_value=_make_response(json_data={"results": [], "total": 0}),
+                return_value=_make_response(
+                    json_data={"data": [], "meta": {"total": 0}}
+                ),
             ),
         ):
             result = client.search("test")
