@@ -36,6 +36,10 @@ Test TODO List:
 - [x] get() 後方互換性: リファクタリング後も既存テストが全てパス
 - [x] get_with_retry() 後方互換性: リファクタリング後も既存テストが全てパス
 - [x] _request_with_retry(): GET/POST 共通リトライロジック
+- [x] _request(): 404 レスポンスで ETFComNotFoundError
+- [x] _request_with_retry(): 404 はリトライせず即座に伝播
+- [x] get_with_retry(): 404 はリトライせず即座に伝播
+- [x] post_with_retry(): 404 はリトライせず即座に伝播
 """
 
 from unittest.mock import MagicMock, patch
@@ -48,7 +52,7 @@ from market.etfcom.constants import (
     DEFAULT_HEADERS,
     ETFCOM_BASE_URL,
 )
-from market.etfcom.errors import ETFComBlockedError
+from market.etfcom.errors import ETFComBlockedError, ETFComNotFoundError
 from market.etfcom.session import ETFComSession
 from market.etfcom.types import RetryConfig, ScrapingConfig
 
@@ -663,6 +667,30 @@ class TestRequest:
 
                 assert exc_info.value.status_code == 429
 
+    def test_異常系_404レスポンスでETFComNotFoundError(self) -> None:
+        """_request() で 404 レスポンスが ETFComNotFoundError を発生させること。"""
+        with patch("market.etfcom.session.curl_requests") as mock_curl:
+            mock_session = MagicMock()
+            mock_response = MagicMock()
+            mock_response.status_code = 404
+            mock_session.request.return_value = mock_response
+            mock_curl.Session.return_value = mock_session
+
+            with patch("market.etfcom.session.time.sleep"):
+                session = ETFComSession()
+
+                with pytest.raises(ETFComNotFoundError) as exc_info:
+                    session._request("GET", "https://www.etf.com/INVALID")
+
+                assert exc_info.value.status_code == 404
+                assert exc_info.value.url == "https://www.etf.com/INVALID"
+
+    def test_異常系_404はBLOCKED_STATUS_CODESに含まれない(self) -> None:
+        """404 が _BLOCKED_STATUS_CODES に含まれていないこと。"""
+        from market.etfcom.session import _BLOCKED_STATUS_CODES
+
+        assert 404 not in _BLOCKED_STATUS_CODES
+
     def test_正常系_メソッド名がcurl_cffiのrequestに渡される(self) -> None:
         """_request() が method 引数を curl_cffi session.request() に渡すこと。"""
         with patch("market.etfcom.session.curl_requests") as mock_curl:
@@ -970,6 +998,34 @@ class TestRequestWithRetry:
             retry_delays = [d for d in sleep_calls if d >= 1.0]
             assert len(retry_delays) >= 2
 
+    def test_異常系_404はリトライせず即座に伝播する(self) -> None:
+        """_request_with_retry() が ETFComNotFoundError をリトライせず即座に伝播すること。"""
+        with patch("market.etfcom.session.curl_requests") as mock_curl:
+            mock_session = MagicMock()
+            mock_response_not_found = MagicMock()
+            mock_response_not_found.status_code = 404
+            mock_session.request.return_value = mock_response_not_found
+            mock_curl.Session.return_value = mock_session
+
+            retry_config = RetryConfig(max_attempts=3, initial_delay=0.01)
+
+            with patch("market.etfcom.session.time.sleep"):
+                session = ETFComSession(retry_config=retry_config)
+
+                with patch.object(session, "rotate_session") as mock_rotate:
+                    with pytest.raises(ETFComNotFoundError) as exc_info:
+                        session._request_with_retry(
+                            "GET", "https://www.etf.com/INVALID"
+                        )
+
+                    assert exc_info.value.status_code == 404
+                    assert exc_info.value.url == "https://www.etf.com/INVALID"
+                    # rotate_session は呼ばれないこと（リトライしないため）
+                    mock_rotate.assert_not_called()
+
+            # request() は1回だけ呼ばれること（リトライなし）
+            assert mock_session.request.call_count == 1
+
 
 # =============================================================================
 # get() backward compatibility tests
@@ -1045,3 +1101,58 @@ class TestGetBackwardCompatibility:
                 response = session.get_with_retry("https://www.etf.com/SPY")
 
             assert response.status_code == 200
+
+
+# =============================================================================
+# get_with_retry() / post_with_retry() 404 propagation tests
+# =============================================================================
+
+
+class TestHTTPMethodRetry404Propagation:
+    """get_with_retry() / post_with_retry() 経由で 404 が即座に伝播すること。"""
+
+    def test_異常系_get_with_retryで404が即座に伝播する(self) -> None:
+        """get_with_retry() が ETFComNotFoundError をリトライせず即座に伝播すること。"""
+        with patch("market.etfcom.session.curl_requests") as mock_curl:
+            mock_session = MagicMock()
+            mock_response_not_found = MagicMock()
+            mock_response_not_found.status_code = 404
+            mock_session.request.return_value = mock_response_not_found
+            mock_curl.Session.return_value = mock_session
+
+            retry_config = RetryConfig(max_attempts=3, initial_delay=0.01)
+
+            with patch("market.etfcom.session.time.sleep"):
+                session = ETFComSession(retry_config=retry_config)
+
+                with pytest.raises(ETFComNotFoundError) as exc_info:
+                    session.get_with_retry("https://www.etf.com/INVALID")
+
+                assert exc_info.value.status_code == 404
+                assert exc_info.value.url == "https://www.etf.com/INVALID"
+
+            # request() は1回だけ呼ばれること（リトライなし）
+            assert mock_session.request.call_count == 1
+
+    def test_異常系_post_with_retryで404が即座に伝播する(self) -> None:
+        """post_with_retry() が ETFComNotFoundError をリトライせず即座に伝播すること。"""
+        with patch("market.etfcom.session.curl_requests") as mock_curl:
+            mock_session = MagicMock()
+            mock_response_not_found = MagicMock()
+            mock_response_not_found.status_code = 404
+            mock_session.request.return_value = mock_response_not_found
+            mock_curl.Session.return_value = mock_session
+
+            retry_config = RetryConfig(max_attempts=3, initial_delay=0.01)
+
+            with patch("market.etfcom.session.time.sleep"):
+                session = ETFComSession(retry_config=retry_config)
+
+                with pytest.raises(ETFComNotFoundError) as exc_info:
+                    session.post_with_retry("https://api-prod.etf.com/invalid")
+
+                assert exc_info.value.status_code == 404
+                assert exc_info.value.url == "https://api-prod.etf.com/invalid"
+
+            # request() は1回だけ呼ばれること（リトライなし）
+            assert mock_session.request.call_count == 1

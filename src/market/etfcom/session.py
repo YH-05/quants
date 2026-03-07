@@ -43,7 +43,8 @@ market.yfinance.session : Similar session pattern for yfinance module.
 market.yfinance.fetcher : Session rotation reference implementation.
 market.etfcom.constants : Default values, impersonation targets, and API headers.
 market.etfcom.types : ScrapingConfig and RetryConfig dataclasses.
-market.etfcom.errors : ETFComBlockedError for bot-block detection.
+market.etfcom.errors : ETFComBlockedError for bot-block detection,
+    ETFComNotFoundError for HTTP 404 detection.
 """
 
 import random
@@ -60,7 +61,7 @@ from market.etfcom.constants import (
     DEFAULT_USER_AGENTS,
     ETFCOM_BASE_URL,
 )
-from market.etfcom.errors import ETFComBlockedError
+from market.etfcom.errors import ETFComBlockedError, ETFComNotFoundError
 from market.etfcom.types import RetryConfig, ScrapingConfig
 from utils_core.logging import get_logger
 
@@ -75,8 +76,10 @@ class ETFComSession:
 
     Provides TLS fingerprint impersonation via curl_cffi's ``impersonate``
     parameter, random User-Agent rotation, polite delays between requests,
-    bot-block detection (HTTP 403/429), and exponential backoff retry logic
-    with session rotation on failure.
+    bot-block detection (HTTP 403/429), HTTP 404 not-found detection, and
+    exponential backoff retry logic with session rotation on failure.
+    HTTP 404 responses raise ``ETFComNotFoundError`` immediately without
+    retry, since retrying a non-existent resource is meaningless.
 
     Parameters
     ----------
@@ -158,7 +161,9 @@ class ETFComSession:
         4. Default browser-like headers from ``DEFAULT_HEADERS``
 
         After receiving a response, checks for bot-blocking status codes
-        (403, 429) and raises ``ETFComBlockedError`` if detected.
+        (403, 429) and raises ``ETFComBlockedError`` if detected. Also
+        checks for HTTP 404 and raises ``ETFComNotFoundError`` immediately
+        (without retry, since the resource does not exist).
 
         Parameters
         ----------
@@ -179,6 +184,8 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If the response status code is 403 or 429.
+        ETFComNotFoundError
+            If the response status code is 404.
         """
         # 1. Apply polite delay
         delay = self._config.polite_delay + random.uniform(  # nosec B311
@@ -229,6 +236,19 @@ class ETFComSession:
                 status_code=response.status_code,
             )
 
+        # 5. Check for 404 Not Found (independent of bot-blocking)
+        if response.status_code == 404:
+            logger.warning(
+                "Resource not found",
+                method=method,
+                url=url,
+                status_code=response.status_code,
+            )
+            raise ETFComNotFoundError(
+                "Resource not found: HTTP 404",
+                url=url,
+            )
+
         logger.debug(
             "Request completed",
             method=method,
@@ -260,6 +280,8 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If the response status code is 403 or 429.
+        ETFComNotFoundError
+            If the response status code is 404.
 
         Examples
         --------
@@ -299,6 +321,8 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If the response status code is 403 or 429.
+        ETFComNotFoundError
+            If the response status code is 404.
 
         Examples
         --------
@@ -345,6 +369,9 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If all retry attempts fail due to bot-blocking.
+        ETFComNotFoundError
+            If the response status code is 404 (propagated immediately,
+            no retry).
         """
         last_error: ETFComBlockedError | None = None
 
@@ -407,7 +434,8 @@ class ETFComSession:
             url=url,
             max_attempts=self._retry_config.max_attempts,
         )
-        assert last_error is not None
+        if last_error is None:
+            raise RuntimeError("Retry loop exited without capturing an error")
         raise last_error
 
     def get_with_retry(self, url: str, **kwargs: Any) -> curl_requests.Response:
@@ -432,6 +460,9 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If all retry attempts fail due to bot-blocking.
+        ETFComNotFoundError
+            If the response status code is 404 (propagated immediately,
+            no retry).
 
         Examples
         --------
@@ -466,6 +497,9 @@ class ETFComSession:
         ------
         ETFComBlockedError
             If all retry attempts fail due to bot-blocking.
+        ETFComNotFoundError
+            If the response status code is 404 (propagated immediately,
+            no retry).
 
         Examples
         --------

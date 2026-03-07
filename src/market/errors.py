@@ -28,7 +28,9 @@ MarketError (base)
     ETFComError (ETF.com scraping operations)
         ETFComScrapingError (HTML parse failure)
         ETFComTimeoutError (page load / navigation timeout)
-        ETFComBlockedError (bot-blocking detection)
+        ETFComHTTPError (HTTP status code errors)
+            ETFComBlockedError (bot-blocking detection)
+            ETFComNotFoundError (HTTP 404 not found)
     NasdaqError (NASDAQ API operations)
         NasdaqAPIError (API response error - 4xx, 5xx)
         NasdaqRateLimitError (rate limit exceeded)
@@ -70,6 +72,8 @@ from market.edinet.errors import (
 from market.etfcom.errors import (
     ETFComBlockedError,
     ETFComError,
+    ETFComHTTPError,
+    ETFComNotFoundError,
     ETFComScrapingError,
     ETFComTimeoutError,
 )
@@ -878,7 +882,8 @@ class BloombergValidationError(BloombergError):
 # =============================================================================
 # ETFCom Errors (re-exported from market.etfcom.errors)
 # =============================================================================
-# ETFComBlockedError, ETFComError, ETFComScrapingError, ETFComTimeoutError
+# ETFComBlockedError, ETFComError, ETFComHTTPError, ETFComNotFoundError,
+# ETFComScrapingError, ETFComTimeoutError
 # are imported at the top of this file and included in __all__.
 
 __all__ = [
@@ -897,6 +902,8 @@ __all__ = [
     "DataFetchError",
     "ETFComBlockedError",
     "ETFComError",
+    "ETFComHTTPError",
+    "ETFComNotFoundError",
     "ETFComScrapingError",
     "ETFComTimeoutError",
     "EdinetAPIError",

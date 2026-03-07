@@ -79,12 +79,43 @@ from market.etfcom.constants import (
     SUMMARY_DATA_ID,
     TICKERS_API_URL,
 )
-from market.etfcom.errors import ETFComAPIError, ETFComBlockedError
+from market.etfcom.errors import ETFComAPIError, ETFComBlockedError, ETFComNotFoundError
 from market.etfcom.session import ETFComSession
 from market.etfcom.types import RetryConfig, ScrapingConfig
 from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
+
+# Ticker symbol validation pattern (alphanumeric + hyphens, 1-10 chars)
+_TICKER_PATTERN = re.compile(r"^[A-Z0-9\-]{1,10}$")
+
+
+def _normalize_ticker(ticker: str) -> str:
+    """Normalize and validate a ticker symbol.
+
+    Parameters
+    ----------
+    ticker : str
+        Raw ticker symbol (case-insensitive).
+
+    Returns
+    -------
+    str
+        Upper-cased ticker symbol.
+
+    Raises
+    ------
+    ValueError
+        If the ticker contains invalid characters or exceeds 10 characters.
+    """
+    normalized = ticker.strip().upper()
+    if not _TICKER_PATTERN.match(normalized):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters and hyphens (1-10 chars) are allowed."
+        )
+    return normalized
+
 
 # Column name mapping from raw screener table headers to snake_case
 _COLUMN_MAP: dict[str, str] = {
@@ -625,31 +656,39 @@ class FundamentalsCollector(DataCollector):
 
         try:
             for ticker in tickers:
-                url = PROFILE_URL_TEMPLATE.format(ticker=ticker)
+                normalized_ticker = _normalize_ticker(ticker)
+                url = PROFILE_URL_TEMPLATE.format(ticker=normalized_ticker)
                 logger.debug(
                     "Fetching fundamentals",
-                    ticker=ticker,
+                    ticker=normalized_ticker,
                     url=url,
                 )
 
                 try:
                     html = self._get_html(url)
-                    record = self._parse_profile(html, ticker)
+                    record = self._parse_profile(html, normalized_ticker)
                     all_records.append(record)
 
                     logger.debug(
                         "Fundamentals fetched",
-                        ticker=ticker,
+                        ticker=normalized_ticker,
                         field_count=len(record),
                     )
+                except ETFComNotFoundError:
+                    logger.warning(
+                        "ETF not found (HTTP 404), adding minimal record",
+                        ticker=normalized_ticker,
+                        url=url,
+                    )
+                    all_records.append({"ticker": normalized_ticker})
                 except Exception as e:
                     logger.warning(
                         "Failed to fetch fundamentals",
-                        ticker=ticker,
+                        ticker=normalized_ticker,
                         error=str(e),
                     )
                     # Add a minimal record with just the ticker
-                    all_records.append({"ticker": ticker})
+                    all_records.append({"ticker": normalized_ticker})
         finally:
             if should_close_session:
                 session.close()
@@ -689,6 +728,8 @@ class FundamentalsCollector(DataCollector):
         ------
         ETFComBlockedError
             If both curl_cffi and Playwright fail.
+        ETFComNotFoundError
+            If the requested ETF ticker returns HTTP 404.
         ETFComTimeoutError
             If Playwright fails with a timeout.
         """
@@ -1017,6 +1058,8 @@ class FundFlowsCollector(DataCollector):
             logger.info("No ticker provided, returning empty DataFrame")
             return pd.DataFrame()
 
+        ticker = _normalize_ticker(ticker)
+
         url = FUND_FLOWS_URL_TEMPLATE.format(ticker=ticker)
         logger.info(
             "Starting fund flows collection",
@@ -1077,6 +1120,15 @@ class FundFlowsCollector(DataCollector):
         -------
         str
             The HTML content of the page.
+
+        Raises
+        ------
+        ETFComBlockedError
+            If both curl_cffi and Playwright fail.
+        ETFComNotFoundError
+            If the requested ETF ticker returns HTTP 404.
+        ETFComTimeoutError
+            If Playwright fails with a timeout.
         """
         session = self._session_instance
         if session is None:
@@ -1593,6 +1645,8 @@ class HistoricalFundFlowsCollector(DataCollector):
         if not ticker:
             logger.info("No ticker provided, returning empty DataFrame")
             return pd.DataFrame()
+
+        ticker = _normalize_ticker(ticker)
 
         logger.info(
             "Starting historical fund flow collection",
