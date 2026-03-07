@@ -161,6 +161,17 @@
                     }
                 ]
             }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "Write|Edit",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "python3 .claude/skills/sync-claude-config/sync.py --auto 2>/dev/null"
+                    }
+                ]
+            }
         ]
     }
 }

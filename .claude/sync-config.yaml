@@ -1,0 +1,58 @@
+# Claude Config Sync Configuration
+# .claude/ 配下の設定ファイルを他プロジェクトに同期する
+#
+# 形式:
+#   include: "*" = カテゴリ内の全アイテムを同期
+#   include: リスト = 指定アイテムのみ同期
+#   exclude: glob パターンで除外（"*" 使用時のみ有効）
+
+# ── 同期先プロジェクト ────────────────────────────────────────
+targets:
+  - name: Quants
+    github_url: https://github.com/YH-05/Quants
+    local_path: /Users/yukihata/Desktop/Quants
+
+# ── 同期対象 ──────────────────────────────────────────────────
+sync:
+
+  # Skills
+  skills: "*"
+  skills_exclude:
+    - ai-research-workflow
+    - ca-eval
+    - deep-research
+    - dr-*
+    - finance-news-workflow
+    - generate-market-report
+    - quant-computing
+    - rss-feed-parse
+    - weekly-*
+
+  # Agents
+  agents: "*"
+  agents_exclude:
+    - ai-research-*
+    - ca-*
+    - competitive-advantage-*
+    - deep-research
+    - finance-*
+    - finance_*
+    - market-*
+    - news-*
+    - research-*
+    - weekly-*
+    - wr-*
+
+  # Commands
+  commands: "*"
+  commands_exclude:
+    - ai-research-collect
+    - ca-eval
+    - dr-*
+    - finance-*
+    - generate-market-report
+    - new-finance-article
+    - run-ca-strategy-*
+
+  # Rules
+  rules: "*"
