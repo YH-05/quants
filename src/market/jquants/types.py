@@ -202,8 +202,8 @@ class TokenInfo:
     False
     """
 
-    refresh_token: str = ""
-    id_token: str = ""
+    refresh_token: str = field(default="", repr=False)
+    id_token: str = field(default="", repr=False)
     refresh_token_expires_at: datetime = field(
         default_factory=lambda: datetime.min.replace(tzinfo=UTC)
     )

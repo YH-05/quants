@@ -298,7 +298,7 @@ class TestValidateDate:
 
     def test_異常系_数値以外の値(self) -> None:
         """数値以外の値で EdinetApiValidationError が発生すること。"""
-        with pytest.raises(EdinetApiValidationError, match="numeric values"):
+        with pytest.raises(EdinetApiValidationError, match="Invalid date format"):
             EdinetApiClient._validate_date("abcd-ef-gh")
 
     def test_異常系_年が範囲外(self) -> None:

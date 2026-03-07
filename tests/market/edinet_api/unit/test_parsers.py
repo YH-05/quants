@@ -159,6 +159,21 @@ class TestParseXbrlZip:
 
         assert len(result) == 2
 
+    def test_正常系_ZipSlip攻撃パスはスキップされる(self) -> None:
+        """Zip Slip 攻撃パス（CWE-22）を含むエントリがスキップされること。"""
+        zip_data = _create_zip(
+            {
+                "report.xbrl": b"safe-content",
+                "../evil.xbrl": b"malicious",
+                "../../etc/passwd.xml": b"malicious",
+            }
+        )
+
+        result = parse_xbrl_zip(zip_data)
+
+        assert "report.xbrl" in result
+        assert len(result) == 1
+
     def test_異常系_空のバイトでValueError(self) -> None:
         """空のバイトで ValueError が発生すること。"""
         with pytest.raises(ValueError, match="must not be empty"):
@@ -221,6 +236,20 @@ class TestExtractPdf:
         result = extract_pdf(zip_data)
 
         assert result == pdf_content
+
+    def test_正常系_ZipSlip攻撃パスのPDFはスキップされる(self) -> None:
+        """Zip Slip 攻撃パス（CWE-22）を含む PDF がスキップされること。"""
+        safe_pdf = b"%PDF-1.4 safe"
+        zip_data = _create_zip(
+            {
+                "../evil.pdf": b"%PDF-1.4 malicious",
+                "safe.pdf": safe_pdf,
+            }
+        )
+
+        result = extract_pdf(zip_data)
+
+        assert result == safe_pdf
 
     def test_異常系_PDFがないZIPでValueError(self) -> None:
         """PDF がない ZIP で ValueError が発生すること。"""

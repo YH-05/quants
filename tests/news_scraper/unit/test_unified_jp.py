@@ -256,9 +256,7 @@ class TestCollectTdnet:
         mock_tdnet.assert_called_once()
         call_args = mock_tdnet.call_args
         # codes 引数が渡されていることを確認
-        assert call_args.kwargs.get("codes") == codes or (
-            len(call_args.args) >= 2 and call_args.args[1] == codes
-        )
+        assert call_args.kwargs.get("codes") == codes
 
     def test_正常系_tdnet_codesがNoneの場合デフォルトコードが使用される(self) -> None:
         """tdnet_codes=None の場合、tdnet モジュールのデフォルトコードが使用される."""
@@ -276,11 +274,7 @@ class TestCollectTdnet:
         mock_tdnet.assert_called_once()
         call_args = mock_tdnet.call_args
         # codes が None で呼ばれる（tdnet モジュール内でデフォルトが適用される）
-        if "codes" in call_args.kwargs:
-            assert call_args.kwargs["codes"] is None
-        else:
-            # positional で渡される場合、2番目の引数が None
-            assert len(call_args.args) >= 2 and call_args.args[1] is None
+        assert call_args.kwargs.get("codes") is None
 
 
 # ---------------------------------------------------------------------------
