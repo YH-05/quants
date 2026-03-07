@@ -267,7 +267,8 @@ class JQuantsSession:
             url=url,
             max_attempts=self._retry_config.max_attempts,
         )
-        assert last_error is not None
+        if last_error is None:
+            raise RuntimeError("Unexpected: no error recorded after exhausting retries")
         raise last_error
 
     # =========================================================================
@@ -353,9 +354,11 @@ class JQuantsSession:
         logger.info("Authenticating with J-Quants API (email/password)")
 
         # Step 1: Get refresh_token
+        auth_url = f"{BASE_URL}/token/auth_user"
+        self._validate_url(auth_url)
         try:
             response = self._client.post(
-                f"{BASE_URL}/token/auth_user",
+                auth_url,
                 json={
                     "mailaddress": mail_address,
                     "password": password,
@@ -401,9 +404,11 @@ class JQuantsSession:
         """
         logger.debug("Refreshing id_token")
 
+        refresh_url = f"{BASE_URL}/token/auth_refresh"
+        self._validate_url(refresh_url)
         try:
             response = self._client.post(
-                f"{BASE_URL}/token/auth_refresh",
+                refresh_url,
                 params={"refreshtoken": self._token_info.refresh_token},
                 timeout=self._config.timeout,
             )
@@ -488,6 +493,7 @@ class JQuantsSession:
 
         try:
             token_path.parent.mkdir(parents=True, exist_ok=True)
+            token_path.parent.chmod(0o700)
             data = {
                 "refresh_token": self._token_info.refresh_token,
                 "id_token": self._token_info.id_token,

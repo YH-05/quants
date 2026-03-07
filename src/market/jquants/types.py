@@ -72,7 +72,7 @@ class JQuantsConfig:
     """
 
     mail_address: str = ""
-    password: str = ""
+    password: str = field(default="", repr=False)
     token_file_path: str = TOKEN_FILE_PATH
     timeout: float = DEFAULT_TIMEOUT
     polite_delay: float = DEFAULT_POLITE_DELAY

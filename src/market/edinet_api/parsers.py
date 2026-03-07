@@ -23,6 +23,7 @@ market.edinet_api.client : Downloads document archives from the EDINET API.
 """
 
 import io
+import posixpath
 import zipfile
 
 from utils_core.logging import get_logger
@@ -74,10 +75,16 @@ def parse_xbrl_zip(data: bytes) -> dict[str, bytes]:
             if info.is_dir():
                 continue
 
+            # Zip Slip prevention (CWE-22): sanitize filename
+            safe_name = posixpath.normpath(info.filename).lstrip("/")
+            if safe_name.startswith(".."):
+                logger.warning("Skipping suspicious path", filename=info.filename)
+                continue
+
             # Extract files with XBRL-related extensions
-            lower_name = info.filename.lower()
+            lower_name = safe_name.lower()
             if any(lower_name.endswith(ext) for ext in xbrl_extensions):
-                result[info.filename] = zf.read(info.filename)
+                result[safe_name] = zf.read(info.filename)
 
     logger.info(
         "XBRL ZIP parsing completed",
@@ -126,7 +133,13 @@ def extract_pdf(data: bytes) -> bytes:
             if info.is_dir():
                 continue
 
-            if info.filename.lower().endswith(".pdf"):
+            # Zip Slip prevention (CWE-22)
+            safe_name = posixpath.normpath(info.filename).lstrip("/")
+            if safe_name.startswith(".."):
+                logger.warning("Skipping suspicious path", filename=info.filename)
+                continue
+
+            if safe_name.lower().endswith(".pdf"):
                 content = zf.read(info.filename)
                 logger.info(
                     "PDF extracted",

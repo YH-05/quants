@@ -22,7 +22,7 @@ from .types import TDNET_BASE_URL, TDNET_DEFAULT_CODES, Article, ScraperConfig
 
 logger = get_logger(__name__)
 
-# 証券コードの正規表現パターン（4桁数字）
+# 証券コードの正規表現パターン（4-5桁数字）
 _CODE_PATTERN = re.compile(r"^\d{4,5}$")
 
 

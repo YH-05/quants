@@ -316,7 +316,8 @@ class EdinetApiSession:
             url=url,
             max_attempts=self._retry_config.max_attempts,
         )
-        assert last_error is not None
+        if last_error is None:
+            raise RuntimeError("Unexpected: no error recorded after exhausting retries")
         raise last_error
 
     def download(self, url: str, params: dict[str, str] | None = None) -> bytes:

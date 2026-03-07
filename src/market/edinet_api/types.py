@@ -21,7 +21,7 @@ market.edinet.types : EDINET DB API type definitions (separate module).
 market.bse.types : Similar type-definition pattern for the BSE module.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 
 from market.edinet_api.constants import (
@@ -104,7 +104,7 @@ class EdinetApiConfig:
     60.0
     """
 
-    api_key: str = ""
+    api_key: str = field(default="", repr=False)
     timeout: float = DEFAULT_TIMEOUT
     polite_delay: float = DEFAULT_POLITE_DELAY
     delay_jitter: float = DEFAULT_DELAY_JITTER

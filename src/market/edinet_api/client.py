@@ -404,38 +404,20 @@ class EdinetApiClient:
                 value=date,
             )
 
-        parts = date.split("-")
-        if len(parts) != 3:
+        from datetime import date as date_cls
+
+        try:
+            parsed = date_cls.fromisoformat(date)
+        except ValueError as e:
             raise EdinetApiValidationError(
                 f"Invalid date format '{date}'. Expected YYYY-MM-DD",
                 field="date",
                 value=date,
-            )
-
-        try:
-            year, month, day = int(parts[0]), int(parts[1]), int(parts[2])
-        except ValueError as e:
-            raise EdinetApiValidationError(
-                f"Invalid date format '{date}'. Expected YYYY-MM-DD with numeric values",
-                field="date",
-                value=date,
             ) from e
 
-        if not (2000 <= year <= 2100):
+        if not (2000 <= parsed.year <= 2100):
             raise EdinetApiValidationError(
-                f"Year {year} out of range. Expected 2000-2100",
-                field="date",
-                value=date,
-            )
-        if not (1 <= month <= 12):
-            raise EdinetApiValidationError(
-                f"Month {month} out of range. Expected 1-12",
-                field="date",
-                value=date,
-            )
-        if not (1 <= day <= 31):
-            raise EdinetApiValidationError(
-                f"Day {day} out of range. Expected 1-31",
+                f"Year {parsed.year} out of range. Expected 2000-2100",
                 field="date",
                 value=date,
             )

@@ -2,7 +2,7 @@
 
 import random
 from dataclasses import dataclass, field
-from typing import Literal
+from typing import Final, Literal
 
 
 @dataclass
@@ -226,7 +226,7 @@ JPX_FEEDS: dict[str, str] = {
     "regulations": "https://www.jpx.co.jp/regulation/public-comment/public-comment.rss",
 }
 
-TDNET_BASE_URL: str = "https://webapi.yanoshin.jp/webapi/tdnet/list"
+TDNET_BASE_URL: Final[str] = "https://webapi.yanoshin.jp/webapi/tdnet/list"
 
 TDNET_DEFAULT_CODES: list[str] = [
     "7203",  # トヨタ自動車
