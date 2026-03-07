@@ -1,0 +1,70 @@
+# PRレビューレポート
+# 生成日時: 2026-03-07
+# 生成スキル: review-pr (issue-implementation-serial Step 7)
+
+metadata:
+  generated_at: "2026-03-07"
+  pr_number: 3752
+  pr_title: "feat(edinet): EDINET DB API仕様に合わせたtypes/client/storage全面刷新"
+  base_branch: "feature/prj70"
+  head_branch: "feature/issues-3732-3737"
+  review_mode: "remote"
+  review_rounds: 2
+
+pr_info:
+  files_changed: 12
+  additions: 2345
+  deletions: 639
+
+scores:
+  code_quality:
+    readability: 92
+    design: 87
+    performance: 78
+    quant: 82
+  security:
+    code: 79
+    infra: 78
+  test:
+    coverage: 78
+    quality: 88
+
+round1_fixes:
+  - category: security
+    description: "SQL injection防止: _VALID_TABLE_NAMES frozensetホワイトリスト検証"
+  - category: security
+    description: "query()セミコロンチェック追加（複数文実行防止）"
+  - category: security
+    description: "api_key repr非表示（field(repr=False)）"
+  - category: performance
+    description: "_parse_record: dataclass field名lru_cacheキャッシュ"
+  - category: performance
+    description: "get_stats(): N+1→UNION ALL単一クエリ"
+  - category: performance
+    description: "_migrate_table: DDL型情報dict化"
+  - category: performance
+    description: "_migrate_schema: get_table_names()呼出し1回キャッシュ"
+  - category: performance
+    description: "_TABLE_EXPECTED_COLUMNSモジュールレベル定数化"
+
+round2_fixes:
+  - category: test
+    description: "query()異常系テスト追加（SELECT以外・セミコロン拒否）"
+  - category: test
+    description: "float==比較をpytest.approxに置換（QC-01準拠）"
+  - category: test
+    description: "誤解を招くテスト名修正"
+  - category: performance
+    description: "DDL二重regexスキャンを単一パスに統合"
+  - category: performance
+    description: "_REVERSE_COLUMN_RENAMESモジュールレベル定数化"
+
+remaining_suggestions:
+  - priority: suggested
+    action: "panderaスキーマ検証をupsertメソッドに追加（QC-07、別Issue推奨）"
+  - priority: suggested
+    action: "Hypothesisプロパティテスト追加（QC-05、別Issue推奨）"
+
+summary:
+  verdict: "APPROVE"
+  comment: "2ラウンドのレビュー・修正を経て、セキュリティ・パフォーマンス・テスト品質を改善。全CIチェックパス。残存指摘はLOW/スコープ外のみ。"
