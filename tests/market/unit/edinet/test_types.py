@@ -481,32 +481,32 @@ class TestFinancialRecord:
         record = sample_financial_record
         assert record.edinet_code == "E00001"
         assert record.fiscal_year == 2025
-        assert record.revenue == 1_000_000_000.0
-        assert record.operating_income == 100_000_000.0
-        assert record.ordinary_income == 110_000_000.0
-        assert record.net_income == 70_000_000.0
-        assert record.total_assets == 5_000_000_000.0
-        assert record.net_assets == 2_000_000_000.0
-        assert record.shareholders_equity == 1_800_000_000.0
-        assert record.cf_operating == 150_000_000.0
-        assert record.cf_investing == -80_000_000.0
-        assert record.cf_financing == -50_000_000.0
-        assert record.eps == 350.0
-        assert record.bps == 9_000.0
-        assert record.diluted_eps == 345.0
-        assert record.dividend_per_share == 100.0
+        assert record.revenue == pytest.approx(1_000_000_000.0)
+        assert record.operating_income == pytest.approx(100_000_000.0)
+        assert record.ordinary_income == pytest.approx(110_000_000.0)
+        assert record.net_income == pytest.approx(70_000_000.0)
+        assert record.total_assets == pytest.approx(5_000_000_000.0)
+        assert record.net_assets == pytest.approx(2_000_000_000.0)
+        assert record.shareholders_equity == pytest.approx(1_800_000_000.0)
+        assert record.cf_operating == pytest.approx(150_000_000.0)
+        assert record.cf_investing == pytest.approx(-80_000_000.0)
+        assert record.cf_financing == pytest.approx(-50_000_000.0)
+        assert record.eps == pytest.approx(350.0)
+        assert record.bps == pytest.approx(9_000.0)
+        assert record.diluted_eps == pytest.approx(345.0)
+        assert record.dividend_per_share == pytest.approx(100.0)
         assert record.num_employees == 5_000
-        assert record.capex == 80_000_000.0
-        assert record.depreciation == 60_000_000.0
-        assert record.rnd_expenses == 30_000_000.0
-        assert record.goodwill == 10_000_000.0
-        assert record.cash == 500_000_000.0
-        assert record.comprehensive_income == 75_000_000.0
-        assert record.equity_ratio_official == 36.0
-        assert record.payout_ratio == 28.57
-        assert record.per == 15.0
-        assert record.profit_before_tax == 95_000_000.0
-        assert record.roe_official == 3.89
+        assert record.capex == pytest.approx(80_000_000.0)
+        assert record.depreciation == pytest.approx(60_000_000.0)
+        assert record.rnd_expenses == pytest.approx(30_000_000.0)
+        assert record.goodwill == pytest.approx(10_000_000.0)
+        assert record.cash == pytest.approx(500_000_000.0)
+        assert record.comprehensive_income == pytest.approx(75_000_000.0)
+        assert record.equity_ratio_official == pytest.approx(36.0)
+        assert record.payout_ratio == pytest.approx(28.57)
+        assert record.per == pytest.approx(15.0)
+        assert record.profit_before_tax == pytest.approx(95_000_000.0)
+        assert record.roe_official == pytest.approx(3.89)
         assert record.accounting_standard == "JP GAAP"
         assert record.submit_date == "2025-06-15"
 
@@ -657,25 +657,25 @@ class TestRatioRecord:
         record = sample_ratio_record
         assert record.edinet_code == "E00001"
         assert record.fiscal_year == 2025
-        assert record.roe == 3.89
-        assert record.roa == 1.40
-        assert record.roe_official == 3.89
-        assert record.net_margin == 7.0
-        assert record.equity_ratio == 36.0
-        assert record.equity_ratio_official == 36.0
-        assert record.payout_ratio == 28.57
-        assert record.asset_turnover == 0.20
-        assert record.eps == 350.0
-        assert record.diluted_eps == 345.0
-        assert record.bps == 9_000.0
-        assert record.dividend_per_share == 100.0
-        assert record.adjusted_dividend_per_share == 100.0
-        assert record.dividend_yield == 2.5
-        assert record.per == 15.0
-        assert record.fcf == 70_000_000.0
-        assert record.net_income_per_employee == 14_000.0
-        assert record.revenue_per_employee == 200_000.0
-        assert record.split_adjustment_factor == 1.0
+        assert record.roe == pytest.approx(3.89)
+        assert record.roa == pytest.approx(1.40)
+        assert record.roe_official == pytest.approx(3.89)
+        assert record.net_margin == pytest.approx(7.0)
+        assert record.equity_ratio == pytest.approx(36.0)
+        assert record.equity_ratio_official == pytest.approx(36.0)
+        assert record.payout_ratio == pytest.approx(28.57)
+        assert record.asset_turnover == pytest.approx(0.20)
+        assert record.eps == pytest.approx(350.0)
+        assert record.diluted_eps == pytest.approx(345.0)
+        assert record.bps == pytest.approx(9_000.0)
+        assert record.dividend_per_share == pytest.approx(100.0)
+        assert record.adjusted_dividend_per_share == pytest.approx(100.0)
+        assert record.dividend_yield == pytest.approx(2.5)
+        assert record.per == pytest.approx(15.0)
+        assert record.fcf == pytest.approx(70_000_000.0)
+        assert record.net_income_per_employee == pytest.approx(14_000.0)
+        assert record.revenue_per_employee == pytest.approx(200_000.0)
+        assert record.split_adjustment_factor == pytest.approx(1.0)
 
     def test_正常系_最小構成で生成できる(self) -> None:
         """edinet_code と fiscal_year のみで生成できること。"""

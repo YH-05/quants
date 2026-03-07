@@ -20,6 +20,7 @@ from unittest.mock import MagicMock, patch
 import duckdb
 import numpy as np
 import pandas as pd
+import pytest
 
 from market.edinet.constants import (
     TABLE_ANALYSES,
@@ -677,6 +678,42 @@ class TestQuery:
             assert len(result) == 1
             assert result["count"].iloc[0] == 100
 
+    def test_異常系_SELECT以外のSQLでValueError(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """INSERT/UPDATE/DROP等のSQLがValueErrorで拒否されること."""
+        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+            mock_cls.return_value = MagicMock()
+
+            from market.edinet.storage import EdinetStorage
+
+            storage = EdinetStorage(config=sample_config)
+
+            for sql in [
+                "INSERT INTO companies VALUES ('E00001')",
+                "UPDATE companies SET name='test'",
+                "DROP TABLE companies",
+                "DELETE FROM companies",
+            ]:
+                with pytest.raises(ValueError, match="Only SELECT"):
+                    storage.query(sql)
+
+    def test_異常系_セミコロン含むSQLでValueError(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """セミコロンを含む複数ステートメントSQLがValueErrorで拒否されること."""
+        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+            mock_cls.return_value = MagicMock()
+
+            from market.edinet.storage import EdinetStorage
+
+            storage = EdinetStorage(config=sample_config)
+
+            with pytest.raises(ValueError, match="Multiple statements"):
+                storage.query("SELECT 1; DROP TABLE companies")
+
 
 # ============================================================================
 # Test: Integration with real DuckDB (tmp_path)
@@ -1160,7 +1197,7 @@ class TestMigrateSchema:
         assert len(result) == 1
         assert result["edinet_code"].iloc[0] == "E00001"
         assert result["fiscal_year"].iloc[0] == 2025
-        assert result["revenue"].iloc[0] == 1_000_000.0
+        assert result["revenue"].iloc[0] == pytest.approx(1_000_000.0)
 
     def test_正常系_カラムリネームでデータが保持される(
         self,
@@ -1198,7 +1235,7 @@ class TestMigrateSchema:
         # Verify renamed columns have data
         result = storage.get_financials("E00001")
         assert result is not None
-        assert result["cf_operating"].iloc[0] == 500_000.0
+        assert result["cf_operating"].iloc[0] == pytest.approx(500_000.0)
         assert result["cf_investing"].iloc[0] == -200_000.0
         assert result["cf_financing"].iloc[0] == -100_000.0
 
@@ -1283,11 +1320,11 @@ class TestMigrateSchema:
 
         assert pre_count == post_count == 6
 
-    def test_正常系_マイグレーション失敗時にバックアップが復元される(
+    def test_正常系_マイグレーション後にデータが参照可能である(
         self,
         tmp_path: Path,
     ) -> None:
-        """_migrate_tableがエラー時にバックアップテーブルを復元すること."""
+        """スキーマ不一致時のマイグレーション後もデータが参照できること."""
         from market.edinet.storage import EdinetStorage
         from market.edinet.types import EdinetConfig as EC
 

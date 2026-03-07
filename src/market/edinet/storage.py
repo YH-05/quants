@@ -85,6 +85,12 @@ Keys are old column names that no longer exist in the current DDL.
 Values are the corresponding new column names in the current DDL.
 """
 
+_REVERSE_COLUMN_RENAMES: dict[str, str] = {v: k for k, v in _COLUMN_RENAMES.items()}
+"""Reverse mapping of new column names to old column names.
+
+Pre-computed at module level to avoid rebuilding on each migration call.
+"""
+
 # ============================================================================
 # Table DDL definitions
 # ============================================================================
@@ -431,13 +437,10 @@ class EdinetStorage:
 
         # Get existing column info before migration
         existing_cols = self._get_column_info(table_name)
-        # Use ordered column list to match DDL column order
-        expected_cols_ordered = _parse_ddl_columns_ordered(ddl)
-        reverse_renames = {v: k for k, v in _COLUMN_RENAMES.items()}
-        # Pre-compute DDL column types to avoid repeated regex scans
-        ddl_types: dict[str, str] = {
-            m.group(1): m.group(2) for m in _DDL_COLUMN_RE.finditer(ddl)
-        }
+        # Single regex pass: extract ordered columns and type dict simultaneously
+        matches = list(_DDL_COLUMN_RE.finditer(ddl))
+        expected_cols_ordered = [m.group(1) for m in matches]
+        ddl_types: dict[str, str] = {m.group(1): m.group(2) for m in matches}
 
         try:
             # Step 1: Backup
@@ -461,7 +464,7 @@ class EdinetStorage:
                     col_name,
                     ddl_types,
                     existing_cols,
-                    reverse_renames,
+                    _REVERSE_COLUMN_RENAMES,
                 )
                 select_exprs.append(expr)
 
