@@ -200,7 +200,7 @@ class TestTickerCollectorInit:
         config = ScrapingConfig(polite_delay=5.0, headless=False)
         collector = TickerCollector(config=config)
 
-        assert collector._config.polite_delay == 5.0
+        assert collector._config.polite_delay == pytest.approx(5.0)
         assert collector._config.headless is False
 
     def test_正常系_browserを注入できる(self) -> None:
@@ -755,7 +755,7 @@ class TestFundamentalsCollectorInit:
         retry_config = RetryConfig(max_attempts=5)
         collector = FundamentalsCollector(config=config, retry_config=retry_config)
 
-        assert collector._config.polite_delay == 5.0
+        assert collector._config.polite_delay == pytest.approx(5.0)
         assert collector._retry_config.max_attempts == 5
 
 
@@ -1378,7 +1378,7 @@ class TestFundamentalsNotFoundHandling:
         spy_row = df[df["ticker"] == "SPY"].iloc[0]
 
         # INVALID should only have ticker field (other fields NaN)
-        assert pd.isna(invalid_row.get("issuer"))
+        assert pd.isna(invalid_row["issuer"])
         # SPY should have full data
         assert spy_row["issuer"] == "State Street"
 
