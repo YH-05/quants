@@ -333,7 +333,7 @@ class TestNavigate:
             await mixin._ensure_browser()
             page = await mixin._navigate("https://www.etf.com/SPY")
 
-            assert page is not None
+            assert page is mock_page
             mock_page.goto.assert_awaited_once()
 
     @pytest.mark.asyncio

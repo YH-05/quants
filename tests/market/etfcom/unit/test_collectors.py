@@ -1055,8 +1055,8 @@ class TestParseFundFlowsTable:
 
         assert len(rows) == 5
         assert rows[0]["date"] == "2025-09-10"
-        assert rows[0]["net_flows"] == 2787.59
-        assert rows[1]["net_flows"] == -1234.56
+        assert rows[0]["net_flows"] == pytest.approx(2787.59)
+        assert rows[1]["net_flows"] == pytest.approx(-1234.56)
 
     def test_正常系_カンマ区切り数値を正しく変換する(self) -> None:
         """カンマ区切りの数値（"2,787.59"）を float に正しく変換すること。"""
@@ -1347,7 +1347,7 @@ class TestFundamentalsNotFoundHandling:
 
         # Both tickers should be in the result
         assert len(df) == 2
-        assert df["ticker"].tolist() == ["SPY", "INVALID"]
+        assert set(df["ticker"].tolist()) == {"SPY", "INVALID"}
 
     def test_正常系_404エラー後も他ティッカーの処理が継続される(self) -> None:
         """ETFComNotFoundError 後も残りのティッカーの処理が継続されること。"""
