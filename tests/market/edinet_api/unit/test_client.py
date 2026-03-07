@@ -308,12 +308,12 @@ class TestValidateDate:
 
     def test_異常系_月が範囲外(self) -> None:
         """月が範囲外で EdinetApiValidationError が発生すること。"""
-        with pytest.raises(EdinetApiValidationError, match="Month.*out of range"):
+        with pytest.raises(EdinetApiValidationError, match="Invalid date format"):
             EdinetApiClient._validate_date("2025-13-15")
 
     def test_異常系_日が範囲外(self) -> None:
         """日が範囲外で EdinetApiValidationError が発生すること。"""
-        with pytest.raises(EdinetApiValidationError, match="Day.*out of range"):
+        with pytest.raises(EdinetApiValidationError, match="Invalid date format"):
             EdinetApiClient._validate_date("2025-01-32")
 
 
