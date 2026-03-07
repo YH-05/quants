@@ -42,6 +42,7 @@ market.edinet.constants : API URL, ranking metrics, and HTTP settings.
 from __future__ import annotations
 
 import dataclasses
+import functools
 import os
 import random
 import time
@@ -618,6 +619,12 @@ class EdinetClient:
     # Internal Parsing Helpers
     # =========================================================================
 
+    @staticmethod
+    @functools.lru_cache(maxsize=None)
+    def _get_field_names(klass: type) -> frozenset[str]:
+        """Return cached frozenset of dataclass field names for *klass*."""
+        return frozenset(f.name for f in dataclasses.fields(klass))  # type: ignore[arg-type]
+
     def _parse_record[T](self, cls: type[T], data: dict[str, Any]) -> T:
         """Create a dataclass instance from a dict, ignoring unknown fields.
 
@@ -643,7 +650,7 @@ class EdinetClient:
         >>> client._parse_record(Company, {"edinet_code": "E00001", "unknown": 1})
         Company(edinet_code='E00001', ...)
         """
-        field_names = {f.name for f in dataclasses.fields(cls)}  # type: ignore[arg-type]
+        field_names = self._get_field_names(cls)
         filtered = {k: v for k, v in data.items() if k in field_names}
         return cls(**filtered)
 

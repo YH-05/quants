@@ -249,6 +249,15 @@ def _parse_ddl_columns_ordered(ddl: str) -> list[str]:
     return [m.group(1) for m in _DDL_COLUMN_RE.finditer(ddl)]
 
 
+# Pre-computed expected column sets from DDL (avoids re-parsing on each call)
+_TABLE_EXPECTED_COLUMNS: dict[str, set[str]] = {
+    name: _parse_ddl_columns(ddl) for name, ddl in _TABLE_DDL.items()
+}
+
+# Valid table names whitelist for SQL injection prevention
+_VALID_TABLE_NAMES: frozenset[str] = frozenset(_TABLE_DDL.keys())
+
+
 class EdinetStorage:
     """DuckDB storage layer for EDINET data.
 
@@ -326,16 +335,23 @@ class EdinetStorage:
         Parameters
         ----------
         table_name : str
-            Name of the table to inspect.
+            Name of the table to inspect. Must be in ``_VALID_TABLE_NAMES``.
 
         Returns
         -------
         dict[str, str]
             Mapping of column name to column type string
             (e.g. ``{"edinet_code": "VARCHAR", "revenue": "DOUBLE"}``).
+
+        Raises
+        ------
+        ValueError
+            If ``table_name`` is not in the allowed table list.
         """
+        if table_name not in _VALID_TABLE_NAMES:
+            raise ValueError(f"Unknown table: {table_name!r}")
         df = self._client.query_df(
-            f"SELECT column_name, data_type FROM information_schema.columns "  # nosec B608
+            "SELECT column_name, data_type FROM information_schema.columns "  # nosec B608 - table_name validated against _VALID_TABLE_NAMES whitelist
             f"WHERE table_name = '{table_name}'"
         )
         return dict(zip(df["column_name"], df["data_type"], strict=True))
@@ -354,12 +370,11 @@ class EdinetStorage:
             ``True`` if the existing table's column set matches the
             DDL definition exactly, ``False`` otherwise.
         """
-        if table_name not in _TABLE_DDL:
+        if table_name not in _TABLE_EXPECTED_COLUMNS:
             return True
 
         existing_columns = set(self._get_column_info(table_name).keys())
-        expected_columns = _parse_ddl_columns(_TABLE_DDL[table_name])
-        return existing_columns == expected_columns
+        return existing_columns == _TABLE_EXPECTED_COLUMNS[table_name]
 
     def _migrate_schema(self) -> None:
         """Migrate all tables whose schemas differ from the current DDL.
@@ -371,8 +386,9 @@ class EdinetStorage:
 
         This method is called automatically by ``ensure_tables()``.
         """
+        existing_tables = set(self._client.get_table_names())
         for table_name in _TABLE_DDL:
-            if not self._table_exists(table_name):
+            if table_name not in existing_tables:
                 continue
             if self._schema_matches(table_name):
                 logger.debug(
@@ -408,6 +424,8 @@ class EdinetStorage:
         Exception
             Re-raises any exception after restoring the backup table.
         """
+        if table_name not in _VALID_TABLE_NAMES:
+            raise ValueError(f"Unknown table for migration: {table_name!r}")
         backup_name = f"{table_name}_backup"
         ddl = _TABLE_DDL[table_name]
 
@@ -416,6 +434,10 @@ class EdinetStorage:
         # Use ordered column list to match DDL column order
         expected_cols_ordered = _parse_ddl_columns_ordered(ddl)
         reverse_renames = {v: k for k, v in _COLUMN_RENAMES.items()}
+        # Pre-compute DDL column types to avoid repeated regex scans
+        ddl_types: dict[str, str] = {
+            m.group(1): m.group(2) for m in _DDL_COLUMN_RE.finditer(ddl)
+        }
 
         try:
             # Step 1: Backup
@@ -437,7 +459,7 @@ class EdinetStorage:
             for col_name in expected_cols_ordered:
                 expr = self._build_select_expr(
                     col_name,
-                    ddl,
+                    ddl_types,
                     existing_cols,
                     reverse_renames,
                 )
@@ -495,7 +517,7 @@ class EdinetStorage:
     def _build_select_expr(
         self,
         col_name: str,
-        ddl: str,
+        ddl_types: dict[str, str],
         existing_cols: dict[str, str],
         reverse_renames: dict[str, str],
     ) -> str:
@@ -510,8 +532,8 @@ class EdinetStorage:
         ----------
         col_name : str
             Target column name in the new DDL.
-        ddl : str
-            Current DDL statement for type lookup.
+        ddl_types : dict[str, str]
+            Pre-computed column name -> type mapping from the DDL.
         existing_cols : dict[str, str]
             Column name -> type mapping from the old table.
         reverse_renames : dict[str, str]
@@ -524,7 +546,7 @@ class EdinetStorage:
         """
         # Case 1: Column exists in old table
         if col_name in existing_cols:
-            return self._cast_if_needed(col_name, col_name, ddl, existing_cols)
+            return self._cast_if_needed(col_name, col_name, ddl_types, existing_cols)
 
         # Case 2: Column was renamed
         if col_name in reverse_renames:
@@ -533,18 +555,18 @@ class EdinetStorage:
                 return self._cast_if_needed(
                     old_name,
                     col_name,
-                    ddl,
+                    ddl_types,
                     existing_cols,
                 )
 
         # Case 3: New column
         return "NULL"
 
+    @staticmethod
     def _cast_if_needed(
-        self,
         source_col: str,
         target_col: str,
-        ddl: str,
+        ddl_types: dict[str, str],
         existing_cols: dict[str, str],
     ) -> str:
         """Wrap a source column with CAST if the type has changed.
@@ -555,8 +577,8 @@ class EdinetStorage:
             Column name in the old (backup) table.
         target_col : str
             Column name in the new DDL (for type lookup).
-        ddl : str
-            Current DDL statement.
+        ddl_types : dict[str, str]
+            Pre-computed column name -> type mapping from the DDL.
         existing_cols : dict[str, str]
             Column name -> type mapping from the old table.
 
@@ -566,31 +588,10 @@ class EdinetStorage:
             ``source_col`` or ``CAST(source_col AS new_type)``.
         """
         old_type = existing_cols[source_col].upper()
-        expected_type = self._get_ddl_column_type(ddl, target_col)
+        expected_type = ddl_types.get(target_col)
         if expected_type and old_type != expected_type.upper():
             return f"CAST({source_col} AS {expected_type})"
         return source_col
-
-    @staticmethod
-    def _get_ddl_column_type(ddl: str, column_name: str) -> str | None:
-        """Extract the type of a specific column from a DDL statement.
-
-        Parameters
-        ----------
-        ddl : str
-            SQL CREATE TABLE statement.
-        column_name : str
-            Column name to look up.
-
-        Returns
-        -------
-        str | None
-            Column type string (e.g. ``"INTEGER"``, ``"DOUBLE"``),
-            or ``None`` if not found.
-        """
-        pattern = rf"^\s+{re.escape(column_name)}\s+(\w+)"
-        match = re.search(pattern, ddl, re.MULTILINE)
-        return match.group(1) if match else None
 
     # ------------------------------------------------------------------
     # Upsert methods
@@ -829,7 +830,7 @@ class EdinetStorage:
     # ------------------------------------------------------------------
 
     def get_stats(self) -> dict[str, int]:
-        """Get row counts for all 8 tables.
+        """Get row counts for all 8 tables in a single query.
 
         Returns
         -------
@@ -837,12 +838,13 @@ class EdinetStorage:
             Dictionary mapping table name to row count.
         """
         logger.debug("Getting table statistics")
-        stats: dict[str, int] = {}
-        for table_name in _TABLE_DDL:
-            result = self._client.query_df(
-                f"SELECT COUNT(*) as count FROM {table_name}"  # nosec B608
-            )
-            stats[table_name] = int(result["count"].iloc[0])
+        # Use UNION ALL to fetch all counts in a single query
+        union_sql = " UNION ALL ".join(
+            f"SELECT '{tbl}' AS tbl, COUNT(*) AS cnt FROM {tbl}"  # nosec B608 - tbl from _VALID_TABLE_NAMES constant
+            for tbl in _VALID_TABLE_NAMES
+        )
+        df = self._client.query_df(union_sql)
+        stats = dict(zip(df["tbl"], df["cnt"].astype(int), strict=True))
         logger.info("Table statistics retrieved", stats=stats)
         return stats
 
@@ -853,8 +855,9 @@ class EdinetStorage:
     def query(self, sql: str) -> pd.DataFrame:
         """Execute a read-only SQL query and return results.
 
-        Only ``SELECT`` statements are allowed. Other SQL operations
-        (INSERT, UPDATE, DELETE, DROP, etc.) are rejected to prevent
+        Only single ``SELECT`` statements are allowed. Other SQL
+        operations (INSERT, UPDATE, DELETE, DROP, etc.) and multiple
+        statements separated by semicolons are rejected to prevent
         unintended data modification.
 
         Parameters
@@ -870,13 +873,19 @@ class EdinetStorage:
         Raises
         ------
         ValueError
-            If the SQL statement is not a SELECT query.
+            If the SQL statement is not a SELECT query or contains
+            multiple statements.
         """
         stripped = sql.strip().lstrip("(")
         if not stripped.upper().startswith("SELECT"):
             raise ValueError(
                 "Only SELECT queries are allowed. "
                 f"Got: {sql.split()[0] if sql.split() else '(empty)'}..."
+            )
+        if ";" in sql:
+            raise ValueError(
+                "Multiple statements are not allowed in query(). "
+                "Use a single SELECT statement."
             )
         logger.debug("Executing query", query_type="SELECT")
         return self._client.query_df(sql)

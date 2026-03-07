@@ -624,17 +624,8 @@ class TestGetStats:
         """get_statsが全8テーブルの行数を辞書で返すこと."""
         with patch("market.edinet.storage.DuckDBClient") as mock_cls:
             mock_client = MagicMock()
-            # Return a count for each query_df call
-            mock_client.query_df.return_value = pd.DataFrame({"count": [42]})
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            stats = storage.get_stats()
-
-            assert isinstance(stats, dict)
-            expected_keys = {
+            # UNION ALL query returns a DataFrame with tbl and cnt columns
+            expected_tables = [
                 TABLE_COMPANIES,
                 TABLE_FINANCIALS,
                 TABLE_RATIOS,
@@ -643,8 +634,19 @@ class TestGetStats:
                 TABLE_RANKINGS,
                 TABLE_INDUSTRIES,
                 TABLE_INDUSTRY_DETAILS,
-            }
-            assert set(stats.keys()) == expected_keys
+            ]
+            mock_client.query_df.return_value = pd.DataFrame(
+                {"tbl": expected_tables, "cnt": [42] * len(expected_tables)},
+            )
+            mock_cls.return_value = mock_client
+
+            from market.edinet.storage import EdinetStorage
+
+            storage = EdinetStorage(config=sample_config)
+            stats = storage.get_stats()
+
+            assert isinstance(stats, dict)
+            assert set(stats.keys()) == set(expected_tables)
 
 
 # ============================================================================

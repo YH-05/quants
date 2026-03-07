@@ -82,7 +82,7 @@ class EdinetConfig:
     60.0
     """
 
-    api_key: str
+    api_key: str = field(repr=False)
     base_url: str = DEFAULT_BASE_URL
     timeout: float = DEFAULT_TIMEOUT
     polite_delay: float = DEFAULT_POLITE_DELAY
