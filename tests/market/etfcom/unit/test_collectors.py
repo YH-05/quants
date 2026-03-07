@@ -44,6 +44,9 @@ Test TODO List:
 - [x] TickerNormalization: FundFlowsCollector が小文字を大文字に正規化
 - [x] TickerNormalization: HistoricalFundFlowsCollector が小文字を大文字に正規化
 - [x] FundamentalsCollector: 404 エラー時に minimal レコードが追加される
+- [x] TickerValidation: 不正なティッカーで ValueError
+- [x] TickerValidation: ハイフン付きティッカーで正常動作
+- [x] FundFlowsCollector: 404 エラーが呼び出し元に伝播する
 """
 
 from __future__ import annotations
@@ -1403,3 +1406,91 @@ class TestFundamentalsNotFoundHandling:
         # Should still get a minimal record
         assert len(df) == 1
         assert df["ticker"].iloc[0] == "INVALID"
+
+
+# =============================================================================
+# Ticker Validation
+# =============================================================================
+
+
+class TestTickerValidation:
+    """_normalize_ticker() のバリデーションテスト。"""
+
+    def test_異常系_不正なティッカーでValueError(self) -> None:
+        """パストラバーサルやインジェクション文字列で ValueError が送出されること。"""
+        from market.etfcom.collectors import _normalize_ticker
+
+        invalid_tickers = [
+            "../etc",
+            "SPY?admin=true",
+            "A" * 11,  # 11 chars exceeds 10-char limit
+            "SPY FOO",  # space
+            "",  # empty after strip
+            "  ",  # whitespace only
+            "SPY@COM",  # @ symbol
+        ]
+        for ticker in invalid_tickers:
+            with pytest.raises(ValueError, match="Invalid ticker symbol"):
+                _normalize_ticker(ticker)
+
+    def test_正常系_ハイフン付きティッカーで正常動作(self) -> None:
+        """ハイフン付きティッカー（例: BRK-B）が正常に正規化されること。"""
+        from market.etfcom.collectors import _normalize_ticker
+
+        assert _normalize_ticker("BRK-B") == "BRK-B"
+        assert _normalize_ticker("brk-b") == "BRK-B"
+
+    def test_正常系_通常のティッカーで正常動作(self) -> None:
+        """通常のティッカーシンボルが正常に正規化されること。"""
+        from market.etfcom.collectors import _normalize_ticker
+
+        assert _normalize_ticker("spy") == "SPY"
+        assert _normalize_ticker("  VOO  ") == "VOO"
+        assert _normalize_ticker("QQQ") == "QQQ"
+
+    def test_異常系_FundamentalsCollectorで不正ティッカーがValueError(self) -> None:
+        """FundamentalsCollector.fetch() が不正ティッカーで ValueError を送出すること。"""
+        from market.etfcom.collectors import FundamentalsCollector
+
+        mock_session = MagicMock()
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundamentalsCollector(session=mock_session, config=config)
+
+        with pytest.raises(ValueError, match="Invalid ticker symbol"):
+            collector.fetch(tickers=["../etc"])
+
+    def test_異常系_FundFlowsCollectorで不正ティッカーがValueError(self) -> None:
+        """FundFlowsCollector.fetch() が不正ティッカーで ValueError を送出すること。"""
+        from market.etfcom.collectors import FundFlowsCollector
+
+        mock_session = MagicMock()
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundFlowsCollector(session=mock_session, config=config)
+
+        with pytest.raises(ValueError, match="Invalid ticker symbol"):
+            collector.fetch(ticker="SPY?admin=true")
+
+
+# =============================================================================
+# FundFlows NotFound Handling
+# =============================================================================
+
+
+class TestFundFlowsNotFoundHandling:
+    """FundFlowsCollector.fetch() の ETFComNotFoundError ハンドリングテスト。"""
+
+    def test_異常系_404エラーが呼び出し元に伝播する(self) -> None:
+        """ETFComNotFoundError が FundFlowsCollector.fetch() から伝播すること。"""
+        from market.etfcom.collectors import FundFlowsCollector
+
+        mock_session = MagicMock()
+        mock_session.get_with_retry.side_effect = ETFComNotFoundError(
+            "ETF not found: HTTP 404",
+            url="https://www.etf.com/etfflows/INVALID",
+        )
+
+        config = ScrapingConfig(polite_delay=0.0, delay_jitter=0.0)
+        collector = FundFlowsCollector(session=mock_session, config=config)
+
+        with pytest.raises(ETFComNotFoundError):
+            collector.fetch(ticker="INVALID")

@@ -86,6 +86,37 @@ from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 
+# Ticker symbol validation pattern (alphanumeric + hyphens, 1-10 chars)
+_TICKER_PATTERN = re.compile(r"^[A-Z0-9\-]{1,10}$")
+
+
+def _normalize_ticker(ticker: str) -> str:
+    """Normalize and validate a ticker symbol.
+
+    Parameters
+    ----------
+    ticker : str
+        Raw ticker symbol (case-insensitive).
+
+    Returns
+    -------
+    str
+        Upper-cased ticker symbol.
+
+    Raises
+    ------
+    ValueError
+        If the ticker contains invalid characters or exceeds 10 characters.
+    """
+    normalized = ticker.strip().upper()
+    if not _TICKER_PATTERN.match(normalized):
+        raise ValueError(
+            f"Invalid ticker symbol: {ticker!r}. "
+            "Only alphanumeric characters and hyphens (1-10 chars) are allowed."
+        )
+    return normalized
+
+
 # Column name mapping from raw screener table headers to snake_case
 _COLUMN_MAP: dict[str, str] = {
     "ticker": "ticker",
@@ -625,7 +656,7 @@ class FundamentalsCollector(DataCollector):
 
         try:
             for ticker in tickers:
-                ticker = ticker.upper()
+                ticker = _normalize_ticker(ticker)
                 url = PROFILE_URL_TEMPLATE.format(ticker=ticker)
                 logger.debug(
                     "Fetching fundamentals",
@@ -1025,7 +1056,7 @@ class FundFlowsCollector(DataCollector):
             logger.info("No ticker provided, returning empty DataFrame")
             return pd.DataFrame()
 
-        ticker = ticker.upper()
+        ticker = _normalize_ticker(ticker)
 
         url = FUND_FLOWS_URL_TEMPLATE.format(ticker=ticker)
         logger.info(
@@ -1604,7 +1635,7 @@ class HistoricalFundFlowsCollector(DataCollector):
             logger.info("No ticker provided, returning empty DataFrame")
             return pd.DataFrame()
 
-        ticker = ticker.upper()
+        ticker = _normalize_ticker(ticker)
 
         logger.info(
             "Starting historical fund flow collection",

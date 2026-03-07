@@ -473,7 +473,8 @@ class ETFComBrowserMixin:
             url=url,
             max_attempts=self._retry_config.max_attempts,
         )
-        assert last_error is not None
+        if last_error is None:
+            raise RuntimeError("Retry loop exited without capturing an error")
         raise last_error
 
     async def _accept_cookies(self, page: Any) -> None:

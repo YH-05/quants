@@ -434,7 +434,8 @@ class ETFComSession:
             url=url,
             max_attempts=self._retry_config.max_attempts,
         )
-        assert last_error is not None
+        if last_error is None:
+            raise RuntimeError("Retry loop exited without capturing an error")
         raise last_error
 
     def get_with_retry(self, url: str, **kwargs: Any) -> curl_requests.Response:

@@ -1,0 +1,272 @@
+# PRレビューレポート
+# 生成日時: 2026-03-06
+# 生成スキル: review-pr
+# レビューラウンド: 2（8サブエージェント並列実行）
+
+metadata:
+  generated_at: "2026-03-06"
+  pr_number: 3750
+  pr_title: "feat(market/etfcom): ETFComNotFoundError の追加と HTTP 404 ハンドリング"
+  base_branch: "main"
+  head_branch: "feature/prj72"
+  review_mode: "remote"
+
+pr_info:
+  files_changed: 10
+  additions: 583
+  deletions: 15
+  changed_files:
+    - path: "src/market/errors.py"
+      additions: 3
+      deletions: 0
+    - path: "src/market/etfcom/__init__.py"
+      additions: 4
+      deletions: 0
+    - path: "src/market/etfcom/browser.py"
+      additions: 37
+      deletions: 3
+    - path: "src/market/etfcom/collectors.py"
+      additions: 13
+      deletions: 1
+    - path: "src/market/etfcom/errors.py"
+      additions: 46
+      deletions: 0
+    - path: "src/market/etfcom/session.py"
+      additions: 38
+      deletions: 5
+    - path: "tests/market/etfcom/unit/test_browser.py"
+      additions: 107
+      deletions: 1
+    - path: "tests/market/etfcom/unit/test_collectors.py"
+      additions: 198
+      deletions: 0
+    - path: "tests/market/etfcom/unit/test_errors.py"
+      additions: 82
+      deletions: 4
+    - path: "tests/market/etfcom/unit/test_session.py"
+      additions: 55
+      deletions: 1
+
+scores:
+  code_quality:
+    readability: 92
+    design: 84
+    performance: 85
+    quant: 95
+  security:
+    code: 92
+    infra: 85
+  test:
+    coverage: 91
+    quality: 89
+
+code_quality:
+  strengths:
+    - "全クラス名が PascalCase、関数名が snake_case に準拠（命名規則違反ゼロ）"
+    - "型ヒントカバレッジ 100%: 新規追加シグネチャ全てに型ヒント付与"
+    - "全公開クラス・メソッドに NumPy 形式 Docstring、Raises 節も網羅的に更新"
+    - "ETFComNotFoundError の設計が既存パターン（ETFComBlockedError）と一貫"
+    - "404 を _BLOCKED_STATUS_CODES に混入させず独立チェックにした設計判断が正しい"
+    - "_request_with_retry() で ETFComNotFoundError は即座伝播（リトライスキップ）"
+    - "DI パターンにより session/browser のモック置換が容易"
+    - "AIDEV-NOTE コメントで TargetClosedError の文字列比較の意図を明確化"
+
+  issues:
+    critical: []
+    high:
+      - id: "CQ-001"
+        category: "comments"
+        location: "src/market/errors.py:866"
+        description: "コメントが ETFComNotFoundError を列挙しておらず __all__ と乖離"
+        recommendation: "コメントに ETFComNotFoundError を追加"
+        status: "new"
+
+      - id: "CQ-002"
+        category: "solid/srp"
+        location: "src/market/etfcom/collectors.py:703"
+        description: "_get_html() 内でセッション再生成。fetch() と _get_html() に同一の None チェックが重複"
+        recommendation: "_resolve_session() ヘルパーに集約"
+        status: "acknowledged (既存コード構造、PR スコープ外)"
+
+      - id: "CQ-003"
+        category: "abstraction"
+        location: "src/market/etfcom/collectors.py:759"
+        description: "_get_html_via_playwright() 内で asyncio.new_event_loop() を直接操作。2本目のイベントループ生成あり"
+        recommendation: "asyncio.run() への統一またはヘルパー切り出し"
+        status: "acknowledged (既存コード構造、PR スコープ外)"
+
+    medium:
+      - id: "CQ-004"
+        category: "abstraction"
+        location: "src/market/etfcom/browser.py:337"
+        description: "except (asyncio.TimeoutError, Exception) パターンが冗長で意図が不明確"
+        recommendation: "except ブロックを分離して各型で独立パスを明示"
+        status: "acknowledged (既存コード構造)"
+
+      - id: "CQ-005"
+        category: "solid/ocp"
+        location: "src/market/etfcom/errors.py:199"
+        description: "ETFComNotFoundError と ETFComBlockedError が url/status_code の共通基底を持たない"
+        recommendation: "ETFComHTTPError 中間基底クラスの導入検討"
+        status: "acknowledged (将来の拡張時に検討)"
+
+      - id: "CQ-006"
+        category: "production_assert"
+        location: "src/market/etfcom/browser.py:476, src/market/etfcom/session.py:437"
+        description: "assert last_error is not None が本番コードで使用。python -O で無効化される"
+        recommendation: "if last_error is None: raise RuntimeError(...) に置換"
+        status: "acknowledged"
+
+      - id: "CQ-007"
+        category: "dry"
+        location: "src/market/etfcom/session.py:410, src/market/etfcom/browser.py:454"
+        description: "指数バックオフ計算ロジックが session と browser に重複（90%類似）"
+        recommendation: "RetryConfig.calculate_delay(attempt) メソッドに集約"
+        status: "acknowledged (既存コード構造)"
+
+    low:
+      - id: "CQ-008"
+        category: "docstrings"
+        location: "src/market/etfcom/errors.py:199"
+        description: "ETFComNotFoundError の Examples 節に TargetClosedError ラップケースの例がない"
+        status: "optional"
+
+  solid_compliance:
+    single_responsibility: "WARN"  # _get_html() がセッション管理と HTML取得の2責務
+    open_closed: "WARN"  # ETFComHTTPError 中間クラス不在
+    liskov_substitution: "PASS"
+    interface_segregation: "PASS"
+    dependency_inversion: "PASS"
+
+security:
+  vulnerability_count:
+    critical: 0
+    high: 1
+    medium: 2
+    low: 2
+
+  findings:
+    - id: "SEC-001"
+      severity: "HIGH"
+      category: "A06"
+      location: "pyproject.toml (transitive dependency)"
+      description: "diskcache 5.6.3 に CVE-2025-69872（pickle RCE）。etfcom は直接使用せず"
+      recommendation: "upstream 修正後にアップグレード。キャッシュディレクトリの権限最小化"
+      cwe_id: "CWE-502"
+      status: "acknowledged (PR スコープ外、transitive dependency)"
+
+    - id: "SEC-002"
+      severity: "MEDIUM"
+      category: "A10/CWE-20"
+      location: "src/market/etfcom/collectors.py:628"
+      description: "ticker.upper() のみで文字種バリデーションなし。パス操作の余地あり"
+      recommendation: "正規表現 ^[A-Z0-9\\-]{1,10}$ でバリデーション追加"
+      status: "new"
+
+    - id: "SEC-003"
+      severity: "MEDIUM"
+      category: "A05/CWE-209"
+      location: "src/market/etfcom/errors.py:259"
+      description: "ETFComAPIError.response_body に生レスポンスが格納される（情報露出リスク）"
+      recommendation: "レスポンスボディのサイズ上限（512文字等）を設ける"
+      status: "acknowledged (既存コード)"
+
+    - id: "SEC-004"
+      severity: "LOW"
+      category: "A04/CWE-754"
+      location: "src/market/etfcom/browser.py:356"
+      description: "TargetClosedError の文字列名比較。同名の無関係な例外で誤検知の可能性"
+      recommendation: "モジュール完全修飾名での照合を検討"
+      status: "acknowledged (AIDEV-NOTE でカバー済み)"
+
+    - id: "SEC-005"
+      severity: "LOW"
+      category: "A04/CWE-617"
+      location: "src/market/etfcom/browser.py:476, session.py:437"
+      description: "本番コードの assert（CQ-006 と同一）"
+      recommendation: "明示的な None チェックに置換"
+      status: "acknowledged"
+
+  secrets_detected: []
+
+test:
+  coverage_assessment: "GOOD"
+  edge_cases_covered: true
+  missing_tests:
+    - file: "tests/market/etfcom/unit/test_collectors.py"
+      description: "FundFlowsCollector の 404 ハンドリングテストが不足"
+      priority: "MEDIUM"
+
+    - file: "tests/market/etfcom/unit/test_browser.py"
+      description: "_navigate() で response=None の分岐が未テスト"
+      priority: "LOW"
+
+    - file: "tests/market/etfcom/unit/test_session.py"
+      description: "POST メソッドの 404 即時伝播テストがない"
+      priority: "LOW"
+
+  test_quality:
+    isolation: "PASS"
+    reproducibility: "PASS"
+    readability: "PASS"
+
+  test_issues:
+    high:
+      - location: "tests/market/etfcom/unit/test_browser.py:336"
+        description: "assert page is not None → assert page is mock_page に変更すべき"
+      - location: "tests/market/etfcom/unit/test_collectors.py:1347"
+        description: "ticker リスト順序依存の比較をセット比較に変更すべき"
+    medium:
+      - location: "tests/market/etfcom/unit/test_collectors.py:1055"
+        description: "浮動小数点 == 比較を pytest.approx に変更すべき (QC-01)"
+
+review_rounds:
+  - round: 1
+    issues_found: 6
+    issues_fixed: 6
+    remaining: 0
+    fixes:
+      - "session.py: get()/post()/get_with_retry()/post_with_retry()/_request_with_retry() Raises追記"
+      - "browser.py: エラーメッセージからURL除去"
+      - "browser.py: TargetClosedErrorログのstr(e)をerror_typeに変更"
+      - "browser.py: _get_page_html() Raisesセクション追記"
+      - "browser.py: AIDEV-NOTEコメント追加"
+      - "test_session.py: test_正常系→test_異常系 命名修正"
+
+  - round: 2
+    agents_used: 8
+    agents: ["pr-readability", "pr-design", "pr-performance", "pr-quant", "pr-security-code", "pr-security-infra", "pr-test-coverage", "pr-test-quality"]
+    new_findings:
+      critical: 0
+      high: 4  # CQ-001, CQ-002, CQ-003, SEC-001
+      medium: 8  # CQ-004~007, SEC-002~003, test issues
+      low: 5
+    pr_scope_issues: 2  # CQ-001(comment), SEC-002(ticker validation)
+    existing_code_issues: 6  # CQ-002~007 (pre-existing patterns)
+
+recommended_actions:
+  required: []
+  suggested:
+    - priority: 1
+      action: "src/market/errors.py:866 のコメントに ETFComNotFoundError を追加"
+      effort: "trivial"
+    - priority: 2
+      action: "ticker バリデーション（正規表現 ^[A-Z0-9\\-]{1,10}$）の追加"
+      effort: "small"
+    - priority: 3
+      action: "FundFlowsCollector の 404 ハンドリングテスト追加"
+      effort: "small"
+    - priority: 4
+      action: "ETFComHTTPError 中間基底クラスの導入（将来のHTTP系エラー追加時）"
+      effort: "medium"
+    - priority: 5
+      action: "assert last_error is not None → 明示的 None チェックに置換"
+      effort: "trivial"
+
+summary:
+  verdict: "APPROVE"
+  comment: |
+    ラウンド1の全6指摘を修正済み。ラウンド2（8並列エージェント）で新たに検出された
+    PR スコープ内の問題は軽微（コメント不一致1件、ticker バリデーション1件）。
+    残りの指摘は既存コードのパターンに起因するもので、本PRのスコープ外。
+    設計・テスト・セキュリティとも良好な品質であり、APPROVE を推奨。
