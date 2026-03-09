@@ -1,0 +1,94 @@
+{
+    "mcpServers": {
+        "git": {
+            "command": "uvx",
+            "args": ["mcp-server-git", "--repository", "."]
+        },
+        "filesystem": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+        },
+        "reddit": {
+            "command": "uvx",
+            "args": ["mcp-server-reddit"]
+        },
+        "sequential-thinking": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+            "env": {
+                "DISABLE_THOUGHT_LOGGING": "false"
+            }
+        },
+        "fetch": {
+            "command": "uvx",
+            "args": ["mcp-server-fetch"],
+            "env": {
+                "PYTHONIOENCODING": "utf-8"
+            }
+        },
+        "time": {
+            "command": "uvx",
+            "args": ["mcp-server-time"],
+            "env": {
+                "LOCAL_TIMEZONE": "Asia/Tokyo"
+            }
+        },
+        "wikipedia": {
+            "command": "uvx",
+            "args": ["wikipedia-mcp"]
+        },
+        "notion": {
+            "command": "npx",
+            "args": ["-y", "@ramidecodes/mcp-server-notion@latest"],
+            "env": {
+                "NOTION_API_KEY": "${NOTION_API_KEY}"
+            }
+        },
+        "sec-edgar-mcp": {
+            "command": "uvx",
+            "args": ["--with", "pyrate-limiter<4.0", "sec-edgar-mcp"],
+            "env": {
+                "SEC_EDGAR_USER_AGENT": "youxitiankaggle@gmail.com"
+            }
+        },
+        "rss": {
+            "command": "uv",
+            "args": ["run", "rss-mcp"],
+            "env": {
+                "RSS_DATA_DIR": "./data/raw/rss"
+            }
+        },
+        "slack": {
+            "command": "uvx",
+            "args": ["mcp-slack"],
+            "env": {
+                "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}"
+            }
+        },
+        "context7": {
+            "command": "npx",
+            "args": ["-y", "@upstash/context7-mcp@latest"]
+        },
+        "tavily": {
+            "command": "npx",
+            "args": ["-y", "tavily-mcp"],
+            "env": {
+                "TAVILY_API_KEY": "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"
+            }
+        },
+        "playwright": {
+            "command": "npx",
+            "args": ["-y", "@playwright/mcp@latest"]
+        },
+        "neo4j-cypher": {
+            "command": "uvx",
+            "args": ["mcp-neo4j-cypher", "--transport", "stdio"],
+            "env": {
+                "NEO4J_URI": "${NEO4J_URI}",
+                "NEO4J_USERNAME": "${NEO4J_USERNAME}",
+                "NEO4J_PASSWORD": "${NEO4J_PASSWORD}",
+                "NEO4J_DATABASE": "${NEO4J_DATABASE}"
+            }
+        }
+    }
+}
