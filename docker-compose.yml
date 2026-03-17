@@ -1,4 +1,4 @@
-# finance - Docker Compose 開発環境設定
+# quants - Docker Compose 開発環境設定
 # 使い方: docker compose run --rm dev claude
 
 services:
@@ -40,6 +40,23 @@ services:
 
     working_dir: /app
 
+  # Neo4j - quants専用ナレッジグラフ（neo4j-memory MCP用）
+  neo4j:
+    image: neo4j:5-community
+    container_name: quants-neo4j
+    ports:
+      - "7477:7474"   # HTTP Browser（7474-7476は他プロジェクトが使用）
+      - "7690:7687"   # Bolt プロトコル（7687-7689は他プロジェクトが使用）
+    environment:
+      - NEO4J_AUTH=neo4j/quants2026
+      - NEO4J_PLUGINS=["apoc"]
+    volumes:
+      - neo4j-data:/data
+      - neo4j-logs:/logs
+    restart: unless-stopped
+
 volumes:
   claude-config:  # Claude Code 設定の永続化
   venv:           # Python 仮想環境の隔離
+  neo4j-data:     # Neo4j データの永続化
+  neo4j-logs:     # Neo4j ログの永続化

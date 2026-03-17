@@ -289,6 +289,15 @@ for theme in themes:
 | E003: GitHub CLI エラー | `gh auth login` で認証 |
 | E004: news-article-fetcher 失敗 | JSONファイルから手動再実行 |
 
+### KG Integration (Optional)
+
+収集完了後、結果をナレッジグラフに投入できます:
+
+```bash
+/emit-graph-queue --command finance-news-workflow --input .tmp/news-batches/{theme}_articles.json
+/save-to-graph --source finance-news-workflow
+```
+
 ## 変更履歴
 
 ### 2026-02-09: ワークフロー処理の簡素化（Issue #1855）

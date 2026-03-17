@@ -1,7 +1,7 @@
 ---
 name: deep-research
 description: "金融市場・投資テーマ専用のディープリサーチワークフローを実行します。複数ソースからデータ収集→クロス検証→深掘り分析→レポート生成までを自動化します。"
-allowed-tools: Read, Write, Glob, Grep, Task, WebSearch, WebFetch, MCPSearch, Bash, AskUserQuestion
+allowed-tools: Read, Write, Glob, Grep, Task, WebSearch, WebFetch, ToolSearch, Bash, AskUserQuestion
 ---
 
 # Deep Research Skill

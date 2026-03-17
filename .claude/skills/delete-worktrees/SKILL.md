@@ -1,8 +1,6 @@
 ---
 name: delete-worktrees
-description: 複数のworktreeとブランチを一括削除するスキル。
-/delete-worktrees コマンドで使用。開発完了後、複数のworktreeを効率的にクリーンアップする。
-
+description: "複数のworktreeとブランチを一括削除するスキル。/delete-worktrees コマンドで使用。開発完了後、複数のworktreeを効率的にクリーンアップする。"
 allowed-tools: Read, Bash, Task
 ---
 

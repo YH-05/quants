@@ -77,7 +77,7 @@ df["return"] = df.groupby("symbol")["close"].pct_change()
 ### 3. 高速化
 
 ```python
-from finance.utils.profiling import profile_context
+from utils_core.profiling import profile_context
 
 with profile_context("リターン計算"):
     returns = df.groupby("symbol")["close"].pct_change()

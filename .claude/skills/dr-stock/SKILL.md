@@ -1,7 +1,7 @@
 ---
 name: dr-stock
 description: "個別銘柄の包括的分析を実行します。株価・財務・SEC Filings・業界データを収集し、クロス検証・深掘り分析・レポート生成までを自動化します。"
-allowed-tools: Read, Write, Glob, Grep, Task, WebSearch, WebFetch, MCPSearch, Bash, AskUserQuestion
+allowed-tools: Read, Write, Glob, Grep, Task, WebSearch, WebFetch, ToolSearch, Bash, AskUserQuestion
 ---
 
 # dr-stock Skill
@@ -443,3 +443,12 @@ articles/{article_id}/
 
 - `src/analyze/visualization/` のパッケージが正しくインストールされているか確認
 - レポートのみの出力に切り替え（チャート生成は非致命的エラーとして処理）
+
+### KG Integration (Optional)
+
+分析完了後、結果をナレッジグラフに投入できます:
+
+```bash
+/emit-graph-queue --command dr-stock --input research/DR_stock_{date}_{ticker}/03_analysis/stock-analysis.json
+/save-to-graph --source dr-stock
+```

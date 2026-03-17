@@ -388,7 +388,7 @@ if total > 0 and abs(total - 1.0) > 1e-10:
 | `np.where` / `np.select` | ~1ms | ~10ms | NumPy の条件分岐 |
 
 ```python
-from finance.utils.profiling import profile_context
+from utils_core.profiling import profile_context
 
 with profile_context("ベクトル化版リターン計算"):
     returns = df.groupby("symbol")["close"].pct_change()

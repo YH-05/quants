@@ -131,7 +131,7 @@ raise ProcessingError(f"Failed to process {source}: {e}") from e
 ### ロギング
 
 ```python
-from finance.utils.logging_config import get_logger
+from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 
@@ -225,7 +225,7 @@ NumPy 形式 Docstring の詳細例：
 
 **期待される出力**:
 ```python
-from finance.utils.logging_config import get_logger
+from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 
@@ -334,7 +334,7 @@ class SymbolNotFoundError(MarketDataError):
 
 **期待される出力**:
 ```python
-from finance.utils.logging_config import get_logger
+from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 

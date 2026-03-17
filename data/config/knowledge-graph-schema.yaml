@@ -1,0 +1,579 @@
+# Knowledge Graph Schema Definition
+# Neo4j graph database schema for quants knowledge management
+#
+# Usage:
+#   - This file defines the canonical graph schema (SSoT)
+#   - mcp-neo4j-data-modeling can import/export compatible models
+#   - Schema changes should be made here first, then applied to Neo4j
+#
+# Changelog:
+#   v1.0 (2026-03-17): Initial schema for quants project
+#     - 9 nodes adapted from note-finance v2.1 (12 nodes)
+#     - Removed: Chunk (no PDF pipeline), Stance (no sell-side reports), Question (future)
+#     - 16 relationships for 7 workflow outputs
+#     - Namespace: kg_v1 (not kg_v2, to distinguish from note-finance)
+
+version: "1.0"
+
+# ============================================================
+# Node Definitions (9 nodes)
+# ============================================================
+nodes:
+  Source:
+    description: "Information source (news article, report, SEC Filing, original article)"
+    properties:
+      source_id:
+        type: string
+        unique: true
+        required: true
+        description: "Unique identifier (UUID5 from URL)"
+      title:
+        type: string
+        required: true
+        indexed: true
+      url:
+        type: string
+        indexed: true
+        description: "Source URL (null for local documents)"
+      source_type:
+        type: string
+        required: true
+        enum: [web, news, report, original]
+        indexed: true
+        description: "web=website, news=news article, report=analyst/research report, original=self-authored"
+      publisher:
+        type: string
+        indexed: true
+        description: "Publisher or organization name"
+      published_at:
+        type: datetime
+        indexed: true
+      fetched_at:
+        type: datetime
+        required: true
+      language:
+        type: string
+        default: "en"
+      category:
+        type: string
+        indexed: true
+        description: "Category tag (e.g., macro, stock, sector)"
+      command_source:
+        type: string
+        indexed: true
+        description: "Workflow command that generated this source"
+
+  Entity:
+    description: "Named entities referenced in facts and claims (companies, indices, sectors, countries, etc.)"
+    properties:
+      entity_id:
+        type: string
+        unique: true
+        required: true
+      name:
+        type: string
+        required: true
+        indexed: true
+      entity_type:
+        type: string
+        required: true
+        enum: [company, index, sector, indicator, currency, commodity, person, organization, country, instrument]
+        indexed: true
+        description: >
+          company=publicly traded company, index=stock index, sector=industry sector,
+          indicator=economic indicator, currency=currency pair, commodity=commodity,
+          person=individual, organization=non-market org, country=sovereign nation,
+          instrument=financial instrument (bond, derivative, etc.)
+      ticker:
+        type: string
+        indexed: true
+        description: "Stock ticker symbol (if applicable)"
+      aliases:
+        type: string[]
+        description: "Alternative names"
+      isin:
+        type: string
+        indexed: true
+        description: "ISIN code (if applicable)"
+
+  Claim:
+    description: >
+      Subjective assertions, opinions, predictions, or judgments from sources.
+      Includes recommendations, valuation assumptions, forecasts, sector views, and policy stances.
+    properties:
+      claim_id:
+        type: string
+        unique: true
+        required: true
+      content:
+        type: string
+        required: true
+        description: "Claim statement"
+      claim_type:
+        type: string
+        enum: [opinion, prediction, recommendation, analysis, assumption, guidance, risk_assessment, policy_stance, sector_view, forecast]
+        indexed: true
+        description: >
+          opinion=viewpoint, prediction=future expectation, recommendation=buy/sell/hold,
+          analysis=interpretation, assumption=valuation/model assumption,
+          guidance=management guidance, risk_assessment=risk evaluation,
+          policy_stance=monetary/fiscal policy view, sector_view=industry-level assessment,
+          forecast=quantitative projection
+      sentiment:
+        type: string
+        enum: [bullish, bearish, neutral, mixed]
+        indexed: true
+      magnitude:
+        type: string
+        enum: [strong, moderate, slight]
+        description: "Strength of the sentiment or conviction"
+      target_price:
+        type: float
+        description: "Target price (for recommendation claims)"
+      rating:
+        type: string
+        description: "Rating label (e.g., Buy, Hold, Sell, Overweight)"
+      time_horizon:
+        type: string
+        description: "Time horizon for the claim (e.g., '12M', 'FY26', 'long-term')"
+      created_at:
+        type: datetime
+        required: true
+
+  Fact:
+    description: "Objectively verifiable past information extracted from sources. Strictly limited to verified, historical, objective data."
+    properties:
+      fact_id:
+        type: string
+        unique: true
+        required: true
+      content:
+        type: string
+        required: true
+        description: "Fact statement"
+      fact_type:
+        type: string
+        enum: [statistic, event, data_point, quote, policy_action, economic_indicator, regulatory, corporate_action]
+        indexed: true
+        description: >
+          statistic=numerical data, event=occurrence, data_point=metric,
+          quote=direct citation, policy_action=central bank/government action,
+          economic_indicator=GDP/CPI/PMI etc, regulatory=regulatory change,
+          corporate_action=M&A/dividend/buyback etc
+      as_of_date:
+        type: date
+        indexed: true
+        description: "Date the fact refers to"
+      created_at:
+        type: datetime
+        required: true
+
+  FinancialDataPoint:
+    description: >
+      Structured numerical data extracted from tables and text.
+      Supports both actual (historical) and estimated (forecast) values via is_estimate flag.
+    properties:
+      datapoint_id:
+        type: string
+        unique: true
+        required: true
+        description: "SHA-256 based ID from source_hash:metric:period"
+      metric_name:
+        type: string
+        required: true
+        indexed: true
+        description: "Metric name (e.g., 'Revenue', 'EBITDA', 'Net Income')"
+      value:
+        type: float
+        required: true
+        description: "Numeric value"
+      unit:
+        type: string
+        required: true
+        description: "Unit (e.g., 'USD mn', '%', 'x')"
+      is_estimate:
+        type: boolean
+        required: true
+        default: false
+        indexed: true
+        description: "true=analyst estimate/forecast, false=actual reported figure"
+      currency:
+        type: string
+        description: "ISO 4217 currency code (e.g., 'USD', 'JPY')"
+      created_at:
+        type: datetime
+        required: true
+
+  FiscalPeriod:
+    description: "Fiscal period for normalizing time references across reports"
+    properties:
+      period_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: {ticker}_{period_label} (e.g., 'AAPL_FY2025')"
+      period_type:
+        type: string
+        required: true
+        enum: [annual, quarterly, half_year, monthly]
+        indexed: true
+      period_label:
+        type: string
+        required: true
+        indexed: true
+        description: "Human-readable label (e.g., 'FY2025', '4Q25', '1H26')"
+      start_date:
+        type: date
+        description: "Period start date"
+      end_date:
+        type: date
+        description: "Period end date"
+
+  Topic:
+    description: "Topic or theme tag"
+    properties:
+      topic_id:
+        type: string
+        unique: true
+        required: true
+      name:
+        type: string
+        required: true
+        indexed: true
+      category:
+        type: string
+        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings]
+        indexed: true
+
+  Author:
+    description: "Author or publishing organization"
+    properties:
+      author_id:
+        type: string
+        unique: true
+        required: true
+      name:
+        type: string
+        required: true
+        indexed: true
+      author_type:
+        type: string
+        required: true
+        enum: [person, sell_side, buy_side, consultant, media, self]
+        indexed: true
+        description: "person=individual, sell_side=investment bank, buy_side=asset manager, consultant=consulting firm, media=news outlet, self=own content"
+      organization:
+        type: string
+        indexed: true
+
+  Insight:
+    description: >
+      AI-generated analytical output. Stores creative synthesis, contradiction detection,
+      evidence gap analysis, hypotheses, and pattern recognition.
+    properties:
+      insight_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: ins-{YYYY-MM-DD}-{sequential}"
+      insight_type:
+        type: string
+        required: true
+        enum: [synthesis, contradiction, gap, hypothesis, pattern]
+        indexed: true
+        description: >
+          synthesis=cross-source integration, contradiction=conflicting claims detected,
+          gap=missing information identified, hypothesis=AI-generated testable prediction,
+          pattern=recurring theme or trend
+      content:
+        type: string
+        required: true
+        description: "The insight text"
+      model:
+        type: string
+        description: "AI model that generated this insight (e.g., 'claude-opus-4-6')"
+      generated_at:
+        type: datetime
+        required: true
+      status:
+        type: string
+        enum: [draft, validated, invalidated, archived]
+        default: "draft"
+        indexed: true
+        description: "Lifecycle status of the insight"
+
+# ============================================================
+# Relationship Definitions (16 relationships)
+# ============================================================
+relationships:
+  # Source -> Fact / Claim
+  STATES_FACT:
+    from: Source
+    to: Fact
+    description: "Source states an objective fact"
+    properties:
+      extracted_at:
+        type: datetime
+      page_or_section:
+        type: string
+        description: "Page number or section reference"
+
+  MAKES_CLAIM:
+    from: Source
+    to: Claim
+    description: "Source makes a subjective claim"
+    properties:
+      extracted_at:
+        type: datetime
+      page_or_section:
+        type: string
+
+  # Entity linking
+  ABOUT:
+    from: Claim
+    to: Entity
+    description: "Claim is about this entity"
+
+  RELATES_TO:
+    from: [Fact, FinancialDataPoint]
+    to: Entity
+    description: "Fact or data point references this entity"
+
+  # Topic tagging
+  TAGGED:
+    from: [Source, Claim, Insight]
+    to: Topic
+    description: "Tagged with this topic"
+
+  # Authorship
+  AUTHORED_BY:
+    from: Source
+    to: Author
+    description: "Source is authored by this person/organization"
+
+  # Evidence chain
+  SUPPORTED_BY:
+    from: [Claim, Insight]
+    to: [Fact, FinancialDataPoint, Claim]
+    description: "Claim/Insight is supported by this evidence"
+    properties:
+      strength:
+        type: string
+        enum: [strong, moderate, weak, circumstantial]
+        description: "How strongly this evidence supports the claim"
+      reasoning:
+        type: string
+        description: "Explanation of why this evidence supports the claim"
+      linked_at:
+        type: datetime
+
+  # Contradiction
+  CONTRADICTS:
+    from: Claim
+    to: Claim
+    description: "Two claims that contradict each other"
+    properties:
+      noted_at:
+        type: datetime
+      explanation:
+        type: string
+        description: "How/why the claims contradict"
+
+  # Financial data relationships
+  HAS_DATAPOINT:
+    from: Source
+    to: FinancialDataPoint
+    description: "Source contains this financial data point"
+
+  FOR_PERIOD:
+    from: FinancialDataPoint
+    to: FiscalPeriod
+    description: "Data point is for this fiscal period"
+
+  NEXT_PERIOD:
+    from: FiscalPeriod
+    to: FiscalPeriod
+    description: "Temporal ordering between fiscal periods of the same ticker and period_type"
+    properties:
+      gap_months:
+        type: integer
+        description: "Number of months between the two periods"
+
+  TREND:
+    from: FinancialDataPoint
+    to: FinancialDataPoint
+    description: "Metric trend between consecutive periods for the same (entity, metric_name)"
+    properties:
+      change_pct:
+        type: float
+        description: "Percentage change from previous to current value"
+      direction:
+        type: string
+        enum: [up, down, flat]
+        description: "Trend direction: up if change_pct > 1, down if < -1, flat otherwise"
+
+  # Insight relationships
+  DERIVED_FROM:
+    from: Insight
+    to: [Fact, Claim, FinancialDataPoint, Insight]
+    description: "Insight was derived from these inputs"
+    properties:
+      role:
+        type: string
+        description: "Role of the input (e.g., 'primary', 'supporting', 'contrasting')"
+
+  VALIDATES:
+    from: Insight
+    to: [Claim, Insight]
+    description: "This insight validates/confirms the target"
+    properties:
+      validated_at:
+        type: datetime
+
+  CHALLENGES:
+    from: Insight
+    to: [Claim, Insight]
+    description: "This insight challenges/questions the target"
+    properties:
+      challenged_at:
+        type: datetime
+      reason:
+        type: string
+
+  # Causal chain
+  CAUSES:
+    from: [Fact, Claim, FinancialDataPoint]
+    to: [Fact, Claim, FinancialDataPoint]
+    description: "Causal relationship between knowledge nodes"
+    properties:
+      mechanism:
+        type: string
+        description: "How/why the cause leads to the effect"
+      confidence:
+        type: string
+        enum: [high, medium, low]
+        description: "Confidence level of the causal link"
+      source_id:
+        type: string
+        description: "Source document that states this causal relationship"
+      from_label:
+        type: string
+        enum: [Fact, Claim, FinancialDataPoint]
+        description: "Label of the from-node (Neo4j CE workaround for multi-label MATCH)"
+      to_label:
+        type: string
+        enum: [Fact, Claim, FinancialDataPoint]
+        description: "Label of the to-node (Neo4j CE workaround for multi-label MATCH)"
+
+# ============================================================
+# Constraints & Indices
+# ============================================================
+constraints:
+  - label: Source
+    property: source_id
+    type: UNIQUE
+  - label: Entity
+    property: entity_id
+    type: UNIQUE
+  - label: Claim
+    property: claim_id
+    type: UNIQUE
+  - label: Fact
+    property: fact_id
+    type: UNIQUE
+  - label: FinancialDataPoint
+    property: datapoint_id
+    type: UNIQUE
+  - label: FiscalPeriod
+    property: period_id
+    type: UNIQUE
+  - label: Topic
+    property: topic_id
+    type: UNIQUE
+  - label: Author
+    property: author_id
+    type: UNIQUE
+  - label: Insight
+    property: insight_id
+    type: UNIQUE
+
+indices:
+  - label: Fact
+    property: fact_type
+  - label: Fact
+    property: as_of_date
+  - label: Claim
+    property: claim_type
+  - label: Claim
+    property: sentiment
+  - label: Entity
+    property: entity_type
+  - label: Entity
+    property: ticker
+  - label: FinancialDataPoint
+    property: metric_name
+  - label: FinancialDataPoint
+    property: is_estimate
+  - label: FiscalPeriod
+    property: period_label
+  - label: Insight
+    property: insight_type
+  - label: Insight
+    property: status
+  - label: Source
+    property: source_type
+  - label: Source
+    property: command_source
+
+# ============================================================
+# Namespace Definitions
+# ============================================================
+namespaces:
+  kg_v1:
+    description: "KG v1 schema nodes for quants knowledge graph"
+    labels:
+      - Source
+      - Entity
+      - Claim
+      - Fact
+      - FinancialDataPoint
+      - FiscalPeriod
+      - Topic
+      - Author
+      - Insight
+    naming: PascalCase
+
+  memory:
+    description: "MCP Memory nodes (root + sub-labels)"
+    root_label: Memory
+    sub_labels:
+      - Decision
+      - ContentTheme
+      - Theme
+      - Implementation
+      - Phase
+      - Strategy
+      - CaseStudy
+      - Architecture
+      - Schema
+      - Status
+      - BusinessModel
+      - Workflow
+      - Research
+      - Todo
+      - Discussion
+    naming: PascalCase
+
+  conversation:
+    description: "Conversation history tracking nodes (future)"
+    labels:
+      - ConversationSession
+      - ConversationTopic
+      - Project
+    naming: PascalCase
+
+  archived:
+    description: "Archived legacy nodes"
+    labels:
+      - Archived
+    naming: PascalCase

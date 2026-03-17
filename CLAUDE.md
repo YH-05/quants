@@ -4,7 +4,7 @@ created_at: 2025-12-30
 updated_at: 2026-03-07
 ---
 
-# finance - 金融市場分析・コンテンツ発信支援ライブラリ
+# quants - 金融市場分析・コンテンツ発信支援ライブラリ
 
 **Python 3.12+** | uv | Ruff | pyright | pytest + Hypothesis
 
@@ -14,7 +14,7 @@ updated_at: 2026-03-07
 - 曖昧な表現はせず、可能な限り正確な情報を書く
 	- 非推奨: このAPIは制限を受ける可能性がある。
 	- 推奨: Github APIは短時間のリクエストを5000件に
-- 情報が不足していたり曖昧な状況であったりした場合は、ユーザーにAskUserQeestionsツールを使って詳細を尋ねる
+- 情報が不足していたり曖昧な状況であったりした場合は、ユーザーにAskUserQuestionツールを使って詳細を尋ねる
 - 自分だけで作業しない。可能な限りサブエージェントに作業を移譲する。適切なサブエージェントがなければ作成を提案する。
 - **Bash で `claude` CLI を起動してエージェントをスポーンしてはならない。** サブエージェントの起動は必ず Task tool（`team_name` パラメータ付き）を使用すること。Bash 経由の起動はネストセッション禁止エラー（`CLAUDECODE` 環境変数検出）を引き起こす。
 - **コードの動作・出力内容を回答する際は、必ず実装コード（`.py`）を一次情報とすること。** エージェント定義（`.claude/agents/`）やコマンド定義（`.claude/commands/`）は設計意図であり、実装と乖離している場合がある。定義ファイルのみを根拠に回答してはならない。
@@ -99,6 +99,10 @@ updated_at: 2026-03-07
 - 競争優位性評価 → `/ca-eval`
 - 全工程一括 → `/finance-full`
 
+### ナレッジグラフ
+- graph-queue 生成 → `/emit-graph-queue --command <cmd> --input <path>`
+- Neo4j 投入 → `/save-to-graph`
+
 ### 分析・改善
 - コード分析 → `/analyze`
 - 品質改善 → `/ensure-quality`
@@ -125,6 +129,9 @@ updated_at: 2026-03-07
 | `news_scraper` | 金融ニューススクレイパー | CNBC/NASDAQ/yfinance RSS・APIスクレイピング、curl_cffi、sync/async対応 |
 | `utils_core` | 共通ユーティリティ | ロギング設定 |
 | `dev/ca_strategy` | AI駆動の競争優位性ベース投資戦略パッケージ（PoC） | トランスクリプト解析、LLM主張抽出・スコアリング、セクター中立化、ポートフォリオ構築 |
+| `automation` | 自動化パッケージ | ニュース収集自動化、開発タスク自動化 |
+| `embedding` | エンベディングパッケージ | ChromaDB連携、テキスト抽出、ベクトル検索パイプライン |
+| `notebooklm` | NotebookLM連携パッケージ | ブラウザ自動操作、MCP統合、コンテンツ管理 |
 
 ---
 
@@ -177,17 +184,19 @@ updated_at: 2026-03-07
 ## ディレクトリ構成
 
 ```
-finance/
-├── .claude/          # Claude Code 設定（agents/101個, commands/20個, rules/, skills/52個）
-├── src/              # ソースコード（database, market, edgar, analyze, rss, factor, strategy, news, news_scraper, utils_core, dev/ca_strategy）
+quants/
+├── .claude/          # Claude Code 設定（agents/97個, commands/28個, rules/, skills/61個）
+├── src/              # ソースコード（database, market, edgar, analyze, rss, factor, strategy, news, news_scraper, utils_core, dev/ca_strategy, automation, embedding, notebooklm）
 ├── tests/            # テストスイート（{package}/unit/, property/, integration/）
-├── data/             # データ層（raw/, processed/, exports/）
 ├── template/         # 参照テンプレート（読み取り専用）
-├── articles/         # 金融記事ワークスペース
 ├── research/         # ディープリサーチワークスペース
+├── analyst/          # アナリストレポートワークスペース
+├── notebook/         # ノートブック
 ├── docs/             # ドキュメント
 ├── snippets/         # 再利用可能コンテンツ
-└── trash/            # 削除待ちファイル
+├── scripts/          # セットアップ・運用スクリプト
+├── logs/             # ログ出力
+└── data/             # データ層（raw/, processed/, exports/）
 ```
 
 ---

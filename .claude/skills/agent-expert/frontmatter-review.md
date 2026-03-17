@@ -104,7 +104,7 @@ description: コードをチェック  # 曖昧すぎる
 | `WebSearch` | Web検索 |
 | `WebFetch` | Webページ取得 |
 | `AskUserQuestion` | ユーザーへの質問 |
-| `MCPSearch` | MCPツール検索 |
+| `ToolSearch` | ツール検索（旧MCPSearch） |
 | `NotebookEdit` | Jupyter Notebook編集 |
 | `Skill` | スキル実行 |
 

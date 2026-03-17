@@ -389,9 +389,9 @@ allowed-tools: Read, Write, Bash, Task
 - スキルセクション構成
 - コメント付きガイド
 
-### ./frontmatter-review.md
+### ../agent-expert/frontmatter-review.md
 
-フロントマターレビューガイド（agent-expert 拡張と共有）：
+フロントマターレビューガイド（agent-expert と共有）：
 
 - スキルフロントマター検証ルール
 - allowed-tools の検証

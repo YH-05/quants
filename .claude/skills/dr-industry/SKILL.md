@@ -1,7 +1,7 @@
 ---
 name: dr-industry
 description: "セクター・業界の包括的分析を実行します。市場データ・SEC Filings・業界レポート・専門メディアを収集し、クロス検証・セクター比較分析・レポート生成までを自動化します。"
-allowed-tools: Read, Write, Glob, Grep, Task, WebSearch, WebFetch, MCPSearch, Bash, AskUserQuestion
+allowed-tools: Read, Write, Glob, Grep, Task, WebSearch, WebFetch, ToolSearch, Bash, AskUserQuestion
 ---
 
 # dr-industry Skill

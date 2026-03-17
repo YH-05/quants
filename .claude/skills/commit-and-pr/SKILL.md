@@ -1,8 +1,6 @@
 ---
 name: commit-and-pr
-description: 変更のコミットとPR作成を一括実行するスキル。
-/commit-and-pr コマンドで使用。品質確認、コミット、プッシュ、PR作成、CIチェックを自動化。
-
+description: "変更のコミットとPR作成を一括実行するスキル。/commit-and-pr コマンドで使用。品質確認、コミット、プッシュ、PR作成、CIチェックを自動化。"
 allowed-tools: Read, Bash
 ---
 

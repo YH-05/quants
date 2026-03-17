@@ -293,6 +293,15 @@ gh project list --owner @me
 - [ ] **Issue が Project #15 に追加されている（Status: Weekly Report）**
 - [ ] 結果サマリーが表示されている
 
+### KG Integration (Optional)
+
+レポート生成後、結果をナレッジグラフに投入できます:
+
+```bash
+/emit-graph-queue --command generate-market-report --input data/{date}/report-data.json
+/save-to-graph --source generate-market-report
+```
+
 ## 関連コマンド
 
 - `/finance-news-workflow`: ニュース収集
