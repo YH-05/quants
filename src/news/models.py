@@ -577,7 +577,7 @@ class CategoryPublishResult(BaseModel):
     ...     category_label="株価指数",
     ...     date="2026-02-09",
     ...     issue_number=100,
-    ...     issue_url="https://github.com/YH-05/finance/issues/100",
+    ...     issue_url="https://github.com/YH-05/quants/issues/100",
     ...     article_count=5,
     ...     status=PublicationStatus.SUCCESS,
     ... )
@@ -730,7 +730,7 @@ class PublishedArticle(BaseModel):
     >>> published = PublishedArticle(
     ...     summarized=summarized,
     ...     issue_number=123,
-    ...     issue_url="https://github.com/YH-05/finance/issues/123",
+    ...     issue_url="https://github.com/YH-05/quants/issues/123",
     ...     publication_status=PublicationStatus.SUCCESS,
     ... )
     >>> published.publication_status

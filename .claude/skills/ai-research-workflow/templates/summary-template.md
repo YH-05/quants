@@ -338,14 +338,14 @@
 
 ## 作成されたIssue
 
-- [#3600](https://github.com/YH-05/finance/issues/3600) [AI/LLM開発] OpenAIがGPT-5を発表、推論性能が3倍向上
+- [#3600](https://github.com/YH-05/quants/issues/3600) [AI/LLM開発] OpenAIがGPT-5を発表、推論性能が3倍向上
   - カテゴリ: AI/LLM開発
   - 企業: OpenAI
   - 影響度: high
   - 関連銘柄: MSFT
   - 公開日: 2026-02-10
 
-- [#3601](https://github.com/YH-05/finance/issues/3601) [GPU・演算チップ] NVIDIAがBlackwell Ultra量産を前倒し
+- [#3601](https://github.com/YH-05/quants/issues/3601) [GPU・演算チップ] NVIDIAがBlackwell Ultra量産を前倒し
   - カテゴリ: GPU・演算チップ
   - 企業: NVIDIA
   - 影響度: high

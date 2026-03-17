@@ -237,7 +237,7 @@ class TestCategoryPublishResult:
             category_label="株価指数",
             date="2026-02-09",
             issue_number=100,
-            issue_url="https://github.com/YH-05/finance/issues/100",
+            issue_url="https://github.com/YH-05/quants/issues/100",
             article_count=5,
             status=PublicationStatus.SUCCESS,
         )
@@ -246,7 +246,7 @@ class TestCategoryPublishResult:
         assert result.category_label == "株価指数"
         assert result.date == "2026-02-09"
         assert result.issue_number == 100
-        assert result.issue_url == "https://github.com/YH-05/finance/issues/100"
+        assert result.issue_url == "https://github.com/YH-05/quants/issues/100"
         assert result.article_count == 5
         assert result.status == PublicationStatus.SUCCESS
         assert result.error_message is None
@@ -297,7 +297,7 @@ class TestCategoryPublishResult:
             category_label="株価指数",
             date="2026-02-09",
             issue_number=100,
-            issue_url="https://github.com/YH-05/finance/issues/100",
+            issue_url="https://github.com/YH-05/quants/issues/100",
             article_count=5,
             status=PublicationStatus.SUCCESS,
         )
@@ -313,7 +313,7 @@ class TestCategoryPublishResult:
                 category_label="株価指数",
                 date="2026-02-09",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 article_count=5,
                 status=PublicationStatus.SUCCESS,
             )
@@ -328,7 +328,7 @@ class TestCategoryPublishResult:
                 category_label="株価指数",
                 date="2026-02-09",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 article_count=5,
             )
 
@@ -342,7 +342,7 @@ class TestCategoryPublishResult:
                 category_label="株価指数",
                 date="2026-02-09",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 status=PublicationStatus.SUCCESS,
             )
 
@@ -355,7 +355,7 @@ class TestCategoryPublishResult:
             category_label="株価指数",
             date="2026-02-09",
             issue_number=100,
-            issue_url="https://github.com/YH-05/finance/issues/100",
+            issue_url="https://github.com/YH-05/quants/issues/100",
             article_count=5,
             status=PublicationStatus.SUCCESS,
         )
@@ -432,7 +432,7 @@ class TestWorkflowResultCategoryResults:
                 category_label="株価指数",
                 date="2026-02-09",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 article_count=5,
                 status=PublicationStatus.SUCCESS,
             ),
@@ -441,7 +441,7 @@ class TestWorkflowResultCategoryResults:
                 category_label="個別銘柄",
                 date="2026-02-09",
                 issue_number=101,
-                issue_url="https://github.com/YH-05/finance/issues/101",
+                issue_url="https://github.com/YH-05/quants/issues/101",
                 article_count=3,
                 status=PublicationStatus.SUCCESS,
             ),
@@ -464,7 +464,7 @@ class TestWorkflowResultCategoryResults:
                 category_label="株価指数",
                 date="2026-02-09",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 article_count=5,
                 status=PublicationStatus.SUCCESS,
             ),

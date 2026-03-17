@@ -3,7 +3,7 @@
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/badge/uv-latest-green.svg)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
-[![CI](https://github.com/YH-05/finance/actions/workflows/ci.yml/badge.svg)](https://github.com/YH-05/finance/actions/workflows/ci.yml)
+[![CI](https://github.com/YH-05/quants/actions/workflows/ci.yml/badge.svg)](https://github.com/YH-05/quants/actions/workflows/ci.yml)
 
 金融市場の分析を効率化する Python ライブラリです。
 

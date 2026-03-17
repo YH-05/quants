@@ -1,6 +1,6 @@
 # タスク 03: connection.py に get_data_dir() 関数を追加
 
-- **Issue**: [#2842](https://github.com/YH-05/finance/issues/2842)
+- **Issue**: [#2842](https://github.com/YH-05/quants/issues/2842)
 - **ステータス**: todo
 
 ## 概要
@@ -58,8 +58,8 @@ DATA_DIR = PROJECT_ROOT / "data"  # 非推奨
 
 ## 依存関係
 
-- depends_on: [#2841](https://github.com/YH-05/finance/issues/2841)
-- blocks: [#2845](https://github.com/YH-05/finance/issues/2845)
+- depends_on: [#2841](https://github.com/YH-05/quants/issues/2841)
+- blocks: [#2845](https://github.com/YH-05/quants/issues/2845)
 
 ## 見積もり
 

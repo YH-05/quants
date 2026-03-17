@@ -96,22 +96,22 @@ CLI (scripts/sync.py)
 ### Wave 1（並行開発可能）
 
 - [ ] テストパッケージ初期化と共通フィクスチャ
-  - Issue: [#3668](https://github.com/YH-05/finance/issues/3668)
+  - Issue: [#3668](https://github.com/YH-05/quants/issues/3668)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] 定数モジュール（constants.py）+ テスト
-  - Issue: [#3669](https://github.com/YH-05/finance/issues/3669)
+  - Issue: [#3669](https://github.com/YH-05/quants/issues/3669)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] 例外階層（errors.py）+ テスト
-  - Issue: [#3670](https://github.com/YH-05/finance/issues/3670)
+  - Issue: [#3670](https://github.com/YH-05/quants/issues/3670)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] データモデル（types.py）+ テスト
-  - Issue: [#3671](https://github.com/YH-05/finance/issues/3671)
+  - Issue: [#3671](https://github.com/YH-05/quants/issues/3671)
   - ステータス: todo
   - 依存: #3669
   - 見積もり: 2h
@@ -119,13 +119,13 @@ CLI (scripts/sync.py)
 ### Wave 2（Wave 1 完了後）
 
 - [ ] 日次レート制限管理（rate_limiter.py）+ テスト
-  - Issue: [#3672](https://github.com/YH-05/finance/issues/3672)
+  - Issue: [#3672](https://github.com/YH-05/quants/issues/3672)
   - ステータス: todo
   - 依存: #3669
   - 見積もり: 1.5h
 
 - [ ] HTTP クライアント（client.py）+ テスト
-  - Issue: [#3673](https://github.com/YH-05/finance/issues/3673)
+  - Issue: [#3673](https://github.com/YH-05/quants/issues/3673)
   - ステータス: todo
   - 依存: #3669, #3670, #3671, #3672
   - 見積もり: 2.5h
@@ -133,7 +133,7 @@ CLI (scripts/sync.py)
 ### Wave 3（Wave 1 完了後）
 
 - [ ] DuckDB ストレージ層（storage.py）+ テスト
-  - Issue: [#3674](https://github.com/YH-05/finance/issues/3674)
+  - Issue: [#3674](https://github.com/YH-05/quants/issues/3674)
   - ステータス: todo
   - 依存: #3669, #3670, #3671
   - 見積もり: 2h
@@ -141,7 +141,7 @@ CLI (scripts/sync.py)
 ### Wave 4（Wave 2 + Wave 3 完了後）
 
 - [ ] 同期オーケストレーター（syncer.py）+ テスト
-  - Issue: [#3675](https://github.com/YH-05/finance/issues/3675)
+  - Issue: [#3675](https://github.com/YH-05/quants/issues/3675)
   - ステータス: todo
   - 依存: #3669, #3671, #3672, #3673, #3674
   - 見積もり: 3h
@@ -149,7 +149,7 @@ CLI (scripts/sync.py)
 ### Wave 5（Wave 4 完了後）
 
 - [ ] CLI ランナー（scripts/sync.py）+ テスト
-  - Issue: [#3676](https://github.com/YH-05/finance/issues/3676)
+  - Issue: [#3676](https://github.com/YH-05/quants/issues/3676)
   - ステータス: todo
   - 依存: #3669, #3671, #3675
   - 見積もり: 1.5h
@@ -157,13 +157,13 @@ CLI (scripts/sync.py)
 ### Wave 6（全コンポーネント完成後）
 
 - [ ] __init__.py 完成版
-  - Issue: [#3677](https://github.com/YH-05/finance/issues/3677)
+  - Issue: [#3677](https://github.com/YH-05/quants/issues/3677)
   - ステータス: todo
   - 依存: #3670, #3671, #3672, #3673, #3674, #3675
   - 見積もり: 0.5h
 
 - [ ] 既存ファイル統合（market/errors.py, types.py, __init__.py）
-  - Issue: [#3678](https://github.com/YH-05/finance/issues/3678)
+  - Issue: [#3678](https://github.com/YH-05/quants/issues/3678)
   - ステータス: todo
   - 依存: #3670, #3677
   - 見積もり: 1h

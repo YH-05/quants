@@ -353,39 +353,39 @@ scripts/collect_currency_rates.py       # データ収集スクリプト
 
 | # | Issue | タスク | 依存 | ファイル |
 |---|-------|--------|------|----------|
-| 01 | [#2410](https://github.com/YH-05/finance/issues/2410) | InterestRateAnalyzer クラス作成 | - | `src/analyze/reporting/interest_rate.py` |
-| 02 | [#2411](https://github.com/YH-05/finance/issues/2411) | InterestRateAnalyzer4Agent クラス作成 | 01 | `src/analyze/reporting/interest_rate_agent.py` |
-| 03 | [#2412](https://github.com/YH-05/finance/issues/2412) | collect_interest_rates.py スクリプト作成 | 02 | `scripts/collect_interest_rates.py` |
-| 04 | [#2413](https://github.com/YH-05/finance/issues/2413) | 金利データ取得の単体テスト作成 | 01,02 | `tests/analyze/reporting/unit/test_interest_rate.py` |
+| 01 | [#2410](https://github.com/YH-05/quants/issues/2410) | InterestRateAnalyzer クラス作成 | - | `src/analyze/reporting/interest_rate.py` |
+| 02 | [#2411](https://github.com/YH-05/quants/issues/2411) | InterestRateAnalyzer4Agent クラス作成 | 01 | `src/analyze/reporting/interest_rate_agent.py` |
+| 03 | [#2412](https://github.com/YH-05/quants/issues/2412) | collect_interest_rates.py スクリプト作成 | 02 | `scripts/collect_interest_rates.py` |
+| 04 | [#2413](https://github.com/YH-05/quants/issues/2413) | 金利データ取得の単体テスト作成 | 01,02 | `tests/analyze/reporting/unit/test_interest_rate.py` |
 
 ### Phase 2: 為替データ
 
 | # | Issue | タスク | 依存 | ファイル |
 |---|-------|--------|------|----------|
-| 05 | [#2414](https://github.com/YH-05/finance/issues/2414) | symbols.yaml に currencies セクション追加 | - | `src/analyze/config/symbols.yaml` |
-| 06 | [#2415](https://github.com/YH-05/finance/issues/2415) | CurrencyAnalyzer クラス作成 | 05 | `src/analyze/reporting/currency.py` |
-| 07 | [#2416](https://github.com/YH-05/finance/issues/2416) | CurrencyAnalyzer4Agent クラス作成 | 06 | `src/analyze/reporting/currency_agent.py` |
-| 08 | [#2417](https://github.com/YH-05/finance/issues/2417) | collect_currency_rates.py スクリプト作成 | 07 | `scripts/collect_currency_rates.py` |
-| 09 | [#2418](https://github.com/YH-05/finance/issues/2418) | 為替データ取得の単体テスト作成 | 06,07 | `tests/analyze/reporting/unit/test_currency.py` |
+| 05 | [#2414](https://github.com/YH-05/quants/issues/2414) | symbols.yaml に currencies セクション追加 | - | `src/analyze/config/symbols.yaml` |
+| 06 | [#2415](https://github.com/YH-05/quants/issues/2415) | CurrencyAnalyzer クラス作成 | 05 | `src/analyze/reporting/currency.py` |
+| 07 | [#2416](https://github.com/YH-05/quants/issues/2416) | CurrencyAnalyzer4Agent クラス作成 | 06 | `src/analyze/reporting/currency_agent.py` |
+| 08 | [#2417](https://github.com/YH-05/quants/issues/2417) | collect_currency_rates.py スクリプト作成 | 07 | `scripts/collect_currency_rates.py` |
+| 09 | [#2418](https://github.com/YH-05/quants/issues/2418) | 為替データ取得の単体テスト作成 | 06,07 | `tests/analyze/reporting/unit/test_currency.py` |
 
 ### Phase 3: 来週の注目材料
 
 | # | Issue | タスク | 依存 | ファイル |
 |---|-------|--------|------|----------|
-| 10 | [#2419](https://github.com/YH-05/finance/issues/2419) | 決算発表日取得機能の実装 | - | `src/analyze/reporting/upcoming_events.py` |
-| 11 | [#2420](https://github.com/YH-05/finance/issues/2420) | 経済指標発表予定取得機能の実装 | - | `src/analyze/reporting/upcoming_events.py` |
-| 12 | [#2421](https://github.com/YH-05/finance/issues/2421) | UpcomingEvents4Agent クラス作成 | 10,11 | `src/analyze/reporting/upcoming_events_agent.py` |
-| 13 | [#2422](https://github.com/YH-05/finance/issues/2422) | collect_upcoming_events.py スクリプト作成 | 12 | `scripts/collect_upcoming_events.py` |
-| 14 | [#2423](https://github.com/YH-05/finance/issues/2423) | 来週の注目材料の単体テスト作成 | 10,11,12 | `tests/analyze/reporting/unit/test_upcoming_events.py` |
+| 10 | [#2419](https://github.com/YH-05/quants/issues/2419) | 決算発表日取得機能の実装 | - | `src/analyze/reporting/upcoming_events.py` |
+| 11 | [#2420](https://github.com/YH-05/quants/issues/2420) | 経済指標発表予定取得機能の実装 | - | `src/analyze/reporting/upcoming_events.py` |
+| 12 | [#2421](https://github.com/YH-05/quants/issues/2421) | UpcomingEvents4Agent クラス作成 | 10,11 | `src/analyze/reporting/upcoming_events_agent.py` |
+| 13 | [#2422](https://github.com/YH-05/quants/issues/2422) | collect_upcoming_events.py スクリプト作成 | 12 | `scripts/collect_upcoming_events.py` |
+| 14 | [#2423](https://github.com/YH-05/quants/issues/2423) | 来週の注目材料の単体テスト作成 | 10,11,12 | `tests/analyze/reporting/unit/test_upcoming_events.py` |
 
 ### Phase 4: 統合
 
 | # | Issue | タスク | 依存 | ファイル |
 |---|-------|--------|------|----------|
-| 15 | [#2424](https://github.com/YH-05/finance/issues/2424) | collect_market_performance.py の拡張 | 03,08,13 | `scripts/collect_market_performance.py` |
-| 16 | [#2425](https://github.com/YH-05/finance/issues/2425) | 週次レポートテンプレートの更新 | 02,07,12 | `template/market_report/weekly_market_report_template.md` |
-| 17 | [#2426](https://github.com/YH-05/finance/issues/2426) | weekly-comment-generation スキルの更新 | 16 | `.claude/skills/weekly-comment-generation/SKILL.md` |
-| 18 | [#2427](https://github.com/YH-05/finance/issues/2427) | 統合テスト・動作確認 | 15,16,17 | - |
+| 15 | [#2424](https://github.com/YH-05/quants/issues/2424) | collect_market_performance.py の拡張 | 03,08,13 | `scripts/collect_market_performance.py` |
+| 16 | [#2425](https://github.com/YH-05/quants/issues/2425) | 週次レポートテンプレートの更新 | 02,07,12 | `template/market_report/weekly_market_report_template.md` |
+| 17 | [#2426](https://github.com/YH-05/quants/issues/2426) | weekly-comment-generation スキルの更新 | 16 | `.claude/skills/weekly-comment-generation/SKILL.md` |
+| 18 | [#2427](https://github.com/YH-05/quants/issues/2427) | 統合テスト・動作確認 | 15,16,17 | - |
 
 ---
 

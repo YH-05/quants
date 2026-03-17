@@ -87,20 +87,20 @@ Step 5: Phase 2 出力バリデーション (Python)
 ### Wave 1（基盤モジュール）
 
 - [x] agent_io.py I/O ヘルパーモジュールと単体テストの作成
-  - Issue: [#3624](https://github.com/YH-05/finance/issues/3624)
+  - Issue: [#3624](https://github.com/YH-05/quants/issues/3624)
   - ステータス: done
   - 見積もり: 3h
 
 ### Wave 2（エージェント定義改修 -- 並行開発可能）
 
 - [x] transcript-claim-extractor エージェント定義をスタンドアロン実行に改修
-  - Issue: [#3625](https://github.com/YH-05/finance/issues/3625)
+  - Issue: [#3625](https://github.com/YH-05/quants/issues/3625)
   - ステータス: done
   - 依存: #3624
   - 見積もり: 1.5h
 
 - [x] transcript-claim-scorer エージェント定義をスタンドアロン実行に改修
-  - Issue: [#3626](https://github.com/YH-05/finance/issues/3626)
+  - Issue: [#3626](https://github.com/YH-05/quants/issues/3626)
   - ステータス: done
   - 依存: #3624
   - 見積もり: 1.5h
@@ -108,7 +108,7 @@ Step 5: Phase 2 出力バリデーション (Python)
 ### Wave 3（コマンド作成）
 
 - [x] run-ca-strategy-sample コマンドの作成
-  - Issue: [#3628](https://github.com/YH-05/finance/issues/3628)
+  - Issue: [#3628](https://github.com/YH-05/quants/issues/3628)
   - ステータス: done
   - 依存: #3624, #3625, #3626
   - 見積もり: 1h
@@ -116,7 +116,7 @@ Step 5: Phase 2 出力バリデーション (Python)
 ### Wave 4（統合テスト）
 
 - [x] DIS サンプル統合テスト実行と調整
-  - Issue: [#3629](https://github.com/YH-05/finance/issues/3629)
+  - Issue: [#3629](https://github.com/YH-05/quants/issues/3629)
   - ステータス: done
   - 依存: #3628
   - 見積もり: 2h

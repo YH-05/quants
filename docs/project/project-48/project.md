@@ -94,19 +94,19 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 1（並行開発可能）
 
 - [ ] パッケージ基盤の作成（types.py, errors.py, constants.py）
-  - Issue: [#3543](https://github.com/YH-05/finance/issues/3543)
+  - Issue: [#3543](https://github.com/YH-05/quants/issues/3543)
   - ステータス: todo
   - 見積もり: 1-1.5日
 
 - [ ] セレクター管理システムの作成（selectors.py）
-  - Issue: [#3544](https://github.com/YH-05/finance/issues/3544)
+  - Issue: [#3544](https://github.com/YH-05/quants/issues/3544)
   - ステータス: todo
   - 見積もり: 0.5-1日
 
 ### Wave 2（Wave 1 完了後）
 
 - [ ] ブラウザ自動化レイヤーの作成（BrowserManager + helpers）
-  - Issue: [#3545](https://github.com/YH-05/finance/issues/3545)
+  - Issue: [#3545](https://github.com/YH-05/quants/issues/3545)
   - ステータス: todo
   - 依存: #3543, #3544
   - 見積もり: 1-1.5日
@@ -114,13 +114,13 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 3（Wave 2 完了後）
 
 - [ ] テスト基盤と基盤ファイルの単体テスト作成
-  - Issue: [#3546](https://github.com/YH-05/finance/issues/3546)
+  - Issue: [#3546](https://github.com/YH-05/quants/issues/3546)
   - ステータス: todo
   - 依存: #3543, #3544, #3545
   - 見積もり: 0.5-1日
 
 - [ ] NotebookService と SourceService の基本実装
-  - Issue: [#3547](https://github.com/YH-05/finance/issues/3547)
+  - Issue: [#3547](https://github.com/YH-05/quants/issues/3547)
   - ステータス: todo
   - 依存: #3543, #3544, #3545
   - 見積もり: 1-1.5日
@@ -128,13 +128,13 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 4（Wave 3 完了後）
 
 - [ ] MCP サーバー本体と Phase 1 ツール（5ツール）の実装
-  - Issue: [#3548](https://github.com/YH-05/finance/issues/3548)
+  - Issue: [#3548](https://github.com/YH-05/quants/issues/3548)
   - ステータス: todo
   - 依存: #3546, #3547
   - 見積もり: 1-1.5日
 
 - [ ] BrowserManager + サービスの単体テスト作成
-  - Issue: [#3549](https://github.com/YH-05/finance/issues/3549)
+  - Issue: [#3549](https://github.com/YH-05/quants/issues/3549)
   - ステータス: todo
   - 依存: #3546, #3547
   - 見積もり: 1日
@@ -142,25 +142,25 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 5（Wave 4 完了後）
 
 - [ ] Phase 1 統合テスト + pyproject.toml 変更 + MCP サーバーテスト
-  - Issue: [#3550](https://github.com/YH-05/finance/issues/3550)
+  - Issue: [#3550](https://github.com/YH-05/quants/issues/3550)
   - ステータス: todo
   - 依存: #3548, #3549
   - 見積もり: 1-1.5日
 
 - [ ] ChatService の実装と MCP ツール登録
-  - Issue: [#3551](https://github.com/YH-05/finance/issues/3551)
+  - Issue: [#3551](https://github.com/YH-05/quants/issues/3551)
   - ステータス: todo
   - 依存: #3550
   - 見積もり: 1.5-2日
 
 - [ ] AudioService の実装と MCP ツール登録
-  - Issue: [#3552](https://github.com/YH-05/finance/issues/3552)
+  - Issue: [#3552](https://github.com/YH-05/quants/issues/3552)
   - ステータス: todo
   - 依存: #3550
   - 見積もり: 0.5-1日
 
 - [ ] SourceService 拡張
-  - Issue: [#3553](https://github.com/YH-05/finance/issues/3553)
+  - Issue: [#3553](https://github.com/YH-05/quants/issues/3553)
   - ステータス: todo
   - 依存: #3550
   - 見積もり: 1.5-2日
@@ -168,25 +168,25 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 6（Wave 5 完了後）
 
 - [ ] Phase 2 統合テスト（チャットワークフロー）
-  - Issue: [#3554](https://github.com/YH-05/finance/issues/3554)
+  - Issue: [#3554](https://github.com/YH-05/quants/issues/3554)
   - ステータス: todo
   - 依存: #3551
   - 見積もり: 0.5日
 
 - [ ] BatchService の実装と MCP ツール登録
-  - Issue: [#3555](https://github.com/YH-05/finance/issues/3555)
+  - Issue: [#3555](https://github.com/YH-05/quants/issues/3555)
   - ステータス: todo
   - 依存: #3551, #3552, #3553
   - 見積もり: 1日
 
 - [ ] StudioService の実装
-  - Issue: [#3556](https://github.com/YH-05/finance/issues/3556)
+  - Issue: [#3556](https://github.com/YH-05/quants/issues/3556)
   - ステータス: todo
   - 依存: #3550
   - 見積もり: 1.5-2日
 
 - [ ] NoteService の実装
-  - Issue: [#3557](https://github.com/YH-05/finance/issues/3557)
+  - Issue: [#3557](https://github.com/YH-05/quants/issues/3557)
   - ステータス: todo
   - 依存: #3550
   - 見積もり: 1日
@@ -194,19 +194,19 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 7（Wave 6 完了後）
 
 - [ ] BatchService ワークフロー拡張
-  - Issue: [#3558](https://github.com/YH-05/finance/issues/3558)
+  - Issue: [#3558](https://github.com/YH-05/quants/issues/3558)
   - ステータス: todo
   - 依存: #3555, #3556
   - 見積もり: 1日
 
 - [ ] Phase 3 MCP ツール登録と単体テスト（Studio + Note）
-  - Issue: [#3559](https://github.com/YH-05/finance/issues/3559)
+  - Issue: [#3559](https://github.com/YH-05/quants/issues/3559)
   - ステータス: todo
   - 依存: #3556, #3557
   - 見積もり: 1-1.5日
 
 - [ ] ノートブック削除機能の追加
-  - Issue: [#3560](https://github.com/YH-05/finance/issues/3560)
+  - Issue: [#3560](https://github.com/YH-05/quants/issues/3560)
   - ステータス: todo
   - 依存: #3550
   - 見積もり: 0.5日
@@ -214,7 +214,7 @@ Playwright を使用して NotebookLM の Web UI を自動操作し、27個の M
 ### Wave 8（Wave 7 完了後）
 
 - [ ] パッケージ README と最終統合
-  - Issue: [#3561](https://github.com/YH-05/finance/issues/3561)
+  - Issue: [#3561](https://github.com/YH-05/quants/issues/3561)
   - ステータス: todo
   - 依存: #3558, #3559, #3560
   - 見積もり: 0.5日

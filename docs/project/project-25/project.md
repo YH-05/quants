@@ -104,21 +104,21 @@ news-article-fetcher（拡張版、Sonnet）
 ### Phase 0: ペイウォール/JS検出スクリプト
 
 - [ ] article_content_checker.py 新規作成（3段階チェック + CLI）
-  - Issue: [#1783](https://github.com/YH-05/finance/issues/1783)
+  - Issue: [#1783](https://github.com/YH-05/quants/issues/1783)
   - ステータス: todo
   - 対象: `src/rss/services/article_content_checker.py`, `tests/rss/unit/test_article_content_checker.py`, `pyproject.toml`
 
 ### Phase 4.1: オーケストレーター設定追加
 
 - [ ] セッションファイルにproject_id等3フィールド追加
-  - Issue: [#1784](https://github.com/YH-05/finance/issues/1784)
+  - Issue: [#1784](https://github.com/YH-05/quants/issues/1784)
   - ステータス: todo
   - 対象: `.claude/agents/finance-news-orchestrator.md`
 
 ### Phase 1: article-fetcher拡張
 
 - [ ] news-article-fetcher 拡張（ペイウォールチェック + Issue作成統合）
-  - Issue: [#1785](https://github.com/YH-05/finance/issues/1785)
+  - Issue: [#1785](https://github.com/YH-05/quants/issues/1785)
   - ステータス: todo
   - 対象: `.claude/agents/news-article-fetcher.md`
   - 依存: #1783
@@ -126,7 +126,7 @@ news-article-fetcher（拡張版、Sonnet）
 ### Phase 3: 共通処理ガイド更新・URL正規化強化
 
 - [ ] 共通処理ガイドの新フロー反映・バッチ処理・URL正規化
-  - Issue: [#1786](https://github.com/YH-05/finance/issues/1786)
+  - Issue: [#1786](https://github.com/YH-05/quants/issues/1786)
   - ステータス: todo
   - 対象: `.claude/skills/finance-news-workflow/common-processing-guide.md`
   - 依存: #1785
@@ -134,7 +134,7 @@ news-article-fetcher（拡張版、Sonnet）
 ### Phase 2: テーマエージェント軽量化
 
 - [ ] テーマエージェント6ファイルの軽量化（各700行→200-300行）
-  - Issue: [#1787](https://github.com/YH-05/finance/issues/1787)
+  - Issue: [#1787](https://github.com/YH-05/quants/issues/1787)
   - ステータス: todo
   - 対象: `.claude/agents/finance-news-{index,stock,sector,macro,ai,finance}.md`
   - 依存: #1785, #1786
@@ -142,7 +142,7 @@ news-article-fetcher（拡張版、Sonnet）
 ### Phase 4.2: ルール更新
 
 - [ ] subagent-data-passing.md に article-fetcher 用データ構造追記
-  - Issue: [#1788](https://github.com/YH-05/finance/issues/1788)
+  - Issue: [#1788](https://github.com/YH-05/quants/issues/1788)
   - ステータス: todo
   - 対象: `.claude/rules/subagent-data-passing.md`
   - 依存: #1785
@@ -150,7 +150,7 @@ news-article-fetcher（拡張版、Sonnet）
 ### 統合テスト
 
 - [ ] 全フェーズの統合動作確認
-  - Issue: [#1789](https://github.com/YH-05/finance/issues/1789)
+  - Issue: [#1789](https://github.com/YH-05/quants/issues/1789)
   - ステータス: todo
   - 依存: #1783, #1784, #1785, #1786, #1787, #1788
 

@@ -14,42 +14,42 @@
 ## 主要機能
 
 ### 基盤機能（Infrastructure）
-- [x] 共通型定義（types.py） [#104](https://github.com/YH-05/finance/issues/104) ✅ Done
-- [x] エラー・警告クラス（errors.py） [#106](https://github.com/YH-05/finance/issues/106) ✅ Done
-- [x] DataProvider プロトコル [#107](https://github.com/YH-05/finance/issues/107) ✅ Done
-- [x] MarketAnalysisProvider [#111](https://github.com/YH-05/finance/issues/111) ✅ Done
+- [x] 共通型定義（types.py） [#104](https://github.com/YH-05/quants/issues/104) ✅ Done
+- [x] エラー・警告クラス（errors.py） [#106](https://github.com/YH-05/quants/issues/106) ✅ Done
+- [x] DataProvider プロトコル [#107](https://github.com/YH-05/quants/issues/107) ✅ Done
+- [x] MarketAnalysisProvider [#111](https://github.com/YH-05/quants/issues/111) ✅ Done
 
 ### ポートフォリオ管理（Portfolio Management）
-- [x] ポートフォリオ構成の定義（ティッカー + 比率） [#112](https://github.com/YH-05/finance/issues/112) ✅ Done
-- [x] 資産配分の計算と可視化（円グラフ、棒グラフ） [#121](https://github.com/YH-05/finance/issues/121) ✅ Done
-- [x] セクター・資産クラス別の構成分析 [#112](https://github.com/YH-05/finance/issues/112) ✅ Done
+- [x] ポートフォリオ構成の定義（ティッカー + 比率） [#112](https://github.com/YH-05/quants/issues/112) ✅ Done
+- [x] 資産配分の計算と可視化（円グラフ、棒グラフ） [#121](https://github.com/YH-05/quants/issues/121) ✅ Done
+- [x] セクター・資産クラス別の構成分析 [#112](https://github.com/YH-05/quants/issues/112) ✅ Done
 
 ### リスク分析（Risk Analysis）
-- [x] ボラティリティ（標準偏差） [#113](https://github.com/YH-05/finance/issues/113) ✅ Done
-- [x] シャープレシオ [#113](https://github.com/YH-05/finance/issues/113) ✅ Done
-- [x] ソルティノレシオ [#113](https://github.com/YH-05/finance/issues/113) ✅ Done
-- [x] 最大ドローダウン [#114](https://github.com/YH-05/finance/issues/114) ✅ Done
-- [x] VaR（バリューアットリスク） [#114](https://github.com/YH-05/finance/issues/114) ✅ Done
-- [x] ベータ値 [#118](https://github.com/YH-05/finance/issues/118) ✅ Done
-- [x] トレイナーレシオ [#118](https://github.com/YH-05/finance/issues/118) ✅ Done
-- [x] 情報レシオ [#118](https://github.com/YH-05/finance/issues/118) ✅ Done
+- [x] ボラティリティ（標準偏差） [#113](https://github.com/YH-05/quants/issues/113) ✅ Done
+- [x] シャープレシオ [#113](https://github.com/YH-05/quants/issues/113) ✅ Done
+- [x] ソルティノレシオ [#113](https://github.com/YH-05/quants/issues/113) ✅ Done
+- [x] 最大ドローダウン [#114](https://github.com/YH-05/quants/issues/114) ✅ Done
+- [x] VaR（バリューアットリスク） [#114](https://github.com/YH-05/quants/issues/114) ✅ Done
+- [x] ベータ値 [#118](https://github.com/YH-05/quants/issues/118) ✅ Done
+- [x] トレイナーレシオ [#118](https://github.com/YH-05/quants/issues/118) ✅ Done
+- [x] 情報レシオ [#118](https://github.com/YH-05/quants/issues/118) ✅ Done
 
 ### リバランス機能（Rebalancing）
-- [x] 配分ドリフトの検出と可視化 [#119](https://github.com/YH-05/finance/issues/119) ✅ Done [#121](https://github.com/YH-05/finance/issues/121)
+- [x] 配分ドリフトの検出と可視化 [#119](https://github.com/YH-05/quants/issues/119) ✅ Done [#121](https://github.com/YH-05/quants/issues/121)
 - [ ] リバランスコスト計算（取引コスト、税金影響）
 - [ ] リバランスタイミング分析
 
 ### 期間設定（Period Configuration）
-- [x] プリセット期間（1年、3年、5年） [#104](https://github.com/YH-05/finance/issues/104) ✅ Done
-- [x] カスタム期間（開始日・終了日指定） [#104](https://github.com/YH-05/finance/issues/104) ✅ Done
+- [x] プリセット期間（1年、3年、5年） [#104](https://github.com/YH-05/quants/issues/104) ✅ Done
+- [x] カスタム期間（開始日・終了日指定） [#104](https://github.com/YH-05/quants/issues/104) ✅ Done
 
 ### データ出力（Export）
-- [x] pandas DataFrame [#120](https://github.com/YH-05/finance/issues/120) ✅ Done
-- [x] JSON/辞書形式（AIエージェント向け） [#120](https://github.com/YH-05/finance/issues/120) ✅ Done
-- [x] Plotlyチャート [#121](https://github.com/YH-05/finance/issues/121) ✅ Done
-- [x] レポートテキスト（マークダウン） [#120](https://github.com/YH-05/finance/issues/120) ✅ Done
-- [x] marimoノートブック連携（出力フォーマッタ） [#120](https://github.com/YH-05/finance/issues/120) ✅ Done
-- [x] marimoノートブック連携（可視化） [#121](https://github.com/YH-05/finance/issues/121) ✅ Done
+- [x] pandas DataFrame [#120](https://github.com/YH-05/quants/issues/120) ✅ Done
+- [x] JSON/辞書形式（AIエージェント向け） [#120](https://github.com/YH-05/quants/issues/120) ✅ Done
+- [x] Plotlyチャート [#121](https://github.com/YH-05/quants/issues/121) ✅ Done
+- [x] レポートテキスト（マークダウン） [#120](https://github.com/YH-05/quants/issues/120) ✅ Done
+- [x] marimoノートブック連携（出力フォーマッタ） [#120](https://github.com/YH-05/quants/issues/120) ✅ Done
+- [x] marimoノートブック連携（可視化） [#121](https://github.com/YH-05/quants/issues/121) ✅ Done
 
 ### 将来実装（Future）
 - [ ] トレーディング戦略の基盤（戦略インターフェース、シグナル生成）

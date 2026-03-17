@@ -1103,7 +1103,7 @@ class Publisher:
         >>> issue_number
         123
         >>> issue_url
-        'https://github.com/YH-05/finance/issues/123'
+        'https://github.com/YH-05/quants/issues/123'
         """
         title = self._generate_issue_title(article)
         body = self._generate_issue_body(article)
@@ -1133,7 +1133,7 @@ class Publisher:
         Examples
         --------
         >>> item_id = await publisher._get_existing_project_item(
-        ...     "https://github.com/YH-05/finance/issues/123"
+        ...     "https://github.com/YH-05/quants/issues/123"
         ... )
         >>> item_id
         'PVTI_xxx'

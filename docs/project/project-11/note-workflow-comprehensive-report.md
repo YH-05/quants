@@ -1894,7 +1894,7 @@ Layer 3: フィード取得 & フィルタリング
 template=$(cat .github/ISSUE_TEMPLATE/news-article.md | tail -n +7)
 
 # Step 2: Issue作成
-issue_url=$(gh issue create --repo YH-05/finance \
+issue_url=$(gh issue create --repo YH-05/quants \
   --title "[テーマ] {日本語タイトル}" \
   --body "$body" --label "news")
 

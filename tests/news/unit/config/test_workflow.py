@@ -165,14 +165,14 @@ class TestGitHubConfig:
             project_id="PVT_kwHOBoK6AM4BMpw_",
             status_field_id="PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
             published_date_field_id="PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-            repository="YH-05/finance",
+            repository="YH-05/quants",
         )
 
         assert config.project_number == 15
         assert config.project_id == "PVT_kwHOBoK6AM4BMpw_"
         assert config.status_field_id == "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE"
         assert config.published_date_field_id == "PVTF_lAHOBoK6AM4BMpw_zg8BzrI"
-        assert config.repository == "YH-05/finance"
+        assert config.repository == "YH-05/quants"
         assert config.duplicate_check_days == 7  # デフォルト値
         assert config.dry_run is False  # デフォルト値
 
@@ -185,7 +185,7 @@ class TestGitHubConfig:
             project_id="PVT_kwHOBoK6AM4BMpw_",
             status_field_id="PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
             published_date_field_id="PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-            repository="YH-05/finance",
+            repository="YH-05/quants",
             duplicate_check_days=14,
             dry_run=True,
         )
@@ -202,7 +202,7 @@ class TestGitHubConfig:
                 project_id="PVT_kwHOBoK6AM4BMpw_",
                 status_field_id="PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
                 published_date_field_id="PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-                repository="YH-05/finance",
+                repository="YH-05/quants",
             )
 
 
@@ -272,7 +272,7 @@ class TestNewsWorkflowConfig:
                 project_id="PVT_kwHOBoK6AM4BMpw_",
                 status_field_id="PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
                 published_date_field_id="PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-                repository="YH-05/finance",
+                repository="YH-05/quants",
             ),
             filtering=FilteringConfig(),
             output=OutputConfig(result_dir="data/exports/news-workflow"),
@@ -323,7 +323,7 @@ class TestNewsWorkflowConfig:
                 project_id="PVT_kwHOBoK6AM4BMpw_",
                 status_field_id="PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
                 published_date_field_id="PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-                repository="YH-05/finance",
+                repository="YH-05/quants",
             ),
             filtering=FilteringConfig(),
             output=OutputConfig(result_dir="data/exports"),
@@ -353,7 +353,7 @@ class TestNewsWorkflowConfig:
                 "project_id": "PVT_kwHOBoK6AM4BMpw_",
                 "status_field_id": "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
                 "published_date_field_id": "PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-                "repository": "YH-05/finance",
+                "repository": "YH-05/quants",
             },
             "filtering": {"max_age_hours": 24},
             "output": {"result_dir": "data/exports"},
@@ -408,7 +408,7 @@ github:
   project_id: "PVT_kwHOBoK6AM4BMpw_"
   status_field_id: "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE"
   published_date_field_id: "PVTF_lAHOBoK6AM4BMpw_zg8BzrI"
-  repository: "YH-05/finance"
+  repository: "YH-05/quants"
   duplicate_check_days: 14
   dry_run: true
 
@@ -458,7 +458,7 @@ github:
   project_id: "PVT_kwHOBoK6AM4BMpw_"
   status_field_id: "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE"
   published_date_field_id: "PVTF_lAHOBoK6AM4BMpw_zg8BzrI"
-  repository: "YH-05/finance"
+  repository: "YH-05/quants"
 filtering: {}
 output:
   result_dir: "data/exports"

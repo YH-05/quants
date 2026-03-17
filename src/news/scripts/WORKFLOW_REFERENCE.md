@@ -286,7 +286,7 @@ github:
   project_id: "PVT_..."
   status_field_id: "PVTSSF_..."
   published_date_field_id: "PVTF_..."
-  repository: "YH-05/finance"
+  repository: "YH-05/quants"
   duplicate_check_days: 7
 
 # フィルタリング設定

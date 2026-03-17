@@ -152,7 +152,7 @@ ${mag7_summary}
 
 # Step 3: Issue作成
 issue_url=$(gh issue create \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --title "[週次レポート] ${REPORT_DATE} マーケットレポート" \
     --body "$body" \
     --label "report")
@@ -167,7 +167,7 @@ gh project item-add 15 --owner YH-05 --url "$issue_url"
 # (GraphQL APIを使用)
 
 # Step 7: Issueをclose（レポート完成後）
-# gh issue close "$issue_number" --repo YH-05/finance
+# gh issue close "$issue_number" --repo YH-05/quants
 ```
 
 ## ハイライトの生成ガイドライン

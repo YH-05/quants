@@ -72,20 +72,20 @@
 ### Wave 1（基盤実装）
 
 - [ ] agent_io.py にバッチ分割・統合関数を TDD で実装
-  - Issue: [#3640](https://github.com/YH-05/finance/issues/3640)
+  - Issue: [#3640](https://github.com/YH-05/quants/issues/3640)
   - ステータス: todo
   - 見積もり: 1.5h
 
 ### Wave 2（エージェント・コマンド改修）
 
 - [ ] transcript-claim-scorer エージェント定義にバッチ対応フィールドを追加
-  - Issue: [#3641](https://github.com/YH-05/finance/issues/3641)
+  - Issue: [#3641](https://github.com/YH-05/quants/issues/3641)
   - ステータス: todo
   - 依存: #3640
   - 見積もり: 0.5h
 
 - [ ] run-ca-strategy-sample コマンドの Step 4 をバッチ対応に改修
-  - Issue: [#3642](https://github.com/YH-05/finance/issues/3642)
+  - Issue: [#3642](https://github.com/YH-05/quants/issues/3642)
   - ステータス: todo
   - 依存: #3640, #3641
   - 見積もり: 0.5h
@@ -93,7 +93,7 @@
 ### Wave 3（統合検証）
 
 - [ ] /run-ca-strategy-sample を再実行して全15件スコアリング成功を確認
-  - Issue: [#3643](https://github.com/YH-05/finance/issues/3643)
+  - Issue: [#3643](https://github.com/YH-05/quants/issues/3643)
   - ステータス: todo
   - 依存: #3641, #3642
   - 見積もり: 0.5h

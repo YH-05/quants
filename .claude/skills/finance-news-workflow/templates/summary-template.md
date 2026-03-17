@@ -159,7 +159,7 @@
    - ソース: {{feed_source}}
    - 公開日時: {{published_jst}}
    - AI判定理由: {{判定理由}}
-   - URL: https://github.com/YH-05/finance/issues/{{issue_number}}
+   - URL: https://github.com/YH-05/quants/issues/{{issue_number}}
 {{/created_issues}}
 ```
 
@@ -261,12 +261,12 @@
 
 ## 作成されたIssue
 
-- [#345](https://github.com/YH-05/finance/issues/345) S&P 500が最高値を更新、テック株がけん引
+- [#345](https://github.com/YH-05/quants/issues/345) S&P 500が最高値を更新、テック株がけん引
   - テーマ: 株価指数
   - 公開日: 2026-01-22 09:30
   - ソース: CNBC - Markets
 
-- [#346](https://github.com/YH-05/finance/issues/346) Fed議長、3月利下げを示唆
+- [#346](https://github.com/YH-05/quants/issues/346) Fed議長、3月利下げを示唆
   - テーマ: マクロ経済
   - 公開日: 2026-01-22 10:15
   - ソース: CNBC - Economy

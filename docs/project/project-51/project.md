@@ -96,18 +96,18 @@ ca-eval ワークフローの構造化出力 JSON ファイルに以下の問題
 ### Wave 1（並行開発可能）
 
 - [ ] スキーマテンプレートファイル 9 個の作成
-  - Issue: [#3594](https://github.com/YH-05/finance/issues/3594)
+  - Issue: [#3594](https://github.com/YH-05/quants/issues/3594)
   - ステータス: todo
 
 ### Wave 2（Wave 1 完了後）
 
 - [ ] エージェント定義のインラインスキーマをテンプレート参照に置換（6ファイル）
-  - Issue: [#3595](https://github.com/YH-05/finance/issues/3595)
+  - Issue: [#3595](https://github.com/YH-05/quants/issues/3595)
   - ステータス: todo
   - 依存: #3594
 
 - [ ] SKILL.md のテンプレートファイルセクション更新
-  - Issue: [#3596](https://github.com/YH-05/finance/issues/3596)
+  - Issue: [#3596](https://github.com/YH-05/quants/issues/3596)
   - ステータス: todo
   - 依存: #3594
 

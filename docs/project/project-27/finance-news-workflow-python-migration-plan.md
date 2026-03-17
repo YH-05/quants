@@ -124,7 +124,7 @@ processing:
 # GitHub設定
 github:
   project_number: 15
-  repository: "YH-05/finance"
+  repository: "YH-05/quants"
   duplicate_check: true
   dry_run: false
 

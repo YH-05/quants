@@ -104,18 +104,18 @@ universe.json
 ### Wave 1（並行開発可能）
 
 - [ ] [Wave1] agent_io.py 拡張（4 関数：`consolidate_scored_claims` + `prepare_extraction_input` パラメータ追加、`prepare_universe_chunks` + `build_phase2_checkpoint(skip_missing=True)` 新規追加）
-  - Issue: [#3650](https://github.com/YH-05/finance/issues/3650)
+  - Issue: [#3650](https://github.com/YH-05/quants/issues/3650)
   - ステータス: todo
   - 見積もり: 1.5 時間
 
 - [ ] [Wave1] test_agent_io.py 単体テスト追加（`TestBuildPhase2Checkpoint` 4 ケース + `TestPrepareUniverseChunks` 3 ケース + `TestConsolidateScoredClaimsOutputPath` 2 ケース）
-  - Issue: [#3651](https://github.com/YH-05/finance/issues/3651)
+  - Issue: [#3651](https://github.com/YH-05/quants/issues/3651)
   - ステータス: todo
   - 依存: agent_io.py 拡張
   - 見積もり: 1.5 時間
 
 - [ ] [Wave1] test_agent_io_batch.py 統合テスト作成（3 銘柄 × 2 チャンク、1 銘柄欠損で `skip_missing=True` 検証）
-  - Issue: [#3652](https://github.com/YH-05/finance/issues/3652)
+  - Issue: [#3652](https://github.com/YH-05/quants/issues/3652)
   - ステータス: todo
   - 依存: agent_io.py 拡張
   - 見積もり: 1 時間
@@ -123,7 +123,7 @@ universe.json
 ### Wave 2（Wave 1 完了後）
 
 - [ ] [Wave2] ca-strategy-lead.md 全面書き換え（0 チームメイド化、チャンク版処理フロー 10 銘柄ループ、銘柄レベルエラーハンドリング `failed` リスト記録、`resume_from=2` ロジック）
-  - Issue: [#3653](https://github.com/YH-05/finance/issues/3653)
+  - Issue: [#3653](https://github.com/YH-05/quants/issues/3653)
   - ステータス: todo
   - 依存: Wave 1 全タスク
   - 見積もり: 2.5 時間
@@ -131,13 +131,13 @@ universe.json
 ### Wave 3（Wave 2 完了後）
 
 - [ ] [Wave3] run-ca-strategy-full.md コマンド新規作成（8 ステップ構成：ユニバース分割 → HF0 → 3 並列チャンク起動 → 完了待ち + リトライ → build_phase2_checkpoint → HF1 失敗サマリー → Phase 3-5 → HF2）
-  - Issue: [#3654](https://github.com/YH-05/finance/issues/3654)
+  - Issue: [#3654](https://github.com/YH-05/quants/issues/3654)
   - ステータス: todo
   - 依存: Wave 1 + Wave 2
   - 見積もり: 1.5 時間
 
 - [ ] [Wave3] CLAUDE.md 更新（コマンド一覧に `/run-ca-strategy-full` を追加）
-  - Issue: [#3655](https://github.com/YH-05/finance/issues/3655)
+  - Issue: [#3655](https://github.com/YH-05/quants/issues/3655)
   - ステータス: todo
   - 依存: run-ca-strategy-full.md 作成
   - 見積もり: 0.5 時間

@@ -1,0 +1,29 @@
+[error    ] Configuration file not found   [news.config.models] file_path=/nonexistent/config.yaml module=config.models
+[error    ] Configuration file not found   [news.scripts.collect] config_path=/nonexistent/config.yaml error='Configuration file not found: /nonexistent/config.yaml' module=scripts.collect
+[error    ] Collection script failed       [news.scripts.collect] duration_seconds=None error_message='Collection failed' module=scripts.collect
+2026-03-17T03:31:23.797523+00:00 [INFO     ] Processing request             [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_コンテキスト内でログにキーが追加される', 'line': 288} request_id=abc user_id=123
+2026-03-17T03:31:23.799876+00:00 [INFO     ] Inside context                 [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_コンテキスト終了後にキーが削除される', 'line': 296} temp_key=temp_value
+2026-03-17T03:31:23.800537+00:00 [INFO     ] Outside context                [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_コンテキスト終了後にキーが削除される', 'line': 299}
+2026-03-17T03:31:23.802099+00:00 [INFO     ] Outer context                  [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_ネストしたコンテキストが機能する', 'line': 307} outer_key=outer
+2026-03-17T03:31:23.802816+00:00 [INFO     ] Inner context                  [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_ネストしたコンテキストが機能する', 'line': 309} inner_key=inner outer_key=outer
+2026-03-17T03:31:23.803773+00:00 [INFO     ] Back to outer                  [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_ネストしたコンテキストが機能する', 'line': 310} outer_key=outer
+2026-03-17T03:31:23.805807+00:00 [INFO     ] Multiple keys bound            [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_複数のキーを同時にバインドできる', 'line': 318} key1=value1 key2=value2 key3=value3
+2026-03-17T03:31:23.808263+00:00 [INFO     ] Before error                   [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_例外が発生してもコンテキストがクリーンアップされる', 'line': 327} error_context=testing
+2026-03-17T03:31:23.810476+00:00 [INFO     ] After error - context should be clean [tests.utils_core.unit.logging.test_config] caller={'filename': 'test_config.py', 'function': 'test_正常系_例外が発生してもコンテキストがクリーンアップされる', 'line': 333}
+2026-03-17T03:31:23.812730+00:00 [DEBUG    ] Function sample_function started [tests.utils_core.unit.logging.test_config] args_count=2 caller={'filename': 'config.py', 'function': 'wrapper', 'line': 577} function=sample_function kwargs_count=0
+2026-03-17T03:31:23.814146+00:00 [DEBUG    ] Function sample_function completed [tests.utils_core.unit.logging.test_config] caller={'filename': 'config.py', 'function': 'wrapper', 'line': 589} duration_ms=1.43 function=sample_function success=True
+2026-03-17T03:31:23.815406+00:00 [DEBUG    ] Function return_list started   [tests.utils_core.unit.logging.test_config] args_count=0 caller={'filename': 'config.py', 'function': 'wrapper', 'line': 577} function=return_list kwargs_count=0
+2026-03-17T03:31:23.815977+00:00 [DEBUG    ] Function return_list completed [tests.utils_core.unit.logging.test_config] caller={'filename': 'config.py', 'function': 'wrapper', 'line': 589} duration_ms=0.58 function=return_list success=True
+2026-03-17T03:31:23.816854+00:00 [DEBUG    ] Function raise_error started   [tests.utils_core.unit.logging.test_config] args_count=0 caller={'filename': 'config.py', 'function': 'wrapper', 'line': 577} function=raise_error kwargs_count=0
+2026-03-17T03:31:23.817610+00:00 [ERROR    ] Function raise_error failed    [tests.utils_core.unit.logging.test_config] caller={'filename': 'config.py', 'function': 'wrapper', 'line': 602} duration_ms=0.75 error_message='Test error' error_type=ValueError function=raise_error success=False
+Traceback (most recent call last):
+  File "/Users/yukihata/Desktop/finance/src/utils_core/logging/config.py", line 585, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/yukihata/Desktop/finance/tests/utils_core/unit/logging/test_config.py", line 370, in raise_error
+    raise ValueError("Test error")
+ValueError: Test error
+2026-03-17T03:31:23.818731+00:00 [DEBUG    ] Function func_with_kwargs started [tests.utils_core.unit.logging.test_config] args_count=1 caller={'filename': 'config.py', 'function': 'wrapper', 'line': 577} function=func_with_kwargs kwargs_count=1
+2026-03-17T03:31:23.819283+00:00 [DEBUG    ] Function func_with_kwargs completed [tests.utils_core.unit.logging.test_config] caller={'filename': 'config.py', 'function': 'wrapper', 'line': 589} duration_ms=0.55 function=func_with_kwargs success=True
+2026-03-17T03:31:23.824993+00:00 [DEBUG    ] Loading .env file              [utils_core.settings] caller={'filename': 'settings.py', 'function': 'load_project_env', 'line': 142}
+2026-03-17T03:31:23.827912+00:00 [INFO     ] Loaded .env file               [utils_core.settings] caller={'filename': 'settings.py', 'function': 'load_project_env', 'line': 144}

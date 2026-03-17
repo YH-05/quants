@@ -129,42 +129,42 @@
 ### フェーズ1: 基盤構築
 
 - [ ] Knowledge Protocol の仕様策定
-  - Issue: [#723](https://github.com/YH-05/finance/issues/723)
+  - Issue: [#723](https://github.com/YH-05/quants/issues/723)
   - ステータス: Todo
 - [ ] データディレクトリ構造の設計
-  - Issue: [#726](https://github.com/YH-05/finance/issues/726)
+  - Issue: [#726](https://github.com/YH-05/quants/issues/726)
   - ステータス: Todo
 
 ### フェーズ2: コア機能実装
 
 - [ ] `knowledge-manager` スキルの実装
-  - Issue: [#730](https://github.com/YH-05/finance/issues/730)
+  - Issue: [#730](https://github.com/YH-05/quants/issues/730)
   - ステータス: Todo
   - 機能: 登録、検索、更新、削除
 - [ ] `knowledge-curator` エージェントの実装
-  - Issue: [#733](https://github.com/YH-05/finance/issues/733)
+  - Issue: [#733](https://github.com/YH-05/quants/issues/733)
   - ステータス: Todo
   - 機能: 整理、関連付け、重複検出
 - [ ] 既存 `agent-memory` スキルとの統合
-  - Issue: [#736](https://github.com/YH-05/finance/issues/736)
+  - Issue: [#736](https://github.com/YH-05/quants/issues/736)
   - ステータス: Todo
 
 ### フェーズ3: 拡張機能
 
 - [ ] 関連知識の自動提案機能
-  - Issue: [#738](https://github.com/YH-05/finance/issues/738)
+  - Issue: [#738](https://github.com/YH-05/quants/issues/738)
   - ステータス: Todo
 - [ ] 知識のエクスポート機能（Neo4j移行準備）
-  - Issue: [#742](https://github.com/YH-05/finance/issues/742)
+  - Issue: [#742](https://github.com/YH-05/quants/issues/742)
   - ステータス: Todo
 
 ### ドキュメント
 
 - [ ] Knowledge Protocol 仕様書の作成
-  - Issue: [#743](https://github.com/YH-05/finance/issues/743)
+  - Issue: [#743](https://github.com/YH-05/quants/issues/743)
   - ステータス: Todo
 - [ ] 使用ガイドの作成
-  - Issue: [#747](https://github.com/YH-05/finance/issues/747)
+  - Issue: [#747](https://github.com/YH-05/quants/issues/747)
   - ステータス: Todo
 
 ---

@@ -90,47 +90,47 @@ Collect → Extract → Summarize → Group → Export(md) → Publish (per cate
 ### Wave 1（基盤）
 
 - [ ] カテゴリ別データモデル・設定追加
-  - Issue: [#3399](https://github.com/YH-05/finance/issues/3399)
+  - Issue: [#3399](https://github.com/YH-05/quants/issues/3399)
   - ステータス: todo
 
 ### Wave 2（Wave 1 完了後）
 
 - [ ] ArticleGrouper・Markdown 生成の実装
-  - Issue: [#3400](https://github.com/YH-05/finance/issues/3400)
+  - Issue: [#3400](https://github.com/YH-05/quants/issues/3400)
   - ステータス: todo
   - 依存: #3399
 
 ### Wave 3（Wave 2 完了後）
 
 - [ ] Publisher カテゴリ別 Issue 作成の実装
-  - Issue: [#3401](https://github.com/YH-05/finance/issues/3401)
+  - Issue: [#3401](https://github.com/YH-05/quants/issues/3401)
   - ステータス: todo
   - 依存: #3400
 
 ### Wave 4（Wave 3 完了後）
 
 - [ ] Orchestrator 統合・CLI オプション追加
-  - Issue: [#3402](https://github.com/YH-05/finance/issues/3402)
+  - Issue: [#3402](https://github.com/YH-05/quants/issues/3402)
   - ステータス: todo
   - 依存: #3401
 
 ### Wave 5（独立 / Wave 1-4 と並行可能）
 
 - [ ] 信頼性改善（フィード修正・レート制限・UA 改善）
-  - Issue: [#3403](https://github.com/YH-05/finance/issues/3403)
+  - Issue: [#3403](https://github.com/YH-05/quants/issues/3403)
   - ステータス: todo
 
 ### Wave 6（Wave 4 完了後）
 
 - [ ] パフォーマンス改善・メトリクス追加
-  - Issue: [#3404](https://github.com/YH-05/finance/issues/3404)
+  - Issue: [#3404](https://github.com/YH-05/quants/issues/3404)
   - ステータス: todo
   - 依存: #3402
 
 ### Wave 7（全 Wave 完了後）
 
 - [ ] E2E 統合テスト・ドキュメント更新
-  - Issue: [#3405](https://github.com/YH-05/finance/issues/3405)
+  - Issue: [#3405](https://github.com/YH-05/quants/issues/3405)
   - ステータス: todo
   - 依存: #3402, #3403, #3404
 

@@ -109,36 +109,36 @@ AI駆動の競争優位性ベース投資戦略の簡易 PoC。既存の `src/de
 ### Wave 1（並行開発可能）
 
 - [x] TickerConverter モジュールの作成
-  - Issue: [#3604](https://github.com/YH-05/finance/issues/3604)
+  - Issue: [#3604](https://github.com/YH-05/quants/issues/3604)
   - ステータス: done
   - 見積もり: 1h
 
 - [x] 評価関連 Pydantic モデルの追加とテスト
-  - Issue: [#3605](https://github.com/YH-05/finance/issues/3605)
+  - Issue: [#3605](https://github.com/YH-05/quants/issues/3605)
   - ステータス: done
   - 見積もり: 1h
 
 - [x] テスト共通フィクスチャ（conftest.py）の作成
-  - Issue: [#3606](https://github.com/YH-05/finance/issues/3606)
+  - Issue: [#3606](https://github.com/YH-05/quants/issues/3606)
   - ステータス: done
   - 見積もり: 0.5h
 
 ### Wave 2（Wave 1 完了後、並行開発可能）
 
 - [x] generate_config.py の作成とテスト
-  - Issue: [#3607](https://github.com/YH-05/finance/issues/3607)
+  - Issue: [#3607](https://github.com/YH-05/quants/issues/3607)
   - ステータス: done
   - 依存: #3604
   - 見積もり: 1h
 
 - [x] StrategyEvaluator モジュールの作成とテスト
-  - Issue: [#3608](https://github.com/YH-05/finance/issues/3608)
+  - Issue: [#3608](https://github.com/YH-05/quants/issues/3608)
   - ステータス: done
   - 依存: #3605
   - 見積もり: 1.5h
 
 - [x] PortfolioBuilder 等ウェイトメソッド追加とテスト
-  - Issue: [#3609](https://github.com/YH-05/finance/issues/3609)
+  - Issue: [#3609](https://github.com/YH-05/quants/issues/3609)
   - ステータス: done
   - 依存: #3605
   - 見積もり: 1h
@@ -146,7 +146,7 @@ AI駆動の競争優位性ベース投資戦略の簡易 PoC。既存の `src/de
 ### Wave 3（Wave 2 完了後）
 
 - [x] OutputGenerator 評価セクション追加と Orchestrator 統合
-  - Issue: [#3610](https://github.com/YH-05/finance/issues/3610)
+  - Issue: [#3610](https://github.com/YH-05/quants/issues/3610)
   - ステータス: done
   - 依存: #3608, #3609
   - 見積もり: 1.5h
@@ -154,7 +154,7 @@ AI駆動の競争優位性ベース投資戦略の簡易 PoC。既存の `src/de
 ### Wave 4（Wave 3 完了後）
 
 - [x] 評価パイプライン統合テスト
-  - Issue: [#3611](https://github.com/YH-05/finance/issues/3611)
+  - Issue: [#3611](https://github.com/YH-05/quants/issues/3611)
   - ステータス: done
   - 依存: #3606, #3609, #3610
   - 見積もり: 0.5h

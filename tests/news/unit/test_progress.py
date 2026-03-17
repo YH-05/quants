@@ -344,7 +344,7 @@ class TestConsoleProgressCallback:
                 category_label="株価指数",
                 date="2026-02-10",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 article_count=5,
                 status=PublicationStatus.SUCCESS,
             ),

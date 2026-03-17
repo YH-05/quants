@@ -216,15 +216,15 @@ graph TD
 
 | # | タイトル | フェーズ | ステータス |
 |---|---------|---------|-----------|
-| [#932](https://github.com/YH-05/finance/issues/932) | [Phase 1] market パッケージ作成 | Phase 1 | Todo |
-| [#933](https://github.com/YH-05/finance/issues/933) | [Phase 1] database パッケージ作成（finance リネーム） | Phase 1 | Todo |
-| [#934](https://github.com/YH-05/finance/issues/934) | [Phase 1] 共通データフォーマット定義 | Phase 1 | Todo |
-| [#935](https://github.com/YH-05/finance/issues/935) | [Phase 2] analyze パッケージ作成 | Phase 2 | Todo |
-| [#936](https://github.com/YH-05/finance/issues/936) | [Phase 2] パッケージ間依存関係の確立 | Phase 2 | Todo |
-| [#937](https://github.com/YH-05/finance/issues/937) | [Phase 2] 既存コードの全面更新 | Phase 2 | Todo |
-| [#938](https://github.com/YH-05/finance/issues/938) | [Phase 3] 旧パッケージの削除 | Phase 3 | Todo |
-| [#939](https://github.com/YH-05/finance/issues/939) | [Phase 3] ドキュメント整備 | Phase 3 | Todo |
-| [#940](https://github.com/YH-05/finance/issues/940) | [Phase 3] 品質確認と最終検証 | Phase 3 | Todo |
+| [#932](https://github.com/YH-05/quants/issues/932) | [Phase 1] market パッケージ作成 | Phase 1 | Todo |
+| [#933](https://github.com/YH-05/quants/issues/933) | [Phase 1] database パッケージ作成（finance リネーム） | Phase 1 | Todo |
+| [#934](https://github.com/YH-05/quants/issues/934) | [Phase 1] 共通データフォーマット定義 | Phase 1 | Todo |
+| [#935](https://github.com/YH-05/quants/issues/935) | [Phase 2] analyze パッケージ作成 | Phase 2 | Todo |
+| [#936](https://github.com/YH-05/quants/issues/936) | [Phase 2] パッケージ間依存関係の確立 | Phase 2 | Todo |
+| [#937](https://github.com/YH-05/quants/issues/937) | [Phase 2] 既存コードの全面更新 | Phase 2 | Todo |
+| [#938](https://github.com/YH-05/quants/issues/938) | [Phase 3] 旧パッケージの削除 | Phase 3 | Todo |
+| [#939](https://github.com/YH-05/quants/issues/939) | [Phase 3] ドキュメント整備 | Phase 3 | Todo |
+| [#940](https://github.com/YH-05/quants/issues/940) | [Phase 3] 品質確認と最終検証 | Phase 3 | Todo |
 
 **9件作成 / 0件完了** (2026-01-25)
 

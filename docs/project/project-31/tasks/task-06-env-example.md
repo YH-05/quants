@@ -1,6 +1,6 @@
 # タスク 06: .env.example を更新
 
-- **Issue**: [#2845](https://github.com/YH-05/finance/issues/2845)
+- **Issue**: [#2845](https://github.com/YH-05/quants/issues/2845)
 - **ステータス**: todo
 
 ## 概要
@@ -59,7 +59,7 @@ TAVILY_API_KEY=
 
 ## 依存関係
 
-- depends_on: [#2842](https://github.com/YH-05/finance/issues/2842), [#2843](https://github.com/YH-05/finance/issues/2843), [#2844](https://github.com/YH-05/finance/issues/2844)
+- depends_on: [#2842](https://github.com/YH-05/quants/issues/2842), [#2843](https://github.com/YH-05/quants/issues/2843), [#2844](https://github.com/YH-05/quants/issues/2844)
 - blocks: なし
 
 ## 見積もり

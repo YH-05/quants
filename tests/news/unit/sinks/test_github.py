@@ -41,13 +41,13 @@ class TestGitHubSinkConfigModel:
         """全フィールドを指定してGitHubSinkConfigを初期化できることを確認。"""
         config = GitHubSinkConfig(
             project_number=24,
-            repository="YH-05/finance",
+            repository="YH-05/quants",
             labels=["news", "finance"],
             dry_run=True,
         )
 
         assert config.project_number == 24
-        assert config.repository == "YH-05/finance"
+        assert config.repository == "YH-05/quants"
         assert config.labels == ["news", "finance"]
         assert config.dry_run is True
 
@@ -144,7 +144,7 @@ class TestGitHubSinkWrite:
         """単一の記事からGitHub Issueが作成されることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24)
 
@@ -163,7 +163,7 @@ class TestGitHubSinkWrite:
         """複数の記事からGitHub Issueが作成されることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24)
 
@@ -207,7 +207,7 @@ class TestGitHubSinkWrite:
         """ラベルが指定されている場合、Issueに追加されることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(
             config=GitHubSinkConfig(
@@ -256,7 +256,7 @@ class TestGitHubSinkIssueFormat:
         """IssueタイトルがArticleのタイトルと一致することを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24, check_duplicates=False)
 
@@ -278,7 +278,7 @@ class TestGitHubSinkIssueFormat:
         """Issue本文にArticleのURLが含まれることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24, check_duplicates=False)
 
@@ -299,7 +299,7 @@ class TestGitHubSinkIssueFormat:
         """Issue本文に公開日時が含まれることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24, check_duplicates=False)
 
@@ -320,7 +320,7 @@ class TestGitHubSinkIssueFormat:
         """Issue本文にプロバイダー情報が含まれることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24, check_duplicates=False)
 
@@ -341,7 +341,7 @@ class TestGitHubSinkIssueFormat:
         """Issue本文に関連ティッカーが含まれることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24, check_duplicates=False)
 
@@ -379,7 +379,7 @@ class TestGitHubSinkProjectIntegration:
             # gh issue create
             MagicMock(
                 returncode=0,
-                stdout="https://github.com/YH-05/finance/issues/100\n",
+                stdout="https://github.com/YH-05/quants/issues/100\n",
             ),
             # gh project item-add
             MagicMock(returncode=0, stdout=""),
@@ -403,7 +403,7 @@ class TestGitHubSinkProjectIntegration:
             # gh issue create - 成功
             MagicMock(
                 returncode=0,
-                stdout="https://github.com/YH-05/finance/issues/100\n",
+                stdout="https://github.com/YH-05/quants/issues/100\n",
             ),
             # gh project item-add - 失敗
             MagicMock(returncode=1, stderr="Project not found"),
@@ -462,7 +462,7 @@ class TestGitHubSinkDuplicateCheck:
         """重複チェックが無効の場合、常にIssueが作成されることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24, check_duplicates=False)
 
@@ -505,7 +505,7 @@ class TestGitHubSinkWriteBatch:
         """write_batchで複数のFetchResultからIssueが作成されることを確認。"""
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24)
 
@@ -539,7 +539,7 @@ class TestGitHubSinkWriteBatch:
         ]
         mock_run.return_value = MagicMock(
             returncode=0,
-            stdout="https://github.com/YH-05/finance/issues/100\n",
+            stdout="https://github.com/YH-05/quants/issues/100\n",
         )
         sink = GitHubSink(project_number=24)
 

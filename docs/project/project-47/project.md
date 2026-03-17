@@ -134,26 +134,26 @@ finance-market-data, finance-web, industry-researcher, dr-cross-validator, dr-se
 
 | # | タスク | Issue | 説明 |
 |---|--------|-------|------|
-| 1-1 | dr-industry-lead エージェント作成 | [#3532](https://github.com/YH-05/finance/issues/3532) | `.claude/agents/deep-research/dr-industry-lead.md` |
-| 1-2 | dr-industry スキル作成 | [#3533](https://github.com/YH-05/finance/issues/3533) | `.claude/skills/dr-industry/SKILL.md` |
-| 1-3 | dr-industry コマンド作成 | [#3534](https://github.com/YH-05/finance/issues/3534) | `.claude/commands/dr-industry.md` |
-| 1-4 | 新規スクレイパー4社追加 | [#3535](https://github.com/YH-05/finance/issues/3535) | Bain, Accenture, EY, KPMG の Insights スクレイパーを `src/market/industry/` に追加 |
+| 1-1 | dr-industry-lead エージェント作成 | [#3532](https://github.com/YH-05/quants/issues/3532) | `.claude/agents/deep-research/dr-industry-lead.md` |
+| 1-2 | dr-industry スキル作成 | [#3533](https://github.com/YH-05/quants/issues/3533) | `.claude/skills/dr-industry/SKILL.md` |
+| 1-3 | dr-industry コマンド作成 | [#3534](https://github.com/YH-05/quants/issues/3534) | `.claude/commands/dr-industry.md` |
+| 1-4 | 新規スクレイパー4社追加 | [#3535](https://github.com/YH-05/quants/issues/3535) | Bain, Accenture, EY, KPMG の Insights スクレイパーを `src/market/industry/` に追加 |
 
 ### Wave 2: 既存エージェント拡張（Wave 1 に依存、4並列）
 
 | # | タスク | Issue | 説明 |
 |---|--------|-------|------|
-| 2-1 | finance-sec-filings 複数シンボル対応 | [#3536](https://github.com/YH-05/finance/issues/3536) | `type=="industry"` 分岐追加、出力スキーマ拡張 |
-| 2-2 | dr-source-aggregator 5ファイル統合対応 | [#3537](https://github.com/YH-05/finance/issues/3537) | web-media-data.json を5番目のソースとして追加 |
-| 2-3 | dr-report-generator テンプレート分岐 | [#3538](https://github.com/YH-05/finance/issues/3538) | `type=="industry"` 時の業界分析テンプレート追加 |
-| 2-4 | プリセット拡張 + industry-researcher 更新 | [#3539](https://github.com/YH-05/finance/issues/3539) | 市場調査会社・業界団体・専門リサーチをプリセットに追加、ペイウォール対応 WebSearch 戦略を industry-researcher に反映 |
+| 2-1 | finance-sec-filings 複数シンボル対応 | [#3536](https://github.com/YH-05/quants/issues/3536) | `type=="industry"` 分岐追加、出力スキーマ拡張 |
+| 2-2 | dr-source-aggregator 5ファイル統合対応 | [#3537](https://github.com/YH-05/quants/issues/3537) | web-media-data.json を5番目のソースとして追加 |
+| 2-3 | dr-report-generator テンプレート分岐 | [#3538](https://github.com/YH-05/quants/issues/3538) | `type=="industry"` 時の業界分析テンプレート追加 |
+| 2-4 | プリセット拡張 + industry-researcher 更新 | [#3539](https://github.com/YH-05/quants/issues/3539) | 市場調査会社・業界団体・専門リサーチをプリセットに追加、ペイウォール対応 WebSearch 戦略を industry-researcher に反映 |
 
 ### Wave 3: 統合・ドキュメント（Wave 2 に依存）
 
 | # | タスク | Issue | 説明 |
 |---|--------|-------|------|
-| 3-1 | 統合テスト | [#3540](https://github.com/YH-05/finance/issues/3540) | 実際のセクター（Technology/Semiconductors 等）で動作確認 |
-| 3-2 | CLAUDE.md 更新 | [#3541](https://github.com/YH-05/finance/issues/3541) | dr-industry 関連のエージェント・スキル・コマンド追記 |
+| 3-1 | 統合テスト | [#3540](https://github.com/YH-05/quants/issues/3540) | 実際のセクター（Technology/Semiconductors 等）で動作確認 |
+| 3-2 | CLAUDE.md 更新 | [#3541](https://github.com/YH-05/quants/issues/3541) | dr-industry 関連のエージェント・スキル・コマンド追記 |
 
 ## 依存関係図
 

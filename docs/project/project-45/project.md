@@ -146,14 +146,14 @@ make check-all
 
 | Wave | # | タイトル | 見積もり | ステータス |
 |------|---|---------|---------|-----------|
-| 1 | [#3517](https://github.com/YH-05/finance/issues/3517) | base.py に apply_polite_delay 関数と RateLimitError 処理を追加 | 0.5h | Todo |
-| 1 | [#3518](https://github.com/YH-05/finance/issues/3518) | __init__.py に新シンボルをエクスポート | 0.1h | Todo |
-| 2 | [#3519](https://github.com/YH-05/finance/issues/3519) | 6ソースの DEFAULT_RETRY_CONFIG に YFRateLimitError を追加 | 0.5h | Todo |
-| 2 | [#3520](https://github.com/YH-05/finance/issues/3520) | 6ソースの fetch_all にポライトディレイを挿入 | 0.5h | Todo |
-| 3 | [#3521](https://github.com/YH-05/finance/issues/3521) | test_base.py に apply_polite_delay と YFRateLimitError リトライのテストを追加 | 0.5h | Todo |
-| 3 | [#3522](https://github.com/YH-05/finance/issues/3522) | 6ソーステストに fetch_all ポライトディレイのテストを追加 | 1.0h | Todo |
-| 3 | [#3523](https://github.com/YH-05/finance/issues/3523) | 全体検証: make check-all 実行 | 0.5h | Todo |
-| 3 | [#3524](https://github.com/YH-05/finance/issues/3524) | project.md に Issue リンクを反映 | 0.1h | Todo |
+| 1 | [#3517](https://github.com/YH-05/quants/issues/3517) | base.py に apply_polite_delay 関数と RateLimitError 処理を追加 | 0.5h | Todo |
+| 1 | [#3518](https://github.com/YH-05/quants/issues/3518) | __init__.py に新シンボルをエクスポート | 0.1h | Todo |
+| 2 | [#3519](https://github.com/YH-05/quants/issues/3519) | 6ソースの DEFAULT_RETRY_CONFIG に YFRateLimitError を追加 | 0.5h | Todo |
+| 2 | [#3520](https://github.com/YH-05/quants/issues/3520) | 6ソースの fetch_all にポライトディレイを挿入 | 0.5h | Todo |
+| 3 | [#3521](https://github.com/YH-05/quants/issues/3521) | test_base.py に apply_polite_delay と YFRateLimitError リトライのテストを追加 | 0.5h | Todo |
+| 3 | [#3522](https://github.com/YH-05/quants/issues/3522) | 6ソーステストに fetch_all ポライトディレイのテストを追加 | 1.0h | Todo |
+| 3 | [#3523](https://github.com/YH-05/quants/issues/3523) | 全体検証: make check-all 実行 | 0.5h | Todo |
+| 3 | [#3524](https://github.com/YH-05/quants/issues/3524) | project.md に Issue リンクを反映 | 0.1h | Todo |
 
 ## 依存関係図
 

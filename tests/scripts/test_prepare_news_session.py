@@ -58,13 +58,13 @@ def sample_existing_issues() -> list[dict[str, Any]]:
         {
             "number": 100,
             "title": "[株価指数] S&P 500 Hits Record High",
-            "url": "https://github.com/YH-05/finance/issues/100",
+            "url": "https://github.com/YH-05/quants/issues/100",
             "body": "詳細は元記事を参照: https://www.cnbc.com/2026/01/15/sp500-record.html",
         },
         {
             "number": 101,
             "title": "[個別銘柄] Apple Reports Q4 Earnings",
-            "url": "https://github.com/YH-05/finance/issues/101",
+            "url": "https://github.com/YH-05/quants/issues/101",
             "body": "詳細は元記事を参照: https://www.cnbc.com/2026/01/16/apple-earnings.html",
         },
     ]

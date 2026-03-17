@@ -90,53 +90,53 @@
 ### Wave 0: KB整備 + 設定ファイル準備（7.5-9.5h）
 
 - [ ] KB1-T/KB2-T ルール集のトランスクリプト適応
-  - Issue: [#3570](https://github.com/YH-05/finance/issues/3570)
+  - Issue: [#3570](https://github.com/YH-05/quants/issues/3570)
   - ステータス: todo
   - 見積もり: 2-3h
 
 - [ ] system_prompt_transcript.md の作成
-  - Issue: [#3571](https://github.com/YH-05/finance/issues/3571)
+  - Issue: [#3571](https://github.com/YH-05/quants/issues/3571)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] KB3-T few-shot 集の作成（5銘柄）
-  - Issue: [#3572](https://github.com/YH-05/finance/issues/3572)
+  - Issue: [#3572](https://github.com/YH-05/quants/issues/3572)
   - ステータス: todo
   - 依存: #3570
   - 見積もり: 3-4h
 
 - [ ] 設定ファイルの作成（ticker_mapping / universe / benchmark_weights）
-  - Issue: [#3573](https://github.com/YH-05/finance/issues/3573)
+  - Issue: [#3573](https://github.com/YH-05/quants/issues/3573)
   - ステータス: todo
   - 見積もり: 1.5h
 
 ### Wave 1: 基盤 -- 型定義・パーサー・ユーティリティ（7.5h）
 
 - [ ] types.py -- 全Pydanticモデル定義
-  - Issue: [#3574](https://github.com/YH-05/finance/issues/3574)
+  - Issue: [#3574](https://github.com/YH-05/quants/issues/3574)
   - ステータス: todo
   - 見積もり: 2h
 
 - [ ] batch.py -- バッチ処理ユーティリティ
-  - Issue: [#3575](https://github.com/YH-05/finance/issues/3575)
+  - Issue: [#3575](https://github.com/YH-05/quants/issues/3575)
   - ステータス: todo
   - 依存: #3574
   - 見積もり: 1.5h
 
 - [ ] transcript_parser.py -- S&P Capital IQ JSONパーサー
-  - Issue: [#3576](https://github.com/YH-05/finance/issues/3576)
+  - Issue: [#3576](https://github.com/YH-05/quants/issues/3576)
   - ステータス: todo
   - 依存: #3573, #3574
   - 見積もり: 2h
 
 - [ ] pit.py / cost.py -- PoiT管理・コスト追跡
-  - Issue: [#3577](https://github.com/YH-05/finance/issues/3577)
+  - Issue: [#3577](https://github.com/YH-05/quants/issues/3577)
   - ステータス: todo
   - 依存: #3574
   - 見積もり: 1.5h
 
 - [ ] トランスクリプトパース実行（全月次ファイル）
-  - Issue: [#3580](https://github.com/YH-05/finance/issues/3580)
+  - Issue: [#3580](https://github.com/YH-05/quants/issues/3580)
   - ステータス: todo
   - 依存: #3573, #3576
   - 見積もり: 0.5h
@@ -144,13 +144,13 @@
 ### Wave 2: データローダー・集約ロジック（3.5h）
 
 - [ ] transcript.py -- トランスクリプトローダー・バリデーション
-  - Issue: [#3578](https://github.com/YH-05/finance/issues/3578)
+  - Issue: [#3578](https://github.com/YH-05/quants/issues/3578)
   - ステータス: todo
   - 依存: #3574, #3576, #3577
   - 見積もり: 1.5h
 
 - [ ] aggregator.py / neutralizer.py -- スコア集約・セクター中立化
-  - Issue: [#3579](https://github.com/YH-05/finance/issues/3579)
+  - Issue: [#3579](https://github.com/YH-05/quants/issues/3579)
   - ステータス: todo
   - 依存: #3573, #3574
   - 見積もり: 2h
@@ -158,13 +158,13 @@
 ### Wave 3: LLM処理（6h）
 
 - [ ] extractor.py -- Phase 1 LLM競争優位性抽出
-  - Issue: [#3581](https://github.com/YH-05/finance/issues/3581)
+  - Issue: [#3581](https://github.com/YH-05/quants/issues/3581)
   - ステータス: todo
   - 依存: #3570, #3571, #3572, #3574, #3575, #3577, #3578
   - 見積もり: 3h
 
 - [ ] scorer.py -- Phase 2 KB1/KB2/KB3スコアリング
-  - Issue: [#3582](https://github.com/YH-05/finance/issues/3582)
+  - Issue: [#3582](https://github.com/YH-05/quants/issues/3582)
   - ステータス: todo
   - 依存: #3570, #3571, #3572, #3574, #3575, #3577
   - 見積もり: 3h
@@ -172,7 +172,7 @@
 ### Wave 4: ポートフォリオ構築・出力（3h）
 
 - [ ] portfolio_builder.py / output.py -- ポートフォリオ構築・出力生成
-  - Issue: [#3583](https://github.com/YH-05/finance/issues/3583)
+  - Issue: [#3583](https://github.com/YH-05/quants/issues/3583)
   - ステータス: todo
   - 依存: #3574, #3579, #3582
   - 見積もり: 3h
@@ -180,19 +180,19 @@
 ### Wave 5: 統合・ドキュメント・仕上げ（4h）
 
 - [ ] orchestrator.py -- ワークフロー統合オーケストレーター
-  - Issue: [#3584](https://github.com/YH-05/finance/issues/3584)
+  - Issue: [#3584](https://github.com/YH-05/quants/issues/3584)
   - ステータス: todo
   - 依存: #3574, #3575, #3577, #3578, #3579, #3581, #3582, #3583
   - 見積もり: 2.5h
 
 - [ ] README.md -- パッケージドキュメント作成
-  - Issue: [#3585](https://github.com/YH-05/finance/issues/3585)
+  - Issue: [#3585](https://github.com/YH-05/quants/issues/3585)
   - ステータス: todo
   - 依存: #3584
   - 見積もり: 1h
 
 - [ ] __init__.py 最終更新・パッケージエクスポート確定
-  - Issue: [#3586](https://github.com/YH-05/finance/issues/3586)
+  - Issue: [#3586](https://github.com/YH-05/quants/issues/3586)
   - ステータス: todo
   - 依存: #3584
   - 見積もり: 0.5h
@@ -200,19 +200,19 @@
 ### Wave 6: エージェント定義ファイル作成（4h）
 
 - [ ] ca-strategy-lead エージェント定義の作成
-  - Issue: [#3587](https://github.com/YH-05/finance/issues/3587)
+  - Issue: [#3587](https://github.com/YH-05/quants/issues/3587)
   - ステータス: todo
   - 依存: #3584
   - 見積もり: 1.5h
 
 - [ ] ca-strategy チームメイトエージェント定義の作成（7エージェント）
-  - Issue: [#3588](https://github.com/YH-05/finance/issues/3588)
+  - Issue: [#3588](https://github.com/YH-05/quants/issues/3588)
   - ステータス: todo
   - 依存: #3587
   - 見積もり: 2h
 
 - [ ] CLAUDE.md へのca-strategyエージェント登録
-  - Issue: [#3589](https://github.com/YH-05/finance/issues/3589)
+  - Issue: [#3589](https://github.com/YH-05/quants/issues/3589)
   - ステータス: todo
   - 依存: #3588
   - 見積もり: 0.5h

@@ -233,12 +233,12 @@ mock_client_class.assert_called_once_with(
 
 ## 実装チェックリスト
 
-- [ ] `src/news/config/models.py`: `RssConfig` に `user_agent_rotation: UserAgentRotationConfig` フィールド追加 → [#3075](https://github.com/YH-05/finance/issues/3075)
-- [ ] `src/news/collectors/rss.py`: `__init__` に `self._ua_config` 追加 → [#3076](https://github.com/YH-05/finance/issues/3076)
-- [ ] `src/news/collectors/rss.py`: `_build_headers()` メソッド追加 → [#3076](https://github.com/YH-05/finance/issues/3076)
-- [ ] `src/news/collectors/rss.py`: `httpx.AsyncClient` に `headers` 引数追加 → [#3076](https://github.com/YH-05/finance/issues/3076)
-- [ ] `data/config/news-collection-config.yaml`: `rss.user_agent_rotation` セクション追加 → [#3077](https://github.com/YH-05/finance/issues/3077)
-- [ ] `tests/news/unit/collectors/test_rss.py`: UA ヘッダー検証テスト追加 → [#3078](https://github.com/YH-05/finance/issues/3078)
+- [ ] `src/news/config/models.py`: `RssConfig` に `user_agent_rotation: UserAgentRotationConfig` フィールド追加 → [#3075](https://github.com/YH-05/quants/issues/3075)
+- [ ] `src/news/collectors/rss.py`: `__init__` に `self._ua_config` 追加 → [#3076](https://github.com/YH-05/quants/issues/3076)
+- [ ] `src/news/collectors/rss.py`: `_build_headers()` メソッド追加 → [#3076](https://github.com/YH-05/quants/issues/3076)
+- [ ] `src/news/collectors/rss.py`: `httpx.AsyncClient` に `headers` 引数追加 → [#3076](https://github.com/YH-05/quants/issues/3076)
+- [ ] `data/config/news-collection-config.yaml`: `rss.user_agent_rotation` セクション追加 → [#3077](https://github.com/YH-05/quants/issues/3077)
+- [ ] `tests/news/unit/collectors/test_rss.py`: UA ヘッダー検証テスト追加 → [#3078](https://github.com/YH-05/quants/issues/3078)
 - [ ] `make check-all` が成功することを確認
 - [ ] Yahoo Finance フィード（`https://finance.yahoo.com/news/rssindex`）で 429 が解消されることを確認
 - [ ] Nasdaq フィード（3 件）で接続拒否が解消されることを確認
@@ -506,16 +506,16 @@ if result.total_duplicates > 0:
 
 ### 実装チェックリスト
 
-- [ ] `src/news/publisher.py`: `_get_existing_issues()` を `asyncio.create_subprocess_exec` で非同期化 → [#3079](https://github.com/YH-05/finance/issues/3079)
-- [ ] `src/news/publisher.py`: `--limit 500` 制限を撤廃し、対象期間の全 Issue を取得（ページネーション対応） → [#3079](https://github.com/YH-05/finance/issues/3079)
-- [ ] `src/news/publisher.py`: `get_existing_urls()` 公開メソッド追加 → [#3079](https://github.com/YH-05/finance/issues/3079)
-- [ ] `src/news/publisher.py`: `is_duplicate_url()` 公開メソッド追加 → [#3079](https://github.com/YH-05/finance/issues/3079)
-- [ ] `src/news/models.py`: `WorkflowResult` に `total_early_duplicates` フィールド追加 → [#3080](https://github.com/YH-05/finance/issues/3080)
-- [ ] `src/news/orchestrator.py`: フェーズ 1 後に重複チェックステップを挿入 → [#3081](https://github.com/YH-05/finance/issues/3081)
-- [ ] `src/news/orchestrator.py`: `_build_result()` に `early_duplicates` パラメータ追加 → [#3081](https://github.com/YH-05/finance/issues/3081)
-- [ ] `src/news/orchestrator.py`: 最終サマリーに早期重複除外件数を表示 → [#3081](https://github.com/YH-05/finance/issues/3081)
-- [ ] `src/news/publisher.py`: `publish_batch()` 内の重複チェックログレベルを `debug` に変更 → [#3079](https://github.com/YH-05/finance/issues/3079)
-- [ ] `tests/news/unit/test_orchestrator.py`: 重複チェック前倒しのテスト追加（新規作成） → [#3082](https://github.com/YH-05/finance/issues/3082)
+- [ ] `src/news/publisher.py`: `_get_existing_issues()` を `asyncio.create_subprocess_exec` で非同期化 → [#3079](https://github.com/YH-05/quants/issues/3079)
+- [ ] `src/news/publisher.py`: `--limit 500` 制限を撤廃し、対象期間の全 Issue を取得（ページネーション対応） → [#3079](https://github.com/YH-05/quants/issues/3079)
+- [ ] `src/news/publisher.py`: `get_existing_urls()` 公開メソッド追加 → [#3079](https://github.com/YH-05/quants/issues/3079)
+- [ ] `src/news/publisher.py`: `is_duplicate_url()` 公開メソッド追加 → [#3079](https://github.com/YH-05/quants/issues/3079)
+- [ ] `src/news/models.py`: `WorkflowResult` に `total_early_duplicates` フィールド追加 → [#3080](https://github.com/YH-05/quants/issues/3080)
+- [ ] `src/news/orchestrator.py`: フェーズ 1 後に重複チェックステップを挿入 → [#3081](https://github.com/YH-05/quants/issues/3081)
+- [ ] `src/news/orchestrator.py`: `_build_result()` に `early_duplicates` パラメータ追加 → [#3081](https://github.com/YH-05/quants/issues/3081)
+- [ ] `src/news/orchestrator.py`: 最終サマリーに早期重複除外件数を表示 → [#3081](https://github.com/YH-05/quants/issues/3081)
+- [ ] `src/news/publisher.py`: `publish_batch()` 内の重複チェックログレベルを `debug` に変更 → [#3079](https://github.com/YH-05/quants/issues/3079)
+- [ ] `tests/news/unit/test_orchestrator.py`: 重複チェック前倒しのテスト追加（新規作成） → [#3082](https://github.com/YH-05/quants/issues/3082)
 - [ ] `make check-all` が成功することを確認
 
 ---
@@ -896,15 +896,15 @@ for attempt in range(self._max_retries):
 
 ### 実装チェックリスト
 
-- [ ] `src/news/summarizer.py`: `ResultMessage` のインポート追加 → [#3083](https://github.com/YH-05/finance/issues/3083)
-- [ ] `src/news/summarizer.py`: `EmptyResponseError` 例外クラス追加 → [#3083](https://github.com/YH-05/finance/issues/3083)
-- [ ] `src/news/summarizer.py`: `_call_claude_sdk()` に `AssistantMessage.error` チェック追加 → [#3084](https://github.com/YH-05/finance/issues/3084)
-- [ ] `src/news/summarizer.py`: `_call_claude_sdk()` に `ResultMessage` チェック追加 → [#3084](https://github.com/YH-05/finance/issues/3084)
-- [ ] `src/news/summarizer.py`: `_call_claude_sdk()` に空レスポンス検出と `EmptyResponseError` 送出追加 → [#3084](https://github.com/YH-05/finance/issues/3084)
-- [ ] `src/news/summarizer.py`: `_parse_response()` に空文字列の早期チェック追加 → [#3085](https://github.com/YH-05/finance/issues/3085)
-- [ ] `src/news/summarizer.py`: `summarize()` に `EmptyResponseError` の `except` ブロック追加（`ValueError` の前に配置） → [#3086](https://github.com/YH-05/finance/issues/3086)
-- [ ] `src/news/summarizer.py`: レート制限時の強化バックオフ（4s, 8s, 16s）追加 → [#3086](https://github.com/YH-05/finance/issues/3086)
-- [ ] `tests/news/unit/summarizers/test_summarizer.py`: 空レスポンス・レート制限・リトライのテスト追加 → [#3087](https://github.com/YH-05/finance/issues/3087)
+- [ ] `src/news/summarizer.py`: `ResultMessage` のインポート追加 → [#3083](https://github.com/YH-05/quants/issues/3083)
+- [ ] `src/news/summarizer.py`: `EmptyResponseError` 例外クラス追加 → [#3083](https://github.com/YH-05/quants/issues/3083)
+- [ ] `src/news/summarizer.py`: `_call_claude_sdk()` に `AssistantMessage.error` チェック追加 → [#3084](https://github.com/YH-05/quants/issues/3084)
+- [ ] `src/news/summarizer.py`: `_call_claude_sdk()` に `ResultMessage` チェック追加 → [#3084](https://github.com/YH-05/quants/issues/3084)
+- [ ] `src/news/summarizer.py`: `_call_claude_sdk()` に空レスポンス検出と `EmptyResponseError` 送出追加 → [#3084](https://github.com/YH-05/quants/issues/3084)
+- [ ] `src/news/summarizer.py`: `_parse_response()` に空文字列の早期チェック追加 → [#3085](https://github.com/YH-05/quants/issues/3085)
+- [ ] `src/news/summarizer.py`: `summarize()` に `EmptyResponseError` の `except` ブロック追加（`ValueError` の前に配置） → [#3086](https://github.com/YH-05/quants/issues/3086)
+- [ ] `src/news/summarizer.py`: レート制限時の強化バックオフ（4s, 8s, 16s）追加 → [#3086](https://github.com/YH-05/quants/issues/3086)
+- [ ] `tests/news/unit/summarizers/test_summarizer.py`: 空レスポンス・レート制限・リトライのテスト追加 → [#3087](https://github.com/YH-05/quants/issues/3087)
 - [ ] `make check-all` が成功することを確認
 
 ---
@@ -959,5 +959,5 @@ print(f"  処理時間: {elapsed:.1f}秒")
 
 ### 実装チェックリスト
 
-- [ ] `src/news/orchestrator.py`: 最終サマリーにフィードエラー件数の表示を追加 → [#3088](https://github.com/YH-05/finance/issues/3088)
-- [ ] `src/news/orchestrator.py`: `_build_result()` で `feed_errors` が正しく `WorkflowResult` に設定されていることを確認 → [#3088](https://github.com/YH-05/finance/issues/3088)
+- [ ] `src/news/orchestrator.py`: 最終サマリーにフィードエラー件数の表示を追加 → [#3088](https://github.com/YH-05/quants/issues/3088)
+- [ ] `src/news/orchestrator.py`: `_build_result()` で `feed_errors` が正しく `WorkflowResult` に設定されていることを確認 → [#3088](https://github.com/YH-05/quants/issues/3088)

@@ -168,7 +168,7 @@ EOF
 
 # Step 3: Issue作成
 issue_url=$(gh issue create \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --title "[${theme_ja}] ${japanese_title}" \
     --body "$body" \
     --label "news")
@@ -177,7 +177,7 @@ issue_url=$(gh issue create \
 issue_number=$(echo "$issue_url" | grep -oE '[0-9]+$')
 
 # Step 5: Issueをclose（ニュースIssueはclosed状態で保存）
-gh issue close "$issue_number" --repo YH-05/finance
+gh issue close "$issue_number" --repo YH-05/quants
 ```
 
 ## GitHub Project設定

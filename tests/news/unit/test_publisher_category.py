@@ -59,7 +59,7 @@ def sample_config() -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": "data/exports"},  # type: ignore[arg-type]
     )
@@ -216,7 +216,7 @@ class TestPublishCategoryBatch:
             patch.object(
                 publisher,
                 "_create_category_issue",
-                return_value=(100, "https://github.com/YH-05/finance/issues/100"),
+                return_value=(100, "https://github.com/YH-05/quants/issues/100"),
             ),
             patch.object(publisher, "_add_category_to_project"),
         ):
@@ -225,7 +225,7 @@ class TestPublishCategoryBatch:
             assert len(results) == 1
             assert results[0].status == PublicationStatus.SUCCESS
             assert results[0].issue_number == 100
-            assert results[0].issue_url == "https://github.com/YH-05/finance/issues/100"
+            assert results[0].issue_url == "https://github.com/YH-05/quants/issues/100"
             assert results[0].category == "index"
             assert results[0].category_label == "株価指数"
             assert results[0].date == "2026-02-09"
@@ -244,8 +244,8 @@ class TestPublishCategoryBatch:
 
         issue_counter = iter(
             [
-                (100, "https://github.com/YH-05/finance/issues/100"),
-                (101, "https://github.com/YH-05/finance/issues/101"),
+                (100, "https://github.com/YH-05/quants/issues/100"),
+                (101, "https://github.com/YH-05/quants/issues/101"),
             ]
         )
 
@@ -290,7 +290,7 @@ class TestPublishCategoryBatch:
             patch.object(
                 publisher,
                 "_create_category_issue",
-                return_value=(100, "https://github.com/YH-05/finance/issues/100"),
+                return_value=(100, "https://github.com/YH-05/quants/issues/100"),
             ),
             patch.object(publisher, "_add_category_to_project"),
         ):
@@ -426,7 +426,7 @@ class TestPublishCategoryBatch:
                 raise subprocess.CalledProcessError(
                     1, "gh", stderr="Error creating issue"
                 )
-            return (101, "https://github.com/YH-05/finance/issues/101")
+            return (101, "https://github.com/YH-05/quants/issues/101")
 
         with (
             patch.object(
@@ -467,7 +467,7 @@ class TestPublishCategoryBatch:
             patch.object(
                 publisher,
                 "_create_category_issue",
-                return_value=(100, "https://github.com/YH-05/finance/issues/100"),
+                return_value=(100, "https://github.com/YH-05/quants/issues/100"),
             ),
             patch.object(publisher, "_add_category_to_project") as mock_add_project,
         ):
@@ -566,7 +566,7 @@ class TestCheckCategoryIssueExists:
             assert call_args[2] == "list"
             assert "--search" in call_args
             assert "--repo" in call_args
-            assert "YH-05/finance" in call_args
+            assert "YH-05/quants" in call_args
 
     @pytest.mark.asyncio
     async def test_異常系_ghコマンド失敗でNoneを返す(
@@ -614,7 +614,7 @@ class TestCreateCategoryIssue:
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/100\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/100\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -623,7 +623,7 @@ class TestCreateCategoryIssue:
             )
 
             assert issue_number == 100
-            assert issue_url == "https://github.com/YH-05/finance/issues/100"
+            assert issue_url == "https://github.com/YH-05/quants/issues/100"
 
     @pytest.mark.asyncio
     async def test_正常系_CategoryMarkdownGeneratorでタイトルと本文を生成(
@@ -638,7 +638,7 @@ class TestCreateCategoryIssue:
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/100\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/100\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -672,7 +672,7 @@ class TestCreateCategoryIssue:
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/100\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/100\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -680,7 +680,7 @@ class TestCreateCategoryIssue:
 
             call_args = mock_run.call_args[0][0]
             assert "--repo" in call_args
-            assert "YH-05/finance" in call_args
+            assert "YH-05/quants" in call_args
 
 
 # ===========================================================================

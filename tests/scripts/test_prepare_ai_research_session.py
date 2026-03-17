@@ -71,13 +71,13 @@ def sample_existing_issues() -> list[dict[str, Any]]:
         {
             "number": 100,
             "title": "[AI/LLM] GPT-5 Release",
-            "url": "https://github.com/YH-05/finance/issues/100",
+            "url": "https://github.com/YH-05/quants/issues/100",
             "body": "詳細は元記事を参照: https://openai.com/news/gpt-5-release",
         },
         {
             "number": 101,
             "title": "[GPU] Blackwell News",
-            "url": "https://github.com/YH-05/finance/issues/101",
+            "url": "https://github.com/YH-05/quants/issues/101",
             "body": "詳細は元記事を参照: https://blogs.nvidia.com/blackwell-old",
         },
     ]
@@ -218,7 +218,7 @@ class TestExistingIssueURLExtraction:
             {
                 "number": 1,
                 "title": "Test",
-                "body": "https://github.com/YH-05/finance/issues/1 and https://example.com/article",
+                "body": "https://github.com/YH-05/quants/issues/1 and https://example.com/article",
             }
         ]
         urls = extract_urls_from_issues(issues)

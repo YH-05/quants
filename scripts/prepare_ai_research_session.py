@@ -77,7 +77,7 @@ DEFAULT_TOP_N = 10
 BATCH_OUTPUT_DIR = Path(".tmp/ai-research-batches")
 """Output directory for category batch JSON files."""
 
-REPO = "YH-05/finance"
+REPO = "YH-05/quants"
 """GitHub repository."""
 
 PROJECT_NUMBER = 44

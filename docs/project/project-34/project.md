@@ -752,90 +752,90 @@ mv trash/agents/test-orchestrator-legacy.md .claude/agents/test-orchestrator.md
 ### Wave 1: Phase 0 基盤整備（4タスク）
 
 - [ ] Agent Teams 共通実装パターンのプロトタイプ作成
-  - Issue: [#3233](https://github.com/YH-05/finance/issues/3233)
+  - Issue: [#3233](https://github.com/YH-05/quants/issues/3233)
   - ステータス: todo
 - [ ] ファイルベースデータ受け渡しパターンの検証
-  - Issue: [#3234](https://github.com/YH-05/finance/issues/3234)
+  - Issue: [#3234](https://github.com/YH-05/quants/issues/3234)
   - ステータス: todo
   - 依存: #3233
 - [ ] エラーハンドリング・部分障害パターンの確立
-  - Issue: [#3235](https://github.com/YH-05/finance/issues/3235)
+  - Issue: [#3235](https://github.com/YH-05/quants/issues/3235)
   - ステータス: todo
   - 依存: #3233
 - [ ] Agent Teams 共通実装パターンドキュメントの作成
-  - Issue: [#3236](https://github.com/YH-05/finance/issues/3236)
+  - Issue: [#3236](https://github.com/YH-05/quants/issues/3236)
   - ステータス: todo
   - 依存: #3233, #3234, #3235
 
 ### Wave 2: Phase 1 W5 test-orchestrator 移行（3タスク）
 
 - [ ] test-orchestrator の Agent Teams チーム定義作成
-  - Issue: [#3237](https://github.com/YH-05/finance/issues/3237)
+  - Issue: [#3237](https://github.com/YH-05/quants/issues/3237)
   - ステータス: todo
   - 依存: #3236
 - [ ] test-orchestrator の並行運用環境構築
-  - Issue: [#3238](https://github.com/YH-05/finance/issues/3238)
+  - Issue: [#3238](https://github.com/YH-05/quants/issues/3238)
   - ステータス: todo
   - 依存: #3237
 - [ ] test-orchestrator 移行の動作検証と結果比較
-  - Issue: [#3239](https://github.com/YH-05/finance/issues/3239)
+  - Issue: [#3239](https://github.com/YH-05/quants/issues/3239)
   - ステータス: todo
   - 依存: #3237, #3238
 
 ### Wave 3: Phase 2 W3 weekly-report-writer 移行（4タスク）
 
 - [ ] weekly-report-writer の4スキル統合チームメイト定義作成
-  - Issue: [#3240](https://github.com/YH-05/finance/issues/3240)
+  - Issue: [#3240](https://github.com/YH-05/quants/issues/3240)
   - ステータス: todo
   - 依存: #3236, #3239
 - [ ] weekly-report-writer 既存エージェント定義の Agent Teams 対応調整
-  - Issue: [#3241](https://github.com/YH-05/finance/issues/3241)
+  - Issue: [#3241](https://github.com/YH-05/quants/issues/3241)
   - ステータス: todo
   - 依存: #3236
 - [ ] weekly-report-writer の並行運用環境構築
-  - Issue: [#3242](https://github.com/YH-05/finance/issues/3242)
+  - Issue: [#3242](https://github.com/YH-05/quants/issues/3242)
   - ステータス: todo
   - 依存: #3240, #3241
 - [ ] weekly-report-writer 移行の動作検証と品質確認
-  - Issue: [#3243](https://github.com/YH-05/finance/issues/3243)
+  - Issue: [#3243](https://github.com/YH-05/quants/issues/3243)
   - ステータス: todo
   - 依存: #3242
 
 ### Wave 4: Phase 3 W4 finance-research 移行（6タスク）
 
 - [ ] finance-research のリーダーエージェント定義作成
-  - Issue: [#3244](https://github.com/YH-05/finance/issues/3244)
+  - Issue: [#3244](https://github.com/YH-05/quants/issues/3244)
   - ステータス: todo
   - 依存: #3236, #3243
 - [ ] finance-research の raw-data.json 書き込み競合対策
-  - Issue: [#3245](https://github.com/YH-05/finance/issues/3245)
+  - Issue: [#3245](https://github.com/YH-05/quants/issues/3245)
   - ステータス: todo
   - 依存: #3236
 - [ ] finance-research の12チームメイト定義調整
-  - Issue: [#3246](https://github.com/YH-05/finance/issues/3246)
+  - Issue: [#3246](https://github.com/YH-05/quants/issues/3246)
   - ステータス: todo
   - 依存: #3244, #3245
 - [ ] finance-research の HF ポイントと深度オプション対応
-  - Issue: [#3247](https://github.com/YH-05/finance/issues/3247)
+  - Issue: [#3247](https://github.com/YH-05/quants/issues/3247)
   - ステータス: todo
   - 依存: #3244
 - [ ] finance-research の並行運用環境構築
-  - Issue: [#3248](https://github.com/YH-05/finance/issues/3248)
+  - Issue: [#3248](https://github.com/YH-05/quants/issues/3248)
   - ステータス: todo
   - 依存: #3244, #3246, #3247
 - [ ] finance-research 移行の E2E 動作検証
-  - Issue: [#3249](https://github.com/YH-05/finance/issues/3249)
+  - Issue: [#3249](https://github.com/YH-05/quants/issues/3249)
   - ステータス: todo
   - 依存: #3248
 
 ### Wave 5: Phase 4 旧実装のクリーンアップ（2タスク）
 
 - [ ] 旧オーケストレーター定義のクリーンアップ
-  - Issue: [#3250](https://github.com/YH-05/finance/issues/3250)
+  - Issue: [#3250](https://github.com/YH-05/quants/issues/3250)
   - ステータス: todo
   - 依存: #3239, #3243, #3249
 - [ ] CLAUDE.md・関連ドキュメントの更新
-  - Issue: [#3251](https://github.com/YH-05/finance/issues/3251)
+  - Issue: [#3251](https://github.com/YH-05/quants/issues/3251)
   - ステータス: todo
   - 依存: #3250
 

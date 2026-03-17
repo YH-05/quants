@@ -2,7 +2,7 @@
 
 **作成日**: 2026-01-15
 **ステータス**: Draft
-**関連Issue**: [#150](https://github.com/YH-05/finance/issues/150)
+**関連Issue**: [#150](https://github.com/YH-05/quants/issues/150)
 
 ## 概要
 

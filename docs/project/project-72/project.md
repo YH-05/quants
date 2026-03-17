@@ -86,20 +86,20 @@ etfcom モジュール全体で HTTP 404 を適切に検出し、意味のある
 ### Wave 1（基盤）
 
 - [ ] ETFComNotFoundError 例外クラスの追加
-  - Issue: [#3745](https://github.com/YH-05/finance/issues/3745)
+  - Issue: [#3745](https://github.com/YH-05/quants/issues/3745)
   - ステータス: todo
   - 見積もり: 15 minutes
 
 ### Wave 2（HTTP レイヤー、並行開発可能）
 
 - [ ] session.py での HTTP 404 検出
-  - Issue: [#3746](https://github.com/YH-05/finance/issues/3746)
+  - Issue: [#3746](https://github.com/YH-05/quants/issues/3746)
   - ステータス: todo
   - 依存: #3745
   - 見積もり: 15 minutes
 
 - [ ] browser.py での HTTP 404 検出と TargetClosedError ハンドリング
-  - Issue: [#3747](https://github.com/YH-05/finance/issues/3747)
+  - Issue: [#3747](https://github.com/YH-05/quants/issues/3747)
   - ステータス: todo
   - 依存: #3745
   - 見積もり: 15 minutes
@@ -107,7 +107,7 @@ etfcom モジュール全体で HTTP 404 を適切に検出し、意味のある
 ### Wave 3（アプリケーションレイヤー）
 
 - [ ] collectors.py のティッカー正規化と 404 グレースフルハンドリング
-  - Issue: [#3748](https://github.com/YH-05/finance/issues/3748)
+  - Issue: [#3748](https://github.com/YH-05/quants/issues/3748)
   - ステータス: todo
   - 依存: #3746, #3747
   - 見積もり: 20 minutes
@@ -115,7 +115,7 @@ etfcom モジュール全体で HTTP 404 を適切に検出し、意味のある
 ### Wave 4（公開 API）
 
 - [ ] ETFComNotFoundError の Re-export 更新
-  - Issue: [#3749](https://github.com/YH-05/finance/issues/3749)
+  - Issue: [#3749](https://github.com/YH-05/quants/issues/3749)
   - ステータス: todo
   - 依存: #3745
   - 見積もり: 5 minutes

@@ -19,30 +19,30 @@ JSON形式で保存・エクスポートする。
 ## 主要機能
 
 ### フィード管理
-- [x] RSSフィードの登録・削除・一覧管理 - Issue: [#61](https://github.com/YH-05/finance/issues/61)
-- [x] フィードメタデータ（URL、タイトル、カテゴリ、更新頻度等）の管理 - Issue: [#53](https://github.com/YH-05/finance/issues/53)
-- [x] フィード取得スケジュール設定 - Issue: [#67](https://github.com/YH-05/finance/issues/67)
+- [x] RSSフィードの登録・削除・一覧管理 - Issue: [#61](https://github.com/YH-05/quants/issues/61)
+- [x] フィードメタデータ（URL、タイトル、カテゴリ、更新頻度等）の管理 - Issue: [#53](https://github.com/YH-05/quants/issues/53)
+- [x] フィード取得スケジュール設定 - Issue: [#67](https://github.com/YH-05/quants/issues/67)
 
 ### データ取得・パース
-- [x] RSS 2.0 / Atom フォーマット対応 - Issue: [#59](https://github.com/YH-05/finance/issues/59)
-- [x] HTTP/HTTPS経由でのフィード取得 - Issue: [#60](https://github.com/YH-05/finance/issues/60)
-- [x] エラーハンドリング（タイムアウト、404、パースエラー等） - Issue: [#54](https://github.com/YH-05/finance/issues/54)
-- [x] 差分取得（既存アイテムとの重複排除） - Issue: [#58](https://github.com/YH-05/finance/issues/58)
+- [x] RSS 2.0 / Atom フォーマット対応 - Issue: [#59](https://github.com/YH-05/quants/issues/59)
+- [x] HTTP/HTTPS経由でのフィード取得 - Issue: [#60](https://github.com/YH-05/quants/issues/60)
+- [x] エラーハンドリング（タイムアウト、404、パースエラー等） - Issue: [#54](https://github.com/YH-05/quants/issues/54)
+- [x] 差分取得（既存アイテムとの重複排除） - Issue: [#58](https://github.com/YH-05/quants/issues/58)
 
 ### データ保存・管理
-- [x] JSON形式でのローカル保存（data/raw/rss/） - Issue: [#56](https://github.com/YH-05/finance/issues/56)
-- [x] フィードアイテムの構造化データ管理（タイトル、URL、公開日時、内容等） - Issue: [#63](https://github.com/YH-05/finance/issues/63)
-- [x] メタデータ管理（取得日時、フィード情報等） - Issue: [#53](https://github.com/YH-05/finance/issues/53)
+- [x] JSON形式でのローカル保存（data/raw/rss/） - Issue: [#56](https://github.com/YH-05/quants/issues/56)
+- [x] フィードアイテムの構造化データ管理（タイトル、URL、公開日時、内容等） - Issue: [#63](https://github.com/YH-05/quants/issues/63)
+- [x] メタデータ管理（取得日時、フィード情報等） - Issue: [#53](https://github.com/YH-05/quants/issues/53)
 
 ### 実行モード
-- [x] 手動実行API（Python関数呼び出し） - Issue: [#64](https://github.com/YH-05/finance/issues/64)
-- [x] 日次バッチ実行対応（スケジューラー連携） - Issue: [#67](https://github.com/YH-05/finance/issues/67)
-- [x] CLIインターフェース - Issue: [#66](https://github.com/YH-05/finance/issues/66)
+- [x] 手動実行API（Python関数呼び出し） - Issue: [#64](https://github.com/YH-05/quants/issues/64)
+- [x] 日次バッチ実行対応（スケジューラー連携） - Issue: [#67](https://github.com/YH-05/quants/issues/67)
+- [x] CLIインターフェース - Issue: [#66](https://github.com/YH-05/quants/issues/66)
 
 ### MCPサーバー機能
-- [x] Claude Code向けMCPサーバー実装 - Issue: [#65](https://github.com/YH-05/finance/issues/65)
-- [x] フィード情報取得API（一覧、詳細） - Issue: [#65](https://github.com/YH-05/finance/issues/65)
-- [x] アイテム検索・フィルタリングAPI - Issue: [#65](https://github.com/YH-05/finance/issues/65)
+- [x] Claude Code向けMCPサーバー実装 - Issue: [#65](https://github.com/YH-05/quants/issues/65)
+- [x] フィード情報取得API（一覧、詳細） - Issue: [#65](https://github.com/YH-05/quants/issues/65)
+- [x] アイテム検索・フィルタリングAPI - Issue: [#65](https://github.com/YH-05/quants/issues/65)
 
 ## 技術的考慮事項
 
@@ -114,23 +114,23 @@ JSON形式で保存・エクスポートする。
 
 | # | タイトル | ステータス |
 |---|---------|----------|
-| [#53](https://github.com/YH-05/finance/issues/53) | [T1] 型定義（types.py） | Done |
-| [#54](https://github.com/YH-05/finance/issues/54) | [T2] 例外クラス（exceptions.py） | Done |
-| [#55](https://github.com/YH-05/finance/issues/55) | [T3] ファイルロック管理（LockManager） | Done |
-| [#56](https://github.com/YH-05/finance/issues/56) | [T4] JSON永続化（JSONStorage） | Done |
-| [#57](https://github.com/YH-05/finance/issues/57) | [T5] URL・文字列長検証（URLValidator） | Done |
-| [#58](https://github.com/YH-05/finance/issues/58) | [T6] 差分検出（DiffDetector） | Done |
-| [#59](https://github.com/YH-05/finance/issues/59) | [T7] RSS/Atomパーサー（FeedParser） | Done |
-| [#60](https://github.com/YH-05/finance/issues/60) | [T8] HTTP/HTTPSクライアント（HTTPClient） | Done |
-| [#61](https://github.com/YH-05/finance/issues/61) | [T9] フィード管理サービス（FeedManager） | Done |
-| [#62](https://github.com/YH-05/finance/issues/62) | [T10] フィード取得サービス（FeedFetcher） | Done |
-| [#63](https://github.com/YH-05/finance/issues/63) | [T11] アイテム読込サービス（FeedReader） | Done |
-| [#64](https://github.com/YH-05/finance/issues/64) | [T12] Python API エクスポート（__init__.py） | Done |
-| [#65](https://github.com/YH-05/finance/issues/65) | [T14] MCPサーバー実装 | Done |
-| [#66](https://github.com/YH-05/finance/issues/66) | [T15] CLIインターフェース実装 | Done |
-| [#67](https://github.com/YH-05/finance/issues/67) | [T16] 日次バッチ実行機能 | Done |
-| [#68](https://github.com/YH-05/finance/issues/68) | [T13] ユニットテスト（カバレッジ80%以上） | Done |
-| [#69](https://github.com/YH-05/finance/issues/69) | [T17] 統合テスト（フルフロー） | Done |
+| [#53](https://github.com/YH-05/quants/issues/53) | [T1] 型定義（types.py） | Done |
+| [#54](https://github.com/YH-05/quants/issues/54) | [T2] 例外クラス（exceptions.py） | Done |
+| [#55](https://github.com/YH-05/quants/issues/55) | [T3] ファイルロック管理（LockManager） | Done |
+| [#56](https://github.com/YH-05/quants/issues/56) | [T4] JSON永続化（JSONStorage） | Done |
+| [#57](https://github.com/YH-05/quants/issues/57) | [T5] URL・文字列長検証（URLValidator） | Done |
+| [#58](https://github.com/YH-05/quants/issues/58) | [T6] 差分検出（DiffDetector） | Done |
+| [#59](https://github.com/YH-05/quants/issues/59) | [T7] RSS/Atomパーサー（FeedParser） | Done |
+| [#60](https://github.com/YH-05/quants/issues/60) | [T8] HTTP/HTTPSクライアント（HTTPClient） | Done |
+| [#61](https://github.com/YH-05/quants/issues/61) | [T9] フィード管理サービス（FeedManager） | Done |
+| [#62](https://github.com/YH-05/quants/issues/62) | [T10] フィード取得サービス（FeedFetcher） | Done |
+| [#63](https://github.com/YH-05/quants/issues/63) | [T11] アイテム読込サービス（FeedReader） | Done |
+| [#64](https://github.com/YH-05/quants/issues/64) | [T12] Python API エクスポート（__init__.py） | Done |
+| [#65](https://github.com/YH-05/quants/issues/65) | [T14] MCPサーバー実装 | Done |
+| [#66](https://github.com/YH-05/quants/issues/66) | [T15] CLIインターフェース実装 | Done |
+| [#67](https://github.com/YH-05/quants/issues/67) | [T16] 日次バッチ実行機能 | Done |
+| [#68](https://github.com/YH-05/quants/issues/68) | [T13] ユニットテスト（カバレッジ80%以上） | Done |
+| [#69](https://github.com/YH-05/quants/issues/69) | [T17] 統合テスト（フルフロー） | Done |
 
 **17件完了 / 17件中** (2026-01-23)
 

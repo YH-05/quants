@@ -97,14 +97,14 @@ market.etfcom パッケージに REST API ベースの `HistoricalFundFlowsColle
 ### Wave 1（依存なし、即時着手可能）
 
 - [ ] [Wave1] REST API 基盤の追加（定数・型・エラー）
-  - Issue: [#3394](https://github.com/YH-05/finance/issues/3394)
+  - Issue: [#3394](https://github.com/YH-05/quants/issues/3394)
   - ステータス: todo
   - 見積もり: 1-1.5h
 
 ### Wave 2（Wave 1 完了後）
 
 - [ ] [Wave2] session.py の _request() DRY 化リファクタリングと POST 対応
-  - Issue: [#3395](https://github.com/YH-05/finance/issues/3395)
+  - Issue: [#3395](https://github.com/YH-05/quants/issues/3395)
   - ステータス: todo
   - 依存: #3394
   - 見積もり: 1.5-2h
@@ -112,13 +112,13 @@ market.etfcom パッケージに REST API ベースの `HistoricalFundFlowsColle
 ### Wave 3（Wave 2 完了後）
 
 - [ ] [Wave3] HistoricalFundFlowsCollector コア実装
-  - Issue: [#3396](https://github.com/YH-05/finance/issues/3396)
+  - Issue: [#3396](https://github.com/YH-05/quants/issues/3396)
   - ステータス: todo
   - 依存: #3394, #3395
   - 見積もり: 2-2.5h
 
 - [ ] [Wave3] HistoricalFundFlowsCollector ファイルキャッシュと fetch_multiple 並列化
-  - Issue: [#3397](https://github.com/YH-05/finance/issues/3397)
+  - Issue: [#3397](https://github.com/YH-05/quants/issues/3397)
   - ステータス: todo
   - 依存: #3396
   - 見積もり: 1.5-2h
@@ -126,7 +126,7 @@ market.etfcom パッケージに REST API ベースの `HistoricalFundFlowsColle
 ### Wave 4（Wave 3 完了後）
 
 - [ ] [Wave4] パッケージエクスポート追加と README 更新
-  - Issue: [#3398](https://github.com/YH-05/finance/issues/3398)
+  - Issue: [#3398](https://github.com/YH-05/quants/issues/3398)
   - ステータス: todo
   - 依存: #3396, #3397
   - 見積もり: 0.5-1h

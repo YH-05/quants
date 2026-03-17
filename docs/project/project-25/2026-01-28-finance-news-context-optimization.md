@@ -323,7 +323,7 @@ tools:
     "project_id": "PVT_kwHOBoK6AM4BMpw_",
     "project_number": 15,
     "project_owner": "YH-05",
-    "repo": "YH-05/finance",
+    "repo": "YH-05/quants",
     "status_field_id": "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
     "published_date_field_id": "PVTF_lAHOBoK6AM4BMpw_zg8BzrI"
   }
@@ -369,7 +369,7 @@ tools:
   "created_issues": [
     {
       "issue_number": 200,
-      "issue_url": "https://github.com/YH-05/finance/issues/200",
+      "issue_url": "https://github.com/YH-05/quants/issues/200",
       "title": "[株価指数] S&P500が過去最高値を更新",
       "article_url": "https://www.cnbc.com/...",
       "published_date": "2026-01-19"
@@ -635,7 +635,7 @@ issue_config = {
     "project_id": session_data["config"]["project_id"],
     "project_number": session_data["config"]["project_number"],
     "project_owner": session_data["config"]["project_owner"],
-    "repo": "YH-05/finance",
+    "repo": "YH-05/quants",
     "status_field_id": session_data["config"]["status_field_id"],
     "published_date_field_id": session_data["config"]["published_date_field_id"]
 }
@@ -739,7 +739,7 @@ Phase 4: バッチ投稿（article-fetcherに委譲）
 | project_id | Project ID | `"PVT_kwHOBoK6AM4BMpw_"` |
 | project_number | Project番号 | `15` |
 | project_owner | Projectオーナー | `"YH-05"` |
-| repo | リポジトリ | `"YH-05/finance"` |
+| repo | リポジトリ | `"YH-05/quants"` |
 | status_field_id | StatusフィールドID | `"PVTSSF_lAHOBoK6AM4BMpw_zg739ZE"` |
 | published_date_field_id | 公開日フィールドID | `"PVTF_lAHOBoK6AM4BMpw_zg8BzrI"` |
 ```
@@ -836,7 +836,7 @@ def build_issue_config(session_data: dict, theme_key: str, theme_label: str, sta
         "project_id": config["project_id"],
         "project_number": config["project_number"],
         "project_owner": config["project_owner"],
-        "repo": "YH-05/finance",
+        "repo": "YH-05/quants",
         "status_field_id": config["status_field_id"],
         "published_date_field_id": config["published_date_field_id"],
     }
@@ -920,7 +920,7 @@ article-fetcherにはIssue作成に必要な全情報を渡すこと:
     "project_id": "PVT_...",          // ✅ 必須: Project ID
     "project_number": 15,             // ✅ 必須: Project番号
     "project_owner": "YH-05",        // ✅ 必須: Projectオーナー
-    "repo": "YH-05/finance",         // ✅ 必須: リポジトリ
+    "repo": "YH-05/quants",         // ✅ 必須: リポジトリ
     "status_field_id": "PVTSSF_...",  // ✅ 必須: StatusフィールドID
     "published_date_field_id": "PVTF_..." // ✅ 必須: 公開日フィールドID
   }

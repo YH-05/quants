@@ -116,7 +116,7 @@ def test_existing_item_returns_item_id(publisher, mocker):
     )
 
     item_id = await publisher._get_existing_project_item(
-        "https://github.com/YH-05/finance/issues/123"
+        "https://github.com/YH-05/quants/issues/123"
     )
 
     assert item_id == "PVTI_xxx"
@@ -130,7 +130,7 @@ def test_no_existing_item_returns_none(publisher, mocker):
     )
 
     item_id = await publisher._get_existing_project_item(
-        "https://github.com/YH-05/finance/issues/999"
+        "https://github.com/YH-05/quants/issues/999"
     )
 
     assert item_id is None

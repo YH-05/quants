@@ -8,18 +8,18 @@ SQLiteからHistoricalCache(JSON)へのFREDデータソース移行タスク。
 
 | # | タスク | ファイル | Issue | 依存 | 見積 |
 |---|--------|----------|-------|------|------|
-| 1 | インポート変更 | us_treasury.py | [#2821](https://github.com/YH-05/finance/issues/2821) | - | 15分 |
-| 2 | load_fred_db_path削除 | us_treasury.py | [#2822](https://github.com/YH-05/finance/issues/2822) | #1 | 10分 |
-| 3 | plot_us_interest_rates_and_spread変更 | us_treasury.py | [#2823](https://github.com/YH-05/finance/issues/2823) | #1, #2 | 30分 |
-| 4 | load_yield_data変更・リネーム | us_treasury.py | [#2824](https://github.com/YH-05/finance/issues/2824) | #1, #2 | 30分 |
-| 5 | plot_us_corporate_bond_spreads変更 | us_treasury.py | [#2825](https://github.com/YH-05/finance/issues/2825) | #1, #2 | 30分 |
-| 6 | インポート削除 | metal.py | [#2826](https://github.com/YH-05/finance/issues/2826) | - | 10分 |
-| 7 | __init__クリーンアップ | metal.py | [#2827](https://github.com/YH-05/finance/issues/2827) | #6 | 15分 |
-| 8 | _load_dollars_indexヘルパー追加 | metal.py | [#2828](https://github.com/YH-05/finance/issues/2828) | #7 | 20分 |
-| 9 | load_price変更 | metal.py | [#2829](https://github.com/YH-05/finance/issues/2829) | #8 | 20分 |
-| 10 | calc_return変更 | metal.py | [#2830](https://github.com/YH-05/finance/issues/2830) | #8 | 20分 |
-| 11 | us_treasury.py動作確認 | - | [#2831](https://github.com/YH-05/finance/issues/2831) | #3, #4, #5 | 30分 |
-| 12 | metal.py動作確認 | - | [#2832](https://github.com/YH-05/finance/issues/2832) | #9, #10 | 30分 |
+| 1 | インポート変更 | us_treasury.py | [#2821](https://github.com/YH-05/quants/issues/2821) | - | 15分 |
+| 2 | load_fred_db_path削除 | us_treasury.py | [#2822](https://github.com/YH-05/quants/issues/2822) | #1 | 10分 |
+| 3 | plot_us_interest_rates_and_spread変更 | us_treasury.py | [#2823](https://github.com/YH-05/quants/issues/2823) | #1, #2 | 30分 |
+| 4 | load_yield_data変更・リネーム | us_treasury.py | [#2824](https://github.com/YH-05/quants/issues/2824) | #1, #2 | 30分 |
+| 5 | plot_us_corporate_bond_spreads変更 | us_treasury.py | [#2825](https://github.com/YH-05/quants/issues/2825) | #1, #2 | 30分 |
+| 6 | インポート削除 | metal.py | [#2826](https://github.com/YH-05/quants/issues/2826) | - | 10分 |
+| 7 | __init__クリーンアップ | metal.py | [#2827](https://github.com/YH-05/quants/issues/2827) | #6 | 15分 |
+| 8 | _load_dollars_indexヘルパー追加 | metal.py | [#2828](https://github.com/YH-05/quants/issues/2828) | #7 | 20分 |
+| 9 | load_price変更 | metal.py | [#2829](https://github.com/YH-05/quants/issues/2829) | #8 | 20分 |
+| 10 | calc_return変更 | metal.py | [#2830](https://github.com/YH-05/quants/issues/2830) | #8 | 20分 |
+| 11 | us_treasury.py動作確認 | - | [#2831](https://github.com/YH-05/quants/issues/2831) | #3, #4, #5 | 30分 |
+| 12 | metal.py動作確認 | - | [#2832](https://github.com/YH-05/quants/issues/2832) | #9, #10 | 30分 |
 
 **合計見積もり時間**: 約4時間10分
 

@@ -277,7 +277,7 @@ START_DATE="2026-01-14"
 END_DATE="2026-01-21"
 GENERATED_AT=$(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M (JST)')
 # 重要: レポートパスは完全なGitHub URLを使用すること
-REPORT_PATH="https://github.com/YH-05/finance/blob/main/articles/weekly_report/${REPORT_DATE}/02_edit/weekly_report.md"
+REPORT_PATH="https://github.com/YH-05/quants/blob/main/articles/weekly_report/${REPORT_DATE}/02_edit/weekly_report.md"
 
 # Step 2: Issue 本文を生成
 body="## 週次マーケットレポート ${REPORT_DATE}
@@ -318,7 +318,7 @@ ${mag7_summary}
 
 # Step 3: Issue 作成
 issue_url=$(gh issue create \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --title "[週次レポート] ${REPORT_DATE} マーケットレポート" \
     --body "$body" \
     --label "report")
@@ -393,7 +393,7 @@ mutation {
 ```bash
 # 同日のレポート Issue を検索
 existing=$(gh issue list \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --search "[週次レポート] ${REPORT_DATE}" \
     --state all \
     --json number,title \
@@ -415,7 +415,7 @@ fi
   "status": "success",
   "issue": {
     "number": 825,
-    "url": "https://github.com/YH-05/finance/issues/825",
+    "url": "https://github.com/YH-05/quants/issues/825",
     "title": "[週次レポート] 2026-01-22 マーケットレポート"
   },
   "project": {
@@ -478,7 +478,7 @@ SendMessage:
   content: |
     Issue投稿タスクが完了しました。
     Issue番号: #825
-    Issue URL: https://github.com/YH-05/finance/issues/825
+    Issue URL: https://github.com/YH-05/quants/issues/825
     Project Status: Weekly Report
   summary: "Issue投稿完了 #825"
 ```
@@ -492,7 +492,7 @@ SendMessage:
 ## 作成した Issue
 
 - **Issue**: #825 - [週次レポート] 2026-01-22 マーケットレポート
-- **URL**: https://github.com/YH-05/finance/issues/825
+- **URL**: https://github.com/YH-05/quants/issues/825
 
 ## GitHub Project #15
 
@@ -552,7 +552,7 @@ dry_run=false で実際に Issue を作成します。
   "message": "既に同日のレポート Issue が存在します",
   "existing_issue": {
     "number": 820,
-    "url": "https://github.com/YH-05/finance/issues/820"
+    "url": "https://github.com/YH-05/quants/issues/820"
   },
   "suggestion": "既存の Issue を更新するか、異なる日付で作成してください"
 }
@@ -569,7 +569,7 @@ dry_run=false で実際に Issue を作成します。
 - [ ] **Status を "Weekly Report" に必ず設定する**（GraphQL APIを使用）
 - [ ] **公開日時フィールドを必ず設定する**（Issue作成時刻＝今日の日付を使用）
 - [ ] **レポートリンクは完全なGitHub URLを使用する**（相対パス禁止）
-  - 形式: `https://github.com/YH-05/finance/blob/main/{report_path}`
+  - 形式: `https://github.com/YH-05/quants/blob/main/{report_path}`
 - [ ] 結果を JSON 形式で出力する
 - [ ] Agent Teams モード時: TaskGet で blockedBy が空であることを確認してからタスクを開始する
 - [ ] Agent Teams モード時: TaskUpdate でタスク状態を更新する（in_progress → completed）

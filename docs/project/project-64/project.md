@@ -85,12 +85,12 @@
 ### Wave 1（TDD 並行作成可能）
 
 - [ ] collect_weekly_report_data.py データ収集スクリプトの新規作成
-  - Issue: [#3707](https://github.com/YH-05/finance/issues/3707)
+  - Issue: [#3707](https://github.com/YH-05/quants/issues/3707)
   - ステータス: todo
   - 見積もり: 1.5h
 
 - [ ] collect_weekly_report_data.py の単体テスト作成
-  - Issue: [#3708](https://github.com/YH-05/finance/issues/3708)
+  - Issue: [#3708](https://github.com/YH-05/quants/issues/3708)
   - ステータス: todo
   - 依存: #3707
   - 見積もり: 1.5h
@@ -98,19 +98,19 @@
 ### Wave 2（Wave 1 完了後、並行可能）
 
 - [ ] generate-market-report コマンド定義の Phase 2 更新
-  - Issue: [#3709](https://github.com/YH-05/finance/issues/3709)
+  - Issue: [#3709](https://github.com/YH-05/quants/issues/3709)
   - ステータス: todo
   - 依存: #3707
   - 見積もり: 0.5h
 
 - [ ] generate-market-report SKILL.md の Phase 2 記述更新
-  - Issue: [#3710](https://github.com/YH-05/finance/issues/3710)
+  - Issue: [#3710](https://github.com/YH-05/quants/issues/3710)
   - ステータス: todo
   - 依存: #3707
   - 見積もり: 0.5h
 
 - [ ] wr-data-aggregator エージェント定義の入力ファイル一覧更新
-  - Issue: [#3711](https://github.com/YH-05/finance/issues/3711)
+  - Issue: [#3711](https://github.com/YH-05/quants/issues/3711)
   - ステータス: todo
   - 依存: #3707
   - 見積もり: 0.5h

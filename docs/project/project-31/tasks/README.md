@@ -10,12 +10,12 @@
 
 | # | Issue | タイトル | ステータス | 見積もり |
 |---|-------|----------|------------|----------|
-| 01 | [#2840](https://github.com/YH-05/finance/issues/2840) | settings.py に _find_env_file() 関数を追加 | Todo | 1時間 |
-| 02 | [#2841](https://github.com/YH-05/finance/issues/2841) | settings.py の load_project_env() を修正 | Todo | 30分 |
-| 03 | [#2842](https://github.com/YH-05/finance/issues/2842) | connection.py に get_data_dir() 関数を追加 | Todo | 1時間 |
-| 04 | [#2843](https://github.com/YH-05/finance/issues/2843) | historical_cache.py の get_default_cache_path() を修正 | Todo | 30分 |
-| 05 | [#2844](https://github.com/YH-05/finance/issues/2844) | fetcher.py に _get_default_presets_path() 関数を追加 | Todo | 30分 |
-| 06 | [#2845](https://github.com/YH-05/finance/issues/2845) | .env.example にパス設定オプションを追加 | Todo | 15分 |
+| 01 | [#2840](https://github.com/YH-05/quants/issues/2840) | settings.py に _find_env_file() 関数を追加 | Todo | 1時間 |
+| 02 | [#2841](https://github.com/YH-05/quants/issues/2841) | settings.py の load_project_env() を修正 | Todo | 30分 |
+| 03 | [#2842](https://github.com/YH-05/quants/issues/2842) | connection.py に get_data_dir() 関数を追加 | Todo | 1時間 |
+| 04 | [#2843](https://github.com/YH-05/quants/issues/2843) | historical_cache.py の get_default_cache_path() を修正 | Todo | 30分 |
+| 05 | [#2844](https://github.com/YH-05/quants/issues/2844) | fetcher.py に _get_default_presets_path() 関数を追加 | Todo | 30分 |
+| 06 | [#2845](https://github.com/YH-05/quants/issues/2845) | .env.example にパス設定オプションを追加 | Todo | 15分 |
 
 **合計見積もり**: 3時間45分
 
@@ -57,18 +57,18 @@ graph TD
 ## 実装順序
 
 ### Wave 1（開始可能）
-- [#2840](https://github.com/YH-05/finance/issues/2840): settings.py に _find_env_file() 関数を追加
+- [#2840](https://github.com/YH-05/quants/issues/2840): settings.py に _find_env_file() 関数を追加
 
 ### Wave 2（Wave 1 完了後）
-- [#2841](https://github.com/YH-05/finance/issues/2841): settings.py の load_project_env() を修正
+- [#2841](https://github.com/YH-05/quants/issues/2841): settings.py の load_project_env() を修正
 
 ### Wave 3（Wave 2 完了後、並行開発可能）
-- [#2842](https://github.com/YH-05/finance/issues/2842): connection.py に get_data_dir() 関数を追加
-- [#2843](https://github.com/YH-05/finance/issues/2843): historical_cache.py の get_default_cache_path() を修正
-- [#2844](https://github.com/YH-05/finance/issues/2844): fetcher.py に _get_default_presets_path() 関数を追加
+- [#2842](https://github.com/YH-05/quants/issues/2842): connection.py に get_data_dir() 関数を追加
+- [#2843](https://github.com/YH-05/quants/issues/2843): historical_cache.py の get_default_cache_path() を修正
+- [#2844](https://github.com/YH-05/quants/issues/2844): fetcher.py に _get_default_presets_path() 関数を追加
 
 ### Wave 4（Wave 3 完了後）
-- [#2845](https://github.com/YH-05/finance/issues/2845): .env.example にパス設定オプションを追加
+- [#2845](https://github.com/YH-05/quants/issues/2845): .env.example にパス設定オプションを追加
 
 ## 修正対象ファイル
 

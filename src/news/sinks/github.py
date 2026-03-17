@@ -72,7 +72,7 @@ class GitHubSinkConfig(BaseModel):
 
     >>> config = GitHubSinkConfig(
     ...     project_number=24,
-    ...     repository="YH-05/finance",
+    ...     repository="YH-05/quants",
     ...     labels=["news"],
     ...     dry_run=True,
     ... )

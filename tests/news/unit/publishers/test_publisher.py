@@ -49,7 +49,7 @@ def sample_config() -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": "data/exports"},  # type: ignore[arg-type]
     )
@@ -574,7 +574,7 @@ class TestResolveStatus:
                 "project_id": "PVT_test",
                 "status_field_id": "PVTSSF_test",
                 "published_date_field_id": "PVTF_test",
-                "repository": "YH-05/finance",
+                "repository": "YH-05/quants",
             },
             output={"result_dir": "data/exports"},  # type: ignore[arg-type]
         )
@@ -646,7 +646,7 @@ class TestCreateIssue:
         # Mock subprocess.run for gh issue create
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/123\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/123\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -655,7 +655,7 @@ class TestCreateIssue:
             )
 
             assert issue_number == 123
-            assert issue_url == "https://github.com/YH-05/finance/issues/123"
+            assert issue_url == "https://github.com/YH-05/quants/issues/123"
 
     @pytest.mark.asyncio
     async def test_正常系_ghコマンドに正しい引数を渡す(
@@ -671,7 +671,7 @@ class TestCreateIssue:
         # Mock subprocess.run
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/123\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/123\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -685,7 +685,7 @@ class TestCreateIssue:
             assert call_args[1] == "issue"
             assert call_args[2] == "create"
             assert "--repo" in call_args
-            assert "YH-05/finance" in call_args
+            assert "YH-05/quants" in call_args
             assert "--title" in call_args
             assert "--body" in call_args
 
@@ -747,7 +747,7 @@ class TestAddToProject:
             assert "--owner" in first_call_args
             assert "YH-05" in first_call_args
             assert "--url" in first_call_args
-            assert "https://github.com/YH-05/finance/issues/123" in first_call_args
+            assert "https://github.com/YH-05/quants/issues/123" in first_call_args
 
     @pytest.mark.asyncio
     async def test_正常系_Statusフィールドを設定(
@@ -947,7 +947,7 @@ class TestPublishWithIssueCreation:
         # Mock subprocess.run for all gh commands
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/456\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/456\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -957,7 +957,7 @@ class TestPublishWithIssueCreation:
 
             assert result.publication_status == PublicationStatus.SUCCESS
             assert result.issue_number == 456
-            assert result.issue_url == "https://github.com/YH-05/finance/issues/456"
+            assert result.issue_url == "https://github.com/YH-05/quants/issues/456"
             assert result.summarized is summarized_article_with_summary
 
     @pytest.mark.asyncio
@@ -1091,7 +1091,7 @@ class TestGetExistingIssues:
             assert call_args[1] == "issue"
             assert call_args[2] == "list"
             assert "--repo" in call_args
-            assert "YH-05/finance" in call_args
+            assert "YH-05/quants" in call_args
             assert "--state" in call_args
             assert "all" in call_args
             assert "--limit" in call_args
@@ -1357,7 +1357,7 @@ class TestPublishBatchWithDuplicateCheck:
             patch.object(publisher, "_add_to_project"),
         ):
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/789\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/789\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -1419,7 +1419,7 @@ class TestPublishBatchWithDuplicateCheck:
             patch.object(publisher, "_add_to_project"),
         ):
             mock_result = MagicMock()
-            mock_result.stdout = "https://github.com/YH-05/finance/issues/789\n"
+            mock_result.stdout = "https://github.com/YH-05/quants/issues/789\n"
             mock_result.returncode = 0
             mock_run.return_value = mock_result
 
@@ -1621,7 +1621,7 @@ class TestGetExistingProjectItem:
         from news.publisher import Publisher
 
         publisher = Publisher(config=sample_config)
-        issue_url = "https://github.com/YH-05/finance/issues/123"
+        issue_url = "https://github.com/YH-05/quants/issues/123"
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
@@ -1642,7 +1642,7 @@ class TestGetExistingProjectItem:
         from news.publisher import Publisher
 
         publisher = Publisher(config=sample_config)
-        issue_url = "https://github.com/YH-05/finance/issues/999"
+        issue_url = "https://github.com/YH-05/quants/issues/999"
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
@@ -1663,7 +1663,7 @@ class TestGetExistingProjectItem:
         from news.publisher import Publisher
 
         publisher = Publisher(config=sample_config)
-        issue_url = "https://github.com/YH-05/finance/issues/123"
+        issue_url = "https://github.com/YH-05/quants/issues/123"
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
@@ -1701,7 +1701,7 @@ class TestGetExistingProjectItem:
         from news.publisher import Publisher
 
         publisher = Publisher(config=sample_config)
-        issue_url = "https://github.com/YH-05/finance/issues/123"
+        issue_url = "https://github.com/YH-05/quants/issues/123"
 
         with patch("news.publisher.subprocess.run") as mock_run:
             mock_result = MagicMock()
@@ -1749,7 +1749,7 @@ class TestAddToProjectWithExistingItemCheck:
 
             # Should check for existing item
             mock_check.assert_called_once_with(
-                "https://github.com/YH-05/finance/issues/123"
+                "https://github.com/YH-05/quants/issues/123"
             )
 
             # Should call item-add (new item)

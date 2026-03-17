@@ -29,9 +29,9 @@
 | # | タスク | 依存 | ステータス | Issue |
 |---|--------|------|----------|-------|
 | 0.1 | GitHub Project「System Update」の作成 | なし | ✅ Done | - |
-| 0.2 | スキル標準構造テンプレートの作成 | なし | ✅ Done | [#598](https://github.com/YH-05/finance/issues/598) |
-| 0.3 | スキルプリロード仕様書の作成 | 0.2 | ✅ Done | [#599](https://github.com/YH-05/finance/issues/599) |
-| 0.4 | エージェントへのスキル参照パターンの確定 | 0.3 | ✅ Done | [#600](https://github.com/YH-05/finance/issues/600) |
+| 0.2 | スキル標準構造テンプレートの作成 | なし | ✅ Done | [#598](https://github.com/YH-05/quants/issues/598) |
+| 0.3 | スキルプリロード仕様書の作成 | 0.2 | ✅ Done | [#599](https://github.com/YH-05/quants/issues/599) |
+| 0.4 | エージェントへのスキル参照パターンの確定 | 0.3 | ✅ Done | [#600](https://github.com/YH-05/quants/issues/600) |
 
 ---
 
@@ -43,22 +43,22 @@
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 1 | skill-expert スキル SKILL.md の作成 | M | なし | ✅ Done | [#601](https://github.com/YH-05/finance/issues/601) |
-| 2 | skill-expert スキル guide.md の作成 | M | #1 | ✅ Done | [#602](https://github.com/YH-05/finance/issues/602) |
-| 3 | skill-expert スキル template.md の作成 | S | #1 | ✅ Done | [#603](https://github.com/YH-05/finance/issues/603) |
+| 1 | skill-expert スキル SKILL.md の作成 | M | なし | ✅ Done | [#601](https://github.com/YH-05/quants/issues/601) |
+| 2 | skill-expert スキル guide.md の作成 | M | #1 | ✅ Done | [#602](https://github.com/YH-05/quants/issues/602) |
+| 3 | skill-expert スキル template.md の作成 | S | #1 | ✅ Done | [#603](https://github.com/YH-05/quants/issues/603) |
 
 #### agent-expert スキル拡張
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 4 | agent-expert スキルにフロントマターレビュー機能を追加 | S | なし | ✅ Done | [#604](https://github.com/YH-05/finance/issues/604) |
+| 4 | agent-expert スキルにフロントマターレビュー機能を追加 | S | なし | ✅ Done | [#604](https://github.com/YH-05/quants/issues/604) |
 
 #### workflow-expert スキル（新規）
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 5 | workflow-expert スキル SKILL.md の作成 | M | なし | ✅ Done | [#605](https://github.com/YH-05/finance/issues/605) |
-| 6 | workflow-expert スキル guide.md の作成 | M | #5 | ✅ Done | [#606](https://github.com/YH-05/finance/issues/606) |
+| 5 | workflow-expert スキル SKILL.md の作成 | M | なし | ✅ Done | [#605](https://github.com/YH-05/quants/issues/605) |
+| 6 | workflow-expert スキル guide.md の作成 | M | #5 | ✅ Done | [#606](https://github.com/YH-05/quants/issues/606) |
 
 ### Wave 1: レポジトリ管理スキル（並列実装可）
 
@@ -66,39 +66,39 @@
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 7 | index スキル SKILL.md の作成 | M | #3 | ✅ Done | [#607](https://github.com/YH-05/finance/issues/607) |
-| 8 | index スキル guide.md の作成 | S | #7 | ✅ Done | [#608](https://github.com/YH-05/finance/issues/608) |
-| 9 | 既存 /index コマンドを index スキルに置換 | S | #8 | ✅ Done | [#609](https://github.com/YH-05/finance/issues/609) |
+| 7 | index スキル SKILL.md の作成 | M | #3 | ✅ Done | [#607](https://github.com/YH-05/quants/issues/607) |
+| 8 | index スキル guide.md の作成 | S | #7 | ✅ Done | [#608](https://github.com/YH-05/quants/issues/608) |
+| 9 | 既存 /index コマンドを index スキルに置換 | S | #8 | ✅ Done | [#609](https://github.com/YH-05/quants/issues/609) |
 
 #### プロジェクト管理スキル
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 10 | プロジェクト管理スキル SKILL.md の作成 | M | #3 | ✅ Done | [#610](https://github.com/YH-05/finance/issues/610) |
-| 11 | プロジェクト管理スキル guide.md の作成 | M | #10 | ✅ Done | [#611](https://github.com/YH-05/finance/issues/611) |
-| 12 | 既存プロジェクト管理コマンド/スキルを置換 | M | #11 | ✅ Done | [#612](https://github.com/YH-05/finance/issues/612) |
+| 10 | プロジェクト管理スキル SKILL.md の作成 | M | #3 | ✅ Done | [#610](https://github.com/YH-05/quants/issues/610) |
+| 11 | プロジェクト管理スキル guide.md の作成 | M | #10 | ✅ Done | [#611](https://github.com/YH-05/quants/issues/611) |
+| 12 | 既存プロジェクト管理コマンド/スキルを置換 | M | #11 | ✅ Done | [#612](https://github.com/YH-05/quants/issues/612) |
 
 #### タスク分解スキル
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 13 | タスク分解スキル SKILL.md の作成 | M | #3 | ✅ Done | [#613](https://github.com/YH-05/finance/issues/613) |
-| 14 | タスク分解スキル guide.md の作成 | M | #13 | ✅ Done | [#614](https://github.com/YH-05/finance/issues/614) |
-| 15 | task-decomposer エージェントをスキルに統合 | M | #14 | ✅ Done | [#615](https://github.com/YH-05/finance/issues/615) |
+| 13 | タスク分解スキル SKILL.md の作成 | M | #3 | ✅ Done | [#613](https://github.com/YH-05/quants/issues/613) |
+| 14 | タスク分解スキル guide.md の作成 | M | #13 | ✅ Done | [#614](https://github.com/YH-05/quants/issues/614) |
+| 15 | task-decomposer エージェントをスキルに統合 | M | #14 | ✅ Done | [#615](https://github.com/YH-05/quants/issues/615) |
 
 #### Issue管理スキル
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 16 | Issue管理スキル SKILL.md の作成 | M | #3 | ✅ Done | [#616](https://github.com/YH-05/finance/issues/616) |
-| 17 | Issue管理スキル guide.md の作成 | M | #16 | ✅ Done | [#617](https://github.com/YH-05/finance/issues/617) |
-| 18 | 既存 issue 系コマンドを Issue管理スキルに置換 | L | #17 | ✅ Done | [#618](https://github.com/YH-05/finance/issues/618) |
+| 16 | Issue管理スキル SKILL.md の作成 | M | #3 | ✅ Done | [#616](https://github.com/YH-05/quants/issues/616) |
+| 17 | Issue管理スキル guide.md の作成 | M | #16 | ✅ Done | [#617](https://github.com/YH-05/quants/issues/617) |
+| 18 | 既存 issue 系コマンドを Issue管理スキルに置換 | L | #17 | ✅ Done | [#618](https://github.com/YH-05/quants/issues/618) |
 
 ### Wave 2: 統合
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 19 | フェーズ1全スキルの統合テスト実施 | M | #4, #6, #9, #12, #15, #18 | ✅ Done | [#619](https://github.com/YH-05/finance/issues/619) |
+| 19 | フェーズ1全スキルの統合テスト実施 | M | #4, #6, #9, #12, #15, #18 | ✅ Done | [#619](https://github.com/YH-05/quants/issues/619) |
 
 ---
 
@@ -108,9 +108,9 @@
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 2.1 | coding-standards スキルの作成 | L | フェーズ1完了 | ✅ Done | [#620](https://github.com/YH-05/finance/issues/620) |
-| 2.2 | tdd-development スキルの作成 | L | フェーズ1完了 | ✅ Done | [#621](https://github.com/YH-05/finance/issues/621) |
-| 2.3 | error-handling スキルの作成 | L | フェーズ1完了 | ✅ Done | [#622](https://github.com/YH-05/finance/issues/622) |
+| 2.1 | coding-standards スキルの作成 | L | フェーズ1完了 | ✅ Done | [#620](https://github.com/YH-05/quants/issues/620) |
+| 2.2 | tdd-development スキルの作成 | L | フェーズ1完了 | ✅ Done | [#621](https://github.com/YH-05/quants/issues/621) |
+| 2.3 | error-handling スキルの作成 | L | フェーズ1完了 | ✅ Done | [#622](https://github.com/YH-05/quants/issues/622) |
 
 ### Wave 2: Git操作スキル ✅
 
@@ -148,15 +148,15 @@
 
 | # | タスク | 工数 | 依存 | ステータス | Issue |
 |---|--------|------|------|----------|-------|
-| 3.0.1 | finance-news-workflow SKILL.md の作成 | M | なし | ⬜ Todo | [#685](https://github.com/YH-05/finance/issues/685) |
-| 3.0.2 | finance-news-workflow guide.md の作成 | M | #3.0.1 | ⬜ Todo | [#686](https://github.com/YH-05/finance/issues/686) |
-| 3.0.3 | finance-news-workflow templates/ の作成 | S | #3.0.1 | ⬜ Todo | [#687](https://github.com/YH-05/finance/issues/687) |
-| 3.0.4 | finance-news-workflow examples/ の作成 | S | #3.0.1 | ⬜ Todo | [#688](https://github.com/YH-05/finance/issues/688) |
-| 3.0.5 | /collect-finance-news コマンドの更新 | S | #3.0.2 | ⬜ Todo | [#689](https://github.com/YH-05/finance/issues/689) |
-| 3.0.6 | finance-news-orchestrator, collector エージェント更新 | S | #3.0.2 | ⬜ Todo | [#690](https://github.com/YH-05/finance/issues/690) |
-| 3.0.7 | テーマ別エージェント群（6件）の更新 | M | #3.0.2 | ⬜ Todo | [#691](https://github.com/YH-05/finance/issues/691) |
-| 3.0.8 | 既存 finance-news-collection スキルの統合・削除 | S | #3.0.5 | ⬜ Todo | [#692](https://github.com/YH-05/finance/issues/692) |
-| 3.0.9 | finance-news-workflow 統合テスト | M | #3.0.7, #3.0.8 | ⬜ Todo | [#693](https://github.com/YH-05/finance/issues/693) |
+| 3.0.1 | finance-news-workflow SKILL.md の作成 | M | なし | ⬜ Todo | [#685](https://github.com/YH-05/quants/issues/685) |
+| 3.0.2 | finance-news-workflow guide.md の作成 | M | #3.0.1 | ⬜ Todo | [#686](https://github.com/YH-05/quants/issues/686) |
+| 3.0.3 | finance-news-workflow templates/ の作成 | S | #3.0.1 | ⬜ Todo | [#687](https://github.com/YH-05/quants/issues/687) |
+| 3.0.4 | finance-news-workflow examples/ の作成 | S | #3.0.1 | ⬜ Todo | [#688](https://github.com/YH-05/quants/issues/688) |
+| 3.0.5 | /collect-finance-news コマンドの更新 | S | #3.0.2 | ⬜ Todo | [#689](https://github.com/YH-05/quants/issues/689) |
+| 3.0.6 | finance-news-orchestrator, collector エージェント更新 | S | #3.0.2 | ⬜ Todo | [#690](https://github.com/YH-05/quants/issues/690) |
+| 3.0.7 | テーマ別エージェント群（6件）の更新 | M | #3.0.2 | ⬜ Todo | [#691](https://github.com/YH-05/quants/issues/691) |
+| 3.0.8 | 既存 finance-news-collection スキルの統合・削除 | S | #3.0.5 | ⬜ Todo | [#692](https://github.com/YH-05/quants/issues/692) |
+| 3.0.9 | finance-news-workflow 統合テスト | M | #3.0.7, #3.0.8 | ⬜ Todo | [#693](https://github.com/YH-05/quants/issues/693) |
 
 ### Wave 0: データ取得・基盤スキル（並列実装可）
 
@@ -303,33 +303,33 @@
 
 | Issue | タイトル | ステータス |
 |-------|---------|----------|
-| [#598](https://github.com/YH-05/finance/issues/598) | スキル標準構造テンプレートの作成 | ✅ |
-| [#599](https://github.com/YH-05/finance/issues/599) | スキルプリロード仕様書の作成 | ✅ |
-| [#600](https://github.com/YH-05/finance/issues/600) | エージェントへのスキル参照パターンの確定 | ✅ |
+| [#598](https://github.com/YH-05/quants/issues/598) | スキル標準構造テンプレートの作成 | ✅ |
+| [#599](https://github.com/YH-05/quants/issues/599) | スキルプリロード仕様書の作成 | ✅ |
+| [#600](https://github.com/YH-05/quants/issues/600) | エージェントへのスキル参照パターンの確定 | ✅ |
 
 ### フェーズ 1（完了）
 
 | Issue | タイトル | ステータス |
 |-------|---------|----------|
-| [#601](https://github.com/YH-05/finance/issues/601) | skill-expert スキル SKILL.md の作成 | ✅ |
-| [#602](https://github.com/YH-05/finance/issues/602) | skill-expert スキル guide.md の作成 | ✅ |
-| [#603](https://github.com/YH-05/finance/issues/603) | skill-expert スキル template.md の作成 | ✅ |
-| [#604](https://github.com/YH-05/finance/issues/604) | agent-expert スキルにフロントマターレビュー機能を追加 | ✅ |
-| [#605](https://github.com/YH-05/finance/issues/605) | workflow-expert スキル SKILL.md の作成 | ✅ |
-| [#606](https://github.com/YH-05/finance/issues/606) | workflow-expert スキル guide.md の作成 | ✅ |
-| [#607](https://github.com/YH-05/finance/issues/607) | index スキル SKILL.md の作成 | ✅ |
-| [#608](https://github.com/YH-05/finance/issues/608) | index スキル guide.md の作成 | ✅ |
-| [#609](https://github.com/YH-05/finance/issues/609) | 既存 /index コマンドを index スキルに置換 | ✅ |
-| [#610](https://github.com/YH-05/finance/issues/610) | プロジェクト管理スキル SKILL.md の作成 | ✅ |
-| [#611](https://github.com/YH-05/finance/issues/611) | プロジェクト管理スキル guide.md の作成 | ✅ |
-| [#612](https://github.com/YH-05/finance/issues/612) | 既存プロジェクト管理コマンド/スキルを置換 | ✅ |
-| [#613](https://github.com/YH-05/finance/issues/613) | タスク分解スキル SKILL.md の作成 | ✅ |
-| [#614](https://github.com/YH-05/finance/issues/614) | タスク分解スキル guide.md の作成 | ✅ |
-| [#615](https://github.com/YH-05/finance/issues/615) | task-decomposer エージェントをスキルに統合 | ✅ |
-| [#616](https://github.com/YH-05/finance/issues/616) | Issue管理スキル SKILL.md の作成 | ✅ |
-| [#617](https://github.com/YH-05/finance/issues/617) | Issue管理スキル guide.md の作成 | ✅ |
-| [#618](https://github.com/YH-05/finance/issues/618) | 既存 issue 系コマンドを Issue管理スキルに置換 | ✅ |
-| [#619](https://github.com/YH-05/finance/issues/619) | フェーズ1全スキルの統合テスト実施 | ✅ |
+| [#601](https://github.com/YH-05/quants/issues/601) | skill-expert スキル SKILL.md の作成 | ✅ |
+| [#602](https://github.com/YH-05/quants/issues/602) | skill-expert スキル guide.md の作成 | ✅ |
+| [#603](https://github.com/YH-05/quants/issues/603) | skill-expert スキル template.md の作成 | ✅ |
+| [#604](https://github.com/YH-05/quants/issues/604) | agent-expert スキルにフロントマターレビュー機能を追加 | ✅ |
+| [#605](https://github.com/YH-05/quants/issues/605) | workflow-expert スキル SKILL.md の作成 | ✅ |
+| [#606](https://github.com/YH-05/quants/issues/606) | workflow-expert スキル guide.md の作成 | ✅ |
+| [#607](https://github.com/YH-05/quants/issues/607) | index スキル SKILL.md の作成 | ✅ |
+| [#608](https://github.com/YH-05/quants/issues/608) | index スキル guide.md の作成 | ✅ |
+| [#609](https://github.com/YH-05/quants/issues/609) | 既存 /index コマンドを index スキルに置換 | ✅ |
+| [#610](https://github.com/YH-05/quants/issues/610) | プロジェクト管理スキル SKILL.md の作成 | ✅ |
+| [#611](https://github.com/YH-05/quants/issues/611) | プロジェクト管理スキル guide.md の作成 | ✅ |
+| [#612](https://github.com/YH-05/quants/issues/612) | 既存プロジェクト管理コマンド/スキルを置換 | ✅ |
+| [#613](https://github.com/YH-05/quants/issues/613) | タスク分解スキル SKILL.md の作成 | ✅ |
+| [#614](https://github.com/YH-05/quants/issues/614) | タスク分解スキル guide.md の作成 | ✅ |
+| [#615](https://github.com/YH-05/quants/issues/615) | task-decomposer エージェントをスキルに統合 | ✅ |
+| [#616](https://github.com/YH-05/quants/issues/616) | Issue管理スキル SKILL.md の作成 | ✅ |
+| [#617](https://github.com/YH-05/quants/issues/617) | Issue管理スキル guide.md の作成 | ✅ |
+| [#618](https://github.com/YH-05/quants/issues/618) | 既存 issue 系コマンドを Issue管理スキルに置換 | ✅ |
+| [#619](https://github.com/YH-05/quants/issues/619) | フェーズ1全スキルの統合テスト実施 | ✅ |
 
 ### フェーズ 2（完了）
 
@@ -337,9 +337,9 @@
 
 | Issue | タイトル | ステータス |
 |-------|---------|----------|
-| [#620](https://github.com/YH-05/finance/issues/620) | coding-standards スキルの作成 | ✅ |
-| [#621](https://github.com/YH-05/finance/issues/621) | tdd-development スキルの作成 | ✅ |
-| [#622](https://github.com/YH-05/finance/issues/622) | error-handling スキルの作成 | ✅ |
+| [#620](https://github.com/YH-05/quants/issues/620) | coding-standards スキルの作成 | ✅ |
+| [#621](https://github.com/YH-05/quants/issues/621) | tdd-development スキルの作成 | ✅ |
+| [#622](https://github.com/YH-05/quants/issues/622) | error-handling スキルの作成 | ✅ |
 
 #### Wave 2: Git操作スキル
 
@@ -361,15 +361,15 @@
 
 | Issue                                               | タイトル                                          | ステータス |
 | --------------------------------------------------- | --------------------------------------------- | ----- |
-| [#685](https://github.com/YH-05/finance/issues/685) | finance-news-workflow SKILL.md の作成            | ⬜     |
-| [#686](https://github.com/YH-05/finance/issues/686) | finance-news-workflow guide.md の作成            | ⬜     |
-| [#687](https://github.com/YH-05/finance/issues/687) | finance-news-workflow templates/ の作成          | ⬜     |
-| [#688](https://github.com/YH-05/finance/issues/688) | finance-news-workflow examples/ の作成           | ⬜     |
-| [#689](https://github.com/YH-05/finance/issues/689) | /collect-finance-news コマンドの更新                 | ⬜     |
-| [#690](https://github.com/YH-05/finance/issues/690) | finance-news-orchestrator, collector エージェント更新 | ⬜     |
-| [#691](https://github.com/YH-05/finance/issues/691) | テーマ別エージェント群（6件）の更新                            | ⬜     |
-| [#692](https://github.com/YH-05/finance/issues/692) | 既存 finance-news-collection スキルの統合・削除          | ⬜     |
-| [#693](https://github.com/YH-05/finance/issues/693) | finance-news-workflow 統合テスト                   | ⬜     |
+| [#685](https://github.com/YH-05/quants/issues/685) | finance-news-workflow SKILL.md の作成            | ⬜     |
+| [#686](https://github.com/YH-05/quants/issues/686) | finance-news-workflow guide.md の作成            | ⬜     |
+| [#687](https://github.com/YH-05/quants/issues/687) | finance-news-workflow templates/ の作成          | ⬜     |
+| [#688](https://github.com/YH-05/quants/issues/688) | finance-news-workflow examples/ の作成           | ⬜     |
+| [#689](https://github.com/YH-05/quants/issues/689) | /collect-finance-news コマンドの更新                 | ⬜     |
+| [#690](https://github.com/YH-05/quants/issues/690) | finance-news-orchestrator, collector エージェント更新 | ⬜     |
+| [#691](https://github.com/YH-05/quants/issues/691) | テーマ別エージェント群（6件）の更新                            | ⬜     |
+| [#692](https://github.com/YH-05/quants/issues/692) | 既存 finance-news-collection スキルの統合・削除          | ⬜     |
+| [#693](https://github.com/YH-05/quants/issues/693) | finance-news-workflow 統合テスト                   | ⬜     |
 
 ---
 

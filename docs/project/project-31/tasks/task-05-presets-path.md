@@ -1,6 +1,6 @@
 # タスク 05: fetcher.py に _get_default_presets_path() 関数を追加
 
-- **Issue**: [#2844](https://github.com/YH-05/finance/issues/2844)
+- **Issue**: [#2844](https://github.com/YH-05/quants/issues/2844)
 - **ステータス**: todo
 
 ## 概要
@@ -52,8 +52,8 @@ def _get_default_presets_path() -> Path:
 
 ## 依存関係
 
-- depends_on: [#2841](https://github.com/YH-05/finance/issues/2841)
-- blocks: [#2845](https://github.com/YH-05/finance/issues/2845)
+- depends_on: [#2841](https://github.com/YH-05/quants/issues/2841)
+- blocks: [#2845](https://github.com/YH-05/quants/issues/2845)
 
 ## 見積もり
 

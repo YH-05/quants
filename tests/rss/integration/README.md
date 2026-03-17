@@ -235,9 +235,9 @@ act push
 
 ## 関連 Issue
 
-- [#154](https://github.com/YH-05/finance/issues/154) - ユニットテスト作成（フィルタリングロジック・データ変換処理）
-- [#155](https://github.com/YH-05/finance/issues/155) - 統合テスト作成（RSS 収集→GitHub 投稿の E2E）
-- [#156](https://github.com/YH-05/finance/issues/156) - プロパティテスト作成（RSS フィードデータのバリデーション）
+- [#154](https://github.com/YH-05/quants/issues/154) - ユニットテスト作成（フィルタリングロジック・データ変換処理）
+- [#155](https://github.com/YH-05/quants/issues/155) - 統合テスト作成（RSS 収集→GitHub 投稿の E2E）
+- [#156](https://github.com/YH-05/quants/issues/156) - プロパティテスト作成（RSS フィードデータのバリデーション）
 
 ## 更新履歴
 

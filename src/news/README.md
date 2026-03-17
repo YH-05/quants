@@ -830,7 +830,7 @@ summarization:
     ...
 
 github:
-  repo: "YH-05/finance"
+  repo: "YH-05/quants"
   project_id: "PVT_xxx"
   project_number: 15
 ```

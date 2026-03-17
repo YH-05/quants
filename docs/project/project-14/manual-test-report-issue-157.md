@@ -3,7 +3,7 @@
 **テスト実施日**: 2026-01-15
 **担当**: Claude Code
 **対象機能**: `/collect-finance-news` コマンドのエンドツーエンドテスト
-**GitHub Issue**: [#157](https://github.com/YH-05/finance/issues/157)
+**GitHub Issue**: [#157](https://github.com/YH-05/quants/issues/157)
 **ステータス**: ✅ 完了
 
 ---
@@ -376,8 +376,8 @@ Issue #157の受け入れ条件:
 ### D. 参考リンク
 
 - GitHub Project: https://github.com/users/YH-05/projects/14
-- Issue #157: https://github.com/YH-05/finance/issues/157
-- Issue #171-175: https://github.com/YH-05/finance/issues/171
+- Issue #157: https://github.com/YH-05/quants/issues/157
+- Issue #171-175: https://github.com/YH-05/quants/issues/171
 - 計画書: docs/project/financial-news-rss-collector.md
 - フィルタリング基準: docs/finance-news-filtering-criteria.md
 

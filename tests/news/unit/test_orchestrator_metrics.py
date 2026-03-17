@@ -54,7 +54,7 @@ def sample_config() -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": "data/exports"},  # type: ignore[arg-type]
         publishing=PublishingConfig(format="per_article"),
@@ -271,7 +271,7 @@ class TestOrchestratorStageMetrics:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=123,
-            issue_url="https://github.com/YH-05/finance/issues/123",
+            issue_url="https://github.com/YH-05/quants/issues/123",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -649,7 +649,7 @@ class TestStageMetricsDisplay:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=123,
-            issue_url="https://github.com/YH-05/finance/issues/123",
+            issue_url="https://github.com/YH-05/quants/issues/123",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -730,7 +730,7 @@ class TestDomainExtractionRateDisplay:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=123,
-            issue_url="https://github.com/YH-05/finance/issues/123",
+            issue_url="https://github.com/YH-05/quants/issues/123",
             publication_status=PublicationStatus.SUCCESS,
         )
 

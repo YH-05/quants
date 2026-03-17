@@ -83,7 +83,7 @@ gh issue create --title "[{theme_ja}] {japanese_title}" ...
 
 ```bash
 gh issue create \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --title "[{theme_ja}] {japanese_title}" \
     --body "$(cat <<'EOF'
 ### 概要

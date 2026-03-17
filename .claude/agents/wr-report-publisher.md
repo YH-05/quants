@@ -84,7 +84,7 @@ Phase 6: 完了処理
 ```bash
 # 同日のレポート Issue を検索
 existing=$(gh issue list \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --search "[週次レポート] ${REPORT_DATE}" \
     --state all \
     --json number,title \
@@ -101,7 +101,7 @@ fi
 ```bash
 # Issue 作成
 issue_url=$(gh issue create \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --title "[週次レポート] ${REPORT_DATE} マーケットレポート" \
     --body "$body" \
     --label "report")
@@ -110,7 +110,7 @@ issue_url=$(gh issue create \
 **レポートリンクは完全なGitHub URLを使用**:
 
 ```
-https://github.com/YH-05/finance/blob/main/{report_dir}/02_edit/weekly_report.md
+https://github.com/YH-05/quants/blob/main/{report_dir}/02_edit/weekly_report.md
 ```
 
 ## GitHub Project 追加
@@ -208,7 +208,7 @@ mutation {
   "status": "success",
   "issue": {
     "number": 825,
-    "url": "https://github.com/YH-05/finance/issues/825",
+    "url": "https://github.com/YH-05/quants/issues/825",
     "title": "[週次レポート] 2026-01-22 マーケットレポート"
   },
   "project": {

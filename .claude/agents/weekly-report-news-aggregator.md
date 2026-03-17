@@ -250,7 +250,7 @@ macro:
       "issue_number": 171,
       "title": "Your wealth and investments are on the line if Trump torpedoes the Fed's independence",
       "category": "macro",
-      "url": "https://github.com/YH-05/finance/issues/171",
+      "url": "https://github.com/YH-05/quants/issues/171",
       "created_at": "2026-01-15T08:30:00Z",
       "summary": "Issue 本文の日本語要約部分（あれば）",
       "source": "RSS Feed",

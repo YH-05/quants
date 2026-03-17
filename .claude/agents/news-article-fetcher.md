@@ -76,7 +76,7 @@ permissionMode: bypassPermissions
     "project_id": "PVT_kwHOBoK6AM4BMpw_",
     "project_number": 15,
     "project_owner": "YH-05",
-    "repo": "YH-05/finance",
+    "repo": "YH-05/quants",
     "status_field_id": "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
     "published_date_field_id": "PVTF_lAHOBoK6AM4BMpw_zg8BzrI"
   }
@@ -106,7 +106,7 @@ permissionMode: bypassPermissions
 | `project_id` | Project ID | `"PVT_kwHOBoK6AM4BMpw_"` |
 | `project_number` | Project番号 | `15` |
 | `project_owner` | Projectオーナー | `"YH-05"` |
-| `repo` | リポジトリ | `"YH-05/finance"` |
+| `repo` | リポジトリ | `"YH-05/quants"` |
 | `status_field_id` | StatusフィールドID | `"PVTSSF_lAHOBoK6AM4BMpw_zg739ZE"` |
 | `published_date_field_id` | 公開日フィールドID | `"PVTF_lAHOBoK6AM4BMpw_zg8BzrI"` |
 
@@ -119,7 +119,7 @@ permissionMode: bypassPermissions
   "created_issues": [
     {
       "issue_number": 200,
-      "issue_url": "https://github.com/YH-05/finance/issues/200",
+      "issue_url": "https://github.com/YH-05/quants/issues/200",
       "title": "[株価指数] S&P500が過去最高値を更新",
       "article_url": "https://www.cnbc.com/2026/01/19/sp-500-record.html",
       "published_date": "2026-01-19",
@@ -543,7 +543,7 @@ stats = {
   "created_issues": [
     {
       "issue_number": 200,
-      "issue_url": "https://github.com/YH-05/finance/issues/200",
+      "issue_url": "https://github.com/YH-05/quants/issues/200",
       "title": "[株価指数] S&P500がテック株上昇を受け過去最高値を更新",
       "article_url": "https://www.cnbc.com/2026/01/19/sp-500-record.html",
       "published_date": "2026-01-19",
@@ -552,7 +552,7 @@ stats = {
     },
     {
       "issue_number": 201,
-      "issue_url": "https://github.com/YH-05/finance/issues/201",
+      "issue_url": "https://github.com/YH-05/quants/issues/201",
       "title": "[株価指数] 日経平均が3万円台を回復",
       "article_url": "https://www.cnbc.com/2026/01/19/nikkei-30000.html",
       "published_date": "2026-01-19",
@@ -561,7 +561,7 @@ stats = {
     },
     {
       "issue_number": 202,
-      "issue_url": "https://github.com/YH-05/finance/issues/202",
+      "issue_url": "https://github.com/YH-05/quants/issues/202",
       "title": "[株価指数] ナスダックが年初来高値を更新",
       "article_url": "https://www.seekingalpha.com/news/nasdaq-high",
       "published_date": "2026-01-19",

@@ -52,7 +52,7 @@ def sample_config() -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": "data/exports"},  # type: ignore[arg-type]
         publishing=PublishingConfig(format="per_article"),

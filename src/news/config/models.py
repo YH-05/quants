@@ -805,7 +805,7 @@ class GitHubConfig(BaseModel):
     ...     project_id="PVT_kwHOBoK6AM4BMpw_",
     ...     status_field_id="PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
     ...     published_date_field_id="PVTF_lAHOBoK6AM4BMpw_zg8BzrI",
-    ...     repository="YH-05/finance",
+    ...     repository="YH-05/quants",
     ... )
     >>> config.project_number
     15

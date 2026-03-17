@@ -87,7 +87,7 @@ def _get_default_presets_path() -> Path:
 
 # Default URL for FRED series presets (used when env var not set and local file not found)
 DEFAULT_PRESETS_URL = (
-    "https://raw.githubusercontent.com/YH-05/finance/main/data/config/fred_series.json"
+    "https://raw.githubusercontent.com/YH-05/quants/main/data/config/fred_series.json"
 )
 
 

@@ -1,7 +1,7 @@
 # Issue #770 調査結果: 既存コード・テンプレートの調査
 
 **調査日**: 2026-01-23
-**Issue**: [#770](https://github.com/YH-05/finance/issues/770)
+**Issue**: [#770](https://github.com/YH-05/quants/issues/770)
 **関連プロジェクト**: [#21 週次市場動向レポート生成システム](https://github.com/users/YH-05/projects/21)
 
 ---

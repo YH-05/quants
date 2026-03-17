@@ -59,7 +59,7 @@ THEME_CONFIG_PATH = Path("data/config/finance-news-themes.json")
 TMP_DIR = Path(".tmp")
 """Temporary directory for session files."""
 
-REPO = "YH-05/finance"
+REPO = "YH-05/quants"
 """GitHub repository."""
 
 URL_PATTERN = re.compile(r"https?://[^\s<>\"\)]+")

@@ -74,7 +74,7 @@ done
 ```bash
 for issue in 171 172 173 174 175; do
   gh project item-add 15 --owner YH-05 \
-    --url "https://github.com/YH-05/finance/issues/${issue}"
+    --url "https://github.com/YH-05/quants/issues/${issue}"
 done
 ```
 

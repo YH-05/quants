@@ -125,7 +125,7 @@ src/factor/
 
 ## Wave 別実装計画（修正版）
 
-### Wave 0: 基盤整備（1 日）- Issue: [#256](https://github.com/YH-05/finance/issues/256)
+### Wave 0: 基盤整備（1 日）- Issue: [#256](https://github.com/YH-05/quants/issues/256)
 
 **優先度**: P0 (high) - 全 Wave の前提条件
 
@@ -144,7 +144,7 @@ src/market_analysis/types.py  # 拡張: DataSource (BLOOMBERG, FACTSET追加)
 
 ---
 
-### Wave 1-3: コアアルゴリズム（7 日）- Issue: [#257](https://github.com/YH-05/finance/issues/257)
+### Wave 1-3: コアアルゴリズム（7 日）- Issue: [#257](https://github.com/YH-05/quants/issues/257)
 
 **優先度**: P0 (high) - Wave 4-6 の前提条件
 **依存**: Wave 0
@@ -179,7 +179,7 @@ src/market_analysis/types.py  # 拡張: DataSource (BLOOMBERG, FACTSET追加)
 
 ---
 
-### Wave 4: マクロファクター（3 日）- Issue: [#260](https://github.com/YH-05/finance/issues/260)
+### Wave 4: マクロファクター（3 日）- Issue: [#260](https://github.com/YH-05/quants/issues/260)
 
 **優先度**: P1 (medium) - Wave 5 と並列実行可能
 **依存**: Wave 1-3
@@ -196,7 +196,7 @@ src/market_analysis/types.py  # 拡張: DataSource (BLOOMBERG, FACTSET追加)
 
 ---
 
-### Wave 5: データフェッチャー（4 日）- Issue: [#258](https://github.com/YH-05/finance/issues/258)
+### Wave 5: データフェッチャー（4 日）- Issue: [#258](https://github.com/YH-05/quants/issues/258)
 
 **優先度**: P1 (medium) - Wave 4 と並列実行可能
 **依存**: Wave 0
@@ -212,7 +212,7 @@ src/market_analysis/types.py  # 拡張: DataSource (BLOOMBERG, FACTSET追加)
 
 ---
 
-### Wave 6: ROIC・品質ファクター（3 日）- Issue: [#259](https://github.com/YH-05/finance/issues/259)
+### Wave 6: ROIC・品質ファクター（3 日）- Issue: [#259](https://github.com/YH-05/quants/issues/259)
 
 **優先度**: P1 (medium)
 **依存**: Wave 1-3
@@ -227,7 +227,7 @@ src/market_analysis/types.py  # 拡張: DataSource (BLOOMBERG, FACTSET追加)
 
 ---
 
-### Wave 7: 検証・分析ツール（2 日）- Issue: [#261](https://github.com/YH-05/finance/issues/261)
+### Wave 7: 検証・分析ツール（2 日）- Issue: [#261](https://github.com/YH-05/quants/issues/261)
 
 **優先度**: P2 (low)
 **依存**: Wave 4, 6
@@ -240,7 +240,7 @@ src/market_analysis/types.py  # 拡張: DataSource (BLOOMBERG, FACTSET追加)
 
 ---
 
-### Wave 8: 統合・回帰テスト（3 日）- Issue: [#262](https://github.com/YH-05/finance/issues/262)
+### Wave 8: 統合・回帰テスト（3 日）- Issue: [#262](https://github.com/YH-05/quants/issues/262)
 
 **優先度**: P2 (low)
 **依存**: Wave 1-7
@@ -357,12 +357,12 @@ BLOOMBERG_AVAILABLE=true pytest tests/market_analysis/integration/ -v
 
 | Wave     | Issue                                               | 優先度 | ステータス | 開始日     | 完了日     |
 | -------- | --------------------------------------------------- | ------ | ---------- | ---------- | ---------- |
-| Wave 0   | [#256](https://github.com/YH-05/finance/issues/256) | P0     | Done       | 2026-01-16 | 2026-01-16 |
-| Wave 1-3 | [#257](https://github.com/YH-05/finance/issues/257) | P0     | Done       | 2026-01-16 | 2026-01-16 |
-| Wave 4   | [#260](https://github.com/YH-05/finance/issues/260) | P1     | Done       | 2026-01-17 | 2026-01-17 |
-| Wave 5   | [#258](https://github.com/YH-05/finance/issues/258) | P1     | Done       | 2026-01-16 | 2026-01-16 |
-| Wave 6   | [#259](https://github.com/YH-05/finance/issues/259) | P1     | Done       | 2026-01-16 | 2026-01-16 |
-| Wave 7   | [#261](https://github.com/YH-05/finance/issues/261) | P2     | -          | -          | -          |
-| Wave 8   | [#262](https://github.com/YH-05/finance/issues/262) | P2     | Todo       | -          | -          |
+| Wave 0   | [#256](https://github.com/YH-05/quants/issues/256) | P0     | Done       | 2026-01-16 | 2026-01-16 |
+| Wave 1-3 | [#257](https://github.com/YH-05/quants/issues/257) | P0     | Done       | 2026-01-16 | 2026-01-16 |
+| Wave 4   | [#260](https://github.com/YH-05/quants/issues/260) | P1     | Done       | 2026-01-17 | 2026-01-17 |
+| Wave 5   | [#258](https://github.com/YH-05/quants/issues/258) | P1     | Done       | 2026-01-16 | 2026-01-16 |
+| Wave 6   | [#259](https://github.com/YH-05/quants/issues/259) | P1     | Done       | 2026-01-16 | 2026-01-16 |
+| Wave 7   | [#261](https://github.com/YH-05/quants/issues/261) | P2     | -          | -          | -          |
+| Wave 8   | [#262](https://github.com/YH-05/quants/issues/262) | P2     | Todo       | -          | -          |
 
 **進捗サマリー**: 5/7 Wave 完了（Wave 7 は Issue 未作成、Wave 8 のみ残）

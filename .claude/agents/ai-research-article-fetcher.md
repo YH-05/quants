@@ -56,7 +56,7 @@ permissionMode: bypassPermissions
     "project_id": "PVT_kwHOBoK6AM4BO4gx",
     "project_number": 44,
     "project_owner": "YH-05",
-    "repo": "YH-05/finance",
+    "repo": "YH-05/quants",
     "status_field_id": "PVTSSF_lAHOBoK6AM4BO4gxzg9dFiA",
     "published_date_field_id": "PVTF_lAHOBoK6AM4BO4gxzg9dHCA",
     "category_field_id": "PVTSSF_lAHOBoK6AM4BO4gxzg9dHB8",
@@ -99,7 +99,7 @@ permissionMode: bypassPermissions
 | `project_id` | Project ID | `"PVT_kwHOBoK6AM4BO4gx"` |
 | `project_number` | Project番号 | `44` |
 | `project_owner` | Projectオーナー | `"YH-05"` |
-| `repo` | リポジトリ | `"YH-05/finance"` |
+| `repo` | リポジトリ | `"YH-05/quants"` |
 | `status_field_id` | StatusフィールドID | `"PVTSSF_lAHOBoK6AM4BO4gxzg9dFiA"` |
 | `published_date_field_id` | 公開日フィールドID | `"PVTF_lAHOBoK6AM4BO4gxzg9dHCA"` |
 | `category_field_id` | CategoryフィールドID | `"PVTSSF_lAHOBoK6AM4BO4gxzg9dHB8"` |
@@ -172,7 +172,7 @@ permissionMode: bypassPermissions
   "created_issues": [
     {
       "issue_number": 3600,
-      "issue_url": "https://github.com/YH-05/finance/issues/3600",
+      "issue_url": "https://github.com/YH-05/quants/issues/3600",
       "title": "[AI/LLM開発] OpenAIがGPT-5を発表",
       "article_url": "https://openai.com/news/new-model-release",
       "company_key": "openai",
@@ -599,7 +599,7 @@ stats = {
   "created_issues": [
     {
       "issue_number": 3600,
-      "issue_url": "https://github.com/YH-05/finance/issues/3600",
+      "issue_url": "https://github.com/YH-05/quants/issues/3600",
       "title": "[AI/LLM開発] OpenAIがGPT-5を発表、推論性能が3倍向上",
       "article_url": "https://openai.com/news/new-model-release",
       "company_key": "openai",
@@ -612,7 +612,7 @@ stats = {
     },
     {
       "issue_number": 3601,
-      "issue_url": "https://github.com/YH-05/finance/issues/3601",
+      "issue_url": "https://github.com/YH-05/quants/issues/3601",
       "title": "[AI/LLM開発] AnthropicがClaude APIの価格を30%引き下げ",
       "article_url": "https://anthropic.com/research/api-pricing-update",
       "company_key": "anthropic",

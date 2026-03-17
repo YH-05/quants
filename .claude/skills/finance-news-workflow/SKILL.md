@@ -115,7 +115,7 @@ for theme_key, theme_data in session["themes"].items():
         "project_id": config["project_id"],
         "project_number": config["project_number"],
         "project_owner": config["project_owner"],
-        "repo": "YH-05/finance",
+        "repo": "YH-05/quants",
         "status_field_id": config["status_field_id"],
         "published_date_field_id": config["published_date_field_id"]
     }
@@ -151,7 +151,7 @@ EOF
     "project_id": "PVT_kwHOBoK6AM4BMpw_",
     "project_number": 15,
     "project_owner": "YH-05",
-    "repo": "YH-05/finance",
+    "repo": "YH-05/quants",
     "status_field_id": "PVTSSF_lAHOBoK6AM4BMpw_zg739ZE",
     "published_date_field_id": "PVTF_lAHOBoK6AM4BMpw_zg8BzrI"
   }

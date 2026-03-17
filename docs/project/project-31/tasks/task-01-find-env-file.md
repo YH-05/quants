@@ -1,6 +1,6 @@
 # タスク 01: settings.py に _find_env_file() 関数を追加
 
-- **Issue**: [#2840](https://github.com/YH-05/finance/issues/2840)
+- **Issue**: [#2840](https://github.com/YH-05/quants/issues/2840)
 - **ステータス**: todo
 
 ## 概要
@@ -63,7 +63,7 @@ def _find_env_file() -> Path | None:
 ## 依存関係
 
 - depends_on: なし（最初のタスク）
-- blocks: [#2841](https://github.com/YH-05/finance/issues/2841)
+- blocks: [#2841](https://github.com/YH-05/quants/issues/2841)
 
 ## 見積もり
 

@@ -59,7 +59,7 @@ def callback_test_config(tmp_path: Path) -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": str(tmp_path)},  # type: ignore[arg-type]
         publishing=PublishingConfig(format="per_article"),
@@ -111,7 +111,7 @@ def _create_published(summarized: SummarizedArticle) -> PublishedArticle:
     return PublishedArticle(
         summarized=summarized,
         issue_number=100,
-        issue_url="https://github.com/YH-05/finance/issues/100",
+        issue_url="https://github.com/YH-05/quants/issues/100",
         publication_status=PublicationStatus.SUCCESS,
     )
 

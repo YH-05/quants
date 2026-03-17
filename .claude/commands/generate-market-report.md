@@ -1065,7 +1065,7 @@ project_number: {project_number}
       "issue_number": 171,
       "title": "Fed signals potential rate pause",
       "category": "macro",
-      "url": "https://github.com/YH-05/finance/issues/171",
+      "url": "https://github.com/YH-05/quants/issues/171",
       "created_at": "2026-01-15T08:30:00Z",
       "summary": "FRBが利上げ停止の可能性を示唆...",
       "original_url": "https://..."
@@ -1305,7 +1305,7 @@ project_number: {project_number}
 ## 投稿された Issue
 
 - **Issue**: #830 - [週次レポート] 2026-01-22 マーケットレポート
-- **URL**: https://github.com/YH-05/finance/issues/830
+- **URL**: https://github.com/YH-05/quants/issues/830
 - **Project**: #15 (Finance News Collection)
 - **Status**: Weekly Report
 - **ラベル**: `report`
@@ -1785,7 +1785,7 @@ project_number: 15
 ## 投稿された Issue
 
 - **Issue**: #825 - [週次レポート] 2026-01-22 マーケットレポート
-- **URL**: https://github.com/YH-05/finance/issues/825
+- **URL**: https://github.com/YH-05/quants/issues/825
 - **Project**: #15 (Finance News Collection)
 - **Status**: Weekly Report
 - **ラベル**: `report`

@@ -181,58 +181,58 @@ Collector.validate(df)
 
 | ISSUE ID | Issue | Wave | タイトル | 種別 | 工数 | 依存 |
 |----------|-------|------|---------|------|------|------|
-| ISSUE-001 | [#3252](https://github.com/YH-05/finance/issues/3252) | 1 | ETF.com モジュールの定数定義（constants.py）の作成 | feature | 1h | なし |
-| ISSUE-002 | [#3253](https://github.com/YH-05/finance/issues/3253) | 1 | ETF.com モジュールの型定義（types.py）の作成 | feature | 1h | なし |
-| ISSUE-003 | [#3254](https://github.com/YH-05/finance/issues/3254) | 1 | ETF.com モジュールのエラークラス（errors.py）の作成 | feature | 0.5h | なし |
-| ISSUE-004 | [#3255](https://github.com/YH-05/finance/issues/3255) | 1 | DataSource enum への ETF_COM 追加とテストディレクトリ構造の作成 | feature | 0.5h | なし |
-| ISSUE-005 | [#3256](https://github.com/YH-05/finance/issues/3256) | 2 | ETFComSession（curl_cffi HTTP セッション）の実装 | feature | 1.5h | #3252, #3253, #3254 |
-| ISSUE-006 | [#3257](https://github.com/YH-05/finance/issues/3257) | 2 | ETFComBrowserMixin（Playwright ブラウザ操作 Mixin）の実装 | feature | 2h | #3252, #3253, #3254 |
-| ISSUE-007 | [#3259](https://github.com/YH-05/finance/issues/3259) | 2 | テストフィクスチャ（conftest.py）と Wave1 ファイルの単体テスト作成 | test | 2h | #3252, #3253, #3254, #3255 |
-| ISSUE-008 | [#3260](https://github.com/YH-05/finance/issues/3260) | 3 | TickerCollector の実装（ETF ティッカー一覧取得） | feature | 2h | #3256, #3257 |
-| ISSUE-009 | [#3261](https://github.com/YH-05/finance/issues/3261) | 3 | FundamentalsCollector + FundFlowsCollector の実装 | feature | 2h | #3256, #3257, #3260 |
-| ISSUE-010 | [#3262](https://github.com/YH-05/finance/issues/3262) | 3 | ETFComSession と ETFComBrowserMixin の単体テスト作成 | test | 2h | #3256, #3257, #3259 |
-| ISSUE-011 | [#3263](https://github.com/YH-05/finance/issues/3263) | 4 | Collector 群の単体テスト作成（test_collectors.py） | test | 2h | #3259, #3260, #3261 |
-| ISSUE-012 | [#3264](https://github.com/YH-05/finance/issues/3264) | 4 | etfcom パッケージ __init__.py の作成と market/errors.py へのエラー統合 | feature | 1h | #3254, #3260, #3261 |
-| ISSUE-013 | [#3265](https://github.com/YH-05/finance/issues/3265) | 5 | market パッケージへの etfcom モジュール登録 | feature | 0.5h | #3264 |
+| ISSUE-001 | [#3252](https://github.com/YH-05/quants/issues/3252) | 1 | ETF.com モジュールの定数定義（constants.py）の作成 | feature | 1h | なし |
+| ISSUE-002 | [#3253](https://github.com/YH-05/quants/issues/3253) | 1 | ETF.com モジュールの型定義（types.py）の作成 | feature | 1h | なし |
+| ISSUE-003 | [#3254](https://github.com/YH-05/quants/issues/3254) | 1 | ETF.com モジュールのエラークラス（errors.py）の作成 | feature | 0.5h | なし |
+| ISSUE-004 | [#3255](https://github.com/YH-05/quants/issues/3255) | 1 | DataSource enum への ETF_COM 追加とテストディレクトリ構造の作成 | feature | 0.5h | なし |
+| ISSUE-005 | [#3256](https://github.com/YH-05/quants/issues/3256) | 2 | ETFComSession（curl_cffi HTTP セッション）の実装 | feature | 1.5h | #3252, #3253, #3254 |
+| ISSUE-006 | [#3257](https://github.com/YH-05/quants/issues/3257) | 2 | ETFComBrowserMixin（Playwright ブラウザ操作 Mixin）の実装 | feature | 2h | #3252, #3253, #3254 |
+| ISSUE-007 | [#3259](https://github.com/YH-05/quants/issues/3259) | 2 | テストフィクスチャ（conftest.py）と Wave1 ファイルの単体テスト作成 | test | 2h | #3252, #3253, #3254, #3255 |
+| ISSUE-008 | [#3260](https://github.com/YH-05/quants/issues/3260) | 3 | TickerCollector の実装（ETF ティッカー一覧取得） | feature | 2h | #3256, #3257 |
+| ISSUE-009 | [#3261](https://github.com/YH-05/quants/issues/3261) | 3 | FundamentalsCollector + FundFlowsCollector の実装 | feature | 2h | #3256, #3257, #3260 |
+| ISSUE-010 | [#3262](https://github.com/YH-05/quants/issues/3262) | 3 | ETFComSession と ETFComBrowserMixin の単体テスト作成 | test | 2h | #3256, #3257, #3259 |
+| ISSUE-011 | [#3263](https://github.com/YH-05/quants/issues/3263) | 4 | Collector 群の単体テスト作成（test_collectors.py） | test | 2h | #3259, #3260, #3261 |
+| ISSUE-012 | [#3264](https://github.com/YH-05/quants/issues/3264) | 4 | etfcom パッケージ __init__.py の作成と market/errors.py へのエラー統合 | feature | 1h | #3254, #3260, #3261 |
+| ISSUE-013 | [#3265](https://github.com/YH-05/quants/issues/3265) | 5 | market パッケージへの etfcom モジュール登録 | feature | 0.5h | #3264 |
 
 ### Wave 1（並行開発可能）
 
 - [ ] ETF.com モジュールの定数定義（constants.py）の作成
-  - Issue: [#3252](https://github.com/YH-05/finance/issues/3252)
+  - Issue: [#3252](https://github.com/YH-05/quants/issues/3252)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] ETF.com モジュールの型定義（types.py）の作成
-  - Issue: [#3253](https://github.com/YH-05/finance/issues/3253)
+  - Issue: [#3253](https://github.com/YH-05/quants/issues/3253)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] ETF.com モジュールのエラークラス（errors.py）の作成
-  - Issue: [#3254](https://github.com/YH-05/finance/issues/3254)
+  - Issue: [#3254](https://github.com/YH-05/quants/issues/3254)
   - ステータス: todo
   - 見積もり: 0.5h
 
 - [ ] DataSource enum への ETF_COM 追加とテストディレクトリ構造の作成
-  - Issue: [#3255](https://github.com/YH-05/finance/issues/3255)
+  - Issue: [#3255](https://github.com/YH-05/quants/issues/3255)
   - ステータス: todo
   - 見積もり: 0.5h
 
 ### Wave 2（Wave 1 完了後）
 
 - [ ] ETFComSession（curl_cffi HTTP セッション）の実装
-  - Issue: [#3256](https://github.com/YH-05/finance/issues/3256)
+  - Issue: [#3256](https://github.com/YH-05/quants/issues/3256)
   - ステータス: todo
   - 依存: #3252, #3253, #3254
   - 見積もり: 1.5h
 
 - [ ] ETFComBrowserMixin（Playwright ブラウザ操作 Mixin）の実装
-  - Issue: [#3257](https://github.com/YH-05/finance/issues/3257)
+  - Issue: [#3257](https://github.com/YH-05/quants/issues/3257)
   - ステータス: todo
   - 依存: #3252, #3253, #3254
   - 見積もり: 2h
 
 - [ ] テストフィクスチャ（conftest.py）と Wave1 ファイルの単体テスト作成
-  - Issue: [#3259](https://github.com/YH-05/finance/issues/3259)
+  - Issue: [#3259](https://github.com/YH-05/quants/issues/3259)
   - ステータス: todo
   - 依存: #3252, #3253, #3254, #3255
   - 見積もり: 2h
@@ -240,19 +240,19 @@ Collector.validate(df)
 ### Wave 3（Wave 2 完了後）
 
 - [ ] TickerCollector の実装（ETF ティッカー一覧取得）
-  - Issue: [#3260](https://github.com/YH-05/finance/issues/3260)
+  - Issue: [#3260](https://github.com/YH-05/quants/issues/3260)
   - ステータス: todo
   - 依存: #3256, #3257
   - 見積もり: 2h
 
 - [ ] FundamentalsCollector + FundFlowsCollector の実装
-  - Issue: [#3261](https://github.com/YH-05/finance/issues/3261)
+  - Issue: [#3261](https://github.com/YH-05/quants/issues/3261)
   - ステータス: todo
   - 依存: #3256, #3257, #3260
   - 見積もり: 2h
 
 - [ ] ETFComSession と ETFComBrowserMixin の単体テスト作成
-  - Issue: [#3262](https://github.com/YH-05/finance/issues/3262)
+  - Issue: [#3262](https://github.com/YH-05/quants/issues/3262)
   - ステータス: todo
   - 依存: #3256, #3257, #3259
   - 見積もり: 2h
@@ -260,13 +260,13 @@ Collector.validate(df)
 ### Wave 4（Wave 3 完了後）
 
 - [ ] Collector 群の単体テスト作成（test_collectors.py）
-  - Issue: [#3263](https://github.com/YH-05/finance/issues/3263)
+  - Issue: [#3263](https://github.com/YH-05/quants/issues/3263)
   - ステータス: todo
   - 依存: #3259, #3260, #3261
   - 見積もり: 2h
 
 - [ ] etfcom パッケージ __init__.py の作成と market/errors.py へのエラー統合
-  - Issue: [#3264](https://github.com/YH-05/finance/issues/3264)
+  - Issue: [#3264](https://github.com/YH-05/quants/issues/3264)
   - ステータス: todo
   - 依存: #3254, #3260, #3261
   - 見積もり: 1h
@@ -274,7 +274,7 @@ Collector.validate(df)
 ### Wave 5（Wave 4 完了後）
 
 - [ ] market パッケージへの etfcom モジュール登録
-  - Issue: [#3265](https://github.com/YH-05/finance/issues/3265)
+  - Issue: [#3265](https://github.com/YH-05/quants/issues/3265)
   - ステータス: todo
   - 依存: #3264
   - 見積もり: 0.5h

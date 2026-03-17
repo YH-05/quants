@@ -227,84 +227,84 @@ articles/weekly_report/{YYYY-MM-DD}/
 ### Phase 1: 調査・設計 ✅
 
 - [x] 既存コード・テンプレートの調査
-  - Issue: [#770](https://github.com/YH-05/finance/issues/770)
+  - Issue: [#770](https://github.com/YH-05/quants/issues/770)
   - ステータス: done
   - 見積もり: 1h
 
 - [x] レポートテンプレートの設計
-  - Issue: [#771](https://github.com/YH-05/finance/issues/771)
+  - Issue: [#771](https://github.com/YH-05/quants/issues/771)
   - ステータス: done
   - 見積もり: 1h
 
 ### Phase 2: データ収集機能 ✅
 
 - [x] GitHub Project ニュース取得エージェントの作成
-  - Issue: [#772](https://github.com/YH-05/finance/issues/772)
+  - Issue: [#772](https://github.com/YH-05/quants/issues/772)
   - ステータス: done
   - 見積もり: 2h
 
 - [x] ニュースカテゴリ分類ロジックの実装
-  - Issue: [#773](https://github.com/YH-05/finance/issues/773)
+  - Issue: [#773](https://github.com/YH-05/quants/issues/773)
   - ステータス: done
   - 見積もり: 2h
 
 ### Phase 3: レポート生成機能
 
 - [x] レポートテンプレートの作成
-  - Issue: [#774](https://github.com/YH-05/finance/issues/774)
+  - Issue: [#774](https://github.com/YH-05/quants/issues/774)
   - ステータス: done
   - 見積もり: 1h
 
 - [ ] レポート生成エージェントの作成
-  - Issue: [#775](https://github.com/YH-05/finance/issues/775)
+  - Issue: [#775](https://github.com/YH-05/quants/issues/775)
   - ステータス: todo
   - 見積もり: 3h
 
 ### Phase 4: GitHub Project 連携 ✅
 
 - [x] 週次レポート用 Issue テンプレートの作成
-  - Issue: [#806](https://github.com/YH-05/finance/issues/806)
+  - Issue: [#806](https://github.com/YH-05/quants/issues/806)
   - ステータス: done
   - 見積もり: 1h
 
 - [x] GitHub Project #15 に「Weekly Report」カテゴリを追加
-  - Issue: [#812](https://github.com/YH-05/finance/issues/812)
+  - Issue: [#812](https://github.com/YH-05/quants/issues/812)
   - ステータス: done
   - 見積もり: 0.5h
 
 - [x] レポート投稿エージェントの作成
-  - Issue: [#813](https://github.com/YH-05/finance/issues/813)
+  - Issue: [#813](https://github.com/YH-05/quants/issues/813)
   - ステータス: done
   - 見積もり: 2h
 
 ### Phase 5: 統合・コマンド更新
 
 - [ ] /generate-market-report コマンドの拡張
-  - Issue: [#776](https://github.com/YH-05/finance/issues/776)
+  - Issue: [#776](https://github.com/YH-05/quants/issues/776)
   - ステータス: todo
   - 見積もり: 2h
 
 - [ ] スキル定義の作成/更新
-  - Issue: [#777](https://github.com/YH-05/finance/issues/777)
+  - Issue: [#777](https://github.com/YH-05/quants/issues/777)
   - ステータス: todo
   - 見積もり: 1h
 
 ### Phase 6: テスト・検証
 
 - [ ] 統合テストの実行
-  - Issue: [#778](https://github.com/YH-05/finance/issues/778)
+  - Issue: [#778](https://github.com/YH-05/quants/issues/778)
   - ステータス: todo
   - 見積もり: 1h
 
 - [ ] サンプルレポート生成と品質確認
-  - Issue: [#779](https://github.com/YH-05/finance/issues/779)
+  - Issue: [#779](https://github.com/YH-05/quants/issues/779)
   - ステータス: todo
   - 見積もり: 1h
 
 ### Phase 7: ドキュメント
 
 - [ ] CLAUDE.md の更新
-  - Issue: [#780](https://github.com/YH-05/finance/issues/780)
+  - Issue: [#780](https://github.com/YH-05/quants/issues/780)
   - ステータス: todo
   - 見積もり: 0.5h
 

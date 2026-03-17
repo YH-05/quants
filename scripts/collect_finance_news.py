@@ -268,7 +268,7 @@ def main():
     # パラメータ
     dry_run = False  # 本番実行
     limit = 50
-    repo = "YH-05/finance"
+    repo = "YH-05/quants"
     project_number = 15
 
     print("設定:")

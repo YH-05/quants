@@ -574,7 +574,7 @@ commit:
   message: "feat(auth): ユーザー認証機能を追加"
 pr:
   number: 456  # --skip-pr の場合は null
-  url: "https://github.com/YH-05/finance/pull/456"
+  url: "https://github.com/YH-05/quants/pull/456"
 design_review:  # Phase 6.5 の結果（PR作成時のみ、--skip-pr の場合は null）
   score: 85
   solid_compliance:

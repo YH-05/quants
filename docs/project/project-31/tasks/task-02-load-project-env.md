@@ -1,6 +1,6 @@
 # タスク 02: settings.py の load_project_env() を修正
 
-- **Issue**: [#2841](https://github.com/YH-05/finance/issues/2841)
+- **Issue**: [#2841](https://github.com/YH-05/quants/issues/2841)
 - **ステータス**: todo
 
 ## 概要
@@ -59,8 +59,8 @@ ENV_FILE_PATH: Path = PROJECT_ROOT / ".env"  # 非推奨
 
 ## 依存関係
 
-- depends_on: [#2840](https://github.com/YH-05/finance/issues/2840)
-- blocks: [#2842](https://github.com/YH-05/finance/issues/2842), [#2843](https://github.com/YH-05/finance/issues/2843), [#2844](https://github.com/YH-05/finance/issues/2844)
+- depends_on: [#2840](https://github.com/YH-05/quants/issues/2840)
+- blocks: [#2842](https://github.com/YH-05/quants/issues/2842), [#2843](https://github.com/YH-05/quants/issues/2843), [#2844](https://github.com/YH-05/quants/issues/2844)
 
 ## 見積もり
 

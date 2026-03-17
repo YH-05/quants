@@ -90,24 +90,24 @@
 ### Wave 1（基盤 + 株価）
 
 - [ ] [Wave1] BSE 基盤モジュールの作成（constants, errors, types）
-  - Issue: [#3722](https://github.com/YH-05/finance/issues/3722)
+  - Issue: [#3722](https://github.com/YH-05/quants/issues/3722)
   - ステータス: todo
   - 見積もり: 2h
 
 - [ ] [Wave1] BseSession（httpx ベース HTTP セッション）の作成
-  - Issue: [#3723](https://github.com/YH-05/finance/issues/3723)
+  - Issue: [#3723](https://github.com/YH-05/quants/issues/3723)
   - ステータス: todo
   - 依存: #3722
   - 見積もり: 2h
 
 - [ ] [Wave1] パーサー + QuoteCollector の作成
-  - Issue: [#3724](https://github.com/YH-05/finance/issues/3724)
+  - Issue: [#3724](https://github.com/YH-05/quants/issues/3724)
   - ステータス: todo
   - 依存: #3722, #3723
   - 見積もり: 2h
 
 - [ ] [Wave1] パーサー Hypothesis プロパティテストの作成
-  - Issue: [#3725](https://github.com/YH-05/finance/issues/3725)
+  - Issue: [#3725](https://github.com/YH-05/quants/issues/3725)
   - ステータス: todo
   - 依存: #3724
   - 見積もり: 1h
@@ -115,13 +115,13 @@
 ### Wave 2（Bhavcopy + Index、並列実行可能）
 
 - [ ] [Wave2] BhavcopyCollector + パーサー追加の作成
-  - Issue: [#3726](https://github.com/YH-05/finance/issues/3726)
+  - Issue: [#3726](https://github.com/YH-05/quants/issues/3726)
   - ステータス: todo
   - 依存: #3723, #3724
   - 見積もり: 2h
 
 - [ ] [Wave2] IndexCollector + パーサー追加の作成
-  - Issue: [#3727](https://github.com/YH-05/finance/issues/3727)
+  - Issue: [#3727](https://github.com/YH-05/quants/issues/3727)
   - ステータス: todo
   - 依存: #3723, #3724
   - 見積もり: 1.5h
@@ -129,19 +129,19 @@
 ### Wave 3（Corporate + 統合）
 
 - [ ] [Wave3] CorporateCollector + パーサー追加の作成
-  - Issue: [#3728](https://github.com/YH-05/finance/issues/3728)
+  - Issue: [#3728](https://github.com/YH-05/quants/issues/3728)
   - ステータス: todo
   - 依存: #3723, #3724
   - 見積もり: 2.5h
 
 - [ ] [Wave3] market パッケージ統合
-  - Issue: [#3729](https://github.com/YH-05/finance/issues/3729)
+  - Issue: [#3729](https://github.com/YH-05/quants/issues/3729)
   - ステータス: todo
   - 依存: #3726, #3727, #3728
   - 見積もり: 1.5h
 
 - [ ] [Wave3] BSE 統合テストの作成
-  - Issue: [#3730](https://github.com/YH-05/finance/issues/3730)
+  - Issue: [#3730](https://github.com/YH-05/quants/issues/3730)
   - ステータス: todo
   - 依存: #3729
   - 見積もり: 1.5h

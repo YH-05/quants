@@ -236,7 +236,7 @@ def create_issue_with_project(
                 "issue",
                 "create",
                 "--repo",
-                "YH-05/finance",
+                "YH-05/quants",
                 "--title",
                 f"[NEWS] {title}",
                 "--body",

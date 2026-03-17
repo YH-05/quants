@@ -448,7 +448,7 @@ Files: 3 created, 2 modified
 
 ## 作成したPR
 - PR: #500
-- URL: https://github.com/YH-05/finance/pull/500
+- URL: https://github.com/YH-05/quants/pull/500
 
 ## CIチェック結果
 | チェック名 | 状態 |

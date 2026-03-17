@@ -86,67 +86,67 @@
 ### Wave 1（並行開発可能）
 
 - [ ] SKILL.md の作成
-  - Issue: [#3694](https://github.com/YH-05/finance/issues/3694)
+  - Issue: [#3694](https://github.com/YH-05/quants/issues/3694)
   - ステータス: todo
   - 見積もり: 0.4h
 
 - [ ] guide.md の作成
-  - Issue: [#3695](https://github.com/YH-05/finance/issues/3695)
+  - Issue: [#3695](https://github.com/YH-05/quants/issues/3695)
   - ステータス: todo
   - 見積もり: 0.4h
 
 ### Wave 2（Wave 1 完了後、9ファイル並列可能）
 
 - [ ] examples/vectorization.md の作成
-  - Issue: [#3696](https://github.com/YH-05/finance/issues/3696)
+  - Issue: [#3696](https://github.com/YH-05/quants/issues/3696)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.2h
 
 - [ ] examples/numerical-precision.md の作成
-  - Issue: [#3697](https://github.com/YH-05/finance/issues/3697)
+  - Issue: [#3697](https://github.com/YH-05/quants/issues/3697)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.2h
 
 - [ ] examples/performance.md の作成
-  - Issue: [#3698](https://github.com/YH-05/finance/issues/3698)
+  - Issue: [#3698](https://github.com/YH-05/quants/issues/3698)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.2h
 
 - [ ] examples/testing.md の作成
-  - Issue: [#3699](https://github.com/YH-05/finance/issues/3699)
+  - Issue: [#3699](https://github.com/YH-05/quants/issues/3699)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.2h
 
 - [ ] examples/returns.md の作成
-  - Issue: [#3700](https://github.com/YH-05/finance/issues/3700)
+  - Issue: [#3700](https://github.com/YH-05/quants/issues/3700)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.2h
 
 - [ ] examples/risk-metrics.md の作成
-  - Issue: [#3701](https://github.com/YH-05/finance/issues/3701)
+  - Issue: [#3701](https://github.com/YH-05/quants/issues/3701)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.2h
 
 - [ ] examples/backtesting.md の作成
-  - Issue: [#3702](https://github.com/YH-05/finance/issues/3702)
+  - Issue: [#3702](https://github.com/YH-05/quants/issues/3702)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.3h
 
 - [ ] examples/db-schema.md の作成
-  - Issue: [#3703](https://github.com/YH-05/finance/issues/3703)
+  - Issue: [#3703](https://github.com/YH-05/quants/issues/3703)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.3h
 
 - [ ] examples/data-pipeline.md の作成
-  - Issue: [#3704](https://github.com/YH-05/finance/issues/3704)
+  - Issue: [#3704](https://github.com/YH-05/quants/issues/3704)
   - ステータス: todo
   - 依存: task-1, task-2
   - 見積もり: 0.3h
@@ -154,7 +154,7 @@
 ### Wave 3（全ファイル完成後）
 
 - [ ] CLAUDE.md へのスキル登録
-  - Issue: [#3705](https://github.com/YH-05/finance/issues/3705)
+  - Issue: [#3705](https://github.com/YH-05/quants/issues/3705)
   - ステータス: todo
   - 依存: task-1
   - 見積もり: 0.1h

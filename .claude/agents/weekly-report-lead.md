@@ -684,7 +684,7 @@ weekly_report_team_result:
       status: "SUCCESS"
       owner: "report-publisher"
       issue_number: {number}
-      issue_url: "https://github.com/YH-05/finance/issues/{number}"
+      issue_url: "https://github.com/YH-05/quants/issues/{number}"
 
   summary:
     total_tasks: 6

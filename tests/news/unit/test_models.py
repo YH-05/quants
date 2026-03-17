@@ -1603,13 +1603,13 @@ class TestPublishedArticle:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=123,
-            issue_url="https://github.com/YH-05/finance/issues/123",
+            issue_url="https://github.com/YH-05/quants/issues/123",
             publication_status=PublicationStatus.SUCCESS,
         )
 
         assert published.summarized == summarized
         assert published.issue_number == 123
-        assert published.issue_url == "https://github.com/YH-05/finance/issues/123"
+        assert published.issue_url == "https://github.com/YH-05/quants/issues/123"
         assert published.publication_status == PublicationStatus.SUCCESS
         assert published.error_message is None
 
@@ -1780,7 +1780,7 @@ class TestPublishedArticle:
         with pytest.raises(ValidationError) as exc_info:
             PublishedArticle(
                 issue_number=123,
-                issue_url="https://github.com/YH-05/finance/issues/123",
+                issue_url="https://github.com/YH-05/quants/issues/123",
                 publication_status=PublicationStatus.SUCCESS,
             )
 
@@ -1833,7 +1833,7 @@ class TestPublishedArticle:
             PublishedArticle(
                 summarized=summarized,
                 issue_number=123,
-                issue_url="https://github.com/YH-05/finance/issues/123",
+                issue_url="https://github.com/YH-05/quants/issues/123",
             )
 
         errors = exc_info.value.errors()
@@ -1886,7 +1886,7 @@ class TestPublishedArticle:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=456,
-            issue_url="https://github.com/YH-05/finance/issues/456",
+            issue_url="https://github.com/YH-05/quants/issues/456",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -1894,7 +1894,7 @@ class TestPublishedArticle:
 
         assert data["publication_status"] == PublicationStatus.SUCCESS
         assert data["issue_number"] == 456
-        assert data["issue_url"] == "https://github.com/YH-05/finance/issues/456"
+        assert data["issue_url"] == "https://github.com/YH-05/quants/issues/456"
         assert data["summarized"]["summarization_status"] == SummarizationStatus.SUCCESS
         assert data["error_message"] is None
 
@@ -1927,7 +1927,7 @@ class TestPublishedArticle:
                 "summarization_status": "success",
             },
             "issue_number": 789,
-            "issue_url": "https://github.com/YH-05/finance/issues/789",
+            "issue_url": "https://github.com/YH-05/quants/issues/789",
             "publication_status": "success",
         }
 
@@ -1935,7 +1935,7 @@ class TestPublishedArticle:
 
         assert published.publication_status == PublicationStatus.SUCCESS
         assert published.issue_number == 789
-        assert published.issue_url == "https://github.com/YH-05/finance/issues/789"
+        assert published.issue_url == "https://github.com/YH-05/quants/issues/789"
         assert published.summarized.summarization_status == SummarizationStatus.SUCCESS
 
     def test_正常系_JSONシリアライズ可能(self) -> None:
@@ -1984,7 +1984,7 @@ class TestPublishedArticle:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=100,
-            issue_url="https://github.com/YH-05/finance/issues/100",
+            issue_url="https://github.com/YH-05/quants/issues/100",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -1992,7 +1992,7 @@ class TestPublishedArticle:
 
         assert '"publication_status":"success"' in json_str
         assert '"issue_number":100' in json_str
-        assert "https://github.com/YH-05/finance/issues/100" in json_str
+        assert "https://github.com/YH-05/quants/issues/100" in json_str
 
     def test_正常系_SummarizedArticleと関連が正しい(self) -> None:
         """PublishedArticle から SummarizedArticle の全プロパティにアクセスできる."""
@@ -2044,7 +2044,7 @@ class TestPublishedArticle:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=200,
-            issue_url="https://github.com/YH-05/finance/issues/200",
+            issue_url="https://github.com/YH-05/quants/issues/200",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -2296,7 +2296,7 @@ class TestWorkflowResult:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=100,
-            issue_url="https://github.com/YH-05/finance/issues/100",
+            issue_url="https://github.com/YH-05/quants/issues/100",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -2680,7 +2680,7 @@ class TestWorkflowResult:
         published = PublishedArticle(
             summarized=summarized,
             issue_number=100,
-            issue_url="https://github.com/YH-05/finance/issues/100",
+            issue_url="https://github.com/YH-05/quants/issues/100",
             publication_status=PublicationStatus.SUCCESS,
         )
 

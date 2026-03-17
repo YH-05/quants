@@ -118,20 +118,20 @@ CIK/Tickerリスト → BatchFetcher.fetch_batch() → Filingリスト
 ### Wave 1（並行開発可能）
 
 - [ ] [Wave1] 基盤ファイル（型定義・エラークラス・設定）の作成
-  - Issue: [#3416](https://github.com/YH-05/finance/issues/3416)
+  - Issue: [#3416](https://github.com/YH-05/quants/issues/3416)
   - ステータス: todo
   - 見積もり: 3〜4時間
 
 ### Wave 2（Wave 1 完了後）
 
 - [ ] [Wave2] EdgarFetcher 実装（Filing取得）
-  - Issue: [#3417](https://github.com/YH-05/finance/issues/3417)
+  - Issue: [#3417](https://github.com/YH-05/quants/issues/3417)
   - ステータス: todo
   - 依存: #3416
   - 見積もり: 3〜4時間
 
 - [ ] [Wave2] CacheManager 実装（SQLiteキャッシュ）
-  - Issue: [#3418](https://github.com/YH-05/finance/issues/3418)
+  - Issue: [#3418](https://github.com/YH-05/quants/issues/3418)
   - ステータス: todo
   - 依存: #3416
   - 見積もり: 4〜5時間
@@ -139,19 +139,19 @@ CIK/Tickerリスト → BatchFetcher.fetch_batch() → Filingリスト
 ### Wave 3（Wave 2 完了後）
 
 - [ ] [Wave3] TextExtractor 実装（テキスト抽出）
-  - Issue: [#3419](https://github.com/YH-05/finance/issues/3419)
+  - Issue: [#3419](https://github.com/YH-05/quants/issues/3419)
   - ステータス: todo
   - 依存: #3418
   - 見積もり: 2.5〜3時間
 
 - [ ] [Wave3] SectionExtractor 実装（セクション抽出）
-  - Issue: [#3420](https://github.com/YH-05/finance/issues/3420)
+  - Issue: [#3420](https://github.com/YH-05/quants/issues/3420)
   - ステータス: todo
   - 依存: #3418
   - 見積もり: 3〜4時間
 
 - [ ] [Wave3] Batch処理実装（並列抽出）
-  - Issue: [#3421](https://github.com/YH-05/finance/issues/3421)
+  - Issue: [#3421](https://github.com/YH-05/quants/issues/3421)
   - ステータス: todo
   - 依存: #3417, #3419, #3420
   - 見積もり: 6〜7時間
@@ -159,7 +159,7 @@ CIK/Tickerリスト → BatchFetcher.fetch_batch() → Filingリスト
 ### Wave 4（Wave 3 完了後）
 
 - [ ] [Wave4] README作成とテスト準備
-  - Issue: [#3422](https://github.com/YH-05/finance/issues/3422)
+  - Issue: [#3422](https://github.com/YH-05/quants/issues/3422)
   - ステータス: todo
   - 依存: #3421
   - 見積もり: 4〜5時間
@@ -167,19 +167,19 @@ CIK/Tickerリスト → BatchFetcher.fetch_batch() → Filingリスト
 ### Wave 5（Wave 4 完了後）
 
 - [ ] [Wave5] Fetcher/Cache単体テスト
-  - Issue: [#3423](https://github.com/YH-05/finance/issues/3423)
+  - Issue: [#3423](https://github.com/YH-05/quants/issues/3423)
   - ステータス: todo
   - 依存: #3422
   - 見積もり: 5〜6時間
 
 - [ ] [Wave5] Extractor単体テスト
-  - Issue: [#3424](https://github.com/YH-05/finance/issues/3424)
+  - Issue: [#3424](https://github.com/YH-05/quants/issues/3424)
   - ステータス: todo
   - 依存: #3422
   - 見積もり: 4〜5時間
 
 - [ ] [Wave5] Batch処理単体テスト
-  - Issue: [#3425](https://github.com/YH-05/finance/issues/3425)
+  - Issue: [#3425](https://github.com/YH-05/quants/issues/3425)
   - ステータス: todo
   - 依存: #3423, #3424
   - 見積もり: 4〜5時間
@@ -187,25 +187,25 @@ CIK/Tickerリスト → BatchFetcher.fetch_batch() → Filingリスト
 ### Wave 6（Wave 5 完了後、逐次実行）
 
 - [ ] [Wave6] プロパティテスト
-  - Issue: [#3426](https://github.com/YH-05/finance/issues/3426)
+  - Issue: [#3426](https://github.com/YH-05/quants/issues/3426)
   - ステータス: todo
   - 依存: #3425
   - 見積もり: 2〜3時間
 
 - [ ] [Wave6] 統合テスト（Fetcher実API呼び出し）
-  - Issue: [#3427](https://github.com/YH-05/finance/issues/3427)
+  - Issue: [#3427](https://github.com/YH-05/quants/issues/3427)
   - ステータス: todo
   - 依存: #3426
   - 見積もり: 2.5〜3時間
 
 - [ ] [Wave6] エンドツーエンド統合テスト
-  - Issue: [#3428](https://github.com/YH-05/finance/issues/3428)
+  - Issue: [#3428](https://github.com/YH-05/quants/issues/3428)
   - ステータス: todo
   - 依存: #3427
   - 見積もり: 3〜4時間
 
 - [ ] [Wave6] Batch処理統合テスト
-  - Issue: [#3429](https://github.com/YH-05/finance/issues/3429)
+  - Issue: [#3429](https://github.com/YH-05/quants/issues/3429)
   - ステータス: todo
   - 依存: #3428
   - 見積もり: 3.5〜4時間
@@ -213,7 +213,7 @@ CIK/Tickerリスト → BatchFetcher.fetch_batch() → Filingリスト
 ### Wave 7（Wave 6 完了後）
 
 - [ ] [Wave7] プロジェクト統合（CLAUDE.md等更新）
-  - Issue: [#3430](https://github.com/YH-05/finance/issues/3430)
+  - Issue: [#3430](https://github.com/YH-05/quants/issues/3430)
   - ステータス: todo
   - 依存: #3429
   - 見積もり: 2〜3時間

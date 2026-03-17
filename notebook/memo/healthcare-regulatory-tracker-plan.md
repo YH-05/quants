@@ -971,7 +971,7 @@ class RegulatoryEventPublisher:
     def __init__(
         self,
         project_number: int = 16,  # 規制トラッカー専用Project
-        repo: str = "YH-05/finance",
+        repo: str = "YH-05/quants",
     ) -> None:
         self.project_number = project_number
         self.repo = repo

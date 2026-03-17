@@ -218,7 +218,7 @@ EOF
 
 # Step 3: Issue作成
 issue_url=$(gh issue create \
-    --repo YH-05/finance \
+    --repo YH-05/quants \
     --title "[${category_label}] ${japanese_title}" \
     --body "$body" \
     --label "ai-research" \
@@ -229,7 +229,7 @@ issue_url=$(gh issue create \
 issue_number=$(echo "$issue_url" | grep -oE '[0-9]+$')
 
 # Step 5: Issueをclose
-gh issue close "$issue_number" --repo YH-05/finance
+gh issue close "$issue_number" --repo YH-05/quants
 ```
 
 ## GitHub Project #44 設定

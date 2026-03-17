@@ -77,67 +77,67 @@
 ### 準備
 
 - [x] 既存 src/rss/ パッケージの調査
-  - Issue: [#147](https://github.com/YH-05/finance/issues/147)
+  - Issue: [#147](https://github.com/YH-05/quants/issues/147)
   - ステータス: done
   - 調査結果: `docs/project/rss-package-investigation.md` 参照
 - [x] RSS MCPサーバーのAPI確認
-  - Issue: [#148](https://github.com/YH-05/finance/issues/148)
+  - Issue: [#148](https://github.com/YH-05/quants/issues/148)
   - ステータス: done
   - 調査結果: 下記「付録」セクション参照
 - [x] GitHub CLI の project 操作方法の確認
-  - Issue: [#149](https://github.com/YH-05/finance/issues/149)
+  - Issue: [#149](https://github.com/YH-05/quants/issues/149)
   - ステータス: done
 - [x] 金融ニュースフィルタリング基準の定義
-  - Issue: [#150](https://github.com/YH-05/finance/issues/150)
+  - Issue: [#150](https://github.com/YH-05/quants/issues/150)
   - ステータス: done
   - 調査結果: `docs/finance-news-filtering-criteria.md` 参照
 
 ### 実装
 
 - [x] finance-news-collector エージェントの作成
-  - Issue: [#151](https://github.com/YH-05/finance/issues/151)
+  - Issue: [#151](https://github.com/YH-05/quants/issues/151)
   - ステータス: done
 
 - [x] /collect-finance-news コマンドの作成
-  - Issue: [#152](https://github.com/YH-05/finance/issues/152)
+  - Issue: [#152](https://github.com/YH-05/quants/issues/152)
   - ステータス: done
 
 - [x] finance-news-collection スキルの作成
-  - Issue: [#153](https://github.com/YH-05/finance/issues/153)
+  - Issue: [#153](https://github.com/YH-05/quants/issues/153)
   - ステータス: done
 
 ### テスト・検証
 
 - [x] ユニットテスト作成（フィルタリングロジック・データ変換処理）
-  - Issue: [#154](https://github.com/YH-05/finance/issues/154)
+  - Issue: [#154](https://github.com/YH-05/quants/issues/154)
   - ステータス: done
 
 - [x] 統合テスト作成（RSS収集→GitHub投稿のE2E）
-  - Issue: [#155](https://github.com/YH-05/finance/issues/155)
+  - Issue: [#155](https://github.com/YH-05/quants/issues/155)
   - ステータス: done
 
 - [x] プロパティテスト作成（RSSフィードデータのバリデーション）
-  - Issue: [#156](https://github.com/YH-05/finance/issues/156)
+  - Issue: [#156](https://github.com/YH-05/quants/issues/156)
   - ステータス: done
 
 - [ ] 手動テスト実施（実際のRSSフィード・GitHub Projectで動作確認）
-  - Issue: [#157](https://github.com/YH-05/finance/issues/157)
+  - Issue: [#157](https://github.com/YH-05/quants/issues/157)
   - ステータス: todo
 
 ### ドキュメント
 
 - [ ] ドキュメント作成（finance-news-collection-guide.md）
-  - Issue: [#158](https://github.com/YH-05/finance/issues/158)
+  - Issue: [#158](https://github.com/YH-05/quants/issues/158)
   - ステータス: todo
 
 - [ ] エージェント・コマンド・スキルのREADME更新
-  - Issue: [#159](https://github.com/YH-05/finance/issues/159)
+  - Issue: [#159](https://github.com/YH-05/quants/issues/159)
   - ステータス: todo
 
 ### 拡張機能
 
 - [ ] ニュース専用のGitHub Project カテゴリ別カラム作成
-  - Issue: [#168](https://github.com/YH-05/finance/issues/168)
+  - Issue: [#168](https://github.com/YH-05/quants/issues/168)
   - ステータス: todo
   - 詳細: 米国株、日本株、セクター、テーマなどカテゴリごとにカラムを作成し、収集したニュースを分類管理
 
@@ -151,7 +151,7 @@
 ## 付録: RSS MCP API 調査結果（Issue #148完了報告）
 
 **調査日**: 2026-01-15
-**Issue**: [#148](https://github.com/YH-05/finance/issues/148)
+**Issue**: [#148](https://github.com/YH-05/quants/issues/148)
 **ステータス**: 完了
 
 ### 概要

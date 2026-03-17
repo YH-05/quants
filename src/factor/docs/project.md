@@ -108,12 +108,12 @@
 
 | Issue | タイトル | 優先度 | 見積もり | ステータス |
 |-------|---------|--------|---------|----------|
-| [#105](https://github.com/YH-05/finance/issues/105) | T01: 型定義 (types.py) | P0 | 1-2h | ✅ Done |
-| [#108](https://github.com/YH-05/finance/issues/108) | T02: エラー型定義 (errors.py) | P0 | 0.5-1h | ✅ Done |
-| [#109](https://github.com/YH-05/finance/issues/109) | T03: ロギング設定 | P0 | 0.5h | ✅ Done |
-| [#110](https://github.com/YH-05/finance/issues/110) | T04: DataProvider Protocol | P0 | 1h | ✅ Done |
-| [#115](https://github.com/YH-05/finance/issues/115) | T05: Cache クラス | P0 | 1-2h | ✅ Done |
-| [#116](https://github.com/YH-05/finance/issues/116) | T06: YFinanceProvider | P0 | 2-3h | ✅ Done |
+| [#105](https://github.com/YH-05/quants/issues/105) | T01: 型定義 (types.py) | P0 | 1-2h | ✅ Done |
+| [#108](https://github.com/YH-05/quants/issues/108) | T02: エラー型定義 (errors.py) | P0 | 0.5-1h | ✅ Done |
+| [#109](https://github.com/YH-05/quants/issues/109) | T03: ロギング設定 | P0 | 0.5h | ✅ Done |
+| [#110](https://github.com/YH-05/quants/issues/110) | T04: DataProvider Protocol | P0 | 1h | ✅ Done |
+| [#115](https://github.com/YH-05/quants/issues/115) | T05: Cache クラス | P0 | 1-2h | ✅ Done |
+| [#116](https://github.com/YH-05/quants/issues/116) | T06: YFinanceProvider | P0 | 2-3h | ✅ Done |
 
 **依存関係**: T01, T02 -> T04 -> T06, T05 -> T06
 
@@ -122,8 +122,8 @@
 
 | Issue | タイトル | 優先度 | 見積もり | ステータス |
 |-------|---------|--------|---------|----------|
-| [#117](https://github.com/YH-05/finance/issues/117) | T07: Factor 基底クラス | P0 | 1-2h | ✅ Done |
-| [#122](https://github.com/YH-05/finance/issues/122) | T08: Normalizer クラス | P0 | 1-2h | ✅ Done |
+| [#117](https://github.com/YH-05/quants/issues/117) | T07: Factor 基底クラス | P0 | 1-2h | ✅ Done |
+| [#122](https://github.com/YH-05/quants/issues/122) | T08: Normalizer クラス | P0 | 1-2h | ✅ Done |
 
 **依存関係**: feature/factor-foundation -> T07 -> T08
 
@@ -132,9 +132,9 @@
 
 | Issue | タイトル | 優先度 | 見積もり | ステータス |
 |-------|---------|--------|---------|----------|
-| [#123](https://github.com/YH-05/finance/issues/123) | T09: MomentumFactor | P0 | 1h | ✅ Done |
-| [#124](https://github.com/YH-05/finance/issues/124) | T10: ReversalFactor | P0 | 0.5h | ✅ Done |
-| [#125](https://github.com/YH-05/finance/issues/125) | T11: VolatilityFactor | P0 | 0.5h | ✅ Done |
+| [#123](https://github.com/YH-05/quants/issues/123) | T09: MomentumFactor | P0 | 1h | ✅ Done |
+| [#124](https://github.com/YH-05/quants/issues/124) | T10: ReversalFactor | P0 | 0.5h | ✅ Done |
+| [#125](https://github.com/YH-05/quants/issues/125) | T11: VolatilityFactor | P0 | 0.5h | ✅ Done |
 
 **依存関係**: feature/factor-core -> T09, T10, T11
 
@@ -143,11 +143,11 @@
 
 | Issue | タイトル | 優先度 | 見積もり | ステータス |
 |-------|---------|--------|---------|----------|
-| [#126](https://github.com/YH-05/finance/issues/126) | T12: ValueFactor | P0 | 1-1.5h | ✅ Done |
-| [#127](https://github.com/YH-05/finance/issues/127) | T13: CompositeValueFactor | P0 | 1h | ✅ Done |
-| [#128](https://github.com/YH-05/finance/issues/128) | T14: QualityFactor | P0 | 1-1.5h | ✅ Done |
-| [#129](https://github.com/YH-05/finance/issues/129) | T15: CompositeQualityFactor | P0 | 1h | ✅ Done |
-| [#130](https://github.com/YH-05/finance/issues/130) | T16: SizeFactor | P0 | 0.5-1h | ✅ Done |
+| [#126](https://github.com/YH-05/quants/issues/126) | T12: ValueFactor | P0 | 1-1.5h | ✅ Done |
+| [#127](https://github.com/YH-05/quants/issues/127) | T13: CompositeValueFactor | P0 | 1h | ✅ Done |
+| [#128](https://github.com/YH-05/quants/issues/128) | T14: QualityFactor | P0 | 1-1.5h | ✅ Done |
+| [#129](https://github.com/YH-05/quants/issues/129) | T15: CompositeQualityFactor | P0 | 1h | ✅ Done |
+| [#130](https://github.com/YH-05/quants/issues/130) | T16: SizeFactor | P0 | 0.5-1h | ✅ Done |
 
 **依存関係**: feature/factor-core -> T12, T14, T16; T08, T12 -> T13; T08, T14 -> T15
 
@@ -156,11 +156,11 @@
 
 | Issue | タイトル | 優先度 | 見積もり | ステータス |
 |-------|---------|--------|---------|----------|
-| [#131](https://github.com/YH-05/finance/issues/131) | T17: ICAnalyzer | P0 | 1-2h | ✅ Done |
-| [#132](https://github.com/YH-05/finance/issues/132) | T18: QuantileAnalyzer | P0 | 1-2h | ✅ Done |
-| [#133](https://github.com/YH-05/finance/issues/133) | T19: ファクターカテゴリ拡張 | P0 | 1h | ✅ Done |
-| [#134](https://github.com/YH-05/finance/issues/134) | T20: パッケージエクスポート | P0 | 0.5h | ✅ Done |
-| [#135](https://github.com/YH-05/finance/issues/135) | T21: 統合テスト | P0 | 2-3h | ✅ Done |
+| [#131](https://github.com/YH-05/quants/issues/131) | T17: ICAnalyzer | P0 | 1-2h | ✅ Done |
+| [#132](https://github.com/YH-05/quants/issues/132) | T18: QuantileAnalyzer | P0 | 1-2h | ✅ Done |
+| [#133](https://github.com/YH-05/quants/issues/133) | T19: ファクターカテゴリ拡張 | P0 | 1h | ✅ Done |
+| [#134](https://github.com/YH-05/quants/issues/134) | T20: パッケージエクスポート | P0 | 0.5h | ✅ Done |
+| [#135](https://github.com/YH-05/quants/issues/135) | T21: 統合テスト | P0 | 2-3h | ✅ Done |
 
 **依存関係**: T01 -> T17, T18; 全ファクター -> T19 -> T20 -> T21
 

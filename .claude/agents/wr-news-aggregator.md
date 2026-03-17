@@ -129,7 +129,7 @@ Issue 本文から以下を抽出:
       "issue_number": 171,
       "title": "記事タイトル",
       "category": "macro",
-      "url": "https://github.com/YH-05/finance/issues/171",
+      "url": "https://github.com/YH-05/quants/issues/171",
       "created_at": "2026-01-15T08:30:00Z",
       "summary": "日本語要約",
       "source": "RSS Feed",

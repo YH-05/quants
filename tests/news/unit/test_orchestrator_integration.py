@@ -57,7 +57,7 @@ def sample_config() -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": "data/exports"},  # type: ignore[arg-type]
         publishing=PublishingConfig(
@@ -89,7 +89,7 @@ def sample_config_per_article() -> NewsWorkflowConfig:
             "project_id": "PVT_test",
             "status_field_id": "PVTSSF_test",
             "published_date_field_id": "PVTF_test",
-            "repository": "YH-05/finance",
+            "repository": "YH-05/quants",
         },
         output={"result_dir": "data/exports"},  # type: ignore[arg-type]
         publishing=PublishingConfig(
@@ -239,7 +239,7 @@ class TestOrchestratorPerCategoryFormat:
                         category_label="株価指数",
                         date="2026-02-09",
                         issue_number=100,
-                        issue_url="https://github.com/YH-05/finance/issues/100",
+                        issue_url="https://github.com/YH-05/quants/issues/100",
                         article_count=2,
                         status=PublicationStatus.SUCCESS,
                     )
@@ -337,7 +337,7 @@ class TestOrchestratorPerCategoryFormat:
                         category_label="株価指数",
                         date="2026-02-09",
                         issue_number=101,
-                        issue_url="https://github.com/YH-05/finance/issues/101",
+                        issue_url="https://github.com/YH-05/quants/issues/101",
                         article_count=1,
                         status=PublicationStatus.SUCCESS,
                     )
@@ -408,13 +408,13 @@ class TestOrchestratorPerArticleFormat:
         published1 = PublishedArticle(
             summarized=summarized1,
             issue_number=200,
-            issue_url="https://github.com/YH-05/finance/issues/200",
+            issue_url="https://github.com/YH-05/quants/issues/200",
             publication_status=PublicationStatus.SUCCESS,
         )
         published2 = PublishedArticle(
             summarized=summarized2,
             issue_number=201,
-            issue_url="https://github.com/YH-05/finance/issues/201",
+            issue_url="https://github.com/YH-05/quants/issues/201",
             publication_status=PublicationStatus.SUCCESS,
         )
 
@@ -672,7 +672,7 @@ class TestOrchestratorCategoryResults:
                 category_label="株価指数",
                 date="2026-02-09",
                 issue_number=100,
-                issue_url="https://github.com/YH-05/finance/issues/100",
+                issue_url="https://github.com/YH-05/quants/issues/100",
                 article_count=1,
                 status=PublicationStatus.SUCCESS,
             ),
@@ -681,7 +681,7 @@ class TestOrchestratorCategoryResults:
                 category_label="AI関連",
                 date="2026-02-09",
                 issue_number=101,
-                issue_url="https://github.com/YH-05/finance/issues/101",
+                issue_url="https://github.com/YH-05/quants/issues/101",
                 article_count=1,
                 status=PublicationStatus.SUCCESS,
             ),
@@ -781,7 +781,7 @@ class TestOrchestratorCategoryResults:
         published1 = PublishedArticle(
             summarized=summarized1,
             issue_number=200,
-            issue_url="https://github.com/YH-05/finance/issues/200",
+            issue_url="https://github.com/YH-05/quants/issues/200",
             publication_status=PublicationStatus.SUCCESS,
         )
 

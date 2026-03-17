@@ -16,7 +16,7 @@ graph TD
 ## タスク一覧
 
 ### タスク 1: FREDCacheNotFoundError エラークラス追加
-- Issue: [#2834](https://github.com/YH-05/finance/issues/2834)
+- Issue: [#2834](https://github.com/YH-05/quants/issues/2834)
 - ファイル: `src/market/errors.py`
 - 優先度: high
 - ステータス: todo
@@ -30,11 +30,11 @@ graph TD
   - [ ] `__all__` に追加してエクスポート
 
 ### タスク 2: テストファイル作成（TDD: Red）
-- Issue: [#2835](https://github.com/YH-05/finance/issues/2835)
+- Issue: [#2835](https://github.com/YH-05/quants/issues/2835)
 - ファイル: `tests/analyze/unit/reporting/test_vix.py`
 - 優先度: high
 - ステータス: todo
-- 依存関係: [#2834](https://github.com/YH-05/finance/issues/2834)
+- 依存関係: [#2834](https://github.com/YH-05/quants/issues/2834)
 - 見積もり: 45分
 - 説明: TDDのRedフェーズとしてテストを先に作成
 - 受け入れ条件:
@@ -46,11 +46,11 @@ graph TD
   - [ ] テストが失敗することを確認（Red）
 
 ### タスク 3: _load_multiple_series 関数改修（TDD: Green）
-- Issue: [#2836](https://github.com/YH-05/finance/issues/2836)
+- Issue: [#2836](https://github.com/YH-05/quants/issues/2836)
 - ファイル: `src/analyze/reporting/vix.py`
 - 優先度: high
 - ステータス: todo
-- 依存関係: [#2835](https://github.com/YH-05/finance/issues/2835)
+- 依存関係: [#2835](https://github.com/YH-05/quants/issues/2835)
 - 見積もり: 45分
 - 説明: TDDのGreenフェーズとして実装を修正しテストを通す
 - 受け入れ条件:
@@ -63,11 +63,11 @@ graph TD
   - [ ] タスク 2 のテストが全て通ること（Green）
 
 ### タスク 4: plot_vix_and_high_yield_spread 関数改修
-- Issue: [#2837](https://github.com/YH-05/finance/issues/2837)
+- Issue: [#2837](https://github.com/YH-05/quants/issues/2837)
 - ファイル: `src/analyze/reporting/vix.py`
 - 優先度: medium
 - ステータス: todo
-- 依存関係: [#2836](https://github.com/YH-05/finance/issues/2836)
+- 依存関係: [#2836](https://github.com/YH-05/quants/issues/2836)
 - 見積もり: 30分
 - 説明: プロット関数にバリデーションとエラーハンドリングを追加
 - 受け入れ条件:
@@ -79,11 +79,11 @@ graph TD
   - [ ] Docstring に `Raises` セクション追加
 
 ### タスク 5: 品質チェック実行
-- Issue: [#2838](https://github.com/YH-05/finance/issues/2838)
+- Issue: [#2838](https://github.com/YH-05/quants/issues/2838)
 - ファイル: 全体
 - 優先度: medium
 - ステータス: todo
-- 依存関係: [#2837](https://github.com/YH-05/finance/issues/2837)
+- 依存関係: [#2837](https://github.com/YH-05/quants/issues/2837)
 - 見積もり: 15分
 - 説明: `make check-all` で品質確認を実施
 - 受け入れ条件:
@@ -95,11 +95,11 @@ graph TD
 
 ## 実装順序
 
-1. [#2834](https://github.com/YH-05/finance/issues/2834): エラークラス追加（基盤）
-2. [#2835](https://github.com/YH-05/finance/issues/2835): テスト作成（TDD: Red）
-3. [#2836](https://github.com/YH-05/finance/issues/2836): `_load_multiple_series` 改修（TDD: Green）
-4. [#2837](https://github.com/YH-05/finance/issues/2837): `plot_vix_and_high_yield_spread` 改修
-5. [#2838](https://github.com/YH-05/finance/issues/2838): 品質チェック
+1. [#2834](https://github.com/YH-05/quants/issues/2834): エラークラス追加（基盤）
+2. [#2835](https://github.com/YH-05/quants/issues/2835): テスト作成（TDD: Red）
+3. [#2836](https://github.com/YH-05/quants/issues/2836): `_load_multiple_series` 改修（TDD: Green）
+4. [#2837](https://github.com/YH-05/quants/issues/2837): `plot_vix_and_high_yield_spread` 改修
+5. [#2838](https://github.com/YH-05/quants/issues/2838): 品質チェック
 
 ## 検証コマンド
 

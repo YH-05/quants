@@ -1,6 +1,6 @@
 # タスク 04: historical_cache.py の get_default_cache_path() を修正
 
-- **Issue**: [#2843](https://github.com/YH-05/finance/issues/2843)
+- **Issue**: [#2843](https://github.com/YH-05/quants/issues/2843)
 - **ステータス**: todo
 
 ## 概要
@@ -54,8 +54,8 @@ def get_default_cache_path() -> Path:
 
 ## 依存関係
 
-- depends_on: [#2841](https://github.com/YH-05/finance/issues/2841)
-- blocks: [#2845](https://github.com/YH-05/finance/issues/2845)
+- depends_on: [#2841](https://github.com/YH-05/quants/issues/2841)
+- blocks: [#2845](https://github.com/YH-05/quants/issues/2845)
 
 ## 見積もり
 
