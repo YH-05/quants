@@ -291,14 +291,14 @@ class EdinetClient:
         Examples
         --------
         >>> company = client.get_company("E00001")
-        >>> company.corp_name
+        >>> company.name
         'テスト株式会社'
         """
         logger.debug("Getting company", code=code)
         raw = self._request("GET", f"/v1/companies/{code}")
         data = self._unwrap_response(raw)
         company = self._parse_record(Company, data)
-        logger.info("Company retrieved", code=code, name=company.corp_name)
+        logger.info("Company retrieved", code=code, name=company.name)
         return company
 
     def get_financials(self, code: str) -> list[FinancialRecord]:
@@ -332,6 +332,8 @@ class EdinetClient:
         logger.debug("Getting financials", code=code)
         raw = self._request("GET", f"/v1/companies/{code}/financials")
         data = self._unwrap_response(raw)
+        for item in data:
+            item.setdefault("edinet_code", code)
         records = [self._parse_record(FinancialRecord, item) for item in data]
         logger.info("Financials retrieved", code=code, years=len(records))
         return records
@@ -367,6 +369,8 @@ class EdinetClient:
         logger.debug("Getting ratios", code=code)
         raw = self._request("GET", f"/v1/companies/{code}/ratios")
         data = self._unwrap_response(raw)
+        for item in data:
+            item.setdefault("edinet_code", code)
         records = [self._parse_record(RatioRecord, item) for item in data]
         logger.info("Ratios retrieved", code=code, years=len(records))
         return records
@@ -375,6 +379,17 @@ class EdinetClient:
         """Get financial health analysis.
 
         Calls ``GET /v1/companies/{code}/analysis``.
+
+        The API returns a nested structure::
+
+            {
+                "ai_summary": {"text": "...", ...},
+                "history": [{"fiscal_year": 2025, "health_score": 93, ...}, ...]
+            }
+
+        This method flattens the response into a single
+        ``AnalysisResult`` using the latest history entry and
+        ``ai_summary.text`` as commentary.
 
         Parameters
         ----------
@@ -397,12 +412,36 @@ class EdinetClient:
         --------
         >>> result = client.get_analysis("E00001")
         >>> result.health_score
-        75.0
+        93.0
         """
         logger.debug("Getting analysis", code=code)
         raw = self._request("GET", f"/v1/companies/{code}/analysis")
         data = self._unwrap_response(raw)
-        result = self._parse_record(AnalysisResult, data)
+
+        # Flatten nested API response into a flat dict for _parse_record
+        flat: dict[str, Any] = {"edinet_code": code}
+        if isinstance(data, dict):
+            # Extract commentary from ai_summary.text
+            ai_summary = data.get("ai_summary")
+            if isinstance(ai_summary, dict):
+                flat["commentary"] = ai_summary.get("text")
+
+            # Extract latest history entry
+            history = data.get("history")
+            if isinstance(history, list) and history:
+                latest = history[0]
+                if isinstance(latest, dict):
+                    for key in (
+                        "health_score",
+                        "credit_score",
+                        "credit_rating",
+                        "benchmark_summary",
+                        "fiscal_year",
+                    ):
+                        if key in latest:
+                            flat[key] = latest[key]
+
+        result = self._parse_record(AnalysisResult, flat)
         logger.info(
             "Analysis retrieved",
             code=code,
@@ -415,6 +454,10 @@ class EdinetClient:
 
         Calls ``GET /v1/companies/{code}/text-blocks``.
 
+        The API returns a list of ``{section, text}`` dicts.
+        Each item becomes a ``TextBlock`` with the ``edinet_code``
+        injected by this method.
+
         Parameters
         ----------
         code : str
@@ -425,8 +468,7 @@ class EdinetClient:
         Returns
         -------
         list[TextBlock]
-            Text block records (business overview, risk factors,
-            management analysis).
+            Text block records, one per section.
 
         Raises
         ------
@@ -438,8 +480,8 @@ class EdinetClient:
         Examples
         --------
         >>> blocks = client.get_text_blocks("E00001")
-        >>> blocks[0].business_overview
-        '事業概要テキスト'
+        >>> blocks[0].section
+        '事業の内容'
         """
         logger.debug("Getting text blocks", code=code, year=year)
         params: dict[str, str] = {}
@@ -451,6 +493,8 @@ class EdinetClient:
             params=params if params else None,
         )
         data = self._unwrap_response(raw)
+        for item in data:
+            item.setdefault("edinet_code", code)
         blocks = [self._parse_record(TextBlock, item) for item in data]
         logger.info("Text blocks retrieved", code=code, count=len(blocks))
         return blocks

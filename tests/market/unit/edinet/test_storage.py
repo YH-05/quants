@@ -201,10 +201,13 @@ class TestUpsertCompanies:
             expected_columns = {
                 "edinet_code",
                 "sec_code",
-                "corp_name",
-                "industry_code",
-                "industry_name",
-                "listing_status",
+                "name",
+                "industry",
+                "name_en",
+                "name_ja",
+                "accounting_standard",
+                "credit_rating",
+                "credit_score",
             }
             assert set(df_arg.columns) == expected_columns
 
@@ -321,9 +324,12 @@ class TestUpsertAnalyses:
         """upsert_analysesがedinet_codeをkey_columnsとしてstore_dfを呼ぶこと."""
         analysis = AnalysisResult(
             edinet_code="E00001",
-            health_score=75.0,
-            benchmark_comparison="above_average",
+            health_score=93.0,
+            credit_score=93,
+            credit_rating="S",
+            benchmark_summary="強みが多い",
             commentary="Good financial health.",
+            fiscal_year=2025,
         )
 
         with patch("market.edinet.storage.DuckDBClient") as mock_cls:
@@ -350,10 +356,8 @@ class TestUpsertTextBlocks:
         """upsert_text_blocksがedinet_code, fiscal_yearをkey_columnsとして呼ぶこと."""
         block = TextBlock(
             edinet_code="E00001",
-            fiscal_year="2025",
-            business_overview="事業概要",
-            risk_factors="リスク",
-            management_analysis="分析",
+            section="事業の内容",
+            text="事業概要テキスト",
         )
 
         with patch("market.edinet.storage.DuckDBClient") as mock_cls:
@@ -368,7 +372,7 @@ class TestUpsertTextBlocks:
             call_kwargs = mock_client.store_df.call_args.kwargs
             assert call_kwargs.get("key_columns") == [
                 "edinet_code",
-                "fiscal_year",
+                "section",
             ]
             assert mock_client.store_df.call_args.args[1] == TABLE_TEXT_BLOCKS
 
@@ -478,10 +482,13 @@ class TestGetCompany:
             {
                 "edinet_code": ["E00001"],
                 "sec_code": ["10000"],
-                "corp_name": ["テスト株式会社"],
-                "industry_code": ["3050"],
-                "industry_name": ["情報・通信業"],
-                "listing_status": ["上場"],
+                "name": ["テスト株式会社"],
+                "industry": ["情報・通信業"],
+                "name_en": [None],
+                "name_ja": [None],
+                "accounting_standard": [None],
+                "credit_rating": [None],
+                "credit_score": [None],
             }
         )
 
@@ -761,7 +768,7 @@ class TestEdinetStorageIntegration:
         assert result is not None
         assert len(result) == 1
         assert result["edinet_code"].iloc[0] == "E00001"
-        assert result["corp_name"].iloc[0] == "テスト株式会社"
+        assert result["name"].iloc[0] == "テスト株式会社"
 
     def test_正常系_upsert_companiesが同一キーでupsertする(
         self,
@@ -775,27 +782,23 @@ class TestEdinetStorageIntegration:
         company_v1 = Company(
             edinet_code="E00001",
             sec_code="10000",
-            corp_name="テスト株式会社V1",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社V1",
+            industry="情報・通信業",
         )
         storage.upsert_companies([company_v1])
 
         company_v2 = Company(
             edinet_code="E00001",
             sec_code="10000",
-            corp_name="テスト株式会社V2",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社V2",
+            industry="情報・通信業",
         )
         storage.upsert_companies([company_v2])
 
         result = storage.get_company("E00001")
         assert result is not None
         assert len(result) == 1
-        assert result["corp_name"].iloc[0] == "テスト株式会社V2"
+        assert result["name"].iloc[0] == "テスト株式会社V2"
 
     def test_正常系_upsert_financialsで実際にデータが保存される(
         self,
@@ -826,10 +829,8 @@ class TestEdinetStorageIntegration:
         company2 = Company(
             edinet_code="E00002",
             sec_code="20000",
-            corp_name="テスト株式会社2",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社2",
+            industry="情報・通信業",
         )
         storage.upsert_companies([sample_company, company2])
 
@@ -892,12 +893,12 @@ class TestColumnRenames:
             )
 
     def test_正常系_リネーム先がDDLカラムに存在する(self) -> None:
-        """_COLUMN_RENAMESの値がfinancials/ratiosのDDLカラムに存在すること."""
+        """_COLUMN_RENAMESの値がいずれかのテーブルDDLカラムに存在すること."""
         from market.edinet.storage import _parse_ddl_columns
 
-        financials_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS])
-        ratios_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_RATIOS])
-        all_ddl_cols = financials_cols | ratios_cols
+        all_ddl_cols: set[str] = set()
+        for ddl in _TABLE_DDL.values():
+            all_ddl_cols |= _parse_ddl_columns(ddl)
 
         for old_name, new_name in _COLUMN_RENAMES.items():
             assert new_name in all_ddl_cols, (
@@ -905,28 +906,27 @@ class TestColumnRenames:
                 f"not found in DDL columns"
             )
 
-    def test_正常系_リネーム元がDDLカラムに存在しない(self) -> None:
-        """_COLUMN_RENAMESのキーが新DDLカラムに存在しないこと（古い名前は削除済み）."""
+    def test_正常系_リネーム元と先が同一テーブルに共存しない(self) -> None:
+        """各テーブルDDLでリネーム元と先が同時に存在しないこと."""
         from market.edinet.storage import _parse_ddl_columns
 
-        financials_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_FINANCIALS])
-        ratios_cols = _parse_ddl_columns(_TABLE_DDL[TABLE_RATIOS])
-        all_ddl_cols = financials_cols | ratios_cols
-
-        for old_name in _COLUMN_RENAMES:
-            assert old_name not in all_ddl_cols, (
-                f"Old column name {old_name!r} still exists in DDL. "
-                f"Should have been renamed to {_COLUMN_RENAMES[old_name]!r}"
-            )
+        for table_name, ddl in _TABLE_DDL.items():
+            table_cols = _parse_ddl_columns(ddl)
+            for old_name, new_name in _COLUMN_RENAMES.items():
+                assert not (old_name in table_cols and new_name in table_cols), (
+                    f"Table {table_name!r} has both old name {old_name!r} "
+                    f"and new name {new_name!r}. Migration incomplete."
+                )
 
     def test_正常系_期待されるリネームが含まれている(self) -> None:
-        """_COLUMN_RENAMESに期待される5つのリネームが含まれていること."""
+        """_COLUMN_RENAMESに期待されるリネームが含まれていること."""
         expected_renames = {
             "operating_cf": "cf_operating",
             "investing_cf": "cf_investing",
             "financing_cf": "cf_financing",
             "employees": "num_employees",
             "rnd_expense": "rnd_expenses",
+            "benchmark_comparison": "benchmark_summary",
         }
         for old_name, new_name in expected_renames.items():
             assert _COLUMN_RENAMES.get(old_name) == new_name, (
@@ -987,6 +987,32 @@ class TestDDLDataclassConsistency:
         field_count = len(dataclasses.fields(RatioRecord))
         assert ddl_count == field_count, (
             f"Column count mismatch: DDL={ddl_count}, dataclass={field_count}"
+        )
+
+    def test_正常系_AnalysisResultフィールドとDDLカラムが完全一致する(self) -> None:
+        """dataclasses.fields(AnalysisResult)のフィールド名がDDLカラム名と完全一致すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        dataclass_fields = {f.name for f in dataclasses.fields(AnalysisResult)}
+        ddl_columns = _parse_ddl_columns(_TABLE_DDL[TABLE_ANALYSES])
+
+        assert dataclass_fields == ddl_columns, (
+            f"AnalysisResult fields and DDL columns mismatch.\n"
+            f"Only in dataclass: {dataclass_fields - ddl_columns}\n"
+            f"Only in DDL: {ddl_columns - dataclass_fields}"
+        )
+
+    def test_正常系_TextBlockフィールドとDDLカラムが完全一致する(self) -> None:
+        """dataclasses.fields(TextBlock)のフィールド名がDDLカラム名と完全一致すること."""
+        from market.edinet.storage import _parse_ddl_columns
+
+        dataclass_fields = {f.name for f in dataclasses.fields(TextBlock)}
+        ddl_columns = _parse_ddl_columns(_TABLE_DDL[TABLE_TEXT_BLOCKS])
+
+        assert dataclass_fields == ddl_columns, (
+            f"TextBlock fields and DDL columns mismatch.\n"
+            f"Only in dataclass: {dataclass_fields - ddl_columns}\n"
+            f"Only in DDL: {ddl_columns - dataclass_fields}"
         )
 
 

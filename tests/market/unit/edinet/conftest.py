@@ -75,10 +75,8 @@ def sample_company() -> Company:
     return Company(
         edinet_code="E00001",
         sec_code="10000",
-        corp_name="テスト株式会社",
-        industry_code="3050",
-        industry_name="情報・通信業",
-        listing_status="上場",
+        name="テスト株式会社",
+        industry="情報・通信業",
     )
 
 

@@ -236,38 +236,45 @@ class Company:
     Parameters
     ----------
     edinet_code : str
-        EDINET code (e.g. ``"E00001"``). Primary key.
+        EDINET code (e.g. ``"E03006"``). Primary key.
     sec_code : str
-        Securities code (e.g. ``"10000"``).
-    corp_name : str
-        Company name in Japanese (e.g. ``"トヨタ自動車株式会社"``).
-    industry_code : str
-        Industry classification code (e.g. ``"3050"``).
-    industry_name : str
-        Industry name in Japanese (e.g. ``"情報・通信業"``).
-    listing_status : str
-        Listing status (e.g. ``"上場"`` or ``"非上場"``).
+        Securities code (e.g. ``"30760"``).
+    name : str
+        Company name (e.g. ``"あいホールディングス株式会社"``).
+    industry : str
+        Industry name in Japanese (e.g. ``"卸売業"``).
+    name_en : str | None
+        Company name in English (e.g. ``None``).
+    name_ja : str | None
+        Company name in Japanese (e.g. ``"あいホールディングス株式会社"``).
+    accounting_standard : str | None
+        Accounting standard code (e.g. ``"JP"``).
+    credit_rating : str | None
+        Credit rating (e.g. ``"S"``).
+    credit_score : int | None
+        Credit score (e.g. ``93``).
 
     Examples
     --------
     >>> company = Company(
-    ...     edinet_code="E00001",
-    ...     sec_code="10000",
-    ...     corp_name="テスト株式会社",
-    ...     industry_code="3050",
-    ...     industry_name="情報・通信業",
-    ...     listing_status="上場",
+    ...     edinet_code="E03006",
+    ...     sec_code="30760",
+    ...     name="あいホールディングス株式会社",
+    ...     industry="卸売業",
     ... )
     >>> company.edinet_code
-    'E00001'
+    'E03006'
     """
 
     edinet_code: str
     sec_code: str
-    corp_name: str
-    industry_code: str
-    industry_name: str
-    listing_status: str
+    name: str
+    industry: str
+    name_en: str | None = None
+    name_ja: str | None = None
+    accounting_standard: str | None = None
+    credit_rating: str | None = None
+    credit_score: int | None = None
 
 
 @dataclass(frozen=True)
@@ -512,6 +519,10 @@ class RatioRecord:
     net_income_per_employee: float | None = None
     revenue_per_employee: float | None = None
 
+    # Leverage / capital
+    financial_leverage: float | None = None
+    invested_capital: float | None = None
+
     # Adjustment factors
     split_adjustment_factor: float | None = None
 
@@ -524,74 +535,86 @@ class AnalysisResult:
     a company. Data is returned by the
     ``GET /v1/companies/{edinet_code}/analysis`` endpoint.
 
+    The actual API response is a nested structure with ``ai_summary``
+    and ``history`` keys. The client flattens this into a single record
+    using the latest year from ``history`` and ``ai_summary.text``.
+
     Parameters
     ----------
     edinet_code : str
         EDINET code of the company.
-    health_score : float
-        Financial health score (0-100).
-    benchmark_comparison : str
-        Comparison to benchmark (e.g. ``"above_average"``).
-    commentary : str
-        AI-generated commentary on financial health.
+    health_score : float | None
+        Financial health score (0-100) from the latest history entry.
+    credit_score : int | None
+        Credit score from the latest history entry.
+    credit_rating : str | None
+        Credit rating (e.g. ``"S"``, ``"A"``) from the latest history entry.
+    benchmark_summary : str | None
+        Benchmark summary text from the latest history entry.
+    commentary : str | None
+        AI-generated commentary on financial health (``ai_summary.text``).
+    fiscal_year : int | None
+        Fiscal year of the latest history entry.
 
     Examples
     --------
     >>> result = AnalysisResult(
     ...     edinet_code="E00001",
-    ...     health_score=75.0,
-    ...     benchmark_comparison="above_average",
-    ...     commentary="The company is financially healthy.",
+    ...     health_score=93.0,
+    ...     credit_score=93,
+    ...     credit_rating="S",
+    ...     benchmark_summary="強みが多い",
+    ...     commentary="日本語の分析テキスト...",
+    ...     fiscal_year=2025,
     ... )
     >>> result.health_score
-    75.0
+    93.0
     """
 
     edinet_code: str
-    health_score: float
-    benchmark_comparison: str
-    commentary: str
+    health_score: float | None = None
+    credit_score: int | None = None
+    credit_rating: str | None = None
+    benchmark_summary: str | None = None
+    commentary: str | None = None
+    fiscal_year: int | None = None
 
 
 @dataclass(frozen=True)
 class TextBlock:
     """Securities report text excerpt from the EDINET DB API.
 
-    Represents text excerpts from an annual securities report (yuho)
-    for a company and fiscal year. Data is returned by the
-    ``GET /v1/companies/{edinet_code}/text`` endpoint.
+    Represents a single section of text from an annual securities
+    report (yuho). Data is returned by the
+    ``GET /v1/companies/{edinet_code}/text-blocks`` endpoint.
+
+    The actual API response is a list of ``{section, text}`` dicts.
+    Each item becomes one ``TextBlock`` instance with the
+    ``edinet_code`` injected by the client.
 
     Parameters
     ----------
     edinet_code : str
         EDINET code of the company.
-    fiscal_year : str
-        Fiscal year (e.g. ``"2025"``).
-    business_overview : str
-        Business overview text (事業の内容).
-    risk_factors : str
-        Risk factors text (事業等のリスク).
-    management_analysis : str
-        Management analysis text (経営者による分析).
+    section : str
+        Section name (e.g. ``"事業の内容"``, ``"経営者による分析"``).
+    text : str
+        Section text content.
 
     Examples
     --------
     >>> block = TextBlock(
     ...     edinet_code="E00001",
-    ...     fiscal_year="2025",
-    ...     business_overview="事業概要テキスト",
-    ...     risk_factors="リスクファクターテキスト",
-    ...     management_analysis="経営分析テキスト",
+    ...     section="事業の内容",
+    ...     text="事業概要テキスト",
     ... )
-    >>> block.business_overview
-    '事業概要テキスト'
+    >>> block.section
+    '事業の内容'
     """
 
     edinet_code: str
-    fiscal_year: str
-    business_overview: str
-    risk_factors: str
-    management_analysis: str
+    section: str
+    text: str
 
 
 @dataclass(frozen=True)

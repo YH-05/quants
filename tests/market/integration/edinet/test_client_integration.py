@@ -191,9 +191,9 @@ class TestListCompaniesIntegration:
         for company in companies:
             assert isinstance(company, Company)
             assert company.edinet_code != ""
-            assert company.corp_name != ""
+            assert company.name != ""
             assert company.sec_code != ""
-            assert company.industry_name != ""
+            assert company.industry != ""
 
 
 class TestGetCompanyIntegration:
@@ -207,7 +207,7 @@ class TestGetCompanyIntegration:
 
         assert isinstance(company, Company)
         assert company.edinet_code == sample_edinet_code
-        assert company.corp_name != ""
+        assert company.name != ""
 
 
 class TestGetFinancialsIntegration:

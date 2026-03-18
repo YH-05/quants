@@ -148,10 +148,8 @@ class TestParseRecord:
         data = {
             "edinet_code": "E00001",
             "sec_code": "10000",
-            "corp_name": "テスト株式会社",
-            "industry_code": "3050",
-            "industry_name": "情報・通信業",
-            "listing_status": "上場",
+            "name": "テスト株式会社",
+            "industry": "情報・通信業",
             "unknown_field_1": "should be ignored",
             "unknown_field_2": 12345,
         }
@@ -159,7 +157,7 @@ class TestParseRecord:
             result = client._parse_record(Company, data)
             assert isinstance(result, Company)
             assert result.edinet_code == "E00001"
-            assert result.corp_name == "テスト株式会社"
+            assert result.name == "テスト株式会社"
 
     def test_正常系_未知フィールドが無視される(self, config: EdinetConfig) -> None:
         """Unknown fields do not cause errors."""
@@ -333,7 +331,7 @@ class TestSearch:
 
     def test_正常系_検索結果が返される(self, config: EdinetConfig) -> None:
         response_data = {
-            "data": [{"edinet_code": "E00001", "corp_name": "テスト株式会社"}],
+            "data": [{"edinet_code": "E00001", "name": "テスト株式会社"}],
             "meta": {"query": "テスト", "total": 1},
         }
         with (
@@ -379,10 +377,8 @@ class TestListCompanies:
                 {
                     "edinet_code": "E00001",
                     "sec_code": "10000",
-                    "corp_name": "テスト株式会社",
-                    "industry_code": "3050",
-                    "industry_name": "情報・通信業",
-                    "listing_status": "上場",
+                    "name": "テスト株式会社",
+                    "industry": "情報・通信業",
                 }
             ],
             "meta": {"pagination": {"total": 1}},
@@ -399,7 +395,7 @@ class TestListCompanies:
             assert len(companies) == 1
             assert isinstance(companies[0], Company)
             assert companies[0].edinet_code == "E00001"
-            assert companies[0].corp_name == "テスト株式会社"
+            assert companies[0].name == "テスト株式会社"
 
 
 # =============================================================================
@@ -415,10 +411,8 @@ class TestGetCompany:
             "data": {
                 "edinet_code": "E00001",
                 "sec_code": "10000",
-                "corp_name": "テスト株式会社",
-                "industry_code": "3050",
-                "industry_name": "情報・通信業",
-                "listing_status": "上場",
+                "name": "テスト株式会社",
+                "industry": "情報・通信業",
             }
         }
         with (
@@ -587,12 +581,25 @@ class TestGetAnalysis:
 
     def test_正常系_分析結果が返される(self, config: EdinetConfig) -> None:
         response_data = {
-            "data": {
-                "edinet_code": "E00001",
-                "health_score": 75.0,
-                "benchmark_comparison": "above_average",
-                "commentary": "健全な財務状況です。",
-            }
+            "ai_summary": {
+                "generated_at": "2026-03-15 21:02:18",
+                "has_qualitative": True,
+                "model_version": "claude-opus-4-6-v2",
+                "text": "健全な財務状況です。",
+                "text_en": "The company is financially healthy.",
+            },
+            "history": [
+                {
+                    "benchmark_strong_count": 2,
+                    "benchmark_summary": "強みが多い",
+                    "benchmark_weak_count": 0,
+                    "credit_flag_count": 0,
+                    "credit_rating": "S",
+                    "credit_score": 93,
+                    "fiscal_year": 2025,
+                    "health_score": 93.0,
+                }
+            ],
         }
         with (
             EdinetClient(config=config) as client,
@@ -604,7 +611,34 @@ class TestGetAnalysis:
         ):
             result = client.get_analysis("E00001")
             assert isinstance(result, AnalysisResult)
-            assert result.health_score == 75.0
+            assert result.edinet_code == "E00001"
+            assert result.health_score == 93.0
+            assert result.credit_score == 93
+            assert result.credit_rating == "S"
+            assert result.benchmark_summary == "強みが多い"
+            assert result.commentary == "健全な財務状況です。"
+            assert result.fiscal_year == 2025
+
+    def test_正常系_空のhistoryでも処理できる(self, config: EdinetConfig) -> None:
+        """history が空の場合でもエラーにならないこと。"""
+        response_data: dict[str, Any] = {
+            "ai_summary": {"text": "分析テキスト"},
+            "history": [],
+        }
+        with (
+            EdinetClient(config=config) as client,
+            patch.object(
+                client._client,
+                "get",
+                return_value=_make_response(json_data=response_data),
+            ),
+        ):
+            result = client.get_analysis("E00001")
+            assert isinstance(result, AnalysisResult)
+            assert result.edinet_code == "E00001"
+            assert result.commentary == "分析テキスト"
+            assert result.health_score is None
+            assert result.fiscal_year is None
 
 
 # =============================================================================
@@ -616,17 +650,10 @@ class TestGetTextBlocks:
     """Test the get_text_blocks(code) method."""
 
     def test_正常系_テキストブロックが返される(self, config: EdinetConfig) -> None:
-        response_data = {
-            "data": [
-                {
-                    "edinet_code": "E00001",
-                    "fiscal_year": "2025",
-                    "business_overview": "事業概要テキスト",
-                    "risk_factors": "リスクファクターテキスト",
-                    "management_analysis": "経営分析テキスト",
-                }
-            ]
-        }
+        response_data = [
+            {"section": "事業の内容", "text": "事業概要テキスト"},
+            {"section": "経営者による分析", "text": "経営分析テキスト"},
+        ]
         with (
             EdinetClient(config=config) as client,
             patch.object(
@@ -636,9 +663,12 @@ class TestGetTextBlocks:
             ),
         ):
             blocks = client.get_text_blocks("E00001")
-            assert len(blocks) == 1
+            assert len(blocks) == 2
             assert isinstance(blocks[0], TextBlock)
-            assert blocks[0].business_overview == "事業概要テキスト"
+            assert blocks[0].edinet_code == "E00001"
+            assert blocks[0].section == "事業の内容"
+            assert blocks[0].text == "事業概要テキスト"
+            assert blocks[1].section == "経営者による分析"
 
 
 # =============================================================================

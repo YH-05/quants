@@ -41,9 +41,20 @@ class TestHelpers:
     def test_正常系_empty_queueが全必須キーを持つ(self) -> None:
         queue = _empty_queue("test-command", "test/path.json")
         required_keys = {
-            "schema_version", "queue_id", "created_at", "command_source",
-            "input_path", "sources", "entities", "claims", "facts", "topics",
-            "authors", "financial_datapoints", "fiscal_periods", "insights",
+            "schema_version",
+            "queue_id",
+            "created_at",
+            "command_source",
+            "input_path",
+            "sources",
+            "entities",
+            "claims",
+            "facts",
+            "topics",
+            "authors",
+            "financial_datapoints",
+            "fiscal_periods",
+            "insights",
             "relations",
         }
         assert required_keys.issubset(set(queue.keys()))
@@ -64,7 +75,9 @@ class TestHelpers:
         assert _infer_period_type("Q3 2025") == "quarterly"
         assert _infer_period_type("1Q25") == "quarterly"
 
-    def test_正常系_normalise_period_labelがスペースをアンダースコアに変換(self) -> None:
+    def test_正常系_normalise_period_labelがスペースをアンダースコアに変換(
+        self,
+    ) -> None:
         assert _normalise_period_label("Q3 2025") == "Q3_2025"
         assert _normalise_period_label("FY2024") == "FY2024"
 
@@ -241,7 +254,9 @@ class TestMapDrStock:
         q2 = map_dr_stock(data)
         assert q1["entities"][0]["id"] == q2["entities"][0]["id"]
         assert q1["fiscal_periods"][0]["id"] == q2["fiscal_periods"][0]["id"]
-        assert q1["financial_datapoints"][0]["id"] == q2["financial_datapoints"][0]["id"]
+        assert (
+            q1["financial_datapoints"][0]["id"] == q2["financial_datapoints"][0]["id"]
+        )
 
 
 class TestMapCaEval:
@@ -381,9 +396,15 @@ class TestGraphQueueStructure:
             map_finance_research,
         ]
         expected_relations = {
-            "tagged", "makes_claim", "states_fact", "about",
-            "relates_to", "has_datapoint", "for_period",
-            "supported_by", "authored_by",
+            "tagged",
+            "makes_claim",
+            "states_fact",
+            "about",
+            "relates_to",
+            "has_datapoint",
+            "for_period",
+            "supported_by",
+            "authored_by",
         }
         for mapper in mappers:
             queue = mapper({})

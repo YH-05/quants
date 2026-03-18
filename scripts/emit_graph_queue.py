@@ -47,8 +47,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from utils_core.logging import get_logger
-
 from database.id_generator import (
     generate_author_id,
     generate_claim_id,
@@ -60,6 +58,7 @@ from database.id_generator import (
     generate_source_id,
     generate_topic_id,
 )
+from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 
@@ -278,11 +277,13 @@ def map_finance_news(data: dict[str, Any]) -> dict[str, Any]:
     # Create the category-level Topic node
     topic_name = category.capitalize()
     topic_id = generate_topic_id(topic_name, category)
-    queue["topics"].append({
-        "id": topic_id,
-        "name": topic_name,
-        "category": category,
-    })
+    queue["topics"].append(
+        {
+            "id": topic_id,
+            "name": topic_name,
+            "category": category,
+        }
+    )
 
     for article in articles:
         url = article.get("url") or article.get("link", "")
@@ -297,34 +298,42 @@ def map_finance_news(data: dict[str, Any]) -> dict[str, Any]:
 
         # Source node
         source_id = generate_source_id(url)
-        queue["sources"].append({
-            "id": source_id,
-            "url": url,
-            "title": title,
-            "published": published,
-            "feed_source": feed_source,
-            "source_type": "news_article",
-        })
+        queue["sources"].append(
+            {
+                "id": source_id,
+                "url": url,
+                "title": title,
+                "published": published,
+                "feed_source": feed_source,
+                "source_type": "news_article",
+            }
+        )
 
         # Claim node from summary
         if summary:
             claim_id = generate_claim_id(summary)
-            queue["claims"].append({
-                "id": claim_id,
-                "content": summary,
-                "source_url": url,
-                "claim_type": "news_summary",
-            })
-            queue["relations"]["makes_claim"].append({
-                "from_id": source_id,
-                "to_id": claim_id,
-            })
+            queue["claims"].append(
+                {
+                    "id": claim_id,
+                    "content": summary,
+                    "source_url": url,
+                    "claim_type": "news_summary",
+                }
+            )
+            queue["relations"]["makes_claim"].append(
+                {
+                    "from_id": source_id,
+                    "to_id": claim_id,
+                }
+            )
 
         # Tag source to topic
-        queue["relations"]["tagged"].append({
-            "from_id": source_id,
-            "to_id": topic_id,
-        })
+        queue["relations"]["tagged"].append(
+            {
+                "from_id": source_id,
+                "to_id": topic_id,
+            }
+        )
 
     logger.info(
         "Mapped finance-news articles",
@@ -379,14 +388,16 @@ def map_ai_research(data: dict[str, Any]) -> dict[str, Any]:
 
         # Source node
         source_id = generate_source_id(url)
-        queue["sources"].append({
-            "id": source_id,
-            "url": url,
-            "title": title,
-            "summary": summary,
-            "source_type": "ai_research_article",
-            "category": category,
-        })
+        queue["sources"].append(
+            {
+                "id": source_id,
+                "url": url,
+                "title": title,
+                "summary": summary,
+                "source_type": "ai_research_article",
+                "category": category,
+            }
+        )
 
         # Entity node (company)
         if company:
@@ -394,18 +405,22 @@ def map_ai_research(data: dict[str, Any]) -> dict[str, Any]:
             if entity_key not in seen_entities:
                 entity_id = generate_entity_id(company, "company")
                 seen_entities[entity_key] = entity_id
-                queue["entities"].append({
-                    "id": entity_id,
-                    "name": company,
-                    "entity_type": "company",
-                })
+                queue["entities"].append(
+                    {
+                        "id": entity_id,
+                        "name": company,
+                        "entity_type": "company",
+                    }
+                )
             else:
                 entity_id = seen_entities[entity_key]
 
-            queue["relations"]["about"].append({
-                "from_id": source_id,
-                "to_id": entity_id,
-            })
+            queue["relations"]["about"].append(
+                {
+                    "from_id": source_id,
+                    "to_id": entity_id,
+                }
+            )
 
     logger.info(
         "Mapped ai-research articles",
@@ -446,13 +461,15 @@ def map_market_report(data: dict[str, Any]) -> dict[str, Any]:
 
     # Source node for the report itself
     source_id = generate_source_id(report_url)
-    queue["sources"].append({
-        "id": source_id,
-        "url": report_url,
-        "title": f"Weekly Market Report {report_date}",
-        "published": report_date,
-        "source_type": "market_report",
-    })
+    queue["sources"].append(
+        {
+            "id": source_id,
+            "url": report_url,
+            "title": f"Weekly Market Report {report_date}",
+            "published": report_date,
+            "source_type": "market_report",
+        }
+    )
 
     seen_entities: dict[str, str] = {}
     source_hash = _sha256_short(report_url)
@@ -468,18 +485,22 @@ def map_market_report(data: dict[str, Any]) -> dict[str, Any]:
         if entity_key not in seen_entities:
             entity_id = generate_entity_id(name, entity_type)
             seen_entities[entity_key] = entity_id
-            queue["entities"].append({
-                "id": entity_id,
-                "name": name,
-                "entity_type": entity_type,
-            })
+            queue["entities"].append(
+                {
+                    "id": entity_id,
+                    "name": name,
+                    "entity_type": entity_type,
+                }
+            )
         else:
             entity_id = seen_entities[entity_key]
 
-        queue["relations"]["about"].append({
-            "from_id": source_id,
-            "to_id": entity_id,
-        })
+        queue["relations"]["about"].append(
+            {
+                "from_id": source_id,
+                "to_id": entity_id,
+            }
+        )
 
         for metric_name, value in metrics.items():
             if value is None:
@@ -487,17 +508,21 @@ def map_market_report(data: dict[str, Any]) -> dict[str, Any]:
             dp_id = generate_datapoint_id_from_fields(
                 source_hash, metric_name, f"{name}_{period}"
             )
-            queue["financial_datapoints"].append({
-                "id": dp_id,
-                "metric": metric_name,
-                "value": value,
-                "period": period,
-                "entity_name": name,
-            })
-            queue["relations"]["has_datapoint"].append({
-                "from_id": entity_id,
-                "to_id": dp_id,
-            })
+            queue["financial_datapoints"].append(
+                {
+                    "id": dp_id,
+                    "metric": metric_name,
+                    "value": value,
+                    "period": period,
+                    "entity_name": name,
+                }
+            )
+            queue["relations"]["has_datapoint"].append(
+                {
+                    "from_id": entity_id,
+                    "to_id": dp_id,
+                }
+            )
 
     # Process indices
     for index_data in data.get("indices", []):
@@ -539,15 +564,19 @@ def map_market_report(data: dict[str, Any]) -> dict[str, Any]:
     summary = data.get("summary", "")
     if summary:
         claim_id = generate_claim_id(summary)
-        queue["claims"].append({
-            "id": claim_id,
-            "content": summary,
-            "claim_type": "market_report_summary",
-        })
-        queue["relations"]["makes_claim"].append({
-            "from_id": source_id,
-            "to_id": claim_id,
-        })
+        queue["claims"].append(
+            {
+                "id": claim_id,
+                "content": summary,
+                "claim_type": "market_report_summary",
+            }
+        )
+        queue["relations"]["makes_claim"].append(
+            {
+                "from_id": source_id,
+                "to_id": claim_id,
+            }
+        )
 
     logger.info(
         "Mapped market-report data",
@@ -599,27 +628,33 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
     source_url = f"research://{research_id}"
     source_id = generate_source_id(source_url)
     source_hash = _sha256_short(source_url)
-    queue["sources"].append({
-        "id": source_id,
-        "url": source_url,
-        "title": f"Deep Research: {company_name} ({ticker})",
-        "published": data.get("analyzed_at", ""),
-        "source_type": "deep_research_stock",
-        "research_id": research_id,
-    })
+    queue["sources"].append(
+        {
+            "id": source_id,
+            "url": source_url,
+            "title": f"Deep Research: {company_name} ({ticker})",
+            "published": data.get("analyzed_at", ""),
+            "source_type": "deep_research_stock",
+            "research_id": research_id,
+        }
+    )
 
     # Entity node for the company
     entity_id = generate_entity_id(company_name, "company")
-    queue["entities"].append({
-        "id": entity_id,
-        "name": company_name,
-        "entity_type": "company",
-        "ticker": ticker,
-    })
-    queue["relations"]["about"].append({
-        "from_id": source_id,
-        "to_id": entity_id,
-    })
+    queue["entities"].append(
+        {
+            "id": entity_id,
+            "name": company_name,
+            "entity_type": "company",
+            "ticker": ticker,
+        }
+    )
+    queue["relations"]["about"].append(
+        {
+            "from_id": source_id,
+            "to_id": entity_id,
+        }
+    )
 
     financial_health = data.get("financial_health", {})
 
@@ -636,30 +671,38 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
         period_type = _infer_period_type(period_label)
 
         # FiscalPeriod node
-        queue["fiscal_periods"].append({
-            "id": fp_id,
-            "ticker": ticker,
-            "period_label": normalised,
-            "period_type": period_type,
-        })
+        queue["fiscal_periods"].append(
+            {
+                "id": fp_id,
+                "ticker": ticker,
+                "period_label": normalised,
+                "period_type": period_type,
+            }
+        )
 
         # Revenue FinancialDataPoint
         dp_id = generate_datapoint_id_from_fields(source_hash, "revenue", normalised)
-        queue["financial_datapoints"].append({
-            "id": dp_id,
-            "metric": "revenue",
-            "value": value,
-            "period": normalised,
-            "unit": "USD",
-        })
-        queue["relations"]["has_datapoint"].append({
-            "from_id": entity_id,
-            "to_id": dp_id,
-        })
-        queue["relations"]["for_period"].append({
-            "from_id": dp_id,
-            "to_id": fp_id,
-        })
+        queue["financial_datapoints"].append(
+            {
+                "id": dp_id,
+                "metric": "revenue",
+                "value": value,
+                "period": normalised,
+                "unit": "USD",
+            }
+        )
+        queue["relations"]["has_datapoint"].append(
+            {
+                "from_id": entity_id,
+                "to_id": dp_id,
+            }
+        )
+        queue["relations"]["for_period"].append(
+            {
+                "from_id": dp_id,
+                "to_id": fp_id,
+            }
+        )
 
         # Revenue growth as a separate datapoint
         growth = dp.get("growth")
@@ -667,21 +710,27 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
             growth_dp_id = generate_datapoint_id_from_fields(
                 source_hash, "revenue_growth_pct", normalised
             )
-            queue["financial_datapoints"].append({
-                "id": growth_dp_id,
-                "metric": "revenue_growth_pct",
-                "value": growth,
-                "period": normalised,
-                "unit": "percent",
-            })
-            queue["relations"]["has_datapoint"].append({
-                "from_id": entity_id,
-                "to_id": growth_dp_id,
-            })
-            queue["relations"]["for_period"].append({
-                "from_id": growth_dp_id,
-                "to_id": fp_id,
-            })
+            queue["financial_datapoints"].append(
+                {
+                    "id": growth_dp_id,
+                    "metric": "revenue_growth_pct",
+                    "value": growth,
+                    "period": normalised,
+                    "unit": "percent",
+                }
+            )
+            queue["relations"]["has_datapoint"].append(
+                {
+                    "from_id": entity_id,
+                    "to_id": growth_dp_id,
+                }
+            )
+            queue["relations"]["for_period"].append(
+                {
+                    "from_id": growth_dp_id,
+                    "to_id": fp_id,
+                }
+            )
 
     # --- Quarterly revenue data points ---
     for qdp in revenue_trend.get("quarterly_trend", []):
@@ -693,31 +742,39 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
         normalised = _normalise_period_label(period_label)
         fp_id = generate_fiscal_period_id(ticker, normalised)
 
-        queue["fiscal_periods"].append({
-            "id": fp_id,
-            "ticker": ticker,
-            "period_label": normalised,
-            "period_type": "quarterly",
-        })
+        queue["fiscal_periods"].append(
+            {
+                "id": fp_id,
+                "ticker": ticker,
+                "period_label": normalised,
+                "period_type": "quarterly",
+            }
+        )
 
         dp_id = generate_datapoint_id_from_fields(
             source_hash, "quarterly_revenue", normalised
         )
-        queue["financial_datapoints"].append({
-            "id": dp_id,
-            "metric": "quarterly_revenue",
-            "value": revenue_val,
-            "period": normalised,
-            "unit": "USD",
-        })
-        queue["relations"]["has_datapoint"].append({
-            "from_id": entity_id,
-            "to_id": dp_id,
-        })
-        queue["relations"]["for_period"].append({
-            "from_id": dp_id,
-            "to_id": fp_id,
-        })
+        queue["financial_datapoints"].append(
+            {
+                "id": dp_id,
+                "metric": "quarterly_revenue",
+                "value": revenue_val,
+                "period": normalised,
+                "unit": "USD",
+            }
+        )
+        queue["relations"]["has_datapoint"].append(
+            {
+                "from_id": entity_id,
+                "to_id": dp_id,
+            }
+        )
+        queue["relations"]["for_period"].append(
+            {
+                "from_id": dp_id,
+                "to_id": fp_id,
+            }
+        )
 
     # --- Profitability metrics ---
     profitability = financial_health.get("profitability", {})
@@ -731,20 +788,22 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
     for metric_name, metric_val in profit_metrics.items():
         if metric_val is None:
             continue
-        dp_id = generate_datapoint_id_from_fields(
-            source_hash, metric_name, "latest"
+        dp_id = generate_datapoint_id_from_fields(source_hash, metric_name, "latest")
+        queue["financial_datapoints"].append(
+            {
+                "id": dp_id,
+                "metric": metric_name,
+                "value": metric_val,
+                "period": "latest",
+                "unit": "percent",
+            }
         )
-        queue["financial_datapoints"].append({
-            "id": dp_id,
-            "metric": metric_name,
-            "value": metric_val,
-            "period": "latest",
-            "unit": "percent",
-        })
-        queue["relations"]["has_datapoint"].append({
-            "from_id": entity_id,
-            "to_id": dp_id,
-        })
+        queue["relations"]["has_datapoint"].append(
+            {
+                "from_id": entity_id,
+                "to_id": dp_id,
+            }
+        )
 
     # --- Balance sheet metrics ---
     balance_sheet = financial_health.get("balance_sheet", {})
@@ -756,20 +815,22 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
     for metric_name, metric_val in bs_metrics.items():
         if metric_val is None:
             continue
-        dp_id = generate_datapoint_id_from_fields(
-            source_hash, metric_name, "latest"
+        dp_id = generate_datapoint_id_from_fields(source_hash, metric_name, "latest")
+        queue["financial_datapoints"].append(
+            {
+                "id": dp_id,
+                "metric": metric_name,
+                "value": metric_val,
+                "period": "latest",
+                "unit": "ratio",
+            }
         )
-        queue["financial_datapoints"].append({
-            "id": dp_id,
-            "metric": metric_name,
-            "value": metric_val,
-            "period": "latest",
-            "unit": "ratio",
-        })
-        queue["relations"]["has_datapoint"].append({
-            "from_id": entity_id,
-            "to_id": dp_id,
-        })
+        queue["relations"]["has_datapoint"].append(
+            {
+                "from_id": entity_id,
+                "to_id": dp_id,
+            }
+        )
 
     # --- Cash flow metrics ---
     cash_flow = financial_health.get("cash_flow", {})
@@ -781,20 +842,22 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
         if metric_val is None:
             continue
         unit = "USD" if "margin" not in metric_name else "percent"
-        dp_id = generate_datapoint_id_from_fields(
-            source_hash, metric_name, "ttm"
+        dp_id = generate_datapoint_id_from_fields(source_hash, metric_name, "ttm")
+        queue["financial_datapoints"].append(
+            {
+                "id": dp_id,
+                "metric": metric_name,
+                "value": metric_val,
+                "period": "ttm",
+                "unit": unit,
+            }
         )
-        queue["financial_datapoints"].append({
-            "id": dp_id,
-            "metric": metric_name,
-            "value": metric_val,
-            "period": "ttm",
-            "unit": unit,
-        })
-        queue["relations"]["has_datapoint"].append({
-            "from_id": entity_id,
-            "to_id": dp_id,
-        })
+        queue["relations"]["has_datapoint"].append(
+            {
+                "from_id": entity_id,
+                "to_id": dp_id,
+            }
+        )
 
     # --- Valuation as Claims ---
     valuation = data.get("valuation", {})
@@ -804,20 +867,23 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
         notes = dcf.get("notes", "")
         if intrinsic is not None:
             claim_text = (
-                f"{company_name} ({ticker}) DCF intrinsic value: "
-                f"${intrinsic}. {notes}"
+                f"{company_name} ({ticker}) DCF intrinsic value: ${intrinsic}. {notes}"
             )
             claim_id = generate_claim_id(claim_text)
-            queue["claims"].append({
-                "id": claim_id,
-                "content": claim_text,
-                "claim_type": "valuation_dcf",
-                "ticker": ticker,
-            })
-            queue["relations"]["makes_claim"].append({
-                "from_id": source_id,
-                "to_id": claim_id,
-            })
+            queue["claims"].append(
+                {
+                    "id": claim_id,
+                    "content": claim_text,
+                    "claim_type": "valuation_dcf",
+                    "ticker": ticker,
+                }
+            )
+            queue["relations"]["makes_claim"].append(
+                {
+                    "from_id": source_id,
+                    "to_id": claim_id,
+                }
+            )
 
     # --- Overall assessment as Fact ---
     overall_score = financial_health.get("overall_score")
@@ -828,16 +894,20 @@ def map_dr_stock(data: dict[str, Any]) -> dict[str, Any]:
             f"{overall_score}/10 (confidence: {confidence})"
         )
         fact_id = generate_fact_id(fact_text)
-        queue["facts"].append({
-            "id": fact_id,
-            "content": fact_text,
-            "fact_type": "financial_health_score",
-            "ticker": ticker,
-        })
-        queue["relations"]["states_fact"].append({
-            "from_id": entity_id,
-            "to_id": fact_id,
-        })
+        queue["facts"].append(
+            {
+                "id": fact_id,
+                "content": fact_text,
+                "fact_type": "financial_health_score",
+                "ticker": ticker,
+            }
+        )
+        queue["relations"]["states_fact"].append(
+            {
+                "from_id": entity_id,
+                "to_id": fact_id,
+            }
+        )
 
     logger.info(
         "Mapped dr-stock data",
@@ -886,27 +956,33 @@ def map_ca_eval(data: dict[str, Any]) -> dict[str, Any]:
     # Source node for the CA evaluation
     source_url = f"ca-eval://{research_id}"
     source_id = generate_source_id(source_url)
-    queue["sources"].append({
-        "id": source_id,
-        "url": source_url,
-        "title": f"Competitive Advantage Evaluation: {company_name} ({ticker})",
-        "published": extracted_at,
-        "source_type": "ca_evaluation",
-        "research_id": research_id,
-    })
+    queue["sources"].append(
+        {
+            "id": source_id,
+            "url": source_url,
+            "title": f"Competitive Advantage Evaluation: {company_name} ({ticker})",
+            "published": extracted_at,
+            "source_type": "ca_evaluation",
+            "research_id": research_id,
+        }
+    )
 
     # Entity node for the company
     entity_id = generate_entity_id(company_name, "company")
-    queue["entities"].append({
-        "id": entity_id,
-        "name": company_name,
-        "entity_type": "company",
-        "ticker": ticker,
-    })
-    queue["relations"]["about"].append({
-        "from_id": source_id,
-        "to_id": entity_id,
-    })
+    queue["entities"].append(
+        {
+            "id": entity_id,
+            "name": company_name,
+            "entity_type": "company",
+            "ticker": ticker,
+        }
+    )
+    queue["relations"]["about"].append(
+        {
+            "from_id": source_id,
+            "to_id": entity_id,
+        }
+    )
 
     # Extract date from research_id for insight IDs
     date_match = re.search(r"(\d{8})", research_id)
@@ -929,59 +1005,75 @@ def map_ca_eval(data: dict[str, Any]) -> dict[str, Any]:
         # Claim node
         claim_content = f"[{ticker}] {title}: {description}"
         claim_id = generate_claim_id(claim_content)
-        queue["claims"].append({
-            "id": claim_id,
-            "content": claim_content,
-            "claim_type": f"competitive_advantage_{ca_type}",
-            "ticker": ticker,
-            "ca_type": ca_type,
-            "ca_score": confidence_data.get("ca_score"),
-            "ca_label": confidence_data.get("label"),
-        })
-        queue["relations"]["makes_claim"].append({
-            "from_id": source_id,
-            "to_id": claim_id,
-        })
-        queue["relations"]["about"].append({
-            "from_id": claim_id,
-            "to_id": entity_id,
-        })
+        queue["claims"].append(
+            {
+                "id": claim_id,
+                "content": claim_content,
+                "claim_type": f"competitive_advantage_{ca_type}",
+                "ticker": ticker,
+                "ca_type": ca_type,
+                "ca_score": confidence_data.get("ca_score"),
+                "ca_label": confidence_data.get("label"),
+            }
+        )
+        queue["relations"]["makes_claim"].append(
+            {
+                "from_id": source_id,
+                "to_id": claim_id,
+            }
+        )
+        queue["relations"]["about"].append(
+            {
+                "from_id": claim_id,
+                "to_id": entity_id,
+            }
+        )
 
         # Fact nodes from factual_claims
         for fact_text in factual_claims:
             if not fact_text:
                 continue
             fact_id = generate_fact_id(fact_text)
-            queue["facts"].append({
-                "id": fact_id,
-                "content": fact_text,
-                "fact_type": "competitive_advantage_evidence",
-                "ticker": ticker,
-            })
-            queue["relations"]["supported_by"].append({
-                "from_id": claim_id,
-                "to_id": fact_id,
-            })
-            queue["relations"]["states_fact"].append({
-                "from_id": entity_id,
-                "to_id": fact_id,
-            })
+            queue["facts"].append(
+                {
+                    "id": fact_id,
+                    "content": fact_text,
+                    "fact_type": "competitive_advantage_evidence",
+                    "ticker": ticker,
+                }
+            )
+            queue["relations"]["supported_by"].append(
+                {
+                    "from_id": claim_id,
+                    "to_id": fact_id,
+                }
+            )
+            queue["relations"]["states_fact"].append(
+                {
+                    "from_id": entity_id,
+                    "to_id": fact_id,
+                }
+            )
 
         # Insight node from CAGR mechanism
         if cagr_mechanism and date_str:
             insight_seq += 1
             insight_id = generate_insight_id(date_str, insight_seq)
-            queue["insights"].append({
-                "id": insight_id,
-                "content": cagr_mechanism,
-                "insight_type": "cagr_mechanism",
-                "ticker": ticker,
-                "date": date_str,
-            })
-            queue["relations"]["relates_to"].append({
-                "from_id": claim_id,
-                "to_id": insight_id,
-            })
+            queue["insights"].append(
+                {
+                    "id": insight_id,
+                    "content": cagr_mechanism,
+                    "insight_type": "cagr_mechanism",
+                    "ticker": ticker,
+                    "date": date_str,
+                }
+            )
+            queue["relations"]["relates_to"].append(
+                {
+                    "from_id": claim_id,
+                    "to_id": insight_id,
+                }
+            )
 
     logger.info(
         "Mapped ca-eval data",
@@ -1028,26 +1120,32 @@ def map_dr_industry(data: dict[str, Any]) -> dict[str, Any]:
     # Source node
     source_url = f"research://{research_id}"
     source_id = generate_source_id(source_url)
-    queue["sources"].append({
-        "id": source_id,
-        "url": source_url,
-        "title": f"Industry Research: {sector_name}",
-        "published": analyzed_at,
-        "source_type": "deep_research_industry",
-        "research_id": research_id,
-    })
+    queue["sources"].append(
+        {
+            "id": source_id,
+            "url": source_url,
+            "title": f"Industry Research: {sector_name}",
+            "published": analyzed_at,
+            "source_type": "deep_research_industry",
+            "research_id": research_id,
+        }
+    )
 
     # Sector entity
     sector_entity_id = generate_entity_id(sector_name, "sector")
-    queue["entities"].append({
-        "id": sector_entity_id,
-        "name": sector_name,
-        "entity_type": "sector",
-    })
-    queue["relations"]["about"].append({
-        "from_id": source_id,
-        "to_id": sector_entity_id,
-    })
+    queue["entities"].append(
+        {
+            "id": sector_entity_id,
+            "name": sector_name,
+            "entity_type": "sector",
+        }
+    )
+    queue["relations"]["about"].append(
+        {
+            "from_id": source_id,
+            "to_id": sector_entity_id,
+        }
+    )
 
     seen_entities: dict[str, str] = {f"{sector_name}:sector": sector_entity_id}
 
@@ -1072,61 +1170,77 @@ def map_dr_industry(data: dict[str, Any]) -> dict[str, Any]:
             queue["entities"].append(entity_node)
 
             # Company relates_to sector
-            queue["relations"]["relates_to"].append({
-                "from_id": entity_id,
-                "to_id": sector_entity_id,
-            })
+            queue["relations"]["relates_to"].append(
+                {
+                    "from_id": entity_id,
+                    "to_id": sector_entity_id,
+                }
+            )
 
     # Claims
     for claim_data in data.get("claims", []):
         title = claim_data.get("title", "")
         description = claim_data.get("description", "")
-        claim_content = f"[{sector_name}] {title}: {description}" if title else description
+        claim_content = (
+            f"[{sector_name}] {title}: {description}" if title else description
+        )
 
         if not claim_content.strip():
             continue
 
         claim_id = generate_claim_id(claim_content)
-        queue["claims"].append({
-            "id": claim_id,
-            "content": claim_content,
-            "claim_type": "industry_analysis",
-            "sector": sector_name,
-        })
-        queue["relations"]["makes_claim"].append({
-            "from_id": source_id,
-            "to_id": claim_id,
-        })
+        queue["claims"].append(
+            {
+                "id": claim_id,
+                "content": claim_content,
+                "claim_type": "industry_analysis",
+                "sector": sector_name,
+            }
+        )
+        queue["relations"]["makes_claim"].append(
+            {
+                "from_id": source_id,
+                "to_id": claim_id,
+            }
+        )
 
         # Facts from factual_claims
         for fact_text in claim_data.get("factual_claims", []):
             if not fact_text:
                 continue
             fact_id = generate_fact_id(fact_text)
-            queue["facts"].append({
-                "id": fact_id,
-                "content": fact_text,
-                "fact_type": "industry_evidence",
-            })
-            queue["relations"]["supported_by"].append({
-                "from_id": claim_id,
-                "to_id": fact_id,
-            })
+            queue["facts"].append(
+                {
+                    "id": fact_id,
+                    "content": fact_text,
+                    "fact_type": "industry_evidence",
+                }
+            )
+            queue["relations"]["supported_by"].append(
+                {
+                    "from_id": claim_id,
+                    "to_id": fact_id,
+                }
+            )
 
     # Top-level summary/findings as claims
     summary = data.get("summary", "")
     if summary:
         claim_id = generate_claim_id(summary)
-        queue["claims"].append({
-            "id": claim_id,
-            "content": summary,
-            "claim_type": "industry_summary",
-            "sector": sector_name,
-        })
-        queue["relations"]["makes_claim"].append({
-            "from_id": source_id,
-            "to_id": claim_id,
-        })
+        queue["claims"].append(
+            {
+                "id": claim_id,
+                "content": summary,
+                "claim_type": "industry_summary",
+                "sector": sector_name,
+            }
+        )
+        queue["relations"]["makes_claim"].append(
+            {
+                "from_id": source_id,
+                "to_id": claim_id,
+            }
+        )
 
     logger.info(
         "Mapped dr-industry data",
@@ -1169,14 +1283,16 @@ def map_finance_research(data: dict[str, Any]) -> dict[str, Any]:
     # Source node for the research itself
     research_url = f"finance-research://{research_id}"
     research_source_id = generate_source_id(research_url)
-    queue["sources"].append({
-        "id": research_source_id,
-        "url": research_url,
-        "title": f"Finance Research: {topic}",
-        "published": researched_at,
-        "source_type": "finance_research",
-        "research_id": research_id,
-    })
+    queue["sources"].append(
+        {
+            "id": research_source_id,
+            "url": research_url,
+            "title": f"Finance Research: {topic}",
+            "published": researched_at,
+            "source_type": "finance_research",
+            "research_id": research_id,
+        }
+    )
 
     # Referenced sources
     source_id_map: dict[str, str] = {}
@@ -1187,12 +1303,14 @@ def map_finance_research(data: dict[str, Any]) -> dict[str, Any]:
             continue
         src_id = generate_source_id(url)
         source_id_map[url] = src_id
-        queue["sources"].append({
-            "id": src_id,
-            "url": url,
-            "title": title,
-            "source_type": "reference",
-        })
+        queue["sources"].append(
+            {
+                "id": src_id,
+                "url": url,
+                "title": title,
+                "source_type": "reference",
+            }
+        )
 
     # Findings / claims
     for finding in data.get("findings", []):
@@ -1201,25 +1319,31 @@ def map_finance_research(data: dict[str, Any]) -> dict[str, Any]:
             continue
 
         claim_id = generate_claim_id(content)
-        queue["claims"].append({
-            "id": claim_id,
-            "content": content,
-            "claim_type": "research_finding",
-            "topic": topic,
-        })
-        queue["relations"]["makes_claim"].append({
-            "from_id": research_source_id,
-            "to_id": claim_id,
-        })
+        queue["claims"].append(
+            {
+                "id": claim_id,
+                "content": content,
+                "claim_type": "research_finding",
+                "topic": topic,
+            }
+        )
+        queue["relations"]["makes_claim"].append(
+            {
+                "from_id": research_source_id,
+                "to_id": claim_id,
+            }
+        )
 
         # Link claim to supporting sources
         evidence_urls: list[str] = finding.get("evidence_urls", [])
         for ev_url in evidence_urls:
             if ev_url in source_id_map:
-                queue["relations"]["supported_by"].append({
-                    "from_id": claim_id,
-                    "to_id": source_id_map[ev_url],
-                })
+                queue["relations"]["supported_by"].append(
+                    {
+                        "from_id": claim_id,
+                        "to_id": source_id_map[ev_url],
+                    }
+                )
 
     # Top-level claims/key_points
     for point in data.get("key_points", []):
@@ -1233,16 +1357,20 @@ def map_finance_research(data: dict[str, Any]) -> dict[str, Any]:
             continue
 
         claim_id = generate_claim_id(point_text)
-        queue["claims"].append({
-            "id": claim_id,
-            "content": point_text,
-            "claim_type": "research_key_point",
-            "topic": topic,
-        })
-        queue["relations"]["makes_claim"].append({
-            "from_id": research_source_id,
-            "to_id": claim_id,
-        })
+        queue["claims"].append(
+            {
+                "id": claim_id,
+                "content": point_text,
+                "claim_type": "research_key_point",
+                "topic": topic,
+            }
+        )
+        queue["relations"]["makes_claim"].append(
+            {
+                "from_id": research_source_id,
+                "to_id": claim_id,
+            }
+        )
 
     logger.info(
         "Mapped finance-research data",

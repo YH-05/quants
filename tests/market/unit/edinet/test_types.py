@@ -305,48 +305,63 @@ class TestCompany:
         company = Company(
             edinet_code="E00001",
             sec_code="10000",
-            corp_name="テスト株式会社",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社",
+            industry="情報・通信業",
         )
         with pytest.raises(FrozenInstanceError):
-            company.corp_name = "変更"
+            company.name = "変更"
 
     def test_正常系_全フィールドが正しく設定される(self) -> None:
-        """Company の全6フィールドが正しく設定されること。"""
+        """Company の必須フィールドとOptionalフィールドが正しく設定されること。"""
         company = Company(
-            edinet_code="E00001",
-            sec_code="10000",
-            corp_name="テスト株式会社",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            edinet_code="E03006",
+            sec_code="30760",
+            name="あいホールディングス株式会社",
+            industry="卸売業",
+            name_en=None,
+            name_ja="あいホールディングス株式会社",
+            accounting_standard="JP",
+            credit_rating="S",
+            credit_score=93,
         )
-        assert company.edinet_code == "E00001"
-        assert company.sec_code == "10000"
-        assert company.corp_name == "テスト株式会社"
-        assert company.industry_code == "3050"
-        assert company.industry_name == "情報・通信業"
-        assert company.listing_status == "上場"
+        assert company.edinet_code == "E03006"
+        assert company.sec_code == "30760"
+        assert company.name == "あいホールディングス株式会社"
+        assert company.industry == "卸売業"
+        assert company.name_en is None
+        assert company.name_ja == "あいホールディングス株式会社"
+        assert company.accounting_standard == "JP"
+        assert company.credit_rating == "S"
+        assert company.credit_score == 93
 
-    def test_正常系_全フィールドがstr型(self) -> None:
-        """Company の全フィールドが str であること。"""
+    def test_正常系_必須フィールドのみで生成できる(self) -> None:
+        """Company が必須フィールドのみで生成でき、Optionalフィールドがデフォルト値であること。"""
         company = Company(
             edinet_code="E00001",
             sec_code="10000",
-            corp_name="テスト",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社",
+            industry="情報・通信業",
+        )
+        assert company.name == "テスト株式会社"
+        assert company.name_en is None
+        assert company.name_ja is None
+        assert company.accounting_standard is None
+        assert company.credit_rating is None
+        assert company.credit_score is None
+
+    def test_正常系_必須フィールドがstr型(self) -> None:
+        """Company の必須フィールドが str であること。"""
+        company = Company(
+            edinet_code="E00001",
+            sec_code="10000",
+            name="テスト",
+            industry="情報・通信業",
         )
         for field_name in [
             "edinet_code",
             "sec_code",
-            "corp_name",
-            "industry_code",
-            "industry_name",
-            "listing_status",
+            "name",
+            "industry",
         ]:
             assert isinstance(getattr(company, field_name), str), (
                 f"Field {field_name} is not str"
@@ -583,7 +598,7 @@ class TestRatioRecord:
     def test_正常系_全Optionalフィールドのデフォルトがnone(self) -> None:
         """全比率フィールドが default=None であること。"""
         record = RatioRecord(edinet_code="E00001", fiscal_year=2025)
-        # API検証で確認された20フィールド（edinet_code, fiscal_year 除く）
+        # API検証で確認された22フィールド（edinet_code, fiscal_year 除く）
         optional_fields = [
             "adjusted_dividend_per_share",
             "asset_turnover",
@@ -595,6 +610,8 @@ class TestRatioRecord:
             "equity_ratio",
             "equity_ratio_official",
             "fcf",
+            "financial_leverage",
+            "invested_capital",
             "net_income_per_employee",
             "net_margin",
             "payout_ratio",
@@ -710,9 +727,12 @@ class TestAnalysisResult:
         """AnalysisResult がフィールド変更不可であること。"""
         result = AnalysisResult(
             edinet_code="E00001",
-            health_score=75.0,
-            benchmark_comparison="above_average",
-            commentary="財務健全性は平均以上です。",
+            health_score=93.0,
+            credit_score=93,
+            credit_rating="S",
+            benchmark_summary="強みが多い",
+            commentary="日本語の分析テキスト...",
+            fiscal_year=2025,
         )
         with pytest.raises(FrozenInstanceError):
             result.health_score = 0.0
@@ -721,14 +741,31 @@ class TestAnalysisResult:
         """AnalysisResult の全フィールドが正しく設定されること。"""
         result = AnalysisResult(
             edinet_code="E00001",
-            health_score=75.0,
-            benchmark_comparison="above_average",
-            commentary="財務健全性は平均以上です。",
+            health_score=93.0,
+            credit_score=93,
+            credit_rating="S",
+            benchmark_summary="強みが多い",
+            commentary="日本語の分析テキスト...",
+            fiscal_year=2025,
         )
         assert result.edinet_code == "E00001"
-        assert result.health_score == 75.0
-        assert result.benchmark_comparison == "above_average"
-        assert result.commentary == "財務健全性は平均以上です。"
+        assert result.health_score == 93.0
+        assert result.credit_score == 93
+        assert result.credit_rating == "S"
+        assert result.benchmark_summary == "強みが多い"
+        assert result.commentary == "日本語の分析テキスト..."
+        assert result.fiscal_year == 2025
+
+    def test_正常系_edinet_codeのみで生成できる(self) -> None:
+        """AnalysisResult が edinet_code のみで生成でき、他はデフォルト None であること。"""
+        result = AnalysisResult(edinet_code="E00001")
+        assert result.edinet_code == "E00001"
+        assert result.health_score is None
+        assert result.credit_score is None
+        assert result.credit_rating is None
+        assert result.benchmark_summary is None
+        assert result.commentary is None
+        assert result.fiscal_year is None
 
 
 # =============================================================================
@@ -743,44 +780,34 @@ class TestTextBlock:
         """TextBlock がフィールド変更不可であること。"""
         block = TextBlock(
             edinet_code="E00001",
-            fiscal_year="2025",
-            business_overview="事業概要テキスト",
-            risk_factors="リスクファクターテキスト",
-            management_analysis="経営分析テキスト",
+            section="事業の内容",
+            text="事業概要テキスト",
         )
         with pytest.raises(FrozenInstanceError):
-            block.business_overview = "変更"
+            block.text = "変更"
 
     def test_正常系_全フィールドが正しく設定される(self) -> None:
         """TextBlock の全フィールドが正しく設定されること。"""
         block = TextBlock(
             edinet_code="E00001",
-            fiscal_year="2025",
-            business_overview="事業概要テキスト",
-            risk_factors="リスクファクターテキスト",
-            management_analysis="経営分析テキスト",
+            section="事業の内容",
+            text="事業概要テキスト",
         )
         assert block.edinet_code == "E00001"
-        assert block.fiscal_year == "2025"
-        assert block.business_overview == "事業概要テキスト"
-        assert block.risk_factors == "リスクファクターテキスト"
-        assert block.management_analysis == "経営分析テキスト"
+        assert block.section == "事業の内容"
+        assert block.text == "事業概要テキスト"
 
     def test_正常系_全フィールドがstr型(self) -> None:
         """TextBlock の全フィールドが str であること。"""
         block = TextBlock(
             edinet_code="E00001",
-            fiscal_year="2025",
-            business_overview="概要",
-            risk_factors="リスク",
-            management_analysis="分析",
+            section="経営者による分析",
+            text="分析テキスト",
         )
         for field_name in [
             "edinet_code",
-            "fiscal_year",
-            "business_overview",
-            "risk_factors",
-            "management_analysis",
+            "section",
+            "text",
         ]:
             assert isinstance(getattr(block, field_name), str), (
                 f"Field {field_name} is not str"

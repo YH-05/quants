@@ -80,18 +80,14 @@ def mock_client() -> MagicMock:
         Company(
             edinet_code="E00001",
             sec_code="10000",
-            corp_name="テスト株式会社A",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社A",
+            industry="情報・通信業",
         ),
         Company(
             edinet_code="E00002",
             sec_code="20000",
-            corp_name="テスト株式会社B",
-            industry_code="3050",
-            industry_name="情報・通信業",
-            listing_status="上場",
+            name="テスト株式会社B",
+            industry="情報・通信業",
         ),
     ]
     client.list_industries.return_value = [
@@ -118,10 +114,8 @@ def mock_client() -> MagicMock:
     client.get_company.return_value = Company(
         edinet_code="E00001",
         sec_code="10000",
-        corp_name="テスト株式会社A",
-        industry_code="3050",
-        industry_name="情報・通信業",
-        listing_status="上場",
+        name="テスト株式会社A",
+        industry="情報・通信業",
     )
     client.get_financials.return_value = [
         FinancialRecord(
@@ -184,17 +178,23 @@ def mock_client() -> MagicMock:
     ]
     client.get_analysis.return_value = AnalysisResult(
         edinet_code="E00001",
-        health_score=75.0,
-        benchmark_comparison="above_average",
+        health_score=93.0,
+        credit_score=93,
+        credit_rating="S",
+        benchmark_summary="強みが多い",
         commentary="The company is financially healthy.",
+        fiscal_year=2025,
     )
     client.get_text_blocks.return_value = [
         TextBlock(
             edinet_code="E00001",
-            fiscal_year="2025",
-            business_overview="事業概要テキスト",
-            risk_factors="リスクファクターテキスト",
-            management_analysis="経営分析テキスト",
+            section="事業の内容",
+            text="事業概要テキスト",
+        ),
+        TextBlock(
+            edinet_code="E00001",
+            section="経営者による分析",
+            text="経営分析テキスト",
         ),
     ]
     return client
@@ -634,10 +634,8 @@ class TestRateLimitGracefulStop:
             return Company(
                 edinet_code=code,
                 sec_code="10000",
-                corp_name="テスト",
-                industry_code="3050",
-                industry_name="情報・通信業",
-                listing_status="上場",
+                name="テスト",
+                industry="情報・通信業",
             )
 
         mock_client.get_company.side_effect = side_effect_get_company
@@ -719,10 +717,8 @@ class TestErrorSkip:
             return Company(
                 edinet_code=code,
                 sec_code="20000",
-                corp_name="テスト株式会社B",
-                industry_code="3050",
-                industry_name="情報・通信業",
-                listing_status="上場",
+                name="テスト株式会社B",
+                industry="情報・通信業",
             )
 
         mock_client.get_company.side_effect = side_effect_get_company

@@ -77,6 +77,10 @@ _COLUMN_RENAMES: dict[str, str] = {
     "financing_cf": "cf_financing",
     "employees": "num_employees",
     "rnd_expense": "rnd_expenses",
+    "corp_name": "name",
+    "industry_name": "industry",
+    # analyses table: old field → new field
+    "benchmark_comparison": "benchmark_summary",
 }
 """Mapping of old column names to new column names.
 
@@ -100,10 +104,13 @@ _TABLE_DDL: dict[str, str] = {
         CREATE TABLE IF NOT EXISTS {TABLE_COMPANIES} (
             edinet_code VARCHAR NOT NULL,
             sec_code VARCHAR NOT NULL,
-            corp_name VARCHAR NOT NULL,
-            industry_code VARCHAR NOT NULL,
-            industry_name VARCHAR NOT NULL,
-            listing_status VARCHAR NOT NULL
+            name VARCHAR NOT NULL,
+            industry VARCHAR NOT NULL,
+            name_en VARCHAR,
+            name_ja VARCHAR,
+            accounting_standard VARCHAR,
+            credit_rating VARCHAR,
+            credit_score INTEGER
         )
     """,
     TABLE_FINANCIALS: f"""
@@ -162,24 +169,27 @@ _TABLE_DDL: dict[str, str] = {
             fcf DOUBLE,
             net_income_per_employee DOUBLE,
             revenue_per_employee DOUBLE,
+            financial_leverage DOUBLE,
+            invested_capital DOUBLE,
             split_adjustment_factor DOUBLE
         )
     """,
     TABLE_ANALYSES: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_ANALYSES} (
             edinet_code VARCHAR NOT NULL,
-            health_score DOUBLE NOT NULL,
-            benchmark_comparison VARCHAR NOT NULL,
-            commentary VARCHAR NOT NULL
+            health_score DOUBLE,
+            credit_score INTEGER,
+            credit_rating VARCHAR,
+            benchmark_summary VARCHAR,
+            commentary VARCHAR,
+            fiscal_year INTEGER
         )
     """,
     TABLE_TEXT_BLOCKS: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_TEXT_BLOCKS} (
             edinet_code VARCHAR NOT NULL,
-            fiscal_year VARCHAR NOT NULL,
-            business_overview VARCHAR NOT NULL,
-            risk_factors VARCHAR NOT NULL,
-            management_analysis VARCHAR NOT NULL
+            section VARCHAR NOT NULL,
+            text VARCHAR NOT NULL
         )
     """,
     TABLE_RANKINGS: f"""
@@ -696,7 +706,7 @@ class EdinetStorage:
             df,
             TABLE_TEXT_BLOCKS,
             if_exists="upsert",
-            key_columns=["edinet_code", "fiscal_year"],
+            key_columns=["edinet_code", "section"],
         )
         logger.info("Text blocks upserted", count=len(blocks))
 
