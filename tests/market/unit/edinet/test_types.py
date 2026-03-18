@@ -828,7 +828,7 @@ class TestRankingEntry:
             metric="roe",
             rank=1,
             edinet_code="E00001",
-            corp_name="テスト株式会社",
+            name="テスト株式会社",
             value=25.5,
         )
         with pytest.raises(FrozenInstanceError):
@@ -840,13 +840,13 @@ class TestRankingEntry:
             metric="roe",
             rank=1,
             edinet_code="E00001",
-            corp_name="テスト株式会社",
+            name="テスト株式会社",
             value=25.5,
         )
         assert entry.metric == "roe"
         assert entry.rank == 1
         assert entry.edinet_code == "E00001"
-        assert entry.corp_name == "テスト株式会社"
+        assert entry.name == "テスト株式会社"
         assert entry.value == 25.5
 
     def test_正常系_rankがint型でvalueがfloat型(self) -> None:
@@ -855,7 +855,7 @@ class TestRankingEntry:
             metric="eps",
             rank=100,
             edinet_code="E00002",
-            corp_name="別の会社",
+            name="別の会社",
             value=1500.0,
         )
         assert isinstance(entry.rank, int)

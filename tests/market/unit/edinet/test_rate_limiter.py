@@ -44,7 +44,7 @@ def limiter(state_path: Path) -> DailyRateLimiter:
     Returns
     -------
     DailyRateLimiter
-        Limiter with daily_limit=1000, safe_margin=50.
+        Limiter with daily_limit=100, safe_margin=5.
     """
     return DailyRateLimiter(state_path=state_path)
 
@@ -75,8 +75,8 @@ class TestDailyRateLimiterInit:
 
     def test_正常系_デフォルト値で初期化できること(self, state_path: Path) -> None:
         limiter = DailyRateLimiter(state_path=state_path)
-        assert limiter.daily_limit == 1000
-        assert limiter.safe_margin == 50
+        assert limiter.daily_limit == 100
+        assert limiter.safe_margin == 5
 
     def test_正常系_カスタム値で初期化できること(self, state_path: Path) -> None:
         limiter = DailyRateLimiter(
@@ -96,14 +96,14 @@ class TestDailyRateLimiterInit:
             encoding="utf-8",
         )
         limiter = DailyRateLimiter(state_path=state_path)
-        assert limiter.get_remaining() == 1000 - 50 - 42
+        assert limiter.get_remaining() == 100 - 5 - 42
 
     def test_正常系_状態ファイルが存在しない場合カウント0で初期化されること(
         self, state_path: Path
     ) -> None:
         assert not state_path.exists()
         limiter = DailyRateLimiter(state_path=state_path)
-        assert limiter.get_remaining() == 1000 - 50
+        assert limiter.get_remaining() == 100 - 5
 
 
 # ---------------------------------------------------------------------------
@@ -124,7 +124,7 @@ class TestRecordCall:
     ) -> None:
         for _ in range(5):
             limiter.record_call()
-        assert limiter.get_remaining() == 1000 - 50 - 5
+        assert limiter.get_remaining() == 100 - 5 - 5
 
     def test_正常系_flush後にJSONファイルに書き込まれること(
         self, limiter: DailyRateLimiter, state_path: Path
@@ -158,14 +158,14 @@ class TestGetRemaining:
     def test_正常系_初期状態でdaily_limitマイナスsafe_marginを返すこと(
         self, limiter: DailyRateLimiter
     ) -> None:
-        assert limiter.get_remaining() == 950
+        assert limiter.get_remaining() == 95
 
     def test_正常系_コール後に正しい残数を返すこと(
         self, limiter: DailyRateLimiter
     ) -> None:
         for _ in range(10):
             limiter.record_call()
-        assert limiter.get_remaining() == 940
+        assert limiter.get_remaining() == 85
 
     def test_正常系_カスタムlimitとmarginで正しく計算されること(
         self, state_path: Path
@@ -238,7 +238,7 @@ class TestResetIfNewDay:
         # Record some calls
         for _ in range(10):
             limiter.record_call()
-        assert limiter.get_remaining() == 940
+        assert limiter.get_remaining() == 85
 
         # Write state with yesterday's date
         state_path.write_text(
@@ -249,7 +249,7 @@ class TestResetIfNewDay:
         # Reload and reset
         limiter2 = DailyRateLimiter(state_path=state_path)
         limiter2.reset_if_new_day()
-        assert limiter2.get_remaining() == 950
+        assert limiter2.get_remaining() == 95
 
     def test_正常系_同日ではリセットされないこと(
         self, limiter: DailyRateLimiter
@@ -257,7 +257,7 @@ class TestResetIfNewDay:
         for _ in range(10):
             limiter.record_call()
         limiter.reset_if_new_day()
-        assert limiter.get_remaining() == 940
+        assert limiter.get_remaining() == 85
 
     def test_正常系_日付変更後にJSONファイルが更新されること(
         self, state_path: Path
@@ -305,7 +305,7 @@ class TestPersistence:
 
         # Create a new instance from the same state file
         limiter2 = DailyRateLimiter(state_path=state_path)
-        assert limiter2.get_remaining() == 1000 - 50 - 15
+        assert limiter2.get_remaining() == 100 - 5 - 15
 
     def test_正常系_JSONスキーマが正しいこと(
         self, limiter: DailyRateLimiter, state_path: Path
@@ -322,14 +322,14 @@ class TestPersistence:
     ) -> None:
         state_path.write_text("not valid json{{{", encoding="utf-8")
         limiter = DailyRateLimiter(state_path=state_path)
-        assert limiter.get_remaining() == 950
+        assert limiter.get_remaining() == 95
 
     def test_エッジケース_空のJSONファイルで新規初期化されること(
         self, state_path: Path
     ) -> None:
         state_path.write_text("", encoding="utf-8")
         limiter = DailyRateLimiter(state_path=state_path)
-        assert limiter.get_remaining() == 950
+        assert limiter.get_remaining() == 95
 
     def test_エッジケース_不完全なJSONスキーマで新規初期化されること(
         self, state_path: Path
@@ -339,7 +339,7 @@ class TestPersistence:
             encoding="utf-8",
         )
         limiter = DailyRateLimiter(state_path=state_path)
-        assert limiter.get_remaining() == 950
+        assert limiter.get_remaining() == 95
 
 
 # ---------------------------------------------------------------------------

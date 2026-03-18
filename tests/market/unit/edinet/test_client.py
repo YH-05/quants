@@ -686,7 +686,7 @@ class TestGetRanking:
                     "metric": "roe",
                     "rank": 1,
                     "edinet_code": "E00001",
-                    "corp_name": "テスト株式会社",
+                    "name": "テスト株式会社",
                     "value": 25.5,
                 }
             ]

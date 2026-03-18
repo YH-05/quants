@@ -332,6 +332,11 @@ def _run_resume(syncer: EdinetSyncer) -> int:
         print(
             f"  [{status_str}] {result.phase}: {result.companies_processed} processed"
         )
+        if result.errors:
+            for error in result.errors:
+                print(f"         Error: {error}")
+        if result.stopped_reason:
+            print(f"         Stopped: {result.stopped_reason}")
 
     return 0 if all(r.success for r in results) else 1
 

@@ -737,20 +737,24 @@ class EdinetSyncer:
                         total=len(remaining_codes),
                     )
 
-            except EdinetRateLimitError:
+            except EdinetRateLimitError as e:
                 logger.warning(
                     "Rate limit reached, saving checkpoint",
                     phase=phase,
                     processed=processed,
+                    reset_date=e.reset_date,
                 )
                 self._state = self._build_progress(phase, completed, errors)
                 self._save_state()
+                reason = "rate_limit"
+                if e.reset_date:
+                    reason = f"rate_limit (resets: {e.reset_date} midnight JST)"
                 return SyncResult(
                     phase=phase,
                     success=False,
                     companies_processed=processed,
-                    errors=tuple(errors),
-                    stopped_reason="rate_limit",
+                    errors=(e.message, *errors),
+                    stopped_reason=reason,
                 )
             except EdinetAPIError as e:
                 if e.status_code == 404:

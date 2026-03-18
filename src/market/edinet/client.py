@@ -76,6 +76,9 @@ logger = get_logger(__name__)
 # HTTP status codes that indicate rate limiting
 _RATE_LIMIT_STATUS_CODE = 429
 
+# Minimum backoff in seconds when API returns 429 without Retry-After header
+_RATE_LIMIT_MIN_BACKOFF = 30.0
+
 
 class EdinetClient:
     """Synchronous HTTP client for the EDINET DB API.
@@ -539,6 +542,8 @@ class EdinetClient:
         logger.debug("Getting ranking", metric=metric)
         raw = self._request("GET", f"/v1/rankings/{metric}")
         data = self._unwrap_response(raw)
+        for item in data:
+            item.setdefault("metric", metric)
         entries = [self._parse_record(RankingEntry, item) for item in data]
         logger.info("Ranking retrieved", metric=metric, count=len(entries))
         return entries
@@ -783,7 +788,13 @@ class EdinetClient:
             except _RetryableError as e:
                 last_error = e.cause
                 if attempt < self._retry_config.max_attempts - 1:
-                    delay = self._calculate_backoff_delay(attempt)
+                    # Use explicit retry_after (e.g. from 429 Retry-After
+                    # header) when available, otherwise exponential backoff.
+                    delay = (
+                        e.retry_after
+                        if e.retry_after is not None
+                        else self._calculate_backoff_delay(attempt)
+                    )
                     logger.warning(
                         "Request failed, retrying",
                         path=path,
@@ -886,17 +897,39 @@ class EdinetClient:
                 )
             )
 
-        # 429: rate limit error (not retried)
+        # 429: daily rate limit exhausted
         if status == _RATE_LIMIT_STATUS_CODE:
+            remaining = response.headers.get("x-ratelimit-remaining", "?")
+            limit = response.headers.get("x-ratelimit-limit", "?")
+            reset_date = response.headers.get("x-ratelimit-reset")
+
             logger.warning(
-                "Rate limit response from API",
+                "Daily rate limit exhausted",
                 path=path,
                 status_code=status,
+                ratelimit_limit=limit,
+                ratelimit_remaining=remaining,
+                ratelimit_reset=reset_date,
             )
+
+            # Parse limit/used for the exception
+            try:
+                limit_int = int(limit)
+            except (ValueError, TypeError):
+                limit_int = 0
+            try:
+                remaining_int = int(remaining)
+            except (ValueError, TypeError):
+                remaining_int = 0
+
             raise EdinetRateLimitError(
-                message=f"API rate limit exceeded: HTTP {status}",
-                calls_used=0,
-                calls_limit=0,
+                message=(
+                    f"Daily rate limit ({limit}) exceeded. "
+                    f"Resets at midnight JST ({reset_date})."
+                ),
+                calls_used=limit_int - remaining_int,
+                calls_limit=limit_int,
+                reset_date=reset_date,
             )
 
         # Other 4xx: client error (not retried)
@@ -998,11 +1031,17 @@ class _RetryableError(Exception):
     ----------
     cause : Exception
         The underlying exception that triggered the retry.
+    retry_after : float | None
+        Explicit delay in seconds before retrying (e.g. from
+        ``Retry-After`` header on HTTP 429 responses).
     """
 
-    def __init__(self, cause: Exception) -> None:
+    def __init__(
+        self, cause: Exception, retry_after: float | None = None
+    ) -> None:
         super().__init__(str(cause))
         self.cause = cause
+        self.retry_after = retry_after
 
 
 __all__ = ["EdinetClient"]

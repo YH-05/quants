@@ -624,18 +624,30 @@ class RankingEntry:
     Represents a single ranking entry for a specific financial metric.
     Data is returned by the ``GET /v1/rankings/{metric}`` endpoint.
 
+    The API response does not include ``metric`` (implied by URL path),
+    so it is injected by ``EdinetClient.get_ranking()``.
+
     Parameters
     ----------
     metric : str
         Ranking metric name (e.g. ``"roe"``, ``"eps"``).
+        Injected by client (not in API response).
     rank : int
         Rank position (1-based).
     edinet_code : str
         EDINET code of the company.
-    corp_name : str
+    name : str
         Company name in Japanese.
     value : float
         Metric value for this company.
+    sec_code : str | None
+        Securities code.
+    industry : str | None
+        Industry name.
+    fiscal_year : int | None
+        Fiscal year of the metric value.
+    unit : str | None
+        Unit of the metric value (e.g. ``"%"``, ``"円"``).
 
     Examples
     --------
@@ -643,7 +655,7 @@ class RankingEntry:
     ...     metric="roe",
     ...     rank=1,
     ...     edinet_code="E00001",
-    ...     corp_name="テスト株式会社",
+    ...     name="テスト株式会社",
     ...     value=25.5,
     ... )
     >>> entry.rank
@@ -653,8 +665,12 @@ class RankingEntry:
     metric: str
     rank: int
     edinet_code: str
-    corp_name: str
+    name: str
     value: float
+    sec_code: str | None = None
+    industry: str | None = None
+    fiscal_year: int | None = None
+    unit: str | None = None
 
 
 @dataclass(frozen=True)

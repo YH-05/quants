@@ -107,7 +107,7 @@ def mock_client() -> MagicMock:
             metric="roe",
             rank=1,
             edinet_code="E00001",
-            corp_name="テスト株式会社A",
+            name="テスト株式会社A",
             value=25.5,
         ),
     ]

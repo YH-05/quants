@@ -197,8 +197,12 @@ _TABLE_DDL: dict[str, str] = {
             metric VARCHAR NOT NULL,
             rank INTEGER NOT NULL,
             edinet_code VARCHAR NOT NULL,
-            corp_name VARCHAR NOT NULL,
-            value DOUBLE NOT NULL
+            name VARCHAR NOT NULL,
+            value DOUBLE NOT NULL,
+            sec_code VARCHAR,
+            industry VARCHAR,
+            fiscal_year INTEGER,
+            unit VARCHAR
         )
     """,
     TABLE_INDUSTRIES: f"""
@@ -210,7 +214,8 @@ _TABLE_DDL: dict[str, str] = {
     """,
     TABLE_INDUSTRY_DETAILS: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_INDUSTRY_DETAILS} (
-            slug VARCHAR NOT NULL
+            slug VARCHAR NOT NULL,
+            data VARCHAR NOT NULL
         )
     """,
 }
@@ -751,7 +756,11 @@ class EdinetStorage:
         logger.info("Industries upserted", count=len(industries))
 
     def upsert_industry_details(self, details_df: pd.DataFrame) -> None:
-        """Upsert detailed industry data from a DataFrame.
+        """Upsert detailed industry data as JSON.
+
+        Converts the full DataFrame row to a JSON string and stores it
+        in the ``data`` column. This handles the variable-width API
+        response (600+ columns) without requiring a fixed DDL.
 
         Parameters
         ----------
@@ -762,8 +771,15 @@ class EdinetStorage:
         if details_df.empty:
             logger.debug("No industry details to upsert, skipping")
             return
+        import json
+
+        rows: list[dict[str, str]] = []
+        for _, row in details_df.iterrows():
+            slug = row.get("slug", "")
+            rows.append({"slug": slug, "data": json.dumps(row.to_dict(), ensure_ascii=False, default=str)})
+        compact_df = pd.DataFrame(rows)
         self._client.store_df(
-            details_df,
+            compact_df,
             TABLE_INDUSTRY_DETAILS,
             if_exists="upsert",
             key_columns=["slug"],

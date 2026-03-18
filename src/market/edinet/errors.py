@@ -123,6 +123,9 @@ class EdinetRateLimitError(EdinetError):
         The number of API calls already consumed.
     calls_limit : int
         The maximum number of API calls allowed per day.
+    reset_date : str | None
+        Date when the rate limit resets (e.g. ``"2026-03-19"``),
+        from the ``x-ratelimit-reset`` response header.
 
     Attributes
     ----------
@@ -132,13 +135,16 @@ class EdinetRateLimitError(EdinetError):
         The number of API calls consumed.
     calls_limit : int
         The daily API call limit.
+    reset_date : str | None
+        Date when the rate limit resets.
 
     Examples
     --------
     >>> raise EdinetRateLimitError(
     ...     "Daily API limit exceeded",
-    ...     calls_used=1000,
-    ...     calls_limit=1000,
+    ...     calls_used=100,
+    ...     calls_limit=100,
+    ...     reset_date="2026-03-19",
     ... )
     """
 
@@ -147,10 +153,12 @@ class EdinetRateLimitError(EdinetError):
         message: str,
         calls_used: int,
         calls_limit: int,
+        reset_date: str | None = None,
     ) -> None:
         super().__init__(message)
         self.calls_used = calls_used
         self.calls_limit = calls_limit
+        self.reset_date = reset_date
 
 
 class EdinetValidationError(EdinetError):

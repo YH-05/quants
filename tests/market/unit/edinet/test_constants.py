@@ -69,15 +69,15 @@ class TestDatabasePathConstants:
 class TestRateLimitConstants:
     """レート制限定数のテスト。"""
 
-    def test_正常系_DAILY_RATE_LIMITが1000であること(self) -> None:
-        assert DAILY_RATE_LIMIT == 1000
+    def test_正常系_DAILY_RATE_LIMITが100であること(self) -> None:
+        assert DAILY_RATE_LIMIT == 100
 
     def test_正常系_DAILY_RATE_LIMITが正の整数であること(self) -> None:
         assert isinstance(DAILY_RATE_LIMIT, int)
         assert DAILY_RATE_LIMIT > 0
 
-    def test_正常系_SAFE_MARGINが50であること(self) -> None:
-        assert SAFE_MARGIN == 50
+    def test_正常系_SAFE_MARGINが5であること(self) -> None:
+        assert SAFE_MARGIN == 5
 
     def test_正常系_SAFE_MARGINが正の整数であること(self) -> None:
         assert isinstance(SAFE_MARGIN, int)
@@ -86,9 +86,9 @@ class TestRateLimitConstants:
     def test_正常系_SAFE_MARGINがDAILY_RATE_LIMITより小さいこと(self) -> None:
         assert SAFE_MARGIN < DAILY_RATE_LIMIT
 
-    def test_正常系_実効上限が950であること(self) -> None:
+    def test_正常系_実効上限が95であること(self) -> None:
         effective_limit = DAILY_RATE_LIMIT - SAFE_MARGIN
-        assert effective_limit == 950
+        assert effective_limit == 95
 
 
 class TestStateFileConstants:

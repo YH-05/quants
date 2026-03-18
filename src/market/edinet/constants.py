@@ -85,17 +85,17 @@ default database path. The resulting file is ``edinet.duckdb``.
 # 3. Rate limiting
 # ---------------------------------------------------------------------------
 
-DAILY_RATE_LIMIT: Final[int] = 1000
-"""Maximum number of API calls allowed per day (Pro plan).
+DAILY_RATE_LIMIT: Final[int] = 100
+"""Maximum number of API calls allowed per day (Free plan).
 
-The EDINET DB API Pro plan allows 1,000 requests per day.
-Free plan allows 100 requests/day, Business 10,000 requests/day.
+The EDINET DB API Free plan allows 100 requests per day.
+Pro plan allows 1,000 requests/day, Business 10,000 requests/day.
 """
 
-SAFE_MARGIN: Final[int] = 50
+SAFE_MARGIN: Final[int] = 5
 """Safety margin subtracted from the daily rate limit.
 
-The effective daily limit is ``DAILY_RATE_LIMIT - SAFE_MARGIN = 950``
+The effective daily limit is ``DAILY_RATE_LIMIT - SAFE_MARGIN = 95``
 calls per day. This margin prevents accidental overuse due to
 concurrent requests or counting discrepancies.
 """
