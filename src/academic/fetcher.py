@@ -32,7 +32,7 @@ academic.types : PaperMetadata, AcademicConfig データクラス
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Protocol
 
 from utils_core.logging import get_logger
 
@@ -50,6 +50,42 @@ from .types import (
 if TYPE_CHECKING:
     from market.cache.cache import SQLiteCache
 
+
+class S2ClientProtocol(Protocol):
+    """S2Client の DI 用 Protocol.
+
+    テスト時にモックを注入するために使用する。
+    """
+
+    def fetch_paper(self, arxiv_id: str) -> dict[str, Any]: ...
+
+    def fetch_papers_batch(self, arxiv_ids: list[str]) -> list[dict[str, Any]]: ...
+
+    def close(self) -> None: ...
+
+
+class ArxivClientProtocol(Protocol):
+    """ArxivClient の DI 用 Protocol.
+
+    テスト時にモックを注入するために使用する。
+    """
+
+    def fetch_paper(self, arxiv_id: str) -> PaperMetadata: ...
+
+    def close(self) -> None: ...
+
+
+class CacheProtocol(Protocol):
+    """キャッシュの DI 用 Protocol.
+
+    テスト時にモックを注入するために使用する。
+    """
+
+    def get(self, key: str) -> dict[str, Any] | None: ...
+
+    def set(self, key: str, value: dict[str, Any]) -> None: ...
+
+
 logger = get_logger(__name__)
 
 
@@ -61,12 +97,15 @@ class PaperFetcher:
 
     Parameters
     ----------
-    s2_client : S2Client | None
+    s2_client : S2ClientProtocol | None
         Semantic Scholar クライアント。None の場合はデフォルト設定で生成する。
-    arxiv_client : ArxivClient | None
+        テスト時はモックを注入可能。
+    arxiv_client : ArxivClientProtocol | None
         arXiv クライアント。None の場合はデフォルト設定で生成する。
-    cache : SQLiteCache | None
+        テスト時はモックを注入可能。
+    cache : CacheProtocol | None
         キャッシュインスタンス。None の場合はデフォルト設定で生成する。
+        テスト時はモックを注入可能。
     config : AcademicConfig | None
         API 設定。クライアント・キャッシュ生成時に使用する。
 
@@ -86,9 +125,9 @@ class PaperFetcher:
 
     def __init__(
         self,
-        s2_client: S2Client | Any | None = None,
-        arxiv_client: ArxivClient | Any | None = None,
-        cache: SQLiteCache | Any | None = None,
+        s2_client: S2ClientProtocol | None = None,
+        arxiv_client: ArxivClientProtocol | None = None,
+        cache: CacheProtocol | None = None,
         config: AcademicConfig | None = None,
     ) -> None:
         if config is None:

@@ -74,7 +74,9 @@ class TestS2ClientInit:
         """デフォルト AcademicConfig で S2Client を初期化できることを確認。"""
         client = S2Client()
         try:
-            assert client is not None
+            assert isinstance(client, S2Client)
+            assert hasattr(client, "_http_client")
+            assert hasattr(client, "_rate_limiter")
         finally:
             client.close()
 
@@ -87,7 +89,8 @@ class TestS2ClientInit:
         )
         client = S2Client(config=config)
         try:
-            assert client is not None
+            assert isinstance(client, S2Client)
+            assert client._api_key == "test-key"
         finally:
             client.close()
 
@@ -335,7 +338,7 @@ class TestS2ClientClose:
     def test_正常系_コンテキストマネージャで自動クローズされる(self) -> None:
         """with 文で S2Client を使用した場合、自動的に close されることを確認。"""
         with S2Client() as client:
-            assert client is not None
+            assert isinstance(client, S2Client)
             mock_close = MagicMock()
             client._http_client.close = mock_close
 

@@ -33,6 +33,9 @@ from typing import Any
 
 import httpx
 
+# AIDEV-NOTE: RateLimiter は edgar パッケージに実装されているが、汎用的なレート制限
+# ユーティリティとして academic でも再利用している。将来的に database パッケージ等の
+# 共通レイヤーに移動する可能性があるが、現時点では edgar に依存したまま維持する。
 from edgar.rate_limiter import RateLimiter
 from utils_core.logging import get_logger
 

@@ -32,6 +32,7 @@ market.jquants.cache : J-Quants キャッシュアダプタ（参考実装）
 
 from __future__ import annotations
 
+import functools
 from typing import TYPE_CHECKING, Final
 
 from market.cache.cache import SQLiteCache, create_persistent_cache
@@ -61,6 +62,7 @@ def get_academic_cache(config: AcademicConfig | None = None) -> SQLiteCache:
 
     market.cache.create_persistent_cache() のラッパーとして、
     academic パッケージ用にデフォルト設定された SQLiteCache を返す。
+    同一 TTL 設定の場合はシングルトンとしてキャッシュされたインスタンスを返す。
 
     Parameters
     ----------
@@ -85,6 +87,23 @@ def get_academic_cache(config: AcademicConfig | None = None) -> SQLiteCache:
     if config is not None:
         ttl = config.cache_ttl
 
+    return _get_academic_cache_singleton(ttl)
+
+
+@functools.lru_cache(maxsize=4)
+def _get_academic_cache_singleton(ttl: int) -> SQLiteCache:
+    """同一 TTL 設定の場合にキャッシュインスタンスをシングルトン化する.
+
+    Parameters
+    ----------
+    ttl : int
+        キャッシュの有効期間（秒）
+
+    Returns
+    -------
+    SQLiteCache
+        academic 用に設定されたキャッシュインスタンス
+    """
     cache = create_persistent_cache(
         db_path=ACADEMIC_CACHE_DB_PATH,
         ttl_seconds=ttl,

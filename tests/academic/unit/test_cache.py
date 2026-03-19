@@ -7,10 +7,13 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 from academic.cache import (
     ACADEMIC_CACHE_DB_PATH,
     ACADEMIC_CACHE_MAX_ENTRIES,
     ACADEMIC_CACHE_TTL,
+    _get_academic_cache_singleton,
     get_academic_cache,
     make_cache_key,
 )
@@ -48,6 +51,11 @@ class TestMakeCacheKey:
 
 class TestGetAcademicCache:
     """get_academic_cache() のテスト."""
+
+    @pytest.fixture(autouse=True)
+    def _clear_lru_cache(self) -> None:
+        """各テスト前に lru_cache をクリアし、テスト間の干渉を防ぐ."""
+        _get_academic_cache_singleton.cache_clear()
 
     @patch("academic.cache.create_persistent_cache")
     def test_正常系_デフォルト引数でcreate_persistent_cacheを呼ぶ(
@@ -102,3 +110,19 @@ class TestGetAcademicCache:
             ttl_seconds=ACADEMIC_CACHE_TTL,
             max_entries=ACADEMIC_CACHE_MAX_ENTRIES,
         )
+
+    @patch("academic.cache.create_persistent_cache")
+    def test_正常系_同一TTLで2回呼び出すとキャッシュヒットする(
+        self,
+        mock_create: MagicMock,
+    ) -> None:
+        """同一 TTL で2回呼び出した場合、create_persistent_cache は1回だけ呼ばれることを確認。"""
+        mock_cache = MagicMock()
+        mock_create.return_value = mock_cache
+
+        result1 = get_academic_cache()
+        result2 = get_academic_cache()
+
+        # lru_cache によりシングルトン化されているため1回のみ
+        mock_create.assert_called_once()
+        assert result1 is result2

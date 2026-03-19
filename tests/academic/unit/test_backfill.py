@@ -7,6 +7,7 @@ PaperFetcher で取得 → map_academic_papers で graph-queue JSON 変換 → �
 
 from __future__ import annotations
 
+import argparse
 import json
 from typing import TYPE_CHECKING, Any
 from unittest.mock import MagicMock, patch
@@ -111,8 +112,6 @@ class TestHandleBackfill:
         mock_fetcher.__exit__ = MagicMock(return_value=False)
 
         with patch("academic.fetcher.PaperFetcher", return_value=mock_fetcher):
-            import argparse
-
             args = argparse.Namespace(
                 ids_file=str(ids_file),
                 output_dir=str(output_dir),
@@ -148,8 +147,6 @@ class TestHandleBackfill:
         mock_fetcher.__exit__ = MagicMock(return_value=False)
 
         with patch("academic.fetcher.PaperFetcher", return_value=mock_fetcher):
-            import argparse
-
             args = argparse.Namespace(
                 ids_file=str(ids_file),
                 output_dir=str(output_dir),
@@ -192,8 +189,6 @@ class TestHandleBackfill:
                     "coauthored_with": [],
                 },
             }
-            import argparse
-
             args = argparse.Namespace(
                 ids_file=str(ids_file),
                 output_dir=str(output_dir),
@@ -207,8 +202,6 @@ class TestHandleBackfill:
 
     def test_異常系_IDファイルが存在しない場合エラーコード1(self) -> None:
         """存在しない IDs ファイルが指定された場合、エラーコード 1 を返すことを確認."""
-        import argparse
-
         args = argparse.Namespace(
             ids_file="/nonexistent/path/ids.txt",
             output_dir="/tmp/output",
@@ -221,8 +214,6 @@ class TestHandleBackfill:
         """IDs ファイルが空（有効な ID なし）の場合、エラーコード 1 を返すことを確認."""
         ids_file = tmp_path / "empty.txt"
         ids_file.write_text("# comments only\n\n  \n")
-
-        import argparse
 
         args = argparse.Namespace(
             ids_file=str(ids_file),
@@ -243,8 +234,6 @@ class TestHandleBackfill:
         mock_fetcher.__exit__ = MagicMock(return_value=False)
 
         with patch("academic.fetcher.PaperFetcher", return_value=mock_fetcher):
-            import argparse
-
             args = argparse.Namespace(
                 ids_file=str(ids_file),
                 output_dir=str(tmp_path / "output"),

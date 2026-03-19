@@ -159,7 +159,7 @@ class TestCreateRetryDecorator:
         """デフォルト引数でリトライデコレータを生成できることを確認。"""
         decorator = create_retry_decorator()
 
-        assert decorator is not None
+        assert callable(decorator)
 
     def test_正常系_カスタム引数でデコレータを生成できる(self) -> None:
         """カスタム引数でリトライデコレータを生成できることを確認。"""
@@ -167,7 +167,7 @@ class TestCreateRetryDecorator:
             max_attempts=5, base_wait=2.0, max_wait=120.0
         )
 
-        assert decorator is not None
+        assert callable(decorator)
 
     def test_正常系_デコレータが関数に適用できる(self) -> None:
         """デコレータを関数に適用できることを確認。"""

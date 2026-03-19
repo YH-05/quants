@@ -148,7 +148,7 @@ updated_at: 2026-03-07
 - `utils_core` → `dev/ca_strategy`
 - `factor` → `dev/ca_strategy`（SectorNeutralizer）
 - `news_scraper` (standalone、curl_cffi ベース)
-- `database`, `edgar`, `utils_core` → `academic`
+- `database`, `edgar`, `market`（cache のみ）, `utils_core` → `academic`
 
 ### コマンド → スキル → エージェント
 

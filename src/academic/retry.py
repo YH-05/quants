@@ -135,7 +135,7 @@ def classify_http_error(status_code: int, response: Any) -> AcademicError:
         )
     else:
         return PermanentError(
-            f"HTTP {status_code}",
+            f"HTTP {status_code} client error",
             status_code=status_code,
         )
 

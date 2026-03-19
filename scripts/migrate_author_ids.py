@@ -170,6 +170,10 @@ def execute_migration(
 ) -> int:
     """Execute the migration plan against Neo4j.
 
+    .. note::
+        AIDEV-NOTE: 現在は逐次実行（1ノードずつ session.run）している。
+        バッチ化（UNWIND を使った一括 Cypher）はスキーマ変更を伴うため別 Issue で対応する。
+
     Parameters
     ----------
     driver : neo4j.Driver

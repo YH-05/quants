@@ -113,7 +113,7 @@ class TestPaperFetcherInit:
             arxiv_client=mock_arxiv_client,
             cache=mock_cache,
         )
-        assert fetcher is not None
+        assert isinstance(fetcher, PaperFetcher)
 
     def test_正常系_デフォルト設定で初期化できる(self) -> None:
         """引数なしでデフォルト設定の PaperFetcher を初期化できることを確認。"""
@@ -127,7 +127,7 @@ class TestPaperFetcherInit:
             mock_cache_fn.return_value = MagicMock()
 
             fetcher = PaperFetcher()
-            assert fetcher is not None
+            assert isinstance(fetcher, PaperFetcher)
 
     def test_正常系_カスタムConfigで初期化できる(self) -> None:
         """AcademicConfig を渡して初期化できることを確認。"""
@@ -142,7 +142,7 @@ class TestPaperFetcherInit:
             mock_cache_fn.return_value = MagicMock()
 
             fetcher = PaperFetcher(config=config)
-            assert fetcher is not None
+            assert isinstance(fetcher, PaperFetcher)
             mock_s2_cls.assert_called_once_with(config=config)
             mock_arxiv_cls.assert_called_once_with(config=config)
             mock_cache_fn.assert_called_once_with(config=config)

@@ -33,6 +33,11 @@ from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 
+# Maximum number of authors per paper for COAUTHORED_WITH generation.
+# Papers with more authors than this threshold skip COAUTHORED_WITH relations
+# to prevent O(n^2) combinatorial explosion (e.g. 100 authors = 4950 pairs).
+MAX_COAUTHOR_COUNT = 50
+
 
 def map_academic_papers(data: dict[str, Any]) -> dict[str, Any]:
     """Map academic papers to graph-queue format.
@@ -73,6 +78,9 @@ def map_academic_papers(data: dict[str, Any]) -> dict[str, Any]:
 
     # Track coauthor pairs for COAUTHORED_WITH
     coauthor_pairs: dict[tuple[str, str], _CoauthorInfo] = {}
+
+    # Cache for reference source ID computation to avoid redundant hashing
+    ref_source_id_cache: dict[str, str] = {}
 
     for paper in papers:
         arxiv_id = paper.get("arxiv_id", "")
@@ -141,8 +149,13 @@ def map_academic_papers(data: dict[str, Any]) -> dict[str, Any]:
             if not ref_arxiv_id:
                 continue
 
-            ref_url = f"https://arxiv.org/abs/{ref_arxiv_id}"
-            ref_source_id = generate_source_id(ref_url)
+            # Use cached source ID to avoid redundant hashing
+            if ref_arxiv_id in ref_source_id_cache:
+                ref_source_id = ref_source_id_cache[ref_arxiv_id]
+            else:
+                ref_url = f"https://arxiv.org/abs/{ref_arxiv_id}"
+                ref_source_id = generate_source_id(ref_url)
+                ref_source_id_cache[ref_arxiv_id] = ref_source_id
 
             if ref_source_id in existing_set or ref_source_id in generated_source_ids:
                 queue["relations"]["cites"].append(
@@ -153,7 +166,16 @@ def map_academic_papers(data: dict[str, Any]) -> dict[str, Any]:
                 )
 
         # COAUTHORED_WITH: pairs of authors in this paper
+        # Skip papers with too many authors to avoid O(n^2) pair explosion
         unique_author_ids = list(dict.fromkeys(paper_author_ids))
+        if len(unique_author_ids) > MAX_COAUTHOR_COUNT:
+            logger.warning(
+                "Skipping COAUTHORED_WITH for paper with too many authors",
+                arxiv_id=arxiv_id,
+                author_count=len(unique_author_ids),
+                max_allowed=MAX_COAUTHOR_COUNT,
+            )
+            unique_author_ids = []
         for a_id, b_id in combinations(unique_author_ids, 2):
             pair_key = (min(a_id, b_id), max(a_id, b_id))
             if pair_key not in coauthor_pairs:

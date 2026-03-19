@@ -7,6 +7,7 @@ httpx.Client はモックし、feedparser による Atom XML パース・
 
 from __future__ import annotations
 
+from typing import Any
 from unittest.mock import MagicMock, patch
 
 import httpx
@@ -78,7 +79,9 @@ class TestArxivClientInit:
         """デフォルト AcademicConfig で ArxivClient を初期化できることを確認。"""
         client = ArxivClient()
         try:
-            assert client is not None
+            assert isinstance(client, ArxivClient)
+            assert hasattr(client, "_http_client")
+            assert hasattr(client, "_rate_limiter")
         finally:
             client.close()
 
@@ -87,14 +90,14 @@ class TestArxivClientInit:
         config = AcademicConfig(arxiv_rate_limit=5, timeout=60.0)
         client = ArxivClient(config=config)
         try:
-            assert client is not None
+            assert isinstance(client, ArxivClient)
         finally:
             client.close()
 
     def test_正常系_コンテキストマネージャで使用できる(self) -> None:
         """with 文で ArxivClient を使用した場合、自動的にcloseされることを確認。"""
         with ArxivClient() as client:
-            assert client is not None
+            assert isinstance(client, ArxivClient)
             mock_close = MagicMock()
             client._http_client.close = mock_close
 
@@ -226,15 +229,71 @@ class TestArxivClientRateLimiter:
         finally:
             client.close()
 
+    def test_正常系_bozo_trueでentriesありならパース成功(self) -> None:
+        """feedparser.bozo=True でも entries がある場合はパースを続行する。"""
+        import feedparser as fp
+
+        mock_response = _make_response(status_code=200, text=_SAMPLE_ATOM_XML)
+
+        # feedparser.parse を bozo=True + entries あり でモック
+        original_parse = fp.parse
+
+        def bozo_parse_with_entries(text: str) -> Any:
+            result = original_parse(text)
+            result["bozo"] = True
+            result["bozo_exception"] = "CharacterEncodingOverride"
+            return result
+
+        client = ArxivClient()
+        try:
+            with (
+                patch.object(client._http_client, "get", return_value=mock_response),
+                patch("academic.arxiv_client.feedparser") as mock_fp,
+            ):
+                mock_fp.parse = bozo_parse_with_entries
+                result = client.fetch_paper("2301.00001")
+
+            # entries があるので正常にパースされる
+            assert isinstance(result, PaperMetadata)
+            assert result.arxiv_id == "2301.00001"
+        finally:
+            client.close()
+
+    def test_異常系_bozo_trueでentries空ならParseError(self) -> None:
+        """feedparser.bozo=True で entries が空の場合は ParseError が送出される。"""
+        import feedparser as fp
+
+        mock_response = _make_response(status_code=200, text=_EMPTY_FEED_XML)
+
+        original_parse = fp.parse
+
+        def bozo_parse_no_entries(text: str) -> Any:
+            result = original_parse(text)
+            result["bozo"] = True
+            result["bozo_exception"] = "CharacterEncodingOverride"
+            # entries を空にする
+            result["entries"] = []
+            return result
+
+        client = ArxivClient()
+        try:
+            with (
+                patch.object(client._http_client, "get", return_value=mock_response),
+                patch("academic.arxiv_client.feedparser") as mock_fp,
+            ):
+                mock_fp.parse = bozo_parse_no_entries
+                with pytest.raises(ParseError, match="パースに失敗"):
+                    client.fetch_paper("2301.00001")
+        finally:
+            client.close()
+
     def test_正常系_レート制限がarxiv_rate_limitに基づく(self) -> None:
         """arxiv_rate_limit=3 の場合、RateLimiter(3 req/sec) が設定されることを確認。"""
         config = AcademicConfig(arxiv_rate_limit=3)
         client = ArxivClient(config=config)
         try:
-            # arxiv_rate_limit=3 → 1/3秒間隔 → max_requests_per_second は
-            # int(1.0/3) = 0 なので max(1, 0) = 1 にクランプされるか、
-            # または直接 3 をそのまま使うか（実装依存）
-            # いずれにせよ RateLimiter が初期化されていることを確認
-            assert client._rate_limiter is not None
+            # arxiv_rate_limit=3 → max(1, int(3)) = 3 → 3 req/sec
+            # RateLimiter が正しく初期化されていることを確認
+            assert hasattr(client._rate_limiter, "acquire")
         finally:
             client.close()

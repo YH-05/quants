@@ -163,7 +163,7 @@ class AcademicConfig:
     --------
     >>> config = AcademicConfig()
     >>> config.s2_rate_limit
-    1
+    1.0
     >>> config.cache_ttl
     604800
 
@@ -176,8 +176,8 @@ class AcademicConfig:
     """
 
     s2_api_key: str | None = None
-    s2_rate_limit: float = 1
-    arxiv_rate_limit: float = 3
+    s2_rate_limit: float = 1.0
+    arxiv_rate_limit: float = 3.0
     cache_ttl: int = 604800
     max_retries: int = 3
     timeout: float = 30.0

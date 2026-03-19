@@ -39,6 +39,9 @@ from typing import Any
 import feedparser
 import httpx
 
+# AIDEV-NOTE: RateLimiter は edgar パッケージに実装されているが、汎用的なレート制限
+# ユーティリティとして academic でも再利用している。将来的に database パッケージ等の
+# 共通レイヤーに移動する可能性があるが、現時点では edgar に依存したまま維持する。
 from edgar.rate_limiter import RateLimiter
 from utils_core.logging import get_logger
 
@@ -185,6 +188,10 @@ class ArxivClient:
 def _parse_atom_response(text: str, arxiv_id: str) -> PaperMetadata:
     """arXiv Atom XML レスポンスをパースして PaperMetadata に変換する.
 
+    feedparser でエントリのメタデータを取得し、ElementTree で著者情報
+    （arxiv:affiliation を含む）を抽出する。XML パースは ET.fromstring() で
+    1回のみ行い、feedparser と ET の結果を統合する。
+
     Parameters
     ----------
     text : str
@@ -204,6 +211,19 @@ def _parse_atom_response(text: str, arxiv_id: str) -> PaperMetadata:
     ParseError
         XML パースに失敗した場合
     """
+    # AIDEV-NOTE: feedparser と ET の2段階パースを統合。
+    # ET.fromstring() で1回だけ XML をパースし、feedparser の結果と合わせて
+    # PaperMetadata を構築する。feedparser は entry の title / summary /
+    # published / updated 等を安全に抽出するために使用し、ET は
+    # arxiv:affiliation を含む著者情報の抽出に使用する。
+
+    # 1. ET で XML をパース（1回のみ）
+    try:
+        root = ET.fromstring(text)
+    except ET.ParseError as exc:
+        raise ParseError(f"arXiv Atom フィードのパースに失敗しました: {exc}") from exc
+
+    # 2. feedparser でエントリメタデータを取得
     try:
         feed = feedparser.parse(text)
     except Exception as exc:
@@ -222,9 +242,8 @@ def _parse_atom_response(text: str, arxiv_id: str) -> PaperMetadata:
 
     entry = feed.entries[0]
 
-    # 著者抽出: feedparser は arxiv:affiliation を per-author で保持しないため
-    # ElementTree で直接パースする
-    authors = _extract_authors_from_xml(text)
+    # 3. 著者抽出: ET の既にパース済み root を再利用
+    authors = _extract_authors_from_root(root)
 
     return _entry_to_paper_metadata(entry, arxiv_id, authors)
 
@@ -278,16 +297,16 @@ def _entry_to_paper_metadata(
     )
 
 
-def _extract_authors_from_xml(text: str) -> list[AuthorInfo]:
-    """XML から著者情報（名前 + アフィリエーション）を抽出する.
+def _extract_authors_from_root(root: ET.Element) -> list[AuthorInfo]:
+    """パース済み XML ルートから著者情報（名前 + アフィリエーション）を抽出する.
 
     feedparser は arxiv:affiliation を per-author で保持しないため、
-    xml.etree.ElementTree を使用して直接パースする。
+    xml.etree.ElementTree でパース済みのルート要素から直接抽出する。
 
     Parameters
     ----------
-    text : str
-        arXiv API の Atom XML レスポンス本文
+    root : ET.Element
+        ET.fromstring() でパース済みの XML ルート要素
 
     Returns
     -------
@@ -300,12 +319,6 @@ def _extract_authors_from_xml(text: str) -> list[AuthorInfo]:
     }
 
     authors: list[AuthorInfo] = []
-
-    try:
-        root = ET.fromstring(text)
-    except ET.ParseError:
-        logger.debug("XML parse failed for author extraction, returning empty list")
-        return authors
 
     # entry 要素内の author 要素を走査
     for entry_elem in root.findall("atom:entry", ns):
