@@ -177,11 +177,7 @@ class TestHistoricalCacheInit:
         """デフォルトのベースパスで初期化できることを確認。"""
         cache = HistoricalCache()
 
-        # テストファイルからプロジェクトルートへの相対パスを計算
-        # tests/market/unit/fred/test_historical_cache.py -> finance/
-        expected_path = (
-            Path(__file__).parents[4] / "data" / "raw" / "fred" / "indicators"
-        )
+        expected_path = get_default_cache_path()
         assert cache.base_path == expected_path
 
     def test_正常系_カスタムパスで初期化(
