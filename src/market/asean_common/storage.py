@@ -35,6 +35,7 @@ from typing import TYPE_CHECKING
 
 import pandas as pd
 
+from market.asean_common._utils import _coerce_optional_int, _coerce_optional_str
 from market.asean_common.constants import TABLE_TICKERS, AseanMarket
 from market.asean_common.types import TickerRecord
 from utils_core.logging import get_logger
@@ -43,30 +44,6 @@ if TYPE_CHECKING:
     from database.db.duckdb_client import DuckDBClient
 
 logger = get_logger(__name__)
-
-
-# ============================================================================
-# Helper functions
-# ============================================================================
-
-
-def _is_nan(value: object) -> bool:
-    """Check if a value is NaN (float or numpy NaN).
-
-    Parameters
-    ----------
-    value : object
-        Value to check.
-
-    Returns
-    -------
-    bool
-        True if the value is NaN, False otherwise.
-    """
-    try:
-        return bool(pd.isna(value))
-    except (ValueError, TypeError):
-        return False
 
 
 # ============================================================================
@@ -307,31 +284,19 @@ class AseanTickerStorage:
             List of TickerRecord instances.
         """
         records: list[TickerRecord] = []
-        for _, row in df.iterrows():
-            market = AseanMarket(str(row["market"]))
-            sector_val = row["sector"]
-            industry_val = row["industry"]
-            cap_val = row["market_cap"]
-            currency_val = row["currency"]
+        for row_dict in df.to_dict(orient="records"):
+            market = AseanMarket(str(row_dict["market"]))
             records.append(
                 TickerRecord(
-                    ticker=str(row["ticker"]),
-                    name=str(row["name"]),
+                    ticker=str(row_dict["ticker"]),
+                    name=str(row_dict["name"]),
                     market=market,
-                    yfinance_suffix=str(row["yfinance_suffix"]),
-                    sector=str(sector_val)
-                    if sector_val is not None and not _is_nan(sector_val)
-                    else None,
-                    industry=str(industry_val)
-                    if industry_val is not None and not _is_nan(industry_val)
-                    else None,
-                    market_cap=int(cap_val)
-                    if cap_val is not None and not _is_nan(cap_val)
-                    else None,
-                    currency=str(currency_val)
-                    if currency_val is not None and not _is_nan(currency_val)
-                    else None,
-                    is_active=bool(row["is_active"]),
+                    yfinance_suffix=str(row_dict["yfinance_suffix"]),
+                    sector=_coerce_optional_str(row_dict["sector"]),
+                    industry=_coerce_optional_str(row_dict["industry"]),
+                    market_cap=_coerce_optional_int(row_dict["market_cap"]),
+                    currency=_coerce_optional_str(row_dict["currency"]),
+                    is_active=bool(row_dict["is_active"]),
                 )
             )
         return records

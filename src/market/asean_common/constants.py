@@ -144,7 +144,7 @@ Examples
 """
 
 # ---------------------------------------------------------------------------
-# 6. DuckDB table name
+# 5. DuckDB table name
 # ---------------------------------------------------------------------------
 
 TABLE_TICKERS: Final[str] = "asean_tickers"
@@ -155,7 +155,7 @@ Stores all ASEAN exchange-listed tickers with metadata
 """
 
 # ---------------------------------------------------------------------------
-# 7. DuckDB database path
+# 6. DuckDB database path
 # ---------------------------------------------------------------------------
 
 DB_PATH: Final[str] = "data/processed/asean.duckdb"

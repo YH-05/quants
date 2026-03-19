@@ -215,7 +215,10 @@ class TestFetchTickersFromScreener:
         ):
             from market.asean_common.screener import fetch_tickers_from_screener
 
-            with pytest.raises(AseanScreenerError, match="API connection failed"):
+            with pytest.raises(
+                AseanScreenerError,
+                match="Failed to fetch tickers from screener for SGX",
+            ):
                 fetch_tickers_from_screener(AseanMarket.SGX)
 
     def test_正常系_空のDataFrameで空リストを返す(self) -> None:

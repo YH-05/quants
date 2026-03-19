@@ -36,10 +36,13 @@ market.asean_common.errors : AseanScreenerError exception.
 
 from __future__ import annotations
 
-import math
-
 import pandas as pd
 
+from market.asean_common._utils import (
+    _coerce_optional_int,
+    _coerce_optional_str,
+    _is_nan,
+)
 from market.asean_common.constants import (
     SCREENER_MARKET_MAP,
     YFINANCE_SUFFIX_MAP,
@@ -78,29 +81,6 @@ _MAX_RESULTS: int = 5000
 # ============================================================================
 # Internal helpers
 # ============================================================================
-
-
-def _is_nan(value: object) -> bool:
-    """Check if a value is NaN (float or numpy NaN).
-
-    Parameters
-    ----------
-    value : object
-        Value to check.
-
-    Returns
-    -------
-    bool
-        True if the value is NaN, False otherwise.
-    """
-    if value is None:
-        return False
-    try:
-        if isinstance(value, float) and math.isnan(value):
-            return True
-        return bool(pd.isna(value))
-    except (ValueError, TypeError):
-        return False
 
 
 def _extract_ticker_symbol(raw_ticker: str) -> str:
@@ -185,33 +165,25 @@ def _df_to_ticker_records(
     yf_suffix = YFINANCE_SUFFIX_MAP[market]
     records: list[TickerRecord] = []
 
-    for _, row in df.iterrows():
-        raw_ticker = str(row["ticker"])
+    for row_dict in df.to_dict(orient="records"):
+        raw_ticker = str(row_dict["ticker"])
         symbol = _extract_ticker_symbol(raw_ticker)
-
-        sector_val = row.get("sector")
-        industry_val = row.get("industry")
-        cap_val = row.get("market_cap_basic")
-        currency_val = row.get("currency")
+        # Use actual name from TradingView if available, fallback to symbol
+        name_val = row_dict.get("name")
+        name = (
+            str(name_val) if name_val is not None and not _is_nan(name_val) else symbol
+        )
 
         records.append(
             TickerRecord(
                 ticker=symbol,
-                name=symbol,
+                name=name,
                 market=market,
                 yfinance_suffix=yf_suffix,
-                sector=str(sector_val)
-                if sector_val is not None and not _is_nan(sector_val)
-                else None,
-                industry=str(industry_val)
-                if industry_val is not None and not _is_nan(industry_val)
-                else None,
-                market_cap=int(cap_val)
-                if cap_val is not None and not _is_nan(cap_val)
-                else None,
-                currency=str(currency_val)
-                if currency_val is not None and not _is_nan(currency_val)
-                else None,
+                sector=_coerce_optional_str(row_dict.get("sector")),
+                industry=_coerce_optional_str(row_dict.get("industry")),
+                market_cap=_coerce_optional_int(row_dict.get("market_cap_basic")),
+                currency=_coerce_optional_str(row_dict.get("currency")),
             )
         )
 
@@ -268,9 +240,9 @@ def fetch_tickers_from_screener(market: AseanMarket) -> list[TickerRecord]:
         )
         return []
     except Exception as exc:
-        msg = f"Failed to fetch tickers from screener for {market.value}: {exc}"
-        logger.error(msg)
-        raise AseanScreenerError(msg) from exc
+        safe_msg = f"Failed to fetch tickers from screener for {market.value}"
+        logger.error(safe_msg, error=str(exc), exc_info=True)
+        raise AseanScreenerError(safe_msg) from exc
 
     if df.empty:
         logger.info("No tickers found from screener", market=market.value)
@@ -289,8 +261,9 @@ def fetch_tickers_from_screener(market: AseanMarket) -> list[TickerRecord]:
 def fetch_all_asean_tickers() -> dict[AseanMarket, list[TickerRecord]]:
     """Fetch tickers for all 6 ASEAN markets via tradingview-screener.
 
-    Iterates over all ``AseanMarket`` members and calls
-    ``fetch_tickers_from_screener`` for each one.
+    Queries TradingView scanner API concurrently for all ASEAN exchanges
+    using a thread pool. Each market is fetched in parallel for improved
+    performance (estimated 4-6x speedup over sequential execution).
 
     Returns
     -------
@@ -306,11 +279,19 @@ def fetch_all_asean_tickers() -> dict[AseanMarket, list[TickerRecord]]:
     >>> all(isinstance(k, AseanMarket) for k in result)
     True
     """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     logger.info("Fetching tickers for all ASEAN markets")
     result: dict[AseanMarket, list[TickerRecord]] = {}
 
-    for market in AseanMarket:
-        result[market] = fetch_tickers_from_screener(market)
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        futures = {
+            executor.submit(fetch_tickers_from_screener, market): market
+            for market in AseanMarket
+        }
+        for future in as_completed(futures):
+            market = futures[future]
+            result[market] = future.result()
 
     total = sum(len(v) for v in result.values())
     logger.info(

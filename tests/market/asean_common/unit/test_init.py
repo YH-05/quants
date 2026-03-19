@@ -18,6 +18,8 @@ Test TODO List:
 
 from __future__ import annotations
 
+from enum import Enum
+
 
 class TestAseanCommonPackageExports:
     """Test that market.asean_common re-exports all public API symbols."""
@@ -25,72 +27,73 @@ class TestAseanCommonPackageExports:
     def test_正常系_AseanMarketがインポート可能(self) -> None:
         from market.asean_common import AseanMarket
 
-        assert AseanMarket is not None
+        assert issubclass(AseanMarket, Enum)
+        assert issubclass(AseanMarket, str)
 
     def test_正常系_TickerRecordがインポート可能(self) -> None:
         from market.asean_common import TickerRecord
 
-        assert TickerRecord is not None
+        assert isinstance(TickerRecord, type)
 
     def test_正常系_AseanTickerStorageがインポート可能(self) -> None:
         from market.asean_common import AseanTickerStorage
 
-        assert AseanTickerStorage is not None
+        assert isinstance(AseanTickerStorage, type)
 
     def test_正常系_AseanErrorがインポート可能(self) -> None:
         from market.asean_common import AseanError
 
-        assert AseanError is not None
+        assert issubclass(AseanError, Exception)
 
     def test_正常系_AseanStorageErrorがインポート可能(self) -> None:
         from market.asean_common import AseanStorageError
 
-        assert AseanStorageError is not None
+        assert issubclass(AseanStorageError, Exception)
 
     def test_正常系_AseanScreenerErrorがインポート可能(self) -> None:
         from market.asean_common import AseanScreenerError
 
-        assert AseanScreenerError is not None
+        assert issubclass(AseanScreenerError, Exception)
 
     def test_正常系_AseanLookupErrorがインポート可能(self) -> None:
         from market.asean_common import AseanLookupError
 
-        assert AseanLookupError is not None
+        assert issubclass(AseanLookupError, Exception)
 
     def test_正常系_fetch_tickers_from_screenerがインポート可能(self) -> None:
         from market.asean_common import fetch_tickers_from_screener
 
-        assert fetch_tickers_from_screener is not None
+        assert callable(fetch_tickers_from_screener)
 
     def test_正常系_fetch_all_asean_tickersがインポート可能(self) -> None:
         from market.asean_common import fetch_all_asean_tickers
 
-        assert fetch_all_asean_tickers is not None
+        assert callable(fetch_all_asean_tickers)
 
     def test_正常系_YFINANCE_SUFFIX_MAPがインポート可能(self) -> None:
         from market.asean_common import YFINANCE_SUFFIX_MAP
 
-        assert YFINANCE_SUFFIX_MAP is not None
+        assert isinstance(YFINANCE_SUFFIX_MAP, dict)
 
     def test_正常系_SCREENER_EXCHANGE_MAPがインポート可能(self) -> None:
         from market.asean_common import SCREENER_EXCHANGE_MAP
 
-        assert SCREENER_EXCHANGE_MAP is not None
+        assert isinstance(SCREENER_EXCHANGE_MAP, dict)
 
     def test_正常系_SCREENER_MARKET_MAPがインポート可能(self) -> None:
         from market.asean_common import SCREENER_MARKET_MAP
 
-        assert SCREENER_MARKET_MAP is not None
+        assert isinstance(SCREENER_MARKET_MAP, dict)
 
     def test_正常系_TABLE_TICKERSがインポート可能(self) -> None:
         from market.asean_common import TABLE_TICKERS
 
-        assert TABLE_TICKERS is not None
+        assert isinstance(TABLE_TICKERS, str)
 
     def test_正常系_DB_PATHがインポート可能(self) -> None:
         from market.asean_common import DB_PATH
 
-        assert DB_PATH is not None
+        assert isinstance(DB_PATH, str)
 
     def test_正常系___all__が定義されている(self) -> None:
         import market.asean_common as asean_mod
