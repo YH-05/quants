@@ -51,7 +51,8 @@ class TestBloombergError:
 
         error = BloombergError("Test error")
         assert error.message == "Test error"
-        assert str(error) == "Test error"
+        # AIDEV-NOTE: MarketError.__str__ はエラーコードプレフィックスを付与する
+        assert "Test error" in str(error)
 
     def test_正常系_エラーコード付きで初期化(self) -> None:
         """BloombergError がエラーコード付きで初期化されることを確認。"""
