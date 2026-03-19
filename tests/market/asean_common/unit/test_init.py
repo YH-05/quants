@@ -91,9 +91,11 @@ class TestAseanCommonPackageExports:
         assert isinstance(TABLE_TICKERS, str)
 
     def test_正常系_DB_PATHがインポート可能(self) -> None:
+        from pathlib import Path
+
         from market.asean_common import DB_PATH
 
-        assert isinstance(DB_PATH, str)
+        assert isinstance(DB_PATH, Path)
 
     def test_正常系___all__が定義されている(self) -> None:
         import market.asean_common as asean_mod

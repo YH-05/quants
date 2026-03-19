@@ -11,7 +11,7 @@ Test TODO List:
 - [x] SCREENER_EXCHANGE_MAP: all 6 markets mapped to screener names
 - [x] SCREENER_MARKET_MAP: all 6 markets mapped to screener market names
 - [x] TABLE_TICKERS: non-empty string
-- [x] DB_PATH: non-empty string with correct format
+- [x] DB_PATH: absolute Path with correct format
 - [x] Final annotations: all non-enum constants annotated with typing.Final
 """
 
@@ -277,21 +277,28 @@ class TestTableTickers:
 class TestDBPath:
     """Test DB_PATH constant."""
 
-    def test_正常系_strである(self) -> None:
-        """DB_PATH が str であること。"""
-        assert isinstance(DB_PATH, str)
+    def test_正常系_Pathである(self) -> None:
+        """DB_PATH が Path であること。"""
+        from pathlib import Path
 
-    def test_正常系_空でない(self) -> None:
-        """DB_PATH が空文字列でないこと。"""
-        assert len(DB_PATH.strip()) > 0
+        assert isinstance(DB_PATH, Path)
+
+    def test_正常系_絶対パスである(self) -> None:
+        """DB_PATH が絶対パスであること。"""
+        assert DB_PATH.is_absolute()
 
     def test_正常系_data_processedを含む(self) -> None:
         """DB_PATH が data/processed パスを含むこと。"""
-        assert "data/processed" in DB_PATH
+        assert "data" in DB_PATH.parts
+        assert "processed" in DB_PATH.parts
 
     def test_正常系_duckdb拡張子を含む(self) -> None:
         """DB_PATH が .duckdb 拡張子を含むこと。"""
-        assert DB_PATH.endswith(".duckdb")
+        assert DB_PATH.suffix == ".duckdb"
+
+    def test_正常系_aseanデータベースファイル名(self) -> None:
+        """DB_PATH のファイル名が asean.duckdb であること。"""
+        assert DB_PATH.name == "asean.duckdb"
 
 
 # =============================================================================

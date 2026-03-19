@@ -21,6 +21,7 @@ market.bse.constants : Similar constant pattern used by the BSE module.
 """
 
 from enum import Enum
+from pathlib import Path
 from typing import Final
 
 # ---------------------------------------------------------------------------
@@ -158,10 +159,18 @@ Stores all ASEAN exchange-listed tickers with metadata
 # 6. DuckDB database path
 # ---------------------------------------------------------------------------
 
-DB_PATH: Final[str] = "data/processed/asean.duckdb"
-"""Path to the ASEAN DuckDB database file.
+_PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent.parent.parent
+"""Project root directory resolved from this file's location.
 
-Follows the project convention of ``data/processed/<domain>.duckdb``.
+constants.py -> asean_common/ -> market/ -> src/ -> project root.
+"""
+
+DB_PATH: Final[Path] = _PROJECT_ROOT / "data" / "processed" / "asean.duckdb"
+"""Absolute path to the ASEAN DuckDB database file.
+
+Resolved from the project root so the path is stable regardless of
+the current working directory. Follows the project convention of
+``data/processed/<domain>.duckdb``.
 """
 
 # ---------------------------------------------------------------------------
