@@ -23,6 +23,7 @@ from .errors import (
     RetryableError,
 )
 from .fetcher import PaperFetcher
+from .mapper import map_academic_papers
 from .retry import classify_http_error, create_retry_decorator
 from .s2_client import S2Client
 from .types import AcademicConfig, AuthorInfo, CitationInfo, PaperMetadata
@@ -35,6 +36,7 @@ __all__ = [
     "CitationInfo",
     "PaperFetcher",
     "PaperMetadata",
+    "map_academic_papers",
     "PaperNotFoundError",
     "ParseError",
     "PermanentError",
