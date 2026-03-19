@@ -5,6 +5,26 @@ This module provides the ``AseanTickerStorage`` class that manages the
 data. It follows the same patterns as ``market.edinet.storage``, using
 ``DuckDBClient`` for all database operations.
 
+Why DuckDB
+----------
+DuckDB was chosen over SQLite for the following reasons:
+
+1. **Columnar storage for analytical queries** -- Ticker master data will
+   be JOINed with OHLCV price series for quantitative screening and
+   factor analysis. DuckDB's columnar engine executes these analytical
+   aggregations (GROUP BY market/sector, window functions) faster than
+   SQLite's row-oriented storage.
+2. **Native pandas / DataFrame integration** -- ``DuckDBClient`` exchanges
+   data via ``pd.DataFrame`` (``query_df``, ``store_df``). DuckDB reads
+   and writes DataFrames with zero-copy where possible, eliminating the
+   serialisation overhead that SQLite would require.
+3. **Parquet interoperability** -- OHLCV data is stored as Parquet files.
+   DuckDB can query Parquet directly and JOIN it with in-database ticker
+   tables without a separate ETL step.
+4. **Project convention** -- All analytical storage in this repository
+   follows the ``data/processed/<domain>.duckdb`` pattern (see also
+   ``market.edinet.storage``), keeping the toolchain consistent.
+
 Tables managed
 --------------
 - ``asean_tickers`` -- Ticker master for all 6 ASEAN exchanges
@@ -99,6 +119,13 @@ class AseanTickerStorage:
     Manages the ``asean_tickers`` DuckDB table and provides
     upsert/query methods for ticker data. Uses ``DuckDBClient``
     injected via constructor for all database operations.
+
+    DuckDB is chosen because ticker master data is JOINed with
+    OHLCV price series for analytical queries (screening, factor
+    analysis). Its columnar engine, native DataFrame I/O, and
+    direct Parquet query capability make it a better fit than
+    SQLite for this analytical workload. See the module docstring
+    for the full rationale.
 
     Parameters
     ----------
