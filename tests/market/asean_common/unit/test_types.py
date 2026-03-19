@@ -1,11 +1,13 @@
 """Tests for market.asean_common.types module.
 
-Tests verify the TickerRecord frozen dataclass definition,
-including field types, frozen behaviour, __post_init__ auto-generation
-of yfinance_ticker, and module exports.
+Tests verify the ExchangeConfig and TickerRecord frozen dataclass
+definitions, including field types, frozen behaviour,
+``__post_init__`` auto-generation of yfinance_ticker, and module exports.
 
 Test TODO List:
 - [x] Module exports: __all__ completeness and importability
+- [x] ExchangeConfig: frozen, default values, timeout validation
+- [x] ExchangeConfig: subclass inheritance works
 - [x] TickerRecord: frozen, all fields, field types
 - [x] TickerRecord: __post_init__ auto-generates yfinance_ticker
 - [x] TickerRecord: yfinance_ticker for each market suffix
@@ -17,8 +19,9 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from market.asean_common.constants import YFINANCE_SUFFIX_MAP, AseanMarket
+from market.asean_common.constants import AseanMarket
 from market.asean_common.types import (
+    ExchangeConfig,
     TickerRecord,
     __all__,
 )
@@ -49,9 +52,9 @@ class TestModuleExports:
         for name in __all__:
             assert hasattr(types, name), f"{name} is not defined in types module"
 
-    def test_正常系_allが1項目を含む(self) -> None:
-        """__all__ が TickerRecord をエクスポートしていること。"""
-        expected = {"TickerRecord"}
+    def test_正常系_allが2項目を含む(self) -> None:
+        """__all__ が ExchangeConfig と TickerRecord をエクスポートしていること。"""
+        expected = {"ExchangeConfig", "TickerRecord"}
         assert set(__all__) == expected
 
     def test_正常系_モジュールDocstringが存在する(self) -> None:
@@ -60,6 +63,60 @@ class TestModuleExports:
 
         assert types.__doc__ is not None
         assert len(types.__doc__) > 0
+
+
+# =============================================================================
+# ExchangeConfig base dataclass
+# =============================================================================
+
+
+class TestExchangeConfig:
+    """Test ExchangeConfig frozen base dataclass."""
+
+    def test_正常系_デフォルト値で初期化できる(self) -> None:
+        """ExchangeConfig がデフォルト値で初期化できること。"""
+        config = ExchangeConfig(exchange_code="TEST", suffix=".TS")
+        assert config.exchange_code == "TEST"
+        assert config.suffix == ".TS"
+        assert config.timeout == 30.0
+
+    def test_正常系_カスタムタイムアウトで初期化できる(self) -> None:
+        """ExchangeConfig がカスタム timeout で初期化できること。"""
+        config = ExchangeConfig(exchange_code="TEST", suffix=".TS", timeout=60.0)
+        assert config.timeout == 60.0
+
+    def test_正常系_frozenである(self) -> None:
+        """ExchangeConfig がフィールド変更不可であること。"""
+        config = ExchangeConfig(exchange_code="TEST", suffix=".TS")
+        with pytest.raises(FrozenInstanceError):
+            config.timeout = 10.0  # type: ignore[misc]
+
+    def test_正常系_タイムアウト境界値_最小(self) -> None:
+        """timeout の下限 1.0 で初期化できること。"""
+        config = ExchangeConfig(exchange_code="TEST", suffix=".TS", timeout=1.0)
+        assert config.timeout == 1.0
+
+    def test_正常系_タイムアウト境界値_最大(self) -> None:
+        """timeout の上限 300.0 で初期化できること。"""
+        config = ExchangeConfig(exchange_code="TEST", suffix=".TS", timeout=300.0)
+        assert config.timeout == 300.0
+
+    def test_異常系_タイムアウトが小さすぎるとValueError(self) -> None:
+        """timeout が 1.0 未満の場合 ValueError が発生すること。"""
+        with pytest.raises(ValueError, match="timeout"):
+            ExchangeConfig(exchange_code="TEST", suffix=".TS", timeout=0.5)
+
+    def test_異常系_タイムアウトが大きすぎるとValueError(self) -> None:
+        """timeout が 300.0 超過の場合 ValueError が発生すること。"""
+        with pytest.raises(ValueError, match="timeout"):
+            ExchangeConfig(exchange_code="TEST", suffix=".TS", timeout=400.0)
+
+    def test_正常系_全フィールドが存在する(self) -> None:
+        """ExchangeConfig が exchange_code, suffix, timeout を持つこと。"""
+        config = ExchangeConfig(exchange_code="TEST", suffix=".TS")
+        assert hasattr(config, "exchange_code")
+        assert hasattr(config, "suffix")
+        assert hasattr(config, "timeout")
 
 
 # =============================================================================

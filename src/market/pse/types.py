@@ -10,17 +10,20 @@ Note: PSE is not supported by yfinance (``YFINANCE_SUPPORTED = False``).
 See Also
 --------
 market.pse.constants : Default values referenced by PseConfig.
-market.bse.types : Similar type-definition pattern for the BSE module.
+market.asean_common.types : ExchangeConfig base class.
 """
 
 from dataclasses import dataclass
 
+from market.asean_common.types import ExchangeConfig
 from market.pse.constants import EXCHANGE_CODE, SUFFIX
 
 
 @dataclass(frozen=True)
-class PseConfig:
+class PseConfig(ExchangeConfig):
     """Configuration for PSE data retrieval.
+
+    Inherits timeout validation from ``ExchangeConfig``.
 
     Parameters
     ----------
@@ -47,20 +50,6 @@ class PseConfig:
 
     exchange_code: str = EXCHANGE_CODE
     suffix: str = SUFFIX
-    timeout: float = 30.0
-
-    def __post_init__(self) -> None:
-        """Validate configuration value ranges.
-
-        Raises
-        ------
-        ValueError
-            If timeout is outside its valid range.
-        """
-        if not (1.0 <= self.timeout <= 300.0):
-            raise ValueError(
-                f"timeout must be between 1.0 and 300.0, got {self.timeout}"
-            )
 
 
 # =============================================================================

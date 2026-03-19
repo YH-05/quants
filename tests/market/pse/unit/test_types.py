@@ -4,11 +4,16 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
+from market.asean_common.types import ExchangeConfig
 from market.pse.types import PseConfig
 
 
 class TestPseConfig:
     """PseConfig dataclass のテスト。"""
+
+    def test_正常系_ExchangeConfigを継承している(self) -> None:
+        config = PseConfig()
+        assert isinstance(config, ExchangeConfig)
 
     def test_正常系_デフォルト値で初期化できる(self) -> None:
         config = PseConfig()

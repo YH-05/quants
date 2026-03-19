@@ -4,11 +4,16 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
+from market.asean_common.types import ExchangeConfig
 from market.hose.types import HoseConfig
 
 
 class TestHoseConfig:
     """HoseConfig dataclass のテスト。"""
+
+    def test_正常系_ExchangeConfigを継承している(self) -> None:
+        config = HoseConfig()
+        assert isinstance(config, ExchangeConfig)
 
     def test_正常系_デフォルト値で初期化できる(self) -> None:
         config = HoseConfig()

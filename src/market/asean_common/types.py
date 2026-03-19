@@ -1,9 +1,15 @@
 """Type definitions for the market.asean_common module.
 
-This module provides the TickerRecord frozen dataclass that represents
-a single ticker entry in the ASEAN ticker master. The ``yfinance_ticker``
-field is automatically generated from ``ticker`` and ``yfinance_suffix``
-via ``__post_init__``.
+This module provides:
+
+- ``ExchangeConfig``: Base frozen dataclass for ASEAN exchange configuration.
+  Contains ``exchange_code``, ``suffix``, and ``timeout`` fields with
+  ``__post_init__`` validation for the timeout range (1.0--300.0).
+  Each exchange sub-package inherits from this class.
+- ``TickerRecord``: Frozen dataclass representing a single ticker entry
+  in the ASEAN ticker master. The ``yfinance_ticker`` field is
+  automatically generated from ``ticker`` and ``yfinance_suffix``
+  via ``__post_init__``.
 
 See Also
 --------
@@ -14,6 +20,66 @@ market.bse.types : Similar type-definition pattern for the BSE module.
 from dataclasses import dataclass, field
 
 from market.asean_common.constants import AseanMarket
+
+# =============================================================================
+# ExchangeConfig base dataclass
+# =============================================================================
+
+
+@dataclass(frozen=True)
+class ExchangeConfig:
+    """Base configuration for ASEAN exchange data retrieval.
+
+    Provides the common structure shared by all six ASEAN exchange
+    config dataclasses (SGX, Bursa, SET, IDX, HOSE, PSE).
+    Subclasses only need to override default values for
+    ``exchange_code`` and ``suffix``.
+
+    Parameters
+    ----------
+    exchange_code : str
+        Exchange code identifier (e.g. ``"SGX"``, ``"BURSA"``).
+    suffix : str
+        yfinance ticker suffix (e.g. ``".SI"``, ``".KL"``).
+    timeout : float
+        HTTP request timeout in seconds (default: 30.0).
+        Must be between 1.0 and 300.0 inclusive.
+
+    Raises
+    ------
+    ValueError
+        If timeout is outside the valid range ``[1.0, 300.0]``.
+
+    Examples
+    --------
+    >>> config = ExchangeConfig(exchange_code="SGX", suffix=".SI")
+    >>> config.exchange_code
+    'SGX'
+    >>> config.timeout
+    30.0
+    """
+
+    exchange_code: str = ""
+    suffix: str = ""
+    timeout: float = 30.0
+
+    def __post_init__(self) -> None:
+        """Validate configuration value ranges.
+
+        Raises
+        ------
+        ValueError
+            If timeout is outside its valid range.
+        """
+        if not (1.0 <= self.timeout <= 300.0):
+            raise ValueError(
+                f"timeout must be between 1.0 and 300.0, got {self.timeout}"
+            )
+
+
+# =============================================================================
+# TickerRecord dataclass
+# =============================================================================
 
 
 @dataclass(frozen=True)
@@ -92,5 +158,6 @@ class TickerRecord:
 # =============================================================================
 
 __all__ = [
+    "ExchangeConfig",
     "TickerRecord",
 ]

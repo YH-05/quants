@@ -4,11 +4,16 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
+from market.asean_common.types import ExchangeConfig
 from market.sgx.types import SgxConfig
 
 
 class TestSgxConfig:
     """SgxConfig dataclass のテスト。"""
+
+    def test_正常系_ExchangeConfigを継承している(self) -> None:
+        config = SgxConfig()
+        assert isinstance(config, ExchangeConfig)
 
     def test_正常系_デフォルト値で初期化できる(self) -> None:
         config = SgxConfig()

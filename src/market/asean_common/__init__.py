@@ -10,7 +10,9 @@ Constants : AseanMarket, YFINANCE_SUFFIX_MAP, SCREENER_EXCHANGE_MAP,
     SCREENER_MARKET_MAP, TABLE_TICKERS, DB_PATH
 Types : TickerRecord
 Storage : AseanTickerStorage
-Errors : AseanError, AseanStorageError, AseanScreenerError, AseanLookupError
+Errors : AseanError, AseanStorageError, AseanScreenerError, AseanLookupError,
+    ExchangeError, ExchangeAPIError, ExchangeRateLimitError,
+    ExchangeParseError, ExchangeValidationError
 Screener : fetch_tickers_from_screener, fetch_all_asean_tickers
 
 Examples
@@ -47,13 +49,18 @@ from market.asean_common.errors import (
     AseanLookupError,
     AseanScreenerError,
     AseanStorageError,
+    ExchangeAPIError,
+    ExchangeError,
+    ExchangeParseError,
+    ExchangeRateLimitError,
+    ExchangeValidationError,
 )
 from market.asean_common.screener import (
     fetch_all_asean_tickers,
     fetch_tickers_from_screener,
 )
 from market.asean_common.storage import AseanTickerStorage
-from market.asean_common.types import TickerRecord
+from market.asean_common.types import ExchangeConfig, TickerRecord
 
 __all__ = [
     "DB_PATH",
@@ -67,6 +74,12 @@ __all__ = [
     "AseanScreenerError",
     "AseanStorageError",
     "AseanTickerStorage",
+    "ExchangeAPIError",
+    "ExchangeConfig",
+    "ExchangeError",
+    "ExchangeParseError",
+    "ExchangeRateLimitError",
+    "ExchangeValidationError",
     "TickerRecord",
     "fetch_all_asean_tickers",
     "fetch_tickers_from_screener",
