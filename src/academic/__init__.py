@@ -22,6 +22,7 @@ from .errors import (
     RateLimitError,
     RetryableError,
 )
+from .fetcher import PaperFetcher
 from .retry import classify_http_error, create_retry_decorator
 from .s2_client import S2Client
 from .types import AcademicConfig, AuthorInfo, CitationInfo, PaperMetadata
@@ -32,6 +33,7 @@ __all__ = [
     "ArxivClient",
     "AuthorInfo",
     "CitationInfo",
+    "PaperFetcher",
     "PaperMetadata",
     "PaperNotFoundError",
     "ParseError",
