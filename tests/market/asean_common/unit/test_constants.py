@@ -2,13 +2,14 @@
 
 Tests verify all constant definitions for the ASEAN common module,
 including AseanMarket enum, yfinance suffix mapping, screener exchange
-mapping, table name, DB path, and module exports.
+mapping, screener market mapping, table name, DB path, and module exports.
 
 Test TODO List:
 - [x] Module exports: __all__ completeness and importability
 - [x] AseanMarket Enum: 6 members, str inheritance, values
 - [x] YFINANCE_SUFFIX_MAP: all 6 markets mapped to correct suffixes
 - [x] SCREENER_EXCHANGE_MAP: all 6 markets mapped to screener names
+- [x] SCREENER_MARKET_MAP: all 6 markets mapped to screener market names
 - [x] TABLE_TICKERS: non-empty string
 - [x] DB_PATH: non-empty string with correct format
 - [x] Final annotations: all non-enum constants annotated with typing.Final
@@ -19,6 +20,7 @@ from typing import get_type_hints
 from market.asean_common.constants import (
     DB_PATH,
     SCREENER_EXCHANGE_MAP,
+    SCREENER_MARKET_MAP,
     TABLE_TICKERS,
     YFINANCE_SUFFIX_MAP,
     AseanMarket,
@@ -53,12 +55,13 @@ class TestModuleExports:
                 f"{name} is not defined in constants module"
             )
 
-    def test_正常系_allが5項目を含む(self) -> None:
-        """__all__ が全5定数をエクスポートしていること。"""
+    def test_正常系_allが6項目を含む(self) -> None:
+        """__all__ が全6定数をエクスポートしていること。"""
         expected = {
             "AseanMarket",
             "DB_PATH",
             "SCREENER_EXCHANGE_MAP",
+            "SCREENER_MARKET_MAP",
             "TABLE_TICKERS",
             "YFINANCE_SUFFIX_MAP",
         }
@@ -202,6 +205,47 @@ class TestScreenerExchangeMap:
         """SCREENER_EXCHANGE_MAP の値に重複がないこと。"""
         values = list(SCREENER_EXCHANGE_MAP.values())
         assert len(values) == len(set(values)), "Duplicate exchange names found"
+
+
+# =============================================================================
+# SCREENER_MARKET_MAP
+# =============================================================================
+
+
+class TestScreenerMarketMap:
+    """Test SCREENER_MARKET_MAP constant."""
+
+    def test_正常系_dictである(self) -> None:
+        """SCREENER_MARKET_MAP が dict であること。"""
+        assert isinstance(SCREENER_MARKET_MAP, dict)
+
+    def test_正常系_全6市場が含まれている(self) -> None:
+        """SCREENER_MARKET_MAP が全6市場のエントリを含むこと。"""
+        assert len(SCREENER_MARKET_MAP) == 6
+        for market in AseanMarket:
+            assert market in SCREENER_MARKET_MAP, (
+                f"{market.value} is not in SCREENER_MARKET_MAP"
+            )
+
+    def test_正常系_値がstr型である(self) -> None:
+        """SCREENER_MARKET_MAP の値が全て str であること。"""
+        for market, name in SCREENER_MARKET_MAP.items():
+            assert isinstance(name, str), (
+                f"Value for {market.value} is not str: {type(name)}"
+            )
+            assert len(name.strip()) > 0, f"Value for {market.value} is empty"
+
+    def test_正常系_値が全て小文字である(self) -> None:
+        """SCREENER_MARKET_MAP の値が全て小文字であること。"""
+        for market, name in SCREENER_MARKET_MAP.items():
+            assert name == name.lower(), (
+                f"Value for {market.value} is not lowercase: {name}"
+            )
+
+    def test_正常系_値に重複がない(self) -> None:
+        """SCREENER_MARKET_MAP の値に重複がないこと。"""
+        values = list(SCREENER_MARKET_MAP.values())
+        assert len(values) == len(set(values)), "Duplicate market names found"
 
 
 # =============================================================================

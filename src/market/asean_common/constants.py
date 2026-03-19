@@ -6,8 +6,9 @@ sub-packages (SGX, Bursa, SET, IDX, HOSE, PSE), including:
 1. AseanMarket Enum (6 ASEAN exchanges)
 2. YFINANCE_SUFFIX_MAP (yfinance ticker suffixes per market)
 3. SCREENER_EXCHANGE_MAP (tradingview-screener exchange names)
-4. TABLE_TICKERS (DuckDB table name for ticker master)
-5. DB_PATH (DuckDB database file path)
+4. SCREENER_MARKET_MAP (tradingview-screener market/country names)
+5. TABLE_TICKERS (DuckDB table name for ticker master)
+6. DB_PATH (DuckDB database file path)
 
 Notes
 -----
@@ -117,7 +118,33 @@ Examples
 """
 
 # ---------------------------------------------------------------------------
-# 4. DuckDB table name
+# 4. tradingview-screener market (country) mapping
+# ---------------------------------------------------------------------------
+
+SCREENER_MARKET_MAP: Final[dict[AseanMarket, str]] = {
+    AseanMarket.SGX: "singapore",
+    AseanMarket.BURSA: "malaysia",
+    AseanMarket.SET: "thailand",
+    AseanMarket.IDX: "indonesia",
+    AseanMarket.HOSE: "vietnam",
+    AseanMarket.PSE: "philippines",
+}
+"""Mapping from AseanMarket to tradingview-screener market/country name.
+
+The tradingview-screener ``Query.set_markets()`` method accepts
+country/market names (lowercase) rather than exchange codes.
+For example, Bursa Malaysia uses ``"malaysia"`` as the market name.
+
+Examples
+--------
+>>> SCREENER_MARKET_MAP[AseanMarket.BURSA]
+'malaysia'
+>>> SCREENER_MARKET_MAP[AseanMarket.SGX]
+'singapore'
+"""
+
+# ---------------------------------------------------------------------------
+# 6. DuckDB table name
 # ---------------------------------------------------------------------------
 
 TABLE_TICKERS: Final[str] = "asean_tickers"
@@ -128,7 +155,7 @@ Stores all ASEAN exchange-listed tickers with metadata
 """
 
 # ---------------------------------------------------------------------------
-# 5. DuckDB database path
+# 7. DuckDB database path
 # ---------------------------------------------------------------------------
 
 DB_PATH: Final[str] = "data/processed/asean.duckdb"
@@ -144,6 +171,7 @@ Follows the project convention of ``data/processed/<domain>.duckdb``.
 __all__ = [
     "DB_PATH",
     "SCREENER_EXCHANGE_MAP",
+    "SCREENER_MARKET_MAP",
     "TABLE_TICKERS",
     "YFINANCE_SUFFIX_MAP",
     "AseanMarket",
