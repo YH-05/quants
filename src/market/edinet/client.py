@@ -1036,9 +1036,7 @@ class _RetryableError(Exception):
         ``Retry-After`` header on HTTP 429 responses).
     """
 
-    def __init__(
-        self, cause: Exception, retry_after: float | None = None
-    ) -> None:
+    def __init__(self, cause: Exception, retry_after: float | None = None) -> None:
         super().__init__(str(cause))
         self.cause = cause
         self.retry_after = retry_after
