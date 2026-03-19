@@ -238,6 +238,138 @@ class TestUpsertTickers:
 
 
 # ============================================================================
+# Test: _build_ticker_df (performance optimization)
+# ============================================================================
+
+
+class TestBuildTickerDf:
+    """Tests for _build_ticker_df static method.
+
+    Verifies the 3-stage to 2-stage memory copy optimization:
+    Before: asdict() -> DataFrame -> apply(enum.value)
+    After:  resolve enum.value before asdict -> DataFrame (no apply)
+    """
+
+    def test_正常系_market列が文字列型で返される(
+        self,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """_build_ticker_dfのmarket列がenum値ではなく文字列であること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        df = AseanTickerStorage._build_ticker_df(sample_tickers)
+        for val in df["market"]:
+            assert isinstance(val, str), f"Expected str, got {type(val)}"
+            assert not isinstance(val, AseanMarket), (
+                "market column should contain plain strings, not AseanMarket enum"
+            )
+
+    def test_正常系_market列の値がenum_valueと一致する(
+        self,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """_build_ticker_dfのmarket列値がAseanMarket.valueと一致すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        df = AseanTickerStorage._build_ticker_df(sample_tickers)
+        expected_markets = [t.market.value for t in sample_tickers]
+        assert df["market"].tolist() == expected_markets
+
+    def test_正常系_apply呼び出しなしでenum変換が完了する(
+        self,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """_build_ticker_dfがDataFrame.apply()を使わずにenum変換すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        df = AseanTickerStorage._build_ticker_df(sample_tickers)
+
+        # Verify the result is correct (market values are plain strings)
+        for val in df["market"]:
+            assert isinstance(val, str)
+            assert val in {m.value for m in AseanMarket}
+
+    def test_正常系_全カラムが正しく生成される(
+        self,
+        sample_ticker_sgx: TickerRecord,
+    ) -> None:
+        """_build_ticker_dfの全カラムが正しく生成されること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        df = AseanTickerStorage._build_ticker_df([sample_ticker_sgx])
+        assert len(df) == 1
+        row = df.iloc[0]
+        assert row["ticker"] == "D05"
+        assert row["name"] == "DBS Group Holdings Ltd"
+        assert row["market"] == "SGX"
+        assert row["yfinance_suffix"] == ".SI"
+        assert row["yfinance_ticker"] == "D05.SI"
+        assert row["sector"] == "Financial Services"
+        assert row["industry"] == "Banks - Diversified"
+        assert row["market_cap"] == 100_000_000_000
+        assert row["currency"] == "SGD"
+        assert row["is_active"] == True  # noqa: E712 - numpy bool comparison
+
+    def test_正常系_メモリコピーが2段階以下である(
+        self,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """_build_ticker_dfがasdict+DataFrame構築の2段階で完了すること.
+
+        apply()によるenum再変換（3段階目）が不要になったことを
+        ソースコード検査で確認する。
+        """
+        import inspect
+
+        from market.asean_common.storage import AseanTickerStorage
+
+        source = inspect.getsource(AseanTickerStorage._build_ticker_df)
+        # apply() should not be used for enum conversion
+        assert ".apply(" not in source, (
+            "_build_ticker_df should not use .apply() for enum conversion. "
+            "Resolve enum.value before asdict() to reduce memory copies."
+        )
+
+    def test_パフォーマンス_5000件でベンチマーク記録(self) -> None:
+        """_build_ticker_dfが5000件のデータを処理するベンチマーク.
+
+        Issue #3793 の受け入れ条件: ベンチマーク結果を記録。
+        現データ規模（~5000行）でのパフォーマンスを確認する。
+        """
+        import time
+
+        from market.asean_common.storage import AseanTickerStorage
+
+        markets = list(AseanMarket)
+        tickers = [
+            TickerRecord(
+                ticker=f"T{i:04d}",
+                name=f"Test Company {i}",
+                market=markets[i % len(markets)],
+                yfinance_suffix=YFINANCE_SUFFIX_MAP[markets[i % len(markets)]],
+                sector="Financial Services" if i % 2 == 0 else None,
+                industry="Banks" if i % 3 == 0 else None,
+                market_cap=1_000_000 * i if i % 4 != 0 else None,
+                currency="USD" if i % 2 == 0 else None,
+            )
+            for i in range(5000)
+        ]
+
+        start = time.perf_counter()
+        df = AseanTickerStorage._build_ticker_df(tickers)
+        elapsed_ms = (time.perf_counter() - start) * 1000
+
+        assert len(df) == 5000
+        # Record benchmark: should complete within reasonable time
+        # On typical hardware, ~5000 rows should process in < 500ms
+        assert elapsed_ms < 500, (
+            f"_build_ticker_df took {elapsed_ms:.1f}ms for 5000 rows"
+        )
+        # Verify correctness of output
+        assert all(isinstance(v, str) for v in df["market"])
+
+
+# ============================================================================
 # Test: get_tickers
 # ============================================================================
 

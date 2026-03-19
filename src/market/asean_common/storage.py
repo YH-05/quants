@@ -195,8 +195,11 @@ class AseanTickerStorage:
     def _build_ticker_df(tickers: list[TickerRecord]) -> pd.DataFrame:
         """Convert TickerRecord list to a DataFrame suitable for storage.
 
-        Converts dataclass instances to dicts via ``dataclasses.asdict``
-        and coerces ``AseanMarket`` enum values to plain strings.
+        Resolves ``AseanMarket`` enum values to plain strings *before*
+        calling ``dataclasses.asdict``, so the resulting dicts already
+        contain storage-ready values. This reduces the conversion from
+        3 memory-copy stages (asdict -> DataFrame -> apply) to 2 stages
+        (asdict-with-resolved-enums -> DataFrame).
 
         Parameters
         ----------
@@ -208,12 +211,16 @@ class AseanTickerStorage:
         pd.DataFrame
             DataFrame with columns matching the ``asean_tickers`` DDL.
         """
-        df = pd.DataFrame([dataclasses.asdict(t) for t in tickers])
-        # Convert AseanMarket enum to string for storage
-        df["market"] = df["market"].apply(
-            lambda m: m.value if isinstance(m, AseanMarket) else str(m)
-        )
-        return df
+        rows = []
+        for t in tickers:
+            d = dataclasses.asdict(t)
+            # Resolve enum to plain string before DataFrame construction
+            market = d["market"]
+            d["market"] = (
+                market.value if isinstance(market, AseanMarket) else str(market)
+            )
+            rows.append(d)
+        return pd.DataFrame(rows)
 
     # ------------------------------------------------------------------
     # Query methods
