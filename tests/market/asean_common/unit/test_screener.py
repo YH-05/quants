@@ -5,6 +5,7 @@ Tests cover:
 - fetch_all_asean_tickers: All 6 ASEAN markets ticker fetching
 - Error handling: ModuleNotFoundError, API errors → AseanScreenerError
 - DataFrame to TickerRecord conversion
+- Partial failure: Exception propagation through ThreadPoolExecutor
 
 All tests mock the tradingview-screener library to avoid external API calls.
 
@@ -17,6 +18,8 @@ Test TODO List:
 - [x] fetch_all_asean_tickers: Returns dict with all 6 markets
 - [x] fetch_all_asean_tickers: Aggregates results from all markets
 - [x] fetch_all_asean_tickers: Returns empty lists when tradingview-screener not installed
+- [x] fetch_all_asean_tickers: Propagates AseanScreenerError on single market failure
+- [x] fetch_all_asean_tickers: Preserves original error message through ThreadPoolExecutor
 """
 
 from __future__ import annotations
@@ -322,6 +325,52 @@ class TestFetchAllAseanTickers:
 
         for _market, tickers in result.items():
             assert tickers == []
+
+    def test_異常系_1市場エラー時にAseanScreenerErrorが伝播する(self) -> None:
+        """1市場でAseanScreenerErrorが発生した場合、例外がそのまま伝播すること.
+
+        AIDEV-NOTE: fetch_all_asean_tickers は ThreadPoolExecutor を使用して
+        並列取得するが、future.result() を try/except なしで呼び出すため、
+        いずれかの市場で AseanScreenerError が発生すると関数全体が例外で中断する。
+        これは意図的な fail-fast 設計であり、部分的な結果は返さない。
+        """
+
+        def _side_effect(market: AseanMarket) -> list[TickerRecord]:
+            if market == AseanMarket.IDX:
+                raise AseanScreenerError(
+                    "Failed to fetch tickers from screener for IDX"
+                )
+            return []
+
+        with patch(
+            "market.asean_common.screener.fetch_tickers_from_screener",
+            side_effect=_side_effect,
+        ):
+            from market.asean_common.screener import fetch_all_asean_tickers
+
+            with pytest.raises(AseanScreenerError, match="IDX"):
+                fetch_all_asean_tickers()
+
+    def test_異常系_部分失敗時に元のエラーメッセージが保持される(self) -> None:
+        """ThreadPoolExecutor 経由でも元の AseanScreenerError メッセージが保持されること."""
+        error_msg = "Failed to fetch tickers from screener for SET"
+
+        def _side_effect(market: AseanMarket) -> list[TickerRecord]:
+            if market == AseanMarket.SET:
+                raise AseanScreenerError(error_msg)
+            return []
+
+        with patch(
+            "market.asean_common.screener.fetch_tickers_from_screener",
+            side_effect=_side_effect,
+        ):
+            from market.asean_common.screener import fetch_all_asean_tickers
+
+            with pytest.raises(AseanScreenerError) as exc_info:
+                fetch_all_asean_tickers()
+
+            assert str(exc_info.value) == error_msg
+            assert exc_info.value.message == error_msg
 
 
 # ============================================================================

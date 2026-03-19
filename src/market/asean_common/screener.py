@@ -269,7 +269,13 @@ def fetch_all_asean_tickers() -> dict[AseanMarket, list[TickerRecord]]:
     -------
     dict[AseanMarket, list[TickerRecord]]
         Dictionary mapping each AseanMarket to its list of TickerRecords.
-        Markets where fetching fails will have empty lists.
+
+    Raises
+    ------
+    AseanScreenerError
+        If any single market fails during fetching. The exception
+        propagates immediately (fail-fast); partial results are not
+        returned.
 
     Examples
     --------
@@ -284,6 +290,12 @@ def fetch_all_asean_tickers() -> dict[AseanMarket, list[TickerRecord]]:
     logger.info("Fetching tickers for all ASEAN markets")
     result: dict[AseanMarket, list[TickerRecord]] = {}
 
+    # AIDEV-NOTE: Exception propagation policy (fail-fast)
+    # future.result() re-raises any exception from the worker thread.
+    # If fetch_tickers_from_screener raises AseanScreenerError for any
+    # single market, the exception propagates and the entire function
+    # aborts without returning partial results.  This is intentional:
+    # callers should handle AseanScreenerError at the call site.
     with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
             executor.submit(fetch_tickers_from_screener, market): market
