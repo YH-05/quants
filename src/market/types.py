@@ -42,6 +42,18 @@ class DataSource(str, Enum):
         J-Quants API data source (Japanese stock market data via JPX)
     EDINET_API : str
         EDINET disclosure API data source (FSA filings search/download)
+    TRADINGVIEW_SCREENER : str
+        TradingView Screener data source (ASEAN ticker master)
+    VNSTOCK : str
+        vnstock library data source (Vietnam market)
+    IDX_BEI : str
+        IDX BEI data source (Indonesia Stock Exchange)
+    THAIFIN : str
+        thaifin library data source (Thailand market)
+    PSE_API : str
+        PSE API data source (Philippine Stock Exchange)
+    EODHD : str
+        EODHD API data source (global backup data provider)
     """
 
     YFINANCE = "yfinance"
@@ -55,6 +67,12 @@ class DataSource(str, Enum):
     BSE = "bse"
     JQUANTS = "jquants"
     EDINET_API = "edinet_api"
+    TRADINGVIEW_SCREENER = "tradingview_screener"
+    VNSTOCK = "vnstock"
+    IDX_BEI = "idx_bei"
+    THAIFIN = "thaifin"
+    PSE_API = "pse_api"
+    EODHD = "eodhd"
 
 
 @dataclass
