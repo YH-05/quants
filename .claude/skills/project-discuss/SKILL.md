@@ -1,21 +1,20 @@
 ---
 name: project-discuss
 description: |
-  プロジェクトの方向性をユーザーと対話的に議論するスキル。Neo4jグラフDBとドキュメントからコンテキストを復元し、sequential-thinkingで構造化された議論を行い、合意事項をNeo4j+ドキュメントに保存する。
+  プロジェクトの方向性をユーザーと対話的に議論するスキル。Neo4j Cypher MCPとドキュメントからコンテキストを復元し、sequential-thinkingで構造化された議論を行い、合意事項をNeo4j+ドキュメントに保存する。
   Use PROACTIVELY when user wants to discuss project direction, brainstorm strategy, review progress, or align on next steps.
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion, mcp__neo4j-memory__*, mcp__neo4j-cypher__*, mcp__neo4j-data-modeling__*, mcp__sequential-thinking__*
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion, mcp__neo4j-cypher__*, mcp__neo4j-data-modeling__*, mcp__sequential-thinking__*
 ---
 
 # project-discuss スキル
 
 プロジェクトの方向性についてユーザーと対話的に議論し、合意形成を行うスキル。
-Neo4j Memory MCP・Neo4j Cypher MCP・Neo4j Data Modeling MCP を組み合わせ、現状を復元・議論・保存する。
+Neo4j Cypher MCP・Neo4j Data Modeling MCP を組み合わせ、現状を復元・議論・保存する。
 
 ## 使用する MCP サーバー
 
 | MCP サーバー | 用途 |
 |-------------|------|
-| `mcp__neo4j-memory__*` | エンティティ・リレーション形式で記憶を読み書き |
 | `mcp__neo4j-cypher__*` | Cypherクエリで構造化データ（Discussion/Decision/ActionItem）を操作 |
 | `mcp__neo4j-data-modeling__*` | ノード・リレーション構造の検証とMermaid可視化 |
 | `mcp__sequential-thinking__sequentialthinking` | 議論の構造化・論点整理 |
@@ -24,7 +23,6 @@ Neo4j Memory MCP・Neo4j Cypher MCP・Neo4j Data Modeling MCP を組み合わせ
 
 ```
 Phase 1: コンテキスト復元
-    |  neo4j-memory でエンティティ・記憶を検索
     |  neo4j-cypher でプロジェクトノードを取得
     |  docs/plan/ ドキュメント読み込み
     |  sequential-thinking で論点整理
@@ -37,8 +35,7 @@ Phase 2: サマリー提示 + 議論
     |
 Phase 3: 合意形成 + 保存
     |  neo4j-data-modeling で保存前にノード構造を検証
-    |  neo4j-memory に エンティティ/リレーションとして保存
-    |  neo4j-cypher で Discussion/Decision/ActionItem ノードを保存
+    |  neo4j-cypher で Discussion/Decision/ActionItem ノードを MERGE 保存
     |  docs/plan/ にメモ保存
     |
 Phase 4: アクションアイテム提示
@@ -47,20 +44,9 @@ Phase 4: アクションアイテム提示
 
 ## Phase 1: コンテキスト復元
 
-### 1.1 neo4j-memory でエンティティを検索
+### 1.1 neo4j-cypher でプロジェクトノードを取得
 
-まず `mcp__neo4j-memory__search_memories` でプロジェクト関連の記憶を検索する:
-
-```
-search_memories("project discussion decision")
-search_memories("action item progress")
-```
-
-全体俯瞰が必要な場合は `mcp__neo4j-memory__read_graph` でグラフ全体を取得する。
-
-### 1.2 neo4j-cypher でプロジェクトノードを取得
-
-`mcp__neo4j-cypher__read_query` で以下を取得:
+`mcp__neo4j-cypher__read_neo4j_cypher` で以下を取得:
 
 ```cypher
 // プロジェクト関連ノードを取得
@@ -78,7 +64,7 @@ RETURN labels(n) AS from_labels, type(r) AS rel, labels(m) AS to_labels,
 LIMIT 100
 ```
 
-### 1.3 ドキュメントの読み込み
+### 1.2 ドキュメントの読み込み
 
 `docs/plan/` 配下の関連 Markdown ファイルを読み込む:
 
@@ -90,7 +76,7 @@ Glob docs/plan/*.md
 Glob docs/plan/*discussion*.md
 ```
 
-### 1.4 sequential-thinking で論点整理
+### 1.3 sequential-thinking で論点整理
 
 `mcp__sequential-thinking__sequentialthinking` を使い、以下を構造化:
 
@@ -138,39 +124,9 @@ Phase 1 で整理した現状サマリーをユーザーに提示する。
 
 新しいノード型やリレーション型を追加する場合、保存前に `mcp__neo4j-data-modeling__validate_data_model` で構造を検証する。
 
-### 3.2 neo4j-memory にエンティティとして保存
+### 3.2 neo4j-cypher で構造化ノードを MERGE 保存
 
-`mcp__neo4j-memory__create_entities` で議論結果をエンティティ保存:
-
-```python
-create_entities([
-    {
-        "name": "Discussion:disc-2026-03-17-market-strategy",
-        "entityType": "Discussion",
-        "observations": [
-            "title: 市場戦略の方向性",
-            "date: 2026-03-17",
-            "summary: ..."
-        ]
-    }
-])
-```
-
-`mcp__neo4j-memory__create_relations` でリレーションを保存:
-
-```python
-create_relations([
-    {
-        "from": "Discussion:disc-2026-03-17-market-strategy",
-        "to": "Decision:dec-2026-03-17-001",
-        "relationType": "RESULTED_IN"
-    }
-])
-```
-
-### 3.3 neo4j-cypher で構造化ノードを保存
-
-`mcp__neo4j-cypher__write_query` で MERGE ベースで保存。
+`mcp__neo4j-cypher__write_neo4j_cypher` で MERGE ベースで保存。
 
 **Discussion ノード**:
 ```cypher
@@ -218,7 +174,7 @@ MATCH (d:Discussion {discussion_id: $discussion_id})
 MERGE (p)-[:HAS_DISCUSSION]->(d)
 ```
 
-### 3.4 ドキュメントへの保存
+### 3.3 ドキュメントへの保存
 
 `docs/plan/` に日付付きメモを保存:
 
@@ -297,8 +253,8 @@ MERGE (p)-[:HAS_DISCUSSION]->(d)
 
 - sequential-thinking を可能な限り使い、議論を構造化する
 - AskUserQuestion で一度に1つの論点のみ質問する
-- Phase 1 では neo4j-memory と neo4j-cypher の両方を参照する
-- Phase 3 の保存は neo4j-memory（エンティティ） + neo4j-cypher（構造化ノード）の両方に行う
+- Decision は `decision_id` + `content` を必ず設定する
+- ActionItem は `action_id` + `description` を必ず設定する
 - Neo4j への保存は MERGE ベースで冪等に行う
 - ドキュメント保存時はファイル名に日付を含める
 
@@ -317,9 +273,8 @@ MERGE (p)-[:HAS_DISCUSSION]->(d)
 
 ## 完了条件
 
-- [ ] Phase 1 で neo4j-memory + neo4j-cypher + ドキュメントからコンテキストが復元されている
+- [ ] Phase 1 で neo4j-cypher + ドキュメントからコンテキストが復元されている
 - [ ] 少なくとも1つの論点について合意が形成されている
-- [ ] 決定事項が neo4j-memory にエンティティとして保存されている
 - [ ] 決定事項が neo4j-cypher で Discussion/Decision ノードとして保存されている
 - [ ] アクションアイテムが ActionItem ノードとして保存されている
 - [ ] `docs/plan/` に議論メモが保存されている
@@ -331,7 +286,6 @@ MERGE (p)-[:HAS_DISCUSSION]->(d)
 |---------|------|
 | 詳細ガイド | `.claude/skills/project-discuss/guide.md` |
 | プランドキュメント | `docs/plan/` |
-| Neo4j Memory MCP | `mcp__neo4j-memory__*` |
 | Neo4j Cypher MCP | `mcp__neo4j-cypher__*` |
 | Neo4j Data Modeling MCP | `mcp__neo4j-data-modeling__*` |
 | KG スキーマ定義 | `data/config/knowledge-graph-schema.yaml` |

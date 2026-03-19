@@ -253,6 +253,7 @@ class TestGetAnalysisIntegration:
 
         assert isinstance(result, AnalysisResult)
         assert result.edinet_code == sample_edinet_code
+        assert result.health_score is not None
         assert 0 <= result.health_score <= 100
         assert result.commentary != ""
 

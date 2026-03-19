@@ -775,7 +775,7 @@ class EdinetStorage:
 
         rows: list[dict[str, str]] = []
         for _, row in details_df.iterrows():
-            slug = row.get("slug", "")
+            slug = str(row.get("slug", ""))
             rows.append(
                 {
                     "slug": slug,

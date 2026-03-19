@@ -16,6 +16,21 @@ Supported commands
 - dr-industry
 - finance-research
 
+KG schema support: v1.0 (original 9 node types), v2.0 (adds Anomaly,
+PerformanceEvidence, MarketRegime, DataRequirement nodes and 11 new
+relation types), and v2.1 (adds cites, coauthored_with relations).
+
+Supported commands
+------------------
+- finance-news-workflow
+- ai-research-collect
+- generate-market-report
+- dr-stock
+- ca-eval
+- dr-industry
+- finance-research
+- academic-fetch
+
 Usage
 -----
 ::
@@ -31,6 +46,10 @@ Usage
     uv run python scripts/emit_graph_queue.py --command ca-eval \\
         --input analyst/research/CA_eval_20260220-0931_MCO/02_claims/claims.json \\
         --output-dir .tmp/graph-queue/ca-eval
+
+    # Academic papers
+    uv run python scripts/emit_graph_queue.py --command academic-fetch \\
+        --input .tmp/academic/papers.json
 """
 
 from __future__ import annotations
@@ -66,7 +85,7 @@ logger = get_logger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "2.2"
 DEFAULT_OUTPUT_BASE = Path(".tmp/graph-queue")
 DEFAULT_MAX_AGE_DAYS = 7
 
@@ -143,6 +162,11 @@ def _empty_queue(
         "financial_datapoints": [],
         "fiscal_periods": [],
         "insights": [],
+        # KG v2.0 node arrays
+        "anomalies": [],
+        "performance_evidences": [],
+        "market_regimes": [],
+        "data_requirements": [],
         "relations": {
             "tagged": [],
             "makes_claim": [],
@@ -153,6 +177,24 @@ def _empty_queue(
             "for_period": [],
             "supported_by": [],
             "authored_by": [],
+            # KG v2.0 relation types
+            "exploits": [],
+            "evaluates": [],
+            "quantified_by": [],
+            "effective_in": [],
+            "requires_data": [],
+            "explained_by": [],
+            "measured_in": [],
+            "competes_with": [],
+            "extends_method": [],
+            "combined_with": [],
+            "uses_method": [],
+            # KG v2.1 academic metadata
+            "cites": [],
+            "coauthored_with": [],
+            # KG v2.2 topic hierarchy & affiliation
+            "subtopic_of": [],
+            "affiliated_with": [],
         },
     }
 
@@ -236,6 +278,37 @@ def _normalise_period_label(raw: str) -> str:
         Normalised period label with spaces replaced by underscores.
     """
     return raw.strip().replace(" ", "_")
+
+
+# ---------------------------------------------------------------------------
+# KG v2.0 ID generators
+# ---------------------------------------------------------------------------
+
+
+def generate_anomaly_id(slug: str) -> str:
+    """Generate an anomaly ID from a slug."""
+    return f"anomaly-{slug}"
+
+
+def generate_perf_evidence_id(method_slug: str, metric: str) -> str:
+    """Generate a performance evidence ID."""
+    hash8 = hashlib.sha256(f"{method_slug}:{metric}".encode()).hexdigest()[:8]
+    return f"perf-{method_slug}-{metric}-{hash8}"
+
+
+def generate_regime_id(slug: str) -> str:
+    """Generate a market regime ID from a slug."""
+    return f"regime-{slug}"
+
+
+def generate_data_req_id(slug: str) -> str:
+    """Generate a data requirement ID from a slug."""
+    return f"datareq-{slug}"
+
+
+def generate_method_id(slug: str) -> str:
+    """Generate a method ID from a slug."""
+    return f"method-{slug}"
 
 
 # ---------------------------------------------------------------------------
@@ -1381,6 +1454,24 @@ def map_finance_research(data: dict[str, Any]) -> dict[str, Any]:
     return queue
 
 
+def _lazy_academic_mapper(data: dict[str, Any]) -> dict[str, Any]:
+    """Lazy-import wrapper for academic mapper to avoid import-time dependency.
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        Parsed JSON with ``papers`` and ``existing_source_ids``.
+
+    Returns
+    -------
+    dict[str, Any]
+        Complete graph-queue dict.
+    """
+    from academic.mapper import map_academic_papers
+
+    return map_academic_papers(data)
+
+
 # ---------------------------------------------------------------------------
 # Command → mapper registry
 # ---------------------------------------------------------------------------
@@ -1393,6 +1484,7 @@ COMMAND_MAPPERS: dict[str, MapperFn] = {
     "ca-eval": map_ca_eval,
     "dr-industry": map_dr_industry,
     "finance-research": map_finance_research,
+    "academic-fetch": _lazy_academic_mapper,
 }
 
 
@@ -1508,7 +1600,7 @@ Examples:
 
 Supported commands:
   finance-news-workflow, ai-research-collect, generate-market-report,
-  dr-stock, ca-eval, dr-industry, finance-research
+  dr-stock, ca-eval, dr-industry, finance-research, academic-fetch
         """,
     )
     parser.add_argument(
