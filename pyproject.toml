@@ -115,7 +115,8 @@ embedding = [
 
 # ASEAN market optional dependencies
 asean = [
-    "tradingview-screener>=3.0.0",
+    "tradingview-screener>=3.1.0,<4.0.0",
+    "requests>=2.32.0",  # CVE-2023-32681 修正済みバージョン
 ]
 
 [project.scripts]
