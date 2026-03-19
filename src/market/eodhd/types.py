@@ -78,9 +78,7 @@ class EodhdConfig:
                 f"timeout must be between 1.0 and 300.0, got {self.timeout}"
             )
         if self.fmt not in ("json", "csv"):
-            raise ValueError(
-                f"fmt must be 'json' or 'csv', got '{self.fmt}'"
-            )
+            raise ValueError(f"fmt must be 'json' or 'csv', got '{self.fmt}'")
 
 
 __all__ = [

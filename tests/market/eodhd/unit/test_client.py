@@ -101,9 +101,7 @@ class TestEodhdClientGetSplits:
     def test_正常系_日付指定でもNotImplementedError(self) -> None:
         client = EodhdClient()
         with pytest.raises(NotImplementedError):
-            client.get_splits(
-                "AAPL.US", from_date="2024-01-01", to_date="2024-12-31"
-            )
+            client.get_splits("AAPL.US", from_date="2024-01-01", to_date="2024-12-31")
 
 
 class TestEodhdClientGetIntradayData:

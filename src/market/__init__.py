@@ -1,11 +1,12 @@
 """Market package for financial market data analysis.
 
 This package provides core infrastructure for market data handling including:
-- Data fetching (Yahoo Finance, FRED, NASDAQ, EDINET, etc.)
+- Data fetching (Yahoo Finance, FRED, NASDAQ, EDINET, EODHD, etc.)
 - Data export (JSON, CSV, SQLite, Agent-optimized JSON)
 - Type definitions for market data
 - JSON schema definitions for validation
 - Error handling
+- ASEAN market data (SGX, Bursa, SET, IDX, HOSE, PSE)
 
 Submodules
 ----------
@@ -19,6 +20,10 @@ nasdaq
     NASDAQ Stock Screener API (stock screening data)
 edinet
     EDINET DB API (Japanese listed company financial data)
+asean_common
+    ASEAN market common foundation (constants, types, storage, screener)
+eodhd
+    EODHD API client (global financial data)
 factset
     FactSet API integration (planned)
 export
@@ -59,8 +64,27 @@ EdinetStorage
     DuckDB storage layer managing 8 tables for EDINET data
 EdinetSyncer
     6-phase sync orchestrator with checkpoint-based resume support
+AseanMarket
+    Enum for 6 ASEAN exchanges (SGX, Bursa, SET, IDX, HOSE, PSE)
+TickerRecord
+    Frozen dataclass representing an ASEAN ticker
+AseanTickerStorage
+    DuckDB storage layer for ASEAN ticker master data
+EodhdClient
+    Skeleton API client for EODHD financial data
+EodhdConfig
+    Configuration for EODHD API key and HTTP behaviour
 """
 
+from .asean_common import (
+    AseanError,
+    AseanLookupError,
+    AseanMarket,
+    AseanScreenerError,
+    AseanStorageError,
+    AseanTickerStorage,
+    TickerRecord,
+)
 from .bse import (
     Announcement,
     BhavcopyCollector,
@@ -97,6 +121,15 @@ from .edinet import (
     EdinetValidationError,
 )
 from .edinet_api import EdinetApiClient
+from .eodhd import (
+    EodhdAPIError,
+    EodhdAuthError,
+    EodhdClient,
+    EodhdConfig,
+    EodhdError,
+    EodhdRateLimitError,
+    EodhdValidationError,
+)
 from .errors import (
     BloombergConnectionError,
     BloombergDataError,
@@ -158,6 +191,13 @@ __all__ = [
     "AnalysisResult",
     # BSE
     "Announcement",
+    # ASEAN common
+    "AseanError",
+    "AseanLookupError",
+    "AseanMarket",
+    "AseanScreenerError",
+    "AseanStorageError",
+    "AseanTickerStorage",
     "BhavcopyCollector",
     "BhavcopyType",
     # Bloomberg errors
@@ -203,6 +243,14 @@ __all__ = [
     "EdinetStorage",
     "EdinetSyncer",
     "EdinetValidationError",
+    # EODHD
+    "EodhdAPIError",
+    "EodhdAuthError",
+    "EodhdClient",
+    "EodhdConfig",
+    "EodhdError",
+    "EodhdRateLimitError",
+    "EodhdValidationError",
     "ErrorCode",
     "ExportConfig",
     "ExportError",
@@ -232,6 +280,7 @@ __all__ = [
     "ScripQuote",
     "StockDataMetadata",
     "TickerCollector",
+    "TickerRecord",
     "ValidationError",
     "validate_config",
     "validate_economic_metadata",
