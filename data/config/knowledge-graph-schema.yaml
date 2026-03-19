@@ -12,11 +12,18 @@
 #     - Removed: Chunk (no PDF pipeline), Stance (no sell-side reports), Question (future)
 #     - 16 relationships for 7 workflow outputs
 #     - Namespace: kg_v1 (not kg_v2, to distinguish from note-finance)
+#   v1.1 (2026-03-19): Quant knowledge extension
+#     - Added: Method node (research methods, algorithms, frameworks)
+#     - Added: Source.source_type += paper, code, documentation
+#     - Added: Topic.category += quant_method, backtest, algorithm, risk_model
+#     - Added: Author.author_type += academic
+#     - Added: 3 new relationships (USES_METHOD, EXTENDS_METHOD, COMBINED_WITH)
+#     - 10 nodes + 19 relationships for quant knowledge graph
 
-version: "1.0"
+version: "1.1"
 
 # ============================================================
-# Node Definitions (9 nodes)
+# Node Definitions (10 nodes)
 # ============================================================
 nodes:
   Source:
@@ -38,9 +45,11 @@ nodes:
       source_type:
         type: string
         required: true
-        enum: [web, news, report, original]
+        enum: [web, news, report, original, paper, code, documentation]
         indexed: true
-        description: "web=website, news=news article, report=analyst/research report, original=self-authored"
+        description: >
+          web=website, news=news article, report=analyst/research report, original=self-authored,
+          paper=academic paper/preprint, code=code repository/implementation, documentation=library/tool docs
       publisher:
         type: string
         indexed: true
@@ -242,7 +251,7 @@ nodes:
         indexed: true
       category:
         type: string
-        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings]
+        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings, quant_method, backtest, algorithm, risk_model]
         indexed: true
 
   Author:
@@ -259,12 +268,47 @@ nodes:
       author_type:
         type: string
         required: true
-        enum: [person, sell_side, buy_side, consultant, media, self]
+        enum: [person, sell_side, buy_side, consultant, media, self, academic]
         indexed: true
-        description: "person=individual, sell_side=investment bank, buy_side=asset manager, consultant=consulting firm, media=news outlet, self=own content"
+        description: >
+          person=individual, sell_side=investment bank, buy_side=asset manager,
+          consultant=consulting firm, media=news outlet, self=own content,
+          academic=university researcher/research group
       organization:
         type: string
         indexed: true
+
+  Method:
+    description: >
+      Research method, algorithm, or framework used in academic papers and quant strategies.
+      Enables cross-topic discovery by connecting papers that share techniques.
+    properties:
+      method_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: method-{slug} (e.g., 'method-gan-sdf')"
+      name:
+        type: string
+        required: true
+        indexed: true
+        description: "Human-readable method name (e.g., 'GAN-SDF', 'Multi-Agent System')"
+      method_type:
+        type: string
+        required: true
+        enum: [architecture, algorithm, framework, technique, model]
+        indexed: true
+        description: >
+          architecture=neural network architecture (GAN, Transformer, GNN),
+          algorithm=specific computational procedure (MCTS, LASSO),
+          framework=end-to-end system design (MAS, PolyModel),
+          technique=general approach (attention, RL, Bayesian),
+          model=statistical/ML model (HMM, FinBERT, P-Trees)
+      description:
+        type: string
+        description: "Brief description of what the method does"
+      created_at:
+        type: datetime
 
   Insight:
     description: >
@@ -303,9 +347,34 @@ nodes:
         description: "Lifecycle status of the insight"
 
 # ============================================================
-# Relationship Definitions (16 relationships)
+# Relationship Definitions (19 relationships)
 # ============================================================
 relationships:
+  # Source -> Method
+  USES_METHOD:
+    from: Source
+    to: Method
+    description: "Source uses/applies this method"
+
+  # Method -> Method (evolution chain)
+  EXTENDS_METHOD:
+    from: Method
+    to: Method
+    description: "This method extends or improves upon the target method"
+    properties:
+      improvement:
+        type: string
+        description: "What aspect was improved (e.g., 'adds interpretability', 'reduces computation')"
+
+  COMBINED_WITH:
+    from: Method
+    to: Method
+    description: "Two methods combined in a hybrid approach"
+    properties:
+      synergy:
+        type: string
+        description: "How the combination creates value"
+
   # Source -> Fact / Claim
   STATES_FACT:
     from: Source
@@ -496,6 +565,9 @@ constraints:
   - label: Insight
     property: insight_id
     type: UNIQUE
+  - label: Method
+    property: method_id
+    type: UNIQUE
 
 indices:
   - label: Fact
@@ -524,13 +596,15 @@ indices:
     property: source_type
   - label: Source
     property: command_source
+  - label: Method
+    property: method_type
 
 # ============================================================
 # Namespace Definitions
 # ============================================================
 namespaces:
   kg_v1:
-    description: "KG v1 schema nodes for quants knowledge graph"
+    description: "KG v1.1 schema nodes for quants knowledge graph"
     labels:
       - Source
       - Entity
@@ -541,6 +615,7 @@ namespaces:
       - Topic
       - Author
       - Insight
+      - Method
     naming: PascalCase
 
   memory:
