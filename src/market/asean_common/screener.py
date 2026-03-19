@@ -36,6 +36,8 @@ market.asean_common.errors : AseanScreenerError exception.
 
 from __future__ import annotations
 
+from typing import Final
+
 import pandas as pd
 
 from market.asean_common._utils import (
@@ -62,7 +64,7 @@ logger = get_logger(__name__)
 # Screener query columns
 # ---------------------------------------------------------------------------
 
-_SCREENER_COLUMNS: list[str] = [
+_SCREENER_COLUMNS: Final[list[str]] = [
     "name",
     "exchange",
     "market",
