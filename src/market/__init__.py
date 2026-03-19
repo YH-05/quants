@@ -74,6 +74,18 @@ EodhdClient
     Skeleton API client for EODHD financial data
 EodhdConfig
     Configuration for EODHD API key and HTTP behaviour
+SgxConfig
+    Configuration for SGX (Singapore Exchange) data retrieval
+BursaConfig
+    Configuration for Bursa Malaysia data retrieval
+SetConfig
+    Configuration for SET (Stock Exchange of Thailand) data retrieval
+IdxConfig
+    Configuration for IDX (Indonesia Stock Exchange) data retrieval
+HoseConfig
+    Configuration for HOSE (Ho Chi Minh Stock Exchange) data retrieval
+PseConfig
+    Configuration for PSE (Philippine Stock Exchange) data retrieval
 """
 
 from .asean_common import (
@@ -107,6 +119,14 @@ from .bse import (
 )
 from .bse import (
     RetryConfig as BseRetryConfig,
+)
+from .bursa import (
+    BursaAPIError,
+    BursaConfig,
+    BursaError,
+    BursaParseError,
+    BursaRateLimitError,
+    BursaValidationError,
 )
 from .edinet import (
     DailyRateLimiter,
@@ -160,10 +180,34 @@ from .etfcom import (
     TickerCollector,
 )
 from .export import DataExporter
+from .hose import (
+    HoseAPIError,
+    HoseConfig,
+    HoseError,
+    HoseParseError,
+    HoseRateLimitError,
+    HoseValidationError,
+)
+from .idx import (
+    IdxAPIError,
+    IdxConfig,
+    IdxError,
+    IdxParseError,
+    IdxRateLimitError,
+    IdxValidationError,
+)
 from .jquants import JQuantsClient
 from .nasdaq import (
     ScreenerCollector,
     ScreenerFilter,
+)
+from .pse import (
+    PseAPIError,
+    PseConfig,
+    PseError,
+    PseParseError,
+    PseRateLimitError,
+    PseValidationError,
 )
 from .schema import (
     CacheConfig,
@@ -176,6 +220,22 @@ from .schema import (
     validate_config,
     validate_economic_metadata,
     validate_stock_metadata,
+)
+from .set_exchange import (
+    SetAPIError,
+    SetConfig,
+    SetError,
+    SetParseError,
+    SetRateLimitError,
+    SetValidationError,
+)
+from .sgx import (
+    SgxAPIError,
+    SgxConfig,
+    SgxError,
+    SgxParseError,
+    SgxRateLimitError,
+    SgxValidationError,
 )
 from .types import (
     AgentOutput,
@@ -214,6 +274,13 @@ __all__ = [
     "BseRetryConfig",
     "BseSession",
     "BseValidationError",
+    # Bursa (Malaysia)
+    "BursaAPIError",
+    "BursaConfig",
+    "BursaError",
+    "BursaParseError",
+    "BursaRateLimitError",
+    "BursaValidationError",
     # Core
     "CacheConfig",
     "CacheError",
@@ -261,6 +328,20 @@ __all__ = [
     "FinancialResult",
     "FundFlowsCollector",
     "FundamentalsCollector",
+    # HOSE (Vietnam)
+    "HoseAPIError",
+    "HoseConfig",
+    "HoseError",
+    "HoseParseError",
+    "HoseRateLimitError",
+    "HoseValidationError",
+    # IDX (Indonesia)
+    "IdxAPIError",
+    "IdxConfig",
+    "IdxError",
+    "IdxParseError",
+    "IdxRateLimitError",
+    "IdxValidationError",
     "IndexCollector",
     "IndexName",
     # J-Quants
@@ -273,11 +354,32 @@ __all__ = [
     "NasdaqError",
     "NasdaqParseError",
     "NasdaqRateLimitError",
+    # PSE (Philippines)
+    "PseAPIError",
+    "PseConfig",
+    "PseError",
+    "PseParseError",
+    "PseRateLimitError",
+    "PseValidationError",
     "QuoteCollector",
     "ScreenerCollector",
     "ScreenerFilter",
     "ScripGroup",
     "ScripQuote",
+    # SET (Thailand)
+    "SetAPIError",
+    "SetConfig",
+    "SetError",
+    "SetParseError",
+    "SetRateLimitError",
+    "SetValidationError",
+    # SGX (Singapore)
+    "SgxAPIError",
+    "SgxConfig",
+    "SgxError",
+    "SgxParseError",
+    "SgxRateLimitError",
+    "SgxValidationError",
     "StockDataMetadata",
     "TickerCollector",
     "TickerRecord",
