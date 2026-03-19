@@ -444,4 +444,20 @@ def _dict_to_paper_metadata(data: dict[str, Any]) -> PaperMetadata:
     )
 
 
-__all__ = ["PaperFetcher"]
+__all__ = ["PaperFetcher", "paper_metadata_to_dict"]
+
+
+def paper_metadata_to_dict(paper: PaperMetadata) -> dict[str, Any]:
+    """PaperMetadata を JSON シリアライズ可能な dict に変換する.
+
+    Parameters
+    ----------
+    paper : PaperMetadata
+        変換する論文メタデータ。
+
+    Returns
+    -------
+    dict[str, Any]
+        シリアライズ可能な辞書。
+    """
+    return _paper_metadata_to_dict(paper)

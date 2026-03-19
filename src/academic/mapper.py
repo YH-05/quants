@@ -23,6 +23,8 @@ Examples
 
 from __future__ import annotations
 
+import secrets
+from datetime import datetime, timezone
 from itertools import combinations
 from typing import Any
 
@@ -211,10 +213,6 @@ def _empty_academic_queue(input_path: str) -> dict[str, Any]:
     dict[str, Any]
         Empty academic graph-queue dict.
     """
-    # Import here to avoid circular dependency at module level
-    import secrets
-    from datetime import datetime, timezone
-
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     rand8 = secrets.token_hex(4)
     queue_id = f"gq-{timestamp}-{rand8}"

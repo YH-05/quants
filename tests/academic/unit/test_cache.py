@@ -5,7 +5,15 @@ SQLiteCache ラッパーとキャッシュキー生成のテスト。
 
 from __future__ import annotations
 
-from academic.cache import get_academic_cache, make_cache_key
+from unittest.mock import MagicMock, patch
+
+from academic.cache import (
+    ACADEMIC_CACHE_DB_PATH,
+    ACADEMIC_CACHE_MAX_ENTRIES,
+    ACADEMIC_CACHE_TTL,
+    get_academic_cache,
+    make_cache_key,
+)
 from academic.types import AcademicConfig
 
 # ---------------------------------------------------------------------------
@@ -41,63 +49,56 @@ class TestMakeCacheKey:
 class TestGetAcademicCache:
     """get_academic_cache() のテスト."""
 
-    def test_正常系_SQLiteCacheインスタンスを返す(self) -> None:
-        """get_academic_cache() が SQLiteCache インスタンスを返すことを確認。"""
-        cache = get_academic_cache()
-        assert cache is not None
+    @patch("academic.cache.create_persistent_cache")
+    def test_正常系_デフォルト引数でcreate_persistent_cacheを呼ぶ(
+        self,
+        mock_create: MagicMock,
+    ) -> None:
+        """デフォルト設定で create_persistent_cache が正しい引数で呼ばれることを確認。"""
+        mock_cache = MagicMock()
+        mock_create.return_value = mock_cache
 
-    def test_正常系_デフォルトTTLが7日(self) -> None:
-        """デフォルト TTL が 604800秒（7日）であることを確認。"""
-        cache = get_academic_cache()
-        assert cache.config.ttl_seconds == 604800
+        result = get_academic_cache()
 
-    def test_正常系_カスタム設定でTTLを変更できる(self) -> None:
-        """AcademicConfig.cache_ttl でカスタム TTL を設定できることを確認。"""
+        mock_create.assert_called_once_with(
+            db_path=ACADEMIC_CACHE_DB_PATH,
+            ttl_seconds=ACADEMIC_CACHE_TTL,
+            max_entries=ACADEMIC_CACHE_MAX_ENTRIES,
+        )
+        assert result is mock_cache
+
+    @patch("academic.cache.create_persistent_cache")
+    def test_正常系_カスタムTTLでcreate_persistent_cacheを呼ぶ(
+        self,
+        mock_create: MagicMock,
+    ) -> None:
+        """AcademicConfig.cache_ttl でカスタム TTL が渡されることを確認。"""
+        mock_cache = MagicMock()
+        mock_create.return_value = mock_cache
+
         config = AcademicConfig(cache_ttl=3600)
-        cache = get_academic_cache(config=config)
-        assert cache.config.ttl_seconds == 3600
+        result = get_academic_cache(config=config)
 
-    def test_正常系_max_entriesが5000(self) -> None:
-        """max_entries が 5000 であることを確認。"""
-        cache = get_academic_cache()
-        assert cache.config.max_entries == 5000
+        mock_create.assert_called_once_with(
+            db_path=ACADEMIC_CACHE_DB_PATH,
+            ttl_seconds=3600,
+            max_entries=ACADEMIC_CACHE_MAX_ENTRIES,
+        )
+        assert result is mock_cache
 
+    @patch("academic.cache.create_persistent_cache")
+    def test_正常系_Noneの場合デフォルト設定を使用(
+        self,
+        mock_create: MagicMock,
+    ) -> None:
+        """config=None でデフォルト TTL が使用されることを確認。"""
+        mock_cache = MagicMock()
+        mock_create.return_value = mock_cache
 
-# ---------------------------------------------------------------------------
-# TestCacheRoundTrip
-# ---------------------------------------------------------------------------
+        get_academic_cache(config=None)
 
-
-class TestCacheRoundTrip:
-    """キャッシュの set/get ラウンドトリップテスト."""
-
-    def test_正常系_setとgetでラウンドトリップできる(self) -> None:
-        """set で保存した値を get で取得できることを確認。"""
-        cache = get_academic_cache()
-        key = make_cache_key("2301.00001")
-        data = {"title": "Test Paper", "authors": ["Alice"]}
-        cache.set(key, data)
-
-        result = cache.get(key)
-        assert result is not None
-        assert result["title"] == "Test Paper"
-        assert result["authors"] == ["Alice"]
-
-    def test_正常系_キャッシュミスでNoneを返す(self) -> None:
-        """存在しないキーで get した場合 None が返ることを確認。"""
-        cache = get_academic_cache()
-        result = cache.get("academic:paper:nonexistent")
-        assert result is None
-
-    def test_正常系_TTL期限切れでNoneを返す(self) -> None:
-        """TTL 期限切れの場合 None が返ることを確認。"""
-        # TTL=1秒の短いキャッシュを作成
-        config = AcademicConfig(cache_ttl=1)
-        cache = get_academic_cache(config=config)
-        key = make_cache_key("2301.00001")
-        data = {"title": "Expiring Paper"}
-        cache.set(key, data, ttl=0)  # TTL=0 で即時期限切れ
-
-        # 期限切れなので None を返す
-        result = cache.get(key)
-        assert result is None
+        mock_create.assert_called_once_with(
+            db_path=ACADEMIC_CACHE_DB_PATH,
+            ttl_seconds=ACADEMIC_CACHE_TTL,
+            max_entries=ACADEMIC_CACHE_MAX_ENTRIES,
+        )

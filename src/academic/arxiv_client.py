@@ -49,7 +49,7 @@ from .types import AcademicConfig, AuthorInfo, PaperMetadata
 logger = get_logger(__name__)
 
 # arXiv API ベース URL
-_BASE_URL = "http://export.arxiv.org/api"
+_BASE_URL = "https://export.arxiv.org/api"
 
 
 class ArxivClient:

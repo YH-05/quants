@@ -22,7 +22,7 @@ from .errors import (
     RateLimitError,
     RetryableError,
 )
-from .fetcher import PaperFetcher
+from .fetcher import PaperFetcher, paper_metadata_to_dict
 from .mapper import map_academic_papers
 from .retry import classify_http_error, create_retry_decorator
 from .s2_client import S2Client
@@ -47,6 +47,7 @@ __all__ = [
     "get_academic_cache",
     "make_cache_key",
     "map_academic_papers",
+    "paper_metadata_to_dict",
 ]
 
 __version__ = "0.1.0"

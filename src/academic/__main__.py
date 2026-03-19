@@ -32,7 +32,6 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any
 
 from utils_core.logging import get_logger
 
@@ -41,53 +40,6 @@ logger = get_logger(__name__)
 DEFAULT_OUTPUT_DIR = Path(".tmp/academic")
 DEFAULT_OUTPUT_FILE = "papers.json"
 BACKFILL_OUTPUT_FILE = "graph-queue.json"
-
-
-def _paper_metadata_to_dict(paper: Any) -> dict[str, Any]:
-    """PaperMetadata を JSON シリアライズ可能な dict に変換する.
-
-    Parameters
-    ----------
-    paper : PaperMetadata
-        変換する論文メタデータ。
-
-    Returns
-    -------
-    dict[str, Any]
-        シリアライズ可能な辞書。
-    """
-    return {
-        "arxiv_id": paper.arxiv_id,
-        "title": paper.title,
-        "authors": [
-            {
-                "name": a.name,
-                "s2_author_id": a.s2_author_id,
-                "organization": a.organization,
-            }
-            for a in paper.authors
-        ],
-        "references": [
-            {
-                "title": r.title,
-                "arxiv_id": r.arxiv_id,
-                "s2_paper_id": r.s2_paper_id,
-            }
-            for r in paper.references
-        ],
-        "citations": [
-            {
-                "title": c.title,
-                "arxiv_id": c.arxiv_id,
-                "s2_paper_id": c.s2_paper_id,
-            }
-            for c in paper.citations
-        ],
-        "abstract": paper.abstract,
-        "s2_paper_id": paper.s2_paper_id,
-        "published": paper.published,
-        "updated": paper.updated,
-    }
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -199,6 +151,7 @@ def _handle_fetch(args: argparse.Namespace) -> int:
         Exit code.
     """
     from .fetcher import PaperFetcher
+    from .fetcher import paper_metadata_to_dict as _pm_to_dict
 
     arxiv_ids: list[str] = []
     if args.arxiv_id:
@@ -226,7 +179,7 @@ def _handle_fetch(args: argparse.Namespace) -> int:
 
     # Serialize to JSON
     output_data = {
-        "papers": [_paper_metadata_to_dict(p) for p in papers],
+        "papers": [_pm_to_dict(p) for p in papers],
     }
 
     # Write output
@@ -300,6 +253,7 @@ def _handle_backfill(args: argparse.Namespace) -> int:
         Exit code (0 for success, 1 for error).
     """
     from .fetcher import PaperFetcher
+    from .fetcher import paper_metadata_to_dict as _pm_to_dict
     from .mapper import map_academic_papers
 
     # 1. IDs ファイルを読み込む
@@ -336,7 +290,7 @@ def _handle_backfill(args: argparse.Namespace) -> int:
     logger.info("Papers fetched", fetched_count=len(papers))
 
     # 3. PaperMetadata -> dict に変換
-    paper_dicts = [_paper_metadata_to_dict(p) for p in papers]
+    paper_dicts = [_pm_to_dict(p) for p in papers]
 
     # 4. map_academic_papers で graph-queue JSON に変換
     existing_ids: list[str] = args.existing_ids or []

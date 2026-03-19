@@ -23,6 +23,7 @@ Usage
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from typing import Any
 
@@ -34,7 +35,6 @@ logger = get_logger(__name__)
 # Default Neo4j connection settings
 DEFAULT_NEO4J_URI = "bolt://localhost:7687"
 DEFAULT_NEO4J_USER = "neo4j"
-DEFAULT_NEO4J_PASSWORD = "password"
 
 # Cypher to fetch legacy Author nodes with ``auth-*`` IDs
 _FETCH_LEGACY_AUTHORS = """
@@ -44,37 +44,10 @@ RETURN a.id AS old_id, a.name AS name, a.author_type AS author_type,
        properties(a) AS props
 """
 
-# Cypher to merge a new Author node and migrate relationships, then delete the
-# old node.  Parameters: $old_id, $new_id, $props
-_MIGRATE_AUTHOR = """
-MATCH (old:Author {id: $old_id})
-MERGE (new:Author {id: $new_id})
-SET new += $props
-SET new.id = $new_id
-WITH old, new
-CALL (old, new) {
-    MATCH (old)-[r]->()
-    WITH old, new, collect(r) AS rels
-    UNWIND rels AS r
-    WITH new, r, endNode(r) AS target, type(r) AS rtype
-    CALL apoc.create.relationship(new, rtype, properties(r), target) YIELD rel
-    RETURN count(rel) AS out_migrated
-}
-CALL (old, new) {
-    MATCH ()-[r]->(old)
-    WITH old, new, collect(r) AS rels
-    UNWIND rels AS r
-    WITH new, r, startNode(r) AS source, type(r) AS rtype
-    CALL apoc.create.relationship(source, rtype, properties(r), new) YIELD rel
-    RETURN count(rel) AS in_migrated
-}
-DETACH DELETE old
-RETURN new.id AS new_id
-"""
-
-# Simpler migration Cypher without APOC dependency -- copies properties,
-# re-links all inbound/outbound relationships via plain Cypher, and deletes
-# the old node.
+# Migration Cypher without APOC dependency -- copies properties and deletes
+# the old node.  DETACH DELETE removes all relationships on the old node.
+# AIDEV-NOTE: Relationships are NOT migrated to the new node.  Run this only
+# when Author nodes have no critical relationships, or use APOC-based migration.
 _MIGRATE_AUTHOR_SIMPLE = """
 MATCH (old:Author {id: $old_id})
 MERGE (new:Author {id: $new_id})
@@ -118,8 +91,8 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--neo4j-password",
-        default=DEFAULT_NEO4J_PASSWORD,
-        help="Neo4j password.",
+        default=os.environ.get("NEO4J_PASSWORD"),
+        help="Neo4j password (or set NEO4J_PASSWORD env var).",
     )
     return parser
 
@@ -261,6 +234,15 @@ def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
 
+    if not args.neo4j_password:
+        logger.error("Neo4j password is required")
+        print(
+            "Error: Neo4j password is required. "
+            "Set --neo4j-password or NEO4J_PASSWORD env var.",
+            file=sys.stderr,
+        )
+        return 1
+
     try:
         from neo4j import GraphDatabase  # type: ignore[import-untyped]
     except ImportError:
@@ -285,7 +267,10 @@ def main(argv: list[str] | None = None) -> int:
         driver.verify_connectivity()
     except Exception as exc:
         logger.error("Failed to connect to Neo4j", error=str(exc))
-        print(f"Error: Failed to connect to Neo4j: {exc}", file=sys.stderr)
+        print(
+            "Error: Failed to connect to Neo4j. See logs for details.",
+            file=sys.stderr,
+        )
         return 1
 
     try:
