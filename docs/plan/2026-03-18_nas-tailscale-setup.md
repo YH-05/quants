@@ -2,15 +2,46 @@
 
 **目的**: 外部ネットワークから自宅NASに直接アクセスし、PythonスクリプトからNASにデータ書き込みできるようにする
 
+**ステータス**: ✅ Phase 2〜5 + 自動マウント 完了（2026-03-19 実施）
+
 **前提条件**:
 - UGREEN NAS（UGOS、Docker非対応）
 - NAS管理画面ポート: HTTPS 9443
-- Tailscale アカウント: このPCで使用中のもの
+- Tailscale アカウント: このPCで使用中のもの（YH-05@）
 - 自宅LANに接続した状態で作業する
+
+## 実施結果サマリー
+
+| Phase | 内容 | ステータス | 備考 |
+|-------|------|-----------|------|
+| Phase 1 | Mac mini SSH鍵登録 | ⏭️ スキップ | Mac mini オフライン、後日対応可 |
+| Phase 2 | NAS情報収集 | ✅ 完了 | 2026-03-19 |
+| Phase 3 | Tailscaleインストール・認証 | ✅ 完了 | 2026-03-19 |
+| Phase 4 | 自動起動設定 (cron @reboot) | ✅ 完了 | 2026-03-19 |
+| Phase 5 | SMBマウント・Python書き込みテスト | ✅ 完了 | 2026-03-19 |
+| Phase 6 | SMB自動マウント (launchd + Keychain) | ✅ 完了 | 2026-03-19 |
+
+## 確定した接続情報
+
+| 項目 | 値 |
+|------|-----|
+| NASホスト名 | DH2300-48C1 |
+| NAS ローカルIP | 192.168.11.14 |
+| NAS Tailscale IP | 100.70.5.35 |
+| NAS OS | Debian 12 (bookworm) / UGOS 1.13.1 |
+| NAS アーキテクチャ | aarch64 (arm64) |
+| Tailscale バージョン | v1.80.3 |
+| Tailscale バイナリ | /usr/local/bin/tailscale, /usr/local/bin/tailscaled |
+| 自動起動 | root cron @reboot |
+| SSH ユーザー | Yuki (port 22) |
+| SMB 共有名 | personal_folder |
+| SMB マウントポイント | /Volumes/personal_folder |
+| Quants データパス | /Volumes/personal_folder/Quants |
+| データディスク | /volume1 (5.4TB, 5.4TB空き) |
 
 ---
 
-## Phase 1: Mac mini SSH鍵登録（2分）
+## Phase 1: Mac mini SSH鍵登録（2分） ⏭️ スキップ
 
 Mac mini のターミナルを開いて実行：
 
@@ -36,14 +67,14 @@ ssh yuki@100.106.41.61 "echo OK"
 2. **設定 > サービス > SSH** を有効化
 3. SSHポート番号をメモ（デフォルト: 22）
 
-### 2-2. NASの情報をメモ
+### 2-2. NASの情報 ✅
 
 | 項目 | 値 |
 |------|-----|
-| NASのローカルIP | ___.___.___.___ |
-| SSHポート | _____ |
-| SSHユーザー名 | _____ |
-| SSHパスワード | _____ |
+| NASのローカルIP | 192.168.11.14 |
+| SSHポート | 22 |
+| SSHユーザー名 | Yuki |
+| NASホスト名 | DH2300-48C1 |
 
 ### 2-3. NASにSSHで接続してアーキテクチャ確認
 
@@ -245,10 +276,66 @@ showmount -e <NAS_TAILSCALE_IP>
 ## 完了後の構成図
 
 ```
-[このPC] --Tailscale--> [UGREEN NAS]
-  192.168.179.5            100.x.x.x (Tailscale)
-  (外部Wi-Fi)             (自宅LAN + Tailscale)
-                           SMB: /Volumes/nas/
+[このPC (yuki)]           [UGREEN NAS (dh2300-48c1)]
+  100.121.150.67    ──Tailscale──    100.70.5.35
+  (macOS)                            (Debian 12 / UGOS 1.13.1 / aarch64)
+                                     LAN: 192.168.11.14
+                                     SMB共有: personal_folder
+                                     マウント: /Volumes/personal_folder
+                                     データ: /volume1 (5.4TB)
 
-Python → Path("/Volumes/nas/data/output.csv") → NASに直接書き込み
+Python → Path("/Volumes/personal_folder/Quants/output.csv") → NASに直接書き込み
 ```
+
+## Phase 6: SMB自動マウント ✅ 完了（2026-03-19 追加実施）
+
+Mac再起動・スリープ復帰・Wi-Fi切替時のSMB切断に対応するため、自動マウントを設定。
+
+### 構成
+
+| ファイル | 役割 |
+|---------|------|
+| `~/bin/mount-nas.sh` | マウントスクリプト（Tailscale到達確認→osascript SMBマウント） |
+| `~/Library/LaunchAgents/com.quants.nas-mount.plist` | launchdエージェント（ログイン時+5分間隔） |
+| macOS Keychain | SMB認証情報（Yuki@100.70.5.35） |
+| `~/Library/Logs/nas-mount.log` | 動作ログ |
+
+### 動作フロー
+
+```
+5分間隔 or ログイン時
+  → マウント済み？ → Yes → 何もしない
+  → Tailscale起動確認 → NG → スキップ
+  → NAS SMBポート到達確認 → NG → スキップ
+  → osascript "mount volume smb://Yuki@100.70.5.35/personal_folder"
+  → マウント成功ログ記録
+```
+
+### 管理コマンド
+
+```bash
+# 手動マウント
+~/bin/mount-nas.sh
+
+# launchd 状態確認
+launchctl list | grep quants
+
+# ログ確認
+cat ~/Library/Logs/nas-mount.log
+
+# 一時停止
+launchctl unload ~/Library/LaunchAgents/com.quants.nas-mount.plist
+
+# 再開
+launchctl load ~/Library/LaunchAgents/com.quants.nas-mount.plist
+```
+
+---
+
+## 残タスク
+
+| ID | 内容 | 優先度 | ステータス |
+|----|------|--------|-----------|
+| act-2026-03-19-001 | Mac mini SSH鍵登録（Phase 1） | low | pending |
+| act-2026-03-19-002 | NAS再起動後のTailscale自動起動動作確認 | medium | pending |
+| act-2026-03-19-003 | UGOSファームウェア更新後のTailscaleバイナリ永続化確認 | medium | pending |
