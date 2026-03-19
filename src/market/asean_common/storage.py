@@ -34,6 +34,7 @@ import dataclasses
 from typing import TYPE_CHECKING
 
 import pandas as pd
+import pandera.pandas as pa
 
 from market.asean_common._utils import _coerce_optional_int, _coerce_optional_str
 from market.asean_common.constants import TABLE_TICKERS, AseanMarket
@@ -44,6 +45,32 @@ if TYPE_CHECKING:
     from database.db.duckdb_client import DuckDBClient
 
 logger = get_logger(__name__)
+
+
+# ============================================================================
+# pandera DataFrame schema for asean_tickers table
+# ============================================================================
+
+TICKER_DF_SCHEMA: pa.DataFrameSchema = pa.DataFrameSchema(
+    columns={
+        "ticker": pa.Column(str, nullable=False),
+        "name": pa.Column(str, nullable=False),
+        "market": pa.Column(str, nullable=False),
+        "yfinance_suffix": pa.Column(str, nullable=False),
+        "yfinance_ticker": pa.Column(str, nullable=False),
+        "sector": pa.Column(str, nullable=True),
+        "industry": pa.Column(str, nullable=True),
+        "market_cap": pa.Column(
+            "Int64",
+            nullable=True,
+            coerce=True,
+        ),
+        "currency": pa.Column(str, nullable=True),
+        "is_active": pa.Column(bool, nullable=False, coerce=True),
+    },
+    strict=False,
+    name="AseanTickerSchema",
+)
 
 
 # ============================================================================
@@ -117,7 +144,8 @@ class AseanTickerStorage:
         """Upsert ticker records into the asean_tickers table.
 
         Performs a delete-then-insert upsert using ``(ticker, market)``
-        as the composite primary key.
+        as the composite primary key. Validates the DataFrame against
+        ``TICKER_DF_SCHEMA`` before writing to DuckDB.
 
         Parameters
         ----------
@@ -128,16 +156,21 @@ class AseanTickerStorage:
         -------
         int
             Number of records upserted.
+
+        Raises
+        ------
+        pandera.errors.SchemaError
+            If the DataFrame fails schema validation (e.g. invalid
+            ``market_cap`` type, missing required columns).
         """
         if not tickers:
             logger.debug("No tickers to upsert, skipping")
             return 0
 
-        df = pd.DataFrame([dataclasses.asdict(t) for t in tickers])
-        # Convert AseanMarket enum to string for storage
-        df["market"] = df["market"].apply(
-            lambda m: m.value if isinstance(m, AseanMarket) else str(m)
-        )
+        df = self._build_ticker_df(tickers)
+        logger.debug("Validating ticker DataFrame against schema", rows=len(df))
+        df = TICKER_DF_SCHEMA.validate(df)
+        logger.debug("Schema validation passed", rows=len(df))
         self._client.store_df(
             df,
             TABLE_TICKERS,
@@ -147,6 +180,30 @@ class AseanTickerStorage:
         count = len(tickers)
         logger.info("Tickers upserted", count=count)
         return count
+
+    @staticmethod
+    def _build_ticker_df(tickers: list[TickerRecord]) -> pd.DataFrame:
+        """Convert TickerRecord list to a DataFrame suitable for storage.
+
+        Converts dataclass instances to dicts via ``dataclasses.asdict``
+        and coerces ``AseanMarket`` enum values to plain strings.
+
+        Parameters
+        ----------
+        tickers : list[TickerRecord]
+            TickerRecord instances to convert.
+
+        Returns
+        -------
+        pd.DataFrame
+            DataFrame with columns matching the ``asean_tickers`` DDL.
+        """
+        df = pd.DataFrame([dataclasses.asdict(t) for t in tickers])
+        # Convert AseanMarket enum to string for storage
+        df["market"] = df["market"].apply(
+            lambda m: m.value if isinstance(m, AseanMarket) else str(m)
+        )
+        return df
 
     # ------------------------------------------------------------------
     # Query methods
