@@ -21,6 +21,7 @@ from .errors import (
     RetryableError,
 )
 from .retry import classify_http_error, create_retry_decorator
+from .s2_client import S2Client
 from .types import AcademicConfig, AuthorInfo, CitationInfo, PaperMetadata
 
 __all__ = [
@@ -34,6 +35,7 @@ __all__ = [
     "PermanentError",
     "RateLimitError",
     "RetryableError",
+    "S2Client",
     "classify_http_error",
     "create_retry_decorator",
 ]
