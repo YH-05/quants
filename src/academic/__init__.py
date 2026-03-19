@@ -12,6 +12,8 @@ Examples
 'John Doe'
 """
 
+from .arxiv_client import ArxivClient
+from .cache import get_academic_cache, make_cache_key
 from .errors import (
     AcademicError,
     PaperNotFoundError,
@@ -27,6 +29,7 @@ from .types import AcademicConfig, AuthorInfo, CitationInfo, PaperMetadata
 __all__ = [
     "AcademicConfig",
     "AcademicError",
+    "ArxivClient",
     "AuthorInfo",
     "CitationInfo",
     "PaperMetadata",
@@ -38,6 +41,8 @@ __all__ = [
     "S2Client",
     "classify_http_error",
     "create_retry_decorator",
+    "get_academic_cache",
+    "make_cache_key",
 ]
 
 __version__ = "0.1.0"
