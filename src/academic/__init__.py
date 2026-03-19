@@ -36,7 +36,6 @@ __all__ = [
     "CitationInfo",
     "PaperFetcher",
     "PaperMetadata",
-    "map_academic_papers",
     "PaperNotFoundError",
     "ParseError",
     "PermanentError",
@@ -47,6 +46,7 @@ __all__ = [
     "create_retry_decorator",
     "get_academic_cache",
     "make_cache_key",
+    "map_academic_papers",
 ]
 
 __version__ = "0.1.0"

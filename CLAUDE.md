@@ -132,6 +132,7 @@ updated_at: 2026-03-07
 | `automation` | 自動化パッケージ | ニュース収集自動化、開発タスク自動化 |
 | `embedding` | エンベディングパッケージ | ChromaDB連携、テキスト抽出、ベクトル検索パイプライン |
 | `notebooklm` | NotebookLM連携パッケージ | ブラウザ自動操作、MCP統合、コンテンツ管理 |
+| `academic` | 学術論文メタデータ取得パッケージ | S2/arXiv連携、著者・引用取得、graph-queue統合 |
 
 ---
 
@@ -147,6 +148,7 @@ updated_at: 2026-03-07
 - `utils_core` → `dev/ca_strategy`
 - `factor` → `dev/ca_strategy`（SectorNeutralizer）
 - `news_scraper` (standalone、curl_cffi ベース)
+- `database`, `edgar`, `utils_core` → `academic`
 
 ### コマンド → スキル → エージェント
 
@@ -186,7 +188,7 @@ updated_at: 2026-03-07
 ```
 quants/
 ├── .claude/          # Claude Code 設定（agents/97個, commands/28個, rules/, skills/61個）
-├── src/              # ソースコード（database, market, edgar, analyze, rss, factor, strategy, news, news_scraper, utils_core, dev/ca_strategy, automation, embedding, notebooklm）
+├── src/              # ソースコード（database, market, edgar, analyze, rss, factor, strategy, news, news_scraper, utils_core, dev/ca_strategy, automation, embedding, notebooklm, academic）
 ├── tests/            # テストスイート（{package}/unit/, property/, integration/）
 ├── template/         # 参照テンプレート（読み取り専用）
 ├── research/         # ディープリサーチワークスペース
