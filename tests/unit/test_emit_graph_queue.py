@@ -58,7 +58,7 @@ class TestHelpers:
             "relations",
         }
         assert required_keys.issubset(set(queue.keys()))
-        assert queue["schema_version"] == "2.1"
+        assert queue["schema_version"] == "2.2"
         assert queue["command_source"] == "test-command"
 
     def test_正常系_resolve_categoryがテーマを変換する(self) -> None:
@@ -383,7 +383,7 @@ class TestGraphQueueStructure:
         for name, mapper in mappers.items():
             queue = mapper({})
             assert "schema_version" in queue, f"{name} missing schema_version"
-            assert queue["schema_version"] == "2.1", f"{name} wrong schema_version"
+            assert queue["schema_version"] == "2.2", f"{name} wrong schema_version"
 
     def test_正常系_全mapperがrelationsを含む(self) -> None:
         mappers = [
