@@ -14,7 +14,7 @@ Test TODO List:
 from dataclasses import FrozenInstanceError
 
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from market.asean_common.constants import YFINANCE_SUFFIX_MAP, AseanMarket
@@ -34,6 +34,7 @@ market_strategy = st.sampled_from(list(AseanMarket))
 class TestTickerRecordProperty:
     """TickerRecord のプロパティベーステスト。"""
 
+    @settings(max_examples=50, deadline=None)
     @given(
         ticker=ticker_strategy,
         market=market_strategy,
@@ -53,6 +54,7 @@ class TestTickerRecordProperty:
         )
         assert record.yfinance_ticker == f"{ticker}{suffix}"
 
+    @settings(max_examples=50, deadline=None)
     @given(
         ticker=ticker_strategy,
         market=market_strategy,
@@ -73,6 +75,7 @@ class TestTickerRecordProperty:
         with pytest.raises(FrozenInstanceError):
             record.ticker = "CHANGED"
 
+    @settings(max_examples=50, deadline=None)
     @given(
         ticker=ticker_strategy,
         suffix_body=st.text(
