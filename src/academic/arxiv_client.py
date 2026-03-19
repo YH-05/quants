@@ -37,7 +37,6 @@ import xml.etree.ElementTree as ET  # nosec B405 - ET.ParseError type only; pars
 from typing import Any
 
 import defusedxml.ElementTree as DefusedET
-
 import feedparser
 import httpx
 
