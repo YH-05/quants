@@ -16,6 +16,10 @@ Supported commands
 - dr-industry
 - finance-research
 
+KG schema support: v1.0 (original 9 node types) and v2.0 (adds Anomaly,
+PerformanceEvidence, MarketRegime, DataRequirement nodes and 11 new
+relation types).
+
 Usage
 -----
 ::
@@ -66,7 +70,7 @@ logger = get_logger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "1.1"
 DEFAULT_OUTPUT_BASE = Path(".tmp/graph-queue")
 DEFAULT_MAX_AGE_DAYS = 7
 
@@ -143,6 +147,11 @@ def _empty_queue(
         "financial_datapoints": [],
         "fiscal_periods": [],
         "insights": [],
+        # KG v2.0 node arrays
+        "anomalies": [],
+        "performance_evidences": [],
+        "market_regimes": [],
+        "data_requirements": [],
         "relations": {
             "tagged": [],
             "makes_claim": [],
@@ -153,6 +162,18 @@ def _empty_queue(
             "for_period": [],
             "supported_by": [],
             "authored_by": [],
+            # KG v2.0 relation types
+            "exploits": [],
+            "evaluates": [],
+            "quantified_by": [],
+            "effective_in": [],
+            "requires_data": [],
+            "explained_by": [],
+            "measured_in": [],
+            "competes_with": [],
+            "extends_method": [],
+            "combined_with": [],
+            "uses_method": [],
         },
     }
 
@@ -236,6 +257,37 @@ def _normalise_period_label(raw: str) -> str:
         Normalised period label with spaces replaced by underscores.
     """
     return raw.strip().replace(" ", "_")
+
+
+# ---------------------------------------------------------------------------
+# KG v2.0 ID generators
+# ---------------------------------------------------------------------------
+
+
+def generate_anomaly_id(slug: str) -> str:
+    """Generate an anomaly ID from a slug."""
+    return f"anomaly-{slug}"
+
+
+def generate_perf_evidence_id(method_slug: str, metric: str) -> str:
+    """Generate a performance evidence ID."""
+    hash8 = hashlib.sha256(f"{method_slug}:{metric}".encode()).hexdigest()[:8]
+    return f"perf-{method_slug}-{metric}-{hash8}"
+
+
+def generate_regime_id(slug: str) -> str:
+    """Generate a market regime ID from a slug."""
+    return f"regime-{slug}"
+
+
+def generate_data_req_id(slug: str) -> str:
+    """Generate a data requirement ID from a slug."""
+    return f"datareq-{slug}"
+
+
+def generate_method_id(slug: str) -> str:
+    """Generate a method ID from a slug."""
+    return f"method-{slug}"
 
 
 # ---------------------------------------------------------------------------

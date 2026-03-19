@@ -1,12 +1,14 @@
 // Neo4j constraints and indices for quants knowledge graph
-// KG Schema v1 — 9 UNIQUE constraints + 13 indices
+// KG Schema v2.0 — 14 UNIQUE constraints + 22 indices
 // All queries use IF NOT EXISTS for idempotency
 //
 // Reference: data/config/knowledge-graph-schema.yaml (constraints / indices sections)
 
 // ============================================================
-// UNIQUE Constraints (9)
+// UNIQUE Constraints (14)
 // ============================================================
+
+// --- v1.0 original (9) ---
 
 CREATE CONSTRAINT unique_source_id IF NOT EXISTS
   FOR (s:Source) REQUIRE s.source_id IS UNIQUE;
@@ -35,9 +37,30 @@ CREATE CONSTRAINT unique_author_id IF NOT EXISTS
 CREATE CONSTRAINT unique_insight_id IF NOT EXISTS
   FOR (i:Insight) REQUIRE i.insight_id IS UNIQUE;
 
+// --- v1.1 addition (1) ---
+
+CREATE CONSTRAINT unique_method_id IF NOT EXISTS
+  FOR (m:Method) REQUIRE m.method_id IS UNIQUE;
+
+// --- v2.0 additions (4) ---
+
+CREATE CONSTRAINT unique_anomaly_id IF NOT EXISTS
+  FOR (n:Anomaly) REQUIRE n.anomaly_id IS UNIQUE;
+
+CREATE CONSTRAINT unique_evidence_id IF NOT EXISTS
+  FOR (n:PerformanceEvidence) REQUIRE n.evidence_id IS UNIQUE;
+
+CREATE CONSTRAINT unique_regime_id IF NOT EXISTS
+  FOR (n:MarketRegime) REQUIRE n.regime_id IS UNIQUE;
+
+CREATE CONSTRAINT unique_data_req_id IF NOT EXISTS
+  FOR (n:DataRequirement) REQUIRE n.data_req_id IS UNIQUE;
+
 // ============================================================
-// Indices (13)
+// Indices (22)
 // ============================================================
+
+// --- v1.0 original (13) ---
 
 CREATE INDEX idx_fact_fact_type IF NOT EXISTS
   FOR (f:Fact) ON (f.fact_type);
@@ -77,3 +100,34 @@ CREATE INDEX idx_source_source_type IF NOT EXISTS
 
 CREATE INDEX idx_source_command_source IF NOT EXISTS
   FOR (s:Source) ON (s.command_source);
+
+// --- v1.1 addition (1) ---
+
+CREATE INDEX idx_method_method_type IF NOT EXISTS
+  FOR (m:Method) ON (m.method_type);
+
+// --- v2.0 additions (8) ---
+
+CREATE INDEX idx_anomaly_type IF NOT EXISTS
+  FOR (n:Anomaly) ON (n.anomaly_type);
+
+CREATE INDEX idx_anomaly_persistence IF NOT EXISTS
+  FOR (n:Anomaly) ON (n.persistence);
+
+CREATE INDEX idx_perf_metric IF NOT EXISTS
+  FOR (n:PerformanceEvidence) ON (n.metric_name);
+
+CREATE INDEX idx_perf_market IF NOT EXISTS
+  FOR (n:PerformanceEvidence) ON (n.market);
+
+CREATE INDEX idx_perf_oos IF NOT EXISTS
+  FOR (n:PerformanceEvidence) ON (n.is_oos);
+
+CREATE INDEX idx_regime_type IF NOT EXISTS
+  FOR (n:MarketRegime) ON (n.regime_type);
+
+CREATE INDEX idx_datareq_type IF NOT EXISTS
+  FOR (n:DataRequirement) ON (n.data_type);
+
+CREATE INDEX idx_datareq_avail IF NOT EXISTS
+  FOR (n:DataRequirement) ON (n.availability);

@@ -19,11 +19,23 @@
 #     - Added: Author.author_type += academic
 #     - Added: 3 new relationships (USES_METHOD, EXTENDS_METHOD, COMBINED_WITH)
 #     - 10 nodes + 19 relationships for quant knowledge graph
+#   v2.0 (2026-03-19): AI-driven quant strategy discovery extension
+#     - Added: Anomaly node (market inefficiencies methods exploit)
+#     - Added: PerformanceEvidence node (structured backtest/live results from Claims)
+#     - Added: MarketRegime node (market environments affecting strategy effectiveness)
+#     - Added: DataRequirement node (input data types methods need)
+#     - Added: Topic.category += strategy_archetype, market_anomaly
+#     - Added: Method.method_type expanded with 9 additional types from corpus
+#     - Added: 8 new relationships (EXPLOITS, EVALUATES, QUANTIFIED_BY, EFFECTIVE_IN,
+#              REQUIRES_DATA, EXPLAINED_BY, MEASURED_IN, COMPETES_WITH)
+#     - 14 nodes + 27 relationships for AI strategy discovery graph
+#     - Design goal: Enable AI to traverse "Anomaly → Method → PerformanceEvidence → MarketRegime"
+#       chains for emergent strategy hypothesis generation
 
-version: "1.1"
+version: "2.0"
 
 # ============================================================
-# Node Definitions (10 nodes)
+# Node Definitions (14 nodes)
 # ============================================================
 nodes:
   Source:
@@ -251,7 +263,7 @@ nodes:
         indexed: true
       category:
         type: string
-        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings, quant_method, backtest, algorithm, risk_model]
+        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings, quant_method, backtest, algorithm, risk_model, strategy_archetype, market_anomaly]
         indexed: true
 
   Author:
@@ -296,14 +308,23 @@ nodes:
       method_type:
         type: string
         required: true
-        enum: [architecture, algorithm, framework, technique, model]
+        enum: [architecture, algorithm, framework, technique, model, deep-learning, graph-construction, reasoning, stochastic-process, representation-learning, generative-model, causal-inference, optimization, protocol]
         indexed: true
         description: >
           architecture=neural network architecture (GAN, Transformer, GNN),
           algorithm=specific computational procedure (MCTS, LASSO),
           framework=end-to-end system design (MAS, PolyModel),
           technique=general approach (attention, RL, Bayesian),
-          model=statistical/ML model (HMM, FinBERT, P-Trees)
+          model=statistical/ML model (HMM, FinBERT, P-Trees),
+          deep-learning=DL variant (GAT, Graph Conv LSTM),
+          graph-construction=graph building method (LLM-based inference),
+          reasoning=inference/reasoning method (rule-guided KG exploration),
+          stochastic-process=probabilistic temporal model (Hawkes process),
+          representation-learning=embedding/feature learning (contrastive learning),
+          generative-model=generative sampling (GFlowNet, diffusion),
+          causal-inference=causal discovery/analysis,
+          optimization=search/optimization method (evolutionary),
+          protocol=integration standard (MCP)
       description:
         type: string
         description: "Brief description of what the method does"
@@ -346,8 +367,178 @@ nodes:
         indexed: true
         description: "Lifecycle status of the insight"
 
+  # --- v2.0 新規ノード ---
+
+  Anomaly:
+    description: >
+      Market inefficiency or anomaly that investment methods exploit.
+      Tracks what persistent mispricings exist and why, enabling AI to reason
+      about which methods target which anomalies and assess decay risk.
+    properties:
+      anomaly_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: anomaly-{slug} (e.g., 'anomaly-momentum-effect')"
+      name:
+        type: string
+        required: true
+        indexed: true
+        description: "Human-readable name (e.g., 'Momentum Effect', 'Alpha Decay')"
+      anomaly_type:
+        type: string
+        required: true
+        enum: [behavioral, structural, informational, microstructure, regulatory]
+        indexed: true
+        description: >
+          behavioral=investor psychology (overreaction, anchoring, herding),
+          structural=market structure (index inclusion, sector rotation),
+          informational=information asymmetry (earnings surprise, insider flow),
+          microstructure=trading mechanism (bid-ask bounce, order flow),
+          regulatory=regulatory-driven (tax-loss selling, rebalancing)
+      first_documented_year:
+        type: integer
+        description: "Year the anomaly was first documented in academic literature"
+      persistence:
+        type: string
+        enum: [persistent, decaying, debated, regime_dependent]
+        indexed: true
+        description: "Current status of the anomaly's persistence"
+      created_at:
+        type: datetime
+        required: true
+
+  PerformanceEvidence:
+    description: >
+      Structured quantitative evidence extracted from Claims about method/strategy performance.
+      Separates performance metrics from textual claims to enable quantitative comparison
+      across methods, markets, and time periods.
+    properties:
+      evidence_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: perf-{method_slug}-{metric}-{hash8} (e.g., 'perf-gan-sdf-sharpe-a3b2c1d4')"
+      metric_name:
+        type: string
+        required: true
+        indexed: true
+        description: "Performance metric (e.g., 'sharpe_ratio', 'annual_return', 'max_drawdown', 'accuracy', 'f1_score')"
+      value:
+        type: float
+        required: true
+        description: "Numeric value of the metric"
+      unit:
+        type: string
+        description: "Unit (e.g., '%', 'ratio', 'bps')"
+      benchmark:
+        type: string
+        description: "Benchmark used for comparison (e.g., 'S&P 500', 'linear model', 'buy-and-hold')"
+      benchmark_value:
+        type: float
+        description: "Benchmark's value for the same metric"
+      period_start:
+        type: string
+        description: "Evaluation period start (e.g., '2022-06')"
+      period_end:
+        type: string
+        description: "Evaluation period end (e.g., '2023-12')"
+      market:
+        type: string
+        indexed: true
+        description: "Market/universe (e.g., 'US', 'China A-shares', 'CSI 500', 'NYSE', 'Eurostoxx 600')"
+      is_oos:
+        type: boolean
+        indexed: true
+        description: "true=out-of-sample, false=in-sample"
+      sample_size:
+        type: string
+        description: "Sample description (e.g., '1000 stocks', '200 years', '29000 ratios')"
+      created_at:
+        type: datetime
+        required: true
+
+  MarketRegime:
+    description: >
+      Market environment classification affecting strategy effectiveness.
+      Enables conditional reasoning: "Method X works in Regime Y but not Z."
+    properties:
+      regime_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: regime-{slug} (e.g., 'regime-high-volatility')"
+      name:
+        type: string
+        required: true
+        indexed: true
+        description: "Human-readable name (e.g., 'High Volatility', 'QE Environment')"
+      regime_type:
+        type: string
+        required: true
+        enum: [volatility, monetary_policy, economic_cycle, sentiment, liquidity, correlation]
+        indexed: true
+        description: >
+          volatility=vol regime (high/low/normal),
+          monetary_policy=central bank stance (QE, QT, hiking, cutting),
+          economic_cycle=macro phase (expansion, recession, recovery),
+          sentiment=market mood (risk-on, risk-off, complacent),
+          liquidity=market liquidity (tight, abundant),
+          correlation=cross-asset correlation regime (high, low, decoupling)
+      description:
+        type: string
+        description: "Detailed description of the regime characteristics"
+      created_at:
+        type: datetime
+        required: true
+
+  DataRequirement:
+    description: >
+      Input data type that a method requires for implementation.
+      Enables feasibility assessment: "Given our available data, which methods can we use?"
+    properties:
+      data_req_id:
+        type: string
+        unique: true
+        required: true
+        description: "Format: datareq-{slug} (e.g., 'datareq-daily-price')"
+      name:
+        type: string
+        required: true
+        indexed: true
+        description: "Human-readable name (e.g., 'Daily Price/Volume', 'Earnings Transcripts')"
+      data_type:
+        type: string
+        required: true
+        enum: [price, fundamental, alternative, text, graph, macro, options, corporate_action]
+        indexed: true
+        description: >
+          price=market price/volume/OHLCV,
+          fundamental=financial statements/ratios,
+          alternative=alternative data (satellite, credit card, web traffic),
+          text=unstructured text (news, transcripts, filings, social media),
+          graph=relational/graph data (supply chain, ownership, competition),
+          macro=macroeconomic indicators (GDP, CPI, rates, yield curve),
+          options=options/derivatives data,
+          corporate_action=M&A, dividends, splits, insider transactions
+      frequency:
+        type: string
+        enum: [tick, minute, daily, weekly, monthly, quarterly, annual, event_driven]
+        description: "Required data frequency"
+      min_history:
+        type: string
+        description: "Minimum historical data needed (e.g., '5Y', '200 days', '10 quarters')"
+      availability:
+        type: string
+        enum: [free, commercial, proprietary, mixed]
+        indexed: true
+        description: "Data availability: free=publicly available, commercial=paid vendors, proprietary=internal only"
+      created_at:
+        type: datetime
+        required: true
+
 # ============================================================
-# Relationship Definitions (19 relationships)
+# Relationship Definitions (27 relationships)
 # ============================================================
 relationships:
   # Source -> Method
@@ -509,6 +700,88 @@ relationships:
       reason:
         type: string
 
+  # --- v2.0 新規リレーション ---
+
+  # Method -> Anomaly
+  EXPLOITS:
+    from: Method
+    to: Anomaly
+    description: "This method exploits/targets this market anomaly"
+    properties:
+      mechanism:
+        type: string
+        description: "How the method exploits the anomaly (e.g., 'captures momentum via trend detection')"
+      effectiveness:
+        type: string
+        enum: [proven, promising, theoretical, disputed]
+        description: "Level of evidence for exploitation effectiveness"
+
+  # PerformanceEvidence -> Method
+  EVALUATES:
+    from: PerformanceEvidence
+    to: Method
+    description: "This performance evidence evaluates this method"
+
+  # Claim -> PerformanceEvidence
+  QUANTIFIED_BY:
+    from: Claim
+    to: PerformanceEvidence
+    description: "This claim's performance assertion is quantified by structured evidence"
+
+  # Method -> MarketRegime
+  EFFECTIVE_IN:
+    from: Method
+    to: MarketRegime
+    description: "Evidence that this method is effective in this market regime"
+    properties:
+      evidence_summary:
+        type: string
+        description: "Summary of evidence for regime effectiveness"
+      source_id:
+        type: string
+        description: "Source document providing this evidence"
+
+  # Method -> DataRequirement
+  REQUIRES_DATA:
+    from: Method
+    to: DataRequirement
+    description: "This method requires this type of input data"
+    properties:
+      criticality:
+        type: string
+        enum: [essential, recommended, optional]
+        description: "How critical this data is for the method"
+
+  # Anomaly -> Claim
+  EXPLAINED_BY:
+    from: Anomaly
+    to: Claim
+    description: "Theoretical explanation of why this anomaly persists"
+    properties:
+      explanation_type:
+        type: string
+        enum: [persistence, decay, boundary_condition]
+        description: "Type of explanation: why it persists, why it decays, or conditions for existence"
+
+  # PerformanceEvidence -> MarketRegime
+  MEASURED_IN:
+    from: PerformanceEvidence
+    to: MarketRegime
+    description: "This performance was measured during this market regime"
+
+  # Method -> Method (competitive alternatives)
+  COMPETES_WITH:
+    from: Method
+    to: Method
+    description: "Two methods that are alternatives for the same purpose"
+    properties:
+      dimension:
+        type: string
+        description: "Along what dimension they compete (e.g., 'stock prediction accuracy', 'alpha factor generation')"
+      winner:
+        type: string
+        description: "Which method generally wins, if known (method_id or 'context_dependent')"
+
   # Causal chain
   CAUSES:
     from: [Fact, Claim, FinancialDataPoint]
@@ -568,6 +841,18 @@ constraints:
   - label: Method
     property: method_id
     type: UNIQUE
+  - label: Anomaly
+    property: anomaly_id
+    type: UNIQUE
+  - label: PerformanceEvidence
+    property: evidence_id
+    type: UNIQUE
+  - label: MarketRegime
+    property: regime_id
+    type: UNIQUE
+  - label: DataRequirement
+    property: data_req_id
+    type: UNIQUE
 
 indices:
   - label: Fact
@@ -598,13 +883,29 @@ indices:
     property: command_source
   - label: Method
     property: method_type
+  - label: Anomaly
+    property: anomaly_type
+  - label: Anomaly
+    property: persistence
+  - label: PerformanceEvidence
+    property: metric_name
+  - label: PerformanceEvidence
+    property: market
+  - label: PerformanceEvidence
+    property: is_oos
+  - label: MarketRegime
+    property: regime_type
+  - label: DataRequirement
+    property: data_type
+  - label: DataRequirement
+    property: availability
 
 # ============================================================
 # Namespace Definitions
 # ============================================================
 namespaces:
   kg_v1:
-    description: "KG v1.1 schema nodes for quants knowledge graph"
+    description: "KG v2.0 schema nodes for quants knowledge graph (AI strategy discovery)"
     labels:
       - Source
       - Entity
@@ -616,6 +917,10 @@ namespaces:
       - Author
       - Insight
       - Method
+      - Anomaly
+      - PerformanceEvidence
+      - MarketRegime
+      - DataRequirement
     naming: PascalCase
 
   memory:
