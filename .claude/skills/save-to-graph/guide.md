@@ -73,7 +73,7 @@ CREATE INDEX idx_source_command_source IF NOT EXISTS FOR (s:Source) ON (s.comman
 
 ```json
 {
-  "schema_version": "1.0",
+  "schema_version": "2.2",
   "queue_id": "gq-20260317120000-a1b2c3d4",
   "created_at": "2026-03-17T12:00:00+00:00",
   "command_source": "dr-stock",
@@ -96,7 +96,11 @@ CREATE INDEX idx_source_command_source IF NOT EXISTS FOR (s:Source) ON (s.comman
     "has_datapoint": [],
     "for_period": [],
     "supported_by": [],
-    "authored_by": []
+    "authored_by": [],
+    "cites": [],
+    "coauthored_with": [],
+    "subtopic_of": [],
+    "affiliated_with": []
   }
 }
 ```
