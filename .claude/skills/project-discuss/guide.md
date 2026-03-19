@@ -6,7 +6,7 @@
 
 ```json
 {
-  "thought": "Neo4jとドキュメントから以下の情報を収集した。\n\n【Neo4j】\n- Project: quants (status: active)\n- Decision: バックテストエンジン設計方針 (2026-02-25)\n- ActionItem: factor パッケージのテスト追加 (status: pending)\n\n【ドキュメント】\n- backtest-engine-design.md: バックテストエンジン設計\n- ca-strategy-batch-parallel.md: CA Strategy並列実行\n\n【論点の整理】\n1. バックテストエンジンの実装優先度（未決定）\n2. CA Strategy の本番化判断（議論中）\n3. 新規パッケージの優先順位（未決定）\n\n【優先順位】\n2 → 1 → 3 の順で議論するのが効率的。CA Strategyの判断が他の優先度に影響する。",
+  "thought": "Neo4jとドキュメントから以下の情報を収集した。\n\n【Neo4j Cypher】\n- Project: quants (status: active)\n- Decision: バックテストエンジン設計方針 (2026-02-25)\n- ActionItem: factor パッケージのテスト追加 (status: pending)\n\n【ドキュメント】\n- backtest-engine-design.md: バックテストエンジン設計\n- ca-strategy-batch-parallel.md: CA Strategy並列実行\n\n【論点の整理】\n1. バックテストエンジンの実装優先度（未決定）\n2. CA Strategy の本番化判断（議論中）\n3. 新規パッケージの優先順位（未決定）\n\n【優先順位】\n2 → 1 → 3 の順で議論するのが効率的。CA Strategyの判断が他の優先度に影響する。",
   "nextThoughtNeeded": true,
   "thoughtNumber": 1,
   "totalThoughts": 3
@@ -28,7 +28,7 @@
 
 ```json
 {
-  "thought": "今回の議論結果を保存する計画:\n\n【Discussionノード】\ndisc-2026-03-17-backtest-priority\n- title: バックテストエンジン優先度の議論\n- summary: CA Strategy判断前にバックテスト結果が必要\n\n【Decisionノード】\n1. dec-2026-03-17-001: バックテストエンジンを最優先で実装\n2. dec-2026-03-17-002: CA Strategy本番化判断はバックテスト完了後\n\n【ActionItemノード】\n1. act-2026-03-17-001: バックテストエンジンのMVP実装 (優先度: 高)\n2. act-2026-03-17-002: テスト用ヒストリカルデータの準備 (優先度: 高)\n\n【リレーション】\n- quants -[:HAS_DISCUSSION]-> disc-2026-03-17-backtest-priority\n- disc-... -[:RESULTED_IN]-> dec-2026-03-17-001, dec-2026-03-17-002\n- disc-... -[:PRODUCED]-> act-2026-03-17-001, act-2026-03-17-002",
+  "thought": "今回の議論結果を保存する計画:\n\n【Discussionノード】\ndisc-2026-03-17-backtest-priority\n- title: バックテストエンジン優先度の議論\n- summary: CA Strategy判断前にバックテスト結果が必要\n\n【Decisionノード】\n1. dec-2026-03-17-001: name='バックテストエンジン最優先実装', content=...\n2. dec-2026-03-17-002: name='CA Strategy本番化判断保留', content=...\n\n【ActionItemノード】\n1. act-2026-03-17-001: name='バックテストMVP実装', description=..., 優先度: 高\n2. act-2026-03-17-002: name='テスト用データ準備', description=..., 優先度: 高\n\n【リレーション】\n- quants -[:HAS_DISCUSSION]-> disc-2026-03-17-backtest-priority\n- disc-... -[:RESULTED_IN]-> dec-2026-03-17-001, dec-2026-03-17-002\n- disc-... -[:PRODUCED]-> act-2026-03-17-001, act-2026-03-17-002",
   "nextThoughtNeeded": false,
   "thoughtNumber": 1,
   "totalThoughts": 1

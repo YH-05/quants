@@ -70,7 +70,7 @@ logger = get_logger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 
-SCHEMA_VERSION = "1.1"
+SCHEMA_VERSION = "2.2"
 DEFAULT_OUTPUT_BASE = Path(".tmp/graph-queue")
 DEFAULT_MAX_AGE_DAYS = 7
 
@@ -174,6 +174,12 @@ def _empty_queue(
             "extends_method": [],
             "combined_with": [],
             "uses_method": [],
+            # KG v2.1 academic metadata
+            "cites": [],
+            "coauthored_with": [],
+            # KG v2.2 topic hierarchy & affiliation
+            "subtopic_of": [],
+            "affiliated_with": [],
         },
     }
 

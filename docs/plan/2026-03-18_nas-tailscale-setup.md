@@ -337,5 +337,25 @@ launchctl load ~/Library/LaunchAgents/com.quants.nas-mount.plist
 | ID | 内容 | 優先度 | ステータス |
 |----|------|--------|-----------|
 | act-2026-03-19-001 | Mac mini SSH鍵登録（Phase 1） | low | pending |
-| act-2026-03-19-002 | NAS再起動後のTailscale自動起動動作確認 | medium | pending |
-| act-2026-03-19-003 | UGOSファームウェア更新後のTailscaleバイナリ永続化確認 | medium | pending |
+| act-2026-03-19-002 | NAS再起動後のTailscale自動起動動作確認 | medium | **completed** (2026-03-19) |
+| act-2026-03-19-003 | UGOSファームウェア更新後のTailscaleバイナリ永続化確認 | medium | **completed** (2026-03-19) |
+
+## 検証結果（2026-03-19 追記）
+
+### act-2026-03-19-002: 再起動後の自動起動 ✅
+
+- `sudo reboot` 実行後、**60秒以内**にTailscale復帰確認（ping pong in 5ms）
+- SSH/SMB共に正常動作
+- crontab `@reboot` エントリ（重複修正済み: 2行→1行）
+
+### act-2026-03-19-003: FW更新対策 ✅
+
+UGOSは**overlay FS**構成:
+- rootfs: squashfs (ro) → FW更新で上書きされる
+- overlay upper: `/overlay/upper/` (rw) → `/usr/local/bin/` はここに配置
+- data volume: `/volume1/` → FW更新で**消えない**
+
+**対策済み**:
+- バイナリバックアップ: `/volume1/tailscale-backup/{tailscale,tailscaled}`
+- 復元スクリプト: `/volume1/tailscale-backup/restore.sh`
+- FW更新後に `/usr/local/bin/` が消えた場合: `sudo sh /volume1/tailscale-backup/restore.sh` で復元

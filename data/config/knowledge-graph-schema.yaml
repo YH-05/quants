@@ -31,8 +31,20 @@
 #     - 14 nodes + 27 relationships for AI strategy discovery graph
 #     - Design goal: Enable AI to traverse "Anomaly → Method → PerformanceEvidence → MarketRegime"
 #       chains for emergent strategy hypothesis generation
+#   v2.1 (2026-03-19): Academic metadata extension
+#     - Added: CITES relationship (Source → Source) for paper citation chains
+#     - Added: COAUTHORED_WITH relationship (Author → Author) for co-authorship networks
+#     - 14 nodes + 29 relationships
+#     - Design goal: Enable co-author network analysis and citation chain traversal
+#       for research lineage discovery
+#   v2.2 (2026-03-19): Topic hierarchy & organization affiliation
+#     - Added: Claim.confidence enum [high, medium, low]
+#     - Added: Topic.is_meta boolean, Topic.category += meta
+#     - Added: SUBTOPIC_OF relationship (Topic → Topic) for topic hierarchy
+#     - Added: AFFILIATED_WITH relationship (Author → Entity) for organization links
+#     - 14 nodes + 31 relationships
 
-version: "2.0"
+version: "2.2"
 
 # ============================================================
 # Node Definitions (14 nodes)
@@ -157,6 +169,11 @@ nodes:
       time_horizon:
         type: string
         description: "Time horizon for the claim (e.g., '12M', 'FY26', 'long-term')"
+      confidence:
+        type: string
+        enum: [high, medium, low]
+        indexed: true
+        description: "Confidence level: high=has quantitative evidence, medium=qualitative only, low=speculative"
       created_at:
         type: datetime
         required: true
@@ -263,8 +280,13 @@ nodes:
         indexed: true
       category:
         type: string
-        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings, quant_method, backtest, algorithm, risk_model, strategy_archetype, market_anomaly]
+        enum: [macro, sector, stock, ai, finance, geopolitics, policy, valuation, earnings, quant_method, backtest, algorithm, risk_model, strategy_archetype, market_anomaly, meta]
         indexed: true
+      is_meta:
+        type: boolean
+        default: false
+        indexed: true
+        description: "true=category-level meta-topic, false=leaf topic"
 
   Author:
     description: "Author or publishing organization"
@@ -538,7 +560,7 @@ nodes:
         required: true
 
 # ============================================================
-# Relationship Definitions (27 relationships)
+# Relationship Definitions (31 relationships)
 # ============================================================
 relationships:
   # Source -> Method
@@ -782,6 +804,45 @@ relationships:
         type: string
         description: "Which method generally wins, if known (method_id or 'context_dependent')"
 
+  # --- v2.1 Academic metadata ---
+
+  # Source -> Source (citation chain)
+  CITES:
+    from: Source
+    to: Source
+    description: "This paper cites/references the target paper"
+    properties:
+      context:
+        type: string
+        description: "Citation context (e.g., 'baseline comparison', 'method extension', 'dataset')"
+
+  # Author -> Author (co-authorship network)
+  COAUTHORED_WITH:
+    from: Author
+    to: Author
+    description: "Two authors who co-authored at least one paper"
+    properties:
+      paper_count:
+        type: integer
+        description: "Number of papers co-authored together"
+      first_collaboration:
+        type: string
+        description: "Source ID of the first collaboration"
+
+  # --- v2.2 Topic hierarchy & Affiliation ---
+
+  # Topic -> Topic (hierarchy)
+  SUBTOPIC_OF:
+    from: Topic
+    to: Topic
+    description: "Child topic belongs to parent meta-topic (category-level grouping)"
+
+  # Author -> Entity (affiliation)
+  AFFILIATED_WITH:
+    from: Author
+    to: Entity
+    description: "Author is affiliated with this organization (university, company, etc.)"
+
   # Causal chain
   CAUSES:
     from: [Fact, Claim, FinancialDataPoint]
@@ -923,32 +984,12 @@ namespaces:
       - DataRequirement
     naming: PascalCase
 
-  memory:
-    description: "MCP Memory nodes (root + sub-labels)"
-    root_label: Memory
-    sub_labels:
-      - Decision
-      - ContentTheme
-      - Theme
-      - Implementation
-      - Phase
-      - Strategy
-      - CaseStudy
-      - Architecture
-      - Schema
-      - Status
-      - BusinessModel
-      - Workflow
-      - Research
-      - Todo
-      - Discussion
-    naming: PascalCase
-
   conversation:
-    description: "Conversation history tracking nodes (future)"
+    description: "Project discussion and decision tracking nodes"
     labels:
-      - ConversationSession
-      - ConversationTopic
+      - Discussion
+      - Decision
+      - ActionItem
       - Project
     naming: PascalCase
 
