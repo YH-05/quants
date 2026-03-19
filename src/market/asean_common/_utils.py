@@ -64,4 +64,4 @@ def _coerce_optional_int(value: object) -> int | None:
     """
     if value is None or _is_nan(value):
         return None
-    return int(value)
+    return int(float(str(value)))
