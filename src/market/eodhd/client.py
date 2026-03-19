@@ -70,7 +70,18 @@ class EodhdClient:
     # =========================================================================
 
     def __enter__(self) -> "EodhdClient":
-        """Support context manager protocol."""
+        """Enter the context manager and return the client instance.
+
+        Returns
+        -------
+        EodhdClient
+            The client instance itself.
+
+        Examples
+        --------
+        >>> with EodhdClient() as client:
+        ...     pass
+        """
         return self
 
     def __exit__(
@@ -79,11 +90,35 @@ class EodhdClient:
         exc_val: BaseException | None,
         exc_tb: Any,
     ) -> None:
-        """Close client on context exit."""
+        """Exit the context manager and close the client.
+
+        Delegates to :meth:`close` to release any held resources.
+
+        Parameters
+        ----------
+        exc_type : type[BaseException] | None
+            The exception type, if an exception was raised in the ``with``
+            block, otherwise ``None``.
+        exc_val : BaseException | None
+            The exception instance, if an exception was raised, otherwise
+            ``None``.
+        exc_tb : Any
+            The traceback object, if an exception was raised, otherwise
+            ``None``.
+        """
         self.close()
 
     def close(self) -> None:
-        """Close the client and release resources."""
+        """Close the client and release resources.
+
+        This method is called automatically when exiting a ``with`` block.
+        It can also be called manually to release resources early.
+
+        Examples
+        --------
+        >>> client = EodhdClient()
+        >>> client.close()
+        """
         logger.debug("EodhdClient closed")
 
     # =========================================================================
