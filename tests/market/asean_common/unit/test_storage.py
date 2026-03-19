@@ -519,6 +519,160 @@ class TestLookupTicker:
         assert len(results) == 1
         assert results[0].ticker == "D05"
 
+    # ------------------------------------------------------------------
+    # Minimum length validation (SEC-006)
+    # ------------------------------------------------------------------
+
+    def test_異常系_1文字でValueError(
+        self,
+        duckdb_client: DuckDBClient,
+    ) -> None:
+        """lookup_tickerが1文字の検索でValueErrorを送出すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        with pytest.raises(ValueError, match="at least 2 characters"):
+            storage.lookup_ticker("a")
+
+    def test_異常系_空文字でValueError(
+        self,
+        duckdb_client: DuckDBClient,
+    ) -> None:
+        """lookup_tickerが空文字の検索でValueErrorを送出すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        with pytest.raises(ValueError, match="at least 2 characters"):
+            storage.lookup_ticker("")
+
+    def test_正常系_2文字で検索できる(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """lookup_tickerが2文字の検索を受け付けること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # "DB" should match "DBS Group Holdings Ltd"
+        results = storage.lookup_ticker("DB")
+        assert len(results) == 1
+        assert results[0].ticker == "D05"
+
+    # ------------------------------------------------------------------
+    # Wildcard escaping (SEC-006)
+    # ------------------------------------------------------------------
+
+    def test_セキュリティ_パーセント記号がエスケープされる(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """lookup_tickerがパーセント記号をリテラルとして扱うこと."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # "%" alone should not match everything - it should be escaped
+        # Since no company name contains "%", result should be empty
+        results = storage.lookup_ticker("%%")
+        assert results == []
+
+    def test_セキュリティ_アンダースコアがエスケープされる(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """lookup_tickerがアンダースコアをリテラルとして扱うこと."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # "_" is a single-char wildcard in ILIKE; must be escaped
+        # Since no company name contains "_", result should be empty
+        results = storage.lookup_ticker("__")
+        assert results == []
+
+    def test_セキュリティ_バックスラッシュがエスケープされる(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """lookup_tickerがバックスラッシュをリテラルとして扱うこと."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # Backslash should be escaped, not treated as escape char
+        results = storage.lookup_ticker("\\\\")
+        assert results == []
+
+    def test_セキュリティ_パーセントのみで全件返却しない(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """lookup_tickerに'%%'を渡しても全件返却しないこと."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # With 3 tickers inserted, "%" should NOT return all 3
+        results = storage.lookup_ticker("%%")
+        assert len(results) < len(sample_tickers)
+
+    def test_セキュリティ_混合ワイルドカードがエスケープされる(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """lookup_tickerが混合ワイルドカード文字をエスケープすること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # "%_" combination should be escaped, not act as wildcards
+        results = storage.lookup_ticker("%_")
+        assert results == []
+
+    def test_正常系_エスケープ後も通常検索が動作する(
+        self,
+        duckdb_client: DuckDBClient,
+        sample_tickers: list[TickerRecord],
+    ) -> None:
+        """エスケープ処理を追加しても通常の名前検索が正常に動作すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        storage.upsert_tickers(sample_tickers)
+
+        # Normal searches should still work
+        results = storage.lookup_ticker("DBS")
+        assert len(results) == 1
+        assert results[0].ticker == "D05"
+
+        results = storage.lookup_ticker("Maybank")
+        assert len(results) == 1
+        assert results[0].ticker == "1155"
+
+    def test_異常系_空白のみでValueError(
+        self,
+        duckdb_client: DuckDBClient,
+    ) -> None:
+        """lookup_tickerが空白のみの検索でValueErrorを送出すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        with pytest.raises(ValueError, match="at least 2 characters"):
+            storage.lookup_ticker("   ")
+
 
 # ============================================================================
 # Test: count_tickers

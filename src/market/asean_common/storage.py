@@ -257,6 +257,29 @@ class AseanTickerStorage:
         )
         return result
 
+    @staticmethod
+    def _escape_ilike(value: str) -> str:
+        r"""Escape SQL ILIKE wildcard characters for literal matching.
+
+        Escapes ``\``, ``%``, and ``_`` so they are treated as literal
+        characters in an ``ILIKE`` pattern.
+
+        Parameters
+        ----------
+        value : str
+            Raw search string.
+
+        Returns
+        -------
+        str
+            Escaped string safe for use in ``ILIKE`` patterns.
+        """
+        # Order matters: backslash first, then wildcards
+        value = value.replace("\\", "\\\\")
+        value = value.replace("%", "\\%")
+        value = value.replace("_", "\\_")
+        return value
+
     def lookup_ticker(
         self,
         name: str,
@@ -265,12 +288,15 @@ class AseanTickerStorage:
         """Look up tickers by name using case-insensitive LIKE search.
 
         Performs a partial match search on the ``name`` column using
-        SQL ``ILIKE`` for case-insensitive matching.
+        SQL ``ILIKE`` for case-insensitive matching. Wildcard characters
+        (``%``, ``_``, ``\\``) in the input are escaped to prevent
+        unintended pattern matching.
 
         Parameters
         ----------
         name : str
             Search string for partial name matching.
+            Must be at least 2 non-whitespace characters.
         market : AseanMarket | None
             Optional market filter. If ``None``, searches all markets.
 
@@ -279,13 +305,25 @@ class AseanTickerStorage:
         list[TickerRecord]
             List of matching TickerRecord instances.
             Empty list if no matches found.
+
+        Raises
+        ------
+        ValueError
+            If *name* (after stripping whitespace) is shorter than 2
+            characters.
         """
+        stripped = name.strip()
+        if len(stripped) < 2:
+            msg = f"name must be at least 2 characters, got {len(stripped)!r}"
+            raise ValueError(msg)
+
         logger.debug(
             "Looking up ticker",
             name=name,
             market=market.value if market else None,
         )
-        pattern = f"%{name}%"
+        escaped = self._escape_ilike(stripped)
+        pattern = f"%{escaped}%"
 
         if market is not None:
             df = self._client.query_df(
