@@ -129,10 +129,20 @@ class AseanTickerStorage:
     def ensure_tables(self) -> None:
         """Create the asean_tickers table if it does not already exist.
 
+        Validates ``TABLE_TICKERS`` via ``DuckDBClient._validate_identifier``
+        before executing DDL to prevent SQL injection if the table name is
+        ever sourced from external configuration.
+
         Executes ``CREATE TABLE IF NOT EXISTS`` for the ticker master
         table. Safe to call multiple times.
+
+        Raises
+        ------
+        ValueError
+            If ``TABLE_TICKERS`` is not a valid SQL identifier.
         """
         logger.debug("Ensuring ASEAN ticker table exists")
+        self._client._validate_identifier(TABLE_TICKERS)
         self._client.execute(_TABLE_DDL)
         logger.info("ASEAN ticker table ensured", table_name=TABLE_TICKERS)
 

@@ -119,6 +119,38 @@ class TestEnsureTables:
         tables = duckdb_client.get_table_names()
         assert TABLE_TICKERS in tables
 
+    def test_正常系_validate_identifierがTABLE_TICKERSに対して呼ばれる(
+        self,
+        duckdb_client: DuckDBClient,
+    ) -> None:
+        """ensure_tablesがTABLE_TICKERSに対して_validate_identifierを呼ぶこと."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        with patch.object(
+            type(duckdb_client),
+            "_validate_identifier",
+            wraps=duckdb_client._validate_identifier,
+        ) as mock_validate:
+            _storage = AseanTickerStorage(client=duckdb_client)
+            # ensure_tables is called in __init__, so check it was called
+            mock_validate.assert_any_call(TABLE_TICKERS)
+
+    def test_異常系_不正なテーブル名でValueError(
+        self,
+        duckdb_client: DuckDBClient,
+    ) -> None:
+        """不正なテーブル名が設定されている場合にValueErrorが発生すること."""
+        from market.asean_common.storage import AseanTickerStorage
+
+        storage = AseanTickerStorage(client=duckdb_client)
+        with (
+            patch(
+                "market.asean_common.storage.TABLE_TICKERS", "Robert'; DROP TABLE --"
+            ),
+            pytest.raises(ValueError, match="Invalid identifier"),
+        ):
+            storage.ensure_tables()
+
 
 # ============================================================================
 # Test: upsert_tickers
