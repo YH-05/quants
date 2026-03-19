@@ -12,13 +12,18 @@ market.jquants.types : Similar type-definition pattern for the J-Quants module.
 market.eodhd.constants : Default values referenced by EodhdConfig.
 """
 
+import os
 from dataclasses import dataclass, field
 
 from market.eodhd.constants import (
     BASE_URL,
     DEFAULT_FORMAT,
     DEFAULT_TIMEOUT,
+    EODHD_API_KEY_ENV,
 )
+from utils_core.logging import get_logger
+
+logger = get_logger(__name__)
 
 # =============================================================================
 # Configuration Dataclasses
@@ -30,6 +35,11 @@ class EodhdConfig:
     """Configuration for EODHD API client.
 
     Controls API key, base URL, HTTP timeout, and response format.
+
+    When ``api_key`` is not provided (empty string), the constructor
+    attempts to read the ``EODHD_API_KEY`` environment variable as a
+    fallback.  If the key is still empty after the fallback, a warning
+    is logged.
 
     Parameters
     ----------
@@ -66,13 +76,32 @@ class EodhdConfig:
     fmt: str = DEFAULT_FORMAT
 
     def __post_init__(self) -> None:
-        """Validate configuration value ranges.
+        """Validate configuration and apply environment variable fallback.
+
+        If ``api_key`` is empty, attempts to read from the
+        ``EODHD_API_KEY`` environment variable.  Emits a warning log
+        when the key remains empty after the fallback.
 
         Raises
         ------
         ValueError
             If any configuration value is outside its valid range.
         """
+        # --- api_key environment variable fallback ---
+        if not self.api_key:
+            env_value = os.environ.get(EODHD_API_KEY_ENV, "").strip()
+            if env_value:
+                # frozen=True requires object.__setattr__
+                object.__setattr__(self, "api_key", env_value)
+
+        if not self.api_key:
+            logger.warning(
+                "EODHD API key is empty. Set %s environment variable "
+                "or pass api_key explicitly.",
+                EODHD_API_KEY_ENV,
+            )
+
+        # --- field validation ---
         if not (1.0 <= self.timeout <= 300.0):
             raise ValueError(
                 f"timeout must be between 1.0 and 300.0, got {self.timeout}"
