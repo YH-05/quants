@@ -33,8 +33,10 @@ edgar.rate_limiter : RateLimiter クラス
 
 from __future__ import annotations
 
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET  # nosec B405 - ET.ParseError type only; parsing uses defusedxml
 from typing import Any
+
+import defusedxml.ElementTree as DefusedET
 
 import feedparser
 import httpx
@@ -219,7 +221,7 @@ def _parse_atom_response(text: str, arxiv_id: str) -> PaperMetadata:
 
     # 1. ET で XML をパース（1回のみ）
     try:
-        root = ET.fromstring(text)
+        root = DefusedET.fromstring(text)
     except ET.ParseError as exc:
         raise ParseError(f"arXiv Atom フィードのパースに失敗しました: {exc}") from exc
 
