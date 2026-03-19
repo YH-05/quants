@@ -16,9 +16,9 @@ Supported commands
 - dr-industry
 - finance-research
 
-KG schema support: v1.0 (original 9 node types) and v2.0 (adds Anomaly,
+KG schema support: v1.0 (original 9 node types), v2.0 (adds Anomaly,
 PerformanceEvidence, MarketRegime, DataRequirement nodes and 11 new
-relation types).
+relation types), and v2.1 (adds cites, coauthored_with relations).
 
 Usage
 -----
@@ -70,7 +70,7 @@ logger = get_logger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 
-SCHEMA_VERSION = "1.1"
+SCHEMA_VERSION = "2.1"
 DEFAULT_OUTPUT_BASE = Path(".tmp/graph-queue")
 DEFAULT_MAX_AGE_DAYS = 7
 
@@ -174,6 +174,9 @@ def _empty_queue(
             "extends_method": [],
             "combined_with": [],
             "uses_method": [],
+            # KG v2.1 relation types
+            "cites": [],
+            "coauthored_with": [],
         },
     }
 

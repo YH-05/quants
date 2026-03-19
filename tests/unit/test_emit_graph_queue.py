@@ -11,7 +11,7 @@ import pytest
 # Add scripts to path for import
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
-from emit_graph_queue import (
+from emit_graph_queue import (  # type: ignore[import-not-found]
     _empty_queue,
     _infer_period_type,
     _normalise_period_label,
@@ -58,7 +58,7 @@ class TestHelpers:
             "relations",
         }
         assert required_keys.issubset(set(queue.keys()))
-        assert queue["schema_version"] == "1.0"
+        assert queue["schema_version"] == "2.1"
         assert queue["command_source"] == "test-command"
 
     def test_正常系_resolve_categoryがテーマを変換する(self) -> None:
@@ -383,7 +383,7 @@ class TestGraphQueueStructure:
         for name, mapper in mappers.items():
             queue = mapper({})
             assert "schema_version" in queue, f"{name} missing schema_version"
-            assert queue["schema_version"] == "1.0", f"{name} wrong schema_version"
+            assert queue["schema_version"] == "2.1", f"{name} wrong schema_version"
 
     def test_正常系_全mapperがrelationsを含む(self) -> None:
         mappers = [
@@ -405,6 +405,9 @@ class TestGraphQueueStructure:
             "for_period",
             "supported_by",
             "authored_by",
+            # KG v2.1
+            "cites",
+            "coauthored_with",
         }
         for mapper in mappers:
             queue = mapper({})
