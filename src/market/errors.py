@@ -555,15 +555,22 @@ class ValidationError(MarketError):
 # =============================================================================
 
 
-class FREDError(Exception):
+class FREDError(MarketError):
     """Base exception for FRED operations.
 
     All FRED-specific exceptions inherit from this class.
+    Inherits from MarketError for unified error hierarchy.
 
     Parameters
     ----------
     message : str
         Human-readable error message
+    code : ErrorCode
+        Error code for programmatic handling (default: UNKNOWN)
+    details : dict[str, Any] | None
+        Additional context about the error
+    cause : Exception | None
+        The underlying exception that caused this error
     """
 
 
@@ -647,8 +654,10 @@ class FREDCacheNotFoundError(FREDFetchError):
 # =============================================================================
 
 
-class BloombergError(Exception):
+class BloombergError(MarketError):
     """Base exception for Bloomberg operations.
+
+    Inherits from MarketError for unified error hierarchy.
 
     Parameters
     ----------
@@ -686,11 +695,7 @@ class BloombergError(Exception):
         details: dict[str, Any] | None = None,
         cause: Exception | None = None,
     ) -> None:
-        super().__init__(message)
-        self.message = message
-        self.code = code
-        self.details = details or {}
-        self.cause = cause
+        super().__init__(message, code=code, details=details, cause=cause)
 
     def to_dict(self) -> dict[str, Any]:
         """Convert error to dictionary representation.
@@ -706,7 +711,7 @@ class BloombergError(Exception):
         >>> error.to_dict()
         {'message': 'Test', 'code': 'CONNECTION_FAILED', 'details': {}}
         """
-        result = {
+        result: dict[str, Any] = {
             "message": self.message,
             "code": self.code.value,
             "details": self.details,

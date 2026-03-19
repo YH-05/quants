@@ -255,6 +255,41 @@ class TestExceptionHierarchy:
         # BloombergError inherits from Exception
         assert issubclass(BloombergError, Exception)
 
+    def test_正常系_BloombergErrorがMarketErrorを継承(self) -> None:
+        """BloombergError が MarketError を継承していることを確認。"""
+        from market.errors import BloombergError, MarketError
+
+        assert issubclass(BloombergError, MarketError)
+
+    def test_正常系_BloombergErrorインスタンスがMarketError(self) -> None:
+        """BloombergError インスタンスが MarketError として扱えることを確認。"""
+        from market.errors import BloombergError, MarketError
+
+        error = BloombergError("Test error")
+        assert isinstance(error, MarketError)
+
+    def test_正常系_BloombergサブクラスがMarketError(self) -> None:
+        """Bloomberg サブクラスが全て MarketError を継承していることを確認。"""
+        from market.errors import (
+            BloombergConnectionError,
+            BloombergDataError,
+            BloombergSessionError,
+            BloombergValidationError,
+            MarketError,
+        )
+
+        assert issubclass(BloombergConnectionError, MarketError)
+        assert issubclass(BloombergSessionError, MarketError)
+        assert issubclass(BloombergDataError, MarketError)
+        assert issubclass(BloombergValidationError, MarketError)
+
+    def test_正常系_MarketErrorでキャッチ可能(self) -> None:
+        """BloombergError を MarketError でキャッチできることを確認。"""
+        from market.errors import BloombergConnectionError, MarketError
+
+        with pytest.raises(MarketError):
+            raise BloombergConnectionError("Test")
+
 
 class TestExceptionUsagePatterns:
     """Tests for common exception usage patterns."""
