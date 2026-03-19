@@ -956,6 +956,9 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
+asean = [
+    { name = "tradingview-screener" },
+]
 automation = [
     { name = "anyio" },
     { name = "claude-agent-sdk" },
@@ -1087,12 +1090,13 @@ requires-dist = [
     { name = "tenacity", specifier = ">=9.1.2" },
     { name = "tiktoken", specifier = ">=0.7.0" },
     { name = "tqdm", specifier = ">=4.67.2" },
+    { name = "tradingview-screener", marker = "extra == 'asean'", specifier = ">=3.0.0" },
     { name = "trafilatura", specifier = ">=2.0.0" },
     { name = "urllib3", specifier = ">=2.6.3" },
     { name = "werkzeug", specifier = ">=3.1.6" },
     { name = "yfinance", specifier = ">=0.2.0" },
 ]
-provides-extras = ["dev", "docs", "scheduler", "mcp", "cli", "playwright", "automation", "market", "bloomberg", "kalman", "embedding"]
+provides-extras = ["dev", "docs", "scheduler", "mcp", "cli", "playwright", "automation", "market", "bloomberg", "kalman", "embedding", "asean"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -3995,6 +3999,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/27/89/4b0001b2dab8df0a5ee2787dcbe771de75ded01f18f1f8d53dedeea2882b/tqdm-4.67.2.tar.gz", hash = "sha256:649aac53964b2cb8dec76a14b405a4c0d13612cb8933aae547dd144eacc99653", size = 169514, upload-time = "2026-01-30T23:12:06.555Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f5/e2/31eac96de2915cf20ccaed0225035db149dfb9165a9ed28d4b252ef3f7f7/tqdm-4.67.2-py3-none-any.whl", hash = "sha256:9a12abcbbff58b6036b2167d9d3853042b9d436fe7330f06ae047867f2f8e0a7", size = 78354, upload-time = "2026-01-30T23:12:04.368Z" },
+]
+
+[[package]]
+name = "tradingview-screener"
+version = "3.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pandas" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b9/48/8b3969c553bd8c38bcc25ffe92fc898b1d96d7d1ddecb9c2fd211fdd0584/tradingview_screener-3.1.0.tar.gz", hash = "sha256:948e8cdbcde78260c6106c973569cb94d78653d69197d499688c59066266ec7d", size = 20744, upload-time = "2026-02-26T13:27:19.418Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/01/0d/7b1db4340c76e31fbf961a79f07cddacc3b2e0b6bb604cb743ca0374a82e/tradingview_screener-3.1.0-py3-none-any.whl", hash = "sha256:a9a26ea265deef91912bc627f33c52c77004e3e40dad3d9da0b81150701803b7", size = 19439, upload-time = "2026-02-26T13:27:16.841Z" },
 ]
 
 [[package]]
