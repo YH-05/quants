@@ -775,8 +775,13 @@ class EdinetStorage:
 
         rows: list[dict[str, str]] = []
         for _, row in details_df.iterrows():
-            slug = row.get("slug", "")
-            rows.append({"slug": slug, "data": json.dumps(row.to_dict(), ensure_ascii=False, default=str)})
+            slug = str(row.get("slug", ""))
+            rows.append(
+                {
+                    "slug": slug,
+                    "data": json.dumps(row.to_dict(), ensure_ascii=False, default=str),
+                }
+            )
         compact_df = pd.DataFrame(rows)
         self._client.store_df(
             compact_df,

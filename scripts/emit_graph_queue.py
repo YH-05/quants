@@ -16,9 +16,20 @@ Supported commands
 - dr-industry
 - finance-research
 
-KG schema support: v1.0 (original 9 node types) and v2.0 (adds Anomaly,
+KG schema support: v1.0 (original 9 node types), v2.0 (adds Anomaly,
 PerformanceEvidence, MarketRegime, DataRequirement nodes and 11 new
-relation types).
+relation types), and v2.1 (adds cites, coauthored_with relations).
+
+Supported commands
+------------------
+- finance-news-workflow
+- ai-research-collect
+- generate-market-report
+- dr-stock
+- ca-eval
+- dr-industry
+- finance-research
+- academic-fetch
 
 Usage
 -----
@@ -35,6 +46,10 @@ Usage
     uv run python scripts/emit_graph_queue.py --command ca-eval \\
         --input analyst/research/CA_eval_20260220-0931_MCO/02_claims/claims.json \\
         --output-dir .tmp/graph-queue/ca-eval
+
+    # Academic papers
+    uv run python scripts/emit_graph_queue.py --command academic-fetch \\
+        --input .tmp/academic/papers.json
 """
 
 from __future__ import annotations
@@ -1439,6 +1454,24 @@ def map_finance_research(data: dict[str, Any]) -> dict[str, Any]:
     return queue
 
 
+def _lazy_academic_mapper(data: dict[str, Any]) -> dict[str, Any]:
+    """Lazy-import wrapper for academic mapper to avoid import-time dependency.
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        Parsed JSON with ``papers`` and ``existing_source_ids``.
+
+    Returns
+    -------
+    dict[str, Any]
+        Complete graph-queue dict.
+    """
+    from academic.mapper import map_academic_papers
+
+    return map_academic_papers(data)
+
+
 # ---------------------------------------------------------------------------
 # Command → mapper registry
 # ---------------------------------------------------------------------------
@@ -1451,6 +1484,7 @@ COMMAND_MAPPERS: dict[str, MapperFn] = {
     "ca-eval": map_ca_eval,
     "dr-industry": map_dr_industry,
     "finance-research": map_finance_research,
+    "academic-fetch": _lazy_academic_mapper,
 }
 
 
@@ -1566,7 +1600,7 @@ Examples:
 
 Supported commands:
   finance-news-workflow, ai-research-collect, generate-market-report,
-  dr-stock, ca-eval, dr-industry, finance-research
+  dr-stock, ca-eval, dr-industry, finance-research, academic-fetch
         """,
     )
     parser.add_argument(
