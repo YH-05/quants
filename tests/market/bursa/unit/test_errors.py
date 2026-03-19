@@ -12,6 +12,7 @@ Test TODO List:
 
 import pytest
 
+from market.asean_common.errors import ExchangeError
 from market.bursa.errors import (
     BursaAPIError,
     BursaError,
@@ -27,9 +28,10 @@ class TestBursaError:
         assert error.message == "Bursa operation failed"
         assert str(error) == "Bursa operation failed"
 
-    def test_正常系_Exceptionを直接継承している(self) -> None:
+    def test_正常系_ExchangeErrorを継承している(self) -> None:
+        assert issubclass(BursaError, ExchangeError)
+        assert ExchangeError in BursaError.__bases__
         assert issubclass(BursaError, Exception)
-        assert Exception in BursaError.__bases__
 
     def test_正常系_raiseで例外として使用可能(self) -> None:
         with pytest.raises(BursaError, match="test error"):

@@ -12,6 +12,7 @@ Test TODO List:
 
 import pytest
 
+from market.asean_common.errors import ExchangeError
 from market.set_exchange.errors import (
     SetAPIError,
     SetError,
@@ -26,9 +27,10 @@ class TestSetError:
         error = SetError("SET operation failed")
         assert error.message == "SET operation failed"
 
-    def test_正常系_Exceptionを直接継承している(self) -> None:
+    def test_正常系_ExchangeErrorを継承している(self) -> None:
+        assert issubclass(SetError, ExchangeError)
+        assert ExchangeError in SetError.__bases__
         assert issubclass(SetError, Exception)
-        assert Exception in SetError.__bases__
 
     def test_正常系_raiseで例外として使用可能(self) -> None:
         with pytest.raises(SetError, match="test error"):

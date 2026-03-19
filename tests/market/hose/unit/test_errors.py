@@ -12,6 +12,7 @@ Test TODO List:
 
 import pytest
 
+from market.asean_common.errors import ExchangeError
 from market.hose.errors import (
     HoseAPIError,
     HoseError,
@@ -26,9 +27,10 @@ class TestHoseError:
         error = HoseError("HOSE operation failed")
         assert error.message == "HOSE operation failed"
 
-    def test_正常系_Exceptionを直接継承している(self) -> None:
+    def test_正常系_ExchangeErrorを継承している(self) -> None:
+        assert issubclass(HoseError, ExchangeError)
+        assert ExchangeError in HoseError.__bases__
         assert issubclass(HoseError, Exception)
-        assert Exception in HoseError.__bases__
 
     def test_正常系_raiseで例外として使用可能(self) -> None:
         with pytest.raises(HoseError, match="test error"):

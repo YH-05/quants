@@ -245,7 +245,7 @@ class TestModuleExports:
     """__all__ エクスポートのテスト。"""
 
     def test_正常系_全クラスがエクスポートされている(self) -> None:
-        """__all__ に全4クラスが含まれていること。"""
+        """__all__ に全9クラスが含まれていること。"""
         from market.asean_common import errors
 
         assert hasattr(errors, "__all__")
@@ -254,5 +254,10 @@ class TestModuleExports:
             "AseanStorageError",
             "AseanScreenerError",
             "AseanLookupError",
+            "ExchangeError",
+            "ExchangeAPIError",
+            "ExchangeRateLimitError",
+            "ExchangeParseError",
+            "ExchangeValidationError",
         }
         assert set(errors.__all__) == expected

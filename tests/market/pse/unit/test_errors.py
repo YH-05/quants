@@ -12,6 +12,7 @@ Test TODO List:
 
 import pytest
 
+from market.asean_common.errors import ExchangeError
 from market.pse.errors import (
     PseAPIError,
     PseError,
@@ -26,9 +27,10 @@ class TestPseError:
         error = PseError("PSE operation failed")
         assert error.message == "PSE operation failed"
 
-    def test_正常系_Exceptionを直接継承している(self) -> None:
+    def test_正常系_ExchangeErrorを継承している(self) -> None:
+        assert issubclass(PseError, ExchangeError)
+        assert ExchangeError in PseError.__bases__
         assert issubclass(PseError, Exception)
-        assert Exception in PseError.__bases__
 
     def test_正常系_raiseで例外として使用可能(self) -> None:
         with pytest.raises(PseError, match="test error"):

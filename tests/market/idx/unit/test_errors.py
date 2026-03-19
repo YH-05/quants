@@ -12,6 +12,7 @@ Test TODO List:
 
 import pytest
 
+from market.asean_common.errors import ExchangeError
 from market.idx.errors import (
     IdxAPIError,
     IdxError,
@@ -26,9 +27,10 @@ class TestIdxError:
         error = IdxError("IDX operation failed")
         assert error.message == "IDX operation failed"
 
-    def test_正常系_Exceptionを直接継承している(self) -> None:
+    def test_正常系_ExchangeErrorを継承している(self) -> None:
+        assert issubclass(IdxError, ExchangeError)
+        assert ExchangeError in IdxError.__bases__
         assert issubclass(IdxError, Exception)
-        assert Exception in IdxError.__bases__
 
     def test_正常系_raiseで例外として使用可能(self) -> None:
         with pytest.raises(IdxError, match="test error"):

@@ -16,6 +16,7 @@ Test TODO List:
 
 import pytest
 
+from market.asean_common.errors import ExchangeError
 from market.sgx.errors import (
     SgxAPIError,
     SgxError,
@@ -33,9 +34,10 @@ class TestSgxError:
         assert error.message == "SGX operation failed"
         assert str(error) == "SGX operation failed"
 
-    def test_正常系_Exceptionを直接継承している(self) -> None:
+    def test_正常系_ExchangeErrorを継承している(self) -> None:
+        assert issubclass(SgxError, ExchangeError)
+        assert ExchangeError in SgxError.__bases__
         assert issubclass(SgxError, Exception)
-        assert Exception in SgxError.__bases__
 
     def test_正常系_raiseで例外として使用可能(self) -> None:
         with pytest.raises(SgxError, match="test error"):
@@ -132,9 +134,10 @@ class TestExceptionHierarchy:
         assert issubclass(SgxParseError, SgxError)
         assert issubclass(SgxValidationError, SgxError)
 
-    def test_正常系_SgxErrorがExceptionを直接継承(self) -> None:
+    def test_正常系_SgxErrorがExchangeErrorを継承(self) -> None:
+        assert issubclass(SgxError, ExchangeError)
+        assert ExchangeError in SgxError.__bases__
         assert issubclass(SgxError, Exception)
-        assert Exception in SgxError.__bases__
 
 
 class TestModuleExports:

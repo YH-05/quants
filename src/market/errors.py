@@ -50,6 +50,11 @@ MarketError (base)
         JQuantsRateLimitError (rate limit exceeded)
         JQuantsValidationError (data validation failure)
         JQuantsAuthError (authentication failure)
+    ExchangeError (base for ASEAN per-exchange errors)
+        ExchangeAPIError (API response error - 4xx, 5xx)
+        ExchangeRateLimitError (rate limit exceeded)
+        ExchangeParseError (response parse failure)
+        ExchangeValidationError (data validation failure)
     AseanError (ASEAN market operations)
         AseanStorageError (DuckDB storage failure)
         AseanScreenerError (tradingview-screener failure)
@@ -69,6 +74,11 @@ from market.asean_common.errors import (
     AseanLookupError,
     AseanScreenerError,
     AseanStorageError,
+    ExchangeAPIError,
+    ExchangeError,
+    ExchangeParseError,
+    ExchangeRateLimitError,
+    ExchangeValidationError,
 )
 from market.bse.errors import (
     BseAPIError,
@@ -969,6 +979,12 @@ __all__ = [
     "EodhdRateLimitError",
     "EodhdValidationError",
     "ErrorCode",
+    # Exchange base errors (ASEAN per-exchange)
+    "ExchangeAPIError",
+    "ExchangeError",
+    "ExchangeParseError",
+    "ExchangeRateLimitError",
+    "ExchangeValidationError",
     "ExportError",
     "FREDCacheNotFoundError",
     "FREDError",
