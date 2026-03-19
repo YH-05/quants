@@ -157,3 +157,20 @@ class TestTypeConsistency:
         assert issubclass(BloombergSessionError, BloombergError)
         assert issubclass(BloombergDataError, BloombergError)
         assert issubclass(BloombergValidationError, BloombergError)
+
+    def test_正常系_エラー階層がMarketErrorを継承(self) -> None:
+        """全てのエラークラスが MarketError を継承していることを確認。"""
+        from market.bloomberg import (
+            BloombergConnectionError,
+            BloombergDataError,
+            BloombergError,
+            BloombergSessionError,
+            BloombergValidationError,
+        )
+        from market.errors import MarketError
+
+        assert issubclass(BloombergError, MarketError)
+        assert issubclass(BloombergConnectionError, MarketError)
+        assert issubclass(BloombergSessionError, MarketError)
+        assert issubclass(BloombergDataError, MarketError)
+        assert issubclass(BloombergValidationError, MarketError)

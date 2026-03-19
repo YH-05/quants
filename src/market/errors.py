@@ -2,7 +2,7 @@
 
 This module provides a unified hierarchy of exception classes for handling
 various error conditions across all market data sources (yfinance, Bloomberg,
-FRED, NASDAQ, EDINET, etc.).
+FRED, NASDAQ, EDINET, ASEAN, EODHD, etc.).
 
 All exceptions include:
 - Error codes for programmatic handling
@@ -50,11 +50,36 @@ MarketError (base)
         JQuantsRateLimitError (rate limit exceeded)
         JQuantsValidationError (data validation failure)
         JQuantsAuthError (authentication failure)
+    ExchangeError (base for ASEAN per-exchange errors)
+        ExchangeAPIError (API response error - 4xx, 5xx)
+        ExchangeRateLimitError (rate limit exceeded)
+        ExchangeParseError (response parse failure)
+        ExchangeValidationError (data validation failure)
+    AseanError (ASEAN market operations)
+        AseanStorageError (DuckDB storage failure)
+        AseanScreenerError (tradingview-screener failure)
+        AseanLookupError (ticker lookup failure)
+    EodhdError (EODHD API operations)
+        EodhdAPIError (API response error - 4xx, 5xx)
+        EodhdRateLimitError (rate limit exceeded)
+        EodhdValidationError (data validation failure)
+        EodhdAuthError (authentication failure)
 """
 
 from enum import Enum
 from typing import Any
 
+from market.asean_common.errors import (
+    AseanError,
+    AseanLookupError,
+    AseanScreenerError,
+    AseanStorageError,
+    ExchangeAPIError,
+    ExchangeError,
+    ExchangeParseError,
+    ExchangeRateLimitError,
+    ExchangeValidationError,
+)
 from market.bse.errors import (
     BseAPIError,
     BseError,
@@ -68,6 +93,13 @@ from market.edinet.errors import (
     EdinetParseError,
     EdinetRateLimitError,
     EdinetValidationError,
+)
+from market.eodhd.errors import (
+    EodhdAPIError,
+    EodhdAuthError,
+    EodhdError,
+    EodhdRateLimitError,
+    EodhdValidationError,
 )
 from market.etfcom.errors import (
     ETFComBlockedError,
@@ -156,6 +188,20 @@ class ErrorCode(str, Enum):
         J-Quants data validation failure
     JQUANTS_AUTH_ERROR : str
         J-Quants authentication failure
+    ASEAN_STORAGE_ERROR : str
+        ASEAN DuckDB storage operation failure
+    ASEAN_SCREENER_ERROR : str
+        ASEAN tradingview-screener query failure
+    ASEAN_LOOKUP_ERROR : str
+        ASEAN ticker lookup failure
+    EODHD_API_ERROR : str
+        EODHD API response error (4xx, 5xx)
+    EODHD_RATE_LIMIT : str
+        EODHD API rate limit exceeded
+    EODHD_VALIDATION_ERROR : str
+        EODHD data validation failure
+    EODHD_AUTH_ERROR : str
+        EODHD authentication failure
     """
 
     UNKNOWN = "UNKNOWN"
@@ -190,6 +236,13 @@ class ErrorCode(str, Enum):
     JQUANTS_RATE_LIMIT = "JQUANTS_RATE_LIMIT"
     JQUANTS_VALIDATION_ERROR = "JQUANTS_VALIDATION_ERROR"
     JQUANTS_AUTH_ERROR = "JQUANTS_AUTH_ERROR"
+    ASEAN_STORAGE_ERROR = "ASEAN_STORAGE_ERROR"
+    ASEAN_SCREENER_ERROR = "ASEAN_SCREENER_ERROR"
+    ASEAN_LOOKUP_ERROR = "ASEAN_LOOKUP_ERROR"
+    EODHD_API_ERROR = "EODHD_API_ERROR"
+    EODHD_RATE_LIMIT = "EODHD_RATE_LIMIT"
+    EODHD_VALIDATION_ERROR = "EODHD_VALIDATION_ERROR"
+    EODHD_AUTH_ERROR = "EODHD_AUTH_ERROR"
 
 
 class MarketError(Exception):
@@ -502,15 +555,22 @@ class ValidationError(MarketError):
 # =============================================================================
 
 
-class FREDError(Exception):
+class FREDError(MarketError):
     """Base exception for FRED operations.
 
     All FRED-specific exceptions inherit from this class.
+    Inherits from MarketError for unified error hierarchy.
 
     Parameters
     ----------
     message : str
         Human-readable error message
+    code : ErrorCode
+        Error code for programmatic handling (default: UNKNOWN)
+    details : dict[str, Any] | None
+        Additional context about the error
+    cause : Exception | None
+        The underlying exception that caused this error
     """
 
 
@@ -594,8 +654,10 @@ class FREDCacheNotFoundError(FREDFetchError):
 # =============================================================================
 
 
-class BloombergError(Exception):
+class BloombergError(MarketError):
     """Base exception for Bloomberg operations.
+
+    Inherits from MarketError for unified error hierarchy.
 
     Parameters
     ----------
@@ -633,11 +695,7 @@ class BloombergError(Exception):
         details: dict[str, Any] | None = None,
         cause: Exception | None = None,
     ) -> None:
-        super().__init__(message)
-        self.message = message
-        self.code = code
-        self.details = details or {}
-        self.cause = cause
+        super().__init__(message, code=code, details=details, cause=cause)
 
     def to_dict(self) -> dict[str, Any]:
         """Convert error to dictionary representation.
@@ -653,7 +711,7 @@ class BloombergError(Exception):
         >>> error.to_dict()
         {'message': 'Test', 'code': 'CONNECTION_FAILED', 'details': {}}
         """
-        result = {
+        result: dict[str, Any] = {
             "message": self.message,
             "code": self.code.value,
             "details": self.details,
@@ -887,6 +945,12 @@ class BloombergValidationError(BloombergError):
 # are imported at the top of this file and included in __all__.
 
 __all__ = [
+    # ASEAN errors
+    "AseanError",
+    "AseanLookupError",
+    "AseanScreenerError",
+    "AseanStorageError",
+    # Bloomberg errors
     "BloombergConnectionError",
     "BloombergDataError",
     "BloombergError",
@@ -900,18 +964,32 @@ __all__ = [
     "BseValidationError",
     "CacheError",
     "DataFetchError",
+    # ETF.com errors
     "ETFComBlockedError",
     "ETFComError",
     "ETFComHTTPError",
     "ETFComNotFoundError",
     "ETFComScrapingError",
     "ETFComTimeoutError",
+    # EDINET errors
     "EdinetAPIError",
     "EdinetError",
     "EdinetParseError",
     "EdinetRateLimitError",
     "EdinetValidationError",
+    # EODHD errors
+    "EodhdAPIError",
+    "EodhdAuthError",
+    "EodhdError",
+    "EodhdRateLimitError",
+    "EodhdValidationError",
     "ErrorCode",
+    # Exchange base errors (ASEAN per-exchange)
+    "ExchangeAPIError",
+    "ExchangeError",
+    "ExchangeParseError",
+    "ExchangeRateLimitError",
+    "ExchangeValidationError",
     "ExportError",
     "FREDCacheNotFoundError",
     "FREDError",

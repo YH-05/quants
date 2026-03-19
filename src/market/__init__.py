@@ -1,11 +1,12 @@
 """Market package for financial market data analysis.
 
 This package provides core infrastructure for market data handling including:
-- Data fetching (Yahoo Finance, FRED, NASDAQ, EDINET, etc.)
+- Data fetching (Yahoo Finance, FRED, NASDAQ, EDINET, EODHD, etc.)
 - Data export (JSON, CSV, SQLite, Agent-optimized JSON)
 - Type definitions for market data
 - JSON schema definitions for validation
 - Error handling
+- ASEAN market data (SGX, Bursa, SET, IDX, HOSE, PSE)
 
 Submodules
 ----------
@@ -19,6 +20,10 @@ nasdaq
     NASDAQ Stock Screener API (stock screening data)
 edinet
     EDINET DB API (Japanese listed company financial data)
+asean_common
+    ASEAN market common foundation (constants, types, storage, screener)
+eodhd
+    EODHD API client (global financial data)
 factset
     FactSet API integration (planned)
 export
@@ -59,8 +64,39 @@ EdinetStorage
     DuckDB storage layer managing 8 tables for EDINET data
 EdinetSyncer
     6-phase sync orchestrator with checkpoint-based resume support
+AseanMarket
+    Enum for 6 ASEAN exchanges (SGX, Bursa, SET, IDX, HOSE, PSE)
+TickerRecord
+    Frozen dataclass representing an ASEAN ticker
+AseanTickerStorage
+    DuckDB storage layer for ASEAN ticker master data
+EodhdClient
+    Skeleton API client for EODHD financial data
+EodhdConfig
+    Configuration for EODHD API key and HTTP behaviour
+SgxConfig
+    Configuration for SGX (Singapore Exchange) data retrieval
+BursaConfig
+    Configuration for Bursa Malaysia data retrieval
+SetConfig
+    Configuration for SET (Stock Exchange of Thailand) data retrieval
+IdxConfig
+    Configuration for IDX (Indonesia Stock Exchange) data retrieval
+HoseConfig
+    Configuration for HOSE (Ho Chi Minh Stock Exchange) data retrieval
+PseConfig
+    Configuration for PSE (Philippine Stock Exchange) data retrieval
 """
 
+from .asean_common import (
+    AseanError,
+    AseanLookupError,
+    AseanMarket,
+    AseanScreenerError,
+    AseanStorageError,
+    AseanTickerStorage,
+    TickerRecord,
+)
 from .bse import (
     Announcement,
     BhavcopyCollector,
@@ -84,6 +120,14 @@ from .bse import (
 from .bse import (
     RetryConfig as BseRetryConfig,
 )
+from .bursa import (
+    BursaAPIError,
+    BursaConfig,
+    BursaError,
+    BursaParseError,
+    BursaRateLimitError,
+    BursaValidationError,
+)
 from .edinet import (
     DailyRateLimiter,
     EdinetAPIError,
@@ -97,6 +141,15 @@ from .edinet import (
     EdinetValidationError,
 )
 from .edinet_api import EdinetApiClient
+from .eodhd import (
+    EodhdAPIError,
+    EodhdAuthError,
+    EodhdClient,
+    EodhdConfig,
+    EodhdError,
+    EodhdRateLimitError,
+    EodhdValidationError,
+)
 from .errors import (
     BloombergConnectionError,
     BloombergDataError,
@@ -127,10 +180,34 @@ from .etfcom import (
     TickerCollector,
 )
 from .export import DataExporter
+from .hose import (
+    HoseAPIError,
+    HoseConfig,
+    HoseError,
+    HoseParseError,
+    HoseRateLimitError,
+    HoseValidationError,
+)
+from .idx import (
+    IdxAPIError,
+    IdxConfig,
+    IdxError,
+    IdxParseError,
+    IdxRateLimitError,
+    IdxValidationError,
+)
 from .jquants import JQuantsClient
 from .nasdaq import (
     ScreenerCollector,
     ScreenerFilter,
+)
+from .pse import (
+    PseAPIError,
+    PseConfig,
+    PseError,
+    PseParseError,
+    PseRateLimitError,
+    PseValidationError,
 )
 from .schema import (
     CacheConfig,
@@ -143,6 +220,22 @@ from .schema import (
     validate_config,
     validate_economic_metadata,
     validate_stock_metadata,
+)
+from .set_exchange import (
+    SetAPIError,
+    SetConfig,
+    SetError,
+    SetParseError,
+    SetRateLimitError,
+    SetValidationError,
+)
+from .sgx import (
+    SgxAPIError,
+    SgxConfig,
+    SgxError,
+    SgxParseError,
+    SgxRateLimitError,
+    SgxValidationError,
 )
 from .types import (
     AgentOutput,
@@ -158,6 +251,13 @@ __all__ = [
     "AnalysisResult",
     # BSE
     "Announcement",
+    # ASEAN common
+    "AseanError",
+    "AseanLookupError",
+    "AseanMarket",
+    "AseanScreenerError",
+    "AseanStorageError",
+    "AseanTickerStorage",
     "BhavcopyCollector",
     "BhavcopyType",
     # Bloomberg errors
@@ -174,6 +274,13 @@ __all__ = [
     "BseRetryConfig",
     "BseSession",
     "BseValidationError",
+    # Bursa (Malaysia)
+    "BursaAPIError",
+    "BursaConfig",
+    "BursaError",
+    "BursaParseError",
+    "BursaRateLimitError",
+    "BursaValidationError",
     # Core
     "CacheConfig",
     "CacheError",
@@ -203,6 +310,14 @@ __all__ = [
     "EdinetStorage",
     "EdinetSyncer",
     "EdinetValidationError",
+    # EODHD
+    "EodhdAPIError",
+    "EodhdAuthError",
+    "EodhdClient",
+    "EodhdConfig",
+    "EodhdError",
+    "EodhdRateLimitError",
+    "EodhdValidationError",
     "ErrorCode",
     "ExportConfig",
     "ExportError",
@@ -213,6 +328,20 @@ __all__ = [
     "FinancialResult",
     "FundFlowsCollector",
     "FundamentalsCollector",
+    # HOSE (Vietnam)
+    "HoseAPIError",
+    "HoseConfig",
+    "HoseError",
+    "HoseParseError",
+    "HoseRateLimitError",
+    "HoseValidationError",
+    # IDX (Indonesia)
+    "IdxAPIError",
+    "IdxConfig",
+    "IdxError",
+    "IdxParseError",
+    "IdxRateLimitError",
+    "IdxValidationError",
     "IndexCollector",
     "IndexName",
     # J-Quants
@@ -225,13 +354,35 @@ __all__ = [
     "NasdaqError",
     "NasdaqParseError",
     "NasdaqRateLimitError",
+    # PSE (Philippines)
+    "PseAPIError",
+    "PseConfig",
+    "PseError",
+    "PseParseError",
+    "PseRateLimitError",
+    "PseValidationError",
     "QuoteCollector",
     "ScreenerCollector",
     "ScreenerFilter",
     "ScripGroup",
     "ScripQuote",
+    # SET (Thailand)
+    "SetAPIError",
+    "SetConfig",
+    "SetError",
+    "SetParseError",
+    "SetRateLimitError",
+    "SetValidationError",
+    # SGX (Singapore)
+    "SgxAPIError",
+    "SgxConfig",
+    "SgxError",
+    "SgxParseError",
+    "SgxRateLimitError",
+    "SgxValidationError",
     "StockDataMetadata",
     "TickerCollector",
+    "TickerRecord",
     "ValidationError",
     "validate_config",
     "validate_economic_metadata",
