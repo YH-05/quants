@@ -63,7 +63,7 @@ Phase 3: レポート出力
 
 全ての Cypher クエリは `mcp__neo4j-cypher__read_neo4j_cypher` を使用する（読み取りのみ）。
 
-### 1.1 Completeness（完全性）— 重み 25%
+### 1.1 Completeness（完全性）— 重み 20%
 
 14ノード全てのプロパティ充填率を計測する。重み分類は `data/config/knowledge-graph-schema.yaml` に基づく。
 
@@ -357,7 +357,7 @@ RETURN
 
 ---
 
-### 1.2 Consistency（一貫性）— 重み 20%
+### 1.2 Consistency（一貫性）— 重み 18%
 
 ID フォーマット、enum 値、リレーションタイプの妥当性を検証する。
 
@@ -538,7 +538,7 @@ RETURN type(r) AS unknown_rel_type, count(*) AS cnt
 
 ---
 
-### 1.3 Orphan 検出（孤立ノード）— 重み 15%
+### 1.3 Orphan 検出（孤立ノード）— 重み 13%
 
 リレーションを持たないノードを検出する。
 
@@ -604,7 +604,7 @@ RETURN t.topic_id AS id, t.name AS name
 
 ---
 
-### 1.4 Staleness（鮮度）— 重み 10%
+### 1.4 Staleness（鮮度）— 重み 8%
 
 古くなったデータを検出する。
 
@@ -646,7 +646,7 @@ RETURN pe.evidence_id AS id, pe.metric_name AS metric,
 
 ---
 
-### 1.5 Structural（構造）— 重み 10%
+### 1.5 Structural（構造）— 重み 9%
 
 グラフ構造の統計を計測する。
 
@@ -778,11 +778,11 @@ RETURN label AS pascal_violation
 
 ---
 
-## Phase 2: LLM-as-Judge（重み 15%）
+## Phase 2: LLM-as-Judge（重み 12%）
 
 Claude Code が直接、Claim/Fact の精度とグラフの創発的発見ポテンシャルを評価する。
 
-### 2.1 Claim/Fact 精度（8%）
+### 2.1 Claim/Fact 精度（6.5%）
 
 `mcp__neo4j-cypher__read_neo4j_cypher` で Claim/Fact をサンプリングし、3軸で評価する。
 
@@ -822,7 +822,7 @@ ORDER BY rand() LIMIT 10
 - **0.2-0.4**: 不正確 or Source との不整合あり
 - **0.0-0.1**: 無関係 or ノイズデータ
 
-### 2.2 創発的発見ポテンシャル（7%）
+### 2.2 創発的発見ポテンシャル（5.5%）
 
 4つの構造プローブを実行し、仮説を生成して自己評価する。
 
