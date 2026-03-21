@@ -31,7 +31,6 @@ market.polymarket.session : Underlying HTTP session.
 market.polymarket.cache : TTL constants and cache helper.
 """
 
-import hashlib
 import re
 from datetime import UTC, datetime
 from typing import Any
@@ -710,7 +709,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"midpoints_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
+            symbol=f"midpoints_{ids_str}",
             source="polymarket_clob_midpoints",
         )
 
@@ -771,7 +770,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"spreads_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
+            symbol=f"spreads_{ids_str}",
             source="polymarket_clob_spreads",
         )
 
@@ -837,7 +836,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"orderbooks_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
+            symbol=f"orderbooks_{ids_str}",
             source="polymarket_clob_orderbooks",
         )
 
@@ -905,7 +904,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"prices_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
+            symbol=f"prices_{ids_str}",
             source="polymarket_clob_prices_bulk",
         )
 
