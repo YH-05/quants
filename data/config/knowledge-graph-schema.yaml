@@ -95,6 +95,13 @@ nodes:
         type: string
         indexed: true
         description: "Workflow command that generated this source"
+      abstract:
+        type: string
+        description: "Paper/report abstract (paper/report source_type only)"
+      venue:
+        type: string
+        indexed: true
+        description: "Publication venue (e.g., NeurIPS, JSAI, ICML; paper/report source_type only)"
 
   Entity:
     description: "Named entities referenced in facts and claims (companies, indices, sectors, countries, etc.)"
