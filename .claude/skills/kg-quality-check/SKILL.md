@@ -1192,7 +1192,7 @@ Rating: A (85+) / B (70-84) / C (50-69) / D (<50)
 
 ### MUST
 
-- Phase 1 の6カテゴリ全ての Cypher プローブを実行すること
+- Phase 1 の7カテゴリ全ての Cypher プローブを実行すること（Phase 1.7 Research Paper Quality を含む）
 - Phase 2 の LLM-as-Judge 評価を Claim/Fact 精度と創発的発見の両方に実施すること
 - 全ての Cypher は `mcp__neo4j-cypher__read_neo4j_cypher` で実行すること
 - レポートに総合スコア（100点満点）と Rating を算出すること
@@ -1213,8 +1213,9 @@ Rating: A (85+) / B (70-84) / C (50-69) / D (<50)
 
 ## 完了条件
 
-- [ ] 6カテゴリの Cypher プローブが全て実行されている
+- [ ] 7カテゴリの Cypher プローブが全て実行されている（Phase 1.7 Research Paper Quality を含む）
 - [ ] LLM-as-Judge による Claim/Fact 精度評価が実施されている
 - [ ] 創発的発見ポテンシャル評価が実施されている
 - [ ] 総合スコア（100点満点）と Rating が算出されている
 - [ ] 問題点と改善提案を含む Markdown レポートがユーザーに提示されている
+- [ ] Research Paper Quality の6サブチェック（A-F）が全て実行されている
