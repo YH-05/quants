@@ -54,15 +54,27 @@
 | B6: PE ID 正規化 | 47件修正 → 違反ゼロ |
 | B7: CITES 再構築 | **未実施**（edgar 依存関係エラー） |
 
-### KG 全体の変化
+### 追加アクション実行結果
 
-| 指標 | Before | After |
-|------|--------|-------|
-| Claim ノード | 189 | 288 |
-| Author ノード | 312 | 453 |
-| MAKES_CLAIM | 192 | 291 |
-| AUTHORED_BY | 354 | 519 |
-| Consistency enum 違反 | 211件 | ~20件 |
+| アクション | 結果 |
+|----------|------|
+| #1: Claim→Entity リンク | ABOUT 177件 + TAGGED 715件作成。140/288 Claims が Entity 接続 |
+| #2: edgar.rate_limiter 修正 | RateLimiter を database パッケージに移動、academic import 復旧 |
+| #3: 重複Source マージ | 16件統合・削除完了。リレーション移行済み |
+| #4: Author/COAUTHORED_WITH 拡充 | academic backfill で S2 API から 433 Author 取得・投入 |
+
+### KG 全体の変化（セッション全体）
+
+| 指標 | セッション開始時 | 最終状態 | 変化 |
+|------|-----------------|---------|------|
+| Source | 237 | 294 | +57 |
+| Author | 312 | 836 | +524 |
+| Claim | 189 | 288 | +99 |
+| AUTHORED_BY | 354 | 836 | +482 |
+| MAKES_CLAIM | 192 | 291 | +99 |
+| ABOUT | 0 | 177 | +177 |
+| TAGGED | 549 | 1,234 | +685 |
+| Consistency enum 違反 | 211件 | ~20件 | -90% |
 
 ## 決定事項
 
@@ -73,21 +85,27 @@
 | dec-2026-03-21-003 | published_date/published → published_at に統一 | 同一意味のプロパティ3種を解消 |
 | dec-2026-03-21-004 | Claim.sentiment/claim_type enum を正規化 | Consistency 向上、違反ゼロ達成 |
 | dec-2026-03-21-005 | src-* 89件にAuthor展開+Claim抽出を実施 | パイプライン間品質格差の解消 |
+| dec-2026-03-21-006 | RateLimiter を database パッケージに移動 | edgartools との名前衝突を解消 |
+| dec-2026-03-21-007 | 重複Source 16件を統合（arxiv-* に集約、src-* 削除） | リレーション移行後に削除 |
+| dec-2026-03-21-008 | Claim→Entity は著者所属経由（177件）+ TAGGED（715件）で対応 | 市場エンティティノードが不在のため間接リンクで対応 |
 
 ## アクションアイテム
 
 | ID | 内容 | 優先度 | 状態 |
 |----|------|--------|------|
-| act-2026-03-21-001 | B7: CITES 再構築（edgar 依存関係修正後） | 中 | blocked |
-| act-2026-03-21-002 | 重複Source 16件のマージ | 中 | pending |
-| act-2026-03-21-003 | Claim→ABOUT→Entity リレーション構築（288件が未接続） | 高 | pending |
-| act-2026-03-21-004 | edgar.rate_limiter インポートエラー修正（名前衝突） | 高 | pending |
+| act-2026-03-21-001 | B7: CITES 再構築（backfill に --existing-ids ファイル対応を追加） | 中 | pending |
+| act-2026-03-21-002 | 重複Source 16件のマージ | 中 | **completed** |
+| act-2026-03-21-003 | Claim→ABOUT→Entity リレーション構築 | 高 | **completed**（177件） |
+| act-2026-03-21-004 | edgar.rate_limiter インポートエラー修正 | 高 | **completed** |
+| act-2026-03-21-005 | B7: CITES — backfill コマンドに --existing-ids ファイル対応を追加し再実行 | 中 | pending |
+| act-2026-03-21-006 | 残り148件の Claim に市場エンティティノードを作成してリンク | 中 | pending |
+| act-2026-03-21-007 | /kg-quality-check 再実行で改善効果を定量確認（目標: RPQ 70%+、総合 85+） | 高 | pending |
 
 ## 次回の議論トピック
 
-- Claim→ABOUT→Entity リレーション構築の自動化パイプライン設計
-- edgar パッケージの名前衝突解消（edgartools との分離）
-- Phase B 完了後の品質スコア目標達成確認（Research Paper Quality 70%+、総合 85+）
+- 市場エンティティ（銘柄・指数・セクター等）ノードの設計と投入
+- CITES バックフィルの --existing-ids ファイル対応
+- /kg-quality-check 再実行による改善効果の定量確認
 
 ## 関連ファイル
 
