@@ -104,6 +104,12 @@ def _build_parser() -> argparse.ArgumentParser:
         default=None,
         help="既存 Source ID リスト（CITES フィルタ用）",
     )
+    backfill_parser.add_argument(
+        "--existing-ids-file",
+        type=str,
+        default=None,
+        help="既存 Source ID リストファイル（1行1ID、--existing-ids の代替）",
+    )
 
     return parser
 
@@ -294,6 +300,8 @@ def _handle_backfill(args: argparse.Namespace) -> int:
 
     # 4. map_academic_papers で graph-queue JSON に変換
     existing_ids: list[str] = args.existing_ids or []
+    if args.existing_ids_file:
+        existing_ids.extend(_read_arxiv_ids(args.existing_ids_file))
     mapper_input = {
         "papers": paper_dicts,
         "existing_source_ids": existing_ids,

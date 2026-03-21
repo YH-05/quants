@@ -50,7 +50,9 @@ _BASE_URL = "https://api.semanticscholar.org/graph/v1"
 
 # fetch_paper で取得するフィールド
 _PAPER_FIELDS = (
-    "title,authors,externalIds,references,citations,"
+    "title,authors,externalIds,"
+    "references.externalIds,references.title,"
+    "citations.externalIds,citations.title,"
     "abstract,publicationDate,fieldsOfStudy"
 )
 
