@@ -28,6 +28,8 @@ factset
     FactSet API integration (planned)
 export
     Data export utilities
+polymarket
+    Polymarket prediction market data (events, markets, order books, trades)
 alternative
     Alternative data sources (planned)
 schema
@@ -39,7 +41,7 @@ DataExporter
     Export market data to various formats
 DataSource
     Data source enum (YFINANCE, FRED, LOCAL, BLOOMBERG, FACTSET, ETF_COM, NASDAQ,
-    EDINET_DB, BSE, JQUANTS, EDINET_API)
+    EDINET_DB, BSE, JQUANTS, EDINET_API, POLYMARKET)
 MarketDataResult
     Result of market data fetch operation
 AnalysisResult
@@ -201,6 +203,17 @@ from .nasdaq import (
     ScreenerCollector,
     ScreenerFilter,
 )
+from .polymarket import (
+    PolymarketAPIError,
+    PolymarketClient,
+    PolymarketConfig,
+    PolymarketError,
+    PolymarketEvent,
+    PolymarketMarket,
+    PolymarketNotFoundError,
+    PolymarketRateLimitError,
+    PolymarketValidationError,
+)
 from .pse import (
     PseAPIError,
     PseConfig,
@@ -354,6 +367,16 @@ __all__ = [
     "NasdaqError",
     "NasdaqParseError",
     "NasdaqRateLimitError",
+    # Polymarket
+    "PolymarketAPIError",
+    "PolymarketClient",
+    "PolymarketConfig",
+    "PolymarketError",
+    "PolymarketEvent",
+    "PolymarketMarket",
+    "PolymarketNotFoundError",
+    "PolymarketRateLimitError",
+    "PolymarketValidationError",
     # PSE (Philippines)
     "PseAPIError",
     "PseConfig",
