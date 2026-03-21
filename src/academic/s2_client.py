@@ -23,7 +23,7 @@ See Also
 academic.types : AcademicConfig データクラス
 academic.errors : HTTP エラー例外クラス
 academic.retry : リトライデコレータ
-edgar.rate_limiter : RateLimiter クラス
+database.rate_limiter : RateLimiter クラス（共有ユーティリティ）
 """
 
 from __future__ import annotations
@@ -33,10 +33,10 @@ from typing import Any
 
 import httpx
 
-# AIDEV-NOTE: RateLimiter は edgar パッケージに実装されているが、汎用的なレート制限
-# ユーティリティとして academic でも再利用している。将来的に database パッケージ等の
-# 共通レイヤーに移動する可能性があるが、現時点では edgar に依存したまま維持する。
-from edgar.rate_limiter import RateLimiter
+# AIDEV-NOTE: RateLimiter は database パッケージに実装されている共有ユーティリティ。
+# edgartools (外部パッケージ) が edgar という名前で site-packages にインストールされるため、
+# edgar.rate_limiter からのインポートは名前衝突を起こす。database パッケージを使用すること。
+from database.rate_limiter import RateLimiter
 from utils_core.logging import get_logger
 
 from .errors import PaperNotFoundError, RateLimitError, RetryableError

@@ -28,7 +28,7 @@ from typing import TYPE_CHECKING, Any
 
 from edgar.config import DEFAULT_RATE_LIMIT_PER_SECOND, load_config
 from edgar.errors import EdgarError, FilingNotFoundError
-from edgar.rate_limiter import RateLimiter
+from database.rate_limiter import RateLimiter
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
