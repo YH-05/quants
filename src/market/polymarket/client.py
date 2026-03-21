@@ -31,6 +31,8 @@ market.polymarket.session : Underlying HTTP session.
 market.polymarket.cache : TTL constants and cache helper.
 """
 
+import hashlib
+import re
 from datetime import UTC, datetime
 from typing import Any
 
@@ -45,7 +47,12 @@ from market.polymarket.cache import (
     ORDERBOOK_TTL,
     get_polymarket_cache,
 )
-from market.polymarket.constants import CLOB_BASE_URL, DATA_BASE_URL, GAMMA_BASE_URL
+from market.polymarket.constants import (
+    CLOB_BASE_URL,
+    DATA_BASE_URL,
+    GAMMA_BASE_URL,
+    MAX_LIMIT,
+)
 from market.polymarket.errors import PolymarketValidationError
 from market.polymarket.models import (
     OrderBook,
@@ -90,6 +97,8 @@ class PolymarketClient:
     ...     print(len(events))
     """
 
+    _SAFE_ID_RE = re.compile(r"^[a-zA-Z0-9_\-]{1,256}$")
+
     def __init__(
         self,
         config: PolymarketConfig | None = None,
@@ -97,7 +106,7 @@ class PolymarketClient:
         cache: SQLiteCache | None = None,
     ) -> None:
         self._config: PolymarketConfig = config or PolymarketConfig()
-        self._session = PolymarketSession(
+        self._session: PolymarketSession = PolymarketSession(
             config=self._config, retry_config=retry_config
         )
         self._cache: SQLiteCache = cache or get_polymarket_cache()
@@ -462,7 +471,7 @@ class PolymarketClient:
         result = MarketDataResult(
             symbol=token_id,
             data=df,
-            source=DataSource.LOCAL,
+            source=DataSource.POLYMARKET,
             fetched_at=datetime.now(tz=UTC),
             from_cache=False,
             metadata={"interval": str(interval), "point_count": len(points)},
@@ -701,7 +710,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"midpoints_{ids_str[:64]}",
+            symbol=f"midpoints_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
             source="polymarket_clob_midpoints",
         )
 
@@ -762,7 +771,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"spreads_{ids_str[:64]}",
+            symbol=f"spreads_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
             source="polymarket_clob_spreads",
         )
 
@@ -828,7 +837,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"orderbooks_{ids_str[:64]}",
+            symbol=f"orderbooks_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
             source="polymarket_clob_orderbooks",
         )
 
@@ -896,7 +905,7 @@ class PolymarketClient:
         params: dict[str, str] = {"token_ids": ids_str}
 
         cache_key = generate_cache_key(
-            symbol=f"prices_{ids_str[:64]}",
+            symbol=f"prices_{hashlib.sha256(ids_str.encode()).hexdigest()[:16]}",
             source="polymarket_clob_prices_bulk",
         )
 
@@ -1293,11 +1302,18 @@ class PolymarketClient:
         Raises
         ------
         PolymarketValidationError
-            If the value is empty or whitespace-only.
+            If the value is empty, whitespace-only, or contains
+            invalid characters (path traversal prevention).
         """
         if not value or not value.strip():
             raise PolymarketValidationError(
                 message=f"{field_name} must not be empty",
+                field=field_name,
+                value=value,
+            )
+        if not self._SAFE_ID_RE.match(value):
+            raise PolymarketValidationError(
+                message=f"{field_name} contains invalid characters: '{value}'",
                 field=field_name,
                 value=value,
             )
@@ -1317,9 +1333,9 @@ class PolymarketClient:
         PolymarketValidationError
             If limit or offset is invalid.
         """
-        if limit < 1:
+        if limit < 1 or limit > MAX_LIMIT:
             raise PolymarketValidationError(
-                message=f"limit must be positive, got {limit}",
+                message=f"limit must be between 1 and {MAX_LIMIT}, got {limit}",
                 field="limit",
                 value=limit,
             )

@@ -121,7 +121,7 @@ class TestPolymarketClientValidation:
         client._validate_id("0xabc123", "test_id")
 
     def test_異常系_limitが0(self, client: PolymarketClient) -> None:
-        with pytest.raises(PolymarketValidationError, match="limit must be positive"):
+        with pytest.raises(PolymarketValidationError, match="limit must be between"):
             client._validate_pagination(0, 0)
 
     def test_異常系_負のoffset(self, client: PolymarketClient) -> None:
@@ -142,6 +142,18 @@ class TestPolymarketClientValidation:
             match="token_ids must not contain empty strings",
         ):
             client._validate_token_ids(["token1", ""])
+
+    def test_異常系_limitが上限を超えてValidationError(
+        self, client: PolymarketClient
+    ) -> None:
+        with pytest.raises(PolymarketValidationError, match="limit must be between"):
+            client.get_events(limit=10_001)
+
+    def test_異常系_不正文字を含むIDでValidationError(
+        self, client: PolymarketClient
+    ) -> None:
+        with pytest.raises(PolymarketValidationError, match="invalid characters"):
+            client.get_event("../admin")
 
 
 # =============================================================================
@@ -323,7 +335,7 @@ class TestGetMarket:
         market = client.get_market("0xabc123")
         assert isinstance(market, PolymarketMarket)
         assert market.condition_id == "0xabc123"
-        assert market.volume == 1500000.0
+        assert market.volume == pytest.approx(1500000.0)
 
     def test_異常系_空のcondition_id(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
@@ -429,13 +441,13 @@ class TestGetMidpoint:
 
         mid = client.get_midpoint("token123")
         assert isinstance(mid, float)
-        assert mid == 0.65
+        assert mid == pytest.approx(0.65)
 
     def test_正常系_ゼロのミッドポイント(self, client: PolymarketClient) -> None:
         client._session.get_with_retry.return_value = _make_response({})
 
         mid = client.get_midpoint("token123")
-        assert mid == 0.0
+        assert mid == pytest.approx(0.0)
 
     def test_異常系_空のtoken_id(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
@@ -457,17 +469,17 @@ class TestGetSpread:
 
         spread = client.get_spread("token123")
         assert isinstance(spread, dict)
-        assert spread["bid"] == 0.60
-        assert spread["ask"] == 0.65
-        assert spread["spread"] == 0.05
+        assert spread["bid"] == pytest.approx(0.60)
+        assert spread["ask"] == pytest.approx(0.65)
+        assert spread["spread"] == pytest.approx(0.05)
 
     def test_正常系_空のレスポンス(self, client: PolymarketClient) -> None:
         client._session.get_with_retry.return_value = _make_response({})
 
         spread = client.get_spread("token123")
-        assert spread["bid"] == 0.0
-        assert spread["ask"] == 0.0
-        assert spread["spread"] == 0.0
+        assert spread["bid"] == pytest.approx(0.0)
+        assert spread["ask"] == pytest.approx(0.0)
+        assert spread["spread"] == pytest.approx(0.0)
 
     def test_異常系_空のtoken_id(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
@@ -501,8 +513,8 @@ class TestGetOrderbook:
         assert isinstance(book, OrderBook)
         assert len(book.bids) == 2
         assert len(book.asks) == 1
-        assert book.bids[0].price == 0.60
-        assert book.asks[0].price == 0.65
+        assert book.bids[0].price == pytest.approx(0.60)
+        assert book.asks[0].price == pytest.approx(0.65)
 
     def test_正常系_空のオーダーブック(self, client: PolymarketClient) -> None:
         client._session.get_with_retry.return_value = _make_response(
@@ -554,8 +566,8 @@ class TestGetMidpoints:
 
         mids = client.get_midpoints(["token1", "token2"])
         assert isinstance(mids, dict)
-        assert mids["token1"] == 0.55
-        assert mids["token2"] == 0.70
+        assert mids["token1"] == pytest.approx(0.55)
+        assert mids["token2"] == pytest.approx(0.70)
 
     def test_異常系_空のリスト(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
@@ -580,8 +592,8 @@ class TestGetSpreads:
 
         spreads = client.get_spreads(["token1", "token2"])
         assert isinstance(spreads, dict)
-        assert spreads["token1"]["bid"] == 0.55
-        assert spreads["token2"]["ask"] == 0.75
+        assert spreads["token1"]["bid"] == pytest.approx(0.55)
+        assert spreads["token2"]["ask"] == pytest.approx(0.75)
 
     def test_異常系_空のリスト(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
@@ -640,8 +652,8 @@ class TestGetPrices:
 
         prices = client.get_prices(["token1", "token2"])
         assert isinstance(prices, dict)
-        assert prices["token1"] == 0.55
-        assert prices["token2"] == 0.70
+        assert prices["token1"] == pytest.approx(0.55)
+        assert prices["token2"] == pytest.approx(0.70)
 
     def test_異常系_空のリスト(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
@@ -724,7 +736,7 @@ class TestGetTrades:
         assert isinstance(trades, list)
         assert len(trades) == 2
         assert all(isinstance(t, TradeRecord) for t in trades)
-        assert trades[0].price == 0.65
+        assert trades[0].price == pytest.approx(0.65)
 
     def test_正常系_空の取引(self, client: PolymarketClient) -> None:
         client._session.get_with_retry.return_value = _make_response([])

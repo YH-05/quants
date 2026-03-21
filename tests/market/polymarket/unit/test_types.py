@@ -3,6 +3,7 @@
 import pytest
 
 from market.polymarket.types import (
+    FetchOptions,
     PolymarketConfig,
     PriceInterval,
     RetryConfig,
@@ -141,3 +142,22 @@ class TestPriceInterval:
     def test_異常系_無効な値(self) -> None:
         with pytest.raises(ValueError):
             PriceInterval("invalid")
+
+
+class TestFetchOptions:
+    """FetchOptions のテスト。"""
+
+    def test_正常系_デフォルト値(self) -> None:
+        options = FetchOptions()
+        assert options.use_cache is True
+        assert options.force_refresh is False
+
+    def test_正常系_カスタム値(self) -> None:
+        options = FetchOptions(use_cache=False, force_refresh=True)
+        assert options.use_cache is False
+        assert options.force_refresh is True
+
+    def test_正常系_frozen(self) -> None:
+        options = FetchOptions()
+        with pytest.raises(AttributeError):
+            options.use_cache = False  # type: ignore[misc]

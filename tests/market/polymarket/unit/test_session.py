@@ -120,15 +120,21 @@ class TestPolymarketSessionSSRF:
     def test_異常系_不正なスキームがブロックされる(
         self, session: PolymarketSession
     ) -> None:
-        with pytest.raises(ValueError, match="URL scheme must be"):
+        with pytest.raises(ValueError, match="URL scheme must be 'https'"):
             session._validate_url("ftp://gamma-api.polymarket.com/markets")
 
+    def test_異常系_httpスキームがブロックされる(
+        self, session: PolymarketSession
+    ) -> None:
+        with pytest.raises(ValueError, match="Only HTTPS is permitted"):
+            session._validate_url("http://gamma-api.polymarket.com/markets")
+
     def test_異常系_localhostがブロックされる(self, session: PolymarketSession) -> None:
-        with pytest.raises(ValueError, match="not in allowed hosts"):
+        with pytest.raises(ValueError, match="URL scheme must be 'https'"):
             session._validate_url("http://localhost:8080/api")
 
     def test_異常系_内部IPがブロックされる(self, session: PolymarketSession) -> None:
-        with pytest.raises(ValueError, match="not in allowed hosts"):
+        with pytest.raises(ValueError, match="URL scheme must be 'https'"):
             session._validate_url("http://169.254.169.254/metadata")
 
 

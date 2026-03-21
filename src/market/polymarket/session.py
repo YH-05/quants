@@ -299,15 +299,16 @@ class PolymarketSession:
         Raises
         ------
         ValueError
-            If the URL scheme is not http/https or the host is not
+            If the URL scheme is not https or the host is not
             in ``ALLOWED_HOSTS``.
         """
         parsed = urlparse(url)
-        if parsed.scheme not in ("http", "https"):
+        if parsed.scheme != "https":
             raise ValueError(
-                f"URL scheme must be 'http' or 'https', got '{parsed.scheme}'"
+                f"URL scheme must be 'https', got '{parsed.scheme}'. "
+                "Only HTTPS is permitted for Polymarket API access."
             )
-        parsed_host = parsed.netloc
+        parsed_host = parsed.hostname or ""
         if parsed_host not in ALLOWED_HOSTS:
             logger.warning(
                 "Request blocked: host not in allowed hosts",

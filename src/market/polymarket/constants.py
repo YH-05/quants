@@ -67,6 +67,9 @@ Polymarket APIs are public but rate-limited; this conservative
 default helps avoid HTTP 429 responses.
 """
 
+MAX_LIMIT: Final[int] = 10_000
+"""Maximum limit for API pagination requests."""
+
 # ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
@@ -78,4 +81,5 @@ __all__ = [
     "DEFAULT_RATE_LIMIT_PER_SECOND",
     "DEFAULT_TIMEOUT",
     "GAMMA_BASE_URL",
+    "MAX_LIMIT",
 ]

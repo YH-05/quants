@@ -7,6 +7,7 @@ from market.polymarket.constants import (
     DEFAULT_RATE_LIMIT_PER_SECOND,
     DEFAULT_TIMEOUT,
     GAMMA_BASE_URL,
+    MAX_LIMIT,
 )
 
 
@@ -115,3 +116,7 @@ class TestDefaultValues:
 
     def test_正常系_レートリミットはfloat型(self) -> None:
         assert isinstance(DEFAULT_RATE_LIMIT_PER_SECOND, float)
+
+    def test_正常系_MAX_LIMITが正の整数(self) -> None:
+        assert isinstance(MAX_LIMIT, int)
+        assert MAX_LIMIT > 0

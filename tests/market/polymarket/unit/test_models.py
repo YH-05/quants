@@ -33,20 +33,20 @@ class TestOrderBookLevel:
 
     def test_正常系_基本的なレベル(self) -> None:
         level = OrderBookLevel(price=0.55, size=1000.0)
-        assert level.price == 0.55
-        assert level.size == 1000.0
+        assert level.price == pytest.approx(0.55)
+        assert level.size == pytest.approx(1000.0)
 
     def test_正常系_model_validate(self) -> None:
         data = {"price": 0.75, "size": 500.0}
         level = OrderBookLevel.model_validate(data)
-        assert level.price == 0.75
-        assert level.size == 500.0
+        assert level.price == pytest.approx(0.75)
+        assert level.size == pytest.approx(500.0)
 
     def test_正常系_extra_fieldsは無視される(self) -> None:
         data = {"price": 0.55, "size": 1000.0, "unknown_field": "ignored"}
         level = OrderBookLevel.model_validate(data)
-        assert level.price == 0.55
-        assert level.size == 1000.0
+        assert level.price == pytest.approx(0.55)
+        assert level.size == pytest.approx(1000.0)
         assert not hasattr(level, "unknown_field")
 
     def test_異常系_price欠落でValidationError(self) -> None:
@@ -59,11 +59,11 @@ class TestOrderBookLevel:
 
     def test_正常系_price境界値_0(self) -> None:
         level = OrderBookLevel(price=0.0, size=100.0)
-        assert level.price == 0.0
+        assert level.price == pytest.approx(0.0)
 
     def test_正常系_price境界値_1(self) -> None:
         level = OrderBookLevel(price=1.0, size=100.0)
-        assert level.price == 1.0
+        assert level.price == pytest.approx(1.0)
 
 
 # =============================================================================
@@ -77,13 +77,13 @@ class TestPricePoint:
     def test_正常系_基本的な価格データ(self) -> None:
         point = PricePoint(t=1700000000, p=0.65)
         assert point.t == 1700000000
-        assert point.p == 0.65
+        assert point.p == pytest.approx(0.65)
 
     def test_正常系_model_validate(self) -> None:
         data = {"t": 1700000000, "p": 0.65}
         point = PricePoint.model_validate(data)
         assert point.t == 1700000000
-        assert point.p == 0.65
+        assert point.p == pytest.approx(0.65)
 
     def test_正常系_extra_fieldsは無視される(self) -> None:
         data = {"t": 1700000000, "p": 0.65, "extra": "value"}
@@ -120,8 +120,8 @@ class TestOrderBook:
         assert book.asset_id == "asset123"
         assert len(book.bids) == 1
         assert len(book.asks) == 1
-        assert book.bids[0].price == 0.50
-        assert book.asks[0].price == 0.55
+        assert book.bids[0].price == pytest.approx(0.50)
+        assert book.asks[0].price == pytest.approx(0.55)
 
     def test_正常系_model_validate(self) -> None:
         data = {
@@ -191,8 +191,8 @@ class TestTradeRecord:
         )
         assert trade.id == "trade-001"
         assert trade.market == "0xabc123"
-        assert trade.price == 0.65
-        assert trade.size == 500.0
+        assert trade.price == pytest.approx(0.65)
+        assert trade.size == pytest.approx(500.0)
         assert trade.side == "BUY"
 
     def test_正常系_model_validate(self) -> None:
@@ -285,8 +285,8 @@ class TestPolymarketMarket:
         assert market.description == "Detailed description"
         assert market.active is True
         assert market.closed is False
-        assert market.volume == 1000000.0
-        assert market.liquidity == 500000.0
+        assert market.volume == pytest.approx(1000000.0)
+        assert market.liquidity == pytest.approx(500000.0)
 
     def test_正常系_部分フィールドのみ(self) -> None:
         data = {
@@ -371,7 +371,7 @@ class TestPolymarketEvent:
         assert isinstance(event.markets[0], PolymarketMarket)
         assert event.description == "Event description"
         assert event.active is True
-        assert event.volume == 5000000.0
+        assert event.volume == pytest.approx(5000000.0)
 
     def test_正常系_部分フィールドのみ(self) -> None:
         data = {
