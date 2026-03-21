@@ -32,6 +32,7 @@ market.polymarket.cache : TTL constants and cache helper.
 """
 
 import re
+from collections.abc import Callable
 from datetime import UTC, datetime
 from typing import Any
 
@@ -117,7 +118,13 @@ class PolymarketClient:
     # =========================================================================
 
     def __enter__(self) -> "PolymarketClient":
-        """Support context manager protocol."""
+        """Support context manager protocol.
+
+        Returns
+        -------
+        PolymarketClient
+            The client instance.
+        """
         return self
 
     def __exit__(
@@ -186,24 +193,25 @@ class PolymarketClient:
             source="polymarket_gamma",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for events", limit=limit, offset=offset)
-                return [PolymarketEvent.model_validate(item) for item in cached]
+        def _fetch() -> list[PolymarketEvent]:
+            data = self._gamma_request("/events", params=params)
+            return [
+                PolymarketEvent.model_validate(item)
+                for item in (data if isinstance(data, list) else [])
+            ]
 
-        logger.debug("Fetching events", limit=limit, offset=offset)
-        data = self._gamma_request("/events", params=params)
-
-        events: list[PolymarketEvent] = []
-        for item in data if isinstance(data, list) else []:
-            events.append(PolymarketEvent.model_validate(item))
-
-        # Store as dicts for JSON serialization
-        self._cache.set(
-            cache_key,
-            [e.model_dump(mode="json") for e in events],
+        events = self._fetch_cached(
+            cache_key=cache_key,
             ttl=METADATA_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda evts: [e.model_dump(mode="json") for e in evts],
+            deserialize_fn=lambda cached: [
+                PolymarketEvent.model_validate(item) for item in cached
+            ],
+            log_label="events",
+            limit=limit,
+            offset=offset,
         )
         logger.info("Events retrieved", count=len(events))
         return events
@@ -248,17 +256,20 @@ class PolymarketClient:
             source="polymarket_gamma_event",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for event", event_id=event_id)
-                return PolymarketEvent.model_validate(cached)
+        def _fetch() -> PolymarketEvent:
+            data = self._gamma_request(f"/events/{event_id}")
+            return PolymarketEvent.model_validate(data)
 
-        logger.debug("Fetching event", event_id=event_id)
-        data = self._gamma_request(f"/events/{event_id}")
-
-        event = PolymarketEvent.model_validate(data)
-        self._cache.set(cache_key, event.model_dump(mode="json"), ttl=METADATA_TTL)
+        event = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=METADATA_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda e: e.model_dump(mode="json"),
+            deserialize_fn=lambda cached: PolymarketEvent.model_validate(cached),
+            log_label="event",
+            event_id=event_id,
+        )
         logger.info("Event retrieved", event_id=event_id, title=event.title)
         return event
 
@@ -310,23 +321,25 @@ class PolymarketClient:
             source="polymarket_gamma",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for markets", limit=limit, offset=offset)
-                return [PolymarketMarket.model_validate(item) for item in cached]
+        def _fetch() -> list[PolymarketMarket]:
+            data = self._gamma_request("/markets", params=params)
+            return [
+                PolymarketMarket.model_validate(item)
+                for item in (data if isinstance(data, list) else [])
+            ]
 
-        logger.debug("Fetching markets", limit=limit, offset=offset)
-        data = self._gamma_request("/markets", params=params)
-
-        markets: list[PolymarketMarket] = []
-        for item in data if isinstance(data, list) else []:
-            markets.append(PolymarketMarket.model_validate(item))
-
-        self._cache.set(
-            cache_key,
-            [m.model_dump(mode="json") for m in markets],
+        markets = self._fetch_cached(
+            cache_key=cache_key,
             ttl=METADATA_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda mkts: [m.model_dump(mode="json") for m in mkts],
+            deserialize_fn=lambda cached: [
+                PolymarketMarket.model_validate(item) for item in cached
+            ],
+            log_label="markets",
+            limit=limit,
+            offset=offset,
         )
         logger.info("Markets retrieved", count=len(markets))
         return markets
@@ -371,17 +384,20 @@ class PolymarketClient:
             source="polymarket_gamma_market",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for market", condition_id=condition_id)
-                return PolymarketMarket.model_validate(cached)
+        def _fetch() -> PolymarketMarket:
+            data = self._gamma_request(f"/markets/{condition_id}")
+            return PolymarketMarket.model_validate(data)
 
-        logger.debug("Fetching market", condition_id=condition_id)
-        data = self._gamma_request(f"/markets/{condition_id}")
-
-        market = PolymarketMarket.model_validate(data)
-        self._cache.set(cache_key, market.model_dump(mode="json"), ttl=METADATA_TTL)
+        market = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=METADATA_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda m: m.model_dump(mode="json"),
+            deserialize_fn=lambda cached: PolymarketMarket.model_validate(cached),
+            log_label="market",
+            condition_id=condition_id,
+        )
         logger.info(
             "Market retrieved",
             condition_id=condition_id,
@@ -434,6 +450,8 @@ class PolymarketClient:
         self._validate_id(token_id, "token_id")
         options = options or FetchOptions()
 
+        # CLOB API accepts both "interval" (current) and "fidelity" (legacy)
+        # params for backward compatibility
         params: dict[str, str] = {
             "market": token_id,
             "interval": str(interval),
@@ -446,41 +464,42 @@ class PolymarketClient:
             source="polymarket_clob_prices",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for prices history", token_id=token_id)
-                return cached
+        def _fetch() -> MarketDataResult:
+            data = self._clob_request("/prices-history", params=params)
 
-        logger.debug("Fetching prices history", token_id=token_id, interval=interval)
-        data = self._clob_request("/prices-history", params=params)
+            points: list[PricePoint] = []
+            history = data.get("history", []) if isinstance(data, dict) else data
+            if isinstance(history, list):
+                for item in history:
+                    points.append(PricePoint.model_validate(item))
 
-        points: list[PricePoint] = []
-        history = data.get("history", []) if isinstance(data, dict) else data
-        if isinstance(history, list):
-            for item in history:
-                points.append(PricePoint.model_validate(item))
+            df = pd.DataFrame(
+                [{"timestamp": p.t, "price": p.p} for p in points]
+                if points
+                else {"timestamp": [], "price": []}
+            )
 
-        df = pd.DataFrame(
-            [{"timestamp": p.t, "price": p.p} for p in points]
-            if points
-            else {"timestamp": [], "price": []}
+            return MarketDataResult(
+                symbol=token_id,
+                data=df,
+                source=DataSource.POLYMARKET,
+                fetched_at=datetime.now(tz=UTC),
+                from_cache=False,
+                metadata={"interval": str(interval), "point_count": len(points)},
+            )
+
+        result = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ACTIVE_PRICES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="prices history",
+            token_id=token_id,
         )
-
-        result = MarketDataResult(
-            symbol=token_id,
-            data=df,
-            source=DataSource.POLYMARKET,
-            fetched_at=datetime.now(tz=UTC),
-            from_cache=False,
-            metadata={"interval": str(interval), "point_count": len(points)},
-        )
-
-        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
         logger.info(
             "Prices history retrieved",
             token_id=token_id,
-            points=len(points),
+            points=len(result.data),
         )
         return result
 
@@ -526,18 +545,18 @@ class PolymarketClient:
             source="polymarket_clob_midpoint",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for midpoint", token_id=token_id)
-                return cached
+        def _fetch() -> float:
+            data = self._clob_request("/midpoint", params=params)
+            return float(data.get("mid", 0.0)) if isinstance(data, dict) else 0.0
 
-        logger.debug("Fetching midpoint", token_id=token_id)
-        data = self._clob_request("/midpoint", params=params)
-
-        mid = float(data.get("mid", 0.0)) if isinstance(data, dict) else 0.0
-
-        self._cache.set(cache_key, mid, ttl=ACTIVE_PRICES_TTL)
+        mid = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ACTIVE_PRICES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="midpoint",
+            token_id=token_id,
+        )
         logger.info("Midpoint retrieved", token_id=token_id, midpoint=mid)
         return mid
 
@@ -583,24 +602,24 @@ class PolymarketClient:
             source="polymarket_clob_spread",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for spread", token_id=token_id)
-                return cached
+        def _fetch() -> dict[str, float]:
+            data = self._clob_request("/spread", params=params)
+            if isinstance(data, dict):
+                return {
+                    "bid": float(data.get("bid", 0.0)),
+                    "ask": float(data.get("ask", 0.0)),
+                    "spread": float(data.get("spread", 0.0)),
+                }
+            return {}
 
-        logger.debug("Fetching spread", token_id=token_id)
-        data = self._clob_request("/spread", params=params)
-
-        spread_data: dict[str, float] = {}
-        if isinstance(data, dict):
-            spread_data = {
-                "bid": float(data.get("bid", 0.0)),
-                "ask": float(data.get("ask", 0.0)),
-                "spread": float(data.get("spread", 0.0)),
-            }
-
-        self._cache.set(cache_key, spread_data, ttl=ACTIVE_PRICES_TTL)
+        spread_data = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ACTIVE_PRICES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="spread",
+            token_id=token_id,
+        )
         logger.info("Spread retrieved", token_id=token_id, spread=spread_data)
         return spread_data
 
@@ -646,18 +665,20 @@ class PolymarketClient:
             source="polymarket_clob_orderbook",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for orderbook", token_id=token_id)
-                return OrderBook.model_validate(cached)
+        def _fetch() -> OrderBook:
+            data = self._clob_request("/book", params=params)
+            return self._parse_orderbook(data, token_id)
 
-        logger.debug("Fetching orderbook", token_id=token_id)
-        data = self._clob_request("/book", params=params)
-
-        book = self._parse_orderbook(data, token_id)
-
-        self._cache.set(cache_key, book.model_dump(mode="json"), ttl=ORDERBOOK_TTL)
+        book = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ORDERBOOK_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda b: b.model_dump(mode="json"),
+            deserialize_fn=lambda cached: OrderBook.model_validate(cached),
+            log_label="orderbook",
+            token_id=token_id,
+        )
         logger.info(
             "Orderbook retrieved",
             token_id=token_id,
@@ -713,23 +734,24 @@ class PolymarketClient:
             source="polymarket_clob_midpoints",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for midpoints", count=len(token_ids))
-                return cached
+        def _fetch() -> dict[str, float]:
+            data = self._clob_request("/midpoints", params=params)
+            result: dict[str, float] = {}
+            if isinstance(data, dict):
+                for tid, val in data.items():
+                    result[tid] = float(val)
+            return result
 
-        logger.debug("Fetching midpoints", count=len(token_ids))
-        data = self._clob_request("/midpoints", params=params)
-
-        result: dict[str, float] = {}
-        if isinstance(data, dict):
-            for tid, val in data.items():
-                result[tid] = float(val)
-
-        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
-        logger.info("Midpoints retrieved", count=len(result))
-        return result
+        midpoints = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ACTIVE_PRICES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="midpoints",
+            count=len(token_ids),
+        )
+        logger.info("Midpoints retrieved", count=len(midpoints))
+        return midpoints
 
     def get_spreads(
         self,
@@ -774,28 +796,29 @@ class PolymarketClient:
             source="polymarket_clob_spreads",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for spreads", count=len(token_ids))
-                return cached
+        def _fetch() -> dict[str, dict[str, float]]:
+            data = self._clob_request("/spreads", params=params)
+            result: dict[str, dict[str, float]] = {}
+            if isinstance(data, dict):
+                for tid, val in data.items():
+                    if isinstance(val, dict):
+                        result[tid] = {
+                            "bid": float(val.get("bid", 0.0)),
+                            "ask": float(val.get("ask", 0.0)),
+                            "spread": float(val.get("spread", 0.0)),
+                        }
+            return result
 
-        logger.debug("Fetching spreads", count=len(token_ids))
-        data = self._clob_request("/spreads", params=params)
-
-        result: dict[str, dict[str, float]] = {}
-        if isinstance(data, dict):
-            for tid, val in data.items():
-                if isinstance(val, dict):
-                    result[tid] = {
-                        "bid": float(val.get("bid", 0.0)),
-                        "ask": float(val.get("ask", 0.0)),
-                        "spread": float(val.get("spread", 0.0)),
-                    }
-
-        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
-        logger.info("Spreads retrieved", count=len(result))
-        return result
+        spreads = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ACTIVE_PRICES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="spreads",
+            count=len(token_ids),
+        )
+        logger.info("Spreads retrieved", count=len(spreads))
+        return spreads
 
     def get_orderbooks(
         self,
@@ -840,30 +863,31 @@ class PolymarketClient:
             source="polymarket_clob_orderbooks",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for orderbooks", count=len(token_ids))
-                return {
-                    tid: OrderBook.model_validate(val) for tid, val in cached.items()
-                }
+        def _fetch() -> dict[str, OrderBook]:
+            data = self._clob_request("/books", params=params)
+            result: dict[str, OrderBook] = {}
+            if isinstance(data, dict):
+                for tid, val in data.items():
+                    if isinstance(val, dict):
+                        result[tid] = self._parse_orderbook(val, tid)
+            return result
 
-        logger.debug("Fetching orderbooks", count=len(token_ids))
-        data = self._clob_request("/books", params=params)
-
-        result: dict[str, OrderBook] = {}
-        if isinstance(data, dict):
-            for tid, val in data.items():
-                if isinstance(val, dict):
-                    result[tid] = self._parse_orderbook(val, tid)
-
-        self._cache.set(
-            cache_key,
-            {tid: book.model_dump(mode="json") for tid, book in result.items()},
+        books = self._fetch_cached(
+            cache_key=cache_key,
             ttl=ORDERBOOK_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda bks: {
+                tid: book.model_dump(mode="json") for tid, book in bks.items()
+            },
+            deserialize_fn=lambda cached: {
+                tid: OrderBook.model_validate(val) for tid, val in cached.items()
+            },
+            log_label="orderbooks",
+            count=len(token_ids),
         )
-        logger.info("Orderbooks retrieved", count=len(result))
-        return result
+        logger.info("Orderbooks retrieved", count=len(books))
+        return books
 
     def get_prices(
         self,
@@ -908,23 +932,24 @@ class PolymarketClient:
             source="polymarket_clob_prices_bulk",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for prices", count=len(token_ids))
-                return cached
+        def _fetch() -> dict[str, float]:
+            data = self._clob_request("/prices", params=params)
+            result: dict[str, float] = {}
+            if isinstance(data, dict):
+                for tid, val in data.items():
+                    result[tid] = float(val)
+            return result
 
-        logger.debug("Fetching prices", count=len(token_ids))
-        data = self._clob_request("/prices", params=params)
-
-        result: dict[str, float] = {}
-        if isinstance(data, dict):
-            for tid, val in data.items():
-                result[tid] = float(val)
-
-        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
-        logger.info("Prices retrieved", count=len(result))
-        return result
+        prices = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=ACTIVE_PRICES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="prices",
+            count=len(token_ids),
+        )
+        logger.info("Prices retrieved", count=len(prices))
+        return prices
 
     # =========================================================================
     # Data API (4 methods)
@@ -972,20 +997,20 @@ class PolymarketClient:
             source="polymarket_data_oi",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for open interest", condition_id=condition_id)
-                return cached
+        def _fetch() -> dict[str, Any]:
+            data = self._data_request("/open-interest", params=params)
+            return data if isinstance(data, dict) else {}
 
-        logger.debug("Fetching open interest", condition_id=condition_id)
-        data = self._data_request("/open-interest", params=params)
-
-        result: dict[str, Any] = data if isinstance(data, dict) else {}
-
-        self._cache.set(cache_key, result, ttl=OI_TRADES_TTL)
+        oi = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=OI_TRADES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="open interest",
+            condition_id=condition_id,
+        )
         logger.info("Open interest retrieved", condition_id=condition_id)
-        return result
+        return oi
 
     def get_trades(
         self,
@@ -1041,24 +1066,22 @@ class PolymarketClient:
             source="polymarket_data_trades",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for trades", condition_id=condition_id)
-                return [TradeRecord.model_validate(item) for item in cached]
+        def _fetch() -> list[TradeRecord]:
+            data = self._data_request("/trades", params=params)
+            items = data if isinstance(data, list) else []
+            return [TradeRecord.model_validate(item) for item in items]
 
-        logger.debug("Fetching trades", condition_id=condition_id, limit=limit)
-        data = self._data_request("/trades", params=params)
-
-        trades: list[TradeRecord] = []
-        items = data if isinstance(data, list) else []
-        for item in items:
-            trades.append(TradeRecord.model_validate(item))
-
-        self._cache.set(
-            cache_key,
-            [t.model_dump(mode="json") for t in trades],
+        trades = self._fetch_cached(
+            cache_key=cache_key,
             ttl=OI_TRADES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            serialize_fn=lambda tds: [t.model_dump(mode="json") for t in tds],
+            deserialize_fn=lambda cached: [
+                TradeRecord.model_validate(item) for item in cached
+            ],
+            log_label="trades",
+            condition_id=condition_id,
         )
         logger.info(
             "Trades retrieved",
@@ -1114,20 +1137,20 @@ class PolymarketClient:
             source="polymarket_data_leaderboard",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for leaderboard", limit=limit)
-                return cached
+        def _fetch() -> list[dict[str, Any]]:
+            data = self._data_request("/leaderboard", params=params)
+            return data if isinstance(data, list) else []
 
-        logger.debug("Fetching leaderboard", limit=limit)
-        data = self._data_request("/leaderboard", params=params)
-
-        result: list[dict[str, Any]] = data if isinstance(data, list) else []
-
-        self._cache.set(cache_key, result, ttl=LEADERBOARD_TTL)
-        logger.info("Leaderboard retrieved", count=len(result))
-        return result
+        board = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=LEADERBOARD_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="leaderboard",
+            limit=limit,
+        )
+        logger.info("Leaderboard retrieved", count=len(board))
+        return board
 
     def get_holders(
         self,
@@ -1171,28 +1194,80 @@ class PolymarketClient:
             source="polymarket_data_holders",
         )
 
-        if options.use_cache and not options.force_refresh:
-            cached = self._cache.get(cache_key)
-            if cached is not None:
-                logger.debug("Cache hit for holders", condition_id=condition_id)
-                return cached
+        def _fetch() -> list[dict[str, Any]]:
+            data = self._data_request("/holders", params=params)
+            return data if isinstance(data, list) else []
 
-        logger.debug("Fetching holders", condition_id=condition_id)
-        data = self._data_request("/holders", params=params)
-
-        result: list[dict[str, Any]] = data if isinstance(data, list) else []
-
-        self._cache.set(cache_key, result, ttl=OI_TRADES_TTL)
+        holders = self._fetch_cached(
+            cache_key=cache_key,
+            ttl=OI_TRADES_TTL,
+            options=options,
+            fetch_fn=_fetch,
+            log_label="holders",
+            condition_id=condition_id,
+        )
         logger.info(
             "Holders retrieved",
             condition_id=condition_id,
-            count=len(result),
+            count=len(holders),
         )
-        return result
+        return holders
 
     # =========================================================================
     # Internal Methods
     # =========================================================================
+
+    def _fetch_cached[T](
+        self,
+        cache_key: str,
+        ttl: int,
+        options: FetchOptions,
+        fetch_fn: Callable[[], T],
+        serialize_fn: Callable[[T], Any] | None = None,
+        deserialize_fn: Callable[[Any], T] | None = None,
+        log_label: str = "",
+        **log_kwargs: Any,
+    ) -> T:
+        """Cache-aside helper: read from cache or fetch and store.
+
+        Parameters
+        ----------
+        cache_key : str
+            The cache key.
+        ttl : int
+            Cache time-to-live in seconds.
+        options : FetchOptions
+            Cache control options.
+        fetch_fn : Callable[[], T]
+            Function that fetches the data from the API.
+        serialize_fn : Callable[[T], Any] | None
+            Optional function to serialize data before caching.
+            If None, data is cached as-is.
+        deserialize_fn : Callable[[Any], T] | None
+            Optional function to deserialize cached data.
+            If None, cached data is returned as-is.
+        log_label : str
+            Label for log messages (e.g. "events", "midpoint").
+        **log_kwargs : Any
+            Additional keyword args for log messages.
+
+        Returns
+        -------
+        T
+            The fetched or cached data.
+        """
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug(f"Cache hit for {log_label}", **log_kwargs)
+                return deserialize_fn(cached) if deserialize_fn else cached
+
+        logger.debug(f"Fetching {log_label}", **log_kwargs)
+        result = fetch_fn()
+
+        cache_value = serialize_fn(result) if serialize_fn else result
+        self._cache.set(cache_key, cache_value, ttl=ttl)
+        return result
 
     def _gamma_request(
         self,
@@ -1303,6 +1378,12 @@ class PolymarketClient:
         PolymarketValidationError
             If the value is empty, whitespace-only, or contains
             invalid characters (path traversal prevention).
+
+        Notes
+        -----
+        Allowed pattern: ``^[a-zA-Z0-9_\\-]{1,256}$``
+        (alphanumerics, underscores, and hyphens; max 256 characters).
+        This prevents path traversal attacks (CWE-20).
         """
         if not value or not value.strip():
             raise PolymarketValidationError(

@@ -57,6 +57,7 @@ class PolymarketError(Exception):
     """
 
     def __init__(self, message: str) -> None:
+        """Initialize PolymarketError."""
         super().__init__(message)
         self.message = message
 
@@ -104,6 +105,7 @@ class PolymarketAPIError(PolymarketError):
         status_code: int,
         response_body: str,
     ) -> None:
+        """Initialize PolymarketAPIError."""
         super().__init__(message)
         self.url = url
         self.status_code = status_code
@@ -147,6 +149,7 @@ class PolymarketRateLimitError(PolymarketAPIError):
         url: str | None,
         retry_after: int | None,
     ) -> None:
+        """Initialize PolymarketRateLimitError."""
         # Pass url to PolymarketAPIError with status_code=429 and empty body
         super().__init__(
             message=message,
@@ -193,6 +196,7 @@ class PolymarketValidationError(PolymarketError):
         field: str,
         value: object,
     ) -> None:
+        """Initialize PolymarketValidationError."""
         super().__init__(message)
         self.field = field
         self.value = value
@@ -235,6 +239,7 @@ class PolymarketNotFoundError(PolymarketError):
         resource_type: str,
         resource_id: str,
     ) -> None:
+        """Initialize PolymarketNotFoundError."""
         super().__init__(message)
         self.resource_type = resource_type
         self.resource_id = resource_id

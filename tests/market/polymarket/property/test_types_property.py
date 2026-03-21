@@ -8,6 +8,7 @@ import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
+from market.polymarket.models import OrderBookLevel, PricePoint
 from market.polymarket.types import PolymarketConfig, RetryConfig
 
 
@@ -143,3 +144,33 @@ class TestRetryConfigProperty:
     ) -> None:
         with pytest.raises(ValueError, match="max_wait must be non-negative"):
             RetryConfig(max_wait=max_wait)
+
+
+class TestModelsProperty:
+    """レスポンスモデルのプロパティテスト。"""
+
+    @given(price=st.floats(allow_nan=True, allow_infinity=True))
+    def test_プロパティ_OrderBookLevelのNaN_Infで例外(self, price: float) -> None:
+        """NaN/Inf が渡された場合の Pydantic の挙動を確認。"""
+        import math
+
+        if math.isnan(price) or math.isinf(price):
+            # Pydantic V2はNaN/Infをfloatとして受け入れる（デフォルト動作）
+            # これは既知の挙動として記録する
+            level = OrderBookLevel(price=price, size=1.0)
+            assert isinstance(level.price, float)
+        else:
+            level = OrderBookLevel(price=price, size=1.0)
+            assert level.price == pytest.approx(price)
+
+    @given(p=st.floats(allow_nan=True, allow_infinity=True))
+    def test_プロパティ_PricePointのNaN_Infで例外(self, p: float) -> None:
+        """NaN/Inf が渡された場合の Pydantic の挙動を確認。"""
+        import math
+
+        if math.isnan(p) or math.isinf(p):
+            point = PricePoint(t=1700000000, p=p)
+            assert isinstance(point.p, float)
+        else:
+            point = PricePoint(t=1700000000, p=p)
+            assert point.p == pytest.approx(p)

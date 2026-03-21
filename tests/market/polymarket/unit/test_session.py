@@ -155,16 +155,22 @@ class TestPolymarketSessionPoliteDelay:
         config = PolymarketConfig(rate_limit_per_second=10.0)
         session = PolymarketSession(config=config)
 
-        # Simulate a previous request
-        session._last_request_time = time.monotonic()
+        # Patch time.monotonic to ensure elapsed=0, guaranteeing sleep is called
+        fixed_time = 1000.0
+        session._last_request_time = fixed_time
 
-        with patch("market.polymarket.session.time.sleep") as mock_sleep:
+        with (
+            patch(
+                "market.polymarket.session.time.monotonic",
+                side_effect=[fixed_time, fixed_time],
+            ),
+            patch("market.polymarket.session.time.sleep") as mock_sleep,
+            patch("market.polymarket.session.random.uniform", return_value=0.005),
+        ):
             session._polite_delay()
-            # Should attempt to sleep since we just set _last_request_time
-            # The actual sleep time depends on elapsed time and jitter
-            if mock_sleep.called:
-                args = mock_sleep.call_args[0]
-                assert args[0] > 0  # Sleep time should be positive
+            mock_sleep.assert_called_once()
+            args = mock_sleep.call_args[0]
+            assert args[0] > 0  # Sleep time should be positive
 
         session.close()
 
@@ -284,27 +290,33 @@ class TestPolymarketSessionBackoff:
         session = PolymarketSession(
             retry_config=RetryConfig(base_wait=1.0),
         )
-        delay = session._calculate_backoff_delay(0)
-        # base_wait * 2^0 = 1.0 (plus jitter)
-        assert 0.5 <= delay <= 2.0
+        # Patch random.random to return 0.5 -> jitter multiplier = 0.5 + 0.5 = 1.0
+        with patch("market.polymarket.session.random.random", return_value=0.5):
+            delay = session._calculate_backoff_delay(0)
+            # base_wait * 2^0 * 1.0 = 1.0
+            assert delay == pytest.approx(1.0)
         session.close()
 
     def test_正常系_2回目バックオフ(self) -> None:
         session = PolymarketSession(
             retry_config=RetryConfig(base_wait=1.0),
         )
-        delay = session._calculate_backoff_delay(1)
-        # base_wait * 2^1 = 2.0 (plus jitter)
-        assert 1.0 <= delay <= 4.0
+        # Patch random.random to return 0.5 -> jitter multiplier = 0.5 + 0.5 = 1.0
+        with patch("market.polymarket.session.random.random", return_value=0.5):
+            delay = session._calculate_backoff_delay(1)
+            # base_wait * 2^1 * 1.0 = 2.0
+            assert delay == pytest.approx(2.0)
         session.close()
 
     def test_正常系_最大ディレイ制限(self) -> None:
         session = PolymarketSession(
             retry_config=RetryConfig(base_wait=1.0, max_wait=5.0),
         )
-        delay = session._calculate_backoff_delay(10)
-        # Should be capped at max_wait (plus jitter, so up to 2x)
-        assert delay <= 10.0  # max_wait * 2 (jitter max)
+        # Patch random.random to return 0.5 -> jitter multiplier = 0.5 + 0.5 = 1.0
+        with patch("market.polymarket.session.random.random", return_value=0.5):
+            delay = session._calculate_backoff_delay(10)
+            # min(1.0 * 2^10, 5.0) * 1.0 = 5.0
+            assert delay == pytest.approx(5.0)
         session.close()
 
 

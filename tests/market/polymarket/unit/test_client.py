@@ -453,6 +453,21 @@ class TestGetMidpoint:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
             client.get_midpoint("")
 
+    def test_正常系_get_midpointキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_mid = 0.72
+        key = generate_cache_key(
+            symbol="token123",
+            source="polymarket_clob_midpoint",
+        )
+        mock_cache.set(key, cached_mid, ttl=3600)
+
+        mid = client.get_midpoint("token123")
+        assert isinstance(mid, float)
+        assert mid == pytest.approx(0.72)
+        client._session.get_with_retry.assert_not_called()
+
 
 # =============================================================================
 # CLOB API single: get_spread
@@ -484,6 +499,23 @@ class TestGetSpread:
     def test_異常系_空のtoken_id(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
             client.get_spread("")
+
+    def test_正常系_get_spreadキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_spread = {"bid": 0.60, "ask": 0.65, "spread": 0.05}
+        key = generate_cache_key(
+            symbol="token123",
+            source="polymarket_clob_spread",
+        )
+        mock_cache.set(key, cached_spread, ttl=3600)
+
+        spread = client.get_spread("token123")
+        assert isinstance(spread, dict)
+        assert spread["bid"] == pytest.approx(0.60)
+        assert spread["ask"] == pytest.approx(0.65)
+        assert spread["spread"] == pytest.approx(0.05)
+        client._session.get_with_retry.assert_not_called()
 
 
 # =============================================================================
@@ -573,6 +605,22 @@ class TestGetMidpoints:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
             client.get_midpoints([])
 
+    def test_正常系_get_midpointsキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_mids = {"token1": 0.55, "token2": 0.70}
+        key = generate_cache_key(
+            symbol="midpoints_token1,token2",
+            source="polymarket_clob_midpoints",
+        )
+        mock_cache.set(key, cached_mids, ttl=3600)
+
+        mids = client.get_midpoints(["token1", "token2"])
+        assert isinstance(mids, dict)
+        assert mids["token1"] == pytest.approx(0.55)
+        assert mids["token2"] == pytest.approx(0.70)
+        client._session.get_with_retry.assert_not_called()
+
 
 # =============================================================================
 # CLOB API bulk: get_spreads
@@ -598,6 +646,25 @@ class TestGetSpreads:
     def test_異常系_空のリスト(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
             client.get_spreads([])
+
+    def test_正常系_get_spreadsキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_spreads = {
+            "token1": {"bid": 0.55, "ask": 0.60, "spread": 0.05},
+            "token2": {"bid": 0.70, "ask": 0.75, "spread": 0.05},
+        }
+        key = generate_cache_key(
+            symbol="spreads_token1,token2",
+            source="polymarket_clob_spreads",
+        )
+        mock_cache.set(key, cached_spreads, ttl=3600)
+
+        spreads = client.get_spreads(["token1", "token2"])
+        assert isinstance(spreads, dict)
+        assert spreads["token1"]["bid"] == pytest.approx(0.55)
+        assert spreads["token2"]["ask"] == pytest.approx(0.75)
+        client._session.get_with_retry.assert_not_called()
 
 
 # =============================================================================
@@ -635,6 +702,37 @@ class TestGetOrderbooks:
     def test_異常系_空のリスト(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="must not be empty"):
             client.get_orderbooks([])
+
+    def test_正常系_get_orderbooksキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_books = {
+            "token1": {
+                "market": "0xabc",
+                "asset_id": "token1",
+                "bids": [{"price": 0.50, "size": 100.0}],
+                "asks": [{"price": 0.55, "size": 200.0}],
+            },
+            "token2": {
+                "market": "0xdef",
+                "asset_id": "token2",
+                "bids": [],
+                "asks": [],
+            },
+        }
+        key = generate_cache_key(
+            symbol="orderbooks_token1,token2",
+            source="polymarket_clob_orderbooks",
+        )
+        mock_cache.set(key, cached_books, ttl=3600)
+
+        books = client.get_orderbooks(["token1", "token2"])
+        assert isinstance(books, dict)
+        assert len(books) == 2
+        assert isinstance(books["token1"], OrderBook)
+        assert len(books["token1"].bids) == 1
+        assert books["token1"].bids[0].price == pytest.approx(0.50)
+        client._session.get_with_retry.assert_not_called()
 
 
 # =============================================================================
@@ -752,6 +850,32 @@ class TestGetTrades:
         with pytest.raises(PolymarketValidationError, match="limit must be positive"):
             client.get_trades("0xabc", limit=-1)
 
+    def test_正常系_get_tradesキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_trades = [
+            {
+                "id": "trade-001",
+                "market": "0xabc",
+                "asset_id": "token1",
+                "price": 0.65,
+                "size": 500.0,
+                "side": "BUY",
+            },
+        ]
+        key = generate_cache_key(
+            symbol="0xabc_trades_limit100",
+            source="polymarket_data_trades",
+        )
+        mock_cache.set(key, cached_trades, ttl=3600)
+
+        trades = client.get_trades("0xabc")
+        assert isinstance(trades, list)
+        assert len(trades) == 1
+        assert isinstance(trades[0], TradeRecord)
+        assert trades[0].price == pytest.approx(0.65)
+        client._session.get_with_retry.assert_not_called()
+
 
 # =============================================================================
 # Data API: get_leaderboard
@@ -783,6 +907,25 @@ class TestGetLeaderboard:
     def test_異常系_limitが0(self, client: PolymarketClient) -> None:
         with pytest.raises(PolymarketValidationError, match="limit must be positive"):
             client.get_leaderboard(limit=0)
+
+    def test_正常系_get_leaderboardキャッシュヒット(
+        self, client: PolymarketClient, mock_cache: SQLiteCache
+    ) -> None:
+        cached_board = [
+            {"rank": 1, "address": "0x111", "profit": 50000.0},
+            {"rank": 2, "address": "0x222", "profit": 30000.0},
+        ]
+        key = generate_cache_key(
+            symbol="leaderboard_limit100",
+            source="polymarket_data_leaderboard",
+        )
+        mock_cache.set(key, cached_board, ttl=3600)
+
+        board = client.get_leaderboard()
+        assert isinstance(board, list)
+        assert len(board) == 2
+        assert board[0]["rank"] == 1
+        client._session.get_with_retry.assert_not_called()
 
 
 # =============================================================================
@@ -856,3 +999,42 @@ class TestRequest:
         assert result == {"key": "value"}
         call_url = client._session.get_with_retry.call_args[0][0]
         assert "data-api.polymarket.com" in call_url
+
+
+# =============================================================================
+# Internal: _parse_orderbook edge cases
+# =============================================================================
+
+
+class TestParseOrderbook:
+    """Tests for _parse_orderbook edge cases."""
+
+    def test_エッジケース_parse_orderbookに非dict入力で空OrderBook(
+        self, client: PolymarketClient
+    ) -> None:
+        result = client._parse_orderbook(None, "token1")
+        assert result.bids == []
+        assert result.asks == []
+
+        result2 = client._parse_orderbook([1, 2, 3], "token2")
+        assert result2.bids == []
+        assert result2.asks == []
+
+
+# =============================================================================
+# Internal: _validate_id boundary tests
+# =============================================================================
+
+
+class TestValidateIdBoundary:
+    """Tests for _validate_id boundary conditions."""
+
+    def test_正常系_256文字IDが受け入れられる(self, client: PolymarketClient) -> None:
+        # 256文字のIDは許可される
+        long_id = "a" * 256
+        client._validate_id(long_id, "test_field")  # Should not raise
+
+    def test_異常系_257文字IDでValidationError(self, client: PolymarketClient) -> None:
+        long_id = "a" * 257
+        with pytest.raises(PolymarketValidationError, match="invalid characters"):
+            client._validate_id(long_id, "test_field")

@@ -78,8 +78,12 @@ class PricePoint(BaseModel):
 
     model_config = ConfigDict(extra="ignore")
 
-    t: int = Field(..., description="Unix timestamp (seconds)")
-    p: float = Field(..., description="Price at the timestamp")
+    t: int = Field(
+        ..., description="Unix timestamp (seconds)"
+    )  # Unix timestamp (seconds since epoch)
+    p: float = Field(
+        ..., description="Price at the timestamp"
+    )  # Price value (0.0 to 1.0 for prediction markets)
 
 
 # =============================================================================
