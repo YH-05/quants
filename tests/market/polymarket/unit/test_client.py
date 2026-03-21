@@ -139,7 +139,7 @@ class TestPolymarketClientValidation:
     def test_異常系_空文字列を含むtoken_ids(self, client: PolymarketClient) -> None:
         with pytest.raises(
             PolymarketValidationError,
-            match="token_ids must not contain empty strings",
+            match="must not be empty",
         ):
             client._validate_token_ids(["token1", ""])
 

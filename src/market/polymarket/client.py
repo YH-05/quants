@@ -1366,12 +1366,7 @@ class PolymarketClient:
                 value=token_ids,
             )
         for tid in token_ids:
-            if not tid or not tid.strip():
-                raise PolymarketValidationError(
-                    message="token_ids must not contain empty strings",
-                    field="token_ids",
-                    value=token_ids,
-                )
+            self._validate_id(tid, "token_ids[n]")
 
     def _parse_orderbook(self, data: Any, token_id: str) -> OrderBook:
         """Parse raw API response into an OrderBook model.
