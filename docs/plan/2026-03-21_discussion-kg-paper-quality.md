@@ -88,6 +88,8 @@
 | dec-2026-03-21-006 | RateLimiter を database パッケージに移動 | edgartools との名前衝突を解消 |
 | dec-2026-03-21-007 | 重複Source 16件を統合（arxiv-* に集約、src-* 削除） | リレーション移行後に削除 |
 | dec-2026-03-21-008 | Claim→Entity は著者所属経由（177件）+ TAGGED（715件）で対応 | 市場エンティティノードが不在のため間接リンクで対応 |
+| dec-2026-03-21-009 | S2 API の references.externalIds フィールドを追加し CITES 構築を実現 | S2 API がデフォルトで references の externalIds を返さないことが原因 |
+| dec-2026-03-21-010 | Method.method_type 38件を既存 enum にマッピング正規化 | benchmark→framework、statistical_model→model 等 |
 
 ## アクションアイテム
 
@@ -97,15 +99,38 @@
 | act-2026-03-21-002 | 重複Source 16件のマージ | 中 | **completed** |
 | act-2026-03-21-003 | Claim→ABOUT→Entity リレーション構築 | 高 | **completed**（177件） |
 | act-2026-03-21-004 | edgar.rate_limiter インポートエラー修正 | 高 | **completed** |
-| act-2026-03-21-005 | B7: CITES — backfill コマンドに --existing-ids ファイル対応を追加し再実行 | 中 | pending |
-| act-2026-03-21-006 | 残り148件の Claim に市場エンティティノードを作成してリンク | 中 | pending |
-| act-2026-03-21-007 | /kg-quality-check 再実行で改善効果を定量確認（目標: RPQ 70%+、総合 85+） | 高 | pending |
+| act-2026-03-21-005 | B7: CITES — S2 API フィールド修正 + 15件構築 | 中 | **completed** |
+| act-2026-03-21-006 | 残り148件の Claim に市場エンティティノードを作成してリンク | 中 | pending（構造的制約あり） |
+| act-2026-03-21-007 | /kg-quality-check 再実行で改善効果を定量確認 | 高 | **completed**（85点 Rating A 達成） |
+
+### 最終改善アクション（追加実施分）
+
+| アクション | 結果 |
+|----------|------|
+| 重複Source 73件削除（backfill副作用） | Check E: 75%→100% |
+| Method.method_type 38件正規化 | enum 違反 38→0件 |
+| CITES 15件構築（S2 API references.externalIds 修正） | 4→19件、Check F: 1.4%→9.3% |
+
+### 最終スコア
+
+**総合: 85/100（Rating A）** — セッション開始時 73点から +12点改善
+
+| カテゴリ | 開始時 | 最終 |
+|---------|--------|------|
+| Completeness | 87.5% | 87% |
+| Consistency | 90% | **99%** |
+| Orphan | 64% | **87%** |
+| Staleness | 100% | 100% |
+| Structural | 40% | **61%** |
+| Schema Compliance | 100% | 100% |
+| LLM-as-Judge | 63% | 65% |
+| Research Paper Quality | 44% | **73%** |
 
 ## 次回の議論トピック
 
-- 市場エンティティ（銘柄・指数・セクター等）ノードの設計と投入
-- CITES バックフィルの --existing-ids ファイル対応
-- /kg-quality-check 再実行による改善効果の定量確認
+- 市場エンティティ（銘柄・指数・セクター等）ノードの設計と投入 → Structural 61%→80%+ に改善可能
+- CITES の網羅的構築（残り全論文の S2 参照データ取得）
+- Claim→ABOUT→Entity の改善（市場エンティティ追加後に再リンク）
 
 ## 関連ファイル
 
