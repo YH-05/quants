@@ -108,6 +108,43 @@ class TestGetDataDir:
         assert isinstance(result, Path)
 
 
+class TestGetDbPath:
+    """Tests for get_db_path function."""
+
+    def test_正常系_DATA_DIR環境変数設定時にget_db_pathが追従する(
+        self,
+        temp_dir: Path,
+    ) -> None:
+        """DATA_DIR環境変数を設定すると、get_db_pathの戻り値が追従する."""
+        from database.db.connection import get_db_path
+
+        custom_data_dir = temp_dir / "custom_data"
+        custom_data_dir.mkdir(exist_ok=True)
+
+        with mock.patch.dict(os.environ, {"DATA_DIR": str(custom_data_dir)}):
+            sqlite_path = get_db_path("sqlite", "market")
+            duckdb_path = get_db_path("duckdb", "analytics")
+
+        assert sqlite_path == custom_data_dir / "sqlite" / "market.db"
+        assert duckdb_path == custom_data_dir / "duckdb" / "analytics.duckdb"
+
+    def test_正常系_sqliteタイプで正しいパスを返す(self) -> None:
+        """sqlite タイプの場合、.db 拡張子のパスを返す."""
+        from database.db.connection import get_db_path
+
+        path = get_db_path("sqlite", "test_db")
+        assert path.name == "test_db.db"
+        assert path.parent.name == "sqlite"
+
+    def test_正常系_duckdbタイプで正しいパスを返す(self) -> None:
+        """duckdb タイプの場合、.duckdb 拡張子のパスを返す."""
+        from database.db.connection import get_db_path
+
+        path = get_db_path("duckdb", "test_db")
+        assert path.name == "test_db.duckdb"
+        assert path.parent.name == "duckdb"
+
+
 class TestDeprecationComments:
     """Tests for deprecation comments on PROJECT_ROOT and DATA_DIR."""
 

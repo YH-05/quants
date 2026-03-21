@@ -66,21 +66,25 @@ src/*/docs/.steering/
 .obsidian/
 notebook/__marimo__/
 
-# RSS feed data (exclude UUID directories, keep feeds.json)
-data/raw/rss/*/
+# ======================================================================
+# Data directories (NAS symlink targets — only config/schemas are tracked)
+# ======================================================================
+data/Transcript/
+data/duckdb/
+data/raw/
+data/exports/
+data/processed/
+data/market/
+data/sqlite/
+data/stock/
+data/news/
+data/macroeconomics/
+data/investment_theme/
+
 articles/
 
 # Large log files (logs/ directory is tracked)
 !logs/**
-
-# FRED indicator cache data (large JSON files)
-data/raw/fred/indicators/*.json
-
-# ETF.com ticker cache (auto-generated, TTL 24h)
-data/raw/etfcom/tickers.json
-
-# Workflow result exports (large JSON files)
-data/exports/news-workflow/workflow-result-*.json
 
 # NotebookLM Playwright session (contains Google auth cookies)
 .notebooklm-session.json

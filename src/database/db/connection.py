@@ -77,27 +77,30 @@ def get_db_path(db_type: DatabaseType, name: str) -> Path:
     >>> path.name
     'analytics.duckdb'
     """
+    data_dir = get_data_dir()
     if db_type == "sqlite":
-        return DATA_DIR / "sqlite" / f"{name}.db"
-    return DATA_DIR / "duckdb" / f"{name}.duckdb"
+        return data_dir / "sqlite" / f"{name}.db"
+    return data_dir / "duckdb" / f"{name}.duckdb"
 
 
 def ensure_data_dirs() -> None:
     """Ensure all data directories exist.
 
     Creates the complete data directory structure if it doesn't exist.
+    Uses get_data_dir() to respect the DATA_DIR environment variable.
     """
+    data_dir = get_data_dir()
     dirs = [
-        DATA_DIR / "sqlite",
-        DATA_DIR / "duckdb",
-        DATA_DIR / "raw" / "yfinance" / "stocks",
-        DATA_DIR / "raw" / "yfinance" / "forex",
-        DATA_DIR / "raw" / "yfinance" / "indices",
-        DATA_DIR / "raw" / "fred" / "indicators",
-        DATA_DIR / "processed" / "daily",
-        DATA_DIR / "processed" / "aggregated",
-        DATA_DIR / "exports" / "csv",
-        DATA_DIR / "exports" / "json",
+        data_dir / "sqlite",
+        data_dir / "duckdb",
+        data_dir / "raw" / "yfinance" / "stocks",
+        data_dir / "raw" / "yfinance" / "forex",
+        data_dir / "raw" / "yfinance" / "indices",
+        data_dir / "raw" / "fred" / "indicators",
+        data_dir / "processed" / "daily",
+        data_dir / "processed" / "aggregated",
+        data_dir / "exports" / "csv",
+        data_dir / "exports" / "json",
     ]
     for dir_path in dirs:
         dir_path.mkdir(parents=True, exist_ok=True)
