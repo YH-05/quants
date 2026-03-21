@@ -778,6 +778,149 @@ RETURN label AS pascal_violation
 
 ---
 
+### 1.7 Research Paper Quality（研究論文品質）— 重み 15%
+
+論文系 Source（`source_type` が `paper` または `report`）に特化した品質チェック。6つのサブチェックで構成される。
+
+#### 内部重み
+
+| チェック | 内部重み |
+|---------|---------|
+| A. source_type別ブレークダウン | 20% |
+| B. スキーマドリフト検出 | 15% |
+| C. Author整合性 | 20% |
+| D. パイプライン別品質差分 | 20% |
+| E. 重複Source検出 | 10% |
+| F. 引用ネットワーク密度 | 15% |
+| **合計** | **100%** |
+
+#### スコア算出式
+
+全チェックで統一式 `max(0, 1.0 - 問題件数 / 総対象件数)` を基本とする。
+
+- **A**: `0.4 × プロパティ充填率 + 0.6 × 接続率`。充填率 = paper/report の `abstract`, `venue`, `published_at` の加重充填率（重み: 推奨=0.7）。接続率 = AUTHORED_BY/MAKES_CLAIM/USES_METHOD のいずれかを持つ割合。paper と report は件数比例で加重。
+- **B**: `max(0, 1.0 - 未定義プロパティ種類数 / 全プロパティ種類数)`。1種類でも未定義があれば減点。
+- **C**: `max(0, 1.0 - authors文字列のみの件数 / authors文字列を持つ総件数)`。
+- **D**: `max(0, 1.0 - |connected接続率 - unconnected接続率|)`。接続率 = 3リレーション（AUTHORED_BY, MAKES_CLAIM, USES_METHOD）のいずれかを持つ割合。connected = `arxiv-*` + `jsai2026-*`/UUID、unconnected = `src-*`。**注**: このチェックはパイプライン間の**均一性**を計測する。絶対的な接続品質はチェック A がカバーするため、A と D は相補的に機能する。
+- **E**: `max(0, 1.0 - 重複URLペア数 / 総Source件数)`。
+- **F**: `min(1.0, CITES件数 / 論文件数)`。密度1.0以上は1.0にクランプ。
+
+#### A. source_type別ブレークダウン
+
+**充填率**:
+
+```cypher
+MATCH (s:Source)
+WHERE s.source_type IN ['paper', 'report']
+RETURN s.source_type AS type, count(s) AS total,
+       count(s.abstract) AS has_abstract,
+       count(s.venue) AS has_venue,
+       count(s.published_at) AS has_published_at,
+       count(s.fetched_at) AS has_fetched_at
+```
+
+**接続率**:
+
+```cypher
+MATCH (s:Source)
+WHERE s.source_type IN ['paper', 'report']
+OPTIONAL MATCH (s)-[:AUTHORED_BY]->(a:Author)
+OPTIONAL MATCH (s)-[:MAKES_CLAIM]->(c:Claim)
+OPTIONAL MATCH (s)-[:USES_METHOD]->(m:Method)
+WITH s, count(DISTINCT a) AS authors, count(DISTINCT c) AS claims, count(DISTINCT m) AS methods
+RETURN s.source_type AS type,
+       count(s) AS total,
+       sum(CASE WHEN authors > 0 THEN 1 ELSE 0 END) AS with_authors,
+       sum(CASE WHEN claims > 0 THEN 1 ELSE 0 END) AS with_claims,
+       sum(CASE WHEN methods > 0 THEN 1 ELSE 0 END) AS with_methods
+```
+
+#### B. スキーマドリフト検出
+
+Source 上の全プロパティキーを収集し、スキーマ定義プロパティリストと比較する。
+
+```cypher
+MATCH (s:Source)
+WITH s, keys(s) AS props
+UNWIND props AS prop
+WHERE NOT prop IN [
+    'source_id','title','url','source_type','publisher',
+    'published_at','fetched_at','language','category',
+    'command_source','abstract','venue'
+]
+RETURN prop AS undeclared_property, count(*) AS cnt
+ORDER BY cnt DESC
+```
+
+#### C. Author文字列↔リレーション整合性
+
+`authors` 文字列プロパティを持つが AUTHORED_BY リレーションがない Source を検出する。
+
+```cypher
+MATCH (s:Source)
+WHERE s.source_type IN ['paper', 'report']
+AND s.authors IS NOT NULL
+AND NOT (s)-[:AUTHORED_BY]->()
+RETURN count(s) AS papers_with_string_only,
+       collect(s.source_id)[..10] AS sample_ids
+```
+
+#### D. パイプライン別品質差分
+
+`src-*` prefix（unconnected）とそれ以外（connected）の接続率を比較する。
+
+```cypher
+MATCH (s:Source)
+WHERE s.source_type IN ['paper', 'report']
+WITH s,
+     CASE WHEN s.source_id STARTS WITH 'src-' THEN 'unconnected'
+          ELSE 'connected' END AS pipeline
+OPTIONAL MATCH (s)-[:AUTHORED_BY]->(a:Author)
+OPTIONAL MATCH (s)-[:MAKES_CLAIM]->(c:Claim)
+OPTIONAL MATCH (s)-[:USES_METHOD]->(m:Method)
+WITH pipeline, s,
+     count(DISTINCT a) AS authors,
+     count(DISTINCT c) AS claims,
+     count(DISTINCT m) AS methods
+RETURN pipeline, count(s) AS total,
+       sum(CASE WHEN authors > 0 THEN 1 ELSE 0 END) AS with_authors,
+       sum(CASE WHEN claims > 0 THEN 1 ELSE 0 END) AS with_claims,
+       sum(CASE WHEN methods > 0 THEN 1 ELSE 0 END) AS with_methods
+```
+
+#### E. 重複Source検出
+
+同一URLで異なる source_id を持つノードを検出する。
+
+```cypher
+MATCH (s:Source)
+WHERE s.url IS NOT NULL
+WITH s.url AS url, collect(s.source_id) AS ids, count(s) AS cnt
+WHERE cnt > 1
+RETURN url, ids
+```
+
+#### F. 引用ネットワーク密度
+
+論文間の CITES リレーションの密度を計測する。
+
+```cypher
+MATCH (s:Source)
+WHERE s.source_type IN ['paper', 'report']
+WITH count(s) AS paper_count
+CALL {
+    MATCH ()-[r:CITES]->()
+    RETURN count(r) AS cites_count
+}
+RETURN paper_count, cites_count,
+       toFloat(cites_count) / paper_count AS density
+```
+
+**スコア算出**:
+- 各サブチェックのスコアを算出し、内部重みで加重平均してカテゴリスコアとする
+
+---
+
 ## Phase 2: LLM-as-Judge（重み 12%）
 
 Claude Code が直接、Claim/Fact の精度とグラフの創発的発見ポテンシャルを評価する。
