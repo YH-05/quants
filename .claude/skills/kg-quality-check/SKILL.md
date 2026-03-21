@@ -1120,17 +1120,46 @@ ORDER BY topic_count DESC LIMIT 10
 2. ...
 3. ...
 
+### 8. Research Paper Quality スコア: XX%
+
+#### source_type別充填率
+| type | total | abstract | venue | published_at |
+|------|-------|----------|-------|-------------|
+| paper | XX | XX% | XX% | XX% |
+| report | XX | XX% | XX% | XX% |
+
+#### パイプライン別接続率
+| pipeline | total | AUTHORED_BY | MAKES_CLAIM | USES_METHOD |
+|----------|-------|-------------|-------------|-------------|
+| connected | XX | XX% | XX% | XX% |
+| unconnected | XX | XX% | XX% | XX% |
+
+#### スキーマドリフト
+| プロパティ | 件数 | 対応 |
+|-----------|------|------|
+| ... | XX | ... |
+
+#### Author整合性
+- authors文字列のみ（リレーションなし）: N件
+
+#### 重複Source
+- 重複URL: N件
+
+#### 引用ネットワーク密度
+- CITES: N件 / 論文 N件 = X.X%
+
 ### 総合スコア: XX/100
 
 | カテゴリ | スコア | 重み | 加重スコア |
 |---------|--------|------|-----------|
-| Completeness | XX% | 25% | XX |
-| Consistency | XX% | 20% | XX |
-| Orphan | XX% | 15% | XX |
-| Staleness | XX% | 10% | XX |
-| Structural | XX% | 10% | XX |
+| Completeness | XX% | 20% | XX |
+| Consistency | XX% | 18% | XX |
+| Orphan | XX% | 13% | XX |
+| Staleness | XX% | 8% | XX |
+| Structural | XX% | 9% | XX |
 | Schema Compliance | XX% | 5% | XX |
-| LLM-as-Judge | XX% | 15% | XX |
+| LLM-as-Judge | XX% | 12% | XX |
+| Research Paper Quality | XX% | 15% | XX |
 
 Rating: A (85+) / B (70-84) / C (50-69) / D (<50)
 
