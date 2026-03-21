@@ -1,0 +1,1401 @@
+"""High-level client for Polymarket API access.
+
+This module provides the ``PolymarketClient`` class, which integrates
+the Gamma, CLOB, and Data APIs through a single interface with
+SQLiteCache support and typed return values.
+
+Features include:
+
+- **Gamma API** (4 methods): ``get_events``, ``get_event``, ``get_markets``,
+  ``get_market`` -- returning Pydantic models.
+- **CLOB API single** (4 methods): ``get_prices_history``, ``get_midpoint``,
+  ``get_spread``, ``get_orderbook`` -- single-market queries.
+- **CLOB API bulk** (4 methods): ``get_midpoints``, ``get_spreads``,
+  ``get_orderbooks``, ``get_prices`` -- multi-market queries.
+- **Data API** (4 methods): ``get_open_interest``, ``get_trades``,
+  ``get_leaderboard``, ``get_holders`` -- analytics data.
+- ``_request()`` + ``_handle_response()`` pattern (JQuants-style).
+- Context manager support.
+
+Examples
+--------
+>>> from market.polymarket import PolymarketClient
+>>> with PolymarketClient() as client:
+...     events = client.get_events(limit=5)
+...     print(f"Found {len(events)} events")
+
+See Also
+--------
+market.jquants.client : Reference implementation with ``_request()`` pattern.
+market.polymarket.session : Underlying HTTP session.
+market.polymarket.cache : TTL constants and cache helper.
+"""
+
+from datetime import UTC, datetime
+from typing import Any
+
+import pandas as pd
+
+from market.cache.cache import SQLiteCache, generate_cache_key
+from market.polymarket.cache import (
+    ACTIVE_PRICES_TTL,
+    LEADERBOARD_TTL,
+    METADATA_TTL,
+    OI_TRADES_TTL,
+    ORDERBOOK_TTL,
+    get_polymarket_cache,
+)
+from market.polymarket.constants import CLOB_BASE_URL, DATA_BASE_URL, GAMMA_BASE_URL
+from market.polymarket.errors import PolymarketValidationError
+from market.polymarket.models import (
+    OrderBook,
+    OrderBookLevel,
+    PolymarketEvent,
+    PolymarketMarket,
+    PricePoint,
+    TradeRecord,
+)
+from market.polymarket.session import PolymarketSession
+from market.polymarket.types import (
+    FetchOptions,
+    PolymarketConfig,
+    PriceInterval,
+    RetryConfig,
+)
+from market.types import DataSource, MarketDataResult
+from utils_core.logging import get_logger
+
+logger = get_logger(__name__)
+
+
+class PolymarketClient:
+    """High-level client for the Polymarket API.
+
+    Provides typed methods for each API endpoint, integrating the three
+    Polymarket APIs (Gamma, CLOB, Data) with SQLiteCache support.
+
+    Parameters
+    ----------
+    config : PolymarketConfig | None
+        Polymarket configuration. If ``None``, defaults are used.
+    retry_config : RetryConfig | None
+        Retry configuration. If ``None``, defaults are used.
+    cache : SQLiteCache | None
+        Cache instance. If ``None``, a default persistent cache is created.
+
+    Examples
+    --------
+    >>> with PolymarketClient() as client:
+    ...     events = client.get_events(limit=5)
+    ...     print(len(events))
+    """
+
+    def __init__(
+        self,
+        config: PolymarketConfig | None = None,
+        retry_config: RetryConfig | None = None,
+        cache: SQLiteCache | None = None,
+    ) -> None:
+        self._config: PolymarketConfig = config or PolymarketConfig()
+        self._session = PolymarketSession(
+            config=self._config, retry_config=retry_config
+        )
+        self._cache: SQLiteCache = cache or get_polymarket_cache()
+
+        logger.info("PolymarketClient initialized")
+
+    # =========================================================================
+    # Context Manager
+    # =========================================================================
+
+    def __enter__(self) -> "PolymarketClient":
+        """Support context manager protocol."""
+        return self
+
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        """Close client on context exit."""
+        self.close()
+
+    def close(self) -> None:
+        """Close the client and release resources."""
+        self._session.close()
+        logger.debug("PolymarketClient closed")
+
+    # =========================================================================
+    # Gamma API (4 methods)
+    # =========================================================================
+
+    def get_events(
+        self,
+        limit: int = 100,
+        offset: int = 0,
+        options: FetchOptions | None = None,
+    ) -> list[PolymarketEvent]:
+        """Get a list of events from the Gamma API.
+
+        Calls ``GET /events`` on the Gamma API.
+
+        Parameters
+        ----------
+        limit : int
+            Maximum number of events to return (default: 100).
+        offset : int
+            Pagination offset (default: 0).
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        list[PolymarketEvent]
+            List of events with nested markets.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If limit or offset is invalid.
+
+        Examples
+        --------
+        >>> events = client.get_events(limit=5)
+        >>> len(events) <= 5
+        True
+        """
+        self._validate_pagination(limit, offset)
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {
+            "limit": str(limit),
+            "offset": str(offset),
+        }
+
+        cache_key = generate_cache_key(
+            symbol=f"events_limit{limit}_offset{offset}",
+            source="polymarket_gamma",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for events", limit=limit, offset=offset)
+                return [PolymarketEvent.model_validate(item) for item in cached]
+
+        logger.debug("Fetching events", limit=limit, offset=offset)
+        data = self._gamma_request("/events", params=params)
+
+        events: list[PolymarketEvent] = []
+        for item in data if isinstance(data, list) else []:
+            events.append(PolymarketEvent.model_validate(item))
+
+        # Store as dicts for JSON serialization
+        self._cache.set(
+            cache_key,
+            [e.model_dump(mode="json") for e in events],
+            ttl=METADATA_TTL,
+        )
+        logger.info("Events retrieved", count=len(events))
+        return events
+
+    def get_event(
+        self,
+        event_id: str,
+        options: FetchOptions | None = None,
+    ) -> PolymarketEvent:
+        """Get a single event by ID from the Gamma API.
+
+        Calls ``GET /events/{event_id}`` on the Gamma API.
+
+        Parameters
+        ----------
+        event_id : str
+            The event identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        PolymarketEvent
+            The event with nested markets.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If event_id is empty.
+
+        Examples
+        --------
+        >>> event = client.get_event("event-001")
+        >>> event.id
+        'event-001'
+        """
+        self._validate_id(event_id, "event_id")
+        options = options or FetchOptions()
+
+        cache_key = generate_cache_key(
+            symbol=event_id,
+            source="polymarket_gamma_event",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for event", event_id=event_id)
+                return PolymarketEvent.model_validate(cached)
+
+        logger.debug("Fetching event", event_id=event_id)
+        data = self._gamma_request(f"/events/{event_id}")
+
+        event = PolymarketEvent.model_validate(data)
+        self._cache.set(cache_key, event.model_dump(mode="json"), ttl=METADATA_TTL)
+        logger.info("Event retrieved", event_id=event_id, title=event.title)
+        return event
+
+    def get_markets(
+        self,
+        limit: int = 100,
+        offset: int = 0,
+        options: FetchOptions | None = None,
+    ) -> list[PolymarketMarket]:
+        """Get a list of markets from the Gamma API.
+
+        Calls ``GET /markets`` on the Gamma API.
+
+        Parameters
+        ----------
+        limit : int
+            Maximum number of markets to return (default: 100).
+        offset : int
+            Pagination offset (default: 0).
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        list[PolymarketMarket]
+            List of prediction markets.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If limit or offset is invalid.
+
+        Examples
+        --------
+        >>> markets = client.get_markets(limit=10)
+        >>> len(markets) <= 10
+        True
+        """
+        self._validate_pagination(limit, offset)
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {
+            "limit": str(limit),
+            "offset": str(offset),
+        }
+
+        cache_key = generate_cache_key(
+            symbol=f"markets_limit{limit}_offset{offset}",
+            source="polymarket_gamma",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for markets", limit=limit, offset=offset)
+                return [PolymarketMarket.model_validate(item) for item in cached]
+
+        logger.debug("Fetching markets", limit=limit, offset=offset)
+        data = self._gamma_request("/markets", params=params)
+
+        markets: list[PolymarketMarket] = []
+        for item in data if isinstance(data, list) else []:
+            markets.append(PolymarketMarket.model_validate(item))
+
+        self._cache.set(
+            cache_key,
+            [m.model_dump(mode="json") for m in markets],
+            ttl=METADATA_TTL,
+        )
+        logger.info("Markets retrieved", count=len(markets))
+        return markets
+
+    def get_market(
+        self,
+        condition_id: str,
+        options: FetchOptions | None = None,
+    ) -> PolymarketMarket:
+        """Get a single market by condition ID from the Gamma API.
+
+        Calls ``GET /markets/{condition_id}`` on the Gamma API.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        PolymarketMarket
+            The prediction market.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If condition_id is empty.
+
+        Examples
+        --------
+        >>> market = client.get_market("0xabc123")
+        >>> market.condition_id
+        '0xabc123'
+        """
+        self._validate_id(condition_id, "condition_id")
+        options = options or FetchOptions()
+
+        cache_key = generate_cache_key(
+            symbol=condition_id,
+            source="polymarket_gamma_market",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for market", condition_id=condition_id)
+                return PolymarketMarket.model_validate(cached)
+
+        logger.debug("Fetching market", condition_id=condition_id)
+        data = self._gamma_request(f"/markets/{condition_id}")
+
+        market = PolymarketMarket.model_validate(data)
+        self._cache.set(cache_key, market.model_dump(mode="json"), ttl=METADATA_TTL)
+        logger.info(
+            "Market retrieved",
+            condition_id=condition_id,
+            question=market.question,
+        )
+        return market
+
+    # =========================================================================
+    # CLOB API - Single (4 methods)
+    # =========================================================================
+
+    def get_prices_history(
+        self,
+        token_id: str,
+        interval: PriceInterval = PriceInterval.ONE_DAY,
+        options: FetchOptions | None = None,
+    ) -> MarketDataResult:
+        """Get historical price data for a token from the CLOB API.
+
+        Calls ``GET /prices-history`` on the CLOB API. Returns a
+        ``MarketDataResult`` wrapping a DataFrame with ``timestamp``
+        and ``price`` columns.
+
+        Parameters
+        ----------
+        token_id : str
+            The token identifier.
+        interval : PriceInterval
+            Price data interval/fidelity (default: ONE_DAY).
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        MarketDataResult
+            Result containing a DataFrame with ``timestamp`` and ``price``
+            columns.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_id is empty.
+
+        Examples
+        --------
+        >>> result = client.get_prices_history("token123")
+        >>> "price" in result.data.columns
+        True
+        """
+        self._validate_id(token_id, "token_id")
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {
+            "market": token_id,
+            "interval": str(interval),
+            "fidelity": str(interval),
+        }
+
+        cache_key = generate_cache_key(
+            symbol=token_id,
+            interval=str(interval),
+            source="polymarket_clob_prices",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for prices history", token_id=token_id)
+                return cached
+
+        logger.debug("Fetching prices history", token_id=token_id, interval=interval)
+        data = self._clob_request("/prices-history", params=params)
+
+        points: list[PricePoint] = []
+        history = data.get("history", []) if isinstance(data, dict) else data
+        if isinstance(history, list):
+            for item in history:
+                points.append(PricePoint.model_validate(item))
+
+        df = pd.DataFrame(
+            [{"timestamp": p.t, "price": p.p} for p in points]
+            if points
+            else {"timestamp": [], "price": []}
+        )
+
+        result = MarketDataResult(
+            symbol=token_id,
+            data=df,
+            source=DataSource.LOCAL,
+            fetched_at=datetime.now(tz=UTC),
+            from_cache=False,
+            metadata={"interval": str(interval), "point_count": len(points)},
+        )
+
+        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
+        logger.info(
+            "Prices history retrieved",
+            token_id=token_id,
+            points=len(points),
+        )
+        return result
+
+    def get_midpoint(
+        self,
+        token_id: str,
+        options: FetchOptions | None = None,
+    ) -> float:
+        """Get the midpoint price for a token from the CLOB API.
+
+        Calls ``GET /midpoint`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_id : str
+            The token identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        float
+            The midpoint price (0.0 to 1.0).
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_id is empty.
+
+        Examples
+        --------
+        >>> price = client.get_midpoint("token123")
+        >>> 0.0 <= price <= 1.0
+        True
+        """
+        self._validate_id(token_id, "token_id")
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {"token_id": token_id}
+
+        cache_key = generate_cache_key(
+            symbol=token_id,
+            source="polymarket_clob_midpoint",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for midpoint", token_id=token_id)
+                return cached
+
+        logger.debug("Fetching midpoint", token_id=token_id)
+        data = self._clob_request("/midpoint", params=params)
+
+        mid = float(data.get("mid", 0.0)) if isinstance(data, dict) else 0.0
+
+        self._cache.set(cache_key, mid, ttl=ACTIVE_PRICES_TTL)
+        logger.info("Midpoint retrieved", token_id=token_id, midpoint=mid)
+        return mid
+
+    def get_spread(
+        self,
+        token_id: str,
+        options: FetchOptions | None = None,
+    ) -> dict[str, float]:
+        """Get the bid-ask spread for a token from the CLOB API.
+
+        Calls ``GET /spread`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_id : str
+            The token identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        dict[str, float]
+            Dictionary with ``bid``, ``ask``, and ``spread`` keys.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_id is empty.
+
+        Examples
+        --------
+        >>> spread = client.get_spread("token123")
+        >>> "spread" in spread
+        True
+        """
+        self._validate_id(token_id, "token_id")
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {"token_id": token_id}
+
+        cache_key = generate_cache_key(
+            symbol=token_id,
+            source="polymarket_clob_spread",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for spread", token_id=token_id)
+                return cached
+
+        logger.debug("Fetching spread", token_id=token_id)
+        data = self._clob_request("/spread", params=params)
+
+        spread_data: dict[str, float] = {}
+        if isinstance(data, dict):
+            spread_data = {
+                "bid": float(data.get("bid", 0.0)),
+                "ask": float(data.get("ask", 0.0)),
+                "spread": float(data.get("spread", 0.0)),
+            }
+
+        self._cache.set(cache_key, spread_data, ttl=ACTIVE_PRICES_TTL)
+        logger.info("Spread retrieved", token_id=token_id, spread=spread_data)
+        return spread_data
+
+    def get_orderbook(
+        self,
+        token_id: str,
+        options: FetchOptions | None = None,
+    ) -> OrderBook:
+        """Get the order book for a token from the CLOB API.
+
+        Calls ``GET /book`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_id : str
+            The token identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        OrderBook
+            The order book snapshot with bids and asks.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_id is empty.
+
+        Examples
+        --------
+        >>> book = client.get_orderbook("token123")
+        >>> isinstance(book, OrderBook)
+        True
+        """
+        self._validate_id(token_id, "token_id")
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {"token_id": token_id}
+
+        cache_key = generate_cache_key(
+            symbol=token_id,
+            source="polymarket_clob_orderbook",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for orderbook", token_id=token_id)
+                return OrderBook.model_validate(cached)
+
+        logger.debug("Fetching orderbook", token_id=token_id)
+        data = self._clob_request("/book", params=params)
+
+        book = self._parse_orderbook(data, token_id)
+
+        self._cache.set(cache_key, book.model_dump(mode="json"), ttl=ORDERBOOK_TTL)
+        logger.info(
+            "Orderbook retrieved",
+            token_id=token_id,
+            bids=len(book.bids),
+            asks=len(book.asks),
+        )
+        return book
+
+    # =========================================================================
+    # CLOB API - Bulk (4 methods)
+    # =========================================================================
+
+    def get_midpoints(
+        self,
+        token_ids: list[str],
+        options: FetchOptions | None = None,
+    ) -> dict[str, float]:
+        """Get midpoint prices for multiple tokens from the CLOB API.
+
+        Calls ``GET /midpoints`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_ids : list[str]
+            List of token identifiers.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        dict[str, float]
+            Mapping of token_id to midpoint price.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_ids is empty.
+
+        Examples
+        --------
+        >>> mids = client.get_midpoints(["token1", "token2"])
+        >>> isinstance(mids, dict)
+        True
+        """
+        self._validate_token_ids(token_ids)
+        options = options or FetchOptions()
+
+        ids_str = ",".join(token_ids)
+        params: dict[str, str] = {"token_ids": ids_str}
+
+        cache_key = generate_cache_key(
+            symbol=f"midpoints_{ids_str[:64]}",
+            source="polymarket_clob_midpoints",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for midpoints", count=len(token_ids))
+                return cached
+
+        logger.debug("Fetching midpoints", count=len(token_ids))
+        data = self._clob_request("/midpoints", params=params)
+
+        result: dict[str, float] = {}
+        if isinstance(data, dict):
+            for tid, val in data.items():
+                result[tid] = float(val)
+
+        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
+        logger.info("Midpoints retrieved", count=len(result))
+        return result
+
+    def get_spreads(
+        self,
+        token_ids: list[str],
+        options: FetchOptions | None = None,
+    ) -> dict[str, dict[str, float]]:
+        """Get bid-ask spreads for multiple tokens from the CLOB API.
+
+        Calls ``GET /spreads`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_ids : list[str]
+            List of token identifiers.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        dict[str, dict[str, float]]
+            Mapping of token_id to spread data (bid, ask, spread).
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_ids is empty.
+
+        Examples
+        --------
+        >>> spreads = client.get_spreads(["token1", "token2"])
+        >>> isinstance(spreads, dict)
+        True
+        """
+        self._validate_token_ids(token_ids)
+        options = options or FetchOptions()
+
+        ids_str = ",".join(token_ids)
+        params: dict[str, str] = {"token_ids": ids_str}
+
+        cache_key = generate_cache_key(
+            symbol=f"spreads_{ids_str[:64]}",
+            source="polymarket_clob_spreads",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for spreads", count=len(token_ids))
+                return cached
+
+        logger.debug("Fetching spreads", count=len(token_ids))
+        data = self._clob_request("/spreads", params=params)
+
+        result: dict[str, dict[str, float]] = {}
+        if isinstance(data, dict):
+            for tid, val in data.items():
+                if isinstance(val, dict):
+                    result[tid] = {
+                        "bid": float(val.get("bid", 0.0)),
+                        "ask": float(val.get("ask", 0.0)),
+                        "spread": float(val.get("spread", 0.0)),
+                    }
+
+        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
+        logger.info("Spreads retrieved", count=len(result))
+        return result
+
+    def get_orderbooks(
+        self,
+        token_ids: list[str],
+        options: FetchOptions | None = None,
+    ) -> dict[str, OrderBook]:
+        """Get order books for multiple tokens from the CLOB API.
+
+        Calls ``GET /books`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_ids : list[str]
+            List of token identifiers.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        dict[str, OrderBook]
+            Mapping of token_id to OrderBook.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_ids is empty.
+
+        Examples
+        --------
+        >>> books = client.get_orderbooks(["token1", "token2"])
+        >>> isinstance(books, dict)
+        True
+        """
+        self._validate_token_ids(token_ids)
+        options = options or FetchOptions()
+
+        ids_str = ",".join(token_ids)
+        params: dict[str, str] = {"token_ids": ids_str}
+
+        cache_key = generate_cache_key(
+            symbol=f"orderbooks_{ids_str[:64]}",
+            source="polymarket_clob_orderbooks",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for orderbooks", count=len(token_ids))
+                return {
+                    tid: OrderBook.model_validate(val) for tid, val in cached.items()
+                }
+
+        logger.debug("Fetching orderbooks", count=len(token_ids))
+        data = self._clob_request("/books", params=params)
+
+        result: dict[str, OrderBook] = {}
+        if isinstance(data, dict):
+            for tid, val in data.items():
+                if isinstance(val, dict):
+                    result[tid] = self._parse_orderbook(val, tid)
+
+        self._cache.set(
+            cache_key,
+            {tid: book.model_dump(mode="json") for tid, book in result.items()},
+            ttl=ORDERBOOK_TTL,
+        )
+        logger.info("Orderbooks retrieved", count=len(result))
+        return result
+
+    def get_prices(
+        self,
+        token_ids: list[str],
+        options: FetchOptions | None = None,
+    ) -> dict[str, float]:
+        """Get latest prices for multiple tokens from the CLOB API.
+
+        Calls ``GET /prices`` on the CLOB API.
+
+        Parameters
+        ----------
+        token_ids : list[str]
+            List of token identifiers.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        dict[str, float]
+            Mapping of token_id to latest price.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If token_ids is empty.
+
+        Examples
+        --------
+        >>> prices = client.get_prices(["token1", "token2"])
+        >>> isinstance(prices, dict)
+        True
+        """
+        self._validate_token_ids(token_ids)
+        options = options or FetchOptions()
+
+        ids_str = ",".join(token_ids)
+        params: dict[str, str] = {"token_ids": ids_str}
+
+        cache_key = generate_cache_key(
+            symbol=f"prices_{ids_str[:64]}",
+            source="polymarket_clob_prices_bulk",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for prices", count=len(token_ids))
+                return cached
+
+        logger.debug("Fetching prices", count=len(token_ids))
+        data = self._clob_request("/prices", params=params)
+
+        result: dict[str, float] = {}
+        if isinstance(data, dict):
+            for tid, val in data.items():
+                result[tid] = float(val)
+
+        self._cache.set(cache_key, result, ttl=ACTIVE_PRICES_TTL)
+        logger.info("Prices retrieved", count=len(result))
+        return result
+
+    # =========================================================================
+    # Data API (4 methods)
+    # =========================================================================
+
+    def get_open_interest(
+        self,
+        condition_id: str,
+        options: FetchOptions | None = None,
+    ) -> dict[str, Any]:
+        """Get open interest data for a market from the Data API.
+
+        Calls ``GET /open-interest`` on the Data API.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        dict[str, Any]
+            Open interest data including total OI and per-outcome breakdown.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If condition_id is empty.
+
+        Examples
+        --------
+        >>> oi = client.get_open_interest("0xabc123")
+        >>> isinstance(oi, dict)
+        True
+        """
+        self._validate_id(condition_id, "condition_id")
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {"condition_id": condition_id}
+
+        cache_key = generate_cache_key(
+            symbol=condition_id,
+            source="polymarket_data_oi",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for open interest", condition_id=condition_id)
+                return cached
+
+        logger.debug("Fetching open interest", condition_id=condition_id)
+        data = self._data_request("/open-interest", params=params)
+
+        result: dict[str, Any] = data if isinstance(data, dict) else {}
+
+        self._cache.set(cache_key, result, ttl=OI_TRADES_TTL)
+        logger.info("Open interest retrieved", condition_id=condition_id)
+        return result
+
+    def get_trades(
+        self,
+        condition_id: str,
+        limit: int = 100,
+        options: FetchOptions | None = None,
+    ) -> list[TradeRecord]:
+        """Get recent trades for a market from the Data API.
+
+        Calls ``GET /trades`` on the Data API.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition identifier.
+        limit : int
+            Maximum number of trades to return (default: 100).
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        list[TradeRecord]
+            List of trade records.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If condition_id is empty or limit is invalid.
+
+        Examples
+        --------
+        >>> trades = client.get_trades("0xabc123", limit=10)
+        >>> all(isinstance(t, TradeRecord) for t in trades)
+        True
+        """
+        self._validate_id(condition_id, "condition_id")
+        if limit < 1:
+            raise PolymarketValidationError(
+                message=f"limit must be positive, got {limit}",
+                field="limit",
+                value=limit,
+            )
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {
+            "condition_id": condition_id,
+            "limit": str(limit),
+        }
+
+        cache_key = generate_cache_key(
+            symbol=f"{condition_id}_trades_limit{limit}",
+            source="polymarket_data_trades",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for trades", condition_id=condition_id)
+                return [TradeRecord.model_validate(item) for item in cached]
+
+        logger.debug("Fetching trades", condition_id=condition_id, limit=limit)
+        data = self._data_request("/trades", params=params)
+
+        trades: list[TradeRecord] = []
+        items = data if isinstance(data, list) else []
+        for item in items:
+            trades.append(TradeRecord.model_validate(item))
+
+        self._cache.set(
+            cache_key,
+            [t.model_dump(mode="json") for t in trades],
+            ttl=OI_TRADES_TTL,
+        )
+        logger.info(
+            "Trades retrieved",
+            condition_id=condition_id,
+            count=len(trades),
+        )
+        return trades
+
+    def get_leaderboard(
+        self,
+        limit: int = 100,
+        options: FetchOptions | None = None,
+    ) -> list[dict[str, Any]]:
+        """Get the trading leaderboard from the Data API.
+
+        Calls ``GET /leaderboard`` on the Data API.
+
+        Parameters
+        ----------
+        limit : int
+            Maximum number of entries to return (default: 100).
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            List of leaderboard entries.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If limit is invalid.
+
+        Examples
+        --------
+        >>> board = client.get_leaderboard(limit=10)
+        >>> isinstance(board, list)
+        True
+        """
+        if limit < 1:
+            raise PolymarketValidationError(
+                message=f"limit must be positive, got {limit}",
+                field="limit",
+                value=limit,
+            )
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {"limit": str(limit)}
+
+        cache_key = generate_cache_key(
+            symbol=f"leaderboard_limit{limit}",
+            source="polymarket_data_leaderboard",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for leaderboard", limit=limit)
+                return cached
+
+        logger.debug("Fetching leaderboard", limit=limit)
+        data = self._data_request("/leaderboard", params=params)
+
+        result: list[dict[str, Any]] = data if isinstance(data, list) else []
+
+        self._cache.set(cache_key, result, ttl=LEADERBOARD_TTL)
+        logger.info("Leaderboard retrieved", count=len(result))
+        return result
+
+    def get_holders(
+        self,
+        condition_id: str,
+        options: FetchOptions | None = None,
+    ) -> list[dict[str, Any]]:
+        """Get token holders for a market from the Data API.
+
+        Calls ``GET /holders`` on the Data API.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition identifier.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        list[dict[str, Any]]
+            List of holder records.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If condition_id is empty.
+
+        Examples
+        --------
+        >>> holders = client.get_holders("0xabc123")
+        >>> isinstance(holders, list)
+        True
+        """
+        self._validate_id(condition_id, "condition_id")
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {"condition_id": condition_id}
+
+        cache_key = generate_cache_key(
+            symbol=condition_id,
+            source="polymarket_data_holders",
+        )
+
+        if options.use_cache and not options.force_refresh:
+            cached = self._cache.get(cache_key)
+            if cached is not None:
+                logger.debug("Cache hit for holders", condition_id=condition_id)
+                return cached
+
+        logger.debug("Fetching holders", condition_id=condition_id)
+        data = self._data_request("/holders", params=params)
+
+        result: list[dict[str, Any]] = data if isinstance(data, list) else []
+
+        self._cache.set(cache_key, result, ttl=OI_TRADES_TTL)
+        logger.info(
+            "Holders retrieved",
+            condition_id=condition_id,
+            count=len(result),
+        )
+        return result
+
+    # =========================================================================
+    # Internal Methods
+    # =========================================================================
+
+    def _gamma_request(
+        self,
+        path: str,
+        params: dict[str, str] | None = None,
+    ) -> Any:
+        """Execute a request against the Gamma API.
+
+        Parameters
+        ----------
+        path : str
+            API endpoint path (e.g. ``"/events"``).
+        params : dict[str, str] | None
+            Optional query parameters.
+
+        Returns
+        -------
+        Any
+            Parsed JSON response (dict or list).
+        """
+        url = f"{self._config.gamma_base_url}{path}"
+        return self._request(url, params=params)
+
+    def _clob_request(
+        self,
+        path: str,
+        params: dict[str, str] | None = None,
+    ) -> Any:
+        """Execute a request against the CLOB API.
+
+        Parameters
+        ----------
+        path : str
+            API endpoint path (e.g. ``"/midpoint"``).
+        params : dict[str, str] | None
+            Optional query parameters.
+
+        Returns
+        -------
+        Any
+            Parsed JSON response (dict or list).
+        """
+        url = f"{self._config.clob_base_url}{path}"
+        return self._request(url, params=params)
+
+    def _data_request(
+        self,
+        path: str,
+        params: dict[str, str] | None = None,
+    ) -> Any:
+        """Execute a request against the Data API.
+
+        Parameters
+        ----------
+        path : str
+            API endpoint path (e.g. ``"/trades"``).
+        params : dict[str, str] | None
+            Optional query parameters.
+
+        Returns
+        -------
+        Any
+            Parsed JSON response (dict or list).
+        """
+        url = f"{self._config.data_base_url}{path}"
+        return self._request(url, params=params)
+
+    def _request(
+        self,
+        url: str,
+        params: dict[str, str] | None = None,
+    ) -> Any:
+        """Execute an API request via the session.
+
+        Parameters
+        ----------
+        url : str
+            Full API endpoint URL.
+        params : dict[str, str] | None
+            Optional query parameters.
+
+        Returns
+        -------
+        Any
+            Parsed JSON response body.
+
+        Raises
+        ------
+        PolymarketAPIError
+            If the API returns an error.
+        """
+        response = self._session.get_with_retry(url, params=params)
+        result: Any = response.json()
+        return result
+
+    def _validate_id(self, value: str, field_name: str) -> None:
+        """Validate a non-empty string identifier.
+
+        Parameters
+        ----------
+        value : str
+            The identifier value to validate.
+        field_name : str
+            The field name for error context.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If the value is empty or whitespace-only.
+        """
+        if not value or not value.strip():
+            raise PolymarketValidationError(
+                message=f"{field_name} must not be empty",
+                field=field_name,
+                value=value,
+            )
+
+    def _validate_pagination(self, limit: int, offset: int) -> None:
+        """Validate pagination parameters.
+
+        Parameters
+        ----------
+        limit : int
+            Maximum number of results.
+        offset : int
+            Pagination offset.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If limit or offset is invalid.
+        """
+        if limit < 1:
+            raise PolymarketValidationError(
+                message=f"limit must be positive, got {limit}",
+                field="limit",
+                value=limit,
+            )
+        if offset < 0:
+            raise PolymarketValidationError(
+                message=f"offset must be non-negative, got {offset}",
+                field="offset",
+                value=offset,
+            )
+
+    def _validate_token_ids(self, token_ids: list[str]) -> None:
+        """Validate a list of token IDs.
+
+        Parameters
+        ----------
+        token_ids : list[str]
+            List of token identifiers.
+
+        Raises
+        ------
+        PolymarketValidationError
+            If the list is empty or contains empty strings.
+        """
+        if not token_ids:
+            raise PolymarketValidationError(
+                message="token_ids must not be empty",
+                field="token_ids",
+                value=token_ids,
+            )
+        for tid in token_ids:
+            if not tid or not tid.strip():
+                raise PolymarketValidationError(
+                    message="token_ids must not contain empty strings",
+                    field="token_ids",
+                    value=token_ids,
+                )
+
+    def _parse_orderbook(self, data: Any, token_id: str) -> OrderBook:
+        """Parse raw API response into an OrderBook model.
+
+        Parameters
+        ----------
+        data : Any
+            Raw order book data from the API.
+        token_id : str
+            Token identifier for the order book.
+
+        Returns
+        -------
+        OrderBook
+            Parsed order book with bids and asks.
+        """
+        if not isinstance(data, dict):
+            return OrderBook(
+                market="",
+                asset_id=token_id,
+                bids=[],
+                asks=[],
+            )
+
+        bids: list[OrderBookLevel] = []
+        for bid in data.get("bids", []):
+            if isinstance(bid, dict):
+                bids.append(OrderBookLevel.model_validate(bid))
+
+        asks: list[OrderBookLevel] = []
+        for ask in data.get("asks", []):
+            if isinstance(ask, dict):
+                asks.append(OrderBookLevel.model_validate(ask))
+
+        return OrderBook(
+            market=str(data.get("market", "")),
+            asset_id=str(data.get("asset_id", token_id)),
+            bids=bids,
+            asks=asks,
+        )
+
+
+__all__ = ["PolymarketClient"]

@@ -172,7 +172,30 @@ class RetryConfig:
             raise ValueError(f"max_wait must be non-negative, got {self.max_wait}")
 
 
+@dataclass(frozen=True)
+class FetchOptions:
+    """Options for Polymarket API data fetch requests.
+
+    Parameters
+    ----------
+    use_cache : bool
+        Whether to use cached data if available (default: True).
+    force_refresh : bool
+        Whether to force a fresh fetch, ignoring cache (default: False).
+
+    Examples
+    --------
+    >>> options = FetchOptions(use_cache=False)
+    >>> options.use_cache
+    False
+    """
+
+    use_cache: bool = True
+    force_refresh: bool = False
+
+
 __all__ = [
+    "FetchOptions",
     "PolymarketConfig",
     "PriceInterval",
     "RetryConfig",
