@@ -64,6 +64,11 @@ MarketError (base)
         EodhdRateLimitError (rate limit exceeded)
         EodhdValidationError (data validation failure)
         EodhdAuthError (authentication failure)
+    PolymarketError (Polymarket API operations, inherits Exception directly)
+        PolymarketAPIError (API response error - 4xx, 5xx)
+            PolymarketRateLimitError (rate limit exceeded - 429)
+        PolymarketValidationError (data validation failure)
+        PolymarketNotFoundError (resource not found)
 """
 
 from enum import Enum
@@ -202,6 +207,14 @@ class ErrorCode(str, Enum):
         EODHD data validation failure
     EODHD_AUTH_ERROR : str
         EODHD authentication failure
+    POLYMARKET_API_ERROR : str
+        Polymarket API response error (4xx, 5xx)
+    POLYMARKET_RATE_LIMIT : str
+        Polymarket API rate limit exceeded
+    POLYMARKET_VALIDATION_ERROR : str
+        Polymarket data validation failure
+    POLYMARKET_NOT_FOUND : str
+        Polymarket resource not found
     """
 
     UNKNOWN = "UNKNOWN"
@@ -243,6 +256,10 @@ class ErrorCode(str, Enum):
     EODHD_RATE_LIMIT = "EODHD_RATE_LIMIT"
     EODHD_VALIDATION_ERROR = "EODHD_VALIDATION_ERROR"
     EODHD_AUTH_ERROR = "EODHD_AUTH_ERROR"
+    POLYMARKET_API_ERROR = "POLYMARKET_API_ERROR"
+    POLYMARKET_RATE_LIMIT = "POLYMARKET_RATE_LIMIT"
+    POLYMARKET_VALIDATION_ERROR = "POLYMARKET_VALIDATION_ERROR"
+    POLYMARKET_NOT_FOUND = "POLYMARKET_NOT_FOUND"
 
 
 class MarketError(Exception):
