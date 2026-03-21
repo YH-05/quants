@@ -1,7 +1,7 @@
 """CLI script for syncing EDINET DB data to local DuckDB database.
 
 This script provides command-line interface for managing EDINET data sync.
-Supports initial 6-phase sync, daily incremental updates, resume from
+Supports initial 5-phase sync, daily incremental updates, resume from
 checkpoint, status checking, and single company sync.
 
 Follows the FRED ``sync_historical.py`` pattern.
@@ -115,13 +115,13 @@ Examples:
     sync_group.add_argument(
         "--initial",
         action="store_true",
-        help="Run initial 6-phase sync (companies -> industries -> rankings -> "
-        "company_details -> financials_ratios -> analysis_text)",
+        help="Run initial 5-phase sync (companies -> industries -> "
+        "company_details -> financials_ratios -> text_blocks)",
     )
     sync_group.add_argument(
         "--daily",
         action="store_true",
-        help="Run daily incremental sync (companies + financials_ratios)",
+        help="Run daily incremental sync (companies + financials_ratios + text_blocks)",
     )
     sync_group.add_argument(
         "--resume",
@@ -234,7 +234,7 @@ def _show_status(syncer: EdinetSyncer) -> int:
     if db_stats:
         print("\nDatabase Statistics:")
         print("-" * 60)
-        for table_name, count in sorted(db_stats.items()):  # type: ignore[union-attr]
+        for table_name, count in sorted(db_stats.items()):
             print(f"  {table_name:20} | {count:>8} rows")
 
     print()

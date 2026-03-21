@@ -27,12 +27,10 @@ from market.edinet.errors import (
     EdinetRateLimitError,
 )
 from market.edinet.types import (
-    AnalysisResult,
     Company,
     EdinetConfig,
     FinancialRecord,
     Industry,
-    RankingEntry,
     RatioRecord,
     RetryConfig,
     TextBlock,
@@ -53,7 +51,7 @@ def config(tmp_path: Path) -> EdinetConfig:
     return EdinetConfig(
         api_key="test_key_12345",
         polite_delay=0.0,
-        db_path=tmp_path / "edinet.duckdb",
+        db_path=tmp_path / "edinet.db",
     )
 
 
@@ -572,82 +570,12 @@ class TestGetRatios:
 
 
 # =============================================================================
-# get_analysis()
-# =============================================================================
-
-
-class TestGetAnalysis:
-    """Test the get_analysis(code) method."""
-
-    def test_正常系_分析結果が返される(self, config: EdinetConfig) -> None:
-        response_data = {
-            "ai_summary": {
-                "generated_at": "2026-03-15 21:02:18",
-                "has_qualitative": True,
-                "model_version": "claude-opus-4-6-v2",
-                "text": "健全な財務状況です。",
-                "text_en": "The company is financially healthy.",
-            },
-            "history": [
-                {
-                    "benchmark_strong_count": 2,
-                    "benchmark_summary": "強みが多い",
-                    "benchmark_weak_count": 0,
-                    "credit_flag_count": 0,
-                    "credit_rating": "S",
-                    "credit_score": 93,
-                    "fiscal_year": 2025,
-                    "health_score": 93.0,
-                }
-            ],
-        }
-        with (
-            EdinetClient(config=config) as client,
-            patch.object(
-                client._client,
-                "get",
-                return_value=_make_response(json_data=response_data),
-            ),
-        ):
-            result = client.get_analysis("E00001")
-            assert isinstance(result, AnalysisResult)
-            assert result.edinet_code == "E00001"
-            assert result.health_score == 93.0
-            assert result.credit_score == 93
-            assert result.credit_rating == "S"
-            assert result.benchmark_summary == "強みが多い"
-            assert result.commentary == "健全な財務状況です。"
-            assert result.fiscal_year == 2025
-
-    def test_正常系_空のhistoryでも処理できる(self, config: EdinetConfig) -> None:
-        """history が空の場合でもエラーにならないこと。"""
-        response_data: dict[str, Any] = {
-            "ai_summary": {"text": "分析テキスト"},
-            "history": [],
-        }
-        with (
-            EdinetClient(config=config) as client,
-            patch.object(
-                client._client,
-                "get",
-                return_value=_make_response(json_data=response_data),
-            ),
-        ):
-            result = client.get_analysis("E00001")
-            assert isinstance(result, AnalysisResult)
-            assert result.edinet_code == "E00001"
-            assert result.commentary == "分析テキスト"
-            assert result.health_score is None
-            assert result.fiscal_year is None
-
-
-# =============================================================================
 # get_text_blocks()
 # =============================================================================
 
 
 class TestGetTextBlocks:
-    """Test the get_text_blocks(code) method."""
+    """Test the get_text_blocks(code, year) method."""
 
     def test_正常系_テキストブロックが返される(self, config: EdinetConfig) -> None:
         response_data = [
@@ -662,56 +590,41 @@ class TestGetTextBlocks:
                 return_value=_make_response(json_data=response_data),
             ),
         ):
-            blocks = client.get_text_blocks("E00001")
+            blocks = client.get_text_blocks("E00001", year=2025)
             assert len(blocks) == 2
             assert isinstance(blocks[0], TextBlock)
             assert blocks[0].edinet_code == "E00001"
+            assert blocks[0].fiscal_year == 2025
             assert blocks[0].section == "事業の内容"
             assert blocks[0].text == "事業概要テキスト"
             assert blocks[1].section == "経営者による分析"
+            assert blocks[1].fiscal_year == 2025
 
-
-# =============================================================================
-# get_ranking()
-# =============================================================================
-
-
-class TestGetRanking:
-    """Test the get_ranking(metric) method."""
-
-    def test_正常系_ランキングが返される(self, config: EdinetConfig) -> None:
-        response_data = {
-            "data": [
-                {
-                    "metric": "roe",
-                    "rank": 1,
-                    "edinet_code": "E00001",
-                    "name": "テスト株式会社",
-                    "value": 25.5,
-                }
-            ]
-        }
+    def test_正常系_yearパラメータがAPIに送信される(self, config: EdinetConfig) -> None:
+        """year パラメータが API リクエストに含まれること。"""
+        response_data = [
+            {"section": "事業の内容", "text": "テキスト"},
+        ]
         with (
             EdinetClient(config=config) as client,
             patch.object(
                 client._client,
                 "get",
                 return_value=_make_response(json_data=response_data),
-            ),
+            ) as mock_get,
         ):
-            entries = client.get_ranking("roe")
-            assert len(entries) == 1
-            assert isinstance(entries[0], RankingEntry)
-            assert entries[0].rank == 1
+            client.get_text_blocks("E00001", year=2024)
+            mock_get.assert_called_once()
+            call_kwargs = mock_get.call_args
+            assert call_kwargs.kwargs.get("params") == {"year": "2024"}
 
-    def test_異常系_無効なメトリクスでValidationError(
-        self, config: EdinetConfig
-    ) -> None:
+    def test_異常系_yearなしでValueError(self, config: EdinetConfig) -> None:
+        """year が None の場合 ValueError が発生すること。"""
         with (
             EdinetClient(config=config) as client,
-            pytest.raises(ValueError, match="Invalid ranking metric"),
+            pytest.raises(ValueError, match="year is required"),
         ):
-            client.get_ranking("invalid_metric")
+            client.get_text_blocks("E00001")
 
 
 # =============================================================================
@@ -926,7 +839,7 @@ class TestPoliteDelay:
         cfg = EdinetConfig(
             api_key="test_key",
             polite_delay=polite_delay,
-            db_path=tmp_path / "edinet.duckdb",
+            db_path=tmp_path / "edinet.db",
         )
         response_data: dict[str, Any] = {"results": [], "total": 0}
         with (

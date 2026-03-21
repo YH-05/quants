@@ -50,18 +50,16 @@ from typing import TYPE_CHECKING, Any
 
 import httpx
 
-from market.edinet.constants import DEFAULT_BASE_URL, RANKING_METRICS
+from market.edinet.constants import DEFAULT_BASE_URL
 from market.edinet.errors import (
     EdinetAPIError,
     EdinetRateLimitError,
 )
 from market.edinet.types import (
-    AnalysisResult,
     Company,
     EdinetConfig,
     FinancialRecord,
     Industry,
-    RankingEntry,
     RatioRecord,
     RetryConfig,
     TextBlock,
@@ -224,9 +222,8 @@ class EdinetClient:
         """
         logger.debug("Searching companies", query=query)
         raw = self._request("GET", "/v1/search", params={"q": query})
-        results: list[dict[str, Any]] = self._unwrap_response(raw)
-        if not isinstance(results, list):
-            results = []
+        unwrapped = self._unwrap_response(raw)
+        results: list[dict[str, Any]] = unwrapped if isinstance(unwrapped, list) else []
         logger.info("Search completed", query=query, result_count=len(results))
         return results
 
@@ -378,95 +375,24 @@ class EdinetClient:
         logger.info("Ratios retrieved", code=code, years=len(records))
         return records
 
-    def get_analysis(self, code: str) -> AnalysisResult:
-        """Get financial health analysis.
-
-        Calls ``GET /v1/companies/{code}/analysis``.
-
-        The API returns a nested structure::
-
-            {
-                "ai_summary": {"text": "...", ...},
-                "history": [{"fiscal_year": 2025, "health_score": 93, ...}, ...]
-            }
-
-        This method flattens the response into a single
-        ``AnalysisResult`` using the latest history entry and
-        ``ai_summary.text`` as commentary.
-
-        Parameters
-        ----------
-        code : str
-            EDINET code (e.g. ``"E00001"``).
-
-        Returns
-        -------
-        AnalysisResult
-            Analysis result with health score and commentary.
-
-        Raises
-        ------
-        EdinetAPIError
-            If the API returns an error response.
-        EdinetRateLimitError
-            If the daily rate limit is exceeded.
-
-        Examples
-        --------
-        >>> result = client.get_analysis("E00001")
-        >>> result.health_score
-        93.0
-        """
-        logger.debug("Getting analysis", code=code)
-        raw = self._request("GET", f"/v1/companies/{code}/analysis")
-        data = self._unwrap_response(raw)
-
-        # Flatten nested API response into a flat dict for _parse_record
-        flat: dict[str, Any] = {"edinet_code": code}
-        if isinstance(data, dict):
-            # Extract commentary from ai_summary.text
-            ai_summary = data.get("ai_summary")
-            if isinstance(ai_summary, dict):
-                flat["commentary"] = ai_summary.get("text")
-
-            # Extract latest history entry
-            history = data.get("history")
-            if isinstance(history, list) and history:
-                latest = history[0]
-                if isinstance(latest, dict):
-                    for key in (
-                        "health_score",
-                        "credit_score",
-                        "credit_rating",
-                        "benchmark_summary",
-                        "fiscal_year",
-                    ):
-                        if key in latest:
-                            flat[key] = latest[key]
-
-        result = self._parse_record(AnalysisResult, flat)
-        logger.info(
-            "Analysis retrieved",
-            code=code,
-            health_score=result.health_score,
-        )
-        return result
-
-    def get_text_blocks(self, code: str, year: str | None = None) -> list[TextBlock]:
+    def get_text_blocks(self, code: str, year: int | None = None) -> list[TextBlock]:
         """Get securities report text excerpts.
 
         Calls ``GET /v1/companies/{code}/text-blocks``.
 
         The API returns a list of ``{section, text}`` dicts.
         Each item becomes a ``TextBlock`` with the ``edinet_code``
-        injected by this method.
+        and ``fiscal_year`` injected by this method.
 
         Parameters
         ----------
         code : str
             EDINET code (e.g. ``"E00001"``).
-        year : str | None
-            Optional fiscal year filter (e.g. ``"2025"``).
+        year : int | None
+            Fiscal year to fetch (e.g. ``2025``). When provided, the
+            API ``year`` query parameter is set and ``fiscal_year`` is
+            injected into each response item. Required for storage
+            (``TextBlock.fiscal_year`` is NOT NULL).
 
         Returns
         -------
@@ -479,74 +405,34 @@ class EdinetClient:
             If the API returns an error response.
         EdinetRateLimitError
             If the daily rate limit is exceeded.
+        ValueError
+            If ``year`` is not provided (fiscal_year is required).
 
         Examples
         --------
-        >>> blocks = client.get_text_blocks("E00001")
+        >>> blocks = client.get_text_blocks("E00001", year=2025)
         >>> blocks[0].section
         '事業の内容'
         """
+        if year is None:
+            raise ValueError(
+                f"year is required for get_text_blocks (code={code}). "
+                "TextBlock.fiscal_year is NOT NULL."
+            )
         logger.debug("Getting text blocks", code=code, year=year)
-        params: dict[str, str] = {}
-        if year is not None:
-            params["year"] = year
+        params: dict[str, str] = {"year": str(year)}
         raw = self._request(
             "GET",
             f"/v1/companies/{code}/text-blocks",
-            params=params if params else None,
+            params=params,
         )
         data = self._unwrap_response(raw)
         for item in data:
             item.setdefault("edinet_code", code)
+            item["fiscal_year"] = year
         blocks = [self._parse_record(TextBlock, item) for item in data]
-        logger.info("Text blocks retrieved", code=code, count=len(blocks))
+        logger.info("Text blocks retrieved", code=code, year=year, count=len(blocks))
         return blocks
-
-    def get_ranking(self, metric: str) -> list[RankingEntry]:
-        """Get company rankings by financial metric.
-
-        Calls ``GET /v1/rankings/{metric}``.
-
-        Parameters
-        ----------
-        metric : str
-            Ranking metric name (e.g. ``"roe"``, ``"eps"``).
-            Must be one of the 18 valid metrics defined in
-            ``RANKING_METRICS``.
-
-        Returns
-        -------
-        list[RankingEntry]
-            Ranking entries sorted by rank.
-
-        Raises
-        ------
-        ValueError
-            If the metric is not a valid ranking metric.
-        EdinetAPIError
-            If the API returns an error response.
-        EdinetRateLimitError
-            If the daily rate limit is exceeded.
-
-        Examples
-        --------
-        >>> entries = client.get_ranking("roe")
-        >>> entries[0].rank
-        1
-        """
-        if metric not in RANKING_METRICS:
-            raise ValueError(
-                f"Invalid ranking metric '{metric}'. "
-                f"Must be one of: {', '.join(RANKING_METRICS)}"
-            )
-        logger.debug("Getting ranking", metric=metric)
-        raw = self._request("GET", f"/v1/rankings/{metric}")
-        data = self._unwrap_response(raw)
-        for item in data:
-            item.setdefault("metric", metric)
-        entries = [self._parse_record(RankingEntry, item) for item in data]
-        logger.info("Ranking retrieved", metric=metric, count=len(entries))
-        return entries
 
     def list_industries(self) -> list[Industry]:
         """List all industry classifications.
@@ -672,7 +558,7 @@ class EdinetClient:
     @functools.lru_cache(maxsize=None)
     def _get_field_names(klass: type) -> frozenset[str]:
         """Return cached frozenset of dataclass field names for *klass*."""
-        return frozenset(f.name for f in dataclasses.fields(klass))  # type: ignore[arg-type]
+        return frozenset(f.name for f in dataclasses.fields(klass))
 
     def _parse_record[T](self, cls: type[T], data: dict[str, Any]) -> T:
         """Create a dataclass instance from a dict, ignoring unknown fields.

@@ -1,33 +1,30 @@
-"""DuckDB storage layer for EDINET data.
+"""SQLite storage layer for EDINET data.
 
-This module provides the ``EdinetStorage`` class that manages 8 DuckDB
+This module provides the ``EdinetStorage`` class that manages 6 SQLite
 tables for persisting EDINET DB API data. It uses the existing
-``DuckDBClient`` from ``database.db`` for all database operations,
-leveraging its ``store_df(if_exists='upsert', key_columns=[...])``
-capability for idempotent data updates.
+``SQLiteClient`` from ``database.db`` for all database operations,
+leveraging ``INSERT OR REPLACE`` for idempotent data updates.
 
 Tables managed
 --------------
-- ``companies`` — Company master data (PK: ``edinet_code``)
-- ``financials`` — Annual financial statements (PK: ``edinet_code``, ``fiscal_year``)
-- ``ratios`` — Computed financial ratios (PK: ``edinet_code``, ``fiscal_year``)
-- ``analyses`` — Financial health analysis (PK: ``edinet_code``)
-- ``text_blocks`` — Securities report text excerpts (PK: ``edinet_code``, ``fiscal_year``)
-- ``rankings`` — Metric-based company rankings (PK: ``metric``, ``rank``)
-- ``industries`` — Industry master data (PK: ``slug``)
-- ``industry_details`` — Detailed industry data (PK: ``slug``)
+- ``companies`` -- Company master data (PK: ``edinet_code``)
+- ``financials`` -- Annual financial statements (PK: ``edinet_code``, ``fiscal_year``)
+- ``ratios`` -- Computed financial ratios (PK: ``edinet_code``, ``fiscal_year``)
+- ``text_blocks`` -- Securities report text excerpts (PK: ``edinet_code``, ``fiscal_year``, ``section``)
+- ``industries`` -- Industry master data (PK: ``slug``)
+- ``industry_details`` -- Detailed industry data (PK: ``slug``)
 
 Examples
 --------
 >>> from market.edinet.types import EdinetConfig
->>> config = EdinetConfig(api_key="key", db_path=Path("/tmp/edinet.duckdb"))
+>>> config = EdinetConfig(api_key="key", db_path=Path("/tmp/edinet.db"))
 >>> storage = EdinetStorage(config=config)
 >>> storage.upsert_companies([company1, company2])
 >>> df = storage.get_company("E00001")
 
 See Also
 --------
-database.db.duckdb_client.DuckDBClient : Underlying DuckDB client.
+database.db.sqlite_client.SQLiteClient : Underlying SQLite client.
 market.edinet.types : Data record dataclasses.
 market.edinet.constants : Table name constants.
 """
@@ -36,18 +33,16 @@ from __future__ import annotations
 
 import dataclasses
 import re
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
-from database.db.duckdb_client import DuckDBClient
+from database.db.sqlite_client import SQLiteClient
 from market.edinet.constants import (
-    TABLE_ANALYSES,
     TABLE_COMPANIES,
     TABLE_FINANCIALS,
     TABLE_INDUSTRIES,
     TABLE_INDUSTRY_DETAILS,
-    TABLE_RANKINGS,
     TABLE_RATIOS,
     TABLE_TEXT_BLOCKS,
 )
@@ -55,12 +50,10 @@ from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
     from market.edinet.types import (
-        AnalysisResult,
         Company,
         EdinetConfig,
         FinancialRecord,
         Industry,
-        RankingEntry,
         RatioRecord,
         TextBlock,
     )
@@ -68,154 +61,109 @@ if TYPE_CHECKING:
 logger = get_logger(__name__)
 
 # ============================================================================
-# Column rename mapping (old name -> new name)
-# ============================================================================
-
-_COLUMN_RENAMES: dict[str, str] = {
-    "operating_cf": "cf_operating",
-    "investing_cf": "cf_investing",
-    "financing_cf": "cf_financing",
-    "employees": "num_employees",
-    "rnd_expense": "rnd_expenses",
-    "corp_name": "name",
-    "industry_name": "industry",
-    # analyses table: old field → new field
-    "benchmark_comparison": "benchmark_summary",
-}
-"""Mapping of old column names to new column names.
-
-Used during schema migration to preserve data from renamed columns.
-Keys are old column names that no longer exist in the current DDL.
-Values are the corresponding new column names in the current DDL.
-"""
-
-_REVERSE_COLUMN_RENAMES: dict[str, str] = {v: k for k, v in _COLUMN_RENAMES.items()}
-"""Reverse mapping of new column names to old column names.
-
-Pre-computed at module level to avoid rebuilding on each migration call.
-"""
-
-# ============================================================================
-# Table DDL definitions
+# Table DDL definitions (SQLite types)
 # ============================================================================
 
 _TABLE_DDL: dict[str, str] = {
     TABLE_COMPANIES: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_COMPANIES} (
-            edinet_code VARCHAR NOT NULL,
-            sec_code VARCHAR NOT NULL,
-            name VARCHAR NOT NULL,
-            industry VARCHAR NOT NULL,
-            name_en VARCHAR,
-            name_ja VARCHAR,
-            accounting_standard VARCHAR,
-            credit_rating VARCHAR,
-            credit_score INTEGER
+            edinet_code TEXT NOT NULL,
+            sec_code TEXT NOT NULL,
+            name TEXT NOT NULL,
+            industry TEXT NOT NULL,
+            name_en TEXT,
+            name_ja TEXT,
+            accounting_standard TEXT,
+            credit_rating TEXT,
+            credit_score INTEGER,
+            PRIMARY KEY (edinet_code)
         )
     """,
     TABLE_FINANCIALS: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_FINANCIALS} (
-            edinet_code VARCHAR NOT NULL,
+            edinet_code TEXT NOT NULL,
             fiscal_year INTEGER NOT NULL,
-            revenue DOUBLE,
-            operating_income DOUBLE,
-            ordinary_income DOUBLE,
-            net_income DOUBLE,
-            profit_before_tax DOUBLE,
-            comprehensive_income DOUBLE,
-            total_assets DOUBLE,
-            net_assets DOUBLE,
-            shareholders_equity DOUBLE,
-            cash DOUBLE,
-            goodwill DOUBLE,
-            cf_operating DOUBLE,
-            cf_investing DOUBLE,
-            cf_financing DOUBLE,
-            eps DOUBLE,
-            diluted_eps DOUBLE,
-            bps DOUBLE,
-            dividend_per_share DOUBLE,
-            equity_ratio_official DOUBLE,
-            payout_ratio DOUBLE,
-            per DOUBLE,
-            roe_official DOUBLE,
-            num_employees BIGINT,
-            capex DOUBLE,
-            depreciation DOUBLE,
-            rnd_expenses DOUBLE,
-            accounting_standard VARCHAR,
-            submit_date VARCHAR
+            revenue REAL,
+            operating_income REAL,
+            ordinary_income REAL,
+            net_income REAL,
+            profit_before_tax REAL,
+            comprehensive_income REAL,
+            total_assets REAL,
+            net_assets REAL,
+            shareholders_equity REAL,
+            cash REAL,
+            goodwill REAL,
+            cf_operating REAL,
+            cf_investing REAL,
+            cf_financing REAL,
+            eps REAL,
+            diluted_eps REAL,
+            bps REAL,
+            dividend_per_share REAL,
+            equity_ratio_official REAL,
+            payout_ratio REAL,
+            per REAL,
+            roe_official REAL,
+            num_employees INTEGER,
+            capex REAL,
+            depreciation REAL,
+            rnd_expenses REAL,
+            accounting_standard TEXT,
+            submit_date TEXT,
+            PRIMARY KEY (edinet_code, fiscal_year)
         )
     """,
     TABLE_RATIOS: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_RATIOS} (
-            edinet_code VARCHAR NOT NULL,
+            edinet_code TEXT NOT NULL,
             fiscal_year INTEGER NOT NULL,
-            roe DOUBLE,
-            roa DOUBLE,
-            roe_official DOUBLE,
-            net_margin DOUBLE,
-            equity_ratio DOUBLE,
-            equity_ratio_official DOUBLE,
-            payout_ratio DOUBLE,
-            dividend_per_share DOUBLE,
-            adjusted_dividend_per_share DOUBLE,
-            dividend_yield DOUBLE,
-            asset_turnover DOUBLE,
-            eps DOUBLE,
-            diluted_eps DOUBLE,
-            bps DOUBLE,
-            per DOUBLE,
-            fcf DOUBLE,
-            net_income_per_employee DOUBLE,
-            revenue_per_employee DOUBLE,
-            financial_leverage DOUBLE,
-            invested_capital DOUBLE,
-            split_adjustment_factor DOUBLE
-        )
-    """,
-    TABLE_ANALYSES: f"""
-        CREATE TABLE IF NOT EXISTS {TABLE_ANALYSES} (
-            edinet_code VARCHAR NOT NULL,
-            health_score DOUBLE,
-            credit_score INTEGER,
-            credit_rating VARCHAR,
-            benchmark_summary VARCHAR,
-            commentary VARCHAR,
-            fiscal_year INTEGER
+            roe REAL,
+            roa REAL,
+            roe_official REAL,
+            net_margin REAL,
+            equity_ratio REAL,
+            equity_ratio_official REAL,
+            payout_ratio REAL,
+            dividend_per_share REAL,
+            adjusted_dividend_per_share REAL,
+            dividend_yield REAL,
+            asset_turnover REAL,
+            eps REAL,
+            diluted_eps REAL,
+            bps REAL,
+            per REAL,
+            fcf REAL,
+            net_income_per_employee REAL,
+            revenue_per_employee REAL,
+            financial_leverage REAL,
+            invested_capital REAL,
+            split_adjustment_factor REAL,
+            PRIMARY KEY (edinet_code, fiscal_year)
         )
     """,
     TABLE_TEXT_BLOCKS: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_TEXT_BLOCKS} (
-            edinet_code VARCHAR NOT NULL,
-            section VARCHAR NOT NULL,
-            text VARCHAR NOT NULL
-        )
-    """,
-    TABLE_RANKINGS: f"""
-        CREATE TABLE IF NOT EXISTS {TABLE_RANKINGS} (
-            metric VARCHAR NOT NULL,
-            rank INTEGER NOT NULL,
-            edinet_code VARCHAR NOT NULL,
-            name VARCHAR NOT NULL,
-            value DOUBLE NOT NULL,
-            sec_code VARCHAR,
-            industry VARCHAR,
-            fiscal_year INTEGER,
-            unit VARCHAR
+            edinet_code TEXT NOT NULL,
+            fiscal_year INTEGER NOT NULL,
+            section TEXT NOT NULL,
+            text TEXT NOT NULL,
+            PRIMARY KEY (edinet_code, fiscal_year, section)
         )
     """,
     TABLE_INDUSTRIES: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_INDUSTRIES} (
-            slug VARCHAR NOT NULL,
-            name VARCHAR NOT NULL,
-            company_count INTEGER NOT NULL
+            slug TEXT NOT NULL,
+            name TEXT NOT NULL,
+            company_count INTEGER NOT NULL,
+            PRIMARY KEY (slug)
         )
     """,
     TABLE_INDUSTRY_DETAILS: f"""
         CREATE TABLE IF NOT EXISTS {TABLE_INDUSTRY_DETAILS} (
-            slug VARCHAR NOT NULL,
-            data VARCHAR NOT NULL
+            slug TEXT NOT NULL,
+            data TEXT NOT NULL,
+            PRIMARY KEY (slug)
         )
     """,
 }
@@ -227,7 +175,7 @@ _TABLE_DDL: dict[str, str] = {
 
 # Regex to extract column definitions: "column_name TYPE [NOT NULL]"
 _DDL_COLUMN_RE = re.compile(
-    r"^\s+(\w+)\s+(VARCHAR|INTEGER|DOUBLE|BIGINT|BOOLEAN|DATE|TIMESTAMP)",
+    r"^\s+(\w+)\s+(TEXT|INTEGER|REAL|BLOB|NUMERIC)",
     re.MULTILINE,
 )
 
@@ -247,27 +195,11 @@ def _parse_ddl_columns(ddl: str) -> set[str]:
 
     Examples
     --------
-    >>> ddl = "CREATE TABLE t (id INTEGER, name VARCHAR)"
+    >>> ddl = "CREATE TABLE t (id INTEGER, name TEXT)"
     >>> _parse_ddl_columns(ddl)
     {'id', 'name'}
     """
     return {m.group(1) for m in _DDL_COLUMN_RE.finditer(ddl)}
-
-
-def _parse_ddl_columns_ordered(ddl: str) -> list[str]:
-    """Extract column names from a DDL in declaration order.
-
-    Parameters
-    ----------
-    ddl : str
-        SQL CREATE TABLE statement to parse.
-
-    Returns
-    -------
-    list[str]
-        List of column names in the order they appear in the DDL.
-    """
-    return [m.group(1) for m in _DDL_COLUMN_RE.finditer(ddl)]
 
 
 # Pre-computed expected column sets from DDL (avoids re-parsing on each call)
@@ -279,12 +211,48 @@ _TABLE_EXPECTED_COLUMNS: dict[str, set[str]] = {
 _VALID_TABLE_NAMES: frozenset[str] = frozenset(_TABLE_DDL.keys())
 
 
-class EdinetStorage:
-    """DuckDB storage layer for EDINET data.
+def _dataclass_to_tuple(obj: object) -> tuple[Any, ...]:
+    """Convert a dataclass instance to a tuple of field values.
 
-    Manages 8 DuckDB tables and provides upsert/query methods for
-    each data type. Uses ``DuckDBClient.store_df()`` for idempotent
-    writes with primary key-based upsert.
+    Parameters
+    ----------
+    obj : object
+        A dataclass instance.
+
+    Returns
+    -------
+    tuple[Any, ...]
+        Tuple of all field values in field definition order.
+    """
+    return tuple(getattr(obj, f.name) for f in dataclasses.fields(obj))  # type: ignore[arg-type]
+
+
+def _build_insert_sql(table_name: str, field_names: list[str]) -> str:
+    """Build an INSERT OR REPLACE SQL statement for the given table and fields.
+
+    Parameters
+    ----------
+    table_name : str
+        Target table name.
+    field_names : list[str]
+        List of column names.
+
+    Returns
+    -------
+    str
+        SQL INSERT OR REPLACE statement with ``?`` placeholders.
+    """
+    cols = ", ".join(field_names)
+    placeholders = ", ".join("?" for _ in field_names)
+    return f"INSERT OR REPLACE INTO {table_name} ({cols}) VALUES ({placeholders})"  # nosec B608
+
+
+class EdinetStorage:
+    """SQLite storage layer for EDINET data.
+
+    Manages 6 SQLite tables and provides upsert/query methods for
+    each data type. Uses ``INSERT OR REPLACE`` for idempotent writes
+    with primary key-based upsert.
 
     Parameters
     ----------
@@ -294,14 +262,14 @@ class EdinetStorage:
     Examples
     --------
     >>> from market.edinet.types import EdinetConfig
-    >>> config = EdinetConfig(api_key="key", db_path=Path("/tmp/edinet.duckdb"))
+    >>> config = EdinetConfig(api_key="key", db_path=Path("/tmp/edinet.db"))
     >>> storage = EdinetStorage(config=config)
     >>> storage.upsert_companies([company1])
     >>> df = storage.get_company("E00001")
     """
 
     def __init__(self, config: EdinetConfig) -> None:
-        self._client = DuckDBClient(config.resolved_db_path)
+        self._client = SQLiteClient(config.resolved_db_path)
         logger.debug(
             "EdinetStorage initialized",
             db_path=str(config.resolved_db_path),
@@ -313,12 +281,11 @@ class EdinetStorage:
     # ------------------------------------------------------------------
 
     def ensure_tables(self) -> None:
-        """Create all 8 tables if they do not already exist.
+        """Create all 6 tables if they do not already exist.
 
         Executes ``CREATE TABLE IF NOT EXISTS`` for each table defined
-        in the EDINET schema. After creating tables, runs schema
-        migration to handle column additions, renames, and type changes
-        from older schema versions. Safe to call multiple times.
+        in the EDINET schema. After creating tables, runs a lightweight
+        migration to add any missing columns. Safe to call multiple times.
         """
         logger.debug("Ensuring EDINET tables exist")
         for table_name, ddl in _TABLE_DDL.items():
@@ -328,7 +295,7 @@ class EdinetStorage:
             "All EDINET tables ensured",
             table_count=len(_TABLE_DDL),
         )
-        self._migrate_schema()
+        self._migrate_add_missing_columns()
 
     # ------------------------------------------------------------------
     # Schema migration helpers
@@ -347,11 +314,13 @@ class EdinetStorage:
         bool
             ``True`` if the table exists, ``False`` otherwise.
         """
-        tables = self._client.get_table_names()
+        tables = self._client.get_tables()
         return table_name in tables
 
     def _get_column_info(self, table_name: str) -> dict[str, str]:
         """Get column names and types for an existing table.
+
+        Uses ``PRAGMA table_info()`` to inspect the table schema.
 
         Parameters
         ----------
@@ -362,7 +331,7 @@ class EdinetStorage:
         -------
         dict[str, str]
             Mapping of column name to column type string
-            (e.g. ``{"edinet_code": "VARCHAR", "revenue": "DOUBLE"}``).
+            (e.g. ``{"edinet_code": "TEXT", "revenue": "REAL"}``).
 
         Raises
         ------
@@ -371,245 +340,38 @@ class EdinetStorage:
         """
         if table_name not in _VALID_TABLE_NAMES:
             raise ValueError(f"Unknown table: {table_name!r}")
-        df = self._client.query_df(
-            "SELECT column_name, data_type FROM information_schema.columns "  # nosec B608 - table_name validated against _VALID_TABLE_NAMES whitelist
-            f"WHERE table_name = '{table_name}'"
-        )
-        return dict(zip(df["column_name"], df["data_type"], strict=True))
+        rows = self._client.execute(f"PRAGMA table_info({table_name})")  # nosec B608
+        return {row["name"]: row["type"] for row in rows}
 
-    def _schema_matches(self, table_name: str) -> bool:
-        """Check whether an existing table's columns match the current DDL.
+    def _migrate_add_missing_columns(self) -> None:
+        """Add missing columns to existing tables.
 
-        Parameters
-        ----------
-        table_name : str
-            Name of the table to compare.
-
-        Returns
-        -------
-        bool
-            ``True`` if the existing table's column set matches the
-            DDL definition exactly, ``False`` otherwise.
+        For each table, compares existing columns against the DDL
+        definition. Any missing columns are added via
+        ``ALTER TABLE ADD COLUMN``. This is a forward-only migration
+        that does not remove or rename columns.
         """
-        if table_name not in _TABLE_EXPECTED_COLUMNS:
-            return True
-
-        existing_columns = set(self._get_column_info(table_name).keys())
-        return existing_columns == _TABLE_EXPECTED_COLUMNS[table_name]
-
-    def _migrate_schema(self) -> None:
-        """Migrate all tables whose schemas differ from the current DDL.
-
-        For each table defined in ``_TABLE_DDL``, compares the existing
-        schema against the expected DDL columns. If a mismatch is
-        detected (added, removed, or renamed columns), the table is
-        migrated using ``_migrate_table()``.
-
-        This method is called automatically by ``ensure_tables()``.
-        """
-        existing_tables = set(self._client.get_table_names())
         for table_name in _TABLE_DDL:
-            if table_name not in existing_tables:
+            if not self._table_exists(table_name):
                 continue
-            if self._schema_matches(table_name):
-                logger.debug(
-                    "Schema matches, skipping migration",
-                    table_name=table_name,
-                )
+            existing_cols = set(self._get_column_info(table_name).keys())
+            expected_cols = _TABLE_EXPECTED_COLUMNS.get(table_name, set())
+            missing = expected_cols - existing_cols
+            if not missing:
                 continue
-            logger.info(
-                "Schema mismatch detected, migrating table",
-                table_name=table_name,
-            )
-            self._migrate_table(table_name)
 
-    def _migrate_table(self, table_name: str) -> None:
-        """Migrate a single table using backup-DROP-CREATE-INSERT strategy.
-
-        Steps:
-        1. Rename existing table to ``{table_name}_backup``
-        2. Create new table with current DDL
-        3. INSERT data from backup with column mapping and CAST
-        4. Drop backup table
-
-        If an error occurs during migration, the backup table is
-        restored to preserve data.
-
-        Parameters
-        ----------
-        table_name : str
-            Name of the table to migrate.
-
-        Raises
-        ------
-        Exception
-            Re-raises any exception after restoring the backup table.
-        """
-        if table_name not in _VALID_TABLE_NAMES:
-            raise ValueError(f"Unknown table for migration: {table_name!r}")
-        backup_name = f"{table_name}_backup"
-        ddl = _TABLE_DDL[table_name]
-
-        # Get existing column info before migration
-        existing_cols = self._get_column_info(table_name)
-        # Single regex pass: extract ordered columns and type dict simultaneously
-        matches = list(_DDL_COLUMN_RE.finditer(ddl))
-        expected_cols_ordered = [m.group(1) for m in matches]
-        ddl_types: dict[str, str] = {m.group(1): m.group(2) for m in matches}
-
-        try:
-            # Step 1: Backup
-            self._client.execute(
-                f"ALTER TABLE {table_name} RENAME TO {backup_name}"  # nosec B608
-            )
-            logger.debug(
-                "Table backed up",
-                table_name=table_name,
-                backup_name=backup_name,
-            )
-
-            # Step 2: Create new table with current DDL
-            self._client.execute(ddl)
-            logger.debug("New table created", table_name=table_name)
-
-            # Step 3: Build column mapping for INSERT (in DDL order)
-            select_exprs: list[str] = []
-            for col_name in expected_cols_ordered:
-                expr = self._build_select_expr(
-                    col_name,
-                    ddl_types,
-                    existing_cols,
-                    _REVERSE_COLUMN_RENAMES,
-                )
-                select_exprs.append(expr)
-
-            target_sql = ", ".join(expected_cols_ordered)
-            select_sql = ", ".join(select_exprs)
-            insert_sql = (
-                f"INSERT INTO {table_name} ({target_sql}) "  # nosec B608
-                f"SELECT {select_sql} FROM {backup_name}"
-            )
-            self._client.execute(insert_sql)
-            logger.debug(
-                "Data migrated",
-                table_name=table_name,
-                column_count=len(select_exprs),
-            )
-
-            # Step 4: Drop backup
-            self._client.execute(f"DROP TABLE {backup_name}")  # nosec B608
-            logger.info(
-                "Migration completed successfully",
-                table_name=table_name,
-            )
-
-        except Exception:
-            logger.error(
-                "Migration failed, restoring backup",
-                table_name=table_name,
-            )
-            # Restore backup
-            try:
-                # Drop the partially created new table if it exists
-                if self._table_exists(table_name):
-                    self._client.execute(f"DROP TABLE {table_name}")  # nosec B608
-                # Restore backup
-                if self._table_exists(backup_name):
-                    self._client.execute(
-                        f"ALTER TABLE {backup_name} "  # nosec B608
-                        f"RENAME TO {table_name}"
-                    )
-                    logger.info(
-                        "Backup restored",
-                        table_name=table_name,
-                    )
-            except Exception:
-                logger.error(
-                    "Failed to restore backup",
+            ddl = _TABLE_DDL[table_name]
+            ddl_types = {m.group(1): m.group(2) for m in _DDL_COLUMN_RE.finditer(ddl)}
+            for col_name in missing:
+                col_type = ddl_types.get(col_name, "TEXT")
+                alter_sql = f"ALTER TABLE {table_name} ADD COLUMN {col_name} {col_type}"  # nosec B608
+                self._client.execute(alter_sql)
+                logger.info(
+                    "Added missing column",
                     table_name=table_name,
-                    backup_name=backup_name,
-                    exc_info=True,
+                    column=col_name,
+                    column_type=col_type,
                 )
-            raise
-
-    def _build_select_expr(
-        self,
-        col_name: str,
-        ddl_types: dict[str, str],
-        existing_cols: dict[str, str],
-        reverse_renames: dict[str, str],
-    ) -> str:
-        """Build a SELECT expression for a single column during migration.
-
-        Handles three cases:
-        1. Column exists in old table (with optional type CAST)
-        2. Column was renamed (map from old name, with optional CAST)
-        3. Column is new (fill with NULL)
-
-        Parameters
-        ----------
-        col_name : str
-            Target column name in the new DDL.
-        ddl_types : dict[str, str]
-            Pre-computed column name -> type mapping from the DDL.
-        existing_cols : dict[str, str]
-            Column name -> type mapping from the old table.
-        reverse_renames : dict[str, str]
-            New name -> old name mapping from ``_COLUMN_RENAMES``.
-
-        Returns
-        -------
-        str
-            SQL expression for the SELECT clause.
-        """
-        # Case 1: Column exists in old table
-        if col_name in existing_cols:
-            return self._cast_if_needed(col_name, col_name, ddl_types, existing_cols)
-
-        # Case 2: Column was renamed
-        if col_name in reverse_renames:
-            old_name = reverse_renames[col_name]
-            if old_name in existing_cols:
-                return self._cast_if_needed(
-                    old_name,
-                    col_name,
-                    ddl_types,
-                    existing_cols,
-                )
-
-        # Case 3: New column
-        return "NULL"
-
-    @staticmethod
-    def _cast_if_needed(
-        source_col: str,
-        target_col: str,
-        ddl_types: dict[str, str],
-        existing_cols: dict[str, str],
-    ) -> str:
-        """Wrap a source column with CAST if the type has changed.
-
-        Parameters
-        ----------
-        source_col : str
-            Column name in the old (backup) table.
-        target_col : str
-            Column name in the new DDL (for type lookup).
-        ddl_types : dict[str, str]
-            Pre-computed column name -> type mapping from the DDL.
-        existing_cols : dict[str, str]
-            Column name -> type mapping from the old table.
-
-        Returns
-        -------
-        str
-            ``source_col`` or ``CAST(source_col AS new_type)``.
-        """
-        old_type = existing_cols[source_col].upper()
-        expected_type = ddl_types.get(target_col)
-        if expected_type and old_type != expected_type.upper():
-            return f"CAST({source_col} AS {expected_type})"
-        return source_col
 
     # ------------------------------------------------------------------
     # Upsert methods
@@ -626,13 +388,10 @@ class EdinetStorage:
         if not companies:
             logger.debug("No companies to upsert, skipping")
             return
-        df = pd.DataFrame([dataclasses.asdict(c) for c in companies])
-        self._client.store_df(
-            df,
-            TABLE_COMPANIES,
-            if_exists="upsert",
-            key_columns=["edinet_code"],
-        )
+        field_names = [f.name for f in dataclasses.fields(companies[0])]
+        sql = _build_insert_sql(TABLE_COMPANIES, field_names)
+        params = [_dataclass_to_tuple(c) for c in companies]
+        self._client.execute_many(sql, params)
         logger.info("Companies upserted", count=len(companies))
 
     def upsert_financials(self, records: list[FinancialRecord]) -> None:
@@ -646,13 +405,10 @@ class EdinetStorage:
         if not records:
             logger.debug("No financial records to upsert, skipping")
             return
-        df = pd.DataFrame([dataclasses.asdict(r) for r in records])
-        self._client.store_df(
-            df,
-            TABLE_FINANCIALS,
-            if_exists="upsert",
-            key_columns=["edinet_code", "fiscal_year"],
-        )
+        field_names = [f.name for f in dataclasses.fields(records[0])]
+        sql = _build_insert_sql(TABLE_FINANCIALS, field_names)
+        params = [_dataclass_to_tuple(r) for r in records]
+        self._client.execute_many(sql, params)
         logger.info("Financial records upserted", count=len(records))
 
     def upsert_ratios(self, records: list[RatioRecord]) -> None:
@@ -666,34 +422,11 @@ class EdinetStorage:
         if not records:
             logger.debug("No ratio records to upsert, skipping")
             return
-        df = pd.DataFrame([dataclasses.asdict(r) for r in records])
-        self._client.store_df(
-            df,
-            TABLE_RATIOS,
-            if_exists="upsert",
-            key_columns=["edinet_code", "fiscal_year"],
-        )
+        field_names = [f.name for f in dataclasses.fields(records[0])]
+        sql = _build_insert_sql(TABLE_RATIOS, field_names)
+        params = [_dataclass_to_tuple(r) for r in records]
+        self._client.execute_many(sql, params)
         logger.info("Ratio records upserted", count=len(records))
-
-    def upsert_analyses(self, analyses: list[AnalysisResult]) -> None:
-        """Upsert financial health analysis results.
-
-        Parameters
-        ----------
-        analyses : list[AnalysisResult]
-            List of AnalysisResult dataclass instances to upsert.
-        """
-        if not analyses:
-            logger.debug("No analyses to upsert, skipping")
-            return
-        df = pd.DataFrame([dataclasses.asdict(a) for a in analyses])
-        self._client.store_df(
-            df,
-            TABLE_ANALYSES,
-            if_exists="upsert",
-            key_columns=["edinet_code"],
-        )
-        logger.info("Analyses upserted", count=len(analyses))
 
     def upsert_text_blocks(self, blocks: list[TextBlock]) -> None:
         """Upsert securities report text excerpts.
@@ -706,34 +439,11 @@ class EdinetStorage:
         if not blocks:
             logger.debug("No text blocks to upsert, skipping")
             return
-        df = pd.DataFrame([dataclasses.asdict(b) for b in blocks])
-        self._client.store_df(
-            df,
-            TABLE_TEXT_BLOCKS,
-            if_exists="upsert",
-            key_columns=["edinet_code", "section"],
-        )
+        field_names = [f.name for f in dataclasses.fields(blocks[0])]
+        sql = _build_insert_sql(TABLE_TEXT_BLOCKS, field_names)
+        params = [_dataclass_to_tuple(b) for b in blocks]
+        self._client.execute_many(sql, params)
         logger.info("Text blocks upserted", count=len(blocks))
-
-    def upsert_rankings(self, entries: list[RankingEntry]) -> None:
-        """Upsert metric-based company rankings.
-
-        Parameters
-        ----------
-        entries : list[RankingEntry]
-            List of RankingEntry dataclass instances to upsert.
-        """
-        if not entries:
-            logger.debug("No ranking entries to upsert, skipping")
-            return
-        df = pd.DataFrame([dataclasses.asdict(e) for e in entries])
-        self._client.store_df(
-            df,
-            TABLE_RANKINGS,
-            if_exists="upsert",
-            key_columns=["metric", "rank"],
-        )
-        logger.info("Ranking entries upserted", count=len(entries))
 
     def upsert_industries(self, industries: list[Industry]) -> None:
         """Upsert industry master data.
@@ -746,13 +456,10 @@ class EdinetStorage:
         if not industries:
             logger.debug("No industries to upsert, skipping")
             return
-        df = pd.DataFrame([dataclasses.asdict(i) for i in industries])
-        self._client.store_df(
-            df,
-            TABLE_INDUSTRIES,
-            if_exists="upsert",
-            key_columns=["slug"],
-        )
+        field_names = [f.name for f in dataclasses.fields(industries[0])]
+        sql = _build_insert_sql(TABLE_INDUSTRIES, field_names)
+        params = [_dataclass_to_tuple(i) for i in industries]
+        self._client.execute_many(sql, params)
         logger.info("Industries upserted", count=len(industries))
 
     def upsert_industry_details(self, details_df: pd.DataFrame) -> None:
@@ -773,22 +480,13 @@ class EdinetStorage:
             return
         import json
 
-        rows: list[dict[str, str]] = []
+        params: list[tuple[Any, ...]] = []
         for _, row in details_df.iterrows():
             slug = str(row.get("slug", ""))
-            rows.append(
-                {
-                    "slug": slug,
-                    "data": json.dumps(row.to_dict(), ensure_ascii=False, default=str),
-                }
-            )
-        compact_df = pd.DataFrame(rows)
-        self._client.store_df(
-            compact_df,
-            TABLE_INDUSTRY_DETAILS,
-            if_exists="upsert",
-            key_columns=["slug"],
-        )
+            data = json.dumps(row.to_dict(), ensure_ascii=False, default=str)
+            params.append((slug, data))
+        sql = _build_insert_sql(TABLE_INDUSTRY_DETAILS, ["slug", "data"])
+        self._client.execute_many(sql, params)
         logger.info("Industry details upserted", count=len(details_df))
 
     # ------------------------------------------------------------------
@@ -810,14 +508,16 @@ class EdinetStorage:
             no matching record is found.
         """
         logger.debug("Getting company", edinet_code=edinet_code)
-        result = self._client.query_df(
-            f"SELECT * FROM {TABLE_COMPANIES} WHERE edinet_code = $1",
-            params=[edinet_code],
-        )
-        if result.empty:
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(
+                f"SELECT * FROM {TABLE_COMPANIES} WHERE edinet_code = ?",  # nosec B608
+                conn,
+                params=[edinet_code],
+            )
+        if df.empty:
             logger.debug("Company not found", edinet_code=edinet_code)
             return None
-        return result
+        return df
 
     def get_financials(self, edinet_code: str) -> pd.DataFrame | None:
         """Get financial data by EDINET code.
@@ -834,14 +534,16 @@ class EdinetStorage:
             matching records are found.
         """
         logger.debug("Getting financials", edinet_code=edinet_code)
-        result = self._client.query_df(
-            f"SELECT * FROM {TABLE_FINANCIALS} WHERE edinet_code = $1",
-            params=[edinet_code],
-        )
-        if result.empty:
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(
+                f"SELECT * FROM {TABLE_FINANCIALS} WHERE edinet_code = ?",  # nosec B608
+                conn,
+                params=[edinet_code],
+            )
+        if df.empty:
             logger.debug("Financials not found", edinet_code=edinet_code)
             return None
-        return result
+        return df
 
     def get_all_company_codes(self) -> list[str]:
         """Get all EDINET codes from the companies table.
@@ -852,10 +554,10 @@ class EdinetStorage:
             Sorted list of all EDINET codes.
         """
         logger.debug("Getting all company codes")
-        result = self._client.query_df(
+        rows = self._client.execute(
             f"SELECT edinet_code FROM {TABLE_COMPANIES} ORDER BY edinet_code"  # nosec B608
         )
-        codes: list[str] = result["edinet_code"].tolist()
+        codes: list[str] = [row["edinet_code"] for row in rows]
         logger.debug("Company codes retrieved", count=len(codes))
         return codes
 
@@ -864,7 +566,7 @@ class EdinetStorage:
     # ------------------------------------------------------------------
 
     def get_stats(self) -> dict[str, int]:
-        """Get row counts for all 8 tables in a single query.
+        """Get row counts for all 6 tables.
 
         Returns
         -------
@@ -872,13 +574,12 @@ class EdinetStorage:
             Dictionary mapping table name to row count.
         """
         logger.debug("Getting table statistics")
-        # Use UNION ALL to fetch all counts in a single query
-        union_sql = " UNION ALL ".join(
-            f"SELECT '{tbl}' AS tbl, COUNT(*) AS cnt FROM {tbl}"  # nosec B608 - tbl from _VALID_TABLE_NAMES constant
-            for tbl in _VALID_TABLE_NAMES
-        )
-        df = self._client.query_df(union_sql)
-        stats = dict(zip(df["tbl"], df["cnt"].astype(int), strict=True))
+        stats: dict[str, int] = {}
+        for tbl in _VALID_TABLE_NAMES:
+            rows = self._client.execute(
+                f"SELECT COUNT(*) AS cnt FROM {tbl}"  # nosec B608
+            )
+            stats[tbl] = rows[0]["cnt"]
         logger.info("Table statistics retrieved", stats=stats)
         return stats
 
@@ -922,4 +623,5 @@ class EdinetStorage:
                 "Use a single SELECT statement."
             )
         logger.debug("Executing query", query_type="SELECT")
-        return self._client.query_df(sql)
+        with self._client.connection() as conn:
+            return pd.read_sql_query(sql, conn)

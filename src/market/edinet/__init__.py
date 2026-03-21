@@ -12,7 +12,7 @@ constants : API URLs, environment variable names, rate limit settings,
     DB path constants, and ranking metric definitions.
 errors : Exception hierarchy for EDINET DB API operations.
 rate_limiter : DailyRateLimiter for daily API call counting with persistence.
-storage : EdinetStorage for DuckDB-backed data persistence (8 tables).
+storage : EdinetStorage for SQLite-backed data persistence (6 tables).
 syncer : EdinetSyncer for 6-phase sync orchestration with resume support.
 types : Configuration dataclasses, data record dataclasses, and type aliases.
 
@@ -21,7 +21,7 @@ Public API
 EdinetClient
     Synchronous HTTP client for all 10 EDINET DB API endpoints.
 EdinetStorage
-    DuckDB storage layer managing 8 tables for EDINET data.
+    SQLite storage layer managing 6 tables for EDINET data.
 EdinetSyncer
     6-phase sync orchestrator with checkpoint-based resume support.
 
@@ -57,12 +57,8 @@ FinancialRecord
 RatioRecord
     Computed financial ratios (21 fields: 2 required keys +
     19 Optional ratios verified against the official API).
-AnalysisResult
-    AI-generated financial health analysis.
 TextBlock
     Securities report text excerpts.
-RankingEntry
-    Metric-based company rankings.
 Industry
     Industry master data (34 classifications).
 SyncProgress
@@ -91,12 +87,10 @@ from market.edinet.rate_limiter import DailyRateLimiter
 from market.edinet.storage import EdinetStorage
 from market.edinet.syncer import EdinetSyncer, SyncResult
 from market.edinet.types import (
-    AnalysisResult,
     Company,
     EdinetConfig,
     FinancialRecord,
     Industry,
-    RankingEntry,
     RatioRecord,
     RetryConfig,
     SyncProgress,
@@ -104,7 +98,6 @@ from market.edinet.types import (
 )
 
 __all__ = [
-    "AnalysisResult",
     "Company",
     "DailyRateLimiter",
     "EdinetAPIError",
@@ -118,7 +111,6 @@ __all__ = [
     "EdinetValidationError",
     "FinancialRecord",
     "Industry",
-    "RankingEntry",
     "RatioRecord",
     "RetryConfig",
     "SyncProgress",

@@ -3,8 +3,7 @@
 Tests verify all type definitions for the EDINET DB API module,
 including configuration dataclasses (EdinetConfig, RetryConfig),
 data record dataclasses (Company, FinancialRecord, RatioRecord,
-AnalysisResult, TextBlock, RankingEntry, Industry, SyncProgress),
-and the module exports.
+TextBlock, Industry, SyncProgress), and the module exports.
 
 Test TODO List:
 - [x] Module exports: __all__ completeness and importability
@@ -15,9 +14,7 @@ Test TODO List:
 - [x] Company: frozen, all 6 fields
 - [x] FinancialRecord: frozen, fiscal_year=int, all Optional fields, no period_type
 - [x] RatioRecord: frozen, fiscal_year=int, all Optional fields, no period_type
-- [x] AnalysisResult: frozen, all fields
 - [x] TextBlock: frozen, all fields
-- [x] RankingEntry: frozen, all fields
 - [x] Industry: frozen, all fields
 - [x] SyncProgress: frozen, all fields, defaults
 """
@@ -36,12 +33,10 @@ from market.edinet.constants import (
     SYNC_STATE_FILENAME,
 )
 from market.edinet.types import (
-    AnalysisResult,
     Company,
     EdinetConfig,
     FinancialRecord,
     Industry,
-    RankingEntry,
     RatioRecord,
     RetryConfig,
     SyncProgress,
@@ -75,15 +70,13 @@ class TestModuleExports:
         for name in __all__:
             assert hasattr(types, name), f"{name} is not defined in types module"
 
-    def test_正常系_allが10型定義を含む(self) -> None:
-        """__all__ が全10型定義をエクスポートしていること。"""
+    def test_正常系_allが8型定義を含む(self) -> None:
+        """__all__ が全8型定義をエクスポートしていること。"""
         expected = {
-            "AnalysisResult",
             "Company",
             "EdinetConfig",
             "FinancialRecord",
             "Industry",
-            "RankingEntry",
             "RatioRecord",
             "RetryConfig",
             "SyncProgress",
@@ -158,20 +151,20 @@ class TestEdinetConfig:
     ) -> None:
         """db_path も環境変数もない場合、get_db_path() にフォールバックすること。"""
         monkeypatch.delenv("EDINET_DB_PATH", raising=False)
-        fallback_path = Path("/fallback/duckdb/edinet.duckdb")
+        fallback_path = Path("/fallback/sqlite/edinet.db")
         with patch(
             "market.edinet.types.get_db_path", return_value=fallback_path
         ) as mock_get:
             config = EdinetConfig(api_key="test_key")
             result = config.resolved_db_path
             assert result == fallback_path
-            mock_get.assert_called_once_with("duckdb", DEFAULT_DB_NAME)
+            mock_get.assert_called_once_with("sqlite", DEFAULT_DB_NAME)
 
     def test_正常系_sync_state_pathがresolved_db_pathの隣に生成される(self) -> None:
         """sync_state_path が resolved_db_path と同じディレクトリに生成されること。"""
-        custom_path = Path("/data/duckdb/edinet.duckdb")
+        custom_path = Path("/data/sqlite/edinet.db")
         config = EdinetConfig(api_key="test_key", db_path=custom_path)
-        expected = Path("/data/duckdb") / SYNC_STATE_FILENAME
+        expected = Path("/data/sqlite") / SYNC_STATE_FILENAME
         assert config.sync_state_path == expected
 
     def test_正常系_境界値でtimeoutが受け入れられる(self) -> None:
@@ -716,59 +709,6 @@ class TestRatioRecord:
 
 
 # =============================================================================
-# AnalysisResult dataclass
-# =============================================================================
-
-
-class TestAnalysisResult:
-    """Test AnalysisResult frozen dataclass."""
-
-    def test_正常系_frozenである(self) -> None:
-        """AnalysisResult がフィールド変更不可であること。"""
-        result = AnalysisResult(
-            edinet_code="E00001",
-            health_score=93.0,
-            credit_score=93,
-            credit_rating="S",
-            benchmark_summary="強みが多い",
-            commentary="日本語の分析テキスト...",
-            fiscal_year=2025,
-        )
-        with pytest.raises(FrozenInstanceError):
-            result.health_score = 0.0
-
-    def test_正常系_全フィールドが正しく設定される(self) -> None:
-        """AnalysisResult の全フィールドが正しく設定されること。"""
-        result = AnalysisResult(
-            edinet_code="E00001",
-            health_score=93.0,
-            credit_score=93,
-            credit_rating="S",
-            benchmark_summary="強みが多い",
-            commentary="日本語の分析テキスト...",
-            fiscal_year=2025,
-        )
-        assert result.edinet_code == "E00001"
-        assert result.health_score == 93.0
-        assert result.credit_score == 93
-        assert result.credit_rating == "S"
-        assert result.benchmark_summary == "強みが多い"
-        assert result.commentary == "日本語の分析テキスト..."
-        assert result.fiscal_year == 2025
-
-    def test_正常系_edinet_codeのみで生成できる(self) -> None:
-        """AnalysisResult が edinet_code のみで生成でき、他はデフォルト None であること。"""
-        result = AnalysisResult(edinet_code="E00001")
-        assert result.edinet_code == "E00001"
-        assert result.health_score is None
-        assert result.credit_score is None
-        assert result.credit_rating is None
-        assert result.benchmark_summary is None
-        assert result.commentary is None
-        assert result.fiscal_year is None
-
-
-# =============================================================================
 # TextBlock dataclass
 # =============================================================================
 
@@ -780,6 +720,7 @@ class TestTextBlock:
         """TextBlock がフィールド変更不可であること。"""
         block = TextBlock(
             edinet_code="E00001",
+            fiscal_year=2025,
             section="事業の内容",
             text="事業概要テキスト",
         )
@@ -790,17 +731,31 @@ class TestTextBlock:
         """TextBlock の全フィールドが正しく設定されること。"""
         block = TextBlock(
             edinet_code="E00001",
+            fiscal_year=2025,
             section="事業の内容",
             text="事業概要テキスト",
         )
         assert block.edinet_code == "E00001"
+        assert block.fiscal_year == 2025
         assert block.section == "事業の内容"
         assert block.text == "事業概要テキスト"
 
-    def test_正常系_全フィールドがstr型(self) -> None:
-        """TextBlock の全フィールドが str であること。"""
+    def test_正常系_fiscal_yearがint型(self) -> None:
+        """TextBlock の fiscal_year が int 型であること。"""
         block = TextBlock(
             edinet_code="E00001",
+            fiscal_year=2025,
+            section="事業の内容",
+            text="テキスト",
+        )
+        assert isinstance(block.fiscal_year, int)
+        assert block.fiscal_year == 2025
+
+    def test_正常系_strフィールドがstr型(self) -> None:
+        """TextBlock の str フィールドが str であること。"""
+        block = TextBlock(
+            edinet_code="E00001",
+            fiscal_year=2025,
             section="経営者による分析",
             text="分析テキスト",
         )
@@ -812,54 +767,6 @@ class TestTextBlock:
             assert isinstance(getattr(block, field_name), str), (
                 f"Field {field_name} is not str"
             )
-
-
-# =============================================================================
-# RankingEntry dataclass
-# =============================================================================
-
-
-class TestRankingEntry:
-    """Test RankingEntry frozen dataclass."""
-
-    def test_正常系_frozenである(self) -> None:
-        """RankingEntry がフィールド変更不可であること。"""
-        entry = RankingEntry(
-            metric="roe",
-            rank=1,
-            edinet_code="E00001",
-            name="テスト株式会社",
-            value=25.5,
-        )
-        with pytest.raises(FrozenInstanceError):
-            entry.rank = 2
-
-    def test_正常系_全フィールドが正しく設定される(self) -> None:
-        """RankingEntry の全フィールドが正しく設定されること。"""
-        entry = RankingEntry(
-            metric="roe",
-            rank=1,
-            edinet_code="E00001",
-            name="テスト株式会社",
-            value=25.5,
-        )
-        assert entry.metric == "roe"
-        assert entry.rank == 1
-        assert entry.edinet_code == "E00001"
-        assert entry.name == "テスト株式会社"
-        assert entry.value == 25.5
-
-    def test_正常系_rankがint型でvalueがfloat型(self) -> None:
-        """RankingEntry の rank が int で value が float であること。"""
-        entry = RankingEntry(
-            metric="eps",
-            rank=100,
-            edinet_code="E00002",
-            name="別の会社",
-            value=1500.0,
-        )
-        assert isinstance(entry.rank, int)
-        assert isinstance(entry.value, float)
 
 
 # =============================================================================

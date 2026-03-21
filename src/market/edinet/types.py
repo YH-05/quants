@@ -69,9 +69,9 @@ class EdinetConfig:
         Minimum wait time between consecutive API requests in seconds
         (default: ``DEFAULT_POLITE_DELAY`` = 0.1).
     db_path : Path | None
-        Explicit DuckDB file path. When ``None``, the path is resolved
+        Explicit SQLite file path. When ``None``, the path is resolved
         via the ``EDINET_DB_PATH`` environment variable or
-        ``get_db_path("duckdb", "edinet")`` fallback.
+        ``get_db_path("sqlite", "edinet")`` fallback.
 
     Examples
     --------
@@ -113,26 +113,26 @@ class EdinetConfig:
 
     @property
     def resolved_db_path(self) -> Path:
-        """Resolve the DuckDB file path using priority order.
+        """Resolve the SQLite file path using priority order.
 
         Priority:
         1. Explicit ``db_path`` field
         2. ``EDINET_DB_PATH`` environment variable
-        3. ``get_db_path("duckdb", "edinet")`` fallback
+        3. ``get_db_path("sqlite", "edinet")`` fallback
 
         Returns
         -------
         Path
-            Resolved path to the DuckDB database file.
+            Resolved path to the SQLite database file.
 
         Examples
         --------
         >>> config = EdinetConfig(
         ...     api_key="k",
-        ...     db_path=Path("/data/edinet.duckdb"),
+        ...     db_path=Path("/data/edinet.db"),
         ... )
         >>> config.resolved_db_path
-        PosixPath('/data/edinet.duckdb')
+        PosixPath('/data/edinet.db')
         """
         if self.db_path is not None:
             return self.db_path
@@ -141,14 +141,14 @@ class EdinetConfig:
         if env_path:
             return Path(env_path)
 
-        return get_db_path("duckdb", DEFAULT_DB_NAME)
+        return get_db_path("sqlite", DEFAULT_DB_NAME)
 
     @property
     def sync_state_path(self) -> Path:
         """Get the sync state file path.
 
         The sync state file is stored in the same directory as the
-        DuckDB database file.
+        SQLite database file.
 
         Returns
         -------
@@ -159,10 +159,10 @@ class EdinetConfig:
         --------
         >>> config = EdinetConfig(
         ...     api_key="k",
-        ...     db_path=Path("/data/duckdb/edinet.duckdb"),
+        ...     db_path=Path("/data/sqlite/edinet.db"),
         ... )
         >>> config.sync_state_path
-        PosixPath('/data/duckdb/_sync_state.json')
+        PosixPath('/data/sqlite/_sync_state.json')
         """
         return self.resolved_db_path.parent / SYNC_STATE_FILENAME
 
@@ -528,59 +528,6 @@ class RatioRecord:
 
 
 @dataclass(frozen=True)
-class AnalysisResult:
-    """Financial health analysis result from the EDINET DB API.
-
-    Represents the latest AI-generated financial health analysis for
-    a company. Data is returned by the
-    ``GET /v1/companies/{edinet_code}/analysis`` endpoint.
-
-    The actual API response is a nested structure with ``ai_summary``
-    and ``history`` keys. The client flattens this into a single record
-    using the latest year from ``history`` and ``ai_summary.text``.
-
-    Parameters
-    ----------
-    edinet_code : str
-        EDINET code of the company.
-    health_score : float | None
-        Financial health score (0-100) from the latest history entry.
-    credit_score : int | None
-        Credit score from the latest history entry.
-    credit_rating : str | None
-        Credit rating (e.g. ``"S"``, ``"A"``) from the latest history entry.
-    benchmark_summary : str | None
-        Benchmark summary text from the latest history entry.
-    commentary : str | None
-        AI-generated commentary on financial health (``ai_summary.text``).
-    fiscal_year : int | None
-        Fiscal year of the latest history entry.
-
-    Examples
-    --------
-    >>> result = AnalysisResult(
-    ...     edinet_code="E00001",
-    ...     health_score=93.0,
-    ...     credit_score=93,
-    ...     credit_rating="S",
-    ...     benchmark_summary="強みが多い",
-    ...     commentary="日本語の分析テキスト...",
-    ...     fiscal_year=2025,
-    ... )
-    >>> result.health_score
-    93.0
-    """
-
-    edinet_code: str
-    health_score: float | None = None
-    credit_score: int | None = None
-    credit_rating: str | None = None
-    benchmark_summary: str | None = None
-    commentary: str | None = None
-    fiscal_year: int | None = None
-
-
-@dataclass(frozen=True)
 class TextBlock:
     """Securities report text excerpt from the EDINET DB API.
 
@@ -590,12 +537,14 @@ class TextBlock:
 
     The actual API response is a list of ``{section, text}`` dicts.
     Each item becomes one ``TextBlock`` instance with the
-    ``edinet_code`` injected by the client.
+    ``edinet_code`` and ``fiscal_year`` injected by the client.
 
     Parameters
     ----------
     edinet_code : str
         EDINET code of the company.
+    fiscal_year : int
+        Fiscal year as integer (e.g. ``2025``).
     section : str
         Section name (e.g. ``"事業の内容"``, ``"経営者による分析"``).
     text : str
@@ -605,6 +554,7 @@ class TextBlock:
     --------
     >>> block = TextBlock(
     ...     edinet_code="E00001",
+    ...     fiscal_year=2025,
     ...     section="事業の内容",
     ...     text="事業概要テキスト",
     ... )
@@ -613,64 +563,9 @@ class TextBlock:
     """
 
     edinet_code: str
+    fiscal_year: int
     section: str
     text: str
-
-
-@dataclass(frozen=True)
-class RankingEntry:
-    """Metric-based company ranking entry from the EDINET DB API.
-
-    Represents a single ranking entry for a specific financial metric.
-    Data is returned by the ``GET /v1/rankings/{metric}`` endpoint.
-
-    The API response does not include ``metric`` (implied by URL path),
-    so it is injected by ``EdinetClient.get_ranking()``.
-
-    Parameters
-    ----------
-    metric : str
-        Ranking metric name (e.g. ``"roe"``, ``"eps"``).
-        Injected by client (not in API response).
-    rank : int
-        Rank position (1-based).
-    edinet_code : str
-        EDINET code of the company.
-    name : str
-        Company name in Japanese.
-    value : float
-        Metric value for this company.
-    sec_code : str | None
-        Securities code.
-    industry : str | None
-        Industry name.
-    fiscal_year : int | None
-        Fiscal year of the metric value.
-    unit : str | None
-        Unit of the metric value (e.g. ``"%"``, ``"円"``).
-
-    Examples
-    --------
-    >>> entry = RankingEntry(
-    ...     metric="roe",
-    ...     rank=1,
-    ...     edinet_code="E00001",
-    ...     name="テスト株式会社",
-    ...     value=25.5,
-    ... )
-    >>> entry.rank
-    1
-    """
-
-    metric: str
-    rank: int
-    edinet_code: str
-    name: str
-    value: float
-    sec_code: str | None = None
-    industry: str | None = None
-    fiscal_year: int | None = None
-    unit: str | None = None
 
 
 @dataclass(frozen=True)
@@ -748,12 +643,10 @@ class SyncProgress:
 # =============================================================================
 
 __all__ = [
-    "AnalysisResult",
     "Company",
     "EdinetConfig",
     "FinancialRecord",
     "Industry",
-    "RankingEntry",
     "RatioRecord",
     "RetryConfig",
     "SyncProgress",

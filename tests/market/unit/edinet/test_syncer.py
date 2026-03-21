@@ -1,7 +1,7 @@
 """Tests for the EDINET sync orchestrator (EdinetSyncer).
 
 Tests cover:
-- 6-phase execution order
+- 5-phase execution order
 - Resume from checkpoint
 - Graceful rate-limit stop
 - 404 error skip
@@ -23,6 +23,7 @@ import json
 from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, call, patch
 
+import pandas as pd
 import pytest
 
 from market.edinet.errors import (
@@ -31,24 +32,21 @@ from market.edinet.errors import (
 )
 from market.edinet.syncer import (
     CHECKPOINT_INTERVAL,
-    PHASE_ANALYSIS_TEXT,
     PHASE_COMPANIES,
     PHASE_COMPANY_DETAILS,
     PHASE_COMPLETE,
     PHASE_FINANCIALS_RATIOS,
     PHASE_INDUSTRIES,
     PHASE_ORDER,
-    PHASE_RANKINGS,
+    PHASE_TEXT_BLOCKS,
     EdinetSyncer,
     SyncResult,
 )
 from market.edinet.types import (
-    AnalysisResult,
     Company,
     EdinetConfig,
     FinancialRecord,
     Industry,
-    RankingEntry,
     RatioRecord,
     TextBlock,
 )
@@ -67,7 +65,7 @@ def syncer_config(tmp_path: Path) -> EdinetConfig:
     """テスト用の EdinetConfig を作成。"""
     return EdinetConfig(
         api_key="test_key",
-        db_path=tmp_path / "edinet.duckdb",
+        db_path=tmp_path / "edinet.db",
         polite_delay=0.0,
     )
 
@@ -102,15 +100,6 @@ def mock_client() -> MagicMock:
         "name": "情報・通信業",
         "company_count": 500,
     }
-    client.get_ranking.return_value = [
-        RankingEntry(
-            metric="roe",
-            rank=1,
-            edinet_code="E00001",
-            name="テスト株式会社A",
-            value=25.5,
-        ),
-    ]
     client.get_company.return_value = Company(
         edinet_code="E00001",
         sec_code="10000",
@@ -176,23 +165,16 @@ def mock_client() -> MagicMock:
             split_adjustment_factor=1.0,
         ),
     ]
-    client.get_analysis.return_value = AnalysisResult(
-        edinet_code="E00001",
-        health_score=93.0,
-        credit_score=93,
-        credit_rating="S",
-        benchmark_summary="強みが多い",
-        commentary="The company is financially healthy.",
-        fiscal_year=2025,
-    )
     client.get_text_blocks.return_value = [
         TextBlock(
             edinet_code="E00001",
+            fiscal_year=2025,
             section="事業の内容",
             text="事業概要テキスト",
         ),
         TextBlock(
             edinet_code="E00001",
+            fiscal_year=2025,
             section="経営者による分析",
             text="経営分析テキスト",
         ),
@@ -209,12 +191,14 @@ def mock_storage() -> MagicMock:
         "companies": 2,
         "financials": 0,
         "ratios": 0,
-        "analyses": 0,
         "text_blocks": 0,
-        "rankings": 0,
         "industries": 0,
         "industry_details": 0,
     }
+    # get_financials returns a DataFrame with fiscal_year for text_blocks sync
+    storage.get_financials.return_value = pd.DataFrame(
+        {"edinet_code": ["E00001"], "fiscal_year": [2025]}
+    )
     return storage
 
 
@@ -240,17 +224,16 @@ def syncer(
 class TestPhaseOrder:
     """フェーズ実行順序のテスト。"""
 
-    def test_正常系_6フェーズが正しい順序で定義されていること(self) -> None:
+    def test_正常系_5フェーズが正しい順序で定義されていること(self) -> None:
         assert PHASE_ORDER == [
             PHASE_COMPANIES,
             PHASE_INDUSTRIES,
-            PHASE_RANKINGS,
             PHASE_COMPANY_DETAILS,
             PHASE_FINANCIALS_RATIOS,
-            PHASE_ANALYSIS_TEXT,
+            PHASE_TEXT_BLOCKS,
         ]
 
-    def test_正常系_6フェーズのrun_initialが正しい順序で実行されること(
+    def test_正常系_5フェーズのrun_initialが正しい順序で実行されること(
         self,
         syncer: EdinetSyncer,
         mock_client: MagicMock,
@@ -258,17 +241,16 @@ class TestPhaseOrder:
     ) -> None:
         results = syncer.run_initial()
 
-        # All 6 phases should succeed
-        assert len(results) == 6
+        # All 5 phases should succeed
+        assert len(results) == 5
         assert all(r.success for r in results)
 
         # Verify phase order
         assert results[0].phase == PHASE_COMPANIES
         assert results[1].phase == PHASE_INDUSTRIES
-        assert results[2].phase == PHASE_RANKINGS
-        assert results[3].phase == PHASE_COMPANY_DETAILS
-        assert results[4].phase == PHASE_FINANCIALS_RATIOS
-        assert results[5].phase == PHASE_ANALYSIS_TEXT
+        assert results[2].phase == PHASE_COMPANY_DETAILS
+        assert results[3].phase == PHASE_FINANCIALS_RATIOS
+        assert results[4].phase == PHASE_TEXT_BLOCKS
 
     def test_正常系_全フェーズ完了後にcompleteが設定されること(
         self,
@@ -329,34 +311,12 @@ class TestPhaseIndustries:
 
 
 # =============================================================================
-# Phase 3: Rankings
-# =============================================================================
-
-
-class TestPhaseRankings:
-    """フェーズ3（ランキング）のテスト。"""
-
-    def test_正常系_18メトリクス全てのランキングをフェッチすること(
-        self,
-        syncer: EdinetSyncer,
-        mock_client: MagicMock,
-        mock_storage: MagicMock,
-    ) -> None:
-        results = syncer.run_initial()
-
-        assert mock_client.get_ranking.call_count == 20
-        mock_storage.upsert_rankings.assert_called()
-        assert results[2].phase == PHASE_RANKINGS
-        assert results[2].success is True
-
-
-# =============================================================================
-# Phase 4: Company Details
+# Phase 3: Company Details
 # =============================================================================
 
 
 class TestPhaseCompanyDetails:
-    """フェーズ4（企業詳細）のテスト。"""
+    """フェーズ3（企業詳細）のテスト。"""
 
     def test_正常系_全企業の詳細をフェッチすること(
         self,
@@ -368,18 +328,18 @@ class TestPhaseCompanyDetails:
 
         # Should be called for each company code
         assert mock_client.get_company.call_count == 2
-        assert results[3].phase == PHASE_COMPANY_DETAILS
-        assert results[3].success is True
-        assert results[3].companies_processed == 2
+        assert results[2].phase == PHASE_COMPANY_DETAILS
+        assert results[2].success is True
+        assert results[2].companies_processed == 2
 
 
 # =============================================================================
-# Phase 5: Financials + Ratios
+# Phase 4: Financials + Ratios
 # =============================================================================
 
 
 class TestPhaseFinancialsRatios:
-    """フェーズ5（財務+比率）のテスト。"""
+    """フェーズ4（財務+比率）のテスト。"""
 
     def test_正常系_全企業の財務と比率をフェッチすること(
         self,
@@ -393,19 +353,19 @@ class TestPhaseFinancialsRatios:
         assert mock_client.get_ratios.call_count == 2
         mock_storage.upsert_financials.assert_called()
         mock_storage.upsert_ratios.assert_called()
-        assert results[4].phase == PHASE_FINANCIALS_RATIOS
-        assert results[4].success is True
+        assert results[3].phase == PHASE_FINANCIALS_RATIOS
+        assert results[3].success is True
 
 
 # =============================================================================
-# Phase 6: Analysis + Text Blocks
+# Phase 5: Text Blocks
 # =============================================================================
 
 
-class TestPhaseAnalysisText:
-    """フェーズ6（分析+テキストブロック）のテスト。"""
+class TestPhaseTextBlocks:
+    """フェーズ5（テキストブロック）のテスト。"""
 
-    def test_正常系_全企業の分析とテキストブロックをフェッチすること(
+    def test_正常系_全企業のテキストブロックをフェッチすること(
         self,
         syncer: EdinetSyncer,
         mock_client: MagicMock,
@@ -413,12 +373,10 @@ class TestPhaseAnalysisText:
     ) -> None:
         results = syncer.run_initial()
 
-        assert mock_client.get_analysis.call_count == 2
         assert mock_client.get_text_blocks.call_count == 2
-        mock_storage.upsert_analyses.assert_called()
         mock_storage.upsert_text_blocks.assert_called()
-        assert results[5].phase == PHASE_ANALYSIS_TEXT
-        assert results[5].success is True
+        assert results[4].phase == PHASE_TEXT_BLOCKS
+        assert results[4].success is True
 
 
 # =============================================================================
@@ -457,11 +415,11 @@ class TestResume:
 
         results = syncer.resume()
 
-        # Should start from Phase 4 (index 3)
-        assert len(results) == 3  # Phase 4, 5, 6
+        # Should start from Phase 3 (index 2)
+        assert len(results) == 3  # Phase 3, 4, 5
         assert results[0].phase == PHASE_COMPANY_DETAILS
         assert results[1].phase == PHASE_FINANCIALS_RATIOS
-        assert results[2].phase == PHASE_ANALYSIS_TEXT
+        assert results[2].phase == PHASE_TEXT_BLOCKS
 
         # E00001 should be skipped in Phase 4 (already completed)
         # Only E00002 should be processed
@@ -484,8 +442,8 @@ class TestResume:
         )
 
         results = syncer.resume()
-        # Should start from beginning (6 phases)
-        assert len(results) == 6
+        # Should start from beginning (5 phases)
+        assert len(results) == 5
 
     def test_正常系_空の状態ファイルでデフォルトから開始すること(
         self,
@@ -504,7 +462,7 @@ class TestResume:
         )
 
         results = syncer.resume()
-        assert len(results) == 6
+        assert len(results) == 5
 
 
 # =============================================================================
@@ -579,10 +537,10 @@ class TestCheckpoint:
         state_path = syncer_config.sync_state_path
         assert state_path.exists()
 
-        # Verify Phase 4 (company_details) processed all 150
-        # Phase 4 is at index 3
-        assert results[3].phase == PHASE_COMPANY_DETAILS
-        assert results[3].companies_processed == 150
+        # Verify Phase 3 (company_details) processed all 150
+        # Phase 3 is at index 2
+        assert results[2].phase == PHASE_COMPANY_DETAILS
+        assert results[2].companies_processed == 150
 
     def test_正常系_チェックポイントインターバルが100であること(self) -> None:
         assert CHECKPOINT_INTERVAL == 100
@@ -648,12 +606,12 @@ class TestRateLimitGracefulStop:
 
         results = syncer.run_initial()
 
-        # Phase 1-3 succeed, Phase 4 stops
-        phase4_result = results[3]
-        assert phase4_result.phase == PHASE_COMPANY_DETAILS
-        assert phase4_result.success is False
-        assert phase4_result.stopped_reason == "rate_limit"
-        assert phase4_result.companies_processed == 1
+        # Phase 1-2 succeed, Phase 3 stops
+        phase3_result = results[2]
+        assert phase3_result.phase == PHASE_COMPANY_DETAILS
+        assert phase3_result.success is False
+        assert phase3_result.stopped_reason == "rate_limit"
+        assert phase3_result.companies_processed == 1
 
         # Verify checkpoint was saved
         state_path = syncer_config.sync_state_path
@@ -685,7 +643,7 @@ class TestRateLimitGracefulStop:
 
         results = syncer.resume()
 
-        # Phase 4 should only process E00002 (E00001 already done)
+        # Phase 3 should only process E00002 (E00001 already done)
         assert results[0].phase == PHASE_COMPANY_DETAILS
         assert results[0].success is True
         # get_company called once for E00002
@@ -725,13 +683,13 @@ class TestErrorSkip:
 
         results = syncer.run_initial()
 
-        # Phase 4 should complete despite 404 error
-        phase4_result = results[3]
-        assert phase4_result.phase == PHASE_COMPANY_DETAILS
-        assert phase4_result.success is True
-        assert phase4_result.companies_processed == 2
-        assert len(phase4_result.errors) == 1
-        assert "404: E00001" in phase4_result.errors[0]
+        # Phase 3 should complete despite 404 error
+        phase3_result = results[2]
+        assert phase3_result.phase == PHASE_COMPANY_DETAILS
+        assert phase3_result.success is True
+        assert phase3_result.companies_processed == 2
+        assert len(phase3_result.errors) == 1
+        assert "404: E00001" in phase3_result.errors[0]
 
     def test_正常系_フェーズ2で業種404をスキップすること(
         self,
@@ -777,8 +735,7 @@ class TestSyncCompany:
         mock_client.get_company.assert_called_once_with("E00001")
         mock_client.get_financials.assert_called_once_with("E00001")
         mock_client.get_ratios.assert_called_once_with("E00001")
-        mock_client.get_analysis.assert_called_once_with("E00001")
-        mock_client.get_text_blocks.assert_called_once_with("E00001")
+        mock_client.get_text_blocks.assert_called_once_with("E00001", year=2025)
 
     def test_異常系_単一企業同期でレート制限が発生すること(
         self,
@@ -824,7 +781,7 @@ class TestSyncCompany:
 class TestRunDaily:
     """デイリー増分同期のテスト。"""
 
-    def test_正常系_日次同期が企業とfinancials_ratiosを実行すること(
+    def test_正常系_日次同期が企業とfinancials_ratiosとtext_blocksを実行すること(
         self,
         syncer: EdinetSyncer,
         mock_client: MagicMock,
@@ -832,12 +789,14 @@ class TestRunDaily:
     ) -> None:
         results = syncer.run_daily()
 
-        # Should run Phase 1 (companies) and Phase 5 (financials_ratios)
-        assert len(results) == 2
+        # Should run companies, financials_ratios, and text_blocks
+        assert len(results) == 3
         assert results[0].phase == PHASE_COMPANIES
         assert results[0].success is True
         assert results[1].phase == PHASE_FINANCIALS_RATIOS
         assert results[1].success is True
+        assert results[2].phase == PHASE_TEXT_BLOCKS
+        assert results[2].success is True
 
         # Verify companies were fetched
         mock_client.list_companies.assert_called()
@@ -845,6 +804,9 @@ class TestRunDaily:
         # Verify financials + ratios fetched for each company
         assert mock_client.get_financials.call_count == 2
         assert mock_client.get_ratios.call_count == 2
+
+        # Verify text blocks fetched for each company
+        assert mock_client.get_text_blocks.call_count == 2
 
 
 # =============================================================================

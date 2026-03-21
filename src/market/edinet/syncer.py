@@ -2,16 +2,16 @@
 
 This module provides the ``EdinetSyncer`` class that orchestrates the
 full data synchronization pipeline from the EDINET DB API to a local
-DuckDB database. It manages:
+SQLite database. It manages:
 
-- **6-phase initial sync**: companies -> industries -> rankings ->
-  company details -> financials+ratios -> analysis+text-blocks
+- **5-phase initial sync**: companies -> industries ->
+  company details -> financials+ratios -> text-blocks
 - **Daily incremental sync**: updates changed data only
 - **Resume support**: checkpoint-based recovery via ``_sync_state.json``
 - **Graceful stop on rate limit**: saves progress and stops cleanly
 - **Error recovery**: 404 skip, 5xx retry (via client), checkpoint save
 
-The sync state is persisted as a JSON file alongside the DuckDB database
+The sync state is persisted as a JSON file alongside the SQLite database
 file, allowing interrupted syncs to be resumed from the last checkpoint.
 
 Architecture
@@ -20,7 +20,7 @@ Architecture
 
     EdinetSyncer
       -> EdinetClient (HTTP + retry + rate limiting)
-      -> EdinetStorage (DuckDB upsert)
+      -> EdinetStorage (SQLite upsert)
       -> _sync_state.json (checkpoint persistence)
 
 Examples
@@ -33,7 +33,7 @@ Examples
 See Also
 --------
 market.edinet.client : HTTP client with retry and rate limiting.
-market.edinet.storage : DuckDB storage layer.
+market.edinet.storage : SQLite storage layer.
 market.edinet.types : SyncProgress and configuration types.
 market.edinet.constants : Phase names, table names, ranking metrics.
 """
@@ -47,7 +47,7 @@ from typing import TYPE_CHECKING, Final
 import pandas as pd
 
 from market.edinet.client import EdinetClient
-from market.edinet.constants import RANKING_METRICS, RATE_LIMIT_FILENAME
+from market.edinet.constants import RATE_LIMIT_FILENAME
 from market.edinet.errors import (
     EdinetAPIError,
     EdinetRateLimitError,
@@ -70,19 +70,17 @@ logger = get_logger(__name__)
 
 PHASE_COMPANIES: Final[str] = "companies"
 PHASE_INDUSTRIES: Final[str] = "industries"
-PHASE_RANKINGS: Final[str] = "rankings"
 PHASE_COMPANY_DETAILS: Final[str] = "company_details"
 PHASE_FINANCIALS_RATIOS: Final[str] = "financials_ratios"
-PHASE_ANALYSIS_TEXT: Final[str] = "analysis_text"
+PHASE_TEXT_BLOCKS: Final[str] = "text_blocks"
 PHASE_COMPLETE: Final[str] = "complete"
 
 PHASE_ORDER: Final[list[str]] = [
     PHASE_COMPANIES,
     PHASE_INDUSTRIES,
-    PHASE_RANKINGS,
     PHASE_COMPANY_DETAILS,
     PHASE_FINANCIALS_RATIOS,
-    PHASE_ANALYSIS_TEXT,
+    PHASE_TEXT_BLOCKS,
 ]
 
 # Checkpoint interval: save progress every N companies
@@ -123,7 +121,7 @@ class EdinetSyncer:
     """Orchestrate 6-phase EDINET data sync with resume support.
 
     Manages the full lifecycle of data synchronization from the EDINET DB
-    API to a local DuckDB database. Supports checkpoint-based resume,
+    API to a local SQLite database. Supports checkpoint-based resume,
     graceful rate-limit stops, and per-company error recovery.
 
     Parameters
@@ -139,7 +137,7 @@ class EdinetSyncer:
 
     Examples
     --------
-    >>> config = EdinetConfig(api_key="key", db_path=Path("/tmp/e.duckdb"))
+    >>> config = EdinetConfig(api_key="key", db_path=Path("/tmp/e.db"))
     >>> syncer = EdinetSyncer(config=config)
     >>> syncer.run_initial()
     """
@@ -247,8 +245,8 @@ class EdinetSyncer:
     def run_daily(self) -> list[SyncResult]:
         """Execute daily incremental sync.
 
-        Updates companies list, then syncs financials and ratios for
-        all companies.
+        Updates companies list, then syncs financials+ratios and
+        text blocks for all companies.
 
         Returns
         -------
@@ -275,7 +273,7 @@ class EdinetSyncer:
         if not result.success:
             return results
 
-        # Phase 5: Update financials + ratios
+        # Phase 2: Update financials + ratios
         self._state = SyncProgress(
             current_phase=PHASE_FINANCIALS_RATIOS,
             completed_codes=(),
@@ -284,6 +282,19 @@ class EdinetSyncer:
         )
         self._save_state()
         result = self._run_phase(PHASE_FINANCIALS_RATIOS)
+        results.append(result)
+        if not result.success:
+            return results
+
+        # Phase 3: Update text blocks
+        self._state = SyncProgress(
+            current_phase=PHASE_TEXT_BLOCKS,
+            completed_codes=(),
+            today_api_calls=self._state.today_api_calls,
+            errors=self._state.errors,
+        )
+        self._save_state()
+        result = self._run_phase(PHASE_TEXT_BLOCKS)
         results.append(result)
 
         logger.info(
@@ -353,7 +364,7 @@ class EdinetSyncer:
         try:
             self._sync_company_detail(code)
             self._sync_company_financials_ratios(code)
-            self._sync_company_analysis_text(code)
+            self._sync_company_text_blocks(code)
             processed = 1
         except EdinetRateLimitError:
             logger.warning("Rate limit reached during single company sync", code=code)
@@ -403,10 +414,9 @@ class EdinetSyncer:
         phase_handlers: dict[str, Callable[[], SyncResult]] = {
             PHASE_COMPANIES: self._phase_companies,
             PHASE_INDUSTRIES: self._phase_industries,
-            PHASE_RANKINGS: self._phase_rankings,
             PHASE_COMPANY_DETAILS: self._phase_company_details,
             PHASE_FINANCIALS_RATIOS: self._phase_financials_ratios,
-            PHASE_ANALYSIS_TEXT: self._phase_analysis_text,
+            PHASE_TEXT_BLOCKS: self._phase_text_blocks,
         }
 
         handler = phase_handlers.get(phase)
@@ -534,60 +544,6 @@ class EdinetSyncer:
                 errors=tuple(errors),
             )
 
-    def _phase_rankings(self) -> SyncResult:
-        """Phase 3: Fetch and store rankings for all 18 metrics (~18 API calls).
-
-        Returns
-        -------
-        SyncResult
-            Phase result.
-        """
-        logger.info("Phase 3: Fetching rankings")
-        errors: list[str] = []
-        try:
-            for metric in RANKING_METRICS:
-                try:
-                    entries = self._client.get_ranking(metric)
-                    self._storage.upsert_rankings(entries)
-                    self._increment_api_calls(1)
-                except EdinetRateLimitError:
-                    self._save_state()
-                    return SyncResult(
-                        phase=PHASE_RANKINGS,
-                        success=False,
-                        companies_processed=0,
-                        errors=tuple(errors),
-                        stopped_reason="rate_limit",
-                    )
-                except EdinetAPIError as e:
-                    logger.warning(
-                        "Ranking fetch failed",
-                        metric=metric,
-                        error=str(e),
-                    )
-                    errors.append(f"{metric}: {e.message}")
-
-            logger.info(
-                "Phase 3 completed",
-                metrics_count=len(RANKING_METRICS),
-            )
-            return SyncResult(
-                phase=PHASE_RANKINGS,
-                success=True,
-                companies_processed=0,
-                errors=tuple(errors),
-            )
-        except EdinetRateLimitError:
-            logger.warning("Rate limit reached in Phase 3")
-            self._save_state()
-            return SyncResult(
-                phase=PHASE_RANKINGS,
-                success=False,
-                companies_processed=0,
-                errors=tuple(errors),
-                stopped_reason="rate_limit",
-            )
-
     def _phase_company_details(self) -> SyncResult:
         """Phase 4: Fetch company details (~3,848 API calls).
 
@@ -616,18 +572,18 @@ class EdinetSyncer:
             process_fn=self._sync_company_financials_ratios,
         )
 
-    def _phase_analysis_text(self) -> SyncResult:
-        """Phase 6: Fetch analysis and text blocks (~7,696 API calls).
+    def _phase_text_blocks(self) -> SyncResult:
+        """Phase 5: Fetch text blocks (~3,838 API calls).
 
         Returns
         -------
         SyncResult
             Phase result.
         """
-        logger.info("Phase 6: Fetching analysis and text blocks")
+        logger.info("Phase 5: Fetching text blocks")
         return self._process_companies(
-            phase=PHASE_ANALYSIS_TEXT,
-            process_fn=self._sync_company_analysis_text,
+            phase=PHASE_TEXT_BLOCKS,
+            process_fn=self._sync_company_text_blocks,
         )
 
     # =========================================================================
@@ -662,19 +618,27 @@ class EdinetSyncer:
         self._storage.upsert_ratios(ratios)
         self._increment_api_calls(1)
 
-    def _sync_company_analysis_text(self, code: str) -> None:
-        """Fetch and store analysis + text blocks for a single code.
+    def _sync_company_text_blocks(self, code: str) -> None:
+        """Fetch and store text blocks for a single code.
+
+        Determines the latest fiscal_year from the financials table
+        for the given company. If no financials exist, text block
+        sync is skipped with a warning.
 
         Parameters
         ----------
         code : str
             EDINET code.
         """
-        analysis = self._client.get_analysis(code)
-        self._storage.upsert_analyses([analysis])
-        self._increment_api_calls(1)
-
-        text_blocks = self._client.get_text_blocks(code)
+        financials = self._storage.get_financials(code)
+        if financials is None or financials.empty:
+            logger.warning(
+                "No financials found, skipping text blocks",
+                code=code,
+            )
+            return
+        latest_year = int(financials["fiscal_year"].max())
+        text_blocks = self._client.get_text_blocks(code, year=latest_year)
         self._storage.upsert_text_blocks(text_blocks)
         self._increment_api_calls(1)
 
@@ -918,14 +882,13 @@ class EdinetSyncer:
 
 __all__ = [
     "CHECKPOINT_INTERVAL",
-    "PHASE_ANALYSIS_TEXT",
     "PHASE_COMPANIES",
     "PHASE_COMPANY_DETAILS",
     "PHASE_COMPLETE",
     "PHASE_FINANCIALS_RATIOS",
     "PHASE_INDUSTRIES",
     "PHASE_ORDER",
-    "PHASE_RANKINGS",
+    "PHASE_TEXT_BLOCKS",
     "EdinetSyncer",
     "SyncResult",
 ]

@@ -1,14 +1,14 @@
-"""Unit tests for EdinetStorage DuckDB storage layer.
+"""Unit tests for EdinetStorage SQLite storage layer.
 
 Tests cover:
-- ensure_tables(): Creates 8 tables with correct schemas
-- upsert_companies(), upsert_financials(), etc.: Correct key_columns for store_df
+- ensure_tables(): Creates 6 tables with correct schemas
+- upsert_companies(), upsert_financials(), etc.: Correct INSERT OR REPLACE
 - get_company(), get_financials(), get_all_company_codes(): Query methods
 - get_stats(): Table row counts
 - query(): Arbitrary SQL execution
-- _COLUMN_RENAMES: Column rename mapping accuracy
-- _migrate_schema() / _migrate_table(): Schema migration
 - DDL/dataclass field consistency
+- _get_column_info(): PRAGMA table_info based inspection
+- _migrate_add_missing_columns(): Forward-only schema migration
 """
 
 from __future__ import annotations
@@ -17,28 +17,22 @@ import dataclasses
 from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
-import duckdb
-import numpy as np
 import pandas as pd
 import pytest
 
 from market.edinet.constants import (
-    TABLE_ANALYSES,
     TABLE_COMPANIES,
     TABLE_FINANCIALS,
     TABLE_INDUSTRIES,
     TABLE_INDUSTRY_DETAILS,
-    TABLE_RANKINGS,
     TABLE_RATIOS,
     TABLE_TEXT_BLOCKS,
 )
-from market.edinet.storage import _COLUMN_RENAMES, _TABLE_DDL
+from market.edinet.storage import _TABLE_DDL
 from market.edinet.types import (
-    AnalysisResult,
     Company,
     FinancialRecord,
     Industry,
-    RankingEntry,
     RatioRecord,
     TextBlock,
 )
@@ -57,12 +51,12 @@ if TYPE_CHECKING:
 class TestEdinetStorageInit:
     """Tests for EdinetStorage initialization."""
 
-    def test_正常系_DuckDBClientが設定のDB_pathで初期化される(
+    def test_正常系_SQLiteClientが設定のDB_pathで初期化される(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """EdinetStorageがEdinetConfigのresolved_db_pathでDuckDBClientを初期化すること."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """EdinetStorageがEdinetConfigのresolved_db_pathでSQLiteClientを初期化すること."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             from market.edinet.storage import EdinetStorage
 
             storage = EdinetStorage(config=sample_config)
@@ -76,7 +70,7 @@ class TestEdinetStorageInit:
     ) -> None:
         """EdinetStorage初期化時にensure_tablesが自動で呼ばれること."""
         with (
-            patch("market.edinet.storage.DuckDBClient"),
+            patch("market.edinet.storage.SQLiteClient"),
             patch.object(
                 __import__(
                     "market.edinet.storage", fromlist=["EdinetStorage"]
@@ -99,12 +93,12 @@ class TestEdinetStorageInit:
 class TestEnsureTables:
     """Tests for ensure_tables method."""
 
-    def test_正常系_8テーブルのDDLが実行される(
+    def test_正常系_6テーブルのDDLが実行される(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """ensure_tablesが8テーブル分のCREATE TABLE IF NOT EXISTSを実行すること."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """ensure_tablesが6テーブル分のCREATE TABLE IF NOT EXISTSを実行すること."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -114,18 +108,16 @@ class TestEnsureTables:
 
             # ensure_tables is called in __init__
             execute_calls = mock_client.execute.call_args_list
-            # Should have at least 8 calls for 8 tables
-            assert len(execute_calls) >= 8
+            # Should have at least 6 calls for 6 tables
+            assert len(execute_calls) >= 6
 
-            # Verify all 8 table names appear in the DDL statements
-            all_sql = " ".join(c.args[0] for c in execute_calls)
+            # Verify all 6 table names appear in the DDL statements
+            all_sql = " ".join(str(c) for c in execute_calls)
             expected_tables = [
                 TABLE_COMPANIES,
                 TABLE_FINANCIALS,
                 TABLE_RATIOS,
-                TABLE_ANALYSES,
                 TABLE_TEXT_BLOCKS,
-                TABLE_RANKINGS,
                 TABLE_INDUSTRIES,
                 TABLE_INDUSTRY_DETAILS,
             ]
@@ -137,7 +129,7 @@ class TestEnsureTables:
         sample_config: EdinetConfig,
     ) -> None:
         """ensure_tablesがCREATE TABLE IF NOT EXISTS構文を使用すること."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -146,9 +138,13 @@ class TestEnsureTables:
             EdinetStorage(config=sample_config)
 
             execute_calls = mock_client.execute.call_args_list
-            for c in execute_calls:
-                sql = c.args[0]
-                assert "CREATE TABLE IF NOT EXISTS" in sql
+            # At least the first 6 calls should be CREATE TABLE
+            create_calls = [
+                c
+                for c in execute_calls
+                if "CREATE TABLE IF NOT EXISTS" in str(c.args[0])
+            ]
+            assert len(create_calls) >= 6
 
 
 # ============================================================================
@@ -159,13 +155,13 @@ class TestEnsureTables:
 class TestUpsertCompanies:
     """Tests for upsert_companies method."""
 
-    def test_正常系_store_dfが正しいkey_columnsで呼ばれる(
+    def test_正常系_execute_manyがINSERT_OR_REPLACEで呼ばれる(
         self,
         sample_config: EdinetConfig,
         sample_company: Company,
     ) -> None:
-        """upsert_companiesがedinet_codeをkey_columnsとしてstore_dfを呼ぶこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """upsert_companiesがINSERT OR REPLACEでexecute_manyを呼ぶこと."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -174,20 +170,19 @@ class TestUpsertCompanies:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_companies([sample_company])
 
-            mock_client.store_df.assert_called_once()
-            call_kwargs = mock_client.store_df.call_args
-            assert call_kwargs.kwargs.get("key_columns") == ["edinet_code"] or (
-                len(call_kwargs.args) >= 2
-                and call_kwargs.kwargs.get("key_columns") == ["edinet_code"]
-            )
+            mock_client.execute_many.assert_called_once()
+            call_args = mock_client.execute_many.call_args
+            sql = call_args.args[0]
+            assert "INSERT OR REPLACE" in sql
+            assert TABLE_COMPANIES in sql
 
-    def test_正常系_DataFrameに全フィールドが含まれる(
+    def test_正常系_パラメータに全フィールドが含まれる(
         self,
         sample_config: EdinetConfig,
         sample_company: Company,
     ) -> None:
-        """upsert_companiesが全フィールドを含むDataFrameをstore_dfに渡すこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """upsert_companiesが全フィールド分のパラメータを渡すこと."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -196,45 +191,19 @@ class TestUpsertCompanies:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_companies([sample_company])
 
-            df_arg = mock_client.store_df.call_args.args[0]
-            assert isinstance(df_arg, pd.DataFrame)
-            expected_columns = {
-                "edinet_code",
-                "sec_code",
-                "name",
-                "industry",
-                "name_en",
-                "name_ja",
-                "accounting_standard",
-                "credit_rating",
-                "credit_score",
-            }
-            assert set(df_arg.columns) == expected_columns
+            call_args = mock_client.execute_many.call_args
+            params_list = call_args.args[1]
+            assert len(params_list) == 1
+            # Tuple should have same number of elements as Company fields
+            expected_field_count = len(dataclasses.fields(Company))
+            assert len(params_list[0]) == expected_field_count
 
-    def test_正常系_テーブル名がTABLE_COMPANIESである(
-        self,
-        sample_config: EdinetConfig,
-        sample_company: Company,
-    ) -> None:
-        """upsert_companiesがTABLE_COMPANIESテーブルに書き込むこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            storage.upsert_companies([sample_company])
-
-            call_args = mock_client.store_df.call_args
-            assert call_args.args[1] == TABLE_COMPANIES
-
-    def test_エッジケース_空リストでstore_dfが呼ばれない(
+    def test_エッジケース_空リストでexecute_manyが呼ばれない(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """upsert_companiesに空リストを渡すとstore_dfが呼ばれないこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """upsert_companiesに空リストを渡すとexecute_manyが呼ばれないこと."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -243,19 +212,19 @@ class TestUpsertCompanies:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_companies([])
 
-            mock_client.store_df.assert_not_called()
+            mock_client.execute_many.assert_not_called()
 
 
 class TestUpsertFinancials:
     """Tests for upsert_financials method."""
 
-    def test_正常系_store_dfが複合key_columnsで呼ばれる(
+    def test_正常系_execute_manyがINSERT_OR_REPLACEで呼ばれる(
         self,
         sample_config: EdinetConfig,
         sample_financial_record: FinancialRecord,
     ) -> None:
-        """upsert_financialsがedinet_code, fiscal_yearをkey_columnsとして呼ぶこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """upsert_financialsがINSERT OR REPLACEでexecute_manyを呼ぶこと."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -264,41 +233,22 @@ class TestUpsertFinancials:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_financials([sample_financial_record])
 
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == [
-                "edinet_code",
-                "fiscal_year",
-            ]
-
-    def test_正常系_テーブル名がTABLE_FINANCIALSである(
-        self,
-        sample_config: EdinetConfig,
-        sample_financial_record: FinancialRecord,
-    ) -> None:
-        """upsert_financialsがTABLE_FINANCIALSテーブルに書き込むこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            storage.upsert_financials([sample_financial_record])
-
-            call_args = mock_client.store_df.call_args
-            assert call_args.args[1] == TABLE_FINANCIALS
+            call_args = mock_client.execute_many.call_args
+            sql = call_args.args[0]
+            assert "INSERT OR REPLACE" in sql
+            assert TABLE_FINANCIALS in sql
 
 
 class TestUpsertRatios:
     """Tests for upsert_ratios method."""
 
-    def test_正常系_store_dfが複合key_columnsで呼ばれる(
+    def test_正常系_execute_manyがINSERT_OR_REPLACEで呼ばれる(
         self,
         sample_config: EdinetConfig,
         sample_ratio_record: RatioRecord,
     ) -> None:
-        """upsert_ratiosがedinet_code, fiscal_yearをkey_columnsとして呼ぶこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        """upsert_ratiosがINSERT OR REPLACEでexecute_manyを呼ぶこと."""
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -307,60 +257,28 @@ class TestUpsertRatios:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_ratios([sample_ratio_record])
 
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == [
-                "edinet_code",
-                "fiscal_year",
-            ]
-
-
-class TestUpsertAnalyses:
-    """Tests for upsert_analyses method."""
-
-    def test_正常系_store_dfがedinet_codeをkey_columnsで呼ぶ(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """upsert_analysesがedinet_codeをkey_columnsとしてstore_dfを呼ぶこと."""
-        analysis = AnalysisResult(
-            edinet_code="E00001",
-            health_score=93.0,
-            credit_score=93,
-            credit_rating="S",
-            benchmark_summary="強みが多い",
-            commentary="Good financial health.",
-            fiscal_year=2025,
-        )
-
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            storage.upsert_analyses([analysis])
-
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == ["edinet_code"]
-            assert mock_client.store_df.call_args.args[1] == TABLE_ANALYSES
+            call_args = mock_client.execute_many.call_args
+            sql = call_args.args[0]
+            assert "INSERT OR REPLACE" in sql
+            assert TABLE_RATIOS in sql
 
 
 class TestUpsertTextBlocks:
     """Tests for upsert_text_blocks method."""
 
-    def test_正常系_store_dfが複合key_columnsで呼ぶ(
+    def test_正常系_execute_manyがINSERT_OR_REPLACEで呼ぶ(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """upsert_text_blocksがedinet_code, fiscal_yearをkey_columnsとして呼ぶこと."""
+        """upsert_text_blocksがINSERT OR REPLACEでexecute_manyを呼ぶこと."""
         block = TextBlock(
             edinet_code="E00001",
+            fiscal_year=2025,
             section="事業の内容",
             text="事業概要テキスト",
         )
 
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -369,59 +287,27 @@ class TestUpsertTextBlocks:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_text_blocks([block])
 
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == [
-                "edinet_code",
-                "section",
-            ]
-            assert mock_client.store_df.call_args.args[1] == TABLE_TEXT_BLOCKS
-
-
-class TestUpsertRankings:
-    """Tests for upsert_rankings method."""
-
-    def test_正常系_store_dfが複合key_columnsで呼ぶ(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """upsert_rankingsがmetric, rankをkey_columnsとしてstore_dfを呼ぶこと."""
-        entry = RankingEntry(
-            metric="roe",
-            rank=1,
-            edinet_code="E00001",
-            name="テスト株式会社",
-            value=25.5,
-        )
-
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            storage.upsert_rankings([entry])
-
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == ["metric", "rank"]
-            assert mock_client.store_df.call_args.args[1] == TABLE_RANKINGS
+            call_args = mock_client.execute_many.call_args
+            sql = call_args.args[0]
+            assert "INSERT OR REPLACE" in sql
+            assert TABLE_TEXT_BLOCKS in sql
 
 
 class TestUpsertIndustries:
     """Tests for upsert_industries method."""
 
-    def test_正常系_store_dfがslugをkey_columnsで呼ぶ(
+    def test_正常系_execute_manyがINSERT_OR_REPLACEで呼ぶ(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """upsert_industriesがslugをkey_columnsとしてstore_dfを呼ぶこと."""
+        """upsert_industriesがINSERT OR REPLACEでexecute_manyを呼ぶこと."""
         industry = Industry(
             slug="information-communication",
             name="情報・通信業",
             company_count=500,
         )
 
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -430,19 +316,20 @@ class TestUpsertIndustries:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_industries([industry])
 
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == ["slug"]
-            assert mock_client.store_df.call_args.args[1] == TABLE_INDUSTRIES
+            call_args = mock_client.execute_many.call_args
+            sql = call_args.args[0]
+            assert "INSERT OR REPLACE" in sql
+            assert TABLE_INDUSTRIES in sql
 
 
 class TestUpsertIndustryDetails:
     """Tests for upsert_industry_details method."""
 
-    def test_正常系_store_dfがslugをkey_columnsで呼ぶ(
+    def test_正常系_execute_manyがINSERT_OR_REPLACEで呼ぶ(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """upsert_industry_detailsがslugをkey_columnsとしてstore_dfを呼ぶこと."""
+        """upsert_industry_detailsがINSERT OR REPLACEでexecute_manyを呼ぶこと."""
         details_df = pd.DataFrame(
             {
                 "slug": ["information-communication"],
@@ -451,7 +338,7 @@ class TestUpsertIndustryDetails:
             }
         )
 
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_client = MagicMock()
             mock_cls.return_value = mock_client
 
@@ -460,237 +347,26 @@ class TestUpsertIndustryDetails:
             storage = EdinetStorage(config=sample_config)
             storage.upsert_industry_details(details_df)
 
-            call_kwargs = mock_client.store_df.call_args.kwargs
-            assert call_kwargs.get("key_columns") == ["slug"]
-            assert mock_client.store_df.call_args.args[1] == TABLE_INDUSTRY_DETAILS
+            call_args = mock_client.execute_many.call_args
+            sql = call_args.args[0]
+            assert "INSERT OR REPLACE" in sql
+            assert TABLE_INDUSTRY_DETAILS in sql
 
 
 # ============================================================================
-# Test: query methods
-# ============================================================================
-
-
-class TestGetCompany:
-    """Tests for get_company method."""
-
-    def test_正常系_edinet_codeで企業データを取得する(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_companyがedinet_codeに一致するDataFrameを返すこと."""
-        expected_df = pd.DataFrame(
-            {
-                "edinet_code": ["E00001"],
-                "sec_code": ["10000"],
-                "name": ["テスト株式会社"],
-                "industry": ["情報・通信業"],
-                "name_en": [None],
-                "name_ja": [None],
-                "accounting_standard": [None],
-                "credit_rating": [None],
-                "credit_score": [None],
-            }
-        )
-
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = expected_df
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.get_company("E00001")
-
-            assert result is not None
-            assert len(result) == 1
-            # Verify parameterized query with $1 placeholder
-            query_sql = mock_client.query_df.call_args.args[0]
-            assert "$1" in query_sql
-            query_params = mock_client.query_df.call_args.kwargs.get("params")
-            assert query_params == ["E00001"]
-
-    def test_正常系_存在しないedinet_codeでNoneを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_companyが存在しないedinet_codeに対してNoneを返すこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = pd.DataFrame()
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.get_company("E99999")
-
-            assert result is None
-
-
-class TestGetFinancials:
-    """Tests for get_financials method."""
-
-    def test_正常系_edinet_codeで財務データを取得する(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_financialsがedinet_codeに一致するDataFrameを返すこと."""
-        expected_df = pd.DataFrame(
-            {
-                "edinet_code": ["E00001", "E00001"],
-                "fiscal_year": ["2024", "2025"],
-                "revenue": [900_000_000, 1_000_000_000],
-            }
-        )
-
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = expected_df
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.get_financials("E00001")
-
-            assert result is not None
-            assert len(result) == 2
-
-    def test_正常系_存在しないedinet_codeでNoneを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_financialsが存在しないedinet_codeに対してNoneを返すこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = pd.DataFrame()
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.get_financials("E99999")
-
-            assert result is None
-
-
-class TestGetAllCompanyCodes:
-    """Tests for get_all_company_codes method."""
-
-    def test_正常系_全edinet_codeのリストを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_all_company_codesが全edinet_codeのリストを返すこと."""
-        expected_df = pd.DataFrame({"edinet_code": ["E00001", "E00002", "E00003"]})
-
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = expected_df
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.get_all_company_codes()
-
-            assert result == ["E00001", "E00002", "E00003"]
-
-    def test_正常系_テーブルが空で空リストを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_all_company_codesがテーブル空で空リストを返すこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = pd.DataFrame(
-                {"edinet_code": pd.Series([], dtype="str")}
-            )
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.get_all_company_codes()
-
-            assert result == []
-
-
-# ============================================================================
-# Test: get_stats
-# ============================================================================
-
-
-class TestGetStats:
-    """Tests for get_stats method."""
-
-    def test_正常系_全テーブルの行数を返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """get_statsが全8テーブルの行数を辞書で返すこと."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            # UNION ALL query returns a DataFrame with tbl and cnt columns
-            expected_tables = [
-                TABLE_COMPANIES,
-                TABLE_FINANCIALS,
-                TABLE_RATIOS,
-                TABLE_ANALYSES,
-                TABLE_TEXT_BLOCKS,
-                TABLE_RANKINGS,
-                TABLE_INDUSTRIES,
-                TABLE_INDUSTRY_DETAILS,
-            ]
-            mock_client.query_df.return_value = pd.DataFrame(
-                {"tbl": expected_tables, "cnt": [42] * len(expected_tables)},
-            )
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            stats = storage.get_stats()
-
-            assert isinstance(stats, dict)
-            assert set(stats.keys()) == set(expected_tables)
-
-
-# ============================================================================
-# Test: query
+# Test: query methods (mocked)
 # ============================================================================
 
 
 class TestQuery:
     """Tests for query method."""
 
-    def test_正常系_任意SQLを実行してDataFrameを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """queryが任意SQLをquery_dfに委譲してDataFrameを返すこと."""
-        expected_df = pd.DataFrame({"count": [100]})
-
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
-            mock_client = MagicMock()
-            mock_client.query_df.return_value = expected_df
-            mock_cls.return_value = mock_client
-
-            from market.edinet.storage import EdinetStorage
-
-            storage = EdinetStorage(config=sample_config)
-            result = storage.query("SELECT COUNT(*) as count FROM companies")
-
-            assert len(result) == 1
-            assert result["count"].iloc[0] == 100
-
     def test_異常系_SELECT以外のSQLでValueError(
         self,
         sample_config: EdinetConfig,
     ) -> None:
         """INSERT/UPDATE/DROP等のSQLがValueErrorで拒否されること."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_cls.return_value = MagicMock()
 
             from market.edinet.storage import EdinetStorage
@@ -711,7 +387,7 @@ class TestQuery:
         sample_config: EdinetConfig,
     ) -> None:
         """セミコロンを含む複数ステートメントSQLがValueErrorで拒否されること."""
-        with patch("market.edinet.storage.DuckDBClient") as mock_cls:
+        with patch("market.edinet.storage.SQLiteClient") as mock_cls:
             mock_cls.return_value = MagicMock()
 
             from market.edinet.storage import EdinetStorage
@@ -723,31 +399,29 @@ class TestQuery:
 
 
 # ============================================================================
-# Test: Integration with real DuckDB (tmp_path)
+# Test: Integration with real SQLite (tmp_path)
 # ============================================================================
 
 
 class TestEdinetStorageIntegration:
-    """Integration tests using real DuckDB with tmp_path."""
+    """Integration tests using real SQLite with tmp_path."""
 
     def test_正常系_ensure_tablesで実際にテーブルが作成される(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """ensure_tablesで実際のDuckDBに8テーブルが作成されること."""
+        """ensure_tablesで実際のSQLiteに6テーブルが作成されること."""
         from market.edinet.storage import EdinetStorage
 
         storage = EdinetStorage(config=sample_config)
 
         # Verify tables exist by querying
-        tables = storage._client.get_table_names()
+        tables = storage._client.get_tables()
         expected_tables = {
             TABLE_COMPANIES,
             TABLE_FINANCIALS,
             TABLE_RATIOS,
-            TABLE_ANALYSES,
             TABLE_TEXT_BLOCKS,
-            TABLE_RANKINGS,
             TABLE_INDUSTRIES,
             TABLE_INDUSTRY_DETAILS,
         }
@@ -758,7 +432,7 @@ class TestEdinetStorageIntegration:
         sample_config: EdinetConfig,
         sample_company: Company,
     ) -> None:
-        """upsert_companiesで実際のDuckDBにデータが保存されること."""
+        """upsert_companiesで実際のSQLiteにデータが保存されること."""
         from market.edinet.storage import EdinetStorage
 
         storage = EdinetStorage(config=sample_config)
@@ -805,7 +479,7 @@ class TestEdinetStorageIntegration:
         sample_config: EdinetConfig,
         sample_financial_record: FinancialRecord,
     ) -> None:
-        """upsert_financialsで実際のDuckDBにデータが保存されること."""
+        """upsert_financialsで実際のSQLiteにデータが保存されること."""
         from market.edinet.storage import EdinetStorage
 
         storage = EdinetStorage(config=sample_config)
@@ -871,68 +545,27 @@ class TestEdinetStorageIntegration:
         )
         assert result["cnt"].iloc[0] == 1
 
+    def test_正常系_get_companyが存在しないedinet_codeでNoneを返す(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """get_companyが存在しないedinet_codeに対してNoneを返すこと."""
+        from market.edinet.storage import EdinetStorage
 
-# ============================================================================
-# Test: _COLUMN_RENAMES
-# ============================================================================
+        storage = EdinetStorage(config=sample_config)
+        result = storage.get_company("E99999")
+        assert result is None
 
+    def test_正常系_get_financialsが存在しないedinet_codeでNoneを返す(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """get_financialsが存在しないedinet_codeに対してNoneを返すこと."""
+        from market.edinet.storage import EdinetStorage
 
-class TestColumnRenames:
-    """Tests for _COLUMN_RENAMES constant."""
-
-    def test_正常系_リネームマップのキーが文字列である(self) -> None:
-        """_COLUMN_RENAMESのキーが全て文字列であること."""
-        for old_name in _COLUMN_RENAMES:
-            assert isinstance(old_name, str), f"Key {old_name!r} is not str"
-
-    def test_正常系_リネームマップの値が文字列である(self) -> None:
-        """_COLUMN_RENAMESの値が全て文字列であること."""
-        for old_name, new_name in _COLUMN_RENAMES.items():
-            assert isinstance(new_name, str), (
-                f"Value for {old_name!r} is not str: {new_name!r}"
-            )
-
-    def test_正常系_リネーム先がDDLカラムに存在する(self) -> None:
-        """_COLUMN_RENAMESの値がいずれかのテーブルDDLカラムに存在すること."""
-        from market.edinet.storage import _parse_ddl_columns
-
-        all_ddl_cols: set[str] = set()
-        for ddl in _TABLE_DDL.values():
-            all_ddl_cols |= _parse_ddl_columns(ddl)
-
-        for old_name, new_name in _COLUMN_RENAMES.items():
-            assert new_name in all_ddl_cols, (
-                f"Rename target {new_name!r} (from {old_name!r}) "
-                f"not found in DDL columns"
-            )
-
-    def test_正常系_リネーム元と先が同一テーブルに共存しない(self) -> None:
-        """各テーブルDDLでリネーム元と先が同時に存在しないこと."""
-        from market.edinet.storage import _parse_ddl_columns
-
-        for table_name, ddl in _TABLE_DDL.items():
-            table_cols = _parse_ddl_columns(ddl)
-            for old_name, new_name in _COLUMN_RENAMES.items():
-                assert not (old_name in table_cols and new_name in table_cols), (
-                    f"Table {table_name!r} has both old name {old_name!r} "
-                    f"and new name {new_name!r}. Migration incomplete."
-                )
-
-    def test_正常系_期待されるリネームが含まれている(self) -> None:
-        """_COLUMN_RENAMESに期待されるリネームが含まれていること."""
-        expected_renames = {
-            "operating_cf": "cf_operating",
-            "investing_cf": "cf_investing",
-            "financing_cf": "cf_financing",
-            "employees": "num_employees",
-            "rnd_expense": "rnd_expenses",
-            "benchmark_comparison": "benchmark_summary",
-        }
-        for old_name, new_name in expected_renames.items():
-            assert _COLUMN_RENAMES.get(old_name) == new_name, (
-                f"Expected rename {old_name!r} -> {new_name!r}, "
-                f"got {_COLUMN_RENAMES.get(old_name)!r}"
-            )
+        storage = EdinetStorage(config=sample_config)
+        result = storage.get_financials("E99999")
+        assert result is None
 
 
 # ============================================================================
@@ -989,19 +622,6 @@ class TestDDLDataclassConsistency:
             f"Column count mismatch: DDL={ddl_count}, dataclass={field_count}"
         )
 
-    def test_正常系_AnalysisResultフィールドとDDLカラムが完全一致する(self) -> None:
-        """dataclasses.fields(AnalysisResult)のフィールド名がDDLカラム名と完全一致すること."""
-        from market.edinet.storage import _parse_ddl_columns
-
-        dataclass_fields = {f.name for f in dataclasses.fields(AnalysisResult)}
-        ddl_columns = _parse_ddl_columns(_TABLE_DDL[TABLE_ANALYSES])
-
-        assert dataclass_fields == ddl_columns, (
-            f"AnalysisResult fields and DDL columns mismatch.\n"
-            f"Only in dataclass: {dataclass_fields - ddl_columns}\n"
-            f"Only in DDL: {ddl_columns - dataclass_fields}"
-        )
-
     def test_正常系_TextBlockフィールドとDDLカラムが完全一致する(self) -> None:
         """dataclasses.fields(TextBlock)のフィールド名がDDLカラム名と完全一致すること."""
         from market.edinet.storage import _parse_ddl_columns
@@ -1031,8 +651,8 @@ class TestParseDdlColumns:
         ddl = """
             CREATE TABLE IF NOT EXISTS test_table (
                 id INTEGER NOT NULL,
-                name VARCHAR,
-                value DOUBLE
+                name TEXT,
+                value REAL
             )
         """
         result = _parse_ddl_columns(ddl)
@@ -1046,42 +666,6 @@ class TestParseDdlColumns:
         assert "edinet_code" in result
         assert "fiscal_year" in result
         assert "revenue" in result
-
-
-# ============================================================================
-# Test: _schema_matches
-# ============================================================================
-
-
-class TestSchemaMatches:
-    """Tests for _schema_matches helper."""
-
-    def test_正常系_同一スキーマでTrueを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """_schema_matchesが同一スキーマに対してTrueを返すこと."""
-        from market.edinet.storage import EdinetStorage
-
-        storage = EdinetStorage(config=sample_config)
-        # Tables are created with current DDL in __init__, so they should match
-        assert storage._schema_matches(TABLE_FINANCIALS) is True
-
-    def test_正常系_カラム不足でFalseを返す(
-        self,
-        sample_config: EdinetConfig,
-    ) -> None:
-        """_schema_matchesがカラム不足のテーブルに対してFalseを返すこと."""
-        from market.edinet.storage import EdinetStorage
-
-        storage = EdinetStorage(config=sample_config)
-        # Drop and recreate with a minimal schema
-        storage._client.execute(f"DROP TABLE {TABLE_FINANCIALS}")
-        storage._client.execute(
-            f"CREATE TABLE {TABLE_FINANCIALS} "
-            "(edinet_code VARCHAR, fiscal_year INTEGER)"
-        )
-        assert storage._schema_matches(TABLE_FINANCIALS) is False
 
 
 # ============================================================================
@@ -1135,7 +719,7 @@ class TestGetColumnInfo:
         assert "fiscal_year" in columns
         assert "revenue" in columns
 
-    def test_正常系_カラム型がVARCHARやDOUBLEを含む(
+    def test_正常系_カラム型がTEXTやREALを含む(
         self,
         sample_config: EdinetConfig,
     ) -> None:
@@ -1144,23 +728,34 @@ class TestGetColumnInfo:
 
         storage = EdinetStorage(config=sample_config)
         columns = storage._get_column_info(TABLE_FINANCIALS)
-        assert "VARCHAR" in columns["edinet_code"].upper()
+        assert "TEXT" in columns["edinet_code"].upper()
         assert "INTEGER" in columns["fiscal_year"].upper()
 
-
-# ============================================================================
-# Test: _migrate_schema / _migrate_table
-# ============================================================================
-
-
-class TestMigrateSchema:
-    """Tests for _migrate_schema and _migrate_table methods."""
-
-    def test_正常系_スキーマ一致時にマイグレーションが実行されない(
+    def test_異常系_不正テーブル名でValueError(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """_migrate_schemaがスキーマ一致時に何もしないこと."""
+        """_get_column_infoが不正なテーブル名でValueErrorを発生させること."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        with pytest.raises(ValueError, match="Unknown table"):
+            storage._get_column_info("unknown_table")
+
+
+# ============================================================================
+# Test: _migrate_add_missing_columns
+# ============================================================================
+
+
+class TestMigrateAddMissingColumns:
+    """Tests for _migrate_add_missing_columns method."""
+
+    def test_正常系_スキーマ一致時にマイグレーションが不要(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """_migrate_add_missing_columnsがスキーマ一致時にデータを保持すること."""
         from market.edinet.storage import EdinetStorage
 
         storage = EdinetStorage(config=sample_config)
@@ -1174,45 +769,50 @@ class TestMigrateSchema:
                 )
             ]
         )
-        # Manually call _migrate_schema - should be a no-op
-        storage._migrate_schema()
+        # Manually call migration - should be a no-op
+        storage._migrate_add_missing_columns()
         # Data should still be there
         result = storage.get_financials("E00001")
         assert result is not None
         assert len(result) == 1
 
-    def test_正常系_カラム追加でマイグレーションが実行される(
+    def test_正常系_カラム不足テーブルにカラムが追加される(
         self,
         tmp_path: Path,
     ) -> None:
-        """旧スキーマ（カラム不足）から新スキーマへマイグレーションされること."""
+        """旧スキーマ（カラム不足）のテーブルに不足カラムが追加されること."""
+        import sqlite3
+
         from market.edinet.storage import EdinetStorage
         from market.edinet.types import EdinetConfig as EC
 
-        db_path = tmp_path / "migrate_test.duckdb"
+        db_path = tmp_path / "migrate_test.db"
         config = EC(api_key="test_key", db_path=db_path)
 
         # Create old schema manually (fewer columns)
-        with duckdb.connect(str(db_path)) as conn:
-            conn.execute(
-                f"CREATE TABLE {TABLE_FINANCIALS} ("
-                "edinet_code VARCHAR NOT NULL, "
-                "fiscal_year INTEGER NOT NULL, "
-                "revenue DOUBLE"
-                ")"
-            )
-            conn.execute(
-                f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', 2025, 1000000.0)"
-            )
-            # Create all other tables so ensure_tables doesn't fail
-            for tbl, ddl in _TABLE_DDL.items():
-                if tbl != TABLE_FINANCIALS:
-                    conn.execute(ddl)
+        conn = sqlite3.connect(db_path)
+        conn.execute(
+            f"CREATE TABLE {TABLE_FINANCIALS} ("
+            "edinet_code TEXT NOT NULL, "
+            "fiscal_year INTEGER NOT NULL, "
+            "revenue REAL, "
+            "PRIMARY KEY (edinet_code, fiscal_year)"
+            ")"
+        )
+        conn.execute(
+            f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', 2025, 1000000.0)"
+        )
+        # Create all other tables so ensure_tables doesn't fail
+        for tbl, ddl in _TABLE_DDL.items():
+            if tbl != TABLE_FINANCIALS:
+                conn.execute(ddl)
+        conn.commit()
+        conn.close()
 
         # Initialize storage - should trigger migration
         storage = EdinetStorage(config=config)
 
-        # Verify the table now has all columns
+        # Verify the table now has additional columns
         columns = storage._get_column_info(TABLE_FINANCIALS)
         expected_fields = {f.name for f in dataclasses.fields(FinancialRecord)}
         assert set(columns.keys()) == expected_fields
@@ -1225,169 +825,134 @@ class TestMigrateSchema:
         assert result["fiscal_year"].iloc[0] == 2025
         assert result["revenue"].iloc[0] == pytest.approx(1_000_000.0)
 
-    def test_正常系_カラムリネームでデータが保持される(
-        self,
-        tmp_path: Path,
-    ) -> None:
-        """旧カラム名（operating_cf等）のデータがリネーム後のカラムに移行されること."""
-        from market.edinet.storage import EdinetStorage
-        from market.edinet.types import EdinetConfig as EC
-
-        db_path = tmp_path / "rename_test.duckdb"
-        config = EC(api_key="test_key", db_path=db_path)
-
-        # Create old schema with old column names
-        with duckdb.connect(str(db_path)) as conn:
-            conn.execute(
-                f"CREATE TABLE {TABLE_FINANCIALS} ("
-                "edinet_code VARCHAR NOT NULL, "
-                "fiscal_year INTEGER NOT NULL, "
-                "revenue DOUBLE, "
-                "operating_cf DOUBLE, "
-                "investing_cf DOUBLE, "
-                "financing_cf DOUBLE"
-                ")"
-            )
-            conn.execute(
-                f"INSERT INTO {TABLE_FINANCIALS} VALUES "
-                "('E00001', 2025, 1000000.0, 500000.0, -200000.0, -100000.0)"
-            )
-            for tbl, ddl in _TABLE_DDL.items():
-                if tbl != TABLE_FINANCIALS:
-                    conn.execute(ddl)
-
-        storage = EdinetStorage(config=config)
-
-        # Verify renamed columns have data
-        result = storage.get_financials("E00001")
-        assert result is not None
-        assert result["cf_operating"].iloc[0] == pytest.approx(500_000.0)
-        assert result["cf_investing"].iloc[0] == -200_000.0
-        assert result["cf_financing"].iloc[0] == -100_000.0
-
-    def test_正常系_fiscal_yearのVARCHARからINTEGERへのCAST(
-        self,
-        tmp_path: Path,
-    ) -> None:
-        """fiscal_yearがVARCHAR型からINTEGER型にCASTされること."""
-        from market.edinet.storage import EdinetStorage
-        from market.edinet.types import EdinetConfig as EC
-
-        db_path = tmp_path / "cast_test.duckdb"
-        config = EC(api_key="test_key", db_path=db_path)
-
-        # Create old schema with VARCHAR fiscal_year
-        with duckdb.connect(str(db_path)) as conn:
-            conn.execute(
-                f"CREATE TABLE {TABLE_FINANCIALS} ("
-                "edinet_code VARCHAR NOT NULL, "
-                "fiscal_year VARCHAR NOT NULL, "
-                "revenue DOUBLE"
-                ")"
-            )
-            conn.execute(
-                f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', '2025', 1000000.0)"
-            )
-            for tbl, ddl in _TABLE_DDL.items():
-                if tbl != TABLE_FINANCIALS:
-                    conn.execute(ddl)
-
-        storage = EdinetStorage(config=config)
-
-        # Verify fiscal_year is now INTEGER
-        columns = storage._get_column_info(TABLE_FINANCIALS)
-        assert "INTEGER" in columns["fiscal_year"].upper()
-
-        # Verify data was preserved and correctly cast
-        result = storage.get_financials("E00001")
-        assert result is not None
-        assert result["fiscal_year"].iloc[0] == 2025
-        assert np.issubdtype(type(result["fiscal_year"].iloc[0]), np.integer)
-
-    def test_正常系_マイグレーション前後で行数が一致する(
-        self,
-        tmp_path: Path,
-    ) -> None:
-        """マイグレーション前後でテーブルの行数が一致すること."""
-        from market.edinet.storage import EdinetStorage
-        from market.edinet.types import EdinetConfig as EC
-
-        db_path = tmp_path / "rowcount_test.duckdb"
-        config = EC(api_key="test_key", db_path=db_path)
-
-        # Create old schema with multiple rows
-        with duckdb.connect(str(db_path)) as conn:
-            conn.execute(
-                f"CREATE TABLE {TABLE_FINANCIALS} ("
-                "edinet_code VARCHAR NOT NULL, "
-                "fiscal_year INTEGER NOT NULL, "
-                "revenue DOUBLE"
-                ")"
-            )
-            for year in range(2020, 2026):
-                conn.execute(
-                    f"INSERT INTO {TABLE_FINANCIALS} VALUES "
-                    f"('E00001', {year}, {year * 1000}.0)"
-                )
-            for tbl, ddl in _TABLE_DDL.items():
-                if tbl != TABLE_FINANCIALS:
-                    conn.execute(ddl)
-
-            pre_count_result = conn.execute(
-                f"SELECT COUNT(*) FROM {TABLE_FINANCIALS}"
-            ).fetchone()
-            pre_count = pre_count_result[0] if pre_count_result else 0
-
-        storage = EdinetStorage(config=config)
-
-        # Post-migration row count
-        post_result = storage.query(f"SELECT COUNT(*) as cnt FROM {TABLE_FINANCIALS}")
-        post_count = post_result["cnt"].iloc[0]
-
-        assert pre_count == post_count == 6
-
-    def test_正常系_マイグレーション後にデータが参照可能である(
-        self,
-        tmp_path: Path,
-    ) -> None:
-        """スキーマ不一致時のマイグレーション後もデータが参照できること."""
-        from market.edinet.storage import EdinetStorage
-        from market.edinet.types import EdinetConfig as EC
-
-        db_path = tmp_path / "backup_test.duckdb"
-        config = EC(api_key="test_key", db_path=db_path)
-
-        # Create old schema
-        with duckdb.connect(str(db_path)) as conn:
-            conn.execute(
-                f"CREATE TABLE {TABLE_FINANCIALS} ("
-                "edinet_code VARCHAR NOT NULL, "
-                "fiscal_year INTEGER NOT NULL, "
-                "revenue DOUBLE"
-                ")"
-            )
-            conn.execute(
-                f"INSERT INTO {TABLE_FINANCIALS} VALUES ('E00001', 2025, 1000000.0)"
-            )
-            for tbl, ddl in _TABLE_DDL.items():
-                if tbl != TABLE_FINANCIALS:
-                    conn.execute(ddl)
-
-        # Create storage without migration (by pre-creating all tables)
-        storage = EdinetStorage(config=config)
-
-        # Verify data exists after migration (even with column mismatch,
-        # backup-restore ensures data safety)
-        result = storage.get_financials("E00001")
-        assert result is not None
-
-    def test_正常系_ensure_tablesからmigrate_schemaが呼ばれる(
+    def test_正常系_ensure_tablesからmigrate_add_missing_columnsが呼ばれる(
         self,
         sample_config: EdinetConfig,
     ) -> None:
-        """ensure_tablesの後に_migrate_schemaが呼び出されること."""
+        """ensure_tablesの後に_migrate_add_missing_columnsが呼び出されること."""
         from market.edinet.storage import EdinetStorage
 
-        with patch.object(EdinetStorage, "_migrate_schema") as mock_migrate:
+        with patch.object(
+            EdinetStorage, "_migrate_add_missing_columns"
+        ) as mock_migrate:
             EdinetStorage(config=sample_config)
             mock_migrate.assert_called_once()
+
+    def test_正常系_upsert_ratiosで実際にデータが保存される(
+        self,
+        sample_config: EdinetConfig,
+        sample_ratio_record: RatioRecord,
+    ) -> None:
+        """upsert_ratiosで実際のSQLiteにデータが保存されること."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        storage.upsert_ratios([sample_ratio_record])
+
+        with storage._client.connection() as conn:
+            df = pd.read_sql_query(
+                f"SELECT * FROM {TABLE_RATIOS} WHERE edinet_code = ?",
+                conn,
+                params=["E00001"],
+            )
+        assert len(df) == 1
+        assert df["roe"].iloc[0] == pytest.approx(3.89)
+
+    def test_正常系_upsert_text_blocksで実際にデータが保存される(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """upsert_text_blocksで実際のSQLiteにデータが保存されること."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        block = TextBlock(
+            edinet_code="E00001",
+            fiscal_year=2025,
+            section="事業の内容",
+            text="事業概要テキスト",
+        )
+        storage.upsert_text_blocks([block])
+
+        with storage._client.connection() as conn:
+            df = pd.read_sql_query(
+                f"SELECT * FROM {TABLE_TEXT_BLOCKS} WHERE edinet_code = ?",
+                conn,
+                params=["E00001"],
+            )
+        assert len(df) == 1
+        assert df["section"].iloc[0] == "事業の内容"
+
+    def test_正常系_upsert_industry_detailsで実際にJSON保存される(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """upsert_industry_detailsでJSON文字列が正しく保存されること."""
+        import json
+
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+        details_df = pd.DataFrame(
+            {
+                "slug": ["info-comm"],
+                "name": ["情報・通信業"],
+                "avg_roe": [10.5],
+            }
+        )
+        storage.upsert_industry_details(details_df)
+
+        with storage._client.connection() as conn:
+            df = pd.read_sql_query(
+                f"SELECT * FROM {TABLE_INDUSTRY_DETAILS} WHERE slug = ?",
+                conn,
+                params=["info-comm"],
+            )
+        assert len(df) == 1
+        data = json.loads(df["data"].iloc[0])
+        assert data["slug"] == "info-comm"
+        assert data["name"] == "情報・通信業"
+
+
+# ============================================================================
+# Test: PRIMARY KEY enforcement (upsert behavior)
+# ============================================================================
+
+
+class TestPrimaryKeyEnforcement:
+    """Tests for PRIMARY KEY constraint in DDL."""
+
+    def test_正常系_DDLにPRIMARY_KEYが含まれる(self) -> None:
+        """全テーブルのDDLにPRIMARY KEY制約が含まれること."""
+        for table_name, ddl in _TABLE_DDL.items():
+            assert "PRIMARY KEY" in ddl, (
+                f"Table {table_name!r} DDL does not contain PRIMARY KEY"
+            )
+
+    def test_正常系_financialsの複合PKでupsertが動作する(
+        self,
+        sample_config: EdinetConfig,
+    ) -> None:
+        """同一PKのfinancialsデータがupsertで上書きされること."""
+        from market.edinet.storage import EdinetStorage
+
+        storage = EdinetStorage(config=sample_config)
+
+        record_v1 = FinancialRecord(
+            edinet_code="E00001",
+            fiscal_year=2025,
+            revenue=500_000.0,
+        )
+        storage.upsert_financials([record_v1])
+
+        record_v2 = FinancialRecord(
+            edinet_code="E00001",
+            fiscal_year=2025,
+            revenue=999_999.0,
+        )
+        storage.upsert_financials([record_v2])
+
+        result = storage.get_financials("E00001")
+        assert result is not None
+        assert len(result) == 1
+        assert result["revenue"].iloc[0] == pytest.approx(999_999.0)

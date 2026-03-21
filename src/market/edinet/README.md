@@ -291,16 +291,14 @@ with EdinetClient(config=config) as client:
 ```python
 with EdinetClient(config=config) as client:
     # 有価証券報告書のテキストを取得
-    blocks = client.get_text_blocks("E02529")
-    latest_block = blocks[0]
-    print(f"FY{latest_block.fiscal_year} 事業概要:")
-    print(latest_block.business_overview[:200])
+    # 有価証券報告書のテキストを取得（year は必須）
+    blocks = client.get_text_blocks("E02529", year=2025)
+    for block in blocks:
+        print(f"FY{block.fiscal_year} {block.section}:")
+        print(block.text[:200])
 
-    print("\nリスク要因:")
-    print(latest_block.risk_factors[:200])
-
-    # 特定年度を指定して取得
-    blocks_2024 = client.get_text_blocks("E02529", year="2024")
+    # 別の年度を指定して取得
+    blocks_2024 = client.get_text_blocks("E02529", year=2024)
 ```
 
 `TextBlock` のフィールド:
@@ -308,10 +306,9 @@ with EdinetClient(config=config) as client:
 | フィールド | 説明 |
 |-----------|------|
 | `edinet_code` | EDINET コード |
-| `fiscal_year` | 会計年度 |
-| `business_overview` | 事業の内容（事業概要テキスト） |
-| `risk_factors` | 事業等のリスク |
-| `management_analysis` | 経営者による分析 |
+| `fiscal_year` | 会計年度（int、NOT NULL） |
+| `section` | セクション名（例: `"事業の内容"`、`"経営者による分析"`） |
+| `text` | セクションテキスト内容 |
 
 ### AI 分析結果取得（財務健全性分析）
 
@@ -518,7 +515,7 @@ EdinetClient(
 | `get_financials(code)` | 年次財務データを取得（`GET /v1/companies/{code}/financials`、30 フィールド） | `list[FinancialRecord]` |
 | `get_ratios(code)` | 財務比率を取得（`GET /v1/companies/{code}/ratios`、21 フィールド） | `list[RatioRecord]` |
 | `get_analysis(code)` | AI 財務健全性分析を取得（`GET /v1/companies/{code}/analysis`） | `AnalysisResult` |
-| `get_text_blocks(code, year=None)` | 有価証券報告書テキストを取得（`GET /v1/companies/{code}/text-blocks`） | `list[TextBlock]` |
+| `get_text_blocks(code, year)` | 有価証券報告書テキストを取得（`GET /v1/companies/{code}/text-blocks`、year 必須） | `list[TextBlock]` |
 | `get_ranking(metric)` | 指標別ランキングを取得（`GET /v1/rankings/{metric}`） | `list[RankingEntry]` |
 | `list_industries()` | 業種マスタ一覧を取得（`GET /v1/industries`） | `list[Industry]` |
 | `get_industry(slug)` | 業種詳細を取得（`GET /v1/industries/{slug}`） | `dict` |

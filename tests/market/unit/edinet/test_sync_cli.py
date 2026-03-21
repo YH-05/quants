@@ -55,12 +55,6 @@ def mock_syncer() -> MagicMock:
             errors=(),
         ),
         SyncResult(
-            phase="rankings",
-            success=True,
-            companies_processed=0,
-            errors=(),
-        ),
-        SyncResult(
             phase="company_details",
             success=True,
             companies_processed=3848,
@@ -73,7 +67,7 @@ def mock_syncer() -> MagicMock:
             errors=(),
         ),
         SyncResult(
-            phase="analysis_text",
+            phase="text_blocks",
             success=True,
             companies_processed=3848,
             errors=(),
@@ -88,6 +82,12 @@ def mock_syncer() -> MagicMock:
         ),
         SyncResult(
             phase="financials_ratios",
+            success=True,
+            companies_processed=3848,
+            errors=(),
+        ),
+        SyncResult(
+            phase="text_blocks",
             success=True,
             companies_processed=3848,
             errors=(),
@@ -170,9 +170,9 @@ class TestParseArgs:
         assert args.initial is True
 
     def test_正常系_dbpathオプション(self) -> None:
-        args = parse_args(["--initial", "--db-path", "/data/edinet.duckdb"])
+        args = parse_args(["--initial", "--db-path", "/data/edinet.db"])
 
-        assert args.db_path == "/data/edinet.duckdb"
+        assert args.db_path == "/data/edinet.db"
 
     def test_正常系_デフォルト値(self) -> None:
         args = parse_args([])
@@ -328,13 +328,13 @@ class TestDbPath:
         monkeypatch.setenv("EDINET_DB_API_KEY", "test_key")
         mock_syncer_class.return_value = mock_syncer
 
-        args = parse_args(["--status", "--db-path", "/custom/path/edinet.duckdb"])
+        args = parse_args(["--status", "--db-path", "/custom/path/edinet.db"])
         run_sync(args)
 
         # Verify EdinetConfig was created with db_path
         mock_config_class.assert_called_once_with(
             api_key="test_key",
-            db_path=Path("/custom/path/edinet.duckdb"),
+            db_path=Path("/custom/path/edinet.db"),
         )
 
     @patch("market.edinet.scripts.sync.EdinetSyncer")

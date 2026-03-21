@@ -17,16 +17,13 @@ from market.edinet.constants import (
     DEFAULT_TIMEOUT,
     EDINET_API_KEY_ENV,
     EDINET_DB_PATH_ENV,
-    RANKING_METRICS,
     RATE_LIMIT_FILENAME,
     SAFE_MARGIN,
     SYNC_STATE_FILENAME,
-    TABLE_ANALYSES,
     TABLE_COMPANIES,
     TABLE_FINANCIALS,
     TABLE_INDUSTRIES,
     TABLE_INDUSTRY_DETAILS,
-    TABLE_RANKINGS,
     TABLE_RATIOS,
     TABLE_TEXT_BLOCKS,
 )
@@ -60,7 +57,7 @@ class TestDatabasePathConstants:
         assert EDINET_DB_PATH_ENV == "EDINET_DB_PATH"
 
     def test_正常系_DEFAULT_DB_SUBDIRが正しい値であること(self) -> None:
-        assert DEFAULT_DB_SUBDIR == "duckdb"
+        assert DEFAULT_DB_SUBDIR == "sqlite"
 
     def test_正常系_DEFAULT_DB_NAMEが正しい値であること(self) -> None:
         assert DEFAULT_DB_NAME == "edinet"
@@ -149,14 +146,8 @@ class TestTableNameConstants:
     def test_正常系_TABLE_RATIOSが正しい値であること(self) -> None:
         assert TABLE_RATIOS == "ratios"
 
-    def test_正常系_TABLE_ANALYSESが正しい値であること(self) -> None:
-        assert TABLE_ANALYSES == "analyses"
-
     def test_正常系_TABLE_TEXT_BLOCKSが正しい値であること(self) -> None:
         assert TABLE_TEXT_BLOCKS == "text_blocks"
-
-    def test_正常系_TABLE_RANKINGSが正しい値であること(self) -> None:
-        assert TABLE_RANKINGS == "rankings"
 
     def test_正常系_TABLE_INDUSTRIESが正しい値であること(self) -> None:
         assert TABLE_INDUSTRIES == "industries"
@@ -169,9 +160,7 @@ class TestTableNameConstants:
             TABLE_COMPANIES,
             TABLE_FINANCIALS,
             TABLE_RATIOS,
-            TABLE_ANALYSES,
             TABLE_TEXT_BLOCKS,
-            TABLE_RANKINGS,
             TABLE_INDUSTRIES,
             TABLE_INDUSTRY_DETAILS,
         ]
@@ -183,9 +172,7 @@ class TestTableNameConstants:
             TABLE_COMPANIES,
             TABLE_FINANCIALS,
             TABLE_RATIOS,
-            TABLE_ANALYSES,
             TABLE_TEXT_BLOCKS,
-            TABLE_RANKINGS,
             TABLE_INDUSTRIES,
             TABLE_INDUSTRY_DETAILS,
         ]
@@ -198,139 +185,22 @@ class TestTableNameConstants:
             TABLE_COMPANIES,
             TABLE_FINANCIALS,
             TABLE_RATIOS,
-            TABLE_ANALYSES,
             TABLE_TEXT_BLOCKS,
-            TABLE_RANKINGS,
             TABLE_INDUSTRIES,
             TABLE_INDUSTRY_DETAILS,
         ]
         assert len(table_names) == len(set(table_names))
 
-    def test_正常系_テーブル数が8であること(self) -> None:
+    def test_正常系_テーブル数が6であること(self) -> None:
         table_names = [
             TABLE_COMPANIES,
             TABLE_FINANCIALS,
             TABLE_RATIOS,
-            TABLE_ANALYSES,
             TABLE_TEXT_BLOCKS,
-            TABLE_RANKINGS,
             TABLE_INDUSTRIES,
             TABLE_INDUSTRY_DETAILS,
         ]
-        assert len(table_names) == 8
-
-
-class TestRankingMetrics:
-    """ランキングメトリクス定数のテスト。"""
-
-    def test_正常系_RANKING_METRICSが20指標を含むこと(self) -> None:
-        assert len(RANKING_METRICS) == 20
-
-    def test_正常系_RANKING_METRICSがリストであること(self) -> None:
-        assert isinstance(RANKING_METRICS, list)
-
-    def test_正常系_全メトリクスが文字列であること(self) -> None:
-        for metric in RANKING_METRICS:
-            assert isinstance(metric, str), f"{metric} is not a string"
-
-    def test_正常系_全メトリクスが空でないこと(self) -> None:
-        for metric in RANKING_METRICS:
-            assert len(metric) > 0, "Empty metric found"
-
-    def test_正常系_全メトリクスが一意であること(self) -> None:
-        assert len(RANKING_METRICS) == len(set(RANKING_METRICS))
-
-    def test_正常系_roeが含まれること(self) -> None:
-        assert "roe" in RANKING_METRICS
-
-    def test_正常系_operating_marginが含まれること(self) -> None:
-        assert "operating-margin" in RANKING_METRICS
-
-    def test_正常系_net_marginが含まれること(self) -> None:
-        assert "net-margin" in RANKING_METRICS
-
-    def test_正常系_roaが含まれること(self) -> None:
-        assert "roa" in RANKING_METRICS
-
-    def test_正常系_equity_ratioが含まれること(self) -> None:
-        assert "equity-ratio" in RANKING_METRICS
-
-    def test_正常系_perが含まれること(self) -> None:
-        assert "per" in RANKING_METRICS
-
-    def test_正常系_epsが含まれること(self) -> None:
-        assert "eps" in RANKING_METRICS
-
-    def test_正常系_dividend_yieldが含まれること(self) -> None:
-        assert "dividend-yield" in RANKING_METRICS
-
-    def test_正常系_payout_ratioが含まれること(self) -> None:
-        assert "payout-ratio" in RANKING_METRICS
-
-    def test_正常系_revenueが含まれること(self) -> None:
-        assert "revenue" in RANKING_METRICS
-
-    def test_正常系_health_scoreが含まれること(self) -> None:
-        assert "health-score" in RANKING_METRICS
-
-    def test_正常系_revenue_growthが含まれること(self) -> None:
-        assert "revenue-growth" in RANKING_METRICS
-
-    def test_正常系_ni_growthが含まれること(self) -> None:
-        assert "ni-growth" in RANKING_METRICS
-
-    def test_正常系_eps_growthが含まれること(self) -> None:
-        assert "eps-growth" in RANKING_METRICS
-
-    def test_正常系_revenue_cagr_3yが含まれること(self) -> None:
-        assert "revenue-cagr-3y" in RANKING_METRICS
-
-    def test_正常系_oi_cagr_3yが含まれること(self) -> None:
-        assert "oi-cagr-3y" in RANKING_METRICS
-
-    def test_正常系_ni_cagr_3yが含まれること(self) -> None:
-        assert "ni-cagr-3y" in RANKING_METRICS
-
-    def test_正常系_eps_cagr_3yが含まれること(self) -> None:
-        assert "eps-cagr-3y" in RANKING_METRICS
-
-    @pytest.mark.parametrize(
-        "metric",
-        [
-            "roe",
-            "operating-margin",
-            "net-margin",
-            "roa",
-            "equity-ratio",
-            "per",
-            "eps",
-            "dividend-yield",
-            "payout-ratio",
-            "free-cf",
-            "revenue",
-            "health-score",
-            "credit-score",
-            "revenue-growth",
-            "ni-growth",
-            "eps-growth",
-            "revenue-cagr-3y",
-            "oi-cagr-3y",
-            "ni-cagr-3y",
-            "eps-cagr-3y",
-        ],
-    )
-    def test_パラメトライズ_全20メトリクスが含まれること(self, metric: str) -> None:
-        assert metric in RANKING_METRICS
-
-    def test_正常系_メトリクスがURLパスセグメントとして有効であること(self) -> None:
-        """Each metric must be valid as a URL path segment (lowercase, hyphens only)."""
-        import re
-
-        pattern = re.compile(r"^[a-z][a-z0-9\-]*$")
-        for metric in RANKING_METRICS:
-            assert pattern.match(metric), (
-                f"Metric '{metric}' is not a valid URL path segment"
-            )
+        assert len(table_names) == 6
 
 
 class TestTypingFinalAnnotations:
@@ -357,12 +227,9 @@ class TestTypingFinalAnnotations:
             "TABLE_COMPANIES",
             "TABLE_FINANCIALS",
             "TABLE_RATIOS",
-            "TABLE_ANALYSES",
             "TABLE_TEXT_BLOCKS",
-            "TABLE_RANKINGS",
             "TABLE_INDUSTRIES",
             "TABLE_INDUSTRY_DETAILS",
-            "RANKING_METRICS",
         ]
 
         for name in expected_constants:
@@ -395,22 +262,19 @@ class TestModuleExports:
             "DEFAULT_TIMEOUT",
             "EDINET_API_KEY_ENV",
             "EDINET_DB_PATH_ENV",
-            "RANKING_METRICS",
             "RATE_LIMIT_FILENAME",
             "SAFE_MARGIN",
             "SYNC_STATE_FILENAME",
-            "TABLE_ANALYSES",
             "TABLE_COMPANIES",
             "TABLE_FINANCIALS",
             "TABLE_INDUSTRIES",
             "TABLE_INDUSTRY_DETAILS",
-            "TABLE_RANKINGS",
             "TABLE_RATIOS",
             "TABLE_TEXT_BLOCKS",
         }
         assert set(mod.__all__) == expected
 
-    def test_正常系_allの要素数が20であること(self) -> None:
+    def test_正常系_allの要素数が17であること(self) -> None:
         import market.edinet.constants as mod
 
-        assert len(mod.__all__) == 20
+        assert len(mod.__all__) == 17

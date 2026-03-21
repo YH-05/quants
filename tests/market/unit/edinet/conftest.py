@@ -59,7 +59,7 @@ def sample_config(tmp_path: Path) -> EdinetConfig:
     """
     return EdinetConfig(
         api_key="test_edinet_api_key_12345",
-        db_path=tmp_path / "edinet.duckdb",
+        db_path=tmp_path / "edinet.db",
     )
 
 

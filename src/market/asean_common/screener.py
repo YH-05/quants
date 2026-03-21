@@ -127,7 +127,10 @@ def _query_screener(market: AseanMarket) -> tuple[int, pd.DataFrame]:
     Exception
         If the API query fails.
     """
-    from tradingview_screener import Column, Query
+    from tradingview_screener import (  # pyright: ignore[reportMissingImports]
+        Column,
+        Query,
+    )
 
     tv_market = SCREENER_MARKET_MAP[market]
     logger.debug(
