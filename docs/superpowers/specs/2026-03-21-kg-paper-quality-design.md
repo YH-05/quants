@@ -22,7 +22,10 @@
 - 論文系Source: 221件（paper 158 + report 63）
 - `arxiv-*`: 98件（AUTHORED_BY, MAKES_CLAIM, USES_METHOD あり）
 - `src-*`: 89件（Topic 以外の接続なし — Claims, Methods, Authors 全て欠落）
+- `jsai2026-*` / UUID: 34件（JSAI 2026 カンファレンス論文。Claim/Method接続あり、arxiv-*と同等品質）
 - CITES リレーション: 4件のみ（密度1.8%）
+
+**パイプライン分類**: チェック D では `arxiv-*` と `jsai2026-*`/UUID を合算して「connected」パイプライン、`src-*` を「unconnected」パイプラインとして比較する。
 
 ## フェーズA: スキル改善
 
@@ -64,24 +67,39 @@
 | Schema Compliance | 5% | 5% |
 | LLM-as-Judge | 15% | 12% |
 | **Research Paper Quality** | — | **15%** |
+| **合計** | **100%** | **100%** |
+
+**LLM-as-Judge 内部重み変更**: 15% → 12% に伴い、Claim/Fact精度 8% → 6.5%、創発的発見 7% → 5.5% に調整。
 
 #### Phase 1.7 の6チェックと内部重み
 
 | チェック | 内部重み | スコア算出 |
 |---------|---------|----------|
-| A. source_type別ブレークダウン | 20% | paper/report の加重充填率 |
-| B. スキーマドリフト検出 | 15% | 未定義プロパティ数の逆数 |
-| C. Author整合性 | 20% | authors文字列あり & AUTHORED_BY なし の率の逆数 |
-| D. パイプライン別品質差分 | 20% | パイプライン間の接続率差分（差が小さいほど高スコア） |
-| E. 重複Source検出 | 10% | 重複URL率の逆数 |
-| F. 引用ネットワーク密度 | 15% | CITES数 / 論文数 |
+| A. source_type別ブレークダウン | 20% | 下記算出式参照 |
+| B. スキーマドリフト検出 | 15% | 下記算出式参照 |
+| C. Author整合性 | 20% | 下記算出式参照 |
+| D. パイプライン別品質差分 | 20% | 下記算出式参照 |
+| E. 重複Source検出 | 10% | 下記算出式参照 |
+| F. 引用ネットワーク密度 | 15% | 下記算出式参照 |
+| **合計** | **100%** | |
+
+#### スコア算出式
+
+全チェックで統一式 `max(0, 1.0 - 問題件数 / 総対象件数)` を基本とする。
+
+- **A**: `0.4 × プロパティ充填率 + 0.6 × 接続率`。充填率 = paper/report の `abstract`, `venue`, `published_at` の加重充填率（重み: 推奨=0.7）。接続率 = AUTHORED_BY/MAKES_CLAIM/USES_METHOD のいずれかを持つ割合。paper と report は件数比例で加重。
+- **B**: `max(0, 1.0 - 未定義プロパティ種類数 / 全プロパティ種類数)`。1種類でも未定義があれば減点。
+- **C**: `max(0, 1.0 - authors文字列のみの件数 / authors文字列を持つ総件数)`。
+- **D**: `max(0, 1.0 - |connected接続率 - unconnected接続率|)`。接続率 = 3リレーション（AUTHORED_BY, MAKES_CLAIM, USES_METHOD）のいずれかを持つ割合。connected = `arxiv-*` + `jsai2026-*`/UUID、unconnected = `src-*`。**注**: このチェックはパイプライン間の**均一性**を計測する。絶対的な接続品質はチェック A がカバーするため、A と D は相補的に機能する。
+- **E**: `max(0, 1.0 - 重複URLペア数 / 総Source件数)`。
+- **F**: `min(1.0, CITES件数 / 論文件数)`。密度1.0以上は1.0にクランプ。
 
 #### Cypherクエリ
 
 **A. source_type別ブレークダウン:**
 
 ```cypher
--- 充填率
+// 充填率
 MATCH (s:Source)
 WHERE s.source_type IN ['paper', 'report']
 RETURN s.source_type AS type, count(s) AS total,
@@ -90,7 +108,7 @@ RETURN s.source_type AS type, count(s) AS total,
        count(s.published_at) AS has_published_at,
        count(s.fetched_at) AS has_fetched_at
 
--- 接続率
+// 接続率
 MATCH (s:Source)
 WHERE s.source_type IN ['paper', 'report']
 OPTIONAL MATCH (s)-[:AUTHORED_BY]->(a:Author)
@@ -136,9 +154,8 @@ RETURN count(s) AS papers_with_string_only,
 MATCH (s:Source)
 WHERE s.source_type IN ['paper', 'report']
 WITH s,
-     CASE WHEN s.source_id STARTS WITH 'arxiv-' THEN 'arxiv'
-          WHEN s.source_id STARTS WITH 'src-' THEN 'src'
-          ELSE 'other' END AS pipeline
+     CASE WHEN s.source_id STARTS WITH 'src-' THEN 'unconnected'
+          ELSE 'connected' END AS pipeline
 OPTIONAL MATCH (s)-[:AUTHORED_BY]->(a:Author)
 OPTIONAL MATCH (s)-[:MAKES_CLAIM]->(c:Claim)
 OPTIONAL MATCH (s)-[:USES_METHOD]->(m:Method)
@@ -155,10 +172,11 @@ RETURN pipeline, count(s) AS total,
 **E. 重複Source検出:**
 
 ```cypher
-MATCH (s1:Source), (s2:Source)
-WHERE s1.url = s2.url
-AND s1.source_id < s2.source_id
-RETURN s1.source_id AS id1, s2.source_id AS id2, s1.url AS url
+MATCH (s:Source)
+WHERE s.url IS NOT NULL
+WITH s.url AS url, collect(s.source_id) AS ids, count(s) AS cnt
+WHERE cnt > 1
+RETURN url, ids
 ```
 
 **F. 引用ネットワーク密度:**
@@ -167,8 +185,10 @@ RETURN s1.source_id AS id1, s2.source_id AS id2, s1.url AS url
 MATCH (s:Source)
 WHERE s.source_type IN ['paper', 'report']
 WITH count(s) AS paper_count
-OPTIONAL MATCH ()-[r:CITES]->()
-WITH paper_count, count(r) AS cites_count
+CALL {
+    MATCH ()-[r:CITES]->()
+    RETURN count(r) AS cites_count
+}
 RETURN paper_count, cites_count,
        toFloat(cites_count) / paper_count AS density
 ```
@@ -240,7 +260,7 @@ RETURN paper_count, cites_count,
 | `empirical_result` | `analysis` | 実験結果の解釈 |
 | `finding` | `analysis` | 発見の分析 |
 | `result` | `analysis` | 結果の報告 |
-| `methodology` | `analysis` | 手法の提案 |
+| `methodology` | `analysis` | 手法の適用・分析（実データで content を確認し、`recommendation` が適切な場合は個別判断） |
 | `hypothesis` | `prediction` | 仮説の提示 |
 | `benchmark_result` | `analysis` | ベンチマーク結果 |
 | `novelty` | `analysis` | 新規性の主張 |
@@ -249,7 +269,7 @@ RETURN paper_count, cites_count,
 
 89件の `src-*` 論文は `abstract` を持つため、LLMによる Claim/Method 抽出が可能。ただし工数が大きいため、以下の段階的アプローチを取る:
 
-1. 高引用・高関連度の論文から優先的に抽出（Topic の重要度でフィルタ）
+1. 高関連度の論文から優先的に抽出（Topic count >= 3 または is_meta Topic に接続しているもの）
 2. バッチサイズ10件ずつ、品質確認しながら段階実行
 3. 抽出後に `/kg-quality-check` を再実行し、スコア改善を確認
 
@@ -265,5 +285,5 @@ RETURN paper_count, cites_count,
 | ファイル | 変更内容 |
 |---------|---------|
 | `data/config/knowledge-graph-schema.yaml` | Source に `abstract`, `venue` 追加 |
-| `.claude/skills/kg-quality-check/SKILL.md` | Phase 1.7 追加、重み再配分、レポートフォーマット更新 |
-| `.claude/commands/kg-quality-check.md` | 変更なし（SKILL.md を参照するため） |
+| `.claude/skills/kg-quality-check/SKILL.md` | Phase 1.7 追加、重み再配分、レポートフォーマット更新、冒頭 description を「7カテゴリ」に更新、LLM-as-Judge 内部重み更新 |
+| `.claude/commands/kg-quality-check.md` | Phase 1 箇条書きに Research Paper Quality を追加 |
