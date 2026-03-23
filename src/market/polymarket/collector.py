@@ -182,6 +182,8 @@ class PolymarketCollector:
         self,
         *,
         limit: int = 100,
+        active: bool | None = None,
+        closed: bool | None = None,
     ) -> tuple[int, list[PolymarketEvent]]:
         """Collect events from the API and persist to storage.
 
@@ -192,15 +194,25 @@ class PolymarketCollector:
         ----------
         limit : int
             Maximum number of events to fetch (default: 100).
+        active : bool | None
+            If ``True``, request only active events from the Gamma API.
+            If ``None``, no active filter is applied.
+        closed : bool | None
+            If ``False``, request only non-closed events from the Gamma API.
+            If ``None``, no closed filter is applied.
 
         Returns
         -------
         tuple[int, list[PolymarketEvent]]
             Tuple of (count, events_list). On failure returns ``(0, [])``.
         """
-        logger.info("Collecting events", limit=limit)
+        logger.info("Collecting events", limit=limit, active=active, closed=closed)
         try:
-            events = self._client.get_events(limit=limit)
+            events = self._client.get_events(
+                limit=limit,
+                active=active,
+                closed=closed,
+            )
             if not events:
                 logger.info("No events found")
                 return 0, []
@@ -339,6 +351,10 @@ class PolymarketCollector:
         Fetches OI data via ``client.get_open_interest()`` and saves
         as a JSON snapshot via ``storage.insert_oi_snapshot()``.
 
+        If the OI endpoint returns HTTP 404 (deprecated / unavailable),
+        the error is logged as a warning and collection is skipped
+        without recording it as a collection error.
+
         Parameters
         ----------
         condition_id : str
@@ -347,8 +363,10 @@ class PolymarketCollector:
         Returns
         -------
         int
-            ``1`` on success, ``0`` on failure.
+            ``1`` on success, ``0`` on failure or skip.
         """
+        from market.polymarket.errors import PolymarketAPIError
+
         logger.info("Collecting open interest", condition_id=condition_id)
         try:
             oi_data = self._client.get_open_interest(condition_id)
@@ -364,6 +382,19 @@ class PolymarketCollector:
             )
             logger.info("OI snapshot collected and saved", condition_id=condition_id)
             return 1
+        except PolymarketAPIError as exc:
+            if exc.status_code == 404:
+                logger.warning(
+                    "OI endpoint returned 404, skipping (endpoint may be deprecated)",
+                    condition_id=condition_id,
+                    url=exc.url,
+                )
+                return 0
+            logger.error(
+                "Failed to collect OI", condition_id=condition_id, exc_info=True
+            )
+            self._errors.append(f"Failed to collect OI for market {condition_id}")
+            return 0
         except Exception as exc:
             logger.error(
                 "Failed to collect OI", condition_id=condition_id, exc_info=True
@@ -377,7 +408,11 @@ class PolymarketCollector:
         Iterates over the given token IDs, fetches each order book
         via ``client.get_orderbook()``, and saves each snapshot via
         ``storage.insert_orderbook_snapshot()``. Errors on individual
-        tokens are logged and recorded but do not halt the overall process.
+        tokens are logged as warnings and do not halt the overall process.
+
+        For closed or inactive markets the CLOB API may return errors
+        (no active orderbook). These are downgraded to warnings and
+        not recorded as collection errors.
 
         Parameters
         ----------
@@ -389,6 +424,8 @@ class PolymarketCollector:
         int
             Number of order book snapshots successfully collected.
         """
+        from market.polymarket.errors import PolymarketAPIError
+
         logger.info("Collecting orderbooks", token_count=len(token_ids))
         collected = 0
         for token_id in token_ids:
@@ -401,11 +438,19 @@ class PolymarketCollector:
                 )
                 collected += 1
                 logger.debug("Orderbook snapshot saved", token_id=token_id)
-            except Exception as exc:
-                logger.error(
-                    "Failed to collect orderbook", token_id=token_id, exc_info=True
+            except PolymarketAPIError as exc:
+                # Closed/inactive markets often have no orderbook -- skip gracefully
+                logger.warning(
+                    "Orderbook unavailable (API error), skipping",
+                    token_id=token_id,
+                    status_code=exc.status_code,
                 )
-                self._errors.append(f"Failed to collect orderbook for token {token_id}")
+            except Exception as exc:
+                logger.warning(
+                    "Failed to collect orderbook, skipping",
+                    token_id=token_id,
+                    error=str(exc),
+                )
 
         logger.info("Orderbooks collected", total=collected)
         return collected
@@ -417,6 +462,10 @@ class PolymarketCollector:
         and saves it as a JSON snapshot via
         ``storage.insert_leaderboard_snapshot()``.
 
+        If the leaderboard endpoint returns HTTP 404 (deprecated),
+        the error is logged as a warning and collection is skipped
+        without recording it as a collection error.
+
         Parameters
         ----------
         limit : int
@@ -425,8 +474,10 @@ class PolymarketCollector:
         Returns
         -------
         int
-            ``1`` on success, ``0`` on failure.
+            ``1`` on success, ``0`` on failure or skip.
         """
+        from market.polymarket.errors import PolymarketAPIError
+
         logger.info("Collecting leaderboard", limit=limit)
         try:
             entries = self._client.get_leaderboard(limit=limit)
@@ -441,6 +492,17 @@ class PolymarketCollector:
             )
             logger.info("Leaderboard snapshot collected and saved")
             return 1
+        except PolymarketAPIError as exc:
+            if exc.status_code == 404:
+                logger.warning(
+                    "Leaderboard endpoint returned 404, skipping "
+                    "(endpoint may be deprecated)",
+                    url=exc.url,
+                )
+                return 0
+            logger.error("Failed to collect leaderboard", exc_info=True)
+            self._errors.append("Failed to collect leaderboard")
+            return 0
         except Exception as exc:
             logger.error("Failed to collect leaderboard", exc_info=True)
             self._errors.append("Failed to collect leaderboard")
@@ -489,7 +551,12 @@ class PolymarketCollector:
     # Full collection
     # ------------------------------------------------------------------
 
-    def collect_all(self, *, event_limit: int = 100) -> CollectionResult:
+    def collect_all(
+        self,
+        *,
+        event_limit: int = 100,
+        active_only: bool = True,
+    ) -> CollectionResult:
         """Execute full data collection pipeline.
 
         Collects all data types in sequence:
@@ -503,6 +570,9 @@ class PolymarketCollector:
         ----------
         event_limit : int
             Maximum number of events to fetch (default: 100).
+        active_only : bool
+            If ``True`` (default), collect only active, non-closed events.
+            Set to ``False`` to collect all events regardless of status.
 
         Returns
         -------
@@ -512,10 +582,19 @@ class PolymarketCollector:
         started_at = datetime.now(tz=UTC)
         self._errors = []
 
-        logger.info("Starting full Polymarket data collection")
+        logger.info(
+            "Starting full Polymarket data collection",
+            active_only=active_only,
+        )
 
         # Step 1: Collect events (includes cascading markets + tokens)
-        events_count, collected_events = self.collect_events(limit=event_limit)
+        active_flag = True if active_only else None
+        closed_flag = False if active_only else None
+        events_count, collected_events = self.collect_events(
+            limit=event_limit,
+            active=active_flag,
+            closed=closed_flag,
+        )
 
         # Extract condition_ids and token_ids from collected events
         condition_ids: list[str] = []
@@ -524,7 +603,8 @@ class PolymarketCollector:
 
         for event in collected_events:
             for market in event.markets:
-                condition_ids.append(market.condition_id)
+                if market.condition_id:
+                    condition_ids.append(market.condition_id)
                 markets_count += 1
                 for tok in market.tokens:
                     tok_id = tok.get("token_id")

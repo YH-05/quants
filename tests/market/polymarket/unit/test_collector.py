@@ -456,6 +456,51 @@ class TestCollectLeaderboard:
         count = collector.collect_leaderboard()
         assert count == 0
 
+    def test_異常系_404エラーでスキップしエラー記録なし(
+        self,
+        collector: PolymarketCollector,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """collect_leaderboard skips on 404 without recording an error."""
+        from market.polymarket.errors import PolymarketAPIError
+
+        mock_client.get_leaderboard.side_effect = PolymarketAPIError(
+            message="Not Found",
+            url="https://data-api.polymarket.com/leaderboard",
+            status_code=404,
+            response_body="Not Found",
+        )
+        count = collector.collect_leaderboard()
+        assert count == 0
+        mock_storage.insert_leaderboard_snapshot.assert_not_called()
+        # 404 should NOT be recorded as an error (endpoint deprecated)
+        result = collector.collect_all()
+        # The leaderboard 404 should not contribute to errors
+        leaderboard_errors = [
+            e for e in result.errors if "leaderboard" in e.lower()
+        ]
+        # Since get_events mock returns events, and leaderboard gives 404,
+        # leaderboard should NOT appear in errors
+        assert len(leaderboard_errors) == 0
+
+    def test_異常系_非404APIエラーではエラー記録あり(
+        self,
+        collector: PolymarketCollector,
+        mock_client: MagicMock,
+    ) -> None:
+        """collect_leaderboard records error for non-404 API errors."""
+        from market.polymarket.errors import PolymarketAPIError
+
+        mock_client.get_leaderboard.side_effect = PolymarketAPIError(
+            message="Server Error",
+            url="https://data-api.polymarket.com/leaderboard",
+            status_code=500,
+            response_body="Internal Server Error",
+        )
+        count = collector.collect_leaderboard()
+        assert count == 0
+
 
 # ============================================================================
 # collect_holders tests

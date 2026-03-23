@@ -150,6 +150,9 @@ class PolymarketClient:
         limit: int = 100,
         offset: int = 0,
         options: FetchOptions | None = None,
+        *,
+        active: bool | None = None,
+        closed: bool | None = None,
     ) -> list[PolymarketEvent]:
         """Get a list of events from the Gamma API.
 
@@ -163,6 +166,12 @@ class PolymarketClient:
             Pagination offset (default: 0).
         options : FetchOptions | None
             Fetch options (cache control).
+        active : bool | None
+            If ``True``, filter to only active events.
+            If ``None`` (default), no active filter is applied.
+        closed : bool | None
+            If ``False``, filter to only non-closed events.
+            If ``None`` (default), no closed filter is applied.
 
         Returns
         -------
@@ -187,9 +196,16 @@ class PolymarketClient:
             "limit": str(limit),
             "offset": str(offset),
         }
+        if active is not None:
+            params["active"] = str(active).lower()
+        if closed is not None:
+            params["closed"] = str(closed).lower()
 
+        # Include filter state in cache key for distinct caching
+        active_tag = f"_active{active}" if active is not None else ""
+        closed_tag = f"_closed{closed}" if closed is not None else ""
         cache_key = generate_cache_key(
-            symbol=f"events_limit{limit}_offset{offset}",
+            symbol=f"events_limit{limit}_offset{offset}{active_tag}{closed_tag}",
             source="polymarket_gamma",
         )
 

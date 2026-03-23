@@ -218,10 +218,23 @@ class TestTradesRoundTrip:
         fetched_at = datetime.now(tz=UTC).isoformat()
         storage.upsert_trades(trades, fetched_at=fetched_at)
 
-        df = storage.get_trades(condition_id)
-        assert len(df) == len(trades)
+        # The new Data API may return trades from various markets
+        # (conditionId in response may differ from the query condition_id).
+        # Verify storage round-trip by querying per trade's own market field.
+        first_trade_market = trades[0].market or ""
+        df = storage.get_trades(first_trade_market)
+        expected_count = sum(
+            1 for t in trades if (t.market or "") == first_trade_market
+        )
+        assert len(df) == expected_count
         assert "id" in df.columns
         assert "price" in df.columns
+
+        # Also verify total record count matches
+        stats = storage.get_stats()
+        from market.polymarket.storage_constants import TABLE_TRADES
+
+        assert stats[TABLE_TRADES] == len(trades)
 
 
 class TestCollectorIntegration:

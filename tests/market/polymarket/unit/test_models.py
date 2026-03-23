@@ -233,16 +233,86 @@ class TestTradeRecord:
         assert trade.id == "trade-001"
         assert not hasattr(trade, "fee")
 
-    def test_異常系_id欠落でValidationError(self) -> None:
-        with pytest.raises(ValidationError):
-            TradeRecord.model_validate(
-                {
-                    "market": "0xabc123",
-                    "asset_id": "asset123",
-                    "price": 0.65,
-                    "size": 500.0,
-                }
-            )
+    def test_正常系_id省略で合成IDが生成される(self) -> None:
+        """When id is absent, a deterministic synthetic ID is generated."""
+        trade = TradeRecord.model_validate(
+            {
+                "market": "0xabc123",
+                "asset_id": "asset123",
+                "price": 0.65,
+                "size": 500.0,
+            }
+        )
+        assert trade.id is not None
+        assert len(trade.id) == 16  # SHA-256 hex[:16]
+
+    def test_正常系_新APIスキーマでmodel_validate(self) -> None:
+        """New Data API schema (asset, conditionId, Unix timestamp) parses correctly."""
+        data = {
+            "proxyWallet": "0x1234",
+            "side": "BUY",
+            "asset": "75467129615908319583031474642658885479135630431889036121812713428992454630178",
+            "conditionId": "0xb48621f7eba07b0a3eeabc6afb09ae42490239903997b9d412b0f69aeb040c8b",
+            "size": 3,
+            "price": 0.251,
+            "timestamp": 1774249691,
+            "title": "BitBoy convicted?",
+            "slug": "bitboy-convicted",
+            "outcome": "Yes",
+            "outcomeIndex": 0,
+            "name": "wanglin2",
+            "transactionHash": "0xdeadbeef",
+            "eventSlug": "bitboy-convicted",
+        }
+        trade = TradeRecord.model_validate(data)
+        assert (
+            trade.asset_id
+            == "75467129615908319583031474642658885479135630431889036121812713428992454630178"
+        )
+        assert (
+            trade.market
+            == "0xb48621f7eba07b0a3eeabc6afb09ae42490239903997b9d412b0f69aeb040c8b"
+        )
+        assert trade.price == pytest.approx(0.251)
+        assert trade.size == pytest.approx(3.0)
+        assert trade.side == "BUY"
+        assert trade.timestamp is not None
+        # Synthetic ID should be generated
+        assert trade.id is not None
+        assert len(trade.id) == 16
+
+    def test_正常系_Unixタイムスタンプがdatetimeに変換される(self) -> None:
+        """Integer Unix timestamps are converted to datetime objects."""
+        trade = TradeRecord(
+            asset_id="asset123",
+            price=0.5,
+            size=10,
+            timestamp=1700000000,
+        )
+        assert trade.timestamp is not None
+        assert trade.timestamp.year == 2023
+        assert trade.timestamp.tzinfo is not None
+
+    def test_正常系_合成IDは決定的(self) -> None:
+        """Synthetic IDs are deterministic: same inputs produce same ID."""
+        data = {
+            "asset": "token1",
+            "price": 0.5,
+            "size": 10,
+            "timestamp": 1700000000,
+        }
+        trade1 = TradeRecord.model_validate(data)
+        trade2 = TradeRecord.model_validate(data)
+        assert trade1.id == trade2.id
+
+    def test_正常系_market省略でNoneからemptyに(self) -> None:
+        """When market (conditionId) is absent, it defaults to None."""
+        trade = TradeRecord(
+            asset_id="asset123",
+            price=0.5,
+            size=10,
+        )
+        assert trade.market is None
 
 
 # =============================================================================
@@ -323,6 +393,117 @@ class TestPolymarketMarket:
     def test_異常系_question欠落でValidationError(self) -> None:
         with pytest.raises(ValidationError):
             PolymarketMarket.model_validate({"condition_id": "0xabc123", "tokens": []})
+
+    def test_正常系_camelCaseのconditionIdでmodel_validate(self) -> None:
+        """conditionId (camelCase alias) is accepted via populate_by_name."""
+        data = {
+            "conditionId": "0xabc123",
+            "question": "Will X happen?",
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert market.condition_id == "0xabc123"
+
+    def test_正常系_camelCaseのendDateIsoでmodel_validate(self) -> None:
+        """endDateIso (camelCase alias) is accepted."""
+        data = {
+            "conditionId": "0xabc123",
+            "question": "Will X happen?",
+            "endDateIso": "2026-12-31",
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert market.end_date_iso == "2026-12-31"
+
+    def test_正常系_tokensが省略されると空リスト(self) -> None:
+        """tokens defaults to empty list when not provided."""
+        data = {
+            "condition_id": "0xabc123",
+            "question": "Will X happen?",
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert market.tokens == []
+
+    def test_正常系_clobTokenIdsからtokensを構築(self) -> None:
+        """tokens are built from clobTokenIds + outcomes + outcomePrices."""
+        data = {
+            "conditionId": "0xabc123",
+            "question": "Will X happen?",
+            "clobTokenIds": '["tok1", "tok2"]',
+            "outcomes": '["Yes", "No"]',
+            "outcomePrices": '["0.65", "0.35"]',
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert len(market.tokens) == 2
+        assert market.tokens[0]["token_id"] == "tok1"
+        assert market.tokens[0]["outcome"] == "Yes"
+        assert market.tokens[0]["price"] == pytest.approx(0.65)
+        assert market.tokens[1]["token_id"] == "tok2"
+        assert market.tokens[1]["outcome"] == "No"
+        assert market.tokens[1]["price"] == pytest.approx(0.35)
+
+    def test_正常系_clobTokenIdsがリストの場合もtokens構築(self) -> None:
+        """clobTokenIds can also be a Python list (not only JSON string)."""
+        data = {
+            "conditionId": "0xabc123",
+            "question": "Will X happen?",
+            "clobTokenIds": ["tok1", "tok2"],
+            "outcomes": ["Yes", "No"],
+            "outcomePrices": ["0.65", "0.35"],
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert len(market.tokens) == 2
+        assert market.tokens[0]["token_id"] == "tok1"
+
+    def test_正常系_tokensが存在する場合clobTokenIdsは無視(self) -> None:
+        """When tokens is already provided, clobTokenIds is not used."""
+        data = {
+            "conditionId": "0xabc123",
+            "question": "Will X happen?",
+            "tokens": [{"token_id": "existing", "outcome": "Yes", "price": 0.5}],
+            "clobTokenIds": '["overridden"]',
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert len(market.tokens) == 1
+        assert market.tokens[0]["token_id"] == "existing"
+
+    def test_正常系_volumeとliquidityが文字列でも変換(self) -> None:
+        """volume and liquidity accept string values and coerce to float."""
+        data = {
+            "condition_id": "0xabc123",
+            "question": "Will X happen?",
+            "volume": "32257.445115",
+            "liquidity": "0",
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert market.volume == pytest.approx(32257.445115)
+        assert market.liquidity == pytest.approx(0.0)
+
+    def test_正常系_Gamma_API風の完全レスポンスでmodel_validate(self) -> None:
+        """Full Gamma API-style response (camelCase, JSON strings) parses correctly."""
+        data = {
+            "id": "239826",
+            "conditionId": "0xabc123def456",
+            "question": "Will X happen by 2026?",
+            "slug": "will-x-happen",
+            "endDateIso": "2026-12-31",
+            "active": True,
+            "closed": False,
+            "volume": "1000000.50",
+            "liquidity": "50000",
+            "clobTokenIds": '["tok-yes-123", "tok-no-456"]',
+            "outcomes": '["Yes", "No"]',
+            "outcomePrices": '["0.65", "0.35"]',
+            "marketType": "normal",
+            "archived": False,
+        }
+        market = PolymarketMarket.model_validate(data)
+        assert market.condition_id == "0xabc123def456"
+        assert market.end_date_iso == "2026-12-31"
+        assert market.volume == pytest.approx(1000000.50)
+        assert market.liquidity == pytest.approx(50000.0)
+        assert len(market.tokens) == 2
+        assert market.tokens[0]["token_id"] == "tok-yes-123"
+        assert market.tokens[0]["outcome"] == "Yes"
+        assert market.tokens[0]["price"] == pytest.approx(0.65)
 
 
 # =============================================================================
@@ -439,3 +620,60 @@ class TestPolymarketEvent:
         assert dumped["id"] == "event-001"
         assert dumped["title"] == "Event"
         assert dumped["markets"] == []
+
+    def test_正常系_camelCaseのstartDateとendDateで検証(self) -> None:
+        """startDate and endDate (camelCase aliases) are accepted."""
+        data = {
+            "id": "event-001",
+            "title": "Event",
+            "slug": "event",
+            "markets": [],
+            "startDate": "2026-01-01T00:00:00Z",
+            "endDate": "2026-12-31T00:00:00Z",
+        }
+        event = PolymarketEvent.model_validate(data)
+        assert event.start_date == "2026-01-01T00:00:00Z"
+        assert event.end_date == "2026-12-31T00:00:00Z"
+
+    def test_正常系_volumeとliquidityが文字列でも変換(self) -> None:
+        """volume and liquidity accept string values and coerce to float."""
+        data = {
+            "id": "event-001",
+            "title": "Event",
+            "slug": "event",
+            "markets": [],
+            "volume": "5000000.0",
+            "liquidity": "2000000",
+        }
+        event = PolymarketEvent.model_validate(data)
+        assert event.volume == pytest.approx(5000000.0)
+        assert event.liquidity == pytest.approx(2000000.0)
+
+    def test_正常系_ネストされたマーケットでcamelCase対応(self) -> None:
+        """Nested markets with camelCase fields parse correctly."""
+        data = {
+            "id": "event-001",
+            "title": "Event",
+            "slug": "event",
+            "markets": [
+                {
+                    "conditionId": "0xabc123",
+                    "question": "Will X happen?",
+                    "clobTokenIds": '["tok1"]',
+                    "outcomes": '["Yes"]',
+                    "outcomePrices": '["0.75"]',
+                    "endDateIso": "2026-12-31",
+                    "volume": "1000",
+                }
+            ],
+        }
+        event = PolymarketEvent.model_validate(data)
+        assert len(event.markets) == 1
+        market = event.markets[0]
+        assert market.condition_id == "0xabc123"
+        assert market.end_date_iso == "2026-12-31"
+        assert market.volume == pytest.approx(1000.0)
+        assert len(market.tokens) == 1
+        assert market.tokens[0]["token_id"] == "tok1"
+        assert market.tokens[0]["outcome"] == "Yes"
+        assert market.tokens[0]["price"] == pytest.approx(0.75)

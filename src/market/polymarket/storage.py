@@ -576,8 +576,8 @@ class PolymarketStorage:
 
         params: list[tuple[Any, ...]] = [
             (
-                trade.id,
-                trade.market,
+                trade.id or "",
+                trade.market or "",
                 trade.asset_id,
                 _validate_finite(trade.price, "trade.price"),
                 _validate_finite(trade.size, "trade.size"),
