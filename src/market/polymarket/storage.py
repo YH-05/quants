@@ -41,6 +41,8 @@ import os
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
+import pandas as pd
+
 from database.db.connection import get_db_path
 from database.db.sqlite_client import SQLiteClient
 from market.polymarket.storage_constants import (
@@ -660,8 +662,225 @@ class PolymarketStorage:
         )
 
     # ------------------------------------------------------------------
+    # Query methods
+    # ------------------------------------------------------------------
+
+    def get_events(self, *, active_only: bool = False) -> pd.DataFrame:
+        """Get events as a DataFrame.
+
+        Parameters
+        ----------
+        active_only : bool
+            If ``True``, return only events where ``active = 1``.
+            Defaults to ``False`` (return all events).
+
+        Returns
+        -------
+        pd.DataFrame
+            Events data. Returns an empty DataFrame if no events match.
+        """
+        logger.debug("Getting events", active_only=active_only)
+        sql = f"SELECT * FROM {TABLE_EVENTS}"  # nosec B608
+        params: list[Any] = []
+        if active_only:
+            sql += " WHERE active = ?"
+            params.append(1)
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=params)
+        logger.info("Events retrieved", count=len(df))
+        return df
+
+    def get_markets(
+        self,
+        *,
+        event_id: str | None = None,
+        active_only: bool = False,
+    ) -> pd.DataFrame:
+        """Get markets as a DataFrame.
+
+        Parameters
+        ----------
+        event_id : str | None
+            If provided, filter markets by parent event ID.
+        active_only : bool
+            If ``True``, return only markets where ``active = 1``.
+            Defaults to ``False`` (return all markets).
+
+        Returns
+        -------
+        pd.DataFrame
+            Markets data. Returns an empty DataFrame if no markets match.
+        """
+        logger.debug("Getting markets", event_id=event_id, active_only=active_only)
+        sql = f"SELECT * FROM {TABLE_MARKETS}"  # nosec B608
+        conditions: list[str] = []
+        params: list[Any] = []
+        if event_id is not None:
+            conditions.append("event_id = ?")
+            params.append(event_id)
+        if active_only:
+            conditions.append("active = ?")
+            params.append(1)
+        if conditions:
+            sql += " WHERE " + " AND ".join(conditions)
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=params)
+        logger.info("Markets retrieved", count=len(df))
+        return df
+
+    def get_tokens(self, condition_id: str) -> pd.DataFrame:
+        """Get tokens for a specific market as a DataFrame.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition ID to filter tokens by.
+
+        Returns
+        -------
+        pd.DataFrame
+            Tokens data. Returns an empty DataFrame if no tokens match.
+        """
+        logger.debug("Getting tokens", condition_id=condition_id)
+        sql = f"SELECT * FROM {TABLE_TOKENS} WHERE condition_id = ?"  # nosec B608
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=[condition_id])
+        logger.info("Tokens retrieved", count=len(df))
+        return df
+
+    def get_price_history(
+        self,
+        token_id: str,
+        interval: PriceInterval | None = None,
+    ) -> pd.DataFrame:
+        """Get price history for a token as a DataFrame.
+
+        Parameters
+        ----------
+        token_id : str
+            The token identifier to retrieve price data for.
+        interval : PriceInterval | None
+            If provided, filter by price interval. Defaults to ``None``
+            (return all intervals).
+
+        Returns
+        -------
+        pd.DataFrame
+            Price history data. Returns an empty DataFrame if no data
+            matches.
+        """
+        logger.debug(
+            "Getting price history",
+            token_id=token_id,
+            interval=str(interval) if interval else None,
+        )
+        sql = f"SELECT * FROM {TABLE_PRICE_HISTORY} WHERE token_id = ?"  # nosec B608
+        params: list[Any] = [token_id]
+        if interval is not None:
+            sql += " AND interval = ?"
+            params.append(str(interval))
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=params)
+        logger.info("Price history retrieved", count=len(df))
+        return df
+
+    def get_trades(
+        self,
+        condition_id: str,
+        limit: int | None = None,
+    ) -> pd.DataFrame:
+        """Get trades for a specific market as a DataFrame.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition ID (stored in the ``market`` column).
+        limit : int | None
+            If provided, limit the number of returned rows.
+            Defaults to ``None`` (return all trades).
+
+        Returns
+        -------
+        pd.DataFrame
+            Trades data. Returns an empty DataFrame if no trades match.
+        """
+        logger.debug(
+            "Getting trades",
+            condition_id=condition_id,
+            limit=limit,
+        )
+        sql = f"SELECT * FROM {TABLE_TRADES} WHERE market = ?"  # nosec B608
+        params: list[Any] = [condition_id]
+        if limit is not None:
+            sql += " LIMIT ?"
+            params.append(limit)
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=params)
+        logger.info("Trades retrieved", count=len(df))
+        return df
+
+    def get_oi_snapshots(self, condition_id: str) -> pd.DataFrame:
+        """Get open interest snapshots for a market as a DataFrame.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition ID.
+
+        Returns
+        -------
+        pd.DataFrame
+            OI snapshot data. Returns an empty DataFrame if no data
+            matches.
+        """
+        logger.debug("Getting OI snapshots", condition_id=condition_id)
+        sql = f"SELECT * FROM {TABLE_OI_SNAPSHOTS} WHERE condition_id = ?"  # nosec B608
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=[condition_id])
+        logger.info("OI snapshots retrieved", count=len(df))
+        return df
+
+    # ------------------------------------------------------------------
     # Statistics
     # ------------------------------------------------------------------
+
+    def count_records(self) -> dict[str, int]:
+        """Get row counts for all 8 tables.
+
+        This is an alias for ``get_stats()`` for API consistency
+        with the Issue specification.
+
+        Returns
+        -------
+        dict[str, int]
+            Dictionary mapping table name to row count.
+        """
+        return self.get_stats()
+
+    def get_collection_summary(self) -> dict[str, Any]:
+        """Get a summary of collected data.
+
+        Returns
+        -------
+        dict[str, Any]
+            Summary dictionary containing:
+
+            - ``record_counts``: dict mapping table name to row count
+            - ``total_records``: total number of rows across all tables
+            - ``event_count``: number of events
+            - ``market_count``: number of markets
+        """
+        logger.debug("Getting collection summary")
+        counts = self.get_stats()
+        total = sum(counts.values())
+        summary: dict[str, Any] = {
+            "record_counts": counts,
+            "total_records": total,
+            "event_count": counts.get(TABLE_EVENTS, 0),
+            "market_count": counts.get(TABLE_MARKETS, 0),
+        }
+        logger.info("Collection summary retrieved", total_records=total)
+        return summary
 
     def get_stats(self) -> dict[str, int]:
         """Get row counts for all 8 tables.

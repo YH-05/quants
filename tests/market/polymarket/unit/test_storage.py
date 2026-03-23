@@ -8,6 +8,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pandas as pd
 import pytest
 
 from market.polymarket.models import (
@@ -952,3 +953,481 @@ class TestUpsertHolders:
 
         stats = pm_storage.get_stats()
         assert stats[TABLE_MARKETS] == 0
+
+
+# ============================================================================
+# Wave 3: Query method tests
+# ============================================================================
+
+
+class TestGetEvents:
+    """Tests for PolymarketStorage.get_events()."""
+
+    def test_正常系_全イベントを取得する(self, pm_storage: PolymarketStorage) -> None:
+        """get_events() returns all events as a DataFrame."""
+        events = [_make_event(f"evt-{i:03d}") for i in range(3)]
+        pm_storage.upsert_events(events, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_events()
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 3
+
+    def test_正常系_active_onlyでアクティブイベントのみ取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_events(active_only=True) returns only active events."""
+        active_event = _make_event("evt-active")
+        inactive_event = PolymarketEvent(
+            id="evt-inactive",
+            title="Inactive Event",
+            slug="inactive-event",
+            markets=[],
+            active=False,
+            closed=True,
+        )
+        pm_storage.upsert_events([active_event, inactive_event], fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_events(active_only=True)
+        assert len(df) == 1
+        assert df.iloc[0]["id"] == "evt-active"
+
+    def test_正常系_active_only_Falseで全イベント取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_events(active_only=False) returns all events including inactive."""
+        active_event = _make_event("evt-active")
+        inactive_event = PolymarketEvent(
+            id="evt-inactive",
+            title="Inactive Event",
+            slug="inactive-event",
+            markets=[],
+            active=False,
+            closed=True,
+        )
+        pm_storage.upsert_events([active_event, inactive_event], fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_events(active_only=False)
+        assert len(df) == 2
+
+    def test_エッジケース_空テーブルで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_events() returns empty DataFrame when table is empty."""
+        df = pm_storage.get_events()
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+    def test_正常系_DataFrameのカラムが正しい(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_events() DataFrame has expected columns."""
+        event = _make_event("evt-001")
+        pm_storage.upsert_events([event], fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_events()
+        expected_columns = {
+            "id",
+            "title",
+            "slug",
+            "description",
+            "start_date",
+            "end_date",
+            "active",
+            "closed",
+            "volume",
+            "liquidity",
+            "fetched_at",
+        }
+        assert expected_columns.issubset(set(df.columns))
+
+
+class TestGetMarkets:
+    """Tests for PolymarketStorage.get_markets()."""
+
+    def test_正常系_全マーケットを取得する(self, pm_storage: PolymarketStorage) -> None:
+        """get_markets() returns all markets as a DataFrame."""
+        markets = [_make_market(f"cond-{i:03d}") for i in range(3)]
+        pm_storage.upsert_markets(markets, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_markets()
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 3
+
+    def test_正常系_event_idでフィルタリング(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_markets(event_id=...) returns only markets for that event."""
+        market1 = _make_market("cond-001")
+        market2 = _make_market("cond-002")
+        pm_storage.upsert_markets([market1], fetched_at=FETCHED_AT, event_id="evt-001")
+        pm_storage.upsert_markets([market2], fetched_at=FETCHED_AT, event_id="evt-002")
+
+        df = pm_storage.get_markets(event_id="evt-001")
+        assert len(df) == 1
+        assert df.iloc[0]["condition_id"] == "cond-001"
+
+    def test_正常系_active_onlyでアクティブマーケットのみ取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_markets(active_only=True) returns only active markets."""
+        active_market = _make_market("cond-active")
+        inactive_market = PolymarketMarket(
+            condition_id="cond-inactive",
+            question="Inactive Market?",
+            tokens=[],
+            active=False,
+            closed=True,
+        )
+        pm_storage.upsert_markets(
+            [active_market, inactive_market], fetched_at=FETCHED_AT
+        )
+
+        df = pm_storage.get_markets(active_only=True)
+        assert len(df) == 1
+        assert df.iloc[0]["condition_id"] == "cond-active"
+
+    def test_正常系_event_idとactive_onlyの組み合わせ(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_markets(event_id=..., active_only=True) applies both filters."""
+        active_in_evt1 = _make_market("cond-001")
+        inactive_in_evt1 = PolymarketMarket(
+            condition_id="cond-002",
+            question="Inactive in evt-001?",
+            tokens=[],
+            active=False,
+            closed=True,
+        )
+        active_in_evt2 = _make_market("cond-003")
+        pm_storage.upsert_markets(
+            [active_in_evt1, inactive_in_evt1],
+            fetched_at=FETCHED_AT,
+            event_id="evt-001",
+        )
+        pm_storage.upsert_markets(
+            [active_in_evt2], fetched_at=FETCHED_AT, event_id="evt-002"
+        )
+
+        df = pm_storage.get_markets(event_id="evt-001", active_only=True)
+        assert len(df) == 1
+        assert df.iloc[0]["condition_id"] == "cond-001"
+
+    def test_エッジケース_空テーブルで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_markets() returns empty DataFrame when table is empty."""
+        df = pm_storage.get_markets()
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+    def test_エッジケース_存在しないevent_idで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_markets(event_id=...) returns empty DataFrame for unknown event."""
+        market = _make_market("cond-001")
+        pm_storage.upsert_markets([market], fetched_at=FETCHED_AT, event_id="evt-001")
+
+        df = pm_storage.get_markets(event_id="evt-nonexistent")
+        assert len(df) == 0
+
+
+class TestGetTokens:
+    """Tests for PolymarketStorage.get_tokens()."""
+
+    def test_正常系_condition_idでトークンを取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_tokens(condition_id) returns tokens for that market."""
+        market = _make_market(
+            "cond-001",
+            tokens=[
+                {"token_id": "tok-yes", "outcome": "Yes", "price": 0.65},
+                {"token_id": "tok-no", "outcome": "No", "price": 0.35},
+            ],
+        )
+        pm_storage.upsert_markets([market], fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_tokens("cond-001")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 2
+
+    def test_正常系_異なるcondition_idのトークンは含まれない(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_tokens() only returns tokens for the specified condition_id."""
+        market1 = _make_market(
+            "cond-001",
+            tokens=[{"token_id": "tok-1", "outcome": "Yes", "price": 0.65}],
+        )
+        market2 = _make_market(
+            "cond-002",
+            tokens=[{"token_id": "tok-2", "outcome": "No", "price": 0.35}],
+        )
+        pm_storage.upsert_markets([market1, market2], fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_tokens("cond-001")
+        assert len(df) == 1
+        assert df.iloc[0]["token_id"] == "tok-1"
+
+    def test_エッジケース_空テーブルで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_tokens() returns empty DataFrame when no tokens exist."""
+        df = pm_storage.get_tokens("cond-nonexistent")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+
+class TestGetPriceHistory:
+    """Tests for PolymarketStorage.get_price_history()."""
+
+    def test_正常系_token_idで価格履歴を取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_price_history(token_id) returns price data as DataFrame."""
+        prices = [
+            PricePoint(t=1700000000, p=0.65),
+            PricePoint(t=1700003600, p=0.70),
+        ]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        df = pm_storage.get_price_history("tok-yes")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 2
+
+    def test_正常系_intervalでフィルタリング(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_price_history(token_id, interval=...) filters by interval."""
+        prices = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_DAY,
+            fetched_at=FETCHED_AT,
+        )
+
+        df = pm_storage.get_price_history("tok-yes", interval=PriceInterval.ONE_HOUR)
+        assert len(df) == 1
+        assert df.iloc[0]["interval"] == "1h"
+
+    def test_正常系_interval指定なしで全インターバル取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_price_history(token_id) without interval returns all intervals."""
+        prices = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_DAY,
+            fetched_at=FETCHED_AT,
+        )
+
+        df = pm_storage.get_price_history("tok-yes")
+        assert len(df) == 2
+
+    def test_エッジケース_空テーブルで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_price_history() returns empty DataFrame when no data exists."""
+        df = pm_storage.get_price_history("tok-nonexistent")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+
+class TestGetTrades:
+    """Tests for PolymarketStorage.get_trades()."""
+
+    def test_正常系_condition_idでトレードを取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_trades(condition_id) returns trades for that market."""
+        trades = [
+            _make_trade("trade-001", market="cond-001"),
+            _make_trade("trade-002", market="cond-001"),
+        ]
+        pm_storage.upsert_trades(trades, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_trades("cond-001")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 2
+
+    def test_正常系_limitでレコード数を制限(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_trades(condition_id, limit=N) returns at most N rows."""
+        trades = [_make_trade(f"trade-{i:03d}", market="cond-001") for i in range(10)]
+        pm_storage.upsert_trades(trades, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_trades("cond-001", limit=3)
+        assert len(df) == 3
+
+    def test_正常系_異なるcondition_idのトレードは含まれない(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_trades() only returns trades for the specified condition_id."""
+        trades = [
+            _make_trade("trade-001", market="cond-001"),
+            _make_trade("trade-002", market="cond-002"),
+        ]
+        pm_storage.upsert_trades(trades, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_trades("cond-001")
+        assert len(df) == 1
+
+    def test_エッジケース_空テーブルで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_trades() returns empty DataFrame when no trades exist."""
+        df = pm_storage.get_trades("cond-nonexistent")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+    def test_正常系_limit指定なしで全トレード取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_trades(condition_id) without limit returns all trades."""
+        trades = [_make_trade(f"trade-{i:03d}", market="cond-001") for i in range(5)]
+        pm_storage.upsert_trades(trades, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_trades("cond-001")
+        assert len(df) == 5
+
+
+class TestGetOiSnapshots:
+    """Tests for PolymarketStorage.get_oi_snapshots()."""
+
+    def test_正常系_condition_idでOIスナップショットを取得(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_oi_snapshots(condition_id) returns snapshots as DataFrame."""
+        data = {"open_interest": 15000.0}
+        pm_storage.insert_oi_snapshot("cond-001", data, fetched_at=FETCHED_AT)
+        pm_storage.insert_oi_snapshot(
+            "cond-001", data, fetched_at="2026-03-24T00:00:00Z"
+        )
+
+        df = pm_storage.get_oi_snapshots("cond-001")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 2
+
+    def test_正常系_異なるcondition_idのスナップショットは含まれない(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_oi_snapshots() only returns snapshots for the specified condition_id."""
+        data = {"open_interest": 15000.0}
+        pm_storage.insert_oi_snapshot("cond-001", data, fetched_at=FETCHED_AT)
+        pm_storage.insert_oi_snapshot("cond-002", data, fetched_at=FETCHED_AT)
+
+        df = pm_storage.get_oi_snapshots("cond-001")
+        assert len(df) == 1
+
+    def test_エッジケース_空テーブルで空DataFrame(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_oi_snapshots() returns empty DataFrame when no data exists."""
+        df = pm_storage.get_oi_snapshots("cond-nonexistent")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+
+class TestCountRecords:
+    """Tests for PolymarketStorage.count_records()."""
+
+    def test_正常系_全テーブルのレコード数を返す(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """count_records() returns record counts for all tables."""
+        # Insert some data
+        event = _make_event("evt-001", markets=[_make_market("cond-001")])
+        pm_storage.upsert_events([event], fetched_at=FETCHED_AT)
+
+        result = pm_storage.count_records()
+        assert isinstance(result, dict)
+        assert len(result) == 8
+        assert result[TABLE_EVENTS] == 1
+        assert result[TABLE_MARKETS] == 1
+        assert result[TABLE_TOKENS] == 2  # 2 tokens from _make_market default
+
+    def test_エッジケース_空テーブルで全カウントがゼロ(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """count_records() returns 0 for all tables in a fresh database."""
+        result = pm_storage.count_records()
+        assert len(result) == 8
+        for table_name, count in result.items():
+            assert count == 0, f"Expected 0 rows for '{table_name}', got {count}"
+
+    def test_正常系_get_statsと同じ結果を返す(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """count_records() returns the same result as get_stats()."""
+        event = _make_event("evt-001")
+        pm_storage.upsert_events([event], fetched_at=FETCHED_AT)
+
+        assert pm_storage.count_records() == pm_storage.get_stats()
+
+
+class TestGetCollectionSummary:
+    """Tests for PolymarketStorage.get_collection_summary()."""
+
+    def test_正常系_収集状況サマリを返す(self, pm_storage: PolymarketStorage) -> None:
+        """get_collection_summary() returns summary dict with expected keys."""
+        # Insert some data
+        market = _make_market("cond-001")
+        event = _make_event("evt-001", markets=[market])
+        pm_storage.upsert_events([event], fetched_at=FETCHED_AT)
+
+        prices = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        summary = pm_storage.get_collection_summary()
+        assert isinstance(summary, dict)
+        assert "record_counts" in summary
+        assert "total_records" in summary
+        assert summary["record_counts"][TABLE_EVENTS] == 1
+        assert summary["total_records"] > 0
+
+    def test_エッジケース_空テーブルでも正常に動作する(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_collection_summary() works on an empty database."""
+        summary = pm_storage.get_collection_summary()
+        assert isinstance(summary, dict)
+        assert summary["total_records"] == 0
+        assert "record_counts" in summary
+
+    def test_正常系_event_countとmarket_countが含まれる(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """get_collection_summary() includes event_count and market_count."""
+        events = [_make_event(f"evt-{i:03d}") for i in range(3)]
+        pm_storage.upsert_events(events, fetched_at=FETCHED_AT)
+        markets = [_make_market(f"cond-{i:03d}") for i in range(5)]
+        pm_storage.upsert_markets(markets, fetched_at=FETCHED_AT)
+
+        summary = pm_storage.get_collection_summary()
+        assert summary["event_count"] == 3
+        assert summary["market_count"] == 5
