@@ -12,11 +12,16 @@ session : httpx-based HTTP session with rate limiting and SSRF prevention.
 models : Pydantic V2 response models for API data.
 cache : Cache helper with 6-tier TTL constants.
 client : High-level API client with caching.
+collector : Data collection orchestrator (Client -> Storage).
 
 Public API
 ----------
 PolymarketClient
     High-level API client with typed methods and caching.
+PolymarketCollector
+    Data collection orchestrator coordinating Client -> Storage flow.
+CollectionResult
+    Frozen dataclass capturing collection statistics and errors.
 PolymarketConfig
     Configuration for API base URLs and HTTP behaviour.
 RetryConfig
@@ -56,6 +61,7 @@ PolymarketNotFoundError
 """
 
 from market.polymarket.client import PolymarketClient
+from market.polymarket.collector import CollectionResult, PolymarketCollector
 from market.polymarket.errors import (
     PolymarketAPIError,
     PolymarketError,
@@ -80,11 +86,13 @@ from market.polymarket.types import (
 )
 
 __all__ = [
+    "CollectionResult",
     "FetchOptions",
     "OrderBook",
     "OrderBookLevel",
     "PolymarketAPIError",
     "PolymarketClient",
+    "PolymarketCollector",
     "PolymarketConfig",
     "PolymarketError",
     "PolymarketEvent",

@@ -83,11 +83,13 @@ class TestPolymarketPackageExports:
         import market.polymarket as pkg
 
         expected = {
+            "CollectionResult",
             "FetchOptions",
             "OrderBook",
             "OrderBookLevel",
             "PolymarketAPIError",
             "PolymarketClient",
+            "PolymarketCollector",
             "PolymarketConfig",
             "PolymarketError",
             "PolymarketEvent",
