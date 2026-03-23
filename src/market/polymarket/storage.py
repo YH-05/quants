@@ -57,7 +57,8 @@ from market.polymarket.storage_constants import (
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
-    from market.polymarket.models import PolymarketEvent, PolymarketMarket
+    from market.polymarket.models import PolymarketEvent, PolymarketMarket, PricePoint
+    from market.polymarket.types import PriceInterval
 
 logger = get_logger(__name__)
 
@@ -420,6 +421,68 @@ class PolymarketStorage:
             token_sql = _build_insert_sql(TABLE_TOKENS, token_columns)
             self._client.execute_many(token_sql, token_params)
             logger.info("Tokens upserted", count=len(token_params))
+
+    def upsert_price_history(
+        self,
+        token_id: str,
+        prices: list[PricePoint],
+        interval: PriceInterval,
+        *,
+        fetched_at: str,
+    ) -> None:
+        """Upsert historical price data for a token.
+
+        Inserts or replaces rows in ``pm_price_history`` using the composite
+        primary key ``(token_id, timestamp, interval)``. Duplicate entries
+        (same token, timestamp, and interval) are overwritten, ensuring
+        idempotent behaviour.
+
+        Parameters
+        ----------
+        token_id : str
+            The token identifier to associate price data with.
+        prices : list[PricePoint]
+            List of price points. Each ``PricePoint`` has ``t`` (unix
+            timestamp) and ``p`` (price value).
+        interval : PriceInterval
+            The time interval for the price data (e.g., ``PriceInterval.ONE_HOUR``).
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        """
+        if not prices:
+            logger.debug(
+                "No price history to upsert, skipping",
+                token_id=token_id,
+            )
+            return
+
+        columns = [
+            "token_id",
+            "timestamp",
+            "interval",
+            "price",
+            "fetched_at",
+        ]
+        sql = _build_insert_sql(TABLE_PRICE_HISTORY, columns)
+
+        params: list[tuple[Any, ...]] = [
+            (
+                token_id,
+                price_point.t,
+                str(interval),
+                price_point.p,
+                fetched_at,
+            )
+            for price_point in prices
+        ]
+
+        self._client.execute_many(sql, params)
+        logger.info(
+            "Price history upserted",
+            token_id=token_id,
+            interval=str(interval),
+            count=len(prices),
+        )
 
     # ------------------------------------------------------------------
     # Statistics

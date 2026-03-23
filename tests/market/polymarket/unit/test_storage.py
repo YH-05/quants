@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from market.polymarket.models import PolymarketEvent, PolymarketMarket
+from market.polymarket.models import PolymarketEvent, PolymarketMarket, PricePoint
 from market.polymarket.storage import (
     _TABLE_DDL,
     PolymarketStorage,
@@ -24,6 +24,7 @@ from market.polymarket.storage_constants import (
     TABLE_TOKENS,
     TABLE_TRADES,
 )
+from market.polymarket.types import PriceInterval
 
 
 class TestEnsureTables:
@@ -370,3 +371,157 @@ class TestUpsertMarkets:
 
         stats = pm_storage.get_stats()
         assert stats[TABLE_MARKETS] == 3
+
+
+# ============================================================================
+# UpsertPriceHistory tests
+# ============================================================================
+
+
+class TestUpsertPriceHistory:
+    """Tests for PolymarketStorage.upsert_price_history()."""
+
+    def test_正常系_価格履歴が保存される(self, pm_storage: PolymarketStorage) -> None:
+        """upsert_price_history() inserts price rows into pm_price_history."""
+        prices = [
+            PricePoint(t=1700000000, p=0.65),
+            PricePoint(t=1700003600, p=0.70),
+        ]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_PRICE_HISTORY] == 2
+
+    def test_正常系_保存データの内容が正しい(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_price_history() stores correct token_id, timestamp, interval, price."""
+        prices = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_DAY,
+            fetched_at=FETCHED_AT,
+        )
+
+        rows = pm_storage._client.execute(
+            f"SELECT token_id, timestamp, interval, price, fetched_at "
+            f"FROM {TABLE_PRICE_HISTORY}"
+        )
+        assert len(rows) == 1
+        row = rows[0]
+        assert row["token_id"] == "tok-yes"
+        assert row["timestamp"] == 1700000000
+        assert row["interval"] == "1d"
+        assert row["price"] == pytest.approx(0.65)
+        assert row["fetched_at"] == FETCHED_AT
+
+    def test_エッジケース_空リストで何もしない(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_price_history([]) is a no-op without errors."""
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=[],
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_PRICE_HISTORY] == 0
+
+    def test_正常系_重複タイムスタンプで上書き(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_price_history() with duplicate PK overwrites (idempotent)."""
+        prices_v1 = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices_v1,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        # Upsert again with updated price
+        prices_v2 = [PricePoint(t=1700000000, p=0.80)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices_v2,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at="2026-03-24T00:00:00Z",
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_PRICE_HISTORY] == 1  # Not 2
+
+        # Verify the price was updated
+        rows = pm_storage._client.execute(
+            f"SELECT price, fetched_at FROM {TABLE_PRICE_HISTORY} "
+            f"WHERE token_id = 'tok-yes' AND timestamp = 1700000000"
+        )
+        assert rows[0]["price"] == pytest.approx(0.80)
+        assert rows[0]["fetched_at"] == "2026-03-24T00:00:00Z"
+
+    def test_正常系_異なるインターバルは別レコード(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """Same token_id+timestamp with different intervals are separate rows."""
+        prices = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_DAY,
+            fetched_at=FETCHED_AT,
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_PRICE_HISTORY] == 2
+
+    def test_正常系_複数トークンの価格履歴が保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_price_history() handles different token_ids correctly."""
+        prices = [PricePoint(t=1700000000, p=0.65)]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+        pm_storage.upsert_price_history(
+            token_id="tok-no",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_PRICE_HISTORY] == 2
+
+    def test_正常系_大量の価格データが保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_price_history() handles a large batch of price points."""
+        prices = [
+            PricePoint(t=1700000000 + i * 3600, p=0.50 + i * 0.01) for i in range(100)
+        ]
+        pm_storage.upsert_price_history(
+            token_id="tok-yes",
+            prices=prices,
+            interval=PriceInterval.ONE_HOUR,
+            fetched_at=FETCHED_AT,
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_PRICE_HISTORY] == 100
