@@ -13,11 +13,16 @@ models : Pydantic V2 response models for API data.
 cache : Cache helper with 6-tier TTL constants.
 client : High-level API client with caching.
 collector : Data collection orchestrator (Client -> Storage).
+storage : SQLite storage layer for persisting Polymarket data.
 
 Public API
 ----------
 PolymarketClient
     High-level API client with typed methods and caching.
+PolymarketStorage
+    SQLite storage layer for Polymarket prediction market data.
+get_polymarket_storage
+    Factory function creating PolymarketStorage with resolved DB path.
 PolymarketCollector
     Data collection orchestrator coordinating Client -> Storage flow.
 CollectionResult
@@ -78,6 +83,7 @@ from market.polymarket.models import (
     TradeRecord,
 )
 from market.polymarket.session import PolymarketSession
+from market.polymarket.storage import PolymarketStorage, get_polymarket_storage
 from market.polymarket.types import (
     FetchOptions,
     PolymarketConfig,
@@ -100,9 +106,11 @@ __all__ = [
     "PolymarketNotFoundError",
     "PolymarketRateLimitError",
     "PolymarketSession",
+    "PolymarketStorage",
     "PolymarketValidationError",
     "PriceInterval",
     "PricePoint",
     "RetryConfig",
     "TradeRecord",
+    "get_polymarket_storage",
 ]

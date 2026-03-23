@@ -79,6 +79,16 @@ class TestPolymarketPackageExports:
         assert PolymarketRateLimitError is not None
         assert PolymarketValidationError is not None
 
+    def test_正常系_PolymarketStorageがインポートできる(self) -> None:
+        from market.polymarket import PolymarketStorage
+
+        assert PolymarketStorage is not None
+
+    def test_正常系_get_polymarket_storageがインポートできる(self) -> None:
+        from market.polymarket import get_polymarket_storage
+
+        assert callable(get_polymarket_storage)
+
     def test_正常系_allが全公開APIを含む(self) -> None:
         import market.polymarket as pkg
 
@@ -97,11 +107,13 @@ class TestPolymarketPackageExports:
             "PolymarketNotFoundError",
             "PolymarketRateLimitError",
             "PolymarketSession",
+            "PolymarketStorage",
             "PolymarketValidationError",
             "PriceInterval",
             "PricePoint",
             "RetryConfig",
             "TradeRecord",
+            "get_polymarket_storage",
         }
         assert set(pkg.__all__) == expected
 
