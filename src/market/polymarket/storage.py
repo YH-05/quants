@@ -38,6 +38,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+from typing import TYPE_CHECKING, Any
 
 from database.db.connection import get_db_path
 from database.db.sqlite_client import SQLiteClient
@@ -55,7 +56,36 @@ from market.polymarket.storage_constants import (
 )
 from utils_core.logging import get_logger
 
+if TYPE_CHECKING:
+    from market.polymarket.models import PolymarketEvent, PolymarketMarket
+
 logger = get_logger(__name__)
+
+
+# ============================================================================
+# SQL helper
+# ============================================================================
+
+
+def _build_insert_sql(table_name: str, field_names: list[str]) -> str:
+    """Build an INSERT OR REPLACE SQL statement for the given table and fields.
+
+    Parameters
+    ----------
+    table_name : str
+        Target table name. Must be in ``_VALID_TABLE_NAMES``.
+    field_names : list[str]
+        List of column names.
+
+    Returns
+    -------
+    str
+        SQL INSERT OR REPLACE statement with ``?`` placeholders.
+    """
+    cols = ", ".join(field_names)
+    placeholders = ", ".join("?" for _ in field_names)
+    return f"INSERT OR REPLACE INTO {table_name} ({cols}) VALUES ({placeholders})"  # nosec B608
+
 
 # ============================================================================
 # Table DDL definitions (SQLite types)
@@ -221,6 +251,175 @@ class PolymarketStorage:
             Sorted list of the 8 table names managed by this storage.
         """
         return sorted(_VALID_TABLE_NAMES)
+
+    # ------------------------------------------------------------------
+    # Upsert methods
+    # ------------------------------------------------------------------
+
+    def upsert_events(
+        self,
+        events: list[PolymarketEvent],
+        *,
+        fetched_at: str,
+    ) -> None:
+        """Upsert events with cascading saves of child markets and tokens.
+
+        For each event, the event row is inserted/replaced in ``pm_events``,
+        then ``upsert_markets()`` is called for the event's markets with
+        the event's ``id`` as the ``event_id`` foreign key.
+
+        Parameters
+        ----------
+        events : list[PolymarketEvent]
+            List of Pydantic event models to persist.
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        """
+        if not events:
+            logger.debug("No events to upsert, skipping")
+            return
+
+        event_columns = [
+            "id",
+            "title",
+            "slug",
+            "description",
+            "start_date",
+            "end_date",
+            "active",
+            "closed",
+            "volume",
+            "liquidity",
+            "fetched_at",
+        ]
+        sql = _build_insert_sql(TABLE_EVENTS, event_columns)
+
+        params: list[tuple[Any, ...]] = []
+        all_markets: list[tuple[PolymarketMarket, str]] = []
+
+        for event in events:
+            params.append(
+                (
+                    event.id,
+                    event.title,
+                    event.slug,
+                    event.description,
+                    event.start_date,
+                    event.end_date,
+                    int(event.active) if event.active is not None else None,
+                    int(event.closed) if event.closed is not None else None,
+                    event.volume,
+                    event.liquidity,
+                    fetched_at,
+                )
+            )
+            for market in event.markets:
+                all_markets.append((market, event.id))
+
+        self._client.execute_many(sql, params)
+        logger.info("Events upserted", count=len(events))
+
+        # Cascade: upsert child markets grouped by event_id
+        for market, event_id in all_markets:
+            self.upsert_markets([market], fetched_at=fetched_at, event_id=event_id)
+
+    def upsert_markets(
+        self,
+        markets: list[PolymarketMarket],
+        *,
+        fetched_at: str,
+        event_id: str | None = None,
+    ) -> None:
+        """Upsert markets with cascading saves of child tokens.
+
+        Each market row is inserted/replaced in ``pm_markets``. Valid
+        tokens (those containing both ``token_id`` and ``outcome``) are
+        extracted and upserted into ``pm_tokens``.
+
+        Parameters
+        ----------
+        markets : list[PolymarketMarket]
+            List of Pydantic market models to persist.
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        event_id : str | None
+            Optional parent event ID to set as foreign key. When called
+            from ``upsert_events()``, this is set automatically.
+        """
+        if not markets:
+            logger.debug("No markets to upsert, skipping")
+            return
+
+        market_columns = [
+            "condition_id",
+            "event_id",
+            "question",
+            "description",
+            "end_date_iso",
+            "active",
+            "closed",
+            "volume",
+            "liquidity",
+            "holders_json",
+            "fetched_at",
+        ]
+        market_sql = _build_insert_sql(TABLE_MARKETS, market_columns)
+
+        market_params: list[tuple[Any, ...]] = []
+        token_params: list[tuple[Any, ...]] = []
+
+        for market in markets:
+            market_params.append(
+                (
+                    market.condition_id,
+                    event_id,
+                    market.question,
+                    market.description,
+                    market.end_date_iso,
+                    int(market.active) if market.active is not None else None,
+                    int(market.closed) if market.closed is not None else None,
+                    market.volume,
+                    market.liquidity,
+                    None,  # holders_json — not in the Pydantic model
+                    fetched_at,
+                )
+            )
+
+            # Extract valid tokens
+            for tok in market.tokens:
+                token_id = tok.get("token_id")
+                outcome = tok.get("outcome")
+                if not token_id or not outcome:
+                    logger.debug(
+                        "Skipping token missing token_id or outcome",
+                        condition_id=market.condition_id,
+                        token_keys=list(tok.keys()),
+                    )
+                    continue
+                token_params.append(
+                    (
+                        str(token_id),
+                        market.condition_id,
+                        str(outcome),
+                        tok.get("price"),
+                        fetched_at,
+                    )
+                )
+
+        self._client.execute_many(market_sql, market_params)
+        logger.info("Markets upserted", count=len(markets))
+
+        if token_params:
+            token_columns = [
+                "token_id",
+                "condition_id",
+                "outcome",
+                "price",
+                "fetched_at",
+            ]
+            token_sql = _build_insert_sql(TABLE_TOKENS, token_columns)
+            self._client.execute_many(token_sql, token_params)
+            logger.info("Tokens upserted", count=len(token_params))
 
     # ------------------------------------------------------------------
     # Statistics
