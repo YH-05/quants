@@ -236,7 +236,7 @@ class TestCollectorIntegration:
     ) -> None:
         """Collector.collect_events() fetches and persists data."""
         collector = PolymarketCollector(client=client, storage=storage)
-        count = collector.collect_events(limit=2)
+        count, _events = collector.collect_events(limit=2)
 
         assert count >= 0  # API may return 0 on transient issues
         if count > 0:
