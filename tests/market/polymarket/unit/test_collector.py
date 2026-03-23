@@ -113,8 +113,10 @@ def mock_client() -> MagicMock:
 
 @pytest.fixture()
 def mock_storage() -> MagicMock:
-    """Create a mock PolymarketStorage."""
-    storage = MagicMock()
+    """Create a mock PolymarketStorage with spec."""
+    from market.polymarket.storage import PolymarketStorage
+
+    storage = MagicMock(spec=PolymarketStorage)
     return storage
 
 
@@ -223,10 +225,81 @@ class TestCollectEvents:
         mock_storage: MagicMock,
     ) -> None:
         """collect_events fetches from client and saves to storage."""
-        count = collector.collect_events()
+        count, events = collector.collect_events()
         assert count == 1
+        assert len(events) == 1
         mock_client.get_events.assert_called_once()
         mock_storage.upsert_events.assert_called_once()
+
+    def test_異常系_クライアントエラーで0と空リストを返す(
+        self,
+        collector: PolymarketCollector,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """collect_events returns (0, []) and records error on client failure."""
+        mock_client.get_events.side_effect = RuntimeError("API down")
+        count, events = collector.collect_events()
+        assert count == 0
+        assert events == []
+        mock_storage.upsert_events.assert_not_called()
+
+    def test_エッジケース_空リストで0と空リストを返す(
+        self,
+        collector: PolymarketCollector,
+        mock_client: MagicMock,
+    ) -> None:
+        """collect_events returns (0, []) when no events found."""
+        mock_client.get_events.return_value = []
+        count, events = collector.collect_events()
+        assert count == 0
+        assert events == []
+
+
+# ============================================================================
+# collect_price_history tests
+# ============================================================================
+
+
+class TestCollectPriceHistory:
+    """Tests for PolymarketCollector.collect_price_history()."""
+
+    def test_正常系_価格履歴収集と保存(
+        self,
+        collector: PolymarketCollector,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """collect_price_history fetches from client and saves to storage."""
+        import pandas as pd
+
+        df = pd.DataFrame(
+            {"timestamp": [1700000000, 1700003600], "price": [0.65, 0.70]}
+        )
+        mock_result = MagicMock()
+        mock_result.data = df
+        mock_client.get_prices_history.return_value = mock_result
+
+        count = collector.collect_price_history("tok-yes")
+        assert count == 2
+        mock_storage.upsert_price_history.assert_called_once()
+
+    def test_エッジケース_空DataFrameで0を返す(
+        self,
+        collector: PolymarketCollector,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """collect_price_history returns 0 when DataFrame is empty."""
+        import pandas as pd
+
+        mock_result = MagicMock()
+        mock_result.data = pd.DataFrame()
+        mock_client.get_prices_history.return_value = mock_result
+
+        count = collector.collect_price_history("tok-yes")
+        assert count == 0
+        mock_storage.upsert_price_history.assert_not_called()
 
     def test_異常系_クライアントエラーで0を返す(
         self,
@@ -234,20 +307,19 @@ class TestCollectEvents:
         mock_client: MagicMock,
         mock_storage: MagicMock,
     ) -> None:
-        """collect_events returns 0 and records error on client failure."""
-        mock_client.get_events.side_effect = RuntimeError("API down")
-        count = collector.collect_events()
+        """collect_price_history returns 0 and records error on failure."""
+        mock_client.get_prices_history.side_effect = RuntimeError("API error")
+        count = collector.collect_price_history("tok-yes")
         assert count == 0
-        mock_storage.upsert_events.assert_not_called()
+        mock_storage.upsert_price_history.assert_not_called()
 
-    def test_正常系_空リストで0を返す(
+    def test_異常系_不正intervalでエラー記録(
         self,
         collector: PolymarketCollector,
         mock_client: MagicMock,
     ) -> None:
-        """collect_events returns 0 when no events found."""
-        mock_client.get_events.return_value = []
-        count = collector.collect_events()
+        """collect_price_history records error for invalid interval."""
+        count = collector.collect_price_history("tok-yes", interval="invalid")
         assert count == 0
 
 
@@ -437,13 +509,13 @@ class TestCollectAll:
         result = collector.collect_all()
 
         assert isinstance(result, CollectionResult)
-        assert result.events_collected >= 1
+        assert result.events_collected == 1
         assert result.finished_at is not None
         assert result.has_errors is False
-        mock_client.get_events.assert_called()
-        mock_storage.upsert_events.assert_called()
+        mock_client.get_events.assert_called_once()
+        mock_storage.upsert_events.assert_called_once()
 
-    def test_正常系_エラー発生時もCollectionResult返却(
+    def test_異常系_部分エラー時もCollectionResult返却(
         self,
         collector: PolymarketCollector,
         mock_client: MagicMock,
@@ -456,11 +528,11 @@ class TestCollectAll:
         result = collector.collect_all()
 
         assert isinstance(result, CollectionResult)
-        assert result.events_collected >= 1
+        assert result.events_collected == 1
         assert result.has_errors is True
         assert result.finished_at is not None
 
-    def test_正常系_イベント取得失敗でも処理継続(
+    def test_異常系_イベント取得失敗でも処理継続(
         self,
         collector: PolymarketCollector,
         mock_client: MagicMock,

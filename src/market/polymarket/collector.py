@@ -29,12 +29,13 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
     from market.polymarket.client import PolymarketClient
+    from market.polymarket.models import PolymarketEvent
     from market.polymarket.storage import PolymarketStorage
 
 logger = get_logger(__name__)
@@ -162,6 +163,11 @@ class PolymarketCollector:
         client: PolymarketClient,
         storage: PolymarketStorage,
     ) -> None:
+        """Initialize collector with client and storage.
+
+        The internal ``_errors`` list is reset at the start of each
+        ``collect_all()`` call.
+        """
         self._client = client
         self._storage = storage
         self._errors: list[str] = []
@@ -171,7 +177,11 @@ class PolymarketCollector:
     # Individual collect methods
     # ------------------------------------------------------------------
 
-    def collect_events(self, *, limit: int = 100) -> int:
+    def collect_events(
+        self,
+        *,
+        limit: int = 100,
+    ) -> tuple[int, list[PolymarketEvent]]:
         """Collect events from the API and persist to storage.
 
         Fetches events via ``client.get_events()`` and saves them
@@ -184,25 +194,25 @@ class PolymarketCollector:
 
         Returns
         -------
-        int
-            Number of events collected and saved, or ``0`` on failure.
+        tuple[int, list[PolymarketEvent]]
+            Tuple of (count, events_list). On failure returns ``(0, [])``.
         """
         logger.info("Collecting events", limit=limit)
         try:
             events = self._client.get_events(limit=limit)
             if not events:
                 logger.info("No events found")
-                return 0
+                return 0, []
 
             fetched_at = datetime.now(tz=UTC).isoformat()
             self._storage.upsert_events(events, fetched_at=fetched_at)
             logger.info("Events collected and saved", count=len(events))
-            return len(events)
+            return len(events), events
         except Exception as exc:
             error_msg = f"Failed to collect events: {exc}"
             logger.error(error_msg, exc_info=True)
             self._errors.append(error_msg)
-            return 0
+            return 0, []
 
     def collect_price_history(
         self,
@@ -243,10 +253,10 @@ class PolymarketCollector:
                 logger.info("No price history data", token_id=token_id)
                 return 0
 
-            # Convert DataFrame rows to PricePoint list
+            # Convert DataFrame to PricePoint list (vectorized extraction)
+            records = df[["timestamp", "price"]].to_dict("records")
             points: list[PricePoint] = [
-                PricePoint(t=int(row["timestamp"]), p=float(row["price"]))
-                for _, row in df.iterrows()
+                PricePoint(t=int(r["timestamp"]), p=float(r["price"])) for r in records
             ]
 
             fetched_at = datetime.now(tz=UTC).isoformat()
@@ -492,28 +502,21 @@ class PolymarketCollector:
         logger.info("Starting full Polymarket data collection")
 
         # Step 1: Collect events (includes cascading markets + tokens)
-        events_count = self.collect_events(limit=event_limit)
+        events_count, collected_events = self.collect_events(limit=event_limit)
 
         # Extract condition_ids and token_ids from collected events
         condition_ids: list[str] = []
         token_ids: list[str] = []
         markets_count = 0
 
-        if events_count > 0:
-            try:
-                events = self._client.get_events(limit=event_limit)
-                for event in events:
-                    for market in event.markets:
-                        condition_ids.append(market.condition_id)
-                        markets_count += 1
-                        for tok in market.tokens:
-                            tok_id = tok.get("token_id")
-                            if tok_id:
-                                token_ids.append(str(tok_id))
-            except Exception as exc:
-                error_msg = f"Failed to extract market/token IDs: {exc}"
-                logger.error(error_msg, exc_info=True)
-                self._errors.append(error_msg)
+        for event in collected_events:
+            for market in event.markets:
+                condition_ids.append(market.condition_id)
+                markets_count += 1
+                for tok in market.tokens:
+                    tok_id = tok.get("token_id")
+                    if tok_id:
+                        token_ids.append(str(tok_id))
 
         logger.info(
             "Discovered markets and tokens",

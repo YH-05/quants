@@ -92,6 +92,9 @@ def _build_insert_sql(table_name: str, field_names: list[str]) -> str:
     str
         SQL INSERT OR REPLACE statement with ``?`` placeholders.
     """
+    if table_name not in _VALID_TABLE_NAMES:
+        msg = f"Invalid table name: '{table_name}'. Must be one of: {sorted(_VALID_TABLE_NAMES)}"
+        raise ValueError(msg)
     cols = ", ".join(field_names)
     placeholders = ", ".join("?" for _ in field_names)
     return f"INSERT OR REPLACE INTO {table_name} ({cols}) VALUES ({placeholders})"  # nosec B608
@@ -222,6 +225,10 @@ class PolymarketStorage:
     """
 
     def __init__(self, db_path: Path) -> None:
+        """Initialize storage and create all 8 tables.
+
+        Calls ``ensure_tables()`` automatically on initialization.
+        """
         self._client = SQLiteClient(db_path)
         logger.debug(
             "PolymarketStorage initialized",
@@ -329,9 +336,12 @@ class PolymarketStorage:
         self._client.execute_many(sql, params)
         logger.info("Events upserted", count=len(events))
 
-        # Cascade: upsert child markets grouped by event_id
-        for market, event_id in all_markets:
-            self.upsert_markets([market], fetched_at=fetched_at, event_id=event_id)
+        # Cascade: batch upsert child markets grouped by event_id
+        markets_by_event: dict[str, list[PolymarketMarket]] = {}
+        for market, eid in all_markets:
+            markets_by_event.setdefault(eid, []).append(market)
+        for eid, market_list in markets_by_event.items():
+            self.upsert_markets(market_list, fetched_at=fetched_at, event_id=eid)
 
     def upsert_markets(
         self,
