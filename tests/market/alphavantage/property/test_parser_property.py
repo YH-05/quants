@@ -14,12 +14,15 @@ market.alphavantage.parser : Implementation under test.
 
 from __future__ import annotations
 
+import numpy as np
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from market.alphavantage.parser import (
     _clean_numeric,
     _normalize_ohlcv_columns,
+    parse_financial_statements,
+    parse_global_quote,
 )
 
 # =============================================================================
@@ -172,7 +175,65 @@ class TestNormalizeOHLCVColumnsProperty:
 
 
 # =============================================================================
-# Module exports
+# Property tests for parse_global_quote
 # =============================================================================
 
-__all__: list[str] = []
+
+class TestParseGlobalQuoteProperty:
+    """Property-based tests for parse_global_quote."""
+
+    @given(
+        price=st.floats(
+            min_value=0.01,
+            max_value=1e6,
+            allow_nan=False,
+            allow_infinity=False,
+        ),
+        change_pct=st.floats(
+            min_value=-100.0,
+            max_value=100.0,
+            allow_nan=False,
+            allow_infinity=False,
+        ),
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_数値フィールドは常にfloat型(
+        self,
+        price: float,
+        change_pct: float,
+    ) -> None:
+        """Numeric fields in parsed global quote are always float."""
+        data = {
+            "Global Quote": {
+                "05. price": str(price),
+                "10. change percent": f"{change_pct}%",
+            },
+        }
+        result = parse_global_quote(data)
+        assert isinstance(result.get("price"), float)
+
+
+# =============================================================================
+# Property tests for parse_financial_statements
+# =============================================================================
+
+
+class TestParseFinancialStatementsProperty:
+    """Property-based tests for parse_financial_statements."""
+
+    @given(revenue=st.integers(min_value=0, max_value=10**15))
+    @settings(max_examples=200)
+    def test_プロパティ_数値フィールドはfloat変換される(self, revenue: int) -> None:
+        """Numeric fields in financial statements are converted to float."""
+        data = {
+            "annualReports": [
+                {
+                    "fiscalDateEnding": "2025-09-30",
+                    "totalRevenue": str(revenue),
+                },
+            ],
+        }
+        df = parse_financial_statements(data, "annualReports")
+        assert len(df) == 1
+        val = df["totalRevenue"].iloc[0]
+        assert isinstance(val, (int, float, np.integer, np.floating))

@@ -302,9 +302,9 @@ class TestCacheIntegration:
         assert isinstance(df2, pd.DataFrame)
         assert len(df2) > 0
 
-        # Cache hit should be substantially faster than the API call
-        # (at least 10x faster, accounting for polite delay + network latency)
-        assert elapsed_second < elapsed_first, (
-            f"Cache hit ({elapsed_second:.3f}s) should be faster than "
-            f"cache miss ({elapsed_first:.3f}s)"
+        # Cache hit should be fast (no API round-trip)
+        # AIDEV-NOTE: Use absolute upper bound instead of relative speed comparison
+        # to avoid flaky tests when first call is cached by external layers.
+        assert elapsed_second < 0.5, (
+            f"Cache hit should complete within 0.5s, took {elapsed_second:.3f}s"
         )

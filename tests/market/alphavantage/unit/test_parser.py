@@ -581,10 +581,3 @@ class TestParseCryptoTimeSeries:
         df = parse_crypto_time_series(data)
         assert isinstance(df, pd.DataFrame)
         assert len(df) == 0
-
-
-# =============================================================================
-# Module exports
-# =============================================================================
-
-__all__: list[str] = []

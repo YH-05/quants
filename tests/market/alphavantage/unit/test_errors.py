@@ -189,19 +189,10 @@ class TestErrorHierarchy:
                 f"{cls.__name__} is not a subclass of AlphaVantageError"
             )
 
-    def test_正常系_全エラーがExceptionのサブクラス(self) -> None:
-        subclasses = [
-            AlphaVantageError,
-            AlphaVantageAPIError,
-            AlphaVantageRateLimitError,
-            AlphaVantageValidationError,
-            AlphaVantageParseError,
-            AlphaVantageAuthError,
-        ]
-        for cls in subclasses:
-            assert issubclass(cls, Exception), (
-                f"{cls.__name__} is not a subclass of Exception"
-            )
+    # AIDEV-NOTE: test_正常系_全エラーがExceptionのサブクラス は削除。
+    # AlphaVantageError が Exception を継承し、全サブクラスが AlphaVantageError を
+    # 継承していることは上の test_正常系_全エラーがAlphaVantageErrorのサブクラス で
+    # 推移的に担保されている。
 
 
 class TestAllExports:

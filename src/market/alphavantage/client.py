@@ -79,6 +79,20 @@ logger = get_logger(__name__)
 # Regex for symbol validation: 1-10 alphanumeric characters + dot
 _SYMBOL_PATTERN: re.Pattern[str] = re.compile(r"^[A-Za-z0-9.]{1,10}$")
 
+# Regex for currency code validation: 2-10 alphabetic characters
+_CURRENCY_PATTERN: re.Pattern[str] = re.compile(r"^[A-Za-z]{2,10}$")
+
+# Valid interval values per endpoint
+_REAL_GDP_INTERVALS: frozenset[str] = frozenset({"quarterly", "annual"})
+_CPI_INTERVALS: frozenset[str] = frozenset({"monthly", "semiannual"})
+_TREASURY_YIELD_INTERVALS: frozenset[str] = frozenset({"daily", "weekly", "monthly"})
+_FEDERAL_FUNDS_RATE_INTERVALS: frozenset[str] = frozenset(
+    {"daily", "weekly", "monthly"}
+)
+_TREASURY_YIELD_MATURITIES: frozenset[str] = frozenset(
+    {"3month", "2year", "5year", "7year", "10year", "30year"}
+)
+
 
 class AlphaVantageClient:
     """High-level typed API client for the Alpha Vantage API.
@@ -228,6 +242,8 @@ class AlphaVantageClient:
             cache_key=cache_key,
             params=params,
             parser=parse_time_series,
+            # AIDEV-NOTE: weekly/monthly データも日次 TTL を適用。AV の Free plan では
+            # 日次更新のため、daily と同じ TTL で十分。
             ttl=TIME_SERIES_DAILY_TTL,
             options=options,
         )
@@ -266,6 +282,8 @@ class AlphaVantageClient:
             cache_key=cache_key,
             params=params,
             parser=parse_time_series,
+            # AIDEV-NOTE: weekly/monthly データも日次 TTL を適用。AV の Free plan では
+            # 日次更新のため、daily と同じ TTL で十分。
             ttl=TIME_SERIES_DAILY_TTL,
             options=options,
         )
@@ -428,26 +446,8 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with income statement data.
         """
-        self._validate_symbol(symbol)
-        options = options or FetchOptions()
-
-        params: dict[str, str] = {
-            "function": "INCOME_STATEMENT",
-            "symbol": symbol,
-        }
-        cache_key = generate_cache_key(
-            symbol=symbol, source=f"av_income_statement_{report_type}"
-        )
-
-        def parser(data: dict[str, Any]) -> pd.DataFrame:
-            return parse_financial_statements(data, report_type=report_type)
-
-        return self._get_cached_or_fetch(
-            cache_key=cache_key,
-            params=params,
-            parser=parser,
-            ttl=FUNDAMENTALS_TTL,
-            options=options,
+        return self._get_financial_statement(
+            symbol, "INCOME_STATEMENT", "income_statement", report_type, options
         )
 
     def get_balance_sheet(
@@ -474,26 +474,8 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with balance sheet data.
         """
-        self._validate_symbol(symbol)
-        options = options or FetchOptions()
-
-        params: dict[str, str] = {
-            "function": "BALANCE_SHEET",
-            "symbol": symbol,
-        }
-        cache_key = generate_cache_key(
-            symbol=symbol, source=f"av_balance_sheet_{report_type}"
-        )
-
-        def parser(data: dict[str, Any]) -> pd.DataFrame:
-            return parse_financial_statements(data, report_type=report_type)
-
-        return self._get_cached_or_fetch(
-            cache_key=cache_key,
-            params=params,
-            parser=parser,
-            ttl=FUNDAMENTALS_TTL,
-            options=options,
+        return self._get_financial_statement(
+            symbol, "BALANCE_SHEET", "balance_sheet", report_type, options
         )
 
     def get_cash_flow(
@@ -520,26 +502,8 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with cash flow data.
         """
-        self._validate_symbol(symbol)
-        options = options or FetchOptions()
-
-        params: dict[str, str] = {
-            "function": "CASH_FLOW",
-            "symbol": symbol,
-        }
-        cache_key = generate_cache_key(
-            symbol=symbol, source=f"av_cash_flow_{report_type}"
-        )
-
-        def parser(data: dict[str, Any]) -> pd.DataFrame:
-            return parse_financial_statements(data, report_type=report_type)
-
-        return self._get_cached_or_fetch(
-            cache_key=cache_key,
-            params=params,
-            parser=parser,
-            ttl=FUNDAMENTALS_TTL,
-            options=options,
+        return self._get_financial_statement(
+            symbol, "CASH_FLOW", "cash_flow", report_type, options
         )
 
     def get_earnings(
@@ -608,6 +572,8 @@ class AlphaVantageClient:
         dict[str, Any]
             Normalized exchange rate dictionary.
         """
+        self._validate_currency(from_currency, field="from_currency")
+        self._validate_currency(to_currency, field="to_currency")
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -654,6 +620,8 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with daily forex OHLC data.
         """
+        self._validate_currency(from_symbol, field="from_symbol")
+        self._validate_currency(to_symbol, field="to_symbol")
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -702,6 +670,8 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with daily crypto OHLCV data.
         """
+        self._validate_currency(symbol, field="symbol")
+        self._validate_currency(market, field="market")
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -746,6 +716,7 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with columns: date, value.
         """
+        self._validate_interval(interval, _REAL_GDP_INTERVALS, "REAL_GDP")
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -783,6 +754,7 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with columns: date, value.
         """
+        self._validate_interval(interval, _CPI_INTERVALS, "CPI")
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -886,6 +858,8 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with columns: date, value.
         """
+        self._validate_interval(interval, _TREASURY_YIELD_INTERVALS, "TREASURY_YIELD")
+        self._validate_maturity(maturity)
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -924,6 +898,9 @@ class AlphaVantageClient:
         pd.DataFrame
             DataFrame with columns: date, value.
         """
+        self._validate_interval(
+            interval, _FEDERAL_FUNDS_RATE_INTERVALS, "FEDERAL_FUNDS_RATE"
+        )
         options = options or FetchOptions()
 
         params: dict[str, str] = {
@@ -945,6 +922,59 @@ class AlphaVantageClient:
     # =========================================================================
     # Internal Methods
     # =========================================================================
+
+    def _get_financial_statement(
+        self,
+        symbol: str,
+        function_name: str,
+        source_key: str,
+        report_type: str = "annualReports",
+        options: FetchOptions | None = None,
+    ) -> pd.DataFrame:
+        """Fetch a financial statement (income, balance sheet, or cash flow).
+
+        DRY helper shared by ``get_income_statement``, ``get_balance_sheet``,
+        and ``get_cash_flow``.
+
+        Parameters
+        ----------
+        symbol : str
+            Stock ticker symbol.
+        function_name : str
+            Alpha Vantage function name (e.g. ``"INCOME_STATEMENT"``).
+        source_key : str
+            Cache source key suffix (e.g. ``"income_statement"``).
+        report_type : str
+            ``'annualReports'`` or ``'quarterlyReports'``.
+        options : FetchOptions | None
+            Fetch options (cache control).
+
+        Returns
+        -------
+        pd.DataFrame
+            DataFrame with financial statement data.
+        """
+        self._validate_symbol(symbol)
+        options = options or FetchOptions()
+
+        params: dict[str, str] = {
+            "function": function_name,
+            "symbol": symbol,
+        }
+        cache_key = generate_cache_key(
+            symbol=symbol, source=f"av_{source_key}_{report_type}"
+        )
+
+        def parser(data: dict[str, Any]) -> pd.DataFrame:
+            return parse_financial_statements(data, report_type=report_type)
+
+        return self._get_cached_or_fetch(
+            cache_key=cache_key,
+            params=params,
+            parser=parser,
+            ttl=FUNDAMENTALS_TTL,
+            options=options,
+        )
 
     def _get_cached_or_fetch[T](
         self,
@@ -1055,6 +1085,89 @@ class AlphaVantageClient:
                 message=f"Symbol must be alphanumeric (plus dot), got '{symbol}'",
                 field="symbol",
                 value=symbol,
+            )
+
+    def _validate_currency(self, currency: str, field: str = "currency") -> None:
+        """Validate a currency code format.
+
+        Valid currency codes are 2-10 alphabetic characters (e.g. ``"USD"``,
+        ``"JPY"``, ``"BTC"``).
+
+        Parameters
+        ----------
+        currency : str
+            The currency code to validate.
+        field : str
+            The field name for error messages.
+
+        Raises
+        ------
+        AlphaVantageValidationError
+            If the currency code is empty or has invalid format.
+        """
+        if not currency or not _CURRENCY_PATTERN.match(currency.strip()):
+            raise AlphaVantageValidationError(
+                message=(
+                    f"Invalid currency code: '{currency}'. "
+                    "Must be 2-10 alphabetic characters."
+                ),
+                field=field,
+                value=currency,
+            )
+
+    def _validate_interval(
+        self,
+        interval: str,
+        valid_values: frozenset[str],
+        endpoint: str,
+    ) -> None:
+        """Validate an interval parameter against allowed values.
+
+        Parameters
+        ----------
+        interval : str
+            The interval value to validate.
+        valid_values : frozenset[str]
+            Set of allowed interval values.
+        endpoint : str
+            The endpoint name for error messages.
+
+        Raises
+        ------
+        AlphaVantageValidationError
+            If the interval is not in the valid values set.
+        """
+        if interval not in valid_values:
+            raise AlphaVantageValidationError(
+                message=(
+                    f"Invalid interval '{interval}' for {endpoint}. "
+                    f"Must be one of: {sorted(valid_values)}"
+                ),
+                field="interval",
+                value=interval,
+            )
+
+    def _validate_maturity(self, maturity: str) -> None:
+        """Validate a Treasury yield maturity parameter.
+
+        Parameters
+        ----------
+        maturity : str
+            The maturity value to validate.
+
+        Raises
+        ------
+        AlphaVantageValidationError
+            If the maturity is not a valid Treasury yield maturity.
+        """
+        if maturity not in _TREASURY_YIELD_MATURITIES:
+            raise AlphaVantageValidationError(
+                message=(
+                    f"Invalid maturity '{maturity}' for TREASURY_YIELD. "
+                    f"Must be one of: {sorted(_TREASURY_YIELD_MATURITIES)}"
+                ),
+                field="maturity",
+                value=maturity,
             )
 
 

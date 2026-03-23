@@ -100,7 +100,7 @@ class TestAlphaVantageSessionInit:
         """Session initializes with default config."""
         with patch.dict("os.environ", {"ALPHA_VANTAGE_API_KEY": "env-key"}):
             session = AlphaVantageSession()
-            assert session is not None
+            assert isinstance(session, AlphaVantageSession)
             session.close()
 
     def test_正常系_カスタム設定で初期化(
@@ -109,7 +109,7 @@ class TestAlphaVantageSessionInit:
     ) -> None:
         """Session initializes with custom config."""
         session = AlphaVantageSession(config=zero_delay_config)
-        assert session is not None
+        assert isinstance(session, AlphaVantageSession)
         session.close()
 
     def test_正常系_リトライ設定で初期化(
@@ -122,7 +122,7 @@ class TestAlphaVantageSessionInit:
             config=zero_delay_config,
             retry_config=retry_config,
         )
-        assert session is not None
+        assert isinstance(session, AlphaVantageSession)
         session.close()
 
 
@@ -612,7 +612,26 @@ class TestExponentialBackoffRetry:
 
 
 # =============================================================================
-# Module exports
+# TestJSONDecodeFailure
 # =============================================================================
 
-__all__: list[str] = []
+
+class TestJSONDecodeFailure:
+    """Tests for JSON decode failure in _handle_response_body."""
+
+    def test_正常系_JSONデコード失敗時はエラーなしで通過(
+        self,
+        zero_delay_config: AlphaVantageConfig,
+    ) -> None:
+        """Response with invalid JSON body passes through without error."""
+        mock_response = _make_mock_response(
+            json_data={"Meta Data": {}},
+        )
+        # Make .json() raise ValueError to simulate invalid JSON
+        mock_response.json.side_effect = ValueError("Invalid JSON")
+
+        with AlphaVantageSession(config=zero_delay_config) as session:  # noqa: SIM117
+            with patch.object(session._client, "get", return_value=mock_response):
+                # _handle_response_body should silently return when JSON parsing fails
+                response = session.get(_AV_URL)
+                assert response.status_code == 200

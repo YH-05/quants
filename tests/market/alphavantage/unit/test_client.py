@@ -69,8 +69,9 @@ class TestAlphaVantageClientInit:
     """Tests for AlphaVantageClient initialization."""
 
     def test_正常系_初期化(self, client: AlphaVantageClient) -> None:
-        assert client._cache is not None
-        assert client._session is not None
+        assert isinstance(client._cache, SQLiteCache)
+        # Session is mocked in the fixture, so check it's a MagicMock
+        assert isinstance(client._session, MagicMock)
 
     def test_正常系_デフォルトキャッシュ(self) -> None:
         """Default cache is created when none is provided."""
@@ -421,6 +422,29 @@ class TestGetIncomeStatement:
         assert len(df) == 1
         client._session.get_with_retry.assert_not_called()
 
+    def test_正常系_quarterlyReportsでキャッシュミス(
+        self, client: AlphaVantageClient
+    ) -> None:
+        statement_data = {
+            "symbol": "AAPL",
+            "annualReports": [],
+            "quarterlyReports": [
+                {
+                    "fiscalDateEnding": "2023-12-31",
+                    "reportedCurrency": "USD",
+                    "totalRevenue": "119575000000",
+                }
+            ],
+        }
+        client._session.get_with_retry.return_value = _make_mock_response(
+            statement_data
+        )
+
+        df = client.get_income_statement("AAPL", report_type="quarterlyReports")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 1
+        client._session.get_with_retry.assert_called_once()
+
 
 class TestGetBalanceSheet:
     """Tests for get_balance_sheet method."""
@@ -456,6 +480,27 @@ class TestGetBalanceSheet:
         assert len(df) == 1
         client._session.get_with_retry.assert_not_called()
 
+    def test_正常系_quarterlyReportsでキャッシュミス(
+        self, client: AlphaVantageClient
+    ) -> None:
+        bs_data = {
+            "symbol": "AAPL",
+            "annualReports": [],
+            "quarterlyReports": [
+                {
+                    "fiscalDateEnding": "2023-12-31",
+                    "reportedCurrency": "USD",
+                    "totalAssets": "353514000000",
+                }
+            ],
+        }
+        client._session.get_with_retry.return_value = _make_mock_response(bs_data)
+
+        df = client.get_balance_sheet("AAPL", report_type="quarterlyReports")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 1
+        client._session.get_with_retry.assert_called_once()
+
 
 class TestGetCashFlow:
     """Tests for get_cash_flow method."""
@@ -490,6 +535,27 @@ class TestGetCashFlow:
         df = client.get_cash_flow("AAPL")
         assert len(df) == 1
         client._session.get_with_retry.assert_not_called()
+
+    def test_正常系_quarterlyReportsでキャッシュミス(
+        self, client: AlphaVantageClient
+    ) -> None:
+        cf_data = {
+            "symbol": "AAPL",
+            "annualReports": [],
+            "quarterlyReports": [
+                {
+                    "fiscalDateEnding": "2023-12-31",
+                    "reportedCurrency": "USD",
+                    "operatingCashflow": "39895000000",
+                }
+            ],
+        }
+        client._session.get_with_retry.return_value = _make_mock_response(cf_data)
+
+        df = client.get_cash_flow("AAPL", report_type="quarterlyReports")
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 1
+        client._session.get_with_retry.assert_called_once()
 
 
 class TestGetEarnings:

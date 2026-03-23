@@ -263,16 +263,21 @@ def parse_time_series(data: dict[str, Any]) -> pd.DataFrame:
             columns=pd.Index(["date", "open", "high", "low", "close", "volume"]),
         )
 
-    # Build rows from time series data
+    # Build rows as strings, then vectorized numeric conversion
     rows: list[dict[str, Any]] = []
     for date_str, values in ts_data.items():
         normalized = _normalize_ohlcv_columns(values)
         row: dict[str, Any] = {"date": date_str}
         for col_name, col_value in normalized.items():
-            row[col_name] = _clean_numeric(str(col_value))
+            row[col_name] = str(col_value).strip()
         rows.append(row)
 
     df = pd.DataFrame(rows)
+    # Vectorized numeric conversion (avoid per-cell _clean_numeric calls)
+    numeric_cols = [c for c in df.columns if c != "date"]
+    for col in numeric_cols:
+        df[col] = df[col].replace(list(_MISSING_VALUES), pd.NA)
+        df[col] = pd.to_numeric(df[col], errors="coerce")
 
     logger.info(
         "Time series parsed",
@@ -448,20 +453,14 @@ def parse_financial_statements(
         logger.info("Financial statements data is empty", report_type=report_type)
         return pd.DataFrame()
 
-    # Convert numeric values in each report
-    cleaned_reports: list[dict[str, Any]] = []
-    for report in reports:
-        cleaned: dict[str, Any] = {}
-        for key, value in report.items():
-            if key in {"fiscalDateEnding", "reportedCurrency"}:
-                cleaned[key] = value
-            else:
-                str_value = str(value)
-                numeric = _clean_numeric(str_value)
-                cleaned[key] = numeric if numeric is not None else value
-        cleaned_reports.append(cleaned)
-
-    df = pd.DataFrame(cleaned_reports)
+    # Build DataFrame from raw reports, then vectorized numeric conversion
+    df = pd.DataFrame(reports)
+    non_numeric_cols = {"fiscalDateEnding", "reportedCurrency"}
+    numeric_cols = [c for c in df.columns if c not in non_numeric_cols]
+    for col in numeric_cols:
+        df[col] = df[col].astype(str).str.strip()
+        df[col] = df[col].replace(list(_MISSING_VALUES), pd.NA)
+        df[col] = pd.to_numeric(df[col], errors="coerce")
 
     logger.info(
         "Financial statements parsed",
@@ -504,36 +503,35 @@ def parse_earnings(data: dict[str, Any]) -> tuple[pd.DataFrame, pd.DataFrame]:
             field="annualEarnings/quarterlyEarnings",
         )
 
-    # Parse annual earnings
+    # Parse annual earnings with vectorized numeric conversion
     annual_data = data.get("annualEarnings", [])
-    annual_cleaned: list[dict[str, Any]] = []
-    for entry in annual_data:
-        row: dict[str, Any] = {}
-        for key, value in entry.items():
-            if key == "fiscalDateEnding":
-                row[key] = value
-            else:
-                numeric = _clean_numeric(str(value))
-                row[key] = numeric if numeric is not None else value
-        annual_cleaned.append(row)
+    if annual_data:
+        annual_df = pd.DataFrame(annual_data)
+        annual_non_numeric = {"fiscalDateEnding"}
+        annual_numeric_cols = [
+            c for c in annual_df.columns if c not in annual_non_numeric
+        ]
+        for col in annual_numeric_cols:
+            annual_df[col] = annual_df[col].astype(str).str.strip()
+            annual_df[col] = annual_df[col].replace(list(_MISSING_VALUES), pd.NA)
+            annual_df[col] = pd.to_numeric(annual_df[col], errors="coerce")
+    else:
+        annual_df = pd.DataFrame()
 
-    # Parse quarterly earnings
+    # Parse quarterly earnings with vectorized numeric conversion
     quarterly_data = data.get("quarterlyEarnings", [])
-    quarterly_cleaned: list[dict[str, Any]] = []
-    for entry in quarterly_data:
-        row = {}
-        for key, value in entry.items():
-            if key in ("fiscalDateEnding", "reportedDate"):
-                row[key] = value
-            else:
-                numeric = _clean_numeric(str(value))
-                row[key] = numeric if numeric is not None else value
-        quarterly_cleaned.append(row)
-
-    annual_df = pd.DataFrame(annual_cleaned) if annual_cleaned else pd.DataFrame()
-    quarterly_df = (
-        pd.DataFrame(quarterly_cleaned) if quarterly_cleaned else pd.DataFrame()
-    )
+    if quarterly_data:
+        quarterly_df = pd.DataFrame(quarterly_data)
+        quarterly_non_numeric = {"fiscalDateEnding", "reportedDate"}
+        quarterly_numeric_cols = [
+            c for c in quarterly_df.columns if c not in quarterly_non_numeric
+        ]
+        for col in quarterly_numeric_cols:
+            quarterly_df[col] = quarterly_df[col].astype(str).str.strip()
+            quarterly_df[col] = quarterly_df[col].replace(list(_MISSING_VALUES), pd.NA)
+            quarterly_df[col] = pd.to_numeric(quarterly_df[col], errors="coerce")
+    else:
+        quarterly_df = pd.DataFrame()
 
     logger.info(
         "Earnings parsed",
@@ -583,14 +581,12 @@ def parse_economic_indicator(data: dict[str, Any]) -> pd.DataFrame:
         logger.info("Economic indicator data is empty")
         return pd.DataFrame(columns=pd.Index(["date", "value"]))
 
-    rows: list[dict[str, Any]] = []
-    for point in raw_data_points:
-        date_val = point.get("date", "")
-        value_str = str(point.get("value", ""))
-        cleaned_value = _clean_numeric(value_str)
-        rows.append({"date": date_val, "value": cleaned_value})
-
-    df = pd.DataFrame(rows)
+    # Build DataFrame from raw data, then vectorized numeric conversion
+    df = pd.DataFrame(raw_data_points)
+    if "value" in df.columns:
+        df["value"] = df["value"].astype(str).str.strip()
+        df["value"] = df["value"].replace(list(_MISSING_VALUES), pd.NA)
+        df["value"] = pd.to_numeric(df["value"], errors="coerce")
 
     logger.info(
         "Economic indicator parsed",
@@ -691,10 +687,15 @@ def _parse_keyed_time_series(
         normalized = _normalize_ohlcv_columns(values)
         row: dict[str, Any] = {"date": date_str}
         for col_name, col_value in normalized.items():
-            row[col_name] = _clean_numeric(str(col_value))
+            row[col_name] = str(col_value).strip()
         rows.append(row)
 
     df = pd.DataFrame(rows)
+    # Vectorized numeric conversion (avoid per-cell _clean_numeric calls)
+    numeric_cols = [c for c in df.columns if c != "date"]
+    for col in numeric_cols:
+        df[col] = df[col].replace(list(_MISSING_VALUES), pd.NA)
+        df[col] = pd.to_numeric(df[col], errors="coerce")
     logger.info("Keyed time series parsed", data_key=data_key, row_count=len(df))
     return df
 
