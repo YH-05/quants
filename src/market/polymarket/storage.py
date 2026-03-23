@@ -37,7 +37,9 @@ market.polymarket.storage_constants : Table name constants.
 from __future__ import annotations
 
 import json
+import math
 import os
+from functools import lru_cache
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -73,19 +75,51 @@ logger = get_logger(__name__)
 
 
 # ============================================================================
+# Validation helpers
+# ============================================================================
+
+
+def _validate_finite(value: float | None, name: str) -> float | None:
+    """Validate that a numeric value is finite (not NaN or Inf).
+
+    Parameters
+    ----------
+    value : float | None
+        Value to validate. ``None`` is passed through unchanged.
+    name : str
+        Field name for error messages.
+
+    Returns
+    -------
+    float | None
+        The validated value.
+
+    Raises
+    ------
+    ValueError
+        If the value is NaN or Inf.
+    """
+    if value is not None and not math.isfinite(value):
+        msg = f"{name} must be finite, got {value}"
+        raise ValueError(msg)
+    return value
+
+
+# ============================================================================
 # SQL helper
 # ============================================================================
 
 
-def _build_insert_sql(table_name: str, field_names: list[str]) -> str:
+@lru_cache(maxsize=16)
+def _build_insert_sql(table_name: str, field_names: tuple[str, ...]) -> str:
     """Build an INSERT OR REPLACE SQL statement for the given table and fields.
 
     Parameters
     ----------
     table_name : str
         Target table name. Must be in ``_VALID_TABLE_NAMES``.
-    field_names : list[str]
-        List of column names.
+    field_names : tuple[str, ...]
+        Tuple of column names (tuple required for lru_cache hashability).
 
     Returns
     -------
@@ -296,7 +330,7 @@ class PolymarketStorage:
             logger.debug("No events to upsert, skipping")
             return
 
-        event_columns = [
+        event_columns = (
             "id",
             "title",
             "slug",
@@ -308,7 +342,7 @@ class PolymarketStorage:
             "volume",
             "liquidity",
             "fetched_at",
-        ]
+        )
         sql = _build_insert_sql(TABLE_EVENTS, event_columns)
 
         params: list[tuple[Any, ...]] = []
@@ -325,8 +359,8 @@ class PolymarketStorage:
                     event.end_date,
                     int(event.active) if event.active is not None else None,
                     int(event.closed) if event.closed is not None else None,
-                    event.volume,
-                    event.liquidity,
+                    _validate_finite(event.volume, "event.volume"),
+                    _validate_finite(event.liquidity, "event.liquidity"),
                     fetched_at,
                 )
             )
@@ -370,7 +404,7 @@ class PolymarketStorage:
             logger.debug("No markets to upsert, skipping")
             return
 
-        market_columns = [
+        market_columns = (
             "condition_id",
             "event_id",
             "question",
@@ -382,7 +416,7 @@ class PolymarketStorage:
             "liquidity",
             "holders_json",
             "fetched_at",
-        ]
+        )
         market_sql = _build_insert_sql(TABLE_MARKETS, market_columns)
 
         market_params: list[tuple[Any, ...]] = []
@@ -398,8 +432,8 @@ class PolymarketStorage:
                     market.end_date_iso,
                     int(market.active) if market.active is not None else None,
                     int(market.closed) if market.closed is not None else None,
-                    market.volume,
-                    market.liquidity,
+                    _validate_finite(market.volume, "market.volume"),
+                    _validate_finite(market.liquidity, "market.liquidity"),
                     None,  # holders_json — not in the Pydantic model
                     fetched_at,
                 )
@@ -416,12 +450,15 @@ class PolymarketStorage:
                         token_keys=list(tok.keys()),
                     )
                     continue
+                raw_price = tok.get("price")
+                if isinstance(raw_price, float):
+                    _validate_finite(raw_price, "token.price")
                 token_params.append(
                     (
                         str(token_id),
                         market.condition_id,
                         str(outcome),
-                        tok.get("price"),
+                        raw_price,
                         fetched_at,
                     )
                 )
@@ -430,13 +467,13 @@ class PolymarketStorage:
         logger.info("Markets upserted", count=len(markets))
 
         if token_params:
-            token_columns = [
+            token_columns = (
                 "token_id",
                 "condition_id",
                 "outcome",
                 "price",
                 "fetched_at",
-            ]
+            )
             token_sql = _build_insert_sql(TABLE_TOKENS, token_columns)
             self._client.execute_many(token_sql, token_params)
             logger.info("Tokens upserted", count=len(token_params))
@@ -475,13 +512,13 @@ class PolymarketStorage:
             )
             return
 
-        columns = [
+        columns = (
             "token_id",
             "timestamp",
             "interval",
             "price",
             "fetched_at",
-        ]
+        )
         sql = _build_insert_sql(TABLE_PRICE_HISTORY, columns)
 
         params: list[tuple[Any, ...]] = [
@@ -489,7 +526,7 @@ class PolymarketStorage:
                 token_id,
                 price_point.t,
                 str(interval),
-                price_point.p,
+                _validate_finite(price_point.p, "price_point.p"),
                 fetched_at,
             )
             for price_point in prices
@@ -525,7 +562,7 @@ class PolymarketStorage:
             logger.debug("No trades to upsert, skipping")
             return
 
-        columns = [
+        columns = (
             "id",
             "market",
             "asset_id",
@@ -534,7 +571,7 @@ class PolymarketStorage:
             "side",
             "timestamp",
             "fetched_at",
-        ]
+        )
         sql = _build_insert_sql(TABLE_TRADES, columns)
 
         params: list[tuple[Any, ...]] = [
@@ -542,8 +579,8 @@ class PolymarketStorage:
                 trade.id,
                 trade.market,
                 trade.asset_id,
-                trade.price,
-                trade.size,
+                _validate_finite(trade.price, "trade.price"),
+                _validate_finite(trade.size, "trade.size"),
                 trade.side,
                 trade.timestamp.isoformat() if trade.timestamp else None,
                 fetched_at,
@@ -575,7 +612,7 @@ class PolymarketStorage:
         fetched_at : str
             ISO 8601 timestamp for the ``fetched_at`` column.
         """
-        columns = ["condition_id", "fetched_at", "data_json"]
+        columns = ("condition_id", "fetched_at", "data_json")
         sql = _build_insert_sql(TABLE_OI_SNAPSHOTS, columns)
 
         data_json = json.dumps(data, ensure_ascii=False)
@@ -604,7 +641,7 @@ class PolymarketStorage:
         fetched_at : str
             ISO 8601 timestamp for the ``fetched_at`` column.
         """
-        columns = ["condition_id", "fetched_at", "data_json"]
+        columns = ("condition_id", "fetched_at", "data_json")
         sql = _build_insert_sql(TABLE_ORDERBOOK_SNAPSHOTS, columns)
 
         data_json = orderbook.model_dump_json()
@@ -633,7 +670,7 @@ class PolymarketStorage:
         fetched_at : str
             ISO 8601 timestamp for the ``fetched_at`` column.
         """
-        columns = ["fetched_at", "data_json"]
+        columns = ("fetched_at", "data_json")
         sql = _build_insert_sql(TABLE_LEADERBOARD_SNAPSHOTS, columns)
 
         data_json = json.dumps(entries, ensure_ascii=False)
@@ -901,12 +938,13 @@ class PolymarketStorage:
             Dictionary mapping table name to row count.
         """
         logger.debug("Getting table statistics")
-        stats: dict[str, int] = {}
-        for tbl in sorted(_VALID_TABLE_NAMES):
-            rows = self._client.execute(
-                f"SELECT COUNT(*) AS cnt FROM {tbl}"  # nosec B608
-            )
-            stats[tbl] = rows[0]["cnt"]
+        tables = sorted(_VALID_TABLE_NAMES)
+        union_sql = " UNION ALL ".join(
+            f"SELECT '{tbl}' AS tbl, COUNT(*) AS cnt FROM {tbl}"  # nosec B608
+            for tbl in tables
+        )
+        rows = self._client.execute(union_sql)
+        stats = {row["tbl"]: row["cnt"] for row in rows}
         logger.info("Table statistics retrieved", stats=stats)
         return stats
 

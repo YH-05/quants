@@ -29,7 +29,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from utils_core.logging import get_logger
 
@@ -37,6 +37,7 @@ if TYPE_CHECKING:
     from market.polymarket.client import PolymarketClient
     from market.polymarket.models import PolymarketEvent
     from market.polymarket.storage import PolymarketStorage
+    from market.polymarket.types import PriceInterval
 
 logger = get_logger(__name__)
 
@@ -209,16 +210,15 @@ class PolymarketCollector:
             logger.info("Events collected and saved", count=len(events))
             return len(events), events
         except Exception as exc:
-            error_msg = f"Failed to collect events: {exc}"
-            logger.error(error_msg, exc_info=True)
-            self._errors.append(error_msg)
+            logger.error("Failed to collect events", exc_info=True)
+            self._errors.append("Failed to collect events")
             return 0, []
 
     def collect_price_history(
         self,
         token_id: str,
         *,
-        interval: str = "1d",
+        interval: str | PriceInterval = "1d",
     ) -> int:
         """Collect price history for a token and persist to storage.
 
@@ -229,8 +229,9 @@ class PolymarketCollector:
         ----------
         token_id : str
             The token identifier to collect price history for.
-        interval : str
-            Price interval string (default: ``"1d"``).
+        interval : str | PriceInterval
+            Price interval (default: ``"1d"``). Accepts both string and
+            ``PriceInterval`` enum values.
 
         Returns
         -------
@@ -243,10 +244,14 @@ class PolymarketCollector:
         logger.info(
             "Collecting price history",
             token_id=token_id,
-            interval=interval,
+            interval=str(interval),
         )
         try:
-            price_interval = PriceInterval(interval)
+            price_interval = (
+                interval
+                if isinstance(interval, PriceInterval)
+                else PriceInterval(interval)
+            )
             result = self._client.get_prices_history(token_id, interval=price_interval)
             df = result.data
             if df.empty:
@@ -273,9 +278,10 @@ class PolymarketCollector:
             )
             return len(points)
         except Exception as exc:
-            error_msg = f"Failed to collect price history for {token_id}: {exc}"
-            logger.error(error_msg, exc_info=True)
-            self._errors.append(error_msg)
+            logger.error(
+                "Failed to collect price history", token_id=token_id, exc_info=True
+            )
+            self._errors.append(f"Failed to collect price history for token {token_id}")
             return 0
 
     def collect_trades(
@@ -321,9 +327,10 @@ class PolymarketCollector:
             )
             return len(trades)
         except Exception as exc:
-            error_msg = f"Failed to collect trades for {condition_id}: {exc}"
-            logger.error(error_msg, exc_info=True)
-            self._errors.append(error_msg)
+            logger.error(
+                "Failed to collect trades", condition_id=condition_id, exc_info=True
+            )
+            self._errors.append(f"Failed to collect trades for market {condition_id}")
             return 0
 
     def collect_open_interest(self, condition_id: str) -> int:
@@ -358,9 +365,10 @@ class PolymarketCollector:
             logger.info("OI snapshot collected and saved", condition_id=condition_id)
             return 1
         except Exception as exc:
-            error_msg = f"Failed to collect OI for {condition_id}: {exc}"
-            logger.error(error_msg, exc_info=True)
-            self._errors.append(error_msg)
+            logger.error(
+                "Failed to collect OI", condition_id=condition_id, exc_info=True
+            )
+            self._errors.append(f"Failed to collect OI for market {condition_id}")
             return 0
 
     def collect_orderbooks(self, token_ids: list[str]) -> int:
@@ -394,9 +402,10 @@ class PolymarketCollector:
                 collected += 1
                 logger.debug("Orderbook snapshot saved", token_id=token_id)
             except Exception as exc:
-                error_msg = f"Failed to collect orderbook for {token_id}: {exc}"
-                logger.error(error_msg, exc_info=True)
-                self._errors.append(error_msg)
+                logger.error(
+                    "Failed to collect orderbook", token_id=token_id, exc_info=True
+                )
+                self._errors.append(f"Failed to collect orderbook for token {token_id}")
 
         logger.info("Orderbooks collected", total=collected)
         return collected
@@ -433,9 +442,8 @@ class PolymarketCollector:
             logger.info("Leaderboard snapshot collected and saved")
             return 1
         except Exception as exc:
-            error_msg = f"Failed to collect leaderboard: {exc}"
-            logger.error(error_msg, exc_info=True)
-            self._errors.append(error_msg)
+            logger.error("Failed to collect leaderboard", exc_info=True)
+            self._errors.append("Failed to collect leaderboard")
             return 0
 
     def collect_holders(self, condition_ids: list[str]) -> int:
@@ -465,9 +473,14 @@ class PolymarketCollector:
                 collected += 1
                 logger.debug("Holders saved", condition_id=condition_id)
             except Exception as exc:
-                error_msg = f"Failed to collect holders for {condition_id}: {exc}"
-                logger.error(error_msg, exc_info=True)
-                self._errors.append(error_msg)
+                logger.error(
+                    "Failed to collect holders",
+                    condition_id=condition_id,
+                    exc_info=True,
+                )
+                self._errors.append(
+                    f"Failed to collect holders for market {condition_id}"
+                )
 
         logger.info("Holders collected", total=collected)
         return collected

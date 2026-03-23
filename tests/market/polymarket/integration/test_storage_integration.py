@@ -101,8 +101,7 @@ class TestEventRoundTrip:
         stats = storage.get_stats()
         # Events should have markets (most events have at least 1)
         assert stats[TABLE_EVENTS] >= 1
-        # Markets may or may not exist depending on API data
-        assert stats[TABLE_MARKETS] >= 0
+        # Markets count is non-negative by definition (no assertion needed)
 
 
 class TestMarketRoundTrip:
@@ -139,8 +138,7 @@ class TestMarketRoundTrip:
 
         stats = storage.get_stats()
         assert stats[TABLE_MARKETS] >= 1
-        # Tokens may exist if markets have valid token data
-        assert stats[TABLE_TOKENS] >= 0
+        # Tokens count is non-negative by definition (no assertion needed)
 
 
 class TestPriceHistoryRoundTrip:

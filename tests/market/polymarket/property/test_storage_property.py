@@ -4,16 +4,19 @@ Hypothesis を使用して、ランダムデータでの upsert 冪等性と
 例外安全性を検証する。同じデータを2回 upsert しても
 レコード数が変わらないことを保証する。
 
+各テストメソッドは独立した一時ディレクトリに SQLite DB を作成し、
+Hypothesis の example 間でデータが蓄積しないようにする。
+
 See Also
 --------
 tests.market.polymarket.unit.test_storage : Unit tests for storage.
 tests.market.polymarket.property.test_session_property : Session property tests.
 """
 
+import tempfile
 from pathlib import Path
 
-import pytest
-from hypothesis import HealthCheck, given, settings
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from market.polymarket.models import (
@@ -120,16 +123,18 @@ _trade_st = st.builds(
 
 _interval_st = st.sampled_from(list(PriceInterval))
 
+FETCHED_AT = "2026-03-23T00:00:00Z"
+
 
 # ============================================================================
 # Helper
 # ============================================================================
 
 
-@pytest.fixture()
-def _storage(tmp_path: Path) -> PolymarketStorage:
-    """Create a fresh PolymarketStorage for each test."""
-    return PolymarketStorage(db_path=tmp_path / "prop_test.db")
+def _fresh_storage() -> PolymarketStorage:
+    """Create a fresh PolymarketStorage in a unique temp directory."""
+    tmp_dir = tempfile.mkdtemp()
+    return PolymarketStorage(db_path=Path(tmp_dir) / "prop_test.db")
 
 
 # ============================================================================
@@ -141,78 +146,61 @@ class TestUpsertEventsIdempotent:
     """upsert_events の冪等性プロパティテスト。"""
 
     @given(event=_event_st)
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_同一イベントを2回upsertしてもレコード数は変わらない(
         self,
         event: PolymarketEvent,
-        _storage: PolymarketStorage,
     ) -> None:
         """Upserting the same event twice should not increase the event count."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_events([event], fetched_at=fetched_at)
-        stats_after_first = _storage.get_stats()
+        storage = _fresh_storage()
+        storage.upsert_events([event], fetched_at=FETCHED_AT)
+        stats_after_first = storage.get_stats()
 
-        _storage.upsert_events([event], fetched_at=fetched_at)
-        stats_after_second = _storage.get_stats()
+        storage.upsert_events([event], fetched_at=FETCHED_AT)
+        stats_after_second = storage.get_stats()
 
         assert stats_after_second[TABLE_EVENTS] == stats_after_first[TABLE_EVENTS]
 
     @given(event=_event_st)
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_ランダムイベントのupsertで例外が発生しない(
         self,
         event: PolymarketEvent,
-        _storage: PolymarketStorage,
     ) -> None:
         """Random event data should not cause exceptions during upsert."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_events([event], fetched_at=fetched_at)
-        # If we reach here, no exception occurred
+        storage = _fresh_storage()
+        storage.upsert_events([event], fetched_at=FETCHED_AT)
 
 
 class TestUpsertMarketsIdempotent:
     """upsert_markets の冪等性プロパティテスト。"""
 
     @given(market=_market_st)
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_同一マーケットを2回upsertしてもレコード数は変わらない(
         self,
         market: PolymarketMarket,
-        _storage: PolymarketStorage,
     ) -> None:
         """Upserting the same market twice should not increase the market count."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_markets([market], fetched_at=fetched_at)
-        stats_after_first = _storage.get_stats()
+        storage = _fresh_storage()
+        storage.upsert_markets([market], fetched_at=FETCHED_AT)
+        stats_after_first = storage.get_stats()
 
-        _storage.upsert_markets([market], fetched_at=fetched_at)
-        stats_after_second = _storage.get_stats()
+        storage.upsert_markets([market], fetched_at=FETCHED_AT)
+        stats_after_second = storage.get_stats()
 
         assert stats_after_second[TABLE_MARKETS] == stats_after_first[TABLE_MARKETS]
         assert stats_after_second[TABLE_TOKENS] == stats_after_first[TABLE_TOKENS]
 
     @given(market=_market_st)
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_ランダムマーケットのupsertで例外が発生しない(
         self,
         market: PolymarketMarket,
-        _storage: PolymarketStorage,
     ) -> None:
         """Random market data should not cause exceptions during upsert."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_markets([market], fetched_at=fetched_at)
+        storage = _fresh_storage()
+        storage.upsert_markets([market], fetched_at=FETCHED_AT)
 
 
 class TestUpsertPriceHistoryIdempotent:
@@ -223,24 +211,20 @@ class TestUpsertPriceHistoryIdempotent:
         prices=st.lists(_price_point_st, min_size=1, max_size=10),
         interval=_interval_st,
     )
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_同一価格履歴を2回upsertしてもレコード数は変わらない(
         self,
         token_id: str,
         prices: list[PricePoint],
         interval: PriceInterval,
-        _storage: PolymarketStorage,
     ) -> None:
         """Upserting the same price data twice should not increase the count."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_price_history(token_id, prices, interval, fetched_at=fetched_at)
-        stats_after_first = _storage.get_stats()
+        storage = _fresh_storage()
+        storage.upsert_price_history(token_id, prices, interval, fetched_at=FETCHED_AT)
+        stats_after_first = storage.get_stats()
 
-        _storage.upsert_price_history(token_id, prices, interval, fetched_at=fetched_at)
-        stats_after_second = _storage.get_stats()
+        storage.upsert_price_history(token_id, prices, interval, fetched_at=FETCHED_AT)
+        stats_after_second = storage.get_stats()
 
         assert (
             stats_after_second[TABLE_PRICE_HISTORY]
@@ -252,58 +236,46 @@ class TestUpsertPriceHistoryIdempotent:
         prices=st.lists(_price_point_st, min_size=0, max_size=10),
         interval=_interval_st,
     )
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_ランダム価格履歴のupsertで例外が発生しない(
         self,
         token_id: str,
         prices: list[PricePoint],
         interval: PriceInterval,
-        _storage: PolymarketStorage,
     ) -> None:
         """Random price history data should not cause exceptions during upsert."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_price_history(token_id, prices, interval, fetched_at=fetched_at)
+        storage = _fresh_storage()
+        storage.upsert_price_history(token_id, prices, interval, fetched_at=FETCHED_AT)
 
 
 class TestUpsertTradesIdempotent:
     """upsert_trades の冪等性プロパティテスト。"""
 
     @given(trade=_trade_st)
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_同一トレードを2回upsertしてもレコード数は変わらない(
         self,
         trade: TradeRecord,
-        _storage: PolymarketStorage,
     ) -> None:
         """Upserting the same trade twice should not increase the trade count."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_trades([trade], fetched_at=fetched_at)
-        stats_after_first = _storage.get_stats()
+        storage = _fresh_storage()
+        storage.upsert_trades([trade], fetched_at=FETCHED_AT)
+        stats_after_first = storage.get_stats()
 
-        _storage.upsert_trades([trade], fetched_at=fetched_at)
-        stats_after_second = _storage.get_stats()
+        storage.upsert_trades([trade], fetched_at=FETCHED_AT)
+        stats_after_second = storage.get_stats()
 
         assert stats_after_second[TABLE_TRADES] == stats_after_first[TABLE_TRADES]
 
     @given(trade=_trade_st)
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_ランダムトレードのupsertで例外が発生しない(
         self,
         trade: TradeRecord,
-        _storage: PolymarketStorage,
     ) -> None:
         """Random trade data should not cause exceptions during upsert."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_trades([trade], fetched_at=fetched_at)
+        storage = _fresh_storage()
+        storage.upsert_trades([trade], fetched_at=FETCHED_AT)
 
 
 class TestSnapshotIdempotent:
@@ -322,23 +294,19 @@ class TestSnapshotIdempotent:
             max_size=5,
         ),
     )
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_同一OIスナップショットを2回insertしてもレコード数は変わらない(
         self,
         condition_id: str,
         data: dict,
-        _storage: PolymarketStorage,
     ) -> None:
         """Inserting the same OI snapshot twice should not increase the count."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.insert_oi_snapshot(condition_id, data, fetched_at=fetched_at)
-        stats_after_first = _storage.get_stats()
+        storage = _fresh_storage()
+        storage.insert_oi_snapshot(condition_id, data, fetched_at=FETCHED_AT)
+        stats_after_first = storage.get_stats()
 
-        _storage.insert_oi_snapshot(condition_id, data, fetched_at=fetched_at)
-        stats_after_second = _storage.get_stats()
+        storage.insert_oi_snapshot(condition_id, data, fetched_at=FETCHED_AT)
+        stats_after_second = storage.get_stats()
 
         assert (
             stats_after_second[TABLE_OI_SNAPSHOTS]
@@ -361,22 +329,18 @@ class TestSnapshotIdempotent:
             max_size=5,
         ),
     )
-    @settings(
-        max_examples=30,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=30)
     def test_プロパティ_同一リーダーボードスナップショットを2回insertしてもレコード数は変わらない(
         self,
         entries: list[dict],
-        _storage: PolymarketStorage,
     ) -> None:
         """Inserting the same leaderboard snapshot twice should not increase count."""
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.insert_leaderboard_snapshot(entries, fetched_at=fetched_at)
-        stats_after_first = _storage.get_stats()
+        storage = _fresh_storage()
+        storage.insert_leaderboard_snapshot(entries, fetched_at=FETCHED_AT)
+        stats_after_first = storage.get_stats()
 
-        _storage.insert_leaderboard_snapshot(entries, fetched_at=fetched_at)
-        stats_after_second = _storage.get_stats()
+        storage.insert_leaderboard_snapshot(entries, fetched_at=FETCHED_AT)
+        stats_after_second = storage.get_stats()
 
         assert (
             stats_after_second[TABLE_LEADERBOARD_SNAPSHOTS]
@@ -390,47 +354,31 @@ class TestUpsertPreservesAllElements:
     @given(
         events=st.lists(_event_st, min_size=1, max_size=3),
     )
-    @settings(
-        max_examples=20,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=20)
     def test_プロパティ_upsert後のイベント増分はユニークID数以下(
         self,
         events: list[PolymarketEvent],
-        _storage: PolymarketStorage,
     ) -> None:
         """The number of new event rows added is at most the unique event IDs count."""
-        stats_before = _storage.get_stats()
-        count_before = stats_before[TABLE_EVENTS]
-
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_events(events, fetched_at=fetched_at)
+        storage = _fresh_storage()
+        storage.upsert_events(events, fetched_at=FETCHED_AT)
 
         unique_event_ids = {e.id for e in events}
-        stats_after = _storage.get_stats()
-        new_rows = stats_after[TABLE_EVENTS] - count_before
-        assert new_rows <= len(unique_event_ids)
+        stats_after = storage.get_stats()
+        assert stats_after[TABLE_EVENTS] <= len(unique_event_ids)
 
     @given(
         markets=st.lists(_market_st, min_size=1, max_size=5),
     )
-    @settings(
-        max_examples=20,
-        suppress_health_check=[HealthCheck.function_scoped_fixture],
-    )
+    @settings(max_examples=20)
     def test_プロパティ_upsert後のマーケット増分はユニークcondition_id数以下(
         self,
         markets: list[PolymarketMarket],
-        _storage: PolymarketStorage,
     ) -> None:
         """The number of new market rows added is at most the unique condition_ids count."""
-        stats_before = _storage.get_stats()
-        count_before = stats_before[TABLE_MARKETS]
-
-        fetched_at = "2026-03-23T00:00:00Z"
-        _storage.upsert_markets(markets, fetched_at=fetched_at)
+        storage = _fresh_storage()
+        storage.upsert_markets(markets, fetched_at=FETCHED_AT)
 
         unique_condition_ids = {m.condition_id for m in markets}
-        stats_after = _storage.get_stats()
-        new_rows = stats_after[TABLE_MARKETS] - count_before
-        assert new_rows <= len(unique_condition_ids)
+        stats_after = storage.get_stats()
+        assert stats_after[TABLE_MARKETS] <= len(unique_condition_ids)
