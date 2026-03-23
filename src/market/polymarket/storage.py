@@ -36,6 +36,7 @@ market.polymarket.storage_constants : Table name constants.
 
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -57,7 +58,13 @@ from market.polymarket.storage_constants import (
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
-    from market.polymarket.models import PolymarketEvent, PolymarketMarket, PricePoint
+    from market.polymarket.models import (
+        OrderBook,
+        PolymarketEvent,
+        PolymarketMarket,
+        PricePoint,
+        TradeRecord,
+    )
     from market.polymarket.types import PriceInterval
 
 logger = get_logger(__name__)
@@ -482,6 +489,174 @@ class PolymarketStorage:
             token_id=token_id,
             interval=str(interval),
             count=len(prices),
+        )
+
+    def upsert_trades(
+        self,
+        trades: list[TradeRecord],
+        *,
+        fetched_at: str,
+    ) -> None:
+        """Upsert trade execution records into ``pm_trades``.
+
+        Inserts or replaces rows using the trade ``id`` as primary key.
+        Duplicate trade IDs are overwritten, ensuring idempotent behaviour.
+
+        Parameters
+        ----------
+        trades : list[TradeRecord]
+            List of Pydantic trade models to persist.
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        """
+        if not trades:
+            logger.debug("No trades to upsert, skipping")
+            return
+
+        columns = [
+            "id",
+            "market",
+            "asset_id",
+            "price",
+            "size",
+            "side",
+            "timestamp",
+            "fetched_at",
+        ]
+        sql = _build_insert_sql(TABLE_TRADES, columns)
+
+        params: list[tuple[Any, ...]] = [
+            (
+                trade.id,
+                trade.market,
+                trade.asset_id,
+                trade.price,
+                trade.size,
+                trade.side,
+                trade.timestamp.isoformat() if trade.timestamp else None,
+                fetched_at,
+            )
+            for trade in trades
+        ]
+
+        self._client.execute_many(sql, params)
+        logger.info("Trades upserted", count=len(trades))
+
+    def insert_oi_snapshot(
+        self,
+        condition_id: str,
+        data: dict[str, Any],
+        *,
+        fetched_at: str,
+    ) -> None:
+        """Insert an open interest snapshot as JSON into ``pm_oi_snapshots``.
+
+        Uses the composite primary key ``(condition_id, fetched_at)``.
+        Duplicate entries are overwritten, ensuring idempotent behaviour.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition ID.
+        data : dict[str, Any]
+            Open interest data to store as a JSON string.
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        """
+        columns = ["condition_id", "fetched_at", "data_json"]
+        sql = _build_insert_sql(TABLE_OI_SNAPSHOTS, columns)
+
+        data_json = json.dumps(data, ensure_ascii=False)
+        self._client.execute(sql, (condition_id, fetched_at, data_json))
+        logger.info(
+            "OI snapshot inserted",
+            condition_id=condition_id,
+            fetched_at=fetched_at,
+        )
+
+    def insert_orderbook_snapshot(
+        self,
+        orderbook: OrderBook,
+        *,
+        fetched_at: str,
+    ) -> None:
+        """Insert an order book snapshot as JSON into ``pm_orderbook_snapshots``.
+
+        Uses the composite primary key ``(condition_id, fetched_at)`` where
+        ``condition_id`` is derived from ``orderbook.market``.
+
+        Parameters
+        ----------
+        orderbook : OrderBook
+            Pydantic order book model to persist.
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        """
+        columns = ["condition_id", "fetched_at", "data_json"]
+        sql = _build_insert_sql(TABLE_ORDERBOOK_SNAPSHOTS, columns)
+
+        data_json = orderbook.model_dump_json()
+        self._client.execute(sql, (orderbook.market, fetched_at, data_json))
+        logger.info(
+            "Orderbook snapshot inserted",
+            condition_id=orderbook.market,
+            fetched_at=fetched_at,
+        )
+
+    def insert_leaderboard_snapshot(
+        self,
+        entries: list[dict[str, Any]],
+        *,
+        fetched_at: str,
+    ) -> None:
+        """Insert a leaderboard snapshot as JSON into ``pm_leaderboard_snapshots``.
+
+        Uses ``fetched_at`` as the primary key. Duplicate timestamps
+        are overwritten, ensuring idempotent behaviour.
+
+        Parameters
+        ----------
+        entries : list[dict[str, Any]]
+            List of leaderboard entries to store as a JSON string.
+        fetched_at : str
+            ISO 8601 timestamp for the ``fetched_at`` column.
+        """
+        columns = ["fetched_at", "data_json"]
+        sql = _build_insert_sql(TABLE_LEADERBOARD_SNAPSHOTS, columns)
+
+        data_json = json.dumps(entries, ensure_ascii=False)
+        self._client.execute(sql, (fetched_at, data_json))
+        logger.info(
+            "Leaderboard snapshot inserted",
+            fetched_at=fetched_at,
+            entry_count=len(entries),
+        )
+
+    def upsert_holders(
+        self,
+        condition_id: str,
+        holders: list[dict[str, Any]],
+    ) -> None:
+        """Update the ``holders_json`` column in ``pm_markets``.
+
+        Updates the existing market row identified by ``condition_id``
+        with the serialized holders data. If the market row does not
+        exist, the update silently affects zero rows.
+
+        Parameters
+        ----------
+        condition_id : str
+            The market condition ID to update.
+        holders : list[dict[str, Any]]
+            List of holder records to store as a JSON string.
+        """
+        holders_json = json.dumps(holders, ensure_ascii=False)
+        sql = f"UPDATE {TABLE_MARKETS} SET holders_json = ? WHERE condition_id = ?"  # nosec B608
+        self._client.execute(sql, (holders_json, condition_id))
+        logger.info(
+            "Holders upserted",
+            condition_id=condition_id,
+            holder_count=len(holders),
         )
 
     # ------------------------------------------------------------------

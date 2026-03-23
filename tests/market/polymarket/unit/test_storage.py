@@ -4,11 +4,20 @@ Tests cover table creation, factory function, basic introspection
 methods, and upsert operations of ``PolymarketStorage``.
 """
 
+import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
 
-from market.polymarket.models import PolymarketEvent, PolymarketMarket, PricePoint
+from market.polymarket.models import (
+    OrderBook,
+    OrderBookLevel,
+    PolymarketEvent,
+    PolymarketMarket,
+    PricePoint,
+    TradeRecord,
+)
 from market.polymarket.storage import (
     _TABLE_DDL,
     PolymarketStorage,
@@ -525,3 +534,421 @@ class TestUpsertPriceHistory:
 
         stats = pm_storage.get_stats()
         assert stats[TABLE_PRICE_HISTORY] == 100
+
+
+# ============================================================================
+# Helper factories for Wave 2 tests
+# ============================================================================
+
+
+def _make_trade(
+    trade_id: str = "trade-001",
+    *,
+    market: str = "cond-001",
+    asset_id: str = "asset-001",
+    price: float = 0.65,
+    size: float = 500.0,
+    side: str | None = "BUY",
+    timestamp: datetime | None = datetime(2026, 3, 23, 12, 0, 0, tzinfo=timezone.utc),
+) -> TradeRecord:
+    """Create a minimal TradeRecord for testing."""
+    return TradeRecord(
+        id=trade_id,
+        market=market,
+        asset_id=asset_id,
+        price=price,
+        size=size,
+        side=side,
+        timestamp=timestamp,
+    )
+
+
+def _make_orderbook(
+    condition_id: str = "cond-001",
+    asset_id: str = "asset-001",
+) -> OrderBook:
+    """Create a minimal OrderBook for testing."""
+    return OrderBook(
+        market=condition_id,
+        asset_id=asset_id,
+        bids=[OrderBookLevel(price=0.50, size=100.0)],
+        asks=[OrderBookLevel(price=0.55, size=200.0)],
+    )
+
+
+# ============================================================================
+# UpsertTrades tests
+# ============================================================================
+
+
+class TestUpsertTrades:
+    """Tests for PolymarketStorage.upsert_trades()."""
+
+    def test_正常系_トレードが保存される(self, pm_storage: PolymarketStorage) -> None:
+        """upsert_trades() inserts trade rows into pm_trades."""
+        trade = _make_trade("trade-001")
+        pm_storage.upsert_trades([trade], fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_TRADES] == 1
+
+    def test_正常系_複数トレードが保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_trades() inserts multiple trade rows."""
+        trades = [_make_trade(f"trade-{i:03d}") for i in range(5)]
+        pm_storage.upsert_trades(trades, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_TRADES] == 5
+
+    def test_正常系_保存データの内容が正しい(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_trades() stores correct field values."""
+        trade = _make_trade(
+            "trade-001",
+            market="cond-abc",
+            asset_id="asset-xyz",
+            price=0.72,
+            size=1000.0,
+            side="SELL",
+            timestamp=datetime(2026, 3, 23, 15, 30, 0, tzinfo=timezone.utc),
+        )
+        pm_storage.upsert_trades([trade], fetched_at=FETCHED_AT)
+
+        rows = pm_storage._client.execute(f"SELECT * FROM {TABLE_TRADES}")
+        assert len(rows) == 1
+        row = rows[0]
+        assert row["id"] == "trade-001"
+        assert row["market"] == "cond-abc"
+        assert row["asset_id"] == "asset-xyz"
+        assert row["price"] == pytest.approx(0.72)
+        assert row["size"] == pytest.approx(1000.0)
+        assert row["side"] == "SELL"
+        assert row["timestamp"] == "2026-03-23T15:30:00+00:00"
+        assert row["fetched_at"] == FETCHED_AT
+
+    def test_正常系_同一IDの重複upsertで上書き(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_trades() with duplicate trade ID overwrites (idempotent)."""
+        trade_v1 = _make_trade("trade-001", price=0.50)
+        pm_storage.upsert_trades([trade_v1], fetched_at=FETCHED_AT)
+
+        trade_v2 = _make_trade("trade-001", price=0.75)
+        pm_storage.upsert_trades([trade_v2], fetched_at="2026-03-24T00:00:00Z")
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_TRADES] == 1
+
+        rows = pm_storage._client.execute(
+            f"SELECT price FROM {TABLE_TRADES} WHERE id = 'trade-001'"
+        )
+        assert rows[0]["price"] == pytest.approx(0.75)
+
+    def test_エッジケース_空リストで何もしない(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_trades([]) is a no-op without errors."""
+        pm_storage.upsert_trades([], fetched_at=FETCHED_AT)
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_TRADES] == 0
+
+    def test_正常系_sideがNoneでも保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_trades() handles None side correctly."""
+        trade = _make_trade("trade-001", side=None)
+        pm_storage.upsert_trades([trade], fetched_at=FETCHED_AT)
+
+        rows = pm_storage._client.execute(f"SELECT side FROM {TABLE_TRADES}")
+        assert rows[0]["side"] is None
+
+
+# ============================================================================
+# InsertOiSnapshot tests
+# ============================================================================
+
+
+class TestInsertOiSnapshot:
+    """Tests for PolymarketStorage.insert_oi_snapshot()."""
+
+    def test_正常系_OIスナップショットが保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_oi_snapshot() inserts a row into pm_oi_snapshots."""
+        data = {"open_interest": 15000.0, "volume_24h": 5000.0}
+        pm_storage.insert_oi_snapshot("cond-001", data, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_OI_SNAPSHOTS] == 1
+
+    def test_正常系_JSONデータが正しく保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_oi_snapshot() stores data as JSON string in data_json."""
+        data = {"open_interest": 15000.0, "tokens": ["tok-yes", "tok-no"]}
+        pm_storage.insert_oi_snapshot("cond-001", data, fetched_at=FETCHED_AT)
+
+        rows = pm_storage._client.execute(
+            f"SELECT condition_id, fetched_at, data_json FROM {TABLE_OI_SNAPSHOTS}"
+        )
+        assert len(rows) == 1
+        row = rows[0]
+        assert row["condition_id"] == "cond-001"
+        assert row["fetched_at"] == FETCHED_AT
+        parsed = json.loads(row["data_json"])
+        assert parsed["open_interest"] == 15000.0
+        assert parsed["tokens"] == ["tok-yes", "tok-no"]
+
+    def test_正常系_同一PKの重複insertで上書き(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_oi_snapshot() with same PK overwrites (idempotent)."""
+        data_v1 = {"open_interest": 10000.0}
+        pm_storage.insert_oi_snapshot("cond-001", data_v1, fetched_at=FETCHED_AT)
+
+        data_v2 = {"open_interest": 20000.0}
+        pm_storage.insert_oi_snapshot("cond-001", data_v2, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_OI_SNAPSHOTS] == 1
+
+        rows = pm_storage._client.execute(f"SELECT data_json FROM {TABLE_OI_SNAPSHOTS}")
+        parsed = json.loads(rows[0]["data_json"])
+        assert parsed["open_interest"] == 20000.0
+
+    def test_正常系_異なるfetched_atは別レコード(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """Different fetched_at for same condition_id creates separate rows."""
+        data = {"open_interest": 15000.0}
+        pm_storage.insert_oi_snapshot("cond-001", data, fetched_at=FETCHED_AT)
+        pm_storage.insert_oi_snapshot(
+            "cond-001", data, fetched_at="2026-03-24T00:00:00Z"
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_OI_SNAPSHOTS] == 2
+
+
+# ============================================================================
+# InsertOrderbookSnapshot tests
+# ============================================================================
+
+
+class TestInsertOrderbookSnapshot:
+    """Tests for PolymarketStorage.insert_orderbook_snapshot()."""
+
+    def test_正常系_注文板スナップショットが保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_orderbook_snapshot() inserts a row into pm_orderbook_snapshots."""
+        orderbook = _make_orderbook("cond-001")
+        pm_storage.insert_orderbook_snapshot(orderbook, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_ORDERBOOK_SNAPSHOTS] == 1
+
+    def test_正常系_JSONデータが正しく保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_orderbook_snapshot() stores orderbook as JSON in data_json."""
+        orderbook = _make_orderbook("cond-001", "asset-xyz")
+        pm_storage.insert_orderbook_snapshot(orderbook, fetched_at=FETCHED_AT)
+
+        rows = pm_storage._client.execute(
+            f"SELECT condition_id, data_json FROM {TABLE_ORDERBOOK_SNAPSHOTS}"
+        )
+        assert len(rows) == 1
+        assert rows[0]["condition_id"] == "cond-001"
+        parsed = json.loads(rows[0]["data_json"])
+        assert parsed["market"] == "cond-001"
+        assert parsed["asset_id"] == "asset-xyz"
+        assert len(parsed["bids"]) == 1
+        assert len(parsed["asks"]) == 1
+
+    def test_正常系_同一PKの重複insertで上書き(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_orderbook_snapshot() with same PK overwrites (idempotent)."""
+        orderbook = _make_orderbook("cond-001")
+        pm_storage.insert_orderbook_snapshot(orderbook, fetched_at=FETCHED_AT)
+        pm_storage.insert_orderbook_snapshot(orderbook, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_ORDERBOOK_SNAPSHOTS] == 1
+
+    def test_正常系_異なるfetched_atは別レコード(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """Different fetched_at for same condition_id creates separate rows."""
+        orderbook = _make_orderbook("cond-001")
+        pm_storage.insert_orderbook_snapshot(orderbook, fetched_at=FETCHED_AT)
+        pm_storage.insert_orderbook_snapshot(
+            orderbook, fetched_at="2026-03-24T00:00:00Z"
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_ORDERBOOK_SNAPSHOTS] == 2
+
+
+# ============================================================================
+# InsertLeaderboardSnapshot tests
+# ============================================================================
+
+
+class TestInsertLeaderboardSnapshot:
+    """Tests for PolymarketStorage.insert_leaderboard_snapshot()."""
+
+    def test_正常系_リーダーボードスナップショットが保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_leaderboard_snapshot() inserts a row into pm_leaderboard_snapshots."""
+        entries = [
+            {"rank": 1, "user": "alice", "profit": 50000.0},
+            {"rank": 2, "user": "bob", "profit": 30000.0},
+        ]
+        pm_storage.insert_leaderboard_snapshot(entries, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_LEADERBOARD_SNAPSHOTS] == 1
+
+    def test_正常系_JSONデータが正しく保存される(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_leaderboard_snapshot() stores entries as JSON in data_json."""
+        entries = [
+            {"rank": 1, "user": "alice", "profit": 50000.0},
+        ]
+        pm_storage.insert_leaderboard_snapshot(entries, fetched_at=FETCHED_AT)
+
+        rows = pm_storage._client.execute(
+            f"SELECT fetched_at, data_json FROM {TABLE_LEADERBOARD_SNAPSHOTS}"
+        )
+        assert len(rows) == 1
+        assert rows[0]["fetched_at"] == FETCHED_AT
+        parsed = json.loads(rows[0]["data_json"])
+        assert len(parsed) == 1
+        assert parsed[0]["rank"] == 1
+        assert parsed[0]["user"] == "alice"
+
+    def test_正常系_同一fetched_atの重複insertで上書き(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """insert_leaderboard_snapshot() with same fetched_at overwrites."""
+        entries_v1 = [{"rank": 1, "user": "alice"}]
+        pm_storage.insert_leaderboard_snapshot(entries_v1, fetched_at=FETCHED_AT)
+
+        entries_v2 = [{"rank": 1, "user": "bob"}]
+        pm_storage.insert_leaderboard_snapshot(entries_v2, fetched_at=FETCHED_AT)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_LEADERBOARD_SNAPSHOTS] == 1
+
+        rows = pm_storage._client.execute(
+            f"SELECT data_json FROM {TABLE_LEADERBOARD_SNAPSHOTS}"
+        )
+        parsed = json.loads(rows[0]["data_json"])
+        assert parsed[0]["user"] == "bob"
+
+    def test_正常系_異なるfetched_atは別レコード(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """Different fetched_at creates separate leaderboard snapshots."""
+        entries = [{"rank": 1, "user": "alice"}]
+        pm_storage.insert_leaderboard_snapshot(entries, fetched_at=FETCHED_AT)
+        pm_storage.insert_leaderboard_snapshot(
+            entries, fetched_at="2026-03-24T00:00:00Z"
+        )
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_LEADERBOARD_SNAPSHOTS] == 2
+
+
+# ============================================================================
+# UpsertHolders tests
+# ============================================================================
+
+
+class TestUpsertHolders:
+    """Tests for PolymarketStorage.upsert_holders()."""
+
+    def test_正常系_ホルダーが保存される(self, pm_storage: PolymarketStorage) -> None:
+        """upsert_holders() updates holders_json in pm_markets."""
+        # First, insert a market row
+        market = _make_market("cond-001")
+        pm_storage.upsert_markets([market], fetched_at=FETCHED_AT)
+
+        holders = [
+            {"address": "0xabc", "shares": 1000},
+            {"address": "0xdef", "shares": 500},
+        ]
+        pm_storage.upsert_holders("cond-001", holders)
+
+        rows = pm_storage._client.execute(
+            f"SELECT holders_json FROM {TABLE_MARKETS} WHERE condition_id = 'cond-001'"
+        )
+        assert rows[0]["holders_json"] is not None
+        parsed = json.loads(rows[0]["holders_json"])
+        assert len(parsed) == 2
+        assert parsed[0]["address"] == "0xabc"
+        assert parsed[1]["shares"] == 500
+
+    def test_正常系_冪等に動作する(self, pm_storage: PolymarketStorage) -> None:
+        """upsert_holders() is idempotent -- same data produces same result."""
+        market = _make_market("cond-001")
+        pm_storage.upsert_markets([market], fetched_at=FETCHED_AT)
+
+        holders = [{"address": "0xabc", "shares": 1000}]
+        pm_storage.upsert_holders("cond-001", holders)
+        pm_storage.upsert_holders("cond-001", holders)
+
+        rows = pm_storage._client.execute(
+            f"SELECT holders_json FROM {TABLE_MARKETS} WHERE condition_id = 'cond-001'"
+        )
+        parsed = json.loads(rows[0]["holders_json"])
+        assert len(parsed) == 1
+
+    def test_正常系_ホルダーが更新される(self, pm_storage: PolymarketStorage) -> None:
+        """upsert_holders() overwrites previous holders data."""
+        market = _make_market("cond-001")
+        pm_storage.upsert_markets([market], fetched_at=FETCHED_AT)
+
+        holders_v1 = [{"address": "0xabc", "shares": 1000}]
+        pm_storage.upsert_holders("cond-001", holders_v1)
+
+        holders_v2 = [{"address": "0xdef", "shares": 2000}]
+        pm_storage.upsert_holders("cond-001", holders_v2)
+
+        rows = pm_storage._client.execute(
+            f"SELECT holders_json FROM {TABLE_MARKETS} WHERE condition_id = 'cond-001'"
+        )
+        parsed = json.loads(rows[0]["holders_json"])
+        assert len(parsed) == 1
+        assert parsed[0]["address"] == "0xdef"
+
+    def test_正常系_空リストでNULL化(self, pm_storage: PolymarketStorage) -> None:
+        """upsert_holders() with empty list stores empty JSON array."""
+        market = _make_market("cond-001")
+        pm_storage.upsert_markets([market], fetched_at=FETCHED_AT)
+
+        pm_storage.upsert_holders("cond-001", [])
+
+        rows = pm_storage._client.execute(
+            f"SELECT holders_json FROM {TABLE_MARKETS} WHERE condition_id = 'cond-001'"
+        )
+        parsed = json.loads(rows[0]["holders_json"])
+        assert parsed == []
+
+    def test_エッジケース_存在しないcondition_idは影響なし(
+        self, pm_storage: PolymarketStorage
+    ) -> None:
+        """upsert_holders() for non-existent condition_id updates zero rows."""
+        holders = [{"address": "0xabc", "shares": 1000}]
+        # Should not raise -- UPDATE simply affects 0 rows
+        pm_storage.upsert_holders("non-existent", holders)
+
+        stats = pm_storage.get_stats()
+        assert stats[TABLE_MARKETS] == 0
