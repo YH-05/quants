@@ -20,32 +20,32 @@ class TestPolymarketPackageExports:
     def test_正常系_PolymarketClientがインポートできる(self) -> None:
         from market.polymarket import PolymarketClient
 
-        assert PolymarketClient is not None
+        assert callable(PolymarketClient)
 
     def test_正常系_PolymarketConfigがインポートできる(self) -> None:
         from market.polymarket import PolymarketConfig
 
-        assert PolymarketConfig is not None
+        assert callable(PolymarketConfig)
 
     def test_正常系_RetryConfigがインポートできる(self) -> None:
         from market.polymarket import RetryConfig
 
-        assert RetryConfig is not None
+        assert callable(RetryConfig)
 
     def test_正常系_FetchOptionsがインポートできる(self) -> None:
         from market.polymarket import FetchOptions
 
-        assert FetchOptions is not None
+        assert callable(FetchOptions)
 
     def test_正常系_PriceIntervalがインポートできる(self) -> None:
         from market.polymarket import PriceInterval
 
-        assert PriceInterval is not None
+        assert callable(PriceInterval)
 
     def test_正常系_PolymarketSessionがインポートできる(self) -> None:
         from market.polymarket import PolymarketSession
 
-        assert PolymarketSession is not None
+        assert callable(PolymarketSession)
 
     def test_正常系_レスポンスモデルがインポートできる(self) -> None:
         from market.polymarket import (
@@ -57,12 +57,12 @@ class TestPolymarketPackageExports:
             TradeRecord,
         )
 
-        assert OrderBook is not None
-        assert OrderBookLevel is not None
-        assert PolymarketEvent is not None
-        assert PolymarketMarket is not None
-        assert PricePoint is not None
-        assert TradeRecord is not None
+        assert callable(OrderBook)
+        assert callable(OrderBookLevel)
+        assert callable(PolymarketEvent)
+        assert callable(PolymarketMarket)
+        assert callable(PricePoint)
+        assert callable(TradeRecord)
 
     def test_正常系_エラークラスがインポートできる(self) -> None:
         from market.polymarket import (
@@ -73,21 +73,33 @@ class TestPolymarketPackageExports:
             PolymarketValidationError,
         )
 
-        assert PolymarketAPIError is not None
-        assert PolymarketError is not None
-        assert PolymarketNotFoundError is not None
-        assert PolymarketRateLimitError is not None
-        assert PolymarketValidationError is not None
+        assert callable(PolymarketAPIError)
+        assert callable(PolymarketError)
+        assert callable(PolymarketNotFoundError)
+        assert callable(PolymarketRateLimitError)
+        assert callable(PolymarketValidationError)
+
+    def test_正常系_PolymarketStorageがインポートできる(self) -> None:
+        from market.polymarket import PolymarketStorage
+
+        assert callable(PolymarketStorage)
+
+    def test_正常系_get_polymarket_storageがインポートできる(self) -> None:
+        from market.polymarket import get_polymarket_storage
+
+        assert callable(get_polymarket_storage)
 
     def test_正常系_allが全公開APIを含む(self) -> None:
         import market.polymarket as pkg
 
         expected = {
+            "CollectionResult",
             "FetchOptions",
             "OrderBook",
             "OrderBookLevel",
             "PolymarketAPIError",
             "PolymarketClient",
+            "PolymarketCollector",
             "PolymarketConfig",
             "PolymarketError",
             "PolymarketEvent",
@@ -95,11 +107,13 @@ class TestPolymarketPackageExports:
             "PolymarketNotFoundError",
             "PolymarketRateLimitError",
             "PolymarketSession",
+            "PolymarketStorage",
             "PolymarketValidationError",
             "PriceInterval",
             "PricePoint",
             "RetryConfig",
             "TradeRecord",
+            "get_polymarket_storage",
         }
         assert set(pkg.__all__) == expected
 
@@ -163,22 +177,22 @@ class TestMarketPackagePolymarketExports:
     def test_正常系_marketからPolymarketClientがインポートできる(self) -> None:
         from market import PolymarketClient
 
-        assert PolymarketClient is not None
+        assert callable(PolymarketClient)
 
     def test_正常系_marketからPolymarketConfigがインポートできる(self) -> None:
         from market import PolymarketConfig
 
-        assert PolymarketConfig is not None
+        assert callable(PolymarketConfig)
 
     def test_正常系_marketからPolymarketEventがインポートできる(self) -> None:
         from market import PolymarketEvent
 
-        assert PolymarketEvent is not None
+        assert callable(PolymarketEvent)
 
     def test_正常系_marketからPolymarketMarketがインポートできる(self) -> None:
         from market import PolymarketMarket
 
-        assert PolymarketMarket is not None
+        assert callable(PolymarketMarket)
 
     def test_正常系_marketからPolymarketエラーがインポートできる(self) -> None:
         from market import (
@@ -189,11 +203,11 @@ class TestMarketPackagePolymarketExports:
             PolymarketValidationError,
         )
 
-        assert PolymarketAPIError is not None
-        assert PolymarketError is not None
-        assert PolymarketNotFoundError is not None
-        assert PolymarketRateLimitError is not None
-        assert PolymarketValidationError is not None
+        assert callable(PolymarketAPIError)
+        assert callable(PolymarketError)
+        assert callable(PolymarketNotFoundError)
+        assert callable(PolymarketRateLimitError)
+        assert callable(PolymarketValidationError)
 
     def test_正常系_market_allにPolymarketエントリが含まれる(self) -> None:
         import market
