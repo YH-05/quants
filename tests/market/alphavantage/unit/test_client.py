@@ -412,7 +412,9 @@ class TestGetIncomeStatement:
         cached_df = pd.DataFrame(
             [{"fiscalDateEnding": "2023-09-30", "totalRevenue": 383285000000.0}]
         )
-        key = generate_cache_key(symbol="AAPL", source="av_income_statement")
+        key = generate_cache_key(
+            symbol="AAPL", source="av_income_statement_annualReports"
+        )
         mock_cache.set(key, cached_df, ttl=FUNDAMENTALS_TTL)
 
         df = client.get_income_statement("AAPL")
@@ -447,7 +449,7 @@ class TestGetBalanceSheet:
         cached_df = pd.DataFrame(
             [{"fiscalDateEnding": "2023-09-30", "totalAssets": 352583000000.0}]
         )
-        key = generate_cache_key(symbol="AAPL", source="av_balance_sheet")
+        key = generate_cache_key(symbol="AAPL", source="av_balance_sheet_annualReports")
         mock_cache.set(key, cached_df, ttl=FUNDAMENTALS_TTL)
 
         df = client.get_balance_sheet("AAPL")
@@ -482,7 +484,7 @@ class TestGetCashFlow:
         cached_df = pd.DataFrame(
             [{"fiscalDateEnding": "2023-09-30", "operatingCashflow": 110543000000.0}]
         )
-        key = generate_cache_key(symbol="AAPL", source="av_cash_flow")
+        key = generate_cache_key(symbol="AAPL", source="av_cash_flow_annualReports")
         mock_cache.set(key, cached_df, ttl=FUNDAMENTALS_TTL)
 
         df = client.get_cash_flow("AAPL")

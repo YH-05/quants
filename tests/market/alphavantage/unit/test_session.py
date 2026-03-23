@@ -237,8 +237,9 @@ class TestSSRFPrevention:
         zero_delay_config: AlphaVantageConfig,
     ) -> None:
         """Raises ValueError for non-whitelisted host."""
-        with AlphaVantageSession(config=zero_delay_config) as session, pytest.raises(
-            ValueError, match="not in allowed hosts"
+        with (
+            AlphaVantageSession(config=zero_delay_config) as session,
+            pytest.raises(ValueError, match="not in allowed hosts"),
         ):
             session.get("https://evil.com/query")
 
@@ -246,11 +247,23 @@ class TestSSRFPrevention:
         self,
         zero_delay_config: AlphaVantageConfig,
     ) -> None:
-        """Raises ValueError for non-http(s) scheme."""
-        with AlphaVantageSession(config=zero_delay_config) as session, pytest.raises(
-            ValueError, match="scheme"
+        """Raises ValueError for non-https scheme."""
+        with (
+            AlphaVantageSession(config=zero_delay_config) as session,
+            pytest.raises(ValueError, match="scheme"),
         ):
             session.get("ftp://www.alphavantage.co/query")
+
+    def test_異常系_HTTPスキームでValueError(
+        self,
+        zero_delay_config: AlphaVantageConfig,
+    ) -> None:
+        """Raises ValueError for HTTP scheme (HTTPS required)."""
+        with (
+            AlphaVantageSession(config=zero_delay_config) as session,
+            pytest.raises(ValueError, match="scheme must be 'https'"),
+        ):
+            session.get("http://www.alphavantage.co/query")
 
     def test_正常系_許可されたホストでリクエスト成功(
         self,
@@ -340,8 +353,7 @@ class TestHTTP200ErrorDetection:
         mock_response = _make_mock_response(
             json_data={
                 "Information": (
-                    "Thank you for using Alpha Vantage! "
-                    "This is a premium endpoint."
+                    "Thank you for using Alpha Vantage! This is a premium endpoint."
                 )
             },
         )
@@ -482,9 +494,7 @@ class TestRateLimiterIntegration:
         with AlphaVantageSession(config=zero_delay_config) as session:  # noqa: SIM117
             with patch.object(session._rate_limiter, "acquire") as mock_acquire:
                 mock_acquire.return_value = 0.0
-                with patch.object(
-                    session._client, "get", return_value=mock_response
-                ):
+                with patch.object(session._client, "get", return_value=mock_response):
                     session.get(_AV_URL)
                     mock_acquire.assert_called_once()
 
@@ -505,10 +515,11 @@ class TestExponentialBackoffRetry:
         """Returns immediately on first success."""
         mock_response = _make_mock_response(json_data={"Meta Data": {}})
 
-        with AlphaVantageSession(
-            config=zero_delay_config, retry_config=retry_config
-        ) as session, patch.object(
-            session._client, "get", return_value=mock_response
+        with (
+            AlphaVantageSession(
+                config=zero_delay_config, retry_config=retry_config
+            ) as session,
+            patch.object(session._client, "get", return_value=mock_response),
         ):
             response = session.get_with_retry(_AV_URL)
             assert response.status_code == 200
@@ -522,10 +533,13 @@ class TestExponentialBackoffRetry:
         error_response = _make_mock_response(status_code=500, text="Server Error")
         ok_response = _make_mock_response(json_data={"Meta Data": {}})
 
-        with AlphaVantageSession(
-            config=zero_delay_config, retry_config=retry_config
-        ) as session, patch.object(
-            session._client, "get", side_effect=[error_response, ok_response]
+        with (
+            AlphaVantageSession(
+                config=zero_delay_config, retry_config=retry_config
+            ) as session,
+            patch.object(
+                session._client, "get", side_effect=[error_response, ok_response]
+            ),
         ):
             response = session.get_with_retry(_AV_URL)
             assert response.status_code == 200
@@ -538,13 +552,17 @@ class TestExponentialBackoffRetry:
         """Raises after all retry attempts exhausted."""
         error_response = _make_mock_response(status_code=500, text="Server Error")
 
-        with AlphaVantageSession(
-            config=zero_delay_config, retry_config=retry_config
-        ) as session, patch.object(
-            session._client,
-            "get",
-            return_value=error_response,
-        ), pytest.raises(AlphaVantageAPIError):
+        with (
+            AlphaVantageSession(
+                config=zero_delay_config, retry_config=retry_config
+            ) as session,
+            patch.object(
+                session._client,
+                "get",
+                return_value=error_response,
+            ),
+            pytest.raises(AlphaVantageAPIError),
+        ):
             session.get_with_retry(_AV_URL)
 
     def test_異常系_4xxエラーはリトライしない(
@@ -579,12 +597,15 @@ class TestExponentialBackoffRetry:
         )
         ok_response = _make_mock_response(json_data={"Meta Data": {}})
 
-        with AlphaVantageSession(
-            config=zero_delay_config, retry_config=retry_config
-        ) as session, patch.object(
-            session._client,
-            "get",
-            side_effect=[rate_limit_response, ok_response],
+        with (
+            AlphaVantageSession(
+                config=zero_delay_config, retry_config=retry_config
+            ) as session,
+            patch.object(
+                session._client,
+                "get",
+                side_effect=[rate_limit_response, ok_response],
+            ),
         ):
             response = session.get_with_retry(_AV_URL)
             assert response.status_code == 200

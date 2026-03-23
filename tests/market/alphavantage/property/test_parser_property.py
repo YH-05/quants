@@ -29,7 +29,7 @@ from market.alphavantage.parser import (
 # Strategy for numeric-like strings
 numeric_strings = st.one_of(
     st.floats(allow_nan=False, allow_infinity=False).map(str),
-    st.integers(min_value=-10**15, max_value=10**15).map(str),
+    st.integers(min_value=-(10**15), max_value=10**15).map(str),
     st.just("None"),
     st.just("-"),
     st.just(""),
@@ -159,7 +159,9 @@ class TestNormalizeOHLCVColumnsProperty:
         ),
     )
     @settings(max_examples=200)
-    def test_プロパティ_値は元データの値のサブセット(self, data: dict[str, str]) -> None:
+    def test_プロパティ_値は元データの値のサブセット(
+        self, data: dict[str, str]
+    ) -> None:
         """All values in the result are from the original dict.
 
         Note: When two keys normalize to the same key, one value is

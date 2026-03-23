@@ -182,10 +182,12 @@ class TestDualWindowRateLimiterHourWindow:
 
 
 class TestDualWindowRateLimiterPurgeOld:
-    """Tests for _purge_old method."""
+    """Tests for _purge_old_impl module-level function."""
 
     def test_正常系_1時間超のタイムスタンプが削除される(self) -> None:
-        """_purge_old で1時間超のタイムスタンプが削除されること。"""
+        """_purge_old_impl で1時間超のタイムスタンプが削除されること。"""
+        from market.alphavantage.rate_limiter import _purge_old_impl
+
         limiter = DualWindowRateLimiter(
             requests_per_minute=100,
             requests_per_hour=500,
@@ -196,7 +198,7 @@ class TestDualWindowRateLimiterPurgeOld:
         limiter._timestamps.appendleft(now - 3700.0)  # 1時間+100秒前
 
         initial_count = len(limiter._timestamps)
-        limiter._purge_old()
+        _purge_old_impl(limiter._timestamps)
         assert len(limiter._timestamps) < initial_count
         # 1時間超のタイムスタンプが削除されている
         for ts in limiter._timestamps:

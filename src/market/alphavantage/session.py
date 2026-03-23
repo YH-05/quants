@@ -344,9 +344,10 @@ class AlphaVantageSession:
             is not http/https.
         """
         parsed = urlparse(url)
-        if parsed.scheme not in ("http", "https"):
+        if parsed.scheme != "https":
             raise ValueError(
-                f"URL scheme must be 'http' or 'https', got '{parsed.scheme}'"
+                f"URL scheme must be 'https', got '{parsed.scheme}'. "
+                "Alpha Vantage API requires HTTPS."
             )
         parsed_host = parsed.netloc
         if parsed_host not in ALLOWED_HOSTS:

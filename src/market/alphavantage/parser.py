@@ -28,6 +28,7 @@ from typing import Any
 
 import pandas as pd
 
+from market.alphavantage.constants import MAX_RESPONSE_BODY_LOG
 from market.alphavantage.errors import AlphaVantageParseError
 from utils_core.logging import get_logger
 
@@ -251,7 +252,7 @@ def parse_time_series(data: dict[str, Any]) -> pd.DataFrame:
         raise AlphaVantageParseError(
             "No time series key found in response. "
             f"Expected one of: {sorted(_TIME_SERIES_KEY_WHITELIST)}",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field="time_series_key",
         )
 
@@ -317,7 +318,7 @@ def parse_global_quote(data: dict[str, Any]) -> dict[str, Any]:
     if "Global Quote" not in data:
         raise AlphaVantageParseError(
             "Missing 'Global Quote' key in response",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field="Global Quote",
         )
 
@@ -375,7 +376,7 @@ def parse_company_overview(data: dict[str, Any]) -> dict[str, Any]:
     if not data or "Symbol" not in data:
         raise AlphaVantageParseError(
             "Missing 'Symbol' key in overview response",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field="Symbol",
         )
 
@@ -431,14 +432,14 @@ def parse_financial_statements(
         raise AlphaVantageParseError(
             f"Invalid report_type '{report_type}'. "
             f"Expected one of: {sorted(valid_report_types)}",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field=report_type,
         )
 
     if report_type not in data:
         raise AlphaVantageParseError(
             f"Missing '{report_type}' key in response",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field=report_type,
         )
 
@@ -499,7 +500,7 @@ def parse_earnings(data: dict[str, Any]) -> tuple[pd.DataFrame, pd.DataFrame]:
     if "annualEarnings" not in data and "quarterlyEarnings" not in data:
         raise AlphaVantageParseError(
             "Missing 'annualEarnings' and 'quarterlyEarnings' keys in response",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field="annualEarnings/quarterlyEarnings",
         )
 
@@ -530,7 +531,9 @@ def parse_earnings(data: dict[str, Any]) -> tuple[pd.DataFrame, pd.DataFrame]:
         quarterly_cleaned.append(row)
 
     annual_df = pd.DataFrame(annual_cleaned) if annual_cleaned else pd.DataFrame()
-    quarterly_df = pd.DataFrame(quarterly_cleaned) if quarterly_cleaned else pd.DataFrame()
+    quarterly_df = (
+        pd.DataFrame(quarterly_cleaned) if quarterly_cleaned else pd.DataFrame()
+    )
 
     logger.info(
         "Earnings parsed",
@@ -571,7 +574,7 @@ def parse_economic_indicator(data: dict[str, Any]) -> pd.DataFrame:
     if "data" not in data:
         raise AlphaVantageParseError(
             "Missing 'data' key in economic indicator response",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field="data",
         )
 
@@ -629,7 +632,7 @@ def parse_forex_rate(data: dict[str, Any]) -> dict[str, Any]:
     if key not in data:
         raise AlphaVantageParseError(
             f"Missing '{key}' key in response",
-            raw_data=str(data)[:500],
+            raw_data=str(data)[:MAX_RESPONSE_BODY_LOG],
             field=key,
         )
 
@@ -648,18 +651,124 @@ def parse_forex_rate(data: dict[str, Any]) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# Keyed time series helpers (FX, Crypto)
+# ---------------------------------------------------------------------------
+
+
+def _parse_keyed_time_series(
+    data: dict[str, Any],
+    data_key: str,
+    default_columns: list[str],
+) -> pd.DataFrame:
+    """Parse a time series response using a specific data key.
+
+    This is a shared helper for FX and Crypto endpoints that use
+    non-standard time series keys not in the standard whitelist.
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        Raw Alpha Vantage JSON response.
+    data_key : str
+        The key containing the time series data
+        (e.g. ``'Time Series FX (Daily)'``).
+    default_columns : list[str]
+        Column names for the empty DataFrame fallback.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with date column and numeric columns.
+    """
+    ts_data = data.get(data_key, {})
+
+    if not ts_data:
+        logger.info("Time series data is empty", data_key=data_key)
+        return pd.DataFrame(columns=pd.Index(["date", *default_columns]))
+
+    rows: list[dict[str, Any]] = []
+    for date_str, values in ts_data.items():
+        normalized = _normalize_ohlcv_columns(values)
+        row: dict[str, Any] = {"date": date_str}
+        for col_name, col_value in normalized.items():
+            row[col_name] = _clean_numeric(str(col_value))
+        rows.append(row)
+
+    df = pd.DataFrame(rows)
+    logger.info("Keyed time series parsed", data_key=data_key, row_count=len(df))
+    return df
+
+
+def parse_fx_time_series(data: dict[str, Any]) -> pd.DataFrame:
+    """Parse an Alpha Vantage FX_DAILY response into a DataFrame.
+
+    FX_DAILY uses ``'Time Series FX (Daily)'`` as the data key,
+    which is not in the standard time series whitelist.
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        Raw Alpha Vantage FX_DAILY JSON response.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with columns: date, open, high, low, close.
+
+    Examples
+    --------
+    >>> df = parse_fx_time_series(fx_response)
+    >>> "open" in df.columns
+    True
+    """
+    return _parse_keyed_time_series(
+        data,
+        data_key="Time Series FX (Daily)",
+        default_columns=["open", "high", "low", "close"],
+    )
+
+
+def parse_crypto_time_series(data: dict[str, Any]) -> pd.DataFrame:
+    """Parse an Alpha Vantage DIGITAL_CURRENCY_DAILY response into a DataFrame.
+
+    Crypto daily uses ``'Time Series (Digital Currency Daily)'`` as
+    the data key.
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        Raw Alpha Vantage crypto daily JSON response.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with columns: date, open, high, low, close, volume.
+
+    Examples
+    --------
+    >>> df = parse_crypto_time_series(crypto_response)
+    >>> "close" in df.columns
+    True
+    """
+    return _parse_keyed_time_series(
+        data,
+        data_key="Time Series (Digital Currency Daily)",
+        default_columns=["open", "high", "low", "close", "volume"],
+    )
+
+
+# ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
 
 __all__ = [
-    "_clean_numeric",
-    "_detect_time_series_key",
-    "_normalize_ohlcv_columns",
     "parse_company_overview",
+    "parse_crypto_time_series",
     "parse_earnings",
     "parse_economic_indicator",
     "parse_financial_statements",
     "parse_forex_rate",
+    "parse_fx_time_series",
     "parse_global_quote",
     "parse_time_series",
 ]

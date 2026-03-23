@@ -54,10 +54,12 @@ from market.alphavantage.constants import BASE_URL
 from market.alphavantage.errors import AlphaVantageValidationError
 from market.alphavantage.parser import (
     parse_company_overview,
+    parse_crypto_time_series,
     parse_earnings,
     parse_economic_indicator,
     parse_financial_statements,
     parse_forex_rate,
+    parse_fx_time_series,
     parse_global_quote,
     parse_time_series,
 )
@@ -433,7 +435,9 @@ class AlphaVantageClient:
             "function": "INCOME_STATEMENT",
             "symbol": symbol,
         }
-        cache_key = generate_cache_key(symbol=symbol, source="av_income_statement")
+        cache_key = generate_cache_key(
+            symbol=symbol, source=f"av_income_statement_{report_type}"
+        )
 
         def parser(data: dict[str, Any]) -> pd.DataFrame:
             return parse_financial_statements(data, report_type=report_type)
@@ -477,7 +481,9 @@ class AlphaVantageClient:
             "function": "BALANCE_SHEET",
             "symbol": symbol,
         }
-        cache_key = generate_cache_key(symbol=symbol, source="av_balance_sheet")
+        cache_key = generate_cache_key(
+            symbol=symbol, source=f"av_balance_sheet_{report_type}"
+        )
 
         def parser(data: dict[str, Any]) -> pd.DataFrame:
             return parse_financial_statements(data, report_type=report_type)
@@ -521,7 +527,9 @@ class AlphaVantageClient:
             "function": "CASH_FLOW",
             "symbol": symbol,
         }
-        cache_key = generate_cache_key(symbol=symbol, source="av_cash_flow")
+        cache_key = generate_cache_key(
+            symbol=symbol, source=f"av_cash_flow_{report_type}"
+        )
 
         def parser(data: dict[str, Any]) -> pd.DataFrame:
             return parse_financial_statements(data, report_type=report_type)
@@ -661,7 +669,7 @@ class AlphaVantageClient:
         return self._get_cached_or_fetch(
             cache_key=cache_key,
             params=params,
-            parser=self._parse_fx_time_series,
+            parser=parse_fx_time_series,
             ttl=FOREX_TTL,
             options=options,
         )
@@ -708,7 +716,7 @@ class AlphaVantageClient:
         return self._get_cached_or_fetch(
             cache_key=cache_key,
             params=params,
-            parser=self._parse_crypto_time_series,
+            parser=parse_crypto_time_series,
             ttl=CRYPTO_TTL,
             options=options,
         )
@@ -968,6 +976,17 @@ class AlphaVantageClient:
         -------
         T
             Parsed result (DataFrame, dict, tuple, etc.).
+
+        Raises
+        ------
+        AlphaVantageAuthError
+            If the API key is missing or invalid.
+        AlphaVantageRateLimitError
+            If the API rate limit is exceeded after all retries.
+        AlphaVantageAPIError
+            If the API returns an error response.
+        AlphaVantageParseError
+            If the response cannot be parsed.
         """
         options = options or FetchOptions()
 
@@ -979,7 +998,11 @@ class AlphaVantageClient:
                 return cached
 
         # Fetch from API
-        logger.debug("Fetching from API", params=params)
+        # AIDEV-NOTE: params には apikey は含まれない（session 層で注入されるため安全）
+        safe_params = {
+            k: v for k, v in params.items() if k.lower() not in ("apikey", "api_key")
+        }
+        logger.debug("Fetching from API", params=safe_params)
         response = self._session.get_with_retry(BASE_URL, params=params)
         raw_data: dict[str, Any] = response.json()
 
@@ -994,26 +1017,6 @@ class AlphaVantageClient:
             ttl=ttl,
         )
 
-        return result
-
-    def _request(
-        self,
-        params: dict[str, str],
-    ) -> dict[str, Any]:
-        """Execute an API request via the session.
-
-        Parameters
-        ----------
-        params : dict[str, str]
-            Query parameters for the Alpha Vantage API.
-
-        Returns
-        -------
-        dict[str, Any]
-            Parsed JSON response body.
-        """
-        response = self._session.get_with_retry(BASE_URL, params=params)
-        result: dict[str, Any] = response.json()
         return result
 
     def _validate_symbol(self, symbol: str) -> None:
@@ -1053,87 +1056,6 @@ class AlphaVantageClient:
                 field="symbol",
                 value=symbol,
             )
-
-    @staticmethod
-    def _parse_fx_time_series(data: dict[str, Any]) -> pd.DataFrame:
-        """Parse FX_DAILY response into a DataFrame.
-
-        FX_DAILY uses ``'Time Series FX (Daily)'`` as the data key,
-        which is not in the standard time series whitelist. This method
-        handles it explicitly.
-
-        Parameters
-        ----------
-        data : dict[str, Any]
-            Raw Alpha Vantage FX_DAILY JSON response.
-
-        Returns
-        -------
-        pd.DataFrame
-            DataFrame with columns: date, open, high, low, close.
-        """
-        from market.alphavantage.parser import _clean_numeric, _normalize_ohlcv_columns
-
-        fx_key = "Time Series FX (Daily)"
-        fx_data = data.get(fx_key, {})
-
-        if not fx_data:
-            logger.info("FX time series data is empty")
-            return pd.DataFrame(
-                columns=pd.Index(["date", "open", "high", "low", "close"]),
-            )
-
-        rows: list[dict[str, Any]] = []
-        for date_str, values in fx_data.items():
-            normalized = _normalize_ohlcv_columns(values)
-            row: dict[str, Any] = {"date": date_str}
-            for col_name, col_value in normalized.items():
-                row[col_name] = _clean_numeric(str(col_value))
-            rows.append(row)
-
-        df = pd.DataFrame(rows)
-        logger.info("FX time series parsed", row_count=len(df))
-        return df
-
-    @staticmethod
-    def _parse_crypto_time_series(data: dict[str, Any]) -> pd.DataFrame:
-        """Parse DIGITAL_CURRENCY_DAILY response into a DataFrame.
-
-        Crypto daily uses ``'Time Series (Digital Currency Daily)'`` as
-        the data key. This method handles it explicitly.
-
-        Parameters
-        ----------
-        data : dict[str, Any]
-            Raw Alpha Vantage crypto daily JSON response.
-
-        Returns
-        -------
-        pd.DataFrame
-            DataFrame with columns: date, open, high, low, close, volume.
-        """
-        from market.alphavantage.parser import _clean_numeric, _normalize_ohlcv_columns
-
-        crypto_key = "Time Series (Digital Currency Daily)"
-        crypto_data = data.get(crypto_key, {})
-
-        if not crypto_data:
-            logger.info("Crypto time series data is empty")
-            return pd.DataFrame(
-                columns=pd.Index(["date", "open", "high", "low", "close", "volume"]),
-            )
-
-        rows: list[dict[str, Any]] = []
-        for date_str, values in crypto_data.items():
-            normalized = _normalize_ohlcv_columns(values)
-            row: dict[str, Any] = {"date": date_str}
-            for col_name, col_value in normalized.items():
-                row[col_name] = _clean_numeric(str(col_value))
-            rows.append(row)
-
-        df = pd.DataFrame(rows)
-        logger.info("Crypto time series parsed", row_count=len(df))
-        return df
 
 
 __all__ = ["AlphaVantageClient"]

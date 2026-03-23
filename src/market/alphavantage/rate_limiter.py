@@ -47,6 +47,102 @@ _MINUTE_WINDOW: float = 60.0
 _HOUR_WINDOW: float = 3600.0
 
 
+# ---------------------------------------------------------------------------
+# Module-level helper functions (shared by sync and async classes)
+# ---------------------------------------------------------------------------
+
+
+def _available_count(timestamps: deque[float], window: float, limit: int) -> int:
+    """Count available request slots within a time window.
+
+    Parameters
+    ----------
+    timestamps : deque[float]
+        Deque of request timestamps (monotonic clock).
+    window : float
+        Window duration in seconds.
+    limit : int
+        Maximum requests allowed in the window.
+
+    Returns
+    -------
+    int
+        Number of remaining request slots in ``[0, limit]``.
+    """
+    now = time.monotonic()
+    cutoff = now - window
+    count = sum(1 for ts in timestamps if ts > cutoff)
+    return max(0, limit - count)
+
+
+def _compute_wait_impl(
+    timestamps: deque[float],
+    requests_per_minute: int,
+    requests_per_hour: int,
+) -> float:
+    """Compute wait time needed before a request slot opens.
+
+    Parameters
+    ----------
+    timestamps : deque[float]
+        Deque of request timestamps (monotonic clock).
+    requests_per_minute : int
+        Maximum requests allowed per minute window.
+    requests_per_hour : int
+        Maximum requests allowed per hour window.
+
+    Returns
+    -------
+    float
+        Seconds to wait (``0.0`` or negative if a slot is available).
+    """
+    now = time.monotonic()
+    _purge_old_impl(timestamps)
+
+    minute_cutoff = now - _MINUTE_WINDOW
+    hour_cutoff = now - _HOUR_WINDOW
+
+    count_in_minute = sum(1 for ts in timestamps if ts > minute_cutoff)
+    count_in_hour = sum(1 for ts in timestamps if ts > hour_cutoff)
+
+    wait_minute = 0.0
+    wait_hour = 0.0
+
+    if count_in_minute >= requests_per_minute:
+        oldest_in_minute = min(
+            (ts for ts in timestamps if ts > minute_cutoff),
+            default=now,
+        )
+        wait_minute = oldest_in_minute + _MINUTE_WINDOW - now
+
+    if count_in_hour >= requests_per_hour:
+        oldest_in_hour = min(
+            (ts for ts in timestamps if ts > hour_cutoff),
+            default=now,
+        )
+        wait_hour = oldest_in_hour + _HOUR_WINDOW - now
+
+    return max(wait_minute, wait_hour)
+
+
+def _purge_old_impl(timestamps: deque[float]) -> None:
+    """Remove timestamps older than 1 hour from the deque.
+
+    Timestamps older than ``_HOUR_WINDOW`` (3600 seconds) are removed
+    from the left side of the deque since they can no longer affect
+    either the minute or hour window counts.
+
+    Parameters
+    ----------
+    timestamps : deque[float]
+        Deque of request timestamps to purge in-place.
+    """
+    now = time.monotonic()
+    cutoff = now - _HOUR_WINDOW
+    while timestamps and timestamps[0] <= cutoff:
+        timestamps.popleft()
+
+
 class DualWindowRateLimiter:
     """Thread-safe dual-window sliding rate limiter.
 
@@ -114,10 +210,10 @@ class DualWindowRateLimiter:
             Remaining requests allowed in the current 60-second window.
             Always in ``[0, requests_per_minute]``.
         """
-        now = time.monotonic()
-        minute_cutoff = now - _MINUTE_WINDOW
-        count_in_minute = sum(1 for ts in self._timestamps if ts > minute_cutoff)
-        return max(0, self._requests_per_minute - count_in_minute)
+        with self._lock:
+            return _available_count(
+                self._timestamps, _MINUTE_WINDOW, self._requests_per_minute
+            )
 
     @property
     def available_hour(self) -> int:
@@ -129,10 +225,10 @@ class DualWindowRateLimiter:
             Remaining requests allowed in the current 3600-second window.
             Always in ``[0, requests_per_hour]``.
         """
-        now = time.monotonic()
-        hour_cutoff = now - _HOUR_WINDOW
-        count_in_hour = sum(1 for ts in self._timestamps if ts > hour_cutoff)
-        return max(0, self._requests_per_hour - count_in_hour)
+        with self._lock:
+            return _available_count(
+                self._timestamps, _HOUR_WINDOW, self._requests_per_hour
+            )
 
     def acquire(self) -> float:
         """Acquire a rate limit slot, blocking if necessary.
@@ -156,7 +252,11 @@ class DualWindowRateLimiter:
 
         while True:
             with self._lock:
-                wait_time = self._compute_wait_time()
+                wait_time = _compute_wait_impl(
+                    self._timestamps,
+                    self._requests_per_minute,
+                    self._requests_per_hour,
+                )
 
                 if wait_time <= 0.0:
                     now = time.monotonic()
@@ -164,8 +264,16 @@ class DualWindowRateLimiter:
                     logger.debug(
                         "Rate limit slot acquired",
                         total_waited=total_waited,
-                        available_minute=self.available_minute,
-                        available_hour=self.available_hour,
+                        available_minute=_available_count(
+                            self._timestamps,
+                            _MINUTE_WINDOW,
+                            self._requests_per_minute,
+                        ),
+                        available_hour=_available_count(
+                            self._timestamps,
+                            _HOUR_WINDOW,
+                            self._requests_per_hour,
+                        ),
                     )
                     return total_waited
 
@@ -177,57 +285,6 @@ class DualWindowRateLimiter:
             # Sleep outside the lock to allow other threads to proceed
             time.sleep(wait_time)
             total_waited += wait_time
-
-    def _compute_wait_time(self) -> float:
-        """Compute wait time needed before a request slot opens.
-
-        Should be called while holding ``_lock``.
-
-        Returns
-        -------
-        float
-            Seconds to wait (``0.0`` or negative if a slot is available).
-        """
-        now = time.monotonic()
-        self._purge_old()
-
-        minute_cutoff = now - _MINUTE_WINDOW
-        hour_cutoff = now - _HOUR_WINDOW
-
-        count_in_minute = sum(1 for ts in self._timestamps if ts > minute_cutoff)
-        count_in_hour = sum(1 for ts in self._timestamps if ts > hour_cutoff)
-
-        wait_minute = 0.0
-        wait_hour = 0.0
-
-        if count_in_minute >= self._requests_per_minute:
-            oldest_in_minute = min(
-                (ts for ts in self._timestamps if ts > minute_cutoff),
-                default=now,
-            )
-            wait_minute = oldest_in_minute + _MINUTE_WINDOW - now
-
-        if count_in_hour >= self._requests_per_hour:
-            oldest_in_hour = min(
-                (ts for ts in self._timestamps if ts > hour_cutoff),
-                default=now,
-            )
-            wait_hour = oldest_in_hour + _HOUR_WINDOW - now
-
-        return max(wait_minute, wait_hour)
-
-    def _purge_old(self) -> None:
-        """Remove timestamps older than 1 hour from the deque.
-
-        This method should be called while holding ``_lock``.
-        Timestamps older than ``_HOUR_WINDOW`` (3600 seconds) are
-        removed from the left side of the deque since they can no
-        longer affect either the minute or hour window counts.
-        """
-        now = time.monotonic()
-        cutoff = now - _HOUR_WINDOW
-        while self._timestamps and self._timestamps[0] <= cutoff:
-            self._timestamps.popleft()
 
 
 class AsyncDualWindowRateLimiter:
@@ -291,11 +348,15 @@ class AsyncDualWindowRateLimiter:
         -------
         int
             Remaining requests allowed in the current 60-second window.
+
+        Notes
+        -----
+        This property is NOT async-safe by itself. For accurate readings
+        under contention, access it within an ``async with self._lock`` block.
         """
-        now = time.monotonic()
-        minute_cutoff = now - _MINUTE_WINDOW
-        count_in_minute = sum(1 for ts in self._timestamps if ts > minute_cutoff)
-        return max(0, self._requests_per_minute - count_in_minute)
+        return _available_count(
+            self._timestamps, _MINUTE_WINDOW, self._requests_per_minute
+        )
 
     @property
     def available_hour(self) -> int:
@@ -305,11 +366,13 @@ class AsyncDualWindowRateLimiter:
         -------
         int
             Remaining requests allowed in the current 3600-second window.
+
+        Notes
+        -----
+        This property is NOT async-safe by itself. For accurate readings
+        under contention, access it within an ``async with self._lock`` block.
         """
-        now = time.monotonic()
-        hour_cutoff = now - _HOUR_WINDOW
-        count_in_hour = sum(1 for ts in self._timestamps if ts > hour_cutoff)
-        return max(0, self._requests_per_hour - count_in_hour)
+        return _available_count(self._timestamps, _HOUR_WINDOW, self._requests_per_hour)
 
     async def acquire(self) -> float:
         """Acquire a rate limit slot, sleeping asynchronously if necessary.
@@ -328,7 +391,11 @@ class AsyncDualWindowRateLimiter:
 
         while True:
             async with self._lock:
-                wait_time = self._compute_wait_time()
+                wait_time = _compute_wait_impl(
+                    self._timestamps,
+                    self._requests_per_minute,
+                    self._requests_per_hour,
+                )
 
                 if wait_time <= 0.0:
                     now = time.monotonic()
@@ -336,8 +403,16 @@ class AsyncDualWindowRateLimiter:
                     logger.debug(
                         "Async rate limit slot acquired",
                         total_waited=total_waited,
-                        available_minute=self.available_minute,
-                        available_hour=self.available_hour,
+                        available_minute=_available_count(
+                            self._timestamps,
+                            _MINUTE_WINDOW,
+                            self._requests_per_minute,
+                        ),
+                        available_hour=_available_count(
+                            self._timestamps,
+                            _HOUR_WINDOW,
+                            self._requests_per_hour,
+                        ),
                     )
                     return total_waited
 
@@ -349,54 +424,6 @@ class AsyncDualWindowRateLimiter:
             # Sleep outside the lock to allow other coroutines to proceed
             await asyncio.sleep(wait_time)
             total_waited += wait_time
-
-    def _compute_wait_time(self) -> float:
-        """Compute wait time needed before a request slot opens.
-
-        Should be called while holding ``_lock``.
-
-        Returns
-        -------
-        float
-            Seconds to wait (``0.0`` or negative if a slot is available).
-        """
-        now = time.monotonic()
-        self._purge_old()
-
-        minute_cutoff = now - _MINUTE_WINDOW
-        hour_cutoff = now - _HOUR_WINDOW
-
-        count_in_minute = sum(1 for ts in self._timestamps if ts > minute_cutoff)
-        count_in_hour = sum(1 for ts in self._timestamps if ts > hour_cutoff)
-
-        wait_minute = 0.0
-        wait_hour = 0.0
-
-        if count_in_minute >= self._requests_per_minute:
-            oldest_in_minute = min(
-                (ts for ts in self._timestamps if ts > minute_cutoff),
-                default=now,
-            )
-            wait_minute = oldest_in_minute + _MINUTE_WINDOW - now
-
-        if count_in_hour >= self._requests_per_hour:
-            oldest_in_hour = min(
-                (ts for ts in self._timestamps if ts > hour_cutoff),
-                default=now,
-            )
-            wait_hour = oldest_in_hour + _HOUR_WINDOW - now
-
-        return max(wait_minute, wait_hour)
-
-    def _purge_old(self) -> None:
-        """Remove timestamps older than 1 hour from the deque.
-
-        Should be called while holding ``_lock``.
-        """
-        now = time.monotonic()
-        cutoff = now - _HOUR_WINDOW
-        while self._timestamps and self._timestamps[0] <= cutoff:
-            self._timestamps.popleft()
 
 
 __all__ = [

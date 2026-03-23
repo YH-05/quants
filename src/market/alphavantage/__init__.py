@@ -90,10 +90,12 @@ from market.alphavantage.errors import (
 )
 from market.alphavantage.parser import (
     parse_company_overview,
+    parse_crypto_time_series,
     parse_earnings,
     parse_economic_indicator,
     parse_financial_statements,
     parse_forex_rate,
+    parse_fx_time_series,
     parse_global_quote,
     parse_time_series,
 )
@@ -146,10 +148,12 @@ __all__ = [
     "TimeSeriesFunction",
     "get_alphavantage_cache",
     "parse_company_overview",
+    "parse_crypto_time_series",
     "parse_earnings",
     "parse_economic_indicator",
     "parse_financial_statements",
     "parse_forex_rate",
+    "parse_fx_time_series",
     "parse_global_quote",
     "parse_time_series",
 ]

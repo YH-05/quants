@@ -31,10 +31,12 @@ from market.alphavantage.parser import (
     _detect_time_series_key,
     _normalize_ohlcv_columns,
     parse_company_overview,
+    parse_crypto_time_series,
     parse_earnings,
     parse_economic_indicator,
     parse_financial_statements,
     parse_forex_rate,
+    parse_fx_time_series,
     parse_global_quote,
     parse_time_series,
 )
@@ -49,15 +51,15 @@ class TestCleanNumeric:
 
     def test_正常系_有効な数値文字列で変換成功(self) -> None:
         """Valid numeric string converts to float."""
-        assert _clean_numeric("228.5000") == 228.5
+        assert _clean_numeric("228.5000") == pytest.approx(228.5)
 
     def test_正常系_整数文字列で変換成功(self) -> None:
         """Integer string converts to float."""
-        assert _clean_numeric("45123456") == 45123456.0
+        assert _clean_numeric("45123456") == pytest.approx(45123456.0)
 
     def test_正常系_負の数値で変換成功(self) -> None:
         """Negative numeric string converts correctly."""
-        assert _clean_numeric("-1.95") == -1.95
+        assert _clean_numeric("-1.95") == pytest.approx(-1.95)
 
     def test_エッジケース_None文字列でNone(self) -> None:
         """'None' string returns None."""
@@ -81,7 +83,7 @@ class TestCleanNumeric:
 
     def test_エッジケース_ゼロ文字列で変換成功(self) -> None:
         """Zero string converts to 0.0."""
-        assert _clean_numeric("0") == 0.0
+        assert _clean_numeric("0") == pytest.approx(0.0)
 
     def test_エッジケース_不正な文字列でNone(self) -> None:
         """Non-numeric string returns None."""
@@ -500,12 +502,85 @@ class TestParseForexRate:
         }
         result = parse_forex_rate(data)
         assert isinstance(result, dict)
-        assert "From_Currency Code" in result or "from_currency_code" in result
+        assert "From_Currency Code" in result
 
     def test_異常系_ForexRateキーがないレスポンスでParseError(self) -> None:
         """Raises AlphaVantageParseError when forex key is missing."""
         with pytest.raises(AlphaVantageParseError):
             parse_forex_rate({"unrelated": {}})
+
+
+# =============================================================================
+# Test parse_fx_time_series
+# =============================================================================
+
+
+class TestParseFxTimeSeries:
+    """Tests for parse_fx_time_series function."""
+
+    def test_正常系_FXデータをDataFrameにパース(self) -> None:
+        """Parses FX daily data into DataFrame."""
+        data: dict[str, object] = {
+            "Meta Data": {},
+            "Time Series FX (Daily)": {
+                "2026-03-21": {
+                    "1. open": "148.0000",
+                    "2. high": "149.0000",
+                    "3. low": "147.5000",
+                    "4. close": "148.5000",
+                },
+            },
+        }
+        df = parse_fx_time_series(data)
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 1
+        assert "open" in df.columns
+        assert "close" in df.columns
+        assert df["open"].iloc[0] == pytest.approx(148.0)
+
+    def test_エッジケース_空のFXデータで空DataFrame(self) -> None:
+        """Returns empty DataFrame for empty FX data."""
+        data: dict[str, object] = {"Meta Data": {}}
+        df = parse_fx_time_series(data)
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
+
+
+# =============================================================================
+# Test parse_crypto_time_series
+# =============================================================================
+
+
+class TestParseCryptoTimeSeries:
+    """Tests for parse_crypto_time_series function."""
+
+    def test_正常系_CryptoデータをDataFrameにパース(self) -> None:
+        """Parses crypto daily data into DataFrame."""
+        data: dict[str, object] = {
+            "Meta Data": {},
+            "Time Series (Digital Currency Daily)": {
+                "2026-03-21": {
+                    "1. open": "42000.00",
+                    "2. high": "43000.00",
+                    "3. low": "41500.00",
+                    "4. close": "42500.00",
+                    "5. volume": "15000",
+                },
+            },
+        }
+        df = parse_crypto_time_series(data)
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 1
+        assert "open" in df.columns
+        assert "volume" in df.columns
+        assert df["close"].iloc[0] == pytest.approx(42500.0)
+
+    def test_エッジケース_空のCryptoデータで空DataFrame(self) -> None:
+        """Returns empty DataFrame for empty crypto data."""
+        data: dict[str, object] = {"Meta Data": {}}
+        df = parse_crypto_time_series(data)
+        assert isinstance(df, pd.DataFrame)
+        assert len(df) == 0
 
 
 # =============================================================================
