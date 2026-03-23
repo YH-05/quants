@@ -1,5 +1,6 @@
 """Alpha Vantage market data subpackage."""
 
+from market.alphavantage.client import AlphaVantageClient
 from market.alphavantage.parser import (
     parse_company_overview,
     parse_earnings,
@@ -12,6 +13,7 @@ from market.alphavantage.parser import (
 from market.alphavantage.session import AlphaVantageSession
 
 __all__ = [
+    "AlphaVantageClient",
     "AlphaVantageSession",
     "parse_company_overview",
     "parse_earnings",
