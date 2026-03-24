@@ -187,18 +187,97 @@ Examples
 """
 
 # ---------------------------------------------------------------------------
+# 6. NasdaqClient API URL constants
+# ---------------------------------------------------------------------------
+
+NASDAQ_API_BASE: Final[str] = "https://api.nasdaq.com/api"
+"""Base URL for all NASDAQ API endpoints.
+
+All NasdaqClient endpoint URLs are constructed relative to this base.
+"""
+
+EARNINGS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/earnings"
+"""URL for the NASDAQ Earnings Calendar API endpoint."""
+
+DIVIDENDS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/dividends"
+"""URL for the NASDAQ Dividends Calendar API endpoint."""
+
+STOCK_QUOTE_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/info"
+"""URL template for NASDAQ stock quote (real-time info) endpoint.
+
+Use ``STOCK_QUOTE_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+STOCK_SUMMARY_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/summary"
+"""URL template for NASDAQ stock summary endpoint.
+
+Use ``STOCK_SUMMARY_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+STOCK_CHART_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/chart"
+"""URL template for NASDAQ stock chart (historical price) endpoint.
+
+Use ``STOCK_CHART_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+INSTITUTIONAL_HOLDINGS_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/company/{{symbol}}/institutional-holdings"
+)
+"""URL template for NASDAQ institutional holdings endpoint.
+
+Use ``INSTITUTIONAL_HOLDINGS_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+INSIDER_TRADES_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/insider-trades"
+"""URL template for NASDAQ insider trades endpoint.
+
+Use ``INSIDER_TRADES_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+SEC_FILINGS_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/sec-filings"
+"""URL template for NASDAQ SEC filings endpoint.
+
+Use ``SEC_FILINGS_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_FORECAST_URL: Final[str] = f"{NASDAQ_API_BASE}/analyst/{{symbol}}/forecast"
+"""URL template for NASDAQ analyst forecast endpoint.
+
+Use ``ANALYST_FORECAST_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+COMPANY_PROFILE_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/company/{{symbol}}/company-profile"
+)
+"""URL template for NASDAQ company profile endpoint.
+
+Use ``COMPANY_PROFILE_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+# ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
 
 __all__ = [
     "ALLOWED_HOSTS",
+    "ANALYST_FORECAST_URL",
     "BROWSER_IMPERSONATE_TARGETS",
     "COLUMN_NAME_MAP",
+    "COMPANY_PROFILE_URL",
     "DEFAULT_DELAY_JITTER",
     "DEFAULT_HEADERS",
     "DEFAULT_OUTPUT_DIR",
     "DEFAULT_POLITE_DELAY",
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",
+    "DIVIDENDS_CALENDAR_URL",
+    "EARNINGS_CALENDAR_URL",
+    "INSIDER_TRADES_URL",
+    "INSTITUTIONAL_HOLDINGS_URL",
+    "NASDAQ_API_BASE",
     "NASDAQ_SCREENER_URL",
+    "SEC_FILINGS_URL",
+    "STOCK_CHART_URL",
+    "STOCK_QUOTE_URL",
+    "STOCK_SUMMARY_URL",
 ]

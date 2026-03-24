@@ -1,9 +1,10 @@
 """Pytest configuration and shared fixtures for market.nasdaq test suite.
 
 This module provides reusable fixtures for testing the NASDAQ Stock Screener
-module, including zero-delay configurations, mock HTTP responses, mock sessions,
-and a complete NASDAQ API JSON response mock.  These fixtures are designed to
-be shared across all test directories (unit, property, integration).
+module and the NasdaqClient, including zero-delay configurations, mock HTTP
+responses, mock sessions, mock caches, and complete NASDAQ API JSON response
+mocks.  These fixtures are designed to be shared across all test directories
+(unit, property, integration).
 
 Fixtures
 --------
@@ -19,12 +20,19 @@ mock_nasdaq_session : MagicMock
     get/get_with_retry methods.
 sample_screener_api_response : dict[str, object]
     Complete NASDAQ Screener API JSON response mock containing 5 stocks.
+mock_cache : MagicMock
+    MagicMock simulating a SQLiteCache instance for NasdaqClient tests.
+nasdaq_client : NasdaqClient
+    A NasdaqClient instance with injected mock session and mock cache.
+sample_envelope_response : dict[str, object]
+    Standard NASDAQ API envelope response with rCode=200.
 
 See Also
 --------
 tests.market.conftest : Parent-level market package fixtures.
 market.nasdaq.types : NasdaqConfig and RetryConfig definitions.
 market.nasdaq.session : NasdaqSession class.
+market.nasdaq.client : NasdaqClient class.
 tests.market.etfcom.conftest : Similar fixture pattern for the ETF.com module.
 """
 
@@ -32,6 +40,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
+from market.nasdaq.client import NasdaqClient
 from market.nasdaq.types import NasdaqConfig, RetryConfig
 
 # =============================================================================
@@ -261,3 +270,102 @@ def mock_nasdaq_session(
     session.__enter__ = MagicMock(return_value=session)
     session.__exit__ = MagicMock(return_value=False)
     return session
+
+
+# =============================================================================
+# NasdaqClient fixtures
+# =============================================================================
+
+
+@pytest.fixture
+def mock_cache() -> MagicMock:
+    """Create a MagicMock simulating a SQLiteCache instance.
+
+    The mock cache's get() method returns None by default (cache miss),
+    and set() does nothing.
+
+    Returns
+    -------
+    MagicMock
+        A MagicMock mimicking SQLiteCache with get/set/delete/close methods.
+    """
+    cache = MagicMock()
+    cache.get.return_value = None
+    cache.set.return_value = None
+    cache.delete.return_value = True
+    cache.close.return_value = None
+    return cache
+
+
+@pytest.fixture
+def nasdaq_client(
+    mock_nasdaq_session: MagicMock,
+    mock_cache: MagicMock,
+) -> NasdaqClient:
+    """Create a NasdaqClient with injected mock session and mock cache.
+
+    The client's ``_owns_session`` is set to ``False`` to prevent
+    closing the mock session on ``close()``.
+
+    Parameters
+    ----------
+    mock_nasdaq_session : MagicMock
+        Mock NasdaqSession instance.
+    mock_cache : MagicMock
+        Mock SQLiteCache instance.
+
+    Returns
+    -------
+    NasdaqClient
+        A NasdaqClient configured for testing.
+    """
+    client = NasdaqClient(session=mock_nasdaq_session, cache=mock_cache)
+    return client
+
+
+@pytest.fixture
+def sample_envelope_response() -> dict[str, object]:
+    """Create a standard NASDAQ API envelope response with rCode=200.
+
+    Simulates the standard NASDAQ API JSON envelope structure::
+
+        {
+            "data": { "symbol": "AAPL", "summaryData": {...} },
+            "message": null,
+            "status": { "rCode": 200, "bCodeMessage": null }
+        }
+
+    Returns
+    -------
+    dict[str, object]
+        A dictionary matching the NASDAQ API envelope structure.
+    """
+    return {
+        "data": {
+            "symbol": "AAPL",
+            "summaryData": {
+                "Exchange": {"label": "Exchange", "value": "NASDAQ-GS"},
+                "Sector": {"label": "Sector", "value": "Technology"},
+                "Industry": {"label": "Industry", "value": "Computer Manufacturing"},
+                "OneYrTarget": {"label": "1 Year Target", "value": "$250.00"},
+                "TodayHighLow": {
+                    "label": "Today's High/Low",
+                    "value": "$230.00/$225.00",
+                },
+                "ShareVolume": {
+                    "label": "Share Volume",
+                    "value": "48,123,456",
+                },
+                "MarketCap": {
+                    "label": "Market Cap",
+                    "value": "3,435,123,456,789",
+                },
+            },
+        },
+        "message": None,
+        "status": {
+            "rCode": 200,
+            "bCodeMessage": None,
+            "developerMessage": None,
+        },
+    }
