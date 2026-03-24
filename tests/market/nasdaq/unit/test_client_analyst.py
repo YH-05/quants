@@ -518,10 +518,10 @@ class TestGetTargetPrice:
 
         result = nasdaq_client.get_target_price("MSFT")
 
-        assert result.high is not None
-        assert result.low is not None
-        assert result.mean is not None
-        assert result.median is not None
+        assert result.high == "$300.00"
+        assert result.low == "$180.00"
+        assert result.mean == "$240.00"
+        assert result.median == "$235.00"
 
     def test_正常系_force_refreshでキャッシュを無視(
         self,

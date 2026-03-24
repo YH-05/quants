@@ -122,7 +122,6 @@ def unwrap_envelope(raw: dict[str, Any], url: str) -> dict[str, Any]:
             "NASDAQ API returned non-200 rCode",
             url=url,
             r_code=r_code,
-            status=status,
         )
         raise NasdaqAPIError(
             message=f"NASDAQ API returned rCode {r_code} for {url}",
@@ -292,9 +291,8 @@ def parse_earnings_calendar(data: dict[str, Any]) -> list[EarningsRecord]:
 
     logger.debug("Parsing earnings calendar rows", row_count=len(rows))
 
-    result: list[EarningsRecord] = []
-    for row in rows:
-        record = EarningsRecord(
+    result = [
+        EarningsRecord(
             symbol=row.get("symbol", ""),
             name=row.get("name"),
             date=row.get("date"),
@@ -304,7 +302,8 @@ def parse_earnings_calendar(data: dict[str, Any]) -> list[EarningsRecord]:
             fiscal_quarter_ending=row.get("fiscalQuarterEnding"),
             market_cap=row.get("marketCap"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Earnings calendar parsed", record_count=len(result))
     return result
@@ -355,9 +354,8 @@ def parse_dividends_calendar(
 
     logger.debug("Parsing dividends calendar rows", row_count=len(rows))
 
-    result: list[DividendCalendarRecord] = []
-    for row in rows:
-        record = DividendCalendarRecord(
+    result = [
+        DividendCalendarRecord(
             symbol=row.get("symbol", ""),
             company_name=row.get("companyName"),
             ex_date=row.get("dividend_Ex_Date"),
@@ -366,7 +364,8 @@ def parse_dividends_calendar(
             dividend_rate=row.get("dividend_Rate"),
             annual_dividend=row.get("indicated_Annual_Dividend"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Dividends calendar parsed", record_count=len(result))
     return result
@@ -411,16 +410,16 @@ def parse_splits_calendar(data: dict[str, Any]) -> list[SplitRecord]:
 
     logger.debug("Parsing splits calendar rows", row_count=len(rows))
 
-    result: list[SplitRecord] = []
-    for row in rows:
-        record = SplitRecord(
+    result = [
+        SplitRecord(
             symbol=row.get("symbol", ""),
             name=row.get("name"),
             execution_date=row.get("executionDate"),
             ratio=row.get("ratio"),
             optionable=row.get("optionable"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Splits calendar parsed", record_count=len(result))
     return result
@@ -430,8 +429,8 @@ def parse_ipo_calendar(data: dict[str, Any]) -> list[IpoRecord]:
     """Parse IPO calendar endpoint data into ``IpoRecord`` list.
 
     The IPO calendar endpoint contains multiple sections (``priced``,
-    ``upcoming``, ``filed``).  This parser extracts rows from the first
-    non-empty section found, in the order ``priced`` > ``upcoming`` > ``filed``.
+    ``upcoming``, ``filed``).  This parser collects and concatenates rows
+    from all three sections and returns them as a single list.
 
     Expected structure::
 
@@ -479,9 +478,8 @@ def parse_ipo_calendar(data: dict[str, Any]) -> list[IpoRecord]:
 
     logger.debug("Parsing IPO calendar rows", row_count=len(all_rows))
 
-    result: list[IpoRecord] = []
-    for row in all_rows:
-        record = IpoRecord(
+    result = [
+        IpoRecord(
             deal_id=row.get("dealID"),
             symbol=row.get("proposedTickerSymbol"),
             company_name=row.get("companyName"),
@@ -489,7 +487,8 @@ def parse_ipo_calendar(data: dict[str, Any]) -> list[IpoRecord]:
             share_price=row.get("proposedSharePrice"),
             shares_offered=row.get("sharesOffered"),
         )
-        result.append(record)
+        for row in all_rows
+    ]
 
     logger.info("IPO calendar parsed", record_count=len(result))
     return result
@@ -552,9 +551,8 @@ def parse_market_movers(
 
     for api_key, section in _MOVER_SECTION_KEYS.items():
         rows = _extract_rows(data, api_key, "rows")
-        movers: list[MarketMover] = []
-        for row in rows:
-            record = MarketMover(
+        movers = [
+            MarketMover(
                 symbol=row.get("symbol", ""),
                 name=row.get("name"),
                 price=row.get("lastSale"),
@@ -562,7 +560,8 @@ def parse_market_movers(
                 change_percent=row.get("percentageChange"),
                 volume=row.get("volume"),
             )
-            movers.append(record)
+            for row in rows
+        ]
         result[section.value] = movers
 
     total = sum(len(v) for v in result.values())
@@ -625,9 +624,8 @@ def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
 
     logger.debug("Parsing ETF screener rows", row_count=len(rows))
 
-    result: list[EtfRecord] = []
-    for row in rows:
-        record = EtfRecord(
+    result = [
+        EtfRecord(
             symbol=row.get("symbol", ""),
             name=row.get("name"),
             last_sale=row.get("lastsale"),
@@ -639,7 +637,8 @@ def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
             industry=row.get("industry"),
             url=row.get("url"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("ETF screener parsed", record_count=len(result))
     return result
@@ -665,17 +664,16 @@ def _parse_forecast_rows(
     list[EarningsForecastPeriod]
         Parsed forecast periods.
     """
-    result: list[EarningsForecastPeriod] = []
-    for row in rows:
-        period = EarningsForecastPeriod(
+    return [
+        EarningsForecastPeriod(
             fiscal_end=row.get("fiscalEnd"),
             consensus_eps_forecast=row.get("consensusEPSForecast"),
             num_of_estimates=row.get("numOfEstimates"),
             high_eps_forecast=row.get("highEPSForecast"),
             low_eps_forecast=row.get("lowEPSForecast"),
         )
-        result.append(period)
-    return result
+        for row in rows
+    ]
 
 
 def parse_earnings_forecast(
@@ -801,9 +799,8 @@ def parse_analyst_ratings(
 
     logger.debug("Parsing analyst ratings rows", row_count=len(rows))
 
-    result: list[RatingCount] = []
-    for row in rows:
-        rc = RatingCount(
+    result = [
+        RatingCount(
             date=row.get("date"),
             strong_buy=_safe_int(row.get("strongBuy")),
             buy=_safe_int(row.get("buy")),
@@ -811,7 +808,8 @@ def parse_analyst_ratings(
             sell=_safe_int(row.get("sell")),
             strong_sell=_safe_int(row.get("strongSell")),
         )
-        result.append(rc)
+        for row in rows
+    ]
 
     logger.info("Analyst ratings parsed", symbol=symbol, rating_count=len(result))
     return AnalystRatings(symbol=symbol, ratings=result)
@@ -999,9 +997,8 @@ def parse_insider_trades(data: dict[str, Any]) -> list[InsiderTrade]:
 
     logger.debug("Parsing insider trades rows", row_count=len(rows))
 
-    result: list[InsiderTrade] = []
-    for row in rows:
-        record = InsiderTrade(
+    result = [
+        InsiderTrade(
             insider_name=row.get("insider"),
             relation=row.get("relation"),
             transaction_type=row.get("transactionType"),
@@ -1013,7 +1010,8 @@ def parse_insider_trades(data: dict[str, Any]) -> list[InsiderTrade]:
             shares_held=row.get("sharesHeld"),
             url=row.get("url"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Insider trades parsed", record_count=len(result))
     return result
@@ -1066,9 +1064,8 @@ def parse_institutional_holdings(
 
     logger.debug("Parsing institutional holdings rows", row_count=len(rows))
 
-    result: list[InstitutionalHolding] = []
-    for row in rows:
-        record = InstitutionalHolding(
+    result = [
+        InstitutionalHolding(
             holder_name=row.get("ownerName"),
             shares=row.get("sharesHeld"),
             value=row.get("marketValue"),
@@ -1078,7 +1075,8 @@ def parse_institutional_holdings(
             filing_date=row.get("filingDate"),
             url=row.get("url"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Institutional holdings parsed", record_count=len(result))
     return result
@@ -1120,16 +1118,16 @@ def _parse_financial_table_rows(
     if not isinstance(raw_rows, list):
         return headers, []
 
+    value_keys = [f"value{i}" for i in range(2, len(headers) + 2)]
+
     result: list[FinancialStatementRow] = []
     for row in raw_rows:
         if not isinstance(row, dict):
             continue
         label = row.get("value1", "")
-        values: list[str] = []
-        # Collect value2, value3, ... for each period column
-        for i in range(2, len(headers) + 2):
-            val = row.get(f"value{i}")
-            values.append(str(val) if val is not None else "")
+        values = [
+            str(val) if (val := row.get(key)) is not None else "" for key in value_keys
+        ]
         result.append(FinancialStatementRow(label=str(label), values=values))
 
     return headers, result
@@ -1251,9 +1249,8 @@ def parse_short_interest(data: dict[str, Any]) -> list[ShortInterestRecord]:
 
     logger.debug("Parsing short interest rows", row_count=len(rows))
 
-    result: list[ShortInterestRecord] = []
-    for row in rows:
-        record = ShortInterestRecord(
+    result = [
+        ShortInterestRecord(
             settlement_date=row.get("settlementDate"),
             short_interest=row.get("interest"),
             avg_daily_volume=row.get("averageDailyVolume"),
@@ -1261,7 +1258,8 @@ def parse_short_interest(data: dict[str, Any]) -> list[ShortInterestRecord]:
             change=row.get("change"),
             change_percent=row.get("changePct"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Short interest parsed", record_count=len(result))
     return result
@@ -1310,9 +1308,8 @@ def parse_dividend_history(data: dict[str, Any]) -> list[DividendRecord]:
 
     logger.debug("Parsing dividend history rows", row_count=len(rows))
 
-    result: list[DividendRecord] = []
-    for row in rows:
-        record = DividendRecord(
+    result = [
+        DividendRecord(
             ex_date=row.get("exOrEffDate"),
             payment_date=row.get("paymentDate"),
             record_date=row.get("recordDate"),
@@ -1321,7 +1318,8 @@ def parse_dividend_history(data: dict[str, Any]) -> list[DividendRecord]:
             amount=row.get("amount"),
             yield_=row.get("yield"),
         )
-        result.append(record)
+        for row in rows
+    ]
 
     logger.info("Dividend history parsed", record_count=len(result))
     return result

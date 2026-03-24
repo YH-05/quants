@@ -13,14 +13,13 @@ Features include:
 - Session + SQLiteCache dependency injection
 - ``_fetch_and_parse[T]()`` for DRY cache hit / cache miss handling
 - ``_validate_symbol()`` for input validation
-- ``_build_referer()`` for per-endpoint Referer headers
 - Context manager support
 
 Examples
 --------
 >>> from market.nasdaq.client import NasdaqClient
 >>> with NasdaqClient() as client:
-...     pass  # endpoint methods will be added in subsequent Waves
+...     earnings = client.get_earnings_calendar("2026-01-30")
 
 See Also
 --------
@@ -32,16 +31,17 @@ market.nasdaq.client_parsers : Response parsing helpers.
 
 from __future__ import annotations
 
+import functools
 import re
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Literal
 
 if TYPE_CHECKING:
     from collections.abc import Callable
+    from types import TracebackType
 
     from market.cache.cache import SQLiteCache
     from market.nasdaq.types import NasdaqConfig, RetryConfig
 
-from market.cache.cache import generate_cache_key
 from market.nasdaq.client_cache import (
     ANALYST_EARNINGS_DATE_TTL,
     ANALYST_FORECAST_TTL,
@@ -123,13 +123,19 @@ logger = get_logger(__name__)
 # Regex for symbol validation: 1-10 alphanumeric characters, dot, or hyphen
 _SYMBOL_PATTERN: re.Pattern[str] = re.compile(r"^[A-Za-z0-9.\-]{1,10}$")
 
+# Valid frequency values for financial statements
+_VALID_FREQUENCIES: frozenset[str] = frozenset({"annual", "quarterly"})
+
+# Regex for date / year-month parameter validation
+_DATE_PATTERN_PARAM: re.Pattern[str] = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+_YEAR_MONTH_PATTERN: re.Pattern[str] = re.compile(r"^\d{4}-\d{2}$")
+
 
 class NasdaqClient:
     """High-level typed API client for the NASDAQ API.
 
     Provides a foundation for accessing NASDAQ API endpoints with
-    caching, input validation, and session management.  Endpoint-specific
-    methods will be added in subsequent Waves.
+    caching, input validation, and session management.
 
     Parameters
     ----------
@@ -145,7 +151,7 @@ class NasdaqClient:
     Examples
     --------
     >>> with NasdaqClient() as client:
-    ...     pass  # endpoint methods will be added in subsequent Waves
+    ...     earnings = client.get_earnings_calendar("2026-01-30")
 
     >>> from market.nasdaq.session import NasdaqSession
     >>> from market.cache.cache import SQLiteCache
@@ -188,7 +194,7 @@ class NasdaqClient:
         self,
         exc_type: type[BaseException] | None,
         exc_val: BaseException | None,
-        exc_tb: Any,
+        exc_tb: TracebackType | None,
     ) -> None:
         """Close client on context exit.
 
@@ -198,7 +204,7 @@ class NasdaqClient:
             Exception type if an exception was raised.
         exc_val : BaseException | None
             Exception instance if an exception was raised.
-        exc_tb : Any
+        exc_tb : TracebackType | None
             Traceback if an exception was raised.
         """
         self.close()
@@ -296,8 +302,8 @@ class NasdaqClient:
     # =========================================================================
 
     @staticmethod
-    def _validate_symbol(symbol: str) -> None:
-        """Validate a stock ticker symbol format.
+    def _validate_symbol(symbol: str) -> str:
+        """Validate and normalize a stock ticker symbol.
 
         Valid symbols are 1-10 characters consisting of letters, digits,
         dots (e.g. ``BRK.B``), or hyphens (e.g. ``BF-B``).
@@ -307,6 +313,11 @@ class NasdaqClient:
         symbol : str
             The ticker symbol to validate.
 
+        Returns
+        -------
+        str
+            The validated symbol stripped and uppercased.
+
         Raises
         ------
         ValueError
@@ -314,8 +325,10 @@ class NasdaqClient:
 
         Examples
         --------
-        >>> NasdaqClient._validate_symbol("AAPL")  # OK
-        >>> NasdaqClient._validate_symbol("BRK.B")  # OK
+        >>> NasdaqClient._validate_symbol("AAPL")
+        'AAPL'
+        >>> NasdaqClient._validate_symbol("BRK.B")
+        'BRK.B'
         >>> NasdaqClient._validate_symbol("")  # raises ValueError
         Traceback (most recent call last):
             ...
@@ -334,6 +347,56 @@ class NasdaqClient:
             raise ValueError(
                 f"Symbol must be alphanumeric (plus dot/hyphen), got '{symbol}'"
             )
+
+        return stripped.upper()
+
+    @staticmethod
+    def _validate_date(date: str) -> str:
+        """Validate and strip a date string in YYYY-MM-DD format.
+
+        Parameters
+        ----------
+        date : str
+            Date string to validate.
+
+        Returns
+        -------
+        str
+            The validated date string, stripped of whitespace.
+
+        Raises
+        ------
+        ValueError
+            If the date does not match ``YYYY-MM-DD`` format.
+        """
+        stripped = date.strip()
+        if not _DATE_PATTERN_PARAM.match(stripped):
+            raise ValueError(f"date must be YYYY-MM-DD format, got '{date}'")
+        return stripped
+
+    @staticmethod
+    def _validate_year_month(year_month: str) -> str:
+        """Validate and strip a year-month string in YYYY-MM format.
+
+        Parameters
+        ----------
+        year_month : str
+            Year-month string to validate.
+
+        Returns
+        -------
+        str
+            The validated year-month string, stripped of whitespace.
+
+        Raises
+        ------
+        ValueError
+            If the year_month does not match ``YYYY-MM`` format.
+        """
+        stripped = year_month.strip()
+        if not _YEAR_MONTH_PATTERN.match(stripped):
+            raise ValueError(f"year_month must be YYYY-MM format, got '{year_month}'")
+        return stripped
 
     # =========================================================================
     # URL Helpers
@@ -404,6 +467,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     records = client.get_earnings_calendar(date="2026-01-30")
         """
+        date = self._validate_date(date)
         cache_key = f"nasdaq:calendar:earnings:{date}"
         return self._fetch_and_parse(
             url=EARNINGS_CALENDAR_URL,
@@ -445,6 +509,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     records = client.get_dividends_calendar(date="2026-02-07")
         """
+        date = self._validate_date(date)
         cache_key = f"nasdaq:calendar:dividends:{date}"
         return self._fetch_and_parse(
             url=DIVIDENDS_CALENDAR_URL,
@@ -486,6 +551,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     records = client.get_splits_calendar(date="2024-06-10")
         """
+        date = self._validate_date(date)
         cache_key = f"nasdaq:calendar:splits:{date}"
         return self._fetch_and_parse(
             url=SPLITS_CALENDAR_URL,
@@ -527,6 +593,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     records = client.get_ipo_calendar(year_month="2026-03")
         """
+        year_month = self._validate_year_month(year_month)
         cache_key = f"nasdaq:calendar:ipo:{year_month}"
         return self._fetch_and_parse(
             url=IPO_CALENDAR_URL,
@@ -659,8 +726,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     records = client.get_short_interest("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:quote:short_interest:{upper}"
         url = SHORT_INTEREST_URL.format(symbol=upper)
 
@@ -708,8 +774,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     dividends = client.get_dividend_history("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:quote:dividend_history:{upper}"
         url = DIVIDEND_HISTORY_URL.format(symbol=upper)
 
@@ -761,8 +826,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     trades = client.get_insider_trades("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:company:insider_trades:{upper}"
         url = INSIDER_TRADES_URL.format(symbol=upper)
 
@@ -810,8 +874,7 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     holdings = client.get_institutional_holdings("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:company:institutional_holdings:{upper}"
         url = INSTITUTIONAL_HOLDINGS_URL.format(symbol=upper)
 
@@ -826,7 +889,7 @@ class NasdaqClient:
     def get_financials(
         self,
         symbol: str,
-        frequency: str = "annual",
+        frequency: Literal["annual", "quarterly"] = "annual",
         options: NasdaqFetchOptions | None = None,
     ) -> FinancialStatement:
         """Fetch financial statements data for a symbol.
@@ -838,7 +901,7 @@ class NasdaqClient:
         ----------
         symbol : str
             Ticker symbol (e.g. ``"AAPL"``).
-        frequency : str
+        frequency : Literal["annual", "quarterly"]
             Data frequency, either ``"annual"`` or ``"quarterly"``.
             Default is ``"annual"``.
         options : NasdaqFetchOptions | None
@@ -852,7 +915,7 @@ class NasdaqClient:
         Raises
         ------
         ValueError
-            If the symbol is empty or invalid.
+            If the symbol is empty or invalid, or if frequency is not valid.
         NasdaqAPIError
             If the API returns a non-200 rCode.
         NasdaqParseError
@@ -864,13 +927,15 @@ class NasdaqClient:
         ...     financials = client.get_financials("AAPL")
         ...     quarterly = client.get_financials("AAPL", frequency="quarterly")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
+        if frequency not in _VALID_FREQUENCIES:
+            raise ValueError(
+                f"frequency must be one of {sorted(_VALID_FREQUENCIES)}, got '{frequency}'"
+            )
         cache_key = f"nasdaq:company:financials:{upper}:{frequency}"
         url = FINANCIALS_URL.format(symbol=upper)
 
-        def parser(data: dict[str, Any]) -> FinancialStatement:
-            return parse_financials(data, symbol=upper, frequency=frequency)
+        parser = functools.partial(parse_financials, symbol=upper, frequency=frequency)
 
         return self._fetch_and_parse(
             url=url,
@@ -921,13 +986,11 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     forecast = client.get_earnings_forecast("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:analyst:forecast:{upper}"
         url = ANALYST_FORECAST_URL.format(symbol=upper)
 
-        def parser(data: dict[str, Any]) -> EarningsForecast:
-            return parse_earnings_forecast(data, symbol=upper)
+        parser = functools.partial(parse_earnings_forecast, symbol=upper)
 
         return self._fetch_and_parse(
             url=url,
@@ -973,13 +1036,11 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     ratings = client.get_analyst_ratings("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:analyst:ratings:{upper}"
         url = ANALYST_RATINGS_URL.format(symbol=upper)
 
-        def parser(data: dict[str, Any]) -> AnalystRatings:
-            return parse_analyst_ratings(data, symbol=upper)
+        parser = functools.partial(parse_analyst_ratings, symbol=upper)
 
         return self._fetch_and_parse(
             url=url,
@@ -1024,13 +1085,11 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     tp = client.get_target_price("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:analyst:target_price:{upper}"
         url = ANALYST_TARGET_PRICE_URL.format(symbol=upper)
 
-        def parser(data: dict[str, Any]) -> TargetPrice:
-            return parse_target_price(data, symbol=upper)
+        parser = functools.partial(parse_target_price, symbol=upper)
 
         return self._fetch_and_parse(
             url=url,
@@ -1073,13 +1132,11 @@ class NasdaqClient:
         >>> with NasdaqClient() as client:
         ...     ed = client.get_earnings_date("AAPL")
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
         cache_key = f"nasdaq:analyst:earnings_date:{upper}"
         url = ANALYST_EARNINGS_DATE_URL.format(symbol=upper)
 
-        def parser(data: dict[str, Any]) -> EarningsDate:
-            return parse_earnings_date(data, symbol=upper)
+        parser = functools.partial(parse_earnings_date, symbol=upper)
 
         return self._fetch_and_parse(
             url=url,
@@ -1127,8 +1184,7 @@ class NasdaqClient:
         ...     if summary.target_price:
         ...         print(summary.target_price.mean)
         """
-        self._validate_symbol(symbol)
-        upper = symbol.strip().upper()
+        upper = self._validate_symbol(symbol)
 
         forecast: EarningsForecast | None = None
         ratings: AnalystRatings | None = None

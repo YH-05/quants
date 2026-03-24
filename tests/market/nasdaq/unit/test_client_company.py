@@ -651,6 +651,14 @@ class TestGetFinancials:
         with pytest.raises(ValueError, match="Symbol must not be empty"):
             nasdaq_client.get_financials("")
 
+    def test_異常系_不正なfrequencyでValueError(
+        self,
+        nasdaq_client: NasdaqClient,
+    ) -> None:
+        """Raise ValueError for invalid frequency values."""
+        with pytest.raises(ValueError, match="frequency must be one of"):
+            nasdaq_client.get_financials("AAPL", frequency="invalid")
+
     def test_正常系_空データで空リストを返す(
         self,
         nasdaq_client: NasdaqClient,

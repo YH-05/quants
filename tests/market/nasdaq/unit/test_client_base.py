@@ -330,13 +330,34 @@ class TestValidateSymbol:
     """Tests for NasdaqClient._validate_symbol."""
 
     @pytest.mark.parametrize(
-        "symbol",
-        ["AAPL", "MSFT", "GOOGL", "BRK.B", "BF-B", "T", "X"],
+        ("symbol", "expected"),
+        [
+            ("AAPL", "AAPL"),
+            ("MSFT", "MSFT"),
+            ("GOOGL", "GOOGL"),
+            ("BRK.B", "BRK.B"),
+            ("BF-B", "BF-B"),
+            ("T", "T"),
+            ("X", "X"),
+        ],
         ids=["AAPL", "MSFT", "GOOGL", "BRK.B", "BF-B", "single-T", "single-X"],
     )
-    def test_正常系_有効なシンボルでエラーなし(self, symbol: str) -> None:
-        """Valid symbols do not raise any exception."""
-        NasdaqClient._validate_symbol(symbol)
+    def test_正常系_有効なシンボルで正規化された文字列を返す(
+        self, symbol: str, expected: str
+    ) -> None:
+        """Valid symbols return the normalized (uppercased) string."""
+        result = NasdaqClient._validate_symbol(symbol)
+        assert result == expected
+
+    def test_正常系_小文字入力を大文字に正規化する(self) -> None:
+        """Lowercase symbol is uppercased."""
+        result = NasdaqClient._validate_symbol("aapl")
+        assert result == "AAPL"
+
+    def test_正常系_前後空白を除去して正規化する(self) -> None:
+        """Leading/trailing whitespace is stripped and symbol is uppercased."""
+        result = NasdaqClient._validate_symbol("  AAPL  ")
+        assert result == "AAPL"
 
     def test_異常系_空文字列でValueError(self) -> None:
         """Empty string raises ValueError."""
@@ -463,3 +484,61 @@ class TestNasdaqFetchOptions:
         options = NasdaqFetchOptions(use_cache=False, force_refresh=True)
         assert options.use_cache is False
         assert options.force_refresh is True
+
+
+# =============================================================================
+# _validate_date Tests
+# =============================================================================
+
+
+class TestValidateDate:
+    """Tests for NasdaqClient._validate_date."""
+
+    def test_正常系_YYYY_MM_DD形式を受け付ける(self) -> None:
+        """Valid YYYY-MM-DD date string is accepted."""
+        result = NasdaqClient._validate_date("2026-01-30")
+        assert result == "2026-01-30"
+
+    def test_正常系_前後空白を除去する(self) -> None:
+        """Leading/trailing whitespace is stripped."""
+        result = NasdaqClient._validate_date("  2026-01-30  ")
+        assert result == "2026-01-30"
+
+    def test_異常系_不正なフォーマットでValueError(self) -> None:
+        """Slash-separated date raises ValueError."""
+        with pytest.raises(ValueError, match="YYYY-MM-DD"):
+            NasdaqClient._validate_date("2026/01/30")
+
+    def test_異常系_年月のみでValueError(self) -> None:
+        """Year-month only string raises ValueError."""
+        with pytest.raises(ValueError, match="YYYY-MM-DD"):
+            NasdaqClient._validate_date("2026-01")
+
+
+# =============================================================================
+# _validate_year_month Tests
+# =============================================================================
+
+
+class TestValidateYearMonth:
+    """Tests for NasdaqClient._validate_year_month."""
+
+    def test_正常系_YYYY_MM形式を受け付ける(self) -> None:
+        """Valid YYYY-MM year-month string is accepted."""
+        result = NasdaqClient._validate_year_month("2026-03")
+        assert result == "2026-03"
+
+    def test_正常系_前後空白を除去する(self) -> None:
+        """Leading/trailing whitespace is stripped."""
+        result = NasdaqClient._validate_year_month("  2026-03  ")
+        assert result == "2026-03"
+
+    def test_異常系_日付付きでValueError(self) -> None:
+        """Full date string raises ValueError."""
+        with pytest.raises(ValueError, match="YYYY-MM"):
+            NasdaqClient._validate_year_month("2026-03-01")
+
+    def test_異常系_不正なフォーマットでValueError(self) -> None:
+        """Non-numeric format raises ValueError."""
+        with pytest.raises(ValueError, match="YYYY-MM"):
+            NasdaqClient._validate_year_month("March 2026")
