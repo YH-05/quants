@@ -27,6 +27,37 @@ RetryConfig
     Configuration for retry behaviour with exponential backoff.
 FetchOptions
     Options for controlling cache behaviour per request.
+AlphaVantageStorage
+    SQLite storage layer for persisting Alpha Vantage data.
+get_alphavantage_storage
+    Factory function for ``AlphaVantageStorage`` with env-based path.
+AlphaVantageCollector
+    Orchestrator for collecting data via Client -> Storage flow.
+CollectionResult
+    Outcome of a single collect operation.
+CollectionSummary
+    Aggregated summary of multiple collection results.
+
+Record Types
+------------
+DailyPriceRecord
+    Daily OHLCV price record.
+CompanyOverviewRecord
+    Company profile and fundamentals record.
+IncomeStatementRecord
+    Income statement record.
+BalanceSheetRecord
+    Balance sheet record.
+CashFlowRecord
+    Cash flow statement record.
+AnnualEarningsRecord
+    Annual earnings record.
+QuarterlyEarningsRecord
+    Quarterly earnings record.
+EconomicIndicatorRecord
+    Economic indicator time-series record.
+ForexDailyRecord
+    Daily forex exchange rate record.
 
 Enums
 -----
@@ -80,6 +111,11 @@ from market.alphavantage.cache import (
     get_alphavantage_cache,
 )
 from market.alphavantage.client import AlphaVantageClient
+from market.alphavantage.collector import (
+    AlphaVantageCollector,
+    CollectionResult,
+    CollectionSummary,
+)
 from market.alphavantage.errors import (
     AlphaVantageAPIError,
     AlphaVantageAuthError,
@@ -87,6 +123,18 @@ from market.alphavantage.errors import (
     AlphaVantageParseError,
     AlphaVantageRateLimitError,
     AlphaVantageValidationError,
+)
+from market.alphavantage.models import (
+    AnnualEarningsRecord,
+    BalanceSheetRecord,
+    CashFlowRecord,
+    CompanyOverviewRecord,
+    DailyPriceRecord,
+    EarningsRecord,
+    EconomicIndicatorRecord,
+    ForexDailyRecord,
+    IncomeStatementRecord,
+    QuarterlyEarningsRecord,
 )
 from market.alphavantage.parser import (
     parse_company_overview,
@@ -104,6 +152,7 @@ from market.alphavantage.rate_limiter import (
     DualWindowRateLimiter,
 )
 from market.alphavantage.session import AlphaVantageSession
+from market.alphavantage.storage import AlphaVantageStorage, get_alphavantage_storage
 from market.alphavantage.types import (
     AlphaVantageConfig,
     CryptoFunction,
@@ -129,24 +178,39 @@ __all__ = [
     "AlphaVantageAPIError",
     "AlphaVantageAuthError",
     "AlphaVantageClient",
+    "AlphaVantageCollector",
     "AlphaVantageConfig",
     "AlphaVantageError",
     "AlphaVantageParseError",
     "AlphaVantageRateLimitError",
     "AlphaVantageSession",
+    "AlphaVantageStorage",
     "AlphaVantageValidationError",
+    "AnnualEarningsRecord",
     "AsyncDualWindowRateLimiter",
+    "BalanceSheetRecord",
+    "CashFlowRecord",
+    "CollectionResult",
+    "CollectionSummary",
+    "CompanyOverviewRecord",
     "CryptoFunction",
+    "DailyPriceRecord",
     "DualWindowRateLimiter",
+    "EarningsRecord",
     "EconomicIndicator",
+    "EconomicIndicatorRecord",
     "FetchOptions",
+    "ForexDailyRecord",
     "ForexFunction",
     "FundamentalFunction",
+    "IncomeStatementRecord",
     "Interval",
     "OutputSize",
+    "QuarterlyEarningsRecord",
     "RetryConfig",
     "TimeSeriesFunction",
     "get_alphavantage_cache",
+    "get_alphavantage_storage",
     "parse_company_overview",
     "parse_crypto_time_series",
     "parse_earnings",
