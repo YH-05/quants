@@ -104,6 +104,9 @@ class NasdaqAPIError(NasdaqError):
         super().__init__(message)
         self.url = url
         self.status_code = status_code
+        # AIDEV-NOTE: response_body は内部デバッグ専用。
+        # 上位レイヤーで例外を外部向けレスポンスに変換する際は、
+        # このフィールドを含めないこと。
         self.response_body = response_body
 
 
@@ -197,6 +200,9 @@ class NasdaqParseError(NasdaqError):
         field: str | None,
     ) -> None:
         super().__init__(message)
+        # AIDEV-NOTE: raw_data は内部デバッグ専用。
+        # 上位レイヤーで例外を外部向けレスポンスに変換する際は、
+        # このフィールドを含めないこと。
         self.raw_data = raw_data
         self.field = field
 

@@ -30,12 +30,8 @@ from market.nasdaq.client_cache import (
     INSTITUTIONAL_HOLDINGS_TTL,
     IPO_CALENDAR_TTL,
     MARKET_MOVERS_TTL,
-    SEC_FILINGS_TTL,
     SHORT_INTEREST_TTL,
     SPLITS_CALENDAR_TTL,
-    STOCK_CHART_TTL,
-    STOCK_QUOTE_TTL,
-    STOCK_SUMMARY_TTL,
     get_nasdaq_cache,
 )
 
@@ -63,18 +59,6 @@ class TestTTLConstants:
         """IPO calendar TTL is 24 hours."""
         assert IPO_CALENDAR_TTL == 86400
 
-    def test_正常系_STOCK_QUOTE_TTLは5分(self) -> None:
-        """Stock quote TTL is 5 minutes (300 seconds)."""
-        assert STOCK_QUOTE_TTL == 300
-
-    def test_正常系_STOCK_SUMMARY_TTLは1時間(self) -> None:
-        """Stock summary TTL is 1 hour (3600 seconds)."""
-        assert STOCK_SUMMARY_TTL == 3600
-
-    def test_正常系_STOCK_CHART_TTLは1時間(self) -> None:
-        """Stock chart TTL is 1 hour."""
-        assert STOCK_CHART_TTL == 3600
-
     def test_正常系_INSTITUTIONAL_HOLDINGS_TTLは7日(self) -> None:
         """Institutional holdings TTL is 7 days (604800 seconds)."""
         assert INSTITUTIONAL_HOLDINGS_TTL == 604800
@@ -82,10 +66,6 @@ class TestTTLConstants:
     def test_正常系_INSIDER_TRADES_TTLは24時間(self) -> None:
         """Insider trades TTL is 24 hours."""
         assert INSIDER_TRADES_TTL == 86400
-
-    def test_正常系_SEC_FILINGS_TTLは24時間(self) -> None:
-        """SEC filings TTL is 24 hours."""
-        assert SEC_FILINGS_TTL == 86400
 
     def test_正常系_FINANCIALS_TTLは24時間(self) -> None:
         """Financials TTL is 24 hours."""
@@ -130,12 +110,8 @@ class TestTTLConstants:
             DIVIDENDS_CALENDAR_TTL,
             SPLITS_CALENDAR_TTL,
             IPO_CALENDAR_TTL,
-            STOCK_QUOTE_TTL,
-            STOCK_SUMMARY_TTL,
-            STOCK_CHART_TTL,
             INSTITUTIONAL_HOLDINGS_TTL,
             INSIDER_TRADES_TTL,
-            SEC_FILINGS_TTL,
             FINANCIALS_TTL,
             ANALYST_FORECAST_TTL,
             ANALYST_RATINGS_TTL,

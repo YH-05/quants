@@ -60,9 +60,20 @@ class TestModuleExports:
                 f"{name} is not defined in constants module"
             )
 
-    def test_正常系_allが31項目を含む(self) -> None:
-        """__all__ が全31定数をエクスポートしていること。"""
-        assert len(__all__) == 31
+    def test_正常系_allが必須定数を含む(self) -> None:
+        """__all__ が必須の定数名をすべて含むこと。"""
+        required_constants = {
+            "NASDAQ_API_BASE",
+            "NASDAQ_SCREENER_URL",
+            "DEFAULT_HEADERS",
+            "DEFAULT_USER_AGENTS",
+            "EARNINGS_CALENDAR_URL",
+            "MARKET_MOVERS_URL",
+            "SHORT_INTEREST_URL",
+            "ANALYST_FORECAST_URL",
+            "FINANCIALS_URL",
+        }
+        assert required_constants.issubset(set(__all__))
 
     def test_正常系_モジュールDocstringが存在する(self) -> None:
         """モジュールの docstring が存在すること。"""

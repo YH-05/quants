@@ -50,24 +50,6 @@ IPO_CALENDAR_TTL: Final[int] = 86400
 IPO calendar data is updated daily.
 """
 
-STOCK_QUOTE_TTL: Final[int] = 300
-"""TTL for real-time stock quote data (5 minutes).
-
-Real-time quotes require frequent refresh for timely price information.
-"""
-
-STOCK_SUMMARY_TTL: Final[int] = 3600
-"""TTL for stock summary / profile data (1 hour).
-
-Stock summary information changes infrequently during the trading day.
-"""
-
-STOCK_CHART_TTL: Final[int] = 3600
-"""TTL for stock chart (historical price) data (1 hour).
-
-Historical chart data is relatively stable once the trading day ends.
-"""
-
 INSTITUTIONAL_HOLDINGS_TTL: Final[int] = 604800
 """TTL for institutional holdings data (7 days).
 
@@ -78,12 +60,6 @@ INSIDER_TRADES_TTL: Final[int] = 86400
 """TTL for insider trading data (24 hours).
 
 Insider trades are disclosed with a delay; daily refresh is sufficient.
-"""
-
-SEC_FILINGS_TTL: Final[int] = 86400
-"""TTL for SEC filings data (24 hours).
-
-SEC filings are published as-needed; daily check is sufficient.
 """
 
 FINANCIALS_TTL: Final[int] = 86400
@@ -158,8 +134,11 @@ def get_nasdaq_cache() -> SQLiteCache:
     Examples
     --------
     >>> cache = get_nasdaq_cache()
-    >>> cache.set("nasdaq:quote:AAPL", data, ttl=STOCK_QUOTE_TTL)
+    >>> cache.set("nasdaq:quote:AAPL", data, ttl=EARNINGS_CALENDAR_TTL)
     """
+    # max_entries=10000 は全エンドポイント x ユニークキー数の上限。
+    # 1エントリは平均 1-50KB（ETF screener が最大、全ETF一括で ~50KB）。
+    # 読み書きのみ（行検索不要）のためSQLiteで十分な規模。
     cache = create_persistent_cache(
         ttl_seconds=EARNINGS_CALENDAR_TTL,
         max_entries=10000,
@@ -182,11 +161,7 @@ __all__ = [
     "INSTITUTIONAL_HOLDINGS_TTL",
     "IPO_CALENDAR_TTL",
     "MARKET_MOVERS_TTL",
-    "SEC_FILINGS_TTL",
     "SHORT_INTEREST_TTL",
     "SPLITS_CALENDAR_TTL",
-    "STOCK_CHART_TTL",
-    "STOCK_QUOTE_TTL",
-    "STOCK_SUMMARY_TTL",
     "get_nasdaq_cache",
 ]

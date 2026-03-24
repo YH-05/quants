@@ -208,24 +208,6 @@ SPLITS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/splits"
 IPO_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/ipo/calendar"
 """URL for the NASDAQ IPO Calendar API endpoint."""
 
-STOCK_QUOTE_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/info"
-"""URL template for NASDAQ stock quote (real-time info) endpoint.
-
-Use ``STOCK_QUOTE_URL.format(symbol="AAPL")`` to construct the URL.
-"""
-
-STOCK_SUMMARY_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/summary"
-"""URL template for NASDAQ stock summary endpoint.
-
-Use ``STOCK_SUMMARY_URL.format(symbol="AAPL")`` to construct the URL.
-"""
-
-STOCK_CHART_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/chart"
-"""URL template for NASDAQ stock chart (historical price) endpoint.
-
-Use ``STOCK_CHART_URL.format(symbol="AAPL")`` to construct the URL.
-"""
-
 INSTITUTIONAL_HOLDINGS_URL: Final[str] = (
     f"{NASDAQ_API_BASE}/company/{{symbol}}/institutional-holdings"
 )
@@ -238,12 +220,6 @@ INSIDER_TRADES_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/insider-
 """URL template for NASDAQ insider trades endpoint.
 
 Use ``INSIDER_TRADES_URL.format(symbol="AAPL")`` to construct the URL.
-"""
-
-SEC_FILINGS_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/sec-filings"
-"""URL template for NASDAQ SEC filings endpoint.
-
-Use ``SEC_FILINGS_URL.format(symbol="AAPL")`` to construct the URL.
 """
 
 ANALYST_FORECAST_URL: Final[str] = f"{NASDAQ_API_BASE}/analyst/{{symbol}}/forecast"
@@ -293,14 +269,6 @@ DIVIDEND_HISTORY_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/dividend
 Use ``DIVIDEND_HISTORY_URL.format(symbol="AAPL")`` to construct the URL.
 """
 
-COMPANY_PROFILE_URL: Final[str] = (
-    f"{NASDAQ_API_BASE}/company/{{symbol}}/company-profile"
-)
-"""URL template for NASDAQ company profile endpoint.
-
-Use ``COMPANY_PROFILE_URL.format(symbol="AAPL")`` to construct the URL.
-"""
-
 MARKET_MOVERS_URL: Final[str] = f"{NASDAQ_API_BASE}/marketmovers"
 """URL for the NASDAQ Market Movers API endpoint.
 
@@ -327,7 +295,6 @@ __all__ = [
     "ANALYST_TARGET_PRICE_URL",
     "BROWSER_IMPERSONATE_TARGETS",
     "COLUMN_NAME_MAP",
-    "COMPANY_PROFILE_URL",
     "DEFAULT_DELAY_JITTER",
     "DEFAULT_HEADERS",
     "DEFAULT_OUTPUT_DIR",
@@ -345,10 +312,6 @@ __all__ = [
     "MARKET_MOVERS_URL",
     "NASDAQ_API_BASE",
     "NASDAQ_SCREENER_URL",
-    "SEC_FILINGS_URL",
     "SHORT_INTEREST_URL",
     "SPLITS_CALENDAR_URL",
-    "STOCK_CHART_URL",
-    "STOCK_QUOTE_URL",
-    "STOCK_SUMMARY_URL",
 ]

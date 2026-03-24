@@ -21,6 +21,7 @@ Test TODO List:
 - [x] parse_target_price: arbitrary dict never raises unexpected exception
 - [x] parse_earnings_date: arbitrary dict never raises unexpected exception
 - [x] parse_financials: arbitrary dict never raises unexpected exception
+- [x] _safe_int: always returns int, identity for non-negative ints
 
 See Also
 --------
@@ -36,6 +37,7 @@ from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from market.nasdaq.client_parsers import (
+    _safe_int,
     parse_analyst_ratings,
     parse_dividend_history,
     parse_dividends_calendar,
@@ -332,6 +334,172 @@ class TestParseFinancialsProperty:
         """Arbitrary dict input never raises unexpected exceptions."""
         try:
             result = parse_financials(data, symbol=symbol, frequency=frequency)
+            assert result is not None
+        except _ALLOWED_ERRORS:
+            pass
+
+
+# =============================================================================
+# _safe_int property tests
+# =============================================================================
+
+
+class TestSafeIntProperty:
+    """Property tests for _safe_int helper."""
+
+    @given(st.one_of(st.none(), st.integers(), st.text(), st.floats(allow_nan=False)))
+    @settings(max_examples=200)
+    def test_プロパティ_safe_intは常にintを返す(self, value: object) -> None:
+        """_safe_int always returns an int regardless of input type."""
+        result = _safe_int(value)
+        assert isinstance(result, int)
+
+    @given(st.booleans())
+    def test_プロパティ_boolは常に0を返す(self, value: bool) -> None:
+        """Bool values always return 0 (explicit bool guard before int check)."""
+        result = _safe_int(value)
+        assert isinstance(result, int)
+        assert result == 0
+
+    @given(st.integers(min_value=0, max_value=10**12))
+    def test_プロパティ_正の整数は変換後も同じ値(self, value: int) -> None:
+        """Non-negative integers are preserved by _safe_int."""
+        result = _safe_int(value)
+        assert result == value
+
+
+# =============================================================================
+# Additional parser defensiveness property tests
+# =============================================================================
+
+
+class TestParseShortInterestDefensiveProperty:
+    """Defensiveness property tests for parse_short_interest."""
+
+    @given(
+        st.dictionaries(
+            st.text(max_size=20),
+            st.one_of(st.text(max_size=50), st.integers(), st.none()),
+            max_size=5,
+        )
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_任意dictで例外を出さず空リストまたはリストを返す(
+        self, data: dict[str, Any]
+    ) -> None:
+        """parse_short_interest returns a list or raises allowed errors."""
+        try:
+            result = parse_short_interest(data)
+            assert isinstance(result, list)
+        except _ALLOWED_ERRORS:
+            pass
+
+
+class TestParseDividendHistoryDefensiveProperty:
+    """Defensiveness property tests for parse_dividend_history."""
+
+    @given(
+        st.dictionaries(
+            st.text(max_size=20),
+            st.one_of(st.text(max_size=50), st.integers(), st.none()),
+            max_size=5,
+        )
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_任意dictで例外を出さず空リストまたはリストを返す(
+        self, data: dict[str, Any]
+    ) -> None:
+        """parse_dividend_history returns a list or raises allowed errors."""
+        try:
+            result = parse_dividend_history(data)
+            assert isinstance(result, list)
+        except _ALLOWED_ERRORS:
+            pass
+
+
+class TestParseAnalystRatingsDefensiveProperty:
+    """Defensiveness property tests for parse_analyst_ratings."""
+
+    @given(
+        st.dictionaries(
+            st.text(max_size=20),
+            st.one_of(st.text(max_size=50), st.integers(), st.none()),
+            max_size=5,
+        )
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_任意dictで例外を出さずAnalystRatingsを返す(
+        self, data: dict[str, Any]
+    ) -> None:
+        """parse_analyst_ratings returns AnalystRatings or raises allowed errors."""
+        try:
+            result = parse_analyst_ratings(data, symbol="TEST")
+            assert result is not None
+        except _ALLOWED_ERRORS:
+            pass
+
+
+class TestParseTargetPriceDefensiveProperty:
+    """Defensiveness property tests for parse_target_price."""
+
+    @given(
+        st.dictionaries(
+            st.text(max_size=20),
+            st.one_of(st.text(max_size=50), st.integers(), st.none()),
+            max_size=5,
+        )
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_任意dictで例外を出さずTargetPriceを返す(
+        self, data: dict[str, Any]
+    ) -> None:
+        """parse_target_price returns TargetPrice or raises allowed errors."""
+        try:
+            result = parse_target_price(data, symbol="TEST")
+            assert result is not None
+        except _ALLOWED_ERRORS:
+            pass
+
+
+class TestParseEarningsDateDefensiveProperty:
+    """Defensiveness property tests for parse_earnings_date."""
+
+    @given(
+        st.dictionaries(
+            st.text(max_size=20),
+            st.one_of(st.text(max_size=50), st.integers(), st.none()),
+            max_size=5,
+        )
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_任意dictで例外を出さずEarningsDateを返す(
+        self, data: dict[str, Any]
+    ) -> None:
+        """parse_earnings_date returns EarningsDate or raises allowed errors."""
+        try:
+            result = parse_earnings_date(data, symbol="TEST")
+            assert result is not None
+        except _ALLOWED_ERRORS:
+            pass
+
+
+class TestParseFinancialsDefensiveProperty:
+    """Defensiveness property tests for parse_financials."""
+
+    @given(
+        st.dictionaries(
+            st.text(max_size=20),
+            st.one_of(st.text(max_size=50), st.integers(), st.none()),
+            max_size=5,
+        )
+    )
+    @settings(max_examples=200)
+    def test_プロパティ_任意dictで例外を出さずFinancialStatementを返す(
+        self, data: dict[str, Any]
+    ) -> None:
+        """parse_financials returns FinancialStatement or raises allowed errors."""
+        try:
+            result = parse_financials(data, symbol="TEST", frequency="annual")
             assert result is not None
         except _ALLOWED_ERRORS:
             pass

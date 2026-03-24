@@ -751,6 +751,8 @@ def _safe_int(value: Any) -> int:
     """
     if value is None:
         return 0
+    if isinstance(value, bool):
+        return 0
     if isinstance(value, int):
         return value
     try:

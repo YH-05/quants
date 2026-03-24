@@ -905,3 +905,24 @@ class TestGetAnalystSummary:
         """Symbol validation is performed in get_analyst_summary."""
         with pytest.raises(ValueError, match="Symbol must not be empty"):
             nasdaq_client.get_analyst_summary("   ")
+
+    def test_正常系_全4エンドポイント失敗時に全フィールドNoneのサマリーを返す(
+        self,
+        nasdaq_client: NasdaqClient,
+        mock_nasdaq_session: MagicMock,
+        mock_cache: MagicMock,
+    ) -> None:
+        """Return AnalystSummary with all None fields when all endpoints fail."""
+        mock_cache.get.return_value = None
+        mock_nasdaq_session.get_with_retry.side_effect = NasdaqAPIError(
+            message="API error", url="test", status_code=500, response_body=""
+        )
+
+        result = nasdaq_client.get_analyst_summary("AAPL")
+
+        assert isinstance(result, AnalystSummary)
+        assert result.symbol == "AAPL"
+        assert result.forecast is None
+        assert result.ratings is None
+        assert result.target_price is None
+        assert result.earnings_date is None

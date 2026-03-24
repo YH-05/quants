@@ -33,7 +33,7 @@ from __future__ import annotations
 
 import functools
 import re
-from typing import TYPE_CHECKING, Any, Literal
+from typing import TYPE_CHECKING, Any, Final, Literal
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -129,6 +129,8 @@ _VALID_FREQUENCIES: frozenset[str] = frozenset({"annual", "quarterly"})
 # Regex for date / year-month parameter validation
 _DATE_PATTERN_PARAM: re.Pattern[str] = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _YEAR_MONTH_PATTERN: re.Pattern[str] = re.compile(r"^\d{4}-\d{2}$")
+
+_DEFAULT_FETCH_OPTIONS: Final[NasdaqFetchOptions] = NasdaqFetchOptions()
 
 
 class NasdaqClient:
@@ -267,7 +269,7 @@ class NasdaqClient:
         NasdaqParseError
             If the response cannot be parsed.
         """
-        options = options or NasdaqFetchOptions()
+        options = options or _DEFAULT_FETCH_OPTIONS
 
         # Check cache
         if options.use_cache and not options.force_refresh:
@@ -399,38 +401,42 @@ class NasdaqClient:
         return stripped
 
     # =========================================================================
-    # URL Helpers
+    # Optional Fetch Helper
     # =========================================================================
 
-    @staticmethod
-    def _build_referer(symbol: str | None = None) -> str:
-        """Build a Referer header URL for a NASDAQ API request.
+    def _fetch_optional[T](
+        self,
+        fetch_fn: Callable[..., T],
+        label: str,
+        *args: Any,
+        **kwargs: Any,
+    ) -> T | None:
+        """Call *fetch_fn* and return ``None`` on failure.
 
-        Constructs a plausible Referer URL that mimics browser navigation
-        on the NASDAQ website, which helps avoid bot detection.
+        Used by aggregation methods (e.g. ``get_analyst_summary``) to
+        gracefully degrade when an individual sub-endpoint fails.
 
         Parameters
         ----------
-        symbol : str | None
-            If provided, constructs a symbol-specific Referer URL.
-            If ``None``, returns the generic NASDAQ market activity page.
+        fetch_fn : Callable[..., T]
+            The endpoint method to call.
+        label : str
+            Human-readable label for log messages.
+        *args : Any
+            Positional arguments forwarded to *fetch_fn*.
+        **kwargs : Any
+            Keyword arguments forwarded to *fetch_fn*.
 
         Returns
         -------
-        str
-            A Referer URL string.
-
-        Examples
-        --------
-        >>> NasdaqClient._build_referer("AAPL")
-        'https://www.nasdaq.com/market-activity/stocks/aapl'
-
-        >>> NasdaqClient._build_referer()
-        'https://www.nasdaq.com/market-activity'
+        T | None
+            The result of *fetch_fn*, or ``None`` if an exception occurred.
         """
-        if symbol:
-            return f"https://www.nasdaq.com/market-activity/stocks/{symbol.lower()}"
-        return "https://www.nasdaq.com/market-activity"
+        try:
+            return fetch_fn(*args, **kwargs)
+        except Exception:
+            logger.warning(f"Failed to fetch {label}", exc_info=True)
+            return None
 
     # =========================================================================
     # Calendar Endpoints
@@ -1186,34 +1192,18 @@ class NasdaqClient:
         """
         upper = self._validate_symbol(symbol)
 
-        forecast: EarningsForecast | None = None
-        ratings: AnalystRatings | None = None
-        target: TargetPrice | None = None
-        earnings_dt: EarningsDate | None = None
-
-        try:
-            forecast = self.get_earnings_forecast(upper, options=options)
-        except Exception:
-            logger.warning(
-                "Failed to fetch earnings forecast", symbol=upper, exc_info=True
-            )
-
-        try:
-            ratings = self.get_analyst_ratings(upper, options=options)
-        except Exception:
-            logger.warning(
-                "Failed to fetch analyst ratings", symbol=upper, exc_info=True
-            )
-
-        try:
-            target = self.get_target_price(upper, options=options)
-        except Exception:
-            logger.warning("Failed to fetch target price", symbol=upper, exc_info=True)
-
-        try:
-            earnings_dt = self.get_earnings_date(upper, options=options)
-        except Exception:
-            logger.warning("Failed to fetch earnings date", symbol=upper, exc_info=True)
+        forecast = self._fetch_optional(
+            self.get_earnings_forecast, "earnings forecast", upper, options=options
+        )
+        ratings = self._fetch_optional(
+            self.get_analyst_ratings, "analyst ratings", upper, options=options
+        )
+        target = self._fetch_optional(
+            self.get_target_price, "target price", upper, options=options
+        )
+        earnings_dt = self._fetch_optional(
+            self.get_earnings_date, "earnings date", upper, options=options
+        )
 
         logger.info(
             "Analyst summary assembled",

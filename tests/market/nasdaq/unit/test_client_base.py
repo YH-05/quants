@@ -5,7 +5,6 @@ Tests cover:
 - ``_fetch_and_parse`` DRY helper (cache hit, cache miss, force refresh)
 - ``unwrap_envelope`` (success, rCode != 200, missing structure)
 - ``_validate_symbol`` (valid symbols, invalid symbols)
-- ``_build_referer`` (with symbol, without symbol)
 - Context manager (``__enter__`` / ``__exit__``)
 
 See Also
@@ -369,6 +368,11 @@ class TestValidateSymbol:
         with pytest.raises(ValueError, match="must not be empty"):
             NasdaqClient._validate_symbol("   ")
 
+    def test_正常系_ちょうど10文字のシンボルを受け付ける(self) -> None:
+        """Accept symbols that are exactly 10 characters long."""
+        result = NasdaqClient._validate_symbol("ABCDEFGHIJ")
+        assert result == "ABCDEFGHIJ"
+
     def test_異常系_11文字以上でValueError(self) -> None:
         """Symbol longer than 10 characters raises ValueError."""
         with pytest.raises(ValueError, match="1-10 characters"):
@@ -383,35 +387,6 @@ class TestValidateSymbol:
         """Symbol with invalid characters raises ValueError."""
         with pytest.raises(ValueError, match="alphanumeric"):
             NasdaqClient._validate_symbol(symbol)
-
-
-# =============================================================================
-# _build_referer Tests
-# =============================================================================
-
-
-class TestBuildReferer:
-    """Tests for NasdaqClient._build_referer."""
-
-    def test_正常系_シンボル指定時に銘柄ページURLを返す(self) -> None:
-        """Returns symbol-specific URL when symbol is provided."""
-        result = NasdaqClient._build_referer("AAPL")
-        assert result == "https://www.nasdaq.com/market-activity/stocks/aapl"
-
-    def test_正常系_大文字シンボルが小文字に変換される(self) -> None:
-        """Symbol is lowercased in the URL."""
-        result = NasdaqClient._build_referer("GOOGL")
-        assert result == "https://www.nasdaq.com/market-activity/stocks/googl"
-
-    def test_正常系_シンボル未指定時にマーケット活動ページURLを返す(self) -> None:
-        """Returns generic market activity URL when no symbol."""
-        result = NasdaqClient._build_referer()
-        assert result == "https://www.nasdaq.com/market-activity"
-
-    def test_正常系_None指定時にマーケット活動ページURLを返す(self) -> None:
-        """Returns generic market activity URL when symbol is None."""
-        result = NasdaqClient._build_referer(None)
-        assert result == "https://www.nasdaq.com/market-activity"
 
 
 # =============================================================================
