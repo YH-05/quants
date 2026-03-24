@@ -1153,8 +1153,10 @@ class TestFundFlowsFetch:
 
     def test_正常系_FUND_FLOWS_URL_TEMPLATEを使用する(self) -> None:
         """fetch() が FUND_FLOWS_URL_TEMPLATE を使用して URL を構築すること。"""
+        from market.etfcom.collectors import (
+            _LEGACY_FUND_FLOWS_URL_TEMPLATE as FUND_FLOWS_URL_TEMPLATE,
+        )
         from market.etfcom.collectors import FundFlowsCollector
-        from market.etfcom.constants import FUND_FLOWS_URL_TEMPLATE
 
         mock_session = MagicMock()
         mock_response = MagicMock()
@@ -1225,8 +1227,10 @@ class TestTickerNormalization:
 
     def test_正常系_FundamentalsCollectorが小文字を大文字に正規化する(self) -> None:
         """FundamentalsCollector.fetch() が小文字ティッカーを大文字に正規化すること。"""
+        from market.etfcom.collectors import (
+            _LEGACY_PROFILE_URL_TEMPLATE as PROFILE_URL_TEMPLATE,
+        )
         from market.etfcom.collectors import FundamentalsCollector
-        from market.etfcom.constants import PROFILE_URL_TEMPLATE
 
         mock_session = MagicMock()
         mock_response = MagicMock()
@@ -1249,8 +1253,10 @@ class TestTickerNormalization:
 
     def test_正常系_FundamentalsCollectorが大文字入力でも正常動作する(self) -> None:
         """FundamentalsCollector.fetch() が大文字入力でも冪等に動作すること。"""
+        from market.etfcom.collectors import (
+            _LEGACY_PROFILE_URL_TEMPLATE as PROFILE_URL_TEMPLATE,
+        )
         from market.etfcom.collectors import FundamentalsCollector
-        from market.etfcom.constants import PROFILE_URL_TEMPLATE
 
         mock_session = MagicMock()
         mock_response = MagicMock()
@@ -1270,8 +1276,10 @@ class TestTickerNormalization:
 
     def test_正常系_FundFlowsCollectorが小文字を大文字に正規化する(self) -> None:
         """FundFlowsCollector.fetch() が小文字ティッカーを大文字に正規化すること。"""
+        from market.etfcom.collectors import (
+            _LEGACY_FUND_FLOWS_URL_TEMPLATE as FUND_FLOWS_URL_TEMPLATE,
+        )
         from market.etfcom.collectors import FundFlowsCollector
-        from market.etfcom.constants import FUND_FLOWS_URL_TEMPLATE
 
         mock_session = MagicMock()
         mock_response = MagicMock()

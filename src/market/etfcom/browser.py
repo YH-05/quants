@@ -42,16 +42,42 @@ import asyncio
 import random
 from typing import Any
 
-from market.etfcom.constants import (
-    COOKIE_CONSENT_SELECTOR,
-    DEFAULT_USER_AGENTS,
-    DISPLAY_100_SELECTOR,
-    STEALTH_INIT_SCRIPT,
-    STEALTH_VIEWPORT,
-)
+from market.etfcom.constants import DEFAULT_USER_AGENTS
 from market.etfcom.errors import ETFComNotFoundError, ETFComTimeoutError
 from market.etfcom.types import RetryConfig, ScrapingConfig
 from utils_core.logging import get_logger
+
+# AIDEV-NOTE: Legacy Playwright constants inlined after removal from constants.py
+# (Wave 1 API migration). Will be removed when browser.py is rewritten in later Waves.
+_LEGACY_STEALTH_VIEWPORT: dict[str, int] = {"width": 1920, "height": 1080}
+_LEGACY_STEALTH_INIT_SCRIPT: str = """\
+// Hide navigator.webdriver property
+Object.defineProperty(navigator, 'webdriver', {
+    get: () => undefined,
+});
+
+// Override WebGL vendor and renderer
+const getParameter = WebGLRenderingContext.prototype.getParameter;
+WebGLRenderingContext.prototype.getParameter = function(parameter) {
+    if (parameter === 37445) {
+        return 'Intel Inc.';
+    }
+    if (parameter === 37446) {
+        return 'Intel Iris OpenGL Engine';
+    }
+    return getParameter.call(this, parameter);
+};
+
+// Add chrome.runtime to appear as a Chrome extension environment
+if (!window.chrome) {
+    window.chrome = {};
+}
+if (!window.chrome.runtime) {
+    window.chrome.runtime = {};
+}
+"""
+_LEGACY_COOKIE_CONSENT_SELECTOR: str = "button#onetrust-accept-btn-handler"
+_LEGACY_DISPLAY_100_SELECTOR: str = "select.per-page-select option[value='100']"
 
 logger = get_logger(__name__)
 
@@ -227,7 +253,7 @@ class ETFComBrowserMixin:
         - User-Agent: Randomly selected from the configured list
         - Locale: en-US
         - Timezone: America/New_York
-        - Init script: STEALTH_INIT_SCRIPT (hides webdriver, spoofs WebGL, adds
+        - Init script: _LEGACY_STEALTH_INIT_SCRIPT (hides webdriver, spoofs WebGL, adds
           chrome.runtime)
 
         Returns
@@ -247,20 +273,20 @@ class ETFComBrowserMixin:
         user_agent = random.choice(self._user_agents)  # nosec B311
 
         context = await self._browser.new_context(
-            viewport=STEALTH_VIEWPORT,
+            viewport=_LEGACY_STEALTH_VIEWPORT,
             user_agent=user_agent,
             locale="en-US",
             timezone_id="America/New_York",
         )
 
         # Inject stealth init script into every new page
-        await context.add_init_script(STEALTH_INIT_SCRIPT)
+        await context.add_init_script(_LEGACY_STEALTH_INIT_SCRIPT)
 
         self._context = context
 
         logger.debug(
             "Stealth context created",
-            viewport=STEALTH_VIEWPORT,
+            viewport=_LEGACY_STEALTH_VIEWPORT,
             user_agent=user_agent[:50],
             locale="en-US",
             timezone="America/New_York",
@@ -489,7 +515,7 @@ class ETFComBrowserMixin:
             The Playwright Page object.
         """
         try:
-            button = await page.query_selector(COOKIE_CONSENT_SELECTOR)
+            button = await page.query_selector(_LEGACY_COOKIE_CONSENT_SELECTOR)
             if button:
                 await button.click()
                 logger.debug("Cookie consent accepted")
@@ -546,7 +572,7 @@ class ETFComBrowserMixin:
             The Playwright Page object.
         """
         try:
-            element = await page.query_selector(DISPLAY_100_SELECTOR)
+            element = await page.query_selector(_LEGACY_DISPLAY_100_SELECTOR)
             if element:
                 await element.click()
                 logger.debug("Display 100 option selected")

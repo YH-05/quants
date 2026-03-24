@@ -1,56 +1,50 @@
 """Tests for market.etfcom.constants module.
 
-Tests verify all constant definitions for the ETF.com scraping module,
-including bot-blocking countermeasure constants, URL patterns, CSS selectors,
-Playwright stealth settings, and REST API constants.
+Tests verify all constant definitions for the ETF.com API client module,
+including bot-blocking countermeasure constants, REST API endpoint URLs,
+query definitions, HTTP headers, and authentication settings.
 
 Test TODO List:
 - [x] Module exports: __all__ completeness and importability
 - [x] Bot-blocking: DEFAULT_USER_AGENTS count, Mozilla prefix, uniqueness
 - [x] Bot-blocking: BROWSER_IMPERSONATE_TARGETS count and non-empty
 - [x] Bot-blocking: delay/timeout/headers values
-- [x] Playwright stealth: viewport, init script content
-- [x] URLs: https prefix, template placeholders, domain
-- [x] CSS selectors: all selectors non-empty
-- [x] Default settings: stability wait and max retries
-- [x] Final annotations: all constants annotated with typing.Final
-- [x] REST API: ETFCOM_API_BASE_URL, TICKERS_API_URL, FUND_DETAILS_API_URL
-- [x] REST API: FUND_FLOWS_QUERY, API_HEADERS
+- [x] Base URLs: ETFCOM_BASE_URL, ETFCOM_API_BASE_URL
+- [x] API endpoints: AUTH_DETAILS_URL, FUND_DETAILS_URL, DELAYED_QUOTES_URL
+- [x] API endpoints: CHARTS_URL, PERFORMANCE_URL, TICKERS_URL
+- [x] Query definitions: FUND_DETAILS_QUERY_NAMES (18 items)
+- [x] Authentication: AUTH_TOKEN_TTL_SECONDS
+- [x] REST API: API_HEADERS
 - [x] REST API: DEFAULT_TICKER_CACHE_TTL_HOURS, DEFAULT_TICKER_CACHE_DIR
 - [x] REST API: DEFAULT_MAX_CONCURRENCY
+- [x] Deleted constants: Playwright/CSS selectors no longer exist
+- [x] Final annotations: all constants annotated with typing.Final
 """
 
 from typing import get_type_hints
 
 from market.etfcom.constants import (
     API_HEADERS,
+    AUTH_DETAILS_URL,
+    AUTH_TOKEN_TTL_SECONDS,
     BROWSER_IMPERSONATE_TARGETS,
-    CLASSIFICATION_DATA_ID,
-    COOKIE_CONSENT_SELECTOR,
+    CHARTS_URL,
     DEFAULT_DELAY_JITTER,
     DEFAULT_HEADERS,
     DEFAULT_MAX_CONCURRENCY,
     DEFAULT_MAX_RETRIES,
     DEFAULT_POLITE_DELAY,
-    DEFAULT_STABILITY_WAIT,
     DEFAULT_TICKER_CACHE_DIR,
     DEFAULT_TICKER_CACHE_TTL_HOURS,
     DEFAULT_TIMEOUT,
     DEFAULT_USER_AGENTS,
-    DISPLAY_100_SELECTOR,
+    DELAYED_QUOTES_URL,
     ETFCOM_API_BASE_URL,
     ETFCOM_BASE_URL,
-    FLOW_TABLE_ID,
-    FUND_DETAILS_API_URL,
-    FUND_FLOWS_QUERY,
-    FUND_FLOWS_URL_TEMPLATE,
-    NEXT_PAGE_SELECTOR,
-    PROFILE_URL_TEMPLATE,
-    SCREENER_URL,
-    STEALTH_INIT_SCRIPT,
-    STEALTH_VIEWPORT,
-    SUMMARY_DATA_ID,
-    TICKERS_API_URL,
+    FUND_DETAILS_QUERY_NAMES,
+    FUND_DETAILS_URL,
+    PERFORMANCE_URL,
+    TICKERS_URL,
     __all__,
 )
 
@@ -82,9 +76,9 @@ class TestModuleExports:
                 f"{name} is not defined in constants module"
             )
 
-    def test_正常系_allが28項目を含む(self) -> None:
-        """__all__ が全28定数をエクスポートしていること。"""
-        assert len(__all__) == 28
+    def test_正常系_allが21項目を含む(self) -> None:
+        """__all__ が全21定数をエクスポートしていること。"""
+        assert len(__all__) == 21
 
     def test_正常系_モジュールDocstringが存在する(self) -> None:
         """モジュールの docstring が存在すること。"""
@@ -180,58 +174,12 @@ class TestBotBlockingConstants:
 
 
 # =============================================================================
-# Playwright stealth constants
+# Base URL constants
 # =============================================================================
 
 
-class TestPlaywrightStealthConstants:
-    """Test Playwright stealth configuration constants."""
-
-    def test_正常系_STEALTH_VIEWPORTがwidthとheightを含む(self) -> None:
-        """STEALTH_VIEWPORT が width=1920, height=1080 であること。"""
-        assert isinstance(STEALTH_VIEWPORT, dict)
-        assert "width" in STEALTH_VIEWPORT
-        assert "height" in STEALTH_VIEWPORT
-        assert STEALTH_VIEWPORT["width"] == 1920
-        assert STEALTH_VIEWPORT["height"] == 1080
-
-    def test_正常系_STEALTH_VIEWPORTの値が正の整数(self) -> None:
-        """STEALTH_VIEWPORT の各値が正の整数であること。"""
-        for _key, value in STEALTH_VIEWPORT.items():
-            assert isinstance(value, int)
-            assert value > 0
-
-    def test_正常系_STEALTH_INIT_SCRIPTが空でない(self) -> None:
-        """STEALTH_INIT_SCRIPT が空でない文字列であること。"""
-        assert isinstance(STEALTH_INIT_SCRIPT, str)
-        assert len(STEALTH_INIT_SCRIPT.strip()) > 0
-
-    def test_正常系_STEALTH_INIT_SCRIPTがwebdriver偽装を含む(self) -> None:
-        """STEALTH_INIT_SCRIPT が navigator.webdriver 偽装コードを含むこと。"""
-        assert "webdriver" in STEALTH_INIT_SCRIPT
-
-    def test_正常系_STEALTH_INIT_SCRIPTがWebGL偽装を含む(self) -> None:
-        """STEALTH_INIT_SCRIPT が WebGL vendor/renderer 偽装コードを含むこと。"""
-        assert "WebGL" in STEALTH_INIT_SCRIPT or "webgl" in STEALTH_INIT_SCRIPT.lower()
-
-    def test_正常系_STEALTH_INIT_SCRIPTがchrome_runtime偽装を含む(self) -> None:
-        """STEALTH_INIT_SCRIPT が chrome.runtime 偽装コードを含むこと。"""
-        assert "chrome" in STEALTH_INIT_SCRIPT.lower()
-
-    def test_正常系_STEALTH_INIT_SCRIPTがJavaScriptとして有効な構造(self) -> None:
-        """STEALTH_INIT_SCRIPT が JavaScript の基本構造を含むこと。"""
-        # Object.defineProperty, prototype, window are common JS patterns
-        assert "Object.defineProperty" in STEALTH_INIT_SCRIPT
-        assert "window" in STEALTH_INIT_SCRIPT
-
-
-# =============================================================================
-# URL constants
-# =============================================================================
-
-
-class TestURLConstants:
-    """Test URL pattern constants."""
+class TestBaseURLConstants:
+    """Test base URL constants."""
 
     def test_正常系_ETFCOM_BASE_URLがhttpsで始まる(self) -> None:
         """ETFCOM_BASE_URL が https:// で始まること。"""
@@ -242,120 +190,6 @@ class TestURLConstants:
         """ETFCOM_BASE_URL が etf.com ドメインを含むこと。"""
         assert "etf.com" in ETFCOM_BASE_URL
 
-    def test_正常系_SCREENER_URLがhttpsで始まる(self) -> None:
-        """SCREENER_URL が https:// で始まること。"""
-        assert isinstance(SCREENER_URL, str)
-        assert SCREENER_URL.startswith("https://")
-
-    def test_正常系_SCREENER_URLがBASE_URLから始まる(self) -> None:
-        """SCREENER_URL が ETFCOM_BASE_URL を基にしていること。"""
-        assert SCREENER_URL.startswith(ETFCOM_BASE_URL)
-
-    def test_正常系_PROFILE_URL_TEMPLATEがhttpsで始まる(self) -> None:
-        """PROFILE_URL_TEMPLATE が https:// で始まること。"""
-        assert isinstance(PROFILE_URL_TEMPLATE, str)
-        assert PROFILE_URL_TEMPLATE.startswith("https://")
-
-    def test_正常系_PROFILE_URL_TEMPLATEにtickerプレースホルダーが含まれる(
-        self,
-    ) -> None:
-        """PROFILE_URL_TEMPLATE に {ticker} プレースホルダーが含まれること。"""
-        assert "{ticker}" in PROFILE_URL_TEMPLATE
-
-    def test_正常系_PROFILE_URL_TEMPLATEをformatできる(self) -> None:
-        """PROFILE_URL_TEMPLATE.format(ticker='SPY') が有効なURLを返すこと。"""
-        url = PROFILE_URL_TEMPLATE.format(ticker="SPY")
-        assert url == "https://www.etf.com/SPY"
-
-    def test_正常系_FUND_FLOWS_URL_TEMPLATEがhttpsで始まる(self) -> None:
-        """FUND_FLOWS_URL_TEMPLATE が https:// で始まること。"""
-        assert isinstance(FUND_FLOWS_URL_TEMPLATE, str)
-        assert FUND_FLOWS_URL_TEMPLATE.startswith("https://")
-
-    def test_正常系_FUND_FLOWS_URL_TEMPLATEにtickerプレースホルダーが含まれる(
-        self,
-    ) -> None:
-        """FUND_FLOWS_URL_TEMPLATE に {ticker} プレースホルダーが含まれること。"""
-        assert "{ticker}" in FUND_FLOWS_URL_TEMPLATE
-
-    def test_正常系_FUND_FLOWS_URL_TEMPLATEをformatできる(self) -> None:
-        """FUND_FLOWS_URL_TEMPLATE.format(ticker='SPY') が有効なURLを返すこと。"""
-        url = FUND_FLOWS_URL_TEMPLATE.format(ticker="SPY")
-        assert url == "https://www.etf.com/SPY#702"
-
-
-# =============================================================================
-# CSS selector constants
-# =============================================================================
-
-
-class TestCSSSelectorConstants:
-    """Test CSS selector constants."""
-
-    def test_正常系_SUMMARY_DATA_IDが空でない(self) -> None:
-        """SUMMARY_DATA_ID が空でない CSS セレクタであること。"""
-        assert isinstance(SUMMARY_DATA_ID, str)
-        assert len(SUMMARY_DATA_ID.strip()) > 0
-
-    def test_正常系_SUMMARY_DATA_IDがdata_testidを含む(self) -> None:
-        """SUMMARY_DATA_ID が data-testid セレクタであること。"""
-        assert "data-testid" in SUMMARY_DATA_ID
-
-    def test_正常系_CLASSIFICATION_DATA_IDが空でない(self) -> None:
-        """CLASSIFICATION_DATA_ID が空でない CSS セレクタであること。"""
-        assert isinstance(CLASSIFICATION_DATA_ID, str)
-        assert len(CLASSIFICATION_DATA_ID.strip()) > 0
-
-    def test_正常系_FLOW_TABLE_IDが空でない(self) -> None:
-        """FLOW_TABLE_ID が空でない CSS セレクタであること。"""
-        assert isinstance(FLOW_TABLE_ID, str)
-        assert len(FLOW_TABLE_ID.strip()) > 0
-
-    def test_正常系_COOKIE_CONSENT_SELECTORが空でない(self) -> None:
-        """COOKIE_CONSENT_SELECTOR が空でない CSS セレクタであること。"""
-        assert isinstance(COOKIE_CONSENT_SELECTOR, str)
-        assert len(COOKIE_CONSENT_SELECTOR.strip()) > 0
-
-    def test_正常系_DISPLAY_100_SELECTORが空でない(self) -> None:
-        """DISPLAY_100_SELECTOR が空でない CSS セレクタであること。"""
-        assert isinstance(DISPLAY_100_SELECTOR, str)
-        assert len(DISPLAY_100_SELECTOR.strip()) > 0
-
-    def test_正常系_NEXT_PAGE_SELECTORが空でない(self) -> None:
-        """NEXT_PAGE_SELECTOR が空でない CSS セレクタであること。"""
-        assert isinstance(NEXT_PAGE_SELECTOR, str)
-        assert len(NEXT_PAGE_SELECTOR.strip()) > 0
-
-
-# =============================================================================
-# Default settings
-# =============================================================================
-
-
-class TestDefaultSettings:
-    """Test default configuration constants."""
-
-    def test_正常系_DEFAULT_STABILITY_WAITが正の数値(self) -> None:
-        """DEFAULT_STABILITY_WAIT が正の数値であること。"""
-        assert isinstance(DEFAULT_STABILITY_WAIT, (int, float))
-        assert DEFAULT_STABILITY_WAIT > 0
-        assert DEFAULT_STABILITY_WAIT == 2.0
-
-    def test_正常系_DEFAULT_MAX_RETRIESが正の整数(self) -> None:
-        """DEFAULT_MAX_RETRIES が正の整数であること。"""
-        assert isinstance(DEFAULT_MAX_RETRIES, int)
-        assert DEFAULT_MAX_RETRIES > 0
-        assert DEFAULT_MAX_RETRIES == 3
-
-
-# =============================================================================
-# REST API constants
-# =============================================================================
-
-
-class TestRESTAPIConstants:
-    """Test REST API constants for ETF.com API access."""
-
     def test_正常系_ETFCOM_API_BASE_URLがhttpsで始まる(self) -> None:
         """ETFCOM_API_BASE_URL が https:// で始まること。"""
         assert isinstance(ETFCOM_API_BASE_URL, str)
@@ -365,32 +199,148 @@ class TestRESTAPIConstants:
         """ETFCOM_API_BASE_URL が api-prod.etf.com ドメインを含むこと。"""
         assert "api-prod.etf.com" in ETFCOM_API_BASE_URL
 
-    def test_正常系_TICKERS_API_URLがAPI_BASE_URLから始まる(self) -> None:
-        """TICKERS_API_URL が ETFCOM_API_BASE_URL を基にしていること。"""
-        assert isinstance(TICKERS_API_URL, str)
-        assert TICKERS_API_URL.startswith(ETFCOM_API_BASE_URL)
 
-    def test_正常系_TICKERS_API_URLにtickersパスが含まれる(self) -> None:
-        """TICKERS_API_URL に tickers パスが含まれること。"""
-        assert "tickers" in TICKERS_API_URL
+# =============================================================================
+# REST API endpoint URL constants
+# =============================================================================
 
-    def test_正常系_FUND_DETAILS_API_URLがAPI_BASE_URLから始まる(self) -> None:
-        """FUND_DETAILS_API_URL が ETFCOM_API_BASE_URL を基にしていること。"""
-        assert isinstance(FUND_DETAILS_API_URL, str)
-        assert FUND_DETAILS_API_URL.startswith(ETFCOM_API_BASE_URL)
 
-    def test_正常系_FUND_DETAILS_API_URLにfund_detailsパスが含まれる(self) -> None:
-        """FUND_DETAILS_API_URL に fund-details パスが含まれること。"""
-        assert "fund-details" in FUND_DETAILS_API_URL
+class TestAPIEndpointConstants:
+    """Test REST API endpoint URL constants."""
 
-    def test_正常系_FUND_FLOWS_QUERYがAPI_BASE_URLから始まる(self) -> None:
-        """FUND_FLOWS_QUERY が ETFCOM_API_BASE_URL を基にしていること。"""
-        assert isinstance(FUND_FLOWS_QUERY, str)
-        assert FUND_FLOWS_QUERY.startswith(ETFCOM_API_BASE_URL)
+    def test_正常系_AUTH_DETAILS_URLがetfcomドメインを含む(self) -> None:
+        """AUTH_DETAILS_URL が www.etf.com ドメインを含むこと。"""
+        assert isinstance(AUTH_DETAILS_URL, str)
+        assert "www.etf.com" in AUTH_DETAILS_URL
 
-    def test_正常系_FUND_FLOWS_QUERYにfund_flows_queryパスが含まれる(self) -> None:
-        """FUND_FLOWS_QUERY に fund-flows-query パスが含まれること。"""
-        assert "fund-flows-query" in FUND_FLOWS_QUERY
+    def test_正常系_AUTH_DETAILS_URLがapi_v1パスを含む(self) -> None:
+        """AUTH_DETAILS_URL が /api/v1/api-details パスを含むこと。"""
+        assert "/api/v1/api-details" in AUTH_DETAILS_URL
+
+    def test_正常系_AUTH_DETAILS_URLの値が正確(self) -> None:
+        """AUTH_DETAILS_URL が正確な値であること。"""
+        assert AUTH_DETAILS_URL == "https://www.etf.com/api/v1/api-details"
+
+    def test_正常系_FUND_DETAILS_URLがAPI_BASE_URLから始まる(self) -> None:
+        """FUND_DETAILS_URL が ETFCOM_API_BASE_URL を基にしていること。"""
+        assert isinstance(FUND_DETAILS_URL, str)
+        assert FUND_DETAILS_URL.startswith(ETFCOM_API_BASE_URL)
+
+    def test_正常系_FUND_DETAILS_URLがv2パスを含む(self) -> None:
+        """FUND_DETAILS_URL が /v2/fund/fund-details パスを含むこと。"""
+        assert "/v2/fund/fund-details" in FUND_DETAILS_URL
+
+    def test_正常系_DELAYED_QUOTES_URLがAPI_BASE_URLから始まる(self) -> None:
+        """DELAYED_QUOTES_URL が ETFCOM_API_BASE_URL を基にしていること。"""
+        assert isinstance(DELAYED_QUOTES_URL, str)
+        assert DELAYED_QUOTES_URL.startswith(ETFCOM_API_BASE_URL)
+
+    def test_正常系_DELAYED_QUOTES_URLがdelayedquotesパスを含む(self) -> None:
+        """DELAYED_QUOTES_URL が delayedquotes パスを含むこと。"""
+        assert "delayedquotes" in DELAYED_QUOTES_URL
+
+    def test_正常系_CHARTS_URLがAPI_BASE_URLから始まる(self) -> None:
+        """CHARTS_URL が ETFCOM_API_BASE_URL を基にしていること。"""
+        assert isinstance(CHARTS_URL, str)
+        assert CHARTS_URL.startswith(ETFCOM_API_BASE_URL)
+
+    def test_正常系_CHARTS_URLがchartsパスを含む(self) -> None:
+        """CHARTS_URL が charts パスを含むこと。"""
+        assert "/v2/fund/charts" in CHARTS_URL
+
+    def test_正常系_PERFORMANCE_URLがAPI_BASE_URLから始まる(self) -> None:
+        """PERFORMANCE_URL が ETFCOM_API_BASE_URL を基にしていること。"""
+        assert isinstance(PERFORMANCE_URL, str)
+        assert PERFORMANCE_URL.startswith(ETFCOM_API_BASE_URL)
+
+    def test_正常系_PERFORMANCE_URLがperformanceパスを含む(self) -> None:
+        """PERFORMANCE_URL が performance パスを含むこと。"""
+        assert "/v2/fund/performance" in PERFORMANCE_URL
+
+    def test_正常系_TICKERS_URLがAPI_BASE_URLから始まる(self) -> None:
+        """TICKERS_URL が ETFCOM_API_BASE_URL を基にしていること。"""
+        assert isinstance(TICKERS_URL, str)
+        assert TICKERS_URL.startswith(ETFCOM_API_BASE_URL)
+
+    def test_正常系_TICKERS_URLがv2パスを含む(self) -> None:
+        """TICKERS_URL が /v2/fund/tickers パスを含むこと。"""
+        assert "/v2/fund/tickers" in TICKERS_URL
+
+    def test_正常系_全エンドポイントURLがhttpsで始まる(self) -> None:
+        """全エンドポイント URL が https:// で始まること。"""
+        endpoints = [
+            AUTH_DETAILS_URL,
+            FUND_DETAILS_URL,
+            DELAYED_QUOTES_URL,
+            CHARTS_URL,
+            PERFORMANCE_URL,
+            TICKERS_URL,
+        ]
+        for url in endpoints:
+            assert url.startswith("https://"), (
+                f"URL does not start with https://: {url}"
+            )
+
+
+# =============================================================================
+# API query definitions
+# =============================================================================
+
+
+class TestFundDetailsQueryNames:
+    """Test FUND_DETAILS_QUERY_NAMES constant."""
+
+    def test_正常系_FUND_DETAILS_QUERY_NAMESが18件含む(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES が18種類のクエリ名を含むこと。"""
+        assert isinstance(FUND_DETAILS_QUERY_NAMES, list)
+        assert len(FUND_DETAILS_QUERY_NAMES) == 18
+
+    def test_正常系_全クエリ名が空でない文字列(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES の各要素が空でない文字列であること。"""
+        for name in FUND_DETAILS_QUERY_NAMES:
+            assert isinstance(name, str)
+            assert len(name.strip()) > 0
+
+    def test_正常系_クエリ名が重複していない(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES に重複がないこと。"""
+        assert len(FUND_DETAILS_QUERY_NAMES) == len(set(FUND_DETAILS_QUERY_NAMES))
+
+    def test_正常系_fundFlowsDataが含まれる(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES に fundFlowsData が含まれること。"""
+        assert "fundFlowsData" in FUND_DETAILS_QUERY_NAMES
+
+    def test_正常系_topHoldingsが含まれる(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES に topHoldings が含まれること。"""
+        assert "topHoldings" in FUND_DETAILS_QUERY_NAMES
+
+    def test_正常系_fundPortfolioDataが含まれる(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES に fundPortfolioData が含まれること。"""
+        assert "fundPortfolioData" in FUND_DETAILS_QUERY_NAMES
+
+    def test_正常系_sectorIndustryBreakdownが含まれる(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES に sectorIndustryBreakdown が含まれること。"""
+        assert "sectorIndustryBreakdown" in FUND_DETAILS_QUERY_NAMES
+
+    def test_正常系_fundPerformanceStatsDataが含まれる(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES に fundPerformanceStatsData が含まれること。"""
+        assert "fundPerformanceStatsData" in FUND_DETAILS_QUERY_NAMES
+
+    def test_正常系_全クエリ名がcamelCaseである(self) -> None:
+        """FUND_DETAILS_QUERY_NAMES の全要素が camelCase 形式であること。"""
+        for name in FUND_DETAILS_QUERY_NAMES:
+            # camelCase: starts with lowercase, no underscores, no spaces
+            assert name[0].islower(), f"Query name does not start lowercase: {name}"
+            assert "_" not in name, f"Query name contains underscore: {name}"
+            assert " " not in name, f"Query name contains space: {name}"
+
+
+# =============================================================================
+# HTTP headers and authentication
+# =============================================================================
+
+
+class TestAPIHeadersAndAuth:
+    """Test API headers and authentication constants."""
 
     def test_正常系_API_HEADERSがJSON_Content_Typeを含む(self) -> None:
         """API_HEADERS が application/json の Content-Type を含むこと。"""
@@ -412,6 +362,34 @@ class TestRESTAPIConstants:
             assert isinstance(value, str)
             assert len(value.strip()) > 0, f"Header {key} has empty value"
 
+    def test_正常系_AUTH_TOKEN_TTL_SECONDSが正の整数(self) -> None:
+        """AUTH_TOKEN_TTL_SECONDS が正の整数であること。"""
+        assert isinstance(AUTH_TOKEN_TTL_SECONDS, int)
+        assert AUTH_TOKEN_TTL_SECONDS > 0
+
+    def test_正常系_AUTH_TOKEN_TTL_SECONDSが24時間未満(self) -> None:
+        """AUTH_TOKEN_TTL_SECONDS が24時間（86400秒）未満であること（安全マージン）。"""
+        assert AUTH_TOKEN_TTL_SECONDS < 86400
+
+    def test_正常系_AUTH_TOKEN_TTL_SECONDSが82800秒(self) -> None:
+        """AUTH_TOKEN_TTL_SECONDS が82800秒（23時間）であること。"""
+        assert AUTH_TOKEN_TTL_SECONDS == 82800
+
+
+# =============================================================================
+# Default settings
+# =============================================================================
+
+
+class TestDefaultSettings:
+    """Test default configuration constants."""
+
+    def test_正常系_DEFAULT_MAX_RETRIESが正の整数(self) -> None:
+        """DEFAULT_MAX_RETRIES が正の整数であること。"""
+        assert isinstance(DEFAULT_MAX_RETRIES, int)
+        assert DEFAULT_MAX_RETRIES > 0
+        assert DEFAULT_MAX_RETRIES == 3
+
     def test_正常系_DEFAULT_TICKER_CACHE_TTL_HOURSが正の整数(self) -> None:
         """DEFAULT_TICKER_CACHE_TTL_HOURS が正の整数 (24) であること。"""
         assert isinstance(DEFAULT_TICKER_CACHE_TTL_HOURS, int)
@@ -432,6 +410,87 @@ class TestRESTAPIConstants:
         assert isinstance(DEFAULT_MAX_CONCURRENCY, int)
         assert DEFAULT_MAX_CONCURRENCY > 0
         assert DEFAULT_MAX_CONCURRENCY == 5
+
+
+# =============================================================================
+# Deleted constants verification
+# =============================================================================
+
+
+class TestDeletedConstants:
+    """Test that Playwright and CSS selector constants have been removed."""
+
+    def test_正常系_STEALTH_VIEWPORTが削除されている(self) -> None:
+        """STEALTH_VIEWPORT が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "STEALTH_VIEWPORT")
+
+    def test_正常系_STEALTH_INIT_SCRIPTが削除されている(self) -> None:
+        """STEALTH_INIT_SCRIPT が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "STEALTH_INIT_SCRIPT")
+
+    def test_正常系_SCREENER_URLが削除されている(self) -> None:
+        """SCREENER_URL が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "SCREENER_URL")
+
+    def test_正常系_PROFILE_URL_TEMPLATEが削除されている(self) -> None:
+        """PROFILE_URL_TEMPLATE が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "PROFILE_URL_TEMPLATE")
+
+    def test_正常系_FUND_FLOWS_URL_TEMPLATEが削除されている(self) -> None:
+        """FUND_FLOWS_URL_TEMPLATE が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "FUND_FLOWS_URL_TEMPLATE")
+
+    def test_正常系_SUMMARY_DATA_IDが削除されている(self) -> None:
+        """SUMMARY_DATA_ID が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "SUMMARY_DATA_ID")
+
+    def test_正常系_CLASSIFICATION_DATA_IDが削除されている(self) -> None:
+        """CLASSIFICATION_DATA_ID が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "CLASSIFICATION_DATA_ID")
+
+    def test_正常系_FLOW_TABLE_IDが削除されている(self) -> None:
+        """FLOW_TABLE_ID が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "FLOW_TABLE_ID")
+
+    def test_正常系_COOKIE_CONSENT_SELECTORが削除されている(self) -> None:
+        """COOKIE_CONSENT_SELECTOR が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "COOKIE_CONSENT_SELECTOR")
+
+    def test_正常系_DISPLAY_100_SELECTORが削除されている(self) -> None:
+        """DISPLAY_100_SELECTOR が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "DISPLAY_100_SELECTOR")
+
+    def test_正常系_NEXT_PAGE_SELECTORが削除されている(self) -> None:
+        """NEXT_PAGE_SELECTOR が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "NEXT_PAGE_SELECTOR")
+
+    def test_正常系_DEFAULT_STABILITY_WAITが削除されている(self) -> None:
+        """DEFAULT_STABILITY_WAIT が constants モジュールに存在しないこと。"""
+        from market.etfcom import constants
+
+        assert not hasattr(constants, "DEFAULT_STABILITY_WAIT")
 
 
 # =============================================================================

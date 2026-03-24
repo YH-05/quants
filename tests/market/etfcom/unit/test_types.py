@@ -62,16 +62,15 @@ class TestScrapingConfig:
         from market.etfcom.constants import (
             DEFAULT_DELAY_JITTER,
             DEFAULT_POLITE_DELAY,
-            DEFAULT_STABILITY_WAIT,
             DEFAULT_TIMEOUT,
         )
-        from market.etfcom.types import ScrapingConfig
+        from market.etfcom.types import _LEGACY_STABILITY_WAIT, ScrapingConfig
 
         config = ScrapingConfig()
         assert config.polite_delay == DEFAULT_POLITE_DELAY
         assert config.delay_jitter == DEFAULT_DELAY_JITTER
         assert config.timeout == DEFAULT_TIMEOUT
-        assert config.stability_wait == DEFAULT_STABILITY_WAIT
+        assert config.stability_wait == _LEGACY_STABILITY_WAIT
         # max_page_retries はスクレイピング固有のリトライであり、
         # DEFAULT_MAX_RETRIES (HTTP リトライ) とは異なる用途のため値は異なる
         assert isinstance(config.max_page_retries, int)

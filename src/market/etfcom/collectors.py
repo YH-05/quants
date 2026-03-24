@@ -66,23 +66,29 @@ from bs4 import BeautifulSoup, Tag
 from market.base_collector import DataCollector
 from market.etfcom.browser import ETFComBrowserMixin
 from market.etfcom.constants import (
-    CLASSIFICATION_DATA_ID,
     DEFAULT_MAX_CONCURRENCY,
     DEFAULT_TICKER_CACHE_DIR,
     DEFAULT_TICKER_CACHE_TTL_HOURS,
-    FLOW_TABLE_ID,
-    FUND_FLOWS_QUERY,
-    FUND_FLOWS_URL_TEMPLATE,
-    NEXT_PAGE_SELECTOR,
-    PROFILE_URL_TEMPLATE,
-    SCREENER_URL,
-    SUMMARY_DATA_ID,
-    TICKERS_API_URL,
+    TICKERS_URL,
 )
 from market.etfcom.errors import ETFComAPIError, ETFComBlockedError, ETFComNotFoundError
 from market.etfcom.session import ETFComSession
 from market.etfcom.types import RetryConfig, ScrapingConfig
 from utils_core.logging import get_logger
+
+# AIDEV-NOTE: Legacy constants inlined after removal from constants.py
+# (Wave 1 API migration). Will be removed when collectors.py is rewritten
+# in later Waves to use the new /v2/ API endpoints.
+_LEGACY_SCREENER_URL: str = "https://www.etf.com/topics/etf-screener"
+_LEGACY_PROFILE_URL_TEMPLATE: str = "https://www.etf.com/{ticker}"
+_LEGACY_FUND_FLOWS_URL_TEMPLATE: str = "https://www.etf.com/{ticker}#702"
+_LEGACY_FUND_FLOWS_QUERY: str = (
+    "https://api-prod.etf.com/private/apps/fundflows/fund-flows-query"
+)
+_LEGACY_SUMMARY_DATA_ID: str = "[data-testid='summary-data']"
+_LEGACY_CLASSIFICATION_DATA_ID: str = "[data-testid='classification-data']"
+_LEGACY_FLOW_TABLE_ID: str = "[data-testid='fund-flows-table']"
+_LEGACY_NEXT_PAGE_SELECTOR: str = "a.pagination-next:not(.disabled)"
 
 logger = get_logger(__name__)
 
@@ -259,8 +265,8 @@ class TickerCollector(DataCollector):
             await browser._ensure_browser()
 
             # Navigate to screener page
-            logger.info("Navigating to screener page", url=SCREENER_URL)
-            page = await browser._navigate(SCREENER_URL)
+            logger.info("Navigating to screener page", url=_LEGACY_SCREENER_URL)
+            page = await browser._navigate(_LEGACY_SCREENER_URL)
 
             # Accept cookie consent
             await browser._accept_cookies(page)
@@ -292,7 +298,7 @@ class TickerCollector(DataCollector):
                 )
 
                 # Check for next page
-                next_button = await page.query_selector(NEXT_PAGE_SELECTOR)
+                next_button = await page.query_selector(_LEGACY_NEXT_PAGE_SELECTOR)
                 if next_button is None:
                     logger.info(
                         "Last page reached",
@@ -657,7 +663,7 @@ class FundamentalsCollector(DataCollector):
         try:
             for ticker in tickers:
                 normalized_ticker = _normalize_ticker(ticker)
-                url = PROFILE_URL_TEMPLATE.format(ticker=normalized_ticker)
+                url = _LEGACY_PROFILE_URL_TEMPLATE.format(ticker=normalized_ticker)
                 logger.debug(
                     "Fetching fundamentals",
                     ticker=normalized_ticker,
@@ -869,7 +875,7 @@ class FundamentalsCollector(DataCollector):
         result: dict[str, str | None] = {"ticker": ticker}
 
         # Extract from both data sections
-        for selector in [SUMMARY_DATA_ID, CLASSIFICATION_DATA_ID]:
+        for selector in [_LEGACY_SUMMARY_DATA_ID, _LEGACY_CLASSIFICATION_DATA_ID]:
             container = soup.select_one(selector)
             if container is None:
                 logger.debug(
@@ -1060,7 +1066,7 @@ class FundFlowsCollector(DataCollector):
 
         ticker = _normalize_ticker(ticker)
 
-        url = FUND_FLOWS_URL_TEMPLATE.format(ticker=ticker)
+        url = _LEGACY_FUND_FLOWS_URL_TEMPLATE.format(ticker=ticker)
         logger.info(
             "Starting fund flows collection",
             ticker=ticker,
@@ -1243,7 +1249,7 @@ class FundFlowsCollector(DataCollector):
         soup = BeautifulSoup(html, "html.parser")
 
         # Find the fund flows table container
-        container = soup.select_one(FLOW_TABLE_ID)
+        container = soup.select_one(_LEGACY_FLOW_TABLE_ID)
         if container is None:
             logger.warning("Fund flows table not found in HTML")
             return []
@@ -1710,7 +1716,7 @@ class HistoricalFundFlowsCollector(DataCollector):
 
         session, should_close = self._get_session()
         try:
-            response = session.get_with_retry(TICKERS_API_URL)
+            response = session.get_with_retry(TICKERS_URL)
             data: list[dict[str, Any]] = response.json()
 
             if not data:
@@ -1796,7 +1802,7 @@ class HistoricalFundFlowsCollector(DataCollector):
 
         session, should_close = self._get_session()
         try:
-            response = session.get_with_retry(TICKERS_API_URL)
+            response = session.get_with_retry(TICKERS_URL)
             data: list[dict[str, Any]] = response.json()
 
             for item in data:
@@ -1816,7 +1822,7 @@ class HistoricalFundFlowsCollector(DataCollector):
             logger.error("Fund ID resolution failed", ticker=ticker)
             raise ETFComAPIError(
                 msg,
-                url=TICKERS_API_URL,
+                url=TICKERS_URL,
                 ticker=ticker,
             )
 
@@ -1870,7 +1876,7 @@ class HistoricalFundFlowsCollector(DataCollector):
         session, should_close = self._get_session()
         try:
             response = session.post_with_retry(
-                FUND_FLOWS_QUERY,
+                _LEGACY_FUND_FLOWS_QUERY,
                 json={"fundId": fund_id},
             )
 
@@ -1887,7 +1893,7 @@ class HistoricalFundFlowsCollector(DataCollector):
                 )
                 raise ETFComAPIError(
                     msg,
-                    url=FUND_FLOWS_QUERY,
+                    url=_LEGACY_FUND_FLOWS_QUERY,
                     status_code=response.status_code,
                     response_body=response.text,
                     ticker=ticker,

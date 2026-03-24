@@ -38,11 +38,17 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
-from market.etfcom.constants import (
-    COOKIE_CONSENT_SELECTOR,
-    DISPLAY_100_SELECTOR,
-    STEALTH_INIT_SCRIPT,
-    STEALTH_VIEWPORT,
+from market.etfcom.browser import (
+    _LEGACY_COOKIE_CONSENT_SELECTOR as COOKIE_CONSENT_SELECTOR,
+)
+from market.etfcom.browser import (
+    _LEGACY_DISPLAY_100_SELECTOR as DISPLAY_100_SELECTOR,
+)
+from market.etfcom.browser import (
+    _LEGACY_STEALTH_INIT_SCRIPT as STEALTH_INIT_SCRIPT,
+)
+from market.etfcom.browser import (
+    _LEGACY_STEALTH_VIEWPORT as STEALTH_VIEWPORT,
 )
 from market.etfcom.errors import ETFComNotFoundError, ETFComTimeoutError
 from market.etfcom.types import RetryConfig, ScrapingConfig

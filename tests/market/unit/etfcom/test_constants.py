@@ -1,13 +1,11 @@
 """Tests for market.etfcom.constants module.
 
-Tests verify all constant definitions for the ETF.com scraping module,
-including bot-blocking countermeasure constants, URL patterns, CSS selectors,
-and Playwright stealth settings.
+Tests verify all constant definitions for the ETF.com API client module,
+including bot-blocking countermeasure constants, REST API endpoint URLs,
+query definitions, and authentication settings.
 """
 
-from typing import Final, get_type_hints
-
-import pytest
+from typing import get_type_hints
 
 
 class TestModuleExports:
@@ -119,49 +117,8 @@ class TestBotBlockingConstants:
             assert len(value.strip()) > 0
 
 
-class TestPlaywrightStealthConstants:
-    """Test Playwright stealth configuration constants."""
-
-    def test_正常系_STEALTH_VIEWPORTがwidthとheightを含む(self) -> None:
-        from market.etfcom.constants import STEALTH_VIEWPORT
-
-        assert isinstance(STEALTH_VIEWPORT, dict)
-        assert "width" in STEALTH_VIEWPORT
-        assert "height" in STEALTH_VIEWPORT
-        assert STEALTH_VIEWPORT["width"] == 1920
-        assert STEALTH_VIEWPORT["height"] == 1080
-
-    def test_正常系_STEALTH_VIEWPORTの値が正の整数(self) -> None:
-        from market.etfcom.constants import STEALTH_VIEWPORT
-
-        for _key, value in STEALTH_VIEWPORT.items():
-            assert isinstance(value, int)
-            assert value > 0
-
-    def test_正常系_STEALTH_INIT_SCRIPTが空でない(self) -> None:
-        from market.etfcom.constants import STEALTH_INIT_SCRIPT
-
-        assert isinstance(STEALTH_INIT_SCRIPT, str)
-        assert len(STEALTH_INIT_SCRIPT.strip()) > 0
-
-    def test_正常系_STEALTH_INIT_SCRIPTがwebdriver偽装を含む(self) -> None:
-        from market.etfcom.constants import STEALTH_INIT_SCRIPT
-
-        assert "webdriver" in STEALTH_INIT_SCRIPT
-
-    def test_正常系_STEALTH_INIT_SCRIPTがWebGL偽装を含む(self) -> None:
-        from market.etfcom.constants import STEALTH_INIT_SCRIPT
-
-        assert "WebGL" in STEALTH_INIT_SCRIPT or "webgl" in STEALTH_INIT_SCRIPT.lower()
-
-    def test_正常系_STEALTH_INIT_SCRIPTがchrome_runtime偽装を含む(self) -> None:
-        from market.etfcom.constants import STEALTH_INIT_SCRIPT
-
-        assert "chrome" in STEALTH_INIT_SCRIPT.lower()
-
-
-class TestURLConstants:
-    """Test URL pattern constants."""
+class TestBaseURLConstants:
+    """Test base URL constants."""
 
     def test_正常系_ETFCOM_BASE_URLがhttpsで始まる(self) -> None:
         from market.etfcom.constants import ETFCOM_BASE_URL
@@ -169,88 +126,114 @@ class TestURLConstants:
         assert isinstance(ETFCOM_BASE_URL, str)
         assert ETFCOM_BASE_URL.startswith("https://")
 
-    def test_正常系_SCREENER_URLがhttpsで始まる(self) -> None:
-        from market.etfcom.constants import SCREENER_URL
-
-        assert isinstance(SCREENER_URL, str)
-        assert SCREENER_URL.startswith("https://")
-
-    def test_正常系_PROFILE_URL_TEMPLATEがhttpsで始まる(self) -> None:
-        from market.etfcom.constants import PROFILE_URL_TEMPLATE
-
-        assert isinstance(PROFILE_URL_TEMPLATE, str)
-        assert PROFILE_URL_TEMPLATE.startswith("https://")
-
-    def test_正常系_FUND_FLOWS_URL_TEMPLATEがhttpsで始まる(self) -> None:
-        from market.etfcom.constants import FUND_FLOWS_URL_TEMPLATE
-
-        assert isinstance(FUND_FLOWS_URL_TEMPLATE, str)
-        assert FUND_FLOWS_URL_TEMPLATE.startswith("https://")
-
-    def test_正常系_URLテンプレートにプレースホルダーが含まれる(self) -> None:
-        from market.etfcom.constants import (
-            FUND_FLOWS_URL_TEMPLATE,
-            PROFILE_URL_TEMPLATE,
-        )
-
-        # URL templates should contain format placeholders
-        assert "{" in PROFILE_URL_TEMPLATE
-        assert "{" in FUND_FLOWS_URL_TEMPLATE
-
     def test_正常系_ETFCOM_BASE_URLがetfcomドメインを含む(self) -> None:
         from market.etfcom.constants import ETFCOM_BASE_URL
 
         assert "etf.com" in ETFCOM_BASE_URL
 
+    def test_正常系_ETFCOM_API_BASE_URLがhttpsで始まる(self) -> None:
+        from market.etfcom.constants import ETFCOM_API_BASE_URL
 
-class TestCSSSelectorConstants:
-    """Test CSS selector constants."""
+        assert isinstance(ETFCOM_API_BASE_URL, str)
+        assert ETFCOM_API_BASE_URL.startswith("https://")
 
-    def test_正常系_SUMMARY_DATA_IDが空でない(self) -> None:
-        from market.etfcom.constants import SUMMARY_DATA_ID
+    def test_正常系_ETFCOM_API_BASE_URLがapi_prodドメインを含む(self) -> None:
+        from market.etfcom.constants import ETFCOM_API_BASE_URL
 
-        assert isinstance(SUMMARY_DATA_ID, str)
-        assert len(SUMMARY_DATA_ID.strip()) > 0
+        assert "api-prod.etf.com" in ETFCOM_API_BASE_URL
 
-    def test_正常系_CLASSIFICATION_DATA_IDが空でない(self) -> None:
-        from market.etfcom.constants import CLASSIFICATION_DATA_ID
 
-        assert isinstance(CLASSIFICATION_DATA_ID, str)
-        assert len(CLASSIFICATION_DATA_ID.strip()) > 0
+class TestAPIEndpointConstants:
+    """Test REST API endpoint URL constants."""
 
-    def test_正常系_FLOW_TABLE_IDが空でない(self) -> None:
-        from market.etfcom.constants import FLOW_TABLE_ID
+    def test_正常系_AUTH_DETAILS_URLが正確な値を持つ(self) -> None:
+        from market.etfcom.constants import AUTH_DETAILS_URL
 
-        assert isinstance(FLOW_TABLE_ID, str)
-        assert len(FLOW_TABLE_ID.strip()) > 0
+        assert AUTH_DETAILS_URL == "https://www.etf.com/api/v1/api-details"
 
-    def test_正常系_COOKIE_CONSENT_SELECTORが空でない(self) -> None:
-        from market.etfcom.constants import COOKIE_CONSENT_SELECTOR
+    def test_正常系_FUND_DETAILS_URLがv2パスを含む(self) -> None:
+        from market.etfcom.constants import FUND_DETAILS_URL
 
-        assert isinstance(COOKIE_CONSENT_SELECTOR, str)
-        assert len(COOKIE_CONSENT_SELECTOR.strip()) > 0
+        assert "/v2/fund/fund-details" in FUND_DETAILS_URL
 
-    def test_正常系_DISPLAY_100_SELECTORが空でない(self) -> None:
-        from market.etfcom.constants import DISPLAY_100_SELECTOR
+    def test_正常系_TICKERS_URLがv2パスを含む(self) -> None:
+        from market.etfcom.constants import TICKERS_URL
 
-        assert isinstance(DISPLAY_100_SELECTOR, str)
-        assert len(DISPLAY_100_SELECTOR.strip()) > 0
+        assert "/v2/fund/tickers" in TICKERS_URL
 
-    def test_正常系_NEXT_PAGE_SELECTORが空でない(self) -> None:
-        from market.etfcom.constants import NEXT_PAGE_SELECTOR
+    def test_正常系_DELAYED_QUOTES_URLがdelayedquotesパスを含む(self) -> None:
+        from market.etfcom.constants import DELAYED_QUOTES_URL
 
-        assert isinstance(NEXT_PAGE_SELECTOR, str)
-        assert len(NEXT_PAGE_SELECTOR.strip()) > 0
+        assert "delayedquotes" in DELAYED_QUOTES_URL
+
+    def test_正常系_CHARTS_URLがchartsパスを含む(self) -> None:
+        from market.etfcom.constants import CHARTS_URL
+
+        assert "/v2/fund/charts" in CHARTS_URL
+
+    def test_正常系_PERFORMANCE_URLがperformanceパスを含む(self) -> None:
+        from market.etfcom.constants import PERFORMANCE_URL
+
+        assert "/v2/fund/performance" in PERFORMANCE_URL
+
+
+class TestFundDetailsQueryNames:
+    """Test FUND_DETAILS_QUERY_NAMES constant."""
+
+    def test_正常系_FUND_DETAILS_QUERY_NAMESが18件含む(self) -> None:
+        from market.etfcom.constants import FUND_DETAILS_QUERY_NAMES
+
+        assert isinstance(FUND_DETAILS_QUERY_NAMES, list)
+        assert len(FUND_DETAILS_QUERY_NAMES) == 18
+
+    def test_正常系_全クエリ名が空でない文字列(self) -> None:
+        from market.etfcom.constants import FUND_DETAILS_QUERY_NAMES
+
+        for name in FUND_DETAILS_QUERY_NAMES:
+            assert isinstance(name, str)
+            assert len(name.strip()) > 0
+
+    def test_正常系_クエリ名が重複していない(self) -> None:
+        from market.etfcom.constants import FUND_DETAILS_QUERY_NAMES
+
+        assert len(FUND_DETAILS_QUERY_NAMES) == len(set(FUND_DETAILS_QUERY_NAMES))
+
+    def test_正常系_fundFlowsDataが含まれる(self) -> None:
+        from market.etfcom.constants import FUND_DETAILS_QUERY_NAMES
+
+        assert "fundFlowsData" in FUND_DETAILS_QUERY_NAMES
+
+
+class TestAPIHeadersAndAuth:
+    """Test API headers and authentication constants."""
+
+    def test_正常系_API_HEADERSがJSON_Content_Typeを含む(self) -> None:
+        from market.etfcom.constants import API_HEADERS
+
+        assert isinstance(API_HEADERS, dict)
+        assert "Content-Type" in API_HEADERS
+        assert "application/json" in API_HEADERS["Content-Type"]
+
+    def test_正常系_API_HEADERSがOriginとRefererを含む(self) -> None:
+        from market.etfcom.constants import API_HEADERS
+
+        assert "Origin" in API_HEADERS
+        assert "Referer" in API_HEADERS
+
+    def test_正常系_AUTH_TOKEN_TTL_SECONDSが正の整数(self) -> None:
+        from market.etfcom.constants import AUTH_TOKEN_TTL_SECONDS
+
+        assert isinstance(AUTH_TOKEN_TTL_SECONDS, int)
+        assert AUTH_TOKEN_TTL_SECONDS > 0
+
+    def test_正常系_AUTH_TOKEN_TTL_SECONDSが24時間未満(self) -> None:
+        from market.etfcom.constants import AUTH_TOKEN_TTL_SECONDS
+
+        assert AUTH_TOKEN_TTL_SECONDS < 86400
 
 
 class TestDefaultSettings:
     """Test default configuration constants."""
-
-    def test_正常系_DEFAULT_STABILITY_WAITが正の数値(self) -> None:
-        from market.etfcom.constants import DEFAULT_STABILITY_WAIT
-
-        assert isinstance(DEFAULT_STABILITY_WAIT, (int, float))
-        assert DEFAULT_STABILITY_WAIT > 0
 
     def test_正常系_DEFAULT_MAX_RETRIESが正の整数(self) -> None:
         from market.etfcom.constants import DEFAULT_MAX_RETRIES
@@ -258,16 +241,49 @@ class TestDefaultSettings:
         assert isinstance(DEFAULT_MAX_RETRIES, int)
         assert DEFAULT_MAX_RETRIES > 0
 
+    def test_正常系_DEFAULT_TICKER_CACHE_TTL_HOURSが正の整数(self) -> None:
+        from market.etfcom.constants import DEFAULT_TICKER_CACHE_TTL_HOURS
+
+        assert isinstance(DEFAULT_TICKER_CACHE_TTL_HOURS, int)
+        assert DEFAULT_TICKER_CACHE_TTL_HOURS > 0
+
+    def test_正常系_DEFAULT_MAX_CONCURRENCYが正の整数(self) -> None:
+        from market.etfcom.constants import DEFAULT_MAX_CONCURRENCY
+
+        assert isinstance(DEFAULT_MAX_CONCURRENCY, int)
+        assert DEFAULT_MAX_CONCURRENCY > 0
+
+
+class TestDeletedConstants:
+    """Test that Playwright and CSS selector constants have been removed."""
+
+    def test_正常系_Playwright関連定数が削除されている(self) -> None:
+        from market.etfcom import constants
+
+        deleted_names = [
+            "STEALTH_VIEWPORT",
+            "STEALTH_INIT_SCRIPT",
+            "SCREENER_URL",
+            "PROFILE_URL_TEMPLATE",
+            "FUND_FLOWS_URL_TEMPLATE",
+            "SUMMARY_DATA_ID",
+            "CLASSIFICATION_DATA_ID",
+            "FLOW_TABLE_ID",
+            "COOKIE_CONSENT_SELECTOR",
+            "DISPLAY_100_SELECTOR",
+            "NEXT_PAGE_SELECTOR",
+            "DEFAULT_STABILITY_WAIT",
+        ]
+        for name in deleted_names:
+            assert not hasattr(constants, name), (
+                f"{name} should have been deleted but still exists"
+            )
+
 
 class TestFinalAnnotations:
     """Test that all constants have Final type annotations."""
 
     def test_正常系_全定数にFinal型アノテーションが付与されている(self) -> None:
-        """Verify all exported constants have Final type annotations.
-
-        This test checks the module's type annotations to ensure all
-        constants in __all__ are annotated with typing.Final.
-        """
         from market.etfcom import constants
         from market.etfcom.constants import __all__
 
