@@ -10,9 +10,9 @@ from unittest.mock import MagicMock
 
 import pytest
 
+from database.rate_limiter import RateLimiter
 from edgar.batch import BatchExtractor, BatchFetcher, _run_batch
 from edgar.fetcher import EdgarFetcher
-from database.rate_limiter import RateLimiter
 from edgar.types import FilingType
 
 

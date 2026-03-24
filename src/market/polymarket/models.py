@@ -19,6 +19,7 @@ market.schema : Similar Pydantic V2 model pattern used for stock/economic data.
 market.polymarket.types : Configuration dataclasses for the Polymarket module.
 """
 
+import contextlib
 import hashlib
 import json
 from datetime import UTC, datetime
@@ -409,10 +410,8 @@ class PolymarketMarket(BaseModel):
             if i < len(outcomes):
                 tok["outcome"] = str(outcomes[i])
             if i < len(outcome_prices):
-                try:
+                with contextlib.suppress(ValueError, TypeError):
                     tok["price"] = float(outcome_prices[i])
-                except (ValueError, TypeError):
-                    pass
             tokens.append(tok)
 
         data["tokens"] = tokens

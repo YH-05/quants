@@ -148,7 +148,7 @@ from market.nasdaq.types import (
 if TYPE_CHECKING:
     from market.nasdaq.async_client import AsyncNasdaqClient
     from market.nasdaq.client import NasdaqClient
-    from market.nasdaq.client_cache import get_nasdaq_cache as get_nasdaq_cache
+    from market.nasdaq.client_cache import get_nasdaq_cache
 
 # ---------------------------------------------------------------------------
 # Lazy imports to avoid circular dependency:
