@@ -76,6 +76,7 @@ class TestNasdaqPackageReExports:
 
         expected_symbols = {
             # Client
+            "AsyncNasdaqClient",
             "NasdaqClient",
             # Client Types (18 types)
             "AnalystRatings",

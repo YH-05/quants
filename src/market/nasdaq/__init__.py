@@ -13,6 +13,7 @@ parser : JSON response parser and numeric cleaning utilities.
 session : NasdaqSession with bot-blocking countermeasures.
 types : Filter enums, configuration dataclasses, and type aliases.
 client : NasdaqClient — typed API client with caching.
+async_client : AsyncNasdaqClient — async wrapper over NasdaqClient.
 client_types : Record dataclasses for NasdaqClient endpoints.
 client_cache : TTL constants and cache helper for NasdaqClient.
 client_parsers : Response parsing helpers for NasdaqClient.
@@ -23,6 +24,8 @@ ScreenerCollector
     Collector for NASDAQ Stock Screener data (DataCollector ABC).
 NasdaqClient
     High-level typed API client for NASDAQ endpoints with caching.
+AsyncNasdaqClient
+    Async wrapper over NasdaqClient using asyncio.to_thread().
 NasdaqSession
     curl_cffi-based HTTP session with bot-blocking countermeasures.
 ScreenerFilter
@@ -84,6 +87,10 @@ Examples
 >>> from market.nasdaq import NasdaqClient
 >>> with NasdaqClient() as client:
 ...     movers = client.get_market_movers()
+
+>>> from market.nasdaq import AsyncNasdaqClient
+>>> async with AsyncNasdaqClient() as client:
+...     movers = await client.get_market_movers()
 """
 
 from __future__ import annotations
@@ -139,6 +146,7 @@ from market.nasdaq.types import (
 )
 
 if TYPE_CHECKING:
+    from market.nasdaq.async_client import AsyncNasdaqClient
     from market.nasdaq.client import NasdaqClient
     from market.nasdaq.client_cache import get_nasdaq_cache as get_nasdaq_cache
 
@@ -152,6 +160,7 @@ if TYPE_CHECKING:
 # ---------------------------------------------------------------------------
 
 _LAZY_IMPORTS: dict[str, tuple[str, str]] = {
+    "AsyncNasdaqClient": ("market.nasdaq.async_client", "AsyncNasdaqClient"),
     "NasdaqClient": ("market.nasdaq.client", "NasdaqClient"),
     "get_nasdaq_cache": ("market.nasdaq.client_cache", "get_nasdaq_cache"),
 }
@@ -173,6 +182,7 @@ def __getattr__(name: str) -> Any:
 __all__ = [
     "AnalystRatings",
     "AnalystSummary",
+    "AsyncNasdaqClient",
     "Country",
     "DividendCalendarRecord",
     "DividendRecord",
