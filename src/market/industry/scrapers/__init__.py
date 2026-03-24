@@ -36,6 +36,6 @@ JPMorganScraper
 
 See Also
 --------
-market.etfcom.browser : ETFComBrowserMixin (reference implementation).
-market.etfcom.session : ETFComSession (reference implementation).
+market.etfcom.session : ETFComSession (curl_cffi + Cloudflare bypass reference).
+market.etfcom.client : ETFComClient (API client reference).
 """

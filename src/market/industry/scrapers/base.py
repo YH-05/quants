@@ -37,8 +37,8 @@ Examples
 
 See Also
 --------
-market.etfcom.browser : ETFComBrowserMixin (Playwright fallback reference).
-market.etfcom.session : ETFComSession (curl_cffi session reference).
+market.etfcom.session : ETFComSession (curl_cffi + Cloudflare bypass reference).
+market.etfcom.client : ETFComClient (API client reference).
 market.nasdaq.session : NasdaqSession (curl_cffi session reference).
 """
 

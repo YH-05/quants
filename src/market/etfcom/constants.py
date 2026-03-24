@@ -1,18 +1,18 @@
-"""Constants for ETF.com scraping module.
+"""Constants for ETF.com API client module.
 
-This module defines all constants used by the ETF.com scraping module,
-including bot-blocking countermeasure settings, URL patterns, CSS selectors,
-Playwright stealth configuration, and REST API settings.
+This module defines all constants used by the ETF.com API client,
+including bot-blocking countermeasure settings, REST API endpoints,
+authentication settings, and query definitions.
 
 Constants are organized into the following categories:
 
 1. Bot-blocking countermeasures (User-Agent rotation, TLS fingerprint
    impersonation targets, polite delays)
-2. Playwright stealth settings (viewport, initialization scripts)
-3. URL patterns (base URL, screener, profile templates)
-4. CSS selectors (data extraction targets)
-5. Default configuration (stability wait, retry limits)
-6. REST API settings (API URLs, headers, cache, concurrency)
+2. Base URL constants (website and API base URLs)
+3. REST API endpoint URLs (authentication, fund details, quotes, etc.)
+4. API query definitions (fund-details POST query names)
+5. HTTP headers and configuration
+6. Default settings (cache, concurrency, retries)
 
 Notes
 -----
@@ -24,8 +24,8 @@ real browser configurations to avoid bot detection by ETF.com.
 
 See Also
 --------
+market.alphavantage.constants : Similar constant pattern used by the Alpha Vantage module.
 market.fred.constants : Similar constant pattern used by the FRED module.
-market.yfinance.fetcher : Browser impersonation targets reference.
 """
 
 from typing import Final
@@ -109,124 +109,11 @@ The User-Agent header is set separately via ``DEFAULT_USER_AGENTS``.
 """
 
 # ---------------------------------------------------------------------------
-# 2. Playwright stealth constants
-# ---------------------------------------------------------------------------
-
-STEALTH_VIEWPORT: Final[dict[str, int]] = {
-    "width": 1920,
-    "height": 1080,
-}
-"""Default viewport size for Playwright stealth mode.
-
-Uses a common 1080p desktop resolution to appear as a real user.
-"""
-
-STEALTH_INIT_SCRIPT: Final[str] = """\
-// Hide navigator.webdriver property
-Object.defineProperty(navigator, 'webdriver', {
-    get: () => undefined,
-});
-
-// Override WebGL vendor and renderer
-const getParameter = WebGLRenderingContext.prototype.getParameter;
-WebGLRenderingContext.prototype.getParameter = function(parameter) {
-    if (parameter === 37445) {
-        return 'Intel Inc.';
-    }
-    if (parameter === 37446) {
-        return 'Intel Iris OpenGL Engine';
-    }
-    return getParameter.call(this, parameter);
-};
-
-// Add chrome.runtime to appear as a Chrome extension environment
-if (!window.chrome) {
-    window.chrome = {};
-}
-if (!window.chrome.runtime) {
-    window.chrome.runtime = {};
-}
-"""
-"""JavaScript initialization script for Playwright stealth mode.
-
-Hides automation indicators from bot detection scripts:
-
-- ``navigator.webdriver``: Set to undefined (default is true in automation).
-- WebGL vendor/renderer: Overridden to Intel values instead of generic ones.
-- ``chrome.runtime``: Added to simulate a Chrome extension environment.
-"""
-
-# ---------------------------------------------------------------------------
-# 3. URL constants
+# 2. Base URL constants
 # ---------------------------------------------------------------------------
 
 ETFCOM_BASE_URL: Final[str] = "https://www.etf.com"
 """Base URL for ETF.com website."""
-
-SCREENER_URL: Final[str] = "https://www.etf.com/topics/etf-screener"
-"""URL for the ETF.com screener page."""
-
-PROFILE_URL_TEMPLATE: Final[str] = "https://www.etf.com/{ticker}"
-"""URL template for ETF profile pages.
-
-Format with a ticker symbol to get the profile URL.
-
-Examples
---------
->>> PROFILE_URL_TEMPLATE.format(ticker="SPY")
-'https://www.etf.com/SPY'
-"""
-
-FUND_FLOWS_URL_TEMPLATE: Final[str] = "https://www.etf.com/{ticker}#702"
-"""URL template for ETF fund flows pages.
-
-Format with a ticker symbol to get the fund flows URL.
-The ``#702`` anchor points to the fund flows section.
-
-Examples
---------
->>> FUND_FLOWS_URL_TEMPLATE.format(ticker="SPY")
-'https://www.etf.com/SPY#702'
-"""
-
-# ---------------------------------------------------------------------------
-# 4. CSS selector constants
-# ---------------------------------------------------------------------------
-
-SUMMARY_DATA_ID: Final[str] = "[data-testid='summary-data']"
-"""CSS selector for the ETF summary data section."""
-
-CLASSIFICATION_DATA_ID: Final[str] = "[data-testid='classification-data']"
-"""CSS selector for the ETF classification data section."""
-
-FLOW_TABLE_ID: Final[str] = "[data-testid='fund-flows-table']"
-"""CSS selector for the fund flows table."""
-
-COOKIE_CONSENT_SELECTOR: Final[str] = "button#onetrust-accept-btn-handler"
-"""CSS selector for the cookie consent accept button."""
-
-DISPLAY_100_SELECTOR: Final[str] = "select.per-page-select option[value='100']"
-"""CSS selector for the 'Display 100' option in pagination."""
-
-NEXT_PAGE_SELECTOR: Final[str] = "a.pagination-next:not(.disabled)"
-"""CSS selector for the next page button in pagination."""
-
-# ---------------------------------------------------------------------------
-# 5. Default settings
-# ---------------------------------------------------------------------------
-
-DEFAULT_STABILITY_WAIT: Final[float] = 2.0
-"""Default wait time in seconds for page stability after navigation.
-
-Allows dynamic content to finish loading before extraction.
-"""
-
-DEFAULT_MAX_RETRIES: Final[int] = 3
-"""Default maximum number of retry attempts for failed operations."""
-
-# ---------------------------------------------------------------------------
-# 6. REST API constants
-# ---------------------------------------------------------------------------
 
 ETFCOM_API_BASE_URL: Final[str] = "https://api-prod.etf.com"
 """Base URL for ETF.com REST API.
@@ -236,32 +123,122 @@ Unlike the scraping-based ``ETFCOM_BASE_URL``, this targets the REST API
 server directly.
 """
 
-TICKERS_API_URL: Final[str] = "https://api-prod.etf.com/private/apps/fundflows/tickers"
-"""URL for the ETF.com tickers list API endpoint.
+# ---------------------------------------------------------------------------
+# 3. REST API endpoint URL constants
+# ---------------------------------------------------------------------------
 
-Returns a JSON array of all available ETF tickers with their fund IDs,
-names, and other metadata. Used to resolve ticker symbols to fund IDs
-required by the fund flows query endpoint.
+AUTH_DETAILS_URL: Final[str] = "https://www.etf.com/api/v1/api-details"
+"""URL for the ETF.com authentication details endpoint.
+
+Returns API keys (fundApiKey, toolsApiKey), OAuth token (24h TTL),
+and additional API base URLs (realTimeApiUrl, graphQLApiUrl).
+The OAuth token is required as a Bearer token for all /v2/ API requests.
+
+The response contains::
+
+    {
+        "apiBaseUrl": "https://api-prod.etf.com",
+        "fundApiKey": "...",
+        "toolsApiKey": "...",
+        "oauthToken": "...",
+        "realTimeApiUrl": "https://real-time-prod.etf.com/graphql",
+        "graphQLApiUrl": "https://data.etf.com"
+    }
 """
 
-FUND_DETAILS_API_URL: Final[str] = (
-    "https://api-prod.etf.com/private/apps/fundflows/fund-details"
-)
-"""URL for the ETF.com fund details API endpoint.
+FUND_DETAILS_URL: Final[str] = "https://api-prod.etf.com/v2/fund/fund-details"
+"""URL for the ETF.com fund details POST API endpoint.
 
-Returns detailed fund information including AUM, expense ratio, and
-other metadata for a specific fund.
+Accepts POST requests with a ticker and query names to return detailed
+fund data. Supports 18 different query types via ``FUND_DETAILS_QUERY_NAMES``.
+
+See Also
+--------
+FUND_DETAILS_QUERY_NAMES : List of available query names for this endpoint.
 """
 
-FUND_FLOWS_QUERY: Final[str] = (
-    "https://api-prod.etf.com/private/apps/fundflows/fund-flows-query"
-)
-"""URL for the ETF.com fund flows query API endpoint.
+DELAYED_QUOTES_URL: Final[str] = "https://api-prod.etf.com/v2/quotes/delayedquotes"
+"""URL for the ETF.com delayed quotes GET API endpoint.
 
-Accepts POST requests with a fund ID to return historical daily fund
-flow data including NAV, NAV change, premium/discount, fund flows,
-shares outstanding, and AUM.
+Returns delayed real-time quotes (OHLC, Bid/Ask) for specified tickers.
+Use with query parameter ``?tickers=SPY`` or ``?tickers=SPY,QQQ``.
 """
+
+CHARTS_URL: Final[str] = "https://api-prod.etf.com/v2/fund/charts"
+"""URL for the ETF.com fund charts GET API endpoint.
+
+Returns price chart data for specified tickers. Use with query parameters
+``?dataPoint=splitPrice&interval=MAX&ticker=SPY``.
+"""
+
+PERFORMANCE_URL: Final[str] = "https://api-prod.etf.com/v2/fund/performance"
+"""URL for the ETF.com fund performance GET API endpoint.
+
+Returns performance returns (1M/3M/YTD/1Y/3Y/5Y) for a given fund.
+Use with path parameter ``/{fund_id}``.
+"""
+
+TICKERS_URL: Final[str] = "https://api-prod.etf.com/v2/fund/tickers"
+"""URL for the ETF.com tickers list GET API endpoint.
+
+Returns a JSON array of all available ETF tickers (~5,100 ETFs) with
+their fund IDs, names, inception dates, asset classes, and issuers.
+Used to resolve ticker symbols to fund IDs required by other endpoints.
+
+Replaces the deprecated ``/private/apps/fundflows/tickers`` endpoint.
+"""
+
+# ---------------------------------------------------------------------------
+# 4. API query definitions
+# ---------------------------------------------------------------------------
+
+FUND_DETAILS_QUERY_NAMES: Final[list[str]] = [
+    "fundFlowsData",
+    "topHoldings",
+    "fundPortfolioData",
+    "sectorIndustryBreakdown",
+    "regions",
+    "countries",
+    "economicDevelopment",
+    "fundIntraData",
+    "compareTicker",
+    "fundSpreadChart",
+    "fundPremiumChart",
+    "fundTradabilityData",
+    "fundTradabilitySummary",
+    "fundPortfolioManData",
+    "fundTaxExposuresData",
+    "fundStructureData",
+    "fundRankingsData",
+    "fundPerformanceStatsData",
+]
+"""Available query names for the ``/v2/fund/fund-details`` POST endpoint.
+
+Each query name corresponds to a different data category:
+
+1. ``fundFlowsData`` - Daily NAV, fund flows, AUM, premium/discount (daily)
+2. ``topHoldings`` - Top holdings with weights (weekly)
+3. ``fundPortfolioData`` - P/E, P/B, dividend yield (weekly)
+4. ``sectorIndustryBreakdown`` - Sector allocation (weekly)
+5. ``regions`` - Regional allocation (monthly)
+6. ``countries`` - Country allocation (monthly)
+7. ``economicDevelopment`` - Economic development classification (monthly)
+8. ``fundIntraData`` - Intraday price data (daily)
+9. ``compareTicker`` - Competing ETF comparison (monthly)
+10. ``fundSpreadChart`` - Spread chart data (weekly)
+11. ``fundPremiumChart`` - Premium/discount chart data (weekly)
+12. ``fundTradabilityData`` - Volume, spread, liquidity metrics (weekly)
+13. ``fundTradabilitySummary`` - Creation unit, liquidity (monthly)
+14. ``fundPortfolioManData`` - Expense ratio, tracking difference (monthly)
+15. ``fundTaxExposuresData`` - Tax-related data (monthly)
+16. ``fundStructureData`` - Legal structure, derivatives, securities lending (monthly)
+17. ``fundRankingsData`` - ETF.com rankings (efficiency/liquidity/fit) (monthly)
+18. ``fundPerformanceStatsData`` - Performance statistics, R-squared, grade (monthly)
+"""
+
+# ---------------------------------------------------------------------------
+# 5. HTTP headers and authentication
+# ---------------------------------------------------------------------------
 
 API_HEADERS: Final[dict[str, str]] = {
     "Accept": "application/json, text/plain, */*",
@@ -278,6 +255,21 @@ ETF.com website. The ``Origin`` and ``Referer`` headers are required
 to pass the API's CORS checks. ``Content-Type`` is set to JSON for
 POST request payloads.
 """
+
+AUTH_TOKEN_TTL_SECONDS: Final[int] = 82800
+"""TTL (time-to-live) for the OAuth token in seconds (23 hours).
+
+The OAuth token obtained from ``AUTH_DETAILS_URL`` is valid for 24 hours.
+A 23-hour TTL (82,800 seconds) provides a 1-hour safety margin to avoid
+using an expired token near the boundary.
+"""
+
+# ---------------------------------------------------------------------------
+# 6. Default settings
+# ---------------------------------------------------------------------------
+
+DEFAULT_MAX_RETRIES: Final[int] = 3
+"""Default maximum number of retry attempts for failed operations."""
 
 DEFAULT_TICKER_CACHE_TTL_HOURS: Final[int] = 24
 """Default TTL (time-to-live) for the ticker list file cache in hours.
@@ -297,7 +289,7 @@ validation. Follows the project convention of ``data/raw/<source>/``.
 DEFAULT_MAX_CONCURRENCY: Final[int] = 5
 """Default maximum number of concurrent API requests.
 
-Controls the ``asyncio.Semaphore`` limit for parallel fund flow
+Controls the ``asyncio.Semaphore`` limit for parallel fund detail
 fetches. A conservative default to avoid triggering rate limiting
 on the ETF.com API.
 """
@@ -308,31 +300,24 @@ on the ETF.com API.
 
 __all__ = [
     "API_HEADERS",
+    "AUTH_DETAILS_URL",
+    "AUTH_TOKEN_TTL_SECONDS",
     "BROWSER_IMPERSONATE_TARGETS",
-    "CLASSIFICATION_DATA_ID",
-    "COOKIE_CONSENT_SELECTOR",
+    "CHARTS_URL",
     "DEFAULT_DELAY_JITTER",
     "DEFAULT_HEADERS",
     "DEFAULT_MAX_CONCURRENCY",
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_POLITE_DELAY",
-    "DEFAULT_STABILITY_WAIT",
     "DEFAULT_TICKER_CACHE_DIR",
     "DEFAULT_TICKER_CACHE_TTL_HOURS",
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",
-    "DISPLAY_100_SELECTOR",
+    "DELAYED_QUOTES_URL",
     "ETFCOM_API_BASE_URL",
     "ETFCOM_BASE_URL",
-    "FLOW_TABLE_ID",
-    "FUND_DETAILS_API_URL",
-    "FUND_FLOWS_QUERY",
-    "FUND_FLOWS_URL_TEMPLATE",
-    "NEXT_PAGE_SELECTOR",
-    "PROFILE_URL_TEMPLATE",
-    "SCREENER_URL",
-    "STEALTH_INIT_SCRIPT",
-    "STEALTH_VIEWPORT",
-    "SUMMARY_DATA_ID",
-    "TICKERS_API_URL",
+    "FUND_DETAILS_QUERY_NAMES",
+    "FUND_DETAILS_URL",
+    "PERFORMANCE_URL",
+    "TICKERS_URL",
 ]

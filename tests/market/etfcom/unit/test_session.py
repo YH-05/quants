@@ -40,8 +40,20 @@ Test TODO List:
 - [x] _request_with_retry(): 404 はリトライせず即座に伝播
 - [x] get_with_retry(): 404 はリトライせず即座に伝播
 - [x] post_with_retry(): 404 はリトライせず即座に伝播
+- [x] _authenticate(): www.etf.com GET → api-details → AuthConfig 返却
+- [x] _authenticate(): api-details レスポンスの JSON パースと AuthConfig 生成
+- [x] _authenticate(): api-details が非200レスポンスで ETFComAPIError
+- [x] _authenticate(): api-details の JSON に必須キーが欠落で ETFComAPIError
+- [x] _ensure_authenticated(): 初回呼び出しで _authenticate 実行
+- [x] _ensure_authenticated(): キャッシュ有効期間内は再認証しない
+- [x] _ensure_authenticated(): TTL 期限切れ後に再認証する
+- [x] post_fund_details(): 認証ヘッダー付きでリクエスト送信
+- [x] post_fund_details(): fund_api_key がヘッダーに含まれる
+- [x] post_fund_details(): 未認証時に _ensure_authenticated 経由で認証
+- [x] get_authenticated(): 認証ヘッダー付きで GET リクエスト送信
 """
 
+from datetime import datetime, timezone
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -51,10 +63,11 @@ from market.etfcom.constants import (
     BROWSER_IMPERSONATE_TARGETS,
     DEFAULT_HEADERS,
     ETFCOM_BASE_URL,
+    FUND_DETAILS_URL,
 )
-from market.etfcom.errors import ETFComBlockedError, ETFComNotFoundError
+from market.etfcom.errors import ETFComAPIError, ETFComBlockedError, ETFComNotFoundError
 from market.etfcom.session import ETFComSession
-from market.etfcom.types import RetryConfig, ScrapingConfig
+from market.etfcom.types import AuthConfig, RetryConfig, ScrapingConfig
 
 # =============================================================================
 # Initialization tests
@@ -1156,3 +1169,359 @@ class TestHTTPMethodRetry404Propagation:
 
             # request() は1回だけ呼ばれること（リトライなし）
             assert mock_session.request.call_count == 1
+
+
+# =============================================================================
+# Helper: API details response mock
+# =============================================================================
+
+
+def _mock_api_details_response() -> dict[str, str]:
+    """Return a fresh copy of the mock API details response.
+
+    Returns a new dict each time to prevent cross-test mutation.
+    """
+    return {
+        "apiBaseUrl": "https://api-prod.etf.com",
+        "fundApiKey": "test-fund-api-key",
+        "toolsApiKey": "test-tools-api-key",
+        "oauthToken": "test-oauth-token",
+        "realTimeApiUrl": "https://real-time-prod.etf.com/graphql",
+        "graphQLApiUrl": "https://data.etf.com",
+    }
+
+
+def _make_session_with_mock_curl() -> tuple[ETFComSession, MagicMock]:
+    """Create an ETFComSession with a mocked curl_cffi backend.
+
+    Returns
+    -------
+    tuple[ETFComSession, MagicMock]
+        The session instance and the underlying mock session object.
+    """
+    with patch("market.etfcom.session.curl_requests") as mock_curl:
+        mock_underlying = MagicMock()
+        mock_curl.Session.return_value = mock_underlying
+        session = ETFComSession()
+    # Re-assign the mock so we can set side_effect later
+    session._session = mock_underlying
+    return session, mock_underlying
+
+
+# =============================================================================
+# _authenticate() tests
+# =============================================================================
+
+
+class TestAuthenticate:
+    """ETFComSession._authenticate() のテスト。"""
+
+    def test_正常系_api_detailsからAuthConfigが返却される(self) -> None:
+        """_authenticate() が www.etf.com GET → api-details GET → AuthConfig を返すこと。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        # First request: GET www.etf.com (Cloudflare bypass)
+        mock_cf_response = MagicMock()
+        mock_cf_response.status_code = 200
+
+        # Second request: GET /api/v1/api-details
+        mock_api_response = MagicMock()
+        mock_api_response.status_code = 200
+        mock_api_response.json.return_value = _mock_api_details_response()
+
+        mock_underlying.request.side_effect = [mock_cf_response, mock_api_response]
+
+        with patch("market.etfcom.session.time.sleep"):
+            auth = session._authenticate()
+
+        assert isinstance(auth, AuthConfig)
+        assert auth.api_base_url == "https://api-prod.etf.com"
+        assert auth.fund_api_key == "test-fund-api-key"
+        assert auth.tools_api_key == "test-tools-api-key"
+        assert auth.oauth_token == "test-oauth-token"
+        assert auth.real_time_api_url == "https://real-time-prod.etf.com/graphql"
+        assert auth.graphql_api_url == "https://data.etf.com"
+        assert auth.fetched_at is not None
+
+    def test_異常系_api_detailsが非200でETFComAPIError(self) -> None:
+        """api-details が非200レスポンスの場合 ETFComAPIError が発生すること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        # Cloudflare bypass succeeds
+        mock_cf_response = MagicMock()
+        mock_cf_response.status_code = 200
+
+        # api-details returns 500
+        mock_api_response = MagicMock()
+        mock_api_response.status_code = 500
+        mock_api_response.text = "Internal Server Error"
+
+        mock_underlying.request.side_effect = [mock_cf_response, mock_api_response]
+
+        with (
+            patch("market.etfcom.session.time.sleep"),
+            pytest.raises(ETFComAPIError, match="Authentication failed"),
+        ):
+            session._authenticate()
+
+    def test_異常系_api_detailsのJSONに必須キーが欠落でETFComAPIError(self) -> None:
+        """api-details のレスポンスに fundApiKey が欠落している場合 ETFComAPIError が発生すること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        mock_cf_response = MagicMock()
+        mock_cf_response.status_code = 200
+
+        # Missing fundApiKey
+        incomplete_response = {
+            "apiBaseUrl": "https://api-prod.etf.com",
+            "toolsApiKey": "test-tools-api-key",
+            "oauthToken": "test-oauth-token",
+            "realTimeApiUrl": "https://real-time-prod.etf.com/graphql",
+            "graphQLApiUrl": "https://data.etf.com",
+        }
+        mock_api_response = MagicMock()
+        mock_api_response.status_code = 200
+        mock_api_response.json.return_value = incomplete_response
+
+        mock_underlying.request.side_effect = [mock_cf_response, mock_api_response]
+
+        with (
+            patch("market.etfcom.session.time.sleep"),
+            pytest.raises(ETFComAPIError, match=r"Missing required.*fundApiKey"),
+        ):
+            session._authenticate()
+
+    def test_異常系_cloudflareバイパス失敗でETFComBlockedErrorが伝播する(self) -> None:
+        """www.etf.com への GET が 403 を返す場合 ETFComBlockedError が伝播すること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        mock_cf_response = MagicMock()
+        mock_cf_response.status_code = 403
+
+        mock_underlying.request.return_value = mock_cf_response
+
+        with (
+            patch("market.etfcom.session.time.sleep"),
+            pytest.raises(ETFComBlockedError),
+        ):
+            session._authenticate()
+
+
+# =============================================================================
+# _ensure_authenticated() tests
+# =============================================================================
+
+
+class TestEnsureAuthenticated:
+    """ETFComSession._ensure_authenticated() のテスト。"""
+
+    def test_正常系_初回呼び出しで認証が実行される(self) -> None:
+        """初回呼び出しで _authenticate() が実行されること。"""
+        session, _mock_underlying = _make_session_with_mock_curl()
+
+        mock_auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="test-fund-key",
+            tools_api_key="test-tools-key",
+            oauth_token="test-token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+
+        with patch.object(
+            session, "_authenticate", return_value=mock_auth
+        ) as mock_auth_method:
+            session._ensure_authenticated()
+            mock_auth_method.assert_called_once()
+
+        assert session._fund_api_key == "test-fund-key"
+
+    def test_正常系_キャッシュ有効期間内は再認証しない(self) -> None:
+        """TTL 期間内の2回目の呼び出しで _authenticate() が再実行されないこと。"""
+        session, _mock_underlying = _make_session_with_mock_curl()
+
+        mock_auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="test-fund-key",
+            tools_api_key="test-tools-key",
+            oauth_token="test-token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+
+        with patch.object(
+            session, "_authenticate", return_value=mock_auth
+        ) as mock_auth_method:
+            session._ensure_authenticated()
+            session._ensure_authenticated()
+            # _authenticate は1回だけ呼ばれること
+            mock_auth_method.assert_called_once()
+
+    def test_正常系_TTL期限切れ後に再認証される(self) -> None:
+        """TTL が期限切れの場合、再認証が実行されること。"""
+        session, _mock_underlying = _make_session_with_mock_curl()
+
+        mock_auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="test-fund-key",
+            tools_api_key="test-tools-key",
+            oauth_token="test-token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+
+        with patch.object(
+            session, "_authenticate", return_value=mock_auth
+        ) as mock_auth_method:
+            session._ensure_authenticated()
+
+            # Simulate TTL expiry by setting _auth_expires_at to the past
+            session._auth_expires_at = 0.0
+
+            session._ensure_authenticated()
+            assert mock_auth_method.call_count == 2
+
+
+# =============================================================================
+# post_fund_details() tests
+# =============================================================================
+
+
+class TestPostFundDetails:
+    """ETFComSession.post_fund_details() のテスト。"""
+
+    def test_正常系_認証ヘッダー付きでリクエスト送信(self) -> None:
+        """post_fund_details() が fundApiKey ヘッダー付きで POST を送信すること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        # Pre-set authentication state
+        session._fund_api_key = "test-fund-key"
+        session._auth_expires_at = float("inf")  # Never expires
+
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {"data": "test"}
+        mock_underlying.request.return_value = mock_response
+
+        with patch("market.etfcom.session.time.sleep"):
+            response = session.post_fund_details("SPY", ["fundFlowsData"])
+
+        assert response.status_code == 200
+
+        # Verify the request was made to FUND_DETAILS_URL
+        call_args = mock_underlying.request.call_args
+        assert call_args[0][1] == FUND_DETAILS_URL
+
+        # Verify fundApiKey header
+        headers = call_args[1]["headers"]
+        assert headers["fundApiKey"] == "test-fund-key"
+
+    def test_正常系_未認証時にensure_authenticated経由で認証される(self) -> None:
+        """未認証の状態で post_fund_details() を呼ぶと _ensure_authenticated が実行されること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        mock_auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="test-fund-key",
+            tools_api_key="test-tools-key",
+            oauth_token="test-token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {"data": "test"}
+        mock_underlying.request.return_value = mock_response
+
+        with (
+            patch.object(session, "_authenticate", return_value=mock_auth),
+            patch("market.etfcom.session.time.sleep"),
+        ):
+            response = session.post_fund_details("SPY", ["fundFlowsData"])
+
+        assert response.status_code == 200
+        assert session._fund_api_key == "test-fund-key"
+
+    def test_正常系_正しいJSONペイロードが送信される(self) -> None:
+        """post_fund_details() が ticker と queryNames を含む JSON を送信すること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        session._fund_api_key = "test-fund-key"
+        session._auth_expires_at = float("inf")
+
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_underlying.request.return_value = mock_response
+
+        with patch("market.etfcom.session.time.sleep"):
+            session.post_fund_details("QQQ", ["topHoldings", "fundFlowsData"])
+
+        call_kwargs = mock_underlying.request.call_args[1]
+        payload = call_kwargs["json"]
+        assert payload["ticker"] == "QQQ"
+        assert payload["queryNames"] == ["topHoldings", "fundFlowsData"]
+
+
+# =============================================================================
+# get_authenticated() tests
+# =============================================================================
+
+
+class TestGetAuthenticated:
+    """ETFComSession.get_authenticated() のテスト。"""
+
+    def test_正常系_認証ヘッダー付きでGETリクエスト送信(self) -> None:
+        """get_authenticated() が fundApiKey ヘッダー付きで GET を送信すること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        session._fund_api_key = "test-fund-key"
+        session._auth_expires_at = float("inf")
+
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_underlying.request.return_value = mock_response
+
+        with patch("market.etfcom.session.time.sleep"):
+            response = session.get_authenticated(
+                "https://api-prod.etf.com/v2/quotes/delayedquotes?tickers=SPY"
+            )
+
+        assert response.status_code == 200
+
+        call_kwargs = mock_underlying.request.call_args[1]
+        headers = call_kwargs["headers"]
+        assert headers["fundApiKey"] == "test-fund-key"
+
+    def test_正常系_未認証時にensure_authenticated経由で認証される(self) -> None:
+        """未認証の状態で get_authenticated() を呼ぶと _ensure_authenticated が実行されること。"""
+        session, mock_underlying = _make_session_with_mock_curl()
+
+        mock_auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="test-fund-key",
+            tools_api_key="test-tools-key",
+            oauth_token="test-token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_underlying.request.return_value = mock_response
+
+        with (
+            patch.object(session, "_authenticate", return_value=mock_auth),
+            patch("market.etfcom.session.time.sleep"),
+        ):
+            response = session.get_authenticated(
+                "https://api-prod.etf.com/v2/quotes/delayedquotes?tickers=SPY"
+            )
+
+        assert response.status_code == 200
+        assert session._fund_api_key == "test-fund-key"

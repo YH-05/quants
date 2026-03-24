@@ -1,25 +1,75 @@
-"""ETF.com scraping module for market data retrieval.
+"""ETF.com data retrieval module.
 
-This package provides tools for scraping ETF data from ETF.com,
-including ETF profiles, fund flows, screener data, and classifications.
+This package provides an API-based client for retrieving ETF data from
+ETF.com, including ticker lists, fund flows, holdings, portfolio data,
+performance, tradability, and structure information.
 
-Classes
+Modules
 -------
-TickerCollector
-    Scrapes the ETF.com screener page for ETF ticker lists.
-FundamentalsCollector
-    Scrapes individual ETF profile pages for key-value fundamental data.
-FundFlowsCollector
-    Scrapes the fund flows page for daily flow data.
-HistoricalFundFlowsCollector
-    Fetches historical fund flow data via the ETF.com REST API.
+constants : API URL, endpoint paths, default configuration.
+errors : Exception hierarchy for ETF.com API operations.
+types : Configuration dataclasses (AuthConfig, RetryConfig, ScrapingConfig).
+session : curl_cffi-based HTTP session with OAuth authentication.
+client : High-level API client with typed methods.
+parser : JSON response parsing functions.
+models : Frozen dataclasses for all record types.
+storage : SQLite storage layer for persisting ETF.com data.
+storage_constants : Table names and schema definitions.
+collector : Orchestrator for collecting data via Client -> Storage flow.
+
+Public API
+----------
+ETFComClient
+    High-level API client with typed methods and automatic authentication.
+ETFComCollector
+    Orchestrator for collecting data via Client -> Storage flow.
+ETFComStorage
+    SQLite storage layer for persisting ETF.com data.
+get_etfcom_storage
+    Factory function for ``ETFComStorage`` with env-based path.
 ETFComSession
     curl_cffi-based HTTP session with bot-blocking countermeasures.
+
+Record Types
+------------
+TickerRecord
+    ETF ticker metadata record.
+FundFlowsRecord
+    Daily fund flow record.
+HoldingRecord
+    Individual ETF holding record.
+PortfolioRecord
+    Portfolio composition record.
+AllocationRecord
+    Asset/sector allocation record.
+TradabilityRecord
+    Liquidity and tradability metrics record.
+StructureRecord
+    ETF structure and tax information record.
+PerformanceRecord
+    Performance metrics record.
+QuoteRecord
+    Delayed quote / pricing record.
+CollectionResult
+    Outcome of a single collect operation.
+CollectionSummary
+    Aggregated summary of multiple collection results.
+
+Configuration Types
+-------------------
+AuthConfig
+    API authentication credentials (OAuth token, API keys, URLs).
+RetryConfig
+    Configuration for retry behaviour with exponential backoff.
+ScrapingConfig
+    Configuration for ETF.com HTTP behaviour.
+TickerInfo
+    Ticker information from the ETF.com tickers API endpoint.
 
 Error Classes
 -------------
 ETFComError
-    Base exception for all ETF.com scraping operations.
+    Base exception for all ETF.com operations.
 ETFComAPIError
     Exception raised when the ETF.com REST API returns an error response.
 ETFComHTTPError
@@ -33,44 +83,22 @@ ETFComScrapingError
 ETFComTimeoutError
     Exception raised when a page load or navigation times out.
 
-Data Types
-----------
-ETFRecord
-    Parsed ETF metadata record with normalised field types.
-FundFlowRecord
-    A single daily fund flow record for an ETF.
-FundamentalsRecord
-    A single ETF fundamentals record from an ETF.com profile page.
-HistoricalFundFlowRecord
-    A single daily historical fund flow record from the ETF.com REST API.
-RetryConfig
-    Configuration for retry behaviour with exponential backoff.
-ScrapingConfig
-    Configuration for ETF.com scraping behaviour.
-TickerInfo
-    Ticker information from the ETF.com tickers API endpoint.
-
 Examples
 --------
->>> from market.etfcom import TickerCollector
->>> collector = TickerCollector()
->>> df = collector.fetch()
+>>> from market.etfcom import ETFComClient
+>>> client = ETFComClient()
+>>> tickers = client.fetch_tickers()
 
->>> from market.etfcom import FundamentalsCollector
->>> collector = FundamentalsCollector()
->>> df = collector.fetch(tickers=["SPY", "VOO"])
+>>> from market.etfcom import ETFComCollector
+>>> collector = ETFComCollector(client=client, storage=storage)
 
 >>> from market.etfcom import ETFComSession
 >>> with ETFComSession() as session:
-...     response = session.get_with_retry("https://www.etf.com/SPY")
+...     response = session.get_with_retry("https://api-v2.etf.com/tickers")
 """
 
-from market.etfcom.collectors import (
-    FundamentalsCollector,
-    FundFlowsCollector,
-    HistoricalFundFlowsCollector,
-    TickerCollector,
-)
+from market.etfcom.client import ETFComClient
+from market.etfcom.collector import ETFComCollector
 from market.etfcom.errors import (
     ETFComAPIError,
     ETFComBlockedError,
@@ -80,35 +108,54 @@ from market.etfcom.errors import (
     ETFComScrapingError,
     ETFComTimeoutError,
 )
+from market.etfcom.models import (
+    AllocationRecord,
+    CollectionResult,
+    CollectionSummary,
+    FundFlowsRecord,
+    HoldingRecord,
+    PerformanceRecord,
+    PortfolioRecord,
+    QuoteRecord,
+    StructureRecord,
+    TickerRecord,
+    TradabilityRecord,
+)
 from market.etfcom.session import ETFComSession
+from market.etfcom.storage import ETFComStorage, get_etfcom_storage
 from market.etfcom.types import (
-    ETFRecord,
-    FundamentalsRecord,
-    FundFlowRecord,
-    HistoricalFundFlowRecord,
+    AuthConfig,
     RetryConfig,
     ScrapingConfig,
     TickerInfo,
 )
 
 __all__ = [
+    "AllocationRecord",
+    "AuthConfig",
+    "CollectionResult",
+    "CollectionSummary",
     "ETFComAPIError",
     "ETFComBlockedError",
+    "ETFComClient",
+    "ETFComCollector",
     "ETFComError",
     "ETFComHTTPError",
     "ETFComNotFoundError",
     "ETFComScrapingError",
     "ETFComSession",
+    "ETFComStorage",
     "ETFComTimeoutError",
-    "ETFRecord",
-    "FundFlowRecord",
-    "FundFlowsCollector",
-    "FundamentalsCollector",
-    "FundamentalsRecord",
-    "HistoricalFundFlowRecord",
-    "HistoricalFundFlowsCollector",
+    "FundFlowsRecord",
+    "HoldingRecord",
+    "PerformanceRecord",
+    "PortfolioRecord",
+    "QuoteRecord",
     "RetryConfig",
     "ScrapingConfig",
-    "TickerCollector",
+    "StructureRecord",
     "TickerInfo",
+    "TickerRecord",
+    "TradabilityRecord",
+    "get_etfcom_storage",
 ]

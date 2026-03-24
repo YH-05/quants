@@ -32,7 +32,7 @@ See Also
 --------
 market.industry.scrapers.base : BaseScraper abstract base class.
 market.industry.scrapers.consulting : ConsultingScraper (reference pattern).
-market.etfcom.browser : ETFComBrowserMixin (Playwright fallback reference).
+market.etfcom.session : ETFComSession (curl_cffi + Cloudflare bypass reference).
 """
 
 from __future__ import annotations

@@ -61,6 +61,12 @@ class ETFComError(Exception):
 class ETFComScrapingError(ETFComError):
     """Exception raised when HTML parsing / data extraction fails.
 
+    .. deprecated::
+        This error class was used by the legacy Playwright-based scrapers
+        (``TickerCollector``, ``FundamentalsCollector``, ``FundFlowsCollector``).
+        The new architecture uses ``ETFComAPIError`` for REST API failures.
+        Retained for backward compatibility only.
+
     This exception is raised when the expected DOM structure is not
     found on an ETF.com page, typically because:
 

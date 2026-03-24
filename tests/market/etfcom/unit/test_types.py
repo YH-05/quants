@@ -1,6 +1,15 @@
-"""Unit tests for market.etfcom.types module."""
+"""Unit tests for market.etfcom.types module.
 
-from datetime import date
+Tests cover:
+- ScrapingConfig: bot-blocking countermeasure configuration
+- RetryConfig: exponential backoff configuration
+- TickerInfo: ticker API response data
+- AuthConfig: API authentication configuration (NEW - Wave 1)
+- Verification that legacy record types have been removed
+- Module __all__ exports
+"""
+
+from datetime import datetime, timezone
 
 import pytest
 
@@ -62,7 +71,6 @@ class TestScrapingConfig:
         from market.etfcom.constants import (
             DEFAULT_DELAY_JITTER,
             DEFAULT_POLITE_DELAY,
-            DEFAULT_STABILITY_WAIT,
             DEFAULT_TIMEOUT,
         )
         from market.etfcom.types import ScrapingConfig
@@ -71,7 +79,7 @@ class TestScrapingConfig:
         assert config.polite_delay == DEFAULT_POLITE_DELAY
         assert config.delay_jitter == DEFAULT_DELAY_JITTER
         assert config.timeout == DEFAULT_TIMEOUT
-        assert config.stability_wait == DEFAULT_STABILITY_WAIT
+        assert config.stability_wait == 2.0
         # max_page_retries はスクレイピング固有のリトライであり、
         # DEFAULT_MAX_RETRIES (HTTP リトライ) とは異なる用途のため値は異なる
         assert isinstance(config.max_page_retries, int)
@@ -112,323 +120,6 @@ class TestRetryConfig:
         config = RetryConfig()
         with pytest.raises(AttributeError):
             config.max_attempts = 99
-
-
-# ---------------------------------------------------------------------------
-# FundamentalsRecord tests
-# ---------------------------------------------------------------------------
-
-
-class TestFundamentalsRecord:
-    """Tests for FundamentalsRecord dataclass."""
-
-    def test_正常系_全フィールドで初期化(self) -> None:
-        """FundamentalsRecord が全17フィールドで初期化されることを確認。"""
-        from market.etfcom.types import FundamentalsRecord
-
-        record = FundamentalsRecord(
-            ticker="VOO",
-            issuer="Vanguard",
-            inception_date="09/07/10",
-            expense_ratio="0.03%",
-            aum="$751.49B",
-            index_tracked="S&P 500",
-            segment="MSCI USA Large Cap",
-            structure="Open-Ended Fund",
-            asset_class="Equity",
-            category="Size and Style",
-            focus="Large Cap",
-            niche="Broad-based",
-            region="North America",
-            geography="U.S.",
-            index_weighting_methodology="Market Cap",
-            index_selection_methodology="Committee",
-            segment_benchmark="MSCI USA Large Cap",
-        )
-        assert record.ticker == "VOO"
-        assert record.issuer == "Vanguard"
-        assert record.inception_date == "09/07/10"
-        assert record.expense_ratio == "0.03%"
-        assert record.aum == "$751.49B"
-        assert record.index_tracked == "S&P 500"
-        assert record.segment == "MSCI USA Large Cap"
-        assert record.structure == "Open-Ended Fund"
-        assert record.asset_class == "Equity"
-        assert record.category == "Size and Style"
-        assert record.focus == "Large Cap"
-        assert record.niche == "Broad-based"
-        assert record.region == "North America"
-        assert record.geography == "U.S."
-        assert record.index_weighting_methodology == "Market Cap"
-        assert record.index_selection_methodology == "Committee"
-        assert record.segment_benchmark == "MSCI USA Large Cap"
-
-    def test_正常系_frozenであること(self) -> None:
-        """FundamentalsRecord が frozen であり属性の変更が禁止されることを確認。"""
-        from market.etfcom.types import FundamentalsRecord
-
-        record = FundamentalsRecord(
-            ticker="SPY",
-            issuer="State Street",
-            inception_date="01/22/93",
-            expense_ratio="0.09%",
-            aum="$500.00B",
-            index_tracked="S&P 500",
-            segment="MSCI USA Large Cap",
-            structure="Unit Investment Trust",
-            asset_class="Equity",
-            category="Size and Style",
-            focus="Large Cap",
-            niche="Broad-based",
-            region="North America",
-            geography="U.S.",
-            index_weighting_methodology="Market Cap",
-            index_selection_methodology="Committee",
-            segment_benchmark="MSCI USA Large Cap",
-        )
-        with pytest.raises(AttributeError):
-            record.ticker = "QQQ"
-
-    def test_正常系_フィールド数が17であること(self) -> None:
-        """FundamentalsRecord のフィールド数が17であることを確認。"""
-        import dataclasses
-
-        from market.etfcom.types import FundamentalsRecord
-
-        fields = dataclasses.fields(FundamentalsRecord)
-        assert len(fields) == 17
-
-    def test_正常系_Noneフィールドで初期化可能(self) -> None:
-        """FundamentalsRecord が None フィールドで初期化可能であることを確認。
-
-        ETF.com のデータは '--' プレースホルダーが存在するため、
-        Optional フィールドが必要。
-        """
-        from market.etfcom.types import FundamentalsRecord
-
-        record = FundamentalsRecord(
-            ticker="PFFL",
-            issuer=None,
-            inception_date=None,
-            expense_ratio=None,
-            aum=None,
-            index_tracked=None,
-            segment=None,
-            structure=None,
-            asset_class=None,
-            category=None,
-            focus=None,
-            niche=None,
-            region=None,
-            geography=None,
-            index_weighting_methodology=None,
-            index_selection_methodology=None,
-            segment_benchmark=None,
-        )
-        assert record.ticker == "PFFL"
-        assert record.issuer is None
-
-
-# ---------------------------------------------------------------------------
-# FundFlowRecord tests
-# ---------------------------------------------------------------------------
-
-
-class TestFundFlowRecord:
-    """Tests for FundFlowRecord dataclass."""
-
-    def test_正常系_全フィールドで初期化(self) -> None:
-        """FundFlowRecord が全フィールドで初期化されることを確認。"""
-        from market.etfcom.types import FundFlowRecord
-
-        record = FundFlowRecord(
-            date=date(2025, 9, 10),
-            ticker="VOO",
-            net_flows=2787.59,
-        )
-        assert record.date == date(2025, 9, 10)
-        assert record.ticker == "VOO"
-        assert record.net_flows == 2787.59
-
-    def test_正常系_frozenであること(self) -> None:
-        """FundFlowRecord が frozen であり属性の変更が禁止されることを確認。"""
-        from market.etfcom.types import FundFlowRecord
-
-        record = FundFlowRecord(
-            date=date(2025, 1, 1),
-            ticker="SPY",
-            net_flows=100.0,
-        )
-        with pytest.raises(AttributeError):
-            record.net_flows = 999.0
-
-    def test_正常系_負のnet_flowsで初期化可能(self) -> None:
-        """FundFlowRecord が負の net_flows で初期化可能であることを確認。"""
-        from market.etfcom.types import FundFlowRecord
-
-        record = FundFlowRecord(
-            date=date(2025, 9, 8),
-            ticker="VOO",
-            net_flows=-104.61,
-        )
-        assert record.net_flows == -104.61
-
-
-# ---------------------------------------------------------------------------
-# ETFRecord tests
-# ---------------------------------------------------------------------------
-
-
-class TestETFRecord:
-    """Tests for ETFRecord dataclass."""
-
-    def test_正常系_全フィールドで初期化(self) -> None:
-        """ETFRecord が全フィールドで初期化されることを確認。"""
-        from market.etfcom.types import ETFRecord
-
-        record = ETFRecord(
-            ticker="VOO",
-            name="Vanguard S&P 500 ETF",
-            issuer="Vanguard",
-            category="Size and Style",
-            expense_ratio=0.03,
-            aum=751.49e9,
-            inception_date=date(2010, 9, 7),
-        )
-        assert record.ticker == "VOO"
-        assert record.name == "Vanguard S&P 500 ETF"
-        assert record.issuer == "Vanguard"
-        assert record.category == "Size and Style"
-        assert record.expense_ratio == 0.03
-        assert record.aum == 751.49e9
-        assert record.inception_date == date(2010, 9, 7)
-
-    def test_正常系_Optionalフィールドのデフォルト値(self) -> None:
-        """ETFRecord の Optional フィールドがデフォルト None であることを確認。"""
-        from market.etfcom.types import ETFRecord
-
-        record = ETFRecord(
-            ticker="UNKNOWN",
-            name="Unknown ETF",
-        )
-        assert record.issuer is None
-        assert record.category is None
-        assert record.expense_ratio is None
-        assert record.aum is None
-        assert record.inception_date is None
-
-    def test_正常系_frozenでないこと(self) -> None:
-        """ETFRecord が frozen でなく属性の変更が可能であることを確認。
-
-        Issue仕様では ETFRecord に frozen=True が指定されていないため、
-        mutable であるべき。
-        """
-        from market.etfcom.types import ETFRecord
-
-        record = ETFRecord(ticker="VOO", name="Vanguard S&P 500 ETF")
-        record.name = "Updated Name"
-        assert record.name == "Updated Name"
-
-
-# ---------------------------------------------------------------------------
-# HistoricalFundFlowRecord tests
-# ---------------------------------------------------------------------------
-
-
-class TestHistoricalFundFlowRecord:
-    """Tests for HistoricalFundFlowRecord dataclass."""
-
-    def test_正常系_全フィールドで初期化(self) -> None:
-        """HistoricalFundFlowRecord が全9フィールドで初期化されることを確認。"""
-        from market.etfcom.types import HistoricalFundFlowRecord
-
-        record = HistoricalFundFlowRecord(
-            ticker="SPY",
-            nav_date=date(2025, 9, 10),
-            nav=450.25,
-            nav_change=2.15,
-            nav_change_percent=0.48,
-            premium_discount=-0.02,
-            fund_flows=2787590000.0,
-            shares_outstanding=920000000.0,
-            aum=414230000000.0,
-        )
-        assert record.ticker == "SPY"
-        assert record.nav_date == date(2025, 9, 10)
-        assert record.nav == 450.25
-        assert record.nav_change == 2.15
-        assert record.nav_change_percent == 0.48
-        assert record.premium_discount == -0.02
-        assert record.fund_flows == 2787590000.0
-        assert record.shares_outstanding == 920000000.0
-        assert record.aum == 414230000000.0
-
-    def test_正常系_frozenであること(self) -> None:
-        """HistoricalFundFlowRecord が frozen であり属性の変更が禁止されることを確認。"""
-        from market.etfcom.types import HistoricalFundFlowRecord
-
-        record = HistoricalFundFlowRecord(
-            ticker="SPY",
-            nav_date=date(2025, 9, 10),
-            nav=450.25,
-            nav_change=2.15,
-            nav_change_percent=0.48,
-            premium_discount=-0.02,
-            fund_flows=2787590000.0,
-            shares_outstanding=920000000.0,
-            aum=414230000000.0,
-        )
-        with pytest.raises(AttributeError):
-            record.ticker = "VOO"
-
-    def test_正常系_フィールド数が9であること(self) -> None:
-        """HistoricalFundFlowRecord のフィールド数が9であることを確認。"""
-        import dataclasses
-
-        from market.etfcom.types import HistoricalFundFlowRecord
-
-        fields = dataclasses.fields(HistoricalFundFlowRecord)
-        assert len(fields) == 9
-
-    def test_正常系_Noneフィールドで初期化可能(self) -> None:
-        """HistoricalFundFlowRecord が None フィールドで初期化可能であることを確認。
-
-        API がデータ欠損時に null を返すため、数値フィールドは None 許容。
-        """
-        from market.etfcom.types import HistoricalFundFlowRecord
-
-        record = HistoricalFundFlowRecord(
-            ticker="UNKNOWN",
-            nav_date=date(2025, 1, 1),
-            nav=None,
-            nav_change=None,
-            nav_change_percent=None,
-            premium_discount=None,
-            fund_flows=None,
-            shares_outstanding=None,
-            aum=None,
-        )
-        assert record.ticker == "UNKNOWN"
-        assert record.nav is None
-        assert record.fund_flows is None
-
-    def test_正常系_負のfund_flowsで初期化可能(self) -> None:
-        """HistoricalFundFlowRecord が負の fund_flows で初期化可能であることを確認。"""
-        from market.etfcom.types import HistoricalFundFlowRecord
-
-        record = HistoricalFundFlowRecord(
-            ticker="SPY",
-            nav_date=date(2025, 9, 8),
-            nav=448.10,
-            nav_change=-2.15,
-            nav_change_percent=-0.48,
-            premium_discount=0.01,
-            fund_flows=-1500000000.0,
-            shares_outstanding=920000000.0,
-            aum=412000000000.0,
-        )
-        assert record.fund_flows == -1500000000.0
-        assert record.nav_change == -2.15
 
 
 # ---------------------------------------------------------------------------
@@ -502,6 +193,162 @@ class TestTickerInfo:
 
 
 # ---------------------------------------------------------------------------
+# AuthConfig tests (NEW - Wave 1)
+# ---------------------------------------------------------------------------
+
+
+class TestAuthConfig:
+    """Tests for AuthConfig dataclass.
+
+    AuthConfig stores API authentication credentials returned by the
+    ETF.com ``/api/v1/api-details`` endpoint. It has 7 fields matching
+    the API response structure plus a ``fetched_at`` timestamp for
+    cache TTL tracking.
+    """
+
+    def test_正常系_全フィールドで初期化(self) -> None:
+        """AuthConfig が全7フィールドで初期化されることを確認。"""
+        from market.etfcom.types import AuthConfig
+
+        now = datetime.now(tz=timezone.utc)
+        auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="fund-key-123",
+            tools_api_key="tools-key-456",
+            oauth_token="oauth-token-789",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=now,
+        )
+        assert auth.api_base_url == "https://api-prod.etf.com"
+        assert auth.fund_api_key == "fund-key-123"
+        assert auth.tools_api_key == "tools-key-456"
+        assert auth.oauth_token == "oauth-token-789"
+        assert auth.real_time_api_url == "https://real-time-prod.etf.com/graphql"
+        assert auth.graphql_api_url == "https://data.etf.com"
+        assert auth.fetched_at == now
+
+    def test_正常系_frozenであること(self) -> None:
+        """AuthConfig が frozen であり属性の変更が禁止されることを確認。"""
+        from market.etfcom.types import AuthConfig
+
+        auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="key",
+            tools_api_key="key",
+            oauth_token="token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+        with pytest.raises(AttributeError):
+            auth.oauth_token = "new-token"
+
+    def test_正常系_フィールド数が7であること(self) -> None:
+        """AuthConfig のフィールド数が7であることを確認。"""
+        import dataclasses
+
+        from market.etfcom.types import AuthConfig
+
+        fields = dataclasses.fields(AuthConfig)
+        assert len(fields) == 7
+
+    def test_正常系_機密フィールドがreprに含まれない(self) -> None:
+        """AuthConfig の機密フィールド（API キー、OAuth トークン）が repr に含まれないことを確認。
+
+        CWE-532 (Information Exposure Through Log Files) 対策として、
+        機密情報は repr 出力から除外されるべき。
+        """
+        from market.etfcom.types import AuthConfig
+
+        auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="secret-fund-key",
+            tools_api_key="secret-tools-key",
+            oauth_token="secret-oauth-token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+        repr_str = repr(auth)
+        assert "secret-fund-key" not in repr_str
+        assert "secret-tools-key" not in repr_str
+        assert "secret-oauth-token" not in repr_str
+
+    def test_正常系_fetched_atがdatetime型(self) -> None:
+        """AuthConfig の fetched_at が datetime 型であることを確認。"""
+        from market.etfcom.types import AuthConfig
+
+        now = datetime.now(tz=timezone.utc)
+        auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="key",
+            tools_api_key="key",
+            oauth_token="token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=now,
+        )
+        assert isinstance(auth.fetched_at, datetime)
+
+    def test_正常系_api_base_urlがreprに含まれる(self) -> None:
+        """AuthConfig の非機密フィールド（URL）が repr に含まれることを確認。"""
+        from market.etfcom.types import AuthConfig
+
+        auth = AuthConfig(
+            api_base_url="https://api-prod.etf.com",
+            fund_api_key="key",
+            tools_api_key="key",
+            oauth_token="token",
+            real_time_api_url="https://real-time-prod.etf.com/graphql",
+            graphql_api_url="https://data.etf.com",
+            fetched_at=datetime.now(tz=timezone.utc),
+        )
+        repr_str = repr(auth)
+        assert "https://api-prod.etf.com" in repr_str
+
+
+# ---------------------------------------------------------------------------
+# Legacy record types removal verification
+# ---------------------------------------------------------------------------
+
+
+class TestLegacyRecordTypesRemoved:
+    """Verify that legacy HTML scraping record types have been removed.
+
+    Wave 1 API migration requires removing the following 4 types:
+    - FundamentalsRecord
+    - FundFlowRecord
+    - ETFRecord
+    - HistoricalFundFlowRecord
+    """
+
+    def test_正常系_FundamentalsRecordが削除済み(self) -> None:
+        """FundamentalsRecord が types モジュールから削除されていることを確認。"""
+        import market.etfcom.types as types_mod
+
+        assert not hasattr(types_mod, "FundamentalsRecord")
+
+    def test_正常系_FundFlowRecordが削除済み(self) -> None:
+        """FundFlowRecord が types モジュールから削除されていることを確認。"""
+        import market.etfcom.types as types_mod
+
+        assert not hasattr(types_mod, "FundFlowRecord")
+
+    def test_正常系_ETFRecordが削除済み(self) -> None:
+        """ETFRecord が types モジュールから削除されていることを確認。"""
+        import market.etfcom.types as types_mod
+
+        assert not hasattr(types_mod, "ETFRecord")
+
+    def test_正常系_HistoricalFundFlowRecordが削除済み(self) -> None:
+        """HistoricalFundFlowRecord が types モジュールから削除されていることを確認。"""
+        import market.etfcom.types as types_mod
+
+        assert not hasattr(types_mod, "HistoricalFundFlowRecord")
+
+
+# ---------------------------------------------------------------------------
 # __all__ export tests
 # ---------------------------------------------------------------------------
 
@@ -510,16 +357,20 @@ class TestModuleExports:
     """Tests for module-level __all__ exports."""
 
     def test_正常系_allに全クラスが含まれる(self) -> None:
-        """__all__ に全7クラスがエクスポートされていることを確認。"""
+        """__all__ に全4クラスがエクスポートされていることを確認。
+
+        Wave 1 後の期待値:
+        - ScrapingConfig (維持)
+        - RetryConfig (維持)
+        - TickerInfo (維持)
+        - AuthConfig (新規)
+        """
         from market.etfcom.types import __all__
 
         expected = {
-            "ScrapingConfig",
+            "AuthConfig",
             "RetryConfig",
-            "FundamentalsRecord",
-            "FundFlowRecord",
-            "ETFRecord",
-            "HistoricalFundFlowRecord",
+            "ScrapingConfig",
             "TickerInfo",
         }
         assert set(__all__) == expected
@@ -527,10 +378,7 @@ class TestModuleExports:
     def test_正常系_各クラスがインポート可能(self) -> None:
         """__all__ の各クラスが正常にインポートできることを確認。"""
         from market.etfcom.types import (
-            ETFRecord,
-            FundamentalsRecord,
-            FundFlowRecord,
-            HistoricalFundFlowRecord,
+            AuthConfig,
             RetryConfig,
             ScrapingConfig,
             TickerInfo,
@@ -538,8 +386,17 @@ class TestModuleExports:
 
         assert ScrapingConfig is not None
         assert RetryConfig is not None
-        assert FundamentalsRecord is not None
-        assert FundFlowRecord is not None
-        assert ETFRecord is not None
-        assert HistoricalFundFlowRecord is not None
         assert TickerInfo is not None
+        assert AuthConfig is not None
+
+    def test_正常系_旧レコード型がallに含まれない(self) -> None:
+        """旧レコード型が __all__ に含まれないことを確認。"""
+        from market.etfcom.types import __all__
+
+        removed_types = {
+            "FundamentalsRecord",
+            "FundFlowRecord",
+            "ETFRecord",
+            "HistoricalFundFlowRecord",
+        }
+        assert removed_types.isdisjoint(set(__all__))

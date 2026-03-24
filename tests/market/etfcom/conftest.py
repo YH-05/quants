@@ -1,38 +1,51 @@
 """Pytest configuration and shared fixtures for market.etfcom test suite.
 
-This module provides reusable fixtures for testing the ETF.com scraping module,
-including mock HTML responses, zero-delay configurations, mock sessions, and
-mock browser instances. These fixtures are designed to be shared across all
-Wave test files (unit, property, integration).
+This module provides reusable fixtures for testing the ETF.com API-based
+module, including zero-delay configurations, mock sessions with authentication
+support, mock clients, mock storage, and sample REST API response data.
+These fixtures are designed to be shared across all test files
+(unit, property, integration).
 
 Fixtures
 --------
+zero_delay_config : ScrapingConfig
+    Test-friendly ScrapingConfig with zero delays (alias for
+    ``sample_scraping_config``).
 sample_scraping_config : ScrapingConfig
     Test-friendly ScrapingConfig with zero delays.
 sample_retry_config : RetryConfig
     Test-friendly RetryConfig with single retry and minimal delay.
-sample_screener_html : str
-    Mock ETF.com screener page HTML containing 5 ETF rows.
-sample_profile_html : str
-    Mock ETF.com SPY profile page HTML with summary and classification data.
-sample_fund_flows_html : str
-    Mock ETF.com fund flows page HTML with flow table data.
 mock_curl_response : MagicMock
     MagicMock simulating a curl_cffi Response with status_code=200.
 mock_session : MagicMock
-    MagicMock simulating an ETFComSession instance.
-mock_browser : AsyncMock
-    AsyncMock simulating an ETFComBrowserMixin instance.
+    MagicMock simulating an authenticated ETFComSession instance.
+mock_client : MagicMock
+    MagicMock simulating an ETFComClient with all 22 public methods.
+mock_storage : MagicMock
+    MagicMock simulating an ETFComStorage with all upsert/get methods.
+sample_tickers_response : list[dict[str, object]]
+    Mock ``/v2/fund/tickers`` GET endpoint response (3 ETFs).
+sample_delayed_quotes_response : dict[str, object]
+    Mock ``/v2/quotes/delayedquotes`` GET endpoint response.
+sample_fund_details_response : dict[str, dict[str, object]]
+    Mock responses for all 18 ``/v2/fund/fund-details`` POST query names.
+sample_api_error_response : dict[str, object]
+    Mock API error response JSON.
+tmp_cache_dir : Path
+    Temporary directory for ticker cache file storage.
 
 See Also
 --------
 tests.market.conftest : Parent-level market package fixtures.
 market.etfcom.types : ScrapingConfig and RetryConfig definitions.
 market.etfcom.session : ETFComSession class.
-market.etfcom.browser : ETFComBrowserMixin class.
+market.etfcom.client : ETFComClient class.
+market.etfcom.storage : ETFComStorage class.
 """
 
-from unittest.mock import AsyncMock, MagicMock
+from pathlib import Path
+from typing import Any
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -69,6 +82,26 @@ def sample_scraping_config() -> ScrapingConfig:
 
 
 @pytest.fixture
+def zero_delay_config(sample_scraping_config: ScrapingConfig) -> ScrapingConfig:
+    """Alias for ``sample_scraping_config`` with zero delays.
+
+    Provides a more descriptive name for tests focused on
+    ensuring zero polite delay and jitter in test environments.
+
+    Parameters
+    ----------
+    sample_scraping_config : ScrapingConfig
+        Zero-delay scraping configuration.
+
+    Returns
+    -------
+    ScrapingConfig
+        A ScrapingConfig with zero polite_delay and zero delay_jitter.
+    """
+    return sample_scraping_config
+
+
+@pytest.fixture
 def sample_retry_config() -> RetryConfig:
     """Create a test-friendly RetryConfig with single retry and minimal delay.
 
@@ -90,186 +123,6 @@ def sample_retry_config() -> RetryConfig:
 
 
 # =============================================================================
-# Mock HTML fixtures
-# =============================================================================
-
-
-@pytest.fixture
-def sample_screener_html() -> str:
-    """Create mock ETF.com screener page HTML with 5 ETF rows.
-
-    Contains a realistic HTML table structure matching the ETF.com screener
-    page, with 5 ETF entries (SPY, VOO, IVV, QQQ, VTI) including ticker,
-    name, AUM, expense ratio, and segment columns.
-
-    Returns
-    -------
-    str
-        HTML string mimicking the ETF.com screener page structure.
-    """
-    return """\
-<!DOCTYPE html>
-<html lang="en">
-<head><title>ETF Screener | ETF.com</title></head>
-<body>
-<div id="etf-screener">
-  <table class="screener-table">
-    <thead>
-      <tr>
-        <th>Ticker</th>
-        <th>Fund Name</th>
-        <th>AUM</th>
-        <th>Expense Ratio</th>
-        <th>Segment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="/SPY">SPY</a></td>
-        <td>SPDR S&amp;P 500 ETF Trust</td>
-        <td>$500.00B</td>
-        <td>0.09%</td>
-        <td>Equity: U.S. - Large Cap</td>
-      </tr>
-      <tr>
-        <td><a href="/VOO">VOO</a></td>
-        <td>Vanguard S&amp;P 500 ETF</td>
-        <td>$751.49B</td>
-        <td>0.03%</td>
-        <td>Equity: U.S. - Large Cap</td>
-      </tr>
-      <tr>
-        <td><a href="/IVV">IVV</a></td>
-        <td>iShares Core S&amp;P 500 ETF</td>
-        <td>$450.00B</td>
-        <td>0.03%</td>
-        <td>Equity: U.S. - Large Cap</td>
-      </tr>
-      <tr>
-        <td><a href="/QQQ">QQQ</a></td>
-        <td>Invesco QQQ Trust</td>
-        <td>$280.00B</td>
-        <td>0.20%</td>
-        <td>Equity: U.S. - Large Cap Growth</td>
-      </tr>
-      <tr>
-        <td><a href="/VTI">VTI</a></td>
-        <td>Vanguard Total Stock Market ETF</td>
-        <td>$380.00B</td>
-        <td>0.03%</td>
-        <td>Equity: U.S. - Total Market</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="pagination">
-    <select class="per-page-select">
-      <option value="25">25</option>
-      <option value="50">50</option>
-      <option value="100">100</option>
-    </select>
-    <a class="pagination-next" href="?page=2">Next</a>
-  </div>
-</div>
-</body>
-</html>"""
-
-
-@pytest.fixture
-def sample_profile_html() -> str:
-    """Create mock ETF.com SPY profile page HTML.
-
-    Contains summary-data and classification-data sections matching
-    the ETF.com profile page structure, with realistic SPY fund data.
-
-    Returns
-    -------
-    str
-        HTML string mimicking the ETF.com profile page for SPY.
-    """
-    return """\
-<!DOCTYPE html>
-<html lang="en">
-<head><title>SPY | SPDR S&amp;P 500 ETF Trust | ETF.com</title></head>
-<body>
-<div class="fund-header">
-  <h1>SPDR S&amp;P 500 ETF Trust</h1>
-  <span class="ticker">SPY</span>
-</div>
-<div data-testid="summary-data">
-  <table>
-    <tbody>
-      <tr><td>Issuer</td><td>State Street</td></tr>
-      <tr><td>Inception Date</td><td>01/22/93</td></tr>
-      <tr><td>Expense Ratio</td><td>0.09%</td></tr>
-      <tr><td>AUM</td><td>$500.00B</td></tr>
-      <tr><td>Index Tracked</td><td>S&amp;P 500</td></tr>
-    </tbody>
-  </table>
-</div>
-<div data-testid="classification-data">
-  <table>
-    <tbody>
-      <tr><td>Segment</td><td>Equity: U.S. - Large Cap</td></tr>
-      <tr><td>Structure</td><td>Unit Investment Trust</td></tr>
-      <tr><td>Asset Class</td><td>Equity</td></tr>
-      <tr><td>Category</td><td>Size and Style</td></tr>
-      <tr><td>Focus</td><td>Large Cap</td></tr>
-      <tr><td>Niche</td><td>Broad-based</td></tr>
-      <tr><td>Region</td><td>North America</td></tr>
-      <tr><td>Geography</td><td>U.S.</td></tr>
-      <tr><td>Weighting Methodology</td><td>Market Cap</td></tr>
-      <tr><td>Selection Methodology</td><td>Committee</td></tr>
-      <tr><td>Segment Benchmark</td><td>MSCI USA Large Cap</td></tr>
-    </tbody>
-  </table>
-</div>
-<button id="onetrust-accept-btn-handler">Accept Cookies</button>
-</body>
-</html>"""
-
-
-@pytest.fixture
-def sample_fund_flows_html() -> str:
-    """Create mock ETF.com fund flows page HTML.
-
-    Contains a fund-flows-table section matching the ETF.com fund flows
-    page structure, with sample daily flow data for SPY.
-
-    Returns
-    -------
-    str
-        HTML string mimicking the ETF.com fund flows page for SPY.
-    """
-    return """\
-<!DOCTYPE html>
-<html lang="en">
-<head><title>SPY Fund Flows | ETF.com</title></head>
-<body>
-<div class="fund-header">
-  <h1>SPY Fund Flows</h1>
-</div>
-<div data-testid="fund-flows-table">
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Net Flows ($M)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>2025-09-10</td><td>2,787.59</td></tr>
-      <tr><td>2025-09-09</td><td>-1,234.56</td></tr>
-      <tr><td>2025-09-08</td><td>-104.61</td></tr>
-      <tr><td>2025-09-05</td><td>3,456.78</td></tr>
-      <tr><td>2025-09-04</td><td>987.65</td></tr>
-    </tbody>
-  </table>
-</div>
-</body>
-</html>"""
-
-
-# =============================================================================
 # Mock object fixtures
 # =============================================================================
 
@@ -278,19 +131,20 @@ def sample_fund_flows_html() -> str:
 def mock_curl_response() -> MagicMock:
     """Create a MagicMock simulating a successful curl_cffi Response.
 
-    The mock response has status_code=200 and a text body containing
-    a minimal HTML page.
+    The mock response has status_code=200 and a JSON body containing
+    an empty dict (suitable for API responses).
 
     Returns
     -------
     MagicMock
-        A MagicMock with status_code=200 and text/content attributes.
+        A MagicMock with status_code=200, json(), text, and content.
     """
     response = MagicMock()
     response.status_code = 200
-    response.text = "<html><body>OK</body></html>"
-    response.content = b"<html><body>OK</body></html>"
-    response.headers = {"Content-Type": "text/html; charset=utf-8"}
+    response.json.return_value = {}
+    response.text = "{}"
+    response.content = b"{}"
+    response.headers = {"Content-Type": "application/json; charset=utf-8"}
     return response
 
 
@@ -300,10 +154,14 @@ def mock_session(
     sample_retry_config: RetryConfig,
     mock_curl_response: MagicMock,
 ) -> MagicMock:
-    """Create a MagicMock simulating an ETFComSession instance.
+    """Create a MagicMock simulating an authenticated ETFComSession.
 
-    The mock session's get() and get_with_retry() methods return
-    the mock_curl_response fixture by default.
+    The mock session includes all public methods from ``ETFComSession``:
+    ``get()``, ``post()``, ``get_with_retry()``, ``post_with_retry()``,
+    ``post_fund_details()``, ``get_authenticated()``,
+    ``rotate_session()``, and ``close()``.
+
+    By default, all request methods return ``mock_curl_response``.
 
     Parameters
     ----------
@@ -317,72 +175,177 @@ def mock_session(
     Returns
     -------
     MagicMock
-        A MagicMock mimicking ETFComSession with get/get_with_retry/
-        rotate_session/close methods.
+        A MagicMock mimicking an authenticated ETFComSession.
     """
     session = MagicMock()
     session._config = sample_scraping_config
     session._retry_config = sample_retry_config
+
+    # GET/POST methods
     session.get.return_value = mock_curl_response
     session.get_with_retry.return_value = mock_curl_response
     session.post.return_value = mock_curl_response
     session.post_with_retry.return_value = mock_curl_response
+
+    # Authenticated methods
+    session.post_fund_details.return_value = mock_curl_response
+    session.get_authenticated.return_value = mock_curl_response
+
+    # Session management
     session.rotate_session.return_value = None
     session.close.return_value = None
+
+    # Context manager support
     session.__enter__ = MagicMock(return_value=session)
     session.__exit__ = MagicMock(return_value=False)
+
     return session
 
 
 @pytest.fixture
-def mock_browser(
-    sample_scraping_config: ScrapingConfig,
-    sample_retry_config: RetryConfig,
-) -> AsyncMock:
-    """Create an AsyncMock simulating an ETFComBrowserMixin instance.
+def mock_client() -> MagicMock:
+    """Create a MagicMock simulating an ETFComClient.
 
-    The mock browser's async methods (_ensure_browser, _navigate,
-    _get_page_html, etc.) return sensible defaults for testing.
+    The mock client includes all 22 public methods grouped by category:
 
-    Parameters
-    ----------
-    sample_scraping_config : ScrapingConfig
-        Zero-delay scraping configuration.
-    sample_retry_config : RetryConfig
-        Single-retry configuration.
+    **18 POST fund-details methods** (return empty list or dict):
+        ``get_fund_flows``, ``get_holdings``, ``get_portfolio_data``,
+        ``get_sector_breakdown``, ``get_regions``, ``get_countries``,
+        ``get_econ_dev``, ``get_intra_data``, ``get_compare_ticker``,
+        ``get_spread_chart``, ``get_premium_chart``, ``get_tradability``,
+        ``get_tradability_summary``, ``get_portfolio_management``,
+        ``get_tax_exposures``, ``get_structure``, ``get_rankings``,
+        ``get_performance_stats``.
+
+    **4 GET methods** (return empty list or dict):
+        ``get_tickers``, ``get_delayed_quotes``, ``get_charts``,
+        ``get_performance``.
 
     Returns
     -------
-    AsyncMock
-        An AsyncMock mimicking ETFComBrowserMixin with async methods.
+    MagicMock
+        A MagicMock mimicking ETFComClient with all 22 methods.
     """
-    browser = AsyncMock()
-    browser._config = sample_scraping_config
-    browser._retry_config = sample_retry_config
-    browser._playwright = None
-    browser._browser = None
-    browser._context = None
+    client = MagicMock()
 
-    # Async methods
-    browser._ensure_browser = AsyncMock()
-    browser._navigate = AsyncMock(return_value=AsyncMock())
-    browser._get_page_html = AsyncMock(
-        return_value="<html><body>Mock Page</body></html>"
-    )
-    browser._get_page_html_with_retry = AsyncMock(
-        return_value="<html><body>Mock Page</body></html>"
-    )
-    browser._accept_cookies = AsyncMock()
-    browser._wait_for_content_loaded = AsyncMock()
-    browser._click_display_100 = AsyncMock()
-    browser._create_stealth_context = AsyncMock()
-    browser.close = AsyncMock()
+    # 18 POST fund-details methods (list-returning)
+    for method_name in (
+        "get_fund_flows",
+        "get_holdings",
+        "get_sector_breakdown",
+        "get_regions",
+        "get_countries",
+        "get_econ_dev",
+        "get_intra_data",
+        "get_compare_ticker",
+        "get_spread_chart",
+        "get_premium_chart",
+        "get_tradability",
+    ):
+        getattr(client, method_name).return_value = []
 
-    # Async context manager support
-    browser.__aenter__ = AsyncMock(return_value=browser)
-    browser.__aexit__ = AsyncMock(return_value=False)
+    # POST fund-details methods (dict-returning)
+    for method_name in (
+        "get_portfolio_data",
+        "get_tradability_summary",
+        "get_portfolio_management",
+        "get_tax_exposures",
+        "get_structure",
+        "get_rankings",
+        "get_performance_stats",
+    ):
+        getattr(client, method_name).return_value = {}
 
-    return browser
+    # 4 GET methods
+    client.get_tickers.return_value = []
+    client.get_delayed_quotes.return_value = []
+    client.get_charts.return_value = []
+    client.get_performance.return_value = {}
+
+    # Context manager support
+    client.__enter__ = MagicMock(return_value=client)
+    client.__exit__ = MagicMock(return_value=False)
+    client.close.return_value = None
+
+    return client
+
+
+@pytest.fixture
+def mock_storage(tmp_path: Path) -> MagicMock:
+    """Create a MagicMock simulating an ETFComStorage.
+
+    The mock storage includes all upsert methods (returning row counts)
+    and get methods (returning empty DataFrames).
+
+    Parameters
+    ----------
+    tmp_path : Path
+        Pytest-provided temporary directory.
+
+    Returns
+    -------
+    MagicMock
+        A MagicMock mimicking ETFComStorage with all upsert/get methods.
+    """
+    import pandas as pd
+
+    storage = MagicMock()
+
+    # Upsert methods return row count
+    for method_name in (
+        "upsert_tickers",
+        "upsert_fund_flows",
+        "upsert_holdings",
+        "upsert_portfolio",
+        "upsert_allocations",
+        "upsert_tradability",
+        "upsert_structure",
+        "upsert_performance",
+        "upsert_quotes",
+    ):
+        getattr(storage, method_name).return_value = 0
+
+    # Get methods return empty DataFrames
+    for method_name in (
+        "get_tickers",
+        "get_fund_flows",
+        "get_holdings",
+        "get_portfolio",
+        "get_allocations",
+        "get_tradability",
+        "get_structure",
+        "get_performance",
+        "get_quotes",
+    ):
+        getattr(storage, method_name).return_value = pd.DataFrame()
+
+    # Utility methods
+    storage.ensure_tables.return_value = None
+    storage.get_table_names.return_value = [
+        "etfcom_allocations",
+        "etfcom_fund_flows",
+        "etfcom_holdings",
+        "etfcom_performance",
+        "etfcom_portfolio",
+        "etfcom_quotes",
+        "etfcom_structure",
+        "etfcom_tickers",
+        "etfcom_tradability",
+    ]
+    storage.get_row_count.return_value = 0
+    storage.get_stats.return_value = {
+        "etfcom_allocations": 0,
+        "etfcom_fund_flows": 0,
+        "etfcom_holdings": 0,
+        "etfcom_performance": 0,
+        "etfcom_portfolio": 0,
+        "etfcom_quotes": 0,
+        "etfcom_structure": 0,
+        "etfcom_tickers": 0,
+        "etfcom_tradability": 0,
+    }
+
+    return storage
 
 
 # =============================================================================
@@ -391,16 +354,16 @@ def mock_browser(
 
 
 @pytest.fixture
-def sample_tickers_api_response() -> list[dict[str, object]]:
-    """Create a mock tickers API response JSON.
+def sample_tickers_response() -> list[dict[str, Any]]:
+    """Create a mock ``/v2/fund/tickers`` GET endpoint response.
 
-    Simulates the response from the ``/private/apps/fundflows/tickers``
-    endpoint containing a list of ticker objects with fund IDs.
+    Simulates the JSON array returned by the authenticated tickers
+    endpoint, containing 3 ETFs (SPY, VOO, QQQ) with realistic data.
 
     Returns
     -------
-    list[dict[str, object]]
-        A list of ticker dictionaries with fund_id, ticker, name, etc.
+    list[dict[str, Any]]
+        A list of ticker dictionaries with camelCase keys.
     """
     return [
         {
@@ -431,63 +394,340 @@ def sample_tickers_api_response() -> list[dict[str, object]]:
 
 
 @pytest.fixture
-def sample_fund_flows_api_response() -> dict[str, object]:
-    """Create a mock fund flows query API response JSON.
+def sample_delayed_quotes_response() -> dict[str, Any]:
+    """Create a mock ``/v2/quotes/delayedquotes`` GET endpoint response.
 
-    Simulates the response from the ``/private/apps/fundflows/fund-flows-query``
-    endpoint for a single fund.
+    Simulates the JSON response for delayed quotes of SPY and QQQ
+    with realistic OHLC and bid/ask data.
 
     Returns
     -------
-    dict[str, object]
-        A dictionary containing a ``results`` key with daily flow records.
+    dict[str, Any]
+        A dictionary containing a ``data`` key with quote records.
     """
     return {
-        "results": [
+        "data": [
             {
-                "navDate": "2025-09-10",
-                "nav": 450.25,
-                "navChange": 2.15,
-                "navChangePercent": 0.48,
-                "premiumDiscount": -0.02,
-                "fundFlows": 2787590000.0,
-                "sharesOutstanding": 920000000.0,
-                "aum": 414230000000.0,
+                "ticker": "SPY",
+                "quoteDate": "2026-03-21T00:00:00.000Z",
+                "open": 578.50,
+                "high": 582.10,
+                "low": 577.30,
+                "close": 580.25,
+                "volume": 75000000.0,
+                "bid": 580.20,
+                "ask": 580.30,
+                "bidSize": 500.0,
+                "askSize": 300.0,
             },
             {
-                "navDate": "2025-09-09",
-                "nav": 448.10,
-                "navChange": -1.30,
-                "navChangePercent": -0.29,
-                "premiumDiscount": 0.01,
-                "fundFlows": -1234560000.0,
-                "sharesOutstanding": 919500000.0,
-                "aum": 411950000000.0,
+                "ticker": "QQQ",
+                "quoteDate": "2026-03-21T00:00:00.000Z",
+                "open": 485.00,
+                "high": 490.50,
+                "low": 483.20,
+                "close": 488.75,
+                "volume": 42000000.0,
+                "bid": 488.70,
+                "ask": 488.80,
+                "bidSize": 200.0,
+                "askSize": 150.0,
             },
         ],
     }
 
 
 @pytest.fixture
-def sample_fund_details_api_response() -> dict[str, object]:
-    """Create a mock fund details API response JSON.
+def sample_fund_details_response() -> dict[str, dict[str, Any]]:
+    """Create mock responses for all 18 ``/v2/fund/fund-details`` POST queries.
 
-    Simulates the response from the ``/private/apps/fundflows/fund-details``
-    endpoint for a single fund.
+    Returns a dictionary keyed by query name, where each value is the
+    full JSON response body in the ``{"data": {queryName: {"data": ...}}}``
+    nesting format used by the ETF.com fund-details endpoint.
+
+    This fixture provides realistic sample data for all 18 fund-details
+    query names defined in ``FUND_DETAILS_QUERY_NAMES``.
 
     Returns
     -------
-    dict[str, object]
-        A dictionary with fund detail fields.
+    dict[str, dict[str, Any]]
+        A dictionary mapping query name to its full mock API response.
     """
     return {
-        "fundId": 1,
-        "ticker": "SPY",
-        "fundName": "SPDR S&P 500 ETF Trust",
-        "issuer": "State Street",
-        "assetClass": "Equity",
-        "expenseRatio": 0.0945,
-        "aum": 500000000000.0,
+        "fundFlowsData": {
+            "data": {
+                "fundFlowsData": {
+                    "data": [
+                        {
+                            "navDate": "2026-03-21T00:00:00.000Z",
+                            "nav": 580.25,
+                            "navChange": 2.15,
+                            "navChangePercent": 0.48,
+                            "premiumDiscount": -0.02,
+                            "fundFlows": 2787590000.0,
+                            "sharesOutstanding": 920000000.0,
+                            "aum": 414230000000.0,
+                        },
+                        {
+                            "navDate": "2026-03-20T00:00:00.000Z",
+                            "nav": 578.10,
+                            "navChange": -1.30,
+                            "navChangePercent": -0.29,
+                            "premiumDiscount": 0.01,
+                            "fundFlows": -1234560000.0,
+                            "sharesOutstanding": 919500000.0,
+                            "aum": 411950000000.0,
+                        },
+                    ],
+                },
+            },
+        },
+        "topHoldings": {
+            "data": {
+                "topHoldings": {
+                    "data": [
+                        {
+                            "holdingTicker": "AAPL",
+                            "holdingName": "Apple Inc.",
+                            "weight": 0.072,
+                            "marketValue": 29880000000.0,
+                            "shares": 175000000,
+                            "asOfDate": "2026-03-15T00:00:00.000Z",
+                        },
+                        {
+                            "holdingTicker": "MSFT",
+                            "holdingName": "Microsoft Corporation",
+                            "weight": 0.065,
+                            "marketValue": 26975000000.0,
+                            "shares": 65000000,
+                            "asOfDate": "2026-03-15T00:00:00.000Z",
+                        },
+                    ],
+                },
+            },
+        },
+        "fundPortfolioData": {
+            "data": {
+                "fundPortfolioData": {
+                    "data": {
+                        "peRatio": 22.5,
+                        "pbRatio": 4.1,
+                        "dividendYield": 0.013,
+                        "weightedAvgMarketCap": 850000000000.0,
+                        "numberOfHoldings": 503,
+                        "expenseRatio": 0.0945,
+                        "trackingDifference": -0.05,
+                        "medianTrackingDifference": -0.04,
+                        "asOfDate": "2026-03-15T00:00:00.000Z",
+                    },
+                },
+            },
+        },
+        "sectorIndustryBreakdown": {
+            "data": {
+                "sectorIndustryBreakdown": {
+                    "data": [
+                        {
+                            "name": "Technology",
+                            "weight": 0.32,
+                            "marketValue": 132736000000.0,
+                            "count": 75,
+                            "asOfDate": "2026-03-15T00:00:00.000Z",
+                        },
+                        {
+                            "name": "Healthcare",
+                            "weight": 0.13,
+                            "marketValue": 53850000000.0,
+                            "count": 65,
+                            "asOfDate": "2026-03-15T00:00:00.000Z",
+                        },
+                    ],
+                },
+            },
+        },
+        "regions": {
+            "data": {
+                "regions": {
+                    "data": [
+                        {
+                            "name": "North America",
+                            "weight": 0.99,
+                            "asOfDate": "2026-03-01T00:00:00.000Z",
+                        },
+                    ],
+                },
+            },
+        },
+        "countries": {
+            "data": {
+                "countries": {
+                    "data": [
+                        {
+                            "name": "United States",
+                            "weight": 0.99,
+                            "asOfDate": "2026-03-01T00:00:00.000Z",
+                        },
+                    ],
+                },
+            },
+        },
+        "economicDevelopment": {
+            "data": {
+                "economicDevelopment": {
+                    "data": [
+                        {
+                            "name": "Developed",
+                            "weight": 1.0,
+                            "asOfDate": "2026-03-01T00:00:00.000Z",
+                        },
+                    ],
+                },
+            },
+        },
+        "fundIntraData": {
+            "data": {
+                "fundIntraData": {
+                    "data": [
+                        {
+                            "timestamp": "2026-03-21T14:30:00.000Z",
+                            "price": 580.25,
+                            "volume": 1200000,
+                        },
+                    ],
+                },
+            },
+        },
+        "compareTicker": {
+            "data": {
+                "compareTicker": {
+                    "data": [
+                        {
+                            "ticker": "VOO",
+                            "fundName": "Vanguard S&P 500 ETF",
+                            "expenseRatio": 0.03,
+                            "aum": 751490000000.0,
+                        },
+                    ],
+                },
+            },
+        },
+        "fundSpreadChart": {
+            "data": {
+                "fundSpreadChart": {
+                    "data": [
+                        {
+                            "date": "2026-03-21T00:00:00.000Z",
+                            "medianSpread": 0.0001,
+                        },
+                    ],
+                },
+            },
+        },
+        "fundPremiumChart": {
+            "data": {
+                "fundPremiumChart": {
+                    "data": [
+                        {
+                            "date": "2026-03-21T00:00:00.000Z",
+                            "premiumDiscount": -0.02,
+                        },
+                    ],
+                },
+            },
+        },
+        "fundTradabilityData": {
+            "data": {
+                "fundTradabilityData": {
+                    "data": [
+                        {
+                            "date": "2026-03-21T00:00:00.000Z",
+                            "avgDailyVolume": 75000000.0,
+                            "avgDailyDollarVolume": 43500000000.0,
+                            "medianBidAskSpread": 0.0001,
+                        },
+                    ],
+                },
+            },
+        },
+        "fundTradabilitySummary": {
+            "data": {
+                "fundTradabilitySummary": {
+                    "data": {
+                        "avgDailyVolume": 75000000.0,
+                        "avgDailyDollarVolume": 43500000000.0,
+                        "medianBidAskSpread": 0.0001,
+                        "avgBidAskSpread": 0.00012,
+                        "creationUnitSize": 50000,
+                        "impliedLiquidity": 25000000000.0,
+                    },
+                },
+            },
+        },
+        "fundPortfolioManData": {
+            "data": {
+                "fundPortfolioManData": {
+                    "data": {
+                        "expenseRatio": 0.0945,
+                        "trackingDifference": -0.05,
+                        "medianTrackingDifference": -0.04,
+                    },
+                },
+            },
+        },
+        "fundTaxExposuresData": {
+            "data": {
+                "fundTaxExposuresData": {
+                    "data": {
+                        "taxForm": "1099",
+                        "capitalGainsDistribution": 0.0,
+                        "dividendDistribution": 6.32,
+                    },
+                },
+            },
+        },
+        "fundStructureData": {
+            "data": {
+                "fundStructureData": {
+                    "data": {
+                        "legalStructure": "UIT",
+                        "fundType": "Index",
+                        "indexTracked": "S&P 500",
+                        "replicationMethod": "Full Replication",
+                        "usesDerivatives": False,
+                        "securitiesLending": True,
+                        "taxForm": "1099",
+                    },
+                },
+            },
+        },
+        "fundRankingsData": {
+            "data": {
+                "fundRankingsData": {
+                    "data": {
+                        "overallRating": "A",
+                        "efficiencyRating": "A",
+                        "liquidityRating": "A",
+                        "fitRating": "A",
+                    },
+                },
+            },
+        },
+        "fundPerformanceStatsData": {
+            "data": {
+                "fundPerformanceStatsData": {
+                    "data": {
+                        "rSquared": 0.9998,
+                        "beta": 1.0,
+                        "standardDeviation": 0.15,
+                        "returnYTD": 0.125,
+                        "return1Y": 0.265,
+                        "return3Y": 0.098,
+                        "return5Y": 0.112,
+                        "return10Y": 0.128,
+                    },
+                },
+            },
+        },
     }
 
 
@@ -510,7 +750,7 @@ def sample_api_error_response() -> dict[str, object]:
 
 
 @pytest.fixture
-def tmp_cache_dir(tmp_path: object) -> object:
+def tmp_cache_dir(tmp_path: Path) -> Path:
     """Create a temporary directory for ticker cache file storage.
 
     Uses pytest's ``tmp_path`` fixture to provide an isolated directory
