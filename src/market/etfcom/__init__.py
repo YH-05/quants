@@ -1,6 +1,6 @@
-"""ETF.com scraping module for market data retrieval.
+"""ETF.com data retrieval module.
 
-This package provides tools for scraping ETF data from ETF.com,
+This package provides tools for retrieving ETF data from ETF.com,
 including ETF profiles, fund flows, screener data, and classifications.
 
 Classes
@@ -35,14 +35,8 @@ ETFComTimeoutError
 
 Data Types
 ----------
-ETFRecord
-    Parsed ETF metadata record with normalised field types.
-FundFlowRecord
-    A single daily fund flow record for an ETF.
-FundamentalsRecord
-    A single ETF fundamentals record from an ETF.com profile page.
-HistoricalFundFlowRecord
-    A single daily historical fund flow record from the ETF.com REST API.
+AuthConfig
+    API authentication credentials (OAuth token, API keys, URLs).
 RetryConfig
     Configuration for retry behaviour with exponential backoff.
 ScrapingConfig
@@ -82,16 +76,14 @@ from market.etfcom.errors import (
 )
 from market.etfcom.session import ETFComSession
 from market.etfcom.types import (
-    ETFRecord,
-    FundamentalsRecord,
-    FundFlowRecord,
-    HistoricalFundFlowRecord,
+    AuthConfig,
     RetryConfig,
     ScrapingConfig,
     TickerInfo,
 )
 
 __all__ = [
+    "AuthConfig",
     "ETFComAPIError",
     "ETFComBlockedError",
     "ETFComError",
@@ -100,12 +92,8 @@ __all__ = [
     "ETFComScrapingError",
     "ETFComSession",
     "ETFComTimeoutError",
-    "ETFRecord",
-    "FundFlowRecord",
     "FundFlowsCollector",
     "FundamentalsCollector",
-    "FundamentalsRecord",
-    "HistoricalFundFlowRecord",
     "HistoricalFundFlowsCollector",
     "RetryConfig",
     "ScrapingConfig",

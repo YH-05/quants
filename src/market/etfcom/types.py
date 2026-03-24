@@ -1,11 +1,11 @@
 """Type definitions for the market.etfcom module.
 
-This module provides dataclass definitions for ETF.com scraping including:
+This module provides dataclass definitions for ETF.com data retrieval including:
 
 - Scraping configuration (bot-blocking countermeasures)
 - Retry configuration (exponential backoff)
-- Data record types (fundamentals, fund flows, ETF metadata)
-- REST API record types (historical fund flows, ticker info)
+- API authentication configuration (OAuth token, API keys)
+- REST API record types (ticker info)
 
 All configuration dataclasses use ``frozen=True`` to ensure immutability.
 Field names use snake_case following project convention; raw ETF.com column
@@ -18,8 +18,8 @@ market.yfinance.types : Similar type-definition pattern for yfinance module.
 market.fred.types : Similar type-definition pattern for FRED module.
 """
 
-from dataclasses import dataclass
-from datetime import date
+from dataclasses import dataclass, field
+from datetime import datetime
 
 from market.etfcom.constants import (
     DEFAULT_DELAY_JITTER,
@@ -122,244 +122,79 @@ class RetryConfig:
 
 
 # =============================================================================
-# Data Record Dataclasses
+# API Authentication Dataclass
 # =============================================================================
 
 
 @dataclass(frozen=True)
-class FundamentalsRecord:
-    """A single ETF fundamentals record scraped from an ETF.com profile page.
+class AuthConfig:
+    """API authentication credentials from the ETF.com ``/api/v1/api-details`` endpoint.
 
-    Contains the 17 key-value fields extracted from the ``#summary-data``
-    and ``#classification-index-data`` sections.  All string fields
-    (except ``ticker``) are optional because ETF.com may return ``'--'``
-    placeholders for delisted or incomplete ETFs, which are mapped to
-    ``None`` during parsing.
+    Stores the 6 fields returned by the authentication endpoint plus a
+    ``fetched_at`` timestamp for cache TTL validation against
+    ``constants.AUTH_TOKEN_TTL_SECONDS``.
 
-    Parameters
-    ----------
-    ticker : str
-        ETF ticker symbol (e.g. ``"VOO"``).
-    issuer : str | None
-        Fund issuer name (e.g. ``"Vanguard"``).
-    inception_date : str | None
-        Fund inception date as displayed on ETF.com (e.g. ``"09/07/10"``).
-    expense_ratio : str | None
-        Expense ratio as displayed (e.g. ``"0.03%"``).
-    aum : str | None
-        Assets under management as displayed (e.g. ``"$751.49B"``).
-    index_tracked : str | None
-        Name of the tracked index (e.g. ``"S&P 500"``).
-    segment : str | None
-        ETF segment classification (e.g. ``"MSCI USA Large Cap"``).
-    structure : str | None
-        Fund structure (e.g. ``"Open-Ended Fund"``).
-    asset_class : str | None
-        Asset class (e.g. ``"Equity"``, ``"Fixed Income"``).
-    category : str | None
-        ETF category (e.g. ``"Size and Style"``).
-    focus : str | None
-        Investment focus (e.g. ``"Large Cap"``).
-    niche : str | None
-        Investment niche (e.g. ``"Broad-based"``).
-    region : str | None
-        Geographic region (e.g. ``"North America"``).
-    geography : str | None
-        Specific geography (e.g. ``"U.S."``).
-    index_weighting_methodology : str | None
-        Index weighting method (e.g. ``"Market Cap"``).
-    index_selection_methodology : str | None
-        Index selection method (e.g. ``"Committee"``).
-    segment_benchmark : str | None
-        Segment benchmark name (e.g. ``"MSCI USA Large Cap"``).
-
-    Examples
-    --------
-    >>> record = FundamentalsRecord(
-    ...     ticker="VOO",
-    ...     issuer="Vanguard",
-    ...     inception_date="09/07/10",
-    ...     expense_ratio="0.03%",
-    ...     aum="$751.49B",
-    ...     index_tracked="S&P 500",
-    ...     segment="MSCI USA Large Cap",
-    ...     structure="Open-Ended Fund",
-    ...     asset_class="Equity",
-    ...     category="Size and Style",
-    ...     focus="Large Cap",
-    ...     niche="Broad-based",
-    ...     region="North America",
-    ...     geography="U.S.",
-    ...     index_weighting_methodology="Market Cap",
-    ...     index_selection_methodology="Committee",
-    ...     segment_benchmark="MSCI USA Large Cap",
-    ... )
-    >>> record.ticker
-    'VOO'
-    """
-
-    ticker: str
-    issuer: str | None
-    inception_date: str | None
-    expense_ratio: str | None
-    aum: str | None
-    index_tracked: str | None
-    segment: str | None
-    structure: str | None
-    asset_class: str | None
-    category: str | None
-    focus: str | None
-    niche: str | None
-    region: str | None
-    geography: str | None
-    index_weighting_methodology: str | None
-    index_selection_methodology: str | None
-    segment_benchmark: str | None
-
-
-@dataclass(frozen=True)
-class FundFlowRecord:
-    """A single daily fund flow record for an ETF.
+    Sensitive fields (``fund_api_key``, ``tools_api_key``, ``oauth_token``)
+    are excluded from ``repr`` output to prevent accidental exposure in
+    logs (CWE-532).
 
     Parameters
     ----------
-    date : date
-        Date of the fund flow observation.
-    ticker : str
-        ETF ticker symbol (e.g. ``"VOO"``).
-    net_flows : float
-        Net fund flows for the day (positive = inflows, negative = outflows).
-        The unit follows ETF.com convention (typically millions USD).
+    api_base_url : str
+        Base URL for the ETF.com REST API
+        (e.g. ``"https://api-prod.etf.com"``).
+    fund_api_key : str
+        API key for fund data endpoints. Excluded from ``repr``.
+    tools_api_key : str
+        API key for tools endpoints. Excluded from ``repr``.
+    oauth_token : str
+        OAuth Bearer token for ``/v2/`` API requests (24h TTL).
+        Excluded from ``repr``.
+    real_time_api_url : str
+        URL for the real-time GraphQL API
+        (e.g. ``"https://real-time-prod.etf.com/graphql"``).
+    graphql_api_url : str
+        URL for the GraphQL data API
+        (e.g. ``"https://data.etf.com"``).
+    fetched_at : datetime
+        UTC timestamp when the credentials were fetched, used to
+        determine token expiry against ``AUTH_TOKEN_TTL_SECONDS``.
 
     Examples
     --------
-    >>> from datetime import date
-    >>> record = FundFlowRecord(
-    ...     date=date(2025, 9, 10),
-    ...     ticker="VOO",
-    ...     net_flows=2787.59,
+    >>> from datetime import datetime, timezone
+    >>> auth = AuthConfig(
+    ...     api_base_url="https://api-prod.etf.com",
+    ...     fund_api_key="fund-key",
+    ...     tools_api_key="tools-key",
+    ...     oauth_token="token",
+    ...     real_time_api_url="https://real-time-prod.etf.com/graphql",
+    ...     graphql_api_url="https://data.etf.com",
+    ...     fetched_at=datetime.now(tz=timezone.utc),
     ... )
-    >>> record.net_flows
-    2787.59
-    """
+    >>> auth.api_base_url
+    'https://api-prod.etf.com'
+    >>> "fund-key" not in repr(auth)  # sensitive fields hidden
+    True
 
-    date: date
-    ticker: str
-    net_flows: float
-
-
-@dataclass
-class ETFRecord:
-    """Parsed ETF metadata record with normalised field types.
-
-    Unlike ``FundamentalsRecord`` (which stores raw scraped strings),
-    ``ETFRecord`` holds cleaned and type-converted values suitable for
-    analysis and storage.  This dataclass is *mutable* to allow
-    incremental enrichment during the data pipeline.
-
-    Parameters
-    ----------
-    ticker : str
-        ETF ticker symbol.
-    name : str
-        ETF full name.
-    issuer : str | None
-        Fund issuer name (default: None).
-    category : str | None
-        ETF category (default: None).
-    expense_ratio : float | None
-        Expense ratio as a decimal (e.g. 0.03 for 0.03%) (default: None).
-    aum : float | None
-        Assets under management in USD (default: None).
-    inception_date : date | None
-        Fund inception date (default: None).
-
-    Examples
+    See Also
     --------
-    >>> from datetime import date
-    >>> etf = ETFRecord(
-    ...     ticker="VOO",
-    ...     name="Vanguard S&P 500 ETF",
-    ...     issuer="Vanguard",
-    ...     expense_ratio=0.03,
-    ...     aum=751.49e9,
-    ...     inception_date=date(2010, 9, 7),
-    ... )
-    >>> etf.ticker
-    'VOO'
+    market.etfcom.constants.AUTH_DETAILS_URL : Endpoint that returns these credentials.
+    market.etfcom.constants.AUTH_TOKEN_TTL_SECONDS : TTL for oauth_token validity.
     """
 
-    ticker: str
-    name: str
-    issuer: str | None = None
-    category: str | None = None
-    expense_ratio: float | None = None
-    aum: float | None = None
-    inception_date: date | None = None
+    api_base_url: str
+    fund_api_key: str = field(repr=False)
+    tools_api_key: str = field(repr=False)
+    oauth_token: str = field(repr=False)
+    real_time_api_url: str
+    graphql_api_url: str
+    fetched_at: datetime
 
 
 # =============================================================================
 # REST API Data Record Dataclasses
 # =============================================================================
-
-
-@dataclass(frozen=True)
-class HistoricalFundFlowRecord:
-    """A single daily historical fund flow record from the ETF.com REST API.
-
-    Contains the 9 fields returned by the ``fund-flows-query`` API endpoint
-    for a given fund. All numeric fields are ``float | None`` because the
-    API may return ``null`` for dates where data is unavailable.
-
-    Parameters
-    ----------
-    ticker : str
-        ETF ticker symbol (e.g. ``"SPY"``).
-    nav_date : date
-        Date of the observation.
-    nav : float | None
-        Net asset value per share on the given date.
-    nav_change : float | None
-        Absolute change in NAV from the previous trading day.
-    nav_change_percent : float | None
-        Percentage change in NAV from the previous trading day.
-    premium_discount : float | None
-        Premium or discount to NAV (positive = premium, negative = discount).
-    fund_flows : float | None
-        Net fund flows for the day in USD (positive = inflows,
-        negative = outflows).
-    shares_outstanding : float | None
-        Total shares outstanding on the given date.
-    aum : float | None
-        Assets under management in USD on the given date.
-
-    Examples
-    --------
-    >>> from datetime import date
-    >>> record = HistoricalFundFlowRecord(
-    ...     ticker="SPY",
-    ...     nav_date=date(2025, 9, 10),
-    ...     nav=450.25,
-    ...     nav_change=2.15,
-    ...     nav_change_percent=0.48,
-    ...     premium_discount=-0.02,
-    ...     fund_flows=2787590000.0,
-    ...     shares_outstanding=920000000.0,
-    ...     aum=414230000000.0,
-    ... )
-    >>> record.ticker
-    'SPY'
-    """
-
-    ticker: str
-    nav_date: date
-    nav: float | None
-    nav_change: float | None
-    nav_change_percent: float | None
-    premium_discount: float | None
-    fund_flows: float | None
-    shares_outstanding: float | None
-    aum: float | None
 
 
 @dataclass(frozen=True)
@@ -412,10 +247,7 @@ class TickerInfo:
 # =============================================================================
 
 __all__ = [
-    "ETFRecord",
-    "FundFlowRecord",
-    "FundamentalsRecord",
-    "HistoricalFundFlowRecord",
+    "AuthConfig",
     "RetryConfig",
     "ScrapingConfig",
     "TickerInfo",

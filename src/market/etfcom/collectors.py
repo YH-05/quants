@@ -1434,7 +1434,7 @@ class HistoricalFundFlowsCollector(DataCollector):
     See Also
     --------
     FundFlowsCollector : HTML scraping-based fund flow collector.
-    market.etfcom.types.HistoricalFundFlowRecord : Data record type.
+    market.etfcom.types.TickerInfo : Ticker data record type.
     market.etfcom.constants : REST API URL constants.
     """
 
