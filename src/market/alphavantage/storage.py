@@ -91,6 +91,9 @@ logger = get_logger(__name__)
 # ============================================================================
 
 
+# AIDEV-NOTE: polymarket/storage.py と同一実装。将来の upsert パス検証で使用予定。
+# collector 層では _safe_float() が NaN → None 変換を担い、storage 層では
+# 明示的な Inf/NaN ガードとしてこの関数を upsert 前バリデーションに組み込む予定。
 def _validate_finite(value: float | None, name: str) -> float | None:
     """Validate that a numeric value is finite (not NaN or Inf).
 
@@ -373,6 +376,10 @@ _TABLE_DDL: dict[str, str] = {
 # Valid table names whitelist for SQL injection prevention
 _VALID_TABLE_NAMES: frozenset[str] = frozenset(_TABLE_DDL.keys())
 
+# Identifier validation for ALTER TABLE migration (security hardening)
+_SAFE_IDENTIFIER_RE = re.compile(r"^\w+$")
+_SAFE_SQLITE_TYPES = frozenset({"TEXT", "INTEGER", "REAL", "BLOB", "NUMERIC"})
+
 
 # ============================================================================
 # DDL parsing helper
@@ -515,6 +522,8 @@ class AlphaVantageStorage:
         if table_name not in _VALID_TABLE_NAMES:
             msg = f"Unknown table: {table_name!r}"
             raise ValueError(msg)
+        # AIDEV-NOTE: table_name は直上の _VALID_TABLE_NAMES チェックで検証済み。
+        # PRAGMA はパラメータ化不可のため f-string を使用。
         rows = self._client.execute(f"PRAGMA table_info({table_name})")  # nosec B608
         return {row["name"]: row["type"] for row in rows}
 
@@ -538,7 +547,16 @@ class AlphaVantageStorage:
             ddl = _TABLE_DDL[table_name]
             ddl_types = {m.group(1): m.group(2) for m in _DDL_COLUMN_RE.finditer(ddl)}
             for col_name in sorted(missing):
+                if not _SAFE_IDENTIFIER_RE.match(col_name):
+                    logger.warning("Skipping unsafe column name", col_name=col_name)
+                    continue
                 col_type = ddl_types.get(col_name, "TEXT")
+                if col_type not in _SAFE_SQLITE_TYPES:
+                    logger.warning("Skipping unsafe column type", col_type=col_type)
+                    continue
+                # AIDEV-NOTE: table_name は _VALID_TABLE_NAMES（frozenset）で検証済み。
+                # col_name と col_type は静的 DDL 定数から抽出した値。
+                # PRAGMA / ALTER TABLE はパラメータ化不可のため f-string を使用。
                 alter_sql = f"ALTER TABLE {table_name} ADD COLUMN {col_name} {col_type}"  # nosec B608
                 self._client.execute(alter_sql)
                 logger.info(
@@ -598,6 +616,7 @@ class AlphaVantageStorage:
         """
         logger.debug("Getting table statistics")
         tables = sorted(_VALID_TABLE_NAMES)
+        # AIDEV-NOTE: tables は sorted(_VALID_TABLE_NAMES) 由来のため安全。
         union_sql = " UNION ALL ".join(
             f"SELECT '{tbl}' AS tbl, COUNT(*) AS cnt FROM {tbl}"  # nosec B608
             for tbl in tables

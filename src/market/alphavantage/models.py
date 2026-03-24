@@ -691,6 +691,8 @@ class QuarterlyEarningsRecord:
     fetched_at: str = ""
 
 
+# AIDEV-NOTE: PEP 695 の type 文は from __future__ import annotations との
+# 互換性未確定のため、従来形式の型エイリアスを使用。
 EarningsRecord = AnnualEarningsRecord | QuarterlyEarningsRecord
 """Type alias for earnings records (annual or quarterly)."""
 

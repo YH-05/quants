@@ -51,9 +51,21 @@ from market.alphavantage.models import (
     IncomeStatementRecord,
     QuarterlyEarningsRecord,
 )
+from market.alphavantage.storage_constants import (
+    TABLE_BALANCE_SHEETS,
+    TABLE_CASH_FLOWS,
+    TABLE_COMPANY_OVERVIEW,
+    TABLE_DAILY_PRICES,
+    TABLE_EARNINGS,
+    TABLE_ECONOMIC_INDICATORS,
+    TABLE_FOREX_DAILY,
+    TABLE_INCOME_STATEMENTS,
+)
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
+
     from market.alphavantage.client import AlphaVantageClient
     from market.alphavantage.storage import AlphaVantageStorage
 
@@ -391,7 +403,7 @@ class AlphaVantageCollector:
                 logger.info("No daily price data returned", symbol=symbol)
                 return CollectionResult(
                     symbol=symbol,
-                    table="av_daily_prices",
+                    table=TABLE_DAILY_PRICES,
                     rows_upserted=0,
                     success=True,
                 )
@@ -402,7 +414,7 @@ class AlphaVantageCollector:
             logger.info("Daily prices collected", symbol=symbol, rows=count)
             return CollectionResult(
                 symbol=symbol,
-                table="av_daily_prices",
+                table=TABLE_DAILY_PRICES,
                 rows_upserted=count,
                 success=True,
             )
@@ -410,7 +422,7 @@ class AlphaVantageCollector:
             logger.error("Failed to collect daily prices", symbol=symbol, exc_info=True)
             return CollectionResult(
                 symbol=symbol,
-                table="av_daily_prices",
+                table=TABLE_DAILY_PRICES,
                 rows_upserted=0,
                 success=False,
                 error_message=str(exc),
@@ -442,7 +454,7 @@ class AlphaVantageCollector:
                 logger.info("No overview data returned", symbol=symbol)
                 return CollectionResult(
                     symbol=symbol,
-                    table="av_company_overview",
+                    table=TABLE_COMPANY_OVERVIEW,
                     rows_upserted=0,
                     success=True,
                 )
@@ -453,7 +465,7 @@ class AlphaVantageCollector:
             logger.info("Company overview collected", symbol=symbol)
             return CollectionResult(
                 symbol=symbol,
-                table="av_company_overview",
+                table=TABLE_COMPANY_OVERVIEW,
                 rows_upserted=count,
                 success=True,
             )
@@ -463,7 +475,7 @@ class AlphaVantageCollector:
             )
             return CollectionResult(
                 symbol=symbol,
-                table="av_company_overview",
+                table=TABLE_COMPANY_OVERVIEW,
                 rows_upserted=0,
                 success=False,
                 error_message=str(exc),
@@ -486,39 +498,14 @@ class AlphaVantageCollector:
         CollectionResult
             Result with rows_upserted count and success status.
         """
-        logger.info("Collecting income statement", symbol=symbol)
-        try:
-            fetched_at = datetime.now(tz=UTC).isoformat()
-            total = 0
-
-            for report_type in ("annualReports", "quarterlyReports"):
-                df = self._client.get_income_statement(symbol, report_type=report_type)
-                if df.empty:
-                    continue
-                period = "annual" if report_type == "annualReports" else "quarterly"
-                records = _financial_df_to_income_records(
-                    df, symbol, period, fetched_at
-                )
-                total += self._storage.upsert_income_statements(records)
-
-            logger.info("Income statement collected", symbol=symbol, rows=total)
-            return CollectionResult(
-                symbol=symbol,
-                table="av_income_statements",
-                rows_upserted=total,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect income statement", symbol=symbol, exc_info=True
-            )
-            return CollectionResult(
-                symbol=symbol,
-                table="av_income_statements",
-                rows_upserted=0,
-                success=False,
-                error_message=str(exc),
-            )
+        return self._collect_financial_statement(
+            symbol=symbol,
+            label="income statement",
+            client_method=self._client.get_income_statement,
+            df_to_records_fn=_financial_df_to_income_records,
+            upsert_fn=self._storage.upsert_income_statements,
+            table_name=TABLE_INCOME_STATEMENTS,
+        )
 
     # ------------------------------------------------------------------
     # collect_balance_sheet
@@ -537,39 +524,14 @@ class AlphaVantageCollector:
         CollectionResult
             Result with rows_upserted count and success status.
         """
-        logger.info("Collecting balance sheet", symbol=symbol)
-        try:
-            fetched_at = datetime.now(tz=UTC).isoformat()
-            total = 0
-
-            for report_type in ("annualReports", "quarterlyReports"):
-                df = self._client.get_balance_sheet(symbol, report_type=report_type)
-                if df.empty:
-                    continue
-                period = "annual" if report_type == "annualReports" else "quarterly"
-                records = _financial_df_to_balance_records(
-                    df, symbol, period, fetched_at
-                )
-                total += self._storage.upsert_balance_sheets(records)
-
-            logger.info("Balance sheet collected", symbol=symbol, rows=total)
-            return CollectionResult(
-                symbol=symbol,
-                table="av_balance_sheets",
-                rows_upserted=total,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect balance sheet", symbol=symbol, exc_info=True
-            )
-            return CollectionResult(
-                symbol=symbol,
-                table="av_balance_sheets",
-                rows_upserted=0,
-                success=False,
-                error_message=str(exc),
-            )
+        return self._collect_financial_statement(
+            symbol=symbol,
+            label="balance sheet",
+            client_method=self._client.get_balance_sheet,
+            df_to_records_fn=_financial_df_to_balance_records,
+            upsert_fn=self._storage.upsert_balance_sheets,
+            table_name=TABLE_BALANCE_SHEETS,
+        )
 
     # ------------------------------------------------------------------
     # collect_cash_flow
@@ -588,33 +550,79 @@ class AlphaVantageCollector:
         CollectionResult
             Result with rows_upserted count and success status.
         """
-        logger.info("Collecting cash flow", symbol=symbol)
+        return self._collect_financial_statement(
+            symbol=symbol,
+            label="cash flow",
+            client_method=self._client.get_cash_flow,
+            df_to_records_fn=_financial_df_to_cashflow_records,
+            upsert_fn=self._storage.upsert_cash_flows,
+            table_name=TABLE_CASH_FLOWS,
+        )
+
+    # ------------------------------------------------------------------
+    # _collect_financial_statement (shared helper)
+    # ------------------------------------------------------------------
+
+    def _collect_financial_statement(
+        self,
+        symbol: str,
+        label: str,
+        client_method: Callable[[str], pd.DataFrame],
+        df_to_records_fn: Callable[[pd.DataFrame, str, str, str], list[Any]],
+        upsert_fn: Callable[[list[Any]], int],
+        table_name: str,
+    ) -> CollectionResult:
+        """Collect financial statement data (annual + quarterly) and persist.
+
+        Internal helper that extracts the common pattern shared by
+        ``collect_income_statement``, ``collect_balance_sheet``, and
+        ``collect_cash_flow``.
+
+        Parameters
+        ----------
+        symbol : str
+            Stock ticker symbol.
+        label : str
+            Human-readable label for logging (e.g. ``"income statement"``).
+        client_method : Callable
+            Client method to call with ``(symbol, report_type=...)``.
+        df_to_records_fn : Callable
+            Converter from DataFrame to record list.
+        upsert_fn : Callable
+            Storage upsert method.
+        table_name : str
+            Target table name constant.
+
+        Returns
+        -------
+        CollectionResult
+            Result with rows_upserted count and success status.
+        """
+        logger.info(f"Collecting {label}", symbol=symbol)
         try:
             fetched_at = datetime.now(tz=UTC).isoformat()
             total = 0
 
             for report_type in ("annualReports", "quarterlyReports"):
-                df = self._client.get_cash_flow(symbol, report_type=report_type)
+                df = client_method(symbol, report_type=report_type)
                 if df.empty:
                     continue
                 period = "annual" if report_type == "annualReports" else "quarterly"
-                records = _financial_df_to_cashflow_records(
-                    df, symbol, period, fetched_at
-                )
-                total += self._storage.upsert_cash_flows(records)
+                records = df_to_records_fn(df, symbol, period, fetched_at)
+                total += upsert_fn(records)
 
-            logger.info("Cash flow collected", symbol=symbol, rows=total)
+            logger.info(f"{label} collected", symbol=symbol, rows=total)
             return CollectionResult(
                 symbol=symbol,
-                table="av_cash_flows",
+                table=table_name,
                 rows_upserted=total,
                 success=True,
             )
         except Exception as exc:
-            logger.error("Failed to collect cash flow", symbol=symbol, exc_info=True)
+            logger.error(f"Failed to collect {label}", symbol=symbol, exc_info=True)
             return CollectionResult(
                 symbol=symbol,
-                table="av_cash_flows",
+                table=table_name,
                 rows_upserted=0,
                 success=False,
                 error_message=str(exc),
@@ -660,19 +668,19 @@ class AlphaVantageCollector:
             if not records:
                 logger.info("No earnings data returned", symbol=symbol)
                 return CollectionResult(
-                    symbol=symbol, table="av_earnings", rows_upserted=0, success=True
+                    symbol=symbol, table=TABLE_EARNINGS, rows_upserted=0, success=True
                 )
 
             count = self._storage.upsert_earnings(records)
             logger.info("Earnings collected", symbol=symbol, rows=count)
             return CollectionResult(
-                symbol=symbol, table="av_earnings", rows_upserted=count, success=True
+                symbol=symbol, table=TABLE_EARNINGS, rows_upserted=count, success=True
             )
         except Exception as exc:
             logger.error("Failed to collect earnings", symbol=symbol, exc_info=True)
             return CollectionResult(
                 symbol=symbol,
-                table="av_earnings",
+                table=TABLE_EARNINGS,
                 rows_upserted=0,
                 success=False,
                 error_message=str(exc),
@@ -713,7 +721,7 @@ class AlphaVantageCollector:
                     results.append(
                         CollectionResult(
                             symbol=indicator,
-                            table="av_economic_indicators",
+                            table=TABLE_ECONOMIC_INDICATORS,
                             rows_upserted=0,
                             success=True,
                         )
@@ -729,7 +737,7 @@ class AlphaVantageCollector:
                 results.append(
                     CollectionResult(
                         symbol=indicator,
-                        table="av_economic_indicators",
+                        table=TABLE_ECONOMIC_INDICATORS,
                         rows_upserted=count,
                         success=True,
                     )
@@ -743,7 +751,7 @@ class AlphaVantageCollector:
                 results.append(
                     CollectionResult(
                         symbol=indicator,
-                        table="av_economic_indicators",
+                        table=TABLE_ECONOMIC_INDICATORS,
                         rows_upserted=0,
                         success=False,
                         error_message=str(exc),
@@ -816,7 +824,7 @@ class AlphaVantageCollector:
             if df.empty:
                 logger.info("No forex data returned", pair=pair)
                 return CollectionResult(
-                    symbol=pair, table="av_forex_daily", rows_upserted=0, success=True
+                    symbol=pair, table=TABLE_FOREX_DAILY, rows_upserted=0, success=True
                 )
 
             fetched_at = datetime.now(tz=UTC).isoformat()
@@ -824,13 +832,13 @@ class AlphaVantageCollector:
             count = self._storage.upsert_forex_daily(records)
             logger.info("Forex daily collected", pair=pair, rows=count)
             return CollectionResult(
-                symbol=pair, table="av_forex_daily", rows_upserted=count, success=True
+                symbol=pair, table=TABLE_FOREX_DAILY, rows_upserted=count, success=True
             )
         except Exception as exc:
             logger.error("Failed to collect forex daily", pair=pair, exc_info=True)
             return CollectionResult(
                 symbol=pair,
-                table="av_forex_daily",
+                table=TABLE_FOREX_DAILY,
                 rows_upserted=0,
                 success=False,
                 error_message=str(exc),
@@ -1517,5 +1525,4 @@ __all__ = [
     "AlphaVantageCollector",
     "CollectionResult",
     "CollectionSummary",
-    "_camel_to_snake",
 ]

@@ -283,13 +283,13 @@ class TestValidateFinite:
     """Tests for _validate_finite helper."""
 
     def test_正常系_有限値がそのまま返される(self) -> None:
-        assert _validate_finite(42.0, "test") == 42.0
+        assert _validate_finite(42.0, "test") == pytest.approx(42.0)
 
     def test_正常系_Noneがそのまま返される(self) -> None:
         assert _validate_finite(None, "test") is None
 
     def test_正常系_ゼロがそのまま返される(self) -> None:
-        assert _validate_finite(0.0, "test") == 0.0
+        assert _validate_finite(0.0, "test") == pytest.approx(0.0)
 
     def test_異常系_NaNでValueError(self) -> None:
         with pytest.raises(ValueError, match="must be finite"):
@@ -451,7 +451,7 @@ class TestUpsertDailyPrices:
         av_storage.upsert_daily_prices([updated])
         df = av_storage.get_daily_prices("AAPL")
         assert len(df) == 1
-        assert df.iloc[0]["close"] == 160.0
+        assert df.iloc[0]["close"] == pytest.approx(160.0)
 
     def test_エッジケース_空リストで0行upsert(
         self, av_storage: AlphaVantageStorage
@@ -469,7 +469,7 @@ class TestUpsertDailyPrices:
 class TestUpsertCompanyOverview:
     """Tests for upsert_company_overview method."""
 
-    def test_正常系_全42カラムが保存される(
+    def test_正常系_全フィールドが保存される(
         self, av_storage: AlphaVantageStorage
     ) -> None:
         record = _make_company_overview()
@@ -480,9 +480,9 @@ class TestUpsertCompanyOverview:
         assert result is not None
         assert result.symbol == "AAPL"
         assert result.name == "Apple Inc"
-        assert result.market_capitalization == 3_000_000_000_000.0
-        assert result.pe_ratio == 33.5
-        assert result.beta == 1.2
+        assert result.market_capitalization == pytest.approx(3_000_000_000_000.0)
+        assert result.pe_ratio == pytest.approx(33.5)
+        assert result.beta == pytest.approx(1.2)
         assert result.fetched_at == FETCHED_AT
 
     def test_正常系_Noneフィールドが保存される(
@@ -507,7 +507,7 @@ class TestUpsertCompanyOverview:
         av_storage.upsert_company_overview(updated)
         result = av_storage.get_company_overview("AAPL")
         assert result is not None
-        assert result.pe_ratio == 35.0
+        assert result.pe_ratio == pytest.approx(35.0)
 
 
 # =============================================================================

@@ -19,6 +19,9 @@ from market.alphavantage.collector import (
     CollectionResult,
     CollectionSummary,
     _camel_to_snake,
+    _safe_float,
+    _safe_int,
+    _safe_str,
 )
 
 # ============================================================================
@@ -416,11 +419,11 @@ class TestCollectCompanyOverview:
         record = mock_storage.upsert_company_overview.call_args[0][0]
         assert record.symbol == "AAPL"
         assert record.name == "Apple Inc"
-        assert record.market_capitalization == 3435123456789.0
-        assert record.pe_ratio == 33.5
-        assert record.week_52_high == 260.1
-        assert record.week_52_low == 164.08
-        assert record.ebitda == 130541000000.0
+        assert record.market_capitalization == pytest.approx(3435123456789.0)
+        assert record.pe_ratio == pytest.approx(33.5)
+        assert record.week_52_high == pytest.approx(260.1)
+        assert record.week_52_low == pytest.approx(164.08)
+        assert record.ebitda == pytest.approx(130541000000.0)
 
     def test_正常系_空データで成功(
         self,
@@ -486,13 +489,13 @@ class TestCollectEarnings:
 
         # Check annual record
         assert annual_records[0].period_type == "annual"
-        assert annual_records[0].reported_eps == 6.88
+        assert annual_records[0].reported_eps == pytest.approx(6.88)
 
         # Check quarterly record
         assert quarterly_records[0].period_type == "quarterly"
-        assert quarterly_records[0].reported_eps == 2.40
-        assert quarterly_records[0].estimated_eps == 2.35
-        assert quarterly_records[0].surprise == 0.05
+        assert quarterly_records[0].reported_eps == pytest.approx(2.40)
+        assert quarterly_records[0].estimated_eps == pytest.approx(2.35)
+        assert quarterly_records[0].surprise == pytest.approx(0.05)
         assert quarterly_records[0].reported_date == "2026-01-30"
 
     def test_正常系_空earnings(
@@ -793,3 +796,71 @@ class TestCollectorDI:
         collector = AlphaVantageCollector(client=mock_client, storage=mock_storage)
         collector.collect_daily("AAPL")
         mock_client.get_daily.assert_called_once()
+
+
+# ============================================================================
+# TestSafeFloat
+# ============================================================================
+
+
+class TestSafeFloat:
+    """_safe_float のテスト。"""
+
+    def test_正常系_数値が変換される(self) -> None:
+        assert _safe_float(42.0) == pytest.approx(42.0)
+        assert _safe_float(0.0) == pytest.approx(0.0)
+        assert _safe_float("3.14") == pytest.approx(3.14)
+        assert _safe_float(100) == pytest.approx(100.0)
+
+    def test_正常系_Noneを返す(self) -> None:
+        assert _safe_float(None) is None
+        assert _safe_float(float("nan")) is None
+        assert _safe_float("N/A") is None
+        assert _safe_float("None") is None
+        assert _safe_float("-") is None
+        assert _safe_float("") is None
+
+    def test_エッジケース_infinity(self) -> None:
+        # pd.isna(inf) returns False, so _safe_float returns inf as-is
+        result = _safe_float(float("inf"))
+        assert result == float("inf")
+
+
+# ============================================================================
+# TestSafeInt
+# ============================================================================
+
+
+class TestSafeInt:
+    """_safe_int のテスト。"""
+
+    def test_正常系_数値が変換される(self) -> None:
+        assert _safe_int(42) == 42
+        assert _safe_int(42.7) == 42
+        assert _safe_int("100") == 100
+
+    def test_正常系_0を返す(self) -> None:
+        assert _safe_int(None) == 0
+        assert _safe_int(float("nan")) == 0
+        assert _safe_int("N/A") == 0
+        assert _safe_int("-") == 0
+        assert _safe_int("") == 0
+
+
+# ============================================================================
+# TestSafeStr
+# ============================================================================
+
+
+class TestSafeStr:
+    """_safe_str のテスト。"""
+
+    def test_正常系_文字列が変換される(self) -> None:
+        assert _safe_str("hello") == "hello"
+        assert _safe_str(42) == "42"
+
+    def test_正常系_Noneを返す(self) -> None:
+        assert _safe_str(None) is None
+        assert _safe_str("None") is None
+        assert _safe_str("nan") is None
+        assert _safe_str("") is None

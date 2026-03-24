@@ -19,6 +19,7 @@ tests.market.alphavantage.property.test_parser_property : Similar pattern.
 
 from __future__ import annotations
 
+import tempfile
 from pathlib import Path
 
 from hypothesis import given, settings
@@ -68,19 +69,13 @@ optional_floats = st.one_of(
 # =============================================================================
 
 
-_counter = 0
-
-
 def _make_storage() -> AlphaVantageStorage:
     """Create a temporary AlphaVantageStorage backed by a unique temp file."""
-    global _counter
-    _counter += 1
-    import os
-    import tempfile
-
-    tmp_dir = Path(tempfile.gettempdir())
-    db_path = tmp_dir / f"av_prop_test_{os.getpid()}_{_counter}.db"
-    return AlphaVantageStorage(db_path=db_path)
+    tmpdir = tempfile.mkdtemp(prefix="av_prop_test_")
+    path = Path(tmpdir) / "test.db"
+    storage = AlphaVantageStorage(db_path=path)
+    storage.ensure_tables()
+    return storage
 
 
 # =============================================================================
