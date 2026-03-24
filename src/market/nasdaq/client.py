@@ -45,28 +45,36 @@ from market.cache.cache import generate_cache_key
 from market.nasdaq.client_cache import (
     DIVIDENDS_CALENDAR_TTL,
     EARNINGS_CALENDAR_TTL,
+    ETF_SCREENER_TTL,
     IPO_CALENDAR_TTL,
+    MARKET_MOVERS_TTL,
     SPLITS_CALENDAR_TTL,
     get_nasdaq_cache,
 )
 from market.nasdaq.client_parsers import (
     parse_dividends_calendar,
     parse_earnings_calendar,
+    parse_etf_screener,
     parse_ipo_calendar,
+    parse_market_movers,
     parse_splits_calendar,
     unwrap_envelope,
 )
 from market.nasdaq.client_types import (
     DividendCalendarRecord,
     EarningsRecord,
+    EtfRecord,
     IpoRecord,
+    MarketMover,
     NasdaqFetchOptions,
     SplitRecord,
 )
 from market.nasdaq.constants import (
     DIVIDENDS_CALENDAR_URL,
     EARNINGS_CALENDAR_URL,
+    ETF_SCREENER_URL,
     IPO_CALENDAR_URL,
+    MARKET_MOVERS_URL,
     NASDAQ_API_BASE,
     SPLITS_CALENDAR_URL,
 )
@@ -490,6 +498,88 @@ class NasdaqClient:
             ttl=IPO_CALENDAR_TTL,
             options=options,
             params={"date": year_month},
+        )
+
+    # =========================================================================
+    # Market Movers / ETF Endpoints
+    # =========================================================================
+
+    def get_market_movers(
+        self,
+        options: NasdaqFetchOptions | None = None,
+    ) -> dict[str, list[MarketMover]]:
+        """Fetch market movers data (gainers, losers, most active).
+
+        Parameters
+        ----------
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        dict[str, list[MarketMover]]
+            A dictionary keyed by section name (``"most_advanced"``,
+            ``"most_declined"``, ``"most_active"``), each mapping to a
+            list of ``MarketMover`` records.
+
+        Raises
+        ------
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     movers = client.get_market_movers()
+        ...     gainers = movers["most_advanced"]
+        """
+        cache_key = "nasdaq:market_movers"
+        return self._fetch_and_parse(
+            url=MARKET_MOVERS_URL,
+            cache_key=cache_key,
+            parser=parse_market_movers,
+            ttl=MARKET_MOVERS_TTL,
+            options=options,
+        )
+
+    def get_etf_screener(
+        self,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[EtfRecord]:
+        """Fetch ETF screener data.
+
+        Parameters
+        ----------
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[EtfRecord]
+            List of ETF records from the screener.
+
+        Raises
+        ------
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     etfs = client.get_etf_screener()
+        """
+        cache_key = "nasdaq:etf_screener"
+        return self._fetch_and_parse(
+            url=ETF_SCREENER_URL,
+            cache_key=cache_key,
+            parser=parse_etf_screener,
+            ttl=ETF_SCREENER_TTL,
+            options=options,
+            params={"limit": "0"},
         )
 
 

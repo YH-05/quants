@@ -260,6 +260,20 @@ COMPANY_PROFILE_URL: Final[str] = (
 Use ``COMPANY_PROFILE_URL.format(symbol="AAPL")`` to construct the URL.
 """
 
+MARKET_MOVERS_URL: Final[str] = f"{NASDAQ_API_BASE}/marketmovers"
+"""URL for the NASDAQ Market Movers API endpoint.
+
+Returns most advanced (gainers), most declined (losers), and most active
+(highest volume) stocks.
+"""
+
+ETF_SCREENER_URL: Final[str] = f"{NASDAQ_API_BASE}/screener/etf"
+"""URL for the NASDAQ ETF Screener API endpoint.
+
+Accepts GET requests with optional query parameters for filtering ETFs.
+Use ``limit=0`` to retrieve all matching records.
+"""
+
 # ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
@@ -278,9 +292,11 @@ __all__ = [
     "DEFAULT_USER_AGENTS",
     "DIVIDENDS_CALENDAR_URL",
     "EARNINGS_CALENDAR_URL",
+    "ETF_SCREENER_URL",
     "INSIDER_TRADES_URL",
     "INSTITUTIONAL_HOLDINGS_URL",
     "IPO_CALENDAR_URL",
+    "MARKET_MOVERS_URL",
     "NASDAQ_API_BASE",
     "NASDAQ_SCREENER_URL",
     "SEC_FILINGS_URL",

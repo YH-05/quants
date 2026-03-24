@@ -24,6 +24,7 @@ market.nasdaq.client_parsers : Parsers that produce these record types.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import Enum
 
 
 @dataclass(frozen=True)
@@ -212,10 +213,138 @@ class IpoRecord:
     shares_offered: str | None = None
 
 
+# =============================================================================
+# Market Movers Types
+# =============================================================================
+
+
+class MoverSection(str, Enum):
+    """Section identifier for market movers data.
+
+    The NASDAQ Market Movers endpoint returns three sections:
+    most advanced (gainers), most declined (losers), and most active
+    (highest volume).
+
+    Attributes
+    ----------
+    MOST_ADVANCED : str
+        Stocks with the largest price increases.
+    MOST_DECLINED : str
+        Stocks with the largest price decreases.
+    MOST_ACTIVE : str
+        Stocks with the highest trading volume.
+
+    Examples
+    --------
+    >>> MoverSection.MOST_ADVANCED.value
+    'most_advanced'
+    >>> MoverSection("most_declined")
+    <MoverSection.MOST_DECLINED: 'most_declined'>
+    """
+
+    MOST_ADVANCED = "most_advanced"
+    MOST_DECLINED = "most_declined"
+    MOST_ACTIVE = "most_active"
+
+
+@dataclass(frozen=True)
+class MarketMover:
+    """A single record from the NASDAQ Market Movers endpoint.
+
+    All fields are stored as raw strings from the API response.
+    Numeric conversion is deferred to downstream consumers.
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    name : str | None
+        Company name.
+    price : str | None
+        Last sale price (e.g. ``"$227.63"``).
+    change : str | None
+        Price change (e.g. ``"2.50"`` or ``"-1.95"``).
+    change_percent : str | None
+        Percentage change (e.g. ``"1.11%"`` or ``"-0.85%"``).
+    volume : str | None
+        Trading volume (e.g. ``"48,123,456"``).
+
+    Examples
+    --------
+    >>> record = MarketMover(symbol="AAPL", name="Apple Inc.")
+    >>> record.symbol
+    'AAPL'
+    """
+
+    symbol: str
+    name: str | None = None
+    price: str | None = None
+    change: str | None = None
+    change_percent: str | None = None
+    volume: str | None = None
+
+
+# =============================================================================
+# ETF Screener Types
+# =============================================================================
+
+
+@dataclass(frozen=True)
+class EtfRecord:
+    """A single record from the NASDAQ ETF Screener endpoint.
+
+    All fields are stored as raw strings from the API response.
+    Numeric conversion is deferred to downstream consumers.
+
+    Parameters
+    ----------
+    symbol : str
+        ETF ticker symbol (e.g. ``"SPY"``).
+    name : str | None
+        ETF name (e.g. ``"SPDR S&P 500 ETF Trust"``).
+    last_sale : str | None
+        Last sale price (e.g. ``"$590.50"``).
+    net_change : str | None
+        Net price change (e.g. ``"-2.30"``).
+    pct_change : str | None
+        Percentage change (e.g. ``"-0.39%"``).
+    volume : str | None
+        Trading volume (e.g. ``"48,123,456"``).
+    country : str | None
+        Country of domicile (e.g. ``"United States"``).
+    sector : str | None
+        Sector classification.
+    industry : str | None
+        Industry classification.
+    url : str | None
+        NASDAQ URL path for the ETF.
+
+    Examples
+    --------
+    >>> record = EtfRecord(symbol="SPY", name="SPDR S&P 500 ETF Trust")
+    >>> record.symbol
+    'SPY'
+    """
+
+    symbol: str
+    name: str | None = None
+    last_sale: str | None = None
+    net_change: str | None = None
+    pct_change: str | None = None
+    volume: str | None = None
+    country: str | None = None
+    sector: str | None = None
+    industry: str | None = None
+    url: str | None = None
+
+
 __all__ = [
     "DividendCalendarRecord",
     "EarningsRecord",
+    "EtfRecord",
     "IpoRecord",
+    "MarketMover",
+    "MoverSection",
     "NasdaqFetchOptions",
     "SplitRecord",
 ]

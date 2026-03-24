@@ -30,7 +30,10 @@ from typing import Any
 from market.nasdaq.client_types import (
     DividendCalendarRecord,
     EarningsRecord,
+    EtfRecord,
     IpoRecord,
+    MarketMover,
+    MoverSection,
     SplitRecord,
 )
 from market.nasdaq.errors import NasdaqAPIError, NasdaqParseError
@@ -480,6 +483,156 @@ def parse_ipo_calendar(data: dict[str, Any]) -> list[IpoRecord]:
     return result
 
 
+# ---------------------------------------------------------------------------
+# Market Movers parser
+# ---------------------------------------------------------------------------
+
+_MOVER_SECTION_KEYS: dict[str, MoverSection] = {
+    "MostAdvanced": MoverSection.MOST_ADVANCED,
+    "MostDeclined": MoverSection.MOST_DECLINED,
+    "MostActive": MoverSection.MOST_ACTIVE,
+}
+"""Mapping from NASDAQ API section keys to ``MoverSection`` enum values."""
+
+
+def parse_market_movers(
+    data: dict[str, Any],
+) -> dict[str, list[MarketMover]]:
+    """Parse market movers endpoint data into a section-keyed dictionary.
+
+    Expected structure::
+
+        {
+            "MostAdvanced": {
+                "rows": [
+                    {
+                        "symbol": "AAPL",
+                        "name": "Apple Inc.",
+                        "lastSale": "$230.00",
+                        "netChange": "5.00",
+                        "percentageChange": "2.22%",
+                        "volume": "48,123,456"
+                    }, ...
+                ]
+            },
+            "MostDeclined": { "rows": [...] },
+            "MostActive": { "rows": [...] }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the market movers endpoint.
+
+    Returns
+    -------
+    dict[str, list[MarketMover]]
+        A dictionary keyed by ``MoverSection`` value strings
+        (``"most_advanced"``, ``"most_declined"``, ``"most_active"``),
+        each mapping to a list of ``MarketMover`` records.
+
+    Raises
+    ------
+    NasdaqParseError
+        If ``rows`` in any section exists but is not a list.
+    """
+    result: dict[str, list[MarketMover]] = {}
+
+    for api_key, section in _MOVER_SECTION_KEYS.items():
+        rows = _extract_rows(data, api_key, "rows")
+        movers: list[MarketMover] = []
+        for row in rows:
+            record = MarketMover(
+                symbol=row.get("symbol", ""),
+                name=row.get("name"),
+                price=row.get("lastSale"),
+                change=row.get("netChange"),
+                change_percent=row.get("percentageChange"),
+                volume=row.get("volume"),
+            )
+            movers.append(record)
+        result[section.value] = movers
+
+    total = sum(len(v) for v in result.values())
+    if total == 0:
+        logger.debug("No market movers rows to parse")
+    else:
+        logger.info("Market movers parsed", total_records=total)
+
+    return result
+
+
+# ---------------------------------------------------------------------------
+# ETF Screener parser
+# ---------------------------------------------------------------------------
+
+
+def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
+    """Parse ETF screener endpoint data into ``EtfRecord`` list.
+
+    Expected structure::
+
+        {
+            "table": {
+                "rows": [
+                    {
+                        "symbol": "SPY",
+                        "name": "SPDR S&P 500 ETF Trust",
+                        "lastsale": "$590.50",
+                        "netchange": "-2.30",
+                        "pctchange": "-0.39%",
+                        "volume": "48,123,456",
+                        "country": "United States",
+                        "sector": "",
+                        "industry": "",
+                        "url": "/market-activity/funds-and-etfs/spy"
+                    }, ...
+                ]
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the ETF screener endpoint.
+
+    Returns
+    -------
+    list[EtfRecord]
+        Parsed ETF records, or an empty list if no rows are present.
+
+    Raises
+    ------
+    NasdaqParseError
+        If ``table.rows`` exists but is not a list.
+    """
+    rows = _extract_rows(data, "table", "rows")
+    if not rows:
+        logger.debug("No ETF screener rows to parse")
+        return []
+
+    logger.debug("Parsing ETF screener rows", row_count=len(rows))
+
+    result: list[EtfRecord] = []
+    for row in rows:
+        record = EtfRecord(
+            symbol=row.get("symbol", ""),
+            name=row.get("name"),
+            last_sale=row.get("lastsale"),
+            net_change=row.get("netchange"),
+            pct_change=row.get("pctchange"),
+            volume=row.get("volume"),
+            country=row.get("country"),
+            sector=row.get("sector"),
+            industry=row.get("industry"),
+            url=row.get("url"),
+        )
+        result.append(record)
+
+    logger.info("ETF screener parsed", record_count=len(result))
+    return result
+
+
 __all__ = [
     "clean_market_cap",
     "clean_percentage",
@@ -487,7 +640,9 @@ __all__ = [
     "clean_volume",
     "parse_dividends_calendar",
     "parse_earnings_calendar",
+    "parse_etf_screener",
     "parse_ipo_calendar",
+    "parse_market_movers",
     "parse_splits_calendar",
     "unwrap_envelope",
 ]

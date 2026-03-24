@@ -92,6 +92,19 @@ ANALYST_FORECAST_TTL: Final[int] = 86400
 Analyst forecasts are updated infrequently; daily refresh is appropriate.
 """
 
+MARKET_MOVERS_TTL: Final[int] = 300
+"""TTL for market movers data (5 minutes).
+
+Market movers data changes frequently during market hours; frequent
+refresh is needed for timely gainers/losers/most active information.
+"""
+
+ETF_SCREENER_TTL: Final[int] = 3600
+"""TTL for ETF screener data (1 hour).
+
+ETF screener results change less frequently than real-time quotes.
+"""
+
 
 def get_nasdaq_cache() -> SQLiteCache:
     """Get a SQLiteCache instance configured for NASDAQ API data.
@@ -121,9 +134,11 @@ __all__ = [
     "ANALYST_FORECAST_TTL",
     "DIVIDENDS_CALENDAR_TTL",
     "EARNINGS_CALENDAR_TTL",
+    "ETF_SCREENER_TTL",
     "INSIDER_TRADES_TTL",
     "INSTITUTIONAL_HOLDINGS_TTL",
     "IPO_CALENDAR_TTL",
+    "MARKET_MOVERS_TTL",
     "SEC_FILINGS_TTL",
     "SPLITS_CALENDAR_TTL",
     "STOCK_CHART_TTL",
