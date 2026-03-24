@@ -2,9 +2,8 @@
 
 This module provides reusable fixtures for testing the Alpha Vantage API
 module, including zero-delay configurations, mock HTTP responses, mock
-sessions, and complete Alpha Vantage API JSON response mocks.  These
-fixtures are designed to be shared across all test directories
-(unit, property, integration).
+sessions, complete Alpha Vantage API JSON response mocks, and storage
+fixtures for database testing.
 
 Fixtures
 --------
@@ -25,18 +24,23 @@ sample_economic_indicator_response : dict[str, object]
 mock_alphavantage_session : MagicMock
     MagicMock simulating an Alpha Vantage session with pre-configured
     get/get_with_retry methods.
+av_storage : AlphaVantageStorage
+    Temporary ``AlphaVantageStorage`` instance with all 8 tables ensured.
 
 See Also
 --------
 tests.market.conftest : Parent-level market package fixtures.
 market.alphavantage.types : AlphaVantageConfig and RetryConfig definitions.
 tests.market.nasdaq.conftest : Similar fixture pattern for the NASDAQ module.
+tests.market.polymarket.conftest : Similar storage fixture pattern.
 """
 
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
 
+from market.alphavantage.storage import AlphaVantageStorage
 from market.alphavantage.types import AlphaVantageConfig, RetryConfig
 
 # =============================================================================
@@ -338,3 +342,30 @@ def mock_alphavantage_session(
     session.__enter__ = MagicMock(return_value=session)
     session.__exit__ = MagicMock(return_value=False)
     return session
+
+
+# =============================================================================
+# Storage fixtures
+# =============================================================================
+
+
+@pytest.fixture()
+def av_storage(tmp_path: Path) -> AlphaVantageStorage:
+    """Create a temporary AlphaVantageStorage instance.
+
+    Uses ``tmp_path`` to create an isolated SQLite database file
+    that is automatically cleaned up after the test. All 8 tables
+    are created on initialization via ``ensure_tables()``.
+
+    Parameters
+    ----------
+    tmp_path : Path
+        Pytest-provided temporary directory path.
+
+    Returns
+    -------
+    AlphaVantageStorage
+        A configured storage instance pointing to a temporary database.
+    """
+    db_path = tmp_path / "alphavantage_test.db"
+    return AlphaVantageStorage(db_path=db_path)
