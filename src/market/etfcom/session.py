@@ -82,6 +82,11 @@ logger = get_logger(__name__)
 # HTTP status codes indicating bot-blocking
 _BLOCKED_STATUS_CODES: frozenset[int] = frozenset({403, 429})
 
+# Sensitive keys in the api-details response that must not leak to logs/exceptions
+_AUTH_SENSITIVE_KEYS: frozenset[str] = frozenset(
+    {"fundApiKey", "toolsApiKey", "oauthToken"}
+)
+
 # Required keys in the api-details response (Fix #12: defined once as frozenset)
 _AUTH_REQUIRED_KEYS: frozenset[str] = frozenset(
     {
@@ -600,8 +605,7 @@ class ETFComSession:
         if missing_keys:
             # AIDEV-NOTE: Mask sensitive key names in response_body to
             # prevent leaking API keys (CWE-532).
-            _SENSITIVE_KEYS = {"fundApiKey", "toolsApiKey", "oauthToken"}
-            safe_keys = sorted(data.keys() - _SENSITIVE_KEYS)
+            safe_keys = sorted(data.keys() - _AUTH_SENSITIVE_KEYS)
             raise ETFComAPIError(
                 f"Missing required keys in api-details response: "
                 f"{', '.join(missing_keys)}",

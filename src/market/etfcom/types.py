@@ -81,7 +81,7 @@ class ScrapingConfig:
     impersonate: str = "chrome"
     timeout: float = DEFAULT_TIMEOUT
     headless: bool = True
-    stability_wait: float = 2.0
+    stability_wait: float = 2.0  # seconds; empirical minimum for JS-heavy ETF pages
     max_page_retries: int = 5
 
 

@@ -864,12 +864,10 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Intraday data is fetched and logged but not persisted
+    # to a separate table. Uses TABLE_NOT_PERSISTED sentinel.
     def _collect_intra_data(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect intraday data for a single ticker.
-
-        # AIDEV-NOTE: Intraday data is fetched and logged but not persisted
-        # to a separate table. Uses TABLE_NOT_PERSISTED sentinel.
-        """
+        """Collect intraday data for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_intra_data(ticker)
@@ -929,11 +927,9 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Spread chart data is fetched but not persisted.
     def _collect_spread_chart(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect spread chart data for a single ticker.
-
-        # AIDEV-NOTE: Spread chart data is fetched but not persisted.
-        """
+        """Collect spread chart data for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_spread_chart(ticker)
@@ -946,11 +942,9 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Premium chart data is fetched but not persisted.
     def _collect_premium_chart(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect premium chart data for a single ticker.
-
-        # AIDEV-NOTE: Premium chart data is fetched but not persisted.
-        """
+        """Collect premium chart data for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_premium_chart(ticker)
@@ -1025,11 +1019,9 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Comparison data is fetched but not persisted.
     def _collect_compare_ticker(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect competing ETF comparison data for a single ticker.
-
-        # AIDEV-NOTE: Comparison data is fetched but not persisted.
-        """
+        """Collect competing ETF comparison data for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_compare_ticker(ticker)
@@ -1059,14 +1051,12 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Portfolio management data is fetched but not persisted
+    # to a separate table.
     def _collect_portfolio_management(
         self, ticker: str, fetched_at: str
     ) -> CollectionResult:
-        """Collect portfolio management data for a single ticker.
-
-        # AIDEV-NOTE: Portfolio management data is fetched but not persisted
-        # to a separate table.
-        """
+        """Collect portfolio management data for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_portfolio_management(ticker)
@@ -1079,11 +1069,9 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Tax exposure data is fetched but not persisted.
     def _collect_tax_exposures(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect tax exposure data for a single ticker.
-
-        # AIDEV-NOTE: Tax exposure data is fetched but not persisted.
-        """
+        """Collect tax exposure data for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_tax_exposures(ticker)
@@ -1111,11 +1099,9 @@ class ETFComCollector:
             _action,
         )
 
+    # AIDEV-NOTE: Rankings data is fetched but not persisted.
     def _collect_rankings(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect fund rankings for a single ticker.
-
-        # AIDEV-NOTE: Rankings data is fetched but not persisted.
-        """
+        """Collect fund rankings for a single ticker."""
 
         def _action() -> int:
             raw = self._client.get_rankings(ticker)
