@@ -657,7 +657,7 @@ class TestGetFinancials:
     ) -> None:
         """Raise ValueError for invalid frequency values."""
         with pytest.raises(ValueError, match="frequency must be one of"):
-            nasdaq_client.get_financials("AAPL", frequency="invalid")
+            nasdaq_client.get_financials("AAPL", frequency="invalid")  # type: ignore[arg-type]
 
     def test_正常系_空データで空リストを返す(
         self,

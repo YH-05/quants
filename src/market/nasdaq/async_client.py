@@ -42,7 +42,7 @@ market.nasdaq.client_types : Record dataclasses used by both clients.
 from __future__ import annotations
 
 import asyncio
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Literal
 
 from market.nasdaq.client import NasdaqClient
 from utils_core.logging import get_logger
@@ -383,7 +383,7 @@ class AsyncNasdaqClient:
     async def get_financials(
         self,
         symbol: str,
-        frequency: str = "annual",
+        frequency: Literal["annual", "quarterly"] = "annual",
         options: NasdaqFetchOptions | None = None,
     ) -> FinancialStatement:
         """Fetch financial statements data for a symbol.
@@ -392,7 +392,7 @@ class AsyncNasdaqClient:
         ----------
         symbol : str
             Ticker symbol (e.g. ``"AAPL"``).
-        frequency : str
+        frequency : Literal["annual", "quarterly"]
             Data frequency (``"annual"`` or ``"quarterly"``).
         options : NasdaqFetchOptions | None
             Fetch options (cache control).
