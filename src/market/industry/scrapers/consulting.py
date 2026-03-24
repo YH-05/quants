@@ -34,7 +34,7 @@ Examples
 See Also
 --------
 market.industry.scrapers.base : BaseScraper abstract base class.
-market.etfcom.browser : ETFComBrowserMixin (Playwright fallback reference).
+market.etfcom.session : ETFComSession (curl_cffi + Cloudflare bypass reference).
 news.extractors.trafilatura : Trafilatura extraction reference.
 """
 

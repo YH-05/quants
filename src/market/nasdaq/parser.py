@@ -25,7 +25,7 @@ See Also
 market.nasdaq.constants : ``COLUMN_NAME_MAP`` used for column renaming.
 market.nasdaq.errors : ``NasdaqParseError`` raised on structural failures.
 market.nasdaq.types : ``StockRecord`` dataclass for raw row data.
-market.etfcom.collectors : Reference ``_camel_to_snake`` / ``_parse_response``.
+market.etfcom.parser : Reference ``_camel_to_snake`` / ``_normalize_record``.
 """
 
 from __future__ import annotations

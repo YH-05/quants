@@ -39,7 +39,7 @@ market.base_collector : DataCollector abstract base class.
 market.nasdaq.session : NasdaqSession with bot-blocking countermeasures.
 market.nasdaq.parser : JSON response parser and numeric cleaning.
 market.nasdaq.types : ScreenerFilter, FilterCategory, and related types.
-market.etfcom.collectors : Reference DataCollector implementations.
+market.etfcom.collector : Reference ETFComCollector implementation.
 """
 
 from __future__ import annotations
