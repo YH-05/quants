@@ -47,6 +47,7 @@ from market.nasdaq.client_cache import (
     ANALYST_FORECAST_TTL,
     ANALYST_RATINGS_TTL,
     ANALYST_TARGET_PRICE_TTL,
+    DIVIDEND_HISTORY_TTL,
     DIVIDENDS_CALENDAR_TTL,
     EARNINGS_CALENDAR_TTL,
     ETF_SCREENER_TTL,
@@ -55,11 +56,13 @@ from market.nasdaq.client_cache import (
     INSTITUTIONAL_HOLDINGS_TTL,
     IPO_CALENDAR_TTL,
     MARKET_MOVERS_TTL,
+    SHORT_INTEREST_TTL,
     SPLITS_CALENDAR_TTL,
     get_nasdaq_cache,
 )
 from market.nasdaq.client_parsers import (
     parse_analyst_ratings,
+    parse_dividend_history,
     parse_dividends_calendar,
     parse_earnings_calendar,
     parse_earnings_date,
@@ -70,6 +73,7 @@ from market.nasdaq.client_parsers import (
     parse_institutional_holdings,
     parse_ipo_calendar,
     parse_market_movers,
+    parse_short_interest,
     parse_splits_calendar,
     parse_target_price,
     unwrap_envelope,
@@ -78,6 +82,7 @@ from market.nasdaq.client_types import (
     AnalystRatings,
     AnalystSummary,
     DividendCalendarRecord,
+    DividendRecord,
     EarningsDate,
     EarningsForecast,
     EarningsRecord,
@@ -88,6 +93,7 @@ from market.nasdaq.client_types import (
     IpoRecord,
     MarketMover,
     NasdaqFetchOptions,
+    ShortInterestRecord,
     SplitRecord,
     TargetPrice,
 )
@@ -96,6 +102,7 @@ from market.nasdaq.constants import (
     ANALYST_FORECAST_URL,
     ANALYST_RATINGS_URL,
     ANALYST_TARGET_PRICE_URL,
+    DIVIDEND_HISTORY_URL,
     DIVIDENDS_CALENDAR_URL,
     EARNINGS_CALENDAR_URL,
     ETF_SCREENER_URL,
@@ -105,6 +112,7 @@ from market.nasdaq.constants import (
     IPO_CALENDAR_URL,
     MARKET_MOVERS_URL,
     NASDAQ_API_BASE,
+    SHORT_INTEREST_URL,
     SPLITS_CALENDAR_URL,
 )
 from market.nasdaq.session import NasdaqSession
@@ -609,6 +617,108 @@ class NasdaqClient:
             ttl=ETF_SCREENER_TTL,
             options=options,
             params={"limit": "0"},
+        )
+
+    # =========================================================================
+    # Quote Data Endpoints
+    # =========================================================================
+
+    def get_short_interest(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[ShortInterestRecord]:
+        """Fetch short interest data for a symbol.
+
+        Returns a list of short interest records including settlement date,
+        short interest shares, average daily volume, and days to cover.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[ShortInterestRecord]
+            List of short interest records.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     records = client.get_short_interest("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:quote:short_interest:{upper}"
+        url = SHORT_INTEREST_URL.format(symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parse_short_interest,
+            ttl=SHORT_INTEREST_TTL,
+            options=options,
+        )
+
+    def get_dividend_history(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[DividendRecord]:
+        """Fetch dividend history data for a symbol.
+
+        Returns a list of dividend records including ex-date, payment date,
+        record date, declaration date, dividend type, amount, and yield.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[DividendRecord]
+            List of dividend history records.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     dividends = client.get_dividend_history("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:quote:dividend_history:{upper}"
+        url = DIVIDEND_HISTORY_URL.format(symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parse_dividend_history,
+            ttl=DIVIDEND_HISTORY_TTL,
+            options=options,
         )
 
     # =========================================================================

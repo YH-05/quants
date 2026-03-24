@@ -118,6 +118,18 @@ Earnings date data may change more frequently closer to the announcement
 date; semi-daily refresh is appropriate.
 """
 
+SHORT_INTEREST_TTL: Final[int] = 86400
+"""TTL for short interest data (24 hours).
+
+Short interest data is reported bi-monthly; daily refresh is sufficient.
+"""
+
+DIVIDEND_HISTORY_TTL: Final[int] = 86400
+"""TTL for dividend history data (24 hours).
+
+Dividend history data changes infrequently; daily refresh is sufficient.
+"""
+
 MARKET_MOVERS_TTL: Final[int] = 300
 """TTL for market movers data (5 minutes).
 
@@ -162,6 +174,7 @@ __all__ = [
     "ANALYST_RATINGS_TTL",
     "ANALYST_TARGET_PRICE_TTL",
     "DIVIDENDS_CALENDAR_TTL",
+    "DIVIDEND_HISTORY_TTL",
     "EARNINGS_CALENDAR_TTL",
     "ETF_SCREENER_TTL",
     "FINANCIALS_TTL",
@@ -170,6 +183,7 @@ __all__ = [
     "IPO_CALENDAR_TTL",
     "MARKET_MOVERS_TTL",
     "SEC_FILINGS_TTL",
+    "SHORT_INTEREST_TTL",
     "SPLITS_CALENDAR_TTL",
     "STOCK_CHART_TTL",
     "STOCK_QUOTE_TTL",

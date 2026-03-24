@@ -582,6 +582,100 @@ class AnalystSummary:
 
 
 # =============================================================================
+# Quote Data Types
+# =============================================================================
+
+
+@dataclass(frozen=True)
+class ShortInterestRecord:
+    """A single record from the NASDAQ short interest endpoint.
+
+    All fields are stored as raw strings from the API response.
+    Numeric conversion is deferred to downstream consumers.
+
+    Parameters
+    ----------
+    settlement_date : str | None
+        Settlement date (e.g. ``"03/15/2026"``).
+    short_interest : str | None
+        Total short interest shares (e.g. ``"15,000,000"``).
+    avg_daily_volume : str | None
+        Average daily trading volume (e.g. ``"50,000,000"``).
+    days_to_cover : str | None
+        Days to cover (short interest ratio) (e.g. ``"0.30"``).
+    change : str | None
+        Change in short interest from prior period (e.g. ``"-500,000"``).
+    change_percent : str | None
+        Percentage change in short interest (e.g. ``"-3.23%"``).
+
+    Examples
+    --------
+    >>> record = ShortInterestRecord(
+    ...     settlement_date="03/15/2026",
+    ...     short_interest="15,000,000",
+    ...     avg_daily_volume="50,000,000",
+    ...     days_to_cover="0.30",
+    ...     change="-500,000",
+    ...     change_percent="-3.23%",
+    ... )
+    >>> record.settlement_date
+    '03/15/2026'
+    """
+
+    settlement_date: str | None = None
+    short_interest: str | None = None
+    avg_daily_volume: str | None = None
+    days_to_cover: str | None = None
+    change: str | None = None
+    change_percent: str | None = None
+
+
+@dataclass(frozen=True)
+class DividendRecord:
+    """A single record from the NASDAQ dividend history endpoint.
+
+    All fields are stored as raw strings from the API response.
+    Numeric conversion is deferred to downstream consumers.
+
+    Parameters
+    ----------
+    ex_date : str | None
+        Ex-dividend date (e.g. ``"02/07/2026"``).
+    payment_date : str | None
+        Payment date (e.g. ``"02/13/2026"``).
+    record_date : str | None
+        Record date (e.g. ``"02/10/2026"``).
+    declaration_date : str | None
+        Declaration date (e.g. ``"01/30/2026"``).
+    dividend_type : str | None
+        Dividend type (e.g. ``"Cash"``, ``"Stock"``).
+    amount : str | None
+        Dividend amount per share (e.g. ``"$0.25"``).
+    yield_ : str | None
+        Dividend yield percentage (e.g. ``"0.44%"``).
+
+    Examples
+    --------
+    >>> record = DividendRecord(
+    ...     ex_date="02/07/2026",
+    ...     payment_date="02/13/2026",
+    ...     amount="$0.25",
+    ...     dividend_type="Cash",
+    ... )
+    >>> record.ex_date
+    '02/07/2026'
+    """
+
+    ex_date: str | None = None
+    payment_date: str | None = None
+    record_date: str | None = None
+    declaration_date: str | None = None
+    dividend_type: str | None = None
+    amount: str | None = None
+    yield_: str | None = None
+
+
+# =============================================================================
 # Company Data Types
 # =============================================================================
 
@@ -755,6 +849,7 @@ __all__ = [
     "AnalystRatings",
     "AnalystSummary",
     "DividendCalendarRecord",
+    "DividendRecord",
     "EarningsDate",
     "EarningsForecast",
     "EarningsForecastPeriod",
@@ -769,6 +864,7 @@ __all__ = [
     "MoverSection",
     "NasdaqFetchOptions",
     "RatingCount",
+    "ShortInterestRecord",
     "SplitRecord",
     "TargetPrice",
 ]

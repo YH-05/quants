@@ -281,6 +281,18 @@ Use ``FINANCIALS_URL.format(symbol="AAPL")`` to construct the URL.
 Accepts ``frequency`` query parameter (``"annual"`` or ``"quarterly"``).
 """
 
+SHORT_INTEREST_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/short-interest"
+"""URL template for NASDAQ short interest endpoint.
+
+Use ``SHORT_INTEREST_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+DIVIDEND_HISTORY_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/dividends"
+"""URL template for NASDAQ dividend history endpoint.
+
+Use ``DIVIDEND_HISTORY_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
 COMPANY_PROFILE_URL: Final[str] = (
     f"{NASDAQ_API_BASE}/company/{{symbol}}/company-profile"
 )
@@ -323,6 +335,7 @@ __all__ = [
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",
     "DIVIDENDS_CALENDAR_URL",
+    "DIVIDEND_HISTORY_URL",
     "EARNINGS_CALENDAR_URL",
     "ETF_SCREENER_URL",
     "FINANCIALS_URL",
@@ -333,6 +346,7 @@ __all__ = [
     "NASDAQ_API_BASE",
     "NASDAQ_SCREENER_URL",
     "SEC_FILINGS_URL",
+    "SHORT_INTEREST_URL",
     "SPLITS_CALENDAR_URL",
     "STOCK_CHART_URL",
     "STOCK_QUOTE_URL",

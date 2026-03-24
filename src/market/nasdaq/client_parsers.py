@@ -30,6 +30,7 @@ from typing import Any
 from market.nasdaq.client_types import (
     AnalystRatings,
     DividendCalendarRecord,
+    DividendRecord,
     EarningsDate,
     EarningsForecast,
     EarningsForecastPeriod,
@@ -43,6 +44,7 @@ from market.nasdaq.client_types import (
     MarketMover,
     MoverSection,
     RatingCount,
+    ShortInterestRecord,
     SplitRecord,
     TargetPrice,
 )
@@ -1202,12 +1204,136 @@ def parse_financials(
     )
 
 
+# ---------------------------------------------------------------------------
+# Quote data parsers
+# ---------------------------------------------------------------------------
+
+
+def parse_short_interest(data: dict[str, Any]) -> list[ShortInterestRecord]:
+    """Parse short interest endpoint data into ``ShortInterestRecord`` list.
+
+    Expected structure::
+
+        {
+            "shortInterestTable": {
+                "rows": [
+                    {
+                        "settlementDate": "03/15/2026",
+                        "interest": "15,000,000",
+                        "averageDailyVolume": "50,000,000",
+                        "daysToCover": "0.30",
+                        "change": "-500,000",
+                        "changePct": "-3.23%"
+                    }, ...
+                ]
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the short interest endpoint.
+
+    Returns
+    -------
+    list[ShortInterestRecord]
+        Parsed short interest records, or an empty list if no rows are present.
+
+    Raises
+    ------
+    NasdaqParseError
+        If ``shortInterestTable.rows`` exists but is not a list.
+    """
+    rows = _extract_rows(data, "shortInterestTable", "rows")
+    if not rows:
+        logger.debug("No short interest rows to parse")
+        return []
+
+    logger.debug("Parsing short interest rows", row_count=len(rows))
+
+    result: list[ShortInterestRecord] = []
+    for row in rows:
+        record = ShortInterestRecord(
+            settlement_date=row.get("settlementDate"),
+            short_interest=row.get("interest"),
+            avg_daily_volume=row.get("averageDailyVolume"),
+            days_to_cover=row.get("daysToCover"),
+            change=row.get("change"),
+            change_percent=row.get("changePct"),
+        )
+        result.append(record)
+
+    logger.info("Short interest parsed", record_count=len(result))
+    return result
+
+
+def parse_dividend_history(data: dict[str, Any]) -> list[DividendRecord]:
+    """Parse dividend history endpoint data into ``DividendRecord`` list.
+
+    Expected structure::
+
+        {
+            "dividends": {
+                "rows": [
+                    {
+                        "exOrEffDate": "02/07/2026",
+                        "paymentDate": "02/13/2026",
+                        "recordDate": "02/10/2026",
+                        "declarationDate": "01/30/2026",
+                        "type": "Cash",
+                        "amount": "$0.25",
+                        "yield": "0.44%"
+                    }, ...
+                ]
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the dividend history endpoint.
+
+    Returns
+    -------
+    list[DividendRecord]
+        Parsed dividend records, or an empty list if no rows are present.
+
+    Raises
+    ------
+    NasdaqParseError
+        If ``dividends.rows`` exists but is not a list.
+    """
+    rows = _extract_rows(data, "dividends", "rows")
+    if not rows:
+        logger.debug("No dividend history rows to parse")
+        return []
+
+    logger.debug("Parsing dividend history rows", row_count=len(rows))
+
+    result: list[DividendRecord] = []
+    for row in rows:
+        record = DividendRecord(
+            ex_date=row.get("exOrEffDate"),
+            payment_date=row.get("paymentDate"),
+            record_date=row.get("recordDate"),
+            declaration_date=row.get("declarationDate"),
+            dividend_type=row.get("type"),
+            amount=row.get("amount"),
+            yield_=row.get("yield"),
+        )
+        result.append(record)
+
+    logger.info("Dividend history parsed", record_count=len(result))
+    return result
+
+
 __all__ = [
     "clean_market_cap",
     "clean_percentage",
     "clean_price",
     "clean_volume",
     "parse_analyst_ratings",
+    "parse_dividend_history",
     "parse_dividends_calendar",
     "parse_earnings_calendar",
     "parse_earnings_date",
@@ -1218,6 +1344,7 @@ __all__ = [
     "parse_institutional_holdings",
     "parse_ipo_calendar",
     "parse_market_movers",
+    "parse_short_interest",
     "parse_splits_calendar",
     "parse_target_price",
     "unwrap_envelope",

@@ -60,9 +60,9 @@ class TestModuleExports:
                 f"{name} is not defined in constants module"
             )
 
-    def test_正常系_allが29項目を含む(self) -> None:
-        """__all__ が全29定数をエクスポートしていること。"""
-        assert len(__all__) == 29
+    def test_正常系_allが31項目を含む(self) -> None:
+        """__all__ が全31定数をエクスポートしていること。"""
+        assert len(__all__) == 31
 
     def test_正常系_モジュールDocstringが存在する(self) -> None:
         """モジュールの docstring が存在すること。"""
