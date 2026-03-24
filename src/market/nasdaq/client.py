@@ -50,6 +50,9 @@ from market.nasdaq.client_cache import (
     DIVIDENDS_CALENDAR_TTL,
     EARNINGS_CALENDAR_TTL,
     ETF_SCREENER_TTL,
+    FINANCIALS_TTL,
+    INSIDER_TRADES_TTL,
+    INSTITUTIONAL_HOLDINGS_TTL,
     IPO_CALENDAR_TTL,
     MARKET_MOVERS_TTL,
     SPLITS_CALENDAR_TTL,
@@ -62,6 +65,9 @@ from market.nasdaq.client_parsers import (
     parse_earnings_date,
     parse_earnings_forecast,
     parse_etf_screener,
+    parse_financials,
+    parse_insider_trades,
+    parse_institutional_holdings,
     parse_ipo_calendar,
     parse_market_movers,
     parse_splits_calendar,
@@ -76,6 +82,9 @@ from market.nasdaq.client_types import (
     EarningsForecast,
     EarningsRecord,
     EtfRecord,
+    FinancialStatement,
+    InsiderTrade,
+    InstitutionalHolding,
     IpoRecord,
     MarketMover,
     NasdaqFetchOptions,
@@ -90,6 +99,9 @@ from market.nasdaq.constants import (
     DIVIDENDS_CALENDAR_URL,
     EARNINGS_CALENDAR_URL,
     ETF_SCREENER_URL,
+    FINANCIALS_URL,
+    INSIDER_TRADES_URL,
+    INSTITUTIONAL_HOLDINGS_URL,
     IPO_CALENDAR_URL,
     MARKET_MOVERS_URL,
     NASDAQ_API_BASE,
@@ -597,6 +609,166 @@ class NasdaqClient:
             ttl=ETF_SCREENER_TTL,
             options=options,
             params={"limit": "0"},
+        )
+
+    # =========================================================================
+    # Company Data Endpoints
+    # =========================================================================
+
+    def get_insider_trades(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[InsiderTrade]:
+        """Fetch insider trades data for a symbol.
+
+        Returns a list of insider trade records including insider name,
+        transaction type, shares traded, price, and value.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[InsiderTrade]
+            List of insider trade records.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     trades = client.get_insider_trades("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:company:insider_trades:{upper}"
+        url = INSIDER_TRADES_URL.format(symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parse_insider_trades,
+            ttl=INSIDER_TRADES_TTL,
+            options=options,
+        )
+
+    def get_institutional_holdings(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[InstitutionalHolding]:
+        """Fetch institutional holdings data for a symbol.
+
+        Returns a list of institutional holding records including
+        holder name, shares, market value, and filing information.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[InstitutionalHolding]
+            List of institutional holding records.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     holdings = client.get_institutional_holdings("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:company:institutional_holdings:{upper}"
+        url = INSTITUTIONAL_HOLDINGS_URL.format(symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parse_institutional_holdings,
+            ttl=INSTITUTIONAL_HOLDINGS_TTL,
+            options=options,
+        )
+
+    def get_financials(
+        self,
+        symbol: str,
+        frequency: str = "annual",
+        options: NasdaqFetchOptions | None = None,
+    ) -> FinancialStatement:
+        """Fetch financial statements data for a symbol.
+
+        Returns income statement, balance sheet, and cash flow statement
+        data for the given frequency (annual or quarterly).
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        frequency : str
+            Data frequency, either ``"annual"`` or ``"quarterly"``.
+            Default is ``"annual"``.
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        FinancialStatement
+            Financial statements with income, balance sheet, and cash flow.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     financials = client.get_financials("AAPL")
+        ...     quarterly = client.get_financials("AAPL", frequency="quarterly")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:company:financials:{upper}:{frequency}"
+        url = FINANCIALS_URL.format(symbol=upper)
+
+        def parser(data: dict[str, Any]) -> FinancialStatement:
+            return parse_financials(data, symbol=upper, frequency=frequency)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parser,
+            ttl=FINANCIALS_TTL,
+            options=options,
+            params={"frequency": frequency},
         )
 
     # =========================================================================

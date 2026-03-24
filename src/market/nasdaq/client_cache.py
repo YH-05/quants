@@ -86,6 +86,12 @@ SEC_FILINGS_TTL: Final[int] = 86400
 SEC filings are published as-needed; daily check is sufficient.
 """
 
+FINANCIALS_TTL: Final[int] = 86400
+"""TTL for financial statements data (24 hours).
+
+Financial statements data is reported quarterly and changes rarely.
+"""
+
 ANALYST_FORECAST_TTL: Final[int] = 86400
 """TTL for analyst forecast / recommendations data (24 hours).
 
@@ -158,6 +164,7 @@ __all__ = [
     "DIVIDENDS_CALENDAR_TTL",
     "EARNINGS_CALENDAR_TTL",
     "ETF_SCREENER_TTL",
+    "FINANCIALS_TTL",
     "INSIDER_TRADES_TTL",
     "INSTITUTIONAL_HOLDINGS_TTL",
     "IPO_CALENDAR_TTL",

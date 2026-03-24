@@ -20,6 +20,10 @@ Record dataclasses:
 - ``TargetPrice`` — Analyst target price statistics (high/low/mean/median).
 - ``EarningsDate`` — Upcoming earnings announcement date info.
 - ``AnalystSummary`` — Aggregated analyst data from all four endpoints.
+- ``InsiderTrade`` — A single insider trade record.
+- ``InstitutionalHolding`` — A single institutional holding record.
+- ``FinancialStatementRow`` — A single row in a financial statement table.
+- ``FinancialStatement`` — Financial statements (income/balance/cash flow).
 
 See Also
 --------
@@ -577,6 +581,176 @@ class AnalystSummary:
     earnings_date: EarningsDate | None = None
 
 
+# =============================================================================
+# Company Data Types
+# =============================================================================
+
+
+@dataclass(frozen=True)
+class InsiderTrade:
+    """A single insider trade record from the NASDAQ insider trades endpoint.
+
+    All fields are stored as raw strings from the API response.
+    Numeric conversion is deferred to downstream consumers.
+
+    Parameters
+    ----------
+    insider_name : str | None
+        Name of the insider (e.g. ``"COOK TIMOTHY D"``).
+    relation : str | None
+        Relation to the company (e.g. ``"Chief Executive Officer"``).
+    transaction_type : str | None
+        Type of transaction (e.g. ``"Sold"``, ``"Purchased"``).
+    ownership_type : str | None
+        Type of ownership (e.g. ``"Direct"``, ``"Indirect"``).
+    shares_traded : str | None
+        Number of shares traded (e.g. ``"50,000"``).
+    price : str | None
+        Price per share (e.g. ``"$227.63"``).
+    value : str | None
+        Total value of the transaction (e.g. ``"$11,381,500"``).
+    date : str | None
+        Transaction date (e.g. ``"03/15/2026"``).
+    shares_held : str | None
+        Total shares held after transaction (e.g. ``"100,000"``).
+    url : str | None
+        NASDAQ URL path for the trade detail.
+
+    Examples
+    --------
+    >>> trade = InsiderTrade(insider_name="COOK TIMOTHY D", relation="CEO")
+    >>> trade.insider_name
+    'COOK TIMOTHY D'
+    """
+
+    insider_name: str | None = None
+    relation: str | None = None
+    transaction_type: str | None = None
+    ownership_type: str | None = None
+    shares_traded: str | None = None
+    price: str | None = None
+    value: str | None = None
+    date: str | None = None
+    shares_held: str | None = None
+    url: str | None = None
+
+
+@dataclass(frozen=True)
+class InstitutionalHolding:
+    """A single institutional holding record from the NASDAQ endpoint.
+
+    All fields are stored as raw strings from the API response.
+    Numeric conversion is deferred to downstream consumers.
+
+    Parameters
+    ----------
+    holder_name : str | None
+        Name of the institutional holder (e.g. ``"Vanguard Group Inc"``).
+    shares : str | None
+        Number of shares held (e.g. ``"1,200,000,000"``).
+    value : str | None
+        Market value of holdings (e.g. ``"$180,000,000,000"``).
+    change : str | None
+        Change in shares since last filing (e.g. ``"5,000,000"``).
+    change_percent : str | None
+        Percentage change (e.g. ``"0.42%"``).
+    date_reported : str | None
+        Date the position was reported (e.g. ``"12/31/2025"``).
+    filing_date : str | None
+        SEC filing date (e.g. ``"02/14/2026"``).
+    url : str | None
+        NASDAQ URL path for the holding detail.
+
+    Examples
+    --------
+    >>> holding = InstitutionalHolding(holder_name="Vanguard Group Inc")
+    >>> holding.holder_name
+    'Vanguard Group Inc'
+    """
+
+    holder_name: str | None = None
+    shares: str | None = None
+    value: str | None = None
+    change: str | None = None
+    change_percent: str | None = None
+    date_reported: str | None = None
+    filing_date: str | None = None
+    url: str | None = None
+
+
+@dataclass(frozen=True)
+class FinancialStatementRow:
+    """A single row in a financial statement table.
+
+    Represents one line item (e.g. ``"Total Revenue"``) with values
+    across multiple periods.
+
+    Parameters
+    ----------
+    label : str
+        Row label / line item name (e.g. ``"Total Revenue"``).
+    values : list[str]
+        Values for each period, in the same order as
+        ``FinancialStatement.headers``.
+
+    Examples
+    --------
+    >>> row = FinancialStatementRow(
+    ...     label="Total Revenue",
+    ...     values=["$394,328", "$383,285", "$365,817"],
+    ... )
+    >>> row.label
+    'Total Revenue'
+    """
+
+    label: str
+    values: list[str]
+
+
+@dataclass(frozen=True)
+class FinancialStatement:
+    """Financial statements from the NASDAQ financials endpoint.
+
+    Contains income statement, balance sheet, and cash flow statement
+    data for a given symbol and frequency (annual or quarterly).
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    frequency : str
+        Data frequency (``"annual"`` or ``"quarterly"``).
+    headers : list[str]
+        Period column headers (e.g. ``["2025", "2024", "2023"]``).
+    income_statement : list[FinancialStatementRow]
+        Income statement line items.
+    balance_sheet : list[FinancialStatementRow]
+        Balance sheet line items.
+    cash_flow : list[FinancialStatementRow]
+        Cash flow statement line items.
+
+    Examples
+    --------
+    >>> fs = FinancialStatement(
+    ...     symbol="AAPL",
+    ...     frequency="annual",
+    ...     headers=["2025", "2024"],
+    ...     income_statement=[],
+    ...     balance_sheet=[],
+    ...     cash_flow=[],
+    ... )
+    >>> fs.symbol
+    'AAPL'
+    """
+
+    symbol: str
+    frequency: str
+    headers: list[str]
+    income_statement: list[FinancialStatementRow]
+    balance_sheet: list[FinancialStatementRow]
+    cash_flow: list[FinancialStatementRow]
+
+
 __all__ = [
     "AnalystRatings",
     "AnalystSummary",
@@ -586,6 +760,10 @@ __all__ = [
     "EarningsForecastPeriod",
     "EarningsRecord",
     "EtfRecord",
+    "FinancialStatement",
+    "FinancialStatementRow",
+    "InsiderTrade",
+    "InstitutionalHolding",
     "IpoRecord",
     "MarketMover",
     "MoverSection",

@@ -274,6 +274,13 @@ ANALYST_EARNINGS_DATE_URL: Final[str] = (
 Use ``ANALYST_EARNINGS_DATE_URL.format(symbol="AAPL")`` to construct the URL.
 """
 
+FINANCIALS_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/financials"
+"""URL template for NASDAQ company financials endpoint.
+
+Use ``FINANCIALS_URL.format(symbol="AAPL")`` to construct the URL.
+Accepts ``frequency`` query parameter (``"annual"`` or ``"quarterly"``).
+"""
+
 COMPANY_PROFILE_URL: Final[str] = (
     f"{NASDAQ_API_BASE}/company/{{symbol}}/company-profile"
 )
@@ -318,6 +325,7 @@ __all__ = [
     "DIVIDENDS_CALENDAR_URL",
     "EARNINGS_CALENDAR_URL",
     "ETF_SCREENER_URL",
+    "FINANCIALS_URL",
     "INSIDER_TRADES_URL",
     "INSTITUTIONAL_HOLDINGS_URL",
     "IPO_CALENDAR_URL",

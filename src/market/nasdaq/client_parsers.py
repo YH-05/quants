@@ -35,6 +35,10 @@ from market.nasdaq.client_types import (
     EarningsForecastPeriod,
     EarningsRecord,
     EtfRecord,
+    FinancialStatement,
+    FinancialStatementRow,
+    InsiderTrade,
+    InstitutionalHolding,
     IpoRecord,
     MarketMover,
     MoverSection,
@@ -942,6 +946,262 @@ def parse_earnings_date(
     return result
 
 
+# ---------------------------------------------------------------------------
+# Company data parsers
+# ---------------------------------------------------------------------------
+
+
+def parse_insider_trades(data: dict[str, Any]) -> list[InsiderTrade]:
+    """Parse insider trades endpoint data into ``InsiderTrade`` list.
+
+    Expected structure::
+
+        {
+            "insiderTransactions": {
+                "rows": [
+                    {
+                        "insider": "COOK TIMOTHY D",
+                        "relation": "Chief Executive Officer",
+                        "lastDate": "03/15/2026",
+                        "transactionType": "Sold",
+                        "ownType": "Direct",
+                        "sharesTraded": "50,000",
+                        "price": "$227.63",
+                        "sharesHeld": "100,000",
+                        "value": "$11,381,500",
+                        "url": ""
+                    }, ...
+                ]
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the insider trades endpoint.
+
+    Returns
+    -------
+    list[InsiderTrade]
+        Parsed insider trade records, or an empty list if no rows are present.
+
+    Raises
+    ------
+    NasdaqParseError
+        If ``insiderTransactions.rows`` exists but is not a list.
+    """
+    rows = _extract_rows(data, "insiderTransactions", "rows")
+    if not rows:
+        logger.debug("No insider trades rows to parse")
+        return []
+
+    logger.debug("Parsing insider trades rows", row_count=len(rows))
+
+    result: list[InsiderTrade] = []
+    for row in rows:
+        record = InsiderTrade(
+            insider_name=row.get("insider"),
+            relation=row.get("relation"),
+            transaction_type=row.get("transactionType"),
+            ownership_type=row.get("ownType"),
+            shares_traded=row.get("sharesTraded"),
+            price=row.get("price"),
+            value=row.get("value"),
+            date=row.get("lastDate"),
+            shares_held=row.get("sharesHeld"),
+            url=row.get("url"),
+        )
+        result.append(record)
+
+    logger.info("Insider trades parsed", record_count=len(result))
+    return result
+
+
+def parse_institutional_holdings(
+    data: dict[str, Any],
+) -> list[InstitutionalHolding]:
+    """Parse institutional holdings endpoint data into ``InstitutionalHolding`` list.
+
+    Expected structure::
+
+        {
+            "holdingsTransactions": {
+                "rows": [
+                    {
+                        "ownerName": "Vanguard Group Inc",
+                        "date": "12/31/2025",
+                        "sharesHeld": "1,200,000,000",
+                        "marketValue": "$180,000,000,000",
+                        "sharesChange": "5,000,000",
+                        "sharesChangePct": "0.42%",
+                        "filingDate": "02/14/2026",
+                        "url": ""
+                    }, ...
+                ]
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the institutional holdings endpoint.
+
+    Returns
+    -------
+    list[InstitutionalHolding]
+        Parsed institutional holding records, or an empty list if no rows
+        are present.
+
+    Raises
+    ------
+    NasdaqParseError
+        If ``holdingsTransactions.rows`` exists but is not a list.
+    """
+    rows = _extract_rows(data, "holdingsTransactions", "rows")
+    if not rows:
+        logger.debug("No institutional holdings rows to parse")
+        return []
+
+    logger.debug("Parsing institutional holdings rows", row_count=len(rows))
+
+    result: list[InstitutionalHolding] = []
+    for row in rows:
+        record = InstitutionalHolding(
+            holder_name=row.get("ownerName"),
+            shares=row.get("sharesHeld"),
+            value=row.get("marketValue"),
+            change=row.get("sharesChange"),
+            change_percent=row.get("sharesChangePct"),
+            date_reported=row.get("date"),
+            filing_date=row.get("filingDate"),
+            url=row.get("url"),
+        )
+        result.append(record)
+
+    logger.info("Institutional holdings parsed", record_count=len(result))
+    return result
+
+
+def _parse_financial_table_rows(
+    data: dict[str, Any],
+    table_key: str,
+) -> tuple[list[str], list[FinancialStatementRow]]:
+    """Parse a financial statement table into headers and rows.
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload.
+    table_key : str
+        Key for the table (e.g. ``"incomeStatementTable"``).
+
+    Returns
+    -------
+    tuple[list[str], list[FinancialStatementRow]]
+        A tuple of (headers, rows). Headers exclude the first empty element.
+    """
+    table = data.get(table_key)
+    if not isinstance(table, dict):
+        return [], []
+
+    # Extract headers
+    headers_data = table.get("headers")
+    headers: list[str] = []
+    if isinstance(headers_data, dict):
+        raw_values = headers_data.get("values", [])
+        if isinstance(raw_values, list):
+            # First element is typically empty (row label column)
+            headers = [str(v) for v in raw_values[1:] if v]
+
+    # Extract rows
+    raw_rows = table.get("rows")
+    if not isinstance(raw_rows, list):
+        return headers, []
+
+    result: list[FinancialStatementRow] = []
+    for row in raw_rows:
+        if not isinstance(row, dict):
+            continue
+        label = row.get("value1", "")
+        values: list[str] = []
+        # Collect value2, value3, ... for each period column
+        for i in range(2, len(headers) + 2):
+            val = row.get(f"value{i}")
+            values.append(str(val) if val is not None else "")
+        result.append(FinancialStatementRow(label=str(label), values=values))
+
+    return headers, result
+
+
+def parse_financials(
+    data: dict[str, Any],
+    symbol: str,
+    frequency: str = "annual",
+) -> FinancialStatement:
+    """Parse financials endpoint data into ``FinancialStatement``.
+
+    Expected structure::
+
+        {
+            "incomeStatementTable": {
+                "headers": { "values": ["", "2025", "2024", "2023"] },
+                "rows": [
+                    {
+                        "value1": "Total Revenue",
+                        "value2": "$394,328",
+                        "value3": "$383,285",
+                        "value4": "$365,817"
+                    }, ...
+                ]
+            },
+            "balanceSheetTable": { ... },
+            "cashFlowTable": { ... }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the financials endpoint.
+    symbol : str
+        The ticker symbol for these financials.
+    frequency : str
+        Data frequency (``"annual"`` or ``"quarterly"``). Default ``"annual"``.
+
+    Returns
+    -------
+    FinancialStatement
+        Parsed financial statement with income, balance sheet, and cash flow.
+    """
+    income_headers, income_rows = _parse_financial_table_rows(
+        data, "incomeStatementTable"
+    )
+    balance_headers, balance_rows = _parse_financial_table_rows(
+        data, "balanceSheetTable"
+    )
+    cash_headers, cash_rows = _parse_financial_table_rows(data, "cashFlowTable")
+
+    # Use the first non-empty headers found
+    headers = income_headers or balance_headers or cash_headers
+
+    logger.info(
+        "Financials parsed",
+        symbol=symbol,
+        frequency=frequency,
+        income_rows=len(income_rows),
+        balance_rows=len(balance_rows),
+        cash_flow_rows=len(cash_rows),
+    )
+
+    return FinancialStatement(
+        symbol=symbol,
+        frequency=frequency,
+        headers=headers,
+        income_statement=income_rows,
+        balance_sheet=balance_rows,
+        cash_flow=cash_rows,
+    )
+
+
 __all__ = [
     "clean_market_cap",
     "clean_percentage",
@@ -953,6 +1213,9 @@ __all__ = [
     "parse_earnings_date",
     "parse_earnings_forecast",
     "parse_etf_screener",
+    "parse_financials",
+    "parse_insider_trades",
+    "parse_institutional_holdings",
     "parse_ipo_calendar",
     "parse_market_movers",
     "parse_splits_calendar",
