@@ -13,6 +13,13 @@ Record dataclasses:
 - ``DividendCalendarRecord`` — A single record from the dividends calendar.
 - ``SplitRecord`` — A single record from the stock splits calendar.
 - ``IpoRecord`` — A single record from the IPO calendar.
+- ``EarningsForecastPeriod`` — A single forecast period (yearly or quarterly).
+- ``EarningsForecast`` — Yearly and quarterly earnings forecast data.
+- ``RatingCount`` — Buy/sell/hold counts at a point in time.
+- ``AnalystRatings`` — Analyst buy/sell/hold counts with history.
+- ``TargetPrice`` — Analyst target price statistics (high/low/mean/median).
+- ``EarningsDate`` — Upcoming earnings announcement date info.
+- ``AnalystSummary`` — Aggregated analyst data from all four endpoints.
 
 See Also
 --------
@@ -338,13 +345,252 @@ class EtfRecord:
     url: str | None = None
 
 
+# =============================================================================
+# Analyst Data Types
+# =============================================================================
+
+
+@dataclass(frozen=True)
+class EarningsForecastPeriod:
+    """A single forecast period from the earnings forecast endpoint.
+
+    Represents one row in either the yearly or quarterly forecasts table,
+    containing consensus estimate, number of analysts, and actual/reported
+    values when available.
+
+    Parameters
+    ----------
+    fiscal_end : str | None
+        Fiscal period end label (e.g. ``"Dec 2025"``, ``"Q4 2025"``).
+    consensus_eps_forecast : str | None
+        Consensus EPS forecast (e.g. ``"$2.35"``).
+    num_of_estimates : str | None
+        Number of analyst estimates (e.g. ``"28"``).
+    high_eps_forecast : str | None
+        Highest EPS forecast (e.g. ``"$2.60"``).
+    low_eps_forecast : str | None
+        Lowest EPS forecast (e.g. ``"$2.10"``).
+
+    Examples
+    --------
+    >>> period = EarningsForecastPeriod(
+    ...     fiscal_end="Dec 2025",
+    ...     consensus_eps_forecast="$2.35",
+    ...     num_of_estimates="28",
+    ... )
+    >>> period.fiscal_end
+    'Dec 2025'
+    """
+
+    fiscal_end: str | None = None
+    consensus_eps_forecast: str | None = None
+    num_of_estimates: str | None = None
+    high_eps_forecast: str | None = None
+    low_eps_forecast: str | None = None
+
+
+@dataclass(frozen=True)
+class EarningsForecast:
+    """Earnings forecast data from the NASDAQ analyst forecast endpoint.
+
+    Contains yearly and quarterly forecast period lists with consensus
+    EPS estimates, number of analysts, and high/low forecast ranges.
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    yearly : list[EarningsForecastPeriod]
+        Yearly forecast periods.
+    quarterly : list[EarningsForecastPeriod]
+        Quarterly forecast periods.
+
+    Examples
+    --------
+    >>> forecast = EarningsForecast(symbol="AAPL", yearly=[], quarterly=[])
+    >>> forecast.symbol
+    'AAPL'
+    """
+
+    symbol: str
+    yearly: list[EarningsForecastPeriod]
+    quarterly: list[EarningsForecastPeriod]
+
+
+@dataclass(frozen=True)
+class RatingCount:
+    """Buy/sell/hold counts at a single point in time.
+
+    Parameters
+    ----------
+    date : str | None
+        Date label (e.g. ``"Current Quarter"``, ``"1 Month Ago"``).
+    strong_buy : int
+        Strong buy count.
+    buy : int
+        Buy count.
+    hold : int
+        Hold count.
+    sell : int
+        Sell count.
+    strong_sell : int
+        Strong sell count.
+
+    Examples
+    --------
+    >>> rc = RatingCount(date="Current Quarter", strong_buy=10, buy=5,
+    ...                  hold=3, sell=1, strong_sell=0)
+    >>> rc.strong_buy
+    10
+    """
+
+    date: str | None = None
+    strong_buy: int = 0
+    buy: int = 0
+    hold: int = 0
+    sell: int = 0
+    strong_sell: int = 0
+
+
+@dataclass(frozen=True)
+class AnalystRatings:
+    """Analyst ratings data from the NASDAQ analyst ratings endpoint.
+
+    Contains buy/sell/hold/strong-buy/strong-sell counts and historical
+    rating snapshots over time.
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    ratings : list[RatingCount]
+        Rating counts over time (current, 1M ago, 2M ago, 3M ago).
+
+    Examples
+    --------
+    >>> ratings = AnalystRatings(symbol="AAPL", ratings=[])
+    >>> ratings.symbol
+    'AAPL'
+    """
+
+    symbol: str
+    ratings: list[RatingCount]
+
+
+@dataclass(frozen=True)
+class TargetPrice:
+    """Analyst target price statistics from the NASDAQ target price endpoint.
+
+    Contains high, low, mean, and median analyst price targets.
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    high : str | None
+        Highest analyst target price (e.g. ``"$280.00"``).
+    low : str | None
+        Lowest analyst target price (e.g. ``"$200.00"``).
+    mean : str | None
+        Mean analyst target price (e.g. ``"$250.00"``).
+    median : str | None
+        Median analyst target price (e.g. ``"$248.00"``).
+
+    Examples
+    --------
+    >>> tp = TargetPrice(symbol="AAPL", high="$280.00", low="$200.00",
+    ...                  mean="$250.00", median="$248.00")
+    >>> tp.mean
+    '$250.00'
+    """
+
+    symbol: str
+    high: str | None = None
+    low: str | None = None
+    mean: str | None = None
+    median: str | None = None
+
+
+@dataclass(frozen=True)
+class EarningsDate:
+    """Upcoming earnings date information from the NASDAQ earnings date endpoint.
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    date : str | None
+        Earnings announcement date (e.g. ``"01/30/2026"``).
+    time : str | None
+        Announcement timing (e.g. ``"After Market Close"``, ``"Before Market Open"``).
+    fiscal_quarter_ending : str | None
+        Fiscal quarter ending period (e.g. ``"Dec/2025"``).
+    eps_forecast : str | None
+        Consensus EPS forecast (e.g. ``"$2.35"``).
+
+    Examples
+    --------
+    >>> ed = EarningsDate(symbol="AAPL", date="01/30/2026",
+    ...                   time="After Market Close")
+    >>> ed.date
+    '01/30/2026'
+    """
+
+    symbol: str
+    date: str | None = None
+    time: str | None = None
+    fiscal_quarter_ending: str | None = None
+    eps_forecast: str | None = None
+
+
+@dataclass(frozen=True)
+class AnalystSummary:
+    """Aggregated analyst data from all four analyst endpoints.
+
+    A convenience type that combines earnings forecast, analyst ratings,
+    target price, and earnings date data for a single symbol.
+
+    Parameters
+    ----------
+    symbol : str
+        Ticker symbol (e.g. ``"AAPL"``).
+    forecast : EarningsForecast | None
+        Earnings forecast data, or ``None`` if unavailable.
+    ratings : AnalystRatings | None
+        Analyst ratings data, or ``None`` if unavailable.
+    target_price : TargetPrice | None
+        Target price data, or ``None`` if unavailable.
+    earnings_date : EarningsDate | None
+        Earnings date data, or ``None`` if unavailable.
+
+    Examples
+    --------
+    >>> summary = AnalystSummary(symbol="AAPL")
+    >>> summary.symbol
+    'AAPL'
+    """
+
+    symbol: str
+    forecast: EarningsForecast | None = None
+    ratings: AnalystRatings | None = None
+    target_price: TargetPrice | None = None
+    earnings_date: EarningsDate | None = None
+
+
 __all__ = [
+    "AnalystRatings",
+    "AnalystSummary",
     "DividendCalendarRecord",
+    "EarningsDate",
+    "EarningsForecast",
+    "EarningsForecastPeriod",
     "EarningsRecord",
     "EtfRecord",
     "IpoRecord",
     "MarketMover",
     "MoverSection",
     "NasdaqFetchOptions",
+    "RatingCount",
     "SplitRecord",
+    "TargetPrice",
 ]

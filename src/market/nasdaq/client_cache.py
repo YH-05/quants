@@ -92,6 +92,26 @@ ANALYST_FORECAST_TTL: Final[int] = 86400
 Analyst forecasts are updated infrequently; daily refresh is appropriate.
 """
 
+ANALYST_RATINGS_TTL: Final[int] = 86400
+"""TTL for analyst ratings data (24 hours).
+
+Analyst buy/sell/hold ratings are updated infrequently; daily refresh
+is appropriate.
+"""
+
+ANALYST_TARGET_PRICE_TTL: Final[int] = 86400
+"""TTL for analyst target price data (24 hours).
+
+Target price data is updated infrequently; daily refresh is appropriate.
+"""
+
+ANALYST_EARNINGS_DATE_TTL: Final[int] = 43200
+"""TTL for earnings date data (12 hours).
+
+Earnings date data may change more frequently closer to the announcement
+date; semi-daily refresh is appropriate.
+"""
+
 MARKET_MOVERS_TTL: Final[int] = 300
 """TTL for market movers data (5 minutes).
 
@@ -131,7 +151,10 @@ def get_nasdaq_cache() -> SQLiteCache:
 
 
 __all__ = [
+    "ANALYST_EARNINGS_DATE_TTL",
     "ANALYST_FORECAST_TTL",
+    "ANALYST_RATINGS_TTL",
+    "ANALYST_TARGET_PRICE_TTL",
     "DIVIDENDS_CALENDAR_TTL",
     "EARNINGS_CALENDAR_TTL",
     "ETF_SCREENER_TTL",

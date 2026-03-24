@@ -28,13 +28,19 @@ from __future__ import annotations
 from typing import Any
 
 from market.nasdaq.client_types import (
+    AnalystRatings,
     DividendCalendarRecord,
+    EarningsDate,
+    EarningsForecast,
+    EarningsForecastPeriod,
     EarningsRecord,
     EtfRecord,
     IpoRecord,
     MarketMover,
     MoverSection,
+    RatingCount,
     SplitRecord,
+    TargetPrice,
 )
 from market.nasdaq.errors import NasdaqAPIError, NasdaqParseError
 from market.nasdaq.parser import (
@@ -633,16 +639,323 @@ def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
     return result
 
 
+# ---------------------------------------------------------------------------
+# Analyst parsers
+# ---------------------------------------------------------------------------
+
+
+def _parse_forecast_rows(
+    rows: list[dict[str, Any]],
+) -> list[EarningsForecastPeriod]:
+    """Parse a list of forecast period rows into ``EarningsForecastPeriod`` list.
+
+    Parameters
+    ----------
+    rows : list[dict[str, Any]]
+        Raw rows from the forecast endpoint.
+
+    Returns
+    -------
+    list[EarningsForecastPeriod]
+        Parsed forecast periods.
+    """
+    result: list[EarningsForecastPeriod] = []
+    for row in rows:
+        period = EarningsForecastPeriod(
+            fiscal_end=row.get("fiscalEnd"),
+            consensus_eps_forecast=row.get("consensusEPSForecast"),
+            num_of_estimates=row.get("numOfEstimates"),
+            high_eps_forecast=row.get("highEPSForecast"),
+            low_eps_forecast=row.get("lowEPSForecast"),
+        )
+        result.append(period)
+    return result
+
+
+def parse_earnings_forecast(
+    data: dict[str, Any],
+    symbol: str,
+) -> EarningsForecast:
+    """Parse earnings forecast endpoint data into ``EarningsForecast``.
+
+    Expected structure::
+
+        {
+            "yearlyForecast": {
+                "rows": [
+                    {
+                        "fiscalEnd": "Dec 2025",
+                        "consensusEPSForecast": "$6.70",
+                        "numOfEstimates": "38",
+                        "highEPSForecast": "$7.10",
+                        "lowEPSForecast": "$6.30"
+                    }, ...
+                ]
+            },
+            "quarterlyForecast": {
+                "rows": [
+                    {
+                        "fiscalEnd": "Q1 2026",
+                        "consensusEPSForecast": "$2.35",
+                        "numOfEstimates": "28",
+                        "highEPSForecast": "$2.60",
+                        "lowEPSForecast": "$2.10"
+                    }, ...
+                ]
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the forecast endpoint.
+    symbol : str
+        The ticker symbol for this forecast.
+
+    Returns
+    -------
+    EarningsForecast
+        Parsed earnings forecast with yearly and quarterly periods.
+    """
+    yearly_rows = _extract_rows(data, "yearlyForecast", "rows")
+    quarterly_rows = _extract_rows(data, "quarterlyForecast", "rows")
+
+    yearly = _parse_forecast_rows(yearly_rows)
+    quarterly = _parse_forecast_rows(quarterly_rows)
+
+    logger.info(
+        "Earnings forecast parsed",
+        symbol=symbol,
+        yearly_count=len(yearly),
+        quarterly_count=len(quarterly),
+    )
+    return EarningsForecast(symbol=symbol, yearly=yearly, quarterly=quarterly)
+
+
+def _safe_int(value: Any) -> int:
+    """Convert a value to int, returning 0 for non-convertible values.
+
+    Parameters
+    ----------
+    value : Any
+        Value to convert.
+
+    Returns
+    -------
+    int
+        Integer value, or 0 if conversion fails.
+    """
+    if value is None:
+        return 0
+    if isinstance(value, int):
+        return value
+    try:
+        return int(str(value).replace(",", "").strip())
+    except (ValueError, TypeError):
+        return 0
+
+
+def parse_analyst_ratings(
+    data: dict[str, Any],
+    symbol: str,
+) -> AnalystRatings:
+    """Parse analyst ratings endpoint data into ``AnalystRatings``.
+
+    Expected structure::
+
+        {
+            "ratings": [
+                {
+                    "date": "Current Quarter",
+                    "strongBuy": 10,
+                    "buy": 15,
+                    "hold": 5,
+                    "sell": 1,
+                    "strongSell": 0
+                }, ...
+            ]
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the ratings endpoint.
+    symbol : str
+        The ticker symbol for these ratings.
+
+    Returns
+    -------
+    AnalystRatings
+        Parsed analyst ratings with history.
+    """
+    rows = _extract_rows(data, "ratings")
+    if not rows:
+        logger.debug("No analyst ratings rows to parse", symbol=symbol)
+        return AnalystRatings(symbol=symbol, ratings=[])
+
+    logger.debug("Parsing analyst ratings rows", row_count=len(rows))
+
+    result: list[RatingCount] = []
+    for row in rows:
+        rc = RatingCount(
+            date=row.get("date"),
+            strong_buy=_safe_int(row.get("strongBuy")),
+            buy=_safe_int(row.get("buy")),
+            hold=_safe_int(row.get("hold")),
+            sell=_safe_int(row.get("sell")),
+            strong_sell=_safe_int(row.get("strongSell")),
+        )
+        result.append(rc)
+
+    logger.info("Analyst ratings parsed", symbol=symbol, rating_count=len(result))
+    return AnalystRatings(symbol=symbol, ratings=result)
+
+
+def parse_target_price(
+    data: dict[str, Any],
+    symbol: str,
+) -> TargetPrice:
+    """Parse target price endpoint data into ``TargetPrice``.
+
+    Expected structure::
+
+        {
+            "targetPrice": {
+                "high": "$280.00",
+                "low": "$200.00",
+                "mean": "$250.00",
+                "median": "$248.00"
+            }
+        }
+
+    or flat structure::
+
+        {
+            "high": "$280.00",
+            "low": "$200.00",
+            "mean": "$250.00",
+            "median": "$248.00"
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the target price endpoint.
+    symbol : str
+        The ticker symbol for this target price.
+
+    Returns
+    -------
+    TargetPrice
+        Parsed target price with high/low/mean/median.
+    """
+    # Try nested structure first, then flat
+    tp_data = data.get("targetPrice")
+    if isinstance(tp_data, dict):
+        source = tp_data
+    else:
+        source = data
+
+    result = TargetPrice(
+        symbol=symbol,
+        high=source.get("high"),
+        low=source.get("low"),
+        mean=source.get("mean"),
+        median=source.get("median"),
+    )
+
+    logger.info(
+        "Target price parsed",
+        symbol=symbol,
+        high=result.high,
+        low=result.low,
+        mean=result.mean,
+        median=result.median,
+    )
+    return result
+
+
+def parse_earnings_date(
+    data: dict[str, Any],
+    symbol: str,
+) -> EarningsDate:
+    """Parse earnings date endpoint data into ``EarningsDate``.
+
+    Expected structure::
+
+        {
+            "earningsDate": "01/30/2026",
+            "earningsTime": "After Market Close",
+            "fiscalQuarterEnding": "Dec/2025",
+            "epsForecast": "$2.35"
+        }
+
+    or nested under an ``earningsDate`` object::
+
+        {
+            "earningsDate": {
+                "date": "01/30/2026",
+                "time": "After Market Close",
+                "fiscalQuarterEnding": "Dec/2025",
+                "epsForecast": "$2.35"
+            }
+        }
+
+    Parameters
+    ----------
+    data : dict[str, Any]
+        The unwrapped ``data`` payload from the earnings date endpoint.
+    symbol : str
+        The ticker symbol for this earnings date.
+
+    Returns
+    -------
+    EarningsDate
+        Parsed earnings date information.
+    """
+    # Try nested structure
+    ed_data = data.get("earningsDate")
+    if isinstance(ed_data, dict):
+        result = EarningsDate(
+            symbol=symbol,
+            date=ed_data.get("date"),
+            time=ed_data.get("time"),
+            fiscal_quarter_ending=ed_data.get("fiscalQuarterEnding"),
+            eps_forecast=ed_data.get("epsForecast"),
+        )
+    else:
+        # Flat structure
+        result = EarningsDate(
+            symbol=symbol,
+            date=ed_data if isinstance(ed_data, str) else data.get("date"),
+            time=data.get("earningsTime") or data.get("time"),
+            fiscal_quarter_ending=data.get("fiscalQuarterEnding"),
+            eps_forecast=data.get("epsForecast"),
+        )
+
+    logger.info(
+        "Earnings date parsed",
+        symbol=symbol,
+        date=result.date,
+        time=result.time,
+    )
+    return result
+
+
 __all__ = [
     "clean_market_cap",
     "clean_percentage",
     "clean_price",
     "clean_volume",
+    "parse_analyst_ratings",
     "parse_dividends_calendar",
     "parse_earnings_calendar",
+    "parse_earnings_date",
+    "parse_earnings_forecast",
     "parse_etf_screener",
     "parse_ipo_calendar",
     "parse_market_movers",
     "parse_splits_calendar",
+    "parse_target_price",
     "unwrap_envelope",
 ]

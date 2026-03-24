@@ -43,6 +43,10 @@ if TYPE_CHECKING:
 
 from market.cache.cache import generate_cache_key
 from market.nasdaq.client_cache import (
+    ANALYST_EARNINGS_DATE_TTL,
+    ANALYST_FORECAST_TTL,
+    ANALYST_RATINGS_TTL,
+    ANALYST_TARGET_PRICE_TTL,
     DIVIDENDS_CALENDAR_TTL,
     EARNINGS_CALENDAR_TTL,
     ETF_SCREENER_TTL,
@@ -52,24 +56,37 @@ from market.nasdaq.client_cache import (
     get_nasdaq_cache,
 )
 from market.nasdaq.client_parsers import (
+    parse_analyst_ratings,
     parse_dividends_calendar,
     parse_earnings_calendar,
+    parse_earnings_date,
+    parse_earnings_forecast,
     parse_etf_screener,
     parse_ipo_calendar,
     parse_market_movers,
     parse_splits_calendar,
+    parse_target_price,
     unwrap_envelope,
 )
 from market.nasdaq.client_types import (
+    AnalystRatings,
+    AnalystSummary,
     DividendCalendarRecord,
+    EarningsDate,
+    EarningsForecast,
     EarningsRecord,
     EtfRecord,
     IpoRecord,
     MarketMover,
     NasdaqFetchOptions,
     SplitRecord,
+    TargetPrice,
 )
 from market.nasdaq.constants import (
+    ANALYST_EARNINGS_DATE_URL,
+    ANALYST_FORECAST_URL,
+    ANALYST_RATINGS_URL,
+    ANALYST_TARGET_PRICE_URL,
     DIVIDENDS_CALENDAR_URL,
     EARNINGS_CALENDAR_URL,
     ETF_SCREENER_URL,
@@ -580,6 +597,301 @@ class NasdaqClient:
             ttl=ETF_SCREENER_TTL,
             options=options,
             params={"limit": "0"},
+        )
+
+    # =========================================================================
+    # Analyst Endpoints
+    # =========================================================================
+
+    def get_earnings_forecast(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> EarningsForecast:
+        """Fetch earnings forecast data for a symbol.
+
+        Returns yearly and quarterly EPS forecasts with consensus estimates,
+        number of analysts, and high/low ranges.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        EarningsForecast
+            Earnings forecast with yearly and quarterly periods.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     forecast = client.get_earnings_forecast("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:analyst:forecast:{upper}"
+        url = ANALYST_FORECAST_URL.format(symbol=upper)
+
+        def parser(data: dict[str, Any]) -> EarningsForecast:
+            return parse_earnings_forecast(data, symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parser,
+            ttl=ANALYST_FORECAST_TTL,
+            options=options,
+        )
+
+    def get_analyst_ratings(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> AnalystRatings:
+        """Fetch analyst ratings data for a symbol.
+
+        Returns buy/sell/hold/strong-buy/strong-sell counts with
+        historical snapshots.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        AnalystRatings
+            Analyst ratings with history.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     ratings = client.get_analyst_ratings("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:analyst:ratings:{upper}"
+        url = ANALYST_RATINGS_URL.format(symbol=upper)
+
+        def parser(data: dict[str, Any]) -> AnalystRatings:
+            return parse_analyst_ratings(data, symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parser,
+            ttl=ANALYST_RATINGS_TTL,
+            options=options,
+        )
+
+    def get_target_price(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> TargetPrice:
+        """Fetch analyst target price data for a symbol.
+
+        Returns high, low, mean, and median analyst price targets.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        TargetPrice
+            Target price with high/low/mean/median.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     tp = client.get_target_price("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:analyst:target_price:{upper}"
+        url = ANALYST_TARGET_PRICE_URL.format(symbol=upper)
+
+        def parser(data: dict[str, Any]) -> TargetPrice:
+            return parse_target_price(data, symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parser,
+            ttl=ANALYST_TARGET_PRICE_TTL,
+            options=options,
+        )
+
+    def get_earnings_date(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> EarningsDate:
+        """Fetch upcoming earnings date information for a symbol.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        EarningsDate
+            Earnings date information.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     ed = client.get_earnings_date("AAPL")
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+        cache_key = f"nasdaq:analyst:earnings_date:{upper}"
+        url = ANALYST_EARNINGS_DATE_URL.format(symbol=upper)
+
+        def parser(data: dict[str, Any]) -> EarningsDate:
+            return parse_earnings_date(data, symbol=upper)
+
+        return self._fetch_and_parse(
+            url=url,
+            cache_key=cache_key,
+            parser=parser,
+            ttl=ANALYST_EARNINGS_DATE_TTL,
+            options=options,
+        )
+
+    def get_analyst_summary(
+        self,
+        symbol: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> AnalystSummary:
+        """Fetch aggregated analyst data for a symbol.
+
+        Calls ``get_earnings_forecast()``, ``get_analyst_ratings()``,
+        ``get_target_price()``, and ``get_earnings_date()`` internally
+        and combines the results into a single ``AnalystSummary``.
+
+        If any individual endpoint fails, the corresponding field in
+        the summary is set to ``None`` and a warning is logged.
+
+        Parameters
+        ----------
+        symbol : str
+            Ticker symbol (e.g. ``"AAPL"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        AnalystSummary
+            Aggregated analyst data.
+
+        Raises
+        ------
+        ValueError
+            If the symbol is empty or invalid.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     summary = client.get_analyst_summary("AAPL")
+        ...     if summary.target_price:
+        ...         print(summary.target_price.mean)
+        """
+        self._validate_symbol(symbol)
+        upper = symbol.strip().upper()
+
+        forecast: EarningsForecast | None = None
+        ratings: AnalystRatings | None = None
+        target: TargetPrice | None = None
+        earnings_dt: EarningsDate | None = None
+
+        try:
+            forecast = self.get_earnings_forecast(upper, options=options)
+        except Exception:
+            logger.warning(
+                "Failed to fetch earnings forecast", symbol=upper, exc_info=True
+            )
+
+        try:
+            ratings = self.get_analyst_ratings(upper, options=options)
+        except Exception:
+            logger.warning(
+                "Failed to fetch analyst ratings", symbol=upper, exc_info=True
+            )
+
+        try:
+            target = self.get_target_price(upper, options=options)
+        except Exception:
+            logger.warning("Failed to fetch target price", symbol=upper, exc_info=True)
+
+        try:
+            earnings_dt = self.get_earnings_date(upper, options=options)
+        except Exception:
+            logger.warning("Failed to fetch earnings date", symbol=upper, exc_info=True)
+
+        logger.info(
+            "Analyst summary assembled",
+            symbol=upper,
+            has_forecast=forecast is not None,
+            has_ratings=ratings is not None,
+            has_target_price=target is not None,
+            has_earnings_date=earnings_dt is not None,
+        )
+
+        return AnalystSummary(
+            symbol=upper,
+            forecast=forecast,
+            ratings=ratings,
+            target_price=target,
+            earnings_date=earnings_dt,
         )
 
 

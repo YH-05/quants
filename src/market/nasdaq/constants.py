@@ -252,6 +252,28 @@ ANALYST_FORECAST_URL: Final[str] = f"{NASDAQ_API_BASE}/analyst/{{symbol}}/foreca
 Use ``ANALYST_FORECAST_URL.format(symbol="AAPL")`` to construct the URL.
 """
 
+ANALYST_RATINGS_URL: Final[str] = f"{NASDAQ_API_BASE}/analyst/{{symbol}}/ratings"
+"""URL template for NASDAQ analyst ratings endpoint.
+
+Use ``ANALYST_RATINGS_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_TARGET_PRICE_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/analyst/{{symbol}}/targetprice"
+)
+"""URL template for NASDAQ analyst target price endpoint.
+
+Use ``ANALYST_TARGET_PRICE_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_EARNINGS_DATE_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/analyst/{{symbol}}/earnings-date"
+)
+"""URL template for NASDAQ analyst earnings date endpoint.
+
+Use ``ANALYST_EARNINGS_DATE_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
 COMPANY_PROFILE_URL: Final[str] = (
     f"{NASDAQ_API_BASE}/company/{{symbol}}/company-profile"
 )
@@ -280,7 +302,10 @@ Use ``limit=0`` to retrieve all matching records.
 
 __all__ = [
     "ALLOWED_HOSTS",
+    "ANALYST_EARNINGS_DATE_URL",
     "ANALYST_FORECAST_URL",
+    "ANALYST_RATINGS_URL",
+    "ANALYST_TARGET_PRICE_URL",
     "BROWSER_IMPERSONATE_TARGETS",
     "COLUMN_NAME_MAP",
     "COMPANY_PROFILE_URL",
