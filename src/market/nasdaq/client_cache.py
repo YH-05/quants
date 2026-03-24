@@ -38,6 +38,18 @@ DIVIDENDS_CALENDAR_TTL: Final[int] = 86400
 Dividends calendar data is updated daily.
 """
 
+SPLITS_CALENDAR_TTL: Final[int] = 86400
+"""TTL for stock splits calendar data (24 hours).
+
+Splits calendar data is updated daily.
+"""
+
+IPO_CALENDAR_TTL: Final[int] = 86400
+"""TTL for IPO calendar data (24 hours).
+
+IPO calendar data is updated daily.
+"""
+
 STOCK_QUOTE_TTL: Final[int] = 300
 """TTL for real-time stock quote data (5 minutes).
 
@@ -111,7 +123,9 @@ __all__ = [
     "EARNINGS_CALENDAR_TTL",
     "INSIDER_TRADES_TTL",
     "INSTITUTIONAL_HOLDINGS_TTL",
+    "IPO_CALENDAR_TTL",
     "SEC_FILINGS_TTL",
+    "SPLITS_CALENDAR_TTL",
     "STOCK_CHART_TTL",
     "STOCK_QUOTE_TTL",
     "STOCK_SUMMARY_TTL",

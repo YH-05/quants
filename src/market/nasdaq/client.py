@@ -42,10 +42,34 @@ if TYPE_CHECKING:
     from market.nasdaq.types import NasdaqConfig, RetryConfig
 
 from market.cache.cache import generate_cache_key
-from market.nasdaq.client_cache import get_nasdaq_cache
-from market.nasdaq.client_parsers import unwrap_envelope
-from market.nasdaq.client_types import NasdaqFetchOptions
-from market.nasdaq.constants import NASDAQ_API_BASE
+from market.nasdaq.client_cache import (
+    DIVIDENDS_CALENDAR_TTL,
+    EARNINGS_CALENDAR_TTL,
+    IPO_CALENDAR_TTL,
+    SPLITS_CALENDAR_TTL,
+    get_nasdaq_cache,
+)
+from market.nasdaq.client_parsers import (
+    parse_dividends_calendar,
+    parse_earnings_calendar,
+    parse_ipo_calendar,
+    parse_splits_calendar,
+    unwrap_envelope,
+)
+from market.nasdaq.client_types import (
+    DividendCalendarRecord,
+    EarningsRecord,
+    IpoRecord,
+    NasdaqFetchOptions,
+    SplitRecord,
+)
+from market.nasdaq.constants import (
+    DIVIDENDS_CALENDAR_URL,
+    EARNINGS_CALENDAR_URL,
+    IPO_CALENDAR_URL,
+    NASDAQ_API_BASE,
+    SPLITS_CALENDAR_URL,
+)
 from market.nasdaq.session import NasdaqSession
 from utils_core.logging import get_logger
 
@@ -299,6 +323,174 @@ class NasdaqClient:
         if symbol:
             return f"https://www.nasdaq.com/market-activity/stocks/{symbol.lower()}"
         return "https://www.nasdaq.com/market-activity"
+
+    # =========================================================================
+    # Calendar Endpoints
+    # =========================================================================
+
+    def get_earnings_calendar(
+        self,
+        date: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[EarningsRecord]:
+        """Fetch earnings calendar data for a specific date.
+
+        Parameters
+        ----------
+        date : str
+            Date string (e.g. ``"2026-01-30"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[EarningsRecord]
+            List of earnings records for the given date.
+
+        Raises
+        ------
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     records = client.get_earnings_calendar(date="2026-01-30")
+        """
+        cache_key = f"nasdaq:calendar:earnings:{date}"
+        return self._fetch_and_parse(
+            url=EARNINGS_CALENDAR_URL,
+            cache_key=cache_key,
+            parser=parse_earnings_calendar,
+            ttl=EARNINGS_CALENDAR_TTL,
+            options=options,
+            params={"date": date},
+        )
+
+    def get_dividends_calendar(
+        self,
+        date: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[DividendCalendarRecord]:
+        """Fetch dividends calendar data for a specific date.
+
+        Parameters
+        ----------
+        date : str
+            Date string (e.g. ``"2026-02-07"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[DividendCalendarRecord]
+            List of dividend records for the given date.
+
+        Raises
+        ------
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     records = client.get_dividends_calendar(date="2026-02-07")
+        """
+        cache_key = f"nasdaq:calendar:dividends:{date}"
+        return self._fetch_and_parse(
+            url=DIVIDENDS_CALENDAR_URL,
+            cache_key=cache_key,
+            parser=parse_dividends_calendar,
+            ttl=DIVIDENDS_CALENDAR_TTL,
+            options=options,
+            params={"date": date},
+        )
+
+    def get_splits_calendar(
+        self,
+        date: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[SplitRecord]:
+        """Fetch stock splits calendar data for a specific date.
+
+        Parameters
+        ----------
+        date : str
+            Date string (e.g. ``"2024-06-10"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[SplitRecord]
+            List of split records for the given date.
+
+        Raises
+        ------
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     records = client.get_splits_calendar(date="2024-06-10")
+        """
+        cache_key = f"nasdaq:calendar:splits:{date}"
+        return self._fetch_and_parse(
+            url=SPLITS_CALENDAR_URL,
+            cache_key=cache_key,
+            parser=parse_splits_calendar,
+            ttl=SPLITS_CALENDAR_TTL,
+            options=options,
+            params={"date": date},
+        )
+
+    def get_ipo_calendar(
+        self,
+        year_month: str,
+        options: NasdaqFetchOptions | None = None,
+    ) -> list[IpoRecord]:
+        """Fetch IPO calendar data for a specific year-month.
+
+        Parameters
+        ----------
+        year_month : str
+            Year-month string (e.g. ``"2026-03"``).
+        options : NasdaqFetchOptions | None
+            Fetch options (cache control). Defaults to using cache.
+
+        Returns
+        -------
+        list[IpoRecord]
+            List of IPO records for the given year-month.
+
+        Raises
+        ------
+        NasdaqAPIError
+            If the API returns a non-200 rCode.
+        NasdaqParseError
+            If the response cannot be parsed.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     records = client.get_ipo_calendar(year_month="2026-03")
+        """
+        cache_key = f"nasdaq:calendar:ipo:{year_month}"
+        return self._fetch_and_parse(
+            url=IPO_CALENDAR_URL,
+            cache_key=cache_key,
+            parser=parse_ipo_calendar,
+            ttl=IPO_CALENDAR_TTL,
+            options=options,
+            params={"date": year_month},
+        )
 
 
 __all__ = ["NasdaqClient"]

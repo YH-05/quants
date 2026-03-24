@@ -202,6 +202,12 @@ EARNINGS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/earnings"
 DIVIDENDS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/dividends"
 """URL for the NASDAQ Dividends Calendar API endpoint."""
 
+SPLITS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/splits"
+"""URL for the NASDAQ Stock Splits Calendar API endpoint."""
+
+IPO_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/ipo/calendar"
+"""URL for the NASDAQ IPO Calendar API endpoint."""
+
 STOCK_QUOTE_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/info"
 """URL template for NASDAQ stock quote (real-time info) endpoint.
 
@@ -274,9 +280,11 @@ __all__ = [
     "EARNINGS_CALENDAR_URL",
     "INSIDER_TRADES_URL",
     "INSTITUTIONAL_HOLDINGS_URL",
+    "IPO_CALENDAR_URL",
     "NASDAQ_API_BASE",
     "NASDAQ_SCREENER_URL",
     "SEC_FILINGS_URL",
+    "SPLITS_CALENDAR_URL",
     "STOCK_CHART_URL",
     "STOCK_QUOTE_URL",
     "STOCK_SUMMARY_URL",
