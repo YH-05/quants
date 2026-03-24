@@ -602,6 +602,47 @@ class Industry:
 
 
 @dataclass(frozen=True)
+class AnalysisResult:
+    """AI-generated financial health analysis result.
+
+    Parameters
+    ----------
+    edinet_code : str
+        The EDINET code of the analyzed company.
+    health_score : float | None
+        Financial health score (0-100), or None if unavailable.
+    commentary : str
+        AI-generated commentary on financial health.
+    """
+
+    edinet_code: str
+    health_score: float | None = None
+    commentary: str = ""
+
+
+@dataclass(frozen=True)
+class RankingEntry:
+    """Metric-based company ranking entry.
+
+    Parameters
+    ----------
+    edinet_code : str
+        The EDINET code of the ranked company.
+    metric : str
+        The metric used for ranking (e.g. ``"roe"``).
+    rank : int
+        Rank position (1-based).
+    value : float | None
+        The metric value, or None if unavailable.
+    """
+
+    edinet_code: str
+    metric: str
+    rank: int
+    value: float | None = None
+
+
+@dataclass(frozen=True)
 class SyncProgress:
     """Sync progress state for resumable EDINET data synchronization.
 
@@ -643,10 +684,12 @@ class SyncProgress:
 # =============================================================================
 
 __all__ = [
+    "AnalysisResult",
     "Company",
     "EdinetConfig",
     "FinancialRecord",
     "Industry",
+    "RankingEntry",
     "RatioRecord",
     "RetryConfig",
     "SyncProgress",

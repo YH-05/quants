@@ -116,6 +116,7 @@ class TestHandleBackfill:
                 ids_file=str(ids_file),
                 output_dir=str(output_dir),
                 existing_ids=None,
+                existing_ids_file=None,
             )
             result = _handle_backfill(args)
 
@@ -151,6 +152,7 @@ class TestHandleBackfill:
                 ids_file=str(ids_file),
                 output_dir=str(output_dir),
                 existing_ids=None,
+                existing_ids_file=None,
             )
             result = _handle_backfill(args)
 
@@ -193,6 +195,7 @@ class TestHandleBackfill:
                 ids_file=str(ids_file),
                 output_dir=str(output_dir),
                 existing_ids=existing_ids,
+                existing_ids_file=None,
             )
             _handle_backfill(args)
 
@@ -206,6 +209,7 @@ class TestHandleBackfill:
             ids_file="/nonexistent/path/ids.txt",
             output_dir="/tmp/output",
             existing_ids=None,
+            existing_ids_file=None,
         )
         result = _handle_backfill(args)
         assert result == 1
@@ -219,6 +223,7 @@ class TestHandleBackfill:
             ids_file=str(ids_file),
             output_dir=str(tmp_path / "output"),
             existing_ids=None,
+            existing_ids_file=None,
         )
         result = _handle_backfill(args)
         assert result == 1
@@ -238,6 +243,7 @@ class TestHandleBackfill:
                 ids_file=str(ids_file),
                 output_dir=str(tmp_path / "output"),
                 existing_ids=None,
+                existing_ids_file=None,
             )
             result = _handle_backfill(args)
 
