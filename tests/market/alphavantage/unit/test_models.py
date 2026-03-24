@@ -221,7 +221,9 @@ class TestEarningsSplit:
         fields = _field_names(QuarterlyEarningsRecord)
         assert "surprise" in fields
 
-    def test_正常系_QuarterlyEarningsRecordにsurprise_percentageが存在する(self) -> None:
+    def test_正常系_QuarterlyEarningsRecordにsurprise_percentageが存在する(
+        self,
+    ) -> None:
         fields = _field_names(QuarterlyEarningsRecord)
         assert "surprise_percentage" in fields
 
@@ -330,7 +332,9 @@ class TestOptionalFields:
         )
         assert record.reported_eps is None
 
-    def test_正常系_QuarterlyEarningsRecordのOptionalフィールドにNone指定可(self) -> None:
+    def test_正常系_QuarterlyEarningsRecordのOptionalフィールドにNone指定可(
+        self,
+    ) -> None:
         record = QuarterlyEarningsRecord(
             symbol="AAPL",
             fiscal_date_ending="2025-12-31",
