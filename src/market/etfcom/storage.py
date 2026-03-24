@@ -437,7 +437,9 @@ class ETFComStorage:
         sql = _build_insert_sql(table_name, field_names)
         data = [_dataclass_to_tuple(r) for r in records]
         self._client.execute_many(sql, data)
-        logger.info(f"{label} upserted", count=len(records))
+        logger.info(
+            "Records upserted", table=table_name, label=label, count=len(records)
+        )
         return len(records)
 
     # ------------------------------------------------------------------

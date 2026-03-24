@@ -82,6 +82,18 @@ logger = get_logger(__name__)
 # HTTP status codes indicating bot-blocking
 _BLOCKED_STATUS_CODES: frozenset[int] = frozenset({403, 429})
 
+# Required keys in the api-details response (Fix #12: defined once as frozenset)
+_AUTH_REQUIRED_KEYS: frozenset[str] = frozenset(
+    {
+        "apiBaseUrl",
+        "fundApiKey",
+        "toolsApiKey",
+        "oauthToken",
+        "realTimeApiUrl",
+        "graphQLApiUrl",
+    }
+)
+
 
 class ETFComSession:
     """curl_cffi-based HTTP session with bot-blocking countermeasures.
@@ -162,7 +174,7 @@ class ETFComSession:
         self._fund_api_key: str | None = None
         self._auth_expires_at: float = 0.0  # monotonic clock; 0 means not authenticated
 
-        logger.info(
+        logger.debug(
             "ETFComSession initialized",
             impersonate=self._config.impersonate,
             polite_delay=self._config.polite_delay,
@@ -571,35 +583,31 @@ class ETFComSession:
         api_response = self.get(AUTH_DETAILS_URL)
 
         if api_response.status_code != 200:
+            # AIDEV-NOTE: response_body=None to prevent leaking API keys
+            # that may be present in the raw response (CWE-532).
             raise ETFComAPIError(
                 f"Authentication failed: HTTP {api_response.status_code} "
                 f"from {AUTH_DETAILS_URL}",
                 url=AUTH_DETAILS_URL,
                 status_code=api_response.status_code,
-                response_body=api_response.text[:500]
-                if hasattr(api_response, "text")
-                else None,
+                response_body=None,
             )
 
         data: dict[str, Any] = api_response.json()
 
-        # Validate required keys
-        required_keys = [
-            "apiBaseUrl",
-            "fundApiKey",
-            "toolsApiKey",
-            "oauthToken",
-            "realTimeApiUrl",
-            "graphQLApiUrl",
-        ]
-        missing_keys = [k for k in required_keys if k not in data]
+        # Validate required keys (uses module-level frozenset constant)
+        missing_keys = sorted(_AUTH_REQUIRED_KEYS - data.keys())
         if missing_keys:
+            # AIDEV-NOTE: Mask sensitive key names in response_body to
+            # prevent leaking API keys (CWE-532).
+            _SENSITIVE_KEYS = {"fundApiKey", "toolsApiKey", "oauthToken"}
+            safe_keys = sorted(data.keys() - _SENSITIVE_KEYS)
             raise ETFComAPIError(
                 f"Missing required keys in api-details response: "
                 f"{', '.join(missing_keys)}",
                 url=AUTH_DETAILS_URL,
                 status_code=200,
-                response_body=str(data)[:500],
+                response_body=f"available keys (non-sensitive): {safe_keys}",
             )
 
         auth_config = AuthConfig(
@@ -684,8 +692,16 @@ class ETFComSession:
         """
         self._ensure_authenticated()
 
+        # AIDEV-NOTE: Explicit guard — _ensure_authenticated must set _fund_api_key.
+        # Empty-string fallback would silently send unauthenticated requests.
+        if self._fund_api_key is None:
+            raise ETFComAPIError(
+                "Authentication succeeded but fund_api_key is None",
+                url=FUND_DETAILS_URL,
+            )
+
         # Build auth headers
-        auth_headers: dict[str, str] = {"fundApiKey": self._fund_api_key or ""}
+        auth_headers: dict[str, str] = {"fundApiKey": self._fund_api_key}
         caller_headers: dict[str, str] = kwargs.pop("headers", {})
         merged_headers = {**auth_headers, **caller_headers}
 
@@ -741,7 +757,14 @@ class ETFComSession:
         """
         self._ensure_authenticated()
 
-        auth_headers: dict[str, str] = {"fundApiKey": self._fund_api_key or ""}
+        # AIDEV-NOTE: Explicit guard — _ensure_authenticated must set _fund_api_key.
+        if self._fund_api_key is None:
+            raise ETFComAPIError(
+                "Authentication succeeded but fund_api_key is None",
+                url=url,
+            )
+
+        auth_headers: dict[str, str] = {"fundApiKey": self._fund_api_key}
         caller_headers: dict[str, str] = kwargs.pop("headers", {})
         merged_headers = {**auth_headers, **caller_headers}
 

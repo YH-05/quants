@@ -213,6 +213,56 @@ def _extract_fund_details_data(
 
 
 # =============================================================================
+# Generic list response parser (DRY helper)
+# =============================================================================
+
+
+def _parse_list_response(
+    response: dict[str, Any],
+    query_name: str,
+    date_fields: tuple[str, ...] = ("as_of_date",),
+) -> list[dict[str, Any]]:
+    """Generic parser for fund-details queries that return a list.
+
+    Extracts data via ``_extract_fund_details_data()``, converts keys
+    to snake_case, and normalises the specified date fields.
+
+    Parameters
+    ----------
+    response : dict[str, Any]
+        Full JSON response from ``/v2/fund/fund-details``.
+    query_name : str
+        The query name key (e.g. ``"fundFlowsData"``).
+    date_fields : tuple[str, ...]
+        Snake_case date field names to normalise.  Defaults to
+        ``("as_of_date",)``.
+
+    Returns
+    -------
+    list[dict[str, Any]]
+        List of snake_case dicts with normalised date fields.
+        Returns an empty list if data is missing.
+    """
+    raw = _extract_fund_details_data(response, query_name)
+    if not isinstance(raw, list):
+        logger.debug("No list data found", query_name=query_name)
+        return []
+
+    results: list[dict[str, Any]] = []
+    for record in raw:
+        converted = _convert_keys(record)
+        for field in date_fields:
+            if field in converted:
+                converted[field] = _normalize_date(converted.get(field))
+        results.append(converted)
+
+    logger.debug(
+        "Parsed list response", query_name=query_name, record_count=len(results)
+    )
+    return results
+
+
+# =============================================================================
 # 18 POST fund-details parsers
 # =============================================================================
 
@@ -234,19 +284,7 @@ def parse_fund_flows(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with normalised date fields.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "fundFlowsData")
-    if not isinstance(raw, list):
-        logger.debug("fundFlowsData: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["nav_date"] = _normalize_date(converted.get("nav_date"))
-        results.append(converted)
-
-    logger.debug("Parsed fund flows", record_count=len(results))
-    return results
+    return _parse_list_response(response, "fundFlowsData", date_fields=("nav_date",))
 
 
 def parse_holdings(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -266,19 +304,7 @@ def parse_holdings(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with holding data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "topHoldings")
-    if not isinstance(raw, list):
-        logger.debug("topHoldings: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["as_of_date"] = _normalize_date(converted.get("as_of_date"))
-        results.append(converted)
-
-    logger.debug("Parsed holdings", record_count=len(results))
-    return results
+    return _parse_list_response(response, "topHoldings")
 
 
 def parse_portfolio_data(response: dict[str, Any]) -> dict[str, Any]:
@@ -327,19 +353,7 @@ def parse_sector_breakdown(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with sector allocation data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "sectorIndustryBreakdown")
-    if not isinstance(raw, list):
-        logger.debug("sectorIndustryBreakdown: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["as_of_date"] = _normalize_date(converted.get("as_of_date"))
-        results.append(converted)
-
-    logger.debug("Parsed sector breakdown", record_count=len(results))
-    return results
+    return _parse_list_response(response, "sectorIndustryBreakdown")
 
 
 def parse_regions(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -358,19 +372,7 @@ def parse_regions(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with region allocation data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "regions")
-    if not isinstance(raw, list):
-        logger.debug("regions: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["as_of_date"] = _normalize_date(converted.get("as_of_date"))
-        results.append(converted)
-
-    logger.debug("Parsed regions", record_count=len(results))
-    return results
+    return _parse_list_response(response, "regions")
 
 
 def parse_countries(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -389,19 +391,7 @@ def parse_countries(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with country allocation data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "countries")
-    if not isinstance(raw, list):
-        logger.debug("countries: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["as_of_date"] = _normalize_date(converted.get("as_of_date"))
-        results.append(converted)
-
-    logger.debug("Parsed countries", record_count=len(results))
-    return results
+    return _parse_list_response(response, "countries")
 
 
 def parse_econ_dev(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -421,19 +411,7 @@ def parse_econ_dev(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with economic development data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "economicDevelopment")
-    if not isinstance(raw, list):
-        logger.debug("economicDevelopment: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["as_of_date"] = _normalize_date(converted.get("as_of_date"))
-        results.append(converted)
-
-    logger.debug("Parsed economic development", record_count=len(results))
-    return results
+    return _parse_list_response(response, "economicDevelopment")
 
 
 def parse_intra_data(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -453,19 +431,7 @@ def parse_intra_data(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with intraday data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "fundIntraData")
-    if not isinstance(raw, list):
-        logger.debug("fundIntraData: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["date"] = _normalize_date(converted.get("date"))
-        results.append(converted)
-
-    logger.debug("Parsed intra data", record_count=len(results))
-    return results
+    return _parse_list_response(response, "fundIntraData", date_fields=("date",))
 
 
 def parse_compare_ticker(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -484,18 +450,7 @@ def parse_compare_ticker(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with comparison data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "compareTicker")
-    if not isinstance(raw, list):
-        logger.debug("compareTicker: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        results.append(converted)
-
-    logger.debug("Parsed compare ticker", record_count=len(results))
-    return results
+    return _parse_list_response(response, "compareTicker", date_fields=())
 
 
 def parse_spread_chart(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -514,19 +469,7 @@ def parse_spread_chart(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with spread chart data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "fundSpreadChart")
-    if not isinstance(raw, list):
-        logger.debug("fundSpreadChart: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["date"] = _normalize_date(converted.get("date"))
-        results.append(converted)
-
-    logger.debug("Parsed spread chart", record_count=len(results))
-    return results
+    return _parse_list_response(response, "fundSpreadChart", date_fields=("date",))
 
 
 def parse_premium_chart(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -545,19 +488,7 @@ def parse_premium_chart(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with premium/discount chart data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "fundPremiumChart")
-    if not isinstance(raw, list):
-        logger.debug("fundPremiumChart: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["date"] = _normalize_date(converted.get("date"))
-        results.append(converted)
-
-    logger.debug("Parsed premium chart", record_count=len(results))
-    return results
+    return _parse_list_response(response, "fundPremiumChart", date_fields=("date",))
 
 
 def parse_tradability(response: dict[str, Any]) -> list[dict[str, Any]]:
@@ -576,19 +507,7 @@ def parse_tradability(response: dict[str, Any]) -> list[dict[str, Any]]:
         List of snake_case dicts with tradability data.
         Returns an empty list if data is missing.
     """
-    raw = _extract_fund_details_data(response, "fundTradabilityData")
-    if not isinstance(raw, list):
-        logger.debug("fundTradabilityData: no list data found")
-        return []
-
-    results: list[dict[str, Any]] = []
-    for record in raw:
-        converted = _convert_keys(record)
-        converted["date"] = _normalize_date(converted.get("date"))
-        results.append(converted)
-
-    logger.debug("Parsed tradability", record_count=len(results))
-    return results
+    return _parse_list_response(response, "fundTradabilityData", date_fields=("date",))
 
 
 def parse_tradability_summary(response: dict[str, Any]) -> dict[str, Any]:

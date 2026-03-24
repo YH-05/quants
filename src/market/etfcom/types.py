@@ -27,11 +27,6 @@ from market.etfcom.constants import (
     DEFAULT_TIMEOUT,
 )
 
-# AIDEV-NOTE: Legacy default for Playwright-based scraping. Kept inline
-# after DEFAULT_STABILITY_WAIT was removed from constants.py (Wave 1 API migration).
-# Will be removed when browser.py / collectors.py are rewritten in later Waves.
-_LEGACY_STABILITY_WAIT: float = 2.0
-
 # =============================================================================
 # Configuration Dataclasses
 # =============================================================================
@@ -86,7 +81,7 @@ class ScrapingConfig:
     impersonate: str = "chrome"
     timeout: float = DEFAULT_TIMEOUT
     headless: bool = True
-    stability_wait: float = _LEGACY_STABILITY_WAIT
+    stability_wait: float = 2.0
     max_page_retries: int = 5
 
 

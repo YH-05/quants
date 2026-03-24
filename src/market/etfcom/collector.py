@@ -65,6 +65,7 @@ from market.etfcom.storage_constants import (
     TABLE_ALLOCATIONS,
     TABLE_FUND_FLOWS,
     TABLE_HOLDINGS,
+    TABLE_NOT_PERSISTED,
     TABLE_PERFORMANCE,
     TABLE_PORTFOLIO,
     TABLE_QUOTES,
@@ -75,6 +76,8 @@ from market.etfcom.storage_constants import (
 from utils_core.logging import get_logger
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
+
     from market.etfcom.client import ETFComClient
     from market.etfcom.storage import ETFComStorage
 
@@ -689,6 +692,25 @@ class ETFComCollector:
         results: list[CollectionResult] = []
         fetched_at = datetime.now(tz=UTC).isoformat()
 
+        # AIDEV-NOTE: Pre-build ticker->fund_id map once to avoid N+1
+        # query in _collect_performance() (one get_tickers() per ticker).
+        ticker_to_fund_id: dict[str, int] = {}
+        try:
+            tickers_df = self._storage.get_tickers()
+            if not tickers_df.empty and "ticker" in tickers_df.columns:
+                for _, row in tickers_df.iterrows():
+                    ticker_to_fund_id[str(row["ticker"])] = int(row["fund_id"])
+            logger.debug(
+                "Pre-built ticker-to-fund_id map",
+                map_size=len(ticker_to_fund_id),
+            )
+        except Exception:
+            logger.warning(
+                "Failed to pre-build ticker-to-fund_id map, "
+                "will skip performance GET for all tickers",
+                exc_info=True,
+            )
+
         for ticker in tickers:
             results.append(self._collect_regions(ticker, fetched_at))
             results.append(self._collect_countries(ticker, fetched_at))
@@ -700,7 +722,9 @@ class ETFComCollector:
             results.append(self._collect_structure(ticker, fetched_at))
             results.append(self._collect_rankings(ticker, fetched_at))
             results.append(self._collect_performance_stats(ticker, fetched_at))
-            results.append(self._collect_performance(ticker, fetched_at))
+            results.append(
+                self._collect_performance(ticker, fetched_at, ticker_to_fund_id)
+            )
 
         return _build_summary(results)
 
@@ -754,574 +778,427 @@ class ETFComCollector:
         return summary
 
     # ==================================================================
+    # Generic error-handling wrapper (DRY for all _collect_* methods)
+    # ==================================================================
+
+    def _collect_with_error_handling(
+        self,
+        ticker: str,
+        table: str,
+        label: str,
+        action: Callable[[], int],
+    ) -> CollectionResult:
+        """Execute a collection action with standardised error handling.
+
+        Parameters
+        ----------
+        ticker : str
+            ETF ticker symbol.
+        table : str
+            Target table name (or ``TABLE_NOT_PERSISTED``).
+        label : str
+            Human-readable label for log messages.
+        action : Callable[[], int]
+            Zero-argument callable that performs the fetch + upsert and
+            returns the number of rows affected.
+
+        Returns
+        -------
+        CollectionResult
+            Success or failure result.
+        """
+        try:
+            count = action()
+            logger.debug("Collected", label=label, ticker=ticker, count=count)
+            return CollectionResult(
+                ticker=ticker,
+                table=table,
+                rows_upserted=count,
+                success=True,
+            )
+        except Exception as exc:
+            logger.error(
+                "Failed to collect",
+                label=label,
+                ticker=ticker,
+                exc_info=True,
+            )
+            return CollectionResult(
+                ticker=ticker,
+                table=table,
+                success=False,
+                error_message=str(exc),
+            )
+
+    # ==================================================================
     # Private helpers — each wraps a single client call + storage upsert
     # ==================================================================
 
     def _collect_fund_flows(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect fund flows for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_fund_flows(ticker)
             records = _to_fund_flows_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_fund_flows(records)
-            logger.debug("Fund flows collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_FUND_FLOWS,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect fund flows",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_FUND_FLOWS,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_fund_flows(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_FUND_FLOWS,
+            "fund_flows",
+            _action,
+        )
 
     def _collect_delayed_quotes(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect delayed quotes for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_delayed_quotes(ticker)
             records = _to_quote_records(raw, fetched_at)
-            count = self._storage.upsert_quotes(records)
-            logger.debug("Quotes collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_QUOTES,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect delayed quotes",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_QUOTES,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_quotes(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_QUOTES,
+            "delayed_quotes",
+            _action,
+        )
 
     def _collect_intra_data(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect intraday data for a single ticker.
 
-        Intraday data is fetched and logged but shares the fund_flows
-        table pattern. The data is logged for monitoring but the raw
-        intraday records are not persisted to a separate table.
+        # AIDEV-NOTE: Intraday data is fetched and logged but not persisted
+        # to a separate table. Uses TABLE_NOT_PERSISTED sentinel.
         """
-        try:
+
+        def _action() -> int:
             raw = self._client.get_intra_data(ticker)
-            count = len(raw) if raw else 0
-            logger.debug("Intra data collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_intra_data",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect intra data",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_intra_data",
-                success=False,
-                error_message=str(exc),
-            )
+            return len(raw) if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "intra_data",
+            _action,
+        )
 
     def _collect_holdings(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect top holdings for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_holdings(ticker)
             records = _to_holding_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_holdings(records)
-            logger.debug("Holdings collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_HOLDINGS,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect holdings",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_HOLDINGS,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_holdings(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_HOLDINGS,
+            "holdings",
+            _action,
+        )
 
     def _collect_portfolio(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect portfolio data for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_portfolio_data(ticker)
             records = _to_portfolio_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_portfolio(records)
-            logger.debug("Portfolio collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_PORTFOLIO,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect portfolio",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_PORTFOLIO,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_portfolio(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_PORTFOLIO,
+            "portfolio",
+            _action,
+        )
 
     def _collect_sector_breakdown(
         self, ticker: str, fetched_at: str
     ) -> CollectionResult:
         """Collect sector breakdown for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_sector_breakdown(ticker)
             records = _to_allocation_records(ticker, raw, "sector", fetched_at)
-            count = self._storage.upsert_allocations(records)
-            logger.debug("Sector breakdown collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect sector breakdown",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_allocations(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_ALLOCATIONS,
+            "sector_breakdown",
+            _action,
+        )
 
     def _collect_spread_chart(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect spread chart data for a single ticker."""
-        try:
+        """Collect spread chart data for a single ticker.
+
+        # AIDEV-NOTE: Spread chart data is fetched but not persisted.
+        """
+
+        def _action() -> int:
             raw = self._client.get_spread_chart(ticker)
-            count = len(raw) if raw else 0
-            logger.debug("Spread chart collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_spread_chart",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect spread chart",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_spread_chart",
-                success=False,
-                error_message=str(exc),
-            )
+            return len(raw) if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "spread_chart",
+            _action,
+        )
 
     def _collect_premium_chart(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect premium chart data for a single ticker."""
-        try:
+        """Collect premium chart data for a single ticker.
+
+        # AIDEV-NOTE: Premium chart data is fetched but not persisted.
+        """
+
+        def _action() -> int:
             raw = self._client.get_premium_chart(ticker)
-            count = len(raw) if raw else 0
-            logger.debug("Premium chart collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_premium_chart",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect premium chart",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_premium_chart",
-                success=False,
-                error_message=str(exc),
-            )
+            return len(raw) if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "premium_chart",
+            _action,
+        )
 
     def _collect_tradability(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect tradability time-series data for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_tradability(ticker)
             records = _to_tradability_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_tradability(records)
-            logger.debug("Tradability collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_TRADABILITY,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect tradability",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_TRADABILITY,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_tradability(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_TRADABILITY,
+            "tradability",
+            _action,
+        )
 
     def _collect_regions(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect regional allocation for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_regions(ticker)
             records = _to_allocation_records(ticker, raw, "region", fetched_at)
-            count = self._storage.upsert_allocations(records)
-            logger.debug("Regions collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect regions",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_allocations(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_ALLOCATIONS,
+            "regions",
+            _action,
+        )
 
     def _collect_countries(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect country allocation for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_countries(ticker)
             records = _to_allocation_records(ticker, raw, "country", fetched_at)
-            count = self._storage.upsert_allocations(records)
-            logger.debug("Countries collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect countries",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_allocations(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_ALLOCATIONS,
+            "countries",
+            _action,
+        )
 
     def _collect_econ_dev(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect economic development classification for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_econ_dev(ticker)
             records = _to_allocation_records(
                 ticker, raw, "economic_development", fetched_at
             )
-            count = self._storage.upsert_allocations(records)
-            logger.debug("Econ dev collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect econ dev",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_ALLOCATIONS,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_allocations(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_ALLOCATIONS,
+            "econ_dev",
+            _action,
+        )
 
     def _collect_compare_ticker(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect competing ETF comparison data for a single ticker."""
-        try:
+        """Collect competing ETF comparison data for a single ticker.
+
+        # AIDEV-NOTE: Comparison data is fetched but not persisted.
+        """
+
+        def _action() -> int:
             raw = self._client.get_compare_ticker(ticker)
-            count = len(raw) if raw else 0
-            logger.debug("Compare ticker collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_compare_ticker",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect compare ticker",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_compare_ticker",
-                success=False,
-                error_message=str(exc),
-            )
+            return len(raw) if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "compare_ticker",
+            _action,
+        )
 
     def _collect_tradability_summary(
         self, ticker: str, fetched_at: str
     ) -> CollectionResult:
         """Collect tradability summary for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_tradability_summary(ticker)
             records = _to_tradability_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_tradability(records)
-            logger.debug("Tradability summary collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_TRADABILITY,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect tradability summary",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_TRADABILITY,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_tradability(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_TRADABILITY,
+            "tradability_summary",
+            _action,
+        )
 
     def _collect_portfolio_management(
         self, ticker: str, fetched_at: str
     ) -> CollectionResult:
-        """Collect portfolio management data for a single ticker."""
-        try:
+        """Collect portfolio management data for a single ticker.
+
+        # AIDEV-NOTE: Portfolio management data is fetched but not persisted
+        # to a separate table.
+        """
+
+        def _action() -> int:
             raw = self._client.get_portfolio_management(ticker)
-            count = 1 if raw else 0
-            logger.debug("Portfolio management collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_portfolio_management",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect portfolio management",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_portfolio_management",
-                success=False,
-                error_message=str(exc),
-            )
+            return 1 if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "portfolio_management",
+            _action,
+        )
 
     def _collect_tax_exposures(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect tax exposure data for a single ticker."""
-        try:
+        """Collect tax exposure data for a single ticker.
+
+        # AIDEV-NOTE: Tax exposure data is fetched but not persisted.
+        """
+
+        def _action() -> int:
             raw = self._client.get_tax_exposures(ticker)
-            count = 1 if raw else 0
-            logger.debug("Tax exposures collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_tax_exposures",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect tax exposures",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_tax_exposures",
-                success=False,
-                error_message=str(exc),
-            )
+            return 1 if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "tax_exposures",
+            _action,
+        )
 
     def _collect_structure(self, ticker: str, fetched_at: str) -> CollectionResult:
         """Collect fund structure data for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_structure(ticker)
             records = _to_structure_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_structure(records)
-            logger.debug("Structure collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_STRUCTURE,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect structure",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_STRUCTURE,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_structure(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_STRUCTURE,
+            "structure",
+            _action,
+        )
 
     def _collect_rankings(self, ticker: str, fetched_at: str) -> CollectionResult:
-        """Collect fund rankings for a single ticker."""
-        try:
+        """Collect fund rankings for a single ticker.
+
+        # AIDEV-NOTE: Rankings data is fetched but not persisted.
+        """
+
+        def _action() -> int:
             raw = self._client.get_rankings(ticker)
-            count = 1 if raw else 0
-            logger.debug("Rankings collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_rankings",
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect rankings",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table="etfcom_rankings",
-                success=False,
-                error_message=str(exc),
-            )
+            return 1 if raw else 0
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_NOT_PERSISTED,
+            "rankings",
+            _action,
+        )
 
     def _collect_performance_stats(
         self, ticker: str, fetched_at: str
     ) -> CollectionResult:
         """Collect performance statistics for a single ticker."""
-        try:
+
+        def _action() -> int:
             raw = self._client.get_performance_stats(ticker)
             records = _to_performance_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_performance(records)
-            logger.debug("Performance stats collected", ticker=ticker, count=count)
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_PERFORMANCE,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect performance stats",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_PERFORMANCE,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_performance(records)
 
-    def _collect_performance(self, ticker: str, fetched_at: str) -> CollectionResult:
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_PERFORMANCE,
+            "performance_stats",
+            _action,
+        )
+
+    def _collect_performance(
+        self,
+        ticker: str,
+        fetched_at: str,
+        ticker_to_fund_id: dict[str, int] | None = None,
+    ) -> CollectionResult:
         """Collect performance returns via the GET endpoint.
 
-        This requires a fund_id lookup from the tickers table. If the
-        fund_id cannot be resolved, the collection is skipped with a
-        success result (0 rows).
-        """
-        try:
-            # Look up fund_id from tickers table
-            tickers_df = self._storage.get_tickers()
-            if tickers_df.empty or "ticker" not in tickers_df.columns:
-                logger.warning(
-                    "No tickers data in storage, skipping performance GET",
-                    ticker=ticker,
-                )
-                return CollectionResult(
-                    ticker=ticker,
-                    table=TABLE_PERFORMANCE,
-                    rows_upserted=0,
-                    success=True,
-                )
+        Parameters
+        ----------
+        ticker : str
+            ETF ticker symbol.
+        fetched_at : str
+            ISO 8601 timestamp.
+        ticker_to_fund_id : dict[str, int] | None
+            Pre-built ticker-to-fund_id mapping. When ``None``, falls
+            back to querying ``self._storage.get_tickers()`` (legacy path).
 
-            fund_id_row = tickers_df[tickers_df["ticker"] == ticker]
-            if fund_id_row.empty:
+        Returns
+        -------
+        CollectionResult
+            Collection result.
+        """
+
+        def _action() -> int:
+            # Resolve fund_id from pre-built map or storage fallback
+            fund_id: int | None = None
+            if ticker_to_fund_id is not None:
+                fund_id = ticker_to_fund_id.get(ticker)
+            else:
+                # Legacy fallback: query storage (N+1 per ticker)
+                tickers_df = self._storage.get_tickers()
+                if not tickers_df.empty and "ticker" in tickers_df.columns:
+                    fund_id_row = tickers_df[tickers_df["ticker"] == ticker]
+                    if not fund_id_row.empty:
+                        fund_id = int(fund_id_row.iloc[0]["fund_id"])
+
+            if fund_id is None:
                 logger.warning(
                     "No fund_id found for ticker, skipping performance GET",
                     ticker=ticker,
                 )
-                return CollectionResult(
-                    ticker=ticker,
-                    table=TABLE_PERFORMANCE,
-                    rows_upserted=0,
-                    success=True,
-                )
+                return 0
 
-            fund_id = int(fund_id_row.iloc[0]["fund_id"])
             raw = self._client.get_performance(fund_id)
             records = _to_performance_records(ticker, raw, fetched_at)
-            count = self._storage.upsert_performance(records)
-            logger.debug(
-                "Performance GET collected",
-                ticker=ticker,
-                fund_id=fund_id,
-                count=count,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_PERFORMANCE,
-                rows_upserted=count,
-                success=True,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to collect performance GET",
-                ticker=ticker,
-                exc_info=True,
-            )
-            return CollectionResult(
-                ticker=ticker,
-                table=TABLE_PERFORMANCE,
-                success=False,
-                error_message=str(exc),
-            )
+            return self._storage.upsert_performance(records)
+
+        return self._collect_with_error_handling(
+            ticker,
+            TABLE_PERFORMANCE,
+            "performance_get",
+            _action,
+        )
 
 
 # =============================================================================

@@ -1175,14 +1175,20 @@ class TestHTTPMethodRetry404Propagation:
 # Helper: API details response mock
 # =============================================================================
 
-_MOCK_API_DETAILS_RESPONSE: dict[str, str] = {
-    "apiBaseUrl": "https://api-prod.etf.com",
-    "fundApiKey": "test-fund-api-key",
-    "toolsApiKey": "test-tools-api-key",
-    "oauthToken": "test-oauth-token",
-    "realTimeApiUrl": "https://real-time-prod.etf.com/graphql",
-    "graphQLApiUrl": "https://data.etf.com",
-}
+
+def _mock_api_details_response() -> dict[str, str]:
+    """Return a fresh copy of the mock API details response.
+
+    Returns a new dict each time to prevent cross-test mutation.
+    """
+    return {
+        "apiBaseUrl": "https://api-prod.etf.com",
+        "fundApiKey": "test-fund-api-key",
+        "toolsApiKey": "test-tools-api-key",
+        "oauthToken": "test-oauth-token",
+        "realTimeApiUrl": "https://real-time-prod.etf.com/graphql",
+        "graphQLApiUrl": "https://data.etf.com",
+    }
 
 
 def _make_session_with_mock_curl() -> tuple[ETFComSession, MagicMock]:
@@ -1221,7 +1227,7 @@ class TestAuthenticate:
         # Second request: GET /api/v1/api-details
         mock_api_response = MagicMock()
         mock_api_response.status_code = 200
-        mock_api_response.json.return_value = _MOCK_API_DETAILS_RESPONSE
+        mock_api_response.json.return_value = _mock_api_details_response()
 
         mock_underlying.request.side_effect = [mock_cf_response, mock_api_response]
 

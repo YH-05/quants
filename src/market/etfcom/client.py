@@ -50,6 +50,7 @@ market.etfcom.constants : API endpoint URLs and query name definitions.
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
+from urllib.parse import urlencode
 
 from market.etfcom.constants import (
     CHARTS_URL,
@@ -705,7 +706,7 @@ class ETFComClient:
         """
         self._validate_ticker(tickers)
 
-        url = f"{DELAYED_QUOTES_URL}?tickers={tickers}"
+        url = f"{DELAYED_QUOTES_URL}?{urlencode({'tickers': tickers})}"
         logger.debug("Fetching delayed quotes", url=url, tickers=tickers)
 
         response = self._session.get_authenticated(url)
@@ -747,7 +748,7 @@ class ETFComClient:
         """
         self._validate_ticker(ticker)
 
-        url = f"{CHARTS_URL}?dataPoint={data_point}&interval={interval}&ticker={ticker}"
+        url = f"{CHARTS_URL}?{urlencode({'dataPoint': data_point, 'interval': interval, 'ticker': ticker})}"
         logger.debug("Fetching charts", url=url, ticker=ticker)
 
         response = self._session.get_authenticated(url)

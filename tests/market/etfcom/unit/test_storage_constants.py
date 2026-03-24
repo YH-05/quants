@@ -129,6 +129,7 @@ class TestAllExports:
             "TABLE_ALLOCATIONS",
             "TABLE_FUND_FLOWS",
             "TABLE_HOLDINGS",
+            "TABLE_NOT_PERSISTED",
             "TABLE_PERFORMANCE",
             "TABLE_PORTFOLIO",
             "TABLE_QUOTES",
@@ -138,10 +139,10 @@ class TestAllExports:
         }
         assert set(storage_constants.__all__) == expected
 
-    def test_正常系_allの要素数は11(self) -> None:
+    def test_正常系_allの要素数は12(self) -> None:
         from market.etfcom import storage_constants
 
-        assert len(storage_constants.__all__) == 11
+        assert len(storage_constants.__all__) == 12
 
     def test_正常系_allの要素がアルファベット順(self) -> None:
         from market.etfcom import storage_constants

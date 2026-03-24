@@ -76,17 +76,21 @@ class TestConstructor:
         with patch("market.etfcom.client.ETFComSession") as mock_session_cls:
             mock_session_cls.return_value = MagicMock(spec=ETFComSession)
             ETFComClient(scraping_config=config)
-            call_kwargs = mock_session_cls.call_args
-            assert call_kwargs[1].get("config") is config or call_kwargs[0][0] is config
+            # ETFComSession is called with keyword args: config=..., retry_config=...
+            mock_session_cls.assert_called_once_with(
+                config=config,
+                retry_config=None,
+            )
 
     def test_正常系_RetryConfig_DI(self) -> None:
         retry = RetryConfig(max_attempts=5)
         with patch("market.etfcom.client.ETFComSession") as mock_session_cls:
             mock_session_cls.return_value = MagicMock(spec=ETFComSession)
             ETFComClient(retry_config=retry)
-            call_kwargs = mock_session_cls.call_args
-            assert call_kwargs[1].get("retry_config") is retry or (
-                len(call_kwargs[0]) > 1 and call_kwargs[0][1] is retry
+            # ETFComSession is called with keyword args: config=..., retry_config=...
+            mock_session_cls.assert_called_once_with(
+                config=None,
+                retry_config=retry,
             )
 
 
