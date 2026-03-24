@@ -44,7 +44,6 @@ market.alphavantage.models : Storage record dataclasses.
 from __future__ import annotations
 
 import dataclasses
-import math
 import os
 import re
 from functools import lru_cache
@@ -84,40 +83,6 @@ if TYPE_CHECKING:
     )
 
 logger = get_logger(__name__)
-
-
-# ============================================================================
-# Validation helpers
-# ============================================================================
-
-
-# AIDEV-NOTE: polymarket/storage.py と同一実装。将来の upsert パス検証で使用予定。
-# collector 層では _safe_float() が NaN → None 変換を担い、storage 層では
-# 明示的な Inf/NaN ガードとしてこの関数を upsert 前バリデーションに組み込む予定。
-def _validate_finite(value: float | None, name: str) -> float | None:
-    """Validate that a numeric value is finite (not NaN or Inf).
-
-    Parameters
-    ----------
-    value : float | None
-        Value to validate. ``None`` is passed through unchanged.
-    name : str
-        Field name for error messages.
-
-    Returns
-    -------
-    float | None
-        The validated value.
-
-    Raises
-    ------
-    ValueError
-        If the value is NaN or Inf.
-    """
-    if value is not None and not math.isfinite(value):
-        msg = f"{name} must be finite, got {value}"
-        raise ValueError(msg)
-    return value
 
 
 # ============================================================================
@@ -376,6 +341,9 @@ _TABLE_DDL: dict[str, str] = {
 # Valid table names whitelist for SQL injection prevention
 _VALID_TABLE_NAMES: frozenset[str] = frozenset(_TABLE_DDL.keys())
 
+# Valid filter column names for _query_financial_table (SQL injection prevention)
+_VALID_FILTER_COLUMNS: frozenset[str] = frozenset({"report_type", "period_type"})
+
 # Identifier validation for ALTER TABLE migration (security hardening)
 _SAFE_IDENTIFIER_RE = re.compile(r"^\w+$")
 _SAFE_SQLITE_TYPES = frozenset({"TEXT", "INTEGER", "REAL", "BLOB", "NUMERIC"})
@@ -627,6 +595,95 @@ class AlphaVantageStorage:
         return stats
 
     # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
+
+    def _upsert_records(
+        self,
+        table_name: str,
+        records: list[Any],
+        label: str,
+    ) -> int:
+        """Upsert a list of dataclass records into the given table.
+
+        Parameters
+        ----------
+        table_name : str
+            Target table name (must be in ``_VALID_TABLE_NAMES``).
+        records : list[Any]
+            List of frozen dataclass records.
+        label : str
+            Human-readable label for log messages.
+
+        Returns
+        -------
+        int
+            Number of records upserted.
+        """
+        if not records:
+            return 0
+        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
+        sql = _build_insert_sql(table_name, field_names)
+        data = [_dataclass_to_tuple(r) for r in records]
+        self._client.execute_many(sql, data)
+        logger.info(f"{label} upserted", count=len(records))
+        return len(records)
+
+    def _query_financial_table(
+        self,
+        table_name: str,
+        symbol: str,
+        *,
+        filter_column: str | None = None,
+        filter_value: str | None = None,
+        label: str = "Records",
+    ) -> pd.DataFrame:
+        """Query a financial table by symbol with optional filter.
+
+        Builds a ``SELECT * FROM <table> WHERE symbol = ?`` query,
+        optionally adding an extra equality filter on a validated column,
+        and orders results by ``fiscal_date_ending``.
+
+        Parameters
+        ----------
+        table_name : str
+            Target table name (must be in ``_VALID_TABLE_NAMES``).
+        symbol : str
+            Ticker symbol to filter by.
+        filter_column : str | None
+            Optional column name for additional filtering. Must be in
+            ``_VALID_FILTER_COLUMNS`` if provided.
+        filter_value : str | None
+            Value for the additional filter. Ignored if ``filter_column``
+            is ``None``.
+        label : str
+            Human-readable label for log messages.
+
+        Returns
+        -------
+        pd.DataFrame
+            Query results. Returns an empty DataFrame if no data matches.
+
+        Raises
+        ------
+        ValueError
+            If ``filter_column`` is not in ``_VALID_FILTER_COLUMNS``.
+        """
+        sql = f"SELECT * FROM {table_name} WHERE symbol = ?"  # nosec B608
+        params: list[str] = [symbol]
+        if filter_column is not None and filter_value is not None:
+            if filter_column not in _VALID_FILTER_COLUMNS:
+                msg = f"Invalid filter column: {filter_column!r}"
+                raise ValueError(msg)
+            sql += f" AND {filter_column} = ?"  # nosec B608
+            params.append(filter_value)
+        sql += " ORDER BY fiscal_date_ending"
+        with self._client.connection() as conn:
+            df = pd.read_sql_query(sql, conn, params=params)
+        logger.info(f"{label} retrieved", count=len(df))
+        return df
+
+    # ------------------------------------------------------------------
     # Upsert methods
     # ------------------------------------------------------------------
 
@@ -643,17 +700,7 @@ class AlphaVantageStorage:
         int
             Number of rows affected.
         """
-        if not records:
-            logger.debug("No daily price records to upsert, skipping")
-            return 0
-
-        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
-        sql = _build_insert_sql(TABLE_DAILY_PRICES, field_names)
-
-        params = [_dataclass_to_tuple(r) for r in records]
-        self._client.execute_many(sql, params)
-        logger.info("Daily prices upserted", count=len(records))
-        return len(records)
+        return self._upsert_records(TABLE_DAILY_PRICES, records, "Daily prices")
 
     def upsert_company_overview(self, record: CompanyOverviewRecord) -> int:
         """Upsert a single company overview record.
@@ -668,13 +715,9 @@ class AlphaVantageStorage:
         int
             Number of rows affected (always 1).
         """
-        field_names = tuple(f.name for f in dataclasses.fields(record))
-        sql = _build_insert_sql(TABLE_COMPANY_OVERVIEW, field_names)
-
-        params = _dataclass_to_tuple(record)
-        self._client.execute(sql, params)
-        logger.info("Company overview upserted", symbol=record.symbol)
-        return 1
+        return self._upsert_records(
+            TABLE_COMPANY_OVERVIEW, [record], "Company overview"
+        )
 
     def upsert_income_statements(self, records: list[IncomeStatementRecord]) -> int:
         """Upsert income statement records.
@@ -689,17 +732,9 @@ class AlphaVantageStorage:
         int
             Number of rows affected.
         """
-        if not records:
-            logger.debug("No income statement records to upsert, skipping")
-            return 0
-
-        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
-        sql = _build_insert_sql(TABLE_INCOME_STATEMENTS, field_names)
-
-        params = [_dataclass_to_tuple(r) for r in records]
-        self._client.execute_many(sql, params)
-        logger.info("Income statements upserted", count=len(records))
-        return len(records)
+        return self._upsert_records(
+            TABLE_INCOME_STATEMENTS, records, "Income statements"
+        )
 
     def upsert_balance_sheets(self, records: list[BalanceSheetRecord]) -> int:
         """Upsert balance sheet records.
@@ -714,17 +749,7 @@ class AlphaVantageStorage:
         int
             Number of rows affected.
         """
-        if not records:
-            logger.debug("No balance sheet records to upsert, skipping")
-            return 0
-
-        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
-        sql = _build_insert_sql(TABLE_BALANCE_SHEETS, field_names)
-
-        params = [_dataclass_to_tuple(r) for r in records]
-        self._client.execute_many(sql, params)
-        logger.info("Balance sheets upserted", count=len(records))
-        return len(records)
+        return self._upsert_records(TABLE_BALANCE_SHEETS, records, "Balance sheets")
 
     def upsert_cash_flows(self, records: list[CashFlowRecord]) -> int:
         """Upsert cash flow records.
@@ -739,17 +764,7 @@ class AlphaVantageStorage:
         int
             Number of rows affected.
         """
-        if not records:
-            logger.debug("No cash flow records to upsert, skipping")
-            return 0
-
-        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
-        sql = _build_insert_sql(TABLE_CASH_FLOWS, field_names)
-
-        params = [_dataclass_to_tuple(r) for r in records]
-        self._client.execute_many(sql, params)
-        logger.info("Cash flows upserted", count=len(records))
-        return len(records)
+        return self._upsert_records(TABLE_CASH_FLOWS, records, "Cash flows")
 
     def upsert_earnings(
         self, records: list[AnnualEarningsRecord | QuarterlyEarningsRecord]
@@ -822,17 +837,9 @@ class AlphaVantageStorage:
         int
             Number of rows affected.
         """
-        if not records:
-            logger.debug("No economic indicator records to upsert, skipping")
-            return 0
-
-        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
-        sql = _build_insert_sql(TABLE_ECONOMIC_INDICATORS, field_names)
-
-        params = [_dataclass_to_tuple(r) for r in records]
-        self._client.execute_many(sql, params)
-        logger.info("Economic indicators upserted", count=len(records))
-        return len(records)
+        return self._upsert_records(
+            TABLE_ECONOMIC_INDICATORS, records, "Economic indicators"
+        )
 
     def upsert_forex_daily(self, records: list[ForexDailyRecord]) -> int:
         """Upsert daily forex exchange rate records.
@@ -847,17 +854,7 @@ class AlphaVantageStorage:
         int
             Number of rows affected.
         """
-        if not records:
-            logger.debug("No forex daily records to upsert, skipping")
-            return 0
-
-        field_names = tuple(f.name for f in dataclasses.fields(records[0]))
-        sql = _build_insert_sql(TABLE_FOREX_DAILY, field_names)
-
-        params = [_dataclass_to_tuple(r) for r in records]
-        self._client.execute_many(sql, params)
-        logger.info("Forex daily upserted", count=len(records))
-        return len(records)
+        return self._upsert_records(TABLE_FOREX_DAILY, records, "Forex daily")
 
     # ------------------------------------------------------------------
     # Get methods
@@ -953,21 +950,13 @@ class AlphaVantageStorage:
         pd.DataFrame
             Income statement data. Returns an empty DataFrame if no data matches.
         """
-        logger.debug(
-            "Getting income statements",
-            symbol=symbol,
-            report_type=report_type,
+        return self._query_financial_table(
+            TABLE_INCOME_STATEMENTS,
+            symbol,
+            filter_column="report_type" if report_type is not None else None,
+            filter_value=report_type,
+            label="Income statements",
         )
-        sql = f"SELECT * FROM {TABLE_INCOME_STATEMENTS} WHERE symbol = ?"  # nosec B608
-        params: list[Any] = [symbol]
-        if report_type is not None:
-            sql += " AND report_type = ?"
-            params.append(report_type)
-        sql += " ORDER BY fiscal_date_ending"
-        with self._client.connection() as conn:
-            df = pd.read_sql_query(sql, conn, params=params)
-        logger.info("Income statements retrieved", count=len(df))
-        return df
 
     def get_balance_sheets(
         self,
@@ -988,21 +977,13 @@ class AlphaVantageStorage:
         pd.DataFrame
             Balance sheet data. Returns an empty DataFrame if no data matches.
         """
-        logger.debug(
-            "Getting balance sheets",
-            symbol=symbol,
-            report_type=report_type,
+        return self._query_financial_table(
+            TABLE_BALANCE_SHEETS,
+            symbol,
+            filter_column="report_type" if report_type is not None else None,
+            filter_value=report_type,
+            label="Balance sheets",
         )
-        sql = f"SELECT * FROM {TABLE_BALANCE_SHEETS} WHERE symbol = ?"  # nosec B608
-        params: list[Any] = [symbol]
-        if report_type is not None:
-            sql += " AND report_type = ?"
-            params.append(report_type)
-        sql += " ORDER BY fiscal_date_ending"
-        with self._client.connection() as conn:
-            df = pd.read_sql_query(sql, conn, params=params)
-        logger.info("Balance sheets retrieved", count=len(df))
-        return df
 
     def get_cash_flows(
         self,
@@ -1023,21 +1004,13 @@ class AlphaVantageStorage:
         pd.DataFrame
             Cash flow data. Returns an empty DataFrame if no data matches.
         """
-        logger.debug(
-            "Getting cash flows",
-            symbol=symbol,
-            report_type=report_type,
+        return self._query_financial_table(
+            TABLE_CASH_FLOWS,
+            symbol,
+            filter_column="report_type" if report_type is not None else None,
+            filter_value=report_type,
+            label="Cash flows",
         )
-        sql = f"SELECT * FROM {TABLE_CASH_FLOWS} WHERE symbol = ?"  # nosec B608
-        params: list[Any] = [symbol]
-        if report_type is not None:
-            sql += " AND report_type = ?"
-            params.append(report_type)
-        sql += " ORDER BY fiscal_date_ending"
-        with self._client.connection() as conn:
-            df = pd.read_sql_query(sql, conn, params=params)
-        logger.info("Cash flows retrieved", count=len(df))
-        return df
 
     def get_earnings(
         self,
@@ -1058,21 +1031,13 @@ class AlphaVantageStorage:
         pd.DataFrame
             Earnings data. Returns an empty DataFrame if no data matches.
         """
-        logger.debug(
-            "Getting earnings",
-            symbol=symbol,
-            period_type=period_type,
+        return self._query_financial_table(
+            TABLE_EARNINGS,
+            symbol,
+            filter_column="period_type" if period_type is not None else None,
+            filter_value=period_type,
+            label="Earnings",
         )
-        sql = f"SELECT * FROM {TABLE_EARNINGS} WHERE symbol = ?"  # nosec B608
-        params: list[Any] = [symbol]
-        if period_type is not None:
-            sql += " AND period_type = ?"
-            params.append(period_type)
-        sql += " ORDER BY fiscal_date_ending"
-        with self._client.connection() as conn:
-            df = pd.read_sql_query(sql, conn, params=params)
-        logger.info("Earnings retrieved", count=len(df))
-        return df
 
     def get_economic_indicators(
         self,

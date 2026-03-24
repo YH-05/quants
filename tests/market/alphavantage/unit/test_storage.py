@@ -32,12 +32,12 @@ from market.alphavantage.models import (
     QuarterlyEarningsRecord,
 )
 from market.alphavantage.storage import (
+    _VALID_FILTER_COLUMNS,
     _VALID_TABLE_NAMES,
     AlphaVantageStorage,
     _build_insert_sql,
     _dataclass_to_tuple,
     _parse_ddl_columns,
-    _validate_finite,
     get_alphavantage_storage,
 )
 from market.alphavantage.storage_constants import (
@@ -277,31 +277,6 @@ def _make_forex_daily(
 # =============================================================================
 # Tests: Helper functions
 # =============================================================================
-
-
-class TestValidateFinite:
-    """Tests for _validate_finite helper."""
-
-    def test_正常系_有限値がそのまま返される(self) -> None:
-        assert _validate_finite(42.0, "test") == pytest.approx(42.0)
-
-    def test_正常系_Noneがそのまま返される(self) -> None:
-        assert _validate_finite(None, "test") is None
-
-    def test_正常系_ゼロがそのまま返される(self) -> None:
-        assert _validate_finite(0.0, "test") == pytest.approx(0.0)
-
-    def test_異常系_NaNでValueError(self) -> None:
-        with pytest.raises(ValueError, match="must be finite"):
-            _validate_finite(float("nan"), "test_field")
-
-    def test_異常系_InfでValueError(self) -> None:
-        with pytest.raises(ValueError, match="must be finite"):
-            _validate_finite(float("inf"), "test_field")
-
-    def test_異常系_マイナスInfでValueError(self) -> None:
-        with pytest.raises(ValueError, match="must be finite"):
-            _validate_finite(float("-inf"), "test_field")
 
 
 class TestDataclassToTuple:
@@ -1202,3 +1177,38 @@ class TestValidTableNames:
 
     def test_正常系_frozenset型である(self) -> None:
         assert isinstance(_VALID_TABLE_NAMES, frozenset)
+
+
+# =============================================================================
+# Tests: VALID_FILTER_COLUMNS
+# =============================================================================
+
+
+class TestValidFilterColumns:
+    """Tests for _VALID_FILTER_COLUMNS constant."""
+
+    def test_正常系_期待されるカラムが含まれる(self) -> None:
+        assert {"report_type", "period_type"} == _VALID_FILTER_COLUMNS
+
+    def test_正常系_frozenset型である(self) -> None:
+        assert isinstance(_VALID_FILTER_COLUMNS, frozenset)
+
+
+# =============================================================================
+# Tests: _query_financial_table invalid filter
+# =============================================================================
+
+
+class TestQueryFinancialTableValidation:
+    """Tests for _query_financial_table filter column validation."""
+
+    def test_異常系_不正なfilter_columnでValueError(
+        self, av_storage: AlphaVantageStorage
+    ) -> None:
+        with pytest.raises(ValueError, match="Invalid filter column"):
+            av_storage._query_financial_table(
+                TABLE_INCOME_STATEMENTS,
+                "AAPL",
+                filter_column="invalid_column",
+                filter_value="annual",
+            )

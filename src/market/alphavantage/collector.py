@@ -1022,18 +1022,22 @@ def _daily_df_to_records(
     list[DailyPriceRecord]
         List of daily price records.
     """
+    df = df.copy()
+    # Bulk column rename: camelCase -> snake_case + normalize spaces to underscores
+    df.columns = [_camel_to_snake(c).replace(" ", "_") for c in df.columns]
+
     records: list[DailyPriceRecord] = []
-    for _, row in df.iterrows():
+    for row in df.itertuples(index=False):
         records.append(
             DailyPriceRecord(
                 symbol=symbol,
-                date=str(row.get("date", "")),
-                open=_safe_float(row.get("open")) or 0.0,
-                high=_safe_float(row.get("high")) or 0.0,
-                low=_safe_float(row.get("low")) or 0.0,
-                close=_safe_float(row.get("close")) or 0.0,
-                adjusted_close=_safe_float(row.get("adjusted close")),
-                volume=_safe_int(row.get("volume")),
+                date=str(getattr(row, "date", "")),
+                open=_safe_float(getattr(row, "open", None)) or 0.0,
+                high=_safe_float(getattr(row, "high", None)) or 0.0,
+                low=_safe_float(getattr(row, "low", None)) or 0.0,
+                close=_safe_float(getattr(row, "close", None)) or 0.0,
+                adjusted_close=_safe_float(getattr(row, "adjusted_close", None)),
+                volume=_safe_int(getattr(row, "volume", None)),
                 fetched_at=fetched_at,
             )
         )
@@ -1061,11 +1065,8 @@ def _overview_dict_to_record(
     CompanyOverviewRecord
         The company overview record.
     """
-    # Convert all keys to snake_case
-    snake_data: dict[str, Any] = {}
-    for key, value in data.items():
-        snake_key = _camel_to_snake(key)
-        snake_data[snake_key] = value
+    # Convert all keys to snake_case (single dict comprehension)
+    snake_data: dict[str, Any] = {_camel_to_snake(k): v for k, v in data.items()}
 
     return CompanyOverviewRecord(
         symbol=str(snake_data.get("symbol", "")),
@@ -1152,38 +1153,44 @@ def _financial_df_to_income_records(
     list[IncomeStatementRecord]
         List of income statement records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(str(c)) for c in df.columns]
+
     records: list[IncomeStatementRecord] = []
-    for _, row in df.iterrows():
-        snake_row = {_camel_to_snake(str(k)): v for k, v in row.items()}
+    for row in df.itertuples(index=False):
         records.append(
             IncomeStatementRecord(
                 symbol=symbol,
-                fiscal_date_ending=str(snake_row.get("fiscal_date_ending", "")),
+                fiscal_date_ending=str(getattr(row, "fiscal_date_ending", "")),
                 report_type=report_type,
-                reported_currency=_safe_str(snake_row.get("reported_currency")),
-                gross_profit=_safe_float(snake_row.get("gross_profit")),
-                total_revenue=_safe_float(snake_row.get("total_revenue")),
-                cost_of_revenue=_safe_float(snake_row.get("cost_of_revenue")),
+                reported_currency=_safe_str(getattr(row, "reported_currency", None)),
+                gross_profit=_safe_float(getattr(row, "gross_profit", None)),
+                total_revenue=_safe_float(getattr(row, "total_revenue", None)),
+                cost_of_revenue=_safe_float(getattr(row, "cost_of_revenue", None)),
                 cost_of_goods_and_services_sold=_safe_float(
-                    snake_row.get("cost_of_goods_and_services_sold")
+                    getattr(row, "cost_of_goods_and_services_sold", None)
                 ),
-                operating_income=_safe_float(snake_row.get("operating_income")),
+                operating_income=_safe_float(getattr(row, "operating_income", None)),
                 selling_general_and_administrative=_safe_float(
-                    snake_row.get("selling_general_and_administrative")
+                    getattr(row, "selling_general_and_administrative", None)
                 ),
                 research_and_development=_safe_float(
-                    snake_row.get("research_and_development")
+                    getattr(row, "research_and_development", None)
                 ),
-                operating_expenses=_safe_float(snake_row.get("operating_expenses")),
-                net_income=_safe_float(snake_row.get("net_income")),
-                interest_income=_safe_float(snake_row.get("interest_income")),
-                interest_expense=_safe_float(snake_row.get("interest_expense")),
-                income_before_tax=_safe_float(snake_row.get("income_before_tax")),
-                income_tax_expense=_safe_float(snake_row.get("income_tax_expense")),
-                ebit=_safe_float(snake_row.get("ebit")),
-                ebitda=_safe_float(snake_row.get("ebitda")),
+                operating_expenses=_safe_float(
+                    getattr(row, "operating_expenses", None)
+                ),
+                net_income=_safe_float(getattr(row, "net_income", None)),
+                interest_income=_safe_float(getattr(row, "interest_income", None)),
+                interest_expense=_safe_float(getattr(row, "interest_expense", None)),
+                income_before_tax=_safe_float(getattr(row, "income_before_tax", None)),
+                income_tax_expense=_safe_float(
+                    getattr(row, "income_tax_expense", None)
+                ),
+                ebit=_safe_float(getattr(row, "ebit", None)),
+                ebitda=_safe_float(getattr(row, "ebitda", None)),
                 depreciation_and_amortization=_safe_float(
-                    snake_row.get("depreciation_and_amortization")
+                    getattr(row, "depreciation_and_amortization", None)
                 ),
                 fetched_at=fetched_at,
             )
@@ -1215,62 +1222,68 @@ def _financial_df_to_balance_records(
     list[BalanceSheetRecord]
         List of balance sheet records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(str(c)) for c in df.columns]
+
     records: list[BalanceSheetRecord] = []
-    for _, row in df.iterrows():
-        snake_row = {_camel_to_snake(str(k)): v for k, v in row.items()}
+    for row in df.itertuples(index=False):
         records.append(
             BalanceSheetRecord(
                 symbol=symbol,
-                fiscal_date_ending=str(snake_row.get("fiscal_date_ending", "")),
+                fiscal_date_ending=str(getattr(row, "fiscal_date_ending", "")),
                 report_type=report_type,
-                reported_currency=_safe_str(snake_row.get("reported_currency")),
-                total_assets=_safe_float(snake_row.get("total_assets")),
-                total_current_assets=_safe_float(snake_row.get("total_current_assets")),
-                cash_and_equivalents=_safe_float(snake_row.get("cash_and_equivalents")),
-                cash_and_short_term_investments=_safe_float(
-                    snake_row.get("cash_and_short_term_investments")
+                reported_currency=_safe_str(getattr(row, "reported_currency", None)),
+                total_assets=_safe_float(getattr(row, "total_assets", None)),
+                total_current_assets=_safe_float(
+                    getattr(row, "total_current_assets", None)
                 ),
-                inventory=_safe_float(snake_row.get("inventory")),
+                cash_and_equivalents=_safe_float(
+                    getattr(row, "cash_and_equivalents", None)
+                ),
+                cash_and_short_term_investments=_safe_float(
+                    getattr(row, "cash_and_short_term_investments", None)
+                ),
+                inventory=_safe_float(getattr(row, "inventory", None)),
                 current_net_receivables=_safe_float(
-                    snake_row.get("current_net_receivables")
+                    getattr(row, "current_net_receivables", None)
                 ),
                 total_non_current_assets=_safe_float(
-                    snake_row.get("total_non_current_assets")
+                    getattr(row, "total_non_current_assets", None)
                 ),
                 property_plant_equipment=_safe_float(
-                    snake_row.get("property_plant_equipment")
+                    getattr(row, "property_plant_equipment", None)
                 ),
-                intangible_assets=_safe_float(snake_row.get("intangible_assets")),
-                goodwill=_safe_float(snake_row.get("goodwill")),
-                investments=_safe_float(snake_row.get("investments")),
+                intangible_assets=_safe_float(getattr(row, "intangible_assets", None)),
+                goodwill=_safe_float(getattr(row, "goodwill", None)),
+                investments=_safe_float(getattr(row, "investments", None)),
                 long_term_investments=_safe_float(
-                    snake_row.get("long_term_investments")
+                    getattr(row, "long_term_investments", None)
                 ),
                 short_term_investments=_safe_float(
-                    snake_row.get("short_term_investments")
+                    getattr(row, "short_term_investments", None)
                 ),
-                total_liabilities=_safe_float(snake_row.get("total_liabilities")),
+                total_liabilities=_safe_float(getattr(row, "total_liabilities", None)),
                 total_current_liabilities=_safe_float(
-                    snake_row.get("total_current_liabilities")
+                    getattr(row, "total_current_liabilities", None)
                 ),
                 current_long_term_debt=_safe_float(
-                    snake_row.get("current_long_term_debt")
+                    getattr(row, "current_long_term_debt", None)
                 ),
-                short_term_debt=_safe_float(snake_row.get("short_term_debt")),
+                short_term_debt=_safe_float(getattr(row, "short_term_debt", None)),
                 current_accounts_payable=_safe_float(
-                    snake_row.get("current_accounts_payable")
+                    getattr(row, "current_accounts_payable", None)
                 ),
                 total_non_current_liabilities=_safe_float(
-                    snake_row.get("total_non_current_liabilities")
+                    getattr(row, "total_non_current_liabilities", None)
                 ),
-                long_term_debt=_safe_float(snake_row.get("long_term_debt")),
+                long_term_debt=_safe_float(getattr(row, "long_term_debt", None)),
                 total_shareholder_equity=_safe_float(
-                    snake_row.get("total_shareholder_equity")
+                    getattr(row, "total_shareholder_equity", None)
                 ),
-                retained_earnings=_safe_float(snake_row.get("retained_earnings")),
-                common_stock=_safe_float(snake_row.get("common_stock")),
+                retained_earnings=_safe_float(getattr(row, "retained_earnings", None)),
+                common_stock=_safe_float(getattr(row, "common_stock", None)),
                 common_stock_shares_outstanding=_safe_float(
-                    snake_row.get("common_stock_shares_outstanding")
+                    getattr(row, "common_stock_shares_outstanding", None)
                 ),
                 fetched_at=fetched_at,
             )
@@ -1302,54 +1315,62 @@ def _financial_df_to_cashflow_records(
     list[CashFlowRecord]
         List of cash flow records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(str(c)) for c in df.columns]
+
     records: list[CashFlowRecord] = []
-    for _, row in df.iterrows():
-        snake_row = {_camel_to_snake(str(k)): v for k, v in row.items()}
+    for row in df.itertuples(index=False):
         records.append(
             CashFlowRecord(
                 symbol=symbol,
-                fiscal_date_ending=str(snake_row.get("fiscal_date_ending", "")),
+                fiscal_date_ending=str(getattr(row, "fiscal_date_ending", "")),
                 report_type=report_type,
-                reported_currency=_safe_str(snake_row.get("reported_currency")),
-                operating_cashflow=_safe_float(snake_row.get("operating_cashflow")),
+                reported_currency=_safe_str(getattr(row, "reported_currency", None)),
+                operating_cashflow=_safe_float(
+                    getattr(row, "operating_cashflow", None)
+                ),
                 payments_for_operating_activities=_safe_float(
-                    snake_row.get("payments_for_operating_activities")
+                    getattr(row, "payments_for_operating_activities", None)
                 ),
                 change_in_operating_liabilities=_safe_float(
-                    snake_row.get("change_in_operating_liabilities")
+                    getattr(row, "change_in_operating_liabilities", None)
                 ),
                 change_in_operating_assets=_safe_float(
-                    snake_row.get("change_in_operating_assets")
+                    getattr(row, "change_in_operating_assets", None)
                 ),
                 depreciation_depletion_and_amortization=_safe_float(
-                    snake_row.get("depreciation_depletion_and_amortization")
+                    getattr(row, "depreciation_depletion_and_amortization", None)
                 ),
-                capital_expenditures=_safe_float(snake_row.get("capital_expenditures")),
+                capital_expenditures=_safe_float(
+                    getattr(row, "capital_expenditures", None)
+                ),
                 change_in_receivables=_safe_float(
-                    snake_row.get("change_in_receivables")
+                    getattr(row, "change_in_receivables", None)
                 ),
-                change_in_inventory=_safe_float(snake_row.get("change_in_inventory")),
-                profit_loss=_safe_float(snake_row.get("profit_loss")),
+                change_in_inventory=_safe_float(
+                    getattr(row, "change_in_inventory", None)
+                ),
+                profit_loss=_safe_float(getattr(row, "profit_loss", None)),
                 cashflow_from_investment=_safe_float(
-                    snake_row.get("cashflow_from_investment")
+                    getattr(row, "cashflow_from_investment", None)
                 ),
                 cashflow_from_financing=_safe_float(
-                    snake_row.get("cashflow_from_financing")
+                    getattr(row, "cashflow_from_financing", None)
                 ),
-                dividend_payout=_safe_float(snake_row.get("dividend_payout")),
+                dividend_payout=_safe_float(getattr(row, "dividend_payout", None)),
                 proceeds_from_repurchase_of_equity=_safe_float(
-                    snake_row.get("proceeds_from_repurchase_of_equity")
+                    getattr(row, "proceeds_from_repurchase_of_equity", None)
                 ),
                 proceeds_from_issuance_of_long_term_debt=_safe_float(
-                    snake_row.get("proceeds_from_issuance_of_long_term_debt")
+                    getattr(row, "proceeds_from_issuance_of_long_term_debt", None)
                 ),
                 payments_for_repurchase_of_common_stock=_safe_float(
-                    snake_row.get("payments_for_repurchase_of_common_stock")
+                    getattr(row, "payments_for_repurchase_of_common_stock", None)
                 ),
                 change_in_cash_and_equivalents=_safe_float(
-                    snake_row.get("change_in_cash_and_equivalents")
+                    getattr(row, "change_in_cash_and_equivalents", None)
                 ),
-                net_income=_safe_float(snake_row.get("net_income")),
+                net_income=_safe_float(getattr(row, "net_income", None)),
                 fetched_at=fetched_at,
             )
         )
@@ -1377,15 +1398,17 @@ def _earnings_annual_df_to_records(
     list[AnnualEarningsRecord]
         List of annual earnings records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(str(c)) for c in df.columns]
+
     records: list[AnnualEarningsRecord] = []
-    for _, row in df.iterrows():
-        snake_row = {_camel_to_snake(str(k)): v for k, v in row.items()}
+    for row in df.itertuples(index=False):
         records.append(
             AnnualEarningsRecord(
                 symbol=symbol,
-                fiscal_date_ending=str(snake_row.get("fiscal_date_ending", "")),
+                fiscal_date_ending=str(getattr(row, "fiscal_date_ending", "")),
                 period_type="annual",
-                reported_eps=_safe_float(snake_row.get("reported_eps")),
+                reported_eps=_safe_float(getattr(row, "reported_eps", None)),
                 fetched_at=fetched_at,
             )
         )
@@ -1413,19 +1436,23 @@ def _earnings_quarterly_df_to_records(
     list[QuarterlyEarningsRecord]
         List of quarterly earnings records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(str(c)) for c in df.columns]
+
     records: list[QuarterlyEarningsRecord] = []
-    for _, row in df.iterrows():
-        snake_row = {_camel_to_snake(str(k)): v for k, v in row.items()}
+    for row in df.itertuples(index=False):
         records.append(
             QuarterlyEarningsRecord(
                 symbol=symbol,
-                fiscal_date_ending=str(snake_row.get("fiscal_date_ending", "")),
+                fiscal_date_ending=str(getattr(row, "fiscal_date_ending", "")),
                 period_type="quarterly",
-                reported_date=_safe_str(snake_row.get("reported_date")),
-                reported_eps=_safe_float(snake_row.get("reported_eps")),
-                estimated_eps=_safe_float(snake_row.get("estimated_eps")),
-                surprise=_safe_float(snake_row.get("surprise")),
-                surprise_percentage=_safe_float(snake_row.get("surprise_percentage")),
+                reported_date=_safe_str(getattr(row, "reported_date", None)),
+                reported_eps=_safe_float(getattr(row, "reported_eps", None)),
+                estimated_eps=_safe_float(getattr(row, "estimated_eps", None)),
+                surprise=_safe_float(getattr(row, "surprise", None)),
+                surprise_percentage=_safe_float(
+                    getattr(row, "surprise_percentage", None)
+                ),
                 fetched_at=fetched_at,
             )
         )
@@ -1460,13 +1487,16 @@ def _economic_df_to_records(
     list[EconomicIndicatorRecord]
         List of economic indicator records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(c) for c in df.columns]
+
     records: list[EconomicIndicatorRecord] = []
-    for _, row in df.iterrows():
+    for row in df.itertuples(index=False):
         records.append(
             EconomicIndicatorRecord(
                 indicator=indicator,
-                date=str(row.get("date", "")),
-                value=_safe_float(row.get("value")),
+                date=str(getattr(row, "date", "")),
+                value=_safe_float(getattr(row, "value", None)),
                 interval=interval,
                 maturity=maturity,
                 fetched_at=fetched_at,
@@ -1500,17 +1530,20 @@ def _forex_df_to_records(
     list[ForexDailyRecord]
         List of forex daily records.
     """
+    df = df.copy()
+    df.columns = [_camel_to_snake(c) for c in df.columns]
+
     records: list[ForexDailyRecord] = []
-    for _, row in df.iterrows():
+    for row in df.itertuples(index=False):
         records.append(
             ForexDailyRecord(
                 from_currency=from_currency,
                 to_currency=to_currency,
-                date=str(row.get("date", "")),
-                open=_safe_float(row.get("open")) or 0.0,
-                high=_safe_float(row.get("high")) or 0.0,
-                low=_safe_float(row.get("low")) or 0.0,
-                close=_safe_float(row.get("close")) or 0.0,
+                date=str(getattr(row, "date", "")),
+                open=_safe_float(getattr(row, "open", None)) or 0.0,
+                high=_safe_float(getattr(row, "high", None)) or 0.0,
+                low=_safe_float(getattr(row, "low", None)) or 0.0,
+                close=_safe_float(getattr(row, "close", None)) or 0.0,
                 fetched_at=fetched_at,
             )
         )
