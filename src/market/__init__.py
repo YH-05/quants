@@ -174,12 +174,12 @@ from .errors import (
 )
 from .etfcom import (
     ETFComBlockedError,
+    ETFComClient,
+    ETFComCollector,
     ETFComError,
     ETFComScrapingError,
+    ETFComStorage,
     ETFComTimeoutError,
-    FundamentalsCollector,
-    FundFlowsCollector,
-    TickerCollector,
 )
 from .export import DataExporter
 from .hose import (
@@ -307,8 +307,11 @@ __all__ = [
     "DateRange",
     # ETF.com
     "ETFComBlockedError",
+    "ETFComClient",
+    "ETFComCollector",
     "ETFComError",
     "ETFComScrapingError",
+    "ETFComStorage",
     "ETFComTimeoutError",
     "EconomicDataMetadata",
     # EDINET (DB API)
@@ -339,8 +342,6 @@ __all__ = [
     "FREDFetchError",
     "FREDValidationError",
     "FinancialResult",
-    "FundFlowsCollector",
-    "FundamentalsCollector",
     # HOSE (Vietnam)
     "HoseAPIError",
     "HoseConfig",
@@ -404,7 +405,6 @@ __all__ = [
     "SgxRateLimitError",
     "SgxValidationError",
     "StockDataMetadata",
-    "TickerCollector",
     "TickerRecord",
     "ValidationError",
     "validate_config",
