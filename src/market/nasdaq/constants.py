@@ -187,11 +187,112 @@ Examples
 """
 
 # ---------------------------------------------------------------------------
+# 6. NasdaqClient API URL constants
+# ---------------------------------------------------------------------------
+
+NASDAQ_API_BASE: Final[str] = "https://api.nasdaq.com/api"
+"""Base URL for all NASDAQ API endpoints.
+
+All NasdaqClient endpoint URLs are constructed relative to this base.
+"""
+
+EARNINGS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/earnings"
+"""URL for the NASDAQ Earnings Calendar API endpoint."""
+
+DIVIDENDS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/dividends"
+"""URL for the NASDAQ Dividends Calendar API endpoint."""
+
+SPLITS_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/calendar/splits"
+"""URL for the NASDAQ Stock Splits Calendar API endpoint."""
+
+IPO_CALENDAR_URL: Final[str] = f"{NASDAQ_API_BASE}/ipo/calendar"
+"""URL for the NASDAQ IPO Calendar API endpoint."""
+
+INSTITUTIONAL_HOLDINGS_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/company/{{symbol}}/institutional-holdings"
+)
+"""URL template for NASDAQ institutional holdings endpoint.
+
+Use ``INSTITUTIONAL_HOLDINGS_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+INSIDER_TRADES_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/insider-trades"
+"""URL template for NASDAQ insider trades endpoint.
+
+Use ``INSIDER_TRADES_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_FORECAST_URL: Final[str] = f"{NASDAQ_API_BASE}/analyst/{{symbol}}/forecast"
+"""URL template for NASDAQ analyst forecast endpoint.
+
+Use ``ANALYST_FORECAST_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_RATINGS_URL: Final[str] = f"{NASDAQ_API_BASE}/analyst/{{symbol}}/ratings"
+"""URL template for NASDAQ analyst ratings endpoint.
+
+Use ``ANALYST_RATINGS_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_TARGET_PRICE_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/analyst/{{symbol}}/targetprice"
+)
+"""URL template for NASDAQ analyst target price endpoint.
+
+Use ``ANALYST_TARGET_PRICE_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+ANALYST_EARNINGS_DATE_URL: Final[str] = (
+    f"{NASDAQ_API_BASE}/analyst/{{symbol}}/earnings-date"
+)
+"""URL template for NASDAQ analyst earnings date endpoint.
+
+Use ``ANALYST_EARNINGS_DATE_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+FINANCIALS_URL: Final[str] = f"{NASDAQ_API_BASE}/company/{{symbol}}/financials"
+"""URL template for NASDAQ company financials endpoint.
+
+Use ``FINANCIALS_URL.format(symbol="AAPL")`` to construct the URL.
+Accepts ``frequency`` query parameter (``"annual"`` or ``"quarterly"``).
+"""
+
+SHORT_INTEREST_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/short-interest"
+"""URL template for NASDAQ short interest endpoint.
+
+Use ``SHORT_INTEREST_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+DIVIDEND_HISTORY_URL: Final[str] = f"{NASDAQ_API_BASE}/quote/{{symbol}}/dividends"
+"""URL template for NASDAQ dividend history endpoint.
+
+Use ``DIVIDEND_HISTORY_URL.format(symbol="AAPL")`` to construct the URL.
+"""
+
+MARKET_MOVERS_URL: Final[str] = f"{NASDAQ_API_BASE}/marketmovers"
+"""URL for the NASDAQ Market Movers API endpoint.
+
+Returns most advanced (gainers), most declined (losers), and most active
+(highest volume) stocks.
+"""
+
+ETF_SCREENER_URL: Final[str] = f"{NASDAQ_API_BASE}/screener/etf"
+"""URL for the NASDAQ ETF Screener API endpoint.
+
+Accepts GET requests with optional query parameters for filtering ETFs.
+Use ``limit=0`` to retrieve all matching records.
+"""
+
+# ---------------------------------------------------------------------------
 # Module exports
 # ---------------------------------------------------------------------------
 
 __all__ = [
     "ALLOWED_HOSTS",
+    "ANALYST_EARNINGS_DATE_URL",
+    "ANALYST_FORECAST_URL",
+    "ANALYST_RATINGS_URL",
+    "ANALYST_TARGET_PRICE_URL",
     "BROWSER_IMPERSONATE_TARGETS",
     "COLUMN_NAME_MAP",
     "DEFAULT_DELAY_JITTER",
@@ -200,5 +301,17 @@ __all__ = [
     "DEFAULT_POLITE_DELAY",
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",
+    "DIVIDENDS_CALENDAR_URL",
+    "DIVIDEND_HISTORY_URL",
+    "EARNINGS_CALENDAR_URL",
+    "ETF_SCREENER_URL",
+    "FINANCIALS_URL",
+    "INSIDER_TRADES_URL",
+    "INSTITUTIONAL_HOLDINGS_URL",
+    "IPO_CALENDAR_URL",
+    "MARKET_MOVERS_URL",
+    "NASDAQ_API_BASE",
     "NASDAQ_SCREENER_URL",
+    "SHORT_INTEREST_URL",
+    "SPLITS_CALENDAR_URL",
 ]

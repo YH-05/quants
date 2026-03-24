@@ -75,6 +75,34 @@ class TestNasdaqPackageReExports:
         import market.nasdaq as nasdaq_mod
 
         expected_symbols = {
+            # Client
+            "AsyncNasdaqClient",
+            "NasdaqClient",
+            # Client Types (18 types)
+            "AnalystRatings",
+            "AnalystSummary",
+            "DividendCalendarRecord",
+            "DividendRecord",
+            "EarningsDate",
+            "EarningsForecast",
+            "EarningsForecastPeriod",
+            "EarningsRecord",
+            "EtfRecord",
+            "FinancialStatement",
+            "FinancialStatementRow",
+            "InsiderTrade",
+            "InstitutionalHolding",
+            "IpoRecord",
+            "MarketMover",
+            "MoverSection",
+            "NasdaqFetchOptions",
+            "RatingCount",
+            "ShortInterestRecord",
+            "SplitRecord",
+            "TargetPrice",
+            # Client Cache
+            "get_nasdaq_cache",
+            # Screener
             "Country",
             "Exchange",
             "FilterCategory",
