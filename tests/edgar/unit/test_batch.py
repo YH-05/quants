@@ -12,7 +12,7 @@ import pytest
 
 from edgar.batch import BatchExtractor, BatchFetcher, _run_batch
 from edgar.fetcher import EdgarFetcher
-from edgar.rate_limiter import RateLimiter
+from database.rate_limiter import RateLimiter
 from edgar.types import FilingType
 
 

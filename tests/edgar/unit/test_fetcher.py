@@ -17,7 +17,7 @@ if TYPE_CHECKING:
 from edgar.config import DEFAULT_RATE_LIMIT_PER_SECOND
 from edgar.errors import EdgarError, FilingNotFoundError
 from edgar.fetcher import EdgarFetcher
-from edgar.rate_limiter import RateLimiter
+from database.rate_limiter import RateLimiter
 from edgar.types import FilingType
 
 
