@@ -1,6 +1,6 @@
 # Persistent Storage Architecture Analysis
 
-**Date**: 2026-03-23  
+**Date**: 2026-03-23
 **Scope**: Complete exploration of database backends, storage patterns, and persistence mechanisms across the quants codebase
 
 ---
@@ -37,7 +37,7 @@ class SQLiteClient:
     def __init__(self, path: Path):
         self._path = path
         self._thread_local = threading.local()
-    
+
     def _get_connection(self):
         if not hasattr(self._thread_local, 'connection'):
             self._thread_local.connection = sqlite3.connect(str(self._path))
@@ -128,7 +128,7 @@ CREATE TABLE cache (
 def set(self, key: str, value: Any, ttl_seconds: int | None = None) -> None:
     now = time.time()
     expires_at = now + ttl_seconds if ttl_seconds else None
-    
+
     serialized = self._serialize(value)
     conn = self._get_connection()
     conn.execute(
@@ -144,7 +144,7 @@ def get(self, key: str) -> Any | None:
         "SELECT value, value_type, expires_at FROM cache WHERE key = ?",
         (key,)
     ).fetchone()
-    
+
     if row and (row['expires_at'] is None or row['expires_at'] > time.time()):
         return self._deserialize(row['value'], row['value_type'])
     return None
@@ -223,13 +223,13 @@ _COMPANIES_DDL = f"""
 ```python
 def upsert_companies(self, companies: list[CompanyRecord]) -> int:
     tuples = [self._dataclass_to_tuple(c) for c in companies]
-    
+
     sql = f"""
         INSERT OR REPLACE INTO {TABLE_COMPANIES}
         (edinet_code, sec_code, name, ...)
         VALUES (?, ?, ?, ...)
     """
-    
+
     self._client.execute_many(sql, tuples)
     return len(tuples)
 ```
@@ -304,7 +304,7 @@ TICKER_DF_SCHEMA = pa.DataFrameSchema(
 def upsert_tickers(self, tickers: list[TickerRecord]) -> int:
     df = self._build_ticker_df(tickers)
     df = TICKER_DF_SCHEMA.validate(df)  # Validate before storage
-    
+
     self._client.store_df(
         df,
         TABLE_TICKERS,
@@ -384,11 +384,11 @@ class FeedsData:
 def save_feeds(self, feeds_data: FeedsData) -> None:
     """Serialize dataclasses to JSON with enum value conversion"""
     data = dataclasses.asdict(feeds_data)
-    
+
     # Convert enums to strings
     for feed in data["feeds"]:
         feed["category"] = feed["category"].value  # Enum → str
-    
+
     with self._lock_manager.lock():
         with open(self._path, "w") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
@@ -399,7 +399,7 @@ def save_feeds(self, feeds_data: FeedsData) -> None:
 class LockManager:
     def __init__(self, lock_file: Path):
         self._lock_file = lock_file
-    
+
     def lock(self):
         # fcntl.flock() on Unix, msvcrt.locking() on Windows
         return filelock.FileLock(str(self._lock_file), timeout=10)
@@ -411,7 +411,7 @@ def load_feeds(self) -> FeedsData:
     if not self._path.exists():
         logger.warning("Feed registry not found, returning empty")
         return FeedsData(feeds=[], last_sync=datetime.now())
-    
+
     with self._lock_manager.lock():
         with open(self._path) as f:
             data = json.load(f)
@@ -679,7 +679,7 @@ def store_df(self, df, table_name, if_exists="upsert", key_columns=None):
         # Step 1: DELETE matching rows
         where_clause = " AND ".join([f"{col} = ${{col}}" for col in key_columns])
         self.execute(f"DELETE FROM {table_name} WHERE {where_clause}", ...)
-        
+
         # Step 2: INSERT new rows
         self.execute(f"INSERT INTO {table_name} SELECT * FROM temp_df", ...)
 ```
@@ -798,11 +798,11 @@ class MarketDataResult:
     fetched_at: datetime
     from_cache: bool = False
     metadata: dict[str, Any] = field(default_factory=dict)
-    
+
     @property
     def is_empty(self) -> bool:
         return self.data.empty
-    
+
     @property
     def row_count(self) -> int:
         return len(self.data)
@@ -831,11 +831,11 @@ class ConversionResult:
     columns: list[str]
     error_message: str | None = None
     type_mappings: dict[str, str] = field(default_factory=dict)
-    
+
     @staticmethod
     def create_success(...) -> ConversionResult:
         return ConversionResult(success=True, ...)
-    
+
     @staticmethod
     def create_failure(...) -> ConversionResult:
         return ConversionResult(success=False, ...)

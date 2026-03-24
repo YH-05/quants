@@ -783,10 +783,27 @@ class TestRunDaily:
 
     def test_正常系_日次同期が企業とfinancials_ratiosとtext_blocksを実行すること(
         self,
-        syncer: EdinetSyncer,
+        syncer_config: EdinetConfig,
         mock_client: MagicMock,
         mock_storage: MagicMock,
     ) -> None:
+        # Set up completed initial sync state so run_daily() performs normal daily sync
+        state_path = syncer_config.sync_state_path
+        state_path.parent.mkdir(parents=True, exist_ok=True)
+        state_data = {
+            "current_phase": PHASE_COMPLETE,
+            "completed_codes": [],
+            "today_api_calls": 0,
+            "errors": [],
+        }
+        state_path.write_text(json.dumps(state_data), encoding="utf-8")
+
+        syncer = EdinetSyncer(
+            config=syncer_config,
+            client=mock_client,
+            storage=mock_storage,
+        )
+
         results = syncer.run_daily()
 
         # Should run companies, financials_ratios, and text_blocks
@@ -807,6 +824,73 @@ class TestRunDaily:
 
         # Verify text blocks fetched for each company
         assert mock_client.get_text_blocks.call_count == 2
+
+    def test_正常系_初回同期未完了時にdailyがresumeにフォールバックすること(
+        self,
+        syncer_config: EdinetConfig,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """initial sync が未完了の状態で run_daily() を呼ぶと resume() 相当の動作をする。"""
+        # Write state file indicating financials_ratios phase with E00001 completed
+        state_path = syncer_config.sync_state_path
+        state_path.parent.mkdir(parents=True, exist_ok=True)
+        state_data = {
+            "current_phase": PHASE_FINANCIALS_RATIOS,
+            "completed_codes": ["E00001"],
+            "today_api_calls": 47,
+            "errors": [],
+        }
+        state_path.write_text(json.dumps(state_data), encoding="utf-8")
+
+        syncer = EdinetSyncer(
+            config=syncer_config,
+            client=mock_client,
+            storage=mock_storage,
+        )
+
+        results = syncer.run_daily()
+
+        # Should behave like resume: start from financials_ratios phase
+        assert results[0].phase == PHASE_FINANCIALS_RATIOS
+        # E00001 should be skipped (already completed), only E00002 processed
+        assert mock_client.get_financials.call_count == 1
+
+    def test_正常系_初回同期完了後にdailyが通常動作すること(
+        self,
+        syncer_config: EdinetConfig,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """initial sync が完了済みの場合、run_daily() は通常の日次同期を実行する。"""
+        # Write state file indicating completed initial sync
+        state_path = syncer_config.sync_state_path
+        state_path.parent.mkdir(parents=True, exist_ok=True)
+        state_data = {
+            "current_phase": PHASE_COMPLETE,
+            "completed_codes": [],
+            "today_api_calls": 0,
+            "errors": [],
+        }
+        state_path.write_text(json.dumps(state_data), encoding="utf-8")
+
+        syncer = EdinetSyncer(
+            config=syncer_config,
+            client=mock_client,
+            storage=mock_storage,
+        )
+
+        results = syncer.run_daily()
+
+        # Should run normal daily: companies, financials_ratios, text_blocks
+        assert len(results) == 3
+        assert results[0].phase == PHASE_COMPANIES
+        assert results[1].phase == PHASE_FINANCIALS_RATIOS
+        assert results[2].phase == PHASE_TEXT_BLOCKS
+
+        # All companies should be processed (no checkpoint skipping)
+        assert mock_client.get_financials.call_count == 2
+        assert mock_client.get_ratios.call_count == 2
 
 
 # =============================================================================
@@ -873,3 +957,46 @@ class TestSyncResult:
         assert result.success is False
         assert result.stopped_reason == "rate_limit"
         assert len(result.errors) == 1
+
+
+# =============================================================================
+# Rate Limiter Flush Tests
+# =============================================================================
+
+
+class TestRateLimiterFlush:
+    """レートリミッター flush() 呼び出しのテスト。"""
+
+    def test_正常系_フェーズ実行後にrate_limiterがflushされること(
+        self,
+        syncer_config: EdinetConfig,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """_run_phase() 呼び出し後に flush() が呼ばれることを確認。"""
+        syncer = EdinetSyncer(
+            config=syncer_config,
+            client=mock_client,
+            storage=mock_storage,
+        )
+
+        # Spy on the rate limiter's flush method
+        syncer._rate_limiter.flush = MagicMock()
+
+        syncer.run_initial()
+
+        # flush() should be called at least once per phase (5 phases)
+        assert syncer._rate_limiter.flush.call_count >= 5
+
+    def test_正常系_単一企業同期後にrate_limiterがflushされること(
+        self,
+        syncer: EdinetSyncer,
+        mock_client: MagicMock,
+        mock_storage: MagicMock,
+    ) -> None:
+        """sync_company() の return 前に flush() が呼ばれることを確認。"""
+        syncer._rate_limiter.flush = MagicMock()
+
+        syncer.sync_company("E00001")
+
+        syncer._rate_limiter.flush.assert_called()

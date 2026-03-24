@@ -477,9 +477,7 @@ class TestCollectLeaderboard:
         # 404 should NOT be recorded as an error (endpoint deprecated)
         result = collector.collect_all()
         # The leaderboard 404 should not contribute to errors
-        leaderboard_errors = [
-            e for e in result.errors if "leaderboard" in e.lower()
-        ]
+        leaderboard_errors = [e for e in result.errors if "leaderboard" in e.lower()]
         # Since get_events mock returns events, and leaderboard gives 404,
         # leaderboard should NOT appear in errors
         assert len(leaderboard_errors) == 0

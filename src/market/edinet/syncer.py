@@ -248,11 +248,25 @@ class EdinetSyncer:
         Updates companies list, then syncs financials+ratios and
         text blocks for all companies.
 
+        If the initial sync has not completed yet (``current_phase`` is not
+        ``"complete"``), falls back to ``resume()`` to continue from the
+        last checkpoint instead of resetting progress.
+
         Returns
         -------
         list[SyncResult]
             Results for each phase that was executed.
         """
+        # AIDEV-NOTE: If initial sync is incomplete, fall back to resume mode
+        # to avoid re-processing already completed companies and wasting API quota.
+        if self._state.current_phase != PHASE_COMPLETE:
+            logger.warning(
+                "Initial sync not complete, falling back to resume mode",
+                current_phase=self._state.current_phase,
+                completed_codes=len(self._state.completed_codes),
+            )
+            return self.resume()
+
         logger.info("Starting daily sync")
 
         # Reset state for daily run
@@ -368,6 +382,7 @@ class EdinetSyncer:
             processed = 1
         except EdinetRateLimitError:
             logger.warning("Rate limit reached during single company sync", code=code)
+            self._rate_limiter.flush()
             return SyncResult(
                 phase="single_company",
                 success=False,
@@ -385,6 +400,7 @@ class EdinetSyncer:
                 )
                 errors.append(f"{code}: {e.message}")
 
+        self._rate_limiter.flush()
         return SyncResult(
             phase="single_company",
             success=processed > 0,
@@ -429,7 +445,9 @@ class EdinetSyncer:
                 errors=(f"Unknown phase: {phase}",),
             )
 
-        return handler()
+        result = handler()
+        self._rate_limiter.flush()
+        return result
 
     def _phase_companies(self) -> SyncResult:
         """Phase 1: Fetch and store all companies (1 API call).
