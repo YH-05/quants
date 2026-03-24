@@ -1176,5 +1176,97 @@ class NasdaqClient:
             earnings_date=earnings_dt,
         )
 
+    # =========================================================================
+    # Batch Helpers
+    # =========================================================================
+
+    def fetch_for_symbols(
+        self,
+        symbols: list[str],
+        method_name: str,
+        **kwargs: Any,
+    ) -> dict[str, Any]:
+        """Fetch data for multiple symbols using a specified endpoint method.
+
+        Iterates over *symbols* sequentially, calling ``getattr(self, method_name)``
+        for each one.  A polite delay between requests is already handled by
+        the underlying ``NasdaqSession``.  Partial failures are logged and
+        skipped so that a single failing symbol does not abort the entire batch.
+
+        Parameters
+        ----------
+        symbols : list[str]
+            Ticker symbols to fetch (e.g. ``["AAPL", "MSFT", "GOOGL"]``).
+        method_name : str
+            Name of a ``NasdaqClient`` method that accepts ``symbol`` as its
+            first positional argument (e.g. ``"get_short_interest"``).
+        **kwargs : Any
+            Additional keyword arguments forwarded to every call
+            (e.g. ``options=NasdaqFetchOptions(force_refresh=True)``).
+
+        Returns
+        -------
+        dict[str, Any]
+            Mapping of symbol -> result for each successful fetch.
+            Symbols that failed are omitted from the result.
+
+        Raises
+        ------
+        AttributeError
+            If *method_name* does not exist on ``NasdaqClient``.
+
+        Examples
+        --------
+        >>> with NasdaqClient() as client:
+        ...     results = client.fetch_for_symbols(
+        ...         ["AAPL", "MSFT"],
+        ...         "get_short_interest",
+        ...     )
+        ...     for sym, records in results.items():
+        ...         print(sym, len(records))
+        """
+        method = getattr(self, method_name)
+        if not callable(method):
+            raise AttributeError(
+                f"'{method_name}' is not a callable method on NasdaqClient"
+            )
+
+        total = len(symbols)
+        results: dict[str, Any] = {}
+
+        logger.info(
+            "Batch fetch started",
+            method=method_name,
+            symbol_count=total,
+        )
+
+        for idx, symbol in enumerate(symbols, start=1):
+            logger.debug(
+                "Batch fetch progress",
+                method=method_name,
+                symbol=symbol,
+                progress=f"{idx}/{total}",
+            )
+            try:
+                results[symbol] = method(symbol, **kwargs)
+            except Exception:
+                logger.error(
+                    "Batch fetch failed for symbol",
+                    method=method_name,
+                    symbol=symbol,
+                    progress=f"{idx}/{total}",
+                    exc_info=True,
+                )
+
+        logger.info(
+            "Batch fetch completed",
+            method=method_name,
+            total=total,
+            succeeded=len(results),
+            failed=total - len(results),
+        )
+
+        return results
+
 
 __all__ = ["NasdaqClient"]

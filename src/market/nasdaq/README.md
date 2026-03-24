@@ -435,18 +435,142 @@ NasdaqParseError: Missing or invalid 'data.table.rows' key in response
 - NASDAQ API のレスポンス形式が変わっている可能性があります
 - `NasdaqSession.get_with_retry()` を使って生レスポンスを確認する
 
+## NasdaqClient（高レベル API クライアント）
+
+`NasdaqClient` は NASDAQ API の各種エンドポイントに対する型付きクライアントです。SQLiteCache による自動キャッシュ、入力バリデーション、セッション管理を提供します。
+
+### 概要
+
+- **15 エンドポイント**: カレンダー（決算・配当・分割・IPO）、マーケットムーバー、ETF スクリーナー、空売り情報、配当履歴、インサイダー取引、機関投資家保有、財務諸表、アナリスト予想（4 種）
+- **SQLiteCache 統合**: TTL ベースの自動キャッシュ（エンドポイント毎に最適な TTL を設定）
+- **バッチ処理**: `fetch_for_symbols()` による複数銘柄の一括データ取得
+- **DI 対応**: Session / Cache をコンストラクタ注入可能（テスト容易性）
+- **コンテキストマネージャー対応**: `with` 文でリソース自動解放
+
+### 基本的な使い方
+
+```python
+from market.nasdaq import NasdaqClient
+
+with NasdaqClient() as client:
+    # カレンダーデータ
+    earnings = client.get_earnings_calendar(date="2026-01-30")
+    dividends = client.get_dividends_calendar(date="2026-02-07")
+    splits = client.get_splits_calendar(date="2024-06-10")
+    ipos = client.get_ipo_calendar(year_month="2026-03")
+
+    # マーケットムーバー & ETF
+    movers = client.get_market_movers()
+    gainers = movers["most_advanced"]
+    etfs = client.get_etf_screener()
+
+    # 銘柄固有データ
+    short = client.get_short_interest("AAPL")
+    div_hist = client.get_dividend_history("AAPL")
+    insiders = client.get_insider_trades("AAPL")
+    holdings = client.get_institutional_holdings("AAPL")
+    financials = client.get_financials("AAPL", frequency="annual")
+
+    # アナリストデータ
+    forecast = client.get_earnings_forecast("AAPL")
+    ratings = client.get_analyst_ratings("AAPL")
+    target = client.get_target_price("AAPL")
+    ed = client.get_earnings_date("AAPL")
+    summary = client.get_analyst_summary("AAPL")  # 4 エンドポイントを集約
+```
+
+### バッチ処理（fetch_for_symbols）
+
+複数銘柄に対して指定メソッドを一括実行します。部分失敗時はエラーログを出力して継続します。
+
+```python
+from market.nasdaq import NasdaqClient
+
+with NasdaqClient() as client:
+    # 複数銘柄の空売り情報を一括取得
+    results = client.fetch_for_symbols(
+        ["AAPL", "MSFT", "GOOGL", "AMZN"],
+        "get_short_interest",
+    )
+    for symbol, records in results.items():
+        print(f"{symbol}: {len(records)} records")
+
+    # アナリスト予想を一括取得
+    forecasts = client.fetch_for_symbols(
+        ["AAPL", "MSFT"],
+        "get_earnings_forecast",
+    )
+```
+
+### エンドポイント一覧
+
+| メソッド | 説明 | 戻り値 | TTL |
+|---------|------|--------|-----|
+| `get_earnings_calendar(date)` | 決算カレンダー | `list[EarningsRecord]` | 24h |
+| `get_dividends_calendar(date)` | 配当カレンダー | `list[DividendCalendarRecord]` | 24h |
+| `get_splits_calendar(date)` | 分割カレンダー | `list[SplitRecord]` | 24h |
+| `get_ipo_calendar(year_month)` | IPO カレンダー | `list[IpoRecord]` | 24h |
+| `get_market_movers()` | マーケットムーバー | `dict[str, list[MarketMover]]` | 5min |
+| `get_etf_screener()` | ETF スクリーナー | `list[EtfRecord]` | 1h |
+| `get_short_interest(symbol)` | 空売り情報 | `list[ShortInterestRecord]` | 24h |
+| `get_dividend_history(symbol)` | 配当履歴 | `list[DividendRecord]` | 24h |
+| `get_insider_trades(symbol)` | インサイダー取引 | `list[InsiderTrade]` | 24h |
+| `get_institutional_holdings(symbol)` | 機関投資家保有 | `list[InstitutionalHolding]` | 7d |
+| `get_financials(symbol, frequency)` | 財務諸表 | `FinancialStatement` | 24h |
+| `get_earnings_forecast(symbol)` | 決算予想 | `EarningsForecast` | 24h |
+| `get_analyst_ratings(symbol)` | アナリスト評価 | `AnalystRatings` | 24h |
+| `get_target_price(symbol)` | 目標株価 | `TargetPrice` | 24h |
+| `get_earnings_date(symbol)` | 次回決算日 | `EarningsDate` | 12h |
+| `get_analyst_summary(symbol)` | アナリスト集約 | `AnalystSummary` | - |
+| `fetch_for_symbols(symbols, method_name)` | バッチ処理 | `dict[str, T]` | - |
+
+### キャッシュ制御
+
+```python
+from market.nasdaq import NasdaqClient, NasdaqFetchOptions
+
+with NasdaqClient() as client:
+    # キャッシュを無視して最新データを取得
+    fresh = client.get_short_interest(
+        "AAPL",
+        options=NasdaqFetchOptions(force_refresh=True),
+    )
+
+    # キャッシュを完全に無効化
+    no_cache = client.get_short_interest(
+        "AAPL",
+        options=NasdaqFetchOptions(use_cache=False),
+    )
+```
+
+### Session / Cache の注入（テスト時）
+
+```python
+from market.nasdaq import NasdaqClient
+from market.nasdaq.session import NasdaqSession
+from market.cache.cache import SQLiteCache
+
+session = NasdaqSession()
+cache = SQLiteCache()
+client = NasdaqClient(session=session, cache=cache)
+```
+
 ## モジュール構成
 
 ```
 market/nasdaq/
-├── __init__.py      # パッケージエクスポート
-├── collector.py     # ScreenerCollector（DataCollector ABC 実装）
-├── session.py       # NasdaqSession（HTTP セッション）
-├── types.py         # フィルタ Enum・設定・データ型定義
-├── errors.py        # 例外クラス
-├── parser.py        # JSON パーサー・数値クリーナー
-├── constants.py     # API URL・ヘッダー・デフォルト値
-└── README.md        # このファイル
+├── __init__.py          # パッケージエクスポート（NasdaqClient + 全18型 + TTL定数）
+├── client.py            # NasdaqClient（高レベル API クライアント）
+├── client_types.py      # NasdaqClient 用レコード型定義（20 dataclass + 1 Enum）
+├── client_parsers.py    # NasdaqClient 用レスポンスパーサー（15 関数）
+├── client_cache.py      # NasdaqClient 用 TTL 定数 + キャッシュヘルパー
+├── constants.py         # API URL・ヘッダー・デフォルト値
+├── collector.py         # ScreenerCollector（DataCollector ABC 実装）
+├── session.py           # NasdaqSession（HTTP セッション）
+├── types.py             # フィルタ Enum・設定・データ型定義
+├── errors.py            # 例外クラス
+├── parser.py            # JSON パーサー・数値クリーナー
+└── README.md            # このファイル
 ```
 
 ## 関連モジュール
