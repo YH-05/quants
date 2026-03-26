@@ -63,10 +63,16 @@ YFINANCE_SUPPORTED: Final[bool] = True
 # 3. Output settings
 # ---------------------------------------------------------------------------
 
-DEFAULT_OUTPUT_DIR: Final[str] = "data/raw/set_exchange/"
-"""Default directory for output files.
+DEFAULT_OUTPUT_SUBDIR: Final[str] = "raw/set_exchange"
+"""Default subdirectory (relative to DATA_DIR) for output files.
 
-Follows the project convention of ``data/raw/<source>/``.
+Appended to the base data directory resolved by
+``database.db.connection.get_data_dir()`` at runtime.
+
+See Also
+--------
+database.db.connection.get_data_dir : Resolves the base data directory
+    from the ``DATA_DIR`` environment variable.
 """
 
 # ---------------------------------------------------------------------------
@@ -75,7 +81,7 @@ Follows the project convention of ``data/raw/<source>/``.
 
 __all__ = [
     "CURRENCY",
-    "DEFAULT_OUTPUT_DIR",
+    "DEFAULT_OUTPUT_SUBDIR",
     "EXCHANGE_CODE",
     "EXCHANGE_NAME",
     "SUFFIX",

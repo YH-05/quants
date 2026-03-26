@@ -101,22 +101,26 @@ class TestGetEarningsForecast:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = EarningsForecast(
-            symbol="AAPL",
-            yearly=[
-                EarningsForecastPeriod(
-                    fiscal_end="Dec 2025",
-                    consensus_eps_forecast="$6.70",
-                ),
-            ],
-            quarterly=[],
-        )
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "yearlyForecast": {
+                "rows": [
+                    {
+                        "fiscalEnd": "Dec 2025",
+                        "consensusEPSForecast": "$6.70",
+                    },
+                ],
+            },
+            "quarterlyForecast": {"rows": []},
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_earnings_forecast("AAPL")
 
-        assert result == cached_data
+        assert isinstance(result, EarningsForecast)
+        assert result.symbol == "AAPL"
+        assert len(result.yearly) == 1
+        assert result.yearly[0].fiscal_end == "Dec 2025"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(
@@ -279,25 +283,26 @@ class TestGetAnalystRatings:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = AnalystRatings(
-            symbol="AAPL",
-            ratings=[
-                RatingCount(
-                    date="Current Quarter",
-                    strong_buy=10,
-                    buy=15,
-                    hold=5,
-                    sell=1,
-                    strong_sell=0,
-                ),
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "ratings": [
+                {
+                    "date": "Current Quarter",
+                    "strongBuy": 10,
+                    "buy": 15,
+                    "hold": 5,
+                    "sell": 1,
+                    "strongSell": 0,
+                },
             ],
-        )
-        mock_cache.get.return_value = cached_data
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_analyst_ratings("AAPL")
 
-        assert result == cached_data
+        assert isinstance(result, AnalystRatings)
+        assert result.symbol == "AAPL"
+        assert result.ratings[0].strong_buy == 10
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(
@@ -468,19 +473,22 @@ class TestGetTargetPrice:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = TargetPrice(
-            symbol="AAPL",
-            high="$280.00",
-            low="$200.00",
-            mean="$250.00",
-            median="$248.00",
-        )
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "targetPrice": {
+                "high": "$280.00",
+                "low": "$200.00",
+                "mean": "$250.00",
+                "median": "$248.00",
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_target_price("AAPL")
 
-        assert result == cached_data
+        assert isinstance(result, TargetPrice)
+        assert result.symbol == "AAPL"
+        assert result.high == "$280.00"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(
@@ -594,19 +602,20 @@ class TestGetEarningsDate:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = EarningsDate(
-            symbol="AAPL",
-            date="01/30/2026",
-            time="After Market Close",
-            fiscal_quarter_ending="Dec/2025",
-            eps_forecast="$2.35",
-        )
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "earningsDate": "01/30/2026",
+            "earningsTime": "After Market Close",
+            "fiscalQuarterEnding": "Dec/2025",
+            "epsForecast": "$2.35",
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_earnings_date("AAPL")
 
-        assert result == cached_data
+        assert isinstance(result, EarningsDate)
+        assert result.symbol == "AAPL"
+        assert result.date == "01/30/2026"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(

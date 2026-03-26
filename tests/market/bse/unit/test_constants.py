@@ -12,7 +12,7 @@ Test TODO List:
 - [x] Bot-blocking: DEFAULT_USER_AGENTS count, Mozilla prefix, uniqueness
 - [x] Bot-blocking: DEFAULT_POLITE_DELAY, DEFAULT_TIMEOUT, DEFAULT_DELAY_JITTER values
 - [x] Headers: DEFAULT_HEADERS required keys and values
-- [x] Output: DEFAULT_OUTPUT_DIR format
+- [x] Output: DEFAULT_OUTPUT_SUBDIR format
 - [x] Column mapping: COLUMN_NAME_MAP keys and values
 - [x] Final annotations: all constants annotated with typing.Final
 """
@@ -25,7 +25,7 @@ from market.bse.constants import (
     COLUMN_NAME_MAP,
     DEFAULT_DELAY_JITTER,
     DEFAULT_HEADERS,
-    DEFAULT_OUTPUT_DIR,
+    DEFAULT_OUTPUT_SUBDIR,
     DEFAULT_POLITE_DELAY,
     DEFAULT_TIMEOUT,
     DEFAULT_USER_AGENTS,
@@ -215,22 +215,22 @@ class TestHTTPHeaderConstants:
 class TestOutputConstants:
     """Test output directory constants."""
 
-    def test_正常系_DEFAULT_OUTPUT_DIRが空でない文字列(self) -> None:
-        """DEFAULT_OUTPUT_DIR が空でない文字列であること。"""
-        assert isinstance(DEFAULT_OUTPUT_DIR, str)
-        assert len(DEFAULT_OUTPUT_DIR.strip()) > 0
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが空でない文字列(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が空でない文字列であること。"""
+        assert isinstance(DEFAULT_OUTPUT_SUBDIR, str)
+        assert len(DEFAULT_OUTPUT_SUBDIR.strip()) > 0
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがdata_rawを含む(self) -> None:
-        """DEFAULT_OUTPUT_DIR が data/raw パスを含むこと。"""
-        assert "data/raw" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがraw_を含む(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が raw/ パスを含むこと。"""
+        assert "raw/" in DEFAULT_OUTPUT_SUBDIR
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがbseを含む(self) -> None:
-        """DEFAULT_OUTPUT_DIR が bse を含むこと。"""
-        assert "bse" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがbseを含む(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が bse を含むこと。"""
+        assert "bse" in DEFAULT_OUTPUT_SUBDIR
 
-    def test_正常系_DEFAULT_OUTPUT_DIRが正しい値(self) -> None:
-        """DEFAULT_OUTPUT_DIR が設計通りの値であること。"""
-        assert DEFAULT_OUTPUT_DIR == "data/raw/bse/"
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが正しい値(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が設計通りの値であること。"""
+        assert DEFAULT_OUTPUT_SUBDIR == "raw/bse"
 
 
 # =============================================================================

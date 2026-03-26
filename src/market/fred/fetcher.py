@@ -15,6 +15,7 @@ import pandas as pd
 import requests
 from fredapi import Fred
 
+from database.db.connection import get_data_dir
 from market.errors import FREDFetchError, FREDValidationError
 from utils_core.logging import get_logger
 from utils_core.settings import load_project_env
@@ -33,16 +34,11 @@ from .types import (
 
 logger = get_logger(__name__, module="fred_fetcher")
 
-# Default path for FRED series presets configuration (fallback based on __file__)
-DEFAULT_PRESETS_PATH = (
-    Path(__file__).parents[3] / "data" / "config" / "fred_series.json"
-)
+# Default path for FRED series presets configuration
+DEFAULT_PRESETS_PATH = get_data_dir() / "config" / "fred_series.json"
 
 # Environment variable for FRED series JSON source (URL or local path)
 FRED_SERIES_JSON_ENV = "FRED_SERIES_ID_JSON"
-
-# Relative path from current working directory
-_CWD_RELATIVE_PRESETS_PATH = Path("data") / "config" / "fred_series.json"
 
 
 def _get_default_presets_path() -> Path:
@@ -50,8 +46,7 @@ def _get_default_presets_path() -> Path:
 
     Priority order:
     1. FRED_SERIES_ID_JSON environment variable
-    2. Relative path from current working directory (./data/config/fred_series.json)
-    3. Fallback: __file__ based path (for backward compatibility)
+    2. Fallback: get_data_dir() / "config" / "fred_series.json"
 
     Returns
     -------
@@ -70,19 +65,10 @@ def _get_default_presets_path() -> Path:
         logger.debug("Using FRED presets path from environment variable", path=env_path)
         return Path(env_path)
 
-    # 2. Check current working directory relative path
-    cwd_path = Path.cwd() / _CWD_RELATIVE_PRESETS_PATH
-    if cwd_path.exists():
-        logger.debug(
-            "Using FRED presets path from current directory", path=str(cwd_path)
-        )
-        return cwd_path
-
-    # 3. Fallback to __file__ based path
-    logger.debug(
-        "Using fallback FRED presets path from __file__", path=str(DEFAULT_PRESETS_PATH)
-    )
-    return DEFAULT_PRESETS_PATH
+    # 2. Fallback to get_data_dir() based path
+    default_path = get_data_dir() / "config" / "fred_series.json"
+    logger.debug("Using FRED presets path from get_data_dir()", path=str(default_path))
+    return default_path
 
 
 # Default URL for FRED series presets (used when env var not set and local file not found)

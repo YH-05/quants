@@ -96,8 +96,12 @@ class TestGetDefaultCachePath:
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
     ) -> None:
         """環境変数が未設定の場合、カレントディレクトリからの相対パスを使用することを確認。"""
-        # 環境変数をクリア
+        # 環境変数をクリア & load_project_env による再設定を防止
         monkeypatch.delenv(FRED_HISTORICAL_CACHE_DIR_ENV, raising=False)
+        monkeypatch.delenv("DATA_DIR", raising=False)
+        monkeypatch.setattr(
+            "market.fred.historical_cache.load_project_env", lambda **_kw: False
+        )
 
         # カレントディレクトリを一時ディレクトリに変更
         original_cwd = Path.cwd()
@@ -114,12 +118,16 @@ class TestGetDefaultCachePath:
         finally:
             monkeypatch.chdir(original_cwd)
 
-    def test_正常系_カレントディレクトリにデータディレクトリがない場合はフォールバック(
+    def test_正常系_カレントディレクトリにデータディレクトリがない場合はget_data_dirフォールバック(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
     ) -> None:
-        """カレントディレクトリに data ディレクトリがない場合、__file__ ベースのパスを使用することを確認。"""
-        # 環境変数をクリア
+        """カレントディレクトリに data ディレクトリがない場合、get_data_dir() ベースのパスを使用することを確認。"""
+        # 環境変数をクリア & load_project_env による再設定を防止
         monkeypatch.delenv(FRED_HISTORICAL_CACHE_DIR_ENV, raising=False)
+        monkeypatch.delenv("DATA_DIR", raising=False)
+        monkeypatch.setattr(
+            "market.fred.historical_cache.load_project_env", lambda **_kw: False
+        )
 
         # 空の一時ディレクトリに移動（data/raw/fred/indicators なし）
         original_cwd = Path.cwd()
@@ -127,17 +135,10 @@ class TestGetDefaultCachePath:
 
         try:
             result = get_default_cache_path()
-            # __file__ ベースのパスが使用されることを確認
-            # historical_cache.py の場所から計算されるパス
-            from market.fred import historical_cache
+            # get_data_dir() ベースのパスが使用されることを確認
+            from database.db.connection import get_data_dir
 
-            expected_fallback = (
-                Path(historical_cache.__file__).parents[3]
-                / "data"
-                / "raw"
-                / "fred"
-                / "indicators"
-            )
+            expected_fallback = get_data_dir() / "raw" / "fred" / "indicators"
             assert result == expected_fallback
         finally:
             monkeypatch.chdir(original_cwd)
@@ -146,6 +147,12 @@ class TestGetDefaultCachePath:
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
     ) -> None:
         """優先順位が正しいことを確認（環境変数 > カレント > フォールバック）。"""
+        # DATA_DIR をクリアし、load_project_env による再設定を防止
+        monkeypatch.delenv("DATA_DIR", raising=False)
+        monkeypatch.setattr(
+            "market.fred.historical_cache.load_project_env", lambda **_kw: False
+        )
+
         # 1. 環境変数が設定されている場合は環境変数
         env_path = str(tmp_path / "env_cache")
         monkeypatch.setenv(FRED_HISTORICAL_CACHE_DIR_ENV, env_path)

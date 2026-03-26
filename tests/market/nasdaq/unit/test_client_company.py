@@ -267,19 +267,32 @@ class TestGetInsiderTrades:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            InsiderTrade(
-                insider_name="COOK TIMOTHY D",
-                relation="Chief Executive Officer",
-                transaction_type="Sold",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "insiderTransactions": {
+                "rows": [
+                    {
+                        "insider": "COOK TIMOTHY D",
+                        "relation": "Chief Executive Officer",
+                        "transactionType": "Sold",
+                        "ownType": "Direct",
+                        "sharesTraded": "200,000",
+                        "price": "$230.00",
+                        "sharesHeld": "3,280,000",
+                        "value": "$46,000,000",
+                        "lastDate": "03/10/2026",
+                        "url": "",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_insider_trades("AAPL")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], InsiderTrade)
+        assert result[0].insider_name == "COOK TIMOTHY D"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(
@@ -409,18 +422,30 @@ class TestGetInstitutionalHoldings:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            InstitutionalHolding(
-                holder_name="Vanguard Group Inc",
-                shares="1,200,000,000",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "holdingsTransactions": {
+                "rows": [
+                    {
+                        "ownerName": "Vanguard Group Inc",
+                        "sharesHeld": "1,200,000,000",
+                        "marketValue": "$180,000,000,000",
+                        "date": "12/31/2025",
+                        "sharesChange": "5,000,000",
+                        "sharesChangePct": "0.42%",
+                        "filingDate": "02/14/2026",
+                        "url": "",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_institutional_holdings("AAPL")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], InstitutionalHolding)
+        assert result[0].holder_name == "Vanguard Group Inc"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(
@@ -619,7 +644,7 @@ class TestGetFinancials:
             call_args[1].get("params") if len(call_args) > 1 else None
         )
         assert params is not None
-        assert params.get("frequency") == "quarterly"
+        assert params.get("frequency") == "2"  # API expects numeric: 1=annual, 2=quarterly
 
     def test_正常系_キャッシュヒット時にAPIを呼ばない(
         self,
@@ -627,20 +652,28 @@ class TestGetFinancials:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = FinancialStatement(
-            symbol="AAPL",
-            frequency="annual",
-            headers=["2025", "2024"],
-            income_statement=[],
-            balance_sheet=[],
-            cash_flow=[],
-        )
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "incomeStatementTable": {
+                "headers": {"values": ["", "2025", "2024"]},
+                "rows": [],
+            },
+            "balanceSheetTable": {
+                "headers": {"values": ["", "2025", "2024"]},
+                "rows": [],
+            },
+            "cashFlowTable": {
+                "headers": {"values": ["", "2025", "2024"]},
+                "rows": [],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_financials("AAPL")
 
-        assert result == cached_data
+        assert isinstance(result, FinancialStatement)
+        assert result.symbol == "AAPL"
+        assert result.headers == ["2025", "2024"]
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(

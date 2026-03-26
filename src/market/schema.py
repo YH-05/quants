@@ -24,6 +24,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field, ValidationError
 
+from database.db.connection import get_data_dir
+
 # =============================================================================
 # Date Range Model
 # =============================================================================
@@ -231,7 +233,10 @@ class ExportConfig(BaseModel):
     default_format: Literal["parquet", "csv", "json"] = Field(
         default="parquet", description="Default export format"
     )
-    output_dir: str = Field(default="data/exports", description="Output directory")
+    output_dir: str = Field(
+        default_factory=lambda: str(get_data_dir() / "exports"),
+        description="Output directory",
+    )
     compression: str | None = Field(default=None, description="Compression algorithm")
 
 

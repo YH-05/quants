@@ -4,7 +4,7 @@ Test TODO List:
 - [x] Module exports: __all__ completeness and importability
 - [x] Exchange identification: EXCHANGE_CODE, EXCHANGE_NAME, SUFFIX, CURRENCY
 - [x] yfinance configuration: YFINANCE_SUPPORTED
-- [x] Output settings: DEFAULT_OUTPUT_DIR
+- [x] Output settings: DEFAULT_OUTPUT_SUBDIR
 - [x] Final annotations: all constants annotated with typing.Final
 """
 
@@ -12,7 +12,7 @@ from typing import get_type_hints
 
 from market.set_exchange.constants import (
     CURRENCY,
-    DEFAULT_OUTPUT_DIR,
+    DEFAULT_OUTPUT_SUBDIR,
     EXCHANGE_CODE,
     EXCHANGE_NAME,
     SUFFIX,
@@ -64,11 +64,11 @@ class TestYfinanceConfig:
 
 
 class TestOutputConstants:
-    def test_正常系_DEFAULT_OUTPUT_DIRが正しい値(self) -> None:
-        assert DEFAULT_OUTPUT_DIR == "data/raw/set_exchange/"
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが正しい値(self) -> None:
+        assert DEFAULT_OUTPUT_SUBDIR == "raw/set_exchange"
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがdata_rawを含む(self) -> None:
-        assert "data/raw" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがraw_を含む(self) -> None:
+        assert "raw/" in DEFAULT_OUTPUT_SUBDIR
 
 
 class TestFinalAnnotations:

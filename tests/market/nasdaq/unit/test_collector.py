@@ -25,6 +25,9 @@ Test TODO List:
 - [x] _build_category_filter(): 未サポートカテゴリで ValueError
 - [x] _build_category_filter(): 未定義Enum型で ValueError
 - [x] fetch_by_category(): 一部失敗時に即座に例外伝播（fail-fast設計）
+- [x] _resolve_output_dir(): DATA_DIR 環境変数を反映した出力先を返す
+- [x] download_csv(): output_dir=None 時に DATA_DIR ベースのデフォルトを使用
+- [x] download_by_category(): output_dir=None 時に DATA_DIR ベースのデフォルトを使用
 """
 
 from datetime import date
@@ -542,3 +545,83 @@ class TestBuildCategoryFilter:
                 UnsupportedCategory.VALUE_A,
                 None,
             )
+
+
+# =============================================================================
+# _resolve_output_dir / DATA_DIR integration tests
+# =============================================================================
+
+
+class TestResolveOutputDir:
+    """_resolve_output_dir() と DATA_DIR 環境変数の連携テスト。"""
+
+    def test_正常系_DATA_DIR環境変数を反映した出力先を返す(
+        self, tmp_path: Path
+    ) -> None:
+        """DATA_DIR が設定されている場合、get_data_dir() / DEFAULT_OUTPUT_SUBDIR を返すこと。"""
+        custom_data_dir = tmp_path / "custom_data"
+        custom_data_dir.mkdir()
+
+        with patch(
+            "market.nasdaq.collector.get_data_dir",
+            return_value=custom_data_dir,
+        ):
+            result = ScreenerCollector._resolve_output_dir()
+
+        assert result == custom_data_dir / "raw" / "nasdaq"
+
+    def test_正常系_download_csvでoutput_dir未指定時にDATA_DIRベースのデフォルトを使用(
+        self, tmp_path: Path
+    ) -> None:
+        """download_csv() で output_dir=None の場合、DATA_DIR ベースのデフォルトを使うこと。"""
+        custom_data_dir = tmp_path / "custom_data"
+        custom_data_dir.mkdir()
+        mock_session = _make_mock_session()
+        collector = ScreenerCollector(session=mock_session)
+
+        with patch(
+            "market.nasdaq.collector.get_data_dir",
+            return_value=custom_data_dir,
+        ):
+            output_path = collector.download_csv(filter=None, filename="test.csv")
+
+        expected_dir = custom_data_dir / "raw" / "nasdaq"
+        assert output_path.parent == expected_dir
+        assert output_path.name == "test.csv"
+        assert output_path.exists()
+
+    def test_正常系_download_csvでoutput_dir明示指定時はDATA_DIRを使わない(
+        self, tmp_path: Path
+    ) -> None:
+        """download_csv() で output_dir を明示指定した場合、DATA_DIR を無視すること。"""
+        mock_session = _make_mock_session()
+        collector = ScreenerCollector(session=mock_session)
+
+        output_path = collector.download_csv(
+            filter=None,
+            output_dir=tmp_path,
+            filename="explicit.csv",
+        )
+
+        assert output_path.parent == tmp_path
+        assert output_path.name == "explicit.csv"
+
+    def test_正常系_download_by_categoryでoutput_dir未指定時にDATA_DIRベースのデフォルトを使用(
+        self, tmp_path: Path
+    ) -> None:
+        """download_by_category() で output_dir=None の場合、DATA_DIR ベースのデフォルトを使うこと。"""
+        custom_data_dir = tmp_path / "custom_data"
+        custom_data_dir.mkdir()
+        mock_session = _make_mock_session()
+        collector = ScreenerCollector(session=mock_session)
+
+        with patch(
+            "market.nasdaq.collector.get_data_dir",
+            return_value=custom_data_dir,
+        ):
+            paths = collector.download_by_category(Exchange)
+
+        expected_dir = custom_data_dir / "raw" / "nasdaq"
+        for path in paths:
+            assert path.parent == expected_dir
+            assert path.exists()

@@ -40,11 +40,15 @@ import json
 import os
 import time
 from datetime import datetime, timezone
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import httpx
+
+if TYPE_CHECKING:
+    from pathlib import Path
 from pydantic import BaseModel, Field
 
+from database.db.connection import get_data_dir
 from market.industry.types import IndustryReport, SourceTier
 from utils_core.logging import get_logger
 
@@ -60,7 +64,7 @@ CENSUS_API_BASE_URL: str = "https://api.census.gov/data/timeseries/intltrade"
 CENSUS_API_KEY_ENV: str = "CENSUS_API_KEY"
 """Environment variable name for the Census Bureau API key."""
 
-DEFAULT_CACHE_DIR: Path = Path("data/raw/industry_reports/census")
+DEFAULT_CACHE_DIR: Path = get_data_dir() / "raw" / "industry_reports" / "census"
 """Default directory for Census API response cache files."""
 
 DEFAULT_CACHE_TTL_SECONDS: int = 7 * 24 * 60 * 60  # 7 days

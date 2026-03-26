@@ -54,12 +54,13 @@ class TestGetEarningsCalendar:
                     {
                         "symbol": "AAPL",
                         "name": "Apple Inc.",
-                        "date": "01/30/2026",
-                        "epsEstimate": "$2.35",
-                        "epsActual": "$2.40",
-                        "surprise": "2.13%",
-                        "fiscalQuarterEnding": "Dec/2025",
-                        "marketCap": "3,435,123,456,789",
+                        "eps": "$2.40",
+                        "surprise": "1.69",
+                        "time": "time-not-supplied",
+                        "fiscalQuarterEnding": "Dec/2024",
+                        "epsForecast": "$2.36",
+                        "noOfEsts": "11",
+                        "marketCap": "$3,640,775,908,600",
                     },
                 ],
             },
@@ -75,6 +76,8 @@ class TestGetEarningsCalendar:
         assert len(result) == 1
         assert isinstance(result[0], EarningsRecord)
         assert result[0].symbol == "AAPL"
+        assert result[0].eps_actual == "$2.40"
+        assert result[0].eps_estimate == "$2.36"
 
     def test_正常系_キャッシュヒット時にAPIを呼ばない(
         self,
@@ -82,24 +85,31 @@ class TestGetEarningsCalendar:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            EarningsRecord(
-                symbol="AAPL",
-                name="Apple Inc.",
-                date="01/30/2026",
-                eps_estimate="$2.35",
-                eps_actual="$2.40",
-                surprise="2.13%",
-                fiscal_quarter_ending="Dec/2025",
-                market_cap="3,435,123,456,789",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has data (raw dict), parser is re-applied and API is not called."""
+        # Cache stores raw unwrapped data (dict), not parsed dataclasses
+        cached_raw_data: dict[str, Any] = {
+            "rows": [
+                {
+                    "symbol": "AAPL",
+                    "name": "Apple Inc.",
+                    "eps": "$2.40",
+                    "surprise": "1.69",
+                    "time": "time-not-supplied",
+                    "fiscalQuarterEnding": "Dec/2024",
+                    "epsForecast": "$2.36",
+                    "noOfEsts": "11",
+                    "marketCap": "$3,640,775,908,600",
+                },
+            ],
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_earnings_calendar(date="2026-01-30")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], EarningsRecord)
+        assert result[0].symbol == "AAPL"
+        assert result[0].eps_actual == "$2.40"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_正常系_dateパラメータがAPIリクエストに渡される(
@@ -204,23 +214,29 @@ class TestGetDividendsCalendar:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            DividendCalendarRecord(
-                symbol="AAPL",
-                company_name="Apple Inc.",
-                ex_date="02/07/2026",
-                payment_date="02/13/2026",
-                record_date="02/10/2026",
-                dividend_rate="$0.25",
-                annual_dividend="$1.00",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has data (raw dict), parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "calendar": {
+                "rows": [
+                    {
+                        "symbol": "AAPL",
+                        "companyName": "Apple Inc.",
+                        "dividend_Ex_Date": "02/07/2026",
+                        "payment_Date": "02/13/2026",
+                        "record_Date": "02/10/2026",
+                        "dividend_Rate": "$0.25",
+                        "indicated_Annual_Dividend": "$1.00",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_dividends_calendar(date="2026-02-07")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], DividendCalendarRecord)
+        assert result[0].symbol == "AAPL"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_正常系_dateパラメータがAPIリクエストに渡される(
@@ -296,21 +312,25 @@ class TestGetSplitsCalendar:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            SplitRecord(
-                symbol="NVDA",
-                name="NVIDIA Corporation",
-                execution_date="06/10/2024",
-                ratio="10:1",
-                optionable="Y",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has data (raw dict), parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "rows": [
+                {
+                    "symbol": "NVDA",
+                    "name": "NVIDIA Corporation",
+                    "executionDate": "06/10/2024",
+                    "ratio": "10:1",
+                    "optionable": "Y",
+                },
+            ],
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_splits_calendar(date="2024-06-10")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], SplitRecord)
+        assert result[0].symbol == "NVDA"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_正常系_dateパラメータがAPIリクエストに渡される(
@@ -389,22 +409,28 @@ class TestGetIpoCalendar:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            IpoRecord(
-                deal_id="123456",
-                symbol="NEWCO",
-                company_name="NewCo Inc.",
-                exchange="NASDAQ",
-                share_price="$15.00",
-                shares_offered="10,000,000",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has data (raw dict), parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "priced": {
+                "rows": [
+                    {
+                        "dealID": "123456",
+                        "proposedTickerSymbol": "NEWCO",
+                        "companyName": "NewCo Inc.",
+                        "proposedExchange": "NASDAQ",
+                        "proposedSharePrice": "$15.00",
+                        "sharesOffered": "10,000,000",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_ipo_calendar(year_month="2026-03")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], IpoRecord)
+        assert result[0].symbol == "NEWCO"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_正常系_year_monthパラメータがAPIリクエストに渡される(

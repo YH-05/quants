@@ -17,6 +17,7 @@ from typing import Any
 
 import pandas as pd
 
+from database.db.connection import get_data_dir
 from market.errors import CacheError
 from utils_core.logging import get_logger
 
@@ -24,11 +25,23 @@ from .types import CacheConfig
 
 logger = get_logger(__name__)
 
-# Default cache database path (relative to project root)
-# cache.py is at src/market/cache/cache.py
-DEFAULT_CACHE_DB_PATH = (
-    Path(__file__).parent.parent.parent.parent / "data" / "cache" / "market_data.db"
-)
+
+def _resolve_cache_db_path() -> Path:
+    """Resolve the default cache database path using DATA_DIR env var.
+
+    Returns
+    -------
+    Path
+        ``get_data_dir() / "cache" / "market_data.db"``, which respects
+        the ``DATA_DIR`` environment variable.
+    """
+    return get_data_dir() / "cache" / "market_data.db"
+
+
+# Default cache database path, resolved via DATA_DIR environment variable.
+# Use _resolve_cache_db_path() for runtime resolution; this module-level
+# constant is evaluated at import time for backward compatibility.
+DEFAULT_CACHE_DB_PATH = _resolve_cache_db_path()
 
 # Default cache configuration (in-memory by default for backwards compatibility)
 DEFAULT_CACHE_CONFIG = CacheConfig(

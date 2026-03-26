@@ -279,11 +279,15 @@ avoids repeated API calls. A 24-hour TTL balances freshness with
 performance.
 """
 
-DEFAULT_TICKER_CACHE_DIR: Final[str] = "data/raw/etfcom"
-"""Default directory for the ticker list file cache.
+DEFAULT_TICKER_CACHE_SUBDIR: Final[str] = "raw/etfcom"
+"""Default subdirectory (relative to DATA_DIR) for the ticker list file cache.
 
 Ticker list JSON files are stored here with timestamps for TTL
-validation. Follows the project convention of ``data/raw/<source>/``.
+validation.
+
+See Also
+--------
+database.db.connection.get_data_dir
 """
 
 DEFAULT_MAX_CONCURRENCY: Final[int] = 5
@@ -309,7 +313,7 @@ __all__ = [
     "DEFAULT_MAX_CONCURRENCY",
     "DEFAULT_MAX_RETRIES",
     "DEFAULT_POLITE_DELAY",
-    "DEFAULT_TICKER_CACHE_DIR",
+    "DEFAULT_TICKER_CACHE_SUBDIR",
     "DEFAULT_TICKER_CACHE_TTL_HOURS",
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",

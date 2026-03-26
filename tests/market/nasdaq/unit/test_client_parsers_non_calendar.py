@@ -337,6 +337,49 @@ class TestParseAnalystRatings:
         assert result.symbol == "AAPL"
         assert result.ratings == []
 
+    def test_正常系_新APIフォーマットでmeanRatingを返す(self) -> None:
+        """Parse new API format with meanRatingType and ratingsSummary."""
+        data: dict[str, Any] = {
+            "symbol": "aapl",
+            "meanRatingType": "Buy",
+            "ratingsSummary": "Based on 29 analysts offering 12 month price targets",
+            "upgradesDowngrades": [],
+            "brokerNames": ["B OF A GLBL RES", "MORGAN STANLEY"],
+        }
+
+        result = parse_analyst_ratings(data, symbol="AAPL")
+
+        assert isinstance(result, AnalystRatings)
+        assert result.symbol == "AAPL"
+        assert result.ratings == []
+        assert result.mean_rating == "Buy"
+        assert result.summary == "Based on 29 analysts offering 12 month price targets"
+
+    def test_正常系_レガシーフォーマットが新フォーマットより優先される(self) -> None:
+        """Legacy format (ratings list) takes precedence over new format."""
+        data: dict[str, Any] = {
+            "ratings": [
+                {
+                    "date": "Current Quarter",
+                    "strongBuy": 5,
+                    "buy": 10,
+                    "hold": 3,
+                    "sell": 1,
+                    "strongSell": 0,
+                },
+            ],
+            "meanRatingType": "Buy",
+            "ratingsSummary": "Based on 19 analysts",
+        }
+
+        result = parse_analyst_ratings(data, symbol="AAPL")
+
+        assert len(result.ratings) == 1
+        assert result.ratings[0].strong_buy == 5
+        # mean_rating and summary should not be set when legacy format is used
+        assert result.mean_rating is None
+        assert result.summary is None
+
 
 # =============================================================================
 # parse_target_price
@@ -402,6 +445,51 @@ class TestParseTargetPrice:
         assert result.low == "$100.00"
         assert result.mean == "$130.00"
         assert result.median == "$128.00"
+
+    def test_正常系_consensusOverview構造でパース成功(self) -> None:
+        """Parse target price from new consensusOverview structure with numeric values."""
+        data: dict[str, Any] = {
+            "consensusOverview": {
+                "lowPriceTarget": 248.0,
+                "highPriceTarget": 350.0,
+                "priceTarget": 304.4,
+                "buy": 14,
+                "sell": 1,
+                "hold": 9,
+            },
+        }
+
+        result = parse_target_price(data, symbol="AAPL")
+
+        assert isinstance(result, TargetPrice)
+        assert result.symbol == "AAPL"
+        assert result.high == "350.0"
+        assert result.low == "248.0"
+        assert result.mean == "304.4"
+        assert result.median is None
+
+    def test_正常系_consensusOverviewがtargetPriceより優先される(self) -> None:
+        """consensusOverview takes precedence over targetPrice."""
+        data: dict[str, Any] = {
+            "consensusOverview": {
+                "lowPriceTarget": 100.0,
+                "highPriceTarget": 200.0,
+                "priceTarget": 150.0,
+            },
+            "targetPrice": {
+                "high": "$999.00",
+                "low": "$1.00",
+                "mean": "$500.00",
+                "median": "$400.00",
+            },
+        }
+
+        result = parse_target_price(data, symbol="MSFT")
+
+        assert result.high == "200.0"
+        assert result.low == "100.0"
+        assert result.mean == "150.0"
+        assert result.median is None
 
     def test_エッジケース_空dictで全フィールドNone(self) -> None:
         """Return TargetPrice with all None fields when data is empty."""

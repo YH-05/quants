@@ -11,7 +11,7 @@ Test TODO List:
 - [x] Security: ALLOWED_HOSTS contains EDINET disclosure API domains
 - [x] Authentication: EDINET_FSA_API_KEY_ENV value
 - [x] HTTP settings: DEFAULT_TIMEOUT, DEFAULT_POLITE_DELAY, DEFAULT_DELAY_JITTER values
-- [x] Output: DEFAULT_OUTPUT_DIR format
+- [x] Output: DEFAULT_OUTPUT_SUBDIR format
 - [x] Final annotations: all constants annotated with typing.Final
 """
 
@@ -21,7 +21,7 @@ from market.edinet_api.constants import (
     ALLOWED_HOSTS,
     BASE_URL,
     DEFAULT_DELAY_JITTER,
-    DEFAULT_OUTPUT_DIR,
+    DEFAULT_OUTPUT_SUBDIR,
     DEFAULT_POLITE_DELAY,
     DEFAULT_TIMEOUT,
     DOWNLOAD_BASE_URL,
@@ -185,22 +185,22 @@ class TestHTTPSettingsConstants:
 class TestOutputConstants:
     """Test output directory constants."""
 
-    def test_正常系_DEFAULT_OUTPUT_DIRが空でない文字列(self) -> None:
-        """DEFAULT_OUTPUT_DIR が空でない文字列であること。"""
-        assert isinstance(DEFAULT_OUTPUT_DIR, str)
-        assert len(DEFAULT_OUTPUT_DIR.strip()) > 0
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが空でない文字列(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が空でない文字列であること。"""
+        assert isinstance(DEFAULT_OUTPUT_SUBDIR, str)
+        assert len(DEFAULT_OUTPUT_SUBDIR.strip()) > 0
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがdata_rawを含む(self) -> None:
-        """DEFAULT_OUTPUT_DIR が data/raw パスを含むこと。"""
-        assert "data/raw" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがrawで始まる(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が raw/ で始まること。"""
+        assert DEFAULT_OUTPUT_SUBDIR.startswith("raw/")
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがedinet_apiを含む(self) -> None:
-        """DEFAULT_OUTPUT_DIR が edinet_api を含むこと。"""
-        assert "edinet_api" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがedinet_apiを含む(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が edinet_api を含むこと。"""
+        assert "edinet_api" in DEFAULT_OUTPUT_SUBDIR
 
-    def test_正常系_DEFAULT_OUTPUT_DIRが正しい値(self) -> None:
-        """DEFAULT_OUTPUT_DIR が設計通りの値であること。"""
-        assert DEFAULT_OUTPUT_DIR == "data/raw/edinet_api/"
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが正しい値(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が設計通りの値であること。"""
+        assert DEFAULT_OUTPUT_SUBDIR == "raw/edinet_api"
 
 
 # =============================================================================

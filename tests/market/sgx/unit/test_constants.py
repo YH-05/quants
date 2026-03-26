@@ -6,7 +6,7 @@ Test TODO List:
 - [x] Module exports: __all__ completeness and importability
 - [x] Exchange identification: EXCHANGE_CODE, EXCHANGE_NAME, SUFFIX, CURRENCY
 - [x] yfinance configuration: YFINANCE_SUPPORTED
-- [x] Output settings: DEFAULT_OUTPUT_DIR
+- [x] Output settings: DEFAULT_OUTPUT_SUBDIR
 - [x] Final annotations: all constants annotated with typing.Final
 """
 
@@ -14,7 +14,7 @@ from typing import get_type_hints
 
 from market.sgx.constants import (
     CURRENCY,
-    DEFAULT_OUTPUT_DIR,
+    DEFAULT_OUTPUT_SUBDIR,
     EXCHANGE_CODE,
     EXCHANGE_NAME,
     SUFFIX,
@@ -117,22 +117,22 @@ class TestYfinanceConfig:
 class TestOutputConstants:
     """Test output directory constants."""
 
-    def test_正常系_DEFAULT_OUTPUT_DIRが空でない文字列(self) -> None:
-        """DEFAULT_OUTPUT_DIR が空でない文字列であること。"""
-        assert isinstance(DEFAULT_OUTPUT_DIR, str)
-        assert len(DEFAULT_OUTPUT_DIR.strip()) > 0
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが空でない文字列(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が空でない文字列であること。"""
+        assert isinstance(DEFAULT_OUTPUT_SUBDIR, str)
+        assert len(DEFAULT_OUTPUT_SUBDIR.strip()) > 0
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがdata_rawを含む(self) -> None:
-        """DEFAULT_OUTPUT_DIR が data/raw パスを含むこと。"""
-        assert "data/raw" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがraw_を含む(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が raw/ パスを含むこと。"""
+        assert "raw/" in DEFAULT_OUTPUT_SUBDIR
 
-    def test_正常系_DEFAULT_OUTPUT_DIRがsgxを含む(self) -> None:
-        """DEFAULT_OUTPUT_DIR が sgx を含むこと。"""
-        assert "sgx" in DEFAULT_OUTPUT_DIR
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRがsgxを含む(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が sgx を含むこと。"""
+        assert "sgx" in DEFAULT_OUTPUT_SUBDIR
 
-    def test_正常系_DEFAULT_OUTPUT_DIRが正しい値(self) -> None:
-        """DEFAULT_OUTPUT_DIR が設計通りの値であること。"""
-        assert DEFAULT_OUTPUT_DIR == "data/raw/sgx/"
+    def test_正常系_DEFAULT_OUTPUT_SUBDIRが正しい値(self) -> None:
+        """DEFAULT_OUTPUT_SUBDIR が設計通りの値であること。"""
+        assert DEFAULT_OUTPUT_SUBDIR == "raw/sgx"
 
 
 # =============================================================================

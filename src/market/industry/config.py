@@ -28,18 +28,28 @@ rss.core.config : Similar config-loading pattern for the RSS module.
 from __future__ import annotations
 
 import json
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 from pydantic import BaseModel, Field
 
+from database.db.connection import get_data_dir
 from utils_core.logging import get_logger
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 logger = get_logger(__name__)
 
-DEFAULT_PRESETS_PATH: Path = Path("data/config/industry-research-presets.json")
+DEFAULT_PRESETS_PATH: Path = (
+    get_data_dir() / "config" / "industry-research-presets.json"
+)
 """Default path to the industry research presets JSON file.
 
-Follows the project convention of ``data/config/<feature>-presets.json``.
+Resolved via ``get_data_dir()`` at import time.
+
+See Also
+--------
+database.db.connection.get_data_dir
 """
 
 

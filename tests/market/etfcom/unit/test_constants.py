@@ -15,7 +15,7 @@ Test TODO List:
 - [x] Query definitions: FUND_DETAILS_QUERY_NAMES (18 items)
 - [x] Authentication: AUTH_TOKEN_TTL_SECONDS
 - [x] REST API: API_HEADERS
-- [x] REST API: DEFAULT_TICKER_CACHE_TTL_HOURS, DEFAULT_TICKER_CACHE_DIR
+- [x] REST API: DEFAULT_TICKER_CACHE_TTL_HOURS, DEFAULT_TICKER_CACHE_SUBDIR
 - [x] REST API: DEFAULT_MAX_CONCURRENCY
 - [x] Deleted constants: Playwright/CSS selectors no longer exist
 - [x] Final annotations: all constants annotated with typing.Final
@@ -34,7 +34,7 @@ from market.etfcom.constants import (
     DEFAULT_MAX_CONCURRENCY,
     DEFAULT_MAX_RETRIES,
     DEFAULT_POLITE_DELAY,
-    DEFAULT_TICKER_CACHE_DIR,
+    DEFAULT_TICKER_CACHE_SUBDIR,
     DEFAULT_TICKER_CACHE_TTL_HOURS,
     DEFAULT_TIMEOUT,
     DEFAULT_USER_AGENTS,
@@ -396,14 +396,14 @@ class TestDefaultSettings:
         assert DEFAULT_TICKER_CACHE_TTL_HOURS > 0
         assert DEFAULT_TICKER_CACHE_TTL_HOURS == 24
 
-    def test_正常系_DEFAULT_TICKER_CACHE_DIRが空でない文字列(self) -> None:
-        """DEFAULT_TICKER_CACHE_DIR が空でない文字列であること。"""
-        assert isinstance(DEFAULT_TICKER_CACHE_DIR, str)
-        assert len(DEFAULT_TICKER_CACHE_DIR.strip()) > 0
+    def test_正常系_DEFAULT_TICKER_CACHE_SUBDIRが空でない文字列(self) -> None:
+        """DEFAULT_TICKER_CACHE_SUBDIR が空でない文字列であること。"""
+        assert isinstance(DEFAULT_TICKER_CACHE_SUBDIR, str)
+        assert len(DEFAULT_TICKER_CACHE_SUBDIR.strip()) > 0
 
-    def test_正常系_DEFAULT_TICKER_CACHE_DIRがdata_rawを含む(self) -> None:
-        """DEFAULT_TICKER_CACHE_DIR が data/raw パスを含むこと。"""
-        assert "data/raw" in DEFAULT_TICKER_CACHE_DIR
+    def test_正常系_DEFAULT_TICKER_CACHE_SUBDIRがrawで始まる(self) -> None:
+        """DEFAULT_TICKER_CACHE_SUBDIR が raw/ で始まること。"""
+        assert DEFAULT_TICKER_CACHE_SUBDIR.startswith("raw/")
 
     def test_正常系_DEFAULT_MAX_CONCURRENCYが正の整数(self) -> None:
         """DEFAULT_MAX_CONCURRENCY が正の整数 (5) であること。"""

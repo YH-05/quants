@@ -88,11 +88,12 @@ class TestFetchAndParse:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = {"symbol": "AAPL", "price": 227.63}
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is called and API is not called."""
+        cached_raw_data = {"symbol": "AAPL", "price": 227.63}
+        mock_cache.get.return_value = cached_raw_data
 
-        parser = MagicMock()
+        parsed_result = {"symbol": "AAPL", "parsed": True}
+        parser = MagicMock(return_value=parsed_result)
         result = nasdaq_client._fetch_and_parse(
             url="https://api.nasdaq.com/api/quote/AAPL/info",
             cache_key="test_key",
@@ -100,19 +101,19 @@ class TestFetchAndParse:
             ttl=3600,
         )
 
-        assert result == cached_data
+        assert result == parsed_result
         mock_cache.get.assert_called_once_with("test_key")
         mock_nasdaq_session.get_with_retry.assert_not_called()
-        parser.assert_not_called()
+        parser.assert_called_once_with(cached_raw_data)
 
-    def test_正常系_キャッシュミス時にAPIを呼びパース結果をキャッシュ(
+    def test_正常系_キャッシュミス時にAPIを呼び生データをキャッシュ(
         self,
         nasdaq_client: NasdaqClient,
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
         sample_envelope_response: dict[str, object],
     ) -> None:
-        """When cache misses, fetches from API, parses, and caches result."""
+        """When cache misses, fetches from API, parses, and caches raw data."""
         mock_cache.get.return_value = None
 
         # Mock API response
@@ -134,7 +135,9 @@ class TestFetchAndParse:
         mock_cache.get.assert_called_once_with("test_key")
         mock_nasdaq_session.get_with_retry.assert_called_once()
         parser.assert_called_once()
-        mock_cache.set.assert_called_once_with("test_key", parsed_result, ttl=3600)
+        # Cache stores raw unwrapped data, not parsed result
+        unwrapped_data = sample_envelope_response["data"]
+        mock_cache.set.assert_called_once_with("test_key", unwrapped_data, ttl=3600)
 
     def test_正常系_force_refresh時にキャッシュを無視(
         self,
@@ -168,14 +171,14 @@ class TestFetchAndParse:
         mock_cache.get.assert_not_called()
         mock_nasdaq_session.get_with_retry.assert_called_once()
 
-    def test_正常系_use_cache_false時にキャッシュを無視(
+    def test_正常系_use_cache_false時にキャッシュ読み書きを両方スキップ(
         self,
         nasdaq_client: NasdaqClient,
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
         sample_envelope_response: dict[str, object],
     ) -> None:
-        """When use_cache=False, cache is not checked."""
+        """When use_cache=False, neither cache read nor cache write happens."""
         mock_response = MagicMock()
         mock_response.json.return_value = sample_envelope_response
         mock_nasdaq_session.get_with_retry.return_value = mock_response
@@ -194,6 +197,7 @@ class TestFetchAndParse:
 
         assert result == parsed_result
         mock_cache.get.assert_not_called()
+        mock_cache.set.assert_not_called()
 
     def test_正常系_paramsをAPIリクエストに渡す(
         self,
@@ -223,6 +227,32 @@ class TestFetchAndParse:
             "https://api.nasdaq.com/api/calendar/earnings",
             params={"date": "2026-03-24"},
         )
+
+    def test_異常系_空レスポンスボディでNasdaqAPIError(
+        self,
+        nasdaq_client: NasdaqClient,
+        mock_cache: MagicMock,
+        mock_nasdaq_session: MagicMock,
+    ) -> None:
+        """Raises NasdaqAPIError when response body is empty (e.g. 404)."""
+        mock_cache.get.return_value = None
+
+        mock_response = MagicMock()
+        mock_response.content = b""
+        mock_response.status_code = 404
+        mock_nasdaq_session.get_with_retry.return_value = mock_response
+
+        parser = MagicMock()
+
+        with pytest.raises(NasdaqAPIError, match="Empty response body"):
+            nasdaq_client._fetch_and_parse(
+                url="https://api.nasdaq.com/api/quote/INVALID/forecast",
+                cache_key="test_key",
+                parser=parser,
+                ttl=3600,
+            )
+
+        parser.assert_not_called()
 
 
 # =============================================================================

@@ -23,6 +23,7 @@ from typing import Any
 
 import yfinance as yf
 
+from database.db.connection import get_data_dir
 from utils_core.logging import get_logger
 
 from ...config.models import ConfigLoader
@@ -40,7 +41,7 @@ from .base import (
 logger = get_logger(__name__, module="yfinance.macro")
 
 # Default keywords file path
-DEFAULT_KEYWORDS_FILE = Path("data/config/news_search_keywords.yaml")
+DEFAULT_KEYWORDS_FILE = get_data_dir() / "config" / "news_search_keywords.yaml"
 
 # Default retry configuration (shared across all yfinance sources)
 DEFAULT_RETRY_CONFIG = DEFAULT_YFINANCE_RETRY_CONFIG

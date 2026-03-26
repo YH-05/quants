@@ -115,6 +115,7 @@ from market.nasdaq.constants import (
     SHORT_INTEREST_URL,
     SPLITS_CALENDAR_URL,
 )
+from market.nasdaq.errors import NasdaqAPIError
 from market.nasdaq.session import NasdaqSession
 from utils_core.logging import get_logger
 
@@ -125,6 +126,9 @@ _SYMBOL_PATTERN: re.Pattern[str] = re.compile(r"^[A-Za-z0-9.\-]{1,10}$")
 
 # Valid frequency values for financial statements
 _VALID_FREQUENCIES: frozenset[str] = frozenset({"annual", "quarterly"})
+
+# NASDAQ API expects numeric frequency values (1=annual, 2=quarterly)
+_FREQUENCY_API_MAP: Final[dict[str, str]] = {"annual": "1", "quarterly": "2"}
 
 # Regex for date / year-month parameter validation
 _DATE_PATTERN_PARAM: re.Pattern[str] = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -271,16 +275,26 @@ class NasdaqClient:
         """
         options = options or _DEFAULT_FETCH_OPTIONS
 
-        # Check cache
+        # Check cache (stores raw unwrapped data, not parsed results)
         if options.use_cache and not options.force_refresh:
             cached = self._cache.get(cache_key)
             if cached is not None:
                 logger.debug("Cache hit", cache_key=cache_key)
-                return cached
+                return parser(cached)
 
         # Fetch from API
         logger.debug("Fetching from NASDAQ API", url=url, params=params)
         response = self._session.get_with_retry(url, params=params)
+
+        # Handle empty response body (e.g. 404 with no JSON)
+        if not response.content:
+            raise NasdaqAPIError(
+                f"Empty response body from {url}",
+                url=url,
+                status_code=getattr(response, "status_code", 0),
+                response_body="",
+            )
+
         raw_data: dict[str, Any] = response.json()
 
         # Unwrap envelope
@@ -289,13 +303,14 @@ class NasdaqClient:
         # Parse
         result = parser(data)
 
-        # Store in cache
-        self._cache.set(cache_key, result, ttl=ttl)
-        logger.info(
-            "Data fetched and cached",
-            cache_key=cache_key,
-            ttl=ttl,
-        )
+        # Store raw data in cache (JSON-serializable dict, not dataclass)
+        if options.use_cache:
+            self._cache.set(cache_key, data, ttl=ttl)
+            logger.info(
+                "Data fetched and cached",
+                cache_key=cache_key,
+                ttl=ttl,
+            )
 
         return result
 
@@ -689,7 +704,7 @@ class NasdaqClient:
             parser=parse_etf_screener,
             ttl=ETF_SCREENER_TTL,
             options=options,
-            params={"limit": "0"},
+            params={"limit": "99999"},
         )
 
     # =========================================================================
@@ -790,6 +805,7 @@ class NasdaqClient:
             parser=parse_dividend_history,
             ttl=DIVIDEND_HISTORY_TTL,
             options=options,
+            params={"assetclass": "stocks"},
         )
 
     # =========================================================================
@@ -949,7 +965,7 @@ class NasdaqClient:
             parser=parser,
             ttl=FINANCIALS_TTL,
             options=options,
-            params={"frequency": frequency},
+            params={"frequency": _FREQUENCY_API_MAP[frequency]},
         )
 
     # =========================================================================

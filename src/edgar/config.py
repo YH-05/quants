@@ -17,6 +17,7 @@ import os
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from database.db.connection import get_data_dir
 from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -25,7 +26,7 @@ logger = get_logger(__name__)
 SEC_EDGAR_IDENTITY_ENV = "SEC_EDGAR_IDENTITY"
 
 # Default cache configuration
-DEFAULT_CACHE_DIR = Path("data") / "cache" / "edgar"
+DEFAULT_CACHE_DIR = get_data_dir() / "cache" / "edgar"
 DEFAULT_CACHE_TTL_HOURS = 24
 DEFAULT_RATE_LIMIT_PER_SECOND = 10
 

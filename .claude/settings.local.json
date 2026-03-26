@@ -119,6 +119,18 @@
       "/users/yukihata/desktop/note-finance"
     ]
   },
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PROJECT_DIR/scripts/sync_nas.sh --push >> /tmp/sync-nas-quants.log 2>&1 &"
+          }
+        ]
+      }
+    ]
+  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "git",

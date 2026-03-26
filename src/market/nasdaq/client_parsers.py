@@ -252,19 +252,38 @@ def _extract_rows(
 def parse_earnings_calendar(data: dict[str, Any]) -> list[EarningsRecord]:
     """Parse earnings calendar endpoint data into ``EarningsRecord`` list.
 
-    Expected structure::
+    Expected structure (past date with actual EPS)::
 
         {
             "rows": [
                 {
                     "symbol": "AAPL",
                     "name": "Apple Inc.",
-                    "date": "01/30/2026",
-                    "epsEstimate": "$2.35",
-                    "epsActual": "$2.40",
-                    "surprise": "2.13%",
-                    "fiscalQuarterEnding": "Dec/2025",
-                    "marketCap": "3,435,123,456,789"
+                    "eps": "$2.40",
+                    "surprise": "1.69",
+                    "time": "time-not-supplied",
+                    "fiscalQuarterEnding": "Dec/2024",
+                    "epsForecast": "$2.36",
+                    "noOfEsts": "11",
+                    "marketCap": "$3,640,775,908,600"
+                }, ...
+            ]
+        }
+
+    Expected structure (future date without actual EPS)::
+
+        {
+            "rows": [
+                {
+                    "symbol": "GME",
+                    "name": "GameStop Corporation",
+                    "lastYearRptDt": "N/A",
+                    "lastYearEPS": "$0.30",
+                    "time": "time-after-hours",
+                    "fiscalQuarterEnding": "Jan/2026",
+                    "epsForecast": "",
+                    "noOfEsts": "1",
+                    "marketCap": "$10,111,573,964"
                 }, ...
             ]
         }
@@ -296,11 +315,15 @@ def parse_earnings_calendar(data: dict[str, Any]) -> list[EarningsRecord]:
             symbol=row.get("symbol", ""),
             name=row.get("name"),
             date=row.get("date"),
-            eps_estimate=row.get("epsEstimate"),
-            eps_actual=row.get("epsActual"),
+            eps_estimate=row.get("epsForecast"),
+            eps_actual=row.get("eps"),
             surprise=row.get("surprise"),
             fiscal_quarter_ending=row.get("fiscalQuarterEnding"),
             market_cap=row.get("marketCap"),
+            time=row.get("time"),
+            no_of_ests=row.get("noOfEsts"),
+            last_year_rpt_dt=row.get("lastYearRptDt"),
+            last_year_eps=row.get("lastYearEPS"),
         )
         for row in rows
     ]
@@ -503,7 +526,16 @@ _MOVER_SECTION_KEYS: dict[str, MoverSection] = {
     "MostDeclined": MoverSection.MOST_DECLINED,
     "MostActive": MoverSection.MOST_ACTIVE,
 }
-"""Mapping from NASDAQ API section keys to ``MoverSection`` enum values."""
+"""Mapping from NASDAQ API section keys to ``MoverSection`` enum values.
+
+The new API also uses ``MostActiveByShareVolume`` as an alias for
+``MostActive``, handled via ``_MOVER_SECTION_KEY_ALIASES``.
+"""
+
+_MOVER_SECTION_KEY_ALIASES: dict[str, str] = {
+    "MostActiveByShareVolume": "MostActive",
+}
+"""Aliases for mover section keys in the new API format."""
 
 
 def parse_market_movers(
@@ -511,24 +543,10 @@ def parse_market_movers(
 ) -> dict[str, list[MarketMover]]:
     """Parse market movers endpoint data into a section-keyed dictionary.
 
-    Expected structure::
+    Supports both old flat structure and new nested structure::
 
-        {
-            "MostAdvanced": {
-                "rows": [
-                    {
-                        "symbol": "AAPL",
-                        "name": "Apple Inc.",
-                        "lastSale": "$230.00",
-                        "netChange": "5.00",
-                        "percentageChange": "2.22%",
-                        "volume": "48,123,456"
-                    }, ...
-                ]
-            },
-            "MostDeclined": { "rows": [...] },
-            "MostActive": { "rows": [...] }
-        }
+        Old: ``{ "MostAdvanced": { "rows": [...] }, ... }``
+        New: ``{ "STOCKS": { "MostAdvanced": { "table": { "rows": [...] } }, ... } }``
 
     Parameters
     ----------
@@ -549,16 +567,35 @@ def parse_market_movers(
     """
     result: dict[str, list[MarketMover]] = {}
 
+    # New API nests under "STOCKS" -> section -> "table" -> "rows"
+    stocks = data.get("STOCKS")
+    source = stocks if isinstance(stocks, dict) else data
+
     for api_key, section in _MOVER_SECTION_KEYS.items():
-        rows = _extract_rows(data, api_key, "rows")
+        # Try new structure: section -> table -> rows
+        section_data = source.get(api_key)
+        if section_data is None:
+            # Try alias (e.g. MostActiveByShareVolume -> MostActive)
+            for alias, canonical in _MOVER_SECTION_KEY_ALIASES.items():
+                if canonical == api_key:
+                    section_data = source.get(alias)
+                    if section_data is not None:
+                        break
+
+        if isinstance(section_data, dict) and "table" in section_data:
+            rows = _extract_rows(section_data, "table", "rows")
+        else:
+            # Fallback to old structure: section -> rows
+            rows = _extract_rows(source, api_key, "rows")
+
         movers = [
             MarketMover(
                 symbol=row.get("symbol", ""),
                 name=row.get("name"),
-                price=row.get("lastSale"),
-                change=row.get("netChange"),
+                price=row.get("lastSalePrice") or row.get("lastSale"),
+                change=row.get("lastSaleChange") or row.get("netChange"),
                 change_percent=row.get("percentageChange"),
-                volume=row.get("volume"),
+                volume=row.get("change") or row.get("volume"),
             )
             for row in rows
         ]
@@ -581,26 +618,10 @@ def parse_market_movers(
 def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
     """Parse ETF screener endpoint data into ``EtfRecord`` list.
 
-    Expected structure::
+    Supports both old and new API structures::
 
-        {
-            "table": {
-                "rows": [
-                    {
-                        "symbol": "SPY",
-                        "name": "SPDR S&P 500 ETF Trust",
-                        "lastsale": "$590.50",
-                        "netchange": "-2.30",
-                        "pctchange": "-0.39%",
-                        "volume": "48,123,456",
-                        "country": "United States",
-                        "sector": "",
-                        "industry": "",
-                        "url": "/market-activity/funds-and-etfs/spy"
-                    }, ...
-                ]
-            }
-        }
+        Old: ``{ "table": { "rows": [...] } }``
+        New: ``{ "records": { "data": { "rows": [...] } } }``
 
     Parameters
     ----------
@@ -615,9 +636,14 @@ def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
     Raises
     ------
     NasdaqParseError
-        If ``table.rows`` exists but is not a list.
+        If rows exist but are not a list.
     """
-    rows = _extract_rows(data, "table", "rows")
+    # Try new structure: records -> data -> rows
+    rows = _extract_rows(data, "records", "data", "rows")
+    if not rows:
+        # Fallback to old structure: table -> rows
+        rows = _extract_rows(data, "table", "rows")
+
     if not rows:
         logger.debug("No ETF screener rows to parse")
         return []
@@ -627,10 +653,10 @@ def parse_etf_screener(data: dict[str, Any]) -> list[EtfRecord]:
     result = [
         EtfRecord(
             symbol=row.get("symbol", ""),
-            name=row.get("name"),
-            last_sale=row.get("lastsale"),
-            net_change=row.get("netchange"),
-            pct_change=row.get("pctchange"),
+            name=row.get("companyName") or row.get("name"),
+            last_sale=row.get("lastSalePrice") or row.get("lastsale"),
+            net_change=row.get("netChange") or row.get("netchange"),
+            pct_change=row.get("percentageChange") or row.get("pctchange"),
             volume=row.get("volume"),
             country=row.get("country"),
             sector=row.get("sector"),
@@ -736,6 +762,27 @@ def parse_earnings_forecast(
     return EarningsForecast(symbol=symbol, yearly=yearly, quarterly=quarterly)
 
 
+def _to_str(value: Any) -> str | None:
+    """Convert a value to string, returning None for None values.
+
+    Used to normalize numeric API values (e.g. ``350.0``) into
+    string form for consistency with dataclass field types.
+
+    Parameters
+    ----------
+    value : Any
+        Value to convert.
+
+    Returns
+    -------
+    str | None
+        String representation, or ``None`` if value is ``None``.
+    """
+    if value is None:
+        return None
+    return str(value)
+
+
 def _safe_int(value: Any) -> int:
     """Convert a value to int, returning 0 for non-convertible values.
 
@@ -767,20 +814,11 @@ def parse_analyst_ratings(
 ) -> AnalystRatings:
     """Parse analyst ratings endpoint data into ``AnalystRatings``.
 
-    Expected structure::
+    Supports both legacy structure (per-period rating breakdowns) and
+    new structure (mean rating + summary)::
 
-        {
-            "ratings": [
-                {
-                    "date": "Current Quarter",
-                    "strongBuy": 10,
-                    "buy": 15,
-                    "hold": 5,
-                    "sell": 1,
-                    "strongSell": 0
-                }, ...
-            ]
-        }
+        Legacy: ``{ "ratings": [ { "date": "...", "strongBuy": 10, ... } ] }``
+        New:    ``{ "meanRatingType": "Buy", "ratingsSummary": "Based on..." }``
 
     Parameters
     ----------
@@ -792,29 +830,49 @@ def parse_analyst_ratings(
     Returns
     -------
     AnalystRatings
-        Parsed analyst ratings with history.
+        Parsed analyst ratings with history (legacy) or mean rating (new).
     """
+    # Try legacy structure first
     rows = _extract_rows(data, "ratings")
-    if not rows:
-        logger.debug("No analyst ratings rows to parse", symbol=symbol)
-        return AnalystRatings(symbol=symbol, ratings=[])
+    if rows:
+        logger.debug("Parsing analyst ratings rows (legacy)", row_count=len(rows))
 
-    logger.debug("Parsing analyst ratings rows", row_count=len(rows))
+        result = [
+            RatingCount(
+                date=row.get("date"),
+                strong_buy=_safe_int(row.get("strongBuy")),
+                buy=_safe_int(row.get("buy")),
+                hold=_safe_int(row.get("hold")),
+                sell=_safe_int(row.get("sell")),
+                strong_sell=_safe_int(row.get("strongSell")),
+            )
+            for row in rows
+        ]
 
-    result = [
-        RatingCount(
-            date=row.get("date"),
-            strong_buy=_safe_int(row.get("strongBuy")),
-            buy=_safe_int(row.get("buy")),
-            hold=_safe_int(row.get("hold")),
-            sell=_safe_int(row.get("sell")),
-            strong_sell=_safe_int(row.get("strongSell")),
+        logger.info(
+            "Analyst ratings parsed", symbol=symbol, rating_count=len(result)
         )
-        for row in rows
-    ]
+        return AnalystRatings(symbol=symbol, ratings=result)
 
-    logger.info("Analyst ratings parsed", symbol=symbol, rating_count=len(result))
-    return AnalystRatings(symbol=symbol, ratings=result)
+    # New structure: extract mean rating info
+    mean_rating = data.get("meanRatingType")
+    summary = data.get("ratingsSummary")
+
+    if mean_rating is not None or summary is not None:
+        logger.info(
+            "Analyst ratings parsed (new format)",
+            symbol=symbol,
+            mean_rating=mean_rating,
+        )
+        return AnalystRatings(
+            symbol=symbol,
+            ratings=[],
+            mean_rating=_to_str(mean_rating),
+            summary=_to_str(summary),
+        )
+
+    logger.debug("No analyst ratings data to parse", symbol=symbol)
+    return AnalystRatings(symbol=symbol, ratings=[])
 
 
 def parse_target_price(
@@ -843,6 +901,19 @@ def parse_target_price(
             "median": "$248.00"
         }
 
+    or new ``consensusOverview`` structure with numeric values::
+
+        {
+            "consensusOverview": {
+                "lowPriceTarget": 248.0,
+                "highPriceTarget": 350.0,
+                "priceTarget": 304.4,
+                "buy": 14,
+                "sell": 1,
+                "hold": 9
+            }
+        }
+
     Parameters
     ----------
     data : dict[str, Any]
@@ -855,20 +926,28 @@ def parse_target_price(
     TargetPrice
         Parsed target price with high/low/mean/median.
     """
-    # Try nested structure first, then flat
-    tp_data = data.get("targetPrice")
-    if isinstance(tp_data, dict):
-        source = tp_data
+    # Try new API structure: consensusOverview with numeric values
+    consensus = data.get("consensusOverview")
+    if isinstance(consensus, dict):
+        result = TargetPrice(
+            symbol=symbol,
+            high=_to_str(consensus.get("highPriceTarget")),
+            low=_to_str(consensus.get("lowPriceTarget")),
+            mean=_to_str(consensus.get("priceTarget")),
+            median=None,  # not provided in new API
+        )
     else:
-        source = data
+        # Fallback: try old nested/flat structure
+        tp_data = data.get("targetPrice")
+        source = tp_data if isinstance(tp_data, dict) else data
 
-    result = TargetPrice(
-        symbol=symbol,
-        high=source.get("high"),
-        low=source.get("low"),
-        mean=source.get("mean"),
-        median=source.get("median"),
-    )
+        result = TargetPrice(
+            symbol=symbol,
+            high=source.get("high"),
+            low=source.get("low"),
+            mean=source.get("mean"),
+            median=source.get("median"),
+        )
 
     logger.info(
         "Target price parsed",
@@ -1110,17 +1189,34 @@ def _parse_financial_table_rows(
     headers_data = table.get("headers")
     headers: list[str] = []
     if isinstance(headers_data, dict):
-        raw_values = headers_data.get("values", [])
+        raw_values = headers_data.get("values")
         if isinstance(raw_values, list):
-            # First element is typically empty (row label column)
+            # Old format: {"values": ["", "2025", "2024", "2023"]}
             headers = [str(v) for v in raw_values[1:] if v]
+        else:
+            # New format: {"value1": "Period Ending:", "value2": "9/27/2025", ...}
+            i = 2  # skip value1 (label column)
+            while f"value{i}" in headers_data:
+                val = headers_data[f"value{i}"]
+                if val:
+                    headers.append(str(val))
+                i += 1
 
     # Extract rows
     raw_rows = table.get("rows")
     if not isinstance(raw_rows, list):
         return headers, []
 
-    value_keys = [f"value{i}" for i in range(2, len(headers) + 2)]
+    # Determine value keys from first row if headers didn't give us a count
+    num_values = len(headers) if headers else 0
+    if num_values == 0 and raw_rows:
+        first = raw_rows[0]
+        if isinstance(first, dict):
+            i = 2
+            while f"value{i}" in first:
+                num_values += 1
+                i += 1
+    value_keys = [f"value{i}" for i in range(2, num_values + 2)]
 
     result: list[FinancialStatementRow] = []
     for row in raw_rows:

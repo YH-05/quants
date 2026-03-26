@@ -35,6 +35,7 @@ from __future__ import annotations
 import functools
 from typing import TYPE_CHECKING, Final
 
+from database.db.connection import get_data_dir
 from market.cache.cache import SQLiteCache, create_persistent_cache
 from utils_core.logging import get_logger
 
@@ -47,7 +48,7 @@ logger = get_logger(__name__)
 # 定数
 # ---------------------------------------------------------------------------
 
-ACADEMIC_CACHE_DB_PATH: Final[str] = "data/cache/academic.db"
+ACADEMIC_CACHE_DB_PATH: str = str(get_data_dir() / "cache" / "academic.db")
 """academic キャッシュの SQLite DB パス."""
 
 ACADEMIC_CACHE_TTL: Final[int] = 604800

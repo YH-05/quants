@@ -581,6 +581,7 @@ class TestGetDefaultPresetsPath:
     def setup_env(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """各テスト前に環境変数をクリア。"""
         monkeypatch.delenv("FRED_SERIES_ID_JSON", raising=False)
+        monkeypatch.delenv("DATA_DIR", raising=False)
 
     def test_正常系_環境変数が設定されている場合はその値を返す(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
@@ -597,16 +598,16 @@ class TestGetDefaultPresetsPath:
 
         assert result == env_path
 
-    def test_正常系_カレントディレクトリに設定ファイルがある場合はそのパスを返す(
+    def test_正常系_カレントディレクトリにdataがある場合はget_data_dir経由で解決(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
     ) -> None:
-        """カレントディレクトリからの相対パスに設定ファイルがある場合、そのパスを返すことを確認。"""
+        """CWD に data/ が存在する場合、get_data_dir() 経由で config パスが解決されることを確認。"""
         from market.fred.fetcher import _get_default_presets_path
 
         # カレントディレクトリを一時ディレクトリに変更
         monkeypatch.chdir(tmp_path)
 
-        # カレントディレクトリに設定ファイルを作成
+        # カレントディレクトリに data/config/fred_series.json を作成
         config_dir = tmp_path / "data" / "config"
         config_dir.mkdir(parents=True)
         config_file = config_dir / "fred_series.json"
@@ -614,21 +615,25 @@ class TestGetDefaultPresetsPath:
 
         result = _get_default_presets_path()
 
+        # get_data_dir() が CWD/data を返すため、config/fred_series.json を付加したパスになる
         assert result == config_file
 
-    def test_正常系_フォールバックとしてファイルベースのパスを返す(
+    def test_正常系_フォールバックとしてget_data_dirベースのパスを返す(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
     ) -> None:
-        """環境変数もカレントディレクトリの設定もない場合、__file__ ベースのパスを返すことを確認。"""
-        from market.fred.fetcher import DEFAULT_PRESETS_PATH, _get_default_presets_path
+        """環境変数が未設定の場合、get_data_dir() ベースのパスを返すことを確認。"""
+        from market.fred.fetcher import _get_default_presets_path
 
         # カレントディレクトリを設定ファイルがない一時ディレクトリに変更
         monkeypatch.chdir(tmp_path)
 
         result = _get_default_presets_path()
 
-        # __file__ ベースのパスを返す
-        assert result == DEFAULT_PRESETS_PATH
+        # get_data_dir() ベースのパスを返す
+        from database.db.connection import get_data_dir
+
+        expected = get_data_dir() / "config" / "fred_series.json"
+        assert result == expected
 
     def test_正常系_環境変数が優先される(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path

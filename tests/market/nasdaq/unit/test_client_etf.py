@@ -215,6 +215,79 @@ class TestParseEtfScreener:
         assert result[0].last_sale is None
         assert result[0].volume is None
 
+    def test_正常系_records_data_rows構造をパースできる(self) -> None:
+        """Parses new API structure: records -> data -> rows."""
+        data: dict[str, Any] = {
+            "records": {
+                "totalrecords": 4405,
+                "data": {
+                    "rows": [
+                        {
+                            "symbol": "CSRE",
+                            "companyName": "Cohen & Steers Real Estate Active ETF",
+                            "lastSalePrice": "$26.15",
+                            "netChange": "-0.10",
+                            "percentageChange": "-0.38%",
+                            "volume": "1,234",
+                            "country": "United States",
+                            "sector": "Real Estate",
+                            "industry": "Real Estate",
+                            "url": "/market-activity/funds-and-etfs/csre",
+                        },
+                        {
+                            "symbol": "SPY",
+                            "companyName": "SPDR S&P 500 ETF Trust",
+                            "lastSalePrice": "$590.50",
+                            "netChange": "-2.30",
+                            "percentageChange": "-0.39%",
+                            "volume": "48,123,456",
+                            "country": "United States",
+                            "sector": "",
+                            "industry": "",
+                            "url": "/market-activity/funds-and-etfs/spy",
+                        },
+                    ],
+                },
+            },
+        }
+
+        result = parse_etf_screener(data)
+
+        assert len(result) == 2
+        assert isinstance(result[0], EtfRecord)
+        assert result[0].symbol == "CSRE"
+        assert result[0].name == "Cohen & Steers Real Estate Active ETF"
+        assert result[0].last_sale == "$26.15"
+        assert result[0].net_change == "-0.10"
+        assert result[0].pct_change == "-0.38%"
+        assert result[0].volume == "1,234"
+        assert result[1].symbol == "SPY"
+
+    def test_正常系_新APIフィールド名でもフォールバックで旧名を使う(self) -> None:
+        """New API field names (companyName, lastSalePrice) are used with fallback to old."""
+        data: dict[str, Any] = {
+            "table": {
+                "rows": [
+                    {
+                        "symbol": "TEST",
+                        "companyName": "Test ETF via companyName",
+                        "lastSalePrice": "$100.00",
+                        "netChange": "1.50",
+                        "percentageChange": "1.52%",
+                        "volume": "999",
+                    },
+                ],
+            },
+        }
+
+        result = parse_etf_screener(data)
+
+        assert len(result) == 1
+        assert result[0].name == "Test ETF via companyName"
+        assert result[0].last_sale == "$100.00"
+        assert result[0].net_change == "1.50"
+        assert result[0].pct_change == "1.52%"
+
 
 # =============================================================================
 # NasdaqClient.get_etf_screener Tests
@@ -271,19 +344,32 @@ class TestGetEtfScreener:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            EtfRecord(
-                symbol="SPY",
-                name="SPDR S&P 500 ETF Trust",
-                last_sale="$590.50",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "table": {
+                "rows": [
+                    {
+                        "symbol": "SPY",
+                        "name": "SPDR S&P 500 ETF Trust",
+                        "lastsale": "$590.50",
+                        "netchange": "-2.30",
+                        "pctchange": "-0.39%",
+                        "volume": "48,123,456",
+                        "country": "United States",
+                        "sector": "",
+                        "industry": "",
+                        "url": "/market-activity/funds-and-etfs/spy",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_etf_screener()
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], EtfRecord)
+        assert result[0].symbol == "SPY"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_正常系_force_refreshでキャッシュを無視(
@@ -339,7 +425,7 @@ class TestGetEtfScreener:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """limit=0 parameter is forwarded to the API request."""
+        """limit=99999 parameter is forwarded to the API request."""
         mock_cache.get.return_value = None
 
         raw_response: dict[str, Any] = {
@@ -354,4 +440,4 @@ class TestGetEtfScreener:
         nasdaq_client.get_etf_screener()
 
         call_kwargs = mock_nasdaq_session.get_with_retry.call_args
-        assert call_kwargs[1]["params"]["limit"] == "0"
+        assert call_kwargs[1]["params"]["limit"] == "99999"

@@ -41,29 +41,31 @@ from market.nasdaq.errors import NasdaqParseError
 class TestParseEarningsCalendar:
     """Tests for parse_earnings_calendar parser."""
 
-    def test_正常系_有効なデータでEarningsRecordリストを返す(self) -> None:
-        """Parses valid earnings calendar data into EarningsRecord list."""
+    def test_正常系_過去日のデータでEarningsRecordリストを返す(self) -> None:
+        """Parses valid past-date earnings data with actual EPS."""
         data: dict[str, Any] = {
             "rows": [
                 {
                     "symbol": "AAPL",
                     "name": "Apple Inc.",
-                    "date": "01/30/2026",
-                    "epsEstimate": "$2.35",
-                    "epsActual": "$2.40",
-                    "surprise": "2.13%",
-                    "fiscalQuarterEnding": "Dec/2025",
-                    "marketCap": "3,435,123,456,789",
+                    "eps": "$2.40",
+                    "surprise": "1.69",
+                    "time": "time-not-supplied",
+                    "fiscalQuarterEnding": "Dec/2024",
+                    "epsForecast": "$2.36",
+                    "noOfEsts": "11",
+                    "marketCap": "$3,640,775,908,600",
                 },
                 {
                     "symbol": "MSFT",
                     "name": "Microsoft Corporation",
-                    "date": "01/28/2026",
-                    "epsEstimate": "$3.10",
-                    "epsActual": "",
-                    "surprise": "",
-                    "fiscalQuarterEnding": "Dec/2025",
-                    "marketCap": "3,100,000,000,000",
+                    "eps": "$3.23",
+                    "surprise": "4.19",
+                    "time": "time-after-hours",
+                    "fiscalQuarterEnding": "Dec/2024",
+                    "epsForecast": "$3.10",
+                    "noOfEsts": "28",
+                    "marketCap": "$3,100,000,000,000",
                 },
             ],
         }
@@ -74,12 +76,46 @@ class TestParseEarningsCalendar:
         assert isinstance(result[0], EarningsRecord)
         assert result[0].symbol == "AAPL"
         assert result[0].name == "Apple Inc."
-        assert result[0].date == "01/30/2026"
-        assert result[0].eps_estimate == "$2.35"
+        assert result[0].eps_estimate == "$2.36"
         assert result[0].eps_actual == "$2.40"
-        assert result[0].surprise == "2.13%"
-        assert result[0].fiscal_quarter_ending == "Dec/2025"
-        assert result[0].market_cap == "3,435,123,456,789"
+        assert result[0].surprise == "1.69"
+        assert result[0].fiscal_quarter_ending == "Dec/2024"
+        assert result[0].market_cap == "$3,640,775,908,600"
+        assert result[0].time == "time-not-supplied"
+        assert result[0].no_of_ests == "11"
+
+    def test_正常系_未来日のデータでEarningsRecordリストを返す(self) -> None:
+        """Parses valid future-date earnings data without actual EPS."""
+        data: dict[str, Any] = {
+            "rows": [
+                {
+                    "symbol": "GME",
+                    "name": "GameStop Corporation",
+                    "lastYearRptDt": "N/A",
+                    "lastYearEPS": "$0.30",
+                    "time": "time-after-hours",
+                    "fiscalQuarterEnding": "Jan/2026",
+                    "epsForecast": "",
+                    "noOfEsts": "1",
+                    "marketCap": "$10,111,573,964",
+                },
+            ],
+        }
+
+        result = parse_earnings_calendar(data)
+
+        assert len(result) == 1
+        assert result[0].symbol == "GME"
+        assert result[0].name == "GameStop Corporation"
+        assert result[0].eps_estimate == ""
+        assert result[0].eps_actual is None
+        assert result[0].surprise is None
+        assert result[0].fiscal_quarter_ending == "Jan/2026"
+        assert result[0].market_cap == "$10,111,573,964"
+        assert result[0].time == "time-after-hours"
+        assert result[0].no_of_ests == "1"
+        assert result[0].last_year_rpt_dt == "N/A"
+        assert result[0].last_year_eps == "$0.30"
 
     def test_正常系_空データで空リストを返す(self) -> None:
         """Returns empty list when rows is empty."""
@@ -106,12 +142,13 @@ class TestParseEarningsCalendar:
                 {
                     "symbol": "AAPL",
                     "name": "Apple Inc.",
-                    "date": "01/30/2026",
-                    "epsEstimate": "$2.35",
-                    "epsActual": "$2.40",
-                    "surprise": "2.13%",
-                    "fiscalQuarterEnding": "Dec/2025",
-                    "marketCap": "3,435,123,456,789",
+                    "eps": "$2.40",
+                    "surprise": "1.69",
+                    "time": "time-not-supplied",
+                    "fiscalQuarterEnding": "Dec/2024",
+                    "epsForecast": "$2.36",
+                    "noOfEsts": "11",
+                    "marketCap": "$3,640,775,908,600",
                 },
             ],
         }
@@ -134,6 +171,12 @@ class TestParseEarningsCalendar:
         assert result[0].symbol == "AAPL"
         assert result[0].date is None
         assert result[0].eps_estimate is None
+        assert result[0].eps_actual is None
+        assert result[0].surprise is None
+        assert result[0].time is None
+        assert result[0].no_of_ests is None
+        assert result[0].last_year_rpt_dt is None
+        assert result[0].last_year_eps is None
 
 
 # =============================================================================

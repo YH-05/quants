@@ -51,8 +51,9 @@ from typing import Any
 
 import pandas as pd
 
+from database.db.connection import get_data_dir
 from market.base_collector import DataCollector
-from market.nasdaq.constants import DEFAULT_OUTPUT_DIR, NASDAQ_SCREENER_URL
+from market.nasdaq.constants import DEFAULT_OUTPUT_SUBDIR, NASDAQ_SCREENER_URL
 from market.nasdaq.parser import parse_screener_response
 from market.nasdaq.session import NasdaqSession
 from market.nasdaq.types import (
@@ -155,6 +156,18 @@ class ScreenerCollector(DataCollector):
         if self._session_instance is not None:
             return self._session_instance, False
         return NasdaqSession(), True
+
+    @staticmethod
+    def _resolve_output_dir() -> Path:
+        """Resolve the default output directory using DATA_DIR env var.
+
+        Returns
+        -------
+        Path
+            ``get_data_dir() / DEFAULT_OUTPUT_SUBDIR``, which respects
+            the ``DATA_DIR`` environment variable.
+        """
+        return get_data_dir() / DEFAULT_OUTPUT_SUBDIR
 
     def fetch(self, **kwargs: Any) -> pd.DataFrame:
         """Fetch stock screening data from the NASDAQ API.
@@ -394,7 +407,7 @@ class ScreenerCollector(DataCollector):
         self,
         filter: ScreenerFilter | None = None,
         *,
-        output_dir: str | Path = DEFAULT_OUTPUT_DIR,
+        output_dir: str | Path | None = None,
         filename: str = "screener.csv",
     ) -> Path:
         """Fetch data and save as a CSV file with utf-8-sig encoding.
@@ -403,9 +416,10 @@ class ScreenerCollector(DataCollector):
         ----------
         filter : ScreenerFilter | None
             Optional filter conditions for the API request.
-        output_dir : str | Path
-            Directory to save the CSV file.  Defaults to
-            ``DEFAULT_OUTPUT_DIR`` (``data/raw/nasdaq``).
+        output_dir : str | Path | None
+            Directory to save the CSV file.  If None, defaults to
+            ``get_data_dir() / DEFAULT_OUTPUT_SUBDIR`` which respects
+            the ``DATA_DIR`` environment variable.
         filename : str
             The output filename.  Defaults to ``"screener.csv"``.
 
@@ -420,7 +434,9 @@ class ScreenerCollector(DataCollector):
         >>> path = collector.download_csv(output_dir="data/raw/nasdaq")
         >>> print(f"Saved to {path}")
         """
-        output_dir = Path(output_dir)
+        output_dir = (
+            Path(output_dir) if output_dir is not None else self._resolve_output_dir()
+        )
         output_dir.mkdir(parents=True, exist_ok=True)
         output_path = (output_dir / filename).resolve()
 
@@ -452,7 +468,7 @@ class ScreenerCollector(DataCollector):
         self,
         category: FilterCategory,
         *,
-        output_dir: str | Path = DEFAULT_OUTPUT_DIR,
+        output_dir: str | Path | None = None,
         base_filter: ScreenerFilter | None = None,
     ) -> list[Path]:
         """Fetch all category values and save each as a separate CSV file.
@@ -482,24 +498,26 @@ class ScreenerCollector(DataCollector):
         ...     Sector, output_dir=Path("data/raw/nasdaq")
         ... )
         """
-        output_dir = Path(output_dir)
-        output_dir.mkdir(parents=True, exist_ok=True)
+        resolved_dir = (
+            Path(output_dir) if output_dir is not None else self._resolve_output_dir()
+        )
+        resolved_dir.mkdir(parents=True, exist_ok=True)
         today_str = date.today().isoformat()
         category_name = category.__name__.lower()
 
         logger.info(
             "Starting category-based CSV download",
             category=category_name,
-            output_dir=str(output_dir),
+            output_dir=str(resolved_dir),
         )
 
-        resolved_output_dir = output_dir.resolve()
+        resolved_output_dir = resolved_dir.resolve()
         results = self.fetch_by_category(category, base_filter=base_filter)
         paths: list[Path] = []
 
         for value, df in results.items():
             filename = f"{category_name}_{value}_{today_str}.csv"
-            output_path = (output_dir / filename).resolve()
+            output_path = (resolved_dir / filename).resolve()
 
             # Path traversal protection (CWE-22)
             if not output_path.is_relative_to(resolved_output_dir):

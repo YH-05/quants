@@ -42,10 +42,13 @@ import json
 import re
 from abc import abstractmethod
 from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import urlparse
 
+if TYPE_CHECKING:
+    from pathlib import Path
+
+from database.db.connection import get_data_dir
 from market.industry.scrapers.base import BaseScraper
 from market.industry.types import (
     IndustryReport,
@@ -62,7 +65,7 @@ logger = get_logger(__name__)
 # Default configuration
 # =============================================================================
 
-DEFAULT_OUTPUT_BASE: Path = Path("data/raw/industry_reports")
+DEFAULT_OUTPUT_BASE: Path = get_data_dir() / "raw" / "industry_reports"
 """Default base directory for saving scraped report JSON files."""
 
 

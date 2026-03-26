@@ -148,10 +148,16 @@ For session-based requests with User-Agent rotation, use
 # 5. Output settings
 # ---------------------------------------------------------------------------
 
-DEFAULT_OUTPUT_DIR: Final[str] = "data/raw/bse/"
-"""Default directory for output files.
+DEFAULT_OUTPUT_SUBDIR: Final[str] = "raw/bse"
+"""Default subdirectory (relative to DATA_DIR) for output files.
 
-Follows the project convention of ``data/raw/<source>/``.
+Appended to the base data directory resolved by
+``database.db.connection.get_data_dir()`` at runtime.
+
+See Also
+--------
+database.db.connection.get_data_dir : Resolves the base data directory
+    from the ``DATA_DIR`` environment variable.
 """
 
 # ---------------------------------------------------------------------------
@@ -235,7 +241,7 @@ __all__ = [
     "COLUMN_NAME_MAP",
     "DEFAULT_DELAY_JITTER",
     "DEFAULT_HEADERS",
-    "DEFAULT_OUTPUT_DIR",
+    "DEFAULT_OUTPUT_SUBDIR",
     "DEFAULT_POLITE_DELAY",
     "DEFAULT_TIMEOUT",
     "DEFAULT_USER_AGENTS",

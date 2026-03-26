@@ -41,11 +41,15 @@ import json
 import os
 import time
 from datetime import datetime, timezone
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 import httpx
+
+if TYPE_CHECKING:
+    from pathlib import Path
 from pydantic import BaseModel, Field
 
+from database.db.connection import get_data_dir
 from market.industry.types import IndustryReport, SourceTier
 from utils_core.logging import get_logger
 
@@ -61,7 +65,7 @@ BLS_API_BASE_URL: str = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 BLS_API_KEY_ENV: str = "BLS_API_KEY"
 """Environment variable name for the BLS API registration key."""
 
-DEFAULT_CACHE_DIR: Path = Path("data/raw/industry_reports/bls")
+DEFAULT_CACHE_DIR: Path = get_data_dir() / "raw" / "industry_reports" / "bls"
 """Default directory for BLS API response cache files."""
 
 DEFAULT_CACHE_TTL_SECONDS: int = 7 * 24 * 60 * 60  # 7 days

@@ -10,6 +10,8 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from database.db.connection import get_data_dir
+
 
 @dataclass
 class ArticleRecord:
@@ -90,8 +92,8 @@ class PipelineConfig:
         対象ソースのフィルタリング（None で全ソース）
     """
 
-    news_dir: Path = field(default_factory=lambda: Path("data/raw/news"))
-    chromadb_path: Path = field(default_factory=lambda: Path("data/chromadb"))
+    news_dir: Path = field(default_factory=lambda: get_data_dir() / "raw" / "news")
+    chromadb_path: Path = field(default_factory=lambda: get_data_dir() / "chromadb")
     collection_name: str = "gemini-embedding-001"
     dummy_dim: int = 768
     max_concurrency: int = 3

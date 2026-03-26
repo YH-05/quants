@@ -112,10 +112,12 @@ The actual delay is ``DEFAULT_POLITE_DELAY + random(0, DEFAULT_DELAY_JITTER)``.
 # 5. Output settings
 # ---------------------------------------------------------------------------
 
-DEFAULT_OUTPUT_DIR: Final[str] = "data/raw/edinet_api/"
-"""Default directory for output files.
+DEFAULT_OUTPUT_SUBDIR: Final[str] = "raw/edinet_api"
+"""Default subdirectory (relative to DATA_DIR) for output files.
 
-Follows the project convention of ``data/raw/<source>/``.
+See Also
+--------
+database.db.connection.get_data_dir
 """
 
 # ---------------------------------------------------------------------------
@@ -126,7 +128,7 @@ __all__ = [
     "ALLOWED_HOSTS",
     "BASE_URL",
     "DEFAULT_DELAY_JITTER",
-    "DEFAULT_OUTPUT_DIR",
+    "DEFAULT_OUTPUT_SUBDIR",
     "DEFAULT_POLITE_DELAY",
     "DEFAULT_TIMEOUT",
     "DOWNLOAD_BASE_URL",

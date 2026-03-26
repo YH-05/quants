@@ -80,6 +80,11 @@ class EarningsRecord:
     All fields are stored as raw strings from the API response.
     Numeric conversion is deferred to downstream consumers.
 
+    The actual NASDAQ API returns different fields for past vs future dates:
+
+    - Past dates: ``eps``, ``surprise``, ``epsForecast``, ``noOfEsts``
+    - Future dates: ``lastYearRptDt``, ``lastYearEPS``, ``epsForecast``, ``noOfEsts``
+
     Parameters
     ----------
     symbol : str
@@ -87,17 +92,27 @@ class EarningsRecord:
     name : str | None
         Company name.
     date : str | None
-        Earnings date (e.g. ``"01/30/2026"``).
+        Earnings date (e.g. ``"01/30/2026"``). Not present in API row data;
+        set by caller from the request date parameter.
     eps_estimate : str | None
-        EPS estimate (e.g. ``"$2.35"``).
+        Consensus EPS forecast (mapped from ``epsForecast``).
     eps_actual : str | None
-        Actual EPS (e.g. ``"$2.40"``).
+        Actual reported EPS (mapped from ``eps``).
     surprise : str | None
         Earnings surprise percentage (e.g. ``"2.13%"``).
     fiscal_quarter_ending : str | None
         Fiscal quarter ending period (e.g. ``"Dec/2025"``).
     market_cap : str | None
-        Market capitalisation string (e.g. ``"3,435,123,456,789"``).
+        Market capitalisation string (e.g. ``"$3,640,775,908,600"``).
+    time : str | None
+        Announcement timing (e.g. ``"time-after-hours"``,
+        ``"time-pre-market"``, ``"time-not-supplied"``).
+    no_of_ests : str | None
+        Number of analyst estimates (e.g. ``"11"``).
+    last_year_rpt_dt : str | None
+        Last year's report date (e.g. ``"N/A"``). Present for future dates.
+    last_year_eps : str | None
+        Last year's EPS (e.g. ``"$0.30"``). Present for future dates.
 
     Examples
     --------
@@ -114,6 +129,10 @@ class EarningsRecord:
     surprise: str | None = None
     fiscal_quarter_ending: str | None = None
     market_cap: str | None = None
+    time: str | None = None
+    no_of_ests: str | None = None
+    last_year_rpt_dt: str | None = None
+    last_year_eps: str | None = None
 
 
 @dataclass(frozen=True)
@@ -461,7 +480,8 @@ class AnalystRatings:
     """Analyst ratings data from the NASDAQ analyst ratings endpoint.
 
     Contains buy/sell/hold/strong-buy/strong-sell counts and historical
-    rating snapshots over time.
+    rating snapshots over time. Supports both legacy (per-period breakdown)
+    and new (mean rating + summary) API formats.
 
     Parameters
     ----------
@@ -469,6 +489,12 @@ class AnalystRatings:
         Ticker symbol (e.g. ``"AAPL"``).
     ratings : list[RatingCount]
         Rating counts over time (current, 1M ago, 2M ago, 3M ago).
+        Empty list when the new API format is used.
+    mean_rating : str | None
+        Mean rating type from the new API (e.g. ``"Buy"``).
+    summary : str | None
+        Ratings summary text from the new API
+        (e.g. ``"Based on 29 analysts..."``).
 
     Examples
     --------
@@ -479,6 +505,8 @@ class AnalystRatings:
 
     symbol: str
     ratings: list[RatingCount]
+    mean_rating: str | None = None
+    summary: str | None = None
 
 
 @dataclass(frozen=True)

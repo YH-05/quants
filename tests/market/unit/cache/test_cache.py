@@ -12,6 +12,7 @@
 import time
 from collections.abc import Generator
 from pathlib import Path
+from unittest.mock import patch
 
 import pandas as pd
 import pytest
@@ -26,6 +27,7 @@ from market.cache import (
     get_cache,
     reset_cache,
 )
+from market.cache.cache import _resolve_cache_db_path
 
 
 class TestGenerateCacheKey:
@@ -272,5 +274,19 @@ class TestPersistentCache:
     def test_正常系_DEFAULT_CACHE_DB_PATHの値確認(self) -> None:
         """DEFAULT_CACHE_DB_PATHが正しく設定されていることを確認。"""
         assert DEFAULT_CACHE_DB_PATH.name == "market_data.db"
-        assert "data" in DEFAULT_CACHE_DB_PATH.parts
         assert "cache" in DEFAULT_CACHE_DB_PATH.parts
+
+    def test_正常系_resolve_cache_db_pathがDATA_DIR環境変数を反映(
+        self, tmp_path: Path
+    ) -> None:
+        """_resolve_cache_db_path() が DATA_DIR 環境変数を反映すること。"""
+        custom_data_dir = tmp_path / "custom_data"
+        custom_data_dir.mkdir()
+
+        with patch(
+            "market.cache.cache.get_data_dir",
+            return_value=custom_data_dir,
+        ):
+            result = _resolve_cache_db_path()
+
+        assert result == custom_data_dir / "cache" / "market_data.db"

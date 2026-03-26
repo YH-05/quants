@@ -189,18 +189,28 @@ class TestGetShortInterest:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            ShortInterestRecord(
-                settlement_date="03/15/2026",
-                short_interest="15,000,000",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "shortInterestTable": {
+                "rows": [
+                    {
+                        "settlementDate": "03/15/2026",
+                        "interest": "15,000,000",
+                        "averageDailyVolume": "50,000,000",
+                        "daysToCover": "0.30",
+                        "change": "-500,000",
+                        "changePct": "-3.23%",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_short_interest("AAPL")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], ShortInterestRecord)
+        assert result[0].settlement_date == "03/15/2026"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(
@@ -328,19 +338,29 @@ class TestGetDividendHistory:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = [
-            DividendRecord(
-                ex_date="02/07/2026",
-                amount="$0.25",
-                dividend_type="Cash",
-            ),
-        ]
-        mock_cache.get.return_value = cached_data
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "dividends": {
+                "rows": [
+                    {
+                        "exOrEffDate": "02/07/2026",
+                        "paymentDate": "02/13/2026",
+                        "recordDate": "02/10/2026",
+                        "declarationDate": "01/30/2026",
+                        "type": "Cash",
+                        "amount": "$0.25",
+                        "yield": "0.44%",
+                    },
+                ],
+            },
+        }
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_dividend_history("AAPL")
 
-        assert result == cached_data
+        assert len(result) == 1
+        assert isinstance(result[0], DividendRecord)
+        assert result[0].ex_date == "02/07/2026"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_異常系_空シンボルでValueError(

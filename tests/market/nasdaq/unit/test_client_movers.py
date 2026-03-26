@@ -221,6 +221,96 @@ class TestParseMarketMovers:
         assert result["most_advanced"][1].symbol == "MSFT"
         assert result["most_advanced"][2].symbol == "GOOGL"
 
+    def test_正常系_STOCKS配下のtable_rows構造をパースできる(self) -> None:
+        """Parses new API structure: STOCKS -> section -> table -> rows."""
+        data: dict[str, Any] = {
+            "STOCKS": {
+                "MostActiveByShareVolume": {
+                    "table": {
+                        "rows": [
+                            {
+                                "symbol": "NVDA",
+                                "name": "NVIDIA",
+                                "lastSalePrice": "$140.15",
+                                "lastSaleChange": "1.00",
+                                "percentageChange": "0.72%",
+                                "change": "312,456,789",
+                            },
+                        ],
+                    },
+                },
+                "MostAdvanced": {
+                    "table": {
+                        "rows": [
+                            {
+                                "symbol": "AAPL",
+                                "name": "Apple Inc.",
+                                "lastSalePrice": "$230.00",
+                                "lastSaleChange": "5.00",
+                                "percentageChange": "2.22%",
+                                "change": "48,123,456",
+                            },
+                        ],
+                    },
+                },
+                "MostDeclined": {
+                    "table": {
+                        "rows": [
+                            {
+                                "symbol": "MSFT",
+                                "name": "Microsoft",
+                                "lastSalePrice": "$410.00",
+                                "lastSaleChange": "-3.50",
+                                "percentageChange": "-0.85%",
+                                "change": "22,456,789",
+                            },
+                        ],
+                    },
+                },
+            },
+        }
+
+        result = parse_market_movers(data)
+
+        assert len(result) == 3
+        assert len(result["most_advanced"]) == 1
+        assert result["most_advanced"][0].symbol == "AAPL"
+        assert result["most_advanced"][0].price == "$230.00"
+        assert result["most_advanced"][0].change == "5.00"
+        assert result["most_advanced"][0].volume == "48,123,456"
+
+        assert len(result["most_declined"]) == 1
+        assert result["most_declined"][0].symbol == "MSFT"
+
+        # MostActiveByShareVolume is an alias for MostActive
+        assert len(result["most_active"]) == 1
+        assert result["most_active"][0].symbol == "NVDA"
+        assert result["most_active"][0].price == "$140.15"
+        assert result["most_active"][0].volume == "312,456,789"
+
+    def test_正常系_新APIフィールド名でもフォールバックで旧名を使う(self) -> None:
+        """New API field names (lastSalePrice, lastSaleChange) are used with fallback."""
+        data: dict[str, Any] = {
+            "MostAdvanced": {
+                "rows": [
+                    {
+                        "symbol": "AAPL",
+                        "name": "Apple Inc.",
+                        "lastSalePrice": "$230.00",
+                        "lastSaleChange": "5.00",
+                        "percentageChange": "2.22%",
+                        "change": "48,123,456",
+                    },
+                ],
+            },
+        }
+
+        result = parse_market_movers(data)
+
+        assert result["most_advanced"][0].price == "$230.00"
+        assert result["most_advanced"][0].change == "5.00"
+        assert result["most_advanced"][0].volume == "48,123,456"
+
 
 # =============================================================================
 # NasdaqClient.get_market_movers Tests
@@ -276,17 +366,31 @@ class TestGetMarketMovers:
         mock_cache: MagicMock,
         mock_nasdaq_session: MagicMock,
     ) -> None:
-        """When cache has data, API is not called."""
-        cached_data = {
-            "most_advanced": [MarketMover(symbol="AAPL", name="Apple Inc.")],
-            "most_declined": [],
-            "most_active": [],
+        """When cache has raw data, parser is re-applied and API is not called."""
+        cached_raw_data: dict[str, Any] = {
+            "MostAdvanced": {
+                "rows": [
+                    {
+                        "symbol": "AAPL",
+                        "name": "Apple Inc.",
+                        "lastSale": "$230.00",
+                        "netChange": "5.00",
+                        "percentageChange": "2.22%",
+                        "volume": "48,123,456",
+                    },
+                ],
+            },
+            "MostDeclined": {"rows": []},
+            "MostActive": {"rows": []},
         }
-        mock_cache.get.return_value = cached_data
+        mock_cache.get.return_value = cached_raw_data
 
         result = nasdaq_client.get_market_movers()
 
-        assert result == cached_data
+        assert "most_advanced" in result
+        assert len(result["most_advanced"]) == 1
+        assert isinstance(result["most_advanced"][0], MarketMover)
+        assert result["most_advanced"][0].symbol == "AAPL"
         mock_nasdaq_session.get_with_retry.assert_not_called()
 
     def test_正常系_force_refreshでキャッシュを無視(

@@ -41,6 +41,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
+from database.db.connection import get_data_dir
 from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
@@ -49,8 +50,13 @@ logger = get_logger(__name__)
 # Default Configuration
 # =============================================================================
 
-DEFAULT_OUTPUT_DIR: Path = Path("data/raw/industry_reports")
-"""Default base directory for saving collected industry reports."""
+DEFAULT_OUTPUT_SUBDIR: str = "raw/industry_reports"
+"""Default subdirectory (relative to DATA_DIR) for saving collected industry reports.
+
+See Also
+--------
+database.db.connection.get_data_dir
+"""
 
 # Source key to scraper class mapping
 _SOURCE_REGISTRY: dict[str, str] = {
@@ -190,7 +196,7 @@ class IndustryCollector:
         self.sector: str = sector
         self.ticker: str | None = ticker
         self.source: str | None = source
-        self.output_dir: Path = output_dir or DEFAULT_OUTPUT_DIR
+        self.output_dir: Path = output_dir or (get_data_dir() / DEFAULT_OUTPUT_SUBDIR)
 
         logger.info(
             "IndustryCollector initialized",
@@ -532,7 +538,7 @@ def _print_summary(stats: CollectionStats) -> None:
 # =============================================================================
 
 __all__ = [
-    "DEFAULT_OUTPUT_DIR",
+    "DEFAULT_OUTPUT_SUBDIR",
     "CollectionResult",
     "CollectionStats",
     "IndustryCollector",
