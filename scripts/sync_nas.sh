@@ -12,7 +12,7 @@ set -euo pipefail
 NAS_MOUNT="/Volumes/personal_folder"
 NAS_SYNC_DIR="${NAS_MOUNT}/Projects/quants"
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-LOG_PREFIX="[config-sync]"
+LOG_PREFIX="[sync-nas]"
 
 # 同期対象ファイル・ディレクトリ
 SYNC_FILES=(
