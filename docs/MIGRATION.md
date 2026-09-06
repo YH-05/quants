@@ -93,22 +93,27 @@ NAS には quants のデータ置き場が **2 つ**あり、同名ファイル�
 
 ## 4. 新PC セットアップ手順
 
+実行環境は Docker コンテナに統一している。ホスト OS が Windows / Linux / macOS の
+いずれでも、コンテナ内は同じ Debian になり、パスも同じになる
+（リポジトリ = `/app`、NAS = `/nas`）。
+
 ### 4-1. 前提ソフトウェア
+
+ホスト側に必要なものは 3 つだけ。
 
 | 必須 | 用途 |
 |---|---|
-| Python 3.12 系（`>=3.12,<3.13`） | pyproject.toml で固定 |
-| `uv` | 依存管理・実行。Makefile 全体が uv 前提 |
-| Docker | Neo4j コンテナ |
-| `gh` CLI | GitHub Projects 連携 |
-| NAS (SMB) マウント | 宅内 NAS の `personal_folder` 共有。接続情報は Mac の Finder サイドバー、または NAS 管理画面で確認する |
+| Docker（Desktop または Engine） | 実行環境そのもの |
+| Git | clone のみ |
+| NAS (SMB) マウント | 宅内 NAS の `personal_folder` 共有。接続情報は NAS 管理画面で確認する |
+
+Python・`uv`・Ruff・pytest・`gh` CLI はすべてコンテナに入っているため、
+ホストへのインストールは不要。
 
 | 任意 | 用途 |
 |---|---|
-| `pandoc` | `/md2docx` スキル（Word 変換）を使う場合のみ |
-| `blpapi` | Bloomberg Terminal / BPipe のアクセス権がある場合のみ |
-
-Ruff / pyright / pytest / Hypothesis は `uv sync` で自動導入される。
+| `gh` CLI（ホスト） | ホストから GitHub 操作をしたい場合。コンテナへは認証を共有する |
+| `blpapi` | Bloomberg Terminal / B-PIPE を使う場合。**コンテナでは動かない**ため、ホストのネイティブ環境が必要（§4-4） |
 
 ### 4-2. 手順
 
@@ -117,32 +122,69 @@ Ruff / pyright / pytest / Hypothesis は `uv sync` で自動導入される。
 git clone https://github.com/YH-05/quants.git
 cd quants
 
-# 2. 依存構築
-uv sync --all-extras
-
-# 3. NAS をマウント（パスは OS に合わせる）
-#    macOS: /Volumes/personal_folder
-#    Linux: /mnt/personal_folder 等
+# 2. NAS をマウント（パスは OS に合わせる）
+#    macOS  : /Volumes/personal_folder
+#    Linux  : /mnt/personal_folder
 #    Windows: ネットワークドライブに割り当て
 
-# 4. 秘密情報を配置（§5）
+# 3. 秘密情報を配置（§5）
 cp .env.example .env
 #    NAS から取得する場合:
-#    cp /Volumes/personal_folder/Projects/quants/.env .env
-#    cp /Volumes/personal_folder/Projects/quants/.mcp.json .mcp.json
+#    cp <NAS>/Projects/quants/.env .env
+#    cp <NAS>/Projects/quants/.mcp.json .mcp.json
 
-# 5. NAS のパスを新環境に合わせて書き換え
-#    DATA_DIR / FRED_HISTORICAL_CACHE_DIR / CACHE_DIR
+# 4. .env にホスト固有の 2 変数を設定する（ここだけが OS で異なる）
+#    NAS_ROOT=/Volumes/personal_folder     ← 自分の環境のマウント先
+#    NEO4J_DATA_ROOT=/Users/<user>/neo4j-data
+#    Windows は追加で HOST_HOME と DOCKER_SOCKET も設定する
 
-# 6. GitHub 認証（keyring は移行不可なので再ログイン必須）
+# 5. イメージをビルド
+docker compose build
+
+# 6. Neo4j 起動と復元（§6）
+docker compose up -d neo4j
+
+# 7. 開発シェルに入る
+docker compose run --rm dev bash
+
+# 8. コンテナ内で GitHub 認証と動作確認（§7）
 gh auth login
-
-# 7. Neo4j 起動と復元（§6）
-bash scripts/start-neo4j.sh
-
-# 8. 動作確認（§7）
 make check-all
 ```
+
+### 4-3. Windows での注意
+
+- **リポジトリは WSL2 のファイルシステム側に置くこと。** Windows のドライブ
+  （`/mnt/c/...`）に置くとバインドマウント越しのファイル I/O が大幅に遅くなる
+- `.env` に `HOST_HOME=C:/Users/<user>` と `DOCKER_SOCKET=//./pipe/docker_engine`
+  を設定する
+- `.venv` は名前付きボリュームに隔離しているため、この経路の遅さは回避済み
+
+### 4-4. イメージに含めていないもの
+
+| 対象 | 理由 | 対処 |
+|---|---|---|
+| Bloomberg (`blpapi`) | Terminal / B-PIPE への接続が前提。加えて Linux 版 wheel が x86_64 のみで arm64 ホストではビルドできない | ホストのネイティブ環境で実行する |
+| `nlp` extra（`torch` 等） | `torch` が NVIDIA GPU 用の CUDA ライブラリ約 2.4GB を連れてくる。GPU の無い環境では一切使われないのに、マシンごとに 5GB 超のダウンロードと 1〜2 時間のビルドを強いる | 下記参照 |
+
+`nlp` extra には `torch` / `transformers` / `sentence-transformers` / `gliner` /
+`accelerate` / `fastopic` / `topmost` が入っている。`src/` はこれらを使っておらず、
+利用箇所は `notebook/FILING_NLP/`（10-K/10-Q の FinBERT 感情分析・埋め込み生成）のみ。
+`tests/notebook/FILING_NLP/test_embed_indices.py` は `pytest.importorskip("torch")` で
+torch 不在時に自動スキップされるため、テストは影響を受けない。
+
+FILING_NLP の解析を動かすときだけ、以下で追加する。
+
+```bash
+# コンテナ内
+uv sync --extra nlp
+
+# ホストで直接動かす場合
+uv sync --all-extras
+```
+
+HuggingFace のモデル（`gte-Qwen2-1.5B-instruct`、約 6.6GB）は初回実行時に
+`notebook/FILING_NLP/data/hf_cache/` へ自動ダウンロードされる。
 
 ---
 
@@ -171,12 +213,14 @@ make check-all
 # コンテナ起動
 docker compose up -d neo4j
 
-# NAS の dump から quants DB を復元
-NEO4J_DBS=quants bash scripts/neo4j_sync.sh load
+# NAS の dump から quants DB を復元（コンテナ内で実行）
+docker compose run --rm dev bash -c 'NEO4J_DBS=quants bash scripts/neo4j_sync.sh load'
 ```
 
-`scripts/neo4j_sync.sh` は `NAS_DUMP_DIR`（既定 `/Volumes/personal_folder/neo4j-dumps`）を
-参照する。NAS のマウントパスが違う場合は環境変数で上書きすること。
+`scripts/neo4j_sync.sh` の macOS 既定値（`/Volumes/...`、`~/Library/Logs`）は、
+compose が `NAS_DUMP_DIR=/nas/neo4j-dumps` と `NEO4J_SYNC_LOG=/app/logs/neo4j-sync.log`
+に上書きするため、コンテナ内では OS に依らず同じ場所を見る。
+ホストから直接実行する場合のみ、これらを環境変数で指定すること。
 
 ### 6-2. 復元の検証（基準値）
 
@@ -221,22 +265,72 @@ NAS の `note.dump` / `research.dump` / `creator.dump` / `neo4j.dump` は
 
 新PCで以下が全て通れば、Mac を削除してよい。
 
-- [ ] `uv sync --all-extras` が成功する
+**ホスト側**
+
+- [ ] NAS がマウントされ、`.env` の `NAS_ROOT` がその場所を指している
+- [ ] `docker compose config` がエラーなく通る（必須変数が揃っている）
+- [ ] `docker compose build` が成功する
+
+**コンテナ内**（`docker compose run --rm dev bash` で入って実行）
+
+- [ ] `ls /nas/Projects/quants/data` で NAS の実データが見える
 - [ ] `make check-all` が成功する（format / lint / typecheck / test）
-- [ ] NAS がマウントされ、`$DATA_DIR` 配下が読める
-- [ ] Neo4j が起動し、quants DB のノード数が 3,809 と一致する（§6-2）
 - [ ] `gh auth status` が `YH-05` として認証済みを返す
-- [ ] `.mcp.json` の MCP サーバーが接続できる
+- [ ] Neo4j に接続でき、quants DB のノード数が 3,809 と一致する（§6-2）
 - [ ] `market_data.db` を NAS から復元した（必要な場合）
-- [ ] 移植したい定期ジョブが新PCで動作する（§8）
+
+**定期実行**（launchd を撤去してから）
+
+- [ ] `docker compose --profile scheduler up -d` でスケジューラが起動する
+- [ ] `docker compose logs scheduler` に起動前チェックの成功が出ている
+- [ ] ホスト起動時に compose が自動で上がる設定を 1 件登録した（§8-1）
 
 ---
 
-## 8. 定期実行ジョブ（launchd 13 個）
+## 8. 定期実行ジョブ
 
-Mac の `~/Library/LaunchAgents/` に登録されている。plist は移行バックアップの
-`launchd/` に退避済み。**新PCへは OS に応じて移植が必要**
-（Linux は systemd timer / cron、Windows はタスクスケジューラ）。
+### 8-1. 新しい方式（コンテナ内スケジューラ）
+
+13 個の launchd ジョブは `docker/crontab` の 1 ファイルに集約した。
+スケジューラ（supercronic）はコンテナ内で動くため、**ホスト側に必要な設定は
+「起動時に compose を上げる」だけ**になり、OS ごとのジョブ定義が不要になった。
+
+```bash
+# 定期実行を開始
+docker compose --profile scheduler up -d
+
+# ログを見る
+docker compose logs -f scheduler
+
+# 停止
+docker compose --profile scheduler down
+```
+
+`scheduler` は **profile を指定しない限り起動しない**。macOS の launchd ジョブが
+まだ残っている状態で起動すると同じジョブが二重に走るための安全装置。
+launchd 側を撤去してから有効化すること。
+
+ホスト起動時に自動で立ち上げたい場合は、OS ごとに以下を 1 つだけ登録する。
+
+| OS | 方法 |
+|---|---|
+| macOS | launchd に `docker compose --profile scheduler up -d` を 1 件登録 |
+| Linux | systemd unit（`Restart=on-failure`）を 1 件登録 |
+| Windows | タスクスケジューラに「ログオン時」トリガーで 1 件登録 |
+
+旧方式では 13 ジョブ × 3 OS = 39 個の定義が必要だったが、この方式では 3 個で済む。
+
+`docker/scheduler-entrypoint.sh` が起動前に NAS の実データを確認し、
+未マウント（空ディレクトリ）なら起動を中止する。Docker はバインド元が
+存在しないと空ディレクトリを作ってしまい、「NAS があるように見えて中身が空」
+という状態でジョブが走り続けるのを防ぐため。
+
+### 8-2. 旧方式（macOS launchd・撤去対象）
+
+Mac の `~/Library/LaunchAgents/` に登録されている 13 個。plist は移行バックアップの
+`launchd/` に退避済み。うち `com.quants.edinet-sync` と `com.quants.neo4j` の 2 つは
+リポジトリに定義が無く、この Mac にしか存在しなかった（`docker/crontab` に
+取り込んだことで初めて版管理下に入った）。
 
 | ジョブ | スケジュール | 実行内容 |
 |---|---|---|
@@ -295,9 +389,11 @@ bash scripts/decommission-mac.sh --execute
 
 | 項目 | 状況 |
 |---|---|
-| 移行先 PC の OS | 未定。symlink・launchd の移植方針が変わる（§3-2, §8） |
+| 移行先 PC の OS | **3 OS どれでも可**。実行環境をコンテナに統一したため、選定を先送りできる |
 | `~/Desktop/Quants_data/` 27GB | 判断保留。FNSPID 公開データセットで再取得可能 |
 | `data/` の 20GB を NAS 参照のままにするか、新PCにローカルコピーするか | 未定 |
-| 13 個の定期ジョブを全て新PCで有効化するか | 未定 |
-| 旧ユーザー名 `yukihata` パスの整理（§3-4） | 未実施 |
+| 13 個の定期ジョブを全て有効化するか、一部に絞るか | 未定（`docker/crontab` の行をコメントアウトすれば絞れる） |
+| 旧ユーザー名 `yukihata` パスの整理（§3-4） | `.claude/settings.json` 等は未実施。`scripts/collect_finance_news_*.py` は修正済み |
+| `data/` の symlink 8 本の扱い | 未整理。`DATA_DIR` 経由に統一するなら削除できる（§3-2） |
+| 孤立 Docker ボリューム `quants_neo4j-data`（516MB） | 2026-03-28 の初期セットアップの残骸。現行 5 DB は含まれず、514MB はトランザクションログ。撤去スクリプトが削除対象に含む |
 | Slack MCP / Reddit MCP の接続エラー | 移行前から発生。原因未調査 |

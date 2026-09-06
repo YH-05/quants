@@ -1,0 +1,56 @@
+# quants - 定期実行ジョブ定義（supercronic 用）
+#
+# macOS の launchd plist 13 個をこの 1 ファイルに集約したもの。
+# ホスト OS が変わってもこのファイルは変わらない。
+#
+# 時刻はコンテナの TZ に従う（docker-compose.yml で TZ=Asia/Tokyo を設定）。
+# 実行は `docker compose --profile scheduler up -d` で開始する。
+#
+# 元の launchd 定義は scripts/com.quants.*.plist と、移行バックアップの
+# launchd/ ディレクトリに残してある（うち edinet-sync と neo4j は
+# リポジトリ未管理だったため、この crontab が初めての版管理下の定義になる）。
+#
+# 書式: 分 時 日 月 曜日  コマンド
+#
+# 注意:
+#   - パスは全てコンテナ内のもの（/app = リポジトリ, /nas = NAS）
+#   - uv run に --env-file は付けない。環境変数は compose が注入しており、
+#     .env を読み直すとホスト側の絶対パスでコンテナ内の設定を上書きしてしまう
+#   - 旧 com.quants.neo4j（ログイン時に Neo4j 起動）は、compose の
+#     restart: always と depends_on で代替されるため cron には無い
+
+# --- 市場データパイプライン ---------------------------------------------------
+# NASDAQ 決算カレンダー（毎日 1:00）
+0 1 * * *    cd /app && uv run python -u -m market.pipeline --phase 1 --days-back 7 --days-forward 14
+
+# 以下 3 つは launchd でも同時刻に起動していたため、その挙動を維持する
+# Alpha Vantage（毎日 2:00）
+0 2 * * *    cd /app && uv run python -u -m market.pipeline --phase 2 --av-budget 25
+# SEC EDGAR（毎日 2:00）
+0 2 * * *    cd /app && uv run python -u -m market.pipeline --phase 3
+# yfinance（毎日 2:00）
+0 2 * * *    cd /app && uv run python -u -m market.pipeline --phase 4
+
+# --- ETF.com -----------------------------------------------------------------
+# 日次（毎日 3:00）
+0 3 * * *    cd /app && uv run python -u -m market.etfcom --frequency daily --tickers-file /app/data/config/etfcom_tickers.json
+# 週次（日曜 4:00）
+0 4 * * 0    cd /app && uv run python -u -m market.etfcom --frequency weekly --tickers-file /app/data/config/etfcom_tickers.json
+# 月次（毎月 1 日 5:00）
+0 5 1 * *    cd /app && uv run python -u -m market.etfcom --frequency monthly --tickers-file /app/data/config/etfcom_tickers.json
+
+# --- 経済指標・開示 -----------------------------------------------------------
+# FRED 履歴同期（毎日 6:00）
+0 6 * * *    cd /app && uv run python -u -m market.fred.scripts.sync_historical --auto --stale-hours 24
+# EDINET 同期（毎日 8:00）
+0 8 * * *    cd /app && uv run python -u -m market.edinet.scripts.sync --daily
+
+# --- 予測市場 -----------------------------------------------------------------
+# Polymarket 収集（0:30 / 6:30 / 12:30 / 18:30）
+30 0,6,12,18 * * *    cd /app && uv run python -u -m market.polymarket
+
+# --- Neo4j バックアップ -------------------------------------------------------
+# NAS へ無条件 push（毎日 4:00）
+0 4 * * *    cd /app && bash scripts/neo4j_sync.sh push
+# 変更があった場合のみ push（1 時間ごと）
+0 * * * *    cd /app && bash scripts/neo4j_sync.sh push --if-changed

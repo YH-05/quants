@@ -146,7 +146,11 @@ def load_project_env(*, override: bool = False) -> bool:
 
 
 # Load .env file once at module import
-load_project_env(override=True)
+# AIDEV-NOTE: override=False は必須。明示的に設定済みの環境変数（コンテナランタイム、
+# uv run --env-file、CI、シェル）を .env より優先させるため。
+# override=True にすると、リポジトリごと /app にマウントされる Docker 環境で
+# docker-compose の DATA_DIR 等がホスト用パスに上書きされる。
+load_project_env(override=False)
 
 
 @lru_cache(maxsize=1)

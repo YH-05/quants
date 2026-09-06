@@ -7,10 +7,27 @@ Phase 3: GitHub Issue作成とProject追加
 """
 
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
+
+# リポジトリルート基準でパスを解決する（ユーザー名や実行ディレクトリに依存しない）
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def get_data_dir() -> Path:
+    """データディレクトリのパスを解決する.
+
+    Returns
+    -------
+    Path
+        環境変数 ``DATA_DIR`` が設定されていればその値、未設定ならリポジトリ内の
+        ``data/``。コンテナ内では ``DATA_DIR=/nas/Projects/quants/data`` が入る。
+    """
+    env_data_dir = os.environ.get("DATA_DIR", "").strip()
+    return Path(env_data_dir) if env_data_dir else REPO_ROOT / "data"
 
 
 def log(level: str, message: str, **kwargs):
@@ -290,12 +307,8 @@ def main():
     log("INFO", "AIテーマの金融ニュース収集開始")
 
     # ファイルパス
-    tmp_file = Path(
-        "/Users/yukihata/Desktop/finance/.tmp/news-collection-20260115-214331.json"
-    )
-    config_file = Path(
-        "/Users/yukihata/Desktop/finance/data/config/finance-news-themes.json"
-    )
+    tmp_file = REPO_ROOT / ".tmp" / "news-collection-20260115-214331.json"
+    config_file = get_data_dir() / "config" / "finance-news-themes.json"
 
     # ファイル読み込み（スマートクォートを修正）
     try:

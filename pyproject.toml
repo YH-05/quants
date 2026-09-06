@@ -31,7 +31,7 @@ dependencies = [
     "ipykernel>=7.1.0",
     "statsmodels>=0.14.6",
     "scikit-learn>=1.8.0",
-    "marimo>=0.19.4",
+    "marimo>=0.23.9",  # PYSEC-2026-2619 修正済みバージョン
     "nbformat>=5.10.4",
     "seaborn>=0.13.2",
     "lxml>=6.0.2",
@@ -52,27 +52,35 @@ dependencies = [
     "werkzeug>=3.1.6",
     "pandera>=0.30.1",
     "defusedxml>=0.7.1",
-    "cryptography>=46.0.6",
+    "cryptography>=50.0.0",  # PYSEC-2026-3552 修正済みバージョン
     "pygments>=2.20.0",
     "requests>=2.33.0",
     "brotli>=1.2.0",
     "openpyxl>=3.1.5",
     "mojimoji>=0.0.13",
-    "pillow>=12.1.1",
+    "pillow>=12.3.0",  # PYSEC-2026-3493 等 修正済みバージョン
     "xlwings>=0.35.0",
-    # NLP for filings (10-K/10-Q FinBERT + embedding)
-    "torch>=2.3.0,<3.0.0",
-    "transformers>=4.40.0,<6.0.0",
-    "sentence-transformers>=3.0.0",
+    # NLP for filings のうち torch に依存しないもの
+    # torch 系は nlp extra へ分離した（下の [project.optional-dependencies] 参照）
     "umap-learn>=0.5.5",
-    "gliner>=0.2.10",
-    "accelerate>=1.13.0",
     "hmmlearn>=0.3.3",
     "japanize-matplotlib>=1.1.3",
+]
+[project.optional-dependencies]
+# 10-K/10-Q の文章解析（FinBERT 感情分析・埋め込み生成）。notebook/FILING_NLP が使う。
+# torch を引き込む依存をここにまとめてある。torch は NVIDIA GPU 用の CUDA
+# ライブラリ約 2.4GB を連れてくるが、GPU の無い環境では一切使われないため、
+# Docker イメージからは --no-extra nlp で除外している。
+# ローカルで FILING_NLP を動かす場合は uv sync --extra nlp を実行すること。
+nlp = [
+    "torch>=2.13.0,<3.0.0",  # PYSEC-2025-194 修正済みバージョン
+    "transformers>=5.10.0,<6.0.0",  # CVE-2026-9856 修正済みバージョン
+    "sentence-transformers>=3.0.0",
+    "gliner>=0.2.28",  # 0.2.26 以下は transformers を 5.10 未満に固定するため
+    "accelerate>=1.13.0",
     "fastopic>=1.0.1",
     "topmost>=1.0.2",
 ]
-[project.optional-dependencies]
 dev = [
     "pytest>=8.0.0",
     "pytest-cov>=7.0.0",
@@ -98,7 +106,7 @@ docs = [
 # rss optional dependencies
 scheduler = ["apscheduler>=3.10.0"]
 mcp = [
-    "mcp>=1.0.0",
+    "mcp>=1.28.1",  # PYSEC-2026-3483 修正済みバージョン
 ]
 cli = [
     "click>=8.1.0",

@@ -9,7 +9,8 @@
 set -euo pipefail
 
 # --- 設定 ---
-NAS_MOUNT="/Volumes/personal_folder"
+# コンテナ内では NAS_ROOT=/nas が注入される。未設定なら macOS の既定値
+NAS_MOUNT="${NAS_ROOT:-/Volumes/personal_folder}"
 NAS_SYNC_DIR="${NAS_MOUNT}/Projects/quants"
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_PREFIX="[sync-nas]"

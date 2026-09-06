@@ -32,9 +32,11 @@ set -uo pipefail
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 REPO_ROOT=$(cd -- "${SCRIPT_DIR}/.." &>/dev/null && pwd)
-LOG_DIR="${HOME}/Library/Logs/quants"
+# ~/Library/Logs は macOS 固有。3OS で動かすため上書き可能にする
+LOG_DIR="${QUANTS_LOG_DIR:-${HOME}/Library/Logs/quants}"
 LOG_FILE="${LOG_DIR}/edinet-nas-merge.log"
-MOUNT_POINT="/Volumes/personal_folder"
+# コンテナ内では NAS_ROOT=/nas が注入される。未設定なら macOS の既定値
+MOUNT_POINT="${NAS_ROOT:-/Volumes/personal_folder}"
 
 mkdir -p "${LOG_DIR}"
 
@@ -65,7 +67,8 @@ rm -f "${TEST_FILE}"
 cd "${REPO_ROOT}"
 log "running edinet_merge_to_nas.py $*"
 
-if /Users/yuki/.local/bin/uv run --no-sync python scripts/edinet_merge_to_nas.py "$@" 2>&1 | tee -a "${LOG_FILE}"; then
+# uv は PATH から解決する（ユーザー名のハードコードを排除）
+if "${UV_BIN:-uv}" run --no-sync python scripts/edinet_merge_to_nas.py "$@" 2>&1 | tee -a "${LOG_FILE}"; then
   log "=== edinet NAS merge: SUCCESS ==="
   exit 0
 else

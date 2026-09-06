@@ -1,47 +1,100 @@
-# quants - Docker Compose 開発環境設定
-# 使い方: docker compose run --rm dev claude
+# quants - Docker Compose（macOS / Linux / Windows 共通）
+#
+# 実行環境をコンテナに統一し、ホスト OS の差を吸収する構成。
+# ホストごとに違うのは .env の NAS_ROOT と NEO4J_DATA_ROOT の2つだけで、
+# コンテナ内のパスは3OS とも同じになる（NAS は常に /nas、リポジトリは /app）。
+#
+#   開発シェル : docker compose run --rm dev bash
+#   Neo4j 起動 : docker compose up -d neo4j
+#   定期実行   : docker compose --profile scheduler up -d
+#
+# 設定の詳細と OS 別の値は .env.example / docs/MIGRATION.md を参照。
+
+# dev と scheduler で共通の設定。volumes は YAML のマージ対象外なので各サービスで列挙する
+x-app-base: &app-base
+  build:
+    context: .
+    dockerfile: Dockerfile
+  env_file:
+    - .env
+  environment:
+    # .env のホスト側パスをコンテナ内のパスで上書きする。
+    # environment は env_file より優先されるため、3OS で同じ値に固定できる。
+    #
+    # NAS_ROOT は特に重要。env_file 経由でホスト側の値
+    # （例 /Volumes/personal_folder）がそのまま入ってしまうと、
+    # それを参照するシェルスクリプトがコンテナ内に存在しないパスを見に行く。
+    # volumes 側の ${NAS_ROOT} は parse 時のホスト側の値なので、ここでの
+    # 上書きとは独立している。
+    NAS_ROOT: /nas
+    DATA_DIR: /nas/Projects/quants/data
+    FRED_HISTORICAL_CACHE_DIR: /nas/Projects/quants/data/raw/fred/indicators
+    CACHE_DIR: /app/data
+    RESEARCH_DIR: research/
+    # コンテナ間はサービス名で解決する（localhost では届かない）
+    NEO4J_URI: bolt://neo4j:7687
+    # neo4j_sync.sh の macOS 既定値（/Volumes/... と ~/Library/Logs）を上書きする
+    NAS_DUMP_DIR: /nas/neo4j-dumps
+    NEO4J_SYNC_LOG: /app/logs/neo4j-sync.log
+    NEO4J_CONTAINER: neo4j-enterprise
+    PYTHONPATH: /app/src
+    TERM: xterm-256color
+    # 定期実行の時刻はこのタイムゾーンで解釈される
+    TZ: ${TZ:-Asia/Tokyo}
+  working_dir: /app
 
 services:
+  # ---------------------------------------------------------------------------
+  # 開発シェル
+  # ---------------------------------------------------------------------------
   dev:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    <<: *app-base
     container_name: quants-dev
-    stdin_open: true  # インタラクティブ入力（-i）
-    tty: true         # ターミナル割り当て（-t）
+    stdin_open: true
+    tty: true
     volumes:
-      # プロジェクトソース（リアルタイム編集可能）
       - .:/app
-
-      # Claude Code 設定・履歴の永続化
-      - claude-config:/root/.claude
-
-      # Git 設定の共有（ホストから読み取り専用）
-      - ~/.gitconfig:/root/.gitconfig:ro
-
-      # SSH 鍵の共有（GitHub push/pull 用）
-      - ~/.ssh:/root/.ssh:ro
-
-      # GitHub CLI 認証の共有
-      - ~/.config/gh:/root/.config/gh
-
-      # Python .venv をコンテナ内に隔離（パフォーマンス向上）
+      # .venv はコンテナ内に隔離する。bind mount 越しだと Windows で極端に遅い
       - venv:/app/.venv
+      - ${NAS_ROOT:?NAS_ROOT must be set in .env - see .env.example}:/nas
+      - claude-config:/root/.claude
+      # ホストの Git / GitHub CLI 認証を共有する。
+      # HOST_HOME は Windows でのみ明示指定が必要（macOS / Linux は HOME で解決）
+      - ${HOST_HOME:-${HOME}}/.gitconfig:/root/.gitconfig:ro
+      - ${HOST_HOME:-${HOME}}/.ssh:/root/.ssh:ro
+      - ${HOST_HOME:-${HOME}}/.config/gh:/root/.config/gh
 
-    environment:
-      # API キー（.env ファイルから読み込み）
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - FRED_API_KEY=${FRED_API_KEY:-}
-      - GH_TOKEN=${GH_TOKEN:-}
-      # アプリケーション設定
-      - LOG_LEVEL=INFO
-      - PROJECT_ENV=development
-      - TERM=xterm-256color
+  # ---------------------------------------------------------------------------
+  # 定期実行（13 ジョブ）
+  #
+  # profile を指定しない限り起動しない。macOS の launchd ジョブが残っている間に
+  # 起動すると同じジョブが二重に走るため、明示的な opt-in にしている。
+  #   有効化: docker compose --profile scheduler up -d
+  # ---------------------------------------------------------------------------
+  scheduler:
+    <<: *app-base
+    container_name: quants-scheduler
+    profiles: ["scheduler"]
+    restart: unless-stopped
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - venv:/app/.venv
+      - ${NAS_ROOT}:/nas
+      # Neo4j のダンプ取得に docker exec を使うため、ホストの Docker API を渡す
+      # Windows は .env で DOCKER_SOCKET=//./pipe/docker_engine を指定する
+      - ${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker.sock
+    entrypoint: ["/app/docker/scheduler-entrypoint.sh"]
 
-    working_dir: /app
-
+  # ---------------------------------------------------------------------------
   # Neo4j Enterprise - 全プロジェクト共有インスタンス
   # データベース: note, research, creator, quants
+  #
+  # quants 以外のプロジェクト（note-finance 等）もこのインスタンスを使うため、
+  # コンテナごと停止・削除しないこと。
+  # ---------------------------------------------------------------------------
   neo4j:
     image: neo4j:5.26-enterprise
     container_name: neo4j-enterprise
@@ -49,14 +102,14 @@ services:
       - "7474:7474"   # Browser UI
       - "7687:7687"   # Bolt protocol
     volumes:
-      # bind mount はローカルディスクの ~/neo4j-data/ を使用 (外付け SSD は使わない)
-      # YAML では ~ が展開されないため ${HOME} を使う (複数 PC のユーザー名差を吸収)
-      - ${HOME}/neo4j-data/enterprise/data:/data
-      - ${HOME}/neo4j-data/enterprise/logs:/logs
-      - ${HOME}/neo4j-data/enterprise/plugins:/plugins
-      - ${HOME}/neo4j-data/enterprise/import:/var/lib/neo4j/import
+      # 未設定のまま起動すると空のデータディレクトリで Neo4j が立ち上がり、
+      # 4 つの DB が消えたように見えるため :? で必ず失敗させる
+      - ${NEO4J_DATA_ROOT:?NEO4J_DATA_ROOT must be set in .env - see .env.example}/enterprise/data:/data
+      - ${NEO4J_DATA_ROOT}/enterprise/logs:/logs
+      - ${NEO4J_DATA_ROOT}/enterprise/plugins:/plugins
+      - ${NEO4J_DATA_ROOT}/enterprise/import:/var/lib/neo4j/import
     environment:
-      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:-gomasuke}
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:?NEO4J_PASSWORD must be set in .env}
       - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
       # 複数データベース有効化
       - NEO4J_initial_dbms_default__database=neo4j

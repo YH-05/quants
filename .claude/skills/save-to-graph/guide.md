@@ -10,7 +10,7 @@ quants プロジェクトでは `quants-neo4j` (bolt://localhost:7687) を使用
 # 環境変数設定
 export NEO4J_URI="bolt://localhost:7687"
 export NEO4J_USER="neo4j"
-export NEO4J_PASSWORD="gomasuke"
+export NEO4J_PASSWORD="<your-neo4j-password>"  # 実値は .env で管理する
 
 # 接続テスト（neo4j-cypher MCP 経由）
 # read_query: "RETURN 'connection_ok' AS status"

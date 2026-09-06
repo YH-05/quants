@@ -6,11 +6,28 @@
 """
 
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+# リポジトリルート基準でパスを解決する（ユーザー名や実行ディレクトリに依存しない）
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def get_data_dir() -> Path:
+    """データディレクトリのパスを解決する.
+
+    Returns
+    -------
+    Path
+        環境変数 ``DATA_DIR`` が設定されていればその値、未設定ならリポジトリ内の
+        ``data/``。コンテナ内では ``DATA_DIR=/nas/Projects/quants/data`` が入る。
+    """
+    env_data_dir = os.environ.get("DATA_DIR", "").strip()
+    return Path(env_data_dir) if env_data_dir else REPO_ROOT / "data"
 
 
 def log(message: str) -> None:
@@ -393,7 +410,7 @@ def main() -> None:
     log("[Phase 1] 初期化")
 
     # 一時ファイルを探す（最新のものを使用）
-    tmp_dir = Path("/Users/yukihata/Desktop/finance/.tmp")
+    tmp_dir = REPO_ROOT / ".tmp"
     tmp_files = list(tmp_dir.glob("news-collection-*.json"))
 
     if not tmp_files:
@@ -450,9 +467,7 @@ def main() -> None:
         sys.exit(1)
 
     # テーマ設定読み込み
-    config_file = Path(
-        "/Users/yukihata/Desktop/finance/data/config/finance-news-themes.json"
-    )
+    config_file = get_data_dir() / "config" / "finance-news-themes.json"
     try:
         with open(config_file) as f:
             config = json.load(f)

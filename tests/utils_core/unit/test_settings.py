@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import pytest
@@ -17,8 +22,6 @@ from utils_core.settings import (
 )
 
 if TYPE_CHECKING:
-    from pathlib import Path
-
     from utils_core.types import LogFormat, LogLevel
 
 
@@ -439,3 +442,193 @@ class TestLoadProjectEnv:
         import os
 
         assert os.environ.get("PRESERVE_VAR") == "old_value"
+
+
+# 実在の設定キーと衝突しないテスト専用の変数名
+_PROBE_VAR = "QUANTS_TEST_ENV_OVERRIDE_PROBE"
+
+# サブプロセスで trigger を実行し、その後の環境変数値を JSON で出力するスクリプト
+_PROBE_SCRIPT_TEMPLATE = """
+import json
+import os
+
+{trigger}
+
+print(json.dumps({{"value": os.environ.get({var!r})}}))
+"""
+
+
+def _run_env_probe(
+    *,
+    tmp_path: Path,
+    trigger: str,
+    dotenv_value: str,
+    preset_value: str | None,
+) -> str | None:
+    """サブプロセスで trigger を実行し、環境変数の最終値を取得する.
+
+    .env の読み込みは import 時・ロガー初期化時などプロセス全体に副作用を及ぼす。
+    pytest プロセスの環境を汚さずに検証するため、専用のサブプロセスを起動し、
+    その中で trigger を実行した後の環境変数を観測する。
+
+    Parameters
+    ----------
+    tmp_path : Path
+        .env ファイルを作成する一時ディレクトリ。
+    trigger : str
+        サブプロセス内で実行する Python コード片（import やロガー初期化）。
+    dotenv_value : str
+        .env に書き込む値。
+    preset_value : str | None
+        trigger 実行前に環境変数へ設定しておく値。None の場合は未設定にする。
+
+    Returns
+    -------
+    str | None
+        trigger 実行後にサブプロセス内で観測された環境変数の値。
+    """
+    env_file = tmp_path / ".env"
+    env_file.write_text(f"{_PROBE_VAR}={dotenv_value}\n", encoding="utf-8")
+
+    src_path = Path(__file__).parents[3] / "src"
+
+    env = os.environ.copy()
+    # .env の探索結果を固定し、リポジトリの実 .env に依存させない
+    env["DOTENV_PATH"] = str(env_file)
+    env["PYTHONPATH"] = os.pathsep.join(
+        [str(src_path), env.get("PYTHONPATH", "")]
+    ).rstrip(os.pathsep)
+    # setup_logging 等がリポジトリの logs/ に書き込まないよう隔離する
+    env["LOG_DIR"] = str(tmp_path / "logs")
+
+    if preset_value is None:
+        env.pop(_PROBE_VAR, None)
+    else:
+        env[_PROBE_VAR] = preset_value
+
+    script = _PROBE_SCRIPT_TEMPLATE.format(trigger=trigger, var=_PROBE_VAR)
+    result = subprocess.run(
+        [sys.executable, "-c", script],
+        capture_output=True,
+        text=True,
+        env=env,
+        cwd=tmp_path,
+        check=False,
+    )
+
+    assert result.returncode == 0, (
+        f"サブプロセスが失敗しました (returncode={result.returncode})\n"
+        f"stdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+    payload: dict[str, str | None] = json.loads(result.stdout.strip())
+    return payload["value"]
+
+
+class TestEnvOverridePrecedence:
+    """.env より明示設定された環境変数が優先されることのテスト.
+
+    ``load_project_env(override=True)`` を使うと、コンテナランタイム・
+    ``uv run --env-file``・CI・シェルが明示的に設定した環境変数が .env の値で
+    上書きされる。リポジトリごと ``/app`` にマウントされる Docker 構成では
+    ホスト用パスが注入されて壊れるため、以下の全経路で ``override=False``
+    でなければならない。
+
+    - ``import utils_core.settings``（モジュール末尾の呼び出し）
+    - ``get_logger()``（初回呼び出しで ``_ensure_basic_config()`` が発火）
+    - ``setup_logging()``
+    - ``ProjectConfig.from_env()``（env_path 未指定の分岐）
+    """
+
+    _TRIGGER_IMPORT = "import utils_core.settings  # noqa: F401"
+    _TRIGGER_GET_LOGGER = (
+        "from utils_core.logging import get_logger\n\nget_logger('probe')"
+    )
+    _TRIGGER_SETUP_LOGGING = (
+        "from utils_core.logging import setup_logging\n\nsetup_logging()"
+    )
+    _TRIGGER_FROM_ENV = (
+        "from utils_core.config import ProjectConfig\n\nProjectConfig.from_env()"
+    )
+
+    def test_正常系_設定済みの環境変数はimport時にenvで上書きされない(
+        self, tmp_path: Path
+    ) -> None:
+        """import utils_core.settings が明示設定された環境変数を保持すること."""
+        result = _run_env_probe(
+            tmp_path=tmp_path,
+            trigger=self._TRIGGER_IMPORT,
+            dotenv_value="from_dotenv",
+            preset_value="from_container_runtime",
+        )
+
+        assert result == "from_container_runtime"
+
+    def test_正常系_設定済みの環境変数はget_logger経由でenvで上書きされない(
+        self, tmp_path: Path
+    ) -> None:
+        """get_logger() が明示設定された環境変数を保持すること（リグレッション）.
+
+        get_logger() の初回呼び出しは _ensure_basic_config() を発火させる。
+        全エントリポイントがロガーを生成するため、ここが最も影響範囲が広い。
+        """
+        result = _run_env_probe(
+            tmp_path=tmp_path,
+            trigger=self._TRIGGER_GET_LOGGER,
+            dotenv_value="from_dotenv",
+            preset_value="from_container_runtime",
+        )
+
+        assert result == "from_container_runtime"
+
+    def test_正常系_設定済みの環境変数はsetup_logging経由でenvで上書きされない(
+        self, tmp_path: Path
+    ) -> None:
+        """setup_logging() が明示設定された環境変数を保持すること."""
+        result = _run_env_probe(
+            tmp_path=tmp_path,
+            trigger=self._TRIGGER_SETUP_LOGGING,
+            dotenv_value="from_dotenv",
+            preset_value="from_container_runtime",
+        )
+
+        assert result == "from_container_runtime"
+
+    def test_正常系_設定済みの環境変数はProjectConfig生成でenvで上書きされない(
+        self, tmp_path: Path
+    ) -> None:
+        """ProjectConfig.from_env() が明示設定された環境変数を保持すること."""
+        result = _run_env_probe(
+            tmp_path=tmp_path,
+            trigger=self._TRIGGER_FROM_ENV,
+            dotenv_value="from_dotenv",
+            preset_value="from_container_runtime",
+        )
+
+        assert result == "from_container_runtime"
+
+    def test_正常系_未設定の環境変数はimport時にenvから読み込まれる(
+        self, tmp_path: Path
+    ) -> None:
+        """環境変数が未設定の場合は import 時に .env の値が読み込まれること."""
+        result = _run_env_probe(
+            tmp_path=tmp_path,
+            trigger=self._TRIGGER_IMPORT,
+            dotenv_value="from_dotenv",
+            preset_value=None,
+        )
+
+        assert result == "from_dotenv"
+
+    def test_正常系_未設定の環境変数はget_logger経由でenvから読み込まれる(
+        self, tmp_path: Path
+    ) -> None:
+        """環境変数が未設定の場合は get_logger() 経由で .env の値が読み込まれること."""
+        result = _run_env_probe(
+            tmp_path=tmp_path,
+            trigger=self._TRIGGER_GET_LOGGER,
+            dotenv_value="from_dotenv",
+            preset_value=None,
+        )
+
+        assert result == "from_dotenv"

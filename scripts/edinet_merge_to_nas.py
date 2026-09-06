@@ -9,8 +9,8 @@ Usage
     $ uv run python scripts/edinet_merge_to_nas.py
     $ uv run python scripts/edinet_merge_to_nas.py --dry-run
     $ uv run python scripts/edinet_merge_to_nas.py \
-        --source /Users/yuki/Desktop/quants/data/sqlite/edinet.db \
-        --target /Volumes/personal_folder/Projects/quants/data/sqlite/edinet.db
+        --source data/sqlite/edinet.db \
+        --target "${DATA_DIR}/sqlite/edinet.db"
 
 Notes
 -----
@@ -18,6 +18,7 @@ Notes
 - マージは NAS DB のトランザクション内で実行され、失敗時はロールバック
 - _rate_limit.json と _sync_state.json も上書きコピー
 - NAS DB ファイルが存在しない場合はローカルをコピーして初期化
+- --target の既定値は環境変数 DATA_DIR 配下 (コンテナ内は /nas/Projects/quants/data)
 
 参照
 ----
@@ -28,6 +29,7 @@ Notes
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 import sqlite3
 import sys
@@ -39,10 +41,30 @@ from utils_core.logging import get_logger
 
 logger = get_logger(__name__)
 
-DEFAULT_SOURCE_DB = Path("/Users/yuki/Desktop/quants/data/sqlite/edinet.db")
-DEFAULT_TARGET_DB = Path(
-    "/Volumes/personal_folder/Projects/quants/data/sqlite/edinet.db"
-)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+# macOS で NAS をマウントする従来の場所。DATA_DIR 未設定時のみ使う
+_FALLBACK_NAS_DATA_DIR = Path("/Volumes/personal_folder/Projects/quants/data")
+
+
+def _nas_data_dir() -> Path:
+    """マージ先 (NAS) のデータルートを解決する.
+
+    Returns
+    -------
+    Path
+        環境変数 ``DATA_DIR`` が設定されていればその値、未設定なら
+        ``_FALLBACK_NAS_DATA_DIR``。source と同一パスになるのを避けるため、
+        ここではリポジトリ相対にフォールバックしない。
+    """
+    env_data_dir = os.environ.get("DATA_DIR", "").strip()
+    return Path(env_data_dir) if env_data_dir else _FALLBACK_NAS_DATA_DIR
+
+
+# source は launchd がローカルへダウンロードした DB (リポジトリ内 data/)
+DEFAULT_SOURCE_DB = REPO_ROOT / "data" / "sqlite" / "edinet.db"
+# target は NAS 上の正本 (DATA_DIR 配下)
+DEFAULT_TARGET_DB = _nas_data_dir() / "sqlite" / "edinet.db"
 
 TABLES: tuple[str, ...] = (
     "companies",

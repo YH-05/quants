@@ -2,9 +2,26 @@
 """Macro Economics（マクロ経済）ニュース収集スクリプト"""
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
+
+# リポジトリルート基準でパスを解決する（ユーザー名や実行ディレクトリに依存しない）
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def get_data_dir() -> Path:
+    """データディレクトリのパスを解決する.
+
+    Returns
+    -------
+    Path
+        環境変数 ``DATA_DIR`` が設定されていればその値、未設定ならリポジトリ内の
+        ``data/``。コンテナ内では ``DATA_DIR=/nas/Projects/quants/data`` が入る。
+    """
+    env_data_dir = os.environ.get("DATA_DIR", "").strip()
+    return Path(env_data_dir) if env_data_dir else REPO_ROOT / "data"
 
 
 def calculate_title_similarity(title1: str, title2: str) -> float:
@@ -409,7 +426,7 @@ def main():
     print("-" * 80)
 
     # 一時ファイル読み込み（パース済みデータ）
-    tmp_file = Path("/Users/yukihata/Desktop/finance/.tmp/news-collection-parsed.json")
+    tmp_file = REPO_ROOT / ".tmp" / "news-collection-parsed.json"
     if not tmp_file.exists():
         print(f"エラー: 一時ファイルが見つかりません: {tmp_file}")
         print("parse_broken_json.pyを先に実行してください")
@@ -453,9 +470,7 @@ def main():
     print()
 
     # テーマ設定読み込み
-    config_file = Path(
-        "/Users/yukihata/Desktop/finance/data/config/finance-news-themes.json"
-    )
+    config_file = get_data_dir() / "config" / "finance-news-themes.json"
     print(f"テーマ設定読み込み: {config_file}")
     with open(config_file) as f:
         config = json.load(f)

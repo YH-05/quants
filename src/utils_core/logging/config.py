@@ -85,7 +85,11 @@ def _ensure_basic_config() -> None:
         return
     _initialized = True
 
-    load_project_env(override=True)
+    # AIDEV-NOTE: override=False は必須。理由は utils_core/settings.py の
+    # モジュール末尾 AIDEV-NOTE を参照（明示設定された環境変数を .env より優先）。
+    # 本関数は get_logger() の初回呼び出しで発火するため、ここが override=True だと
+    # 実質すべてのエントリポイントでコンテナの環境変数が .env に上書きされる。
+    load_project_env(override=False)
 
     # Clear cached environment variables to reflect any changes
     get_log_level.cache_clear()
@@ -306,7 +310,9 @@ def setup_logging(
     """
     global _initialized
 
-    load_project_env(override=True)
+    # AIDEV-NOTE: override=False は必須。理由は utils_core/settings.py の
+    # モジュール末尾 AIDEV-NOTE を参照（明示設定された環境変数を .env より優先）。
+    load_project_env(override=False)
 
     # Clear cached environment variables to reflect any changes
     get_log_level.cache_clear()

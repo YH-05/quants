@@ -33,6 +33,8 @@ Test TODO List:
 - [x] 集計定数: 政府系の内訳と合計を分離
 """
 
+from typing import TypedDict, Unpack
+
 import pytest
 
 from market.nse.analysis.owner_classification import (
@@ -45,9 +47,51 @@ from market.nse.analysis.owner_classification import (
 )
 
 
-def _composition(**overrides: float) -> dict[str, float]:
+class _Composition(TypedDict):
+    """``classify_owner_flag`` の全キーワード引数。
+
+    株主数 (``*_num``) は集計時に ``int()`` へ丸めた実数値であり
+    (``notebook/NSE/scripts/persist_and_classify.py`` 参照)、保有比率
+    (``*_pct``) は float である。両者を ``dict[str, float]`` に潰すと
+    株主数の型が実装と食い違うため、TypedDict でキーごとに型を保持する。
+    """
+
+    promoter_total_pct: float
+    hufi_num: int
+    hufi_pct: float
+    nri_num: int
+    dir_num: int
+    kmp_num: int
+    rel_num: int
+    trust_num: int
+    natural_num_sum: int
+    govt_pct: float
+    other_indian_pct: float
+    other_foreign_pct: float
+    foreign_non_govt_pct: float
+
+
+class _CompositionOverrides(TypedDict, total=False):
+    """:class:`_Composition` の部分指定版（``_composition`` の kwargs 用）。"""
+
+    promoter_total_pct: float
+    hufi_num: int
+    hufi_pct: float
+    nri_num: int
+    dir_num: int
+    kmp_num: int
+    rel_num: int
+    trust_num: int
+    natural_num_sum: int
+    govt_pct: float
+    other_indian_pct: float
+    other_foreign_pct: float
+    foreign_non_govt_pct: float
+
+
+def _composition(**overrides: Unpack[_CompositionOverrides]) -> _Composition:
     """promoter 50% のみを持つベース構成に overrides を適用して返す。"""
-    base: dict[str, float] = {
+    base: _Composition = {
         "promoter_total_pct": 50.0,
         "hufi_num": 0,
         "hufi_pct": 0.0,

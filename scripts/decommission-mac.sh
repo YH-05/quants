@@ -191,6 +191,46 @@ fi
 echo
 
 # ---------------------------------------------------------------------------
+# 3b. quants 専用コンテナとボリューム
+#
+# neo4j-enterprise は 4 プロジェクト共有なので対象外。
+# quants-dev / quants-scheduler と、その名前付きボリュームのみ削除する。
+# ---------------------------------------------------------------------------
+bold "[3b/6] quants 専用コンテナ・ボリュームの削除"
+if docker info >/dev/null 2>&1; then
+  for c in quants-dev quants-scheduler; do
+    if docker ps -a --format '{{.Names}}' | grep -qx "$c"; then
+      step "削除: コンテナ $c"
+      $EXECUTE && docker rm -f "$c" >/dev/null 2>&1 || true
+    fi
+  done
+  # compose プロジェクト名 quants の名前付きボリュームを実測で列挙する。
+  # 現行定義の venv / claude-config に加え、過去の定義の残骸
+  # （quants_neo4j-data など）もここで拾える。
+  # neo4j-enterprise の実データは ~/neo4j-data へのバインドマウントであり
+  # 名前付きボリュームではないため、この削除では消えない。
+  vols=$(docker volume ls --format '{{.Name}}' | grep '^quants_' || true)
+  if [ -n "$vols" ]; then
+    while IFS= read -r v; do
+      [ -n "$v" ] || continue
+      used=$(docker ps -a --filter "volume=$v" --format '{{.Names}}' | tr '\n' ' ')
+      if [ -n "$used" ]; then
+        red "  警告: ボリューム $v は $used が使用中。削除をスキップします"
+        continue
+      fi
+      step "削除: ボリューム $v ($(docker volume inspect "$v" --format '{{.CreatedAt}}' 2>/dev/null))"
+      $EXECUTE && docker volume rm "$v" >/dev/null 2>&1 || true
+    done <<< "$vols"
+  else
+    echo "  quants_ 接頭辞のボリュームなし"
+  fi
+  echo "  ※ neo4j-enterprise コンテナと ~/neo4j-data は対象外（4 プロジェクト共有のため）"
+else
+  echo "  Docker が動いていません（スキップ）"
+fi
+echo ""
+
+# ---------------------------------------------------------------------------
 # 4. Neo4j 起動スクリプト
 # ---------------------------------------------------------------------------
 bold "[4/6] Neo4j 起動スクリプトの削除"

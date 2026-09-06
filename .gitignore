@@ -45,6 +45,7 @@ coverage.xml
 *.log
 !logs/news-workflow-*.log
 .mcp.json
+.mcp.json.bak
 
 # Documentation
 .sphinx/
@@ -109,3 +110,9 @@ notebook/REGIME_SWITCHING/data/*.parquet
 # NSE index DB の作業用スナップショット (本体 nse_index.db と確定版のみ追跡する)
 notebook/NSE/data/cache/nse/nse_index_backup_*.db
 notebook/NSE/data/cache/nse/nse_index_20260512.db
+
+# OAuth トークン（絶対にコミットしないこと）
+token.json
+**/token.json
+credentials.json
+**/credentials.json

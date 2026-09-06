@@ -267,9 +267,12 @@ class ProjectConfig:
         if env_path is not None:
             from dotenv import load_dotenv
 
+            # 呼び出し側が .env のパスを明示指定したケースなので override=True が妥当
             load_dotenv(dotenv_path=env_path, override=True)
         else:
-            load_project_env(override=True)
+            # AIDEV-NOTE: override=False は必須。理由は utils_core/settings.py の
+            # モジュール末尾 AIDEV-NOTE を参照（明示設定された環境変数を .env より優先）。
+            load_project_env(override=False)
 
         return cls(
             fred_api_key=os.environ.get("FRED_API_KEY", ""),
